@@ -319,7 +319,7 @@ A tanulmány kiegészíti az SAP-telepítési dokumentációt és az SAP-megjegy
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 A felhő-számítástechnika egy széles körben használt kifejezés, amely egyre nagyobb jelentőséggel bír az informatikai iparban, a kisvállalkozásoktól egészen a nagy és a multinacionális vállalatokig.
 
 A Microsoft Azure a Microsoft Cloud Services platformja, amely az új lehetőségek széles spektrumát kínálja. Mostantól az ügyfelek gyorsan üzembe helyezhetik és kioszthatják az alkalmazásokat a felhőben, így azok nem korlátozódnak technikai vagy költségvetési korlátozásokra. Az idő és a költségvetés hardveres infrastruktúrába való befektetése helyett a vállalatok az alkalmazásra, az üzleti folyamatokra, valamint az ügyfelek és a felhasználók számára nyújtott előnyökre is koncentrálnak.
@@ -556,7 +556,7 @@ Az Azure standard Storage az Azure IaaS kiadásakor elérhető tárolási típus
 
 Az Azure standard Storage-fiókokon tárolt lemezek számlázása a tárolt tényleges adatok, a tárolási tranzakciók mennyisége, a kimenő adatforgalom és a redundancia beállítás alapján történik. Több lemez is létrehozható az 1 TB-os maximális méretnél, de ha ezek üresen maradnak, díjmentesek. Ha ezt követően kitölt egy virtuális merevlemezt a 100 GB-mel, akkor a 100 GB tárolásért kell fizetnie, nem pedig a által létrehozott VHD-fájl névleges méretéhez.
 
-#### <a name="ff5ad0f9-f7f4-4022-9102-af07aef3bc92"></a>Azure Premium Storage
+#### <a name="ff5ad0f9-f7f4-4022-9102-af07aef3bc92"></a>Azure-Premium Storage
 Az Azure Premium Storage a következő céllal lett bevezetve:
 
 * Jobb I/O-késleltetés.
@@ -2053,7 +2053,7 @@ Az SAP-rendszeren belüli más virtuális gépek biztonsági mentését az Azure
 
 A megoldás üzembe helyezésének részletes leírását itt találja: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx>.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Azure-beli SAP-rendszerek magas rendelkezésre állásának legfontosabb pontjai a következők:
 

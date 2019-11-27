@@ -1,6 +1,6 @@
 ---
-title: Webhooks to respond to registry actions
-description: Learn how to use webhooks to trigger events when push or pull actions occur in your registry repositories.
+title: Webhookok a beállításjegyzékbeli műveletekre való reagáláshoz
+description: Ismerje meg, hogyan indíthat el eseményeket a webhookok használatával, amikor leküldéses vagy lekéréses műveletek történnek a beállításjegyzékbeli adattárakban.
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 5e6fd2d9f4c7727365a8e2fe3893aafebfeb7bd4
@@ -10,80 +10,80 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454376"
 ---
-# <a name="using-azure-container-registry-webhooks"></a>Using Azure Container Registry webhooks
+# <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhookok használata
 
-An Azure container registry stores and manages private Docker container images, similar to the way Docker Hub stores public Docker images. It can also host repositories for [Helm charts](container-registry-helm-repos.md) (preview), a packaging format to deploy applications to Kubernetes. You can use webhooks to trigger events when certain actions take place in one of your registry repositories. Webhooks can respond to events at the registry level, or they can be scoped down to a specific repository tag. With a  [geo-replicated](container-registry-geo-replication.md) registry, you configure each webhook to respond to events in a specific regional replica.
+Az Azure Container Registry tárolja és felügyeli a privát Docker-tárolók lemezképeit, hasonlóan ahhoz, ahogy a Docker hub nyilvános Docker-rendszerképeket tárol. Emellett a [Helm-diagramok](container-registry-helm-repos.md) (előzetes verzió) adattárházait is üzemeltetheti, amelyekkel alkalmazásokat telepíthet a Kubernetes. A webhookok használatával aktiválhatja az eseményeket, amikor bizonyos műveletek az egyik beállításjegyzékbeli tárházban lépnek életbe. A webhookok a beállításjegyzék szintjén válaszolnak az eseményekre, vagy hatókörük egy adott adattár címkéjére is felhasználhatók. [Földrajzilag replikált](container-registry-geo-replication.md) beállításjegyzék esetén az egyes webhookokat úgy konfigurálja, hogy válaszoljon az adott regionális replika eseményeire.
 
-For details on webhook requests, see [Azure Container Registry webhook schema reference](container-registry-webhook-reference.md).
+A webhook-kérelmekkel kapcsolatos részletekért lásd: [Azure Container Registry webhook-séma referenciája](container-registry-webhook-reference.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure container registry - Create a container registry in your Azure subscription. For example, use the [Azure portal](container-registry-get-started-portal.md) or the [Azure CLI](container-registry-get-started-azure-cli.md). The [Azure Container Registry SKUs](container-registry-skus.md) have different webhooks quotas.
-* Docker CLI - To set up your local computer as a Docker host and access the Docker CLI commands, install [Docker Engine](https://docs.docker.com/engine/installation/).
+* Azure Container Registry – hozzon létre egy tároló-beállításjegyzéket az Azure-előfizetésében. Használja például a [Azure Portal](container-registry-get-started-portal.md) vagy az [Azure CLI](container-registry-get-started-azure-cli.md)-t. Az [Azure Container Registry SKU](container-registry-skus.md) -ban különböző webhookok kvótái vannak.
+* Docker CLI – a helyi számítógép Docker-gazdagépként való beállításához és a Docker CLI-parancsok eléréséhez, a [Docker-motor](https://docs.docker.com/engine/installation/)telepítéséhez.
 
-## <a name="create-webhook---azure-portal"></a>Create webhook - Azure portal
+## <a name="create-webhook---azure-portal"></a>Webhook létrehozása – Azure Portal
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. Navigate to the container registry in which you want to create a webhook.
-1. Under **Services**, select **Webhooks**.
-1. Select **Add** in the webhook toolbar.
-1. Complete the *Create webhook* form with the following information:
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Navigáljon ahhoz a tároló-beállításjegyzékhez, amelyben létre kíván hozni egy webhookot.
+1. A **szolgáltatások**területen válassza a **webhookok**lehetőséget.
+1. A webhook eszköztárban válassza a **Hozzáadás** lehetőséget.
+1. Fejezze be a *webhook létrehozása* űrlapot a következő információkkal:
 
-| Value (Díj) | Leírás |
+| Érték | Leírás |
 |---|---|
-| Webhook name | The name you want to give to the webhook. It may contain only letters and numbers, and must be 5-50 characters in length. |
-| Földrajzi egység | For a [geo-replicated](container-registry-geo-replication.md) registry, specify the Azure region of the registry replica. 
-| Service URI | The URI where the webhook should send POST notifications. |
-| Custom headers | Headers you want to pass along with the POST request. They should be in "key: value" format. |
-| Trigger actions | Actions that trigger the webhook. Actions include image push, image delete, Helm chart push, Helm chart delete, and image quarantine. You can choose one or more actions to trigger the webhook. |
-| Állapot | The status for the webhook after it's created. It's enabled by default. |
-| Hatókör | The scope at which the webhook works. If not specified, the scope is for all events in the registry. It can be specified for a repository or a tag by using the format "repository:tag", or "repository:*" for all tags under a repository. |
+| Webhook neve | A webhookhoz adni kívánt név. Csak betűket és számokat tartalmazhat, és 5-50 karakter hosszúnak kell lennie. |
+| Hely | [Földrajzilag replikált](container-registry-geo-replication.md) beállításjegyzék esetén a beállításjegyzék-replika Azure-régióját kell megadnia. 
+| Szolgáltatás URI-ja | Az az URI, amelyben a webhooknak POST-értesítéseket kell küldenie. |
+| Egyéni fejlécek | A POST kérelemmel együtt átadni kívánt fejlécek. A "Key: Value" formátumúnak kell lenniük. |
+| Trigger műveletek | A webhookot kiváltó műveletek. A műveletek közé tartozik a képek leküldése, a rendszerkép törlése, a Helm chart push, a Helm diagram törlése és a képek karanténba helyezése. Kiválaszthat egy vagy több műveletet a webhook elindításához. |
+| status | A webhook állapota a létrehozásuk után. Alapértelmezés szerint engedélyezve van. |
+| Hatókör | A webhook működésének hatóköre. Ha nincs megadva, a hatókör a beállításjegyzékben található összes eseményre kiterjed. Megadható egy adattárhoz vagy egy címkéhez "adattár: tag" vagy "adattár: *" formátumban a tárházban található összes címkéhez. |
 
-Example webhook form:
+Példa webhook-űrlapra:
 
-![ACR webhook creation UI in the Azure portal](./media/container-registry-webhook/webhook.png)
+![ACR webhook-létrehozási felhasználói felület a Azure Portal](./media/container-registry-webhook/webhook.png)
 
-## <a name="create-webhook---azure-cli"></a>Create webhook - Azure CLI
+## <a name="create-webhook---azure-cli"></a>Webhook létrehozása – Azure CLI
 
-To create a webhook using the Azure CLI, use the [az acr webhook create](/cli/azure/acr/webhook#az-acr-webhook-create) command. The following command creates a webhook for all image delete events in the registry *mycontainerregistry*:
+Webhook az Azure CLI használatával történő létrehozásához használja az az [ACR webhook Create](/cli/azure/acr/webhook#az-acr-webhook-create) parancsot. A következő parancs létrehoz egy webhookot az összes rendszerkép-törlési eseményhez a beállításjegyzék *mycontainerregistry*:
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
 ```
 
-## <a name="test-webhook"></a>Test webhook
+## <a name="test-webhook"></a>Webhook tesztelése
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Prior to using the webhook, you can test it with the **Ping** button. Ping sends a generic POST request to the specified endpoint and logs the response. Using the ping feature can help you verify you've correctly configured the webhook.
+A webhook használatának megkezdése előtt tesztelheti a **ping** gomb segítségével. A ping általános POST-kérést küld a megadott végpontnak, és naplózza a választ. A ping funkció használatával ellenőrizheti, hogy helyesen konfigurálta-e a webhookot.
 
-1. Select the webhook you want to test.
-2. In the top toolbar, select **Ping**.
-3. Check the endpoint's response in the **HTTP STATUS** column.
+1. Válassza ki a tesztelni kívánt webhookot.
+2. A felső eszköztáron válassza a **pingelés**lehetőséget.
+3. A **http-állapot** oszlopban keresse meg a végpont válaszát.
 
-![ACR webhook creation UI in the Azure portal](./media/container-registry-webhook/webhook-02.png)
+![ACR webhook-létrehozási felhasználói felület a Azure Portal](./media/container-registry-webhook/webhook-02.png)
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
-To test an ACR webhook with the Azure CLI, use the [az acr webhook ping](/cli/azure/acr/webhook#az-acr-webhook-ping) command.
+Az ACR webhook Azure CLI-vel való teszteléséhez használja az az [ACR webhook ping](/cli/azure/acr/webhook#az-acr-webhook-ping) parancsot.
 
 ```azurecli-interactive
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01
 ```
 
-To see the results, use the [az acr webhook list-events](/cli/azure/acr/webhook) command.
+Az eredmények megtekintéséhez használja az az [ACR webhook List-Events](/cli/azure/acr/webhook) parancsot.
 
 ```azurecli-interactive
 az acr webhook list-events --registry mycontainerregistry08 --name myacrwebhook01
 ```
 
-## <a name="delete-webhook"></a>Delete webhook
+## <a name="delete-webhook"></a>Webhook törlése
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Each webhook can be deleted by selecting the webhook and then the **Delete** button in the Azure portal.
+Minden webhook törölhető úgy, hogy kiválasztja a webhookot, majd a Azure Portal **Törlés** gombját.
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 az acr webhook delete --registry mycontainerregistry --name myacrwebhook01
@@ -91,14 +91,14 @@ az acr webhook delete --registry mycontainerregistry --name myacrwebhook01
 
 ## <a name="next-steps"></a>Következő lépések
 
-### <a name="webhook-schema-reference"></a>Webhook schema reference
+### <a name="webhook-schema-reference"></a>Webhook-séma – dokumentáció
 
-For details on the format and properties of the JSON event payloads emitted by Azure Container Registry, see the webhook schema reference:
+A Azure Container Registry által kibocsátott JSON-események tartalmának formátumával és tulajdonságaival kapcsolatos részletekért tekintse meg a webhook sémájának dokumentációját:
 
-[Azure Container Registry webhook schema reference](container-registry-webhook-reference.md)
+[Azure Container Registry webhook-séma referenciája](container-registry-webhook-reference.md)
 
-### <a name="event-grid-events"></a>Event Grid events
+### <a name="event-grid-events"></a>Események Event Grid
 
-In addition to the native registry webhook events discussed in this article, Azure Container Registry can emit events to Event Grid:
+A cikkben tárgyalt natív beállításjegyzékbeli webhook-eseményeken kívül a Azure Container Registry eseményeket is kibocsáthat a Event Gridba:
 
-[Quickstart: Send container registry events to Event Grid](container-registry-event-grid-quickstart.md)
+[Gyors útmutató: tároló-beállításjegyzékbeli események küldése Event Grid](container-registry-event-grid-quickstart.md)

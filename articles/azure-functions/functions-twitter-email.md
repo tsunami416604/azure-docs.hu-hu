@@ -22,7 +22,7 @@ Az oktatóanyag bemutatja, hogyan használható a Functions, a Logic Apps és a 
 
 ![az alkalmazás első két lépésének képe a Logic App Designerben](media/functions-twitter-email/00-logic-app-overview.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Egy Cognitive Services API-erőforrás létrehozása.
@@ -43,7 +43,7 @@ Hajtsa végre az itt található lépéseket a függvényalkalmazás létrehozá
 
 A Cognitive Services API-k egyéni erőforrásként érhetők el az Azure-ban. A Text Analytics API-t használja a monitorozott tweetek hangulatának megállapításához.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 2. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
@@ -76,7 +76,7 @@ A függvények kiváló módot nyújtanak egy logikai alkalmazás munkafolyamat�
 
 ## <a name="create-an-http-triggered-function"></a>HTTP által aktivált függvény létrehozása  
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített** elemet.
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények+ elem melletti**  gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített** elemet.
 
     ![Függvények gyors létrehozásának oldala az Azure Portalon](media/functions-twitter-email/05-function-app-create-portal.png)
 
@@ -121,7 +121,7 @@ A függvények kiváló módot nyújtanak egy logikai alkalmazás munkafolyamat�
     ```
     Ez a függvénykód visszaad egy színkategóriát a kérésben kapott véleménypontszám alapján. 
 
-4. To test the function, click **Test** at the far right to expand the Test tab. Type a value of `0.2` for the **Request body**, and then click **Run**. A válasz törzse a **RED** (Vörös) értéket adja vissza. 
+4. A függvény teszteléséhez kattintson a jobb szélen a **tesztelés** gombra a teszt lap kibontásához. írjon be `0.2` értéket a **kérelem törzse**számára, majd kattintson a **Futtatás**gombra. A válasz törzse a **RED** (Vörös) értéket adja vissza. 
 
     ![A függvény tesztelése az Azure Portalon](./media/functions-twitter-email/07-function-test.png)
 

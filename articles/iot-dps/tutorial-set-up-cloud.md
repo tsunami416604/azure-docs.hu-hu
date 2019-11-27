@@ -1,6 +1,6 @@
 ---
-title: Set up cloud for Azure IoT Hub Device Provisioning Service in portal
-description: Tutorial - Set up the cloud resources for device provisioning in the [Azure portal](https://portal.azure.com) using the IoT Hub Device Provisioning Service
+title: A Cloud for Azure IoT Hub Device Provisioning Service beállítása a portálon
+description: Oktatóanyag – felhőalapú erőforrások beállítása a [Azure Portal](https://portal.azure.com) eszköz kiépítési feladataihoz a IoT hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -15,9 +15,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228312"
 ---
-# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Tutorial: Configure cloud resources for device provisioning with the IoT Hub Device Provisioning Service
+# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Oktatóanyag: felhőalapú erőforrások konfigurálása az eszközök kiépítési felállításához a IoT Hub Device Provisioning Service
 
-Ez az oktatóanyag bemutatja, hogyan állíthatja be a felhőt az automatikus eszközkiépítéshez az IoT Hub Device Provisioning Service használatával. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan állíthatja be a felhőt az automatikus eszközkiépítéshez az IoT Hub Device Provisioning Service használatával. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * IoT Hub Device Provisioning Service létrehozása és az azonosító hatókörének lekérése az Azure Portallal
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Device Provisioning Service-példány létrehozása és az azonosító hatókörének lekérése
 
@@ -52,7 +52,7 @@ Kövesse az alábbi lépéseket egy új Device Provisioning Service-példány l�
 
    ![Írja be a Device Provisioning Service-szolgáltatás alapvető adatait a portálon](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Kattintson a  **Create** (Létrehozás) gombra. A rendszer néhány pillanaton belül létrehozza a Device Provisioning Service-példányt, majd megjeleníti az **Áttekintés** lapot.
+5. Kattintson a **Létrehozás** gombra. A rendszer néhány pillanaton belül létrehozza a Device Provisioning Service-példányt, majd megjeleníti az **Áttekintés** lapot.
 
 6. Az új szolgáltatáspéldány **Áttekintés** lapján másolja az **Azonosító hatóköre** értéket későbbi felhasználás céljából. Az érték a regisztrációs azonosítók azonosítására szolgál, továbbá garantálja a regisztrációs azonosító egyediségét.
 
@@ -62,7 +62,7 @@ Kövesse az alábbi lépéseket egy új Device Provisioning Service-példány l�
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Retrieve connection string for IoT hub
+### <a name="retrieve-connection-string-for-iot-hub"></a>IoT hub-hoz tartozó kapcsolatok karakterláncának beolvasása
 
 [!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
@@ -76,7 +76,7 @@ A következő lépés a Device Provisioning Service és az IoT-központ összeka
 
 2. A Device Provisioning Service lapján kattintson a **Csatolt IoT-központok** lehetőségre.
 
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson az **Hozzáadás** parancsra.
 
 4. A **Hivatkozás hozzáadása IoT hubhoz** lapon adja meg az alábbi adatokat, majd kattintson a **Mentés**gombra:
 
@@ -90,7 +90,7 @@ A következő lépés a Device Provisioning Service és az IoT-központ összeka
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>A Device Provisioning Service kiosztási szabályzatának beállítása
 
-The allocation policy is an IoT Hub Device Provisioning Service setting that determines how devices are assigned to an IoT hub. Három támogatott kiosztási szabályzat létezik: 
+A foglalási szabályzat egy IoT Hub Device Provisioning Service-beállítás, amely meghatározza, hogy az eszközök hogyan legyenek hozzárendelve az IoT hubhoz. Három támogatott kiosztási szabályzat létezik: 
 
 1. **Legkisebb mértékű késleltetés**: Az eszközök abban az IoT-központban lesznek kiépítve, amely a legkisebb mértékű késleltetéssel rendelkezik az adott eszköz irányába.
 

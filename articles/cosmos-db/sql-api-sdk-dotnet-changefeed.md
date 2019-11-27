@@ -36,8 +36,8 @@ ms.locfileid: "74306762"
 |---|---|
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API-dokumentáció**|[A hírcsatorna-feldolgozó függvénytár API-referenciájának módosítása – dokumentáció](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**Bevezetés**|[Ismerkedés a Change feed Processor .NET SDK-val](change-feed.md)|
-|**Aktuális támogatott keretrendszer**| [Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
+|**Első lépések**|[Ismerkedés a Change feed Processor .NET SDK-val](change-feed.md)|
+|**Jelenleg támogatott keretrendszer**| [Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET mag](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
 > Ha a módosítási hírcsatorna-processzort használja, tekintse meg a [.net SDK](change-feed-processor.md)legújabb 3. x verzióját, amely az SDK-ba beépített hírcsatornát módosítja. 
@@ -73,14 +73,14 @@ ms.locfileid: "74306762"
 ### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
 * Új ChangeFeedProcessorOptions. StartContinuation tulajdonság hozzáadva, amely támogatja a változási hírcsatorna megkezdését a kérelem folytatási jogkivonata alapján. Ezt csak akkor használja a rendszer, ha a címbérleti gyűjtemény üres, vagy a bérlet nem rendelkezik Continuationtoken argumentumot használja-készlettel. A Continuationtoken argumentumot használja készlettel rendelkező bérlet gyűjteményben lévő bérletek esetében a rendszer a Continuationtoken argumentumot használja használja, és a ChangeFeedProcessorOptions. StartContinuation figyelmen kívül hagyja.
 
-### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+### <a name="a-name223223"></a>2\.2.3 <a name="2.2.3"/>
 * További támogatás az egyéni tároló használatával a folytatási tokenek partíción való megőrzéséhez.
   * Egy egyéni címbérleti tároló például lehet Azure Cosmos DB bármely egyéni módon particionált bérlet gyűjteménye.
   * Az egyéni címbérleti tárolók a ChangeFeedProcessorBuilder. WithLeaseStoreManager (ILeaseStoreManager) és a ILeaseStoreManager Public Interface új bővíthetőségi ponttal rendelkezhetnek.
   * A ILeaseManager felületet több szerepkör-interfészre is átalakítja.
 * Másodlagos feltörési változás: eltávolította a ChangeFeedProcessorBuilder. WithLeaseManager (ILeaseManager) bővíthetőségi pontot, használja helyette a ChangeFeedProcessorBuilder. WithLeaseStoreManager (ILeaseStoreManager) metódust.
 
-### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2.
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
 * Ez a kiadás javít egy olyan problémát, amely a megfigyelt gyűjtemények és a particionált bérletek gyűjteményének feldolgozása során következik be. A felosztott partíciók bérletének feldolgozásakor előfordulhat, hogy a partíciónak megfelelő bérlet nem törölhető. A probléma ebben a kiadásban van kijavítva.
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
@@ -172,7 +172,7 @@ ms.locfileid: "74306762"
 
 ## <a name="release--retirement-dates"></a>Kiadási & nyugdíjazási dátumok
 
-A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
 
 Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
 
@@ -204,4 +204,4 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 ## <a name="see-also"></a>Lásd még
 
-Cosmos DB kapcsolatos további információkért lásd: [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján.
+További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.

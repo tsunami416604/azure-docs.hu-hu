@@ -1,6 +1,6 @@
 ---
-title: Azure Functions HTTP triggers and bindings
-description: Understand how to use HTTP triggers and bindings in Azure Functions.
+title: HTTP-eseményindítók és-kötések Azure Functions
+description: Ismerje meg, hogyan használhatók a HTTP-eseményindítók és-kötések a Azure Functionsban.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
@@ -12,41 +12,41 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231173"
 ---
-# <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP triggers and bindings
+# <a name="azure-functions-http-triggers-and-bindings"></a>HTTP-eseményindítók és-kötések Azure Functions
 
-This article explains how to work with HTTP triggers and output bindings in Azure Functions.
+Ez a cikk azt ismerteti, hogyan használhatók a HTTP-eseményindítók és a kimeneti kötések Azure Functionsban.
 
-An HTTP trigger can be customized to respond to [webhooks](https://en.wikipedia.org/wiki/Webhook).
+A HTTP-triggerek testreszabhatók a [webhookokra](https://en.wikipedia.org/wiki/Webhook)való reagáláshoz.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-The code in this article defaults to Functions 2.x syntax which uses .NET Core. For information on the 1.x syntax, see the [1.x functions templates](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates).
+A cikkben található kód a 2. x függvényt, amely a .NET Core-t használja. Az 1. x szintaxissal kapcsolatos további információkért tekintse meg az [1. x függvények sablonjait](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates).
 
-## <a name="packages---functions-1x"></a>Packages - Functions 1.x
+## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-The HTTP bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.Http](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet package, version 1.x. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.Http) GitHub repository.
+A HTTP-kötések a [Microsoft. Azure. webjobs. Extensions. http](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet csomagban, az 1. x verzióban érhetők el. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.Http) tárházban található.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
-The HTTP bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.Http](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet package, version 3.x. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub repository.
+A HTTP-kötések a [Microsoft. Azure. webjobs. Extensions. http](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet csomagban, 3. x verzióban érhetők el. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) tárházban található.
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
 ## <a name="trigger"></a>Eseményindító
 
-The HTTP trigger lets you invoke a function with an HTTP request. You can use an HTTP trigger to build serverless APIs and respond to webhooks.
+A HTTP-trigger lehetővé teszi a függvények HTTP-kérelemmel való meghívását. HTTP-trigger használatával kiszolgáló nélküli API-kat hozhat létre, és válaszolhat a webhookokra.
 
-By default, an HTTP trigger returns HTTP 200 OK with an empty body in Functions 1.x, or HTTP 204 No Content with an empty body in Functions 2.x. To modify the response, configure an [HTTP output binding](#output).
+Alapértelmezés szerint a http-triggerek a HTTP 200-es értéket adja vissza egy üres törzstel az 1. x vagy a HTTP 204 nem tartalmaz üres törzstel rendelkező tartalmat a 2. x függvényben. A válasz módosításához konfigurálja a [http kimeneti kötést](#output).
 
-## <a name="trigger---example"></a>Trigger - example
+## <a name="trigger---example"></a>Az eseményindító – példa
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that looks for a `name` parameter either in the query string or the body of the HTTP request. Notice that the return value is used for the output binding, but a return value attribute isn't required.
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely egy `name` paramétert keres a lekérdezési karakterláncban vagy a HTTP-kérelem törzsében. Figyelje meg, hogy a rendszer a visszaadott értéket használja a kimeneti kötéshez, de a visszatérési érték attribútum nem kötelező.
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -68,11 +68,11 @@ public static async Task<IActionResult> Run(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
-The following example shows a trigger binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function looks for a `name` parameter either in the query string or the body of the HTTP request.
+Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény egy `name` paramétert keres a lekérdezési karakterláncban vagy a HTTP-kérelem törzsében.
 
-Here's the *function.json* file:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -97,9 +97,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+A [konfigurációs](#trigger---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Here's C# script code that binds to `HttpRequest`:
+Az alábbi C# parancsfájl-kód a `HttpRequest`hoz kötődik:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -125,7 +125,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 }
 ```
 
-You can bind to a custom object instead of `HttpRequest`. This object is created from the body of the request and parsed as JSON. Similarly, a type can be passed to the HTTP response output binding and returned as the response body, along with a 200 status code.
+`HttpRequest`helyett egyéni objektumhoz is köthető. Ez az objektum a kérelem törzsében jön létre, és JSON-ként van elemezve. Hasonlóképpen egy típus is átadható a HTTP-válasz kimeneti kötésnek, és a válasz törzsként, valamint egy 200 állapotkódot is visszaküldhető.
 
 ```csharp
 using System.Net;
@@ -146,9 +146,9 @@ public class Person {
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-The following example shows a trigger binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function looks for a `name` parameter either in the query string or the body of the HTTP request.
+Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény egy `name` paramétert keres a lekérdezési karakterláncban vagy a HTTP-kérelem törzsében.
 
-Here's the *function.json* file:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -169,9 +169,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+A [konfigurációs](#trigger---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Here's the JavaScript code:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = function(context, req) {
@@ -195,9 +195,9 @@ module.exports = function(context, req) {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-The following example shows a trigger binding in a *function.json* file and a [Python function](functions-reference-python.md) that uses the binding. The function looks for a `name` parameter either in the query string or the body of the HTTP request.
+Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [Python-függvényt](functions-reference-python.md) , amely a kötést használja. A függvény egy `name` paramétert keres a lekérdezési karakterláncban vagy a HTTP-kérelem törzsében.
 
-Here's the *function.json* file:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -219,9 +219,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+A [konfigurációs](#trigger---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Here's the Python code:
+Itt látható a Python-kód:
 
 ```python
 import logging
@@ -251,14 +251,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-* [Read parameter from the query string](#read-parameter-from-the-query-string)
-* [Read body from a POST request](#read-body-from-a-post-request)
-* [Read parameter from a route](#read-parameter-from-a-route)
-* [Read POJO body from a POST request](#read-pojo-body-from-a-post-request)
+* [Paraméter olvasása a lekérdezési karakterláncból](#read-parameter-from-the-query-string)
+* [Szövegtörzs beolvasása POST-kérelemből](#read-body-from-a-post-request)
+* [Paraméter olvasása útvonalból](#read-parameter-from-a-route)
+* [POJO-törzs olvasása POST-kérelemből](#read-pojo-body-from-a-post-request)
 
-The following examples show the HTTP trigger binding in a *function.json* file and the respective [Java functions](functions-reference-java.md) that use the binding. 
+Az alábbi példák a HTTP-trigger kötését mutatják be egy *function. JSON* fájlban, valamint a kötést használó megfelelő [Java-függvényeket](functions-reference-java.md) . 
 
-Here's the *function.json* file:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -279,9 +279,9 @@ Here's the *function.json* file:
 }
 ```
 
-#### <a name="read-parameter-from-the-query-string"></a>Read parameter from the query string
+#### <a name="read-parameter-from-the-query-string"></a>Paraméter olvasása a lekérdezési karakterláncból
 
-This example reads a parameter, named ```id```, from the query string, and uses it to build a JSON document returned to the client, with content type ```application/json```. 
+Ez a példa egy ```id```nevű paramétert olvas be a lekérdezési karakterláncból, és felhasználja az ügyfélnek visszaadott JSON-dokumentum létrehozásához a tartalomtípus ```application/json```. 
 
 ```java
 @FunctionName("TriggerStringGet")
@@ -318,9 +318,9 @@ public HttpResponseMessage run(
 }
 ```
 
-#### <a name="read-body-from-a-post-request"></a>Read body from a POST request
+#### <a name="read-body-from-a-post-request"></a>Szövegtörzs beolvasása POST-kérelemből
 
-This example reads the body of a POST request, as a ```String```, and uses it to build a JSON document returned to the client, with content type ```application/json```.
+Ez a példa egy POST-kérelem törzsét olvassa be ```String```ként, és felhasználja az ügyfélnek visszaadott JSON-dokumentum létrehozásához a tartalomtípus ```application/json```.
 
 ```java
     @FunctionName("TriggerStringPost")
@@ -354,9 +354,9 @@ This example reads the body of a POST request, as a ```String```, and uses it to
     }
 ```
 
-#### <a name="read-parameter-from-a-route"></a>Read parameter from a route
+#### <a name="read-parameter-from-a-route"></a>Paraméter olvasása útvonalból
 
-This example reads a mandatory parameter, named ```id```, and an optional parameter ```name``` from the route path, and uses them to build a JSON document returned to the client, with content type ```application/json```. T
+Ez a példa egy ```id```nevű kötelező paramétert olvas be, valamint egy opcionális paramétert ```name``` az útvonal elérési útjából, és felhasználja őket egy, az ügyfélnek visszaadott JSON-dokumentum létrehozásához a tartalomtípus ```application/json```. T
 
 ```java
 @FunctionName("TriggerStringRoute")
@@ -392,9 +392,9 @@ public HttpResponseMessage run(
 }
 ```
 
-#### <a name="read-pojo-body-from-a-post-request"></a>Read POJO body from a POST request
+#### <a name="read-pojo-body-from-a-post-request"></a>POJO-törzs olvasása POST-kérelemből
 
-Here is the code for the ```ToDoItem``` class, referenced in this example:
+A ```ToDoItem``` osztályhoz tartozó kód az alábbi példában hivatkozott:
 
 ```java
 
@@ -424,7 +424,7 @@ public class ToDoItem {
 
 ```
 
-This example reads the body of a POST request. The request body gets automatically de-serialized into a ```ToDoItem``` object, and is returned to the client, with content type ```application/json```. The ```ToDoItem``` parameter is serialized by the Functions runtime as it is assigned to the ```body``` property of the ```HttpMessageResponse.Builder``` class.
+Ez a példa egy POST-kérelem törzsét olvassa be. A kérés törzse automatikusan le lesz szerializálva egy ```ToDoItem``` objektumba, és a rendszer visszaküldi az ügyfélnek a tartalom típusa ```application/json```. A functions futtatókörnyezet szerializálja a ```ToDoItem``` paramétert, mivel az a ```HttpMessageResponse.Builder``` osztály ```body``` tulajdonságához van rendelve.
 
 ```java
 @FunctionName("TriggerPojoPost")
@@ -458,15 +458,15 @@ public HttpResponseMessage run(
 
 ---
 
-## <a name="trigger---attributes"></a>Trigger - attributes
+## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
-In [C# class libraries](functions-dotnet-class-library.md) and Java, the `HttpTrigger` attribute is available to configure the function.
+Az [ C# osztály könyvtáraiban](functions-dotnet-class-library.md) és a Java-ban a függvény konfigurálásához a `HttpTrigger` attribútum érhető el.
 
-You can set the authorization level and allowable HTTP methods in attribute constructor parameters, webhook type, and a route template. For more information about these settings, see [Trigger - configuration](#trigger---configuration).
+Beállíthatja az engedélyezési szintet és a HTTP-metódusokat az attribútumok konstruktorának paraméterei, a webhook típusa és egy útvonal-sablon számára. További információ ezekről a beállításokról: [trigger-Configuration](#trigger---configuration).
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-This example demonstrates how to use the [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) attribute.
+Ez a példa bemutatja, hogyan használhatja a [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) attribútumot.
 
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
@@ -477,23 +477,23 @@ public static Task<IActionResult> Run(
 }
 ```
 
-For a complete example, see the [trigger example](#trigger---example).
+Teljes példaként tekintse meg az [trigger példáját](#trigger---example).
 
-# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
-Attributes are not supported by C# Script.
+Az C# attribútumokat a parancsfájl nem támogatja.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Attributes are not supported by JavaScript.
+A JavaScript nem támogatja az attribútumokat.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Attributes are not supported by Python.
+A Python nem támogatja az attribútumokat.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-This example demonstrates how to use the [HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) attribute.
+Ez a példa bemutatja, hogyan használhatja a [HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) attribútumot.
 
 ```java
 @FunctionName("HttpTriggerJava")
@@ -507,35 +507,35 @@ public HttpResponseMessage<String> HttpTrigger(
 }
 ```
 
-For a complete example, see the [trigger example](#trigger---example).
+Teljes példaként tekintse meg az [trigger példáját](#trigger---example).
 
 ---
 
-## <a name="trigger---configuration"></a>Trigger - configuration
+## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `HttpTrigger` attribute.
+Az alábbi táblázat a *function. JSON* fájlban és a `HttpTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function.json property | Attribute property |Leírás|
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **type** | –| Required - must be set to `httpTrigger`. |
-| **direction** | –| Required - must be set to `in`. |
-| **name** | –| Required - the variable name used in function code for the request or request body. |
-| <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Determines what keys, if any, need to be present on the request in order to invoke the function. The authorization level can be one of the following values: <ul><li><code>anonymous</code>&mdash;No API key is required.</li><li><code>function</code>&mdash;A function-specific API key is required. This is the default value if none is provided.</li><li><code>admin</code>&mdash;The master key is required.</li></ul> For more information, see the section about [authorization keys](#authorization-keys). |
-| **methods** |**Methods** | An array of the HTTP methods to which the function  responds. If not specified, the function responds to all HTTP methods. See [customize the http endpoint](#customize-the-http-endpoint). |
-| **route** | **Route** | Defines the route template, controlling to which request URLs your function responds. The default value if none is provided is `<functionname>`. For more information, see [customize the http endpoint](#customize-the-http-endpoint). |
-| **webHookType** | **WebHookType** | _Supported only for the version 1.x runtime._<br/><br/>Configures the HTTP trigger to act as a [webhook](https://en.wikipedia.org/wiki/Webhook) receiver for the specified provider. Don't set the `methods` property if you set this property. The webhook type can be one of the following values:<ul><li><code>genericJson</code>&mdash;A general-purpose webhook endpoint without logic for a specific provider. This setting restricts requests to only those using HTTP POST and with the `application/json` content type.</li><li><code>github</code>&mdash;The function responds to [GitHub webhooks](https://developer.github.com/webhooks/). Do not use the  _authLevel_ property with GitHub webhooks. For more information, see the GitHub webhooks section later in this article.</li><li><code>slack</code>&mdash;The function responds to [Slack webhooks](https://api.slack.com/outgoing-webhooks). Do not use the _authLevel_ property with Slack webhooks. For more information, see the Slack webhooks section later in this article.</li></ul>|
+| **type** | n/a| Kötelező – `httpTrigger`értékre kell állítani. |
+| **direction** | n/a| Kötelező – `in`értékre kell állítani. |
+| **név** | n/a| Kötelező – a kérelem vagy a kérelem törzse függvény kódjában használt változó neve. |
+| <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Meghatározza, hogy a függvény meghívásához szükség van-e a kulcsokra, ha vannak ilyenek. Az engedélyezési szint az alábbi értékek egyike lehet: <ul><li><code>anonymous</code>&mdash;nincs szükség API-kulcsra.</li><li><code>function</code>&mdash;egy függvény-specifikus API-kulcsot kell megadni. Ez az alapértelmezett érték, ha nincs megadva.</li><li><code>admin</code>&mdash;a főkulcs megadása kötelező.</li></ul> További információt az [engedélyezési kulcsok](#authorization-keys)című szakaszban talál. |
+| **módszerek** |**Módszerek** | A függvény által válaszoló HTTP-metódusok tömbje. Ha nincs megadva, a függvény az összes HTTP-metódusra válaszol. Lásd: [a http-végpont testreszabása](#customize-the-http-endpoint). |
+| **útvonal** | **Útvonal** | Meghatározza azt az útválasztási sablont, amely azt szabályozza, hogy a függvény milyen URL-címeket válaszol. Az alapértelmezett érték, ha nincs megadva, `<functionname>`. További információ: [a http-végpont testreszabása](#customize-the-http-endpoint). |
+| **webHookType** | **WebHookType** | _Csak az 1. x verziójú futtatókörnyezet esetében támogatott._<br/><br/>Konfigurálja a HTTP-triggert, amely [webhook](https://en.wikipedia.org/wiki/Webhook) -fogadóként működik a megadott szolgáltatónál. Ha ezt a tulajdonságot beállítja, ne állítsa be a `methods` tulajdonságot. A webhook típusa a következő értékek egyike lehet:<ul><li>a <code>genericJson</code>egy általános célú webhook-végpontot &mdash;egy adott szolgáltató logikája nélkül. Ez a beállítás csak a HTTP POST és a `application/json` tartalomtípus használatával korlátozza a kérelmeket.</li><li><code>github</code>&mdash;a függvény válaszol a [GitHub-webhookokra](https://developer.github.com/webhooks/). Ne használja a _authLevel_ tulajdonságot GitHub-webhookokkal. További információt a cikk későbbi, a GitHub-webhookok című szakaszában talál.</li><li><code>slack</code>&mdash;a függvény válaszol a [Slack webhookokra](https://api.slack.com/outgoing-webhooks). Ne használja a _authLevel_ tulajdonságot Slack webhookokkal. További információt a cikk későbbi, a Slack webhookok című szakaszában talál.</li></ul>|
 
-## <a name="trigger---usage"></a>Trigger - usage
+## <a name="trigger---usage"></a>Eseményindító - használat
 
-The trigger input type is declared as either `HttpRequest` or a custom type. If you choose `HttpRequest`, you get full access to the request object. For a custom type, the runtime tries to parse the JSON request body to set the object properties.
+Az trigger bemeneti típusa `HttpRequest` vagy egyéni típusként van deklarálva. Ha a `HttpRequest`lehetőséget választja, teljes hozzáférést kap a kérelem objektumhoz. Egyéni típus esetén a futásidejű megpróbálja elemezni a JSON-kérés törzsét az objektum tulajdonságainak beállításához.
 
-### <a name="customize-the-http-endpoint"></a>Customize the HTTP endpoint
+### <a name="customize-the-http-endpoint"></a>A HTTP-végpont testreszabása
 
-By default when you create a function for an HTTP trigger, the function is addressable with a route of the form:
+Alapértelmezés szerint a HTTP-triggerekhez tartozó függvény létrehozásakor a függvény címezhető az űrlap egy útvonalával:
 
     http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
 
-You can customize this route using the optional `route` property on the HTTP trigger's input binding. As an example, the following *function.json* file defines a `route` property for an HTTP trigger:
+Ezt az útvonalat a HTTP-trigger bemeneti kötésének opcionális `route` tulajdonságával is testreszabhatja. Példaként a következő *function. JSON* fájl definiál egy `route` tulajdonságot egy http-triggerhez:
 
 ```json
 {
@@ -556,17 +556,17 @@ You can customize this route using the optional `route` property on the HTTP tri
 }
 ```
 
-Using this configuration, the function is now addressable with the following route instead of the original route.
+Ennek a konfigurációnak a használatával a függvény mostantól a következő útvonalon érhető el az eredeti útvonal helyett.
 
 ```
 http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-This allows the function code to support two parameters in the address, _category_ and _id_.
+Ez lehetővé teszi, hogy a függvény programkódja támogassa a címben, a _kategóriában_ és az _azonosítóban_szereplő két paramétert.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-You can use any [Web API Route Constraint](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) with your parameters. The following C# function code makes use of both parameters.
+A paraméterekkel bármilyen [webes API Route-korlátozást](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) használhat. A következő C# függvény kód mindkét paraméter használatát teszi lehetővé.
 
 ```csharp
 using System.Net;
@@ -580,9 +580,9 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
-You can use any [Web API Route Constraint](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) with your parameters. The following C# function code makes use of both parameters.
+A paraméterekkel bármilyen [webes API Route-korlátozást](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) használhat. A következő C# függvény kód mindkét paraméter használatát teszi lehetővé.
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -600,9 +600,9 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-In Node, the Functions runtime provides the request body from the `context` object. For more information, see the [JavaScript trigger example](#trigger---example).
+A csomópontban a functions Runtime a `context` objektumból biztosítja a kérés törzsét. További információ: [JavaScript trigger példa](#trigger---example).
 
-The following example shows how to read route parameters from `context.bindingData`.
+Az alábbi példa bemutatja, hogyan olvashatja el a `context.bindingData`útvonal-paramétereit.
 
 ```javascript
 module.exports = function (context, req) {
@@ -621,9 +621,9 @@ module.exports = function (context, req) {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-The function execution context is exposed via a parameter declared as `func.HttpRequest`. This instance allows a function to access data route parameters, query string values and methods that allow you to return HTTP responses.
+A függvény végrehajtási környezete `func.HttpRequest`ként deklarált paraméterrel elérhető. Ez a példány lehetővé teszi a függvény számára az adatútvonal-paraméterek, a lekérdezési karakterlánc-értékek és a HTTP-válaszok visszaadását lehetővé tevő metódusok elérését.
 
-Once defined, the route parameters are available to the function by calling the `route_params` method.
+A meghatározást követően az útvonal paraméterei elérhetők a függvény számára a `route_params` metódus meghívásával.
 
 ```python
 import logging
@@ -641,9 +641,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-The function execution context is properties as declared in the `HttpTrigger` attribute. The attribute allows you to define route parameters, authorization levels, HTTP verbs and the incoming request instance.
+A függvény végrehajtási környezete a `HttpTrigger` attribútumban deklarált tulajdonságok. Az attribútum lehetővé teszi az útválasztási paraméterek, az engedélyezési szintek, a HTTP-műveletek és a bejövő kérelmek példányának definiálását.
 
-Route parameters are defined via the `HttpTrigger` attribute.
+Az útvonal paramétereinek meghatározása a `HttpTrigger` attribútum használatával történik.
 
 ```java
 package com.function;
@@ -670,7 +670,7 @@ public class HttpTriggerJava {
 
 ---
 
-By default, all function routes are prefixed with *api*. You can also customize or remove the prefix using the `http.routePrefix` property in your [host.json](functions-host-json.md) file. The following example removes the *api* route prefix by using an empty string for the prefix in the *host.json* file.
+Alapértelmezés szerint az összes függvény útvonala az *API*-val előtaggal van ellátva. Az előtagot a [Host. JSON](functions-host-json.md) fájl `http.routePrefix` tulajdonságának használatával is testreszabhatja vagy eltávolíthatja. Az alábbi példa eltávolítja az *API* Route előtagot egy üres karakterlánc használatával a *Host. JSON* fájlban lévő előtaghoz.
 
 ```json
 {
@@ -680,15 +680,15 @@ By default, all function routes are prefixed with *api*. You can also customize 
 }
 ```
 
-### <a name="working-with-client-identities"></a>Working with client identities
+### <a name="working-with-client-identities"></a>Ügyfél-identitások használata
 
-If your function app is using [App Service Authentication / Authorization](../app-service/overview-authentication-authorization.md), you can view information about authenticated clients from your code. This information is available as [request headers injected by the platform](../app-service/app-service-authentication-how-to.md#access-user-claims). 
+Ha a Function alkalmazás [app Service hitelesítés/engedélyezés](../app-service/overview-authentication-authorization.md)funkciót használja, megtekintheti a kód alapján a hitelesített ügyfelek adatait. Ez [az információ a platform által befecskendezett kérelem fejlécként](../app-service/app-service-authentication-how-to.md#access-user-claims)érhető el. 
 
-You can also read this information from binding data. This capability is only available to the Functions 2.x runtime. It is also currently only available for .NET languages.
+Ezeket az információkat a kötési adatokból is elolvashatja. Ez a funkció csak a functions 2. x futtatókörnyezetben érhető el. Emellett jelenleg csak a .NET nyelveken érhető el.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Information regarding authenticated clients is available as a [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal). The ClaimsPrincipal is available as part of the request context as shown in the following example:
+A hitelesített ügyfelekkel kapcsolatos információk [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal)érhetők el. A ClaimsPrincipal a kérelem környezetének részeként érhető el, ahogy az az alábbi példában is látható:
 
 ```csharp
 using System.Net;
@@ -703,7 +703,7 @@ public static IActionResult Run(HttpRequest req, ILogger log)
 }
 ```
 
-Alternatively, the ClaimsPrincipal can simply be included as an additional parameter in the function signature:
+Azt is megteheti, hogy a ClaimsPrincipal egyszerűen szerepelhet további paraméterként a függvény aláírása során:
 
 ```csharp
 using System.Net;
@@ -718,9 +718,9 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
-Information regarding authenticated clients is available as a [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal). The ClaimsPrincipal is available as part of the request context as shown in the following example:
+A hitelesített ügyfelekkel kapcsolatos információk [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal)érhetők el. A ClaimsPrincipal a kérelem környezetének részeként érhető el, ahogy az az alábbi példában is látható:
 
 ```csharp
 using System.Net;
@@ -735,7 +735,7 @@ public static IActionResult Run(HttpRequest req, ILogger log)
 }
 ```
 
-Alternatively, the ClaimsPrincipal can simply be included as an additional parameter in the function signature:
+Azt is megteheti, hogy a ClaimsPrincipal egyszerűen szerepelhet további paraméterként a függvény aláírása során:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -754,130 +754,130 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-The authenticated user is available via [HTTP Headers](../app-service/app-service-authentication-how-to.md#access-user-claims).
+A hitelesített felhasználó [http-fejléceken](../app-service/app-service-authentication-how-to.md#access-user-claims)keresztül érhető el.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-The authenticated user is available via [HTTP Headers](../app-service/app-service-authentication-how-to.md#access-user-claims).
+A hitelesített felhasználó [http-fejléceken](../app-service/app-service-authentication-how-to.md#access-user-claims)keresztül érhető el.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-The authenticated user is available via [HTTP Headers](../app-service/app-service-authentication-how-to.md#access-user-claims).
+A hitelesített felhasználó [http-fejléceken](../app-service/app-service-authentication-how-to.md#access-user-claims)keresztül érhető el.
 
 ---
 
-### <a name="authorization-keys"></a>Authorization keys
+### <a name="authorization-keys"></a>Engedélyezési kulcsok
 
-Functions lets you use keys to make it harder to access your HTTP function endpoints during development.  A standard HTTP trigger may require such an API key be present in the request. 
+A függvények lehetővé teszik a kulcsok használatát, hogy a fejlesztés során megnehezíti a HTTP-függvény végpontjának elérését.  A szabványos HTTP-triggerek esetében előfordulhat, hogy ilyen API-kulcsra van szükség a kérelemben. 
 
 > [!IMPORTANT]
-> While keys may help obfuscate your HTTP endpoints during development, they are not intended as a way to secure an HTTP trigger in production. To learn more, see [Secure an HTTP endpoint in production](#secure-an-http-endpoint-in-production).
+> Míg a kulcsok segíthetnek a HTTP-végpontok kiépítésében a fejlesztés során, nem céljuk a HTTP-triggerek védelme az éles környezetben. További információ: [http-végpont biztonságossá tétele éles](#secure-an-http-endpoint-in-production)környezetben.
 
 > [!NOTE]
-> In the Functions 1.x runtime, webhook providers may use keys to authorize requests in a variety of ways, depending on what the provider supports. This is covered in [Webhooks and keys](#webhooks-and-keys). The version 2.x runtime does not include built-in support for webhook providers.
+> A functions 1. x futtatókörnyezetben a webhook-szolgáltatók több módon is használhatják a kérelmeket, attól függően, hogy mit támogat a szolgáltató. Ezt a [webhookok és kulcsok](#webhooks-and-keys)tartalmazzák. A 2. x verziójú futtatókörnyezet nem tartalmaz beépített támogatást a webhook-szolgáltatók számára.
 
-There are two types of keys:
+A kulcsok két típusa létezik:
 
-* **Host keys**: These keys are shared by all functions within the function app. When used as an API key, these allow access to any function within the function app.
-* **Function keys**: These keys apply only to the specific functions under which they are defined. When used as an API key, these only allow access to that function.
+* **Gazdagép kulcsai**: ezeket a kulcsokat a Function alkalmazásban található összes függvény megosztja. API-kulcsként való használata esetén ezek a függvények a Function alkalmazáson belüli bármelyik függvényhez hozzáférhetnek.
+* **Funkcióbillentyűk**: ezek a kulcsok csak azokra a függvényekre érvényesek, amelyekben definiálva vannak. API-kulcsként való használata esetén ezek csak a funkció elérését teszik lehetővé.
 
-Each key is named for reference, and there is a default key (named "default") at the function and host level. Function keys take precedence over host keys. When two keys are defined with the same name, the function key is always used.
+A rendszer az egyes kulcsokat hivatkozásként nevezi el, és az alapértelmezett kulcs ("default") szerepel a függvény és a gazdagép szintjén. A függvények kulcsai elsőbbséget élveznek a gazdagép kulcsaival szemben. Ha két kulcs van definiálva ugyanazzal a névvel, a rendszer mindig a függvény kulcsát használja.
 
-Each function app also has a special **master key**. This key is a host key named `_master`, which provides administrative access to the runtime APIs. This key cannot be revoked. When you set an authorization level of `admin`, requests must use the master key; any other key results in authorization failure.
+Minden Function alkalmazásnak van egy speciális **főkulcsa**is. Ez a kulcs egy `_master`nevű gazdagép-kulcs, amely rendszergazdai hozzáférést biztosít a futásidejű API-khoz. Ezt a kulcsot nem lehet visszavonni. Ha `admin`engedélyezési szintjét állítja be, a kérelmeknek a főkulcsot kell használniuk; minden más kulcs engedélyezési hibát eredményez.
 
 > [!CAUTION]  
-> Due to the elevated permissions in your function app granted by the master key, you should not share this key with third parties or distribute it in native client applications. Use caution when choosing the admin authorization level.
+> A főkulcs által biztosított Function app emelt szintű engedélyei miatt ne ossza meg ezt a kulcsot harmadik felekkel, vagy terjessze azt natív ügyfélalkalmazások számára. A rendszergazdai jogosultsági szint kiválasztásakor legyen körültekintő.
 
-### <a name="obtaining-keys"></a>Obtaining keys
+### <a name="obtaining-keys"></a>Kulcsok beszerzése
 
-Keys are stored as part of your function app in Azure and are encrypted at rest. To view your keys, create new ones, or roll keys to new values, navigate to one of your HTTP-triggered functions in the [Azure portal](https://portal.azure.com) and select **Manage**.
+A kulcsok tárolása az Azure-beli Function-alkalmazás részeként történik, és a rendszer a nyugalmi állapotban van titkosítva. Ha meg szeretné tekinteni a kulcsokat, újakat kell létrehoznia, vagy új értékekre kell visszagörgetni a kulcsokat, navigáljon a [Azure Portal](https://portal.azure.com) valamelyik http-triggerrel elindított függvényéhez, és válassza a **kezelés**lehetőséget.
 
-![Manage function keys in the portal.](./media/functions-bindings-http-webhook/manage-function-keys.png)
+![A funkcióbillentyűk kezelése a portálon.](./media/functions-bindings-http-webhook/manage-function-keys.png)
 
-You may obtain function keys programmatically by using [Key management APIs](https://github.com/Azure/azure-functions-host/wiki/Key-management-API).
+A [Kulcskezelő API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)-kkal programozott módon szerezheti be a függvények kulcsait.
 
-### <a name="api-key-authorization"></a>API key authorization
+### <a name="api-key-authorization"></a>API-kulcs engedélyezése
 
-Most HTTP trigger templates require an API key in the request. So your HTTP request normally looks like the following URL:
+A legtöbb HTTP-trigger sablonhoz API-kulcs szükséges a kérelemben. Így a HTTP-kérelem általában a következő URL-címhez hasonlít:
 
     https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
 
-The key can be included in a query string variable named `code`, as above. It can also be included in an `x-functions-key` HTTP header. The value of the key can be any function key defined for the function, or any host key.
+A kulcs a fentiekben `code`nevű lekérdezési karakterlánc-változóban is szerepelhet. Egy `x-functions-key` HTTP-fejlécben is szerepelhet. A kulcs értéke lehet a függvényhez definiált bármelyik funkcióbillentyű, vagy bármely gazdagép kulcsa.
 
-You can allow anonymous requests, which do not require keys. You can also require that the master key be used. You change the default authorization level by using the `authLevel` property in the binding JSON. For more information, see [Trigger - configuration](#trigger---configuration).
+Engedélyezheti a névtelen kérelmeket, amelyek nem igénylik a kulcsokat. Azt is megkövetelheti, hogy a főkulcs legyen használatban. Az alapértelmezett engedélyezési szintet a kötés JSON `authLevel` tulajdonságának használatával módosíthatja. További információ: [trigger-Configuration](#trigger---configuration).
 
 > [!NOTE]
-> When running functions locally, authorization is disabled regardless of the specified authentication level setting. After publishing to Azure, the `authLevel` setting in your trigger is enforced. Keys are still required when running [locally in a container](functions-create-function-linux-custom-image.md#run-the-image-locally).
+> A függvények helyi futtatásakor az engedélyezés le van tiltva a megadott hitelesítési szint beállításától függetlenül. Az Azure-ba való közzététel után a rendszer kikényszeríti a trigger `authLevel` beállítását. A kulcsokra továbbra is szükség van [, ha a tárolóban helyileg](functions-create-function-linux-custom-image.md#run-the-image-locally)fut.
 
 
-### <a name="secure-an-http-endpoint-in-production"></a>Secure an HTTP endpoint in production
+### <a name="secure-an-http-endpoint-in-production"></a>HTTP-végpont biztonságossá tétele éles környezetben
 
-To fully secure your function endpoints in production, you should consider implementing one of the following function app-level security options:
+Az üzemi végpontok éles környezetben történő teljes biztonságossá tételéhez érdemes megfontolni a következő Function szintű biztonsági beállítások egyikének megvalósítását:
 
-* Turn on App Service Authentication / Authorization for your function app. The App Service platform lets use Azure Active Directory (AAD) and several third-party identity providers to authenticate clients. You can use this to implement custom authorization rules for your functions, and you can work with user information from your function code. To learn more, see [Authentication and authorization in Azure App Service](../app-service/overview-authentication-authorization.md) and [Working with client identities](#working-with-client-identities).
+* Kapcsolja be App Service hitelesítés/engedélyezés funkciót a Function alkalmazáshoz. A App Service platform lehetővé teszi, hogy a Azure Active Directory (HRE) és számos harmadik féltől származó személyazonosság-szolgáltató használatával hitelesítse ügyfeleit. Ezt használhatja a függvények egyéni engedélyezési szabályainak megvalósításához, és a függvény kódjából is dolgozhat a felhasználói adatokkal. További információ: [hitelesítés és engedélyezés Azure app Service](../app-service/overview-authentication-authorization.md) és [ügyfél-identitások használata](#working-with-client-identities).
 
-* Use Azure API Management (APIM) to authenticate requests. APIM provides a variety of API security options for incoming requests. To learn more, see [API Management authentication policies](../api-management/api-management-authentication-policies.md). With APIM in place, you can configure your function app to accept requests only from the IP address of your APIM instance. To learn more, see [IP address restrictions](ip-addresses.md#ip-address-restrictions).
+* Az Azure API Management (APIM) használatával hitelesítheti a kérelmeket. A APIM számos API-biztonsági beállítást biztosít a bejövő kérelmekhez. További tudnivalók: [API Management hitelesítési házirendek](../api-management/api-management-authentication-policies.md). A APIM használatával beállíthatja, hogy a Function alkalmazás csak a APIM-példány IP-címéről fogadjon kérelmeket. További információt az [IP-címek korlátozásai](ip-addresses.md#ip-address-restrictions)című témakörben talál.
 
-* Deploy your function app to an Azure App Service Environment (ASE). ASE provides a dedicated hosting environment in which to run your functions. ASE lets you configure a single front-end gateway that you can use to authenticate all incoming requests. For more information, see [Configuring a Web Application Firewall (WAF) for App Service Environment](../app-service/environment/app-service-app-service-environment-web-application-firewall.md).
+* A Function alkalmazás üzembe helyezése egy Azure App Service Environment (bevezetési). A bevezetési szolgáltatás dedikált üzemeltetési környezetet biztosít a függvények futtatásához. A bevezetője lehetővé teszi egyetlen előtér-átjáró konfigurálását, amely az összes bejövő kérelem hitelesítésére használható. További információ: [webalkalmazási tűzfal (WAF) konfigurálása app Service Environmenthoz](../app-service/environment/app-service-app-service-environment-web-application-firewall.md).
 
-When using one of these function app-level security methods, you should set the HTTP-triggered function authentication level to `anonymous`.
+Ha ezen alkalmazás-szintű biztonsági módszerek egyikét használja, a HTTP-triggert használó függvények hitelesítési szintjét `anonymous`értékre kell állítani.
 
 ### <a name="webhooks"></a>Webhookok
 
 > [!NOTE]
-> Webhook mode is only available for version 1.x of the Functions runtime. This change was made to improve the performance of HTTP triggers in version 2.x.
+> A webhook mód csak a functions futtatókörnyezet 1. x verziójához érhető el. Ez a változás a 2. x verzióban a HTTP-eseményindítók teljesítményének javítása érdekében történt.
 
-In version 1.x, webhook templates provide additional validation for webhook payloads. In version 2.x, the base HTTP trigger still works and is the recommended approach for webhooks. 
+Az 1. x verzióban a webhook-sablonok további ellenőrzéseket biztosítanak a webhook hasznos adataihoz. A 2. x verzióban az alap HTTP-trigger továbbra is működik, és a webhookok ajánlott megközelítése. 
 
-#### <a name="github-webhooks"></a>GitHub webhooks
+#### <a name="github-webhooks"></a>GitHub-webhookok
 
-To respond to GitHub webhooks, first create your function with an HTTP Trigger, and set the **webHookType** property to `github`. Then copy its URL and API key into the **Add webhook** page of your GitHub repository. 
+A GitHub-webhookokra való reagáláshoz először hozza létre a függvényt egy HTTP-triggerrel, és állítsa a **webHookType** tulajdonságot `github`értékre. Ezután másolja a saját URL-címét és API-kulcsát a GitHub-adattár **Hozzáadás webhook** lapjára. 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
 
-#### <a name="slack-webhooks"></a>Slack webhooks
+#### <a name="slack-webhooks"></a>Slack-webhookok
 
-The Slack webhook generates a token for you instead of letting you specify it, so you must configure a function-specific key with the token from Slack. See [Authorization keys](#authorization-keys).
+A Slack webhook létrehoz egy jogkivonatot, és nem adja meg az Ön által megadott értéket, ezért egy függvény-specifikus kulcsot kell konfigurálnia a biztonsági másolatból a Tartalékidőből. Lásd: [engedélyezési kulcsok](#authorization-keys).
 
-### <a name="webhooks-and-keys"></a>Webhooks and keys
+### <a name="webhooks-and-keys"></a>Webhookok és kulcsok
 
-Webhook authorization is handled by the webhook receiver component, part of the HTTP trigger, and the mechanism varies based on the webhook type. Each mechanism does rely on a key. By default, the function key named "default" is used. To use a different key, configure the webhook provider to send the key name with the request in one of the following ways:
+A webhook-engedélyezést a webhook fogadó összetevője kezeli, amely a HTTP-trigger része, és a mechanizmus a webhook típusától függően változik. Mindegyik mechanizmus egy kulcsra támaszkodik. Alapértelmezés szerint a "default" nevű funkcióbillentyű van használatban. Ha másik kulcsot szeretne használni, konfigurálja úgy a webhook-szolgáltatót, hogy a következő módszerek egyikével küldje el a kulcs nevét a kérelemben:
 
-* **Query string**: The provider passes the key name in the `clientid` query string parameter, such as `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>`.
-* **Request header**: The provider passes the key name in the `x-functions-clientid` header.
+* **Lekérdezési karakterlánc**: a szolgáltató a `clientid` lekérdezési karakterlánc paraméterben adja át a kulcs nevét, például `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>`.
+* **Kérelem fejléce**: a szolgáltató átadja a kulcs nevét a `x-functions-clientid` fejlécben.
 
-## <a name="trigger---limits"></a>Trigger - limits
+## <a name="trigger---limits"></a>Trigger – korlátok
 
-The HTTP request length is limited to 100 MB (104,857,600 bytes), and the URL length is limited to 4 KB (4,096 bytes). These limits are specified by the `httpRuntime` element of the runtime's [Web.config file](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
+A HTTP-kérés hossza legfeljebb 100 MB (104 857 600 bájt), az URL-cím hossza pedig 4 KB (4 096 bájt) lehet. Ezeket a korlátokat a futtatókörnyezet [web. config fájljának](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)`httpRuntime` eleme határozza meg.
 
-If a function that uses the HTTP trigger doesn't complete within about 2.5 minutes, the gateway will time out and return an HTTP 502 error. The function will continue running but will be unable to return an HTTP response. For long-running functions, we recommend that you follow async patterns and return a location where you can ping the status of the request. For information about how long a function can run, see [Scale and hosting - Consumption plan](functions-scale.md#timeout).
+Ha a HTTP-triggert használó függvény nem fejeződött be körülbelül 2,5 percen belül, az átjáró időtúllépést jelez, és HTTP 502-hibát ad vissza. A függvény továbbra is futni fog, de nem tud HTTP-választ adni. A hosszú ideig futó függvények esetében javasoljuk, hogy kövesse az aszinkron mintákat, és olyan helyet küldjön vissza, amelyben pingelheti a kérés állapotát. További információ a függvények futtatásának időtartamáról: [skálázás és üzemeltetés – fogyasztási terv](functions-scale.md#timeout).
 
 ## <a name="output"></a>Kimenet
 
-Use the HTTP output binding to respond to the HTTP request sender. This binding requires an HTTP trigger and allows you to customize the response associated with the trigger's request. If an HTTP output binding is not provided, an HTTP trigger returns HTTP 200 OK with an empty body in Functions 1.x, or HTTP 204 No Content with an empty body in Functions 2.x.
+A http-kimeneti kötés használatával válaszolhat a HTTP-kérelem feladójának. Ehhez a kötéshez HTTP-trigger szükséges, és lehetővé teszi az trigger kérelméhez tartozó válasz testreszabását. Ha nincs megadva HTTP-kimeneti kötés, a http-trigger a HTTP 200 OK értéket adja vissza üres törzstel az 1. x függvényben, vagy a HTTP 204 nem tartalmaz üres törzstel rendelkező tartalmat a 2. x függvényben.
 
-## <a name="output---configuration"></a>Output - configuration
+## <a name="output---configuration"></a>Kimenete – konfiguráció
 
-The following table explains the binding configuration properties that you set in the *function.json* file. For C# class libraries, there are no attribute properties that correspond to these *function.json* properties.
+A következő táblázat a *function. JSON* fájlban beállított kötési konfigurációs tulajdonságokat ismerteti. Az C# osztályok könyvtáraiban nincsenek a *function. JSON* -tulajdonságokkal egyező attribútumok.
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-| **type** |Must be set to `http`. |
-| **direction** | Must be set to `out`. |
-| **name** | The variable name used in function code for the response, or `$return` to use the return value. |
+| **type** |`http`értékre kell állítani. |
+| **direction** | `out`értékre kell állítani. |
+| **név** | A válasz kódjában használt változó neve, vagy `$return` a visszatérési érték használatához. |
 
-## <a name="output---usage"></a>Output - usage
+## <a name="output---usage"></a>Kimenet – használat
 
-To send an HTTP response, use the language-standard response patterns. In C# or C# script, make the function return type `IActionResult` or `Task<IActionResult>`. In C#, a return value attribute isn't required.
+HTTP-válasz küldéséhez használja a Language-standard Response mintákat. Vagy C# C# parancsfájl esetén a függvény visszatérési típusának `IActionResult` vagy `Task<IActionResult>`kell lennie. A C#-ben a Return Value attribútum nem kötelező.
 
-For example responses, see the [trigger example](#trigger---example).
+A válaszokat például az [trigger példája](#trigger---example)tartalmazza.
 
-## <a name="hostjson-settings"></a>host.json settings
+## <a name="hostjson-settings"></a>Host.JSON-beállítások
 
-This section describes the global configuration settings available for this binding in version 2.x. The example host.json file below contains only the version 2.x settings for this binding. For more information about global configuration settings in version 2.x, see [host.json reference for Azure Functions version 2.x](functions-host-json.md).
+Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshez verziójában elérhető 2.x. Az alábbi példa host.json-fájl csak a verzió 2.x beállításait tartalmazza ezt a kötést. A 2. x verziójú globális konfigurációs beállításokkal kapcsolatos további információkért lásd: [Host. JSON-dokumentáció Azure functions 2. x verzióhoz](functions-host-json.md).
 
 > [!NOTE]
-> For a reference of host.json in Functions 1.x, see [host.json reference for Azure Functions 1.x](functions-host-json-v1.md#http).
+> Az 1. x függvények Host. JSON fájljának hivatkozását lásd: [Host. JSON-dokumentáció Azure functions 1. x-hez](functions-host-json-v1.md#http).
 
 ```json
 {
@@ -901,14 +901,14 @@ This section describes the global configuration settings available for this bind
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-| customHeaders|Nincs|Allows you to set custom headers in the HTTP response. The previous example adds the `X-Content-Type-Options` header to the response to avoid content type sniffing. |
-|dynamicThrottlesEnabled|true<sup>\*</sup>|When enabled, this setting causes the request processing pipeline to periodically check system performance counters like connections/threads/processes/memory/cpu/etc. and if any of those counters are over a built-in high threshold (80%), requests will be rejected with a 429 "Too Busy" response until the counter(s) return to normal levels.<br/><sup>\*</sup>The default in a consumption plan is `true`. The default in a dedicated plan is `false`.|
-|hsts|not enabled|When `isEnabled` is set to `true`, the [HTTP Strict Transport Security (HSTS) behavior of .NET Core](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) is enforced, as defined in the [`HstsOptions` class](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0). The above example also sets the [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) property to 10 days. Supported properties of `hsts` are: <table><tr><th>Tulajdonság</th><th>Leírás</th></tr><tr><td>excludedHosts</td><td>A string array of host names for which the HSTS header isn't added.</td></tr><tr><td>includeSubDomains</td><td>Boolean value that indicates whether the includeSubDomain parameter of the Strict-Transport-Security header is enabled.</td></tr><tr><td>maxAge</td><td>String that defines the max-age parameter of the Strict-Transport-Security header.</td></tr><tr><td>preload</td><td>Boolean that indicates whether the preload parameter of the Strict-Transport-Security header is enabled.</td></tr></table>|
-|maxConcurrentRequests|100<sup>\*</sup>|The maximum number of http functions that are executed in parallel. This allows you to control concurrency, which can help manage resource utilization. For example, you might have an http function that uses a lot of system resources (memory/cpu/sockets) such that it causes issues when concurrency is too high. Or you might have a function that makes outbound requests to a third party service, and those calls need to be rate limited. In these cases, applying a throttle here can help. <br/><sup>*</sup>The default for a consumption plan is 100. The default for a dedicated plan is unbounded (`-1`).|
-|maxOutstandingRequests|200<sup>\*</sup>|The maximum number of outstanding requests that are held at any given time. This limit includes requests that are queued but have not started executing, as well as any in progress executions. Any incoming requests over this limit are rejected with a 429 "Too Busy" response. That allows callers to employ time-based retry strategies, and also helps you to control maximum request latencies. This only controls queuing that occurs within the script host execution path. Other queues such as the ASP.NET request queue will still be in effect and unaffected by this setting. <br/><sup>\*</sup>\The default for a consumption plan is 200. The default for a dedicated plan is unbounded (`-1`).|
-|routePrefix|api-t|The route prefix that applies to all routes. Use an empty string to remove the default prefix. |
+| customHeaders|Nincs|Lehetővé teszi egyéni fejlécek beállítását a HTTP-válaszban. Az előző példa hozzáadja a `X-Content-Type-Options` fejlécet a válaszhoz, hogy elkerülje a tartalomtípusok elemzését. |
+|dynamicThrottlesEnabled|igaz<sup>\*</sup>|Ha engedélyezve van, ez a beállítás hatására a kérelmek feldolgozási folyamata rendszeres időközönként ellenőrzi a rendszerteljesítmény-számlálókat, például a kapcsolatok/szálak/folyamatok/memória/CPU/etc értéket. ha ezek a számlálók egy beépített magas küszöbértéken (80%) vannak, a rendszer a kérelmeket a 429 "túl elfoglalt" válaszként utasítja el, amíg a számláló (k) be nem fejeződik a<br/><sup>\*</sup> A használati terv alapértelmezett értéke `true`. A dedikált csomag alapértelmezett értéke `false`.|
+|hsts|nincs engedélyezve|Ha a `isEnabled` `true`re van állítva, a [.net Core HTTP-alapú szigorú átviteli biztonsági (HSTS) viselkedése](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) kényszerítve van, ahogy az a [`HstsOptions` osztályban](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)van meghatározva. A fenti példában a [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) tulajdonságot is 10 napra állítja be. A `hsts` támogatott tulajdonságai a következők: <table><tr><th>Tulajdonság</th><th>Leírás</th></tr><tr><td>excludedHosts</td><td>Az állomásnevek olyan karakterlánc-tömbje, amelyhez nincs hozzáadva a HSTS fejléce.</td></tr><tr><td>Altartományok belefoglalása</td><td>Logikai érték, amely azt jelzi, hogy engedélyezve van-e a Strict-Transport-Security fejléc includeSubDomain paramétere.</td></tr><tr><td>maxAge</td><td>Karakterlánc, amely a Strict-Transport-Security fejléc Max-Age paraméterét határozza meg.</td></tr><tr><td>Preload</td><td>Logikai érték, amely azt jelzi, hogy engedélyezve van-e a Strict-Transport-Security fejléc Preload paramétere.</td></tr></table>|
+|maxConcurrentRequests|100<sup>\*</sup>|A párhuzamosan végrehajtott http-függvények maximális száma. Ez lehetővé teszi a párhuzamosság szabályozását, ami segíthet az erőforrások kihasználtságának kezelésében. Előfordulhat például, hogy olyan http-függvénnyel rendelkezik, amely sok rendszererőforrást (memóriát/processzort/szoftvercsatornát) használ, így problémát okoz, ha a párhuzamosság túl magas. Vagy lehet, hogy olyan függvényt használ, amely a kimenő kéréseket egy harmadik féltől származó szolgáltatásnak teszi elérhetővé, és a hívásoknak korlátozott arányban kell lenniük. Ezekben az esetekben a szabályozás alkalmazása segíthet. <br/><sup>*</sup> A felhasználási terv alapértelmezett értéke 100. Egy dedikált csomag alapértelmezett értéke nem kötött (`-1`).|
+|maxOutstandingRequests|200<sup>\*</sup>|A függőben lévő kérések maximális száma, amelyek egy adott időpontban vannak tárolva. Ez a korlát olyan kérelmeket tartalmaz, amelyek várólistára kerülnek, de nem indult el, valamint folyamatban van a végrehajtás. Az ezen a korláton túli bejövő kérelmek elutasítása egy 429 "túl elfoglalt" választ tartalmaz. Ez lehetővé teszi, hogy a hívók időalapú újrapróbálkozási stratégiákat alkalmazzanak, és segítséget nyújt a kérelmek maximális késésének szabályozásához is. Ez csak a parancsfájl-gazdagép végrehajtási útvonalán belüli üzenetsor-kezelőt vezérli. Más várólisták, például a ASP.NET kérelmek várólistája továbbra is érvényben marad, és ezt a beállítást nem érinti. <br/><sup>\*</sup>\The alapértelmezett értéke 200. Egy dedikált csomag alapértelmezett értéke nem kötött (`-1`).|
+|routePrefix|api-t|Az útvonal előtagja, amely az összes útvonalra vonatkozik. Az alapértelmezett előtag eltávolításához használjon üres karakterláncot. |
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+[További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

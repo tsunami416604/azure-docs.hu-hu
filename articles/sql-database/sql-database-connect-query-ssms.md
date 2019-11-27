@@ -1,5 +1,5 @@
 ---
-title: 'SSMS: Connect and query data'
+title: 'SSMS: kapcsolat és adatlekérdezés'
 description: Ebből a cikkből megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure-ban az SQL Server Management Studio (SSMS) használatával. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
 keywords: csatlakozás sql database-hez,sql server management studio
 services: sql-database
@@ -19,47 +19,47 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482160"
 ---
-# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Quickstart: Use SQL Server Management Studio to connect and query an Azure SQL database
+# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: Használata SQL Server Management Studio és az Azure SQL Database-adatbázis lekérdezéséhez
 
-In this quickstart, you'll use [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) to connect to an Azure SQL database. You'll then run Transact-SQL statements to query, insert, update, and delete data. You can use SSMS to manage any SQL infrastructure, from SQL Server to SQL Database for Microsoft Windows.  
+Ebben a rövid útmutatóban [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) használatával csatlakozhat egy Azure SQL Database-adatbázishoz. Ezután a Transact-SQL-utasításokkal adatokat kell lekérdezni, beszúrni, frissíteni és törölni. A SSMS segítségével bármilyen SQL-infrastruktúrát kezelhet, SQL Server a Microsoft Windows SQL Databasehoz.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azure SQL-adatbázis. You can use one of these quickstarts to create and then configure a database in Azure SQL Database:
+Azure SQL-adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Létrehozás| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurálás | [Server-level IP firewall rule](sql-database-server-level-firewall-rule.md)| [Connectivity from a VM](sql-database-managed-instance-configure-vm.md)|
-  |||[Connectivity from on-site](sql-database-managed-instance-configure-p2s.md)
-  |Adatok betöltése|Adventure Works loaded per quickstart|[Restore Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
+  |||[Kapcsolódás a webhelyről](sql-database-managed-instance-configure-p2s.md)
+  |Adatok betöltése|Adventure Works betöltve|[Széles körű globális importőrök visszaállítása](sql-database-managed-instance-get-started-restore.md)
+  |||Adventure Works visszaállítása vagy importálása a [BACPAC](sql-database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
 
   > [!IMPORTANT]
-  > The scripts in this article are written to use the Adventure Works database. With a managed instance, you must either import the Adventure Works database into an instance database or modify the scripts in this article to use the Wide World Importers database.
+  > A cikkben található parancsfájlok az Adventure Works-adatbázis használatára íródnak. Felügyelt példány esetén importálnia kell az Adventure Works-adatbázist egy példány-adatbázisba, vagy módosítania kell a jelen cikkben szereplő parancsfájlokat a Wide World Importálós adatbázis használatára.
 
 ## <a name="install-the-latest-ssms"></a>Az SSMS legújabb verziójának telepítése
 
-Before you start, make sure you've installed the latest [SSMS][ssms-install-latest-84g].
+Mielőtt elkezdené, győződjön meg arról, hogy telepítette a legújabb [SSMS][ssms-install-latest-84g].
 
-## <a name="get-sql-server-connection-information"></a>Get SQL server connection information
+## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
 
-Get the connection information you need to connect to the Azure SQL database. You'll need the fully qualified server name or host name, database name, and login information for the upcoming procedures.
+Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
-2. Navigate to the **SQL databases**  or **SQL managed instances** page.
+2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
 
-3. On the **Overview** page, review the fully qualified server name next to **Server name** for a single database or the fully qualified server name next to **Host** for a managed instance. To copy the server name or host name, hover over it and select the **Copy** icon.
+3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett egyetlen adatbázishoz vagy a felügyelt példányhoz tartozó **gazdagép** melletti teljes kiszolgálónévhez. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
 
 ## <a name="connect-to-your-database"></a>Csatlakozás az adatbázishoz
 
-In SMSS, connect to your Azure SQL Database server.
+Az SMSS csatlakozzon az Azure SQL Database-kiszolgálóhoz.
 
 > [!IMPORTANT]
-> An Azure SQL Database server listens on port 1433. To connect to a SQL Database server from behind a corporate firewall, the firewall must have this port open.
+> Az Azure SQL Database-kiszolgáló a 1433-es portot figyeli. Ha SQL Database-kiszolgálóhoz szeretne csatlakozni a vállalati tűzfal mögött, a tűzfalnak nyitva kell lennie a porton.
 >
 
 1. Nyissa meg az SSMS-t. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanel jelenik meg.
@@ -68,32 +68,32 @@ In SMSS, connect to your Azure SQL Database server.
 
    | Beállítás      | Ajánlott érték    | Leírás |
    | ------------ | ------------------ | ----------- |
-   | **Kiszolgáló típusa** | Adatbázismotor | Required value. |
-   | **Kiszolgálónév** | A teljes kiszolgálónév | Something like: **mynewserver20170313.database.windows.net**. |
-   | **Hitelesítés** | SQL Server-hitelesítés | This tutorial uses SQL Authentication. |
-   | **Bejelentkezés** | Server admin account user ID | The user ID from the server admin account used to create the server. |
-   | **Jelszó** | Server admin account password | The password from the server admin account used to create the server. |
+   | **Kiszolgáló típusa** | Adatbázismotor | Az érték megadása kötelező. |
+   | **Kiszolgálónév** | A teljes kiszolgálónév | Valami hasonló: **mynewserver20170313.database.Windows.net**. |
+   | **Hitelesítés** | SQL Server-hitelesítés | Ez az oktatóanyag az SQL-hitelesítést használ. |
+   | **Bejelentkezés** | Kiszolgálói rendszergazdai fiók felhasználói azonosító | A felhasználói Azonosítót a a kiszolgáló létrehozásához használt kiszolgálói rendszergazdai fiókkal. |
+   | **Jelszó** | Kiszolgálói rendszergazdai fiók jelszava | A kiszolgáló létrehozásához használt, a kiszolgálói rendszergazdai fiók jelszavát. |
    ||||
 
    ![kapcsolódás a kiszolgálóhoz](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. Select **Options** in the **Connect to Server** dialog box. In the **Connect to database** drop-down menu, select **mySampleDatabase**.If you leave the drop down to default, the connection is made to **master** database.
+3. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen válassza a **Beállítások lehetőséget** . A **Kapcsolódás az adatbázishoz** legördülő menüben válassza a **mySampleDatabase**lehetőséget. Ha a legördülő lista alapértelmezett értékre kerül, a rendszer a **főadatbázishoz kapcsolódik.**
 
    ![csatlakozás kiszolgálón található adatbázishoz](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. Kattintson a **Csatlakozás** gombra. The Object Explorer window opens.
+4. Kattintson a **Csatlakozás** gombra. Az Object Explorer ablak nyílik meg.
 
-5. To view the database's objects, expand **Databases** and then expand **mySampleDatabase**.
+5. Az adatbázis objektumainak megtekintéséhez bontsa ki az **adatbázisok** csomópontot, majd bontsa ki a **mySampleDatabase**elemet.
 
-   ![mySampleDatabase objects](./media/sql-database-connect-query-ssms/connected.png)  
+   ![mySampleDatabase objektumok](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
-Run this [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL code to query for the top 20 products by category.
+Futtassa ezt a [Select](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL-kódot az első 20 termék kategóriánkénti lekérdezéséhez.
 
-1. In Object Explorer, right-click **mySampleDatabase** and select **New Query**. A new query window connected to your database opens.
+1. A Object Explorer kattintson a jobb gombbal a **mySampleDatabase** elemre, és válassza az **Új lekérdezés**elemet. Megnyílik az adatbázishoz csatlakoztatott új lekérdezési ablak.
 
-2. In the query window, paste this SQL query.
+2. A lekérdezési ablakban illessze be az SQL-lekérdezést.
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -102,15 +102,15 @@ Run this [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-3. On the toolbar, select **Execute** to retrieve data from the `Product` and `ProductCategory` tables.
+3. Az eszköztáron kattintson az **Execute (végrehajtás** ) elemre az adatok `Product` és `ProductCategory` táblákból való lekéréséhez.
 
-    ![query to retrieve data from table Product and ProductCategory](./media/sql-database-connect-query-ssms/query2.png)
+    ![lekérdezés a tábla termék-és ProductCategory adatainak lekéréséhez](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Adat beszúrása
 
-Run this [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL code to create a new product in the `SalesLT.Product` table.
+Futtassa ezt a [Insert](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL-kódot egy új termék létrehozásához a `SalesLT.Product` táblában.
 
-1. Replace the previous query with this one.
+1. Ehhez cserélje le az előző lekérdezést.
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -131,26 +131,26 @@ Run this [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL
            ,GETDATE() );
    ```
 
-2. Select **Execute**  to insert a new row in the `Product` table. The **Messages** pane displays **(1 row affected)** .
+2. Válassza az **Execute (végrehajtás** ) lehetőséget egy új sor beszúrásához a `Product` táblában. Megjelenik az **üzenetek** ablaktábla **(1 sor érintett)** .
 
-## <a name="view-the-result"></a>View the result
+## <a name="view-the-result"></a>Az eredmény megtekintéséhez
 
-1. Replace the previous query with this one.
+1. Ehhez cserélje le az előző lekérdezést.
 
    ```sql
    SELECT * FROM [SalesLT].[Product]
    WHERE Name='myNewProduct'
    ```
 
-2. Válassza a **Végrehajtás** lehetőséget. The following result appears.
+2. Válassza a **Végrehajtás** lehetőséget. A következő eredmény jelenik meg.
 
-   ![result of Product table query](./media/sql-database-connect-query-ssms/result.png)
+   ![a Product Table lekérdezés eredménye](./media/sql-database-connect-query-ssms/result.png)
 
 ## <a name="update-data"></a>Adatok frissítése
 
-Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify your new product.
+Futtassa ezt a [frissítési](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-kódot az új termék módosításához.
 
-1. Replace the previous query with this one.
+1. Ehhez cserélje le az előző lekérdezést.
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -158,24 +158,24 @@ Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL
    WHERE Name = 'myNewProduct';
    ```
 
-2. Select **Execute** to update the specified row in the `Product` table. The **Messages** pane displays **(1 row affected)** .
+2. Válassza a **végrehajtás** lehetőséget a `Product` tábla megadott sorának frissítéséhez. Megjelenik az **üzenetek** ablaktábla **(1 sor érintett)** .
 
 ## <a name="delete-data"></a>Adat törlése
 
-Run this [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL code to remove your new product.
+Futtassa ezt a [delete](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL-kódot az új termék eltávolításához.
 
-1. Replace the previous query with this one.
+1. Ehhez cserélje le az előző lekérdezést.
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. Select **Execute** to delete the specified row in the `Product` table. The **Messages** pane displays **(1 row affected)** .
+2. Válassza a **végrehajtás** lehetőséget a megadott sor törléséhez a `Product` táblában. Megjelenik az **üzenetek** ablaktábla **(1 sor érintett)** .
 
 ## <a name="next-steps"></a>Következő lépések
 
-- For information about SSMS, see [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
+- További információ a SSMS: [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
 - Az Azure Portal használatával történő csatlakozásról és lekérdezésről lásd az [Azure Portal SQL-lekérdezésszerkesztővel végzett csatlakozásról és lekérdezésről](sql-database-connect-query-portal.md) szóló témakört.
 - A Visual Studio Code használatával történő csatlakozásról és lekérdezésről lásd a [Visual Studio Code használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-vscode.md) szóló témakört.
 - A .NET használatával történő csatlakozásról és lekérdezésről lásd a [.NET használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-dotnet.md) szóló témakört.

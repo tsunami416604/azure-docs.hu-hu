@@ -55,7 +55,7 @@ A minta elvégzéséhez győződjön meg arról, hogy rendelkezik a következő 
 
 Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 2. Nyissa meg az **SQL-adatbázisok** vagy az SQL- **felügyelt példányok** lapot.
 

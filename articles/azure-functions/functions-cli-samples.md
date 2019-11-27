@@ -8,7 +8,7 @@ ms.date: 01/09/2018
 ms.custom: mvc
 ms.openlocfilehash: b875d2a478ccbd2fa99f43e584e02018866fc5cd
 ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230915"
@@ -19,7 +19,7 @@ A következő táblázat az Azure Functions az Azure CLI-t használó Bash-szkri
 
 <a id="create"></a>
 
-| Create app | Leírás |
+| Alkalmazás létrehozása | Leírás |
 |---|---|
 | [Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz](scripts/functions-cli-create-serverless.md) | Létrehoz egy függvényalkalmazást egy használatalapú csomagban.  |
 | [Függvényalkalmazás létrehozása egy App Service-csomagban](scripts/functions-cli-create-app-service-plan.md) | Létrehoz egy függvényalkalmazást egy dedikált App Service-csomagban. |
@@ -32,7 +32,7 @@ A következő táblázat az Azure Functions az Azure CLI-t használó Bash-szkri
 | Folyamatos üzembe helyezés | Leírás|
 |---|---|
 | [Üzembe helyezés a GitHubból](scripts/functions-cli-create-function-app-github-continuous.md) | Létrehoz egy függvényalkalmazást, amely egy GitHub-adattárból lesz üzembe helyezve.  |
-| [Üzembe helyezés az Azure DevOpsból](scripts/functions-cli-create-function-app-vsts-continuous.md) | Create a function app that deploys from an Azure DevOps repository.  |
+| [Üzembe helyezés az Azure DevOpsból](scripts/functions-cli-create-function-app-vsts-continuous.md) | Azure DevOps-tárházból üzembe helyezett Function-alkalmazás létrehozása.  |
 
 | Alkalmazás konfigurálása | Leírás |
 |---|---|

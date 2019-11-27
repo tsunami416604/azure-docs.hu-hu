@@ -25,12 +25,12 @@ ms.locfileid: "74278114"
 ## <a name="what-is-cors"></a>Mi az a CORS?
 A CORS (több eredetű erőforrás-megosztás) egy olyan HTTP-szolgáltatás, amely lehetővé teszi egy tartományon belül futó webalkalmazások elérését egy másik tartomány erőforrásaihoz. A helyek közötti parancsfájlok elleni támadások lehetőségének csökkentése érdekében minden modern webböngészővel [azonos eredetű](https://www.w3.org/Security/wiki/Same_Origin_Policy)biztonsági korlátozást valósíthat meg.  Ez megakadályozza, hogy egy weblap más tartományba tartozó API-kat hívjon fel.  A CORS lehetővé teszi, hogy egy forrás (a forrás tartomány) egy másik forrásban lévő API-kat hívjon fel.
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 Kétféle CORS-kérés, *egyszerű kérelem* és *összetett kérelem van.*
 
 ### <a name="for-simple-requests"></a>Egyszerű kérelmek esetén:
 
-1. A böngésző egy további **forrás** HTTP-kérelem fejlécével küldi el a CORS kérelmet. Ennek a fejlécnek az értéke a szülő lapot kiszolgáló forrás, amely a *protokoll,* a *tartomány* és a port kombinációjával van meghatározva *.*  Ha egy lap HTTPS\://www.contoso.com próbál meg elérni a fabrikam.com forrás a felhasználó adatait, a következő kérés fejlécében küldendő fabrikam.com:
+1. A böngésző egy további **forrás** HTTP-kérelem fejlécével küldi el a CORS kérelmet. Ennek a fejlécnek az értéke a szülő lapot kiszolgáló forrás, amely a *protokoll,* a *tartomány* és a port kombinációjával van meghatározva *.*  Ha egy https-\://www.contoso.com származó oldal megpróbál hozzáférni egy felhasználói adatokhoz a fabrikam.com-forrásban, a rendszer a következő fabrikam.com küldi el:
 
    `Origin: https://www.contoso.com`
 

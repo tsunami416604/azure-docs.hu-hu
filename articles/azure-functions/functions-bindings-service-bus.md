@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus bindings for Azure Functions
-description: Understand how to use Azure Service Bus triggers and bindings in Azure Functions.
+title: Az Azure Szolgáltatásbusz-kötések az Azure Functions szolgáltatáshoz
+description: Megtudhatja, hogyan használhatja az Azure Service Bus-eseményindítók és kötések az Azure Functions szolgáltatásban.
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
@@ -13,45 +13,45 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231052"
 ---
-# <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus bindings for Azure Functions
+# <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Szolgáltatásbusz-kötések az Azure Functions szolgáltatáshoz
 
-This article explains how to work with Azure Service Bus bindings in Azure Functions. Azure Functions supports trigger and output bindings for Service Bus queues and topics.
+Ez a cikk ismerteti az Azure Service Bus-kötések az Azure Functions használata. Az Azure Functions támogatja a-trigger, és a kimeneti kötések Service Bus-üzenetsorok és üzenettémák esetében.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Packages - Functions 1.x
+## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-The Service Bus bindings are provided in the [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet package, version 2.x. 
+A Service Bus kötések a [Microsoft. Azure. webjobs. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet csomagban találhatók, 2. x verzióban. 
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
-The Service Bus bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) NuGet package, version 3.x. Source code for the package is in the [azure-functions-servicebus-extension](https://github.com/Azure/azure-functions-servicebus-extension) GitHub repository.
+A Service Bus kötések a [Microsoft. Azure. webjobs. Extensions. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) NuGet csomag 3. x verziójában érhetők el. A csomag forráskódja az [Azure-functions-servicebus-Extension](https://github.com/Azure/azure-functions-servicebus-extension) GitHub-tárházban található.
 
 > [!NOTE]
-> Version 2.x does not create the topic or subscription configured in the `ServiceBusTrigger` instance. Version 2.x is based on [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) and does not handle queue management.
+> A 2. x verzió nem hozza létre a `ServiceBusTrigger`-példányban konfigurált témakört vagy előfizetést. A 2. x verzió a [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) alapul, és nem kezeli a várólista-kezelést.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="trigger"></a>Eseményindító
 
-Use the Service Bus trigger to respond to messages from a Service Bus queue or topic. 
+A Service Bus-trigger használatával üzeneteket egy Service Bus-üzenetsor vagy témakör válaszol. 
 
-## <a name="trigger---example"></a>Trigger - example
+## <a name="trigger---example"></a>Az eseményindító – példa
 
-See the language-specific example:
+Tekintse meg az adott nyelvű példa:
 
 * [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
+* [C#parancsfájl (. CSX)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [Java](#trigger---java-example)
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
-### <a name="trigger---c-example"></a>Trigger - C# example
+### <a name="trigger---c-example"></a>Eseményindító - C#-példa
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that reads [message metadata](#trigger---message-metadata) and logs a Service Bus queue message:
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely beolvassa az [üzenet metaadatait](#trigger---message-metadata) , és naplóz egy Service Bus üzenetsor-üzenetet:
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -70,11 +70,11 @@ public static void Run(
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Trigger - C# script example
+### <a name="trigger---c-script-example"></a>Eseményindító - C#-szkript példa
 
-The following example shows a Service Bus trigger binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function reads [message metadata](#trigger---message-metadata) and logs a Service Bus queue message.
+Az alábbi példa egy Service Bus trigger kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény beolvassa az [üzenet metaadatait](#trigger---message-metadata) , és naplóz egy Service Bus üzenetsor-üzenetet.
 
-Here's the binding data in the *function.json* file:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -91,7 +91,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's the C# script code:
+Íme a C#-szkriptkódot:
 
 ```cs
 using System;
@@ -110,11 +110,11 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>Trigger - F# example
+### <a name="trigger---f-example"></a>Eseményindító - F# példa
 
-The following example shows a Service Bus trigger binding in a *function.json* file and an [F# function](functions-reference-fsharp.md) that uses the binding. The function logs a Service Bus queue message. 
+Az alábbi példa egy Service Bus trigger kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ F# függvényt](functions-reference-fsharp.md) , amely a kötést használja. A függvény egy Service Bus üzenetsor-üzenetet naplózza. 
 
-Here's the binding data in the *function.json* file:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -131,16 +131,16 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's the F# script code:
+Íme a F# parancsfájl-kódot:
 
 ```fsharp
 let Run(myQueueItem: string, log: ILogger) =
     log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
 ```
 
-### <a name="trigger---java-example"></a>Trigger - Java example
+### <a name="trigger---java-example"></a>Eseményindító - Java-példában
 
-The following Java function uses the `@ServiceBusQueueTrigger` annotation from the [Java functions runtime library](/java/api/overview/azure/functions/runtime) to describe the configuration for a Service Bus queue trigger. The  function grabs the message placed on the queue and adds it to the logs.
+A következő Java-függvény a [Java functions runtime library](/java/api/overview/azure/functions/runtime) `@ServiceBusQueueTrigger` megjegyzését használja egy Service Bus üzenetsor-trigger konfigurációjának leírásához. A függvény megragadja a várólistára helyezett üzenetet, és hozzáadja azt a naplókhoz.
 
 ```java
 @FunctionName("sbprocessor")
@@ -154,7 +154,7 @@ The following Java function uses the `@ServiceBusQueueTrigger` annotation from t
  }
 ```
 
-Java functions can also be triggered when a message is added to a Service Bus topic. The following example uses the `@ServiceBusTopicTrigger` annotation to describe the trigger configuration.
+A Java-függvények akkor is elindíthatók, amikor egy üzenet bekerül egy Service Bus témakörbe. Az alábbi példa a `@ServiceBusTopicTrigger` jegyzetet használja az trigger konfigurációjának leírásához.
 
 ```java
 @FunctionName("sbtopicprocessor")
@@ -171,11 +171,11 @@ Java functions can also be triggered when a message is added to a Service Bus to
     }
 ```
 
-### <a name="trigger---javascript-example"></a>Trigger - JavaScript example
+### <a name="trigger---javascript-example"></a>Eseményindító - JavaScript-példa
 
-The following example shows a Service Bus trigger binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function reads [message metadata](#trigger---message-metadata) and logs a Service Bus queue message. 
+Az alábbi példa egy Service Bus trigger kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény beolvassa az [üzenet metaadatait](#trigger---message-metadata) , és naplóz egy Service Bus üzenetsor-üzenetet. 
 
-Here's the binding data in the *function.json* file:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -192,7 +192,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's the JavaScript script code:
+Íme a szkript JavaScript-kódot:
 
 ```javascript
 module.exports = function(context, myQueueItem) {
@@ -204,11 +204,11 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-### <a name="trigger---python-example"></a>Trigger - Python example
+### <a name="trigger---python-example"></a>Trigger – Python-példa
 
-The following example demonstrates how to read a ServiceBus queue message via a trigger.
+Az alábbi példa bemutatja, hogyan olvashat egy ServiceBus üzenetsor-üzenetet egy trigger használatával.
 
-A ServiceBus binding is defined in *function.json* where *type* is set to `serviceBusTrigger`.
+ServiceBus kötés van definiálva a *function. JSON* fájlban, ahol a *Type* értéke `serviceBusTrigger`.
 
 ```json
 {
@@ -225,7 +225,7 @@ A ServiceBus binding is defined in *function.json* where *type* is set to `servi
 }
 ```
 
-The code in *_\_init_\_.py* declares a parameter as `func.ServiceBusMessage` which allows you to read the queue message in your function.
+*_\_init_\_. a. a. a. a.* a (z `func.ServiceBusMessage`)
 
 ```python
 import azure.functions as func
@@ -255,15 +255,15 @@ def main(msg: func.ServiceBusMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Trigger - attributes
+## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
-In [C# class libraries](functions-dotnet-class-library.md), use the following attributes to configure a Service Bus trigger:
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a következő attribútumokat egy Service Bus trigger konfigurálásához:
 
 * [ServiceBusTriggerAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusTriggerAttribute.cs)
 
-  The attribute's constructor takes the name of the queue or the topic and subscription. In Azure Functions version 1.x, you can also specify the connection's access rights. If you don't specify access rights, the default is `Manage`. For more information, see the [Trigger - configuration](#trigger---configuration) section.
+  Az attribútum konstruktorának paramétereként az üzenetsor vagy témakör és előfizetés nevét. Az Azure Functions verzió 1.x, azt is megadhatja a kapcsolat hozzáférési jogosultságokat. Ha nem ad meg hozzáférési jogosultságokat, az alapértelmezett érték `Manage`. További információ: [trigger-Configuration](#trigger---configuration) szakasz.
 
-  Here's an example that shows the attribute used with a string parameter:
+  A következő példa bemutatja, az attribútum egy karakterlánc-paraméterrel használja:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -274,7 +274,7 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-  You can set the `Connection` property to specify the Service Bus account to use, as shown in the following example:
+  A `Connection` tulajdonság beállításával megadhatja a használni kívánt Service Bus fiókot, ahogy az az alábbi példában is látható:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -286,11 +286,11 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-  For a complete example, see [Trigger - C# example](#trigger---c-example).
+  A teljes példa: [trigger- C# example](#trigger---c-example).
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
 
-  Provides another way to specify the Service Bus account to use. The constructor takes the name of an app setting that contains a Service Bus connection string. The attribute can be applied at the parameter, method, or class level. The following example shows class level and method level:
+  Adja meg a Service Bus használni kívánt fiók egy másik megoldást kínál. A konstruktorban vesz igénybe egy Service Bus kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. Az attribútum a paramétert, a metódus vagy az osztály szintjén alkalmazhatók. Az alábbi példa bemutatja az osztály és metódust:
 
   ```csharp
   [ServiceBusAccount("ClassLevelServiceBusAppSetting")]
@@ -306,95 +306,95 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-The Service Bus account to use is determined in the following order:
+A Service Bus használni kívánt fiók határozza meg a következő sorrendben:
 
-* The `ServiceBusTrigger` attribute's `Connection` property.
-* The `ServiceBusAccount` attribute applied to the same parameter as the `ServiceBusTrigger` attribute.
-* The `ServiceBusAccount` attribute applied to the function.
-* The `ServiceBusAccount` attribute applied to the class.
-* The "AzureWebJobsServiceBus" app setting.
+* A `ServiceBusTrigger` attribútum `Connection` tulajdonsága.
+* A `ServiceBusAccount` attribútum a `ServiceBusTrigger` attribútummal megegyező paraméterre lett alkalmazva.
+* A függvényre alkalmazott `ServiceBusAccount` attribútum.
+* Az osztályra alkalmazott `ServiceBusAccount` attribútum.
+* Az "AzureWebJobsServiceBus" alkalmazásbeállítást.
 
-## <a name="trigger---configuration"></a>Trigger - configuration
+## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `ServiceBusTrigger` attribute.
+Az alábbi táblázat a *function. JSON* fájlban és a `ServiceBusTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function.json property | Attribute property |Leírás|
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | – | Must be set to "serviceBusTrigger". This property is set automatically when you create the trigger in the Azure portal.|
-|**direction** | – | Must be set to "in". This property is set automatically when you create the trigger in the Azure portal. |
-|**name** | – | The name of the variable that represents the queue or topic message in function code. Set to "$return" to reference the function return value. |
-|**queueName**|**QueueName**|Name of the queue to monitor.  Set only if monitoring a queue, not for a topic.
-|**topicName**|**TopicName**|Name of the topic to monitor. Set only if monitoring a topic, not for a queue.|
-|**subscriptionName**|**SubscriptionName**|Name of the subscription to monitor. Set only if monitoring a topic, not for a queue.|
-|**connection**|**Connection**|The name of an app setting that contains the Service Bus connection string to use for this binding. If the app setting name begins with "AzureWebJobs", you can specify only the remainder of the name. For example, if you set `connection` to "MyServiceBus", the Functions runtime looks for an app setting that is named "AzureWebJobsMyServiceBus." If you leave `connection` empty, the Functions runtime uses the default Service Bus connection string in the app setting that is named "AzureWebJobsServiceBus".<br><br>To obtain a connection string, follow the steps shown at [Get the management credentials](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). The connection string must be for a Service Bus namespace, not limited to a specific queue or topic. |
-|**accessRights**|**Access (Hozzáférés)**|Access rights for the connection string. Available values are `manage` and `listen`. The default is `manage`, which indicates that the `connection` has the **Manage** permission. If you use a connection string that does not have the **Manage** permission, set `accessRights` to "listen". Otherwise, the Functions runtime might fail trying to do operations that require manage rights. In Azure Functions version 2.x, this property is not available because the latest version of the Storage SDK doesn't support manage operations.|
+|**type** | n/a | Állítsa "serviceBusTrigger". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
+|**direction** | n/a | Meg kell "a". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
+|**név** | n/a | A függvénykódot az üzenetsor vagy témakör üzenet képviselő változó neve. "$Return" hivatkozik a függvény visszaadott értékének beállításával. |
+|**queueName**|**QueueName**|Figyelni kívánt üzenetsor neve.  Csak akkor, ha egy üzenetsort, nem a témakör a figyelés beállítása.
+|**topicName**|**TopicName**|Figyelendő üzenettéma nevére. Csak akkor, ha a figyelést egy üzenetsort, nem egy témakör beállítása.|
+|**subscriptionName**|**SubscriptionName**|Neve a figyelni kívánt előfizetést. Csak akkor, ha a figyelést egy üzenetsort, nem egy témakör beállítása.|
+|**kapcsolat**|**Kapcsolat**|A Service Bus kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a név része is megadhat. Ha például a `connection` "MyServiceBus" értékre állítja, a functions futtatókörnyezet egy "AzureWebJobsMyServiceBus" nevű alkalmazás-beállítást keres. Ha üresen hagyja a `connection`, a functions futtatókörnyezet az alapértelmezett Service Bus a "AzureWebJobsServiceBus" nevű alkalmazás-beállítási karakterláncot használja.<br><br>A kapcsolódási karakterlánc beszerzéséhez kövesse a [felügyeleti hitelesítő adatok beolvasása](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)című cikkben ismertetett lépéseket. A kapcsolati karakterláncot a Service Bus-névtér, nem kizárólagosan az adott üzenetsor vagy témakör kell lennie. |
+|**accessRights**|**Access (Hozzáférés)**|A kapcsolati karakterlánc hozzáférési jogosultságokat. Az elérhető értékek `manage` és `listen`. Az alapértelmezett érték `manage`, amely azt jelzi, hogy a `connection` rendelkezik a **kezelés** engedéllyel. Ha olyan kapcsolódási karakterláncot használ, amely nem rendelkezik a **kezelés** engedéllyel, állítsa a `accessRights` "Listen" (figyelés) értékre. Ellenkező esetben a Functions runtime meghiúsulhat igénylő műveletek végrehajtását kezelésére. Az Azure Functions-verzió 2.x, ez a tulajdonság nem érhető el, mert a Storage SDK legújabb verziója nem támogatja a műveletek kezelésére.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="trigger---usage"></a>Trigger - usage
+## <a name="trigger---usage"></a>Eseményindító - használat
 
-In C# and C# script, you can use the following parameter types for the queue or topic message:
+Az üzenetsor vagy témakör üzenet a C# és a C#-szkript, használhatja a következő paraméter típusa:
 
-* `string` - If the message is text.
-* `byte[]` - Useful for binary data.
-* A custom type - If the message contains JSON, Azure Functions tries to deserialize the JSON data.
-* `BrokeredMessage` - Gives you the deserialized message with the [BrokeredMessage.GetBody\<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) method.
+* `string` – ha az üzenet szövege.
+* `byte[]` – hasznos a bináris adattároláshoz.
+* Egy egyéni típusa – Ha az üzenet tartalmazza JSON-t, az Azure Functions próbálja meg a JSON-adatok deszerializálása.
+* `BrokeredMessage` – a deszerializált üzenetet adja a [BrokeredMessage. GetBody\<t > ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) metódussal.
 
-These parameters are for Azure Functions version 1.x; for 2.x, use [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) instead of `BrokeredMessage`.
+Ezek a paraméterek az 1. x Azure Functions-verzióra vonatkoznak. a 2. x esetében `BrokeredMessage`helyett használja a [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) .
 
-In JavaScript, access the queue or topic message by using `context.bindings.<name from function.json>`. The Service Bus message is passed into the function as either a string or JSON object.
+A JavaScriptben a `context.bindings.<name from function.json>`használatával férhet hozzá az üzenetsor vagy a témakörhöz. A Service Bus-üzenet, a függvény egy karakterlánc vagy a JSON-objektum lett átadva.
 
-## <a name="trigger---poison-messages"></a>Trigger - poison messages
+## <a name="trigger---poison-messages"></a>Eseményindító - ártalmas üzenetek
 
-Poison message handling can't be controlled or configured in Azure Functions. Service Bus handles poison messages itself.
+Ártalmas üzenetek kezelése nem szabályozza és nem konfigurált az Azure Functions szolgáltatásban. A Service Bus kezeli az ártalmas üzenetek magát.
 
-## <a name="trigger---peeklock-behavior"></a>Trigger - PeekLock behavior
+## <a name="trigger---peeklock-behavior"></a>Eseményindító - PeekLock viselkedés
 
-The Functions runtime receives a message in [PeekLock mode](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). It calls `Complete` on the message if the function finishes successfully, or calls `Abandon` if the function fails. If the function runs longer than the `PeekLock` timeout, the lock is automatically renewed as long as the function is running. 
+A functions futtatókörnyezet [PeekLock módban](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)fogad üzenetet. Ha a függvény sikeresen befejeződik, meghívja a `Complete`t az üzenetben, vagy meghívja a `Abandon`, ha a függvény meghibásodik. Ha a függvény a `PeekLock` időtúllépésnél hosszabb ideig fut, akkor a rendszer automatikusan megújítja a zárolást, amíg a függvény fut. 
 
-The `maxAutoRenewDuration` is configurable in *host.json*, which maps to [OnMessageOptions.MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet). The maximum allowed for this setting is 5 minutes according to the Service Bus documentation, whereas you can increase the Functions time limit from the default of 5 minutes to 10 minutes. For Service Bus functions you wouldn’t want to do that then, because you’d exceed the Service Bus renewal limit.
+A `maxAutoRenewDuration` a *Host. JSON*fájlban konfigurálható, amely a [OnMessageOptions. MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet)leképezésére szolgál. Ez a beállítás számára engedélyezett maximális érték megfelelően a Service Bus dokumentációja, 5 perc, míg 10 perc az alapértelmezett 5 perces időbeli függvények korlát növeléséhez. A Service Bus-funkciók nem szeretné, amely majd, mivel a Service Bus-megújítási korlát túllépését eredményezné.
 
-## <a name="trigger---message-metadata"></a>Trigger - message metadata
+## <a name="trigger---message-metadata"></a>Eseményindító - üzenet metaadatok
 
-The Service Bus trigger provides several [metadata properties](./functions-bindings-expressions-patterns.md#trigger-metadata). These properties can be used as part of binding expressions in other bindings or as parameters in your code. These are properties of the [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) class.
+A Service Bus trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a kötési kifejezésekben való használata más kötések részeként vagy a kód paramétereiben használható. Ezek a [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) osztály tulajdonságai.
 
-|Tulajdonság|Type (Típus)|Leírás|
+|Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
-|`DeliveryCount`|`Int32`|The number of deliveries.|
-|`DeadLetterSource`|`string`|The dead letter source.|
-|`ExpiresAtUtc`|`DateTime`|The expiration time in UTC.|
-|`EnqueuedTimeUtc`|`DateTime`|The enqueued time in UTC.|
-|`MessageId`|`string`|A user-defined value that Service Bus can use to identify duplicate messages, if enabled.|
-|`ContentType`|`string`|A content type identifier utilized by the sender and receiver for application specific logic.|
-|`ReplyTo`|`string`|The reply to queue address.|
-|`SequenceNumber`|`Int64`|The unique number assigned to a message by the Service Bus.|
-|`To`|`string`|The send to address.|
-|`Label`|`string`|The application specific label.|
-|`CorrelationId`|`string`|The correlation ID.|
+|`DeliveryCount`|`Int32`|A kézbesítések száma.|
+|`DeadLetterSource`|`string`|Kézbesítetlen levelek forrása.|
+|`ExpiresAtUtc`|`DateTime`|A lejárat időpontja (UTC).|
+|`EnqueuedTimeUtc`|`DateTime`|A várólistán lévő időpontja (UTC).|
+|`MessageId`|`string`|Egy felhasználó által definiált érték, amely a Service Bus duplikált üzenetek azonosítására használható, ha engedélyezve van.|
+|`ContentType`|`string`|A tartalomtípus a küldő és fogadó az adott logikai alkalmazás által használt azonosítója|
+|`ReplyTo`|`string`|A válasz várólista-címre.|
+|`SequenceNumber`|`Int64`|Egy üzenetet a Service Bus által hozzárendelt egyedi szám.|
+|`To`|`string`|A küldési címre.|
+|`Label`|`string`|Az alkalmazásspecifikus címke.|
+|`CorrelationId`|`string`|A korrelációs azonosítót.|
 
 > [!NOTE]
-> Currently, Service bus trigger that works with session enabled queues and subscriptions is in preview. Please track [this item](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) for any further updates regarding this. 
+> Jelenleg a Service Bus-trigger, amely a munkamenet-kompatibilis várólistákkal és előfizetésekkel működik, előzetes verzióban érhető el. Ezt az [adott tételt](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) a további frissítésekkel kapcsolatban nyomon követheti. 
 
-See [code examples](#trigger---example) that use these properties earlier in this article.
+Tekintse meg a jelen cikk korábbi részében említett tulajdonságokat használó [példákat](#trigger---example) .
 
 ## <a name="output"></a>Kimenet
 
-Use Azure Service Bus output binding to send queue or topic messages.
+Azure Service Bus kimeneti kötés használatával üzenetsor vagy témakör üzeneteket küldeni.
 
-## <a name="output---example"></a>Output - example
+## <a name="output---example"></a>Kimenete – példa
 
-See the language-specific example:
+Tekintse meg az adott nyelvű példa:
 
 * [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
+* [C#parancsfájl (. CSX)](#output---c-script-example)
 * [F#](#output---f-example)
 * [Java](#output---java-example)
 * [JavaScript](#output---javascript-example)
 * [Python](#output---python-example)
 
-### <a name="output---c-example"></a>Output - C# example
+### <a name="output---c-example"></a>Kimenet – C#-példa
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that sends a Service Bus queue message:
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely Service Bus üzenetsor-üzenetet küld:
 
 ```cs
 [FunctionName("ServiceBusOutput")]
@@ -406,11 +406,11 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-### <a name="output---c-script-example"></a>Output - C# script example
+### <a name="output---c-script-example"></a>Kimenet – C#-szkript példa
 
-The following example shows a Service Bus output binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function uses a timer trigger to send a queue message every 15 seconds.
+Az alábbi példa egy Service Bus kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény egy időzítő eseményindító 15 másodpercenként üzenetsori üzenetek küldéséhez használja.
 
-Here's the binding data in the *function.json* file:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -434,7 +434,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's C# script code that creates a single message:
+Itt látható C#-szkriptkódot, amely létrehozza egy adott üzenet:
 
 ```cs
 public static void Run(TimerInfo myTimer, ILogger log, out string outputSbQueue)
@@ -445,7 +445,7 @@ public static void Run(TimerInfo myTimer, ILogger log, out string outputSbQueue)
 }
 ```
 
-Here's C# script code that creates multiple messages:
+Az alábbiakban C#-szkriptkódot, amely több üzenetet hoz létre:
 
 ```cs
 public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<string> outputSbQueue)
@@ -457,11 +457,11 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-### <a name="output---f-example"></a>Output - F# example
+### <a name="output---f-example"></a>Kimenete – F# példa
 
-The following example shows a Service Bus output binding in a *function.json* file and an [F# script function](functions-reference-fsharp.md) that uses the binding. The function uses a timer trigger to send a queue message every 15 seconds.
+Az alábbi példa egy Service Bus kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ F# parancsfájl-függvényt](functions-reference-fsharp.md) , amely a kötést használja. A függvény egy időzítő eseményindító 15 másodpercenként üzenetsori üzenetek küldéséhez használja.
 
-Here's the binding data in the *function.json* file:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -485,7 +485,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's F# script code that creates a single message:
+Íme F# parancsfájl-kódot, amely létrehozza egy adott üzenet:
 
 ```fsharp
 let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
@@ -494,9 +494,9 @@ let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
     outputSbQueue = message
 ```
 
-### <a name="output---java-example"></a>Output - Java example
+### <a name="output---java-example"></a>Kimenet – Java-példában
 
-The following example shows a Java function that sends a message to a Service Bus queue `myqueue` when triggered by a HTTP request.
+Az alábbi példa egy Java-függvényt mutat be, amely egy üzenetet küld egy Service Bus üzenetsor `myqueue`, ha HTTP-kérést indít el.
 
 ```java
 @FunctionName("httpToServiceBusQueue")
@@ -510,9 +510,9 @@ public String pushToQueue(
  }
 ```
 
- In the [Java functions runtime library](/java/api/overview/azure/functions/runtime), use the `@QueueOutput` annotation on function parameters whose value would be written to a Service Bus queue.  The parameter type should be `OutputBinding<T>`, where T is any native Java type of a POJO.
+ A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@QueueOutput` megjegyzése a függvény paramétereit, amelyek értékét egy Service Bus-várólistába kívánja írni.  A paraméter típusának `OutputBinding<T>`nak kell lennie, ahol a T egy POJO natív Java-típusa.
 
-Java functions can also write to a Service Bus topic. The following example uses the `@ServiceBusTopicOutput` annotation to describe the configuration for the output binding. 
+A Java functions is írhat Service Bus témakörbe. A következő példa a `@ServiceBusTopicOutput` jegyzetet használja a kimeneti kötés konfigurációjának leírásához. 
 
 ```java
 @FunctionName("sbtopicsend")
@@ -529,11 +529,11 @@ Java functions can also write to a Service Bus topic. The following example uses
     }
 ```
 
-### <a name="output---javascript-example"></a>Output - JavaScript example
+### <a name="output---javascript-example"></a>Kimenet – JavaScript-példa
 
-The following example shows a Service Bus output binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function uses a timer trigger to send a queue message every 15 seconds.
+Az alábbi példa egy Service Bus kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény egy időzítő eseményindító 15 másodpercenként üzenetsori üzenetek küldéséhez használja.
 
-Here's the binding data in the *function.json* file:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -557,7 +557,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's JavaScript script code that creates a single message:
+A következő JavaScript-szkriptkódot, amely létrehozza egy adott üzenet:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -568,7 +568,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Here's JavaScript script code that creates multiple messages:
+A következő JavaScript-szkriptkódot, amely több üzenetet hoz létre:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -581,11 +581,11 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="output---python-example"></a>Output - Python example
+### <a name="output---python-example"></a>Kimenet – Python-példa
 
-The following example demonstrates how to write out to a ServiceBus queue in Python.
+Az alábbi példa bemutatja, hogyan írhat a Pythonban egy ServiceBus-várólistára.
 
-A ServiceBue binding definition is defined in *function.json* where *type* is set to `serviceBus`.
+A *function. JSON* fájlban egy ServiceBue-kötési definíció van megadva, ahol a *Type* értéke `serviceBus`.
 
 ```json
 {
@@ -617,7 +617,7 @@ A ServiceBue binding definition is defined in *function.json* where *type* is se
 }
 ```
 
-In *_\_init_\_.py*, you can write out a message to the queue by passing a value to the `set` method.
+A  *_\_init_\_. a. a.* a `set` metódus értékének átadásával egy üzenetet is írhat a várólistára.
 
 ```python
 import azure.functions as func
@@ -631,11 +631,11 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Output - attributes
+## <a name="output---attributes"></a>Kimenet – attribútumok
 
-In [C# class libraries](functions-dotnet-class-library.md), use the [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
 
-The attribute's constructor takes the name of the queue or the topic and subscription. You can also specify the connection's access rights. How to choose the access rights setting is explained in the [Output - configuration](#output---configuration) section. Here's an example that shows the attribute applied to the return value of the function:
+Az attribútum konstruktorának paramétereként az üzenetsor vagy témakör és előfizetés nevét. A kapcsolat hozzáférési jogosultságokat is megadhatja. A hozzáférési jogosultságok beállításának kiválasztását a [kimenet – konfiguráció](#output---configuration) szakasz ismerteti. A következő példa bemutatja, az attribútum a függvény visszatérési értéke a alkalmazni:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -646,7 +646,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-You can set the `Connection` property to specify the Service Bus account to use, as shown in the following example:
+A `Connection` tulajdonság beállításával megadhatja a használni kívánt Service Bus fiókot, ahogy az az alábbi példában is látható:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -657,64 +657,64 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-For a complete example, see [Output - C# example](#output---c-example).
+Teljes példa: [kimenet – C# példa](#output---c-example).
 
-You can use the `ServiceBusAccount` attribute to specify the Service Bus account to use at class, method, or parameter level.  For more information, see [Trigger - attributes](#trigger---attributes).
+A `ServiceBusAccount` attribútum segítségével megadhatja az osztály, metódus vagy paraméter szintjén használandó Service Bus fiókot.  További információ: [trigger-attributes](#trigger---attributes).
 
-## <a name="output---configuration"></a>Output - configuration
+## <a name="output---configuration"></a>Kimenete – konfiguráció
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `ServiceBus` attribute.
+Az alábbi táblázat a *function. JSON* fájlban és a `ServiceBus` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function.json property | Attribute property |Leírás|
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | – | Must be set to "serviceBus". This property is set automatically when you create the trigger in the Azure portal.|
-|**direction** | – | Must be set to "out". This property is set automatically when you create the trigger in the Azure portal. |
-|**name** | – | The name of the variable that represents the queue or topic in function code. Set to "$return" to reference the function return value. |
-|**queueName**|**QueueName**|Name of the queue.  Set only if sending queue messages, not for a topic.
-|**topicName**|**TopicName**|Name of the topic to monitor. Set only if sending topic messages, not for a queue.|
-|**connection**|**Connection**|The name of an app setting that contains the Service Bus connection string to use for this binding. If the app setting name begins with "AzureWebJobs", you can specify only the remainder of the name. For example, if you set `connection` to "MyServiceBus", the Functions runtime looks for an app setting that is named "AzureWebJobsMyServiceBus." If you leave `connection` empty, the Functions runtime uses the default Service Bus connection string in the app setting that is named "AzureWebJobsServiceBus".<br><br>To obtain a connection string, follow the steps shown at [Get the management credentials](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). The connection string must be for a Service Bus namespace, not limited to a specific queue or topic.|
-|**accessRights**|**Access (Hozzáférés)**|Access rights for the connection string. Available values are `manage` and `listen`. The default is `manage`, which indicates that the `connection` has the **Manage** permission. If you use a connection string that does not have the **Manage** permission, set `accessRights` to "listen". Otherwise, the Functions runtime might fail trying to do operations that require manage rights. In Azure Functions version 2.x, this property is not available because the latest version of the Storage SDK doesn't support manage operations.|
+|**type** | n/a | "A serviceBus" kell állítani. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
+|**direction** | n/a | Állítsa "out". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
+|**név** | n/a | Az üzenetsor vagy témakör, a függvény kódját képviselő változó neve. "$Return" hivatkozik a függvény visszaadott értékének beállításával. |
+|**queueName**|**QueueName**|Az üzenetsor neve.  Állítsa be, csak akkor, ha üzenetküldésre üzenetsor, témakör esetében nem.
+|**topicName**|**TopicName**|Figyelendő üzenettéma nevére. Csak akkor, ha üzenetküldésre témakör, nem a várólista állítsa be.|
+|**kapcsolat**|**Kapcsolat**|A Service Bus kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a név része is megadhat. Ha például a `connection` "MyServiceBus" értékre állítja, a functions futtatókörnyezet egy "AzureWebJobsMyServiceBus" nevű alkalmazás-beállítást keres. Ha üresen hagyja a `connection`, a functions futtatókörnyezet az alapértelmezett Service Bus a "AzureWebJobsServiceBus" nevű alkalmazás-beállítási karakterláncot használja.<br><br>A kapcsolódási karakterlánc beszerzéséhez kövesse a [felügyeleti hitelesítő adatok beolvasása](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)című cikkben ismertetett lépéseket. A kapcsolati karakterláncot a Service Bus-névtér, nem kizárólagosan az adott üzenetsor vagy témakör kell lennie.|
+|**accessRights**|**Access (Hozzáférés)**|A kapcsolati karakterlánc hozzáférési jogosultságokat. Az elérhető értékek `manage` és `listen`. Az alapértelmezett érték `manage`, amely azt jelzi, hogy a `connection` rendelkezik a **kezelés** engedéllyel. Ha olyan kapcsolódási karakterláncot használ, amely nem rendelkezik a **kezelés** engedéllyel, állítsa a `accessRights` "Listen" (figyelés) értékre. Ellenkező esetben a Functions runtime meghiúsulhat igénylő műveletek végrehajtását kezelésére. Az Azure Functions-verzió 2.x, ez a tulajdonság nem érhető el, mert a Storage SDK legújabb verziója nem támogatja a műveletek kezelésére.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>Output - usage
+## <a name="output---usage"></a>Kimenet – használat
 
-In Azure Functions 1.x, the runtime creates the queue if it doesn't exist and you have set `accessRights` to `manage`. In Functions version 2.x, the queue or topic must already exist; if you specify a queue or topic that doesn't exist, the function will fail. 
+Azure Functions 1. x esetén a futtatókörnyezet létrehozza a várólistát, ha az nem létezik, és beállította a `accessRights` a `manage`. A Functions verzió 2.x, az üzenetsor vagy témakör már léteznie kell; Ha megad egy üzenetsorba vagy témakörbe, amely nem létezik, a függvény sikertelen lesz. 
 
-In C# and C# script, you can use the following parameter types for the output binding:
+A kimeneti kötési C# és C#-szkript, használhatja a következő paraméter típusa:
 
-* `out T paramName` - `T` can be any JSON-serializable type. If the parameter value is null when the function exits, Functions creates the message with a null object.
-* `out string` - If the parameter value is null when the function exits, Functions does not create a message.
-* `out byte[]` - If the parameter value is null when the function exits, Functions does not create a message.
-* `out BrokeredMessage` - If the parameter value is null when the function exits, Functions does not create a message (for Functions 1.x)
-* `out Message` - If the parameter value is null when the function exits, Functions does not create a message (for Functions 2.x)
-* `ICollector<T>` or `IAsyncCollector<T>` - For creating multiple messages. A message is created when you call the `Add` method.
+* `out T paramName` - `T` bármely JSON-szerializálható típus lehet. Ha a paraméter értéke null értékű, ha a függvény kilép, Funkciók hoz létre az üzenet Objekt s hodnotou null.
+* `out string` – ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
+* `out byte[]` – ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
+* `out BrokeredMessage` – ha a paraméter értéke null, ha a függvény kilép, a függvények nem hoznak létre üzenetet (az 1. x függvények esetében).
+* `out Message` – ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (a 2. x függvényhez)
+* `ICollector<T>` vagy `IAsyncCollector<T>` – több üzenet létrehozásához. A `Add` metódus meghívásakor létrejön egy üzenet.
 
-When working with C# functions:
+A C# függvények használatakor:
 
-* Async functions need a return value or `IAsyncCollector` instead of an `out` parameter.
+* Az aszinkron függvények visszatérési értéknek vagy `IAsyncCollector`nak kell lennie `out` paraméter helyett.
 
-* To access the session ID, bind to a [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) type and use the `sessionId` property.
+* A munkamenet-azonosító eléréséhez kötést [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) típushoz kell kötni, és a `sessionId` tulajdonságot kell használnia.
 
-In JavaScript, access the queue or topic by using `context.bindings.<name from function.json>`. You can assign a string, a byte array, or a JavaScript object (deserialized into JSON) to `context.binding.<name>`.
+A JavaScriptben a `context.bindings.<name from function.json>`használatával férhet hozzá az üzenetsor vagy a témakörhöz. Hozzárendelhet egy karakterláncot, egy bájt tömböt vagy egy, a JSON-ba szerializált JavaScript-objektumot `context.binding.<name>`.
 
-To send a message to a session-enabled queue in non-C# languages, use the [Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) rather than the built-in output binding.
+Ha nemC# nyelven szeretne üzenetet küldeni egy munkamenet-kompatibilis várólistához, használja a [Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) -t a beépített kimeneti kötés helyett.
 
-## <a name="exceptions-and-return-codes"></a>Exceptions and return codes
+## <a name="exceptions-and-return-codes"></a>Kivételek és a visszatérési kódok
 
-| Binding | Leírások |
+| Kötés | Referencia |
 |---|---|
-| Szolgáltatásbusz | [Service Bus Error Codes](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
-| Szolgáltatásbusz | [Service Bus Limits](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
+| Service Bus | [Service Bus hibakódok](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
+| Service Bus | [Service Bus korlátok](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>host.json settings
+## <a name="hostjson-settings"></a>Host.JSON-beállítások
 
-This section describes the global configuration settings available for this binding in version 2.x. The example host.json file below contains only the version 2.x settings for this binding. For more information about global configuration settings in version 2.x, see [host.json reference for Azure Functions version 2.x](functions-host-json.md).
+Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshez verziójában elérhető 2.x. Az alábbi példa host.json-fájl csak a verzió 2.x beállításait tartalmazza ezt a kötést. A 2. x verziójú globális konfigurációs beállításokkal kapcsolatos további információkért lásd: [Host. JSON-dokumentáció Azure functions 2. x verzióhoz](functions-host-json.md).
 
 > [!NOTE]
-> For a reference of host.json in Functions 1.x, see [host.json reference for Azure Functions 1.x](functions-host-json-v1.md).
+> Az 1. x függvények Host. JSON fájljának hivatkozását lásd: [Host. JSON-dokumentáció Azure functions 1. x-hez](functions-host-json-v1.md).
 
 ```json
 {
@@ -734,13 +734,13 @@ This section describes the global configuration settings available for this bind
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
-|maxAutoRenewDuration|00:05:00|The maximum duration within which the message lock will be renewed automatically.|
-|autoComplete|igaz|Whether the trigger should immediately mark as complete (autocomplete) or wait for processing to call complete.|
-|maxConcurrentCalls|16|The maximum number of concurrent calls to the callback that the message pump should initiate. By default, the Functions runtime processes multiple messages concurrently. To direct the runtime to process only a single queue or topic message at a time, set `maxConcurrentCalls` to 1. |
-|prefetchCount|–|The default PrefetchCount that will be used by the underlying MessageReceiver.|
+|maxAutoRenewDuration|00:05:00|A maximális időtartamot, amelyen belül az üzenet zárolási újul meg automatikusan.|
+|az automatikus kiegészítés|true|E az eseményindító kell azonnal minősítés befejezése (automatikus kiegészítés), vagy várjon, amíg meghívásához teljes feldolgozása.|
+|maxConcurrentCalls|16|Egyidejű hívás, amely az üzenet szivattyú kell kezdeményezni a visszahívás maximális számát. Alapértelmezés szerint a Functions futtatókörnyezete dolgozza fel a több üzenetet egy időben. Ha a futtatókörnyezetet csak egyetlen üzenetsor vagy témakörbeli üzenet feldolgozására szeretné irányítani egyszerre, állítsa a `maxConcurrentCalls` 1 értékre. |
+|prefetchCount|n/a|Az alapértelmezett PrefetchCount, amely az alapul szolgáló MessageReceiver használni fog.|
 
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+> [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

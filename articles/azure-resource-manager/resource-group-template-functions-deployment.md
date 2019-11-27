@@ -1,6 +1,6 @@
 ---
-title: Template functions - deployment
-description: Describes the functions to use in an Azure Resource Manager template to retrieve deployment information.
+title: Sablon functions – üzembe helyezés
+description: Ismerteti a Azure Resource Manager-sablonban a telepítési információk lekéréséhez használandó függvényeket.
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: a255cea128241465788f21013eb0522a29f5bd9e
@@ -10,26 +10,26 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230236"
 ---
-# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Deployment functions for Azure Resource Manager templates 
+# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok üzembe helyezési funkciói 
 
-Resource Manager provides the following functions for getting values from sections of the template and values related to the deployment:
+A Resource Manager a következő függvényeket biztosítja a sablon és a telepítéshez kapcsolódó értékek beolvasásához:
 
-* [deployment](#deployment)
-* [environment](#environment)
+* [telepítési](#deployment)
+* [környezet](#environment)
 * [paraméterek](#parameters)
-* [variables](#variables)
+* [változók](#variables)
 
-To get values from resources, resource groups, or subscriptions, see [Resource functions](resource-group-template-functions-resource.md).
+Erőforrások, erőforráscsoportok vagy előfizetések értékeinek lekéréséhez lásd: [Resource functions](resource-group-template-functions-resource.md).
 
 ## <a name="deployment"></a>üzembe helyezés
 
 `deployment()`
 
-Returns information about the current deployment operation.
+A jelenlegi telepítési műveletre vonatkozó adatokat adja vissza.
 
-### <a name="return-value"></a>Return value
+### <a name="return-value"></a>Vrácená hodnota
 
-This function returns the object that is passed during deployment. The properties in the returned object differ based on whether the deployment object is passed as a link or as an in-line object. When the deployment object is passed in-line, such as when using the **-TemplateFile** parameter in Azure PowerShell to point to a local file, the returned object has the following format:
+Ez a függvény az üzembe helyezés során átadott objektumot adja vissza. A visszaadott objektum tulajdonságai eltérnek attól függően, hogy a központi telepítési objektum hivatkozásként vagy beágyazott objektumként van-e átadva. Ha a központi telepítési objektum átadásra kerül, például ha a Azure PowerShell a **-TemplateFile** paramétert használja egy helyi fájlra, a visszaadott objektum formátuma a következő:
 
 ```json
 {
@@ -51,7 +51,7 @@ This function returns the object that is passed during deployment. The propertie
 }
 ```
 
-When the object is passed as a link, such as when using the **-TemplateUri** parameter to point to a remote object, the object is returned in the following format: 
+Ha az objektumot hivatkozásként adja át, például ha a **-TemplateUri** paraméterrel egy távoli objektumra mutat, az objektum a következő formátumban lesz visszaadva: 
 
 ```json
 {
@@ -75,11 +75,11 @@ When the object is passed as a link, such as when using the **-TemplateUri** par
 }
 ```
 
-When you [deploy to an Azure subscription](deploy-to-subscription.md), instead of a resource group, the return object includes a `location` property. The location property is included when deploying either a local template or an external template.
+Ha egy erőforráscsoport helyett [Azure-előfizetésre végez üzembe helyezést](deploy-to-subscription.md), a return objektum `location` tulajdonságot tartalmaz. Helyi sablon vagy külső sablon telepítésekor a Location tulajdonság is szerepel.
 
 ### <a name="remarks"></a>Megjegyzések
 
-You can use deployment() to link to another template based on the URI of the parent template.
+A központi telepítés () használatával egy másik sablonra lehet hivatkozni a fölérendelt sablon URI-ja alapján.
 
 ```json
 "variables": {  
@@ -87,11 +87,11 @@ You can use deployment() to link to another template based on the URI of the par
 }
 ```  
 
-If you redeploy a template from the deployment history in the portal, the template is deployed as a local file. The `templateLink` property isn't returned in the deployment function. If your template relies on `templateLink` to construct a link to another template, don't use the portal to redeploy. Instead, use the commands you used to originally deploy the template.
+Ha a portálon lévő központi telepítési előzményekből telepít újra egy sablont, a sablon helyi fájlként lesz telepítve. A `templateLink` tulajdonságot a rendszer nem adja vissza a telepítési függvényben. Ha a sablon `templateLink` egy másik sablonra mutató hivatkozás létrehozásához, ne használja a portált az újbóli üzembe helyezéshez. Ehelyett használja a sablon eredeti üzembe helyezéséhez használt parancsokat.
 
 ### <a name="example"></a>Példa
 
-The following [example template](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) returns the deployment object:
+A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) a központi telepítési objektumot adja vissza:
 
 ```json
 {
@@ -107,7 +107,7 @@ The following [example template](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-The preceding example returns the following object:
+Az előző példa a következő objektumot adja vissza:
 
 ```json
 {
@@ -131,17 +131,17 @@ The preceding example returns the following object:
 }
 ```
 
-For a subscription-level template that uses the deployment function, see [subscription deployment function](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). It's deployed with either `az deployment create` or `New-AzDeployment` commands.
+Az üzembe helyezési funkciót használó előfizetési szintű sablonért lásd: [előfizetés üzembe helyezési funkciója](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Üzembe helyezése `az deployment create` vagy `New-AzDeployment` paranccsal történhet.
 
 ## <a name="environment"></a>environment
 
 `environment()`
 
-Returns information about the Azure environment used for deployment.
+Információt ad vissza az üzembe helyezéshez használt Azure-környezetről.
 
-### <a name="return-value"></a>Return value
+### <a name="return-value"></a>Vrácená hodnota
 
-This function returns properties for the current Azure environment.
+Ez a függvény az aktuális Azure-környezet tulajdonságait adja vissza.
 
 ```json
 {
@@ -179,7 +179,7 @@ This function returns properties for the current Azure environment.
 
 ### <a name="example"></a>Példa
 
-The following example template returns the environment object.
+A következő példában szereplő sablon a környezeti objektumot adja vissza.
 
 ```json
 {
@@ -195,7 +195,7 @@ The following example template returns the environment object.
 }
 ```
 
-The preceding example returns the following object when deployed to global Azure:
+Az előző példa a következő objektumot adja vissza a globális Azure-ba való üzembe helyezéskor:
 
 ```json
 {
@@ -235,21 +235,21 @@ The preceding example returns the following object when deployed to global Azure
 
 `parameters(parameterName)`
 
-Returns a parameter value. The specified parameter name must be defined in the parameters section of the template.
+Egy paraméter értékét adja vissza. A megadott paraméter nevét meg kell adni a sablon paraméterek szakaszában.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Type (Típus) | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| parameterName |Igen |sztring |The name of the parameter to return. |
+| parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
 
-### <a name="return-value"></a>Return value
+### <a name="return-value"></a>Vrácená hodnota
 
-The value of the specified parameter.
+A megadott paraméter értéke.
 
 ### <a name="remarks"></a>Megjegyzések
 
-Typically, you use parameters to set resource values. The following example sets the name of web site to the parameter value passed in during deployment.
+Általában paraméterekkel állíthatja be az erőforrás-értékeket. A következő példa beállítja a webhely nevét az üzembe helyezés során átadott paraméterérték értékére.
 
 ```json
 "parameters": { 
@@ -269,7 +269,7 @@ Typically, you use parameters to set resource values. The following example sets
 
 ### <a name="example"></a>Példa
 
-The following [example template](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) shows a simplified use of the parameters function.
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) a Parameters függvény egyszerűsített használatát mutatja be.
 
 ```json
 {
@@ -324,37 +324,37 @@ The following [example template](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-The output from the preceding example with the default values is:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Név | Type (Típus) | Value (Díj) |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| stringOutput | Sztring | option 1 |
+| stringOutput | Sztring | 1\. lehetőség |
 | intOutput | Int | 1 |
-| objectOutput | Objektum | {"one": "a", "two": "b"} |
+| objectOutput | Objektum | {"One": "a", "kettő": "b"} |
 | arrayOutput | Tömb | [1, 2, 3] |
-| crossOutput | Sztring | option 1 |
+| crossOutput | Sztring | 1\. lehetőség |
 
-For more information about using parameters, see [Parameters in Azure Resource Manager template](template-parameters.md).
+További információ a paraméterek használatáról: [Azure Resource Manager sablonban található paraméterek](template-parameters.md).
 
-## <a name="variables"></a>variables
+## <a name="variables"></a>változók
 
 `variables(variableName)`
 
-Returns the value of variable. The specified variable name must be defined in the variables section of the template.
+A változó értékét adja vissza. A megadott változó nevét meg kell adni a sablon változók szakaszában.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Type (Típus) | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| variableName |Igen |Sztring |The name of the variable to return. |
+| variableName |Igen |Sztring |A visszaadni kívánt változó neve. |
 
-### <a name="return-value"></a>Return value
+### <a name="return-value"></a>Vrácená hodnota
 
-The value of the specified variable.
+A megadott változó értéke.
 
 ### <a name="remarks"></a>Megjegyzések
 
-Typically, you use variables to simplify your template by constructing complex values only once. The following example constructs a unique name for a storage account.
+Általában változók használatával egyszerűsítheti a sablont úgy, hogy csak egyszer hozza létre az összetett értékeket. A következő példa egy egyedi nevet hoz létre egy Storage-fiókhoz.
 
 ```json
 "variables": {
@@ -378,7 +378,7 @@ Typically, you use variables to simplify your template by constructing complex v
 
 ### <a name="example"></a>Példa
 
-The following [example template](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) returns different variable values.
+A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) eltérő változó értékeket ad vissza.
 
 ```json
 {
@@ -416,20 +416,20 @@ The following [example template](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-The output from the preceding example with the default values is:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Név | Type (Típus) | Value (Díj) |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | exampleOutput1 | Sztring | myVariable |
 | exampleOutput2 | Tömb | [1, 2, 3, 4] |
 | exampleOutput3 | Sztring | myVariable |
-| exampleOutput4 |  Objektum | {"property1": "value1", "property2": "value2"} |
+| exampleOutput4 |  Objektum | {"Tulajdonság1": "érték1", "property2": "érték2"} |
 
-For more information about using variables, see [Variables in Azure Resource Manager template](template-variables.md).
+További információ a változók használatáról: [változók Azure Resource Manager sablonban](template-variables.md).
 
 ## <a name="next-steps"></a>Következő lépések
-* For a description of the sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
-* To merge several templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md).
-* To iterate a specified number of times when creating a type of resource, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md).
-* To see how to deploy the template you've created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md).
+* Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](resource-group-authoring-templates.md).
+* Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](resource-group-linked-templates.md)című témakört.
+* Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](resource-group-create-multiple.md)című témakört.
+* A létrehozott sablon üzembe helyezésével kapcsolatban lásd: [alkalmazások központi telepítése Azure Resource Manager sablonnal](resource-group-template-deploy.md).
 

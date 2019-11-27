@@ -21,7 +21,7 @@ ms.locfileid: "74229936"
 
 Az Azure Nagyvállalati Szerződésével regisztrálhat a Cloudynre. A regisztráció hozzáférést biztosít a Cloudyn portálhoz. Ez a rövid útmutató részletesen ismerteti a Cloudyn próbaverziójára szóló előfizetés létrehozásához és a Cloudyn-portálra való bejelentkezéshez szükséges folyamatot. Azt is bemutatja, hogyan tekintheti meg azonnal a költségadatokat.
 
-Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. További információ: [Azure Cost Management](overview-cost-mgt.md).
+Az Azure Cost Management hasonló funkciókat kínál, mint a Cloudyn. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. További információ: [Azure Cost Management](overview-cost-mgt.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -31,16 +31,16 @@ Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azur
 
 1. Az Azure Portalon kattintson a **Költségkezelés + Számlázás** elemre a szolgáltatások listáján.
 2. Az **Áttekintés** területen kattintson a **Cloudyn** elemre.  
-    ![Cloudyn page shown in the Azure portal](./media/quick-register-ea/cost-mgt-billing-service.png)
+    ![Cloudyn-oldal megjelenik a Azure Portal](./media/quick-register-ea/cost-mgt-billing-service.png)
 3. A **Cloudyn** lapon kattintson a **Go to Cloudyn** (Ugrás a Cloudynre) elemre a Cloudyn regisztrációs oldalának új ablakban való megnyitásához.
 4. A Cloudyn portálon a próbaverzióra való regisztrációhoz írja be a vállalata nevét, majd válassza az **Azure Enterprise Enrollment Administrator** (Azure Nagyvállalati Beléptetés rendszergazdája) lehetőséget.  
 5. Adja meg az Enterprise Portal regisztrációs API-kulcsát. Ha ez nincs kéznél, kattintson az [Enterprise Portal](https://ea.azure.com) hivatkozásra, és kövesse az alábbi lépéseket:  
-    ![Paste your API key on the Billing tab](./media/quick-register-ea/trial-reg.png)
+    ![illessze be az API-kulcsot a számlázás lapon](./media/quick-register-ea/trial-reg.png)
    1. Jelentkezzen be az Azure Enterprise webhelyre, és kattintson **Reports** (Jelentések), majd az **API Access Key** (API hozzáférési kulcs) lehetőségre, és másolja ki az elsődleges kulcsát.  
-    ![Example of an EA API key in the EA portal](./media/quick-register-ea/ea-key.png)
+    ![például egy EA API-kulcs a nagyvállalati portálon](./media/quick-register-ea/ea-key.png)
    3. Térjen vissza a regisztrációs oldalhoz, és illessze be az API-kulcsát.
 6. Fogadja el a használati feltételeket, majd ellenőrizze a kulcsot. A **Next** (Tovább) gombra kattintva adjon engedélyt a Cloudynnek az Azure-erőforrásadatok gyűjtésére. A gyűjtött adatok az előfizetéseire vonatkozó használati, teljesítmény-, elszámolási és címkeadatokból állnak.  
-    ![Example of a successful EA API key validation](./media/quick-register-ea/ea-key-validated.png)
+    ![példa egy sikeres EA API-kulcs érvényesítésére](./media/quick-register-ea/ea-key-validated.png)
 7. Az **Invite other stakeholders** (További érdekelt felek meghívása) területen hozzáadhat felhasználókat az e-mail-címük megadásával. Ha kész van, kattintson a **Next** (Tovább) gombra. Az Azure-regisztrációja méretétől függően akár 24 órát is igénybe vehet, míg a rendszer az összes elszámolási adatot hozzáadja a Clodynhez.
 8. A **Go to Cloudyn** (Ugrás a Cloudynre) elemre kattintva nyissa meg a Cloudyn portált, ahol a **Cloud Accounts Management** (Felhőalapú fiókok felügyelete) oldalon látnia kell a regisztrált EA-fiók adatait.
 

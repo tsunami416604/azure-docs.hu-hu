@@ -22,12 +22,12 @@ ms.locfileid: "74218815"
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
 
-- **Data Flow**: Execute a [Data Flow](concepts-data-flow-overview.md) in managed Azure compute environment.  
-- **Data movement**: Copy data across data stores in public network and data stores in private network (on-premises or virtual private network). Támogatást biztosít a beépített összekötőkhöz, a formátum átalakításához, az oszlopleképezéshez és a nagy teljesítményű, méretezhető adatátvitelhez.
-- **Activity dispatch**:  Dispatch and monitor transformation activities running on a variety of compute services such as Azure Databricks, Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server, and more.
-- **SSIS-csomag végrehajtása**: Natívan végrehajthat SQL Server Integration Services- (SSIS-) csomagokat egy Azure-beli felügyelt számítási környezetben.
+- **Adatfolyam**: [adatfolyamatok](concepts-data-flow-overview.md) végrehajtása felügyelt Azure számítási környezetben.  
+- **Adatáthelyezés**: a nyilvános hálózatban lévő adattárakban és a magánhálózaton (helyszíni vagy virtuális magánhálózat) lévő adattárakban tárolt Adatmásolás. Támogatást biztosít a beépített összekötőkhöz, a formátum átalakításához, az oszlopleképezéshez és a nagy teljesítményű, méretezhető adatátvitelhez.
+- **Tevékenység elküldése**: különböző számítási szolgáltatásokon, például az Azure Databrickson, az Azure HDInsight, a Azure Machine Learningon, a Azure SQL Databaseon, a SQL Serveron és egyebeken futó átalakítási tevékenységek elküldése és monitorozása.
+- **SSIS-csomag végrehajtása**: Natívan végrehajthat SQL Server Integration Services (SSIS) csomagokat egy felügyelt Azure számítási környezetben.
 
-A Data Factoryban a végrehajtandó műveletet egy tevékenység határozza meg. A társított szolgáltatások a céladattárat vagy a számítási szolgáltatást határozzák meg. Az integrációs modulok hídként szolgálnak a tevékenység és a társított szolgáltatások között.  It is referenced by the linked service or activity, and provides the compute environment where the activity either runs on or gets dispatched from. Ily módon a tevékenység végrehajtható a céladattárhoz vagy számítási szolgáltatáshoz lehető legközelebb eső régióban, a lehető leghatékonyabban, a biztonsági és megfelelőségi igényeknek is megfelelően.
+A Data Factoryban a végrehajtandó műveletet egy tevékenység határozza meg. A társított szolgáltatások a céladattárat vagy a számítási szolgáltatást határozzák meg. Az integrációs modulok hídként szolgálnak a tevékenység és a társított szolgáltatások között.  A társított szolgáltatás vagy tevékenység hivatkozik rá, és megadja azt a számítási környezetet, ahol a tevékenység vagy a szolgáltatás fut, vagy amelyről elküldi a szolgáltatást. Ily módon a tevékenység végrehajtható a céladattárhoz vagy számítási szolgáltatáshoz lehető legközelebb eső régióban, a lehető leghatékonyabban, a biztonsági és megfelelőségi igényeknek is megfelelően.
 
 ## <a name="integration-runtime-types"></a>Integrációsmodul-típusok
 A Data Factory három típusú integrációs modult ajánl, és ki kell választania azt a típust, amely a leginkább megfelel az adatintegrációsképesség- és hálózatikörnyezet-igényeinek.  A három típus a következő:
@@ -48,15 +48,15 @@ Az alábbi diagram bemutatja, hogyan használhatók a különböző integráció
 
 ![Különböző típusú integrációs modulok](media/concepts-integration-runtime/different-integration-runtimes.png)
 
-## <a name="azure-integration-runtime"></a>Azure-beli integrációs modul
+## <a name="azure-integration-runtime"></a>Azure integrációs modul
 Egy Azure-beli integrációs modul a következőkre képes:
 
-- Running Data Flows in Azure 
+- Adatfolyamatok futtatása az Azure-ban 
 - Másolási tevékenység futtatása felhőalapú adattárak között
-- Dispatching the following transform activities in public network: Databricks Notebook/ Jar/ Python activity, HDInsight Hive activity, HDInsight Pig activity, HDInsight MapReduce activity, HDInsight Spark activity, HDInsight Streaming activity, Machine Learning Batch Execution activity, Machine Learning Update Resource activities, Stored Procedure activity, Data Lake Analytics U-SQL activity, .NET custom activity, Web activity, Lookup activity, and Get Metadata activity.
+- A következő átalakítási tevékenységek elküldése a nyilvános hálózatban: Databricks notebook/jar/Python tevékenység, HDInsight-struktúra tevékenység, HDInsight Pig tevékenység, HDInsight MapReduce tevékenység, HDInsight Spark-tevékenység, HDInsight streaming Activity, gép A Batch végrehajtási tevékenységének megismerése, Machine Learning az erőforrás-tevékenységek frissítése, tárolt eljárási tevékenység, Data Lake Analytics U-SQL tevékenység, .NET egyéni tevékenység, webes tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
 
 ### <a name="azure-ir-network-environment"></a>Azure-beli integrációs modul hálózati környezete
-Azure Integration Runtime supports connecting to data stores and compute services with public accessible endpoints. Használhat saját üzemeltetésű integrációs modult az Azure Virtual Network-környezethez.
+Azure Integration Runtime támogatja az adattárakhoz és a számítási szolgáltatásokhoz való csatlakozást nyilvános elérhető végpontokkal. Használhat saját üzemeltetésű integrációs modult az Azure Virtual Network-környezethez.
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure-beli integrációs modul számítási erőforrásai és skálázása
 Az Azure-beli integrációs modul teljesen felügyelt, kiszolgáló nélküli számítást biztosít az Azure-ban.  Nem kell foglalkoznia infrastruktúra létesítésével, szoftver telepítésével, frissítéssel vagy a kapacitás méretezésével.  Ráadásul csak a tényleges használat időtartamára fizet.
@@ -68,19 +68,19 @@ A tevékenységküldés egy könnyen használható művelet a tevékenységnek a
 Az Azure integrációs modulok létrehozásáról és konfigurálásáról az Azure IR létrehozása és konfigurálása útmutatóban találhat információkat. 
 
 > [!NOTE] 
-> Azure Integration runtime has properties related to Data Flow runtime, which defines the underlying compute infrastructure that would be used to run the data flows on. 
+> Az Azure Integration Runtime az adatfolyam-futtatókörnyezethez kapcsolódó tulajdonságokkal rendelkezik, amely meghatározza a mögöttes számítási infrastruktúrát, amely az adatfolyamatok futtatására szolgál. 
 
-## <a name="self-hosted-integration-runtime"></a>Helyi integrációs modul
+## <a name="self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul
 Egy saját üzemeltetésű IR a következőkre képes:
 
 - Másolási tevékenység futtatása felhőalapú adattárak és egy magánhálózaton lévő adattár között.
-- Dispatching the following transform activities against compute resources in on-premises or Azure Virtual Network: HDInsight Hive activity (BYOC-Bring Your Own Cluster), HDInsight Pig activity (BYOC), HDInsight MapReduce activity (BYOC), HDInsight Spark activity (BYOC), HDInsight Streaming activity (BYOC), Machine Learning Batch Execution activity, Machine Learning Update Resource activities, Stored Procedure activity, Data Lake Analytics U-SQL activity, Custom activity (runs on Azure Batch), Lookup activity, and Get Metadata activity.
+- A következő átalakítási tevékenységek elküldése a helyszíni vagy az Azure-beli számítási erőforrásokkal szemben Virtual Network: HDInsight-struktúra tevékenysége (BYOC – saját fürt használata), HDInsight Pig-tevékenység (BYOC), HDInsight MapReduce tevékenység (BYOC), HDInsight Spark tevékenység (BYOC), HDInsight streaming Activity (BYOC), Machine Learning kötegelt végrehajtási tevékenység, Machine Learning erőforrás-tevékenységek frissítése, tárolt eljárási tevékenység, Data Lake Analytics U-SQL tevékenység, egyéni tevékenység (Azure Batch), keresés tevékenység és metaadatok beolvasása tevékenység.
 
 > [!NOTE] 
-> Use self-hosted integration runtime to support data stores that requires bring-your-own driver such as SAP Hana, MySQL, etc.  For more information, see [supported data stores](copy-activity-overview.md#supported-data-stores-and-formats).
+> A saját üzemeltetésű integrációs modult használva olyan adattárakat támogathat, amelyek a saját illesztőprogramot, például az SAP Hana-t vagy a MySQL-t igénylik.  További információ: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
 
 > [!NOTE] 
-> Java Runtime Environment (JRE) is a dependency of Self Hosted IR. Please make sure you have JRE installed on the same host.
+> A Java Runtime Environment (JRE) a saját üzemeltetésű IR függősége. Győződjön meg arról, hogy a JRE ugyanarra a gazdagépre van telepítve.
 
 ### <a name="self-hosted-ir-network-environment"></a>Saját üzemeltetésű integrációs modul hálózati környezete
 Ha biztonságosan szeretne adatintegrációt végezni egy nyilvános felhőkörnyezetből közvetlenül nem látható magánhálózati környezetben, telepíthet egy saját üzemeltetésű integrációs modult helyszíni környezeten a vállalati tűzfal mögé vagy a virtuális magánhálózaton belülre.  A saját üzemeltetésű integrációs modul csak kimenő HTTP-alapú kapcsolatokat hoz létre az internet megnyitásához.
@@ -88,7 +88,7 @@ Ha biztonságosan szeretne adatintegrációt végezni egy nyilvános felhőkörn
 ### <a name="self-hosted-ir-compute-resource-and-scaling"></a>Saját üzemeltetésű integrációs modul erőforrásai és skálázása
 A saját üzemeltetésű integrációs modult helyszíni gépre vagy magánhálózaton belüli virtuális gépre kell telepíteni. Jelenleg csak Windows operációs rendszeren támogatjuk a saját üzemeltetésű integrációs modulok futtatását.  
 
-A magas rendelkezésre állás és a méretezhetőség érdekében horizontálisan felskálázhatja saját üzemeltetésű integrációs modulját, ha több helyszíni géppel aktív-aktív módban társít hozzá egy logikai példányt.  For more information, see how to [create and configure self-hosted IR](create-self-hosted-integration-runtime.md) article under how to guides for details.
+A magas rendelkezésre állás és a méretezhetőség érdekében horizontálisan felskálázhatja saját üzemeltetésű integrációs modulját, ha több helyszíni géppel aktív-aktív módban társít hozzá egy logikai példányt.  További információ: a saját üzemeltetésű integrációs modul [létrehozása és konfigurálása](create-self-hosted-integration-runtime.md) című cikk, útmutató a részletekhez.
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS integrációs modul
 A meglévő SSIS számítási feladat átemeléséhez létrehozhat egy Azure-SSIS integrációs modult az SSIS-csomagok natív létrehozásához.
@@ -97,14 +97,14 @@ A meglévő SSIS számítási feladat átemeléséhez létrehozhat egy Azure-SSI
 Az Azure-SSIS integrációs modul kiépíthető nyilvános hálózaton vagy magánhálózaton is.  A helyszíni adathozzáférés támogatása az Azure-SSIS integrációs modulnak a helyszíni hálózathoz csatlakoztatott virtuális hálózattal való összekapcsolása révén történik.  
 
 ### <a name="azure-ssis-ir-compute-resource-and-scaling"></a>Azure-SSIS integrációs modul számítási erőforrásai és skálázása
-Az Azure-SSIS integrációs modul egy, az SSIS-csomagok futtatására dedikált Azure-beli virtuális gépekből álló teljesen felügyelt fürt. You can bring your own Azure SQL Database or Managed Instance server to host the catalog of SSIS projects/packages (SSISDB) that is going to be attached to it. A számítási teljesítmény vertikális felskálázásához adjon meg egy csomópontméretet, és skálázza fel horizontálisan a fürt csomópontszámának megadásával. Az Azure-SSIS integrációs modul futtatási költségének kezeléséhez igény szerint leállíthatja és elindíthatja azt.
+Az Azure-SSIS integrációs modul egy, az SSIS-csomagok futtatására dedikált Azure-beli virtuális gépekből álló teljesen felügyelt fürt. Saját Azure SQL Database vagy felügyelt példány-kiszolgálót is használhat, amely a hozzá tartozó SSIS-projektek/csomagok (SSISDB) katalógusát futtatja. A számítási teljesítmény vertikális felskálázásához adjon meg egy csomópontméretet, és skálázza fel horizontálisan a fürt csomópontszámának megadásával. Az Azure-SSIS integrációs modul futtatási költségének kezeléséhez igény szerint leállíthatja és elindíthatja azt.
 
 További információkért tekintse meg az útmutatók között az Azure-SSIS integrációs modul létrehozását és konfigurálását ismertető cikket.  Létrehozásukat követően kevés vagy szinte semmilyen módosítással, a helyszíni SSIS-csomagokkal megegyező módon üzembe helyezheti és kezelheti meglévő SSIS-csomagjait az olyan jól ismert eszközök használatával, mint az SQL Server Data Tools (SSDT) és az SQL Server Management Studio (SSMS).
 
 Az Azure-SSIS integrációs modullal kapcsolatos további információkért tekintse át a következő cikkeket: 
 
 - [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk lépésenként mutatja be egy Azure-SSIS integrációs modul létrehozását, és egy Azure SQL-adatbázist használ az SSIS-katalógus futtatására. 
-- [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). This article expands on the tutorial and provides instructions on using Azure SQL Database Managed Instance and joining the IR to a virtual network. 
+- [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatást nyújt Azure SQL Database felügyelt példányának használatáról és az IR virtuális hálózathoz való csatlakoztatásáról. 
 - [Azure-SSIS integrációs modul monitorozása](monitor-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk bemutatja, hogyan kérhet le információkat egy Azure-SSIS integrációs modulról, és ismerteti a visszaadott információkban található állapotok leírását. 
 - [Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md). Ez a cikk bemutatja, hogyan lehet leállítani, elindítani vagy eltávolítani egy Azure-SSIS integrációs modult. Azt is bemutathatja, hogyan skálázhatja fel horizontálisan az Azure-SSIS integrációs modult úgy, hogy további csomópontokat ad hozzá. 
 - [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk egy Azure-SSIS integrációs modul Azure virtuális hálózathoz való csatlakoztatásával kapcsolatos elméleti információkat tartalmaz. Azt is ismerteti, hogyan használható az Azure Portal a virtuális hálózat oly módon való konfigurálására, hogy az Azure-SSIS integrációs modul csatlakozhasson ahhoz. 
@@ -117,16 +117,16 @@ Az integrációs modul helye meghatározza a háttérszámítások helyét és a
 ### <a name="azure-ir-location"></a>Az Azure-beli integrációs modul helye
 Beállíthat egy adott helyet az Azure-beli integrációs modul számára. Ebben esetben az adatok áthelyezése vagy a tevékenységküldés abban a régióban történik. 
 
-If you choose to use the **auto-resolve Azure IR** which is the default, 
+Ha úgy dönt, hogy az **automatikus feloldási Azure IR** használja, amely az alapértelmezett, 
 
 - A másolási tevékenység során az ADF mindent megtesz, hogy automatikusan észlelje a fogadó- és forrásadattárat, kiválassza ugyanabban a régióban (ha lehetséges) vagy a legközelebbi azonos földrajzi helyen a legjobb helyet, vagy helyettük az adat-előállító régiót használja, ha ezek nem észlelhetőek.
 
-- For Lookup/GetMetadata/Delete activity execution (also known as Pipeline activities), transformation activity dispatching (also known as External activities), and authoring operations (test connection, browse folder list and table list, preview data), ADF will use the IR in the data factory region.
+- A keresési/GetMetadata/törlési tevékenységek végrehajtásához (más néven folyamat tevékenységekhez), az átalakítási tevékenység elküldéséhez (más néven külső tevékenységekhez), valamint a szerzői műveletek (a kapcsolatok tesztelése, a mappák listájának és a táblázatok listájának megtekintése, az előzetes verzióra vonatkozó adatok), az ADF a az IR-t fogja használni az adatelőállító régióban.
 
-- For Data Flow, ADF will use the IR in the data factory region. 
+- Adatforgalom esetén az ADF az IR-t fogja használni az adatfeldolgozó régióban. 
 
   > [!TIP] 
-  > A good practice would be to ensure Data flow runs in the same region as your corresponding data stores (if possible). You can either achieve this by auto-resolve Azure IR (if data store location is same as Data Factory location), or by creating a new Azure IR instance in the same region as your data stores and then execute the data flow on it. 
+  > Jó gyakorlat lenne annak biztosítása, hogy az adatforgalom ugyanabban a régióban fusson, mint a megfelelő adattárak (ha lehetséges). Ezt megteheti a Azure IR automatikus feloldásával (ha az adattár helye megegyezik a Data Factory helyével), vagy egy új Azure IR példány létrehozásával ugyanabban a régióban, ahol az adattár található, majd végrehajtja az adatfolyamot. 
 
 A folyamattevékenységek monitorozása nézetben a felhasználói felületen vagy a tevékenységfigyelés hasznos adatainál figyelemmel követheti, melyik integrációs modul lép életbe a tevékenység végrehajtása során.
 
@@ -141,9 +141,9 @@ Ha adatmozgás végrehajtásához használja, a saját üzemeltetésű integrác
 ### <a name="azure-ssis-ir-location"></a>Az Azure-SSIS integrációs modul helye
 Az Azure-SSIS integrációs modul számára a megfelelő helyet kiválasztása az ETL folyamatokban létfontosságú a magas teljesítmény eléréséhez.
 
-- The location of your Azure-SSIS IR does not need be the same as the location of your data factory, but it should be the same as the location of your own Azure SQL Database/Managed Instance server where SSISDB is to be hosted. Ily módon az Azure-SSIS integrációs modul könnyen hozzáfér az SSISDB-hez anélkül, hogy jelentős adatforgalom zajlana különböző helyek között.
-- If you do not have an existing Azure SQL Database/Managed Instance server to host SSISDB, but you have on-premises data sources/destinations, you should create a new Azure SQL Database/Managed Instance server in the same location of a virtual network connected to your on-premises network.  This way, you can create your Azure-SSIS IR using the new Azure SQL Database/Managed Instance server and joining that virtual network, all in the same location, effectively minimizing data movements across different locations.
-- If the location of your existing Azure SQL Database/Managed Instance server where SSISDB is hosted is not the same as the location of a virtual network connected to your on-premises network, first create your Azure-SSIS IR using an existing Azure SQL Database/Managed Instance server and joining another virtual network in the same location, and then configure a virtual network to virtual network connection between different locations.
+- A Azure-SSIS IR helyének nem kell megegyeznie az adatgyár helyével, de meg kell egyeznie a saját Azure SQL Database/felügyelt példány-kiszolgálójának helyével, ahol a SSISDB-t üzemeltetni kell. Ily módon az Azure-SSIS integrációs modul könnyen hozzáfér az SSISDB-hez anélkül, hogy jelentős adatforgalom zajlana különböző helyek között.
+- Ha nem rendelkezik meglévő Azure SQL Database/felügyelt példány-kiszolgálóval a SSISDB üzemeltetéséhez, de helyszíni adatforrásokkal/célhelyekkel rendelkezik, hozzon létre egy új Azure SQL Database/felügyelt kiszolgálópéldány-kiszolgálót ugyanazon a helyen, amelyhez a virtuális hálózat csatlakozik a helyszíni hálózat.  Így a Azure-SSIS IRt az új Azure SQL Database/felügyelt példány-kiszolgálóval hozhatja létre, és a virtuális hálózathoz is csatlakozhat, amelyek mindegyike ugyanazon a helyen található, ami gyakorlatilag minimalizálja a különböző helyek közötti adatáthelyezést.
+- Ha a meglévő Azure SQL Database/felügyelt példány-kiszolgáló helye, ahol a SSISDB fut, nem egyezik meg a helyszíni hálózathoz csatlakoztatott virtuális hálózat helyével, először hozza létre a Azure-SSIS IR egy meglévő Azure SQL Database/ Felügyelt példány-kiszolgáló és egy másik virtuális hálózat összekapcsolása ugyanazon a helyen, majd a virtuális hálózat beállítása a különböző helyek közötti virtuális hálózati kapcsolatra.
 
 Az alábbi ábrán a Data Factory és a hozzá tartozó integrációs modul beállításai találhatók:
 
@@ -167,13 +167,13 @@ A keresési és metaadat-beolvasási tevékenységet a rendszer az adattár tár
 
 Minden átalakítási tevékenységhez tartozik egy cél számítási társított szolgáltatás, amely egy integrációs modulra mutat. Ez az integrációsmodul-példány az, ahonnan a rendszer küldi az átalakítási tevékenységet.
 
-### <a name="data-flow-activity"></a>Data Flow activity
+### <a name="data-flow-activity"></a>Adatfolyam-tevékenység
 
-Data Flow activity is executed on the integration runtime associated to it. 
+Az adatfolyam tevékenysége az ahhoz társított integrációs modulon fut. 
 
 ## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
-- [Create Azure integration runtime](create-azure-integration-runtime.md)
+- [Azure Integration Runtime létrehozása](create-azure-integration-runtime.md)
 - [Saját üzemeltetésű integrációs modul létrehozása](create-self-hosted-integration-runtime.md)
-- [Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). This article expands on the tutorial and provides instructions on using Azure SQL Database Managed Instance and joining the IR to a virtual network. 
+- [Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatást nyújt Azure SQL Database felügyelt példányának használatáról és az IR virtuális hálózathoz való csatlakoztatásáról. 

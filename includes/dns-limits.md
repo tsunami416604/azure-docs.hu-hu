@@ -11,20 +11,20 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74210994"
 ---
-**Public DNS zones**
+**Nyilvános DNS-zónák**
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Public DNS Zones per subscription |250 <sup>1</sup> |
-| Record sets per public DNS zone |10,000 <sup>1</sup> |
-| Records per record set in public DNS zone |20 |
-| Number of Alias records for a single Azure resource |20|
-| Private DNS zones per subscription |1000|
-| Record sets per private DNS zone |25000|
-| Records per record set for private DNS zones |20|
-| Virtual Network Links per private DNS zone |1000|
-| Virtual Networks Links per private DNS zones with auto-registration enabled |100|
-| Number of private DNS zones a virtual network can get linked to with auto-registration enabled |1|
-| Number of private DNS zones a virtual network can get linked |1000|
+| Nyilvános DNS-zónák/előfizetés |250 <sup>1</sup> |
+| Rekordhalmazok nyilvános DNS-zónában |10 000 <sup>1</sup> |
+| Rekord/rekordhalmaz a nyilvános DNS-zónában |20 |
+| Egyetlen Azure-erőforráshoz tartozó alias-rekordok száma |20|
+| saját DNS zónák/előfizetés |1000|
+| Rekordhalmazok egy saját DNS-zónában |25000|
+| Rekord/rekordhalmaz a magánhálózati DNS-zónákhoz |20|
+| Privát DNS-zóna Virtual Network hivatkozásai |1000|
+| A virtuális hálózatok privát DNS-zónákon keresztül, automatikus regisztráció engedélyezve |100|
+| Azon privát DNS-zónák száma, amelyekhez a virtuális hálózat elérhetővé válik, és engedélyezve van az automatikus regisztráció |1|
+| Saját DNS-zónák száma, amelyekhez a virtuális hálózat kapcsolódhat |1000|
 
-<sup>1</sup>If you need to increase these limits, contact Azure Support.
+<sup>1</sup> Ha meg kell emelnie ezeket a korlátokat, forduljon az Azure ügyfélszolgálatához.

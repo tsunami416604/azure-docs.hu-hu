@@ -13,10 +13,10 @@ ms.locfileid: "74224460"
 ---
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Azure Content Delivery Network profiles |25 |
-| Content Delivery Network endpoints per profile |25 |
-| Custom domains per endpoint |25 |
+| Azure Content Delivery Network-profilok |25 |
+| Content Delivery Network végpontok száma |25 |
+| Egyéni tartományok/végpont |25 |
 
-A Content Delivery Network subscription can contain one or more Content Delivery Network profiles. A Content Delivery Network profile can contain one or more Content Delivery Network endpoints. You might want to use multiple profiles to organize your Content Delivery Network endpoints by internet domain, web application, or some other criteria. 
+A Content Delivery Network-előfizetés egy vagy több Content Delivery Network profilt is tartalmazhat. Egy Content Delivery Network profil egy vagy több Content Delivery Network végpontot tartalmazhat. Előfordulhat, hogy több profilt szeretne használni az Content Delivery Network-végpontok internetes tartomány, webalkalmazás vagy más feltétel alapján történő rendszerezéséhez. 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Create geo-replicated registry
+title: Oktatóanyag – földrajzilag replikált beállításjegyzék létrehozása
 description: Létrehozhat egy Azure Container Registryt, georeplikációt konfigurálhat, előkészíthet egy Docker-rendszerképet, és üzembe helyezheti azt a tárolójegyzékben. Ez egy háromrészes sorozat első része.
 ms.topic: tutorial
 ms.date: 04/30/2017
@@ -25,7 +25,7 @@ A háromrészes sorozat első oktatóanyagának tartalma:
 
 A következő oktatóanyagokban egy két Azure-régióban futó webalkalmazás számára helyezi üzembe a tárolót a privát tárolójegyzékből. Ezután frissíti az alkalmazásban lévő programkódot, és egyetlen `docker push` paranccsal frissíti mindkét webalkalmazás-példányt a tárolójegyzékben.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az oktatóanyaghoz az Azure CLI (2.0.31-es vagy újabb verzió) helyi telepítésére lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -37,7 +37,7 @@ Az Azure Cloud Shell nem tartalmazza a jelen oktatóanyag lépéseinek elvégzé
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 Válassza az **Erőforrás létrehozása** > **Tárolók** > **Azure Container Registry** elemet.
 
@@ -61,7 +61,7 @@ Az oktatóanyag hátralevő részében az `<acrName>` elem helyettesíti a táro
 > Mivel az Azure tárolójegyzékek általában több tárológazdagép által használt hosszútávú erőforrások, ajánlott a saját erőforráscsoportjában létrehozni a tárolójegyzéket. A georeplikált tárolójegyzékek és webhookok konfigurálásakor a további erőforrások ugyanabba az erőforráscsoportba kerülnek.
 >
 
-## <a name="configure-geo-replication"></a>Georeplikációk konfigurálása
+## <a name="configure-geo-replication"></a>Aktív georeplikáció konfigurálása
 
 Most, hogy egy prémium szintű tárolójegyzékkel rendelkezik, konfigurálhatja a georeplikációt. A webalkalmazás – amelyet a következő oktatóanyagban konfigurál a két régióban való futtatáshoz – ezután le tudja kérni a tároló rendszerképeit a legközelebbi tárolójegyzékből.
 
@@ -106,13 +106,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-If you don't have `git` installed, you can [download the ZIP archive][acr-helloworld-zip] directly from GitHub.
+Ha nincs `git` telepítve, közvetlenül a GitHubról [töltheti le a zip-archívumot][acr-helloworld-zip] .
 
 ## <a name="update-dockerfile"></a>A Dockerfile frissítése
 
 A mintában szereplő Dockerfile bemutatja a tároló összeállításának menetét. Egy hivatalos [aspnetcore][dockerhub-aspnetcore]-rendszerképből indul ki, a tárolóba másolja az alkalmazásfájlokat, telepíti a függőségeket, összeállítja a hivatalos [aspnetcore-build][dockerhub-aspnetcore-build]-rendszerképet, és végül egy optimalizált aspnetcore-rendszerképet hoz létre.
 
-The [Dockerfile][dockerfile] is located at `./AcrHelloworld/Dockerfile` in the cloned source.
+A [Docker][dockerfile] a klónozott forrás `./AcrHelloworld/Dockerfile` található.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base
@@ -205,7 +205,7 @@ Ezután a `docker push` paranccsal küldje le az *acr-helloworld*-rendszerképet
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Mivel georeplikációhoz konfigurálta a tárolójegyzéket, a rendszerkép ezzel az egy `docker push` paranccsal automatikusan replikálva lesz az *USA nyugati régióján* és az *USA keleti régióján* is.
+Mivel georeplikációhoz konfigurálta a tárolójegyzéket, a rendszerkép ezzel az egy *paranccsal automatikusan replikálva lesz az*USA nyugati régióján*és az*USA keleti régióján`docker push` is.
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1

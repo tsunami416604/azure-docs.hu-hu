@@ -1,6 +1,6 @@
 ---
-title: Common questions about Microsoft Azure Service Fabric | Microsoft Docs
-description: Frequently asked questions about Service Fabric and their answers
+title: Microsoft Azure Service Fabric kapcsolatos gyakori kérdések | Microsoft Docs
+description: Gyakori kérdések a Service Fabric és a rájuk adott válaszokról
 services: service-fabric
 documentationcenter: .net
 author: chackdan
@@ -21,103 +21,103 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481648"
 ---
-# <a name="commonly-asked-service-fabric-questions"></a>Commonly asked Service Fabric questions
+# <a name="commonly-asked-service-fabric-questions"></a>Gyakori kérdések Service Fabric kérdésekről
 
-There are many commonly asked questions about what Service Fabric can do and how it should be used. This document covers many of those common questions and their answers.
+Számos gyakran feltett kérdés arról, hogy mit tehet, és hogyan használható a Service Fabric. Ez a dokumentum ismerteti a gyakori kérdéseket és a rájuk adott válaszokat.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="cluster-setup-and-management"></a>Cluster setup and management
+## <a name="cluster-setup-and-management"></a>Fürt beállítása és felügyelete
 
-### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>How do I roll back my Service Fabric cluster certificate?
+### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Hogyan vissza a Service Fabric-fürt tanúsítványát?
 
-Rolling back any upgrade to your application requires health failure detection prior to your Service Fabric cluster quorum committing the change; committed changes can only be rolled forward. Escalation engineer’s through Customer Support Services, may be required to recover your cluster, if an unmonitored breaking certificate change has been introduced.  [Service Fabric’s application upgrade](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) applies [Application upgrade parameters](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master), and delivers zero downtime upgrade promise.  Following our recommended application upgrade monitored mode, automatic progress through update domains is based upon health checks passing, rolling back automatically if updating a default service fails.
+Az alkalmazásra való frissítés visszagörgetéséhez az Service Fabric fürt kvóruma előtt a módosítás véglegesítése előtt állapot-meghibásodás észlelése szükséges. a véglegesített módosításokat csak előre lehet görgetni. A eszkalációs mérnök az ügyfél-támogatási szolgáltatásokon keresztül szükséges lehet a fürt helyreállításához, ha a nem figyelt feltörési tanúsítvány megváltozása be lett vezetve.  [Service Fabric alkalmazásának frissítése](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) az [alkalmazás frissítési paramétereit](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)alkalmazza, és nulla állásidő-frissítési ígéretet biztosít.  Az ajánlott alkalmazás-frissítési figyelt üzemmódot követve a frissítési tartományokon keresztüli automatikus előrehaladás az állapot-ellenőrzéseken alapul, az alapértelmezett szolgáltatás frissítése esetén pedig automatikusan visszagörgethető.
  
-If your cluster is still leveraging the classic Certificate Thumbprint property in your Resource Manager template, it's recommended you [Change cluster from certificate thumbprint to common name](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn), to leverage modern secrets management features.
+Ha a fürt továbbra is kihasználja a klasszikus tanúsítvány ujjlenyomatát a Resource Manager-sablonban, javasoljuk, hogy a modern titkok kezelési funkcióinak kihasználásához [módosítsa a fürtet a tanúsítvány ujjlenyomatáról a köznapi névre](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn).
 
-### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Can I create a cluster that spans multiple Azure regions or my own datacenters?
+### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Létrehozhatok olyan fürtöt, amely több Azure-régióra vagy saját adatközpontra is kiterjed?
 
 Igen. 
 
-The core Service Fabric clustering technology can be used to combine machines running anywhere in the world, so long as they have network connectivity to each other. However, building and running such a cluster can be complicated.
+Az alapszintű Service Fabric fürtözési technológia a világ bármely pontján futó gépek összevonására használható, feltéve, hogy hálózati kapcsolattal rendelkeznek egymással. Az ilyen fürtök létrehozása és futtatása azonban bonyolult lehet.
 
-If you are interested in this scenario, we encourage you to get in contact either through the [Service Fabric GitHub Issues List](https://github.com/azure/service-fabric-issues) or through your support representative in order to obtain additional guidance. The Service Fabric team is working to provide additional clarity, guidance, and recommendations for this scenario. 
+Ha érdekli ezt a forgatókönyvet, javasoljuk, hogy vegye fel a kapcsolatot az [Service Fabric GitHub-problémák listáján](https://github.com/azure/service-fabric-issues) vagy a támogatási képviselőjén keresztül, hogy további útmutatást kapjon. Az Service Fabric csapat dolgozik a forgatókönyvhöz kapcsolódó további egyértelműség, útmutatás és javaslatok biztosításán. 
 
 Néhány mérlegelendő szempont ezzel kapcsolatban: 
 
-1. The Service Fabric cluster resource in Azure is regional today, as are the virtual machine scale sets that the cluster is built on. This means that in the event of a regional failure you may lose the ability to manage the cluster via the Azure Resource Manager or the Azure portal. This can happen even though the cluster remains running and you'd be able to interact with it directly. In addition, Azure today does not offer the ability to have a single virtual network that is usable across regions. This means that a multi-region cluster in Azure requires either [Public IP Addresses for each VM in the VM Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) or [Azure VPN Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md). These networking choices have different impacts on costs, performance, and to some degree application design, so careful analysis and planning is required before standing up such an environment.
-2. The maintenance, management, and monitoring of these machines can become complicated, especially when spanned across _types_ of environments, such as between different cloud providers or between on-premises resources and Azure. Care must be taken to ensure that upgrades, monitoring, management, and diagnostics are understood for both the cluster and the applications before running production workloads in such an environment. If you already have experience solving these problems in Azure or within your own datacenters, then it is likely that those same solutions can be applied when building out or running your Service Fabric cluster. 
+1. Az Azure-beli Service Fabric fürterőforrás a mai régió, a virtuális gépek méretezési csoportjai pedig a fürtre épülnek. Ez azt jelenti, hogy regionális meghibásodás esetén előfordulhat, hogy a Azure Resource Manager vagy a Azure Portal segítségével szeretné kezelni a fürtöt. Ez akkor is előfordulhat, ha a fürt továbbra is fut, és közvetlenül kommunikálni tud vele. Ezen kívül az Azure jelenleg nem képes egyetlen, régión belül használható virtuális hálózat kialakítására. Ez azt jelenti, hogy az Azure-ban egy többrégiós fürtnek Nyilvános IP-címek kell lennie [a VM Scale sets vagy az](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) [Azure VPN Gateway-](../vpn-gateway/vpn-gateway-about-vpngateways.md)beli virtuális gépekhez. Ezek a hálózatkezelési döntések eltérő hatással vannak a költségekre, a teljesítményre és a bizonyos fokú alkalmazások kialakítására, ezért alapos elemzésre és tervezésre van szükség, mielőtt felépítjük ezt a környezetet.
+2. Ezeknek a gépeknek a karbantartása, kezelése és monitorozása bonyolult lehet, különösen ha a különböző _típusú_ környezetek, például a különböző felhőalapú szolgáltatók, illetve a helyszíni erőforrások és az Azure közötti átfedések. Gondoskodni kell arról, hogy a frissítés, a monitorozás, a felügyelet és a diagnosztika a fürt és az alkalmazások számára is érthető legyen, mielőtt az éles számítási feladatokat egy ilyen környezetben futtatná. Ha már rendelkezik az Azure-ban vagy a saját adatközpontokban található problémák megoldásával, akkor valószínű, hogy ugyanezek a megoldások alkalmazhatók a Service Fabric-fürt kiépítésekor vagy futtatásakor is. 
 
-### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Do Service Fabric nodes automatically receive OS updates?
+### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Az Service Fabric-csomópontok automatikusan kapják meg az operációs rendszer frissítéseit?
 
-You can use [Virtual Machine Scale Set Automatic OS Image Update](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) Generally Available feature today.
+A virtuálisgép- [méretezési csoport automatikus operációs rendszer rendszerképének frissítése](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) általánosan elérhető funkcióként érhető el.
 
-For clusters that are NOT run in Azure, we have [provided an application](service-fabric-patch-orchestration-application.md) to patch the operating systems underneath your Service Fabric nodes.
+Az Azure-ban nem futtatott fürtök esetében [biztosítunk egy alkalmazást](service-fabric-patch-orchestration-application.md) a Service Fabric-csomópontok alatti operációs rendszerek javításához.
 
-### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>Can I use large virtual machine scale sets in my SF cluster? 
+### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>Használhatok nagyméretű virtuálisgép-méretezési csoportokat az SF-fürtben? 
 
-**Short answer** - No. 
+**Rövid válasz** – nem. 
 
-**Long Answer** - Although the large virtual machine scale sets allow you to scale a virtual machine scale set up to 1000 VM instances, it does so by the use of Placement Groups (PGs). Fault domains (FDs) and upgrade domains (UDs) are only consistent within a placement group Service fabric uses FDs and UDs to make placement decisions of your service replicas/Service instances. Since the FDs and UDs are comparable only within a placement group, SF cannot use it. For example, If VM1 in PG1 has a topology of FD=0 and VM9 in PG2 has a topology of FD=4, it does not mean that VM1 and VM2 are on two different Hardware Racks, hence SF cannot use the FD values in this case to make placement decisions.
+**Hosszú válasz** – bár a nagyméretű virtuálisgép-méretezési csoportok lehetővé teszik, hogy a virtuálisgép-méretezési csoport akár 1000 VM-példányra is méretezhető legyen, így az elhelyezési csoportok (PGs) használatával végezhető el. A tartalék tartományok (tartalék) és a frissítési tartományok (frissítési-EK) csak az elhelyezési csoporton belüli szolgáltatás-hálón belül konzisztensek a tartalék és a frissítési használatával, hogy elhelyezési döntéseket hozhassanak a szolgáltatás replikái/szolgáltatási példányain. Mivel a tartalék és a frissítési csak az elhelyezési csoporton belül hasonlíthatók össze, az SF nem tudja használni azt. Ha például a VM1 a PG1-ben az FD = 0 topológiája van, a PG2 pedig az FD = 4 topológiája van, akkor nem jelenti azt, hogy a VM1 és a VM2 két különböző hardveres állványon található, ezért az SF nem tudja használni az FD-értékeket ebben az esetben az elhelyezési döntések elvégzéséhez.
 
-There are other issues with large virtual machine scale sets currently, like the lack of level-4 Load balancing support. Refer to for [details on Large scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md)
-
-
-
-### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>What is the minimum size of a Service Fabric cluster? Why can't it be smaller?
-
-The minimum supported size for a Service Fabric cluster running production workloads is five nodes. For dev scenarios, we support one node (optimized for quick development experience in Visual Studio) and five node clusters.
-
-We require a production cluster to have at least 5 nodes because of the following three reasons:
-1. Even when no user services are running, a Service Fabric cluster runs a set of stateful system services, including the naming service and the failover manager service. These system services are essential for the cluster to remain operational.
-2. We always place one replica of a service per node, so cluster size is the upper limit for the number of replicas a service (actually a partition) can have.
-3. Since a cluster upgrade will bring down at least one node, we want to have a buffer of at least one node, therefore, we want a production cluster to have at least two nodes *in addition* to the bare minimum. The bare minimum is the quorum size of a system service as explained below.  
-
-We want the cluster to be available in the face of simultaneous failure of two nodes. For a Service Fabric cluster to be available, the system services must be available. Stateful system services like naming service and failover manager service, that track what services have been deployed to the cluster and where they're currently hosted, depend on strong consistency. That strong consistency, in turn, depends on the ability to acquire a *quorum* for any given update to the state of those services, where a quorum represents a strict majority of the replicas (N/2 +1) for a given service. Thus if we want to be resilient against simultaneous loss of two nodes (thus simultaneous loss of two replicas of a system service), we must have ClusterSize - QuorumSize >= 2, which forces the minimum size to be five. To see that, consider the cluster has N nodes and there are N replicas of a system service -- one on each node. The quorum size for a system service is (N/2 + 1). The above inequality looks like N - (N/2 + 1) >= 2. There are two cases to consider: when N is even and when N is odd. If N is even, say N = 2\*m where m >= 1, the inequality looks like 2\*m - (2\*m/2 + 1) >= 2 or m >= 3. The minimum for N is 6 and that is achieved when m = 3. On the other hand, if N is odd, say N = 2\*m+1 where m >= 1, the inequality looks like 2\*m+1 - ( (2\*m+1)/2 + 1 ) >= 2 or 2\*m+1 - (m+1) >= 2 or m >= 2. The minimum for N is 5 and that is achieved when m = 2. Therefore, among all values of N that satisfy the inequality ClusterSize - QuorumSize >= 2, the minimum is 5.
-
-Note, in the above argument we have assumed that every node has a replica of a system service, thus the quorum size is computed based on the number of nodes in the cluster. However, by changing *TargetReplicaSetSize* we could make the quorum size less than (N/2+1) which might give the impression that we could have a cluster smaller than 5 nodes and still have 2 extra nodes above the quorum size. For example, in a 4 node cluster, if we set the TargetReplicaSetSize to 3, the quorum size based on TargetReplicaSetSize is (3/2 + 1) or 2, thus we have ClusterSize - QuorumSize = 4-2 >= 2. However, we cannot guarantee that the system service will be at or above quorum if we lose any pair of nodes simultaneously, it could be that the two nodes we lost were hosting two replicas, so the system service will go into quorum loss (having only a single replica left) and will become unavailable.
-
-With that background, let's examine some possible cluster configurations:
-
-**One node**: this option does not provide high availability since the loss of the single node for any reason means the loss of the entire cluster.
-
-**Two nodes**: a quorum for a service deployed across two nodes (N = 2) is 2 (2/2 + 1 = 2). When a single replica is lost, it is impossible to create a quorum. Since performing a service upgrade requires temporarily taking down a replica, this is not a useful configuration.
-
-**Three nodes**: with three nodes (N=3), the requirement to create a quorum is still two nodes (3/2 + 1 = 2). This means that you can lose an individual node and still maintain quorum, but simultaneous failure of two nodes will drive the system services into quorum loss and will cause the cluster to become unavailable.
-
-**Four nodes**: with four nodes (N=4), the requirement to create a quorum is three nodes (4/2 + 1 = 3). This means that you can lose an individual node and still maintain quorum, but simultaneous failure of two nodes will drive the system services into quorum loss and will cause the cluster to become unavailable.
-
-**Five nodes**: with five nodes (N=5), the requirement to create a quorum is still three nodes (5/2 + 1 = 3). This means that you can lose two nodes at the same time and still maintain quorum for the system services.
-
-For production workloads, you must be resilient to simultaneous failure of at least two nodes (for example, one due to cluster upgrade, one due to other reasons), so five nodes are required.
-
-### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Can I turn off my cluster at night/weekends to save costs?
-
-In general, no. Service Fabric stores state on local, ephemeral disks, meaning that if the virtual machine is moved to a different host, the data does not move with it. In normal operation, that is not a problem as the new node is brought up-to-date by other nodes. However, if you stop all nodes and restart them later, there is a significant possibility that most of the nodes start on new hosts and make the system unable to recover.
-
-If you would like to create clusters for testing your application before it is deployed, we recommend that you dynamically create those clusters as part of your [continuous integration/continuous deployment pipeline](service-fabric-tutorial-deploy-app-with-cicd-vsts.md).
+A nagyméretű virtuálisgép-méretezési csoportokkal kapcsolatban más problémák is léteznek, például a 4-es szintű terheléselosztás támogatásának hiányában. A [nagyméretű méretezési csoportokkal kapcsolatos részletekért](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) lásd:
 
 
-### <a name="how-do-i-upgrade-my-operating-system-for-example-from-windows-server-2012-to-windows-server-2016"></a>How do I upgrade my Operating System (for example from Windows Server 2012 to Windows Server 2016)?
 
-While we're working on an improved experience, today, you are responsible for the upgrade. You must upgrade the OS image on the virtual machines of the cluster one VM at a time. 
+### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Mi a Service Fabric-fürt minimális mérete? Miért nem lehet kisebb?
 
-### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Can I encrypt attached data disks in a cluster node type (virtual machine scale set)?
-Igen.  For more information, see [Create a cluster with attached data disks](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) and [Azure Disk Encryption for Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md).
+Az éles munkaterheléseket futtató Service Fabric fürtök minimálisan támogatott mérete öt csomópont. A fejlesztői forgatókönyvek esetében támogatunk egy csomópontot (a Visual Studióban a gyors fejlesztési élményhez optimalizált) és öt csomópontos fürtöt.
 
-### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Can I use low-priority VMs in a cluster node type (virtual machine scale set)?
-Nem. Low-priority VMs are not supported. 
+A következő három ok miatt legalább 5 csomóponttal rendelkező üzemi fürtöt igényelünk:
+1. A Service Fabric-fürt állapot-nyilvántartó rendszerszolgáltatások készletét is futtatja, beleértve az elnevezési szolgáltatást és a Feladatátvevőfürt-kezelő szolgáltatást, még akkor is, ha nem fut felhasználói szolgáltatás. Ezek a rendszerszolgáltatások elengedhetetlenek ahhoz, hogy a fürt működőképes maradjon.
+2. A csomópontok egy-egy replikáját mindig elhelyezjük, így a fürt mérete a szolgáltatás (valójában partíció) replikáinak felső határa lehet.
+3. Mivel a fürt frissítése legalább egy csomópontot tartalmaz, legalább egy csomópont pufferét szeretnénk használni, ezért azt szeretnénk, hogy egy üzemi fürt legalább *két csomóponttal rendelkezzen a* minimálisan megengedettnél. A minimális érték egy rendszerszolgáltatás Kvórumának mérete, ahogy az alább is látható.  
 
-### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>What are the directories and processes that I need to exclude when running an anti-virus program in my cluster?
+Azt szeretnénk, hogy a fürt a két csomópont egyidejű meghibásodása előtt legyen elérhető. Ahhoz, hogy egy Service Fabric fürt elérhető legyen, elérhetőnek kell lennie a rendszerszolgáltatásoknak. Állapot-nyilvántartó rendszerszolgáltatások, például a névadási szolgáltatás és a Feladatátvevőfürt-kezelő szolgáltatás, amely nyomon követi, hogy a fürtön milyen szolgáltatások lettek telepítve, és hogy hol vannak jelenleg üzemeltetve, erős konzisztencia függ. Az erős konzisztencia azonban attól függ, hogy képes-e *kvórumot* beszerezni a szolgáltatások állapotára vonatkozóan, ahol a kvórum a replikák szigorú többségét jelöli (N/2 + 1) egy adott szolgáltatás esetében. Így ha a két csomópont egyidejű elvesztése miatt rugalmasan szeretnénk állni (azaz a rendszerszolgáltatás két replikájának egyidejű elvesztése), a ClusterSize-QuorumSize > = 2 értéknek kell lennie, amely a minimális méretet 5-re kényszeríti. Ennek megtekintéséhez vegye figyelembe, hogy a fürt N csomóponttal rendelkezik, és a rendszerszolgáltatások N replikái vannak – egyet az egyes csomópontokon. A rendszerszolgáltatások Kvórumának mérete (N/2 + 1). A fenti egyenlőtlenség úgy néz ki, mint N-(N/2 + 1) > = 2. Két esetet érdemes figyelembe venni: Ha N páros, és ha N páratlan. Ha N páros, mondjuk N = 2\*m, ahol m > = 1, a megegyezőség úgy néz ki, mint 2\*m-(2\*m/2 + 1) > = 2 vagy m > = 3. Az N érték minimuma 6, amely az m = 3 értéknél érhető el. Másrészről, ha az N páratlan, tegyük fel, hogy N = 2\*m + 1, ahol m > = 1, a különbség úgy néz ki, mint 2\*m + 1-((2\*m + 1)/2 + 1) > = 2 vagy 2\*m + 1-(m + 1) > = 2 vagy m > = 2. Az N érték minimuma 5, amely az m = 2 értéknél érhető el. Ezért az N érték minden olyan értéke között, amely megfelel a ClusterSize – QuorumSize > = 2, a minimum 5.
 
-| **Antivirus Excluded directories** |
+Vegye figyelembe, hogy a fenti argumentumban feltételezzük, hogy minden csomóponthoz tartozik egy rendszerszolgáltatás replikája, így a rendszer a fürt csomópontjainak száma alapján számítja ki a kvórum méretét. A *TargetReplicaSetSize* módosításával azonban a kvórum mérete (N/2 + 1) kisebb lehet, ami azt a benyomást keltheti, hogy a fürt 5 csomópontnál kisebb lehet, és továbbra is 2 további csomópontja van a kvórum méretének meghaladása előtt. Például egy 4 csomópontos fürtben, ha a TargetReplicaSetSize 3 értékre állítjuk, a TargetReplicaSetSize alapuló kvórum mérete (3/2 + 1) vagy 2, ezért ClusterSize-QuorumSize = 4-2 > = 2. Azonban nem tudjuk garantálni, hogy a rendszerszolgáltatás a kvórumnál vagy fölött marad, ha a csomópontok egyidejű elvesztése egyszerre történik, előfordulhat, hogy az elveszett két csomópont két replikát futtatott, így a rendszerszolgáltatás a kvórum elvesztését eredményezi (csak egyetlen replika maradt) az ND elérhetetlenné válik.
+
+Ebben a háttérben vizsgáljuk meg a lehetséges fürtkonfiguráció-konfigurációkat:
+
+**Egy csomópont**: Ez a lehetőség nem biztosít magas rendelkezésre állást, mivel az egyetlen csomópont elvesztése bármilyen okból kifolyólag a teljes fürt elvesztését jelenti.
+
+**Két csomópont**: két csomóponton üzembe helyezett szolgáltatás kvóruma (N = 2) 2 (2/2 + 1 = 2). Egyetlen replika elvesztése esetén nem lehet kvórumot létrehozni. A szolgáltatás frissítésének végrehajtása óta átmenetileg szükséges egy replika leállítása, ez nem hasznos konfiguráció.
+
+**Három csomópont**: három csomóponttal (N = 3) a kvórum létrehozásának követelménye még mindig két csomópont (3/2 + 1 = 2). Ez azt jelenti, hogy elveszítheti az egyes csomópontokat, és továbbra is megtarthatja a kvórumot, de a két csomópont egyidejű meghibásodása miatt a rendszerszolgáltatások Kvórumának elvesztését eredményezik, és a fürt elérhetetlenné válik.
+
+**Négy csomópont**: négy csomóponttal (N = 4) a kvórum létrehozásának követelménye három csomópont (4/2 + 1 = 3). Ez azt jelenti, hogy elveszítheti az egyes csomópontokat, és továbbra is megtarthatja a kvórumot, de a két csomópont egyidejű meghibásodása miatt a rendszerszolgáltatások Kvórumának elvesztését eredményezik, és a fürt elérhetetlenné válik.
+
+**Öt csomópont**: öt csomóponttal (N = 5) a kvórum létrehozásának követelménye még mindig három csomópont (5/2 + 1 = 3). Ez azt jelenti, hogy egyszerre két csomópontot veszíthet el, és továbbra is fenntarthatja a rendszerszolgáltatások kvórumát.
+
+Éles számítási feladatokhoz legalább két csomópont egyidejű meghibásodása esetén (például egy fürt frissítése miatt, egy másik ok miatt) rugalmasnak kell lennie, ezért öt csomópontra van szükség.
+
+### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Kikapcsolhatom a fürtöt éjjel/hétvégén a költségek megtakarítása érdekében?
+
+Általánosságban nem. Service Fabric a helyi, ideiglenes lemezeken tárolja az állapotot, ami azt jelenti, hogy ha a virtuális gépet egy másik gazdagépre helyezi át, akkor az nem helyezi át azokat. Normál működés esetén ez nem jelent problémát, mivel az új csomópontot más csomópontok hozzák naprakészen. Ha azonban az összes csomópontot leállítja és később újraindítja, akkor jelentős lehetőség van arra, hogy a csomópontok többsége új gazdagépeken induljon el, és a rendszer nem állítható helyre.
+
+Ha fürtöket szeretne létrehozni az alkalmazás üzembe helyezése előtt, javasoljuk, hogy dinamikusan hozza létre ezeket a fürtöket a [folyamatos integráció/folyamatos üzembe helyezési folyamat](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)részeként.
+
+
+### <a name="how-do-i-upgrade-my-operating-system-for-example-from-windows-server-2012-to-windows-server-2016"></a>Hogyan frissíteni az operációs rendszert (például a Windows Server 2012-ről a Windows Server 2016-re)?
+
+Miközben fejlesztünk egy továbbfejlesztett élményt, ma már a frissítésért felelős. Az operációs rendszer rendszerképét egyszerre kell frissítenie a fürt virtuális gépei között. 
+
+### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Titkosítani lehet a csatlakoztatott adatlemezeket egy fürtcsomópont-típusban (virtuálisgép-méretezési csoport)?
+Igen.  További információ: [fürt létrehozása csatolt adatlemezekkel](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) és [Azure Disk Encryption Virtual Machine Scale Setshoz](../virtual-machine-scale-sets/disk-encryption-overview.md).
+
+### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Használhatok alacsony prioritású virtuális gépeket egy fürtcsomópont-típusban (virtuálisgép-méretezési csoport)?
+Nem. Az alacsony prioritású virtuális gépek nem támogatottak. 
+
+### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Milyen címtárakat és folyamatokat kell kizárni a fürtön futó víruskereső program futtatásakor?
+
+| **Víruskereső által kizárt könyvtárak** |
 | --- |
-| Program Files\Microsoft Service Fabric |
-| FabricDataRoot (from cluster configuration) |
-| FabricLogRoot (from cluster configuration) |
+| Program Files\Microsoft a Service Fabric |
+| FabricDataRoot (a fürt konfiguráció) |
+| FabricLogRoot (a fürt konfiguráció) |
 
-| **Antivirus Excluded processes** |
+| **Víruskereső által kizárt folyamatok** |
 | --- |
 | Fabric.exe |
 | FabricHost.exe |
@@ -132,65 +132,65 @@ Nem. Low-priority VMs are not supported.
 | FabricRM.exe |
 | FileStoreService.exe |
  
-### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>How can my application authenticate to KeyVault to get secrets?
-The following are means for your application to obtain credentials for authenticating to KeyVault:
+### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Hogyan hitelesíthető az alkalmazás a kulcstartóban a titkok beszerzéséhez?
+Az alábbi módszer azt jelenti, hogy az alkalmazás a kulcstartóhoz való hitelesítéshez hitelesítő adatokat kér:
 
-A. During your applications build/packing job, you can pull a certificate into your SF app's data package, and use this to authenticate to KeyVault.
-B. For virtual machine scale set MSI enabled hosts, you can develop a simple PowerShell SetupEntryPoint for your SF app to get [an access token from the MSI endpoint](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), and then [retrieve your secrets from KeyVault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
+A. Az alkalmazások felépítési/csomagolási feladataként lekérhet egy tanúsítványt az SF alkalmazás adatcsomagjába, és ezzel hitelesítheti a kulcstartót.
+B. A virtuálisgép-méretezési csoport MSI-kompatibilis gazdagépei esetében létrehozhat egy egyszerű PowerShell-SetupEntryPoint az SF-alkalmazáshoz, amely [hozzáférési tokent kap az MSI-végponttól](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), majd [lekéri a titkos kulcsokat](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)a kulcstartóból.
 
-## <a name="application-design"></a>Application Design
+## <a name="application-design"></a>Alkalmazás kialakítása
 
-### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>What's the best way to query data across partitions of a Reliable Collection?
+### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Mi a legjobb módszer az adatlekérdezésre egy megbízható gyűjtemény partíciói között?
 
-Reliable collections are typically [partitioned](service-fabric-concepts-partitioning.md) to enable scale out for greater performance and throughput. That means that the state for a given service may be spread across tens or hundreds of machines. To perform operations over that full data set, you have a few options:
+A megbízható gyűjtemények általában [particionálva](service-fabric-concepts-partitioning.md) vannak a nagyobb teljesítmény és átviteli sebesség érdekében. Ez azt jelenti, hogy egy adott szolgáltatás állapota több tíz vagy több száz gép között is elterjedhet. Ha a teljes adathalmazon műveleteket hajt végre, néhány lehetőség közül választhat:
 
-- Create a service that queries all partitions of another service to pull in the required data.
-- Create a service that can receive data from all partitions of another service.
-- Periodically push data from each service to an external store. This approach is only appropriate if the queries you're performing are not part of your core business logic, as the external store's data will be stale.
-- Alternatively, store data that must support querying across all records directly in a data store rather than in a reliable collection. This eliminates the issue with stale data, but doesn't allow the advantages of reliable collections to be leveraged.
+- Hozzon létre egy szolgáltatást, amely lekérdezi egy másik szolgáltatás összes partícióját, hogy lekérje a szükséges adatmennyiséget.
+- Hozzon létre egy olyan szolgáltatást, amely egy másik szolgáltatás összes partíciójának adatait képes fogadni.
+- Az egyes szolgáltatásokból származó adatok rendszeres leküldése egy külső tárolóba. Ez a megközelítés csak akkor megfelelő, ha a végrehajtott lekérdezések nem részei az alapvető üzleti logikájának, mivel a külső tároló adatai elavultak lesznek.
+- Azt is megteheti, hogy olyan adatokat tárol, amelyeknek támogatnia kell az összes rekord lekérdezését közvetlenül egy adattárból, nem pedig megbízható gyűjteményben. Ezzel kiküszöbölheti az elavult adatmennyiséggel kapcsolatos problémát, de nem teszi lehetővé a megbízható gyűjtemények kihasználása előnyeit.
 
 
-### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>What's the best way to query data across my actors?
+### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>Mi a legjobb módszer a saját színészek adatai lekérdezésére?
 
-Actors are designed to be independent units of state and compute, so it is not recommended to perform broad queries of actor state at runtime. If you have a need to query across the full set of actor state, you should consider either:
+A szereplők úgy vannak kialakítva, hogy függetlenek legyenek az államnak és a számítási feladatoknak, ezért nem ajánlott a szereplők állapotának széles körű lekérdezését végrehajtani futásidőben. Ha a színészi állapot teljes készletén kell lekérdezni, akkor a következőket kell figyelembe vennie:
 
-- Replacing your actor services with stateful reliable services, so that the number of network requests to gather all data from the number of actors to the number of partitions in your service.
-- Designing your actors to periodically push their state to an external store for easier querying. As above, this approach is only viable if the queries you're performing are not required for your runtime behavior.
+- A Actor Services kicserélése állapot-nyilvántartó megbízható szolgáltatásokkal, így a hálózati kérések száma, hogy a szereplők számától származó összes adatokat a szolgáltatásban lévő partíciók száma szerint gyűjtsön.
+- A résztvevők megtervezése, hogy rendszeres időközönként leküldsék az állapotukat egy külső tárolóba. A fentiek szerint ez a megközelítés csak akkor életképes, ha az éppen végrehajtott lekérdezések nem szükségesek a futásidejű működéséhez.
 
-### <a name="how-much-data-can-i-store-in-a-reliable-collection"></a>How much data can I store in a Reliable Collection?
+### <a name="how-much-data-can-i-store-in-a-reliable-collection"></a>Mekkora mennyiségű adattárolót tárolhatok egy megbízható gyűjteményben?
 
-Reliable services are typically partitioned, so the amount you can store is only limited by the number of machines you have in the cluster, and the amount of memory available on those machines.
+A megbízható szolgáltatásokat általában particionálják, így a tárolható mennyiség csak a fürtben található gépek számától és a gépen elérhető memória mennyiségétől függ.
 
-As an example, suppose that you have a reliable collection in a service with 100 partitions and 3 replicas, storing objects that average 1 kb in size. Now suppose that you have a 10 machine cluster with 16gb of memory per machine. For simplicity and to be conservative, assume that the operating system and system services, the Service Fabric runtime, and your services consume 6gb of that, leaving 10gb available per machine, or 100 gb for the cluster.
+Tegyük fel például, hogy megbízható gyűjteménye van egy 100-partícióval és 3 replikával rendelkező szolgáltatásban, amely átlagosan 1 KB méretű objektumokat tárol. Most tegyük fel, hogy egy 10 GB memóriával rendelkező számítógép-fürttel rendelkezik. Az egyszerűség és a konzervatívság érdekében tegyük fel, hogy az operációs rendszer és a rendszerszolgáltatások, a Service Fabric futtatókörnyezet és a szolgáltatásai 6gb-t használnak, és a fürt számára a 10 GB-ot, illetve 100 GB-ot.
 
-Keeping in mind that each object must be stored three times (one primary and two replicas), you would have sufficient memory for approximately 35 million objects in your collection when operating at full capacity. However, we recommend being resilient to the simultaneous loss of a failure domain and an upgrade domain, which represents about 1/3 of capacity, and would reduce the number to roughly 23 million.
+Ne feledje, hogy az egyes objektumokat háromszor kell tárolni (egy elsődleges és két replikát), ezért elegendő memória áll rendelkezésre a gyűjtemény körülbelül 35 000 000 objektumához, ha teljes kapacitással működik. Azt javasoljuk azonban, hogy legyen rugalmas a meghibásodási tartomány és a frissítési tartomány egyidejű elvesztése miatt, ami körülbelül 1/3 kapacitást képvisel, és a számot körülbelül 23 000 000-ra csökkentse.
 
-Note that this calculation also assumes:
+Vegye figyelembe, hogy ez a számítás a következőket is feltételezi:
 
-- That the distribution of data across the partitions is roughly uniform or that you're reporting load metrics to the Cluster Resource Manager. By default, Service Fabric loads balance based on replica count. In the preceding example, that would put 10 primary replicas and 20 secondary replicas on each node in the cluster. That works well for load that is evenly distributed across the partitions. If load is not even, you must report load so that the Resource Manager can pack smaller replicas together and allow larger replicas to consume more memory on an individual node.
+- Az adatok a partíciók közötti eloszlása nagyjából egységes, vagy a fürt erőforrás-kezelőjének betöltési mérőszámait jelenti. Alapértelmezés szerint a Service Fabric a replika száma alapján tölti be az egyenleget. Az előző példában 10 elsődleges replikát és 20 másodlagos replikát eredményezne a fürt mindegyik csomópontján. Ez jól működik olyan terhelés esetén, amely egyenletesen oszlik el a partíciók között. Ha a betöltés még nem áll fenn, be kell jelentenie a betöltést, hogy a Resource Manager több replikát is csomagoljon, és lehetővé tegye a nagyobb replikák számára, hogy több memóriát fogyasszanak egy adott csomóponton.
 
-- That the reliable service in question is the only one storing state in the cluster. Since you can deploy multiple services to a cluster, you need to be mindful of the resources that each needs to run and manage its state.
+- A kérdéses megbízható szolgáltatás az egyetlen tárolási állapot a fürtben. Mivel több szolgáltatást is üzembe helyezhet egy fürtön, figyelembe kell vennie azokat az erőforrásokat, amelyek futtatásához és kezeléséhez szükséges.
 
-- That the cluster itself is not growing or shrinking. If you add more machines, Service Fabric will rebalance your replicas to leverage the additional capacity until the number of machines surpasses the number of partitions in your service, since an individual replica cannot span machines. By contrast, if you reduce the size of the cluster by removing machines, your replicas are packed more tightly and have less overall capacity.
+- A fürt nem növekszik vagy csökken. Ha további gépeket ad hozzá, Service Fabric a további kapacitás kihasználása érdekében újra kiegyenlíti a replikákat, amíg a gépek száma meghaladja a szolgáltatásban lévő partíciók számát, mivel az egyes replikák nem terjedhetnek ki a gépekre. Ezzel szemben, ha csökkenti a fürt méretét a gépek eltávolításával, a replikák szorosabban vannak becsomagolva, és kevesebb általános kapacitással rendelkeznek.
 
-### <a name="how-much-data-can-i-store-in-an-actor"></a>How much data can I store in an actor?
+### <a name="how-much-data-can-i-store-in-an-actor"></a>Mennyi adattal tárolhatok egy színész?
 
-As with reliable services, the amount of data that you can store in an actor service is only limited by the total disk space and memory available across the nodes in your cluster. However, individual actors are most effective when they are used to encapsulate a small amount of state and associated business logic. As a general rule, an individual actor should have state that is measured in kilobytes.
+A megbízható szolgáltatásokhoz hasonlóan a actoring szolgáltatásban tárolható adatmennyiséget csak a fürt csomópontjain elérhető teljes lemezterület és memória korlátozza. Az egyes szereplők azonban a leghatékonyabb, ha a kis mennyiségű állam és az ahhoz kapcsolódó üzleti logika beágyazására használják őket. Általános szabályként az egyes színészeknek kilobájtban mért állapottal kell rendelkezniük.
 
-## <a name="other-questions"></a>Other questions
+## <a name="other-questions"></a>Egyéb kérdések
 
-### <a name="how-does-service-fabric-relate-to-containers"></a>How does Service Fabric relate to containers?
+### <a name="how-does-service-fabric-relate-to-containers"></a>Hogyan kapcsolódik Service Fabric a tárolóhoz?
 
-Containers offer a simple way to package services and their dependencies such that they run consistently in all environments and can operate in an isolated fashion on a single machine. Service Fabric offers a way to deploy and manage services, including [services that have been packaged in a container](service-fabric-containers-overview.md).
+A tárolók egyszerű módszert biztosítanak a szolgáltatások és a függőségek kiépítésére úgy, hogy azok minden környezetben konzisztensek legyenek, és egyetlen gépen elszigetelt módon működjenek. Service Fabric lehetővé teszik a szolgáltatások üzembe helyezését és kezelését, beleértve [a tárolóba csomagolt szolgáltatásokat](service-fabric-containers-overview.md)is.
 
-### <a name="are-you-planning-to-open-source-service-fabric"></a>Are you planning to open-source Service Fabric?
+### <a name="are-you-planning-to-open-source-service-fabric"></a>A nyílt forráskódú Service Fabrict tervezi?
 
-We have open-sourced parts of Service Fabric ([reliable services framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [reliable actors framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.NET Core integration libraries](https://github.com/Azure/service-fabric-aspnetcore), [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer), and [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) on GitHub and accept community contributions to those projects. 
+Nyílt forráskódú Service Fabric ([megbízható szolgáltatások keretrendszere](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [megbízható szereplők keretrendszere](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.net Core integrációs kódtárak](https://github.com/Azure/service-fabric-aspnetcore), [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)és [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) találhatók a githubon, és közösségi hozzájárulásokat fogadhatnak ezekhez a projektekhez. 
 
-We [recently announced](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/) that we plan to open-source the Service Fabric runtime. At this point we have the [Service Fabric repo](https://github.com/Microsoft/service-fabric/) up on GitHub with Linux build and test tools, which means you can clone the repo, build Service Fabric for Linux, run basic tests, open issues, and submit pull requests. We’re working hard to get the Windows build environment migrated over as well, along with a complete CI environment.
+[Nemrég bejelentettük](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/) , hogy a Service Fabric futtatókörnyezet nyílt forráskódú. Ezen a ponton a GitHubon a Linux Build-és tesztelési eszközeivel is rendelkezünk a [Service Fabric](https://github.com/Microsoft/service-fabric/) -tárházban, ami azt jelenti, hogy a tárház klónozása, a Linux-alapú Service Fabric, az alapszintű tesztek futtatása, a nyílt problémák és a lekéréses kérelmek elküldése Keményen dolgozunk a Windows-Build környezet áttelepítésének és a teljes körű CI-környezetnek a beszerzésével.
 
-Follow the [Service Fabric blog](https://blogs.msdn.microsoft.com/azureservicefabric/) for more details as they're announced.
+További részletekért tekintse meg a [Service Fabric blogot](https://blogs.msdn.microsoft.com/azureservicefabric/) .
 
 ## <a name="next-steps"></a>Következő lépések
 
-Learn about [core Service Fabric concepts](service-fabric-technical-overview.md) and [best practices](service-fabric-best-practices-overview.md) ice Fabric concepts](service-fabric-technical-overview.md) and [best practices](service-fabric-best-practices-overview.md)
+Ismerje meg az [alapszintű Service Fabric fogalmakat](service-fabric-technical-overview.md) és az [ajánlott eljárásokat](service-fabric-best-practices-overview.md) Ice Fabric-fogalmakat] (Service-fabric-Technical-Overview.MD) és [ajánlott eljárásokat](service-fabric-best-practices-overview.md)

@@ -96,7 +96,7 @@ A Device Provisioning Service, akárcsak az összes Azure IoT-szolgáltatás, sz
 
 A Device Provisioning Service csak HTTPS-kapcsolatokat támogat szolgáltatási műveletekhez.
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>Régiók
 Device Provisioning Service számos régióban elérhető. A meglévő és újonnan bejelentett régiók naprakész listája minden szolgáltatáshoz megtalálható az [Azure-régióknál](https://azure.microsoft.com/regions/). A Device Provisioning Service elérhetőségét az [Azure állapota](https://azure.microsoft.com/status/) lapon tekintheti meg.
 
 > [!NOTE]

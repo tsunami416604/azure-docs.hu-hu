@@ -1,6 +1,6 @@
 ---
-title: Infrastructure and connectivity to SAP HANA on Azure (large instances) | Microsoft Docs
-description: Configure required connectivity infrastructure to use SAP HANA on Azure (large instances).
+title: Infrastruktúra és kapcsolódás az Azure-SAP HANAhoz (nagyméretű példányok) | Microsoft Docs
+description: Konfigurálja a szükséges kapcsolati infrastruktúrát az Azure-beli SAP HANA használatához (nagyméretű példányok esetén).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
@@ -20,37 +20,37 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224668"
 ---
-# <a name="sap-hana-large-instances-deployment"></a>SAP HANA (large instances) deployment 
+# <a name="sap-hana-large-instances-deployment"></a>SAP HANA (nagyméretű példányok) üzembe helyezése 
 
-This article assumes that you've completed your purchase of SAP HANA on Azure (large instances) from Microsoft. Before reading this article, for general background, see [HANA large instances common terms](hana-know-terms.md) and [HANA large instances SKUs](hana-available-skus.md).
+Ez a cikk azt feltételezi, hogy elvégezte a Microsoft Azure-beli (nagyméretű példányok) SAP HANAának megvásárlását. A cikk elolvasása előtt általános háttérként tekintse meg a [Hana nagyméretű példányainak általános kifejezéseit](hana-know-terms.md) és a [Hana Large instances SKU](hana-available-skus.md)-t.
 
 
-Microsoft requires the following information to deploy HANA large instance units:
+A Microsoft a következő információkat igényli a HANA nagyméretű példányok üzembe helyezéséhez:
 
-- Customer name.
-- Business contact information (including email address and phone number).
-- Technical contact information (including email address and phone number).
-- Technical networking contact information (including email address and phone number).
-- Azure deployment region (for example, West US, Australia East, or North Europe).
-- SAP HANA on Azure (large instances) SKU (configuration).
-- For every Azure deployment region:
-    - A /29 IP address range for ER-P2P connections that connect Azure virtual networks to HANA large instances.
-    - A /24 CIDR Block used for the HANA large instances server IP pool.
-    - Optional when using [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) to enable direct routing from on-premises to HANA Large Instance units or routing between HANA Large Instance units in different Azure regions, you need to reserve another /29 IP address range. This particular range may not overlap with any of the other IP address ranges you defined before.
-- The IP address range values used in the virtual network address space attribute of every Azure virtual network that connects to the HANA large instances.
-- Data for each HANA large instances system:
-  - Desired hostname, ideally with a fully qualified domain name.
-  - Desired IP address for the HANA large instance unit out of the Server IP pool address range. (The first 30 IP addresses in the server IP pool address range are reserved for internal use within HANA large instances.)
-  - SAP HANA SID name for the SAP HANA instance (required to create the necessary SAP HANA-related disk volumes). Microsoft needs the HANA SID for creating the permissions for sidadm on the NFS volumes. These volumes attach to the HANA large instance unit. The HANA SID is also used as one of the name components of the disk volumes that get mounted. If you want to run more than one HANA instance on the unit, you should list multiple HANA SIDs. Each one gets a separate set of volumes assigned.
-  - In the Linux OS, the sidadm user has a group ID. This ID is required to create the necessary SAP HANA-related disk volumes. The SAP HANA installation usually creates the sapsys group, with a group ID of 1001. The sidadm user is part of that group.
-  - In the Linux OS, the sidadm user has a user ID. This ID is required to create the necessary SAP HANA-related disk volumes. If you're running several HANA instances on the unit, list all the sidadm users. 
-- The Azure subscription ID for the Azure subscription to which SAP HANA on Azure HANA large instances are going to be directly connected. This subscription ID references the Azure subscription, which is going to be charged with the HANA large instance unit or units.
+- Az ügyfél neve.
+- Üzleti kapcsolattartási adatok (beleértve az e-mail-címet és a telefonszámot).
+- Technikai kapcsolattartási adatok (beleértve az e-mail-címet és a telefonszámot).
+- Technikai hálózati kapcsolattartási adatok (beleértve az e-mail-címet és a telefonszámot).
+- Azure üzembe helyezési régió (például az USA nyugati régiója, Kelet-Ausztrália vagy Észak-Európa).
+- SAP HANA az Azure-ban (nagyméretű példányok) SKU (konfiguráció).
+- Minden Azure-beli üzembe helyezési régióban:
+    - A/29 IP-címtartomány az olyan ER-P2P kapcsolatok esetében, amelyek az Azure-beli virtuális hálózatokat a HANA nagyméretű példányaihoz kötik.
+    - A HANA nagyméretű példányok kiszolgálói IP-készletéhez használt a/24 CIDR-blokk.
+    - Nem kötelező, ha a [ExpressRoute-Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) használatával engedélyezi a közvetlen útválasztást a helyszínről a nagyméretű példányok számára, vagy a különböző Azure-régiókban lévő HANA nagyméretű példány-egységek közötti útválasztást, egy másik/29 IP-címtartományt kell fenntartania. Ez az adott tartomány nem fedi át a korábban definiált többi IP-címtartományt.
+- A HANA nagyméretű példányokhoz csatlakozó összes Azure-beli virtuális hálózat virtuális hálózati címtartomány attribútumában használt IP-címtartomány értékei.
+- Az egyes HANA Large instances rendszerekhez tartozó adatmennyiség:
+  - A kívánt állomásnév, ideális esetben egy teljesen minősített tartománynév.
+  - A HANA nagyméretű példányának kívánt IP-címe a kiszolgáló IP-készletének címtartományból. (A kiszolgáló IP-címkészlet címének első 30 IP-címe a HANA nagyméretű példányain belüli belső használatra van fenntartva.)
+  - SAP HANA SID neve a SAP HANA példányhoz (a szükséges SAP HANA kapcsolódó kötetek létrehozásához szükséges). A Microsoftnak szüksége van a HANA SID-re az NFS-köteteken található sidadm engedélyeinek létrehozásához. Ezek a kötetek a HANA nagyméretű példány-egységhez csatlakoznak. A HANA SID a csatlakoztatott lemez kötetek egyikének a nevét is használja. Ha egynél több HANA-példányt szeretne futtatni az egységen, több HANA-SID-t is fel kell sorolnia. Mindegyikhez egy különálló kötet lesz hozzárendelve.
+  - A Linux operációs rendszerekben a sidadm felhasználónak van egy csoport azonosítója. Ez az azonosító szükséges a szükséges SAP HANA kapcsolódó kötetek létrehozásához. A SAP HANA telepítés általában létrehozza a sapsys csoportot, amelynek csoportazonosító 1001. A sidadm felhasználó tagja ennek a csoportnak.
+  - A Linux operációs rendszerekben a sidadm felhasználója felhasználói AZONOSÍTÓval rendelkezik. Ez az azonosító szükséges a szükséges SAP HANA kapcsolódó kötetek létrehozásához. Ha az egységen több HANA-példányt futtat, sorolja fel a sidadm összes felhasználóját. 
+- Az Azure-előfizetéshez tartozó Azure-előfizetés azonosítója, amelyhez az Azure HANA nagyméretű példányain SAP HANA közvetlenül csatlakoztatva lesznek. Ez az előfizetés-azonosító az Azure-előfizetésre hivatkozik, amelyet a HANA nagyméretű példány egységével vagy egységével kell fizetni.
 
-After you provide the preceding information, Microsoft provisions SAP HANA on Azure (large instances). Microsoft sends you information to link your Azure virtual networks to HANA large instances. You can also access the HANA large instance units.
+Az előző információk megadása után a Microsoft SAP HANA az Azure-ban (nagyméretű példányok). A Microsoft információkat küld Önnek az Azure-beli virtuális hálózatok a HANA nagyméretű példányokhoz való összekapcsolásához. A HANA nagyméretű példányok egységeit is elérheti.
 
-Use the following sequence to connect to the HANA large instances after Microsoft has deployed it:
+A következő műveletsorral csatlakozhat a HANA nagyméretű példányaihoz a Microsoft általi üzembe helyezése után:
 
-1. [Connecting Azure VMs to HANA large instances](hana-connect-azure-vm-large-instances.md)
-2. [Connecting a VNet to HANA large instances ExpressRoute](hana-connect-vnet-express-route.md)
-3. [Additional network requirements (optional)](hana-additional-network-requirements.md)
+1. [Azure-beli virtuális gépek csatlakoztatása nagyméretű HANA-példányokhoz](hana-connect-azure-vm-large-instances.md)
+2. [VNet csatlakoztatása a HANA Large instances ExpressRoute](hana-connect-vnet-express-route.md)
+3. [További hálózati követelmények (nem kötelező)](hana-additional-network-requirements.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Deploy from geo-replicated registry
-description: Deploy a Linux-based web app to two different Azure regions using a container image from a geo-replicated Azure container registry. Ez egy háromrészes sorozat második része.
+title: Oktatóanyag – üzembe helyezés földrajzilag replikált beállításjegyzékből
+description: Egy Linux-alapú webalkalmazás üzembe helyezése két különböző Azure-régióban egy geo-replikált Azure Container Registry-beli tároló-rendszerkép használatával. Ez egy háromrészes sorozat második része.
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
@@ -11,7 +11,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456103"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Deploy a web app from a geo-replicated Azure container registry
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: webalkalmazás üzembe helyezése egy földrajzilag replikált Azure Container registryből
 
 Ez egy háromrészes oktatóanyag-sorozat második része. Az [első részben](container-registry-tutorial-prepare-registry.md) létrehozott egy privát, georeplikált tárolóregisztrációs adatbázist, valamint felépített egy tárolórendszerképet a forrásból, és leküldte a regisztrációs adatbázisba. Az ebben a cikkben leírtakat követve kihasználhatja a georeplikált regisztrációs adatbázis hálózatközeli aspektusát a tároló két, különböző Azure-régióban található webalkalmazás-példányban történő üzembe helyezésével. Ekkor mindegyik példány a legközelebbi regisztrációs adatbázisból kéri le a tárolólemezképet.
 
@@ -45,7 +45,7 @@ Ha az „Üzembe helyezés a webalkalmazásban” lehetőség nem érhető el, e
 
 Az „Üzembe helyezés a webalkalmazásban” kiválasztása után megjelenített **Web App for Containers** területen adja meg a következő értékeket a beállításokhoz:
 
-| Beállítás | Value (Díj) |
+| Beállítás | Érték |
 |---|---|
 | **Hely neve** | A webalkalmazás globálisan egyedi neve. Ebben a példában az `<acrName>-westus` formátumot használjuk, hogy könnyen azonosítani lehessen a regisztrációs adatbázist és a régiót, amelyből a webalkalmazás telepítve lesz. |
 | **Erőforráscsoport** | **Meglévő használata** > `myResourceGroup` |
@@ -54,7 +54,7 @@ Az „Üzembe helyezés a webalkalmazásban” kiválasztása után megjeleníte
 | **Operációs rendszer** | Linux |
 
 > [!NOTE]
-> When you create a new app service plan to deploy your containerized app, a default plan is automatically selected to host your application. The default plan depends on the operating system setting.
+> Amikor létrehoz egy új App Service-csomagot a tároló alkalmazás üzembe helyezéséhez, a rendszer automatikusan kijelöl egy alapértelmezett csomagot az alkalmazás üzemeltetéséhez. Az alapértelmezett terv az operációs rendszer beállításától függ.
 
 Válassza a **Létrehozás** lehetőséget a webalkalmazás az *USA nyugati régiójában* való üzembe helyezéséhez.
 
@@ -78,7 +78,7 @@ A Docker-rendszerkép georeplikált tárolóregisztrációs adatbázisból való
 
 Kövesse az előző szakaszban leírt eljárást egy második webalkalmazás az *USA keleti régiójában* való üzembe helyezéséhez. A **Web App for Containers** területen adja meg a következő értékeket:
 
-| Beállítás | Value (Díj) |
+| Beállítás | Érték |
 |---|---|
 | **Hely neve** | A webalkalmazás globálisan egyedi neve. Ebben a példában az `<acrName>-eastus` formátumot használjuk, hogy könnyen azonosítani lehessen a regisztrációs adatbázist és a régiót, amelyből a webalkalmazás telepítve lesz. |
 | **Erőforráscsoport** | **Meglévő használata** > `myResourceGroup` |

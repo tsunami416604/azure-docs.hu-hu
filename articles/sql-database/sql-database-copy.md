@@ -1,6 +1,6 @@
 ---
 title: Adatbázis másolása
-description: Create a transactionally consistent copy of an existing Azure SQL database on either the same server or a different server.
+description: Hozzon létre tranzakciós szempontból konzisztens másolatot egy meglévő Azure SQL Database-adatbázisról ugyanazon a kiszolgálón vagy egy másik kiszolgálón.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -18,50 +18,50 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421346"
 ---
-# <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Copy a transactionally consistent copy of an Azure SQL database
+# <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Azure SQL Database-adatbázis tranzakciós szempontból konzisztens másolatának másolása
 
-Azure SQL Database provides several methods for creating a transactionally consistent copy of an existing Azure SQL database ([single database](sql-database-single-database.md)) on either the same server or a different server. You can copy a SQL database by using the Azure portal, PowerShell, or T-SQL.
+Azure SQL Database számos módszert biztosít egy meglévő Azure SQL Database-adatbázis ([önálló adatbázis](sql-database-single-database.md)) tranzakciós szempontból konzisztens másolatának létrehozásához ugyanazon a kiszolgálón vagy egy másik kiszolgálón. SQL-adatbázist a Azure Portal, a PowerShell vagy a T-SQL használatával másolhat.
 
 ## <a name="overview"></a>Áttekintés
 
-A database copy is a snapshot of the source database as of the time of the copy request. You can select the same server or a different server. Also you can choose to keep its service tier and compute size, or use a different compute size within the same service tier (edition). After the copy is complete, it becomes a fully functional, independent database. At this point, you can upgrade or downgrade it to any edition. The logins, users, and permissions can be managed independently. The copy is created using the geo-replication technology and once seeding is completed the geo-replication link is automatically terminated. All the requirements for using geo-replication apply to the database copy operation. See [Active geo-replication overview](sql-database-active-geo-replication.md) for details.
+A másolási kérelem időpontját tartalmazó adatbázis-másolat a forrásadatbázis pillanatképe. Ugyanezt a kiszolgálót vagy egy másik kiszolgálót is kiválaszthatja. Azt is megteheti, hogy megtartja a szolgáltatási szintet és a számítási méretet, vagy eltérő számítási méretet használ ugyanazon a szolgáltatási szinten (kiadás) belül. A másolás befejezése után teljesen működőképes, független adatbázis lesz. Ezen a ponton bármely kiadásra frissítheti vagy visszaminősítheti azt. A bejelentkezések, a felhasználók és az engedélyek egymástól függetlenül kezelhetők. A másolás a Geo-replikációs technológiával jön létre, és a kivetés befejezése után a rendszer automatikusan leállítja a Geo-replikálási hivatkozást. A Geo-replikáció használatának összes követelménye az adatbázis-másolási műveletre vonatkozik. Részletekért lásd: az [aktív geo-replikáció áttekintése](sql-database-active-geo-replication.md) .
 
 > [!NOTE]
-> [Automated database backups](sql-database-automated-backups.md) are used when you create a database copy.
+> Az adatbázisok [automatikus biztonsági mentése](sql-database-automated-backups.md) az adatbázis-másolat létrehozásakor használatos.
 
-## <a name="logins-in-the-database-copy"></a>Logins in the database copy
+## <a name="logins-in-the-database-copy"></a>Bejelentkezések az adatbázis-másolatban
 
-When you copy a database to the same SQL Database server, the same logins can be used on both databases. The security principal you use to copy the database becomes the database owner on the new database. All database users, their permissions, and their security identifiers (SIDs) are copied to the database copy.  
+Ha ugyanarra a SQL Database kiszolgálóra másol egy adatbázist, ugyanazokat a bejelentkezéseket is használhatja mindkét adatbázison. Az adatbázis másolásához használt rendszerbiztonsági tag lesz az adatbázis tulajdonosa az új adatbázisban. Minden adatbázis-felhasználó, a hozzá tartozó engedélyek és a biztonsági azonosítók (SID-ek) át lesznek másolva az adatbázis-másolatba.  
 
-When you copy a database to a different SQL Database server, the security principal on the new server becomes the database owner on the new database. If you use [contained database users](sql-database-manage-logins.md) for data access, ensure that both the primary and secondary databases always have the same user credentials, so that after the copy is complete you can immediately access it with the same credentials.
+Ha egy másik SQL Database-kiszolgálóra másol egy adatbázist, az új kiszolgálón lévő rendszerbiztonsági tag lesz az adatbázis tulajdonosa az új adatbázisban. Ha [tárolt adatbázis-felhasználókat](sql-database-manage-logins.md) használ az adatokhoz való hozzáféréshez, győződjön meg arról, hogy mind az elsődleges, mind a másodlagos adatbázis ugyanazokkal a felhasználói hitelesítő adatokkal rendelkezik, így a másolás befejeződése után azonnal elérheti ugyanazokkal a hitelesítő adatokkal.
 
-If you use [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), you can completely eliminate the need for managing credentials in the copy. However, when you copy the database to a new server, the login-based access might not work, because the logins do not exist on the new server. To learn about managing logins when you copy a database to a different SQL Database server, see [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md).
+Ha [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)használ, teljes mértékben kizárja a hitelesítő adatoknak a másolatban való kezelésének szükségességét. Ha azonban új kiszolgálóra másolja az adatbázist, előfordulhat, hogy a bejelentkezési alapú hozzáférés nem működik, mert a bejelentkezések nem léteznek az új kiszolgálón. Ha más SQL Database-kiszolgálóra másol egy adatbázist, a bejelentkezések kezelésével kapcsolatos további információkért lásd: [Az Azure SQL Database biztonságának kezelése](sql-database-geo-replication-security-config.md)a vész-helyreállítás után.
 
-After the copying succeeds and before other users are remapped, only the login that initiated the copying, the database owner, can log in to the new database. To resolve logins after the copying operation is complete, see [Resolve logins](#resolve-logins).
+A másolás sikeres és a többi felhasználó újraleképezése után csak a másolást kezdeményező bejelentkezést, az adatbázis tulajdonosát lehet bejelentkezni az új adatbázisba. A másolási művelet befejezését követően a bejelentkezések feloldásához tekintse meg a [bejelentkezések feloldása](#resolve-logins)című témakört.
 
-## <a name="copy-a-database-by-using-the-azure-portal"></a>Copy a database by using the Azure portal
+## <a name="copy-a-database-by-using-the-azure-portal"></a>Adatbázis másolása a Azure Portal használatával
 
-To copy a database by using the Azure portal, open the page for your database, and then click **Copy**.
+Ha a Azure Portal használatával szeretne másolni egy adatbázist, nyissa meg az adatbázis lapját, majd kattintson a **Másolás**gombra.
 
-   ![Database copy](./media/sql-database-copy/database-copy.png)
+   ![Adatbázis másolása](./media/sql-database-copy/database-copy.png)
 
-## <a name="copy-a-database-by-using-powershell"></a>Copy a database by using PowerShell
+## <a name="copy-a-database-by-using-powershell"></a>Adatbázis másolása a PowerShell használatával
 
-To copy a database, use the following examples.
+Adatbázis másolásához használja az alábbi példákat.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-For PowerShell, use the [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) cmdlet.
+A PowerShell esetében használja a [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) parancsmagot.
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager (RM) modult, de a jövőbeli fejlesztés az az. SQL modulhoz kapcsolódik. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
 
 ```powershell
 New-AzSqlDatabaseCopy -ResourceGroupName "<resourceGroup>" -ServerName $sourceserver -DatabaseName "<databaseName>" `
     -CopyResourceGroupName "myResourceGroup" -CopyServerName $targetserver -CopyDatabaseName "CopyOfMySampleDatabase"
 ```
 
-The database copy is a asynchronous operation but the target database is created immediately after the request is accepted. If you need to cancel the copy operation while still in progress, drop the the target database using the [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) cmdlet.
+Az adatbázis másolása aszinkron művelet, de a céladatbázis közvetlenül a kérelem elfogadása után jön létre. Ha még folyamatban van a másolási művelet megszakítása, a [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) parancsmag használatával dobja el a céladatbázis-adatbázist.
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -70,60 +70,60 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
     --name "<databaseName>" --resource-group "<resourceGroup>" --server $sourceserver
 ```
 
-The database copy is a asynchronous operation but the target database is created immediately after the request is accepted. If you need to cancel the copy operation while still in progress, drop the the target database using the [az sql db delete](/cli/azure/sql/db#az-sql-db-delete) command.
+Az adatbázis másolása aszinkron művelet, de a céladatbázis közvetlenül a kérelem elfogadása után jön létre. Ha még folyamatban van a másolási művelet megszakítása, dobja el a célként megadott adatbázist az az [SQL db delete](/cli/azure/sql/db#az-sql-db-delete) paranccsal.
 
 * * *
 
-For a complete sample script, see [Copy a database to a new server](scripts/sql-database-copy-database-to-new-server-powershell.md).
+A teljes minta parancsfájlt itt tekintheti [meg: adatbázis másolása új kiszolgálóra](scripts/sql-database-copy-database-to-new-server-powershell.md).
 
-## <a name="rbac-roles-to-manage-database-copy"></a>RBAC roles to manage database copy
+## <a name="rbac-roles-to-manage-database-copy"></a>RBAC szerepkörök az adatbázis-másolat kezeléséhez
 
-To create a database copy, you will need to be in the following roles
+Adatbázis-másolat létrehozásához a következő szerepköröket kell megadnia
 
-- Subscription Owner or
-- SQL Server Contributor role or
-- Custom role on the source and target databases with following permission:
+- Előfizetés tulajdonosa vagy
+- SQL Server közreműködő szerepkör vagy
+- Egyéni szerepkör a forrás-és a célként megadott adatbázisokhoz a következő engedélyekkel:
 
-   Microsoft.Sql/servers/databases/read  Microsoft.Sql/servers/databases/write
+   Microsoft. SQL/kiszolgálók/adatbázisok/olvasás Microsoft. SQL/kiszolgálók/adatbázisok/írás
 
-To cancel a database copy, you will need to be in the following roles
+Az adatbázis-másolatok megszakításához a következő szerepköröket kell megadnia
 
-- Subscription Owner or
-- SQL Server Contributor role or
-- Custom role on the source and target databases with following permission:
+- Előfizetés tulajdonosa vagy
+- SQL Server közreműködő szerepkör vagy
+- Egyéni szerepkör a forrás-és a célként megadott adatbázisokhoz a következő engedélyekkel:
 
-   Microsoft.Sql/servers/databases/read  Microsoft.Sql/servers/databases/write
+   Microsoft. SQL/kiszolgálók/adatbázisok/olvasás Microsoft. SQL/kiszolgálók/adatbázisok/írás
 
-To manage database copy using Azure portal, you will also need the following permissions:
+Az adatbázis-másolat Azure Portal használatával történő kezeléséhez a következő engedélyekre is szüksége lesz:
 
-   Microsoft.Resources/subscriptions/resources/read Microsoft.Resources/subscriptions/resources/write Microsoft.Resources/deployments/read Microsoft.Resources/deployments/write Microsoft.Resources/deployments/operationstatuses/read
+   Microsoft. Resources/Subscriptions/Resources/Read Microsoft. Resources/Subscriptions/Resources/Write Microsoft. Resources/központi telepítések/olvasás Microsoft. erőforrások/központi telepítések/írás Microsoft. erőforrások/üzembe helyezés/operationstatuses/olvasás
 
-If you want to see the operations under deployments in the resource group on the portal, operations across multiple resource providers including SQL operations, you will need these additional RBAC roles:
+Ha szeretné megtekinteni a központi telepítések alatt lévő műveleteket a portálon található erőforráscsoporthoz, több erőforrás-szolgáltató műveletei, beleértve az SQL-műveleteket, szüksége lesz ezekre a további RBAC szerepkörökre:
 
-   Microsoft.Resources/subscriptions/resourcegroups/deployments/operations/read Microsoft.Resources/subscriptions/resourcegroups/deployments/operationstatuses/read
+   Microsoft. Resources/Subscriptions/resourcegroups/Deployments/Operations/Read Microsoft. Resources/előfizetések/resourcegroups/üzembe helyezés/operationstatuses/olvasás
 
-## <a name="copy-a-database-by-using-transact-sql"></a>Copy a database by using Transact-SQL
+## <a name="copy-a-database-by-using-transact-sql"></a>Adatbázis másolása a Transact-SQL használatával
 
-Log in to the master database with the server-level principal login or the login that created the database you want to copy. For database copying to succeed, logins that are not the server-level principal must be members of the dbmanager role. For more information about logins and connecting to the server, see [Manage logins](sql-database-manage-logins.md).
+Jelentkezzen be a Master adatbázisba a kiszolgálói szintű rendszerbiztonsági tag bejelentkezési azonosítójával vagy a másolni kívánt adatbázist létrehozó bejelentkezéssel. Az adatbázis sikeres másolásához a kiszolgáló szintű rendszerbiztonsági tag nem a DBManager szerepkör tagjának kell lennie. További információ a bejelentkezésekről és a kiszolgálóhoz való csatlakozásról: [bejelentkezések kezelése](sql-database-manage-logins.md).
 
-Start copying the source database with the [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) statement. Executing this statement initiates the database copying process. Because copying a database is an asynchronous process, the CREATE DATABASE statement returns before the database copying is complete.
+Az [adatbázis létrehozása](https://msdn.microsoft.com/library/ms176061.aspx) utasítással indítsa el a forrásadatbázis másolását. Az utasítás végrehajtása elindítja az adatbázis másolási folyamatát. Mivel az adatbázis másolása aszinkron folyamat, a CREATE DATABASE utasítás adja vissza az adatbázis másolásának befejeződése előtt.
 
-### <a name="copy-a-sql-database-to-the-same-server"></a>Copy a SQL database to the same server
+### <a name="copy-a-sql-database-to-the-same-server"></a>SQL-adatbázis másolása ugyanarra a kiszolgálóra
 
-Log in to the master database with the server-level principal login or the login that created the database you want to copy. For database copying to succeed, logins that are not the server-level principal must be members of the dbmanager role.
+Jelentkezzen be a Master adatbázisba a kiszolgálói szintű rendszerbiztonsági tag bejelentkezési azonosítójával vagy a másolni kívánt adatbázist létrehozó bejelentkezéssel. Az adatbázis sikeres másolásához a kiszolgáló szintű rendszerbiztonsági tag nem a DBManager szerepkör tagjának kell lennie.
 
-This command copies Database1 to a new database named Database2 on the same server. Depending on the size of your database, the copying operation might take some time to complete.
+Ez a parancs egy Adatbázis2 nevű új adatbázisba másolja a Adatbázis1 ugyanazon a kiszolgálón. Az adatbázis méretétől függően a másolási művelet végrehajtása hosszabb időt is igénybe vehet.
 
    ```sql
    -- execute on the master database to start copying
    CREATE DATABASE Database2 AS COPY OF Database1;
    ```
 
-### <a name="copy-a-sql-database-to-a-different-server"></a>Copy a SQL database to a different server
+### <a name="copy-a-sql-database-to-a-different-server"></a>SQL-adatbázis másolása másik kiszolgálóra
 
-Log in to the master database of the destination server, the SQL Database server where the new database is to be created. Use a login that has the same name and password as the database owner of the source database on the source SQL Database server. The login on the destination server must also be a member of the dbmanager role or be the server-level principal login.
+Jelentkezzen be a célkiszolgáló főadatbázisára, az SQL Database-kiszolgálóra, amelyen létre szeretné hozni az új adatbázist. Használjon olyan bejelentkezési azonosítót, amelynek a neve és jelszava megegyezik a forrás-SQL Database kiszolgálón található forrásadatbázis adatbázis-tulajdonosával. A célkiszolgálón a DBManager szerepkör tagjának kell lennie, vagy a kiszolgálói szintű rendszerbiztonsági tag bejelentkezési azonosítójának kell lennie.
 
-This command copies Database1 on server1 to a new database named Database2 on server2. Depending on the size of your database, the copying operation might take some time to complete.
+Ez a parancs a Adatbázis1-t a Kiszolgáló1-ről egy új, Adatbázis2 nevű adatbázisra másolja a Kiszolgáló2-on. Az adatbázis méretétől függően a másolási művelet végrehajtása hosszabb időt is igénybe vehet.
 
 ```sql
 -- Execute on the master database of the target server (server2) to start copying from Server1 to Server2
@@ -131,57 +131,57 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 ```
 
 > [!IMPORTANT]
-> Both servers' firewalls must be configured to allow inbound connection from the IP of the client issuing the T-SQL COPY command.
+> Mindkét kiszolgáló tűzfalát úgy kell konfigurálni, hogy engedélyezze a bejövő kapcsolatokat a T-SQL COPY parancsot kiállító ügyfél IP-címéről.
 
-### <a name="copy-a-sql-database-to-a-different-subscription"></a>Copy a SQL database to a different subscription
+### <a name="copy-a-sql-database-to-a-different-subscription"></a>SQL-adatbázis másolása másik előfizetésre
 
-You can use the steps described in the previous section to copy your database to a SQL Database server in a different subscription. Make sure you use a login that has the same name and password as the database owner of the source database and it is a member of the dbmanager role or is the server-level principal login. 
-
-> [!NOTE]
-> The [Azure portal](https://portal.azure.com) does not support copy to a different subscription because Portal calls the ARM API and it uses the subscription certificates to access both servers involved in geo-replication.  
-
-### <a name="monitor-the-progress-of-the-copying-operation"></a>Monitor the progress of the copying operation
-
-Monitor the copying process by querying the sys.databases and sys.dm_database_copies views. While the copying is in progress, the **state_desc** column of the sys.databases view for the new database is set to **COPYING**.
-
-* If the copying fails, the **state_desc** column of the sys.databases view for the new database is set to **SUSPECT**. Execute the DROP statement on the new database, and try again later.
-* If the copying succeeds, the **state_desc** column of the sys.databases view for the new database is set to **ONLINE**. The copying is complete, and the new database is a regular database that can be changed independent of the source database.
+Az előző szakaszban ismertetett lépéseket követve másolhatja az adatbázist egy másik előfizetésben lévő SQL Database-kiszolgálóra. Győződjön meg arról, hogy olyan bejelentkezési azonosítót használ, amelynek a neve és jelszava megegyezik a forrásadatbázis adatbázis-tulajdonosával, és a DBManager szerepkör tagja, vagy a kiszolgáló szintű rendszerbiztonsági tag. 
 
 > [!NOTE]
-> If you decide to cancel the copying while it is in progress, execute the [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) statement on the new database. Alternatively, executing the DROP DATABASE statement on the source database also cancels the copying process.
+> A [Azure Portal](https://portal.azure.com) nem támogatja a másolást egy másik előfizetésre, mert a portál meghívja az ARM API-t, és az előfizetési tanúsítványokat használja a Geo-replikációban érintett mindkét kiszolgáló eléréséhez.  
+
+### <a name="monitor-the-progress-of-the-copying-operation"></a>A másolási művelet állapotának figyelése
+
+Figyelje a másolási folyamatot a sys. Databases és a sys. dm_database_copies nézetek lekérdezésével. A másolás folyamatban van, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **másolásra**van beállítva.
+
+* Ha a másolás meghiúsul, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **gyanúsnak**van beállítva. Hajtsa végre a DROP utasítást az új adatbázison, majd próbálkozzon újra később.
+* Ha a másolás sikeres, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **online**értékre van állítva. A másolás befejeződött, és az új adatbázis egy normál adatbázis, amely a forrás-adatbázistól függetlenül módosítható.
+
+> [!NOTE]
+> Ha úgy dönt, hogy megszakítja a másolást, amíg folyamatban van, hajtsa végre a [drop Database](https://msdn.microsoft.com/library/ms178613.aspx) utasítást az új adatbázison. Azt is megteheti, hogy a forrás-adatbázis DROP DATABASE utasításának végrehajtása megszakítja a másolási folyamatot.
 
 > [!IMPORTANT]
-> If you need to create a copy with a substantially smaller SLO than the source, the target database may not have sufficient resources to complete the seeding process and it can cause the copy operaion to fail. In this scenario use a geo-restore request to create a copy in a different server and/or a different region. See [Recover an Azure SQL database using database backups](sql-database-recovery-using-backups.md#geo-restore) for more informaion.
+> Ha olyan másolatot kell létrehoznia, amely lényegesen kisebb SLO-val rendelkezik, mint a forrás, akkor előfordulhat, hogy a céladatbázis nem rendelkezik elegendő erőforrással a kiindulási folyamat befejezéséhez, és a másolási Opera meghibásodásához vezethet. Ebben a forgatókönyvben egy geo-visszaállítási kérelem használatával hozzon létre egy másolatot egy másik kiszolgálón és/vagy egy másik régióban. További információ: [Azure SQL Database helyreállítása adatbázis-másolatok használatával](sql-database-recovery-using-backups.md#geo-restore) .
 
-## <a name="resolve-logins"></a>Resolve logins
+## <a name="resolve-logins"></a>Bejelentkezések feloldása
 
-After the new database is online on the destination server, use the [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx) statement to remap the users from the new database to logins on the destination server. To resolve orphaned users, see [Troubleshoot Orphaned Users](https://msdn.microsoft.com/library/ms175475.aspx). See also [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md).
+Miután az új adatbázis online állapotú a célkiszolgálón, az [Alter User](https://msdn.microsoft.com/library/ms176060.aspx) utasítással újra felhasználhatja a felhasználókat az új adatbázisból a célkiszolgálón való bejelentkezéshez. Az árva felhasználók megoldásához tekintse meg az [árva felhasználók hibaelhárítása](https://msdn.microsoft.com/library/ms175475.aspx)című témakört. Lásd még: [Az Azure SQL Database biztonságának kezelése a vész-helyreállítás után](sql-database-geo-replication-security-config.md).
 
-All users in the new database retain the permissions that they had in the source database. The user who initiated the database copy becomes the database owner of the new database and is assigned a new security identifier (SID). After the copying succeeds and before other users are remapped, only the login that initiated the copying, the database owner, can log in to the new database.
+Az új adatbázisban lévő összes felhasználó megőrzi a forrás-adatbázisban lévő engedélyeket. Az adatbázis-másolatot kezdeményező felhasználó az új adatbázis adatbázis-tulajdonosa lesz, és új biztonsági azonosítót (SID) kap. A másolás sikeres és a többi felhasználó újraleképezése után csak a másolást kezdeményező bejelentkezést, az adatbázis tulajdonosát lehet bejelentkezni az új adatbázisba.
 
-To learn about managing users and logins when you copy a database to a different SQL Database server, see [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md).
+Ha egy másik SQL Database-kiszolgálóra másol egy adatbázist a felhasználók és a bejelentkezések kezelésével kapcsolatban, tekintse meg az [Azure SQL Database biztonságának kezelése a vész-helyreállítás után](sql-database-geo-replication-security-config.md)című témakört.
 
-## <a name="database-copy-errors"></a>Database copy errors
+## <a name="database-copy-errors"></a>Adatbázis-másolási hibák
 
-The following errors can be encountered while copying a database in Azure SQL Database. További információk az [Azure SQL-adatbázis másolása](sql-database-copy.md) című részben.
+A következő hibák fordulhatnak elő az adatbázisok Azure SQL Databaseban történő másolása során. További információk az [Azure SQL-adatbázis másolása](sql-database-copy.md) című részben.
 
-| Hibakód | Súlyosság | Leírás |
+| Hibakód | Severity | Leírás |
 | ---:| ---:|:--- |
-| 40635 |16 |Client with IP address '%.&#x2a;ls' is temporarily disabled. |
-| 40637 |16 |Create database copy is currently disabled. |
-| 40561 |16 |Database copy failed. Either the source or target database does not exist. |
-| 40562 |16 |Database copy failed. The source database has been dropped. |
-| 40563 |16 |Database copy failed. The target database has been dropped. |
-| 40564 |16 |Database copy failed due to an internal error. Please drop target database and try again. |
-| 40565 |16 |Database copy failed. No more than 1 concurrent database copy from the same source is allowed. Please drop target database and try again later. |
-| 40566 |16 |Database copy failed due to an internal error. Please drop target database and try again. |
-| 40567 |16 |Database copy failed due to an internal error. Please drop target database and try again. |
-| 40568 |16 |Database copy failed. Source database has become unavailable. Please drop target database and try again. |
-| 40569 |16 |Database copy failed. Target database has become unavailable. Please drop target database and try again. |
-| 40570 |16 |Database copy failed due to an internal error. Please drop target database and try again later. |
-| 40571 |16 |Database copy failed due to an internal error. Please drop target database and try again later. |
+| 40635 |16 |Ügyfél IP-címmel ( '%.&#x2a;ls' ) ideiglenesen le van tiltva. |
+| 40637 |16 |Az adatbázis-másolat létrehozása jelenleg le van tiltva. |
+| 40561 |16 |Az adatbázis másolása sikertelen volt. A forrás-vagy a céladatbázis nem létezik. |
+| 40562 |16 |Az adatbázis másolása sikertelen volt. A forrásadatbázis el lett dobva. |
+| 40563 |16 |Az adatbázis másolása sikertelen volt. A célként megadott adatbázis el lett dobva. |
+| 40564 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40565 |16 |Az adatbázis másolása sikertelen volt. Nem engedélyezett több mint 1 egyidejű adatbázis-másolat ugyanabból a forrásból. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
+| 40566 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40567 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40568 |16 |Az adatbázis másolása sikertelen volt. A forrásadatbázis elérhetetlenné vált. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40569 |16 |Az adatbázis másolása sikertelen volt. A céladatbázis elérhetetlenné vált. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40570 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
+| 40571 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-- For information about logins, see [Manage logins](sql-database-manage-logins.md) and [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md).
-- To export a database, see [Export the database to a BACPAC](sql-database-export.md).
+- További információ a bejelentkezésekről: [bejelentkezések kezelése](sql-database-manage-logins.md) és [Az Azure SQL Database biztonságának kezelése a vész-helyreállítás után](sql-database-geo-replication-security-config.md).
+- Az adatbázisok exportálásával kapcsolatban tekintse meg [az adatbázis exportálása BACPAC](sql-database-export.md)című témakört.

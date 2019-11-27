@@ -1,5 +1,5 @@
 ---
-title: Enroll X.509 devices to Azure Device Provisioning Service using Java
+title: X. 509-eszközök regisztrálása az Azure Device kiépítési szolgáltatásba a Javával
 description: Ez a rövid útmutató csoportos és egyéni regisztrációkat is használ. Ebben a rövid útmutatóban X.509-eszközöket fog regisztrálni az Azure IoT Hub Device Provisioning Service-be a Java használatával.
 author: wesmc7777
 ms.author: wesmc
@@ -126,7 +126,7 @@ A következő lépések bemutatják, hogyan adhatja hozzá az X.509-eszköz kié
             enrollmentGroup.setProvisioningStatus(ProvisioningStatus.ENABLED);  // Optional parameter.
             ```
 
-    4. Tanulmányozza a mintakódot. A segítségével létrehozhat, frissíthet, lekérdezhet és törölhet egy csoportos X.509-eszközregisztrációt. Ha ellenőrizni szeretné a regisztráció sikerességét a portálon, ideiglenesen tegye megjegyzésbe a következő kódsorokat a _ServiceEnrollmentGroupSample.java_ fájl végén:
+    4. Tanulmányozza a mintakódot, A segítségével létrehozhat, frissíthet, lekérdezhet és törölhet egy csoportos X.509-eszközregisztrációt. Ha ellenőrizni szeretné a regisztráció sikerességét a portálon, ideiglenesen tegye megjegyzésbe a következő kódsorokat a _ServiceEnrollmentGroupSample.java_ fájl végén:
 
         ```Java
         // ************************************** Delete info of enrollmentGroup ***************************************
@@ -166,16 +166,16 @@ A következő lépések bemutatják, hogyan adhatja hozzá az X.509-eszköz kié
 
 ## <a name="modifications-to-enroll-a-single-x509-device"></a>Egyetlen X.509-eszköz regisztrációja esetén elvégzendő változtatások
 
-Egyetlen X.509-eszköz regisztrációja esetén módosítsa a [TPM-eszköz regisztrációja az IoT Hub Device Provisioning Service-be a Java szolgáltatásoldali SDK-val](quick-enroll-device-tpm-java.md#javasample) című részben található *egyéni regisztráció* mintakódját az alábbiak szerint:
+Egyetlen X.509-eszköz regisztrációja esetén módosítsa a *TPM-eszköz regisztrációja az IoT Hub Device Provisioning Service-be a Java szolgáltatásoldali SDK-val* című részben található [egyéni regisztráció](quick-enroll-device-tpm-java.md#javasample) mintakódját az alábbiak szerint:
 
-1. Másolja az X.509-ügyféltanúsítvány *köznapi nevét* a vágólapra. Ha az [előző mintakód szakaszában](#javasample) leírtak szerint alkalmazni szeretné az _X.509-tanúsítványkészítőt_, adjon meg egy _köznapi nevet_ a tanúsítvány számára, vagy használja az alapértelmezett **microsoftriotcore** nevet. Használja ezt a **köznapi nevet** a *REGISTRATION_ID* változó értékeként. 
+1. Másolja az X.509-ügyféltanúsítvány *köznapi nevét* a vágólapra. Ha az _előző mintakód szakaszában_ leírtak szerint alkalmazni szeretné az [X.509-tanúsítványkészítőt](#javasample), adjon meg egy _köznapi nevet_ a tanúsítvány számára, vagy használja az alapértelmezett **microsoftriotcore** nevet. Használja ezt a **köznapi nevet** a *REGISTRATION_ID* változó értékeként. 
 
     ```Java
     // Use common name of your X.509 client certificate
     private static final String REGISTRATION_ID = "[RegistrationId]";
     ```
 
-2. Nevezze át a *TPM_ENDORSEMENT_KEY* változót *PUBLIC_KEY_CERTIFICATE_STRING* névre. Másolja be az ügyféltanúsítványt vagy az _X.509-tanúsítványkészítő_ kimenetében szereplő **ügyféltanúsítvány** értékét a *PUBLIC_KEY_CERTIFICATE_STRING* változó értékének helyére. 
+2. Nevezze át a *TPM_ENDORSEMENT_KEY* változót *PUBLIC_KEY_CERTIFICATE_STRING* névre. Másolja be az ügyféltanúsítványt vagy az **X.509-tanúsítványkészítő** kimenetében szereplő _ügyféltanúsítvány_ értékét a *PUBLIC_KEY_CERTIFICATE_STRING* változó értékének helyére. 
 
     ```Java
     // Rename the variable *TPM_ENDORSEMENT_KEY* as *PUBLIC_KEY_CERTIFICATE_STRING*
@@ -202,14 +202,14 @@ Egyetlen X.509-eszköz regisztrációja esetén módosítsa a [TPM-eszköz regis
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-If you plan to explore the Java service sample, do not clean up the resources created in this quickstart. If you do not plan to continue, use the following steps to delete all resources created by this quickstart.
+Ha azt tervezi, hogy feltárja a Java-szolgáltatás mintáját, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes erőforrást.
 
 1. Zárja be a Java-minta kimeneti ablakát a gépen.
 1. Zárja be az _X509-tanúsítványkészítő_ ablakát a gépen.
-1. Navigate to your Device Provisioning service in the Azure portal, select **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the check box next to the *GROUP NAME* for the X.509 devices you enrolled using this quickstart, and press the **Delete** button at the top of the pane.  
+1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a **regisztrációk kezelése**lehetőséget, majd válassza a **beléptetési csoportok** fület. jelölje be a rövid útmutató segítségével regisztrált X. 509 eszközök *csoportjának neve* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.  
 
 ## <a name="next-steps"></a>Következő lépések
-In this quickstart, you enrolled a simulated group of X.509 devices to your Device Provisioning service. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
+Ebben a rövid útmutatóban egy X. 509 eszköz szimulált csoportját regisztrálta az eszköz kiépítési szolgáltatásához. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
 
 > [!div class="nextstepaction"]
 > [Azure IoT Hub eszközkiépítési szolgáltatás oktatóanyagai](./tutorial-set-up-cloud.md)

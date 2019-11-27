@@ -23,9 +23,9 @@ A Cloudynben a költségeket címkék alapján foglalhatja le a költségek keze
 
 Például előfordulhat, hogy szeretné megtéríttetni a műszaki tervezési költségeket. Be kell tudnia mutatni a műszaki csapat számára az adott igényelt összeget az erőforrásköltségek alapján. Mutathat nekik egy jelentést, amely a *műszaki tervezés* címkével ellátott összes felhasznált erőforrást tartalmazza.
 
-A cikkben a címkéket és a kategóriákat helyenként azonos értelemben használjuk. A kategóriák tág gyűjtemények, melyek sok mindent jelölhetnek. Ezek lehetnek üzleti egységek, költséghelyek, webszolgáltatások vagy bármely felcímkézett dolog. Tags are name/value pairs that enable you to categorize resources and to view and manage consolidated billing information by applying the same tag to multiple resources and resource groups. Az Azure Portal korábbi verzióiban a *címkenév* helyett a *kulcs* kifejezést alkalmaztuk. A címkék egy adott Azure-előfizetésre vonatkozóan hozhatók létre és abban tárolhatók. Az AWS címkéi kulcs/érték párok. Mivel az Azure és az AWS is a *kulcs* kifejezést használta, a Cloudyn is megmaradt ennél. A Category Manager kulcsok (címkenevek) használatával egyesíti a címkéket.
+A cikkben a címkéket és a kategóriákat helyenként azonos értelemben használjuk. A kategóriák tág gyűjtemények, melyek sok mindent jelölhetnek. Ezek lehetnek üzleti egységek, költséghelyek, webszolgáltatások vagy bármely felcímkézett dolog. A címkék olyan név/érték párok, amelyek lehetővé teszik az erőforrások kategorizálását, valamint az összevont számlázási információk megtekintését és kezelését úgy, hogy ugyanazt a címkét több erőforrásra és erőforráscsoporthoz alkalmazza. Az Azure Portal korábbi verzióiban a *címkenév* helyett a *kulcs* kifejezést alkalmaztuk. A címkék egy adott Azure-előfizetésre vonatkozóan hozhatók létre és abban tárolhatók. Az AWS címkéi kulcs/érték párok. Mivel az Azure és az AWS is a *kulcs* kifejezést használta, a Cloudyn is megmaradt ennél. A Category Manager kulcsok (címkenevek) használatával egyesíti a címkéket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Költségek lefoglalása egyéni címkék használatával.
@@ -53,11 +53,11 @@ A költséglefoglalás első lépéseként a hatókört kell definiálni egy kö
 
 Egyéni költséglefoglalási modell létrehozásához válassza a **Költségek** &gt; **Költségkezelés** &gt; **Cost Allocation 360°** lehetőséget a jelentés menüjében.
 
-![Example showing a dashboard where you select Cost Allocation 360](./media/tutorial-manage-costs/cost-allocation-360.png)
+![Itt választhatja ki Cost Allocation 360 irányítópult megjelenítő példa](./media/tutorial-manage-costs/cost-allocation-360.png)
 
 A **Cost Allocation 360** lapon kattintson a **Hozzáadás** elemre, majd adja meg a költségmodell nevét és leírását. Válassza ki az összes fiókot vagy válasszon egy egyénit. Egyéni fiókok kiválasztása esetén egyszerre több fiókot is választhat akár különböző felhőszolgáltatóktól is. Ezután kattintson a **Kategorizálás** gombra a költségadatok kategorizálásához használt felderített címkék kiválasztásához. Válassza ki a modellbe felvenni kívánt címkéket (kategóriákat). A következő példában az **Egység** címke van kiválasztva.
 
-![Example showing cost model categorization](./media/tutorial-manage-costs/cost-model01.png)
+![Példa ábrázoló költsége a költségmodellek kategorizálására](./media/tutorial-manage-costs/cost-model01.png)
 
 A példában látható, hogy 19 680 dollár nincs kategorizálva (nem rendelkezik címkével).
 
@@ -95,7 +95,7 @@ A szabályok definiálásakor több értéket is hozzáadhat az OR (VAGY) felté
 
 Az alábbi képen a **Work-Load** elnevezésű új kategóriához létrehozott szabályokat bemutató példa látható.
 
-![Example showing the new work-load category](./media/tutorial-manage-costs/category01.png)
+![Példa az új munkaterhelés kategória](./media/tutorial-manage-costs/category01.png)
 
 ### <a name="tag-sources-and-reports"></a>Címkék forrásai és jelentések
 
@@ -122,7 +122,7 @@ Az egyes vállalatok egészen különböző módszereket alkalmazhatnak a költs
 
 A költséglefoglalási eredmények megtekintéséhez nyissa meg a Költségelemzési jelentést, és válassza ki a létrehozott költségmodellt. Ezután hozzon létre csoportosítást a költségmodellben kiválasztott egy vagy több címke alapján.
 
-![Cost Analysis report showing an example of data from the new cost](./media/tutorial-manage-costs/cost-analysis.png)
+![Költségelemzési jelentés megjelenítése az új költség származó adatok egy példa](./media/tutorial-manage-costs/cost-analysis.png)
 
 Egyszerűen hozhat létre és menthet az adott csoportok által használt adott szolgáltatásokra összpontosító jelentéseket. Például elképzelhető, hogy az egyik részleg jelentős mértékben használ Azure-beli virtuális gépeket. Létrehozhat egy, az Azure-beli virtuális gépekre szűrt jelentést a használat mértékének és a költségeknek a megjelenítéséhez.
 

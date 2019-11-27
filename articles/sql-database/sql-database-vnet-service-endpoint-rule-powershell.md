@@ -1,6 +1,6 @@
 ---
-title: PowerShell for VNet endpoints and rules for single and pooled databases
-description: Provides PowerShell scripts to create and manage Virtual Service endpoints for your Azure SQL Database and SQL Data Warehouse.
+title: PowerShell a VNet-végpontok és az önálló és készletezett adatbázisok szabályaihoz
+description: PowerShell-parancsfájlokat biztosít a Azure SQL Database és SQL Data Warehouse virtuális szolgáltatási végpontjának létrehozásához és kezeléséhez.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -18,65 +18,65 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422497"
 ---
-# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  Create a Virtual Service endpoint and VNet rule for SQL
+# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: virtuális szolgáltatási végpont és VNet-szabály létrehozása az SQL-hez
 
-*Virtual network rules* are one firewall security feature that controls whether the database server for your single databases and elastic pool in Azure [SQL Database](sql-database-technical-overview.md) or for your databases in [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) accepts communications that are sent from particular subnets in virtual networks.
+A *virtuális hálózati szabályok* egy tűzfal biztonsági funkciója, amely azt szabályozza, hogy az adatbázis-kiszolgáló a különálló adatbázisok és a rugalmas készlet számára az Azure-ban [SQL Database](sql-database-technical-overview.md) vagy az adatbázisok [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) fogad-e kommunikációt a virtuális hálózatok adott alhálózatait küldik.
 
 > [!IMPORTANT]
-> This article applies to Azure SQL server, and to both SQL Database and SQL Data Warehouse databases that are created on the Azure SQL server. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. This article does *not* apply to a **managed instance** deployment in Azure SQL Database because it does not have a service endpoint associated with it.
+> Ez a cikk az Azure SQL Serverre vonatkozik, valamint az Azure SQL Serveren létrehozott SQL Database és SQL Data Warehouse adatbázisokra is. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. Ez a cikk *nem* vonatkozik a **felügyelt példányokra** Azure SQL Database, mert nem rendelkezik hozzá társított szolgáltatás-végponttal.
 
-This article provides and explains a PowerShell script that takes the following actions:
+Ez a cikk egy PowerShell-parancsfájlt tartalmaz, és ismerteti a következő műveleteket:
 
-1. Creates a Microsoft Azure *Virtual Service endpoint* on your subnet.
-2. Adds the endpoint to the firewall of your Azure SQL Database server, to create a *virtual network rule*.
+1. Létrehoz egy Microsoft Azure *virtuális szolgáltatási végpontot* az alhálózaton.
+2. Hozzáadja a végpontot a Azure SQL Database-kiszolgáló tűzfalához egy *virtuális hálózati szabály*létrehozásához.
 
-Your motivations for creating a rule are explained in: [Virtual Service endpoints for Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
+A szabályok létrehozásával kapcsolatos motivációit a következő cikkben ismertetjük: [Azure SQL Database virtuális szolgáltatási végpontok][sql-db-vnet-service-endpoint-rule-overview-735r].
 
 > [!TIP]
-> If all you need is to assess or add the Virtual Service endpoint *type name* for SQL Database to your subnet, you can skip ahead to our more [direct PowerShell script](#a-verify-subnet-is-endpoint-ps-100).
+> Ha mindössze annyit kell tennie, hogy felmérje vagy hozzáadja a virtuális szolgáltatás végpontjának *típusát* a SQL Databasehoz az alhálózathoz, ugorjon a további [közvetlen PowerShell-szkriptre](#a-verify-subnet-is-endpoint-ps-100).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
-## <a name="major-cmdlets"></a>Major cmdlets
+## <a name="major-cmdlets"></a>Fő parancsmagok
 
-This article emphasizes the **New-AzSqlServerVirtualNetworkRule** cmdlet that adds the subnet endpoint to the access control list (ACL) of your Azure SQL Database server, thereby creating a rule.
+Ez a cikk a **New-AzSqlServerVirtualNetworkRule** parancsmagot emeli ki, amely hozzáadja az alhálózati végpontot a Azure SQL Database-kiszolgáló hozzáférés-vezérlési listájához (ACL), és ezzel létrehoz egy szabályt.
 
-The following list shows the sequence of other *major* cmdlets that you must run to prepare for your call to **New-AzSqlServerVirtualNetworkRule**. In this article, these calls occur in [script 3 "Virtual network rule"](#a-script-30):
+Az alábbi lista azokat a *főbb* parancsmagokat mutatja be, amelyeket a **New-AzSqlServerVirtualNetworkRule**hívására való felkészüléshez futtatnia kell. Ebben a cikkben ezek a hívások a ["virtuális hálózati szabály" 3. parancsfájlban](#a-script-30)történnek:
 
-1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): Creates a subnet object.
-2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): Creates your virtual network, giving it the subnet.
-3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): Assigns a Virtual Service endpoint to your subnet.
-4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): Persists updates made to your virtual network.
-5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): After your subnet is an endpoint, adds your subnet as a virtual network rule, into the ACL of your Azure SQL Database server.
-   - This cmdlet Offers the parameter **-IgnoreMissingVNetServiceEndpoint**, starting in Azure RM PowerShell Module version 5.1.1.
+1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): létrehoz egy alhálózati objektumot.
+2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): létrehozza a virtuális hálózatot, és megadja az alhálózatot.
+3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): virtuális szolgáltatási végpontot rendel az alhálózathoz.
+4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): a virtuális hálózaton végzett frissítések megőrzése.
+5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): miután az alhálózat egy végpont, hozzáadja az alhálózatot virtuális hálózati szabályként a Azure SQL Database-kiszolgáló ACL-jéhez.
+   - Ez a parancsmag a **-IgnoreMissingVNetServiceEndpoint**paramétert kínálja az Azure RM PowerShell-modul 5.1.1-es verziójától kezdve.
 
-## <a name="prerequisites-for-running-powershell"></a>Prerequisites for running PowerShell
+## <a name="prerequisites-for-running-powershell"></a>A PowerShell futtatásának előfeltételei
 
-- You can already log in to Azure, such as through the [Azure portal][http-azure-portal-link-ref-477t].
-- You can already run PowerShell scripts.
+- Már be is jelentkezhet az Azure-ba, például a [Azure Portalon][http-azure-portal-link-ref-477t]keresztül.
+- Már futtathatja a PowerShell-parancsfájlokat is.
 
 > [!NOTE]
-> Please ensure that service endpoints are turned on for the VNet/Subnet that you want to add to your Server otherwise creation of the VNet Firewall Rule will fail.
+> Győződjön meg arról, hogy a szolgáltatáshoz tartozó végpontok be vannak kapcsolva ahhoz a VNet/alhálózathoz, amelyet hozzá szeretne adni a kiszolgálóhoz, máskülönben a VNet-tűzfalszabály létrehozása sikertelen lesz.
 
-## <a name="one-script-divided-into-four-chunks"></a>One script divided into four chunks
+## <a name="one-script-divided-into-four-chunks"></a>Egy parancsfájl négy darabra oszlik
 
-Our demonstration PowerShell script is divided into a sequence of smaller scripts. The division eases learning and provides flexibility. The scripts must be run in their indicated sequence. If you do not have time now to run the scripts, our actual test output is displayed after script 4.
+A bemutató PowerShell-szkript kisebb szkriptek sorozatából van felosztva. A divízió megkönnyíti a tanulást és rugalmasságot biztosít. A parancsfájlokat a jelzett sorozatban kell futtatni. Ha nincs ideje a parancsfájlok futtatására, a tényleges teszt kimenet a 4. parancsfájl után jelenik meg.
 
 <a name="a-script-10" />
 
-### <a name="script-1-variables"></a>Script 1: Variables
+### <a name="script-1-variables"></a>1\. parancsfájl: változók
 
-This first PowerShell script assigns values to variables. The subsequent scripts depend on these variables.
+Ez az első PowerShell-parancsfájl értékeket rendel a változókhoz. A következő parancsfájlok ezen változóktól függenek.
 
 > [!IMPORTANT]
-> Before you run this script, you can edit the values, if you like. For example, if you already have a resource group, you might want to edit your resource group name as the assigned value.
+> A szkript futtatása előtt módosíthatja az értékeket, ha szeretné. Ha például már rendelkezik erőforráscsoporthoz, érdemes lehet hozzárendelt értékként szerkesztenie az erőforráscsoport nevét.
 >
-> Your subscription name should be edited into the script.
+> Az előfizetés nevét szerkeszteni kell a szkriptbe.
 
-### <a name="powershell-script-1-source-code"></a>PowerShell script 1 source code
+### <a name="powershell-script-1-source-code"></a>1\. PowerShell-parancsfájl forráskódja
 
 ```powershell
 ######### Script 1 ########################################
@@ -115,14 +115,14 @@ Write-Host 'Completed script 1, the "Variables".';
 
 <a name="a-script-20" />
 
-### <a name="script-2-prerequisites"></a>Script 2: Prerequisites
+### <a name="script-2-prerequisites"></a>2\. parancsfájl: előfeltételek
 
-This script prepares for the next script, where the endpoint action is. This script creates for you the following listed items, but only if they do not already exist. You can skip script 2 if you are sure these items already exist:
+Ez a szkript előkészíti a következő parancsfájlt, ahol a végpont művelete. Ez a szkript a következő felsorolt elemeket hozza létre, de csak akkor, ha még nem léteznek. Kihagyhatja a 2. parancsfájlt, ha biztos benne, hogy ezek az elemek már léteznek:
 
 - Azure-erőforráscsoport
-- Azure SQL Database server
+- Azure SQL Database kiszolgáló
 
-### <a name="powershell-script-2-source-code"></a>PowerShell script 2 source code
+### <a name="powershell-script-2-source-code"></a>2\. PowerShell-parancsfájl forráskódja
 
 ```powershell
 ######### Script 2 ########################################
@@ -205,11 +205,11 @@ Write-Host 'Completed script 2, the "Prerequisites".';
 
 <a name="a-script-30" />
 
-## <a name="script-3-create-an-endpoint-and-a-rule"></a>Script 3: Create an endpoint and a rule
+## <a name="script-3-create-an-endpoint-and-a-rule"></a>3\. parancsfájl: végpont és szabály létrehozása
 
-This script creates a virtual network with a subnet. Then the script assigns the **Microsoft.Sql** endpoint type to your subnet. Finally the script adds your subnet to the access control list (ACL) of your SQL Database server, thereby creating a rule.
+Ez a szkript létrehoz egy alhálózattal rendelkező virtuális hálózatot. Ezután a parancsfájl hozzárendeli a **Microsoft. SQL** -végpont típusát az alhálózathoz. Végül a parancsfájl hozzáadja az alhálózatot a SQL Database-kiszolgáló hozzáférés-vezérlési listájához (ACL), és ezzel létrehoz egy szabályt.
 
-### <a name="powershell-script-3-source-code"></a>PowerShell script 3 source code
+### <a name="powershell-script-3-source-code"></a>3\. PowerShell-szkript forráskódja
 
 ```powershell
 ######### Script 3 ########################################
@@ -291,16 +291,16 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 
 <a name="a-script-40" />
 
-## <a name="script-4-clean-up"></a>Script 4: Clean-up
+## <a name="script-4-clean-up"></a>4\. parancsfájl: tisztítás
 
-This final script deletes the resources that the previous scripts created for the demonstration. However, the script asks for confirmation before it deletes the following:
+Ez a végső parancsfájl törli azokat az erőforrásokat, amelyeket az előző szkriptek készítettek a bemutatóhoz. A parancsfájl azonban megerősítést kér, mielőtt törli a következőt:
 
-- Azure SQL Database server
+- Azure SQL Database kiszolgáló
 - Azure-erőforráscsoport
 
-You can run script 4 any time after script 1 completes.
+Az 1. parancsfájl futtatása után bármikor futtathatja a 4-es parancsfájlt.
 
-### <a name="powershell-script-4-source-code"></a>PowerShell script 4 source code
+### <a name="powershell-script-4-source-code"></a>4\. PowerShell-parancsfájl forráskódja
 
 ```powershell
 ######### Script 4 ########################################
@@ -372,31 +372,31 @@ Write-Host 'Completed script 4, the "Clean-Up".';
 
 <a name="a-verify-subnet-is-endpoint-ps-100" />
 
-## <a name="verify-your-subnet-is-an-endpoint"></a>Verify your subnet is an endpoint
+## <a name="verify-your-subnet-is-an-endpoint"></a>Alhálózat ellenőrzése végpontként
 
-You might have a subnet that was already assigned the **Microsoft.Sql** type name, meaning it is already a Virtual Service endpoint. You could use the [Azure portal][http-azure-portal-link-ref-477t] to create a virtual network rule from the endpoint.
+Lehet, hogy olyan alhálózattal rendelkezik, amely már hozzá lett rendelve a **Microsoft. SQL** típushoz, ami azt jelenti, hogy már egy virtuális szolgáltatási végpont. A [Azure Portal][http-azure-portal-link-ref-477t] használatával létrehozhat egy virtuális hálózati szabályt a végpontból.
 
-Or, you might be unsure whether your subnet has the **Microsoft.Sql** type name. You can run the following PowerShell script to take these actions:
+Vagy előfordulhat, hogy nem biztos benne, hogy az alhálózat rendelkezik-e a **Microsoft. SQL** típus nevével. A következő PowerShell-szkript futtatásával hajthatja végre a műveleteket:
 
-1. Ascertain whether your subnet has the **Microsoft.Sql** type name.
-2. Optionally, assign the type name if it is absent.
-    - The script asks you to *confirm*, before it applies the absent type name.
+1. Győződjön meg arról, hogy az alhálózat rendelkezik-e a **Microsoft. SQL** típus nevével.
+2. Ha nincs megadva, rendelje hozzá a típus nevét.
+    - A szkript megkéri, hogy *erősítse*meg, mielőtt alkalmazza a hiányzó típus nevét.
 
-### <a name="phases-of-the-script"></a>Phases of the script
+### <a name="phases-of-the-script"></a>A parancsfájl fázisai
 
-Here are the phases of the PowerShell script:
+A PowerShell-parancsfájl fázisai:
 
-1. LOG into to your Azure account, needed only once per PS session.  Assign variables.
-2. Search for your virtual network, and then for your subnet.
-3. Is your subnet tagged as **Microsoft.Sql** endpoint server type?
-4. Add a Virtual Service endpoint of type name **Microsoft.Sql**, on your subnet.
+1. Jelentkezzen be az Azure-fiókjába, és csak egyszer kell bejelentkeznie PS-munkamenetben.  Változók kiosztása.
+2. Keressen rá a virtuális hálózatra, majd az alhálózatra.
+3. Az alhálózat a **Microsoft. SQL** Endpoint Server típusa?
+4. Adja hozzá a **Microsoft. SQL**nevű virtuális szolgáltatási végpontot az alhálózaton.
 
 > [!IMPORTANT]
-> Before you run this script, you must edit the values assigned to the $-variables, near the top of the script.
+> A szkript futtatása előtt szerkesztenie kell a $-változókhoz rendelt értékeket a szkript felső részén.
 
-### <a name="direct-powershell-source-code"></a>Direct PowerShell source code
+### <a name="direct-powershell-source-code"></a>Közvetlen PowerShell-forráskód
 
-This PowerShell script does not update anything, unless you respond yes if is asks you for confirmation. The script can add the type name **Microsoft.Sql** to your subnet. But the script tries the add only if your subnet lacks the type name.
+Ez a PowerShell-parancsfájl nem frissíti a semmit, hacsak nem válaszol az Igen értékre, ha megerősítést kér. A szkript a **Microsoft. SQL** Type nevet adhatja hozzá az alhálózathoz. A parancsfájl azonban csak akkor próbálja meg a hozzáadást, ha az alhálózat nem rendelkezik a típus nevével.
 
 ```powershell
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.

@@ -1,6 +1,6 @@
 ---
-title: Azure Functions SendGrid bindings
-description: Azure Functions SendGrid bindings reference.
+title: SendGrid-kötések Azure Functions
+description: Azure Functions SendGrid kötések hivatkozása.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
@@ -12,41 +12,41 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231088"
 ---
-# <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid bindings
+# <a name="azure-functions-sendgrid-bindings"></a>SendGrid-kötések Azure Functions
 
-This article explains how to send email by using [SendGrid](https://sendgrid.com/docs/User_Guide/index.html) bindings in Azure Functions. Azure Functions supports an output binding for SendGrid.
+Ez a cikk azt ismerteti, hogyan küldhet e-mailt [SendGrid](https://sendgrid.com/docs/User_Guide/index.html) -kötések használatával Azure Functionsban. Azure Functions támogatja a SendGrid kimeneti kötését.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Packages - Functions 1.x
+## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-The SendGrid bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet package, version 2.x. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) GitHub repository.
+A SendGrid-kötések a [Microsoft. Azure. webjobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet csomagban, 2. x verzióban találhatók. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) tárházban található.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
-The SendGrid bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet package, version 3.x. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub repository.
+A SendGrid-kötések a [Microsoft. Azure. webjobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet csomagban, 3. x verzióban találhatók. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) tárházban található.
 
 > [!NOTE]
-> Version 2.x does not create the topic or subscription configured in the `ServiceBusTrigger` instance. Version 2.x is based on [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) and does not handle queue management.
+> A 2. x verzió nem hozza létre a `ServiceBusTrigger`-példányban konfigurált témakört vagy előfizetést. A 2. x verzió a [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) alapul, és nem kezeli a várólista-kezelést.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="example"></a>Példa
 
-See the language-specific example:
+Tekintse meg az adott nyelvű példa:
 
 * [C#](#c-example)
-* [C# script (.csx)](#c-script-example)
+* [C#parancsfájl (. CSX)](#c-script-example)
 * [JavaScript](#javascript-example)
 * [Java](#java-example)
 
-### <a name="c-example"></a>C# example
+### <a name="c-example"></a>C#például
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that uses a Service Bus queue trigger and a SendGrid output binding.
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely egy Service Bus üzenetsor-triggert és egy SendGrid kimeneti kötést használ.
 
-#### <a name="synchronous-c-example"></a>Synchronous C# example:
+#### <a name="synchronous-c-example"></a>Szinkron C# példa:
 
 ```cs
 [FunctionName("SendEmail")]
@@ -71,7 +71,7 @@ public class OutgoingEmail
     public string Body { get; set; }
 }
 ```
-#### <a name="asynchronous-c-example"></a>Asynchronous C# example:
+#### <a name="asynchronous-c-example"></a>Aszinkron C# példa:
 
 ```cs
 [FunctionName("SendEmail")]
@@ -99,13 +99,13 @@ public class OutgoingEmail
 }
 ```
 
-You can omit setting the attribute's `ApiKey` property if you have your API key in an app setting named "AzureWebJobsSendGridApiKey".
+Ha az API-kulcs egy "AzureWebJobsSendGridApiKey" nevű alkalmazás-beállításban van, akkor kihagyhatja az attribútum `ApiKey` tulajdonságának beállítását.
 
-### <a name="c-script-example"></a>C# script example
+### <a name="c-script-example"></a>C#parancsfájl – példa
 
-The following example shows a SendGrid output binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding.
+Az alábbi példa egy SendGrid kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja.
 
-Here's the binding data in the *function.json* file:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json 
 {
@@ -129,9 +129,9 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-The [configuration](#configuration) section explains these properties.
+A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Here's the C# script code:
+Íme a C#-szkriptkódot:
 
 ```csharp
 #r "SendGrid"
@@ -160,9 +160,9 @@ public class Message
 }
 ```
 
-### <a name="java-example"></a>Java example
+### <a name="java-example"></a>Java-példa
 
-The following example uses the `@SendGridOutput` annotation from the [Java functions runtime library](/java/api/overview/azure/functions/runtime) to send an email using the SendGrid output binding.
+Az alábbi példa a [Java functions runtime library](/java/api/overview/azure/functions/runtime) `@SendGridOutput` jegyzetét használja egy e-mailt küldeni a SendGrid kimeneti kötés használatával.
 
 ```java
 @FunctionName("SendEmail")
@@ -187,11 +187,11 @@ The following example uses the `@SendGridOutput` annotation from the [Java funct
     }
 ```
 
-### <a name="javascript-example"></a>JavaScript example
+### <a name="javascript-example"></a>JavaScript-példa
 
-The following example shows a SendGrid output binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding.
+Az alábbi példa egy SendGrid kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja.
 
-Here's the binding data in the *function.json* file:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json 
 {
@@ -209,9 +209,9 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-The [configuration](#configuration) section explains these properties.
+A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Here's the JavaScript code:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = function (context, input) {    
@@ -231,9 +231,9 @@ module.exports = function (context, input) {
 
 ## <a name="attributes"></a>Attribútumok
 
-In [C# class libraries](functions-dotnet-class-library.md), use the [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) attribute.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) attribútumot.
 
-For information about attribute properties that you can configure, see [Configuration](#configuration). Here's a `SendGrid` attribute example in a method signature:
+További információ a konfigurálható attribútumok tulajdonságairól: [konfiguráció](#configuration). Példa `SendGrid` attribútumra a metódus-aláírásban:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -245,33 +245,33 @@ public static void Run(
 }
 ```
 
-For a complete example, see [C# example](#c-example).
+Teljes példa: [ C# példa](#c-example).
 
 ## <a name="configuration"></a>Konfiguráció
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `SendGrid` attribute.
+Az alábbi táblázat a *function. JSON* fájlban és a `SendGrid` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function.json property | Attribute property |Leírás|
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type**|| Required - must be set to `sendGrid`.|
-|**direction**|| Required - must be set to `out`.|
-|**name**|| Required - the variable name used in function code for the request or request body. This value is ```$return``` when there is only one return value. |
-|**apiKey**|**ApiKey**| The name of an app setting that contains your API key. If not set, the default app setting name is "AzureWebJobsSendGridApiKey".|
-|**to**|**Címzett**| the recipient's email address. |
-|**from**|**From**| the sender's email address. |
-|**subject**|**Tárgy**| the subject of the email. |
-|**text**|**Szöveg**| the email content. |
+|**type**|| Kötelező – `sendGrid`értékre kell állítani.|
+|**direction**|| Kötelező – `out`értékre kell állítani.|
+|**név**|| Kötelező – a kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték ```$return```, ha csak egy visszatérési érték van. |
+|**apiKey**|**ApiKey**| Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsSendGridApiKey".|
+|**hogy**|**Címzett**| a címzett e-mail-címe. |
+|**a**|**A**| a feladó e-mail-címe. |
+|**tulajdonos**|**Tárgy**| az e-mail tárgya. |
+|**szöveg**|**Szöveg**| az e-mail tartalma. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>host.json settings
+## <a name="hostjson-settings"></a>Host.JSON-beállítások
 
-This section describes the global configuration settings available for this binding in version 2.x. The example host.json file below contains only the version 2.x settings for this binding. For more information about global configuration settings in version 2.x, see [host.json reference for Azure Functions version 2.x](functions-host-json.md).
+Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshez verziójában elérhető 2.x. Az alábbi példa host.json-fájl csak a verzió 2.x beállításait tartalmazza ezt a kötést. A 2. x verziójú globális konfigurációs beállításokkal kapcsolatos további információkért lásd: [Host. JSON-dokumentáció Azure functions 2. x verzióhoz](functions-host-json.md).
 
 > [!NOTE]
-> For a reference of host.json in Functions 1.x, see [host.json reference for Azure Functions 1.x](functions-host-json-v1.md).
+> Az 1. x függvények Host. JSON fájljának hivatkozását lásd: [Host. JSON-dokumentáció Azure functions 1. x-hez](functions-host-json-v1.md).
 
 ```json
 {
@@ -286,10 +286,10 @@ This section describes the global configuration settings available for this bind
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|from|–|The sender's email address across all functions.| 
+|from|n/a|A küldő e-mail-címe az összes függvényen belül.| 
 
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+> [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

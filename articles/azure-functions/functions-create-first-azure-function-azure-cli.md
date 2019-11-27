@@ -12,7 +12,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230838"
 ---
-# <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>Quickstart: Create your first function from the command line using Azure CLI
+# <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>Rövid útmutató: az első függvény létrehozása a parancssorból az Azure CLI használatával
 
 Ez a rövid útmutató lépésről lépésre bemutatja, hogyan hozhatja létre az első függvényét a parancssorból vagy a terminálból. Az Azure CLI használatával létrehoz egy függvényalkalmazást, amely az a [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) infrastruktúra lesz, amelyen a függvény működni fog. A függvénykód-projekt egy függvényből lett létrehozva az [Azure Functions Core Tools](functions-run-local.md) használatával, ennek a használatával történik a függvényalkalmazás-projekt Azure-beli üzembe helyezése is.
 
@@ -22,9 +22,9 @@ Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató számítógép
 
 A minta futtatásához az alábbiakkal kell rendelkeznie:
 
-+ Install [Azure Functions Core Tools](./functions-run-local.md#v2) version 2.6.666 or later.
++ Telepítse [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.666 vagy újabb verziót.
 
-+ Telepítse az [Azure CLI-t](/cli/azure/install-azure-cli). This     article requires the Azure CLI version 2.0 or later. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
++ Telepítse az [Azure CLI-t](/cli/azure/install-azure-cli). Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára van szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
 
 + Aktív Azure-előfizetés.
 
@@ -32,7 +32,7 @@ A minta futtatásához az alábbiakkal kell rendelkeznie:
 
 [!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
-## <a name="enable-extension-bundles"></a>Enable extension bundles
+## <a name="enable-extension-bundles"></a>Bővítmény-csomagok engedélyezése
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -48,7 +48,7 @@ A minta futtatásához az alábbiakkal kell rendelkeznie:
 
 Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A függvényalkalmazás szolgáltat környezetet a függvénykód kiszolgáló nélküli végrehajtásához. Lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások egyszerűbb kezelése, üzembe helyezése és megosztása érdekében. Hozzon létre egy függvényalkalmazást az [az functionapp create](/cli/azure/functionapp#az-functionapp-create) parancs használatával. 
 
-A következő parancsban a `<APP_NAME>` helyőrző helyett írjon be egy egyedi függvényalkalmazás-nevet, a `<STORAGE_NAME>` helyőrző helyett pedig a tárfiók nevét. Az `<APP_NAME>` nevet a rendszer a függvényalkalmazás alapértelmezett DNS-tartományának részeként használja, ezért annak egyedinek kell lennie az Azure összes alkalmazásában. You should also set the `<language>` runtime for your function app, from `dotnet` (C#) or `node` (JavaScript).
+A következő parancsban a `<APP_NAME>` helyőrző helyett írjon be egy egyedi függvényalkalmazás-nevet, a `<STORAGE_NAME>` helyőrző helyett pedig a tárfiók nevét. Az `<APP_NAME>` nevet a rendszer a függvényalkalmazás alapértelmezett DNS-tartományának részeként használja, ezért annak egyedinek kell lennie az Azure összes alkalmazásában. A Function alkalmazáshoz a `<language>` futtatókörnyezetet is be kell állítania `dotnet` (C#) vagy `node` (JavaScript) értékről.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westeurope \

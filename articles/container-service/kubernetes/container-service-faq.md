@@ -20,7 +20,7 @@ ms.locfileid: "74286499"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-## <a name="orchestrators"></a>Szervezők
+## <a name="orchestrators"></a>Vezénylők
 
 ### <a name="which-container-orchestrators-do-you-support-on-azure-container-service"></a>Mely tárolóvezénylőket támogatja az Azure Container Service? 
 

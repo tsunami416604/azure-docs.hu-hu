@@ -25,7 +25,7 @@ ms.locfileid: "74278524"
 > * [1-es verzió](v1/data-factory-http-connector.md)
 > * [Aktuális verzió](connector-http.md)
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok HTTP-végpontról történő másolásához. A cikk számos tekintetben [másolási tevékenységgel az Azure Data Factoryban](copy-activity-overview.md), amely megadja, hogy a másolási tevékenység általános áttekintést.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok HTTP-végpontról történő másolásához. A cikk a [másolási tevékenységre épül Azure Data Factoryban](copy-activity-overview.md), amely a másolási tevékenység általános áttekintését mutatja be.
 
 A HTTP-összekötő, a REST- [összekötő](connector-rest.md) és a [webes tábla összekötője](connector-web-table.md) közötti különbség a következő:
 
@@ -40,7 +40,7 @@ Ez a HTTP-összekötő a következő tevékenységek esetén támogatott:
 - [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-A HTTP-forrásokból származó adatok bármely támogatott fogadó adattárba másolhatók. Az adatok listáját tárolja, hogy a másolási tevékenység támogatja a forrásként és fogadóként, lásd: [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
+A HTTP-forrásokból származó adatok bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által a forrásként és a fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Ezt a HTTP-összekötőt a következő célra használhatja:
 
@@ -71,7 +71,7 @@ A HTTP társított szolgáltatás a következő tulajdonságokat támogatja:
 | url | A webkiszolgáló alap URL-címe. | Igen |
 | enableServerCertificateValidation | Itt adhatja meg, hogy engedélyezi-e a kiszolgáló SSL-tanúsítványának érvényesítését egy HTTP-végponthoz való csatlakozáskor. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, állítsa **hamis**értékre a tulajdonságot. | Nem<br /> (az alapértelmezett érték **igaz**) |
 | authenticationType | Megadja a hitelesítési típust. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **kivonatoló**, **Windows**és **ClientCertificate**. <br><br> A következő szakaszokban találhat további tulajdonságokat és JSON-mintákat a fenti hitelesítési típusokhoz. | Igen |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| connectVia | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Alapszintű, kivonatoló vagy Windows-hitelesítés használata
 
@@ -80,7 +80,7 @@ A HTTP társított szolgáltatás a következő tulajdonságokat támogatja:
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | userName | A HTTP-végpont eléréséhez használandó Felhasználónév. | Igen |
-| jelszó | A felhasználó jelszava (a **userName** érték). Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| jelszó | A felhasználó jelszava (a **Felhasználónév** értéke). A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. | Igen |
 
 **Példa**
 
@@ -114,7 +114,7 @@ A ClientCertificate-hitelesítés használatához állítsa a **authenticationTy
 |:--- |:--- |:--- |
 | embeddedCertData | Base64 kódolású tanúsítvány-adattartalom. | Adjon meg **embeddedCertData** vagy **certThumbprint**. |
 | certThumbprint | A saját üzemeltetésű Integration Runtime gép tanúsítványtárolójában telepített Tanúsítvány ujjlenyomata. Csak akkor érvényes, ha a Integration Runtime saját üzemeltetésű típusa van megadva a **connectvia tulajdonsággal** tulajdonságban. | Adjon meg **embeddedCertData** vagy **certThumbprint**. |
-| jelszó | A tanúsítványhoz társított jelszó. Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
+| jelszó | A tanúsítványhoz társított jelszó. A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. | Nem |
 
 Ha **certThumbprint** használ a hitelesítéshez, és a tanúsítvány a helyi számítógép személyes tárolójába van telepítve, adja meg az olvasási engedélyeket a saját üzemeltetésű Integration Runtime számára:
 
@@ -169,7 +169,7 @@ Ha **certThumbprint** használ a hitelesítéshez, és a tanúsítvány a helyi 
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. 
+Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. 
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
@@ -222,7 +222,7 @@ A következő tulajdonságok támogatottak a HTTP-n belül `location` beállít�
 | additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
 | requestBody | A HTTP-kérelem törzse. | Nem |
 | format | Ha az adatokat a HTTP-végpontról kívánja lekérdezni, az elemzés nélkül, majd másolja az adatokat egy fájl alapú tárolóba, ugorja át a **Formátum** szakaszt a bemeneti és a kimeneti adatkészlet-definíciókban is.<br/><br/>Ha a HTTP-válasz tartalmát a másolás során szeretné elemezni, a következő fájlformátum-típusok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**és **ParquetFormat**. A **Formátum**alatt állítsa be a **Type** tulajdonságot az alábbi értékek egyikére. További információ: JSON- [Formátum](supported-file-formats-and-compression-codecs.md#json-format), [szöveges formátum](supported-file-formats-and-compression-codecs.md#text-format), [Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), ork- [Formátum](supported-file-formats-and-compression-codecs.md#orc-format)és [parketta formátum](supported-file-formats-and-compression-codecs.md#parquet-format). |Nem |
-| compression | Adja meg a típus és az adatok tömörítési szintje. További információkért lásd: [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Támogatott típusok: **gzip**, **deflate**, **BZip2**és **ZipDeflate**.<br/>Támogatott szintek: **optimális** és **leggyorsabb**. |Nem |
+| compression | Adja meg a típus és az adatok tömörítési szintje. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Támogatott típusok: **gzip**, **deflate**, **BZip2**és **ZipDeflate**.<br/>Támogatott szintek: **optimális** és **leggyorsabb**. |Nem |
 
 > [!NOTE]
 > A HTTP-kérések támogatott mérete körülbelül 500 KB. Ha a webes végpontnak átadni kívánt hasznos adatok mérete meghaladja a 500 KB-ot, érdemes lehet kisebb adattömbökbe felvenni a hasznos adatokat.
@@ -270,7 +270,7 @@ A következő tulajdonságok támogatottak a HTTP-n belül `location` beállít�
 
 Ez a szakasz a HTTP-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-Szakaszok és a tevékenységek definiálását tulajdonságok teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md). 
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md). 
 
 ### <a name="http-as-source"></a>HTTP forrásként
 
@@ -377,4 +377,4 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 
 ## <a name="next-steps"></a>Következő lépések
 
-Másolási tevékenységet támogatja az adatforrások és az Azure Data Factoryban fogadók adattárak listáját lásd: [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
+A másolási tevékenység által támogatott adattárak listáját a Azure Data Factoryban található forrásként és nyelőként tekintse meg a [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben.

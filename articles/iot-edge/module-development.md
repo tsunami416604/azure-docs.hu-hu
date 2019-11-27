@@ -1,6 +1,6 @@
 ---
-title: Develop modules for Azure IoT Edge | Microsoft Docs
-description: Develop custom modules for Azure IoT Edge that can communicate with the runtime and IoT Hub
+title: Az Azure IoT Edge-modulok fejlesztése |} A Microsoft Docs
+description: Kifejleszthet egyedi modulokat az Azure IoT Edge, amely képes kommunikálni a futtatókörnyezetet és az IoT Hub
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -15,86 +15,86 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456622"
 ---
-# <a name="develop-your-own-iot-edge-modules"></a>Develop your own IoT Edge modules
+# <a name="develop-your-own-iot-edge-modules"></a>Saját IoT Edge-modulok fejlesztése
 
-Azure IoT Edge modules can connect with other Azure services and contribute to your larger cloud data pipeline. This article describes how you can develop modules to communicate with the IoT Edge runtime and IoT Hub, and therefore the rest of the Azure cloud. 
+Azure IoT Edge modulok kapcsolódhatnak más Azure-szolgáltatásokhoz, és hozzájárulnak a nagyobb Felhőbeli adatfolyamathoz. Ez a cikk azt ismerteti, hogyan fejleszthet modulokat a IoT Edge futtatókörnyezettel és IoT Hubával, így az Azure-felhő többi részével folytatott kommunikációhoz. 
 
-## <a name="iot-edge-runtime-environment"></a>IoT Edge runtime environment
-The IoT Edge runtime provides the infrastructure to integrate the functionality of multiple IoT Edge modules and to deploy them onto IoT Edge devices. At a high level, any program can be packaged as an IoT Edge module. However, to take full advantage of IoT Edge communication and management functionalities, a program running in a module can connect to the local IoT Edge hub, integrated in the IoT Edge runtime.
+## <a name="iot-edge-runtime-environment"></a>IoT Edge-futtatókörnyezet
+Az IoT Edge-futtatókörnyezet biztosít az infrastruktúra több IoT Edge-modulok funkciójának integrálásához és az IoT Edge-eszközökön való üzembe helyezés helyszíne. Magas szinten bármely program is csomagolva, mint az IoT Edge-modul. Azonban teljes mértékben kihasználhatja az IoT Edge kommunikációs és felügyeleti funkciók, a program futtatása egy modulban is képes csatlakozni a helyi IoT Edge hub, az IoT Edge-futtatókörnyezet integrálva.
 
-## <a name="using-the-iot-edge-hub"></a>Using the IoT Edge hub
-The IoT Edge hub provides two main functionalities: proxy to IoT Hub, and local communications.
+## <a name="using-the-iot-edge-hub"></a>Használja az IoT Edge hubot
+Az IoT Edge hub által biztosított két fő funkciói: az IoT Hub és a helyi hírközlő proxy.
 
-### <a name="iot-hub-primitives"></a>IoT Hub primitives
-IoT Hub sees a module instance analogously to a device, in the sense that:
+### <a name="iot-hub-primitives"></a>Az IoT Hub primitívek
+Az IoT Hub adatproblémák egy eszközt, abban az értelemben, hogy egy modul példányt kap, amely:
 
-* it has a module twin that is distinct and isolated from the [device twin](../iot-hub/iot-hub-devguide-device-twins.md) and the other module twins of that device;
-* it can send [device-to-cloud messages](../iot-hub/iot-hub-devguide-messaging.md);
-* it can receive [direct methods](../iot-hub/iot-hub-devguide-direct-methods.md) targeted specifically at its identity.
+* Ez egy külön modul, amely külön és elkülönített az [eszköz Twin](../iot-hub/iot-hub-devguide-device-twins.md) és a többi modul ikrek közül.
+* képes az [eszközről a felhőbe irányuló üzenetek](../iot-hub/iot-hub-devguide-messaging.md)küldésére;
+* közvetlenül a saját identitására irányuló [közvetlen metódusokat](../iot-hub/iot-hub-devguide-direct-methods.md) is fogadhat.
 
-Currently, a module cannot receive cloud-to-device messages nor use the file upload feature.
+Jelenleg egy modul nem felhőből az eszközre irányuló üzenetek fogadása és nem használja a fájlfeltöltési funkcióval.
 
-When writing a module, you can use the [Azure IoT Device SDK](../iot-hub/iot-hub-devguide-sdks.md) to connect to the IoT Edge hub and use the above functionality as you would when using IoT Hub with a device application, the only difference being that, from your application back-end, you have to refer to the module identity instead of the device identity.
+Modul írásakor az [Azure IoT-eszköz SDK](../iot-hub/iot-hub-devguide-sdks.md) -val csatlakozhat az IoT Edge hubhoz, és használhatja a fenti funkciókat úgy, mint ha IoT Hubt használ egy eszköz alkalmazással, az egyetlen különbség az, hogy az alkalmazás háttérből való használatakor a modul identitását kell megtekinteni az eszköz identitása helyett.
 
 ### <a name="device-to-cloud-messages"></a>Az eszközről a felhőbe irányuló üzenetek
-To enable complex processing of device-to-cloud messages, IoT Edge hub provides declarative routing of messages between modules, and between modules and IoT Hub. Declarative routing allows modules to intercept and process messages sent by other modules and propagate them into complex pipelines. For more information, see [deploy modules and establish routes in IoT Edge](module-composition.md).
+Az eszközről a felhőbe irányuló üzenetek összetett feldolgozásának engedélyezéséhez IoT Edge hub a modulok, a modulok és a IoT Hub között a deklaratív útválasztást biztosítja. Deklaratív útválasztást lehetővé teszi, hogy a modulok intercept és más modulok által küldött üzenetek feldolgozásával, és átvezeti őket az összetett folyamatok. További információ: [modulok telepítése és útvonalak létrehozása IoT Edgeban](module-composition.md).
 
-An IoT Edge module, as opposed to a normal IoT Hub device application, can receive device-to-cloud messages that are being proxied by its local IoT Edge hub in order to process them.
+Az IoT Edge-modul, ellentétben a szokásos IoT Hub alkalmazást, annak érdekében, hogy fel használ proxyt a helyi IoT Edge hub által éppen eszköz – felhő üzeneteket fogadhat.
 
-IoT Edge hub propagates the messages to your module based on declarative routes described in the [deployment manifest](module-composition.md). When developing an IoT Edge module, you can receive these messages by setting message handlers.
+IoT Edge hub az üzeneteket a modulba az [üzembe helyezési jegyzékben](module-composition.md)ismertetett deklaratív útvonalak alapján propagálja. Amikor egy IoT Edge-modul fejlesztése, ezeket az üzeneteket fogadhat üzenet kezelők beállításával.
 
-To simplify the creation of routes, IoT Edge adds the concept of module *input* and *output* endpoints. A module can receive all device-to-cloud messages routed to it without specifying any input, and can send device-to-cloud messages without specifying any output. Using explicit inputs and outputs, though, makes routing rules simpler to understand. 
+Az útvonalak létrehozásának egyszerűbbé tétele érdekében IoT Edge hozzáadja a modul *bemeneti* és *kimeneti* végpontjának koncepcióját. Egy modul fogadhat semmilyen bemenetet megadása nélkül irányítja az összes eszköz – felhő üzeneteket, és az eszköz – felhő üzeneteket küldhetnek kimenetet megadása nélkül. Explicit bemeneteit és kimeneteit, azonban révén a útválasztási szabályok egyszerűbb megértéséhez. 
 
-Finally, device-to-cloud messages handled by the Edge hub are stamped with the following system properties:
+Végül az Edge hub által kezelt eszköz – felhő üzenetek vannak megjelölve a következő tulajdonságai:
 
 | Tulajdonság | Leírás |
 | -------- | ----------- |
-| $connectionDeviceId | The device ID of the client that sent the message |
-| $connectionModuleId | The module ID of the module that sent the message |
-| $inputName | The input that received this message. Can be empty. |
-| $outputName | The output used to send the message. Can be empty. |
+| $connectionDeviceId | Az ügyfél elküldte az üzenetet, az eszköz azonosítója |
+| $connectionModuleId | A modul az üzenetet küldő modul azonosítója |
+| $inputName | A bemenet, amely kapta ezt az üzenetet. Üres is lehet. |
+| $outputName | A kimenet az üzenet elküldéséhez használt. Üres is lehet. |
 
-### <a name="connecting-to-iot-edge-hub-from-a-module"></a>Connecting to IoT Edge hub from a module
-Connecting to the local IoT Edge hub from a module involves two steps: 
-1. Create a ModuleClient instance in your application.
-2. Make sure your application accepts the certificate presented by the IoT Edge hub on that device.
+### <a name="connecting-to-iot-edge-hub-from-a-module"></a>Csatlakozás az IoT Edge hubot a modulból
+Csatlakozás a helyi IoT Edge hubot a modulból két lépésből áll: 
+1. Hozzon létre egy ModuleClient-példányt az alkalmazásban.
+2. Ellenőrizze, hogy az alkalmazás fogad el, hogy az eszközről az IoT Edge hub által bemutatott tanúsítványt.
 
-Create a ModuleClient instance to connect your module to the IoT Edge hub running on the device, similar to how DeviceClient instances connect IoT devices to IoT Hub. For more information about the ModuleClient class and its communication methods, see the API reference for your preferred SDK language: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable), or [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+Hozzon létre egy ModuleClient-példányt, amely az eszközön futó IoT Edge hubhoz csatlakoztatja a modult, hasonlóan ahhoz, ahogy a DeviceClient-példányok IoT-eszközök csatlakoztatását IoT Hubhoz. A ModuleClient osztályról és a hozzá tartozó kommunikációs módszerekről a következő témakörben talál további információt: API-hivatkozás [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)az előnyben részesített SDK-nyelvhez:, [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)vagy [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
-## <a name="language-and-architecture-support"></a>Language and architecture support
+## <a name="language-and-architecture-support"></a>Nyelvi és architektúra-támogatás
 
-IoT Edge supports multiple operating systems, device architectures, and development languages so that you can build the scenario that matches your needs. Use this section to understand your options for developing custom IoT Edge modules. You can learn more about tooling support and requirements for each language in [Prepare your development and test environment for IoT Edge](development-environment.md).
+IoT Edge támogatja több operációs rendszer, eszköz architektúrája és fejlesztői nyelv használatát, így az igényeinek megfelelő forgatókönyvet hozhatja létre. Ebben a szakaszban megismerheti az egyéni IoT Edge-modulok fejlesztésének lehetőségeit. A [fejlesztési és tesztelési környezet előkészítéséhez az IoT Edge](development-environment.md)az egyes nyelvekhez kapcsolódó támogatás és követelmények megismerését ismertető témakörben olvashat bővebben.
 
 ### <a name="linux"></a>Linux
 
-For all languages in the following table, IoT Edge supports development for AMD64 and ARM32 Linux devices. 
+Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja az AMD64-és ARM32-alapú Linux-eszközök fejlesztését. 
 
 | Fejlesztői nyelv | Fejlesztési eszközök |
 | -------------------- | ----------------- |
-| C# | Visual Studio-kód<br>Visual Studio 2017/2019 |
-| C# | Visual Studio-kód<br>Visual Studio 2017/2019 |
-| Java | Visual Studio-kód |
-| Node.js | Visual Studio-kód |
-| Python | Visual Studio-kód |
+| C# | Visual Studio Code<br>Visual Studio 2017/2019 |
+| C# | Visual Studio Code<br>Visual Studio 2017/2019 |
+| Java | Visual Studio Code |
+| Node.js | Visual Studio Code |
+| Python | Visual Studio Code |
 
 >[!NOTE]
->Develop and debugging support for ARM64 Linux devices is in [public preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). For more information, see [Develop and debug ARM64 IoT Edge modules in Visual Studio Code (preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
+>A ARM64 Linux-eszközök fejlesztésének és hibakeresésének támogatása [nyilvános előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el. További információ: [ARM64 IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio Code-ban (előzetes verzió)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
 ### <a name="windows"></a>Windows
 
-For all languages in the following table, IoT Edge supports development for AMD64 Windows devices.
+Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja az AMD64 Windows-eszközök fejlesztését.
 
 | Fejlesztői nyelv | Fejlesztési eszközök |
 | -------------------- | ----------------- |
 | C# | Visual Studio 2017/2019 |
-| C# | Visual Studio Code (no debugging capabilities)<br>Visual Studio 2017/2019 |
+| C# | Visual Studio Code (nincs hibakeresési képesség)<br>Visual Studio 2017/2019 |
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Prepare your development and test environment for IoT Edge](development-environment.md)
+[A fejlesztési és tesztelési környezet előkészítése IoT Edge](development-environment.md)
 
-[Use Visual Studio to develop C# modules for IoT Edge](how-to-visual-studio-develop-module.md)
+[A Visual Studio használata a C# IoT Edge moduljainak fejlesztéséhez](how-to-visual-studio-develop-module.md)
 
-[Use Visual Studio Code to develop modules for IoT Edge](how-to-vs-code-develop-module.md)
+[Modulok fejlesztése a Visual Studio Code használatával IoT Edge](how-to-vs-code-develop-module.md)
 
-[Understand and use Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md)
+[Az Azure IoT Hub SDK-k megismerése és használata](../iot-hub/iot-hub-devguide-sdks.md)

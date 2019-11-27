@@ -1,5 +1,5 @@
 ---
-title: Create a public Load Balancer - Azure template
+title: Egy nyilvános terheléselosztó létrehozása – Azure-sablonnal
 titleSuffix: Azure Load Balancer
 description: Megismerheti, hogyan hozható létre nyilvános terheléselosztó a Resource Managerben sablon használatával
 services: load-balancer
@@ -23,7 +23,7 @@ ms.locfileid: "74225349"
 # <a name="creating-a-public-load-balancer-using-a-template"></a>Nyilvános terheléselosztó létrehozása sablon használatával
 
 > [!div class="op_single_selector"]
-> * [Portal](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [Portál](../load-balancer/load-balancer-get-started-internet-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [Sablon](../load-balancer/load-balancer-get-started-internet-arm-template.md)
@@ -43,7 +43,7 @@ A nyilvános tárházban elérhető mintasablon a fent leírt forgatókönyv lé
 A letöltött sablon PowerShell használatával történő üzembe helyezéséhez kövesse az alábbi lépéseket.
 
 1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
-2. Run the **New-AzResourceGroupDeployment** cmdlet to create a resource group using the template.
+2. A **New-AzResourceGroupDeployment** parancsmag futtatásával hozzon létre egy erőforráscsoportot a sablon használatával.
 
     ```powershell
     New-AzResourceGroupDeployment -Name TestRG -Location uswest `
@@ -81,4 +81,4 @@ Az alábbi lépéseket követve hozhatja létre a sablont az Azure parancssori f
 
 [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
 
-For the JSON syntax and properties of a load balancer in a template, see [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+A sablonban lévő terheléselosztó JSON-szintaxisához és tulajdonságaihoz lásd: [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

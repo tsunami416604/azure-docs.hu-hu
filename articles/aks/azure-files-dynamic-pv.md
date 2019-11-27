@@ -1,6 +1,6 @@
 ---
-title: Dynamically create a Files volume for multiple pods in Azure Kubernetes Service (AKS)
-description: Learn how to dynamically create a persistent volume with Azure Files for use with multiple concurrent pods in Azure Kubernetes Service (AKS)
+title: Fájlok kötetének dinamikus létrehozása több hüvely számára az Azure Kubernetes szolgáltatásban (ak)
+description: Megtudhatja, hogyan hozhat létre dinamikusan állandó kötetet Azure Files használatával több párhuzamos hüvelyrel való használatra az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -14,33 +14,33 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231758"
 ---
-# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamically create and use a persistent volume with Azure Files in Azure Kubernetes Service (AKS)
+# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure Files az Azure Kubernetes szolgáltatásban (ak)
 
-A persistent volume represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or many pods, and can be dynamically or statically provisioned. If multiple pods need concurrent access to the same storage volume, you can use Azure Files to connect using the [Server Message Block (SMB) protocol][smb-overview]. This article shows you how to dynamically create an Azure Files share for use by multiple pods in an Azure Kubernetes Service (AKS) cluster.
+Az állandó kötet a Kubernetes hüvelyekkel való használatra kiépített tárterületet jelöli. Egy állandó kötetet egy vagy több hüvely is használhat, és dinamikusan vagy statikusan kiépíthető. Ha több hüvelynek egyidejű hozzáférésre van szüksége ugyanahhoz a tárolási kötethez, akkor a Azure Files használatával csatlakozhat a [Server Message Block (SMB) protokollal][smb-overview]. Ebből a cikkből megtudhatja, hogyan hozhat létre dinamikusan egy Azure Files-megosztást egy Azure Kubernetes-szolgáltatási (ak-) fürtön több hüvely használatával.
 
-For more information on Kubernetes volumes, see [Storage options for applications in AKS][concepts-storage].
+A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-beli alkalmazások tárolási beállításai][concepts-storage].
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-This article assumes that you have an existing AKS cluster. If you need an AKS cluster, see the AKS quickstart [using the Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-You also need the Azure CLI version 2.0.59 or later installed and configured. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI][install-azure-cli].
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió megkereséséhez futtassa a `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
-## <a name="create-a-storage-class"></a>Create a storage class
+## <a name="create-a-storage-class"></a>Tárolási osztály létrehozása
 
-A storage class is used to define how an Azure file share is created. A storage account is automatically created in the [node resource group][node-resource-group] for use with the storage class to hold the Azure file shares. Choose of the following [Azure storage redundancy][storage-skus] for *skuName*:
+A tárolási osztály segítségével határozható meg az Azure-fájlmegosztás létrehozása. A rendszer automatikusan létrehoz egy Storage-fiókot a [csomópont-erőforráscsoport][node-resource-group] számára, hogy az Azure-fájlmegosztás tárolására használja a Storage osztályt. Válasszon a következő [Azure Storage-redundancia][storage-skus] *skuName*:
 
-* *Standard_LRS* - standard locally redundant storage (LRS)
-* *Standard_GRS* - standard geo-redundant storage (GRS)
-* *Standard_RAGRS* - standard read-access geo-redundant storage (RA-GRS)
-* *Premium_LRS* - premium locally redundant storage (LRS)
+* *Standard_LRS* – standard, helyileg redundáns tárolás (LRS)
+* *Standard_GRS* – szabványos geo-redundáns tárolás (GRS)
+* *Standard_RAGRS* – szabványos olvasási hozzáférésű geo-redundáns tárolás (ra-GRS)
+* *Premium_LRS* – prémium helyileg redundáns tárolás (LRS)
 
 > [!NOTE]
-> Azure Files support premium storage in AKS clusters that run Kubernetes 1.13 or higher.
+> Azure Files támogatja a Premium Storage-t a Kubernetes 1,13-es vagy újabb verzióját futtató AK-fürtökben.
 
-For more information on Kubernetes storage classes for Azure Files, see [Kubernetes Storage Classes][kubernetes-storage-classes].
+A Azure Files Kubernetes tárolási osztályaival kapcsolatos további információkért lásd: [Kubernetes tárolási][kubernetes-storage-classes]osztályok.
 
-Create a file named `azure-file-sc.yaml` and copy in the following example manifest. For more information on *mountOptions*, see the [Mount options][mount-options] section.
+Hozzon létre egy `azure-file-sc.yaml` nevű fájlt, és másolja a következő példában szereplő jegyzékfájlba. További információ a *mountOptions*: [csatlakoztatási beállítások][mount-options] szakasz.
 
 ```yaml
 kind: StorageClass
@@ -60,17 +60,17 @@ parameters:
   skuName: Standard_LRS
 ```
 
-Create the storage class with the [kubectl apply][kubectl-apply] command:
+Hozza létre a tárolási osztályt a [kubectl Apply][kubectl-apply] paranccsal:
 
 ```console
 kubectl apply -f azure-file-sc.yaml
 ```
 
-## <a name="create-a-persistent-volume-claim"></a>Create a persistent volume claim
+## <a name="create-a-persistent-volume-claim"></a>Állandó kötet jogcímek létrehozása
 
-A persistent volume claim (PVC) uses the storage class object to dynamically provision an Azure file share. The following YAML can be used to create a persistent volume claim *5 GB* in size with *ReadWriteMany* access. For more information on access modes, see the [Kubernetes persistent volume][access-modes] documentation.
+Az állandó mennyiségi jogcím (PVC) a tárolási osztály objektum használatával dinamikusan kiépít egy Azure-fájlmegosztást. A következő YAML a *ReadWriteMany* -hozzáféréssel rendelkező, *5 GB* méretű állandó mennyiségi jogcím létrehozásához használható. A hozzáférési módokkal kapcsolatos további információkért tekintse meg a [Kubernetes állandó kötet][access-modes] dokumentációját.
 
-Now create a file named `azure-file-pvc.yaml` and copy in the following YAML. Make sure that the *storageClassName* matches the storage class created in the last step:
+Most hozzon létre egy `azure-file-pvc.yaml` nevű fájlt, és másolja a következő YAML. Győződjön meg arról, hogy a *storageClassName* megegyezik az utolsó lépésben létrehozott tárolási osztállyal:
 
 ```yaml
 apiVersion: v1
@@ -87,15 +87,15 @@ spec:
 ```
 
 > [!NOTE]
-> If using the *Premium_LRS* sku for your storage class, the minimum value for *storage* must be *100Gi*.
+> Ha a tárolási osztályhoz tartozó *Premium_LRS* SKU-t használja, a *tárterület* minimális értékének *100Gi*kell lennie.
 
-Create the persistent volume claim with the [kubectl apply][kubectl-apply] command:
+Hozza létre az állandó kötet jogcímet a [kubectl Apply][kubectl-apply] paranccsal:
 
 ```console
 kubectl apply -f azure-file-pvc.yaml
 ```
 
-Once completed, the file share will be created. A Kubernetes secret is also created that includes connection information and credentials. You can use the [kubectl get][kubectl-get] command to view the status of the PVC:
+Ha elkészült, a rendszer létrehozza a fájlmegosztást. Létrejön egy titkos Kubernetes is, amely tartalmazza a kapcsolatok adatait és a hitelesítő adatokat. A PVC állapotának megtekintéséhez használja a [kubectl Get][kubectl-get] parancsot:
 
 ```console
 $ kubectl get pvc azurefile
@@ -104,11 +104,11 @@ NAME        STATUS    VOLUME                                     CAPACITY   ACCE
 azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX            azurefile      5m
 ```
 
-## <a name="use-the-persistent-volume"></a>Use the persistent volume
+## <a name="use-the-persistent-volume"></a>Az állandó kötet használata
 
-The following YAML creates a pod that uses the persistent volume claim *azurefile* to mount the Azure file share at the */mnt/azure* path. For Windows Server containers (currently in preview in AKS), specify a *mountPath* using the Windows path convention, such as *'D:'* .
+A következő YAML létrehoz egy Pod-t, amely az állandó mennyiségi jogcímek *azurefile* használatával csatlakoztatja az Azure-fájlmegosztást a */mnt/Azure* elérési úton. A Windows Server-tárolók esetében (jelenleg előzetes verzióban) a Windows PATH Convention, például a *'d: "* *mountPath* használatával adható meg.
 
-Create a file named `azure-pvc-files.yaml`, and copy in the following YAML. Make sure that the *claimName* matches the PVC created in the last step.
+Hozzon létre egy `azure-pvc-files.yaml`nevű fájlt, és másolja a következő YAML. Győződjön meg arról, hogy a *claimName* megegyezik az utolsó lépésben létrehozott PVC-vel.
 
 ```yaml
 kind: Pod
@@ -135,13 +135,13 @@ spec:
         claimName: azurefile
 ```
 
-Create the pod with the [kubectl apply][kubectl-apply] command.
+Hozza létre a pod-t a [kubectl Apply][kubectl-apply] paranccsal.
 
 ```console
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-You now have a running pod with your Azure Files share mounted in the */mnt/azure* directory. This configuration can be seen when inspecting your pod via `kubectl describe pod mypod`. The following condensed example output shows the volume mounted in the container:
+Most már rendelkezik egy futó Pod Azure Files-megosztással, amely a */mnt/Azure* könyvtárban van csatlakoztatva. Ez a konfiguráció megtekinthető a pod `kubectl describe pod mypod`használatával történő vizsgálata során. A következő összefoglalt példa kimenet a tárolóban csatlakoztatott kötetet mutatja:
 
 ```
 Containers:
@@ -164,9 +164,9 @@ Volumes:
 [...]
 ```
 
-## <a name="mount-options"></a>Mount options
+## <a name="mount-options"></a>Csatlakoztatási beállítások
 
-The default value for *fileMode* and *dirMode* is *0755* for Kubernetes version 1.9.1 and above. If using a cluster with Kuberetes version 1.8.5 or greater and dynamically creating the persistent volume with a storage class, mount options can be specified on the storage class object. The following example sets *0777*:
+A *fileMode* és a *dirMode* alapértelmezett értéke *0755* a Kubernetes 1.9.1-es vagy újabb verziójához. Ha olyan fürtöt használ, amelynek Kuberetes-verziója 1.8.5 vagy nagyobb, és dinamikusan hozza létre az állandó kötetet egy tárolási osztállyal, a csatlakoztatási beállítások megadhatók a tárolási osztály objektumban. A következő példa a *0777*-es készletet állítja be:
 
 ```yaml
 kind: StorageClass
@@ -186,16 +186,16 @@ parameters:
   skuName: Standard_LRS
 ```
 
-If using a cluster of version 1.8.0 - 1.8.4, a security context can be specified with the *runAsUser* value set to *0*. For more information on Pod security context, see [Configure a Security Context][kubernetes-security-context].
+Ha 1.8.0-1.8.4-alapú fürtöt használ, a *runAsUser* értékkel megadható egy biztonsági környezet, amely a *0*értékre van állítva. A pod biztonsági környezettel kapcsolatos további információkért lásd: [biztonsági környezet konfigurálása][kubernetes-security-context].
 
 ## <a name="next-steps"></a>Következő lépések
 
-For associated best practices, see [Best practices for storage and backups in AKS][operator-best-practices-storage].
+A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 
-Learn more about Kubernetes persistent volumes using Azure Files.
+További információ az állandó kötetek Kubernetes Azure Files használatával.
 
 > [!div class="nextstepaction"]
-> [Kubernetes plugin for Azure Files][kubernetes-files]
+> [Kubernetes beépülő modul a Azure Fileshoz][kubernetes-files]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes

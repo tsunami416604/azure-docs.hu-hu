@@ -1,6 +1,6 @@
 ---
-title: Azure Traffic Manager - traffic routing methods
-description: This articles helps you understand the different traffic routing methods used by Traffic Manager
+title: Azure Traffic Manager – forgalom-útválasztási módszerek
+description: Ez a cikk segítséget nyújt az Traffic Manager által használt különböző forgalom-útválasztási módszerek megismerésében.
 services: traffic-manager
 author: asudbring
 ms.service: traffic-manager
@@ -17,169 +17,169 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483791"
 ---
-# <a name="traffic-manager-routing-methods"></a>Traffic Manager útválasztási módszerek
+# <a name="traffic-manager-routing-methods"></a>A Traffic Manager útválasztási módjai
 
-Azure Traffic Manager supports six traffic-routing methods to determine how to route network traffic to the various service endpoints. For any profile, Traffic Manager applies the traffic-routing method associated to it to each DNS query it receives. The traffic-routing method determines which endpoint is returned in the DNS response.
+Az Azure Traffic Manager hat forgalmi útválasztási módszert támogat a hálózati forgalom különböző szolgáltatási végpontokra való továbbításának meghatározásához. Bármely profil esetében a Traffic Manager a hozzá társított forgalom-útválasztási módszert alkalmazza az összes kapott DNS-lekérdezéshez. A forgalom-útválasztási módszer határozza meg, hogy melyik végpontot adja vissza a rendszer a DNS-válaszban.
 
-The following traffic routing methods are available in Traffic Manager:
+A következő forgalom-útválasztási módszerek érhetők el Traffic Managerban:
 
-* **[Priority](#priority-traffic-routing-method):** Select **Priority** when you want to use a primary service endpoint for all traffic, and provide backups in case the primary or the backup endpoints are unavailable.
-* **[Weighted](#weighted):** Select **Weighted** when you want to distribute traffic across a set of endpoints, either evenly or according to weights, which you define.
-* **[Performance](#performance):** Select **Performance** when you have endpoints in different geographic locations and you want end users to use the "closest" endpoint in terms of the lowest network latency.
-* **[Geographic](#geographic):** Select **Geographic** so that users are directed to specific endpoints (Azure, External, or Nested) based on which geographic location their DNS query originates from. This empowers Traffic Manager customers to enable scenarios where knowing a user’s geographic region and routing them based on that is important. Examples include complying with data sovereignty mandates, localization of content & user experience and measuring traffic from different regions.
-* **[Multivalue](#multivalue):** Select **MultiValue** for Traffic Manager profiles that can only have IPv4/IPv6 addresses as endpoints. When a query is received for this profile, all healthy endpoints are returned.
-* **[Subnet](#subnet):** Select **Subnet** traffic-routing method to map sets of end-user IP address ranges to a specific endpoint within a Traffic Manager profile. When a request is received, the endpoint returned will be the one mapped for that request’s source IP address. 
-
-
-All Traffic Manager profiles include monitoring of endpoint health and automatic endpoint failover. For more information, see [Traffic Manager Endpoint Monitoring](traffic-manager-monitoring.md). A single Traffic Manager profile can use only one traffic routing method. You can select a different traffic routing method for your profile at any time. Changes are applied within one minute, and no downtime is incurred. Traffic-routing methods can be combined by using nested Traffic Manager profiles. Nesting enables sophisticated and flexible traffic-routing configurations that meet the needs of larger, complex applications. For more information, see [nested Traffic Manager profiles](traffic-manager-nested-profiles.md).
-
-## <a name="priority-traffic-routing-method"></a>Priority traffic-routing method
-
-Often an organization wants to provide reliability for its services by deploying one or more backup services in case their primary service goes down. The 'Priority' traffic-routing method allows Azure customers to easily implement this failover pattern.
-
-![Azure Traffic Manager 'Priority' traffic-routing method](media/traffic-manager-routing-methods/priority.png)
-
-The Traffic Manager profile contains a prioritized list of service endpoints. By default, Traffic Manager sends all traffic to the primary (highest-priority) endpoint. If the primary endpoint is not available, Traffic Manager routes the traffic to the second endpoint. If both the primary and secondary endpoints are not available, the traffic goes to the third, and so on. Availability of the endpoint is based on the configured status (enabled or disabled) and the ongoing endpoint monitoring.
-
-### <a name="configuring-endpoints"></a>Configuring endpoints
-
-With Azure Resource Manager, you configure the endpoint priority explicitly using the 'priority' property for each endpoint. This property is a value between 1 and 1000. Lower values represent a higher priority. Endpoints cannot share priority values. Setting the property is optional. When omitted, a default priority based on the endpoint order is used.
-
-## <a name = "weighted"></a>Weighted traffic-routing method
-The 'Weighted' traffic-routing method allows you to distribute traffic evenly or to use a pre-defined weighting.
-
-![Azure Traffic Manager 'Weighted' traffic-routing method](media/traffic-manager-routing-methods/weighted.png)
-
-In the Weighted traffic-routing method, you assign a weight to each endpoint in the Traffic Manager profile configuration. A súlyok 1 és 1000 közötti egész számok. This parameter is optional. If omitted, Traffic Managers uses a default weight of '1'. The higher weight, the higher the priority.
-
-For each DNS query received, Traffic Manager randomly chooses an available endpoint. The probability of choosing an endpoint is based on the weights assigned to all available endpoints. Using the same weight across all endpoints results in an even traffic distribution. Using higher or lower weights on specific endpoints causes those endpoints to be returned more or less frequently in the DNS responses.
-
-The weighted method enables some useful scenarios:
-
-* Gradual application upgrade: Allocate a percentage of traffic to route to a new endpoint, and gradually increase the traffic over time to 100%.
-* Application migration to Azure: Create a profile with both Azure and external endpoints. Adjust the weight of the endpoints to prefer the new endpoints.
-* Cloud-bursting for additional capacity: Quickly expand an on-premises deployment into the cloud by putting it behind a Traffic Manager profile. When you need extra capacity in the cloud, you can add or enable more endpoints and specify what portion of traffic goes to each endpoint.
-
-In addition to using the Azure portal, you can configure weights using Azure PowerShell, CLI, and the REST APIs.
-
-It is important to understand that DNS responses are cached by clients and by the recursive DNS servers that the clients use to resolve DNS names. This caching can have an impact on weighted traffic distributions. When the number of clients and recursive DNS servers is large, traffic distribution works as expected. However, when the number of clients or recursive DNS servers is small, caching can significantly skew the traffic distribution.
-
-Common use cases include:
-
-* Development and testing environments
-* Application-to-application communications
-* Applications aimed at a narrow user-base that share a common recursive DNS infrastructure (for example, employees of company connecting through a proxy)
-
-These DNS caching effects are common to all DNS-based traffic routing systems, not just Azure Traffic Manager. In some cases, explicitly clearing the DNS cache may provide a workaround. In other cases, an alternative traffic-routing method may be more appropriate.
-
-## <a name = "performance"></a>Performance traffic-routing method
-
-Deploying endpoints in two or more locations across the globe can improve the responsiveness of many applications by routing traffic to the location that is 'closest' to you. The 'Performance' traffic-routing method provides this capability.
-
-![Azure Traffic Manager 'Performance' traffic-routing method](media/traffic-manager-routing-methods/performance.png)
-
-The 'closest' endpoint is not necessarily closest as measured by geographic distance. Instead, the 'Performance' traffic-routing method determines the closest endpoint by measuring network latency. Traffic Manager maintains an Internet Latency Table to track the round-trip time between IP address ranges and each Azure datacenter.
-
-Traffic Manager looks up the source IP address of the incoming DNS request in the Internet Latency Table. Traffic Manager then chooses an available endpoint in the Azure datacenter that has the lowest latency for that IP address range, and returns that endpoint in the DNS response.
-
-As explained in [How Traffic Manager Works](traffic-manager-how-it-works.md), Traffic Manager does not receive DNS queries directly from clients. Rather, DNS queries come from the recursive DNS service that the clients are configured to use. Therefore, the IP address used to determine the 'closest' endpoint is not the client's IP address, but it is the IP address of the recursive DNS service. In practice, this IP address is a good proxy for the client.
+* **[Prioritás](#priority-traffic-routing-method):** válassza a **Priority (prioritás** ) lehetőséget, ha elsődleges szolgáltatási végpontot kíván használni az összes forgalomhoz, és biztonsági mentést biztosít, ha az elsődleges vagy a biztonsági mentési végpontok nem érhetők el.
+* **[Súlyozott](#weighted):** válassza a **súlyozott** értéket, ha a forgalmat a végpontok egy halmazán keresztül szeretné terjeszteni, akár egyenletesen, akár súlyok szerint, amelyet Ön határoz meg.
+* **[Teljesítmény](#performance):** válassza a **teljesítmény** lehetőséget, ha különböző földrajzi helyekhez tartozó végpontokkal rendelkezik, és azt szeretné, hogy a végfelhasználók a legalacsonyabb hálózati késés szempontjából használják a "legközelebbi" végpontot.
+* **[Földrajzi](#geographic):** válassza a **földrajzi** lehetőséget, hogy a felhasználók meghatározott végpontokra legyenek irányítva (Azure, External vagy nested) attól függően, hogy a DNS-lekérdezés melyik földrajzi helyen származik. Ez arra hatalmazza fel Traffic Manager ügyfeleket, hogy olyan forgatókönyveket engedélyezzenek, amelyekben a felhasználó földrajzi régiójának ismerete és a fontos alapján történő útválasztás. Ilyenek például az adatszuverenitási megbízatásoknak való megfelelés, a tartalmak honosítása & a felhasználói élmény és a különböző régiókból érkező forgalom mérése.
+* **[](#multivalue)** Többértékű: válassza a többértékű lehetőséget **Traffic Manager olyan** profiloknál, amelyek csak IPv4/IPv6-címeket tartalmazhatnak végpontként. Ha a profilhoz lekérdezés érkezik, az összes kifogástalan állapotú végpontot adja vissza.
+* **[Alhálózat](#subnet):** válassza az **alhálózati** forgalom – útválasztási módszer lehetőséget a végfelhasználói IP-címtartományok készletének leképezésére egy Traffic Manager profilban lévő adott végpontra. A kérés fogadásakor a visszaadott végpont lesz az adott kérelem forrás IP-címéhez hozzárendelve. 
 
 
-Traffic Manager regularly updates the Internet Latency Table to account for changes in the global Internet and new Azure regions. However, application performance varies based on real-time variations in load across the Internet. Performance traffic-routing does not monitor load on a given service endpoint. However, if an endpoint becomes unavailable, Traffic Manager does not include it in DNS query responses.
+Az összes Traffic Manager profil tartalmazza a végpont állapotának figyelését és az automatikus végpont feladatátvételét. További információ: [Traffic Manager Endpoint monitoring](traffic-manager-monitoring.md). Egyetlen Traffic Manager profil csak egy forgalom-útválasztási módszert használhat. Bármikor kiválaszthat egy másik forgalom-útválasztási módszert a profiljához. A módosítások egy percen belül érvénybe lépnek, és nem merül fel leállás. A forgalom-útválasztási módszerek beágyazott Traffic Manager profilok használatával kombinálhatók. A beágyazás olyan kifinomult és rugalmas forgalom-útválasztási konfigurációkat tesz lehetővé, amelyek megfelelnek a nagyobb, összetett alkalmazások igényeinek. További információ: [beágyazott Traffic Manager profilok](traffic-manager-nested-profiles.md).
+
+## <a name="priority-traffic-routing-method"></a>Prioritási forgalom – útválasztási módszer
+
+A szervezet gyakran szeretne megbízhatóságot biztosítani a szolgáltatásaihoz egy vagy több biztonsági mentési szolgáltatás üzembe helyezése esetén, ha az elsődleges szolgáltatás leáll. A "prioritás" forgalom – az útválasztási módszer lehetővé teszi, hogy az Azure-ügyfelek könnyedén implementálják ezt a feladatátvételi mintát.
+
+![Azure Traffic Manager "prioritás" forgalom – útválasztási módszer](media/traffic-manager-routing-methods/priority.png)
+
+A Traffic Manager profil a szolgáltatási végpontok rangsorolt listáját tartalmazza. Alapértelmezés szerint a Traffic Manager az összes forgalmat az elsődleges (legmagasabb prioritású) végpontra küldi. Ha az elsődleges végpont nem érhető el, Traffic Manager átirányítja a forgalmat a második végpontra. Ha az elsődleges és a másodlagos végpont is nem érhető el, a forgalom a harmadikra kerül, és így tovább. A végpont rendelkezésre állása a beállított állapot (engedélyezve vagy letiltva) és a folyamatos végpont-figyelés alapján történik.
+
+### <a name="configuring-endpoints"></a>Végpontok konfigurálása
+
+A Azure Resource Manager használatával explicit módon konfigurálja a végpont prioritását az egyes végpontok "priority" tulajdonságával. Ez a tulajdonság 1 és 1000 közötti érték. Az alacsonyabb értékek magasabb prioritást jelentenek. A végpontok nem oszthatják meg a prioritási értékeket. A tulajdonság beállítása nem kötelező. Ha nincs megadva, a rendszer a végponti sorrend alapján alapértelmezett prioritást használ.
+
+## <a name = "weighted"></a>Súlyozott forgalom – útválasztási módszer
+A "súlyozott" forgalom-útválasztási módszer lehetővé teszi, hogy egyenletesen ossza el a forgalmat, vagy használjon előre definiált súlyozást.
+
+![Azure Traffic Manager "súlyozott" forgalom – útválasztási módszer](media/traffic-manager-routing-methods/weighted.png)
+
+A súlyozott forgalom – útválasztási módszernél a Traffic Manager profil konfigurációjában minden egyes végponthoz hozzá kell rendelni a súlyozást. A súlyok 1 és 1000 közötti egész számok. Ez a paraméter nem kötelező. Ha nincs megadva, a Traffic managerek az alapértelmezett súlyozást használják: "1". Minél nagyobb a súly, annál magasabb a prioritás.
+
+Minden fogadott DNS-lekérdezés esetében Traffic Manager véletlenszerűen választ egy elérhető végpontot. A végpont kiválasztásának valószínűsége az összes elérhető végponthoz rendelt súlyok alapján történik. Az összes végponton ugyanazt a súlyozást használva egy egyenletes forgalom eloszlását eredményezi. Ha az adott végpontok nagyobb vagy alacsonyabb súlyozását szeretné használni, a DNS-válaszokban a végpontok többször vagy ritkábban lesznek visszaadva.
+
+A súlyozott módszer néhány hasznos forgatókönyvet is lehetővé tesz:
+
+* Fokozatos alkalmazás frissítése: az új végpont felé irányuló forgalom százalékos arányának kiosztása, és a forgalom fokozatos, 100%-os növelésével.
+* Alkalmazások áttelepítése az Azure-ba: hozzon létre egy profilt az Azure-ban és a külső végpontokkal. Állítsa be úgy a végpontok súlyozását, hogy az új végpontokat részesíti előnyben.
+* Felhőbeli fordítás a további kapacitáshoz: gyorsan kiterjesztheti a helyszíni üzembe helyezést a felhőbe azáltal, hogy egy Traffic Manager profil mögé helyezi. Ha további kapacitásra van szüksége a felhőben, több végpontot is hozzáadhat vagy engedélyezhet, és megadhatja, hogy a forgalom milyen hányada kerüljön az egyes végpontokra.
+
+A Azure Portal használata mellett a súlyok a Azure PowerShell, a CLI és a REST API-k használatával is konfigurálhatók.
+
+Fontos megérteni, hogy a DNS-válaszokat az ügyfelek és az ügyfelek által a DNS-nevek feloldásához használt rekurzív DNS-kiszolgálók gyorsítótárazzák. Ez a gyorsítótárazás hatással lehet a súlyozott forgalom eloszlására. Ha az ügyfelek száma és a rekurzív DNS-kiszolgálók nagy méretűek, a forgalom eloszlása a várt módon működik. Ha azonban az ügyfelek vagy a rekurzív DNS-kiszolgálók száma kicsi, a gyorsítótárazás jelentősen elferdítheti a forgalom eloszlását.
+
+Gyakori használati esetek a következők:
+
+* Fejlesztési és tesztelési környezetek
+* Alkalmazás – alkalmazás kommunikáció
+* A közös rekurzív DNS-infrastruktúrát (például a vállalat által a proxyn keresztül csatlakozó alkalmazottakat) használó, keskeny felhasználói bázist célzó alkalmazások
+
+Ezek a DNS-gyorsítótárazási hatások közösek az összes DNS-alapú forgalom-útválasztási rendszeren, nem csak az Azure Traffic Manager. Bizonyos esetekben a DNS-gyorsítótár explicit módon történő törlése megkerülő megoldással rendelkezhet. Más esetekben előfordulhat, hogy egy másik forgalom-útválasztási módszer megfelelőbb.
+
+## <a name = "performance"></a>Teljesítmény-forgalom – útválasztási módszer
+
+A végpontok két vagy több helyen történő üzembe helyezése a világ számos pontján javíthatja az alkalmazások rugalmasságát azáltal, hogy a forgalmat a legközelebbi helyre irányítja át. A "Performance" Traffic-Routing metódus biztosítja ezt a képességet.
+
+![Azure Traffic Manager "Performance" forgalom – útválasztási módszer](media/traffic-manager-routing-methods/performance.png)
+
+A "legközelebbi" végpont nem feltétlenül legközelebb esik a földrajzi távolság alapján mért értékekhez. Ehelyett a "Performance" forgalom-útválasztási módszer határozza meg a legközelebbi végpontot a hálózati késés mérésével. A Traffic Manager egy internetes késési táblázatot tart fenn az IP-címtartományok és az egyes Azure-adatközpontok közötti oda-és visszautazási idő nyomon követéséhez.
+
+Traffic Manager megkeresi a bejövő DNS-kérelem forrás IP-címét az Internet késési táblájában. Traffic Manager ezután kiválaszt egy elérhető végpontot az Azure-adatközpontban, amely az adott IP-címtartomány legalacsonyabb késésével rendelkezik, és a DNS-válaszban visszaadja a végpontot.
+
+Ahogy azt a [Traffic Manager működése című témakör](traffic-manager-how-it-works.md)ismerteti, Traffic Manager nem kap DNS-lekérdezéseket közvetlenül az ügyfelektől. Ehelyett a DNS-lekérdezések a rekurzív DNS szolgáltatásból származnak, amelyet az ügyfelek a használatára konfiguráltak. Ezért a "legközelebbi" végpont meghatározásához használt IP-cím nem az ügyfél IP-címe, hanem a rekurzív DNS szolgáltatás IP-címe. A gyakorlatban ez az IP-cím az ügyfél számára megfelelő proxy.
 
 
-Points to note:
+Traffic Manager rendszeresen frissíti az Internet késési táblázatát a globális Internet és az új Azure-régiók változásainak figyelembevétele érdekében. Az alkalmazás teljesítménye azonban a terhelésnek az interneten keresztüli valós idejű változásai alapján változhat. Teljesítmény-forgalom – az Útválasztás nem figyeli a terhelést egy adott szolgáltatási végponton. Ha azonban egy végpont elérhetetlenné válik, Traffic Manager nem tartalmazza a DNS-lekérdezések válaszait.
 
-* If your profile contains multiple endpoints in the same Azure region, then Traffic Manager distributes traffic evenly across the available endpoints in that region. If you prefer a different traffic distribution within a region, you can use [nested Traffic Manager profiles](traffic-manager-nested-profiles.md).
-* If all enabled endpoints in the closest Azure region are degraded, Traffic Manager moves traffic to the endpoints in the next closest Azure region. If you want to define a preferred failover sequence, use [nested Traffic Manager profiles](traffic-manager-nested-profiles.md).
-* When using the Performance traffic routing method with external endpoints or nested endpoints, you need to specify the location of those endpoints. Choose the Azure region closest to your deployment. Those locations are the values supported by the Internet Latency Table.
-* The algorithm that chooses the endpoint is deterministic. Repeated DNS queries from the same client are directed to the same endpoint. Typically, clients use different recursive DNS servers when traveling. The client may be routed to a different endpoint. Routing can also be affected by updates to the Internet Latency Table. Therefore, the Performance traffic-routing method does not guarantee that a client is always routed to the same endpoint.
-* When the Internet Latency Table changes, you may notice that some clients are directed to a different endpoint. This routing change is more accurate based on current latency data. These updates are essential to maintain the accuracy of Performance traffic-routing as the Internet continually evolves.
 
-## <a name = "geographic"></a>Geographic traffic-routing method
+Tudnivalók:
 
-Traffic Manager profiles can be configured to use the Geographic routing method so that users are directed to specific endpoints (Azure, External or Nested) based on which geographic location their DNS query originates from. This empowers Traffic Manager customers to enable scenarios where knowing a user’s geographic region and routing them based on that is important. Examples include complying with data sovereignty mandates, localization of content & user experience and measuring traffic from different regions.
-When a profile is configured for geographic routing, each endpoint associated with that profile needs to have a set of geographic regions assigned to it. A geographic region can be at following levels of granularity 
-- World– any region
-- Regional Grouping – for example, Africa, Middle East, Australia/Pacific etc. 
-- Country/Region – for example, Ireland, Peru, Hong Kong SAR etc. 
-- State/Province – for example, USA-California, Australia-Queensland, Canada-Alberta etc. (note: this granularity level is supported only for states / provinces in Australia, Canada, and USA).
+* Ha a profil több végpontot is tartalmaz ugyanabban az Azure-régióban, akkor a Traffic Manager egyenletesen osztja el a forgalmat az adott régióban elérhető végpontok között. Ha egy régión belül más adatforgalom-eloszlást szeretne használni, használhat [beágyazott Traffic Manager profilokat](traffic-manager-nested-profiles.md)is.
+* Ha a legközelebbi Azure-régióban az összes engedélyezett végpont csökken, Traffic Manager áthelyezi a forgalmat a legközelebbi Azure-régióban lévő végpontokra. Ha szeretne megadni egy előnyben részesített feladatátvételi sorozatot, használjon [beágyazott Traffic Manager profilokat](traffic-manager-nested-profiles.md).
+* Ha külső végpontokkal vagy beágyazott végpontokkal rendelkező teljesítmény-forgalmi útválasztási módszert használ, meg kell adnia a végpontok helyét. Válassza ki az üzemelő példányhoz legközelebb eső Azure-régiót. Ezek a helyszínek az Internet késési táblázat által támogatott értékek.
+* A végpontot kiválasztó algoritmus determinisztikus. Az azonos ügyfélről érkező ismétlődő DNS-lekérdezések ugyanahhoz a végponthoz vannak irányítva. Az ügyfelek általában eltérő rekurzív DNS-kiszolgálókat használnak utazás közben. Lehet, hogy az ügyfél egy másik végponthoz irányítható. Az útválasztást az Internet késési táblájának frissítései is befolyásolhatják. Ezért a teljesítményadatokat használó útválasztási módszer nem garantálja, hogy az ügyfél mindig ugyanahhoz a végponthoz legyen irányítva.
+* Az Internet késési táblázatának megváltozásakor észreveheti, hogy egyes ügyfelek egy másik végpontra vannak irányítva. Ez az útválasztási változás pontosabban az aktuális késési értékek alapján történik. Ezek a frissítések elengedhetetlenek a teljesítmény-forgalom pontosságának fenntartásához – az Útválasztás az interneten folyamatosan fejlődik.
 
-When a region or a set of regions is assigned to an endpoint, any requests from those regions gets routed only to that endpoint. Traffic Manager uses the source IP address of the DNS query to determine the region from which a user is querying from – usually this is the IP address of the local DNS resolver doing the query on behalf of the user.  
+## <a name = "geographic"></a>Földrajzi forgalom – útválasztási módszer
 
-![Azure Traffic Manager 'Geographic' traffic-routing method](./media/traffic-manager-routing-methods/geographic.png)
+A Traffic Manager profilok úgy konfigurálhatók, hogy a földrajzi útválasztási módszert használják, hogy a felhasználók a DNS-lekérdezésből származó földrajzi helytől függően meghatározott végpontokra (Azure, External vagy nested) legyenek irányítva. Ez arra hatalmazza fel Traffic Manager ügyfeleket, hogy olyan forgatókönyveket engedélyezzenek, amelyekben a felhasználó földrajzi régiójának ismerete és a fontos alapján történő útválasztás. Ilyenek például az adatszuverenitási megbízatásoknak való megfelelés, a tartalmak honosítása & a felhasználói élmény és a különböző régiókból érkező forgalom mérése.
+Ha egy profil földrajzi útválasztásra van konfigurálva, a profilhoz társított összes végponthoz hozzá kell rendelni egy földrajzi régiót. A földrajzi régió a részletesség szintjének következő szintjein lehet 
+- Világ – bármely régió
+- Regionális csoportosítás – például Afrika, Közel-Kelet, Ausztrália/csendes-óceáni térség stb. 
+- Ország vagy régió – például Írországban Perui, Hongkong KKT stb. 
+- Állam/megye – például USA – Kalifornia, Ausztrália – Queensland, Kanada – Alberta stb. (Megjegyzés: Ez a részletességi szint csak az Ausztráliában, Kanadában és az USA-beli Államokban/tartományokban támogatott.)
 
-Traffic Manager reads the source IP address of the DNS query and decides which geographic region it is originating from. It then looks to see if there is an endpoint that has this geographic region mapped to it. This lookup starts at the lowest granularity level (State/Province where it is supported, else at the Country/Region level) and goes all the way up to the highest level, which is **World**. The first match found using this traversal is designated as the endpoint to return in the query response. When matching with a Nested type endpoint, an endpoint within that child profile is returned, based on its routing method. The following points are applicable to this behavior:
+Ha egy régiót vagy régiót rendel hozzá egy végponthoz, az ezekből a régiókból érkező kéréseket csak az adott végpontra irányítja a rendszer. A Traffic Manager a DNS-lekérdezés forrás IP-címét használja annak meghatározásához, hogy a felhasználó melyik régióból kérdezi le – ez általában a felhasználó nevében a lekérdezés végrehajtásakor a helyi DNS-feloldó IP-címe.  
 
-- A geographic region can be mapped only to one endpoint in a Traffic Manager profile when the routing type is Geographic Routing. This ensures that routing of users is deterministic, and customers can enable scenarios that require unambiguous geographic boundaries.
-- If a user’s region comes under two different endpoints’ geographic mapping, Traffic Manager selects the endpoint with the lowest granularity and does not consider routing requests from that region to the other endpoint. For example, consider a Geographic Routing type profile with two endpoints - Endpoint1 and Endpoint2. Endpoint1 is configured to receive traffic from Ireland and Endpoint2 is configured to receive traffic from Europe. If a request originates from Ireland, it is always routed to Endpoint1.
-- Since a region can be mapped only to one endpoint, Traffic Manager returns it regardless of whether the endpoint is healthy or not.
+![Azure Traffic Manager földrajzi forgalom – útválasztási módszer](./media/traffic-manager-routing-methods/geographic.png)
+
+Traffic Manager beolvassa a DNS-lekérdezés forrás IP-címét, és eldönti, hogy melyik földrajzi régióból származik. Ezután megvizsgálja, hogy van-e olyan végpont, amely az adott földrajzi régióhoz van rendelve. Ez a keresés a legalacsonyabb részletességi szinten kezdődik (állam/tartomány, ahol az támogatott, az ország/régió szintjén), és egészen a legmagasabb szintre, ami a **világ**. A bejárással kapott első egyezés a lekérdezési válaszban visszaadott végpontként van kijelölve. Beágyazott típus végpontjának egyeztetése esetén a rendszer az adott gyermek profilon belüli végpontot adja vissza az útválasztási módszer alapján. A következő pontok alkalmazhatók erre a viselkedésre:
+
+- Egy földrajzi régió csak a Traffic Manager-profil egyik végpontján képezhető le, ha az útválasztási típus földrajzi útválasztás. Ez biztosítja, hogy a felhasználók determinisztikus legyenek, és az ügyfelek olyan forgatókönyveket is engedélyezhetik, amelyekben egyértelmű földrajzi határok szükségesek.
+- Ha a felhasználó régiója két különböző végpontok földrajzi leképezése alatt áll, Traffic Manager kiválasztja a legalacsonyabb részletességgel rendelkező végpontot, és nem tekinti át az adott régiótól érkező útválasztási kérelmeket a másik végpontnak. Vegyünk például egy földrajzi útválasztási típus-profilt két végponttal – Endpoint1 és Endpoint2. A Endpoint1 úgy van konfigurálva, hogy fogadja az Írországban érkező forgalmat, és a Endpoint2 az Európából érkező forgalom fogadására van konfigurálva. Ha egy kérelem Írországból származik, a rendszer mindig a Endpoint1 irányítja át.
+- Mivel egy régió csak egy végpontra képezhető le, Traffic Manager visszaadja, függetlenül attól, hogy a végpont állapota Kifogástalan-e.
 
     >[!IMPORTANT]
-    >It is strongly recommended that customers using the geographic routing method associate it with the Nested type endpoints that has child profiles containing at least two endpoints within each.
-- If an endpoint match is found and that endpoint is in the **Stopped** state, Traffic Manager returns a NODATA response. In this case, no further lookups are made higher up in the geographic region hierarchy. This behavior is also applicable for nested endpoint types when the child profile is in the **Stopped** or **Disabled** state.
-- If an endpoint displays a **Disabled** status, it won’t be included in the region matching process. This behavior is also applicable for nested endpoint types when the endpoint is in the **Disabled** state.
-- If a query is coming from a geographic region that has no mapping in that profile, Traffic Manager returns a NODATA response. Therefore, it is strongly recommended that customers use geographic routing with one endpoint, ideally of type Nested with at least two endpoints within the child profile, with the region **World** assigned to it. This also ensures that any IP addresses that do not map to a region are handled.
+    >Erősen ajánlott, hogy a földrajzi útválasztási módszert használó ügyfelek társítsa azokat a beágyazott típusú végpontokkal, amelyekben legalább két végpontot tartalmazó alárendelt profilok találhatók.
+- Ha a végpont egyezést talál, és a végpont **leállított** állapotban van, akkor Traffic Manager egy nem adatválaszú választ ad vissza. Ebben az esetben a földrajzi régió hierarchiájában nem végeznek további kereséseket. Ez a viselkedés a beágyazott végpontok típusai esetében is alkalmazható, ha a gyermek profil **leállított** vagy **letiltott** állapotban van.
+- Ha egy végpont **letiltott** állapotot jelez, nem kerül bele a régió-egyeztetési folyamatba. Ez a viselkedés a beágyazott végpontok típusai esetében is alkalmazható, ha a végpont **letiltott** állapotban van.
+- Ha egy olyan földrajzi régióból érkezik lekérdezés, amely nem rendelkezik leképezéssel a profilban, Traffic Manager egy nem adatválaszú választ ad vissza. Ezért erősen ajánlott, hogy az ügyfelek a földrajzi útválasztást egy végponttal használják, ideális esetben legalább két végpontot ágyaznak be a gyermek profilba, és **a hozzájuk rendelt** régiót. Ez biztosítja azt is, hogy minden olyan IP-cím, amely nem egy régióra van leképezve, kezelhető.
 
-As explained in [How Traffic Manager Works](traffic-manager-how-it-works.md), Traffic Manager does not receive DNS queries directly from clients. Rather, DNS queries come from the recursive DNS service that the clients are configured to use. Therefore, the IP address used to determine the region is not the client's IP address, but it is the IP address of the recursive DNS service. In practice, this IP address is a good proxy for the client.
-
-### <a name="faqs"></a>Gyakori kérdések
-
-* [What are some use cases where geographic routing is useful?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-geographic-routing-is-useful)
-
-* [How do I decide if I should use Performance routing method or Geographic routing method?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
-
-* [What are the regions that are supported by Traffic Manager for geographic routing?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
-
-* [How does traffic manager determine where a user is querying from?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-determine-where-a-user-is-querying-from)
-
-* [Is it guaranteed that Traffic Manager can correctly determine the exact geographic location of the user in every case?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
-
-* [Does an endpoint need to be physically located in the same region as the one it is configured with for geographic routing?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
-
-* [Can I assign geographic regions to endpoints in a profile that is not configured to do geographic routing?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
-
-* [Why am I getting an error when I try to change the routing method of an existing profile to Geographic?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
-
-* [Why is it strongly recommended that customers create nested profiles instead of endpoints under a profile with geographic routing enabled?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
-
-* [Are there any restrictions on the API version that supports this routing type?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
-
-## <a name = "multivalue"></a>Multivalue traffic-routing method
-The **Multivalue** traffic-routing method allows you to get multiple healthy endpoints in a single DNS query response. This enables the caller to do client-side retries with other endpoints in the event of a returned endpoint being unresponsive. This pattern can increase the availability of a service and reduce the latency associated with a new DNS query to obtain a healthy endpoint. MultiValue routing method works only if all the endpoints of type ‘External’ and are specified as IPv4 or IPv6 addresses. When a query is received for this profile, all healthy endpoints are returned and are subject to a configurable maximum return count.
+Ahogy azt a [Traffic Manager működése című témakör](traffic-manager-how-it-works.md)ismerteti, Traffic Manager nem kap DNS-lekérdezéseket közvetlenül az ügyfelektől. Ehelyett a DNS-lekérdezések a rekurzív DNS szolgáltatásból származnak, amelyet az ügyfelek a használatára konfiguráltak. Ezért a régió meghatározásához használt IP-cím nem az ügyfél IP-címe, hanem a rekurzív DNS szolgáltatás IP-címe. A gyakorlatban ez az IP-cím az ügyfél számára megfelelő proxy.
 
 ### <a name="faqs"></a>Gyakori kérdések
 
-* [What are some use cases where MultiValue routing is useful?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
+* [Mik azok a használati esetek, amikor a földrajzi útválasztás hasznos?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-geographic-routing-is-useful)
 
-* [How many endpoints are returned when MultiValue routing is used?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
+* [Hogyan eldönteni, hogy kell-e használni a teljesítmény-útválasztási módszert vagy a földrajzi útválasztási módszert?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
 
-* [Will I get the same set of endpoints when MultiValue routing is used?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
+* [Milyen régiókat támogat a Traffic Manager földrajzi útválasztáshoz?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
 
-## <a name = "subnet"></a>Subnet traffic-routing method
-The **Subnet** traffic-routing method allows you to map a set of end user IP address ranges to specific endpoints in a profile. After that, if Traffic Manager receives a DNS query for that profile, it will inspect the source IP address of that request (in most cases this will be the outgoing IP address of the DNS resolver used by the caller), determine which endpoint it is mapped to and will return that endpoint in the query response. 
+* [Hogyan határozza meg a Traffic Manager, hogy a felhasználók honnan kérdezik le?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-determine-where-a-user-is-querying-from)
 
-The IP address to be mapped to an endpoint can be specified as CIDR ranges (e.g. 1.2.3.0/24) or as an address range (e.g. 1.2.3.4-5.6.7.8). The IP ranges associated with an endpoint need to be unique within that profile and cannot have an overlap with the IP address set of a different endpoint in the same profile.
-If you define an endpoint with no address range, that functions as a fallback and take traffic from any remaining subnets. If no fallback endpoint is included, Traffic Manager sends a NODATA response for any undefined ranges. It is therefore highly recommended that you either define a fallback endpoint, or else ensure that all possible IP ranges are specified across your endpoints.
+* [Garantált, hogy Traffic Manager képes pontosan meghatározni a felhasználó pontos földrajzi helyét minden esetben?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
 
-Subnet routing can be used to deliver a different experience for users connecting from a specific IP space. For example, using subnet routing, a customer can make all requests from their corporate office be routed to a different endpoint where they might be testing an internal only version of their app. Another scenario is if you want to provide a different experience to users connecting from a specific ISP (For example, block users from a given ISP).
+* [A végpontnak fizikailag ugyanabban a régióban kell lennie, mint a földrajzi útválasztáshoz konfiguráltnak?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
+
+* [Rendelhetek földrajzi régiókat olyan profilhoz tartozó végpontokhoz, amely nem a földrajzi útválasztásra van konfigurálva?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
+
+* [Miért kapok hibaüzenetet, amikor megpróbálom módosítani egy meglévő profil útválasztási módszerét a földrajzi helyekre?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
+
+* [Ezért erősen ajánlott, hogy az ügyfelek beágyazott profilokat hozzanak létre a földrajzi útválasztást engedélyező profilhoz tartozó végpontok helyett?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
+
+* [Van olyan korlátozás az API-verzióra, amely támogatja ezt az útválasztási típust?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
+
+## <a name = "multivalue"></a>Többértékű forgalom – útválasztási módszer
+A többértékű **forgalom –** útválasztási módszer lehetővé teszi, hogy több kifogástalan állapotú végpontot KAPJON egyetlen DNS-lekérdezési válaszban. Ez lehetővé teszi, hogy a hívó az ügyféloldali újrapróbálkozásokat más végpontokkal hajtsa végre, ha a visszaadott végpont nem válaszol. Ez a minta növelheti a szolgáltatás rendelkezésre állását, és csökkentheti az új DNS-lekérdezéshez kapcsolódó késést egy kifogástalan végpont beszerzéséhez. A többértékű útválasztási módszer csak akkor működik, ha az összes "External" típusú végpontot IPv4-vagy IPv6-címként adja meg. Ha egy lekérdezés érkezik ehhez a profilhoz, a rendszer minden kifogástalan állapotú végpontot visszaadott, és egy konfigurálható maximális visszaküldési számra vonatkozik.
 
 ### <a name="faqs"></a>Gyakori kérdések
 
-* [What are some use cases where subnet routing is useful?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
+* [Mik azok a használati esetek, ahol a többértékű útválasztás hasznos?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
 
-* [How does Traffic Manager know the IP address of the end user?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
+* [Hány végpontot ad vissza a rendszer a többértékű útválasztás használata esetén?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
 
-* [How can I specify IP addresses when using Subnet routing?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
+* [Ugyanazokat a végpontokat kapják meg, amikor többértékű útválasztást használunk?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
 
-* [How can I specify a fallback endpoint when using Subnet routing?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
+## <a name = "subnet"></a>Alhálózati forgalom – útválasztási módszer
+Az **alhálózati** forgalom – útválasztási módszer lehetővé teszi a végfelhasználói IP-címtartományok készletének hozzárendelését egy profil adott végpontjai számára. Ezt követően, ha Traffic Manager kap egy DNS-lekérdezést ehhez a profilhoz, akkor megvizsgálja a kérelem forrás IP-címét (a legtöbb esetben ez lesz a hívó által használt DNS-feloldó kimenő IP-címe), meghatározhatja, hogy melyik végpontra van leképezve, és visszaadja a t hat végpont a lekérdezési válaszban. 
 
-* [What happens if an endpoint is disabled in a Subnet routing type profile?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
+A végponthoz hozzárendelni kívánt IP-cím megadható CIDR tartományként (például 1.2.3.0/24) vagy címtartományként (például 1.2.3.4-5.6.7.8). A végpontokhoz társított IP-tartományoknak egyedinek kell lenniük a profilon belül, és nem lehetnek átfedésben egy másik végpont IP-címével ugyanabban a profilban.
+Ha címtartomány nélküli végpontot határoz meg, akkor az tartalékként működik, és a többi alhálózatról is átirányítja a forgalmat. Ha nem tartalmaz tartalék végpontot, Traffic Manager a nem meghatározott tartományokra vonatkozó adatválaszokat küld. Ezért erősen ajánlott egy tartalék végpontot definiálni, vagy más módon biztosítani, hogy minden lehetséges IP-tartomány meg legyen adva a végpontok között.
+
+Az alhálózati útválasztással különböző felhasználói élményt biztosíthat az adott IP-területről csatlakozó felhasználók számára. Ha például alhálózat-útválasztást használ, az ügyfél a vállalati irodából érkező összes kérést egy másik végpontra irányítja, ahol az alkalmazás csak belső verzióját tesztelheti. Egy másik megoldás, ha más felhasználói élményt szeretne biztosítani a felhasználóknak egy adott INTERNETSZOLGÁLTATÓtól (például egy adott INTERNETSZOLGÁLTATÓtól érkező felhasználók letiltásával).
+
+### <a name="faqs"></a>Gyakori kérdések
+
+* [Mik azok a használati esetek, amikor az alhálózat-útválasztás hasznos?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
+
+* [Hogyan ismeri Traffic Manager a végfelhasználó IP-címét?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
+
+* [Hogyan adhatok meg IP-címeket alhálózati útválasztás használatakor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
+
+* [Hogyan adhatok tartalék végpontot alhálózati útválasztás használatakor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
+
+* [Mi történik, ha egy végpont le van tiltva egy alhálózat útválasztási típusának profiljában?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Learn how to develop high-availability applications using [Traffic Manager endpoint monitoring](traffic-manager-monitoring.md)
+Ismerje meg, hogyan fejleszthet magas rendelkezésre állású alkalmazásokat [Traffic Manager Endpoint monitoring](traffic-manager-monitoring.md) használatával
 
 
 

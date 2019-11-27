@@ -19,7 +19,7 @@ ms.locfileid: "74219079"
 ---
 # <a name="tutorial-forecast-future-spending"></a>Oktatóanyag: Jövőbeli kiadások előrejelzése
 
-A Cloudyn segít előre jelezni a jövőbeli kiadásokat a korábbi használati és költségadatok alapján. Cloudyn-jelentések használatával minden költség-előrejelzési adat megtekinthető. Az ebben az oktatóanyagban szereplő példák végigvezetik a költség-előrejelzések áttekintésén a jelentések használatával. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+A Cloudyn segít előre jelezni a jövőbeli kiadásokat a korábbi használati és költségadatok alapján. Cloudyn-jelentések használatával minden költség-előrejelzési adat megtekinthető. Az ebben az oktatóanyagban szereplő példák végigvezetik a költség-előrejelzések áttekintésén a jelentések használatával. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Jövőbeli kiadások előrejelzése
@@ -37,11 +37,11 @@ A Cloudyn költség-előrejelzési jelentéseinek segítségével felmérheti ki
 
 Az aktuális havi előre jelzett költségről szóló jelentés a szolgáltatások költségeit mutatja. A hónap eleji és az előző havi költségeket felhasználva jeleníti meg az előre jelzett költséget. Kattintson a portál tetején található jelentésmenüben a **Costs (Költségek)**  > **Projection and Budget (Előrejelzés és költségvetés)**  > **Current Month Projected Cost (Aktuális havi előre jelzett költség)** elemre. Az alábbi képen egy példa látható.
 
-![Example information shown in the Current month projected cost report](./media/tutorial-forecast-spending/project-month01.png)
+![Az aktuális havi előre jelzett költségről szóló jelentés bemutatott példaadatok](./media/tutorial-forecast-spending/project-month01.png)
 
 A példában látható, melyik szolgáltatások költöttek a legtöbbet. Az Azure-költségek alacsonyabbak voltak, mint az AWS-költségek. Az Azure-beli virtuális gépek költség-előrejelzési részleteinek megtekintéséhez a **Filter (Szűrő)** listában válassza ki az **Azure/VM** elemet.
 
-![Example showing the Azure VM current month projected cost](./media/tutorial-forecast-spending/project-month02.png)
+![Az Azure virtuális gépek aktuális havi előre jelzett költség bemutató példa](./media/tutorial-forecast-spending/project-month02.png)
 
 Kövesse az előző alapvető lépéseket bármely más szolgáltatás havi költség-előrejelzéseinek megtekintéséhez.
 
@@ -49,11 +49,11 @@ Az éves előre jelzett költségről szóló jelentés a szolgáltatások extra
 
 Kattintson a portál tetején található jelentésmenüben a **Costs (Költségek)**  > **Projection and Budget (Előrejelzés és költségvetés)**  > **Annual Projected Cost (Éves előre jelzett költség)** elemre. Az alábbi képen egy példa látható.
 
-![Example showing the Annual projected cost report](./media/tutorial-forecast-spending/project-annual01.png)
+![Példa az éves előre jelzett költségről szóló jelentés](./media/tutorial-forecast-spending/project-annual01.png)
 
 A példában látható, melyik szolgáltatások költöttek a legtöbbet. A havi példához hasonlóan az Azure-költségek alacsonyabbak voltak, mint az AWS-költségek. Az Azure-beli virtuális gépek költség-előrejelzési részleteinek megtekintéséhez a **Filter (Szűrő)** listában válassza ki az **Azure/VM** elemet.
 
-![Example showing the Annual projected cost of VMs](./media/tutorial-forecast-spending/project-annual02.png)
+![Példa a virtuális gépek éves előre jelzett költsége](./media/tutorial-forecast-spending/project-annual02.png)
 
 A fenti képen az Azure-beli virtuális gépek éves előre jelzett költsége 28 374 dollár.
 

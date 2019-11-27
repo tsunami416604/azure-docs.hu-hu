@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Back up Windows Server to Azure
+title: Oktatóanyag – a Windows Server biztonsági mentése az Azure-ba
 description: Ez az oktatóanyag részletesen ismerteti a helyszíni Windows Serverek helyreállítási tárba történő biztonsági mentését.
 ms.topic: tutorial
 ms.date: 08/22/2018
@@ -11,15 +11,15 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226480"
 ---
-# <a name="back-up-windows-server-to-azure"></a>A Windows Server biztonság mentése az Azure-be
+# <a name="back-up-windows-server-to-azure"></a>Windows Server biztonsági mentése az Azure-ba
 
-Az Azure Backuppal megvédheti a Windows Servert a sérülésektől, támadásoktól és katasztrófáktól. Az Azure Backup tartalmaz egy egyszerű eszközt, amelynek a neve Microsoft Azure Recovery Services- (MARS-) ügynök. A MARS-ügynök a Windows Serverre települ, és a Windows Server rendszerállapotán keresztül megvédi a fájlokat, a mappákat és a kiszolgáló konfigurációs információit. Ez az oktatóanyag azt ismerteti, hogyan készíthető biztonsági másolat a Windows Serverről az Azure-ba a MARS-ügynökkel. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Az Azure Backuppal megvédheti a Windows Servert a sérülésektől, támadásoktól és katasztrófáktól. Az Azure Backup tartalmaz egy egyszerű eszközt, amelynek a neve Microsoft Azure Recovery Services- (MARS-) ügynök. A MARS-ügynök a Windows Serverre települ, és a Windows Server rendszerállapotán keresztül megvédi a fájlokat, a mappákat és a kiszolgáló konfigurációs információit. Ez az oktatóanyag azt ismerteti, hogyan készíthető biztonsági másolat a Windows Serverről az Azure-ba a MARS-ügynökkel. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 >
 > * A MARS-ügynök letöltése és beállítása
 > * A kiszolgáló biztonsági mentési időpontjainak és a másolatok megőrzési ütemezésének konfigurálása
-> * Perform an on-demand back up
+> * Igény szerinti biztonsági mentés végrehajtása
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -59,7 +59,7 @@ A Microsoft Azure Recovery Services- (MARS-) ügynök egy társítást hoz létr
 
 3. A **Biztonsági mentés célja** menüben:
 
-   * for **Where is your workload running?** , select **On-premises**
+   * **hol fut a munkaterhelése?** , válassza **a** helyszíni lehetőséget.
    * a **Miről szeretne biztonsági másolatot készíteni?** pontnál válassza a **Fájlok és mappák** és a **Rendszerállapot** elemet
 
    ![a tár információinak megadása](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)

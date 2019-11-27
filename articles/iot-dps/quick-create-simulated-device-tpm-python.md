@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Provision simulated TPM device to Azure IoT Hub using Python
-description: Quickstart - Create and provision a simulated TPM device using Java device SDK for IoT Hub Device Provisioning Service. Ez a rövid útmutató egyéni regisztrációkat használ.
+title: Gyors útmutató – szimulált TPM-eszköz kiépítése az Azure IoT Hub a Python használatával
+description: Rövid útmutató – szimulált TPM-eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service Javához készült Java eszközoldali SDK-val. Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -16,7 +16,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423409"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Quickstart: Create and provision a simulated TPM device using Python device SDK for IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált TPM-eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service Python Device SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
@@ -33,11 +33,11 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 > [!NOTE]
-> This guide only applies to the now-deprecated V1 Python SDK. Simulated TPM devices are not yet been supported in V2. The team is currently hard at work bringing V2 to feature parity.
+> Ez az útmutató csak a most már elavult v1 Python SDK-ra vonatkozik. A szimulált TPM-eszközök még nem támogatottak a v2-ben. A csapat jelenleg nem működik a v2-ben a szolgáltatás paritásán.
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése 
 
-1. Make sure you have installed either [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 or later, with the 'Desktop development with C++' workload enabled for your Visual Studio installation.
+1. Győződjön meg arról, hogy telepítette a [Visual studio](https://visualstudio.microsoft.com/vs/) 2015-es C++vagy újabb verzióját, és a Visual Studio telepítéséhez engedélyezve van az "asztali fejlesztés" munkaterhelése.
 
 1. Töltse le és telepítse a [CMake buildelési rendszert](https://cmake.org/download/).
 
@@ -63,7 +63,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
     cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
     ```
 
-1. Egy különálló parancssorban keresse meg a TPM-szimulátor mappáját, és futtassa a [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview)-szimulátort. Kattintson a **Hozzáférés engedélyezése** elemre. A 2321-es és a 2322-es portokon lévő szoftvercsatornán keresztül figyel. Do not close this command window; you will need to keep this simulator running until the end of this quickstart guide. 
+1. Egy különálló parancssorban keresse meg a TPM-szimulátor mappáját, és futtassa a [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview)-szimulátort. Kattintson a **Hozzáférés engedélyezése** elemre. A 2321-es és a 2322-es portokon lévő szoftvercsatornán keresztül figyel. Ne zárjuk be a parancssorablakot; ezt a szimulátort a rövid útmutató végéig kell megtartania. 
 
     ```cmd/sh
     .\azure-iot-sdk-python\c\provisioning_client\deps\utpm\tools\tpm_simulator\Simulator.exe
@@ -76,22 +76,22 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
 1. Nyissa meg a *cmake* mappában létrehozott `azure_iot_sdks.sln` nevű megoldást, és építse fel azt a Visual Studióban.
 
-1. Kattintson a jobb gombbal a **tpm_device_provision** projektre, és válassza a **Set as Startup Project** (Beállítás kezdőprojektként) lehetőséget. Futtassa a megoldást. The output window displays the **_Endorsement key_** and the **_Registration ID_** needed for device enrollment. Jegyezze fel ezeket az értékeket. 
+1. Kattintson a jobb gombbal a **tpm_device_provision** projektre, és válassza a **Set as Startup Project** (Beállítás kezdőprojektként) lehetőséget. Futtassa a megoldást. A kimeneti ablak megjeleníti az eszközök regisztrálásához szükséges **_hátirat kulcsot_** és **_regisztrációs azonosítót_** . Jegyezze fel ezeket az értékeket. 
 
     ![A TPM beállítása](./media/python-quick-create-simulated-device/tpm-setup.png)
 
-1. Sign in to the Azure portal, select the **All resources** button on the left-hand menu and open your Device Provisioning service.
+1. Jelentkezzen be a Azure Portalba, majd a bal oldali menüben kattintson a **minden erőforrás** gombra, és nyissa meg az eszköz kiépítési szolgáltatását.
 
-1. From the Device Provisioning Service menu, select **Manage enrollments**. Select **Individual Enrollments** tab and select the **Add individual enrollment** button at the top. 
+1. Az eszközök kiépítési szolgáltatásának menüjében válassza a **regisztrációk kezelése**lehetőséget. Válassza az **Egyéni regisztrációk** fület, és válassza az **Egyéni regisztráció hozzáadása** gombot a felső részen. 
 
-1. In the **Add Enrollment** panel, enter the following information:
+1. A **beléptetés hozzáadása** panelen adja meg a következő adatokat:
    - Válassza a **TPM** elemet az identitás igazolási *Mechanizmusaként*.
-   - Enter the *Registration ID* and *Endorsement key* for your TPM device from the values you noted previously.
+   - Adja meg a TPM-eszköz *regisztrációs azonosítóját* és a *jóváhagyás kulcsát* a korábban feljegyzett értékek közül.
    - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
    - Ha kívánja, megadhatja az alábbi információkat is:
-       - Enter a unique *Device ID*. Ne használjon bizalmas adatokat az eszköz elnevezésekor. If you choose not to provide one, the registration ID will be used to identify the device instead.
+       - Adjon meg egy egyedi *azonosítót*. Ne használjon bizalmas adatokat az eszköz elnevezésekor. Ha úgy dönt, hogy nem ad meg egyet, a rendszer a regisztrációs azonosítót fogja használni az eszköz azonosítására.
        - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
-   - Once complete, press the **Save** button. 
+   - Ha elkészült, kattintson a **Save (Mentés** ) gombra. 
 
      ![Írja be az eszköz beléptetési információit a portál panelén](./media/python-quick-create-simulated-device/enterdevice-enrollment.png)  
 
@@ -138,7 +138,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
     ![Sikeres regisztráció](./media/python-quick-create-simulated-device/registration-success.png)
 
-1. On successful provisioning of your simulated device to the IoT hub linked with your provisioning service, the device ID appears on the hub's **IoT devices** blade.
+1. Ha sikeresen kiépíti a szimulált eszközt a kiépítési szolgáltatáshoz kapcsolódó IoT hub-ra, az eszköz azonosítója megjelenik a hub **IoT-eszközök** paneljén.
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/python-quick-create-simulated-device/hubregistration.png) 
 
@@ -147,16 +147,16 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-If you plan to continue working on and exploring the device client sample, do not clean up the resources created in this quickstart. If you do not plan to continue, use the following steps to delete all resources created by this quickstart.
+Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldali mintáját, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes erőforrást.
 
 1. Zárja be az eszközügyfél minta kimeneti ablakát a gépen.
 1. Zárja be a TPM szimulátor ablakát a gépen.
-1. From the left-hand menu in the Azure portal, select **All resources** and then select your Device Provisioning service. Open the **Manage Enrollments** blade for your service, and then select the **Individual Enrollments** tab. Select the check box next to the *REGISTRATION ID* of the device you enrolled in this quickstart, and press the **Delete** button at the top of the pane. 
-1. From the left-hand menu in the Azure portal, select **All resources** and then select your IoT hub. Open the **IoT devices** blade for your hub, select the check box next to the *DEVICE ID* of the device you registered in this quickstart, and then press the **Delete** button at the top of the pane.
+1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az eszköz kiépítési szolgáltatását. Nyissa meg a szolgáltatás **regisztrációk kezelése** paneljét, majd válassza az **Egyéni regisztrációk** fület. jelölje be az ebben a rövid útmutatóban regisztrált eszköz *regisztrációs azonosítója* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra. 
+1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Nyissa meg a **IoT-eszközök** panelt, jelölje be az ebben a rövid útmutatóban regisztrált eszköz *azonosítója* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this quickstart, you’ve created a TPM simulated device on your machine and provisioned it to your IoT hub using the IoT Hub Device Provisioning Service. To learn how to enroll your TPM device programmatically, continue to the quickstart for programmatic enrollment of a TPM device. 
+Ebben a rövid útmutatóban létrehozott egy TPM-mel szimulált eszközt a gépen, és kiosztotta azt az IoT hubhoz a IoT Hub Device Provisioning Service használatával. A TPM-eszköz programozott módon történő regisztrálásának megismeréséhez folytassa a TPM-eszköz programozott beléptetését bemutató rövid útmutatóval. 
 
 > [!div class="nextstepaction"]
-> [Azure quickstart - Enroll TPM device to Azure IoT Hub Device Provisioning Service](quick-enroll-device-tpm-python.md)
+> [Azure rövid útmutató – TPM-eszköz regisztrálása az Azure-ban IoT Hub Device Provisioning Service](quick-enroll-device-tpm-python.md)

@@ -12,49 +12,49 @@ ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224473"
 ---
 >[!NOTE]
->For resources that aren't fixed, open a support ticket to ask for an increase in the quotas. Don't create additional Azure Media Services accounts in an attempt to obtain higher limits.
+>A nem rögzített erőforrások esetében nyisson meg egy támogatási jegyet, amely a kvóták növekedését kéri. Ne hozzon létre további Azure Media Services fiókokat a magasabb korlátok beszerzésére tett kísérlet során.
 
 | Erőforrás | Alapértelmezett korlát | 
 | --- | --- | 
-| Azure Media Services accounts in a single subscription | 25 (rögzített) |
-| Media reserved units per Media Services account |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
-| Jobs per Media Services account | 50,000<sup>2</sup> |
+| Egyetlen előfizetésben lévő fiókok Azure Media Services | 25 (rögzített) |
+| Media szolgáltatás számára fenntartott egységek száma Media Services fiókban |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
+| Feladatok/Media Services fiók | 50,000<sup>2</sup> |
 | Kapcsolt műveletek feladatonként | 30 (rögzített) |
-| Assets per Media Services account | 1,000,000|
+| Eszközök/Media Services fiók | 1,000,000|
 | Objektumok műveletenként | 50 |
 | Objektumok feladatonként | 100 |
 | Egy objektumhoz egyszerre társított egyedi keresők | 5<sup>4</sup> |
-| Live channels per Media Services account |5|
+| Élő csatornák száma Media Services fiókkal |5|
 | Leállított állapotú programok csatornánként |50|
 | Futó állapotú programok csatornánként |3|
-| Streaming endpoints that are stopped or running per Media Services account|2|
+| Leállított vagy futó adatfolyam-végpontok Media Services fiókban|2|
 | Streamelési egységek streamvégpontonként |10 |
 | Tárfiókok | 1000<sup>5</sup> (rögzített) |
-| Irányelvek | 1,000,000<sup>6</sup> |
-| Fájlméret| In some scenarios, there's a limit on the maximum file size supported for processing in Media Services.<sup>7</sup> |
+| Házirendek | 1,000,000<sup>6</sup> |
+| Fájlméret| Bizonyos esetekben a Media Services feldolgozásához támogatott maximális fájlméret megengedett. <sup>7</sup> |
 
-<sup>1</sup>If you change the type, for example, from S2 to S1, the maximum reserved unit limits are reset.
+<sup>1</sup> Ha megváltoztatja például az S2 és S1 közötti értéket, a rendszer alaphelyzetbe állítja a fenntartott egységek maximális korlátját.
 
-<sup>2</sup>This number includes queued, finished, active, and canceled jobs. It doesn't include deleted jobs. You can delete old jobs by using **IJob.Delete** or the **DELETE** HTTP request.
+<sup>2</sup> Ez a szám üzenetsor-, befejezett, aktív és megszakított feladatokat tartalmaz. Nem tartalmazza a törölt feladatokat. A régi feladatokat a **IJob. Delete** vagy a **delete** HTTP-kérelem használatával törölheti.
 
-As of April 1, 2017, any job record in your account older than 90 days is automatically deleted, along with its associated task records. Automatic deletion occurs even if the total number of records is below the maximum quota. To archive the job and task information, use the code described in [Manage assets with the Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
+2017. április 1-től a fiókhoz tartozó, 90 napnál régebbi feladatokat automatikusan törli a rendszer, valamint a hozzá tartozó feladattal. Az automatikus törlés akkor is megtörténik, ha a rekordok teljes száma nem éri el a maximális kvótát. A feladat és a feladat adatainak archiválásához használja az [eszközök kezelése a Media Services .net SDK-val](../articles/media-services/previous/media-services-dotnet-manage-entities.md)című témakörben leírt kódot.
 
-<sup>3</sup>When you make a request to list job entities, a maximum of 1,000 jobs is returned per request. To keep track of all submitted jobs, use the top or skip queries as described in [OData system query options](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)).
+<sup>3</sup> Ha a feladat entitások listázására vonatkozó kérést küld, a kérések száma legfeljebb 1 000 feladatot ad vissza. Az összes elküldött feladat nyomon követéséhez használja a Top vagy a skip lekérdezéseket a [OData rendszerlekérdezési beállítások](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7))című témakörben leírtak szerint.
 
-<sup>4</sup>Locators aren't designed for managing per-user access control. To give different access rights to individual users, use digital rights management (DRM) solutions. For more information, see [Protect your content with Azure Media Services](../articles/media-services/previous/media-services-content-protection-overview.md).
+<sup>4</sup> A lokátorok nem a felhasználónkénti hozzáférés-vezérlés kezelésére lettek tervezve. Ha különböző hozzáférési jogokat szeretne biztosítani az egyes felhasználók számára, használja a digitális jogkezelési (DRM) megoldásokat. További információ: [a tartalom Azure Media Servicessal való védelemmel való](../articles/media-services/previous/media-services-content-protection-overview.md)ellátása.
 
-<sup>5</sup>The storage accounts must be from the same Azure subscription.
+<sup>5</sup> A Storage-fiókoknak ugyanahhoz az Azure-előfizetéshez kell tartoznia.
 
-<sup>6</sup>There's a limit of 1,000,000 policies for different Media Services policies. An example is for the Locator policy or ContentKeyAuthorizationPolicy. 
+<sup>6</sup> A különböző Media Services-házirendekre vonatkozó 1 000 000-szabályzatok száma korlátozott. Ilyen például a lokátor házirend vagy a ContentKeyAuthorizationPolicy. 
 
 >[!NOTE]
-> If you always use the same days and access permissions, use the same policy ID. For information and an example, see [Manage assets with the Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies).
+> Ha mindig ugyanazokat a napokat és hozzáférési engedélyeket használja, használja ugyanazt a házirend-azonosítót. További információ és példa: [eszközök kezelése a Media Services .net SDK-val](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies).
 
-<sup>7</sup>The maximum size supported for a single blob is currently up to 5 TB in Azure Blob Storage. Additional limits apply in Media Services based on the VM sizes that are used by the service. The size limit applies to the files that you upload and also the files that get generated as a result of Media Services processing (encoding or analyzing). If your source file is larger than 260-GB, your Job will likely fail. 
+<sup>7</sup> Az egyes Blobok maximális mérete jelenleg legfeljebb 5 TB lehet az Azure Blob Storageban. A további korlátozások a szolgáltatás által használt virtuálisgép-méretek alapján Media Services vonatkoznak. A méretkorlát a feltöltött fájlokra, valamint a Media Services feldolgozás (kódolás vagy elemzés) eredményeképpen generált fájlokra is vonatkozik. Ha a forrásfájl mérete meghaladja a 260 GB-ot, a feladat valószínűleg sikertelen lesz. 
 
-The following table shows the limits on the media reserved units S1, S2, and S3. If your source file is larger than the limits defined in the table, your encoding job fails. If you encode 4K resolution sources of long duration, you're required to use S3 media reserved units to achieve the performance needed. If you have 4K content that's larger than the 260-GB limit on the S3 media reserved units, open a support ticket.
+Az alábbi táblázat az S1, S2 és S3 Media szolgáltatás számára fenntartott egységek korlátozásait mutatja be. Ha a forrásfájl nagyobb a táblázatban megadott korlátoknál, a kódolási feladata meghiúsul. Ha hosszú ideig kódolja a 4K-feloldási forrásokat, a szükséges teljesítmény eléréséhez S3 Media szolgáltatás számára fenntartott egységeket kell használnia. Ha olyan 4K-tartalommal rendelkezik, amely nagyobb, mint az S3 Media szolgáltatás számára fenntartott egységek 260 GB-os korlátja, nyisson meg egy támogatási jegyet.
 
-|Media reserved unit type   |Maximum input size (GB)|
+|Media szolgáltatás számára fenntartott egység típusa   |Maximális bemeneti méret (GB)|
 |---|---|
 |S1 |   26|
 |S2 | 60|

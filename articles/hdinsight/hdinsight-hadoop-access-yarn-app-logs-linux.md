@@ -1,6 +1,6 @@
 ---
-title: Access Apache Hadoop YARN application logs - Azure HDInsight
-description: Learn how to access YARN application logs on a Linux-based HDInsight (Apache Hadoop) cluster using both the command-line and a web browser.
+title: Hozzáférési Apache Hadoop a FONALas alkalmazások naplóihoz – Azure HDInsight
+description: Megtudhatja, hogyan érheti el a fonal-alkalmazási naplókat egy Linux-alapú HDInsight-(Apache Hadoop-) fürtön a parancssori felület és a webböngésző használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -15,65 +15,65 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327226"
 ---
-# <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Access Apache Hadoop YARN application logs on Linux-based HDInsight
+# <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Hozzáférési Apache Hadoop a FONALas alkalmazások naplóihoz a Linux-alapú HDInsight
 
-Learn how to access the logs for [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (Yet Another Resource Negotiator) applications on an [Apache Hadoop](https://hadoop.apache.org/) cluster in Azure HDInsight.
+Megtudhatja, hogyan érheti el a naplókat [Apache HADOOP fonalak](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (még egy erőforrás-egyeztető) alkalmazásai számára egy [Apache Hadoop](https://hadoop.apache.org/) -fürtön az Azure HDInsight.
 
-## <a name="what-is-apache-yarn"></a>What is Apache YARN?
+## <a name="what-is-apache-yarn"></a>Mi az Apache-fonal?
 
-YARN supports multiple programming models ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)  being one of them) by decoupling resource management from application scheduling/monitoring. YARN uses a global *ResourceManager* (RM), per-worker-node *NodeManagers* (NMs), and per-application *ApplicationMasters* (AMs). The per-application AM negotiates resources (CPU, memory, disk, network) for running your application with the RM. The RM works with NMs to grant these resources, which are granted as *containers*. The AM is responsible for tracking the progress of the containers assigned to it by the RM. An application may require many containers depending on the nature of the application.
+A FONALak több programozási modellt támogatnak ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) is) az erőforrás-kezelés leválasztásával az alkalmazás ütemezése/monitorozása során. A fonal globális *erőforráskezelő* (RM), munkavégző-csomópontos *csomópontkezelők* (alrendszerek) és felhasználónkénti *ApplicationMasters* (AMs) használ. Az per-Application AM egyezteti az erőforrásokat (processzor, memória, lemez, hálózat) az alkalmazásnak az RM-vel való futtatásához. Az RM úgy működik, hogy az ilyen erőforrásokat *tárolóként*adja meg. Az AM feladata az RM által hozzárendelt tárolók állapotának nyomon követése. Egy alkalmazás az alkalmazás természetétől függően számos tárolót igényelhet.
 
-Each application may consist of multiple *application attempts*. If an application fails, it may be retried as a new attempt. Each attempt runs in a container. In a sense, a container provides the context for basic unit of work performed by a YARN application. All work that is done within the context of a container is performed on the single worker node on which the container was allocated. See [Hadoop: Writing YARN Applications](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html), or [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) for further reference.
+Minden alkalmazás több *alkalmazási kísérletből*állhat. Ha egy alkalmazás meghibásodik, előfordulhat, hogy a rendszer újrapróbálkozik új kísérletként. Minden kísérlet egy tárolóban fut. Bizonyos értelemben a tárolók a FONALas alkalmazások alapszintű munkaegységének környezetét biztosítják. A tároló környezetében elvégzett összes munkát az egyetlen feldolgozó csomóponton hajtja végre, amelyen a tároló le lett foglalva. További információért lásd a [Hadoop: fonal-alkalmazások írása](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)vagy a [Apache Hadoop fonalak](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) .
 
-To scale your cluster to support greater processing throughput, you can use [Autoscale](hdinsight-autoscale-clusters.md) or [Scale your clusters manually using a few different languages](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters).
+Ha a fürtöt a nagyobb feldolgozási sebesség támogatásához kívánja méretezni, a [fürtöket manuálisan, néhány különböző nyelven](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters) [is használhatja.](hdinsight-autoscale-clusters.md)
 
-## <a name="YARNTimelineServer"></a>YARN Timeline Server
+## <a name="YARNTimelineServer"></a>FONAL idővonal-kiszolgálója
 
-The [Apache Hadoop YARN Timeline Server](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) provides generic information on completed applications
+A [Apache HADOOP fonál idővonal-kiszolgálója](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) általános információkat biztosít a befejezett alkalmazásokról
 
-YARN Timeline Server includes the following type of data:
+A fonal idővonal-kiszolgálója a következő típusú adattípusokat tartalmazza:
 
-* The application ID, a unique identifier of an application
-* The user who started the application
-* Information on attempts made to complete the application
-* The containers used by any given application attempt
+* Az alkalmazás azonosítója, az alkalmazás egyedi azonosítója
+* Az alkalmazást elindító felhasználó
+* Információk az alkalmazás befejezésére tett kísérletekről
+* Az adott alkalmazás által megkísérelt tárolók
 
-## <a name="YARNAppsAndLogs"></a>YARN applications and logs
+## <a name="YARNAppsAndLogs"></a>FONALas alkalmazások és naplók
 
-YARN supports multiple programming models ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)  being one of them) by decoupling resource management from application scheduling/monitoring. YARN uses a global *ResourceManager* (RM), per-worker-node *NodeManagers* (NMs), and per-application *ApplicationMasters* (AMs). The per-application AM negotiates resources (CPU, memory, disk, network) for running your application with the RM. The RM works with NMs to grant these resources, which are granted as *containers*. The AM is responsible for tracking the progress of the containers assigned to it by the RM. An application may require many containers depending on the nature of the application.
+A FONALak több programozási modellt támogatnak ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) is) az erőforrás-kezelés leválasztásával az alkalmazás ütemezése/monitorozása során. A fonal globális *erőforráskezelő* (RM), munkavégző-csomópontos *csomópontkezelők* (alrendszerek) és felhasználónkénti *ApplicationMasters* (AMs) használ. Az per-Application AM egyezteti az erőforrásokat (processzor, memória, lemez, hálózat) az alkalmazásnak az RM-vel való futtatásához. Az RM úgy működik, hogy az ilyen erőforrásokat *tárolóként*adja meg. Az AM feladata az RM által hozzárendelt tárolók állapotának nyomon követése. Egy alkalmazás az alkalmazás természetétől függően számos tárolót igényelhet.
 
-Each application may consist of multiple *application attempts*. If an application fails, it may be retried as a new attempt. Each attempt runs in a container. In a sense, a container provides the context for basic unit of work performed by a YARN application. All work that is done within the context of a container is performed on the single worker node on which the container was allocated. See [Apache Hadoop YARN Concepts](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html) for further reference.
+Minden alkalmazás több *alkalmazási kísérletből*állhat. Ha egy alkalmazás meghibásodik, előfordulhat, hogy a rendszer újrapróbálkozik új kísérletként. Minden kísérlet egy tárolóban fut. Bizonyos értelemben a tárolók a FONALas alkalmazások alapszintű munkaegységének környezetét biztosítják. A tároló környezetében elvégzett összes munkát az egyetlen feldolgozó csomóponton hajtja végre, amelyen a tároló le lett foglalva. További információért lásd: [Apache Hadoop a fonalat ismertető fogalmakat](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html) .
 
-Application logs (and the associated container logs) are critical in debugging problematic Hadoop applications. YARN provides a nice framework for collecting, aggregating, and storing application logs with the [Log Aggregation](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) feature. The Log Aggregation feature makes accessing application logs more deterministic. It aggregates logs across all containers on a worker node and stores them as one aggregated log file per worker node. The log is stored on the default file system after an application finishes. Your application may use hundreds or thousands of containers, but logs for all containers run on a single worker node are always aggregated to a single file. So there's only 1 log per worker node used by your application. Log Aggregation is enabled by default on HDInsight clusters version 3.0 and above. Aggregated logs are located in default storage for the cluster. The following path is the HDFS path to the logs:
+Az alkalmazás naplói (és a kapcsolódó tárolók naplói) kritikus fontosságúak a problematikus Hadoop-alkalmazások hibakereséséhez. A fonal szép keretrendszert biztosít az alkalmazások naplóinak a [naplózási összesítési](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) funkcióval való összegyűjtéséhez, összesítéséhez és tárolásához. A naplózási összesítés funkció lehetővé teszi, hogy az alkalmazások naplói több determinisztikus. Összesíti a munkavégző csomópont összes tárolójában lévő naplókat, és a munkavégző csomóponton egy összesített naplófájlként tárolja őket. Az alkalmazás befejeződése után a rendszer az alapértelmezett fájlrendszerben tárolja a naplót. Az alkalmazás több száz vagy akár több ezer tárolót is használhat, de egyetlen feldolgozó csomóponton futtatott összes tároló naplóit mindig egyetlen fájlba összesíti a rendszer. Így az alkalmazás csak 1 log/feldolgozó csomópontot használ. A naplózási összesítés alapértelmezés szerint engedélyezve van a 3,0-es és újabb verziójú HDInsight-fürtökön. Az összesített naplók a fürt alapértelmezett tárolójában találhatók. A következő elérési út a naplók HDFS elérési útja:
 
     /app-logs/<user>/logs/<applicationId>
 
-In the path, `user` is the name of the user who started the application. The `applicationId` is the unique identifier assigned to an application by the YARN RM.
+Az elérési útban `user` az alkalmazást elindító felhasználó neve. A `applicationId` a fonal RM-alkalmazáshoz rendelt egyedi azonosító.
 
-The aggregated logs aren't directly readable, as they're written in a [TFile](https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf), [binary format](https://issues.apache.org/jira/browse/HADOOP-3315) indexed by container. Use the YARN ResourceManager logs or CLI tools to view these logs as plain text for applications or containers of interest.
+Az összesített naplók nem olvashatók közvetlenül, ahogy egy [TFile](https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf), a tároló által indexelt [bináris formátumban](https://issues.apache.org/jira/browse/HADOOP-3315) vannak írva. A erőforráskezelő-naplók vagy a CLI-eszközök segítségével egyszerű szövegként tekintheti meg ezeket a naplókat alkalmazások vagy tárolók esetében.
 
-## <a name="yarn-cli-tools"></a>YARN CLI tools
+## <a name="yarn-cli-tools"></a>FONAL CLI-eszközök
 
-To use the YARN CLI tools, you must first connect to the HDInsight cluster using SSH. További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+A fonal CLI-eszközeinek használatához először az SSH használatával kell csatlakoznia a HDInsight-fürthöz. További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-You can view these logs as plain text by running one of the following commands:
+Ezeket a naplókat egyszerű szövegként tekintheti meg a következő parancsok egyikének futtatásával:
 
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
-Specify the &lt;applicationId>, &lt;user-who-started-the-application>, &lt;containerId>, and &lt;worker-node-address> information when running these commands.
+A parancsok futtatásakor határozza meg a &lt;applicationId >, &lt;a felhasználó által elindított >, &lt;containerId > és &lt;feldolgozó-csomópont-címek > információit.
 
-## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
+## <a name="yarn-resourcemanager-ui"></a>FONAL erőforráskezelő felhasználói felülete
 
-The YARN ResourceManager UI runs on the cluster headnode. It's accessed through the Ambari web UI. Use the following steps to view the YARN logs:
+A fonal erőforráskezelő felhasználói felülete a fürt átjárócsomóponthoz fut. Ez a Ambari webes felhasználói felületén keresztül érhető el. A következő lépések végrehajtásával tekintheti meg a FONALak naplóit:
 
-1. In your web browser, navigate to https://CLUSTERNAME.azurehdinsight.net. Replace CLUSTERNAME with the name of your HDInsight cluster.
-2. From the list of services on the left, select **YARN**.
+1. A böngészőben nyissa meg a https://CLUSTERNAME.azurehdinsight.net. Cserélje le a CLUSTERNAME-t a HDInsight-fürt nevére.
+2. A bal oldali szolgáltatások listájából válassza a **fonal**lehetőséget.
 
-    ![Apache Ambari Yarn service selected](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
+    ![Apache Ambari fonal-szolgáltatás kiválasztva](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
-3. From the **Quick Links** dropdown, select one of the cluster head nodes and then select **ResourceManager Log**.
+3. A **rövid hivatkozások** legördülő listából válassza ki az egyik fürtcsomópont-csomópontot, majd válassza a **erőforráskezelő-napló**elemet.
 
-    ![Apache Ambari Yarn quick links](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
+    ![Apache Ambari-fonal – gyors hivatkozások](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 
-    You're presented with a list of links to YARN logs.
+    Megjelenik a FONALak naplóira mutató hivatkozások listája.

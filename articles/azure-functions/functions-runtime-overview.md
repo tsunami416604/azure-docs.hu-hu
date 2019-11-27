@@ -1,6 +1,6 @@
 ---
-title: Azure Functions Runtime Overview
-description: Overview of the Azure Functions Runtime Preview
+title: Azure Functions-futtatókörnyezet áttekintése
+description: A Azure Functions-futtatókörnyezet előzetes verziójának áttekintése
 author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
@@ -12,40 +12,40 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226632"
 ---
-# <a name="azure-functions-runtime-overview-preview"></a>Azure Functions Runtime Overview (preview)
+# <a name="azure-functions-runtime-overview-preview"></a>Azure Functions-futtatókörnyezet áttekintése (előzetes verzió)
 
 [!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
-The Azure Functions Runtime (preview) provides a new way for you to take advantage of the simplicity and flexibility of the Azure Functions programming model on-premises. Built on the same open source roots as Azure Functions, Azure Functions Runtime is deployed on-premises to provide a nearly identical development experience as the cloud service.
+A Azure Functions-futtatókörnyezet (előzetes verzió) új módszert kínál a Azure Functions programozási modell egyszerűségének és rugalmasságának kihasználására a helyszínen. A Azure Functionsra épülő, ugyanazon a nyílt forráskódú gyökereken alapuló Azure Functions-futtatókörnyezet üzembe helyezése a helyszínen történik, hogy közel azonos fejlesztési élményt nyújtson a Cloud Service-nek.
 
-![Azure Functions Runtime Preview Portal][1]
+![Azure Functions-futtatókörnyezet betekintő portál][1]
 
-The Azure Functions Runtime provides a way for you to experience Azure Functions before committing to the cloud. In this way, the code assets you build can then be taken with you to the cloud when you migrate.  The runtime also opens up new options for you, such as using the spare compute power of your on-premises computers to run batch processes overnight. You can also use devices within your organization to conditionally send data to other systems, both on-premises and in the cloud.
+A Azure Functions-futtatókörnyezet a felhőbe való véglegesítés előtt lehetővé teszi a Azure Functions élményét. Így a létrehozott kód eszközei a felhőbe való áttelepítéskor is megadhatók.  A futtatókörnyezet emellett új lehetőségeket is nyit meg, például a helyszíni számítógépek tartalék számítási teljesítményének használatával, hogy egy egynapos kötegelt feldolgozást futtasson. A szervezeten belüli eszközöket is használhatja arra, hogy a helyszíni és a felhőben egyaránt más rendszerekre is küldje az adatküldés feltételeit.
 
-The Azure Functions Runtime consists of two pieces:
+A Azure Functions-futtatókörnyezet két darabból áll:
 
-* Azure Functions Runtime Management Role
-* Azure Functions Runtime Worker Role
+* Felügyeleti szerepkör Azure Functions-futtatókörnyezet
+* Feldolgozói szerepkör Azure Functions-futtatókörnyezet
 
-## <a name="azure-functions-management-role"></a>Azure Functions Management Role
+## <a name="azure-functions-management-role"></a>Felügyeleti szerepkör Azure Functions
 
-The Azure Functions Management Role provides a host for the management of your Functions on-premises. This role performs the following tasks:
+A Azure Functions felügyeleti szerepkör egy gazdagépet biztosít a helyszíni függvények felügyeletéhez. Ez a szerepkör a következő feladatokat hajtja végre:
 
-* Hosting of the Azure Functions Management Portal, which is the same one you see in the [Azure portal](https://portal.azure.com). The portal provides a consistent experience that lets you develop your functions in the same way as you would in the Azure portal.
-* Distributing functions across multiple Functions workers.
-* Providing a publishing endpoint so that you can publish your functions direct from Microsoft Visual Studio by downloading and importing the publishing profile.
+* A Azure Functions felügyeleti portál, amely ugyanaz, mint amit a [Azure Portal](https://portal.azure.com)láthat. A portál egységes felhasználói élményt nyújt, amellyel ugyanúgy fejlesztheti a függvényeket, mint a Azure Portal.
+* A függvények elosztása több functions-feldolgozón keresztül.
+* Közzétételi végpont biztosítása, hogy a közzétételi profil letöltésével és importálásával közvetlenül a Microsoft Visual studióból teheti közzé a funkcióit.
 
-## <a name="azure-functions-worker-role"></a>Azure Functions Worker Role
+## <a name="azure-functions-worker-role"></a>Feldolgozói szerepkör Azure Functions
 
-The Azure Functions Worker Roles are deployed in Windows Containers and are where your function code executes.  You can deploy multiple Worker Roles throughout your organization and this option is a key way in which customers can make use of spare compute power.  One example of where spare compute exists in many organizations is machines powered on constantly but not being used for large periods of time.
+A Azure Functions feldolgozói szerepkörök Windows-tárolókban vannak telepítve, és a függvény kódját hajtja végre.  A szervezeten belül több feldolgozói szerepkört is üzembe helyezhet, és ez a lehetőség olyan kulcsfontosságú módszer, amelyben az ügyfelek igénybe vehetik a tartalék számítási teljesítményt.  Az egyik példa arra, hogy hol található a tartalék számítási szolgáltatás számos szervezeten belül, és a gépeket folyamatosan, de nagy ideig nem használják.
 
-## <a name="minimum-requirements"></a>Minimum Requirements
+## <a name="minimum-requirements"></a>Minimális követelmények
 
-To get started with the Azure Functions Runtime, you must have a machine with Windows Server 2016 or Windows 10 Creators Update with access to a SQL Server instance.
+A Azure Functions-futtatókörnyezet első lépéseihez rendelkeznie kell egy, a SQL Server-példányhoz hozzáféréssel rendelkező Windows Server 2016 vagy Windows 10 alkotói frissítéssel rendelkező géppel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Install the [Azure Functions Runtime preview](https://aka.ms/azafrdoc)
+A [Azure functions-futtatókörnyezet előzetes](https://aka.ms/azafrdoc) verziójának telepítése
 
 <!--Image references-->
 [1]: ./media/functions-runtime-overview/AzureFunctionsRuntime_Portal.png

@@ -1,6 +1,6 @@
 ---
-title: Mobile Apps bindings for Azure Functions
-description: Understand how to use Azure Mobile Apps bindings in Azure Functions.
+title: Azure Functions-kötések Mobile Apps
+description: Ismerje meg, hogyan használhatók az Azure Mobile Apps-kötések a Azure Functionsban.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
@@ -12,39 +12,39 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231116"
 ---
-# <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps bindings for Azure Functions 
+# <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions-kötések Mobile Apps 
 
 > [!NOTE]
-> Azure Mobile Apps bindings are only available to Azure Functions 1.x. They are not supported in Azure Functions 2.x.
+> Az Azure Mobile Apps-kötések csak az 1. x Azure Functions számára érhetők el. A Azure Functions 2. x verzióban nem támogatottak.
 
-This article explains how to work with [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) bindings in Azure Functions. Azure Functions supports input and output bindings for Mobile Apps.
+Ez a cikk azt ismerteti, hogyan használhatók az [Azure Mobile apps](../app-service-mobile/app-service-mobile-value-prop.md) -kötések a Azure Functionsban. A Azure Functions a Mobile Appshoz tartozó bemeneti és kimeneti kötéseket támogatja.
 
-The Mobile Apps bindings let you read and update data tables in mobile apps.
+A Mobile Apps kötések lehetővé teszik adattáblák olvasását és frissítését a Mobile apps szolgáltatásban.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Packages - Functions 1.x
+## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-Mobile Apps bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet package, version 1.x. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) GitHub repository.
+Mobile Apps kötések a [Microsoft. Azure. webjobs. Extensions. MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet csomagban találhatók, 1. x verzióban. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) tárházban található.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="input"></a>Input (Bemenet)
 
-The Mobile Apps input binding loads a record from a mobile table endpoint and passes it into your function. In C# and F# functions, any changes made to the record are automatically sent back to the table when the function exits successfully.
+A Mobile Apps bemeneti kötés egy rekordot tölt be egy Mobile Table végpontból, és átadja a függvénynek. A C# és F# a függvények esetében a rekordon végrehajtott módosítások automatikusan vissza lesznek küldve a táblába, amikor a függvény sikeresen kilép.
 
-## <a name="input---example"></a>Input - example
+## <a name="input---example"></a>Bemenet – példa
 
-See the language-specific example:
+Tekintse meg az adott nyelvű példa:
 
-* [C# script (.csx)](#input---c-script-example)
+* [C#parancsfájl (. CSX)](#input---c-script-example)
 * JavaScript
 
-### <a name="input---c-script-example"></a>Input - C# script example
+### <a name="input---c-script-example"></a>Bemeneti – C# parancsfájl – példa
 
-The following example shows a Mobile Apps input binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function is triggered by a queue message that has a record identifier. The function reads the specified record and modifies its `Text` property.
+Az alábbi példa egy Mobile apps bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvényt egy, a rekord azonosítóját tartalmazó üzenetsor-üzenet indítja el. A függvény beolvassa a megadott rekordot, és módosítja a `Text` tulajdonságát.
 
-Here's the binding data in the *function.json* file:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -68,9 +68,9 @@ Here's the binding data in the *function.json* file:
 ]
 }
 ```
-The [configuration](#input---configuration) section explains these properties.
+A [konfigurációs](#input---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Here's the C# script code:
+Íme a C#-szkriptkódot:
 
 ```cs
 #r "Newtonsoft.Json"    
@@ -85,11 +85,11 @@ public static void Run(string myQueueItem, JObject record)
 }
 ```
 
-### <a name="input---javascript"></a>Input - JavaScript
+### <a name="input---javascript"></a>Bemenet – JavaScript
 
-The following example shows a Mobile Apps input binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function is triggered by a queue message that has a record identifier. The function reads the specified record and modifies its `Text` property.
+Az alábbi példa egy Mobile Apps bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvényt egy, a rekord azonosítóját tartalmazó üzenetsor-üzenet indítja el. A függvény beolvassa a megadott rekordot, és módosítja a `Text` tulajdonságát.
 
-Here's the binding data in the *function.json* file:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -113,9 +113,9 @@ Here's the binding data in the *function.json* file:
 ]
 }
 ```
-The [configuration](#input---configuration) section explains these properties.
+A [konfigurációs](#input---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Here's the JavaScript code:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = function (context, myQueueItem) {    
@@ -124,54 +124,54 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="input---attributes"></a>Input - attributes
+## <a name="input---attributes"></a>Bemenet - attribútumok
 
-In [C# class libraries](functions-dotnet-class-library.md), use the [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribute.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribútumot.
 
-For information about attribute properties that you can configure, see [the following configuration section](#input---configuration).
+További információ a konfigurálható attribútumok tulajdonságairól: [a következő konfigurációs szakasz](#input---configuration).
 
-## <a name="input---configuration"></a>Input - configuration
+## <a name="input---configuration"></a>Bemenet - konfiguráció
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `MobileTable` attribute.
+Az alábbi táblázat a *function. JSON* fájlban és a `MobileTable` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function.json property | Attribute property |Leírás|
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **type**|| Must be set to "mobileTable"|
-| **direction**||Must be set to "in"|
-| **name**|| Name of input parameter in function signature.|
-|**tableName** |**TableName**|Name of the mobile app's data table|
-| **id**| **Azonosító** | The identifier of the record to retrieve. Can be static or based on the trigger that invokes the function. For example, if you use a queue trigger for your function, then `"id": "{queueTrigger}"` uses the string value of the queue message as the record ID to retrieve.|
-|**connection**|**Connection**|The name of an app setting that has the mobile app's URL. The function uses this URL to construct the required REST operations against your mobile app. Create an app setting in your function app that contains the mobile app's URL, then specify the name of the app setting in the `connection` property in your input binding. The URL looks like `http://<appname>.azurewebsites.net`.
-|**apiKey**|**ApiKey**|The name of an app setting that has your mobile app's API key. Provide the API key if you [implement an API key in your Node.js mobile app](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), or [implement an API key in your .NET mobile app](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). To provide the key, create an app setting in your function app that contains the API key, then add the `apiKey` property in your input binding with the name of the app setting. |
+| **type**|| "MobileTable" értékre kell állítani|
+| **direction**||"In" értékre kell állítani|
+| **név**|| A függvény aláírásában szereplő bemeneti paraméter neve.|
+|**Táblanév** |**Táblanév**|A Mobile alkalmazás adattáblájának neve|
+| **ID**| **Azonosító** | A beolvasandó rekord azonosítója. Lehet statikus vagy a függvényt meghívó trigger alapján. Ha például üzenetsor-triggert használ a függvényhez, akkor `"id": "{queueTrigger}"` a lekérdezni kívánt rekordazonosítóként használja az üzenetsor-azonosító karakterlánc értékét.|
+|**kapcsolat**|**Kapcsolat**|A Mobile App URL-címét tartalmazó Alkalmazásbeállítás neve. A függvény ezt az URL-címet használja a szükséges REST-műveletek létrehozásához a mobil alkalmazáson. Hozzon létre egy alkalmazás-beállítást a Function alkalmazásban, amely tartalmazza a Mobile App URL-címét, majd adja meg az Alkalmazásbeállítás nevét a bemeneti kötés `connection` tulajdonságában. Az URL-cím úgy néz ki, mint `http://<appname>.azurewebsites.net`.
+|**apiKey**|**ApiKey**|A Mobile App API-kulcsát tartalmazó Alkalmazásbeállítás neve. Adja meg az API-kulcsot, ha [implementál egy API-kulcsot a Node. js Mobile alkalmazásban](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), vagy [implementál egy API-kulcsot a .net Mobile-alkalmazásban](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). A kulcs megadásához hozzon létre egy alkalmazást a Function alkalmazásban, amely tartalmazza az API-kulcsot, majd adja hozzá az `apiKey` tulajdonságot a bemeneti kötésben az Alkalmazásbeállítás nevével. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!IMPORTANT]
-> Don't share the API key with your mobile app clients. It should only be distributed securely to service-side clients, like Azure Functions. Azure Functions stores your connection information and API keys as app settings so that they are not checked into your source control repository. This safeguards your sensitive information.
+> Ne ossza meg az API-kulcsot a Mobile App-ügyfelekkel. Ezt a szolgáltatást csak biztonságosan kell kiosztani a szolgáltatás-oldali ügyfelekhez, például a Azure Functionshoz. Azure Functions a rendszer az alkalmazás beállításainak megfelelően tárolja a kapcsolatok adatait és az API-kulcsokat, hogy azok ne legyenek bejelölve a verziókövetés adattárában. Ez védi a bizalmas adatokat.
 
-## <a name="input---usage"></a>Input - usage
+## <a name="input---usage"></a>Bemenet - használat
 
-In C# functions, when the record with the specified ID is found, it is passed into the named [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) parameter. When the record is not found, the parameter value is `null`. 
+A C# functions szolgáltatásban, ha a megadott azonosítójú rekord található, a rendszer átadja a nevet a [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) paraméternek. Ha a rekord nem található, a paraméter értéke `null`. 
 
-In JavaScript functions, the record is passed into the `context.bindings.<name>` object. When the record is not found, the parameter value is `null`. 
+JavaScript-függvényekben a rekord átkerül a `context.bindings.<name>` objektumba. Ha a rekord nem található, a paraméter értéke `null`. 
 
-In C# and F# functions, any changes you make to the input record (input parameter) are automatically sent back to the table when the function exits successfully. You can't modify a record in JavaScript functions.
+A C# és F# a függvényekben a bemeneti rekordon végrehajtott módosításokat (bemeneti paraméter) a rendszer automatikusan visszaküldi a táblába, amikor a függvény sikeresen kilép. JavaScript-függvényekben nem módosítható rekord.
 
 ## <a name="output"></a>Kimenet
 
-Use the Mobile Apps output binding to write a new record to a Mobile Apps table.  
+A Mobile Apps kimeneti kötés használatával új rekordot írhat egy Mobile Apps táblába.  
 
-## <a name="output---example"></a>Output - example
+## <a name="output---example"></a>Kimenete – példa
 
-See the language-specific example:
+Tekintse meg az adott nyelvű példa:
 
 * [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
+* [C#parancsfájl (. CSX)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
-### <a name="output---c-example"></a>Output - C# example
+### <a name="output---c-example"></a>Kimenet – C#-példa
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that is triggered by a queue message and creates a record in a mobile app table.
+Az alábbi példa egy üzenetsor-üzenet által aktivált [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely egy rekordot hoz létre egy Mobile App-táblában.
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -184,11 +184,11 @@ public static object Run(
 }
 ```
 
-### <a name="output---c-script-example"></a>Output - C# script example
+### <a name="output---c-script-example"></a>Kimenet – C#-szkript példa
 
-The following example shows a Mobile Apps output binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function is triggered by a queue message and creates a new record with hard-coded value for the `Text` property.
+Az alábbi példa egy Mobile apps kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény üzenetsor-üzenettel aktiválódik, és egy új rekordot hoz létre, amely rögzített értékkel rendelkezik a `Text` tulajdonsághoz.
 
-Here's the binding data in the *function.json* file:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -212,9 +212,9 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-The [configuration](#output---configuration) section explains these properties.
+A [konfigurációs](#output---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Here's the C# script code:
+Íme a C#-szkriptkódot:
 
 ```cs
 public static void Run(string myQueueItem, out object record)
@@ -225,11 +225,11 @@ public static void Run(string myQueueItem, out object record)
 }
 ```
 
-### <a name="output---javascript-example"></a>Output - JavaScript example
+### <a name="output---javascript-example"></a>Kimenet – JavaScript-példa
 
-The following example shows a Mobile Apps output binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function is triggered by a queue message and creates a new record with hard-coded value for the `Text` property.
+Az alábbi példa egy Mobile Apps kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény üzenetsor-üzenettel aktiválódik, és egy új rekordot hoz létre, amely rögzített értékkel rendelkezik a `Text` tulajdonsághoz.
 
-Here's the binding data in the *function.json* file:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -254,9 +254,9 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-The [configuration](#output---configuration) section explains these properties.
+A [konfigurációs](#output---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Here's the JavaScript code:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = function (context, myQueueItem) {
@@ -269,11 +269,11 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="output---attributes"></a>Output - attributes
+## <a name="output---attributes"></a>Kimenet – attribútumok
 
-In [C# class libraries](functions-dotnet-class-library.md), use the [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribute.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribútumot.
 
-For information about attribute properties that you can configure, see [Output - configuration](#output---configuration). Here's a `MobileTable` attribute example in a method signature:
+További információ a konfigurálható attribútumok tulajdonságairól: [kimeneti konfiguráció](#output---configuration). Példa `MobileTable` attribútumra a metódus-aláírásban:
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -286,37 +286,37 @@ public static object Run(
 }
 ```
 
-For a complete example, see [Output - C# example](#output---c-example).
+Teljes példa: [kimenet – C# példa](#output---c-example).
 
-## <a name="output---configuration"></a>Output - configuration
+## <a name="output---configuration"></a>Kimenete – konfiguráció
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `MobileTable` attribute.
+Az alábbi táblázat a *function. JSON* fájlban és a `MobileTable` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function.json property | Attribute property |Leírás|
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **type**|| Must be set to "mobileTable"|
-| **direction**||Must be set to "out"|
-| **name**|| Name of output parameter in function signature.|
-|**tableName** |**TableName**|Name of the mobile app's data table|
-|**connection**|**MobileAppUriSetting**|The name of an app setting that has the mobile app's URL. The function uses this URL to construct the required REST operations against your mobile app. Create an app setting in your function app that contains the mobile app's URL, then specify the name of the app setting in the `connection` property in your input binding. The URL looks like `http://<appname>.azurewebsites.net`.
-|**apiKey**|**ApiKeySetting**|The name of an app setting that has your mobile app's API key. Provide the API key if you [implement an API key in your Node.js mobile app backend](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), or [implement an API key in your .NET mobile app backend](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). To provide the key, create an app setting in your function app that contains the API key, then add the `apiKey` property in your input binding with the name of the app setting. |
+| **type**|| "MobileTable" értékre kell állítani|
+| **direction**||"Out" értékre kell állítani|
+| **név**|| A függvény aláírásában szereplő kimeneti paraméter neve.|
+|**Táblanév** |**Táblanév**|A Mobile alkalmazás adattáblájának neve|
+|**kapcsolat**|**MobileAppUriSetting**|A Mobile App URL-címét tartalmazó Alkalmazásbeállítás neve. A függvény ezt az URL-címet használja a szükséges REST-műveletek létrehozásához a mobil alkalmazáson. Hozzon létre egy alkalmazás-beállítást a Function alkalmazásban, amely tartalmazza a Mobile App URL-címét, majd adja meg az Alkalmazásbeállítás nevét a bemeneti kötés `connection` tulajdonságában. Az URL-cím úgy néz ki, mint `http://<appname>.azurewebsites.net`.
+|**apiKey**|**ApiKeySetting**|A Mobile App API-kulcsát tartalmazó Alkalmazásbeállítás neve. Adja meg az API-kulcsot, ha [implementál egy API-kulcsot a Node. js-alapú alkalmazási háttérrendszer](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)-felületén, vagy [egy API-kulcsot implementál a .net Mobile apps-háttérbe](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). A kulcs megadásához hozzon létre egy alkalmazást a Function alkalmazásban, amely tartalmazza az API-kulcsot, majd adja hozzá az `apiKey` tulajdonságot a bemeneti kötésben az Alkalmazásbeállítás nevével. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!IMPORTANT]
-> Don't share the API key with your mobile app clients. It should only be distributed securely to service-side clients, like Azure Functions. Azure Functions stores your connection information and API keys as app settings so that they are not checked into your source control repository. This safeguards your sensitive information.
+> Ne ossza meg az API-kulcsot a Mobile App-ügyfelekkel. Ezt a szolgáltatást csak biztonságosan kell kiosztani a szolgáltatás-oldali ügyfelekhez, például a Azure Functionshoz. Azure Functions a rendszer az alkalmazás beállításainak megfelelően tárolja a kapcsolatok adatait és az API-kulcsokat, hogy azok ne legyenek bejelölve a verziókövetés adattárában. Ez védi a bizalmas adatokat.
 
-## <a name="output---usage"></a>Output - usage
+## <a name="output---usage"></a>Kimenet – használat
 
-In C# script functions, use a named output parameter of type `out object` to access the output record. In C# class libraries, the `MobileTable` attribute can be used with any of the following types:
+A C# script functions-ben használjon `out object` típusú kimeneti paramétert a kimeneti rekord eléréséhez. Az C# osztályok könyvtáraiban a `MobileTable` attribútum a következő típusok bármelyikével használható:
 
-* `ICollector<T>` or `IAsyncCollector<T>`, where `T` is either `JObject` or any type with a `public string Id` property.
+* `ICollector<T>` vagy `IAsyncCollector<T>`, ahol a `T` `JObject`, vagy bármilyen típusú `public string Id` tulajdonsággal.
 * `out JObject`
-* `out T` or `out T[]`, where `T` is any Type with a `public string Id` property.
+* `out T` vagy `out T[]`, ahol a `T` típusa `public string Id` tulajdonságú.
 
-In Node.js functions, use `context.bindings.<name>` to access the output record.
+A Node. js függvényekben `context.bindings.<name>` használatával férhet hozzá a kimeneti rekordhoz.
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+> [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

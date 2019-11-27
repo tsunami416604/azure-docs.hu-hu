@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Set up sign-in for a desktop app using Azure Active Directory B2C
-description: In this Quickstart, run a sample WPF desktop application that uses Azure Active Directory B2C to provide account sign-in.
+title: Gyors útmutató – asztali alkalmazások bejelentkezésének beállítása Azure Active Directory B2C használatával
+description: Ebben a rövid útmutatóban egy Azure Active Directory B2C-t használó minta WPF Desktop-alkalmazást futtathat a fiók bejelentkezésének biztosításához.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -20,14 +20,14 @@ ms.locfileid: "74420224"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Gyors útmutató: Asztali alkalmazásba való bejelentkezés konfigurálása Azure Active Directory B2C-vel
 
-Azure Active Directory B2C (Azure AD B2C) provides cloud identity management to keep your application, business, and customers protected. Az Azure AD B2C nyílt szabványú protokollokkal teszi lehetővé az alkalmazások hitelesítését közösségi hálózati és vállalati fiókokon. Ebben a rövid útmutatóban egy asztali Windows megjelenítési alaprendszerbeli (WPF-) alkalmazással jelentkezik be egy közösségi identitásszolgáltatót használva, és az Azure AD B2C által védett webes API-t hív meg.
+A Azure Active Directory B2C (Azure AD B2C) biztosítja az alkalmazások, a vállalkozások és az ügyfelek védelmét a Felhőbeli identitások kezelésével. Az Azure AD B2C nyílt szabványú protokollokkal teszi lehetővé az alkalmazások hitelesítését közösségi hálózati és vállalati fiókokon. Ebben a rövid útmutatóban egy asztali Windows megjelenítési alaprendszerbeli (WPF-) alkalmazással jelentkezik be egy közösségi identitásszolgáltatót használva, és az Azure AD B2C által védett webes API-t hív meg.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Visual Studio 2019](https://www.visualstudio.com/downloads/) with the **ASP.NET and web development** workload.
-- A social account from either Facebook, Google, or Microsoft.
+- A [Visual Studio 2019](https://www.visualstudio.com/downloads/) a **ASP.net és a webes fejlesztési** munkaterheléssel.
+- Facebook-, Google-vagy Microsoft-beli közösségi fiók.
 - [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip), vagy a klónozza a mintául szolgáló webalkalmazást a GitHubról.
 
     ```
@@ -43,16 +43,16 @@ Azure Active Directory B2C (Azure AD B2C) provides cloud identity management to 
 
 1. Kattintson a **Sign in** (Bejelentkezés) gombra a **Sign Up or Sign In** (Regisztráció vagy bejelentkezés) munkafolyamat elindításához.
 
-    ![Screenshot of the sample WPF application](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
+    ![Képernyőfelvétel a minta WPF-alkalmazásról](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
 
-    The sample supports several sign-up options. These options include using a social identity provider or creating a local account using an email address. For this quickstart, use a social identity provider account from either Facebook, Google, or Microsoft.
+    A minta több regisztrációs lehetőséget is támogat. Ezek közé tartozik a közösségi identitás-szolgáltató használata vagy helyi fiók létrehozása e-mail-cím használatával. Ebben a rövid útmutatóban a Facebook, a Google vagy a Microsoft által használt közösségi identitás-szolgáltatói fiókot használhatja.
 
 
-2. Azure AD B2C presents a sign-in page for a fictitious company called Fabrikam for the sample web application. Ha közösségi identitásszolgáltatóval szeretne regisztrálni, kattintson a használni kívánt identitásszolgáltató gombjára.
+2. A Azure AD B2C egy Fabrikam nevű fiktív cég bejelentkezési oldalát jeleníti meg a minta webalkalmazáshoz. Ha közösségi identitásszolgáltatóval szeretne regisztrálni, kattintson a használni kívánt identitásszolgáltató gombjára.
 
-    ![Sign In or Sign Up page showing identity providers](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
+    ![Bejelentkezési vagy regisztrációs oldal, amely az identitás-szolgáltatókat jeleníti meg](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
 
-    You authenticate (sign in) using your social account credentials and authorize the application to read information from your social account. A hozzáférés biztosításával az alkalmazás profiladatokat kérhet le a közösségi fiókból, például a nevét és a települését.
+    A hitelesítéshez (bejelentkezéshez) használja a közösségi fiók hitelesítő adatait, és engedélyezze az alkalmazásnak, hogy beolvassa az adatokat a közösségi fiókból. A hozzáférés biztosításával az alkalmazás profiladatokat kérhet le a közösségi fiókból, például a nevét és a települését.
 
 2. Fejezze be az identitásszolgáltató bejelentkezési folyamatát.
 
@@ -60,13 +60,13 @@ Azure Active Directory B2C (Azure AD B2C) provides cloud identity management to 
 
 ## <a name="edit-your-profile"></a>Saját profil szerkesztése
 
-Az Azure AD B2C-funkcióival a felhasználók frissíthetik a profiljukat. The sample web app uses an Azure AD B2C edit profile user flow for the workflow.
+Az Azure AD B2C-funkcióival a felhasználók frissíthetik a profiljukat. A minta webalkalmazás a munkafolyamathoz tartozó Azure AD B2C szerkesztési profil felhasználói folyamatát használja.
 
 1. Az alkalmazás menüsávján kattintson az **Edit profile** (Profil szerkesztése) gombra a létrehozott profil szerkesztéséhez.
 
-    ![Edit profile button highlighted in WPF sample app](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
+    ![A WPF-minta alkalmazásban Kiemelt profil szerkesztése gomb](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
 
-2. Válassza ki a létrehozott fiókhoz rendelt identitásszolgáltatót. For example, if you used Facebook as the identity provider when you created your account, choose Facebook to modify the associated profile details.
+2. Válassza ki a létrehozott fiókhoz rendelt identitásszolgáltatót. Ha például a Facebookot használta identitás-szolgáltatóként a fiók létrehozásakor, a Facebook lehetőségre kattintva módosíthatja a társított profil részleteit.
 
 3. Módosítsa a **Display name** (Megjelenítendő név) és a **City** (Város) mezőt, majd kattintson a **Continue** (Folytatás) gombra.
 
@@ -88,12 +88,12 @@ Az Azure AD B2C-bérlőt ahhoz is használhatja, ha más Azure AD B2C gyors útm
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this quickstart, you used a sample desktop application to:
+Ebben a rövid útmutatóban egy minta asztali alkalmazást használt a következőre:
 
-* Sign in with a custom login page
-* Sign in with a social identity provider
-* Create an Azure AD B2C account
-* Call a web API protected by Azure AD B2C
+* Bejelentkezés egyéni bejelentkezési oldallal
+* Jelentkezzen be egy közösségi identitás-szolgáltatóval
+* Azure AD B2C fiók létrehozása
+* Azure AD B2C által védett webes API meghívása
 
 Most már hozzákezdhet saját Azure AD B2C-bérlőjének létrehozásához.
 

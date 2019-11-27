@@ -1,5 +1,5 @@
 ---
-title: PowerShell example-Sync between SQL Database and SQL Server on-premises
+title: PowerShell-példa – SQL Database és a helyszíni SQL Server közötti szinkronizálás
 description: Azure PowerShell-példaszkript egy Azure SQL-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz
 services: sql-database
 ms.service: sql-database
@@ -26,19 +26,19 @@ Ez a PowerShell-példa egy Azure SQL-adatbázis és egy helyszíni SQL Server-ad
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-If you choose to install and use the PowerShell locally, this tutorial requires AZ PowerShell 1.4.0 or later. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helyszíni adatbázis közötti, az Azure SQL Data Sync segítségével végzett adatszinkronizálást](../sql-database-sync-data.md) ismertető cikket.
 
 > [!IMPORTANT]
-> Azure SQL Data Sync does not support Azure SQL Database Managed Instance at this time.
+> Az Azure SQL-adatszinkronizálás jelenleg nem támogatja Azure SQL Database felügyelt példányok használatát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Create an Azure SQL database from AdventureWorksLT sample database as hub database
-- Create an Azure SQL database in the same region as sync database
-- Create an on premises SQL Server database as member database
-- Update the parameter placeholders before running the example
+- Azure SQL-adatbázis létrehozása a AdventureWorksLT-mintaadatbázisból hub-adatbázisként
+- Azure SQL Database létrehozása ugyanabban a régióban, mint a szinkronizálási adatbázis
+- Helyszíni SQL Server adatbázis létrehozása tagként adatbázisként
+- Módosítsa a paraméter helyőrzőit a példa futtatása előtt
 
 ## <a name="example"></a>Példa
 
@@ -292,14 +292,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzSqlSyncAgent](/powershell/module/az.sql/New-azSqlSyncAgent) |  Új szinkronizációs ügynök létrehozása |
-| [New-AzSqlSyncAgentKey](/powershell/module/az.sql/New-azSqlSyncAgentKey) |  A szinkronizációs ügynökhöz tartozó ügynökkulcs létrehozása |
+| [Új – AzSqlSyncAgent](/powershell/module/az.sql/New-azSqlSyncAgent) |  Új szinkronizációs ügynök létrehozása |
+| [Új – AzSqlSyncAgentKey](/powershell/module/az.sql/New-azSqlSyncAgentKey) |  A szinkronizációs ügynökhöz tartozó ügynökkulcs létrehozása |
 | [Get-AzSqlSyncAgentLinkedDatabase](/powershell/module/az.sql/Get-azSqlSyncAgentLinkedDatabase) |  A szinkronizációs ügynökhöz kapcsolódó összes információ lekérése |
-| [New-AzSqlSyncMember](/powershell/module/az.sql/New-azSqlSyncMember) |  Új tag hozzáadása a szinkronizálási csoporthoz |
-| [Update-AzSqlSyncSchema](/powershell/module/az.sql/Update-azSqlSyncSchema) |  Az adatbázisséma-információk frissítése |
+| [Új – AzSqlSyncMember](/powershell/module/az.sql/New-azSqlSyncMember) |  Új tag hozzáadása a szinkronizálási csoporthoz |
+| [Frissítés – AzSqlSyncSchema](/powershell/module/az.sql/Update-azSqlSyncSchema) |  Az adatbázisséma-információk frissítése |
 | [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/Get-azSqlSyncSchema) |  Az adatbázisséma-információk lekérése |
-| [Update-AzSqlSyncGroup](/powershell/module/az.sql/Update-azSqlSyncGroup) |  A szinkronizálási csoport frissítése |
-| [Start-AzSqlSyncGroupSync](/powershell/module/az.sql/Start-azSqlSyncGroupSync) | A szinkronizálás aktiválása |
+| [Frissítés – AzSqlSyncGroup](/powershell/module/az.sql/Update-azSqlSyncGroup) |  A szinkronizálási csoport frissítése |
+| [Start – AzSqlSyncGroupSync](/powershell/module/az.sql/Start-azSqlSyncGroupSync) | A szinkronizálás aktiválása |
 | [Get-AzSqlSyncGroupLog](/powershell/module/az.sql/Get-azSqlSyncGroupLog) |  A szinkronizálási napló ellenőrzése |
 |||
 
@@ -311,18 +311,18 @@ Az [Azure SQL Database PowerShell-szkriptekben](../sql-database-powershell-sampl
 
 További információ az SQL Data Syncről:
 
-- Overview - [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync](../sql-database-sync-data.md)
-- Set up Data Sync
-    - In the portal - [Tutorial: Set up SQL Data Sync to sync data between Azure SQL Database and SQL Server on-premises](../sql-database-get-started-sql-data-sync.md)
+- Áttekintés – az [adatszinkronizálás több felhőalapú és helyszíni adatbázis között az Azure SQL-adatszinkronizálás](../sql-database-sync-data.md)
+- Adatszinkronizálás beállítása
+    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizáláshoz](../sql-database-get-started-sql-data-sync.md)
     - A PowerShell-lel
         - [A PowerShell használata több Azure SQL-adatbázis közötti szinkronizáláshoz](sql-database-sync-data-between-sql-databases.md)
-- Data Sync Agent - [Data Sync Agent for Azure SQL Data Sync](../sql-database-data-sync-agent.md)
-- Best practices - [Best practices for Azure SQL Data Sync](../sql-database-best-practices-data-sync.md)
-- Monitor - [Monitor SQL Data Sync with Azure Monitor logs](../sql-database-sync-monitor-oms.md)
-- Troubleshoot - [Troubleshoot issues with Azure SQL Data Sync](../sql-database-troubleshoot-data-sync.md)
-- Update the sync schema
-    - With Transact-SQL - [Automate the replication of schema changes in Azure SQL Data Sync](../sql-database-update-sync-schema.md)
-    - With PowerShell - [Use PowerShell to update the sync schema in an existing sync group](sql-database-sync-update-schema.md)
+- Adatszinkronizálási ügynök – [Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke](../sql-database-data-sync-agent.md)
+- Ajánlott eljárások – [ajánlott eljárások az Azure SQL-adatszinkronizálás](../sql-database-best-practices-data-sync.md)
+- Figyelő – [SQL-adatszinkronizálás figyelése Azure monitor naplókkal](../sql-database-sync-monitor-oms.md)
+- Hibaelhárítás – [Az Azure SQL-adatszinkronizálás hibáinak elhárítása](../sql-database-troubleshoot-data-sync.md)
+- A szinkronizálási séma frissítése
+    - A Transact-SQL- [ben – automatizálja a séma változásainak az Azure-ban való replikálását SQL-adatszinkronizálás](../sql-database-update-sync-schema.md)
+    - A PowerShell [használatával – egy meglévő szinkronizálási csoportban lévő szinkronizálási séma frissítéséhez használja a PowerShellt](sql-database-sync-update-schema.md) .
 
 További információ az SQL Database-ről:
 

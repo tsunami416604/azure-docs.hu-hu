@@ -13,12 +13,12 @@ ms.locfileid: "74224401"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
-| Maximum number of trusted IP addresses or ranges</a> per subscription |0 |50 |
-| Remember my devices, number of days |14 |60 |
-| Maximum number of app passwords |0 |Korlátlan |
+| A megbízható IP-címek vagy tartományok maximális száma</a>/előfizetés szerint |0 |50 |
+| Saját eszközök megjegyzése, napok száma |14 |60 |
+| Alkalmazás jelszavának maximális száma |0 |Korlátlan |
 | **X** próbálkozás engedélyezése MFA-hívás során |1 |99 |
-| Two-way text message timeout seconds |60 |600 |
-| Alapértelmezett egyszeri mellőzés időtartama másodpercben |300 |1,800 |
-| A felhasználói fiók zárolása **X** egymást követő MFA-elutasítást követően |Not set |99 |
-| Fiókzárolás feloldása **X** perc után |Not set |9,999 |
-| Fiókzárolás feloldása **X** perc után |Not set |9,999 |
+| Kétirányú szöveges üzenet időkorlátja (másodperc) |60 |600 |
+| Alapértelmezett egyszeri mellőzés időtartama másodpercben |300 |1 800 |
+| A felhasználói fiók zárolása **X** egymást követő MFA-elutasítást követően |Nincs beállítva |99 |
+| Fiókzárolás feloldása **X** perc után |Nincs beállítva |9 999 |
+| Fiókzárolás feloldása **X** perc után |Nincs beállítva |9 999 |

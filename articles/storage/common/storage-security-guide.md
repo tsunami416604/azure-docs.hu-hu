@@ -1,6 +1,6 @@
 ---
-title: Azure Storage security guide | Microsoft Docs
-description: Details methods for securing Azure Storage accounts, including management plane security, authorization, network security, encryption, etc.
+title: Az Azure Storage biztonsági útmutatója | Microsoft Docs
+description: Részletes módszerek az Azure Storage-fiókok biztonságossá tételéhez, beleértve a felügyeleti sík biztonságát, az engedélyezést, a hálózati biztonságot, a titkosítást stb.
 services: storage
 author: tamram
 ms.service: storage
@@ -16,213 +16,213 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "72926722"
 ---
-# <a name="azure-storage-security-guide"></a>Azure Storage security guide
+# <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutatója
 
-Azure Storage provides a comprehensive set of security capabilities that together enable organizations to build and deploy secure applications:
+Az Azure Storage olyan átfogó biztonsági képességeket kínál, amelyek lehetővé teszik a szervezetek számára, hogy biztonságos alkalmazásokat hozzanak létre és telepítsenek:
 
-- All data (including metadata) written to Azure Storage is automatically encrypted using [Storage Service Encryption (SSE)](storage-service-encryption.md). For more information, see [Announcing Default Encryption for Azure Blobs, Files, Tables, and Queues Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
-- Azure Active Directory (Azure AD) and Role-Based Access Control (RBAC) are supported for both resource management operations and data plane operations:   
-    - You can assign RBAC roles scoped to the storage account to security principals and use Azure AD to authorize resource management operations such as key management.
-    - Azure AD integration is supported for blob and queue data operations. RBAC roles can be scoped to a subscription, resource group, storage account, individual container or queue. Roles can be assigned to a security principal or a managed identity for Azure resources. For more information, see [Authenticate access to Azure Storage using Azure Active Directory](storage-auth-aad.md).
-- Data can be secured in transit between an application and Azure using [Client-Side Encryption](../storage-client-side-encryption.md), HTTPS, or SMB 3.0.  
-- OS and data disks used by Azure virtual machines can be encrypted using [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).
-- Delegated access to the data objects in Azure Storage can be granted using a shared access signature. For more information, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](storage-sas-overview.md).
-- Network-layer security between your application components and storage can be enabled using the storage firewall, service endpoints or private endpoints.
+- Az Azure Storage-ba írt összes adat (beleértve a metaadatokat is) [Storage Service encryption (SSE)](storage-service-encryption.md)használatával automatikusan titkosítva lesz. További információ: az [Azure-Blobok,-fájlok,-táblák és-várólisták alapértelmezett titkosításának bejelentése](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
+- A Azure Active Directory (Azure AD) és a szerepköralapú Access Control (RBAC) az erőforrás-kezelési műveletek és az adatsík-műveletek esetében egyaránt támogatottak:   
+    - A RBAC szerepköröket hozzárendelheti a rendszerbiztonsági tagekhez, és az Azure AD használatával engedélyezheti az erőforrás-kezelési műveleteket, például a kulcskezelő műveleteket.
+    - Az Azure AD-integráció a blob-és üzenetsor-adatműveletek esetében támogatott. A RBAC szerepkörei egy előfizetésre, egy erőforráscsoport, egy Storage-fiókra, egy egyedi tárolóra vagy egy várólistára is kiterjednek. Szerepkörök hozzárendelhetők egy rendszerbiztonsági tag vagy egy felügyelt identitás számára az Azure-erőforrásokhoz. További információ: az [Azure Storage hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).
+- Az alkalmazások és az Azure [ügyféloldali titkosítás](../storage-client-side-encryption.md), HTTPS vagy SMB 3,0 használatával is biztonságossá teheti az adatátvitelt.  
+- Az Azure-beli virtuális gépek által használt operációs rendszer és adatlemezek [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md)használatával titkosíthatók.
+- Az Azure Storage-beli adatobjektumokhoz delegált hozzáférés a közös hozzáférési aláírás használatával adható meg. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md).
+- Az alkalmazás-összetevők és a tároló hálózati rétegbeli biztonsága engedélyezhető a tárolási tűzfal, a szolgáltatási végpontok vagy a magánhálózati végpontok használatával.
 
-This article provides an overview of each of these security features that can be used with Azure Storage. Links are provided to articles provide additional details on each capability.
+Ez a cikk áttekintést nyújt az Azure Storage szolgáltatással használható biztonsági funkciókról. A cikkekre mutató hivatkozások további részleteket biztosítanak az egyes képességekről.
 
-Here are the areas covered in this article:
+A cikkben szereplő területek a következők:
 
-* [Management Plane Security](#management-plane-security) – Securing resource-level access to your Storage Account
+* [Felügyeleti sík biztonsága](#management-plane-security) – erőforrás-szintű hozzáférés biztonságossá tétele a Storage-fiókhoz
 
-  The management plane consists of the operations used to manage your storage account. This section covers the Azure Resource Manager deployment model and how to use Role-Based Access Control (RBAC) to control access to your storage accounts. It also addresses managing your storage account keys and how to regenerate them.
+  A felügyeleti síkon a Storage-fiók kezeléséhez használt műveletek állnak. Ez a szakasz ismerteti a Azure Resource Manager üzembe helyezési modellt, valamint a szerepköralapú Access Control (RBAC) használatát a Storage-fiókokhoz való hozzáférés szabályozásához. Emellett a Storage-fiók kulcsainak kezelésével és azok újralétrehozásával foglalkozik.
 
-* [Network Security](#network-security) - Securing network-level access to your Storage Account
+* [Hálózati biztonság](#network-security) – hálózati szintű hozzáférés biztonságossá tétele a Storage-fiókhoz
 
-  This section covers how you can secure the network-level access to the storage services endpoints. It discusses how you can use the storage firewall to allow access to your data from specific virtual networks or IP address ranges. It also covers the use of service endpoints and private endpoints with storage accounts.
+  Ez a szakasz ismerteti, hogyan védheti meg a hálózati szintű hozzáférést a Storage Services-végpontokhoz. A cikk azt ismerteti, hogyan használható a Storage-tűzfal az adatokhoz adott virtuális hálózatokból vagy IP-címtartományokból való hozzáférés engedélyezéséhez. Emellett a szolgáltatási végpontok és a privát végpontok használatát is magában foglalja a Storage-fiókokkal.
 
-* [Authorization](#authorization) – Authorizing access to your data
+* [Engedélyezés](#authorization) – az adataihoz való hozzáférés engedélyezése
 
-  This section describes access to the data objects in your Storage account, such as blobs, files, queues, and tables, using Shared Access Signatures and Stored Access Policies. We will cover both service-level SAS and account-level SAS. We'll also see how to limit access to a specific IP address (or range of IP addresses), how to limit the protocol used to HTTPS, and how to revoke a Shared Access Signature without waiting for it to expire.
+  Ez a szakasz a Storage-fiókban lévő adatobjektumokhoz, például a blobokhoz, fájlokhoz, várólistákhoz és táblákhoz való hozzáférést ismerteti közös hozzáférésű aláírások és tárolt hozzáférési szabályzatok használatával. A szolgáltatási szintű SAS és a fiók szintű SAS is kiterjed. Azt is megtudhatja, hogyan korlátozhatja a hozzáférést egy adott IP-címhez (vagy IP-tartományhoz), hogyan korlátozhatja a HTTPS-hez használt protokollt, és hogyan vonhatja vissza a közös hozzáférésű aláírásokat anélkül, hogy a lejárat előtt kellene várnia.
 
 * [Titkosítás az átvitel során](#encryption-in-transit)
 
-  This section discusses how to secure data when you transfer it into or out of Azure Storage. We'll talk about the recommended use of HTTPS and the encryption used by SMB 3.0 for Azure file shares. We will also discuss Client-side Encryption, which enables you to encrypt data before transfer into Storage, and to decrypt the data after it is transferred out of Storage.
+  Ebből a szakaszból megtudhatja, hogyan védheti meg az adatok védelmét, ha az Azure Storage-ba vagy onnan helyezi át. A HTTPS javasolt használatát és az SMB 3,0 Azure-fájlmegosztás által használt titkosítását is tárgyaljuk. Emellett az ügyféloldali titkosításról is beszélünk, amely lehetővé teszi az adatok titkosítását a tárolóba való átvitel előtt, valamint az adatok visszafejtését, miután a tárolóból kikerült.
 
 * [Titkosítás inaktív állapotban](#encryption-at-rest)
 
-  We will talk about Storage Service Encryption (SSE), which is now automatically enabled for new and existing storage accounts. We will also look at how you can use Azure Disk Encryption and explore the basic differences and cases of Disk Encryption versus SSE versus Client-Side Encryption. We will briefly look at FIPS compliance for U.S. Government computers.
+  Az új és a meglévő Storage-fiókok számára automatikusan elérhetővé vált Storage Service Encryption (SSE). Azt is megvizsgáljuk, hogyan használhatók a Azure Disk Encryption és megismerhetik a lemez titkosításának alapvető különbségeit és eseteit, valamint az SSE-t és az ügyféloldali titkosítást. Röviden megvizsgáljuk az Egyesült államokbeli kormányzati számítógépek FIPS-megfelelőségét.
 
-* Using [Storage Analytics](#storage-analytics) to audit access of Azure Storage
+* Az Azure Storage hozzáférésének naplózása [Storage Analytics](#storage-analytics) használatával
 
-  This section discusses how to find information in the storage analytics logs for a request. We'll take a look at real storage analytics log data and see how to discern whether a request is made with the Storage account key, with a Shared Access signature, or anonymously, and whether it succeeded or failed.
+  Ez a szakasz azt ismerteti, hogyan lehet információt megkeresni a Storage Analytics naplóiban egy kérelemhez. Tekintse meg a valódi Storage Analytics-naplófájlok részletes ismertetését, és Ismerje meg, hogyan állapítható meg, hogy a rendszer a Storage-fiók kulcsával, közös hozzáférésű aláírással vagy névtelenül, illetve sikeres vagy sikertelen kéréssel kezdeményezett-e kérelmet.
 
-* [Enabling Browser-Based Clients using CORS](#cross-origin-resource-sharing-cors)
+* [Böngészőalapú ügyfelek engedélyezése a CORS használatával](#cross-origin-resource-sharing-cors)
 
-  This section talks about how to allow cross-origin resource sharing (CORS). We'll talk about cross-domain access, and how to handle it with the CORS capabilities built into Azure Storage.
+  Ez a szakasz a több eredetű erőforrás-megosztás (CORS) engedélyezését ismerteti. Az Azure Storage-ba épített CORS képességekkel foglalkozunk a tartományok közötti hozzáféréssel, valamint az azok kezelésével.
 
-## <a name="management-plane-security"></a>Management Plane Security
-The management plane consists of operations that affect the storage account itself. For example, you can create or delete a storage account, get a list of storage accounts in a subscription, retrieve the storage account keys, or regenerate the storage account keys.
+## <a name="management-plane-security"></a>Felügyeleti sík biztonsága
+A felügyeleti sík olyan műveletekből áll, amelyek hatással vannak a Storage-fiókra. Létrehozhat vagy törölhet például egy Storage-fiókot, lekérheti az előfizetéshez tartozó Storage-fiókok listáját, lekérheti a Storage-fiók kulcsait, vagy újragenerálhatja a Storage-fiók kulcsait.
 
-When you create a new storage account, you select a deployment model of Classic or Resource Manager. The Classic model of creating resources in Azure only allows all-or-nothing access to the subscription, and in turn, the storage account.
+Új Storage-fiók létrehozásakor ki kell választania a klasszikus vagy a Resource Manager üzembe helyezési modelljét. Az Azure-beli erőforrások létrehozásának klasszikus modellje csak az előfizetéshez való teljes vagy semmis hozzáférést teszi lehetővé, viszont a Storage-fiókot.
 
-This guide focuses on the Resource Manager model that is the recommended means for creating storage accounts. With the Resource Manager storage accounts, rather than giving access to the entire subscription, you can control access on a more finite level to the management plane using Role-Based Access Control (RBAC).
+Ez az útmutató a Resource Manager-modellre összpontosít, amely a Storage-fiókok létrehozásához ajánlott módszer. A Resource Manager-alapú Storage-fiókokkal a teljes előfizetéshez nem biztosít hozzáférést, a szerepköralapú Access Control (RBAC) használatával szabályozhatja a hozzáférést a felügyeleti síkon.
 
-### <a name="how-to-secure-your-storage-account-with-role-based-access-control-rbac"></a>How to secure your storage account with Role-Based Access Control (RBAC)
-Let's talk about what RBAC is, and how you can use it. Minden Azure-előfizetés Azure Active Directoryval rendelkezik. Users, groups, and applications from that directory can be granted access to manage resources in the Azure subscription that use the Resource Manager deployment model. This type of security is referred to as Role-Based Access Control (RBAC). To manage this access, you can use the [Azure portal](https://portal.azure.com/), the [Azure CLI tools](../../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs), or the [Azure Storage Resource Provider REST APIs](https://msdn.microsoft.com/library/azure/mt163683.aspx).
+### <a name="how-to-secure-your-storage-account-with-role-based-access-control-rbac"></a>A Storage-fiók biztonságossá tétele szerepköralapú Access Control (RBAC) használatával
+Beszéljünk arról, hogy mi a RBAC, és hogyan használható. Minden Azure-előfizetés Azure Active Directoryval rendelkezik. A címtárban lévő felhasználók, csoportok és alkalmazások hozzáférést biztosíthatnak a Resource Manager-alapú üzemi modellt használó Azure-előfizetés erőforrásainak kezeléséhez. Az ilyen típusú biztonságot szerepköralapú Access Control (RBAC) nevezzük. A hozzáférés kezeléséhez használhatja a [Azure Portal](https://portal.azure.com/), az [Azure CLI-eszközöket](../../cli-install-nodejs.md), a [PowerShellt](/powershell/azureps-cmdlets-docs)vagy az [Azure Storage erőforrás-szolgáltató REST API](https://msdn.microsoft.com/library/azure/mt163683.aspx)-jait.
 
-With the Resource Manager model, you put the storage account in a resource group and control access to the management plane of that specific storage account using Azure Active Directory. For example, you can give specific users the ability to access the storage account keys, while other users can view information about the storage account, but cannot access the storage account keys.
+A Resource Manager-modellel a Storage-fiókot egy erőforráscsoporthoz helyezheti el, és a Azure Active Directory használatával szabályozhatja az adott Storage-fiók felügyeleti síkjával való hozzáférést. Megadhatja például, hogy bizonyos felhasználók hozzáférjenek a Storage-fiók kulcsaihoz, míg más felhasználók megtekinthetik a Storage-fiók adatait, de nem férhetnek hozzá a Storage-fiók kulcsaihoz.
 
-#### <a name="granting-access"></a>Granting Access
-Access is granted by assigning the appropriate RBAC role to users, groups, and applications, at the right scope. To grant access to the entire subscription, you assign a role at the subscription level. You can grant access to all of the resources in a resource group by granting permissions to the resource group itself. You can also assign specific roles to specific resources, such as storage accounts.
+#### <a name="granting-access"></a>Hozzáférés biztosítása
+A hozzáférés megadásához a megfelelő RBAC-szerepkört kell hozzárendelni a felhasználókhoz, csoportokhoz és alkalmazásokhoz a megfelelő hatókörben. Ahhoz, hogy hozzáférést biztosítson a teljes előfizetéshez, hozzá kell rendelnie egy szerepkört az előfizetési szinten. Az erőforráscsoport összes erőforrásához hozzáférést biztosíthat, ha az engedélyt az erőforráscsoporthoz is megadja. Adott erőforrásokhoz, például tárolási fiókokhoz is hozzárendelhet meghatározott szerepköröket.
 
-Here are the main points that you need to know about using RBAC to access the management operations of an Azure Storage account:
+Az alábbi fő pontok szükségesek az Azure Storage-fiók felügyeleti műveleteinek eléréséhez a RBAC használatával:
 
-* When you assign access, you basically assign a role to the account that you want to have access. You can control access to the operations used to manage that storage account, but not to the data objects in the account. For example, you can grant permission to retrieve the properties of the storage account (such as redundancy), but not to a container or data within a container inside Blob Storage.
-* For someone to have permission to access the data objects in the storage account, you can give them permission to read the storage account keys, and that user can then use those keys to access the blobs, queues, tables, and files.
-* Roles can be assigned to a specific user account, a group of users, or to a specific application.
-* Each role has a list of Actions and Not Actions. For example, the Virtual Machine Contributor role has an Action of "listKeys" that allows the storage account keys to be read. The Contributor has "Not Actions" such as updating the access for users in the Active Directory.
-* Roles for storage include (but are not limited to) the following roles:
+* Amikor hozzáférést rendel hozzá, alapvetően hozzárendel egy szerepkört ahhoz a fiókhoz, amelyhez hozzáférést szeretne adni. Szabályozhatja a Storage-fiók kezeléséhez használt műveletekhez való hozzáférést, de a fiókban lévő adatobjektumokhoz nem. Engedélyezheti például a Storage-fiók tulajdonságainak beolvasását (például a redundancia), de a tárolók vagy a Blob Storage belül lévő tárolóban lévő adattárolók számára is.
+* Ahhoz, hogy valaki hozzáférhessen az adatobjektumokhoz a Storage-fiókban, engedélyt adhat nekik a Storage-fiók kulcsainak olvasásához, és a felhasználók ezeket a kulcsokat használhatják a Blobok, várólisták, táblák és fájlok eléréséhez.
+* Szerepkörök rendelhetők egy adott felhasználói fiókhoz, egy felhasználói csoporthoz vagy egy adott alkalmazáshoz.
+* Minden szerepkör tartalmaz egy listát a műveletekről, és nem végez műveleteket. Például a virtuális gép közreműködői szerepkör "Listkeys műveletének beolvasása" művelettel rendelkezik, amely lehetővé teszi a Storage-fiók kulcsainak olvasását. A közreműködő "nem műveletekkel" rendelkezik, például a felhasználók hozzáférésének frissítése a Active Directoryban.
+* A Storage szerepkörei közé tartoznak a következő szerepkörök (de nincsenek korlátozva):
 
-  * Owner – They can manage everything, including access.
-  * Contributor – They can do anything the owner can do except assign access. Someone with this role can view and regenerate the storage account keys. With the storage account keys, they can access the data objects.
-  * Reader – They can view information about the storage account, except secrets. For example, if you assign a role with reader permissions on the storage account to someone, they can view the properties of the storage account, but they can't make any changes to the properties or view the storage account keys.
-  * Storage Account Contributor – They can manage the storage account – they can read the subscription's resource groups and resources, and create and manage subscription resource group deployments. They can also access the storage account keys, which in turn means they can access the data plane.
-  * User Access Administrator – They can manage user access to the storage account. For example, they can grant Reader access to a specific user.
-  * Virtual Machine Contributor – They can manage virtual machines but not the storage account to which they are connected. This role can list the storage account keys, which means that the user to whom you assign this role can update the data plane.
+  * Tulajdonos – mindent kezelhet, beleértve a hozzáférést is.
+  * Közreműködő – a tulajdonos bármit elvégezhet, kivéve a hozzáférés hozzárendelését. A szerepkörrel rendelkező személy megtekintheti és újragenerálhatja a Storage-fiók kulcsait. A Storage-fiók kulcsainak segítségével hozzáférhetnek az adatobjektumokhoz.
+  * Olvasó – a titkokat kivéve a Storage-fiókra vonatkozó információkat tekinthetik meg. Ha például a Storage-fiókhoz hozzárendel egy olvasói engedélyekkel rendelkező szerepkört valakinek, megtekinthetik a Storage-fiók tulajdonságait, de nem módosíthatják a tulajdonságokat, vagy megtekinthetik a Storage-fiók kulcsait.
+  * Storage-fiók közreműködői – kezelhetik a Storage-fiókot – elolvashatják az előfizetés erőforrás-csoportjait és erőforrásait, valamint előfizetési erőforráscsoport-telepítéseket hozhatnak létre és kezelhetnek. Emellett hozzáférhetnek a Storage-fiók kulcsaihoz is, ami azt jelenti, hogy hozzáférhetnek az adatsíkon.
+  * Felhasználói hozzáférés rendszergazdája – a Storage-fiókhoz való felhasználói hozzáférést is kezelhetik. Megadhatják például, hogy az olvasó hozzáférjen egy adott felhasználóhoz.
+  * Virtuális gép közreműködői – a virtuális gépeket kezelhetik, nem pedig azt a Storage-fiókot, amelyhez csatlakoznak. Ez a szerepkör felsorolja a Storage-fiók kulcsait, ami azt jelenti, hogy a szerepkört hozzárendelő felhasználó frissítheti az adatsíkon.
 
-    In order for a user to create a virtual machine, they have to be able to create the corresponding VHD file in a storage account. To do that, they need to be able to retrieve the storage account key and pass it to the API creating the VM. Therefore, they must have this permission so they can list the storage account keys.
-* The ability to define custom roles is a feature that allows you to compose a set of actions from a list of available actions that can be performed on Azure resources.
-* The user must be set up in your Azure Active Directory before you can assign a role to them.
-* You can create a report of who granted/revoked what kind of access to/from whom and on what scope using PowerShell or the Azure CLI.
+    Ahhoz, hogy egy felhasználó virtuális gépet hozzon létre, létre kell hoznia a megfelelő VHD-fájlt egy Storage-fiókban. Ehhez le kell tudniuk kérni a Storage-fiók kulcsát, és át kell adni a virtuális gépet létrehozó API-nak. Ezért rendelkezniük kell ezzel az engedéllyel, hogy fel tudják sorolni a Storage-fiók kulcsait.
+* Az egyéni szerepkörök definiálásának lehetősége egy olyan szolgáltatás, amely lehetővé teszi, hogy az Azure-erőforrásokon végrehajtható elérhető műveletek listájából hozzon létre műveleteket.
+* Ahhoz, hogy szerepkört rendeljen hozzá, a felhasználónak be kell állítania a Azure Active Directory.
+* Létrehozhat egy jelentést, amely a PowerShell vagy az Azure CLI használatával/kitől és milyen hatókörön keresztül engedélyezte vagy visszavonta a hozzáférést.
 
-#### <a name="resources"></a>Segédanyagok és eszközök
+#### <a name="resources"></a>Erőforrások
 * [Azure Active Directory szerepköralapú hozzáférés-vezérlése](../../role-based-access-control/role-assignments-portal.md)
 
   Ez a cikk az Azure Active Directory szerepkörön alapuló hozzáférés-vezérlését és annak működési módját ismerteti.
 * [RBAC: Beépített szerepkörök](../../role-based-access-control/built-in-roles.md)
 
-  This article details all of the built-in roles available in RBAC.
+  Ez a cikk a RBAC-ben elérhető összes beépített szerepkört részletezi.
 * [A Resource Manager-alapú és a klasszikus üzembe helyezés ismertetése](../../azure-resource-manager/resource-manager-deployment-model.md)
 
-  This article explains the Resource Manager deployment and classic deployment models, and explains the benefits of using the Resource Manager and resource groups. It explains how the Azure Compute, Network, and Storage Providers work under the Resource Manager model.
+  Ez a cikk a Resource Manager-alapú és a klasszikus üzembe helyezési modelleket ismerteti, valamint ismerteti a Resource Manager és az erőforráscsoportok használatának előnyeit. Elmagyarázza, hogy az Azure számítási, hálózati és tárolási szolgáltatói hogyan működnek a Resource Manager-modellben.
 * [Szerepköralapú hozzáférés-vezérlés kezelése REST API-val](../../role-based-access-control/role-assignments-rest.md)
 
   Ez a cikk leírja, hogyan használható a REST API az RBAC kezeléséhez.
 * [Az Azure Storage erőforrás-szolgáltató REST API-ja – referencia](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
-  This API reference describes the APIs you can use to manage your storage account programmatically.
+  Ez az API-hivatkozás azokat a API-kat ismerteti, amelyek segítségével a Storage-fiók programozott módon kezelhető.
 
 * [Szerepköralapú hozzáférés-vezérlés az Ignite-tól a Microsoft Azure számára](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
 
   Ez a hivatkozás a Channel 9 2015-ös MS Ignite-konferencia videójára mutat. Ebben a részben arról beszélnek, milyen hozzáférés-kezelési és jelentési képességeket nyújt az Azure, és bemutatják az Azure-előfizetés hozzáférés-biztosításának legjobb gyakorlatait az Azure Active Directory használatával.
 
-### <a name="managing-your-storage-account-keys"></a>Managing Your Storage Account Keys
-Storage account keys are 512-bit strings created by Azure that, along with the storage account name, can be used to access the data objects stored in the storage account, for example, blobs, entities within a table, queue messages, and files on an Azure file share. Controlling access to the storage account keys controls access to the data plane for that storage account.
+### <a name="managing-your-storage-account-keys"></a>A Storage-fiók kulcsainak kezelése
+A Storage-fiók kulcsai az Azure által létrehozott 512 bites karakterláncok, amelyek a Storage-fiók nevével együtt használhatók a Storage-fiókban tárolt adatobjektumok eléréséhez, például Blobok, táblákon belüli entitások, üzenetsor-üzenetek és egy Azure-fájlmegosztás fájljai. A Storage-fiók kulcsaihoz való hozzáférés szabályozása szabályozza az adott Storage-fiók adatsíkjainak elérését.
 
-Each storage account has two keys referred to as "Key 1" and "Key 2" in the [Azure portal](https://portal.azure.com/) and in the PowerShell cmdlets. These can be regenerated manually using one of several methods, including, but not limited to using the [Azure portal](https://portal.azure.com/), PowerShell, the Azure CLI, or programmatically using the .NET Storage Client Library or the Azure Storage Services REST API.
+Minden egyes Storage-fiókhoz két kulcs tartozik: "Key 1" és "Key 2" a [Azure Portal](https://portal.azure.com/) és a PowerShell-parancsmagokban. Ezek manuálisan is újrahozhatók a több módszer egyikével, például a [Azure Portal](https://portal.azure.com/), a PowerShell, az Azure CLI vagy programozott módon, a .net Storage ügyféloldali kódtára vagy az Azure storage Services REST API használatával.
 
-There are various reasons to regenerate your storage account keys.
+A Storage-fiók kulcsainak újragenerálása számos okból lehetséges.
 
-* You may regenerate them periodically for security.
-* You might regenerate your storage account keys if your application or network security is compromised.
-* Another instance for key regeneration is when team members with access to the keys leave. Shared Access Signatures were designed primarily to address this scenario – you should share an account-level SAS connection string or token, instead of sharing access keys, with most individuals or applications.
+* A biztonság érdekében időnként újra létrehozhatja őket.
+* Ha az alkalmazás vagy a hálózat biztonsága sérült, akkor előfordulhat, hogy újragenerálja a Storage-fiók kulcsait.
+* A kulcs újragenerálásának egy másik példánya, amikor a csapattagok hozzáférnek a kulcsokhoz. A közös hozzáférésű aláírásokat elsősorban e forgatókönyvek kezelésére tervezték – a hozzáférési kulcsok megosztása helyett egy fiók szintű SAS-kapcsolati karakterláncot vagy tokent kell megosztania, a legtöbb egyéni vagy alkalmazással.
 
-#### <a name="key-regeneration-plan"></a>Key regeneration plan
-You should not regenerate an access key in use without planning. Abrupt key regeneration can block access to a storage account for existing applications, causing major disruption. Azure Storage accounts provide two keys, so that you can regenerate one key at a time.
+#### <a name="key-regeneration-plan"></a>Kulcs újragenerálási terve
+A használat megtervezése nélkül nem lehet újragenerált hozzáférési kulcsot használni. A hirtelen kulcs újragenerálása letilthatja a meglévő alkalmazások Storage-fiókjához való hozzáférést, ami jelentős fennakadást okozhat. Az Azure Storage-fiókok két kulcsot biztosítanak, így egyszerre csak egy kulcsot lehet újragenerálni.
 
-Before you regenerate your keys, be sure you have a list of all applications dependent on the storage account, as well as any other services you are using in Azure. For example, if you are using Azure Media Services use your storage account, you must resync the access keys with your media service after you regenerate the key. If you are using an application such as a storage explorer, you will need to provide new keys to those applications as well. If you have VMs whose VHD files are stored in the storage account, they will not be affected by regenerating the storage account keys.
+A kulcsok újragenerálása előtt győződjön meg róla, hogy rendelkezik a Storage-fióktól függő összes alkalmazás listájával, valamint az Azure-ban használt többi szolgáltatással. Ha például Azure Media Services használja a Storage-fiókját, a kulcs újragenerálása után újra kell szinkronizálnia a hozzáférési kulcsokat a Media Service szolgáltatással. Ha olyan alkalmazást használ, mint például a Storage Explorer, új kulcsokat kell megadnia ezekhez az alkalmazásokhoz is. Ha olyan virtuális gépekkel rendelkezik, amelyek VHD-fájljai a Storage-fiókban tárolódnak, a Storage-fiók kulcsainak újragenerálása nem érinti őket.
 
-You can regenerate your keys in the Azure portal. Once keys are regenerated, they can take up to 10 minutes to be synchronized across Storage Services.
+A kulcsok újragenerálása a Azure Portal. A kulcsok újragenerálása után akár 10 percet is igénybe vehet, hogy szinkronizálni lehessen a tárolási szolgáltatások között.
 
-When you're ready, here's the general process detailing how you should change your key. In this case, the assumption is that you are currently using Key 1 and you are going to change everything to use Key 2 instead.
+Ha elkészült, az általános folyamat részletesen ismerteti, hogyan kell módosítani a kulcsot. Ebben az esetben feltételezhető, hogy jelenleg az 1. kulcsot használja, és mindent megváltoztat a 2. kulcs használatához.
 
-1. Regenerate Key 2 to ensure that it is secure. You can do this in the Azure portal.
-2. In all of the applications where the storage key is stored, change the storage key to use Key 2's new value. Test and publish the application.
-3. After all of the applications and services are up and running successfully, regenerate Key 1. This ensures that anybody to whom you have not expressly given the new key will no longer have access to the storage account.
+1. A 2. kulcs újragenerálta annak érdekében, hogy biztonságos legyen. Ezt megteheti a Azure Portalban.
+2. Az összes olyan alkalmazásban, ahol a tárolási kulcs tárolva van, módosítsa a Storage-kulcsot a 2. kulcs új értékének használatára. Tesztelje és tegye közzé az alkalmazást.
+3. Miután az összes alkalmazás és szolgáltatás sikeresen működik, újragenerálta az 1. kulcsot. Ezzel biztosíthatja, hogy bárki, akinek nem adta meg kifejezetten az új kulcsot, többé nem lesz hozzáférése a Storage-fiókhoz.
 
-If you are currently using Key 2, you can use the same process, but reverse the key names.
+Ha jelenleg a 2. kulcsot használja, ugyanazt a folyamatot használhatja, de megfordíthatja a kulcsok nevét.
 
-You can migrate over a couple of days, changing each application to use the new key and publishing it. After all of them are done, you should then go back and regenerate the old key so it no longer works.
+Több napig is áttelepítheti az alkalmazást, és az egyes alkalmazásokat az új kulcs használatára és közzétételre módosíthatja. Miután mindegyik elkészült, térjen vissza, és újból létrehozza a régi kulcsot, így már nem működik.
 
-Another option is to put the storage account key in an [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) as a secret and have your applications retrieve the key from there. Then when you regenerate the key and update the Azure Key Vault, the applications will not need to be redeployed because they will pick up the new key from the Azure Key Vault automatically. You can have the application read the key each time it needs it, or the application can cache it in memory and if it fails when using it, retrieve the key again from the Azure Key Vault.
+Egy másik lehetőség, hogy a Storage-fiók kulcsát egy titkos [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) helyezi el, és az alkalmazásokból lekéri a kulcsot. Ezután a kulcs újbóli létrehozása és a Azure Key Vault frissítése után az alkalmazásoknak nem kell újratelepíteniük, mert az új kulcsot a Azure Key Vault automatikusan átveszik. Az alkalmazásnak minden alkalommal el kell olvasnia a kulcsot, vagy az alkalmazás gyorsítótárazhatja a memóriában, és ha ez nem sikerül, a kulcs újbóli beolvasása a Azure Key Vault.
 
-Using Azure Key Vault also adds another level of security for your storage keys. Using the Key Vault, enables you to avoid writing storage keys in application configuration files. It also prevents exposure of keys to everyone with access to those configuration files.
+A Azure Key Vault használata emellett további biztonsági szintet is biztosít a tárolási kulcsok számára. A Key Vault használata lehetővé teszi, hogy elkerülje a tárolási kulcsok írását az alkalmazás konfigurációs fájljaiban. Emellett megakadályozza, hogy a kulcsok mindenki számára hozzáférjenek a konfigurációs fájlokhoz.
 
-Azure Key Vault also has the advantage of using Azure AD to control access to your keys. You can grant access to the specific applications that need to retrieve the keys from Key Vault, without exposing them to other applications that do not need access to the keys.
+A Azure Key Vault az Azure AD használatának előnyeit is kihasználhatja a kulcsok elérésének szabályozására. Megadhatja a hozzáférést azokhoz a konkrét alkalmazásokhoz, amelyeknek le kell kérnie a kulcsokat a Key Vaultból, anélkül, hogy azokat más alkalmazásokba kellene kitenni, amelyek nem igényelnek hozzáférést a kulcsokhoz.
 
 > [!NOTE]
-> Microsoft recommends using only one of the keys in all of your applications at the same time. If you use Key 1 in some places and Key 2 in others, you will not be able to rotate your keys without some application losing access.
+> A Microsoft azt javasolja, hogy egyszerre csak az egyik kulcsot használja az összes alkalmazásban. Ha egyes helyeken és a 2. kulcsban az 1. kulcsot használja másokban, nem fogja tudni elforgatni a kulcsokat anélkül, hogy egy alkalmazás elveszíti a hozzáférést.
 
-#### <a name="resources"></a>Segédanyagok és eszközök
+#### <a name="resources"></a>Erőforrások
 
 * [Tárfiók beállításainak kezelése az Azure Portalon](storage-account-manage.md)
 * [Az Azure Storage erőforrás-szolgáltató REST API-ja – referencia](https://msdn.microsoft.com/library/mt163683.aspx)
 
 ## <a name="network-security"></a>Hálózati biztonság
-Network Security enables you to restrict access to the data in an Azure Storage Account from select networks. You can use the Azure Storage firewall to restrict access to clients from specific public IP address ranges, select virtual networks (VNets) on Azure, or to specific Azure resources. You also have the option to create a Private Endpoint for your storage account in the VNet that needs access, and blocking all access through the public endpoint.
+A hálózati biztonság lehetővé teszi, hogy az Azure Storage-fiókban lévő adatokhoz való hozzáférést a hálózatok kiválasztása után korlátozza. Az Azure Storage tűzfal használatával korlátozhatja az ügyfelek hozzáférését adott nyilvános IP-címtartományok alapján, kiválaszthatja a virtuális hálózatokat (virtuális hálózatok) az Azure-ban, illetve adott Azure-erőforrásokhoz is. Lehetősége van arra is, hogy a VNet olyan magánhálózati végpontot hozzon létre a Storage-fiókjához, amelynek hozzáférésre van szüksége, és blokkolja a nyilvános végponton keresztüli összes hozzáférést.
 
-You can configure the network access rules for your storage account through the [Firewalls and Virtual Networks](storage-network-security.md) tab in the Azure portal. Using the storage firewall, you can deny access for public internet traffic, and grant access to select clients based on the configured network rules.
+A Storage-fiók hálózati hozzáférési szabályait a Azure Portal [tűzfalak és virtuális hálózatok](storage-network-security.md) lapján adhatja meg. A tárolási tűzfal használatával megtagadhatja a hozzáférést a nyilvános internetes forgalomhoz, és a konfigurált hálózati szabályok alapján engedélyezheti a hozzáférést az ügyfelek kiválasztásához.
 
-You can also use [Private Endpoints](../../private-link/private-endpoint-overview.md) to privately and securely connect to a storage account from a VNet using [Private Links](../../private-link/private-link-overview.md).
+Privát [végpontokat](../../private-link/private-endpoint-overview.md) is használhat magánhálózati és biztonságos csatlakozáshoz egy VNet a [privát hivatkozások](../../private-link/private-link-overview.md)használatával.
 
-Storage firewall rules only apply to the public endpoint for the storage account. The subnet that hosts a private endpoint for a storage account gets implicit access to the account when you approve the creation of that private endpoint.
+A tárolási tűzfalszabályok csak a Storage-fiók nyilvános végpontján érvényesek. A Storage-fiókhoz tartozó magánhálózati végpontot futtató alhálózat implicit módon hozzáfér a fiókhoz, amikor jóváhagyja a saját végpont létrehozását.
 
 > [!NOTE]
-> The storage firewall rules are not applicable to storage management operations conducted through the Azure portal and the Azure Storage Management API.
+> A tárolási tűzfalszabályok nem alkalmazhatók a Azure Portal és az Azure Storage Management API-n keresztül végrehajtott tárolási felügyeleti műveletekre.
 
-### <a name="access-rules-for-public-ip-address-ranges"></a>Access rules for public IP address ranges
-The Azure Storage firewall can be used to restrict access to a storage account from specific public IP address ranges. You can use IP address rules to restrict access to specific internet-based services communicating on a fixed public IP endpoint, or to select on-premises networks.
+### <a name="access-rules-for-public-ip-address-ranges"></a>Nyilvános IP-címtartományok hozzáférési szabályai
+Az Azure Storage-tűzfal használatával korlátozhatja a Storage-fiókokhoz való hozzáférést adott nyilvános IP-címtartományok alapján. Az IP-cím szabályok használatával korlátozhatja a hozzáférést egy rögzített nyilvános IP-végponton kommunikáló, adott internetalapú szolgáltatásokhoz, vagy kiválaszthatja a helyszíni hálózatokat.
 
-### <a name="access-rules-for-azure-virtual-networks"></a>Access rules for Azure virtual networks
-Storage accounts, by default, accept connections from clients on any network. You can restrict the client access to the data in a storage account to selected networks using the storage firewall. [Service endpoints](../../virtual-network/virtual-network-service-endpoints-overview.md) enable routing of traffic from an Azure virtual network to the storage account. 
+### <a name="access-rules-for-azure-virtual-networks"></a>Azure-beli virtuális hálózatok hozzáférési szabályai
+Alapértelmezés szerint a Storage-fiókok minden hálózaton fogadják az ügyfelek kapcsolatait. A Storage-fiókban lévő, a tároló tűzfal használatával korlátozhatja az ügyfél hozzáférését a Storage-fiókok adataihoz. A [szolgáltatási végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) lehetővé teszik az Azure-beli virtuális hálózatok forgalmának útválasztását a Storage-fiókba. 
 
-### <a name="granting-access-to-specific-trusted-resource-instances"></a>Granting access to specific trusted resource instances
-You can allow a [subset of Azure trusted services](storage-network-security.md#trusted-microsoft-services) to access the storage account through the firewall with strong authentication based on the service resource type, or a resource instance.
+### <a name="granting-access-to-specific-trusted-resource-instances"></a>Hozzáférés biztosítása adott megbízható erőforrás-példányokhoz
+Lehetővé teheti, hogy az [Azure megbízható szolgáltatások egy részhalmaza](storage-network-security.md#trusted-microsoft-services) hozzáférhessen a Storage-fiókhoz a tűzfalon keresztül, erős hitelesítéssel a szolgáltatás erőforrástípus vagy egy erőforrás-példány alapján.
 
-For the services that support resource instance-based access through the storage firewall, only the selected instance can access the data in the storage account. In this case, the service must support resource-instance authentication using system-assigned [managed identities](../../active-directory/managed-identities-azure-resources/overview.md).
+Azon szolgáltatások esetében, amelyek a Storage-tűzfalon keresztül támogatják az erőforrás-példányon alapuló hozzáférést, csak a kiválasztott példány férhet hozzá a Storage-fiókban lévő adatforrásokhoz. Ebben az esetben a szolgáltatásnak támogatnia kell az erőforrás-példány hitelesítését a rendszer által hozzárendelt [felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md)használatával.
 
-### <a name="using-private-endpoints-for-securing-connections"></a>Using private endpoints for securing connections
-Azure Storage supports private endpoints, which enable secure access of storage account from an Azure virtual network. Private endpoints assign a private IP address from your VNet's address space to the storage service. When using private endpoints, the storage connection string redirects traffic destined for the storage account to the private IP address. The connection between the private endpoint and the storage account uses a private link. Using private endpoints you can block exfiltration of data from your VNet.
+### <a name="using-private-endpoints-for-securing-connections"></a>Magánhálózati végpontok használata a kapcsolatok biztonságossá tételéhez
+Az Azure Storage támogatja a privát végpontokat, amelyek lehetővé teszik a Storage-fiók biztonságos elérését egy Azure-beli virtuális hálózatból. A privát végpontok magánhálózati IP-címet rendelhetnek a VNet a Storage szolgáltatáshoz. Privát végpontok használatakor a tárolási kapcsolódási karakterlánc átirányítja a Storage-fiók számára a magánhálózati IP-címhez irányuló forgalmat. A magánhálózati végpont és a Storage-fiók közötti kapcsolat privát hivatkozást használ. A privát végpontok használatával letilthatja a kiszűrése a VNet.
 
-On-premises networks connected over VPN or [ExpressRoutes](../../expressroute/expressroute-locations.md) private peering and other peered virtual networks can also access the storage account over the private endpoint. Private endpoint for your storage accounts can be created in a VNet in any region, enabling a secure global reach. You may also create private endpoints for storage accounts in other [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) tenants.
+A VPN-vagy [expressroute](../../expressroute/expressroute-locations.md) -kapcsolaton keresztül csatlakoztatott helyszíni hálózatok a privát végponton keresztül is hozzáférhetnek a Storage-fiókhoz. A Storage-fiókokhoz tartozó magánhálózati végpontok bármely régióban VNet hozhatók létre, így biztosítva a biztonságos globális elérhetőséget. Saját végpontokat is létrehozhat a Storage-fiókok számára más [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) bérlők számára.
 
 ## <a name="authorization"></a>Engedélyezés
-Data Plane Security refers to the methods used to secure the data objects stored in Azure Storage – the blobs, queues, tables, and files. We've seen methods to encrypt the data and security during transit of the data, but how do you go about controlling access to the objects?
+Az adatsík biztonsága az Azure Storage-ban tárolt adatobjektumok (Blobok, várólisták, táblák és fájlok) védelméhez használt módszerekre utal. Láttuk az adatátvitel során az adatforgalom titkosítására és a biztonságra vonatkozó módszereket, de hogyan lehet az objektumokhoz való hozzáférés szabályozására?
 
-You have three options for authorizing access to data objects in Azure Storage, including:
+Három lehetőség közül választhat az Azure Storage-beli adatobjektumokhoz való hozzáférés engedélyezéséhez, beleértve a következőket:
 
-- Using Azure AD to authorize access to containers and queues. Azure AD provides advantages over other approaches to authorization, including removing the need to store secrets in your code. For more information, see [Authenticate access to Azure Storage using Azure Active Directory](storage-auth-aad.md). 
-- Using your storage account keys to authorize access via Shared Key. Authorizing via Shared Key requires storing your storage account keys in your application, so Microsoft recommends using Azure AD instead where possible.
-- Using Shared Access Signatures to grant controlled permissions to specific data objects for a specific amount of time.
+- Az Azure AD használata a tárolók és a várólisták elérésének engedélyezéséhez. Az Azure AD számos előnyt biztosít az engedélyezés más módszereihez képest, beleértve a kód titkos kódjának tárolásának szükségességét is. További információ: az [Azure Storage hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md). 
+- A Storage-fiók kulcsainak használata a megosztott kulcson keresztüli hozzáférés engedélyezéséhez. A megosztott kulcson keresztüli engedélyezéshez a Storage-fiók kulcsainak tárolása szükséges az alkalmazásban, ezért a Microsoft az Azure AD használatát javasolja, ha lehetséges.
+- Közös hozzáférésű aláírások használatával meghatározott időtartamra vonatkozó szabályozott engedélyeket adhat meg bizonyos adatobjektumokhoz.
 
-In addition, for Blob Storage, you can allow public access to your blobs by setting the access level for the container that holds the blobs accordingly. If you set access for a container to Blob or Container, it will allow public read access for the blobs in that container. This means anyone with a URL pointing to a blob in that container can open it in a browser without using a Shared Access Signature or having the storage account keys.
+Emellett a Blob Storage esetében engedélyezheti a Blobok nyilvános elérését a blobokat tartalmazó tároló hozzáférési szintjének beállításával. Ha egy tárolóhoz hozzáférést állít be Blobhoz vagy tárolóhoz, az lehetővé teszi a nyilvános olvasási hozzáférést a tárolóban lévő blobokhoz. Ez azt jelenti, hogy a tárolóban lévő blobra mutató URL-címmel bárki megnyithatja azt egy böngészőben közös hozzáférési aláírás vagy a Storage-fiók kulcsainak használata nélkül.
 
 ### <a name="storage-account-keys"></a>Tárfiókkulcsok
-Storage account keys are 512-bit strings created by Azure that, along with the storage account name, can be used to access the data objects stored in the storage account.
+A Storage-fiók kulcsai az Azure által létrehozott 512 bites karakterláncok, amelyek a Storage-fiók nevével együtt használhatók a Storage-fiókban tárolt adatobjektumokhoz való hozzáféréshez.
 
-For example, you can read blobs, write to queues, create tables, and modify files. Many of these actions can be performed through the Azure portal, or using one of many Storage Explorer applications. You can also write code to use the REST API or one of the Storage Client Libraries to perform these operations.
+Például elolvashatja a blobokat, írhat a várólistákba, táblákat hozhat létre, és módosíthatja a fájlokat. A műveletek többsége elvégezhető a Azure Portalon keresztül, vagy számos Storage Explorer alkalmazás valamelyikét használva. A műveletek elvégzéséhez kódot is írhat a REST API vagy a Storage ügyféloldali kódtárainak használatához.
 
-As discussed in the section on the [Management Plane Security](#management-plane-security), access to the storage keys for a Classic storage account can be granted by giving full access to the Azure subscription. Access to the storage keys for a storage account using the Azure Resource Manager model can be controlled through Role-Based Access Control (RBAC).
+A [felügyeleti sík biztonsága](#management-plane-security)című szakaszban leírtak szerint a klasszikus Storage-fiókhoz tartozó Storage-kulcsokhoz való hozzáférés az Azure-előfizetés teljes hozzáférését biztosíthatja. A Storage-fiókok Azure Resource Manager modell használatával történő elérését szerepköralapú Access Control (RBAC) segítségével lehet vezérelni.
 
-### <a name="how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies"></a>How to delegate access to objects in your account using Shared Access Signatures and Stored Access Policies
-A Shared Access Signature is a string containing a security token that can be attached to a URI that allows you to delegate access to storage objects and specify constraints such as the permissions and the date/time range of access.
+### <a name="how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies"></a>A fiók objektumaihoz való hozzáférés delegálása közös hozzáférésű aláírások és tárolt hozzáférési szabályzatok használatával
+A közös hozzáférésű aláírás egy olyan karakterlánc, amely egy olyan biztonsági jogkivonatot tartalmaz, amely olyan URI-hoz csatolható, amely lehetővé teszi a tároló objektumokhoz való hozzáférés delegálását, valamint olyan korlátozásokat határoz meg, mint például az engedélyek és a hozzáférési dátum/idő tartománya.
 
-You can grant access to blobs, containers, queue messages, files, and tables. With tables, you can actually grant permission to access a range of entities in the table by specifying the partition and row key ranges to which you want the user to have access. For example, if you have data stored with a partition key of geographical state, you could give someone access to just the data for California.
+Hozzáférést adhat a blobokhoz, tárolóhoz, üzenetsor-üzenetekhez, fájlokhoz és táblákhoz. A táblázatokkal ténylegesen engedélyt kaphat a táblában lévő entitások tartományához való hozzáférésre. ehhez meg kell adnia a partíció és a sor kulcsának tartományait, amelyekhez hozzáférést szeretne adni a felhasználónak. Ha például egy földrajzi állapotú partíciós kulccsal tárolt adatmennyiséggel rendelkezik, akkor valaki hozzáférést adhat a Kalifornia-beli adatszolgáltatáshoz.
 
-In another example, you might give a web application a SAS token that enables it to write entries to a queue, and give a worker role application a SAS token to get messages from the queue and process them. Or you could give one customer a SAS token they can use to upload pictures to a container in Blob Storage, and give a web application permission to read those pictures. In both cases, there is a separation of concerns – each application can be given just the access that they require in order to perform their task. This is possible through the use of Shared Access Signatures.
+Egy másik példa arra, hogy egy webalkalmazásnak egy SAS-tokent ad, amely lehetővé teszi, hogy bejegyzéseket írjon egy várólistába, és egy feldolgozói szerepkört adjon egy SAS-tokennek, hogy üzeneteket kapjon a sorból, és feldolgozza azokat. Az is lehet, hogy egy ügyfél egy SAS-tokent ad, amellyel képeket tölthet fel egy tárolóba Blob Storageban, és webalkalmazási engedélyt adhat a képek olvasásához. Mindkét esetben fennáll a probléma elkülönítése – az egyes alkalmazások csak a számukra szükséges hozzáférést kaphatják meg a feladatuk elvégzéséhez. Ez a közös hozzáférésű aláírások használatával lehetséges.
 
-#### <a name="why-you-want-to-use-shared-access-signatures"></a>Why you want to use Shared Access Signatures
-Why would you want to use an SAS instead of just giving out your storage account key, which is so much easier? Giving out your storage account key is like sharing the keys of your storage kingdom. It grants complete access. Someone could use your keys and upload their entire music library to your storage account. They could also replace your files with virus-infected versions, or steal your data. Giving away unlimited access to your storage account is something that should not be taken lightly.
+#### <a name="why-you-want-to-use-shared-access-signatures"></a>Miért érdemes közös hozzáférési aláírásokat használni
+Miért érdemes SAS-t használni ahelyett, hogy csak a Storage-fiók kulcsát adná meg, ami sokkal egyszerűbb? A Storage-fiók kulcsainak megadásával például megoszthatja a Storage-Királyság kulcsait. Teljes hozzáférést biztosít. Valaki használhatja a kulcsait, és feltöltheti a teljes zenei könyvtárat a Storage-fiókjába. A fájlokat vírussal fertőzött verziókkal is lecserélhetik, vagy ellopják az adataikat. Korlátlan hozzáférést biztosítanak a Storage-fiókhoz, ami nem vehető fel enyhén.
 
-With Shared Access Signatures, you can give a client just the permissions required for a limited amount of time. For example, if someone is uploading a blob to your account, you can grant them write access for just enough time to upload the blob (depending on the size of the blob, of course). And if you change your mind, you can revoke that access.
+A közös hozzáférésű aláírásokkal csak a korlátozott időtartamra vonatkozó engedélyeket adhat meg az ügyfeleknek. Ha például valaki egy blobot tölt fel a fiókjába, az írási hozzáférést csak annyi idő után adhatja meg, hogy feltöltse a blobot (természetesen a blob méretétől függően). Ha meggondolja magát, visszavonhatja a hozzáférést.
 
-Additionally, you can specify that requests made using a SAS are restricted to a certain IP address or IP address range external to Azure. You can also require that requests are made using a specific protocol (HTTPS or HTTP/HTTPS). This means if you only want to allow HTTPS traffic, you can set the required protocol to HTTPS only, and HTTP traffic will be blocked.
+Azt is megadhatja, hogy a SAS használatával létrehozott kérések egy adott IP-cím vagy az Azure-on kívüli IP-címtartomány számára legyenek korlátozva. Azt is megkövetelheti, hogy a kérések egy adott protokoll (HTTPS vagy HTTP/HTTPS) használatával legyenek létrehozva. Ez azt jelenti, hogy ha csak HTTPS-forgalmat szeretne engedélyezni, beállíthatja a szükséges protokollt csak HTTPS-re, és a HTTP-forgalom le lesz tiltva.
 
-#### <a name="definition-of-a-shared-access-signature"></a>Definition of a Shared Access Signature
-A Shared Access Signature is a set of query parameters appended to the URL pointing at the resource
+#### <a name="definition-of-a-shared-access-signature"></a>Közös hozzáférésű aláírás definíciója
+A közös hozzáférésű aláírás a lekérdezési paraméterek egy halmaza, amely az erőforrásra mutató URL-címhez van hozzáfűzve
 
-that provides information about the access allowed and the length of time for which the access is permitted. Here is an example; this URI provides read access to a blob for five minutes. Note that SAS query parameters must be URL Encoded, such as %3A for colon (:) or %20 for a space.
+amely információt nyújt a hozzáférés engedélyezett állapotáról, valamint azt az időtartamot, ameddig a hozzáférés engedélyezett. Példa: Ez az URI öt percig olvasási hozzáférést biztosít egy blobhoz. Vegye figyelembe, hogy SAS-lekérdezési paramétereknek URL-kódolással kell rendelkezniük, például:% 3A a kettősponthoz (:) vagy a (z) %20 egy szóközzel.
 
 ```
 http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
@@ -236,253 +236,253 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
 &sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D (signature used for the authentication of the SAS)
 ```
 
-#### <a name="how-the-shared-access-signature-is-authorized-by-the-azure-storage-service"></a>How the Shared Access Signature is authorized by the Azure Storage Service
-When the storage service receives the request, it takes the input query parameters and creates a signature using the same method as the calling program. It then compares the two signatures. If they agree, then the storage service can check the storage service version to make sure it's valid, verify that the current date and time are within the specified window, make sure the access requested corresponds to the request made, etc.
+#### <a name="how-the-shared-access-signature-is-authorized-by-the-azure-storage-service"></a>A megosztott hozzáférés aláírásának engedélyezése az Azure Storage szolgáltatásban
+Amikor a tárolási szolgáltatás megkapja a kérést, a bemeneti lekérdezési paramétereket veszi át, és létrehoz egy aláírást ugyanazzal a módszerrel, mint a hívó program. Ezután összehasonlítja a két aláírást. Ha megegyeznek, a tárolási szolgáltatás ellenőrizheti a tárolási szolgáltatás verzióját, hogy az érvényes-e, ellenőrizze, hogy az aktuális dátum és idő a megadott ablakban van-e, győződjön meg arról, hogy a kért hozzáférés megfelel a kérelemnek, stb.
 
-For example, with our URL above, if the URL was pointing to a file instead of a blob, this request would fail because it specifies that the Shared Access Signature is for a blob. If the REST command being called was to update a blob, it would fail because the Shared Access Signature specifies that only read access is permitted.
+Ha például a fenti URL-cím egy blob helyett egy fájlra mutat, ez a kérelem meghiúsul, mert megadja, hogy a megosztott elérési aláírás blobhoz van-e megadva. Ha a meghívott REST-parancs egy blob frissítését végzi, a művelet meghiúsul, mert a közös hozzáférési aláírás azt adja meg, hogy csak olvasási hozzáférés engedélyezett.
 
-#### <a name="types-of-shared-access-signatures"></a>Types of Shared Access Signatures
-* A service-level SAS can be used to access specific resources in a storage account. Some examples of this are retrieving a list of blobs in a container, downloading a blob, updating an entity in a table, adding messages to a queue, or uploading a file to a file share.
-* An account-level SAS can be used to access anything that a service-level SAS can be used for. Additionally, it can give options to resources that are not permitted with a service-level SAS, such as the ability to create containers, tables, queues, and file shares. You can also specify access to multiple services at once. For example, you might give someone access to both blobs and files in your storage account.
+#### <a name="types-of-shared-access-signatures"></a>A közös hozzáférésű aláírások típusai
+* A szolgáltatási szintű SAS használható egy Storage-fiókban lévő egyes erőforrások elérésére. Ilyenek például a tárolóban lévő Blobok listájának beolvasása, a Blobok letöltése, az entitások frissítése egy táblában, üzenetek hozzáadása egy várólistához vagy egy fájl feltöltése a fájlmegosztásba.
+* A fiók szintű SAS minden olyan szolgáltatáshoz használható, amelyhez szolgáltatási szintű SAS használható. Emellett olyan erőforrás-lehetőségeket is biztosíthat, amelyek nem engedélyezettek a szolgáltatási szintű SAS-vel, például tárolók, táblák, várólisták és fájlmegosztás létrehozására való képesség. Egyszerre több szolgáltatáshoz is megadhat hozzáférést. Előfordulhat például, hogy valaki hozzáférést ad a Storage-fiókban található blobokhoz és fájlokhoz.
 
-#### <a name="creating-a-sas-uri"></a>Creating a SAS URI
-1. You can create a URI on demand, defining all of the query parameters each time.
+#### <a name="creating-a-sas-uri"></a>SAS URI létrehozása
+1. Igény szerint létrehozhat egy URI-t, amely minden alkalommal meghatározza az összes lekérdezési paramétert.
 
-   This approach is flexible, but if you have a logical set of parameters that are similar each time, using a Stored Access Policy is a better idea.
-2. You can create a Stored Access Policy for an entire container, file share, table, or queue. Then you can use this as the basis for the SAS URIs you create. Permissions based on Stored Access Policies can be easily revoked. You can have up to five policies defined on each container, queue, table, or file share.
+   Ez a megközelítés rugalmas, de ha olyan logikai készlettel rendelkezik, amely minden alkalommal hasonló, a tárolt hozzáférési szabályzatok használatával jobb ötlet.
+2. Létrehozhat egy tárolt hozzáférési szabályzatot a teljes tárolóhoz, a fájlmegosztáshoz, a táblához vagy a várólistához. Ezt követően ezt használhatja a létrehozott SAS URI-k alapjául. A tárolt hozzáférési szabályzatokon alapuló engedélyek egyszerűen visszavonhatók. Az egyes tárolók, várólisták, táblák vagy fájlmegosztás esetében legfeljebb öt házirendet lehet definiálni.
 
-   For example, if you were going to have many people read the blobs in a specific container, you could create a Stored Access Policy that says "give read access" and any other settings that will be the same each time. Then you can create an SAS URI using the settings of the Stored Access Policy and specifying the expiration date/time. The advantage of this is that you don't have to specify all of the query parameters every time.
+   Ha például sok embernek kell elolvasnia a blobokat egy adott tárolóban, létrehozhat egy tárolt hozzáférési szabályzatot, amely szerint az "olvasási hozzáférés biztosítása" és minden egyéb olyan beállítás, amely minden alkalommal azonos lesz. Ezután létrehozhat egy SAS URI-t a tárolt hozzáférési szabályzat beállításaival, és megadhatja a lejárat dátumát és időpontját. Ennek az az előnye, hogy az összes lekérdezési paramétert nem kell minden alkalommal megadnia.
 
-#### <a name="revocation"></a>Revocation
-Suppose your SAS has been compromised, or you want to change it because of corporate security or regulatory compliance requirements. How do you revoke access to a resource using that SAS? It depends on how you created the SAS URI.
+#### <a name="revocation"></a>Visszavont
+Tegyük fel, hogy az SAS biztonsága sérült, vagy módosítani szeretné a vállalati biztonsági vagy szabályozási megfelelőségi követelmények miatt. Hogyan vonhatja vissza az erőforrásokhoz való hozzáférést az adott SAS használatával? Ez attól függ, hogyan hozta létre az SAS URI-t.
 
-If you are using ad hoc URIs, you have three options. You can issue SAS tokens with short expiration policies and wait for the SAS to expire. You can rename or delete the resource (assuming the token was scoped to a single object). You can change the storage account keys. This last option can have a significant impact, depending on how many services are using that storage account, and probably isn't something you want to do without some planning.
+Ha ad hoc URI-t használ, három lehetőség közül választhat. Az SAS-jogkivonatokat rövid lejáratú házirendekkel is kiállíthatja, és megvárhatja, amíg az SAS lejár. Átnevezheti vagy törölheti az erőforrást (feltéve, hogy a token egyetlen objektumra van korlátozva). Módosíthatja a Storage-fiók kulcsait. Ez az utolsó lehetőség jelentős hatással lehet, attól függően, hogy hány szolgáltatás használja ezt a Storage-fiókot, és valószínűleg nem valami, amit a tervezés nélkül szeretne elvégezni.
 
-If you are using a SAS derived from a Stored Access Policy, you can remove access by revoking the Stored Access Policy – you can just change it so it has already expired, or you can remove it altogether. This takes effect immediately, and invalidates every SAS created using that Stored Access Policy. Updating or removing the Stored Access Policy may impact people accessing that specific container, file share, table, or queue via SAS, but if the clients are written so they request a new SAS when the old one becomes invalid, this will work fine.
+Ha egy tárolt hozzáférési szabályzatból származtatott SAS-t használ, akkor a hozzáférését a tárolt hozzáférési szabályzat visszavonásával távolíthatja el – egyszerűen megváltoztathatja azt, hogy már lejárt, vagy távolítsa el az egészet. Ez azonnal érvénybe lép, és érvényteleníti a tárolt hozzáférési szabályzattal létrehozott összes SAS-t. A tárolt hozzáférési szabályzat frissítése vagy eltávolítása hatással lehet arra, hogy az SAS-n keresztül hozzáférjenek az adott tárolóhoz, a fájlmegosztáshoz, a táblához vagy a várólistához, de ha az ügyfelek úgy vannak írva, hogy új SAS-t kérnek, amikor a régi érvénytelenné válik, ez a művelet rendben fog működni.
 
-Because using a SAS derived from a Stored Access Policy gives you the ability to revoke that SAS immediately, it is the recommended best practice to always use Stored Access Policies when possible.
+Mivel a tárolt hozzáférési házirendből származtatott SAS-t használva azonnal visszavonhatja az SAS-t, az ajánlott eljárás, hogy mindig a tárolt hozzáférési szabályzatokat használja, ha lehetséges.
 
-#### <a name="resources"></a>Segédanyagok és eszközök
-For more detailed information on using Shared Access Signatures and Stored Access Policies, complete with examples, refer to the following articles:
+#### <a name="resources"></a>Erőforrások
+A megosztott hozzáférési aláírások és a tárolt hozzáférési szabályzatok használatával kapcsolatos részletesebb információkért tekintse meg a következő cikkeket:
 
-* These are the reference articles.
+* Ezek a hivatkozási cikkek.
 
-  * [Service SAS](https://msdn.microsoft.com/library/dn140256.aspx)
+  * [Szolgáltatás SAS](https://msdn.microsoft.com/library/dn140256.aspx)
 
-    This article provides examples of using a service-level SAS with blobs, queue messages, table ranges, and files.
-  * [Constructing a service SAS](https://msdn.microsoft.com/library/dn140255.aspx)
-  * [Constructing an account SAS](https://msdn.microsoft.com/library/mt584140.aspx)
+    Ez a cikk példákat mutat be a Blobokkal, üzenetsor-üzenetekkel, táblázat-tartományokkal és fájlokkal rendelkező szolgáltatási szintű SAS használatára.
+  * [Szolgáltatás SAS-építése](https://msdn.microsoft.com/library/dn140255.aspx)
+  * [Fiók SAS létrehozása](https://msdn.microsoft.com/library/mt584140.aspx)
 
-* This is a tutorial for using the .NET client library to create Shared Access Signatures and Stored Access Policies.
-  * [Using Shared Access Signatures (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
+* Ez egy oktatóanyag a .NET-ügyfél függvénytárának használatához közös hozzáférési aláírások és tárolt hozzáférési szabályzatok létrehozásához.
+  * [Közös hozzáférésű aláírások (SAS) használata](../storage-dotnet-shared-access-signature-part-1.md)
 
-    This article includes an explanation of the SAS model, examples of Shared Access Signatures, and recommendations for the best practice use of SAS. Also discussed is the revocation of the permission granted.
+    Ez a cikk az SAS-modell ismertetését, példákat tartalmaz a közös hozzáférésű aláírásokra, valamint ajánlásokat nyújt az SAS használatának ajánlott gyakorlatához. A rendszer a megadott engedély visszavonását is tárgyalja.
 
-* Hitelesítés
+* Authentication
 
-  * [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx)
-* Shared Access Signatures Getting Started Tutorial
+  * [Hitelesítés az Azure Storage-szolgáltatásokhoz](https://msdn.microsoft.com/library/azure/dd179428.aspx)
+* Közös hozzáférési aláírások Első lépések oktatóanyag
 
-  * [SAS Getting Started Tutorial](https://github.com/Azure-Samples/storage-dotnet-sas-getting-started)
+  * [SAS Első lépések oktatóanyag](https://github.com/Azure-Samples/storage-dotnet-sas-getting-started)
 
-## <a name="encryption-in-transit"></a>Encryption in Transit
-### <a name="transport-level-encryption--using-https"></a>Transport-Level Encryption – Using HTTPS
-Another step you should take to ensure the security of your Azure Storage data is to encrypt the data between the client and Azure Storage. The first recommendation is to always use the [HTTPS](https://en.wikipedia.org/wiki/HTTPS) protocol, which ensures secure communication over the public Internet.
+## <a name="encryption-in-transit"></a>Titkosítás átvitel közben
+### <a name="transport-level-encryption--using-https"></a>Átviteli szintű titkosítás – HTTPS használatával
+Egy másik lépést kell megtennie, hogy az Azure Storage-beli adatai biztonságban legyenek, hogy titkosítsa az ügyfelet és az Azure Storage-t. Az első javaslat az, hogy mindig a [https](https://en.wikipedia.org/wiki/HTTPS) protokollt használja, amely biztosítja a biztonságos kommunikációt a nyilvános interneten keresztül.
 
-To have a secure communication channel, you should always use HTTPS when calling the REST APIs or accessing objects in storage. Also, **Shared Access Signatures**, which can be used to delegate access to Azure Storage objects, include an option to specify that only the HTTPS protocol can be used when using Shared Access Signatures, ensuring that anybody sending out links with SAS tokens will use the proper protocol.
+Biztonságos kommunikációs csatorna esetén mindig HTTPS protokollt kell használnia a REST API-k meghívásakor vagy a tárolóban lévő objektumok eléréséhez. Emellett a **közös hozzáférésű aláírások**, amelyek az Azure Storage-objektumokhoz való hozzáférés delegálására használhatók, egy beállítással megadhatja, hogy csak a HTTPS protokollt lehessen használni a közös hozzáférési aláírások használatakor, így biztosíthatja, hogy az SAS-tokenekkel rendelkező bárki a megfelelő protokollt használja.
 
-You can enforce the use of HTTPS when calling the REST APIs to access objects in storage accounts by enabling [Secure transfer required](../storage-require-secure-transfer.md) for the storage account. Connections using HTTP will be refused once this is enabled.
+A HTTPS használatát akkor kényszerítheti, ha a REST API-k meghívásával fér hozzá a Storage-fiókokban lévő objektumokhoz a Storage-fiókhoz [szükséges biztonságos átvitel](../storage-require-secure-transfer.md) engedélyezésével. Ha ez a beállítás engedélyezve van, a rendszer elutasítja a HTTP protokollal létesített kapcsolatokat.
 
-### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Using encryption during transit with Azure file shares
-[Azure Files](../files/storage-files-introduction.md) supports encryption via SMB 3.0 and with HTTPS when using the File REST API. When mounting outside of the Azure region the Azure file share is located in, such as on-premises or in another Azure region, SMB 3.0 with encryption is always required. SMB 2.1 does not support encryption, so by default connections are only allowed within the same region in Azure, but SMB 3.0 with encryption can be enforced by [requiring secure transfer](../storage-require-secure-transfer.md) for the storage account.
+### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Titkosítás használata az Azure file shares szolgáltatással történő átvitel során
+[Azure Files](../files/storage-files-introduction.md) támogatja a titkosítást az SMB 3,0 és a HTTPS protokollon keresztül, ha a fájl REST API. Ha az Azure-régión kívül helyezi üzembe az Azure-fájlmegosztást, például a helyszínen vagy egy másik Azure-régióban, az SMB 3,0 titkosítással mindig szükséges. Az SMB 2,1 nem támogatja a titkosítást, ezért az alapértelmezett kapcsolatok csak az Azure ugyanazon régiójában engedélyezettek, de a titkosítással rendelkező SMB 3,0 kényszeríthető a Storage-fiók [biztonságos átvitelének megkövetelésével](../storage-require-secure-transfer.md) .
 
-SMB 3.0 with encryption is available in [all supported Windows and Windows Server operating systems](../files/storage-how-to-use-files-windows.md) except Windows 7 and Windows Server 2008 R2, which only support SMB 2.1. SMB 3.0 is also supported on [macOS](../files/storage-how-to-use-files-mac.md) and on distributions of [Linux](../files/storage-how-to-use-files-linux.md) using Linux kernel 4.11 and above. Encryption support for SMB 3.0 has also been backported to older versions of the Linux kernel by several Linux distributions, consult [Understanding SMB client requirements](../files/storage-how-to-use-files-linux.md#smb-client-reqs).
+A titkosítással rendelkező SMB 3,0 az [összes támogatott Windows és Windows Server operációs rendszeren](../files/storage-how-to-use-files-windows.md) elérhető, kivéve a Windows 7 és a windows Server 2008 R2 rendszert, amely csak az SMB 2,1-ot támogatja. A [MacOS](../files/storage-how-to-use-files-mac.md) és a [Linux](../files/storage-how-to-use-files-linux.md) rendszerű Linux kernel 4,11-es vagy újabb verziójának használatával az SMB 3,0 is támogatott. Az SMB 3,0 titkosítási támogatása a Linux-kernel régebbi verzióira is backported számos Linux-disztribúcióval, az SMB- [ügyfél követelményeinek megismerése](../files/storage-how-to-use-files-linux.md#smb-client-reqs)című részből tájékozódhat.
 
-### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>Using Client-side encryption to secure data that you send to storage
-Another option that helps you ensure that your data is secure while being transferred between a client application and Storage is Client-side Encryption. The data is encrypted before being transferred into Azure Storage. When retrieving the data from Azure Storage, the data is decrypted after it is received on the client side. Even though the data is encrypted going across the wire, we recommend that you also use HTTPS, as it has data integrity checks built in which help mitigate network errors affecting the integrity of the data.
+### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>Ügyféloldali titkosítás használata a tárolóba küldött adatvédelmek biztonságossá tételéhez
+Egy másik lehetőség, amely segít gondoskodni arról, hogy az ügyfél-alkalmazás és a tárterület közötti adatátvitel biztonságos legyen az ügyféloldali titkosítás. Az adattitkosítás az Azure Storage-ba való átvitel előtt történik. Az Azure Storage-ból származó adatok beolvasása során a rendszer visszafejti az adatok visszafejtését, miután az megérkezett az ügyfél oldalán. Annak ellenére, hogy az adatok titkosítva lesznek a huzalon, javasoljuk, hogy használja a HTTPS protokollt is, mivel a beépített adatintegritás-ellenőrzésekkel az adatok integritását befolyásoló hálózati hibák enyhítését segíti.
 
-Client-side encryption is also a method for encrypting your data at rest, as the data is stored in its encrypted form. We'll talk about this in more detail in the section on [Encryption at Rest](#encryption-at-rest).
+Az ügyféloldali titkosítás az adatok inaktív állapotban történő titkosítására is használható, mivel az adatok titkosított formában vannak tárolva. Erről részletesebben a inaktív [titkosításról](#encryption-at-rest)szóló szakaszban fogunk beszélni.
 
-## <a name="encryption-at-rest"></a>Encryption at Rest
-There are three Azure features that provide encryption at rest. Azure Disk Encryption is used to encrypt the OS and data disks in IaaS Virtual Machines. Client-side Encryption and SSE are both used to encrypt data in Azure Storage. 
+## <a name="encryption-at-rest"></a>Titkosítás nyugalmi állapotban
+Három Azure-szolgáltatás áll rendelkezésre, amelyek titkosítást biztosítanak a nyugalmi állapotban. A Azure Disk Encryption az operációs rendszer és az adatlemezek titkosítására szolgál a IaaS-Virtual Machinesokban. Az ügyféloldali titkosítás és az SSE egyaránt az Azure Storage-ban tárolt adat titkosítására szolgál. 
 
-While you can use Client-side Encryption to encrypt the data in transit (which is also stored in its encrypted form in Storage), you may prefer to use HTTPS during the transfer, and have some way for the data to be automatically encrypted when it is stored. There are two ways to do this -- Azure Disk Encryption and SSE. One is used to directly encrypt the data on OS and data disks used by VMs, and the other is used to encrypt data written to Azure Blob Storage.
+Míg az ügyféloldali titkosítás használatával titkosíthatja az átvitel során továbbított adatok (amelyek tárolása titkosított formában is megtörténik a tárolóban), érdemes lehet HTTPS-t használni az átvitel során, és valamilyen módon az adatok automatikusan titkosítva lesznek a tároláskor. Ezt kétféleképpen teheti meg: Azure Disk Encryption és SSE. Az egyik a virtuális gépek által használt operációs rendszereken és adatlemezeken található, a másik pedig az Azure Blob Storageba írt adatai titkosítására szolgál.
 
 ### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
-SSE is enabled for all storage accounts and cannot be disabled. SSE automatically encrypts your data when writing it to Azure Storage. When you read data from Azure Storage, it is decrypted by Azure Storage before being returned. SSE enables you to secure your data without having to modify code or add code to any applications.
+Az SSE engedélyezve van az összes Storage-fiókhoz, és nem tiltható le. Az SSE automatikusan titkosítja az adatait az Azure Storage-ba való íráskor. Az Azure Storage-ból származó adatok beolvasása után az Azure Storage visszafejti azt a visszatérés előtt. Az SSE lehetővé teszi az adatai védelmét anélkül, hogy kódot kellene módosítania, vagy programkódot kell hozzáadnia bármely alkalmazáshoz.
 
-You can use either Microsoft-managed keys or your own custom keys. Microsoft generates managed keys and handles their secure storage as well as their regular rotation, as defined by internal Microsoft policy. For more information about using custom keys, see [Storage Service Encryption using customer-managed keys in Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
+Használhatja a Microsoft által felügyelt kulcsokat vagy a saját egyéni kulcsait is. A Microsoft a belső Microsoft-házirend által meghatározott módon felügyelt kulcsokat hoz létre, és kezeli a biztonságos tárhelyet, valamint a normál rotációt. További információ az egyéni kulcsok használatáról: [Storage Service encryption az ügyfél által felügyelt kulcsok használata a Azure Key Vaultban](storage-service-encryption-customer-managed-keys.md).
 
 Az SSE automatikusan titkosítja minden teljesítményszint (Standard és Prémium), minden üzembehelyezési modell (Azure Resource Manager és klasszikus) és minden Azure Storage-szolgáltatás (Blob, Queue, Table és File) adatait. 
 
 ### <a name="client-side-encryption"></a>Client-side Encryption
-We mentioned client-side encryption when discussing the encryption of the data in transit. This feature allows you to programmatically encrypt your data in a client application before sending it across the wire to be written to Azure Storage, and to programmatically decrypt your data after retrieving it from Azure Storage.
+A továbbítás során megemlítjük az ügyféloldali titkosítást, amikor megbeszéljük az adatátvitel titkosítását. Ez a funkció lehetővé teszi, hogy programozott módon titkosítsa az adatokat egy ügyfélalkalmazás számára, mielőtt elküldené azt az Azure Storage-ba, és programozott módon visszafejtse az adatokat az Azure Storage-ból történő beolvasása után.
 
-This does provide encryption in transit, but it also provides the feature of Encryption at Rest. Although the data is encrypted in transit, we still recommend using HTTPS to take advantage of the built-in data integrity checks that help mitigate network errors affecting the integrity of the data.
+Ez biztosítja a titkosítást az átvitel során, de a titkosítást is biztosítja a nyugalmi állapotban. Noha az adatok átvitel közben titkosítva vannak, továbbra is javasoljuk a HTTPS használatát, hogy kihasználhassa a beépített adatintegritási ellenőrzéseket, amelyek segítenek az adatok integritását befolyásoló hálózati hibák enyhítésében.
 
-An example of where you might use this is if you have a web application that stores blobs and retrieves blobs, and you want the application and data to be as secure as possible. In that case, you would use client-side encryption. The traffic between the client and the Azure Blob Service contains the encrypted resource, and nobody can interpret the data in transit and reconstitute it into your private blobs.
+Példa arra, hogy hol lehet ezt használni, ha olyan webalkalmazással rendelkezik, amely blobokat tárol és lekéri a blobokat, és azt szeretné, hogy az alkalmazás és az adatmennyiség legyen a lehető legbiztonságosabb. Ebben az esetben az ügyféloldali titkosítást kellene használnia. Az ügyfél és az Azure Blob szolgáltatás közötti adatforgalom a titkosított erőforrást tartalmazza, és senki nem tudja értelmezni az átvitt adatokat, és a saját blobokra alakítja azt.
 
-Client-side encryption is built into the Java and the .NET storage client libraries, which in turn use the Azure Key Vault APIs, making it easy for you to implement. The process of encrypting and decrypting the data uses the envelope technique, and stores metadata used by the encryption in each storage object. For example, for blobs, it stores it in the blob metadata, while for queues, it adds it to each queue message.
+Az ügyféloldali titkosítás a Java és a .NET Storage ügyféloldali kódtáraba van beépítve, amely a Azure Key Vault API-kat használja, ami megkönnyíti a megvalósítását. Az adatok titkosításának és visszafejtésének folyamata a burkológörbe technikáját használja, és a titkosítás által az egyes tárolási objektumokban használt metaadatokat tárolja. A Blobok esetében például a blob metaadataiban tárolja azt, míg a várólisták esetében hozzáadja azt az egyes üzenetsor-üzenetekhez.
 
-For the encryption itself, you can generate and manage your own encryption keys. You can also use keys generated by the Azure Storage Client Library, or you can have the Azure Key Vault generate the keys. You can store your encryption keys in your on-premises key storage, or you can store them in an Azure Key Vault. Azure Key Vault allows you to grant access to the secrets in Azure Key Vault to specific users using Azure Active Directory. This means that not just anybody can read the Azure Key Vault and retrieve the keys you're using for client-side encryption.
+A titkosításhoz saját titkosítási kulcsokat is létrehozhat és kezelhet. Az Azure Storage ügyféloldali kódtár által generált kulcsokat is használhat, de a Azure Key Vault is létrehozhatja a kulcsokat. A titkosítási kulcsokat a helyszíni kulcstárolóban tárolhatja, vagy tárolhatja egy Azure Key Vaultban is. A Azure Key Vault lehetővé teszi, hogy a Azure Active Directory használatával hozzáférést biztosítson a titkos kulcsokhoz Azure Key Vault adott felhasználók számára. Ez azt jelenti, hogy nem csak bárki olvashatja a Azure Key Vault, és lekérheti az ügyféloldali titkosításhoz használt kulcsokat.
 
-#### <a name="resources"></a>Segédanyagok és eszközök
-* [Encrypt and decrypt blobs in Microsoft Azure Storage using Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
+#### <a name="resources"></a>Erőforrások
+* [Blobok titkosítása és visszafejtése Microsoft Azure Storage használatával Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 
-  This article shows how to use client-side encryption with Azure Key Vault, including how to create the KEK and store it in the vault using PowerShell.
-* [Client-Side Encryption and Azure Key Vault for Microsoft Azure Storage](../storage-client-side-encryption.md)
+  Ez a cikk bemutatja, hogyan használhatja az ügyféloldali titkosítást Azure Key Vaultokkal, beleértve a KEK létrehozását és tárolását a tárolóban a PowerShell használatával.
+* [Ügyféloldali titkosítás és Azure Key Vault a Microsoft Azure Storage](../storage-client-side-encryption.md)
 
-  This article gives an explanation of client-side encryption, and provides examples of using the storage client library to encrypt and decrypt resources from the four storage services. It also talks about Azure Key Vault.
+  Ez a cikk magyarázatot nyújt az ügyféloldali titkosításról, és példákat tartalmaz arra, hogy a Storage ügyféloldali kódtár használatával titkosítsa és visszafejtse az erőforrásokat a négy tárolási szolgáltatásból. Emellett Azure Key Vault is beszél.
 
-### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>Using Azure Disk Encryption to encrypt disks used by your virtual machines
-Azure Disk Encryption allows you to encrypt the OS disks and Data disks used by an IaaS Virtual Machine. For Windows, the drives are encrypted using industry-standard BitLocker encryption technology. For Linux, the disks are encrypted using the DM-Crypt technology. This is integrated with Azure Key Vault to allow you to control and manage the disk encryption keys.
+### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>A virtuális gépek által használt lemezek titkosítása Azure Disk Encryption használatával
+Azure Disk Encryption lehetővé teszi a IaaS virtuális gépek által használt operációsrendszer-lemezek és adatlemezek titkosítását. A Windows rendszerben a meghajtók titkosítása az iparági szabványnak megfelelő BitLocker titkosítási technológiával történik. A Linux rendszerben a lemezek titkosítása a DM-Crypt technológiával történik. Ez integrálva van Azure Key Vault, hogy lehetővé tegye a lemezes titkosítási kulcsok szabályozását és kezelését.
 
-The solution supports the following scenarios for IaaS VMs when they are enabled in Microsoft Azure:
+A megoldás a következő forgatókönyveket támogatja a IaaS virtuális gépekhez, amikor azok engedélyezve vannak Microsoft Azureban:
 
-* Integration with Azure Key Vault
-* Standard tier VMs: [A, D, DS, G, GS, and so forth series IaaS VMs](https://azure.microsoft.com/pricing/details/virtual-machines/)
-* Enabling encryption on Windows and Linux IaaS VMs
-* Disabling encryption on OS and data drives for Windows IaaS VMs
-* Disabling encryption on data drives for Linux IaaS VMs
-* Enabling encryption on IaaS VMs that are running Windows client OS
-* Enabling encryption on volumes with mount paths
-* Enabling encryption on Linux VMs that are configured with disk striping (RAID) by using mdadm
-* Enabling encryption on Linux VMs by using LVM for data disks
-* Enabling encryption on Windows VMs that are configured by using storage spaces
-* All Azure public regions are supported
+* Integráció a Azure Key Vault
+* Standard szintű virtuális gépek: [A, D, DS, G, GS és így tovább sorozatú IaaS virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* Titkosítás engedélyezése Windows és Linux rendszerű IaaS virtuális gépeken
+* Az operációs rendszer és az adatmeghajtók titkosításának letiltása Windows IaaS virtuális gépeken
+* A Linux IaaS-alapú virtuális gépek adatmeghajtóinak titkosításának letiltása
+* A titkosítás engedélyezése a Windows ügyfél operációs rendszerét futtató IaaS virtuális gépeken
+* A kötetek titkosításának engedélyezése csatlakoztatási útvonalakkal
+* A titkosítás engedélyezése a lemezes csíkozással (RAID) konfigurált Linux rendszerű virtuális gépeken a mdadm használatával
+* Linux rendszerű virtuális gépek titkosításának engedélyezése az LVM használatával adatlemezek esetén
+* A titkosítás engedélyezése a tárolóhelyek használatával konfigurált Windows rendszerű virtuális gépeken
+* Az összes Azure-beli nyilvános régió támogatott
 
-The solution does not support the following scenarios, features, and technology in the release:
+A megoldás nem támogatja az alábbi forgatókönyveket, szolgáltatásokat és technológiákat a kiadásban:
 
-* Basic tier IaaS VMs
-* Disabling encryption on an OS drive for Linux IaaS VMs
-* IaaS VMs that are created by using the classic VM creation method
-* Integration with your on-premises Key Management Service
-* Azure Files (shared file system), Network File System (NFS), dynamic volumes, and Windows VMs that are configured with software-based RAID systems
+* Alapszintű IaaS virtuális gépek
+* A Linux IaaS virtuális gépekhez tartozó operációsrendszer-meghajtók titkosításának letiltása
+* A klasszikus virtuálisgép-létrehozási módszer használatával létrehozott IaaS virtuális gépek
+* Integráció a helyszíni kulcskezelő szolgáltatással
+* Azure Files (megosztott fájlrendszer), a hálózati fájlrendszer (NFS), a dinamikus kötetek és a szoftveres RAID-rendszerekkel konfigurált Windows-alapú virtuális gépek
 
 
 > [!NOTE]
-> Linux OS disk encryption is currently supported on the following Linux distributions: RHEL 7.2, CentOS 7.2n, and Ubuntu 16.04.
+> A Linux operációsrendszer-lemez titkosítása jelenleg a következő Linux-disztribúciók esetében támogatott: RHEL 7,2, CentOS 7.2 n és Ubuntu 16,04.
 >
 >
 
-This feature ensures that all data on your virtual machine disks is encrypted at rest in Azure Storage.
+Ez a funkció biztosítja, hogy a virtuálisgép-lemezeken lévő összes adatok titkosítva legyenek az Azure Storage-ban.
 
-#### <a name="resources"></a>Segédanyagok és eszközök
-* [Azure Disk Encryption for Windows and Linux IaaS VMs](../../security/fundamentals/encryption-overview.md)
+#### <a name="resources"></a>Erőforrások
+* [Azure Disk Encryption Windows és Linux rendszerű IaaS virtuális gépekhez](../../security/fundamentals/encryption-overview.md)
 
-### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Comparison of Azure Disk Encryption, SSE, and Client-Side Encryption
+### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Azure Disk Encryption, SSE és ügyféloldali titkosítás összehasonlítása
 
-#### <a name="iaas-vms-and-their-vhd-files"></a>IaaS VMs and their VHD files
+#### <a name="iaas-vms-and-their-vhd-files"></a>IaaS virtuális gépek és VHD-fájljaik
 
-For data disks used by IaaS VMs, Azure Disk Encryption is recommended. If you create a VM with unmanaged disks using an image from the Azure Marketplace, Azure performs a [shallow copy](https://en.wikipedia.org/wiki/Object_copying) of the image to your storage account in Azure Storage, and it is not encrypted even if you have SSE enabled. After it creates the VM and starts updating the image, SSE will start encrypting the data. For this reason, it's best to use Azure Disk Encryption on VMs with unmanaged disks created from images in the Azure Marketplace if you want them fully encrypted. If you create a VM with Managed Disks, SSE encrypts all the data by default using platform managed keys. 
+A IaaS-alapú virtuális gépek által használt adatlemezek esetében Azure Disk Encryption ajánlott. Ha nem felügyelt lemezekkel rendelkező virtuális gépet hoz létre az Azure Marketplace-ről származó rendszerkép használatával, az Azure a rendszerkép egy [sekély másolatát](https://en.wikipedia.org/wiki/Object_copying) hajtja végre a Storage-fiókban az Azure Storage-ban, és nem titkosítja, még akkor is, ha az SSE engedélyezve van. Miután létrehozta a virtuális gépet, és megkezdi a rendszerkép frissítését, az SSE megkezdi az adatok titkosítását. Ezért érdemes az Azure Marketplace-en található rendszerképekből létrehozott, nem felügyelt lemezekkel rendelkező virtuális gépeken Azure Disk Encryptiont használni, ha azt szeretné, hogy teljes mértékben titkosítva legyenek. Ha Managed Disks-val hoz létre virtuális gépet, az SSE a platform által felügyelt kulcsok használatával alapértelmezés szerint titkosítja az összes adathalmazt. 
 
-If you bring a pre-encrypted VM into Azure from on-premises, you will be able to upload the encryption keys to Azure Key Vault, and continue using the encryption for that VM that you were using on-premises. Azure Disk Encryption is enabled to handle this scenario.
+Ha egy előre titkosított virtuális gépet helyez üzembe az Azure-ba a helyszíni környezetből, feltöltheti a titkosítási kulcsokat a Azure Key Vaultba, és folytathatja az adott virtuális gép titkosításának használatát, amelyet a helyszínen használt. A Azure Disk Encryption engedélyezve van ennek a forgatókönyvnek a kezelésére.
 
-If you have non-encrypted VHD from on-premises, you can upload it into the gallery as a custom image and provision a VM from it. If you do this using the Resource Manager templates, you can ask it to turn on Azure Disk Encryption when it boots up the VM.
+Ha nem titkosított virtuális merevlemezt használ a helyszínen, feltöltheti azt a katalógusba egyéni rendszerképként, és kiépítheti belőle a virtuális gépet. Ha ezt a Resource Manager-sablonok használatával hajtja végre, megkérheti, hogy kapcsolja be Azure Disk Encryption, amikor elindítja a virtuális gépet.
 
-When you add a data disk and mount it on the VM, you can turn on Azure Disk Encryption on that data disk. It will encrypt that data disk locally first, and then the classic deployment model layer will do a lazy write against storage so the storage content is encrypted.
+Ha adatlemezt ad hozzá, és csatlakoztatja a virtuális géphez, bekapcsolhatja a Azure Disk Encryptiont az adatlemezen. Először titkosítja az adatlemezt, majd a klasszikus üzemi modell rétege lusta írást hajt végre a tárterületen, így a tároló tartalma titkosítva lesz.
 
 #### <a name="client-side-encryption"></a>Ügyféloldali titkosítás
-Client-side encryption is the most secure method of encrypting your data, because it encrypts data prior to transit.  However, it does require that you add code to your applications using storage, which you may not want to do. In those cases, you can use HTTPS to secure your data in transit. Once data reaches Azure Storage, it is encrypted by SSE.
+Az ügyféloldali titkosítás a legbiztonságosabb módszer az adattitkosításhoz, mivel az adatátvitel előtt titkosítja az adatforgalmat.  Azonban szükség van arra, hogy a Storage használatával programkódot vegyen fel az alkalmazásaiba, amelyet esetleg nem kíván végrehajtani. Ezekben az esetekben a HTTPS használatával biztonságossá teheti az adatátvitelt. Az Azure Storage-ba való adatátvitel után az SSE titkosítva van.
 
-With client-side encryption, you can encrypt table entities, queue messages, and blobs. 
+Az ügyféloldali titkosítással titkosíthatja a táblák entitásait, üzenetsor-üzeneteit és blobokat. 
 
-Client-side encryption is managed entirely by the application. This is the most secure approach, but does require you to make programmatic changes to your application and put key management processes in place. You would use this when you want the extra security during transit, and you want your stored data to be encrypted.
+Az ügyféloldali titkosítást teljes mértékben az alkalmazás kezeli. Ez a legbiztonságosabb megközelítés, de megköveteli, hogy programozott módosításokat hajtson végre az alkalmazásban, és hogy a legfontosabb felügyeleti folyamatokat helyezze üzembe. Ezt akkor érdemes használni, ha az átvitel során az extra biztonságot szeretné használni, és szeretné, hogy a tárolt adatai titkosítva legyenek.
 
-Client-side encryption is more load on the client, and you have to account for this in your scalability plans, especially if you are encrypting and transferring a large amount of data.
+Az ügyféloldali titkosítás nagyobb terhelést eredményez az ügyfélen, és ezt a méretezhetőségi tervekben kell figyelembe vennie, különösen akkor, ha nagy mennyiségű adat titkosítását és továbbítását kívánja átvinni.
 
 #### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
-SSE is managed by Azure Storage. SSE does not provide for the security of the data in transit, but it does encrypt the data as it is written to Azure Storage. Az SSE nem befolyásolja az Azure Storage teljesítményét.
+Az SSE-t az Azure Storage kezeli. Az SSE nem biztosítja az átvitt adatforgalom biztonságát, de az Azure Storage-ba írt módon titkosítja az adatforgalmat. Az SSE nem befolyásolja az Azure Storage teljesítményét.
 
-You can encrypt any kind of data of the storage account using SSE (block blobs, append blobs, page blobs, table data, queue data, and files).
+A Storage-fiók bármilyen típusú adattitkosítása az SSE használatával titkosítható (a Blobok, a Blobok hozzáfűzése, a Blobok, a tábla adatai, a várólista adatai és a fájlok).
 
-If you have an archive or library of VHD files that you use as a basis for creating new virtual machines, you can create a new storage account and then upload the VHD files to that account. Those VHD files will be encrypted by Azure Storage.
+Ha rendelkezik az új virtuális gépek létrehozásához használt VHD-fájlok archívumával vagy könyvtárával, hozzon létre egy új Storage-fiókot, majd töltse fel a VHD-fájlokat a fiókba. Ezeket a VHD-fájlokat az Azure Storage fogja titkosítani.
 
-If you have Azure Disk Encryption enabled for the disks in a VM, then any newly written data is encrypted both by SSE and by Azure Disk Encryption.
+Ha Azure Disk Encryption engedélyezve van a virtuális gép lemezein, akkor az újonnan írt adatforgalom az SSE és a Azure Disk Encryption között is titkosítva lesz.
 
 ## <a name="storage-analytics"></a>Storage Analytics
-### <a name="using-storage-analytics-to-monitor-authorization-type"></a>Using Storage Analytics to monitor authorization type
-For each storage account, you can enable Azure Storage Analytics to perform logging and store metrics data. This is a great tool to use when you want to check the performance metrics of a storage account, or need to troubleshoot a storage account because you are having performance problems.
+### <a name="using-storage-analytics-to-monitor-authorization-type"></a>Storage Analytics használata az engedélyezési típus figyeléséhez
+Minden egyes Storage-fiók esetében engedélyezheti a Azure Storage Analytics a metrikák naplózásának és tárolásának elvégzéséhez. Ez egy nagyszerű eszköz, amelyet akkor érdemes használni, ha szeretné megtekinteni egy Storage-fiók teljesítmény-metrikáit, vagy egy Storage-fiók hibaelhárítását, mivel teljesítménnyel kapcsolatos problémákat tapasztal.
 
-Another piece of data you can see in the storage analytics logs is the authentication method used by someone when they access storage. For example, with Blob Storage, you can see if they used a Shared Access Signature or the storage account keys, or if the blob accessed was public.
+A Storage Analytics naplóiban látható egy másik adat, amelyet a felhasználó a tárolóhoz való hozzáféréskor használ. Például a Blob Storage használatával megtekintheti, hogy megosztott hozzáférési aláírást vagy a Storage-fiók kulcsait használták-e, vagy ha az elérni kívánt blob nyilvános volt.
 
-This can be helpful if you are tightly guarding access to storage. For example, in Blob Storage you can set all of the containers to private and implement the use of an SAS service throughout your applications. Then you can check the logs regularly to see if your blobs are accessed using the storage account keys, which may indicate a breach of security, or if the blobs are public but they shouldn't be.
+Ez akkor lehet hasznos, ha szorosan védelmet biztosít a tárolóhoz való hozzáféréshez. Blob Storage például beállíthatja az összes tárolót a magánjellegűre, és egy SAS-szolgáltatást alkalmazhat az alkalmazásokban. Ezután rendszeresen megtekintheti a naplókat, és megtekintheti, hogy a Blobok elérhetők-e a Storage-fiók kulcsainak használatával, ami a biztonság megsértését jelezheti, vagy ha a Blobok nyilvánosak, de nem.
 
-#### <a name="what-do-the-logs-look-like"></a>What do the logs look like?
-After you enable the storage account metrics and logging through the Azure portal, analytics data will start to accumulate quickly. The logging and metrics for each service is separate; the logging is only written when there is activity in that storage account, while the metrics will be logged every minute, every hour, or every day, depending on how you configure it.
+#### <a name="what-do-the-logs-look-like"></a>Hogyan néznek ki a naplók?
+Miután engedélyezte a Storage-fiók metrikáit és a Azure Portali naplózást, az elemzési adatok gyorsan összegyűlnek. Az egyes szolgáltatások naplózása és metrikái külön vannak elkülönítve. a naplózás csak akkor íródik, ha tevékenység van a Storage-fiókban, a metrikák pedig percenként, óránként, vagy naponta lesznek naplózva attól függően, hogy hogyan konfigurálja azt.
 
-The logs are stored in block blobs in a container named $logs in the storage account. This container is automatically created when Storage Analytics is enabled. Once this container is created, you can't delete it, although you can delete its contents.
+A naplófájlokat a rendszer a Storage-fiókban $logs nevű tárolóban tárolja a blokk blobokban. Ez a tároló automatikusan létrejön, ha Storage Analytics engedélyezve van. A tároló létrehozása után nem törölheti, de törölheti is a tartalmát.
 
-Under the $logs container, there is a folder for each service, and then there are subfolders for the year/month/day/hour. Under hour, the logs are numbered. This is what the directory structure will look like:
+A $logs tárolóban minden szolgáltatáshoz tartozik egy mappa, majd az év/hónap/nap/óra almappája van. Az óra alatt a naplók számozása. A könyvtár szerkezete így fog kinézni:
 
-![View of log files](./media/storage-security-guide/image1.png)
+![Naplófájlok megtekintése](./media/storage-security-guide/image1.png)
 
-Every request to Azure Storage is logged. Here's a snapshot of a log file, showing the first few fields.
+Minden Azure Storage-kérelem naplózva van. Íme egy pillanatkép egy naplófájlról, amely az első néhány mezőt mutatja.
 
-![Snapshot of a log file](./media/storage-security-guide/image2.png)
+![Naplófájl pillanatképe](./media/storage-security-guide/image2.png)
 
-You can see that you can use the logs to track any kind of calls to a storage account.
+Láthatja, hogy a naplók segítségével nyomon követheti a Storage-fiókok bármilyen típusú hívását.
 
-#### <a name="what-are-all-of-those-fields-for"></a>What are all of those fields for?
-There is an article listed in the resources below that provides the list of the many fields in the logs and what they are used for. Here is the list of fields in order:
+#### <a name="what-are-all-of-those-fields-for"></a>Mik ezek a mezők?
+Az alábbi forrásokban szerepel egy cikk, amely a naplók számos mezőjének listáját és azok használatát tartalmazza. Az alábbi lista a mezők sorrendjét tartalmazza:
 
-![Snapshot of fields in a log file](./media/storage-security-guide/image3.png)
+![Naplófájl mezőinek pillanatképe](./media/storage-security-guide/image3.png)
 
-We're interested in the entries for GetBlob, and how they are authorized, so we need to look for entries with operation-type "Get-Blob", and check the request-status (fourth</sup> column) and the authorization-type (eighth</sup> column).
+Érdeklik a GetBlob vonatkozó bejegyzések és azok engedélyezése, ezért meg kell keresni a "Get-blob" típusú bejegyzéseket, és ellenőriznie kell a kérelem állapotát (negyedik</sup> oszlop) és az engedélyezési típust (nyolcadik</sup> oszlop).
 
-For example, in the first few rows in the listing above, the request-status is "Success" and the authorization-type is "authenticated". This means the request was authorized using the storage account key.
+Például a fenti lista első néhány sorában a kérelem állapota "sikeres", az engedélyezési típus pedig "hitelesített". Ez azt jelenti, hogy a kérés a Storage-fiók kulcsa alapján lett engedélyezve.
 
-#### <a name="how-is-access-to-my-blobs-being-authorized"></a>How is access to my blobs being authorized?
-We have three cases that we are interested in.
+#### <a name="how-is-access-to-my-blobs-being-authorized"></a>Hogyan lehet engedélyezni a Blobok hozzáférését?
+Három esetben érdekli a szolgáltatás.
 
-1. The blob is public and it is accessed using a URL without a Shared Access Signature. In this case, the request-status is "AnonymousSuccess" and the authorization-type is "anonymous".
+1. A blob nyilvános, és megosztott hozzáférési aláírás nélküli URL-cím használatával érhető el. Ebben az esetben a kérelem állapota "AnonymousSuccess", az engedélyezési típus pedig "Anonymous".
 
-   1.0;2015-11-17T02:01:29.0488963Z;GetBlob;**AnonymousSuccess**;200;124;37;**anonymous**;;mystorage…
-2. The blob is private and was used with a Shared Access Signature. In this case, the request-status is "SASSuccess" and the authorization-type is "sas".
+   1.0; 2015-11-17T02:01:29.0488963 Z; GetBlob **AnonymousSuccess**; 200; 124; 37; **Névtelen**;; mystorage...
+2. A blob privát, és közös hozzáférési aláírással lett használva. Ebben az esetben a kérelem állapota "SASSuccess", az engedélyezési típus pedig "sas".
 
-   1.0;2015-11-16T18:30:05.6556115Z;GetBlob;**SASSuccess**;200;416;64;**sas**;;mystorage…
-3. The blob is private and the storage key was used to access it. In this case, the request-status is "**Success**" and the authorization-type is "**authenticated**".
+   1.0; 2015-11-16T18:30:05.6556115 Z; GetBlob **SASSuccess**; 200; 416; 64; **sas**;; mystorage...
+3. A blob magán, és a rendszer a tárolási kulcsot használta a hozzáféréshez. Ebben az esetben a kérelem állapota "**sikeres**", az engedélyezési típus pedig "**hitelesített**".
 
-   1.0;2015-11-16T18:32:24.3174537Z;GetBlob;**Success**;206;59;22;**authenticated**;mystorage…
+   1.0; 2015-11-16T18:32:24.3174537 Z; GetBlob **Sikeres**; 206; 59; 22; **hitelesített**; mystorage...
 
-You can use the Microsoft Message Analyzer to view and analyze these logs. It includes search and filter capabilities. For example, you might want to search for instances of GetBlob to see if the usage is what you expect, that is, to make sure someone is not accessing your storage account inappropriately.
+A Microsoft Message Analyzer segítségével megtekintheti és elemezheti ezeket a naplókat. Keresési és szűrési képességeket is tartalmaz. Előfordulhat például, hogy meg kívánja keresni a GetBlob példányait, hogy megtudja, a használat mire vár, vagyis hogy valaki nem fér hozzá megfelelően a Storage-fiókhoz.
 
-#### <a name="resources"></a>Segédanyagok és eszközök
+#### <a name="resources"></a>Erőforrások
 * [Storage Analytics](../storage-analytics.md)
 
-  This article is an overview of storage analytics and how to enable them.
-* [Storage Analytics Log Format](https://msdn.microsoft.com/library/azure/hh343259.aspx)
+  Ez a cikk áttekintést nyújt a Storage Analytics szolgáltatásról és azok engedélyezéséről.
+* [Storage Analytics naplózási formátum](https://msdn.microsoft.com/library/azure/hh343259.aspx)
 
-  This article illustrates the Storage Analytics Log Format, and details the fields available therein, including authentication-type, which indicates the type of authentication used for the request.
-* [Monitor a Storage Account in the Azure portal](../storage-monitor-storage-account.md)
+  Ez a cikk a Storage Analytics napló formátumát mutatja be, és részletezi az ott elérhető mezőket, beleértve a hitelesítési típust is, amely a kérelemhez használt hitelesítés típusát jelzi.
+* [Storage-fiók figyelése a Azure Portal](../storage-monitor-storage-account.md)
 
-  This article shows how to configure monitoring of metrics and logging for a storage account.
-* [End-to-End Troubleshooting using Azure Storage Metrics and Logging, AzCopy, and Message Analyzer](../storage-e2e-troubleshooting.md)
+  Ez a cikk bemutatja, hogyan konfigurálhatja a metrikák és a naplózási fiókok figyelését a Storage-fiókhoz.
+* [Végpontok közötti hibaelhárítás az Azure Storage-metrikák és-naplózás, a AzCopy és az Message Analyzer használatával](../storage-e2e-troubleshooting.md)
 
-  This article talks about troubleshooting using the Storage Analytics and shows how to use the Microsoft Message Analyzer.
-* [Microsoft Message Analyzer Operating Guide](https://technet.microsoft.com/library/jj649776.aspx)
+  Ez a cikk a Storage Analyticsával kapcsolatos hibaelhárítást és a Microsoft Message Analyzer használatát mutatja be.
+* [Microsoft Message Analyzer – üzemeltetési útmutató](https://technet.microsoft.com/library/jj649776.aspx)
 
-  This article is the reference for the Microsoft Message Analyzer and includes links to a tutorial, quickstart, and feature summary.
+  Ez a cikk a Microsoft Message Analyzer hivatkozása, amely az oktatóanyagra, a gyors üzembe helyezésre és a funkciók összegzésére mutató hivatkozásokat tartalmaz.
 
 ## <a name="cross-origin-resource-sharing-cors"></a>Eltérő eredetű erőforrások megosztása (CORS)
-### <a name="cross-domain-access-of-resources"></a>Cross-domain access of resources
-When a web browser running in one domain makes an HTTP request for a resource from a different domain, this is called a cross-origin HTTP request. For example, an HTML page served from contoso.com makes a request for a jpeg hosted on fabrikam.blob.core.windows.net. For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts, such as JavaScript. This means that when some JavaScript code on a web page on contoso.com requests that jpeg on fabrikam.blob.core.windows.net, the browser will not allow the request.
+### <a name="cross-domain-access-of-resources"></a>Erőforrás-tartományok közötti hozzáférés
+Ha az egyik tartományban futó webböngésző HTTP-kérést végez egy másik tartományból származó erőforráshoz, akkor ezt a rendszer az eltérő eredetű HTTP-kérelemnek nevezzük. A contoso.com-ből kiszolgált HTML-lapok például a fabrikam.blob.core.windows.net-on tárolt JPEG-fájlok kérését teszik lehetővé. Biztonsági okokból a böngészők korlátozzák a parancsfájlokból (például a JavaScriptből) kezdeményezett, több eredetű HTTP-kérelmeket. Ez azt jelenti, hogy ha a contoso.com található weblapon egyes JavaScript-kódok a fabrikam.blob.core.windows.net JPEG-fájlját kérik, a böngésző nem engedélyezi a kérést.
 
-What does this have to do with Azure Storage? Well, if you are storing static assets such as JSON or XML data files in Blob Storage using a storage account called Fabrikam, the domain for the assets will be fabrikam.blob.core.windows.net, and the contoso.com web application will not be able to access them using JavaScript because the domains are different. This is also true if you're trying to call one of the Azure Storage Services – such as Table Storage – that return JSON data to be processed by the JavaScript client.
+Mit kell tennie az Azure Storage-ban? Ha olyan statikus eszközöket tárol, mint például a JSON-vagy XML-adatfájlok Blob Storage egy Fabrikam nevű Storage-fiók használatával, az eszközök tartománya fabrikam.blob.core.windows.net lesz, és a contoso.com webalkalmazás nem fog tudni hozzáférni a következő használatával: JavaScript, mert a tartományok eltérőek. Ez akkor is igaz, ha az egyik Azure Storage-szolgáltatást (például Table Storage) próbálja meg hívni, amely a JavaScript-ügyfél által feldolgozandó JSON-adatmennyiséget küld vissza.
 
-#### <a name="possible-solutions"></a>Possible solutions
-One way to resolve this is to assign a custom domain like "storage.contoso.com" to fabrikam.blob.core.windows.net. The problem is that you can only assign that custom domain to one storage account. What if the assets are stored in multiple storage accounts?
+#### <a name="possible-solutions"></a>Lehetséges megoldások
+One way to resolve this is to assign a custom domain like "storage.contoso.com" to fabrikam.blob.core.windows.net. A probléma az, hogy ezt az egyéni tartományt csak egy Storage-fiókhoz rendelheti hozzá. Mi a teendő, ha a rendszer több Storage-fiókban tárolja az eszközöket?
 
-Another way to resolve this is to have the web application act as a proxy for the storage calls. This means if you are uploading a file to Blob Storage, the web application would either write it locally and then copy it to Blob Storage, or it would read all of it into memory and then write it to Blob Storage. Alternately, you could write a dedicated web application (such as a Web API) that uploads the files locally and writes them to Blob Storage. Either way, you have to account for that function when determining the scalability needs.
+A megoldás egy másik módja, hogy a webalkalmazás proxyként működjön a tárolási hívásokhoz. Ez azt jelenti, hogy ha egy fájlt tölt fel Blob Storageba, a webalkalmazás helyileg írni fogja, majd átmásolja Blob Storagere, vagy beolvassa az összes memóriát a memóriába, majd a Blob Storagebe írja azt. Másik lehetőségként írhat egy dedikált webalkalmazást (például webes API-t), amely helyileg feltölti a fájlokat, és beírja őket a Blob Storageba. Mindkét esetben a méretezhetőségi igények meghatározásakor ezt a funkciót kell figyelembe vennie.
 
-#### <a name="how-can-cors-help"></a>How can CORS help?
-Azure Storage allows you to enable CORS – Cross Origin Resource Sharing. For each storage account, you can specify domains that can access the resources in that storage account. For example, in our case outlined above, we can enable CORS on the fabrikam.blob.core.windows.net storage account and configure it to allow access to contoso.com. Then the web application contoso.com can directly access the resources in fabrikam.blob.core.windows.net.
+#### <a name="how-can-cors-help"></a>Hogyan segíthet a CORS?
+Az Azure Storage lehetővé teszi, hogy engedélyezze a CORS – több eredetű erőforrás-megosztást. Minden egyes Storage-fiókhoz megadhat olyan tartományokat, amelyek hozzáférhetnek a Storage-fiók erőforrásaihoz. Például a fent leírt módon engedélyezheti a CORS a fabrikam.blob.core.windows.net Storage-fiókon, és beállíthatja, hogy engedélyezze a hozzáférést a contoso.com. Ezután a webalkalmazás-contoso.com közvetlenül hozzáférhetnek az erőforrásokhoz a fabrikam.blob.core.windows.net-ben.
 
-One thing to note is that CORS allows access, but it does not provide authentication, which is required for all non-public access of storage resources. This means you can only access blobs if they are public or you include a Shared Access Signature giving you the appropriate permission. Tables, queues, and files have no public access, and require a SAS.
+Az egyik fontos megjegyezni, hogy a CORS engedélyezi a hozzáférést, de nem biztosít hitelesítést, ami szükséges a tárolási erőforrások összes nem nyilvános eléréséhez. Ez azt jelenti, hogy csak akkor férhet hozzá a blobokhoz, ha nyilvánosak, vagy egy közös hozzáférési aláírással rendelkezik, amely megadja a megfelelő engedélyeket. A táblák, a várólisták és a fájlok nem rendelkeznek nyilvános hozzáféréssel, és SAS-t igényelnek.
 
-By default, CORS is disabled on all services. You can enable CORS by using the REST API or the storage client library to call one of the methods to set the service policies. When you do that, you include a CORS rule, which is in XML. Here's an example of a CORS rule that has been set using the Set Service Properties operation for the Blob Service for a storage account. You can perform that operation using the storage client library or the REST APIs for Azure Storage.
+Alapértelmezés szerint a CORS le van tiltva az összes szolgáltatáson. A CORS a REST API vagy a Storage ügyféloldali kódtár használatával engedélyezheti, hogy az egyik módszert hívja meg a szolgáltatási házirendek beállításához. Ha ezt teszi, egy XML-ben található CORS-szabályt is tartalmaz. Íme egy példa egy olyan CORS-szabályra, amely egy Storage-fiókhoz tartozó szolgáltatás tulajdonságainak beállítása művelet használatával lett beállítva. Ezt a műveletet a Storage ügyféloldali kódtár vagy az Azure Storage REST API-jai használatával végezheti el.
 
 ```xml
 <Cors>    
@@ -496,48 +496,48 @@ By default, CORS is disabled on all services. You can enable CORS by using the R
 <Cors>
 ```
 
-Here's what each row means:
+Az egyes sorok a következők:
 
-* **AllowedOrigins** This tells which non-matching domains can request and receive data from the storage service. This says that both contoso.com and fabrikam.com can request data from Blob Storage for a specific storage account. You can also set this to a wildcard (\*) to allow all domains to access requests.
-* **AllowedMethods** This is the list of methods (HTTP request verbs) that can be used when making the request. In this example, only PUT and GET are allowed. You can set this to a wildcard (\*) to allow all methods to be used.
-* **AllowedHeaders** This is the request headers that the origin domain can specify when making the request. In this example, all metadata headers starting with x-ms-meta-data, x-ms-meta-target, and x-ms-meta-abc are permitted. The wildcard character (\*) indicates that any header beginning with the specified prefix is allowed.
-* **ExposedHeaders** This tells which response headers should be exposed by the browser to the request issuer. In this example, any header starting with "x-ms-meta-" will be exposed.
-* **MaxAgeInSeconds** This is the maximum amount of time that a browser will cache the preflight OPTIONS request. (For more information about the preflight request, check the first article below.)
+* **AllowedOrigins** Ez azt jelzi, hogy mely nem egyező tartományokat igényelhet és fogadhat adatok a Storage szolgáltatástól. Ez azt mondja, hogy a contoso.com és a fabrikam.com is kérheti a Blob Storage adatait egy adott Storage-fiókhoz. Ezt a helyettesítő karaktert (\*) is beállíthatja úgy, hogy az összes tartomány hozzáférjen a kérelmekhez.
+* **AllowedMethods** Azon metódusok (HTTP-kérési műveletek) listája, amelyeket a rendszer a kérelem végrehajtásakor használhat. Ebben a példában csak a PUT és a GET engedélyezett. Ezt beállíthatja egy helyettesítő karakterre (\*) a minden módszer használatának engedélyezéséhez.
+* **AllowedHeaders** Ez az a kérelem fejléce, amelyet a forrás tartomány meghatároz a kérelem végrehajtásakor. Ebben a példában az x-MS-Meta-adat, x-MS-meta-Target és x-MS-meta-ABC kezdetű metaadat-fejlécek engedélyezettek. A helyettesítő karakter (\*) azt jelzi, hogy a megadott előtaggal kezdődő fejlécek engedélyezettek.
+* **ExposedHeaders** Ez azt jelzi, hogy a böngészőnek mely válasz-fejléceket kell megtennie a kérés kiállítójának. Ebben a példában az "x-MS-meta-" kezdetű fejlécek lesznek kitéve.
+* **MaxAgeInSeconds** Ez az a maximális időtartam, ameddig egy böngésző gyorsítótárazza az elővizsgálati beállítások kérését. (Az elővizsgálati kérelemmel kapcsolatos további információkért olvassa el az alábbi első cikket.)
 
-#### <a name="resources"></a>Segédanyagok és eszközök
-For more information about CORS and how to enable it, check out these resources.
+#### <a name="resources"></a>Erőforrások
+A CORS és annak engedélyezésével kapcsolatos további információkért tekintse meg ezeket az erőforrásokat.
 
-* [Cross-Origin Resource Sharing (CORS) Support for the Azure Storage Services on Azure.com](../storage-cors-support.md)
+* [A Azure.com-alapú Azure Storage-szolgáltatások CORS-támogatásának több eredetű erőforrás-megosztási támogatása](../storage-cors-support.md)
 
-  This article provides an overview of CORS and how to set the rules for the different storage services.
-* [Cross-Origin Resource Sharing (CORS) Support for the Azure Storage Services on MSDN](https://msdn.microsoft.com/library/azure/dn535601.aspx)
+  Ez a cikk áttekintést nyújt a CORS és a különböző tárolási szolgáltatások szabályainak beállításáról.
+* [Az Azure Storage szolgáltatásainak több eredetű erőforrás-megosztási (CORS) támogatása az MSDN-ben](https://msdn.microsoft.com/library/azure/dn535601.aspx)
 
-  This is the reference documentation for CORS support for the Azure Storage Services. This has links to articles applying to each storage service, and shows an example and explains each element in the CORS file.
-* [Microsoft Azure Storage: Introducing CORS](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
+  Ez az Azure Storage-szolgáltatások CORS támogatását ismertető dokumentáció. Ez az egyes tárolási szolgáltatásokra vonatkozó cikkekre mutató hivatkozásokat tartalmaz, és egy példát mutat be, és megmagyarázza a CORS fájl egyes elemeit.
+* [Microsoft Azure Storage: a CORS bemutatása](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
 
-  This is a link to the initial blog article announcing CORS and showing how to use it.
+  Ez egy hivatkozás a kezdeti blogra, amely bejelenti a CORS, és bemutatja, hogyan használhatja azt.
 
-## <a name="frequently-asked-questions-about-azure-storage-security"></a>Frequently asked questions about Azure Storage security
-1. **How can I verify the integrity of the blobs I'm transferring into or out of Azure Storage if I can't use the HTTPS protocol?**
+## <a name="frequently-asked-questions-about-azure-storage-security"></a>Az Azure Storage biztonságával kapcsolatos gyakori kérdések
+1. **Hogyan tudom ellenőrizni, hogy az Azure Storage-ba vagy onnan átvitt Blobok integritása nem tudom használni a HTTPS protokollt?**
 
-   If for any reason you need to use HTTP instead of HTTPS and you are working with block blobs, you can use MD5 checking to help verify the integrity of the blobs being transferred. This will help with protection from network/transport layer errors, but not necessarily with intermediary attacks.
+   Ha bármilyen okból HTTPS helyett HTTP-t kell használnia, és a blokk-Blobokkal dolgozik, az MD5-ellenőrzés segítségével ellenőrizheti az átvitt Blobok integritását. Ez segít a hálózati/szállítási rétegbeli hibák elleni védelemben, de nem feltétlenül a közbenső támadásokkal szemben.
 
-   If you can use HTTPS, which provides transport level security, then using MD5 checking is redundant and unnecessary.
+   Ha a HTTPS protokollt használja, amely átviteli szintű biztonságot biztosít, akkor az MD5-ellenőrzés redundáns és szükségtelen.
 
-   For more information, please check out the [Azure Blob MD5 Overview](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx).
-2. **What about FIPS-Compliance for the U.S. Government?**
+   További információkért tekintse meg az [Azure Blob MD5 áttekintését](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx).
+2. **Mi a helyzet a FIPS-megfelelőséggel az Egyesült Államok kormányának?**
 
-   The United States Federal Information Processing Standard (FIPS) defines cryptographic algorithms approved for use by U.S. Federal government computer systems for the protection of sensitive data. Enabling FIPS mode on a Windows server or desktop tells the OS that only FIPS-validated cryptographic algorithms should be used. If an application uses non-compliant algorithms, the applications will break. With.NET Framework versions 4.5.2 or higher, the application automatically switches the cryptography algorithms to use FIPS-compliant algorithms when the computer is in FIPS mode.
+   A Egyesült Államok Federal Information Processing standard (FIPS) olyan titkosítási algoritmusokat határoz meg, amelyeket a rendszer a bizalmas adatok védelme érdekében az Egyesült Államok szövetségi kormányzati számítógépei számára engedélyezett. A FIPS mód Windows Server vagy Desktop rendszeren való engedélyezése azt jelzi, hogy az operációs rendszer csak a FIPS-érvényesített titkosítási algoritmusokat használja. Ha egy alkalmazás nem megfelelő algoritmusokat használ, a rendszer megtöri az alkalmazásokat. A With.NET-keretrendszer 4.5.2-es vagy újabb verzióiban az alkalmazás automatikusan átváltja a titkosítási algoritmusokat az FIPS-kompatibilis algoritmusok használatára, ha a számítógép FIPS módban van.
 
-   Microsoft leaves it up to each customer to decide whether to enable FIPS mode. We believe there is no compelling reason for customers who are not subject to government regulations to enable FIPS mode by default.
+   A Microsoft minden ügyfélnek elhagyja az FIPS-mód engedélyezését. Hiszünk abban, hogy a nem kormányzati szabályozás hatálya alá tartozó ügyfelek számára nincs olyan kényszerítő ok, amely alapértelmezés szerint engedélyezi az FIPS üzemmódot.
 
-### <a name="resources"></a>Segédanyagok és eszközök
-* [Why We're Not Recommending "FIPS Mode" Anymore](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
+### <a name="resources"></a>Erőforrások
+* [Miért nem ajánljuk többé a "FIPS mód" használatát](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
-  This blog article gives an overview of FIPS and explains why they don't enable FIPS mode by default.
-* [FIPS 140 Validation](https://technet.microsoft.com/library/cc750357.aspx)
+  Ez a blogbejegyzés áttekintést nyújt a FIPS-ről, és ismerteti, hogy alapértelmezés szerint miért nem engedélyezik az FIPS üzemmódot.
+* [FIPS 140 érvényesítése](https://technet.microsoft.com/library/cc750357.aspx)
 
-  This article provides information on how Microsoft products and cryptographic modules comply with the FIPS standard for the U.S. Federal government.
-* ["System cryptography: Use FIPS compliant algorithms for encryption, hashing, and signing" security settings effects in Windows XP and in later versions of Windows](https://support.microsoft.com/kb/811833)
+  Ez a cikk tájékoztatást nyújt arról, hogy a Microsoft-termékek és-titkosítási modulok hogyan felelnek meg az Egyesült Államok szövetségi kormányának FIPS szabványának.
+* ["Rendszerkriptográfia: FIPS szabványnak megfelelő algoritmusok használata titkosításhoz, kivonatoláshoz és aláíráshoz" biztonsági beállítások hatása a Windows XP és a Windows újabb verzióiban](https://support.microsoft.com/kb/811833)
 
-  This article talks about the use of FIPS mode in older Windows computers.
+  Ez a cikk a FIPS üzemmód használatát ismerteti a régebbi Windows-számítógépeken.

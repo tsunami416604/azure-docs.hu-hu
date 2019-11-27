@@ -19,10 +19,10 @@ ms.locfileid: "74305209"
 > * [1-es verzió](functions-bindings-cosmosdb.md)
 > * [2-es verzió](functions-bindings-cosmosdb-v2.md)
 
-Ez a cikk azt ismerteti, hogyan használható a [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) kötések az Azure Functions szolgáltatásban. Az Azure Functions támogatja a-trigger, bemeneti és kimeneti kötések az Azure Cosmos DB.
+Ez a cikk azt ismerteti, hogyan használhatók [Azure Cosmos db](../cosmos-db/serverless-computing-database.md) kötések a Azure Functionsban. Az Azure Functions támogatja a-trigger, bemeneti és kimeneti kötések az Azure Cosmos DB.
 
 > [!NOTE]
-> Ez a cikk az Azure Functions 1.x. Ilyen kötést ahhoz a függvények használatával kapcsolatos információ 2.x verzióját, lásd: [Azure Cosmos DB-kötések az Azure Functions 2.x](functions-bindings-cosmosdb-v2.md).
+> Ez a cikk az Azure Functions 1.x. További információ a kötések használatáról a 2. x függvényekben: [Azure Cosmos db kötések a Azure functions 2. x verzióhoz](functions-bindings-cosmosdb-v2.md).
 >
 >Ennek a kötésnek a DocumentDB eredetileg neve. A Functions-verzió 1.x, csak az eseményindító lett átnevezve a Cosmos dB-t. a bemeneti kötést, a kimeneti kötést és a NuGet-csomag megőrzi a DocumentDB nevét.
 
@@ -33,19 +33,19 @@ Ez a cikk azt ismerteti, hogyan használható a [Azure Cosmos DB](../cosmos-db/s
 
 ## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-Az Azure Cosmos DB-kötéseket funkciók verzió 1.x szerepelnek a [Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) NuGet-csomag verziója 1.x. A kötések forráskódja a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.DocumentDB) GitHub-adattárban.
+Az 1. x függvényekhez tartozó Azure Cosmos DB kötések a [Microsoft. Azure. webjobs. Extensions. DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) NuGet csomagban, 1. x verzióban vannak megadva. A kötések forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.DocumentDB) tárházban található.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="trigger"></a>Eseményindító
 
-Használja az Azure Cosmos DB-eseményindító a [Azure Cosmos DB módosítási hírcsatorna](../cosmos-db/change-feed.md) figyeljen a beszúrások és frissítések partíciók között. A módosítási hírcsatorna beszúrások és frissítéseket, törléseket nem tesz közzé.
+A Azure Cosmos DB trigger a [Azure Cosmos db változási csatornát](../cosmos-db/change-feed.md) használja, hogy figyelje a lapkákat és a frissítéseket a partíciók között. A módosítási hírcsatorna beszúrások és frissítéseket, törléseket nem tesz közzé.
 
 ## <a name="trigger---example"></a>Az eseményindító – példa
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amelyek akkor aktiválódnak, ha nincsenek be vagy frissít a megadott adatbázis és gyűjtemény.
+Az alábbi példa egy [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely akkor jelenik meg, ha a megadott adatbázisban és gyűjteményben lapkák vagy frissítések vannak.
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -78,9 +78,9 @@ namespace CosmosDBSamplesV1
 
 # <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
-Az alábbi példa bemutatja egy kötést a Cosmos DB-eseményindító egy *function.json* fájl és a egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely a kötés használja. A függvény naplóüzenetek ír, Cosmos DB-rekordok módosításakor.
+Az alábbi példa egy Cosmos db trigger kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény naplóüzenetek ír, Cosmos DB-rekordok módosításakor.
 
-Itt van a kötési adatait a *function.json* fájlt:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -114,9 +114,9 @@ Itt van a kötési adatait a *function.json* fájlt:
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa bemutatja egy kötést a Cosmos DB-eseményindító egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja. A függvény naplóüzenetek ír, Cosmos DB-rekordok módosításakor.
+Az alábbi példa egy Cosmos DB trigger kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény naplóüzenetek ír, Cosmos DB-rekordok módosításakor.
 
-Itt van a kötési adatait a *function.json* fájlt:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -147,9 +147,9 @@ A következő JavaScript-kódot:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) attribútum.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) attribútumot.
 
-Az attribútum konstruktorának paramétereként meg az adatbázis és gyűjtemény nevét. Ezek a beállítások és más tulajdonságokat is beállíthat kapcsolatos információkért lásd: [eseményindító - konfiguráció](#trigger---configuration). Íme egy `CosmosDBTrigger` attribútum példa egy podpis metody:
+Az attribútum konstruktorának paramétereként meg az adatbázis és gyűjtemény nevét. További információ ezekről a beállításokról és a konfigurálható egyéb tulajdonságokról: [trigger-Configuration](#trigger---configuration). Példa `CosmosDBTrigger` attribútumra a metódus-aláírásban:
 
 ```csharp
     [FunctionName("DocumentUpdates")]
@@ -162,7 +162,7 @@ Az attribútum konstruktorának paramétereként meg az adatbázis és gyűjtem�
     }
 ```
 
-Egy teljes példa: [eseményindító – C#-példa](#trigger).
+A teljes példa: [trigger- C# example](#trigger).
 
 # <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
@@ -176,38 +176,38 @@ A JavaScript nem támogatja az attribútumokat.
 
 ## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
 
-A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `CosmosDBTrigger` attribútum.
+Az alábbi táblázat a *function. JSON* fájlban és a `CosmosDBTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** || Meg kell `cosmosDBTrigger`. |
-|**direction** || Meg kell `in`. Ez a paraméter beállítása automatikusan történik, amikor az eseményindító hoz létre az Azure Portalon. |
-|**name** || A függvénykód módosítása dokumentumok listájának jelölő a használt változó neve. |
+|**type** || `cosmosDBTrigger`értékre kell állítani. |
+|**direction** || `in`értékre kell állítani. Ez a paraméter beállítása automatikusan történik, amikor az eseményindító hoz létre az Azure Portalon. |
+|**név** || A függvénykód módosítása dokumentumok listájának jelölő a használt változó neve. |
 |**connectionStringSetting**|**ConnectionStringSetting** | A figyelt Azure Cosmos DB-fiókhoz való csatlakozáshoz használt kapcsolati karakterlánc tartalmazó alkalmazásbeállítás neve. |
-|**databaseName**|**databaseName**  | A figyelt gyűjteményhez az Azure Cosmos DB-adatbázis neve. |
-|**collectionName** |**collectionName** | A figyelt gyűjtemény neve. |
-|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Nem kötelező) A kapcsolati karakterláncot a szolgáltatásnak, amely tartalmazza a bérletek gyűjteményének tartalmazó alkalmazásbeállítás neve. Ha nincs megadva, a `connectionStringSetting` értéket használja. Ez a paraméter értéke a portálon a kötés létrehozásakor automatikusan. A bérletek gyűjteménye kapcsolati karakterláncára írási engedéllyel kell rendelkeznie.|
-|**leaseDatabaseName** |**LeaseDatabaseName** | (Nem kötelező) A database csatlakoztatásához használt bérletek tárolásához használni kívánt gyűjtemény neve. Ha nincs megadva, az értékét a `databaseName` beállítást használja. Ez a paraméter értéke a portálon a kötés létrehozásakor automatikusan. |
-|**leaseCollectionName** | **leaseCollectionName** | (Nem kötelező) A használt bérletek tárolásához használni kívánt gyűjtemény neve. Ha nincs megadva, az érték `leases` szolgál. |
-|**createLeaseCollectionIfNotExists** | **createLeaseCollectionIfNotExists** | (Nem kötelező) Ha a beállítása `true`, a bérletek gyűjteménye automatikusan létrejön, amikor még nem létezik. Az alapértelmezett érték `false`. |
-|**leasesCollectionThroughput**| **leasesCollectionThroughput**| (Nem kötelező) A Kérelemegységek rendel a bérletek gyűjteménye létrehozásakor mennyisége határozza meg. Ez a beállítás csak használhatók, amikor nem `createLeaseCollectionIfNotExists` értékre van állítva `true`. A rendszer automatikusan beállítja ezt a paramétert, ha a kötést a portál használatával hozza létre.
-|**leaseCollectionPrefix**| **leaseCollectionPrefix**| (Nem kötelező) Érték beállítása esetén azt ad hozzá egy előtagot a bérletek a bérletek gyűjteményének ennél a függvénynél, hatékonyan lehetővé teszi két különálló Azure Functions, az ugyanazon a bérletek gyűjteményének megosztása más előtagok használatával létrehozott.
-|**feedPollDelay**| **feedPollDelay**| (Nem kötelező) Ha a készlet, azt határozza meg, ezredmásodpercben, a késleltetés között egy partíciót a hírcsatorna az új módosításokat a lekérdezések összes aktuális változtatások vannak ürítve. Alapértelmezés szerint 5000 (5 másodperces).
-|**leaseAcquireInterval**| **leaseAcquireInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, az időköz elindít egy feladatot a számítási, ha a partíciók lesznek elosztva a gazdagép ismert példányok között. Alapértelmezés szerint 13000 (13 másodperc).
-|**leaseExpirationInterval**| **leaseExpirationInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, az időköz, amelynek a bérlet egy bérletet, egy partíciót jelölő készül. A bérlet ezen az időtartamon belül nem újítja meg, ha azt eredményezi, hamarosan lejár, és a partíció tulajdonjogának áthelyezi egy másik példánya. Alapértelmezés szerint 60000 (60 másodperc).
-|**leaseRenewInterval**| **leaseRenewInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, minden bérletek példány által jelenleg birtokolt partíciók megújítási időköz. Alapértelmezés szerint 17000 (17 másodperc).
-|**checkpointFrequency**| **checkpointFrequency**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, a bérlet ellenőrzőpontok közötti időtartam. Az alapértelmezett érték mindig az egyes függvények hívása után történik.
-|**maxItemsPerInvocation**| **maxItemsPerInvocation**| (Nem kötelező) Ha a beállítás, azt testreszabja egy függvény hívásához szükséges fogadott elemek maximális számát.
+|**databaseName**|**DatabaseName**  | A figyelt gyűjteményhez az Azure Cosmos DB-adatbázis neve. |
+|**collectionName** |**CollectionName** | A figyelt gyűjtemény neve. |
+|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Nem kötelező) A kapcsolati karakterláncot a szolgáltatásnak, amely tartalmazza a bérletek gyűjteményének tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, a rendszer a `connectionStringSetting` értéket használja. Ez a paraméter értéke a portálon a kötés létrehozásakor automatikusan. A bérletek gyűjteménye kapcsolati karakterláncára írási engedéllyel kell rendelkeznie.|
+|**leaseDatabaseName** |**LeaseDatabaseName** | (Nem kötelező) A database csatlakoztatásához használt bérletek tárolásához használni kívánt gyűjtemény neve. Ha nincs beállítva, a rendszer a `databaseName` beállítás értékét használja. Ez a paraméter értéke a portálon a kötés létrehozásakor automatikusan. |
+|**leaseCollectionName** | **LeaseCollectionName** | (Nem kötelező) A használt bérletek tárolásához használni kívánt gyűjtemény neve. Ha nincs beállítva, a rendszer a `leases` értéket használja. |
+|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | Választható Ha `true`értékre van állítva, a bérletek gyűjteménye automatikusan létrejön, ha még nem létezik. Az alapértelmezett érték `false`. |
+|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| (Nem kötelező) A Kérelemegységek rendel a bérletek gyűjteménye létrehozásakor mennyisége határozza meg. Ezt a beállítást csak akkor használja a rendszer, ha a `createLeaseCollectionIfNotExists` `true`ra van beállítva. A rendszer automatikusan beállítja ezt a paramétert, ha a kötést a portál használatával hozza létre.
+|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| (Nem kötelező) Érték beállítása esetén azt ad hozzá egy előtagot a bérletek a bérletek gyűjteményének ennél a függvénynél, hatékonyan lehetővé teszi két különálló Azure Functions, az ugyanazon a bérletek gyűjteményének megosztása más előtagok használatával létrehozott.
+|**feedPollDelay**| **FeedPollDelay**| (Nem kötelező) Ha a készlet, azt határozza meg, ezredmásodpercben, a késleltetés között egy partíciót a hírcsatorna az új módosításokat a lekérdezések összes aktuális változtatások vannak ürítve. Alapértelmezés szerint 5000 (5 másodperces).
+|**leaseAcquireInterval**| **LeaseAcquireInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, az időköz elindít egy feladatot a számítási, ha a partíciók lesznek elosztva a gazdagép ismert példányok között. Alapértelmezés szerint 13000 (13 másodperc).
+|**leaseExpirationInterval**| **LeaseExpirationInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, az időköz, amelynek a bérlet egy bérletet, egy partíciót jelölő készül. A bérlet ezen az időtartamon belül nem újítja meg, ha azt eredményezi, hamarosan lejár, és a partíció tulajdonjogának áthelyezi egy másik példánya. Alapértelmezés szerint 60000 (60 másodperc).
+|**leaseRenewInterval**| **LeaseRenewInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, minden bérletek példány által jelenleg birtokolt partíciók megújítási időköz. Alapértelmezés szerint 17000 (17 másodperc).
+|**checkpointFrequency**| **CheckpointFrequency**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, a bérlet ellenőrzőpontok közötti időtartam. Az alapértelmezett érték mindig az egyes függvények hívása után történik.
+|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (Nem kötelező) Ha a beállítás, azt testreszabja egy függvény hívásához szükséges fogadott elemek maximális számát.
 |**startFromBeginning**| **StartFromBeginning**| Választható Ha be van állítva, a elindítja a triggert, hogy a jelenlegi időpont helyett a gyűjtemény előzményeinek elejéről olvassa be a módosításokat. Ez csak az indítás első indításakor működik, ahogy a későbbi futtatásokban is, az ellenőrzőpontok már tárolva vannak. Ha úgy állítja be ezt a `true`, hogy a bérletek már létrejöttek, nincs hatása.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>Eseményindító - használat
 
-Az eseményindító van szükség egy második gyűjtemény tárolásához használt _bérletek_ a külön partíciókban. A figyelt gyűjtemény és a gyűjtemény, amely tartalmazza a bérleteket is működnek az eseményindító elérhetőnek kell lennie.
+Az triggerhez egy második gyűjteményre van szükség, amelyet a a partíciók _bérletének_ tárolására használ. A figyelt gyűjtemény és a gyűjtemény, amely tartalmazza a bérleteket is működnek az eseményindító elérhetőnek kell lennie.
 
 >[!IMPORTANT]
-> Ha több funkciók vannak konfigurálva, egy Cosmos DB-eseményindító használandó ugyanabba a gyűjteménybe, minden egyes funkciót kell egy dedikált a bérletek gyűjteményének használhatja, vagy megadhat egy másik `LeaseCollectionPrefix` minden függvényre. Ellenkező esetben a függvények csak az egyik aktiválódik. Az előtag kapcsolatos információkért tekintse meg a [konfigurációs szakasz](#trigger---configuration).
+> Ha több függvény úgy van konfigurálva, hogy egy Cosmos DB triggert használjon ugyanahhoz a gyűjteményhez, a függvények mindegyikének dedikált címbérleti gyűjteményt kell használnia, vagy más `LeaseCollectionPrefix` kell megadnia az egyes függvényekhez. Ellenkező esetben a függvények csak az egyik aktiválódik. További információ az előtagról: [konfiguráció szakasz](#trigger---configuration).
 
 Az eseményindító egy dokumentumot frissítve lett, vagy beszúrva, azt csak biztosítja-e a saját maga a dokumentum nem jelzi. Ha frissítések, és beszúr eltérően kezelésére van szüksége, beszúrási vagy frissítési időbélyegző mezők az életbe léptetésével ezt.
 
@@ -219,14 +219,14 @@ Az Azure Cosmos DB bemeneti kötéssel legalább egy Azure Cosmos DB-dokumentumo
 
 Ez a szakasz tartalmazza az alábbi példák:
 
-* [Üzenetsor eseményindító, keresse meg a JSON-ból azonosítója](#queue-trigger-look-up-id-from-json-c)
-* [HTTP-eseményindító, ID keresse meg a lekérdezési karakterláncból.](#http-trigger-look-up-id-from-query-string-c)
-* [HTTP eseményindító útvonal adatokból azonosító keresése](#http-trigger-look-up-id-from-route-data-c)
-* [HTTP eseményindító útvonal-adatokból, amelyek használatával az SQL-lekérdezés azonosító keresése](#http-trigger-look-up-id-from-route-data-using-sqlquery-c)
-* [HTTP-trigger, a több docs-SQL-lekérdezés használatával](#http-trigger-get-multiple-docs-using-sqlquery-c)
-* [HTTP-trigger, a több docs DocumentClient használatával](#http-trigger-get-multiple-docs-using-documentclient-c)
+* [Üzenetsor-trigger, Keresés azonosító a JSON-ből](#queue-trigger-look-up-id-from-json-c)
+* [HTTP-trigger, keresési azonosító lekérdezési karakterláncból](#http-trigger-look-up-id-from-query-string-c)
+* [HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján](#http-trigger-look-up-id-from-route-data-c)
+* [HTTP-trigger, keresés az útvonal adatai alapján, SqlQuery használatával](#http-trigger-look-up-id-from-route-data-using-sqlquery-c)
+* [HTTP-trigger, több dokumentum beolvasása a SqlQuery használatával](#http-trigger-get-multiple-docs-using-sqlquery-c)
+* [HTTP-trigger, több dokumentum beolvasása a DocumentClient használatával](#http-trigger-get-multiple-docs-using-documentclient-c)
 
-Tekintse meg a példák egy egyszerű `ToDoItem` típusa:
+A példák egy egyszerű `ToDoItem` típusra vonatkoznak:
 
 ```cs
 namespace CosmosDBSamplesV1
@@ -243,7 +243,7 @@ namespace CosmosDBSamplesV1
 
 ### <a name="queue-trigger-look-up-id-from-json"></a>Üzenetsor-trigger, Keresés azonosító a JSON-ből
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amely egyetlen dokumentum beolvasása. A függvény, amely tartalmaz egy JSON-objektum egy üzenetsor által aktivált. Az üzenetsor eseményindító elemzi a JSON az nevű objektum `ToDoItemLookup`, keresse ki az Azonosítóját tartalmazza, amelyek. Hogy azonosító beolvasásához használt egy `ToDoItem` dokumentumot a megadott adatbázis és gyűjtemény.
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely egyetlen dokumentumot kér le. A függvény, amely tartalmaz egy JSON-objektum egy üzenetsor által aktivált. A várólista-trigger elemzi a JSON-t egy `ToDoItemLookup`nevű objektumba, amely tartalmazza a megkeresni kívánt azonosítót. Ez az azonosító egy `ToDoItem` dokumentum lekérésére szolgál a megadott adatbázisból és gyűjteményből.
 
 ```cs
 namespace CosmosDBSamplesV1
@@ -292,7 +292,7 @@ namespace CosmosDBSamplesV1
 
 ### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-trigger, keresési azonosító lekérdezési karakterláncból
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amely egyetlen dokumentum beolvasása. A függvényt egy HTTP-kérelem keresse ki az azonosító megadása egy lekérdezési karakterláncot használó aktiválja. Hogy azonosító beolvasásához használt egy `ToDoItem` dokumentumot a megadott adatbázis és gyűjtemény.
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy HTTP-kérelem keresse ki az azonosító megadása egy lekérdezési karakterláncot használó aktiválja. Ez az azonosító egy `ToDoItem` dokumentum lekérésére szolgál a megadott adatbázisból és gyűjteményből.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -334,7 +334,7 @@ namespace CosmosDBSamplesV1
 
 ### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amely egyetlen dokumentum beolvasása. A függvény akkor indul el, hogy a használt, keresse ki az azonosító megadása adatainak átirányítása a HTTP-kérelemmel történik. Hogy azonosító beolvasásához használt egy `ToDoItem` dokumentumot a megadott adatbázis és gyűjtemény.
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely egyetlen dokumentumot kér le. A függvény akkor indul el, hogy a használt, keresse ki az azonosító megadása adatainak átirányítása a HTTP-kérelemmel történik. Ez az azonosító egy `ToDoItem` dokumentum lekérésére szolgál a megadott adatbázisból és gyűjteményből.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -375,13 +375,13 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[Hagyja ki a bemeneti példák](#input---attributes)
+[Bemeneti példák kihagyása](#input---attributes)
 
 <a id="http-trigger-look-up-id-from-route-data-using-sqlquery-c"></a>
 
 ### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>HTTP-trigger, keresés az útvonal adatai alapján, SqlQuery használatával
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amely egyetlen dokumentum beolvasása. A függvény akkor indul el, hogy a használt, keresse ki az azonosító megadása adatainak átirányítása a HTTP-kérelemmel történik. Hogy azonosító beolvasásához használt egy `ToDoItem` dokumentumot a megadott adatbázis és gyűjtemény.
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely egyetlen dokumentumot kér le. A függvény akkor indul el, hogy a használt, keresse ki az azonosító megadása adatainak átirányítása a HTTP-kérelemmel történik. Ez az azonosító egy `ToDoItem` dokumentum lekérésére szolgál a megadott adatbázisból és gyűjteményből.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -417,13 +417,13 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[Hagyja ki a bemeneti példák](#input---attributes)
+[Bemeneti példák kihagyása](#input---attributes)
 
 <a id="http-trigger-get-multiple-docs-using-sqlquery-c"></a>
 
 ### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>HTTP-trigger, több dokumentum beolvasása a SqlQuery használatával
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amely dokumentumot listájának beolvasása. A függvényt egy HTTP-kérelem aktiválja. A lekérdezés van megadva a `SqlQuery` tulajdonság attribútum.
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely lekéri a dokumentumok listáját. A függvényt egy HTTP-kérelem aktiválja. A lekérdezés a `SqlQuery` attribútum tulajdonságban van megadva.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -460,13 +460,13 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[Hagyja ki a bemeneti példák](#input---attributes)
+[Bemeneti példák kihagyása](#input---attributes)
 
 <a id="http-trigger-get-multiple-docs-using-documentclient-c"></a>
 
 ### <a name="http-trigger-get-multiple-docs-using-documentclient-c"></a>HTTP-trigger, a több docs DocumentClient (C#) használatával
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amely dokumentumot listájának beolvasása. A függvényt egy HTTP-kérelem aktiválja. A kód egy `DocumentClient` dokumentumok listája olvasható az Azure Cosmos DB-kötés által megadott-példány. A `DocumentClient` példány is használható az írási műveletek.
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely lekéri a dokumentumok listáját. A függvényt egy HTTP-kérelem aktiválja. A kód a Azure Cosmos DB kötés által megadott `DocumentClient` példányt használja a dokumentumok listájának olvasásához. Az `DocumentClient` példány írási műveletekhez is használható.
 
 ```cs
 using Microsoft.Azure.Documents.Client;
@@ -527,14 +527,14 @@ namespace CosmosDBSamplesV1
 
 Ez a szakasz tartalmazza az alábbi példák:
 
-* [Üzenetsor eseményindító azonosító keresse meg a karakterláncból.](#queue-trigger-look-up-id-from-string-c-script)
-* [Várólista-eseményindító, majd a több docs-SQL-lekérdezés használatával](#queue-trigger-get-multiple-docs-using-sqlquery-c-script)
-* [HTTP-eseményindító, ID keresse meg a lekérdezési karakterláncból.](#http-trigger-look-up-id-from-query-string-c-script)
-* [HTTP eseményindító útvonal adatokból azonosító keresése](#http-trigger-look-up-id-from-route-data-c-script)
-* [HTTP-trigger, a több docs-SQL-lekérdezés használatával](#http-trigger-get-multiple-docs-using-sqlquery-c-script)
-* [HTTP-trigger, a több docs DocumentClient használatával](#http-trigger-get-multiple-docs-using-documentclient-c-script)
+* [Üzenetsor-trigger, azonosító megkeresése sztringből](#queue-trigger-look-up-id-from-string-c-script)
+* [Üzenetsor-trigger, több dokumentum beolvasása a SqlQuery használatával](#queue-trigger-get-multiple-docs-using-sqlquery-c-script)
+* [HTTP-trigger, keresési azonosító lekérdezési karakterláncból](#http-trigger-look-up-id-from-query-string-c-script)
+* [HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján](#http-trigger-look-up-id-from-route-data-c-script)
+* [HTTP-trigger, több dokumentum beolvasása a SqlQuery használatával](#http-trigger-get-multiple-docs-using-sqlquery-c-script)
+* [HTTP-trigger, több dokumentum beolvasása a DocumentClient használatával](#http-trigger-get-multiple-docs-using-documentclient-c-script)
 
-Tekintse meg a HTTP-eseményindító példák egy egyszerű `ToDoItem` típusa:
+A HTTP-triggerek példái egy egyszerű `ToDoItem` típusra vonatkoznak:
 
 ```cs
 namespace CosmosDBSamplesV1
@@ -551,9 +551,9 @@ namespace CosmosDBSamplesV1
 
 ### <a name="queue-trigger-look-up-id-from-string"></a>Üzenetsor-trigger, azonosító megkeresése sztringből
 
-Az alábbi példa bemutatja a Cosmos DB bemeneti kötéssel egy *function.json* fájl és a egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely a kötés használja. A függvény beolvassa az egyetlen dokumentum, és frissíti a dokumentum szöveges érték.
+Az alábbi példa egy Cosmos db bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény beolvassa az egyetlen dokumentum, és frissíti a dokumentum szöveges érték.
 
-Itt van a kötési adatait a *function.json* fájlt:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -568,7 +568,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 }
 ```
 
-A [konfigurációs](#input---configuration) szakasz mutatja be ezeket a tulajdonságokat.
+A [konfigurációs](#input---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
 Íme a C#-szkriptkódot:
 
@@ -586,11 +586,11 @@ A [konfigurációs](#input---configuration) szakasz mutatja be ezeket a tulajdon
 
 ### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Üzenetsor-trigger, több dokumentum beolvasása a SqlQuery használatával
 
-Az alábbi példa bemutatja egy Azure Cosmos DB bemeneti kötéssel a egy *function.json* fájl és a egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely a kötés használja. A függvény egy SQL-lekérdezést, egy üzenetsor eseményindító segítségével testre szabhatja a lekérdezési paraméterek által megadott több dokumentumot kérdezi le.
+Az alábbi példa egy Azure Cosmos db bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény egy SQL-lekérdezést, egy üzenetsor eseményindító segítségével testre szabhatja a lekérdezési paraméterek által megadott több dokumentumot kérdezi le.
 
-Az üzenetsor eseményindító biztosít egy paraméter `departmentId`. Az üzenetsorbeli üzenet `{ "departmentId" : "Finance" }` adna vissza, a pénzügyi részleg összes rekordja.
+A várólista-trigger `departmentId`paramétert biztosít. `{ "departmentId" : "Finance" }` üzenetsor-üzenete visszaküldi a pénzügyi részleg összes rekordját.
 
-Itt van a kötési adatait a *function.json* fájlt:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -604,7 +604,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 }
 ```
 
-A [konfigurációs](#input---configuration) szakasz mutatja be ezeket a tulajdonságokat.
+A [konfigurációs](#input---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
 Íme a C#-szkriptkódot:
 
@@ -627,9 +627,9 @@ A [konfigurációs](#input---configuration) szakasz mutatja be ezeket a tulajdon
 
 ### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-trigger, keresési azonosító lekérdezési karakterláncból
 
-A következő példa bemutatja egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely egyetlen dokumentum beolvasása. A függvényt egy HTTP-kérelem keresse ki az azonosító megadása egy lekérdezési karakterláncot használó aktiválja. Hogy azonosító beolvasásához használt egy `ToDoItem` dokumentumot a megadott adatbázis és gyűjtemény.
+Az alábbi példa egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy HTTP-kérelem keresse ki az azonosító megadása egy lekérdezési karakterláncot használó aktiválja. Ez az azonosító egy `ToDoItem` dokumentum lekérésére szolgál a megadott adatbázisból és gyűjteményből.
 
-Íme a *function.json* fájlt:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -688,9 +688,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 
 ### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján
 
-A következő példa bemutatja egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely egyetlen dokumentum beolvasása. A függvény akkor indul el, hogy a használt, keresse ki az azonosító megadása adatainak átirányítása a HTTP-kérelemmel történik. Hogy azonosító beolvasásához használt egy `ToDoItem` dokumentumot a megadott adatbázis és gyűjtemény.
+Az alábbi példa egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) mutat be, amely egyetlen dokumentumot kér le. A függvény akkor indul el, hogy a használt, keresse ki az azonosító megadása adatainak átirányítása a HTTP-kérelemmel történik. Ez az azonosító egy `ToDoItem` dokumentum lekérésére szolgál a megadott adatbázisból és gyűjteményből.
 
-Íme a *function.json* fájlt:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -750,9 +750,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 
 ### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>HTTP-trigger, több dokumentum beolvasása a SqlQuery használatával
 
-A következő példa bemutatja egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely dokumentumot listájának beolvasása. A függvényt egy HTTP-kérelem aktiválja. A lekérdezés van megadva a `SqlQuery` tulajdonság attribútum.
+A következő példa egy [ C# parancsfájl-függvényt](functions-reference-csharp.md) mutat be, amely a dokumentumok listáját kéri le. A függvényt egy HTTP-kérelem aktiválja. A lekérdezés a `SqlQuery` attribútum tulajdonságban van megadva.
 
-Íme a *function.json* fájlt:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -807,9 +807,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, IEnumerable<ToDoIt
 
 ### <a name="http-trigger-get-multiple-docs-using-documentclient"></a>HTTP-trigger, több dokumentum beolvasása a DocumentClient használatával
 
-A következő példa bemutatja egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely dokumentumot listájának beolvasása. A függvényt egy HTTP-kérelem aktiválja. A kód egy `DocumentClient` dokumentumok listája olvasható az Azure Cosmos DB-kötés által megadott-példány. A `DocumentClient` példány is használható az írási műveletek.
+A következő példa egy [ C# parancsfájl-függvényt](functions-reference-csharp.md) mutat be, amely a dokumentumok listáját kéri le. A függvényt egy HTTP-kérelem aktiválja. A kód a Azure Cosmos DB kötés által megadott `DocumentClient` példányt használja a dokumentumok listájának olvasásához. Az `DocumentClient` példány írási műveletekhez is használható.
 
-Íme a *function.json* fájlt:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -885,19 +885,19 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 Ez a szakasz tartalmazza az alábbi példák:
 
-* [Üzenetsor eseményindító, keresse meg a JSON-ból azonosítója](#queue-trigger-look-up-id-from-json-javascript)
-* [HTTP-eseményindító, ID keresse meg a lekérdezési karakterláncból.](#http-trigger-look-up-id-from-query-string-javascript)
-* [HTTP eseményindító útvonal adatokból azonosító keresése](#http-trigger-look-up-id-from-route-data-javascript)
-* [Várólista-eseményindító, majd a több docs-SQL-lekérdezés használatával](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
+* [Üzenetsor-trigger, Keresés azonosító a JSON-ből](#queue-trigger-look-up-id-from-json-javascript)
+* [HTTP-trigger, keresési azonosító lekérdezési karakterláncból](#http-trigger-look-up-id-from-query-string-javascript)
+* [HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján](#http-trigger-look-up-id-from-route-data-javascript)
+* [Üzenetsor-trigger, több dokumentum beolvasása a SqlQuery használatával](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
 
 
 <a id="queue-trigger-look-up-id-from-json-javascript"></a>
 
 ### <a name="queue-trigger-look-up-id-from-json"></a>Üzenetsor-trigger, Keresés azonosító a JSON-ből
 
-Az alábbi példa bemutatja a Cosmos DB bemeneti kötéssel egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja. A függvény beolvassa az egyetlen dokumentum, és frissíti a dokumentum szöveges érték.
+Az alábbi példa egy Cosmos DB bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény beolvassa az egyetlen dokumentum, és frissíti a dokumentum szöveges érték.
 
-Itt van a kötési adatait a *function.json* fájlt:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -922,7 +922,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 }
 ```
 
-A [konfigurációs](#input---configuration) szakasz mutatja be ezeket a tulajdonságokat.
+A [konfigurációs](#input---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
 A következő JavaScript-kódot:
 
@@ -939,9 +939,9 @@ A következő JavaScript-kódot:
 
 ### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-trigger, keresési azonosító lekérdezési karakterláncból
 
-A következő példa bemutatja egy [JavaScript-függvény](functions-reference-node.md) , amely egyetlen dokumentum beolvasása. A függvényt egy HTTP-kérelem keresse ki az azonosító megadása egy lekérdezési karakterláncot használó aktiválja. Hogy azonosító beolvasásához használt egy `ToDoItem` dokumentumot a megadott adatbázis és gyűjtemény.
+Az alábbi példa egy [JavaScript-függvényt](functions-reference-node.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy HTTP-kérelem keresse ki az azonosító megadása egy lekérdezési karakterláncot használó aktiválja. Ez az azonosító egy `ToDoItem` dokumentum lekérésére szolgál a megadott adatbázisból és gyűjteményből.
 
-Íme a *function.json* fájlt:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -997,9 +997,9 @@ module.exports = function (context, req, toDoItem) {
 
 ### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján
 
-A következő példa bemutatja egy [JavaScript-függvény](functions-reference-node.md) , amely egyetlen dokumentum beolvasása. A függvényt egy HTTP-kérelem keresse ki az azonosító megadása egy lekérdezési karakterláncot használó aktiválja. Hogy azonosító beolvasásához használt egy `ToDoItem` dokumentumot a megadott adatbázis és gyűjtemény.
+Az alábbi példa egy [JavaScript-függvényt](functions-reference-node.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy HTTP-kérelem keresse ki az azonosító megadása egy lekérdezési karakterláncot használó aktiválja. Ez az azonosító egy `ToDoItem` dokumentum lekérésére szolgál a megadott adatbázisból és gyűjteményből.
 
-Íme a *function.json* fájlt:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -1056,11 +1056,11 @@ module.exports = function (context, req, toDoItem) {
 
 ### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Üzenetsor-trigger, több dokumentum beolvasása a SqlQuery használatával
 
-Az alábbi példa bemutatja egy Azure Cosmos DB bemeneti kötéssel a egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja. A függvény egy SQL-lekérdezést, egy üzenetsor eseményindító segítségével testre szabhatja a lekérdezési paraméterek által megadott több dokumentumot kérdezi le.
+Az alábbi példa egy Azure Cosmos DB bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény egy SQL-lekérdezést, egy üzenetsor eseményindító segítségével testre szabhatja a lekérdezési paraméterek által megadott több dokumentumot kérdezi le.
 
-Az üzenetsor eseményindító biztosít egy paraméter `departmentId`. Az üzenetsorbeli üzenet `{ "departmentId" : "Finance" }` adna vissza, a pénzügyi részleg összes rekordja.
+A várólista-trigger `departmentId`paramétert biztosít. `{ "departmentId" : "Finance" }` üzenetsor-üzenete visszaküldi a pénzügyi részleg összes rekordját.
 
-Itt van a kötési adatait a *function.json* fájlt:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -1074,7 +1074,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 }
 ```
 
-A [konfigurációs](#input---configuration) szakasz mutatja be ezeket a tulajdonságokat.
+A [konfigurációs](#input---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
 A következő JavaScript-kódot:
 
@@ -1095,9 +1095,9 @@ A következő JavaScript-kódot:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) attribútum.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) attribútumot.
 
-Az attribútum konstruktorának paramétereként meg az adatbázis és gyűjtemény nevét. Ezek a beállítások és más tulajdonságokat is beállíthat kapcsolatos információkért lásd: [az alábbi konfigurációs szakaszban](#input---configuration).
+Az attribútum konstruktorának paramétereként meg az adatbázis és gyűjtemény nevét. Ezekről a beállításokról és a konfigurálható egyéb tulajdonságokról [a következő konfigurációs szakaszban](#input---configuration)tájékozódhat.
 
 # <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
@@ -1111,17 +1111,17 @@ A JavaScript nem támogatja az attribútumokat.
 
 ## <a name="input---configuration"></a>Bemenet - konfiguráció
 
-A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `DocumentDB` attribútum.
+Az alábbi táblázat a *function. JSON* fájlban és a `DocumentDB` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type**     || Meg kell `documentdb`.        |
-|**direction**     || Meg kell `in`.         |
-|**name**     || A kötési paraméter, amely a dokumentumot, a függvény neve.  |
-|**databaseName** |**databaseName** |A dokumentum tartalmazó adatbázis.        |
-|**collectionName** |**collectionName** | A gyűjtemény, amely tartalmazza a dokumentum neve. |
-|**id**    | **Azonosító** | A lekérdezni kívánt a dokumentum Azonosítóját. Ez a tulajdonság támogatja [kötési kifejezésekben](./functions-bindings-expressions-patterns.md). Ne állítsa mind a **azonosító** és **SQL-lekérdezés** tulajdonságait. Ha nem állít be egy, a rendszer lekéri a teljes gyűjteményt. |
-|**sqlQuery**  |**SqlQuery**  | Egy Azure Cosmos DB SQL-lekérdezés több dokumentumok használt. A tulajdonság támogatja a futtatókörnyezet kötések, mint ebben a példában: `SELECT * FROM c where c.departmentId = {departmentId}`. Ne állítsa mind a **azonosító** és **SQL-lekérdezés** tulajdonságait. Ha nem állít be egy, a rendszer lekéri a teljes gyűjteményt.|
+|**type**     || `documentdb`értékre kell állítani.        |
+|**direction**     || `in`értékre kell állítani.         |
+|**név**     || A kötési paraméter, amely a dokumentumot, a függvény neve.  |
+|**databaseName** |**DatabaseName** |A dokumentum tartalmazó adatbázis.        |
+|**collectionName** |**CollectionName** | A gyűjtemény, amely tartalmazza a dokumentum neve. |
+|**ID**    | **Azonosító** | A lekérdezni kívánt a dokumentum Azonosítóját. Ez a tulajdonság támogatja a [kötési kifejezéseket](./functions-bindings-expressions-patterns.md). Ne állítsa be az **ID** és a **sqlQuery** tulajdonságokat is. Ha nem állít be egy, a rendszer lekéri a teljes gyűjteményt. |
+|**sqlQuery**  |**SqlQuery**  | Egy Azure Cosmos DB SQL-lekérdezés több dokumentumok használt. A tulajdonság támogatja a futásidejű kötéseket, ahogy az a következő példában látható: `SELECT * FROM c where c.departmentId = {departmentId}`. Ne állítsa be az **ID** és a **sqlQuery** tulajdonságokat is. Ha nem állít be egy, a rendszer lekéri a teljes gyűjteményt.|
 |**kapcsolat**     |**ConnectionStringSetting**|Az Azure Cosmos DB kapcsolati sztringjét tartalmazó alkalmazásbeállítás neve.        |
 |**partitionKey**|**PartitionKey**|Megadja a partíciós kulcs értékét a kereséshez. Előfordulhat, hogy tartalmazza a kötési paramétereket.|
 
@@ -1139,7 +1139,7 @@ Ha a függvény sikeresen kilép, az elnevezett bemeneti paramétereken kereszt�
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-A rendszer nem végez automatikusan frissítéseket a függvény kilépése után. Ehelyett használjon `context.bindings.<documentName>In` és `context.bindings.<documentName>Out` frissítéséhez. Tekintse meg a [bemeneti példát](#input).
+A rendszer nem végez automatikusan frissítéseket a függvény kilépése után. Ehelyett a `context.bindings.<documentName>In` és a `context.bindings.<documentName>Out` használatával végezze el a frissítéseket. Tekintse meg a [bemeneti példát](#input).
 
 ---
 
@@ -1154,7 +1154,7 @@ Ez a szakasz tartalmazza az alábbi példák:
 * Üzenetsor eseményindító írási egy dokumentumot
 * Üzenetsor-trigger, dokumentumok írása `IAsyncCollector` használatával
 
-Tekintse meg a példák egy egyszerű `ToDoItem` típusa:
+A példák egy egyszerű `ToDoItem` típusra vonatkoznak:
 
 ```cs
 namespace CosmosDBSamplesV1
@@ -1169,7 +1169,7 @@ namespace CosmosDBSamplesV1
 
 ### <a name="queue-trigger-write-one-doc"></a>Üzenetsor eseményindító írási egy dokumentumot
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) egy dokumentumot, amely hozzáad egy adatbázishoz, message Queue storage-ból a megadott adatok használatával.
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely egy dokumentumot ad hozzá egy adatbázishoz, a várólista-tárolóból származó adatok felhasználásával.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -1200,7 +1200,7 @@ namespace CosmosDBSamplesV1
 
 ### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Üzenetsor eseményindító írási docs IAsyncCollector használatával
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) dokumentumok gyűjteménye, amely ad egy adatbázishoz, az adatok JSON üzenetsori üzenet megadott.
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely dokumentumok gyűjteményét adja hozzá egy adatbázishoz egy üzenetsor-üzenet JSON-fájljában megadott adat használatával.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -1242,7 +1242,7 @@ Ez a szakasz tartalmazza az alábbi példák:
 
 ### <a name="queue-trigger-write-one-doc"></a>Üzenetsor eseményindító írási egy dokumentumot
 
-Az alábbi példa bemutatja egy Azure Cosmos DB kimeneti kötésének az egy *function.json* fájl és a egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely a kötés használja. A függvény egy bemeneti várólista-kötést használja egy üzenetsor, amely megkapja a JSON a következő formátumban:
+Az alábbi példa egy Azure Cosmos db kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény egy bemeneti várólista-kötést használja egy üzenetsor, amely megkapja a JSON a következő formátumban:
 
 ```json
 {
@@ -1263,7 +1263,7 @@ A függvény minden egyes rekord a következő formátumban hozza létre az Azur
 }
 ```
 
-Itt van a kötési adatait a *function.json* fájlt:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -1277,7 +1277,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 }
 ```
 
-A [konfigurációs](#output---configuration) szakasz mutatja be ezeket a tulajdonságokat.
+A [konfigurációs](#output---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
 Íme a C#-szkriptkódot:
 
@@ -1304,9 +1304,9 @@ A [konfigurációs](#output---configuration) szakasz mutatja be ezeket a tulajdo
 
 ### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Üzenetsor eseményindító írási docs IAsyncCollector használatával
 
-Több dokumentumot létrehozni, hogy hozhasson létre `ICollector<T>` vagy `IAsyncCollector<T>` ahol `T` a támogatott típusok egyike.
+Több dokumentum létrehozásához kötni `ICollector<T>` vagy `IAsyncCollector<T>`, ahol a `T` a támogatott típusok egyike.
 
-Ebben a példában egy egyszerű hivatkozik `ToDoItem` típusa:
+Ez a példa egy egyszerű `ToDoItem` típusra hivatkozik:
 
 ```cs
 namespace CosmosDBSamplesV1
@@ -1363,7 +1363,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa bemutatja egy Azure Cosmos DB kimeneti kötésének az egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja. A függvény egy bemeneti várólista-kötést használja egy üzenetsor, amely megkapja a JSON a következő formátumban:
+Az alábbi példa egy Azure Cosmos DB kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény egy bemeneti várólista-kötést használja egy üzenetsor, amely megkapja a JSON a következő formátumban:
 
 ```json
 {
@@ -1384,7 +1384,7 @@ A függvény minden egyes rekord a következő formátumban hozza létre az Azur
 }
 ```
 
-Itt van a kötési adatait a *function.json* fájlt:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -1398,7 +1398,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 }
 ```
 
-A [konfigurációs](#output---configuration) szakasz mutatja be ezeket a tulajdonságokat.
+A [konfigurációs](#output---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
 A következő JavaScript-kódot:
 
@@ -1422,9 +1422,9 @@ A következő JavaScript-kódot:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) attribútum.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) attribútumot.
 
-Az attribútum konstruktorának paramétereként meg az adatbázis és gyűjtemény nevét. Ezek a beállítások és más tulajdonságokat is beállíthat kapcsolatos információkért lásd: [kimenete – konfigurációs](#output---configuration). Íme egy `DocumentDB` attribútum példa egy podpis metody:
+Az attribútum konstruktorának paramétereként meg az adatbázis és gyűjtemény nevét. További információ ezekről a beállításokról és a konfigurálható egyéb tulajdonságokról: [kimeneti konfiguráció](#output---configuration). Példa `DocumentDB` attribútumra a metódus-aláírásban:
 
 ```csharp
     [FunctionName("QueueToDocDB")]
@@ -1450,25 +1450,25 @@ A JavaScript nem támogatja az attribútumokat.
 
 ## <a name="output---configuration"></a>Kimenete – konfiguráció
 
-A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `DocumentDB` attribútum.
+Az alábbi táblázat a *function. JSON* fájlban és a `DocumentDB` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type**     || Meg kell `documentdb`.        |
-|**direction**     || Meg kell `out`.         |
-|**name**     || A kötési paraméter, amely a dokumentumot, a függvény neve.  |
-|**databaseName** | **databaseName**|Az a gyűjtemény, amelyben létrehozza a dokumentumban tartalmazó adatbázis.     |
-|**collectionName** |**collectionName**  | A gyűjtemény, amelyben létrehozza a dokumentumban neve. |
-|**createIfNotExists**  |**CreateIfNotExists**    | Logikai érték jelzi, hogy a gyűjtemény létrehozásakor a rendszer még nem létezik. Az alapértelmezett érték *hamis* , mert az új gyűjtemény hozható létre fenntartott átviteli sebesség, amelynek költsége van hatással. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/documentdb/) olvasható.  |
-|**partitionKey**|**PartitionKey** |Amikor `CreateIfNotExists` értéke true, határozza meg a partíciós kulcs elérési útja a létrehozott gyűjteményre.|
-|**collectionThroughput**|**collectionThroughput**| Amikor `CreateIfNotExists` értéke true, határozza meg a [átviteli](../cosmos-db/set-throughput.md) a létrehozott gyűjtemény.|
+|**type**     || `documentdb`értékre kell állítani.        |
+|**direction**     || `out`értékre kell állítani.         |
+|**név**     || A kötési paraméter, amely a dokumentumot, a függvény neve.  |
+|**databaseName** | **DatabaseName**|Az a gyűjtemény, amelyben létrehozza a dokumentumban tartalmazó adatbázis.     |
+|**collectionName** |**CollectionName**  | A gyűjtemény, amelyben létrehozza a dokumentumban neve. |
+|**Createifnotexists metódust**  |**Createifnotexists metódust**    | Logikai érték jelzi, hogy a gyűjtemény létrehozásakor a rendszer még nem létezik. Az alapértelmezett érték a *false (hamis* ), mert az új gyűjtemények fenntartott átviteli sebességgel jönnek létre, ami a költségeket is érinti. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/documentdb/) olvasható.  |
+|**partitionKey**|**PartitionKey** |Ha a `CreateIfNotExists` értéke TRUE (igaz), a a létrehozott gyűjteményhez tartozó partíciós kulcs elérési útját határozza meg.|
+|**collectionThroughput**|**CollectionThroughput**| Ha `CreateIfNotExists` értéke TRUE (igaz), meghatározza a létrehozott gyűjtemény [átviteli sebességét](../cosmos-db/set-throughput.md) .|
 |**kapcsolat**    |**ConnectionStringSetting** |Az Azure Cosmos DB kapcsolati sztringjét tartalmazó alkalmazásbeállítás neve.        |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="output---usage"></a>Kimenet – használat
 
-Alapértelmezés szerint ha a függvényben a kimeneti paraméter írni egy dokumentum létrehozása az adatbázisban. Ebben a dokumentumban az automatikusan előállított GUID Azonosítóhoz megegyezik a dokumentum azonosítója. Megadhatja a kimeneti dokumentum a dokumentumazonosító megadásával a `id` a kimeneti paraméter átadott tulajdonság a JSON-objektumban.
+Alapértelmezés szerint ha a függvényben a kimeneti paraméter írni egy dokumentum létrehozása az adatbázisban. Ebben a dokumentumban az automatikusan előállított GUID Azonosítóhoz megegyezik a dokumentum azonosítója. A kimeneti dokumentumhoz tartozó dokumentum AZONOSÍTÓjának megadásához adja meg a kimeneti paraméternek átadott JSON-objektum `id` tulajdonságát.
 
 > [!Note]
 > Létező dokumentum Azonosítóját adja meg, ha azt az új kimeneti dokumentum szerint felülíródik.
@@ -1481,8 +1481,8 @@ Alapértelmezés szerint ha a függvényben a kimeneti paraméter írni egy doku
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További tudnivalók a Cosmos DB-vel számítástechnika, kiszolgáló nélküli adatbázis](../cosmos-db/serverless-computing-database.md)
-* [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
+* [További információ a kiszolgáló nélküli adatbázis-számítástechnika Cosmos DB](../cosmos-db/serverless-computing-database.md)
+* [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)
 
 <!---
 > [!div class="nextstepaction"]

@@ -1,6 +1,6 @@
 ---
-title: Security framework - Azure IoT Edge | Microsoft Docs
-description: Learn about the security, authentication, and authorization standards that were used to develop Azure IoT Edge and should be considered as you design your solution
+title: Biztonsági keretrendszer – Azure IoT Edge |} A Microsoft Docs
+description: Ismerje meg a biztonsági, hitelesítési és engedélyezési szabványok gyűjteménye, amelyek az Azure IoT Edge fejlesztéséhez használt, és érdemes figyelembe venni, mivel a megoldás megtervezése
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -15,71 +15,71 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452449"
 ---
-# <a name="security-standards-for-azure-iot-edge"></a>Security standards for Azure IoT Edge
+# <a name="security-standards-for-azure-iot-edge"></a>Az Azure IoT Edge biztonsági szabványait
 
-Azure IoT Edge addresses the risks that are inherent when moving your data and analytics to the intelligent edge. The IoT Edge security standards balance flexibility for different deployment scenarios with the protection that you expect from all Azure services. 
+A Azure IoT Edge az adatai és az elemzések intelligens peremhálózatba való áthelyezésekor rejlő kockázatokat kezeli. A IoT Edge biztonsági szabványok rugalmasságot biztosítanak a különböző üzembe helyezési forgatókönyvek számára az összes Azure-szolgáltatástól várt védelemmel. 
 
-IoT Edge runs on various makes and models of hardware, supports several operating systems, and applies to diverse deployment scenarios. The risk of a deployment scenario depends on factors that include solution ownership, deployment geography, data sensitivity, privacy, application vertical, and regulatory requirements. Rather than offering concrete solutions for specific scenarios, IoT Edge is an extensible security framework based on well-grounded principles that are designed for scale. 
+IoT Edge a hardver különböző modelljein és típusain fut, több operációs rendszert támogat, és különböző üzembe helyezési forgatókönyvekre vonatkozik. Az üzembe helyezési forgatókönyvek kockázata a megoldás tulajdonjogát, a központi telepítési földrajzot, az adatok érzékenységét, az adatvédelmet, az alkalmazás vertikális és szabályozási követelményeit is magában foglalja. Ahelyett, hogy konkrét megoldásokat kínál konkrét forgatókönyvekhez, IoT Edge egy bővíthető biztonsági keretrendszer, amely a méretezéshez tervezett, jól megalapozott alapelveken alapul. 
  
-This article provides an overview of the IoT Edge security framework. For more information, see [Securing the intelligent edge](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
+Ez a cikk áttekintést nyújt a IoT Edge biztonsági keretrendszerről. További információ: [az intelligens peremhálózat biztonságossá tétele](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
 
-## <a name="standards"></a>Standards
+## <a name="standards"></a>Szabványok
 
-Standards promote ease of scrutiny and ease of implementation, both of which are hallmarks of security. A security solution should lend itself to scrutiny under evaluation to build trust and shouldn't be a hurdle to deployment. The design of the framework to secure Azure IoT Edge is based on time-tested and industry proven security protocols for familiarity and reuse. 
+A szabványok megkönnyítik az alapos vizsgálatot és a könnyű megvalósítást, mindkettő a biztonság szempontjából fémjelzi. A biztonsági megoldásnak a kiértékelés alatt meg kell adniuk a megbízhatóságot, és nem szabad az üzembe helyezés akadálya. A Azure IoT Edge biztonságossá tételének kialakítása az idő és az iparág által bizonyítottan jól bevált biztonsági protokollokon alapul. 
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
-When you deploy an IoT solution, you need to know that only trusted actors, devices, and modules have access to your solution. Certificate-based authentication is the primary mechanism for authentication for the Azure IoT Edge platform. This mechanism is derived from a set of standards governing Public Key Infrastructure (PKiX) by the Internet Engineering Task Force (IETF).     
+IoT-megoldás üzembe helyezésekor tudnia kell, hogy csak a megbízható szereplők, eszközök és modulok férhetnek hozzá a megoldáshoz. A tanúsítványalapú hitelesítés a Azure IoT Edge platform hitelesítésének elsődleges mechanizmusa. Ez a mechanizmus a nyilvános kulcsokra épülő infrastruktúrát (PKiX) az Internet Engineering Task Force (IETF) által szabályozott szabványok összessége alapján származtatja.     
 
-All devices, modules, and actors interacting with the Azure IoT Edge device, whether physically or through a network connection, should have unique certificate identities. Not every scenario or component may lend itself to certificate-based authentication, so the extensibility of the security framework offers secure alternatives. 
+A Azure IoT Edge eszközzel (akár fizikailag, akár hálózati kapcsolatban) kommunikáló összes eszköznek, modulnak és szereplőnek egyedi tanúsítvány-identitással kell rendelkeznie. Nem minden forgatókönyv vagy összetevő használhat tanúsítvány alapú hitelesítést, így a biztonsági keretrendszer bővíthetősége biztonságos alternatívákat biztosít. 
 
-For more information, see [Azure IoT Edge certificate usage](iot-edge-certs.md).
+További információ: [Azure IoT Edge tanúsítvány használata](iot-edge-certs.md).
 
 ## <a name="authorization"></a>Engedélyezés
 
-The principle of least privilege says that users and components of a system should have access only to the minimum set of resources and data needed to perform their roles. Devices, modules, and actors should access only the resources and data within their permission scope, and only when it is architecturally allowable. Some permissions are configurable with sufficient privileges and others are architecturally enforced.  For example, some modules may be authorized to connect to Azure IoT Hub. However, there is no reason why a module in one IoT Edge device should access the twin of a module in another IoT Edge device.
+A legalacsonyabb jogosultság elve azt jelenti, hogy a rendszer felhasználóinak és összetevőinek csak a szerepkörök végrehajtásához szükséges erőforrások és adatok minimális készletéhez kell hozzáféréssel rendelkezniük. Az eszközök, modulok és színészek csak a jogosultsági hatókörén belüli erőforrásokhoz és információkhoz férnek hozzá, és csak akkor, ha az architektúra engedélyezve van. Bizonyos engedélyek megfelelő jogosultságokkal konfigurálhatók, mások pedig építészeti szempontból kényszerítve vannak.  Előfordulhat például, hogy egyes modulok engedélyt kapnak az Azure IoT Hubhoz való kapcsolódásra. Azonban nincs ok arra, hogy az egyik IoT Edge eszközhöz tartozó modul egy másik IoT Edge eszközben is hozzáférhessen egy modulhoz.
 
-Other authorization schemes include certificate signing rights and role-based access control (RBAC). 
+Más engedélyezési sémák közé tartozik a tanúsítvány-aláírási jogosultságok és a szerepköralapú hozzáférés-vezérlés (RBAC). 
 
-## <a name="attestation"></a>Attestation
+## <a name="attestation"></a>Igazolás
 
-Attestation ensures the integrity of software bits, which is important for detecting and preventing malware.  The Azure IoT Edge security framework classifies attestation under three main categories:
+Az igazolás biztosítja a szoftveres BITS integritását, ami fontos a kártevők észleléséhez és megelőzéséhez.  A Azure IoT Edge biztonsági keretrendszer három fő kategória alapján osztályozza az igazolást:
 
-* Static attestation
-* Runtime attestation
-* Software attestation
+* Statikus igazolás
+* Futtatókörnyezet-igazolás
+* Szoftver-igazolás
 
-### <a name="static-attestation"></a>Static attestation
+### <a name="static-attestation"></a>Statikus igazolás
 
-Static attestation verifies the integrity of all software on a device during power-up, including the operating system, all runtimes, and configuration information. Because static attestation occurs during power-up, it's often referred to as secure boot. The security framework for IoT Edge devices extends to manufacturers and incorporates secure hardware capabilities that assure static attestation processes. These processes include secure boot and secure firmware upgrade.  Working in close collaboration with silicon vendors eliminates superfluous firmware layers, so minimizes the threat surface. 
+A statikus igazolás ellenőrzi az eszközön lévő összes szoftver integritását az áramellátás során, beleértve az operációs rendszert, az összes futtatókörnyezetet és a konfigurációs információt. Mivel a kikapcsolás során statikus igazolás történik, gyakran biztonságos rendszerindítás néven is ismert. A IoT Edge eszközök biztonsági keretrendszere kiterjed a gyártókra, és olyan biztonságos hardver-képességeket tartalmaz, amelyek biztosítják a statikus igazolási folyamatokat. Ezek a folyamatok a biztonságos rendszerindítást és a biztonságos belső vezérlőprogram frissítését tartalmazzák.  A szilícium-szállítókkal folytatott szoros együttműködés során a felesleges belső vezérlőprogram-rétegek elkerülhetők, így a fenyegetések felszínét csökkentik. 
 
-### <a name="runtime-attestation"></a>Runtime attestation
+### <a name="runtime-attestation"></a>Futtatókörnyezet-igazolás
 
-Once a system has completed a secure boot process, well-designed systems should detect attempts to inject malware and take proper countermeasures. Malware attacks may target the system's ports and interfaces. If malicious actors have physical access to a device, they may tamper with the device itself or use side-channel attacks to gain access. Such malcontent, whether malware or unauthorized configuration changes, can't be detected by static attestation because it is injected after the boot process. Countermeasures offered or enforced by the device’s hardware help to ward off such threats.  The security framework for IoT Edge explicitly calls for extensions that combat runtime threats.  
+Miután egy rendszer elvégezte a biztonságos rendszerindítást, a jól megtervezett rendszereknek fel kell ismerniük a kártevők beadására tett kísérleteket és a megfelelő ellenintézkedéseket. A kártevők elleni támadások a rendszerek portjait és felületeit célozzák meg. Ha a rosszindulatú szereplők fizikailag férnek hozzá egy eszközhöz, az eszköz maga is meghamisíthatja az eszközt, vagy használhatja a csatornákon keresztüli támadásokat, hogy hozzáférjenek. Az ilyen malcontent, függetlenül attól, hogy a kártevők és a jogosulatlan módosítások nem észlelhetők-e statikus igazolással, mert a rendszer a rendszerindítási folyamat után fecskendez. Az eszköz hardveres súgója által kínált vagy kényszerített ellenintézkedések az ilyen fenyegetések kivédéséhez.  A IoT Edge biztonsági keretrendszere explicit módon olyan bővítményeket hív meg, amelyek a futásidejű fenyegetések elleni küzdelemre irányulnak.  
 
-### <a name="software-attestation"></a>Software attestation
+### <a name="software-attestation"></a>Szoftver-igazolás
 
-All healthy systems, including intelligent edge systems, need patches and upgrades.  Security is important for update processes, otherwise they can be potential threat vectors.  The security framework for IoT Edge calls for updates through measured and signed packages to assure the integrity of and authenticate the source of the packages.  This standard applies to all operating systems and application software bits. 
+Az összes kifogástalan állapotú rendszernek, beleértve az intelligens peremhálózati rendszereket, javításokat és frissítéseket kell használnia.  A biztonsági frissítések fontosak a frissítési folyamatokhoz, ellenkező esetben lehetséges veszélyforrások lehetnek.  A IoT Edge biztonsági keretrendszere a mért és aláírt csomagok alapján kéri a frissítéseket a csomagok forrásának integritásának és hitelesítésének biztosítására.  Ez a szabvány az összes operációs rendszerre és alkalmazás szoftveres BITS-re vonatkozik. 
 
-## <a name="hardware-root-of-trust"></a>Hardware root of trust
+## <a name="hardware-root-of-trust"></a>Hardver legfelső szintű megbízhatóság
 
-For many intelligent edge devices, especially devices that can be physically accessed by potential malicious actors, hardware security is the last defense for protection. Tamper resistant hardware is crucial for such deployments. Azure IoT Edge encourages secure silicon hardware vendors to offer different flavors of hardware root of trust to accommodate various risk profiles and deployment scenarios. Hardware trust may come from common security protocol standards like Trusted Platform Module (ISO/IEC 11889) and Trusted Computing Group’s Device Identifier Composition Engine (DICE). Secure enclave technologies like TrustZones and Software Guard Extensions (SGX) also provide hardware trust. 
+Számos intelligens peremhálózati eszközhöz, különösen azokhoz az eszközökhöz, amelyekhez a potenciális kártékony szereplők fizikailag hozzáférhetnek, a hardveres biztonság a védelem utolsó védelmi lehetősége. Az ilyen üzembe helyezések esetében elengedhetetlen a jogosulatlanul védett hardverek használata. Azure IoT Edge arra ösztönzi a biztonságos szilícium-gyártókat, hogy a különböző kockázati profilok és üzembe helyezési forgatókönyvek esetében különböző típusú hardveres megbízhatósági kapcsolatot nyújtsanak A hardveres megbízhatóság a közös biztonsági protokollok (például a platformmegbízhatósági modul (ISO/IEC 11889) és a Trusted Computing Group eszköz-azonosító összeállítási motorja (DICE) esetében lehet. A biztonságos enklávé-technológiák, például a TrustZones és a Software Guard Extensions (SGX ENKLÁVÉHOZ) is biztosítanak hardveres megbízhatóságot. 
 
-## <a name="certification"></a>Minősítés
+## <a name="certification"></a>Tanúsítvány
 
-To help customers make informed decisions when procuring Azure IoT Edge devices for their deployment, the IoT Edge framework includes certification requirements.  Foundational to these requirements are certifications pertaining to security claims and certifications pertaining to validation of the security implementation.  For example, a security claim certification means that the IoT Edge device uses secure hardware known to resist boot attacks. A validation certification means that the secure hardware was properly implemented to offer this value in the device.  In keeping with the principle of simplicity, the framework tries to keep the burden of certification minimal.   
+Annak érdekében, hogy az ügyfelek tájékozott döntéseket hozhassanak Azure IoT Edge eszközeinek beszerzése során az üzembe helyezéshez, a IoT Edge keretrendszer tartalmaz minősítési követelményeket.  Ezeknek a követelményeknek a megalapozása a biztonsági jogcímek és a biztonság megvalósításának érvényesítésére vonatkozó minősítések.  A biztonsági jogcímek tanúsítványa például azt jelenti, hogy a IoT Edge eszköz biztonságos hardvert használ, amely képes a rendszerindítási támadásokra. Az érvényesítési tanúsítvány azt jelenti, hogy a biztonságos hardver megfelelően lett megvalósítva, hogy felkínálja ezt az értéket az eszközön.  Az egyszerűség elve miatt a keretrendszer minimálisan igyekszik megtartani a minősítés terheit.   
 
 ## <a name="extensibility"></a>Bővíthetőség
 
-With IoT technology driving different types of business transformations, security should evolve in parallel to address emerging scenarios.  The Azure IoT Edge security framework starts with a solid foundation on which it builds in extensibility into different dimensions to include: 
+A IoT technológia különböző típusú üzleti átalakításokat vezet be, a biztonságnak párhuzamosan kell fejlődni az új forgatókönyvek kezeléséhez.  A Azure IoT Edge biztonsági keretrendszer egy olyan szilárd alaptal kezdődik, amelyen a bővíthetővé válik a különböző dimenziók között: 
 
-* First party security services like the Device Provisioning Service for Azure IoT Hub.
-* Third-party services like managed security services for different application verticals (like industrial or healthcare) or technology focus (like security monitoring in mesh networks, or silicon hardware attestation services) through a rich network of partners.
-* Legacy systems to include retrofitting with alternate security strategies, like using secure technology other than certificates for authentication and identity management.
-* Secure hardware for adoption of emerging secure hardware technologies and silicon partner contributions.
+* Belső biztonsági szolgáltatásokba, mint a Device Provisioning Service az Azure IoT Hub.
+* Harmadik féltől származó szolgáltatások, mint például a felügyelt biztonsági szolgáltatások a különböző alkalmazás-vertikális eszközökhöz (például az ipari vagy az egészségügyi szolgáltatáshoz) vagy a technológiai fókuszhoz (például a Mesh hálózatokban vagy a szilícium-tanúsítványok igazolási szolgáltatásaiban) egy gazdag hálózatán keresztül partnerek.
+* Tartalmazza a helyettesítő biztonsági stratégiák, történő régebbi rendszerekkel, mint tanúsítványok nem biztonságos technológia használatával hitelesítést és identitáskezelést biztosít a.
+* Biztonságos hardver a feltörekvő biztonságos hardveres technológiák és a szilícium-partnerek hozzájárulásainak bevezetéséhez.
 
-In the end, securing the intelligent edge requires collaborative contributions from an open community driven by the common interest in securing IoT.  These contributions might be in the form of secure technologies or services.  The Azure IoT Edge security framework offers a solid foundation for security that is extensible for the maximum coverage to offer the same level of trust and integrity in the intelligent edge as with Azure cloud.  
+Az intelligens peremhálózat biztonságossá tétele érdekében a IoT védelmének közös érdeke a nyílt Közösségtől származó együttműködésen alapuló hozzájárulásokat igényel.  Ezek a hozzájárulások biztonságos technológiák vagy szolgáltatások formájában lehetnek.  A Azure IoT Edge biztonsági keretrendszer egy stabil alapot biztosít a biztonság számára, amely a maximális lefedettség érdekében bővíthető, és az Azure-felhővel megegyező megbízhatóságot és integritást biztosít az intelligens környezetekben.  
 
 ## <a name="next-steps"></a>Következő lépések
 
-Read more about how Azure IoT Edge is [Securing the intelligent edge](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
+További információ a Azure IoT Edge az [intelligens peremhálózat biztonságossá](https://azure.microsoft.com/blog/securing-the-intelligent-edge/)tételéről.

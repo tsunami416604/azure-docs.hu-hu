@@ -13,9 +13,9 @@ ms.locfileid: "74451528"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Sablon üzembe helyezése a Cloud Shellből
 
-A sablon üzembe helyezéséhez a [Cloud Shell](../articles/cloud-shell/overview.md) is használható. To deploy an external template, provide the URI of the template exactly as you would for any external deployment. To deploy a local template, you must first load your template into the storage account for your Cloud Shell. This section describes how to load the template to your cloud shell account, and deploy it as a local file. If you haven't used Cloud Shell, see [Overview of Azure Cloud Shell](../articles/cloud-shell/overview.md) for information about setting it up.
+A sablon üzembe helyezéséhez a [Cloud Shell](../articles/cloud-shell/overview.md) is használható. Külső sablon üzembe helyezéséhez pontosan úgy adja meg a sablon URI-JÁT, mint bármely külső központi telepítésnél. Helyi sablon üzembe helyezéséhez először be kell töltenie a sablont a Cloud Shell Storage-fiókjába. Ez a szakasz azt ismerteti, hogyan tölthető be a sablon a Cloud Shell-fiókjába, és hogyan telepíthető helyi fájlként. Ha még nem használta a Cloud Shellt, tekintse meg a [Azure Cloud Shell áttekintése](../articles/cloud-shell/overview.md) című témakört, amely a beállításával kapcsolatos információkat tartalmazza.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. Válassza ki a Cloud Shell-erőforráscsoportot. A névminta a következő: `cloud-shell-storage-<region>`.
 
@@ -33,29 +33,29 @@ A sablon üzembe helyezéséhez a [Cloud Shell](../articles/cloud-shell/overview
 
    ![Tároló hozzáadása](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. Give your container a name and an access level. The sample template in this article contains no sensitive information, so allow anonymous read access. Kattintson az **OK** gombra.
+1. Adja meg a tároló nevét és hozzáférési szintjét. A cikkben szereplő sablon nem tartalmaz bizalmas adatokat, ezért engedélyezze a névtelen olvasási hozzáférést. Kattintson az **OK** gombra.
 
-   ![Provide container values](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
+   ![Tároló értékeinek megadása](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
-1. Select the container you created.
+1. Válassza ki a létrehozott tárolót.
 
-   ![Select new container](./media/resource-manager-cloud-shell-deploy/select-container.png)
+   ![Új tároló kiválasztása](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
 1. Válassza a **Feltöltés** lehetőséget.
 
-   ![Upload blob](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
+   ![BLOB feltöltése](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 
 1. Keresse meg és töltse fel a sablont.
 
    ![Fájl feltöltése](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
 
-1. After it has uploaded, select the template.
+1. A feltöltést követően válassza ki a sablont.
 
-   ![Select new template](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
+   ![Új sablon kiválasztása](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
 
-1. Copy the URL.
+1. Másolja ki az URL-címet.
 
-   ![Copy URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
+   ![URL-cím másolása](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. Nyissa meg a parancssort.
 

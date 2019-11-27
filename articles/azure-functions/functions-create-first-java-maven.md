@@ -1,6 +1,6 @@
 ---
-title: Use Java and Maven to publish a function to Azure
-description: Create and publish an HTTP-triggered function to Azure with Java and Maven.
+title: Függvények közzététele az Azure-ban a Java és a Maven használatával
+description: Hozzon létre és tegyen közzé egy HTTP által aktivált függvényt az Azure-ban a Java és a Maven használatával.
 author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
@@ -12,9 +12,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230745"
 ---
-# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Quickstart: Use Java and Maven to create and publish a function to Azure
+# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Gyors útmutató: függvények létrehozása és közzététele az Azure-ban a Java és a Maven használatával
 
-This article shows you how to build and publish a Java function to Azure Functions with the Maven command-line tool. When you're done, your function code runs in Azure in a [serverless hosting plan](functions-scale.md#consumption-plan) and is triggered by an HTTP request.
+Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Java-függvényeket Azure Functions a Maven parancssori eszközzel. Ha elkészült, a függvény kódja egy [kiszolgáló nélküli üzemeltetési](functions-scale.md#consumption-plan) csomagban fut az Azure-ban, és egy HTTP-kérelem indítja el.
 
 <!--
 > [!NOTE] 
@@ -23,12 +23,12 @@ This article shows you how to build and publish a Java function to Azure Functio
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-To develop functions using Java, you must have the following installed:
+A Java-t használó függvények fejlesztéséhez a következőkre van szükség:
 
-- [Java Developer Kit](https://aka.ms/azure-jdks), version 8
-- [Apache Maven](https://maven.apache.org), version 3.0 or above
+- [Java Developer Kit](https://aka.ms/azure-jdks), 8-as verzió
+- [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió
 - [Azure CLI]
-- [Azure Functions Core Tools](./functions-run-local.md#v2) version 2.6.666 or above
+- [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.666 vagy újabb verzió
 - Azure-előfizetés.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -50,7 +50,7 @@ mvn archetype:generate \
 ```
 
 > [!NOTE]
-> If you're experiencing issues with running the command, take a look at what `maven-archetype-plugin` version is used. Because you are running the command in an empty directory with no `.pom` file, it might be attempting to use a plugin of the older version from `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` if you upgraded your Maven from an older version. If so, try deleting the `maven-archetype-plugin` directory and re-running the command.
+> Ha a parancs futtatásával kapcsolatos problémákat tapasztal, tekintse meg, hogy milyen `maven-archetype-plugin`-verziót használ. Mivel a parancsot egy `.pom` fájl nélküli üres könyvtárban futtatja, előfordulhat, hogy a korábbi verzió beépülő modulját szeretné használni a `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin`ról, ha a Mavent egy régebbi verzióról frissítette. Ha igen, próbálja meg törölni a `maven-archetype-plugin` könyvtárat, és futtassa újra a parancsot.
 
 ### <a name="windows"></a>Windows
 
@@ -66,27 +66,27 @@ mvn archetype:generate ^
     "-DarchetypeArtifactId=azure-functions-archetype"
 ```
 
-Maven asks you for values needed to finish generating the project on deployment. Provide the following values when prompted:
+A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának befejezéséhez szükséges értékeket is megkeresse. Ha a rendszer kéri, adja meg a következő értékeket:
 
-| Value (Díj) | Leírás |
+| Érték | Leírás |
 | ----- | ----------- |
-| **groupId** | A value that uniquely identifies your project across all projects, following the [package naming rules](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) for Java. The examples in this quickstart use `com.fabrikam.functions`. |
-| **artifactId** | A value that is the name of the jar, without a version number. The examples in this quickstart use `fabrikam-functions`. |
-| **version** | Choose the default value of `1.0-SNAPSHOT`. |
-| **package** | A value that is the Java package for the generated function code. Használja az alapértelmezettet. The examples in this quickstart use `com.fabrikam.functions`. |
-| **appName** | Globally unique name that identifies your new function app in Azure. Use the default, which is the _artifactId_ appended with a random number. Make a note of this value, you'll need it later. |
-| **appRegion** | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. A mező alapértelmezett értéke: `westus`. Run this [Azure CLI] command to get a list of all regions:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **resourceGroup** | Name for the new [resource group](../azure-resource-manager/resource-group-overview.md) in which to create your function app. Use `myResourceGroup`, which is used by examples in this quickstart. A resource group must be unique to your Azure subscription.|
+| **groupId** | Egy érték, amely egyedileg azonosítja a projektet az összes projektben, a Java [csomag elnevezési szabályait](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) követve. Az ebben a rövid útmutatóban szereplő példák a `com.fabrikam.functions`t használják. |
+| **artifactId** | Egy érték, amely a jar neve, verziószám nélkül. Az ebben a rövid útmutatóban szereplő példák a `fabrikam-functions`t használják. |
+| **verziója** | Válassza ki `1.0-SNAPSHOT`alapértelmezett értékét. |
+| **csomag** | Egy érték, amely a generált függvény kódjához tartozó Java-csomag. Használja az alapértelmezettet. Az ebben a rövid útmutatóban szereplő példák a `com.fabrikam.functions`t használják. |
+| **appName** | Globálisan egyedi név, amely azonosítja az új Function alkalmazást az Azure-ban. Használja az alapértelmezett értéket, amely a _artifactId_ hozzáfűzése véletlenszerű számmal. Jegyezze fel ezt az értéket, ezért később szüksége lesz rá. |
+| **appRegion** | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. A mező alapértelmezett értéke: `westus`. Futtassa ezt az [Azure CLI] -parancsot az összes régió listájának lekéréséhez:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
+| **resourceGroup** | Az új [erőforráscsoport](../azure-resource-manager/resource-group-overview.md) neve, amelyben létre szeretné hozni a Function alkalmazást. Használja a `myResourceGroup`, amelyet a jelen rövid útmutató példákban használ. Az erőforráscsoporthoz egyedinek kell lennie az Azure-előfizetésében.|
 
-Type `Y` or press Enter to confirm.
+A megerősítéshez írja be `Y` vagy nyomja le az ENTER billentyűt.
 
-Maven creates the project files in a new folder with a name of _artifactId_, which in this example is `fabrikam-functions`. 
+A Maven létrehoz egy új, _artifactId_nevű mappában található projektfájlt, amely ebben a példában `fabrikam-functions`. 
 
-Open the new Function.java file from the *src/main/java* path in a text editor and review the generated code. This code is an [HTTP triggered](functions-bindings-http-webhook.md) function that echoes the body of the request. 
+Nyissa meg az új function. Java fájlt egy szövegszerkesztőben a *src/Main/Java* elérési útról, és tekintse át a generált kódot. Ez a kód egy [http által aktivált](functions-bindings-http-webhook.md) függvény, amely megismétli a kérelem törzsét. 
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
-Run the following command, which changes the directory to the newly created project folder, then builds and runs the function project:
+Futtassa a következő parancsot, amely módosítja a könyvtárat az újonnan létrehozott projekt mappájába, majd létrehozza és futtatja a Function projektet:
 
 ```console
 cd fabrikam-function
@@ -94,7 +94,7 @@ mvn clean package
 mvn azure-functions:run
 ```
 
-You see output like the following from Azure Functions Core Tools when you run the project locally:
+A következőhöz hasonló kimenet jelenik meg Azure Functions Core Tools a projekt helyi futtatásakor:
 
 ```Output
 ...
@@ -108,7 +108,7 @@ Http Functions:
 ...
 ```
 
-Trigger the function from the command line using cURL in a new terminal window:
+Aktiválja a függvényt a parancssorból a cURL használatával egy új terminál ablakban:
 
 ```CMD
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
@@ -117,61 +117,61 @@ curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```Output
 Hello AzureFunctions!
 ```
-The [function key](functions-bindings-http-webhook.md#authorization-keys) isn't required when running locally. A `Ctrl+C` billentyűparanccsal állítsa le a függvénykódot a terminálablakban.
+Helyileg történő futtatás esetén a [funkcióbillentyű](functions-bindings-http-webhook.md#authorization-keys) nem szükséges. A `Ctrl+C` billentyűparanccsal állítsa le a függvénykódot a terminálablakban.
 
 ## <a name="deploy-the-function-to-azure"></a>A függvény üzembe helyezése az Azure-ban
 
-A function app and related resources are created in Azure when you first deploy your function app. Before you can deploy, use the [az login](/cli/azure/authenticate-azure-cli) Azure CLI command to sign in to your Azure subscription. 
+A Function alkalmazást és a kapcsolódó erőforrásokat az Azure-ban hozza létre a rendszer az első üzembe helyezéskor. Az üzembe helyezés előtt az az [login](/cli/azure/authenticate-azure-cli) Azure CLI-paranccsal jelentkezzen be az Azure-előfizetésbe. 
 
 ```azurecli
 az login
 ```
 
 > [!TIP]
-> If your account can access multiple subscriptions, use [az account set](/cli/azure/account#az-account-set) to set the default subscription for this session. 
+> Ha a fiókja több előfizetéshez is hozzáfér, az [az Account set](/cli/azure/account#az-account-set) paranccsal állíthatja be az alapértelmezett előfizetést ehhez a munkamenethez. 
 
-Use the following Maven command to deploy your project to a new function app. 
+A következő Maven-paranccsal telepítheti a projektet egy új Function alkalmazásba. 
 
 ```azurecli
 mvn azure-functions:deploy
 ```
 
-This `azure-functions:deploy` Maven target creates the following resources in Azure:
+Ez a `azure-functions:deploy` Maven-cél a következő erőforrásokat hozza létre az Azure-ban:
 
-+ Resource group. Named with the _resourceGroup_ you supplied.
-+ Storage account. Required by Functions. The name is generated randomly based on Storage account name requirements.
-+ App service plan. Serverless hosting for your function app in the specified _appRegion_. The name is generated randomly.
-+ Function app. A function app is the deployment and execution unit for your functions. The name is your _appName_, appended with a randomly generated number. 
++ Erőforráscsoport. Elnevezve a megadott _resourceGroup_ .
++ Storage-fiók. A függvények igénylik. A név véletlenszerűen jön létre a Storage-fióknév követelményei alapján.
++ App Service-csomag. A megadott _appRegion_lévő Function App kiszolgáló nélküli üzemeltetése. A név véletlenszerűen jön létre.
++ Function alkalmazás. A functions alkalmazás a függvények üzembe helyezési és végrehajtási egysége. A név a _appName_, amely véletlenszerűen generált számmal van hozzáfűzve. 
 
-The deployment also packages the project files and deploys them to the new function app using [zip deployment](functions-deployment-technologies.md#zip-deploy), with run-from-package mode enabled.
+Az üzemelő példány a Project fájljait is becsomagolja, és az új Function alkalmazásba telepíti a [zip-telepítést](functions-deployment-technologies.md#zip-deploy), és engedélyezve van a csomagon belüli mód.
 
-After the deployment completes, you see the URL you can use to access your function app endpoints. Because the HTTP trigger we published uses `authLevel = AuthorizationLevel.FUNCTION`, you need to get the function key to call the function endpoint over HTTP. The easiest way to get the function key is from the [Azure Portalra].
+Az üzembe helyezés befejezése után megjelenik az URL-cím, amellyel elérheti a Function app-végpontokat. Mivel a közzétett HTTP-trigger `authLevel = AuthorizationLevel.FUNCTION`használ, le kell kérnie a Function-végpontot a HTTP protokollon keresztül. A funkcióbillentyű beszerzésének legegyszerűbb módja a [Azure Portal].
 
-## <a name="get-the-http-trigger-url"></a>Get the HTTP trigger URL
+## <a name="get-the-http-trigger-url"></a>HTTP-trigger URL-címének beolvasása
 
 <!--- We can updates this to remove portal dependency after the Maven archetype returns the full URLs with keys on publish (https://github.com/microsoft/azure-maven-plugins/issues/571). -->
 
-You can get the URL required to the trigger your function, with the function key, from the Azure portal. 
+A függvény elindításához szükséges URL-címet a Azure Portalból kérheti le. 
 
-1. Browse to the [Azure Portalra], sign in, type the _appName_ of your function app into **Search** at the top of the page, and press enter.
+1. Keresse meg a [Azure Portal], jelentkezzen be, írja be a _appName_ az oldal tetején található **Keresés** mezőbe, majd nyomja le az ENTER billentyűt.
  
-1. In your function app, expand **Functions (Read Only)** , choose your function, then select **</> Get function URL** at the top right. 
+1. A Function alkalmazásban bontsa ki a **függvények elemet (csak olvasható)** , válassza ki a függvényt, majd válassza a **</> a függvény URL-címének beolvasása** lehetőséget a jobb felső sarokban. 
 
     ![A függvény URL-címének másolása az Azure portálról](./media/functions-create-java-maven/get-function-url-portal.png)
 
-1. Choose **default (Function key)** and select **Copy**. 
+1. Válassza az **alapértelmezett (funkcióbillentyű)** lehetőséget, majd válassza a **Másolás**lehetőséget. 
 
-You can now use the copied URL to access your function.
+Mostantól a másolt URL-cím használatával is elérheti a függvényt.
 
-## <a name="verify-the-function-in-azure"></a>Verify the function in Azure
+## <a name="verify-the-function-in-azure"></a>A függvény ellenőrzése az Azure-ban
 
-To verify the function app running on Azure using `cURL`, replace the URL from the sample below with the URL that you copied from the portal.
+Az Azure-ban futó Function app `cURL`használatával történő ellenőrzéséhez cserélje le az alábbi minta URL-címét a portálról másolt URL-címre.
 
 ```azurecli
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
-This sends a POST request to the function endpoint with `AzureFunctions` in the body of the request. You see the following response.
+Ez POST-kérést küld a függvény végpontjának `AzureFunctions` a kérelem törzsében. A következő válasz jelenik meg.
 
 ```Output
 Hello AzureFunctions!
@@ -179,11 +179,11 @@ Hello AzureFunctions!
 
 ## <a name="next-steps"></a>Következő lépések
 
-You've created a Java functions project with an HTTP triggered function, run it on your local machine, and deployed it to Azure. Now, extend your function by...
+Létrehozott egy Java functions-projektet egy HTTP által aktivált függvénnyel, futtatta azt a helyi gépen, és üzembe helyezte az Azure-ban. Most terjessze ki a függvényt...
 
 > [!div class="nextstepaction"]
-> [Adding an Azure Storage queue output binding](functions-add-output-binding-storage-queue-java.md)
+> [Azure Storage-üzenetsor kimeneti kötésének hozzáadása](functions-add-output-binding-storage-queue-java.md)
 
 
 [Azure CLI]: /cli/azure
-[Azure Portalra]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

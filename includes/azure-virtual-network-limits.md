@@ -15,80 +15,80 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485467"
 ---
-<a name="azure-resource-manager-virtual-networking-limits"></a>Networking limits - Azure Resource Manager The following limits apply only for networking resources managed through **Azure Resource Manager** per region per subscription. Learn how to [view your current resource usage against your subscription limits](../articles/networking/check-usage-against-limits.md).
+<a name="azure-resource-manager-virtual-networking-limits"></a>Hálózati korlátok – Azure Resource Manager a következő korlátozások érvényesek csak a **Azure Resource Manager** /régiónként felügyelt hálózati erőforrásokra. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
 
 > [!NOTE]
-> We recently increased all default limits to their maximum limits. If there's no maximum limit column, the resource doesn't have adjustable limits. If you had these limits increased by support in the past and don't see updated limits in the following tables, [open an online customer support request at no charge](../articles/azure-resource-manager/resource-manager-quota-errors.md)
+> A közelmúltban minden alapértelmezett korlátot megnövelt a maximális határértékek között. Ha nincs maximális korlát oszlop, az erőforrás nem rendelkezik állítható korlátokkal. Ha a múltban már a támogatásban is megnőtt a korlát, és a következő táblázatokban nem láthatók a frissített korlátok, [Nyisson meg egy online ügyfélszolgálati kérést díjmentesen](../articles/azure-resource-manager/resource-manager-quota-errors.md) .
 
-| Erőforrás | Default/maximum limit | 
+| Erőforrás | Alapértelmezett/maximális korlát | 
 | --- | --- |
 | Virtuális hálózatok |1,000 |
 | Alhálózatok száma virtuális hálózatonként |3,000 |
-| Virtual network peerings per virtual network |500 |
-| [Virtual network gateways (VPN Gateways) per virtual network](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |30 |
-| DNS servers per virtual network |20 |
-| Private IP addresses per virtual network |65,536 |
-| Private IP addresses per network interface |256 |
-| Private IP addresses per virtual machine |256 |
-| Public IP addresses per network interface |256 |
-| Public IP addresses per virtual machine |256 |
-| Concurrent TCP or UDP flows per NIC of a virtual machine or role instance |500,000 |
-| Network interface cards |65,536 |
-| Hálózati biztonsági csoportok |5000 |
+| Virtuális hálózati alhálózatok száma virtuális hálózatonként |500 |
+| [Virtuális hálózati átjárók (VPN-átjárók) virtuális hálózatonként](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |30 |
+| DNS-kiszolgálók száma virtuális hálózatonként |20 |
+| Magánhálózati IP-címek száma virtuális hálózatonként |65 536 |
+| Magánhálózati IP-címek/hálózati adapterek |256 |
+| Magánhálózati IP-címek száma virtuális gépenként |256 |
+| Nyilvános IP-címek/hálózati adapter |256 |
+| Nyilvános IP-címek virtuális gépenként |256 |
+| Virtuális gép vagy szerepkör-példány hálózati adapterén egyidejű TCP-vagy UDP-forgalom |500,000 |
+| Hálózati adapterek |65 536 |
+| Network Security Groups (Hálózati biztonsági csoportok) |5000 |
 | NSG-ben szereplő NSG-szabályok |1,000 |
-| IP addresses and ranges specified for source or destination in a security group |4,000 |
+| A forráshoz vagy célhoz megadott IP-címek és tartományok egy biztonsági csoportban |4,000 |
 | Alkalmazásbiztonsági csoportok |3,000 |
-| Application security groups per IP configuration, per NIC |20 |
-| IP configurations per application security group |4,000 |
-| Application security groups that can be specified within all security rules of a network security group |100 |
-| User-defined route tables |200 |
-| User-defined routes per route table |400 |
-| Point-to-site root certificates per Azure VPN Gateway |20 |
-| Virtual network TAPs |100 |
-| Network interface TAP configurations per virtual network TAP |100 |
+| Alkalmazás biztonsági csoportjai IP-konfiguráció alapján, NIC-ben |20 |
+| IP-konfigurációk alkalmazás biztonsági csoportjában |4,000 |
+| A hálózati biztonsági csoport összes biztonsági szabályában megadható alkalmazás-biztonsági csoportok |100 |
+| Felhasználó által definiált útválasztási táblák |200 |
+| Felhasználó által definiált útvonalak útválasztási táblázatban |400 |
+| Pont – hely típusú legfelső szintű tanúsítványok Azure-VPN Gateway |20 |
+| Virtuális hálózati csapok |100 |
+| Hálózati adapter KOPPINTson a konfigurációk virtuális hálózatra KOPPINTva |100 |
 
-#### <a name="publicip-address"></a>Public IP address limits
+#### <a name="publicip-address"></a>Nyilvános IP-címek korlátai
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
-| Public IP addresses - dynamic | 1,000 for Basic. |Vegye fel a kapcsolatot az ügyfélszolgálattal. |
-| Public IP addresses - static | 1,000 for Basic. |Vegye fel a kapcsolatot az ügyfélszolgálattal. |
-| Public IP addresses - static | 1,000 for Standard.|Vegye fel a kapcsolatot az ügyfélszolgálattal. |
-| Public IP prefix length | /28 | Vegye fel a kapcsolatot az ügyfélszolgálattal. |
+| Nyilvános IP-címek – dinamikus | 1 000 alapszintű. |Vegye fel a kapcsolatot az ügyfélszolgálattal. |
+| Nyilvános IP-címek – statikus | 1 000 alapszintű. |Vegye fel a kapcsolatot az ügyfélszolgálattal. |
+| Nyilvános IP-címek – statikus | 1 000 standard.|Vegye fel a kapcsolatot az ügyfélszolgálattal. |
+| Nyilvános IP-előtag hossza | /28 | Vegye fel a kapcsolatot az ügyfélszolgálattal. |
 
-#### <a name="load-balancer"></a>Load balancer limits
-Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése régiónként és előfizetésenként, az Azure Resource Managerrel történik. Learn how to [view your current resource usage against your subscription limits](../articles/networking/check-usage-against-limits.md).
+#### <a name="load-balancer"></a>Terheléselosztó korlátai
+Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése régiónként és előfizetésenként, az Azure Resource Managerrel történik. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
 
-| Erőforrás | Default/maximum limit |
+| Erőforrás | Alapértelmezett/maximális korlát |
 | --- | --- |
 | Terheléselosztók | 1,000 | 
-| Rules per resource, Basic | 250 |
-| Rules per resource, Standard | 1,500 | 
-| Rules per IP configuration | 299 |
-| Rules per NIC | 300 |
-| Front-end IP configurations, Basic | 200 |
-| Front-end IP configurations, Standard | 600 |
-| Back-end pool, Basic | 100, single availability set |
-| Back-end pool, Standard | 1,000, single virtual network |
-| Back-end resources per load balancer, Standard<sup>1</sup> | 150 |
-| High-availability ports, Standard | 1 per internal front-end |
+| Erőforrásokra vonatkozó szabályok, alapszintű | 250 |
+| Szabályok/erőforrás, standard | 1,500 | 
+| Szabályok/IP-konfiguráció | 299 |
+| Szabályok/NIC | 300 |
+| Előtér-IP-konfigurációk, alapszintű | 200 |
+| Előtér-végponti IP-konfigurációk, standard | 600 |
+| Háttérbeli készlet, alapszintű | 100, egyetlen rendelkezésre állási csoport |
+| Háttérbeli készlet, standard | 1 000, egyetlen virtuális hálózat |
+| Háttérbeli erőforrások, terheléselosztó, standard<sup>1</sup> | 150 |
+| Magas rendelkezésre állású portok, standard | 1 belső előtér |
 
-<sup>1</sup>The limit is up to 150 resources, in any combination of standalone virtual machine resources, availability set resources, and virtual machine scale-set resources.
+<sup>1</sup> A korlát akár 150 erőforrás, az önálló virtuálisgép-erőforrások, a rendelkezésre állási csoport erőforrásai és a virtuálisgép-méretezési készlet erőforrásainak bármilyen kombinációja.
 
-#### <a name="virtual-networking-limits-classic"></a>The following limits apply only for networking resources managed through the **classic** deployment model per subscription. Learn how to [view your current resource usage against your subscription limits](../articles/networking/check-usage-against-limits.md).
+#### <a name="virtual-networking-limits-classic"></a>A következő korlátozások csak a **klasszikus** üzemi modellen keresztül felügyelt hálózati erőforrások esetében érvényesek. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
 
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
 | Virtuális hálózatok |100 |100 |
 | Helyi hálózati helyek |20 |50 |
-| DNS servers per virtual network |20 |20 |
-| Private IP addresses per virtual network |4,096 |4,096 |
-| Concurrent TCP or UDP flows per NIC of a virtual machine or role instance |500,000, up to 1,000,000 for two or more NICs. |500,000, up to 1,000,000 for two or more NICs. |
-| Network Security Groups (NSGs) |200 |200 |
+| DNS-kiszolgálók száma virtuális hálózatonként |20 |20 |
+| Magánhálózati IP-címek száma virtuális hálózatonként |4 096 |4 096 |
+| Virtuális gép vagy szerepkör-példány hálózati adapterén egyidejű TCP-vagy UDP-forgalom |500 000, legfeljebb 1 000 000 kettő vagy több hálózati adapter számára. |500 000, legfeljebb 1 000 000 kettő vagy több hálózati adapter számára. |
+| Hálózati biztonsági csoportok (NSG) |200 |200 |
 | NSG-ben szereplő NSG-szabályok |1,000 |1,000 |
-| User-defined route tables |200 |200 |
-| User-defined routes per route table |400 |400 |
+| Felhasználó által definiált útválasztási táblák |200 |200 |
+| Felhasználó által definiált útvonalak útválasztási táblázatban |400 |400 |
 | Nyilvános IP-címek (dinamikus) |500 |500 |
 | Fenntartott nyilvános IP-címek |500 |500 |
-| Nyilvános virtuális IP-címek száma üzemelő példányonként |5 |Kapcsolatfelvétel az ügyfélszolgálattal |
-| Private VIP (internal load balancing) per deployment |1 |1 |
-| Endpoint access control lists (ACLs) |50 |50 |
+| Nyilvános virtuális IP-címek száma üzemelő példányonként |5 |Kapcsolatfelvétel a támogatási szolgáltatással |
+| Privát VIP (belső terheléselosztás) üzembe helyezése |1 |1 |
+| Végpontok hozzáférés-vezérlési listái (ACL-ek) |50 |50 |

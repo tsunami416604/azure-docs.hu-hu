@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs bindings for Azure Functions
-description: Understand how to use Azure Event Hubs bindings in Azure Functions.
+title: Az Azure Event Hubs-kötések Azure Functions
+description: Ismerje meg, hogyan használhatók az Azure Event Hubs-kötések a Azure Functionsban.
 author: craigshoemaker
 ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
@@ -13,24 +13,24 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227278"
 ---
-# <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs bindings for Azure Functions
+# <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Event Hubs-kötések Azure Functions
 
-This article explains how to work with [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) bindings for Azure Functions. Azure Functions supports trigger and output bindings for Event Hubs.
+Ez a cikk azt ismerteti, hogyan használhatók az [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) -kötések a Azure Functionshoz. Azure Functions támogatja az aktiválási és kimeneti kötéseket a Event Hubshoz.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Packages - Functions 1.x
+## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-For Azure Functions version 1.x, the Event Hubs bindings are provided in the [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet package, version 2.x.
-Source code for the package is in the [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) GitHub repository.
+Az 1. x Azure Functions-es verzióban a Event Hubs kötések a [Microsoft. Azure. webjobs. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet csomagban találhatók, 2. x verzióban.
+A csomag forráskódja az [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) GitHub-tárházban található.
 
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
-For Functions 2.x, use the [Microsoft.Azure.WebJobs.Extensions.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) package, version 3.x.
-Source code for the package is in the [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs) GitHub repository.
+A 2. x függvények esetében használja a [Microsoft. Azure. webjobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) csomagot, 3. x verziót.
+A csomag forráskódja az [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs) GitHub-tárházban található.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -39,4 +39,4 @@ Source code for the package is in the [azure-webjobs-sdk](https://github.com/Azu
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+> [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

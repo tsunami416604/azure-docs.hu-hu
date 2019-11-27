@@ -1,6 +1,6 @@
 ---
-title: Azure Functions C# script developer reference
-description: Understand how to develop Azure Functions using C# script.
+title: Azure Functions C# szkriptek fejlesztői referenciája
+description: Megtudhatja, hogyan fejlesztheti Azure Functions parancsfájl használatával C# .
 author: craigshoemaker
 ms.topic: reference
 ms.date: 12/12/2017
@@ -12,27 +12,27 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230422"
 ---
-# <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# script (.csx) developer reference
+# <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# parancsfájl (. CSX) fejlesztői referenciája
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-dotnet-class-library.md -->
 
-This article is an introduction to developing Azure Functions by using C# script ( *.csx*).
+Ez a cikk bevezetést mutat be a Azure Functions C# a szkript ( *. CSX*) használatával történő fejlesztéséhez.
 
-Azure Functions supports C# and C# script programming languages. If you're looking for guidance on [using C# in a Visual Studio class library project](functions-develop-vs.md), see [C# developer reference](functions-dotnet-class-library.md).
+Azure Functions támogatja C# és C# parancsfájl-programozási nyelveket támogat. Ha a [Visual Studio Class Library-projektben való használattal C# ](functions-develop-vs.md)kapcsolatos útmutatást keres, tekintse [ C# meg a fejlesztői referenciát](functions-dotnet-class-library.md).
 
-This article assumes that you've already read the [Azure Functions developers guide](functions-reference.md).
+Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői útmutatót](functions-reference.md).
 
-## <a name="how-csx-works"></a>How .csx works
+## <a name="how-csx-works"></a>A. CSX működése
 
-The C# script experience for Azure Functions is based on the [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction). Data flows into your C# function via method arguments. Argument names are specified in a `function.json` file, and there are predefined names for accessing things like the function logger and cancellation tokens.
+A C# Azure functions parancsfájl-felülete a [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction)-ra épül. Az adatfolyamatok C# metódus argumentumai használatával áramlanak a függvénybe. Az argumentumok neve egy `function.json` fájlban van megadva, és előre definiált nevek vannak az olyan dolgokhoz való hozzáféréshez, mint a Function Logger és a lemondási tokenek.
 
-The *.csx* format allows you to write less "boilerplate" and focus on writing just a C# function. Instead of wrapping everything in a namespace and class, just define a `Run` method. Include any assembly references and namespaces at the beginning of the file as usual.
+A *. CSX* formátum lehetővé teszi, hogy kevesebb "szöveggel" írjon be egy C# függvényt, és csak a függvények írására összpontosítsanak. A névtér és az osztály összes elemének becsomagolása helyett csak egy `Run` metódust adjon meg. A szokásos módon adja meg a fájl elején található szerelvény-hivatkozásokat és névtereket.
 
-A function app's *.csx* files are compiled when an instance is initialized. This compilation step means things like cold start may take longer for C# script functions compared to C# class libraries. This compilation step is also why C# script functions are editable in the Azure portal, while C# class libraries are not.
+A függvény alkalmazás *. CSX* fájljait a rendszer lefordítja egy példány inicializálásakor. Ez a fordítási lépés azt jelenti, hogy az olyan dolgok C# , mint a hűtőházi C# indítás, hosszabb időt vehetnek igénybe a parancsfájl-függvények számára a Ez a fordítási lépés azt C# is indokolja, hogy a parancsfájl-függvények C# szerkeszthető legyenek a Azure Portalban, míg az osztály könyvtárai nem.
 
-## <a name="folder-structure"></a>Folder structure
+## <a name="folder-structure"></a>Mappa szerkezete
 
-The folder structure for a C# script project looks like the following:
+A C# parancsfájl-projekthez tartozó mappastruktúrát a következőhöz hasonlóan néz ki:
 
 ```
 FunctionsProject
@@ -49,13 +49,13 @@ FunctionsProject
  | - bin
 ```
 
-There's a shared [host.json](functions-host-json.md) file that can be used to configure the function app. Each function has its own code file (.csx) and binding configuration file (function.json).
+Létezik egy megosztott [Host. JSON](functions-host-json.md) fájl, amely a Function alkalmazás konfigurálására használható. Mindegyik függvényhez saját kódlap (. CSX) és kötési konfigurációs fájl (function. JSON) tartozik.
 
-The binding extensions required in [version 2.x](functions-versions.md) of the Functions runtime are defined in the `extensions.csproj` file, with the actual library files in the `bin` folder. When developing locally, you must [register binding extensions](./functions-bindings-register.md#extension-bundles). When developing functions in the Azure portal, this registration is done for you.
+A functions futtatókörnyezet [2. x verziójában](functions-versions.md) szükséges kötési kiterjesztések a `extensions.csproj` fájlban vannak definiálva, a `bin` mappában lévő fájlok tényleges fájljaival. Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](./functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
 
-## <a name="binding-to-arguments"></a>Binding to arguments
+## <a name="binding-to-arguments"></a>Argumentumok kötése
 
-Input or output data is bound to a C# script function parameter via the `name` property in the *function.json* configuration file. The following example shows a *function.json* file  and *run.csx* file for a queue-triggered function. The parameter that receives data from the queue message is named `myQueueItem` because that's the value of the `name` property.
+A bemeneti vagy kimeneti adatok egy C# script Function paraméterhez vannak kötve a *function. json* konfigurációs fájl `name` tulajdonságán keresztül. A következő példa egy *function. JSON* fájlt mutat be, és a. CSX fájlt egy üzenetsor által aktivált függvényhez *futtatja* . Az üzenetsor-üzenetet fogadó paraméter neve `myQueueItem`, mert ez a `name` tulajdonság értéke.
 
 ```json
 {
@@ -85,19 +85,19 @@ public static void Run(CloudQueueMessage myQueueItem, ILogger log)
 }
 ```
 
-The `#r` statement is explained [later in this article](#referencing-external-assemblies).
+A `#r` utasítást a [cikk későbbi részében](#referencing-external-assemblies)ismertetjük.
 
-## <a name="supported-types-for-bindings"></a>Supported types for bindings
+## <a name="supported-types-for-bindings"></a>A kötések támogatott típusai
 
-Each binding has its own supported types; for instance, a blob trigger can be used with a string parameter, a POCO parameter, a `CloudBlockBlob` parameter, or any of several other supported types. The [binding reference article for blob bindings](functions-bindings-storage-blob.md#trigger---usage) lists all supported parameter types for blob triggers. For more information, see [Triggers and bindings](functions-triggers-bindings.md) and the [binding reference docs for each binding type](functions-triggers-bindings.md#next-steps).
+Minden kötés saját támogatott típusokkal rendelkezik; például egy blob trigger használható karakterlánc-paraméterrel, egy POCO paraméterrel, egy `CloudBlockBlob` paraméterrel vagy számos más támogatott típussal. A [blob-kötésekhez tartozó kötési útmutató](functions-bindings-storage-blob.md#trigger---usage) a blob-eseményindítók összes támogatott paraméter-típusát listázza. További információ: [triggerek és kötések](functions-triggers-bindings.md) , valamint az [egyes kötési típusok kötési dokumentációja](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-## <a name="referencing-custom-classes"></a>Referencing custom classes
+## <a name="referencing-custom-classes"></a>Egyéni osztályok referenciája
 
-If you need to use a custom Plain Old CLR Object (POCO) class, you can include the class definition inside the same file or put it in a separate file.
+Ha egyéni egyszerű CLR-objektum (POCO) osztályt kell használnia, az osztály definícióját is megadhatja ugyanabban a fájlban, vagy egy külön fájlba helyezheti.
 
-The following example shows a *run.csx* example that includes a POCO class definition.
+Az alábbi példa egy *Run. CSX* példát mutat be, amely egy poco osztály definícióját tartalmazza.
 
 ```csharp
 public static void Run(string myBlob, out MyClass myQueueItem)
@@ -112,13 +112,13 @@ public class MyClass
 }
 ```
 
-A POCO class must have a getter and setter defined for each property.
+A POCO osztálynak minden tulajdonsághoz meg kell adni egy leolvasót és egy beállító-állítót.
 
-## <a name="reusing-csx-code"></a>Reusing .csx code
+## <a name="reusing-csx-code"></a>A. CSX kód újrafelhasználása
 
-You can use classes and methods defined in other *.csx* files in your *run.csx* file. To do that, use `#load` directives in your *run.csx* file. In the following example, a logging routine named `MyLogger` is shared in *myLogger.csx* and loaded into *run.csx* using the `#load` directive:
+A *Run. CSX* fájl más *. CSX* fájljaiban definiált osztályokat és metódusokat is használhat. Ehhez a *Run. CSX* fájlban `#load` irányelveket kell használnia. A következő példában egy `MyLogger` nevű naplózási rutin van megosztva a *myLogger. CSX* -ben, és be kell tölteni a *Run. CSX* -be a `#load` direktíva használatával:
 
-Example *run.csx*:
+Példa a *Run. CSX*:
 
 ```csharp
 #load "mylogger.csx"
@@ -132,7 +132,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-Example *mylogger.csx*:
+Példa *mylogger. CSX*:
 
 ```csharp
 public static void MyLogger(ILogger log, string logtext)
@@ -141,9 +141,9 @@ public static void MyLogger(ILogger log, string logtext)
 }
 ```
 
-Using a shared *.csx* file is a common pattern when you want to strongly type the data passed between functions by using a POCO object. In the following simplified example, an HTTP trigger and queue trigger share a POCO object named `Order` to strongly type the order data:
+A Shared *. CSX* fájl használata gyakori minta, ha a függvények között a Poco objektum használatával erősen szeretné beírni a függvényeket. A következő egyszerűsített példában a HTTP-trigger és a várólista-trigger egy `Order` nevű POCO-objektumot oszt meg, hogy erősen beírja a megrendelési adatkészletet:
 
-Example *run.csx* for HTTP trigger:
+Példa a *Run. CSX* http-triggerre:
 
 ```cs
 #load "..\shared\order.csx"
@@ -169,7 +169,7 @@ public static async Task<HttpResponseMessage> Run(Order req, IAsyncCollector<Ord
 }
 ```
 
-Example *run.csx* for queue trigger:
+Példa a *Run. CSX* for üzenetsor-triggerre:
 
 ```cs
 #load "..\shared\order.csx"
@@ -186,7 +186,7 @@ public static void Run(Order myQueueItem, out Order outputQueueItem, ILogger log
 }
 ```
 
-Example *order.csx*:
+Példa *Order. CSX*:
 
 ```cs
 public class Order
@@ -208,25 +208,25 @@ public class Order
 }
 ```
 
-You can use a relative path with the `#load` directive:
+Relatív elérési utat is használhat a `#load` direktívával:
 
-* `#load "mylogger.csx"` loads a file located in the function folder.
-* `#load "loadedfiles\mylogger.csx"` loads a file located in a folder in the function folder.
-* `#load "..\shared\mylogger.csx"` loads a file located in a folder at the same level as the function folder, that is, directly under *wwwroot*.
+* `#load "mylogger.csx"` betölti a Function mappában található fájlt.
+* `#load "loadedfiles\mylogger.csx"` betölti a függvény mappájában található fájlt.
+* `#load "..\shared\mylogger.csx"` betölti a mappában található fájlt a Function mappával megegyező szinten, közvetlenül a *wwwroot*alatt.
 
-The `#load` directive works only with *.csx* files, not with *.cs* files.
+Az `#load` direktíva kizárólag. *cs* fájlokkal rendelkező *. CSX* -fájlokkal működik.
 
-## <a name="binding-to-method-return-value"></a>Binding to method return value
+## <a name="binding-to-method-return-value"></a>Kötés a metódus visszatérési értékéhez
 
-You can use a method return value for an output binding, by using the name `$return` in *function.json*. For examples, see [Triggers and bindings](./functions-bindings-return-value.md).
+A metódus visszatérési értékét egy kimeneti kötéshez használhatja a *function. JSON*fájlban `$return` néven. Példákat az [Eseményindítók és kötések](./functions-bindings-return-value.md)című témakörben talál.
 
-Use the return value only if a successful function execution always results in a return value to pass to the output binding. Otherwise, use `ICollector` or `IAsyncCollector`, as shown in the following section.
+Csak akkor használja a visszaadott értéket, ha egy sikeres függvény végrehajtása mindig visszatérési értéket ad eredményül a kimeneti kötésnek. Ellenkező esetben használja a `ICollector` vagy `IAsyncCollector`, ahogy az a következő szakaszban látható.
 
-## <a name="writing-multiple-output-values"></a>Writing multiple output values
+## <a name="writing-multiple-output-values"></a>Több kimeneti érték írása
 
-To write multiple values to an output binding, or if a successful function invocation might not result in anything to pass to the output binding, use the [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) or [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) types. These types are write-only collections that are written to the output binding when the method completes.
+Ha több értéket szeretne írni egy kimeneti kötésbe, vagy ha egy sikeres függvény meghívása nem eredményez semmit a kimeneti kötéshez, használja a [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) típust. Ezek a típusok olyan írásvédett gyűjtemények, amelyek a metódus befejeződése után a kimeneti kötésbe íródnak.
 
-This example writes multiple queue messages into the same queue using `ICollector`:
+Ez a példa több üzenetsor-üzenetet ír ugyanabba a várólistába `ICollector`használatával:
 
 ```csharp
 public static void Run(ICollector<string> myQueue, ILogger log)
@@ -238,7 +238,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 
 ## <a name="logging"></a>Naplózás
 
-To log output to your streaming logs in C#, include an argument of type [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). We recommend that you name it `log`. Avoid using `Console.Write` in Azure Functions.
+Ha a kimenetét be szeretné jelentkezni a C#folyamatos átviteli naplókba, vegyen fel egy [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)típusú argumentumot. Javasoljuk, hogy nevezze el `log`. Kerülje a Azure Functions `Console.Write` használatának elkerülését.
 
 ```csharp
 public static void Run(string myBlob, ILogger log)
@@ -248,11 +248,11 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> For information about a newer logging framework that you can use instead of `TraceWriter`, see [Write logs in C# functions](functions-monitoring.md#write-logs-in-c-functions) in the **Monitor Azure Functions** article.
+> További információ a `TraceWriter`helyett használható újabb naplózási keretrendszerről: [naplók írása a C# functions](functions-monitoring.md#write-logs-in-c-functions) szolgáltatásban a **figyelő Azure functions** cikkben.
 
-## <a name="async"></a>Async
+## <a name="async"></a>Aszinkron
 
-To make a function [asynchronous](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/), use the `async` keyword and return a `Task` object.
+A függvények [aszinkron](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)végrehajtásához használja a `async` kulcsszót, és egy `Task` objektumot ad vissza.
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -264,13 +264,13 @@ public async static Task ProcessQueueMessageAsync(
 }
 ```
 
-You can't use `out` parameters in async functions. For output bindings, use the [function return value](#binding-to-method-return-value) or a [collector object](#writing-multiple-output-values) instead.
+Aszinkron függvények nem használhatnak `out` paramétereket. Kimeneti kötések esetén használja helyette a [függvény visszatérési értékét](#binding-to-method-return-value) vagy egy [gyűjtő objektumot](#writing-multiple-output-values) .
 
-## <a name="cancellation-tokens"></a>Cancellation tokens
+## <a name="cancellation-tokens"></a>Visszavonási tokenek
 
-A function can accept a [CancellationToken](/dotnet/api/system.threading.cancellationtoken) parameter, which enables the operating system to notify your code when the function is about to be terminated. You can use this notification to make sure the function doesn't terminate unexpectedly in a way that leaves data in an inconsistent state.
+A függvények elfogadják a [CancellationToken](/dotnet/api/system.threading.cancellationtoken) paramétert, amely lehetővé teszi, hogy az operációs rendszer értesítse a kódot, ha a függvény hamarosan leáll. Ezzel az értesítéssel meggyőződhet arról, hogy a függvény váratlanul leáll olyan módon, amely inkonzisztens állapotban hagyja az adatvesztést.
 
-The following example shows how to check for impending function termination.
+Az alábbi példa bemutatja, hogyan ellenőrizhető a közelgő függvények leállítása.
 
 ```csharp
 using System;
@@ -295,9 +295,9 @@ public static void Run(
 }
 ```
 
-## <a name="importing-namespaces"></a>Importing namespaces
+## <a name="importing-namespaces"></a>Névterek importálása
 
-If you need to import namespaces, you can do so as usual, with the `using` clause.
+Ha névtereket kell importálnia, a szokásos módon megteheti a `using` záradékkal.
 
 ```csharp
 using System.Net;
@@ -307,7 +307,7 @@ using Microsoft.Extensions.Logging;
 public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 ```
 
-The following namespaces are automatically imported and are therefore optional:
+A rendszer automatikusan importálja a következő névtereket, ezért nem kötelező:
 
 * `System`
 * `System.Collections.Generic`
@@ -318,9 +318,9 @@ The following namespaces are automatically imported and are therefore optional:
 * `Microsoft.Azure.WebJobs`
 * `Microsoft.Azure.WebJobs.Host`
 
-## <a name="referencing-external-assemblies"></a>Referencing external assemblies
+## <a name="referencing-external-assemblies"></a>Külső szerelvények hivatkozása
 
-For framework assemblies, add references by using the `#r "AssemblyName"` directive.
+A keretrendszer-szerelvények esetében adja hozzá a hivatkozásokat a `#r "AssemblyName"` direktíva segítségével.
 
 ```csharp
 #r "System.Web.Http"
@@ -333,7 +333,7 @@ using Microsoft.Extensions.Logging;
 public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 ```
 
-The following assemblies are automatically added by the Azure Functions hosting environment:
+A Azure Functions üzemeltetési környezet automatikusan hozzáadja a következő szerelvényeket:
 
 * `mscorlib`
 * `System`
@@ -346,7 +346,7 @@ The following assemblies are automatically added by the Azure Functions hosting 
 * `System.Web.Http`
 * `System.Net.Http.Formatting`
 
-The following assemblies may be referenced by simple-name (for example, `#r "AssemblyName"`):
+A következő szerelvényeket egyszerű névvel lehet hivatkozni (például `#r "AssemblyName"`):
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
@@ -355,22 +355,22 @@ The following assemblies may be referenced by simple-name (for example, `#r "Ass
 * `Microsoft.AspNet.WebHooks.Common`
 * `Microsoft.Azure.NotificationHubs`
 
-## <a name="referencing-custom-assemblies"></a>Referencing custom assemblies
+## <a name="referencing-custom-assemblies"></a>Egyéni szerelvények referenciája
 
-To reference a custom assembly, you can use either a *shared* assembly or a *private* assembly:
+Ha egyéni szerelvényre szeretne hivatkozni, használhatja a *megosztott* szerelvényt vagy egy *privát* szerelvényt:
 
-* Shared assemblies are shared across all functions within a function app. To reference a custom assembly, upload the assembly to a folder named `bin` in your [function app root folder](functions-reference.md#folder-structure) (wwwroot).
+* A megosztott szerelvények a Function alkalmazás összes funkciója között megoszthatók. Egy egyéni szerelvényre való hivatkozáshoz töltse fel a szerelvényt egy `bin` nevű mappába a [Function App Root mappában](functions-reference.md#folder-structure) (wwwroot).
 
-* Private assemblies are part of a given function's context, and support side-loading of different versions. Private assemblies should be uploaded in a `bin` folder in the function directory. Reference the assemblies using the file name, such as `#r "MyAssembly.dll"`.
+* A privát szerelvények egy adott függvény környezetének részét képezik, és támogatják a különböző verziók egymáshoz való betöltését. A magánhálózati szerelvényeket fel kell tölteni egy `bin` mappában a függvény könyvtárában. Hivatkozzon a szerelvényekre a fájlnév használatával, például `#r "MyAssembly.dll"`.
 
-For information on how to upload files to your function folder, see the section on [package management](#using-nuget-packages).
+A fájlok a függvény mappájába való feltöltésével kapcsolatos további információkért lásd a [csomagkezelő](#using-nuget-packages)című szakaszt.
 
-### <a name="watched-directories"></a>Watched directories
+### <a name="watched-directories"></a>Figyelt könyvtárak
 
-The directory that contains the function script file is automatically watched for changes to assemblies. To watch for assembly changes in other directories, add them to the `watchDirectories` list in [host.json](functions-host-json.md).
+A függvény parancsfájlját tartalmazó könyvtár automatikusan figyeli a szerelvények módosításait. Ha más címtárakban szeretné megtekinteni a szerelvények változásait, adja hozzá őket a [Host. json](functions-host-json.md)`watchDirectories` listájához.
 
-## <a name="using-nuget-packages"></a>Using NuGet packages
-To use NuGet packages in a 2.x C# function, upload a *function.proj* file to the function's folder in the function app's file system. Here is an example *function.proj* file that adds a reference to *Microsoft.ProjectOxford.Face* version *1.1.0*:
+## <a name="using-nuget-packages"></a>NuGet-csomagok használata
+Ha a NuGet-csomagokat egy 2. x C# függvényben szeretné használni, töltsön fel egy *function. Proj* fájlt a függvény mappájába a Function alkalmazás fájlrendszerében. Íme egy példa *function. Proj* fájl, amely a *Microsoft. ProjectOxford. Face* Version *1.1.0*-re mutató hivatkozást tartalmaz:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -384,12 +384,12 @@ To use NuGet packages in a 2.x C# function, upload a *function.proj* file to the
 </Project>
 ```
 
-To use a custom NuGet feed, specify the feed in a *Nuget.Config* file in the Function App root. For more information, see [Configuring NuGet behavior](/nuget/consume-packages/configuring-nuget-behavior).
+Ha egyéni NuGet-hírcsatornát szeretne használni, a függvényalkalmazás gyökérkönyvtárában található *NuGet. config* fájlban lévő hírcsatornát kell megadnia. További információ: a [NuGet viselkedésének konfigurálása](/nuget/consume-packages/configuring-nuget-behavior).
 
 > [!NOTE]
-> In 1.x C# functions, NuGet packages are referenced with a *project.json* file instead of a *function.proj* file.
+> Az 1. x C# függvények esetében a NuGet-csomagokat a *function. Proj* fájl helyett egy *Project. JSON* fájllal hivatkozunk.
 
-For 1.x functions, use a *project.json* file instead. Here is an example *project.json* file:
+1\. x függvények esetén Ehelyett használjon *Project. JSON* fájlt. Példa a *Project. JSON* fájlra:
 
 ```json
 {
@@ -403,11 +403,11 @@ For 1.x functions, use a *project.json* file instead. Here is an example *projec
 }
 ```
 
-### <a name="using-a-functionproj-file"></a>Using a function.proj file
+### <a name="using-a-functionproj-file"></a>Function. Proj fájl használata
 
-1. Open the function in the Azure portal. The logs tab displays the package installation output.
-2. To upload a *function.proj* file, use one of the methods described in the [How to update function app files](functions-reference.md#fileupdate) in the Azure Functions developer reference topic.
-3. After the *function.proj* file is uploaded, you see output like the following example in your function's streaming log:
+1. Nyissa meg a függvényt a Azure Portalban. A naplók lap megjeleníti a csomag telepítési kimenetét.
+2. A *function. Proj* fájl feltöltéséhez használja a Azure functions fejlesztői útmutatójának a [Function app Files frissítése](functions-reference.md#fileupdate) című témakörében ismertetett módszerek egyikét.
+3. A *function. Proj* fájl feltöltése után a következő példához hasonló kimenet jelenik meg a függvény streaming naplójában:
 
 ```
 2018-12-14T22:00:48.658 [Information] Restoring packages.
@@ -423,7 +423,7 @@ For 1.x functions, use a *project.json* file instead. Here is an example *projec
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-To get an environment variable or an app setting value, use `System.Environment.GetEnvironmentVariable`, as shown in the following code example:
+Környezeti változó vagy Alkalmazásbeállítások értékének beszerzéséhez használja a `System.Environment.GetEnvironmentVariable`, ahogy az a következő példában látható:
 
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
@@ -442,15 +442,15 @@ public static string GetEnvironmentVariable(string name)
 
 <a name="imperative-bindings"></a>
 
-## <a name="binding-at-runtime"></a>Binding at runtime
+## <a name="binding-at-runtime"></a>Kötés futásidőben
 
-In C# and other .NET languages, you can use an [imperative](https://en.wikipedia.org/wiki/Imperative_programming) binding pattern, as opposed to the [*declarative*](https://en.wikipedia.org/wiki/Declarative_programming) bindings in *function.json*. Imperative binding is useful when binding parameters need to be computed at runtime rather than design time. With this pattern, you can bind to supported input and output bindings on-the-fly in your function code.
+A C# -ben és más .net-nyelveken egy [kötelező](https://en.wikipedia.org/wiki/Imperative_programming) kötési mintát is használhat a *function. JSON*fájlban található [*deklaratív*](https://en.wikipedia.org/wiki/Declarative_programming) kötések helyett. A kényszerített kötés akkor hasznos, ha a kötési paramétereket nem a tervezési idő, hanem futásidőben kell kiszámítani. Ezzel a mintával a függvény kódjában a támogatott bemeneti és kimeneti kötésekhez köthető.
 
-Define an imperative binding as follows:
+A következő módon adjon meg egy kötelező kötést:
 
-- **Do not** include an entry in *function.json* for your desired imperative bindings.
-- Pass in an input parameter [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) or [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
-- Use the following C# pattern to perform the data binding.
+- **Ne tartalmazzon bejegyzést** a *function. JSON* fájlban a kívánt kényszerített kötésekhez.
+- Adjon át egy bemeneti paramétert [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) vagy [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
+- Az adatkötés C# végrehajtásához használja a következő mintát.
 
 ```cs
 using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
@@ -459,11 +459,11 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute` is the .NET attribute that defines your binding and `T` is an input or output type that's supported by that binding type. `T` cannot be an `out` parameter type (such as `out JObject`). For example, the Mobile Apps table output binding supports [six output types](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), but you can only use [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) or [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) for `T`.
+`BindingTypeAttribute` a kötést definiáló .NET-attribútum, a `T` pedig az adott kötési típus által támogatott bemeneti vagy kimeneti típus. `T` nem lehet `out` paraméter típusa (például `out JObject`). Például a Mobile Apps tábla kimeneti kötése [hat kimeneti típust](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)támogat, de csak a [ICollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) használhatja `T`hoz.
 
-### <a name="single-attribute-example"></a>Single attribute example
+### <a name="single-attribute-example"></a>Példa egyetlen attribútumra
 
-The following example code creates a [Storage blob output binding](functions-bindings-storage-blob.md#output) with blob path that's defined at run time, then writes a string to the blob.
+A következő mintakód létrehoz egy [tárolási blob kimeneti kötést](functions-bindings-storage-blob.md#output) a futási időben definiált blob elérési úttal, majd karakterláncot ír a blobba.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -478,11 +478,11 @@ public static async Task Run(string input, Binder binder)
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) defines the [Storage blob](functions-bindings-storage-blob.md) input or output binding, and [TextWriter](/dotnet/api/system.io.textwriter) is a supported output binding type.
+A [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) meghatározza a [Storage blob](functions-bindings-storage-blob.md) bemeneti vagy kimeneti kötését, és a [TextWriter](/dotnet/api/system.io.textwriter) egy támogatott kimeneti kötési típus.
 
-### <a name="multiple-attribute-example"></a>Multiple attribute example
+### <a name="multiple-attribute-example"></a>Több attribútum – példa
 
-The preceding example gets the app setting for the function app's main Storage account connection string (which is `AzureWebJobsStorage`). You can specify a custom app setting to use for the Storage account by adding the [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) and passing the attribute array into `BindAsync<T>()`. Use a `Binder` parameter, not `IBinder`.  Példa:
+Az előző példában beolvassa a Function alkalmazás fő Storage-fiókjának (`AzureWebJobsStorage`) az alkalmazás beállítását. A Storage-fiókhoz a [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) hozzáadásával és az attribútum tömb `BindAsync<T>()`ba való átadásával adhat meg egyéni alkalmazás-beállítást. `Binder` paraméter használata nem `IBinder`.  Például:
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -503,25 +503,25 @@ public static async Task Run(string input, Binder binder)
 }
 ```
 
-The following table lists the .NET attributes for each binding type and the packages in which they are defined.
+A következő táblázat felsorolja az egyes kötési típusok .NET-attribútumait, valamint azokat a csomagokat, amelyekben definiálva vannak.
 
 > [!div class="mx-codeBreakAll"]
-> | Binding | Attribútum | Add reference |
+> | Kötés | Attribútum | Hivatkozás hozzáadása |
 > |------|------|------|
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
-> | Azure Event Hubs-eseményközpontok | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
+> | Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
 > | Mobile Apps | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
-> | Értesítési központ | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
-> | Szolgáltatásbusz | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
+> | Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
+> | Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
 > | Tárolási üzenetsor | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Storage Blob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-> | Storage table | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+> | Storage-tábla | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Learn more about triggers and bindings](functions-triggers-bindings.md)
+> [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
-> [Learn more about best practices for Azure Functions](functions-best-practices.md)
+> [További információ a Azure Functions ajánlott eljárásairól](functions-best-practices.md)

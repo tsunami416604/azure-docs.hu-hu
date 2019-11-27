@@ -1,6 +1,6 @@
 ---
-title: Registry authentication options
-description: Authentication options for an Azure container registry, including signing in with an Azure Active Directory identity, using service principals, and using optional admin credentials.
+title: Beállításjegyzék-hitelesítési beállítások
+description: Az Azure Container Registry hitelesítési lehetőségei, beleértve a Azure Active Directory identitással való bejelentkezést, az egyszerű szolgáltatásnév használatát és a nem kötelező rendszergazdai hitelesítő adatok használatát.
 ms.topic: article
 ms.date: 12/21/2018
 ms.custom: H1Hack27Feb2017
@@ -11,71 +11,71 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455386"
 ---
-# <a name="authenticate-with-a-private-docker-container-registry"></a>Authenticate with a private Docker container registry
+# <a name="authenticate-with-a-private-docker-container-registry"></a>Hitelesítés privát Docker-tároló beállításjegyzékével
 
-There are several ways to authenticate with an Azure container registry, each of which is applicable to one or more registry usage scenarios.
+Az Azure Container Registry szolgáltatással többféleképpen is végezhet hitelesítést, amelyek mindegyike egy vagy több beállításjegyzék-használati forgatókönyvre alkalmazható.
 
-Recommended ways include authenticating to a registry directly via [individual login](#individual-login-with-azure-ad), or your applications and container orchestrators can perform unattended, or "headless," authentication by using an Azure Active Directory (Azure AD) [service principal](#service-principal).
+Az ajánlott módszerek közé tartozik a beállításjegyzék közvetlen hitelesítése [Egyéni bejelentkezéssel](#individual-login-with-azure-ad), illetve az alkalmazások és a tároló-rendszerszervezők felügyelet nélküli vagy "fej nélküli" hitelesítést végezhetnek Azure Active Directory (Azure ad) [egyszerű szolgáltatásnév](#service-principal)használatával.
 
-## <a name="individual-login-with-azure-ad"></a>Individual login with Azure AD
+## <a name="individual-login-with-azure-ad"></a>Egyéni bejelentkezés az Azure AD-vel
 
-When working with your registry directly, such as pulling images to and pushing images from a development workstation, authenticate by using the [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) command in the [Azure CLI](/cli/azure/install-azure-cli):
+Ha közvetlenül dolgozik a beállításjegyzékben, például képeket húz ki és küld el egy fejlesztői munkaállomásról, a hitelesítést az az [ACR login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) paranccsal végezheti el az [Azure CLI](/cli/azure/install-azure-cli)-ben:
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
-When you log in with `az acr login`, the CLI uses the token created when you executed [az login](/cli/azure/reference-index#az-login) to seamlessly authenticate your session with your registry. Once you've logged in this way, your credentials are cached, and subsequent `docker` commands in your session do not require a username or password. 
+Ha `az acr login`ba jelentkezik be, a parancssori felület az az [login](/cli/azure/reference-index#az-login) használatával zökkenőmentesen hitelesíti a munkamenetet a beállításjegyzékben. Ha így jelentkezett be, a hitelesítő adatai gyorsítótárazva lesznek, és a munkamenet későbbi `docker` parancsai nem igénylik a felhasználónevet vagy a jelszót. 
 
-For registry access, the token used by `az acr login` is valid for 1 hour, so we recommend that you always log in to the registry before running a `docker` command. If your token expires, you can refresh it by using the `az acr login` command again to reauthenticate. 
+A beállításjegyzékhez való hozzáféréshez az `az acr login` által használt jogkivonat 1 órára érvényes, ezért javasoljuk, hogy a `docker` parancs futtatása előtt mindig jelentkezzen be a beállításjegyzékbe. Ha a token lejár, akkor a `az acr login` parancs ismételt hitelesítésével frissítheti. 
 
-Using `az acr login` with Azure identities provides [role-based access](../role-based-access-control/role-assignments-portal.md). For some scenarios you may want to log in to a registry with your own individual identity in Azure AD. For cross-service scenarios or to handle the needs of a workgroup where you don't want to manage individual access, you can also log in with a [managed identity for Azure resources](container-registry-authentication-managed-identity.md).
+A `az acr login` és az Azure-identitások használata [szerepköralapú hozzáférést](../role-based-access-control/role-assignments-portal.md)biztosít. Bizonyos esetekben előfordulhat, hogy a saját egyéni identitásával szeretne bejelentkezni egy beállításjegyzékbe az Azure AD-ben. A szolgáltatások közötti forgatókönyvek esetében, illetve egy olyan munkacsoport szükségleteinek kezeléséhez, ahol nem kívánja kezelni az egyéni hozzáférést, az [Azure-erőforrások felügyelt identitásával](container-registry-authentication-managed-identity.md)is bejelentkezhet.
 
-## <a name="service-principal"></a>Service principal
+## <a name="service-principal"></a>Egyszerű szolgáltatásnév
 
-If you assign a [service principal](../active-directory/develop/app-objects-and-service-principals.md) to your registry, your application or service can use it for headless authentication. Service principals allow [role-based access](../role-based-access-control/role-assignments-portal.md) to a registry, and you can assign multiple service principals to a registry. Multiple service principals allow you to define different access for different applications.
+Ha egy [egyszerű szolgáltatásnevet](../active-directory/develop/app-objects-and-service-principals.md) rendel hozzá a beállításjegyzékhez, az alkalmazás vagy szolgáltatás a fej nélküli hitelesítéshez használhatja azt. Az egyszerű szolgáltatások lehetővé teszik a [szerepkörön alapuló hozzáférést](../role-based-access-control/role-assignments-portal.md) a beállításjegyzékhez, és több egyszerű szolgáltatást is hozzárendelhet egy beállításjegyzékhez. Több egyszerű szolgáltatás lehetővé teszi különböző alkalmazások eltérő hozzáférésének megadását.
 
-The available roles for a container registry include:
+A tároló-beállításjegyzékhez elérhető szerepkörök a következők:
 
-* **AcrPull**: pull
+* **AcrPull**: lekérés
 
-* **AcrPush**: pull and push
+* **AcrPush**: lekérés és leküldés
 
-* **Owner**: pull, push, and assign roles to other users
+* **Tulajdonos**: szerepkörök lekérése, leküldése és társítása más felhasználóknak
 
-For a complete list of roles, see [Azure Container Registry roles and permissions](container-registry-roles.md).
+A szerepkörök teljes listáját itt tekintheti meg: [Azure Container Registry szerepkörök és engedélyek](container-registry-roles.md).
 
-For CLI scripts to create a service principal for authenticating with an Azure container registry, and guidance on using a service principal, see [Azure Container Registry authentication with service principals](container-registry-auth-service-principal.md).
+Ha parancssori parancsfájlokat szeretne létrehozni az Azure Container registryvel való hitelesítéshez, valamint útmutatást az egyszerű szolgáltatásnév használatáról, tekintse meg a következőt: [Azure Container Registry hitelesítés az egyszerű szolgáltatásokkal](container-registry-auth-service-principal.md).
 
-## <a name="admin-account"></a>Admin account
+## <a name="admin-account"></a>Rendszergazdai fiók
 
-Each container registry includes an admin user account, which is disabled by default. You can enable the admin user and manage its credentials in the Azure portal, or by using the Azure CLI or other Azure tools.
+Minden tároló-beállításjegyzék tartalmaz egy rendszergazdai felhasználói fiókot, amely alapértelmezés szerint le van tiltva. Engedélyezheti a rendszergazda felhasználóját, és kezelheti a hitelesítő adatait a Azure Portal, illetve az Azure CLI vagy más Azure-eszközök használatával.
 
 > [!IMPORTANT]
-> The admin account is designed for a single user to access the registry, mainly for testing purposes. We do not recommend sharing the admin account credentials among multiple users. All users authenticating with the admin account appear as a single user with push and pull access to the registry. Changing or disabling this account disables registry access for all users who use its credentials. Individual identity is recommended for users and service principals for headless scenarios.
+> A rendszergazdai fiók úgy van kialakítva, hogy egyetlen felhasználó hozzáférjen a beállításjegyzékhez, főleg tesztelési célokra. A rendszergazdai fiók hitelesítő adatait nem ajánlott több felhasználó között megosztani. A rendszergazdai fiókkal hitelesítő összes felhasználó egyetlen felhasználóként jelenik meg a beállításjegyzék leküldéses és lekéréses hozzáférésével. A fiók módosítása vagy letiltása letiltja a beállításjegyzék-hozzáférést minden olyan felhasználó számára, aki hitelesítő adatait használja. A felhasználók és a szolgáltatásokhoz egyéni identitást kell használni a fej nélküli forgatókönyvek esetében.
 >
 
-The admin account is provided with two passwords, both of which can be regenerated. Two passwords allow you to maintain connection to the registry by using one password while you regenerate the other. If the admin account is enabled, you can pass the username and either password to the `docker login` command when prompted for basic authentication to the registry. Példa:
+A rendszergazdai fiók két jelszóval van ellátva, amelyek közül mindkettő újra létrehozhatók. Két jelszó lehetővé teszi a beállításjegyzékhez való kapcsolódást úgy, hogy egy jelszót használ a másik létrehozásakor. Ha a rendszergazdai fiók engedélyezve van, átadhatja a felhasználónevet és a jelszót a `docker login` parancshoz, amikor a rendszer az alapszintű hitelesítést kéri a beállításjegyzékben. Például:
 
 ```
 docker login myregistry.azurecr.io 
 ```
 
-For best practices to manage login credentials, see the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command reference.
+A bejelentkezési hitelesítő adatok kezelésével kapcsolatos ajánlott eljárásokért tekintse meg a [Docker login](https://docs.docker.com/engine/reference/commandline/login/) parancs referenciáját.
 
-To enable the admin user for an existing registry, you can use the `--admin-enabled` parameter of the [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) command in the Azure CLI:
+Ha engedélyezni szeretné a rendszergazda felhasználót egy meglévő beállításjegyzékben, használja az az [ACR Update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) parancs `--admin-enabled` paraméterét az Azure CLI-ben:
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true
 ```
 
-You can enable the admin user in the Azure portal by navigating your registry, selecting **Access keys** under **SETTINGS**, then **Enable** under **Admin user**.
+Engedélyezheti a rendszergazda felhasználót a Azure Portal a beállításjegyzékben navigálva, a **hozzáférési kulcsok** elemre kattintva a **Beállítások**területen, majd a **rendszergazda felhasználó**területen **engedélyezheti** .
 
-![Enable admin user UI in the Azure portal][auth-portal-01]
+![Rendszergazdai felhasználói felület engedélyezése a Azure Portal][auth-portal-01]
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Push your first image using the Azure CLI](container-registry-get-started-azure-cli.md)
+* [Az első rendszerkép leküldése az Azure CLI használatával](container-registry-get-started-azure-cli.md)
 
 <!-- IMAGES -->
 [auth-portal-01]: ./media/container-registry-authentication/auth-portal-01.png

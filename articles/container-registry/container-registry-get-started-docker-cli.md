@@ -1,5 +1,5 @@
 ---
-title: Push & pull Docker image
+title: Leküldéses & lekéréses Docker-rendszerkép
 description: Docker-rendszerképek leküldése és lekérése egy Azure-beli privát tároló beállításjegyzékébe és -jegyzékéből a Docker parancssori felületével
 ms.topic: article
 ms.date: 01/23/2019
@@ -13,37 +13,37 @@ ms.locfileid: "74456353"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
 
-Az Azure-beli tároló-beállításjegyzékek privát [Docker](https://hub.docker.com)-tárolórendszerképeket tárol és felügyel, hasonlóan ahhoz, ahogyan a [Docker Hub](https://hub.docker.com/) nyilvános Docker-rendszerképeket tárol. You can use the [Docker command-line interface](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) for [login](https://docs.docker.com/engine/reference/commandline/login/), [push](https://docs.docker.com/engine/reference/commandline/push/), [pull](https://docs.docker.com/engine/reference/commandline/pull/), and other operations on your container registry.
+Az Azure-beli tároló-beállításjegyzékek privát [Docker](https://hub.docker.com)-tárolórendszerképeket tárol és felügyel, hasonlóan ahhoz, ahogyan a [Docker Hub](https://hub.docker.com/) nyilvános Docker-rendszerképeket tárol. A [Docker parancssori felületét](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) használhatja [bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/), [leküldéses](https://docs.docker.com/engine/reference/commandline/push/), [lekéréses](https://docs.docker.com/engine/reference/commandline/pull/)és egyéb műveletekhez a tároló-beállításjegyzékben.
 
-In the following steps, you download an official [Nginx image](https://store.docker.com/images/nginx) from the public Docker Hub registry, tag it for your private Azure container registry, push it to your registry, and then pull it from the registry.
+A következő lépésekben letölt egy hivatalos Nginx- [rendszerképet](https://store.docker.com/images/nginx) a nyilvános Docker hub-beállításjegyzékből, megcímkézi azt a privát Azure Container registryben, leküldheti a beállításjegyzékbe, majd lehívhatja a beállításjegyzékből.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure Container Registry** – Létrehozhat egy tároló-beállításjegyzéket Azure-előfizetésében. For example, use the [Azure portal](container-registry-get-started-portal.md) or the [Azure CLI](container-registry-get-started-azure-cli.md).
-* **Docker CLI** - You must also have Docker installed locally. Docker provides packages that easily configure Docker on any [macOS][docker-mac], [Windows][docker-windows], or [Linux][docker-linux] system.
+* **Azure Container Registry** – Létrehozhat egy tároló-beállításjegyzéket Azure-előfizetésében. Használja például a [Azure Portal](container-registry-get-started-portal.md) vagy az [Azure CLI](container-registry-get-started-azure-cli.md)-t.
+* **Docker CLI** – a Docker helyileg is telepítve kell lennie. A Docker olyan csomagokat biztosít, amelyekkel egyszerűen konfigurálható a Docker bármely [MacOS][docker-mac]-, [Windows][docker-windows]-vagy [Linux][docker-linux] -rendszeren.
 
 ## <a name="log-in-to-a-registry"></a>Bejelentkezés beállításjegyzékbe
 
-There are [several ways to authenticate](container-registry-authentication.md) to your private container registry. The recommended method when working in a command line is with the Azure CLI command [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). For example, to log in to a registry named *myregistry*:
+A privát tároló beállításjegyzékének több módja is van a [hitelesítéshez](container-registry-authentication.md) . A parancssorban végzett munka esetén ajánlott módszer az Azure CLI-parancs az [ACR login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). Például egy *myregistry*nevű beállításjegyzékbe való bejelentkezéshez:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-You can also log in with [docker login](https://docs.docker.com/engine/reference/commandline/login/). For example, you might have [assigned a service principal](container-registry-authentication.md#service-principal) to your registry for an automation scenario. When you run the following command, interactively provide the service principal appID (username) and password when prompted. For best practices to manage login credentials, see the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command reference:
+A [Docker-bejelentkezés](https://docs.docker.com/engine/reference/commandline/login/)használatával is bejelentkezhet. Előfordulhat például, hogy egy [egyszerű szolgáltatásnevet rendelt hozzá](container-registry-authentication.md#service-principal) a beállításjegyzékhez egy automatizálási forgatókönyvhöz. A következő parancs futtatásakor interaktív módon adja meg az egyszerű szolgáltatásnév appID (username) és a jelszót, amikor a rendszer kéri. A bejelentkezési hitelesítő adatok kezelésével kapcsolatos ajánlott eljárásokért tekintse meg a [Docker login](https://docs.docker.com/engine/reference/commandline/login/) parancs referenciáját:
 
 ```
 docker login myregistry.azurecr.io
 ```
 
-Both commands return `Login Succeeded` once completed.
+Mindkét parancs `Login Succeeded`, ha befejeződött.
 
 > [!TIP]
-> Always specify the fully qualified registry name (all lowercase) when you use `docker login` and when you tag images for pushing to your registry. In the examples in this article, the fully qualified name is *myregistry.azurecr.io*.
+> Mindig adja meg a teljes beállításjegyzékbeli nevet (mind kisbetűs), amikor `docker login` használ, és amikor képeket címkéz a beállításjegyzékbe. A cikkben szereplő példákban a teljes név *myregistry.azurecr.IO*.
 
-## <a name="pull-the-official-nginx-image"></a>Pull the official Nginx image
+## <a name="pull-the-official-nginx-image"></a>A hivatalos Nginx-rendszerkép lekérése
 
-First, pull the public Nginx image to your local computer.
+Először kérje le a nyilvános Nginx-rendszerképet a helyi számítógépre.
 
 ```
 docker pull nginx
@@ -51,67 +51,67 @@ docker pull nginx
 
 ## <a name="run-the-container-locally"></a>Futtassa helyileg a tárolót
 
-Execute following [docker run](https://docs.docker.com/engine/reference/run/) command to start a local instance of the Nginx container interactively (`-it`) on port 8080. The `--rm` argument specifies that the container should be removed when you stop it.
+A következő [Docker-futtatási](https://docs.docker.com/engine/reference/run/) parancs végrehajtásával indítsa el az Nginx-tároló helyi példányát interaktívan (`-it`) a 8080-es porton. A `--rm` argumentum azt adja meg, hogy a tárolót el kell távolítani, amikor leállítja.
 
 ```
 docker run -it --rm -p 8080:80 nginx
 ```
 
-Browse to `http://localhost:8080` to view the default web page served by Nginx in the running container. You should see a page similar to the following:
+`http://localhost:8080` tallózással keresse meg az Nginx által a futó tárolóban kiszolgált alapértelmezett weblapot. A következőhöz hasonló oldalnak kell megjelennie:
 
 ![Nginx egy helyi számítógépen](./media/container-registry-get-started-docker-cli/nginx.png)
 
-Because you started the container interactively with `-it`, you can see the Nginx server's output on the command line after navigating to it in your browser.
+Mivel a tárolót interaktív módon indította el a `-it`okkal, az Nginx-kiszolgáló kimenete a parancssorban látható a böngészőben való navigálás után.
 
-To stop and remove the container, press `Control`+`C`.
+A tároló leállításához és eltávolításához nyomja le a `Control`+`C`.
 
-## <a name="create-an-alias-of-the-image"></a>Create an alias of the image
+## <a name="create-an-alias-of-the-image"></a>A rendszerkép aliasának létrehozása
 
-Use [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) to create an alias of the image with the fully qualified path to your registry. A példa a(z) `samples` névteret határozza meg, hogy ne legyen zsúfolt a beállításjegyzék gyökere.
+A [Docker címke](https://docs.docker.com/engine/reference/commandline/tag/) használatával hozza létre a rendszerkép aliasát a beállításjegyzék teljes elérési útjával. A példa a(z) `samples` névteret határozza meg, hogy ne legyen zsúfolt a beállításjegyzék gyökere.
 
 ```
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```
 
-For more information about tagging with namespaces, see the [Repository namespaces](container-registry-best-practices.md#repository-namespaces) section of [Best practices for Azure Container Registry](container-registry-best-practices.md).
+A névterekkel való címkézéssel kapcsolatos további információkért tekintse [meg a Azure Container Registry ajánlott eljárásainak](container-registry-best-practices.md) [tárházbeli névterek](container-registry-best-practices.md#repository-namespaces) című szakaszát.
 
-## <a name="push-the-image-to-your-registry"></a>Push the image to your registry
+## <a name="push-the-image-to-your-registry"></a>A rendszerkép leküldése a beállításjegyzékbe
 
-Now that you've tagged the image with the fully qualified path to your private registry, you can push it to the registry with [docker push](https://docs.docker.com/engine/reference/commandline/push/):
+Most, hogy megcímkézte a rendszerképet a saját beállításjegyzékének teljes elérési útjával, leküldheti a beállításjegyzékbe a [Docker push](https://docs.docker.com/engine/reference/commandline/push/)használatával:
 
 ```
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
-## <a name="pull-the-image-from-your-registry"></a>Pull the image from your registry
+## <a name="pull-the-image-from-your-registry"></a>A rendszerkép lekérése a beállításjegyzékből
 
-Use the [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) command to pull the image from your registry:
+A [Docker pull](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal lekérheti a rendszerképet a beállításjegyzékből:
 
 ```
 docker pull myregistry.azurecr.io/samples/nginx
 ```
 
-## <a name="start-the-nginx-container"></a>Start the Nginx container
+## <a name="start-the-nginx-container"></a>Az Nginx-tároló elindítása
 
-Use the [docker run](https://docs.docker.com/engine/reference/run/) command to run the image you've pulled from your registry:
+A beállításjegyzékből lekért rendszerkép futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/run/) parancsot:
 
 ```
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
-Browse to `http://localhost:8080` to view the running container.
+A futó tároló megtekintéséhez keresse meg a `http://localhost:8080`.
 
-To stop and remove the container, press `Control`+`C`.
+A tároló leállításához és eltávolításához nyomja le a `Control`+`C`.
 
-## <a name="remove-the-image-optional"></a>Remove the image (optional)
+## <a name="remove-the-image-optional"></a>A rendszerkép eltávolítása (nem kötelező)
 
-If you no longer need the Nginx image, you can delete it locally with the [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) command.
+Ha már nincs szüksége az Nginx-rendszerképre, helyileg törölheti a [Docker RMI](https://docs.docker.com/engine/reference/commandline/rmi/) paranccsal.
 
 ```
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-To remove images from your Azure container registry, you can use the Azure CLI command [az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete). For example, the following command deletes the manifest referenced by the `samples/nginx:latest` tag, any unique layer data, and all other tags referencing the manifest.
+Az Azure Container registryből származó rendszerképek eltávolításához használhatja az Azure CLI-parancsot az [ACR adattár delete](/cli/azure/acr/repository#az-acr-repository-delete)paranccsal. A következő parancs például törli a `samples/nginx:latest` címke által hivatkozott jegyzékfájlt, az egyedi réteget, valamint az összes többi, a jegyzékfájlra hivatkozó címkét.
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest
@@ -119,13 +119,13 @@ az acr repository delete --name myregistry --image samples/nginx:latest
 
 ## <a name="next-steps"></a>Következő lépések
 
-Now that you know the basics, you're ready to start using your registry! For example, deploy container images from your registry to:
+Most, hogy megismerte az alapokat, készen áll a beállításjegyzék használatának megkezdésére! Például telepítsen lemezképeket a beállításjegyzékből a következőre:
 
 * [Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
 * [Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)
 * [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)
 
-Optionally install the [Docker Extension for Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) and the [Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) extension to work with your Azure container registries. Pull and push images to an Azure container registry, or run ACR Tasks, all within Visual Studio Code.
+Telepítse a [Docker-bővítményt a Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) -hoz, és az [Azure-fiók](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) bővítményét az Azure-beli tároló-beállításjegyzékkel való együttműködéshez. Lemezképek lekérése és leküldése egy Azure Container registrybe, vagy az ACR-feladatok futtatása a Visual Studio Code-ban.
 
 
 <!-- LINKS - external -->

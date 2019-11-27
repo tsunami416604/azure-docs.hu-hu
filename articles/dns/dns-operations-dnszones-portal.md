@@ -1,6 +1,6 @@
 ---
-title: Manage DNS zones in Azure DNS - Azure portal | Microsoft Docs
-description: You can manage DNS zones using the Azure portal. This article describes how to update, delete and create DNS zones on Azure DNS
+title: DNS-zónák kezelése a Azure DNS-Azure Portalban | Microsoft Docs
+description: A DNS-zónák a Azure Portal használatával kezelhetők. Ez a cikk ismerteti, hogyan lehet frissíteni, törölni és létrehozni a DNS-zónákat Azure DNS
 services: dns
 documentationcenter: na
 author: asudbring
@@ -19,20 +19,20 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211915"
 ---
-# <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>How to manage DNS Zones in the Azure portal
+# <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>DNS-zónák kezelése a Azure Portal
 
 > [!div class="op_single_selector"]
-> * [Portal](dns-operations-dnszones-portal.md)
+> * [Portál](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
 > * [Azure klasszikus parancssori felület](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
-This article shows you how to manage your DNS zones by using the Azure portal. You can also manage your DNS zones using the cross-platform [Azure CLI](dns-operations-dnszones-cli.md) or the Azure [PowerShell](dns-operations-dnszones.md).
+Ez a cikk bemutatja, hogyan kezelheti a DNS-zónákat a Azure Portal használatával. A DNS-zónákat a platformfüggetlen [Azure CLI](dns-operations-dnszones-cli.md) vagy az Azure [PowerShell](dns-operations-dnszones.md)használatával is kezelheti.
 
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
 1. Jelentkezzen be az Azure Portalra
-2. On the Hub menu, navigate to **Create a resource > Networking > DNS zone** to open the **Create DNS zone** blade.
+2. A központi menüben navigáljon az **erőforrás létrehozása > hálózatkezelés > DNS-zóna** elemre a **DNS-zóna létrehozása** panel megnyitásához.
 
     ![DNS-zóna](./media/dns-operations-dnszones-portal/openzone650.png)
 
@@ -51,14 +51,14 @@ This article shows you how to manage your DNS zones by using the Azure portal. Y
 
 ## <a name="list-dns-zones"></a>DNS-zónák listázása
 
-In the Azure portal, navigate to **More services** > **Networking** > **DNS zones**. Each DNS zone is its own resource, and information such as number of record-sets and name servers are viewable from this view. The column **NAME SERVERS** is not in the default view. To add it, click **Columns**, select **Name servers**, and then click **Done**.
+A Azure Portalban navigáljon a **További szolgáltatások** > **hálózatkezelés** > **DNS-zónákhoz**. A DNS-zónák a saját erőforrásai, és a nézetből megtekinthető információk, például a rekordhalmazok és a névkiszolgálók száma. Az oszlopnév- **kiszolgálók** nem az alapértelmezett nézetben vannak. A hozzáadásához kattintson az **oszlopok**elemre **, válassza a névkiszolgálók lehetőséget**, majd kattintson a **kész**gombra.
 
-![listing DNS zones](./media/dns-operations-dnszones-portal/listzones.png)
+![DNS-zónák listázása](./media/dns-operations-dnszones-portal/listzones.png)
 
 ## <a name="delete-a-dns-zone"></a>DNS-zóna törlése
 
-Navigate to a DNS zone in the portal. On the **DNS zone** blade, click **Delete zone**. You are then prompted to confirm you are wanting to delete the DNS zone. Deleting a DNS zone also deletes all records that are contained in the zone.
+Navigáljon egy DNS-zónához a portálon. A **DNS-zóna** panelen kattintson a **zóna törlése**elemre. Ekkor a rendszer felszólítja, hogy erősítse meg, hogy törölni szeretné a DNS-zónát. A DNS-zónák törlésével a zónában található összes rekord is törlődik.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Learn how to work with your DNS Zone and records by visiting [Get started with Azure DNS using the Azure portal](dns-getstarted-portal.md).
+Ismerje meg, hogyan használhatja a DNS-zónát és-rekordokat [a Azure DNS használatának első lépéseiben a Azure Portal használatával](dns-getstarted-portal.md).

@@ -11,11 +11,11 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224485"
 ---
-Azure Data Lake Analytics makes the complex task of managing distributed infrastructure and complex code easy. It dynamically provisions resources, and you can use it to do analytics on exabytes of data. When the job completes, it winds down resources automatically. You pay only for the processing power that was used. A tárolt adatmennyiség és a felhasznált számítási teljesítmény növelése és csökkentése esetén nem kell átírnia a programkódot – To raise the default limits for your subscription, contact support.
+A Azure Data Lake Analytics egyszerűvé teszi az elosztott infrastruktúra és az összetett kód kezelésének bonyolult feladatát. A szolgáltatás dinamikusan kiépíti az erőforrásokat, és használhatja az több exabájt elemzéséhez. Ha a művelet befejeződik, a rendszer automatikusan lekéri az erőforrásokat. Csak a felhasznált feldolgozási teljesítményért kell fizetnie. Ha növeli vagy csökkenti a tárolt adatok méretét, vagy a felhasznált számítási teljesítményt, nem kell újraírnia a programot. Az előfizetés alapértelmezett korlátainak előléptetéséhez forduljon az ügyfélszolgálathoz.
 
 | **Erőforrás** | **Alapértelmezett korlát** | **Megjegyzések** |
 | --- | --- | --- |
-| Maximum number of concurrent jobs |20 | |
-| Maximum number of analytics units (AUs) per account |250 | Use any combination of up to a maximum of 250 AUs across 20 jobs. To increase this limit, contact Microsoft Support. |
-| Maximum script size for job submission | 3 MB | |
-| Maximum number of Data Lake Analytics accounts per region per subscription | 5 | To increase this limit, contact Microsoft Support. |
+| Egyidejű feladatok maximális száma |20 | |
+| Az elemzési egységek (AUs) maximális száma felhasználónként |250 | Legfeljebb 250 au-kombinációt használhat 20 feladaton belül. A korlát növeléséhez forduljon Microsoft ügyfélszolgálatahoz. |
+| A feladatok küldésének maximális mérete | 3 MB | |
+| Data Lake Analytics-fiókok maximális száma régiónként/előfizetésben | 5 | A korlát növeléséhez forduljon Microsoft ügyfélszolgálatahoz. |

@@ -1,6 +1,6 @@
 ---
-title: Provision devices across load balanced hubs using Azure IoT Hub Device Provisioning Service
-description: Tutorial - Device Provisioning Service automatic device provisioning across load balanced IoT hubs in Azure Portal
+title: Eszközök kiépítése elosztott terhelésű hubok között az Azure IoT Hub Device Provisioning Service
+description: Oktatóanyag – eszköz kiépítési szolgáltatás automatikus eszköz kiépítés elosztott terhelésű IoT-hubok között az Azure Portalon
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -15,9 +15,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229453"
 ---
-# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Tutorial: Provision devices across load-balanced IoT hubs
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Oktatóanyag: eszközök kiépítése elosztott terhelésű IoT hubok között
 
-Ebből az oktatóanyagból megtudhatja, hogyan regisztrálhat eszközöket több elosztott terhelésű IoT hubhoz a Device Provisioning Service használatával. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebből az oktatóanyagból megtudhatja, hogyan regisztrálhat eszközöket több elosztott terhelésű IoT hubhoz a Device Provisioning Service használatával. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Második eszköz regisztrálása egy második IoT-központhoz az Azure Portal használatával 
@@ -63,7 +63,7 @@ Kapcsolja össze a Device Provisioning Service-t és az IoT hubot, hogy a Device
 
 1. Az **Összes erőforrás** lapon kattintson a korábban létrehozott Device Provisioning Service szolgáltatásra.
 2. A Device Provisioning Service lapján kattintson a **Csatolt IoT-központok** lehetőségre.
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson az **Hozzáadás** parancsra.
 4. A **Hivatkozás hozzáadása IoT-központhoz** lapon a választógombok segítségével adja meg, hogy a csatolt IoT-központ az aktuális előfizetésben vagy egy másik előfizetésben található. Ezután válassza ki az IoT-központ nevét az **IoT-központ** mezőben.
 5. Kattintson a **Save** (Mentés) gombra.
 

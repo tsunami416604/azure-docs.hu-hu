@@ -28,15 +28,15 @@ ms.locfileid: "74196587"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. Emellett [kezelése a Resource Manager-alapú üzemi modellben statikus magánhálózati IP-cím](virtual-networks-static-private-ip-arm-cli.md).
+Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. [A statikus magánhálózati IP-címeket a Resource Manager-alapú üzemi modellben is kezelheti](virtual-networks-static-private-ip-arm-cli.md).
 
-A minta az Azure klasszikus parancssori felület parancsai olvashat a már létrehozott egy egyszerű környezetben várható. Ha azt szeretné, akkor jelennek meg ebben a dokumentumban a parancsok futtatásához először hozhat létre a leírt tesztkörnyezet [hozzon létre egy vnetet](virtual-networks-create-vnet-classic-cli.md).
+A minta az Azure klasszikus parancssori felület parancsai olvashat a már létrehozott egy egyszerű környezetben várható. Ha a jelen dokumentumban megjelenő parancsokat szeretné futtatni, először [hozza létre a vnet létrehozása](virtual-networks-create-vnet-classic-cli.md)című témakörben leírt tesztkörnyezetben.
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>Statikus magánhálózati IP-cím megadása a virtuális gép létrehozásakor
-Nevű új virtuális gép létrehozása *DNS01* új felhőalapú szolgáltatás nevű *TestService* a fenti forgatókönyv alapján, kövesse az alábbi lépéseket:
+Ha egy új, *DNS01* nevű virtuális gépet szeretne létrehozni egy új, *TestService* nevű felhőalapú szolgáltatásban a fenti forgatókönyv alapján, kövesse az alábbi lépéseket:
 
 1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Install and Configure the Azure CLI](/cli/azure/install-cli-version-1.0) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
-2. Futtassa a **azure-szolgáltatás létrehozása** parancs használatával a felhőalapú szolgáltatás létrehozása.
+2. Futtassa az **Azure Service Create** parancsot a Cloud Service létrehozásához.
    
         azure service create TestService --location uscentral
    
@@ -46,7 +46,7 @@ Nevű új virtuális gép létrehozása *DNS01* új felhőalapú szolgáltatás 
         info:    Creating cloud service
         data:    Cloud service name TestService
         info:    service create command OK
-3. Futtassa a **azure virtuális gép létrehozása** parancsot a virtuális gép létrehozásához. Figyelje meg, hogy egy statikus magánhálózati IP-cím értékét. A kimenet után látható lista ismerteti a használt paramétereket.
+3. Futtassa az **Azure Create VM** parancsot a virtuális gép létrehozásához. Figyelje meg, hogy egy statikus magánhálózati IP-cím értékét. A kimenet után látható lista ismerteti a használt paramétereket.
    
         azure vm create -l centralus -n DNS01 -w TestVNet -S "192.168.1.101" TestService bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2 adminuser AdminP@ssw0rd
    
@@ -66,16 +66,16 @@ Nevű új virtuális gép létrehozása *DNS01* új felhőalapú szolgáltatás 
         info:    vm create command OK
    
    * **-l (vagy --location)** . Az Azure régió, ahol a virtuális gép létrejön. A mi esetünkben *centralus*.
-   * **-n (vagy--vm-név)** . Neve a virtuális gép létrehozása.
-   * **-w (vagy--virtuális hálózat neve)** . A VNet neve, ahol a virtuális gép létrejön. 
-   * **-S (vagy--statikus ip-)** . Statikus magánhálózati IP-címet a virtuális gép számára.
+   * **-n (vagy--VM-Name)** . Neve a virtuális gép létrehozása.
+   * **-w (vagy--Virtual-Network-name)** . A VNet neve, ahol a virtuális gép létrejön. 
+   * **-S (vagy--Static-IP)** . Statikus magánhálózati IP-címet a virtuális gép számára.
    * **TestService**. A felhőszolgáltatás, ahol létrejön a virtuális gép neve.
-   * **bd507d3a70934695bc2128e3e5a255ba__RightImage – Windows – 2012 R2-x64-v14.2**. A virtuális gép létrehozásához használt lemezkép.
+   * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v 14.2**. A virtuális gép létrehozásához használt lemezkép.
    * **adminuser**. Helyi rendszergazda a Windows virtuális gép számára.
    * <strong>AdminP@ssw0rd</strong>. A Windows virtuális gép helyi rendszergazdai jelszót.
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Hogyan kérheti le a statikus magánhálózati IP-címadatok egy virtuális géphez
-Az a fenti szkript létrehozni a virtuális gép statikus privát IP-címadatok megtekintéséhez futtassa a következő Azure CLI-parancsot, és tekintse meg az értékét *hálózati StaticIP*:
+A fenti parancsfájllal létrehozott virtuális gép statikus magánhálózati IP-címére vonatkozó információk megtekintéséhez futtassa a következő Azure CLI-parancsot, és figyelje meg a *hálózati StaticIP*értékét:
 
     azure vm static-ip show DNS01
 
@@ -118,6 +118,6 @@ Várt kimenet:
 Javasoljuk, hogy nem statikusan rendel a privát IP-cím az Azure virtuális gépen belül a virtuális gépek, az operációs rendszer rendelt, kivéve, ha szükséges. Ha manuálisan állítsa be a magánhálózati IP-címet az operációs rendszerből, győződjön meg arról, hogy-e az Azure virtuális Géphez rendelt magánhálózati IP-címet a címmel, vagy a virtuális gép is megszakad a kapcsolat. A virtuális gép operációs rendszerén belül ne rendeljen hozzá manuálisan egy Azure-beli virtuális géphez hozzárendelt nyilvános IP-címet.
 
 ## <a name="next-steps"></a>Következő lépések
-* Ismerje meg [lefoglalt nyilvános IP-cím](virtual-networks-reserved-public-ip.md) címeket.
-* Ismerje meg [példányszintű nyilvános IP (ILPIP)](virtual-networks-instance-level-public-ip.md) címeket.
-* Tekintse át a [fenntartott IP-REST API-k](https://msdn.microsoft.com/library/azure/dn722420.aspx).
+* További információ a [fenntartott nyilvános IP-](virtual-networks-reserved-public-ip.md) címekről.
+* További információ a [példány szintű nyilvános IP-címekről (ILPIP)](virtual-networks-instance-level-public-ip.md) .
+* Forduljon a [fenntartott IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)-khoz.

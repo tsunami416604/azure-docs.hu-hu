@@ -11,29 +11,29 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224387"
 ---
-The following table lists the limits that apply to Azure IoT Hub Device Provisioning Service resources.
+A következő táblázat felsorolja az Azure IoT Hub Device Provisioning Service-erőforrásokra vonatkozó korlátozásokat.
 
 | Erőforrás | Korlát |
 | --- | --- |
-| Maximum device provisioning services per Azure subscription | 10 |
-| Maximum number of enrollments | 1,000,000 |
-| Maximum number of registrations | 1,000,000 |
-| Maximum number of enrollment groups | 100 |
-| Maximum number of CAs | 25 |
-| Maximum number of linked IoT hubs | 50 |
-| Maximum size of message | 96 KB|
+| Azure-előfizetések maximális eszköz-kiépítési szolgáltatásai | 10 |
+| Regisztrációk maximális száma | 1,000,000 |
+| Regisztrációk maximális száma | 1,000,000 |
+| Beléptetési csoportok maximális száma | 100 |
+| Hitelesítésszolgáltatók maximális száma | 25 |
+| Csatolt IoT-hubok maximális száma | 50 |
+| Üzenet maximális mérete | 96 KB|
 
 
 > [!NOTE]
-> To increase the number of instances in your subscription, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
+> Az előfizetésben lévő példányok számának növeléséhez forduljon [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
 > [!NOTE]
-> To increase the number of enrollments and registrations on your provisioning service, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
+> A kiépítési szolgáltatásban beléptetések és regisztrációk számának növeléséhez forduljon [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
-The Device Provisioning Service throttles requests when the following quotas are exceeded.
+Az eszköz kiépítési szolgáltatása a következő kvóták túllépése esetén szabályozza a kérelmeket.
 
-| Szabályozás | Per-unit value |
+| Szabályozás | Egységnyi érték |
 | --- | --- |
-| Műveletek | 200/min/service |
-| Eszközregisztrációk | 200/min/service |
-| Device polling operation | 5/10 sec/device |
+| Műveletek | 200/perc/szolgáltatás |
+| Eszközregisztrációk | 200/perc/szolgáltatás |
+| Eszköz lekérdezési művelete | 5/10 mp/eszköz |

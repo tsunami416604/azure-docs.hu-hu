@@ -220,7 +220,7 @@ A fúvóka vertikális felskálázásához használja az alkalmazások kezelőj�
 A Loggregator **LGR** küld a naplózási folyamattal kapcsolatos problémák jelzésére. Figyelheti a riasztást annak megállapítására, hogy a loggregator bővíteni kell-e.
 A loggregator vertikális felskálázásához növelje a Doppler-puffer méretét, vagy vegyen fel további Doppler-kiszolgálói példányokat a CF-jegyzékfájlba. További információ: a [loggregator skálázásának útmutatója](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
 
-## <a name="update"></a>frissítés
+## <a name="update"></a>Frissítés
 
 Ha újabb verzióval szeretné frissíteni a fúvókát, töltse le az új fúvóka-kiadást, kövesse az előző "a fúvóka üzembe helyezése" című szakaszt, és küldje el újra az alkalmazást.
 

@@ -1,6 +1,6 @@
 ---
-title: Hibakeresés
-description: Troubleshooting Azure SQL Data Warehouse.
+title: Hibaelhárítás
+description: Hibaelhárítási Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -18,62 +18,62 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483217"
 ---
-# <a name="troubleshooting-azure-sql-data-warehouse"></a>Troubleshooting Azure SQL Data Warehouse
-This article lists common troubleshooting question.
+# <a name="troubleshooting-azure-sql-data-warehouse"></a>Hibaelhárítási Azure SQL Data Warehouse
+Ez a cikk a gyakori hibaelhárítási kérdéseit sorolja fel.
 
-## <a name="connecting"></a>Connecting
-| Probléma                                                        | Felbontás                                                   |
+## <a name="connecting"></a>Csatlakozás
+| Probléma                                                        | Megoldás:                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Az „NT AUTHORITY\ANONYMOUS LOGON” felhasználó bejelentkezése nem sikerült. (Microsoft SQL Server, Error: 18456) | Ez a hiba akkor fordul elő, ha egy AAD-felhasználó megpróbál csatlakozni a master adatbázishoz, de nem rendelkezik felhasználóval a master adatbázisban.  A hiba kijavítása érdekében adja meg azt az SQL Data Warehouse-t, amelyhez csatlakozni szeretne a kapcsolódáskor, vagy adja hozzá a felhasználót a master adatbázishoz.  See [Security overview][Security overview] article for more details. |
-| A „MyUserName” kiszolgálói tag a jelenlegi biztonsági környezetben nem tud hozzáférni a „master” adatbázishoz. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés sikertelen volt. A következő felhasználó bejelentkezése nem sikerült: „MyUserName”. (Microsoft SQL Server, Error: 916) | Ez a hiba akkor fordul elő, ha egy AAD-felhasználó megpróbál csatlakozni a master adatbázishoz, de nem rendelkezik felhasználóval a master adatbázisban.  A hiba kijavítása érdekében adja meg azt az SQL Data Warehouse-t, amelyhez csatlakozni szeretne a kapcsolódáskor, vagy adja hozzá a felhasználót a master adatbázishoz.  See [Security overview][Security overview] article for more details. |
-| CTAIP error                                                  | This error can occur when a login has been created on the SQL server master database, but not in the SQL Data Warehouse database.  If you encounter this error, take a look at the [Security overview][Security overview] article.  This article explains how to create a login and user on master, and then how to create a user in the SQL Data Warehouse database. |
-| Blocked by Firewall                                          | Azure SQL databases are protected by server and database level firewalls to ensure only known IP addresses have access to a database. The firewalls are secure by default, which means that you must explicitly enable and IP address or range of addresses before you can connect.  To configure your firewall for access, follow the steps in [Configure server firewall access for your client IP][Configure server firewall access for your client IP] in the [Provisioning instructions][Provisioning instructions]. |
-| Cannot connect with tool or driver                           | SQL Data Warehouse recommends using [SSMS][SSMS], [SSDT for Visual Studio][SSDT for Visual Studio], or [sqlcmd][sqlcmd] to query your data. For more information on drivers and connecting to SQL Data Warehouse, see [Drivers for Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] and [Connect to Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse] articles. |
+| Az „NT AUTHORITY\ANONYMOUS LOGON” felhasználó bejelentkezése nem sikerült. (Microsoft SQL Server, hiba: 18456) | Ez a hiba akkor fordul elő, ha egy AAD-felhasználó megpróbál csatlakozni a master adatbázishoz, de nem rendelkezik felhasználóval a master adatbázisban.  A hiba kijavítása érdekében adja meg azt az SQL Data Warehouse-t, amelyhez csatlakozni szeretne a kapcsolódáskor, vagy adja hozzá a felhasználót a master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése][Security overview] című cikket. |
+| A „MyUserName” kiszolgálói tag a jelenlegi biztonsági környezetben nem tud hozzáférni a „master” adatbázishoz. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés sikertelen volt. A következő felhasználó bejelentkezése nem sikerült: „MyUserName”. (Microsoft SQL Server, hiba: 916) | Ez a hiba akkor fordul elő, ha egy AAD-felhasználó megpróbál csatlakozni a master adatbázishoz, de nem rendelkezik felhasználóval a master adatbázisban.  A hiba kijavítása érdekében adja meg azt az SQL Data Warehouse-t, amelyhez csatlakozni szeretne a kapcsolódáskor, vagy adja hozzá a felhasználót a master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése][Security overview] című cikket. |
+| CTAIP hiba                                                  | Ez a hiba akkor fordulhat elő, ha az SQL Server főadatbázisán egy bejelentkezési azonosítót hoztak létre, de nem szerepelnek a SQL Data Warehouse adatbázisban.  Ha ezt a hibát tapasztalja, tekintse meg a [biztonsági áttekintést ismertető][Security overview] cikket.  Ez a cikk azt ismerteti, hogyan hozható létre egy bejelentkezési azonosító és egy felhasználó a főkiszolgálón, majd hogyan hozható létre felhasználó a SQL Data Warehouse adatbázisban. |
+| Tűzfal blokkolja                                          | Az Azure SQL Database-adatbázisokat kiszolgáló-és adatbázis-szintű tűzfalak védik, hogy csak az ismert IP-címek férhessenek hozzá egy adatbázishoz. Alapértelmezés szerint a tűzfalak biztonságosak, ami azt jelenti, hogy a kapcsolat megkezdése előtt explicit módon engedélyeznie kell és meg kell adnia az IP-címet vagy a címtartományt.  A tűzfal hozzáférésre való konfigurálásához kövesse a [kiszolgáló tűzfal-hozzáférés konfigurálása az ügyfél IP][Configure server firewall access for your client IP] -címére című témakör lépéseit a [létesítési utasításokban][Provisioning instructions]. |
+| Nem lehet kapcsolatot létesíteni az eszközzel vagy az illesztőprogrammal                           | SQL Data Warehouse a [SSMS][SSMS], [a SSDT for Visual Studio][SSDT for Visual Studio]vagy a [Sqlcmd][sqlcmd] használatát javasolja az adatai lekérdezéséhez. Az illesztőprogramokkal és a SQL Data Warehousehoz való csatlakozással kapcsolatos további információkért lásd: [illesztőprogramok Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] és [Csatlakozás Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse] cikkekhez. |
 
 ## <a name="tools"></a>Eszközök
-| Probléma                                                        | Felbontás                                                   |
+| Probléma                                                        | Megoldás:                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Visual Studio object explorer is missing AAD users           | Ez egy ismert probléma.  As a workaround, view the users in [sys.database_principals][sys.database_principals].  See [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] to learn more about using Azure Active Directory with SQL Data Warehouse. |
-| Manual scripting, using the scripting wizard, or connecting via SSMS is slow, not responding, or producing errors | Ensure that users have been created in the master database. In scripting options, also make sure that the engine edition is set as “Microsoft Azure SQL Data Warehouse Edition” and engine type is “Microsoft Azure SQL Database”. |
-| Generate scripts fails in SSMS                               | Generating a script for SQL Data Warehouse fails if the option "Generate script for dependent objects" option is set to "True." As a workaround, users must manually go to Tools -> Options ->SQL Server Object Explorer -> Generate script for dependent options and set to false |
+| A Visual Studio Object Explorerből hiányzik a HRE-felhasználók           | Ez egy ismert probléma.  Megkerülő megoldásként tekintse meg a [sys. database_principals][sys.database_principals]felhasználóit.  A Azure Active Directory és a SQL Data Warehouse használatával kapcsolatos további tudnivalókért tekintse meg a [Azure SQL Data Warehouse hitelesítés][Authentication to Azure SQL Data Warehouse] című témakört. |
+| A manuális parancsfájlok, a parancsfájlkezelés varázsló használata vagy a SSMS-on keresztüli csatlakozás lassú, nem válaszol, vagy hibákat állít elő. | Győződjön meg arról, hogy a felhasználók létre lettek hozva a Master adatbázisban. A parancsfájl-kezelési beállítások területen győződjön meg arról, hogy a motor kiadása "Microsoft Azure SQL Data Warehouse Edition", a motor típusa pedig "Microsoft Azure SQL Database". |
+| A szkriptek előállítása meghiúsul a SSMS                               | A SQL Data Warehouse parancsfájl létrehozása meghiúsul, ha a "függő objektumok létrehozásához szükséges parancsfájl létrehozása" beállítás értéke "true" (igaz). Megkerülő megoldásként a felhasználóknak manuálisan kell megadniuk az eszközök-> Options-> SQL Server Object Explorer-> parancsfájlt létrehozni a függő beállításokhoz, és false értékre kell állítani. |
 
 ## <a name="performance"></a>Teljesítmény
-| Probléma                                                        | Felbontás                                                   |
+| Probléma                                                        | Megoldás:                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Query performance troubleshooting                            | If you are trying to troubleshoot a particular query, start with [Learning how to monitor your queries][Learning how to monitor your queries]. |
-| TempDB space issues | [Monitor TempDB](sql-data-warehouse-manage-monitor.md#monitor-tempdb) space usage.  Common causes for running out of TempDB space are:<br>- Not enough resources allocated to the query causing data to spill to TempDB.  See [Workload management](resource-classes-for-workload-management.md) <br>- Statistics are missing or out of date causing excessive data movement.  See [Maintaining table statistics][Statistics] for details on how to create statistics<br>- TempDB space is allocated per service level.  [Scaling your SQL Data Warehouse][Scaling your SQL Data Warehouse] to a higher DWU setting allocates more TempDB space.|
-| Poor query performance and plans often is a result of missing statistics | The most common cause of poor performance is lack of statistics on your tables.  See [Maintaining table statistics][Statistics] for details on how to create statistics and why they are critical to your performance. |
-| Low concurrency / queries queued                             | Understanding [Workload management][Workload management] is important in order to understand how to balance memory allocation with concurrency. |
-| How to implement best practices                              | The best place to start to learn ways to improve query performance is [SQL Data Warehouse best practices][SQL Data Warehouse best practices] article. |
-| How to improve performance with scaling                      | Sometimes the solution to improving performance is to simply add more compute power to your queries by [Scaling your SQL Data Warehouse][Scaling your SQL Data Warehouse]. |
-| Poor query performance as a result of poor index quality     | Some times queries can slow down because of [Poor columnstore index quality][Poor columnstore index quality].  See this article for more information and how to [Rebuild indexes to improve segment quality][Rebuild indexes to improve segment quality]. |
+| A lekérdezés teljesítményével kapcsolatos hibaelhárítás                            | Ha egy adott lekérdezést próbál elhárítani, kezdje a [megtanulni a lekérdezések figyelését][Learning how to monitor your queries]. |
+| TempDB lemezterülettel kapcsolatos problémák | [Figyelje a tempdb](sql-data-warehouse-manage-monitor.md#monitor-tempdb) terület használatát.  A TempDB-területek futtatásának gyakori okai a következők:<br>– Nincs elég erőforrás a lekérdezés számára, ami az adatvesztést okozó TempDB.  Lásd: [munkaterhelés-kezelés](resource-classes-for-workload-management.md) <br>– A statisztikák hiányoznak vagy elavultak, ami túlzott adatáthelyezést okoz.  A statisztikák létrehozásával kapcsolatos részletekért tekintse meg a [táblák statisztikáinak fenntartását][Statistics] ismertető témakört.<br>– A TempDB terület kiosztása szolgáltatási szintenként történik.  [A SQL Data Warehouse][Scaling your SQL Data Warehouse] nagyobb DWU-beállításra méretezése több tempdb területet foglal le.|
+| A hiányos lekérdezési teljesítmény és a tervek gyakran a hiányzó statisztikák eredménye. | A gyenge teljesítmény leggyakoribb oka a táblák statisztikáinak hiánya.  A statisztikák létrehozásával és a teljesítmény szempontjából kritikus fontosságú információkkal kapcsolatos további információkért tekintse meg a [táblák statisztikáinak fenntartását][Statistics] ismertető témakört. |
+| Alacsony Egyidejűség/lekérdezések várólistán                             | A számítási [feladatok kezelésének][Workload management] megismerése fontos annak megismerése érdekében, hogy miként lehet kiegyensúlyozni a memória elosztását a párhuzamosságtal. |
+| Az ajánlott eljárások megvalósítása                              | A legjobb megoldás, ha a lekérdezési teljesítmény javításának módszereit [SQL Data Warehouse ajánlott eljárásokat][SQL Data Warehouse best practices] ismertető cikkben találja. |
+| A teljesítmény növelése a skálázással                      | Előfordulhat, hogy a megoldás javítja a teljesítményt, hogy egyszerűen vegyen fel több számítási teljesítményt a lekérdezésekhez a [SQL Data Warehouse skálázásával][Scaling your SQL Data Warehouse]. |
+| Gyenge lekérdezési teljesítmény a gyenge index minősége miatt     | Bizonyos időpontokban a lekérdezések lelassulnak a [gyenge oszlopcentrikus indexe][Poor columnstore index quality]miatt.  Ebből a cikkből megtudhatja, hogyan [hozhat létre az indexeket a szegmensek minőségének javítása érdekében][Rebuild indexes to improve segment quality]. |
 
-## <a name="system-management"></a>System management
-| Probléma                                                        | Felbontás                                                   |
+## <a name="system-management"></a>Rendszerkezelés
+| Probléma                                                        | Megoldás:                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Msg 40847: Could not perform the operation because server would exceed the allowed Database Transaction Unit quota of 45000. | Either reduce the [DWU][DWU] of the database you are trying to create or [request a quota increase][request a quota increase]. |
-| Investigating space utilization                              | See [Table sizes][Table sizes] to understand the space utilization of your system. |
-| Help with managing tables                                    | See the [Table overview][Overview] article for help with managing your tables.  This article also includes links into more detailed topics like [Table data types][Data types], [Distributing a table][Distribute], [Indexing a table][Index],  [Partitioning a table][Partition], [Maintaining table statistics][Statistics] and [Temporary tables][Temporary]. |
-| Transparent data encryption (TDE) progress bar is not updating in the Azure portal | You can view the state of TDE via [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
+| Msg 40847: nem végezhető el a művelet, mert a kiszolgáló túllépi az engedélyezett adatbázis-tranzakciós egység (45000) kvótáját. | Csökkentse a létrehozni kívánt adatbázis [DWU][DWU] vagy a [kvóta növelését][request a quota increase]. |
+| A terület kihasználtságának vizsgálata                              | A rendszerek lemezterület-kihasználtságának megismeréséhez tekintse meg a [táblázat méretét][Table sizes] . |
+| Súgó a táblázatok kezeléséhez                                    | A táblák kezelésével kapcsolatos segítségért tekintse meg a [táblázat áttekintését][Overview] ismertető cikket.  A cikk a részletes témakörökre mutató hivatkozásokat is tartalmaz, például a [táblázat adattípusait][Data types], [a táblázatok terjesztését][Distribute], [a táblák indexelését][Index], [a táblák particionálását, a][Partition]táblák [statisztikáit][Statistics] és az [ideiglenes táblákat][Temporary]. |
+| Az transzparens adattitkosítás (TDE) folyamatjelző sáv nem frissül a Azure Portal | A TDE állapotát a [PowerShell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption)segítségével tekintheti meg. |
 
 
-## <a name="differences-from-sql-database"></a>Differences from SQL Database
-| Probléma                                 | Felbontás                                                   |
+## <a name="differences-from-sql-database"></a>Különbségek a SQL Database
+| Probléma                                 | Megoldás:                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
-| Unsupported SQL Database features     | See [Unsupported table features][Unsupported table features]. |
-| Unsupported SQL Database data types   | See [Unsupported data types][Unsupported data types].        |
-| DELETE and UPDATE limitations         | See [UPDATE workarounds][UPDATE workarounds], [DELETE workarounds][DELETE workarounds] and [Using CTAS to work around unsupported UPDATE and DELETE syntax][Using CTAS to work around unsupported UPDATE and DELETE syntax]. |
-| MERGE statement is not supported      | See [MERGE workarounds][MERGE workarounds].                  |
-| Stored procedure limitations          | See [Stored procedure limitations][Stored procedure limitations] to understand some of the limitations of stored procedures. |
-| UDFs do not support SELECT statements | This is a current limitation of our UDFs.  See [CREATE FUNCTION][CREATE FUNCTION] for the syntax we support. |
+| Nem támogatott SQL Database funkciók     | Lásd: nem [támogatott táblázatos funkciók][Unsupported table features]. |
+| Nem támogatott SQL Database adattípusok   | Lásd: nem [támogatott adattípusok][Unsupported data types].        |
+| TÖRLÉSi és frissítési korlátozások         | [A nem támogatott frissítési és törlési szintaxissal][Using CTAS to work around unsupported UPDATE and DELETE syntax]kapcsolatban tekintse meg a [megoldások frissítése][UPDATE workarounds], a [megkerülő megoldások törlése][DELETE workarounds] és a CTAS használata című témakört. |
+| A MERGE utasítás nem támogatott      | Lásd: [egyesítési Áthidaló megoldás][MERGE workarounds].                  |
+| Tárolt eljárások korlátai          | A tárolt eljárások korlátainak megismeréséhez tekintse meg a [tárolt eljárásokra vonatkozó korlátozásokat][Stored procedure limitations] . |
+| A UDF nem támogatja a SELECT utasítások használatát | Ez a UDF jelenlegi korlátozása.  Az általunk támogatott szintaxishoz lásd: [create Function][CREATE FUNCTION] . |
 
 ## <a name="next-steps"></a>Következő lépések
-For more help in finding solution to your issue, here are some other resources you can try.
+Ha további segítségre van szüksége a probléma megoldásához, néhány további erőforrást is kipróbálhat.
 
 * [Blogok]
 * [Funkciókérések]
 * [Videók]
-* [CAT team blogs]
+* [CAT-csapat blogok]
 * [Támogatási jegy létrehozása]
 * [MSDN-fórum]
 * [Stack Overflow-fórum]
@@ -123,7 +123,7 @@ For more help in finding solution to your issue, here are some other resources y
 
 <!--Other Web references-->
 [Blogok]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[CAT team blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[CAT-csapat blogok]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Funkciókérések]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [MSDN-fórum]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse
 [Stack Overflow-fórum]: https://stackoverflow.com/questions/tagged/azure-sqldw

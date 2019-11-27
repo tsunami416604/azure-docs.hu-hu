@@ -1,6 +1,6 @@
 ---
-title: Request Units and throughput in Azure Cosmos DB
-description: Learn about how to specify and estimate Request Unit requirements in Azure Cosmos DB
+title: Kérelmek egységei és átviteli sebessége Azure Cosmos DB
+description: Tudnivalók a kérések egységre vonatkozó követelményeinek megadásáról és becsléséről Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -13,66 +13,66 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383111"
 ---
-# <a name="request-units-in-azure-cosmos-db"></a>Request Units in Azure Cosmos DB
+# <a name="request-units-in-azure-cosmos-db"></a>Kérelmek egységei Azure Cosmos DB
 
-With Azure Cosmos DB, you pay for the throughput you provision and the storage you consume on an hourly basis. Throughput must be provisioned to ensure that sufficient system resources are available for your Azure Cosmos database at all times. You need enough resources to meet or exceed the [Azure Cosmos DB SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/).
+A Azure Cosmos DB a kiépített átviteli sebességért és az óránként felhasznált tárhelyért kell fizetnie. Az átviteli sebességet úgy kell kiépíteni, hogy mindig elegendő rendszererőforrás legyen elérhető az Azure Cosmos-adatbázishoz. Elegendő erőforrásra van szüksége ahhoz, hogy elérje vagy túllépje a [Azure Cosmos db SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)-kat.
 
-Azure Cosmos DB supports many APIs, such as SQL, MongoDB, Cassandra, Gremlin, and Table. Each API has its own set of database operations. These operations range from simple point reads and writes to complex queries. Each database operation consumes system resources based on the complexity of the operation. 
+Azure Cosmos DB számos olyan API-t támogat, mint például az SQL, a MongoDB, a Cassandra, a Gremlin és a table. Mindegyik API saját adatbázis-műveletekkel rendelkezik. Ezek a műveletek az egyszerű pont olvasási és írási műveleteiből származnak összetett lekérdezésekre. Minden adatbázis-művelet a művelet bonyolultsága alapján használja a rendszererőforrásokat. 
 
-The cost of all database operations is normalized by Azure Cosmos DB and is expressed by *Request Units* (or RUs, for short). You can think of RUs per second as the currency for throughput. RUs per second is a rate-based currency. It abstracts the system resources such as CPU, IOPS, and memory that are required to perform the database operations supported by Azure Cosmos DB. 
+Az összes adatbázis-művelet díját a Azure Cosmos DB normalizálja, és a *kérelmek egységei* (vagy RUs, röviden) szerint vannak kifejezve. Azt is megteheti, hogy a másodpercenkénti RUs pénzneme az átviteli sebesség. Az RUs/mp érték alapú pénznem. A rendszer elvégzi a Azure Cosmos DB által támogatott adatbázis-műveletek végrehajtásához szükséges rendszererőforrásokat, például a PROCESSZORt, a IOPS és a memóriát. 
 
-The cost to read a 1 KB item is 1 Request Unit (or 1 RU). A minimum of 10 RU/s is required to store each 1 GB of data. All other database operations are similarly assigned a cost using RUs. No matter which API you use to interact with your Azure Cosmos container, costs are always measured by RUs. Whether the database operation is a write, read, or query, costs are always measured in RUs.
+1 KB-os elemek beolvasásának díja 1 kérési egység (vagy 1 RU). 1 GB-nyi adat tárolásához legalább 10 RU/s szükséges. Az összes többi adatbázis-művelet hasonlóképpen hozzá van rendelve az RUs használatával. Függetlenül attól, hogy melyik API-t használja az Azure Cosmos-tárolóval való kommunikációra, a költségeket mindig az RUs méri. Azt jelzi, hogy az adatbázis-művelet írási, olvasási vagy lekérdezési jellegű-e, a költségeket mindig az RUs méri.
 
-The following image shows the high-level idea of RUs:
+Az alábbi képen az RUs magas szintű ötlete látható:
 
-![Database operations consume Request Units](./media/request-units/request-units.png)
+![Adatbázis-műveletek felhasználásának kérelmezési egységei](./media/request-units/request-units.png)
 
-To manage and plan capacity, Azure Cosmos DB ensures that the number of RUs for a given database operation over a given dataset is deterministic. You can examine the response header to track the number of RUs that are consumed by any database operation. When you understand the [factors that affect RU charges](request-units.md#request-unit-considerations) and your application's throughput requirements, you can run your application cost effectively.
+A kapacitás kezeléséhez és megtervezéséhez Azure Cosmos DB biztosítja, hogy egy adott adatbázis-művelethez tartozó RUs száma determinisztikus. Megvizsgálhatja a válasz fejlécét, hogy nyomon kövesse a bármely adatbázis-művelet által felhasznált RUs számát. Ha megérti [azokat a tényezőket, amelyek hatással vannak az ru-díjakra](request-units.md#request-unit-considerations) és az alkalmazás átviteli sebességére vonatkozó követelményekre, akkor az alkalmazás költségei hatékonyan futtathatók.
 
-You provision the number of RUs for your application on a per-second basis in increments of 100 RUs per second. To scale the provisioned throughput for your application, you can increase or decrease the number of RUs at any time. You can scale in increments or decrements of 100 RUs. You can make your changes either programmatically or by using the Azure portal. You are billed on an hourly basis.
+Az alkalmazáshoz tartozó RUs számát a másodpercenként 100 RUs-onként kell kiépíteni. Az alkalmazás kiépített átviteli sebességének méretezéséhez bármikor növelheti vagy csökkentheti az RUs számát. A 100 RUs-es növekmények vagy csökkentések méretezhetők. A módosításokat programozott módon vagy a Azure Portal használatával végezheti el. A számlázás óránként történik.
 
-You can provision throughput at two distinct granularities: 
+Az átviteli sebességet két különböző részletességgel is kiépítheti: 
 
-* **Containers**: For more information, see [Provision throughput on an Azure Cosmos container](how-to-provision-container-throughput.md).
-* **Databases**: For more information, see [Provision throughput on an Azure Cosmos database](how-to-provision-database-throughput.md).
+* **Tárolók**: további információkért lásd az [átviteli sebesség Azure Cosmos-tárolón](how-to-provision-container-throughput.md)való kiépítését ismertető témakört.
+* **Adatbázisok**: további információt az [átviteli sebesség kiépítése Azure Cosmos-adatbázisban](how-to-provision-database-throughput.md)című témakörben talál.
 
-## <a name="request-unit-considerations"></a>Request Unit considerations
+## <a name="request-unit-considerations"></a>Kérési egység szempontjai
 
-While you estimate the number of RUs per second to provision, consider the following factors:
+A kiépítés során a másodpercenkénti számú RUs becslése során vegye figyelembe a következő tényezőket:
 
-* **Item size**: As the size of an item increases, the number of RUs consumed to read or write the item also increases.
+* **Elem mérete**: Ha az elem mérete növekszik, az elem olvasásához vagy írásához felhasznált RUs száma is növekszik.
 
-* **Item indexing**: By default, each item is automatically indexed. Fewer RUs are consumed if you choose not to index some of your items in a container.
+* **Elemek indexelése**: alapértelmezés szerint minden elem automatikusan indexelve lesz. Ha úgy dönt, hogy nem indexel néhány elemet egy tárolóban, a rendszer kevesebb RUs-t használ fel.
 
-* **Item property count**: Assuming the default indexing is on all properties, the number of RUs consumed to write an item increases as the item property count increases.
+* **Elem tulajdonságainak száma**: feltételezve, hogy az alapértelmezett indexelés az összes tulajdonságra vonatkozik, az elem írásához felhasznált RUs száma nő, mivel az elem tulajdonságainak száma nő.
 
-* **Indexed properties**: An index policy on each container determines which properties are indexed by default. To reduce the RU consumption for write operations, limit the number of indexed properties.
+* **Indexelt tulajdonságok**: az egyes tárolók indexelési szabályzata határozza meg, hogy alapértelmezés szerint mely tulajdonságok vannak indexelve. Az írási műveletek esetében az RU-felhasználás csökkentése érdekében korlátozza az indexelt tulajdonságok számát.
 
-* **Data consistency**: The strong and bounded staleness consistency levels consume approximately two times more RUs while performing read operations when compared to that of other relaxed consistency levels.
+* **Adatkonzisztencia**: az erős és a határos inkonzisztens konzisztencia-szintek körülbelül kétszer használják az olvasási műveleteket a többi nyugodt konzisztencia-szinthez képest.
 
-* **Query patterns**: The complexity of a query affects how many RUs are consumed for an operation. Factors that affect the cost of query operations include: 
+* **Lekérdezési minták**: a lekérdezés bonyolultsága befolyásolja, hogy hány RUs van felhasználva egy művelethez. A lekérdezési műveletek költségeit befolyásoló tényezők a következők: 
     
-    - The number of query results
-    - The number of predicates
-    - The nature of the predicates
-    - The number of user-defined functions
-    - The size of the source data
-    - The size of the result set
+    - A lekérdezés eredményeinek száma
+    - A predikátumok száma
+    - A predikátumok természete
+    - A felhasználó által definiált függvények száma
+    - A forrásadatok mérete
+    - Az eredményhalmaz mérete
     - Leképezések
 
-  Azure Cosmos DB guarantees that the same query on the same data always costs the same number of RUs on repeated executions.
+  Azure Cosmos DB garantálja, hogy ugyanaz a lekérdezés ugyanazokat az adatmennyiségeket is felszámítja, mint az azonos számú RUs az ismétlődő végrehajtásokban.
 
-* **Script usage**: As with queries, stored procedures and triggers consume RUs based on the complexity of the operations that are performed. As you develop your application, inspect the [request charge header](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) to better understand how much RU capacity each operation consumes.
+* **Parancsfájlok használata**: a lekérdezésekhez hasonlóan a tárolt eljárások és eseményindítók a végrehajtott műveletek összetettsége alapján használják az RUs-ket. Az alkalmazás fejlesztése során vizsgálja meg a [kérelem díjszabási fejlécét](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) , hogy jobban megértse az egyes műveletek által felhasznált ru-kapacitás mennyiségét.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Learn more about how to [provision throughput on Azure Cosmos containers and databases](set-throughput.md).
-* Learn more about [logical partitions](partition-data.md).
-* Learn more about how to [globally scale provisioned throughput](scaling-throughput.md).
-* Learn how to [provision throughput on an Azure Cosmos container](how-to-provision-container-throughput.md).
-* Learn how to [provision throughput on an Azure Cosmos database](how-to-provision-database-throughput.md).
-* Learn how to [find the request unit charge for an operation](find-request-unit-charge.md).
-* Learn how to [optimize provisioned throughput cost in Azure Cosmos DB](optimize-cost-throughput.md).
-* Learn how to [optimize reads and writes cost in Azure Cosmos DB](optimize-cost-reads-writes.md).
-* Learn how to [optimize query cost in Azure Cosmos DB](optimize-cost-queries.md).
-* Learn how to [use metrics to monitor throughput](use-metrics.md).
+* További információ az [átviteli sebesség Azure Cosmos-tárolók és-adatbázisok létesítéséről](set-throughput.md).
+* További információ a [logikai partíciókhoz](partition-data.md).
+* További információ a [kiépített átviteli sebesség globális skálázásáról](scaling-throughput.md).
+* Útmutató az [átviteli sebesség Azure Cosmos-tárolón](how-to-provision-container-throughput.md)való kiépítéséhez.
+* Útmutató az [átviteli sebesség Azure Cosmos-adatbázison](how-to-provision-database-throughput.md)való kiépítéséhez.
+* Megtudhatja, hogyan [keresheti meg a műveletre vonatkozó kérési egység díját](find-request-unit-charge.md).
+* Ismerje meg, hogyan [optimalizálható a kiépített átviteli sebesség a Azure Cosmos DBban](optimize-cost-throughput.md).
+* Megtudhatja, hogyan [optimalizálhatja az olvasási és írási költségeket a Azure Cosmos DBban](optimize-cost-reads-writes.md).
+* Megtudhatja, hogyan [optimalizálhatja Azure Cosmos db lekérdezési költségeit](optimize-cost-queries.md).
+* Megtudhatja, hogyan [használhatja a mérőszámokat az átviteli sebesség figyelésére](use-metrics.md).

@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Use Node.js to query from Azure Cosmos DB SQL API account'
-description: How to use Node.js to create an app that connects to Azure Cosmos DB SQL API account and queries data.
+title: 'Rövid útmutató: a Node. js használatával kérdezheti le Azure Cosmos DB SQL API-fiókból'
+description: A Node. js használata olyan alkalmazás létrehozásához, amely Azure Cosmos DB SQL API-fiókhoz csatlakozik, és lekérdezi az adatlekérdezéseket.
 author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -15,7 +15,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74220522"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Quickstart: Use Node.js to connect and query data from Azure Cosmos DB SQL API account
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: az Azure Cosmos DB SQL API-fiókból való kapcsolódáshoz és az adatok lekérdezéséhez használja a Node. js-t
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -25,7 +25,7 @@ ms.locfileid: "74220522"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-This quickstart demonstrates how to use a Node.js app to connect to the [SQL API](sql-api-introduction.md) account in Azure Cosmos DB. You can then use Azure Cosmos DB SQL queries to query and manage data. The Node.js app you build in this article uses the [SQL JavaScript SDK](sql-api-sdk-node.md). A rövid útmutató a [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) 2.0-s verzióját használja.
+Ez a rövid útmutató azt ismerteti, hogyan használható Node. js-alkalmazás a Azure Cosmos DB [SQL API](sql-api-introduction.md) -fiókjához való kapcsolódáshoz. Ezután Azure Cosmos DB SQL-lekérdezéseket használhat az adatlekérdezéshez és az adatkezeléshez. Az ebben a cikkben felépített Node. js-alkalmazás az [SQL JavaScript SDK](sql-api-sdk-node.md)-t használja. A rövid útmutató a [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) 2.0-s verzióját használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ This quickstart demonstrates how to use a Node.js app to connect to the [SQL API
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-container"></a>Add a container
+## <a name="add-a-container"></a>Tároló hozzáadása
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -54,7 +54,7 @@ This quickstart demonstrates how to use a Node.js app to connect to the [SQL API
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Now let's clone a Node.js app from GitHub, set the connection string, and run it.
+Most hozzon létre egy Node. js-alkalmazást a GitHubról, állítsa be a kapcsolatok karakterláncát, és futtassa.
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
 
@@ -68,7 +68,7 @@ Now let's clone a Node.js app from GitHub, set the connection string, and run it
     cd "C:\git-samples"
     ```
 
-3. Futtassa a következő parancsot a minta tárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started.git
@@ -76,25 +76,25 @@ Now let's clone a Node.js app from GitHub, set the connection string, and run it
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. If you're interested in learning how the Azure Cosmos database resources are created in the code, you can review the following snippets. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra. 
+Ez a lépés nem kötelező. Ha szeretné megtanulni, hogyan jönnek létre az Azure Cosmos Database-erőforrások a kódban, tekintse át az alábbi kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra. 
 
 Megjegyzés: Ha már ismeri a JavaScript SDK korábbi verzióját, ismerősek lehetnek a „gyűjtemény” és a „dokumentum” kifejezések. Mivel az Azure Cosmos DB [több API-modellt](https://docs.microsoft.com/azure/cosmos-db/introduction) támogat, a JavaScript SDK 2.0-s vagy újabb verziói az általános „tároló” (gyűjtemény, gráf vagy tábla) és az „elem” (a tárolók elemei) kifejezést használják.
 
 Az alábbi kódrészletek mind az **app.js** fájlból származnak.
 
-* The `CosmosClient` object is initialized.
+* A `CosmosClient` objektum inicializálva van.
 
     ```javascript
     const client = new CosmosClient({ endpoint, key });
     ```
 
-* Create a new Azure Cosmos database.
+* Hozzon létre egy új Azure Cosmos-adatbázist.
 
     ```javascript
     const { database } = await client.databases.createIfNotExists({ id: databaseId });
     ```
 
-* A new container (collection) is created within the database.
+* A rendszer létrehoz egy új tárolót (gyűjteményt) az adatbázison belül.
 
     ```javascript
     const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId });
@@ -106,7 +106,7 @@ Az alábbi kódrészletek mind az **app.js** fájlból származnak.
     const { item } = await client.database(databaseId).container(containerId).items.create(itemBody);
     ```
 
-* A SQL query over JSON is performed on the family database. The query returns all the children of the "Anderson" family. 
+* A rendszer a JSON protokollon keresztül SQL-lekérdezést hajt végre a család adatbázisán. A lekérdezés az "Anderson" család összes gyermekét adja vissza. 
 
     ```javascript
       const querySpec = {
@@ -132,19 +132,19 @@ Az alábbi kódrészletek mind az **app.js** fájlból származnak.
 
 ## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
 
-Now go back to the Azure portal to get the connection string details of your Azure Cosmos account. Copy the connection string into the app so that it can connect to your database.
+Most lépjen vissza a Azure Portalra az Azure Cosmos-fiók kapcsolati sztring adatainak beszerzéséhez. Másolja a kapcsolati karakterláncot az alkalmazásba, hogy az képes legyen csatlakozni az adatbázishoz.
 
-1. In the [Azure portal](https://portal.azure.com/), in your Azure Cosmos account, in the left navigation click **Keys**, and then click **Read-write Keys**. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot a `config.js` fájlba.
+1. A [Azure Portal](https://portal.azure.com/)az Azure Cosmos-fiókban a bal oldali navigációs sávon kattintson a **kulcsok**elemre, majd kattintson az **írási/olvasási kulcsok**elemre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot a `config.js` fájlba.
 
-    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok panelén](./media/create-sql-api-dotnet/keys.png)
+    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-sql-api-dotnet/keys.png)
 
 2. Nyissa meg a `config.js` fájlt. 
 
-3. A másolási gomb használatával másolja ki az URI érteket a Portalról, és azt adja meg a végpont kulcs értékeként a `config.js`-ben. 
+3. Másolja ki az URI érteket a Portalról (a másolási gomb használatával), és adja meg a végpont kulcs értékeként a `config.js`-ben. 
 
     `config.endpoint = "https://FILLME.documents.azure.com"`
 
-4. Ezután másolja ki az ELSŐDLEGES KULCS értékét a Portalról, és adja meg a `config.key` értékeként a `config.js`-ben. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
+4. Ezután másolja ki az ELSŐDLEGES KULCS értékét a Portalról, és adja meg a `config.key` értékeként a `config.js`-ben. Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
     `config.key = "FILLME"`
     
@@ -154,7 +154,7 @@ Now go back to the Azure portal to get the connection string details of your Azu
 
 2. Futtassa a `node app.js` parancsot egy terminálban a node-alkalmazás elindításához.
 
-You can now go back to Data Explorer, modify, and work with this new data.
+Most visszatérhet az új adattal Adatkezelő, módosíthat és dolgozhat.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 
@@ -166,7 +166,7 @@ You can now go back to Data Explorer, modify, and work with this new data.
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this quickstart, you've learned how to create an Azure Cosmos account, create a container using the data explorer, and run an app. You can now import additional data to your Azure Cosmos database. 
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos-fiókot, hogyan hozhat létre tárolót az adatkezelő használatával, és hogyan futtathat egy alkalmazást. Mostantól további adatait is importálhatja az Azure Cosmos-adatbázisba. 
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be](import-data.md)

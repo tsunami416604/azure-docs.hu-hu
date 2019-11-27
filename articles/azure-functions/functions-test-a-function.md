@@ -1,6 +1,6 @@
 ---
 title: Az Azure Functions tesztelése
-description: Create automated tests for a C# Function in Visual Studio and JavaScript Function in VS Code
+description: Hozzon létre automatizált teszteket egy C# függvény a Visual Studio és a JavaScript-függvény a VS Code-ban
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
@@ -12,44 +12,44 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226577"
 ---
-# <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategies for testing your code in Azure Functions
+# <a name="strategies-for-testing-your-code-in-azure-functions"></a>A kódot tesztelés az Azure Functions stratégiák
 
-This article demonstrates how to create automated tests for Azure Functions. 
+Ez a cikk bemutatja, hogyan hozhat létre automatizált teszteket az Azure Functions szolgáltatáshoz. 
 
-Testing all code is recommended, however you may get the best results by wrapping up a Function's logic and creating tests outside the Function. Abstracting logic away limits a Function's lines of code and allows the Function to be solely responsible for calling other classes or modules. This article, however, demonstrates how to create automated tests against an HTTP and timer-triggered function.
+Az összes kódot tesztelés ajánlott, azonban előfordulhat, hogy kap a legjobb eredmények elérése érdekében egy függvény logikai lezárása, és hozzon létre teszteket kívül a függvényt. Logikai azonnal paltformfüggetlen korlátozza egy függvény sornyi kódot, és lehetővé teszi, hogy a függvény, amely más osztályok vagy a modulokat hívó vonatkozó. Ebben a cikkben azonban bemutatja, hogyan hozhat létre automatizált teszteket egy HTTP- és időzítő által aktivált függvény ellen.
 
-The content that follows is split into two different sections meant to target different languages and environments. You can learn to build tests in:
+A következő tartalmától azt, hogy több különböző nyelvet és a környezetek két különböző szakaszokra van osztva. A vizsgálatok alatt hozhat létre további:
 
-- [C# in Visual Studio with xUnit](#c-in-visual-studio)
-- [JavaScript in VS Code with Jest](#javascript-in-vs-code)
+- [C#a Visual Studióban és a xUnit](#c-in-visual-studio)
+- [JavaScript a VS Code-ban a Jesttel](#javascript-in-vs-code)
 
-The sample repository is available on [GitHub](https://github.com/Azure-Samples/azure-functions-tests).
+A minta tárház a [githubon](https://github.com/Azure-Samples/azure-functions-tests)érhető el.
 
-## <a name="c-in-visual-studio"></a>C# in Visual Studio
-The following example describes how to create a C# Function app in Visual Studio and run and tests with [xUnit](https://xunit.github.io).
+## <a name="c-in-visual-studio"></a>C#a Visual Studióban
+Az alábbi példa azt ismerteti, hogyan hozhat C# létre egy Function alkalmazást a Visual Studióban, és hogyan futtathat és tesztelheti a [xUnit](https://xunit.github.io).
 
-![Testing Azure Functions with C# in Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
+![Az Azure Functions tesztelése C# a Visual Studióban](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-### <a name="setup"></a>Beállítás
+### <a name="setup"></a>Telepítés
 
-To set up your environment, create a Function and test app. The following steps help you create the apps and functions required to support the tests:
+Állítsa be a környezetet, hozzon létre egy függvényt, és alkalmazás teszteléséhez. A következő lépések segítségével hozhat létre az alkalmazások és funkciók a tesztek támogatásához szükséges:
 
-1. [Create a new Functions app](./functions-create-first-azure-function.md) and name it *Functions*
-2. [Create an HTTP function from the template](./functions-create-first-azure-function.md) and name it *HttpTrigger*.
-3. [Create a timer function from the template](./functions-create-scheduled-function.md) and name it *TimerTrigger*.
-4. [Create an xUnit Test app](https://xunit.github.io/docs/getting-started-dotnet-core) in Visual Studio by clicking **File > New > Project > Visual C# > .NET Core > xUnit Test Project** and  name it *Functions.Test*. 
-5. Use Nuget to add a references from the test app [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
-6. [Reference the *Functions* app](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) from *Functions.Test* app.
+1. [Hozzon létre egy új functions-alkalmazást](./functions-create-first-azure-function.md) , és nevezze el a *függvényeket*
+2. [Hozzon létre egy http-függvényt a sablonból](./functions-create-first-azure-function.md) , és nevezze el *HttpTrigger*.
+3. [Hozzon létre egy időzítő függvényt a sablonból](./functions-create-scheduled-function.md) , és nevezze el *TimerTrigger*.
+4. [Hozzon létre egy xUnit-tesztelési alkalmazást](https://xunit.github.io/docs/getting-started-dotnet-core) a Visual Studióban. ehhez kattintson a **fájl > új > projekt > Visual C# > .net Core > xUnit test Project** elemre, és nevezze el a *functions. test*parancsot. 
+5. A Nuget használata a [Microsoft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) tesztelési alkalmazásból származó hivatkozások hozzáadásához
+6. [Hivatkozzon a *functions* alkalmazásra](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) a *functions. test* alkalmazásban.
 
-### <a name="create-test-classes"></a>Create test classes
+### <a name="create-test-classes"></a>Teszt osztályok létrehozása
 
-Now that the applications are created, you can create the classes used to run the automated tests.
+Most, hogy az alkalmazások jönnek létre, az automatikus tesztek futtatásához használt osztályok hozhat létre.
 
-Each function takes an instance of [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) to handle message logging. Some tests either don't log messages or have no concern for how logging is implemented. Other tests need to evaluate messages logged to determine whether a test is passing.
+A függvények a [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) egy példányát veszik fel az üzenetek naplózásának kezelésére. Néhány teszt nem üzenetek naplózása vagy rendelkezik hogyan van megvalósítva a naplózás nincs miatt aggódnának. Más teszteket kell értékelnie a meghatározásához, hogy egy tesztet, továbbítja a naplózott üzeneteket.
 
-The `ListLogger` class is meant to implement the `ILogger` interface and hold in internal list of messages for evaluation during a test.
+A `ListLogger` osztály a `ILogger` felület megvalósítását és az üzenetek belső listájának megtartását jelenti a tesztek során kiértékeléshez.
 
-**Right-click** on the *Functions.Test* application and select **Add > Class**, name it **NullScope.cs** and enter the following code:
+**Kattintson a jobb gombbal** a *functions. test* alkalmazásra, majd válassza a **> osztály hozzáadása**lehetőséget, nevezze el **NullScope.cs** , és adja meg a következő kódot:
 
 ```csharp
 using System;
@@ -67,7 +67,7 @@ namespace Functions.Tests
 }
 ```
 
-Next, **right-click** on the *Functions.Test* application and select **Add > Class**, name it **ListLogger.cs** and enter the following code:
+Ezután **kattintson a jobb gombbal** a *functions. test* alkalmazásra, és válassza a **Hozzáadás > osztály**lehetőséget, nevezze el **ListLogger.cs** , és adja meg a következő kódot:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -103,17 +103,17 @@ namespace Functions.Tests
 }
 ```
 
-The `ListLogger` class implements the following members as contracted by the `ILogger` interface:
+A `ListLogger` osztály a következő tagokat valósítja meg, mint a `ILogger` Interface:
 
-- **BeginScope**: Scopes add context to your logging. In this case, the test just points to the static instance on the `NullScope` class to allow the test to function.
+- **BeginScope**: a hatókörök kontextust adhatnak a naplózáshoz. Ebben az esetben a teszt csak a `NullScope` osztály statikus példányára mutat, hogy lehetővé tegye a teszt működését.
 
-- **IsEnabled**: A default value of `false` is provided.
+- **IsEnabled**: `false` alapértelmezett értéke van megadva.
 
-- **Log**: This method uses the provided `formatter` function to format the message and then adds the resulting text to the `Logs` collection.
+- **Napló**: Ez a metódus a megadott `formatter` függvényt használja az üzenet formázásához, majd hozzáadja az eredményül kapott szöveget a `Logs` gyűjteményhez.
 
-The `Logs` collection is an instance of `List<string>` and is initialized in the constructor.
+A `Logs` gyűjtemény `List<string>` példánya, és a konstruktorban van inicializálva.
 
-Next, **right-click** on the *Functions.Test* application and select **Add > Class**, name it **LoggerTypes.cs** and enter the following code:
+Ezután **kattintson a jobb gombbal** a *functions. test* alkalmazásra, és válassza a **Hozzáadás > osztály**lehetőséget, nevezze el **LoggerTypes.cs** , és adja meg a következő kódot:
 
 ```csharp
 namespace Functions.Tests
@@ -125,9 +125,9 @@ namespace Functions.Tests
     }
 }
 ```
-This enumeration specifies the type of logger used by the tests. 
+Ez az enumerálás határozza meg a tesztek által használt naplózó. 
 
-Next, **right-click** on the *Functions.Test* application and select **Add > Class**, name it **TestFactory.cs** and enter the following code:
+Ezután **kattintson a jobb gombbal** a *functions. test* alkalmazásra, és válassza a **Hozzáadás > osztály**lehetőséget, nevezze el **TestFactory.cs** , és adja meg a következő kódot:
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -188,17 +188,17 @@ namespace Functions.Tests
     }
 }
 ```
-The `TestFactory` class implements the following members:
+A `TestFactory` osztály a következő tagokat valósítja meg:
 
-- **Data**: This property returns an [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) collection of sample data. The key value pairs represent values that are passed into a query string.
+- **Adatok**: Ez a tulajdonság a mintaadatok [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) gyűjteményét adja vissza. A kulcs-érték párral egy lekérdezési karakterláncot az átadott értékeket jelölik.
 
-- **CreateDictionary**: This method accepts a key/value pair as arguments and returns a new `Dictionary` used to create `QueryCollection` to represent query string values.
+- **CreateDictionary**: Ez a metódus fogadja a kulcs/érték párokat argumentumként, és új `Dictionary` ad vissza, amelyet a rendszer a lekérdezési karakterlánc értékeit jelölő `QueryCollection` létrehozásához használ.
 
-- **CreateHttpRequest**: This method creates an HTTP request initialized with the given query string parameters.
+- **CreateHttpRequest**: Ez a METÓDUS egy HTTP-kérést hoz létre, amely a megadott lekérdezési karakterlánc-paraméterekkel inicializálva van.
 
-- **CreateLogger**: Based on the logger type, this method returns a logger class used for testing. The `ListLogger` keeps track of logged messages available for evaluation in tests.
+- **CreateLogger**: a naplózó típus alapján ez a metódus a teszteléshez használt naplózó osztályt adja vissza. A `ListLogger` nyomon követi a tesztek kipróbálásához elérhető naplózott üzeneteket.
 
-Next, **right-click** on the *Functions.Test* application and select **Add > Class**, name it **FunctionsTests.cs** and enter the following code:
+Ezután **kattintson a jobb gombbal** a *functions. test* alkalmazásra, és válassza a **Hozzáadás > osztály**lehetőséget, nevezze el **FunctionsTests.cs** , és adja meg a következő kódot:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -239,45 +239,45 @@ namespace Functions.Tests
     }
 }
 ```
-The members implemented in this class are:
+Ez az osztály megvalósított tagjai:
 
-- **Http_trigger_should_return_known_string**: This test creates a request with the query string values of `name=Bill` to an HTTP function and checks that the expected response is returned.
+- **Http_trigger_should_return_known_string**: Ez a teszt a lekérdezési karakterlánc `name=Bill` értékeit tartalmazó kérelmet hoz létre egy http-függvényhez, és ellenőrzi, hogy a rendszer visszaadja-e a várt választ.
 
-- **Http_trigger_should_return_string_from_member_data**: This test uses xUnit attributes to provide sample data to the HTTP function.
+- **Http_trigger_should_return_string_from_member_data**: Ez a teszt xUnit-attribútumokat használ a http-függvényhez tartozó mintaadatok biztosításához.
 
-- **Timer_should_log_message**: This test creates an instance of `ListLogger` and passes it to a timer functions. Once the function is run, then the log is checked to ensure the expected message is present.
+- **Timer_should_log_message**: Ez a teszt létrehoz egy `ListLogger` egy példányát, és átadja egy időzítő függvénynek. Miután a függvény fut, majd a napló be van jelölve annak érdekében, hogy jelen a várt üzenet.
 
-If you want to access application settings in your tests, you can use [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
+Ha a tesztek során szeretné elérni az alkalmazás beállításait, használhatja a [System. environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
 
-### <a name="run-tests"></a>Run tests
+### <a name="run-tests"></a>Tesztek futtatása
 
-To run the tests, navigate to the **Test Explorer** and click **Run all**.
+A tesztek futtatásához navigáljon a **tesztelési tallózóhoz** , és kattintson az **összes futtatása**parancsra.
 
-![Testing Azure Functions with C# in Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
+![Az Azure Functions tesztelése C# a Visual Studióban](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-### <a name="debug-tests"></a>Debug tests
+### <a name="debug-tests"></a>Tesztek hibakeresése
 
-To debug the tests, set a breakpoint on a test, navigate to the **Test Explorer** and click **Run > Debug Last Run**.
+A tesztek hibakereséséhez állítson be egy töréspontot egy teszten, navigáljon a **tesztelési tallózóhoz** , és kattintson a **Futtatás > hibakeresés utolsó futtatása**elemre.
 
-## <a name="javascript-in-vs-code"></a>JavaScript in VS Code
+## <a name="javascript-in-vs-code"></a>JavaScript a VS Code-ban
 
-The following example describes how to create a JavaScript Function app in VS Code and run and tests with [Jest](https://jestjs.io). This procedure uses the [VS Code Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) to create Azure Functions.
+Az alábbi példa azt ismerteti, hogyan hozható létre JavaScript-függvény alkalmazás a VS Code-ban, és hogyan futtatható és tesztelhető a [Jest](https://jestjs.io)használatával. Ez az eljárás a [vs Code functions bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) használja Azure functions létrehozásához.
 
-![Testing Azure Functions with JavaScript in VS Code](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
+![JavaScript az Azure Functions tesztelése a VS Code-ban](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
-### <a name="setup"></a>Beállítás
+### <a name="setup"></a>Telepítés
 
-To set up your environment, initialize a new Node.js app in an empty folder by running `npm init`.
+A környezet beállításához inicializáljon egy új Node. js-alkalmazást egy üres mappában a `npm init`futtatásával.
 
 ```bash
 npm init -y
 ```
-Next, install Jest by running the following command:
+Ezután telepítse Jest a következő parancs futtatásával:
 
 ```bash
 npm i jest
 ```
-Now update _package.json_ to replace the existing test command with the following command:
+Most frissítse a _Package. JSON_ fájlt, és cserélje le a meglévő teszt parancsot a következő parancsra:
 
 ```bash
 "scripts": {
@@ -285,19 +285,19 @@ Now update _package.json_ to replace the existing test command with the followin
 }
 ```
 
-### <a name="create-test-modules"></a>Create test modules
-With the project initialized, you can create the modules used to run the automated tests. Begin by creating a new folder named *testing* to hold the support modules.
+### <a name="create-test-modules"></a>Teszt modulok létrehozása
+A modulok automatikus vizsgálatok futtatásához használt inicializálása a projekttel hozhat létre. Először hozzon létre egy *tesztelés* nevű új mappát a támogatási modulok tárolásához.
 
-In the *testing* folder add a new file, name it **defaultContext.js**, and add the following code:
+A *tesztelési* mappában adjon hozzá egy új fájlt, nevezze el **defaultContext. js**néven, és adja hozzá a következő kódot:
 
 ```javascript
 module.exports = {
     log: jest.fn()
 };
 ```
-This module mocks the *log* function to represent the default execution context.
+Ez a modul kigúnyolja a *log* függvényt, amely az alapértelmezett végrehajtási környezetet jelöli.
 
-Next, add a new file, name it **defaultTimer.js**, and add the following code:
+Ezután adjon hozzá egy új fájlt, nevezze el **defaultTimer. js**néven, és adja hozzá a következő kódot:
 
 ```javascript
 module.exports = {
@@ -305,9 +305,9 @@ module.exports = {
 };
 ```
 
-This module implements the `IsPastDue` property to stand is as a fake timer instance. Timer configurations like NCRONTAB expressions are not required here as the test harness is simply calling the function directly to test the outcome.
+Ez a modul a `IsPastDue` tulajdonságot implementálja hamis időzítő példányként. Az időzítő konfigurációk, például a NCRONTAB-kifejezések nem szükségesek itt, mivel a teszt-hám egyszerűen hívja meg a függvényt közvetlenül az eredmény teszteléséhez.
 
-Next, use the VS Code Functions extension to [create a new JavaScript HTTP Function](/azure/javascript/tutorial-vscode-serverless-node-01) and name it *HttpTrigger*. Once the function is created, add a new file in the same folder named **index.test.js**, and add the following code:
+Ezután a VS Code functions bővítmény használatával [hozzon létre egy új JavaScript http-függvényt](/azure/javascript/tutorial-vscode-serverless-node-01) , és nevezze el *HttpTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt az **index. test. js**nevű mappában, és adja hozzá a következő kódot:
 
 ```javascript
 const httpFunction = require('./index');
@@ -325,9 +325,9 @@ test('Http trigger should return known text', async () => {
     expect(context.res.body).toEqual('Hello Bill');
 });
 ```
-The HTTP function from the template returns a string of "Hello" concatenated with the name provided in the query string. This test creates a fake instance of a request and passes it to the HTTP function. The test checks that the *log* method is called once and the returned text equals "Hello Bill".
+A HTTP-függvényt a sablonból a "Hello", a lekérdezési karakterláncban megadott névvel összefűzött karakterláncot ad vissza. Ez a vizsgálat egy kérelem egy hamis példányt hoz létre, és továbbítja azt a HTTP-függvényt. A teszt ellenőrzi, hogy a rendszer egyszer hívja-e a *log* metódust, és a visszaadott szöveg "Hello Bill".
 
-Next, use the VS Code Functions extension to create a new JavaScript Timer Function and name it *TimerTrigger*. Once the function is created, add a new file in the same folder named **index.test.js**, and add the following code:
+Ezután a VS Code functions bővítmény használatával hozzon létre egy új JavaScript-időzítő függvényt, és nevezze el *TimerTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt az **index. test. js**nevű mappában, és adja hozzá a következő kódot:
 
 ```javascript
 const timerFunction = require('./index');
@@ -339,20 +339,20 @@ test('Timer trigger should log message', () => {
     expect(context.log.mock.calls.length).toBe(1);
 });
 ```
-The timer function from the template logs a message at the end of the body of the function. This test ensures the *log* function is called once.
+Az időzítő függvény a sablonból a függvény törzséhez végén egy üzenet naplózza. Ez a teszt azt biztosítja, hogy a *log* függvényt egyszer kell meghívni.
 
-### <a name="run-tests"></a>Run tests
-To run the tests, press **CTRL + ~** to open the command window, and run `npm test`:
+### <a name="run-tests"></a>Tesztek futtatása
+A tesztek futtatásához nyomja le a **CTRL + ~** billentyűkombinációt a parancssori ablak megnyitásához, majd futtassa `npm test`parancsot:
 
 ```bash
 npm test
 ```
 
-![Testing Azure Functions with JavaScript in VS Code](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
+![JavaScript az Azure Functions tesztelése a VS Code-ban](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
-### <a name="debug-tests"></a>Debug tests
+### <a name="debug-tests"></a>Tesztek hibakeresése
 
-To debug your tests, add the following configuration to your *launch.json* file:
+A tesztek hibakereséséhez adja hozzá a következő konfigurációt a *Launch. JSON* fájlhoz:
 
 ```json
 {
@@ -368,11 +368,11 @@ To debug your tests, add the following configuration to your *launch.json* file:
 }
 ```
 
-Next, set a breakpoint in your test and press **F5**.
+Ezután állítson be egy töréspontot a tesztben, és nyomja le az **F5**billentyűt.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Now that you've learned how to write automated tests for your functions, continue with these resources:
-- [Manually run a non HTTP-triggered function](./functions-manually-run-non-http.md)
-- [Azure Functions error handling](./functions-bindings-error-pages.md)
-- [Azure Function Event Grid Trigger Local Debugging](./functions-debug-event-grid-trigger-local.md)
+Most, hogy megismerte, hogyan írhat az Ön függvényeinek automatizált teszteket, folytassa a ezeket az erőforrásokat:
+- [Nem HTTP-triggert futtató függvény manuális futtatása](./functions-manually-run-non-http.md)
+- [Azure Functions hibakezelés](./functions-bindings-error-pages.md)
+- [Az Azure Function Event Grid helyi hibakeresést indít](./functions-debug-event-grid-trigger-local.md)

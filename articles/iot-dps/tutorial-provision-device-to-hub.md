@@ -1,6 +1,6 @@
 ---
-title: Provision device using Azure IoT Hub Device Provisioning Service
-description: Tutorial - Provision your device to a single IoT hub using the Azure IoT Hub Device Provisioning Service
+title: Eszköz kiépítése az Azure IoT Hub Device Provisioning Service használatával
+description: Oktatóanyag – az eszköz kiépítése egyetlen IoT hubhoz az Azure IoT Hub Device Provisioning Service használatával
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -15,7 +15,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228294"
 ---
-# <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Tutorial: Provision the device to an IoT hub using the Azure IoT Hub Device Provisioning Service
+# <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Oktatóanyag: az eszköz kiépítése egy IoT hubhoz az Azure IoT Hub Device Provisioning Service használatával
 
 Az előző oktatóanyagban bemutattuk, hogyan állíthat be egy eszközt úgy, hogy az a Device Provisioning Service-hez csatlakozzon. Ebben az oktatóanyagban megtudhatja, hogyan regisztrálhatja az eszközt ezzel a szolgáltatással egyetlen IoT Hubon automatikus regisztráció és **_regisztrációs listák_** használatával. Ez az oktatóanyag a következőket mutatja be:
 
@@ -42,9 +42,9 @@ Ennek a lépésnek a részét képezi az eszköz egyedi biztonsági összetevői
       [![Regisztrációs információk a TPM-hez a portálon](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - X.509-alapú eszközökhöz a következőkre van szükség:
-    - Az [X.509-lapkához vagy -szimulációhoz kiadott tanúsítvány](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) *.pem* vagy *.cer* fájlformátumban. For individual enrollment, you need to use the per-device  *signed certificate* for your X.509 system, while for enrollment groups, you need to use the *root certificate*. 
+    - Az [X.509-lapkához vagy -szimulációhoz kiadott tanúsítvány](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) *.pem* vagy *.cer* fájlformátumban. Egyéni regisztráció esetén az X. 509 rendszer eszközönként *aláírt tanúsítványát* kell használnia, a regisztrációs csoportok esetében azonban a *főtanúsítványt*kell használnia. 
 
-      [![Egyéni regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
+      [![X.509-igazolás egyéni beléptetésének hozzáadása a portálon](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
 A következő két módon regisztrálható az eszköz a Device Provisioning Service-ben:
 
@@ -88,7 +88,7 @@ Az eszköz indítása után a következő műveleteket kell elvégezni:
 
     ![Sikeres csatlakozás a hubhoz a portálon](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-For more information, see the provisioning device client sample, [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). The sample demonstrates provisioning a simulated device using TPM, X.509 certificates and symmetric keys. Refer back to the [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device), [X.509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509), and [Symmetric key](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key) attestation quickstarts for step-by-step instructions on using the sample.
+További információ: kiépítési eszköz ügyféloldali mintája, [prov_dev_client_sample. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). A minta a szimulált eszköz TPM, X. 509 tanúsítványokkal és szimmetrikus kulcsokkal való üzembe helyezését mutatja be. A minta használatával kapcsolatos részletes utasításokért tekintse át a [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device), [X. 509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509)és a [szimmetrikus kulcs](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key) igazolási útmutatóit.
 
 ## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:

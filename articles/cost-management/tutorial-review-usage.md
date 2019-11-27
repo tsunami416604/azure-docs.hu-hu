@@ -24,9 +24,9 @@ ms.locfileid: "74229787"
 
 A Cloudynnel megtekintheti a használati mutatókat és a költségeket, így nyomon követheti a trendeket, észlelheti a hatékonysági hiányosságokat, valamint riasztásokat állíthat be. Minden használati és költségadat megjelenik a Cloudyn irányítópultjain és jelentéseiben. Az oktatóanyagban szereplő példák bemutatják, hogyan tekintheti át a használatot és a költségeket az irányítópultok és jelentések segítségével.
 
-Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. További információ: [Azure Cost Management](overview-cost-mgt.md).
+Az Azure Cost Management hasonló funkciókat kínál, mint a Cloudyn. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. További információ: [Azure Cost Management](overview-cost-mgt.md).
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Használati és költségtrendek követése
@@ -51,15 +51,15 @@ A használattal és költségekkel kapcsolatos tényleges kiadásokat időalapú
 
 Egy példa a jelentésekre:
 
-![Example Actual Cost Over Time report](./media/tutorial-review-usage/actual-cost01.png)
+![A példában a tényleges időalapú költségeket tartalmazó jelentés](./media/tutorial-review-usage/actual-cost01.png)
 
 A jelentés az elmúlt 30 nap összes kiadását megjeleníti. Ha csak az Azure-szolgáltatásokhoz tartozó költségeket szeretné megtekinteni, alkalmazza a Service (Szolgáltatás) csoportot, és szűrjön rá az összes Azure-szolgáltatásra. A következő képen a szűrt szolgáltatások láthatók.
 
-![Example showing filtered Azure services](./media/tutorial-review-usage/actual-cost02.png)
+![Példa megjelenítő szűrt Azure-szolgáltatások](./media/tutorial-review-usage/actual-cost02.png)
 
 Az előző példában 2018. október 29-től kezdve a korábbinál kevesebb kiadás volt tapasztalható. Ha túl sok az oszlop, az megnehezítheti a trendek értelmezését. A jelentés nézetét módosíthatja vonal- vagy területdiagramra, hogy az adatok másképp jelenjenek meg. Az alábbi képen a trend sokkal jobban kirajzolódik.
 
-![Example showing a decreasing Azure VM cost trend](./media/tutorial-review-usage/actual-cost03.png)
+![Azure virtuális gép költsége csökkenő tendenciát mutat bemutató példa](./media/tutorial-review-usage/actual-cost03.png)
 
 A példára visszatérve látható, hogy az Azure-beli virtuális gépekhez kapcsolódó költségek lecsökkentek. A többi Azure-szolgáltatáshoz kapcsolódó költségek is azon a napon kezdtek csökkenni. Mi okozta vajon a kiadások csökkenését? Ebben a példában befejeződött egy nagyobb munkaprojekt, ezért több Azure-szolgáltatás használata is visszaesett.
 
@@ -77,15 +77,15 @@ A költséghatékony méretezési javaslatokat tartalmazó jelentés a virtuáli
 
 A portál tetején lévő menüben kattintson az **Optimizer** (Optimalizáló) > **Sizing Optimization** (Méretezés optimalizálása) > **Cost Effective Sizing Recommendations** (Költséghatékony méretezési javaslatok) elemre. Ha hasznosnak gondolja, szűrő használatával szűkítheti az eredményeket. Íme egy példa.
 
-![Cost effective sizing recommendation report for Azure VMs](./media/tutorial-review-usage/sizing01.png)
+![Hatékony méretezése a javaslat a jelentés az Azure virtuális gépek költség](./media/tutorial-review-usage/sizing01.png)
 
 Példánkban 2382 dollár takarítható meg a virtuálisgép-példánytípusok módosítására vonatkozó javaslatok elfogadásával. Kattintson a plusz (+) jelre az első javaslat **Details** (Részletek) oszlopában. Megjelennek az első javaslat részletei.
 
-![Example showing recommendation details](./media/tutorial-review-usage/sizing02.png)
+![Példa ábrázoló javaslat részletei](./media/tutorial-review-usage/sizing02.png)
 
 A virtuálisgép-példányok azonosítóit a **List of Candidates** (Jelöltek listája) melletti plusz (+) jelre kattintva tekintheti meg.
 
-![Example showing a list of VM candidates to resize](./media/tutorial-review-usage/sizing03.png)
+![Méretezze át a virtuális gép jelöltek listája bemutató példa](./media/tutorial-review-usage/sizing03.png)
 
 A használattal kapcsolatos hatékonysági hiányosságok felderítéséről szóló oktatóvideóért tekintse meg a [virtuális gépek méretének optimalizálását a Cloudynben](https://youtu.be/1xaZBNmV704).
 
@@ -93,23 +93,23 @@ Az Azure Cost Management költségcsökkentési javaslatokat is ad az Azure-szol
 
 ## <a name="create-alerts-for-unusual-spending"></a>Szokatlan kiadásokra figyelmeztető riasztások létrehozása
 
-Alerts allow you to automatically notify stakeholders of spending anomalies and overspending risks. You can create alerts using reports that support alerts based on budget and cost thresholds.
+A riasztások lehetővé teszik, hogy automatikusan értesítse az érintett feleket a felmerülő rendellenességek és a kockázatok túllépéséről. Riasztásokat a költségvetés és a költségek küszöbértékei alapján támogató jelentésekkel hozhat létre.
 
-This example uses the **Actual Cost Over Time** report to send a notification when your spending on an Azure VM  nears your total budget. In this scenario, you have a total budget of $20,000 and you want to receive a notification when costs are approaching half of your budget, $9,000, and an additional alert when costs reach $10,000.
+Ez a példa a **tényleges költséggel** kapcsolatos jelentést küld egy értesítés elküldéséhez, amikor egy Azure-beli virtuális gépen töltött kiadása eléri a teljes költségvetést. Ebben a forgatókönyvben a $20 000-es teljes költségkerettel rendelkezik, és értesítést szeretne kapni, ha a költségek a költségkeret felére közelednek, $9 000, és egy további riasztás, ha a költségek elérik a $10 000-ot.
 
-1. From the menu at the top of the Cloudyn portal, select **Costs** > **Cost Analysis** > **Actual Cost Over Time**.
+1. A Cloudyn-portál felső részén található menüben válassza a **költségek** > a költségek **elemzése** > a **tényleges költségek**időbeli változását.
 2. A **Groups** (Csoportok) alatt állítsa be a **Service** (Szolgáltatás), a **Filter on the service** (Szűrés a következő szolgáltatásra) alatt pedig az **Azure/VM** (Azure/virtuális gép) lehetőséget.
-3. In the top right of the report, select **Actions** and then select **Schedule report**.
-4. To send yourself an email of the report at scheduled interval, select the **Scheduling** tab in the **Save or Schedule this** report dialog. Ügyeljen arra, hogy a **Send via email** (Küldés e-mailben) beállítás legyen kiválasztva. Any tags, grouping, and filtering you use are included in the emailed report.
-5. Select the **Threshold** tab and then select  **Actual Cost vs. Threshold**.
-   1. In the **Red alert** threshold box enter 10000.
-   2. In the **Yellow alert** threshold box enter 9000.
-   3. In the **Number of consecutive alerts** box, enter the number of consecutive alerts to receive. Ha a riasztások száma eléri a megadott számot, a rendszer nem küld további riasztásokat.
+3. A jelentés jobb felső részén válassza a **műveletek** , majd az **ütemezett jelentés**elemet.
+4. Ha ütemezett időközönként szeretné elküldeni a jelentés e-mail-címét, válassza az **Ütemezés** lapot a jelentés **mentése vagy ütemezése** párbeszédpanelen. Ügyeljen arra, hogy a **Send via email** (Küldés e-mailben) beállítás legyen kiválasztva. Az e-mailben küldött jelentés tartalmazza az Ön által használt címkéket, csoportosításokat és szűréseket.
+5. Válassza a **küszöb** fület, majd a **tényleges költségeket és a küszöbértéket**.
+   1. A **piros riasztási** küszöbérték mezőbe írja be a 10000 értéket.
+   2. A **sárga riasztási** küszöbérték mezőbe írja be a 9000 értéket.
+   3. Az **egymást követő riasztások száma** mezőben adja meg, hogy hány egymást követő riasztást kapjon. Ha a riasztások száma eléri a megadott számot, a rendszer nem küld további riasztásokat.
 6. Kattintson a **Mentés** gombra.
 
-![Example showing red and yellow alerts based on spending thresholds](./media/tutorial-review-usage/schedule-alert01.png)
+![A példában a költségkeret-beállítási küszöbértékek alapján piros, sárga és riasztások megjelenítése](./media/tutorial-review-usage/schedule-alert01.png)
 
-You can also choose the **Cost Percentage vs. Budget** threshold metric to create alerts. This allows you to specify the thresholds as percentages of your budget instead of currency values.
+A riasztások létrehozásához a **költség százalékos aránya** és a költségvetési küszöbérték mérőszáma is kiválasztható. Ez lehetővé teszi a küszöbértékek megadását a költségkeret százalékaként a pénznem értékei helyett.
 
 ## <a name="export-data"></a>Adatok exportálása
 

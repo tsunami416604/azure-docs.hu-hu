@@ -18,20 +18,20 @@ ms.locfileid: "74228157"
 Ebben a szakaszban a legfrissebb híreket címkézett sablonértesítésekként fogja elküldeni egy .NET-konzolalkalmazásból.
 
 1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást:
-    1. On the menu, select **File** > **New** > **Project**.
-    1. In **Create a new project**, select **Console App (.NET Framework)** for C# in the list of templates, and select **Next**.
-    1. Enter a name for the app.
-    1. For **Solution**, choose **Add to solution**, and select **Create** to create the project.
+    1. A menüben válassza a **fájl** > **új** > **projekt**lehetőséget.
+    1. A **create a New Project (új projekt létrehozása**) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** C# elemet a sablonok listájában, majd kattintson a **tovább**gombra.
+    1. Adja meg az alkalmazás nevét.
+    1. A **megoldáshoz**válassza a **Hozzáadás a megoldáshoz**lehetőséget, majd válassza a **Létrehozás** lehetőséget a projekt létrehozásához.
 
-1. Select **Tools** > **NuGet Package Manager** > **Package Manager Console** and then, in the console window, run the following command:
+1. Válassza az **eszközök** > **NuGet Package Manager** > **csomagkezelő konzolt** , majd a konzol ablakban futtassa a következő parancsot:
 
    ```powershell
    Install-Package Microsoft.Azure.NotificationHubs
    ```
 
-   This action adds a reference to the Azure Notification Hubs SDK by using the [Microsoft.Azure.NotificationHubs] package.
+   Ez a művelet hozzáadja az Azure Notification Hubs SDK-ra mutató hivatkozást a [Microsoft. Azure. NotificationHubs] csomag használatával.
 
-1. Open the *Program.cs* file, and add the following `using` statement:
+1. Nyissa meg a *program.cs* fájlt, és adja hozzá a következő `using` utasítást:
 
    ```csharp
    using Microsoft.Azure.NotificationHubs;
@@ -69,7 +69,7 @@ Ebben a szakaszban a legfrissebb híreket címkézett sablonértesítésekként 
 
 1. A `<hub name>` és a `<connection string with full access>` helyőrzőket cserélje le a fenti kódban az értesítési központ nevére és a *DefaultFullSharedAccessSignature* az értesítési központ irányítópultjáról származó kapcsolati sztringjére.
 
-1. In the `Main()` method, add the following lines:
+1. A `Main()` metódusban adja hozzá a következő sorokat:
 
    ```csharp
     SendTemplateNotificationAsync();
@@ -86,4 +86,4 @@ Ebben a szakaszban a legfrissebb híreket címkézett sablonértesítésekként 
 [Notification Hubs REST interface]: https://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 [Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
 [How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
-[Microsoft.Azure.NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
+[Microsoft. Azure. NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/

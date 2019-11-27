@@ -1,6 +1,6 @@
 ---
 title: Felosztási-egyesítési szolgáltatás üzembe helyezése
-description: Use the split-merge too to move data between sharded databases.
+description: A felosztott egyesítés használatával is áthelyezheti az adatátvitelt a többrétegű adatbázisok között.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -18,64 +18,64 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421032"
 ---
-# <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Deploy a split-merge service to move data between sharded databases
+# <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Felosztási-egyesítési szolgáltatás üzembe helyezése a szilánkokra osztott adatbázisok közötti adatáthelyezéshez
 
-The split-merge tool lets you move data between sharded databases. See [Moving data between scaled-out cloud databases](sql-database-elastic-scale-overview-split-and-merge.md)
+A felosztott egyesítés eszköz lehetővé teszi az adatáthelyezést a töredezett adatbázisok között. Lásd: [az adatáthelyezés a kibővített felhőalapú adatbázisok között](sql-database-elastic-scale-overview-split-and-merge.md)
 
-## <a name="download-the-split-merge-packages"></a>Download the Split-Merge packages
+## <a name="download-the-split-merge-packages"></a>A Split-Merge csomagok letöltése
 
-1. Download the latest NuGet version from [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget).
+1. Töltse le a legújabb NuGet-verziót a [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)webhelyről.
 
-1. Open a command prompt and navigate to the directory where you downloaded nuget.exe. The download includes PowerShell commands.
+1. Nyisson meg egy parancssort, és navigáljon ahhoz a könyvtárhoz, ahová letöltötte a nuget. exe fájlt. A letöltés PowerShell-parancsokat tartalmaz.
 
-1. Download the latest Split-Merge package into the current directory with the below command:
+1. Töltse le a legújabb felosztott egyesítési csomagot az aktuális könyvtárba az alábbi paranccsal:
 
    ```cmd
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-The files are placed in a directory named **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** where *x.x.xxx.x* reflects the version number. Find the split-merge Service files in the **content\splitmerge\service** sub-directory, and the Split-Merge PowerShell scripts (and required client dlls) in the **content\splitmerge\powershell** sub-directory.
+A fájlok a **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. x. x. xxx. x** nevű könyvtárba kerülnek, ahol az *x. x. xxx. x* a verziószámot tükrözi. Keresse meg a **content\splitmerge\service** alkönyvtárában található felosztott egyesítési szolgáltatási fájlokat, valamint a **content\splitmerge\powershell** alkönyvtárában található felosztott és egyesíthető PowerShell-parancsfájlokat (és a szükséges ügyféloldali DLL-eket).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Create an Azure SQL DB database that will be used as the split-merge status database. Nyissa meg az [Azure Portal](https://portal.azure.com). Create a new **SQL Database**. Give the database a name and create a new administrator and password. Be sure to record the name and password for later use.
+1. Hozzon létre egy Azure SQL DB-adatbázist, amelyet a rendszer felosztó állapot-adatbázisként fog használni. Nyissa meg az [Azure Portal](https://portal.azure.com). Hozzon létre egy új **SQL Database**. Adjon nevet az adatbázisnak, és hozzon létre egy új rendszergazdát és jelszót. Ügyeljen rá, hogy a nevet és a jelszót a későbbi használatra jegyezze fel.
 
-1. Ensure that your Azure SQL DB server allows Azure Services to connect to it. In the portal, in the **Firewall Settings**, ensure the **Allow access to Azure Services** setting is set to **On**. Click the "save" icon.
+1. Győződjön meg arról, hogy az Azure SQL DB-kiszolgáló lehetővé teszi az Azure-szolgáltatások számára a kapcsolódást. A portálon, a **tűzfal beállításainál**ellenőrizze, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás be értékre van **-e állítva.** Kattintson a Save (Mentés) ikonra.
 
-1. Create an Azure Storage account for diagnostics output.
+1. Hozzon létre egy Azure Storage-fiókot a diagnosztika kimenetéhez.
 
-1. Create an Azure Cloud Service for your Split-Merge service.
+1. Hozzon létre egy Azure Cloud Service-t a Split-Merge szolgáltatáshoz.
 
-## <a name="configure-your-split-merge-service"></a>Configure your Split-Merge service
+## <a name="configure-your-split-merge-service"></a>A felosztott egyesítési szolgáltatás konfigurálása
 
-### <a name="split-merge-service-configuration"></a>Split-Merge service configuration
+### <a name="split-merge-service-configuration"></a>Felosztás – egyesítési szolgáltatás konfigurációja
 
-1. In the folder into which you downloaded the Split-Merge assemblies, create a copy of the *ServiceConfiguration.Template.cscfg* file that shipped alongside *SplitMergeService.cspkg* and rename it *ServiceConfiguration.cscfg*.
+1. Abban a mappában, amelybe a felosztott egyesítés szerelvényeket letöltötte, hozzon létre egy másolatot a *ServiceConfiguration. template. cscfg* fájlról, amely a *SplitMergeService. Cspkg* és a *ServiceConfiguration. cscfg*átnevezésével együtt lett elküldve.
 
-1. Open *ServiceConfiguration.cscfg* in a text editor such as Visual Studio that validates inputs such as the format of certificate thumbprints.
+1. Nyissa meg a *ServiceConfiguration. cscfg* egy szövegszerkesztőben, például a Visual Studióban, amely érvényesíti a bemeneteket, például a tanúsítvány ujjlenyomatai megfelelnek formátumát.
 
-1. Create a new database or choose an existing database to serve as the status database for Split-Merge operations and retrieve the connection string of that database.
+1. Hozzon létre egy új adatbázist, vagy válasszon ki egy meglévő adatbázist, amely az állapot-adatbázisként szolgál a felosztási és egyesítési műveletekhez, és kérje le az adatbázishoz tartozó kapcsolódási karakterláncot.
 
    > [!IMPORTANT]
-   > At this time, the status database must use the Latin  collation (SQL\_Latin1\_General\_CP1\_CI\_AS). For more information, see [Windows Collation Name (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
+   > Jelenleg az állapot-adatbázisnak a latin rendezést (SQL\_latin\_általános\_CP1\_CI\_AS-t) kell használnia. További információ: [Windows rendezési név (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
 
-   With Azure SQL DB, the connection string typically is of the form:
+   Az Azure SQL DB-vel a kapcsolatok karakterlánca általában a következőkből áll:
 
       `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<userId>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-1. Enter this connection string in the *.cscfg* file in both the **SplitMergeWeb** and **SplitMergeWorker** role sections in the ElasticScaleMetadata setting.
+1. Adja meg ezt a kapcsolatfájl-karakterláncot a *. cscfg* fájlban a ElasticScaleMetadata beállítás **SplitMergeWeb** és **SplitMergeWorker** szerepkör szakaszában.
 
-1. For the **SplitMergeWorker** role, enter a valid connection string to Azure storage for the **WorkerRoleSynchronizationStorageAccountConnectionString** setting.
+1. A **SplitMergeWorker** szerepkörhöz adjon meg egy érvényes kapcsolódási karakterláncot az Azure Storage-hoz az **WorkerRoleSynchronizationStorageAccountConnectionString** beállításhoz.
 
 ### <a name="configure-security"></a>Biztonság konfigurálása
 
-For detailed instructions to configure the security of the service, refer to the [Split-Merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md).
+A szolgáltatás biztonságának konfigurálásával kapcsolatos részletes utasításokért tekintse meg a [felosztás – egyesítés biztonsági konfigurációját](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-For the purposes of a simple test deployment for this tutorial, a minimal set of configuration steps will be performed to get the service up and running. These steps enable only the one machine/account executing them to communicate with the service.
+Az oktatóanyag egyszerű tesztelési célú üzembe helyezése érdekében a szolgáltatás működésének megkezdéséhez minimális konfigurációs lépéseket kell végrehajtani. Ezek a lépések csak azt a gépet vagy fiókot teszik lehetővé, amelyet a szolgáltatással való kommunikációra hajtanak végre.
 
 ### <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-Create a new directory and from this directory execute the following command using a [Developer Command Prompt for Visual Studio](https://msdn.microsoft.com/library/ms229859.aspx) window:
+Hozzon létre egy új könyvtárat, és ebből a könyvtárból hajtsa végre a következő parancsot a [Visual Studio ablakának fejlesztői parancssorában](https://msdn.microsoft.com/library/ms229859.aspx) :
 
    ```cmd
    makecert ^
@@ -86,46 +86,46 @@ Create a new directory and from this directory execute the following command usi
     -sv MyCert.pvk MyCert.cer
    ```
 
-You are asked for a password to protect the private key. Enter a strong password and confirm it. You are then prompted for the password to be used once more after that. Click **Yes** at the end to import it to the Trusted Certification Authorities Root store.
+A titkos kulcs biztonsága érdekében a rendszer jelszót kér. Adjon meg egy erős jelszót, és erősítse meg. Ezután a rendszer kéri, hogy a jelszót később is használni lehessen. Az **Igen** gombra kattintva importálhatja azt a megbízható hitelesítésszolgáltatók legfelső szintű tárolójába.
 
-### <a name="create-a-pfx-file"></a>Create a PFX file
+### <a name="create-a-pfx-file"></a>PFX-fájl létrehozása
 
-Execute the following command from the same window where makecert was executed; use the same password that you used to create the certificate:
+Futtassa a következő parancsot ugyanabból az ablakból, amelyben a MakeCert végre lett hajtva; használja ugyanazt a jelszót, amelyet a tanúsítvány létrehozásához használt:
 
    ```cmd
    pvk2pfx -pvk MyCert.pvk -spc MyCert.cer -pfx MyCert.pfx -pi <password>
    ```
 
-### <a name="import-the-client-certificate-into-the-personal-store"></a>Import the client certificate into the personal store
+### <a name="import-the-client-certificate-into-the-personal-store"></a>Az ügyféltanúsítvány importálása a személyes tárolóba
 
-1. In Windows Explorer, double-click *MyCert.pfx*.
-2. In the **Certificate Import Wizard** select **Current User** and click **Next**.
-3. Confirm the file path and click **Next**.
-4. Type the password, leave **Include all extended properties** checked and click **Next**.
-5. Leave **Automatically select the certificate store[…]** checked and click **Next**.
-6. Click **Finish** and **OK**.
+1. A Windows Intézőben kattintson duplán a *MyCert. pfx*fájlra.
+2. A **tanúsítvány importálása varázslóban** válassza az **aktuális felhasználó** lehetőséget, majd kattintson a **tovább**gombra.
+3. Erősítse meg a fájl elérési útját, és kattintson a **tovább**gombra.
+4. Írja be a jelszót, hagyja bejelölve az **összes kiterjesztett tulajdonságot** , és kattintson a **tovább**gombra.
+5. Hagyja **automatikusan a tanúsítványtároló [...] elemet** , és kattintson a **tovább**gombra.
+6. Kattintson a **Befejezés** , majd **az OK gombra**.
 
-### <a name="upload-the-pfx-file-to-the-cloud-service"></a>Upload the PFX file to the cloud service
+### <a name="upload-the-pfx-file-to-the-cloud-service"></a>A PFX-fájl feltöltése a Cloud Service-be
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
-2. Select **Cloud Services**.
-3. Select the cloud service you created above for the Split/Merge service.
-4. Click **Certificates** on the top menu.
-5. Click **Upload** in the bottom bar.
-6. Select the PFX file and enter the same password as above.
-7. Once completed, copy the certificate thumbprint from the new entry in the list.
+2. Válassza a **Cloud Services**lehetőséget.
+3. Válassza ki a fent létrehozott felhőalapú szolgáltatást a felosztás/egyesítés szolgáltatáshoz.
+4. A felső menüben kattintson a **tanúsítványok** elemre.
+5. Kattintson az alsó sávban a **feltöltés** elemre.
+6. Válassza ki a PFX-fájlt, és adja meg a fenti jelszót.
+7. Ha elkészült, másolja a tanúsítvány ujjlenyomatát a lista új bejegyzéséről.
 
-### <a name="update-the-service-configuration-file"></a>Update the service configuration file
+### <a name="update-the-service-configuration-file"></a>A szolgáltatás konfigurációs fájljának frissítése
 
-Paste the certificate thumbprint copied above into the thumbprint/value attribute of these settings.
-For the worker role:
+Illessze be a fent másolt tanúsítvány ujjlenyomatát a beállítások ujjlenyomat/érték attribútumára.
+A feldolgozói szerepkörhöz:
 
    ```xml
     <Setting name="DataEncryptionPrimaryCertificateThumbprint" value="" />
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
    ```
 
-For the web role:
+A webes szerepkörhöz:
 
    ```xml
     <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
@@ -136,127 +136,127 @@ For the web role:
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
    ```
 
-Please note that for production deployments separate certificates should be used for the CA, for encryption, the Server certificate and client certificates. For detailed instructions on this, see [Security Configuration](sql-database-elastic-scale-split-merge-security-configuration.md).
+Vegye figyelembe, hogy az éles üzembe helyezések esetében külön tanúsítványokat kell használni a HITELESÍTÉSSZOLGÁLTATÓhoz, a titkosításhoz, a kiszolgálói tanúsítványhoz és az ügyféltanúsítványokhöz. Részletes útmutatásért lásd: [biztonsági konfiguráció](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-## <a name="deploy-your-service"></a>Deploy your service
+## <a name="deploy-your-service"></a>A szolgáltatás üzembe helyezése
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
-2. Select the cloud service that you created earlier.
+2. Válassza ki a korábban létrehozott Cloud Service-t.
 3. Kattintson az **Áttekintés** elemre.
-4. Choose the staging environment, then click **Upload**.
-5. In the dialog box, enter a deployment label. For both 'Package' and 'Configuration', click 'From Local' and choose the *SplitMergeService.cspkg* file and your cscfg file that you configured earlier.
-6. Ensure that the checkbox labeled **Deploy even if one or more roles contain a single instance** is checked.
-7. Hit the tick button in the bottom right to begin the deployment. Expect it to take a few minutes to complete.
+4. Válassza ki az átmeneti környezetet, majd kattintson a **feltöltés**elemre.
+5. A párbeszédpanelen adja meg a központi telepítési címkét. A "csomag" és a "konfiguráció" esetében kattintson a "helyi" lehetőségre, és válassza ki a korábban konfigurált *SplitMergeService. cspkg* fájlt és a cscfg-fájlt.
+6. Győződjön meg arról, hogy az **üzembe helyezés jelölőnégyzet akkor is be van jelölve, ha egy vagy több szerepkör egyetlen példányt tartalmaz** .
+7. Az üzembe helyezés megkezdéséhez kattintson a jobb alsó sarokban található ketyeg gombra. Várhatóan néhány percet is igénybe vehet.
 
-## <a name="troubleshoot-the-deployment"></a>Troubleshoot the deployment
+## <a name="troubleshoot-the-deployment"></a>Az üzemelő példány hibáinak megoldása
 
-If your web role fails to come online, it is likely a problem with the security configuration. Check that the SSL is configured as described above.
+Ha a webes szerepkör nem tud online állapotba jutni, valószínűleg probléma van a biztonsági konfigurációval. Győződjön meg arról, hogy az SSL konfigurálva van a fent leírtak szerint.
 
-If your worker role fails to come online, but your web role succeeds, it is most likely a problem connecting to the status database that you created earlier.
+Ha a feldolgozói szerepkör nem tud online állapotba jutni, de a webes szerepkör sikeres, akkor valószínűleg probléma van a korábban létrehozott status adatbázishoz való csatlakozással.
 
-- Make sure that the connection string in your cscfg is accurate.
-- Check that the server and database exist, and that the user id and password are correct.
-- For Azure SQL DB, the connection string should be of the form:
+- Győződjön meg arról, hogy a cscfg található kapcsolatok karakterlánca pontos.
+- Győződjön meg arról, hogy a kiszolgáló és az adatbázis létezik, valamint hogy a felhasználói azonosító és a jelszó helyes.
+- Az Azure SQL DB esetében a következő formátumúnak kell lennie a kapcsolatok karakterláncának:
 
    `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<user>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-- Ensure that the server name does not begin with **https://** .
-- Ensure that your Azure SQL DB server allows Azure Services to connect to it. To do this, open your database in the portal and ensure that the **Allow access to Azure Services** setting is set to **On****.
+- Győződjön meg arról, hogy a kiszolgálónév nem a **https://** kezdődik.
+- Győződjön meg arról, hogy az Azure SQL DB-kiszolgáló lehetővé teszi az Azure-szolgáltatások számára a kapcsolódást. Ehhez nyissa meg az adatbázist a portálon, és győződjön meg arról, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás a * * * * * értékre van állítva.
 
-## <a name="test-the-service-deployment"></a>Test the service deployment
+## <a name="test-the-service-deployment"></a>A szolgáltatás központi telepítésének tesztelése
 
-### <a name="connect-with-a-web-browser"></a>Connect with a web browser
+### <a name="connect-with-a-web-browser"></a>Webböngészővel való kapcsolat
 
-Determine the web endpoint of your Split-Merge service. You can find this in the portal by going to the **Overview** of your cloud service and looking under **Site URL** on the right side. Replace **http://** with **https://** since the default security settings disable the HTTP endpoint. Load the page for this URL into your browser.
+Határozza meg a felosztási-egyesítési szolgáltatás webes végpontját. Ezt a portálon a felhőalapú szolgáltatás **áttekintésével** , a jobb oldalon pedig a **webhely URL-címével** tekintheti meg. Cserélje le az **http://** -t a **https://** -re, mert az alapértelmezett biztonsági beállítások LEtiltják a http-végpontot Töltse be az URL-cím lapját a böngészőben.
 
-### <a name="test-with-powershell-scripts"></a>Test with PowerShell scripts
+### <a name="test-with-powershell-scripts"></a>Tesztelés PowerShell-parancsfájlokkal
 
-The deployment and your environment can be tested by running the included sample PowerShell scripts.
+A központi telepítés és a környezet a mellékelt minta PowerShell-szkriptek futtatásával is tesztelhető.
 
-The script files included are:
+A parancsfájl fájljai a következők:
 
-1. *SetupSampleSplitMergeEnvironment.ps1* - sets up a test data tier for Split/Merge (see table below for detailed description)
-2. *ExecuteSampleSplitMerge.ps1* - executes test operations on the test data tier (see table below for detailed description)
-3. *GetMappings.ps1* - top-level sample script that prints out the current state of the shard mappings.
-4. *ShardManagement.psm1*  - helper script that wraps the ShardManagement API
-5. *SqlDatabaseHelpers.psm1* - helper script for creating and managing SQL databases
+1. *SetupSampleSplitMergeEnvironment. ps1* – egy teszt adatréteget állít be a felosztáshoz/egyesítéshez (lásd az alábbi táblázatot a részletes leíráshoz)
+2. *ExecuteSampleSplitMerge. ps1* – tesztelési műveleteket hajt végre a teszt adatrétegen (lásd az alábbi táblázatot a részletes leíráshoz)
+3. *GetMappings. ps1* – legfelső szintű minta parancsfájl, amely kinyomtatja a szegmens leképezések aktuális állapotát.
+4. *ShardManagement. psm1* – segítő parancsfájl, amely a ShardManagement API-t csomagolja
+5. *SqlDatabaseHelpers. psm1* – segítő parancsfájl SQL-adatbázisok létrehozásához és kezeléséhez
    
    <table style="width:100%">
      <tr>
-       <th>PowerShell file</th>
+       <th>PowerShell-fájl</th>
        <th>Lépések</th>
      </tr>
      <tr>
        <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
-       <td>1. Creates a shard map manager database</td>
+       <td>1. Egy szegmens Map Manager-adatbázis létrehozása</td>
      </tr>
      <tr>
-       <td>2. Creates 2 shard databases.
+       <td>2. 2 szegmensű adatbázist hoz létre.
      </tr>
      <tr>
-       <td>3. Creates a shard map for those databases (deletes any existing shard maps on those databases). </td>
+       <td>3. Létrehoz egy szegmenses térképet ezekhez az adatbázisokhoz (törli az adott adatbázishoz tartozó meglévő szegmenses térképeket). </td>
      </tr>
      <tr>
-       <td>4. Creates a small sample table in both the shards, and populates the table in one of the shards.</td>
+       <td>4. Létrehoz egy kisméretű mintát a szegmensekben, és feltölti a táblázatot az egyik szegmensben.</td>
      </tr>
      <tr>
-       <td>5. Declares the SchemaInfo for the sharded table.</td>
+       <td>5. Deklarálja a SchemaInfo a szilánkokra bontott táblához.</td>
      </tr>
    </table>
    <table style="width:100%">
      <tr>
-       <th>PowerShell file</th>
+       <th>PowerShell-fájl</th>
        <th>Lépések</th>
      </tr>
    <tr>
        <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
-       <td>1. Sends a split request to the Split-Merge Service web frontend, which splits half the data from the first shard to the second shard.</td>
+       <td>1. Elküld egy felosztott kérelmet a Split-Merge szolgáltatás webes felületének, amely az első szegmens adatainak felére osztja ketté a második szilánkot.</td>
      </tr>
      <tr>
-       <td>2. Polls the web frontend for the split request status and waits until the request completes.</td>
+       <td>2. Lekérdezi a megosztott kérelmek állapotának webes felületét, és megvárja, amíg a kérés befejeződik.</td>
      </tr>
      <tr>
-       <td>3. Sends a merge request to the Split-Merge Service web frontend, which moves the data from the second shard back to the first shard.</td>
+       <td>3. Egyesítő kérelmet küld a felosztási szolgáltatás webes felületének, amely az adatokat a második szegmensből az első szegmensbe helyezi vissza.</td>
      </tr>
      <tr>
-       <td>4. Polls the web frontend for the merge request status and waits until the request completes.</td>
+       <td>4. Lekérdezi az egyesítési kérelem állapotának webes felületét, és megvárja, amíg a kérés befejeződik.</td>
      </tr>
    </table>
    
-## <a name="use-powershell-to-verify-your-deployment"></a>Use PowerShell to verify your deployment
+## <a name="use-powershell-to-verify-your-deployment"></a>A telepítés ellenőrzése a PowerShell használatával
 
-1. Open a new PowerShell window and navigate to the directory where you downloaded the Split-Merge package, and then navigate into the “powershell” directory.
+1. Nyisson meg egy új PowerShell-ablakot, és keresse meg azt a könyvtárat, ahová a felosztott egyesítési csomagot letöltötte, majd navigáljon a "PowerShell" könyvtárba.
 
-2. Create an Azure SQL Database server (or choose an existing server) where the shard map manager and shards will be created.
+2. Hozzon létre egy Azure SQL Database kiszolgálót (vagy válasszon ki egy meglévő kiszolgálót), ahol a rendszer létrehozza a szegmenses Térkép kezelőjét és a szegmenseket.
 
    > [!NOTE]
-   > The *SetupSampleSplitMergeEnvironment.ps1* script creates all these databases on the same server by default to keep the script simple. This is not a restriction of the Split-Merge Service itself.
+   > A *SetupSampleSplitMergeEnvironment. ps1* parancsfájl alapértelmezés szerint ugyanazon a kiszolgálón hozza létre az összes adatbázist, hogy a szkriptet egyszerűként tárolja. Ez nem korlátozza a felosztási-egyesítési szolgáltatást.
 
-   A SQL authentication login with read/write access to the DBs will be needed for the Split-Merge service to move data and update the shard map. Since the Split-Merge Service runs in the cloud, it does not currently support Integrated Authentication.
+   Ahhoz, hogy a felosztott egyesítési szolgáltatás adatokat helyezzen át, és frissítse a szegmenses térképet, egy SQL-hitelesítési bejelentkezésre van szükség az adatbázisok olvasási/olvasási hozzáféréssel. Mivel a felosztási-egyesítési szolgáltatás a felhőben fut, jelenleg nem támogatja az integrált hitelesítést.
 
-   Make sure the Azure SQL server is configured to allow access from the IP address of the machine running these scripts. You can find this setting under the Azure SQL server / configuration / allowed IP addresses.
+   Győződjön meg arról, hogy az Azure SQL Server úgy van konfigurálva, hogy engedélyezze a hozzáférést az ezeket a parancsfájlokat futtató gép IP-címéről. Ez a beállítás az Azure SQL Server/Configuration/Allowed IP-címek területen található.
 
-3. Execute the *SetupSampleSplitMergeEnvironment.ps1* script to create the sample environment.
+3. Futtassa a *SetupSampleSplitMergeEnvironment. ps1* parancsfájlt a minta környezet létrehozásához.
 
-   Running this script will wipe out any existing shard map management data structures on the shard map manager database and the shards. It may be useful to rerun the script if you wish to re-initialize the shard map or shards.
+   A parancsfájl futtatásakor a rendszer törli az összes meglévő, a szegmensek közötti Térkép-felügyeleti adatstruktúrákat a szegmenses Térkép-kezelő adatbázisán és a szegmenseken. Előfordulhat, hogy újra kell futtatnia a szkriptet, ha újra szeretné inicializálni a szegmenses térképet vagy a szegmenseket.
 
-   Sample command line:
+   Minta parancssor:
 
    ```cmd
    .\SetupSampleSplitMergeEnvironment.ps1
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-4. Execute the Getmappings.ps1 script to view the mappings that currently exist in the sample environment.
+4. Hajtsa végre a Getmappings. ps1 parancsfájlt a mintavételi környezetben jelenleg létező leképezések megtekintéséhez.
 
    ```cmd
    .\GetMappings.ps1
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Execute the *ExecuteSampleSplitMerge.ps1* script to execute a split operation (moving half the data on the first shard to the second shard) and then a merge operation (moving the data back onto the first shard). If you configured SSL and left the http endpoint disabled, ensure that you use the https:// endpoint instead.
+5. Hajtsa végre a *ExecuteSampleSplitMerge. ps1* parancsfájlt egy felosztott művelet végrehajtásához (az első szegmens adatai felé haladva a második szilánkra), majd egy egyesítési műveletet (az adatáthelyezést az első szegmensre). Ha az SSL-t konfigurálta, és letiltotta a http-végpontot, használja helyette az https://-végpontot.
 
-   Sample command line:
+   Minta parancssor:
 
    ```cmd
    .\ExecuteSampleSplitMerge.ps1
@@ -266,11 +266,11 @@ The script files included are:
     -CertificateThumbprint '0123456789abcdef0123456789abcdef01234567'
    ```
 
-   If you receive the below error, it is most likely a problem with your Web endpoint’s certificate. Try connecting to the Web endpoint with your favorite Web browser and check if there is a certificate error.
+   Ha az alábbi hibaüzenet jelenik meg, valószínűleg probléma van a webes végpont tanúsítványával. Próbáljon meg csatlakozni a webes végponthoz a kedvenc webböngészőjével, és ellenőrizze, hogy van-e hiba a tanúsítványban.
 
      `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLSsecure channel.`
 
-   If it succeeded, the output should look like the below:
+   Ha a művelet sikeres volt, a kimenetnek az alábbihoz hasonlóan kell kinéznie:
 
    ```output
    > .\ExecuteSampleSplitMerge.ps1 -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net' -SplitMergeServiceEndpoint 'http://mysplitmergeservice.cloudapp.net' -CertificateThumbprint 0123456789abcdef0123456789abcdef01234567
@@ -307,39 +307,39 @@ The script files included are:
    > 
    ```
 
-6. Experiment with other data types! All of these scripts take an optional -ShardKeyType parameter that allows you to specify the key type. The default is Int32, but you can also specify Int64, Guid, or Binary.
+6. Kísérletezzen más adattípusokkal. Az összes parancsfájl egy opcionálisan ShardKeyType paramétert is biztosít, amely lehetővé teszi a kulcs típusának megadását. Az alapértelmezett érték az Int32, de Int64, GUID azonosítót vagy bináris értéket is megadhat.
 
 ## <a name="create-requests"></a>Létrehozási kérelmek
 
-The service can be used either by using the web UI or by importing and using the SplitMerge.psm1 PowerShell module which will submit your requests through the web role.
+A szolgáltatás a webes felhasználói felületen vagy a SplitMerge. psm1 PowerShell-modul importálásával és használatával is használható, amely a webes szerepkör használatával küldi el a kéréseit.
 
-The service can move data in both sharded tables and reference tables. A sharded table has a sharding key column and has different row data on each shard. A reference table is not sharded so it contains the same row data on every shard. Reference tables are useful for data that does not change often and is used to JOIN with sharded tables in queries.
+A szolgáltatás a többrészes táblákban és a hivatkozási táblákban is áthelyezheti az adatátvitelt. A szilánkokra osztott tábla egy horizontális Felskálázási kulcs oszlopával rendelkezik, és az egyes szegmenseken különböző sorok szerepelnek. Egy hivatkozási tábla nem található, ezért az összes szegmensen ugyanazokat az adatsorokat tartalmazza. A hivatkozási táblázatok olyan adathalmazok esetén hasznosak, amelyek gyakran nem változnak, és a rendszer a lekérdezésekben a szilánkokra osztott táblákkal való CSATLAKOZÁSra használatos.
 
-In order to perform a split-merge operation, you must declare the sharded tables and reference tables that you want to have moved. This is accomplished with the **SchemaInfo** API. This API is in the **Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.Schema** namespace.
+A felosztott egyesítési művelet végrehajtásához deklarálnia kell az áthelyezni kívánt tagolt táblákat és hivatkozási táblákat. Ez a **SchemaInfo** API-val valósítható meg. Ez az API a **Microsoft. Azure. SqlDatabase. ElasticScale. ShardManagement. Schema** névtérben található.
 
-1. For each sharded table, create a **ShardedTableInfo** object describing the table’s parent schema name (optional, defaults to “dbo”), the table name, and the column name in that table that contains the sharding key.
-2. For each reference table, create a **ReferenceTableInfo** object describing the table’s parent schema name (optional, defaults to “dbo”) and the table name.
-3. Add the above TableInfo objects to a new **SchemaInfo** object.
-4. Get a reference to a **ShardMapManager** object, and call **GetSchemaInfoCollection**.
-5. Add the **SchemaInfo** to the **SchemaInfoCollection**, providing the shard map name.
+1. Minden egyes többszintű tábla esetében hozzon létre egy **ShardedTableInfo** objektumot, amely leírja a tábla fölérendelt sémájának nevét (nem kötelező, alapértelmezés szerint "dbo"), a tábla nevét és az abban a táblában található oszlopnevet, amely a horizontális kulcsot tartalmazza.
+2. Mindegyik hivatkozási táblázathoz hozzon létre egy **ReferenceTableInfo** objektumot, amely leírja a tábla szülő sémájának nevét (nem kötelező, alapértelmezés szerint "dbo") és a tábla nevét.
+3. Adja hozzá a fenti TableInfo objektumokat egy új **SchemaInfo** objektumhoz.
+4. Szerezzen be egy **ShardMapManager** objektumra mutató hivatkozást, és hívja meg a **GetSchemaInfoCollection**.
+5. Adja hozzá a **SchemaInfo** a **SchemaInfoCollection**, amely megadja a szegmens leképezésének nevét.
 
-An example of this can be seen in the SetupSampleSplitMergeEnvironment.ps1 script.
+Erre példa látható a SetupSampleSplitMergeEnvironment. ps1 parancsfájlban.
 
-The Split-Merge service does not create the target database (or schema for any tables in the database) for you. They must be pre-created before sending a request to the service.
+A felosztási-egyesítési szolgáltatás nem hozza létre a célként megadott adatbázist (vagy sémát az adatbázis bármely táblájához). A szolgáltatásnak küldött kérések elküldése előtt előre létre kell hozni őket.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-You may see the below message when running the sample powershell scripts:
+A PowerShell-parancsfájlok futtatásakor a következő üzenet jelenhet meg:
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-This error means that your SSL certificate is not configured correctly. Please follow the instructions in section 'Connecting with a web browser'.
+Ez a hiba azt jelenti, hogy az SSL-tanúsítvány nincs megfelelően konfigurálva. Kövesse a "csatlakozás webböngészővel" című szakasz utasításait.
 
-If you cannot submit requests you may see this:
+Ha nem tud elküldeni olyan kérelmeket, amelyek a következőket láthatják:
 
    `[Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'.`
 
-In this case, check your configuration file, in particular the setting for **WorkerRoleSynchronizationStorageAccountConnectionString**. This error typically indicates that the worker role could not successfully initialize the metadata database on first use.
+Ebben az esetben vizsgálja meg a konfigurációs fájlt, különösen a **WorkerRoleSynchronizationStorageAccountConnectionString**beállítását. Ez a hiba általában azt jelzi, hogy a feldolgozói szerepkör nem tudta sikeresen inicializálni a metaadat-adatbázist az első használat során.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

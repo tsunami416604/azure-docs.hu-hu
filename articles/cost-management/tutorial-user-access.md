@@ -47,7 +47,7 @@ Bár Ön eleve rendelkezik rendszergazdai hozzáféréssel, előfordulhat, hogy 
 Adja meg a felhasználóra vonatkozó kötelező adatokat. A **bejelentkezési azonosítónak** egy érvényes e-mail-címnek kell lennie. Adjon felhasználókezelési jogosultságokat, ha azt szeretné, hogy a felhasználó létrehozhasson és módosíthasson más felhasználókat. A címzettlisták kezelésére vonatkozó jogosultsággal a felhasználó szerkesztheti a címzettlistákat. A **Notify user by email** (Felhasználó értesítése e-mailben) lehetőségre kattintva a Cloudyn egy e-mailt küld a felhasználónak a bejelentkezési információkkal. Az első bejelentkezéskor a felhasználó beállít egy jelszót.
 
 A **User has admin access** (A felhasználó rendszergazdai hozzáféréssel rendelkezik) alatt a cég gyökérszintű entitása van kiválasztva. Hagyja kiválasztva a gyökérszintű entitást, és mentse a felhasználói adatokat. A gyökérszintű entitás kiválasztásával a felhasználó nem csupán a fa legfelső szintű entitásához fér majd hozzá, hanem az össze az alá tartozóhoz is.  
-  ![Example showing admin access in the Add new user box](./media/tutorial-user-access/new-admin-access.png)
+  ![például a rendszergazdai hozzáférés az új felhasználó hozzáadása mezőben látható](./media/tutorial-user-access/new-admin-access.png)
 
 ## <a name="create-a-user-with-user-access"></a>Felhasználói hozzáféréssel rendelkező felhasználó létrehozása
 A Cloudyn-adatokhoz irányítópult- és jelentésszintű hozzáférést igénylő felhasználóknak felhasználói jogosultságra van szükségük ezek megtekintéséhez. Hozzon létre egy új felhasználót a rendszergazdai hozzáféréssel rendelkező felhasználóhoz hasonló felhasználói hozzáféréssel, a következő eltérésekkel:
@@ -56,7 +56,7 @@ A Cloudyn-adatokhoz irányítópult- és jelentésszintű hozzáférést igényl
 - Jelölje be a **User has user access** (A felhasználó felhasználói hozzáféréssel rendelkezik) listában azokat az entitásokat, amelyekhez a felhasználónak hozzáféréssel kell rendelkeznie.
 - Emellett igény szerint egyes entitásokhoz rendszergazdai hozzáférést is adhat.
 
-![Example showing user access in the Add new user box](./media/tutorial-user-access/new-user-access.png)
+![Új felhasználó hozzáadása jelölőnégyzetet a felhasználói hozzáférés megjelenítő példa](./media/tutorial-user-access/new-user-access.png)
 
 A felhasználók hozzáadásáról szóló oktatóvideó: [Felhasználók hozzáadása a Cloudyn rendszerébe](https://youtu.be/Nzn7GLahx30).
 
@@ -88,11 +88,11 @@ Az Azure-szerződés vagy -fiók a Cloudynben való regisztrálásakor az előfi
 
 A Cloudyn portálon kattintson a fogaskerék ikonra a jobb felső sarokban, és válassza a **Cloud Accounts** (Felhőbeli fiókok) lehetőséget. Egyetlen entitásból (a gyökérből) kell kiindulni, és ebből kell kiépíteni a teljes entitásfát. Példa egy entitáshierarchiára, amely számos informatika vállalatéhoz hasonlóan fog kinézni, amint a fa elkészül:
 
-![Example of an entity tree shown on the Accounts Management page](./media/tutorial-user-access/entity-tree.png)
+![Az a fiókkezelés oldalán látható entitásfát – példa](./media/tutorial-user-access/entity-tree.png)
 
 Az **Entities** (Entitások) elem mellett kattintson az **Add Entity** (Entitás hozzáadása) gombra. Adja meg a hozzáadni kívánt személy vagy részleg adatait. A **Full Name** (Teljes név) és az **Email** (E-mail-cím) mezőknek nem szükséges meglévő felhasználók adatait tartalmaznia. Ha meg szeretné tekinteni a hozzáférési szintek listáját, keressen rá a Súgóban az *Adding an entity* (Entitások hozzáadása) témakörre.
 
-![Example showing entity name and access levels in the Add entity box](./media/tutorial-user-access/add-entity.png)
+![Entitás hozzáadása mezőbe a nevet és hozzáférési szintek entitást megjelenítő példa](./media/tutorial-user-access/add-entity.png)
 
 Amikor elkészült, **mentse** az entitást.
 

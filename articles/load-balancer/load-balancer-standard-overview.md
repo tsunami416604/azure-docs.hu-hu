@@ -1,7 +1,7 @@
 ---
-title: What is Azure Standard Load Balancer?
+title: Mi az Azure standard Load Balancer?
 titleSuffix: Azure Load Balancer
-description: With this learning path, get started with an overview of Azure Standard Load Balancer features.
+description: Ezzel a képzési útvonallal megismerheti az Azure standard Load Balancer funkcióinak áttekintését.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -21,232 +21,232 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423867"
 ---
-# <a name="azure-standard-load-balancer-overview"></a>Azure Standard Load Balancer overview
+# <a name="azure-standard-load-balancer-overview"></a>Az Azure standard Load Balancer áttekintése
 
-Azure Load Balancer allows you to scale your applications and create high availability for your services. Load Balancer can be used for inbound as well as outbound scenarios and provides low latency, high throughput, and scales up to millions of flows for all TCP and UDP applications. 
+Azure Load Balancer lehetővé teszi az alkalmazások skálázását és magas rendelkezésre állású szolgáltatások létrehozását. A Load Balancer használható a bejövő és a kimenő forgatókönyvekhez, valamint alacsony késést és nagy átviteli sebességet biztosít, és akár akár több millió folyamatot is képes az összes TCP-és UDP-alkalmazáshoz. 
 
-This article is focused on Standard Load Balancer.  For a more general overview for Azure Load Balancer, review [Load Balancer Overview](load-balancer-overview.md) as well.
+Ez a cikk standard Load Balancerra összpontosít.  A Azure Load Balancer általános áttekintéséhez tekintse át az [Load Balancer áttekintését](load-balancer-overview.md) is.
 
 ## <a name="what-is-standard-load-balancer"></a>Mi az a standard Load Balancer?
 
-Standard Load Balancer is a new Load Balancer product for all TCP and UDP applications with an expanded and more granular feature set over Basic Load Balancer.  While there are many similarities, it is important to familiarize yourself with the differences as outlined in this article.
+A standard Load Balancer egy új Load Balancer termék minden TCP-és UDP-alkalmazáshoz, és az alapszintű Load Balanceron beállított bővített és részletesebb funkciókkal rendelkezik.  Habár sok hasonlóság van, fontos, hogy megismerkedjen a jelen cikkben ismertetett különbségekkel.
 
-You can use Standard Load Balancer as a public or internal Load Balancer. And a virtual machine can be connected to one public and one internal Load Balancer resource.
+A standard Load Balancer nyilvános vagy belső Load Balancer is használhatja. A virtuális gépek egy nyilvános és egy belső Load Balancer erőforráshoz is csatlakoztathatók.
 
-The Load Balancer resource's functions are always expressed as a frontend, a rule, a health probe, and a backend pool definition.  A resource can contain multiple rules. You can place virtual machines into the backend pool by specifying the backend pool from the virtual machine's NIC resource.  This parameter is passed through the network profile and expanded when using virtual machine scale sets.
+A Load Balancer erőforrás funkciói mindig előtérként, szabályként, állapot-mintavételként és háttérbeli készlet-definícióként vannak kifejezve.  Egy erőforrás több szabályt is tartalmazhat. A virtuális gépeket a háttér-készletbe helyezheti a háttér-készletnek a virtuális gép NIC-erőforrásból való megadásával.  Ezt a paramétert a hálózati profil továbbítja, és kibontja a virtuálisgép-méretezési csoportok használatakor.
 
-One key aspect is the scope of the virtual network for the resource.  While Basic Load Balancer exists within the scope of an availability set, a Standard Load Balancer is fully integrated with the scope of a virtual network and all virtual network concepts apply.
+Az egyik kulcsfontosságú szempont az erőforráshoz tartozó virtuális hálózat hatóköre.  Míg az alapszintű Load Balancer a rendelkezésre állási csoport hatókörén belül van, a standard Load Balancer teljes mértékben integrálva van a virtuális hálózat és az összes virtuális hálózati koncepció alkalmazási körébe.
 
-Load Balancer resources are objects within which you can express how Azure should program its multi-tenant infrastructure to achieve the scenario you wish to create.  There is no direct relationship between Load Balancer resources and actual infrastructure; creating a Load Balancer doesn't create an instance, capacity is always available, and there are no start-up or scaling delays to consider. 
+Load Balancer erőforrások olyan objektumok, amelyeken belül kipróbálhatja, hogy az Azure hogyan programba hozza a több-bérlős infrastruktúrát a létrehozni kívánt forgatókönyv eléréséhez.  Nincs közvetlen kapcsolat a Load Balancer erőforrások és a tényleges infrastruktúra között; Load Balancer létrehozása nem hoz létre példányt, a kapacitás mindig rendelkezésre áll, és nincs szükség indítási vagy méretezési késésre. 
 
 >[!NOTE]
-> Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. If you're looking for Transport Layer Security (TLS) protocol termination ("SSL offload") or per-HTTP/HTTPS request, application-layer processing, see [What is Azure Application Gateway?](../application-gateway/overview.md) If you're looking for global DNS load balancing, see [What is Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Your end-to-end scenarios may benefit from combining these solutions.
+> Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. Ha Transport Layer Security (TLS) protokoll leállítását ("SSL-kiszervezés") vagy HTTP/HTTPS-kérést keres, az alkalmazások rétegének feldolgozását lásd: [Mi az az Azure Application Gateway?](../application-gateway/overview.md) Ha globális DNS-terheléselosztást keres, tekintse meg a [Mi az Traffic Manager?](../traffic-manager/traffic-manager-overview.md) A végpontok közötti forgatókönyvek a megoldások kombinálásával is hasznosak lehetnek.
 >
-> For an Azure load-balancing options comparison, see [Overview of load-balancing options in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+> Az Azure terheléselosztási lehetőségeinek összehasonlítását lásd: [Az Azure terheléselosztási lehetőségeinek áttekintése](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
-## <a name="why-use-standard-load-balancer"></a>Why use Standard Load Balancer?
+## <a name="why-use-standard-load-balancer"></a>Miért érdemes standard Load Balancer?
 
 A Standard Load Balancer használatával skálázhatók az alkalmazások, és magas rendelkezésre állás érhető el akár kis méretű üzemelő példányoknál, akár nagy és összetett, többzónás architektúrák esetében.
 
-Review the table below for an overview of the differences between Standard Load Balancer and Basic Load Balancer:
+Tekintse át az alábbi táblázatot a standard Load Balancer és az alapszintű Load Balancer közötti különbségek áttekintéséhez:
 
 >[!NOTE]
 > Az új kialakítások során a Standard Load Balancert érdemes alkalmazni. 
 
 [!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
 
-Review [service limits for Load Balancer](https://aka.ms/lblimits), as well as [pricing](https://aka.ms/lbpricing), and [SLA](https://aka.ms/lbsla).
+Tekintse át [a Load Balancerra vonatkozó szolgáltatási korlátozásokat](https://aka.ms/lblimits), valamint a [díjszabást](https://aka.ms/lbpricing)és az [SLA](https://aka.ms/lbsla)-t.
 
 
-### <a name="backend"></a>Backend pool
+### <a name="backend"></a>Háttér-készlet
 
-Standard Load Balancer backend pools expand to any virtual machine resource in a virtual network.  It can contain up to 1000 backend instances.  A backend instance is an IP configuration, which is a property of a NIC resource.
+Standard Load Balancer háttér-készletek a virtuális hálózat bármely virtuálisgép-erőforrására kiterjeszthetők.  Akár 1000 háttér-példányt is tartalmazhat.  A backend-példány egy IP-konfiguráció, amely egy hálózati adapter erőforrásának tulajdonsága.
 
-The backend pool can contain standalone virtual machines, availability sets, or virtual machine scale sets.  You can also blend resources in the backend pool. You can combine up to 150 resources in the backend pool per Load Balancer resource.
+A háttér-készlet különálló virtuális gépeket, rendelkezésre állási csoportokat vagy virtuálisgép-méretezési csoportokat tartalmazhat.  Az erőforrásokat a háttér-készletben is felhasználhatja. Load Balancer erőforrásban akár 150 erőforrást is összekapcsolhat a háttér-készletben.
 
-When considering how to design your backend pool, you can design for the least number of individual backend pool resources to further optimize the duration of management operations.  There is no difference in data plane performance or scale.
+A háttérbeli készlet kialakításának megtervezése során a felügyeleti műveletek időtartamának további optimalizálása érdekében megtervezheti a minimális számú egyéni háttér-készlet erőforrását.  Nem különbözik az adatsíkok teljesítményének vagy méretezésének.
 
-### <a name="probes"></a>Health probes
+### <a name="probes"></a>Állapot-mintavételek
   
-Standard Load Balancer adds support for [HTTPS health probes](load-balancer-custom-probe-overview.md#httpprobe) (HTTP probe with Transport Layer Security (TLS) wrapper) to accurately monitor your HTTPS applications.  
+A standard Load Balancer támogatja a [https-állapotú](load-balancer-custom-probe-overview.md#httpprobe) mintavételeket (http-mintavétel TRANSPORT Layer Security (TLS) burkolóval) a https-alkalmazások pontos figyeléséhez.  
 
-In addition, when the entire backend pool [probes down](load-balancer-custom-probe-overview.md#probedown), Standard Load Balancer allows all established TCP connections to continue. (Basic Load Balancer will terminate all TCP connections to all instances).
+Emellett, ha a teljes háttérrendszer- [készlet](load-balancer-custom-probe-overview.md#probedown)mintavételt végez, standard Load Balancer lehetővé teszi az összes létesített TCP-kapcsolat folytatását. (Az alapszintű Load Balancer leállítja az összes TCP-kapcsolatot az összes példányra).
 
-Review [Load Balancer health probes](load-balancer-custom-probe-overview.md) for details.
+A részletekért tekintse át [Load Balancer Health-szondákat](load-balancer-custom-probe-overview.md) .
 
 ### <a name="az"></a>Availability Zones
 
 >[!IMPORTANT]
->Review [Availability Zones](../availability-zones/az-overview.md) for related topics, including any region specific information.
+>Tekintse át [Availability Zones](../availability-zones/az-overview.md) kapcsolódó témaköröket, beleértve a régióra vonatkozó információkat is.
 
-Standard Load Balancer supports additional abilities in regions where Availability Zones are available.  These features are incremental to all Standard Load Balancer provides.  Availability Zones configurations are available for public and internal Standard Load Balancer.
+Standard Load Balancer támogatja a további képességeket azokban a régiókban, ahol Availability Zones elérhető.  Ezek a funkciók minden standard Load Balancer számára növekményes.  Availability Zones konfigurációk nyilvános és belső standard Load Balancer számára érhetők el.
 
-Non-zonal frontends become zone-redundant by default when deployed in a region with Availability Zones.   A zone-redundant frontend survives zone failure and is served by dedicated infrastructure in all of the zones simultaneously. 
+A nem zónákra kiterjedő frontendek alapértelmezés szerint a Availability Zones-vel rendelkező régiókban való üzembe helyezéskor lesznek redundánsak.   A Zone-redundáns frontend megmarad a zóna meghibásodása esetén, és az összes zónában egyidejűleg dedikált infrastruktúra szolgálja ki. 
 
-Additionally, you can guarantee a frontend to a specific zone. A zonal frontend shares fate with the respective zone and is served only by dedicated infrastructure in a single zone.
+Emellett egy adott zónához is garantálhatja a felületet. A zónákhoz tartozó előtér-megosztások a megfelelő zónával rendelkeznek, és csak dedikált infrastruktúra szolgálnak ki egyetlen zónában.
 
-Cross-zone load balancing is available for the backend pool, and any virtual machine resource in a vnet can be part of a backend pool.
+A többzónás terheléselosztás elérhető a háttér-készlethez, és a vnet található bármely virtuálisgép-erőforrás egy háttér-készlet része lehet.
 
-Review [detailed discussion of Availability Zones related abilities](load-balancer-standard-availability-zones.md).
+Tekintse át [Availability Zones kapcsolódó képességeinek részletes megvitatását](load-balancer-standard-availability-zones.md).
 
-### <a name="diagnostics"></a> Diagnostics
+### <a name="diagnostics"></a>Diagnosztika
 
-Standard Load Balancer provides multi-dimensional metrics through Azure Monitor.  These metrics can be filtered, grouped, and broken out for a given dimension.  They provide current and historic insights into performance and health of your service.  Resource Health is also supported.  Following is a brief overview of supported diagnostics:
+Standard Load Balancer többdimenziós metrikákat biztosít Azure Monitoron keresztül.  Ezek a metrikák szűrhetők, csoportosíthatók és kibonthatók egy adott dimenzióra vonatkozóan.  A szolgáltatás teljesítményének és állapotának aktuális és korábbi betekintést nyújtanak.  A Resource Health is támogatott.  A következő rövid áttekintést nyújt a támogatott diagnosztika szolgáltatásról:
 
 | Metrika | Leírás |
 | --- | --- |
-| VIP availability | Standard Load Balancer continuously exercises the data path from within a region to the Load Balancer front-end all the way to the SDN stack that supports your VM. As long as healthy instances remain, the measurement follows the same path as your application's load-balanced traffic. The data path that is used by your customers is also validated. The measurement is invisible to your application and does not interfere with other operations.|
-| DIP availability | Standard Load Balancer uses a distributed health probing service that monitors your application endpoint's health according to your configuration settings. This metric provides an aggregate or per endpoint filtered-view of each individual instance endpoint in the Load Balancer pool.  You can see how Load Balancer views the health of your application as indicated by your health probe configuration.
-| SYN packets | Standard Load Balancer does not terminate TCP connections or interact with TCP or UDP packet flows. Flows and their handshakes are always between the source and the VM instance. To better troubleshoot your TCP protocol scenarios, you can make use of SYN packets counters to understand how many TCP connection attempts are made. The metric reports the number of TCP SYN packets that were received.|
-| SNAT connections | Standard Load Balancer reports the number of outbound flows that are masqueraded to the Public IP address front-end. SNAT ports are an exhaustible resource. This metric can give an indication of how heavily your application is relying on SNAT for outbound originated flows.  Counters for successful and failed outbound SNAT flows are reported and can be used to troubleshoot and understand the health of your outbound flows.|
-| Byte counters | Standard Load Balancer reports the data processed per front-end.|
-| Packet counters | Standard Load Balancer reports the packets processed per front-end.|
+| VIP-elérhetőség | Standard Load Balancer folyamatosan gyakorolja az adatelérési utat a régión belülről a Load Balancer kezelőfelületre egészen az SDN-veremig, amely támogatja a virtuális gépet. Amíg a kifogástalan állapotú példányok megmaradnak, a mérés ugyanazt az útvonalat követi, mint az alkalmazás elosztott terhelésű forgalma. Az ügyfelek által használt adatelérési út is érvényesítve lesz. A mérték láthatatlan az alkalmazás számára, és nem zavarja a többi műveletet.|
+| DIP rendelkezésre állása | A standard Load Balancer egy elosztott állapot-ellenőrzési szolgáltatást használ, amely figyeli az alkalmazás-végpont állapotát a konfigurációs beállításoknak megfelelően. Ez a metrika összesített vagy végpontilag szűrt nézetet biztosít a Load Balancer készlet minden egyes példány-végpontja számára.  Láthatja, hogyan tekintheti meg Load Balancer az alkalmazás állapotát az állapot mintavételi konfigurációjának megfelelően.
+| SYN-csomagok | Standard Load Balancer nem szakítja meg a TCP-kapcsolatokat, vagy nem kommunikál a TCP-vagy UDP-csomagok forgalmával. A folyamatok és a kézfogások mindig a forrás és a virtuálisgép-példány között vannak. A TCP protokollal kapcsolatos forgatókönyvek jobb megoldásához használhatja az SYN-csomagok számlálóit, hogy megtudja, hány TCP-kapcsolati kísérletet hajt végre a rendszer. A metrika a fogadott TCP SYN-csomagok számát jelenti.|
+| SNAT-kapcsolatok | Standard Load Balancer a nyilvános IP-címhez tartozó kimenő folyamatok számát jelenti. A SNAT-portok kimeríthető erőforrások. Ez a metrika arra utalhat, hogy az alkalmazás milyen mértékben támaszkodik a SNAT a kimenő folyamatokból.  A sikeres és sikertelen kimenő SNAT folyamatokra vonatkozó számlálókat jelentettek, és felhasználhatók a kimenő folyamatok állapotának hibakeresésére és megismerésére.|
+| Bájtok számlálói | Standard Load Balancer az előtérben feldolgozott adatmennyiséget jelenti.|
+| Csomagok számlálói | Standard Load Balancer jelentést készít az előtér által feldolgozott csomagokról.|
 
-Review [detailed discussion of Standard Load Balancer Diagnostics](load-balancer-standard-diagnostics.md).
+Tekintse át [standard Load Balancer diagnosztika részletes megvitatását](load-balancer-standard-diagnostics.md).
 
-### <a name="haports"></a>HA Ports
+### <a name="haports"></a>HA portok
 
-Standard Load Balancer supports a new type of rule.  
+Standard Load Balancer támogatja az új típusú szabályt.  
 
-You can configure load-balancing rules to make your application scale and be highly reliable. When you use an HA Ports load-balancing rule, Standard Load Balancer will provide per flow load balancing on every ephemeral port of an internal Standard Load Balancer's frontend IP address.  The feature is useful for other scenarios where it is impractical or undesirable to specify individual ports.
+Konfigurálhatja a terheléselosztási szabályokat, hogy az alkalmazások méretezése és megbízhatósága megbízható legyen. Ha ha egy ha portok terheléselosztási szabályt használ, a standard Load Balancer a belső standard Load Balancer előtérbeli IP-címének minden ideiglenes portján adatfolyam-terheléselosztást fog biztosítani.  A szolgáltatás más esetekben hasznos, ha nem praktikus vagy nemkívánatos az egyes portok megadására.
 
-An HA Ports load-balancing rule allows you to create active-passive or active-active n+1 scenarios for Network Virtual Appliances and any application, which requires large ranges of inbound ports.  A health probe can be used to determine which backends should be receiving new flows.  You can use a Network Security Group to emulate a port range scenario.
+Egy HA portos terheléselosztási szabály lehetővé teszi, hogy aktív-passzív vagy aktív-aktív n + 1 forgatókönyvet hozzon létre a hálózati virtuális berendezésekhez és bármely olyan alkalmazáshoz, amelyhez nagy tartományú bejövő portok szükségesek.  Az állapot-mintavétel segítségével meghatározhatja, hogy mely háttérrendszer kapjon új folyamatokat.  A porttartomány-forgatókönyvek emulálása hálózati biztonsági csoporttal végezhető el.
 
 >[!IMPORTANT]
-> If you are planning to use a Network Virtual Appliance, check with your vendor for guidance on whether their product has been tested with HA Ports and follow their specific guidance for implementation. 
+> Ha hálózati virtuális berendezést szeretne használni, a gyártótól tájékozódhat arról, hogy a termékük a HA portokkal lett tesztelve, és követik a megvalósításra vonatkozó útmutatást. 
 
-Review [detailed discussion of HA Ports](load-balancer-ha-ports-overview.md).
+Tekintse át [a ha-portok részletes megvitatását](load-balancer-ha-ports-overview.md).
 
-### <a name="securebydefault"></a>Secure by default
+### <a name="securebydefault"></a>Alapértelmezés szerint biztonságos
 
-Standard Load Balancer is fully onboarded to the virtual network.  The virtual network is a private, closed network.  Because Standard Load Balancers and Standard public IP addresses are designed to allow this virtual network to be accessed from outside of the virtual network, these resources now default to closed unless you open them. This means Network Security Groups (NSGs) are now used to explicitly permit and whitelist allowed traffic.  You can create your entire virtual data center and decide through NSG what and when it should be available.  If you do not have an NSG on a subnet or NIC of your virtual machine resource, traffic is not allowed to reach this resource.
+Standard Load Balancer teljes mértékben bekerül a virtuális hálózatba.  A virtuális hálózat egy privát, zárt hálózat.  Mivel a standard Load Balancer és a standard nyilvános IP-címek úgy vannak kialakítva, hogy a virtuális hálózat a virtuális hálózaton kívülről is elérhető legyen, ezek az erőforrások mostantól alapértelmezés szerint le lesznek zárva, kivéve, ha megnyitja őket. Ez azt jelenti, hogy a hálózati biztonsági csoportok (NSG-EK) mostantól lehetővé teszik az engedélyezett forgalom explicit módon történő engedélyezését és engedélyezési módját.  Létrehozhatja a teljes virtuális adatközpontot, és eldöntheti, hogy milyen és mikor legyen elérhető a NSG.  Ha nem rendelkezik NSG a virtuális gép erőforrásának alhálózatán vagy hálózati ADAPTERén, a forgalom nem jogosult az erőforrás elérésére.
 
-To learn more about NSGs and how to apply them for your scenario, see [Network Security Groups](../virtual-network/security-overview.md).
+Ha többet szeretne megtudni a NSG és a forgatókönyvre való alkalmazásáról, tekintse meg a [hálózati biztonsági csoportok](../virtual-network/security-overview.md)című témakört.
 
-### <a name="outbound"></a> Outbound connections
+### <a name="outbound"></a>Kimenő kapcsolatok
 
-Load Balancer supports inbound and outbound scenarios.  Standard Load Balancer is significantly different than Basic Load Balancer with respect to outbound connections.
+Load Balancer támogatja a bejövő és kimenő forgatókönyveket.  Standard Load Balancer jelentősen eltér az alapszintű Load Balancer a kimenő kapcsolatokkal kapcsolatban.
 
-Source Network Address Translation (SNAT) is used to map internal, private IP addresses on your virtual network to public IP addresses on Load Balancer frontends.
+A forrás hálózati címfordítás (SNAT) a belső, magánhálózati IP-címek a virtuális hálózaton a nyilvános IP-címekre való leképezésére szolgál Load Balancer felületeken.
 
-Standard Load Balancer introduces a new algorithm for a [more robust, scalable, and predictable SNAT algorithm](load-balancer-outbound-connections.md#snat) and enables new abilities, removes ambiguity, and forces explicit configurations rather side effects. These changes are necessary to allow for new features to emerge. 
+A standard Load Balancer egy új algoritmust vezet be egy [robusztusabb, méretezhető és kiszámítható SNAT algoritmushoz](load-balancer-outbound-connections.md#snat) , és lehetővé teszi az új képességeket, eltávolítja a kétértelműség és az explicit konfigurációkat. Ezek a változtatások szükségesek ahhoz, hogy az új funkciók felmerülhetnek. 
 
-These are the key tenets to remember when working with Standard Load Balancer:
+Ezek a legfontosabb alapelvek a standard Load Balancer használatának megemlékezéséhez:
 
-- the completion of a rule drives the Load Balancer resource.  all programming of Azure derives from its configuration.
-- when multiple frontends are available, all frontends are used and each frontend multiplies the number of available SNAT ports
-- you can choose and control if you do not wish for a particular frontend to be used for outbound connections.
-- outbound scenarios are explicit and outbound connectivity does not exist until it has been specified.
-- load-balancing rules infer how SNAT is programmed. Load balancing rules are protocol specific. SNAT is protocol specific and configuration should reflect this rather than create a side effect.
+- a szabály befejezése a Load Balancer erőforrást vezeti.  Az Azure minden programozása a konfigurációtól származik.
+- Ha több előtér áll rendelkezésre, a rendszer az összes előtérbeli felületet felhasználja, és minden egyes előtér megszorozza az elérhető SNAT-portok számát
+- kiválaszthatja és szabályozhatja, hogy nem kíván-e használni egy adott előtér-felületet a kimenő kapcsolatokhoz.
+- a kimenő forgatókönyvek explicit módon vannak megadva, és a kimenő kapcsolatok addig nem léteznek, amíg meg nem adták.
+- a terheléselosztási szabályok azt a következtetést jelentik, hogy a SNAT hogyan van programozva. A terheléselosztási szabályok a protokoll-specifikusak. A SNAT a protokoll-specifikus, és a konfigurációnak tükröznie kell ezt ahelyett, hogy mellékhatást kellene létrehoznia.
 
 #### <a name="multiple-frontends"></a>Több előtérrendszer
-If you want more SNAT ports because you are expecting or are already experiencing a high demand for outbound connections, you can also add incremental SNAT port inventory by configuring additional frontends, rules, and backend pools to the same virtual machine resources.
+Ha további SNAT-portokra van szüksége, mert várt vagy már magas keresletet tapasztal a kimenő kapcsolatok esetében, növekményes SNAT is hozzáadhat, ha további előtér-, szabály-és háttér-készleteket is konfigurál ugyanahhoz a virtuális géphez. erőforrások.
 
-#### <a name="control-which-frontend-is-used-for-outbound"></a>Control which frontend is used for outbound
-If you want to constrain outbound connections to only originate from a specific frontend IP address, you can optionally disable outbound SNAT on the rule that expresses the outbound mapping.
+#### <a name="control-which-frontend-is-used-for-outbound"></a>A kimenő előtérbeli felület szabályozása
+Ha korlátozni szeretné a kimenő kapcsolatokat, hogy csak egy adott előtér-IP-címről származzanak, akkor letilthatja a kimenő SNAT a kimenő leképezést kifejező szabályon.
 
-#### <a name="control-outbound-connectivity"></a>Control outbound connectivity
-Standard Load Balancer exists within the context of the virtual network.  A virtual network is an isolated, private network.  Unless an association with a public IP address exists, public connectivity is not allowed.  You can reach [VNet Service Endpoints](../virtual-network/virtual-network-service-endpoints-overview.md) because they are inside of and local to your virtual network.  If you want to establish outbound connectivity to a destination outside of your virtual network, you have two options:
-- assign a Standard SKU public IP address as an Instance-Level Public IP address to the virtual machine resource or
-- place the virtual machine resource in the backend pool of a public Standard Load Balancer.
+#### <a name="control-outbound-connectivity"></a>Kimenő kapcsolat vezérlése
+Standard Load Balancer létezik a virtuális hálózat kontextusában.  A virtuális hálózat egy elkülönített, magánhálózati hálózat.  Ha nem létezik nyilvános IP-címmel rendelkező társítás, a nyilvános kapcsolat nem engedélyezett.  Elérheti a [VNet szolgáltatás-végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md) , mivel azok a virtuális hálózatban és a helyi hálózaton belül vannak.  Ha kimenő kapcsolatot szeretne létesíteni a virtuális hálózatán kívüli célhoz, két lehetőség közül választhat:
+- rendeljen hozzá egy standard SKU nyilvános IP-címet a virtuálisgép-erőforráshoz tartozó példány-szintű nyilvános IP-címnek
+- Helyezze a virtuális gép erőforrását egy nyilvános standard Load Balancer háttér-készletéből.
 
-Both will allow outbound connectivity from the virtual network to outside of the virtual network. 
+Mindkettő lehetővé teszi a virtuális hálózat kimenő kapcsolatát a virtuális hálózaton kívülre. 
 
-If you _only_ have an internal Standard Load Balancer associated with the backend pool in which your virtual machine resource is located, your virtual machine can only reach virtual network resources and [VNet Service Endpoints](../virtual-network/virtual-network-service-endpoints-overview.md).  You can follow the steps described in the preceding paragraph to create outbound connectivity.
+Ha _csak_ belső standard Load Balancer van társítva ahhoz a háttér-készlethez, amelyben a virtuális gép erőforrása található, a virtuális gép csak virtuális hálózati erőforrásokat és [VNet-végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md)érhet el.  A kimenő kapcsolatok létrehozásához kövesse az előző bekezdésben ismertetett lépéseket.
 
-Outbound connectivity of a virtual machine resource not associated with Standard SKUs remains as before.
+A standard SKU-hoz nem társított virtuálisgép-erőforrások kimenő kapcsolata korábban is megmarad.
 
-Review [detailed discussion of Outbound Connections](load-balancer-outbound-connections.md).
+Tekintse át [a kimenő kapcsolatok részletes megvitatását](load-balancer-outbound-connections.md).
 
-### <a name="multife"></a>Multiple frontends
-Load Balancer supports multiple rules with multiple frontends.  Standard Load Balancer expands this to outbound scenarios.  Outbound scenarios are essentially the inverse of an inbound load-balancing rule.  The inbound load-balancing rule also creates an associate for outbound connections. Standard Load Balancer uses all frontends associated with a virtual machine resource through a load-balancing rule.  Additionally, a parameter on the load-balancing rule and allows you to suppress a load-balancing rule for the purposes of outbound connectivity, which allows the selection of specific frontends including none.
+### <a name="multife"></a>Több frontend
+Load Balancer több előtérbeli felülettel rendelkező szabályt is támogat.  Standard Load Balancer kibontja ezt a kimenő forgatókönyvek számára.  A kimenő forgatókönyvek lényegében egy bejövő terheléselosztási szabály inverze.  A bejövő terheléselosztási szabály is létrehoz egy hozzárendelést a kimenő kapcsolatok számára. Standard Load Balancer a virtuálisgép-erőforrásokhoz társított összes előtérbeli felületet egy terheléselosztási szabályon keresztül használja.  Emellett a terheléselosztási szabály egyik paramétere, amely lehetővé teszi egy terheléselosztási szabály letiltását a kimenő kapcsolathoz, ami lehetővé teszi adott előtérbeli elemek kiválasztását, beleértve a none elemet is.
 
-For comparison, Basic Load Balancer selects a single frontend at random and there is no ability to control which one was selected.
+Az összehasonlításhoz az alapszintű Load Balancer véletlenszerűen választja ki az egyetlen előtérbeli felületet, és nincs lehetőség a kiválasztására.
 
-Review [detailed discussion of Outbound Connections](load-balancer-outbound-connections.md).
+Tekintse át [a kimenő kapcsolatok részletes megvitatását](load-balancer-outbound-connections.md).
 
-### <a name="operations"></a> Management Operations
+### <a name="operations"></a>Felügyeleti műveletek
 
-Standard Load Balancer resources exist on an entirely new infrastructure platform.  This enables faster management operations for Standard SKUs and completion times are typically less than 30 seconds per Standard SKU resource.  As backend pools increase in size, the duration required for backend pool changes also increase.
+Standard Load Balancer erőforrások egy teljesen új infrastruktúra-platformon találhatók.  Ez lehetővé teszi, hogy a standard SKU-ra és a befejezési időpontokra vonatkozó gyorsabb felügyeleti műveletek standard SKU-erőforrás esetén általában kevesebb, mint 30 másodperc.  Ahogy a háttérbeli készletek mérete megnövekszik, a háttérbeli készlet változásaihoz szükséges időtartam is növekszik.
 
-You can modify Standard Load Balancer resources and move a Standard public IP address from one virtual machine to another much faster.
+A standard Load Balancer erőforrásokat módosíthatja, és egy szabványos nyilvános IP-címet helyezhet át egy virtuális gépről egy másikra.
 
-## <a name="migration-between-skus"></a>Migration between SKUs
+## <a name="migration-between-skus"></a>Áttelepítési SKU között
 
-SKUs are not mutable. Follow the steps in this section to move from one resource SKU to another.
-
->[!IMPORTANT]
->Review this document in its entirety to understand the differences between SKUs and have carefully examined your scenario.  You may need to make additional changes to align your scenario.
-
-### <a name="migrate-from-basic-to-standard-sku"></a>Migrate from Basic to Standard SKU
-
-1. Create a new Standard resource (Load Balancer and Public IPs, as needed). Recreate your rules and probe definitions.  If you were using a TCP probe to 443/tcp previously, consider changing this probe protocol to an HTTPS probe and add a path.
-
-2. Create new or update existing NSG on NIC or subnet to whitelist load balanced traffic, probe, as well as any other traffic you wish to permit.
-
-3. Remove the Basic SKU resources (Load Balancer and Public IPs, as applicable) from all VM instances. Be sure to also remove all VM instances of an availability set.
-
-4. Attach all VM instances to the new Standard SKU resources.
-
-### <a name="migrate-from-standard-to-basic-sku"></a>Migrate from Standard to Basic SKU
-
-1. Create a new Basic resource (Load Balancer and Public IPs, as needed). Recreate your rules and probe definitions.  Change an HTTPS probe to a TCP probe to 443/tcp. 
-
-2. Remove the Standard SKU resources (Load Balancer and Public IPs, as applicable) from all VM instances. Be sure to also remove all VM instances of an availability set.
-
-3. Attach all VM instances to the new Basic SKU resources.
+Az SKU-ket nem változtathatók meg. Kövesse az ebben a szakaszban található lépéseket az egyik erőforrásból a másikra való áttéréshez.
 
 >[!IMPORTANT]
+>Tekintse át ezt a dokumentumot teljes egészében, hogy megértse az SKU-i különbségeket, és alaposan megvizsgálta a forgatókönyvet.  Előfordulhat, hogy további módosításokat kell végeznie a forgatókönyv igazításához.
+
+### <a name="migrate-from-basic-to-standard-sku"></a>Migrálás alapszintről standard SKU-ra
+
+1. Hozzon létre egy új szabványos erőforrást (szükség szerint Load Balancer és nyilvános IP-címek). Hozza létre újra a szabályokat és a mintavételi definíciókat.  Ha korábban TCP-mintavételt használt a 443-as vagy a TCP-porton, érdemes lehet módosítani a mintavételi protokollt egy HTTPS-mintavételre, és hozzá kell adnia egy elérési utat.
+
+2. Hozzon létre új vagy frissítsen meglévő NSG a hálózati adapteren vagy az alhálózaton, hogy lehetővé tegye a terheléses terheléselosztást, a mintavételt, valamint az engedélyezni kívánt egyéb forgalmat.
+
+3. Távolítsa el az alapszintű SKU-erőforrásokat (Load Balancer és a nyilvános IP-címeket) az összes VM-példányból. Ügyeljen arra, hogy egy rendelkezésre állási csoport összes virtuálisgép-példányát is eltávolítsa.
+
+4. Csatolja az összes VM-példányt az új szabványos SKU-erőforrásokhoz.
+
+### <a name="migrate-from-standard-to-basic-sku"></a>Migrálás a standard és az alapszintű SKU között
+
+1. Hozzon létre egy új alapszintű erőforrást (szükség szerint Load Balancer és nyilvános IP-címek). Hozza létre újra a szabályokat és a mintavételi definíciókat.  Módosítsa a HTTPS-mintavételt TCP-mintavételi értékre 443/TCP-re. 
+
+2. Távolítsa el a szabványos SKU-erőforrásokat (Load Balancer és a nyilvános IP-címeket) az összes virtuálisgép-példányból. Ügyeljen arra, hogy egy rendelkezésre állási csoport összes virtuálisgép-példányát is eltávolítsa.
+
+3. Csatolja az összes VM-példányt az új alapszintű SKU-erőforrásokhoz.
+
+>[!IMPORTANT]
 >
->There are limitations regarding use of the Basic and Standard SKUs.
+>Az alapszintű és a standard SKU-ra vonatkozó korlátozások vannak érvényben.
 >
->HA Ports and Diagnostics of the Standard SKU are only available in the Standard SKU. You can't migrate from the Standard SKU to the Basic SKU and also retain these features.
+>HA a standard SKU ports és Diagnostics szolgáltatás csak a standard SKU-ban érhető el. A standard SKU-ból nem lehet áttelepíteni az alapszintű SKU-ra, és meg is őrzi ezeket a funkciókat.
 >
->Both Basic and Standard SKU have a number of differences as outlined in this article.  Make sure you understand and prepare for them.
+>Az alapszintű és a standard SKU számos eltérést tartalmaz a jelen cikkben ismertetett módon.  Győződjön meg róla, hogy megértette és felkészítse őket.
 >
->Matching SKUs must be used for Load Balancer and Public IP resources. You can't have a mixture of Basic SKU resources and Standard SKU resources. Nem csatolhat mindkét SKU-hoz egyszerre önálló virtuális gépeket, rendelkezésre állási csoportban lévő virtuális gépeket vagy virtuálisgép-méretezési csoport típusú erőforrásokat.
+>Az egyező SKU-ket Load Balancer és nyilvános IP-erőforrásokhoz kell használni. Az alapszintű SKU-erőforrások és a szabványos SKU-erőforrások keveréke nem lehetséges. Nem csatolhat mindkét SKU-hoz egyszerre önálló virtuális gépeket, rendelkezésre állási csoportban lévő virtuális gépeket vagy virtuálisgép-méretezési csoport típusú erőforrásokat.
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Standard Load Balancer is currently available in all public cloud regions.
+A standard Load Balancer jelenleg minden nyilvános Felhőbeli régióban elérhető.
 
-## <a name="sla"></a>Szolgáltatási szerződés
+## <a name="sla"></a>SLA
 
-Standard Load Balancers are available with a 99.99% SLA.  Review the [Standard Load Balancer SLA](https://aka.ms/lbsla) for details.
+A standard Load Balancer 99,99%-os SLA-val érhető el.  A részletekért tekintse át a [standard Load BALANCER SLA](https://aka.ms/lbsla) -t.
 
 ## <a name="pricing"></a>Díjszabás
 
-Standard Load Balancer usage is charged.
+Standard Load Balancer használat díjat számítunk fel.
 
-- Number of configured load-balancing and outbound rules (inbound NAT rules do not count against the total number of rules)
-- Amount of data processed inbound and outbound irrespective of rule. 
+- Konfigurált terheléselosztási és kimenő szabályok száma (a bejövő NAT-szabályok nem számítanak bele a szabályok teljes számára)
+- A bejövő és kimenő adatmennyiség, a szabálytól függetlenül. 
 
 A Standard Load Balancer díjszabásáról a [Load Balancer díjszabását](https://azure.microsoft.com/pricing/details/load-balancer/) ismertető oldalon talál további információt.
 
 ## <a name="limitations"></a>Korlátozások
 
-- SKUs are not mutable. You may not change the SKU of an existing resource.
-- A standalone virtual machine resource, availability set resource, or virtual machine scale set resource can reference one SKU, never both.
-- A Load Balancer rule cannot span two virtual networks.  Frontends and their related backend instances must be located in the same virtual network.  
-- [Move subscription operations](../azure-resource-manager/resource-group-move-resources.md) are not supported for Standard SKU LB and PIP resources.
-- Web Worker Roles without a VNet and other Microsoft platform services can be accessible when only an internal Standard Load Balancer is used due to a side effect from how pre-VNet services and other platform services function. You must not rely on this as the respective service itself or the underlying platform can change without notice. You must always assume you need to create [outbound connectivity](load-balancer-outbound-connections.md) explicitly if desired when using an internal Standard Load Balancer only.
-- A Load Balancer egy TCP- és UDP-termék az adott IP-protokollok terheléselosztásához és porttovábbításához.  A TCP és az UDP támogatja a terheléselosztási szabályokat és a bejövő NAT-szabályokat, de egyéb IP-protokollok (mint például az ICMP) nem támogatják őket. A Load Balancer nem szakít meg folyamatokat, nem válaszol rájuk, és semmilyen egyéb módon nem lép kapcsolatba egy UDP- vagy TCP-folyamat adatcsomagjával. Nem egy proxy. Successful validation of connectivity to a front-end must take place in-band with the same protocol used in a load balancing or inbound NAT rule (TCP or UDP) _and_ at least one of your virtual machines must generate a response for a client to see a response from a front-end.  Not receiving an in-band response from the Load Balancer front-end indicates no virtual machines were able to respond.  It is not possible to interact with a Load Balancer front-end without a virtual machine able to respond.  Ez vonatkozik a kimenő kapcsolatokra is, ahol a [porthelyettesítő SNAT](load-balancer-outbound-connections.md#snat) csak a TCP-hez és UDP-hez támogatott – bármely más IP-protokoll, többek között az ICMP is sikertelen lesz.  A mérsékléshez rendeljen hozzá egy példányszintű nyilvános IP-címet.
-- Unlike public Load Balancers which provide [outbound connections](load-balancer-outbound-connections.md) when transitioning from private IP addresses inside the virtual network to public IP addresses, internal Load Balancers do not translate outbound originated connections to the front-end of an internal Load Balancer as both are in private IP address space.  This avoids potential for SNAT exhaustion inside unique internal IP address space where translation is not required.  The side effect is that if an outbound flow from a VM in the back-end pool attempts a flow to front-end of the internal Load Balancer in which pool it resides _and_ is mapped back to itself, both legs of the flow don't match and the flow will fail.  If the flow did not map back to the same VM in the back-end pool which created the flow to the front-end, the flow will succeed.   When the flow maps back to itself the outbound flow appears to originate from the VM to the front-end and the corresponding inbound flow appears to originate from the VM to itself. A vendég operációs rendszer szempontjából ugyanazon folyamat bejövő és kimenő részei nem egyeznek a virtuális gépen belül. A TCP-verem nem fogja ugyanazon folyam részeiként felismerni a folyamat két felét, mivel a forrás és a cél nem egyezik.  When the flow maps to any other VM in the back-end pool, the halves of the flow will match and the VM can successfully respond to the flow.  The symptom for this scenario is intermittent connection timeouts. There are several common workarounds for reliably achieving this scenario (originating flows from a back-end pool to the back-end pools respective internal Load Balancer front-end) which include either insertion of a third-party proxy behind the internal Load Balancer or [using DSR style rules](load-balancer-multivip-overview.md).  Habár a mérsékléshez használható nyilvános Load Balancer, a létrejövő forgatókönyvnél valószínű lesz az [SNAT elfogyása](load-balancer-outbound-connections.md#snat), és ez körültekintő felügyelet nélkül inkább kerülendő.
+- Az SKU-ket nem változtathatók meg. A meglévő erőforrások SKU-jának módosítása nem lehetséges.
+- Egy önálló virtuálisgép-erőforrás, rendelkezésre állási készlet erőforrás vagy virtuálisgép-méretezési csoport erőforrása hivatkozhat egyetlen SKU-ra, soha nem mindkettőre.
+- Egy Load Balancer szabály nem terjedhet ki két virtuális hálózatra.  A frontendeknek és a hozzájuk kapcsolódó háttérbeli példányoknak ugyanabban a virtuális hálózatban kell lenniük.  
+- Az [előfizetési műveletek](../azure-resource-manager/resource-group-move-resources.md) nem támogatottak a standard SKU LB és a pip-erőforrások esetében.
+- A VNet és más Microsoft-platformokat nem tartalmazó webes feldolgozói szerepkörök csak akkor érhetők el, ha csak belső standard Load Balancer van használatban, mivel a VNet szolgáltatások és egyéb platform-szolgáltatások funkciójának mellékhatása. Ezt nem kell felhasználnia, mert a saját maga vagy a mögöttes platform értesítés nélkül változhat. Mindig feltételezni kell, hogy a [kimenő kapcsolatot](load-balancer-outbound-connections.md) explicit módon kell létrehoznia, ha csak belső standard Load Balancer használata esetén szükséges.
+- A Load Balancer egy TCP- és UDP-termék az adott IP-protokollok terheléselosztásához és porttovábbításához.  A TCP és az UDP támogatja a terheléselosztási szabályokat és a bejövő NAT-szabályokat, de egyéb IP-protokollok (mint például az ICMP) nem támogatják őket. A Load Balancer nem szakít meg folyamatokat, nem válaszol rájuk, és semmilyen egyéb módon nem lép kapcsolatba egy UDP- vagy TCP-folyamat adatcsomagjával. Nem egy proxy. Az előtérhöz való csatlakozás sikeres ellenőrzéséhez a terheléselosztásban vagy a bejövő NAT-szabályban (TCP vagy UDP) használt protokollnak kell futnia, _és_ legalább az egyik virtuális gépnek választ kell adnia az ügyfél számára, hogy megtekintse az előtértől kapott választ.  Nem érkezett sávon kívüli válasz a Load Balancer előtérből azt jelzi, hogy egyetlen virtuális gép sem tudott válaszolni.  Nem lehet kommunikálni Load Balancer előtérrel anélkül, hogy a virtuális gép válaszolni tudjon.  Ez vonatkozik a kimenő kapcsolatokra is, ahol a [porthelyettesítő SNAT](load-balancer-outbound-connections.md#snat) csak a TCP-hez és UDP-hez támogatott – bármely más IP-protokoll, többek között az ICMP is sikertelen lesz.  A mérsékléshez rendeljen hozzá egy példányszintű nyilvános IP-címet.
+- A belső terheléselosztási szolgáltatásokkal ellentétben, amelyek [kimenő kapcsolatokat](load-balancer-outbound-connections.md) biztosítanak a virtuális hálózaton belüli magánhálózati IP-címekről a nyilvános IP-címekre való áttéréskor, a belső terheléselosztó nem fordítja le a kimenő kapcsolatot a belső Load Balancer előtér-hálózatával, mivel mindkettő a magánhálózati IP-címtartomány részét képezi.  Ezzel elkerülhető, hogy a SNAT kimerülése az egyedi belső IP-címtartomány belsejében történjen, ahol a fordítás nem szükséges.  Ennek mellékhatása az, hogy ha a háttér-készletben lévő virtuális gépről érkező kimenő forgalom egy olyan belső Load Balancer előtér-végpontját kísérli meg, amelyben a készlet található, _és_ az önmagához van rendelve, a folyamat mindkét lába nem egyezik, és a folyamat sikertelen lesz.  Ha a folyamat nem adott vissza ugyanarra a virtuális gépre a háttér-készletben, amely létrehozta az előtér-folyamatot, a folyamat sikeres lesz.   Ha a folyamat magához a rendszerhez kapcsolódik, a kimenő folyamat úgy tűnik, hogy a virtuális gépről a kezelőfelületről származik, és úgy tűnik, hogy a megfelelő bejövő folyamat a virtuális gépről származik. A vendég operációs rendszer szempontjából ugyanazon folyamat bejövő és kimenő részei nem egyeznek a virtuális gépen belül. A TCP-verem nem fogja ugyanazon folyam részeiként felismerni a folyamat két felét, mivel a forrás és a cél nem egyezik.  Ha a folyamat a háttérbeli készlet bármely más virtuális gépe felé mutat, a folyamat felei megegyeznek, és a virtuális gép sikeresen tud válaszolni a folyamatra.  A forgatókönyv tünete átmeneti kapcsolati időtúllépés. A forgatókönyv megbízható megvalósításának számos gyakori megkerülő megoldása van (a háttér-készletből a háttér-készletekből származó, a belső Load Balancer előtér-környezetből származó folyamatokat), amelyek a belső Load Balancer vagy a [DSR-stílus szabályainak használatával](load-balancer-multivip-overview.md)vagy egy külső gyártótól származó proxy beszúrását is magukban foglalják.  Habár a mérsékléshez használható nyilvános Load Balancer, a létrejövő forgatókönyvnél valószínű lesz az [SNAT elfogyása](load-balancer-outbound-connections.md#snat), és ez körültekintő felügyelet nélkül inkább kerülendő.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn about using [Standard Load Balancer and Availability Zones](load-balancer-standard-availability-zones.md).
-- Learn about [Health Probes](load-balancer-custom-probe-overview.md).
-- Learn more about [Availability Zones](../availability-zones/az-overview.md).
-- Learn about [Standard Load Balancer Diagnostics](load-balancer-standard-diagnostics.md).
-- Learn about [supported multi-dimensional metrics](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) for diagnostics  in [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
-- Learn about using [Load Balancer for outbound connections](load-balancer-outbound-connections.md).
-- Learn about [Outbound Rules](load-balancer-outbound-rules-overview.md).
-- Learn about [TCP Reset on Idle](load-balancer-tcp-reset.md).
-- Learn about [Standard Load Balancer with HA Ports load balancing rules](load-balancer-ha-ports-overview.md).
-- Learn about using [Load Balancer with Multiple Frontends](load-balancer-multivip-overview.md).
-- Learn about [Virtual Networks](../virtual-network/virtual-networks-overview.md).
-- Learn more about [Network Security Groups](../virtual-network/security-overview.md).
-- Learn about [VNet Service Endpoints](../virtual-network/virtual-network-service-endpoints-overview.md).
-- Learn about some of the other key [networking capabilities](../networking/networking-overview.md) in Azure.
-- Learn more about [Load Balancer](load-balancer-overview.md).
+- Tudnivalók a [standard Load Balancer és a Availability Zones](load-balancer-standard-availability-zones.md)használatáról.
+- Tudnivalók az [állapot](load-balancer-custom-probe-overview.md)-mintavételekről.
+- További információ a [Availability Zonesról](../availability-zones/az-overview.md).
+- Ismerje meg a [standard Load Balancer diagnosztikát](load-balancer-standard-diagnostics.md).
+- Ismerje meg a [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md) [-diagnosztika támogatott többdimenziós mérőszámait](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) .
+- Tudnivalók a [Kimenő kapcsolatok Load Balancer](load-balancer-outbound-connections.md)használatáról.
+- További információ a [kimenő szabályokról](load-balancer-outbound-rules-overview.md).
+- További információ [a TCP alaphelyzetbe állításáról üresjáratban](load-balancer-tcp-reset.md).
+- További tudnivalók a HA-portok terheléselosztási [szabályaival standard Load Balancer](load-balancer-ha-ports-overview.md).
+- Ismerje meg, hogyan használhatja [a Load Balancert több előtér-felülettel](load-balancer-multivip-overview.md).
+- További információ a [virtuális hálózatokról](../virtual-network/virtual-networks-overview.md).
+- További információ a [hálózati biztonsági csoportokról](../virtual-network/security-overview.md).
+- További információ a [VNet szolgáltatási végpontokról](../virtual-network/virtual-network-service-endpoints-overview.md).
+- Ismerje meg az Azure egyéb fontos [hálózati funkcióit](../networking/networking-overview.md) .
+- További információ a [Load Balancerról](load-balancer-overview.md).

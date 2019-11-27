@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Create registry - Powershell
-description: Quickly learn to create a private Docker registry in Azure Container Registry with PowerShell
+title: Rövid útmutató – beállításjegyzék létrehozása – PowerShell
+description: Gyorsan megtudhatja, hogyan hozhat létre egy privát Docker-beállításjegyzéket Azure Container Registry a PowerShell használatával
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
@@ -11,23 +11,23 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456371"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Quickstart: Create a private container registry using Azure PowerShell
+# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Rövid útmutató: privát tároló-beállításjegyzék létrehozása Azure PowerShell használatával
 
-Az Azure Container Registry egy felügyelt, privát Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a Docker-tárolók rendszerképeinek létrehozására, tárolására és kiszolgálására szolgál. Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Azure-tárolóregisztrációs adatbázist a PowerShell használatával. Then, use Docker commands to push a container image into the registry, and finally pull and run the image from your registry.
+Az Azure Container Registry egy felügyelt, privát Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a Docker-tárolók rendszerképeinek létrehozására, tárolására és kiszolgálására szolgál. Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Azure-tárolóregisztrációs adatbázist a PowerShell használatával. Ezután a Docker-parancsokkal leküldheti a tárolók rendszerképét a beállításjegyzékbe, és végül lekérdezheti és futtathatja a rendszerképet a beállításjegyzékből.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-This quickstart requires Azure PowerShell module. Futtassa a `Get-Module -ListAvailable Az` parancsot a telepített verzió meghatározásához. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
+Ehhez a rövid útmutatóhoz Azure PowerShell modul szükséges. Futtassa a `Get-Module -ListAvailable Az` parancsot a telepített verzió meghatározásához. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
 
-A Dockert is telepítenie kell helyileg. Docker provides packages for [macOS][docker-mac], [Windows][docker-windows], and [Linux][docker-linux] systems.
+A Dockert is telepítenie kell helyileg. A Docker csomagokat biztosít a [MacOS][docker-mac], a [Windows][docker-windows]és a [Linux][docker-linux] rendszerekhez.
 
 Mivel az Azure Cloud Shell nem tartalmazza az összes szükséges Docker-összetevőt (a `dockerd`-démont), ehhez a rövid útmutatóhoz nem használható a Cloud Shell.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Sign in to your Azure subscription with the [Connect-AzAccount][Connect-AzAccount] command, and follow the on-screen directions.
+Jelentkezzen be az Azure-előfizetésbe a [AzAccount][Connect-AzAccount] paranccsal, és kövesse a képernyőn megjelenő utasításokat.
 
 ```powershell
 Connect-AzAccount
@@ -35,7 +35,7 @@ Connect-AzAccount
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Once you're authenticated with Azure, create a resource group with [New-AzResourceGroup][New-AzResourceGroup]. Az erőforráscsoport egy olyan logikai tároló, amelyben üzembe helyezheti és kezelheti az Azure-erőforrásokat.
+Miután hitelesítette az Azure-t, hozzon létre egy erőforráscsoportot a [New-AzResourceGroup][New-AzResourceGroup]. Az erőforráscsoport egy olyan logikai tároló, amelyben üzembe helyezheti és kezelheti az Azure-erőforrásokat.
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -43,7 +43,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
 
-Next, create a container registry in your new resource group with the [New-AzContainerRegistry][New-AzContainerRegistry] command.
+Ezután hozzon létre egy tároló-beállításjegyzéket az új erőforráscsoporthoz a [New-AzContainerRegistry][New-AzContainerRegistry] paranccsal.
 
 A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az alábbi példában egy „myContainerRegistry007” nevű adatbázis jön létre. Írja be a *myContainerRegistry007* kifejezést az alábbi parancsba, majd futtassa azt az adatbázis létrehozásához:
 
@@ -51,17 +51,17 @@ A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-In this quickstart you create a *Basic* registry, which is a cost-optimized option for developers learning about Azure Container Registry. For details on available service tiers, see [Container registry SKUs][container-registry-skus].
+Ebben a rövid útmutatóban egy *alapszintű* beállításjegyzéket hozunk létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. A rendelkezésre álló szolgáltatási szintek részletes ismertetését lásd: [Container Registry SKU][container-registry-skus]-i.
 
 ## <a name="log-in-to-registry"></a>Bejelentkezés a beállításjegyzékbe
 
-A tárolórendszerképek mozgatásához először be kell jelentkeznie a beállításjegyzékbe. In production scenarios you should use an individual identity or service principal for container registry access, but to keep this quickstart brief, enable the admin user on your registry with the [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] command:
+A tárolórendszerképek mozgatásához először be kell jelentkeznie a beállításjegyzékbe. Éles környezetekben érdemes egyéni identitást vagy egyszerű szolgáltatásnevet használni a tároló beállításjegyzékének eléréséhez, de a rövid útmutató elvégzéséhez engedélyezze a rendszergazdai felhasználót a beállításjegyzékben a [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] paranccsal:
 
 ```powershell
 $creds = Get-AzContainerRegistryCredential -Registry $registry
 ```
 
-Next, run [docker login][docker-login] to log in:
+Ezután futtassa a [Docker-bejelentkezést][docker-login] a bejelentkezéshez:
 
 ```powershell
 $creds.Password | docker login $registry.LoginServer -u $creds.Username --password-stdin
@@ -75,7 +75,7 @@ A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Once you're done working with the resources you created in this quickstart, use the [Remove-AzResourceGroup][Remove-AzResourceGroup] command to remove the resource group, the container registry, and the container images stored there:
+Ha elkészült az ebben a rövid útmutatóban létrehozott erőforrásokkal, a [Remove-AzResourceGroup][Remove-AzResourceGroup] paranccsal távolítsa el az erőforráscsoportot, a tároló-beállításjegyzéket és az ott tárolt tároló-lemezképeket:
 
 ```powershell
 Remove-AzResourceGroup -Name myResourceGroup
@@ -83,10 +83,10 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this quickstart, you created an Azure Container Registry with Azure PowerShell, pushed a container image, and pulled and ran the image from the registry. Continue to the Azure Container Registry tutorials for a deeper look at ACR.
+Ebben a rövid útmutatóban létrehozott egy Azure Container Registryt Azure PowerShell, leküldte a tároló képét, és lehúzta és futtatta a rendszerképet a beállításjegyzékből. Folytassa a Azure Container Registry oktatóanyagokkal, és tekintse meg az ACR mélyebb megjelenését.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry tutorials][container-registry-tutorial-quick-task]
+> [Oktatóanyagok Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

@@ -1,6 +1,6 @@
 ---
-title: Work with proxies in Azure Functions
-description: Overview of how to use Azure Functions Proxies
+title: Proxyk használata Azure Functions
+description: Az Azure Functions-proxyk használata áttekintése
 author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
@@ -12,110 +12,110 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230457"
 ---
-# <a name="work-with-azure-functions-proxies"></a>Work with Azure Functions Proxies
+# <a name="work-with-azure-functions-proxies"></a>Az Azure Functions-proxyk használata
 
-This article explains how to configure and work with Azure Functions Proxies. With this feature, you can specify endpoints on your function app that are implemented by another resource. You can use these proxies to break a large API into multiple function apps (as in a microservice architecture), while still presenting a single API surface for clients.
+Ez a cikk bemutatja, hogyan konfigurálhat és az Azure Functions-proxyk használata. Ezzel a funkcióval a függvényalkalmazás, egy másik erőforrás által végrehajtott végpontokat adhat meg. Ilyen proxyk segítségével egy nagy méretű API felosztása több függvényalkalmazás (ahogy a mikroszolgáltatási architektúra) esetében, miközben továbbra is egyetlen API-felületet ügyfelek számára.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE] 
-> Standard Functions billing applies to proxy executions. For more information, see [Azure Functions pricing](https://azure.microsoft.com/pricing/details/functions/).
+> Standard funkciók számlázási proxy végrehajtások vonatkozik. További információ: [Azure functions díjszabása](https://azure.microsoft.com/pricing/details/functions/).
 
-## <a name="create"></a>Create a proxy
+## <a name="create"></a>Proxy létrehozása
 
-This section shows you how to create a proxy in the Functions portal.
+Ez a szakasz bemutatja, hogyan hozhat létre egy proxyt a Functions portálján.
 
-1. Open the [Azure Portalra], and then go to your function app.
-2. In the left pane, select **New proxy**.
-3. Provide a name for your proxy.
-4. Configure the endpoint that's exposed on this function app by specifying the **route template** and **HTTP methods**. These parameters behave according to the rules for [HTTP triggers].
-5. Set the **backend URL** to another endpoint. This endpoint could be a function in another function app, or it could be any other API. The value does not need to be static, and it can reference [application settings] and [parameters from the original client request].
-6. Kattintson a  **Create** (Létrehozás) gombra.
+1. Nyissa meg a [Azure Portal], majd nyissa meg a Function alkalmazást.
+2. A bal oldali panelen válassza az **új proxy**lehetőséget.
+3. Adja meg a proxykiszolgáló nevét.
+4. Konfigurálja a függvény alkalmazásban elérhető végpontot az **útválasztási sablon** és a **http-metódusok**megadásával. Ezek a paraméterek a [http-eseményindítók]szabályainak megfelelően viselkednek.
+5. Állítsa be a **háttérbeli URL-címet** egy másik végpontra. Ezt a végpontot egy másik függvényalkalmazás egy függvényt, vagy lehet, hogy bármely más API-t. Az értéknek nem kell statikusnak lennie, és az [Alkalmazásbeállítások] és [paramétereit is hivatkozhat az eredeti ügyfél-kérelemből].
+6. Kattintson a **Létrehozás** gombra.
 
-Your proxy now exists as a new endpoint on your function app. From a client perspective, it is equivalent to an HttpTrigger in Azure Functions. You can try out your new proxy by copying the Proxy URL and testing it with your favorite HTTP client.
+A proxy már létezik a függvényalkalmazás az új végpont. Az ügyfél szempontjából legyen az Azure Functions-HttpTrigger egyenértékű. Az új proxykiszolgáló kipróbálhatja a proxykiszolgáló URL-cím másolása és tesztelésére is a kedvenc HTTP-ügyféllel.
 
-## <a name="modify-requests-responses"></a>Modify requests and responses
+## <a name="modify-requests-responses"></a>Kérelmek és válaszok módosítása
 
-With Azure Functions Proxies, you can modify requests to and responses from the back-end. These transformations can use variables as defined in [Use variables].
+Az Azure Functions-proxyk módosíthatja a kérelmek és válaszok a háttérrendszerből. Ezek az átalakítások használhatnak változókat a [Változók használata]definiált módon.
 
-### <a name="modify-backend-request"></a>Modify the back-end request
+### <a name="modify-backend-request"></a>A háttérbeli kérelem módosítása
 
-By default, the back-end request is initialized as a copy of the original request. In addition to setting the back-end URL, you can make changes to the HTTP method, headers, and query string parameters. The modified values can reference [application settings] and [parameters from the original client request].
+Alapértelmezés szerint a háttér-kérelem egy másolatát az eredeti kérelem inicializálása. Amellett, hogy a háttér-URL-cím beállítása, a HTTP módszert, fejlécek és lekérdezési karakterlánc paraméterei módosításokat végezheti el. A módosított értékek hivatkozhatnak az [Alkalmazásbeállítások] és [paramétereit is hivatkozhat az eredeti ügyfél-kérelemből].
 
-Back-end requests can be modified in the portal by expanding the *request override* section of the proxy detail page. 
+A háttérbeli kérelmek a proxy részleteit tartalmazó lap *kérelmek felülbírálásának* kibontásával módosíthatók a portálon. 
 
-### <a name="modify-response"></a>Modify the response
+### <a name="modify-response"></a>Válasz módosítása
 
-By default, the client response is initialized as a copy of the back-end response. You can make changes to the response's status code, reason phrase, headers, and body. The modified values can reference [application settings], [parameters from the original client request], and [parameters from the back-end response].
+Alapértelmezés szerint az ügyfél válaszára inicializálva van a háttér-válasz egy másolatát. A válasz állapotkódja, indoklás, fejlécek és törzs módosításokat végezheti el. A módosított értékek hivatkozhatnak az [Alkalmazásbeállítások], [paramétereit is hivatkozhat az eredeti ügyfél-kérelemből], valamint [a háttérbeli válasz paramétereit].
 
-Back-end requests can be modified in the portal by expanding the *response override* section of the proxy detail page. 
+A háttérbeli kérelmek a proxy részleteit tartalmazó lap *Válasz felülbírálásának* kibontásával módosíthatók a portálon. 
 
-## <a name="using-variables"></a>Use variables
+## <a name="using-variables"></a>Változók használata
 
-The configuration for a proxy does not need to be static. You can condition it to use variables from the original client request, the back-end response, or application settings.
+A proxy konfigurációját nem kell lehet statikus. Feltétel, hogy az ügyfél eredeti kérést, a háttér-válasz vagy alkalmazásbeállítások változókat használja.
 
-### <a name="reference-localhost"></a>Reference local functions
-You can use `localhost` to reference a function inside the same function app directly, without a roundtrip proxy request.
+### <a name="reference-localhost"></a>Hivatkozás helyi függvények
+A `localhost` használatával közvetlenül is hivatkozhat egy függvényre az egyazon függvény alkalmazásban, kétirányú proxy kérés nélkül.
 
-`"backendurl": "https://localhost/api/httptriggerC#1"` will reference a local HTTP triggered function at the route `/api/httptriggerC#1`
+`"backendurl": "https://localhost/api/httptriggerC#1"` az útvonalon helyi HTTP által aktivált függvényre hivatkozik `/api/httptriggerC#1`
 
  
 >[!Note]  
->If your function uses *function, admin or sys* authorization levels, you will need to provide the code and clientId, as per the original function URL. In this case the reference would look like: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` We recommend storing these keys in [application settings] and referencing those in your proxies. This avoids storing secrets in your source code. 
+>Ha a függvény *függvény-, rendszergazdai vagy sys* -engedélyezési szinteket használ, meg kell adnia a kódot és a clientId az eredeti függvény URL-címének megfelelően. Ebben az esetben a hivatkozás a következőhöz hasonló lesz: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` javasoljuk, hogy ezeket a kulcsokat az [Alkalmazásbeállítások] között tárolja, és hivatkozni lehessen rájuk a proxyn. Ezzel elkerülhető a forráskódban tárolt titkos kódok tárolása. 
 
-### <a name="request-parameters"></a>Reference request parameters
+### <a name="request-parameters"></a>Hivatkozási kérelem paraméterei
 
-You can use request parameters as inputs to the back-end URL property or as part of modifying requests and responses. Some parameters can be bound from the route template that's specified in the base proxy configuration, and others can come from properties of the incoming request.
+Használhatja a kérelem paramétereit, a háttér-URL-cím tulajdonsága bemeneteként vagy módosítja a kérelmek és válaszok részeként. Néhány paraméter van megadva a kiindulási proxykonfigurációt útvonal sablon is köthetők, és mások származhatnak a bejövő kérelem tulajdonságai.
 
-#### <a name="route-template-parameters"></a>Route template parameters
-Parameters that are used in the route template are available to be referenced by name. The parameter names are enclosed in braces ({}).
+#### <a name="route-template-parameters"></a>Útválasztási sablon paraméterei
+Az útvonal-sablonban használt paraméterek név szerint lehet hivatkozni a érhetők el. A paraméterek neve kapcsos zárójelbe ({}) van csatolva.
 
-For example, if a proxy has a route template, such as `/pets/{petId}`, the back-end URL can include the value of `{petId}`, as in `https://<AnotherApp>.azurewebsites.net/api/pets/{petId}`. If the route template terminates in a wildcard, such as `/api/{*restOfPath}`, the value `{restOfPath}` is a string representation of the remaining path segments from the incoming request.
+Ha például egy proxy útválasztási sablonnal (például `/pets/{petId}`) rendelkezik, a háttér URL-cím a `{petId}`értékét is tartalmazza, ahogy az `https://<AnotherApp>.azurewebsites.net/api/pets/{petId}`. Ha az útválasztási sablon egy helyettesítő karakterrel végződik (például `/api/{*restOfPath}`), akkor az érték `{restOfPath}` a bejövő kérelemben szereplő hátralévő elérésiút-szegmens karakterlánc-ábrázolása.
 
-#### <a name="additional-request-parameters"></a>Additional request parameters
-In addition to the route template parameters, the following values can be used in config values:
+#### <a name="additional-request-parameters"></a>További kérés paraméterei
+Az útvonal Sablonparaméterek mellett a következő értékeket is használható konfigurációs értékek:
 
-* **{request.method}** : The HTTP method that's used on the original request.
-* **{request.headers.\<HeaderName\>}** : A header that can be read from the original request. Replace *\<HeaderName\>* with the name of the header that you want to read. If the header is not included on the request, the value will be the empty string.
-* **{request.querystring.\<ParameterName\>}** : A query string parameter that can be read from the original request. Replace *\<ParameterName\>* with the name of the parameter that you want to read. If the parameter is not included on the request, the value will be the empty string.
+* **{Request. Method}** : az eredeti kérelemben használt http-metódus.
+* **{Request. headers.\<HeaderName\>}** : az eredeti kérelemből olvasható fejléc. Cserélje le *\<HeaderName\>* az olvasni kívánt fejléc nevére. Ha a kérelem nem tartalmazza a fejléc, az érték nem üres karakterlánc.
+* **{Request. querystring.\<ParameterName\>}** : egy lekérdezési karakterlánc paraméter, amely az eredeti kérelemből olvasható. Cserélje le *\<ParameterName\>* az olvasni kívánt paraméter nevére. A kérelem nem tartalmazza a paramétert, ha az érték lesz az üres karakterlánc.
 
-### <a name="response-parameters"></a>Reference back-end response parameters
+### <a name="response-parameters"></a>Hivatkozás háttér-válasz paraméterei
 
-Response parameters can be used as part of modifying the response to the client. The following values can be used in config values:
+Válasz paraméterek módosítása a válasz az ügyfélhez részeként is használható. A következő értékeket a konfigurációs értékek használhatók:
 
-* **{backend.response.statusCode}** : The HTTP status code that's returned on the back-end response.
-* **{backend.response.statusReason}** : The HTTP reason phrase that's returned on the back-end response.
-* **{backend.response.headers.\<HeaderName\>}** : A header that can be read from the back-end response. Replace *\<HeaderName\>* with the name of the header you want to read. If the header is not included on the response, the value will be the empty string.
+* **{backend. Response. statusCode}** : a háttér-válaszon VISSZAadott http-állapotkód.
+* **{backend. Response. statusReason}** : a háttér-válaszon VISSZAadott http-ok kifejezése.
+* **{backend. Response. headers.\<HeaderName\>}** : a háttér-válaszból olvasható fejléc. Cserélje le *\<HeaderName\>* az olvasni kívánt fejléc nevére. Ha a válasz nem tartalmazza a fejléc, az érték nem üres karakterlánc.
 
-### <a name="use-appsettings"></a>Reference application settings
+### <a name="use-appsettings"></a>Hivatkozási alkalmazás beállításai
 
-You can also reference [application settings defined for the function app](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) by surrounding the setting name with percent signs (%).
+A Function alkalmazáshoz [definiált Alkalmazásbeállítások](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) is hivatkozhatók, ha a beállítási nevet a százalék jelek (%) értékre helyezi.
 
-For example, a back-end URL of *https://%ORDER_PROCESSING_HOST%/api/orders* would have "%ORDER_PROCESSING_HOST%" replaced with the value of the ORDER_PROCESSING_HOST setting.
+Az *https://%ORDER_PROCESSING_HOST%/api/orders* háttérbeli URL-címe például "% ORDER_PROCESSING_HOST%" lesz, a ORDER_PROCESSING_HOST beállítás értéke helyett.
 
 > [!TIP] 
-> Use application settings for back-end hosts when you have multiple deployments or test environments. That way, you can make sure that you are always talking to the right back-end for that environment.
+> Alkalmazásbeállítások használja a háttér-gazdagépek több központi telepítést, ha vagy tesztelési környezetben. Így biztosíthatja, hogy mindig beszélünk a megfelelő háttér-környezetnek.
 
-## <a name="debugProxies"></a>Troubleshoot Proxies
+## <a name="debugProxies"></a>Proxyk hibáinak megoldása
 
-By adding the flag `"debug":true` to any proxy in your `proxies.json` you will enable debug logging. Logs are stored in `D:\home\LogFiles\Application\Proxies\DetailedTrace` and accessible through the advanced tools (kudu). Any HTTP responses will also contain a `Proxy-Trace-Location` header with a URL to access the log file.
+Ha a jelölőt `"debug":true` bármely proxyhoz hozzáadja a `proxies.json`, akkor a hibakeresési naplózást is engedélyeznie kell. A naplók tárolása `D:\home\LogFiles\Application\Proxies\DetailedTrace` történik, és a speciális eszközökön (kudu) keresztül érhető el. A HTTP-válaszok egy `Proxy-Trace-Location` fejlécet is tartalmaznak, amely egy URL-címet tartalmaz a naplófájl eléréséhez.
 
-You can debug a proxy from the client side by adding a `Proxy-Trace-Enabled` header set to `true`. This will also log a trace to the file system, and return the trace URL as a header in the response.
+A proxykat az ügyfél oldaláról lehet felvenni, ha hozzáad egy `Proxy-Trace-Enabled` fejlécet `true`hoz. Ezzel is egy nyomkövetési naplózása a fájlrendszerhez, és a nyomkövetési URL-cím egy fejléccel a válaszban visszaadandó.
 
-### <a name="block-proxy-traces"></a>Block proxy traces
+### <a name="block-proxy-traces"></a>Proxy-nyomkövetések letiltása
 
-For security reasons you may not want to allow anyone calling your service to generate a trace. They will not be able to access the trace contents without your login credentials, but generating the trace consumes resources and exposes that you are using Function Proxies.
+Biztonsági okokból előfordulhat, hogy nem szeretné, hogy a szolgáltatás hozza létre a nyomkövetési hívó minden. Nem lesz a bejelentkezési hitelesítő adatok nélkül nyomkövetési tartalmához való hozzáféréshez, de a nyomkövetés erőforrásokat használ fel, és elérhetővé teszi, hogy használ-e az Függvényproxykat.
 
-Disable traces altogether by adding `"debug":false` to any particular proxy in your `proxies.json`.
+A nyomkövetést teljes egészében letilthatja, ha `"debug":false`t ad hozzá a `proxies.json`egy adott proxyhoz.
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
-The proxies that you configure are stored in a *proxies.json* file, which is located in the root of a function app directory. You can manually edit this file and deploy it as part of your app when you use any of the [deployment methods](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) that Functions supports. 
+A konfigurált proxyk a Function app-címtár gyökerében található *proxys. JSON* fájlban tárolódnak. Ezt a fájlt manuálisan szerkesztheti, és az alkalmazás részeként telepítheti, ha a függvények által támogatott [központi telepítési módszereket](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) használja. 
 
 > [!TIP] 
-> If you have not set up one of the deployment methods, you can also work with the *proxies.json* file in the portal. Go to your function app, select **Platform features**, and then select **App Service Editor**. By doing so, you can view the entire file structure of your function app and then make changes.
+> Ha nem állított be egyik telepítési módszert sem, akkor a portálon a *proxys. JSON* fájllal is dolgozhat. Nyissa meg a Function alkalmazást, válassza a **platform szolgáltatások**elemet, majd válassza a **app Service Editor**lehetőséget. Ezzel a módszerrel a függvényalkalmazás teljes-fájl szerkezete megtekintheti és majd a módosításokat.
 
-*Proxies.json* is defined by a proxies object, which is composed of named proxies and their definitions. Optionally, if your editor supports it, you can reference a [JSON schema](http://json.schemastore.org/proxies) for code completion. An example file might look like the following:
+A *proxys. JSON* -t egy proxy objektum határozza meg, amely névvel ellátott proxykat és azok definícióit alkotja. Ha a szerkesztő támogatja azt, akkor egy [JSON-sémára](http://json.schemastore.org/proxies) hivatkozhat a kód befejezéséhez. Egy példa fájlt a következőhöz hasonlóan nézhet ki:
 
 ```json
 {
@@ -132,21 +132,21 @@ The proxies that you configure are stored in a *proxies.json* file, which is loc
 }
 ```
 
-Each proxy has a friendly name, such as *proxy1* in the preceding example. The corresponding proxy definition object is defined by the following properties:
+Minden proxynak van egy felhasználóbarát neve, például a *proxy1* az előző példában. A megfelelő proxykiszolgáló-definíciós objektummal határozzák meg a következő tulajdonságokkal:
 
-* **matchCondition**: Required--an object defining the requests that trigger the execution of this proxy. It contains two properties that are shared with [HTTP triggers]:
-    * _methods_: An array of the HTTP methods that the proxy responds to. If it is not specified, the proxy responds to all HTTP methods on the route.
-    * _route_: Required--defines the route template, controlling which request URLs your proxy responds to. Unlike in HTTP triggers, there is no default value.
-* **backendUri**: The URL of the back-end resource to which the request should be proxied. This value can reference application settings and parameters from the original client request. If this property is not included, Azure Functions responds with an HTTP 200 OK.
-* **requestOverrides**: An object that defines transformations to the back-end request. See [Define a requestOverrides object].
-* **responseOverrides**: An object that defines transformations to the client response. See [Define a responseOverrides object].
+* **matchCondition**: kötelező – a proxy végrehajtását kiváltó kérelmeket meghatározó objektum. Két olyan tulajdonságot tartalmaz, amelyek a [HTTP-eseményindítók]vannak megosztva:
+    * _metódusok_: a proxy által válaszoló http-metódusok tömbje. Ha nincs megadva, a proxy válaszol az összes HTTP-metódusok a útvonalon.
+    * _Route_: kötelező – meghatározza az útválasztási sablont, amely szabályozza, hogy a proxy mely URL-címekre válaszol. Ellentétben a HTTP-eseményindítók esetén nincs alapértelmezett érték.
+* **backendUri**: annak a háttér-erőforrásnak az URL-címe, amelyre a kérést proxynak kell lennie. Ez az érték hivatkozhat alkalmazás beállítás- és az eredeti ügyfél kérelemből. Ha ez a tulajdonság nem található, az Azure Functions válaszol egy HTTP 200 OK.
+* **requestOverrides**: olyan objektum, amely meghatározza a háttér-kérelem átalakításait. Lásd: [requestOverrides objektum definiálása].
+* **responseOverrides**: olyan objektum, amely meghatározza az ügyfél válaszának átalakításait. Lásd: [responseOverrides objektum definiálása].
 
 > [!NOTE] 
-> The *route* property in Azure Functions Proxies does not honor the *routePrefix* property of the Function App host configuration. If you want to include a prefix such as `/api`, it must be included in the *route* property.
+> A Azure Functions-proxyk *Route* tulajdonsága nem tartja tiszteletben a függvényalkalmazás gazdagép konfigurációjának *routePrefix* tulajdonságát. Ha olyan előtagot szeretne megadni, mint például a `/api`, azt az *Route* tulajdonságba kell foglalni.
 
-### <a name="disableProxies"></a> Disable individual proxies
+### <a name="disableProxies"></a>Egyéni proxyk letiltása
 
-You can disable individual proxies by adding `"disabled": true` to the proxy in the `proxies.json` file. This will cause any requests meeting the matchCondition to return 404.
+Az egyes proxykat letilthatja `"disabled": true` hozzáadásával a proxyhoz a `proxies.json` fájlban. Ennek hatására a matchCondition a 404-as visszaküldésére irányuló kérések lesznek.
 ```json
 {
     "$schema": "http://json.schemastore.org/proxies",
@@ -162,34 +162,34 @@ You can disable individual proxies by adding `"disabled": true` to the proxy in 
 }
 ```
 
-### <a name="applicationSettings"></a> Application Settings
+### <a name="applicationSettings"></a>Alkalmazásbeállítások
 
-The proxy behavior can be controlled by several app settings. They are all outlined in the [Functions App Settings reference](./functions-app-settings.md)
+A proxy viselkedését több alkalmazás beállításai vezérlik. Ezek mind a [functions app Settings dokumentációjában](./functions-app-settings.md) szerepelnek.
 
 * [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
 * [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
 
-### <a name="reservedChars"></a> Reserved Characters (string formatting)
+### <a name="reservedChars"></a>Fenntartott karakterek (karakterlánc formázása)
 
-Proxies read all strings out of a JSON file, using \ as an escape symbol. Proxies also interpret curly braces. See a full set of examples below.
+A proxyk a \ Escape szimbólum használatával beolvassák az összes karakterláncot a JSON-fájlból. A proxyk a kapcsos zárójeleket is értelmezik. Tekintse meg az alábbi példák teljes listáját.
 
-|Character|Escaped Character|Példa|
+|Karakter|Escape-karaktert|Példa|
 |-|-|-|
-|{ or }|{{ or }}|`{{ example }}` --> `{ example }`
+|{vagy}|{{és}}|`{{ example }}` --> `{ example }`
 | \ | \\\\ | `example.com\\text.html` --> `example.com\text.html`
 |"|\\\"| `\"example\"` --> `"example"`
 
-### <a name="requestOverrides"></a>Define a requestOverrides object
+### <a name="requestOverrides"></a>RequestOverrides objektum definiálása
 
-The requestOverrides object defines changes made to the request when the back-end resource is called. The object is defined by the following properties:
+A requestOverrides objektuma határozza meg, amikor a háttér-erőforrás neve a kérés végzett módosítások. Az objektum az alábbi tulajdonságokat határozzák meg:
 
-* **backend.request.method**: The HTTP method that's used to call the back-end.
-* **backend.request.querystring.\<ParameterName\>** : A query string parameter that can be set for the call to the back-end. Replace *\<ParameterName\>* with the name of the parameter that you want to set. If the empty string is provided, the parameter is not included on the back-end request.
-* **backend.request.headers.\<HeaderName\>** : A header that can be set for the call to the back-end. Replace *\<HeaderName\>* with the name of the header that you want to set. If you provide the empty string, the header is not included on the back-end request.
+* **háttér. Request. Method**: a háttér hívásához használt http-metódus.
+* **backend. Request. querystring.\<ParameterName\>** : egy lekérdezési karakterlánc paraméter, amely beállítható a háttér felé irányuló híváshoz. Cserélje le *\<ParameterName\>* a beállítani kívánt paraméter nevére. Ha az üres karakterlánc van megadva, a paraméter nem szerepel a háttér-kérés.
+* **backend. Request. headers.\<HeaderName\>** : egy fejléc, amely beállítható a háttér felé irányuló híváshoz. Cserélje le *\<HeaderName\>* a beállítani kívánt fejléc nevére. Az üres karakterláncot adjon meg, ha a háttér-kérelem nem tartalmazza a fejlécet.
 
-Values can reference application settings and parameters from the original client request.
+Értékek hivatkozhatnak Alkalmazásbeállítások és a paraméterek az eredeti ügyfél kérelemből.
 
-An example configuration might look like the following:
+Konfiguráció például előfordulhat, hogy a következőhöz hasonló:
 
 ```json
 {
@@ -210,18 +210,18 @@ An example configuration might look like the following:
 }
 ```
 
-### <a name="responseOverrides"></a>Define a responseOverrides object
+### <a name="responseOverrides"></a>ResponseOverrides objektum definiálása
 
-The requestOverrides object defines changes that are made to the response that's passed back to the client. The object is defined by the following properties:
+A requestOverrides objektuma határozza meg, hogy a válasz az ügyfélhez átadott végrehajtott módosításokat. Az objektum az alábbi tulajdonságokat határozzák meg:
 
-* **response.statusCode**: The HTTP status code to be returned to the client.
-* **response.statusReason**: The HTTP reason phrase to be returned to the client.
-* **response.body**: The string representation of the body to be returned to the client.
-* **response.headers.\<HeaderName\>** : A header that can be set for the response to the client. Replace *\<HeaderName\>* with the name of the header that you want to set. If you provide the empty string, the header is not included on the response.
+* **Response. statusCode**: az ügyfélnek visszaadott http-állapotkód.
+* **Response. statusReason**: az ügyfélnek visszaadott http-ok kifejezése.
+* **Response. Body**: az ügyfélnek visszaadott törzs karakterlánc-ábrázolása.
+* **Response. headers.\<HeaderName\>** : egy fejléc, amely beállítható az ügyfélre adott válaszra. Cserélje le *\<HeaderName\>* a beállítani kívánt fejléc nevére. Az üres karakterláncot adjon meg, ha a fejléc nem szerepel a válasz.
 
-Values can reference application settings, parameters from the original client request, and parameters from the back-end response.
+Értékek Alkalmazásbeállítások, az ügyfél eredeti kérés paraméterei és paramétereket is lehet hivatkozni a háttér-válaszból.
 
-An example configuration might look like the following:
+Konfiguráció például előfordulhat, hogy a következőhöz hasonló:
 
 ```json
 {
@@ -241,15 +241,15 @@ An example configuration might look like the following:
 }
 ```
 > [!NOTE] 
-> In this example, the response body is set directly, so no `backendUri` property is needed. The example shows how you might use Azure Functions Proxies for mocking APIs.
+> Ebben a példában a válasz törzse közvetlenül van beállítva, így nincs szükség `backendUri` tulajdonságra. A példa bemutatja, hogyan használhatja az Azure Functions-proxyk utánzási API-k esetében.
 
-[Azure Portalra]: https://portal.azure.com
-[HTTP triggers]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
+[Azure Portal]: https://portal.azure.com
+[HTTP-eseményindítók]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
-[Define a requestOverrides object]: #requestOverrides
-[Define a responseOverrides object]: #responseOverrides
-[application settings]: #use-appsettings
-[Use variables]: #using-variables
-[parameters from the original client request]: #request-parameters
-[parameters from the back-end response]: #response-parameters
+[RequestOverrides objektum definiálása]: #requestOverrides
+[ResponseOverrides objektum definiálása]: #responseOverrides
+[Alkalmazásbeállítások]: #use-appsettings
+[Változók használata]: #using-variables
+[paramétereit is hivatkozhat az eredeti ügyfél-kérelemből]: #request-parameters
+[a háttérbeli válasz paramétereit]: #response-parameters

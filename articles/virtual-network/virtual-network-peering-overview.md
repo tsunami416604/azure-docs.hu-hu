@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Network peering
+title: Azure Virtual Network-társítás
 titlesuffix: Azure Virtual Network
 description: Tudnivalók az Azure-beli virtuális hálózatok közötti társviszony-létesítésről
 services: virtual-network
@@ -19,104 +19,104 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74328345"
 ---
-# <a name="virtual-network-peering"></a>Virtuális hálózatok közötti társviszony létesítése
+# <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
-Virtual network peering enables you to seamlessly connect networks in [Azure Virtual Network](virtual-networks-overview.md). The virtual networks appear as one for connectivity purposes. The traffic between virtual machines uses the Microsoft backbone infrastructure. Like traffic between virtual machines in the same network, traffic is routed through Microsoft's *private* network only.
+A virtuális hálózatok társításával zökkenőmentesen csatlakoztathatók az [Azure Virtual Network](virtual-networks-overview.md)-beli hálózatok. A virtuális hálózatok a kapcsolati céloknak megfelelően jelennek meg. A virtuális gépek közötti forgalom a Microsoft gerinc-infrastruktúrát használja. Az azonos hálózatban lévő virtuális gépek közötti forgalomhoz hasonlóan a forgalmat csak a Microsoft *magánhálózati* hálózata irányítja át.
 
-Azure supports the following types of peering:
+Az Azure a következő típusú társításokat támogatja:
 
-* Virtual network peering: Connect virtual networks within the same Azure region.
-* Global virtual network peering: Connecting virtual networks across Azure regions.
+* Virtuális hálózati társítás: virtuális hálózatok összekötése ugyanazon az Azure-régión belül.
+* Globális virtuális hálózati társítás: virtuális hálózatok összekapcsolása az Azure-régiók között.
 
 A virtuális társhálózatok akár helyi, akár globális létesítésének előnyei:
 
 * Kis késésű, nagy sávszélességű kapcsolat jön létre eltérő virtuális hálózatokba tartozó erőforrások között.
-* The ability for resources in one virtual network to communicate with resources in a different virtual network.
-* The ability to transfer data between virtual networks across Azure subscriptions, Azure Active Directory tenants, deployment models, and Azure regions.
-* The ability to peer virtual networks created through the Azure Resource Manager.
-* The ability to peer a virtual network created through Resource Manager to one created through the classic deployment model. Az Azure üzembehelyezési modellekkel kapcsolatos további információkért lásd: [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Az egyik virtuális hálózat erőforrásai egy másik virtuális hálózat erőforrásaival való kommunikációra képesek.
+* Az Azure-előfizetések, Azure Active Directory-bérlők, üzembe helyezési modellek és Azure-régiók közötti adatátvitel lehetősége a virtuális hálózatok között.
+* A Azure Resource Manageron keresztül létrehozott virtuális hálózatok társ-létrehozási képessége.
+* A Resource Manager használatával létrehozott virtuális hálózatokat a klasszikus üzemi modellen keresztül létrehozhatja. Az Azure üzembehelyezési modellekkel kapcsolatos további információkért lásd: [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Ez nem okoz leállást egyik virtuális hálózat erőforrásaiban sem a társításkor és azt követően sem.
 
 A társított virtuális hálózatok közti hálózati adatforgalom nem nyilvános. A virtuális hálózatok közötti forgalom a Microsoft gerinchálózatán belül marad. A virtuális hálózatok közti forgalomhoz nincs szükség nyilvános internetre, átjárókra vagy titkosításra.
 
-## <a name="connectivity"></a>Kapcsolódás
+## <a name="connectivity"></a>Kapcsolatok
 
-For peered virtual networks, resources in either virtual network can directly connect with resources in the peered virtual network.
+A egyenrangú virtuális hálózatok esetében bármelyik virtuális hálózat erőforrásai közvetlenül kapcsolódhatnak a virtuális hálózatban lévő erőforrásokhoz.
 
 Az azonos régióban lévő virtuális társhálózaton belüli virtuális gépek közötti hálózati késés megegyezik az egyetlen virtuális hálózaton belüli hálózati késéssel. A hálózat átbocsátóképessége attól függ, hogy milyen, a virtuális gépek méretével arányos sávszélesség van engedélyezve. A társviszonyon belül más korlátozás nem vonatkozik a sávszélességre.
 
 A virtuális társhálózatokon belüli virtuális gépek közötti forgalom közvetlenül a Microsoft gerincinfrastruktúráján halad át, nem pedig átjárón vagy a nyilvános interneten.
 
-You can apply network security groups in either virtual network to block access to other virtual networks or subnets.
-When configuring virtual network peering, either open or close the network security group rules between the virtual networks. If you open full connectivity between peered virtual networks, you can apply network security groups to block or deny specific access. Full connectivity is the default option. To learn more about network security groups, see [Security groups](security-overview.md).
+Bármelyik virtuális hálózaton hálózati biztonsági csoportokat is alkalmazhat, hogy letiltsa a hozzáférést más virtuális hálózatokhoz vagy alhálózatokhoz.
+A virtuális hálózati kapcsolatok konfigurálásakor nyissa meg vagy zárjunk be a hálózati biztonsági csoport szabályait a virtuális hálózatok között. Ha megnyitja a teljes kapcsolatot a kihelyezett virtuális hálózatok között, akkor a hálózati biztonsági csoportok alkalmazásával blokkolhatja vagy megtagadhatja a megadott hozzáférést. A teljes kapcsolat az alapértelmezett beállítás. A hálózati biztonsági csoportokkal kapcsolatos további tudnivalókért tekintse meg a [biztonsági csoportok](security-overview.md)című témakört.
 
 ## <a name="service-chaining"></a>Szolgáltatásláncolás
 
-Service chaining enables you to direct traffic from one virtual network to a virtual appliance or gateway in a peered network through user-defined routes.
+A szolgáltatás-láncolás lehetővé teszi, hogy az egyik virtuális hálózatról egy virtuális készülékre vagy átjáróra irányítsa át a forgalmat a felhasználó által megadott útvonalakon keresztül.
 
-To enable service chaining, configure user-defined routes that point to virtual machines in peered virtual networks as the *next hop* IP address. User-defined routes could also point to virtual network gateways to enable service chaining.
+A szolgáltatások láncolásának engedélyezéséhez olyan felhasználó által megadott útvonalakat konfigurálhat, amelyek a *következő ugrás* IP-címének megfelelően a virtuális gépekre mutatnak. A felhasználó által megadott útvonalak a virtuális hálózati átjáróra is rámutatnak a szolgáltatások láncolásának engedélyezéséhez.
 
-You can deploy hub-and-spoke networks, where the hub virtual network hosts infrastructure components such as a network virtual appliance or VPN gateway. Az ágakon lévő virtuális hálózatok társhálózatai lehetnek a középponti hálózatnak. Traffic flows through network virtual appliances or VPN gateways in the hub virtual network.
+Központi és küllős hálózatokat is telepíthet, ahol a hub virtuális hálózat infrastruktúra-összetevőket, például hálózati virtuális berendezést vagy VPN-átjárót üzemeltet. Az ágakon lévő virtuális hálózatok társhálózatai lehetnek a középponti hálózatnak. A forgalom a hub virtuális hálózatán keresztül áramlik a hálózati virtuális berendezéseken vagy a VPN-átjárón keresztül.
 
-A virtuális hálózatok közötti társviszony-létesítéssel a felhasználó által definiált útvonalon egy virtuális társhálózat egyik virtuális gépének vagy egy VPN-átjárónak az IP-címe beállítható a következő ugrás IP-címeként. You can't route between virtual networks with a user-defined route that specifies an Azure ExpressRoute gateway as the next hop type. A felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd a [felhasználó által megadott útvonalak áttekintését](virtual-networks-udr-overview.md#user-defined). To learn how to create a hub and spoke network topology, see [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
+A virtuális hálózatok közötti társviszony-létesítéssel a felhasználó által definiált útvonalon egy virtuális társhálózat egyik virtuális gépének vagy egy VPN-átjárónak az IP-címe beállítható a következő ugrás IP-címeként. A virtuális hálózatok között nem lehet átirányítani egy olyan felhasználó által megadott útvonallal, amely a következő ugrási típusként ad meg egy Azure ExpressRoute-átjárót. A felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd a [felhasználó által megadott útvonalak áttekintését](virtual-networks-udr-overview.md#user-defined). A sugaras hálózati topológia létrehozásával kapcsolatos információkért lásd: [sugaras hálózati topológia az Azure-ban](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="gateways-and-on-premises-connectivity"></a>Átjárók és kapcsolat helyszíni rendszerekkel
 
-Each virtual network, including a peered virtual network, can have its own gateway. A virtual network can use its gateway to connect to an on-premises network. You can also configure [virtual network-to-virtual network connections](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) by using gateways, even for peered virtual networks.
+Minden virtuális hálózatnak, beleértve a társ virtuális hálózatot, saját átjáróval is rendelkezhet. A virtuális hálózatok használhatják az átjárót a helyszíni hálózathoz való kapcsolódáshoz. Az átjárók használatával is konfigurálhat [virtuális hálózat – virtuális hálózati kapcsolatokat](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , még a egyenrangú virtuális hálózatok esetében is.
 
-When you configure both options for virtual network interconnectivity, the traffic between the virtual networks flows through the peering configuration. The traffic uses the Azure backbone.
+Ha mindkét lehetőséget konfigurálja a virtuális hálózat összekapcsolására, a virtuális hálózatok közötti forgalom a társítási konfiguráción keresztül folyik. A forgalom az Azure-gerincet használja.
 
-You can also configure the gateway in the peered virtual network as a transit point to an on-premises network. In this case, the virtual network that is using a remote gateway can't have its own gateway. A virtual network has only one gateway. The gateway is either a local or remote gateway in the peered virtual network, as shown in the following diagram:
+Azt is megteheti, hogy az átjárót a társ virtuális hálózatban is konfigurálhatja egy helyszíni hálózatra irányuló továbbítási pontként. Ebben az esetben a távoli átjárót használó virtuális hálózatnak nem lehet saját átjárója. Egy virtuális hálózatnak csak egy átjárója van. Az átjáró vagy egy helyi vagy távoli átjáró a társ virtuális hálózaton, az alábbi ábrán látható módon:
 
 ![virtuális társhálózatok közötti átvitel](./media/virtual-networks-peering-overview/local-or-remote-gateway-in-peered-virual-network.png)
 
-Both virtual network peering and global virtual network peering support gateway transit.
+A virtuális hálózatok és a globális virtuális hálózatok egymáshoz való továbbítása is támogatja az átjárót.
 
-Gateway transit between virtual networks created through different deployment models is supported. The gateway must be in the virtual network in the Resource Manager model. További információ az átjárók adatátvitelre való használatáról: [VPN-átjáró konfigurálása adatátvitelhez virtuális hálózatok közötti társviszony-létesítésben](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+A különböző üzembe helyezési modelleken keresztül létrehozott virtuális hálózatok közötti átjáró átvitele támogatott. Az átjárónak a Resource Manager-modellben lévő virtuális hálózatban kell lennie. További információ az átjárók adatátvitelre való használatáról: [VPN-átjáró konfigurálása adatátvitelhez virtuális hálózatok közötti társviszony-létesítésben](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-When you peer virtual networks that share a single Azure ExpressRoute connection, the traffic between them goes through the peering relationship. That traffic uses the Azure backbone network. Az egyes virtuális hálózatok helyi átjárói ennek ellenére használhatók arra, hogy kapcsolatot létesítsenek a helyszíni kapcsolatcsoporttal. Otherwise, you can use a shared gateway and configure transit for on-premises connectivity.
+Ha egyetlen Azure ExpressRoute-kapcsolattal rendelkező társ virtuális hálózattal rendelkezik, a közöttük zajló forgalom a társítási kapcsolaton halad át. Ez a forgalom az Azure gerinc hálózatot használja. Az egyes virtuális hálózatok helyi átjárói ennek ellenére használhatók arra, hogy kapcsolatot létesítsenek a helyszíni kapcsolatcsoporttal. Ellenkező esetben használhat megosztott átjárót, és konfigurálhatja az átvitelt a helyszíni kapcsolathoz.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-To confirm that virtual networks are peered, you can check effective routes. Check routes for a network interface in any subnet in a virtual network. Ha létezik a virtuális hálózatok közötti társviszony, a virtuális hálózat összes alhálózata *Virtuális hálózatok közötti társviszony* következő ugrási típusú útvonalakkal rendelkezik minden virtuális társhálózat minden címterében. For more information, see [Diagnose a virtual machine routing problem](diagnose-network-routing-problem.md).
+Annak ellenőrzéséhez, hogy a virtuális hálózatok egyenrangúak-e, ellenőrizheti a hatályos útvonalakat. A virtuális hálózat bármely alhálózatán lévő hálózati adapter útvonalait vizsgálja meg. Ha létezik a virtuális hálózatok közötti társviszony, a virtuális hálózat összes alhálózata *Virtuális hálózatok közötti társviszony* következő ugrási típusú útvonalakkal rendelkezik minden virtuális társhálózat minden címterében. További információ: [a virtuális gép útválasztási problémáinak diagnosztizálása](diagnose-network-routing-problem.md).
 
-You can also troubleshoot connectivity to a virtual machine in a peered virtual network using Azure Network Watcher. A connectivity check lets you see how traffic is routed from a source virtual machine's network interface to a destination virtual machine's network interface. For more information, see [Troubleshoot connections with Azure Network Watcher using the Azure portal](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine).
+Az Azure Network Watcher használatával a virtuális gépekhez való kapcsolódást is elháríthatja egy társ virtuális hálózaton. A kapcsolat ellenőrzése lehetőséggel megtekintheti, hogyan irányítja a rendszer a forgalmat a forrás virtuális gép hálózati adapteréről a célként megadott virtuális gép hálózati adapteréhez. További információkért lásd: [Az Azure Network Watcher kapcsolatok hibáinak megoldása a Azure Portal használatával](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine).
 
-You can also try the [Troubleshoot virtual network peering issues](virtual-network-troubleshoot-peering-issues.md).
+Kipróbálhatja a [virtuális hálózati problémák elhárításával kapcsolatos problémákat](virtual-network-troubleshoot-peering-issues.md)is.
 
-## Constraints for peered virtual networks<a name="requirements-and-constraints"></a>
+## Megkötések a társ virtuális hálózatokhoz<a name="requirements-and-constraints"></a>
 
-The following constraints apply only when virtual networks are globally peered:
+A következő megkötések csak akkor érvényesek, ha a virtuális hálózatok globálisan vannak kiképezve:
 
-* Resources in one virtual network can't communicate with the front-end IP address of a Basic Internal Load Balancer (ILB)  in a globally peered virtual network.
-* Some services that use a Basic load balancer don't work over global virtual network peering. For more information, see [What are the constraints related to Global VNet Peering and Load Balancers?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+* Az egyik virtuális hálózat erőforrásai nem tudnak kommunikálni egy alapszintű belső Load Balancer (ILB) előtér-IP-címével egy globálisan összetartozó virtuális hálózaton.
+* Az alapszintű Load balancert használó szolgáltatások nem működnek a globális virtuális hálózati kapcsolaton keresztül. További információ: [Mik a globális VNet-társítással és-terheléselosztóokkal kapcsolatos korlátozások?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
-For more information, see [Requirements and constraints](virtual-network-manage-peering.md#requirements-and-constraints). To learn more about the supported number of peerings, see [Networking limits](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+További információ: [követelmények és megkötések](virtual-network-manage-peering.md#requirements-and-constraints). Ha többet szeretne megtudni a támogatott számú társáról, tekintse meg a [hálózati korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)című témakört.
 
 ## <a name="permissions"></a>Engedélyek
 
-To learn about permissions required to create a virtual network peering, see [Permissions](virtual-network-manage-peering.md#permissions).
+A virtuális hálózati társítások létrehozásához szükséges engedélyekkel kapcsolatos további információkért lásd: [engedélyek](virtual-network-manage-peering.md#permissions).
 
 ## <a name="pricing"></a>Díjszabás
 
-There's a nominal charge for ingress and egress traffic that uses a virtual network peering connection. For more information, see [Virtual Network pricing](https://azure.microsoft.com/pricing/details/virtual-network).
+A virtuális hálózatokat összekapcsoló kapcsolatot használó bejövő és kimenő forgalom névleges díja. További információ: [Virtual Network díjszabása](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Gateway Transit is a peering property that enables a virtual network to utilize a VPN/ExpressRoute gateway in a peered virtual network. Gateway transit works for both cross premises and network-to-network connectivity. Traffic to the gateway (ingress or egress) in the peered virtual network incurs virtual network peering charges. For more information, see [VPN Gateway pricing](https://azure.microsoft.com/pricing/details/vpn-gateway/) for VPN gateway charges and ExpressRoute Gateway pricing for ExpressRoute gateway charges.
+Az átjáró-átvitel egy olyan társítási tulajdonság, amely lehetővé teszi, hogy a virtuális hálózatok a VPN/ExpressRoute átjárót használják egy társ virtuális hálózatban. Az átjárók közötti átvitel mind a létesítmények, mind a hálózat és a hálózat közötti kapcsolat esetében működik. Az átjáró felé irányuló (bejövő vagy kimenő) forgalom a virtuális hálózatban lévő virtuális hálózatok közötti hálózati társítási díjak. További információkért VPN Gateway tekintse meg a ExpressRoute-átjáró díjainak [díjszabását](https://azure.microsoft.com/pricing/details/vpn-gateway/) a VPN Gateway díjaival és a ExpressRoute-átjáró díjszabásával kapcsolatban.
 
 >[!NOTE]
-> A previous version of this document stated that virtual network peering charges would not apply with Gateway Transit. It now reflects accurate pricing per the pricing page.
+> A dokumentum egy korábbi verziója azt állapította meg, hogy a virtuális hálózati társítási díjak nem lesznek érvényesek az átjáró átvitelére. Mostantól a díjszabási oldalon a pontos díjszabást tükrözi.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* You can create a peering between two virtual networks. The networks can belong to the same subscription, different deployment models in the same subscription, or different subscriptions. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
+* Két virtuális hálózat közötti társítást hozhat létre. A hálózatok ugyanahhoz az előfizetéshez, különböző üzembe helyezési modellekhez tartozhatnak ugyanabban az előfizetésben, vagy eltérő előfizetésekben is. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
 
-    |Azure üzembehelyezési modell             | Előfizetés  |
+    |Azure üzembehelyezési modell             | Előfizetést  |
     |---------                          |---------|
     |Mindkét Resource Manager              |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[Különböző](create-peering-different-subscriptions.md)|
     |Egy Resource Manager, egy klasszikus  |[Ugyanaz](create-peering-different-deployment-models.md)|
     |                                   |[Különböző](create-peering-different-deployment-models-subscriptions.md)|
 
-* To learn how to create a hub and spoke network topology, see [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* To learn about all virtual network peering settings, see [Create, change, or delete a virtual network peering](virtual-network-manage-peering.md).
-* For answers to common virtual network peering and global virtual network peering questions, see [VNet Peering](virtual-networks-faq.md#vnet-peering).
+* A sugaras hálózati topológia létrehozásával kapcsolatos információkért lásd: [sugaras hálózati topológia az Azure-ban](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Az összes virtuális hálózati társítási beállítással kapcsolatos további tudnivalókért lásd: [virtuális hálózati társak létrehozása, módosítása vagy törlése](virtual-network-manage-peering.md).
+* A gyakori virtuális hálózati és a globális virtuális hálózati kérdéseket érintő kérdésekre adott válaszokért lásd: [VNet peering](virtual-networks-faq.md#vnet-peering).

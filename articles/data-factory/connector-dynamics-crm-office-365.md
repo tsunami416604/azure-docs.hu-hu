@@ -22,7 +22,7 @@ ms.locfileid: "74280690"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Dynamics 365 (Common Data Service) vagy a Dynamics CRM-be a Azure Data Factory használatával
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban adatok másolása a Microsoft Dynamics 365 vagy a Microsoft Dynamics CRM rendszerbe. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban adatok másolása a Microsoft Dynamics 365 vagy a Microsoft Dynamics CRM rendszerbe. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -83,8 +83,8 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
 | servicePrincipalCredentialType | Adja meg az egyszerű szolgáltatás hitelesítéséhez használandó hitelesítő adatokat. Az engedélyezett értékek a következők: **ServicePrincipalKey** vagy **ServicePrincipalCert**. | Igen, ha `AADServicePrincipal` hitelesítést használ |
 | servicePrincipalCredential | Az egyszerű szolgáltatásnév hitelesítő adatainak megadása. <br>`ServicePrincipalKey` hitelesítő adatként való használatakor a `servicePrincipalCredential` karakterlánc lehet (az ADF a társított szolgáltatás telepítésekor titkosítva lesz) vagy egy titkos AKV. <br>`ServicePrincipalCert` hitelesítő adatként való használatakor `servicePrincipalCredential` a AKV-ben lévő tanúsítványra mutató hivatkozásnak kell lennie. | Igen, ha `AADServicePrincipal` hitelesítést használ | 
 | felhasználónév | Adja meg a Dynamicshoz való kapcsolódáshoz használandó felhasználónevet. | Igen, ha `Office365` hitelesítést használ |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen, ha `Office365` hitelesítést használ |
-| connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nem, forrás, igen, ha a forráshoz társított szolgáltatás nem rendelkezik integrációs futtatókörnyezettel |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen, ha `Office365` hitelesítést használ |
+| connectVia | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nem, forrás, igen, ha a forráshoz társított szolgáltatás nem rendelkezik integrációs futtatókörnyezettel |
 
 >[!NOTE]
 >Az opcionális "szervezetnév" tulajdonság használatára használt Dynamics Connector a Dynamics CRM/365 online-példány azonosításához. Miközben folyamatosan működik, az új "serviceUri" tulajdonságot kell megadnia ahelyett, hogy jobb teljesítményt szeretne a példányok felderítésében.
@@ -179,8 +179,8 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
 | organizationName | A Dynamics-példány szervezetének neve. | Igen |
 | authenticationType | A Dynamics-kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítési típus. A központi TELEPÍTÉSsel rendelkező Dynamics helyszíni környezetének **"központi telepítés"** megadása. | Igen |
 | felhasználónév | Adja meg a Dynamicshoz való kapcsolódáshoz használandó felhasználónevet. | Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Válassza ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik a másolási tevékenység végrehajtásakor az adatok másolása innen lekéréses – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vault](store-credentials-in-key-vault.md). | Igen |
-| connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nincs forrás, a fogadó Igen |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Dönthet úgy, hogy ezt a mezőt SecureString jelöli, hogy az ADF-ben biztonságosan tárolja, vagy a jelszót tárolja Azure Key Vaultban, és hagyja, hogy a másolási tevékenység az Adatmásolás során lekérjen – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Igen |
+| connectVia | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nincs forrás, a fogadó Igen |
 
 **Példa: helyszíni Dynamics helyszíni és központi telepítéssel történő hitelesítéssel**
 
@@ -212,7 +212,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Dynamics-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Dynamics-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
 Az adatok a és a Dynamics rendszerbe való másolásához a következő tulajdonságok támogatottak.
 
@@ -242,7 +242,7 @@ Az adatok a és a Dynamics rendszerbe való másolásához a következő tulajdo
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a Dynamics forrás és a fogadó típusa által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a Dynamics forrás és a fogadó típusa által támogatott tulajdonságok listáját tartalmazza.
 
 ### <a name="dynamics-as-a-source-type"></a>A Dynamics forrás típusa
 
@@ -375,19 +375,19 @@ Konfigurálja a megfelelő Data Factory adattípust egy adatkészlet-struktúrá
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Hosszú | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Logikai | ✓ | ✓ |
-| AttributeType.Customer | Guid | ✓ | |
+| AttributeType.Customer | GUID | ✓ | |
 | AttributeType.DateTime | Dátum és idő | ✓ | ✓ |
-| AttributeType.Decimal | Decimal | ✓ | ✓ |
+| AttributeType.Decimal | tizedes tört | ✓ | ✓ |
 | AttributeType.Double | Dupla | ✓ | ✓ |
 | AttributeType.EntityName | Sztring | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
-| AttributeType.Lookup | Guid | ✓ | ✓ (egyetlen célként társított céllal) |
+| AttributeType.Lookup | GUID | ✓ | ✓ (egyetlen célként társított céllal) |
 | AttributeType.ManagedProperty | Logikai | ✓ | |
 | AttributeType.Memo | Sztring | ✓ | ✓ |
-| AttributeType.Money | Decimal | ✓ | ✓ |
-| AttributeType.Owner | Guid | ✓ | |
+| AttributeType.Money | tizedes tört | ✓ | ✓ |
+| AttributeType.Owner | GUID | ✓ | |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
-| AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |
+| AttributeType.Uniqueidentifier | GUID | ✓ | ✓ |
 | AttributeType.String | Sztring | ✓ | ✓ |
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
@@ -400,4 +400,4 @@ Konfigurálja a megfelelő Data Factory adattípust egy adatkészlet-struktúrá
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Következő lépések
-A másolási tevékenység, Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+A Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

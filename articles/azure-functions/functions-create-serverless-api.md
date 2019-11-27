@@ -1,6 +1,6 @@
 ---
-title: Customize an HTTP endpoint in Azure Functions
-description: Learn how to customize an HTTP trigger endpoint in Azure Functions
+title: HTTP-végpont testreszabása Azure Functions
+description: Megtudhatja, hogyan szabhatja testre a HTTP-trigger végpontját Azure Functions
 author: mattchenderson
 ms.topic: conceptual
 ms.date: 05/04/2017
@@ -13,15 +13,15 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230700"
 ---
-# <a name="customize-an-http-endpoint-in-azure-functions"></a>Customize an HTTP endpoint in Azure Functions
+# <a name="customize-an-http-endpoint-in-azure-functions"></a>HTTP-végpont testreszabása Azure Functions
 
-In this article, you learn how Azure Functions allows you to build highly scalable APIs. Az Azure Functions számos beépített HTTP-eseményindítót és -kötést tartalmaz, így egyszerűen létrehozhat végpontokat különböző nyelveken (például Node.JS, C# stb.). In this article, you will customize an HTTP trigger to handle specific actions in your API design. Ezenkívül integrálhatja az API-t az Azure Functions-proxykkal, és API-utánzatokat hozhat létre, ezzel készítve elő az API később bővítését. Mindez a kiszolgáló nélküli Functions-környezetre épül, ezért nem kell aggódnia az erőforrások skálázása miatt – egyelőre koncentráljon API-logikára.
+Ebből a cikkből megtudhatja, hogyan hozhat létre a Azure Functions a jól méretezhető API-kat. Az Azure Functions számos beépített HTTP-eseményindítót és -kötést tartalmaz, így egyszerűen létrehozhat végpontokat különböző nyelveken (például Node.JS, C# stb.). Ebben a cikkben a HTTP-triggerek testre szabását fogja használni az API-kialakításban meghatározott műveletek kezeléséhez. Ezenkívül integrálhatja az API-t az Azure Functions-proxykkal, és API-utánzatokat hozhat létre, ezzel készítve elő az API később bővítését. Mindez a kiszolgáló nélküli Functions-környezetre épül, ezért nem kell aggódnia az erőforrások skálázása miatt – egyelőre koncentráljon API-logikára.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
-The resulting function will be used for the rest of this article.
+Az eredményül kapott függvény a cikk további részében lesz felhasználva.
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -35,7 +35,7 @@ Alapértelmezés szerint a HTTP-eseményindító által aktivált függvény min
 
     ![HTTP-függvény testreszabása](./media/functions-create-serverless-api/customizing-http.png)
 
-1. Use the HTTP trigger settings as specified in the table.
+1. Használja a táblázatban megadott HTTP-trigger beállításait.
 
     | Mező | Mintaérték | Leírás |
     |---|---|---|
@@ -99,13 +99,13 @@ Ismételje meg a [Függvényalkalmazás létrehozása](https://docs.microsoft.co
 
     | Mező | Mintaérték | Leírás |
     |---|---|---|
-    | Név | HelloProxy | Felhasználóbarát név, kizárólag kezelési célra |
+    | Name (Név) | HelloProxy | Felhasználóbarát név, kizárólag kezelési célra |
     | Útvonalsablon | /api/remotehello | Meghatározza, hogy melyik útvonalat használja a proxy meghívására |
     | Háttér-URL | https://%HELLO_HOST%/api/hello | Meghatározza a végpontot, ahova továbbítja a kéréseket a proxyn keresztül |
     
 1. Figyelje meg, hogy a proxyk nem adják hozzá az `/api` alapútvonal-előtagot, azt Önnek kell beírni az útvonalsablonba.
 1. A `%HELLO_HOST%` szintaxis a korábban létrehozott alkalmazásbeállításra hivatkozik. A feloldott URL az eredeti függvényre fog mutatni.
-1. Kattintson a  **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** gombra.
 1. Ki is próbálhatja az új proxyt. Másolja ki a proxy URL-címét, és tesztelje le a böngészőben vagy a választott HTTP-ügyféllel.
     1. Névtelen funkció esetében ezt használja:
         1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`
@@ -172,13 +172,13 @@ Most következik az API-utánzat hozzáadása. Cserélje a proxies.json fájlt a
 }
 ```
 
-Ez hozzáad egy új, „GetUserByName” nevű proxyt a backendUri tulajdonság nélkül. Egy másik erőforrás meghívása helyett módosítja a proxyk alapértelmezett válaszát, felülírva azt. A kérések és a válaszfelülírások egy háttér-URL-lel együtt is használhatók. This is particularly useful when proxying to a legacy system, where you might need to modify headers, query parameters, etc. To learn more about request and response overrides, see [Modifying requests and responses in Proxies](https://docs.microsoft.com/azure/azure-functions/functions-proxies).
+Ez hozzáad egy új, „GetUserByName” nevű proxyt a backendUri tulajdonság nélkül. Egy másik erőforrás meghívása helyett módosítja a proxyk alapértelmezett válaszát, felülírva azt. A kérések és a válaszfelülírások egy háttér-URL-lel együtt is használhatók. Ez különösen akkor hasznos, ha egy örökölt rendszerre végez proxyt, ahol előfordulhat, hogy módosítania kell a fejléceket, a lekérdezés paramétereit stb. A kérések és válaszok felülbírálásával kapcsolatos további tudnivalókért lásd: [kérelmek és válaszok módosítása a proxykban](https://docs.microsoft.com/azure/azure-functions/functions-proxies).
 
 Az API-utánzat teszteléséhez hívja meg a `<YourProxyApp>.azurewebsites.net/api/users/{username}` végpontot a böngésző vagy a választott REST-ügyfél használatával. A _{username}_ értéket cserélje a felhasználónevet képviselő sztringre.
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this article, you learned how to build and customize an API on Azure Functions. Ezenkívül elsajátította, hogyan lehet több API-t, köztük utánzatokat egyesíteni egyetlen API-felületen. Ezekkel a technikákkal bármilyen összetettségű API-t kiépíthet az Azure Functions kiszolgáló nélküli számítási modelljének használatával.
+Ebből a cikkből megtudhatta, hogyan hozhat létre és szabhat testre API-t Azure Functionson. Ezenkívül elsajátította, hogyan lehet több API-t, köztük utánzatokat egyesíteni egyetlen API-felületen. Ezekkel a technikákkal bármilyen összetettségű API-t kiépíthet az Azure Functions kiszolgáló nélküli számítási modelljének használatával.
 
 A következő referenciák hasznára lehetnek az API továbbfejlesztése során:
 

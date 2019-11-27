@@ -65,7 +65,7 @@ Cloud Shell gépek léteznek a következő régiókban:
 
 |Terület|Régió|
 |---|---|
-|Észak-, Dél- és Közép-Amerika|USA keleti régiója, USA déli középső régiója, USA nyugati régiója|
+|Amerika|USA keleti régiója, USA déli középső régiója, USA nyugati régiója|
 |Európa|Észak-Európa, Nyugat-Európa|
 |Ázsia és a Csendes-óceáni térség|Közép-India, Délkelet-Ázsia|
 

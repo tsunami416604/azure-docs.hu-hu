@@ -1,6 +1,6 @@
 ---
-title: Best Practices for Azure Functions
-description: Learn best practices and patterns for Azure Functions.
+title: Ajánlott eljárások Azure Functions
+description: A Azure Functions ajánlott eljárásainak és mintáinak megismerése.
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 10/16/2017
@@ -12,99 +12,99 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227371"
 ---
-# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimize the performance and reliability of Azure Functions
+# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions teljesítményének és megbízhatóságának optimalizálása
 
-This article provides guidance to improve the performance and reliability of your [serverless](https://azure.microsoft.com/solutions/serverless/) function apps.  
+Ez a cikk útmutatást nyújt a [kiszolgáló](https://azure.microsoft.com/solutions/serverless/) nélküli Function-alkalmazások teljesítményének és megbízhatóságának javításához.  
 
 ## <a name="general-best-practices"></a>Általános ajánlott eljárások
 
-The following are best practices in how you build and architect your serverless solutions using Azure Functions.
+Az alábbiakban az ajánlott eljárások azt ismertetik, hogyan hozhat létre és alakíthat ki kiszolgáló nélküli megoldásokat Azure Functions használatával.
 
-### <a name="avoid-long-running-functions"></a>Avoid long running functions
+### <a name="avoid-long-running-functions"></a>A hosszan futó függvények elkerülése
 
-Large, long-running functions can cause unexpected timeout issues. To learn more about the timeouts for a given hosting plan, see [function app timeout duration](functions-scale.md#timeout). 
+A nagyméretű, hosszan futó függvények váratlan időtúllépési problémákhoz vezethetnek. Ha többet szeretne megtudni egy adott üzemeltetési csomag időtúllépéséről, tekintse meg a [Function app timeout időtartamát](functions-scale.md#timeout). 
 
-A function can become large because of many Node.js dependencies. Importing dependencies can also cause increased load times that result in unexpected timeouts. Dependencies are loaded both explicitly and implicitly. A single module loaded by your code may load its own additional modules. 
+A függvények nagy méretűek lehetnek a Node. js-függőségek miatt. A függőségek importálása nagyobb betöltési időt is okozhat, ami váratlan időtúllépéseket eredményezhet. A függőségeket explicit módon és implicit módon kell betölteni. A kód által betöltött egyetlen modul a saját további moduljait is betöltheti. 
 
-Whenever possible, refactor large functions into smaller function sets that work together and return responses fast. For example, a webhook or HTTP trigger function might require an acknowledgment response within a certain time limit; it's common for webhooks to require an immediate response. You can pass the HTTP trigger payload into a queue to be processed by a queue trigger function. This approach lets you defer the actual work and return an immediate response.
-
-
-### <a name="cross-function-communication"></a>Cross function communication
-
-[Durable Functions](durable/durable-functions-overview.md) and [Azure Logic Apps](../logic-apps/logic-apps-overview.md) are built to manage state transitions and communication between multiple functions.
-
-If not using Durable Functions or Logic Apps to integrate with multiple functions, it's best to use storage queues for cross-function communication. The main reason is that storage queues are cheaper and much easier to provision than other storage options. 
-
-Individual messages in a storage queue are limited in size to 64 KB. If you need to pass larger messages between functions, an Azure Service Bus queue could be used to support message sizes up to 256 KB in the Standard tier, and up to 1 MB in the Premium tier.
-
-Service Bus topics are useful if you require message filtering before processing.
-
-Event hubs are useful to support high volume communications.
+Amikor csak lehetséges, a nagyméretű függvények újrabontása kisebb functions-készletekbe, amelyek együtt működnek, és a válaszokat gyorsan adják vissza. Előfordulhat például, hogy egy webhook vagy egy HTTP trigger függvény egy bizonyos időkorláton belül visszaigazolási választ kér. gyakori, hogy a webhookok azonnali választ igényelnek. A HTTP-trigger hasznos adatait átadhatja egy, a várólista-trigger függvény által feldolgozandó várólistába. Ezzel a megközelítéssel késleltetheti a tényleges munkát, és azonnali választ adhat vissza.
 
 
-### <a name="write-functions-to-be-stateless"></a>Write functions to be stateless 
+### <a name="cross-function-communication"></a>Cross Function kommunikáció
 
-Functions should be stateless and idempotent if possible. Associate any required state information with your data. For example, an order being processed would likely have an associated `state` member. A function could process an order based on that state while the function itself remains stateless. 
+A [Durable functions](durable/durable-functions-overview.md) és a [Azure Logic apps](../logic-apps/logic-apps-overview.md) az állapot-váltások és a több függvény közötti kommunikáció kezelésére készült.
 
-Idempotent functions are especially recommended with timer triggers. For example, if you have something that absolutely must run once a day, write it so it can run anytime during the day with the same results. The function can exit when there's no work for a particular day. Also if a previous run failed to complete, the next run should pick up where it left off.
+Ha nem használ Durable Functions vagy Logic Apps több funkcióval való integráláshoz, érdemes a tárolási várólistákat használni a több funkciós kommunikációhoz. Ennek fő oka, hogy a tárolási várólisták olcsóbbak, és sokkal könnyebben használhatók, mint a többi tárolási lehetőség. 
+
+A tárolási várólistán lévő egyes üzenetek mérete 64 KB-ra van korlátozva. Ha nagyobb üzeneteket kell átadnia a függvények között, egy Azure Service Bus üzenetsor használható a standard szinten 256 KB-ig, a prémium szinten legfeljebb 1 MB-ra.
+
+Service Bus témakörök akkor hasznosak, ha a feldolgozás előtt üzenet-szűrésre van szükség.
+
+Az Event hubok hasznosak a nagy mennyiségű kommunikáció támogatásához.
 
 
-### <a name="write-defensive-functions"></a>Write defensive functions
+### <a name="write-functions-to-be-stateless"></a>Az írási függvények állapot nélküliek lesznek 
 
-Assume your function could encounter an exception at any time. Design your functions with the ability to continue from a previous fail point during the next execution. Consider a scenario that requires the following actions:
+A függvények állapot nélküliek és idempotens, ha lehetséges. Társítson minden szükséges állapotinformációkat az adataihoz. Például egy feldolgozás alatt álló megrendelés valószínűleg társítva lesz egy `state` taggal. Egy függvény az adott állapot alapján feldolgozhat egy rendelést, miközben maga a függvény állapota változatlan marad. 
 
-1. Query for 10,000 rows in a database.
-2. Create a queue message for each of those rows to process further down the line.
+A idempotens functions használata különösen ajánlott időzítő eseményindítókkal. Ha például olyan dolog van, amely naponta egyszer kell futnia, írja meg, hogy a nap folyamán bármikor fusson ugyanazzal az eredménnyel. A függvény akkor léphet ki, ha egy adott nap nem működik. Ha egy korábbi Futtatás nem fejeződött be, a következő futtatásnak kell megadnia, ahol abbahagyta.
+
+
+### <a name="write-defensive-functions"></a>Védelmi függvények írása
+
+Tegyük fel, hogy a függvényt bármikor felmerülhet. Tervezze meg a függvényeket úgy, hogy a következő végrehajtás során egy korábbi sikertelen pontról folytassanak. Vegyünk egy olyan forgatókönyvet, amely a következő műveleteket igényli:
+
+1. Egy adatbázisban lévő 10 000-sorok lekérdezése.
+2. Hozzon létre egy üzenetsor-üzenetet az egyes sorokhoz a sor további feldolgozásához.
  
-Depending on how complex your system is, you may have: involved downstream services behaving badly, networking outages, or quota limits reached, etc. All of these can affect your function at any time. You need to design your functions to be prepared for it.
+Attól függően, hogy milyen összetett a rendszer, lehetséges, hogy: a kapcsolódó alsóbb szintű szolgáltatások rosszul viselkednek, a hálózati kimaradások, vagy a kvóta korlátai is megszülettek. Ezek mindegyike bármikor hatással lehet a függvényre. Meg kell terveznie a feladatait.
 
-How does your code react if a failure occurs after inserting 5,000 of those items into a queue for processing? Track items in a set that you’ve completed. Otherwise, you might insert them again next time. This double-insertion can have a serious impact on your work flow, so [make your functions idempotent](functions-idempotent.md). 
+Hogyan reagál a kód, ha hiba lép fel az elemek 5 000-es beszúrását követően a feldolgozáshoz? Egy megadott készlet elemeinek nyomon követése. Ellenkező esetben a következő alkalommal is beszúrhatja őket. Ez a kettős Beszúrás komoly hatással lehet a munkahelyi folyamatra, így [a függvények idempotens](functions-idempotent.md). 
 
-If a queue item was already processed, allow your function to be a no-op.
+Ha egy üzenetsor-elem már fel lett dolgozva, a függvény nem lehet op.
 
-Take advantage of defensive measures already provided for components you use in the Azure Functions platform. For example, see **Handling poison queue messages** in the documentation for [Azure Storage Queue triggers and bindings](functions-bindings-storage-queue.md#trigger---poison-messages). 
+Használja ki a Azure Functions platformon használt összetevőkhöz már megadott védelmi mértékeket. Tekintse meg például az [Azure Storage üzenetsor-eseményindítók és-kötések](functions-bindings-storage-queue.md#trigger---poison-messages)dokumentációjában található **méreg üzenetsor-üzeneteinek kezelését** ismertető részt. 
 
-## <a name="scalability-best-practices"></a>Scalability best practices
+## <a name="scalability-best-practices"></a>Méretezhetőség – ajánlott eljárások
 
-There are a number of factors that impact how instances of your function app scale. The details are provided in the documentation for [function scaling](functions-scale.md).  The following are some best practices to ensure optimal scalability of a function app.
+Számos tényező befolyásolja a Function app-méretezési példányait. A részletek a [függvények skálázására](functions-scale.md)szolgáló dokumentációban találhatók.  Az alábbiakban néhány ajánlott eljárás használható a functions-alkalmazások optimális méretezhetőségének biztosításához.
 
-### <a name="share-and-manage-connections"></a>Share and manage connections
+### <a name="share-and-manage-connections"></a>Kapcsolatok megosztása és kezelése
 
-Reuse connections to external resources whenever possible.  See [how to manage connections in Azure Functions](./manage-connections.md).
+Ha lehetséges, a külső erőforrásokhoz való kapcsolódást újra fel kell használni.  Lásd: [kapcsolatok kezelése Azure Functionsban](./manage-connections.md).
 
-### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Don't mix test and production code in the same function app
+### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Ne keverje a tesztet és a termelési kódot ugyanabban a Function alkalmazásban
 
-Functions within a function app share resources. For example, memory is shared. If you're using a function app in production, don't add test-related functions and resources to it. It can cause unexpected overhead during production code execution.
+Functions-megosztási erőforrásokon belüli függvények. A memória például meg van osztva. Ha éles környezetben használ egy Function alkalmazást, ne adjon hozzá teszttel kapcsolatos függvényeket és erőforrásokat. Váratlan terhelést okozhat a termelési kód végrehajtása során.
 
-Be careful what you load in your production function apps. Memory is averaged across each function in the app.
+Ügyeljen arra, hogy milyen terhelést kell betöltenie az üzemi függvények alkalmazásaiba. A memória átlaga az alkalmazás egyes funkciói között.
 
-If you have a shared assembly referenced in multiple .NET functions, put it in a common shared folder. Otherwise, you could accidentally deploy multiple versions of the same binary that behave differently between functions.
+Ha a megosztott szerelvény több .NET-függvényben is szerepel, akkor egy közös megosztott mappában kell elhelyeznie. Ellenkező esetben előfordulhat, hogy véletlenül ugyanazon bináris fájl több verzióját helyezi üzembe, amely eltérően viselkedik a függvények között.
 
-Don't use verbose logging in production code, which has a negative performance impact.
+Ne használja a részletes naplózást az éles kódban, amely negatív hatással van a teljesítményre.
 
-### <a name="use-async-code-but-avoid-blocking-calls"></a>Use async code but avoid blocking calls
+### <a name="use-async-code-but-avoid-blocking-calls"></a>Aszinkron kód használata, de ne blokkolja a hívásokat
 
-Asynchronous programming is a recommended best practice. However, always avoid referencing the `Result` property or calling `Wait` method on a `Task` instance. This approach can lead to thread exhaustion.
+Az aszinkron programozás ajánlott eljárás. Azonban mindig ne hivatkozzon a `Result` tulajdonságra, vagy hívja meg `Wait` metódust egy `Task` példányon. Ez a módszer a szál kimerülését eredményezheti.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-### <a name="receive-messages-in-batch-whenever-possible"></a>Receive messages in batch whenever possible
+### <a name="receive-messages-in-batch-whenever-possible"></a>Üzenetek fogadása kötegben, amikor csak lehetséges
 
-Some triggers like Event Hub enable receiving a batch of messages on a single invocation.  Batching messages has much better performance.  You can configure the max batch size in the `host.json` file as detailed in the [host.json reference documentation](functions-host-json.md)
+Egyes eseményindítók, például az Event hub lehetővé teszik egy köteg üzenet fogadását egyetlen meghíváskor.  A kötegelt üzenetek sokkal jobb teljesítményt biztosítanak.  A `host.json` fájlban a maximális batch-méretet a [Host. JSON dokumentációjában](functions-host-json.md) részletezve állíthatja be.
 
-For C# functions, you can change the type to a strongly-typed array.  For example, instead of `EventData sensorEvent` the method signature could be `EventData[] sensorEvent`.  For other languages, you'll need to explicitly set the cardinality property in your `function.json` to `many` in order to enable batching [as shown here](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+A C# függvények esetében a típust erősen gépelt tömbre módosíthatja.  Például ahelyett, hogy `EventData sensorEvent` a metódus aláírását `EventData[] sensorEvent`.  Más nyelvek esetében explicit módon be kell állítania a `function.json` kardinális tulajdonságát, hogy `many`, hogy engedélyezze a kötegelt feldolgozást az [itt látható módon](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
-### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Configure host behaviors to better handle concurrency
+### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>A gazdagép viselkedésének konfigurálása a Egyidejűség jobb kezelésére
 
-The `host.json` file in the function app allows for configuration of host runtime and trigger behaviors.  In addition to batching behaviors, you can manage concurrency for a number of triggers. Often adjusting the values in these options can help each instance scale appropriately for the demands of the invoked functions.
+A Function alkalmazás `host.json` fájlja lehetővé teszi a gazdagép-futtatókörnyezet és az aktiválási viselkedés konfigurációját.  A Batch-viselkedésen kívül számos eseményindító esetében is kezelheti a párhuzamosságot. Az ilyen beállításokban szereplő értékek gyakran módosítják az egyes példányok megfelelő méretezését a meghívott függvények igényei szerint.
 
-Settings in the host.json file apply across all functions within the app, within a *single instance* of the function. For example, if you had a function app with two HTTP functions and [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) requests set to 25, a request to either HTTP trigger would count towards the shared 25 concurrent requests.  When that function app is scaled to 10 instances, the two functions effectively allow 250 concurrent requests (10 instances * 25 concurrent requests per instance). 
+A Host. JSON fájlban lévő beállítások a függvény *egyetlen példányán* belül az alkalmazáson belüli összes függvényre érvényesek. Ha például két HTTP-függvényt tartalmazó Function alkalmazást használ, [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) és a kérelmeket 25 értékre állítja, akkor a http-triggerre irányuló kérelem a közös 25 egyidejű kérések között számít.  Ha a függvény alkalmazása 10 példányra van méretezve, a két függvény hatékonyan engedélyezi az 250 egyidejű kérelmeket (10 példány * 25 egyidejű kérelem/példány). 
 
-Other host configuration options are found in the [host.json configuration article](functions-host-json.md).
+Más gazdagép-konfigurációs beállítások a [Host. JSON konfigurációs cikkben](functions-host-json.md)találhatók.
 
 ## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd a következőket:
 
-* [How to manage connections in Azure Functions](manage-connections.md)
-* [Azure App Service best practices](../app-service/app-service-best-practices.md)
+* [Kapcsolatok kezelése a Azure Functionsban](manage-connections.md)
+* [Azure App Service ajánlott eljárások](../app-service/app-service-best-practices.md)

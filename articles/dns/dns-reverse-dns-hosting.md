@@ -1,6 +1,6 @@
 ---
-title: Host reverse DNS lookup zones in Azure DNS | Microsoft Docs
-description: Learn how to use Azure DNS to host the reverse DNS lookup zones for your IP ranges
+title: DNS-névkeresési zónák üzemeltetése Azure DNSban | Microsoft Docs
+description: Megtudhatja, hogyan használhatja a Azure DNSt az IP-címtartományok fordított DNS-keresési zónáinak üzemeltetéséhez
 services: dns
 documentationcenter: na
 author: asudbring
@@ -19,45 +19,45 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211252"
 ---
-# <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Host reverse DNS lookup zones in Azure DNS
+# <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>DNS-névkeresési zónák üzemeltetése Azure DNS
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-This article explains how to host the reverse DNS lookup zones for your assigned IP ranges in Azure DNS. The IP ranges represented by the reverse lookup zones must be assigned to your organization, typically by your ISP.
+Ez a cikk azt ismerteti, hogyan futtathatja a fordított DNS-keresési zónákat a Azure DNS-beli hozzárendelt IP-címtartományok számára. A névkeresési zónák által reprezentált IP-tartományokat hozzá kell rendelni a szervezethez, jellemzően az INTERNETSZOLGÁLTATÓnál.
 
-To configure reverse DNS for an Azure-owned IP address that's assigned to your Azure service, see [Configure reverse DNS for services hosted in Azure](dns-reverse-dns-for-azure-services.md).
+Ha az Azure-szolgáltatáshoz hozzárendelt Azure-beli IP-cím fordított DNS-címét szeretné beállítani, tekintse meg a [fordított DNS konfigurálása az Azure-ban üzemeltetett szolgáltatásokhoz](dns-reverse-dns-for-azure-services.md)című témakört.
 
-Before you read this article, you should be familiar with the [overview of reverse DNS and support in Azure](dns-reverse-dns-overview.md).
+A cikk elolvasása előtt ismernie kell a [fordított DNS és az Azure-támogatás áttekintését](dns-reverse-dns-overview.md).
 
-This article walks you through the steps to create your first reverse lookup DNS zone and record by using the Azure portal, Azure PowerShell, Azure classic CLI, or Azure CLI.
+Ez a cikk végigvezeti az első névkeresési DNS-zóna és-rekord létrehozásának lépésein a Azure Portal, a Azure PowerShell, az Azure klasszikus CLI vagy az Azure CLI használatával.
 
-## <a name="create-a-reverse-lookup-dns-zone"></a>Create a reverse lookup DNS zone
+## <a name="create-a-reverse-lookup-dns-zone"></a>Névkeresési DNS-zóna létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. On the **Hub** menu, select **New** > **Networking**, and then select **DNS zone**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. A **központi** menüben válassza az **új** > **hálózatkezelés**, majd a **DNS-zóna**lehetőséget.
 
-   !["DNS zone" selection](./media/dns-reverse-dns-hosting/figure1.png)
+   !["DNS-zóna" kiválasztása](./media/dns-reverse-dns-hosting/figure1.png)
 
-1. In the **Create DNS zone** pane, name your DNS zone. The name of the zone is crafted differently for IPv4 and IPv6 prefixes. Use the instructions for [IPv4](#ipv4) or [IPv6](#ipv6) to name your zone. When you're finished, select **Create** to create the zone.
+1. A **DNS-zóna létrehozása** panelen nevezze el a DNS-zónát. A zóna neve eltér az IPv4-és IPv6-előtagoktól. Az [IPv4](#ipv4) -vagy [IPv6](#ipv6) -utasítások használatával nevezze el a zónát. Ha elkészült, válassza a **Létrehozás** lehetőséget a zóna létrehozásához.
 
 ### <a name="ipv4"></a>IPv4
 
-The name of an IPv4 reverse lookup zone is based on the IP range that it represents. It should be in the following format: `<IPv4 network prefix in reverse order>.in-addr.arpa`. For examples, see [Overview of reverse DNS and support in Azure](dns-reverse-dns-overview.md#ipv4).
+Az IPv4 névkeresési zónák neve az általa reprezentált IP-tartományon alapul. A következő formátumúnak kell lennie: `<IPv4 network prefix in reverse order>.in-addr.arpa`. Példák: a [fordított DNS és a támogatás áttekintése az Azure-ban](dns-reverse-dns-overview.md#ipv4).
 
 > [!NOTE]
-> When you're creating classless reverse DNS lookup zones in Azure DNS, you must use a hyphen (`-`) rather than a forward slash (`/`) in the zone name.
+> Ha az osztály nélküli fordított DNS-keresési zónákat Azure DNSban hozza létre, a zóna nevében egy perjelet (`/`) kell`-`használnia.
 >
-> For example, for the IP range 192.0.2.128/26, you must use `128-26.2.0.192.in-addr.arpa` as the zone name instead of `128/26.2.0.192.in-addr.arpa`.
+> A 192.0.2.128/26 IP-címtartomány esetében például `128-26.2.0.192.in-addr.arpa`t kell használnia a zóna neveként `128/26.2.0.192.in-addr.arpa`helyett.
 >
-> Although the DNS standards support both methods, Azure DNS doesn't support DNS zone names that contain for forward slash (`/`) character.
+> Bár a DNS-szabványok mindkét módszert támogatják, a Azure DNS nem támogatja a továbbítási perjel (`/`) karaktert tartalmazó DNS-zónák nevét.
 
-The following example shows how to create a Class C reverse DNS zone named `2.0.192.in-addr.arpa` in Azure DNS via the Azure portal:
+Az alábbi példa bemutatja, hogyan hozhat létre egy `2.0.192.in-addr.arpa` nevű C. osztályú fordított DNS-zónát Azure DNS a Azure Portal használatával:
 
- !["Create DNS zone" pane, with boxes filled in](./media/dns-reverse-dns-hosting/figure2.png)
+ !["DNS-zóna létrehozása" panel, betöltött mezőkkel](./media/dns-reverse-dns-hosting/figure2.png)
 
-**Resource group location** defines the location for the resource group. It has no impact on the DNS zone. A DNS-zóna helye mindig „globális”, és nem jelenik meg.
+Az **erőforráscsoport helye** határozza meg az erőforráscsoport helyét. Nincs hatással a DNS-zónára. A DNS-zóna helye mindig „globális”, és nem jelenik meg.
 
-The following examples show how to complete this task by using Azure PowerShell and Azure CLI.
+Az alábbi példák bemutatják, hogyan hajthatja végre ezt a feladatot a Azure PowerShell és az Azure CLI használatával.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -71,7 +71,7 @@ New-AzDnsZone -Name 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
 azure network dns zone create MyResourceGroup 2.0.192.in-addr.arpa
 ```
 
-#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n 2.0.192.in-addr.arpa
@@ -79,16 +79,16 @@ az network dns zone create -g MyResourceGroup -n 2.0.192.in-addr.arpa
 
 ### <a name="ipv6"></a>IPv6
 
-The name of an IPv6 reverse lookup zone should be in the following form: `<IPv6 network prefix in reverse order>.ip6.arpa`.  For examples, see [Overview of reverse DNS and support in Azure](dns-reverse-dns-overview.md#ipv6).
+Az IPv6 névkeresési zóna nevének a következő formában kell lennie: `<IPv6 network prefix in reverse order>.ip6.arpa`.  Példák: a [fordított DNS és a támogatás áttekintése az Azure-ban](dns-reverse-dns-overview.md#ipv6).
 
 
-The following example shows how to create an IPv6 reverse DNS lookup zone named `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` in Azure DNS via the Azure portal:
+Az alábbi példa bemutatja, hogyan hozhat létre egy `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` nevű IPv6 fordított DNS-keresési zónát Azure DNS a Azure Portal használatával:
 
- !["Create DNS zone" pane, with boxes filled in](./media/dns-reverse-dns-hosting/figure3.png)
+ !["DNS-zóna létrehozása" panel, betöltött mezőkkel](./media/dns-reverse-dns-hosting/figure3.png)
 
-**Resource group location** defines the location for the resource group. It has no impact on the DNS zone. A DNS-zóna helye mindig „globális”, és nem jelenik meg.
+Az **erőforráscsoport helye** határozza meg az erőforráscsoport helyét. Nincs hatással a DNS-zónára. A DNS-zóna helye mindig „globális”, és nem jelenik meg.
 
-The following examples show how to complete this task by using Azure PowerShell and Azure CLI.
+Az alábbi példák bemutatják, hogyan hajthatja végre ezt a feladatot a Azure PowerShell és az Azure CLI használatával.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -102,38 +102,38 @@ New-AzDnsZone -Name 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName 
 azure network dns zone create MyResourceGroup 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-## <a name="delegate-a-reverse-dns-lookup-zone"></a>Delegate a reverse DNS lookup zone
+## <a name="delegate-a-reverse-dns-lookup-zone"></a>Fordított DNS-keresési zóna delegálása
 
-Now that you've created your reverse DNS lookup zone, you must ensure that the zone is delegated from the parent zone. DNS delegation enables the DNS name resolution process to find the name servers that host your reverse DNS lookup zone. Those name servers can then answer DNS reverse queries for the IP addresses in your address range.
+Most, hogy létrehozta a fordított DNS-keresési zónát, meg kell győződnie arról, hogy a zóna delegálva van a fölérendelt zónából. A DNS-delegálás lehetővé teszi a DNS-névfeloldási folyamat számára a fordított DNS-keresési zónát futtató névkiszolgálók megtalálását. Ezek a névkiszolgálók ezután megválaszolják a címtartomány IP-címeinek DNS-névkeresési lekérdezéseit.
 
-For forward lookup zones, the process of delegating a DNS zone is described in [Delegate your domain to Azure DNS](dns-delegate-domain-azure-dns.md). Delegation for reverse lookup zones works the same way. The only difference is that you need to configure the name servers with the ISP that provided your IP range, rather than your domain name registrar.
+A Címkeresési zónák esetében a DNS-zónák delegálásának folyamatát a [tartomány delegálása Azure DNSra](dns-delegate-domain-azure-dns.md)című témakörben találja. A névkeresési zónák delegálása ugyanúgy működik. Az egyetlen különbség, hogy konfigurálnia kell a névszervereket az IP-tartományt a tartománynév-regisztráló helyett biztosító INTERNETSZOLGÁLTATÓval.
 
-## <a name="create-a-dns-ptr-record"></a>Create a DNS PTR record
+## <a name="create-a-dns-ptr-record"></a>PTR típusú DNS-rekord létrehozása
 
 ### <a name="ipv4"></a>IPv4
 
-The following example walks you through the process of creating a PTR record in a reverse DNS zone in Azure DNS. Más rekordtípusok és meglévő rekordok módosítása esetén lásd [a DNS-rekordok és -rekordhalmazok az Azure Portallal való kezelésével kapcsolatos](dns-operations-recordsets-portal.md) témakört.
+Az alábbi példa végigvezeti egy PTR-rekordnak a Azure DNS fordított DNS-zónában való létrehozásának folyamatán. Más rekordtípusok és meglévő rekordok módosítása esetén lásd [a DNS-rekordok és -rekordhalmazok az Azure Portallal való kezelésével kapcsolatos](dns-operations-recordsets-portal.md) témakört.
 
-1. At the top of the **DNS zone** pane, select **+ Record set** to open the **Add record set** pane.
+1. A **DNS-zóna** ablaktábla felső részén válassza a **+ rekord beállítása** elemet a **rekord hozzáadása** ablaktábla megnyitásához.
 
-   ![Button for creating a record set](./media/dns-reverse-dns-hosting/figure4.png)
+   ![Rekord létrehozására szolgáló gomb](./media/dns-reverse-dns-hosting/figure4.png)
 
-1. The name of the record set for a PTR record needs to be the rest of the IPv4 address in reverse order. 
+1. A PTR rekordhoz tartozó rekord nevének a többi IPv4-címnek kell lennie fordított sorrendben. 
 
-   In this example, the first three octets are already populated as part of the zone name (.2.0.192). Therefore, only the last octet is supplied in the **Name** box. For example, you might name your record set **15** for a resource whose IP address is 192.0.2.15.  
-1. For **Type**, select **PTR**.  
-1. For **DOMAIN NAME**, enter the fully qualified domain name (FQDN) of the resource that uses the IP.
-1. Select **OK** at the bottom of the pane to create the DNS record.
+   Ebben a példában az első három oktett már fel van töltve a zóna neve (. 2.0.192) részeként. Ezért csak az utolsó oktett van megadva a **név** mezőben. Előfordulhat például, hogy egy olyan erőforráshoz nevezi a **15** . rekordot, amelynek IP-címe 192.0.2.15.  
+1. A **Típus mezőben**válassza a **PTR**lehetőséget.  
+1. A **tartománynév**mezőben adja meg az IP-címet használó erőforrás teljes tartománynevét (FQDN).
+1. A DNS-rekord létrehozásához kattintson az **OK gombra** a panel alján.
 
-   !["Add record set" pane, with boxes filled in](./media/dns-reverse-dns-hosting/figure5.png)
+   !["Rekordazonosító hozzáadása" panel, betöltött mezőkkel](./media/dns-reverse-dns-hosting/figure5.png)
 
-The following examples show how to complete this task by using PowerShell or Azure CLI.
+A következő példák bemutatják, hogyan hajthatja végre ezt a feladatot a PowerShell vagy az Azure CLI használatával.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -146,7 +146,7 @@ New-AzDnsRecordSet -Name 15 -RecordType PTR -ZoneName 2.0.192.in-addr.arpa -Reso
 azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 PTR --ptrdname dc1.contoso.com  
 ```
 
-#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
     az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
@@ -154,22 +154,22 @@ azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 
 
 ### <a name="ipv6"></a>IPv6
 
-The following example walks you through the process of creating new PTR record. Más rekordtípusok és meglévő rekordok módosítása esetén lásd [a DNS-rekordok és -rekordhalmazok az Azure Portallal való kezelésével kapcsolatos](dns-operations-recordsets-portal.md) témakört.
+Az alábbi példa végigvezeti az új PTR-rekord létrehozásának folyamatán. Más rekordtípusok és meglévő rekordok módosítása esetén lásd [a DNS-rekordok és -rekordhalmazok az Azure Portallal való kezelésével kapcsolatos](dns-operations-recordsets-portal.md) témakört.
 
-1. At the top of the **DNS zone** pane, select **+ Record set** to open the **Add record set** pane.
+1. A **DNS-zóna** ablaktábla felső részén válassza a **+ rekord beállítása** elemet a **rekord hozzáadása** ablaktábla megnyitásához.
 
-   ![Button for creating a record set](./media/dns-reverse-dns-hosting/figure6.png)
+   ![Rekord létrehozására szolgáló gomb](./media/dns-reverse-dns-hosting/figure6.png)
 
-2. The name of the record set for a PTR record needs to be the rest of the IPv6 address in reverse order. It must not include any zero compression. 
+2. A PTR rekordhoz beállított rekord nevének a többi IPv6-címnek kell lennie fordított sorrendben. Nem tartalmazhat nulla tömörítést. 
 
-   In this example, the first 64 bits of the IPv6 are already populated as part of the zone name (0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa). Therefore, only the last 64 bits are supplied in the **Name** box. The last 64 bits of the IP address are entered in reverse order, with a period as the delimiter between each hexadecimal number. For example, you might name your record set **e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f** for a resource whose IP address is 2001:0db8:abdc:0000:f524:10bc:1af9:405e.  
-3. For **Type**, select **PTR**.  
-4. For **DOMAIN NAME**, enter the FQDN of the resource that uses the IP.
-5. Select **OK** at the bottom of the pane to create the DNS record.
+   Ebben a példában az IPv6 első 64 bitje már fel van töltve a zóna neve (0.0.0.0. c. d. b. a. 8. b. d. 0.1.0.0.2. IP6. arpa) részeként. Ezért csak az utolsó 64 bit van megadva a **név** mezőben. Az IP-cím utolsó 64 bitje fordított sorrendben van megadva, és az egyes hexadecimális számok között elválasztó pontnak kell lennie. Például megadhatja az **e. 5.0.4.9. f. a. 1. c. b. 0.1.4.2.5. f** nevű rekordot egy olyan erőforráshoz, amelynek IP-címe 2001:0db8: ABDC: 0000: f524:10bc: 1af9:405e.  
+3. A **Típus mezőben**válassza a **PTR**lehetőséget.  
+4. A **tartománynév**mezőben adja meg az IP-címet használó erőforrás teljes tartománynevét.
+5. A DNS-rekord létrehozásához kattintson az **OK gombra** a panel alján.
 
-!["Add record set" pane, with boxes filled in](./media/dns-reverse-dns-hosting/figure7.png)
+!["Rekordazonosító hozzáadása" panel, betöltött mezőkkel](./media/dns-reverse-dns-hosting/figure7.png)
 
-The following examples show how to complete this task by using PowerShell or Azure CLI.
+A következő példák bemutatják, hogyan hajthatja végre ezt a feladatot a PowerShell vagy az Azure CLI használatával.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -183,7 +183,7 @@ New-AzDnsRecordSet -Name "e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f" -RecordType PTR -Zone
 azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f PTR --ptrdname dc2.contoso.com 
 ```
  
-#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
     az network dns record-set ptr add-record -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -n e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f --ptrdname dc2.contoso.com
@@ -191,15 +191,15 @@ azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.
 
 ## <a name="view-records"></a>A rekordok megtekintése
 
-To view the records that you created, browse to your DNS zone in the Azure portal. In the lower part of the **DNS zone** pane, you can see the records for the DNS zone. You should see the default NS and SOA records, plus any new records that you've created. The NS and SOA records are created in every zone. 
+A létrehozott rekordok megtekintéséhez keresse meg a DNS-zónát a Azure Portalban. A **DNS-zóna** panel alsó részén láthatja a DNS-zóna rekordjait. Ekkor meg kell jelennie az alapértelmezett NS és SOA rekordoknak, valamint a létrehozott új rekordoknak. Az NS-és SOA-rekordok minden zónában létrejönnek. 
 
 ### <a name="ipv4"></a>IPv4
 
-The **DNS zone** pane shows the IPv4 PTR records:
+A **DNS-zóna** ablaktáblán az IPv4 PTR rekordok láthatók:
 
-!["DNS zone" pane with IPv4 records](./media/dns-reverse-dns-hosting/figure8.png)
+!["DNS-zóna" ablaktábla IPv4-rekordokkal](./media/dns-reverse-dns-hosting/figure8.png)
 
-The following examples show how to view the PTR records by using PowerShell or Azure CLI.
+Az alábbi példák bemutatják, hogyan tekintheti meg a PTR-rekordokat a PowerShell vagy az Azure CLI használatával.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -213,7 +213,7 @@ Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceG
     azure network dns record-set list MyResourceGroup 2.0.192.in-addr.arpa
 ```
 
-#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
     azure network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
@@ -221,11 +221,11 @@ Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceG
 
 ### <a name="ipv6"></a>IPv6
 
-The **DNS zone** pane shows the IPv6 PTR records:
+A **DNS-zóna** ablaktáblán az IPv6 PTR-rekordok láthatók:
 
-!["DNS zone" pane with IPv6 records](./media/dns-reverse-dns-hosting/figure9.png)
+!["DNS-zóna" ablaktábla IPv6-rekordokkal](./media/dns-reverse-dns-hosting/figure9.png)
 
-The following examples show how to view the records by using PowerShell or Azure CLI.
+Az alábbi példák bemutatják, hogyan tekintheti meg a rekordokat a PowerShell vagy az Azure CLI használatával.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -239,36 +239,36 @@ Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceG
     azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
     azure network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
-### <a name="can-i-host-reverse-dns-lookup-zones-for-my-isp-assigned-ip-blocks-on-azure-dns"></a>Can I host reverse DNS lookup zones for my ISP-assigned IP blocks on Azure DNS?
+### <a name="can-i-host-reverse-dns-lookup-zones-for-my-isp-assigned-ip-blocks-on-azure-dns"></a>Használhatok fordított DNS-keresési zónákat az INTERNETSZOLGÁLTATÓ által hozzárendelt IP-blokkokhoz Azure DNSon?
 
-Igen. Hosting the reverse lookup (ARPA) zones for your own IP ranges in Azure DNS is fully supported.
+Igen. A névkeresési (ARPA) zónák tárolása a saját IP-címtartományok esetében Azure DNS teljes mértékben támogatott.
 
-Create the reverse lookup zone in Azure DNS as explained in this article, and then work with your ISP to [delegate the zone](dns-domain-delegation.md). You can then manage the PTR records for each reverse lookup in the same way as other record types.
+Hozza létre a névkeresési zónát Azure DNS a jelen cikkben leírtak szerint, majd működjön együtt az INTERNETSZOLGÁLTATÓval [a zóna delegálásához](dns-domain-delegation.md). Ezután az egyes névlekérdezésekhez tartozó PTR-rekordokat ugyanúgy kezelheti, mint más bejegyzéstípusokat.
 
-### <a name="how-much-does-hosting-my-reverse-dns-lookup-zone-cost"></a>How much does hosting my reverse DNS lookup zone cost?
+### <a name="how-much-does-hosting-my-reverse-dns-lookup-zone-cost"></a>Mennyibe kerül a fordított DNS keresési zóna ára?
 
-Hosting the reverse DNS lookup zone for your ISP-assigned IP block in Azure DNS is charged at [standard Azure DNS rates](https://azure.microsoft.com/pricing/details/dns/).
+Ha a fordított DNS-keresési zónát az INTERNETSZOLGÁLTATÓ által hozzárendelt IP-blokkhoz szeretné üzemeltetni, Azure DNS a [standard Azure DNS díjszabása](https://azure.microsoft.com/pricing/details/dns/)alapján számítjuk fel.
 
-### <a name="can-i-host-reverse-dns-lookup-zones-for-both-ipv4-and-ipv6-addresses-in-azure-dns"></a>Can I host reverse DNS lookup zones for both IPv4 and IPv6 addresses in Azure DNS?
+### <a name="can-i-host-reverse-dns-lookup-zones-for-both-ipv4-and-ipv6-addresses-in-azure-dns"></a>Használhatok fordított DNS-keresési zónákat a Azure DNS IPv4-és IPv6-címeihez is?
 
-Igen. This article explains how to create both IPv4 and IPv6 reverse DNS lookup zones in Azure DNS.
+Igen. Ez a cikk bemutatja, hogyan hozhat létre IPv4-és IPv6-névlekérdezési zónákat Azure DNSban.
 
-### <a name="can-i-import-an-existing-reverse-dns-lookup-zone"></a>Can I import an existing reverse DNS lookup zone?
+### <a name="can-i-import-an-existing-reverse-dns-lookup-zone"></a>Importálható egy meglévő fordított DNS-keresési zóna?
 
-Igen. You can use Azure CLI to import existing DNS zones into Azure DNS. This method works for both forward lookup zones and reverse lookup zones.
+Igen. Az Azure CLI-vel meglévő DNS-zónákat importálhat Azure DNSba. Ez a metódus mindkét címkeresési zónához és névkeresési zónához használható.
 
-For more information, see [Import and export a DNS zone file using Azure CLI](dns-import-export.md).
+További információ: [DNS-zónafájl importálása és exportálása az Azure CLI használatával](dns-import-export.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-For more information on reverse DNS, see [reverse DNS lookup on Wikipedia](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+A fordított DNS-sel kapcsolatos további információkért lásd: [fordított DNS-keresés a wikipedia-ben](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
-Learn how to [manage reverse DNS records for your Azure services](dns-reverse-dns-for-azure-services.md).
+Ismerje meg, hogyan [kezelheti az Azure-szolgáltatások fordított DNS-rekordjait](dns-reverse-dns-for-azure-services.md).

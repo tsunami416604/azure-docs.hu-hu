@@ -1,6 +1,6 @@
 ---
-title: Use Azure Functions to perform a database clean up task
-description: Use Azure Functions to schedule a task that connects to Azure SQL Database to periodically clean up rows.
+title: Adatbázis-tisztítási feladat végrehajtása a Azure Functions használatával
+description: A Azure Functions használatával ütemezhet egy olyan feladatot, amely a Azure SQL Databasehoz kapcsolódik a sorok rendszeres tisztításához.
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
@@ -11,82 +11,82 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230381"
 ---
-# <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Use Azure Functions to connect to an Azure SQL Database
+# <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions használata Azure SQL Databasehoz való kapcsolódáshoz
 
-This article shows you how to use Azure Functions to create a scheduled job that connects to an Azure SQL Database or Azure SQL Managed Instance. The function code cleans up rows in a table in the database. The new C# function is created based on a pre-defined timer trigger template in Visual Studio 2019. To support this scenario, you must also set a database connection string as an app setting in the function app. For Azure SQL Managed Instance you need to [enable public endpoint](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) to be able to connect from Azure Functions. This scenario uses a bulk operation against the database. 
+Ez a cikk bemutatja, hogyan használható a Azure Functions egy Azure SQL Database vagy Azure SQL felügyelt példányhoz csatlakozó ütemezett feladatok létrehozásához. A függvény kódja megtisztítja a sorokat egy táblában az adatbázisban. Az új C# függvény egy előre definiált időzítő-trigger sablon alapján jön létre a Visual Studio 2019-ben. Ennek a forgatókönyvnek a támogatásához egy adatbázis-kapcsolódási karakterláncot kell beállítania egy alkalmazás-beállításként a Function alkalmazásban. Az Azure SQL felügyelt példányához engedélyeznie kell a [nyilvános végpontot](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) , hogy csatlakozni tudjon a Azure functions. Ez a forgatókönyv egy tömeges műveletet használ az adatbázison. 
 
-If this is your first experience working with C# Functions, you should read the [Azure Functions C# developer reference](functions-dotnet-class-library.md).
+Ha első alkalommal dolgozik a functions szolgáltatással C# , olvassa el a [Azure functions C# fejlesztői referenciát](functions-dotnet-class-library.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Complete the steps in the article [Create your first function using Visual Studio](functions-create-your-first-function-visual-studio.md) to create a local function app that targets the version 2.x runtime. You must also have published your project to a function app in Azure.
++ Az [első függvény létrehozása a Visual Studióval](functions-create-your-first-function-visual-studio.md) című cikkben ismertetett lépéseket követve hozzon létre egy helyi function alkalmazást, amely a 2. x verziójú futtatókörnyezetet célozza meg. Emellett közzé kell tennie a projektet egy Azure-beli Function alkalmazásban.
 
-+ This article demonstrates a Transact-SQL command that executes a bulk cleanup operation in the **SalesOrderHeader** table in the AdventureWorksLT sample database. To create the AdventureWorksLT sample database, complete the steps in the article [Create an Azure SQL database in the Azure portal](../sql-database/sql-database-get-started-portal.md).
++ Ez a cikk egy Transact-SQL-parancsot mutat be, amely egy tömeges karbantartási műveletet hajt végre a AdventureWorksLT-mintaadatbázis **SalesOrderHeader** táblájában. A AdventureWorksLT-mintaadatbázis létrehozásához hajtsa végre a [Azure Portal Azure SQL Database-adatbázis létrehozása](../sql-database/sql-database-get-started-portal.md)című cikkben ismertetett lépéseket.
 
-+ You must add a [server-level firewall rule](../sql-database/sql-database-get-started-portal-firewall.md) for the public IP address of the computer you use for this quickstart. This rule is required to be able access the SQL database instance from your local computer.  
++ A rövid útmutatóhoz használt számítógép nyilvános IP-címéhez hozzá kell adnia egy [kiszolgálói szintű tűzfalszabály-szabályt](../sql-database/sql-database-get-started-portal-firewall.md) . Ez a szabály szükséges ahhoz, hogy hozzáférhessen az SQL Database-példányhoz a helyi számítógépről.  
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
-You need to get the connection string for the database you created when you completed [Create an Azure SQL database in the Azure portal](../sql-database/sql-database-get-started-portal.md).
+Az [Azure SQL Database-adatbázis létrehozásakor](../sql-database/sql-database-get-started-portal.md)létrehozott adatbázishoz tartozó kapcsolódási karakterláncot le kell kérni a Azure Portal.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
-1. Select **SQL Databases** from the left-hand menu, and select your database on the **SQL databases** page.
+1. Válassza ki az **SQL-adatbázisok** elemet a bal oldali menüben, és válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
-1. Select **Connection strings** under **Settings** and copy the complete **ADO.NET** connection string. For Azure SQL Managed Instance copy connection string for public endpoint.
+1. Válassza a **kapcsolatok karakterláncok** lehetőséget a **Beállítások** területen, és másolja a teljes **ADO.net** -kapcsolatok karakterláncát. Az Azure SQL felügyelt példánya esetében a nyilvános végponthoz tartozó kapcsolatok karakterláncának másolása.
 
-    ![Copy the ADO.NET connection string.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
+    ![Másolja a ADO.NET-kapcsolatok karakterláncát.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
 ## <a name="set-the-connection-string"></a>A kapcsolati sztring beállítása
 
-A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. As a best security practice, store connection strings and other secrets in your function app settings. Using application settings prevents accidental disclosure of the connection string with your code. You can access app settings for your function app right from Visual Studio.
+A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. Ajánlott biztonsági eljárásként a Function app-beállításokban tárolja a kapcsolatok karakterláncait és egyéb titkait. Az Alkalmazásbeállítások használata megakadályozza a kapcsolatok karakterláncának véletlen közzétételét a kóddal. A Function alkalmazáshoz közvetlenül a Visual studióból férhet hozzá.
 
-You must have previously published your app to Azure. If you haven't already done so, [Publish your function app to Azure](functions-develop-vs.md#publish-to-azure).
+Előzőleg közzé kell tennie az alkalmazást az Azure-ban. Ha még nem tette meg, [tegye közzé a Function alkalmazást az Azure](functions-develop-vs.md#publish-to-azure)-ban.
 
-1. In Solution Explorer, right-click the function app project and choose **Publish** > **Manage application settings...** . Select **Add setting**, in **New app setting name**, type `sqldb_connection`, and select **OK**.
+1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és válassza a **közzététel** > az **Alkalmazásbeállítások kezelése...** lehetőséget. Válassza a **beállítás hozzáadása**lehetőséget, az **új Alkalmazásbeállítás neve**mezőbe írja be a `sqldb_connection`nevet, majd kattintson **az OK gombra**.
 
-    ![Application settings for the function app.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
+    ![A Function alkalmazás Alkalmazásbeállítások.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
-1. In the new **sqldb_connection** setting, paste the connection string you copied in the previous section into the **Local** field and replace `{your_username}` and `{your_password}` placeholders with real values. Select **Insert value from local** to copy the updated value into the **Remote** field, and then select **OK**.
+1. Az új **sqldb_connection** beállításban illessze be az előző szakaszban a **helyi** mezőbe másolt, `{your_username}` és `{your_password}` helyőrzők valós értékkel való lecseréléséhez. Válassza a **helyi érték beszúrása** lehetőséget, hogy a frissített értéket a **távoli** mezőbe másolja, majd válassza az **OK**gombot.
 
-    ![Add SQL connection string setting.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
+    ![Adja meg az SQL-kapcsolatok karakterláncának beállítását.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
-    The connection strings are stored encrypted in Azure (**Remote**). To prevent leaking secrets, the local.settings.json project file (**Local**) should be excluded from source control, such as by using a .gitignore file.
+    A rendszer az Azure-ban (**távoli**) tárolja a kapcsolatok karakterláncait. A titkok kiszivárgásának megelőzése érdekében a local. Settings. JSON projektfájlt (**Local**) ki kell zárni a forrás-vezérlőelemből, például egy. gitignore-fájl használatával.
 
-## <a name="add-the-sqlclient-package-to-the-project"></a>Add the SqlClient package to the project
+## <a name="add-the-sqlclient-package-to-the-project"></a>A SqlClient-csomag hozzáadása a projekthez
 
-You need to add the NuGet package that contains the SqlClient library. This data access library is needed to connect to a SQL database.
+Hozzá kell adnia a SqlClient könyvtárat tartalmazó NuGet-csomagot. Ez az adatelérési függvénytár egy SQL Database-adatbázishoz való kapcsolódáshoz szükséges.
 
-1. Open your local function app project in Visual Studio 2019.
+1. Nyissa meg a helyi function alkalmazás projektjét a Visual Studio 2019-ben.
 
-1. In Solution Explorer, right-click the function app project and choose **Manage NuGet Packages**.
+1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget.
 
 1. A **Tallózás** fülön keresse meg a(z) ```System.Data.SqlClient``` elemet, majd válassza ki.
 
-1. In the **System.Data.SqlClient** page, select version `4.5.1` and then click **Install**.
+1. A **System. SqlClient** lapon válassza a verzió `4.5.1` elemet, majd kattintson a **telepítés**gombra.
 
 1. A telepítés befejezése után tekintse át a módosításokat, majd kattintson az **OK** gombra az **Előnézet** ablak bezárásához.
 
 1. Ha megjelenik egy **License Acceptance** (Licenc elfogadása) ablak, kattintson az **I Accept** (Elfogadom) gombra.
 
-Now, you can add the C# function code that connects to your SQL Database.
+Most hozzáadhatja a C# SQL Databasehoz csatlakozó függvény kódját is.
 
 ## <a name="add-a-timer-triggered-function"></a>Időzítő által aktivált hozzáadása
 
-1. In Solution Explorer, right-click the function app project and choose **Add** > **New Azure function**.
+1. Megoldáskezelőban kattintson a jobb gombbal a Function app projektre, majd válassza az **új Azure-függvény** **hozzáadása** > lehetőséget.
 
-1. With the **Azure Functions** template selected, name the new item something like `DatabaseCleanup.cs` and select **Add**.
+1. Ha a **Azure functions** sablont választotta, nevezze el az új elemet, például `DatabaseCleanup.cs`, és válassza a **Hozzáadás**lehetőséget.
 
-1. In the **New Azure function** dialog box, choose **Timer trigger** and then **OK**. This dialog creates a code file for the timer triggered function.
+1. Az **új Azure-függvény** párbeszédpanelen válassza az **időzítő trigger** lehetőséget, majd **az OK gombot**. Ez a párbeszédablak létrehoz egy programkódot az időzítő által aktivált függvényhez.
 
-1. Open the new code file and add the following using statements at the top of the file:
+1. Nyissa meg az új kódot, és adja hozzá a következő using utasításokat a fájl elejéhez:
 
     ```cs
     using System.Data.SqlClient;
     using System.Threading.Tasks;
     ```
 
-1. Replace the existing `Run` function with the following code:
+1. Cserélje le a meglévő `Run` függvényt a következő kódra:
 
     ```cs
     [FunctionName("DatabaseCleanup")]
@@ -110,26 +110,26 @@ Now, you can add the C# function code that connects to your SQL Database.
     }
     ```
 
-    This function runs every 15 seconds to update the `Status` column based on the ship date. To learn more about the Timer trigger, see [Timer trigger for Azure Functions](functions-bindings-timer.md).
+    Ez a függvény 15 másodpercenként fut a `Status` oszlopnak a szállítási dátum alapján történő frissítéséhez. További információ az időzítő triggerről: [időzítő trigger Azure Functionshoz](functions-bindings-timer.md).
 
-1. Press **F5** to start the function app. The [Azure Functions Core Tools](functions-develop-local.md) execution window opens behind Visual Studio.
+1. Nyomja le az **F5** billentyűt a Function alkalmazás elindításához. Megnyílik a [Azure functions Core Tools](functions-develop-local.md) végrehajtási ablak a Visual Studio mögött.
 
-1. At 15 seconds after startup, the function runs. Watch the output and note the number of rows updated in the **SalesOrderHeader** table.
+1. Az indítás után 15 másodperccel a függvény fut. Tekintse meg a kimenetet, és jegyezze fel, hogy hány sor frissült a **SalesOrderHeader** táblában.
 
-    ![View the function logs.](./media/functions-scenario-database-table-cleanup/function-execution-results-log.png)
+    ![Tekintse meg a függvények naplóit.](./media/functions-scenario-database-table-cleanup/function-execution-results-log.png)
 
-    On the first execution, you should update 32 rows of data. Following runs update no data rows, unless you make changes to the SalesOrderHeader table data so that more rows are selected by the `UPDATE` statement.
+    Az első végrehajtáskor frissítenie kell az 32-es adatsorokat. A következő futtatások nem frissítik az adatsorokat, hacsak nem módosítja a SalesOrderHeader, hogy a `UPDATE` utasításban több sort is kiválasszanak.
 
-If you plan to [publish this function](functions-develop-vs.md#publish-to-azure), remember to change the `TimerTrigger` attribute to a more reasonable [cron schedule](functions-bindings-timer.md#ncrontab-expressions) than every 15 seconds.
+Ha azt tervezi, hogy [közzéteszi ezt a függvényt](functions-develop-vs.md#publish-to-azure), ne felejtse el megváltoztatnia a `TimerTrigger` attribútumot egy ésszerű [cron-ütemtervre](functions-bindings-timer.md#ncrontab-expressions) , mint 15 másodpercenként.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Next, learn how to use. Functions with Logic Apps to integrate with other services.
+A következő lépésben megtudhatja, hogyan használható. A más szolgáltatásokkal való integrációhoz Logic Apps függvényekkel.
 
 > [!div class="nextstepaction"]
-> [Create a function that integrates with Logic Apps](functions-twitter-email.md)
+> [Logic Apps-sel integrált függvény létrehozása](functions-twitter-email.md)
 
-For more information about Functions, see the following articles:
+A functions szolgáltatással kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 + [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)  
   Programozói segédanyagok függvények kódolásához, valamint eseményindítók és kötések meghatározásához.

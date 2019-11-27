@@ -1,6 +1,6 @@
 ---
-title: Migrate to Resource Manager with PowerShell
-description: This article walks through the platform-supported migration of IaaS resources such as virtual machines (VMs), virtual networks, and storage accounts from classic to Azure Resource Manager by using Azure PowerShell commands
+title: Migrálás a Resource Managerbe a PowerShell használatával
+description: Ez a cikk végigvezeti a platform által támogatott IaaS-erőforrások, például a virtuális gépek (VM-EK), a virtuális hálózatok és a klasszikus eszközökről a Storage-fiókok áttelepítésének Azure PowerShell parancsok használatával történő Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -21,102 +21,102 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484369"
 ---
-# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrate IaaS resources from classic to Azure Resource Manager by using PowerShell
-These steps show you how to use Azure PowerShell commands to migrate infrastructure as a service (IaaS) resources from the classic deployment model to the Azure Resource Manager deployment model.
+# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS-erőforrások migrálása a Klasszikusból a Azure Resource Managerba a PowerShell használatával
+Ezek a lépések bemutatják, hogyan használhatók Azure PowerShell parancsok a klasszikus üzemi modellből származó infrastruktúra szolgáltatásként (IaaS) a Azure Resource Manager üzembe helyezési modellbe való áttelepítéséhez.
 
-If you want, you can also migrate resources by using the [Azure CLI](../linux/migration-classic-resource-manager-cli.md).
+Ha szeretné, az [Azure CLI](../linux/migration-classic-resource-manager-cli.md)használatával is áttelepítheti az erőforrásokat.
 
-* For background on supported migration scenarios, see [Platform-supported migration of IaaS resources from classic to Azure Resource Manager](migration-classic-resource-manager-overview.md).
-* For detailed guidance and a migration walkthrough, see [Technical deep dive on platform-supported migration from classic to Azure Resource Manager](migration-classic-resource-manager-deep-dive.md).
-* [Review the most common migration errors](migration-classic-resource-manager-errors.md).
+* A támogatott áttelepítési forgatókönyvek hátteréről lásd: a [IaaS-erőforrások platform által támogatott áttelepítése klasszikusról Azure Resource Managerra](migration-classic-resource-manager-overview.md).
+* Részletes útmutatást és áttelepítési útmutatót a [klasszikus és Azure Resource Manager platform által támogatott áttelepítéssel foglalkozó](migration-classic-resource-manager-deep-dive.md)témakörben talál.
+* [Tekintse át a leggyakoribb áttelepítési hibákat](migration-classic-resource-manager-errors.md).
 
 <br>
-Here's a flowchart to identify the order in which steps need to be executed during a migration process.
+Az alábbi folyamatábra azt határozza meg, hogy milyen sorrendben kell végrehajtani a lépéseket egy áttelepítési folyamat során.
 
 ![Képernyőkép a migrálási lépésekről](media/migration-classic-resource-manager/migration-flow.png)
 
  
 
-## <a name="step-1-plan-for-migration"></a>Step 1: Plan for migration
-Here are a few best practices that we recommend as you evaluate whether to migrate IaaS resources from classic to Resource Manager:
+## <a name="step-1-plan-for-migration"></a>1\. lépés: az áttelepítés megtervezése
+Íme néhány ajánlott eljárás, amelyet a IaaS-erőforrások klasszikusról Resource Managerbe való áttelepítésének kiértékelése során ajánlunk:
 
-* Read through the [supported and unsupported features and configurations](migration-classic-resource-manager-overview.md). If you have virtual machines that use unsupported configurations or features, wait for the configuration or feature support to be announced. Alternatively, if it suits your needs, remove that feature or move out of that configuration to enable migration.
-* If you have automated scripts that deploy your infrastructure and applications today, try to create a similar test setup by using those scripts for migration. Alternatively, you can set up sample environments by using the Azure portal.
+* Olvassa el a [támogatott és nem támogatott funkciókat és konfigurációkat](migration-classic-resource-manager-overview.md). Ha olyan virtuális gépekkel rendelkezik, amelyek nem támogatott konfigurációkat vagy szolgáltatásokat használnak, várjon, amíg a konfiguráció vagy a szolgáltatás támogatása bejelentve lesz. Ha megfelel az igényeinek, távolítsa el ezt a szolgáltatást, vagy lépjen ki a konfigurációból az áttelepítés engedélyezéséhez.
+* Ha olyan automatizált parancsfájlokkal rendelkezik, amelyek jelenleg telepítik az infrastruktúrát és az alkalmazásokat, próbáljon meg hasonló tesztet létrehozni a parancsfájlok áttelepítéshez való használatával. Azt is megteheti, hogy a Azure Portal használatával is beállíthatja a mintavételezési környezeteket.
 
 > [!IMPORTANT]
-> Application gateways aren't currently supported for migration from classic to Resource Manager. To migrate a virtual network with an application gateway, remove the gateway before you run a Prepare operation to move the network. After you complete the migration, reconnect the gateway in Azure Resource Manager.
+> Az Application Gateway jelenleg nem támogatott a Klasszikusból a Resource Managerbe való áttelepítéshez. Ha egy virtuális hálózatot Application Gateway átjáróval szeretne áttelepíteni, távolítsa el az átjárót, mielőtt elkezdené a hálózat áthelyezését. Az áttelepítés befejezése után csatlakoztassuk újra az átjárót Azure Resource Manager.
 >
-> Azure ExpressRoute gateways that connect to ExpressRoute circuits in another subscription can't be migrated automatically. In such cases, remove the ExpressRoute gateway, migrate the virtual network, and re-create the gateway. For more information, see [Migrate ExpressRoute circuits and associated virtual networks from the classic to the Resource Manager deployment model](../../expressroute/expressroute-migration-classic-resource-manager.md).
+> Az ExpressRoute-áramkörökhöz egy másik előfizetésben csatlakozó Azure ExpressRoute-átjárók nem telepíthetők át automatikusan. Ilyen esetekben távolítsa el a ExpressRoute-átjárót, telepítse át a virtuális hálózatot, majd hozza létre újra az átjárót. További információ: [a ExpressRoute-áramkörök és a társított virtuális hálózatok áttelepítése a Klasszikusból a Resource Manager](../../expressroute/expressroute-migration-classic-resource-manager.md)-alapú üzemi modellbe.
 
-## <a name="step-2-install-the-latest-version-of-powershell"></a>Step 2: Install the latest version of PowerShell
-There are two main options to install Azure PowerShell: [PowerShell Gallery](https://www.powershellgallery.com/profiles/azure-sdk/) or [Web Platform Installer (WebPI)](https://aka.ms/webpi-azps). WebPI receives monthly updates. PowerShell Gallery receives updates on a continuous basis. This article is based on Azure PowerShell version 2.1.0.
+## <a name="step-2-install-the-latest-version-of-powershell"></a>2\. lépés: a PowerShell legújabb verziójának telepítése
+Két fő lehetőség van a Azure PowerShell telepítésére: [PowerShell-Galéria](https://www.powershellgallery.com/profiles/azure-sdk/) vagy [webplatform-telepítő (WebPI)](https://aka.ms/webpi-azps). A WebPI havi frissítéseket fogad. A PowerShell-galéria folyamatosan fogadja a frissítéseket. Ez a cikk a Azure PowerShell 2.1.0 verzióján alapul.
 
-For installation instructions, see [How to install and configure Azure PowerShell](/powershell/azure/overview).
+A telepítési utasításokért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
 
 <br>
 
-## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>Step 3: Ensure that you're an administrator for the subscription
-To perform this migration, you must be added as a coadministrator for the subscription in the [Azure portal](https://portal.azure.com).
+## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>3\. lépés: Győződjön meg arról, hogy Ön az előfizetés rendszergazdája
+Az áttelepítés elvégzéséhez hozzá kell adnia az előfizetéshez tartozó [Azure Portal](https://portal.azure.com).
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. On the **Hub** menu, select **Subscription**. If you don't see it, select **All services**.
-3. Find the appropriate subscription entry, and then look at the **MY ROLE** field. For a coadministrator, the value should be _Account admin_.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+2. A **központi** menüben válassza az **előfizetés**lehetőséget. Ha nem látja, válassza a **minden szolgáltatás**lehetőséget.
+3. Keresse meg a megfelelő előfizetési bejegyzést, majd tekintse meg a **saját szerepkör** mezőt. A rendszergazdák számára az értéknek a _fiók_rendszergazdája kell lennie.
 
-If you're not able to add a coadministrator, contact a service administrator or coadministrator for the subscription to get yourself added.
+Ha nem tud hozzáadni egy webkiszolgálót, vegye fel a kapcsolatot a szolgáltatás rendszergazdájával vagy az előfizetés egyik rendszergazdájával.
 
-## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>Step 4: Set your subscription, and sign up for migration
-First, start a PowerShell prompt. For migration, set up your environment for both classic and Resource Manager.
+## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>4\. lépés: az előfizetés beállítása és regisztráció az áttelepítésre
+Először indítson el egy PowerShell-parancssort. Az áttelepítéshez állítsa be a környezetet a klasszikus és a Resource Managerhez.
 
-Sign in to your account for the Resource Manager model.
+Jelentkezzen be a fiókjába a Resource Manager-modellhez.
 
 ```powershell
     Connect-AzAccount
 ```
 
-Get the available subscriptions by using the following command:
+Szerezze be az elérhető előfizetéseket a következő paranccsal:
 
 ```powershell
     Get-AzSubscription | Sort Name | Select Name
 ```
 
-Set your Azure subscription for the current session. This example sets the default subscription name to **My Azure Subscription**. Replace the example subscription name with your own.
+Állítsa be az Azure-előfizetését az aktuális munkamenethez. Ez a példa az alapértelmezett előfizetés nevét állítja be az **Azure-előfizetésre**. Cserélje le a példában szereplő előfizetés nevét a saját nevére.
 
 ```powershell
     Select-AzSubscription –SubscriptionName "My Azure Subscription"
 ```
 
 > [!NOTE]
-> Registration is a one-time step, but you must do it once before you attempt migration. Without registering, you see the following error message:
+> A regisztráció egyszeri lépés, de csak egyszer kell megtennie az áttelepítés megkísérlése előtt. A regisztráció nélkül a következő hibaüzenet jelenik meg:
 >
-> *BadRequest : Subscription is not registered for migration.*
+> *BadRequest: az előfizetés nincs regisztrálva áttelepítésre.*
 
-Register with the migration resource provider by using the following command:
+Regisztrálja az áttelepítési erőforrás-szolgáltatót a következő parancs használatával:
 
 ```powershell
     Register-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
-Wait five minutes for the registration to finish. Check the status of the approval by using the following command:
+Várjon öt percet, amíg a regisztráció befejeződik. A jóváhagyás állapotának ellenőrzéséhez használja a következő parancsot:
 
 ```powershell
     Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
-Make sure that RegistrationState is `Registered` before you proceed.
+A folytatás előtt győződjön meg arról, hogy a RegistrationState `Registered`.
 
-Now, sign in to your account for the classic deployment model.
+Most jelentkezzen be a fiókjába a klasszikus üzemi modellhez.
 
 ```powershell
     Add-AzureAccount
 ```
 
-Get the available subscriptions by using the following command:
+Szerezze be az elérhető előfizetéseket a következő paranccsal:
 
 ```powershell
     Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
 ```
 
-Set your Azure subscription for the current session. This example sets the default subscription to **My Azure Subscription**. Replace the example subscription name with your own.
+Állítsa be az Azure-előfizetését az aktuális munkamenethez. Ez a példa az alapértelmezett előfizetést állítja be az **Azure-előfizetésre**. Cserélje le a példában szereplő előfizetés nevét a saját nevére.
 
 ```powershell
     Select-AzureSubscription –SubscriptionName "My Azure Subscription"
@@ -124,32 +124,32 @@ Set your Azure subscription for the current session. This example sets the defau
 
 <br>
 
-## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>Step 5: Have enough Resource Manager VM vCPUs
-Make sure that you have enough Azure Resource Manager virtual machine vCPUs in the Azure region of your current deployment or virtual network. You can use the following PowerShell command to check the current number of vCPUs you have in Azure Resource Manager. To learn more about vCPU quotas, see [Limits and the Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager).
+## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>5\. lépés: elegendő Resource Manager VM-vCPU
+Győződjön meg arról, hogy az aktuális üzembe helyezés vagy a virtuális hálózat Azure-régiójában elegendő Azure Resource Manager virtuális gépek vCPU. A következő PowerShell-paranccsal ellenőrizhető, hogy az aktuálisan hány vCPU Azure Resource Manager. További információ a vCPU-kvótákkal kapcsolatban: [korlátok és a Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager).
 
-This example checks the availability in the **West US** region. Replace the example region name with your own.
+Ez a példa az **USA nyugati** régiójában lévő rendelkezésre állást ellenőrzi. Cserélje le a példában szereplő régió nevét a saját nevére.
 
 ```powershell
 Get-AzVMUsage -Location "West US"
 ```
 
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Step 6: Run commands to migrate your IaaS resources
-* [Migrate VMs in a cloud service (not in a virtual network)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
-* [Migrate VMs in a virtual network](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
-* [Migrate a storage account](#step-62-migrate-a-storage-account)
+## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>6\. lépés: a IaaS-erőforrások áttelepíthető parancsainak futtatása
+* [Virtuális gépek migrálása felhőalapú szolgáltatásban (nem virtuális hálózatban)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [Virtuális gépek migrálása virtuális hálózatban](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [Storage-fiók migrálása](#step-62-migrate-a-storage-account)
 
 > [!NOTE]
-> All the operations described here are idempotent. If you have a problem other than an unsupported feature or a configuration error, we recommend that you retry the prepare, abort, or commit operation. The platform then tries the action again.
+> Az itt leírt összes művelet idempotens. Ha a nem támogatott funkció vagy a konfigurációs hiba nem megfelelő, javasoljuk, hogy próbálkozzon újra az előkészítés, a megszakítás vagy a végrehajtás művelettel. A platform ezután újra próbálkozik a művelettel.
 
 
-### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Step 6.1: Option 1 - Migrate virtual machines in a cloud service (not in a virtual network)
-Get the list of cloud services by using the following command. Then pick the cloud service that you want to migrate. If the VMs in the cloud service are in a virtual network or if they have web or worker roles, the command returns an error message.
+### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>6,1. lépés: 1. lehetőség – virtuális gépek áttelepítése felhőalapú szolgáltatásba (nem virtuális hálózatban)
+Szerezze be a Cloud Services listáját a következő parancs használatával. Ezután válassza ki az áttelepíteni kívánt felhőalapú szolgáltatást. Ha a felhőalapú szolgáltatásban lévő virtuális gépek virtuális hálózaton vannak, vagy webes vagy feldolgozói szerepkörökkel rendelkeznek, a parancs hibaüzenetet ad vissza.
 
 ```powershell
     Get-AzureService | ft Servicename
 ```
 
-Get the deployment name for the cloud service. In this example, the service name is **My Service**. Replace the example service name with your own service name.
+Szerezze be a felhőalapú szolgáltatás központi telepítési nevét. Ebben a példában a szolgáltatás neve a **saját szolgáltatás**. Cserélje le a példában szereplő szolgáltatásnevet a saját szolgáltatás nevére.
 
 ```powershell
     $serviceName = "My Service"
@@ -157,11 +157,11 @@ Get the deployment name for the cloud service. In this example, the service name
     $deploymentName = $deployment.DeploymentName
 ```
 
-Prepare the virtual machines in the cloud service for migration. You have two options to choose from.
+Készítse elő a virtuális gépeket a Cloud Service-ben áttelepítésre. Két lehetőség közül választhat.
 
-* **Option 1: Migrate the VMs to a platform-created virtual network.**
+* **1. lehetőség: telepítse át a virtuális gépeket egy platform által létrehozott virtuális hálózatra.**
 
-    First, validate that you can migrate the cloud service by using the following commands:
+    Először is ellenőrizze, hogy a következő parancsok segítségével áttelepítheti-e a felhőalapú szolgáltatást:
 
     ```powershell
     $validate = Move-AzureService -Validate -ServiceName $serviceName `
@@ -169,15 +169,15 @@ Prepare the virtual machines in the cloud service for migration. You have two op
     $validate.ValidationMessages
     ```
 
-    The following command displays any warnings and errors that block migration. If validation is successful, you can move on to the Prepare step.
+    A következő parancs megjeleníti az áttelepítést tiltó figyelmeztetéseket és hibákat. Ha az érvényesítés sikeres, átléphet az előkészítési lépésre.
 
     ```powershell
     Move-AzureService -Prepare -ServiceName $serviceName `
         -DeploymentName $deploymentName -CreateNewVirtualNetwork
     ```
-* **Option 2: Migrate to an existing virtual network in the Resource Manager deployment model.**
+* **2. lehetőség: Migrálás egy meglévő virtuális hálózatra a Resource Manager-alapú üzemi modellben.**
 
-    This example sets the resource group name to **myResourceGroup**, the virtual network name to **myVirtualNetwork**, and the subnet name to **mySubNet**. Replace the names in the example with the names of your own resources.
+    Ebben a példában az erőforráscsoport nevét **myResourceGroup**, a virtuális hálózat nevét a **myVirtualNetwork**értékre, az alhálózat nevét pedig a **mySubNet**értékre állítja. Cserélje le a példában szereplő neveket a saját erőforrásainak nevére.
 
     ```powershell
     $existingVnetRGName = "myResourceGroup"
@@ -185,7 +185,7 @@ Prepare the virtual machines in the cloud service for migration. You have two op
     $subnetName = "mySubNet"
     ```
 
-    First, validate that you can migrate the virtual network by using the following command:
+    Először is ellenőrizze, hogy a következő paranccsal telepítheti-e át a virtuális hálózatot:
 
     ```powershell
     $validate = Move-AzureService -Validate -ServiceName $serviceName `
@@ -193,7 +193,7 @@ Prepare the virtual machines in the cloud service for migration. You have two op
     $validate.ValidationMessages
     ```
 
-    The following command displays any warnings and errors that block migration. If validation is successful, you can proceed with the following Prepare step:
+    A következő parancs megjeleníti az áttelepítést tiltó figyelmeztetéseket és hibákat. Ha az ellenőrzés sikeres, folytassa a következő előkészítési lépéssel:
 
     ```powershell
         Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName `
@@ -201,9 +201,9 @@ Prepare the virtual machines in the cloud service for migration. You have two op
         -VirtualNetworkName $vnetName -SubnetName $subnetName
     ```
 
-After the Prepare operation succeeds with either of the preceding options, query the migration state of the VMs. Ensure that they're in the `Prepared` state.
+Miután az előkészítési művelet sikeresen megtörtént az előző beállítások bármelyikével, lekérdezheti a virtuális gépek áttelepítési állapotát. Győződjön meg arról, hogy a `Prepared` állapotban vannak.
 
-This example sets the VM name to **myVM**. Replace the example name with your own VM name.
+Ebben a példában a virtuális gép nevét **myVM**értékre állítja. Cserélje le a példában szereplő nevet a saját virtuális gépe nevére.
 
 ```powershell
     $vmName = "myVM"
@@ -211,142 +211,142 @@ This example sets the VM name to **myVM**. Replace the example name with your ow
     $vm.VM.MigrationState
 ```
 
-Check the configuration for the prepared resources by using either PowerShell or the Azure portal. If you're not ready for migration and you want to go back to the old state, use the following command:
+A PowerShell vagy a Azure Portal használatával vizsgálja meg az előkészített erőforrások konfigurációját. Ha nem áll készen az áttelepítésre, és vissza szeretne térni a régi állapotra, használja a következő parancsot:
 
 ```powershell
     Move-AzureService -Abort -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-If the prepared configuration looks good, you can move forward and commit the resources by using the following command:
+Ha az előkészített konfiguráció jól néz ki, a következő parancs használatával továbbíthatja és véglegesítheti az erőforrásokat:
 
 ```powershell
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Step 6.1: Option 2 - Migrate virtual machines in a virtual network
+### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>6,1. lépés: 2. lehetőség – virtuális gépek migrálása virtuális hálózatban
 
-To migrate virtual machines in a virtual network, you migrate the virtual network. The virtual machines automatically migrate with the virtual network. Pick the virtual network that you want to migrate.
+A virtuális gépek virtuális hálózatban való áttelepíthetők a virtuális hálózat áttelepíthetők. A virtuális gépeket a rendszer automatikusan áttelepíti a virtuális hálózattal. Válassza ki az áttelepíteni kívánt virtuális hálózatot.
 > [!NOTE]
-> [Migrate a single virtual machine](migrate-single-classic-to-resource-manager.md) created using the classic deployment model by creating a new Resource Manager virtual machine with Managed Disks by using the VHD (OS and data) files of the virtual machine.
+> [Telepítsen egy](migrate-single-classic-to-resource-manager.md) , a klasszikus üzemi modellel létrehozott virtuális gépet úgy, hogy új Resource Manager-alapú virtuális gépet hoz létre Managed Disks a virtuális gép VHD-fájljának (os-és adatfájljainak) használatával.
 <br>
 
 > [!NOTE]
-> The virtual network name might be different from what is shown in the new portal. The new Azure portal displays the name as `[vnet-name]`, but the actual virtual network name is of type `Group [resource-group-name] [vnet-name]`. Before you start the migration, look up the actual virtual network name by using the command `Get-AzureVnetSite | Select -Property Name` or view it in the old Azure portal. 
+> Lehet, hogy a virtuális hálózat neve eltér az új portálon láthatótól. Az új Azure Portal a nevet `[vnet-name]`ként jeleníti meg, de a tényleges virtuális hálózat neve `Group [resource-group-name] [vnet-name]`típusú. Az áttelepítés megkezdése előtt keresse meg a tényleges virtuális hálózat nevét a parancs használatával `Get-AzureVnetSite | Select -Property Name` vagy tekintse meg a régi Azure Portal. 
 
-This example sets the virtual network name to **myVnet**. Replace the example virtual network name with your own.
+Ez a példa a virtuális hálózat nevét állítja be a **myVnet**. Cserélje le a példában szereplő virtuális hálózat nevét a saját nevére.
 
 ```powershell
     $vnetName = "myVnet"
 ```
 
 > [!NOTE]
-> If the virtual network contains web or worker roles, or VMs with unsupported configurations, you get a validation error message.
+> Ha a virtuális hálózat webes vagy feldolgozói szerepköröket, illetve nem támogatott konfigurációval rendelkező virtuális gépeket tartalmaz, érvényesítési hibaüzenetet kap.
 
-First, validate that you can migrate the virtual network by using the following command:
+Először is ellenőrizze, hogy a következő paranccsal telepítheti-e át a virtuális hálózatot:
 
 ```powershell
     Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
 ```
 
-The following command displays any warnings and errors that block migration. If validation is successful, you can proceed with the following Prepare step:
+A következő parancs megjeleníti az áttelepítést tiltó figyelmeztetéseket és hibákat. Ha az ellenőrzés sikeres, folytassa a következő előkészítési lépéssel:
 
 ```powershell
     Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
 ```
 
-Check the configuration for the prepared virtual machines by using either Azure PowerShell or the Azure portal. If you're not ready for migration and you want to go back to the old state, use the following command:
+Az előkészített virtuális gépek konfigurációját a Azure PowerShell vagy a Azure Portal használatával vizsgálhatja meg. Ha nem áll készen az áttelepítésre, és vissza szeretne térni a régi állapotra, használja a következő parancsot:
 
 ```powershell
     Move-AzureVirtualNetwork -Abort -VirtualNetworkName $vnetName
 ```
 
-If the prepared configuration looks good, you can move forward and commit the resources by using the following command:
+Ha az előkészített konfiguráció jól néz ki, a következő parancs használatával továbbíthatja és véglegesítheti az erőforrásokat:
 
 ```powershell
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-### <a name="step-62-migrate-a-storage-account"></a>Step 6.2: Migrate a storage account
-After you're done migrating the virtual machines, perform the following prerequisite checks before you migrate the storage accounts.
+### <a name="step-62-migrate-a-storage-account"></a>6,2. lépés: Storage-fiók átmigrálása
+Miután befejezte a virtuális gépek áttelepítését, hajtsa végre az alábbi előfeltételek ellenőrzését a Storage-fiókok áttelepítése előtt.
 
 > [!NOTE]
-> If your storage account has no associated disks or VM data, you can skip directly to the "Validate storage accounts and start migration" section.
+> Ha a Storage-fiók nem rendelkezik társított lemezekkel vagy virtuálisgép-adatmennyiséggel, akkor közvetlenül a "Storage-fiókok ellenőrzése és az áttelepítés megkezdése" szakaszban hagyhatja ki.
 
-* Prerequisite checks if you migrated any VMs or your storage account has disk resources:
-    * Migrate virtual machines whose disks are stored in the storage account.
+* Előfeltételek ellenőrzése ha a virtuális gépeket áttelepítette, vagy a Storage-fiók lemezes erőforrásokkal rendelkezik:
+    * Telepítse át azokat a virtuális gépeket, amelyek lemezeit a Storage-fiók tárolja.
 
-        The following command returns RoleName and DiskName properties of all the VM disks in the storage account. RoleName is the name of the virtual machine to which a disk is attached. If this command returns disks, then ensure that virtual machines to which these disks are attached are migrated before you migrate the storage account.
+        A következő parancs a Storage-fiókban lévő összes virtuálisgép-lemez RoleName és DiskName tulajdonságait adja vissza. A RoleName annak a virtuális gépnek a neve, amelyhez a lemez csatolva van. Ha a parancs lemezeket ad vissza, győződjön meg arról, hogy a virtuális gépeket, amelyekre ezek a lemezek csatlakoznak, a Storage-fiók átmigrálása előtt telepítse át.
         ```powershell
          $storageAccountName = 'yourStorageAccountName'
           Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
           DiskName | Format-List -Property RoleName, DiskName
 
         ```
-    * Delete unattached VM disks stored in the storage account.
+    * Törölje a Storage-fiókban tárolt nem csatolt virtuálisgép-lemezeket.
 
-        Find unattached VM disks in the storage account by using the following command:
+        A következő parancs használatával keresse meg a nem csatlakoztatott virtuálisgép-lemezeket a Storage-fiókban:
 
         ```powershell
             $storageAccountName = 'yourStorageAccountName'
             Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Where-Object -Property AttachedTo -EQ $null | Format-List -Property DiskName  
 
         ```
-        If the previous command returns disks, delete these disks by using the following command:
+        Ha az előző parancs lemezeket ad vissza, törölje ezeket a lemezeket a következő parancs használatával:
 
         ```powershell
            Remove-AzureDisk -DiskName 'yourDiskName'
         ```
-    * Delete VM images stored in the storage account.
+    * Törölje a Storage-fiókban tárolt virtuálisgép-lemezképeket.
 
-        The following command returns all the VM images with OS disks stored in the storage account.
+        A következő parancs visszaadja az összes virtuálisgép-lemezképet a Storage-fiókban tárolt operációsrendszer-lemezekkel.
          ```powershell
             Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
                                     } | Select-Object -Property ImageName, ImageLabel
          ```
-         The following command returns all the VM images with data disks stored in the storage account.
+         A következő parancs az összes virtuálisgép-rendszerképet visszaadja a Storage-fiókban tárolt adatlemezekkel.
          ```powershell
 
             Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
                                              -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
                                             } | Select-Object -Property ImageName, ImageLabel
          ```
-        Delete all the VM images returned by the previous commands by using this command:
+        Törölje az előző parancsokban visszaadott összes virtuálisgép-lemezképet a következő parancs használatával:
         ```powershell
         Remove-AzureVMImage -ImageName 'yourImageName'
         ```
-* Validate storage accounts and start migration.
+* A Storage-fiókok ellenőrzése és az áttelepítés megkezdése.
 
-    Validate each storage account for migration by using the following command. In this example, the storage account name is **myStorageAccount**. Replace the example name with the name of your own storage account.
+    A következő parancs használatával ellenőrizze az egyes Storage-fiókok áttelepítését. Ebben a példában a Storage-fiók neve **myStorageAccount**. Cserélje le a példában szereplő nevet a saját Storage-fiókja nevére.
 
     ```powershell
         $storageAccountName = "myStorageAccount"
         Move-AzureStorageAccount -Validate -StorageAccountName $storageAccountName
     ```
 
-    The next step is to prepare the storage account for migration.
+    A következő lépés a Storage-fiók előkészítése az áttelepítéshez.
 
     ```powershell
         $storageAccountName = "myStorageAccount"
         Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
     ```
 
-    Check the configuration for the prepared storage account by using either Azure PowerShell or the Azure portal. If you're not ready for migration and you want to go back to the old state, use the following command:
+    Az előkészített Storage-fiók konfigurációját a Azure PowerShell vagy a Azure Portal használatával vizsgálhatja meg. Ha nem áll készen az áttelepítésre, és vissza szeretne térni a régi állapotra, használja a következő parancsot:
 
     ```powershell
         Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
     ```
 
-    If the prepared configuration looks good, you can move forward and commit the resources by using the following command:
+    Ha az előkészített konfiguráció jól néz ki, a következő parancs használatával továbbíthatja és véglegesítheti az erőforrásokat:
 
     ```powershell
         Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
     ```
 
 ## <a name="next-steps"></a>Következő lépések
-* [Overview of platform-supported migration of IaaS resources from classic to Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [A IaaS-erőforrások platform által támogatott áttelepítésének áttekintése klasszikusról Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Use CLI to migrate IaaS resources from classic to Azure Resource Manager](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Community tools for assisting with migration of IaaS resources from classic to Azure Resource Manager](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [A CLI használatával IaaS-erőforrásokat telepíthet át a klasszikusról Azure Resource Manager](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Közösségi eszközök a IaaS-erőforrások Klasszikusból Azure Resource Managerba való áttelepítésének támogatásához](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [A leggyakoribb áttelepítési hibák áttekintése](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Review the most frequently asked questions about migrating IaaS resources from classic to Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Tekintse át a IaaS-erőforrások klasszikusról Azure Resource Managerra való áttelepítésével kapcsolatos leggyakoribb kérdéseket](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

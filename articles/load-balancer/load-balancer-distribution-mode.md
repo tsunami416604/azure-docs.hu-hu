@@ -1,7 +1,7 @@
 ---
-title: Configure Azure Load Balancer distribution mode
+title: Az Azure Load Balancer elosztási módjának konfigurálása
 titleSuffix: Azure Load Balancer
-description: In this article, get started configuring the distribution mode for Azure Load Balancer to support source IP affinity.
+description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Load Balancer terjesztési módját a forrás IP-affinitás támogatásához.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -20,63 +20,63 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74225376"
 ---
-# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Configure the distribution mode for Azure Load Balancer
+# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Az Azure Load Balancer az elosztási módjának konfigurálása
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="hash-based-distribution-mode"></a>Hash-based distribution mode
+## <a name="hash-based-distribution-mode"></a>Kivonat-alapú terjesztési mód
 
-The default distribution mode for Azure Load Balancer is a five-tuple hash. 
+A Azure Load Balancer alapértelmezett terjesztési módja egy öt rekordos kivonat. 
 
-The tuple is composed of the:
-* **Source IP**
-* **Source port**
-* **Destination IP**
-* **Destination port**
-* **Protocol type**
+A rekord a következőkből áll:
+* **Forrás IP-címe**
+* **Forrásport**
+* **Cél IP-címe**
+* **Célport**
+* **Protokoll típusa**
 
-The hash is used to map traffic to the available servers. The algorithm provides stickiness only within a transport session. Packets that are in the same session are directed to the same datacenter IP behind the load-balanced endpoint. When the client starts a new session from the same source IP, the source port changes and causes the traffic to go to a different datacenter endpoint.
+A kivonat használatával képezhető le a forgalom az elérhető kiszolgálókra. Az algoritmus csak a szállítási munkameneten belül nyújt stickiet. Az azonos munkamenetben lévő csomagokat ugyanahhoz az adatközponti IP-címhez irányítja a rendszer, amely a terheléselosztási végpont mögött található. Amikor az ügyfél egy új munkamenetet indít el ugyanabból a forrás IP-címről, a forrásport megváltozik, és a forgalom egy másik adatközpont-végpontra lép.
 
-![Five-tuple hash-based distribution mode](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
+![Öt rekordos kivonatoló terjesztési mód](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
-## <a name="source-ip-affinity-mode"></a>Source IP affinity mode
+## <a name="source-ip-affinity-mode"></a>Forrás IP-affinitás módban
 
-The load balancer can also be configured by using the source IP affinity distribution mode. This distribution mode is also known as session affinity or client IP affinity. The mode uses a two-tuple (source IP and destination IP) or three-tuple (source IP, destination IP, and protocol type) hash to map traffic to the available servers. By using source IP affinity, connections that are started from the same client computer go to the same datacenter endpoint.
+A terheléselosztó a forrás IP-affinitás elosztási módjának használatával is konfigurálható. Ez a terjesztési mód munkamenet-affinitást, vagy az ügyfél IP-affinitás is nevezik. A mód egy kétrekordos (forrás IP-cím és cél IP-cím) vagy három rekordos (forrás IP-cím, cél IP-cím és protokolltípus) kivonatot használ a forgalom az elérhető kiszolgálókra történő leképezéséhez. A forrás IP-affinitás használatával az azonos ügyfélszámítógépről indított kapcsolatok ugyanarra az adatközpont-végpontra kerülnek.
 
-The following figure illustrates a two-tuple configuration. Notice how the two-tuple runs through the load balancer to virtual machine 1 (VM1). VM1 is then backed up by VM2 and VM3.
+Az alábbi ábrán két rekordos konfiguráció látható. Figyelje meg, hogyan futnak a két rekord a terheléselosztó használatával az 1. virtuális gépen (VM1). A VM1 majd biztonsági másolatot készít a VM2 és vm3 virtuális gép.
 
-![Two-tuple session affinity distribution mode](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
+![Kétrekordos munkamenet-affinitás terjesztési módja](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
-Source IP affinity mode solves an incompatibility between Azure Load Balancer and Remote Desktop Gateway (RD Gateway). By using this mode, you can build an RD Gateway farm in a single cloud service.
+Forrás IP-affinitás módban oldja meg az Azure Load Balancer és a távoli asztali átjáró (RD átjáró) között inkompatibilitás. Ez a mód használatával hozhat létre egy távoli asztali átjáró farm egyetlen felhőszolgáltatásban.
 
-Another use case scenario is media upload. The data upload happens through UDP, but the control plane is achieved through TCP:
+Egy másik használatieset-forgatókönyvek feltöltés media. Az adatfeltöltés UDP keresztül történik, de a vezérlősík TCP keresztül valósul meg:
 
-* A client starts a TCP session to the load-balanced public address and is directed to a specific DIP. The channel is left active to monitor the connection health.
-* A new UDP session from the same client computer is started to the same load-balanced public endpoint. The connection is directed to the same DIP endpoint as the previous TCP connection. The media upload can be executed at high throughput while maintaining a control channel through TCP.
+* Az ügyfél TCP-munkamenetet indít el a terheléselosztási nyilvános címről, és egy adott DIP-re irányítja. A csatorna marad aktív, a kapcsolati állapotának figyeléséhez.
+* Az azonos ügyfélszámítógépről származó új UDP-munkamenet ugyanarra a terheléselosztásos nyilvános végpontra van elindítva. A kapcsolat a azonos DIP-végpont, az előző TCP-kapcsolat van átirányítva. A media feltöltés a vezérlőcsatorna keresztül TCP fenntartása mellett nagy adatátviteli kapacitással hajthatók végre.
 
 > [!NOTE]
-> When a load-balanced set changes by removing or adding a virtual machine, the distribution of client requests is recomputed. You can't depend on new connections from existing clients to end up at the same server. Additionally, using source IP affinity distribution mode can cause an unequal distribution of traffic. Clients that run behind proxies might be seen as one unique client application.
+> Ha egy elosztott terhelésű készlet eltávolításával vagy egy virtuális gép hozzáadása, ügyfél-kérések recomputed van. Új kapcsolatokat a meglévő ügyfeleket, hogy a kiszolgálón, végül nem függhet. Ezenkívül forrás IP-cím használatával kapcsolat elosztási módjának okozhat egy eltérő forgalom elosztását. Proxy mögötti futtató ügyfelek akkor látható, egy egyedi ügyfél-alkalmazásként.
 
-## <a name="configure-source-ip-affinity-settings"></a>Configure source IP affinity settings
+## <a name="configure-source-ip-affinity-settings"></a>Forrás IP-affinitás beállítások konfigurálása
 
 ### <a name="azure-portal"></a>Azure Portal
 
-You can change the configuration of the distribution mode by modifying the load-balancing rule in the portal.
+A terjesztési mód konfigurációját módosíthatja a portál terheléselosztási szabályának módosításával.
 
-1. Sign in to the Azure portal and locate the Resource Group containing the load balancer you wish to change by clicking on **Resource Groups**.
-2. In the load balancer overview screen, click on **Load-balancing rules** under **Settings**.
-3. In the load-balancing rules screen, click on the load-balancing rule that you wish to change the distribution mode.
-4. Under the rule, the distribution mode is changed by changing the **Session persistence** drop down box.  The following options are available:
+1. Jelentkezzen be a Azure Portalba, és keresse meg a módosítani kívánt terheléselosztó tartalmazó erőforráscsoportot az **erőforráscsoportok**lehetőségre kattintva.
+2. A terheléselosztó áttekintése képernyőn kattintson a **Beállítások**területen található **terheléselosztási szabályok** elemre.
+3. A terheléselosztási szabályok képernyőn kattintson arra a terheléselosztási szabályra, amelyre módosítani szeretné a terjesztési módot.
+4. A szabály alatt a terjesztési mód módosul a **munkamenet-megőrzés** legördülő lista módosításával.  A következő lehetőségek érhetők el:
     
-    * **None (hash-based)** - Specifies that successive requests from the same client may be handled by any virtual machine.
-    * **Client IP (source IP affinity 2-tuple)** - Specifies that successive requests from the same client IP address will be handled by the same virtual machine.
-    * **Client IP and protocol (source IP affinity 3-tuple)** - Specifies that successive requests from the same client IP address and protocol combination will be handled by the same virtual machine.
+    * **Nincs (kivonat-alapú)** – azt határozza meg, hogy egy adott ügyfél egymást követő kérelmeit bármely virtuális gép kezelheti.
+    * **Ügyfél IP-címe (forrás IP-affinitás 2-rekord)** – azt határozza meg, hogy ugyanazon ügyfél IP-címéről érkező egymást követő kérelmeket ugyanaz a virtuális gép fogja kezelni.
+    * **Ügyfél IP-címe és protokollja (forrás IP-affinitás 3 – rekord)** – azt határozza meg, hogy az azonos ügyfél IP-címe és a protokoll kombinációja egymást követő kérelmeket ugyanazzal a virtuális géppel fogja kezelni.
 
-5. Choose the distribution mode and then click **Save**.
+5. Válassza ki a terjesztési módot, majd kattintson a **Mentés**gombra.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-For virtual machines deployed with Resource Manager, use PowerShell to change the load-balancer distribution settings on an existing load-balancing rule. The following command updates the distribution mode: 
+A Resource Managerrel üzembe helyezett virtuális gépek esetében a PowerShell használatával módosítsa a terheléselosztó terjesztési beállításait egy meglévő terheléselosztási szabályon. A következő parancs frissíti a terjesztési módot: 
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLb -ResourceGroupName MyLbRg
@@ -84,15 +84,15 @@ $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
 Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-For classic virtual machines, use Azure PowerShell to change the distribution settings. Add an Azure endpoint to a virtual machine and configure the load balancer distribution mode:
+Klasszikus virtuális gépek esetében az Azure PowerShell használatával módosíthatja a telepítési beállításokat. Egy Azure-végpont hozzáadása egy virtuális gépet, és a terheléselosztó elosztási módjának konfigurálása:
 
 ```azurepowershell-interactive
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-Set the value of the `LoadBalancerDistribution` element for the amount of load balancing required. Specify sourceIP for two-tuple (source IP and destination IP) load balancing. Specify sourceIPProtocol for three-tuple (source IP, destination IP, and protocol type) load balancing. Specify none for the default behavior of five-tuple load balancing.
+Állítsa be a `LoadBalancerDistribution` elem értékét a szükséges terheléselosztási mennyiséghez. SourceIP megadása két rekordos (forrás IP-cím és cél IP-cím) terheléselosztáshoz. Adja meg a sourceIPProtocol a három rekordos (forrás IP-cím, cél IP-cím és protokoll típusa) terheléselosztáshoz. Az öt rekordos terheléselosztás alapértelmezett működéséhez válassza a nincs értéket.
 
-Retrieve an endpoint load balancer distribution mode configuration by using these settings:
+Ezek a beállítások használatával kérje le egy végpont terheléselosztói terjesztési mód konfigurációban:
 
     PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
@@ -114,21 +114,21 @@ Retrieve an endpoint load balancer distribution mode configuration by using thes
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-When the `LoadBalancerDistribution` element isn't present, Azure Load Balancer uses the default five-tuple algorithm.
+Ha a `LoadBalancerDistribution` elem nincs jelen, Azure Load Balancer az alapértelmezett öt rekordos algoritmust használja.
 
-### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Configure distribution mode on load-balanced endpoint set
+### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Az elosztott terhelésű végpont készletének elosztási módjának konfigurálása
 
-When endpoints are part of a load-balanced endpoint set, the distribution mode must be configured on the load-balanced endpoint set:
+Ha a végpontok egy elosztott terhelésű végpont készletének része, a terjesztési mód az elosztott terhelésű végpont készletének kell konfigurálni:
 
 ```azurepowershell-interactive
 Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 ```
 
-### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Configure distribution mode for Cloud Services endpoints
+### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>A Cloud Services végpontjainak elosztási módjának konfigurálása
 
-Use the Azure SDK for .NET 2.5 to update your cloud service. The endpoint settings for Cloud Services are made in the .csdef file. To update the load balancer distribution mode for a Cloud Services deployment, a deployment upgrade is required.
+Az Azure SDK for .NET 2.5 segítségével a felhőszolgáltatása frissítését. A Cloud Services végpontbeállításokat a .csdef fájlban menjenek végbe. Ha frissíteni szeretné a terheléselosztó elosztási módjának Cloud Services üzembe helyezéséhez, szükség egy üzemelő példány frissítése.
 
-Here is an example of .csdef changes for endpoint settings:
+Íme egy példa a végpont beállításainak módosítása a .csdef:
 
 ```xml
 <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -148,15 +148,15 @@ Here is an example of .csdef changes for endpoint settings:
 </NetworkConfiguration>
 ```
 
-## <a name="api-example"></a>API example
+## <a name="api-example"></a>API-példa
 
-The following example shows how to reconfigure the load balancer distribution mode for a specified load-balanced set in a deployment. 
+Az alábbi példa bemutatja, hogyan konfigurálja újra a terheléselosztó elosztási módjának a központi telepítésben megadott elosztott terhelésű készlet. 
 
-### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Change distribution mode for deployed load-balanced set
+### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Elosztott terhelésű készlet telepített terjesztési mód váltása
 
-Use the Azure classic deployment model to change an existing deployment configuration. Add the `x-ms-version` header and set the value to version 2014-09-01 or later.
+A klasszikus Azure üzemi modell segítségével módosíthatja egy meglévő központi telepítési konfigurációt. Adja hozzá a `x-ms-version` fejlécet, és állítsa az értéket a 2014-09-01-es vagy újabb verzióra.
 
-#### <a name="request"></a>Kérelem
+#### <a name="request"></a>Kérés
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
     Content-Type: application/xml
@@ -179,7 +179,7 @@ Use the Azure classic deployment model to change an existing deployment configur
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-As previously described, set the `LoadBalancerDistribution` element to sourceIP for two-tuple affinity, sourceIPProtocol for three-tuple affinity, or none for no affinity (five-tuple affinity).
+Az előzőekben leírtak szerint állítsa be a `LoadBalancerDistribution` elemet a kétrekordos affinitás sourceIP, a sourceIPProtocol a három rekordos affinitáshoz, vagy egyiket sem, ha nincs affinitás (öt rekordos affinitás).
 
 #### <a name="response"></a>Válasz
 
@@ -193,6 +193,6 @@ As previously described, set the `LoadBalancerDistribution` element to sourceIP 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Azure Internal Load Balancer overview](load-balancer-internal-overview.md)
-* [Get started with configuring an internet-facing load balancer](load-balancer-get-started-internet-arm-ps.md)
+* [Az Azure belső Load Balancer áttekintése](load-balancer-internal-overview.md)
+* [Ismerkedés az internetre irányuló terheléselosztó konfigurálásával](load-balancer-get-started-internet-arm-ps.md)
 * [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)

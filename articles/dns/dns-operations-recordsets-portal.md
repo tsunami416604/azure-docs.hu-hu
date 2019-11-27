@@ -1,6 +1,6 @@
 ---
-title: Manage DNS record sets and records with Azure DNS
-description: Azure DNS provides the capability to manage DNS record sets and records when hosting your domain.
+title: DNS-rekordhalmazok és-rekordok kezelése a Azure DNS
+description: A Azure DNS lehetővé teszi a DNS-rekordhalmazok és-rekordok kezelését a tartomány üzemeltetése során.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,102 +14,102 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211784"
 ---
-# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Manage DNS records and record sets by using the Azure portal
+# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>DNS-rekordok és-rekordhalmazok kezelése a Azure Portal használatával
 
-This article shows you how to manage record sets and records for your DNS zone by using the Azure portal.
+Ebből a cikkből megtudhatja, hogyan kezelheti a DNS-zónához tartozó rekordhalmazokat és rekordokat a Azure Portal használatával.
 
-It's important to understand the difference between DNS record sets and individual DNS records. A record set is a collection of records in a zone that have the same name and are the same type. For more information, see [Create DNS record sets and records by using the Azure portal](dns-getstarted-create-recordset-portal.md).
+Fontos megérteni a DNS-rekordhalmazok és az egyes DNS-rekordok közötti különbséget. A rekordhalmaz olyan rekordok gyűjteménye, amelyek azonos nevű és azonos típusú zónában találhatók. További információ: [DNS-rekordhalmazok és-rekordok létrehozása a Azure Portal használatával](dns-getstarted-create-recordset-portal.md).
 
-## <a name="create-a-new-record-set-and-record"></a>Create a new record set and record
+## <a name="create-a-new-record-set-and-record"></a>Új rekordazonosító és rekord létrehozása
 
-To create a record set in the Azure portal, see [Create DNS records by using the Azure portal](dns-getstarted-create-recordset-portal.md).
+Ha egy rekordhalmazt szeretne létrehozni a Azure Portalban, tekintse meg [a DNS-rekordok létrehozása a Azure Portal használatával](dns-getstarted-create-recordset-portal.md)című témakört.
 
-## <a name="view-a-record-set"></a>View a record set
+## <a name="view-a-record-set"></a>Rekord megtekintése
 
-1. In the Azure portal, go to the **DNS zone** blade.
-2. Search for the record set and select it. This opens the record set properties.
+1. A Azure Portal lépjen a **DNS-zóna** panelre.
+2. Keresse meg a rekordot, és válassza ki. Ekkor megnyílik a rekordazonosító tulajdonságai.
 
-    ![Search for a record set](./media/dns-operations-recordsets-portal/searchset500.png)
+    ![Rekord keresése](./media/dns-operations-recordsets-portal/searchset500.png)
 
-## <a name="add-a-new-record-to-a-record-set"></a>Add a new record to a record set
+## <a name="add-a-new-record-to-a-record-set"></a>Új rekord hozzáadása egy rekorddal
 
-You can add up to 20 records to any record set. A record set cannot contain two identical records. Empty record sets (with zero records) can be created, but do not appear on the Azure DNS name servers. Record sets of type CNAME can contain one record at most.
+Bármelyik rekordhalmazhoz legfeljebb 20 rekordot adhat hozzá. Egy rekordhalmaz nem tartalmazhat két azonos rekordot. Üres rekordhalmazok (nulla rekordokkal) hozhatók létre, de nem jelennek meg a Azure DNS névkiszolgálók esetében. A CNAME típusú rekordhalmazok legfeljebb egy rekordot tartalmazhatnak.
 
-1. On the **Record set properties** blade for your DNS zone, click the record set that you want to add a record to.
+1. A DNS-zóna **rekordazonosító tulajdonságai** paneljén kattintson arra a rekordra, amelyhez rekordot kíván hozzáadni.
 
-    ![Select a record set](./media/dns-operations-recordsets-portal/selectset500.png)
+    ![Válasszon egy rekordot](./media/dns-operations-recordsets-portal/selectset500.png)
 
-2. Specify the record set properties by filling in the fields.
+2. Adja meg a rekordtípusok tulajdonságait a mezők kitöltésével.
 
-    ![Add a record](./media/dns-operations-recordsets-portal/addrecord500.png)
+    ![Rekord hozzáadása](./media/dns-operations-recordsets-portal/addrecord500.png)
 
-3. Click **Save** at the top of the blade to save your settings. Then close the blade.
-4. In the corner, you will see that the record is saving.
+3. A beállítások mentéséhez kattintson a panel tetején található **Mentés** gombra. Ezután zárjuk be a panelt.
+4. A sarokban láthatja, hogy a rekord mentésre kerül.
 
-    ![Saving record set](./media/dns-operations-recordsets-portal/saving150.png)
+    ![Rekord mentése](./media/dns-operations-recordsets-portal/saving150.png)
 
-After the record has been saved, the values on the **DNS zone** blade will reflect the new record.
+A rekord mentése után a **DNS-zóna** paneljén lévő értékek az új rekordot fogják tükrözni.
 
-## <a name="update-a-record"></a>Update a record
+## <a name="update-a-record"></a>Rekord frissítése
 
-When you update a record in an existing record set, the fields you can update depend on the type of record you're working with.
+Ha egy meglévő rekordazonosító rekordját frissíti, a frissíthető mezők attól függnek, hogy milyen típusú rekordot használ.
 
-1. On the **Record set properties** blade for your record set, search for the record.
-2. Modify the record. When you modify a record, you can change the available settings for the record. In the following example, the **IP address** field is selected, and the IP address is in the process of being modified.
+1. A rekord készlet **tulajdonságai** paneljén keresse meg a rekordot.
+2. Módosítsa a rekordot. Egy rekord módosításakor módosíthatja a rekordhoz elérhető beállításokat. A következő példában az **IP-cím** mező ki van választva, és az IP-cím a módosítás folyamatban van.
 
-    ![Modify a record](./media/dns-operations-recordsets-portal/modifyrecord500.png)
+    ![Rekord módosítása](./media/dns-operations-recordsets-portal/modifyrecord500.png)
 
-3. Click **Save** at the top of the blade to save your settings. In the upper right corner, you'll see the notification that the record has been saved.
+3. A beállítások mentéséhez kattintson a panel tetején található **Mentés** gombra. A jobb felső sarokban megjelenik a rekord mentésének értesítése.
 
-    ![Saved record set](./media/dns-operations-recordsets-portal/saved150.png)
+    ![Rekord mentve](./media/dns-operations-recordsets-portal/saved150.png)
 
-After the record has been saved, the values for the record set on the **DNS zone** blade will reflect the updated record.
+A rekord mentését követően a **DNS-zóna** panelen beállított rekord értékei a frissített rekordot tükrözik.
 
-## <a name="remove-a-record-from-a-record-set"></a>Remove a record from a record set
+## <a name="remove-a-record-from-a-record-set"></a>Rekord eltávolítása egy adatkészletből
 
-You can use the Azure portal to remove records from a record set. Note that removing the last record from a record set does not delete the record set.
+A rekordokat a Azure Portal használatával távolíthatja el. Vegye figyelembe, hogy a rekordok utolsó rekordjának eltávolítása nem törli a készletet.
 
-1. On the **Record set properties** blade for your record set, search for the record.
-2. Click the record that you want to remove. Then select **Remove**.
+1. A rekord készlet **tulajdonságai** paneljén keresse meg a rekordot.
+2. Kattintson arra a rekordra, amelyet el szeretne távolítani. Ezután válassza az **Eltávolítás**lehetőséget.
 
-    ![Remove a record](./media/dns-operations-recordsets-portal/removerecord500.png)
+    ![Rekord eltávolítása](./media/dns-operations-recordsets-portal/removerecord500.png)
 
-3. Click **Save** at the top of the blade to save your settings.
-4. After the record has been removed, the values for the record on the **DNS zone** blade will reflect the removal.
+3. A beállítások mentéséhez kattintson a panel tetején található **Mentés** gombra.
+4. A rekord eltávolítása után a **DNS-zóna** paneljén lévő rekord értékei az eltávolítást tükrözik.
 
-## <a name="delete"></a>Delete a record set
+## <a name="delete"></a>Rekord törlése
 
-1. On the **Record set properties** blade for your record set, click **Delete**.
+1. A rekord készlet **Tulajdonságok** paneljén kattintson a **Törlés**elemre.
 
-    ![Delete a record set](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
+    ![Rekord törlése](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
 
-2. A message appears asking if you want to delete the record set.
-3. Verify that the name matches the record set that you want to delete, and then click **Yes**.
-4. On the **DNS zone** blade, verify that the record set is no longer visible.
+2. Megjelenik egy üzenet, amely megkérdezi, hogy szeretné-e törölni a rekordot.
+3. Ellenőrizze, hogy a név megegyezik-e a törölni kívánt rekorddal, majd kattintson az **Igen**gombra.
+4. A **DNS-zóna** panelen ellenőrizze, hogy a rekord már nem látható-e.
 
-## <a name="work-with-ns-and-soa-records"></a>Work with NS and SOA records
+## <a name="work-with-ns-and-soa-records"></a>NS-és SOA-rekordok használata
 
-NS and SOA records that are automatically created are managed differently from other record types.
+Az automatikusan létrehozott NS és SOA rekordokat más bejegyzéstípusoktól eltérően kezeli a rendszer.
 
-### <a name="modify-soa-records"></a>Modify SOA records
+### <a name="modify-soa-records"></a>SOA-rekordok módosítása
 
-You cannot add or remove records from the automatically created SOA record set at the zone apex (name = "\@"). However, you can modify any of the parameters within the SOA record (except "Host") and the record set TTL.
+Nem adhat hozzá és nem távolíthat el rekordokat az automatikusan létrehozott SOA-rekordhalmazból a zóna csúcspontján (név = "\@"). A SOA-rekordon belül azonban módosíthatja a paramétereket (a "gazdagép" kivételével) és a rekordhalmazt is.
 
-### <a name="modify-ns-records-at-the-zone-apex"></a>Modify NS records at the zone apex
+### <a name="modify-ns-records-at-the-zone-apex"></a>NS rekordok módosítása a zóna csúcsán
 
-The NS record set at the zone apex is automatically created with each DNS zone. It contains the names of the Azure DNS name servers assigned to the zone.
+A zóna csúcsán beállított NS-rekordhalmaz automatikusan létrejön minden DNS-zónával. A zónához rendelt Azure DNS névkiszolgálók nevét tartalmazza.
 
-You can add additional name servers to this NS record set, to support co-hosting domains with more than one DNS provider. You can also modify the TTL and metadata for this record set. However, you cannot remove or modify the pre-populated Azure DNS name servers.
+Ehhez az NS-rekordhoz további névkiszolgálók hozzáadásával több DNS-szolgáltatóval rendelkező közös üzemeltetésű tartományokat is támogathat. Módosíthatja a rekord ÉLETTARTAMát és metaadatait is. Az előre megadott Azure DNS névkiszolgálók azonban nem távolíthatók el és nem módosíthatók.
 
-Note that this applies only to the NS record set at the zone apex. Other NS record sets in your zone (as used to delegate child zones) can be modified without constraint.
+Vegye figyelembe, hogy ez csak a zóna csúcsán beállított NS-rekordra vonatkozik. A zónában lévő egyéb NS-rekordhalmazok (a gyermektartomány delegálásához használt módon) korlátozás nélkül módosíthatók.
 
-### <a name="delete-soa-or-ns-record-sets"></a>Delete SOA or NS record sets
+### <a name="delete-soa-or-ns-record-sets"></a>SOA-vagy NS-rekordhalmazok törlése
 
-You cannot delete the SOA and NS record sets at the zone apex (name = "\@") that are created automatically when the zone is created. They are deleted automatically when you delete the zone.
+A SOA és NS rekordhalmazok nem törölhetők a zóna létrehozásakor automatikusan létrehozott (név = "\@") zónában. A zóna törlésekor a rendszer automatikusan törli őket.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* For more information about Azure DNS, see the [Azure DNS overview](dns-overview.md).
-* For more information about automating DNS, see [Creating DNS zones and record sets using the .NET SDK](dns-sdk.md).
-* For more information about reverse DNS records, see [Overview of reverse DNS and support in Azure](dns-reverse-dns-overview.md).
-* For more information about Azure DNS alias records, see [Azure DNS alias records overview](dns-alias.md).
+* További információ a Azure DNSről: [Azure DNS áttekintése](dns-overview.md).
+* A DNS automatizálásával kapcsolatos további információkért lásd: [DNS-zónák és-rekordhalmazok létrehozása a .net SDK használatával](dns-sdk.md).
+* A fordított DNS-rekordokkal kapcsolatos további információkért lásd: [a fordított DNS és a támogatás áttekintése az Azure-ban](dns-reverse-dns-overview.md).
+* További információ a Azure DNS alias-rekordokról: [Azure DNS alias-rekordok áttekintése](dns-alias.md).

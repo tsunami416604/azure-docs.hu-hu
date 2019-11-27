@@ -1,6 +1,6 @@
 ---
-title: Configure private IP addresses for VMs - Azure CLI
-description: Learn how to configure private IP addresses for virtual machines using the Azure command-line interface (CLI).
+title: Virtuális gépek magánhálózati IP-címeinek konfigurálása – Azure CLI
+description: Ismerje meg, hogyan konfigurálhatja a virtuális gépek magánhálózati IP-címeit az Azure parancssori felület (CLI) használatával.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -22,7 +22,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74404457"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Configure private IP addresses for a virtual machine using the Azure CLI
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Magánhálózati IP-címek konfigurálása virtuális géphez az Azure CLI használatával
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
@@ -30,23 +30,23 @@ ms.locfileid: "74404457"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. You can also [manage static private IP address in the classic deployment model](virtual-networks-static-private-ip-classic-cli.md).
+Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. [A statikus magánhálózati IP-címeket a klasszikus üzemi modellben is kezelheti](virtual-networks-static-private-ip-classic-cli.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> The following sample Azure CLI commands expect an existing simple environment. If you want to run the commands as they are displayed in this document, first build the test environment described in [create a vnet](quick-create-cli.md).
+> A következő minta Azure CLI-parancsok egy meglévő egyszerű környezetet várnak. Ha a jelen dokumentumban megjelenő parancsokat szeretné futtatni, először [hozza létre a vnet létrehozása](quick-create-cli.md)című témakörben leírt tesztkörnyezetben.
 
-## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Specify a static private IP address when creating a VM
+## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Statikus magánhálózati IP-cím megadása virtuális gép létrehozásakor
 
-To create a VM named *DNS01* in the *FrontEnd* subnet of a VNet named *TestVNet* with a static private IP of *192.168.1.101*, complete the following steps:
+A következő lépésekkel hozhat létre egy *DNS01* nevű virtuális gépet egy *TestVNet* nevű VNet előtér- *alhálózatában* a *192.168.1.101*statikus magánhálózati IP-címével:
 
-1. If you haven't yet, install and configure the latest [Azure CLI](/cli/azure/install-azure-cli) and log in to an Azure account using [az login](/cli/azure/reference-index).
+1. Ha még nem tette meg, telepítse és konfigurálja a legújabb [Azure CLI](/cli/azure/install-azure-cli) -t, és jelentkezzen be egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
 
-2. Create a public IP for the VM with the [az network public-ip create](/cli/azure/network/public-ip) command. A kimenet után látható lista ismerteti a használt paramétereket.
+2. Hozzon létre egy nyilvános IP-címet a virtuális géphez az az [Network Public-IP Create](/cli/azure/network/public-ip) paranccsal. A kimenet után látható lista ismerteti a használt paramétereket.
 
     > [!NOTE]
-    > You may want or need to use different values for your arguments in this and subsequent steps, depending upon your environment.
+    > A környezettől függően előfordulhat, hogy az argumentumokhoz eltérő értékeket kell használnia a következő lépésekben.
 
     ```azurecli
     az network public-ip create \
@@ -70,11 +70,11 @@ To create a VM named *DNS01* in the *FrontEnd* subnet of a VNet named *TestVNet*
     }
     ```
 
-   * `--resource-group`: Name of the resource group in which to create the public IP.
-   * `--name`: Name of the public IP.
-   * `--location`: Azure region in which to create the public IP.
+   * `--resource-group`: az erőforráscsoport neve, amelyben létre kívánja hozni a nyilvános IP-címet.
+   * `--name`: a nyilvános IP-cím neve.
+   * `--location`: az Azure-régió, amelyben létre kívánja hozni a nyilvános IP-címet.
 
-3. Run the [az network nic create](/cli/azure/network/nic) command to create a NIC with a static private IP. A kimenet után látható lista ismerteti a használt paramétereket. 
+3. Futtassa az az [Network NIC Create](/cli/azure/network/nic) parancsot egy statikus magánhálózati IP-címmel rendelkező hálózati adapter létrehozásához. A kimenet után látható lista ismerteti a használt paramétereket. 
    
     ```azurecli
     az network nic create \
@@ -122,11 +122,11 @@ To create a VM named *DNS01* in the *FrontEnd* subnet of a VNet named *TestVNet*
     
     Paraméterek:
 
-    * `--private-ip-address`: Static private IP address for the NIC.
-    * `--vnet-name`: Name of the VNet in which to create the NIC.
-    * `--subnet`: Name of the subnet in which to create the NIC.
+    * `--private-ip-address`: a hálózati adapter statikus magánhálózati IP-címe.
+    * `--vnet-name`: annak a VNet a neve, amelyben létre kívánja hozni a hálózati adaptert.
+    * `--subnet`: annak az alhálózatnak a neve, amelyben létre kívánja hozni a hálózati adaptert.
 
-4. Run the [azure vm create](/cli/azure/vm/nic) command to create the VM using the public IP and NIC created previously. A kimenet után látható lista ismerteti a használt paramétereket.
+4. Futtassa az [Azure VM Create](/cli/azure/vm/nic) parancsot a virtuális gép létrehozásához a korábban létrehozott nyilvános IP-cím és NIC használatával. A kimenet után látható lista ismerteti a használt paramétereket.
    
     ```azurecli
     az vm create \
@@ -154,15 +154,15 @@ To create a VM named *DNS01* in the *FrontEnd* subnet of a VNet named *TestVNet*
     }
     ```
    
-   Parameters other than the basic [az vm create](/cli/azure/vm) parameters.
+   Az alapszintű az [VM Create](/cli/azure/vm) Parameters paramétertől eltérő paraméterek.
 
-   * `--nics`: Name of the NIC to which the VM is attached.
+   * `--nics`: annak a hálózati adapternek a neve, amelyhez a virtuális gép csatolva van.
    
-It’s recommended that you do not statically assign the private IP assigned to the Azure virtual machine within the operating system of a VM, unless necessary, such as when [assigning multiple IP addresses to a Windows VM](virtual-network-multiple-ip-addresses-cli.md). If you do manually set the private IP address within the operating system, ensure that it is the same address as the private IP address assigned to the Azure [network interface](virtual-network-network-interface-addresses.md#change-ip-address-settings), or you can lose connectivity to the virtual machine. Learn more about [private IP address](virtual-network-network-interface-addresses.md#private) settings.
+Javasoljuk, hogy a virtuális gép operációs rendszerén belül ne rendeljen statikusan az Azure virtuális géphez rendelt magánhálózati IP-címet, ha szükséges, például ha [több IP-címet rendel egy Windows rendszerű virtuális géphez](virtual-network-multiple-ip-addresses-cli.md). Ha a magánhálózati IP-címet manuálisan állítja be az operációs rendszeren belül, győződjön meg arról, hogy a cím megegyezik az Azure [hálózati adapterhez](virtual-network-network-interface-addresses.md#change-ip-address-settings)rendelt magánhálózati IP-címmel, vagy megszakadhat a kapcsolat a virtuális géppel. További információ a [magánhálózati IP-címek](virtual-network-network-interface-addresses.md#private) beállításairól.
 
-## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Retrieve static private IP address information for a VM
+## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Statikus magánhálózati IP-címek adatainak beolvasása egy virtuális géphez
 
-Run the following Azure CLI command to observe the values for *Private IP alloc-method* and *Private IP address*:
+Futtassa az alábbi Azure CLI-parancsot a *MAGÁNHÁLÓZATI IP-foglalási-metódus* és a *magánhálózati IP-cím*értékének megfigyeléséhez:
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -174,7 +174,7 @@ Várt kimenet:
 "192.168.1.101"
 ```
 
-To display the specific IP information of the NIC for that VM, query the NIC specifically:
+Az adott virtuális géphez tartozó hálózati adapter adott IP-címének megjelenítéséhez konkrétan kérdezze le a hálózati adaptert:
 
 ```azurecli
 az network nic show \
@@ -195,15 +195,15 @@ A kimenet a következőképpen fog kinézni:
 }
 ```
 
-## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Remove a static private IP address from a VM
+## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Statikus magánhálózati IP-cím eltávolítása egy virtuális gépről
 
-You cannot remove a static private IP address from a NIC in Azure CLI for Azure Resource Manager deployments. You must:
-- Create a new NIC that uses a dynamic IP
-- Set the NIC on the VM do the newly created NIC. 
+Nem távolíthat el statikus magánhálózati IP-címet az Azure CLI-ben lévő hálózati adapterről Azure Resource Manager üzemelő példányokhoz. A következőket kell tennie:
+- Dinamikus IP-címet használó új hálózati adapter létrehozása
+- Állítsa be a virtuális gép hálózati adapterét az újonnan létrehozott hálózati adapterre. 
 
-To change the NIC for the VM used in the previous commands, complete the following steps:
+Ha módosítani szeretné az előző parancsokban használt virtuális gép hálózati adapterét, hajtsa végre a következő lépéseket:
 
-1. Run the **azure network nic create** command to create a new NIC using dynamic IP allocation with a new IP address. Because no IP address is specified, the allocation method is **Dynamic**.
+1. Az **Azure hálózati NIC Create** parancs futtatásával hozzon létre egy új hálózati adaptert egy új IP-címmel rendelkező dinamikus IP-foglalás használatával. Mivel nincs megadva IP-cím, a kiosztási módszer **dinamikus**.
 
     ```azurecli
     az network nic create     \
@@ -248,7 +248,7 @@ To change the NIC for the VM used in the previous commands, complete the followi
     }
     ```
 
-2. Run the **azure vm set** command to change the NIC used by the VM.
+2. Futtassa az **Azure VM set** parancsot a virtuális gép által használt hálózati adapter módosításához.
    
     ```azurecli
    az vm nic set --resource-group TestRG --vm-name DNS01 --nics TestNIC2
@@ -267,8 +267,8 @@ To change the NIC for the VM used in the previous commands, complete the followi
     ```
 
     > [!NOTE]
-    > If the VM is large enough to have more than one NIC, run the **azure network nic delete** command to delete the old NIC.
+    > Ha a virtuális gép mérete elég nagy ahhoz, hogy egynél több hálózati adapterrel rendelkezzen, futtassa az **Azure hálózati NIC delete** parancsot a régi hálózati adapter törléséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Learn about managing [IP address settings](virtual-network-network-interface-addresses.md).
+További információ az [IP-címek beállításainak](virtual-network-network-interface-addresses.md)kezeléséről.

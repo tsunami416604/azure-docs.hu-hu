@@ -43,7 +43,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 ## <a name="create-azure-cosmos-db-trigger"></a>Azure Cosmos DB-eseményindító létrehozása
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények+ elem melletti**  gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
 
    ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -53,7 +53,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 1. A keresőmezőbe írja be a `cosmos` kifejezést, majd válassza ki az **Azure Cosmos DB trigger** sablont.
 
-1. If prompted, select **Install** to install the Azure Cosmos DB extension in the function app. A telepítést követően válassza a **Folytatás** gombot.
+1. Ha a rendszer kéri, válassza a **telepítés** lehetőséget a Azure Cosmos db bővítmény telepítéséhez a Function alkalmazásban. A telepítést követően válassza a **Folytatás** gombot.
 
     ![Kötési bővítmények telepítése](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
@@ -89,7 +89,7 @@ Ezután csatlakozzon Azure Cosmos DB-fiókjához, és hozza létre az `Items` gy
 
 1. A **Gyűjtemények** területen válassza a **taskDatabase**, majd az **Új gyűjtemény** elemet.
 
-    ![Katalógus létrehozása](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
+    ![Gyűjtemény létrehozása](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
 
 1. A **Gyűjtemény hozzáadása** területen használja az ábra alatti táblázatban látható beállításokat. 
 

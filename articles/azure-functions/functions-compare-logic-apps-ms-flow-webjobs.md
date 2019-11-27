@@ -36,7 +36,7 @@ Az alábbi táblázat segítségével meghatározhatja, hogy Microsoft Flow vagy
 |  | Microsoft Flow | Logic Apps |
 | --- | --- | --- |
 | Felhasználók |Irodai dolgozók, üzleti felhasználók, SharePoint-adminisztrátorok |Professzionális integrátorok és fejlesztők, informatikai szakemberek |
-| Alkalmazási helyzetek |Önkiszolgáló |Speciális integrációk |
+| Forgatókönyvek |Önkiszolgáló |Speciális integrációk |
 | Kialakítási eszköz |Böngészőbeli és mobilalkalmazás, kizárólag felhasználói felület |Böngészőbeli, [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Kódnézet](../logic-apps/logic-apps-author-definitions.md) elérhető |
 | Alkalmazások életciklus-felügyelete (ALM) |Tervezés és tesztelés nem éles környezetekben, előléptetés éles környezetben, ha készen áll |Azure DevOps: verziókövetés, tesztelés, támogatás, automatizálás és kezelhetőség [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
 | A rendszergazda teendői |Microsoft Flow környezetek és adatvesztés-megelőzési (DLP) szabályzatok kezelése, licencelés nyomon követése: [Microsoft flow felügyeleti központ](https://admin.flow.microsoft.com) |Erőforráscsoportok, kapcsolatok, hozzáférés-kezelés és naplózás kezelése: [Azure Portal](https://portal.azure.com) |

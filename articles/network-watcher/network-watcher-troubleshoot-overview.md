@@ -50,7 +50,7 @@ Az alábbi táblázatokban láthatók a különböző típusú hibák (azonosít
 
 ### <a name="gateway"></a>Átjáró
 
-| Hiba típusa | Ok | napló|
+| Hiba típusa | Ok | Napló|
 |---|---|---|
 | Nincs hiba | Ha nem észlelhető hiba |Igen|
 | GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve |Nem|
@@ -65,7 +65,7 @@ Az alábbi táblázatokban láthatók a különböző típusú hibák (azonosít
 
 ### <a name="connection"></a>Kapcsolat
 
-| Hiba típusa | Ok | napló|
+| Hiba típusa | Ok | Napló|
 |---|---|---|
 | Nincs hiba | Ha nem észlelhető hiba |Igen|
 | GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve |Nem|

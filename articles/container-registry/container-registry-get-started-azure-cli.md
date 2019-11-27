@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Create registry - Azure CLI
+title: Rövid útmutató – beállításjegyzék létrehozása – Azure CLI
 description: Az útmutató azt ismerteti, hogyan hozhat létre egy privát Docker regisztrációs adatbázist az Azure CLI-vel.
 ms.topic: quickstart
 ms.date: 01/22/2019
@@ -11,17 +11,17 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455168"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Quickstart: Create a private container registry using the Azure CLI
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Rövid útmutató: saját tároló-beállításjegyzék létrehozása az Azure CLI használatával
 
-Az Azure Container Registry egy felügyelt Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez az útmutató az Azure Container Registry-példányok Azure CLI-vel való létrehozásának módját ismerteti. Then, use Docker commands to push a container image into the registry, and finally pull and run the image from your registry.
+Az Azure Container Registry egy felügyelt Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez az útmutató az Azure Container Registry-példányok Azure CLI-vel való létrehozásának módját ismerteti. Ezután a Docker-parancsokkal leküldheti a tárolók rendszerképét a beállításjegyzékbe, és végül lekérdezheti és futtathatja a rendszerképet a beállításjegyzékből.
 
-This quickstart requires that you are running the Azure CLI (version 2.0.55 or later recommended). A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+Ehhez a rövid útmutatóhoz az Azure CLI-t (2.0.55 vagy újabb verzió ajánlott) kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
-A Dockert is telepítenie kell helyileg. Docker provides packages that easily configure Docker on any [macOS][docker-mac], [Windows][docker-windows], or [Linux][docker-linux] system.
+A Dockert is telepítenie kell helyileg. A Docker olyan csomagokat biztosít, amelyekkel egyszerűen konfigurálható a Docker bármely [MacOS][docker-mac]-, [Windows][docker-windows]-vagy [Linux][docker-linux] -rendszeren.
 
 Mivel az Azure Cloud Shell nem tartalmazza az összes szükséges Docker-összetevőt (a `dockerd`-démont), ehhez a rövid útmutatóhoz nem használható a Cloud Shell.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -33,7 +33,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-In this quickstart you create a *Basic* registry, which is a cost-optimized option for developers learning about Azure Container Registry. For details on available service tiers, see [Container registry SKUs][container-registry-skus].
+Ebben a rövid útmutatóban egy *alapszintű* beállításjegyzéket hozunk létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. A rendelkezésre álló szolgáltatási szintek részletes ismertetését lásd: [Container Registry SKU][container-registry-skus]-i.
 
 Hozzon létre egy ACR-példányt az [az acr create][az-acr-create] paranccsal. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az alábbi példában a *myContainerRegistry007* nevet használjuk. Ezt cserélje le egy egyedi értékre.
 
@@ -64,11 +64,11 @@ A tárolóregisztrációs adatbázis létrehozásakor a kimenet a következő p�
 }
 ```
 
-Take note of `loginServer` in the output, which is the fully qualified registry name (all lowercase). A rövid útmutató hátralevő részében az `<acrName>` elem helyettesíti a tárolóregisztrációs adatbázis nevét.
+Jegyezze fel `loginServer` a kimenetben, amely a beállításjegyzék teljes neve (az összes kisbetűs). A rövid útmutató hátralevő részében az `<acrName>` elem helyettesíti a tárolóregisztrációs adatbázis nevét.
 
 ## <a name="log-in-to-registry"></a>Bejelentkezés a beállításjegyzékbe
 
-Before pushing and pulling container images, you must log in to the registry. Ehhez használja az [az acr login][az-acr-login] parancsot.
+A tároló-lemezképek leküldése és húzása előtt be kell jelentkeznie a beállításjegyzékbe. Ehhez használja az [az acr login][az-acr-login] parancsot.
 
 ```azurecli
 az acr login --name <acrName>
@@ -80,7 +80,7 @@ A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött.
 
 ## <a name="list-container-images"></a>Tárolórendszerképek listázása
 
-The following example lists the repositories in your registry:
+Az alábbi példa felsorolja a beállításjegyzékben található adattárakat:
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -94,7 +94,7 @@ Result
 hello-world
 ```
 
-The following example lists the tags on the **hello-world** repository.
+A következő példa a **Hello-World** adattár címkéit sorolja fel.
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository hello-world --output table
@@ -112,7 +112,7 @@ v1
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-When no longer needed, you can use the [az group delete][az-group-delete] command to remove the resource group, the container registry, and the container images stored there.
+Ha már nincs rá szükség, az az [Group delete][az-group-delete] paranccsal eltávolítható az erőforráscsoport, a tároló-beállításjegyzék és az ott tárolt tároló-lemezképek.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -120,10 +120,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this quickstart, you created an Azure Container Registry with the Azure CLI, pushed a container image to the registry, and pulled and ran the image from the registry. Continue to the Azure Container Registry tutorials for a deeper look at ACR.
+Ebben a rövid útmutatóban létrehozott egy Azure Container Registry az Azure CLI-vel, leküldte egy tároló rendszerképét a beállításjegyzékbe, és lehúzta és futtatta a rendszerképet a beállításjegyzékből. Folytassa a Azure Container Registry oktatóanyagokkal, és tekintse meg az ACR mélyebb megjelenését.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry tutorials][container-registry-tutorial-quick-task]
+> [Oktatóanyagok Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

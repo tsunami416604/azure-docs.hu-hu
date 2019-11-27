@@ -1,6 +1,6 @@
 ---
-title: How To Configure Server Parameters in Azure Database for MySQL
-description: This article describes how to configure MySQL server parameters in Azure Database for MySQL using the Azure portal.
+title: Kiszolgáló paramétereinek konfigurálása az Azure Database MySQL-hez
+description: Ez a cikk ismerteti a MySQL-kiszolgáló paramétereinek konfigurálása az Azure Database for MySQL-hez az Azure portal használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
@@ -13,92 +13,92 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74419715"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>How to configure server parameters in Azure Database for MySQL by using the Azure portal
+# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Hogyan lehet a kiszolgáló paramétereinek konfigurálása az Azure Database for MySQL-hez az Azure portal használatával
 
-Azure Database for MySQL supports configuration of some server parameters. This article describes how to configure these parameters by using the Azure portal. Not all server parameters can be adjusted.
+Azure Database for MySQL támogatja az egyes kiszolgáló-paraméterek konfigurációja. Ez a cikk ismerteti, hogyan konfigurálhatja ezeket a paramétereket az Azure portal használatával. Nem minden kiszolgáló paramétereinek módosítható.
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Navigate to Server Parameters on Azure portal
+## <a name="navigate-to-server-parameters-on-azure-portal"></a>Az Azure Portalon keresse meg a kiszolgáló paramétereinek
 
-1. Sign in to the Azure portal, then locate your Azure Database for MySQL server.
-2. Under the **SETTINGS** section, click **Server parameters** to open the server parameters page for the Azure Database for MySQL server.
-![Azure portal server parameters page](./media/howto-server-parameters/auzre-portal-server-parameters.png)
-3. Locate any settings you need to adjust. Review the **Description** column to understand the purpose and allowed values.
-![Enumerate drop down](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Click  **Save** to save your changes.
-![Save or Discard changes](./media/howto-server-parameters/4-save_parameters.png)
-5. If you have saved new values for the parameters, you can always revert everything back to the default values by selecting **Reset all to default**.
-![Reset all to default](./media/howto-server-parameters/5-reset_parameters.png)
+1. Jelentkezzen be az Azure Portalon, majd keresse meg az Azure Database for MySQL-kiszolgálóhoz.
+2. A **Beállítások** szakaszban kattintson a **kiszolgálói paraméterek** elemre a Azure Database for MySQL kiszolgáló kiszolgálói paraméterek lapjának megnyitásához.
+![Azure Portal Server paraméterek lap](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+3. Keresse meg a beállításokat, hogy módosítani kell. A **description (Leírás** ) oszlopban tekintse át a cél és az engedélyezett értékek ismeretét.
+![enumerálás legördülő](./media/howto-server-parameters/3-toggle_parameter.png)
+4. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
+![a módosítások mentése vagy elvetése](./media/howto-server-parameters/4-save_parameters.png)
+5. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett**értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
+![az összes visszaállítása az alapértelmezettre](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>List of configurable server parameters
+## <a name="list-of-configurable-server-parameters"></a>A kiszolgáló konfigurálható paraméterek listája
 
-The list of supported server parameters is constantly growing. Use the server parameters tab in Azure portal to get the definition and configure server parameters based on your application requirements.
+A támogatott kiszolgálói paraméterek listája folyamatosan nő. Kiszolgálói paraméterek lapon használja az Azure Portalon a definíció lekérése, és az alkalmazás igényei alapján a kiszolgáló paramétereinek konfigurálása.
 
-## <a name="non-configurable-server-parameters"></a>Non-configurable server parameters
+## <a name="non-configurable-server-parameters"></a>Nem konfigurálható kiszolgálói paraméterek
 
-The InnoDB Buffer Pool size is not configurable and tied to your [pricing tier](concepts-service-tiers.md).
+A InnoDB-puffer mérete nem konfigurálható, és az [árképzési szintjéhez](concepts-service-tiers.md)van kötve.
 
-|**Tarifacsomag**|**vCore(s)**|**InnoDB Buffer Pool size in MB <br>(servers supporting up to 4 TB storage)**| **InnoDB Buffer Pool size in MB <br>(servers supporting up to 16 TB storage)**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**InnoDB-puffer mérete MEGABÁJTban <br>(legfeljebb 4 TB tárhelyet támogató kiszolgálók)**| **InnoDB-puffer mérete MEGABÁJTban <br>(legfeljebb 16 TB tárterületet támogató kiszolgálók)**|
 |:---|---:|---:|---:|
-|Basic| 1| 832| |
-|Basic| 2| 2560| |
-|Általános rendeltetés| 2| 3584| 7168|
-|Általános rendeltetés| 4| 7680| 15360|
-|Általános rendeltetés| 8| 15360| 30720|
-|Általános rendeltetés| 16| 31232| 62464|
-|Általános rendeltetés| 32| 62976| 125952|
-|Általános rendeltetés| 64| 125952| 251904|
+|Alapszintű| 1| 832| |
+|Alapszintű| 2| 2560| |
+|Általános célú| 2| 3584| 7168|
+|Általános célú| 4| 7680| 15360|
+|Általános célú| 8| 15360| 30720|
+|Általános célú| 16| 31232| 62464|
+|Általános célú| 32| 62976| 125952|
+|Általános célú| 64| 125952| 251904|
 |Memóriára optimalizált| 2| 7168| 14336|
 |Memóriára optimalizált| 4| 15360| 30720|
 |Memóriára optimalizált| 8| 30720| 61440|
 |Memóriára optimalizált| 16| 62464| 124928|
 |Memóriára optimalizált| 32| 125952| 251904|
 
-These additional server parameters are not configurable in the system:
+Ezeket a további kiszolgáló paramétereket, amelyek nem konfigurálhatók, a rendszer:
 
-|**Parameter**|**Fixed value**|
+|**Paraméter**|**Rögzített érték**|
 | :------------------------ | :-------- |
-|innodb_file_per_table in Basic tier|OFF|
+|az alapszintű díjcsomagban innodb_file_per_table|KI|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
 |innodb_log_file_size|512 MB|
 
-Other server parameters that are not listed here are set to their MySQL out-of-box default values for versions [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) and [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html).
+Az itt felsorolt egyéb kiszolgálói paraméterek az [5,7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) -es és a [5,6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html)-es verziókhoz tartozó MySQL beépített alapértelmezett értékeire vannak beállítva.
 
-## <a name="working-with-the-time-zone-parameter"></a>Working with the time zone parameter
+## <a name="working-with-the-time-zone-parameter"></a>Időzóna-paraméter használata
 
-### <a name="populating-the-time-zone-tables"></a>Populating the time zone tables
+### <a name="populating-the-time-zone-tables"></a>Az időzóna táblák feltöltése
 
-The time zone tables on your server can be populated by calling the `az_load_timezone` stored procedure from a tool like the MySQL command line or MySQL Workbench.
+A kiszolgálón található időzóna-táblákat úgy töltheti fel, hogy meghívja a `az_load_timezone` tárolt eljárást egy olyan eszközről, mint a MySQL parancssori vagy a MySQL Workbench.
 
 > [!NOTE]
-> If you are running the `az_load_timezone` command from MySQL Workbench, you may need to turn off safe update mode first using `SET SQL_SAFE_UPDATES=0;`.
+> Ha a MySQL Workbench `az_load_timezone` parancsát futtatja, előfordulhat, hogy először a `SET SQL_SAFE_UPDATES=0;`használatával kell kikapcsolnia a biztonságos frissítési módot.
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
-To view available time zone values, run the following command:
+Rendelkezésre álló időzóna értékek megtekintéséhez futtassa a következő parancsot:
 
 ```sql
 SELECT name FROM mysql.time_zone_name;
 ```
 
-### <a name="setting-the-global-level-time-zone"></a>Setting the global level time zone
+### <a name="setting-the-global-level-time-zone"></a>A globális szintű időzóna beállítása
 
-The global level time zone can be set from the **Server parameters** page in the Azure portal. The below sets the global time zone to the value "US/Pacific".
+A globális szintű időzónát a Azure Portal **kiszolgáló paraméterek** lapján lehet beállítani. Az alábbi állítja be a globális időzóna értéke "US / csendes-óceáni térség".
 
-![Set time zone parameter](./media/howto-server-parameters/timezone.png)
+![Időzóna-paraméter beállítása](./media/howto-server-parameters/timezone.png)
 
-### <a name="setting-the-session-level-time-zone"></a>Setting the session level time zone
+### <a name="setting-the-session-level-time-zone"></a>A munkamenet szintű időzóna beállítása
 
-The session level time zone can be set by running the `SET time_zone` command from a tool like the MySQL command line or MySQL Workbench. The example below sets the time zone to the **US/Pacific** time zone.
+A munkamenet-szint időzónája beállítható úgy, hogy a `SET time_zone` parancsot egy olyan eszközről futtatja, mint a MySQL parancssori vagy a MySQL Workbench. Az alábbi példa az időzónát az **USA/csendes-óceáni** időzónára állítja be.
 
 ```sql
 SET time_zone = 'US/Pacific';
 ```
 
-Refer to the MySQL documentation for [Date and Time Functions](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
+Tekintse meg a MySQL dokumentációját a [dátum-és Időfüggvényekhez](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Connection libraries for Azure Database for MySQL](concepts-connection-libraries.md).
+- [Azure Database for MySQLhoz tartozó kapcsolatok kódtárai](concepts-connection-libraries.md).

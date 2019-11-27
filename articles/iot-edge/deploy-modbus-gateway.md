@@ -1,5 +1,5 @@
 ---
-title: Translate modbus protocols with gateways - Azure IoT Edge | Microsoft Docs
+title: Az átjárókkal – Azure IoT Edge modbus protokollok fordítása |} A Microsoft Docs
 description: Modbus TCP-t használó eszközök Azure IoT Hubbal való kommunikációjának engedélyezése egy IoT Edge-átjáróeszköz létrehozásával
 author: kgremban
 manager: philmea
@@ -15,40 +15,40 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457220"
 ---
-# <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Connect Modbus TCP devices through an IoT Edge device gateway
+# <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-eszközök csatlakoztatása az IoT Edge-eszközátjárón keresztül
 
 Ha egy Azure IoT Hubhoz Modbus TCP vagy RTU protokollt használó IoT-eszközöket kíván csatlakoztatni, használjon egy IoT Edge-eszközt átjáróként. Az átjáróeszköz beolvassa az adatokat a Modbus-eszközökből, majd elküldi ezeket az adatokat a felhőbe egy támogatott protokoll használatával.
 
-![Modbus devices connect to IoT Hub through IoT Edge gateway](./media/deploy-modbus-gateway/diagram.png)
+![Modbus-eszközök csatlakoztatása IoT Hub IoT Edge átjárón keresztül](./media/deploy-modbus-gateway/diagram.png)
 
 Ez a cikk bemutatja, hogyan hozható létre saját tárolórendszerkép egy Modbus-modulhoz (vagy használhat előre létrehozott mintát), és ezután ez hogyan helyezhető üzembe az átjáróként szolgáló IoT Edge-eszközön.
 
-A cikk azt feltételezi, hogy Modbus TCP protokollt használ. For more information about how to configure the module to support Modbus RTU, see the [Azure IoT Edge Modbus module](https://github.com/Azure/iot-edge-modbus) project on GitHub.
+A cikk azt feltételezi, hogy Modbus TCP protokollt használ. További információ arról, hogyan konfigurálható a modul a Modbus RTU támogatásához: a GitHubon a [Azure IoT Edge Modbus-modul](https://github.com/Azure/iot-edge-modbus) projektje.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Azure IoT Edge-eszköz. For a walkthrough on how to set up one, see [Deploy Azure IoT Edge on Windows](quickstart.md) or [Linux](quickstart-linux.md).
+* Azure IoT Edge-eszköz. A beállításával kapcsolatban lásd: [Azure IoT Edge telepítése Windows](quickstart.md) vagy [Linux](quickstart-linux.md)rendszeren.
 * Az IoT Edge-eszköz elsődleges kulcsának kapcsolati sztringje.
 * A Modbus TCP-t támogató fizikai vagy szimulált Modbus-eszköz.
 
 ## <a name="prepare-a-modbus-container"></a>Modbus-tároló előkészítése
 
-Ha tesztelni kívánja a Modbus-átjáró funkcionalitását, a Microsoft rendelkezik egy mintamodullal, amelyet használhat. You can access the module from the Azure Marketplace, [Modbus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview), or with the image URI, **mcr.microsoft.com/azureiotedge/modbus:1.0**.
+Ha tesztelni kívánja a Modbus-átjáró funkcionalitását, a Microsoft rendelkezik egy mintamodullal, amelyet használhat. A modult az Azure Marketplace-en, a [Modbus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)-ban vagy a **MCR.microsoft.com/azureiotedge/Modbus:1.0**található rendszerkép-URI-n keresztül érheti el.
 
-If you want to create your own module and customize it for your environment, there is an open-source [Azure IoT Edge Modbus module](https://github.com/Azure/iot-edge-modbus) project on GitHub. Kövesse a projektben található útmutatót saját tárolórendszerkép létrehozásához. To create a container image, refer to [Develop C# modules in Visual Studio](how-to-visual-studio-develop-csharp-module.md) or [Develop modules in Visual Studio Code](how-to-vs-code-develop-module.md). Those articles provide instructions on creating new modules and publishing container images to a registry.
+Ha saját maga szeretné létrehozni a modult, és testre szeretné szabni a környezetében, akkor a GitHubon van egy nyílt forráskódú [Azure IoT Edge Modbus modul](https://github.com/Azure/iot-edge-modbus) -projekt. Kövesse a projektben található útmutatót saját tárolórendszerkép létrehozásához. A tárolók rendszerképének létrehozásával kapcsolatban [lásd C# : modulok fejlesztése a Visual Studióban](how-to-visual-studio-develop-csharp-module.md) , illetve [modulok fejlesztése a Visual Studio Code-ban](how-to-vs-code-develop-module.md). Ezek a cikkek útmutatást nyújtanak az új modulok létrehozásához és a tároló-lemezképek beállításjegyzékbe való közzétételéhez.
 
-## <a name="try-the-solution"></a>Try the solution
+## <a name="try-the-solution"></a>Próbálja ki a megoldást
 
-This section walks through deploying Microsoft's sample Modbus module to your IoT Edge device.
+Ez a szakasz végigvezeti a Microsoft minta-Modbus moduljának a IoT Edge eszközön való üzembe helyezésén.
 
 1. Az [Azure Portalon](https://portal.azure.com/) lépjen az IoT hubhoz.
 
-2. Go to **IoT Edge** and click on your IoT Edge device.
+2. Lépjen a **IoT Edgera** , és kattintson a IoT Edge eszközre.
 
 3. Válassza a **Set modules** (Modulok beállítása) lehetőséget.
 
 4. Adja hozzá a Modbus-modult:
 
-   1. Click **Add** and select **IoT Edge module**.
+   1. Kattintson a **Hozzáadás** gombra, és válassza ki **IoT Edge modult**.
 
    2. A **Name** (Név) mezőbe írja a következőt: „modbus”.
 
@@ -84,7 +84,7 @@ This section walks through deploying Microsoft's sample Modbus module to your Io
 
 5. Az **Add Modules** (Modulok hozzáadása) lépésben kattintson a **Next** (Tovább) gombra.
 
-7. A **Specify Routes** (Útvonalak megadása) lépésben másolja a következő JSON-t a szövegmezőbe. Ez az útvonal a Modbus-modul által gyűjtött üzeneteket küldi el az IoT Hubnak. In this route, **modbusOutput** is the endpoint that Modbus module uses to output data and **$upstream** is a special destination that tells IoT Edge hub to send messages to IoT Hub.
+7. A **Specify Routes** (Útvonalak megadása) lépésben másolja a következő JSON-t a szövegmezőbe. Ez az útvonal a Modbus-modul által gyűjtött üzeneteket küldi el az IoT Hubnak. Ebben az útvonalban a **modbusOutput** az a végpont, amelyet a Modbus-modul az adatkimeneti adatokat használ, és a **$upstream** egy speciális cél, amely megadja, hogy IoT Edge hub üzeneteket küldjön a IoT hubnak.
 
    ```JSON
    {
@@ -98,7 +98,7 @@ This section walks through deploying Microsoft's sample Modbus module to your Io
 
 9. Az **Üzembe helyezés áttekintése** lépésben kattintson a **Küldés** elemre.
 
-10. Térjen vissza az eszköz részleteit tartalmazó oldalra, és kattintson a **Frissítés** elemre. You should see the new **modbus** module running along with the IoT Edge runtime.
+10. Térjen vissza az eszköz részleteit tartalmazó oldalra, és kattintson a **Frissítés** elemre. A IoT Edge futtatókörnyezettel együtt futó új **Modbus** modulnak kell megjelennie.
 
 ## <a name="view-data"></a>Adatok megtekintése
 Tekintse meg a Modbus-modulon keresztül érkező adatokat:
@@ -106,9 +106,9 @@ Tekintse meg a Modbus-modulon keresztül érkező adatokat:
 iotedge logs modbus
 ```
 
-You can also view the telemetry the device is sending by using the [Azure IoT Hub Toolkit extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (formerly Azure IoT Toolkit extension).
+Megtekintheti azt is, hogy az eszköz telemetria a [Visual Studio Code-hoz készült azure IoT hub Toolkit-bővítmény](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábban Azure IoT Toolkit Extension) használatával küldi el.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- To learn more about how IoT Edge devices can act as gateways, see [Create an IoT Edge device that acts as a transparent gateway](./how-to-create-transparent-gateway.md).
-- For more information about how IoT Edge modules work, see [Understand Azure IoT Edge modules](iot-edge-modules.md).
+- Ha többet szeretne megtudni arról, hogy IoT Edge eszközök hogyan működhetnek átjáróként, tekintse meg [az olyan IoT Edge-eszköz létrehozását, amely transzparens átjáróként működik](./how-to-create-transparent-gateway.md).
+- További információ a IoT Edge moduljainak működéséről: [Azure IoT Edge modulok megismerése](iot-edge-modules.md).

@@ -15,59 +15,59 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74451650"
 ---
-1. To view the tags for a resource or a resource group, looks for existing tags in the overview. Ha eddig még nem vett fel címkéket, a lista üres.
+1. Egy adott erőforrás vagy erőforráscsoport címkéi megtekintéséhez az áttekintésben megkeresi a meglévő címkéket. Ha eddig még nem vett fel címkéket, a lista üres.
    
-     ![View tags for resource or resource group](./media/resource-manager-tag-resources/view-tags.png)
-1. To add a tag, select **Click here to add tags**.
+     ![Erőforrás vagy erőforráscsoport címkéinak megtekintése](./media/resource-manager-tag-resources/view-tags.png)
+1. Címke hozzáadásához válassza a **címkék hozzáadásához kattintson ide**.
 
-1. Provide a name and value. Select **+** to add the tag.
+1. Adjon meg egy nevet és egy értéket. A címke hozzáadásához válassza a **+** lehetőséget.
    
-     ![Add tag](./media/resource-manager-tag-resources/add-tag.png)
-1. Continue adding tags as needed. Ha elkészült, kattintson a **Mentés** elemre.
+     ![Címke hozzáadása](./media/resource-manager-tag-resources/add-tag.png)
+1. Szükség szerint folytassa a címkék hozzáadását. Ha elkészült, kattintson a **Mentés** elemre.
    
-     ![Save tags](./media/resource-manager-tag-resources/save-tags.png)
-1. The tags are now displayed in the overview.
+     ![Címkék mentése](./media/resource-manager-tag-resources/save-tags.png)
+1. A címkék most már megjelennek az áttekintésben.
    
-     ![Show tags](./media/resource-manager-tag-resources/view-new-tags.png)
-1. To add or delete a tag, select **change**.
+     ![Címkék megjelenítése](./media/resource-manager-tag-resources/view-new-tags.png)
+1. Címke hozzáadásához vagy törléséhez válassza a **módosítás**lehetőséget.
    
-1. To delete a tag, select the trash icon. Ezt követően válassza a **Mentés** lehetőséget.
+1. Címke törléséhez válassza a Kuka ikont. Ezt követően válassza a **Mentés** lehetőséget.
 
-     ![Delete tag](./media/resource-manager-tag-resources/delete-tag.png)
+     ![Címke törlése](./media/resource-manager-tag-resources/delete-tag.png)
 
 
-To bulk assign tags to multiple resources:
+Címkék tömeges kiosztása több erőforráshoz:
 
-1. From any list of resources, select the checkbox for the resources you want to assign the tag.
+1. Az erőforrások listájából válassza ki a címkét hozzárendelni kívánt erőforrások jelölőnégyzetét.
 
-     ![Select multiple resources](./media/resource-manager-tag-resources/select-multiple-resources.png)
+     ![Több erőforrás kiválasztása](./media/resource-manager-tag-resources/select-multiple-resources.png)
 
-1. Select **Assign tags**
+1. **Címkék hozzárendelésének** kiválasztása
 
-     ![Assign tags](./media/resource-manager-tag-resources/assign-tags.png)
+     ![Címkék kiosztása](./media/resource-manager-tag-resources/assign-tags.png)
 
-1. After each name and value, select **+** . When done, select **Assign**.
+1. A név és az érték után válassza a **+** lehetőséget. Ha elkészült, válassza a **hozzárendelés**lehetőséget.
 
-     ![Select assign](./media/resource-manager-tag-resources/select-assign.png)
+     ![Hozzárendelés kiválasztása](./media/resource-manager-tag-resources/select-assign.png)
 
-To view all resources with a tag:
+A címkével rendelkező összes erőforrás megtekintése:
 
-1. On the Azure portal menu, select **All services**. Select **General**, then **Tags**.
+1. A Azure Portal menüben válassza a **minden szolgáltatás**lehetőséget. Válassza az **általános**, majd a **címkék**lehetőséget.
 
-     ![Find by tag](./media/resource-manager-tag-resources/find-tags-general.png)
+     ![Keresés címke szerint](./media/resource-manager-tag-resources/find-tags-general.png)
 
-1. Select the tag for viewing resources.
+1. Válassza ki a címkét az erőforrások megtekintéséhez.
 
-     ![Select tag](./media/resource-manager-tag-resources/select-tag.png)
+     ![Címke kiválasztása](./media/resource-manager-tag-resources/select-tag.png)
 
-1. All resources with that tag are displayed.
+1. Megjelenik az adott címkével rendelkező összes erőforrás.
 
-     ![View resources by tag](./media/resource-manager-tag-resources/view-resources-by-tag.png)
+     ![Erőforrások megtekintése címke szerint](./media/resource-manager-tag-resources/view-resources-by-tag.png)
 
-1. For quick access, pin the view to the dashboard.
+1. A gyors hozzáférés érdekében rögzítse a nézetet az irányítópulton.
 
      ![Rögzítés az irányítópulton](./media/resource-manager-tag-resources/pin-to-dashboard.png)
 
-1. The view is available from the dashboard.
+1. A nézet elérhető az irányítópulton.
 
      ![Irányítópult](./media/resource-manager-tag-resources/dashboard-with-view.png)

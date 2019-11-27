@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Push update to geo-replicated registry
-description: Push an updated Docker image to your geo-replicated Azure container registry, then see the changes automatically deployed to web apps running in multiple regions. Ez egy háromrészes sorozat harmadik része.
+title: Oktatóanyag – frissítés leküldése a földrajzilag replikált beállításjegyzékbe
+description: Küldjön le egy frissített Docker-rendszerképet a Geo-replikált Azure Container registrybe, majd tekintse meg a több régióban futó webalkalmazások automatikusan telepített módosításait. Ez egy háromrészes sorozat harmadik része.
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.custom: seodec18, mvc
@@ -11,7 +11,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454689"
 ---
-# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Tutorial: Push an updated container image to a geo-replicated container registry for regional web app deployments
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Oktatóanyag: frissített tároló-rendszerkép leküldése a földrajzi helyről replikált tároló-beállításjegyzékbe a regionális webalkalmazások üzembe helyezéséhez
 
 Ez egy háromrészes sorozat harmadik része. Az [előző oktatóanyagban](container-registry-tutorial-deploy-app.md) a georeplikációt két különböző régióban üzembe helyezett webalkalmazáshoz konfigurálta. Ebben az oktatóanyagban először az alkalmazást módosítjuk, majd egy új tárolórendszerképet hozunk létre, és leküldjük azt a georeplikált beállításjegyzékbe. Végül megtekintjük az Azure Container Registry webhookok által automatikusan üzembe helyezett módosításokat mind a két webalkalmazás esetében.
 

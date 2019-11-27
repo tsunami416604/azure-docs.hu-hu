@@ -1,6 +1,6 @@
 ---
-title: Azure Functions scale and hosting
-description: Learn how to choose between Azure Functions Consumption plan and Premium plan.
+title: Méretezés és üzemeltetés Azure Functions
+description: Megtudhatja, hogyan választhat Azure Functions fogyasztási terv és a Prémium csomag között.
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
@@ -12,169 +12,169 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74322892"
 ---
-# <a name="azure-functions-scale-and-hosting"></a>Azure Functions scale and hosting
+# <a name="azure-functions-scale-and-hosting"></a>Méretezés és üzemeltetés Azure Functions
 
-When you create a function app in Azure, you must choose a hosting plan for your app. There are three hosting plans available for Azure Functions: [Consumption plan](#consumption-plan), [Premium plan](#premium-plan), and [App Service plan](#app-service-plan).
+Ha az Azure-ban hoz létre egy Function alkalmazást, ki kell választania egy üzemeltetési csomagot az alkalmazáshoz. A Azure Functions három üzemeltetési csomag érhető el: a használati [terv](#consumption-plan), a [Prémium csomag](#premium-plan)és a [app Service csomag](#app-service-plan).
 
-The hosting plan you choose dictates the following behaviors:
+A kiválasztott üzemeltetési csomag a következő viselkedéseket diktálja:
 
-* How your function app is scaled.
-* The resources available to each function app instance.
-* Support for advanced features, such as VNET connectivity.
+* A Function alkalmazás skálázása.
+* Az egyes functions app-példányok számára elérhető erőforrások.
+* Speciális funkciók támogatása, például VNET-kapcsolat.
 
-Both Consumption and Premium plans automatically add compute power when your code is running. Your app is scaled out when needed to handle load, and scaled down when code stops running. For the Consumption plan, you also don't have to pay for idle VMs or reserve capacity in advance.  
+A használat és a Prémium csomag is automatikusan hozzáadja a számítási teljesítményt a kód futásakor. Az alkalmazás a terhelés kezeléséhez, illetve a kód futásának leállításakor felskálázáshoz szükséges. A használati terv esetében nem kell fizetnie az üresjáratban lévő virtuális gépekért, vagy a kapacitást előre kell foglalni.  
 
-Premium plan provides additional features, such as premium compute instances, the ability to keep instances warm indefinitely, and VNet connectivity.
+A Prémium csomag további funkciókat kínál, például a prémium szintű számítási példányokat, a példányok határozatlan idejű megtartásának és VNet-kapcsolatának lehetőségét.
 
-App Service plan allows you to take advantage of dedicated infrastructure, which you manage. Your function app doesn't scale based on events, which means is never scales down to zero. (Requires that [Always on](#always-on) is enabled.)
+A App Service-csomag lehetővé teszi, hogy kihasználhassa az Ön által felügyelt dedikált infrastruktúrát. A Function alkalmazás nem méretezhető az események alapján, ami azt jelenti, hogy soha nem méretezi le nullára. (Megköveteli, hogy [a always on](#always-on) engedélyezve legyen.)
 
-## <a name="hosting-plan-support"></a>Hosting plan support
+## <a name="hosting-plan-support"></a>Üzemeltetési csomag támogatása
 
-Feature support falls into the following two categories:
+A szolgáltatások támogatása a következő két kategóriába tartozik:
 
-* _Generally available (GA)_ : fully supported and approved for production use.
-* _Preview_: not yet fully supported and approved for production use.
+* _Általánosan elérhető (GA)_ : teljes mértékben támogatott és jóváhagyott éles használatra.
+* _Előzetes_verzió: még nem teljes mértékben támogatott és jóváhagyott éles használatra.
 
-The following table indicates the current level of support for the three hosting plans, when running on either Windows or Linux:
+A következő táblázat a három üzemeltetési csomag jelenlegi támogatását mutatja be Windows vagy Linux rendszeren:
 
-| | Használatalapú csomag | Prémium szintű csomag | Dedicated plan |
+| | Használatalapú csomag | Prémium szintű csomag | Dedikált csomag |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | FE | FE | FE |
 | Linux | FE | FE | FE |
 
 ## <a name="consumption-plan"></a>Használatalapú csomag
 
-When you're using the Consumption plan, instances of the Azure Functions host are dynamically added and removed based on the number of incoming events. This serverless plan scales automatically, and you're charged for compute resources only when your functions are running. On a Consumption plan, a function execution times out after a configurable period of time.
+A használati terv használatakor a rendszer a Azure Functions gazdagép példányait dinamikusan hozzáadja és eltávolítja a bejövő események száma alapján. Ez a kiszolgáló nélküli csomag automatikusan méretezi a számítási erőforrásokat, és csak akkor kell fizetnie, ha a függvények futnak. Egy használati tervben a függvény végrehajtásának időtúllépése egy konfigurálható idő után.
 
-Billing is based on number of executions, execution time, and memory used. Billing is aggregated across all functions within a function app. For more information, see the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/).
+A számlázás a végrehajtások száma, a végrehajtás ideje és a felhasznált memória alapján történik. A számlázás a Function alkalmazás összes függvényében összesítve történik. További információkért tekintse meg a [Azure functions díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/functions/).
 
-The Consumption plan is the default hosting plan and offers the following benefits:
+A felhasználási terv az alapértelmezett üzemeltetési csomag, amely a következő előnyöket kínálja:
 
-* Pay only when your functions are running
-* Scale out automatically, even during periods of high load
+* Csak akkor kell fizetnie, ha a függvények futnak
+* Automatikus méretezés automatikusan, akár nagy terhelésű időszakok esetén is
 
-Function apps in the same region can be assigned to the same Consumption plan. There's no downside or impact to having multiple apps running in the same Consumption plan. Assigning multiple apps to the same consumption plan has no impact on resilience, scalability, or reliability of each app.
+Az azonos régióban található Function apps ugyanahhoz a használati tervhez is hozzárendelhető. Nincs hátránya, hogy több alkalmazás is fut ugyanabban a használati csomagban. Ha több alkalmazást rendel ugyanahhoz a használati tervhez, az egyes alkalmazások rugalmasságát, méretezhetőségét és megbízhatóságát nem befolyásolja.
 
-To learn more about how to estimate costs when running in a Consumption plan, see [Understanding Consumption plan costs](functions-consumption-costs.md).
+Ha többet szeretne megtudni arról, hogyan becsülheti fel a költségeket a használati tervekben, tekintse meg a [felhasználási terv költségeinek megismerése](functions-consumption-costs.md)című témakört.
 
-## <a name="premium-plan"></a>Premium plan
+## <a name="premium-plan"></a>Prémium csomag
 
-When you're using the Premium plan, instances of the Azure Functions host are added and removed based on the number of incoming events just like the Consumption plan.  Premium plan supports the following features:
+A Prémium csomag használatakor a rendszer a Azure Functions gazdagép példányait a beérkező események száma alapján adja hozzá és távolítja el, a használati tervhez hasonlóan.  A Prémium csomag a következő funkciókat támogatja:
 
-* Perpetually warm instances to avoid any cold start
-* VNet connectivity
-* Unlimited execution duration
-* Premium instance sizes (one core, two core, and four core instances)
-* More predictable pricing
-* High-density app allocation for plans with multiple function apps
+* Állandóan meleg példányok a hideg indítás elkerüléséhez
+* VNet-kapcsolat
+* Korlátlan végrehajtás időtartama
+* Prémium példányok méretei (egy mag, két mag és négy fő példány)
+* További kiszámítható díjszabás
+* Nagy sűrűségű alkalmazások kiosztása több Function-alkalmazással rendelkező csomagokhoz
 
-Information on how you can configure these options can be found in the [Azure Functions premium plan document](functions-premium-plan.md).
+A beállítások konfigurálásának módjával kapcsolatban a [Azure functions Premium csomag dokumentációjában](functions-premium-plan.md)találhat további információt.
 
-Instead of billing per execution and memory consumed, billing for the Premium plan is based on the number of core seconds and memory used across needed and pre-warmed instances. At least one instance must be warm at all times per plan. This means that there is a minimum monthly cost per active plan, regardless of the number of executions. Keep in mind that all function apps in a Premium plan share pre-warmed and active instances.
+A számlázás és a felhasznált memória helyett a Prémium csomag számlázása a szükséges és az előre bemelegített példányok által használt fő másodpercek és memória számától függ. Legalább egy példánynak minden esetben melegnek kell lennie. Ez azt jelenti, hogy a végrehajtások számától függetlenül az aktív csomagokra vonatkozó minimális havi költség. Ne feledje, hogy a prémium szintű csomag összes funkciója előre bemelegítő és aktív példányokat oszt meg.
 
-Consider the Azure Functions premium plan in the following situations:
+Vegye figyelembe a Azure Functions prémium csomagot a következő helyzetekben:
 
-* Your function apps run continuously, or nearly continuously.
-* You have a high number of small executions and have a high execution bill but low GB second bill in the consumption plan.
-* You need more CPU or memory options than what is provided by the Consumption plan.
-* Your code needs to run longer than the [maximum execution time allowed](#timeout) on the Consumption plan.
-* You require features that are only available on a Premium plan, such as VNET/VPN connectivity.
+* A Function apps folyamatosan vagy csaknem folyamatosan fut.
+* Nagy számú kisméretű végrehajtással rendelkezik, és magas végrehajtási számlával rendelkezik, de a használati terv alacsony GB-os, második számlával rendelkezik.
+* Több CPU-vagy memória-beállításra van szüksége, mint amit a használati terv biztosít.
+* A kódnak hosszabb ideig kell futnia, mint a felhasználási tervben [engedélyezett maximális végrehajtási idő](#timeout) .
+* Olyan funkciókat kell megkövetelni, amelyek csak prémium csomagon, például VNET/VPN-kapcsolaton érhetők el.
 
-When running JavaScript functions on a Premium plan, you should choose an instance that has fewer vCPUs. For more information, see the [Choose single-core Premium plans](functions-reference-node.md#considerations-for-javascript-functions).  
+A JavaScript-függvények prémium csomagon való futtatásakor olyan példányt válasszon, amelynek kevesebb vCPU van. További információ: az [egymagos prémium csomagok kiválasztása](functions-reference-node.md#considerations-for-javascript-functions).  
 
-## <a name="app-service-plan"></a>Dedicated (App Service) plan
+## <a name="app-service-plan"></a>Dedikált (App Service) csomag
 
-Your function apps can also run on the same dedicated VMs as other App Service apps (Basic, Standard, Premium, and Isolated SKUs).
+A Function apps ugyanazon a dedikált virtuális gépeken is futtatható, mint a többi App Service alkalmazás (alapszintű, standard, prémium és elkülönített SKU).
 
-Consider an App Service plan in the following situations:
+A következő helyzetekben vegye fontolóra App Service tervet:
 
-* You have existing, underutilized VMs that are already running other App Service instances.
-* You want to provide a custom image on which to run your functions.
+* Vannak olyan meglévő, nem használt virtuális gépek, amelyek már futtatnak más App Service-példányokat.
+* Egyéni rendszerképet szeretne megadni a függvények futtatásához.
 
-You pay the same for function apps in an App Service Plan as you would for other App Service resources, like web apps. For details about how the App Service plan works, see the [Azure App Service plans in-depth overview](../app-service/overview-hosting-plans.md).
+Ugyanezt a funkciót a App Service csomagban lévő Function apps esetében is megfizeti, mint más App Service-erőforrásokhoz, például a webalkalmazásokhoz. Az App Service-csomag működésével kapcsolatos részletekért tekintse [meg a Azure app Service tervek részletes áttekintését](../app-service/overview-hosting-plans.md).
 
-With an App Service plan, you can manually scale out by adding more VM instances. You can also enable autoscale. For more information, see [Scale instance count manually or automatically](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). You can also scale up by choosing a different App Service plan. For more information, see [Scale up an app in Azure](../app-service/manage-scale-up.md). 
+App Service csomaggal a további virtuálisgép-példányok hozzáadásával manuálisan is felskálázást hajthat végre. Az autoscale is engedélyezhető. További információ: a [Példányszám manuális vagy automatikus skálázása](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Egy másik App Service terv kiválasztásával is méretezhető. További információ: alkalmazás vertikális [Felskálázása az Azure-ban](../app-service/manage-scale-up.md). 
 
-When running JavaScript functions on an App Service plan, you should choose a plan that has fewer vCPUs. For more information, see [Choose single-core App Service plans](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
+Ha a JavaScript-függvényeket App Service csomagon futtatja, olyan csomagot válasszon, amelynek kevesebb vCPU van. További információ: [Choose Single-core app Service Plans](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-### <a name="always-on"></a> Always On
+### <a name="always-on"></a>Always on
 
-If you run on an App Service plan, you should enable the **Always on** setting so that your function app runs correctly. On an App Service plan, the functions runtime goes idle after a few minutes of inactivity, so only HTTP triggers will "wake up" your functions. Always on is available only on an App Service plan. On a Consumption plan, the platform activates function apps automatically.
+Ha App Service csomagot futtat, engedélyezze a **mindig** beállítást, hogy a Function alkalmazás megfelelően fusson. Egy App Service-csomag esetében a függvények futtatókörnyezete néhány perc inaktivitás után üresjáratba lép, így csak a HTTP-eseményindítók fognak felébredni a függvényekből. Az Always on csak App Service csomagon érhető el. A platform egy használati tervben automatikusan aktiválja a Function Apps szolgáltatást.
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-Even with Always On enabled, the execution timeout for individual functions is controlled by the `functionTimeout` setting in the [host.json](functions-host-json.md#functiontimeout) project file.
+Még ha a mindig engedélyezve van, az egyes függvények végrehajtási időtúllépését a [Host. JSON](functions-host-json.md#functiontimeout) projektfájl `functionTimeout` beállítása vezérli.
 
-## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Determine the hosting plan of an existing application
+## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Meglévő alkalmazás üzemeltetési tervének meghatározása
 
-To determine the hosting plan used by your function app, see **App Service plan / pricing tier** in the **Overview** tab for the function app in the [Azure portal](https://portal.azure.com). For App Service plans, the pricing tier is also indicated.
+A Function app által használt üzemeltetési csomag meghatározásához tekintse meg a [Azure Portal](https://portal.azure.com)a Function alkalmazás **áttekintés** lapján a **app Service terv/árképzési szintet** . App Service csomagok esetében a díjszabási szintet is jelezni kell.
 
-![View scaling plan in the portal](./media/functions-scale/function-app-overview-portal.png)
+![Méretezési terv megtekintése a portálon](./media/functions-scale/function-app-overview-portal.png)
 
-You can also use the Azure CLI to determine the plan, as follows:
+Az Azure CLI használatával is meghatározhatja a tervet, a következőképpen:
 
 ```azurecli-interactive
 appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-group <my_resource_group> --query appServicePlanId --output tsv)
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-When the output from this command is `dynamic`, your function app is in the Consumption plan. When the output from this command is `ElasticPremium`, your function app is in the Premium plan. All other values indicate different tiers of an App Service plan.
+Ha a parancs kimenete `dynamic`, a Function alkalmazás a használati tervben van. Ha a parancs kimenete `ElasticPremium`, a Function alkalmazás a prémium csomagban van. Az összes többi érték egy App Service terv különböző szintjeire utal.
 
 ## <a name="storage-account-requirements"></a>Storage-fiókra vonatkozó követelmények
 
-On any plan, a function app requires a general Azure Storage account, which supports Azure Blob, Queue, Files, and Table storage. This is because Functions relies on Azure Storage for operations such as managing triggers and logging function executions, but some storage accounts do not support queues and tables. These accounts, which include blob-only storage accounts (including premium storage) and general-purpose storage accounts with zone-redundant storage replication, are filtered-out from your existing **Storage Account** selections when you create a function app.
+Bármely csomag esetében a Function alkalmazáshoz egy általános Azure Storage-fiók szükséges, amely támogatja az Azure Blob, a üzenetsor, a fájlok és a Table Storage szolgáltatást. Ennek az az oka, hogy a függvények az Azure Storage-on alapulnak olyan műveletekre, mint az eseményindítók és a naplózási függvények végrehajtása, de egyes Storage-fiókok nem támogatják a várólistákat és a táblákat. Ezeket a fiókokat, amelyek csak a blob Storage-fiókokat (beleértve a Premium Storage-t) és az általános célú Storage-fiókokat, amelyek zóna-redundáns tárolási replikációval rendelkeznek, a rendszer kiszűri a meglévő **Storage-fiókok** kiválasztásával, amikor létrehoz egy function alkalmazás.
 
-The same storage account used by your function app can also be used by your triggers and bindings to store your application data. However, for storage-intensive operations, you should use a separate storage account.   
+A Function alkalmazás által használt Storage-fiókot az eseményindítók és kötések is felhasználhatják az alkalmazásadatok tárolásához. A tárolási igényű műveletek esetében azonban külön Storage-fiókot kell használnia.   
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
-To learn more about storage account types, see [Introducing the Azure Storage services](../storage/common/storage-introduction.md#azure-storage-services).
+További információ a Storage-fiókok típusairól: [Az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#azure-storage-services).
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>How the consumption and premium plans work
+## <a name="how-the-consumption-and-premium-plans-work"></a>A felhasználás és a Prémium csomag működése
 
-In the consumption and premium plans, the Azure Functions infrastructure scales CPU and memory resources by adding additional instances of the Functions host, based on the number of events that its functions are triggered on. Each instance of the Functions host in the consumption plan is limited to 1.5 GB of memory and one CPU.  An instance of the host is the entire function app, meaning all functions within a function app share resource within an instance and scale at the same time. Function apps that share the same consumption plan are scaled independently.  In the premium plan, your plan size will determine the available memory and CPU for all apps in that plan on that instance.  
+A használat és a prémium csomagok esetében a Azure Functions infrastruktúra a funkciók gazdagépének további példányainak hozzáadásával méretezi a processzor-és memória-erőforrásokat a függvények által aktivált események száma alapján. A functions gazdagép összes példánya a használati tervben legfeljebb 1,5 GB memóriával és egy PROCESSZORral rendelkezik.  A gazdagép egy példánya a teljes Function alkalmazás, ami azt jelenti, hogy a Function app-ban található összes függvény egy adott példányon belül található, és egy időben méretezhető. Az azonos felhasználási csomaggal rendelkező alkalmazások egymástól függetlenül méretezhetők.  A Prémium csomag esetében a csomag mérete határozza meg az adott példányon lévő összes alkalmazás rendelkezésre álló memóriáját és PROCESSZORát.  
 
-Function code files are stored on Azure Files shares on the function's main storage account. When you delete the main storage account of the function app, the function code files are deleted and cannot be recovered.
+A függvény kódjának fájljai a függvény fő Storage-fiókján Azure Files megosztásokon tárolódnak. Ha törli a Function alkalmazás fő Storage-fiókját, a rendszer törli a függvény kódjának fájljait, és nem állítható helyre.
 
-### <a name="runtime-scaling"></a>Runtime scaling
+### <a name="runtime-scaling"></a>Futtatókörnyezet skálázása
 
-Azure Functions uses a component called the *scale controller* to monitor the rate of events and determine whether to scale out or scale in. The scale controller uses heuristics for each trigger type. For example, when you're using an Azure Queue storage trigger, it scales based on the queue length and the age of the oldest queue message.
+A Azure Functions a *skálázási vezérlő* nevű összetevővel figyeli az események sebességét, és meghatározza, hogy a méretezést ki kell-e bővíteni. A skálázási vezérlő heurisztikus adattípust használ az egyes triggerekhez. Ha például egy Azure üzenetsor-tárolási triggert használ, az a várólista hossza és a legrégebbi üzenetsor-üzenet kora alapján méretezhető.
 
-The unit of scale for Azure Functions is the function app. When the function app is scaled out, additional resources are allocated to run multiple instances of the Azure Functions host. Conversely, as compute demand is reduced, the scale controller removes function host instances. The number of instances is eventually scaled down to zero when no functions are running within a function app.
+A Azure Functions méretezési egysége a Function alkalmazás. A Function alkalmazás skálázásakor a rendszer további erőforrásokat foglal le a Azure Functions gazdagép több példányának futtatásához. Fordítva, ahogy a számítási igény csökken, a skálázási vezérlő eltávolítja a Function Host-példányokat. A példányok száma végül nullára van méretezve, ha egyetlen függvény sem fut a Function alkalmazásban.
 
-![Scale controller monitoring events and creating instances](./media/functions-scale/central-listener.png)
+![Vezérlő-figyelési események méretezése és példányok létrehozása](./media/functions-scale/central-listener.png)
 
-### <a name="understanding-scaling-behaviors"></a>Understanding scaling behaviors
+### <a name="understanding-scaling-behaviors"></a>A skálázási viselkedés ismertetése
 
-Scaling can vary on a number of factors, and scale differently based on the trigger and language selected. There are a few intricacies of scaling behaviors to be aware of:
+A skálázás több tényezőn is változhat, és a kiválasztott trigger és nyelv alapján különbözőképpen méretezhető. Van néhány bonyolult méretezési mód az alábbiakkal kapcsolatban:
 
-* Egy adott függvényalkalmazás legfeljebb 200 példányig skálázható fel. A single instance may process more than one message or request at a time though, so there isn't a set limit on number of concurrent executions.
-* For HTTP triggers, new instances will only be allocated at most once every 1 second.
-* For non-HTTP triggers, new instances will only be allocated at most once every 30 seconds.
+* Egy adott függvényalkalmazás legfeljebb 200 példányig skálázható fel. Egyetlen példány egyszerre több üzenetet vagy kérelmet is feldolgozhat, így az egyidejű végrehajtások száma nem megengedett.
+* HTTP-eseményindítók esetén az új példányok csak a legfeljebb 1 másodpercenként lesznek lefoglalva.
+* A nem HTTP-triggerek esetében az új példányok csak 30 másodpercenként egyszer lesznek lefoglalva.
 
-Different triggers may also have different scaling limits as well as documented below:
+A különböző eseményindítók eltérő skálázási korlátokkal is rendelkezhetnek, és az alábbiakban dokumentálva vannak:
 
 * [Event Hub](functions-bindings-event-hubs.md#trigger---scaling)
 
-### <a name="best-practices-and-patterns-for-scalable-apps"></a>Best practices and patterns for scalable apps
+### <a name="best-practices-and-patterns-for-scalable-apps"></a>Ajánlott eljárások és minták méretezhető alkalmazásokhoz
 
-There are many aspects of a function app that will impact how well it will scale, including host configuration, runtime footprint, and resource efficiency.  For more information, see the [scalability section of the performance considerations article](functions-best-practices.md#scalability-best-practices). You should also be aware of how connections behave as your function app scales. For more information, see [How to manage connections in Azure Functions](manage-connections.md).
+A Function alkalmazásnak számos aspektusa van, amely hatással lesz a méretezésre, beleértve a gazdagép konfigurációját, a futásidejű lábnyomot és az erőforrás-hatékonyságot.  További információ: a [teljesítmény szempontjairól szóló cikk méretezhetőségi szakasza](functions-best-practices.md#scalability-best-practices). Azt is figyelembe kell vennie, hogy a kapcsolatok hogyan viselkednek, mint a Function app Scales. További információ: a [kapcsolatok kezelése a Azure Functionsban](manage-connections.md).
 
 ### <a name="billing-model"></a>Számlázási modell
 
-Billing for the different plans is described in detail on the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/). Usage is aggregated at the function app level and counts only the time that function code is executed. The following are units for billing:
+A különböző csomagokra vonatkozó számlázást részletesen ismertetjük a [Azure functions díjszabási oldalán](https://azure.microsoft.com/pricing/details/functions/). A függvény az alkalmazás szintjén összesíti a használatot, és csak a függvény kódjának végrehajtásához tartozó időt számítja ki. A számlázási egységek a következők:
 
-* **Resource consumption in gigabyte-seconds (GB-s)** . Computed as a combination of memory size and execution time for all functions within a function app. 
-* **Executions**. Counted each time a function is executed in response to an event trigger.
+* **Erőforrás-használat GB-ban (GB-s)** . A függvény alkalmazásban található összes függvényhez a memória mérete és a végrehajtási idő kombinációja számítja ki. 
+* **Végrehajtások**. Minden alkalommal, amikor egy függvény egy esemény eseményindítóra válaszol.
 
-Useful queries and information on how to understand your consumption bill can be found [on the billing FAQ](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ).
+Hasznos lekérdezések és információk arról, hogyan értelmezhető a használati számla a [Számlázási GYIK](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ)szolgáltatásban.
 
 [Azure Functions pricing page]: https://azure.microsoft.com/pricing/details/functions
 
-## <a name="service-limits"></a>Szolgáltatási korlátozások
+## <a name="service-limits"></a>A szolgáltatásra vonatkozó korlátozások
 
-The following table indicates the limits that apply to function apps when running in the various hosting plans:
+A következő táblázat azokat a korlátozásokat mutatja be, amelyek a Function apps alkalmazásra vonatkoznak a különböző üzemeltetési csomagokban való futtatáskor:
 
 [!INCLUDE [functions-limits](../../includes/functions-limits.md)]

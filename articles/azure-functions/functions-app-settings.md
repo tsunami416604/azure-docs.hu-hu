@@ -1,6 +1,6 @@
 ---
-title: App settings reference for Azure Functions
-description: Reference documentation for the Azure Functions app settings or environment variables.
+title: Az Azure Functions – alkalmazásbeállítási referencia
+description: Az Azure Functions-alkalmazás beállításai vagy a környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 35ecebfb1956422470bf20e6d510543897ca0910
@@ -10,190 +10,190 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227391"
 ---
-# <a name="app-settings-reference-for-azure-functions"></a>App settings reference for Azure Functions
+# <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 
-App settings in a function app contain global configuration options that affect all functions for that function app. When you run locally, these settings are accessed as local [environment variables](functions-run-local.md#local-settings-file). This article lists the app settings that are available in function apps.
+Alkalmazásbeállításokat a függvényalkalmazáshoz, amelyek befolyásolják, hogy a függvényalkalmazás a függvények globális konfigurációs beállításokat tartalmaznak. Helyileg futtatva ezek a beállítások helyi [környezeti változókként](functions-run-local.md#local-settings-file)érhetők el. Ez a cikk az alkalmazásbeállításokat a függvényalkalmazások sorolja fel.
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-There are other global configuration options in the [host.json](functions-host-json.md) file and in the [local.settings.json](functions-run-local.md#local-settings-file) file.
+A [Host. JSON](functions-host-json.md) fájlban és a [Local. Settings. JSON](functions-run-local.md#local-settings-file) fájlban más globális konfigurációs lehetőségek is vannak.
 
-## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
+## <a name="appinsights_instrumentationkey"></a>ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY
 
-The Application Insights instrumentation key if you're using Application Insights. See [Monitor Azure Functions](functions-monitoring.md).
+Az Application Insights kialakítási kulcsot, az Application Insights használata. Lásd: [figyelő Azure functions](functions-monitoring.md).
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
+|ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-In version 2.x of the Functions runtime, configures app behavior based on the runtime environment. This value is [read during initialization](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). You can set `AZURE_FUNCTIONS_ENVIRONMENT` to any value, but [three values](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) are supported: [Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging), and [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). When `AZURE_FUNCTIONS_ENVIRONMENT` isn't set,  it defaults to `Development` on a local environment and `Production` on Azure. This setting should be used instead of `ASPNETCORE_ENVIRONMENT` to set the runtime environment. 
+A functions Runtime 2. x verziójában a futásidejű környezet alapján konfigurálja az alkalmazás viselkedését. Az [inicializálás során](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)ez az érték olvasható. Bármilyen értékre beállíthatja a `AZURE_FUNCTIONS_ENVIRONMENT`t, de [három érték](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) támogatott: [fejlesztés](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [előkészítés](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)és [éles környezet](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Ha `AZURE_FUNCTIONS_ENVIRONMENT` nincs beállítva, az alapértelmezett érték `Development` helyi környezetben, és `Production` az Azure-ban. A futásidejű környezet beállítása `ASPNETCORE_ENVIRONMENT` helyett ezt a beállítást kell használni. 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-Optional storage account connection string for storing logs and displaying them in the **Monitor** tab in the portal. The storage account must be a general-purpose one that supports blobs, queues, and tables. See [Storage account](functions-infrastructure-as-code.md#storage-account) and [Storage account requirements](functions-create-function-app-portal.md#storage-account-requirements).
+Opcionális Storage-fiókhoz tartozó kapcsolatok karakterlánca a naplók tárolásához és megjelenítéséhez a portál **figyelés** lapján. A storage-fiókot, amely támogatja a blobok, üzenetsorok és táblák általános célú egy kell lennie. Lásd a [Storage-fiókra](functions-infrastructure-as-code.md#storage-account) és a [Storage-fiókra vonatkozó követelményeket](functions-create-function-app-portal.md#storage-account-requirements).
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName = [name]; AccountKey = [kulcs]|
 
 > [!TIP]
-> For performance and experience, it is recommended to use APPINSIGHTS_INSTRUMENTATIONKEY and App Insights for monitoring instead of AzureWebJobsDashboard
+> A teljesítmény és felhasználói élményt érdekében javasolt használni állítani az APPINSIGHTS_INSTRUMENTATIONKEY és az App Insights AzureWebJobsDashboard helyett
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true` means disable the default landing page that is shown for the root URL of a function app. Az alapértelmezett érték a `false`.
+`true` azt jelenti, hogy letiltja a Function app gyökerének URL-címéhez tartozó alapértelmezett kezdőlapot. Az alapértelmezett szint a `false`.
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|AzureWebJobsDisableHomepage|igaz|
+|AzureWebJobsDisableHomepage|true|
 
-When this app setting is omitted or set to `false`, a page similar to the following example is displayed in response to the URL `<functionappname>.azurewebsites.net`.
+Ha ez az Alkalmazásbeállítások ki van hagyva vagy a `false`értékre van állítva, az URL `<functionappname>.azurewebsites.net`-címre adott válaszban az alábbi példához hasonló oldal jelenik meg.
 
-![Function app landing page](media/functions-app-settings/function-app-landing-page.png)
+![Függvény app kezdőlapja](media/functions-app-settings/function-app-landing-page.png)
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true` means use Release mode when compiling .NET code; `false` means use Debug mode. Az alapértelmezett érték a `true`.
+`true` azt jelenti, hogy a kiadási módot használja a .NET-kód fordításakor; `false` a hibakeresési mód használatát jelenti. Az alapértelmezett szint a `true`.
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|AzureWebJobsDotNetReleaseCompilation|igaz|
+|AzureWebJobsDotNetReleaseCompilation|true|
 
 ## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
 
-A comma-delimited list of beta features to enable. Beta features enabled by these flags are not production ready, but can be enabled for experimental use before they go live.
+Bétaverzió funkciók engedélyezéséhez vesszővel tagolt listája. Ezek a jelölők által engedélyezett bétaverzió funkciói nem éles üzemre, de kísérleti használata esetén is engedélyezhető, mielőtt az élő esemény indításra.
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|AzureWebJobsFeatureFlags|feature1,feature2|
+|AzureWebJobsFeatureFlags|feature1, feature2|
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
-Specifies the repository or provider to use for key storage. Currently, the supported repositories are blob storage ("Blob") and the local file system ("Files"). The default is blob in version 2 and file system in version 1.
+Megadja a tárházban vagy a szolgáltató kulcs tárolására. A támogatott adattárak jelenleg a blob storage ("Blob") és a helyi fájlrendszer ("fájlok"). Az alapértelmezett érték a 2. verzióban blob és a fájlrendszerhez az 1. verzióban.
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
 |AzureWebJobsSecretStorageType|Fájlok|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-The Azure Functions runtime uses this storage account connection string for all functions except for HTTP triggered functions. The storage account must be a general-purpose one that supports blobs, queues, and tables. See [Storage account](functions-infrastructure-as-code.md#storage-account) and [Storage account requirements](functions-create-function-app-portal.md#storage-account-requirements).
+Az Azure Functions runtime a tárfiók kapcsolati sztringje HTTP által aktivált függvények kivételével az összes függvényt használja. A storage-fiókot, amely támogatja a blobok, üzenetsorok és táblák általános célú egy kell lennie. Lásd a [Storage-fiókra](functions-infrastructure-as-code.md#storage-account) és a [Storage-fiókra vonatkozó követelményeket](functions-create-function-app-portal.md#storage-account-requirements).
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|AzureWebJobsStorage|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
+|AzureWebJobsStorage|DefaultEndpointsProtocol = https; AccountName = [name]; AccountKey = [kulcs]|
 
 ## <a name="azurewebjobs_typescriptpath"></a>AzureWebJobs_TypeScriptPath
 
-Path to the compiler used for TypeScript. Allows you to override the default if you need to.
+A használt TypeScript-fordítóprogram elérési útja. Ha szeretné az alapértelmezett beállítás felülbírálásával teszi lehetővé.
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|AzureWebJobs_TypeScriptPath|%HOME%\typescript|
+|AzureWebJobs_TypeScriptPath|%Home%\typescript|
 
-## <a name="function_app_edit_mode"></a>FUNCTION\_APP\_EDIT\_MODE
+## <a name="function_app_edit_mode"></a>FUNCTION\_alkalmazás\_\_mód szerkesztése
 
-Dictates whether editing in the Azure portal is enabled. Valid values are "readwrite" and "readonly".
+Azt diktálja, hogy engedélyezve van-e a Azure Portal szerkesztése. Érvényes értékek: "readwrite" és "csak olvasható".
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|FUNCTION\_APP\_EDIT\_MODE|readonly|
+|FUNCTION\_alkalmazás\_\_mód szerkesztése|csak olvasható|
 
-## <a name="functions_extension_version"></a>FUNCTIONS\_EXTENSION\_VERSION
+## <a name="functions_extension_version"></a>FÜGGVÉNYEK\_BŐVÍTMÉNY\_verziója
 
-The version of the Functions runtime to use in this function app. A tilde with major version means use the latest version of that major version (for example, "~2"). When new versions for the same major version are available, they are automatically installed in the function app. To pin the app to a specific version, use the full version number (for example, "2.0.12345"). Default is "~2". A value of `~1` pins your app to version 1.x of the runtime.
+A használatához a függvényalkalmazást a Functions futtatókörnyezetének verzióját. A főverzió tilde azt jelenti, hogy jelentős 2-es verziójú (például "~") legújabb verzióját használja. Érhetők el ugyanazon új verziók, automatikusan települ a függvényalkalmazáshoz. Alkalmazás rögzítése a egy adott verziót, használja a teljes verziószám (például "2.0.12345"). Alapértelmezett érték a "~ 2". `~1` az alkalmazás a futtatókörnyezet 1. x verziójára való PIN-kód.
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|FUNCTIONS\_EXTENSION\_VERSION|~2|
+|FÜGGVÉNYEK\_BŐVÍTMÉNY\_verziója|KB. 2|
 
-## <a name="functions_worker_process_count"></a>FUNCTIONS\_WORKER\_PROCESS\_COUNT
+## <a name="functions_worker_process_count"></a>FUNCTIONs\_WORKer\_folyamat\_DARABSZÁM
 
-Specifies the maximum number of language worker processes, with a default value of `1`. The maximum value allowed is `10`. Function invocations are evenly distributed among language worker processes. Language worker processes are spawned every 10 seconds until the count set by FUNCTIONS\_WORKER\_PROCESS\_COUNT is reached. Using multiple language worker processes is not the same as [scaling](functions-scale.md). Consider using this setting when your workload has a mix of CPU-bound and I/O-bound invocations. This setting applies to all non-.NET languages.
+Meghatározza a nyelvi munkavégző folyamatok maximális számát `1`alapértelmezett értékkel. A maximálisan megengedett érték `10`. A függvények meghívása egyenletesen oszlik meg a nyelvi munkavégző folyamatok között. A nyelv munkavégző folyamatai 10 másodpercenként vannak elindítva, amíg a függvények száma\_a feldolgozó\_a folyamat\_a szám elérte a száma értéket. Több nyelvi feldolgozó folyamat használata nem ugyanaz, mint a [skálázás](functions-scale.md). Akkor érdemes ezt a beállítást használni, ha a számítási feladathoz CPU-kötésű és I/O-kötésű hívás is tartozik. Ez a beállítás az összes non-.NET nyelvre vonatkozik.
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
+|FUNCTIONs\_WORKer\_folyamat\_DARABSZÁM|2|
 
 
-## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
+## <a name="functions_worker_runtime"></a>FUNCTIONs\_WORKer\_RUNTIME
 
-The language worker runtime to load in the function app.  This will correspond to the language being used in your application (for example, "dotnet"). For functions in multiple languages you will need to publish them to multiple apps, each with a corresponding worker runtime value.  Valid values are `dotnet` (C#/F#), `node` (JavaScript/TypeScript), `java` (Java), `powershell` (PowerShell), and `python` (Python).
+A nyelvi feldolgozói modul betöltése a függvényalkalmazáshoz.  Ez felel meg a nyelvet, az alkalmazásban (például "dotnet") használja. Functions több nyelven is szüksége lesz, ha közzétesszük őket, több alkalmazás, amelyek mindegyike egy megfelelő értéket a worker futásidejű.  Az érvényes értékek: `dotnet`C#(F#/), `node` (JavaScript/írógéppel), `java` (Java), `powershell` (PowerShell) és `python` (Python).
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|FUNCTIONS\_WORKER\_RUNTIME|dotnet|
+|FUNCTIONs\_WORKer\_RUNTIME|DotNet|
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
-For consumption & Premium plans only. Connection string for storage account where the function app code and configuration are stored. See [Create a function app](functions-infrastructure-as-code.md#create-a-function-app).
+Csak a prémium csomagok fogyasztása &. A függvény kódját és konfigurációs tároló storage-fiókhoz tartozó kapcsolati karakterláncot. Lásd: [Function-alkalmazás létrehozása](functions-infrastructure-as-code.md#create-a-function-app).
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
+|WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [name]; AccountKey = [kulcs]|
 
-## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
+## <a name="website_contentshare"></a>WEBHELY\_CONTENTSHARE
 
-For consumption & Premium plans only. The file path to the function app code and configuration. Used with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Default is a unique string that begins with the function app name. See [Create a function app](functions-infrastructure-as-code.md#create-a-function-app).
+Csak a prémium csomagok fogyasztása &. A fájl elérési útja a függvény kódját és a konfiguráció. Az WEBSITE_CONTENTAZUREFILECONNECTIONSTRING használni. Alapértelmezés szerint egy egyedi karakterlánccá, amely a függvényalkalmazás neve kezdődik. Lásd: [Function-alkalmazás létrehozása](functions-infrastructure-as-code.md#create-a-function-app).
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
+## <a name="website_max_dynamic_application_scale_out"></a>WEBHELY\_maximális\_dinamikus\_alkalmazás\_SKÁLÁZÁSi\_
 
-The maximum number of instances that the function app can scale out to. Default is no limit.
+A függvényalkalmazás lehet horizontálisan-példányok maximális száma. Alapértelmezett érték a nincs korlátozva.
 
 > [!NOTE]
-> This setting is a preview feature - and only reliable if set to a value <= 5
+> Ez a beállítás nem egy előzetes verziójú funkció - és csak megbízható if értéke < = 5
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|5|
+|WEBHELY\_maximális\_dinamikus\_alkalmazás\_SKÁLÁZÁSi\_|5|
 
-## <a name="website_node_default_version"></a>WEBSITE\_NODE\_DEFAULT_VERSION
+## <a name="website_node_default_version"></a>WEBHELY\_NODE\_DEFAULT_VERSION
 
-_Windows only._  
-Sets the version of Node.js to use when running your function app on Windows. You should use a tilde (~) to have the runtime use the latest available version of the targeted major version. For example, when set to `~10`, the latest version of Node.js 10 is used. When a major version is targeted with a tilde, you don't have to manually update the minor version. 
+_Csak Windows._  
+Beállítja a Node. js azon verzióját, amelyet a Function alkalmazás Windows rendszeren való futtatásakor használ. Ha a futásidejű modult használja, használjon egy tilde (~) verziót a célként megadott főverzió legújabb elérhető verziójának használatára. Ha például az `~10`értékre van állítva, a Node. js 10 legújabb verziója van használatban. Ha egy főverziót egy tilde megcéloz, nem kell manuálisan frissítenie a másodlagos verziót. 
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|WEBSITE\_NODE\_DEFAULT_VERSION|~10|
+|WEBHELY\_NODE\_DEFAULT_VERSION|~ 10|
 
-## <a name="website_run_from_package"></a>WEBSITE\_RUN\_FROM\_PACKAGE
+## <a name="website_run_from_package"></a>WEBHELY\_\_futtatása\_CSOMAGból
 
-Enables your function app to run from a mounted package file.
+A függvényalkalmazás egy csatlakoztatott alkalmazáscsomag-fájl futtatását engedélyezi.
 
-|Jelmagyarázat|Mintaérték|
+|Paraméter|Mintaérték|
 |---|------------|
-|WEBSITE\_RUN\_FROM\_PACKAGE|1|
+|WEBHELY\_\_futtatása\_CSOMAGból|1|
 
-Valid values are either a URL that resolves to the location of a deployment package file, or `1`. When set to `1`, the package must be in the `d:\home\data\SitePackages` folder. When using zip deployment with this setting, the package is automatically uploaded to this location. In preview, this setting was named `WEBSITE_RUN_FROM_ZIP`. For more information, see [Run your functions from a package file](run-functions-from-deployment-package.md).
+Az érvényes értékek egy URL-cím, amely feloldja a központi telepítési csomag fájljának helyét, vagy `1`. Ha `1`re van állítva, a csomagnak a `d:\home\data\SitePackages` mappában kell lennie. Ezzel a beállítással telepítési zip használatakor a csomag automatikusan fel a rendszer ezen a helyen. Az előzetes verzióban a beállítás neve `WEBSITE_RUN_FROM_ZIP`. További információkért lásd: [függvények futtatása csomagfájl alapján](run-functions-from-deployment-package.md).
 
 ## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
 
-By default Functions proxies will utilize a shortcut to send API calls from proxies directly to functions in the same Function App, rather than creating a new HTTP request. This setting allows you to disable that behavior.
+Alapértelmezés szerint a Functions-proxyk egy API-hívások küldése a proxyk függvényei ugyanaz a Függvényalkalmazás ahelyett, hogy hozzon létre új HTTP-kérést közvetlenül a helyi rendszer használatára. Ezzel a beállítással lehetővé teszi, hogy tiltsa le ezt a viselkedést.
 
-|Jelmagyarázat|Value (Díj)|Leírás|
+|Paraméter|Érték|Leírás|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|igaz|Calls with a backend url pointing to a function in the local Function App will no longer be sent directly to the function, and will instead be directed back to the HTTP front end for the Function App|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|hamis|Ez az alapértelmezett érték. Calls with a  backend url pointing to a function in the local Function App will be forwarded directly to that Function|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|A helyi függvényalkalmazás függvényére mutató háttér-URL-címmel rendelkező hívások a továbbiakban nem lesznek közvetlenül a függvénynek elküldve, és helyette a függvényalkalmazás a HTTP-kezelőfelületre lesznek irányítva.|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Ez az alapértelmezett érték. A helyi függvény mutató háttérkiszolgáló url-hívások Függvényalkalmazás a rendszer továbbítja közvetlenül a függvény|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
-This setting controls whether %2F is decoded as slashes in route parameters when they are inserted into the backend URL. 
+Ez a beállítás szabályozza, hogy 2F. % dekódolni, perjeleket az útvonal-paraméterek, be a háttérkiszolgáló URL-címe behelyezésekor. 
 
-|Jelmagyarázat|Value (Díj)|Leírás|
+|Paraméter|Érték|Leírás|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|igaz|Route parameters with encoded slashes will have them decoded. `example.com/api%2ftest` will become `example.com/api/test`|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|hamis|This is the default behavior. All route parameters will be passed along unchanged|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Útvonal-paraméterek a kódolt perjeleket őket dekódolni fog rendelkezni. `example.com/api%2ftest` lesz `example.com/api/test`|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Ez az az alapértelmezett viselkedést. Az összes útvonal paraméterek továbbít változatlan marad.|
 
 ### <a name="example"></a>Példa
 
-Here is an example proxies.json in a function app at the URL myfunction.com
+Íme egy példa proxies.json a függvényalkalmazás az URL-cím myfunction.com:
 
 ```JSON
 {
@@ -208,16 +208,16 @@ Here is an example proxies.json in a function app at the URL myfunction.com
     }
 }
 ```
-|URL Decoding|Input (Bemenet)|Kimenet|
+|URL-cím-dekódolás|Input (Bemenet)|Kimenet|
 |-|-|-|
-|igaz|myfunction.com/test%2fapi|example.com/test/api
-|hamis|myfunction.com/test%2fapi|example.com/test%2fapi|
+|true|myfunction.com/test%2fapi|example.com/test/API
+|false|myfunction.com/test%2fapi|example.com/test%2fapi|
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Learn how to update app settings](functions-how-to-use-azure-function-app-settings.md#settings)
+[Ismerje meg, hogyan frissítheti az alkalmazás beállításait](functions-how-to-use-azure-function-app-settings.md#settings)
 
-[See global settings in the host.json file](functions-host-json.md)
+[Lásd: globális beállítások a Host. JSON fájlban](functions-host-json.md)
 
-[See other app settings for App Service apps](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
+[További Alkalmazásbeállítások App Service alkalmazásokhoz](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

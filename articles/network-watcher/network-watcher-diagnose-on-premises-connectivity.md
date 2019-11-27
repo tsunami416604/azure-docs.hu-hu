@@ -17,7 +17,7 @@ ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
 ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74275944"
@@ -82,7 +82,7 @@ Az Azure Network Watcher-hibakeresési funkciója lehetővé teszi a VPN Gateway
 
 ### <a name="gateway"></a>Átjáró
 
-| Hiba típusa | Ok | napló|
+| Hiba típusa | Ok | Napló|
 |---|---|---|
 | Nincs hiba | Ha nem észlelhető hiba. |Igen|
 | GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve. |Nem|
@@ -97,7 +97,7 @@ Az Azure Network Watcher-hibakeresési funkciója lehetővé teszi a VPN Gateway
 
 ### <a name="connection"></a>Kapcsolat
 
-| Hiba típusa | Ok | napló|
+| Hiba típusa | Ok | Napló|
 |---|---|---|
 | Nincs hiba | Ha nem észlelhető hiba. |Igen|
 | GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve. |Nem|

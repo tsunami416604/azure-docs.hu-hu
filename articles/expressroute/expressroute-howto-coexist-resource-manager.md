@@ -1,6 +1,6 @@
 ---
-title: 'Configure ExpressRoute and S2S VPN coexisting connections: Azure PowerShell'
-description: Configure ExpressRoute and a Site-to-Site VPN connection that can coexist for the Resource Manager model using PowerShell.
+title: 'ExpressRoute és S2S VPN egyidejű kapcsolatainak konfigurálása: Azure PowerShell'
+description: Konfigurálja az ExpressRoute- és egy helyek közötti VPN-kapcsolat, amelyek párhuzamosan használhatók a PowerShell használatával a Resource Manager-modellben.
 services: expressroute
 author: charwen
 ms.service: expressroute
@@ -15,21 +15,21 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423588"
 ---
-# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Configure ExpressRoute and Site-to-Site coexisting connections using PowerShell
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell-lel ExpressRoute- és helyek közötti egyidejű kapcsolatok konfigurálása
 > [!div class="op_single_selector"]
 > * [PowerShell – Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell – Klasszikus](expressroute-howto-coexist-classic.md)
 > 
 > 
 
-This article helps you configure ExpressRoute and Site-to-Site VPN connections that coexist. A helyek közötti VPN és az ExpressRoute konfigurálásának lehetősége több előnnyel jár. You can configure Site-to-Site VPN as a secure failover path for ExpressRoute, or use Site-to-Site VPNs to connect to sites that are not connected through ExpressRoute. A cikkben mindkét forgatókönyv lépéseit ismertetjük. Ez a cikk a Resource Manager-alapú üzemi modell vonatkozik.
+Ez a cikk segít fennálló ExpressRoute és Site-to-Site VPN-kapcsolatok konfigurálása. A helyek közötti VPN és az ExpressRoute konfigurálásának lehetősége több előnnyel jár. Site-to-Site VPN konfigurálhatja biztonságos feladatátvételi útvonalként az expressroute-hoz, vagy a nem expressroute-on keresztül kapcsolódó helyekhez való csatlakozáshoz használja a Site-to-Site VPN-eket. A cikkben mindkét forgatókönyv lépéseit ismertetjük. Ez a cikk a Resource Manager-alapú üzemi modell vonatkozik.
 
 Az egyidejű helyek közötti VPN- és ExpressRoute-kapcsolatok konfigurálása több előnnyel jár:
 
 * Konfigurálhat helyek közötti VPN-t biztonságos feladatátvételi útvonalként az ExpressRoute számára. 
 * Azt is megteheti, hogy helyek közötti VPN-t használ olyan helyekhez való csatlakozáshoz, amelyek nem az ExpressRoute-on keresztül kapcsolódnak. 
 
-Ebben a cikkben ismertetjük mindkét forgatókönyv konfigurálásának lépéseit. Ez a cikk a Resource Manager-alapú üzemi modellre vonatkozik, és a PowerShellt használja. You can also configure these scenarios using the Azure portal, although documentation is not yet available. You can configure either gateway first. Typically, you will incur no downtime when adding a new gateway or gateway connection.
+Ebben a cikkben ismertetjük mindkét forgatókönyv konfigurálásának lépéseit. Ez a cikk a Resource Manager-alapú üzemi modellre vonatkozik, és a PowerShellt használja. Ezek a forgatókönyvek az Azure portal használatával is konfigurálhatja, bár dokumentáció még nem érhető el. Mindkét átjáró először is beállíthatja. Általában akkor számítunk fel állásidő nélkül egy új átjárót vagy gateway-kapcsolat hozzáadásakor.
 
 >[!NOTE]
 >Ha helyek közötti VPN-t szeretne létrehozni egy ExpressRoute-kapcsolatcsoport között, tekintse meg [ezt a cikket](site-to-site-vpn-over-microsoft-peering.md).
@@ -37,10 +37,10 @@ Ebben a cikkben ismertetjük mindkét forgatókönyv konfigurálásának lépés
 
 ## <a name="limits-and-limitations"></a>Korlátok és korlátozások
 * **A tranzit útválasztás nem támogatott.** Nem hajthat végre útválasztást (az Azure-on keresztül) a helyek közötti VPN használatával csatlakoztatott helyi hálózat és az ExpressRoute használatával csatlakoztatott helyi hálózat között.
-* **A Basic SKU-átjáró nem támogatott.** Nem Basic SKU-átjárót kell használnia [ExpressRoute-](expressroute-about-virtual-network-gateways.md) és [VPN-átjáróként](../vpn-gateway/vpn-gateway-about-vpngateways.md).
-* **Kizárólag az útvonalalapú VPN-átjáró támogatott.** You must use a route-based [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md). You also can use a route-based VPN gateway with a VPN connection configured for 'policy-based traffic selectors' as described in [Connect to multiple policy-based VPN devices](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+* **Az alapszintű termékváltozat átjárója nem támogatott.** Nem Basic SKU-átjárót kell használnia [ExpressRoute-](expressroute-about-virtual-network-gateways.md) és [VPN-átjáróként](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+* **Kizárólag az útvonalalapú VPN-átjáró támogatott.** Egy Route-alapú [VPN-átjárót](../vpn-gateway/vpn-gateway-about-vpngateways.md)kell használnia. Egy Route-alapú VPN-átjárót is használhat a "házirend-alapú forgalmi választóknak" konfigurált VPN-kapcsolattal, a következő témakörben leírtak szerint: [Csatlakozás több házirend-alapú VPN-eszközhöz](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 * **A VPN-átjáróhoz statikus útvonalat kell konfigurálni.** Ha a helyi hálózat az ExpressRoute-hoz és a helyek közötti VPN-hez is csatlakozik, konfigurálnia kell egy statikus útvonalat a helyi hálózaton a helyek közötti VPN-kapcsolat a nyilvános internetre történő átirányításához.
-* **VPN Gateway defaults to ASN 65515 if not specified.** Azure VPN Gateway supports the BGP routing protocol. You can specify ASN (AS Number) for a virtual network by adding the -Asn switch. If you don't specify this parameter, the default AS number is 65515. You can use any ASN for the configuration, but if you select something other than 65515, you must reset the gateway for the setting to take effect.
+* **Ha nincs megadva, a rendszer az ASN 65515 alapértékeket VPN Gateway.** Az Azure VPN Gateway támogatja a BGP útválasztási protokollt. Az-ASN kapcsoló hozzáadásával megadhatja a virtuális hálózathoz tartozó ASN (AS-szám) értéket. Ha nem megadja ezt a paramétert, a rendszer az alapértelmezett 65515-AS számot határozza meg. Bármilyen ASN-t használhat a konfigurációhoz, de ha a 65515-nál nem nagyobb értéket választ, a beállítás érvénybe léptetéséhez alaphelyzetbe kell állítania az átjárót.
 
 ## <a name="configuration-designs"></a>Konfigurációs tervek
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Helyek közötti VPN konfigurálása feladatátvételi útvonalként az ExpressRoute számára
@@ -75,7 +75,7 @@ Két különböző eljáráscsoport közül választhat. A konfigurálás válas
   
     Ha törli és újra létrehozza az átjárót, akkor a létesítmények közötti kapcsolatoknál állásidő fog jelentkezni. Azonban, ha megfelelően vannak konfigurálva, a virtuális gépek és a szolgáltatások továbbra is képesek lesznek kommunikálni a terheléselosztón keresztül az átjáró konfigurálása közben.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
@@ -85,10 +85,10 @@ Két különböző eljáráscsoport közül választhat. A konfigurálás válas
 ## <a name="new"></a>Új virtuális hálózat és egyidejű kapcsolatok létrehozása
 Az eljárás a VNetek, valamint az egyidejűleg jelenlévő helyek közötti és ExpressRoute-kapcsolatok létrehozásának módját ismerteti. Az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön által már ismertektől. Ügyeljen arra, hogy az ebben az útmutatóban meghatározott parancsmagokat használja.
 
-1. Sign in and select your subscription.
+1. Jelentkezzen be, és válassza ki az előfizetését.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. Set variables.
+2. Változók beállítása
 
    ```azurepowershell-interactive
    $location = "Central US"
@@ -216,7 +216,7 @@ Az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön �
    ```azurepowershell-interactive
    $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-4. Ezen a ponton egy átjáró nélküli virtuális hálózattal rendelkezik. To create new gateways and set up the connections, use the following examples:
+4. Ezen a ponton egy átjáró nélküli virtuális hálózattal rendelkezik. Új átjárók létrehozásához és a kapcsolatok beállításához használja az alábbi példákat:
 
    Állítsa be a változókat.
 
@@ -226,7 +226,7 @@ Az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön �
    $gwConfig = New-AzVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
    ```
 
-   Create the gateway.
+   Hozzon létre egy átjárót.
 
    ```azurepowershell-interactive
    $gw = New-AzVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup> -Location <yourlocation) -IpConfigurations $gwConfig -GatewayType "ExpressRoute" -GatewaySku Standard
@@ -241,7 +241,7 @@ Az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön �
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>Pont-hely konfiguráció hozzáadása a VPN-átjáróhoz
 
-You can follow the steps below to add Point-to-Site configuration to your VPN gateway in a coexistence setup. To upload the VPN root certificate, you must either install PowerShell locally to your computer, or use the Azure portal.
+Követheti a pont – hely konfiguráció hozzáadása a VPN-átjáróhoz a párhuzamos telepítés az alábbi lépéseket. A VPN-főtanúsítvány feltöltéséhez a PowerShellt helyileg kell telepítenie a számítógépre, vagy a Azure Portalt kell használnia.
 
 1. Adja hozzá a VPN-ügyfél címterét.
 
@@ -249,7 +249,7 @@ You can follow the steps below to add Point-to-Site configuration to your VPN ga
    $azureVpn = Get-AzVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName
    Set-AzVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $azureVpn -VpnClientAddressPool "10.251.251.0/24"
    ```
-2. Töltse fel a VPN-főtanúsítványt az Azure-ba a VPN-átjáró számára. In this example, it's assumed that the root certificate is stored in the local machine where the following PowerShell cmdlets are run and that you are running PowerShell locally. You can also upload the certificate using the Azure portal.
+2. Töltse fel a VPN-főtanúsítványt az Azure-ba a VPN-átjáró számára. Ebben a példában feltételezzük, hogy a főtanúsítványt a helyi gépen tárolja a rendszer, ahol a következő PowerShell-parancsmagok futnak, és a PowerShell helyileg fut. A tanúsítványt a Azure Portal használatával is feltöltheti.
 
    ```powershell
    $p2sCertFullName = "RootErVpnCoexP2S.cer" 

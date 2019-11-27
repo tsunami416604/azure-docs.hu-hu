@@ -1,6 +1,6 @@
 ---
-title: PHP (Laravel) with MySQL on Linux - Azure App Service | Microsoft Docs
-description: Learn how to get a PHP app working in Azure App Service on Linux, with connection to a MySQL database in Azure. Laravel is used in the tutorial.
+title: PHP (Laravel) MySQL-vel Linux rendszeren – Azure App Service | Microsoft Docs
+description: Megtudhatja, hogyan szerezhet be egy olyan PHP-alkalmazást, amely Azure App Service Linux rendszeren működik, és az Azure-ban MySQL-adatbázishoz kapcsolódik. A Laravel az oktatóanyagban van használatban.
 services: app-service\web
 author: cephalin
 manager: jeconnoc
@@ -18,17 +18,17 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481331"
 ---
-# <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Build a PHP and MySQL app in Azure App Service on Linux
+# <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>PHP-és MySQL-alkalmazás létrehozása Azure App Service Linuxon
 
 > [!NOTE]
-> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. To deploy to App Service on _Windows_, see [Build a PHP and MySQL app in Azure](../app-service-web-tutorial-php-mysql.md).
+> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. A _windowson_app Service való üzembe helyezéssel kapcsolatban lásd: [PHP-és MySQL-alkalmazás létrehozása az Azure-ban](../app-service-web-tutorial-php-mysql.md).
 >
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. This tutorial shows how to create a PHP app and connect it to a MySQL database. Az oktatóanyag eredménye egy, a Linux App Service-ben futó [Laravel](https://laravel.com/)-alkalmazás lesz.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan hozhat létre PHP-alkalmazást, és hogyan csatlakoztatható egy MySQL-adatbázishoz. Az oktatóanyag eredménye egy, a Linux App Service-ben futó [Laravel](https://laravel.com/)-alkalmazás lesz.
 
 ![Az Azure App Service-ben futó PHP-alkalmazás](./media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * MySQL-adatbázis létrehozása az Azure-ban
@@ -89,7 +89,7 @@ Ebben a lépésben egy Laravel-mintaalkalmazásra tesz szert, konfigurálja anna
 
 A terminálablakban a `cd` paranccsal lépjen egy munkakönyvtárra.
 
-Futtassa a következő parancsot a minta tárház klónozásához.
+Futtassa a következő parancsot a mintatárház klónozásához.
 
 ```bash
 git clone https://github.com/Azure-Samples/laravel-tasks
@@ -119,7 +119,7 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-A [Laravel-környezet konfigurációjával](https://laravel.com/docs/5.4/configuration#environment-configuration) foglalkozó cikkben tekinthet meg információt arról, hogy a Laravel hogyan használja a _.env_ fájlt.
+A _Laravel-környezet konfigurációjával_ foglalkozó cikkben tekinthet meg információt arról, hogy a Laravel hogyan használja a [.env](https://laravel.com/docs/5.4/configuration#environment-configuration) fájlt.
 
 ### <a name="run-the-sample-locally"></a>A minta futtatása helyben
 
@@ -153,7 +153,7 @@ A PHP leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
 
 Ebben a lépésben egy MySQL-adatbázist hoz létre az [Azure Database for MySQL-ben](/azure/mysql). Később konfigurálni fogja a PHP-alkalmazást az adatbázishoz való csatlakozásra.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -161,7 +161,7 @@ Ebben a lépésben egy MySQL-adatbázist hoz létre az [Azure Database for MySQL
 
 Hozzon létre egy kiszolgálót az Azure Database for MySQL szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) paranccsal.
 
-In the following command, substitute a unique server name for the *\<mysql-server-name>* placeholder, a user name for the *\<admin-user>* , and a password for the *\<admin-password>*  placeholder. A kiszolgálónév a MySQL-végpont (`https://<mysql-server-name>.mysql.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban. For details on selecting MySQL DB SKU, please see [Create an Azure Database for MySQL server](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server).
+A következő parancsban helyettesítse be a *\<MySQL-Server-name >* helyőrző nevű egyedi kiszolgálónevet, a *\<rendszergazda felhasználó >* felhasználónevét, valamint a *\<rendszergazdai jelszó >* helyőrzőhöz tartozó jelszót. A kiszolgálónév a MySQL-végpont (`https://<mysql-server-name>.mysql.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban. A MySQL DB SKU kiválasztásával kapcsolatos részletekért tekintse meg a [Azure Database for MySQL-kiszolgáló létrehozása](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server)című témakört.
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1
@@ -194,7 +194,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-n
 > Még szigorúbb tűzfalszabályt is megadhat, ha [csak azokat a kimenő IP-címeket használja, amelyeket alkalmazása használ](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 >
 
-In the Cloud Shell, run the command again to allow access from your local computer by replacing *\<your-ip-address>* with [your local IPv4 IP address](https://www.whatsmyip.org/).
+A Cloud Shell futtassa újra a parancsot, hogy engedélyezze a hozzáférést a helyi számítógépről úgy, hogy lecseréli *\<saját IP-címe >* a [helyi IPv4 IP-címére](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
@@ -202,7 +202,7 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql-ser
 
 ### <a name="connect-to-production-mysql-server-locally"></a>Helyi csatlakozás éles MySQL-kiszolgálóhoz
 
-A terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. Use the value you specified previously for _&lt;admin-user>_ and _&lt;mysql-server-name>_ . Amikor a rendszer jelszót kér, használja azt a jelszót, amelyet az adatbázis létrehozásakor adott meg az Azure-ban.
+A terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. Használja a korábban megadott értéket _&lt;felügyeleti felhasználó >_ és _&lt;MySQL-server-name >_ . Amikor a rendszer jelszót kér, használja azt a jelszót, amelyet az adatbázis létrehozásakor adott meg az Azure-ban.
 
 ```bash
 mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
@@ -239,7 +239,7 @@ Ebben a lépésben csatlakoztatja a PHP-alkalmazást a MySQL-adatbázishoz, amel
 
 ### <a name="configure-the-database-connection"></a>Az adatbázis-kapcsolat konfigurálása
 
-Az adattár gyökérkönyvtárában, hozzon létre a _. env.production_ fájlt, és másolja bele a következő változókat. Replace the placeholder _&lt;mysql-server-name>_ .
+Az adattár gyökérkönyvtárában, hozzon létre a _. env.production_ fájlt, és másolja bele a következő változókat. Cserélje le a helyőrzőt _&lt;MySQL-Server-name >_ .
 
 ```txt
 APP_ENV=production
@@ -323,7 +323,7 @@ Ebben a lépésben üzembe helyezi a MySQL-hez csatlakoztatott PHP-alkalmazást 
 
 A Laravel-alkalmazás a _/public_ könyvtárban indul el. Az App Service alapértelmezett PHP Docker-rendszerképe az Apache rendszert használja, és nem engedélyezi a `DocumentRoot` testreszabását a Laravel számára. A `.htaccess` használatával azonban újraírhatja az összes kérést úgy, hogy azok a _/public_ könyvtárra mutassanak a gyökérkönyvtár helyett. Az adattár gyökérkönyvtárában egy `.htaccess` már hozzá lett adva erre a célra. Ennek segítségével a Laravel-alkalmazás készen áll az üzembe helyezésre.
 
-For more information, see [Change site root](configure-language-php.md#change-site-root).
+További információt a [hely gyökerének módosítása](configure-language-php.md#change-site-root)című témakörben talál.
 
 ### <a name="configure-a-deployment-user"></a>Üzembe helyező felhasználó konfigurálása
 
@@ -341,13 +341,13 @@ For more information, see [Change site root](configure-language-php.md#change-si
 
 Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ adhatja meg az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) paranccsal.
 
-Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Replace the placeholders _&lt;appname>_ and _&lt;mysql-server-name>_ .
+Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Cserélje le a helyőrzőket _&lt;appname >_ és a _MySQL-server-name >&lt;_ .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql-server-name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
-You can use the PHP [getenv](https://php.net/manual/en/function.getenv.php) method to [access the app settings](configure-language-php.md#access-environment-variables). The Laravel code uses an [env](https://laravel.com/docs/5.4/helpers#method-env) wrapper over the PHP `getenv`. A _config/database.php_ fájlban található MySQL-konfiguráció például az alábbi kódhoz hasonlít:
+Az [Alkalmazásbeállítások eléréséhez](configure-language-php.md#access-environment-variables)használhatja a PHP [GETENV](https://php.net/manual/en/function.getenv.php) metódust. A Laravel kód egy [env](https://laravel.com/docs/5.4/helpers#method-env) burkolót használ a PHP `getenv`. A _config/database.php_ fájlban található MySQL-konfiguráció például az alábbi kódhoz hasonlít:
 
 ```php
 'mysql' => [
@@ -370,13 +370,13 @@ A `php artisan` használatával hozhat létre új alkalmazáskulcsot anélkül, 
 php artisan key:generate --show
 ```
 
-Set the application key in the App Service app by using the [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) command. Cserélje le az _&lt;appname>_ és az _&lt;outputofphpartisankey:generate>_ helyőrzőt.
+Állítsa be az alkalmazás kulcsát a App Service alkalmazásban a [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs használatával. Cserélje le az _&lt;appname>_ és az _&lt;outputofphpartisankey:generate>_ helyőrzőt.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
 ```
 
-`APP_DEBUG="true"` tells Laravel to return debugging information when the deployed app encounters errors. Éles alkalmazás futtatásakor állítsa át a biztonságosabb `false` értékűre.
+`APP_DEBUG="true"` tájékoztatja a Laravel a hibakeresési információk visszaadásáról, amikor az üzembe helyezett alkalmazás hibákat észlel. Éles alkalmazás futtatásakor állítsa át a biztonságosabb `false` értékűre.
 
 ### <a name="push-to-azure-from-git"></a>Leküldéses üzenet küldése a Gitből az Azure-ra
 
@@ -416,10 +416,10 @@ remote: Running deployment command...
 > - `deploy.sh` – Az egyéni üzembehelyezési szkript. Ha áttekinti a fájlt, láthatja, hogy a `php composer.phar install` és az `npm install` után fut.
 > - `composer.phar` – A Composer csomagkezelője.
 >
-> Ezzel a módszerrel bármilyen lépést hozzáadhat a Git-alapú üzembe helyezéshez az App Service-ben. For more information, see [Run Composer](configure-language-php.md#run-composer).
+> Ezzel a módszerrel bármilyen lépést hozzáadhat a Git-alapú üzembe helyezéshez az App Service-ben. További információ: [Composer futtatása](configure-language-php.md#run-composer).
 >
 
-### <a name="browse-to-the-azure-app"></a>Browse to the Azure app
+### <a name="browse-to-the-azure-app"></a>Tallózással keresse meg az Azure-alkalmazást
 
 Egy böngészőben keresse fel az `http://<app-name>.azurewebsites.net` címet, és vegyen fel néhány feladatot a listára.
 
@@ -456,7 +456,7 @@ public function up()
 }
 ```
 
-A fenti kód egy `complete` nevű logikai oszlopot ad hozzá a `tasks` táblában.
+A fenti kód egy `tasks` nevű logikai oszlopot ad hozzá a `complete` táblában.
 
 Cserélje le a `down` metódust az alábbi kódra a visszaállítási művelethez:
 
@@ -563,7 +563,7 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-Once the `git push` is complete, navigate to the Azure app and test the new functionality.
+A `git push` befejezése után navigáljon az Azure-alkalmazáshoz, és tesztelje az új funkciót.
 
 ![Az Azure-ban közzétett modell- és adatbázis-módosítások](media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
@@ -573,15 +573,15 @@ Ha felvett feladatokat, azok megmaradnak az adatbázisban. Az adatséma frissít
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="manage-the-azure-app"></a>Manage the Azure app
+## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
-Go to the [Azure portal](https://portal.azure.com) to manage the app you created.
+A létrehozott alkalmazás kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) .
 
-From the left menu, click **App Services**, and then click the name of your Azure app.
+A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/tutorial-php-mysql-app/access-portal.png)
 
-You see your app's Overview page. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
+Megtekintheti az alkalmazás áttekintés lapját. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
 
 A bal oldali menü az alkalmazás konfigurálásához biztosít oldalakat.
 
@@ -603,12 +603,12 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Diagnosztikai naplók streamelése az Azure-ból
 > * Az alkalmazás kezelése az Azure Portalon
 
-Advance to the next tutorial to learn how to map a custom DNS name to your app.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan képezhető le egyéni DNS-név az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Map custom DNS name to your app](../app-service-web-tutorial-custom-domain.md)
+> [Oktatóanyag: egyéni DNS-név leképezése az alkalmazáshoz](../app-service-web-tutorial-custom-domain.md)
 
-Or, check out other resources:
+Vagy tekintse meg a többi erőforrást:
 
 > [!div class="nextstepaction"]
-> [Configure PHP app](configure-language-php.md)
+> [A PHP-alkalmazás konfigurálása](configure-language-php.md)

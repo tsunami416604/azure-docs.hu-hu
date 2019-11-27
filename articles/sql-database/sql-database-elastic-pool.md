@@ -143,7 +143,7 @@ A rugalmas készletbe helyezett adatbázisok általánosságban ugyanazokat [az 
 
   Az időponthoz való visszaállítás az adatbázis automatikus biztonsági mentését használja a készletben lévő adatbázisok egy adott időpontra történő helyreállításához. Lásd: [Időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- **Geo-restore**
+- **Geo-visszaállítás**
 
   A Geo-visszaállítás az alapértelmezett helyreállítási beállítást adja meg, ha egy adatbázis nem érhető el, mert az adatbázist futtató régióban egy incidens található. Lásd: [Az Azure SQL-adatbázis visszaállítása vagy feladatátvétel a másodlagos kiszolgálóra](sql-database-disaster-recovery.md)
 

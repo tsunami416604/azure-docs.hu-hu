@@ -1,6 +1,6 @@
 ---
-title: Reverse DNS for Azure services - Azure DNS
-description: With this learning path, get started configuring reverse DNS lookups for services hosted in Azure.
+title: Fordított DNS az Azure-szolgáltatásokhoz – Azure DNS
+description: Ezzel a képzési útvonallal megkezdheti a fordított DNS-keresések konfigurálását az Azure-ban üzemeltetett szolgáltatásokhoz.
 services: dns
 documentationcenter: na
 author: asudbring
@@ -19,49 +19,49 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211229"
 ---
-# <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Configure reverse DNS for services hosted in Azure
+# <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Fordított DNS konfigurálása az Azure-ban üzemeltetett szolgáltatásokhoz
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-This article explains how to configure reverse DNS lookups for services hosted in Azure.
+Ez a cikk azt ismerteti, hogyan konfigurálhatja a fordított DNS-kereséseket az Azure-ban üzemeltetett szolgáltatásokhoz.
 
-Services in Azure use IP addresses assigned by Azure and owned by Microsoft. These reverse DNS records (PTR records) must be created in the corresponding Microsoft-owned reverse DNS lookup zones. This article explains how to do this.
+Az Azure-szolgáltatások az Azure által hozzárendelt és a Microsoft tulajdonában lévő IP-címeket használják. Ezeket a fordított DNS-rekordokat (PTR-rekordokat) a megfelelő Microsoft tulajdonú fordított DNS-keresési zónákban kell létrehozni. Ez a cikk azt ismerteti, hogyan teheti ezt meg.
 
-This scenario should not be confused with the ability to [host the reverse DNS lookup zones for your assigned IP ranges in Azure DNS](dns-reverse-dns-hosting.md). In this case, the IP ranges represented by the reverse lookup zone must be assigned to your organization, typically by your ISP.
+Ez a forgatókönyv nem tévesztendő össze azzal a képességgel, hogy [a fordított DNS-keresési zónákat a Azure DNS-beli hozzárendelt IP-címtartományok számára is üzemelteti](dns-reverse-dns-hosting.md). Ebben az esetben a névkeresési zóna által reprezentált IP-tartományokat hozzá kell rendelni a szervezethez, jellemzően az INTERNETSZOLGÁLTATÓnál.
 
-Before reading this article, you should be familiar with this [Overview of reverse DNS and support in Azure](dns-reverse-dns-overview.md).
+A cikk elolvasása előtt Ismerkedjen meg a [fordított DNS és az Azure-támogatás áttekintésével](dns-reverse-dns-overview.md).
 
-In Azure DNS, compute resources (such as virtual machines, virtual machine scale sets, or Service Fabric clusters) are exposed via a PublicIpAddress resource. Reverse DNS lookups are configured using the 'ReverseFqdn' property of the PublicIpAddress.
-
-
-Reverse DNS is not currently supported for the Azure App Service.
-
-## <a name="validation-of-reverse-dns-records"></a>Validation of reverse DNS records
-
-A third party should not be able to create reverse DNS records for their Azure service mapping to your DNS domains. To prevent this, Azure only allows the creation of a reverse DNS record where domain name specified in the reverse DNS record is the same as, or resolves to, the DNS name or IP address of a PublicIpAddress or Cloud Service in the same Azure subscription.
-
-This validation is only performed when the reverse DNS record is set or modified. Periodic re-validation is not performed.
-
-For example: suppose the PublicIpAddress resource has the DNS name contosoapp1.northus.cloudapp.azure.com and IP address 23.96.52.53. The ReverseFqdn for the PublicIpAddress can be specified as:
-* The DNS name for the PublicIpAddress, contosoapp1.northus.cloudapp.azure.com
-* The DNS name for a different PublicIpAddress in the same subscription, such as contosoapp2.westus.cloudapp.azure.com
-* A vanity DNS name, such as app1.contoso.com, so long as this name is *first* configured as a CNAME to contosoapp1.northus.cloudapp.azure.com, or to a different PublicIpAddress in the same subscription.
-* A vanity DNS name, such as app1.contoso.com, so long as this name is *first* configured as an A record to the IP address 23.96.52.53, or to the IP address of a different PublicIpAddress in the same subscription.
-
-The same constraints apply to reverse DNS for Cloud Services.
+Azure DNS a számítási erőforrások (például a virtuális gépek, a virtuálisgép-méretezési csoportok vagy a Service Fabric fürtök) PublicIpAddress-erőforráson keresztül érhetők el. A fordított DNS-keresések a PublicIpAddress "ReverseFqdn" tulajdonságának használatával konfigurálhatók.
 
 
-## <a name="reverse-dns-for-publicipaddress-resources"></a>Reverse DNS for PublicIpAddress resources
+A fordított DNS jelenleg nem támogatott a Azure App Service számára.
 
-This section provides detailed instructions for how to configure reverse DNS for PublicIpAddress resources in the Resource Manager deployment model, using either Azure PowerShell, Azure classic CLI, or Azure CLI. Configuring reverse DNS for PublicIpAddress resources is not currently supported via the Azure portal.
+## <a name="validation-of-reverse-dns-records"></a>Fordított DNS-rekordok ellenőrzése
 
-Azure currently supports reverse DNS only for IPv4 PublicIpAddress resources. It is not supported for IPv6.
+Egy harmadik fél nem hozhat létre fordított DNS-rekordokat az Azure-szolgáltatáshoz való hozzárendeléshez a DNS-tartományokhoz. Ennek megelőzése érdekében az Azure csak olyan fordított DNS-rekord létrehozását engedélyezi, amelyben a fordított DNS-rekordban megadott tartománynév megegyezik a-vel, vagy feloldja a (z) egy PublicIpAddress vagy felhőalapú szolgáltatás DNS-nevét vagy IP-címét ugyanabban az Azure-előfizetésben.
 
-### <a name="add-reverse-dns-to-an-existing-publicipaddresses"></a>Add reverse DNS to an existing PublicIpAddresses
+Ezt az ellenőrzést csak akkor hajtja végre a rendszer, ha a fordított DNS-rekord be van állítva vagy módosul. A rendszer nem végez rendszeres újraellenőrzést.
+
+Például: tegyük fel, hogy a PublicIpAddress erőforrás a DNS-név contosoapp1.northus.cloudapp.azure.com és IP-23.96.52.53 rendelkezik. A PublicIpAddress ReverseFqdn megadható a következőként:
+* A PublicIpAddress DNS-neve, contosoapp1.northus.cloudapp.azure.com
+* Egy másik PublicIpAddress DNS-neve ugyanabban az előfizetésben, például contosoapp2.westus.cloudapp.azure.com
+* Egy hiúság DNS-neve, például app1.contoso.com, feltéve, hogy a név *először* CNAME-ként van konfigurálva a contosoapp1.NORTHUS.cloudapp.Azure.com, vagy egy másik PublicIpAddress ugyanahhoz az előfizetéshez.
+* Egy hiúság DNS-neve, például app1.contoso.com, feltéve, hogy ezt a nevet *először* az IP-23.96.52.53, vagy egy másik PublicIpAddress IP-címére konfigurálja, ugyanabban az előfizetésben.
+
+Ugyanezek a korlátozások érvényesek a Cloud Services fordított DNS-re.
+
+
+## <a name="reverse-dns-for-publicipaddress-resources"></a>Fordított DNS PublicIpAddress-erőforrásokhoz
+
+Ez a szakasz részletesen ismerteti, hogyan konfigurálhatja a fordított DNS-t a Resource Manager-alapú üzemi modellben lévő PublicIpAddress-erőforrásokhoz a Azure PowerShell, a klasszikus Azure CLI vagy az Azure CLI használatával. A fordított DNS konfigurálása a PublicIpAddress-erőforrásokhoz jelenleg nem támogatott a Azure Portalon keresztül.
+
+Az Azure jelenleg csak az IPv4 PublicIpAddress-erőforrások esetében támogatja a fordított DNS-t. IPv6 esetén nem támogatott.
+
+### <a name="add-reverse-dns-to-an-existing-publicipaddresses"></a>Fordított DNS hozzáadása meglévő nyilvános IP
 
 #### <a name="powershell"></a>PowerShell
 
-To update reverse DNS to an existing PublicIpAddress:
+Fordított DNS frissítése meglévő PublicIpAddress:
 
 ```powershell
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
@@ -69,7 +69,7 @@ $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
 Set-AzPublicIpAddress -PublicIpAddress $pip
 ```
 
-To add reverse DNS to an existing PublicIpAddress that doesn't already have a DNS name, you must also specify a DNS name:
+Ha olyan meglévő PublicIpAddress szeretné felvenni a fordított DNS-t, amely még nem rendelkezik DNS-névvel, akkor a DNS-nevet is meg kell adnia:
 
 ```powershell
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
@@ -81,35 +81,35 @@ Set-AzPublicIpAddress -PublicIpAddress $pip
 
 #### <a name="azure-classic-cli"></a>Azure klasszikus parancssori felület
 
-To add reverse DNS to an existing PublicIpAddress:
+Fordított DNS hozzáadása meglévő PublicIpAddress:
 
 ```azurecli
 azure network public-ip set -n PublicIp -g MyResourceGroup -f contosoapp1.westus.cloudapp.azure.com.
 ```
 
-To add reverse DNS to an existing PublicIpAddress that doesn't already have a DNS name, you must also specify a DNS name:
+Ha olyan meglévő PublicIpAddress szeretné felvenni a fordított DNS-t, amely még nem rendelkezik DNS-névvel, akkor a DNS-nevet is meg kell adnia:
 
 ```azurecli
 azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f contosoapp1.westus.cloudapp.azure.com.
 ```
 
-#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+#### <a name="azure-cli"></a>Azure CLI
 
-To add reverse DNS to an existing PublicIpAddress:
+Fordított DNS hozzáadása meglévő PublicIpAddress:
 
 ```azurecli
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn contosoapp1.westus.cloudapp.azure.com.
 ```
 
-To add reverse DNS to an existing PublicIpAddress that doesn't already have a DNS name, you must also specify a DNS name:
+Ha olyan meglévő PublicIpAddress szeretné felvenni a fordított DNS-t, amely még nem rendelkezik DNS-névvel, akkor a DNS-nevet is meg kell adnia:
 
 ```azurecli
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn contosoapp1.westus.cloudapp.azure.com --dns-name contosoapp1
 ```
 
-### <a name="create-a-public-ip-address-with-reverse-dns"></a>Create a Public IP Address with reverse DNS
+### <a name="create-a-public-ip-address-with-reverse-dns"></a>Nyilvános IP-cím létrehozása fordított DNS-sel
 
-To create a new PublicIpAddress with the reverse DNS property already specified:
+Már megadott fordított DNS-tulajdonsággal rendelkező új PublicIpAddress létrehozása:
 
 #### <a name="powershell"></a>PowerShell
 
@@ -123,15 +123,15 @@ New-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Loc
 azure network public-ip create -n PublicIp -g MyResourceGroup -l westus -d contosoapp3 -f contosoapp3.westus.cloudapp.azure.com.
 ```
 
-#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network public-ip create --name PublicIp --resource-group MyResourceGroup --location westcentralus --dns-name contosoapp1 --reverse-fqdn contosoapp1.westcentralus.cloudapp.azure.com
 ```
 
-### <a name="view-reverse-dns-for-an-existing-publicipaddress"></a>View reverse DNS for an existing PublicIpAddress
+### <a name="view-reverse-dns-for-an-existing-publicipaddress"></a>Fordított DNS megtekintése meglévő PublicIpAddress
 
-To view the configured value for an existing PublicIpAddress:
+Meglévő PublicIpAddress konfigurált értékének megtekintése:
 
 #### <a name="powershell"></a>PowerShell
 
@@ -145,15 +145,15 @@ Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 azure network public-ip show -n PublicIp -g MyResourceGroup
 ```
 
-#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network public-ip show --name PublicIp --resource-group MyResourceGroup
 ```
 
-### <a name="remove-reverse-dns-from-existing-public-ip-addresses"></a>Remove reverse DNS from existing Public IP Addresses
+### <a name="remove-reverse-dns-from-existing-public-ip-addresses"></a>Fordított DNS eltávolítása meglévő Nyilvános IP-címek
 
-To remove a reverse DNS property from an existing PublicIpAddress:
+Fordított DNS-tulajdonság eltávolítása meglévő PublicIpAddress:
 
 #### <a name="powershell"></a>PowerShell
 
@@ -169,90 +169,90 @@ Set-AzPublicIpAddress -PublicIpAddress $pip
 azure network public-ip set -n PublicIp -g MyResourceGroup –f ""
 ```
 
-#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn ""
 ```
 
 
-## <a name="configure-reverse-dns-for-cloud-services"></a>Configure reverse DNS for Cloud Services
+## <a name="configure-reverse-dns-for-cloud-services"></a>Fordított DNS konfigurálása Cloud Serviceshoz
 
-This section provides detailed instructions for how to configure reverse DNS for Cloud Services in the Classic deployment model, using Azure PowerShell. Configuring reverse DNS for Cloud Services is not supported via the Azure portal, Azure classic CLI, or Azure CLI.
+Ez a szakasz részletesen ismerteti, hogyan konfigurálhatja a fordított DNS-t a Cloud Serviceshoz a klasszikus üzemi modellben Azure PowerShell használatával. A fordított DNS konfigurálása Cloud Services esetén nem támogatott a Azure Portal, az Azure klasszikus CLI vagy az Azure CLI használatával.
 
-### <a name="add-reverse-dns-to-existing-cloud-services"></a>Add reverse DNS to existing Cloud Services
+### <a name="add-reverse-dns-to-existing-cloud-services"></a>Fordított DNS hozzáadása meglévő Cloud Serviceshoz
 
-To add a reverse DNS record to an existing Cloud Service:
+Fordított DNS-rekord hozzáadása meglévő felhőalapú szolgáltatáshoz:
 
 ```powershell
 Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn "contosoapp1.cloudapp.net."
 ```
 
-### <a name="create-a-cloud-service-with-reverse-dns"></a>Create a Cloud Service with reverse DNS
+### <a name="create-a-cloud-service-with-reverse-dns"></a>Felhőalapú szolgáltatás létrehozása fordított DNS-sel
 
-To create a new Cloud Service with the reverse DNS property already specified:
+Új felhőalapú szolgáltatás létrehozása a fordított DNS-tulajdonsággal már meg van adva:
 
 ```powershell
 New-AzureService –ServiceName "contosoapp1" –Location "West US" –Description "App1 with Reverse DNS" –ReverseDnsFqdn "contosoapp1.cloudapp.net."
 ```
 
-### <a name="view-reverse-dns-for-existing-cloud-services"></a>View reverse DNS for existing Cloud Services
+### <a name="view-reverse-dns-for-existing-cloud-services"></a>Fordított DNS megtekintése meglévő Cloud Services
 
-To view the reverse DNS property for an existing Cloud Service:
+Egy meglévő felhőalapú szolgáltatás fordított DNS-tulajdonságának megtekintése:
 
 ```powershell
 Get-AzureService "contosoapp1"
 ```
 
-### <a name="remove-reverse-dns-from-existing-cloud-services"></a>Remove reverse DNS from existing Cloud Services
+### <a name="remove-reverse-dns-from-existing-cloud-services"></a>Fordított DNS eltávolítása meglévő Cloud Services
 
-To remove a reverse DNS property from an existing Cloud Service:
+Fordított DNS-tulajdonság eltávolítása meglévő felhőalapú szolgáltatásból:
 
 ```powershell
 Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn ""
 ```
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
-### <a name="how-much-do-reverse-dns-records-cost"></a>How much do reverse DNS records cost?
+### <a name="how-much-do-reverse-dns-records-cost"></a>Mennyibe kerül a fordított DNS-rekordok díja?
 
-They're free!  There is no additional cost for reverse DNS records or queries.
+Ingyenesek!  A fordított DNS-rekordok és-lekérdezések esetében nincs további díj.
 
-### <a name="will-my-reverse-dns-records-resolve-from-the-internet"></a>Will my reverse DNS records resolve from the internet?
+### <a name="will-my-reverse-dns-records-resolve-from-the-internet"></a>A fordított DNS-rekordok feloldása az internetről történik?
 
-Igen. Once you set the reverse DNS property for your Azure service, Azure manages all the DNS delegations and DNS zones required to ensure that reverse DNS record resolves for all Internet users.
+Igen. Miután beállította az Azure-szolgáltatás fordított DNS tulajdonságát, az Azure felügyeli az összes olyan DNS-delegálást és DNS-zónát, amely szükséges ahhoz, hogy a fordított DNS-rekord feloldja az összes Internet-felhasználót.
 
-### <a name="are-default-reverse-dns-records-created-for-my-azure-services"></a>Are default reverse DNS records created for my Azure services?
+### <a name="are-default-reverse-dns-records-created-for-my-azure-services"></a>Az Azure-szolgáltatásokhoz létrehozott alapértelmezett fordított DNS-rekordok?
 
-Nem. Reverse DNS is an opt-in feature. No default reverse DNS records are created if you choose not to configure them.
+Nem. A fordított DNS egy opt-in funkció. Nem jön létre alapértelmezett fordított DNS-rekord, ha úgy dönt, hogy nem konfigurálja őket.
 
-### <a name="what-is-the-format-for-the-fully-qualified-domain-name-fqdn"></a>What is the format for the fully-qualified domain name (FQDN)?
+### <a name="what-is-the-format-for-the-fully-qualified-domain-name-fqdn"></a>Mi a teljes tartománynév (FQDN) formátuma?
 
-FQDNs are specified in forward order, and must be terminated by a dot (for example, "app1.contoso.com.").
+A teljes tartománynevek továbbítási sorrendben vannak megadva, és egy ponttal kell leállítani (például "app1.contoso.com").
 
-### <a name="what-happens-if-the-validation-check-for-the-reverse-dns-ive-specified-fails"></a>What happens if the validation check for the reverse DNS I've specified fails?
+### <a name="what-happens-if-the-validation-check-for-the-reverse-dns-ive-specified-fails"></a>Mi történik, ha a megadott fordított DNS-re vonatkozó ellenőrzési ellenőrzés meghiúsul?
 
-Where the reverse DNS validation check fails, the operation to configure the reverse DNS record fails. Correct the reverse DNS value as required, and retry.
+Ha a fordított DNS-ellenőrzés sikertelen, a fordított DNS-rekord konfigurálásának művelete meghiúsul. Szükség szerint javítsa ki a fordított DNS-értéket, és próbálkozzon újra.
 
-### <a name="can-i-configure-reverse-dns-for-azure-app-service"></a>Can I configure reverse DNS for Azure App Service?
+### <a name="can-i-configure-reverse-dns-for-azure-app-service"></a>Beállíthat fordított DNS-t a Azure App Servicehoz?
 
-Nem. Reverse DNS is not supported for the Azure App Service.
+Nem. A fordított DNS nem támogatott a Azure App Service.
 
-### <a name="can-i-configure-multiple-reverse-dns-records-for-my-azure-service"></a>Can I configure multiple reverse DNS records for my Azure service?
+### <a name="can-i-configure-multiple-reverse-dns-records-for-my-azure-service"></a>Több fordított DNS-rekord is konfigurálható az Azure-szolgáltatáshoz?
 
-Nem. Azure supports a single reverse DNS record for each Azure Cloud Service or PublicIpAddress.
+Nem. Az Azure egyetlen fordított DNS-rekordot támogat minden Azure Cloud Service-vagy PublicIpAddress.
 
-### <a name="can-i-configure-reverse-dns-for-ipv6-publicipaddress-resources"></a>Can I configure reverse DNS for IPv6 PublicIpAddress resources?
+### <a name="can-i-configure-reverse-dns-for-ipv6-publicipaddress-resources"></a>Beállíthat fordított DNS-t az IPv6-PublicIpAddress erőforrásaihoz?
 
-Nem. Azure currently supports reverse DNS only for IPv4 PublicIpAddress resources and Cloud Services.
+Nem. Az Azure jelenleg csak az IPv4 PublicIpAddress-erőforrások és a Cloud Services esetében támogatja a fordított DNS-t.
 
-### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Can I send emails to external domains from my Azure Compute services?
+### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Küldhetek e-maileket külső tartományokra az Azure számítási szolgáltatásaiból?
 
-The technical ability to send email directly from an Azure deployment depends on the subscription type. Regardless of subscription type, Microsoft recommends using trusted mail relay services to send outgoing mail. For further details, see [Enhanced Azure Security for sending Emails – November 2017 Update](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/).
+Az e-mailek közvetlenül az Azure-telepítésből való elküldésének technikai képessége az előfizetés típusától függ. Az előfizetés típusától függetlenül a Microsoft azt javasolja, hogy a megbízható levelek továbbítása szolgáltatás használatával küldjön kimenő leveleket. További részletekért lásd: [bővített Azure-biztonság az e-mailek küldéséhez – November 2017 frissítés](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/).
 
 ## <a name="next-steps"></a>Következő lépések
 
-For more information on reverse DNS, see [reverse DNS lookup on Wikipedia](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+A fordított DNS-sel kapcsolatos további információkért lásd: [fordított DNS-keresés a wikipedia-ben](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
-Learn how to [host the reverse lookup zone for your ISP-assigned IP range in Azure DNS](dns-reverse-dns-for-azure-services.md).
+Megtudhatja, hogyan [futtathatja a névkeresési zónát az internetszolgáltató által hozzárendelt IP-címtartomány Azure DNS](dns-reverse-dns-for-azure-services.md).
 

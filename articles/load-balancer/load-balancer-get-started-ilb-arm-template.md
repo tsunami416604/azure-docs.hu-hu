@@ -1,5 +1,5 @@
 ---
-title: Create an Internal Load Balancer - Azure template
+title: Egy belső terheléselosztó létrehozása – Azure-sablonnal
 titleSuffix: Azure Load Balancer
 description: Ismerje meg, hogyan hozható létre belső terheléselosztó sablon használatával a Resource Managerben
 services: load-balancer
@@ -45,7 +45,7 @@ A letöltött sablon PowerShell használatával történő üzembe helyezéséhe
 1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
 2. Töltse le a paramétereket tartalmazó fájlt a helyi lemezre.
 3. Szerkessze a fájlt, majd mentse el.
-4. Run the **New-AzResourceGroupDeployment** cmdlet to create a resource group using the template.
+4. A **New-AzResourceGroupDeployment** parancsmag futtatásával hozzon létre egy erőforráscsoportot a sablon használatával.
 
     ```azurepowershell-interactive
     New-AzResourceGroupDeployment -Name TestRG -Location westus `
@@ -81,4 +81,4 @@ Az alábbi lépéseket követve hozhatja létre a sablont az Azure parancssori f
 
 [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
 
-For the JSON syntax and properties of a load balancer in a template, see [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+A sablonban lévő terheléselosztó JSON-szintaxisához és tulajdonságaihoz lásd: [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

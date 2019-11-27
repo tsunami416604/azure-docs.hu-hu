@@ -1,5 +1,5 @@
 ---
-title: Store unstructured data using Azure Cosmos DB and Functions
+title: Strukturálatlan adatok tárolása Azure Cosmos DB és függvények használatával
 description: Strukturálatlan adatok tárolása az Azure Functions és a Cosmos DB használatával
 ms.topic: quickstart
 ms.date: 10/01/2018

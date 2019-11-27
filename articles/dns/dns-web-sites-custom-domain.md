@@ -16,7 +16,7 @@ ms.locfileid: "74211204"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Oktatóanyag: Webalkalmazások DNS-rekordjainak létrehozása egyéni tartományban 
 
-Az Azure DNS-t beállíthatja a webalkalmazások egyéni tartományainak üzemeltetéséhez. For example, you can create an Azure web app and have your users access it using either www\.contoso.com or contoso.com as a fully qualified domain name (FQDN).
+Az Azure DNS-t beállíthatja a webalkalmazások egyéni tartományainak üzemeltetéséhez. Létrehozhat például egy Azure-webalkalmazást, és a felhasználók a www\.contoso.com vagy a contoso.com használatával érhetik el a teljes tartománynevet (FQDN).
 
 > [!NOTE]
 > A jelen oktatóanyag példáiban a contoso.com szerepel. A contoso.com helyére írja be a saját tartománynevét.
@@ -29,7 +29,7 @@ Ehhez létre kell hoznia a következő három rekordot:
 
 Ne feledje, hogy ha egy Azure-beli webalkalmazás számára létrehoz egy „A” rekordot, akkor az „A” rekordot manuálisan kell frissíteni mindannyiszor, ha a webalkalmazás alapjául szolgáló IP-cím módosul.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * „A” és TXT típusú rekord létrehozása az egyéni tartományhoz
@@ -47,7 +47,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* You must have a domain name available to test with that you can host in Azure DNS . Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
+* Meg kell adnia egy tartománynevet, hogy tesztelni tudja, hogy Azure DNS üzemeltethető-e. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
 * [Hozzon létre egy App Service-alkalmazást](../app-service/app-service-web-get-started-html.md), vagy használjon egy másik oktatóanyaghoz létrehozott alkalmazást.
 
 * Hozzon létre egy DNS-zónát az Azure DNS-ben, majd delegálja azt az Azure DNS-be a tartománynév kezelőjénél.
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 Az App Services ezt a rekordot csak a konfiguráláskor használja annak ellenőrzéséhez, hogy Ön-e az egyéni tartomány tulajdonosa. Miután az App Service-ben érvényesítette és konfigurálta az egyéni tartományt, törölheti ezt a TXT típusú rekordot.
 
 > [!NOTE]
-> If you want to verify the domain name, but not route production traffic to the web app, you only need to specify the TXT record for the verification step.  Verification does not require an A or CNAME record in addition to the TXT record.
+> Ha szeretné ellenőrizni a tartománynevet, de a webalkalmazáshoz nem irányítja a termelési forgalmat, csak az ellenőrzési lépéshez tartozó TXT-rekordot kell megadnia.  Az ellenőrzéshez nem szükséges egy vagy CNAME rekord a TXT-rekordon kívül.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -173,9 +173,9 @@ set-AzWebApp `
 Nyissa meg valamilyen böngészőben a `http://www.<your domainname>` és a `http://<you domain name>` webhelyet.
 
 > [!NOTE]
-> Make sure you include the `http://` prefix, otherwise your browser may attempt to predict a URL for you!
+> Ügyeljen arra, hogy tartalmazza a `http://` előtagot, ellenkező esetben előfordulhat, hogy a böngésző megpróbál előre megjósolni egy URL-címet.
 
-Mindkét URL-cím esetében ugyanannak az oldalnak kell megjelennie. Példa:
+Mindkét URL-cím esetében ugyanannak az oldalnak kell megjelennie. Például:
 
 ![Contoso App Service](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

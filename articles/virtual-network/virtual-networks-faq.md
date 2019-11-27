@@ -1,7 +1,7 @@
 ---
-title: Azure Virtual Network FAQ
+title: Azure Virtual Network GYIK
 titlesuffix: Azure Virtual Network
-description: Answers to the most frequently asked questions about Microsoft Azure virtual networks.
+description: Válaszok a Microsoft Azure virtuális hálózatokkal kapcsolatos leggyakrabban felmerülő kérdésekre.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -20,399 +20,399 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457037"
 ---
-# <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network frequently asked questions (FAQ)
+# <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – gyakori kérdések (GYIK)
 
-## <a name="virtual-network-basics"></a>Virtual Network basics
+## <a name="virtual-network-basics"></a>Virtual Network alapjai
 
-### <a name="what-is-an-azure-virtual-network-vnet"></a>What is an Azure Virtual Network (VNet)?
-An Azure Virtual Network (VNet) is a representation of your own network in the cloud. A hálózat az előfizetésre kijelölt Azure-felhő logikai elkülönítése. You can use VNets to provision and manage virtual private networks (VPNs) in Azure and, optionally, link the VNets with other VNets in Azure, or with your on-premises IT infrastructure to create hybrid or cross-premises solutions. Each VNet you create has its own CIDR block and can be linked to other VNets and on-premises networks as long as the CIDR blocks do not overlap. You also have control of DNS server settings for VNets, and segmentation of the VNet into subnets.
+### <a name="what-is-an-azure-virtual-network-vnet"></a>Mi az Azure Virtual Network (VNet)?
+Az Azure Virtual Network (VNet) a saját hálózatának ábrázolása a felhőben. A hálózat az előfizetésre kijelölt Azure-felhő logikai elkülönítése. A virtuális hálózatok használatával virtuális magánhálózatok (VPN) hozhatók létre és kezelhetők az Azure-ban, és opcionálisan összekapcsolhatók a virtuális hálózatok más virtuális hálózatok az Azure-ban, illetve a helyszíni informatikai infrastruktúrával hibrid vagy létesítmények közötti megoldások létrehozásához. Minden létrehozott VNet saját CIDR rendelkezik, és más virtuális hálózatok és helyszíni hálózatokhoz is társítható, feltéve, hogy a CIDR-blokkok nem fedik át egymást. A DNS-kiszolgáló beállításai a virtuális hálózatok, valamint a VNet szegmentálása alhálózatokra is megadhatók.
 
-Use VNets to:
+Virtuális hálózatok használata a következőhöz:
 
-* Create a dedicated private cloud-only VNet. Sometimes you don't require a cross-premises configuration for your solution. When you create a VNet, your services and VMs within your VNet can communicate directly and securely with each other in the cloud. You can still configure endpoint connections for the VMs and services that require Internet communication, as part of your solution.
+* Hozzon létre egy dedikált privát felhőalapú VNet. Előfordulhat, hogy a megoldáshoz nem szükséges a létesítmények közötti konfiguráció. VNet létrehozásakor a VNet belüli szolgáltatásai és virtuális gépei közvetlenül és biztonságosan kommunikálhatnak egymással a felhőben. A megoldás részeként továbbra is konfigurálhat végponti kapcsolatokat a virtuális gépekhez és az internetes kommunikációt igénylő szolgáltatásokhoz.
 
-* Securely extend your data center. With VNets, you can build traditional site-to-site (S2S) VPNs to securely scale your datacenter capacity. S2S VPNs use IPSEC to provide a secure connection between your corporate VPN gateway and Azure.
+* Biztonságosan kiterjesztheti az adatközpontot. A virtuális hálózatok segítségével hagyományos, helyek közötti (S2S) VPN-eket hozhat létre az adatközpont kapacitásának biztonságos skálázásához. A S2S VPN-ek az IPSEC használatával biztonságos kapcsolatot biztosítanak a vállalati VPN-átjáró és az Azure között.
 
-* Enable hybrid cloud scenarios. VNets give you the flexibility to support a range of hybrid cloud scenarios. You can securely connect cloud-based applications to any type of on-premises system such as mainframes and Unix systems.
+* Hibrid Felhőbeli forgatókönyvek engedélyezése. A virtuális hálózatok révén rugalmasan támogathatja a hibrid felhőalapú forgatókönyvek széles körét. Biztonságosan csatlakoztathatók a felhőalapú alkalmazások bármilyen típusú helyszíni rendszerhez, például nagyszámítógépekhez és UNIX rendszerekhez.
 
-### <a name="how-do-i-get-started"></a>Hogyan kezdhetem el használni?
-Visit the [Virtual network documentation](https://docs.microsoft.com/azure/virtual-network/) to get started. This content provides overview and deployment information for all of the VNet features.
+### <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
+A kezdéshez látogasson el a [virtuális hálózat dokumentációjában](https://docs.microsoft.com/azure/virtual-network/) . Ez a tartalom áttekintést nyújt az összes VNet-szolgáltatásról, és a központi telepítési információkat tartalmazza.
 
-### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Can I use VNets without cross-premises connectivity?
-Igen. You can use a VNet without connecting it to your premises. For example, you could run Microsoft Windows Server Active Directory domain controllers and SharePoint farms solely in an Azure VNet.
+### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Használhatok virtuális hálózatok a létesítmények közötti kapcsolat nélkül?
+Igen. A VNet a helyszíni csatlakoztatása nélkül is használhatja. Futtathatja például a Microsoft Windows Server Active Directory tartományvezérlőket és a SharePoint-farmokat kizárólag Azure-VNet.
 
-### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Can I perform WAN optimization between VNets or a VNet and my on-premises data center?
-Igen. You can deploy a [WAN optimization network virtual appliance](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization) from several vendors through the Azure Marketplace.
+### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Használhatok WAN-optimalizálást a virtuális hálózatok vagy a VNet és a helyszíni adatközpontok között?
+Igen. Az Azure Marketplace-en keresztül üzembe helyezhet egy [WAN-optimalizálási hálózati virtuális készüléket](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization) több gyártótól.
 
 ## <a name="configuration"></a>Konfiguráció
 
-### <a name="what-tools-do-i-use-to-create-a-vnet"></a>What tools do I use to create a VNet?
-You can use the following tools to create or configure a VNet:
+### <a name="what-tools-do-i-use-to-create-a-vnet"></a>Milyen eszközöket használhatok a VNet létrehozásához?
+A VNet létrehozásához és konfigurálásához a következő eszközöket használhatja:
 
 * Azure Portal
 * PowerShell
-* Azure parancssori felület (CLI)
-* A network configuration file (netcfg - for classic VNets only). See the [Configure a VNet using a network configuration file](virtual-networks-using-network-configuration-file.md) article.
+* Azure CLI
+* Egy hálózati konfigurációs fájl (netcfg – csak a klasszikus virtuális hálózatok). Tekintse meg a [VNet konfigurálása hálózati konfigurációs fájl használatával](virtual-networks-using-network-configuration-file.md) című cikket.
 
-### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>What address ranges can I use in my VNets?
-Any IP address range defined in [RFC 1918](https://tools.ietf.org/html/rfc1918). For example, 10.0.0.0/16. You cannot add the following address ranges:
-* 224.0.0.0/4 (Multicast)
-* 255.255.255.255/32 (Broadcast)
-* 127.0.0.0/8 (Loopback)
-* 169.254.0.0/16 (Link-local)
-* 168.63.129.16/32 (Internal DNS)
+### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Milyen címtartományok használhatók a virtuális hálózatok?
+Az [RFC 1918](https://tools.ietf.org/html/rfc1918)-ben definiált bármely IP-címtartomány. Például: 10.0.0.0/16. A következő címtartományok nem vehetők fel:
+* 224.0.0.0/4 (csoportos küldés)
+* 255.255.255.255/32 (szórásos)
+* 127.0.0.0/8 (visszacsatolási)
+* 169.254.0.0/16 (hivatkozás – helyi)
+* 168.63.129.16/32 (belső DNS)
 
-### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Can I have public IP addresses in my VNets?
-Igen. For more information about public IP address ranges, see [Create a virtual network](manage-virtual-network.md#create-a-virtual-network). Public IP addresses are not directly accessible from the internet.
+### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Használhatok nyilvános IP-címeket az virtuális hálózatok?
+Igen. A nyilvános IP-címtartományok részletes ismertetését lásd: [virtuális hálózat létrehozása](manage-virtual-network.md#create-a-virtual-network). Nyilvános IP-címek nem érhetők el közvetlenül az internetről.
 
-### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Is there a limit to the number of subnets in my VNet?
-Igen. See [Azure limits](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) for details. Subnet address spaces cannot overlap one another.
+### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Korlátozva van az alhálózatok száma az VNet?
+Igen. További részletekért lásd az [Azure-korlátokat](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Az alhálózati címek nem lehetnek átfedésben egymással.
 
-### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Are there any restrictions on using IP addresses within these subnets?
-Igen. Az Azure minden alhálózaton lefoglal 5 IP-címet. These are x.x.x.0-x.x.x.3 and the last address of the subnet. x.x.x.1-x.x.x.3 is reserved in each subnet for Azure services.   
-- x.x.x.0: Network address
-- x.x.x.1: Reserved by Azure for the default gateway
-- x.x.x.2, x.x.x.3: Reserved by Azure to map the Azure DNS IPs to the VNet space
-- x.x.x.255: Network broadcast address
+### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Vannak korlátozások az IP-címek ezen alhálózatokon belüli használatára?
+Igen. Az Azure minden alhálózaton lefoglal 5 IP-címet. Ezek az x. x. x. 0-x. x. x. 3 és az alhálózat utolsó címe. az x. x. x. 1 – x. x. x. 3 Az Azure-szolgáltatások minden alhálózatán le van foglalva.   
+- x. x. x. 0: hálózati címe
+- x. x. x. 1: az Azure által az alapértelmezett átjáró számára fenntartott
+- x. x. x. 2, x. x. x. 3: az Azure által fenntartott Azure DNS IP-címek leképezése a VNet-területre
+- x. x. x. 255: hálózati szórási címe
 
-### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>How small and how large can VNets and subnets be?
-The smallest supported IPv4 subnet is /29, and the largest is /8 (using CIDR subnet definitions).  IPv6 subnets must be exactly /64 in size.  
+### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Milyen kicsi és mekkora lehet a virtuális hálózatok és az alhálózatok mérete?
+A legkisebb támogatott IPv4-alhálózat a/29, a legnagyobb pedig/8 (CIDR alhálózati definíciók használatával).  Az IPv6-alhálózatok méretének pontosan/64-nek kell lennie.  
 
-### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>Can I bring my VLANs to Azure using VNets?
-Nem. VNets are Layer-3 overlays. Azure does not support any Layer-2 semantics.
+### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>Használhatom a VLAN-okat az Azure-ba a virtuális hálózatok használatával?
+Nem. A virtuális hálózatok 3. rétegbeli átfedések. Az Azure nem támogatja a 2. rétegbeli szemantika használatát.
 
-### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets"></a>Can I specify custom routing policies on my VNets and subnets?
-Igen. You can create a route table and associate it to a subnet. For more information about routing in Azure, see [Routing overview](virtual-networks-udr-overview.md#custom-routes).
+### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets"></a>Megadhatok egyéni útválasztási házirendeket a virtuális hálózatok és az alhálózatokon?
+Igen. Létrehozhat egy útválasztási táblázatot, és hozzárendelheti egy alhálózathoz. További információ az Azure-beli útválasztásról: [útválasztás – áttekintés](virtual-networks-udr-overview.md#custom-routes).
 
-### <a name="do-vnets-support-multicast-or-broadcast"></a>Do VNets support multicast or broadcast?
-Nem. Multicast and broadcast are not supported.
+### <a name="do-vnets-support-multicast-or-broadcast"></a>Támogatja a csoportos vagy szórásos küldést a virtuális hálózatok?
+Nem. A csoportos küldés és a szórás nem támogatott.
 
-### <a name="what-protocols-can-i-use-within-vnets"></a>What protocols can I use within VNets?
-You can use TCP, UDP, and ICMP TCP/IP protocols within VNets. Unicast is supported within VNets, with the exception of Dynamic Host Configuration Protocol (DHCP) via Unicast (source port UDP/68 / destination port UDP/67). Multicast, broadcast, IP-in-IP encapsulated packets, and Generic Routing Encapsulation (GRE) packets are blocked within VNets. 
+### <a name="what-protocols-can-i-use-within-vnets"></a>Milyen protokollokat használhatok a virtuális hálózatok-en belül?
+A virtuális hálózatok belül TCP, UDP és ICMP TCP/IP protokollokat is használhat. Az egyedi küldési szolgáltatás a virtuális hálózatok-n belül támogatott, kivéve a Dynamic Host Configuration Protocol (DHCP) egyedi küldéssel (a forrás port UDP/68/a célport UDP/67). Csoportos küldés, szórás, IP-in-IP-címes csomagok és általános útválasztási beágyazási (GRE) csomagok blokkolva vannak a virtuális hálózatok belül. 
 
-### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Can I ping my default routers within a VNet?
+### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Pingelhető az alapértelmezett útválasztók egy VNet belül?
 Nem.
 
-### <a name="can-i-use-tracert-to-diagnose-connectivity"></a>Can I use tracert to diagnose connectivity?
+### <a name="can-i-use-tracert-to-diagnose-connectivity"></a>Használhatom a tracertt a kapcsolat diagnosztizálására?
 Nem.
 
-### <a name="can-i-add-subnets-after-the-vnet-is-created"></a>Can I add subnets after the VNet is created?
-Igen. Subnets can be added to VNets at any time as long as the subnet address range is not part of another subnet and there is available space left in the virtual network's address range.
+### <a name="can-i-add-subnets-after-the-vnet-is-created"></a>Alhálózatokat is Hozzáadhatok a VNet létrehozása után?
+Igen. Az alhálózatok bármikor hozzáadhatók a virtuális hálózatok, feltéve, hogy az alhálózati címtartomány nem része egy másik alhálózatnak, és rendelkezésre áll a virtuális hálózat címtartományból elérhető szabad terület.
 
-### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Can I modify the size of my subnet after I create it?
-Igen. You can add, remove, expand, or shrink a subnet if there are no VMs or services deployed within it.
+### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Megváltoztathatom az alhálózat méretét, miután Létrehoztam?
+Igen. Hozzáadhat, eltávolíthat, kibonthat vagy lekicsinyítheti az alhálózatokat, ha nincsenek üzembe helyezett virtuális gépek vagy szolgáltatások.
 
-### <a name="can-i-modify-subnets-after-i-created-them"></a>Can I modify subnets after I created them?
-Igen. You can add, remove, and modify the CIDR blocks used by a VNet.
+### <a name="can-i-modify-subnets-after-i-created-them"></a>Módosíthatom az alhálózatokat a létrehozásuk után?
+Igen. Hozzáadhat, eltávolíthat és módosíthat a VNet által használt CIDR-blokkokat.
 
-### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>If I am running my services in a VNet, can I connect to the internet?
-Igen. All services deployed within a VNet can connect outbound to the internet. To learn more about outbound internet connections in Azure, see [Outbound connections](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). If you want to connect inbound to a resource deployed through Resource Manager, the resource must have a public IP address assigned to it. To learn more about public IP addresses, see [Public IP addresses](virtual-network-public-ip-address.md). Every Azure Cloud Service deployed in Azure has a publicly addressable VIP assigned to it. You define input endpoints for PaaS roles and endpoints for virtual machines to enable these services to accept connections from the internet.
+### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>Ha egy VNet futtatom a szolgáltatásokat, csatlakozhatok az internethez?
+Igen. A VNet belül üzembe helyezett összes szolgáltatás csatlakozhat az internethez. Ha többet szeretne megtudni az Azure-beli kimenő internetkapcsolatokról, tekintse meg a [Kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört. Ha a Resource Manageren keresztül központilag telepített erőforráshoz szeretne bejövő kapcsolatot létesíteni, az erőforráshoz hozzá kell rendelni egy nyilvános IP-címet. A nyilvános IP-címekkel kapcsolatos további tudnivalókért tekintse meg a [nyilvános IP-címek](virtual-network-public-ip-address.md)című témakört. Az Azure-ban üzembe helyezett összes Azure Cloud Service-hez egy nyilvánosan elérhető virtuális IP-cím tartozik. A virtuális gépekhez tartozó Péter-szerepkörök és-végpontok bemeneti végpontokat határozhat meg, amelyek lehetővé teszik, hogy ezek a szolgáltatások fogadják az internetről érkező kapcsolatokat.
 
-### <a name="do-vnets-support-ipv6"></a>Do VNets support IPv6?
-Yes, VNets can be IPv4-only or dual stack (IPv4+IPv6).  For details, see [Overview of IPv6 for Azure Virtual Networks](./ipv6-overview.md).
+### <a name="do-vnets-support-ipv6"></a>Támogatja a virtuális hálózatok az IPv6-ot?
+Igen, a virtuális hálózatok csak IPv4 vagy kettős verem lehet (IPv4 + IPv6).  Részletekért lásd: [az IPv6 Azure-beli virtuális hálózatok áttekintése](./ipv6-overview.md).
 
-### <a name="can-a-vnet-span-regions"></a>Can a VNet span regions?
-Nem. A VNet is limited to a single region. A virtual network does, however, span availability zones. A rendelkezésre állási zónákkal kapcsolatos további információkért tekintse meg [a rendelkezésre állási zónák áttekintését](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). You can connect virtual networks in different regions with virtual network peering. For details, see [Virtual network peering overview](virtual-network-peering-overview.md)
+### <a name="can-a-vnet-span-regions"></a>VNet span régiók?
+Nem. Egy VNet csak egyetlen régióra korlátozódik. A virtuális hálózatok azonban kiterjedhetnek rendelkezésre állási zónákra. A rendelkezésre állási zónákkal kapcsolatos további információkért tekintse meg [a rendelkezésre állási zónák áttekintését](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A virtuális hálózatokat különböző régiókban is összekapcsolhatjuk a virtuális hálózatok összevonásával. Részletekért lásd: a [Virtual Network peering áttekintése](virtual-network-peering-overview.md)
 
-### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Can I connect a VNet to another VNet in Azure?
-Igen. You can connect one VNet to another VNet using either:
-- **Virtual network peering**: For details, see [VNet peering overview](virtual-network-peering-overview.md)
-- **An Azure VPN Gateway**: For details, see [Configure a VNet-to-VNet connection](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Összekapcsolhatok egy VNet egy másik VNet az Azure-ban?
+Igen. Az egyik VNet egy másik VNet is összekapcsolhatók a következők használatával:
+- **Virtuális hálózat**társítása: további részletekért lásd: [VNet peering – áttekintés](virtual-network-peering-overview.md)
+- **Azure-VPN Gateway**: a részletekért tekintse meg [a VNet-VNet kapcsolat konfigurálása](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört. 
 
-## <a name="name-resolution-dns"></a>Name Resolution (DNS)
+## <a name="name-resolution-dns"></a>Névfeloldás (DNS)
 
-### <a name="what-are-my-dns-options-for-vnets"></a>What are my DNS options for VNets?
-Use the decision table on the [Name Resolution for VMs and Role Instances](virtual-networks-name-resolution-for-vms-and-role-instances.md) page to guide you through all the DNS options available.
+### <a name="what-are-my-dns-options-for-vnets"></a>Mik a virtuális hálózatok DNS-beállításai?
+A [virtuális gépek és a szerepkör-példányok oldalának névfeloldásra vonatkozó](virtual-networks-name-resolution-for-vms-and-role-instances.md) döntési táblázata végigvezeti Önt az összes rendelkezésre álló DNS-beállításon.
 
-### <a name="can-i-specify-dns-servers-for-a-vnet"></a>Can I specify DNS servers for a VNet?
-Igen. You can specify DNS server IP addresses in the VNet settings. The setting is applied as the default DNS server(s) for all VMs in the VNet.
+### <a name="can-i-specify-dns-servers-for-a-vnet"></a>Megadhatok DNS-kiszolgálókat a VNet?
+Igen. A DNS-kiszolgáló IP-címeit a VNet beállításai között adhatja meg. A beállítás a VNet összes virtuális gépe alapértelmezett DNS-kiszolgáló (k) ként lesz alkalmazva.
 
-### <a name="how-many-dns-servers-can-i-specify"></a>How many DNS servers can I specify?
-Reference [Azure limits](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
+### <a name="how-many-dns-servers-can-i-specify"></a>Hány DNS-kiszolgálót adhatok meg?
+Az [Azure korlátainak](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)áttekintése.
 
-### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Can I modify my DNS servers after I have created the network?
-Igen. You can change the DNS server list for your VNet at any time. If you change your DNS server list, you need to perform a DHCP lease renewal on all affected VMs in the VNet, for the new DNS settings to take effect. For VMs running Windows OS you can do this by typing `ipconfig /renew` directly on the VM. For other OS types, refer to the DHCP lease renewal documentation for the specific OS type. 
+### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Megváltoztathatom a DNS-kiszolgálókat a hálózat létrehozása után?
+Igen. Bármikor módosíthatja a DNS-kiszolgáló listáját a VNet. Ha módosítja a DNS-kiszolgáló listáját, akkor a VNet összes érintett virtuális gépe DHCP-címbérlet megújítását kell végrehajtania, hogy az új DNS-beállítások érvénybe lépjenek. A Windows operációs rendszert futtató virtuális gépek esetében a `ipconfig /renew` közvetlenül a virtuális gépre való beírásával teheti meg. Más operációsrendszer-típusok esetében tekintse meg a DHCP-bérlet megújítási dokumentációját az adott operációsrendszer-típushoz. 
 
-### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets"></a>What is Azure-provided DNS and does it work with VNets?
-Azure-provided DNS is a multi-tenant DNS service offered by Microsoft. Azure registers all of your VMs and cloud service role instances in this service. This service provides name resolution by hostname for VMs and role instances contained within the same cloud service, and by FQDN for VMs and role instances in the same VNet. To learn more about DNS, see [Name Resolution for VMs and Cloud Services role instances](virtual-networks-name-resolution-for-vms-and-role-instances.md).
+### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets"></a>Mi az Azure által biztosított DNS, és működik a virtuális hálózatok?
+Az Azure által biztosított DNS egy több-bérlős DNS-szolgáltatás, amelyet a Microsoft kínál. Az Azure regisztrálja az összes virtuális gépet és a felhőalapú szolgáltatás szerepkör-példányát a szolgáltatásban. Ez a szolgáltatás névfeloldást biztosít az állomásnév alapján a virtuális gépek és a szerepkör-példányok számára, amely ugyanabban a felhőalapú szolgáltatásban található, valamint a virtuális gépek és a szerepkör-példányok teljes tartományneve azonos VNet. A DNS szolgáltatással kapcsolatos további tudnivalókért tekintse meg [a virtuális gépek és a Cloud Services szerepkör-példányok](virtual-networks-name-resolution-for-vms-and-role-instances.md)névfeloldását ismertető témakört.
 
-There is a limitation to the first 100 cloud services in a VNet for cross-tenant name resolution using Azure-provided DNS. If you are using your own DNS server, this limitation does not apply.
+Az Azure által biztosított DNS-t használó VNet esetében az első 100-es felhőalapú szolgáltatásra korlátozás vonatkozik. Ha saját DNS-kiszolgálót használ, akkor ez a korlátozás nem érvényes.
 
-### <a name="can-i-override-my-dns-settings-on-a-per-vm-or-cloud-service-basis"></a>Can I override my DNS settings on a per-VM or cloud service basis?
-Igen. You can set DNS servers per VM or cloud service to override the default network settings. However, it's recommended that you use network-wide DNS as much as possible.
+### <a name="can-i-override-my-dns-settings-on-a-per-vm-or-cloud-service-basis"></a>Lehet-e felülbírálni a DNS-beállításokat a virtuális gépen vagy a felhőalapú szolgáltatáson?
+Igen. A DNS-kiszolgálókat virtuális gépenként vagy a Cloud Service-ben beállíthatja az alapértelmezett hálózati beállítások felülbírálásához. Javasoljuk azonban, hogy a lehető legnagyobb mértékben használja a hálózati szintű DNS-t.
 
-### <a name="can-i-bring-my-own-dns-suffix"></a>Can I bring my own DNS suffix?
-Nem. You cannot specify a custom DNS suffix for your VNets.
+### <a name="can-i-bring-my-own-dns-suffix"></a>Használhatom a saját DNS-utótagot?
+Nem. Nem adhat meg egyéni DNS-utótagot a virtuális hálózatok.
 
-## <a name="connecting-virtual-machines"></a>Connecting virtual machines
+## <a name="connecting-virtual-machines"></a>Virtuális gépek csatlakoztatása
 
-### <a name="can-i-deploy-vms-to-a-vnet"></a>Can I deploy VMs to a VNet?
-Igen. All network interfaces (NIC) attached to a VM deployed through the Resource Manager deployment model must be connected to a VNet. VMs deployed through the classic deployment model can optionally be connected to a VNet.
+### <a name="can-i-deploy-vms-to-a-vnet"></a>Telepíthetek virtuális gépeket egy VNet?
+Igen. A Resource Manager-alapú üzemi modellen keresztül üzembe helyezett virtuális géphez csatlakoztatott összes hálózati adaptert (NIC) csatlakoztatni kell egy VNet. A klasszikus üzemi modellel üzembe helyezett virtuális gépek opcionálisan csatlakozhatnak egy VNet.
 
-### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>What are the different types of IP addresses I can assign to VMs?
-* **Private:** Assigned to each NIC within each VM. The address is assigned using either the static or dynamic method. Private IP addresses are assigned from the range that you specified in the subnet settings of your VNet. Resources deployed through the classic deployment model are assigned private IP addresses, even if they're not connected to a VNet. The behavior of the allocation method is different depending on whether a resource was deployed with the Resource Manager or classic deployment model: 
+### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>Milyen típusú IP-címeket lehet hozzárendelni a virtuális gépekhez?
+* **Magánjellegű:** Az egyes virtuális gépeken belül minden hálózati adapterhez hozzárendelve. A címeket a rendszer a statikus vagy a dinamikus módszer használatával rendeli hozzá. A magánhálózati IP-címek a VNet alhálózati beállításaiban megadott tartományhoz vannak rendelve. A klasszikus üzemi modellen keresztül üzembe helyezett erőforrások magánhálózati IP-címeket kapnak, még akkor is, ha nem csatlakoznak egy VNet. A kiosztási módszer működése eltérő attól függően, hogy az erőforrást a Resource Managerrel vagy a klasszikus üzemi modellel telepítették-e: 
 
-  - **Resource Manager**: A private IP address assigned with the dynamic or static method remains assigned to a virtual machine (Resource Manager) until the resource is deleted. The difference is that you select the address to assign when using static, and Azure chooses when using dynamic. 
-  - **Classic**: A private IP address assigned with the dynamic method may change when a virtual machine (classic) VM is restarted after having been in the stopped (deallocated) state. If you need to ensure that the private IP address for a resource deployed through the classic deployment model never changes, assign a private IP address with the static method.
+  - **Resource Manager**: a dinamikus vagy statikus metódushoz rendelt magánhálózati IP-címek továbbra is hozzá vannak rendelve egy virtuális géphez (Resource Manager), amíg az erőforrást nem törlik. A különbség az, hogy kijelöli a statikus használatakor hozzárendelni kívánt címeket, az Azure pedig dinamikus használata esetén választ. 
+  - **Klasszikus**: a dinamikus módszerhez rendelt magánhálózati IP-címek megváltozhatnak, ha a virtuális gép (klasszikus) VM újraindul, miután a leállított (fel nem foglalt) állapotú. Ha meg kell győződnie arról, hogy a klasszikus üzemi modellel központilag telepített erőforrások magánhálózati IP-címe soha nem változik, rendeljen hozzá egy magánhálózati IP-címet a statikus metódushoz.
 
-* **Public:** Optionally assigned to NICs attached to VMs deployed through the Azure Resource Manager deployment model. The address can be assigned with the static or dynamic allocation method. All VMs and Cloud Services role instances deployed through the classic deployment model exist within a cloud service, which is assigned a *dynamic*, public virtual IP (VIP) address. A public *static* IP address, called a [Reserved IP address](virtual-networks-reserved-public-ip.md), can optionally be assigned as a VIP. You can assign public IP addresses to individual VMs or Cloud Services role instances deployed through the classic deployment model. These addresses are called [Instance level public IP (ILPIP](virtual-networks-instance-level-public-ip.md) addresses and can be assigned dynamically.
+* **Nyilvános:** Opcionálisan hozzá van rendelve a Azure Resource Manager üzemi modellel üzembe helyezett virtuális gépekhez csatolt hálózati adapterekhez. A címeket a statikus vagy dinamikus kiosztási módszerrel lehet hozzárendelni. A klasszikus üzemi modellel telepített összes virtuális gép és Cloud Services szerepkör-példány egy felhőalapú szolgáltatásban található, amely egy *dinamikus*, nyilvános virtuális IP-címet (VIP) rendel hozzá. Egy [fenntartott IP-címnek](virtual-networks-reserved-public-ip.md)nevezett nyilvános *statikus* IP-cím opcionálisan VIP-ként is hozzárendelhető. Nyilvános IP-címeket rendelhet az egyes virtuális gépekhez, vagy Cloud Services a klasszikus üzemi modellel telepített szerepkör-példányokat. Ezeket a címeket [példányok szintjének nyilvános IP-](virtual-networks-instance-level-public-ip.md) címének NEVEZZÜK (ILPIP-címek, és dinamikusan is hozzárendelhetők.
 
-### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Can I reserve a private IP address for a VM that I will create at a later time?
-Nem. You cannot reserve a private IP address. If a private IP address is available, it is assigned to a VM or role instance by the DHCP server. The VM may or may not be the one that you want the private IP address assigned to. You can, however, change the private IP address of an already created VM, to any available private IP address.
+### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Foglalhatok le egy magánhálózati IP-címet egy olyan virtuális géphez, amelyet később létre fogok hozni?
+Nem. Privát IP-címet nem foglalhat le. Ha a magánhálózati IP-cím elérhető, a DHCP-kiszolgáló egy virtuális géphez vagy szerepkör-példányhoz rendeli hozzá. Előfordulhat, hogy a virtuális gép nem az, amelyhez hozzá szeretné rendelni a magánhálózati IP-címet. Megváltoztathatja azonban egy már létrehozott virtuális gép magánhálózati IP-címét bármely elérhető magánhálózati IP-címhez.
 
-### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>Do private IP addresses change for VMs in a VNet?
-Ez a konkrét licenctől függ. If the VM was deployed through Resource Manager, no, regardless of whether the IP address was assigned with the static or dynamic allocation method. If the VM was deployed through the classic deployment model, dynamic IP addresses can change when a VM is started after having been in the stopped (deallocated) state. The address is released from a VM deployed through either deployment model when the VM is deleted.
+### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>A magánhálózati IP-címek módosulnak a VNet található virtuális gépek esetében?
+Ez a konkrét licenctől függ. Ha a virtuális gépet a Resource Managerrel telepítette, nem, függetlenül attól, hogy az IP-cím hozzá lett-e rendelve a statikus vagy dinamikus kiosztási módszerhez. Ha a virtuális gépet a klasszikus üzemi modellen keresztül telepítették, a dinamikus IP-címek megváltozhatnak, amikor a virtuális gép elindul a leállított (lefoglalt) állapot után. A rendszer a virtuális gép törlésekor a telepítési modellel üzembe helyezett virtuális gépről bocsátja ki a címeket.
 
-### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>Can I manually assign IP addresses to NICs within the VM operating system?
-Yes, but it's not recommended unless necessary, such as when assigning multiple IP addresses to a virtual machine. For details, see [Adding multiple IP addresses to a virtual machine](virtual-network-multiple-ip-addresses-portal.md#os-config). If the IP address assigned to an Azure NIC attached to a VM changes, and the IP address within the VM operating system is different, you lose connectivity to the VM.
+### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>Lehet-e manuálisan hozzárendelni IP-címeket a hálózati adapterekhez a virtuális gép operációs rendszerén belül?
+Igen, de nem ajánlott, ha szükséges, például ha több IP-címet rendel egy virtuális géphez. Részletekért lásd: [több IP-cím hozzáadása egy virtuális géphez](virtual-network-multiple-ip-addresses-portal.md#os-config). Ha egy virtuális géphez csatlakoztatott Azure hálózati adapterhez hozzárendelt IP-cím és a virtuális gép operációs rendszerének IP-címe eltérő, elveszíti a kapcsolatot a virtuális géppel.
 
-### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>If I stop a Cloud Service deployment slot or shutdown a VM from within the operating system, what happens to my IP addresses?
-Nothing. The IP addresses (public VIP, public, and private) remain assigned to the cloud service deployment slot or VM.
+### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>Ha leállítom a Cloud Service üzembe helyezési pontját, vagy leállítja a virtuális gépet az operációs rendszerből, mi történik az IP-címekkel?
+Nincs. Az IP-címek (nyilvános VIP, Public és Private) továbbra is hozzá vannak rendelve a Cloud Service üzembe helyezési ponthoz vagy virtuális géphez.
 
-### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Can I move VMs from one subnet to another subnet in a VNet without redeploying?
-Igen. You can find more information in the [How to move a VM or role instance to a different subnet](virtual-networks-move-vm-role-to-subnet.md) article.
+### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Áthelyezhetek virtuális gépeket az egyik alhálózatból egy másik alhálózatba egy VNet újratelepítése nélkül?
+Igen. További információt a [virtuális gép vagy szerepkör példányának áthelyezése másik alhálózatra](virtual-networks-move-vm-role-to-subnet.md) című cikkben talál.
 
-### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>Can I configure a static MAC address for my VM?
-Nem. A MAC address cannot be statically configured.
+### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>Tudok statikus MAC-címeket konfigurálni a virtuális géphez?
+Nem. A MAC-címek nem konfigurálhatók statikusan.
 
-### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>Will the MAC address remain the same for my VM once it's created?
-Yes, the MAC address remains the same for a VM deployed through both the Resource Manager and classic deployment models until it's deleted. Previously, the MAC address was released if the VM was stopped (deallocated), but now the MAC address is retained even when the VM is in the deallocated state. The MAC address remains assigned to the network interface until the network interface is deleted or the private IP address assigned to the primary IP configuration of the primary network interface is changed. 
+### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>A MAC-címe ugyanaz marad, mint a virtuális gép létrehozása után?
+Igen, a MAC-címe ugyanaz marad, mint a Resource Manager és a klasszikus üzemi modelleken keresztül üzembe helyezett virtuális gépek, egészen addig, amíg el nem távolítják. Korábban a MAC-címe megjelent, ha a virtuális gép le lett állítva (felszabadítva), de most a MAC-címe is megmarad, még akkor is, ha a virtuális gép a felszabadított állapotban van. A MAC-cím továbbra is a hálózati adapterhez lesz rendelve, amíg a hálózati adaptert nem törlik, vagy az elsődleges hálózati adapter elsődleges IP-konfigurációjához rendelt magánhálózati IP-cím módosul. 
 
-### <a name="can-i-connect-to-the-internet-from-a-vm-in-a-vnet"></a>Can I connect to the internet from a VM in a VNet?
-Igen. All VMs and Cloud Services role instances deployed within a VNet can connect to the Internet.
+### <a name="can-i-connect-to-the-internet-from-a-vm-in-a-vnet"></a>Csatlakozhatok az internethez egy VNet található virtuális gépről?
+Igen. Egy VNet belül telepített összes virtuális gép és Cloud Services szerepkör-példány csatlakozhat az internethez.
 
-## <a name="azure-services-that-connect-to-vnets"></a>Azure services that connect to VNets
+## <a name="azure-services-that-connect-to-vnets"></a>Virtuális hálózatok-hez csatlakozó Azure-szolgáltatások
 
-### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Can I use Azure App Service Web Apps with a VNet?
-Igen. You can deploy Web Apps inside a VNet using an ASE (App Service Environment), connect the backend of your apps to your VNets with VNet Integration, and lock down inbound traffic to your app with service endpoints. További információkért tekintse át a következő cikkeket:
+### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Használhatok Azure App Service Web Apps VNet?
+Igen. Web Apps központilag telepítheti a VNet egy szolgáltató (App Service Environment) használatával, összekapcsolhatja az alkalmazásait a virtuális hálózatok a VNet-integrációval, és zárolhatja az alkalmazás felé irányuló bejövő forgalmat a szolgáltatási végpontokkal. További információkért tekintse át a következő cikkeket:
 
-* [App Service networking features](../app-service/networking-features.md)
-* [Creating Web Apps in an App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [Hálózati szolgáltatások App Service](../app-service/networking-features.md)
+* [Web Apps létrehozása App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [Alkalmazás integrálása egy Azure-beli virtuális hálózattal](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [App Service access restrictions](../app-service/app-service-ip-restrictions.md)
+* [Hozzáférési korlátozások App Service](../app-service/app-service-ip-restrictions.md)
 
-### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Can I deploy Cloud Services with web and worker roles (PaaS) in a VNet?
-Igen. You can (optionally) deploy Cloud Services role instances within VNets. To do so, you specify the VNet name and the role/subnet mappings in the network configuration section of your service configuration. You do not need to update any of your binaries.
+### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Telepíthetek Cloud Services webes és feldolgozói szerepkörökkel (VNet)?
+Igen. A virtuális hálózatok belül (opcionálisan) Cloud Services szerepkör-példányokat is telepíthet. Ehhez meg kell adnia a VNet nevét és a szerepkör/alhálózat hozzárendeléseit a szolgáltatás konfigurációjának hálózati konfiguráció szakaszában. Nem kell frissítenie a bináris fájljait.
 
-### <a name="can-i-connect-a-virtual-machine-scale-set-to-a-vnet"></a>Can I connect a virtual machine scale set to a VNet?
-Igen. You must connect a virtual machine scale set to a VNet.
+### <a name="can-i-connect-a-virtual-machine-scale-set-to-a-vnet"></a>Összekapcsolhatok egy virtuálisgép-méretezési készletet egy VNet?
+Igen. A virtuálisgép-méretezési csoportnak egy VNet kell kapcsolódnia.
 
-### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Is there a complete list of Azure services that can I deploy resources from into a VNet?
-Yes, For details, see [Virtual network integration for Azure services](virtual-network-for-azure-services.md).
+### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Létezik-e olyan Azure-szolgáltatások teljes listája, amelyek segítségével erőforrásokat telepíthetek egy VNet?
+Igen, részletekért lásd: [Virtual Network Integration for Azure Services](virtual-network-for-azure-services.md).
 
-### <a name="how-can-i-restrict-access-to-azure-paas-resources-from-a-vnet"></a>How can I restrict access to Azure PaaS resources from a VNet?
+### <a name="how-can-i-restrict-access-to-azure-paas-resources-from-a-vnet"></a>Hogyan lehet korlátozni az Azure Pásti-erőforrásokhoz való hozzáférést egy VNet?
 
-Resources deployed through some Azure PaaS services (such as Azure Storage and Azure SQL Database), can restrict network access to VNet through the use of virtual network service endpoints or Azure Private Link. For details, see [Virtual network service endpoints overview](virtual-network-service-endpoints-overview.md), [Azure Private Link overview](../private-link/private-link-overview.md)
+Az Azure Pásti-szolgáltatásokkal (például az Azure Storage és a Azure SQL Database) keresztül üzembe helyezett erőforrások a virtuális hálózati szolgáltatás-végpontok vagy az Azure privát kapcsolatok használatával korlátozhatják a VNet hálózati hozzáférését. Részletekért lásd: [Virtual Network szolgáltatás-végpontok áttekintése](virtual-network-service-endpoints-overview.md), [Azure Private link – áttekintés](../private-link/private-link-overview.md)
 
-### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Can I move my services in and out of VNets?
-Nem. You cannot move services in and out of VNets. To move a resource to another VNet, you have to delete and redeploy the resource.
+### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Áthelyezhetem a szolgáltatásaikat a virtuális hálózatok-be és ki?
+Nem. A szolgáltatások nem helyezhetők át a virtuális hálózatok és a szolgáltatásba. Ha egy erőforrást át szeretne helyezni egy másik VNet, törölnie kell, majd újra kell telepítenie az erőforrást.
 
 ## <a name="security"></a>Biztonság
 
-### <a name="what-is-the-security-model-for-vnets"></a>What is the security model for VNets?
-VNets are isolated from one another, and other services hosted in the Azure infrastructure. A VNet is a trust boundary.
+### <a name="what-is-the-security-model-for-vnets"></a>Mi a virtuális hálózatok biztonsági modellje?
+A virtuális hálózatok el vannak különítve egymástól, és az Azure-infrastruktúrában üzemeltetett egyéb szolgáltatások. A VNet egy megbízhatósági kapcsolat határa.
 
-### <a name="can-i-restrict-inbound-or-outbound-traffic-flow-to-vnet-connected-resources"></a>Can I restrict inbound or outbound traffic flow to VNet-connected resources?
-Igen. You can apply [Network Security Groups](security-overview.md) to individual subnets within a VNet, NICs attached to a VNet, or both.
+### <a name="can-i-restrict-inbound-or-outbound-traffic-flow-to-vnet-connected-resources"></a>Korlátozható a bejövő vagy a kimenő forgalom a VNet-hez csatlakoztatott erőforrásokra?
+Igen. A [hálózati biztonsági csoportokat](security-overview.md) az egyes alhálózatokra alkalmazhatja egy VNet, VNet csatlakoztatott hálózati adapterek vagy mindkettő használatával.
 
-### <a name="can-i-implement-a-firewall-between-vnet-connected-resources"></a>Can I implement a firewall between VNet-connected resources?
-Igen. You can deploy a [firewall network virtual appliance](https://azure.microsoft.com/marketplace/?term=firewall) from several vendors through the Azure Marketplace.
+### <a name="can-i-implement-a-firewall-between-vnet-connected-resources"></a>Használhatok tűzfalat a VNet-hez csatlakoztatott erőforrások között?
+Igen. Az Azure Marketplace-en keresztül üzembe helyezhet egy [tűzfal hálózati virtuális készüléket](https://azure.microsoft.com/marketplace/?term=firewall) több gyártótól.
 
-### <a name="is-there-information-available-about-securing-vnets"></a>Is there information available about securing VNets?
-Igen. For details, see [Azure Network Security Overview](../security/fundamentals/network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+### <a name="is-there-information-available-about-securing-vnets"></a>Van elérhető információ a virtuális hálózatok biztonságossá tételéről?
+Igen. Részletekért lásd: az [Azure hálózati biztonság áttekintése](../security/fundamentals/network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="apis-schemas-and-tools"></a>APIs, schemas, and tools
+## <a name="apis-schemas-and-tools"></a>API-k, sémák és eszközök
 
-### <a name="can-i-manage-vnets-from-code"></a>Can I manage VNets from code?
-Igen. You can use REST APIs for VNets in the [Azure Resource Manager](/rest/api/virtual-network) and [classic](https://go.microsoft.com/fwlink/?LinkId=296833) deployment models.
+### <a name="can-i-manage-vnets-from-code"></a>Kezelhetem a virtuális hálózatok a kódból?
+Igen. A virtuális hálózatok REST API-kat használhat a [Azure Resource Manager](/rest/api/virtual-network) és a [klasszikus](https://go.microsoft.com/fwlink/?LinkId=296833) üzembe helyezési modellekben.
 
-### <a name="is-there-tooling-support-for-vnets"></a>Is there tooling support for VNets?
-Igen. Learn more about using:
-- The Azure portal to deploy VNets through the [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) and [classic](virtual-networks-create-vnet-classic-pportal.md) deployment models.
-- PowerShell to manage VNets deployed through the [Resource Manager](/powershell/module/az.network) and [classic](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) deployment models.
-- The Azure command-line interface (CLI) to deploy and manage VNets deployed through the [Resource Manager](/cli/azure/network/vnet) and [classic](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) deployment models.  
+### <a name="is-there-tooling-support-for-vnets"></a>Támogatott-e a virtuális hálózatok-eszközök támogatása?
+Igen. További információ a használatáról:
+- A virtuális hálózatok üzembe helyezésének Azure Portal a [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) és a [klasszikus](virtual-networks-create-vnet-classic-pportal.md) üzembe helyezési modelleken keresztül.
+- PowerShell a [Resource Managerrel](/powershell/module/az.network) és a [klasszikus](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) üzemi modellel telepített virtuális hálózatok kezeléséhez.
+- Az Azure parancssori felülete (CLI) a [Resource Managerrel](/cli/azure/network/vnet) és a [klasszikus](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) üzemi modellel üzembe helyezett virtuális hálózatok üzembe helyezéséhez és kezeléséhez.  
 
-## <a name="vnet-peering"></a>Társviszony-létesítés virtuális hálózatok között
+## <a name="vnet-peering"></a>Virtuális hálózatok közötti társviszony
 
-### <a name="what-is-vnet-peering"></a>What is VNet peering?
-VNet peering (or virtual network peering) enables you to connect virtual networks. A VNet peering connection between virtual networks enables you to route traffic between them privately through IPv4 addresses. Virtual machines in the peered VNets can communicate with each other as if they are within the same network. These virtual networks can be in the same region or in different regions (also known as Global VNet Peering). VNet peering connections can also be created across Azure subscriptions.
+### <a name="what-is-vnet-peering"></a>Mi a VNet-társítás?
+A VNet-társítás (vagy virtuális hálózati társítás) lehetővé teszi a virtuális hálózatok összekapcsolását. A virtuális hálózatok közötti VNet-társítási kapcsolat lehetővé teszi, hogy a forgalmat az IPv4-címeken keresztül továbbítsa egymás között. A társ-virtuális hálózatok található virtuális gépek kommunikálhatnak egymással, mintha ugyanazon a hálózaton belül vannak. Ezek a virtuális hálózatok lehetnek ugyanabban a régióban vagy különböző régiókban (más néven globális VNet-társítás) is. Az Azure-előfizetések között VNet-társítási kapcsolatok is létrehozhatók.
 
-### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Can I create a peering connection to a VNet in a different region?
-Igen. Global VNet peering enables you to peer VNets in different regions. Global VNet peering is available in all Azure public regions, China cloud regions, and Government cloud regions. You cannot globally peer from Azure public regions to national cloud regions.
+### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Létrehozhatok egyenrangú kapcsolatot egy VNet egy másik régióban?
+Igen. A globális VNet-társítás lehetővé teszi, hogy a különböző régiókban található társ-virtuális hálózatok. A globális VNet-társítás az összes Azure-beli nyilvános régióban, valamint a kínai Felhőbeli régiókban és a kormányzati Felhőbeli régiókban érhető el. Az Azure nyilvános régióiról nem lehet globális társat csatlakozni a nemzeti Felhőbeli régiókhoz.
 
-### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>What are the constraints related to Global VNet Peering and Load Balancers?
-If the two virtual networks in two different regions are peered over Global VNet Peering, you cannot connect to resources that are behind a Basic Load Balancer through the Front End IP of the Load Balancer. This restriction does not exist for a Standard Load Balancer.
-The following resources can use Basic Load Balancers which means you cannot reach them through the Load Balancer's Front End IP over Global VNet Peering. You can however use Global VNet peering to reach the resources directly through their private VNet IPs, if permitted. 
-- VMs behind Basic Load Balancers
-- Virtual machine scale sets with Basic Load Balancers 
+### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Milyen megkötések vonatkoznak a globális VNet-társításokra és-Terheléselosztóokra?
+Ha a két különböző régióban található két virtuális hálózat a globális VNet-társításhoz kapcsolódik, nem tud olyan erőforrásokhoz csatlakozni, amelyek alapszintű Load Balancer mögött találhatók a Load Balancer előtér-IP-címén. Ez a korlátozás nem létezik standard Load Balancerhoz.
+A következő erőforrások használhatnak alapszintű Load Balancert, ami azt jelenti, hogy a Load Balancer előtér-IP-címe nem érhető el a globális VNet-társításon keresztül. A globális VNet-társítások használata azonban lehetővé teszi az erőforrások közvetlen elérését a saját VNet IP-címein keresztül, ha ez engedélyezve van. 
+- Alapszintű terheléselosztó mögötti virtuális gépek
+- Virtuálisgép-méretezési csoportok alapszintű terheléselosztó 
 - Redis Cache 
 - Application Gateway (v1) SKU
 - Service Fabric
 - SQL MI
 - API Management
-- Active Directory Domain Service (ADDS)
+- Active Directory-tartomány szolgáltatás (Hozzáadás)
 - Logic Apps
 - HDInsight
 -   Azure Batch
 - App Service-környezet
 
-You can connect to these resources via ExpressRoute or VNet-to-VNet through VNet Gateways.
+Ezekhez az erőforrásokhoz a ExpressRoute vagy a VNet – VNet használatával csatlakozhat a VNet-átjárók segítségével.
 
-### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Can I enable VNet Peering if my virtual networks belong to subscriptions within different Azure Active Directory tenants?
-Igen. It is possible to establish VNet Peering (whether local or global) if your subscriptions belong to different Azure Active Directory tenants. You can do this via PowerShell or CLI. Portal is not yet supported.
+### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Engedélyezhető a VNet-társítás, ha a virtuális hálózatok különböző Azure Active Directory bérlőn belüli előfizetésekhez tartoznak?
+Igen. Ha az előfizetések különböző Azure Active Directory bérlőhöz tartoznak, létrehozhatók VNet-társítások (helyi vagy globális). Ezt megteheti a PowerShell vagy a parancssori felület használatával. A portál még nem támogatott.
 
-### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>My VNet peering connection is in *Initiated* state, why can't I connect?
-If your peering connection is in an *Initiated* state, this means you have created only one link. A bidirectional link must be created in order to establish a successful connection. For example, to peer VNet A to VNet B, a link must be created from VNetA to VNetB and from VNetB to VNetA. Creating both links will change the state to *Connected*.
+### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>A VNet-társítási kapcsolat *kezdeményezett* állapotban van, miért nem tudok csatlakozni?
+Ha a társ-kapcsolat *kezdeményezett* állapotban van, ez azt jelenti, hogy csak egy hivatkozást hozott létre. Sikeres kapcsolat létrehozásához kétirányú hivatkozást kell létrehozni. Ha például az A társ VNet a B VNet, a hivatkozást létre kell hozni a Társviszonyban áll-ből a b-be és a b-ből a Társviszonyban áll-be. Mindkét hivatkozás létrehozásakor a rendszer a *csatlakoztatott*állapotot fogja módosítani.
 
-### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>My VNet peering connection is in *Disconnected* state, why can't I create a peering connection?
-If your VNet peering connection is in a *Disconnected* state, it means one of the links created was deleted. In order to re-establish a peering connection, you will need to delete the link and recreate it.
+### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>A VNet-társítási kapcsolat *leválasztott* állapotban van, miért nem hozható létre egyenrangú kapcsolat?
+Ha a VNet-társítási kapcsolat *leválasztott* állapotban van, az azt jelenti, hogy az egyik létrehozott hivatkozás törölve lett. Ha újra létre szeretne hozni egy társ-kapcsolatot, törölnie kell a hivatkozást, majd újra létre kell hoznia.
 
-### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>Can I peer my VNet with a VNet in a different subscription?
-Igen. You can peer VNets across subscriptions and across regions.
+### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>Használhatom a VNet egy másik előfizetésben lévő VNet?
+Igen. A partneri virtuális hálózatok az előfizetések és régiók között is.
 
-### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>Can I peer two VNets with matching or overlapping address ranges?
-Nem. Address spaces must not overlap to enable VNet Peering.
+### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>Összekapcsolható két virtuális hálózatok a megfelelő vagy átfedésben lévő címtartományok között?
+Nem. A VNet társításának engedélyezéséhez a Címterület nem tartalmazhat átfedést.
 
-### <a name="how-much-do-vnet-peering-links-cost"></a>How much do VNet peering links cost?
-There is no charge for creating a VNet peering connection. Data transfer across peering connections is charged. [See here](https://azure.microsoft.com/pricing/details/virtual-network/).
+### <a name="how-much-do-vnet-peering-links-cost"></a>Mennyibe kerül a VNet peering Links?
+Nem számítunk fel díjat a VNet-társi kapcsolatok létrehozásához. A rendszer felszámítja az adatátvitelt a partneri kapcsolatokon keresztül. [Lásd itt](https://azure.microsoft.com/pricing/details/virtual-network/).
 
-### <a name="is-vnet-peering-traffic-encrypted"></a>Is VNet peering traffic encrypted?
-Nem. Traffic between resources in peered VNets is private and isolated. It remains completely on the Microsoft Backbone.
+### <a name="is-vnet-peering-traffic-encrypted"></a>Titkosítva van-e a VNet-társítási forgalom?
+Nem. A védett virtuális hálózatok lévő erőforrások közötti forgalom magán-és elkülönített. Teljes mértékben a Microsoft gerincén marad.
 
-### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Why is my peering connection in a *Disconnected* state?
-VNet peering connections go into *Disconnected* state when one VNet peering link is deleted. You must delete both links in order to reestablish a successful peering connection.
+### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Miért van a társam kapcsolata *leválasztott* állapotban?
+A VNet-társítási kapcsolatok *leválasztott* állapotba kerülnek, ha töröl egy VNet-társítási hivatkozást. A sikeres társ-létesítési kapcsolat létrehozásához mindkét hivatkozást törölnie kell.
 
-### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>If I peer VNetA to VNetB and I peer VNetB to VNetC, does that mean VNetA and VNetC are peered?
-Nem. Transitive peering is not supported. You must peer VNetA and VNetC for this to take place.
+### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>Ha a társam Társviszonyban áll a b és a VNetC, a Társviszonyban áll és a VNetC is, ez azt jelenti, hogy a b?
+Nem. A tranzitív peering nem támogatott. Ehhez a társ-Társviszonyban áll és a VNetC kell elvégeznie.
 
-### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Are there any bandwidth limitations for peering connections?
-Nem. VNet peering, whether local or global, does not impose any bandwidth restrictions. Bandwidth is only limited by the VM or the compute resource.
+### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Van-e sávszélességre vonatkozó korlátozás a társi kapcsolatok esetében?
+Nem. A VNet-kezelés, akár a helyi, akár a globális, nem ró sávszélesség-korlátozást. A sávszélességet csak a virtuális gép vagy a számítási erőforrás korlátozza.
 
-### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>How can I troubleshoot VNet Peering issues?
-Here is a [troubleshooter guide](https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) you can try.
+### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>Hogyan tudom elhárítani a VNet-társítási problémákat?
+Itt talál egy [útmutatót a hibakeresőhöz](https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) .
 
 ## <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 
-### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Which Azure regions are available for virtual network TAP?
-Virtual network TAP preview is available in all Azure regions. The monitored network interfaces, the virtual network TAP resource, and the collector or analytics solution must be deployed in the same region.
+### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Mely Azure-régiók érhetők el a virtuális hálózatok számára?
+A Virtual Network TAP Preview minden Azure-régióban elérhető. A figyelt hálózati adapterek, a virtuális hálózat KOPPINTson az erőforrás lehetőségre, és a gyűjtő vagy elemzési megoldásnak ugyanabban a régióban kell lennie.
 
-### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>Does Virtual Network TAP support any filtering capabilities on the mirrored packets?
-Filtering capabilities are not supported with the virtual network TAP preview. When a TAP configuration is added to a network interface a deep copy of all the ingress and egress traffic on the network interface is streamed to the TAP destination.
+### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>Virtual Network KOPPINTson a támogatott a tükrözött csomagok szűrési képességeinek támogatása lehetőségre?
+A szűrési képességek nem támogatottak a virtuális hálózatban koppintson az Előnézet elemre. Ha egy KOPPINTó konfigurációt ad hozzá egy hálózati adapterhez, a hálózati adapteren lévő összes bejövő és kimenő forgalom részletes másolatát a rendszer a KOPPINTÁS célhelyére továbbítja.
 
-### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>Can multiple TAP configurations be added to a monitored network interface?
-A monitored network interface can have only one TAP configuration. Check with the individual [partner solution](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) for the capability to stream multiple copies of the TAP traffic to the analytics tools of your choice.
+### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>Több KOPPINTó konfiguráció is hozzáadható egy figyelt hálózati adapterhez?
+A figyelt hálózati adapternek csak egyetlen KOPPINTÁSi konfigurációja lehet. Egyeztessen az egyes [partneri megoldásokkal](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) , hogy képes legyen több példányban továbbítani a TAP-forgalmat az Ön által választott analitikai eszközökre.
 
-### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>Can the same virtual network TAP resource aggregate traffic from monitored network interfaces in more than one virtual network?
-Igen. The same virtual network TAP resource can be used to aggregate mirrored traffic from monitored network interfaces in peered virtual networks in the same subscription or a different subscription. The virtual network TAP resource and the destination load balancer or destination network interface must be in the same subscription. All subscriptions must be under the same Azure Active Directory tenant.
+### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>Ugyanez a virtuális hálózat is KOPPINThat az erőforrások összesített forgalmára a figyelt hálózati adapterek közül több virtuális hálózaton?
+Igen. Ugyanezen a virtuális hálózati KOPPINTÁSi erőforráson keresztül a tükrözött forgalom összesíthető a figyelt hálózati adapterekről az azonos előfizetésben vagy egy másik előfizetésben található, egymáshoz tartozó virtuális hálózatokban. A virtuális hálózat KOPPINTson az erőforrásra, és a cél terheléselosztó vagy a célként megadott hálózati adapternek ugyanahhoz az előfizetéshez kell tartoznia. Az összes előfizetésnek ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia.
 
-### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Are there any performance considerations on production traffic if I enable a virtual network TAP configuration on a network interface?
+### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Vannak-e az éles forgalomra vonatkozó teljesítményi megfontolások, ha engedélyezem a virtuális hálózatok konfigurációját egy hálózati adapteren?
 
-Virtual network TAP is in preview. During preview, there is no service level agreement. The capability should not be used for production workloads. When a virtual machine network interface is enabled with a TAP configuration, the same resources on the Azure host allocated to the virtual machine to send the production traffic is used to perform the mirroring function and send the mirrored packets. Select the correct [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) or [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtual machine size to ensure that sufficient resources are available for the virtual machine to send the production traffic and the mirrored traffic.
+A virtuális hálózat KOPPINTÁS előzetes verzióban érhető el. Az előzetes verzió ideje alatt nincs szolgáltatói szerződés. A képesség nem használható éles számítási feladatokhoz. Ha egy virtuális gép hálózati adaptere egy KOPPINTÁSi konfigurációval van engedélyezve, ugyanazokat az erőforrásokat kell használni az Azure-gazdagépen, amelyet a virtuális géphez rendeltek, hogy elküldjék az éles forgalmat a tükrözési funkció végrehajtásához és a tükrözött csomagok elküldéséhez. A megfelelő [linuxos](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windowsos](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gép méretének kiválasztásával biztosíthatja, hogy elegendő erőforrás álljon rendelkezésre ahhoz, hogy a virtuális gép el lehessen küldeni az üzemi forgalmat és a tükrözött forgalmat.
 
-### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>Is accelerated networking for [Linux](create-vm-accelerated-networking-cli.md) or [Windows](create-vm-accelerated-networking-powershell.md) supported with virtual network TAP?
+### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>A gyorsított hálózatkezelés [Linux](create-vm-accelerated-networking-cli.md) vagy [Windows rendszeren](create-vm-accelerated-networking-powershell.md) támogatott a Virtual Network-sel?
 
-You will be able to add a TAP configuration on a network interface attached to a virtual machine that is enabled with accelerated networking. But the performance and latency on the virtual machine will be affected by adding TAP configuration since the offload for mirroring traffic is currently not supported by Azure accelerated networking.
+Hozzáadhat egy KOPPINTó konfigurációt egy olyan virtuális géphez csatlakoztatott hálózati adapterhez, amely a gyorsított hálózatkezeléssel van ellátva. A virtuális gép teljesítményét és késését azonban érinteni fogja a rendszer, mivel a rendszer a tükrözési forgalom kiszervezését jelenleg nem támogatja az Azure gyorsított hálózatkezeléssel.
 
 ## <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
-### <a name="what-is-the-right-sequence-of-operations-to-set-up-service-endpoints-to-an-azure-service"></a>What is the right sequence of operations to set up service endpoints to an Azure service?
-There are two steps to secure an Azure service resource through service endpoints:
-1. Turn on service endpoints for the Azure service.
-2. Set up VNet ACLs on the Azure service.
+### <a name="what-is-the-right-sequence-of-operations-to-set-up-service-endpoints-to-an-azure-service"></a>Mi a műveletek megfelelő sorozata egy Azure-szolgáltatáshoz tartozó szolgáltatási végpontok beállításához?
+Az Azure-szolgáltatások erőforrásait két lépésben kell biztonságossá tenni a szolgáltatási végpontokon keresztül:
+1. Kapcsolja be a szolgáltatási végpontokat az Azure szolgáltatáshoz.
+2. VNet ACL-ek beállítása az Azure szolgáltatásban.
 
-The first step is a network side operation and the second step is a service resource side operation. Both steps can be performed either by the same administrator or different administrators based on the RBAC permissions granted to the administrator role. We recommend that you first turn on service endpoints for your virtual network prior to setting up VNet ACLs on Azure service side. Hence, the steps must be performed in the sequence listed above to set up VNet service endpoints.
+Az első lépés egy hálózati oldali művelet, a második lépés pedig egy szolgáltatás-erőforrás oldali művelet. Mindkét lépést elvégezheti ugyanazon rendszergazda vagy különböző rendszergazdák, a rendszergazdai szerepkörhöz megadott RBAC engedélyek alapján. Javasoljuk, hogy a VNet ACL-ek beállítása előtt először kapcsolja be a virtuális hálózat szolgáltatási végpontját. Ezért a lépéseket a fent felsorolt sorrendben kell végrehajtani a VNet szolgáltatás-végpontok beállításához.
 
 >[!NOTE]
-> Both the operations described above must be completed before you can limit the Azure service access to the allowed VNet and subnet. Only turning on service endpoints for the Azure service on the network side does not provide you the limited access. In addition, you must also set up VNet ACLs on the Azure service side.
+> A fent ismertetett műveleteket is el kell végeznie ahhoz, hogy korlátozni lehessen az Azure-szolgáltatás hozzáférését az engedélyezett VNet és alhálózathoz. Csak a hálózati oldalon lévő Azure-szolgáltatáshoz tartozó végpontok bekapcsolása nem biztosítja a korlátozott hozzáférést. Emellett a VNet ACL-eket is be kell állítania az Azure-szolgáltatási oldalon.
 
-Certain services (such as SQL and CosmosDB) allow exceptions to the above sequence through the **IgnoreMissingVnetServiceEndpoint** flag. Once the flag is set to **True**, VNet ACLs can be set on the Azure service side prior to setting up the service endpoints on the network side. Azure services provide this flag to help customers in cases where the specific IP firewalls are configured on Azure services and turning on the service endpoints on the network side can lead to a connectivity drop since the source IP changes from a public IPv4 address to a private address. Setting up VNet ACLs on the Azure service side before setting service endpoints on the network side can help avoid a connectivity drop.
+Bizonyos szolgáltatások (például az SQL és a CosmosDB) engedélyezik a kivételeket a fenti sorozatban a **IgnoreMissingVnetServiceEndpoint** jelzőn keresztül. Ha a jelző értéke TRUE ( **igaz**), a VNet ACL-ek az Azure-szolgáltatás oldalán állíthatók be a hálózati oldalon lévő szolgáltatási végpontok beállítása előtt. Az Azure-szolgáltatások biztosítják ezt a jelzőt arra az esetre, ha az adott IP-tűzfalak az Azure-szolgáltatásokon vannak konfigurálva, és a hálózati oldalon a szolgáltatási végpontok bekapcsolása a kapcsolat csökkenéséhez vezethet, mivel a forrás IP-cím a nyilvános IPv4-címről a következőre változik: privát címe. A VNet ACL-ek beállítása az Azure-szolgáltatási oldalon a szolgáltatási végpontok hálózati oldalon való beállítása előtt elkerülheti a kapcsolatok eldobását.
 
-### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>Do all Azure services reside in the Azure virtual network provided by the customer? How does VNet service endpoint work with Azure services?
+### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>Az Azure-szolgáltatások az ügyfél által biztosított Azure-beli virtuális hálózaton találhatók? Hogyan működik az VNet-szolgáltatás végpontja az Azure-szolgáltatásokkal?
 
-No, not all Azure services reside in the customer's virtual network. The majority of Azure data services such as Azure Storage, Azure SQL, and Azure Cosmos DB, are multi-tenant services that can be accessed over public IP addresses. You can learn more about virtual network integration for Azure services [here](virtual-network-for-azure-services.md). 
+Nem, nem minden Azure-szolgáltatás található az ügyfél virtuális hálózatában. Az Azure-beli adatszolgáltatások, például az Azure Storage, az Azure SQL és a Azure Cosmos DB többsége több-bérlős szolgáltatás, amely nyilvános IP-címeken keresztül érhető el. Az Azure [-szolgáltatások Virtual](virtual-network-for-azure-services.md)Network Integration szolgáltatásával kapcsolatos további információkért tekintse meg a következőt:. 
 
-When you use the VNet service endpoints feature (turning on VNet service endpoint on the network side and setting up appropriate VNet ACLs on the Azure service side), access to an Azure service is restricted from an allowed VNet and subnet.
+Ha a VNet szolgáltatás-végpontok funkciót használja (bekapcsolja a VNet szolgáltatás végpontját a hálózati oldalon, és beállítja a megfelelő VNet ACL-eket az Azure-szolgáltatás oldalán), az Azure-szolgáltatásokhoz való hozzáférés egy engedélyezett VNet és alhálózatra korlátozódik.
 
-### <a name="how-does-vnet-service-endpoint-provide-security"></a>How does VNet service endpoint provide security?
+### <a name="how-does-vnet-service-endpoint-provide-security"></a>Hogyan biztosítja a VNet szolgáltatás végpontja a biztonságot?
 
-The VNet service endpoint feature (turning on VNet service endpoint on the network side and setting up appropriate VNet ACLs on the Azure service side) limits the Azure service access to the allowed VNet and subnet, thus providing a network level security and isolation of the Azure service traffic. All traffic using VNet service endpoints flows over Microsoft backbone, thus providing another layer of isolation from the public internet. Moreover, customers can choose to fully remove public Internet access to the Azure service resources and allow traffic only from their virtual network through a combination of IP firewall and VNet ACLs, thus protecting the Azure service resources from unauthorized access.      
+A VNet szolgáltatás végponti funkciója (a VNet szolgáltatás végpontjának bekapcsolása a hálózati oldalon, valamint a megfelelő VNet ACL-ek beállítása az Azure-szolgáltatás oldalán) korlátozza az Azure-szolgáltatás hozzáférését az engedélyezett VNet és alhálózathoz, így biztosítva a hálózati szintű biztonságot és Az Azure-szolgáltatás forgalmának elkülönítése. A VNet szolgáltatás-végpontokat használó összes forgalom a Microsoft gerincén halad át, így biztosítva a nyilvános internetről egy másik elkülönítési réteget. Emellett az ügyfelek dönthetnek úgy, hogy teljes mértékben letiltják a nyilvános internet-hozzáférést az Azure-szolgáltatás erőforrásaihoz, és csak a virtuális hálózatról engedélyezik a forgalmat az IP-tűzfal és a VNet ACL-ek kombinálásával, így az Azure-szolgáltatás erőforrásainak jogosulatlan védelme hozzáférés.      
 
-### <a name="what-does-the-vnet-service-endpoint-protect---vnet-resources-or-azure-service"></a>What does the VNet service endpoint protect - VNet resources or Azure service?
-VNet service endpoints help protect Azure service resources. VNet resources are protected through Network Security Groups (NSGs).
+### <a name="what-does-the-vnet-service-endpoint-protect---vnet-resources-or-azure-service"></a>Mi a VNet Service Endpoint Protect-VNet-erőforrások vagy az Azure-szolgáltatás?
+A VNet szolgáltatás-végpontok segítenek az Azure-szolgáltatások erőforrásainak védelmében. A VNet-erőforrások védelme hálózati biztonsági csoportokon keresztül történik (NSG).
 
-### <a name="is-there-any-cost-for-using-vnet-service-endpoints"></a>Is there any cost for using VNet service endpoints?
+### <a name="is-there-any-cost-for-using-vnet-service-endpoints"></a>Van a VNet-szolgáltatási végpontok használatának díja?
 
-No, there is no additional cost for using VNet service endpoints.
+Nem, a VNet szolgáltatási végpontok használata nem jár további díjszabással.
 
-### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-subscriptions"></a>Can I turn on VNet service endpoints and set up VNet ACLs if the virtual network and the Azure service resources belong to different subscriptions?
+### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-subscriptions"></a>Be lehet kapcsolni a VNet szolgáltatás-végpontokat, és be kell állítani a VNet hozzáférés-vezérlési listákat, ha a virtuális hálózat és az Azure-szolgáltatási erőforrások különböző előfizetésekhez tartoznak?
 
-Igen, ez lehetséges. Virtual networks and Azure service resources can be either in the same or different subscriptions. The only requirement is that both the virtual network and Azure service resources must be under the same Active Directory (AD) tenant.
+Igen, ez lehetséges. A virtuális hálózatok és az Azure-szolgáltatási erőforrások lehetnek azonos vagy eltérő előfizetésekben. Az egyetlen követelmény, hogy a virtuális hálózatnak és az Azure-szolgáltatások erőforrásainak ugyanahhoz a Active Directory (AD) bérlőhöz kell tartozniuk.
 
-### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Can I turn on VNet service endpoints and set up VNet ACLs if the virtual network and the Azure service resources belong to different AD tenants?
-No, VNet service endpoints and VNet ACLs are not supported across AD tenants.
+### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Be lehet kapcsolni a VNet szolgáltatási végpontokat, és be kell állítani a VNet ACL-eket, ha a virtuális hálózat és az Azure-szolgáltatás erőforrásai különböző AD-bérlők közé tartoznak?
+Nem, a VNet szolgáltatási végpontok és a VNet ACL-ek nem támogatottak az AD-bérlők között.
 
-### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Can an on-premises device’s IP address that is connected through Azure Virtual Network gateway (VPN) or ExpressRoute gateway access Azure PaaS Service over VNet service endpoints?
-Alapértelmezés szerint a virtuális hálózatokhoz biztosított Azure-szolgáltatási erőforrások nem érhetők el helyszíni hálózatokról. If you want to allow traffic from on-premises, you must also allow public (typically, NAT) IP addresses from your on-premises or ExpressRoute. These IP addresses can be added through the IP firewall configuration for the Azure service resources.
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>A helyszíni eszköz IP-címe az Azure Virtual Network Gateway (VPN) vagy a ExpressRoute Gateway használatával csatlakozik az Azure Pásti szolgáltatáshoz a VNet szolgáltatás végpontjai felett?
+Alapértelmezés szerint a virtuális hálózatokhoz biztosított Azure-szolgáltatási erőforrások nem érhetők el helyszíni hálózatokról. Ha engedélyezni szeretné a forgalmat a helyszíni környezetből, engedélyeznie kell a nyilvános (jellemzően NAT) IP-címeket is a helyszíni vagy ExpressRoute. Ezek az IP-címek az Azure szolgáltatási erőforrásaihoz tartozó IP-tűzfal konfigurációján keresztül adhatók hozzá.
 
-### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-within-a-virtual-network-or-across-multiple-virtual-networks"></a>Can I use VNet Service Endpoint feature to secure Azure service to multiple subnets within a virtual network or across multiple virtual networks?
-To secure Azure services to multiple subnets within a virtual network or across multiple virtual networks, enable service endpoints on the network side on each of the subnets independently and then secure Azure service resources to all of the subnets by setting up appropriate VNet ACLs on the Azure service side.
+### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-within-a-virtual-network-or-across-multiple-virtual-networks"></a>Használhatom a VNet szolgáltatás-végpont funkciót az Azure-szolgáltatás több alhálózatra történő biztonságossá tételéhez egy virtuális hálózaton vagy több virtuális hálózaton belül?
+Ahhoz, hogy az Azure-szolgáltatások több alhálózatra is biztonságossá váljon egy virtuális hálózaton vagy több virtuális hálózaton belül, engedélyezze a szolgáltatási végpontokat az egyes alhálózatokon egymástól függetlenül, majd az Azure-szolgáltatás erőforrásainak az összes alhálózatra történő biztonságossá tételéhez a megfelelő VNet ACL-ek az Azure szolgáltatás oldalán.
  
-### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>How can I filter outbound traffic from a virtual network to Azure services and still use service endpoints?
-If you want to inspect or filter the traffic destined to an Azure service from a virtual network, you can deploy a network virtual appliance within the virtual network. You can then apply service endpoints to the subnet where the network virtual appliance is deployed and secure Azure service resources only to this subnet through VNet ACLs. This scenario might also be helpful if you wish to restrict Azure service access from your virtual network only to specific Azure resources using network virtual appliance filtering. További információkért lásd a [kimenő forgalommal és a hálózati virtuális készülékekkel](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha) foglalkozó témakört.
+### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Hogyan szűrhetik a kimenő forgalmat egy virtuális hálózatról az Azure-szolgáltatásokra, és továbbra is használhatom a szolgáltatási végpontokat?
+Ha egy virtuális hálózatról szeretné megvizsgálni vagy szűrni egy Azure-szolgáltatásra irányuló forgalmat, üzembe helyezhet egy hálózati virtuális berendezést a virtuális hálózaton belül. Ezután szolgáltatási végpontokat alkalmazhat arra az alhálózatra, ahol a hálózati virtuális berendezés üzembe lett helyezve, és az Azure-szolgáltatások erőforrásai csak erre az alhálózatra VNet ACL-eken keresztül is biztonságossá tehetők. Ez a forgatókönyv akkor is hasznos lehet, ha a virtuális hálózatról csak bizonyos Azure-erőforrásokra szeretné korlátozni az Azure-szolgáltatások elérését a hálózati virtuális berendezés szűrése használatával. További információkért lásd a [kimenő forgalommal és a hálózati virtuális berendezésekkel](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha) foglalkozó témakört.
 
-### <a name="what-happens-when-you-access-an-azure-service-account-that-has-a-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>What happens when you access an Azure service account that has a virtual network access control list (ACL) enabled from outside the VNet?
-The HTTP 403 or HTTP 404 error is returned.
+### <a name="what-happens-when-you-access-an-azure-service-account-that-has-a-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Mi történik, ha olyan Azure-szolgáltatásfiók elérésére kerül sor, amely a VNet kívülről engedélyezett virtuális hálózati hozzáférés-vezérlési listával (ACL) rendelkezik?
+A rendszer a HTTP 403 vagy a HTTP 404 hibát adja vissza.
 
-### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-service-account-in-another-region"></a>Are subnets of a virtual network created in different regions allowed to access an Azure service account in another region? 
-Yes, for most of the Azure services, virtual networks created in different regions can access Azure services in another region through the VNet service endpoints. For example, if an Azure Cosmos DB account is in West US or East US and virtual networks are in multiple regions, the virtual network can access Azure Cosmos DB. Storage and SQL are exceptions and are regional in nature and both the virtual network and the Azure service need to be in the same region.
+### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-service-account-in-another-region"></a>Különböző régiókban létrehozott virtuális hálózatok alhálózatai férhetnek hozzá egy másik régióhoz tartozó Azure-szolgáltatásfiók eléréséhez? 
+Igen, a legtöbb Azure-szolgáltatás esetében a különböző régiókban létrehozott virtuális hálózatok hozzáférhetnek az Azure-szolgáltatásokhoz egy másik régióban az VNet szolgáltatás-végpontokon keresztül. Ha például egy Azure Cosmos DB-fiók az USA nyugati régiójában vagy az USA keleti régiójában található, és a virtuális hálózatok több régióban találhatók, akkor a virtuális hálózat hozzáférhet a Azure Cosmos DBhoz. A Storage és az SQL kivételeket jelent, és regionális jellegűek, és a virtuális hálózatnak és az Azure szolgáltatásnak ugyanabban a régióban kell lennie.
   
-### <a name="can-an-azure-service-have-both-a-vnet-acl-and-an-ip-firewall"></a>Can an Azure service have both a VNet ACL and an IP firewall?
-Yes, a VNet ACL and an IP firewall can co-exist. Both features complement each other to ensure isolation and security.
+### <a name="can-an-azure-service-have-both-a-vnet-acl-and-an-ip-firewall"></a>Lehet egy Azure-szolgáltatás VNet ACL-t és IP-tűzfalat is tartalmaz?
+Igen, a VNet ACL és egy IP-tűzfal együtt is létezhet. Mindkét szolgáltatás kiegészíti egymást az elkülönítés és a biztonság biztosításához.
  
-### <a name="what-happens-if-you-delete-a-virtual-network-or-subnet-that-has-service-endpoint-turned-on-for-azure-service"></a>What happens if you delete a virtual network or subnet that has service endpoint turned on for Azure service?
-Deletion of VNets and subnets are independent operations and are supported even when service endpoints are turned on for Azure services. In cases where the Azure services have VNet ACLs set up, for those VNets and subnets, the VNet ACL information associated with that Azure service is disabled when a VNet or subnet that has VNet service endpoint turned on is deleted.
+### <a name="what-happens-if-you-delete-a-virtual-network-or-subnet-that-has-service-endpoint-turned-on-for-azure-service"></a>Mi történik, ha töröl egy olyan virtuális hálózatot vagy alhálózatot, amelyen be van kapcsolva a szolgáltatási végpont az Azure-szolgáltatáshoz?
+A virtuális hálózatok és az alhálózatok törlése független művelet, és akkor is támogatott, ha a szolgáltatási végpontok be vannak kapcsolva az Azure-szolgáltatásokhoz. Azokban az esetekben, amikor az Azure-szolgáltatások VNet ACL-ek vannak beállítva, a virtuális hálózatok és az alhálózatok esetében az adott Azure-szolgáltatáshoz társított VNet ACL-információk le vannak tiltva, ha olyan VNet vagy alhálózatot törölnek, amelyen engedélyezve van a VNet szolgáltatás végpontja.
  
-### <a name="what-happens-if-an-azure-service-account-that-has-a-vnet-service-endpoint-enabled-is-deleted"></a>What happens if an Azure service account that has a VNet Service endpoint enabled is deleted?
-The deletion of an Azure service account is an independent operation and is supported even when the service endpoint is enabled on the network side and VNet ACLs are set up on Azure service side. 
+### <a name="what-happens-if-an-azure-service-account-that-has-a-vnet-service-endpoint-enabled-is-deleted"></a>Mi történik, ha egy VNet szolgáltatás-végponttal rendelkező Azure-szolgáltatásfiók törölve lett?
+Az Azure-szolgáltatásfiók törlése független művelet, és akkor is támogatott, ha a szolgáltatás végpontja engedélyezve van a hálózati oldalon, és a VNet ACL-ek az Azure szolgáltatás oldalán vannak beállítva. 
 
-### <a name="what-happens-to-the-source-ip-address-of-a-resource-like-a-vm-in-a-subnet-that-has-vnet-service-endpoint-enabled"></a>What happens to the source IP address of a resource (like a VM in a subnet) that has VNet service endpoint enabled?
-When virtual network service endpoints are enabled, the source IP addresses of the resources in your virtual network's subnet switches from using public IPV4 addresses to the Azure virtual network's private IP addresses for traffic to Azure service. Note that this can cause specific IP firewalls that are set to public IPV4 address earlier on the Azure services to fail. 
+### <a name="what-happens-to-the-source-ip-address-of-a-resource-like-a-vm-in-a-subnet-that-has-vnet-service-endpoint-enabled"></a>Mi történik egy erőforrás forrás IP-címével (például egy alhálózatban lévő virtuális géppel), amelynek engedélyezve van a VNet Service Endpoint?
+Ha a virtuális hálózati szolgáltatás végpontjai engedélyezve vannak, a virtuális hálózat alhálózatán lévő erőforrások forrás IP-címei az Azure-szolgáltatás felé irányuló forgalomhoz tartozó nyilvános IPV4-címeket használják az Azure Virtual Network magánhálózati IP-címeire. Vegye figyelembe, hogy ez olyan IP-tűzfalakat okozhat, amelyek az Azure-szolgáltatásokon korábban az Azure-szolgáltatások esetében a nyilvános IPV4-címekre vannak beállítva. 
 
-### <a name="does-the-service-endpoint-route-always-take-precedence"></a>Does the service endpoint route always take precedence?
-Service endpoints add a system route which takes precedence over BGP routes and provides optimum routing for the service endpoint traffic. Service endpoints always take service traffic directly from your virtual network to the service on the Microsoft Azure backbone network. For more information about how Azure selects a route, see [Azure Virtual network traffic routing](virtual-networks-udr-overview.md).
+### <a name="does-the-service-endpoint-route-always-take-precedence"></a>A szolgáltatási végpont útvonala mindig elsőbbséget élvez?
+A szolgáltatási végpontok olyan rendszerútvonalat vesznek fel, amely elsőbbséget élvez a BGP-útvonalakkal szemben, és optimális útválasztást biztosít a szolgáltatás végponti forgalmához A szolgáltatási végpontok mindig közvetlenül a virtuális hálózatról végzik a szolgáltatás forgalmát a Microsoft Azure gerinc hálózatán. További információ arról, hogy az Azure hogyan válasszon útvonalat: [Azure virtuális hálózati forgalom útválasztása](virtual-networks-udr-overview.md).
  
-### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>How does NSG on a subnet work with service endpoints?
-To reach the Azure service, NSGs need to allow outbound connectivity. If your NSGs are opened to all Internet outbound traffic, then the service endpoint traffic should work. You can also limit the outbound traffic to service IPs only using the Service tags.  
+### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Hogyan működik az alhálózat NSG a szolgáltatási végpontokkal?
+Az Azure-szolgáltatás eléréséhez NSG kell a kimenő kapcsolat használatát. Ha a NSG az összes internetes kimenő forgalomra megnyitják, akkor a szolgáltatási végpont forgalmának működnie kell. A kimenő forgalmat a szolgáltatási IP-címekre is korlátozhatja, csak a szolgáltatás címkéit használva.  
  
-### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>What permissions do I need to set up service endpoints?
-Service endpoints can be configured on a virtual network independently by a user with write access to the virtual network. To secure Azure service resources to a VNet, the user must have permission **Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action** for the subnets being added. This permission is included in the built-in service administrator role by default and can be modified by creating custom roles. Learn more about built-in roles and assigning specific permissions to [custom roles](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
+### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>Milyen engedélyek szükségesek a szolgáltatási végpontok beállításához?
+A szolgáltatási végpontokat a virtuális hálózatokon a virtuális hálózathoz írási hozzáféréssel rendelkező felhasználóktól függetlenül lehet konfigurálni. Az Azure-szolgáltatási erőforrások VNet való biztonságossá tételéhez a felhasználónak engedéllyel kell rendelkeznie a **Microsoft. Network/virtualNetworks/Subnets/joinViaServiceEndpoint/Action** szolgáltatáshoz az alhálózatok hozzáadásához. Ez az engedély alapértelmezés szerint szerepel a beépített szolgáltatás-rendszergazdai szerepkörben, és egyéni szerepkörök létrehozásával módosítható. További információ a beépített szerepkörökről és az [egyéni szerepkörökhöz](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json)adott engedélyek kiosztásáról.
  
 
-### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>Can I filter virtual network traffic to Azure services, allowing only specific azure service resources, over VNet service endpoints? 
+### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>Szűrhetik-e a virtuális hálózati forgalmat az Azure-szolgáltatásokra, így csak bizonyos Azure-szolgáltatások erőforrásait VNet szolgáltatási végpontokon keresztül? 
 
-Virtual network (VNet) service endpoint policies allow you to filter virtual network traffic to Azure services, allowing only specific Azure service resources over the service endpoints. Endpoint policies provide granular access control from the virtual network traffic to the Azure services. You can learn more about the service endpoint policies [here](virtual-network-service-endpoint-policies-overview.md).
+A Virtual Network (VNet) szolgáltatás végponti házirendjei lehetővé teszik a virtuális hálózati forgalom szűrését az Azure-szolgáltatásokra, így csak bizonyos Azure-szolgáltatások erőforrásai jelennek meg a szolgáltatási végpontokon. A végponti szabályzatok részletes hozzáférés-vezérlést biztosítanak az Azure-szolgáltatások virtuális hálózati forgalmáról. A szolgáltatás-végponti szabályzatokról [itt](virtual-network-service-endpoint-policies-overview.md)talál további információt.
 
-### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Does Azure Active Directory (Azure AD) support VNet service endpoints?
+### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Támogatja az Azure Active Directory (Azure AD) a VNet-szolgáltatási végpontok támogatását?
 
-Azure Active Directory (Azure AD) doesn't support service endpoints natively. Complete list of Azure Services supporting VNet service endpoints can be seen [here](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Note that the "Microsoft.AzureActiveDirectory" tag listed under services supporting service endpoints is used for supporting service endpoints to ADLS Gen 1. For ADLS Gen 1, virtual network integration for Azure Data Lake Storage Gen1 makes use of the virtual network service endpoint security between your virtual network and Azure Active Directory (Azure AD) to generate additional security claims in the access token. Ezután e jogcímek használatával hitelesíti a virtuális hálózatot az 1. generációs Data Lake Storage-fiókkal, és engedélyezi a hozzáférést. Learn more about [Azure Data Lake Store Gen 1 VNet Integration](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Azure Active Directory (Azure AD) nem támogatja natív módon a szolgáltatási végpontokat. [Itt](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)megtekintheti az VNet szolgáltatási végpontokat támogató Azure-szolgáltatások teljes listáját. Vegye figyelembe, hogy a szolgáltatások támogatása szolgáltatási végpontok területen felsorolt "Microsoft. AzureActiveDirectory" címkét a rendszer az 1. generációs ADLS-végpontok támogatásához használja. Az 1. generációs ADLS-hez készült Virtual Network Integration for Azure Data Lake Storage Gen1 a virtuális hálózat és a Azure Active Directory (Azure AD) közötti virtuális hálózati szolgáltatás végpontjának biztonságát használja a hozzáférési jogkivonat további biztonsági jogcímeinek létrehozásához. Ezután e jogcímek használatával hitelesíti a virtuális hálózatot az 1. generációs Data Lake Storage-fiókkal, és engedélyezi a hozzáférést. További információ az [1. generációs VNet-integrációról Azure Data Lake Store](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
-### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Are there any limits on how many VNet service endpoints I can set up from my VNet?
-There is no limit on the total number of VNet service endpoints in a virtual network. For an Azure service resource (such as an Azure Storage account), services may enforce limits on the number of subnets used for securing the resource. The following table shows some example limits: 
+### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Van-e korlátozás arra vonatkozóan, hogy hány VNet szolgáltatás-végpontot állíthatok be a VNet?
+A virtuális hálózatok VNet-végpontok teljes száma nincs korlátozva. Az Azure-szolgáltatási erőforrások (például egy Azure Storage-fiók) esetében a szolgáltatások korlátozhatják az erőforrás biztosításához használt alhálózatok számát. A következő táblázat néhány példát mutat be: 
 
 |||
 |---|---|
-|Azure-szolgáltatás| Limits on VNet rules|
+|Azure-szolgáltatás| VNet szabályok korlátai|
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|
-|Azure KeyVault|    127|
+|Azure kulcstartó|    127|
 |Azure Cosmos DB|   64|
 |Azure Event Hub|   128|
 |Azure Service Bus| 128|
-|Azure Data Lake Store V1|  100|
+|Azure Data Lake Store v1|  100|
  
 >[!NOTE]
-> The limits are subjected to changes at the discretion of the Azure service. Refer to the respective service documentation for services details. 
+> A korlátok az Azure-szolgáltatás belátása szerint változnak. A szolgáltatások részleteiért tekintse meg a vonatkozó szolgáltatási dokumentációt. 
 
 
 

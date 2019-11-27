@@ -17,17 +17,17 @@ ms.locfileid: "74224433"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
-| vCPUs per [subscription](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10,000 |
-| [Coadministrators](../articles/billing-add-change-azure-subscription-administrator.md) per subscription |200 |200 |
-| [Storage accounts](../articles/storage/common/storage-create-storage-account.md) per subscription<sup>2</sup> |100 |100 |
+| vCPU/ [előfizetés](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10,000 |
+| A [rendszergazdák](../articles/billing-add-change-azure-subscription-administrator.md) /előfizetés |200 |200 |
+| [Storage-fiókok](../articles/storage/common/storage-create-storage-account.md) /előfizetés<sup>2</sup> |100 |100 |
 | [Felhőszolgáltatások](../articles/cloud-services/cloud-services-choose-me.md) előfizetésenként |20 |200 |
-| [Local networks](/previous-versions/azure/reference/jj157100(v=azure.100)) per subscription |10 |500 |
-| DNS servers per subscription |9 |100 |
-| Reserved IPs per subscription |20 |100 |
+| [Helyi hálózatok](/previous-versions/azure/reference/jj157100(v=azure.100)) /előfizetés |10 |500 |
+| DNS-kiszolgálók/előfizetés |9 |100 |
+| Fenntartott IP-címek/előfizetés |20 |100 |
 | [Affinitáscsoportok](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) előfizetésenként |256 |256 |
-| Subscription name length (characters) | 64 | 64 |
+| Előfizetés nevének hossza (karakter) | 64 | 64 |
 
-<sup>1</sup>Extra small instances count as one vCPU toward the vCPU limit despite using a partial CPU core.
+<sup>1</sup> Az extra kisméretű példányok egy részleges CPU-mag használata ellenére a vCPU-korlát felé vCPU számítanak.
 
-<sup>2</sup>The storage account limit includes both Standard and Premium storage accounts. 
+<sup>2</sup> A Storage-fiók korlátja a standard és a Premium Storage-fiókokat is tartalmazza. 
 

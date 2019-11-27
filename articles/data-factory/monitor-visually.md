@@ -32,7 +32,7 @@ Az alapértelmezett figyelési nézet a folyamat futtatásának listáját tarta
 | Folyamat neve | A folyamat neve |
 | Műveletek | A folyamat részleteinek megtekintését, megszakítását vagy újrafuttatását lehetővé tevő ikonok |
 | Futtatás indítása | A folyamat futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
-| Duration | Futtatás időtartama (óó: PP: SS) |
+| Időtartam | Futtatás időtartama (óó: PP: SS) |
 | Aktiválta: | A folyamatot elindító trigger neve |
 | status | **Sikertelen**, **sikeres**, **folyamatban**, **megszakítva**vagy **várólistán** lévő |
 | Széljegyzetek | Egy folyamathoz társított szűrhető Címkék  |
@@ -56,7 +56,7 @@ Ha a tevékenységek futtatását szeretné megtekinteni az egyes folyamatokhoz,
 | Tevékenység típusa | A tevékenység típusa, például **Másolás**, **ExecuteDataFlow**vagy **AzureMLExecutePipeline** |
 | Műveletek | Ikonok, amelyekkel megtekintheti a JSON bemeneti adatait, a JSON kimeneti adatait vagy a tevékenységekre vonatkozó részletes figyelési tapasztalatokat | 
 | Futtatás indítása | A tevékenység futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
-| Duration | Futtatás időtartama (óó: PP: SS) |
+| Időtartam | Futtatás időtartama (óó: PP: SS) |
 | status | **Sikertelen**, **sikeres**, **folyamatban**vagy **megszakítva** |
 | Integration Runtime | Integration Runtime a tevékenység futtatása |
 | Felhasználói tulajdonságok | A tevékenység felhasználó által definiált tulajdonságai |

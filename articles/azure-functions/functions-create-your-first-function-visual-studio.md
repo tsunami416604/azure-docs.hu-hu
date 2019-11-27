@@ -14,17 +14,17 @@ ms.locfileid: "74230713"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Az első függvény létrehozása a Visual Studio használatával
 
-Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást.
+Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet vagy közzé kellene tennie egy webalkalmazást.
 
-In this article, you learn how to use Visual Studio 2019 to locally create and test a "hello world" function and then publish it to Azure. This quickstart is designed for Visual Studio 2019. When creating a Functions project using Visual Studio 2017, you must first install the [latest Azure Functions tools](functions-develop-vs.md#check-your-tools-version).
+Ebből a cikkből megtudhatja, hogyan használható a Visual Studio 2019 a "Hello World" függvény helyi létrehozásához és teszteléséhez, majd az Azure-ba való közzétételéhez. Ez a rövid útmutató a Visual Studio 2019-hez készült. Ha functions-projektet hoz létre a Visual Studio 2017 használatával, először telepítenie kell a [legújabb Azure functions eszközöket](functions-develop-vs.md#check-your-tools-version).
 
 ![A függvény által visszaadott localhost válasz a böngészőben](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-To complete this tutorial, you must first install [Visual Studio 2019](https://azure.microsoft.com/downloads/). Make sure that the **Azure development** workload is also installed.
+Az oktatóanyag elvégzéséhez először telepítenie kell a [Visual Studio 2019](https://azure.microsoft.com/downloads/)alkalmazást. Győződjön meg arról, hogy az **Azure-fejlesztési** munkaterhelés is telepítve van.
 
-![Install Visual Studio with the Azure development workload](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+![A Visual Studio telepítése az Azure-fejlesztési számítási feladattal](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,15 +32,15 @@ To complete this tutorial, you must first install [Visual Studio 2019](https://a
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio creates a project and class that contains boilerplate code for the HTTP trigger function type. The `FunctionName` attribute on the method sets the name of the function, which by default is `HttpTrigger`. The `HttpTrigger` attribute specifies that the function is triggered by an HTTP request. A sablonkód elküld egy HTTP-választ, amely tartalmaz egy értéket a kérelem szövegtörzséből vagy a lekérdezési sztringből.
+A Visual Studio létrehoz egy projektet és egy osztályt, amely tartalmazza a HTTP trigger függvény típusának szabványos kódját. A metódus `FunctionName` attribútuma a függvény nevét állítja be, amely alapértelmezés szerint `HttpTrigger`. A `HttpTrigger` attribútum azt adja meg, hogy a függvényt egy HTTP-kérelem indítja el. A sablonkód elküld egy HTTP-választ, amely tartalmaz egy értéket a kérelem szövegtörzséből vagy a lekérdezési sztringből.
 
-You can expand the capabilities of your function using input and output bindings by applying the appropriate attributes to the method. További információkért lásd az [Azure Functions C#-fejlesztői referenciaanyagának](functions-dotnet-class-library.md) [Eseményindítók és kötések](functions-dotnet-class-library.md#triggers-and-bindings) szakaszát.
+A függvény képességeit a bemeneti és kimeneti kötésekkel bővítheti, ha a megfelelő attribútumokat alkalmazza a metódusra. További információkért lásd az [Azure Functions C#-fejlesztői referenciaanyagának](functions-dotnet-class-library.md#triggers-and-bindings) [Eseményindítók és kötések](functions-dotnet-class-library.md) szakaszát.
 
 Most, hogy már létrehozott egy függvényprojektet és egy HTTP-eseményindítóval aktivált függvényt, tesztelheti a helyi számítógépen.
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
-Visual Studio integrates with Azure Functions Core Tools so that you can test your functions locally using the full Functions runtime.  
+A Visual Studio integrálva van Azure Functions Core Tools, így a függvények a teljes functions futtatókörnyezet használatával helyileg is tesztelhető.  
 
 [!INCLUDE [functions-run-function-test-local-vs](../../includes/functions-run-function-test-local-vs.md)]
 
@@ -48,7 +48,7 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
 ## <a name="publish-the-project-to-azure"></a>A projekt közzététele az Azure-ban
 
-A projekt közzétételéhez rendelkeznie kell egy függvényalkalmazással.az Azure-előfizetéséhez. Visual Studio publishing creates a function app for you the first time you publish your project.
+A projekt közzétételéhez rendelkeznie kell egy függvényalkalmazással.az Azure-előfizetéséhez. A Visual Studio Publishing létrehoz egy Function alkalmazást a projekt első közzétételekor.
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
@@ -66,7 +66,7 @@ A projekt közzétételéhez rendelkeznie kell egy függvényalkalmazással.az A
 
 ## <a name="next-steps"></a>Következő lépések
 
-You have used Visual Studio to create and publish a C# function app in Azure with a simple HTTP triggered function. To learn more about developing functions as .NET class libraries, see [Azure Functions C# developer reference](functions-dotnet-class-library.md).
+A Visual Studióval egy egyszerű HTTP-triggerrel C# aktivált függvény használatával hozhat létre és tehet közzé egy Function-alkalmazást az Azure-ban. Ha többet szeretne megtudni a függvények .NET-es kódtáraként való fejlesztéséről, tekintse meg a [Azure functions C# fejlesztői referenciát](functions-dotnet-class-library.md).
 
 > [!div class="nextstepaction"]
-> [Add an Azure Storage queue binding to your function](functions-add-output-binding-storage-queue-vs.md)
+> [Azure Storage-várólista kötésének hozzáadása a függvényhez](functions-add-output-binding-storage-queue-vs.md)

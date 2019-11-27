@@ -15,43 +15,43 @@ ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481662"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Mi az Azure Database for PostgreSQL?
-Azure Database for PostgreSQL is a relational database service in the Microsoft cloud built for developers. It is based on the community version of open-source [PostgreSQL](https://www.postgresql.org/) database engine, and is available in two deployment options: Single Server and Hyperscale (Citus).
+A Azure Database for PostgreSQL egy, a fejlesztők számára készült Microsoft-felhőben található, a Microsoft felhőalapú szolgáltatása. A szolgáltatás a nyílt forráskódú [PostgreSQL](https://www.postgresql.org/) adatbázismotor közösségi verzióján alapul, és két központi telepítési lehetőségben érhető el: egyetlen kiszolgáló és nagy kapacitású (Citus).
 
-## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server
-The Single Server deployment option delivers:
+## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló
+Az egykiszolgálós üzembe helyezési lehetőség a következőket biztosítja:
 
-- Built-in [high availability](concepts-high-availability.md) with no additional cost (99.99% SLA)
+- Beépített [magas rendelkezésre állás](concepts-high-availability.md) további díjszabás nélkül (99,99%-os SLA)
 - Kiszámítható teljesítmény, használatalapú díjszabással
-- [Vertical scale as needed](concepts-pricing-tiers.md) within seconds
-- [Monitoring and alerting](concepts-monitoring.md) to assess your server
-- Nagyvállalati szintű biztonság és megfelelőség
-- [Secured to protect](concepts-security.md) sensitive data at-rest and in-motion
-- [Automatic backups and point-in-time-restore](concepts-business-continuity.md) for up to 35 days
+- [A vertikális skálázás szükség szerint](concepts-pricing-tiers.md) másodpercek alatt
+- [Figyelés és riasztás](concepts-monitoring.md) a kiszolgáló értékeléséhez
+- Vállalati szintű biztonság és megfelelőség
+- [Biztonságos a](concepts-security.md) bizalmas adatok védelme érdekében a nyugalmi állapotban és a mozgásban
+- [Automatikus biztonsági mentések és időponthoz való visszaállítás –](concepts-business-continuity.md) akár 35 napig is
 
 
-Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. They allow you to focus on rapid application development and accelerating your time to market, rather than spending precious time and resources to manage virtual machines and infrastructure. You can continue to develop your application with the open-source tools and platform of your choice, without having to learn new skills.
+Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. Lehetővé teszik az alkalmazások gyors fejlesztését és a piacra kerülési idő felgyorsítását ahelyett, hogy értékes időt és erőforrásokat kellene kitölteni a virtuális gépek és az infrastruktúra kezeléséhez. Az alkalmazást továbbra is kifejlesztheti a kívánt nyílt forráskódú eszközökkel és platformmal, anélkül, hogy új ismereteket kellene megtanulnia.
 
-The Single Server deployment option offers three pricing tiers: Basic, General Purpose, and Memory Optimized. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. See [Pricing tiers](concepts-pricing-tiers.md) for details.
+Az egykiszolgálós üzembe helyezési lehetőség három díjszabási szintet kínál: alapszintű, általános célú és memória optimalizálva. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részletekért tekintse meg a [díjszabási szintet](concepts-pricing-tiers.md) .
 
-## <a name="azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus)
-The Hyperscale (Citus) option horizontally scales queries across multiple machines using sharding. Its query engine parallelizes incoming SQL queries across these servers for faster responses on large datasets. It serves applications that require greater scale and performance, generally workloads that are approaching -- or already exceed -- 100 GB of data.
+## <a name="azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL – nagy kapacitású (Citus)
+A nagy kapacitású (Citus) lehetőség vízszintesen méretezi a lekérdezéseket több gép között a horizontális skálázással. A lekérdezési motor parallelizes a bejövő SQL-lekérdezéseket ezen kiszolgálókon a nagyméretű adatkészletek gyorsabb megválaszolásához. Olyan alkalmazásokat kínál, amelyek nagyobb méretet és teljesítményt igényelnek, és általában a várható munkaterhelések, vagy már meghaladja a-100 GB-ot.
 
-The Hyperscale (Citus) deployment option delivers:
+A nagy kapacitású (Citus) telepítési lehetőség a következőket biztosítja:
 
-- Horizontal scaling across multiple machines using sharding
-- Query parallelization across these servers for faster responses on large datasets
-- Excellent support for multi-tenant applications, real time operational analytics, and high throughput transactional workloads
+- Horizontális skálázás több gépen több szegmensen keresztül
+- Párhuzamos lekérdezése a kiszolgálók között a nagyméretű adatkészletek gyorsabb reagálásához
+- Kiváló támogatás a több-bérlős alkalmazások, a valós idejű operatív elemzések és a nagy teljesítményű tranzakciós számítási feladatok számára
 
-Applications built for PostgreSQL can run distributed queries on Hyperscale (Citus) with standard [connection libraries](./concepts-connection-libraries.md) and minimal changes.
+A PostgreSQL-re épülő alkalmazások [a standard szintű](./concepts-connection-libraries.md) nagy kapacitású (Citus) elosztott lekérdezéseket futtathatnak, és minimális módosításokat hajtanak végre.
 
 ## <a name="contacts"></a>Kapcsolatok
-For any questions or suggestions about working with Azure Database for PostgreSQL, send an email to the Azure Database for PostgreSQL Team ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). This address is for general questions rather than support tickets.
+Ha bármilyen kérdése vagy javaslata van a Azure Database for PostgreSQL használatáról, küldjön egy e-mailt a Azure Database for PostgreSQL csapatnak ([@Ask a PostgreSQL-hez készült Azure db](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)-t). Ez a címe a támogatási jegyek helyett általános kérdésekre szolgál.
 
-In addition, consider these points of contact as appropriate:
-- To contact Azure Support or fix an issue with your account, [file a ticket from the Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Emellett vegye figyelembe az alábbi kapcsolattartási pontokat a megfelelő módon:
+- Ha kapcsolatba szeretne lépni az Azure támogatási szolgálatával, vagy javítsa ki a fiókkal kapcsolatos problémát, vegyen fel [egy jegyet a Azure Portalból](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
 ## <a name="next-steps"></a>Következő lépések
 - Tekintse meg az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/postgresql/) a költségek összehasonlításáért és árkalkulációjáért.
-- Get started by creating your first Azure Database for PostgreSQL [Single Server](./quickstart-create-server-database-portal.md) or [Hyperscale (Citus)](./quickstart-create-hyperscale-portal.md)
+- Első lépésként hozza létre első Azure Database for PostgreSQL [egy kiszolgáló](./quickstart-create-server-database-portal.md) -vagy [nagy kapacitású (Citus)](./quickstart-create-hyperscale-portal.md)
 - Építse fel az első alkalmazását Python, PHP, Ruby, C\#, Java, Node.js nyelven: [Csatlakozási kódtárak](./concepts-connection-libraries.md)

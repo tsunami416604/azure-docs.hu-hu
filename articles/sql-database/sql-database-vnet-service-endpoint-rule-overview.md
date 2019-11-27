@@ -1,6 +1,6 @@
 ---
-title: VNet endpoints and rules for single and pooled databases
-description: Mark a subnet as a Virtual Network service endpoint. Then the endpoint as a virtual network rule to the ACL your Azure SQL Database. You SQL Database then accepts communication from all virtual machines and other nodes on the subnet.
+title: VNet-végpontok és az önálló és a készletezett adatbázisok szabályai
+description: Alhálózat megjelölése Virtual Network szolgáltatási végpontként. Ezt követően a végpontot virtuális hálózati szabályként adja meg a Azure SQL Database hozzáférés-vezérlési listához. Ezután SQL Database a kommunikációt az alhálózaton lévő összes virtuális gépről és más csomópontról.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -18,110 +18,110 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422506"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Use virtual network service endpoints and rules for database servers
+# <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Virtuális hálózati szolgáltatási végpontok és az adatbázis-kiszolgálók szabályainak használata
 
-*Virtual network rules* are one firewall security feature that controls whether the database server for your single databases and elastic pool in Azure [SQL Database](sql-database-technical-overview.md) or for your databases in [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) accepts communications that are sent from particular subnets in virtual networks. This article explains why the virtual network rule feature is sometimes your best option for securely allowing communication to your Azure SQL Database and SQL Data Warehouse.
+A *virtuális hálózati szabályok* egy tűzfal biztonsági funkciója, amely azt szabályozza, hogy az adatbázis-kiszolgáló a különálló adatbázisok és a rugalmas készlet számára az Azure-ban [SQL Database](sql-database-technical-overview.md) vagy az adatbázisok [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) fogad-e kommunikációt a virtuális hálózatok adott alhálózatait küldik. Ebből a cikkből megtudhatja, miért érdemes a virtuális hálózati szabály funkciót időnként biztonságos módon engedélyezni a Azure SQL Database és SQL Data Warehouse.
 
 > [!IMPORTANT]
-> This article applies to Azure SQL server, and to both SQL Database and SQL Data Warehouse databases that are created on the Azure SQL server. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. This article does *not* apply to a **managed instance** deployment in Azure SQL Database because it does not have a service endpoint associated with it.
+> Ez a cikk az Azure SQL Serverre vonatkozik, valamint az Azure SQL Serveren létrehozott SQL Database és SQL Data Warehouse adatbázisokra is. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. Ez a cikk *nem* vonatkozik a **felügyelt példányokra** Azure SQL Database, mert nem rendelkezik hozzá társított szolgáltatás-végponttal.
 
-To create a virtual network rule, there must first be a [virtual network service endpoint][vm-virtual-network-service-endpoints-overview-649d] for the rule to reference.
+Virtuális hálózati szabály létrehozásához először egy [virtuális hálózati szolgáltatás végpontjának][vm-virtual-network-service-endpoints-overview-649d] kell lennie ahhoz, hogy a szabály hivatkozzon.
 
-## <a name="how-to-create-a-virtual-network-rule"></a>How to create a virtual network rule
+## <a name="how-to-create-a-virtual-network-rule"></a>Virtuális hálózati szabály létrehozása
 
-If you only create a virtual network rule, you can skip ahead to the steps and explanation [later in this article](#anchor-how-to-by-using-firewall-portal-59j).
+Ha csak virtuális hálózati szabályt hoz létre, ugorjon a [cikk későbbi részében](#anchor-how-to-by-using-firewall-portal-59j)ismertetett lépésekre és magyarázatra.
 
 <!--<a name="anch-details-about-vnet-rules-38q"/> -->
 
-## <a name="details-about-virtual-network-rules"></a>Details about virtual network rules
+## <a name="details-about-virtual-network-rules"></a>A virtuális hálózati szabályok részletei
 
-This section describes several details about virtual network rules.
+Ez a szakasz a virtuális hálózati szabályokkal kapcsolatos néhány részletet ismerteti.
 
-### <a name="only-one-geographic-region"></a>Only one geographic region
+### <a name="only-one-geographic-region"></a>Csak egy földrajzi régió
 
-Each Virtual Network service endpoint applies to only one Azure region. The endpoint does not enable other regions to accept communication from the subnet.
+Minden Virtual Network szolgáltatási végpont csak egy Azure-régióra vonatkozik. A végpont nem teszi lehetővé más régiók számára, hogy fogadják a kommunikációt az alhálózatból.
 
-Any virtual network rule is limited to the region that its underlying endpoint applies to.
+Bármely virtuális hálózati szabály arra a régióra korlátozódik, amelyre a mögöttes végpont vonatkozik.
 
-### <a name="server-level-not-database-level"></a>Server-level, not database-level
+### <a name="server-level-not-database-level"></a>Kiszolgáló szintű, nem adatbázis-szintű
 
-Each virtual network rule applies to your whole Azure SQL Database server, not just to one particular database on the server. In other words, virtual network rule applies at the server-level, not at the database-level.
+Minden virtuális hálózati szabály a teljes Azure SQL Database-kiszolgálóra vonatkozik, nem csupán egy adott adatbázisra a kiszolgálón. Más szóval a virtuális hálózati szabály a kiszolgáló szintjén, nem pedig az adatbázis szintjén érvényes.
 
-- In contrast, IP rules can apply at either level.
+- Ezzel szemben az IP-szabályok bármelyik szinten alkalmazhatók.
 
-### <a name="security-administration-roles"></a>Security administration roles
+### <a name="security-administration-roles"></a>Biztonsági felügyeleti szerepkörök
 
-There is a separation of security roles in the administration of Virtual Network service endpoints. Action is required from each of the following roles:
+A biztonsági szerepkörök elkülönítése Virtual Network szolgáltatási végpontok felügyelete alatt áll. A következő szerepkörök mindegyike esetében beavatkozásra van szükség:
 
-- **Network Admin:** &nbsp; Turn on the endpoint.
-- **Database Admin:** &nbsp; Update the access control list (ACL) to add the given subnet to the SQL Database server.
+- **Hálózati rendszergazda:** &nbsp; kapcsolja be a végpontot.
+- **Adatbázis-rendszergazda:** &nbsp; a hozzáférés-vezérlési lista (ACL) frissítésével adja hozzá a megadott alhálózatot a SQL Database-kiszolgálóhoz.
 
-*RBAC alternative:*
+*RBAC alternatíva:*
 
-The roles of Network Admin and Database Admin have more capabilities than are needed to manage virtual network rules. Only a subset of their capabilities is needed.
+A hálózati rendszergazda és az adatbázis-rendszergazda szerepkörének több funkciója van, mint amennyi a virtuális hálózati szabályok kezeléséhez szükséges. A képességeinek csak egy részhalmazára van szükség.
 
-You have the option of using [role-based access control (RBAC)][rbac-what-is-813s] in Azure to create a single custom role that has only the necessary subset of capabilities. The custom role could be used instead of involving either the Network Admin or the Database Admin. The surface area of your security exposure is lower if you add a user to a custom role, versus adding the user to the other two major administrator roles.
+Használhat [szerepköralapú hozzáférés-vezérlést (RBAC)][rbac-what-is-813s] az Azure-ban, hogy egyetlen egyéni szerepkört hozzon létre, amely csak a képességek megfelelő részhalmazát használja. Az egyéni szerepkör felhasználható a hálózati rendszergazda vagy az adatbázis-rendszergazda bevonása helyett. Ha egyéni szerepkörhöz ad hozzá felhasználót, és a másik két fő rendszergazdai szerepkörhöz hozzáadja a felhasználót, a biztonsági expozíció felülete alacsonyabb lesz.
 
 > [!NOTE]
-> In some cases the Azure SQL Database and the VNet-subnet are in different subscriptions. In these cases you must ensure the following configurations:
-> - Both subscriptions must be in the same Azure Active Directory tenant.
-> - The user has the required permissions to initiate operations, such as enabling service endpoints and adding a VNet-subnet to the given Server.
-> - Both subscriptions must have the Microsoft.Sql provider registered.
+> Bizonyos esetekben a Azure SQL Database és a VNet különböző előfizetésekben találhatók. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
+> - Mindkét előfizetésnek ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia.
+> - A felhasználó rendelkezik a szükséges engedélyekkel a műveletek elindításához, például a szolgáltatási végpontok engedélyezéséhez és egy VNet-alhálózat hozzáadásához az adott kiszolgálóhoz.
+> - Mindkét előfizetéshez regisztrálni kell a Microsoft. SQL-szolgáltatót.
 
 ## <a name="limitations"></a>Korlátozások
 
-For Azure SQL Database, the virtual network rules feature has the following limitations:
+Azure SQL Database esetében a virtuális hálózati szabályok funkció a következő korlátozásokkal rendelkezik:
 
-- In the firewall for your SQL Database, each virtual network rule references a subnet. All these referenced subnets must be hosted in the same geographic region that hosts the SQL Database.
+- A SQL Database tűzfalában minden egyes virtuális hálózati szabály egy alhálózatra hivatkozik. Az összes hivatkozott alhálózatnak ugyanabban a földrajzi régióban kell lennie, amely a SQL Database üzemelteti.
 
-- Each Azure SQL Database server can have up to 128 ACL entries for any given virtual network.
+- Minden Azure SQL Database-kiszolgáló legfeljebb 128 ACL-bejegyzést tartalmazhat bármely adott virtuális hálózathoz.
 
-- Virtual network rules apply only to Azure Resource Manager virtual networks; and not to [classic deployment model][arm-deployment-model-568f] networks.
+- A virtuális hálózati szabályok csak Azure Resource Manager virtuális hálózatokra érvényesek; és nem a [klasszikus üzembe helyezési modell][arm-deployment-model-568f] hálózatait.
 
-- Turning ON virtual network service endpoints to Azure SQL Database also enables the endpoints for the MySQL and PostgreSQL Azure services. However, with endpoints ON, attempts to connect from the endpoints to your MySQL or PostgreSQL instances may fail.
-  - The underlying reason is that MySQL and PostgreSQL likely do not have a virtual network rule configured. You must configure a virtual network rule for Azure Database for MySQL and PostgreSQL and the connection will succeed.
+- A virtuális hálózati szolgáltatási végpontok bekapcsolásával Azure SQL Database a MySQL és a PostgreSQL Azure-szolgáltatások végpontját is engedélyezi. A-végpontok esetében azonban sikertelen lehet a végpontokról a MySQL-vagy PostgreSQL-példányokhoz való kapcsolódás.
+  - A mögöttes ok az, hogy a MySQL és a PostgreSQL valószínűleg nincs konfigurálva virtuális hálózati szabály. Konfigurálnia kell egy virtuális hálózati szabályt a Azure Database for MySQL és a PostgreSQL-hez, és a kapcsolatok sikeresek lesznek.
 
-- On the firewall, IP address ranges do apply to the following networking items, but virtual network rules do not:
-  - [Site-to-Site (S2S) virtual private network (VPN)][vpn-gateway-indexmd-608y]
-  - On-premises via [ExpressRoute][expressroute-indexmd-744v]
+- A tűzfalon az IP-címtartományok a következő hálózati elemekre vonatkoznak, a virtuális hálózati szabályok azonban nem:
+  - [Helyek közötti (S2S) virtuális magánhálózat (VPN)][vpn-gateway-indexmd-608y]
+  - Helyszíni [ExpressRoute][expressroute-indexmd-744v] -on keresztül
 
-### <a name="considerations-when-using-service-endpoints"></a>Considerations when using Service Endpoints
+### <a name="considerations-when-using-service-endpoints"></a>A szolgáltatási végpontok használatának szempontjai
 
-When using service endpoints for Azure SQL Database, review the following considerations:
+Ha Azure SQL Database szolgáltatási végpontokat használ, tekintse át a következő szempontokat:
 
-- **Outbound to Azure SQL Database Public IPs is required**: Network Security Groups (NSGs) must be opened to Azure SQL Database IPs to allow connectivity. You can do this by using NSG [Service Tags](../virtual-network/security-overview.md#service-tags) for Azure SQL Database.
+- **Azure SQL Database nyilvános IP-címekre való kimenő forgalom szükséges**: hálózati biztonsági csoportokat (NSG) kell megnyitni ahhoz, hogy a kapcsolat lehetővé váljon a Azure SQL Database IP-címek számára. Ezt a Azure SQL Database NSG- [szolgáltatásának címkéi](../virtual-network/security-overview.md#service-tags) segítségével teheti meg.
 
 ### <a name="expressroute"></a>ExpressRoute
 
-If you are using [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) from your premises, for public peering or Microsoft peering, you will need to identify the NAT IP addresses that are used. Nyilvános társviszony-létesítés esetén alapértelmezés szerint minden ExpressRoute-kapcsolatcsoport két NAT IP-címet használ, amelyeket akkor alkalmaz az Azure-szolgáltatások forgalmára, amikor a forgalom belép a Microsoft Azure gerinchálózatába. Microsoft-társviszony-létesítés esetén a használt NAT IP-cím(ek)et vagy az ügyfél vagy a szolgáltató adja meg. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezeket a nyilvános IP-címeket az erőforrás IP-tűzfalának beállításai között. A nyilvános társviszony-létesítési ExpressRoute-kapcsolatcsoport IP-címeinek megkereséséhez [hozzon létre egy támogatási jegyet az ExpressRoute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon. További információk az [ExpressRoute NAT nyilvános és Microsoft-társviszony-létesítéséről](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
+Ha a [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -t használja a telephelyéről, a nyilvános és a Microsoft-partnerek számára, meg kell határoznia a használt NAT IP-címeket. Nyilvános társviszony-létesítés esetén alapértelmezés szerint minden ExpressRoute-kapcsolatcsoport két NAT IP-címet használ, amelyeket akkor alkalmaz az Azure-szolgáltatások forgalmára, amikor a forgalom belép a Microsoft Azure gerinchálózatába. Microsoft-társviszony-létesítés esetén a használt NAT IP-cím(ek)et vagy az ügyfél vagy a szolgáltató adja meg. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezeket a nyilvános IP-címeket az erőforrás IP-tűzfalának beállításai között. A nyilvános társviszony-létesítési ExpressRoute-kapcsolatcsoport IP-címeinek megkereséséhez [hozzon létre egy támogatási jegyet az ExpressRoute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon. További információk az [ExpressRoute NAT nyilvános és Microsoft-társviszony-létesítéséről](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
   
-To allow communication from your circuit to Azure SQL Database, you must create IP network rules for the public IP addresses of your NAT.
+Ha engedélyezni szeretné az áramkörről a Azure SQL Database felé irányuló kommunikációt, létre kell hoznia az IP-hálózati szabályokat a NAT nyilvános IP-címeihez.
 
 <!--
 FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deployment model'.
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
-## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Impact of using VNet Service Endpoints with Azure storage
+## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Az VNet szolgáltatásbeli végpontok használatának következményei az Azure Storage-ban
 
-Azure Storage has implemented the same feature that allows you to limit connectivity to your Azure Storage account. If you choose to use this feature with an Azure Storage account that is being used by Azure SQL Server, you can run into issues. Next is a list and discussion of Azure SQL Database and Azure SQL Data Warehouse features that are impacted by this.
+Az Azure Storage ugyanazt a funkciót implementálta, amely lehetővé teszi az Azure Storage-fiókhoz való csatlakozás korlátozását. Ha úgy dönt, hogy ezt a funkciót az Azure SQL Server által használt Azure Storage-fiókkal használja, akkor a problémákba ütközik. A következő lista a Azure SQL Database és Azure SQL Data Warehouse azon szolgáltatásainak listáját és megvitatását tartalmazza, amelyekre hatással van.
 
-### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL Data Warehouse PolyBase
+### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL Data Warehouse alapanyag
 
-PolyBase is commonly used to load data into Azure SQL Data Warehouse from Azure Storage accounts. If the Azure Storage account that you are loading data from limits access only to a set of VNet-subnets, connectivity from PolyBase to the Account will break. For enabling both PolyBase import and export scenarios with Azure SQL Data Warehouse connecting to Azure Storage that's secured to VNet, follow the steps indicated below:
+A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseba való betöltésére használatos. Ha az Azure Storage-fiók, amelyből az adatok betöltése csak VNet-alhálózatok számára történik, akkor a rendszer az alapszintű kapcsolaton keresztül kapcsolódik a fiókhoz. Az alábbi lépéseket követve engedélyezheti a többek között a VNet védett Azure Storage-hoz való csatlakozást Azure SQL Data Warehouse a Base importálási és exportálási forgatókönyveit:
 
 #### <a name="prerequisites"></a>Előfeltételek
 
-- Install Azure PowerShell using this [guide](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- If you have a general-purpose v1 or blob storage account, you must first upgrade to general-purpose v2 using this [guide](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-- You must have **Allow trusted Microsoft services to access this storage account** turned on under Azure Storage account **Firewalls and Virtual networks** settings menu. Refer to this [guide](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) for more information.
+- Azure PowerShell telepítése az [útmutató](https://docs.microsoft.com/powershell/azure/install-az-ps)segítségével.
+- Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)használatával kell frissítenie az általános célú v2-re.
+- Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
 
 #### <a name="steps"></a>Lépések
 
-1. In PowerShell, **register your Azure SQL Server** hosting your Azure SQL Data Warehouse instance with Azure Active Directory (AAD):
+1. A PowerShellben **regisztrálja Azure-SQL Server** a Azure SQL Data Warehouse-példány üzemeltetése Azure Active Directory (HRE) használatával:
 
    ```powershell
    Connect-AzAccount
@@ -129,159 +129,159 @@ PolyBase is commonly used to load data into Azure SQL Data Warehouse from Azure 
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-1. Create a **general-purpose v2 Storage Account** using this [guide](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+1. Hozzon létre egy **általános célú v2 Storage-fiókot** az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)segítségével.
 
    > [!NOTE]
-   > - If you have a general-purpose v1 or blob storage account, you must **first upgrade to v2** using this [guide](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-   > - For known issues with Azure Data Lake Storage Gen2, please refer to this [guide](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
+   > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)segítségével.
+   > - Azure Data Lake Storage Gen2 kapcsolatos ismert problémák esetén tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1. Under your storage account, navigate to **Access Control (IAM)** , and click **Add role assignment**. Assign **Storage Blob Data Contributor** RBAC role to your Azure SQL Server hosting your Azure SQL Data Warehouse which you've registered with Azure Active Directory (AAD) as in step#1.
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendelje hozzá a **Storage blob-adatközreműködői** RBAC szerepkört az Azure-SQL Server a Azure SQL Data Warehouse, amelyet az 1. lépésben regisztrált Azure Active Directory (HRE).
 
    > [!NOTE]
-   > Only members with Owner privilege can perform this step. For various built-in roles for Azure resources, refer to this [guide](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
-1. **Polybase connectivity to the Azure Storage account:**
+1. **Alapszintű kapcsolat az Azure Storage-fiókkal:**
 
-   1. Create a database **[master key](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** if you haven't created one earlier:
+   1. Hozzon létre egy adatbázis- **[főkulcsot](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** , ha még nem hozott létre egy korábbiat:
 
        ```sql
        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
        ```
 
-   1. Create database scoped credential with **IDENTITY = 'Managed Service Identity'** :
+   1. Adatbázis-hatókörű hitelesítő adat létrehozása az **Identity = ' Managed Service Identity '** használatával:
 
        ```sql
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
        ```
 
        > [!NOTE]
-       > - There is no need to specify SECRET with Azure Storage access key because this mechanism uses [Managed Identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) under the covers.
-       > - IDENTITY name should be **'Managed Service Identity'** for PolyBase connectivity to work with Azure Storage account secured to VNet.
+       > - Nincs szükség a titkos kulcs megadására az Azure Storage-hozzáférési kulccsal, mert ez a mechanizmus [felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) használ a borítók alatt.
+       > - Az identitás nevének **"Managed Service Identity"** kell lennie a VNet által védett Azure Storage-fiókkal való együttműködéshez.
 
-   1. Create external data source with abfss:// scheme for connecting to your general-purpose v2 storage account using PolyBase:
+   1. Hozzon létre egy külső adatforrást a abfss://sémával az általános célú v2 Storage-fiókhoz való csatlakozáshoz a következő paranccsal:
 
        ```SQL
        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
        ```
 
        > [!NOTE]
-       > - If you already have external tables associated with general-purpose v1 or blob storage account, you should first drop those external tables and then drop corresponding external data source. Then create external data source with abfss:// scheme connecting to general-purpose v2 storage account as above and re-create all the external tables using this new external data source. You could use [Generate and Publish Scripts Wizard](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) to generate create-scripts for all the external tables for ease.
-       > - For more information on abfss:// scheme, refer to this [guide](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
-       > - For more information on CREATE EXTERNAL DATA SOURCE, refer to this [guide](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
+       > - Ha már rendelkezik az általános célú v1-vagy blob Storage-fiókhoz társított külső táblákkal, először el kell dobnia ezeket a külső táblákat, majd el kell dobnia a megfelelő külső adatforrást. Ezután hozzon létre egy külső adatforrást az általános célú v2 Storage-fiókhoz csatlakozó abfss://séma használatával, és hozza létre újra az összes külső táblát az új külső adatforrással. Használhatja a [Parancsfájlok létrehozása és közzététele varázslót](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) a Create-scriptek létrehozásához az összes külső táblázat számára a könnyebb kezelhetőség érdekében.
+       > - A abfss://sémával kapcsolatos további információkért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
+       > - A külső ADATFORRÁS LÉTREHOZÁSával kapcsolatos további információkért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
 
-   1. Query as normal using [external tables](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
+   1. Lekérdezés normál módon [külső táblák](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)használatával.
 
-### <a name="azure-sql-database-blob-auditing"></a>Azure SQL Database Blob Auditing
+### <a name="azure-sql-database-blob-auditing"></a>BLOB-naplózás Azure SQL Database
 
-Blob auditing pushes audit logs to your own storage account. If this storage account uses the VNet Service endpoints feature then connectivity from Azure SQL Database to the storage account will break.
+A blob-naplózás leküldi a naplókat a saját Storage-fiókjába. Ha ez a Storage-fiók a VNet szolgáltatás-végpontok funkciót használja, akkor a Azure SQL Database és a Storage-fiók közötti kapcsolat megszakad.
 
-## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Adding a VNet Firewall rule to your server without turning On VNet Service Endpoints
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNet-tűzfalszabály hozzáadása a kiszolgálóhoz a VNet szolgáltatás végpontjai bekapcsolása nélkül
 
-Long ago, before this feature was enhanced, you were required to turn VNet service endpoints On before you could implement a live VNet rule in the Firewall. The endpoints related a given VNet-subnet to an Azure SQL Database. But now as of January 2018, you can circumvent this requirement by setting the **IgnoreMissingVNetServiceEndpoint** flag.
+Régen a funkció továbbfejlesztése előtt be kellett kapcsolni a VNet szolgáltatás-végpontokat, mielőtt megvalósítani lehetne az élő VNet-szabályt a tűzfalon. Egy adott VNet-alhálózathoz kapcsolódó végpontok egy Azure SQL Database. Most azonban január 2018-én megkerülheti ezt a követelményt a **IgnoreMissingVNetServiceEndpoint** jelző beállításával.
 
-Merely setting a Firewall rule does not help secure the server. You must also turn VNet service endpoints On for the security to take effect. When you turn service endpoints On, your VNet-subnet experiences downtime until it completes the transition from Off to On. This is especially true in the context of large VNets. You can use the **IgnoreMissingVNetServiceEndpoint** flag to reduce or eliminate the downtime during transition.
+Egy tűzfalszabály beállítása nem segít a kiszolgáló biztonságossá tételében. A VNet szolgáltatás-végpontokat is be kell kapcsolni a biztonság érvénybe léptetéséhez. Ha bekapcsolja a szolgáltatási végpontokat, a VNet-alhálózat az állásidőt, amíg be nem fejeződik a kikapcsolás és a közötti átmenet. Ez különösen igaz a nagyméretű virtuális hálózatok kontextusában. A **IgnoreMissingVNetServiceEndpoint** jelzővel csökkentheti vagy törölheti az állásidőt az áttérés során.
 
-You can set the **IgnoreMissingVNetServiceEndpoint** flag by using PowerShell. For details, see [PowerShell to create a Virtual Network service endpoint and rule for Azure SQL Database][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
+A **IgnoreMissingVNetServiceEndpoint** jelzőt a PowerShell használatával állíthatja be. Részletekért lásd: [PowerShell Virtual Network szolgáltatási végpont és szabály létrehozása Azure SQL Databasehoz][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
-## <a name="errors-40914-and-40615"></a>Errors 40914 and 40615
+## <a name="errors-40914-and-40615"></a>40914 és 40615 hibák
 
-Connection error 40914 relates to *virtual network rules*, as specified on the Firewall pane in the Azure portal. Error 40615 is similar, except it relates to *IP address rules* on the Firewall.
+A 40914-es kapcsolati hiba a Azure Portal tűzfal ablaktábláján megadott *virtuális hálózati szabályokra*vonatkozik. A 40615-es hiba hasonló, azzal a különbséggel, hogy a tűzfal *IP-címeire vonatkozó szabályokra* vonatkozik.
 
-### <a name="error-40914"></a>Error 40914
+### <a name="error-40914"></a>40914-es hiba
 
-*Message text:* Cannot open server ' *[server-name]* ' requested by the login. Client is not allowed to access the server.
+*Üzenet szövege:* Nem nyitható meg a bejelentkezés által kért " *[Server-Name]* " kiszolgáló. Az ügyfél nem jogosult a kiszolgálóhoz való hozzáférésre.
 
-*Error description:* The client is in a subnet that has virtual network server endpoints. De az Azure SQL-adatbáziskiszolgáló nem rendelkezik olyan virtuális hálózati szabállyal, amely jogosultságot ad az alhálózatnak az SQL-adatbázissal való kommunikációra.
+*Hiba leírása:* Az ügyfél olyan alhálózatban található, amely virtuális hálózati kiszolgáló-végpontokkal rendelkezik. De az Azure SQL-adatbáziskiszolgáló nem rendelkezik olyan virtuális hálózati szabállyal, amely jogosultságot ad az alhálózatnak az SQL-adatbázissal való kommunikációra.
 
-*Error resolution:* On the Firewall pane of the Azure portal, use the virtual network rules control to [add a virtual network rule](#anchor-how-to-by-using-firewall-portal-59j) for the subnet.
+*Hiba feloldása:* A Azure Portal tűzfal paneljén a virtuális hálózati szabályok vezérlőelem használatával [adjon hozzá egy virtuális hálózati szabályt](#anchor-how-to-by-using-firewall-portal-59j) az alhálózathoz.
 
-### <a name="error-40615"></a>Error 40615
+### <a name="error-40615"></a>40615-es hiba
 
-*Message text:* Cannot open server '{0}' requested by the login. Client with IP address '{1}' is not allowed to access the server.
+*Üzenet szövege:* Nem nyitható meg a bejelentkezés által kért "{0}" kiszolgáló. A (z) "{1}" IP-címmel rendelkező ügyfél nem jogosult a kiszolgálóhoz való hozzáférésre.
 
-*Error description:* The client is trying to connect from an IP address that is not authorized to connect to the Azure SQL Database server. A kiszolgáló tűzfalán nincs olyan IP-cím-szabály, amely engedélyezné, hogy az adott IP-címről ügyfelek kommunikáljanak az SQL Database-zel.
+*Hiba leírása:* Az ügyfél olyan IP-címről próbál csatlakozni, amely nem rendelkezik jogosultsággal a Azure SQL Database-kiszolgálóhoz való csatlakozáshoz. A kiszolgáló tűzfalán nincs olyan IP-cím-szabály, amely engedélyezné, hogy az adott IP-címről ügyfelek kommunikáljanak az SQL Database-zel.
 
-*Error resolution:* Enter the client's IP address as an IP rule. Ezt az Azure Portal Tűzfal panelén végezheti el.
+*Hiba feloldása:* Adja meg az ügyfél IP-címét IP-szabályként. Ezt az Azure Portal Tűzfal panelén végezheti el.
 
 <a name="anchor-how-to-by-using-firewall-portal-59j" />
 
-## <a name="portal-can-create-a-virtual-network-rule"></a>Portal can create a virtual network rule
+## <a name="portal-can-create-a-virtual-network-rule"></a>A portál létrehozhat egy virtuális hálózati szabályt
 
-This section illustrates how you can use the [Azure portal][http-azure-portal-link-ref-477t] to create a *virtual network rule* in your Azure SQL Database. The rule tells your SQL Database to accept communication from a particular subnet that has been tagged as being a *Virtual Network service endpoint*.
+Ez a szakasz azt szemlélteti, hogyan használható a [Azure Portal][http-azure-portal-link-ref-477t] egy *virtuális hálózati szabály* létrehozásához a Azure SQL Databaseban. A szabály közli a SQL Database, hogy fogadja a kommunikációt egy adott alhálózatról, amely *Virtual Network szolgáltatási végpontként*van megjelölve.
 
 > [!NOTE]
-> If you intend to add a service endpoint to the VNet firewall rules of your Azure SQL Database server, first ensure that service endpoints are turned On for the subnet.
+> Ha szolgáltatási végpontot szeretne hozzáadni a Azure SQL Database-kiszolgáló VNet tűzfalszabályok számára, először győződjön meg arról, hogy a szolgáltatási végpontok be vannak kapcsolva az alhálózathoz.
 >
-> If service endpoints are not turned on for the subnet, the portal asks you to enable them. Click the **Enable** button on the same blade on which you add the rule.
+> Ha a szolgáltatási végpontok nincsenek bekapcsolva az alhálózathoz, a portál felszólítja, hogy engedélyezze őket. Kattintson az **Engedélyezés** gombra ugyanazon a panelen, amelyen a szabályt hozzáadja.
 
-## <a name="powershell-alternative"></a>PowerShell alternative
+## <a name="powershell-alternative"></a>PowerShell-alternatíva
 
-A script can also create virtual network rules using PowerShell cmdlet **New-AzSqlServerVirtualNetworkRule** or [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). If interested, see [PowerShell to create a Virtual Network service endpoint and rule for Azure SQL Database][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
+A parancsfájlok virtuális hálózati szabályokat is létrehozhatnak a **New-AzSqlServerVirtualNetworkRule PowerShell-** parancsmag vagy [az az Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create)paranccsal. Ha érdeklik, tekintse meg [a PowerShellt, és hozzon létre egy Virtual Network szolgáltatási végpontot és szabályt a Azure SQL Databasehoz][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
-## <a name="rest-api-alternative"></a>REST API alternative
+## <a name="rest-api-alternative"></a>REST API alternatív megoldás
 
-Internally, the PowerShell cmdlets for SQL VNet actions call REST APIs. You can call the REST APIs directly.
+Belsőleg a PowerShell-parancsmagok az SQL VNet műveleteihez REST API-kat hívnak. A REST API-kat közvetlenül is meghívhatja.
 
-- [Virtual Network Rules: Operations][rest-api-virtual-network-rules-operations-862r]
+- [Virtual Network szabályok: műveletek][rest-api-virtual-network-rules-operations-862r]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-You must already have a subnet that is tagged with the particular Virtual Network service endpoint *type name* relevant to Azure SQL Database.
+Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network szolgáltatás végpontjának Azure SQL Databasehoz tartozó *nevét adja* meg.
 
-- The relevant endpoint type name is **Microsoft.Sql**.
-- If your subnet might not be tagged with the type name, see [Verify your subnet is an endpoint][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100].
+- A megfelelő végpont-típus neve a **Microsoft. SQL**.
+- Ha az alhálózat nem címkézhető a típus nevével, tekintse [meg az alhálózat ellenőrzése végpontot][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100].
 
 <a name="a-portal-steps-for-vnet-rule-200" />
 
-## <a name="azure-portal-steps"></a>Azure portal steps
+## <a name="azure-portal-steps"></a>Azure Portal lépések
 
-1. Jelentkezzen be az [Azure portálra][http-azure-portal-link-ref-477t].
+1. Jelentkezzen be az [Azure Portal][http-azure-portal-link-ref-477t].
 
-2. Then navigate the portal to **SQL servers** &gt; **Firewall / Virtual Networks**.
+2. Ezután navigáljon a portálon az **SQL-kiszolgálók** &gt; **tűzfal/virtuális hálózatok**elemre.
 
-3. Set the **Allow access to Azure services** control to OFF.
+3. Állítsa be az **Azure-szolgáltatások hozzáférés engedélyezése** a kikapcsoláshoz lehetőséget.
 
     > [!IMPORTANT]
-    > If you leave the control set to ON, your Azure SQL Database server accepts communication from any subnet inside the Azure boundary i.e. originating from one of the IP addresses that is recognized as those within ranges defined for Azure data centers. Leaving the control set to ON might be excessive access from a security point of view. The Microsoft Azure Virtual Network service endpoint feature, in coordination with the virtual network rule feature of SQL Database, together can reduce your security surface area.
+    > Ha a vezérlőt a be értékre állítja, akkor a Azure SQL Database-kiszolgáló minden olyan IP-címről érkező kommunikációt fogad, amely az Azure-adatközpontok számára meghatározott tartományon belül ismert. Ha a vezérlőt a be értékre állítja, előfordulhat, hogy a biztonsági szempontból túlságosan nagy a hozzáférés. A Microsoft Azure Virtual Network szolgáltatási végpont funkciója, amely a SQL Database virtuális hálózati szabály funkciójával együttműködve csökkenti a biztonsági felületét.
 
-4. Click the **+ Add existing** control, in the **Virtual networks** section.
+4. Kattintson a **+ meglévő vezérlő hozzáadása** lehetőségre a **Virtual Networks (virtuális hálózatok** ) szakaszban.
 
-    ![Click add existing (subnet endpoint, as a SQL rule).][image-portal-firewall-vnet-add-existing-10-png]
+    ![Kattintson a meglévő hozzáadása (alhálózat végpontja SQL-szabályként) elemre.][image-portal-firewall-vnet-add-existing-10-png]
 
-5. In the new **Create/Update** pane, fill in the controls with the names of your Azure resources.
+5. Az új **Létrehozás/frissítés** panelen töltse ki a vezérlőket az Azure-erőforrások neveivel.
 
     > [!TIP]
-    > You must include the correct **Address prefix** for your subnet. You can find the value in the portal.
-    > Navigate **All resources** &gt; **All types** &gt; **Virtual networks**. The filter displays your virtual networks. Click your virtual network, and then click **Subnets**. The **ADDRESS RANGE** column has the Address prefix you need.
+    > Meg kell adnia az alhálózat helyes **címének előtagját** . Az értéket a portálon találja.
+    > Navigáljon **minden erőforráshoz** **&gt;** &gt; **virtuális hálózatokhoz**. A szűrő megjeleníti a virtuális hálózatokat. Kattintson a virtuális hálózatra, majd az **alhálózatok**elemre. A **címtartomány** oszlopban a szükséges előtag szerepel.
 
-    ![Fill in fields for new rule.][image-portal-firewall-create-update-vnet-rule-20-png]
+    ![Adja meg a mezőket az új szabályhoz.][image-portal-firewall-create-update-vnet-rule-20-png]
 
-6. Click the **OK** button near the bottom of the pane.
+6. Kattintson a panel alján található **OK** gombra.
 
-7. See the resulting virtual network rule on the firewall pane.
+7. Tekintse meg az eredményül kapott virtuális hálózati szabályt a tűzfal ablaktáblán.
 
-    ![See the new rule, on the firewall pane.][image-portal-firewall-vnet-result-rule-30-png]
+    ![Tekintse meg az új szabályt a tűzfal ablaktáblán.][image-portal-firewall-vnet-result-rule-30-png]
 
 > [!NOTE]
-> The following statuses or states apply to the rules:
-> - **Ready:** Indicates that the operation that you initiated has Succeeded.
-> - **Failed:** Indicates that the operation that you initiated has Failed.
-> - **Deleted:** Only applies to the Delete operation, and indicates that the rule has been deleted and no longer applies.
-> - **InProgress:** Indicates that the operation is in progress. The old rule applies while the operation is in this state.
+> A következő állapotok vagy állapotok érvényesek a szabályokra:
+> - **Kész:** Azt jelzi, hogy az elindított művelet sikeresen befejeződött.
+> - **Sikertelen:** Azt jelzi, hogy az Ön által kezdeményezett művelet meghiúsult.
+> - **Törölve:** Csak a törlési műveletre vonatkozik, és azt jelzi, hogy a szabály törölve lett, és már nem érvényes.
+> - **Inprogress:** Azt jelzi, hogy a művelet folyamatban van. A régi szabály akkor érvényes, ha a művelet ebben az állapotban van.
 
 <a name="anchor-how-to-links-60h" />
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-- [Azure virtual network service endpoints][vm-virtual-network-service-endpoints-overview-649d]
-- [Azure SQL Database server-level and database-level firewall rules][sql-db-firewall-rules-config-715d]
+- [Azure Virtual Network szolgáltatásbeli végpontok][vm-virtual-network-service-endpoints-overview-649d]
+- [A kiszolgáló-és adatbázis-szintű tűzfalszabályok Azure SQL Database][sql-db-firewall-rules-config-715d]
 
-The virtual network rule feature for Azure SQL Database became available in late September 2017.
+A Azure SQL Database virtuális hálózati szabály funkciója a 2017 szeptember végén elérhetővé vált.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Use PowerShell to create a virtual network service endpoint, and then a virtual network rule for Azure SQL Database.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
-- [Virtual Network Rules: Operations][rest-api-virtual-network-rules-operations-862r] with REST APIs
+- [A PowerShell használatával hozzon létre egy virtuális hálózati szolgáltatási végpontot, majd egy virtuális hálózati szabályt a Azure SQL Databasehoz.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
+- [Virtual Network szabályok:][rest-api-virtual-network-rules-operations-862r] a REST API-kkal végzett műveletek
 
 <!-- Link references, to images. -->
 [image-portal-firewall-vnet-add-existing-10-png]: media/sql-database-vnet-service-endpoint-rule-overview/portal-firewall-vnet-add-existing-10.png

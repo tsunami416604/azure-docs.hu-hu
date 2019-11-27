@@ -1,5 +1,5 @@
 ---
-title: Create a function in Azure triggered by Blob storage
+title: BLOB Storage által aktivált függvény létrehozása az Azure-ban
 description: Használja az Azure Functions szolgáltatást olyan kiszolgáló nélküli függvények létrehozására, amelyeket az Azure Blob-tárolóba felvett elemek hívnak meg.
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.topic: quickstart
@@ -35,7 +35,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 ## <a name="create-a-blob-storage-triggered-function"></a>A blobtároló által aktivált függvény létrehozása
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények+ elem melletti**  gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
 
    ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-portal.png)
 

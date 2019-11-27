@@ -84,7 +84,7 @@ Hozzon létre egy új erőforráscsoportot (hagyja ki ezt a lépést, ha egy meg
 New-AzResourceGroup -Name appgw-rg -location "West US"
 ```
 
-Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport megadjon egy helyet. Ez szolgál az erőforráscsoport erőforrásainak alapértelmezett helyeként. Győződjön meg arról, hogy az Application Gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot használja.
+Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport adjon meg egy helyet. Ez szolgál az erőforráscsoport erőforrásainak alapértelmezett helyeként. Győződjön meg arról, hogy az Application Gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot használja.
 
 Az előző példában létrehoztunk egy "appgw-RG" nevű erőforráscsoportot és a "West US" helyet.
 

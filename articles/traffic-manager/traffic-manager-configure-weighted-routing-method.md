@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Configure weighted round-robin traffic routing with Azure Traffic Manager
-description: This tutorial explains how to load balance traffic using a round-robin method in Traffic Manager
+title: Oktatóanyag – súlyozott Round-Robin forgalom útválasztásának konfigurálása az Azure Traffic Manager
+description: Ez az oktatóanyag azt ismerteti, hogyan lehet terheléselosztást használni a Traffic Manager egy ciklikus multiplexelés használatával.
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -19,38 +19,38 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422769"
 ---
-# <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Tutorial: Configure the weighted traffic routing method in Traffic Manager
+# <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Oktatóanyag: a súlyozott forgalom útválasztási módszerének konfigurálása Traffic Manager
 
-A common traffic routing method pattern is to provide a set of identical endpoints, which include cloud services and websites, and send traffic to each equally. The following steps outline how to configure this type of traffic routing method.
+A közös forgalom-útválasztási módszer minta az azonos végpontok készletének biztosítása, amely magában foglalja a Cloud Servicest és a webhelyeket, valamint a forgalmat egyaránt továbbítja. Az alábbi lépések azt ismertetik, hogyan konfigurálható az ilyen típusú forgalom-útválasztási módszer.
 
 > [!NOTE]
-> Azure Web App already provides round-robin load balancing functionality for websites within an Azure Region (which may comprise multiple datacenters). Traffic Manager allows you to distribute traffic across websites in different datacenters.
+> Az Azure-webalkalmazás már az Azure-régión belüli (több adatközpontot is tartalmazó) webhelyekhez biztosít ciklikusan részletes terheléselosztási funkciókat. Traffic Manager lehetővé teszi a forgalom terjesztését különböző adatközpontokban lévő webhelyek között.
 
-## <a name="to-configure-the-weighted-traffic-routing-method"></a>To configure the weighted traffic routing method
+## <a name="to-configure-the-weighted-traffic-routing-method"></a>A súlyozott forgalom útválasztási módszerének konfigurálása
 
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). 
-2. In the portal’s search bar, search for the **Traffic Manager profiles** and then click the profile name that you want to configure the routing method for.
-3. In the **Traffic Manager profile** blade, verify that both the cloud services and websites that you want to include in your configuration are present.
-4. In the **Settings** section, click **Configuration**, and in the **Configuration** blade, complete as follows:
-    1. For **traffic routing method settings**, verify that the traffic routing method is **Weighted**. If it is not, click **Weighted** from the dropdown list.
-    2. Set the **Endpoint monitor settings** identical for all every endpoint within this profile as follows:
-        1. Select the appropriate **Protocol**, and specify the **Port** number. 
-        2. For **Path** type a forward slash */* . To monitor endpoints, you must specify a path and filename. A forward slash "/" is a valid entry for the relative path and implies that the file is in the root directory (default).
-        3. At the top of the page, click **Save**.
-5. Test the changes in your configuration as follows:
-    1.  In the portal’s search bar, search for the Traffic Manager profile name and click the Traffic Manager profile in the results that the displayed.
-    2.  In the **Traffic Manager** profile blade, click **Overview**.
-    3.  The **Traffic Manager profile** blade displays the DNS name of your newly created Traffic Manager profile. This can be used by any clients (for example,by navigating to it using a web browser) to get routed to the right endpoint as determined by the routing type. In this case all requests are routed each endpoint in a round-robin fashion.
-6. Once your Traffic Manager profile is working, edit the DNS record on your authoritative DNS server to point your company domain name to the Traffic Manager domain name.
+2. A portál keresési sávján keresse meg a **Traffic Manager profilokat** , majd kattintson arra a profil nevére, amelyre az útválasztási módszert konfigurálni kívánja.
+3. A **Traffic Manager profil** panelen ellenőrizze, hogy a konfigurációban szerepeltetni kívánt Cloud Services és websites is megtalálható-e.
+4. A **Beállítások** szakaszban kattintson a **konfiguráció**elemre, majd a **konfiguráció** panelen hajtsa végre a következő lépéseket:
+    1. A **forgalom-útválasztási módszer beállításainál**ellenőrizze, hogy a forgalmi útválasztási módszer **súlyozott**-e. Ha nem, kattintson a legördülő lista **súlyozása** elemre.
+    2. A következő módon állítsa be a profil összes végpontján megegyező **Endpoint monitor beállításait** :
+        1. Válassza ki a megfelelő **protokollt**, és adja meg a **portszámot** . 
+        2. Az **elérési út** mezőbe írja be a perjel */* . A végpontok figyeléséhez meg kell adnia egy elérési utat és egy fájlnevet. A "/" perjel a relatív elérési útra érvényes bejegyzés, amely azt jelenti, hogy a fájl a gyökérkönyvtárban van (alapértelmezés).
+        3. Kattintson a lap tetején található **Mentés**gombra.
+5. Tesztelje a konfiguráció módosításait a következőképpen:
+    1.  A portál keresési sávjában keressen rá a Traffic Manager profilnév nevére, és kattintson a Traffic Manager profilra a megjelenített eredmények között.
+    2.  A **Traffic Manager** profil panelen kattintson az **Áttekintés**elemre.
+    3.  A **Traffic Manager profil** panel az újonnan létrehozott Traffic Manager-profil DNS-nevét jeleníti meg. Ezt bármely ügyfél használhatja (például a böngésző használatával történő navigálással), hogy a jobb oldali végpontra irányítsa át az útválasztási típus alapján. Ebben az esetben az összes kérelem minden végpontot ciklikus multiplexelés útján irányít.
+6. Ha a Traffic Manager-profilja működik, szerkessze a DNS-rekordot a mérvadó DNS-kiszolgálón, hogy a vállalat tartománynevét a Traffic Manager tartománynevére mutassa.
 
-![Configuring weighted traffic routing method using Traffic Manager][1]
+![Súlyozott forgalom-útválasztási módszer konfigurálása Traffic Manager használatával][1]
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn about [priority traffic routing method](traffic-manager-configure-priority-routing-method.md).
-- Learn about [performance traffic routing method](traffic-manager-configure-performance-routing-method.md).
+- Ismerje meg a [prioritási forgalom útválasztási módszerét](traffic-manager-configure-priority-routing-method.md).
+- A [teljesítmény-forgalom útválasztási módszerének](traffic-manager-configure-performance-routing-method.md)megismerése.
 - További információ a [földrajzi útválasztási metódusról](traffic-manager-configure-geographic-routing-method.md).
-- Learn how to [test Traffic Manager settings](traffic-manager-testing-settings.md).
+- Ismerje meg, hogyan [tesztelheti Traffic Manager beállításait](traffic-manager-testing-settings.md).
 
 <!--Image references-->
 [1]: ./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-routing-method.png

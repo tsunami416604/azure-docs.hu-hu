@@ -1,5 +1,5 @@
 ---
-title: Create a function that runs on a schedule in Azure
+title: Azure-beli ütemterven futó függvény létrehozása
 description: Megtudhatja, hogyan hozhat olyan függvényt az Azure-ban, amely az Ön által meghatározott ütemezés alapján fut.
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: quickstart
@@ -14,7 +14,7 @@ ms.locfileid: "74227173"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Időzítő által aktivált függvény létrehozása az Azure-ban
 
-Learn how to use Azure Functions to create a [serverless](https://azure.microsoft.com/solutions/serverless/) function that runs based on a schedule that you define.
+Megtudhatja, hogyan használhatja a Azure Functionst olyan [kiszolgáló](https://azure.microsoft.com/solutions/serverless/) nélküli függvény létrehozásához, amely az Ön által meghatározott ütemterv alapján fut.
 
 ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
@@ -36,7 +36,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 ## <a name="create-a-timer-triggered-function"></a>Időzítő által aktivált függvény létrehozása
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Otherwise, go to step 3.
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények+ elem melletti**  gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ellenkező esetben folytassa a 3. lépéssel.
 
    ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 
@@ -44,7 +44,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
     ![Függvények rövid útmutatója - további sablonok kiválasztása](./media/functions-create-scheduled-function/add-first-function.png)
 
-3. In the search field, type `timer` and configure the new trigger with the settings as specified in the table below the image.
+3. A keresőmezőbe írja be a `timer`t, és konfigurálja az új triggert a rendszerkép alatti táblázatban megadott beállításokkal.
 
     ![Hozzon létre egy időzítő által aktivált függvényt az Azure Portalon.](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
@@ -53,7 +53,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
     | **Name (Név)** | Alapértelmezett | Az időzítő által aktivált függvény nevét adja meg. |
     | **Ütemezés** | 0 \*/1 \* \* \* \* | Hat mezőből álló [CRON-kifejezés](functions-bindings-timer.md#ncrontab-expressions), amely úgy ütemezi a függvényt, hogy minden percben fusson. |
 
-4. Kattintson a  **Create** (Létrehozás) gombra. Létrejön egy függvény a választott nyelven, amely minden percben futni fog.
+4. Kattintson a **Létrehozás** gombra. Létrejön egy függvény a választott nyelven, amely minden percben futni fog.
 
 5. Ellenőrizze a végrehajtást a naplókban gyűjtött nyomkövetési adatok áttekintésével.
 
@@ -65,7 +65,7 @@ Most módosíthatja a függvény ütemezését, hogy ne percenként, hanem órá
 
 1. Bontsa ki a függvényt, és kattintson az **Integráció** elemre. Itt határozhatja meg a függvény bemeneti és kimeneti kötéseit, és itt állíthatja be az ütemezést is. 
 
-2. Adja meg az új `0 0 */1 * * *` értéket az óránkénti **Ütemezés** beállításnál, és kattintson a **Mentés** elemre.  
+2. Adja meg az új **értéket az óránkénti**Ütemezés`0 0 */1 * * *` beállításnál, és kattintson a **Mentés** elemre.  
 
 ![A függvények időzítési ütemezésének módosítása az Azure Portalon.](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 
@@ -77,6 +77,6 @@ A függvény ezután óránként egyszer fog futni.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Létrehozott egy ütemezés alapján futó függvényt. For more information about timer triggers, see [Schedule code execution with Azure Functions](functions-bindings-timer.md).
+Létrehozott egy ütemezés alapján futó függvényt. Az időzítő eseményindítókkal kapcsolatos további információkért lásd: [kód végrehajtásának elvégzése Azure Functionssal](functions-bindings-timer.md).
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]

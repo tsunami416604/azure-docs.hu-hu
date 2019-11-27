@@ -15,7 +15,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260760"
 ---
-When you send template notifications, you only need to provide a set of properties. In this scenario, the set of properties contain the localized version of the current news.
+A sablon értesítéseinek küldésekor csak a tulajdonságok készletét kell megadnia. Ebben az esetben a tulajdonságok halmaza tartalmazza a jelenlegi Hírek honosított verzióját.
 
 ```json
 {
@@ -25,9 +25,9 @@ When you send template notifications, you only need to provide a set of properti
 }
 ```
 
-### <a name="send-notifications-using-a-c-console-app"></a>Send notifications using a C# console app
+### <a name="send-notifications-using-a-c-console-app"></a>Értesítések küldése egy C# konzolos alkalmazás használatával
 
-This section shows how to send notifications using a console app. The code broadcasts notifications to both Windows Store and iOS devices. Módosítsa a `SendTemplateNotificationAsync` metódust a korábban létrehozott konzolalkalmazásban az alábbi kóddal:
+Ez a szakasz bemutatja, hogyan küldhet értesítéseket egy konzol alkalmazással. A kód a Windows áruházban és az iOS-eszközökön is közvetíti az értesítéseket. Módosítsa a `SendTemplateNotificationAsync` metódust a korábban létrehozott konzolalkalmazásban az alábbi kóddal:
 
 ```csharp
 private static async void SendTemplateNotificationAsync()
@@ -66,11 +66,11 @@ private static async void SendTemplateNotificationAsync()
 }
 ```
 
-The SendTemplateNotificationAsync method delivers the localized piece of news to **all** your devices, irrespective of the platform. Your notification hub builds and delivers the correct native payload to all the devices subscribed to a specific tag.
+A SendTemplateNotificationAsync metódus az **összes** eszközre honosított híreket biztosít a platformtól függetlenül. Az értesítési központ létrehozza és biztosítja a megfelelő natív adattartalmat az adott címkére feliratkozott összes eszközre.
 
-### <a name="sending-notification-with-mobile-services"></a>Sending notification with Mobile Services
+### <a name="sending-notification-with-mobile-services"></a>Értesítés küldése Mobile Services
 
-In your Mobile Services scheduler, use the following script:
+A Mobile Services schedulerben használja a következő parancsfájlt:
 
 ```csharp
 var azure = require('azure');

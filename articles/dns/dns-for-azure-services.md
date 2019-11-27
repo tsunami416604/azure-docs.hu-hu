@@ -1,6 +1,6 @@
 ---
-title: Use Azure DNS with other Azure services
-description: In this learning path, get started on how to use Azure DNS to resolve names for other Azure services
+title: Azure DNS használata más Azure-szolgáltatásokkal
+description: Ebből a képzési tervből megtudhatja, hogyan használhatja a Azure DNSt más Azure-szolgáltatások neveinek feloldásához
 services: dns
 documentationcenter: na
 author: asudbring
@@ -22,21 +22,21 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211884"
 ---
-# <a name="how-azure-dns-works-with-other-azure-services"></a>How Azure DNS works with other Azure services
+# <a name="how-azure-dns-works-with-other-azure-services"></a>Hogyan működik a Azure DNS más Azure-szolgáltatásokkal?
 
-Azure DNS is a hosted DNS management and name resolution service. You can use it to create public DNS names for other applications and services that you deploy in Azure. Creating a name for an Azure service in your custom domain is simple. You just add a record of the correct type for your service.
+Azure DNS egy üzemeltetett DNS-felügyeleti és névfeloldási szolgáltatás. Használhatja nyilvános DNS-nevek létrehozására az Azure-ban üzembe helyezett egyéb alkalmazásokhoz és szolgáltatásokhoz. Az Azure-szolgáltatás nevének létrehozása az egyéni tartományban egyszerű. Csak a megfelelő típusú rekordot adja hozzá a szolgáltatáshoz.
 
-* For dynamically allocated IP addresses, you can create a DNS CNAME record that maps to the DNS name that Azure created for your service. DNS standards prevent you from using a CNAME record for the zone apex. You can use an alias record instead. For more information, see [Tutorial: Configure an alias record to refer to an Azure Public IP address](tutorial-alias-pip.md).
-* For statically allocated IP addresses, you can create a DNS A record by using any name, which includes a *naked domain* name at the zone apex.
+* A dinamikusan lefoglalt IP-címekhez létrehozhat egy DNS-beli CNAME rekordot, amely az Azure által a szolgáltatáshoz létrehozott DNS-névhez van leképezve. A DNS-szabványok megakadályozzák, hogy a zóna csúcspontjának CNAME rekordját használják. Ehelyett használhat alias-rekordot. További információ [: oktatóanyag: alias-rekord konfigurálása, amely egy Azure nyilvános IP-címre hivatkozik](tutorial-alias-pip.md).
+* A statikusan lefoglalt IP-címek esetében bármilyen névvel létrehozhat egy DNS-rekordot, amely magában foglal egy *meztelen tartománynevet* is a zóna csúcsán.
 
-The following table outlines the supported record types you can use for various Azure services. As the table shows, Azure DNS supports only DNS records for Internet-facing network resources. Azure DNS can't be used for name resolution of internal, private addresses.
+Az alábbi táblázat a különböző Azure-szolgáltatásokhoz használható támogatott bejegyzéstípusokat vázolja fel. Ahogy a táblázat mutatja, Azure DNS csak az internetre irányuló hálózati erőforrásokhoz tartozó DNS-rekordokat támogatja. Azure DNS nem használható belső, magánhálózati címek névfeloldásához.
 
 | Azure-szolgáltatás | Hálózati illesztő | Leírás |
 | --- | --- | --- |
-| Azure Application Gateway |[Front-end public IP](dns-custom-domain.md#public-ip-address) |You can create a DNS A or CNAME record. |
-| Azure Load Balancer |[Front-end public IP](dns-custom-domain.md#public-ip-address) |You can create a DNS A or CNAME record. Load Balancer can have an IPv6 public IP address that's dynamically assigned. Create a CNAME record for an IPv6 address. |
-| Azure Traffic Manager |Public name |You can create an alias record that maps to the trafficmanager.net name assigned to your Traffic Manager profile. For more information, see [Tutorial: Configure an alias record to support apex domain names with Traffic Manager](tutorial-alias-tm.md). |
-| Azure Cloud Services |[Public IP](dns-custom-domain.md#public-ip-address) |For statically allocated IP addresses, you can create a DNS A record. For dynamically allocated IP addresses, you must create a CNAME record that maps to the *cloudapp.net* name.|
-| Azure App Service | [External IP](dns-custom-domain.md#app-service-web-apps) |For external IP addresses, you can create a DNS A record. Otherwise, you must create a CNAME record that maps to the azurewebsites.net name. For more information, see [Map a custom domain name to an Azure app](../app-service/app-service-web-tutorial-custom-domain.md). |
-| Azure Resource Manager VMs |[Public IP](dns-custom-domain.md#public-ip-address) |Resource Manager VMs can have public IP addresses. A VM with a public IP address also can be behind a load balancer. You can create a DNS A, CNAME, or alias record for the public address. You can use this custom name to bypass the VIP on the load balancer. |
-| A klasszikus virtuális gépeket |[Public IP](dns-custom-domain.md#public-ip-address) |Classic VMs created by using PowerShell or CLI can be configured with a dynamic or static (reserved) virtual address. You can create a DNS CNAME or an A record, respectively. |
+| Azure Application Gateway |[Előtér-nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |Létrehozhat egy DNS-vagy CNAME-rekordot is. |
+| Azure Load Balancer |[Előtér-nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |Létrehozhat egy DNS-vagy CNAME-rekordot is. A Load Balancer a dinamikusan hozzárendelt IPv6 nyilvános IP-címmel rendelkezhet. Hozzon létre egy CNAME-rekordot egy IPv6-cím számára. |
+| Azure Traffic Manager |Nyilvános név |Létrehozhat egy olyan alias-rekordot, amely leképezi a Traffic Manager-profilhoz rendelt trafficmanager.net-nevet. További információ: [oktatóanyag: alias-rekord konfigurálása a APEX-tartománynevek támogatásához a Traffic Manager használatával](tutorial-alias-tm.md). |
+| Azure Cloud Services |[Nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |Statikusan lefoglalt IP-címek esetén létrehozhat egy rekordot a DNS-ben. A dinamikusan lefoglalt IP-címekhez létre kell hoznia egy CNAME rekordot, amely leképezi a *cloudapp.net* nevét.|
+| Azure App Service | [Külső IP-cím](dns-custom-domain.md#app-service-web-apps) |For external IP addresses, you can create a DNS A record. Ellenkező esetben létre kell hoznia egy CNAME rekordot, amely leképezi a azurewebsites.net nevét. További információ: [Egyéni tartománynév hozzárendelése egy Azure-alkalmazáshoz](../app-service/app-service-web-tutorial-custom-domain.md). |
+| Azure Resource Manager virtuális gépek |[Nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |A Resource Manager-alapú virtuális gépek rendelkezhetnek nyilvános IP-címekkel. Egy nyilvános IP-címmel rendelkező virtuális gép is lehet egy terheléselosztó mögött. Létrehozhat egy DNS-, CNAME-vagy alias-rekordot a nyilvános címekhez. Ezt az egyéni nevet használhatja a virtuális IP-cím kihagyása érdekében a terheléselosztó használatával. |
+| A klasszikus virtuális gépeket |[Nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |A PowerShell vagy a CLI használatával létrehozott klasszikus virtuális gépeket dinamikus vagy statikus (fenntartott) virtuális címekkel lehet konfigurálni. Létrehozhat egy DNS-CNAME vagy egy rekordot is. |

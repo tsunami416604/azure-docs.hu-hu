@@ -33,7 +33,7 @@ Mielőtt lemezeket csatol a virtuális géphez, tekintse át a következő tippe
 
 
 ## <a name="find-the-virtual-machine"></a>A virtuális gép megkeresése
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. A bal oldali menüben kattintson a **Virtual Machines**elemre.
 3. Válassza ki a virtuális gépet a listából.
 4. A virtuális gépek lap **Essentials**területén kattintson a **lemezek**elemre.

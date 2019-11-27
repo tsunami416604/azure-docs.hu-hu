@@ -1,6 +1,6 @@
 ---
-title: Understand Azure IoT Hub device twins | Microsoft Docs
-description: Developer guide - use device twins to synchronize state and configuration data between IoT Hub and your devices
+title: Az Azure IoT Hub-eszközök ikrek ismertetése | Microsoft Docs
+description: Fejlesztői útmutató – az eszközök ikrek használatával szinkronizálhatók az állapot-és konfigurációs adatokat IoT Hub és az eszközei között
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -15,54 +15,54 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74209711"
 ---
-# <a name="understand-and-use-device-twins-in-iot-hub"></a>Understand and use device twins in IoT Hub
+# <a name="understand-and-use-device-twins-in-iot-hub"></a>Az IoT Hub eszközön található ikrek megismerése és használata
 
-*Device twins* are JSON documents that store device state information including metadata, configurations, and conditions. Azure IoT Hub maintains a device twin for each device that you connect to IoT Hub. 
+Az *ikrek* olyan JSON-dokumentumok, amelyek az eszköz állapotával kapcsolatos információkat tárolnak, beleértve a metaadatokat, a konfigurációkat és a feltételeket. Az Azure IoT Hub a IoT Hubhoz csatlakoztatott összes eszközhöz fenntart egy eszközt. 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-This article describes:
+Ez a cikk ismerteti:
 
-* The structure of the device twin: *tags*, *desired* and *reported properties*.
-* The operations that device apps and back ends can perform on device twins.
+* A két eszköz szerkezete: *címkék*, *kívánt* és *jelentett tulajdonságok*.
+* Az eszközön futó alkalmazások és a háttérbeli műveletek az eszközökön is elvégezhetők.
 
-Use device twins to:
+Az eszközökhöz tartozó ikrek használata:
 
-* Store device-specific metadata in the cloud. For example, the deployment location of a vending machine.
+* Az eszközre jellemző metaadatok tárolása a felhőben. Például egy árusító gép üzembe helyezési helye.
 
-* Report current state information such as available capabilities and conditions from your device app. For example, a device is connected to your IoT hub over cellular or WiFi.
+* A jelenlegi állapotadatok, például a rendelkezésre álló képességek és kikötések jelentése az eszköz alkalmazásában. Egy eszköz például a IoT hubhoz csatlakozik a mobil-vagy WiFi-kapcsolaton keresztül.
 
-* Synchronize the state of long-running workflows between device app and back-end app. For example, when the solution back end specifies the new firmware version to install, and the device app reports the various stages of the update process.
+* Szinkronizálja a hosszan futó munkafolyamatok állapotát az eszköz alkalmazás és a háttérbeli alkalmazás között. Ha például a megoldás háttérbe állítása meghatározza a telepítendő új belső vezérlőprogram-verziót, és az eszköz alkalmazás a frissítési folyamat különböző szakaszait jelenti.
 
-* Query your device metadata, configuration, or state.
+* Az eszköz metaadatait, konfigurációját vagy állapotát kérdezheti le.
 
-Refer to [Device-to-cloud communication guidance](iot-hub-devguide-d2c-guidance.md) for guidance on using reported properties, device-to-cloud messages, or file upload.
+Tekintse meg az [eszközről a felhőbe irányuló kommunikációs útmutatót](iot-hub-devguide-d2c-guidance.md) a jelentett tulajdonságok, az eszközről a felhőbe irányuló üzenetek vagy a fájlfeltöltés használatával kapcsolatos útmutatásért.
 
-Refer to [Cloud-to-device communication guidance](iot-hub-devguide-c2d-guidance.md) for guidance on using desired properties, direct methods, or cloud-to-device messages.
+Tekintse át a [felhőből az eszközre irányuló kommunikációs útmutatót](iot-hub-devguide-c2d-guidance.md) , amely útmutatást nyújt a kívánt tulajdonságok, közvetlen metódusok vagy a felhőből az eszközre irányuló üzenetek használatához.
 
-## <a name="device-twins"></a>Device twins
+## <a name="device-twins"></a>Eszköz ikrek
 
-Device twins store device-related information that:
+A Device Twins az eszközhöz kapcsolódó információkat tárolja:
 
-* Device and back ends can use to synchronize device conditions and configuration.
+* Az eszköz és a háttér végpontja az eszközre vonatkozó feltételek és konfiguráció szinkronizálására használható.
 
-* The solution back end can use to query and target long-running operations.
+* A megoldás háttérbeli futtatása a hosszú ideig futó műveletek lekérdezésére és megcélzására használható.
 
-The lifecycle of a device twin is linked to the corresponding [device identity](iot-hub-devguide-identity-registry.md). Device twins are implicitly created and deleted when a device identity is created or deleted in IoT Hub.
+Az eszközök különálló életciklusa a megfelelő [eszköz identitásához](iot-hub-devguide-identity-registry.md)van csatolva. Az eszköz-ikrek implicit módon jönnek létre, és törlődnek az eszköz identitásának létrehozásakor vagy törlésekor IoT Hub.
 
-A device twin is a JSON document that includes:
+Az eszköz Twin egy JSON-dokumentum, amely a következőket tartalmazza:
 
-* **Tags**. A section of the JSON document that the solution back end can read from and write to. Tags are not visible to device apps.
+* **Címkék**. A megoldás hátterében lévő JSON-dokumentum egy szakasza, amelyből beolvasható és írható. A címkék nem láthatók az eszköz alkalmazásaiban.
 
-* **Desired properties**. Used along with reported properties to synchronize device configuration or conditions. The solution back end can set desired properties, and the device app can read them. The device app can also receive notifications of changes in the desired properties.
+* **Kívánt tulajdonságok**. A jelentett tulajdonságokkal együtt használható az eszköz konfigurációjának vagy feltételeinek szinkronizálásához. A megoldás háttérbe állítása megadhatja a kívánt tulajdonságokat, és az eszköz alkalmazás is elolvashatja őket. Az alkalmazás a kívánt tulajdonságok változásairól is fogadhat értesítéseket.
 
-* **Reported properties**. Used along with desired properties to synchronize device configuration or conditions. The device app can set reported properties, and the solution back end can read and query them.
+* **Jelentett tulajdonságok**. A kívánt tulajdonságokkal együtt használható az eszköz konfigurációjának vagy feltételeinek szinkronizálásához. Az alkalmazás beállíthatja a jelentett tulajdonságokat, és a megoldás hátterében olvashat és lekérdezheti azokat.
 
-* **Device identity properties**. The root of the device twin JSON document contains the read-only properties from the corresponding device identity stored in the [identity registry](iot-hub-devguide-identity-registry.md).
+* **Eszköz identitásának tulajdonságai** Az eszköz kettős JSON-dokumentumának gyökere a [személyazonossági beállításjegyzékben](iot-hub-devguide-identity-registry.md)tárolt megfelelő eszköz identitásának írásvédett tulajdonságait tartalmazza.
 
-![Screenshot of device twin properties](./media/iot-hub-devguide-device-twins/twin.png)
+![Képernyőfelvétel az eszközök Twin tulajdonságairól](./media/iot-hub-devguide-device-twins/twin.png)
 
-The following example shows a device twin JSON document:
+Az alábbi példa egy eszköz kettős JSON-dokumentumot mutat be:
 
 ```json
 {
@@ -108,20 +108,20 @@ The following example shows a device twin JSON document:
 }
 ```
 
-In the root object are the device identity properties, and container objects for `tags` and both `reported` and `desired` properties. The `properties` container contains some read-only elements (`$metadata`, `$etag`, and `$version`) described in the [Device twin metadata](iot-hub-devguide-device-twins.md#device-twin-metadata) and [Optimistic concurrency](iot-hub-devguide-device-twins.md#optimistic-concurrency) sections.
+A root objektumban az eszköz identitásának tulajdonságai, valamint a `tags` és a `reported` és `desired` tulajdonságok tároló objektumai. A `properties` tároló tartalmaz néhány írásvédett elemet (`$metadata`, `$etag`és `$version`) az [eszköz kettős metaadatai](iot-hub-devguide-device-twins.md#device-twin-metadata) és az [optimista Egyidejűség](iot-hub-devguide-device-twins.md#optimistic-concurrency) szakaszokban.
 
-### <a name="reported-property-example"></a>Reported property example
+### <a name="reported-property-example"></a>Jelentett tulajdonság – példa
 
-In the previous example, the device twin contains a `batteryLevel` property that is reported by the device app. This property makes it possible to query and operate on devices based on the last reported battery level. Other examples include the device app reporting device capabilities or connectivity options.
+Az előző példában az eszköz Twin `batteryLevel` tulajdonságot tartalmaz, amelyet az eszköz alkalmazás jelentett. Ez a tulajdonság lehetővé teszi az eszközök lekérdezését és működését az utolsó jelentett akkumulátor szintjének megfelelően. Egyéb példák például az eszköz alkalmazás-jelentési eszköz képességei vagy kapcsolódási lehetőségei.
 
 > [!NOTE]
-> Reported properties simplify scenarios where the solution back end is interested in the last known value of a property. Use [device-to-cloud messages](iot-hub-devguide-messages-d2c.md) if the solution back end needs to process device telemetry in the form of sequences of timestamped events, such as time series.
+> A jelentett tulajdonságok leegyszerűsítik az olyan forgatókönyveket, amelyekben a megoldás hátterét egy tulajdonság utolsó ismert értéke érdekli. Az [eszközről a felhőbe](iot-hub-devguide-messages-d2c.md) irányuló üzenetek használata, ha a megoldás hátterének időbélyeg-események (például idősorozat) formájában kell feldolgoznia az eszköz telemetria.
 
-### <a name="desired-property-example"></a>Desired property example
+### <a name="desired-property-example"></a>Példa a kívánt tulajdonságra
 
-In the previous example, the `telemetryConfig` device twin desired and reported properties are used by the solution back end and the device app to synchronize the telemetry configuration for this device. Példa:
+Az előző példában a megoldás háttérbe állítása és a jelentett tulajdonságok a `telemetryConfig` Device Twin kívánt és jelentett tulajdonságokat használják az eszköz telemetria-konfigurációjának szinkronizálásához. Például:
 
-1. The solution back end sets the desired property with the desired configuration value. Here is the portion of the document with the desired property set:
+1. A megoldás háttérbe állítása a kívánt tulajdonságot a kívánt konfigurációs értékkel állítja be. Itt látható a dokumentum azon része, amely a kívánt tulajdonságot beállítja:
 
    ```json
    "desired": {
@@ -132,7 +132,7 @@ In the previous example, the `telemetryConfig` device twin desired and reported 
    },
    ```
 
-2. The device app is notified of the change immediately if connected, or at the first reconnect. The device app then reports the updated configuration (or an error condition using the `status` property). Here is the portion of the reported properties:
+2. Az eszköz alkalmazás azonnal értesítést kap a változásról, ha csatlakozik, vagy az első újracsatlakozáskor. Az alkalmazás ezután jelentést készít a frissített konfigurációról (vagy a `status` tulajdonságot használó hiba feltételéről). Itt látható a jelentett tulajdonságok része:
 
    ```json
    "reported": {
@@ -144,21 +144,21 @@ In the previous example, the `telemetryConfig` device twin desired and reported 
    }
    ```
 
-3. The solution back end can track the results of the configuration operation across many devices by [querying](iot-hub-devguide-query-language.md) device twins.
+3. A megoldás háttérbe állításával több eszközön is nyomon követheti a konfigurációs művelet eredményeit az eszközök [lekérésével](iot-hub-devguide-query-language.md) .
 
 > [!NOTE]
-> The preceding snippets are examples, optimized for readability, of one way to encode a device configuration and its status. IoT Hub does not impose a specific schema for the device twin desired and reported properties in the device twins.
+> Az előző kódrészletek az olvashatóságra optimalizált példák, amelyek az eszköz konfigurációjának és állapotának az egyik módszerét jelentik. A IoT Hub nem határoz meg konkrét sémát az eszköz Twin kívánt és jelentett tulajdonságaihoz az eszközök ikrekben.
 > 
 
-You can use twins to synchronize long-running operations such as firmware updates. For more information on how to use properties to synchronize and track a long running operation across devices, see [Use desired properties to configure devices](tutorial-device-twins.md).
+Az ikrek használatával a hosszan futó műveleteket, például a belső vezérlőprogram frissítéseit is szinkronizálhatja. Ha további információra van szükség arról, hogyan használhatók a tulajdonságok a hosszú ideig futó műveletek szinkronizálásához és nyomon követéséhez az eszközök között, tekintse meg a [kívánt tulajdonságok használata az eszközök konfigurálásához](tutorial-device-twins.md)
 
-## <a name="back-end-operations"></a>Back-end operations
+## <a name="back-end-operations"></a>Háttérbeli műveletek
 
-The solution back end operates on the device twin using the following atomic operations, exposed through HTTPS:
+A megoldás háttérrendszer a következő, HTTPS protokollon keresztül elérhető atomi műveletek használatával működik az eszközön:
 
-* **Retrieve device twin by ID**. This operation returns the device twin document, including tags and desired and reported system properties.
+* **A Twin eszköz beolvasása azonosító alapján**. Ez a művelet visszaadja az eszköz kettős dokumentumát, beleértve a címkéket és a kívánt és jelentett rendszertulajdonságokat.
 
-* **Partially update device twin**. This operation enables the solution back end to partially update the tags or desired properties in a device twin. The partial update is expressed as a JSON document that adds or updates any property. Properties set to `null` are removed. The following example creates a new desired property with value `{"newProperty": "newValue"}`, overwrites the existing value of `existingProperty` with `"otherNewValue"`, and removes `otherOldProperty`. No other changes are made to existing desired properties or tags:
+* **Részben frissítse az eszköz ikerét**. Ez a művelet lehetővé teszi, hogy a megoldás háttérbe kerüljön, hogy részben frissítse a címkéket vagy a kívánt tulajdonságokat egy különálló eszközön. A részleges frissítés JSON-dokumentumként van megadva, amely bármilyen tulajdonságot feltesz vagy frissít. A `null`ra beállított tulajdonságok el lesznek távolítva. Az alábbi példa egy új kívánt tulajdonságot hoz létre `{"newProperty": "newValue"}`értékkel, felülírja a `existingProperty` meglévő értékét a `"otherNewValue"`, és eltávolítja `otherOldProperty`. A meglévő kívánt tulajdonságok vagy címkék nem módosulnak:
 
    ```json
    {
@@ -174,31 +174,31 @@ The solution back end operates on the device twin using the following atomic ope
    }
    ```
 
-* **Replace desired properties**. This operation enables the solution back end to completely overwrite all existing desired properties and substitute a new JSON document for `properties/desired`.
+* A **kívánt tulajdonságok cseréje**. Ez a művelet lehetővé teszi a megoldás háttérbe lépését, hogy teljesen felülírja az összes meglévő kívánt tulajdonságot, és új JSON-dokumentumot cseréljen a `properties/desired`re.
 
-* **Replace tags**. This operation enables the solution back end to completely overwrite all existing tags and substitute a new JSON document for `tags`.
+* **Címkék cseréje** Ez a művelet lehetővé teszi, hogy a megoldás háttérrendszer teljesen felülírja az összes meglévő címkét, és új JSON-dokumentumot cseréljen a `tags`.
 
-* **Receive twin notifications**. This operation allows the solution back end to be notified when the twin is modified. To do so, your IoT solution needs to create a route and to set the Data Source equal to *twinChangeEvents*. By default, no such routes pre-exist, so no twin notifications are sent. If the rate of change is too high, or for other reasons such as internal failures, the IoT Hub might send only one notification that contains all changes. Therefore, if your application needs reliable auditing and logging of all intermediate states, you should use device-to-cloud messages. The twin notification message includes properties and body.
+* **Kettős értesítések fogadása**. Ez a művelet lehetővé teszi a megoldás háttérbeli értesítését, ha a Twin módosítva van. Ehhez a IoT-megoldásnak létre kell hoznia egy útvonalat, és az adatforrást meg kell egyeznie a *twinChangeEvents*értékkel. Alapértelmezés szerint nem léteznek ilyen útvonalak, ezért a rendszer nem küld külön értesítéseket. Ha a változás sebessége túl magas, vagy más okokból, például belső hibák esetén, a IoT Hub csak egy értesítést küldhet, amely az összes módosítást tartalmazza. Ezért, ha az alkalmazásnak az összes közbenső állapot megbízható naplózására és naplózására van szüksége, az eszközről a felhőbe irányuló üzeneteket kell használnia. A kettős értesítési üzenet tartalmazza a tulajdonságokat és a törzset.
 
   - Tulajdonságok
 
-    | Név | Value (Díj) |
+    | Name (Név) | Érték |
     | --- | --- |
-    $content-type | application/json |
-    $iothub-enqueuedtime |  Time when the notification was sent |
+    $content típusa | application/json |
+    $iothub-enqueuedtime |  Az értesítés elküldésének ideje |
     $iothub-message-source | twinChangeEvents |
-    $content-encoding | utf-8 |
-    deviceId | ID of the device |
-    hubName | Name of IoT Hub |
-    operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of operation |
+    $content – kódolás | utf-8 |
+    deviceId | Az eszköz azonosítója |
+    hubName | IoT Hub neve |
+    operationTimestamp | A művelet [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) időbélyege |
     iothub-message-schema | deviceLifecycleNotification |
-    opType | "replaceTwin" or "updateTwin" |
+    opType | "replaceTwin" vagy "updateTwin" |
 
-    Message system properties are prefixed with the `$` symbol.
+    Az üzenetrendszer tulajdonságai előtaggal vannak ellátva a `$` szimbólummal.
 
   - Törzs
         
-    This section includes all the twin changes in a JSON format. It uses the same format as a patch, with the difference that it can contain all twin sections: tags, properties.reported, properties.desired, and that it contains the “$metadata” elements. Például:
+    Ez a szakasz a JSON-formátum összes kettős módosítását tartalmazza. Ugyanazt a formátumot használja, mint a javítás, a különbséggel, hogy az összes különálló szakaszt tartalmazhatja: címkék, tulajdonságok. jelentett, Properties. desired, és hogy tartalmazza a "$metadata" elemeket. Például:
 
     ```json
     {
@@ -219,37 +219,37 @@ The solution back end operates on the device twin using the following atomic ope
     }
     ```
 
-All the preceding operations support [Optimistic concurrency](iot-hub-devguide-device-twins.md#optimistic-concurrency) and require the **ServiceConnect** permission, as defined in [Control access to IoT Hub](iot-hub-devguide-security.md).
+Az összes korábbi művelet támogatja az [optimista párhuzamosságot](iot-hub-devguide-device-twins.md#optimistic-concurrency) , és megköveteli a **ServiceConnect** engedélyt a [IoT hub hozzáférés-vezérlésének szabályozása alapján](iot-hub-devguide-security.md).
 
-In addition to these operations, the solution back end can:
+Ezen műveletek mellett a megoldás hátterében a következőket teheti:
 
-* Query the device twins using the SQL-like [IoT Hub query language](iot-hub-devguide-query-language.md).
+* Az eszköz-ikrek lekérdezése az SQL-szerű [IoT hub lekérdezési nyelv](iot-hub-devguide-query-language.md)használatával.
 
-* Perform operations on large sets of device twins using [jobs](iot-hub-devguide-jobs.md).
+* Műveleteket hajthat végre nagy mennyiségű eszközön a [feladatok](iot-hub-devguide-jobs.md)használatával.
 
-## <a name="device-operations"></a>Device operations
+## <a name="device-operations"></a>Eszköz műveletei
 
-The device app operates on the device twin using the following atomic operations:
+Az eszköz-alkalmazás a következő atomi műveletek használatával működik az eszközön:
 
-* **Retrieve device twin**. This operation returns the device twin document (including desired and reported system properties) for the currently connected device. (Tags are not visible to device apps.)
+* A **Twin eszköz beolvasása**. A művelet visszaadja az eszköz kettős dokumentumát (beleértve a kívánt és jelentett rendszertulajdonságokat is) a jelenleg csatlakoztatott eszközhöz. (A címkék nem láthatók az eszköz alkalmazásai számára.)
 
-* **Partially update reported properties**. This operation enables the partial update of the reported properties of the currently connected device. This operation uses the same JSON update format that the solution back end uses for a partial update of desired properties.
+* **Jelentett tulajdonságok részleges frissítése**. Ez a művelet lehetővé teszi a jelenleg csatlakoztatott eszköz jelentett tulajdonságainak részleges frissítését. Ez a művelet ugyanazt a JSON-frissítési formátumot használja, amelyet a megoldás hátterében a kívánt tulajdonságok részleges frissítése használ.
 
-* **Observe desired properties**. The currently connected device can choose to be notified of updates to the desired properties when they happen. The device receives the same form of update (partial or full replacement) executed by the solution back end.
+* A **kívánt tulajdonságok megfigyelése**. A jelenleg csatlakoztatott eszköz dönthet úgy, hogy értesítést küld a kívánt tulajdonságok frissítéseiről, amikor azok történnek. Az eszköz ugyanazt a frissítést (részleges vagy teljes cserét) kapja, amelyet a megoldás hátterében hajt végre.
 
-All the preceding operations require the **DeviceConnect** permission, as defined in [Control Access to IoT Hub](iot-hub-devguide-security.md).
+Az összes fenti művelethez szükség van a **DeviceConnect** engedélyre, ahogy az a [IoT hub hozzáférés-vezérlési szolgáltatásban](iot-hub-devguide-security.md)van meghatározva.
 
-The [Azure IoT device SDKs](iot-hub-devguide-sdks.md) make it easy to use the preceding operations from many languages and platforms. For more information on the details of IoT Hub primitives for desired properties synchronization, see [Device reconnection flow](iot-hub-devguide-device-twins.md#device-reconnection-flow).
+Az [Azure IoT-eszközök SDK](iot-hub-devguide-sdks.md) -k megkönnyítik az előző műveletek használatát számos nyelvről és platformról. További információ a kívánt tulajdonságok szinkronizálásához IoT Hub primitívek részleteiről: [eszköz újrakapcsolási folyamata](iot-hub-devguide-device-twins.md#device-reconnection-flow).
 
-## <a name="tags-and-properties-format"></a>Tags and properties format
+## <a name="tags-and-properties-format"></a>Címkék és tulajdonságok formátuma
 
-Tags, desired properties, and reported properties are JSON objects with the following restrictions:
+A címkék, a kívánt tulajdonságok és a jelentett tulajdonságok a JSON-objektumok a következő korlátozásokkal:
 
-* All keys in JSON objects are UTF-8 encoded, case-sensitive, and up-to 1 KB in length. Allowed characters exclude UNICODE control characters (segments C0 and C1), and `.`, `$`, and SP.
+* A JSON-objektumokban lévő összes kulcs UTF-8 kódolású, kis-és nagybetűket megkülönböztető, és legfeljebb 1 KB hosszúságú lehet. Az engedélyezett karakterek kizárják a UNICODE vezérlőkarakterek (szegmensek C0 és C1), valamint `.`, `$`és SP.
 
-* All values in JSON objects can be of the following JSON types: boolean, number, string, object. Arrays are not allowed. The maximum value for integers is 4503599627370495 and the minimum value for integers is -4503599627370496.
+* A JSON-objektumokban lévő összes érték a következő JSON-típusokkal rendelkezhet: logikai, szám, karakterlánc, objektum. Tömbök használata nem engedélyezett. Az egész számok maximális értéke 4503599627370495, az egész számok minimális értéke pedig-4503599627370496.
 
-* All JSON objects in tags, desired, and reported properties can have a maximum depth of 10. For instance, the following object is valid:
+* A címkék, a kívánt és a jelentett tulajdonságok összes JSON-objektuma legfeljebb 10 mélységet tartalmazhat. Például a következő objektum érvényes:
 
    ```json
    {
@@ -281,21 +281,21 @@ Tags, desired properties, and reported properties are JSON objects with the foll
    }
    ```
 
-* All string values can be at most 4 KB in length.
+* Az összes karakterlánc-érték legfeljebb 4 KB hosszúságú lehet.
 
-## <a name="device-twin-size"></a>Device twin size
+## <a name="device-twin-size"></a>Eszköz kettős mérete
 
-IoT Hub enforces an 8KB size limitation on each of the respective total values of `tags`, `properties/desired`, and `properties/reported`, excluding read-only elements.
+IoT Hub kényszeríti a 8 kb korlátozását a `tags`, `properties/desired`és `properties/reported`megfelelő teljes értékeire, kivéve a csak olvasható elemeket.
 
-The size is computed by counting all characters, excluding UNICODE control characters (segments C0 and C1) and spaces that are outside of string constants.
+A méret kiszámítása az összes karakter számlálásával történik, kivéve a UNICODE vezérlő karaktereket (szegmensek C0 és C1), valamint a karakterlánc-konstansokon kívüli szóközöket.
 
-IoT Hub rejects with an error all operations that would increase the size of those documents above the limit.
+IoT Hub elutasítja az összes olyan műveletet, amely a határértéknél nagyobb mértékben növelné a dokumentumok méretét.
 
-## <a name="device-twin-metadata"></a>Device twin metadata
+## <a name="device-twin-metadata"></a>Eszköz – Twin metaadatok
 
-IoT Hub maintains the timestamp of the last update for each JSON object in device twin desired and reported properties. The timestamps are in UTC and encoded in the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format `YYYY-MM-DDTHH:MM:SS.mmmZ`.
+IoT Hub karbantartja az összes JSON-objektum utolsó frissítésének időbélyegét az eszközök Twin-beli kívánt és jelentett tulajdonságaiban. Az időbélyegek UTC szerint vannak kódolva, és a [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) formátuma `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 
-Példa:
+Például:
 
 ```json
 {
@@ -342,55 +342,55 @@ Példa:
 }
 ```
 
-This information is kept at every level (not just the leaves of the JSON structure) to preserve updates that remove object keys.
+Ezek az információk minden szinten megmaradnak (nem csak a JSON-struktúra levelei) az objektumok kulcsait eltávolító frissítések megőrzése érdekében.
 
 ## <a name="optimistic-concurrency"></a>Optimista párhuzamosság
 
-Tags, desired, and reported properties all support optimistic concurrency.
-Tags have an ETag, as per [RFC7232](https://tools.ietf.org/html/rfc7232), that represents the tag's JSON representation. You can use ETags in conditional update operations from the solution back end to ensure consistency.
+Címkék, kívánt és jelentett tulajdonságok az optimista párhuzamosságok támogatásával.
+A címkékhez ETag ( [RFC7232](https://tools.ietf.org/html/rfc7232)) tartozik, amely a címke JSON-ábrázolását jelöli. A konzisztencia biztosításához használhatja a megoldás Etagek a feltételes frissítési műveletekben.
 
-Device twin desired and reported properties do not have ETags, but have a `$version` value that is guaranteed to be incremental. Similarly to an ETag, the version can be used by the updating party to enforce consistency of updates. For example, a device app for a reported property or the solution back end for a desired property.
+A kívánt eszközök és a jelentett tulajdonságok nem rendelkeznek Etagek, de egy `$version` érték, amely garantáltan növekményes. A ETag hasonlóan a frissítési fél is használhatja a verziót a frissítések konzisztenciájának betartatására. Tegyük fel például, hogy egy alkalmazás egy jelentett tulajdonsághoz vagy egy kívánt tulajdonsághoz a megoldás hátteréhez tartozó eszköz.
 
-Versions are also useful when an observing agent (such as the device app observing the desired properties) must reconcile races between the result of a retrieve operation and an update notification. The [Device reconnection flow section](iot-hub-devguide-device-twins.md#device-reconnection-flow) provides more information.
+A verziók akkor is hasznosak, ha egy megfigyelő ügynöknek (például a kívánt tulajdonságokat megfigyelő eszköz alkalmazásnak) össze kell egyeztetni a versenyeket egy lekérési művelet és egy frissítési értesítés eredménye között. Az [eszköz újrakapcsolási folyamat szakasza](iot-hub-devguide-device-twins.md#device-reconnection-flow) további információkat tartalmaz.
 
-## <a name="device-reconnection-flow"></a>Device reconnection flow
+## <a name="device-reconnection-flow"></a>Eszköz újrakapcsolási folyamata
 
-IoT Hub does not preserve desired properties update notifications for disconnected devices. It follows that a device that is connecting must retrieve the full desired properties document, in addition to subscribing for update notifications. Given the possibility of races between update notifications and full retrieval, the following flow must be ensured:
+IoT Hub nem őrzi meg a leválasztott eszközökhöz tartozó, a kívánt tulajdonságok frissítési értesítéseit. Ez azt eredményezi, hogy egy csatlakozó eszköznek le kell kérnie a teljes kívánt tulajdonságokat tartalmazó dokumentumot a frissítési értesítések előfizetése mellett. Tekintettel arra, hogy a verseny a frissítési értesítések és a teljes lekérések között is fennáll, a következő folyamatot kell biztosítani:
 
-1. Device app connects to an IoT hub.
-2. Device app subscribes for desired properties update notifications.
-3. Device app retrieves the full document for desired properties.
+1. Az eszközbeállítások egy IoT hubhoz csatlakozik.
+2. Az eszköz-alkalmazás előfizet a kívánt tulajdonságok frissítési értesítéseire.
+3. Az eszköz beolvassa a teljes dokumentumot a kívánt tulajdonságokhoz.
 
-The device app can ignore all notifications with `$version` less or equal than the version of the full retrieved document. This approach is possible because IoT Hub guarantees that versions always increment.
+Az alkalmazás figyelmen kívül hagyhatja az összes olyan értesítést, amelynek `$version` kisebb vagy egyenlő, mint a teljes beolvasott dokumentum verziószáma. Ez a megközelítés azért lehetséges, mert IoT Hub garantálja, hogy a verziók mindig növekményt biztosítanak.
 
 > [!NOTE]
-> This logic is already implemented in the [Azure IoT device SDKs](iot-hub-devguide-sdks.md). This description is useful only if the device app cannot use any of Azure IoT device SDKs and must program the MQTT interface directly.
+> Ez a logika már implementálva van az [Azure IoT Device SDK](iot-hub-devguide-sdks.md)-ban. Ez a leírás csak akkor hasznos, ha az eszköz nem tudja használni az Azure IoT Device SDK-kat, és a MQTT felületét közvetlenül kell programoznia.
 > 
 
-## <a name="additional-reference-material"></a>Additional reference material
+## <a name="additional-reference-material"></a>További referenciaanyagok
 
-Other reference topics in the IoT Hub developer guide include:
+A IoT Hub Fejlesztői útmutatóban található további témakörök a következők:
 
-* The [IoT Hub endpoints](iot-hub-devguide-endpoints.md) article describes the various endpoints that each IoT hub exposes for run-time and management operations.
+* A [IoT hub endpoints](iot-hub-devguide-endpoints.md) cikk a különböző végpontokat ismerteti, amelyeket az egyes IoT hub a futásidejű és a felügyeleti műveletek számára tesz elérhetővé.
 
-* The [Throttling and quotas](iot-hub-devguide-quotas-throttling.md) article describes the quotas that apply to the IoT Hub service and the throttling behavior to expect when you use the service.
+* A [szabályozás és kvóták](iot-hub-devguide-quotas-throttling.md) cikk a IoT hub szolgáltatásra vonatkozó kvótákat és a szolgáltatás használatakor várható szabályozási viselkedést ismerteti.
 
-* The [Azure IoT device and service SDKs](iot-hub-devguide-sdks.md) article lists the various language SDKs you can use when you develop both device and service apps that interact with IoT Hub.
+* Az [Azure IoT eszköz és szolgáltatás SDK-](iot-hub-devguide-sdks.md) k című cikk felsorolja azokat a különböző nyelvi SDK-kat, amelyek a IoT hub használatával kommunikáló eszköz-és szolgáltatás-alkalmazások fejlesztéséhez használhatók.
 
-* The [IoT Hub query language for device twins, jobs, and message routing](iot-hub-devguide-query-language.md) article describes the IoT Hub query language you can use to retrieve information from IoT Hub about your device twins and jobs.
+* Az [ikrek, feladatok és üzenet-útválasztási cikk IoT hub lekérdezési nyelve](iot-hub-devguide-query-language.md) a IoT hub lekérdezési nyelvet írja le, amellyel lekérheti az adatokat az eszközökről az ikrekről és a feladatokról IoT hub.
 
-* The [IoT Hub MQTT support](iot-hub-mqtt-support.md) article provides more information about IoT Hub support for the MQTT protocol.
+* A [IOT hub MQTT-támogatási](iot-hub-mqtt-support.md) cikk további információkat nyújt a MQTT protokoll IoT hub támogatásáról.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Now you have learned about device twins, you may be interested in the following IoT Hub developer guide topics:
+Most, hogy megismerte az eszközökről szóló ikreket, az alábbi IoT Hub fejlesztői útmutató témaköreiben találhat további információkat:
 
-* [Understand and use module twins in IoT Hub](iot-hub-devguide-module-twins.md)
-* [Invoke a direct method on a device](iot-hub-devguide-direct-methods.md)
+* [Az ikrek megismerése és használata IoT Hub](iot-hub-devguide-module-twins.md)
+* [Közvetlen metódus meghívása egy eszközön](iot-hub-devguide-direct-methods.md)
 * [Feladatok ütemezése több eszközön](iot-hub-devguide-jobs.md)
 
-To try out some of the concepts described in this article, see the following IoT Hub tutorials:
+A cikkben ismertetett fogalmak némelyikének kipróbálásához tekintse meg a következő IoT Hub oktatóanyagokat:
 
-* [How to use the device twin](iot-hub-node-node-twin-getstarted.md)
-* [How to use device twin properties](tutorial-device-twins.md)
-* [Device management with Azure IoT Tools for VS Code](iot-hub-device-management-iot-toolkit.md)
+* [Az eszköz Twin használata](iot-hub-node-node-twin-getstarted.md)
+* [Az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
+* [Eszközkezelés a VS Code-hoz készült Azure IoT-eszközökkel](iot-hub-device-management-iot-toolkit.md)

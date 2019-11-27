@@ -1,5 +1,5 @@
 ---
-title: Create a function in Azure triggered by queue messages
+title: Üzenetsor-üzenetek által aktivált függvény létrehozása az Azure-ban
 description: Használja az Azure Functions szolgáltatást olyan kiszolgáló nélküli függvények létrehozására, amelyeket az Azure Storage üzenetsorába elküldött üzenetek hívnak meg.
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: quickstart
@@ -36,7 +36,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 ## <a name="create-a-queue-triggered-function"></a>Üzenetsor által aktivált függvény létrehozása
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények+ elem melletti**  gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
 
    ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-storage-queue-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -108,7 +108,7 @@ Az üzenetsor létrehozása után tesztelheti a függvényt úgy, hogy felvesz e
 
 Létrehozott egy függvényt, amely akkor fut, amikor üzenet felvétele történik a tárolási üzenetsorba. További információ a tárolási üzenetsor eseményindítóiról: [Azure Functions – a tárolási üzenetsor kötései](functions-bindings-storage-queue.md).
 
-Now that you have a created your first function, let's add an output binding to the function that writes a message back to another queue.
+Most, hogy létrehozta az első függvényt, hozzon létre egy kimeneti kötést a függvényhez, amely visszaírja az üzenetet egy másik várólistába.
 
 > [!div class="nextstepaction"]
 > [Üzenetek hozzáadása az Azure Storage üzenetsorába függvények használatával](functions-integrate-storage-queue-output-binding.md)

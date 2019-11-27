@@ -1,6 +1,6 @@
 ---
-title: Get values for app authentication
-description: Create a service principal for accessing SQL Database from code.
+title: Alkalmazás-hitelesítés értékeinek beolvasása
+description: Hozzon létre egy egyszerű szolgáltatást, amely a kóddal való SQL Database elérésére szolgál.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -18,18 +18,18 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421324"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Get the required values for authenticating an application to access SQL Database from code
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Az alkalmazások kód SQL Database való eléréséhez szükséges értékek beolvasása
 
-To create and manage SQL Database from code you must register your app in the Azure Active Directory (AAD) domain  in the subscription where your Azure resources have been created.
+SQL Database kódból való létrehozásához és kezeléséhez regisztrálnia kell az alkalmazást a Azure Active Directory (HRE) tartományba az előfizetésben, ahol az Azure-erőforrásokat létrehozták.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Create a service principal to access resources from an application
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Egyszerű szolgáltatásnév létrehozása egy alkalmazás erőforrásainak eléréséhez
 
-The following examples create the Active Directory (AD) application and the service principal that we need to authenticate our C# app. A parancsfájl kimenetének értékeire szükség lesz az előbb említett C#-mintához. Részletes információk: [Egyszerű szolgáltatás létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Az alábbi példák a Active Directory (AD) alkalmazást és az alkalmazás hitelesítéséhez C# szükséges egyszerű szolgáltatásnevet hozza létre. A parancsfájl kimenetének értékeire szükség lesz az előbb említett C#-mintához. Részletes információk: [Egyszerű szolgáltatás létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager (RM) modult, de a jövőbeli fejlesztés az az. SQL modulhoz kapcsolódik. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
 
 ```powershell
 # sign in to Azure
@@ -99,7 +99,7 @@ Write-Output "_applicationSecret:" $secret
 
 * * *
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-[Create a SQL database with C#](sql-database-get-started-csharp.md)  
-[Connecting to SQL Database By Using Azure Active Directory Authentication](sql-database-aad-authentication.md)
+[SQL-adatbázis létrehozása aC#](sql-database-get-started-csharp.md)  
+[Csatlakozás SQL Databasehoz Azure Active Directory hitelesítés használatával](sql-database-aad-authentication.md)

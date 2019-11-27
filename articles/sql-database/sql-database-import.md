@@ -1,6 +1,6 @@
 ---
-title: Import a BACPAC file to create a database
-description: Create a newAzure SQL database by importing a BACPAC file.
+title: BACPAC-fájl importálása adatbázis létrehozásához
+description: Hozzon létre egy newAzure SQL-adatbázis BACPAC-fájl importálásával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration
@@ -18,63 +18,63 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420831"
 ---
-# <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Quickstart: Import a BACPAC file to a database in Azure SQL Database
+# <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Gyors útmutató: BACPAC-fájl importálása Azure SQL Database-adatbázisba
 
-You can import a SQL Server database into a database in Azure SQL Database using a [BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) file. You can import the data from a `BACPAC` file stored in Azure Blob storage (standard storage only) or from local storage in an on-premises location. To maximize import speed by providing more and faster resources, scale your database to a higher service tier and compute size during the import process. You can then scale down after the import is successful.
+[BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) -fájl használatával importálhat egy SQL Server-adatbázist Azure SQL Database adatbázisába. Az adatok importálhatók az Azure Blob Storage-ban (csak standard Storage) vagy helyi tárolóban tárolt `BACPAC` fájlból egy helyszíni helyen. Az importálási sebesség maximalizálása érdekében több és gyorsabb erőforrást biztosít, az adatbázist az importálási folyamat során az adatbázis magasabb szolgáltatási szintjére és számítási méretére méretezheti. Ezután az importálás sikeressége után le is méretezheti a méretezést.
 
 > [!NOTE]
-> The imported database's compatibility level is based on the source database's compatibility level.
+> Az importált adatbázis kompatibilitási szintjét a forrás-adatbázis-kompatibilitási szint alapján történik.
 
 > [!IMPORTANT]
-> After importing your database, you can choose to operate the database at its current compatibility level (level 100 for the AdventureWorks2008R2 database) or at a higher level. Az adatbázis meghatározott kompatibilitási szinten való működtetésének következményeivel és lehetőségeivel kapcsolatos további információkért lásd: [ADATBÁZIS kompatibilitási szintjének MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). A kompatibilitási szintekkel kapcsolatos további adatbázisszintű beállításokról itt talál információt: [ADATBÁZISHOZ KÖTŐDŐ KONFIGURÁCIÓ MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).
+> Az adatbázis az importálás után kiválaszthatja, működtetheti az adatbázist, a jelenlegi kompatibilitási szinten (100. szint az AdventureWorks2008R2 adatbázis), vagy egy magasabb szinten. Az adatbázis meghatározott kompatibilitási szinten való működtetésének következményeivel és lehetőségeivel kapcsolatos további információkért lásd: [ADATBÁZIS kompatibilitási szintjének MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). A kompatibilitási szintekkel kapcsolatos további adatbázisszintű beállításokról itt talál információt: [ADATBÁZISHOZ KÖTŐDŐ KONFIGURÁCIÓ MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).
 
 ## <a name="using-azure-portal"></a>Az Azure Portal használata
 
-Watch this video to see how to import from a BACPAC file in the Azure portal or continue reading below:
+Tekintse meg ezt a videót, amelyből megtudhatja, hogyan importálhat egy BACPAC-fájlból a Azure Portal vagy folytathatja az alábbi olvasást:
 
 > [!VIDEO hhttps://channel9.msdn.com/Shows/Data-Exposed/Its-just-SQL-Restoring-a-database-to-Azure-SQL-DB-from-backup/player?WT.mc_id=dataexposed-c9-niner]
 
-The [Azure portal](https://portal.azure.com) *only* supports creating a single database in Azure SQL Database and *only* from a BACPAC file stored in Azure Blob storage.
+A [Azure Portal](https://portal.azure.com) *csak* az Azure Blob Storage-ban tárolt BACPAC *-* fájlokból hoz létre egyetlen adatbázist a Azure SQL Databaseban.
 
-Migrating a database into a [managed instance](sql-database-managed-instance.md) from a BACPAC file using Azure PowerShell is not currently supported. Use SQL Server Management Studio or SQLPackage instead.
+Az adatbázis áttelepítése [felügyelt példányra](sql-database-managed-instance.md) egy BACPAC-fájlból Azure PowerShell használatával jelenleg nem támogatott. Ehelyett használjon SQL Server Management Studio vagy SQLPackage.
 
 > [!NOTE]
-> Machines processing import/export requests submitted through the Azure portal or PowerShell need to store the BACPAC file as well as temporary files generated by the Data-Tier Application Framework (DacFX). The disk space required varies significantly among databases with the same size and can require disk space up to 3 times the size of the database. Machines running the import/export request only have  450GB local disk space. As a result, some requests may fail with the error `There is not enough space on the disk`. In this case, the workaround is to run sqlpackage.exe on a machine with enough local disk space. We encourage using SqlPackage to import/export databases larger than 150GB to avoid this issue.
+> A Azure Portalon vagy PowerShellen keresztül küldött importálási/exportálási kérelmeket feldolgozó gépeknek a BACPAC-fájlt, valamint az adatrétegbeli alkalmazás-keretrendszer (DacFX) által generált ideiglenes fájlokat kell tárolniuk. A szükséges lemezterület jelentősen eltér az azonos méretű adatbázisok között, és az adatbázis méretének háromszorosára lehet szükség. Az importálási/exportálási kérelmet futtató gépek csak 450GB helyi lemezterülettel rendelkeznek. Ennek eredményeképpen előfordulhat, hogy egyes kérések meghiúsulnak a `There is not enough space on the disk`hibával. Ebben az esetben a megkerülő megoldás a sqlpackage. exe futtatása egy olyan gépen, amelyen elegendő helyi lemezterület található. A probléma elkerülése érdekében javasoljuk, hogy a 150GB-nál nagyobb adatbázisok importálására/exportálására SqlPackage használjon.
 
-1. To import from a BACPAC file into a new single database using the Azure portal, open the appropriate database server page and then, on the toolbar, select **Import database**.  
+1. Ha a Azure Portal használatával szeretne importálni egy BACPAC-fájlból egy új önálló adatbázisba, nyissa meg a megfelelő adatbázis-kiszolgáló lapot, majd az eszköztáron válassza az **adatbázis importálása**lehetőséget.  
 
-   ![Database import1](./media/sql-database-import/import1.png)
+   ![Adatbázis import1](./media/sql-database-import/import1.png)
 
-1. Select the storage account and the container for the BACPAC file and then select the BACPAC file from which to import.
+1. Válassza ki a Storage-fiókot és a tárolót a BACPAC fájlhoz, majd válassza ki azt a BACPAC-fájlt, amelyből importálni kívánja.
 
-1. Specify the new database size (usually the same as origin) and provide the destination SQL Server credentials. For a list of possible values for a new Azure SQL database, see [Create Database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
+1. Adja meg az új adatbázis mérete (általában ugyanaz, mint forrás), és adja meg a cél SQL-kiszolgáló hitelesítő adatai. Az új Azure SQL Database-adatbázisok lehetséges értékeinek listáját az [adatbázis létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)című témakörben tekintheti meg.
 
-   ![Database import2](./media/sql-database-import/import2.png)
+   ![Adatbázis import2](./media/sql-database-import/import2.png)
 
 1. Kattintson az **OK** gombra.
 
-1. To monitor an import's progress, open the database's server page, and, under **Settings**, select **Import/Export history**. When successful, the import has a **Completed** status.
+1. Az importálás előrehaladásának figyeléséhez nyissa meg az adatbázis kiszolgáló lapját, és a **Beállítások**területen válassza az **Importálás/exportálás előzmények**elemet. Ha a művelet sikeres, az importálás **Befejezve** állapotba kerül.
 
-   ![Database import status](./media/sql-database-import/import-status.png)
+   ![Adatbázis-importálás állapota](./media/sql-database-import/import-status.png)
 
-1. To verify the database is live on the database server, select **SQL databases** and verify the new database is **Online**.
+1. Annak ellenőrzéséhez, hogy az adatbázis él-e az adatbázis-kiszolgálón, válassza az **SQL-adatbázisok** lehetőséget, és ellenőrizze, hogy az új adatbázis **online állapotú**
 
-## <a name="using-sqlpackage"></a>Using SqlPackage
+## <a name="using-sqlpackage"></a>A SqlPackage használata
 
-To import a SQL Server database using the [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) command-line utility, see [import parameters and properties](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage has the latest [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) and [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). You can also download the latest [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) from the Microsoft download center.
+Ha SQL Server adatbázist szeretne importálni a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) parancssori segédprogrammal, tekintse meg a [paraméterek és tulajdonságok importálása](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)című témakört. A SqlPackage a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és [SQL Server Data Tools a Visual studióhoz](https://msdn.microsoft.com/library/mt204009.aspx). A legújabb [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) a Microsoft letöltőközpontból is letöltheti.
 
-For scale and performance, we recommend using SqlPackage in most production environments rather than using the Azure portal. For a SQL Server Customer Advisory Team blog about migrating using `BACPAC` files, see [migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+A méretezés és a teljesítmény érdekében javasoljuk, hogy a SqlPackage a legtöbb éles környezetben használja a Azure Portal használata helyett. SQL Server Customer tanácsadó csapatának blogja `BACPAC` fájlok használatával történő áttelepítéssel kapcsolatban lásd: [áttelepítés SQL Serverról Azure SQL Database BACPAC-fájlok használatával](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
-The following SqlPackage command imports the **AdventureWorks2008R2** database from local storage to an Azure SQL Database server called **mynewserver20170403**. It creates a new database called **myMigratedDatabase** with a **Premium** service tier and a **P6** Service Objective. Change these values as appropriate for your environment.
+A következő SqlPackage-parancs importálja a **AdventureWorks2008R2** -adatbázist a helyi tárolóból egy **mynewserver20170403**nevű Azure SQL Database-kiszolgálóra. Létrehoz egy **myMigratedDatabase** nevű új adatbázist egy **prémium** szintű szolgáltatási szinttel és egy **P6** szolgáltatás-célkitűzéssel. Válasszon a környezetének megfelelő értékeket módosíthatja.
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=<migratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
 ```
 
 > [!IMPORTANT]
-> To connect to a SQL Database server managing a single database from behind a corporate firewall, the firewall must have port 1433 open. To connect to a managed instance, you must have a [point-to-site connection](sql-database-managed-instance-configure-p2s.md) or an express route connection.
+> Ha egyetlen adatbázist kezelő SQL Database-kiszolgálóhoz szeretne csatlakozni egy vállalati tűzfal mögött, a tűzfalon meg kell nyitni a 1433-es portot. Felügyelt példányhoz való kapcsolódáshoz [pont – hely kapcsolat](sql-database-managed-instance-configure-p2s.md) vagy Express Route-kapcsolat szükséges.
 
-This example shows how to import a database using SqlPackage with Active Directory Universal Authentication.
+Ez a példa bemutatja, hogyan importálását az Active Directory univerzális hitelesítéssel az SqlPackage használatával.
 
 ```cmd
 sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.database.windows.net /ua:True /tid:"apptest.onmicrosoft.com"
@@ -83,17 +83,17 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 ## <a name="using-powershell"></a>A PowerShell használata
 
 > [!NOTE]
-> [A managed instance](sql-database-managed-instance.md) does not currently support migrating a database into an instance database from a BACPAC file using Azure PowerShell. To import into a managed instance, use SQL Server Management Studio or SQLPackage.
+> [A felügyelt példányok](sql-database-managed-instance.md) jelenleg nem támogatják egy adatbázis példány-adatbázisba való áttelepítését egy BACPAC-fájlból Azure PowerShell használatával. Felügyelt példányba való importáláshoz használja a SQL Server Management Studio vagy a SQLPackage.
 
 > [!NOTE]
-> The machines processing import/export requests submitted through portal or Powershell need to store the bacpac file as well as temporary files generated by Data-Tier Application Framework (DacFX). The disk space required varies significantly among DBs with same size and can take up to 3 times of the database size. Machines running the import/export request only have  450GB local disk space. As result, some requests may fail with “There is not enough space on the disk” error. In this case, the workaround is to run sqlpackage.exe on a machine with enough local disk space. When importing/exporting databases larger than 150GB, use SqlPackage to avoid this issue.
+> A portálon vagy a Powershellen keresztül küldött importálási/exportálási kérelmek feldolgozását végző gépeknek a bacpac-fájlt, valamint az adatrétegbeli alkalmazás-keretrendszer (DacFX) által generált ideiglenes fájlokat kell tárolniuk. A szükséges lemezterület jelentős mértékben változhat az azonos méretű adatbázisok között, és akár 3 alkalommal is eltarthat az adatbázis mérete. Az importálási/exportálási kérelmet futtató gépek csak 450GB helyi lemezterülettel rendelkeznek. Ennek eredményeképpen előfordulhat, hogy egyes kérések meghiúsulnak a "nincs elég hely a lemezen" hibaüzenet. Ebben az esetben a megkerülő megoldás a sqlpackage. exe futtatása egy olyan gépen, amelyen elegendő helyi lemezterület található. A 150GB-nál nagyobb adatbázisok importálásakor/exportálásakor a SqlPackage használatával elkerülhető a probléma.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager (RM) modult, de a jövőbeli fejlesztés az az. SQL modulhoz kapcsolódik. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
 
-Use the [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) cmdlet to submit an import database request to the Azure SQL Database service. Depending on database size, the import may take some time to complete.
+A [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) parancsmag használatával küldje el az importálási adatbázisra vonatkozó kérelmet a Azure SQL Database szolgáltatásnak. Adatbázis mérete, attól függően az importálás eltarthat egy ideig.
 
 ```powershell
 $importRequest = New-AzSqlDatabaseImport -ResourceGroupName "<resourceGroupName>" `
@@ -107,7 +107,7 @@ $importRequest = New-AzSqlDatabaseImport -ResourceGroupName "<resourceGroupName>
         -AdministratorLoginPassword $(ConvertTo-SecureString -String "<password>" -AsPlainText -Force)
 ```
 
-You can use the [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet to check the import's progress. Running the cmdlet immediately after the request usually returns `Status: InProgress`. The import is complete when you see `Status: Succeeded`.
+Az importálás folyamatát a [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) parancsmaggal tekintheti meg. Ha a parancsmagot közvetlenül a kérést követően futtatja, a rendszer általában `Status: InProgress`t ad vissza. Az importálás akkor fejeződik be, amikor megjelenik a `Status: Succeeded`.
 
 ```powershell
 $importStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
@@ -125,7 +125,7 @@ $importStatus
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Use the [az-sql-db-import](/cli/azure/sql/db#az-sql-db-import) command to submit an import database request to the Azure SQL Database service. Depending on database size, the import may take some time to complete.
+Az az [-SQL-db-import](/cli/azure/sql/db#az-sql-db-import) paranccsal küldje el az importálási adatbázisra vonatkozó kérelmet a Azure SQL Database szolgáltatásnak. Adatbázis mérete, attól függően az importálás eltarthat egy ideig.
 
 ```azure-cli
 # get the storage account key
@@ -140,22 +140,22 @@ az sql db import --resource-group "<resourceGroupName>" --server "<serverName>" 
 * * *
 
 > [!TIP]
-> For another script example, see [Import a database from a BACPAC file](scripts/sql-database-import-from-bacpac-powershell.md).
+> Egy másik parancsfájl-példa: [adatbázis importálása BACPAC-fájlból](scripts/sql-database-import-from-bacpac-powershell.md).
 
 ## <a name="limitations"></a>Korlátozások
 
-Importing to a database in elastic pool isn't supported. You can import data into a single database and then move the database to an elastic pool.
+Egy adatbázis rugalmas adatbáziskészletben való importálása nem támogatott. Az adatimportálást egyetlen adatbázisba is importálhatja, majd az adatbázist egy rugalmas készletbe helyezheti át.
 
-## <a name="import-using-wizards"></a>Import using wizards
+## <a name="import-using-wizards"></a>Importálja a varázslók használatával
 
-You can also use these wizards.
+Ezek a varázslók is használhatja.
 
-- [Import Data-tier Application Wizard in SQL Server Management Studio](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard).
-- [SQL Server Import and Export Wizard](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard).
+- [Adatrétegbeli alkalmazás importálása varázsló SQL Server Management Studioban](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard).
+- [SQL Server Importálás és exportálás varázsló](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- To learn how to connect to and query an imported SQL Database, see [Quickstart: Azure SQL Database: Use SQL Server Management Studio to connect and query data](sql-database-connect-query-ssms.md).
+- Az importált SQL Databasehoz való kapcsolódással és lekérdezéssel kapcsolatos információkért lásd: gyors útmutató [: Azure SQL Database: a SQL Server Management Studio használata a kapcsolódáshoz és az adatlekérdezéshez](sql-database-connect-query-ssms.md).
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407).
-- For a discussion of the entire SQL Server database migration process, including performance recommendations, see [SQL Server database migration to Azure SQL Database](sql-database-single-database-migrate.md).
-- To learn how to manage and share storage keys and shared access signatures securely, see [Azure Storage Security Guide](https://docs.microsoft.com/azure/storage/common/storage-security-guide).
+- A teljes SQL Server adatbázis-áttelepítési folyamatról, beleértve a teljesítménnyel kapcsolatos ajánlásokat is, tekintse meg a [SQL Server adatbázis áttelepítésének Azure SQL Database](sql-database-single-database-migrate.md).
+- A tárolási kulcsok és a közös hozzáférési aláírások biztonságos kezelésével és megosztásával kapcsolatos további információkért lásd: az [Azure Storage biztonsági útmutatója](https://docs.microsoft.com/azure/storage/common/storage-security-guide).
