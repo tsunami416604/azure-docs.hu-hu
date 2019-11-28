@@ -1,13 +1,10 @@
 ---
 title: Letiltott Azure for Students-előfizetés újraaktiválása | Microsoft Docs
 description: Ez a cikk azt ismerteti, miért lett letiltva az Azure for Students-előfizetése, és hogyan aktiválhatja újra.
-services: ''
-documentationcenter: ''
 author: amberbhargava
 manager: amberb
-editor: ''
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -15,12 +12,12 @@ ms.workload: na
 ms.date: 03/01/2018
 ms.author: banders
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7d41e9b7774bf8840db9e729d3aa9371f5bac04f
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: cfabb3ad7ad150b38b8c90488710731ad29b80a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "60615936"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226415"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Miért lett letiltva az Azure for Students-előfizetésem, és hogyan aktiválhatom újra?
 
@@ -34,7 +31,7 @@ A fennmaradó kreditek mennyiségét a [Microsoft Azure Sponsorships portálon](
 
 1. Jelentkezzen be Azure for Students-fiókja hitelesítő adataival.
 2. Az egyenleg oldalán megtekintheti a felhasznált és a fennmaradó kreditekkel kapcsolatos információkat. A kreditek lejárati dátumát a kreditdiagram alatt találja.  
-   
+
     ![Képernyőkép az Azure for Students-előfizetésre vonatkozó kreditinformációkról](./media/billing-azurestudents-subscription-disabled/azurestudents-credit-balance.png)
 
 3. Az Azure-kreditet felhasználó szolgáltatások használati adatainak megtekintéséhez a bal oldali navigációs sávon válassza a **Usage** (Használat) lehetőséget, majd válassza ki Azure for Students-előfizetését.
@@ -57,4 +54,4 @@ Ha véletlenül lemondta az Azure for Students-előfizetést, akkor az újraakti
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

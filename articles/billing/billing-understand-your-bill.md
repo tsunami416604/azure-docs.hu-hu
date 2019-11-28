@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan olvashatók le és értelmezhetők az Azure-el�
 author: bandersmsft
 manager: dougeby
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ceeacf216b1d3258aa73d86c613d28e00e9480bb
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 9486d56a723bb311c05ab7aa776060dfa9561aae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718618"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223024"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>A Microsoft Azure-számla ismertetése
 Az Azure-számla értelmezéséhez hasonlítsa össze a számlát a részletes napi használati adatok fájljával és a költségkezelési jelentésekkel az Azure Portalon.

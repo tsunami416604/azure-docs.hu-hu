@@ -3,7 +3,7 @@ title: Az Azure Enterprise költségnézeteinek hibaelhárítása
 description: Megtudhatja, hogyan oldhatja meg az Azure Portalon található szervezeti költségnézetek esetleges problémáit.
 author: bandersmsft
 manager: amberb
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
@@ -11,12 +11,12 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 7b4f7fbba83d9d336e42e1de60822a0aa9107269
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 8266296bcf77a5889f6a747b990bd47f4d5ff252
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709646"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223932"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Az Enterprise költségnézeteinek hibaelhárítása
 

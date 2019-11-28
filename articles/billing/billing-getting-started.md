@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan kerülheti el a váratlan költségeket Azure-s
 author: bandersmsft
 manager: amberb
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 6f7a29adfbd145be11f9f6c91e8e66dd229fed62
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e5cdd7181e680dbc7406118afeb4aeb837d3aaf2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375661"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223909"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Hogyan kerülheti el a váratlan költségeket az Azure-számlázás és -költségkezelés használatával
 
@@ -68,11 +68,11 @@ A költségek a következő eszközökkel monitorozhatók:
 
 ### <a name="track-costs-with-budgets-and-cost-alerts"></a>Költségek nyomon követése költségvetésekkel és költségriasztásokkal
 
-A költségek kezeléséhez [költségvetéseket](../cost-management/tutorial-acm-create-budgets.md) és [riasztásokat](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) hozhat létre, amelyek automatikusan figyelmeztetik Önt és az érdekelt feleket a rendellenes kiadásokról és a túlköltekezésről. 
+A költségek kezeléséhez [költségvetéseket](../cost-management/tutorial-acm-create-budgets.md) és [riasztásokat](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) hozhat létre, amelyek automatikusan figyelmeztetik Önt és az érdekelt feleket a rendellenes kiadásokról és a túlköltekezésről.
 
 ### <a name="costs"></a> Költségek feltérképezése és elemzése a költségelemzés szolgáltatás használatával
 
-Az Azure-szolgáltatások elindítása után rendszeresen tekintse meg a költségeket az Azure-költségek nyomon követéséhez. A költségelemzés segítségével megállapíthatja, hol keletkeznek az Azure használatából eredő költségei. 
+Az Azure-szolgáltatások elindítása után rendszeresen tekintse meg a költségeket az Azure-költségek nyomon követéséhez. A költségelemzés segítségével megállapíthatja, hol keletkeznek az Azure használatából eredő költségei.
 
 1. Nyissa meg [az Azure Portal Költségkezelés + számlázás oldalát](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade).
 
@@ -166,7 +166,7 @@ A szolgáltatási szerződés (SLA) ismerteti a Microsoft az üzemidővel és h�
 
 Jóváírás kérése:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Ha több fiókja is van, ügyeljen arra, hogy azt a fiókot használja, amelyet az Azure-állásidő érintett. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Ha több fiókja is van, ügyeljen arra, hogy azt a fiókot használja, amelyet az Azure-állásidő érintett.
 2. Hozzon létre egy új támogatási kérést.
 3. A **Probléma típusa** területen válassza a **Számlázás** lehetőséget.
 4. A **Probléma típusa** területen válassza a **Visszatérítési kérelem** lehetőséget.

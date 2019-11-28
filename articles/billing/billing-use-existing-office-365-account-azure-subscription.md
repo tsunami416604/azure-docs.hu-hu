@@ -8,19 +8,19 @@ manager: adpick
 editor: ''
 tags: billing,top-support-issue
 ms.assetid: 129cdf7a-2165-483d-83e4-8f11f0fa7f8b
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
-ms.openlocfilehash: 44ff08c84b3e95a5b598ebf4279fc2ffc46313e3
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 617f8cd018bb9d2f170d28381e02b4b73376e589
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "60369528"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225595"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Regisztrálás Azure-előfizetésre Office 365-fiókkal
 Ha rendelkezik Office 365-előfizetéssel, akkor Office 365-fiókja segítségével létrehozhat Azure-előfizetést. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) Office 365-felhasználónevével és -jelszavával. Ha virtuális gépeket szeretne beállítani, vagy más Azure-szolgáltatásokat szeretne használni, regisztrálnia kell egy Azure-előfizetést. Azure-előfizetését megoszthatja másokkal, és [szerepköralapú hozzáférés-vezérléssel kezelheti az Azure-előfizetéshez és -erőforrásokhoz való hozzáférést](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
@@ -57,4 +57,4 @@ További információkért lásd [az Azure-előfizetések az Azure Active Direct
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
