@@ -11,15 +11,15 @@ ms.service: virtual-machines-sql
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/12/2018
+ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 855bd64bc8beb86a1bc62c65f71254f43c7a722a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 00b4647815d8330152ca2dd0b5e137e337e80210
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101985"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561097"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az az Azure Virtual Machines szolgáltatásban futó SQL Server? (Windows)
 
@@ -35,7 +35,7 @@ Világszerte számos [földrajzi régióban](https://azure.microsoft.com/regions
 
 Az SQL Server Azure virtuális gépek az [automatikus javítás](virtual-machines-windows-sql-automated-patching.md) segítségével ütemezhetnek egy karbantartási időszakot a fontos Windows- és SQL Server-frissítések automatikus telepítéséhez.
 
-## <a name="automated-backups"></a>Automatikus biztonsági mentések
+## <a name="automated-backups"></a>Automatizált biztonsági mentések
 
 Az SQL Server Azure virtuális gépek használni képesek az [automatikus biztonsági mentés](virtual-machines-windows-sql-automated-backup-v2.md) előnyeit, amely rendszeresen biztonsági másolatokat készít az adatbázisról a Blob Storage tárhelyen. Ezt a technikát manuálisan is alkalmazhatja. További információ: [Use Azure Storage for SQL Server Backup and Restore](virtual-machines-windows-use-storage-sql-server-backup-restore.md) (Az Azure Storage használata az SQL Server biztonsági mentéséhez és helyreállításához).
 
@@ -57,7 +57,7 @@ Első lépésként válassza ki a megfelelő verziójú, kiadású és operáci�
 ### <a id="payasyougo"></a> Használatalapú fizetés
 A következő táblázat a használatalapú fizetéssel elérhető SQL Server-rendszerképeket foglalja össze.
 
-| Version | Operációs rendszer | Kiadás |
+| Verzió | Operációs rendszer | Kiadás |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2StandardWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2WebWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2ExpressWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2DeveloperWindowsServer2016) |
@@ -75,7 +75,7 @@ Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépé
 
 Ha saját licencet szeretne létrehozni, lehetősége van egy meglévő, fizetős SQL-alapú virtuális gép átalakítására, vagy telepítheti az előre meghatározott **{BYOL}** lemezképet is. A licencelési modellnek a használati és BYOL közötti váltásával kapcsolatos további információkért lásd: [az SQL-alapú virtuális gép licencelési modelljének módosítása](virtual-machines-windows-sql-ahb.md). 
 
-| Version | Operációs rendszer | Kiadás |
+| Verzió | Operációs rendszer | Kiadás |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2StandardWindowsServer2016) |
@@ -128,13 +128,13 @@ Az Azure csak egy virtuálisgép-rendszerképet tart fenn minden egyes támogato
 A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint engedélyezve van. Ez a program rendszeres időközönként jelentéseket küld a Microsoftnak az SQL Server fejlesztése érdekében. A CEIP-pel nem kell felügyeleti feladatokat végezni, hacsak nem kívánja letiltani az üzembe helyezés után. A CEIP testreszabásához vagy letiltásához csatlakozzon a virtuális géphez a távoli asztalról. Ezután futtassa az **SQL Server hiba- és használatai jelentések** segédprogramot. A jelentések letiltásához kövesse az utasításokat. Az adatgyűjtésről további információért tekintse meg az [SQL Server adatvédelmi nyilatkozatát](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement).
 
 ## <a name="related-products-and-services"></a>Kapcsolódó termékek és szolgáltatások
-### <a name="windows-virtual-machines"></a>Windows Virtual Machines
+### <a name="windows-virtual-machines"></a>Windows rendszerű virtuális gépek
 * [Virtual Machines – áttekintés](../overview.md)
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Adattárolás
 * [A Microsoft Azure Storage bemutatása](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 * [A Virtual Network áttekintése](../../../virtual-network/virtual-networks-overview.md)
 * [IP-címek az Azure-ban](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Teljes tartománynév létrehozása az Azure Portalon](../portal-create-fqdn.md)
@@ -143,7 +143,7 @@ A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint enge
 * [Az SQL Server dokumentációja](https://docs.microsoft.com/sql/index)
 * [Az Azure SQL Database összehasonlítása](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az SQL Server használatának első lépései az Azure virtuális gépeken:
 
@@ -152,3 +152,8 @@ Az SQL Server használatának első lépései az Azure virtuális gépeken:
 Választ találhat az SQL virtuális gépek használatával kapcsolatos gyakori kérdésekre:
 
 * [Az SQL Server használata az Azure Virtual Machinesben – gyakori kérdések](virtual-machines-windows-sql-server-iaas-faq.md)
+
+Az N szintű alkalmazások SQL Server IaaS való futtatására szolgáló hivatkozási architektúrák megtekintése
+
+* [Windows N szintű alkalmazás az Azure-ban SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [N szintű alkalmazás futtatása több Azure-régióban a magas rendelkezésre állás érdekében](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

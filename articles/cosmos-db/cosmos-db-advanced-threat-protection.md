@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 57303c41d90f6205c284c7de67bb8643aa3cd368
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c816c9877a9c796ee76310f2452f3505531c3018
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888063"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555030"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Komplex veszélyforrások elleni védelem Azure Cosmos DB
 
@@ -99,7 +99,7 @@ A rendszer a riasztás részleteivel és a javasolt műveletekkel kapcsolatos e-
 
  A Azure Cosmos DB-fiókok figyelése során generált riasztások listájának megtekintéséhez tekintse meg a Security Center dokumentációjának [Cosmos db riasztások](../security-center/security-center-alerts-data-services.md#cosmos-db) című szakaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ a [diagnosztikai naplózásról Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal)
+* További információ a [diagnosztikai naplózásról Azure Cosmos db](monitor-cosmos-db.md#diagnostic-settings)
 * További információ a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

@@ -9,18 +9,18 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8200c2511d4f85705ff56df43f128034d29b0604
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 2c68c64202efec6d7dab745b6e1bdc029fa3976f
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012696"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561304"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Az adatmegőrzés ismertetése Azure Time Series Insights
 
-Ez a cikk két olyan beállítást ismertet, amelyek hatással vannak az adatok megőrzésére a Azure Time Series Insights-környezetben.
+Ez a cikk két olyan elsődleges beállítást ismertet, amelyek hatással vannak az adatmegőrzésre a Azure Time Series Insights-környezetben.
 
 ## <a name="video"></a>Videó
 
@@ -88,7 +88,7 @@ A bejövő forgalom folytatásakor:
 
 Az érintett Event Hubsban érdemes lehet módosítani az üzenet- **megőrzési** tulajdonságot, hogy az adatvesztés minimálisra csökkenjen, ha az Time Series Insights.
 
-[![Event hub-üzenetek megőrzése.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[![Event hub-üzenetek megőrzése.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
 Ha az eseményforrás (`timeStampPropertyName`) egyik tulajdonsága sincs konfigurálva, Time Series Insights alapértelmezett értéke az Event hub-ban az X tengelyként való érkezés időbélyege. Ha `timeStampPropertyName` úgy van konfigurálva, hogy valami más legyen, a környezet az események elemzésekor megkeresi a konfigurált `timeStampPropertyName` az adatcsomagban.
 

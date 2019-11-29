@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77cda523582b513669adcafd3a46b6ac02dd99db
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 67b92c32d511300a0645b707f2a263b463937d1b
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285625"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558579"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>A vállalati alkalmazások felhasználói fiókkal való üzembe helyezésének kezelése a Azure Portal
 
@@ -85,4 +85,4 @@ Ha az üzembe helyezést az alkalmazás első alkalommal engedélyezi, kapcsolja
 
 Állítsa a **kiépítési állapotot** **ki** értékre a kiépítési szolgáltatás szüneteltetéséhez. Ebben az állapotban az Azure nem hoz létre, nem frissít vagy távolít el semmilyen felhasználói vagy csoportos objektumot az alkalmazásban. Állítsa vissza az állapotot **a be** értékre, és a szolgáltatás felveszi a helyét, ahol abbahagyta.
 
-**Törölje az aktuális állapotot, és indítsa újra a szinkronizálást** kezdeti ciklusban. A szolgáltatás ezután újra kiértékeli a forrásrendszer összes felhasználóját, és megállapítja, hogy a kiépítés hatókörében van-e. Ez akkor lehet hasznos, ha az alkalmazás jelenleg karanténban van, vagy módosítania kell az attribútum-hozzárendeléseket. Ez nem használható törlési vagy letiltási kérelem elindítására, mivel ezek az események törölhető állapotba kerülnek, és újraindulnak. A kezdeti ciklus több időt vesz igénybe, mint a tipikus növekményes ciklus a kiértékeléshez szükséges objektumok száma miatt. A kezdeti és a növekményes ciklusok teljesítményéről itt olvashat bővebben [.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) 
+**Törölje az aktuális állapotot, és indítsa újra a szinkronizálást** kezdeti ciklusban. A szolgáltatás ezután újra kiértékeli a forrásrendszer összes felhasználóját, és megállapítja, hogy a kiépítés hatókörében van-e. Ez akkor lehet hasznos, ha az alkalmazás jelenleg karanténban van, vagy módosítania kell az attribútum-hozzárendeléseket. Vegye figyelembe, hogy a kezdeti ciklus a kiértékeléshez szükséges objektumok száma miatt hosszabb időt vesz igénybe, mint a szokásos növekményes ciklus. A kezdeti és a növekményes ciklusok teljesítményéről itt olvashat bővebben [.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) 

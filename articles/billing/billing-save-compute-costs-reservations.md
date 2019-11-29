@@ -3,16 +3,16 @@ title: Mi az az Azure Reservations?
 description: Megismerheti az Azure Reservationst és annak díjszabását a virtuális gépek, az SQL Database-adatbázisok, az Azure Cosmos DB és más erőforrások költségeinek csökkentéséhez.
 author: yashesvi
 manager: yashar
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/01/2019
+ms.date: 11/22/2019
 ms.author: banders
-ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: df15bcc0e4a3ef7629abf7b62f8ff36caf732150
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580092"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420146"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -36,6 +36,12 @@ Szolgáltatáscsomagok:
 - **Fenntartott SQL Database virtuális mag** – A foglalás csak a számítási költségeket foglalja magában. A licenc számlázása külön történik.
 - **SQL Data Warehouse** – A foglalás a cDWU-használatot fedezi. Nem fedezi azonban az SQL Data Warehouse használatával kapcsolatos tárolási és hálózatkezelési költségeket.
 - **App Service-bélyeg díja** – A foglalás a bélyeghasználatot fedezi. Nem érvényes azonban a feldolgozókra, így a bélyeghez társított egyéb erőforrásokért külön kell fizetnie.
+- Azure Database for MySQL
+- Azure Database for PostgreSQL
+- Azure Database for MariaDB
+- Azure Data Explorer
+- Premium SSD Managed Disks
+
 
 A Windows rendszerű virtuális gépek és az SQL Database esetében a licencelési költségek fedezéséhez használhatja az [Azure Hybrid Benefitet](https://azure.microsoft.com/pricing/hybrid-benefit/).
 

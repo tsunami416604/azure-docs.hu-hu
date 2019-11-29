@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2abc5434f11bf00c6872775b1336694c04972e95
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: c26197a14e78b1cf1a1e078ba0145eca207206bf
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200222"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561965"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>A biztonságos, Azure által felügyelt munkaállomások ismertetése
 
 A biztonságos, elkülönített munkaállomások kritikus fontosságúak a bizalmas szerepkörök, például a rendszergazdák, a fejlesztők és a kritikus fontosságú szolgáltatók biztonsága szempontjából. Ha az ügyfél-munkaállomás biztonsága sérült, számos biztonsági vezérlő és garancia meghiúsulhat, vagy hatástalan lehet.
 
-Ez a dokumentum ismerteti, hogy mire van szüksége a biztonságos munkaállomás létrehozásához, amelyet gyakran más néven Kiemelt hozzáférési munkaállomás (PAW) használ. A cikk a kezdeti biztonsági vezérlők beállítására vonatkozó részletes utasításokat is tartalmaz. Ez az útmutató leírja, hogyan kezelheti a felhőalapú technológia a szolgáltatást. A Windows 10RS5, a Microsoft Defender komplex veszélyforrások elleni védelem (ATP), a Azure Active Directory és az Intune által bevezetett biztonsági képességekre támaszkodik.
+Ez a dokumentum ismerteti, hogy mire van szüksége a biztonságos munkaállomás létrehozásához, amelyet gyakran más néven Kiemelt hozzáférési munkaállomás (PAW) használ. A cikk a kezdeti biztonsági vezérlők beállítására vonatkozó részletes utasításokat is tartalmaz. Ez az útmutató leírja, hogyan kezelheti a felhőalapú technológia a szolgáltatást. A Windows 10RS5, a Microsoft Defender komplex veszélyforrások elleni védelem (ATP), a Azure Active Directory és a Microsoft Intune által bevezetett biztonsági képességekre támaszkodik.
 
 > [!NOTE]
 > Ez a cikk a biztonságos munkaállomás fogalmát és fontosságát ismerteti. Ha már ismeri a koncepciót, és ki szeretné hagyni az üzembe helyezést, látogasson el [a biztonságos munkaállomás üzembe helyezése](howto-azure-managed-workstation.md)lehetőségre.
@@ -52,6 +52,7 @@ Ez a dokumentum egy olyan megoldást ismertet, amely segíthet a számítástech
 * Windows 10 (aktuális verzió) az Eszközállapot-igazoláshoz és a felhasználói élményhez
 * Defender ATP a felhőben felügyelt Endpoint Protection, észlelés és válasz esetén
 * Azure AD PIM az engedélyezési és az igény szerinti (JIT) jogosultsági szintű hozzáférés kezeléséhez az erőforrásokhoz
+* Log Analytics és Sentinel a figyeléshez és a riasztásokhoz
 
 ## <a name="who-benefits-from-a-secure-workstation"></a>Kik a biztonságos munkaállomás előnyei?
 
@@ -63,7 +64,7 @@ A biztonságos munkaállomás használatakor minden felhasználó és operátor 
 * Nagyon érzékeny munkaállomás, például gyors fizetési terminál
 * Kereskedelmi titkokat kezelő munkaállomás
 
-A kockázat csökkentése érdekében emelt szintű biztonsági ellenőrzéseket kell megvalósítani a fiókokat használó, Kiemelt munkaállomások számára. További információkért tekintse meg a [Azure Active Directory funkció üzembe helyezési útmutatóját](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-checklist-p2), az [Office 365 menetrendjét](https://aka.ms/o365secroadmap)és az emelt [szintű hozzáférési ütemterv biztonságossá](https://aka.ms/sparoadmap)tételét ismertető témakört.
+A kockázat csökkentése érdekében emelt szintű biztonsági ellenőrzéseket kell megvalósítani a fiókokat használó, Kiemelt munkaállomások számára. További információkért tekintse meg a [Azure Active Directory funkció üzembe helyezési útmutatóját](../fundamentals/active-directory-deployment-checklist-p2.md), az [Office 365 menetrendjét](https://aka.ms/o365secroadmap)és az emelt [szintű hozzáférési ütemterv biztonságossá](https://aka.ms/sparoadmap)tételét ismertető témakört.
 
 ## <a name="why-use-dedicated-workstations"></a>Miért érdemes dedikált munkaállomásokat használni?
 
@@ -78,16 +79,29 @@ Az adattárolási stratégiák megszigorítják a biztonságot azáltal, hogy n�
 
 ## <a name="supply-chain-management"></a>Ellátási lánc kezelése
 
-A biztonságos munkaállomás esetében elengedhetetlen egy olyan ellátási Láncos megoldás, amelyben a "megbízhatóság gyökere" nevű megbízható munkaállomás használatos. Ebben a megoldásban a megbízhatóság gyökerének a [Microsoft Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) technológiáját kell használnia. Egy munkaállomás biztonságossá tételéhez az Autopilot lehetővé teszi a Microsoft OEM-re optimalizált Windows 10-es eszközök kihasználása. Ezek az eszközök a gyártótól származó ismert jó állapotba kerülnek. A potenciálisan nem biztonságos eszközök rendszerképének átállítása helyett az Autopilot képes a Windows-eszközök "üzleti használatra kész" állapotba alakítására. Alkalmazza a beállításokat és a házirendeket, telepíti az alkalmazásokat, és még módosítja a Windows 10 kiadását. Előfordulhat például, hogy az Autopilot a Windows 10 Pro verzióról a Windows 10 Enterprise rendszerre módosítja az eszköz Windows rendszerre való telepítését, hogy az képes legyen speciális funkciók használatára.
+A biztonságos munkaállomás esetében elengedhetetlen egy olyan ellátási Láncos megoldás, amelyben a "megbízhatóság gyökere" nevű megbízható munkaállomás használatos. A megbízhatósági eszközök gyökerének kiválasztásakor figyelembe veendő technológiáknak a modern laptopok következő technológiáit kell tartalmazniuk: 
+
+* [Platformmegbízhatósági modul (TPM) 2,0](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-tpm)
+* [BitLocker meghajtótitkosítás](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-bitlocker)
+* [UEFI biztonságos rendszerindítás](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot)
+* [Windows Update használatával terjesztett illesztőprogramok és belső vezérlőprogram](https://docs.microsoft.com/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
+* [Virtualizálás és HVCI engedélyezve](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs)
+* [Az illesztőprogramok és az alkalmazások készen állnak a HVCI](https://docs.microsoft.com/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
+* [Windows Hello](https://docs.microsoft.com/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
+* [DMA I/O-védelem](https://docs.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
+* [Rendszerőr](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
+* [Modern készenlét](https://docs.microsoft.com/windows-hardware/design/device-experiences/modern-standby)
+
+Ebben a megoldásban a megbízhatóság gyökerét a [Microsoft Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) technológiájának használatával helyezi üzembe, amely megfelel a modern műszaki követelményeknek. Egy munkaállomás biztonságossá tételéhez az Autopilot lehetővé teszi a Microsoft OEM-re optimalizált Windows 10-es eszközök kihasználása. Ezek az eszközök a gyártótól származó ismert jó állapotba kerülnek. A potenciálisan nem biztonságos eszközök rendszerképének átállítása helyett az Autopilot képes a Windows-eszközök "üzleti használatra kész" állapotba alakítására. Alkalmazza a beállításokat és a házirendeket, telepíti az alkalmazásokat, és még módosítja a Windows 10 kiadását. Előfordulhat például, hogy az Autopilot a Windows 10 Pro verzióról a Windows 10 Enterprise rendszerre módosítja az eszköz Windows rendszerre való telepítését, hogy az képes legyen speciális funkciók használatára.
 
 ![Biztonságos munkaállomás-szintek](./media/concept-azure-managed-workstation/supplychain.png)
 
 ## <a name="device-roles-and-profiles"></a>Eszközök szerepkörei és profiljai
 
-Ez az útmutató számos olyan biztonsági profilt és szerepkört hivatkozik, amelyek segítségével biztonságosabb megoldásokat hozhat létre a felhasználók, a fejlesztők és az informatikai szakemberek számára. Ezek a profilok kiegyensúlyozzák a használhatóságot és a kockázatokat olyan gyakori felhasználók számára, akik kihasználhatják a bővített vagy biztonságos munkaállomásokat. Az itt megadott beállítások az iparág által elfogadott szabványokon alapulnak. Ez az útmutató bemutatja, hogyan erősítheti meg a Windows 10 rendszert, és csökkentheti az eszköz vagy a felhasználó biztonságával kapcsolatos kockázatokat. Ezt a házirend és a technológia segítségével végezheti el a biztonsági funkciók és kockázatok kezeléséhez.
+Ez az útmutató számos olyan biztonsági profilt és szerepkört hivatkozik, amelyek segítségével biztonságosabb megoldásokat hozhat létre a felhasználók, a fejlesztők és az informatikai szakemberek számára. Ezek a profilok kiegyensúlyozzák a használhatóságot és a kockázatokat olyan gyakori felhasználók számára, akik kihasználhatják a bővített vagy biztonságos munkaállomásokat. Az itt megadott beállítások az iparág által elfogadott szabványokon alapulnak. Ez az útmutató bemutatja, hogyan erősítheti meg a Windows 10 rendszert, és csökkentheti az eszköz vagy a felhasználó biztonságával kapcsolatos kockázatokat. A modern hardveres technológia és a megbízhatósági eszköz gyökerének kihasználásához [Eszközállapot-igazolást](https://techcommunity.microsoft.com/t5/Intune-Customer-Success/Support-Tip-Using-Device-Health-Attestation-Settings-as-Part-of/ba-p/282643)fogunk használni, amely a **magas biztonsági** profiltól kezdve engedélyezve van. Ez a funkció biztosítja, hogy a támadók ne legyenek állandóak az eszköz korai rendszerindításakor. Ezt a házirend és a technológia segítségével végezheti el a biztonsági funkciók és kockázatok kezeléséhez.
 ![biztonságos munkaállomás-szintek](./media/concept-azure-managed-workstation/seccon-levels.png)
 
-* **Alacsony biztonság** – a felügyelt, szabványos munkaállomás jó kiindulási pontot biztosít a legtöbb otthoni és kisméretű üzleti használathoz. Ezek az eszközök regisztrálva vannak az Azure AD-ben, és az Intune-nal kezelhetők. Ez a profil lehetővé teszi, hogy a felhasználók bármilyen alkalmazást futtassanak, és böngésszenek bármely webhelyen. Egy kártevő szoftver, például a [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) engedélyezése szükséges.
+* **Alapszintű biztonság** – a felügyelt, szabványos munkaállomás jó kiindulási pontot biztosít a legtöbb otthoni és kisméretű üzleti használathoz. Ezek az eszközök regisztrálva vannak az Azure AD-ben, és az Intune-nal kezelhetők. Ez a profil lehetővé teszi, hogy a felhasználók bármilyen alkalmazást futtassanak, és böngésszenek bármely webhelyen. Egy kártevő szoftver, például a [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) engedélyezése szükséges.
 
 * **Fokozott biztonság** – ez a belépési szintű, védett megoldás jó választás az otthoni felhasználók, a kisvállalkozások és az általános fejlesztők számára.
 
@@ -97,9 +111,9 @@ Ez az útmutató számos olyan biztonsági profilt és szerepkört hivatkozik, a
 
    A magas biztonsági szintű felhasználók hatékonyabban felügyelt környezetet igényelnek, miközben továbbra is végezhetnek olyan tevékenységeket, mint például az e-mailek és a webböngészés egy egyszerű használatú felhasználói élményben. A felhasználók olyan szolgáltatásokat várnak, mint például a cookie-k, a kedvencek és más, a munkához szükséges parancsikonok. Előfordulhat azonban, hogy ezek a felhasználók nem igénylik az eszköz módosítását vagy hibakeresését. Emellett nem kell illesztőprogramokat telepíteniük. A magas biztonsági profilt a High Security-Windows10 (1809) parancsfájl használatával helyezi üzembe.
 
-* **Speciális** – a támadók megcélozzák a fejlesztőket és a rendszergazdákat, mivel a támadók számára érdekes rendszereket módosíthatnak. A speciális munkaállomás a helyi alkalmazások kezelésével és a webhelyek korlátozásával kiterjeszti a magas biztonsági munkaállomás szabályzatait. Emellett korlátozza a nagy kockázatú hatékonyságnövelő képességeket, például az ActiveX, a Java, a böngésző beépülő modulok és más Windows-vezérlők használatát. Ezt a profilt a DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline-parancsfájllal helyezheti üzembe.
+* **Speciális** – a támadók megcélozzák a fejlesztőket és a rendszergazdákat, mivel a támadók számára érdekes rendszereket módosíthatnak. A speciális munkaállomás a helyi alkalmazások kezelésével és a webhelyek korlátozásával kiterjeszti a magas biztonsági munkaállomás szabályzatait. Emellett korlátozza a nagy kockázatú hatékonyságnövelő képességeket, például az ActiveX, a Java, a böngésző beépülő modulok és más Windows-vezérlők használatát. Ezt a profilt a DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline parancsfájllal helyezheti üzembe.
 
-* **Biztonságos** – a rendszergazdai fiókokat veszélyeztető támadók jelentős üzleti károkat okozhatnak az adatlopással, az adatmódosítással vagy a szolgáltatás megszakadásával kapcsolatban. Ebben a megerősített állapotban a munkaállomás engedélyezi az összes olyan biztonsági vezérlőt és házirendet, amely korlátozza a helyi alkalmazások felügyeletének közvetlen ellenőrzését. A biztonságos munkaállomás nem rendelkezik hatékonyságnövelő eszközökkel, így az eszköz nehezebben sérülhet. Blokkolja a leggyakoribb adathalászi támadásokat: e-mail-cím és közösségi média.  A biztonságos munkaállomás üzembe helyezhető a Secure Workstation-Windows10 (1809) SecurityBaseline-parancsfájllal.
+* **Biztonságos** – a rendszergazdai fiókokat veszélyeztető támadók jelentős üzleti károkat okozhatnak az adatlopással, az adatmódosítással vagy a szolgáltatás megszakadásával kapcsolatban. Ebben a megerősített állapotban a munkaállomás engedélyezi az összes olyan biztonsági vezérlőt és házirendet, amely korlátozza a helyi alkalmazások felügyeletének közvetlen ellenőrzését. A biztonságos munkaállomás nem rendelkezik hatékonyságnövelő eszközökkel, így az eszköz nehezebben sérülhet. Blokkolja a leggyakoribb adathalászi támadásokat: e-mail-cím és közösségi média. A biztonságos munkaállomás üzembe helyezhető a Secure Workstation-Windows10 (1809) SecurityBaseline-parancsfájllal.
 
    ![Biztonságos munkaállomás](./media/concept-azure-managed-workstation/secure-workstation.png)
 
@@ -107,8 +121,8 @@ Ez az útmutató számos olyan biztonsági profilt és szerepkört hivatkozik, a
 
 * **Elkülönített** – ez az egyéni, offline forgatókönyv a spektrum szélsőséges végét jelöli. Ebben az esetben nincsenek telepítési parancsfájlok megadva. Előfordulhat, hogy olyan üzleti szempontból kritikus fontosságú függvényt kell kezelnie, amelyhez nem támogatott vagy nem javított örökölt operációs rendszer szükséges. Például egy nagy értékkel rendelkező gépsor vagy egy élettartam-támogató rendszer. Mivel a biztonság kritikus fontosságú, és a felhőalapú szolgáltatások nem érhetők el, ezeket a számítógépeket manuálisan vagy elszigetelt Active Directory erdőszintű architektúrával, például a fokozott biztonságú felügyeleti környezettel (ESAE) kezelheti és frissítheti. Ilyen esetekben érdemes lehet eltávolítani az összes hozzáférést, kivéve az alapszintű Intune-t és az ATP állapot-ellenőrzéseket.
 
-  * [Intune hálózati kommunikációs követelmények](https://docs.microsoft.com/intune/network-bandwidth-use)
-  * [ATP hálózati kommunikációs követelmények](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
+   * [Intune hálózati kommunikációs követelmények](https://docs.microsoft.com/intune/network-bandwidth-use)
+   * [ATP hálózati kommunikációs követelmények](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
 
 ## <a name="next-steps"></a>Következő lépések
 

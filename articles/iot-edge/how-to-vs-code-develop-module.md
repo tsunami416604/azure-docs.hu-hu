@@ -8,16 +8,16 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 5b37ea92869468001581c9299b1633869671886a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 09371cc66b54d822db5ad24679d28f40323eb871
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457078"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561011"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Modulok fejlesztése és hibakeresése a Visual Studio Code használatával Azure IoT Edge
 
-Az Azure IoT Edge kapcsolhatja az üzleti logikára modulokat. Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studio Code-ot a modulok fejlesztésére és hibakeresésére szolgáló fő eszközként.
+Az üzleti logikát bekapcsolhatja Azure IoT Edge moduljaiba. Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studio Code-ot a modulok fejlesztésére és hibakeresésére szolgáló fő eszközként.
 
 A Visual Studio Code-ban C#a (z), a Node. js vagy a Java nyelveken írt modulok hibakeresése kétféleképpen lehetséges: a modul-tárolóban létrehozhat egy folyamatot, vagy hibakeresési módban elindíthatja a modul kódját. A Pythonban vagy C-ben írt modulok hibakereséséhez csak Linux amd64-tárolókban lévő folyamatokhoz lehet kapcsolódni.
 
@@ -59,7 +59,7 @@ A modul lemezképének létrehozásához és üzembe helyezéséhez a Docker-nek
 - [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) vagy [Docker hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
-    > Egy helyi Docker-beállításjegyzék prototípus és a egy felhőbeli beállításjegyzék helyett tesztelési célokra használható.
+    > A Felhőbeli beállításjegyzék helyett használhat egy helyi Docker-beállításjegyzéket prototípus-és tesztelési célokra.
 
 Ha nem fejleszti a modult a C-ben, akkor a Python-alapú [Azure IoT EdgeHub dev eszközre](https://pypi.org/project/iotedgehubdev/) is szüksége lesz a helyi fejlesztési környezet beállításához a IoT Edge megoldás hibakereséséhez, futtatásához és teszteléséhez. Ha még nem tette meg, telepítse a [Pythont (2.7/3.6/3.7) és a pip](https://www.python.org/) -et, majd telepítse a **iotedgehubdev** a parancs futtatásával a terminálon.
 
@@ -91,7 +91,7 @@ A következő lépések bemutatják, hogyan hozhat létre IoT Edge modult az el�
 
 1. Adja meg a modul nevét. Válassza ki a tároló beállításjegyzékében egyedi nevet.
 
-1. Adja meg a modul rendszerkép-tárházának nevét. A Visual Studio Code automatikusan feltölti a modul nevét a **localhost: 5000/< a modul neve\>** . Cserélje le a saját beállításjegyzék-információkat. Ha a teszteléshez helyi Docker-beállításjegyzéket használ, a **localhost** rendben van. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló úgy néz ki, mint  **_\<beállításjegyzék neve\>_ . azurecr.IO**. Csak a karakterlánc következő helyére írja a **localhost: 5000** részét, hogy a végeredmény a **\<*beállításjegyzék neve*\>. azurecr.io/ _\<a modul neve\>_** .
+1. Adja meg a modul rendszerkép-tárházának nevét. A Visual Studio Code automatikusan feltölti a modul nevét a **localhost: 5000/< a modul neve\>** . Cserélje le a saját beállításjegyzék-adataira. Ha a teszteléshez helyi Docker-beállításjegyzéket használ, a **localhost** rendben van. Ha Azure Container Registry használ, használja a bejelentkezési kiszolgálót a beállításjegyzék beállításai közül. A bejelentkezési kiszolgáló úgy néz ki, mint  **_\<beállításjegyzék neve\>_ . azurecr.IO**. Csak a karakterlánc következő helyére írja a **localhost: 5000** részét, hogy a végeredmény a **\<*beállításjegyzék neve*\>. azurecr.io/ _\<a modul neve\>_** .
 
    ![Docker-rendszerkép adattárának megadása](./media/how-to-develop-csharp-module/repository.png)
 
@@ -110,6 +110,8 @@ A megoldásban négy elem található:
 
 - A **Deployment. template. JSON** fájl felsorolja az új modult, valamint egy minta **SimulatedTemperatureSensor** modult, amely szimulálja a teszteléshez használható adatforrásokat. További információ az üzembe helyezési jegyzékek működéséről: az üzembe helyezési [jegyzékek használata modulok üzembe helyezéséhez és útvonalak létrehozásához](module-composition.md).
 
+A szimulált hőmérséklet-modul működésének megtekintéséhez tekintse meg a [SimulatedTemperatureSensor. csproj forráskódot](https://github.com/Azure/iotedge/tree/master/edge-modules/SimulatedTemperatureSensor).
+
 ## <a name="add-additional-modules"></a>További modulok hozzáadása
 
 Ha további modulokat szeretne felvenni a megoldásba, futtassa a következő parancsot **Azure IoT Edge: IoT Edge modul hozzáadása** a parancssorból. Azt is megteheti, hogy a jobb gombbal a **modulok** mappára vagy a `deployment.template.json` fájlra kattint a Visual Studio Code Explorer nézetében, majd kiválasztja **IoT Edge modul hozzáadása**lehetőséget.
@@ -125,7 +127,7 @@ A megoldás alapértelmezett moduljának kódja a következő helyen található
 - Java: **modulok > *&lt;a modul neve&gt;* > src > main > java > com > edgemodulemodules > app. Java**
 - C: **modulok > *&lt;a modul neve&gt;* > Main. c**
 
-A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul úgy van felépítve, hogy egyszerűen egy forrásból (ebben az esetben az adatokat szimuláló SimulatedTemperatureSensor modulból) beírja a bemenetet, és átadja a IoT Hubnak.
+A modul és a Deployment. template. JSON fájl úgy van beállítva, hogy felépítse a megoldást, leküldheti a tároló-beállításjegyzékbe, és üzembe helyezheti azt egy eszközön a kód megérintése nélküli teszteléshez. A modul úgy van felépítve, hogy egyszerűen egy forrásból (ebben az esetben az adatokat szimuláló SimulatedTemperatureSensor modulból) beírja a bemenetet, és átadja a IoT Hubnak.
 
 Ha készen áll a sablon testre szabására a saját kódjával, az [Azure IoT hub SDK](../iot-hub/iot-hub-devguide-sdks.md) -k segítségével olyan modulokat hozhat létre, amelyek a IoT-megoldások, például a biztonság, az eszközkezelés és a megbízhatóság szempontjából szükségesek.
 

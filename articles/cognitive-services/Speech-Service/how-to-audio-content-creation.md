@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 6ec98d1f7956ef1460909f62384a931400b596c4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2fa4bcb9db6f836346167b76e609a1437df88b04
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579635"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554990"
 ---
-# <a name="audio-content-creation"></a>Hangtartalom létrehozása
+# <a name="audio-content-creation"></a>Hanganyag létrehozása
 
 A [hangtartalom létrehozása](https://aka.ms/audiocontentcreation) egy online eszköz, amely lehetővé teszi a Microsoft szöveg-beszéd kimenetének testreszabását és finomhangolását az alkalmazásokhoz és termékekhez. Ezzel az eszközzel pontosabban hangolhatja a nyilvános és az egyéni hangokat, és kezelheti a felhőben a kimenetet.
 
@@ -43,7 +43,7 @@ Ez az ábra a testreszabott beszéd-szöveg kimenetek finomhangolásához és ex
 
 Kövesse az alábbi lépéseket egy beszédfelismerési erőforrás létrehozásához és a Speech studióhoz való kapcsolódáshoz.
 
-1. Kövesse ezeket az utasításokat [egy Azure-fiók regisztrálásához](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) és [egy beszédfelismerési erőforrás létrehozásához](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Győződjön meg arról, hogy a díjszabási szintje **S0**értékre van állítva. Ha az egyik neurális hangját használja, győződjön meg arról, hogy az erőforrást egy [támogatott régióban](regions.md#standard-and-neural-voices)hozza létre.
+1. Kövesse ezeket az utasításokat [egy Azure-fiók regisztrálásához](get-started.md#try-the-speech-service-using-a-new-azure-account) és [egy beszédfelismerési erőforrás létrehozásához](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Győződjön meg arról, hogy a díjszabási szintje **S0**értékre van állítva. Ha az egyik neurális hangját használja, győződjön meg arról, hogy az erőforrást egy [támogatott régióban](regions.md#standard-and-neural-voices)hozza létre.
 2. Jelentkezzen be a [hangtartalom létrehozásához](https://aka.ms/audiocontentcreation).
 3. Válasszon ki egy meglévő projektet, vagy kattintson az **új létrehozása**lehetőségre.
 4. Az előfizetést bármikor módosíthatja a **Beállítások** lehetőséggel, amely a felső NAV-ban található.
@@ -108,7 +108,7 @@ Miután áttekintette a hangkimenetet, és elégedett a hangolással és a beál
 
 * [Hosszú hang API](https://aka.ms/long-audio-api)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Speech Studio](https://speech.microsoft.com)

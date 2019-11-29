@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: 2844b48b3d832e8d9ec659ba657879d683016aee
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 762e7d4a7356c11171355b5325e77569e9acb1e2
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217672"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555099"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>A helyszíni Netezza-kiszolgálóról az Azure-ba történő Migrálás Azure Data Factory használata 
 
@@ -156,7 +156,7 @@ Ha két órán belül nem tölthető be az Azure-ba, és a saját üzemeltetés�
 
 Tartsa figyelemmel a CPU-és memóriahasználat figyelését a saját üzemeltetésű IR-gépen, és készen áll a gép vertikális felskálázására vagy a több gépre való skálázásra, amikor azt látja, hogy a processzor és a memória teljes mértékben használatban van. 
 
-Ha sávszélesség-szabályozási hibát tapasztal, ahogy azt Azure Data Factory másolási tevékenység is jelenti, csökkentse a párhuzamosságot vagy a `parallelCopies` beállítást a Azure Data Factory, vagy növelje a hálózat és az adatok sávszélességének vagy I/O-műveleteinek másodpercenkénti (IOPS) korlátait. tárolja. 
+Ha sávszélesség-szabályozási hibát tapasztal, ahogy azt Azure Data Factory másolási tevékenység jelzi, csökkentse a párhuzamosságot vagy a `parallelCopies` beállítást a Azure Data Factory, vagy növelje a hálózat és az adattárak sávszélességének vagy I/O-műveleteinek másodpercenkénti (IOPS) korlátait. 
 
 
 ### <a name="estimate-your-pricing"></a>A díjszabás becslése 
@@ -190,7 +190,7 @@ Az előző feltételezések alapján itt látható a becsült ár:
 
 További információt a következő cikkekben és útmutatókban talál:
 
-- [Adatok migrálása helyszíni adattárház-adatbázisból az Azure-ba Azure Data Factory használatával](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premises-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
+- [Adatok migrálása helyszíni adattárház-adatbázisból az Azure-ba Azure Data Factory használatával](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
 - [Netezza-összekötő](https://docs.microsoft.com/azure/data-factory/connector-netezza)
 - [ODBC-összekötő](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Azure Blob Storage-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)

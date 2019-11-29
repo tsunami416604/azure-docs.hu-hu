@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5a9f83a8f6e8d5e83f30d30da2b1c4c0f722dc3
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 7ee30962db230417bf3e20a354614a5ebb8f35a0
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063052"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561898"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Mit kell tudni az Azure-erőforrások felügyelt identitásairól?
 
@@ -43,7 +43,7 @@ Az Azure-erőforrások dokumentációs készletének összes felügyelt identit�
 - **Elsődleges azonosító** – a felügyelt identitáshoz tartozó egyszerű szolgáltatásnév, amely az Azure-erőforrásokhoz való szerepköralapú hozzáférés biztosítására szolgál.
 - **Azure instance metadata Service (IMDS)** – egy Rest-végpont elérhető minden, a Azure Resource Manager használatával létrehozott IaaS-virtuális gép számára. A végpont egy jól ismert, nem irányítható IP-címen (169.254.169.254) érhető el, amely csak a virtuális gépről érhető el.
 
-## Hogyan működik az Azure-erőforrások felügyelt identitásai?<a name="how-does-it-work"></a>
+## <a name="how-does-the-managed-identities-for-azure-resources-work"></a>Hogyan működik az Azure-erőforrások felügyelt identitásai?
 
 A felügyelt identitásoknak két típusa létezik:
 

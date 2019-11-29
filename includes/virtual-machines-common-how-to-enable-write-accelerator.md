@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/23/2019
+ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: c8e0bb50e14467d2950d97da660fc8e6fa176b99
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008899"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566280"
 ---
 Az írásgyorsító egy lemezes képesség az M-sorozatú Virtual Machines (VM) számára a Premium Storage Azure Managed Disks kizárólag. Ahogy a neve is jelzi, a funkció célja az, hogy javítsa az írások I/O-késését az Azure Premium Storage. A írásgyorsító ideális megoldás, ha a naplófájlok frissítései szükségesek a lemez nagy teljesítményű, modern adatbázisokhoz való megőrzéséhez.
 
@@ -46,8 +46,9 @@ A írásgyorsító által támogatott Azure Premium Storage virtuális merevleme
 
 | VM SKU | írásgyorsító lemezek száma | írásgyorsító lemez IOPS virtuális gépenként |
 | --- | --- | --- |
+| M416ms_v2, M416s_v2| 16 | 20000 |
 | M208ms_v2, M208s_v2| 8 | 10000 |
-| M128ms, 128s | 16 | 20000 |
+| M128ms, M128s | 16 | 20000 |
 | M64ms, M64ls, M64s | 8 | 10000 |
 | M32ms, M32ls, M32ts, M32s | 4 | 5000 |
 | M16ms, M16s | 2 | 2500 |
@@ -88,8 +89,8 @@ Ha nem adja meg a paramétert, a rendszer alapértelmezés szerint False érték
 
 Új opcionális logikai (nem üres) paraméter, a **-OsDiskWriteAccelerator** a következő parancsmagokhoz lett hozzáadva:
 
-- [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
-- [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
+- [Frissítés – AzVM](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
+- [Frissítés – AzVmss](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
 
 $True vagy $false megadásával szabályozhatja az Azure-írásgyorsító lemezek támogatását.
 

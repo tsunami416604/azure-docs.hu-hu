@@ -9,21 +9,21 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d1a1a610c5cb198bd4df47033f4b8359b3d93007
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: cabe30c08d13f0ebeb8e0ce784ea29a0b5d61bec
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452553"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560973"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Oktatóanyag: C# IoT Edge modul létrehozása Linux-eszközökhöz
 
 A Visual Studio Code használatával programkódot fejleszthet C# , és üzembe helyezheti Azure IoT Edge-t futtató linuxos eszközön. 
 
-Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:    
+Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
 
 > [!div class="checklist"]
-> * A Visual Studio Code használatával hozzon létre egy IoT Edge-modul, amely a .NET Core SDK 2.1-es alapul.
+> * A Visual Studio Code segítségével hozzon létre egy IoT Edge modult, amely a .NET Core 2,1 SDK-ra épül.
 > * Docker-rendszerkép létrehozása és közzététele a regisztrációs adatbázisba a Visual Studio Code és a Docker használatával.
 > * A modul üzembe helyezése az IoT Edge-eszközön.
 > * A létrejött adatok megtekintése.
@@ -38,7 +38,7 @@ Ez az oktatóanyag bemutatja, hogyan fejleszthet modult a **C#** **Visual Studio
 
 A következő táblázat segítségével megismerheti a C# modulok Linux rendszeren történő fejlesztésének és üzembe helyezésének lehetőségeit: 
 
-| C# | Visual Studio Code | Visual Studio | 
+| C# | Visual Studio-kód | Visual Studio | 
 | -- | ------------------ | ------------- |
 | **Linux AMD64** | ![C#LinuxAMD64-modulok a VS Code-ban](./media/tutorial-c-module/green-check.png) | ![C#LinuxAMD64-modulok a Visual Studióban](./media/tutorial-c-module/green-check.png) |
 | **Linuxos ARM32** | ![C#LinuxARM32-modulok a VS Code-ban](./media/tutorial-c-module/green-check.png) | ![C#LinuxARM64-modulok a Visual Studióban](./media/tutorial-c-module/green-check.png) |
@@ -75,7 +75,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
 
 3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
-   | Mező | Érték |
+   | Mező | Value (Díj) |
    | ----- | ----- |
    | Select folder (Mappa kiválasztása) | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
    | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
@@ -260,7 +260,7 @@ A Visual Studio Code jelenleg Linux AMD64 C# és Linux rendszerű ARM32v7-eszkö
        }
     ```
 
-    ![Ikermodul központi telepítési sablon hozzáadása](./media/tutorial-csharp-module/module-twin.png)
+    ![Modul Twin hozzáadása a központi telepítési sablonhoz](./media/tutorial-csharp-module/module-twin.png)
 
 11. Mentse a Deployment. template. JSON fájlt.
 
@@ -336,7 +336,9 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban olyan kódot tartalmazó IoT Edge-modult hozott létre, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studio Code-hoz készült modulok fejlesztéséről](how-to-vs-code-develop-module.md). Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan hozhatja Azure IoT Edge az Azure Cloud Services üzembe helyezését az adathordozón lévő adatfeldolgozás és-elemzés során.
+Ebben az oktatóanyagban olyan kódot tartalmazó IoT Edge-modult hozott létre, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studio Code-hoz készült modulok fejlesztéséről](how-to-vs-code-develop-module.md). IoT Edge modulokra, például a szimulált hőmérsékleti modulra példaként lásd: [IoT Edge modul minták](https://github.com/Azure/iotedge/tree/master/edge-modules). 
+
+Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan hozhatja Azure IoT Edge az Azure Cloud Services üzembe helyezését az adathordozón lévő adatfeldolgozás és-elemzés során.
 
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)

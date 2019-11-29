@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: fb72ed337219f58481c094d68342dbf6f26493c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4a09389cfd9a5e61c1d73440545c76df7c9eadb2
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260750"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566281"
 ---
 ## <a name="for-users-in-your-directory"></a>A címtárban lévő felhasználók számára
 
@@ -106,6 +106,14 @@ A jóváhagyás szakaszban megadhatja, hogy szükség van-e jóváhagyásra, ha 
 - Az egyetlen vagy 2 fázisú jóváhagyáshoz nem szükséges minden kiválasztott jóváhagyó jóváhagyása.
 - A jóváhagyási döntés azon alapul, hogy bármelyik jóváhagyó megtekinti-e először a kérést.
 
+Az alábbi videóból megtudhatja, hogyan adhat hozzá jóváhagyókat a kérelmek házirendjéhez:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4cZfg]
+
+Az alábbi videóban megtudhatja, hogyan adhat hozzá többfázisú jóváhagyást a kérelmek házirendjéhez:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4d1Jw]
+
 A következő lépésekkel adhatja meg a hozzáférési csomagra vonatkozó kérelmek jóváhagyási beállításait:
 
 1. A kiválasztott felhasználóktól érkező kérések jóváhagyásának megköveteléséhez állítsa az **Igen**értékre a **jóváhagyás megkövetelése** kapcsolót. Vagy a kérések automatikus jóváhagyásához állítsa a kapcsolót a **nem**értékre.
@@ -115,7 +123,6 @@ A következő lépésekkel adhatja meg a hozzáférési csomagra vonatkozó kér
 1. Most állapítsa meg, hogy a kérések csak egyszeres vagy 2 fázisú jóváhagyást igényelnek. Állítsa be, hogy az egyfázisú jóváhagyás hány **szakasza** legyen **1** , vagy a 2. fázis jóváhagyása esetén állítsa a váltást **2** -re.
 
     ![Hozzáférési csomag – kérelmek – jóváhagyási beállítások](./media/active-directory-entitlement-management-request-policy/approval.png)
-
 
 A következő lépésekkel adhatja hozzá a jóváhagyókat, miután kiválasztotta, hogy hány lépést kell megadnia: 
 

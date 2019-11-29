@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f06da43e758c24da65664b34dd83f876a00e3a0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0501da153567f3b95804d8a8a6576d8cf199762c
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174914"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74553987"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomaghoz tartozó hozzárendelések megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságok kezelésében
 
@@ -76,6 +76,24 @@ Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót sz
 1. A **Hozzáadás** gombra kattintva közvetlenül hozzárendelheti a kiválasztott felhasználókat a hozzáférési csomaghoz.
 
     Néhány pillanat elteltével kattintson a **frissítés** gombra, hogy megjelenjenek a felhasználók a hozzárendelések listájában.
+
+## <a name="remove-an-assignment"></a>Hozzárendelés eltávolítása
+
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
+
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
+
+1. A bal oldali menüben kattintson a **hozzárendelések**elemre.
+ 
+1. Jelölje be azon felhasználó melletti jelölőnégyzetet, amelynek hozzárendelését el szeretné távolítani a hozzáférési csomagból. 
+
+1. Kattintson a bal oldali ablaktábla tetején található **Eltávolítás** gombra. 
+ 
+    ![Hozzárendelések – felhasználó eltávolítása a hozzáférési csomagból](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
+
+    Ekkor megjelenik egy értesítés, amely tájékoztatja, hogy a hozzárendelés el lett távolítva. 
 
 ## <a name="next-steps"></a>Következő lépések
 

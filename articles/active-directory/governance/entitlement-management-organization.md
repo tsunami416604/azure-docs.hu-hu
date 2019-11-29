@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a8e5dc43170af8f33ad266edfa02ac5b41ca67a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2dec950f5475a8a64cfecfac1fb25246d6a7aa29
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174142"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561921"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében
 
@@ -33,7 +33,7 @@ A csatlakoztatott szervezet egy külső Azure AD-címtár vagy-tartomány, amely
 
 Tegyük fel például, hogy a Woodgrove bankban dolgozik, és két külső szervezettel kíván együttműködni: a Graphic Design Institute és a contoso használatával. Azt mondta, hogy az Ön kapcsolattartója az Azure AD-t használja a grafikai tervezési Intézetben, és a grafikai tervezési Intézet felhasználói egyszerű felhasználónevet használnak `graphicdesigninstitute.com`. Azt is mondta, hogy a contoso-nal még nem használja az Azure AD-t, de a contoso felhasználói egyszerű felhasználónevet használnak `contoso.com`.
 
-Két csatlakoztatott szervezetet is beállíthat – egyet a Graphic Design Institute számára a `graphicdesigninstitute.com`tartománnyal, a másikat pedig a contoso tartományhoz `contoso.com`. Ha ezt követően hozzáadja a két csatlakoztatott szervezetet egy szabályzathoz, akkor az egyes szervezetek felhasználóinak, akik a szabályzatnak megfelelő egyszerű felhasználónévvel rendelkeznek, hozzáférési csomagokat igényelhetnek. Továbbá, mivel a grafikai tervező Intézet az Azure AD-vel lett azonosítva, ha a grafikai tervező Intézet ezt követően altartományokkal rendelkezik (például `graphicdesigninstitute.example`), akkor az adott egyszerű felhasználónévvel rendelkező felhasználók is igényelhetnek hozzáférési csomagokat a Ugyanez a szabályzat.
+Két csatlakoztatott szervezetet is beállíthat – egyet a Graphic Design Institute számára a `graphicdesigninstitute.com`tartománnyal, a másikat pedig a contoso tartományhoz `contoso.com`. Ha ezt követően hozzáadja a két csatlakoztatott szervezetet egy szabályzathoz, akkor az egyes szervezetek felhasználóinak, akik a szabályzatnak megfelelő egyszerű felhasználónévvel rendelkeznek, hozzáférési csomagokat igényelhetnek. Továbbá, mivel a grafikai tervező Intézet az Azure AD-vel lett azonosítva, ha a grafikai tervező Intézet ezt követően altartományokkal rendelkezik (például `graphicdesigninstitute.example`), akkor az adott egyszerű felhasználónévvel rendelkező felhasználók hozzáférési csomagokat is igényelhetnek ugyanezen házirend használatával.
 
 ![Példa csatlakoztatott szervezetre](./media/entitlement-management-organization/connected-organization-example.png)
 
@@ -42,6 +42,10 @@ Az Azure AD-címtár vagy-tartomány felhasználóinak hitelesítése a hiteles�
 - Azure AD
 - [Közvetlen összevonás](../b2b/direct-federation.md)
 - [Egyszeri jelszó](../b2b/one-time-passcode.md) (tartomány)
+
+A csatlakoztatott szervezetek hozzáadásával kapcsolatos bemutatóért tekintse meg a következő videót:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4dskS]
 
 ## <a name="add-a-connected-organization"></a>Csatlakoztatott szervezet hozzáadása
 

@@ -1,6 +1,6 @@
 ---
-title: Egy rendszerkép-előállító létrehozása az Azure DevTest Labs szolgáltatásban |} A Microsoft Docs
-description: Ismerje meg, hogy egy egyéni rendszerkép-előállító létrehozása az Azure DevTest Labs szolgáltatásban.
+title: Rendszerkép-előállító létrehozása a Azure DevTest Labsban | Microsoft Docs
+description: Ismerje meg, hogyan állíthat be egyéni rendszerkép-előállítót a git-tárházban elérhető minta-parancsfájlok használatával.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,52 +10,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: cf1bb31614c04d6073bc40c510fc43b2f8e4e189
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7779914d9681d0f80cab9568da6a20b15e3a2eb1
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622632"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560019"
 ---
-# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Egy egyéni rendszerkép-előállító létrehozása az Azure DevTest Labs szolgáltatásban
-Ez a cikk bemutatja, hogyan állítható be egy egyéni rendszerkép gyári elérhető minta parancsfájlok használatával a [Git-tárház](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory).
+# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Egyéni rendszerkép-előállító létrehozása Azure DevTest Labs
+Ez a cikk bemutatja, hogyan állíthat be egyéni rendszerkép-előállítót a [git-tárházban](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)elérhető minta-parancsfájlok használatával.
 
-## <a name="whats-an-image-factory"></a>Mi az, hogy egy kép gyári?
-Egy rendszerkép factory az olyan konfiguráció, a kód megoldás, amely építésével és értékesítésével a kívánt konfigurációval rendszeres időközönként automatikusan-rendszerképek. A lemezképek lemezkép-előállító mindig naprakészek legyenek, és a folyamatos karbantartás szinte nullára után a teljes folyamat automatikus. És mivel a szükséges konfigurációk már a képen, a manuális konfigurálását a rendszer, az alap operációs rendszerrel egy virtuális gép létrehozása után az időt takaríthat.
+## <a name="whats-an-image-factory"></a>Mi az a rendszerkép-előállító?
+A rendszerkép-előállító egy olyan konfigurációs kód, amely az összes kívánt konfigurációval rendszeres időközönként automatikusan létrehozza és elosztja a lemezképeket. A rendszerkép-előállítóban található rendszerképek mindig naprakészek, és a folyamatos karbantartás csaknem nulla, ha a teljes folyamat automatizálva van. És mivel az összes szükséges konfiguráció már szerepel a képen, a rendszer manuálisan konfigurálja a rendszert, miután létrehozta a virtuális gépet az alap operációs rendszerrel.
 
-A jelentős accelerator beolvasni a DevTest Labs szolgáltatásban létrehozott üzemkész állapotba fejlesztői asztali egyéni lemezképeket használ. Az egyéni lemezképek hátránya, hogy valami nincs extra fenntartása a tesztkörnyezetben. Például termékek próbaverziók lejárati idővel (vagy) újonnan kiadott biztonsági frissítések nem lesznek alkalmazva, amelyek kényszerítése számunkra, hogy rendszeresen frissíteni az egyéni rendszerképet. Egy rendszerkép-előállító rendelkező egy definíciót a kép a definíció alapján egyéni rendszerképek létrehozásához egy automatizált folyamattal és verziókövetési beadva.
+A DevTest Labs szolgáltatásban az egyéni rendszerképeket használva a fejlesztői asztalt egy kész állapotba veheti fel a jelentős gyorssegéd. Az Egyéni rendszerképek hátránya az, hogy van valami további a laborban való karbantartáshoz. Például a termékek próbaverziójának időbeli lejárta (vagy) az újonnan kiadott biztonsági frissítések nem érvényesek, ami arra kényszeríti az Egyesült Államokat, hogy rendszeresen frissítse az egyéni rendszerképet. A rendszerkép-előállítóval a forráskód vezérlőelemben bejelölt lemezkép definíciója van, és automatizált folyamattal rendelkezik, hogy a definíció alapján hozzon létre egyéni lemezképeket.
 
-A megoldás lehetővé teszi, hogy a virtuális gépek létrehozása az egyéni rendszerképekből nyújthat hatékony további folyamatos karbantartási költségek sebessége. Ez a megoldás is automatikusan egyéni rendszerképek létrehozása, ossza ki őket a többi DevTest Labs szolgáltatásban, és a régi képeket kivonni. A következő videót megismerkedhet a lemezkép gyári, és hogyan történik a DevTest Labs szolgáltatással.  Az Azure Powershell-parancsfájlok is szabadon elérhető, és található itt: [ https://aka.ms/dtlimagefactory ](https://aka.ms/dtlimagefactory).
+A megoldás lehetővé teszi, hogy a virtuális gépeket egyéni lemezképek alapján hozza létre, és ezzel kiküszöbölje a további folyamatos karbantartási költségeket. Ezzel a megoldással automatikusan létrehozhat egyéni lemezképeket, terjesztheti azokat más DevTest Labs-be, és kivonja a régi lemezképeket. A következő videóban megismerheti a rendszerkép-előállítót, valamint azt, hogy miként implementálható a DevTest Labs szolgáltatással.  Az összes Azure PowerShell-szkript szabadon elérhető és itt található: [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory).
 
 <br/>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Custom-Image-Factory-with-Azure-DevTest-Labs/player]
 
 
-## <a name="high-level-view-of-the-solution"></a>A megoldás magas szintű nézetét
-A megoldás lehetővé teszi, hogy a virtuális gépek létrehozása az egyéni rendszerképekből nyújthat hatékony további folyamatos karbantartási költségek sebessége. Ez a megoldás is automatikusan egyéni rendszerképek létrehozása és ossza ki őket a többi DevTest Labs szolgáltatásban. Az összes műveletet a DevTest Labs szolgáltatásban automatizálásához vezénylési motorként használhatja az Azure DevOps (korábbi nevén Visual Studio Team Services).
+## <a name="high-level-view-of-the-solution"></a>A megoldás magas szintű áttekintése
+A megoldás lehetővé teszi, hogy a virtuális gépeket egyéni lemezképek alapján hozza létre, és ezzel kiküszöbölje a további folyamatos karbantartási költségeket. Ezzel a megoldással automatikusan létrehozhat egyéni lemezképeket, és terjesztheti azokat más DevTest Labs-be. A DevTest Labs összes műveletének automatizálásához használja az Azure DevOps (korábban Visual Studio Team Services).
 
-![A megoldás magas szintű nézetét](./media/create-image-factory/high-level-view-of-solution.png)
+![A megoldás magas szintű áttekintése](./media/create-image-factory/high-level-view-of-solution.png)
 
-Van egy [DevTest Labs VSTS-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) , amely lehetővé teszi az egyes lépések végrehajtásához:
+A [DevTest Labs vsts-bővítménye](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) lehetővé teszi, hogy végrehajtsa ezeket az egyes lépéseket:
 
 - Egyéni kép létrehozása
 - Virtuális gép létrehozása
 - Virtuális gép törlése
 - Környezet létrehozása
 - Környezet törlése
-- Töltse fel a környezetben
+- Környezet feltöltése
 
-A DevTest Labs-bővítmény használata egyszerű módja, automatikusan a DevTest Labs szolgáltatásban az egyéni lemezképek létrehozásának megkezdéséhez.
+Az DevTest Labs bővítmény használatával egyszerűen megkezdheti az egyéni lemezképek automatikus létrehozását a DevTest Labs szolgáltatásban.
 
-Van egy másik végrehajtása egy összetettebb forgatókönyv PowerShell-parancsfájl használatával. PowerShell használatával, teljesen automatizálható egy lemezkép-előállító alapján a DevTest Labs szolgáltatásban a folyamatos integráció és folyamatos Készregyártás (CI/CD) eszközlánc használható. A másik megoldás követett elvek a következők:
+A PowerShell-szkriptek egy másik implementációt használnak összetettebb forgatókönyvhöz. A PowerShell használatával teljes mértékben automatizálható egy DevTest Labs-alapú rendszerkép-előállító, amely a folyamatos integrációs és folyamatos teljesítési (CI/CD) toolchain használható. A másodlagos megoldásban követett alapelvek a következők:
 
-- Gyakori frissítések nem változtak meg a lemezkép gyári van szükség. (például egy új típusú egyéni rendszerképet, automatikus kivonása a régi lemezképek hozzáadása egy új "végpont" DevTest Labs-egyéni rendszerképek kap, és így tovább.)
-- A szokásos élvezik verziókövetési (infrastruktúra mint kód)
-- Egyéni rendszerképek fogadása DevTest Labs szolgáltatásban nem lehet ugyanabban az előfizetésben az Azure (labs span előfizetések)
-- PowerShell-parancsfájlokat kell lennie újrafelhasználható, ezért azt is üzembe helyezése további előállítók igény szerint
+- A gyakori frissítésekhez nem szükséges módosítani a rendszerkép-előállítót. (például új típusú egyéni rendszerkép hozzáadásával, a régi rendszerképek automatikus kivonásával, új "Endpoint" DevTest Labs hozzáadásával egyéni lemezképek fogadásához stb.)
+- A gyakori módosításokat a forráskód-ellenőrzés (az infrastruktúra mint kód) támogatja.
+- Előfordulhat, hogy az egyéni lemezképeket fogadó DevTest Labs nem ugyanabban az Azure-előfizetésben van (Labs span előfizetések).
+- A PowerShell-szkripteket újra fel kell használni, hogy szükség esetén további gyárakat is felhozzunk
 
-## <a name="next-steps"></a>További lépések
-Helyezze át ebben a szakaszban szereplő következő cikket: [Egy rendszerkép-előállító Futtatás az Azure DevOps](image-factory-set-up-devops-lab.md)
+## <a name="next-steps"></a>Következő lépések
+Lépjen be a szakasz következő cikkére: a [rendszerkép-előállító futtatása az Azure DevOps](image-factory-set-up-devops-lab.md)

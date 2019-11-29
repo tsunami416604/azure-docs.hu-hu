@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: e2460ab760811a3db39058eac74d519ca09046c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 12d4bada4f84098f1559ea7b59fbbd35e0801347
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889816"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561600"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 
-A Microsoft Azure Service Bus egy teljes mértékben felügyelt vállalati integrációs üzenetközvetítő. Service Bus elválaszthatja az alkalmazásokat és a szolgáltatásokat. A Service Bus megbízható és biztonságos platformot biztosít az aszinkron adatok és az állapotok átviteléhez.
+A Microsoft Azure Service Bus egy teljes mértékben felügyelt vállalati integrációs üzenetközvetítő. Service Bus elválaszthatja az alkalmazásokat és a szolgáltatásokat. A Service Bus megbízható és biztonságos platformot kínál az adatok és az állapot aszinkron átviteléhez.
 
 Az adatok különböző alkalmazások és szolgáltatások közötti átvitele az *üzenetek* segítségével történik. Egy üzenet bináris formátumú, és tartalmazhat JSON, XML vagy csak szöveget. További információ: [Integration Services](https://azure.com/integration).
 
@@ -39,11 +39,11 @@ A névtér az összes üzenetküldési összetevő tárolója. Több várólista
 
 Az üzenetek az *üzenetsorokba* érkeznek be, és onnan küldi ki őket a rendszer. A várólisták üzeneteket tárolnak, amíg a fogadó alkalmazás elérhetővé válik a fogadáshoz és a feldolgozáshoz.
 
-![Várólista](./media/service-bus-messaging-overview/about-service-bus-queue.png)
+![Queue](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
 A várólistákban lévő üzenetek megrendelése és időbélyege az érkezéskor. Az üzenet elfogadása után azt a rendszer egy redundáns tárolóban helyezi biztonságba. Az üzenetek *lekéréses* módban lesznek kézbesítve, csak az üzenetek kézbesítését kérik.
 
-## <a name="topics"></a>Témakörök
+## <a name="topics"></a>Üzenettémák
 
 Az üzenetek küldéséhez és fogadásához *témaköröket* is használhat. Amíg egy üzenetsort gyakran használnak közvetlen kommunikációra, addig a témakörök hasznosak a közzétételi/előfizetési forgatókönyvekben.
 
@@ -110,11 +110,11 @@ Ha az Azure-régiók vagy-adatközpontok leállást tapasztalnak, a Geo-vész-he
 
 A Service Bus támogatja a szabványos [AMQP 1.0](service-bus-amqp-overview.md) és [HTTP/REST](/rest/api/servicebus/) protokollokat.
 
-## <a name="client-libraries"></a>Ügyfélkódtárak
+## <a name="client-libraries"></a>Klienskódtárak
 
 A Service Bus támogatja a [.net](https://github.com/Azure/azure-service-bus-dotnet/tree/master), a [Java](https://github.com/Azure/azure-service-bus-java/tree/master)és a [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client)-hez készült ügyféloldali kódtárakat.
 
-## <a name="integration"></a>Integráció
+## <a name="integration"></a>Integration (Integráció)
 
 A Service Bus teljes mértékben integrálható a következő Azure-szolgáltatásokkal:
 
@@ -124,7 +124,7 @@ A Service Bus teljes mértékben integrálható a következő Azure-szolgáltat�
 * [Dynamics 365](https://dynamics.microsoft.com)
 * [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Bus-üzenetküldéssel való megismerkedéshez tekintse meg a következő cikkeket:
 

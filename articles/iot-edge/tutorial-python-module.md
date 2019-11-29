@@ -10,12 +10,12 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4db5089d940abb2d15fa7ca79bacce425ee30123
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c37d778fe9ad7d21943ed92452fae34b4b8771e7
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457612"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560927"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Python IoT Edge modul fejlesztése és üzembe helyezése Linux-eszközökhöz
 
@@ -43,7 +43,7 @@ Ez az oktatóanyag bemutatja, hogyan fejleszthet a **Python** modult a **Visual 
 
 A következő táblázat segítségével megismerheti a Python-modulok Linux rendszeren történő fejlesztésének és üzembe helyezésének lehetőségeit: 
 
-| Python | Visual Studio Code | Visual Studio 2017/2019 | 
+| Python | Visual Studio-kód | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![A VS Code használata Python-modulokhoz Linux AMD64 rendszeren](./media/tutorial-c-module/green-check.png) |  |
 | **Linuxos ARM32** | ![A VS Code használata Python-modulokhoz Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
@@ -82,7 +82,7 @@ A VS Code használatával hozzon létre egy Python-megoldási sablont, amelyet f
 
 1. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. Kövesse az utasításokat, és adja meg a következő információkat a megoldás létrehozásához:
 
-   | Mező | Érték |
+   | Mező | Value (Díj) |
    | ----- | ----- |
    | Select folder (Mappa kiválasztása) | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
    | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
@@ -196,7 +196,7 @@ Minden sablon tartalmaz egy mintakód-t, amely szimulált érzékelői adatokhoz
        }
    ```
 
-   ![Ikermodul központi telepítési sablon hozzáadása](./media/tutorial-python-module/module-twin.png)
+   ![Modul Twin hozzáadása a központi telepítési sablonhoz](./media/tutorial-python-module/module-twin.png)
 
 10. Mentse a Deployment. template. JSON fájlt.
 
@@ -267,9 +267,11 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban olyan kódot tartalmazó IoT Edge-modult hozott létre, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studio Code-hoz készült modulok fejlesztéséről](how-to-vs-code-develop-module.md). Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan hozhatja Azure IoT Edge az Azure Cloud Services üzembe helyezését az adathordozón lévő adatfeldolgozás és-elemzés során.
+Ebben az oktatóanyagban olyan kódot tartalmazó IoT Edge-modult hozott létre, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studio Code-hoz készült modulok fejlesztéséről](how-to-vs-code-develop-module.md). IoT Edge modulokra, például a szimulált hőmérsékleti modulra példákat a következő témakörben talál: [IoT Edge Module Samples](https://github.com/Azure/iotedge/tree/master/edge-modules) and [IoT Python SDK Samples](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios). 
+
+Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan hozhatja Azure IoT Edge az Azure Cloud Services üzembe helyezését az adathordozón lévő adatfeldolgozás és-elemzés során.
 
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)

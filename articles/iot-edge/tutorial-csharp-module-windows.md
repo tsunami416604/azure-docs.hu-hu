@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 88ff026ea56e5f41b3b124c2d5594822ffeb6830
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 3f37f0f3fe57015cc733d67f16e64bdf58a8a6b7
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529273"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561009"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C# IoT Edge-modul fejlesztése Windows-eszközökhöz
 
@@ -80,7 +80,7 @@ A Azure IoT Edge Tools a Visual Studióban támogatott IoT Edge modul összes ny
    | ----- | ----- |
    | Sablon kiválasztása | Válassza ki  **C# a modult**. | 
    | Modul projekt neve | A modulnak adja a **CSharpModule** nevet. | 
-   | Docker-rendszerkép tárháza | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> A rendszerkép utolsó tárháza úgy néz ki, mint \<registry name\>.azurecr.io/csharpmodule. |
+   | Docker-rendszerkép tárháza | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> Az utolsó rendszerkép-tárház úgy néz ki, mint \<beállításjegyzék neve\>. azurecr.io/csharpmodule. |
 
    ![A projekt konfigurálása a céleszköz, a modul típusa és a tároló-beállításjegyzék számára](./media/tutorial-csharp-module-windows/add-application-and-module.png)
 
@@ -297,13 +297,13 @@ Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy 
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   A `--password-stdin` használatát ajánló biztonsági figyelmeztetés jelenhet meg. Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
+   A `--password-stdin`használatának javasolt biztonsági figyelmeztetés jelenhet meg. Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
 
 2. A Visual Studio Solution Explorerben kattintson a jobb gombbal a létrehozni kívánt projekt nevére. Az alapértelmezett név a **AzureIotEdgeApp1** , és a Windows-modul létrehozása óta a bővítménynek **Windows. Amd64**-nek kell lennie. 
 
 3. Válassza ki **az IoT Edge-modulok kiépítése és leküldése**lehetőséget. 
 
-   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a telepítési sablonban és más megoldási fájlokban található információkat. Másodszor, `docker build` futtatásával hozza létre a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután a `docker push` futtatásával leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe. 
+   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a telepítési sablonban és más megoldási fájlokban található információkat. Másodszor, `docker build` fut a tároló rendszerképének létrehozásához a cél architektúrájának megfelelő Docker alapján. Ezután a `docker push` futtatja a rendszerkép-tárházat a tároló-beállításjegyzékbe. 
 
 ## <a name="deploy-modules-to-device"></a>Modulok üzembe helyezése az eszközön
 
@@ -359,10 +359,13 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban IoT Edge-modult hozott létre olyan kóddal, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studióval történő modulok fejlesztéséről](how-to-visual-studio-develop-module.md). Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan hozhatja Azure IoT Edge az Azure Cloud Services üzembe helyezését az adathordozón lévő adatfeldolgozás és-elemzés során.
+Ebben az oktatóanyagban IoT Edge-modult hozott létre olyan kóddal, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studióval történő modulok fejlesztéséről](how-to-visual-studio-develop-module.md). IoT Edge modulokra, például a szimulált hőmérsékleti modulra példaként lásd: [IoT Edge modul minták](https://github.com/Azure/iotedge/tree/master/edge-modules). 
+
+
+Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan hozhatja Azure IoT Edge az Azure Cloud Services üzembe helyezését az adathordozón lévő adatfeldolgozás és-elemzés során.
 
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)
-> [stream Analytics](tutorial-deploy-stream-analytics.md)
+> [Stream Analytics](tutorial-deploy-stream-analytics.md)
 > [Machine learning](tutorial-deploy-machine-learning.md)
 > [Custom Vision Service](tutorial-deploy-custom-vision.md)

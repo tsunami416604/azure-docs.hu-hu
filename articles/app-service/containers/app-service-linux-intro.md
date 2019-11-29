@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1bbcd5e4f8c6a429def84ad77d7dd93fa11b7324
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 966eb6068ff545dde284463866bfeee3d5074069
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819686"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559023"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>A Linuxon futó Azure App Service bemutatása
 
@@ -67,7 +67,12 @@ Az egyazon erőforráscsoporthoz tartozó jelenlegi korlátozás alapján nem ke
 
 ## <a name="troubleshooting"></a>Hibakeresés
 
-Ellenőrizze a LogFiles könyvtár Docker naplóit, ha az alkalmazás nem indul el, vagy ha meg szeretné tekinteni az alkalmazás naplózását. A könyvtárhoz az SCM-webhelyen vagy FTP-n keresztül férhet hozzá. A `stdout` és `stderr` a tárolóból való beléptetéséhez engedélyeznie kell a **Docker-tároló naplózását** a **app Service naplók**területen. A beállítás azonnal érvénybe lép. App Service észleli a változást, és automatikusan újraindítja a tárolót.
+> [!NOTE]
+> Új integrált naplózási képesség érhető el az [Azure monitoring (előzetes verzió)](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) szolgáltatással. 
+>
+>
+
+Ellenőrizze a LogFiles könyvtár Docker naplóit, ha az alkalmazás nem indul el, vagy ha meg szeretné tekinteni az alkalmazás naplózását. A könyvtárhoz az SCM-webhelyen vagy FTP-n keresztül férhet hozzá. A `stdout` és `stderr` a tárolóból való beléptetéséhez engedélyeznie kell az **alkalmazás naplózását** a **app Service naplók**területen. A beállítás azonnal érvénybe lép. App Service észleli a változást, és automatikusan újraindítja a tárolót.
 
 Az SCM-webhelyet a **Fejlesztési eszközök** menüben található **Haladó eszközök** oldalon érheti el.
 

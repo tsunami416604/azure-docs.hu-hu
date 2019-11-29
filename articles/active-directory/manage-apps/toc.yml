@@ -72,8 +72,14 @@
       items:
         - name: Automatikus felhasználóátadást használó üzembe helyezés tervezése
           href: plan-auto-user-provisioning.md
+        - name: Automatikus üzembe helyezés SCIM-kompatibilis alkalmazásokhoz
+          href: use-scim-to-provision-users-and-groups.md
         - name: Manuális és automatikus átadás
           href: application-provisioning-config-how-to.md
+    - name: Felhőalapú HR üzembe helyezése
+      items:
+        - name: Felhőalapú HR-felhasználóátadást használó üzembe helyezés tervezése
+          href: plan-cloud-hr-provision.md
     - name: Alkalmazásproxy helyszíni alkalmazásokhoz
       items:
         - name: Alkalmazásproxy

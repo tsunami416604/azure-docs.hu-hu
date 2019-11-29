@@ -4,16 +4,16 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet bi
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: b6e665b5c71dc5f2e8ebc22e00e1a71237f48bfc
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173437"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554891"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Azure Recovery Services biztonsági mentési szabályzatok létrehozása REST API használatával
 
-Az Azure Recovery Services-tárolóra vonatkozó biztonsági mentési szabályzat létrehozásához szükséges lépéseket a [szabályzat REST API dokumentum](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate)ismerteti. Ezt a dokumentumot hivatkozásként használjuk az Azure virtuális gépek biztonsági mentésére szolgáló szabályzat létrehozásához.
+Az Azure Recovery Services-tárolóra vonatkozó biztonsági mentési szabályzat létrehozásához szükséges lépéseket a [szabályzat REST API dokumentum](/rest/api/backup/protectionpolicies/createorupdate)ismerteti. Ezt a dokumentumot hivatkozásként használjuk az Azure virtuális gépek biztonsági mentésére szolgáló szabályzat létrehozásához.
 
 ## <a name="backup-policy-essentials"></a>Biztonsági mentési szabályzat alapjai
 
@@ -44,12 +44,12 @@ A `{policyName}` és a `{vaultName}` az URI-ban található. A kérés törzséb
 
 Ha például az Azure virtuális gép biztonsági mentésére vonatkozó szabályzatot szeretne létrehozni, az alábbiakban a kérelem törzsének összetevői láthatók.
 
-|Name (Név)  |Kötelező  |Típus  |Leírás  |
+|Név  |Szükséges  |Type (Típus)  |Leírás  |
 |---------|---------|---------|---------|
-|properties     |   True (Igaz)      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource tulajdonságai        |
-|címkét     |         | Objektum        |  Erőforráscímkék       |
+|properties     |   Igaz      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource tulajdonságai        |
+|tags     |         | Objektum        |  Erőforráscímkék       |
 
-A kérelem törzsében található definíciók teljes listájáért tekintse meg a [biztonsági mentési szabályzat REST API dokumentumát](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate).
+A kérelem törzsében található definíciók teljes listájáért tekintse meg a [biztonsági mentési szabályzat REST API dokumentumát](/rest/api/backup/protectionpolicies/createorupdate).
 
 ### <a name="example-request-body"></a>Példa kérelem törzsére
 
@@ -152,9 +152,9 @@ A biztonsági mentési szabályzat létrehozása/frissítése [aszinkron művele
 
 Két választ ad vissza: 202 (elfogadva) egy másik művelet létrehozásakor, majd 200 (OK), amikor a művelet befejeződik.
 
-|Name (Név)  |Típus  |Leírás  |
+|Név  |Type (Típus)  |Leírás  |
 |---------|---------|---------|
-|200 OK     |    [Védelem PolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
+|200 OK     |    [Védelem PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 elfogadva     |         |     Elfogadott    |
 
 ### <a name="example-responses"></a>Válaszok – példa

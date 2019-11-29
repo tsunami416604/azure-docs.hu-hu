@@ -1,6 +1,6 @@
 ---
 title: Endpoint Protection-problémák kezelése a Azure Security Centerkal | Microsoft Docs
-description: Ismerje meg, hogyan kezelheti Azure Security Center az Endpoint Protection szolgáltatással kapcsolatos problémákat.
+description: Ismerkedjen meg Security Center az Endpoint Protection figyelésével és a felmerülő problémák megoldásával.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: memildin
-ms.openlocfilehash: b1bcce1e94a64253986ad9b1fd77874ba0a39839
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 70b7f511c32013a5dbc9369a2dfba2b8cd5f9145
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202066"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558613"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Az Endpoint Protection szolgáltatással kapcsolatos problémák kezelése Azure Security Center
-Azure Security Center figyeli a kártevők elleni védelem állapotát, és jelentést készít az Endpoint Protection-problémák paneljén. Security Center kiemeli a problémákat, például az észlelt fenyegetéseket és a nem megfelelő védelmet, amely lehetővé teszi, hogy a virtuális gépek (VM) és a számítógépek sebezhetőek legyenek a kártevők elleni fenyegetésekkel szemben. Az **Endpoint Protection-problémák**alatt lévő információk használatával meghatározhatja az azonosított problémák megoldására szolgáló tervet.
+Azure Security Center figyeli a kártevők elleni védelem állapotát, és jelentést készít az Endpoint Protection-problémák lapon. Security Center kiemeli a problémákat, például az észlelt fenyegetéseket és a nem megfelelő védelmet, amely lehetővé teszi, hogy a virtuális gépek (VM) és a számítógépek sebezhetőek legyenek a kártevők elleni fenyegetésekkel szemben. Az **Endpoint Protection-problémák**alatt lévő információk használatával meghatározhatja az azonosított problémák megoldására szolgáló tervet.
 
 Security Center a következő Endpoint Protection-problémákat jelenti:
 
@@ -30,7 +30,7 @@ Security Center a következő Endpoint Protection-problémákat jelenti:
 - Endpoint Protection állapota:
 
   - Az aláírás elavult – antimalware-megoldás van telepítve ezekre a virtuális gépekre és számítógépekre, de a megoldás nem rendelkezik a legújabb antimalware-aláírásokkal.
-  - Nincs valós idejű védelem – antimalware-megoldás van telepítve ezekre a virtuális gépekre és számítógépekre, de nincs beállítva a valós idejű védelemre.   Lehet, hogy a szolgáltatás le van tiltva, vagy előfordulhat, hogy a Security Center nem tudja megszerezni az állapotot, mert a megoldás nem támogatott. A támogatott megoldások listáját lásd: [partner-integráció](security-center-services.md#endpoint-supported) .
+  - Nincs valós idejű védelem – antimalware-megoldás van telepítve ezekre a virtuális gépekre és számítógépekre, de nincs beállítva a valós idejű védelemre. Lehet, hogy a szolgáltatás le van tiltva, vagy előfordulhat, hogy a Security Center nem tudja megszerezni az állapotot, mert a megoldás nem támogatott. A támogatott megoldások listáját lásd: [partner-integráció](security-center-services.md#endpoint-supported) .
   - Nem jelentéskészítés – a rendszer egy antimalware-megoldást telepít, de nem küld jelentést.
   - Ismeretlen – az antimalware megoldás telepítve van, de az állapota ismeretlen, vagy ismeretlen hibát jelentett.
 
@@ -40,7 +40,7 @@ Security Center a következő Endpoint Protection-problémákat jelenti:
     >
 
 ## <a name="implement-the-recommendation"></a>A javaslat implementálása
-Az Endpoint Protection szolgáltatással kapcsolatos problémák Security Centerban való javaslatként jelennek meg.  Ha a környezete sebezhető a kártevők elleni fenyegetésekkel szemben, ez a javaslat a **javaslatok** és a **számítás**területen jelenik meg. Az **Endpoint Protection-problémák irányítópultjának**megtekintéséhez követnie kell a számítási munkafolyamatot.
+Az Endpoint Protection szolgáltatással kapcsolatos problémák Security Centerban való javaslatként jelennek meg. Ha a környezete sebezhető a kártevők elleni fenyegetésekkel szemben, ez a javaslat a **javaslatok** és a **számítás**területen jelenik meg. Az **Endpoint Protection-problémák irányítópultjának**megtekintéséhez követnie kell a számítási munkafolyamatot.
 
 Ebben a példában a **számítást**fogjuk használni.  Bemutatjuk, hogyan telepíthet antimalware-t az Azure-beli virtuális gépeken és a nem Azure-beli számítógépeken.
 
@@ -96,7 +96,7 @@ Megnyílik egy másik keresési eredmény, amely csak az adott számítógéphez
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk bemutatja, hogyan implementálhatja a "install Endpoint Protection" Security Center javaslatot. Ha többet szeretne megtudni a Microsoft antimalware használatának engedélyezéséről az Azure-ban, tekintse meg a következő dokumentumot:
 
 * [Microsoft antimalware Cloud Services és Virtual Machineshoz](../security/fundamentals/antimalware.md) – megtudhatja, hogyan helyezheti üzembe a Microsoft antimalware-t.
@@ -107,7 +107,7 @@ Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő d
 * [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
 * [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
-* [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
+* [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 

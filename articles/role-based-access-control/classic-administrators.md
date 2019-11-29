@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/01/2019
+ms.date: 11/26/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9c5e87d8d6fe49302bee2b2248f84ba98a650533
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 340717242d642475217bbe87fd96be66ec9b2e2d
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802317"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554222"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
@@ -32,7 +32,7 @@ Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörö
 > [!TIP]
 > Csak akkor kell hozzáadnia egy társ-rendszergazdát, ha a felhasználónak az [Azure Service Management PowerShell-modul](https://docs.microsoft.com/powershell/module/servicemanagement/azure)használatával kell kezelnie a klasszikus Azure-telepítést. Ha a felhasználó csak a klasszikus erőforrások kezeléséhez használja a Azure Portal, nem kell hozzáadnia a felhasználó klasszikus rendszergazdáját.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) szolgáltatás-rendszergazdaként.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) szolgáltatás-rendszergazdaként vagy társ-rendszergazdaként.
 
 1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 
@@ -52,9 +52,17 @@ Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörö
 
     ![A társ-rendszergazda hozzáadására szolgáló képernyőkép](./media/classic-administrators/add-coadmin.png)
 
-### <a name="adding-a-guest-user-as-a-co-administrator"></a>Vendég felhasználó hozzáadása társ-rendszergazdaként
+## <a name="add-a-guest-user-as-a-co-administrator"></a>Vendég felhasználó hozzáadása társ-rendszergazdaként
 
-A társ-rendszergazda szerepkörrel rendelkező [vendég felhasználók](../active-directory/b2b/b2b-quickstart-add-guest-users-portal.md) bizonyos különbségeket láthatnak a társ-rendszergazda szerepkörrel rendelkező felhasználókhoz képest. Vegye figyelembe a következő helyzetet:
+Ha egy vendég felhasználót szeretne hozzáadni a társ-rendszergazdaként, kövesse az előző, a [társ-rendszergazda hozzáadása](#add-a-co-administrator) szakaszban leírt lépéseket. A vendég felhasználónak meg kell felelnie a következő feltételeknek:
+
+- A vendég felhasználónak rendelkeznie kell egy jelenléttel a címtárban. Ez azt jelenti, hogy a felhasználó megkapta a címtárat, és elfogadta a meghívást.
+
+Ha további információt szeretne arról, hogyan adhat hozzá egy vendég felhasználót a címtárhoz, tekintse meg [a Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal-ben](../active-directory/b2b/add-users-administrator.md)című témakört.
+
+### <a name="differences-for-guest-users"></a>A vendég felhasználói közötti különbségek
+
+A társ-rendszergazda szerepkörrel rendelkező vendég felhasználók bizonyos különbségeket láthatnak a társ-rendszergazda szerepkörrel rendelkező felhasználókhoz képest. Vegye figyelembe a következő helyzetet:
 
 - Az A felhasználó Azure AD-fiókkal (munkahelyi vagy iskolai fiókkal) az Azure-előfizetések szolgáltatás-rendszergazdája.
 - A B felhasználó Microsoft-fiók rendelkezik.
@@ -63,13 +71,15 @@ A társ-rendszergazda szerepkörrel rendelkező [vendég felhasználók](../acti
 
 Azt várná, hogy a B felhasználó mindent tud kezelni. Ennek a különbségnek az az oka, hogy a Microsoft-fiók a tag felhasználója helyett vendég felhasználóként adja hozzá az előfizetéshez. A vendég felhasználók a felhasználókhoz képest eltérő alapértelmezett engedélyekkel rendelkeznek az Azure AD-ben. Például a felhasználók más felhasználókat is olvashatnak az Azure AD-ben, és a vendég felhasználói nem. A tagok felhasználói regisztrálhatnak új egyszerű szolgáltatásokat az Azure AD-ben, és a vendég felhasználói nem rendelkezhetnek.
 
-Ha egy vendégnek el kell tudnia hajtani ezeket a feladatokat, lehetséges megoldás az adott Azure AD-rendszergazdai szerepkörök hozzárendelésére a vendég felhasználói igényeinek megfelelően. Az előző forgatókönyvben például hozzárendelheti a [címtár-olvasók](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkört más felhasználók olvasásához és az [alkalmazás fejlesztői](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) szerepkörének hozzárendeléséhez, hogy az egyszerű szolgáltatásokat lehessen létrehozni. További információ a tagok és a vendég felhasználókról és azok engedélyeiről: [Mi az alapértelmezett felhasználói engedély a Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md)
+Ha egy vendégnek el kell tudnia hajtani ezeket a feladatokat, lehetséges megoldás az adott Azure AD-rendszergazdai szerepkörök hozzárendelésére a vendég felhasználói igényeinek megfelelően. Az előző forgatókönyvben például hozzárendelheti a [címtár-olvasók](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkört más felhasználók olvasásához és az [alkalmazás fejlesztői](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) szerepkörének hozzárendeléséhez, hogy az egyszerű szolgáltatásokat lehessen létrehozni. További információ a tagok és a vendég felhasználókról és azok engedélyeiről: [Mi az alapértelmezett felhasználói engedély a Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md) További információ a vendégek hozzáférésének biztosításáról: az Azure- [erőforrásokhoz való hozzáférés kezelése külső vendég felhasználók számára a RBAC használatával](role-assignments-external-users.md).
 
 Vegye figyelembe, hogy az [Azure-erőforrások beépített szerepkörei](../role-based-access-control/built-in-roles.md) eltérnek az [Azure ad rendszergazdai szerepköreitől](../active-directory/users-groups-roles/directory-assign-admin-roles.md). A beépített szerepkörök nem biztosítanak hozzáférést az Azure AD-hoz. További információ: [a különböző szerepkörök megismerése](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
+A felhasználók és a vendég felhasználók összevetésével kapcsolatos információkért tekintse [meg a mi az alapértelmezett felhasználói engedélyek a Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md)című témakört.
+
 ## <a name="remove-a-co-administrator"></a>Társ-rendszergazda eltávolítása
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) szolgáltatás-rendszergazdaként.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) szolgáltatás-rendszergazdaként vagy társ-rendszergazdaként.
 
 1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 
@@ -146,7 +156,7 @@ A fiók rendszergazdája az a felhasználó, aki először regisztrált az Azure
 
 A fiók rendszergazdájának megtekintéséhez kövesse az alábbi lépéseket.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 

@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 46975cf7762e2d92e5112911bd491f372cb22a31
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: a86d94110e78b7ace0e963469e9f236f7cc72ab4
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544629"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555473"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zone-redundáns tárolás (ZRS) a magasan elérhető Azure Storage-alkalmazások létrehozásához
 
@@ -22,9 +22,9 @@ ms.locfileid: "74544629"
 
 ## <a name="support-coverage-and-regional-availability"></a>A lefedettség és a regionális rendelkezésre állás támogatása
 
-A ZRS jelenleg a standard általános célú v2-és FileStorage-típusok használatát támogatja. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md).
+A ZRS jelenleg a standard általános célú v2, a FileStorage és a BlockBlobStorage típusú Storage-fiókokat támogatja. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md).
 
-A ZRS a Blobok, a nem lemezes Blobok, a szabványos fájlmegosztás, a táblák és a várólisták számára érhető el.
+Az általános célú v2-ZRS fiókok támogatják a blokk blobokat, a nem lemezes blobokat, a szabványos fájlmegosztást, a táblákat és a várólistákat.
 
 Az általános célú v2-fiókok esetében a ZRS általánosan elérhető a következő régiókban:
 

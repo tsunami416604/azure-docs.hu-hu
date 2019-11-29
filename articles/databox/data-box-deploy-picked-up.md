@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 28666aaac4ec221acca00d937d54a753a4e6a055
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1c375370ec6bae2775ad758688825b92cbbbca50
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172665"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407026"
 ---
 ::: zone target="docs"
 
@@ -123,28 +123,7 @@ Az Ausztráliában található Azure-adatközpontok egy további biztonsági ér
 2. Győződjön meg arról, hogy az adatok eszközre történő másolása befejeződött, és a **Szállításra való előkészítés** futtatása sikeres volt.
 3. Kapcsolja ki az eszközt, és távolítsa el a kábeleket.
 4. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
-5. Küldjön e-mailben egy csomagfelvételi kérést a Quantium Solutionsnek. Adja meg a szolgáltatás Azure Portalon megadott hivatkozási számát. Használja a következő e-mail-sablont: – *TAU-kóddal ellátott visszaküldési fuvarlevélcímke kérése*. Mindenképpen adja meg az e-mailben az alábbi részleteket: 
-
-    ```
-    To: Azure@quantiumsolutions.com
-    Subject: Pickup request for Azure｜Reference number：XXX XXX XXX
-    Body: 
-    - Company name：
-    - Address:
-    - Contact name:
-    - Contact number:
-    - Requested pickup date: mm/dd
-    ```
-6. A Quantium Solutions Australia küld Önnek e-mailben egy visszaküldési fuvarlevélcímkét.
-7. Nyomtassa ki a visszaküldési címkét, és rögzítse a dobozra.
-8. Adja át a csomagot a futárnak.
-
-Ha szükséges, felveheti a kapcsolatot a Quantium Solutions ügyfélszolgálatával e-mailben az Azure@quantiumsolutions.com címen vagy telefonon.
-
-A rendelésével kapcsolatos telefonos tájékoztatásért:
-
-- Először küldjön e-mailben egy csomagfelvételi kérést.
-- A hívás során adja meg a rendelés nevét.
+5. A [DHL-hivatkozásra](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference) kattintva foglaljon egy csomagfelvételt az interneten.
 
 ::: zone target="chromeless"
 

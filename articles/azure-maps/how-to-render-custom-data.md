@@ -1,6 +1,6 @@
 ---
 title: Egyéni adathalmazok renderelése raszteres térképeken a Azure Mapsban | Microsoft Docs
-description: Egyéni adatértékek renderelése Azure Maps raszteres térképén.
+description: Ebből a cikkből megtudhatja, hogyan teheti elérhetővé a raszteres térképeken lévő egyéni adatok Azure Maps statikus rendszerkép-szolgáltatás használatával.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6619fd842f225a6d362a4b308dde6e35b43677c9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915762"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559982"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adathalmazok renderelése egy raszteres térképen
 
@@ -48,7 +48,7 @@ A pushpins címkékkel és egyéni képpel történő megjelenítéséhez hajtsa
 3. Válassza a HTTP beolvasása metódust a Builder (szerkesztő) lapon, majd a GET kérelem létrehozásához adja meg a következő URL-címet.
 
     ```HTTP
-    https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttp%3A%2F%2Fazuremapscodesamples.azurewebsites.net%2FCommon%2Fimages%2Fpushpins%2Fylw-pushpin.png
+    https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttps%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FAzureMapsCodeSamples%2Fmaster%2FAzureMapsCodeSamples%2FCommon%2Fimages%2Ficons%2Fylw-pushpin.png
     ```
     Az eredményül kapott rendszerkép:
 
@@ -68,7 +68,7 @@ Az elérési utat és a rögzítési hely adatait az [Adatfeltöltő API](https:
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-2. A **Paraméterek** lapon adja meg a következő kulcs/érték párokat, amelyek a post kérelem URL-címéhez használatosak. Cserélje le `subscription-key` az értéket a Azure Maps előfizetési kulcsára.
+2. A **Paraméterek** lapon adja meg a következő kulcs/érték párokat, amelyek a post kérelem URL-címéhez használatosak. Cserélje le a `subscription-key` értéket a Azure Maps előfizetési kulcsával.
     
     ![A Poster kulcs/érték paraméterei](./media/how-to-render-custom-data/postman-key-vals.png)
 
@@ -154,7 +154,7 @@ Az elérési utat és a rögzítési hely adatait az [Adatfeltöltő API](https:
    }
    ```
 
-7. Használja az adatfeltöltő API által fogadott értéketafunkciókmegjelenítéséhezatérképen.`udId` Ehhez nyisson meg egy új fület az előző szakaszban létrehozott gyűjteményben. Válassza a HTTP beolvasása metódust a szerkesztő lapon, és írja be ezt az URL-címet a GET kérelem elvégzéséhez:
+7. Használja az adatfeltöltő API által fogadott `udId` értéket a leképezés funkcióinak megjelenítéséhez. Ehhez nyisson meg egy új fület az előző szakaszban létrehozott gyűjteményben. Válassza a HTTP beolvasása metódust a szerkesztő lapon, és írja be ezt az URL-címet a GET kérelem elvégzéséhez:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -190,7 +190,7 @@ A sokszög megjelenését a [path paraméterrel](https://docs.microsoft.com/rest
 > Az ebben a szakaszban ismertetett eljáráshoz egy Azure Maps fiókra van szükség az S1 díjszabási szinten.
 
 
-A pushpins és azok címkéit nagyobb vagy kisebb méretűre teheti `sc` a méretezési stílus módosító használatával. Ez a módosító egy nullánál nagyobb értéket vesz fel. Az 1 érték a standard skála. Az 1 értéknél nagyobb értékek esetén a PIN-kód nagyobb lesz, és az 1-nél kisebb értékek kisebbek lesznek. A stílus-módosítókkal kapcsolatos további információkért lásd a [statikus képszolgáltatás elérési útja paramétereit](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+A pushpins és azok címkéit nagyobb vagy kisebb méretűre teheti a `sc` méretezési stílusának módosító használatával. Ez a módosító egy nullánál nagyobb értéket vesz fel. Az 1 érték a standard skála. Az 1 értéknél nagyobb értékek esetén a PIN-kód nagyobb lesz, és az 1-nél kisebb értékek kisebbek lesznek. A stílus-módosítókkal kapcsolatos további információkért lásd a [statikus képszolgáltatás elérési útja paramétereit](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
 
 
 A kör-és pushpins egyéni címkékkel történő megjelenítéséhez kövesse az alábbi lépéseket:
@@ -205,7 +205,7 @@ A kör-és pushpins egyéni címkékkel történő megjelenítéséhez kövesse 
 
     ![Kör megjelenítése egyéni pushpins](./media/how-to-render-custom-data/circle-custom-pins.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 * Ismerkedjen meg a [Azure Maps Map RENDSZERKÉP API](https://docs.microsoft.com/rest/api/maps/render/getmapimage) dokumentációjának használatával.

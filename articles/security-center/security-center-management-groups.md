@@ -1,6 +1,6 @@
 ---
 title: A Azure Security Center teljes körű láthatósága a bérlők számára | Microsoft Docs
-description: Ismerje meg, hogyan nyerheti meg a bérlői szintű láthatóságot a Azure Security Centerban.
+description: Ez a cikk azt ismerteti, hogyan kezelheti a biztonsági testhelyzetet nagy léptékben, ha szabályzatokat alkalmaz a Azure Active Directory bérlőhöz kapcsolódó összes előfizetésre vonatkozóan.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,16 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 73b99b9ebcd18e1eb5b670d0809d1f0f6cbf8f9a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 734876380d22f5d4d6dae0dd375b238fd5f6ffed
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582909"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559346"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>A Azure Security Center teljes bérlőre kiterjedő láthatóságának megszerzése
-Ebből a cikkből megtudhatja, hogyan kezdheti el számos olyan műveletet, amely maximalizálja a Azure Security Center nyújtotta előnyöket. Ezeknek a műveleteknek a végrehajtása lehetővé teszi, hogy megismerje a Azure Active Directory bérlőhöz kapcsolódó összes Azure-előfizetést, és hatékonyan kezelje a szervezete biztonsági helyzetét a skálán, ha biztonsági szabályzatokat alkalmaz többek között az előfizetések aggregált módon jelennek meg.
-
+Ez a cikk bemutatja, hogyan kezelheti a szervezete biztonsági állapotát a Azure Active Directory bérlőhöz kapcsolódó összes Azure-előfizetésre vonatkozó biztonsági szabályzatok alkalmazásával.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -186,7 +185,7 @@ Előfizetéseket adhat hozzá a létrehozott felügyeleti csoporthoz. Ezek a lé
    > [!NOTE]
    > A felügyeleti csoportok előfizetéseket és alárendelt felügyeleti csoportokat is tartalmazhatnak. Amikor RBAC-szerepkört rendel a fölérendelt felügyeleti csoporthoz, a gyermek-felügyeleti csoport előfizetései öröklik a hozzáférést. A szülő felügyeleti csoportban beállított házirendeket a gyermekek is öröklik. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtudhatta, hogyan szerezhet Azure Security Center bérlői szintű láthatóságot. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 > [!div class="nextstepaction"]

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 261816e42c8de670cd7888af726a70e1a6e5b228
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d54075da10671bb9a48c84844cab67841fa0aec0
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269363"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560134"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files problémáinak elhárítása
 
@@ -271,9 +271,9 @@ Ha egy fájlt hálózaton keresztül szeretne másolni, először vissza kell fe
 
 - Használja a **copy/d** parancsot. Lehetővé teszi a titkosított fájlok mentését visszafejtett fájlként a célhelyen.
 - Állítsa be a következő beállításkulcsot:
-  - Path = HKLM\Software\Policies\Microsoft\Windows\System
+  - Elérési út = HKLM\Software\Policies\Microsoft\Windows\System
   - Értéktípus = DWORD
-  - Name = CopyFileAllowDecryptedRemoteDestination
+  - Név = CopyFileAllowDecryptedRemoteDestination
   - Érték = 1
 
 Vegye figyelembe, hogy a beállításkulcs beállítása hatással van a hálózati megosztásokon végrehajtott összes másolási műveletre.
@@ -295,11 +295,11 @@ A probléma megoldásához módosítsa a **DirectoryCacheEntrySizeMax** beállí
  
 Beállíthatja például a 0x100000, és megtekintheti, hogy a teljesítmény jobb legyen.
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Hiba történt a (z) Azure Files "Azure Active Directory hitelesítésének engedélyezésekor a (z)" nem találja a (z) HRE bérlői azonosítóval rendelkező aktív bérlőket "AadDsTenantNotFound
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Hiba történt a (z) Azure Files "Azure Active Directory tartományi szolgáltatás (HRE DS) hitelesítésének engedélyezése során a (z)" nem találja a (z) HRE bérlői azonosítóval rendelkező aktív bérlőket "AadDsTenantNotFound
 
 ### <a name="cause"></a>Ok
 
-Hiba történt abban az esetben, ha a AadDsTenantNotFound [Azure Active Directory (HRE) hitelesítését](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) kísérli meg Azure Files egy olyan Storage-fiókon, ahol a [HRE tartományi szolgáltatás (HRE DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nem jön létre a társított előfizetés HRE-bérlője számára.  
+Hiba történt a AadDsTenantNotFound, amikor a [Azure Active Directory tartományi szolgáltatás (HRE DS) hitelesítését](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) kísérli meg Azure Files egy olyan Storage-fiókon, ahol a [HRE tartományi szolgáltatás (HRE DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nem jön létre a társított előfizetés HRE-bérlője számára.  
 
 ### <a name="solution"></a>Megoldás
 
@@ -307,5 +307,17 @@ Engedélyezze a HRE DS szolgáltatást annak az előfizetésnek a HRE-bérlőn, 
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>Hiba történt a (z) 1359 rendszerhiba miatt. Belső hiba történt a (z) Azure Active Directory Domain Service (HRE DS) hitelesítéssel rendelkező fájlmegosztás SMB-hozzáférése esetén
+
+### <a name="cause"></a>Ok
+
+Hiba történt a (z) 1359 rendszerhiba miatt. Belső hiba történt, amikor a HRE DS-hitelesítéssel próbál csatlakozni a fájlmegosztást a HRE DS-ben, és a tartomány DNS-neve egy numerikus karakterrel kezdődik. Ha például a HRE DS-tartomány DNS-neve "1domain", akkor ezt a hibaüzenetet fogja kapni, amikor a HRE hitelesítő adatokkal próbál csatlakoztatni a fájlmegosztást. 
+
+### <a name="solution"></a>Megoldás
+
+Jelenleg a HRE DS újratelepítését egy új tartományi DNS-névvel végezheti el, amely az alábbi szabályokra vonatkozik:
+- A nevek nem kezdődhetnek numerikus karakterrel.
+- A névnek 3 – 63 karakter hosszúnak kell lennie.
+
+## <a name="need-help-contact-support"></a>Segítség Vegye fel a kapcsolatot az ügyfélszolgálattal.
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és kérje meg a probléma gyors megoldását.

@@ -1,6 +1,6 @@
 ---
-title: Irányítás az Azure DevTest Labs-infrastruktúra
-description: Ez a cikk az Azure DevTest Labs-infrastruktúra cégirányítási útmutatást nyújt.
+title: Alkalmazások migrálása és integrációja Azure DevTest Labs
+description: Ez a cikk útmutatást nyújt a Azure DevTest Labs-infrastruktúra irányításához az alkalmazások áttelepítése és integrációja kontextusában.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,127 +10,127 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 75ce5d6a88b5398bd010cc363b4241bc90068f55
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25342cfbb8ac7ad5538b1f009c75f1d101bfc047
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60192999"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560649"
 ---
-# <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Az Azure DevTest Labs-infrastruktúra - alkalmazás áttelepítését és integrálását cégirányítási
-A fejlesztési/tesztelési hálózati környezet létrehozása után kell gondolja át az alábbi kérdésekre:
+# <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs infrastruktúra irányítása – alkalmazások áttelepítése és integrációja
+A fejlesztési/tesztelési labor környezet létrehozása után a következő kérdésekre kell gondolnia:
 
-- Hogyan, kihasználhassák a környezet a projektcsapattal?
-- Hogyan gondoskodik, hogy hajtsa végre a szükséges szervezeti házirendeknek, és a rugalmasságot érték hozzáadása az alkalmazás karbantartása?
+- Hogyan hasznosíthatja a környezetet a projekt csapata keretében?
+- Hogyan gondoskodhat arról, hogy kövesse az összes szükséges szervezeti szabályzatot, és fenntartsa a rugalmasságot az alkalmazás értékének megadásához?
 
-## <a name="azure-marketplace-images-vs-custom-images"></a>Egyéni rendszerképek és az Azure Marketplace-rendszerképek
-
-### <a name="question"></a>Kérdés
-Mikor célszerű használni és a saját egyéni szervezeti rendszerkép Azure Marketplace-rendszerképpel?
-
-### <a name="answer"></a>Válasz
-Az Azure Marketplace-en alapértelmezés szerint használandó, kivéve, ha bizonyos szempontból problematikus jelenségeket vagy a szervezeti követelményeknek. Néhány gyakori példa:;
-
-- Összetett szoftver telepítése, amely az alaprendszerképet része egy alkalmazás szükséges.
-- Telepítés és a egy alkalmazás telepítése eltarthat több órával, amelyek nem egy hatékonyabban használhatók fel az Azure Marketplace-rendszerképpel hozzáadandó számítási időért.
-- Fejlesztőknek és tesztelőknek hozzáférést igényelnek a virtuális gépek gyors, és a egy új virtuális gép telepítési idő minimalizálása érdekében szeretné.
-- Megfelelőségi vagy szabályozási feltételek (például biztonsági szabályzat), amely minden gép helyen kell lennie.
-
-Egyéni rendszerképek használatával nem kell tekinteni kódjával. Alaplemezképek mögöttes VHD-fájlok kezelése most már rendelkezik további összetettséget vezetnek. Is kell rendszeresen javítani ezeket alaplemezképek a szoftverfrissítésekhez. Ezek a frissítések közé tartozik az új operációs rendszer (OS) frissítéseket, és a frissítések vagy a szoftvercsomag maga a szükséges konfigurációs módosításokat.
-
-## <a name="formula-vs-custom-image"></a>Egyéni rendszerkép vagy képlet
+## <a name="azure-marketplace-images-vs-custom-images"></a>Azure Marketplace-lemezképek és Egyéni rendszerképek
 
 ### <a name="question"></a>Kérdés
-Mikor érdemes használni az egyéni rendszerkép vagy képlet?
+Mikor érdemes a saját egyéni szervezeti rendszerképét használni az Azure Marketplace-en?
 
 ### <a name="answer"></a>Válasz
-Ebben a forgatókönyvben a döntő tényező általában ez költséghatékony, és újra felhasználhatja.
+Alapértelmezés szerint az Azure Marketplace-t kell használni, hacsak nem rendelkezik konkrét problémával vagy szervezeti követelményekkel. Néhány gyakori példa a következőkre:
 
-Ha rendelkezik egy olyan forgatókönyvet, ahol sok felhasználó/labs megkövetelése a szoftver az alaprendszerképhez nagy kép, akkor csökkentheti a költségeket hozzon létre egy egyéni rendszerképet. Ez azt jelenti, hogy a lemezkép létrehozása után. Ez csökkenti a telepítési idő a virtuális gép és miatt a telepítő előfordulásakor futó virtuális gép költsége.
+- Összetett Szoftvertelepítés, amely megköveteli, hogy az alkalmazás szerepeljen az alaprendszerkép részeként.
+- Az alkalmazások telepítése és beállítása több órát is igénybe vehet, amelyek nem hatékonyan használják a számítási időt az Azure Marketplace-rendszerképben való hozzáadáshoz.
+- A fejlesztőknek és a tesztelőknek gyorsan hozzá kell férniük egy virtuális géphez, és az új virtuális gép telepítési idejét szeretnék csökkenteni.
+- Megfelelőségi vagy szabályozási feltételek (például biztonsági szabályzatok), amelyeknek az összes gépen meg kell felelnie.
 
-Egy további figyelembe vegye figyelembe azonban, a gyakori változásai a szoftvercsomag. Ha napi állít össze, és szükséges, hogy a felhasználók virtuális gépeket, a szoftver fontolja meg a képlet helyett egyéni rendszerkép.
+Az Egyéni rendszerképek használata nem tekinthető könnyelműnek. További bonyolultságot jelentenek, mivel mostantól a mögöttes alaplemezképekhez tartozó VHD-fájlokat kell kezelnie. Ezeket az alapképeket is rendszeresen kell frissítenie a szoftverfrissítések használatával. Ezek a frissítések tartalmazzák az új operációs rendszer (OS) frissítéseit, valamint a szoftvercsomag szükséges frissítéseit és konfigurációs módosításait.
 
-## <a name="use-custom-organizational-images"></a>Egyéni szervezeti rendszerképek használatához
+## <a name="formula-vs-custom-image"></a>Képlet és egyéni rendszerkép
 
 ### <a name="question"></a>Kérdés
-Hogyan állítható be egy egyszerű, megismételhető folyamattal ahhoz, hogy saját egyéni szervezeti lemezképek DevTest Labs-környezetben?
+Mikor érdemes képletet vagy egyéni rendszerképet használni?
 
 ### <a name="answer"></a>Válasz
-Lásd: [ezt a videót a lemezkép gyári minta](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Ebben a forgatókönyvben a speciális helyzetben, és a megadott szkriptek mintaszkriptek csak. Ha módosítások szükségesek, kezelésére és karbantartására a környezetében használt parancsfájlokra szüksége.
+Az ebben a forgatókönyvben szereplő döntési tényező általában a költségek és az újrafelhasználás.
 
-DevTest Labs használatával hozhat létre egy egyéni rendszerkép folyamatot az Azure-folyamatok:
+Ha van olyan forgatókönyv, amelyben sok felhasználó/labor igényel egy olyan rendszerképet, amely sok szoftvert tartalmaz az alaprendszerképhez, akkor az egyéni rendszerkép létrehozásával csökkentheti a költségeket. Ez azt jelenti, hogy a rendszerkép egyszer jön létre. Ez csökkenti a virtuális gép telepítési idejét és a telepítéskor futó virtuális gép miatt felmerülő költségeket.
 
-- [Bemutatása: Felkészülés a virtuális gépeket percek alatt beállításával egy kép factoryt az Azure DevTest Labs szolgáltatásban](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
-- [Kép gyári – 2. rész! Hozhat létre virtuális gépeket Azure folyamatok és gyári tesztkörnyezet beállítása](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
-- [Kép gyári – 3. rész: Egyéni rendszerképek mentéséhez és a több Tesztkörnyezetekhez terjesztése](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
-- [Videó: Egyéni rendszerkép Factory az Azure DevTest Labs használatával](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
+A szoftvercsomag változásainak gyakorisága azonban egy további Megjegyzés. Ha napi buildeket futtat, és megköveteli, hogy a szoftver a felhasználók virtuális gépei legyenek, használjon egy képletet egyéni rendszerkép helyett.
 
-## <a name="patterns-to-set-up-network-configuration"></a>Állítsa be a hálózati konfigurációs minták
+## <a name="use-custom-organizational-images"></a>Egyéni szervezeti rendszerképek használata
 
 ### <a name="question"></a>Kérdés
-Hogyan győződjön meg arról, hogy a fejlesztési és tesztelése a virtuális gépek azok nem a nyilvános interneten érhető el? Vannak-e bármely hálózati konfiguráció beállítása javasolt minták?
+Hogyan állíthatok be egy könnyen ismételhető folyamatot az egyéni szervezeti lemezképek DevTest Labs-környezetben való üzembe helyezéséhez?
 
 ### <a name="answer"></a>Válasz
-Igen. Két szempontot kell figyelembe venni – bejövő és kimenő forgalmat.
+Tekintse [meg ezt a videót a rendszerkép-előállító mintán](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Ez a forgatókönyv egy speciális forgatókönyv, és a megadott parancsfájlok csak példaként használható parancsfájlok. Ha bármilyen módosításra van szükség, felügyelni és karbantartani kell a környezetben használt parancsfájlokat.
 
-**Bejövő forgalom** – Ha a virtuális gép nem rendelkezik egy nyilvános IP-címet, akkor azt nem érik el az interneten. Általánosan használt megközelítése annak érdekében, hogy egy előfizetés-szintű szabályzat van beállítva, úgy, hogy a felhasználó nem tudja hozni egy nyilvános IP-cím nem.
+Egyéni rendszerkép-folyamat létrehozása az Azure-folyamatokban a DevTest Labs használatával:
 
-**Kimenő forgalom** – Ha megakadályozzák a virtuális gépek közvetlenül a nyilvános interneten történik, és a vállalati tűzfalon, forgalom kényszerített majd irányíthatja a forgalmat a helyszíni express route-n keresztül, vagy VPN-, a kényszerített útválasztást.
+- [Bevezetés: a virtuális gépek gyors üzembe helyezése a rendszerkép-előállító Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
+- [Rendszerkép-előállító – 2. rész! Az Azure-folyamatok és a Factory Lab beállítása virtuális gépek létrehozásához](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
+- [Image Factory – 3. rész: Egyéni rendszerképek mentése és terjesztés több laborba](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
+- [Videó: egyéni rendszerkép-előállító Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
+
+## <a name="patterns-to-set-up-network-configuration"></a>A hálózati konfiguráció beállítására szolgáló minták
+
+### <a name="question"></a>Kérdés
+Hogyan gondoskodjon arról, hogy a fejlesztési és tesztelési virtuális gépek nem tudják elérni a nyilvános internetet? Vannak ajánlott minták a hálózati konfiguráció beállításához?
+
+### <a name="answer"></a>Válasz
+Igen. Két szempontot kell figyelembe venni – a bejövő és a kimenő forgalmat.
+
+**Bejövő forgalom** – ha a virtuális gép nem rendelkezik nyilvános IP-címmel, akkor nem érhető el az Internet. A közös megközelítéssel biztosítható, hogy egy előfizetési szintű szabályzatot állítsanak be, hogy a felhasználók ne tudjanak nyilvános IP-címet létrehozni.
+
+**Kimenő forgalom** – ha meg szeretné akadályozni, hogy a virtuális gépek közvetlenül a nyilvános internetre lépjenek, és egy vállalati tűzfalon keresztül kényszerítsék a forgalmat, akkor a helyszíni forgalmat expressz útvonalon vagy VPN-en keresztül irányíthatja kényszerített útválasztás használatával.
 
 > [!NOTE]
-> Ha rendelkezik egy proxykiszolgáló, amely blokkolja a forgalmat proxybeállítások nélkül, ne felejtse el kivételeket hozzáadni a lab artifact storage-fiók.
+> Ha olyan proxykiszolgálót tartalmaz, amely a proxybeállítások nélkül blokkolja a forgalmat, ne felejtsen el kivételeket hozzáadni a labor összetevő-tárolási fiókjához.
 
-Hálózati biztonsági csoportok a virtuális gépek és alhálózatok is használhat. Ezt a lépést hozzáadja egy további rétegét védelem engedélyezése / letiltása a forgalmat.
+Hálózati biztonsági csoportokat is használhat virtuális gépekhez vagy alhálózatokhoz. Ez a lépés egy további védelmi réteget ad hozzá a forgalom engedélyezéséhez/letiltásához.
 
-## <a name="new-vs-existing-virtual-network"></a>Új vagy meglévő virtuális hálózat
-
-### <a name="question"></a>Kérdés
-Mikor kell új virtuális hálózat létrehozása a DevTest Labs környezet és a egy meglévő virtuális hálózattal?
-
-### <a name="answer"></a>Válasz
-Ha a virtuális gépek együttműködik a meglévő infrastruktúra kell, majd érdemes használni egy meglévő virtuális hálózaton belül a DevTest Labs-környezetben. Emellett az ExpressRoute használatakor érdemes virtuális hálózatok minimalizálására / alhálózatokat, hogy Ön nem darabolható az IP-címterületének, lekéri az előfizetések alatt használatra rendelt. Emellett érdemes a virtuális hálózatok közötti társviszony-létesítési minta használatával itt (Küllős modell). Ez a megközelítés lehetővé teszi a virtuális hálózat/alhálózat kommunikációt egy adott régión belül előfizetések között, bár a régiók közötti társviszony az Azure-hálózatok a felfelé-érkező szolgáltatása.
-
-Ellenkező esetben minden egyes DevTest Labs-környezet lehet a saját virtuális hálózaton. Vegye azonban figyelembe, hogy nincsenek [korlátok](../azure-subscription-service-limits.md) virtuális hálózatok száma előfizetésenként száma. Az alapértelmezett értéke 50, bár ez a korlát 100-ra lehet megemelni.
-
-## <a name="shared-public-or-private-ip"></a>Megosztott, nyilvános vagy magánhálózati IP
+## <a name="new-vs-existing-virtual-network"></a>Új és meglévő virtuális hálózat
 
 ### <a name="question"></a>Kérdés
-Mikor célszerű használni a magánhálózati IP-és nyilvános IP-cím és megosztott IP-cím?
+Mikor hozzon létre egy új virtuális hálózatot a DevTest Labs-környezethez és egy meglévő virtuális hálózat használatával?
 
 ### <a name="answer"></a>Válasz
-Ha egy helyek közötti VPN vagy Express Route használja, fontolja meg magánhálózati IP-címek, a gépek a belső hálózaton elérhetők, és nem érhető el legyenek a nyilvános interneten keresztül.
+Ha a virtuális gépeknek kapcsolatba kell lépniük a meglévő infrastruktúrával, érdemes megfontolnia, hogy a DevTest Labs-környezetben meglévő virtuális hálózatot használjon. Emellett, ha a ExpressRoute-t használja, érdemes lehet minimálisra csökkenteni a virtuális hálózatok/alhálózatok mennyiségét, hogy az előfizetésekben használt IP-címtartomány ne legyen kiosztva. Érdemes megfontolni a VNet-társítási minta használatát is (sugaras modell). Ez a megközelítés lehetővé teszi, hogy az egyes régiókban lévő előfizetések között vnet/alhálózati kommunikációt lehessen biztosítani, bár a régiók közötti együttműködés az Azure-hálózatkezelés egyik feltörekvő funkciója.
+
+Ellenkező esetben minden DevTest Labs-környezet rendelkezhet saját virtuális hálózattal. Vegye figyelembe azonban, hogy az előfizetéshez tartozó virtuális hálózatok száma [korlátozott](../azure-subscription-service-limits.md) . Az alapértelmezett érték 50, de ez a korlát 100-re is kiemelhető.
+
+## <a name="shared-public-or-private-ip"></a>Megosztott, nyilvános vagy magánhálózati IP-cím
+
+### <a name="question"></a>Kérdés
+Mikor érdemes megosztott IP-címet vagy nyilvános IP-címet vagy magánhálózati IP-címet használni?
+
+### <a name="answer"></a>Válasz
+Ha helyek közötti VPN-t vagy expressz útvonalat használ, érdemes lehet privát IP-címeket használni, hogy a gépek a belső hálózaton keresztül is elérhetők legyenek, és a nyilvános interneten keresztül elérhetetlenek legyenek.
 
 > [!NOTE]
-> Labortulajdonosok módosíthatja a alhálózat házirend, győződjön meg arról, hogy senki véletlenül létrehozza a nyilvános IP-címek a virtuális gépek számára. Az előfizetés tulajdonosa hozzon létre egy előfizetési szabályzat meggátolja, hogy a nyilvános IP-címek létrehozása folyamatban.
+> A labor tulajdonosai megváltoztathatják ezt az alhálózati házirendet annak biztosítása érdekében, hogy a virtuális gépekhez egyetlen véletlenül se hozzon létre nyilvános IP-címet. Az előfizetés tulajdonosának létre kell hoznia egy előfizetési szabályzatot, amely megakadályozza a nyilvános IP-címek létrehozását.
 
-Megosztott nyilvános IP-címek használata esetén a virtuális gépek tesztkörnyezetben megosztása a nyilvános IP-cím. Ez a megközelítés akkor lehet hasznos, amikor szüksége van egy adott előfizetéshez tartozó nyilvános IP-címek korlátait megszegéséhez elkerülése érdekében.
+Megosztott nyilvános IP-címek használata esetén a laborban lévő virtuális gépek nyilvános IP-címet használnak. Ez a megközelítés akkor lehet hasznos, ha el szeretné kerülni az adott előfizetés nyilvános IP-címeire vonatkozó korlátok megszegését.
 
-## <a name="limits-of-number-of-virtual-machines-per-user-or-lab"></a>Felhasználó vagy a labor virtuális gépek számának korlátairól
-
-### <a name="question"></a>Kérdés
-Hány virtuális gépet tekintetében felhasználónként vagy labor kiszolgálónként kell beállítania szabály van?
-
-### <a name="answer"></a>Válasz
-Ha a mérlegeli felhasználónként vagy tesztlabor virtuális gépek számát, az alábbi három fő területtel kell foglalkoznunk:
-
-- A **teljes költség** , amely a csapat a laborkörnyezetben található erőforrásokat fordítani. Több gép üzembe helyezése könnyebbé vált. Szabályozhatja a költségeket, egy mechanizmust, hogy a virtuális gépek száma felhasználónként és/vagy egy tesztkörnyezet
-- A labor virtuális gépek teljes száma hatással van a [előfizetés szintje szerinti kvóták](../azure-subscription-service-limits.md) érhető el. A felső határértékek egyik 800 előfizetésenkénti erőforráscsoportok. DevTest Labs szolgáltatásban egy új erőforráscsoportot jelenleg minden virtuális géphez hoz létre (kivéve, ha a megosztott nyilvános IP-címek használata esetén). Ha egy adott előfizetés 10 labs, labs sikerült elfér körülbelül 79 virtuális gépek minden labor (800 felső korlátja – a 10 labs magukat a 10 erőforráscsoportok) = 79 tesztkörnyezeti virtuális gépet.
-- Ha a labor (például) a helyszíni Express Route-n keresztül csatlakozik, nincsenek **meghatározott IP-címterek elérhető** a virtuális hálózat/alhálózat számára. Annak érdekében, hogy a labor virtuális gépek nem nem hozható létre (hiba: nem olvasható be az IP-cím), labortulajdonosok adhatja meg a maximális EK elérhető IP-címterület igazítva.
-
-## <a name="use-resource-manager-templates"></a>Resource Manager-sablonok használata
+## <a name="limits-of-number-of-virtual-machines-per-user-or-lab"></a>Virtuális gépek számának korlátozása felhasználónként vagy laborban
 
 ### <a name="question"></a>Kérdés
-Hogyan használhatok Resource Manager-sablonok a DevTest Labs Környezetemet?
+Van olyan szabály, amely azt határozza meg, hogy hány virtuális gépet kell beállítani felhasználónként vagy laborban?
 
 ### <a name="answer"></a>Válasz
-A Resource Manager-sablonokat a DevTest Labs-környezetben szereplő lépések segítségével telepítheti a [környezetek funkció DevTest labs szolgáltatásban létrehozott](devtest-lab-test-env.md) cikk. Alapvetően a Resource Manager-sablonok tekintsen meg egy Git-tárház (az Azure-Adattárakkal vagy GitHub), és adjon hozzá egy [a sablonok privát tárház](devtest-lab-test-env.md) a tesztkörnyezethez.
+Ha a virtuális gépek száma felhasználónként vagy laborban történik, három fő szempontot kell figyelembe venni:
 
-Ebben a forgatókönyvben nem lehet hasznos, ha a DevTest Labs fejlesztési gazdagépeken használ, de előfordulhat, hogy lehet hasznos, ha egy átmeneti környezet, amely jellemző az éles környezetben hoz létre.
+- A csapat által az erőforrásokra fordított **teljes költség** a laborban. Könnyedén elindíthat sok gépet. A költségek szabályozása érdekében az egyik mechanizmus a virtuális gépek számának korlátozása felhasználónként és/vagy tesztkörnyezetben
+- A laborban található virtuális gépek teljes számát a rendelkezésre álló [előfizetési szint kvótái](../azure-subscription-service-limits.md) befolyásolják. Az egyik felső határérték 800 erőforráscsoport. A DevTest Labs jelenleg minden virtuális géphez létrehoz egy új erőforráscsoportot (kivéve, ha megosztott nyilvános IP-címek vannak használatban). Ha 10 Labs van egy előfizetésben, a Labs az egyes laborokban körülbelül 79 virtuális gépet fér hozzá (800 felső korlát – 10 erőforráscsoport a 10 Labs számára) = 79 virtuális gépek/labor.
+- Ha a tesztkörnyezet az expressz útvonalon keresztül csatlakozik a helyszíni környezethez (például), a VNet/alhálózat számára **meghatározott IP-címek állnak rendelkezésre** . Annak biztosítása érdekében, hogy a laborban lévő virtuális gépek ne jöjjenek létre (hiba: nem lehet lekérni az IP-címet), a labor tulajdonosai megadhatják a laborok maximális számát az elérhető IP-címtartomány szerint.
 
-Emellett akkor is érdemes megjegyezni, hogy a labor időszakonkénti felhasználói beállítás, vagy a virtuális gépek száma csak korlátozza a laborkörnyezet, és nem bármely (Resource Manager-sablonok) környezetekben a natív módon készített gépek száma.
+## <a name="use-resource-manager-templates"></a>Erőforrás-kezelői sablonok használata
 
-## <a name="next-steps"></a>További lépések
-Lásd: [környezetek használata a DevTest Labs szolgáltatásban létrehozott](devtest-lab-test-env.md).
+### <a name="question"></a>Kérdés
+Hogyan használhatom a Resource Manager-sablonokat a DevTest Labs-környezetben?
+
+### <a name="answer"></a>Válasz
+A Resource Manager-sablonokat egy DevTest Labs-környezetbe helyezheti üzembe a [DevTest Labs környezetek funkciójában](devtest-lab-test-env.md) ismertetett lépések segítségével. Alapvetően a Resource Manager-sablonokat egy git-tárházba (Azure Repos vagy GitHub) tekintheti meg, és hozzáadhat egy [privát tárházat a sablonokhoz](devtest-lab-test-env.md) a laborban.
+
+Ez a forgatókönyv nem lehet hasznos, ha DevTest Labs-t használ a fejlesztői gépek üzemeltetéséhez, de hasznos lehet, ha olyan átmeneti környezetet hoz létre, amely az éles környezetre jellemző.
+
+Azt is érdemes megjegyezni, hogy a virtuális gépek száma a laborban vagy felhasználónként lehetőség csak a laborban natív módon létrehozott gépek számát korlátozza, nem pedig bármely környezet (Resource Manager-sablonok) számára.
+
+## <a name="next-steps"></a>Következő lépések
+Lásd: [környezetek használata a DevTest Labs szolgáltatásban](devtest-lab-test-env.md).

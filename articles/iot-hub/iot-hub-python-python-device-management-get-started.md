@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: eb5085db10c5763a4173f460eabde6afcccd5aff
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 514f4b26a708a6fec30a1f54cfe6da6d1b58b79d
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000450"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555521"
 ---
 # <a name="get-started-with-device-management-python"></a>Ismerkedés az Eszközkezelővel (Python)
 
@@ -29,9 +29,9 @@ Ez az oktatóanyag a következőket mutatja be:
 
 Az oktatóanyag végén két Python-konzolos alkalmazás található:
 
-* a korábban létrehozott **dmpatterns_getstarted_device.** , amely a IoT hubhoz csatlakozik, a rendszer újraindítási közvetlen módszert kap, szimulálja a fizikai újraindítást, és az utolsó újraindítás idejét jelenti.
+* **dmpatterns_getstarted_device.** a korábban létrehozott eszköz identitásával csatlakozik az IoT hubhoz, a rendszer újraindítási közvetlen módszert kap, szimulálja a fizikai újraindítást, és az utolsó újraindítás idejét jelenti.
 
-* a **dmpatterns_getstarted_service.** a szimulált eszköz alkalmazásban közvetlen metódust hív meg, a válasz pedig megjeleníti a frissített jelentett tulajdonságokat.
+* **dmpatterns_getstarted_service.** a szimulált eszköz alkalmazásban egy közvetlen metódust meghívó. a. a parancs megjeleníti a választ, és megjeleníti a frissített jelentett tulajdonságokat.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
@@ -63,13 +63,9 @@ Ebben a szakaszban:
     pip install azure-iot-device
     ```
 
-   > [!NOTE]
-   > Az Azure-iothub-Service-Client pip-csomagjai csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése a Pythonhoz](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) című témakörben.
-   >
+2. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_device.** -es nevű fájlt a munkakönyvtárában.
 
-2. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_device.** file nevű fájlt a munkakönyvtárában.
-
-3. Adja hozzá a `import` következő utasításokat az **dmpatterns_getstarted_device.** a fájl elejéhez.
+3. Adja hozzá a következő `import` utasításokat a **dmpatterns_getstarted_device.** a fájl elején.
 
     ```python
     import threading
@@ -78,7 +74,7 @@ Ebben a szakaszban:
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
     ```
 
-4. Adja hozzá a **CONNECTION_STRING** változót. Cserélje le `{deviceConnectionString}` a helyőrző értékét az eszköz csatlakoztatási karakterláncára. Ezt a kapcsolattípus-karakterláncot korábban a [IoT hub új eszközének regisztrálása](#register-a-new-device-in-the-iot-hub)során másolta.  
+4. Adja hozzá a **CONNECTION_STRING** változót. Cserélje le a `{deviceConnectionString}` helyőrző értékét az eszköz-kapcsolatok karakterláncára. Ezt a kapcsolattípus-karakterláncot korábban a [IoT hub új eszközének regisztrálása](#register-a-new-device-in-the-iot-hub)során másolta.  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -161,12 +157,12 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely egy t�
     ```
 
    > [!NOTE]
-   > Az Azure-iothub-Service-Client és az Azure-iothub-Device-Client pip-csomagjai jelenleg csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése a Pythonhoz](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) című témakörben.
+   > Az Azure-iothub-Service-Client pip-csomag jelenleg csak Windows operációs rendszerhez érhető el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése a Pythonhoz](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) című témakörben.
    >
 
-2. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_service.** file nevű fájlt a munkakönyvtárában.
+2. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_service.** -es nevű fájlt a munkakönyvtárában.
 
-3. Adja hozzá a `import` következő utasításokat az **dmpatterns_getstarted_service.** a fájl elejéhez.
+3. Adja hozzá a következő `import` utasításokat a **dmpatterns_getstarted_service.** a fájl elején.
 
     ```python
     import sys, time
@@ -175,7 +171,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely egy t�
     from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
     ```
 
-4. Adja hozzá a következő változó deklarációkat. Cserélje le `{IoTHubConnectionString}` a helyőrző értékét a korábban átmásolt IoT hub-beli [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string)elemre. Cserélje le `{deviceId}` a helyőrző értékét az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítójával.
+4. Adja hozzá a következő változó deklarációkat. Cserélje le a `{IoTHubConnectionString}` helyőrző értékét a korábban a [IoT hub-IoT lekérése](#get-the-iot-hub-connection-string)során átmásolt hub-kapcsolatok karakterláncára. Cserélje le a `{deviceId}` helyőrző értékét az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítójával.
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"

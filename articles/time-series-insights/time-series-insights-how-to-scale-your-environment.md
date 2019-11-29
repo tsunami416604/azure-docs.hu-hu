@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: b17cdb2ec27676d5d20d6f12bad309368fe32aa3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: bc6c33762fa572e971fff9dee8988a100e50b07c
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006805"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561164"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>A Time Series Insights-környezet skálázása
 
@@ -34,13 +34,13 @@ Azonban a díjszabási csomag módosítása nem engedélyezett. Egy S1 árképz�
 
 1. A Azure Portalban keresse meg és válassza ki Time Series Insights-környezetét.
 
-1. A Time Series Insights-környezet menüjében válassza a **Konfigurálás**lehetőséget.
+1. A Time Series Insights-környezet menüjében válassza a **tárolási konfiguráció**elemet.
 
-   [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
+   [a Time Series Insights kapacitásának ![konfigurálása](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
 1. Állítsa be a **kapacitás** csúszkát, és válassza ki azt a kapacitást, amely megfelel a bejövő és a tárolási kapacitás követelményeinek. Figyelje meg, hogy a **Bejövő forgalom sebessége**, a **tárolókapacitás**és a **becsült költségek** dinamikusan frissülnek a változás hatásának megjelenítéséhez.
 
-   [![csúszka](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [a környezet konfigurálása a kapacitás csúszka használatával ![](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
 
    Másik lehetőségként beírhatja a kapacitás szorzójának számát a csúszka jobb oldalán található szövegmezőbe.
 

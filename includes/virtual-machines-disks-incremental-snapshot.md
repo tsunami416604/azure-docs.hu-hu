@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 846fd92bce3056dc119f38ac253a0a937e8c56a4
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74309810"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566274"
 ---
 A növekményes Pillanatképek (előzetes verzió) olyan felügyelt lemezek időpontra vonatkozó biztonsági mentései, amelyek az utolsó pillanatkép óta csak az összes változást tartalmazzák. Ha egy növekményes pillanatkép letöltését vagy más módon történő használatát kísérli meg, a rendszer a teljes VHD-t használja. Ez az új képesség a felügyelt lemezek pillanatképei számára potenciálisan költséghatékony lehet, mivel már nem szükséges a teljes lemez tárolása az egyes Pillanatképek esetében, hacsak nem választja. A normál pillanatképekhez hasonlóan a növekményes Pillanatképek is használhatók teljes felügyelt lemezek létrehozásához, vagy rendszeres pillanatkép készítéséhez.
 
@@ -25,7 +25,7 @@ Ha még nem regisztrált az előzetes verzióra, és szeretné megkezdeni a növ
 
 ## <a name="restrictions"></a>Korlátozások
 
-- A növekményes Pillanatképek jelenleg csak az USA nyugati középső régiójában és Észak-Európában érhetők el.
+- A növekményes Pillanatképek jelenleg csak az USA keleti régiójában, az USA középső régiójában, Közép-Kanadában, az USA nyugati középső régiójában és Észak-Európában találhatók
 - A növekményes Pillanatképek jelenleg nem hozhatók létre a lemez méretének módosítása után.
 - A növekményes Pillanatképek jelenleg nem helyezhetők át az előfizetések között.
 - Jelenleg csak egy adott pillanatkép-családhoz tartozó SAS URI-k hozhatók létre akár öt pillanatképből.
@@ -76,7 +76,7 @@ foreach ($snapshot in $snapshots)
 $incrementalSnapshots
 ```
 
-## <a name="cli"></a>parancssori felület
+## <a name="cli"></a>CLI
 
 Növekményes pillanatképet is létrehozhat az Azure CLI-vel, az Azure CLI legújabb verziójára lesz szüksége. 
 

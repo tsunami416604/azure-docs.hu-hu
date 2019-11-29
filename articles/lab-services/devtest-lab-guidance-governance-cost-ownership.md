@@ -1,6 +1,6 @@
 ---
-title: Irányítás az Azure DevTest Labs-infrastruktúra
-description: Ez a cikk az Azure DevTest Labs-infrastruktúra cégirányítási útmutatást nyújt.
+title: A Cost és a tulajdonjog kezelése Azure DevTest Labs
+description: Ez a cikk olyan információt tartalmaz, amely segít optimalizálni a környezetében a költségeket és a tulajdonjogot.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,56 +10,56 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 7832691812d8f10342dc7df20a7cfab7265f2d9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b82d338f85f1b43712296ac7f27bdad55f8f1919
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775712"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561666"
 ---
-# <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Irányítás az Azure DevTest Labs-infrastruktúra - kezelheti a költségeket és tulajdonosi viszonyainak
-Költség és tulajdonosi is elsődleges szempontok, fontolja meg a fejlesztési és tesztelési környezetek. Ebben a szakaszban található információk segítségével optimalizálhatja a költségeket, és tulajdonosi igazítása megtalálhatja a környezetben.
+# <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure DevTest Labs infrastruktúra irányítása – a Cost és a tulajdonjog kezelése
+A fejlesztési és tesztelési környezetek létrehozásakor a költségeket és a tulajdonjogot elsődleges szempontnak tekintjük. Ebben a szakaszban olyan információkat talál, amelyek segítségével optimalizálhatja a saját környezetének költségeit és a tulajdonjogát.
 
-## <a name="optimize-for-cost"></a>A költségek optimalizálása
+## <a name="optimize-for-cost"></a>Optimalizálás a Cost szolgáltatáshoz
 
 ### <a name="question"></a>Kérdés
-Hogyan tudok optimalizálhatja a költségeket a DevTest Labs-környezetben?
+Hogyan optimalizálható a DevTest Labs-környezetbe való bekerülési díj?
 
 ### <a name="answer"></a>Válasz
-Nincsenek a DevTest Labs, amelyek segítenek a beépített funkciók számos optimalizálása, a költségek. Lásd: [Költségkezelés, küszöbértékek](devtest-lab-configure-cost-management.md) [, és a házirendek](devtest-lab-set-lab-policy.md) cikkek korlátozhatja a felhasználók tevékenységeit. 
+A DevTest Labs számos beépített funkciója segít optimalizálni a költségeket. A felhasználók tevékenységeinek korlátozásához tekintse meg a [Cost Management, a küszöbértékek](devtest-lab-configure-cost-management.md) [és a házirendek](devtest-lab-set-lab-policy.md) cikkeket. 
 
-DevTest Labs fejlesztési és tesztelési feladatokhoz használhatja, mint használó érdemes a [nagyvállalati fejlesztési és tesztelési előfizetés Benefit](https://azure.microsoft.com/offers/ms-azr-0148p/), a nagyvállalati szerződés részeként. Azt is megteheti, ha egy Használatalapú ügyfél, érdemes figyelembe venni a [Használatalapú – mint-akkor lépjen DevTest ajánlat](https://azure.microsoft.com/offers/ms-azr-0023p/).
+Az DevTest Labs fejlesztési és tesztelési feladatokhoz való használata során érdemes lehet a [Enterprise dev/test előfizetési kedvezményt](https://azure.microsoft.com/offers/ms-azr-0148p/)használni a nagyvállalati szerződés részeként. Alternatív megoldásként érdemes megfontolnia, hogy az Ön fizetési díjas [DevTest ajánlatát](https://azure.microsoft.com/offers/ms-azr-0023p/)kell figyelembe vennie.
 
-Ez a megközelítés nyújt számos előnye:
+Ez a megközelítés számos előnyt kínál:
 
-- Kedvező fejlesztési/tesztelési díjszabás a Windows virtual machines, cloud services, HDInsight, App Service és Logic Apps
-- Más Azure-szolgáltatások díjai nagyszerű nagyvállalati szerződés (EA)
+- A Windows Virtual Machines, a Cloud Services, a HDInsight, a App Service és a Logic Apps speciális fejlesztési és tesztelési díjai
+- Kiváló Nagyvállalati Szerződés (EA) díjszabás más Azure-szolgáltatásokhoz
 - Hozzáférés a katalógus exkluzív fejlesztési/tesztelési lemezképeihez, többek között a Windows 8.1- és Windows 10-lemezképekhez
  
-Csak aktív Visual Studio-előfizetők (standard szintű, éves felhőalapú előfizetések és havi) használható az enterprise Dev/Test előfizetésen belül futtatott Azure-erőforrásokat. Azonban a végfelhasználók elérhetik az alkalmazást a visszajelzés és elfogadottsági. Ezen az előfizetésen belül az erőforrások használata az alkalmazások fejlesztésére és tesztelésére korlátozódik, rendelkezésre állási garancia nélkül.
+Csak az aktív Visual Studio-előfizetők (standard előfizetések, éves felhőalapú előfizetések és havi felhőalapú előfizetések) használhatják a vállalati fejlesztési/tesztelési előfizetésen belül futtatott Azure-erőforrásokat. A végfelhasználók azonban hozzáférhetnek az alkalmazáshoz visszajelzés vagy elfogadási tesztek elvégzéséhez. Ezen az előfizetésen belül az erőforrások használata az alkalmazások fejlesztésére és tesztelésére korlátozódik, rendelkezésre állási garancia nélkül.
 
-Ha úgy dönt, hogy a DevTest ajánlat használja, vegye figyelembe, hogy ez a kedvezmény kizárólag fejlesztési és tesztelési az alkalmazások számára. Előfizetésekhez nem vállalunk pénzügyi kötelezettségvállalással egybekötött szolgáltatási szerződést, az Azure DevOps és a HockeyApp kivételével.
+Ha úgy dönt, hogy a DevTest ajánlatot használja, vegye figyelembe, hogy ez az előny kizárólag az alkalmazások fejlesztéséhez és teszteléséhez használható. Az előfizetésen belüli használat nem vállal pénzügyi felelősséggel vállalt SLA-t, kivéve az Azure DevOps és a HockeyApp használatát.
 
-## <a name="define-a-role-based-access-across-your-organization"></a>A szerepköralapú hozzáférés megadása a szervezetben
+## <a name="define-a-role-based-access-across-your-organization"></a>Szerepköralapú hozzáférés definiálása a szervezeten belül
 ### <a name="question"></a>Kérdés
-Hogyan szerepköralapú hozzáférés-vezérlő megadásához a DevTest Labs környezetben, győződjön meg arról, hogy az informatikai részleg szabályozhatja fejlesztői és tesztelési is munkájuk során? 
+Hogyan a saját DevTest Labs-környezetek szerepköralapú hozzáférés-vezérlésének megadásával biztosítható, hogy a fejlesztők és a tesztek a munkájukat is szabályozzák? 
 
 ### <a name="answer"></a>Válasz
-Széles körű mintát, van azonban a részletek a szervezet függ.
+Széles minta van, azonban a részletek a szervezettől függenek.
 
-Központi informatikai kell saját, csak hogy mire szükség, és engedélyeznie kell a projektet és az alkalmazás csapatok rendelkezik a szükséges mértékű. Általában azt jelenti, hogy a központi informatikai az előfizetés tulajdonosa, és kezeli a központi informatikai funkciók, például a hálózati konfiguráció. Készletét **tulajdonosok** előfizetés kis kell lennie. Ezeket a tulajdonosokat további tulajdonosok jelöl ki, amikor szükség van, vagy előfizetési szintű szabályzatok, például "nincs nyilvános IP-címnél.
+A központi informatikai részlegnek csak a szükségesnek kell lennie, és lehetővé kell tennie a projekt és az alkalmazás csapatának a szükséges szintű irányítást. Ez általában azt jelenti, hogy a központi informatikai részleg az előfizetés tulajdonosa, és az informatikai funkciók, például a hálózati konfigurációk kezelése. Az előfizetéshez tartozó **tulajdonosok** készletének kicsinek kell lennie. Ezek a tulajdonosok további tulajdonosokat is megadhatnak, ha szükség van rá, vagy előfizetési szintű szabályzatokat alkalmaznak, például "nincs nyilvános IP".
 
-Előfizetésen, például az 1. szint vagy a 2. rétegbeli támogatási hozzáférést igénylő felhasználók alcsoportjaihoz lehet. Ebben az esetben javasoljuk, hogy ezek a felhasználók számára a **közreműködői** elérni, hogy azok is felügyelheti az erőforrásokat, de nem adja meg a felhasználói hozzáférés vagy házirendek beállítása.
+Előfordulhat, hogy a felhasználók olyan részhalmaza van, amelynek hozzáférésre van szüksége egy előfizetéshez, például a Tier1 vagy a 2. szint támogatásához. Ebben az esetben javasoljuk, hogy ezeknek a felhasználóknak a **közreműködők** számára biztosítson hozzáférést, hogy tudják kezelni az erőforrásokat, de nem biztosítanak felhasználói hozzáférést vagy szabályzatok módosítását.
 
-A DevTest Labs-erőforrás a tulajdonosok, akik megközelíti a projekt vagy alkalmazás csapat helyvezérlőhöz kell tartoznia. Fontos, mivel megértik a rájuk vonatkozó követelményeket a gépek és a szükséges szoftverek tekintetében. A szervezetek többségében a DevTest Labs erőforrás tulajdonosa gyakran a projekt/fejlesztési vezető. Erre a tulajdonosra kezelheti a felhasználók és a tesztkörnyezet-szabályzatait, és kezelheti a DevTest Labs-környezetben lévő összes virtuális gép.
+A DevTest Labs-erőforrásnak olyan tulajdonosnak kell lennie, aki a projekt/alkalmazás csapathoz közeledik. Ez azért van, mert megértik a követelményeket a gépek és a szükséges szoftverek tekintetében. A legtöbb szervezetben a DevTest Labs-erőforrás tulajdonosa általában a projekt/fejlesztési vezető. Ez a tulajdonos felügyelheti a felhasználókat és a házirendeket a tesztkörnyezet környezetében, és kezelheti az összes virtuális gépet a DevTest Labs-környezetben.
 
-A projekt vagy alkalmazás csapat tagjai a a DevTest Labs-felhasználó szerepkör lehet hozzáadni. Ezek a felhasználók is létrehozhatnak virtuális gépeket (beágyazott a labor és előfizetés-szintű szabályzatok). Is kezelhetik saját virtuális gépeiket. Más felhasználókhoz tartozó virtuális gépek, nem tudja kezelni.
+A Project/Application csapat tagjait fel kell venni a DevTest Labs felhasználói szerepkörbe. Ezek a felhasználók virtuális gépeket hozhatnak létre (a labor és az előfizetési szintű szabályzatok segítségével). Saját virtuális gépeket is kezelhetnek. Nem kezelhetik más felhasználókhoz tartozó virtuális gépeket.
 
-További információkért lásd: [Azure enterprise scaffold-előíró előfizetés-irányítás](/azure/architecture/cloud-adoption/appendix/azure-scaffold) dokumentációját.
+További információkért lásd: [Azure Enterprise állvány – előfizetési útmutató irányítási](/azure/architecture/cloud-adoption/appendix/azure-scaffold) dokumentációja.
 
 
-## <a name="next-steps"></a>További lépések
-Lásd: [vállalati házirend és megfelelőség](devtest-lab-guidance-governance-policy-compliance.md).
+## <a name="next-steps"></a>Következő lépések
+Lásd: [a vállalati házirend és a megfelelőség](devtest-lab-guidance-governance-policy-compliance.md).

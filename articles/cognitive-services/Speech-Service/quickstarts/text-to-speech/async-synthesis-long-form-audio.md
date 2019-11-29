@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: d308623a323fecd39efa90639da71fb981936fe5
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6cf6cfb005155b85278935af6f266dfebcbb44c6
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930579"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554964"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Rövid útmutató: a hosszú formátumú hang aszinkron szintézise a Pythonban (előzetes verzió)
 
@@ -30,7 +30,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * Python 2.7. x vagy 3. x.
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)vagy a kedvenc szövegszerkesztője.
-* Egy Azure-előfizetés és egy Speech Service-előfizetési kulcs. [Hozzon létre egy Azure-fiókot](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) , és [hozzon létre egy beszédfelismerési erőforrást](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) a kulcs lekéréséhez. A beszédfelismerési erőforrás létrehozásakor győződjön meg arról, hogy a díjszabási szintje **S0**, és a hely egy [támogatott régióra](../../regions.md#standard-and-neural-voices)van beállítva.
+* Egy Azure-előfizetés és egy Speech Service-előfizetési kulcs. [Hozzon létre egy Azure-fiókot](../../get-started.md#try-the-speech-service-using-a-new-azure-account) , és [hozzon létre egy beszédfelismerési erőforrást](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) a kulcs lekéréséhez. A beszédfelismerési erőforrás létrehozásakor győződjön meg arról, hogy a díjszabási szintje **S0**, és a hely egy [támogatott régióra](../../regions.md#standard-and-neural-voices)van beállítva.
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 

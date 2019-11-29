@@ -322,6 +322,8 @@
       href: reference-connect-version-history.md
     - name: Az Azure AD Connect Health verzióelőzményei
       href: reference-connect-health-version-history.md
+    - name: Azure AD átmenő hitelesítési ügynök verzióelőzményei
+      href: reference-connect-pta-version-history.md
     - name: Összekötő verzióelőzményei
       href: reference-connect-sync-connector-version-history.md
     - name: Fiókok és engedélyek

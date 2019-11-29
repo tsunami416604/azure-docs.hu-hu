@@ -2,31 +2,28 @@
 title: A C# MapReduce használata a Hadoop-ben a HDInsight-Azure-ban
 description: Megtudhatja, C# hogyan hozhat létre MapReduce-megoldásokat az Azure HDInsight Apache Hadoop használatával.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1cdf029d296bd6ff11b6531cd47dc6a7fd3163c3
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.custom: hdinsightactive
+ms.date: 11/22/2019
+ms.openlocfilehash: 025b5c5c1e3b8543111e112202906ef6f1fdb482
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930261"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561803"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# a MapReduce streaming Apache Hadoop a HDInsight-ben
 
 Megtudhatja, C# hogyan hozhat létre MapReduce-megoldást a HDInsight-ben.
 
-> [!IMPORTANT]
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információ: [Apache Hadoop Components on HDInsight](../hdinsight-component-versioning.md).
-
 A Apache Hadoop streaming egy olyan segédprogram, amely lehetővé teszi, hogy MapReduce-feladatokat futtasson egy parancsfájl vagy egy végrehajtható fájl használatával. Ebben a példában a .NET használatával lehet megvalósítani a leképező és a szűkítőt a Word Count megoldásban.
 
 ## <a name="net-on-hdinsight"></a>.NET on HDInsight
 
-A *Linux-alapú HDInsight-* fürtök a [mono (https://mono-project.com)](https://mono-project.com) használatával futtatják a .NET-alkalmazásokat. A HDInsight 3,6-es verziója tartalmazza a Mono 4.2.1-es verzióját. További információ a HDInsight-mel együtt használt mono verziójával kapcsolatban: [Apache Hadoop különböző HDInsight-verziókban elérhető összetevők](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions). 
+A HDInsight-fürtök a [mono (https://mono-project.com)](https://mono-project.com) használatával futtatják a .NET-alkalmazásokat. A HDInsight 3,6-es verziója tartalmazza a Mono 4.2.1-es verzióját. További információ a HDInsight-mel együtt használt mono verziójával kapcsolatban: [Apache Hadoop különböző HDInsight-verziókban elérhető összetevők](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).
 
 További információ a .NET-keretrendszer verzióival való monó kompatibilitásról: [monó kompatibilitás](https://www.mono-project.com/docs/about-mono/compatibility/).
 
@@ -50,9 +47,14 @@ További információ a folyamatos átvitelről: [Hadoop streaming](https://hado
 
 * Az. exe fájlok a fürtbe való feltöltésének módja. A jelen dokumentumban szereplő lépések a Visual studióhoz készült Data Lake Tools használatával töltik fel a fájlokat a fürt elsődleges tárolójába.
 
-* Azure PowerShell vagy egy Secure Shell-(SSH-) ügyfél.
+* Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/overview).
 
-* Egy Hadoop a HDInsight-fürtön. A fürtök létrehozásáról további információt a HDInsight- [fürt létrehozása](../hdinsight-hadoop-provision-linux-clusters.md)című témakörben talál.
+* Egy SSH-ügyfél (nem kötelező). További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+
+* Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
+
+* A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez `wasb://` az Azure Storage-hoz, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1 számára. Ha a biztonságos átvitel engedélyezve van az Azure Storage vagy a Data Lake Storage Gen2 számára, akkor az URI `wasbs://` vagy `abfss://`, illetve a [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
+
 
 ## <a name="create-the-mapper"></a>A Mapper létrehozása
 
@@ -150,11 +152,9 @@ Ezután fel kell töltenie a *Mapper* és a *redukáló* alkalmazásokat a HDIns
 
 1. A Visual Studióban válassza a > **Server Explorer** **megtekintése** lehetőséget.
 
-2. Bontsa ki az **Azure** elemet, majd bontsa ki a **HDInsight** elemet.
+1. Kattintson a jobb gombbal az **Azure**elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez...** lehetőséget, és fejezze be a bejelentkezési folyamatot.
 
-3. Ha a rendszer kéri, adja meg az Azure-előfizetés hitelesítő adatait, majd válassza a **Bejelentkezés**lehetőséget.
-
-4. Bontsa ki azt a HDInsight-fürtöt, amelyre telepíteni kívánja az alkalmazást. Megjelenik egy bejegyzés a szöveggel **(alapértelmezett Storage-fiók)** .
+1. Bontsa ki azt a HDInsight-fürtöt, amelyre telepíteni kívánja az alkalmazást. Megjelenik egy bejegyzés a szöveggel **(alapértelmezett Storage-fiók)** .
 
    ![Storage-fiók, HDInsight-fürt, Server Explorer, Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
 
@@ -162,13 +162,13 @@ Ezután fel kell töltenie a *Mapper* és a *redukáló* alkalmazásokat a HDIns
 
    * Ha az **(alapértelmezett Storage-fiók)** bejegyzést nem lehet kibontani, akkor a **Azure Data Lake Storage** a fürt alapértelmezett tárolójának fogja használni. A fürt alapértelmezett tárolójában lévő fájlok megtekintéséhez kattintson duplán az **(alapértelmezett Storage-fiók)** bejegyzésre.
 
-5. Az. exe fájlok feltöltéséhez használja az alábbi módszerek egyikét:
+1. Az. exe fájlok feltöltéséhez használja az alábbi módszerek egyikét:
 
-    * Ha **Azure Storage-fiókot**használ, válassza a **blob feltöltése** ikont. 
+    * Ha **Azure Storage-fiókot**használ, válassza a **blob feltöltése** ikont.
 
         ![HDInsight feltöltés ikonja Mapper, Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 
-        Az **új fájl feltöltése** párbeszédpanel **fájlnév**területén válassza a **Tallózás**lehetőséget. A **blob feltöltése** párbeszédpanelen lépjen a *Mapper* projekt *bin\debug* mappájába, majd válassza ki a *mapper. exe* fájlt. Végül kattintson a **Megnyitás** elemre, majd az **OK gombra** a feltöltés befejezéséhez. 
+        Az **új fájl feltöltése** párbeszédpanel **fájlnév**területén válassza a **Tallózás**lehetőséget. A **blob feltöltése** párbeszédpanelen lépjen a *Mapper* projekt *bin\debug* mappájába, majd válassza ki a *mapper. exe* fájlt. Végül kattintson a **Megnyitás** elemre, majd az **OK gombra** a feltöltés befejezéséhez.
 
     * **Azure Data Lake Storage**esetében kattintson a jobb gombbal egy üresre a fájl listázása területen, majd válassza a **feltöltés**lehetőséget. Végül válassza ki a *mapper. exe* fájlt, majd kattintson a **Megnyitás**gombra.
 
@@ -178,15 +178,19 @@ Ezután fel kell töltenie a *Mapper* és a *redukáló* alkalmazásokat a HDIns
 
 Az alábbi eljárás azt ismerteti, hogyan futtathat MapReduce-feladatokat SSH-munkamenet használatával:
 
-1. Az SSH használatával csatlakozzon a HDInsight-fürthöz. (Például futtassa a parancsot `ssh sshuser@<clustername>-ssh.azurehdinsight.net`.) További információ: az [SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. A fürthöz való kapcsolódáshoz használja az [SSH-parancsot](../hdinsight-hadoop-linux-use-ssh-unix.md) . Szerkessze az alábbi parancsot az CLUSTERNAME helyére a fürt nevével, majd írja be a következő parancsot:
 
-2. A MapReduce-feladatok elindításához használja a következő parancsok egyikét:
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. A MapReduce-feladatok elindításához használja a következő parancsok egyikét:
 
    * Ha az alapértelmezett tároló az **Azure Storage**:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
-            -files wasb:///mapper.exe,wasb:///reducer.exe \
+            -files wasbs:///mapper.exe,wasbs:///reducer.exe \
             -mapper mapper.exe \
             -reducer reducer.exe \
             -input /example/data/gutenberg/davinci.txt \
@@ -218,7 +222,7 @@ Az alábbi eljárás azt ismerteti, hogyan futtathat MapReduce-feladatokat SSH-m
    A következő lista ismerteti, hogy az egyes paraméterek és lehetőségek a következőket jelölik:
 
    * *Hadoop-streaming. jar*: a folyamatos átviteli MapReduce funkciót tartalmazó jar-fájlt határozza meg.
-   * `-files`: a feladatokhoz tartozó *mapper. exe* és *redukáló. exe* fájlt adja meg. A `wasb:///`, `adl:///`vagy `abfs:///` protokoll deklarációja minden fájl előtt a fürt alapértelmezett tárolási gyökerének elérési útja.
+   * `-files`: a feladatokhoz tartozó *mapper. exe* és *redukáló. exe* fájlt adja meg. A `wasbs:///`, `adl:///`vagy `abfs:///` protokoll deklarációja minden fájl előtt a fürt alapértelmezett tárolási gyökerének elérési útja.
    * `-mapper`: a leképezést megvalósító fájlt adja meg.
    * `-reducer`: a szűkítőt megvalósító fájlt adja meg.
    * `-input`: a bemeneti adatokat adja meg.

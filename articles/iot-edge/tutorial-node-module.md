@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 16212f7229dc84b9495976bd40b6d48b3f2686bd
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7b723b4a5ef35b17514181b622f68d00c1f3ecee
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457653"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560939"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Node. js IoT Edge modul fejlesztése és üzembe helyezése Linux-eszközökhöz
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag bemutatja, hogyan fejleszthet egy modult a **Node. js** -ben 
 
 A következő táblázat segítségével megismerheti a Node. js-modulok fejlesztésének és üzembe helyezésének lehetőségeit: 
 
-| Node.js | Visual Studio Code | Visual Studio 2017/2019 | 
+| Node.js | Visual Studio-kód | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![A VS Code használata Node. js-modulokhoz Linux AMD64 rendszeren](./media/tutorial-c-module/green-check.png) |  |
 | **Linuxos ARM32** | ![A VS Code használata a Linux ARM32 futó Node. js-moduloknál](./media/tutorial-c-module/green-check.png) |  |
@@ -79,7 +79,7 @@ Az **npm** használatával létrehozhat egy Node.js-megoldást, amelyre majd ép
 
 4. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: új IoT Edge-megoldás) parancsot. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
-   | Mező | Érték |
+   | Mező | Value (Díj) |
    | ----- | ----- |
    | Select folder (Mappa kiválasztása) | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
    | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
@@ -177,7 +177,7 @@ Minden sablonhoz tartozik egy mintakód, amely a **SimulatedTemperatureSensor** 
      }
    ```
 
-   ![Ikermodul központi telepítési sablon hozzáadása](./media/tutorial-node-module/module-twin.png)
+   ![Modul Twin hozzáadása a központi telepítési sablonhoz](./media/tutorial-node-module/module-twin.png)
 
 9. Mentse a Deployment. template. JSON fájlt.
 
@@ -248,9 +248,11 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban olyan kódot tartalmazó IoT Edge-modult hozott létre, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studio Code-hoz készült modulok fejlesztéséről](how-to-vs-code-develop-module.md). Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan hozhatja Azure IoT Edge az Azure Cloud Services üzembe helyezését az adathordozón lévő adatfeldolgozás és-elemzés során.
+Ebben az oktatóanyagban olyan kódot tartalmazó IoT Edge-modult hozott létre, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studio Code-hoz készült modulok fejlesztéséről](how-to-vs-code-develop-module.md). IoT Edge modulokra, például a szimulált hőmérsékleti modulra példaként lásd: [IoT Edge modul minták](https://github.com/Azure/iotedge/tree/master/edge-modules). 
+
+Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan hozhatja Azure IoT Edge az Azure Cloud Services üzembe helyezését az adathordozón lévő adatfeldolgozás és-elemzés során.
 
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)

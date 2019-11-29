@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 06/30/2017
+ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: f05c8724fe87888c93230b4ca77a7a82fe9357c2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3e316527992b4a478b82bef61fb6da608e218ba5
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677465"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554925"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Egyéni műveletek nyomon követése Application Insights .NET SDK-val
 
@@ -30,7 +30,7 @@ Ez a dokumentum útmutatást nyújt az egyéni műveletek nyomon követéséhez 
 ## <a name="overview"></a>Áttekintés
 A művelet egy alkalmazás által futtatott logikai munkadarab. A név, a kezdési idő, az időtartam, az eredmény és a végrehajtás környezete, például a Felhasználónév, a tulajdonságok és az eredmény. Ha A műveletet a B művelet kezdeményezte, akkor A B művelet szülőként van beállítva A számára. Egy művelet csak egy szülővel rendelkezhet, de több alárendelt művelettel is rendelkezhet. A műveletekkel és a telemetria kapcsolatos további információkért lásd: [Azure Application Insights telemetria korreláció](correlation.md).
 
-A Application Insights .NET SDK-ban a műveletet a [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) absztrakt osztálya, valamint a [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) és a [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs)leszármazottai írják le.
+A Application Insights .NET SDK-ban a műveletet a [OperationTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) absztrakt osztálya, valamint a [RequestTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) és a [DependencyTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs)leszármazottai írják le.
 
 ## <a name="incoming-operations-tracking"></a>Bejövő műveletek követése 
 A Application Insights web SDK automatikusan gyűjt HTTP-kérelmeket az IIS-folyamatokban és az összes ASP.NET Core alkalmazásban futó ASP.NET-alkalmazásokhoz. Más platformokhoz és keretrendszerekhez Közösség által támogatott megoldások tartoznak. Ha azonban a standard vagy a Közösség által támogatott megoldások egyike sem támogatja az alkalmazást, manuálisan is elvégezheti azt.
@@ -130,7 +130,7 @@ Míg a [W3C nyomkövetési kontextus](https://www.w3.org/TR/trace-context/) és 
 Application Insights nyomon követi az üzenetkezelési hívásokat Service Bus az új [Microsoft Azure ServiceBus-ügyféllel a .net](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) -es vagy újabb verzióhoz.
 Ha az üzenetkezelési [mintát](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) használja az üzenetek feldolgozásához, a rendszer a szolgáltatás által végzett összes Service Bus automatikusan nyomon követi és korrelálja a többi telemetria elemmel. Ha manuálisan dolgozza fel az üzeneteket, tekintse meg a [Service Bus-ügyfél nyomkövetését a Microsoft Application Insights](../../service-bus-messaging/service-bus-end-to-end-tracing.md) használatával.
 
-Ha a [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) csomagot használja, olvassa el az alábbi példákat: bemutatjuk, hogyan követheti nyomon (és korrelálhatja) a hívásokat a Service Bus Service Bus ÜZENETSOR a AMQP protokollt használja, és a Application Insights nem követi automatikusan a várólistát Operations.
+Ha a [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) csomagot használja, olvassa el az alábbi példákat: bemutatjuk, hogyan követheti nyomon (és korrelálhatja) a hívásokat a Service Bus Service Bus ÜZENETSOR a AMQP protokollt használja, és a Application Insights nem követi automatikusan a várólista-műveleteket.
 A korrelációs azonosítók az üzenet tulajdonságaiban lesznek átadva.
 
 #### <a name="enqueue"></a>Sorba helyezni
@@ -268,7 +268,7 @@ public async Task Enqueue(CloudQueue queue, string message)
 Ha csökkenteni szeretné az telemetria mennyiségét, vagy ha más okokból nem kívánja nyomon követni a `Enqueue` műveletet, használja közvetlenül a `Activity` API-t:
 
 - A Application Insights művelet elindítása helyett hozzon létre (és kezdjen el) egy új `Activity`. Semmilyen tulajdonságot *nem* kell hozzárendelni, kivéve a művelet nevét.
-- A `yourActivity.Id` szerializálása `operation.Telemetry.Id` helyett az üzenet tartalmába. @No__t_0 is használhatja.
+- A `yourActivity.Id` szerializálása `operation.Telemetry.Id`helyett az üzenet tartalmába. `Activity.Current.Id`is használhatja.
 
 
 #### <a name="dequeue"></a>Sorból
@@ -404,7 +404,7 @@ Az Service Bus üzenetsor `Enqueue` metódusa vagy a Storage-várólista példak
 Az egyéni függőségi követés általános megközelítése a következő:
 
 - Hívja meg a `TelemetryClient.StartOperation` (kiterjesztés) metódust, amely kitölti a korrelációhoz és más tulajdonságokhoz szükséges `DependencyTelemetry` tulajdonságokat (Kezdési idő bélyegzője, időtartam).
-- Adja meg a `DependencyTelemetry` egyéb egyéni tulajdonságait, például a nevet és az egyéb szükséges környezetet.
+- Adja meg a `DependencyTelemetry`egyéb egyéni tulajdonságait, például a nevet és az egyéb szükséges környezetet.
 - Hozzon el egy függőségi hívást, és várjon rá.
 - A művelet leállítása `StopOperation` a befejezés után.
 - Kezeli a kivételeket.
@@ -427,7 +427,7 @@ public async Task RunMyTaskAsync()
 }
 ```
 
-Az ártalmatlanítási művelet leállítja a műveletet, így a `StopOperation` meghívása helyett elvégezhető.
+Az ártalmatlanítási művelet leállítja a műveletet, így a `StopOperation`meghívása helyett elvégezhető.
 
 *Figyelmeztetés*: bizonyos esetekben a nem kezelt kivételek miatt [Előfordulhat,](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) hogy a rendszer nem tudja nyomon követni a `finally`.
 

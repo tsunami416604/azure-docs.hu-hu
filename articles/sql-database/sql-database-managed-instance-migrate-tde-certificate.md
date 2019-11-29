@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: 6ef8d49ba7c9ac2c3c60197c11b9bf5936171f9e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0f6e379287323d9353acd887cf30d5c9c0065959
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420741"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555388"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>TDE-védelemmel ellátott adatbázis tanúsítványának átirányítása Azure SQL Database felügyelt példányra
 
@@ -37,7 +37,7 @@ Alternatív megoldásként használhat egy teljes körűen felügyelt szolgálta
 A cikkben leírt lépések elvégzéséhez a következő előfeltételekre lesz szüksége:
 
 - Telepített [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) parancssori eszköz egy helyszíni kiszolgálón vagy egy olyan számítógépen, amely hozzáfér a fájlként exportált tanúsítványhoz. A Pvk2Pfx eszköz az [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk) része, amely egy önálló parancssori környezet.
-- Telepített [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell), 5.0-s vagy újabb verzió.
+- Telepített [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell), 5.0-s vagy újabb verzió.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -184,7 +184,7 @@ Először be kell [állítania egy Azure Key Vaultt](/azure/key-vault/key-vault-
 
 A tanúsítvány ezzel elérhetővé válik a megadott felügyelt példányban, és a megfelelő TDE-vel védett adatbázis biztonsági mentése sikeresen visszaállítható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan telepítheti át az adatbázis titkosítási kulcsát a transzparens adattitkosítás, a helyszíni vagy a IaaS SQL Serverról Azure SQL Database felügyelt példányra.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0f3b7826fdcc16d3094785507ec8263da39d6284
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 1d8e473afa2c8e7c0abf58e2dbc9caea030f2f5f
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881524"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554974"
 ---
 # <a name="what-is-custom-speech"></a>Mi az Custom Speech?
 
@@ -43,7 +43,7 @@ Ez a diagram kiemeli a [Custom Speech portált](https://aka.ms/customspeech)alko
 
 ## <a name="set-up-your-azure-account"></a>Azure-fiók beállítása
 
-Egy Speech Services-előfizetésre van szükség ahhoz, hogy a [Custom Speech portálon](https://speech.microsoft.com/customspeech) egyéni modellt lehessen létrehozni. A standard Speech Services-előfizetés létrehozásához kövesse az alábbi utasításokat: [Hozzon létre egy beszédfelismerési előfizetést](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account).
+Egy Speech Services-előfizetésre van szükség ahhoz, hogy a [Custom Speech portálon](https://speech.microsoft.com/customspeech) egyéni modellt lehessen létrehozni. A standard Speech Services-előfizetés létrehozásához kövesse az alábbi utasításokat: [beszédfelismerési előfizetés létrehozása](get-started.md#try-the-speech-service-using-a-new-azure-account).
 
 > [!NOTE]
 > Ügyeljen arra, hogy standard (S0) előfizetéseket hozzon létre, az ingyenes próbaverziós (F0) előfizetések nem támogatottak.
@@ -59,9 +59,9 @@ Miután létrehozott egy Azure-fiókot és egy Speech Services-előfizetést, be
 
 A tartalmak, például az adattípusok, a modellek, a tesztek és a végpontok a [Custom Speech portálon](https://speech.microsoft.com/customspeech)belüli **projektekben** vannak rendszerezve. Minden projekt egy tartományra és országra/nyelvre vonatkozik. Létrehozhat például egy olyan projektet a hívási központok számára, amelyek az angol nyelvet használják a Egyesült Államok.
 
-Az első projekt létrehozásához válassza a **beszéd-szöveg/egyéni beszéd**lehetőséget, majd kattintson az **új projekt**elemre. A projekt létrehozásához kövesse a varázsló utasításait. A projekt létrehozása után négy lapot kell látnia: **Adatkezelés**, **tesztelés**, **képzés**és **üzembe helyezés**. Az egyes lapok használatának megismeréséhez használja a [következő lépések](#next-steps) hivatkozásait.
+Az első projekt létrehozásához válassza a **beszéd-szöveg/egyéni beszéd**lehetőséget, majd kattintson az **új projekt**elemre. A projekt létrehozásához kövesse a varázsló utasításait. Miután létrehozott egy projektet, négy lapot kell látnia: **az adatelemzést**, a **tesztelést**, a **betanítást**és az **üzembe helyezést**. Az egyes lapok használatának megismeréséhez használja a [következő lépések](#next-steps) hivatkozásait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)

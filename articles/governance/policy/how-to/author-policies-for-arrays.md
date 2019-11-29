@@ -1,14 +1,14 @@
 ---
 title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
 description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezéseknek a használatát, kiértékelheti a [*] aliast, és hozzáfűzheti az elemeket Azure Policy definíciós szabályokkal.
-ms.date: 03/06/2019
+ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 96598918f0dbcc2f56e8ccc316844ee768306b75
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 035f300d01efe80cc44687d3779d7a5fb6be2fc3
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463502"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555169"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
@@ -16,7 +16,9 @@ A Azure Resource Manager tulajdonságok általában karakterláncként és logik
 
 - Egy [definíciós paraméter](../concepts/definition-structure.md#parameters)típusa több beállítás megadásához
 - Egy házirend- [szabály](../concepts/definition-structure.md#policy-rule) része a vagy a **notIn** feltételek használatával
-- Egy olyan házirend-szabály része, amely kiértékeli a [\[\*\] aliast](../concepts/definition-structure.md#understanding-the--alias) , hogy kiértékelje az egyes forgatókönyveket, például a **none**, **az any**vagy **az All** értéket
+- Egy olyan házirend-szabály része, amely kiértékeli a [\[\*\] aliast](../concepts/definition-structure.md#understanding-the--alias) a kiértékeléshez:
+  - Olyan forgatókönyvek, mint a **none** **, sem**vagy **az összes**
+  - Összetett forgatókönyvek **darabszámmal**
 - Meglévő tömb lecseréléséhez vagy hozzáadásához a [hozzáfűzési effektusban](../concepts/effects.md#append)
 
 Ez a cikk a Azure Policy egyes használatát ismerteti, és számos példát tartalmaz.
@@ -138,10 +140,10 @@ A feltétel várt **típusa** `equals` _karakterlánc_. Mivel a **allowedLocatio
 
 ### <a name="evaluating-the--alias"></a>[*] Alias kiértékelése
 
-A nevükhöz csatolt **[\*]** aliasok azt jelzik, hogy a típus _tömb_. A teljes tömb értékének kiértékelése helyett a **[\*]** lehetővé teszi a tömb egyes elemeinek kiértékelését. Az egyes elemek kiértékelésének három forgatókönyve hasznos a következőkben: none, any és ALL.
+Azok az aliasok, amelyek neve **\[\*\]** a nevükhöz csatolva jelzi, hogy a **típus** _tömb_. A teljes tömb értékének kiértékelése helyett a **\[\*\]** lehetővé teszi a tömb egyes elemeinek kiértékelését. Az egyes elemek kiértékelése három szabványos forgatókönyvet tartalmaz: none, any és ALL. Összetett forgatókönyvek esetén használja a [darabszámot](../concepts/definition-structure.md#count).
 
 A **házirend-végrehajtó** elindítja a **hatást** , és csak akkor, ha az **IF** -szabály igaz értéket ad vissza.
-Ezt a tényt fontos megérteni, hogy a **[\*]** hogyan értékeli ki a tömb egyes elemeit.
+Ez a tény fontos, hogy tisztában legyen azzal, hogyan **\[\*** a tömb egyes elemeinek kiértékelése \].
 
 Az alábbi forgatókönyv-táblázathoz tartozó példa házirend-szabály:
 
@@ -194,10 +196,10 @@ A következő eredmények a feltétel és a példaként megadott házirend-szab�
 
 ## <a name="the-append-effect-and-arrays"></a>A hozzáfűzési effektus és tömbök
 
-A [hozzáfűzési effektus](../concepts/effects.md#append) eltérő lehet attól függően, hogy a **részletek. mező** egy **[\*]** alias-e, vagy sem.
+A [hozzáfűzési effektus](../concepts/effects.md#append) eltérő lehet attól függően, hogy a **részletek. mező** **\[\*\]** alias-e.
 
-- Ha nem a **[\*]** aliast, a Hozzáfűzés a teljes tömböt a **Value** tulajdonsággal helyettesíti.
-- **[\*]** alias esetén a Hozzáfűzés hozzáadja az **Value** tulajdonságot a meglévő tömbhöz, vagy létrehozza az új tömböt.
+- Ha nem **\[\*\]** aliast, a Hozzáfűzés a teljes tömböt a **Value** tulajdonsággal helyettesíti.
+- Ha egy **\[\*\]** aliast, a Hozzáfűzés hozzáadja az **Value** tulajdonságot a meglévő tömbhöz, vagy létrehoz egy új tömböt.
 
 További információ: [hozzáfűzési példák](../concepts/effects.md#append-examples).
 

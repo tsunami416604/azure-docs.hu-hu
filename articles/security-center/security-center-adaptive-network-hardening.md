@@ -1,6 +1,6 @@
 ---
 title: Adaptív hálózati megerősítés a Azure Security Centerban | Microsoft Docs
-description: " Megtudhatja, hogyan engedélyezheti az adaptív hálózatok megerősítését Azure Security Centerban. "
+description: Megtudhatja, hogyan erősítheti meg a tényleges forgalmi minták, a hálózati biztonsági csoportok (NSG) szabályai és a biztonsági helyzet további javítása érdekében.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 060a5a6a356574e04a3492cdeadd93ddf9a38535
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255245"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559276"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptív hálózati megerősítés Azure Security Center
 Ismerje meg, hogyan konfigurálhatja az adaptív hálózatok megerősítését Azure Security Centerban.
@@ -47,7 +47,7 @@ Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton engedélyezi
 
      ![sérült erőforrások](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
-2. A nem megfelelő **állapotú erőforrások** lapon válasszon ki egy virtuális gépet a riasztások megtekintéséhez, és alkalmazza a javasolt korlátozási szabályokat.
+2. A nem megfelelő **állapotú erőforrások** lapon válasszon ki egy virtuális gépet a riasztások megtekintéséhez, és a javasolt korlátozási szabályokat alkalmazza.
 
     ![riasztások megerősítése](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
 
@@ -83,7 +83,7 @@ Néhány fontos útmutató az adaptív hálózat megerősítési szabályának m
 * Az "engedélyezés" szabályok nem módosíthatók "megtagadás" szabályokként. 
 
   > [!NOTE]
-  > A "megtagadás" szabályok létrehozása és módosítása közvetlenül a NSG történik további részletekért lásd: [hálózati biztonsági csoport létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+  > A "megtagadás" szabályok létrehozása és módosítása közvetlenül a NSG történik. További információ: [hálózati biztonsági csoport létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
 
 * A **minden forgalmi szabály megtagadása** az egyetlen "megtagadás" szabály, amely itt is szerepel, és nem módosítható. Azonban törölheti is (lásd: [szabály törlése](#delete-rule)).
   > [!NOTE]
@@ -93,14 +93,14 @@ Néhány fontos útmutató az adaptív hálózat megerősítési szabályának m
 
 1. Egy szabály egyes paramétereinek módosításához a **szabályok** lapon kattintson a három pontra (...) a szabály sorának végén, majd kattintson a **Szerkesztés**gombra.
 
-   ![szabály szerkesztése](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
+   ![Szabály szerkesztése](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
 1. A **szabály szerkesztése** ablakban frissítse a módosítani kívánt adatokat, majd kattintson a **Mentés**gombra.
 
    > [!NOTE]
    > A **Mentés**gombra kattintva sikeresen módosította a szabályt. *Azonban nem alkalmazta azt a NSG.* Az alkalmazásához ki kell választania a szabályt a listában, majd a **kikényszerítés** gombra kell kattintania (a következő lépésben leírtak szerint).
 
-   ![szabály szerkesztése](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
+   ![Szabály szerkesztése](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
 3. A frissített szabály alkalmazásához a listából válassza ki a frissített szabályt, majd kattintson a **kikényszerítés**gombra.
 
@@ -111,7 +111,7 @@ Néhány fontos útmutató az adaptív hálózat megerősítési szabályának m
 Hozzáadhat egy "Allow" szabályt, amelyet a Security Center nem ajánlott.
 
 > [!NOTE]
-> Itt csak az "engedélyezés" szabályok adhatók hozzá. Ha meg szeretné adni a "megtagadás" szabályokat, ezt közvetlenül a NSG teheti meg. További részletek: [hálózati biztonsági csoport létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+> Itt csak az "engedélyezés" szabályok adhatók hozzá. Ha meg szeretné adni a "megtagadás" szabályokat, ezt közvetlenül a NSG teheti meg. További információ: [hálózati biztonsági csoport létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
 
 *Adaptív hálózati kötési szabály hozzáadása:*
 

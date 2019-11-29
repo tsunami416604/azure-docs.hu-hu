@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 729371ede8df3dc21f70bc5742de52f2be874507
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0fc23a63ba9c54896212f0a3f398b33514fbb5f1
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030002"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555345"
 ---
 # <a name="get-started-with-device-twins-python"></a>Ismerkedés a Device Twins (Python) eszközzel
 
@@ -56,7 +56,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely hely m
    ```
 
    > [!NOTE]
-   > Az Azure-iothub-Service-Client pip-csomag jelenleg csak Windows operációs rendszerhez érhető el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése a Pythonhoz](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) című témakörben.
+   > Az Azure-iothub-Service-Client pip-csomag jelenleg csak Windows operációs rendszerhez érhető el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése a Pythonhoz](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) című témakörben.
    >
 
 2. Egy szövegszerkesztővel hozzon létre egy új **AddTagsAndQuery.py** -fájlt.
@@ -70,7 +70,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely hely m
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. Adja hozzá a következő kódot. Cserélje le a `[IoTHub Connection String]` értéket a IoT hub-beli, az [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)során másolt karakterláncra. Cserélje le a `[Device Id]` értéket az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítójával.
+4. Adja hozzá a következő kódot. Cserélje le a `[IoTHub Connection String]`t a IoT hub-beli, az [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)során másolt karakterláncra. Cserélje le a `[Device Id]`t az [IoT hub új eszköz regisztrálása](#register-a-new-device-in-the-iot-hub)a regisztrált eszköz azonosítójával.
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -171,7 +171,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a köv
     from azure.iot.device import IoTHubModuleClient
     ```
 
-4. Adja hozzá a következő kódot. Cserélje le a `[IoTHub Device Connection String]` helyőrző értékét az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban elemre másolt eszköz-összekapcsolási karakterlánccal.
+4. Adja hozzá a következő kódot. Cserélje le a `[IoTHub Device Connection String]` helyőrző értékét az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban másolt eszköz-összekapcsolási karakterlánccal.
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -242,7 +242,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a köv
 
     ![második lekérdezés](./media/iot-hub-python-twin-getstarted/service-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Az eszköz metaadatait címkékként adta hozzá egy háttérbeli alkalmazáshoz, és írt egy szimulált eszközt, amely az eszköz kapcsolati adatait jelenti a Twin-ben. Azt is megtanulta, hogyan lehet lekérdezni ezeket az információkat a beállításjegyzék használatával.
 

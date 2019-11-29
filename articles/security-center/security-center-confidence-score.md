@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center megbízhatósági pontszáma | Microsoft Docs
-description: " Ismerje meg, hogyan dolgozhat a Azure Security Center megbízhatósági pontszámával. "
+description: Security Center megbízhatósági pontszámokat hoz létre, amelyek segítségével a csapat eldöntheti, hogy a fenyegetés legitim-e, és hogyan osztályozhatja és rangsorolhatja a riasztásokat.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: 0f0380ca4a285d9cb4a8472a40c77130a8f63035
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b7e53291e10db17f848553b17dae2f84bdb08b7
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202382"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558968"
 ---
 # <a name="alert-confidence-score"></a>Riasztás megbízhatósági pontszáma 
 
@@ -49,11 +49,11 @@ A riasztásban Security Center megbízhatóságához hozzájáruló adatmennyis�
 Használja Security Center megbízhatósági pontszámát, hogy rangsorolja a riasztások osztályozását a környezetben. A megbízhatósági pontszám a riasztások automatikus kivizsgálásával, az iparági ajánlott eljárások és az intelligens algoritmusok alkalmazásával, valamint virtuális elemzőként való működésével időt takaríthat meg, és meghatározza, hogy mely fenyegetések valósak, és hol kell összpontosítania a figyelmet.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk azt ismerteti, hogyan használható a megbízhatósági pontszám a riasztási vizsgálat rangsorolásához. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Azure Security Center: gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) –Tanulja meg az Azure-erőforrások állapotfigyelésének módját.
+* [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
+* [Biztonsági állapotmonitorozás az Azure Security Centerben](security-center-monitoring.md) – Útmutató az Azure-erőforrások állapotának monitorozásához.
 
 
 

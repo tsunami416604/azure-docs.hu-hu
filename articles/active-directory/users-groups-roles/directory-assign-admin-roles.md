@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdc178661cf4db8505a444d1f5575bb3d0375979
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 3b85c5c6c5642d10c8d917ed9785d0fcf48a5e68
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547527"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554136"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkör engedélyei Azure Active Directory
 
@@ -185,7 +185,7 @@ Ez a szerepkör csak az [eszközbeállítások](https://aad.portal.azure.com/#bl
 
 Az ebben a szerepkörben lévő felhasználók beolvashatják az alapszintű címtár-információkat. A következő szerepkört kell használni:
 * A vendég felhasználói számára az olvasási hozzáférés megadása helyett egy adott készletet adjon meg.
-* A nem rendszergazda felhasználók adott készletének megadása az Azure Portalhoz, amikor "az Azure AD-portálhoz való hozzáférés korlátozása csak a rendszergazdák számára" beállítás értéke "yes".
+* A nem rendszergazdai jogosultságú felhasználók megadott készletének megadása Azure Portal ha "az Azure AD-portálhoz való hozzáférés korlátozása csak a rendszergazdák számára" beállítás értéke "yes".
 * Egyszerű szolgáltatásokhoz való hozzáférés biztosítása a címtár. Read. All nem lehetőség.
 
 ### <a name="directory-synchronization-accountsdirectory-synchronization-accounts-permissions"></a>[Címtár-szinkronizálási fiókok](#directory-synchronization-accounts-permissions)
@@ -238,7 +238,7 @@ Az ebben a szerepkörben lévő felhasználók beolvashatják a beállításokat
 >- [Azure ad-portál](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) – a globális olvasó nem tudja olvasni a vállalati alkalmazások kiépítési módját.
 >- [M365 felügyeleti központ](https://admin.microsoft.com/Adminportal/Home#/homepage) – a globális olvasó nem tudja beolvasni az ügyfél kulcstároló-kérelmeit. A M365 felügyeleti központ bal oldali ablaktáblájában nem találja a **Customer kulcstároló-kérelmek** fület a **támogatás** területen.
 >- [M365 Security Center](https://security.microsoft.com/homepage) – a globális olvasó nem tudja olvasni az érzékenységet és a megőrzési címkéket. A M365 Security Center bal oldali ablaktábláján nem találhatók az **adattartalom**, a **megőrzési címkék**és a **címke-elemzési** lapok.
->- [Office biztonsági és megfelelőségi központ](https://protection.microsoft.com) – a globális olvasó nem tudja olvasni az SCC-naplókat vagy a tartalom keresését.
+>- [Office biztonsági és megfelelőségi központ](https://sip.protection.office.com/homepage) – a globális olvasó nem tudja olvasni az SCC-naplókat vagy a tartalom keresését.
 >- [Teams felügyeleti központ](https://admin.teams.microsoft.com) – a globális olvasó nem tudja beolvasni a **csapatok életciklusát**, az **elemzési & jelentéseket**, az **IP Phone-eszközök kezelését** és az **alkalmazás-katalógust**
 >- A [Privileged Access Management (PAM)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) nem támogatja a globális olvasó szerepkört.
 >- [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) – a globális olvasó csak a [központi jelentéskészítés](https://docs.microsoft.com/azure/information-protection/reports-aip) esetén támogatott, és ha az Azure ad-szervezet nem az [egyesített címkézési platformon](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)van.
@@ -248,7 +248,7 @@ Az ebben a szerepkörben lévő felhasználók beolvashatják a beállításokat
 
 ### <a name="group-administratorgroup-administrator"></a>[Csoport rendszergazdája](#group-administrator)
 
-A szerepkör felhasználói létrehozhatnak és kezelhetnek csoportokat és azok beállításait, például az elnevezési és lejárati házirendeket. Fontos tisztában lenni azzal, hogy egy felhasználó ehhez a szerepkörhöz rendelése lehetővé teszi, hogy a bérlő összes csoportját a különböző munkaterhelések, például a csapatok, a SharePoint, a Yammer és az Outlook mellett is kezelhesse. Emellett a felhasználók a különböző csoportok beállításait is kezelhetik különböző felügyeleti portálokon, például a Microsoft felügyeleti központban, az Azure Portalon, valamint a számítási feladatok, például a csapatok és a SharePoint felügyeleti központok között.
+A szerepkör felhasználói létrehozhatnak és kezelhetnek csoportokat és azok beállításait, például az elnevezési és lejárati házirendeket. Fontos tisztában lenni azzal, hogy egy felhasználó ehhez a szerepkörhöz rendelése lehetővé teszi, hogy a bérlő összes csoportját a különböző munkaterhelések, például a csapatok, a SharePoint, a Yammer és az Outlook mellett is kezelhesse. Emellett a felhasználók a különböző csoportok beállításait is kezelhetik különböző felügyeleti portálokon, például a Microsoft felügyeleti központban, a Azure Portalon, valamint a munkaterhelések, például a csapatok és a SharePoint-felügyeleti központok között.
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[Vendég meghívója](#guest-inviter-permissions)
 

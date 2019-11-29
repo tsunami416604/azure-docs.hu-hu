@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure Security Center?| Microsoft Docs
-description: Információk az Azure Security Centerről, annak főbb funkcióiról és működéséről.
+description: Ez az oldal leírja Security Center főbb előnyeit – felfedezheti a biztonsági állapotát, és javíthatja a Felhőbeli és a helyszíni erőforrások lefedettségével.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: e02fd0de00b8feed15fcd51b657afcc015d816f2
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 378ad4fde94e8bccfbdad9765545675822d202ff
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202114"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558637"
 ---
-# <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
+# <a name="what-is-azure-security-center"></a>Mi az Azure Security Center?
 
 Azure Security Center egy egységes infrastruktúra-alapú biztonsági felügyeleti rendszer, amely erősíti az adatközpontok biztonsági állapotát, és komplex veszélyforrások elleni védelmet biztosít a felhőben lévő hibrid számítási feladatokhoz, akár az Azure-ban, akár nem a helyszínen.
 
@@ -37,11 +37,11 @@ Azure Security Center a három legsürgetőbb biztonsági kihívással foglalkoz
 
 Ha segítségre van szüksége a kihívások elleni védelemben, Security Center a következőket teszi lehetővé:
 
--   A **biztonsági testhelyzet megerősítése**: Security Center felméri a környezetet, és lehetővé teszi az erőforrások állapotának megismerését, és hogy azok biztonságosak-e.
+-   A **biztonsági helyzet megerősítése**: Security Center felméri a környezetet, és lehetővé teszi az erőforrások állapotának megismerését, és hogy azok biztonságosak-e.
 
--   **Fenyegetések elleni védelem**: Security Center felméri a számítási feladatokat, és növeli a fenyegetések megelőzésére vonatkozó ajánlásokat és a veszélyforrások észlelésére vonatkozó riasztásokat.
+-   **Fenyegetések elleni védelem**: Security Center felméri a számítási feladatokat, és növeli a veszélyforrások megelőzésére vonatkozó ajánlásokat és a veszélyforrások észlelésére vonatkozó riasztásokat.
 
--   **Gyorsabb biztonságos használat**: Security Center minden a Felhőbeli sebességgel történik. Mivel natív módon van integrálva, az Security Center egyszerű üzembe helyezése, amely az Azure-szolgáltatásokkal való kiépítést és védelmet biztosít.
+-   **Gyorsabb biztonság**: Security Centerban minden a Felhőbeli sebességgel történik. Mivel natív módon van integrálva, az Security Center egyszerű üzembe helyezése, amely az Azure-szolgáltatásokkal való kiépítést és védelmet biztosít.
 
 ## <a name="architecture"></a>Architektúra
 
@@ -87,7 +87,7 @@ A Security Center egy **biztonságos pontszám**hozzáadásával megkönnyíti a
 
 Azure Security Center értékének szíve a javaslataiban rejlik. A javaslatok a számítási feladatokban található biztonsági kérdésekre vannak szabva, és Security Center a biztonsági rendszergazda dolgozik Önnek, nem csupán a biztonsági rések megtalálásával, hanem konkrét útmutatást ad arról, hogy miként lehet megszabadulni belőlük.
 
-![Security Center-javaslatok](media/security-center-intro/sc-recommendations.png)
+![Javaslatok Security Center](media/security-center-intro/sc-recommendations.png)
 
 Így a Security Center lehetővé teszi, hogy ne csak biztonsági házirendeket állítson be, hanem biztonságos konfigurációs szabványokat alkalmazzon az erőforrások között.
 
@@ -105,7 +105,7 @@ Security Center fenyegetés elleni védelme magában foglalja a Fusion kill-Chai
 
 ![Security Center támadási javaslat](media/security-center-intro/sc-attack-recommendation.png)
 
-### <a name="advanced-threat-protection"></a>Komplex veszélyforrások elleni védelem
+### <a name="advanced-threat-protection"></a>Speciális fenyegetésvédelem
 
 A Security Center révén natív integrációt érhet el a Windows Defender komplex veszélyforrások elleni védelemmel a dobozból. Ez azt jelenti, hogy konfiguráció nélkül a Windows rendszerű virtuális gépek és kiszolgálók teljes mértékben integrálva vannak Security Center javaslataival és értékelésével. A komplex veszélyforrások észlelése a Linux rendszerű virtuális gépek és kiszolgálók esetében is elérhető.
 
@@ -141,9 +141,9 @@ A Security Center zökkenőmentes, natív integrációt biztosít az Azure-és a
 
 Kiterjedt naplózási gyűjtemény – a Windows és a Linux rendszerből származó naplók mind kihasználva vannak a biztonsági elemzési motorban, és javaslatok és riasztások létrehozásához használatosak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 - Az Azure-előfizetése jelenleg a Security Center Ingyenes tarifacsomagját engedélyezi. A speciális biztonságkezelési és fenyegetésészlelési képességek kihasználásához frissítenie kell a Standard tarifacsomagra. A standard szintű csomag ingyenesen kipróbálható. További információkért tekintse meg a [Security Center díjszabási lapját](https://azure.microsoft.com/pricing/details/security-center/).
-- Ha most már készen áll a Security Center Standard engedélyezésére [, a gyors üzembe helyezési útmutató: Security Center standard szintű](security-center-get-started.md) Azure-előfizetésének bevezetésével végigvezeti a lépéseken.
+- Ha készen áll a Security Center Standard verziójának engedélyezésére, a [Rövid útmutató: Az Azure-előfizetés a Security Center Standard verziójába való felvétele](security-center-get-started.md) végigvezeti Önt a lépéseken.
 

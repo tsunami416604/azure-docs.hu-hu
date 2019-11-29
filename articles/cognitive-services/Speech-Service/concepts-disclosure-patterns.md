@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e0cb73f224f53441ad4f23298a035f95d59b9f7c
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836997"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559009"
 ---
-# <a name="disclosure-design-patterns"></a>Közzétételi tervezési minták
+# <a name="disclosure-design-patterns"></a>Közzététel-tervezési minták
 Most, hogy&#39;meghatározta a szintetikus hangélmények megfelelő [szintű közzétételét](concepts-disclosure-guidelines.md#disclosure-assessment) ,&#39;jó időt biztosít a lehetséges tervezési minták megismerésére.
 ## <a name="overview"></a>Áttekintés
 A különböző közzétételi minták a szintetikus hangvételre is alkalmazhatók. Ha a közzététel kiértékelésének eredménye "magas szintű közzététel" volt, javasoljuk a [**explicit közzétételt**](#explicit-disclosure), ami azt jelenti, hogy a szintetikus hang kiválasztásának elvégzése nem megfelelő. Az [**implicit közzététel**](#implicit-disclosure) olyan célzási és interakciós mintákat tartalmaz, amelyek hasznos tapasztalatokat biztosítanak, függetlenül attól, hogy a szükséges közzétételi szintek magas vagy alacsonyak.
@@ -38,7 +38,7 @@ A következő diagram használatával közvetlenül a szintetikus hangra vonatko
 
 
 
-| Ha a szintetikus hang élménye... | Javaslatok | Tervezési minták |
+| Ha a szintetikus hang élménye... | Ajánlatok | Tervezési minták |
 | --- | --- | --- |
 | Magas szintű közzétételt igényel  | Legalább egy explicit mintázatot és implicit célzási lehetőséget kell használnia a felhasználóknak a társítások kiépítéséhez. |[Explicit közzététel](#explicit-disclosure)<br>[Implicit közzététel](#implicit-disclosure)  |
 | Kis nyilvánosságra hozatalt igényel | A közzététel minimális vagy szükségtelen lehet, de bizonyos implicit minták is hasznosak lehetnek. | [Képesség-közzététel](#capability-disclosure)<br>[Társalgási átláthatóság](#conversational-transparency)  |
@@ -61,7 +61,7 @@ A hangélmény megkezdése előtt vezesse be a digitális asszisztenst úgy, hog
 ![átlátható bevezetés az első futtatási élmény során](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
 *A szintetikus hang egy új felhasználó bevezetését követően jelent meg.*
 
-Javaslatok
+Ajánlatok
 - Írja le, hogy a hang mesterséges (például &quot;digitális&quot;)
 - Írja le, hogy az ügynök mire képes
 - A hangvezéreltség&#39;explicit állapota
@@ -96,7 +96,7 @@ Akkor használja ezt a mintát, ha a felhasználó egy hanglejátszóval vagy in
 ![explicit szerzőt a hírek adathordozó-forgatókönyvében](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
 *Egy explicit szerző az a hely, ahol a hang származik.*
 
-Javaslatok
+Ajánlatok
 
 - Ajánlat belépési pontja további információ a szintetizált hangról
 
@@ -111,7 +111,7 @@ Olyan választási lehetőségeket kínál, amelyek a szintetikus hangélményre
 ![felhasználói beállítások](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
 *A felhasználói beállítások lehetővé teszik a felhasználók számára, hogy testre szabják és javítsák tapasztalataikat.*
 
-Javaslatok
+Ajánlatok
 
 - A hang testreszabásának engedélyezése a felhasználók számára (például a nyelv és a hang típusának kiválasztása)
 - Lehetővé teszi a felhasználóknak, hogy megtanítsák a rendszer számára az egyedi hangra (például hangkalibrációra, egyéni parancsokra) való reagálást.
@@ -124,7 +124,7 @@ A digitális asszisztensi&#39;hang testreszabásának módjai. Ha a hang egy hí
 ![hang testreszabása](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
 *A hangok kiválasztásának lehetősége segít közvetíteni a mesterséges természetet.*
 
-Javaslatok
+Ajánlatok
 - Az egyes hangok hangjának előzetes megtekintésének engedélyezése a felhasználók számára
 - Minden hanghoz használjon valódi bevezetést
 - Ajánlat belépési pontjai a szintetizált hangokkal kapcsolatos további információkért
@@ -136,7 +136,7 @@ A COPPA-szabályozások betartása mellett a szülők számára is biztosíthatj
 szülők ![közzététele](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
 *A szülők számára optimalizált transzparens bevezetéssel biztosítható, hogy egy felnőtt tisztában legyen a hang szintetikus természetével, mielőtt a gyermek kommunikál.*
 
-Javaslatok
+Ajánlatok
 
 - A szülők célközönsége elsődleges célközönségként a közzétételhez
 - Bátorítsa a szülőket, hogy tájékoztassák gyermekeiket
@@ -155,7 +155,7 @@ Ha a felhasználó további információt kér a szintetikus hangról, az elsőd
 ![a szintetikus hanggal kapcsolatos további információkat biztosít a felhasználóknak](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
 *További információt a külső hely súgójának webhelyén találhat.*
 
-Javaslatok
+Ajánlatok
 
 - Egyszerűsítse az összetett fogalmakat, és ne használja a Legalese és a műszaki szakzsargont
 - Ne temetni a tartalmat az adatvédelem és a használati feltételekkel kapcsolatos utasításokban
@@ -167,7 +167,7 @@ A konzisztencia a teljes felhasználói útra kiterjedő, a közzétételt impli
 
 ![Implicit célzások konzisztenciája](media/responsible-ai/disclosure-patterns/consistency.png)
 
-### <a name="implicit-cues-amp-feedback"></a>Implicit útmutatók &amp; visszajelzés
+### <a name="implicit-cues--feedback"></a>Implicit útmutatók & visszajelzés
 
 A antropomorfizmus különböző módokon, az ügynök tényleges vizualizációs ábrázolásán, hangon, hangoknál, a fény mintázatán, a pattogó alakzatokon, vagy akár az eszköz rezgésén is megnyilvánulhat. A Persona meghatározásakor implicit célzási és visszajelzési mintákat használhat, nem pedig egy nagyon emberi jellegű avatárt. Ez az egyik módszer, amellyel csökkentheti a explicit közzététel szükségességét.
 
@@ -252,6 +252,6 @@ A közzétételi lehetőség használata a zökkenőmentes működés érdekébe
 * [A kapuzás áttekintése](concepts-gating-overview.md)
 * [A közzététel módja](concepts-disclosure-guidelines.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A hangalapú tehetségek közzététele](https://aka.ms/disclosure-voice-talent)

@@ -4,12 +4,12 @@ description: Figyelje Azure Backup munkaterheléseket, és hozzon létre egyéni
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 66417071190fa45a746ce0b80a9de12968198bda
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bdb59e5ec461288c89e4c7d036488b5eaeb9472a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278276"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554881"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>A monitor méretezése Azure Monitor használatával
 
@@ -37,7 +37,7 @@ A figyelés szakaszban válassza a **diagnosztikai beállítások** elemet, és 
 
 ![A Recovery Services tároló diagnosztikai beállítása, Log Analytics](media/backup-azure-monitoring-laworkspace/diagnostic-setting-new.png)
 
-Egy Log Analytics munkaterületet egy másik előfizetésből is megcélozhat. Ha egyetlen helyen szeretné figyelni a tárolókat az előfizetések között, válassza ki ugyanazt a Log Analytics munkaterületet több Recovery Services-tárolóhoz. A Log Analytics munkaterülethez Azure Backup kapcsolódó összes információ átadásához válassza a megjelenő váltógomb **erőforrás-specifikus** elemét, és válassza ki a következő eseményeket: **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. A LA Diagnostics beállításainak konfigurálásával kapcsolatos további információkért tekintse meg [ezt a cikket](https://aka.ms/AA6jkus) .
+Egy Log Analytics munkaterületet egy másik előfizetésből is megcélozhat. Ha egyetlen helyen szeretné figyelni a tárolókat az előfizetések között, válassza ki ugyanazt a Log Analytics munkaterületet több Recovery Services-tárolóhoz. A Log Analytics munkaterülethez Azure Backup kapcsolódó összes információ átadásához válassza a megjelenő váltógomb **erőforrás-specifikus** elemét, és válassza ki a következő eseményeket: **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. A LA Diagnostics beállításainak konfigurálásával kapcsolatos további információkért tekintse meg [ezt a cikket](backup-azure-diagnostic-events.md) .
 
 > [!IMPORTANT]
 > A konfiguráció befejezését követően 24 órát kell várnia a kezdeti leküldések befejezésére. A kezdeti adatküldés után a rendszer az összes eseményt leküldi a cikk későbbi részében leírtak szerint a [gyakoriság szakaszban](#diagnostic-data-update-frequency).

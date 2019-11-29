@@ -2,17 +2,17 @@
 title: Sablon functions – üzembe helyezés
 description: Ismerteti a Azure Resource Manager-sablonban a telepítési információk lekéréséhez használandó függvényeket.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: a255cea128241465788f21013eb0522a29f5bd9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 11/27/2019
+ms.openlocfilehash: 67540a78e349285be032f696a9ef4b9ba3c7e242
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230236"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561453"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok üzembe helyezési funkciói 
 
-A Resource Manager a következő függvényeket biztosítja a sablon és a telepítéshez kapcsolódó értékek beolvasásához:
+A Resource Manager a következő függvényeket biztosítja az aktuális üzemelő példányhoz kapcsolódó értékek beolvasásához:
 
 * [telepítési](#deployment)
 * [környezet](#environment)
@@ -27,7 +27,7 @@ Erőforrások, erőforráscsoportok vagy előfizetések értékeinek lekérésé
 
 A jelenlegi telepítési műveletre vonatkozó adatokat adja vissza.
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérési érték
 
 Ez a függvény az üzembe helyezés során átadott objektumot adja vissza. A visszaadott objektum tulajdonságai eltérnek attól függően, hogy a központi telepítési objektum hivatkozásként vagy beágyazott objektumként van-e átadva. Ha a központi telepítési objektum átadásra kerül, például ha a Azure PowerShell a **-TemplateFile** paramétert használja egy helyi fájlra, a visszaadott objektum formátuma a következő:
 
@@ -139,9 +139,9 @@ Az üzembe helyezési funkciót használó előfizetési szintű sablonért lás
 
 Információt ad vissza az üzembe helyezéshez használt Azure-környezetről.
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérési érték
 
-Ez a függvény az aktuális Azure-környezet tulajdonságait adja vissza.
+Ez a függvény az aktuális Azure-környezet tulajdonságait adja vissza. Az alábbi példa a globális Azure tulajdonságait mutatja be. A szuverén felhők némileg eltérő tulajdonságokat adhatnak vissza.
 
 ```json
 {
@@ -239,11 +239,11 @@ Egy paraméter értékét adja vissza. A megadott paraméter nevét meg kell adn
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Szükséges | Type (Típus) | Leírás |
 |:--- |:--- |:--- |:--- |
 | parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérési érték
 
 A megadott paraméter értéke.
 
@@ -324,9 +324,9 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 }
 ```
 
-Az alapértelmezett értékeket az előző példa kimenete a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Név | Type (Típus) | Value (Díj) |
 | ---- | ---- | ----- |
 | stringOutput | Sztring | 1\. lehetőség |
 | intOutput | Int | 1 |
@@ -344,11 +344,11 @@ A változó értékét adja vissza. A megadott változó nevét meg kell adni a 
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Szükséges | Type (Típus) | Leírás |
 |:--- |:--- |:--- |:--- |
 | variableName |Igen |Sztring |A visszaadni kívánt változó neve. |
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérési érték
 
 A megadott változó értéke.
 
@@ -416,9 +416,9 @@ A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-
 }
 ```
 
-Az alapértelmezett értékeket az előző példa kimenete a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Név | Type (Típus) | Value (Díj) |
 | ---- | ---- | ----- |
 | exampleOutput1 | Sztring | myVariable |
 | exampleOutput2 | Tömb | [1, 2, 3, 4] |

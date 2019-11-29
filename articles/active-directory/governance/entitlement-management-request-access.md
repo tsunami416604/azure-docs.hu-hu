@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81697293be235c12ca009c76a9fd9d3975e232fc
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173700"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554096"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomaghoz való hozzáférés kérése az Azure AD-jogosultságok kezelésében
 
@@ -35,7 +35,7 @@ Első lépésként jelentkezzen be a saját hozzáférési portálra, ahol hozz�
 
 **Előfeltételként szükséges szerepkör:** Kérelmező
 
-1. Keressen egy e-mailt vagy egy üzenetet a projektből vagy a Business managerből, amelyen dolgozik. Az e-mailnek tartalmaznia kell a hozzáférési csomagra mutató hivatkozást, amelyre szüksége lesz. A hivatkozás `myaccess` karakterrel kezdődik, tartalmaz egy könyvtári mutatót, és egy hozzáférési csomag azonosítójával végződik.
+1. Keressen egy e-mailt vagy egy üzenetet a projektből vagy a Business managerből, amelyen dolgozik. Az e-mailnek tartalmaznia kell a hozzáférési csomagra mutató hivatkozást, amelyre szüksége lesz. A hivatkozás `myaccess`vel kezdődik, tartalmaz egy könyvtári hivatkozást, és egy hozzáférési csomag azonosítójával végződik.
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -80,6 +80,30 @@ Miután megtalálta a hozzáférési csomagot a saját hozzáférési portálon,
 Ha olyan hozzáférési csomaghoz kér hozzáférést, amelyhez több szabályzat is tartozik, akkor előfordulhat, hogy ki kell választania egy szabályzatot. A hozzáférési csomag kezelője például két, belső alkalmazottak két csoportjára vonatkozó házirendet konfigurálhat. Az első szabályzat 60 napig is engedélyezheti a hozzáférést, és jóváhagyást igényelhet. A második szabályzat 2 napig is engedélyezheti a hozzáférést, és nem igényel jóváhagyást. Ha ebben a forgatókönyvben találkozik, ki kell választania a használni kívánt szabályzatot.
 
 ![Hozzáférési portál – hozzáférés kérése – több szabályzat](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+
+## <a name="resubmit-a-request"></a>Kérelem újraküldése
+
+Amikor hozzáférést kér egy hozzáférési csomaghoz, előfordulhat, hogy a rendszer megtagadja a kérést, vagy ha a jóváhagyók nem válaszolnak időben. Ha hozzáférésre van szüksége, próbálkozzon újra, és küldje el újra a kérelmet. A következő eljárás azt ismerteti, hogyan lehet újraküldeni egy hozzáférési kérelmet:
+
+**Előfeltételként szükséges szerepkör:** Kérelmező
+
+1. Jelentkezzen be a **saját hozzáférési** portálra.
+
+1. Kattintson a bal oldali navigációs menü **korábbi kérelmek előzményei** elemére.
+
+1. Keresse meg azt a hozzáférési csomagot, amelyhez újraküldi a kérelmet.
+
+1. Kattintson a pipa jelre a hozzáférési csomag kiválasztásához.
+
+1. Kattintson a kiválasztott hozzáférési csomag jobb oldalán látható kék **nézet** hivatkozásra.
+    
+    ![Hozzáférési csomag és nézet hivatkozásának kiválasztása](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
+
+    A jobb oldali ablaktábla a hozzáférési csomaghoz tartozó kérések előzményeivel fog megnyílni.
+    
+    ![Az Újraküldés gomb kiválasztása](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
+
+1. Kattintson a panel alján található **Újraküldés** gombra.
 
 ## <a name="cancel-a-request"></a>Kérelem megszakítása
 

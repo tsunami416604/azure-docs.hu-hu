@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: fff5ad379aa11a0aae14b33f9f82f6da9c794517
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 5cc473635543a22fd7e7223f4a5715f78457a897
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643728"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561746"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus méretezése
 
@@ -26,14 +26,14 @@ Az Azure HDInsight fürt automatikus méretezési funkciója automatikusan felfe
 
 Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típusát és verzióját ismerteti.
 
-| Verzió | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| Verzió | Spark | Hive | LLAP | HBase | Kafka | A Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 ESP nélkül | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
+| HDInsight 3,6 ESP nélkül | Csak igen 2,3| Igen | Nem | Nem | Nem | Nem | Nem |
 | HDInsight 4,0 ESP nélkül | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
-| HDInsight 3,6, ESP-vel | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
+| HDInsight 3,6, ESP-vel | Csak igen 2,3 | Igen | Nem | Nem | Nem | Nem | Nem |
 | HDInsight 4,0, ESP-vel | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>Működési elv
 
 Kiválaszthatja a HDInsight-fürt terheléselosztási vagy ütemezett skálázási lehetőségeit. A terhelésen alapuló skálázás megváltoztatja a fürtben lévő csomópontok számát a beállított tartományon belül, így biztosítva az optimális CPU-kihasználtságot, és csökkentheti a futtatási költségeket.
 
@@ -70,7 +70,7 @@ Ha a következő feltételek észlelhetők, az autoscale leskálázási kérést
 
 A csomópontok száma és a jelenlegi CPU-és memória-követelmények alapján az autoskálázás egy adott számú csomópont eltávolítására irányuló kérést bocsát ki. A szolgáltatás azt is észleli, hogy mely csomópontok vannak kiválasztva az eltávolításra a jelenlegi feladatok végrehajtása alapján. A leskálázási művelet először leszereli a csomópontokat, majd eltávolítja őket a fürtből.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>Fürt létrehozása terheléselosztási alapú automatikus skálázással
 
@@ -233,7 +233,7 @@ A futó feladatok továbbra is futnak és befejeződik. A függőben lévő fela
 
 Ne méretezze a fürtöt kevesebb, mint három csomópontra. Ha a fürtöt kevesebb mint három csomópontra szeretné méretezni, azt eredményezheti, hogy a fájlreplikációs szolgáltatás nem elegendő a biztonságos módban. További információért lásd a [biztonságos mód beragadása]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode) című témakört.
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Monitoring
 
 ### <a name="cluster-status"></a>Fürt állapota
 
@@ -261,6 +261,6 @@ A **figyelés**területen válassza a **metrikák** lehetőséget. Ezután katti
 
 ![A feldolgozói csomópont Schedule-alapú autoskálázási metrikájának engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Olvassa el a fürtök manuális méretezésével kapcsolatos ajánlott eljárásokat az [ajánlott eljárások méretezése](hdinsight-scaling-best-practices.md) című cikkből.

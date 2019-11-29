@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 11/27/2019
 ms.author: spelluru
-ms.openlocfilehash: 6631528c9d1f2dfc6dcd3e9d6da81115a9ece637
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dc61fb8e066c6189b5607a6e1cd479cb812466f7
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832080"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561569"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Service Bus névtér létrehozása témakörrel, előfizetéssel és szabállyal Azure Resource Manager sablon használatával
 
@@ -178,9 +178,7 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
-## <a name="next-steps"></a>További lépések
-Tekintse meg az alábbi témakört, amely bemutatja, hogyan hozhat létre előfizetési szűrőt: [Service Bus névtér létrehozása témakörrel, előfizetéssel és szabállyal Azure Resource Manager sablon használatával](service-bus-resource-manager-namespace-topic-with-rule.md)
-
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg, hogyan kezelheti ezeket az erőforrásokat a következő cikkek megtekintésével:
 
 * [Azure Service Bus kezelése](service-bus-management-libraries.md)

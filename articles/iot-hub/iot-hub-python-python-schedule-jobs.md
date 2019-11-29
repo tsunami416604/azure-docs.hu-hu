@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: f1fbfcaa80a3d1781878fe3d6eb14558a3b298a5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c424c18538a4e428c0e713bb814c2febe28d2d04
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999531"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555577"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Feladatok ütemezett és szórása (Python)
 
@@ -29,7 +29,7 @@ Elméletileg a feladatok az alábbi műveletek egyikét betakarják, és nyomon 
 
 További információk a következő cikkekben felsorolt lehetőségekről:
 
-* Eszköz Twin és tulajdonságai: [Ismerkedés az eszközök ikrekkel](iot-hub-python-twin-getstarted.md) és [oktatóanyaggal: Az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
+* Eszközök Twin és Properties: Ismerkedés [az eszközök ikrekkel](iot-hub-python-twin-getstarted.md) és [oktatóanyaggal: az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
 
 * Közvetlen metódusok: [IoT hub fejlesztői útmutató – közvetlen](iot-hub-devguide-direct-methods.md) metódusok és [oktatóanyag: közvetlen metódusok](quickstart-control-device-python.md)
 
@@ -75,13 +75,9 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a felh
     pip install azure-iot-device
     ```
 
-   > [!NOTE]
-   > Az Azure-iothub-Service-Client pip-csomagjai jelenleg csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése a Pythonhoz](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) című témakörben.
-   >
-
 2. Egy szövegszerkesztővel hozzon létre egy új **simDevice.py** -fájlt a munkakönyvtárában.
 
-3. Adja hozzá a `import` következő utasításokat és változókat a **simDevice.py** fájl elejéhez. Cserélje `deviceConnectionString` le a szöveget a fent létrehozott eszközhöz tartozó kapcsolatok sztringre:
+3. Adja hozzá a következő `import` utasításokat és változókat a **simDevice.py** -fájl elején. Cserélje le a `deviceConnectionString`t a fent létrehozott eszközhöz tartozó kapcsolatok sztringre:
 
     ```python
     import threading
@@ -117,7 +113,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a felh
             print (patch)
     ```
 
-6. Adja hozzá a következő kódot a kezelő **lockDoor** metódushoz való regisztrálásához. Adja meg a `main` rutint is:
+6. Adja hozzá a következő kódot a kezelő **lockDoor** metódushoz való regisztrálásához. A `main` rutint is tartalmazza:
 
     ```python
     def iothub_jobs_sample_run():
@@ -189,12 +185,12 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely egy k�
     ```
 
    > [!NOTE]
-   > Az Azure-iothub-Service-Client és az Azure-iothub-Device-Client pip-csomagjai jelenleg csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése a Pythonhoz](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) című témakörben.
+   > Az Azure-iothub-Service-Client pip-csomag jelenleg csak Windows operációs rendszerhez érhető el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése a Pythonhoz](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) című témakörben.
    >
 
 2. Egy szövegszerkesztővel hozzon létre egy új **scheduleJobService.py** -fájlt a munkakönyvtárában.
 
-3. Adja hozzá a `import` következő utasításokat és változókat a **scheduleJobService.py** fájl elejéhez. Cserélje le `{IoTHubConnectionString}` a helyőrzőt arra a IoT hub-IoT, amelyet korábban átmásolt a [beolvasás az hub-kapcsolatok karakterláncában](#get-the-iot-hub-connection-string). Cserélje le `{deviceId}` a helyőrzőt az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítójával:
+3. Adja hozzá a következő `import` utasításokat és változókat a **scheduleJobService.py** -fájl elején. Cserélje le a `{IoTHubConnectionString}` helyőrzőt a korábban a [IoT hub-IoT lekérése](#get-the-iot-hub-connection-string)során másolt adatközpont-kapcsolatok karakterláncára. Cserélje le a `{deviceId}` helyőrzőt az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítójával:
 
     ```python
     import sys
@@ -263,7 +259,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely egy k�
             print ( "Device twin updated." )
     ```
 
-6. Adja hozzá a következő kódot a feladatok ütemezett és frissítési feladat állapotának megadásához. Adja meg a `main` rutint is:
+6. Adja hozzá a következő kódot a feladatok ütemezett és frissítési feladat állapotának megadásához. A `main` rutint is tartalmazza:
 
     ```python
     def iothub_jobs_sample_run():
@@ -342,7 +338,7 @@ Most már készen áll az alkalmazások futtatására.
 
     ![IoT Hub Job minta 2 – eszköz kimenete](./media/iot-hub-python-python-schedule-jobs/sample2-deviceoutput.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy olyan feladatot használt, amely egy közvetlen metódust ütemez egy eszközre, és az eszköz Twin tulajdonságainak frissítését.
 

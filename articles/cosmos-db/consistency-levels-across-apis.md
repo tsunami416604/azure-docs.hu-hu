@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 6779e434339935b64440d7cf617c8946338e36e3
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c72c65c9d27810ce4ec2df0062dc41d83ed37a6b
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756982"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559106"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és Azure Cosmos DB API-k
 
@@ -25,7 +25,7 @@ Ha Cassandra API vagy Azure Cosmos DB API-ját használja a MongoDB, az alkalmaz
 
 ## <a id="cassandra-mapping"></a>Az Apache Cassandra és a Azure Cosmos DB konzisztencia-szintjei közötti leképezés
 
-A AzureCosmos DB-vel ellentétben az Apache Cassandra nem biztosít natív módon pontosan meghatározott konzisztencia-garanciákat.  Az Apache Cassandra Ehelyett írási konzisztencia-szintet és olvasási konzisztencia-szintet biztosít a magas rendelkezésre állás, a konzisztencia és a késési kompromisszumok engedélyezéséhez. Azure Cosmos DB Cassandra API használatakor: 
+A Azure Cosmos DBtól eltérően az Apache Cassandra nem biztosít natív módon pontosan meghatározott konzisztencia-garanciákat.  Az Apache Cassandra Ehelyett írási konzisztencia-szintet és olvasási konzisztencia-szintet biztosít a magas rendelkezésre állás, a konzisztencia és a késési kompromisszumok engedélyezéséhez. Azure Cosmos DB Cassandra API használatakor: 
 
 * Az Apache Cassandra írási konzisztencia-szintje az Azure Cosmos-fiókban konfigurált alapértelmezett konzisztencia-szintre van leképezve. 
 

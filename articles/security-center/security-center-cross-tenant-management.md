@@ -1,6 +1,6 @@
 ---
 title: Több-bérlős felügyelet a Azure Security Centerban | Microsoft Docs
-description: " Ismerje meg, hogyan lehet engedélyezni az adatgyűjtést az Azure Security Centerben. "
+description: Megtudhatja, hogyan állíthatja be a több-bérlős felügyeletet az Azure-beli delegált erőforrás-kezelési szolgáltatással Security Center több bérlő biztonsági állapotának kezeléséhez.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: f7aa75601639bc0c5652010fb44b01dec0d2622b
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 5c654610df8c00e1e80382687bd30dca0c02b69f
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996946"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558954"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Több-bérlős felügyelet a Security Center
 
@@ -45,14 +45,14 @@ A felső menüsorban kattintson a szűrő ikonra, és válassza ki az előfizet�
 
 A nézetek és a műveletek alapvetően azonosak. Néhány példa:
 
-- **Biztonsági házirendek kezelése**: Az egyik nézetből számos erőforrás biztonsági állapotát kezelheti a [szabályzatokkal](tutorial-security-policy.md), biztonsági javaslatokat tehet a műveletekre, valamint biztonsági adatokat gyűjthet és kezelhet.
-- **A biztonságos pontszám és a megfelelőségi testhelyzet javítása**: A több-bérlős láthatóság lehetővé teszi, hogy megtekintse az összes bérlő teljes biztonsági állapotát, valamint azt, hogy hol és hogyan lehet a lehető legjobban javítani a [biztonságos pontszám](security-center-secure-score.md) és a [megfelelőségi testhelyzetet](security-center-compliance-dashboard.md) .
-- **Javaslatok szervizelése**: A különböző bérlők számos erőforrására vonatkozó [javaslat](security-center-recommendations.md) figyelése és szervizelése egyszerre. Ezután azonnal megoldhatja azokat a biztonsági réseket, amelyek a legnagyobb kockázatot jelentik az összes bérlő esetében.
-- **Riasztások kezelése**: [Riasztások](security-center-alerts-overview.md) észlelése a különböző bérlők között. Tegyen lépéseket olyan erőforrásokra, amelyek nem felelnek meg a gyakorlatban használható [szervizelési lépéseknek](security-center-managing-and-responding-alerts.md).
+- **Biztonsági házirendek kezelése**: az egyik nézetből számos erőforrás biztonsági állapotát kezelheti a [szabályzatokkal](tutorial-security-policy.md), a biztonsági javaslatokkal kapcsolatos műveleteket, valamint a biztonsági adatok gyűjtését és kezelését.
+- A **biztonságos pontszám és a megfelelőségi helyzet javítása**: a bérlők közötti láthatósággal megtekintheti az összes bérlő teljes biztonsági állapotát, valamint azt, hogy miként és hogyan lehet legjobban javítani a [biztonságos pontszámot](security-center-secure-score.md) és a [megfelelőségi testhelyzetet](security-center-compliance-dashboard.md) .
+- **Szervizeléssel kapcsolatos javaslatok**: a különböző bérlők számos erőforrására [vonatkozó javaslatok](security-center-recommendations.md) figyelése és szervizelése egyszerre. Ezután azonnal megoldhatja azokat a biztonsági réseket, amelyek a legnagyobb kockázatot jelentik az összes bérlő esetében.
+- **Riasztások kezelése**: [riasztások](security-center-alerts-overview.md) észlelése a különböző bérlők között. Tegyen lépéseket olyan erőforrásokra, amelyek nem felelnek meg a gyakorlatban használható [szervizelési lépéseknek](security-center-managing-and-responding-alerts.md).
 
-- **A Cloud Defense speciális szolgáltatásainak kezelése és egyéb funkciók**: Kezelheti a veszélyforrások észlelési és védelmi szolgáltatásait, például az igény szerinti [(JIT)](security-center-just-in-time.md)virtuálisgép-hozzáférést, az [adaptív hálózat megerősítését](security-center-adaptive-network-hardening.md), az [adaptív alkalmazások vezérlését](security-center-adaptive-application.md)és egyebeket.
+- A **speciális Cloud Defense-funkciók kezelése és egyebek**: kezelheti a veszélyforrások észlelésének és védelmének különböző funkcióit, például az igény szerinti [(JIT)](security-center-just-in-time.md)virtuálisgép-hozzáférést, az [adaptív hálózatok megerősítését](security-center-adaptive-network-hardening.md), az [adaptív alkalmazások felügyeletét](security-center-adaptive-application.md)és egyebeket.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk bemutatja, hogyan működik a több-bérlős felügyelet a Security Centerban. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Megerősítheti a biztonsági helyzeteket Azure Security Centerekkel](security-center-monitoring.md) – megismerheti az Azure-erőforrások állapotának monitorozását.

@@ -1,6 +1,6 @@
 ---
-title: Irányítás az Azure DevTest Labs-infrastruktúra
-description: Ez a cikk az Azure DevTest Labs-infrastruktúra cégirányítási útmutatást nyújt.
+title: Azure DevTest Labs infrastruktúra irányítása – erőforrás
+description: Ez a cikk a szervezeten belüli Azure DevTest Labs erőforrásainak igazítását és kezelését ismerteti.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,81 +10,81 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: c5514a43602106cf045b575d289e02b591468359
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ba9be7b4761e6633ffe3063b6bdba53c56b93bd
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60561650"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561646"
 ---
-# <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Irányítás az Azure DevTest Labs-infrastruktúra - erőforrások
-Ez a cikk foglalkozik az igazítási és erőforrások kezelését a DevTest Labs a szervezeten belül. 
+# <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure DevTest Labs infrastruktúra irányítása – erőforrások
+Ez a cikk a szervezeten belüli DevTest Labs erőforrásainak igazítását és kezelését ismerteti. 
 
-## <a name="align-within-an-azure-subscription"></a>Egy Azure-előfizetésen belül igazítása 
-
-### <a name="question"></a>Kérdés
-Hogyan igazítása a DevTest Labs-erőforrások egy Azure-előfizetésen belül?
-
-### <a name="answer"></a>Válasz
-Mielőtt egy szervezet elkezdi használni az Azure általános alkalmazásfejlesztés, IT-tervezők először tekintse át a szolgáltatások teljes portfólióját részeként funkciójaként hogyan. Területek, tekintse át az alábbi szempontok kell érintenie:
-
-- Hogyan lehet mérni az alkalmazásfejlesztési életciklus teljes költsége?
-- Milyen a szervezetben a vállalati biztonsági házirendet a javasolt szolgáltatásajánlatot igazítása? 
-- Az egymástól a fejlesztési és éles környezetekben szükséges szegmentálást? 
-- Milyen vezérlők jelennek meg, a stabilitás és növekedés a hosszú távú könnyű?
-
-A **először ajánlott gyakorlat** , hogy tekintse át a szervezet Azure besorolás, ahol a részlegek között éles és a fejlesztői előfizetésekhez foglaltaknak. Az alábbi ábrán a javasolt besorolás lehetővé teszi, hogy egy logikai el a fejlesztési-tesztelési és éles környezetekben. Ezzel a módszerrel egy szervezet bevezethet számlázási kódok minden környezethez külön-külön társított költségek nyomon követéséhez. További információkért lásd: [előíró előfizetés-irányítás](/azure/architecture/cloud-adoption/appendix/azure-scaffold). Emellett használhatja [Azure címkék](../azure-resource-manager/resource-group-using-tags.md) nyomon követésre, és a számlázás szempontjából erőforrások rendezéséhez.
-
-A **második ajánlott gyakorlat** engedélyezése a DevTest-előfizetés az Azure Enterprise Portalon. Lehetővé teszi a szervezetek, amelyek nem érhetők el általában az Azure enterprise előfizetéssel az ügyfél operációs rendszereket futtató. Ezután használja a nagyvállalati szoftverek, amelyen csak azért kell fizetnie a számítási és nem licenceléssel kapcsolatos ne aggódjon. Biztosítja, hogy a kijelölt szolgáltatások, beleértve a gyűjtemény lemezképei iaas, például a Microsoft SQL Server, a számlázás használatalapú csak alapul. Az Azure DevTest-előfizetéssel kapcsolatos információk találhatók [Itt](https://azure.microsoft.com/offers/ms-azr-0148p/) az ügyfelek a nagyvállalati szerződés (EA) és [Itt](https://azure.microsoft.com/offers/ms-azr-0023p/) Használatalapú ügyfelek számára.
-
-![Előfizetések erőforrás igazítása](./media/devtest-lab-guidance-governance/resource-alignment-with-subscriptions.png)
-
-Ez a modell rugalmasságának köszönhetően egy szervezet az üzembe helyezés az Azure DevTest Labs szolgáltatásban. Egy szervezet támogatható labs több száz különböző üzleti egységek a párhuzamosan futó 100 – 1000 virtuális gépek. Ez elősegíti a egy központosított vállalati labor megoldás megosztására használható kezelési és biztonsági vezérlők alapelveket fogalma.
-
-Ez a modell emellett biztosítja, hogy a szervezet nem meríti azok erőforráskorlátok társított Azure-előfizetésében. Előfizetés- és Szolgáltatáskorlátok kapcsolatos részletekért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md). A DevTest Labs létesítésének folyamatát kell használnia az erőforráscsoportok sok használhatnak fel. Korlátok növelni egy támogatási kérést az Azure DevTest-előfizetés keretében is kérhető. Az éles előfizetésen belüli erőforrások használatát a fejlesztési előfizetés növekedésével nem érinti. DevTest Labs méretezéssel kapcsolatos további információkért lásd: [kvótái és korlátai méretezése a DevTest Labs](devtest-lab-scale-lab.md).
-
-Egy közös előfizetési szintű vezérlőprogramjai számára szükséges határértéke a hálózati IP-Címek tartomány hozzárendelése kiosztás éles és a fejlesztői előfizetésekhez támogatásához. Ezeket a hozzárendeléseket növekedési tényezővel (feltéve, hogy a helyszíni kapcsolat vagy egy másik hálózati topológiát, a vállalat kezelése helyett az Azure végrehajtása alapértelmezés szerint a hálózati vermet igénylő) idővel kell figyelembe venni. Az ajánlott eljárás, amelyek egy nagy IP-címelőtag hozzárendelve, és számos nagy méretű alhálózattal osztani néhány virtuális hálózatokkal rendelkeznek helyett a kisméretű alhálózattal több virtuális hálózat. Például 10 előfizetések definiálhat 10 virtuális hálózatok (egy minden egyes előfizetés esetén). Elkülönítés nem igénylő összes labs oszthatnak meg ugyanabban az alhálózatban az előfizetéshez tartozó virtuális hálózaton.
-
-## <a name="maintain-naming-conventions"></a>Elnevezési konvenciók karbantartása
+## <a name="align-within-an-azure-subscription"></a>Igazítás Azure-előfizetésen belül 
 
 ### <a name="question"></a>Kérdés
-Hogyan karbantartása egy elnevezési konvenciója a DevTest Labs-környezetben?
+Hogyan DevTest Labs-erőforrásokat egy Azure-előfizetésen belül?
 
 ### <a name="answer"></a>Válasz
-Előfordulhat, hogy szeretné kiterjeszteni a jelenlegi vállalati elnevezési konvenciók Azure műveletekhez, és azokat konzisztens a DevTest Labs-környezetben.
+Mielőtt egy szervezet elkezdi használni az Azure-t az alkalmazások általános fejlesztéséhez, először tekintse át, hogyan vezesse be a képességet a szolgáltatások általános portfóliójának részeként. A felülvizsgálati területek a következő vonatkozásokkal foglalkoznak:
 
-DevTest Labs, javasoljuk, hogy adott kezdési házirendek. Ezek a szabályzatok központi parancsfájlt és a JSON-sablonok, ha egységes telepít. Házirendek elnevezési implementálható az előfizetői szintre vonatkoznak az Azure szabályzatokkal. JSON-minták az Azure Policy, lásd: [Azure Policy minták](../governance/policy/samples/index.md).
+- Hogyan mérhető az alkalmazás-fejlesztési életciklushoz kapcsolódó díj?
+- Hogyan igazítja a szervezet a javasolt szolgáltatási ajánlatot a vállalati biztonsági házirenddel? 
+- A szegmentálás szükséges a fejlesztési és éles környezetek elkülönítéséhez? 
+- Milyen vezérlőket vezetnek be a hosszú távú felügyelet, a stabilitás és a növekedés érdekében?
 
-## <a name="number-of-users-per-lab-and-labs-per-organization"></a>Labor és a szervezet labs felhasználók száma
+Az **első ajánlott eljárás** az, hogy áttekintse a szervezetek Azure-besorolását, ahol a termelési és fejlesztési előfizetések közötti megosztások szerepelnek. A következő ábrán a javasolt besorolás a fejlesztési, tesztelési és éles környezetek logikai elkülönítését teszi lehetővé. Ezzel a módszerrel a vállalatok számlázási kódokat is bevezethetnek, hogy nyomon kövessék az egyes környezetekhez kapcsolódó költségeket. További információ: a [előfizetési előfizetések irányítása](/azure/architecture/cloud-adoption/appendix/azure-scaffold). Emellett az [Azure-címkék](../azure-resource-manager/resource-group-using-tags.md) használatával nyomon követheti az erőforrásokat követési és számlázási célokra.
+
+A **második ajánlott eljárás** az DevTest-előfizetés engedélyezése az Azure Enterprise Portalon belül. Lehetővé teszi, hogy a szervezet olyan ügyféloldali operációs rendszereket futtasson, amelyek általában nem érhetők el egy Azure Enterprise-előfizetésben. Ezután használja a vállalati szoftvereket, ahol csak a számítási feladatokért kell fizetnie, és nem kell aggódnia a licenceléssel kapcsolatban. Biztosítja, hogy a kijelölt szolgáltatások (például a Microsoft SQL Server IaaS) számlázása csak felhasználáson alapuljon. Az Azure DevTest-előfizetéssel kapcsolatban [itt](https://azure.microsoft.com/offers/ms-azr-0148p/) talál további információt NAGYVÁLLALATI szerződés (EA) ügyfelek számára, és az ügyfelekért való fizetésért [itt](https://azure.microsoft.com/offers/ms-azr-0023p/) is tájékozódhat.
+
+![Erőforrás-igazítás előfizetésekkel](./media/devtest-lab-guidance-governance/resource-alignment-with-subscriptions.png)
+
+Ez a modell lehetővé teszi a szervezet számára, hogy rugalmasan helyezzen üzembe Azure DevTest Labs a skálán. Egy szervezet több száz labort támogat a különböző üzleti egységek számára, párhuzamosan futó 100 – 1000 virtuális gépekkel. Egy központosított vállalati tesztkörnyezet fogalmát is támogatja, amely megoszthatja a konfiguráció-felügyeleti és biztonsági vezérlőkkel azonos alapelveket.
+
+Ez a modell azt is biztosítja, hogy a szervezet Ne merítse ki az Azure-előfizetéséhez kapcsolódó erőforrás-korlátozásokat. Az előfizetési és a szolgáltatási korlátokkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-subscription-service-limits.md). A DevTest Labs kiépítési folyamata nagy számú erőforráscsoportot használhat fel. Az Azure DevTest-előfizetésben támogatási kéréssel megnövelheti a korlátokat. Az éles előfizetésben lévő erőforrásokat nem érinti a rendszer, mivel a fejlesztési előfizetés használatban van. A DevTest Labs méretezésével kapcsolatos további információkért lásd: [kvóták és korlátozások méretezése a DevTest Labs-ben](devtest-lab-scale-lab.md).
+
+Általános előfizetési szint korlátja, amelyet figyelembe kell venni, hogy a hálózati IP-címtartomány hozzárendelései hogyan vannak lefoglalva a termelési és fejlesztési előfizetések támogatásához. Ezeknek a hozzárendeléseknek figyelembe kell venniük a növekedést az idő múlásával (feltéve, hogy a helyszíni kapcsolatot vagy egy másik hálózati topológiát igényelnek, amely megköveteli, hogy a vállalat az Azure implementációja helyett a hálózati verem kezelését hajtsa végre). Az ajánlott eljárás az, hogy néhány olyan virtuális hálózattal rendelkezzen, amely nagyméretű IP-címmel rendelkezik, és több nagy alhálózattal van elosztva, nem pedig több, kisebb alhálózattal rendelkező virtuális hálózattal. 10 előfizetéssel például megadhat 10 virtuális hálózatot (egyet az egyes előfizetésekhez). Az elkülönítést nem igénylő laborok ugyanazt az alhálózatot tudják megosztani az előfizetés vnet.
+
+## <a name="maintain-naming-conventions"></a>Elnevezési konvenciók fenntartása
+
+### <a name="question"></a>Kérdés
+Hogyan fenntartani az DevTest Labs-környezet elnevezési konvencióját?
+
+### <a name="answer"></a>Válasz
+Érdemes lehet kiterjeszteni az aktuális vállalati elnevezési konvenciókat az Azure-műveletekre, és az DevTest Labs-környezetben is konzisztensen kell lennie.
+
+A DevTest Labs telepítésekor javasoljuk, hogy konkrét kezdő házirendekkel rendelkezzen. Ezeket a házirendeket központi parancsfájlokkal és JSON-sablonokkal helyezheti üzembe a konzisztencia kikényszerítása érdekében. Az elnevezési házirendek az előfizetési szinten alkalmazott Azure-szabályzatok segítségével valósíthatók meg. A Azure Policy JSON-minták esetében lásd: [Azure Policy minták](../governance/policy/samples/index.md).
+
+## <a name="number-of-users-per-lab-and-labs-per-organization"></a>Felhasználók száma laborban és laborban/szervezetben
 
 ### <a name="question"></a>Kérdés 
-Hogyan állapítható meg a felhasználók labor és a egy szervezeten belül szükséges labs teljes számának aránya?
+Hogyan meghatározni a felhasználók és a laboratóriumok arányát, valamint a szervezeti egységekhez szükséges laborok teljes számát?
 
 ### <a name="answer"></a>Válasz
-Azt javasoljuk, hogy üzleti egységek és az azonos alkalmazásfejlesztési projekt társított a fejlesztői csoportok társítva a azonos labor. Lehetővé teszi a szabályzatok, a képek és a Leállítás házirendek azonos típusú csoportban is alkalmazható. 
+Azt javasoljuk, hogy ugyanahhoz a fejlesztési projekthez tartozó üzleti egységek és fejlesztési csoportok ugyanahhoz a laborhoz legyenek társítva. Lehetővé teszi, hogy ugyanazokat a szabályzatokat, lemezképeket és leállítási házirendeket alkalmazza mindkét csoportra. 
 
-Szükség lehet figyelembe venni a földrajzi határokon. Például a fejlesztők az észak-keleti Egyesült Államok (amerikai) felhasználhatja az üzembe helyezett 2. keleti régiója labor. És a fejlesztők számára, Dallas, Texas, és Denver, Colorado irányított használjon egy erőforrást, az USA déli középső régiója. Ha egy külső külső gyártótól származó egy együttműködésen alapuló tevékenységi, azok sikerült hozzárendelni a belső fejlesztők által nem használt laborokhoz. 
+Előfordulhat, hogy a földrajzi határokat is figyelembe kell vennie. Az észak-keleti Egyesült Államok (Egyesült Államok) fejlesztői például egy Kelet-RÉGIÓJA kiépített labort használhatnak. A Dallasban, Texasban és Denverben lévő fejlesztők pedig az USA déli középső régiójában lévő erőforrások használatára irányíthatók. Ha egy külső harmadik féllel együttműködésen kívüli erőfeszítések vannak, akkor azokat olyan laborhoz lehet rendelni, amelyet a belső fejlesztők nem használnak. 
 
-Az Azure DevOps projects belül egy adott projekt labor is használhatja. Ezután alkalmazza megadott Azure Active Directory csoporthoz, amely lehetővé teszi, hogy mindkét erőforráskészlettel való hozzáférés biztonságát. A virtuális hálózat a labor rendelt egyesíthetők a felhasználók egy másik határ lehet.
+Az Azure DevOps projektjein belül egy adott projekthez is használhat labort. Ezután egy megadott Azure Active Directory csoporton keresztül alkalmazza a biztonságot, amely lehetővé teszi az erőforrások mindkét készletének elérését. A laborhoz rendelt virtuális hálózat lehet egy másik határ, amellyel összevonhatja a felhasználókat.
 
-## <a name="deletion-of-resources"></a>Az erőforrások törlése
+## <a name="deletion-of-resources"></a>Erőforrások törlése
 
 ### <a name="question"></a>Kérdés
-Hogyan tudjuk megakadályozni labor belüli erőforrások törlését?
+Hogyan lehet megakadályozni az erőforrások törlését a laboron belül?
 
 ### <a name="answer"></a>Válasz
-Javasoljuk, hogy, megfelelő engedélyekkel a labor szintjén, hogy csak a jogosult felhasználók erőforrásokat törölheti vagy módosíthatja a laborszabályzatok. A fejlesztők belül kell elhelyezni a **DevTest Labs-felhasználó** csoport. A vezető fejlesztői vagy az infrastruktúra érdeklődő kell lennie a **DevTest Labs tulajdonosa**. Azt javasoljuk, hogy csak két labortulajdonosok. Ez a szabályzat kiterjesztése felé a kódtárat a sérülés elkerülése érdekében. Labor használ erőforrások használatára jogosult, de nem tudja frissíteni a laborszabályzatok. Tekintse meg a következő cikkben, amely felsorolja a szerepkörök és a jogosultságokat, amelyeket a labor belül minden beépített csoport rendelkezik: [Tulajdonosok és felhasználók hozzáadása az Azure DevTest Labs szolgáltatásban](devtest-lab-add-devtest-user.md).
+Javasoljuk, hogy a megfelelő engedélyeket a labor szintjén állítsa be úgy, hogy csak a jogosult felhasználók törölhetnek erőforrásokat, vagy módosíthatják a labor-házirendeket. A fejlesztőket a **DevTest Labs-felhasználók** csoportba kell helyezni. A vezető fejlesztőnek vagy az infrastruktúra-érdeklődőnek a **DevTest Labs-tulajdonosnak**kell lennie. Javasoljuk, hogy csak két labor tulajdonosa legyen. Ez a szabályzat a sérülés elkerülése érdekében kiterjed a kód tárházára. A labor a használati jogokkal rendelkezik az erőforrások használatához, de nem tudja frissíteni a labor-házirendeket. Tekintse meg a következő cikket, amely felsorolja azokat a szerepköröket és jogosultságokat, amelyekkel az egyes beépített csoportok egy laborban találhatók: a [tulajdonosok és a felhasználók hozzáadása a Azure DevTest Labs](devtest-lab-add-devtest-user.md).
 
-## <a name="move-lab-to-another-resource-group"></a>Labor áthelyezése másik erőforráscsoportba 
+## <a name="move-lab-to-another-resource-group"></a>A labor áthelyezése másik erőforráscsoport-csoportba 
 
 ### <a name="question"></a>Kérdés
-Támogatja az labor áthelyezése egy másik erőforrás-csoportba?
+Támogatott a labor áthelyezése egy másik erőforráscsoporthoz?
 
 ### <a name="answer"></a>Válasz
-Igen. Az erőforráscsoport lapján lépjen a kezdőlapon a tesztkörnyezethez. Ezután válassza ki **áthelyezése** gombjára, és válassza ki a labor áthelyezi egy másik erőforráscsoportba. Ha a labor létrehozása, egy erőforráscsoport automatikusan létrejön az Ön számára. Azonban érdemes a labor áthelyezése egy másik erőforráscsoportban található, amely vállalati elnevezési szabályokat követi. 
+Igen. Navigáljon az erőforráscsoport lapra a labor kezdőlapján. Ezután válassza az **Áthelyezés** lehetőséget az eszköztáron, majd válassza ki azt a labort, amelyet másik erőforráscsoporthoz szeretne áthelyezni. Labor létrehozásakor a rendszer automatikusan létrehoz egy erőforráscsoportot. Előfordulhat azonban, hogy át szeretné helyezni a labort egy másik erőforráscsoporthoz, amely követi a vállalati elnevezési konvenciókat. 
 
-## <a name="next-steps"></a>További lépések
-Lásd: [kezelheti a költségeket és tulajdonosi viszonyainak](devtest-lab-guidance-governance-cost-ownership.md).
+## <a name="next-steps"></a>Következő lépések
+Lásd: [a Cost és a tulajdonlás kezelése](devtest-lab-guidance-governance-cost-ownership.md).

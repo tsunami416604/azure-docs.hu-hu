@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
-ms.openlocfilehash: 5de28055a1b573b3326b717614f481b0e1158f1a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d7c2bfbe3f277bbaf652191977434ea5fe4dbffd
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064706"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555299"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Magas rendelkezésre állás a Windows rendszerű Azure-beli virtuális gépeken futó SAP NetWeaver számára az SAP-alkalmazások Azure NetApp Files (SMB) szolgáltatásával
 
@@ -78,8 +78,8 @@ Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
 * A [662452](https://launchpad.support.sap.com/#/notes/662452) -es SAP-megjegyzésben az adathozzáférés során a fájlrendszer gyenge teljesítményének/hibáinak elhárítása érdekében javasolt a 8,3-név létrehozásának inaktiválása.
 * [Az SAP NetWeaver magas rendelkezésre állásának telepítése Windows feladatátvevő fürtön és fájlmegosztás az Azure-beli SAP ASCS/SCS-példányok esetén](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-file-share) 
 * [Azure Virtual Machines magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
-* [Mintavételi Port hozzáadása a ASCS-fürt konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-file-share#create-a-new-sap-service-and-sap-instance-resources)
-* [Egy (A) SCS-példány telepítése feladatátvevő fürtön](https:\www.sap.com\documents\2017\07\f453332f-c97c-0010-82c7-eda71af511fa.html) 
+* [Mintavételi Port hozzáadása a ASCS-fürt konfigurációjában](sap-high-availability-installation-wsfc-file-share.md)
+* [Egy (A) SCS-példány telepítése feladatátvevő fürtön](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 * [SMB-kötet létrehozása a Azure NetApp Fileshoz](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#requirements-for-active-directory-connections)
 * [NetApp SAP-alkalmazások Microsoft Azure a Azure NetApp Files használatával][anf-sap-applications-azure]
 
@@ -193,7 +193,7 @@ Ebben a tesztelési forgatókönyvben a fürtcsomópont sapascs1 az A csomópont
 ![3\. ábra: a zárolási bejegyzés megőrzése a feladatátvételi teszt után](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-3.png)  
 
 További információ: a [sorba helyezni-feladatátvétel hibaelhárítása a ASCS-ben az ERS szolgáltatással](https://wiki.scn.sap.com/wiki/display/SI/Troubleshooting+for+Enqueue+Failover+in+ASCS+with+ERS)
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

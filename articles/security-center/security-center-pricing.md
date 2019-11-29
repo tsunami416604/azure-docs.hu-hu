@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center szintek díjszabása
-description: Ez a cikk a Azure Security Center díjszabásával kapcsolatos információkat tartalmaz.
+description: A Azure Security Center két szinten érhető el – ingyenes és standard. Ez az oldal bemutatja, hogyan frissíthet az Ingyenesről a standard szintre.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0c3fdc48d9b3bc77b629d4d6f1da081d70658c88
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8ffb571d13270ced80426aee3575197cf95d3805
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664246"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559248"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>A fokozott biztonság érdekében frissítsen Security Center Standard csomagra
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Lehetővé teszi a hibrid Felhőbeli számítási feladatok, az aktív védelem és a fenyegetések kialakulásának csökkentését, valamint az intelligens észlelést, amely megkönnyíti a gyors fejlődést okozó cyber-támadásokkal szembeni lépést.
@@ -59,7 +59,7 @@ A Security Center a hibrid Felhőbeli számítási feladatokhoz nyújt fokozott 
 - **Tárolók biztonsági funkciói** – a biztonsági rések kezelése és a valós idejű fenyegetések észlelése a tároló környezetekben. A tároló-beállításjegyzékek erőforrásának engedélyezésekor akár 12hrs is eltarthat, amíg az összes funkció engedélyezve nem lesz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben a Security Center díjszabását vezették be. Ha többet szeretne megtudni a standard szintű biztonsági és komplex veszélyforrások elleni védelemről, tekintse meg a következőt:
 
 - [Fejlett fenyegetésészlelés](security-center-threat-report.md)

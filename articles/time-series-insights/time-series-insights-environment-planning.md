@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2dd3b79e931464e83264433a923e9078b2f62525
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f75c84aeb1893008832635cf93cd634d96653dd3
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006955"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561543"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>A Azure Time Series Insights GA-környezet megtervezése
 
@@ -53,7 +53,7 @@ Módosíthatja az **adatmegőrzési idő** beállításait a Azure Time Series I
 Azure Time Series Insights két mód van:
 
 * Az egyik mód a legnaprakészebb adatokra optimalizált. Kikényszeríti a szabályzatot, hogy **kiürítse a korábbi** , a példánnyal elérhetővé vált adatvesztést. Alapértelmezés szerint ez a mód be van kapcsolva. 
-* A másik optimalizálja az adatoknak a beállított megőrzési korlátok alatt maradnak. A belépés **szüneteltetése** megakadályozza, hogy az új adatok ingressed legyenek, amikor a kiválasztott **tárolási korlát túllépte a tárterületet**. 
+* A másik optimalizálja az adatoknak a beállított megőrzési korlátok alatt maradnak. A **Bejövő forgalom szüneteltetése** megakadályozza, hogy az új adatok ingressed legyenek, amikor a **tárolási korlát túllépte a tárterületet**. 
 
 Az adatmegőrzés és a váltás a Azure Portal környezet konfigurációs lapjának két módja között állítható be.
 
@@ -64,11 +64,11 @@ Az adatmegőrzés és a váltás a Azure Portal környezet konfigurációs lapj�
 
 1. A [Azure Portal](https://portal.azure.com)válassza ki Time Series Insights-környezetét.
 
-1. A **Time Series Insights környezet** ablaktáblájának **Beállítások**területén válassza a **Konfigurálás**lehetőséget.
+1. A **Time Series Insights környezet** ablaktáblán a **Beállítások**területen válassza a **tárolási konfiguráció**elemet.
 
 1. Az **adatmegőrzési idő (nap)** mezőben adjon meg egy 1 és 400 közötti értéket.
 
-   [![a megőrzés konfigurálása](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
+   [![a megőrzés konfigurálása](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 > [!TIP]
 > Ha többet szeretne megtudni a megfelelő adatmegőrzési szabályzat megvalósításáról, tekintse meg a [megőrzés konfigurálását](./time-series-insights-how-to-configure-retention.md)ismertető témakört.

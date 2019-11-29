@@ -276,6 +276,8 @@
               href: storage-blob-containers-list.md
             - name: Tulajdonságok és metaadatok kezelése (.NET)
               href: storage-blob-container-properties-metadata.md
+            - name: Módosíthatatlansági szabályzatok beállítása és kezelése
+              href: storage-blob-immutability-policies-manage.md
         - name: Blobok létrehozása és kezelése
           items:
             - name: Blobok listázása (.NET)

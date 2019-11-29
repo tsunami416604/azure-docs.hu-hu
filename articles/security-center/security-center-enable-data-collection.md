@@ -1,6 +1,6 @@
 ---
 title: Adatgyűjtés a Azure Security Centerban | Microsoft Docs
-description: " Megtudhatja, hogyan engedélyezheti az adatgyűjtést a Azure Security Centerban. "
+description: Ez a cikk azt ismerteti, hogyan telepíthet egy Log Analytics-ügynököt, és hogyan állíthat be egy Log Analytics-munkaterületet, amelyben tárolni kívánja az összegyűjtött adatokat.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,17 +8,17 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 8aa0adf03aef2085ed2374bcfc7ea774d002061c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4b67e7a2ee9f2d734d927b3488cc15ca310f4295
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162676"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559062"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Adatgyűjtés Azure Security Center
 A Security Center adatokat gyűjt az Azure-beli virtuális gépekről (VM), a virtuálisgép-méretezési csoportokról, a IaaS-tárolók és a nem Azure-beli (beleértve a helyszíni) számítógépekről a biztonsági rések és fenyegetések figyeléséhez. Az adatok gyűjtése a Log Analytics ügynök használatával történik, amely beolvassa a különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat a gépről, és az adatokat a munkaterületre másolja az elemzéshez. Ilyenek például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek és a bejelentkezett felhasználó. A Log Analytics ügynök az összeomlási memóriaképek fájljait is másolja a munkaterületre.
 
-Az adatgyűjtés szükséges ahhoz, hogy láthatóvá váljon a hiányzó frissítések, a hibásan konfigurált operációs rendszer biztonsági beállításai, az Endpoint Protection engedélyezése, valamint az állapot-és veszélyforrások észlelése. 
+Az adatgyűjtés szükséges a hiányzó frissítések láthatóságának biztosításához, a helytelenül konfigurált operációsrendszer-biztonsági beállítások, az Endpoint Protection állapota, valamint az állapot és a fenyegetések észlelése érdekében. 
 
 Ez a cikk azt ismerteti, hogyan telepíthet egy Log Analytics-ügynököt, és hogyan állíthat be egy Log Analytics-munkaterületet, amelyben tárolni kívánja az összegyűjtött adatokat. Az adatgyűjtés engedélyezéséhez mindkét művelet szükséges. 
 

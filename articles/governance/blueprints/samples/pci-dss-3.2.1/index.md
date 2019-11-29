@@ -3,12 +3,12 @@ title: PCI-DSS v3.2.1 tervminta – Áttekintés
 description: A Payment Card Industry Data Security Standard v3.2.1-tervminta áttekintése. Ennek a tervmintának a segítségével az ügyfelek adott vezérlőket mérhetnek fel.
 ms.date: 06/24/2019
 ms.topic: sample
-ms.openlocfilehash: 68623769764af658533571e171981fd77f5b3c02
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: f36b258c098871d22ea532f9a29acfcc582dfb87
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404030"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546542"
 ---
 # <a name="overview-of-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v3.2.1-tervminta áttekintése
 

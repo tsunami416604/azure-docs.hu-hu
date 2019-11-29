@@ -103,6 +103,20 @@
               href: logic-apps-custom-api-host-deploy-call.md
         - name: Hibák elhárítása
           href: logic-apps-diagnosing-failures.md
+    - name: Azure-beli virtuális hálózatok elérése
+      items:
+        - name: Csatlakozás integrációs szolgáltatási környezetekkel rendelkező virtuális hálózatokhoz
+          href: connect-virtual-network-vnet-isolated-environment.md
+        - name: Több integrációs szolgáltatási környezet hozzáférésének beállítása
+          href: connect-virtual-network-vnet-set-up-single-ip-address.md
+        - name: Összetevők felvétele integrációs szolgáltatási környezetekbe
+          href: add-artifacts-integration-service-environment-ise.md
+    - name: Helyszíni adatok elérése
+      items:
+        - name: Adatátjáró telepítése
+          href: logic-apps-gateway-install.md
+        - name: Csatlakozás helyszíni adatokhoz
+          href: logic-apps-gateway-connection.md
     - name: Fejlesztés B2B-forgatókönyvekhez
       items:
         - name: Integrációs fiók létrehozása
@@ -159,16 +173,6 @@
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: Vészhelyreállítási terv létrehozása
           href: logic-apps-enterprise-integration-b2b-business-continuity.md
-    - name: Csatlakozás elkülönített környezetekkel rendelkező virtuális hálózatokhoz
-      href: connect-virtual-network-vnet-isolated-environment.md
-    - name: Összetevők felvétele integrációs szolgáltatási környezetekbe
-      href: add-artifacts-integration-service-environment-ise.md
-    - name: Helyszíni adatok elérése
-      items:
-        - name: Adatátjáró telepítése
-          href: logic-apps-gateway-install.md
-        - name: Csatlakozás helyszíni adatokhoz
-          href: logic-apps-gateway-connection.md
     - name: Összekötők – Részletes témák
       items:
         - name: AS2

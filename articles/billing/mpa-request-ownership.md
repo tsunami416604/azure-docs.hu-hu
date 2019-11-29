@@ -5,23 +5,23 @@ author: amberbhargava
 manager: amberb
 editor: banders
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 312808517c80041cb45e2e8ac46566c1f59884e1
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d68d95619b6aa6e8098c282977866c4bc21a357c
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376790"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561058"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure-előfizetés számlázási tulajdonjogának beszerzése az MPA-fiókjához
 
-A felügyelt szolgáltatások és az Azure-használat egyetlen, összevont számlájának biztosítása érdekében a Cloud Solution Provider (CSP) átveheti az Azure-előfizetések számlázási tulajdonjogát a Nagyvállalati Szerződéssel (EA) rendelkező ügyfelektől.
+A felügyelt szolgáltatások és az Azure-használat egyetlen, összevont számlájának biztosítása érdekében a Cloud Solution Provider (CSP) átveheti az Azure-előfizetések számlázási tulajdonjogát a közvetlen Nagyvállalati Szerződéssel (EA) rendelkező ügyfelektől.
 
 Ez a szolgáltatás csak [Azure-beli szakértői MSP](https://partner.microsoft.com/membership/azure-expert-msp) minősítésű közvetlen felhőszolgáltatói (Cloud Solution Provider) számlázási partnerek számára elérhető. A Microsoft szabályozása és szabályzatai hatálya alá tartozik, és bizonyos ügyfelek esetén felülvizsgálatot és jóváhagyást is igényelhet.
 

@@ -1,6 +1,6 @@
 ---
-title: Irányítás az Azure DevTest Labs-infrastruktúra
-description: Ez a cikk az Azure DevTest Labs-infrastruktúra cégirányítási útmutatást nyújt.
+title: Vállalati házirend és megfelelőség a Azure DevTest Labs
+description: Ez a cikk útmutatást nyújt a vállalati szabályzatok és a Azure DevTest Labs infrastruktúra megfelelőségének szabályozásához.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,71 +10,71 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e02400ef940efdf42370fbdc1da75bdc7062a8ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81ca2a90b1940d70e170cab3f8d18144a5d5e5a8
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127361"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560507"
 ---
-# <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Irányítás az Azure DevTest Labs-infrastruktúra - vállalati házirend és megfelelőség
-Ez a cikk útmutatást nyújt szabályozó vállalati házirend és megfelelőség az Azure DevTest Labs-infrastruktúrához. 
+# <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure DevTest Labs infrastruktúra irányítása – a vállalati házirend és a megfelelőség
+Ez a cikk útmutatást nyújt a vállalati szabályzatok és a Azure DevTest Labs infrastruktúra megfelelőségének szabályozásához. 
 
-## <a name="public-vs-private-artifact-repository"></a>Nyilvános és privát összetevőtárban
-
-### <a name="question"></a>Kérdés
-Mikor célszerű használni egy szervezet olyan nyilvános összetevőtárral és a DevTest Labs szolgáltatásban létrehozott privát összetevőtárban?
-
-### <a name="answer"></a>Válasz
-A [nyilvános összetevőtárral](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) biztosít egy kezdeti szoftvercsomagok leggyakrabban használt. Segít a gyors üzembe helyezési nélkül teljesítheti a kitűzött időpontja reprodukálnia általános fejlesztői eszközöket és beépülő modulok. Kiválaszthatja, hogy a saját privát tárház üzembe helyezéséhez. Nyilvános és a egy privát tárház párhuzamosan is használhatja. Dönthet úgy is, a nyilvános tárházban letiltása. A feltételek, és üzembe helyezése a privát tárházat kell meghatározni a következő kérdések és szempontok szerint:
-
-- Rendelkezik a szervezete olyan követelménnyel rendelkezik vállalati licencelt szoftvereket a DevTest Labs-ajánlatába részeként? Ha a válasz Igen, a privát tárházat kell létrehozni.
-- Nem a szervezet egyéni szoftver, amely tartalmaz egy adott művelethez, amely részeként szükség van az általános üzembe helyezési folyamat fejlesztése? Ha a válasz Igen, a privát tárházat kell telepíteni.
-- Ha a szervezet cégirányítási házirend szükséges elkülönítés, és külső tárházak nem tartoznak a szervezet által közvetlen kezelés, privát összetevőtárban kell telepíteni. Ez a folyamat részeként egy kezdeti másolatot készít a nyilvános tárházban másolható és a privát tárházban integrálva. A nyilvános tárházban lehet letiltani, majd, hogy nem a szervezeten belül férhetnek azt többé. Ez a megközelítés arra kényszeríti a szervezeten belüli összes felhasználó csak egy adattárba, amely jogosult a szervezet rendelkezik, és minimalizálja a konfigurációs csúszásokat.
-
-### <a name="single-repository-or-multiple-repositories"></a>Adattárba, vagy több adattárak 
+## <a name="public-vs-private-artifact-repository"></a>Nyilvános és privát összetevők tárháza
 
 ### <a name="question"></a>Kérdés
-Egy szervezet tervezése egy adattárba vagy több tárházak engedélyezése?
+Mikor érdemes egy szervezet nyilvános összetevő-tárházat vagy privát összetevőt használni a DevTest Labs szolgáltatásban?
 
 ### <a name="answer"></a>Válasz
-A szervezet teljes irányítás és a konfiguráció-kezelési stratégia részeként azt javasoljuk, hogy egy központi tárházban használja. Több adattárak használata esetén a silók a nem felügyelt szoftver az idő függvényében előfordulhat, hogy válnak. Egy központi tárházban, a több csapat felhasználhatja az adattárból projektjeikhez tartozó összetevőket. Szabványügyi szervezet, a biztonság, a könnyű kezelés kikényszeríti, és kiküszöböli a párhuzamos erőfeszítések. A forrásadattárakból részeként a következő műveletek használata ajánlott eljárások a hosszú távú felügyeleti és népszerűsítését:
+A [nyilvános összetevők tárháza](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) a leggyakrabban használt szoftvercsomagok kezdeti készletét biztosítja. Segít a gyors üzembe helyezésben anélkül, hogy időt kellene fordítania a közös fejlesztői eszközök és bővítmények ismételt létrehozására. Dönthet úgy is, hogy saját privát tárházat helyez üzembe. A nyilvános és a privát tárházat párhuzamosan is használhatja. Dönthet úgy is, hogy letiltja a nyilvános tárházat. A privát tárház üzembe helyezésének feltételeit a következő kérdések és szempontok alapján kell ellátni:
 
-- Az Azure-Adattárakkal társítása az azonos Azure Active Directory-bérlő az Azure-előfizetés által használt a hitelesítéshez és engedélyezéshez.
-- Hozzon létre egy csoportot nevű **DevTest Labs minden fejlesztő** az Azure Active Directoryban, amely központilag felügyelt. Minden fejlesztő, aki összetevő fejlesztési hozzájárul az ebbe a csoportba kell elhelyezni.
-- Az azonos Azure Active Directory-csoport hozzáférést biztosít az Azure-Adattárakkal adattárba, és a labor létrehozása a használható.
-- Az Azure-Adattárakkal Elágaztatás és elágaztatási használandó külön egy a-development tárházhoz az elsődleges éles adattárból. Tartalom csak hozzáadódik a főágba irányuló lekéréses kérelmet a megfelelő kód áttekintése után. A kód a felülvizsgáló jóváhagyja a módosítást, miután érdeklődő fejlesztő, aki felelős karbantartása a master ággal, egyesíti a frissített kóddal. 
+- A szervezetnek van-e követelménye a vállalati licenccel rendelkező szoftvereknek a DevTest Labs-ajánlat részeként? Ha a válasz igen, akkor létre kell hozni egy privát tárházat.
+- A szervezet olyan egyéni szoftvert fejleszt, amely egy adott műveletet biztosít, amely a teljes kiépítési folyamat részeként szükséges? Ha a válasz igen, akkor a rendszer egy privát tárházat helyez üzembe.
+- Ha a szervezet irányítási szabályzata elszigetelést igényel, és a külső adattárak nem a szervezet közvetlen konfigurációjának felügyelete alatt állnak, akkor központilag kell telepíteni a privát összetevő tárházát. A folyamat részeként a nyilvános tárház kezdeti másolata átmásolható és integrálható a privát tárházba. Ezután a nyilvános tárházat le lehet tiltani, hogy a szervezeten belül senki ne férhessen hozzá. Ez a megközelítés arra kényszeríti a szervezeten belüli felhasználókat, hogy csak egyetlen, a szervezet által jóváhagyott adattárral rendelkezzenek, és a konfigurációt csökkentsék.
+
+### <a name="single-repository-or-multiple-repositories"></a>Egy adattár vagy több tárház 
+
+### <a name="question"></a>Kérdés
+Érdemes egy szervezetet megtervezni egy adott tárházhoz, vagy több tárházat is engedélyezni?
+
+### <a name="answer"></a>Válasz
+A szervezet általános irányítási és konfigurációs felügyeleti stratégiájának részeként javasolt központosított tárházat használni. Több tárház használata esetén előfordulhat, hogy az idő múlásával a nem felügyelt szoftverek silói lesznek. A központi tárházban több csapat is használhat a tárházból származó összetevőket a projektekhez. Kikényszeríti a szabványosítást, a biztonságot, a könnyű kezelhetőséget, és kiküszöböli az erőfeszítések ismétlődését. A központosított környezet részeként a következő műveletek ajánlottak a hosszú távú felügyelethez és a fenntarthatósághoz:
+
+- Társítsa az Azure Repos-t ugyanazzal a Azure Active Directory Bérlővel, amelyet az Azure-előfizetés használ a hitelesítéshez és engedélyezéshez.
+- Hozzon létre egy, a központilag felügyelt Azure Active Directory **összes DevTest Labs-fejlesztő** nevű csoportot. Az összetevő-fejlesztéshez hozzájáruló fejlesztőknek ebbe a csoportba kell tartoznia.
+- Ugyanaz a Azure Active Directory csoport használható az Azure Repos adattárhoz és a laborhoz való hozzáférés biztosításához.
+- Az Azure-alapú adattárakban az elágazások és az elágazások különálló, az elsődleges üzemi tárházból származó fejlesztésen alapuló tárházban használhatók. A tartalmat a rendszer csak a megfelelő kód felülvizsgálatát követően egy lekéréses kérelemmel adja hozzá a Master ág számára. Ha a kód felülvizsgáló jóváhagyja a változást, a vezető fejlesztő, aki felelős a főág fenntartásáért, egyesíti a frissített kódot. 
 
 ## <a name="corporate-security-policies"></a>Vállalati biztonsági szabályzatok
 
 ### <a name="question"></a>Kérdés
-Hogyan biztosíthatja a szervezet vállalati biztonsági házirendek legyenek érvényben?
+Hogyan gondoskodhat a szervezet a vállalati biztonsági házirendekről?
 
 ### <a name="answer"></a>Válasz
-Egy szervezet előfordulhat, hogy érhet el, a következő műveletek végrehajtásával:
+A szervezetek a következő műveletek végrehajtásával érhetik el:
 
-1. Fejlesztés és egy átfogó biztonsági házirend közzététele. A szabályzat szabályainak használati feltételek a használatával társított articulates szoftver, a felhőbeli eszközöket. Azt is meghatározza, milyen jól sérti a szabályzatot. 
-2. Egyéni rendszerkép, az egyéni összetevők és a egy folyamatot, amely lehetővé teszi, hogy az active Directoryval meghatározott biztonsági tartományon belüli vezénylési fejleszthet. Ez a megközelítés kikényszeríti a céges határhálózaton, és beállítja a környezeti vezérlőknek az alábbiakat közös csoportját. Ezek a vezérlők a környezetre leselkedő fejlesztő során figyelembe veheti a fejlesztés és a egy biztonságos fejlesztési életciklus során kövesse az általános folyamat részeként. A cél is, amely nem túl szigorú környezetet biztosít a május akadályozzák a fejlesztési, de ésszerű csoportját. A csoportházirendek a szervezeti egység (OU), amely tartalmazza a virtuális gépeiről, éles környezetben található összes csoportházirendek egy része lehet. Másik lehetőségként el megfelelően az összes azonosított kockázatok csökkentése, egy további csoportot.
+1. Átfogó biztonsági szabályzat fejlesztése és közzététele. A szabályzat a szoftverekkel, a Felhőbeli objektumokkal kapcsolatos elfogadható használati szabályokat fogalmazza meg. Azt is meghatározza, hogy milyen egyértelműen sértse meg a szabályzatot. 
+2. Egyéni rendszerkép, egyéni összetevők és központi telepítési folyamat fejlesztése, amely az Active Directoryval definiált biztonsági tartományon belüli előkészítést teszi lehetővé. Ez a megközelítés kikényszeríti a vállalati határt, és beállítja a környezeti vezérlőelemek közös készletét. Ezeket a környezeteket a fejlesztők úgy tekinthetik meg, mint a fejlesztésük és a biztonságos fejlesztési életciklusuk során, a teljes folyamat részeként. A cél az is, hogy olyan környezetet biztosítson, amely nem túlságosan korlátozó, ami hátráltathatja a fejlesztést, de a vezérlők ésszerű készletét is. A labor virtuális gépeket tartalmazó szervezeti egység (OU) csoportházirendje az éles környezetben található összes csoportházirend részhalmaza lehet. Azt is megteheti, hogy egy további készletet is tartalmaz, hogy megfelelően enyhítse az azonosított kockázatokat.
 
-## <a name="data-integrity"></a>Adatok sértetlensége
+## <a name="data-integrity"></a>Adatok integritása
 
 ### <a name="question"></a>Kérdés
-Hogyan biztosíthatja a szervezet adatok integritásának megőrzése, győződjön meg arról, hogy a távoli eljáráshívás a fejlesztők nem tudja eltávolítani a kód vagy vezeti be a kártevők vagy nem jóváhagyott szoftverek?
+Hogyan biztosítja a szervezet az adatok integritását annak biztosítására, hogy a távelérési szolgáltatás nem tudja eltávolítani a programkódot vagy kártevő vagy nem jóváhagyott szoftvereket bevezetni?
 
 ### <a name="answer"></a>Válasz
-Nincsenek külső tanácsadók, alvállalkozók és az alkalmazottak, amelyeket a távoli eljáráshívás DevTest Labs-környezetben együttműködéshez a fenyegetés ellenőrzési több réteget. 
+A DevTest Labs szolgáltatásban való együttműködéshez számos különböző vezérlési réteg áll rendelkezésre a külső tanácsadók, alvállalkozók vagy olyan alkalmazottak fenyegetésének enyhítésére. 
 
-Ahogy korábban is hangsúlyoztuk, az első lépés egy használati feltételei elkészíteni, és definiálva, amely egyértelműen ismerteti a következmények, ha valaki megsértik a házirendet kell rendelkeznie. 
+Ahogy azt korábban említettük, az első lépésnek rendelkeznie kell egy, a szabályzatnak megfelelő, meghatározott használati szabályzattal, amely világosan ismerteti a következményeket, amikor valaki sérti a házirendet. 
 
-Az első réteg azoknak a vezérlőelemeknek a távoli hozzáféréshez, amely nem kapcsolódik közvetlenül a labor VPN-kapcsolaton keresztül egy távoli hozzáférési házirend alkalmazása. 
+A távelérési vezérlők első rétege egy távelérési házirend alkalmazása egy olyan VPN-kapcsolaton keresztül, amely nem kapcsolódik közvetlenül a laborhoz. 
 
-A második réteg vezérlők, hogy a alkalmazni a csoportházirend-objektumok, amelyek megakadályozzák a másolás, és illessze be a távoli asztalon keresztül egy készletét. A hálózati házirend nem engedélyezi a kimenő a környezetben, például az FTP és RDP szolgáltatásokat a környezetén valósíthatja meg. Felhasználó által meghatározott útválasztás kényszerítheti az összes Azure hálózati forgalom vissza a helyszíni, de az Útválasztás nem sikerült fiókot előfordulhat, hogy engedélyezi az adatok feltöltését, kivéve, ha megvizsgálja a tartalom és a munkamenetek proxyn keresztüli ellenőrzött URL-címeket. Nyilvános IP-címek támogatása a DevTest Labs szolgáltatásban, hogy ne engedélyezze az adatközponthíd-képzés egy külső hálózati erőforrás a virtuális hálózaton belül korlátozott lehet.
+A vezérlőelemek második rétege olyan csoportházirend-objektumok készletét alkalmazza, amelyek megakadályozzák a másolást és beillesztést a távoli asztalon. Egy hálózati házirendet úgy lehetne megvalósítani, hogy ne engedélyezze a kimenő szolgáltatásokat a környezetből, például az FTP-és az RDP-szolgáltatásokat. A felhasználó által definiált útválasztás az összes Azure-beli hálózati forgalmat visszakényszerítheti a helyszíni környezetbe, de az Útválasztás nem tudott minden olyan URL-cím esetében, amely lehetővé teszi az adatok feltöltését, kivéve, ha a tartalom és a munkamenetek ellenőrzéséhez proxyn keresztül vezérlik A nyilvános IP-címeket a DevTest Labs szolgáltatást támogató virtuális hálózaton korlátozni lehet, hogy ne engedélyezzék egy külső hálózati erőforrás áthidalóját.
 
-Végső soron ugyanolyan típusú, a korlátozások a szervezeten belül, amely a cserélhető adathordozó vagy a külső URL-címek, amely fogadni tudta egy bejegyzést a tartalom minden lehetséges módszert is figyelembe kell alkalmazni kell. Tekintse meg a biztonsági szakembereknek, tekintse át és a egy biztonsági házirend bevezetése. További javaslatokért lásd: [Microsoft Kibertámadások biztonsági](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs).
+Végső soron ugyanazokat a korlátozásokat kell alkalmazni a szervezeten belül, amelyeknek figyelembe kell venniük a cserélhető adathordozók és a külső URL-címek összes lehetséges módszerét is, amelyek elfogadják a tartalom közzétételét. A biztonsági szabályzat áttekintéséhez és megvalósításához forduljon a biztonsági szakemberekhez. További javaslatok: [Microsoft Cyber Security](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs).
 
 
-## <a name="next-steps"></a>További lépések
-Lásd: [alkalmazás áttelepítését és integrálását](devtest-lab-guidance-governance-application-migration-integration.md).
+## <a name="next-steps"></a>Következő lépések
+Lásd: [alkalmazások áttelepítése és integrációja](devtest-lab-guidance-governance-application-migration-integration.md).

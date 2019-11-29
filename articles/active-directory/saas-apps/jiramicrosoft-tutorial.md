@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20d5db9656dbcab31d73e504f1ca67fd577aec8e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6deeb224f8c70dabcf8c5a29e80e87414ea32657
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439737"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561428"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a JIRA SAML SSO-val a Microsoft által
 
@@ -60,8 +60,8 @@ Első lépésként a következő elemeket kell megadnia:
 
 ## <a name="supported-versions-of-jira"></a>A JIRA támogatott verziói
 
-* JIRA Core és Software: 6,4 – 8.2.4
-* JIRA Service Desk 3.0.0 – 4.2.1
+* JIRA Core és Software: 6,4 – 8.5.1
+* JIRA Service Desk 3.0.0 – 4.5.1
 * A JIRA a 5,2-es frissítést is támogatja. További részletekért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezés a JIRA 5,2](jira52microsoft-tutorial.md)
 
 > [!NOTE]
@@ -113,7 +113,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `https://<domain:port>/`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be a következő mintát használó URL-címet: `https://<domain:port>/plugins/servlet/saml/auth`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A port nem kötelező, ha az egy elnevezett URL-cím. Ezek az értékek a JIRA beépülő modul konfigurálása során érkeznek, amelyet az oktatóanyag későbbi részében ismertetünk.
@@ -130,7 +130,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a  **Create** (Létrehozás) gombra.
 
@@ -246,11 +246,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a JI
 
     ![Alkalmazott hozzáadása](./media/jiramicrosoft-tutorial/user4.png) 
 
-    a. Az **e-mail cím** szövegmezőbe írja be a felhasználó e-mail címét, például B.simon@contoso.com.
+    a. Az **e-mail cím** szövegmezőbe írja be a (z) B.simon@contoso.comfelhasználó e-mail címét.
 
     b. A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét, például: B. Simon.
 
-    c. A **Felhasználónév** szövegmezőbe írja be a következőhöz hasonló felhasználó e-mail címét: B.simon@contoso.com.
+    c. A **Felhasználónév** szövegmezőbe írja be a felhasználó (például B.simon@contoso.com) e-mail-címét.
 
     d. A **jelszó** szövegmezőbe írja be a felhasználó jelszavát.
 

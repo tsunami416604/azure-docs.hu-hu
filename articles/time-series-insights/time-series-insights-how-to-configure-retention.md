@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: aa905d1686939346827d07419a62fd6f299387ec
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 954e61aec5b622d44435a8a5b196fdbfed33c564
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012593"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561208"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Adatmegőrzés konfigurálása Time Series Insights
 
@@ -34,11 +34,11 @@ A beállítások jobb megismeréséhez tekintse át a [Time Series Insights meg�
 
 ## <a name="configure-data-retention"></a>Az adatmegőrzés konfigurálása
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-1. Keresse meg a meglévő Time Series Insights-környezetbe. A Azure Portal bal oldalán található menüben válassza az **összes erőforrás** lehetőséget. Válassza ki az Azure Time Series Insights-környezetet.
+1. Keresse meg a meglévő Time Series Insights-környezetét. A Azure Portal bal oldalán található menüben válassza az **összes erőforrás** lehetőséget. Válassza ki az Azure Time Series Insights-környezetet.
 
-1. A **Beállítások** fejléc alatt válassza a **Konfigurálás**lehetőséget.
+1. A **Beállítások** fejléc alatt válassza a **tárolási konfiguráció**elemet.
 
     [![válassza a beállítások, majd a Konfigurálás lehetőséget.](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
@@ -50,7 +50,7 @@ A beállítások jobb megismeréséhez tekintse át a [Time Series Insights meg�
 
     [![adatok megőrzése – elfogadás és mentés.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
-1. A jelölőnégyzet bejelölésével megtekintheti, hogy áttekintette a dokumentációt, és megértette az adatvesztés lehetséges kockázatait. A módosítások konfigurálásához válassza a **Mentés** lehetőséget.
+1. Tekintse át a dokumentációt, és Ismerje meg az adatvesztés lehetséges kockázatait. A módosítások konfigurálásához válassza a **Mentés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

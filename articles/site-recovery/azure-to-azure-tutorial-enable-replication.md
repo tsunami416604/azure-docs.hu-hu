@@ -5,21 +5,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/12/2019
+ms.date: 11/28/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 502f71365d78bd8fd949d17fe8907817394586b2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961501"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561489"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Vész-helyreállítás beállítása Azure-beli virtuális gépekhez
 
 A [Azure site Recovery](site-recovery-overview.md) szolgáltatás a helyi gépek és az Azure-beli virtuális gépek (VM-EK) replikációjának, feladatátvételének és feladat-visszavételének kezelésével és koordinálásával járul hozzá a vész-helyreállítási stratégiához.
 
-Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-beli virtuális gépek vész-helyreállítását azáltal, hogy egy Azure-régióból egy másikba replikálja őket. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-beli virtuális gépek vész-helyreállítását azáltal, hogy egy Azure-régióból egy másikba replikálja őket. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Recovery Services-tároló létrehozása
@@ -85,7 +85,7 @@ Ha az URL-címek helyett IP-címeket használó kimenő kapcsolatot szeretne vez
   - [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Site Recovery-szolgáltatásvégpontok IP-címei](https://aka.ms/site-recovery-public-ips)
 
-Ha a NSG-t használja, létrehozhat egy tárolási szolgáltatáshoz tartozó NSG-szabályt a forrás régióhoz. [Részletek](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
+Ha a NSG-t használja, létrehozhat egy tárolási szolgáltatáshoz tartozó NSG-szabályt a forrás régióhoz. [További információk](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
 
 ## <a name="verify-azure-vm-certificates"></a>Azure-beli virtuális gép tanúsítványainak ellenőrzése
 
@@ -143,7 +143,7 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
     **Célhely** | A vész-helyreállításhoz használt cél régió.<br/><br/> Javasoljuk, hogy a célhely és a Site Recovery-tároló helye ugyanaz legyen.
     **Cél erőforráscsoport** | Az Azure-beli virtuális gépeket a feladatátvételt követően tároló erőforráscsoport.<br/><br/> Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új erőforráscsoportot a célrégióban. A cél erőforráscsoport helye bármely régió lehet, kivéve azt a régiót, amelyben a forrásként szolgáló virtuális gépek futnak.
     **Célként megadott virtuális hálózat** | A célként megadott régióban található, a virtuális gépeket a feladatátvételt követően tároló hálózat.<br/><br/> Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új virtuális hálózatot (és alhálózatokat) a célrégióban.
-    **Gyorsítótár-tárolási fiókok** | Site Recovery egy Storage-fiókot használ a forrás régióban. A forrás virtuális gépekre vonatkozó módosítások ebbe a fiókba érkeznek a célhelyre történő replikáció előtt.<br/><br/> Ha tűzfallal védett gyorsítótáras Storage-fiókot használ, győződjön meg arról, hogy engedélyezi a **megbízható Microsoft-szolgáltatások engedélyezését**. [Részletek](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
+    **Gyorsítótár-tárolási fiókok** | Site Recovery egy Storage-fiókot használ a forrás régióban. A forrás virtuális gépekre vonatkozó módosítások ebbe a fiókba érkeznek a célhelyre történő replikáció előtt.<br/><br/> Ha tűzfallal védett gyorsítótáras Storage-fiókot használ, győződjön meg arról, hogy engedélyezi a **megbízható Microsoft-szolgáltatások engedélyezését**. [További információ.](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions). Győződjön meg arról is, hogy engedélyezi a hozzáférést a forrás vnet legalább egy alhálózatához.
     **Cél Storage-fiókok (a forrásoldali virtuális gép nem felügyelt lemezeket használ)** | Alapértelmezés szerint a Site Recovery új Storage-fiókot hoz létre a célként megadott régióban a forrásként szolgáló virtuális gép tárolási fiókjának tükrözéséhez.<br/><br/> Engedélyezze a **megbízható Microsoft-szolgáltatások engedélyezését** , ha tűzfallal védett gyorsítótáras Storage-fiókot használ.
     **Replika által felügyelt lemezek (ha a forrás virtuális gép felügyelt lemezeket használ)** | Alapértelmezés szerint a Site Recovery replika felügyelt lemezeket hoz létre a célhelyen a forrásként szolgáló virtuális gép felügyelt lemezeit ugyanazzal a tárolási típussal (standard vagy prémium), mint a forrás virtuális gép felügyelt lemezével. Csak a lemez típusát lehet testreszabni 
     **Cél rendelkezésre állási csoportok** | Alapértelmezés szerint a Azure Site Recovery egy új rendelkezésre állási készletet hoz létre a célként megadott régióban, amelynek a neve "ASR" utótaggal rendelkezik a rendelkezésre állási csoportnak a forrásoldali régióban lévő virtuális gépek részében. Ha a Azure Site Recovery által létrehozott rendelkezésre állási csoport már létezik, az újra használatban van.

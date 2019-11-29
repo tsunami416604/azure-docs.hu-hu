@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a86c809e239a84b2ec6910c47a17b935c440c741
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 472c4a75f5a4253220383ae79d88d5b90cec4795
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286996"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555041"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Általános indexelő hibák és figyelmeztetések hibaelhárítása Az Azure Cognitive Search
 
@@ -34,10 +34,10 @@ Az API-verziótól kezdődően a `2019-05-06`az elemszintű indexelő hibái és
 
 | Tulajdonság | Leírás | Példa |
 | --- | --- | --- |
-| kulcs | A hibát vagy figyelmeztetést érintő dokumentum azonosítóját. | https://coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| kulcs | A hibát vagy figyelmeztetést érintő dokumentum AZONOSÍTÓját. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | név | Annak a műveletnek a neve, amelyben a hiba vagy a figyelmeztetés történt. Ezt a következő struktúra hozza létre: [category]. [Alkategória]. [resourceType]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName alkoholtartalom-növelés. WebApiSkill. mySkillName vetítés. SearchIndex. OutputFieldMapping. myOutputFieldName vetítés. SearchIndex. MergeOrUpload. myIndexName Vetület. KnowledgeStore. table. myTableName |
 | message | A hiba vagy figyelmeztetés magas szintű leírása. | A képesség nem hajtható végre, mert a webes API-kérelem sikertelen volt. |
-| details | További részletek, amelyek hasznosak lehetnek a probléma diagnosztizálásához, például a WebApi-válaszhoz, ha az egyéni képességet nem sikerült végrehajtani. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 forrás, függvény`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... fennmaradó verem nyomkövetése... |
+| Részletek | További részletek, amelyek hasznosak lehetnek a probléma diagnosztizálásához, például a WebApi-válaszhoz, ha az egyéni képességet nem sikerült végrehajtani. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 forrás, függvény`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... fennmaradó verem nyomkövetése... |
 | documentationLink | A kapcsolódó dokumentációra mutató hivatkozás, amely részletes információkat tartalmaz a hibakereséshez és a probléma megoldásához. Ez a hivatkozás gyakran a lap alábbi részeinek egyikére mutat. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
@@ -46,7 +46,7 @@ Az API-verziótól kezdődően a `2019-05-06`az elemszintű indexelő hibái és
 
 Az indexelő nem tudta olvasni a dokumentumot az adatforrásból. Ez az alábbiak miatt fordulhat elő:
 
-| Ok | Részletek/példa | Megoldás: |
+| Ok | Részletek/példa | Felbontás |
 | --- | --- | --- |
 | inkonzisztens mezők típusai különböző dokumentumokban | Az érték típusa nem egyezik az oszlop típusával. Nem sikerült tárolni a `'{47.6,-122.1}'` a szerzők oszlopban.  A várt típus: JArray. | Ügyeljen arra, hogy az egyes mezők típusa azonos legyen a különböző dokumentumok között. Ha például az első dokumentum `'startTime'` a dátum DateTime, és a második dokumentumban ez egy karakterlánc, akkor ez a hiba fog megjelenni. |
 | hibák az adatforrás mögöttes szolgáltatásában | (Cosmos DB) `{"Errors":["Request rate is large"]}` | Ellenőrizze, hogy a tárolási példány kifogástalan állapotú-e. Előfordulhat, hogy módosítania kell a skálázást/particionálást. |
@@ -57,7 +57,7 @@ Az indexelő nem tudta olvasni a dokumentumot az adatforrásból. Ez az alábbia
 ## <a name="error-could-not-extract-document-content"></a>Hiba: nem sikerült kibontani a dokumentum tartalmát
 A blob-adatforrással rendelkező indexelő nem tudta kinyerni a tartalmat a dokumentumból (például egy PDF-fájlt). Ez az alábbiak miatt fordulhat elő:
 
-| Ok | Részletek/példa | Megoldás: |
+| Ok | Részletek/példa | Felbontás |
 | --- | --- | --- |
 | a blob mérete meghaladja a méretkorlátot | A dokumentum `'150441598'` bájt, ami meghaladja a jelenlegi szolgáltatási szinten a dokumentumok kinyeréséhez szükséges maximális méretet `'134217728'` bájtban. | [BLOB-indexelési hibák](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | a blob nem támogatott tartalomtípust tartalmaz | A dokumentum tartalma nem támogatott `'image/png'` | [BLOB-indexelési hibák](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,7 +69,7 @@ A blob-adatforrással rendelkező indexelő nem tudta kinyerni a tartalmat a dok
 ## <a name="error-could-not-parse-document"></a>Hiba: a dokumentum nem elemezhető
 Az indexelő beolvassa a dokumentumot az adatforrásból, de hiba történt a dokumentum tartalmának a megadott mező-hozzárendelési sémába való konvertálása során. Ez az alábbiak miatt fordulhat elő:
 
-| Ok | Részletek/példa | Megoldás: |
+| Ok | Részletek/példa | Felbontás |
 | --- | --- | --- |
 | A dokumentum kulcsa hiányzik | A dokumentum kulcsa nem lehet hiányzik vagy üres. | Győződjön meg arról, hogy minden dokumentum rendelkezik érvényes dokumentum-kulcsokkal |
 | A dokumentum kulcsa érvénytelen | A dokumentum kulcsa nem lehet hosszabb 1024 karakternél | Módosítsa a dokumentum kulcsát az érvényesítési követelmények teljesítéséhez. |
@@ -81,7 +81,7 @@ Az indexelő beolvassa a dokumentumot az adatforrásból, de hiba történt a do
 ## <a name="error-could-not-execute-skill"></a>Hiba: nem sikerült végrehajtani a képességet
 Az indexelő nem tudott futtatni egy képességet a készségkészlet.
 
-| Ok | Részletek/példa | Megoldás: |
+| Ok | Részletek/példa | Felbontás |
 | --- | --- | --- |
 | Átmeneti kapcsolódási problémák | Átmeneti hiba történt. Később próbálja meg újra. | Esetenként váratlan kapcsolódási problémák léptek fel. Próbálja meg később futtatni a dokumentumot az indexelő használatával. |
 | Lehetséges termék hibája | Váratlan hiba történt. | Ez ismeretlen osztályt jelez, és a termék meghibásodását is jelentheti. Kérjen segítséget a [támogatási jegyen](https://ms.portal.azure.com/#create/Microsoft.Support) . |
@@ -140,7 +140,7 @@ A `timeout` paraméter számára beállítható maximális érték 230 másodper
 
 A dokumentum olvasása és feldolgozása megtörtént, de az indexelő nem tudja felvenni a keresési indexbe. Ez az alábbiak miatt fordulhat elő:
 
-| Ok | Részletek/példa | Megoldás: |
+| Ok | Részletek/példa | Felbontás |
 | --- | --- | --- |
 | Egy mező túl nagy kifejezést tartalmaz | A dokumentum egy kifejezése nagyobb az [32 KB-os korlátnál](search-limits-quotas-capacity.md#api-request-limits) | Ezt a korlátozást elkerülheti, ha úgy látja, hogy a mező nem szűrhető, sokoldalú vagy rendezhető.
 | A dokumentum túl nagy az indexeléshez | A dokumentum nagyobb, mint az [API-kérelmek maximális mérete](search-limits-quotas-capacity.md#api-request-limits) | [Nagyméretű adathalmazok indexelése](search-howto-large-index.md)
@@ -195,7 +195,7 @@ Ha hiányzó bemenet esetén szeretné megadni az alapértelmezett értéket, a 
 }
 ```
 
-| Ok | Részletek/példa | Megoldás: |
+| Ok | Részletek/példa | Felbontás |
 | --- | --- | --- |
 | A szakértelem bemenete nem megfelelő típusú. | A szükséges szaktudás-beviteli `X` nem a várt típusú `String`. A szükséges szaktudás-beviteli `X` nem a várt formátumban volt. | Bizonyos készségek várhatóan adott típusok bemeneteit számítják fel, például az [érzelmi képességek](cognitive-search-skill-sentiment.md) `text` karakterláncnak számítanak. Ha a bemenet nem sztring értéket ad meg, akkor a rendszer nem hajtja végre, és nem hoz létre kimenetet. Győződjön meg arról, hogy az adatkészletben a bemeneti értékek egységesek a típusban, vagy használjon [egyéni webes API-képességet](cognitive-search-custom-skill-web-api.md) a bemenet előfeldolgozásához. Ha a képességet egy tömbön keresztül ismétli meg, ellenőrizze a szakértelem kontextusát, és a megfelelő pozícióban `*`. A környezetnek és a bemeneti forrásnak általában a tömbök `*` kell végződnie. |
 | Hiányzik a szaktudás bemenete | Hiányzik a szükséges szakértelem-beviteli `X`. | Ha az összes dokumentum ezt a figyelmeztetést kapja, valószínűleg van egy elírás a bemeneti elérési utakon, és az elérési úton ellenőrizze, hogy az elérési út tartalmazza-e a tulajdonság nevét, a további vagy a hiányzó `*`t, és az adatforrás dokumentumai határozzák meg a szükséges bemeneteket. |
@@ -208,7 +208,7 @@ Egy vagy több alsóbb rétegbeli képesség nem kötelező `languageCode`ba át
 
 Ha tudja, hogy az adatkészlete egy adott nyelven van, távolítsa el a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) és a `languageCode` skill inputot, és használja a skill `defaultLanguageCode` skill paramétert, feltéve, hogy az adott szakértelem nyelve támogatott.
 
-Ha tudja, hogy az adathalmaz több nyelvet tartalmaz, ezért a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) és a `languageCode` bemenetre van szüksége, vegyen fel egy [ConditionalSkill](cognitive-search-skill-conditional.md) , hogy kiszűrje a szöveget olyan nyelvekkel, amelyek nem támogatottak a az alárendelt képességek szövege.  Íme egy példa arra, hogy ez hogyan néz ki a EntityRecognitionSkill:
+Ha tudja, hogy az adathalmaz több nyelvet tartalmaz, ezért a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) és a `languageCode` bemenetre van szüksége, vegyen fel egy [ConditionalSkill](cognitive-search-skill-conditional.md) a szöveg kiszűréséhez olyan nyelvekkel, amelyek nem támogatottak, mielőtt átadná a szöveget az alsóbb rétegbeli képességbe.  Íme egy példa arra, hogy ez hogyan néz ki a EntityRecognitionSkill:
 
 ```json
 {

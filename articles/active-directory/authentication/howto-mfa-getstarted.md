@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cab4b57513f90a5cbe80724d4937f8d0f87b5517
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 6e91a82442b2d436736719d629f70c8dec0e5a6c
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381785"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558540"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Felhőalapú Azure-beli Multi-Factor Authentication üzembe helyezés tervezése
 
@@ -28,7 +28,7 @@ Az [Azure multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) segíts�
 
 Az Azure Multi-Factor Authentication üzembe helyezésének megkezdése előtt meg kell fontolnia az előfeltételként szükséges elemeket.
 
-| Forgatókönyv | Előfeltétel |
+| Alkalmazási helyzet | Előfeltétel |
 | --- | --- |
 | **Csak felhőalapú** identitás-környezet modern hitelesítéssel | **Nincsenek további előfeltétel-feladatok** |
 | **Hibrid** identitási forgatókönyvek | [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) települ, és a felhasználói identitások szinkronizálása vagy összevonása a helyszíni Active Directory tartományi szolgáltatások a Azure Active Directory. |
@@ -44,7 +44,7 @@ Az MFA bevezetési tervének tartalmaznia kell egy próba-telepítést, amelyet 
 
 Fontos, hogy tájékoztassa a felhasználókat a tervezett kommunikációról, a közelgő változásokról, az Azure MFA regisztrációs követelményeiről és a szükséges felhasználói műveletekről. Javasoljuk, hogy a kommunikációt a szervezeten belüli képviselőivel, például a kommunikációval, a változás-kezeléssel vagy az emberi erőforrásokkal foglalkozó szervezeti egységekkel együtt fejlesszék.
 
-A Microsoft [kommunikációs sablonokat](https://aka.ms/mfatemplates) és [végfelhasználói dokumentációt](../user-help/security-info-setup-signin.md) biztosít a kommunikáció megtervezéséhez. Az adott oldalon található **biztonsági információk** hivatkozásaira kattintva a felhasználók közvetlenül regisztrálhatnak [https://myprofile.microsoft.comra](https://myprofile.microsoft.com) .
+A Microsoft [kommunikációs sablonokat](https://aka.ms/mfatemplates) és [végfelhasználói dokumentációt](../user-help/security-info-setup-signin.md) biztosít a kommunikáció megtervezéséhez. Az adott oldalon található **biztonsági információk** hivatkozásaira kattintva a felhasználók közvetlenül regisztrálhatnak [https://myprofile.microsoft.com ra](https://myprofile.microsoft.com) .
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
@@ -80,7 +80,7 @@ A Azure Active Directory Identity Protection által észlelt kockázati észlel�
 
 ## <a name="define-network-locations"></a>Hálózati telephelyek definiálása
 
-Azt javasoljuk, hogy a szervezetek a feltételes hozzáférés használatával definiálják a hálózatot a [nevesített helyekkel](../conditional-access/location-condition.md#named-locations). Ha a szervezete Identity Protectiont használ, érdemes lehet kockázati alapú házirendeket használni a nevesített helyszínek helyett.
+Javasoljuk, hogy a szervezetek a feltételes hozzáférés használatával definiálják a hálózatot a [nevesített helyekkel](../conditional-access/location-condition.md#named-locations). Ha a szervezete Identity Protectiont használ, érdemes lehet kockázati alapú házirendeket használni a nevesített helyszínek helyett.
 
 ### <a name="configuring-a-named-location"></a>Elnevezett hely konfigurálása
 
@@ -240,7 +240,7 @@ Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A
     * Kattintson a **Kiválasztás** gombra.
 1. Ugorja át a **munkamenet** szakaszt.
 1. Állítsa be a **házirend engedélyezése** kapcsolót **be értékre.**
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>A helyszíni rendszerekkel való integráció megtervezése
 
@@ -277,7 +277,7 @@ Ha a hálózati házirend-kiszolgáló példánya már telepítve van, és már 
 
 Válassza ki, hogy mi történjen, ha az MFA-ban nem regisztrált felhasználók hitelesítése történik meg. A szolgáltatás működésének vezérléséhez használja a beállításjegyzékbeli elérési út `HKLM\Software\Microsoft\AzureMFA` beállításjegyzék-beállítás `REQUIRE_USER_MATCH`. Ez a beállítás egyetlen konfigurációs lehetőséggel rendelkezik.
 
-| Kulcs | Érték | Alapértelmezett |
+| Jelmagyarázat | Value (Díj) | Alapértelmezett |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | IGAZ/HAMIS | Nincs beállítva (megegyezik az igaz értékkel) |
 
@@ -347,7 +347,7 @@ Jelentések az Azure MFA-hoz
 
 Az Azure Multi-Factor Authentication jelentéseket biztosít a Azure Portalon keresztül:
 
-| Jelentés | Hely | Leírás |
+| Jelentés | Földrajzi egység | Leírás |
 | --- | --- | --- |
 | Használati és csalási riasztások | Azure AD > bejelentkezések | Információt nyújt a teljes használatról, a felhasználói összesítésekről és a felhasználói adatokról; valamint a megadott dátumtartomány szerint elküldött csalási riasztások előzményei. |
 
@@ -355,7 +355,7 @@ Az Azure Multi-Factor Authentication jelentéseket biztosít a Azure Portalon ke
 
 Az Azure MFA-val kapcsolatos gyakori problémák megoldásait az [azure multi-Factor Authentication hibaelhárítási cikkében](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) találja a Microsoft ügyfélszolgálata központban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mik a hitelesítési módszerek?](concept-authentication-methods.md)
 * [A konvergens regisztráció engedélyezése az Azure Multi-Factor Authentication és az Azure AD önkiszolgáló jelszó-visszaállításhoz](concept-registration-mfa-sspr-converged.md)

@@ -1,7 +1,7 @@
 ---
 title: Alkalmazás közzététele – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ha befejezte a elkészítését és tesztelését a LUIS alkalmazás aktív, tegye elérhetővé számára az ügyfélalkalmazás közzétesszük azt a végpontot.
+description: Ha befejezte az aktív LUIS-alkalmazás létrehozását és tesztelését, tegye elérhetővé az ügyfélalkalmazás számára a végpontra való közzétételsel.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: f213c1d43930075c78cf81de345f612e46bbfb1c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 676c6d15c4f439543a3ed74627001725632fecfa
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74221722"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554849"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Aktív, betanított alkalmazás közzététele átmeneti vagy éles végponton
 
@@ -45,7 +45,7 @@ Ha mindkét közzétételi tárolóhelyet használja, ez lehetővé teszi, hogy 
 
 ### <a name="publishing-regions"></a>Közzétételi régiók
 
-Az alkalmazás az **[Azure-erőforrások](/luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** **kezelése** -> a Luis-portálon a Luis-előrejelzési végpont erőforrásaihoz társított összes régióban megjelenik. 
+Az alkalmazás az **[Azure-erőforrások](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** **kezelése** -> a Luis-portálon a Luis-előrejelzési végpont erőforrásaihoz társított összes régióban megjelenik. 
 
 Ha például egy, a [www.Luis.ai](https://www.luis.ai)-on létrehozott alkalmazáshoz létrehoz egy Luis-erőforrást két régióban, a **westus** és a **eastus**, és hozzáadja ezeket az alkalmazáshoz erőforrásként, az alkalmazás mindkét régióban közzé lesz téve. A LUIS régiókkal kapcsolatos további információkért lásd: [régiók](luis-reference-regions.md).
 
@@ -53,11 +53,11 @@ Ha például egy, a [www.Luis.ai](https://www.luis.ai)-on létrehozott alkalmaz�
 > 3 authoring-régió van. Ahhoz a régióhoz kell tartoznia, amelyet közzé kíván tenni. Ha minden régióban közzé kell tennie az összes régiót, a szerzői folyamatokat és a létrejövő betanított modellt mind a 3 szerzői régióban kell kezelnie. 
 
 
-## <a name="configuring-publish-settings"></a>Nastavení publikování konfigurálása
+## <a name="configuring-publish-settings"></a>Közzétételi beállítások konfigurálása
 
 Miután kiválasztotta a tárolóhelyet, konfigurálja a közzétételi beállításokat a következőhöz:
 
-* Hangulatelemzés
+* Véleményelemzés
 * Helyesírás-javítás – v2 előrejelzési végpont
 * Beszéd alapozó 
 
@@ -67,17 +67,17 @@ A közzététel után ezek a beállítások a **kezelés** szakasz **közzétét
 
 Az alkalmazás sikeres közzétételekor megjelenik egy sikeres értesítés a böngésző tetején. Az értesítés a végpontokra mutató hivatkozást is tartalmaz. 
 
-Ha a végpont URL-címe van szüksége, válassza ki a hivatkozást. A végpont URL-címeihez a felső menüben a **kezelés** lehetőségre kattintva, majd a bal oldali menüben válassza az **Azure-erőforrások** lehetőséget. 
+Ha a végpont URL-címére van szüksége, válassza ki a hivatkozást. A végpont URL-címeihez a felső menüben a **kezelés** lehetőségre kattintva, majd a bal oldali menüben válassza az **Azure-erőforrások** lehetőséget. 
 
-## <a name="sentiment-analysis"></a>Hangulatelemzés
+## <a name="sentiment-analysis"></a>Véleményelemzés
 
 <a name="enable-sentiment-analysis"></a>
 
 A hangulat elemzése lehetővé teszi a LUIS számára a [text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) integrálását az érzelmek és a kulcsfontosságú kifejezések elemzésének biztosítása érdekében. 
 
-Nem kell adnia a Text Analytics kulcsot, és nem jár költségekkel számlázási ezt a szolgáltatást az Azure-fiókjába. 
+Nem kell megadnia Text Analytics kulcsot, és a szolgáltatáshoz nem tartozik számlázási díj az Azure-fiókhoz. 
 
-Véleményadatok egy 1 és 0 a pozitív jelző közötti pontszámot (közelebb 1) vagy negatív (0 közelebb) az adatok a róluk szóló véleményeket. A `positive`, `neutral`és `negative` hangulati címkéje támogatott kultúrán alapul. Jelenleg csak az angol támogatja a hangulati címkéket. 
+Az érzelmi adatmennyiség egy 1 és 0 közötti pontszám, amely az adatmennyiség pozitív (közelebbről 1) vagy negatív (közelebbről 0) hangulatát jelzi. A `positive`, `neutral`és `negative` hangulati címkéje támogatott kultúrán alapul. Jelenleg csak az angol támogatja a hangulati címkéket. 
 
 A JSON-végponti válaszról a [hangulat elemzése című témakörben](luis-concept-data-extraction.md#sentiment-analysis) talál további információt.
 
@@ -91,7 +91,7 @@ A helyesírási javítások a LUIS-felhasználó teljes előrejelzése előtt t�
 
 A beszédfelismerési folyamat célja a LUIS modell elküldése a beszédfelismerési szolgáltatásoknak a szöveg beszédbe való átalakítása előtt. Ez lehetővé teszi, hogy a beszédfelismerési szolgáltatás pontosabban biztosítson beszédfelismerési konverziót a modell számára. Ez lehetővé teszi, hogy a bot beszédét és a LUIS kérelmeit és válaszait egy hívással egy beszédes hívást indítson, és egy LUIS-választ kérjen vissza. Összességében kevesebb késést biztosít.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Lásd: [kulcsok kezelése](./luis-how-to-azure-subscription.md) az Azure-előfizetési kulcshoz való hozzáadásához a Luis-hez, valamint a Bing Spell Check kulcs beállításához, és az összes leképezést az eredmények között.
 * A közzétett alkalmazás tesztelési konzolon történő tesztelésével kapcsolatos útmutatásért lásd: [az alkalmazás betanítása és tesztelése](luis-interactive-test.md) .

@@ -7,18 +7,18 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 70e6bdfcf9718244632ad02e09d3ddadee71a617
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: eb204701b42436a5ae95bac97ed6fd97cf272860
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311571"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561868"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>A fürt horizontális skálázásának kezelése (horizontális felskálázás) az Azure Adatkezelő a változó igények kielégítése érdekében
 
 A fürt megfelelő méretezése az Azure-Adatkezelő teljesítményének szempontjából kritikus fontosságú. A statikus fürt mérete a használaton kívüli vagy túlzott kihasználtságot eredményezhet, ami egyik ideális megoldás.
 
-Mivel a fürtök iránti igényt nem lehet abszolút pontossággal előre jelezni, jobb megoldás  a fürt méretezése, a kapacitás és a CPU-erőforrások hozzáadása és eltávolítása a változó igényekkel. 
+Mivel a fürtök iránti igényt nem lehet abszolút pontossággal előre jelezni, jobb megoldás a fürt *méretezése* , a kapacitás és a CPU-erőforrások hozzáadása és eltávolítása a változó igényekkel. 
 
 Az Azure Adatkezelő-fürtök méretezésére két munkafolyamat áll rendelkezésre: 
 
@@ -31,9 +31,9 @@ Ez a cikk a horizontális skálázási munkafolyamatot ismerteti.
 
 A horizontális skálázás használatával az előre meghatározott szabályok és ütemtervek alapján automatikusan méretezheti a példányszámot. A fürthöz tartozó autoskálázási beállítások megadása:
 
-1. A Azure Portal lépjen az Azure Adatkezelő fürterőforrás elemre. A **Beállítások**területen válassza a felskálázás lehetőséget. 
+1. A Azure Portal lépjen az Azure Adatkezelő fürterőforrás elemre. A **Beállítások**területen válassza a **felskálázás**lehetőséget. 
 
-2. A kibővítő ablakban válassza ki a kívánt autoskálázási módszert:  **Manuális méretezés**, **optimalizált automatikus méretezés**vagy **Egyéni automatikus méretezés**.
+2. A **kibővítő** ablakban válassza ki a kívánt automatikus méretezési módszert: **manuális méretezés**, **optimalizált automatikus méretezés**vagy egyéni automatikus **Méretezés**.
 
 ### <a name="manual-scale"></a>Manuális méretezés
 
@@ -41,7 +41,7 @@ A fürt létrehozása során az alapértelmezett beállítás a manuális skál�
 
    ![Manuális méretezési módszer](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
-### <a name="optimized-autoscale"></a>Optimalizált autoskálázás
+### <a name="optimized-autoscale-preview"></a>Optimalizált autoscale (előzetes verzió)
 
 Az optimalizált autoskálázás az ajánlott autoskálázási módszer. Ez a módszer optimalizálja a fürt teljesítményét és költségeit. Ha a fürt a használaton kívüli állapotot közelíti meg, a rendszer a-ben méretezi a-t. Ez a művelet csökkenti a költségeket, de megtartja a teljesítményszint szintjét. Ha a fürt túlzott kihasználtságú állapotot közelít, az optimális teljesítmény érdekében a rendszer kibővíti az adatmennyiséget. Az optimalizált autoskálázás konfigurálása:
 
@@ -59,7 +59,7 @@ Az optimalizált autoscale megkezdi a munkát. A műveletei már láthatók a f�
 
 Az egyéni autoscale használatával dinamikusan méretezheti a fürtöt a megadott mérőszámok alapján. Az alábbi ábrán a folyamat és az egyéni autoskálázás konfigurálásának lépései láthatók. További részletekért kövesse a grafikát.
 
-1. Az autoskálázási **beállítás neve** mezőbe írjon be egy nevet, például *: kibővíthető: gyorsítótár kihasználtsága*. 
+1. Az **autoskálázási beállítás neve** mezőbe írjon be egy nevet, például *: kibővíthető: gyorsítótár kihasználtsága*. 
 
    ![Skálázási szabály](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
@@ -73,10 +73,10 @@ Az egyéni autoscale használatával dinamikusan méretezheti a fürtöt a megad
 
     | Beállítás | Leírás és érték |
     | --- | --- |
-    | **Idő összesítése** | Válasszon ki egy összesítési feltételt , például átlagot. |
+    | **Idő összesítése** | Válasszon ki egy összesítési feltételt, például **átlagot**. |
     | **Metrika neve** | Válassza ki azt a mérőszámot, amelynek alapján a skálázási művelet alapulni fog, például a **gyorsítótár kihasználtsága**. |
     | **Időbeli gabona statisztikája** | Az **átlag**, a **minimum**, a **maximum**és az **összeg**közül választhat. |
-    | **Operátor** | Válassza ki a megfelelő beállítást, például **nagyobb vagy egyenlő**. |
+    | **Üzemeltető** | Válassza ki a megfelelő beállítást, például **nagyobb vagy egyenlő**. |
     | **Küszöb** | Válasszon ki egy megfelelő értéket. A gyorsítótár kihasználtsága például a 80 százalék jó kiindulási pont. |
     | **Időtartam (perc)** | Válasszon ki egy megfelelő időtartamot a rendszer számára a metrikák kiszámításakor. Kezdje az alapértelmezett 10 percet. |
     |  |  |
@@ -96,7 +96,7 @@ Az egyéni autoscale használatával dinamikusan méretezheti a fürtöt a megad
 
     | Beállítás | Leírás és érték |
     | --- | --- |
-    | **Minimum** | Azon példányok száma, amelyeken a fürt nem méretezhető, a kihasználtságtól függetlenül. |
+    | **Minimális** | Azon példányok száma, amelyeken a fürt nem méretezhető, a kihasználtságtól függetlenül. |
     | **Maximális** | Azon példányok száma, amelyeken a fürt nem méretezhető, a kihasználtságtól függetlenül. |
     | **Alapértelmezett** | A példányok alapértelmezett száma. Ez a beállítás akkor használatos, ha problémák merülnek fel az erőforrás-metrikák olvasásakor. |
     |  |  |
@@ -105,7 +105,7 @@ Az egyéni autoscale használatával dinamikusan méretezheti a fürtöt a megad
 
 Ezzel konfigurálta az Azure Adatkezelő-fürt horizontális skálázását. Adjon hozzá egy másik szabályt a vertikális skálázáshoz. Ha segítségre van szüksége a fürtök skálázásával kapcsolatos problémák megoldásához, [Nyisson meg egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) a Azure Portal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Adatkezelő teljesítményének, állapotának és használatának monitorozása metrikákkal](using-metrics.md)
 

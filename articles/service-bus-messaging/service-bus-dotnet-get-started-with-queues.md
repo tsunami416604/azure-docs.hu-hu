@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: cecd37c16d34c0cd6cf7a4d98732762d16073864
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c1f9c8a03a503444c7c45d5374b67e5b453a8931
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884108"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561615"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Bevezetés a Service Bus által kezelt üzenetsorok használatába
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -74,17 +74,11 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
 
     `ServiceBusConnectionString` változóként adja meg a névtérhez tartozó kapcsolatok karakterláncát. Adja meg a várólista nevét.
 
-1. Cserélje le a `Main()` tartalmát a következő kódsorral:
+1. Cserélje le a `Main()` metódust a következő **aszinkron** `Main` metódusra. Meghívja a SendMessagesAsync metódust, amelyet a következő lépésben fog hozzáadni, hogy üzeneteket küldjön a várólistára. 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-1. Közvetlenül a `Main()` után adja hozzá a következő aszinkron `MainAsync()` metódust az üzenetküldési metódus meghívásához:
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         const int numberOfMessages = 10;
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
@@ -100,7 +94,6 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
         await queueClient.CloseAsync();
     }
     ```
-
 1. Közvetlenül a `MainAsync()` módszer után adja hozzá a következő `SendMessagesAsync()` metódust, amely a `numberOfMessagesToSend` által megadott számú üzenet küldését végzi (jelenleg 10 értékre van állítva):
 
     ```csharp
@@ -147,25 +140,20 @@ namespace CoreSenderApp
         const string QueueName = "<your_queue_name>";
         static IQueueClient queueClient;
 
-        static void Main(string[] args)
-        {
-            MainAsync().GetAwaiter().GetResult();
-        }
-
-        static async Task MainAsync()
-        {
+        public static async Task Main(string[] args)
+        {    
             const int numberOfMessages = 10;
             queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
+    
             Console.WriteLine("======================================================");
             Console.WriteLine("Press ENTER key to exit after sending all the messages.");
             Console.WriteLine("======================================================");
-
-            // Send Messages
+    
+            // Send messages.
             await SendMessagesAsync(numberOfMessages);
-
+    
             Console.ReadKey();
-
+    
             await queueClient.CloseAsync();
         }
 
@@ -235,14 +223,8 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik **Console app (.
 1. Cserélje le a `Main()` tartalmát a következő kódsorral:
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-1. Közvetlenül a `Main()` után adja hozzá a következő aszinkron `MainAsync()` metódust a `RegisterOnMessageHandlerAndReceiveMessages()` metódus meghívásához:
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
         Console.WriteLine("======================================================");
@@ -409,7 +391,7 @@ Gratulálunk! Létrehozta a várólistát, elküldött egy üzenetet a várólis
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi, hogy a felhasználók könnyedén kapcsolódjanak egy Service Bus névtérhez, és felügyelje az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakörök, várólisták, előfizetések, továbbító szolgáltatások, értesítési központok és Event hubok tesztelésének lehetősége.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a [GitHub-tárunkat, ahol további példákat talál](https://github.com/Azure/azure-service-bus/tree/master/samples), amelyek a Service Bus üzenetkezelési szolgáltatásának néhány speciális funkcióját mutatják be.
 

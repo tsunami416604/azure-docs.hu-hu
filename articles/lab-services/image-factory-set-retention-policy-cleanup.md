@@ -1,6 +1,6 @@
 ---
-title: Egy rendszerkép-előállító létrehozása az Azure DevTest Labs szolgáltatásban |} A Microsoft Docs
-description: Ismerje meg, hogy egy egyéni rendszerkép-előállító létrehozása az Azure DevTest Labs szolgáltatásban.
+title: Adatmegőrzési szabályzat beállítása a Azure DevTest Labsban | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat egy adatmegőrzési szabályzatot, törölheti a gyárat, és kivonja a régi rendszerképeket a DevTest Labs szolgáltatásból
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,68 +12,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf1c18fc799014ad862c93076d695f2516c6363d
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622548"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560170"
 ---
-# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Egy egyéni rendszerkép-előállító létrehozása az Azure DevTest Labs szolgáltatásban
-Ez a cikk ismerteti az adatmegőrzési beállítás, az előállító karbantartása és régi lemezképek kivonása az összes a többi DevTest Labs szolgáltatásban a szervezet. 
+# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Egyéni rendszerkép-előállító létrehozása Azure DevTest Labs
+Ez a cikk az adatmegőrzési házirend beállítását, a gyár tisztítását és a régi rendszerképek kivonását ismerteti a szervezet többi DevTest-laborjában. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Győződjön meg arról, hogy a folytatás előtt követte ezeket a cikkeket:
+A folytatás előtt győződjön meg arról, hogy követte ezeket a cikkeket:
 
-- [Lemezkép-előállító létrehozása](image-factory-create.md)
-- [Egy rendszerkép-előállító Futtatás az Azure DevOps](image-factory-set-up-devops-lab.md)
-- [Egyéni rendszerképek mentse, és több labs terjesztéséhez](image-factory-save-distribute-custom-images.md)
+- [Rendszerkép-előállító létrehozása](image-factory-create.md)
+- [Rendszerkép-előállító futtatása az Azure DevOps](image-factory-set-up-devops-lab.md)
+- [Egyéni lemezképek mentése és elosztása több laborba](image-factory-save-distribute-custom-images.md)
 
-A következő elemek már helyén kell lennie:
+A következő elemeket már meg kell adni:
 
-- A kép Factory Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet
-- Egy vagy több cél Azure DevTest Labs szolgáltatásban, ahol az előállító hamisított Kerberos-lemezképek terjesztése lesz
-- Az Azure DevOps-projekt, amelyekkel automatizálható a rendszerkép gyári.
-- A parancsfájlok és a configuration (a példánkban a fent használt azonos DevOps-projekt) tartalmazó kód forráshely
-- Az Azure Powershell-feladatok builddefiníció
+- A Azure DevTest Labsban található rendszerkép-előállító laborja
+- Egy vagy több cél Azure DevTest Labs, ahol a gyári lemezképek terjesztése történik
+- Egy Azure DevOps-projekt, amely a rendszerkép-előállító automatizálására szolgál.
+- A szkripteket és a konfigurációt tartalmazó forráskód helye (példánkban a fent használt DevOps-projektben)
+- Az Azure PowerShell-feladatok összeállításához szükséges Build-definíció
  
-## <a name="setting-the-retention-policy"></a>A megőrzési házirend beállítása
-Mielőtt beállítaná a törölje lépéseket, adja meg a hány korábbi lemezképek meg kíván őrizni a DevTest Labs szolgáltatásban. Ha követte a [egy lemezkép-előállító Futtatás az Azure DevOps](image-factory-set-up-devops-lab.md) konfigurálva a cikkben különböző hozhat létre változókat. Az egyiket volt **ImageRetention**. Ezt a változót `1`, ami azt jelenti, hogy a DevTest Labs nem vezet a egyéni rendszerképek előzményeit. Csak a legújabb elosztott képeket is elérhető lesz. Ha módosítja ezt a változót `2`: a legújabb elosztott lemezképet, és továbbra is ugyanúgy működik a korábbiakat. Beállíthatja, hogy ezt az értéket a DevTest Labs szolgáltatásban létrehozott fenntartani kívánt történelmi lemezképek számának meghatározásához.
+## <a name="setting-the-retention-policy"></a>Az adatmegőrzési szabály beállítása
+A tisztítási lépések konfigurálása előtt határozza meg, hogy hány korábbi képet szeretne megőrizni a DevTest Labs szolgáltatásban. Ha követte a [rendszerkép futtatása az Azure DevOps-ről](image-factory-set-up-devops-lab.md) című cikket, különböző Build-változókat konfigurált. Egyikük **ImageRetention**volt. Ezt a változót `1`ra állíthatja, ami azt jelenti, hogy a DevTest Labs nem őrzi meg az egyéni lemezképek előzményeit. Csak a legújabb elosztott lemezképek lesznek elérhetők. Ha ezt a változót `2`re módosítja, a rendszer karbantartja a legújabb elosztott lemezképet és az előzőeket is. Ez az érték beállítható úgy, hogy meghatározza a DevTest Labs-ben karbantartani kívánt korábbi rendszerképek számát.
 
-## <a name="cleaning-up-the-factory"></a>A feldolgozó megtisztítása
-Az első lépés a feldolgozó megtisztítása, hogy távolítsa el az arany lemezkép virtuális gépeket a lemezkép gyári. Ez a feladat, csakúgy, mint a korábbi parancsfájlok parancsfájl van. Az első lépés az, hogy adjon hozzá egy másik **Azure PowerShell-lel** a builddefiníció feladatot az alábbi képen látható módon:
+## <a name="cleaning-up-the-factory"></a>A gyár tisztítása
+A gyár tisztításának első lépéseként el kell távolítania az arany Rendszerképbeli virtuális gépeket a rendszerkép-gyárból. Ehhez a feladathoz ugyanúgy kell parancsfájlt végezni, mint az előző szkriptekhez. Első lépésként vegyen fel egy másik **Azure PowerShell** -feladatot a Build-definícióba az alábbi ábrán látható módon:
 
-![PowerShell lépés](./media/set-retention-policy-cleanup/powershell-step.png)
+![PowerShell-lépés](./media/set-retention-policy-cleanup/powershell-step.png)
 
-Miután az új feladat a listában, válassza ki az elemet, és adja meg az összes az adatokat az alábbi képen látható módon:
+Ha az új feladat szerepel a listában, válassza ki az elemet, és adja meg az összes adatot az alábbi képen látható módon:
 
-![Régi kép PowerShell feladat törlése](./media/set-retention-policy-cleanup/configure-powershell-task.png)
+![A régi lemezképek PowerShell-feladat tisztítása](./media/set-retention-policy-cleanup/configure-powershell-task.png)
 
-A parancsfájl-paraméterek: `-DevTestLabName $(devTestLabName)`.
+A parancsfájl paraméterei a következők: `-DevTestLabName $(devTestLabName)`.
 
-## <a name="retire-old-images"></a>Régi képeket kivonni 
-Ez a feladat eltávolítja az összes régi lemezképet, csak egy előzmények egyező tartja a **ImageRetention** hozhat létre a változót. Adjon hozzá egy további **Azure PowerShell-lel** készítése feladatot a builddefiníció. Miután hozzáadta, válassza ki a feladatot, és adja meg a részleteket a következő képen látható módon: 
+## <a name="retire-old-images"></a>Régi rendszerképek kivonása 
+Ez a feladat eltávolítja a régi rendszerképeket, és csak a **ImageRetention** -Build változóval egyező előzményeket tart. Adjon hozzá egy további **Azure PowerShell** Build-feladatot a Build-definícióhoz. A Hozzáadás után válassza ki a feladatot, majd adja meg a részleteket az alábbi képen látható módon: 
 
-![Régi kép PowerShell feladat kivonása](./media/set-retention-policy-cleanup/retire-old-image-task.png)
+![Régi rendszerképek kivonása PowerShell-feladat](./media/set-retention-policy-cleanup/retire-old-image-task.png)
 
-A parancsfájl-paraméterek a következők: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
+A parancsfájl paraméterei a következők: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
 
-## <a name="queue-the-build"></a>A build várólista
-Most, hogy végrehajtotta a builddefiníció, várólista, győződjön meg arról, hogy minden működik, új fordítást. Miután a létrehozás sikeresen befejeződik, az új egyéni lemezképek jelennek meg a cél tesztkörnyezetben, és ellenőrizheti, ha a kép gyári labor, nincs üzembe helyezett virtuális gépek megjelenik. Továbbá ha a várólistára fel további buildek jelenik meg a karbantartási feladatok kivonása régi egyéni rendszerképek meg a DevTest Labs a összhangban a build változók beállított megőrzési értéket.
+## <a name="queue-the-build"></a>A Build várólistája
+Most, hogy elvégezte a Build-definíciót, egy új buildet várólistára helyez, hogy minden működik-e. Miután a Build sikeresen befejeződik, az új egyéni lemezképek megjelennek a cél laborban, és ha bejelöli a lemezkép-előállító labort, nem látja a kiépített virtuális gépeket. Továbbá ha további buildeket is várólistára helyez, a karbantartási feladatok a régi egyéni rendszerképeket a DevTest Labs szolgáltatásból kivonásával, a létrehozási változókban beállított megőrzési értékkel összhangban láthatják.
 
 > [!NOTE]
-> Ha végrehajtott a buildelési folyamat utolsó a cikk végén található az a sorozat, manuálisan törölje a virtuális gépeket a lemezkép gyári lab-ben egy új létrehozást queuing előtt készült.  A manuális törléshez lépés csak akkor van szükség, amíg minden beállítása, és ellenőrizze, működik-e.
+> Ha a sorozat utolsó cikkének végén végrehajtotta a Build folyamatot, manuálisan törölje a rendszerkép-előállító laborban létrehozott virtuális gépeket, mielőtt új buildet hozna létre.  A manuális karbantartási lépésre csak akkor van szükség, ha mindent beállít, és ellenőrzi, hogy működik-e.
 
 
 
 ## <a name="summary"></a>Összefoglalás
-Most már egy futó lemezkép-előállítót, amely hoz létre, és a tesztkörnyezetek igény szerinti egyéni lemezképek terjesztése. Ez a pont, annak megfelelően beállítva, a képek első annyit és a cél labs azonosítása. Az előző cikkben említettek szerint a **Labs.json** fájlt a **konfigurációs** mappát adja meg, melyik lemezképeket elérhetővé kell tenni az egyes, a cél labs. További DevTest Labs termelhessen szervezete számára, ahogy egyszerűen adjon hozzá egy bejegyzést a Labs.json a új labor a kell.
+Most már rendelkezik egy futó rendszerkép-előállítóval, amely egyéni rendszerképeket tud létrehozni és terjeszteni igény szerint a laborokban. Ezen a ponton csak a lemezképek megfelelő beállítására és a cél Labs azonosítására van szó. Ahogy azt az előző cikkben is említettük, a **konfigurációs** mappában található **Labs. JSON** fájl határozza meg, hogy mely képeket kell elérhetővé tenni a cél Labs-ben. Ha más DevTest Labs-t ad hozzá a szervezetéhez, egyszerűen hozzá kell adnia egy bejegyzést a Labs. JSON fájlhoz az új laborhoz.
 
-Új lemezkép hozzáadása a gyári egyben egyszerű. Ha szeretne felvenni egy új rendszerképet, nyissa meg az előállító a [az Azure portal](https://portal.azure.com), keresse meg a DevTest Labs gyári, válassza ki a virtuális gép hozzáadása gombra, és válassza ki a kívánt Piactéri lemezképet és az összetevők. Kiválasztása helyett a **létrehozás** gombra, jelölje be az új virtuális gép **megtekintése az Azure Resource Manager-sablon**", és mentheti a sablont egy .JSON kiterjesztésű fájlt valahol a **GoldenImages** mappát a tárházban. A kép factory a következő futtatásakor hoz létre az egyéni rendszerkép.
+Az új rendszerkép hozzáadása a gyárhoz is egyszerű. Ha egy új rendszerképet szeretne felvenni a gyárba, nyissa meg a [Azure Portal](https://portal.azure.com), navigáljon a Factory DevTest Labs szolgáltatáshoz, válassza a gombot egy virtuális gép hozzáadásához, majd válassza ki a kívánt Piactéri képet és összetevőket. Ahelyett, hogy kijelöli a **Létrehozás** gombot az új virtuális gép kiválasztásához, válassza a **Azure Resource Manager sablon megtekintése**lehetőséget, majd mentse a sablont egy. JSON-fájlként a tárház **GoldenImages** mappájába. A rendszerkép-előállító következő futtatásakor a rendszer létrehozza az egyéni rendszerképet.
 
 
-## <a name="next-steps"></a>További lépések
-1. [A build és kiadás ütemezése](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) a lemezkép factory rendszeres időközönként futtatásához. A gyári által generált képek rendszeres időközönként frissíti azt.
-2. Győződjön meg arról, további hamisított Kerberos-lemezképek az előállító. Emellett érdemes [összetevők létrehozása](devtest-lab-artifact-author.md) , további információt a Virtuálisgép-beállítási feladatok létrehozása és a gyári képeken közé tartozik az összetevők.
-4. Hozzon létre egy [build és kiadás külön](/azure/devops/pipelines/overview?view=azure-devops-2019) futtatásához a **DistributeImages** parancsfájl külön-külön. Ezt a szkriptet futtathatja is, ha Labs.json módosítja, és másolja a cél tesztkörnyezetekhez nélkül hozza létre újra az összes rendszerkép képek bekérése.
+## <a name="next-steps"></a>Következő lépések
+1. [Ütemezze a Build/kiadást](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) a rendszerkép-előállító rendszeres futtatásához. Rendszeresen frissíti a gyár által generált képeket.
+2. További arany-lemezképek készítése a gyár számára. Azt is megteheti, hogy összetevőket hoz létre a virtuálisgép-beállítási feladatok további részeinek parancsfájlokban való [létrehozásához](devtest-lab-artifact-author.md) , és tartalmazza a gyári lemezképekben található összetevőket.
+4. Hozzon létre [külön Build/kiadást](/azure/devops/pipelines/overview?view=azure-devops-2019) a **DistributeImages** -szkript külön való futtatásához. Ezt a parancsfájlt akkor futtathatja, ha módosítja a Labs. JSON fájlt, és beolvassa a cél Labs-be másolt képeket anélkül, hogy újra létre kellene hoznia az összes lemezképet.
 

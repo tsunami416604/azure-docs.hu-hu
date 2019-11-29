@@ -16,12 +16,12 @@ ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 5ed9088bcc5776fe1fb0d09e6ae771adabb1b879
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 51945940a0f0fd0346e9437c4ad0631f989e0a92
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802688"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555552"
 ---
 # <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Az Azure-erőforrásokhoz való hozzáférés kezelése külső vendég felhasználók számára a RBAC használatával
 
@@ -45,7 +45,7 @@ A következő lépésekkel adhat hozzá egy vendég felhasználót a címtárhoz
 
 1. Győződjön meg arról, hogy a szervezet külső együttműködési beállításai úgy vannak konfigurálva, hogy Ön is meghívja vendégeit. További információkért tekintse meg a [külső B2B-együttműködés engedélyezése és a vendégek meghívására alkalmas személyek kezelése](../active-directory/b2b/delegate-invitations.md)című témakört.
 
-1. A Azure Portal kattintson **Azure Active Directory** > **felhasználók** > **új vendég felhasználó**elemre.
+1. A Azure Portal kattintson **Azure Active Directory** > **felhasználók** > **új vendég felhasználó**lehetőségre.
 
     ![Új vendég felhasználói szolgáltatás a Azure Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
@@ -71,7 +71,7 @@ A RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört. Ha ho
 
 1. Kattintson az adott erőforrásra.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)** .
+1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
     Az alábbi képernyőfelvételen az erőforráscsoport hozzáférés-vezérlés (IAM) paneljén látható egy példa. Ha itt bármilyen hozzáférés-vezérlési változást hajt végre, az csak az erőforráscsoporthoz fog vonatkozni.
 
@@ -79,7 +79,7 @@ A RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört. Ha ho
 
 1. A **szerepkör-hozzárendelések** lapra kattintva megtekintheti az összes szerepkör-hozzárendelést ezen a hatókörön.
 
-1. Kattintson a szerepkör-hozzárendelés hozzáadása lehetőségre a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához. > 
+1. Kattintson a **hozzáadás** > **szerepkör-hozzárendelés hozzáadása** elemre a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához.
 
     Ha nem rendelkezik jogosultsággal a szerepkörök hozzárendeléséhez, a szerepkör-hozzárendelés hozzáadása lehetőség le lesz tiltva.
 
@@ -107,11 +107,11 @@ Ha a vendég felhasználó még nem szerepel a címtárban, a felhasználót kö
 
 1. Kattintson az adott erőforrásra.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)** .
+1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
 1. A **szerepkör-hozzárendelések** lapra kattintva megtekintheti az összes szerepkör-hozzárendelést ezen a hatókörön.
 
-1. Kattintson a szerepkör-hozzárendelés hozzáadása lehetőségre a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához. > 
+1. Kattintson a **hozzáadás** > **szerepkör-hozzárendelés hozzáadása** elemre a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához.
 
     ![Menü hozzáadása](./media/role-assignments-external-users/add-menu.png)
 
@@ -201,9 +201,9 @@ Ha a vendég felhasználó hozzáférést kapott egy címtárhoz, de nem látja 
 
 ![Könyvtárak és előfizetések panel a Azure Portal](./media/role-assignments-external-users/directory-subscription.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure Active Directory B2B együttműködés felhasználók hozzáadása az Azure Portalon](../active-directory/b2b/add-users-administrator.md)
+- [Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal](../active-directory/b2b/add-users-administrator.md)
 - [Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai](../active-directory/b2b/user-properties.md)
 - [A B2B együttműködés meghívójának e-mail-Azure Active Directory elemei](../active-directory/b2b/invitation-email-elements.md)
-- [Vendég felhasználó hozzáadása társ-rendszergazdaként](classic-administrators.md#adding-a-guest-user-as-a-co-administrator)
+- [Vendég felhasználó hozzáadása társ-rendszergazdaként](classic-administrators.md#add-a-guest-user-as-a-co-administrator)

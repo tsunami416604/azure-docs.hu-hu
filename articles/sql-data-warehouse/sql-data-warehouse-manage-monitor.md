@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 629ba904d055977fe70f749a46fbbec71be71b79
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b71d3b4824d8c1c73f40c8c6d87db315aabd423b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083652"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555493"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 Ez a cikk azt ismerteti, hogyan használhatók a dinamikus felügyeleti nézetek (DMV) a számítási feladatok figyelésére. Ide tartozik a lekérdezés végrehajtásának vizsgálata Azure SQL Data Warehouseban.
@@ -63,7 +63,7 @@ ORDER BY total_elapsed_time DESC;
 
 A fenti lekérdezési eredményekből jegyezze fel a vizsgálni kívánt lekérdezés **azonosítóját** .
 
-A **felfüggesztett** állapotú lekérdezések a nagy számú aktív futó lekérdezés miatt várólistára helyezhetők. Ezek a lekérdezések is megjelennek a [sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) a lekérdezés UserConcurrencyResourceType. A párhuzamossági korlátokkal kapcsolatos információkért lásd: [teljesítmény](/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu#performance-tiers-and-data-warehouse-units) -és [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). A lekérdezések más okokat is várhatnak, például az objektumok zárolását.  Ha a lekérdezés egy erőforrásra vár, tekintse meg a jelen cikk további [erőforrásaira váró lekérdezések kivizsgálását][Investigating queries waiting for resources] ismertető cikket.
+A **felfüggesztett** állapotú lekérdezések a nagy számú aktív futó lekérdezés miatt várólistára helyezhetők. Ezek a lekérdezések is megjelennek a [sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) a lekérdezés UserConcurrencyResourceType. A párhuzamossági korlátokkal kapcsolatos információkért lásd: Azure SQL Data Warehouse vagy erőforrás [-osztályok memória-és egyidejűségi korlátai](memory-concurrency-limits.md) a számítási [feladatok kezeléséhez](resource-classes-for-workload-management.md). A lekérdezések más okokat is várhatnak, például az objektumok zárolását.  Ha a lekérdezés egy erőforrásra vár, tekintse meg a jelen cikk további [erőforrásaira váró lekérdezések kivizsgálását][Investigating queries waiting for resources] ismertető cikket.
 
 Ha le szeretné egyszerűsíteni egy lekérdezés keresését a [sys. dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) táblában, a [címke][LABEL] használatával rendeljen hozzá egy megjegyzést a lekérdezéshez, amely a sys. dm_pdw_exec_requests nézetben kereshető.
 
@@ -206,7 +206,7 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Ha olyan lekérdezéssel rendelkezik, amely nagy mennyiségű memóriát használ, vagy a tempdb kiosztásával kapcsolatos hibaüzenetet kapott, annak oka az lehet, hogy egy nagyon nagy [CREATE TABLE a Select (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) vagy a [Insert Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) utasítás fut, amely nem a végső adatáthelyezési művelet. Ez általában ShuffleMove műveletként azonosítható az elosztott lekérdezési tervben közvetlenül a végső Beszúrás kiválasztása előtt.  A [sys. dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) használatával figyelje a ShuffleMove műveleteket. 
+Ha olyan lekérdezéssel rendelkezik, amely nagy mennyiségű memóriát használ, vagy a tempdb kiosztásával kapcsolatos hibaüzenetet kapott, annak oka az lehet, hogy egy nagyon nagy [CREATE TABLE a Select (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) vagy a [Insert Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) utasítás fut, amely a végső adatáthelyezési művelet során meghiúsul. Ez általában ShuffleMove műveletként azonosítható az elosztott lekérdezési tervben közvetlenül a végső Beszúrás kiválasztása előtt.  A [sys. dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) használatával figyelje a ShuffleMove műveleteket. 
 
 A leggyakoribb megoldás a CTAS vagy a SELECT utasítás beillesztése több betöltési utasításba, így az adatmennyiség nem haladja meg az 1 TB/csomópont tempdb korlátot. A fürtöt nagyobb méretre is méretezheti, amely a tempdb méretét több csomóponton is eloszthatja, ami csökkenti az egyes csomópontok tempdb.
 

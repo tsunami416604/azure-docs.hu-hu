@@ -1,6 +1,6 @@
 ---
-title: Az Azure Lab Services bemutatása | Microsoft Docs
-description: Megismerheti, hogyan könnyítheti meg a Lab Services a tesztkörnyezetek létrehozását, felügyeletét és védelmét a fejlesztők, tesztelők, oktatók, diákok és mások által használható virtuális gépekkel.
+title: A tanterem Labs ismertetése a Azure Lab Servicesban | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre gyorsan egy tantermi tesztkörnyezet-környezetet a felhőben – beállíthatja a labort egy sablonos virtuális géppel az osztályhoz szükséges szoftverrel, és elkészítheti a virtuális gép másolatát a osztály minden tanulója számára.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/30/2019
+ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 67ebce2130bf5594d3c8c671934f7141a02eb60d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: bbbea0c943758c2682f7b166e461807d2914f790
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694663"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561675"
 ---
 # <a name="introduction-to-classroom-labs"></a>Az osztályterem-tesztkörnyezetek bemutatása
 Az Azure Lab Services lehetővé teszi egy osztályterem-tesztkörnyezet gyors beállítását a felhőben. Az oktató létrehoz egy osztályterem-tesztkörnyezetet, Windows vagy Linux rendszerű virtuális gépeket épít ki, telepíti a szükséges szoftvereket és eszközöket a tesztkörnyezetben, és elérhetővé teszi őket a diákok számára. A diákok osztályterem-tesztkörnyezetben található virtuális gépekhez csatlakoznak, és a projektjeikhez, feladataikhoz vagy osztálytermi gyakorlataikhoz használják őket. 
@@ -37,7 +37,7 @@ Tartsa meg a költségvetését ellenőrzés alatt, hogy pontosan hány óra ala
 ## <a name="example-class-types"></a>Példa típusú osztályok
 A Azure Lab Services használatával számos különböző típusú osztályhoz beállíthat Labs-t. Tekintse [meg](class-types.md) az egyes példákat a Azure Lab Services cikkben, amely néhány példát mutat be, amelyekkel a laborokat beállíthatja a Azure Lab Services. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Első lépésként az Azure Lab Services használatával hozzon létre egy tesztkörnyezetfiókot, amely az osztálytermi tesztkörnyezetek létrehozásához szükséges:
 
 - [Tesztkörnyezetfiók beállítása](tutorial-setup-lab-account.md)
