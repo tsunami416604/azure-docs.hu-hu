@@ -1,26 +1,26 @@
 ---
-title: Ügyfél által felügyelt kulcsok konfigurálása Azure Storage-titkosításhoz az Azure CLI-ből
-description: Ismerje meg, hogyan konfigurálhatja az Azure Storage-titkosításhoz az ügyfél által felügyelt kulcsokat az Azure CLI használatával. Az ügyfél által felügyelt kulcsok lehetővé teszik a hozzáférés-vezérlések létrehozását, elforgatását, letiltását és visszavonását.
+title: Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault az Azure CLI – Azure Storage használatával
+description: Megtudhatja, hogyan konfigurálhatja az Azure CLI-vel az ügyfelek által felügyelt kulcsokat a Azure Key Vault az Azure Storage encryption szolgáltatással. Az ügyfél által felügyelt kulcsok lehetővé teszik a hozzáférés-vezérlések létrehozását, elforgatását, letiltását és visszavonását.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 10/15/2019
+ms.topic: how-to
+ms.date: 11/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 18209816b5b73f58a8112efca0363b31dd47bd91
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: df65267924cfbfdc856b81928c4b6d7029f61184
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374271"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665967"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Storage-titkosításhoz az Azure CLI-ből
+# <a name="configure-customer-managed-keys-for-azure-storage-by-using-azure-cli"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Storage-hoz az Azure CLI használatával
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Ez a cikk bemutatja, hogyan konfigurálhat egy Key vaultot az ügyfél által felügyelt kulcsokkal az Azure CLI használatával.
+Ez a cikk bemutatja, hogyan konfigurálhat egy Azure Key Vaultt az ügyfél által felügyelt kulcsokkal az Azure CLI használatával. Ha meg szeretné tudni, hogyan hozhat létre kulcstartót az Azure CLI használatával, tekintse meg a következőt [: gyors üzembe helyezés és a titkos kód beolvasása Azure Key Vault az Azure CLI használatával](../../key-vault/quick-create-cli.md).
 
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsok Azure Storage-titkosítással való használata megköveteli, hogy két tulajdonság legyen beállítva a kulcstartóban, a **Soft delete** és a **not Purge**. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve. A tulajdonságok engedélyezéséhez használja a PowerShell vagy az Azure CLI-t.

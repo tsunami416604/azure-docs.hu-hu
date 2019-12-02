@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: egyéni riasztások létrehozása a IoT Azure Security Center'
-description: Ebben a rövid útmutatóban egyéni eszköz-riasztásokat hoz létre és rendelhet hozzá Azure Security Center IoT.
+description: Ismerje meg, hozza létre és rendelje hozzá az egyéni eszközökhöz tartozó riasztásokat a IoT biztonsági szolgáltatás Azure Security Centerához.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: eca5d69efb04cf8210b0b2aa502bcee5cd4f5264
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 992dd7b85dee0774b8388ae22fe18377ca9e5691
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904127"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664830"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Gyors útmutató: egyéni riasztások létrehozása
 
@@ -41,7 +41,7 @@ Ezek a csoportok az adott hardverrel rendelkező eszközöket, az adott helyen �
 
 A biztonsági csoportokat a **SecurityGroup**nevű Device Twin tag tulajdonság határozza meg. Alapértelmezés szerint a IoT Hub minden IoT-megoldása egy **alapértelmezett**nevű biztonsági csoporttal rendelkezik. Módosítsa a **SecurityGroup** tulajdonság értékét egy eszköz biztonsági csoportjának megváltoztatásához.
  
-Például:
+Példa:
 
 ```
 {
@@ -82,7 +82,7 @@ Biztonsági csoportok használatával csoportosíthatja az eszközöket logikai 
 Az alábbi táblázat a testreszabáshoz elérhető riasztások összegzését tartalmazza.
 
 
-| Severity | Name (Név) | Adatforrás | Leírás | Javasolt szervizelés|
+| Súlyosság | Név | Adatforrás | Leírás | Javasolt szervizelés|
 |---|---|---|---|---|
 | Alacsony      | Egyéni riasztás – az AMQP-protokollban található, Felhőbeli üzenetek száma kívül esik az engedélyezett tartományon.          | IoT Hub     | A megadott időtartományon belüli felhőből az eszközre irányuló üzenetek (AMQP protokoll) száma a jelenleg konfigurált és engedélyezett tartományon kívül esik.||
 | Alacsony      | Egyéni riasztás – az elutasított Felhőbeli üzenetek száma az AMQP protokollon kívül esik az engedélyezett tartományon. | IoT Hub     | Az eszköz által visszautasított Felhőbeli üzenetek (AMQP protokoll) száma egy adott időszakon belül a jelenleg konfigurált és engedélyezett tartományon kívül esik.||

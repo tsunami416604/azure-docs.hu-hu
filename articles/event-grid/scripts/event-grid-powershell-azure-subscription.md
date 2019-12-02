@@ -11,20 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 8ab0d61e2c7ec23b7c3ed82d460cbb53711d5c7f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8c90e39cef1420ec06b7f62ebf9982720ffebf94
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790500"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664131"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-powershell"></a>Feliratkozás egy Azure-előfizetés eseményeire a PowerShell-lel
 
 Ez a szkript létrehoz egy Event Grid-előfizetést egy Azure-előfizetés eseményeihez.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
-Az előnézeti minta parancsfájlhoz a Event Grid modul szükséges. A telepítéséhez futtassa `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 ## <a name="sample-script---stable"></a>Példaszkript – stabil
 
@@ -33,6 +31,8 @@ Az előnézeti minta parancsfájlhoz a Event Grid modul szükséges. A telepít�
 [!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-azure-subscription/subscribe-to-azure-subscription.ps1 "Subscribe to Azure subscription")]
 
 ## <a name="sample-script---preview-module"></a>Minta parancsfájl – előzetes verziójú modul
+
+Ehhez az előnézeti minta parancsfájlhoz a Event Grid modul szükséges. A telepítéséhez futtassa `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 

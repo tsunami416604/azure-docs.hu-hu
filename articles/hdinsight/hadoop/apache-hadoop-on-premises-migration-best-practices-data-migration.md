@@ -2,18 +2,18 @@
 title: 'Adatáttelepítés: helyszíni Apache Hadoop az Azure HDInsight'
 description: A helyszíni Hadoop-fürtök Azure HDInsight való áttelepítésére vonatkozó ajánlott eljárások ismertetése.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: hrasheed
-ms.openlocfilehash: 30f7ae2eeb928e3f8dc71baed20d9c9b2129d1f9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 11/22/2019
+ms.openlocfilehash: 41112359408497d84243ed9bb06f396acf008dc5
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494984"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666001"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight – az adatáttelepítés ajánlott eljárásai
 
@@ -23,16 +23,20 @@ Ez a cikk ajánlásokat nyújt az Azure HDInsight való adatáttelepítés sorá
 
 Két fő lehetőség áll rendelkezésre a helyszíni adatok Azure-környezetbe történő átköltöztetésére:
 
-1.  Adatok átvitele hálózaton keresztül TLS használatával
-    1. Interneten keresztül – az adatok az Azure Storage-ba normál internetkapcsolaton keresztül, többek között a következők egyikével vihetők át: Azure Storage Explorer, AzCopy, Azure PowerShell és Azure CLI.  További információkért lásd: [adatok áthelyezése az Azure Storage szolgáltatásba és onnan](../../storage/common/storage-moving-data.md) .
-    2. Az Express Route-ExpressRoute egy Azure-szolgáltatás, amellyel privát kapcsolatokat hozhat létre a Microsoft-adatközpontok és a helyszíni vagy egy közös elhelyezési létesítményben lévő infrastruktúra között. A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át, és nagyobb biztonságot, megbízhatóságot és sebességet biztosítanak, mint a szokásos kapcsolatok az interneten. További információ: [ExpressRoute-kör létrehozása és módosítása](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
-    1. Data Box online adatátvitel – a Data Box Edge és a Data Box Gateway olyan online adatátviteli termékek, amelyek hálózati tároló átjáróként működnek a hely és az Azure közötti adatkezelés érdekében. A Data Box Edge egy helyszíni hálózati eszköz, amely az adatokat az Azure és a helyszín között helyezi át, és az adatok feldolgozásához mesterséges intelligenciát használó peremhálózati számítási megoldást használ. A Data Box Gateway egy tárolóátjáró képességgel rendelkező virtuális berendezés. További információ: [Azure Data Box dokumentáció – online átvitel](https://docs.microsoft.com/azure/databox-online/).
-1.  Adatszállítás kapcsolat nélküli üzemmódban
-    1. Data Box offline adatátvitel – a Data Box, a Data Box Disk és az Data Box Heavy eszközök segítségével nagy mennyiségű adatok vihetők át az Azure-ba, ha a hálózat nem választható. Ezeket az offline adatátviteli eszközöket az Ön cége és az Azure-adatközpontok között szállítjuk. Az eszközök AES-titkosítást használnak, amelyek a szállítás közben védik az adatait, a feltöltés után pedig alapos megtisztítási folyamaton esnek át, amelynek során minden adata törölve lesz az eszközről. További információ a Data Box offline átvitelű eszközökről: [Azure Data Box dokumentáció – offline átvitel](https://docs.microsoft.com/azure/databox/). A Hadoop-fürtök áttelepítésével kapcsolatos további információkért tekintse [meg a helyszíni HDFS-tárolóból az Azure Storage-ba való migrálás Azure Data Box használatát](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)ismertető témakört.
+* Adatok átvitele hálózaton keresztül TLS használatával
+    * Interneten keresztül – az adatok az Azure Storage-ba normál internetkapcsolaton keresztül, többek között a következők egyikével vihetők át: Azure Storage Explorer, AzCopy, Azure PowerShell és Azure CLI. További információkért lásd: [adatok áthelyezése az Azure Storage szolgáltatásba és onnan](../../storage/common/storage-moving-data.md).
+
+    * Az Express Route-ExpressRoute egy Azure-szolgáltatás, amellyel privát kapcsolatokat hozhat létre a Microsoft-adatközpontok és a helyszíni vagy egy közös elhelyezési létesítményben lévő infrastruktúra között. A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át, és nagyobb biztonságot, megbízhatóságot és sebességet biztosítanak, mint a szokásos kapcsolatok az interneten. További információ: [ExpressRoute-kör létrehozása és módosítása](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
+
+    * Data Box online adatátvitel – a Data Box Edge és a Data Box Gateway olyan online adatátviteli termékek, amelyek hálózati tároló átjáróként működnek a hely és az Azure közötti adatkezelés érdekében. A Data Box Edge egy helyszíni hálózati eszköz, amely az adatokat az Azure és a helyszín között helyezi át, és az adatok feldolgozásához mesterséges intelligenciát használó peremhálózati számítási megoldást használ. A Data Box Gateway egy tárolóátjáró képességgel rendelkező virtuális berendezés. További információ: [Azure Data Box dokumentáció – online átvitel](https://docs.microsoft.com/azure/databox-online/).
+
+* Adatszállítás kapcsolat nélküli üzemmódban
+
+    Data Box offline adatátvitel – a Data Box, a Data Box Disk és az Data Box Heavy eszközök segítségével nagy mennyiségű adatok vihetők át az Azure-ba, ha a hálózat nem választható. Ezeket az offline adatátviteli eszközöket az Ön cége és az Azure-adatközpontok között szállítjuk. Az eszközök AES-titkosítást használnak, amelyek a szállítás közben védik az adatait, a feltöltés után pedig alapos megtisztítási folyamaton esnek át, amelynek során minden adata törölve lesz az eszközről. További információ a Data Box offline átvitelű eszközökről: [Azure Data Box dokumentáció – offline átvitel](https://docs.microsoft.com/azure/databox/). A Hadoop-fürtök áttelepítésével kapcsolatos további információkért tekintse [meg a helyszíni HDFS-tárolóból az Azure Storage-ba való migrálás Azure Data Box használatát](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)ismertető témakört.
 
 Az alábbi táblázat az adatmennyiség és a hálózati sávszélesség alapján közelíti meg az adatátviteli időtartamot. Adatmező használata, ha az adatáttelepítés várhatóan három hétig is eltarthat.
 
-|**Adatmennyiség**|**Hálózati sávszélesség**||||
+|Adatmennyiség|Hálózati sávszélesség||||
 |---|---|---|---|---|
 || **45 Mbps (T3)**|**100 Mbps**|**1 GB/s**|**10 GB/s**|
 |1 TB|2 nap|1 nap| 2 óra|14 perc|
@@ -47,9 +51,7 @@ Az alábbi táblázat az adatmennyiség és a hálózati sávszélesség alapjá
 
 Az Azure-ba natív eszközök, például Apache Hadoop DistCp, Azure Data Factory és AzureCp, az adatok hálózaton keresztüli átvitelére használhatók. A harmadik féltől származó eszköz WANDisco is használható ugyanarra a célra. A helyszíni és az Azure Storage rendszerbe való folyamatos adatátvitelhez Apache Kafka MirrorMaker és Apache Sqoop használható.
 
-
 ## <a name="performance-considerations-when-using-apache-hadoop-distcp"></a>Teljesítménnyel kapcsolatos megfontolások Apache Hadoop DistCp használatakor
-
 
 A DistCp egy Apache-projekt, amely egy MapReduce térképi feladatot használ az adatok átviteléhez, a hibák kezeléséhez és a hibák helyreállításához. Hozzárendeli a forrásfájlok listáját az egyes térképi feladatokhoz. A Térkép feladat ezután az összes hozzárendelt fájlt átmásolja a célhelyre. Több módszer is javíthatja a DistCp teljesítményét.
 
@@ -57,8 +59,9 @@ A DistCp egy Apache-projekt, amely egy MapReduce térképi feladatot használ az
 
 A DistCp megkísérli létrehozni a leképezési feladatokat, hogy mindegyik példány nagyjából azonos számú bájtot hozzon létre. Alapértelmezés szerint a DistCp-feladatok 20 leképezést használnak. Ha több leképezést használ a Distcp (a "m" paraméterrel a parancssorban), az adatátviteli folyamat során növeli a párhuzamosságot, és csökkenti az adatátvitel hosszát. Azonban két megfontolandó szempontot kell figyelembe vennie a leképezések számának növelésével kapcsolatban:
 
-1. A DistCp legalacsonyabb részletessége egyetlen fájl. Több, a forrásfájlok számánál nagyobb számú Mapper meghatározása nem segít, és a rendelkezésre álló fürterőforrás-erőforrások pazarlását fogja tartalmazni.
-1. Vegye figyelembe a rendelkezésre álló szál memóriáját a fürtön a leképezések számának megállapításához. Minden leképezési feladat egy szál-tárolóként indul el. Feltételezve, hogy a fürtön nem futnak más nagy terhelésű feladatok, a leképezések száma a következő képlettel határozható meg: m = (a munkavégző csomópontok száma \* az egyes munkavégző csomópontok esetében a szálak memóriája)/a fonal tároló mérete. Ha azonban más alkalmazások is használják a memóriát, a DistCp feladatokhoz csak a FONALak memóriájának egy részét használják.
+* A DistCp legalacsonyabb részletessége egyetlen fájl. Több, a forrásfájlok számánál nagyobb számú Mapper meghatározása nem segít, és a rendelkezésre álló fürterőforrás-erőforrások pazarlását fogja megadni.
+
+* Vegye figyelembe a rendelkezésre álló szál memóriáját a fürtön a leképezések számának megállapításához. Minden leképezési feladat egy szál-tárolóként indul el. Feltételezve, hogy a fürtön nem futnak más nagy terhelésű feladatok, a leképezések száma a következő képlettel határozható meg: m = (a munkavégző csomópontok száma \* az egyes munkavégző csomópontok esetében a szálak memóriája)/a fonal tároló mérete. Ha azonban más alkalmazások is használják a memóriát, a DistCp feladatokhoz csak a FONALak memóriájának egy részét használják.
 
 ### <a name="use-more-than-one-distcp-job"></a>Egynél több DistCp-feladatot használjon
 
@@ -102,17 +105,17 @@ A struktúra metaadattár áttelepíthetők a parancsfájlok használatával vag
 - Adatbázis-replikáció beállítása a helyszíni Hive-metaadattár DB és a HDInsight metaadattár DB között.
 - Használja a "kaptár MetaTool" a HDFS URL-cím lecserélése a WASB/ADLS/ABFS URL-címekkel, például:
 
-```bash
-./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
-```
+    ```bash
+    ./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
+    ```
 
 ### <a name="apache-ranger"></a>Apache Ranger
 
 - Helyszíni Ranger-házirendek exportálása XML-fájlokba.
-- Alakítsa át a helyszíni specifikus HDFS-alapú útvonalakat a WASB/ADLS-ra egy olyan eszközzel, mint az XSLT.
+- Alakítsa át a helyszíni HDFS-alapú útvonalakat a WASB/ADLS-ra egy olyan eszköz használatával, mint az XSLT.
 - Importálja a szabályzatokat a HDInsight-on futó Rangerre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a következő cikket a sorozatban:
 

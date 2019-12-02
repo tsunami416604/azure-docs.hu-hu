@@ -1,6 +1,6 @@
 ---
-title: Az oktatóanyag egy Azure-függvényt az Azure IoT Edge - eszköz üzembe helyezése |} A Microsoft Docs
-description: Ebben az oktatóanyagban fejlesztése az Azure IoT Edge-modul adatbázisként működik, akkor telepítheti az edge-eszköz.
+title: 'Oktatóanyag: az Azure functions üzembe helyezése modulként – Azure IoT Edge'
+description: Ebben az oktatóanyagban egy Azure-függvényt fejleszt IoT Edge modulként, majd üzembe helyezi egy peremhálózati eszközön.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1db64c2cc68dc9c47d4f2cf5f63eb0667907d737
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 8edd6028e73690829129168d912b312247d8b880
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456717"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664114"
 ---
-# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Oktatóanyag: Üzembe helyezni az Azure IoT Edge-modulok működik
+# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Oktatóanyag: az Azure functions üzembe helyezése IoT Edge modulként
 
-Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvetlenül az Azure IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő Azure-függvény létrehozásának és a szimulált IoT Edge-eszközön való üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvetlenül az Azure IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő Azure-függvény létrehozásának és a szimulált IoT Edge-eszközön való üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -68,7 +68,7 @@ Hozzon C# létre egy Function Solution-sablont, amelyet testreszabhat saját kó
 
 3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
-   | Mező | Érték |
+   | Mező | Value (Díj) |
    | ----- | ----- |
    | Select folder (Mappa kiválasztása) | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
    | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, például **FunctionSolution**, vagy fogadja el az alapértelmezett értéket. |
@@ -100,7 +100,7 @@ Vegyünk fel néhány további kódot, hogy a modul feldolgozza az üzeneteket a
 
 1. A Visual Studio Code-ban nyissa meg a **modulokat** > **CSharpFunction** > **CSharpFunction.cs**.
 
-1. Cserélje le a **CSharpFunction.cs** fájl tartalmát a következő kódra. Ez a kód megkapja a telemetriai adatokat gyűjthessen környezeti és a gép hőmérséklet, és csak akkor továbbítja az üzenet továbbítása az IoT Hub, ha a gép hőmérséklet egy meghatározott küszöbérték fölött van.
+1. Cserélje le a **CSharpFunction.cs** fájl tartalmát a következő kódra. Ez a kód telemetria kap a környezeti és a gépi hőmérsékletről, és csak akkor továbbítja az üzenetet IoT Hub, ha a gép hőmérséklete meghatározott küszöbérték felett van.
 
    ```csharp
    using System;
@@ -219,7 +219,7 @@ A függvények modulját a gyors útmutatókban bemutatott módon az Azure Porta
 
 3. Navigáljon a **CSharpFunction** függvényt tartalmazó megoldásmappához. Nyissa meg a konfigurációs mappát, válassza ki a **Deployment. JSON** fájlt, majd válassza az **Edge központi telepítési jegyzék kiválasztása**lehetőséget.
 
-4. Frissítse az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. Meg kell jelennie az új **CSharpFunction** , amelyen a **SimulatedTemperatureSensor** modul, valamint a **$edgeAgent** és a **$edgeHub**fut. Eltarthat néhány másodpercig jelenik meg az új modulokat. Az IoT Edge-eszköz rendelkezik az új központi telepítési adatok kinyerése az IoT Hub, indítsa el az új tárolókat és jelentést készít az állapot vissza az IoT hubnak. 
+4. Frissítse az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. Meg kell jelennie az új **CSharpFunction** , amelyen a **SimulatedTemperatureSensor** modul, valamint a **$edgeAgent** és a **$edgeHub**fut. Néhány percet is igénybe vehet, amíg az új modulok megjelennek. A IoT Edge eszközének le kell kérnie az új központi telepítési adatokat a IoT Hubról, el kell indítania az új tárolókat, majd vissza kell jelentenie az állapotot a IoT Hubnak. 
 
    ![Üzembe helyezett modulok megtekintése a VS Code-ban](./media/tutorial-deploy-function/view-modules.png)
 

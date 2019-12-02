@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279693"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664947"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Azure Monitor a containers Health Monitor konfigurációs útmutatója
 
@@ -35,7 +35,7 @@ Egy adott objektum általános állapota az egyes figyelők állapota alapján v
 
 ## <a name="types-of-monitors"></a>Figyelők típusai
 
-|Monitoring | Leírás | 
+|Figyelés | Leírás | 
 |--------|-------------|
 | Egység figyelője |Az egység-figyelő egy erőforrás vagy alkalmazás bizonyos aspektusait méri. Lehetséges, hogy az erőforrás teljesítményének és rendelkezésre állásának megállapításához a teljesítményszámláló ellenőrzése szükséges. |
 |Összesítő figyelő | Az összesített figyelők csoport több figyelőt biztosít egyetlen állapot összesített állapotának biztosításához. Az egység figyelők általában egy adott összesítő figyelő alatt vannak konfigurálva. A Node összesítő figyelő például összesíti a csomópont CPU-kihasználtságát, a memória kihasználtságát és a csomópont állapotát.
@@ -82,7 +82,7 @@ A tárolók Azure Monitor számos kulcsfontosságú figyelési forgatókönyvet 
 |Csomópontok (csomópont-készlet szülőjének) |Ez az összes csomópont-készlet összesített figyelője. Az állapota a gyermek figyelők (azaz a fürtben lévő csomópont-készletek) legrosszabb állapotán alapul. |Legrosszabb |
 |Fürt (csomópontok szülőjének/<br> Kubernetes-infrastruktúra) |Ez az a szülő-figyelő, amely megfelel a gyermek figyelőnek a legrosszabb állapottal, amely az infrastruktúra és a csomópontok kubernetes. |Legrosszabb |
 |Kubernetes-infrastruktúra |Ez a figyelő a fürt felügyelt infrastruktúra összetevőinek összevont állapotát jelenti. az állapota a "legrosszabb" a gyermek figyelő állapotának számít, azaz a Kube-rendszerterhelések és az API-kiszolgáló állapota. |Legrosszabb|
-|Rendszerterhelés |Ez a figyelő a Kube számítási feladatok állapotát jelzi. Ez a figyelő megfelel a gyermek figyelő állapotának a legrosszabb állapottal, amely a **kész állapot** figyelője és a számítási feladatok tárolói között található. |Legrosszabb |
+|Rendszerterhelés |Ez a figyelő a Kube számítási feladatok állapotát jelzi. Ez a figyelő megfelel a gyermek figyelő állapotának a legrosszabb állapottal, azaz a **hüvelyek üzemkész állapotban** vannak (a figyelő és a számítási feladatok tárolói). |Legrosszabb |
 |Tároló |Ez a figyelő egy adott munkaterhelés egy tárolójának általános állapotát jelenti. Ez a figyelő megegyezik a gyermek figyelő azon állapotával, amely a legrosszabb állapotú, azaz a **CPU-kihasználtság** és a **memóriahasználat** figyelése. |Legrosszabb |
 
 ## <a name="next-steps"></a>Következő lépések

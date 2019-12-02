@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: egyéni modulok létrehozása és telepítése – Machine Learning on Azure IoT Edge'
+title: 'Oktatóanyag: a Train & a modell üzembe helyezése – Azure IoT Edge & Machine Learning'
 description: 'Oktatóanyag: IoT Edge-modulok létrehozása és üzembe helyezése, amelyek a gépi tanulási modellből származó adatok feldolgozását végzik, majd az elemzések elküldésével IoT Hub.'
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7bfe620510d5ff88a20c518be1f4dd1fb422daa2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 371c897f0b4858a642322ff35a6008edbe9a651d
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106561"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664216"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Oktatóanyag: egyéni IoT Edge-modulok létrehozása és üzembe helyezése
 
@@ -22,7 +22,7 @@ ms.locfileid: "74106561"
 
 Ebben a cikkben három IoT Edge-modult hozunk létre, amelyek üzeneteket fogadnak a Leaf-eszközökről, az adatok futtatását a gépi tanulási modellen keresztül, majd az elemzések továbbításával IoT Hub.
 
-IoT Edge hub megkönnyíti a modul kommunikációját. Az IoT Edge hub használata a Message Broker számára egymástól független modulokat tart fenn. Modulok csak adja meg, amelyen a üzenetek és a kimeneteket, amelyhez a üzeneteket írhat elfogadják a bemeneteket kell.
+IoT Edge hub megkönnyíti a modul kommunikációját. Az IoT Edge hub használata a Message Broker számára egymástól független modulokat tart fenn. A moduloknak csak azokat a bemeneteket kell megadniuk, amelyeken üzeneteket fogadnak, valamint azokat a kimeneteket, amelyekhez üzeneteket írnak.
 
 Azt szeretnénk, hogy a IoT Edge eszköz négy dolgot hajtson végre nekünk:
 
@@ -714,7 +714,7 @@ Konfigurálja a IoT Hub fájlfeltöltés funkciót, hogy a fájl-író modul fel
 
 Most, hogy elvégezte a konfigurációs módosításokat, készen állunk a rendszerképek létrehozására és az Azure Container registrybe való közzétételre. A létrehozási folyamat a Deployment. template. JSON fájlt használja annak meghatározására, hogy mely modulokat kell felépíteni. Az egyes modulok beállításai, beleértve a verziót, a Module. JSON fájlban találhatók. A létrehozási folyamat először egy Docker-buildet futtat a Module. JSON fájlban található aktuális konfigurációnak megfelelő Dockerfiles. Ezt követően a rendszer közzéteszi a rendszerképet a beállításjegyzékben a Module. JSON fájlból, amely a Module. JSON fájlban szereplővel egyező verziójú címkével rendelkezik. Végezetül létrehoz egy konfiguráció-specifikus központi telepítési jegyzéket (például: Deploy. amd64. JSON), amelyet a IoT Edge eszközre fogunk telepíteni. A IoT Edge eszköz beolvassa az adatokat a telepítési jegyzékből, és az utasítások alapján letölti a modulokat, konfigurálja az útvonalakat, és beállítja a kívánt tulajdonságokat. Ennek a telepítési módszernek két mellékhatása van:
 
-* **Központi telepítési késés:** mivel a IoT Edge futtatókörnyezetnek fel kell ismernie a kívánt tulajdonságok módosítását az újrakonfigurálás megkezdése előtt, igénybe vehet némi időt a modulok üzembe helyezése után, amíg a futtatókörnyezet fel nem veszi őket, és nem kezdi frissíteni a IoT Edge eszköz.
+* **Központi telepítési késés:** mivel a IoT Edge futtatókörnyezetnek fel kell ismernie a kívánt tulajdonságok módosítását az újrakonfigurálás megkezdése előtt, a modulok üzembe helyezése után némi időt vehet igénybe, amíg a futtatókörnyezet fel nem veszi őket, és nem indítja el a IoT Edge eszköz frissítését.
 
 * **Modulok verziói:** ha egy modul tárolójának új verzióját közzéteszi a tároló-beállításjegyzékben az előző modullal megegyező verziójú címkék használatával, a futtatókörnyezet nem fogja letölteni a modul új verzióját. Összehasonlítja a helyi rendszerkép verziószámát és a kívánt rendszerképet az üzembe helyezési jegyzékből. Ha ezek a verziók egyeznek, a futtatókörnyezet nem hajt végre műveletet. Ezért fontos, hogy minden alkalommal növelje a modul verzióját, amikor új módosításokat kíván üzembe helyezni. Növelje meg a verziószámot úgy, hogy a Module. JSON fájlban lévő **Version** **tulajdonságot** a módosítani kívánt modulhoz módosítja. Ezután hozza létre és tegye közzé a modult.
 

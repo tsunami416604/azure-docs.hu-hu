@@ -3,12 +3,12 @@ title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: b4c39c631963a358dcdc9d1eafe954a85a9499ad
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: e8bb1d3328f95b647a788c53afe3ac1455eefa13
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554859"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665338"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -20,61 +20,61 @@ A biztonsági mentések konfigurálása előtt tekintse át az [Előfeltételek]
 
 ## <a name="common-user-errors"></a>Gyakori felhasználói hibák
 
-###  <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection 
+### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-| Hibaüzenet      | Nem sikerült csatlakozni a HANA rendszerhez                             |
+| Hibaüzenet      | <span style="font-weight:normal">Nem sikerült csatlakozni a HANA rendszerhez</span>                        |
 | ------------------ | ------------------------------------------------------------ |
-| Lehetséges okok    | Lehet, hogy a SAP HANA példány nem található.<br/>Az Azure Backup számára a HANA-adatbázissal való interakcióhoz szükséges engedélyek nincsenek beállítva. |
-| Javasolt művelet | Ellenőrizze, hogy a SAP HANA-adatbázis működik-e. Ha az adatbázis működik és fut, ellenőrizze, hogy az összes szükséges engedély be van-e állítva. Ha az engedélyek bármelyike hiányzik, futtassa az [Előregisztráció parancsfájlt](https://aka.ms/scriptforpermsonhana) a hiányzó engedélyek hozzáadásához. |
+| **Lehetséges okok**    | Lehet, hogy a SAP HANA példány nem található.<br/>Az Azure Backup számára a HANA-adatbázissal való interakcióhoz szükséges engedélyek nincsenek beállítva. |
+| **Javasolt művelet** | Ellenőrizze, hogy a SAP HANA-adatbázis működik-e. Ha az adatbázis működik és fut, ellenőrizze, hogy az összes szükséges engedély be van-e állítva. Ha az engedélyek bármelyike hiányzik, futtassa az [Előregisztráció parancsfájlt](https://aka.ms/scriptforpermsonhana) a hiányzó engedélyek hozzáadásához. |
 
-###  <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid 
+### <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid
 
-| Hibaüzenet      | A megadott SAP HANA példány érvénytelen vagy nem található. |
+| Hibaüzenet      | <span style="font-weight:normal">A megadott SAP HANA példány érvénytelen vagy nem található.</span>  |
 | ------------------ | ------------------------------------------------------------ |
-| Lehetséges okok    | Egyetlen Azure-beli virtuális gépen több SAP HANA példányról nem készíthető biztonsági másolat. |
-| Javasolt művelet | Futtassa az [előregisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) arra a SAP HANA példányra, amelyről biztonsági másolatot szeretne készíteni. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |
+| **Lehetséges okok**    | Egyetlen Azure-beli virtuális gépen több SAP HANA példányról nem készíthető biztonsági másolat. |
+| **Javasolt művelet** | Futtassa az [előregisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) arra a SAP HANA példányra, amelyről biztonsági másolatot szeretne készíteni. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |
 
-###  <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation 
+### <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation
 
-| Hibaüzenet      | A megadott SAP HANA művelet nem támogatott             |
+| Hibaüzenet      | <span style="font-weight:normal">A megadott SAP HANA művelet nem támogatott</span>              |
 | ------------------ | ------------------------------------------------------------ |
-| Lehetséges okok    | A SAP HANA készült Azure Backup nem támogatja a növekményes biztonsági mentést és a SAP HANA natív ügyfeleken végrehajtott műveleteket (Studio/cockpit/DBA pilótafülke) |
-| Javasolt művelet | További [információkért tekintse](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)meg a következő témakört:. |
+| **Lehetséges okok**    | A SAP HANA készült Azure Backup nem támogatja a növekményes biztonsági mentést és a SAP HANA natív ügyfeleken végrehajtott műveleteket (Studio/cockpit/DBA pilótafülke) |
+| **Javasolt művelet** | További [információkért tekintse](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)meg a következő témakört:. |
 
-###  <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType 
+### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
 
-| Hibaüzenet      | Ez a SAP HANA-adatbázis nem támogatja a kért biztonsági mentési típust |
+| Hibaüzenet      | <span style="font-weight:normal">Ez a SAP HANA-adatbázis nem támogatja a kért biztonsági mentési típust</span>  |
 | ------------------ | ------------------------------------------------------------ |
-| Lehetséges okok    | Az Azure Backup nem támogatja a növekményes biztonsági mentést és biztonsági mentést Pillanatképek használatával |
-| Javasolt művelet | További [információkért tekintse](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)meg a következő témakört:. |
+| **Lehetséges okok**    | Az Azure Backup nem támogatja a növekményes biztonsági mentést és biztonsági mentést Pillanatképek használatával |
+| **Javasolt művelet** | További [információkért tekintse](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)meg a következő témakört:. |
 
-###  <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure 
+### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
 
-| Hibaüzenet      | A biztonsági mentési napló lánca megszakadt                                   |
+| Hibaüzenet      | <span style="font-weight:normal">A biztonsági mentési napló lánca megszakadt</span>                                    |
 | ------------------ | ------------------------------------------------------------ |
-| Lehetséges okok    | Lehetséges, hogy a napló biztonsági mentésének célhelye a backint-ről a fájlrendszerre lett frissítve, vagy a backint végrehajtható fájl módosítva lett. |
-| Javasolt művelet | A probléma megoldásához indítson el egy teljes biztonsági mentést                   |
+| **Lehetséges okok**    | Lehetséges, hogy a napló biztonsági mentésének célhelye a backint-ről a fájlrendszerre lett frissítve, vagy a backint végrehajtható fájl módosítva lett. |
+| **Javasolt művelet** | A probléma megoldásához indítson el egy teljes biztonsági mentést                   |
 
-###  <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore 
+### <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore
 
-| Hibaüzenet      | A visszaállításhoz használt forrás-és célhelyek nem kompatibilisek   |
+| Hibaüzenet      | <span style="font-weight:normal">A visszaállításhoz használt forrás-és célhelyek nem kompatibilisek</span>    |
 | ------------------ | ------------------------------------------------------------ |
-| Lehetséges okok    | A visszaállításhoz használt cél rendszer nem kompatibilis a forrással |
-| Javasolt művelet | A ma támogatott visszaállítási típusok megismeréséhez tekintse meg az [1642148](https://launchpad.support.sap.com/#/notes/1642148) -es SAP-megjegyzést. |
+| **Lehetséges okok**    | A visszaállításhoz használt cél rendszer nem kompatibilis a forrással |
+| **Javasolt művelet** | A ma támogatott visszaállítási típusok megismeréséhez tekintse meg az [1642148](https://launchpad.support.sap.com/#/notes/1642148) -es SAP-megjegyzést. |
 
-###  <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected 
+### <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected
 
-| Hibaüzenet      | SDC a MDC frissítését észlelte                                  |
+| Hibaüzenet      | <span style="font-weight:normal">SDC a MDC frissítését észlelte</span>                                   |
 | ------------------ | ------------------------------------------------------------ |
-| Lehetséges okok    | A SAP HANA példány frissítve lett a SDC-ről a MDC-re. A frissítés után a biztonsági mentések sikertelenek lesznek. |
-| Javasolt művelet | A probléma megoldásához kövesse a [verziófrissítés SAP HANA 1,0 – 2,0 szakaszban](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) felsorolt lépéseket |
+| **Lehetséges okok**    | A SAP HANA példány frissítve lett a SDC-ről a MDC-re. A frissítés után a biztonsági mentések sikertelenek lesznek. |
+| **Javasolt művelet** | A probléma megoldásához kövesse a [verziófrissítés SAP HANA 1,0 – 2,0 szakaszban](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) felsorolt lépéseket |
 
-###  <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration 
+### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
-| Hibaüzenet      | A rendszer érvénytelen backint-konfigurációt észlelt                       |
+| Hibaüzenet      | <span style="font-weight:normal">A rendszer érvénytelen backint-konfigurációt észlelt</span>                       |
 | ------------------ | ------------------------------------------------------------ |
-| Lehetséges okok    | Helytelenül vannak megadva a háttérbeli paraméterek az Azure Backup szolgáltatáshoz |
-| Javasolt művelet | Ellenőrizze, hogy a következő (backint) paraméterek be vannak-e állítva:<br/>\* [catalog_backup_using_backint: true]<br/>\* [enable_accumulated_catalog_backup: FALSE]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>Ha backint paraméterek találhatók a GAZDAGÉPen, távolítsa el őket. Ha a paraméterek nem találhatók meg a GAZDAGÉP szintjén, de az adatbázis szintjén manuálisan lettek módosítva, állítsa azokat a megfelelő értékekre a korábban leírtak szerint. Vagy futtassa a [védelem leállítása és a biztonsági mentési adatok megőrzése](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) a Azure Portal, majd válassza a **biztonsági mentés folytatása**lehetőséget. |
+| **Lehetséges okok**    | Helytelenül vannak megadva a háttérbeli paraméterek az Azure Backup szolgáltatáshoz |
+| **Javasolt művelet** | Ellenőrizze, hogy a következő (backint) paraméterek be vannak-e állítva:<br/>\* [catalog_backup_using_backint: true]<br/>\* [enable_accumulated_catalog_backup: FALSE]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>Ha backint paraméterek találhatók a GAZDAGÉPen, távolítsa el őket. Ha a paraméterek nem találhatók meg a GAZDAGÉP szintjén, de az adatbázis szintjén manuálisan lettek módosítva, állítsa azokat a megfelelő értékekre a korábban leírtak szerint. Vagy futtassa a [védelem leállítása és a biztonsági mentési adatok megőrzése](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) a Azure Portal, majd válassza a **biztonsági mentés folytatása**lehetőséget. |
 
 ## <a name="restore-checks"></a>Visszaállítási ellenőrzések
 

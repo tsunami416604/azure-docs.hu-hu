@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag az Azure IoT Edge - eszköz üzembe helyezése Custom Vision osztályozó |} A Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan, hogy az egy számítógépes látástechnológiai modellel futtatási Custom Vision és az IoT Edge használatával tárolójaként.
+title: 'Oktatóanyag: képek & Custom Vision Service-Azure IoT Edge'
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy számítógépes szemléletű modellt tárolóként Custom Vision és IoT Edge használatával.
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.date: 10/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3418c57493e19580f0d3dbd9ea979b0322d930b8
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2303b4f4b639d015e9322e167ffbd956446c5061
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457289"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665950"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Oktatóanyag: Képosztályozás végrehajtása a peremhálózaton a Custom Vision Service használatával
 
@@ -22,7 +22,7 @@ Az Azure IoT Edge hatékonyabbá teheti IoT-megoldását a felhőben található
 
 Egy IoT Edge-eszközön található Custom Vision például meg tudja határozni, hogy egy autópályán az átlagosnál nagyobb vagy kisebb-e a forgalom, vagy hogy egy parkolóház egy bizonyos sorában elérhetők-e parkolóhelyek. Ezeket a megállapításokat műveletvégzés céljából meg lehet osztani egy másik eszközzel.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -72,14 +72,14 @@ A képosztályozó létrehozása és betanítása után exportálhatja azt Docke
 
 4. Hozza létre a projektet az alábbi értékekkel:
 
-   | Mező | Érték |
+   | Mező | Value (Díj) |
    | ----- | ----- |
-   | Name (Név) | Adja meg a projekt nevét, például az **EdgeTreeClassifier** nevet. |
+   | Név | Adja meg a projekt nevét, például az **EdgeTreeClassifier** nevet. |
    | Leírás | Választható projektleírás. |
    | Erőforrás | Válasszon ki egy Custom Vision Service erőforrást tartalmazó Azure-erőforráscsoportot, vagy **hozzon létre újat** , ha még nem adott hozzá egyet. |
    | Project Types (Projekttípusok) | **Classification** (Osztályozás) |
    | Classification Types (Osztályozási típusok) | **Multiclass (single tag per image)** (Multiclass (egyetlen címke képenként)) |
-   | Tartományok | **General (compact)** (Általános (kompakt)) |
+   | Domains (Tartományok) | **General (compact)** (Általános (kompakt)) |
    | Exportálási képességek | **Alapszintű platformok (Tensorflow, CoreML, ONNX,...)** |
 
 5. Válassza a **Create project** (Projekt létrehozása) lehetőséget.
@@ -102,7 +102,7 @@ A képosztályozó létrehozásához betanítási képek egy halmazára és tesz
 
 5. Válassza az **Upload 10 files** (10 fájl feltöltése) lehetőséget. 
 
-   ![Egyéni vizuális hemlock címkével ellátott fájlok feltöltése](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
+   ![Hemlock címkézett fájlok feltöltése a Custom Visionba](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
 6. Amikor a képek feltöltése sikeresen befejeződött, válassza a **Done** (Kész) lehetőséget.
 
@@ -120,7 +120,7 @@ A képosztályozó létrehozásához betanítási képek egy halmazára és tesz
 
 1. Az osztályozó betanítását követően válassza az **Export** (Exportálás) lehetőséget az osztályozó Performance (Teljesítmény) lapján. 
 
-   ![A betanított kép osztályozó exportálása](./media/tutorial-deploy-custom-vision/export.png)
+   ![A betanított rendszerkép besorolásának exportálása](./media/tutorial-deploy-custom-vision/export.png)
 
 2. Platformként válassza a **DockerFile** lehetőséget. 
 
@@ -146,7 +146,7 @@ Egy megoldás logikus módját jelenti több modul fejlesztésének és megszerv
 
 1. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
 
-   | Mező | Érték |
+   | Mező | Value (Díj) |
    | ----- | ----- |
    | Select folder (Mappa kiválasztása) | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
    | Provide a solution name (Megoldásnév megadása) | Adjon leíró jellegű nevet a megoldásnak, például a **CustomVisionSolution** nevet, vagy fogadja el az alapértelmezett nevet. |
@@ -212,7 +212,7 @@ Ebben a szakaszban hozzáadhatja az új modult a meglévő CustomVisionSolution 
 
 1. Ugyanabban a Visual Studio Code-ablakban, a parancskatalógusban futtassa az **Azure IoT Edge: Add IoT Edge Module** (Azure IoT Edge: Hozzáadás az IoT Edge modulhoz) parancsot. A parancskatalógusban adja meg az alábbi információkat az új modul létrehozásához: 
 
-   | Kérdés | Érték | 
+   | Kérdés | Value (Díj) | 
    | ------ | ----- |
    | Select deployment template file (Üzembehelyezési sablonfájl kiválasztása) | Válassza a deployment.template.json fájlt a CustomVisionSolution mappában. |
    | Select module template (Modulsablon kiválasztása) | Válassza a **Python Module** (Python-modul) lehetőséget |
@@ -221,7 +221,7 @@ Ebben a szakaszban hozzáadhatja az új modult a meglévő CustomVisionSolution 
 
    A VS Code-ablak betölti az új modult a megoldás munkaterületén, és frissíti a deployment.template.json fájlt. Most két modulmappát kell látnia: a classifier és a cameraCapture mappákat. 
 
-2. Nyissa meg a **modules**cameraCapture /  mappa **main.py** fájlját. 
+2. Nyissa meg a **modules** / **cameraCapture** mappa **main.py** fájlját. 
 
 3. Cserélje le a teljes fájlt az alábbi kódra. A mintakód POST kéréseket küld az osztályozómodulban futó rendszerkép-feldolgozó szolgáltatásnak. Ehhez a modultárolóhoz adjon hozzá egy mintaképet, amelyet a modultároló a kérésekben fog használni. A modultároló ezután becsomagolja a választ IoT Hub-üzenetként, és elküldi azt egy kimeneti üzenetsornak.  
 

@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 11/26/2019
 ms.author: tamram
 ms.custom: include
-ms.openlocfilehash: 3076065d23d4701711c0ecb60349e77ee5c9b7c8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f846d75833b3a796e24fd23c5f841ea24a8d1876
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179334"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665906"
 ---
-Az Azure Storage támogatja a titkosítás inaktív állapotban a Microsoft által felügyelt kulcsokkal vagy felhasználó által kezelt kulcsokkal. Ügyfél által felügyelt kulcsokat hozhat létre, elforgatása, tiltsa le, és visszavonhatja a hozzáférés-vezérlés lehetővé teszik.
+Az Azure Storage minden olyan adattárolót titkosít, amely egy Storage-fiókban található. Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további vezérléséhez az ügyfél által felügyelt kulcsokat a Storage-fiók szintjén lehet megadni.
 
-Az Azure Key Vault használatával a kulcsok kezelése és naplózása a kulcshasználat. A saját kulcsok létrehozása és a key vaultban tárolja őket, vagy az Azure Key Vault API-k segítségével kulcsok létrehozásához. A storage-fiók és a key vault ugyanabban a régióban kell lennie, de különböző előfizetésekhez is lehetnek. Azure Key Vaulttal kapcsolatos további információkért lásd: [Mi az Azure Key Vault?](../articles/key-vault/key-vault-overview.md)
+Az ügyfél által felügyelt kulcsokat egy Azure Key Vault kell tárolni. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Storage-fióknak és a Key vaultnak ugyanabban a régióban kell lennie, de különböző előfizetésekben is lehetnek. Az Azure Storage titkosításával és a kulcskezelő szolgáltatással kapcsolatos további információkért lásd: [Az Azure Storage titkosítása inaktív adatokhoz](../articles/storage/common/storage-service-encryption.md). További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../articles/key-vault/key-vault-overview.md)

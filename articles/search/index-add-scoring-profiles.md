@@ -7,7 +7,7 @@ author: Brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/28/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 60442ab101423d0a91fa35a7a12a0b930417af71
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113604"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666307"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Pontozási profilok hozzáadása egy Azure Cognitive Search indexhez
 
@@ -37,7 +37,7 @@ ms.locfileid: "74113604"
  A következő példa egy "geo" nevű egyszerű profilt mutat be, amely azt mutatja be, hogy a pontozási profil milyen módon néz ki. Ez növeli a keresési kifejezést tartalmazó elemeket a **pezsgő** mezőben. Emellett az `distance` függvényt is használja az aktuális helytől számított tíz kilométeren belül. Ha valaki megkeresi a "Csárda" kifejezést, és a "Csárda" a Hotel neve részévé válik, akkor a találatok között a "Inn" helyet tartalmazó, a jelenlegi hely 10 KM-es sugarú helyén található dokumentumok nagyobbak lesznek.  
 
 
-```  
+```json
 "scoringProfiles": [
   {  
     "name":"geo",
@@ -92,7 +92,7 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
  Ez a példa egy index sémáját mutatja be két pontozási profillal (`boostGenre`, `newAndHighlyRated`). Az indextel kapcsolatos bármilyen lekérdezés, amely a profilt lekérdezési paraméterként tartalmazza, a profilt fogja használni az eredményhalmaz kiértékeléséhez.  
 
-```  
+```json
 {  
   "name": "musicstoreindex",  
   "fields": [  
@@ -234,14 +234,14 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
 |Attribútum|Leírás|  
 |---------------|-----------------|  
-|`Name`|Kötelező. Ez a pontozási profil neve. Egy mező azonos elnevezési konvencióit követi. Betűvel kell kezdődnie, nem tartalmazhat pontokat, kettőspontokat vagy @ szimbólumokat, és nem kezdődhet a "azureSearch" kifejezéssel (kis-és nagybetűk megkülönböztetése).|  
-|`Text`|A súlyok tulajdonságot tartalmazza.|  
-|`Weights`|Választható. Egy név-érték pár, amely a mező nevét és a relatív súlyozást adja meg. A relatív súlyozásnak pozitív egész számnak vagy lebegőpontos számnak kell lennie. A maximális érték Int32. MaxValue.<br /><br /> A mező nevét a megfelelő súlyozás nélkül is megadhatja. A súlyok egy mező egy másikhoz viszonyított fontosságának jelzésére szolgálnak.|  
-|`Functions`|Választható. Pontozási függvény csak szűrhető mezőkre alkalmazható.|  
-|`Type`|Pontozási függvények esetén szükséges. Meghatározza a használni kívánt függvény típusát. Az érvényes értékek közé tartozik a magnitúdó, a frissesség, a távolság és a címke. Az egyes pontozási profilokban több függvényt is felvehet. A függvény nevének kisbetűnek kell lennie.|  
-|`Boost`|Pontozási függvények esetén szükséges. A nyers pontszám szorzóként használt pozitív száma. Értéke nem lehet 1.|  
-|`Fieldname`|Pontozási függvények esetén szükséges. Pontozási függvény csak olyan mezőkre alkalmazható, amelyek az index mező-gyűjteményének részét képezik, és amelyek szűrhetők. Emellett a függvények egyes típusai további korlátozásokat is bevezetnek (a frissesség a DateTime mezőkkel, az egész számmal vagy a dupla mezőkkel, valamint a távolság a hely mezőivel). Függvény definíciójában csak egyetlen mezőt lehet megadni. Ha például egy profilban kétszer szeretné használni a magnitúdót, két definíciót kell tartalmaznia, egyet az egyes mezőkhöz.|  
-|`Interpolation`|Pontozási függvények esetén szükséges. Meghatározza azt a lejtőt, amelynek a pontszámának növelése a tartomány elejétől a tartomány végéig nő. Az érvényes értékek a következők: lineáris (alapértelmezett), állandó, másodfokú és logaritmikus. További részletek: [Interpolációk beállítása](#bkmk_interpolation) .|  
+|`name`|Kötelező. Ez a pontozási profil neve. Egy mező azonos elnevezési konvencióit követi. Betűvel kell kezdődnie, nem tartalmazhat pontokat, kettőspontokat vagy @ szimbólumokat, és nem kezdődhet a "azureSearch" kifejezéssel (kis-és nagybetűk megkülönböztetése).|  
+|`text`|A súlyok tulajdonságot tartalmazza.|  
+|`weights`|Választható. Név-érték párokat tartalmaz, amelyek mindegyike megadja a mező nevét és a relatív súlyt. A relatív súlyozásnak pozitív egész számnak vagy lebegőpontos számnak kell lennie.<br /><br /> A súlyok a kereshető mezők egy másikhoz viszonyított fontosságának jelzésére szolgálnak.|  
+|`functions`|Választható. Pontozási függvény csak szűrhető mezőkre alkalmazható.|  
+|`type`|Pontozási függvények esetén szükséges. Meghatározza a használni kívánt függvény típusát. Az érvényes értékek közé tartozik a magnitúdó, a frissesség, a távolság és a címke. Az egyes pontozási profilokban több függvényt is felvehet. A függvény nevének kisbetűnek kell lennie.|  
+|`boost`|Pontozási függvények esetén szükséges. A nyers pontszám szorzóként használt pozitív száma. Értéke nem lehet 1.|  
+|`fieldname`|Pontozási függvények esetén szükséges. Pontozási függvény csak olyan mezőkre alkalmazható, amelyek az index mező-gyűjteményének részét képezik, és amelyek szűrhetők. Emellett a függvények egyes típusai további korlátozásokat is bevezetnek (a frissesség a DateTime mezőkkel, az egész számmal vagy a dupla mezőkkel, valamint a távolság a hely mezőivel). Függvény definíciójában csak egyetlen mezőt lehet megadni. Ha például egy profilban kétszer szeretné használni a magnitúdót, két definíciót kell tartalmaznia, egyet az egyes mezőkhöz.|  
+|`interpolation`|Pontozási függvények esetén szükséges. Meghatározza azt a lejtőt, amelynek a pontszámának növelése a tartomány elejétől a tartomány végéig nő. Az érvényes értékek a következők: lineáris (alapértelmezett), állandó, másodfokú és logaritmikus. További részletek: [Interpolációk beállítása](#bkmk_interpolation) .|  
 |`magnitude`|A magnitúdó pontozási függvény egy numerikus mező értékeinek tartománya alapján változtatja meg a rangsort. A leggyakoribb felhasználási példák a következők:<br /><br /> -   **Star Ratings:** módosítsa a pontozást a "Star rating" mező értéke alapján. Ha két elem van jelentősége, akkor a magasabb minősítésű elem jelenik meg először.<br />-   **margin:** ha két dokumentumra van szükség, akkor a kiskereskedő a magasabb árrésű dokumentumokat szeretné növelni.<br />-   **kattintson a Counts (számlálások** ) elemre: olyan alkalmazások esetében, amelyek nyomon követik a termékek vagy lapok műveleteit<br />-   **letöltési számok:** a letöltéseket nyomon követő alkalmazások esetében a magnitúdó függvény lehetővé teszi a legtöbb letöltéssel rendelkező elemek növelését.|  
 |`magnitude` &#124; `boostingRangeStart`|Megadja annak a tartománynak az indítási értékét, amelynél a skálán szerepel a magnitúdó. Az értéknek egész vagy lebegőpontos számnak kell lennie. Az 1 – 4 csillagos minősítések esetében ez 1. 50%-nál nagyobb árrések esetén ez a 50.|  
 |`magnitude` &#124; `boostingRangeEnd`|Annak a tartománynak a záró értékét állítja be, amelynek a nagysága a pontszám. Az értéknek egész vagy lebegőpontos számnak kell lennie. Az 1 – 4 csillagos minősítések esetében ez 4.|  
@@ -261,10 +261,10 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
 |||  
 |-|-|  
-|`Linear`|A maximális és a minimális tartományon belüli elemek esetében az elemre alkalmazott kiemelés folyamatosan csökkenő mennyiségű lesz. A lineáris egy pontozási profil alapértelmezett interpolációja.|  
-|`Constant`|A kezdő és a záró tartományba tartozó elemek esetében állandó lökést alkalmaz a rendszer a rangsor eredményeire.|  
-|`Quadratic`|A folyamatosan csökkenő lendülettel rendelkező lineáris interpolációval összehasonlítva a másodfokú rendszer kezdetben kisebb ütemben csökken, majd a végpontot megközelítve sokkal nagyobb intervallumot eredményez. Ez az interpolációs beállítás nem engedélyezett a címkézési pontozási függvényeknél.|  
-|`Logarithmic`|A folyamatosan csökkenő lendülettel rendelkező lineáris interpolációval összehasonlítva a logaritmikus érték kezdetben nagyobb ütemben csökken, majd a végpontot megközelítő módon kevesebb időt vesz fel. Ez az interpolációs beállítás nem engedélyezett a címkézési pontozási függvényeknél.|  
+|`linear`|A maximális és a minimális tartományon belüli elemek esetében az elemre alkalmazott kiemelés folyamatosan csökkenő mennyiségű lesz. A lineáris egy pontozási profil alapértelmezett interpolációja.|  
+|`constant`|A kezdő és a záró tartományba tartozó elemek esetében állandó lökést alkalmaz a rendszer a rangsor eredményeire.|  
+|`quadratic`|A folyamatosan csökkenő lendülettel rendelkező lineáris interpolációval összehasonlítva a másodfokú rendszer kezdetben kisebb ütemben csökken, majd a végpontot megközelítve sokkal nagyobb intervallumot eredményez. Ez az interpolációs beállítás nem engedélyezett a címkézési pontozási függvényeknél.|  
+|`logarithmic`|A folyamatosan csökkenő lendülettel rendelkező lineáris interpolációval összehasonlítva a logaritmikus érték kezdetben nagyobb ütemben csökken, majd a végpontot megközelítő módon kevesebb időt vesz fel. Ez az interpolációs beállítás nem engedélyezett a címkézési pontozási függvényeknél.|  
 
  ![Állandó, lineáris, másodfokú, log10 vonalak a gráfon](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 
@@ -275,7 +275,7 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
  A következő táblázat több példát is tartalmaz.  
 
-|Duration|boostingDuration|  
+|Időtartam|boostingDuration|  
 |--------------|----------------------|  
 |1 nap|"P1D"|  
 |2 nap és 12 óra|"P2DT12H"|  
@@ -284,7 +284,7 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
  További példákat az [XML-séma: adattípusok (w3.org webhely)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)című témakörben talál.  
 
-## <a name="see-also"></a>Lásd még  
+## <a name="see-also"></a>Lásd még:  
  [Azure Cognitive Search REST](https://docs.microsoft.com/rest/api/searchservice/)   
  [Index &#40;létrehozása Azure Cognitive Search REST API&#41; ](https://docs.microsoft.com/rest/api/searchservice/create-index)   
  [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

@@ -1,26 +1,26 @@
 ---
-title: Ügyfél által felügyelt kulcsok konfigurálása az Azure Storage-titkosításhoz a PowerShellből
+title: Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault a PowerShell-Azure Storage használatával
 description: Ismerje meg, hogyan konfigurálhatja az Azure Storage-titkosításhoz az ügyfél által felügyelt kulcsokat a PowerShell használatával. Az ügyfél által felügyelt kulcsok lehetővé teszik a hozzáférés-vezérlések létrehozását, elforgatását, letiltását és visszavonását.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 10/09/2019
+ms.topic: how-to
+ms.date: 11/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 30fed5a75e368e9d87da54d4c75e6f69759813e7
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: bd723787d9cea2d3b9d81ae9db63c70a21190854
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249290"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666222"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Storage-titkosításhoz a PowerShellből
+# <a name="configure-customer-managed-keys-for-azure-storage-by-using-powershell"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Storage-hoz a PowerShell használatával
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Ez a cikk bemutatja, hogyan konfigurálhat egy Key vaultot az ügyfél által felügyelt kulcsokkal a PowerShell használatával.
+Ez a cikk bemutatja, hogyan konfigurálhat egy Azure Key Vaultt az ügyfél által felügyelt kulcsokkal a PowerShell használatával. Ha meg szeretné tudni, hogyan hozhat létre kulcstartót az Azure CLI használatával, tekintse meg a következőt [: gyors üzembe helyezés és a titkos kód beolvasása Azure Key Vault a PowerShell használatával](../../key-vault/quick-create-powershell.md).
 
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsok Azure Storage-titkosítással való használata megköveteli, hogy két tulajdonság legyen beállítva a kulcstartóban, a **Soft delete** és a **not Purge**. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve. A tulajdonságok engedélyezéséhez használja a PowerShell vagy az Azure CLI-t.
@@ -96,5 +96,5 @@ A kulcsok új verziójának létrehozásakor frissítenie kell a Storage-fiókot
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure Storage-titkosítás a REST-adatokhoz](storage-service-encryption.md) 
+- [Azure Storage-titkosítás a REST-adatokhoz](storage-service-encryption.md)
 - [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

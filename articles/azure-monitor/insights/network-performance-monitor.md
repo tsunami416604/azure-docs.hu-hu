@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: e194b7070d338e9a5c56e9f0cc913f6e8b20bb52
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: f7859dbef486d4afa825b289f3991464dacf702c
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545701"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665644"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -41,6 +41,7 @@ A NPM a világ bármely részén lévő hálózatok és alkalmazások közötti 
 * USA nyugati középső régiója
 * USA északi középső régiója
 * USA keleti régiója
+* USA 2. keleti régiója
 * Kelet-Japán
 * Délkelet-Ázsia
 * Dél-Kelet-Ausztrália

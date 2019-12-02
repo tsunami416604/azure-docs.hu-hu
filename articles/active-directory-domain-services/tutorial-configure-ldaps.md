@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 5422298bf782944f10b60e98b5f251d8088f36ed
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 56283c1e07ec55c753701e86ff8c7c00078cffa2
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172790"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664102"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -208,7 +208,7 @@ Hozzon létre egy szabályt, amely engedélyezi a bejövő biztonságos LDAP-hoz
 
 1. A Azure Portal válassza az *erőforráscsoportok* lehetőséget a bal oldali navigációs sávon.
 1. Válassza ki az erőforráscsoportot, például *myResourceGroup*, majd válassza ki a hálózati biztonsági csoportot, például a *aaads-NSG*.
-1. Megjelenik a meglévő bejövő és kimenő biztonsági szabályok listája. A hálózati biztonsági csoport ablak bal oldalán válassza a **biztonság > a bejövő biztonsági szabályok**elemet.
+1. Megjelenik a meglévő bejövő és kimenő biztonsági szabályok listája. A hálózati biztonsági csoport ablak bal oldalán válassza a **beállítások > a bejövő biztonsági szabályok**lehetőséget.
 1. Válassza a **Hozzáadás**lehetőséget, majd hozzon létre egy szabályt a *636*-es *TCP* -port engedélyezéséhez. A fokozott biztonság érdekében válassza ki a forrást *IP-címként* , majd adja meg a saját érvényes IP-címét vagy tartományát a szervezet számára.
 
     | Beállítás                           | Value (Díj)        |
@@ -243,7 +243,7 @@ A következő példában szereplő DNS-bejegyzés a külső DNS-szolgáltatóval
 
 ## <a name="test-queries-to-the-managed-domain"></a>Lekérdezések tesztelése a felügyelt tartományba
 
-Az Azure AD DS felügyelt tartományhoz való kapcsolódáshoz és az LDAP-alapú kereséshez való kötéshez használja az *Ldp. exe fájlt* is. Ez az eszköz a Távoli kiszolgálófelügyelet eszközei (RSAT) csomagban található. További információ: [install Távoli kiszolgálófelügyelet eszközei][rsat].
+Az Azure AD DS felügyelt tartományhoz való kapcsolódáshoz és az LDAP-alapú kereséshez való kötéshez használja az *Ldp. exe* eszközt. Ez az eszköz a Távoli kiszolgálófelügyelet eszközei (RSAT) csomagban található. További információ: [install Távoli kiszolgálófelügyelet eszközei][rsat].
 
 1. Nyissa meg az *Ldp. exe fájlt* , és kapcsolódjon a felügyelt tartományhoz. Válassza a **kapcsolat**, majd a **Csatlakoztatás...** lehetőséget.
 1. Adja meg az előző lépésben létrehozott felügyelt tartomány Secure LDAP DNS-tartománynevét (például *LDAPS.contoso.com*). A Secure LDAP használatához állítsa a **portot** *636*-re, majd jelölje be az **SSL**jelölőnégyzetet.

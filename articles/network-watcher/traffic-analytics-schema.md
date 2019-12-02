@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: a678039b3386c3df290327238d3bf968a803d2c1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229439"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666375"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Sémák és adatösszesítések Traffic Analytics
 
@@ -120,10 +120,10 @@ Alább láthatók a séma mezői és azok
 | NSGRules_s | \<index Value 0) >\|\<NSG_RULENAME >\|\<folyamat iránya >\|\<folyamat állapota >\|\<FlowCount ProcessedByRule > |  A folyamatot engedélyező vagy megtagadó NSG-szabály |
 | NSGRule_s | NSG_RULENAME |  A folyamatot engedélyező vagy megtagadó NSG-szabály |
 | NSGRuleType_s | * Felhasználó által definiált * alapértelmezett |   A folyamat által használt NSG-szabály típusa |
-| MACAddress_s | MAC-cím | Azon hálózati adapter MAC-címe, amelyen a folyamat rögzített |
+| MACAddress_s | MAC-címe | Azon hálózati adapter MAC-címe, amelyen a folyamat rögzített |
 | Subscription_s | Az Azure virtuális hálózat/hálózati adapter/virtuális gép előfizetése fel van töltve ebben a mezőben | Csak a FlowType = S2S, a P2S, a AzurePublic, a ExternalPublic, a MaliciousFlow és a UnknownPrivate flow típusokra vonatkozik (a flow típusai, ahol csak az egyik oldal az Azure) |
-| Subscription1_s | Előfizetés azonosítója | A virtuális hálózat/hálózati adapter/virtuális gép előfizetés-azonosítója, amelyhez a folyamathoz tartozó forrás IP-cím tartozik |
-| Subscription2_s | Előfizetés azonosítója | A virtuális hálózat/hálózati adapter/virtuális gép előfizetés-azonosítója, amelyhez a folyamat cél IP-címe tartozik |
+| Subscription1_s | Subscription ID (Előfizetés azonosítója) | A virtuális hálózat/hálózati adapter/virtuális gép előfizetés-azonosítója, amelyhez a folyamathoz tartozó forrás IP-cím tartozik |
+| Subscription2_s | Subscription ID (Előfizetés azonosítója) | A virtuális hálózat/hálózati adapter/virtuális gép előfizetés-azonosítója, amelyhez a folyamat cél IP-címe tartozik |
 | Region_s | A virtuális hálózat/hálózati adapter/virtuális gép Azure-régiója, amelyhez a folyamathoz tartozó IP-cím tartozik | Csak a FlowType = S2S, a P2S, a AzurePublic, a ExternalPublic, a MaliciousFlow és a UnknownPrivate flow típusokra vonatkozik (a flow típusai, ahol csak az egyik oldal az Azure) |
 | Region1_s | Azure-régió | A virtuális hálózat/hálózati adapter/virtuális gép Azure-régiója, amelyhez a folyamathoz tartozó forrás IP-cím tartozik |
 | Region2_s | Azure-régió | A virtuális hálózat Azure-régiója, amelyhez a folyamat cél IP-címe tartozik |
@@ -142,8 +142,8 @@ Alább láthatók a séma mezői és azok
 | LoadBalancer2_s | \<SubscriptionID >/\<ResourceGroupName >/\<LoadBalancerName > | A folyamat cél IP-címéhez társított Load Balancer |
 | LocalNetworkGateway1_s | \<SubscriptionID >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | A folyamathoz tartozó forrás IP-címhez társított helyi hálózati átjáró |
 | LocalNetworkGateway2_s | \<SubscriptionID >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | A folyamat cél IP-címéhez társított helyi hálózati átjáró |
-| ConnectionType_s | A lehetséges értékek a következők VNetPeering, átjáróban és ExpressRoute |    Kapcsolat típusa |
-| ConnectionName_s | \<SubscriptionID >/\<ResourceGroupName >/\<kapcsolatnév > | Kapcsolat neve |
+| ConnectionType_s | A lehetséges értékek a következők VNetPeering, átjáróban és ExpressRoute |    Kapcsolattípus |
+| ConnectionName_s | \<SubscriptionID >/\<ResourceGroupName >/\<kapcsolatnév > | A kapcsolatok neve. A flowtype P2S a következő formátumban lesz formázva: <gateway name>_<VPN Client IP> |
 | ConnectingVNets_s | Virtuális hálózati nevek szóközzel tagolt listája | A hub és a küllős topológia esetében itt lesznek kitöltve a hub virtuális hálózatok |
 | Country_s | Két betűs országkód (ISO 3166-1 Alpha-2) | Kitöltve a flow Type ExternalPublic. PublicIPs_s mezőben lévő összes IP-cím ugyanazt az országkódot fogja megosztani. |
 | AzureRegion_s | Azure-régió helyei | Kitöltve a flow Type AzurePublic. PublicIPs_s mezőben lévő összes IP-cím az Azure-régiót fogja megosztani |
@@ -176,5 +176,5 @@ Alább láthatók a séma mezői és azok
 1. Ismeretlen – a folyamatokban lévő IP-címek egyikét nem lehet leképezni az Azure-beli ügyfél-topológiával, valamint a helyszínen (hely).
 1. Egyes mezők neve \_s vagy \_d értékkel van hozzáfűzve. Ezek nem jelentik a forrás és a cél jelölését, hanem az adattípusokat, illetve a decimális karakterláncot.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 A gyakori kérdésekre adott válaszokért lásd: [Traffic Analytics – gyakori](traffic-analytics-faq.md) kérdések a funkciók részleteiről: [Traffic Analytics – dokumentáció](traffic-analytics.md)

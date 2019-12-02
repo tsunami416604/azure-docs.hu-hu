@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center konfigurálása a IoT-ügynökhöz | Microsoft Docs
-description: Ismerje meg, hogyan konfigurálhatja az ügynököket a IoT Azure Security Center való használatra.
+description: Megtudhatja, hogyan konfigurálhat Azure Security Center IoT biztonsági ügynökök számára a IoT biztonsági szolgáltatás Azure Security Center való használatra.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 095c8fa080d96c9dc6d40261ee5afc559e9ca06b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 6adb918bbc6d4718be8518019394582a6a843fb8
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933884"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664843"
 ---
-# <a name="tutorial-configure-security-agents"></a>Oktatóanyag: Biztonsági ügynökök konfigurálása
+# <a name="tutorial-configure-security-agents"></a>Oktatóanyag: biztonsági ügynökök konfigurálása
 
 Ez a cikk ismerteti a IoT biztonsági ügynökök Azure Security Centerét, valamint az azok módosításának és konfigurálásának részleteit. 
 
@@ -120,37 +120,37 @@ A következő táblázat a IoT biztonsági ügynökök Azure Security Centeréne
 
 Az alapértelmezett értékek a [GitHub](https\://aka.ms/iot-security-module-default)megfelelő sémájában érhetők el.
 
-| Name (Név)| State | Érvényes értékek| Alapértelmezett értékek| Leírás |
+| Név| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|highPriorityMessageFrequency|Kötelező: hamis |Érvényes értékek: Időtartam ISO 8601 formátumban |Alapértelmezett érték: PT7M |A magas prioritású üzenetek küldése előtti maximális időtartam.|
-|lowPriorityMessageFrequency |Kötelező: hamis|Érvényes értékek: Időtartam ISO 8601 formátumban |Alapértelmezett érték: PT5H |Az alacsony prioritású üzenetek küldésének maximális ideje.| 
-|snapshotFrequency |Kötelező: false|Érvényes értékek: Időtartam ISO 8601 formátumban |Alapértelmezett érték PT13H |Az Eszközállapot-Pillanatképek létrehozásának időintervalluma.| 
+|highPriorityMessageFrequency|Kötelező: hamis |Érvényes értékek: időtartam ISO 8601 formátumban |Alapértelmezett érték: PT7M |A magas prioritású üzenetek küldése előtti maximális időtartam.|
+|lowPriorityMessageFrequency |Kötelező: hamis|Érvényes értékek: időtartam ISO 8601 formátumban |Alapértelmezett érték: PT5H |Az alacsony prioritású üzenetek küldésének maximális ideje.| 
+|snapshotFrequency |Kötelező: false|Érvényes értékek: időtartam ISO 8601 formátumban |Alapértelmezett érték PT13H |Az Eszközállapot-Pillanatképek létrehozásának időintervalluma.| 
 |maxLocalCacheSizeInBytes |Kötelező: hamis |Érvényes értékek: |Alapértelmezett érték: 2560000, nagyobb, mint 8192 | Az ügynök üzenet-gyorsítótárához engedélyezett maximális tárterület (bájtban). Az üzenetek elküldése előtt az eszközön tárolt üzenetek maximális mérete engedélyezett.| 
-|maxMessageSizeInBytes |Kötelező: hamis |Érvényes értékek: 8192-nál nagyobb pozitív szám, amely kisebb, mint 262144 |Alapértelmezett érték: 204800 |Az ügynök maximálisan megengedett mérete a Felhőbeli üzenetben. Ezzel a beállítással szabályozható az egyes üzenetekben elküldött maximális adatmennyiség. |
-|eventPriority $ {EventName} |Kötelező: hamis |Érvényes értékek: Magas, alacsony, kikapcsolt |Alapértelmezett értékek: |Minden ügynök által generált esemény prioritása | 
+|maxMessageSizeInBytes |Kötelező: hamis |Érvényes értékek: A 8192-nál nagyobb pozitív szám, amely kisebb, mint 262144 |Alapértelmezett érték: 204800 |Az ügynök maximálisan megengedett mérete a Felhőbeli üzenetben. Ezzel a beállítással szabályozható az egyes üzenetekben elküldött maximális adatmennyiség. |
+|eventPriority $ {EventName} |Kötelező: hamis |Érvényes értékek: magas, alacsony, ki |Alapértelmezett értékek: |Minden ügynök által generált esemény prioritása | 
 
 ### <a name="supported-security-events"></a>Támogatott biztonsági események
 
-|Esemény neve| a propertyName | Alapértelmezett érték| Pillanatkép-esemény| Részletek állapota  |
+|Esemény neve| PropertyName | Alapértelmezett érték| Pillanatkép-esemény| Részletek állapota  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Diagnosztikai esemény|eventPriorityDiagnostic| Ki| False (Hamis)| Ügynökkel kapcsolatos diagnosztikai események. Ezt az eseményt részletes naplózásra használhatja.| 
-|Konfigurációs hiba |eventPriorityConfigurationError |Alacsony |False (Hamis) |Az ügynök nem tudta elemezni a konfigurációt. Ellenőrizze a konfigurációt a sémán.| 
-|Eldobott események statisztikája |eventPriorityDroppedEventsStatistics |Alacsony |True|Ügynökkel kapcsolatos események statisztikája. |
-|Üzenet statisztikája|eventPriorityMessageStatistics |Alacsony |True |Ügynökkel kapcsolatos üzenet statisztikája. |
-|Csatlakoztatott hardver|eventPriorityConnectedHardware |Alacsony |True |Az eszközhöz csatlakoztatott összes hardver pillanatképe.|
-|Portok figyelése|eventPriorityListeningPorts |Magas |True |Az eszközön futó összes nyitott figyelő port pillanatképe.|
-|Folyamat létrehozása |eventPriorityProcessCreate |Alacsony |False (Hamis) |Naplózza a folyamat létrehozását az eszközön.|
-|Folyamat leállítása|eventPriorityProcessTerminate |Alacsony |False (Hamis) |Naplózza a folyamat befejezését az eszközön.| 
-|Rendszerinformáció |eventPrioritySystemInformation |Alacsony |True |A rendszerinformációk pillanatképe (például: Operációs rendszer vagy CPU).| 
-|Helyi felhasználók| eventPriorityLocalUsers |Magas |True|A rendszeren belüli regisztrált helyi felhasználók pillanatképe. |
-|Bejelentkezés|  eventPriorityLogin |Magas|False (Hamis)|Naplózza a bejelentkezési eseményeket az eszközre (helyi és távoli bejelentkezések).|
-|Kapcsolatok létrehozása |eventPriorityConnectionCreate|Alacsony|False (Hamis)|Az eszközre és az eszközről létrehozott TCP-kapcsolatok naplózása. |
-|Tűzfal konfigurációja| eventPriorityFirewallConfiguration|Alacsony|True|Az eszköz tűzfal-konfigurációjának pillanatképe (tűzfalszabályok). |
-|OPERÁCIÓSRENDSZER-alapterv| eventPriorityOSBaseline| Alacsony|True|Az eszköz operációs rendszer alapkonfigurációjának vizsgálatának pillanatképe.|
+|Diagnosztikai esemény|eventPriorityDiagnostic| Ki| Hamis| Ügynökkel kapcsolatos diagnosztikai események. Ezt az eseményt részletes naplózásra használhatja.| 
+|Konfigurációs hiba |eventPriorityConfigurationError |Alacsony |Hamis |Az ügynök nem tudta elemezni a konfigurációt. Ellenőrizze a konfigurációt a sémán.| 
+|Eldobott események statisztikája |eventPriorityDroppedEventsStatistics |Alacsony |Igaz|Ügynökkel kapcsolatos események statisztikája. |
+|Üzenet statisztikája|eventPriorityMessageStatistics |Alacsony |Igaz |Ügynökkel kapcsolatos üzenet statisztikája. |
+|Csatlakoztatott hardver|eventPriorityConnectedHardware |Alacsony |Igaz |Az eszközhöz csatlakoztatott összes hardver pillanatképe.|
+|Portok figyelése|eventPriorityListeningPorts |Magas |Igaz |Az eszközön futó összes nyitott figyelő port pillanatképe.|
+|Folyamat létrehozása |eventPriorityProcessCreate |Alacsony |Hamis |Naplózza a folyamat létrehozását az eszközön.|
+|Folyamat leállítása|eventPriorityProcessTerminate |Alacsony |Hamis |Naplózza a folyamat befejezését az eszközön.| 
+|Rendszerinformáció |eventPrioritySystemInformation |Alacsony |Igaz |A rendszerinformációk pillanatképe (például operációs rendszer vagy CPU).| 
+|Helyi felhasználók| eventPriorityLocalUsers |Magas |Igaz|A rendszeren belüli regisztrált helyi felhasználók pillanatképe. |
+|Bejelentkezés|  eventPriorityLogin |Magas|Hamis|Naplózza a bejelentkezési eseményeket az eszközre (helyi és távoli bejelentkezések).|
+|Kapcsolatok létrehozása |eventPriorityConnectionCreate|Alacsony|Hamis|Az eszközre és az eszközről létrehozott TCP-kapcsolatok naplózása. |
+|Tűzfal konfigurációja| eventPriorityFirewallConfiguration|Alacsony|Igaz|Az eszköz tűzfal-konfigurációjának pillanatképe (tűzfalszabályok). |
+|OPERÁCIÓSRENDSZER-alapterv| eventPriorityOSBaseline| Alacsony|Igaz|Az eszköz operációs rendszer alapkonfigurációjának vizsgálatának pillanatképe.|
 |
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A IoT-javaslatok Azure Security Center megismerése](concept-recommendations.md)
 - [A IoT-riasztások Azure Security Center megismerése](concept-security-alerts.md)

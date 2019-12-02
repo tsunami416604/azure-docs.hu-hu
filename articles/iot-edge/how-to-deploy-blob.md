@@ -1,6 +1,6 @@
 ---
-title: Az Azure Blob Storage modul üzembe helyezése az eszközökön – Azure IoT Edge | Microsoft Docs
-description: Egy Azure Blob Storage-modul üzembe helyezése az IoT Edge-eszköz a peremhálózaton adatok tárolására.
+title: BLOB Storage üzembe helyezése modulon az eszközön – Azure IoT Edge
+description: Helyezzen üzembe egy Azure Blob Storage modult a IoT Edge eszközön, hogy az adatait a peremhálózat szélén tárolja.
 author: arduppal
 ms.author: arduppal
 ms.date: 08/07/2019
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: e5241e078cd8d36a9e43b4b55a649c1e24c85345
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: b89532038b00e28eb7c43232683349652af6bc3f
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456864"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665865"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Az Azure Blob Storage üzembe helyezése IoT Edge modulon az eszközön
 
-A modulok több módon is üzembe helyezhetők egy IoT Edge eszközön, és mindegyikük az Azure Blob Storage IoT Edge-modulokban való működéséhez. A két legegyszerűbb módszereket használja az Azure portal vagy a Visual Studio Code-sablonokat.
+A modulok több módon is üzembe helyezhetők egy IoT Edge eszközön, és mindegyikük az Azure Blob Storage IoT Edge-modulokban való működéséhez. A két legegyszerűbb módszer a Azure Portal vagy a Visual Studio Code-sablonok használata.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,16 +29,16 @@ A modulok több módon is üzembe helyezhetők egy IoT Edge eszközön, és mind
 
 A Azure Portal végigvezeti az üzembe helyezési jegyzék létrehozásán és az üzembe helyezés egy IoT Edge eszközön való továbbításának végrehajtásán.
 
-### <a name="select-your-device"></a>Válassza ki az eszközt
+### <a name="select-your-device"></a>Eszköz kiválasztása
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon az IoT hubhoz.
 1. A menüből válassza a **IoT Edge** lehetőséget.
-1. Kattintson az eszközök a listából a célként megadott eszköz Azonosítóját.
+1. Kattintson a céleszköz AZONOSÍTÓJÁRA az eszközök listájából.
 1. Válassza a **Modulok beállítása** lehetőséget.
 
-### <a name="configure-a-deployment-manifest"></a>A manifest nasazení konfigurálása
+### <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzék konfigurálása
 
-A manifest nasazení egy JSON-dokumentum, amely azt ismerteti, hogy mely modulok üzembe helyezéséhez a modulokat, és az ikermodulokkal tulajdonságaiként közti adatfolyamok. A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett. Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása**és az **üzembe helyezés áttekintése**.
+Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan zajlik az adatforgalom a modulok és a modul kívánt tulajdonságai között. A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett. Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása**és az **üzembe helyezés áttekintése**.
 
 #### <a name="add-modules"></a>Modulok hozzáadása
 
@@ -77,7 +77,7 @@ A manifest nasazení egy JSON-dokumentum, amely azt ismerteti, hogy mely modulok
 
    - Cserélje le a `<your storage account name>`t egy megjegyezhető névre. A fiókok nevének 3 – 24 karakter hosszúnak kell lennie, kisbetűkkel és számokkal. Nincsenek szóközök.
 
-   - Cserélje le a `<your storage account key>`t egy 64 bájtos Base64-kulcsra. Létrehozhat egy kulcsot olyan eszközökkel, mint a [GeneratePlus](https://generate.plus/en/base64). A blobtároló eléréséhez az egyéb modulok ezeket a hitelesítő adatokat fogja használni.
+   - Cserélje le a `<your storage account key>`t egy 64 bájtos Base64-kulcsra. Létrehozhat egy kulcsot olyan eszközökkel, mint a [GeneratePlus](https://generate.plus/en/base64). Ezeket a hitelesítő adatokat fogja használni a blob Storage más modulokból való eléréséhez.
 
    - Cserélje le a `<storage mount>`t a tároló operációs rendszerének megfelelően. Adja meg egy [kötet](https://docs.docker.com/storage/volumes/) nevét vagy a IoT Edge eszköz egyik könyvtárának abszolút elérési útját, amelyen a blob-modul adatait tárolni szeretné. A Storage-csatlakoztatás leképezi az eszközön az Ön által megadott helyet a modul egy készletének megfelelő helyére.
 
@@ -118,7 +118,7 @@ A manifest nasazení egy JSON-dokumentum, amely azt ismerteti, hogy mely modulok
 
       ```
 
-   ![set container create options, deviceAutoDeleteProperties and deviceToCloudUploadProperties properties](./media/how-to-deploy-blob/iotedge-custom-module.png)
+   ![tároló létrehozási beállításainak, deviceAutoDeleteProperties és deviceToCloudUploadProperties tulajdonságainak beállítása](./media/how-to-deploy-blob/iotedge-custom-module.png)
 
    További információ a deviceToCloudUploadProperties és a deviceAutoDeleteProperties konfigurálásáról a modul üzembe helyezése után: [a különálló modul szerkesztése](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). A kívánt tulajdonságokkal kapcsolatos további információkért lásd: a [kívánt tulajdonságok megadása vagy frissítése](module-composition.md#define-or-update-desired-properties).
 
@@ -126,13 +126,13 @@ A manifest nasazení egy JSON-dokumentum, amely azt ismerteti, hogy mely modulok
 
 1. Az útvonalak szakasz folytatásához kattintson a **tovább** gombra.
 
-#### <a name="specify-routes"></a>Útvonalak megadása
+#### <a name="specify-routes"></a>Útvonalak meghatározása
 
 Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra a felülvizsgálati szakasz folytatásához.
 
-#### <a name="review-deployment"></a>Tekintse át a központi telepítés
+#### <a name="review-deployment"></a>Központi telepítés áttekintése
 
-A tekintse át a szakasz azt mutatja be, a JSON-telepítésben manifest létrehozott az előző két szakaszokban alapján. Két modul is jelent meg, amelyeket nem adott hozzá: **$edgeAgent** és **$edgeHub**. Ez a két modul hozza létre a [IoT Edge futtatókörnyezetet](iot-edge-runtime.md) , és minden központi telepítés esetében kötelező alapértelmezett érték.
+A felülvizsgálati szakasz megjeleníti a JSON üzembe helyezési jegyzéket, amelyet az előző két szakaszban megadott beállítások alapján hoztak létre. Két modul is jelent meg, amelyeket nem adott hozzá: **$edgeAgent** és **$edgeHub**. Ez a két modul hozza létre a [IoT Edge futtatókörnyezetet](iot-edge-runtime.md) , és minden központi telepítés esetében kötelező alapértelmezett érték.
 
 Tekintse át az üzembe helyezési adatokat, majd válassza a **Küldés**lehetőséget.
 
@@ -147,7 +147,7 @@ Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd vi
 
 ## <a name="deploy-from-visual-studio-code"></a>Üzembe helyezés a Visual Studio Code-ból
 
-Az Azure IoT Edge segítségével peremhálózati megoldásokat fejleszthet a Visual Studio Code-sablonok biztosít. A következő lépésekkel hozzon létre egy új IoT Edge-megoldást egy blob Storage-modullal, és konfigurálja az üzembe helyezési jegyzéket.
+A Azure IoT Edge a Visual Studio Code-ban biztosít sablonokat, amelyek segítenek az Edge-megoldások fejlesztésében. A következő lépésekkel hozzon létre egy új IoT Edge-megoldást egy blob Storage-modullal, és konfigurálja az üzembe helyezési jegyzéket.
 
 1. Válassza a **nézet** > a **parancs-paletta**lehetőséget.
 
@@ -157,7 +157,7 @@ Az Azure IoT Edge segítségével peremhálózati megoldásokat fejleszthet a Vi
 
    Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
-   | Mező | Érték |
+   | Mező | Value (Díj) |
    | ----- | ----- |
    | Select folder (Mappa kiválasztása) | Válassza ki a helyet a fejlesztői gépen a Visual Studio Code-hoz a megoldás fájljainak létrehozásához. |
    | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
@@ -165,7 +165,7 @@ Az Azure IoT Edge segítségével peremhálózati megoldásokat fejleszthet a Vi
    | Provide a module name (Modulnév megadása) | Adjon meg egy teljes kisbetűs nevet a modulhoz, például **azureblobstorageoniotedge**.<br /><br />Fontos, hogy a IoT Edge modul Azure Blob Storage kisbetűs nevét használja. A IoT Edge a kis-és nagybetűk megkülönböztetésére szolgál, ha a modulokra hivatkozik, és a Storage SDK alapértelmezett értéke kisbetűs. |
    | Docker-rendszerkép megadása a modulhoz | Adja meg a rendszerkép URI-JÁT: **MCR.microsoft.com/Azure-Blob-Storage:Latest** |
 
-   A Visual Studio Code felveszi a megadott adatokat, létrehoz egy IoT Edge megoldást, majd betölti azt egy új ablakban. A megoldássablon hoz létre, amely tartalmazza a blob storage modul rendszerképének jegyzékfájl a központi telepítési sablont, de be kell állítania a modul a létrehozási beállítások.
+   A Visual Studio Code felveszi a megadott adatokat, létrehoz egy IoT Edge megoldást, majd betölti azt egy új ablakban. A megoldás sablonja létrehoz egy üzembe helyezési jegyzékfájlt, amely tartalmazza a blob Storage-modul rendszerképét, de konfigurálnia kell a modul létrehozási beállításait.
 
 1. Nyissa meg a *Deployment. template. JSON* fájlt az új megoldás-munkaterületen, és keresse meg a **modulok** szakaszt. Végezze el a következő konfigurációs módosításokat:
 
@@ -190,7 +190,7 @@ Az Azure IoT Edge segítségével peremhálózati megoldásokat fejleszthet a Vi
 
 1. Cserélje le a `<your storage account name>`t egy megjegyezhető névre. A fiókok nevének 3 – 24 karakter hosszúnak kell lennie, kisbetűkkel és számokkal. Nincsenek szóközök.
 
-1. Cserélje le a `<your storage account key>`t egy 64 bájtos Base64-kulcsra. Létrehozhat egy kulcsot olyan eszközökkel, mint a [GeneratePlus](https://generate.plus/en/base64). A blobtároló eléréséhez az egyéb modulok ezeket a hitelesítő adatokat fogja használni.
+1. Cserélje le a `<your storage account key>`t egy 64 bájtos Base64-kulcsra. Létrehozhat egy kulcsot olyan eszközökkel, mint a [GeneratePlus](https://generate.plus/en/base64). Ezeket a hitelesítő adatokat fogja használni a blob Storage más modulokból való eléréséhez.
 
 1. Cserélje le a `<storage mount>`t a tároló operációs rendszerének megfelelően. Adja meg egy [kötet](https://docs.docker.com/storage/volumes/) nevét vagy a IoT Edge eszköz egyik könyvtárának abszolút elérési útját, amelyen a blob-modul adatait tárolni szeretné. A Storage-csatlakoztatás leképezi az eszközön az Ön által megadott helyet a modul egy készletének megfelelő helyére.  
 
@@ -243,7 +243,7 @@ Az Azure IoT Edge segítségével peremhálózati megoldásokat fejleszthet a Vi
 
 ## <a name="deploy-multiple-module-instances"></a>Több Modulos példány üzembe helyezése
 
-Ha az Azure Blob Storage több példányát is telepíteni szeretné IoT Edge modulon, meg kell adnia egy másik tárolási útvonalat, és módosítania kell a modulhoz kötődő `HostPort` értéket. A blob storage-modulok mindig tegye elérhetővé a port 11002 a tárolóban, de deklarálhatja, hogy melyik portot a gazdagépen van kötve.
+Ha az Azure Blob Storage több példányát is telepíteni szeretné IoT Edge modulon, meg kell adnia egy másik tárolási útvonalat, és módosítania kell a modulhoz kötődő `HostPort` értéket. A blob Storage-modulok a tárolóban mindig teszik elérhetővé a 11002-es portot, de deklarálhatja, hogy melyik portot kell a gazdagéphez kötni.
 
 A `HostPort` érték módosításához szerkessze a **tároló létrehozási beállításait** (a Azure Portal) vagy a **createOptions** mezőt (a Visual Studio Code-ban a *Deployment. template. JSON* fájlban):
 
@@ -253,7 +253,7 @@ A `HostPort` érték módosításához szerkessze a **tároló létrehozási be�
 }
 ```
 
-További blob storage-modulokkal való csatlakozáskor módosítsa a végpontot, hogy a gazdagép frissített portra mutat.
+Ha további blob Storage-modulokhoz csatlakozik, módosítsa a végpontot úgy, hogy az a frissített gazda portra mutasson.
 
 ## <a name="next-steps"></a>Következő lépések
 További információ az [Azure Blob Storageról IoT Edge](how-to-store-data-blob.md)

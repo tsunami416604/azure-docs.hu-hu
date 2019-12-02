@@ -4,15 +4,15 @@ description: Ismerkedjen meg a kiszolgáló értékelésével és a Azure Migrat
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/19/2019
+ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a64e7366281f15c94d6551c1f7be27f461737634
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 04e6eddb86d34089db0243ff102d5ebd5ee77e43
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185790"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666120"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -49,7 +49,7 @@ A natív Azure-eszközökön kívül a Azure Migrate számos ISV-ajánlattal is 
 [A kölcsönzés technológiája](https://www.corenttech.com/AzureMigrate/) | Kiszolgálók értékelése és migrálása
 [Eszköz 42](https://docs.device42.com/) | Kiszolgálók értékelése
 [Tóparti](https://go.microsoft.com/fwlink/?linkid=2104908) | VDI értékelése
-[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Kiszolgálók migrálása
+[RackWare](https://www.rackwareinc.com/cloud-migration) | Kiszolgálók migrálása
 [Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Kiszolgálók értékelése
 [UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Kiszolgálók és adatbázisok értékelése
 

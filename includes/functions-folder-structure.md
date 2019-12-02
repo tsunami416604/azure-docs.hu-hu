@@ -9,37 +9,34 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: aad66a91f7de8380ac7e87f0ce8e35ed43cac4a6
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4460d19de1859a8a3c51d91d418b948b5d3532a6
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594531"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666712"
 ---
-A kód egy egyedi függvényalkalmazás a függvények a projekt gyökérmappájában, amely tartalmaz egy gazdagép konfigurációs fájlt, és a egy vagy több almappában található. Minden egyes külön funkció a kódját tartalmazza. A mappastruktúra a következő ábrázolása látható:
+Egy adott Function alkalmazás összes függvényének kódja egy olyan legfelső szintű Project mappában található, amely egy gazdagép konfigurációs fájlját és egy vagy több almappát tartalmaz. Minden almappa egy külön függvény kódját tartalmazza. A mappa szerkezete a következő ábrázolásban látható:
 
 ```
 FunctionApp
  | - host.json
- | - Myfirstfunction
+ | - MyFirstFunction
  | | - function.json
  | | - ...  
- | - mysecondfunction
+ | - MySecondFunction
  | | - function.json
  | | - ...  
  | - SharedCode
  | - bin
 ```
 
-A verzió 2.x verzióját a Functions-futtatókörnyezet, a függvényalkalmazás a függvények az azonos nyelvi modult meg kell osztani.  
+A functions futtatókörnyezet 2. x verziójában a Function alkalmazás összes funkciójának ugyanazzal a nyelvi veremmel kell rendelkeznie.  
 
-A [host.json](../articles/azure-functions/functions-host-json.md) fájl futtatókörnyezet-specifikus konfigurációkat tartalmaz, és a függvényalkalmazás gyökérmappájában található. A *bin* mappa tartalmazza a csomagok és más függvénytárfájlok, amely a függvényalkalmazáshoz szükség van. Tekintse meg a függvényalkalmazás-projekt nyelvspecifikus követelményei:
+A [Host. JSON](../articles/azure-functions/functions-host-json.md) fájl futtatókörnyezet-specifikus konfigurációkat tartalmaz, és a Function alkalmazás gyökérkönyvtárában található. A *bin* mappa csomagokat és más, a Function alkalmazás által igényelt függvénytár-fájlokat tartalmaz. Tekintse meg a Function app-projekt nyelvspecifikus követelményeit:
 
-* [C# osztálytár (.csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
-* [C# script (.csx)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
+* [C#osztály könyvtára (. csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
+* [C#parancsfájl (. CSX)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
 * [F#parancsfájl](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
 * [Java](../articles/azure-functions/functions-reference-java.md#folder-structure)
 * [JavaScript](../articles/azure-functions/functions-reference-node.md#folder-structure)
-
-
-

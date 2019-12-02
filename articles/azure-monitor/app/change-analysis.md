@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: ed297a1005f67a14db1da15aba2c47c98e83df9c
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9d55d91dbb2e62e87c34dc8ea8a23fb375eb9a53
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884987"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665357"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazás-módosítási elemzés (előzetes verzió) használata Azure Monitor
 
@@ -51,7 +51,7 @@ A Change Analysis egy alkalmazás központi telepítési és konfigurációs ál
 
 Az erőforrás-függőségek változásai a webalkalmazások hibáit is okozhatják. Ha például egy webalkalmazás meghívja a Redis cache-t, a Redis cache SKU hatással lehet a webalkalmazás teljesítményére. A függőségek változásainak észleléséhez a Change Analysis ellenőrzi a webalkalmazás DNS-rekordját. Így minden olyan alkalmazás-összetevő változását azonosítja, amely problémákat okozhat.
 Jelenleg a következő függőségek támogatottak:
-- Web Apps
+- Webalkalmazások
 - Azure Storage
 - Azure SQL
 
@@ -73,7 +73,7 @@ Válassza ki az erőforráscsoportot és az erőforrásokat a módosítások meg
 Megtekintheti az alkalmazást üzemeltető információk és a kapcsolódó függőségek erőforrásait. Ez a nézet a fejlesztők számára készült alkalmazás-központú megoldás, amellyel elháríthatja a problémákat.
 
 A jelenleg támogatott erőforrások a következők:
-- Virtuális gépek
+- Virtual Machines
 - Virtuálisgép-méretezési csoport
 - Azure hálózati erőforrások
 - Webalkalmazás és a vendégen belüli fájlok követése és környezeti változók változásai
@@ -102,7 +102,7 @@ Azure Monitor a Change Analysis az önkiszolgáló **diagnosztizálása és a pr
 
    ![Képernyőkép az "alkalmazás-összeomlások" lehetőségeiről](./media/change-analysis/enable-changeanalysis.png)
 
-1. Kapcsolja be az **elemzést** , és válassza a **Mentés**lehetőséget. Az eszköz az összes webalkalmazást megjeleníti App Services csomag alatt. A csomag szintje kapcsoló használatával bekapcsolhatja a tervben szereplő összes webalkalmazáshoz tartozó változások elemzését.
+1. Kapcsolja be az **elemzést** , és válassza a **Mentés**lehetőséget. Az eszköz az összes webalkalmazást megjeleníti App Service csomag alatt. A csomag szintje kapcsoló használatával bekapcsolhatja a tervben szereplő összes webalkalmazáshoz tartozó változások elemzését.
 
     ![Képernyőfelvétel: a Change Analysis felhasználói felületének engedélyezése](./media/change-analysis/change-analysis-on.png)
 
@@ -148,7 +148,7 @@ foreach ($webapp in $webapp_list)
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az [Azure app Services-alkalmazások](azure-web-apps.md)Application Insights engedélyezése.
 - Engedélyezze Application Insights az [Azure-beli virtuális gépek és az Azure-beli virtuálisgép-méretezési csoport IIS által üzemeltetett alkalmazásai](azure-vm-vmss-apps.md)számára.

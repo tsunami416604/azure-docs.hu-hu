@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 8a34dcd31ba15ed949fa0a50ec904da96a048a7d
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0d8bc302434ea973dd4d94156c65ee6965dd1dc1
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560061"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666247"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával
 
@@ -72,13 +72,17 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 1. Lépjen a szolgáltatás **áttekintése** lapra, és válassza a **konfigurációs kiszolgáló**lehetőséget.
 
-1. Az **alapértelmezett adattár** **szakaszban állítsa be** a "https\://GitHub.com/Azure-Samples/piggymetrics" értéket, állítsa a **címkét** a "config" értékre, majd kattintson az **alkalmaz** gombra a módosítások mentéséhez.
+1. Az **alapértelmezett adattár** szakaszban állítsa be az **URI** -t a "https\://GitHub.com/Azure-Samples/piggymetrics" értékre.
+
+1. **Címke** beállítása a "config" értékre.
+
+1. A módosítások mentéséhez kattintson az **alkalmaz** gombra.
 
     ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Service-alkalmazások készítése és üzembe helyezése
 
-1. Nyisson meg egy [Azure-cloudshellben](https://shell.azure.com) , és klónozása a minta alkalmazás-tárházat a helyi gépre.  Először hozzunk létre egy `source-code` nevű ideiglenes könyvtárat az alkalmazás klónozása előtt.
+1. Nyisson meg egy [Azure Cloud Shell](https://shell.azure.com) , és klónozása a minta alkalmazás-tárházat a helyi gépre.  Először hozzunk létre egy `source-code` nevű ideiglenes könyvtárat az alkalmazás klónozása előtt.
 
     ```azurecli
     mkdir source-code
@@ -123,7 +127,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 1. Válassza ki a `gateway` alkalmazást az **Áttekintés** lap megjelenítéséhez.
 
-1. Válassza a **tartomány kiosztása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez néhány percet is igénybe vehet.
+1. Válassza a **tartomány kiosztása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez eltarthat néhány percig.
 
     ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 

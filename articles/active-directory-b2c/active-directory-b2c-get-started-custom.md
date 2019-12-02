@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 411710280a631d341adeb55bc4b587a613ee3c4c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 66b361a7eb82610d12a10c9c190f2872c072d7ba
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643621"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664063"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Az [Egyéni házirendek](active-directory-b2c-overview-custom.md) olyan konfigur
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 1. A felső menüben a **könyvtár + előfizetés** szűrő használatával válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
+1. Az Áttekintés lapon válassza az **identitási élmény keretrendszere** elemet a **házirendek** ablaktáblán.
 
 ### <a name="create-the-signing-key"></a>Az aláíró kulcs létrehozása
 
@@ -67,7 +67,7 @@ Adja hozzá a Facebook-alkalmazás [titkos](active-directory-b2c-setup-fb-app.md
 
 ## <a name="register-identity-experience-framework-applications"></a>Identity Experience Framework-alkalmazások regisztrálása
 
-Azure AD B2C regisztrálnia kell két olyan alkalmazást, amelyet a használ a helyi fiókokkal való regisztrációra és bejelentkezésre: *IdentityExperienceFramework*, a webes API-t és a *ProxyIdentityExperienceFramework*-t egy olyan natív alkalmazás, amely delegált engedéllyel rendelkezik a IdentityExperienceFramework alkalmazás. A felhasználók regisztrálhatnak e-mail-címmel vagy felhasználónévvel és jelszóval a bérlő által regisztrált alkalmazások eléréséhez, amely létrehoz egy "helyi fiókot". Helyi fiókok csak a Azure AD B2C-bérlőben léteznek.
+Azure AD B2C megköveteli, hogy regisztráljon, és jelentkezzen be a felhasználók számára helyi fiókkal: *IdentityExperienceFramework*, webes API és *ProxyIdentityExperienceFramework*, a IdentityExperienceFramework alkalmazáshoz delegált engedéllyel rendelkező natív alkalmazás. A felhasználók regisztrálhatnak e-mail-címmel vagy felhasználónévvel és jelszóval a bérlő által regisztrált alkalmazások eléréséhez, amely létrehoz egy "helyi fiókot". Helyi fiókok csak a Azure AD B2C-bérlőben léteznek.
 
 Ezt a két alkalmazást csak egyszer kell regisztrálnia a Azure AD B2C-bérlőben.
 
@@ -93,7 +93,7 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 1. A **név**mezőbe írja be a következőt: `IdentityExperienceFramework`.
 1. A **támogatott fiókok típusai**területen **csak a szervezeti címtárban**válassza a fiókok elemet.
 1. Az **átirányítási URI**területen válassza a **web**lehetőséget, majd írja be `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, ahol a `your-tenant-name` a Azure ad B2C bérlői tartomány neve.
-1. Az **engedélyek**területen jelölje be a *rendszergazdai jóváhagyás megadása az OpenID és a offline_access engedélyek számára* jelölőnégyzetet.
+1. Az **engedélyek**területen jelölje be a *rendszergazdai jóváhagyás megadása az OpenID-hez és a offline_access engedélyekhez* jelölőnégyzetet.
 1. Kattintson a **Register** (Regisztrálás) elemre.
 1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
 
@@ -130,7 +130,7 @@ Következő lépésként tegye elérhetővé az API-t egy hatókör hozzáadás�
 1. A **támogatott fiókok típusai**területen **csak a szervezeti címtárban**válassza a fiókok elemet.
 1. Az **átirányítási URI**alatt válassza a legördülő menüből a **nyilvános ügyfél/natív (mobil & Desktop)** lehetőséget.
 1. Az **átirányítási URI**esetében adja meg a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, ahol a `your-tenant-name` a Azure ad B2C bérlő.
-1. Az **engedélyek**területen jelölje be a *rendszergazdai jóváhagyás megadása az OpenID és a offline_access engedélyek számára* jelölőnégyzetet.
+1. Az **engedélyek**területen jelölje be a *rendszergazdai jóváhagyás megadása az OpenID-hez és a offline_access engedélyekhez* jelölőnégyzetet.
 1. Kattintson a **Register** (Regisztrálás) elemre.
 1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
 
@@ -146,7 +146,7 @@ Most adja meg a *IdentityExperienceFramework* -regisztráció során korábban k
 1. A **kezelés**területen válassza az **API-engedélyek**lehetőséget.
 1. A **konfigurált engedélyek**területen válassza **az engedély hozzáadása**elemet.
 1. Válassza a **saját API** -k fület, majd válassza ki a **IdentityExperienceFramework** alkalmazást.
-1. Az **engedély**területen válassza ki a korábban megadott **user_impersonation** -hatókört.
+1. Az **engedély**területen válassza ki a korábban megadott **user_impersonation** hatókört.
 1. Válassza az **engedélyek hozzáadása**lehetőséget. Az utasítás szerint várjon néhány percet, mielőtt továbblép a következő lépésre.
 1. Válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget.
 1. Válassza ki a jelenleg bejelentkezett rendszergazdai fiókot, vagy jelentkezzen be egy olyan fiókkal a Azure AD B2C-bérlőben, amely legalább a *Cloud Application Administrator* szerepkörhöz van rendelve.
@@ -236,7 +236,7 @@ A fájlok feltöltésekor az Azure hozzáadja az előtagot `B2C_1A_` mindegyikhe
 1. Az **Egyéni házirendek**területen válassza a **B2C_1A_signup_signin**lehetőséget.
 1. Kattintson a **Futtatás most** lehetőségre, és válassza a Facebook lehetőséget a Facebook használatával való bejelentkezéshez és az egyéni szabályzat teszteléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután próbálkozzon Azure Active Directory (Azure AD) identitás-szolgáltatóként való hozzáadásával. Az első lépéseket ismertető útmutatóban használt alapfájl már tartalmazza a más személyazonossági szolgáltatók (például az Azure AD) hozzáadásához szükséges tartalmakat.
 

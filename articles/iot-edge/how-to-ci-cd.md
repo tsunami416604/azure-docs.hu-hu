@@ -1,6 +1,6 @@
 ---
-title: Folyamatos integráció és folyamatos üzembe helyezés – Azure IoT Edge |} A Microsoft Docs
-description: Folyamatos integráció és folyamatos üzembe helyezés – Azure IoT Edge segítségével az Azure DevOps, Azure-folyamatok beállítása
+title: Folyamatos integráció & folyamatos üzembe helyezéssel – Azure IoT Edge
+description: Folyamatos integráció és folyamatos üzembe helyezés beállítása – Azure IoT Edge Azure DevOps, Azure-folyamatokkal
 author: shizn
 manager: philmea
 ms.author: xshi
@@ -8,18 +8,18 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 85f77d1132af63681ee92cfd2bde82a71d8ed999
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 463de1f49ad8fd21c355395bec3a55d9d40474e6
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457246"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666358"
 ---
-# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés az Azure IoT Edge-ben
+# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge
 
 Az Azure-folyamatok beépített Azure IoT Edge feladataival könnyedén elvégezheti a DevOps a Azure IoT Edge alkalmazásaiban. Ez a cikk bemutatja, hogyan használhatja az Azure-folyamatok folyamatos integrációját és folyamatos üzembe helyezését az alkalmazások gyors és hatékony létrehozásához, teszteléséhez és üzembe helyezéséhez a Azure IoT Edge. 
 
-![Diagram – a CI és CD ágak fejlesztési és termelési célra](./media/how-to-ci-cd/cd.png)
+![Diagram – CI és CD ágak fejlesztési és termelési célokra](./media/how-to-ci-cd/cd.png)
 
 Ebből a cikkből megtudhatja, hogyan használhatja az Azure-folyamatok beépített Azure IoT Edge feladatait két folyamat létrehozásához a IoT Edge-megoldáshoz. A Azure IoT Edge feladatokban négy műveletet lehet használni.
    - **Azure IoT Edge – a modul lemezképei felépítik** a IoT Edge megoldás kódját, és felépítik a tároló lemezképeit.
@@ -67,7 +67,7 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. Konfigurálja úgy a fol
 
    2. Sablon helyett válassza az **üres feladatot** . 
 
-      ![Kezdje egy üres folyamatot](./media/how-to-ci-cd/start-with-empty.png)
+      ![Kezdés egy üres folyamattal](./media/how-to-ci-cd/start-with-empty.png)
 
 4. A folyamat létrehozása után a rendszer a folyamat-szerkesztőt veszi át. A folyamat leírásában válassza ki a megfelelő ügynököt a cél platform alapján: 
     
@@ -77,7 +77,7 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. Konfigurálja úgy a fol
 
    * Ha a modulokat a platform arm32v7 vagy a arm64 for Linux-tárolók számára szeretné felépíteni, a saját üzemeltetésű [ügynököt Linux rendszeren kell beállítania](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
     
-     ![Build ügynökkészlet konfigurálása](./media/how-to-ci-cd/configure-env.png)
+     ![Build-ügynök készletének konfigurálása](./media/how-to-ci-cd/configure-env.png)
 
 5. A folyamat előre konfigurálva van egy **Agent Job 1**nevű feladatokkal. Válassza a pluszjelet ( **+** ) három feladat hozzáadásához a feladathoz: **Azure IoT Edge** kétszer, egyszer **másolja a fájlokat** , és **tegye közzé a Build** -összetevőket. (Vigye a kurzort az egyes feladatok nevére a **Hozzáadás** gomb megjelenítéséhez.)
 
@@ -119,9 +119,9 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. Konfigurálja úgy a fol
    * Összetevő **közzétételi helye**: Azure-folyamatok.
 
 
-10. Nyissa meg az **Eseményindítók** lapot, és jelölje be a jelölőnégyzetet a **folyamatos integráció engedélyezéséhez**. Ellenőrizze, hogy az ág a kódot tartalmazó részét képezi.
+10. Nyissa meg az **Eseményindítók** lapot, és jelölje be a jelölőnégyzetet a **folyamatos integráció engedélyezéséhez**. Győződjön meg arról, hogy a kódot tartalmazó ág szerepel benne.
 
-    ![Kapcsolja be a folyamatos integráció aktiválása](./media/how-to-ci-cd/configure-trigger.png)
+    ![Folyamatos integrációs trigger bekapcsolása](./media/how-to-ci-cd/configure-trigger.png)
 
 11. Mentse az új Build-folyamatot **Mentés** gombbal.
 
@@ -134,25 +134,25 @@ Ebben a szakaszban létrehoz egy kiadási folyamatot, amely úgy van beállítva
 
 1. A **kiadások** lapon válassza az **+ új folyamat**elemet. Ha már rendelkezik kiadási folyamatokkal, kattintson az **+ új** gombra, és válassza az **+ új kiadási folyamat**lehetőséget.  
 
-    ![Adja hozzá a kibocsátási folyamat](./media/how-to-ci-cd/add-release-pipeline.png)
+    ![Kiadási folyamat hozzáadása](./media/how-to-ci-cd/add-release-pipeline.png)
 
 2. Amikor a rendszer rákérdez a sablon kiválasztására, válassza az **üres feladatokkal**lehetőséget.
 
-    ![Egy üres feladat indítása](./media/how-to-ci-cd/start-with-empty-job.png)
+    ![Kezdés üres feladatokkal](./media/how-to-ci-cd/start-with-empty-job.png)
 
 3. Az új kiadási folyamat inicializálása egyetlen fázissal, az **1. fázis**néven. Nevezze át az 1. szakaszt a fejlesztéshez **és a** tesztelési környezetként való kezeléséhez. A folyamatos üzembe helyezési folyamatok általában több szakaszból állnak **, beleértve a**fejlesztést, az **előkészítést** és a **gyártási**folyamatot. A DevOps gyakorlat alapján többet is létrehozhat. Az Átnevezés után a szakasz részletei ablak bezárásához. 
 
 4. Csatolja a kiadást a build-folyamat által közzétett Build-összetevőkhöz. Kattintson a **Hozzáadás** az összetevők területén elemre.
 
-   ![Adjon hozzá összetevőket](./media/how-to-ci-cd/add-artifacts.png)  
+   ![Összetevők hozzáadása](./media/how-to-ci-cd/add-artifacts.png)  
     
 5. Az **összetevő hozzáadása lapon**válassza a forrás típusa **Build**lehetőséget. Ezután válassza ki a projektet és a létrehozott Build-folyamatot. Ezután válassza a **Hozzáadás** lehetőséget.
 
-   ![Adja hozzá a buildösszetevőt](./media/how-to-ci-cd/add-an-artifact.png)
+   ![Build-összetevő hozzáadása](./media/how-to-ci-cd/add-an-artifact.png)
 
 6. Nyissa meg az összetevő-eseményindítókat, és válassza ki a váltást a folyamatos üzembe helyezési eseményindító engedélyezéséhez. Most új kiadás jön létre minden alkalommal, amikor új Build áll rendelkezésre.
 
-   ![A folyamatos készregyártás eseményindítója konfigurálása](./media/how-to-ci-cd/add-a-trigger.png)
+   ![Folyamatos üzembe helyezési trigger konfigurálása](./media/how-to-ci-cd/add-a-trigger.png)
 
 7. A **fejlesztői** fázis előre konfigurálva van egy feladattal és nulla tevékenységgel. A folyamat menüben válassza a **feladatok** lehetőséget, majd válassza ki a **fejlesztői** szakaszt.  Válassza ki a feladat és a feladat darabszámát az ebben a szakaszban található feladatok konfigurálásához.
 
@@ -190,24 +190,24 @@ Ebben a szakaszban létrehoz egy kiadási folyamatot, amely úgy van beállítva
     * **IoT hub neve**: válassza ki az IoT hubot. 
     * **Válasszon egy/több eszközt**: válassza ki, hogy szeretné-e a kiadási folyamatot egy vagy több eszközre telepíteni. 
       * Ha egyetlen eszközre telepít központilag, adja meg **IoT Edge eszköz azonosítóját**. 
-      * Ha több eszközre telepít üzembe helyezést, az eszköz **célját**kell megadnia. A célként megadott feltétel egy szűrő, amely a IoT Hub IoT Edge-eszközeinek felel meg. Ha azt szeretné, eszköz-címkék használata a feltételt, az IoT Hub ikereszköz a megfelelő eszközök címkék frissíteni szeretné. Frissítse a **IoT Edge központi telepítési azonosítót** és a **IoT Edge központi telepítési prioritást** a speciális beállítások között. További információ a központi telepítés több eszközhöz való létrehozásáról: [IoT Edge automatikus központi telepítések ismertetése](module-deployment-monitoring.md).
+      * Ha több eszközre telepít üzembe helyezést, az eszköz **célját**kell megadnia. A célként megadott feltétel egy szűrő, amely a IoT Hub IoT Edge-eszközeinek felel meg. Ha az eszköz címkéit feltételként szeretné használni, frissítenie kell a megfelelő eszközök címkéit IoT Hub-eszköz Twin használatával. Frissítse a **IoT Edge központi telepítési azonosítót** és a **IoT Edge központi telepítési prioritást** a speciális beállítások között. További információ a központi telepítés több eszközhöz való létrehozásáról: [IoT Edge automatikus központi telepítések ismertetése](module-deployment-monitoring.md).
     * Bontsa ki a speciális beállítások, majd a **IoT Edge központi telepítési azonosító**elemet, helyezze a változót `$(System.TeamProject)-$(Release.EnvironmentName)`. Ez a projekt és a kiadás nevét a IoT Edge telepítési azonosítójával képezi le.
 
 11. A **Mentés** gombra kattintva mentheti a módosításokat az új kiadási folyamatba. Térjen vissza a folyamat nézethez a menüből válassza a **folyamat** lehetőséget. 
     
-## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>IoT Edge CI/CD kérdezze meg a build és a folyamatok felszabadítása
+## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>IoT Edge CI/CD ellenőrzése a létrehozási és kiadási folyamatokkal
 
-A fordítási feladatot indításához küldje le a véglegesítés forráskódraktárban vagy is aktiválása manuálisan. Ebben a szakaszban manuálisan indítja el a CI/CD folyamatot a működésének ellenőrzéséhez. Ezután ellenőrizze, hogy az üzembe helyezés sikeres volt-e.
+A létrehozási feladatok elindításához leküldheti a véglegesítést a forráskód-adattárba, vagy manuálisan is aktiválhatja azt. Ebben a szakaszban manuálisan indítja el a CI/CD folyamatot a működésének ellenőrzéséhez. Ezután ellenőrizze, hogy az üzembe helyezés sikeres volt-e.
 
 1. Navigáljon a cikk elején létrehozott összeállítási folyamathoz. 
 
 2. A létrehozási folyamat során kiválthat egy felépítési feladatot úgy, hogy kijelöli a **várólista** gombot a következő képernyőképen látható módon.
 
-    ![Manuális eseményindító](./media/how-to-ci-cd/manual-trigger.png)
+    ![Manuális trigger](./media/how-to-ci-cd/manual-trigger.png)
 
 3. A folyamat előrehaladásának megtekintéséhez válassza ki a Build feladatot. Ha az összeállítási folyamat sikeresen befejeződött, elindítja a kiadást a **fejlesztői** fázisba. 
 
-    ![Buildnaplók](./media/how-to-ci-cd/build-logs.png)
+    ![Naplók létrehozása](./media/how-to-ci-cd/build-logs.png)
 
 4. A sikeres **fejlesztői** kiadás IoT Edge központi telepítést hoz létre IoT Edge eszközök megcélzásához.
 
@@ -219,7 +219,7 @@ A fordítási feladatot indításához küldje le a véglegesítés forráskódr
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * IoT Edge DevOps – ajánlott eljárásokat ismertető példa az [Azure DevOps-projektben IoT Edge](how-to-devops-project.md)
 * A IoT Edge központi telepítésének megismerése az [egyes eszközök IoT Edge központi telepítések megismeréséhez](module-deployment-monitoring.md)
 * Végigvezeti a központi telepítések létrehozásához, frissítéséhez vagy törléséhez szükséges lépéseket a [IoT Edge modulok nagy léptékű üzembe helyezéséhez és figyeléséhez](how-to-deploy-monitor.md).

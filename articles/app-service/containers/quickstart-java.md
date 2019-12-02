@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 3b011d3d7dc881d44fdcafb29efacf9548866d7a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3f50c94dafd01c6493f4765270c53c7903360c44
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747730"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665168"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -53,7 +53,11 @@ A Azure App Service üzembe helyezési folyamata a fiók hitelesítő adatait ha
 az login
 ```
 
-Ezután konfigurálhatja a központi telepítést, futtathatja a Maven parancsot `mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config` a parancssorban, és az alapértelmezett konfigurációkat használhatja az **ENTER** billentyű lenyomásával egészen addig, amíg meg nem jelenik a **Confirm (i/N)** üzenet, majd az **"y"** gombra, és a konfiguráció elkészült.
+Ezután konfigurálhatja a központi telepítést, futtathatja a Maven parancsot a parancssorban, és az alapértelmezett konfigurációkat az **ENTER** billentyű lenyomásával állíthatja be, amíg meg nem kapja a **Confirm (i/N)** kérést, majd nyomja le az **"y"** gombot, és a konfiguráció elkészült. 
+```cmd
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
+```
+Egy mintavételi folyamat A következőképpen néz ki:
 
 ```cmd
 ~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
@@ -95,7 +99,7 @@ Confirm (Y/N)? : Y
 
 A beépülő modul konfigurációjának megtekintéséhez navigáljon `pom.xml` újra, ha szükséges, módosíthatja a App Service egyéb konfigurációit is, ha szükséges, néhány gyakori elem az alábbi listában látható:
 
- Tulajdonság | Kötelező | Leírás | Verzió
+ Tulajdonság | Szükséges | Leírás | Verzió
 ---|---|---|---
 `<schemaVersion>` | hamis | Határozza meg a konfigurációs séma verzióját. A támogatott értékek a következők: `v1`, `v2`. | 1.5.2
 `<resourceGroup>` | igaz | Azure-erőforráscsoport a webalkalmazáshoz. | 0.1.0 +
@@ -104,6 +108,9 @@ A beépülő modul konfigurációjának megtekintéséhez navigáljon `pom.xml` 
 [`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | hamis | A webalkalmazás díjszabási szintje. Az alapértelmezett érték a **P1V2**.| 0.1.0 +
 [`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | igaz | A futásidejű környezet konfigurációja a részleteket [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting)tekintheti meg. | 0.1.0 +
 [`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | igaz | A központi telepítés konfigurálásával [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting)láthatja a részleteket. | 0.1.0 +
+
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)
 
 ## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
 
@@ -119,9 +126,12 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 
 **Gratulálunk!** Üzembe helyezte az első Java-webalkalmazását a Linuxon futó App Service-ben.
 
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha várhatóan nem lesz szüksége ezekre az erőforrásokra a jövőben, törölje az erőforráscsoportot a következő parancs Cloud Shellben történő futtatásával:
+Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha nem várható, hogy a jövőben szüksége lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a portálról, vagy futtassa a következő parancsot a Cloud Shellban:
 
 ```azurecli-interactive
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
@@ -129,7 +139,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 
 A parancs futtatása egy percig is eltarthat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Java Enterprise alkalmazás a PostgreSQL-sel](tutorial-java-enterprise-postgresql-app.md)
@@ -142,3 +152,6 @@ A parancs futtatása egy percig is eltarthat.
 
 > [!div class="nextstepaction"]
 > [Egyéb Azure Java-fejlesztői erőforrásokhoz](/java/azure/)
+
+> [!div class="nextstepaction"]
+> [További információ az Azure-hoz készült Maven beépülő modulokról](https://github.com/microsoft/azure-maven-plugins)

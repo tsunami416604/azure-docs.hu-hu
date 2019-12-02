@@ -1,6 +1,6 @@
 ---
-title: Az ügynök helyi konfigurációs fájljához tartozó C# Azure Security Center ismertetése | Microsoft Docs
-description: Tudnivalók a Azure Security Center az ügynök helyi konfigurációs fájljához C#.
+title: A C# IoT biztonsági ügynök helyi konfigurációs fájljának Azure Security Center ismertetése | Microsoft Docs
+description: További információ a IoT biztonsági szolgáltatás, a biztonsági ügynök helyi konfigurációs fájljának Azure Security Center C#.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: cc7b9f0b6e537ca3bdcbb82a357b2f2b9451fab0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600630"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664193"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>A helyi konfigurációs fájl (C# Agent) ismertetése
 
@@ -39,7 +39,7 @@ A konfigurációs fájlok tartalmazzák az alapértelmezett konfigurációt. A h
 
 ## <a name="configuration-file-location"></a>Konfigurációs fájl helye
 Linux esetén:
-- Az operációs rendszer konfigurációs fájljai a ben `/var/ASCIoTAgent`találhatók.
+- Az operációs rendszer konfigurációs fájljai `/var/ASCIoTAgent`találhatók.
 
 Windows esetén:
 - Az operációs rendszer konfigurációs fájljai a biztonsági ügynök könyvtárán belül találhatók. 
@@ -54,10 +54,10 @@ Windows esetén:
 | producerInterval | TimeSpan | Esemény-előállító munkavégző időköze. |
 | consumerInterval | TimeSpan | Esemény fogyasztói munkavégző időköze. |
 | highPriorityQueueSizePercentage | 0 < szám < 1 | A magas prioritású üzenetekhez dedikált teljes gyorsítótár része. |
-| logLevel | "Off", "végzetes", "Error", "Warning", "Information", "debug"  | A naplózási üzenetek a súlyossági szinttel megegyező, a hibakeresési konzolon (syslog in Linux) vannak naplózva. |
+| Naplózási szint | "Off", "végzetes", "Error", "Warning", "Information", "debug"  | A naplózási üzenetek a súlyossági szinttel megegyező, a hibakeresési konzolon (syslog in Linux) vannak naplózva. |
 | fileLogLevel |  "Off", "végzetes", "Error", "Warning", "Information", "debug"| A súlyosságot meghaladó naplófájlok naplózása a következő fájlba történik: (syslog in Linux). |
 | diagnosticVerbosityLevel | "None", "some", "all", | A diagnosztikai események részletességi szintje. Nincs – a rendszer a diagnosztikai eseményeket nem továbbítja, csak a nagy fontossággal bíró diagnosztikai eseményeket, a rendszer az összes naplót diagnosztikai eseményként is elküldje. |
-| logFilePath | A fájl elérési útja | Ha a fileLogLevel > ki, a rendszer a naplókat erre a fájlba írja. |
+| logFilePath | Fájl elérési útja | Ha a fileLogLevel > ki, a rendszer a naplókat erre a fájlba írja. |
 | defaultEventPriority | "Magas", "alacsony", "off" | Alapértelmezett esemény prioritása. |
 
 ### <a name="generalconfig-example"></a>Általános. config példa
@@ -82,14 +82,14 @@ Windows esetén:
 
 | Konfiguráció neve | Lehetséges értékek | Részletek | 
 |:-----------|:---------------|:--------|
-| moduleName | Karakterlánc | A biztonsági modul identitásának neve. Ennek a névnek meg kell egyeznie a modul identitásának nevével az eszközön. |
-| deviceId | Karakterlánc | Az eszköz azonosítója (az Azure IoT Hubban regisztrálva). || schedulerInterval | TimeSpan karakterlánc | Belső ütemező időköze |
-| gatewayHostname | Karakterlánc | Az Azure IOT hub állomásneve. Általában < My-hub >. Azure-devices.net |
+| moduleName | sztring | A biztonsági modul identitásának neve. Ennek a névnek meg kell egyeznie a modul identitásának nevével az eszközön. |
+| deviceId | sztring | Az eszköz azonosítója (az Azure IoT Hubban regisztrálva). || schedulerInterval | TimeSpan karakterlánc | Belső ütemező időköze |
+| gatewayHostname | sztring | Az Azure IOT hub állomásneve. Általában < My-hub >. Azure-devices.net |
 | filePath | karakterlánc – fájl elérési útja | A hitelesítési titkot tartalmazó fájl elérési útja.|
 | type | "SymmetricKey", "SelfSignedCertificate" | A hitelesítő felhasználói titok. Válassza a *SymmetricKey* lehetőséget, ha a felhasználói titok szimmetrikus kulcs, válassza az *önaláírt tanúsítvány* lehetőséget, ha a titok egy önaláírt tanúsítvány. |
-| identity | "DPS", "modul", "eszköz" | Hitelesítési identitás – DPS if hitelesítés a DPS-n keresztül történik, modul, ha a hitelesítés modul hitelesítő adataival történik, vagy ha hitelesítés történik az eszköz hitelesítő adataival.
+| identitáskezelés | "DPS", "modul", "eszköz" | Hitelesítési identitás – DPS if hitelesítés a DPS-n keresztül történik, modul, ha a hitelesítés modul hitelesítő adataival történik, vagy ha hitelesítés történik az eszköz hitelesítő adataival.
 | certificateLocationKind |  "LocalFile", "Store" | LocalFile, ha a tanúsítvány egy fájlban van tárolva, tárolja, hogy a tanúsítvány tanúsítványtárolóban található-e. |
-| idScope | Karakterlánc | A DPS azonosító hatóköre |
+| idScope | sztring | A DPS azonosító hatóköre |
 | regisztrációban | sztring  | DPS-eszköz regisztrációs azonosítója. |
 |
 
@@ -123,8 +123,8 @@ Windows esetén:
 </ExternalInterface>
 ```
 
-## <a name="next-steps"></a>További lépések
-- A IoT-szolgáltatás áttekintésének [](overview.md) Azure Security Center olvasása
+## <a name="next-steps"></a>Következő lépések
+- A IoT-szolgáltatás [áttekintésének](overview.md) Azure Security Center olvasása
 - További információ a IoT- [architektúra](architecture.md) Azure Security Center
 - A IoT [szolgáltatás](quickstart-onboard-iot-hub.md) Azure Security Centerának engedélyezése
 - A IoT szolgáltatással kapcsolatos [Gyakori kérdések](resources-frequently-asked-questions.md) Azure Security Center beolvasása

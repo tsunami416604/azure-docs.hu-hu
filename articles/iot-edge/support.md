@@ -1,6 +1,6 @@
 ---
-title: Támogatott operációs rendszerek, tároló motorok – Azure IoT Edge |} A Microsoft Docs
-description: Ismerje meg, melyik operációs rendszerek futtathatók az Azure IoT Edge-démon és a futtatókörnyezeti és az éles eszközök támogatott tároló-motorok
+title: Támogatott operációs rendszerek, Container Engine-Azure IoT Edge
+description: Megtudhatja, hogy mely operációs rendszerek futtathatják a Azure IoT Edge démont és a futtatókörnyezetet, valamint a támogatott tárolókat az üzemi eszközökhöz
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,20 +8,20 @@ ms.date: 08/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0fe4a13a33b6d93266d68e632864e0b61a7eaf29
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0d6b5e826720cf51d38b3bc3c2b87d274a2ea816
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452523"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665882"
 ---
-# <a name="azure-iot-edge-supported-systems"></a>Az Azure IoT Edge által támogatott rendszerek
+# <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge támogatott rendszerek
 
 Ez a cikk részletesen ismerteti, hogy mely rendszerek és összetevők támogatottak a IoT Edge, akár hivatalosan, akár előzetes verzióban. 
 
 Ha a Azure IoT Edge szolgáltatás használata során problémákba ütközik, többféleképpen is kérhet támogatást. Próbálja ki a következő csatornák egyikét a támogatáshoz:
 
-**Hibajelentések** – a Azure IoT Edge termékbe bekerülő fejlesztés többsége a IoT Edge nyílt forráskódú projektben történik. A hibákat a projekt [problémák lapján](https://github.com/azure/iotedge/issues) lehet jelenteni. Javítások gyorsan eljutnak a projektből a termékfrissítéseket.
+**Hibajelentések** – a Azure IoT Edge termékbe bekerülő fejlesztés többsége a IoT Edge nyílt forráskódú projektben történik. A hibákat a projekt [problémák lapján](https://github.com/azure/iotedge/issues) lehet jelenteni. Gyorsan megtörténik a javítások a projektből a termékek frissítéseibe való beüzemelése.
 
 A **Microsoft ügyfélszolgálati csapata** – a [támogatási csomaggal](https://azure.microsoft.com/support/plans/) rendelkező felhasználók a támogatási jegyet közvetlenül a [Azure Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac)hozhatják létre a Microsoft ügyfélszolgálati csapatának.
 
@@ -29,7 +29,7 @@ A **Microsoft ügyfélszolgálati csapata** – a [támogatási csomaggal](https
 
 ## <a name="container-engines"></a>Tároló-motorok
 
-Azure IoT Edge-modulok tárolóként vannak megvalósítva, ezért IoT Edge a tároló motorjának kell elindítania azokat. A Microsoft biztosít egy tároló motor moby-motor, ez a követelmény teljesítéséhez. Ez a tároló motor a Moby nyílt forráskódú projekten alapul. A docker CE és a Docker EE más népszerű motorokkal. Emellett a nyílt forráskódú Moby-projekten alapulnak, és kompatibilisek Azure IoT Edgeokkal. A Microsoft a tároló-motorokat használó rendszerek esetében nyújt legjobb támogatást. a Microsoft azonban nem tudja kiszolgálni a javításokat a bennük felmerülő problémák miatt. Ebből kifolyólag a Microsoft azt javasolja, az éles rendszereket moby-motor használatával.
+Azure IoT Edge-modulok tárolóként vannak megvalósítva, ezért IoT Edge a tároló motorjának kell elindítania azokat. A Microsoft tároló-motort biztosít a Moby-Engine számára a követelmény teljesítéséhez. Ez a tároló motor a Moby nyílt forráskódú projekten alapul. A Docker CE és a Docker EE más népszerű tároló-motor. Emellett a nyílt forráskódú Moby-projekten alapulnak, és kompatibilisek Azure IoT Edgeokkal. A Microsoft a tároló-motorokat használó rendszerek esetében nyújt legjobb támogatást. a Microsoft azonban nem tudja kiszolgálni a javításokat a bennük felmerülő problémák miatt. Ezért a Microsoft a Moby Engine használatát javasolja az éles rendszereken.
 
 <br>
 <center>
@@ -38,13 +38,13 @@ Azure IoT Edge-modulok tárolóként vannak megvalósítva, ezért IoT Edge a t�
 </center>
 
 ## <a name="operating-systems"></a>Operációs rendszerek
-Azure IoT Edge a tárolók futtatására képes legtöbb operációs rendszeren fut; Ezek a rendszerek azonban nem egyformán támogatottak. Operációs rendszerek számíthatnak támogatás szintjét képviselő szinten vannak csoportosítva.
+Azure IoT Edge a tárolók futtatására képes legtöbb operációs rendszeren fut; Ezek a rendszerek azonban nem egyformán támogatottak. Az operációs rendszerek olyan rétegekbe vannak csoportosítva, amelyek a támogatási felhasználók által elvárt szintet jelölik.
 * Az 1. szintű rendszerek támogatottak. Az 1. szintű rendszerek esetében a Microsoft:
     * az operációs rendszer automatikus tesztek
-    * biztosít a számukra a telepítési csomagok
+    * telepítési csomagokat biztosít számukra
 * A 2. szintű rendszerek kompatibilisek Azure IoT Edgeekkel, és viszonylag könnyen használhatók. 2\. szintű rendszerek esetén:
     * A Microsoft ad hoc tesztelést végez a platformokon, vagy tudja, hogy egy partner sikeresen futtatott Azure IoT Edge a platformon
-    * Más platformok telepítőcsomagok ezeken a platformokon is működhet.
+    * A más platformokhoz tartozó telepítési csomagok működhetnek ezeken a platformokon
     
 A gazda operációs rendszer családjának mindig egyeznie kell a modul tárolójában használt vendég operációs rendszer családjának. Ez azt jelenti, hogy a Linux-tárolókat csak Linux-és Windows-tárolókban használhatja Windows rendszeren. A Windows használata esetén csak az elkülönített tárolók feldolgozása támogatott, a Hyper-V elkülönített tárolók nem.  
 
@@ -96,7 +96,7 @@ Az alábbi táblázatban felsorolt rendszerek kompatibilisek Azure IoT Edge, de 
 sudo apt-get install libssl1.0.2
 ```
 
-## <a name="virtual-machines"></a>Virtuális gépek
+## <a name="virtual-machines"></a>Virtual Machines
 A Azure IoT Edge virtuális gépeken is futtathatók. A virtuális gépek IoT Edge eszközként való használata gyakori, ha az ügyfelek a meglévő infrastruktúrát szeretnék kibővíteni a peremhálózati intelligenciával. A gazda VM operációs rendszer családjának meg kell egyeznie a modul tárolójában használt vendég operációs rendszer családjának. Ez a követelmény ugyanaz, mint amikor a Azure IoT Edge közvetlenül egy eszközön fut. Azure IoT Edge a mögöttes virtualizációs technológia, és olyan platformokon működik, mint például a Hyper-V és a vSphere.
 
 <br>

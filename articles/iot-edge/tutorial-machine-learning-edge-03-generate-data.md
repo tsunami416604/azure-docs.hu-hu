@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: szimulált eszköz adatMachine Learningának előállítása Azure IoT Edge'
+title: 'Oktatóanyag: az eszközbeállítások szimulálása – Azure IoT Edge & Machine Learning'
 description: 'Oktatóanyag: hozzon létre olyan virtuális eszközöket, amelyek szimulált telemetria hoznak létre, amelyek később a Machine learning-modellek betanítására használhatók.'
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 51d93e5b83d203f3fa99b69cc5f2877bbfdb6fb1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9b3b36cf5a0f426f2081179d08cf2f093a233fff
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112869"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665933"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Oktatóanyag: szimulált eszköz-adatértékek előállítása
 

@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 250cdedaa5155f1487cb842be492acd82c0f26b3
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090816"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666426"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Gyakori kérdések az Azure Storage áttelepítésével kapcsolatban
 
 Ez a cikk az Azure Storage áttelepítésével kapcsolatos gyakori kérdésekre ad választ. 
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 
 **Hogyan létrehozhat egy parancsfájlt, amely egy tárolóból egy másikba másolja a fájlokat?**
 
@@ -47,7 +47,7 @@ Nincs lehetőség a teljes Storage-fiók biztonsági mentésére közvetlenül. 
 
 1.  Telepítse a [AzCopy](storage-use-azcopy.md) parancssori eszközt. Az eszköz segítségével áthelyezheti a VHD-fájlt a Storage-fiókok között.
 
-2.  Miután telepítette a AzCopy a Windows rendszerre a telepítővel, nyisson meg egy parancssori ablakot, és keresse meg a AzCopy telepítési mappáját a számítógépen. Alapértelmezés szerint az AzCopy telepítve van a **% ProgramFiles (x86) %\Microsoft SDKs\Azure\AzCopy** vagy **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
+2.  Miután telepítette a AzCopy a Windows rendszerre a telepítővel, nyisson meg egy parancssori ablakot, és keresse meg a AzCopy telepítési mappáját a számítógépen. Alapértelmezés szerint a AzCopy a következőre van telepítve: **% ProgramFiles (x86)% \ Microsoft SDKs\Azure\AzCopy** vagy **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
 
 3.  Futtassa a következő parancsot a tároló áthelyezéséhez. A szöveget a tényleges értékekkel kell helyettesítenie.   
      
@@ -55,10 +55,10 @@ Nincs lehetőség a teljes Storage-fiók biztonsági mentésére közvetlenül. 
             /Dest:https://destaccount.blob.core.windows.net/mycontainer2
             /SourceKey:key1 /DestKey:key2 /S
 
-    - `/Source`: Adja meg a forrásként szolgáló Storage-fiók URI-JÁT (a tárolóig).  
-    - `/Dest`: Adja meg a célként megadott Storage-fiók URI-JÁT (a tárolóig).  
-    - `/SourceKey`: Adja meg a forrásként szolgáló Storage-fiók elsődleges kulcsát. Ezt a kulcsot a Azure Portal a Storage-fiók kiválasztásával másolhatja.  
-    - `/DestKey`: Adja meg a cél Storage-fiók elsődleges kulcsát. A kulcsot a portálról másolhatja, ha kiválasztja a Storage-fiókot.
+    - `/Source`: adja meg a forrásként szolgáló Storage-fiók URI-JÁT (a tárolóig).  
+    - `/Dest`: adja meg a célként megadott Storage-fiók URI-JÁT (a tárolóig).  
+    - `/SourceKey`: adja meg a forrásként szolgáló Storage-fiók elsődleges kulcsát. Ezt a kulcsot a Azure Portal a Storage-fiók kiválasztásával másolhatja.  
+    - `/DestKey`: adja meg a cél Storage-fiók elsődleges kulcsát. A kulcsot a portálról másolhatja, ha kiválasztja a Storage-fiókot.
 
 A parancs futtatása után a rendszer áthelyezi a tároló fájljait a célként megadott Storage-fiókba.
 
@@ -167,7 +167,7 @@ Az AzCopy használatával töltheti le az adatfájlokat. További információk�
 
 **Hogyan módosítja a másodlagos helyet a Storage-fiókhoz tartozó Európa régióba?**
 
-A Storage-fiók létrehozásakor ki kell választania a fiók elsődleges régióját. A másodlagos régió kiválasztása az elsődleges régión alapul, és nem módosítható. További információkért lásd [: Geo-redundáns tárolás (GRS): Régiók közötti replikáció az Azure Storage](storage-redundancy.md)-ban.
+A Storage-fiók létrehozásakor ki kell választania a fiók elsődleges régióját. A másodlagos régió kiválasztása az elsődleges régión alapul, és nem módosítható. További információ [: Geo-redundáns tárolás (GRS): régiók közötti replikáció az Azure Storage-](storage-redundancy.md)hoz.
 
 **Hol kaphatok további információt az Azure Storage Service Encryption (SSE) szolgáltatásról?**  
   
@@ -237,7 +237,7 @@ Ha virtuális gépekkel rendelkezik, további lépéseket kell végrehajtania a 
 
 **Hogyan egy klasszikus Storage-fiókból egy Azure Resource Manager Storage-fiókba?**
 
-Használhatja a **Move-AzStorageAccount** parancsmagot. Ez a parancsmag több lépésből áll (érvényesítés, előkészítés, véglegesítés). A mozgatás előtt ellenőrizheti az áthelyezést.
+Használhatja a **Move-AzureStorageAccount** parancsmagot. Ez a parancsmag több lépésből áll (érvényesítés, előkészítés, véglegesítés). A mozgatás előtt ellenőrizheti az áthelyezést.
 
 Ha virtuális gépekkel rendelkezik, további lépéseket kell végrehajtania a Storage-fiókra vonatkozó adatáttelepítés előtt. További információ: [IaaS-erőforrások migrálása klasszikusról Azure Resource Managerra Azure PowerShell használatával](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md).
 
@@ -267,9 +267,9 @@ Más személyek számára a tárolási erőforrásokhoz való hozzáférés bizt
 
 -   Ha a Microsoft Azure Storage parancssorból fér hozzá a AzCopy-hoz, írja be a következőt: **AzCopy**. A parancssor a AzCopy együtt települ.
 
--   Ha telepítette a 32 bites verziót, a következő helyen található: **%\\ProgramFiles (x86)% Microsoft SDK\\-k\\Azure AzCopy**.
+-   Ha telepítette a 32 bites verziót, a következő helyen található: **% ProgramFiles (x86)%\\Microsoft SDK-k\\Azure\\AzCopy**.
 
--   Ha telepítette a 64 bites verziót, a következő helyen található: **% ProgramFiles%\\Microsoft\\SDK-k\\Azure AzCopy**.
+-   Ha telepítette a 64 bites verziót, a következő helyen található: **% ProgramFiles%\\Microsoft SDK-k\\Azure\\AzCopy**.
 
 **A replikált Storage-fiókhoz (például a zóna-redundáns tároláshoz, a Geo-redundáns tároláshoz vagy az olvasási hozzáférésű geo-redundáns tároláshoz), hogyan férhetnek hozzá a másodlagos régióban tárolt adatszolgáltatásokhoz?**
 
@@ -277,13 +277,13 @@ Más személyek számára a tárolási erőforrásokhoz való hozzáférés bizt
 
 -   Ha olvasási hozzáférésű geo-redundáns tárolót használ, bármikor elérheti a másodlagos régió adatait. Használja az alábbi módszerek egyikét:  
       
-    - **AzCopy**: Fűzze hozzá a másodlagos végpontot az URL-címben található Storage **-** fiók nevéhez. Példa:  
+    - **AzCopy**: Hozzáfűzés **– másodlagos** a Storage-fiók neve az URL-címben a másodlagos végpont eléréséhez. Példa:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **Sas-jogkivonat**: A végpontról származó adatok eléréséhez használjon SAS-tokent. További információ: [közös hozzáférésű aláírások használata](storage-sas-overview.md).
+    - **Sas-jogkivonat**: a végpontról származó adatok eléréséhez használjon sas-tokent. További információ: [közös hozzáférésű aláírások használata](storage-sas-overview.md).
 
-**Hogyan használhat egy HTTPS-alapú egyéni tartományt a saját Storage-fiókommal? Például Hogyan tehetem meg a "https:\//mystorageaccountname.blob.Core.Windows.net/images/image.gif" kifejezést "https:\//www.contoso.com/images/image.gif" néven?**
+**Hogyan használhat egy HTTPS-alapú egyéni tartományt a saját Storage-fiókommal? Például Hogyan tehetem a "https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" kifejezést "https:\//www.contoso.com/images/image.gif" néven?**
 
 Az SSL jelenleg nem támogatott az egyéni tartományokkal rendelkező Storage-fiókok esetében.
 A nem HTTPS-alapú egyéni tartományokat azonban használhatja. További információ: [Egyéni tartománynév beállítása a blob Storage-végponthoz](../blobs/storage-custom-domain-name.md).
@@ -298,6 +298,6 @@ Ha azt szeretné, hogy csak Storage Explorer vagy hasonló alkalmazás használa
 
  Ezt a [blob áttelepítési parancsfájl](../scripts/storage-common-transfer-between-storage-accounts.md)használatával teheti meg.
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
+## <a name="need-help-contact-support"></a>Segítség Vegye fel a kapcsolatot az ügyfélszolgálattal.
 
 Ha további segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
