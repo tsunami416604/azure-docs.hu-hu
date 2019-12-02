@@ -141,6 +141,8 @@
           href: storage-sync-offline-data-transfer.md
         - name: Adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan máshová
           href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Migrálás StorSimple-ből Azure File Syncre
+          href: storage-sync-files-storsimple-migration.md
         - name: Adatok áthelyezése az AzCopyval
           items:
             - name: Bevezetés
