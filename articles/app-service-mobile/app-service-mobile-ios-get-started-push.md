@@ -1,25 +1,17 @@
 ---
-title: Leküldéses értesítések hozzáadása iOS-alkalmazáshoz az Azure Mobile Apps
+title: Leküldéses értesítések hozzáadása iOS-hez
 description: Útmutató leküldéses értesítések iOS-alkalmazásba való küldéséhez az Azure Mobile Apps használatával.
-services: app-service\mobile
-documentationcenter: ios
-manager: crdun
-editor: ''
-author: elamalani
 ms.assetid: fa503833-d23e-4925-8d93-341bb3fbab7d
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 3a0b177e1e0fc9575a48c3126d5707bfc02c7d95
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2864dfca72c91acd10fd6a4ee8038040ba5defc8
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388745"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668814"
 ---
 # <a name="add-push-notifications-to-your-ios-app"></a>Leküldéses értesítések hozzáadása iOS-alkalmazáshoz
 
@@ -28,7 +20,7 @@ ms.locfileid: "72388745"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 

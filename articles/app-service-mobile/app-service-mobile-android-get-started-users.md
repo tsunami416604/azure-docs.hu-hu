@@ -1,25 +1,17 @@
 ---
-title: Hitelesítés hozzáadása az Android rendszeren a Mobile Apps | Microsoft Docs
-description: Megtudhatja, hogyan használhatja Azure App Service Mobile Apps funkcióját az Android-alkalmazások felhasználóinak hitelesítésére különböző identitás-szolgáltatók, például a Google, a Facebook, a Twitter és a Microsoft segítségével.
-services: app-service\mobile
-documentationcenter: android
-author: elamalani
-manager: crdun
-editor: ''
+title: Hitelesítés hozzáadása Androidon
+description: Megtudhatja, hogyan használhatja a Azure App Servicet az Android-alkalmazás felhasználóinak hitelesítésére, például a Google, a Facebook, a Twitter és a Microsoft identitás-szolgáltatókkal.
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: b520f6129e7d7fa1a4800143d5987d3eba625e98
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f68b4f8477d5b21a7107270370af387a7e88756e
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388955"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668954"
 ---
 # <a name="add-authentication-to-your-android-app"></a>Hitelesítés hozzáadása az Android-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -29,7 +21,7 @@ ms.locfileid: "72388955"
 >
 > Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Ebben az oktatóanyagban egy támogatott identitás-szolgáltató használatával adja hozzá a hitelesítést az Android rendszerhez készült ToDoList gyors üzembe helyezési projekthez. Ez az oktatóanyag az első [Ismerkedés a Mobile Apps] oktatóanyagon alapul, amelyet először végre kell hajtania.
 
 ## <a name="register"></a>Az alkalmazás regisztrálása a hitelesítéshez és a Azure App Service konfigurálása
@@ -39,7 +31,7 @@ Ebben az oktatóanyagban egy támogatott identitás-szolgáltató használatáva
 
 A biztonságos hitelesítéshez meg kell adnia egy új URL-sémát az alkalmazáshoz. Ez lehetővé teszi, hogy a hitelesítési rendszer visszairányítsa az alkalmazást az alkalmazásba a hitelesítési folyamat befejezése után. Ebben az oktatóanyagban az URL-séma _AppName_ használjuk az egészben. Használhat azonban bármely kiválasztott URL-címet. Egyedinek kell lennie a Mobile-alkalmazás számára. Az átirányítás engedélyezése a kiszolgálóoldali oldalon:
 
-1. A [Azure Portal]válassza ki a app Service.
+1. A [Azure Portalra]válassza ki a app Service.
 
 2. Kattintson a **hitelesítés/engedélyezés** menüpontra.
 
@@ -85,4 +77,4 @@ Most, hogy elvégezte ezt az alapszintű hitelesítési oktatóanyagot, tekintse
 
 <!-- URLs. -->
 [Ismerkedés a Mobile Apps]: app-service-mobile-android-get-started.md
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/

@@ -1,25 +1,17 @@
 ---
-title: Ismerkedés a hitelesítéssel Mobile Apps a Xamarin Forms alkalmazásban | Microsoft Docs
-description: Megtudhatja, hogyan használhatja a Mobile Appst a Xamarin űrlapos alkalmazások felhasználóinak hitelesítéséhez számos különböző identitás-szolgáltatón keresztül, például a HRE, a Google, a Facebook, a Twitter és a Microsoft között.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: Ismerkedés a Xamarin Forms alkalmazásban való hitelesítéssel
+description: Megtudhatja, hogyan használhatja a Mobile Appst a Xamarin Forms-alkalmazások felhasználóinak hitelesítésére, például a HRE, a Google, a Facebook, a Twitter és a Microsoft identitásával.
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: d9bd698535b09ecb5c484eefcbe31228eb99e04f
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 90d26d6469c5f3e238ac2410cdccb8ef5e0c160f
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388408"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668327"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Hitelesítés hozzáadása a Xamarin Forms-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -193,11 +185,11 @@ Ez a szakasz bemutatja, hogyan valósítható meg a **IAuthenticate** felület a
     Ez a kód biztosítja a hitelesítő inicializálását az alkalmazás betöltése előtt.
 8. Hozza létre újra az alkalmazást, futtassa, majd jelentkezzen be a kiválasztott hitelesítési szolgáltatóval, és ellenőrizze, hogy képes-e hozzáférni az adatbázishoz hitelesített felhasználóként.
 
-### <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="troubleshooting"></a>Hibakeresés
 
 **Az alkalmazás összeomlott `Java.Lang.NoSuchMethodError: No static method startActivity`**
 
-Bizonyos esetekben a támogatási csomagok csak figyelmeztetésként jelennek meg a Visual Studióban, de az alkalmazás a futtatáskor összeomlik ezzel a kivétellel. Ebben az esetben meg kell győződnie arról, hogy a projektben hivatkozott összes támogatási csomag ugyanazzal a verzióval rendelkezik. Az [Azure Mobile Apps NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
+Bizonyos esetekben a támogatási csomagok csak figyelmeztetésként jelennek meg a Visual Studióban, de az alkalmazás a futtatáskor összeomlik ezzel a kivétellel. Ebben az esetben meg kell győződnie arról, hogy a projektben hivatkozott összes támogatási csomag ugyanazzal a verzióval rendelkezik. Az [Azure Mobile Apps NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
 
 ## <a name="add-authentication-to-the-ios-app"></a>Hitelesítés hozzáadása az iOS-alkalmazáshoz
 Ez a szakasz bemutatja, hogyan valósítható meg a **IAuthenticate** felület az iOS-alkalmazás projektben. Ugorja át ezt a szakaszt, ha nem támogatja az iOS-eszközöket.

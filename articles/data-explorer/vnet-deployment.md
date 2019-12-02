@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: a7a9efbf6fd9c3dbe6b16d12a54f743d5b0820ba
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8dec673408b706a92a29f418af3bef4cc05a8d2d
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838214"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668574"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Az Azure Adatkezelő üzembe helyezése a Virtual Network (előzetes verzió)
 
@@ -64,6 +64,9 @@ Az IP-címek teljes száma:
 Az [Azure-szolgáltatás végpontjai](/azure/virtual-network/virtual-network-service-endpoints-overview) lehetővé teszik az Azure több-bérlős erőforrásainak védelmét a virtuális hálózattal.
 Az Azure Adatkezelő-fürt az alhálózatba való üzembe helyezése lehetővé teszi az adatkapcsolatok beállítását az [Event hub](/azure/event-hubs/event-hubs-about) vagy a [Event Grid](/azure/event-grid/overview) használatával, miközben korlátozza az Azure adatkezelő alhálózat mögöttes erőforrásait.
 
+> [!NOTE]
+> Ha a EventGrid telepítőjét a [Storage](/azure/storage/common/storage-introduction) és az [Event hub] használatával használja, az előfizetésben használt Storage-fiók zárolható az Azure adatkezelő alhálózatához, miközben a megbízható Azure platform-szolgáltatásokat engedélyezi a [tűzfal konfigurációjában](/azure/storage/common/storage-network-security), de az Event hub nem tudja engedélyezni a szolgáltatás-végpontot, mivel az nem támogatja a megbízható [Azure platform-szolgáltatásokat](/azure/event-hubs/event-hubs-service-endpoints).
+
 ## <a name="dependencies-for-vnet-deployment"></a>VNet-telepítés függőségei
 
 ### <a name="network-security-groups-configuration"></a>Hálózati biztonsági csoportok konfigurálása
@@ -74,7 +77,7 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 
 | **Használat**   | **A**   | **Címzett**   | **Protocol (Protokoll)**   |
 | --- | --- | --- | --- |
-| Kezelés  |[ADX-felügyeleti címek](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | ADX alhálózat: 443  | TCP  |
+| Felügyelet  |[ADX-felügyeleti címek](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | ADX alhálózat: 443  | TCP  |
 | Állapotfigyelés  | [ADX állapot-figyelési címei](#health-monitoring-addresses)  | ADX alhálózat: 443  | TCP  |
 | Belső kommunikáció ADX  | ADX alhálózat: minden port  | ADX alhálózat: minden port  | Mind  |
 | Azure Load Balancer bejövő (állapotának) engedélyezése  | AzureLoadBalancer  | ADX alhálózat: 80443  | TCP  |
@@ -97,11 +100,11 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 
 #### <a name="azure-data-explorer-management-ip-addresses"></a>Azure Adatkezelő felügyeleti IP-címek
 
-| Régió | Címek |
+| Region (Régió) | Címek |
 | --- | --- |
 | Ausztrália középső régiója | 20.37.26.134 |
 | Ausztráliai Central2 | 20.39.99.177 |
-| Kelet-Ausztrália | 40.82.217.84 |
+| Ausztrália keleti régiója | 40.82.217.84 |
 | Délkelet-Ausztrália | 20.40.161.39 |
 | BrazilSouth | 191.233.25.183 |
 | Közép-Kanada | 40.82.188.208 |
@@ -118,7 +121,7 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | Kelet-Japán | 20.43.89.90 |
 | Nyugat-Japán | 40.81.184.86 |
 | Korea középső régiója | 40.82.156.149 |
-| Korea déli régiója | 40.80.234.9 |
+| Dél-Korea | 40.80.234.9 |
 | USA északi középső régiója | 40.81.45.254 |
 | Észak-Európa | 52.142.91.221 |
 | Dél-Afrika északi régiója | 102.133.129.138 |
@@ -127,7 +130,7 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | Délkelet-Ázsia | 40.119.203.252 |
 | Dél-India | 40.81.72.110 |
 | Egyesült Királyság déli régiója | 40.81.154.254 |
-| Az Egyesült Királyság nyugati régiója | 40.81.122.39 |
+| Egyesült Királyság nyugati régiója | 40.81.122.39 |
 | USA nyugati középső régiója | 52.159.55.120 |
 | Nyugat-Európa | 51.145.176.215 |
 | Nyugat-India | 40.81.88.112 |
@@ -136,11 +139,11 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 
 #### <a name="health-monitoring-addresses"></a>Állapot-figyelési címek
 
-| Régió | Címek |
+| Region (Régió) | Címek |
 | --- | --- |
 | Ausztrália középső régiója | 191.239.64.128 |
 | Ausztrália 2. középső régiója | 191.239.64.128 |
-| Kelet-Ausztrália | 191.239.64.128 |
+| Ausztrália keleti régiója | 191.239.64.128 |
 | Délkelet-Ausztrália | 191.239.160.47 |
 | Dél-Brazília | 23.98.145.105 |
 | Közép-Kanada | 168.61.212.201 |
@@ -157,7 +160,7 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | Kelet-Japán | 138.91.19.129 |
 | Nyugat-Japán | 138.91.19.129 |
 | Korea középső régiója | 138.91.19.129 |
-| Korea déli régiója | 138.91.19.129 |
+| Dél-Korea | 138.91.19.129 |
 | USA északi középső régiója | 23.96.212.108 |
 | Észak-Európa | 191.235.212.69 
 | Dél-Afrika északi régiója | 104.211.224.189 |
@@ -166,7 +169,7 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | Dél-India | 23.99.5.162 |
 | Délkelet-Ázsia | 168.63.173.234 |
 | Egyesült Királyság déli régiója | 23.97.212.5 |
-| Az Egyesült Királyság nyugati régiója | 23.97.212.5 |
+| Egyesült Királyság nyugati régiója | 23.97.212.5 |
 | USA nyugati középső régiója | 168.61.212.201 |
 | Nyugat-Európa | 23.97.212.5 |
 | Nyugat-India | 23.99.5.162 |
@@ -175,7 +178,7 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Monitor konfigurációs végpont címei
 
-| Régió | Címek |
+| Region (Régió) | Címek |
 | --- | --- |
 | Közép-Ausztrália | 52.148.86.165 |
 | Közép-Ausztrália, 2 | 52.148.86.165 |
@@ -251,7 +254,7 @@ Azt is meg kell határoznia, hogy az alhálózaton lévő [útválasztási tábl
 
 Az **USA nyugati** régiója esetében például a következő UDR kell definiálni:
 
-| Name (Név) | Címelőtag | Következő ugrás |
+| Név | Címelőtag | Következő ugrás |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | Internet |
 | ADX_Monitoring | 23.99.5.162/32 | Internet |

@@ -1,24 +1,17 @@
 ---
-title: A Mobile Apps használatának első lépései a Xamarin.Forms eszközkészlettel
+title: Ismerkedés a Xamarin. Forms használatába
 description: Ezt az oktatóanyagot követve elkezdheti a Mobile Apps szolgáltatást Xamarin.Forms-alapú fejlesztésre használni.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: e891bc34840e8c8bb61be1a9da607c43a93f2d17
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 69a9b3294bf080f7ae1516b0acbfc4be077518f4
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388460"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668665"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Xamarin.Forms-alkalmazás létrehozása az Azure-ral
 
@@ -27,7 +20,7 @@ ms.locfileid: "72388460"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag azt ismerteti, hogyan adhat felhőalapú háttérszolgáltatásokat a Xamarin.Forms-mobilalkalmazásokhoz az Azure App Service Mobile Apps szolgáltatását használva háttérrendszerként. Létrehoz egy új Mobile Apps-háttéralkalmazást, illetve egy olyan egyszerű Xamarin.Forms-alapú teendőlista alkalmazást, amely az alkalmazásadatait az Azure-ban tárolja.
@@ -58,9 +51,9 @@ A megoldás megnyitásához a Visual Studio Tools for Xamarin szükséges, lásd
 
 1. Lépjen a [Azure Portalra](https://portal.azure.com/) , és navigáljon a létrehozott mobil alkalmazáshoz. A `Overview` panelen keresse meg azt az URL-címet, amely a Mobile App nyilvános végpontja. Példa – az sitename "test123" neve https://test123.azurewebsites.net lesz.
 
-2. Nyissa meg `Constants.cs` fájlt ebben a mappában – xamarin. Forms/ZUMOAPPNAME. Az alkalmazás neve `ZUMOAPPNAME`.
+2. Nyissa meg a fájl `Constants.cs` ebben a mappában – xamarin. Forms/ZUMOAPPNAME. Az alkalmazás neve `ZUMOAPPNAME`.
 
-3. @No__t – 0 osztályban cserélje le a fenti nyilvános végponttal rendelkező `ZUMOAPPURL` változót.
+3. `Constants.cs` osztályban cserélje le az `ZUMOAPPURL` változót a fenti nyilvános végpontra.
 
     `public static string ApplicationURL = @"ZUMOAPPURL";`
 

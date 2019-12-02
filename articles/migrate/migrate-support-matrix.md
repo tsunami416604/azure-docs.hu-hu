@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: raynew
-ms.openlocfilehash: 13a4fbb119ae9aceb8731e53f7123375a6e5c106
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: fa6ea1ec1992c94d44531cda9802290edf8db301
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666273"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669154"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate támogatási mátrix
 
@@ -54,7 +54,7 @@ Azure Migrate kiszolgáló áttelepítése | n/a | Telepítse át a [VMWare virt
 [DMS](https://docs.microsoft.com/azure/dms/dms-overview) | n/a | SQL Server, Oracle, MySQL, PostgreSQL, MongoDB migrálása. 
 [Tóparti](https://go.microsoft.com/fwlink/?linkid=2104908) | A virtuális asztali infrastruktúra (VDI) felmérése | n/a
 [Mozgató](https://go.microsoft.com/fwlink/?linkid=2109528) | A VMWare virtuális gépek, a Hyper-V virtuális gépek, a Xen virtuális gépek, a fizikai gépek, a munkaállomások (beleértve a VDI-ket is) felmérése | n/a
-[RackWare](https://www.rackwareinc.com/cloud-migration) | n/a | VMWare virtuális gépek, Hyper-V virtuális gépek, Xen virtuális gépek, KVM-alapú virtuális gépek, fizikai gépek, nyilvános Felhőbeli számítási feladatok migrálása 
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | n/a | VMWare virtuális gépek, Hyper-V virtuális gépek, Xen virtuális gépek, KVM-alapú virtuális gépek, fizikai gépek, nyilvános Felhőbeli számítási feladatok migrálása 
 [Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | A VMware virtuális gépek, a Hyper-V virtuális gépek, a fizikai kiszolgálók, a nyilvános Felhőbeli munkaterhelések felmérése. | n/a
 [UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | Felméri a VMware virtuális gépeket, a Hyper-V virtuális gépeket, a fizikai kiszolgálókat, a nyilvános Felhőbeli számítási feladatokat és a SQL Server adatbázisokat. | n/a
 [WebApp Migration Assistant](https://appmigration.microsoft.com/) | Webes alkalmazások értékelése | Webes alkalmazások migrálása.

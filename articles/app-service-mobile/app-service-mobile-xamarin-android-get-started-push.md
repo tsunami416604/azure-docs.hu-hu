@@ -1,25 +1,17 @@
 ---
-title: Leküldéses értesítések hozzáadása a Xamarin. Android-alkalmazáshoz | Microsoft Docs
-description: Ismerje meg, hogyan küldhet leküldéses értesítéseket a Xamarin. Android-alkalmazásba a Azure App Service és az Azure Notification Hubs használatával
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: Leküldéses értesítések hozzáadása Xamarin.Android-alkalmazáshoz
+description: Ismerje meg, hogyan küldhet leküldéses értesítéseket a Xamarin. Android-alkalmazásba a Azure App Service és az Azure Notification Hubs használatával.
 ms.assetid: 6f7e8517-e532-4559-9b07-874115f4c65b
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 25e0196fec94acb363757e74fa71f666a4c9d11c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c9dc4c825d65287f152522868a2b9e6a38ea70bb
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388491"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668747"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>Leküldéses értesítések hozzáadása Xamarin.Android-alkalmazáshoz
 
@@ -28,7 +20,7 @@ ms.locfileid: "72388491"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -75,7 +67,7 @@ Az alkalmazást az emulátorban található virtuális eszköz segítségével t
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/google-apis-avd-settings.png)
 
-2. Vegyen fel egy Google-fiókot az Android-eszközre, ehhez kattintson az **alkalmazások** > **Beállítások** > **fiók hozzáadása**lehetőségre, majd kövesse az utasításokat.
+2. Vegyen fel egy Google-fiókot az Android-eszközre, ehhez kattintson az **alkalmazások** > beállítások elemre, > a **fiók hozzáadása** **lehetőséget** , majd kövesse az utasításokat.
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/add-google-account.png)
 

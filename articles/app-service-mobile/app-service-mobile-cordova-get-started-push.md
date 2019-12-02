@@ -1,25 +1,17 @@
 ---
-title: Leküldéses értesítések hozzáadása egy Apache Cordova-alkalmazáshoz a Azure App Service Mobile Apps funkciójával | Microsoft Docs
+title: Leküldéses értesítések hozzáadása Apache Cordova-alkalmazáshoz
 description: Ismerje meg, hogyan küldhet leküldéses értesítéseket az Apache Cordova-alkalmazásba Mobile Apps használatával.
-services: app-service\mobile
-documentationcenter: javascript
-manager: crdun
-editor: ''
-author: elamalani
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 7a7e64b32a084075fe96cbd4ab7a0d28fc0f8e19
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 6ec214c0f1a4f8333bf88790de8d2936fce39002
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388874"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668910"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Leküldéses értesítések hozzáadása az Apache Cordova-alkalmazáshoz
 
@@ -28,7 +20,7 @@ ms.locfileid: "72388874"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -68,7 +60,7 @@ Annak biztosítása érdekében, hogy az Apache Cordova-alkalmazás projekt kés
 
 Ha a projekt a 6.1.1-es verziónál korábbi Apache Cordova-verziót használ, frissítse az ügyfél projektjét. A projekt frissítéséhez hajtsa végre a következő lépéseket:
 
-* A Configuration Designer megnyitásához kattintson a jobb gombbal a `config.xml` elemre.
+* A Configuration Designer megnyitásához kattintson a jobb gombbal a `config.xml`elemre.
 * Válassza a **platformok** lapot.
 * A **CORDOVA CLI** szövegmezőben válassza a **6.1.1**elemet. 
 * A projekt frissítéséhez válassza a **Létrehozás**lehetőséget, majd válassza a **megoldás létrehozása**lehetőséget.
@@ -89,13 +81,13 @@ Futtassa az alábbi parancsot:
 
 1. A Megoldáskezelőban nyissa meg a `config.xml` fájlt. Ezután válassza a **Plugins** > **Egyéni**lehetőséget. Ezután válassza a **git** lehetőséget a telepítési forrásként.
 
-2. Adja meg a `https://github.com/phonegap/phonegap-plugin-push` értéket a forrásként.
+2. Adja meg a `https://github.com/phonegap/phonegap-plugin-push` forrásként.
 
     ![Nyissa meg a config. xml fájlt a Megoldáskezelő][img1]
 
 3. Válassza a telepítési forrás melletti nyilat.
 
-4. Ha a **SENDER_ID**már rendelkezik a Google fejlesztői konzol projekthez tartozó numerikus projekt-azonosítóval, itt adhatja hozzá. Ellenkező esetben adjon meg egy helyőrző értéket, például 777777. Ha az Androidot célozza meg, ezt az értéket később is frissítheti a config. xml fájlban.
+4. Ha már rendelkezik egy numerikus projekt-AZONOSÍTÓval a Google fejlesztői konzol projekthez, **SENDER_ID**Itt adhatja hozzá. Ellenkező esetben adjon meg egy helyőrző értéket, például 777777. Ha az Androidot célozza meg, ezt az értéket később is frissítheti a config. xml fájlban.
 
     >[!NOTE]
     >A 2.0.0 verziójának megfelelően a Google-Services. JSON fájlt a projekt gyökérkönyvtárában kell telepíteni a küldő AZONOSÍTÓjának konfigurálásához. További információ: [telepítési dokumentáció.](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)
@@ -106,7 +98,7 @@ A leküldéses beépülő modul már telepítve van.
 
 #### <a name="install-the-device-plugin"></a>Az eszköz beépülő moduljának telepítése
 
-Kövesse ugyanazt az eljárást, amelyet a leküldéses beépülő modul telepítéséhez használt. Adja hozzá az eszköz beépülő modult a Core plugins listáról. (A kereséshez válassza a **Plugins** > **mag**lehetőséget.) Erre a beépülő modulra szüksége lesz a platform nevének beszerzéséhez.
+Kövesse ugyanazt az eljárást, amelyet a leküldéses beépülő modul telepítéséhez használt. Adja hozzá az eszköz beépülő modult a Core plugins listáról. (A kereséshez válassza a **Plugins** > **Core**lehetőséget.) Erre a beépülő modulra szüksége lesz a platform nevének beszerzéséhez.
 
 #### <a name="register-your-device-when-the-application-starts"></a>Az eszköz regisztrálása az alkalmazás indításakor 
 
@@ -134,7 +126,7 @@ Kezdetben az Android rendszerhez tartalmazunk néhány minimális kódot. Késő
         }, handleError);
     ```
 
-    Ez a példa a **registerForPushNotifications** hívását mutatja a sikeres hitelesítés után. A `registerForPushNotifications()` meghívása a szükséges gyakorisággal elvégezhető.
+    Ez a példa a **registerForPushNotifications** hívását mutatja a sikeres hitelesítés után. A `registerForPushNotifications()` a szükséges gyakorisággal hívható le.
 
 2. Adja hozzá az új **registerForPushNotifications** metódust az alábbiak szerint:
 
@@ -182,7 +174,7 @@ Kezdetben az Android rendszerhez tartalmazunk néhány minimális kódot. Késő
     pushRegistration.on('error', handleError);
     }
     ```
-3. Android Az előző kódban cserélje le a `Your_Project_ID` értéket az alkalmazás numerikus projekt-azonosítójával a [Google fejlesztői konzolon][18].
+3. Android Az előző kódban cserélje le a `Your_Project_ID`t az alkalmazás numerikus projekt-azonosítójával a [Google fejlesztői konzolon][18].
 
 ## <a name="optional-configure-and-run-the-app-on-android"></a>Választható Az alkalmazás konfigurálása és futtatása Androidon
 
@@ -200,7 +192,7 @@ Mivel kezdetben a Google Android platformot célozza meg, engedélyeznie kell a 
 
 #### <a name="configure-your-cordova-app-for-android"></a>Az Androidhoz készült Cordova alkalmazás konfigurálása
 
-A Cordova alkalmazásban nyissa meg a **config. xml fájlt**. Ezután cserélje le a `Your_Project_ID` értéket az alkalmazás numerikus projekt-azonosítójával a [Google fejlesztői konzolon][18].
+A Cordova alkalmazásban nyissa meg a **config. xml fájlt**. Ezután cserélje le a `Your_Project_ID`t az alkalmazás numerikus projekt-azonosítójával a [Google fejlesztői konzolon][18].
 
 ```xml
 <plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
@@ -222,8 +214,8 @@ pushRegistration = PushNotification.init({
 
 Az alkalmazás androidos eszközre történő üzembe helyezéséhez engedélyeznie kell az USB-hibakeresést. Hajtsa végre az alábbi lépéseket az androidos telefonján:
 
-1. Lépjen a **beállítások** > **a telefonról**. Ezután koppintson az **összeállítási számra** , amíg a fejlesztői mód engedélyezve van (körülbelül hétszer).
-2. Vissza a **beállítások** > **fejlesztői beállítások lehetőségre**, és engedélyezze az **USB-hibakeresést**. Ezután csatlakoztassa androidos telefonját a fejlesztői számítógéphez USB-kábellel.
+1. Lépjen a beállítások > **a telefon névjegye** **menüpontra** . Ezután koppintson az **összeállítási számra** , amíg a fejlesztői mód engedélyezve van (körülbelül hétszer).
+2. A **beállítások** > **fejlesztői beállítások**területen engedélyezze az **USB-hibakeresést**. Ezután csatlakoztassa androidos telefonját a fejlesztői számítógéphez USB-kábellel.
 
 Ezt teszteltük egy Android 6,0 (Marshmallow) szoftvert futtató Google Nexus 5X-eszköz használatával. A technikák azonban gyakran előfordulnak a modern Android-kiadásokban.
 
@@ -280,7 +272,7 @@ Győződjön meg arról, hogy az iOS-hez készült alkalmazást is felépítheti
 
 #### <a name="find-the-id-to-use-as-your-app-id"></a>Az alkalmazás-AZONOSÍTÓként használandó azonosító megkeresése
 
-Mielőtt regisztrálta az alkalmazást a leküldéses értesítésekhez, nyissa meg a config. xml fájlt a Cordova-alkalmazásban, keresse meg a `id` attribútum értékét a widget elemben, majd másolja a későbbi használatra. A következő XML-ben az azonosító `io.cordova.myapp7777777`.
+Az alkalmazás leküldéses értesítésekhez való regisztrálása előtt nyissa meg a Cordova alkalmazásban a config. xml fájlt, keresse meg a `id` attribútum értékét a widget elemben, majd másolja a későbbi használatra. A következő XML-ben az azonosító `io.cordova.myapp7777777`.
 
 ```xml
 <widget defaultlocale="en-US" id="io.cordova.myapp7777777"

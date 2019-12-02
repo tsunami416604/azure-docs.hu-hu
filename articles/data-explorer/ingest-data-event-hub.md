@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 1750267b5780dcfbb227ffcd6bb98e2f77ff1511
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 13c0bf8d0829debaa4ae41c724aafdaf5891ce4d
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539290"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667438"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő
 
@@ -20,17 +20,15 @@ ms.locfileid: "74539290"
 > * [Portal](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
+> * [Azure Resource Manager-sablon](data-connection-event-hub-resource-manager.md)
 
 Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer adatbetöltési lehetőséget tesz elérhetővé az Event Hubsból, amely egy big data-streamelési platform és eseményfeldolgozó szolgáltatás. A [Event Hubs](/azure/event-hubs/event-hubs-about) másodpercenként több millió eseményt képes feldolgozni a közel valós időben. Ebben a cikkben létrehoz egy Event hubot, csatlakozik hozzá az Azure Adatkezelő, és megtekintheti az adatfolyamot a rendszeren keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-
 * [Egy tesztelési fürt és adatbázis](create-cluster-database-portal.md).
-
 * [Egy minta alkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) , amely adatokat hoz létre, és elküldi azt egy Event hub-nak. Töltse le a minta alkalmazást a rendszeren.
-
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) a minta alkalmazás futtatásához.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra

@@ -1,25 +1,17 @@
 ---
-title: Offline szinkronizálás engedélyezése a Univerzális Windows-platform-(UWP-) alkalmazáshoz Mobile Apps segítségével | Microsoft Docs
+title: Offline szinkronizálás engedélyezése a UWP-alkalmazáshoz
 description: Ismerje meg, hogy miként lehet az Azure Mobile App használatával gyorsítótárazni és szinkronizálni a Univerzális Windows-platform (UWP) alkalmazás offline adatait.
-documentationcenter: windows
-author: elamalani
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: 8fe51773-90de-4014-8a38-41544446d9b5
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 1f15bd86debd98104a408c00650f5acfab94c526
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 66ae11fb0532ae2a138eb8590eb92de15e997dfa
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388578"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668410"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Windows-alkalmazás kapcsolat nélküli szinkronizálásának engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -41,7 +33,7 @@ Ehhez az oktatóanyaghoz a következő előfeltételek szükségesek:
 
 * A Visual Studio 2013 Windows 8,1 vagy újabb rendszeren fut.
 * Windows- [alkalmazás]létrehozásának befejezése[Windows-alkalmazás létrehozása].
-* [Azure Mobile Services SQLite Store][sqlite store nuget]
+* [Azure Mobile Services SQLite-tároló][sqlite store nuget]
 * [SQLite Univerzális Windows-platform-fejlesztéshez](https://marketplace.visualstudio.com/items?itemName=SQLiteDevelopmentTeam.SQLiteforUniversalWindowsPlatform) 
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>Az ügyfélalkalmazás frissítése az offline funkciók támogatására

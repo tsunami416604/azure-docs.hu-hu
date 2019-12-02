@@ -1,25 +1,17 @@
 ---
-title: Ismerkedés a hitelesítéssel Mobile Apps Xamarin Android rendszeren
-description: Megtudhatja, hogyan használhatja a Mobile Appst a Xamarin Android-alkalmazás felhasználóinak hitelesítésére különböző identitás-szolgáltatók, például a HRE, a Google, a Facebook, a Twitter és a Microsoft segítségével.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: panarasi
-editor: ''
+title: Ismerkedés a Xamarin Android-alapú hitelesítéssel
+description: Megtudhatja, hogyan használhatja a Mobile Appst a Xamarin Android-alkalmazás felhasználóinak hitelesítésére, például a HRE, a Google, a Facebook, a Twitter és a Microsoft identitásával.
 ms.assetid: 570fc12b-46a9-4722-b2e0-0d1c45fb2152
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: e0baf64c3490dd5b7edd8c3f7d209c135c546ed5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 60c46c32c8650bf72c0032cf0ec03895905bae1c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388446"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668373"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>Hitelesítés hozzáadása a Xamarin. Android-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388446"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez a témakör bemutatja, hogyan hitelesítheti a Mobile apps felhasználóit az ügyfélalkalmazás használatával. Ebben az oktatóanyagban a gyors üzembe helyezési projekthez egy Azure Mobile Apps által támogatott identitás-szolgáltató használatával ad hozzá hitelesítést. A sikeres hitelesítés és engedélyezés után a rendszer a felhasználói azonosító értékét jeleníti meg.
@@ -45,7 +37,7 @@ A biztonságos hitelesítéshez meg kell adnia egy új URL-sémát az alkalmazá
 
 2. Kattintson a **hitelesítés/engedélyezés** menüpontra.
 
-3. Az **engedélyezett külső átirányítási URL-címek**mezőben adja meg a `url_scheme_of_your_app://easyauth.callback` értéket.  A karakterláncban szereplő **url_scheme_of_your_app** a Mobile-alkalmazás URL-sémája.  A protokollnak normál URL-specifikációt kell követnie (csak betűket és számokat kell használnia, és betűvel kell kezdődnie).  Jegyezze fel a kiválasztott karakterláncot, mivel a mobil alkalmazás kódját több helyen is módosítania kell az URL-sémával.
+3. Az **engedélyezett külső átirányítási URL-címek**mezőben adja meg a `url_scheme_of_your_app://easyauth.callback`.  A karakterláncban szereplő **url_scheme_of_your_app** a Mobile-alkalmazás URL-sémája.  A protokollnak normál URL-specifikációt kell követnie (csak betűket és számokat kell használnia, és betűvel kell kezdődnie).  Jegyezze fel a kiválasztott karakterláncot, mivel a mobil alkalmazás kódját több helyen is módosítania kell az URL-sémával.
 
 4. Kattintson az **OK** gombra.
 
@@ -108,7 +100,7 @@ Az alkalmazás frissül, hogy a felhasználók a **Bejelentkezés** gombra koppi
 2. A **OnCreate** metódusban törölje vagy véleményezze a következő kódrészletet:
    
         OnRefreshItemsSelected ();
-3. A Activity_To_Do. axml fájlban adja hozzá a következő *LoginUser* gomb definícióját a meglévő *additem* gomb előtt:
+3. A Activity_To_Do. axml fájlban adja hozzá a következő *LoginUser* -gomb definícióját a meglévő *additem* gomb előtt:
    
           <Button
             android:id="@+id/buttonLoginUser"

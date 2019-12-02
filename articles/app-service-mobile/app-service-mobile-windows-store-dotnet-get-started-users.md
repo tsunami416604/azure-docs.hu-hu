@@ -1,25 +1,17 @@
 ---
-title: Hitelesítés hozzáadása a Univerzális Windows-platform (UWP) alkalmazáshoz | Microsoft Docs
-description: 'Megtudhatja, hogyan használhatja a Azure App Service Mobile Appst a Univerzális Windows-platform (UWP) alkalmazás felhasználói hitelesítéséhez különböző identitás-szolgáltatók használatával, beleértve a következőket: HRE, Google, Facebook, Twitter és Microsoft.'
-services: app-service\mobile
-documentationcenter: windows
-author: elamalani
-manager: panarasi
-editor: ''
+title: Hitelesítés hozzáadása a UWP-alkalmazáshoz
+description: Ismerje meg, hogyan használhatja a Azure App Service Mobile Appst a Univerzális Windows-platform (UWP) alkalmazás felhasználóinak hitelesítésére, például a HRE, a Google, a Facebook, a Twitter és a Microsoft identitásával.
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: d5012ccc503e48785e23ff00564bbc9f6735eea8
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 23d3c897f227dd49253abfcc6d3a84d477341c13
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388540"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668380"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Hitelesítés hozzáadása a Windows-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388540"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ebből a témakörből megtudhatja, hogyan adhat felhőalapú hitelesítést a Mobile apps szolgáltatáshoz. Ebben az oktatóanyagban a Azure App Service által támogatott identitás-szolgáltató használatával adja hozzá a hitelesítést a Univerzális Windows-platform (UWP) gyors üzembe helyezési projekthez Mobile Apps. Miután a Mobile apps-háttér sikeresen elvégezte a hitelesítést és az engedélyt, megjelenik a felhasználói azonosító értéke.
@@ -45,7 +37,7 @@ A biztonságos hitelesítéshez meg kell adnia egy új URL-sémát az alkalmazá
 
 2. Kattintson a **hitelesítés/engedélyezés** menüpontra.
 
-3. Az **engedélyezett külső átirányítási URL-címek**mezőben adja meg a `url_scheme_of_your_app://easyauth.callback` értéket.  A karakterláncban szereplő **url_scheme_of_your_app** a Mobile-alkalmazás URL-sémája.  A protokollnak normál URL-specifikációt kell követnie (csak betűket és számokat kell használnia, és betűvel kell kezdődnie).  Jegyezze fel a kiválasztott karakterláncot, mivel a mobil alkalmazás kódját több helyen is módosítania kell az URL-sémával.
+3. Az **engedélyezett külső átirányítási URL-címek**mezőben adja meg a `url_scheme_of_your_app://easyauth.callback`.  A karakterláncban szereplő **url_scheme_of_your_app** a Mobile-alkalmazás URL-sémája.  A protokollnak normál URL-specifikációt kell követnie (csak betűket és számokat kell használnia, és betűvel kell kezdődnie).  Jegyezze fel a kiválasztott karakterláncot, mivel a mobil alkalmazás kódját több helyen is módosítania kell az URL-sémával.
 
 4. Kattintson a **Save** (Mentés) gombra.
 

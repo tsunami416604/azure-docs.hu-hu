@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 8f3a732d5d6128ff38f81f715113e87710b11c47
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 66978f313f5cb3881f8befc61289d7de0f4214cb
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847261"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668150"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
 
@@ -35,7 +35,7 @@ Az új v2 SKU a következő fejlesztéseket tartalmazza:
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-A Standard_v2 és WAF_v2 SKU a következő régiókban érhető el: az USA északi középső régiója, az USA déli középső régiója, az USA nyugati régiója, USA 2. nyugati régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Közép-Németország, Egyesült Királyság nyugati régiója, Kelet Kelet-Ausztrália-Japán , Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Kelet-Ázsia, Korea középső régiója, Dél-Korea, Dél-India, Egyesült Királyság déli régiója, Közép-India, Nyugat-India, Dél-India.
+A Standard_v2 és WAF_v2 SKU a következő régiókban érhető el: az USA északi középső régiója, az USA déli középső régiója, az USA nyugati régiója, USA 2. nyugati régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Közép-Németország, Egyesült Királyság nyugati régiója, Kelet Kelet-Ausztrália-Japán , Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Kelet-Ázsia, Korea középső régiója, Dél-Korea, Egyesült Királyság déli régiója, Közép-India, Nyugat-India, Dél-India.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -182,7 +182,7 @@ A következő táblázat összehasonlítja az egyes SKU-kal elérhető szolgált
 
 Azure PowerShell parancsfájl a PowerShell-galériában érhető el, hogy segítséget nyújtson a v1 Application Gateway/WAF a v2 automatikus skálázási SKU-ba való átálláshoz. Ez a szkript segítséget nyújt a konfigurációnak a v1-átjáróról történő másolásához. A forgalom áttelepítése továbbra is az Ön felelőssége. További információ: [Azure Application Gateway migrálása v1-ről v2-re](migrate-v1-v2.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Gyors útmutató: webes forgalom közvetlen továbbítása az Azure Application Gateway-Azure Portal](quick-create-portal.md)
 - [Hozzon létre egy automatikus skálázást, a Zone redundáns Application Gateway-t egy fenntartott virtuális IP-címmel a Azure PowerShell használatával](tutorial-autoscale-ps.md)

@@ -1,25 +1,17 @@
 ---
-title: Az iOS Mobile apps szolgáltatással való offline szinkronizálás engedélyezése | Microsoft Docs
+title: Offline szinkronizálás engedélyezése (iOS)
 description: Megtudhatja, hogyan használhatók a Azure App Service Mobile apps az offline adatkapcsolatok iOS-alkalmazásokban való gyorsítótárazásához és szinkronizálásához.
-documentationcenter: ios
-author: elamalani
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: f29a28f9a80b64ef0a6890fa8fc7ecd0ca205e66
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 66897263ff9c7d71c64d04fcc6860b96bf59588c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388756"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668483"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Az iOS Mobile apps szolgáltatással való offline szinkronizálás engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -164,43 +156,43 @@ Ha az offline szinkronizálás funkciót használja, adja meg a három rendszert
 
 ![MS_TableOperations táblázat attribútumai][defining-core-data-tableoperations-entity]
 
-| Attribútum | Típus |
+| Attribútum | Type (Típus) |
 | --- | --- |
-| id | Integer 64 |
+| id | Egész szám 64 |
 | elemazonosító | Sztring |
-| properties | Binary Data |
-| table | Sztring |
-| tableKind | Integer 16 |
+| properties | Bináris adatértékek |
+| tábla | Sztring |
+| tableKind | 16. egész szám |
 
 
 **MS_TableOperationErrors**
 
  ![MS_TableOperationErrors táblázat attribútumai][defining-core-data-tableoperationerrors-entity]
 
-| Attribútum | Típus |
+| Attribútum | Type (Típus) |
 | --- | --- |
 | id |Sztring |
-| operationId |Integer 64 |
-| properties |Binary Data |
-| tableKind |Integer 16 |
+| operationId |Egész szám 64 |
+| properties |Bináris adatértékek |
+| tableKind |16. egész szám |
 
  **MS_TableConfig**
 
  ![][defining-core-data-tableconfig-entity]
 
-| Attribútum | Típus |
+| Attribútum | Type (Típus) |
 | --- | --- |
 | id |Sztring |
 | kulcs |Sztring |
-| keyType |Integer 64 |
-| table |Sztring |
+| keyType |Egész szám 64 |
+| tábla |Sztring |
 | érték |Sztring |
 
 ### <a name="data-table"></a>Adattábla
 
 **TodoItem**
 
-| Attribútum | Típus | Megjegyzés |
+| Attribútum | Type (Típus) | Megjegyzés |
 | --- | --- | --- |
 | id | Karakterlánc, megjelölve kötelező |Elsődleges kulcs a távoli tárolóban |
 | teljes | Logikai | Teendő mező |
@@ -266,7 +258,7 @@ Megjelenik egy folyamatjelző.
 
 7. Tekintse meg ismét a **TodoItem** -adatbázisokat. Ekkor meg kell jelennie az új és a módosított teendő elemek megjelenítésének.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az offline szinkronizálási funkció támogatásához a `MSSyncTable` felületet használtuk, és a `MSClient.syncContext` helyi tárolóval inicializálva. Ebben az esetben a helyi tároló egy alapszintű adatalapú adatbázis volt.
 
 Ha alapszintű adattárat használ, több táblát kell megadnia a [megfelelő rendszer-tulajdonságokkal](#review-core-data).

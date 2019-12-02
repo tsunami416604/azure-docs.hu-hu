@@ -1,34 +1,25 @@
 ---
-title: Hitelesítés és engedélyezés a Mobile apps Azure App Servicejában | Microsoft Docs
-description: A Azure App Service hitelesítési/engedélyezési funkciójának fogalmi referenciája és áttekintése, különösen a Mobile apps esetében
-services: app-service
-documentationcenter: ''
-author: mattchenderson
-manager: erikre
-editor: ''
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
+title: Hitelesítés és engedélyezés
+description: A Azure App Service hitelesítési/engedélyezési funkciójának fogalmi referenciája és áttekintése, különösen a Mobile apps esetében.
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: mahender
-ms.openlocfilehash: 6017d9bc8b9a791e46fd1562660c9049ca0f72e5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2c3bc1f9563a5657d7574020fc908f23a711391c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388893"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668515"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Hitelesítés és engedélyezés Azure App Service Mobile apps esetén
 
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 Ez a cikk azt ismerteti, hogyan működik a hitelesítés és az engedélyezés, ha natív Mobile apps-t fejleszt App Service háttérrel. A App Service integrált hitelesítést és engedélyezést biztosít, így a Mobile apps a App Serviceban lévő kódok módosítása nélkül is képes aláírni a felhasználókat. Egyszerű módszert biztosít az alkalmazás védelme és a felhasználónkénti adatmennyiség használata. 
 
-Ez a cikk a Mobile apps fejlesztésére koncentrál. A Mobile apps App Service hitelesítésének és engedélyezésének gyors megkezdéséhez tekintse meg az alábbi oktatóanyagokat [az iOS-alkalmazáshoz][iOS] (vagy [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms]vagy [Cordova]). 
+Ez a cikk a Mobile apps fejlesztésére koncentrál. A Mobile apps App Service hitelesítésének és engedélyezésének gyors megkezdéséhez tekintse meg az alábbi oktatóanyagok az iOS-alkalmazáshoz (vagy az [Android], a [Windows], [Xamarin.iOS], a [Xamarin.Android], a [Xamarin.Forms]vagy a [Cordova]) való [hitelesítés hozzáadását][iOS] ismertető témakört. 
 
 A hitelesítés és az engedélyezés App Serviceban való működésével kapcsolatos információkért lásd: [hitelesítés és engedélyezés a Azure app Serviceban](../app-service/overview-authentication-authorization.md).
 

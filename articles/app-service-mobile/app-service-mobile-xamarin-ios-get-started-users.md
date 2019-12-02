@@ -1,25 +1,17 @@
 ---
-title: Az Xamarin iOS-hez készült Mobile Apps hitelesítésének első lépései
-description: Megtudhatja, hogyan használhatja a Mobile Appst a Xamarin iOS-alkalmazás felhasználóinak hitelesítésére különböző identitás-szolgáltatók, például a HRE, a Google, a Facebook, a Twitter és a Microsoft segítségével.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: Ismerkedés a hitelesítéssel a Xamarin iOS-ben
+description: Megtudhatja, hogyan használhatja a Mobile Appst a Xamarin iOS-alkalmazás felhasználóinak hitelesítésére, például a HRE, a Google, a Facebook, a Twitter és a Microsoft identitásával.
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 859c2d4cc1c2be7b4e96a955e78dc0339875c96f
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f2c78c3d4b18e7c662c4f7345938ddab377229b
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388336"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668263"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Bővítse Xamarin.iOS-alkalmazását hitelesítési funkcióval
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388336"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -46,7 +38,7 @@ A biztonságos hitelesítéshez meg kell adnia egy új URL-sémát az alkalmazá
 
 2. Kattintson a **hitelesítés/engedélyezés** menüpontra.
 
-3. Az **engedélyezett külső átirányítási URL-címek**mezőben adja meg a `url_scheme_of_your_app://easyauth.callback` értéket.  A karakterláncban szereplő **url_scheme_of_your_app** a Mobile-alkalmazás URL-sémája.  A protokollnak normál URL-specifikációt kell követnie (csak betűket és számokat kell használnia, és betűvel kell kezdődnie).  Jegyezze fel a kiválasztott karakterláncot, mivel a mobil alkalmazás kódját több helyen is módosítania kell az URL-sémával.
+3. Az **engedélyezett külső átirányítási URL-címek**mezőben adja meg a `url_scheme_of_your_app://easyauth.callback`.  A karakterláncban szereplő **url_scheme_of_your_app** a Mobile-alkalmazás URL-sémája.  A protokollnak normál URL-specifikációt kell követnie (csak betűket és számokat kell használnia, és betűvel kell kezdődnie).  Jegyezze fel a kiválasztott karakterláncot, mivel a mobil alkalmazás kódját több helyen is módosítania kell az URL-sémával.
 
 4. Kattintson az **OK** gombra.
 
@@ -64,7 +56,7 @@ Ezután frissítenie kell az ügyfélszoftvert, hogy egy hitelesített felhaszn�
 ## <a name="add-authentication-to-the-app"></a>Hitelesítés hozzáadása az alkalmazáshoz
 Ebben a szakaszban módosítani fogja az alkalmazást, hogy megjelenjen a bejelentkezési képernyő az adatok megjelenítése előtt. Amikor az alkalmazás elindul, nem fog csatlakozni a App Servicehoz, és nem jelenít meg semmilyen adattartalmat. Miután a felhasználó első alkalommal elvégezte a frissítési kézmozdulatot, megjelenik a bejelentkezési képernyő. a sikeres bejelentkezés után megjelenik a ToDo-elemek listája.
 
-1. Az ügyfél projektben nyissa meg a **QSTodoService.cs** fájlt, és adja hozzá a következő using utasítást és a `MobileServiceUser` parancsot a QSTodoService osztályhoz:
+1. Az ügyfél projektben nyissa meg a **QSTodoService.cs** fájlt, és adja hozzá a következő using utasítást és `MobileServiceUser` a QSTodoService osztályhoz:
 
     ```csharp
     using UIKit;

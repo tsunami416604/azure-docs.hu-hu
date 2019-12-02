@@ -1,25 +1,17 @@
 ---
-title: Az Azure-hoz készült JavaScript SDK használata Mobile Apps
+title: A JavaScript SDK használata
 description: A v használata az Azure-Mobile Apps
-services: app-service\mobile
-documentationcenter: javascript
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: 53b78965-caa3-4b22-bb67-5bd5c19d03c4
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 8a22de6b3e518bb3c9392d7fd64411969b32f33f
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f70523b5b27a4f3db86bacf39469e233e43f807
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388733"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668834"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Az Azure-hoz készült JavaScript ügyféloldali kódtár használata Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388733"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez az útmutató bemutatja, hogyan végezheti el az [Az Azure-hoz készült JavaScript SDK Mobile Apps]-t használó gyakori forgatókönyveket. Ha még nem ismeri az Azure Mobile Appst, először fejezze be az [azure Mobile Apps gyorskonfigurálás] egy háttérrendszer létrehozásához és egy tábla létrehozásához. Ebben az útmutatóban a mobil háttérrendszer használatára koncentrálunk a HTML/JavaScript webalkalmazásokban.
@@ -40,7 +32,7 @@ A csomag univerzális JavaScript-modulként van elosztva, így a globális, az A
 ## <a name="Setup"></a>Telepítés és előfeltételek
 Ez az útmutató azt feltételezi, hogy létrehozott egy táblázatot tartalmazó hátteret. Ez az útmutató azt feltételezi, hogy a tábla ugyanazzal a sémával rendelkezik, mint az oktatóanyagokban szereplő táblák.
 
-Az Azure Mobile Apps JavaScript SDK telepítése a `npm` paranccsal végezhető el:
+Az Azure Mobile Apps JavaScript SDK telepítése a `npm` parancs használatával végezhető el:
 
 ```
 npm install azure-mobile-apps-client --save
@@ -92,7 +84,7 @@ A helyileg futtatott alkalmazások problémát okozhatnak, mivel alapértelmezé
              "https://localhost:3000"
          ],
 
-    Cserélje le a tömbben lévő URL-címeket a szolgáltatás URL-címeire, ami ebben a példában a `http://localhost:3000` a helyi Node. js-minta szolgáltatáshoz. Az alkalmazás konfigurációjától függően használhatja a `http://localhost:4400` értéket a lüktető szolgáltatáshoz vagy valamilyen más URL-címhez is.
+    Cserélje le a tömbben lévő URL-címeket a szolgáltatás URL-címeire, amely ebben a példában `http://localhost:3000` a helyi Node. js-minta szolgáltatáshoz. Az alkalmazás konfigurálásának módjától függően `http://localhost:4400` is használhat a lüktető szolgáltatáshoz vagy valamilyen más URL-címhez.
 8. A lap tetején kattintson az **írás/írás**elemre, majd kattintson a **put** elemre a frissítések mentéséhez.
 
 Ugyanezeket a visszacsatolási URL-címeket is hozzá kell adnia a CORS engedélyezési listához:

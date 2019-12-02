@@ -7,24 +7,24 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 49c55b580abdaea6c876a0fac4e7dd4e73d496af
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: eddfb9a8f2e3c034e50dc3bc1cdf4983a6163079
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643825"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667865"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása Azure Resource Manager sablon használatával
 
 > [!div class="op_single_selector"]
-> * [Portál](create-cluster-database-portal.md)
+> * [Portal](create-cluster-database-portal.md)
 > * [Parancssori felület](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
-> * [ARM-sablon](create-cluster-database-resource-manager.md)
+> * [Azure Resource Manager-sablon](create-cluster-database-resource-manager.md)
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. 
+Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. 
 
 Ebben a cikkben egy Azure Adatkezelő-fürtöt és-adatbázist hoz létre egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-overview.md)használatával. A cikk bemutatja, hogyan határozható meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok készítése](/azure/azure-resource-manager/resource-group-authoring-templates). A sablonban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez lásd: [Microsoft. Kusto-erőforrástípusok](/azure/templates/microsoft.kusto/allversions).
 
@@ -155,27 +155,8 @@ Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+[!INCLUDE [data-explorer-clean-resources](../../includes/data-explorer-clean-resources.md)]
 
-Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. 
-
-### <a name="clean-up-resources-using-the-azure-portal"></a>Erőforrások tisztítása a Azure Portal használatával
-
-Törölje a Azure Portal található erőforrásokat az [erőforrások tisztítása](create-cluster-database-portal.md#clean-up-resources)című témakör lépéseit követve.
-
-### <a name="clean-up-resources-using-powershell"></a>Az erőforrások eltávolítása a PowerShell használatával
-
-Ha a Cloud Shell továbbra is nyitva van, nem kell átmásolnia/futtatnia az első sort (olvasás-gazdagép).
-
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
-$resourceGroupName = "${projectName}rg"
-
-Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
-
-Write-Host "Press [ENTER] to continue ..."
-```
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Adatkezelő-fürt és-adatbázis betöltése](ingest-data-overview.md)

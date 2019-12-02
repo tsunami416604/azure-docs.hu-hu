@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 8a5ea692bfdec7f676a80cc670f686af66152e6f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 17312840b0081056ad04723f2b2c241c47902021
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606601"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667293"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>Adatbázis-és táblázat-szabályzatok létrehozása az Azure Adatkezelőhoz a használatávalC#
 
@@ -21,27 +21,22 @@ ms.locfileid: "73606601"
 > * [Python](database-table-policies-python.md)
 >
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben az Azure Adatkezelő adatbázis-és táblázat-házirendjeit fogja létrehozni a C#használatával.
+Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben az Azure Adatkezelő adatbázis-és táblázat-házirendjeit fogja létrehozni a C#használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Visual Studio 2019. Ha nem rendelkezik a Visual Studio 2019-rel, letöltheti és használhatja az *ingyenes* [visual Studio Community 2019](https://www.visualstudio.com/downloads/)-et. Ügyeljen arra, hogy a Visual Studio telepítése során válassza az **Azure-fejlesztés** lehetőséget.
-
 * Azure-előfizetés. Ha szüksége van a szolgáltatásra, a Kezdés előtt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
-
 * [Egy tesztelési fürt és adatbázis](create-cluster-database-csharp.md).
-
 * [Egy teszt tábla](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
 
 ## <a name="install-c-nuget"></a>A C# NuGet telepítése
 
 * Telepítse az [Azure adatkezelő (Kusto) NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-
 * Telepítse a [Microsoft. Azure. Kusto. NETStandard NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/). (Nem kötelező a táblázatos házirendek módosításához)
-
 * Telepítse a [Microsoft. IdentityModel. clients. ActiveDirectory NuGet-csomagot](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)a hitelesítéshez.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 A cikkben szereplő példák futtatásához szüksége van egy Azure Active Directory (Azure AD) alkalmazásra és egyszerű szolgáltatásra, amely hozzáférhet az erőforrásokhoz. Ugyanazzal az Azure AD-alkalmazással is használhatja a hitelesítést [egy tesztelési fürtből és adatbázisból](create-cluster-database-csharp.md#authentication). Ha másik Azure AD-alkalmazást szeretne használni, tekintse meg az [Azure ad](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) -alkalmazás létrehozása az ingyenes Azure ad-alkalmazás létrehozásához és a szerepkör-hozzárendelés hozzáadása az előfizetési hatókörben című témakört. A cikk azt is bemutatja, hogyan kérhető le a `Directory (tenant) ID`, a `Application ID`és a `Client secret`. Előfordulhat, hogy az új Azure AD-alkalmazást az adatbázis rendszerbiztonsági tagjának kell felvennie. További információ: az [Azure adatkezelő Database engedélyeinek kezelése](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).
 
 ## <a name="alter-database-retention-policy"></a>Adatbázis adatmegőrzési szabályzatának módosítása
@@ -161,6 +156,6 @@ await kustoManagementClient.Databases.AddPrincipalsAsync(resourceGroupName, clus
                     }
                 });
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ az adatbázis-és táblázat-házirendekről](https://docs.microsoft.com/azure/kusto/management/policies)

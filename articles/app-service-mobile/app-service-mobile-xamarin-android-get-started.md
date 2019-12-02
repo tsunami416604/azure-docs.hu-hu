@@ -1,25 +1,17 @@
 ---
-title: Bevezetés az Azure Mobile Apps szolgáltatásnak a Xamarin.Android-alkalmazásokkal való használatába
-description: Ezt az oktatóanyagot követve megismerkedhet azokkal a kezdeti lépésekkel, amelyekkel Xamarin Android-alapú fejlesztésre használhatja a Mobile Apps szolgáltatást
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: Ismerkedés a Xamarin. Android-alkalmazásokkal
+description: Ez az oktatóanyag az Azure-Mobile Apps Xamarin Android-fejlesztéshez való használatának megkezdéséhez nyújt útmutatást.
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 038ca0bd7690ac90470d9a739a47d0f634f1297b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 1bac9ac03971765f1afc4f15ff3de6cc4b7d3883
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388475"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668674"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Xamarin.Android-alkalmazás létrehozása
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388475"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag azt ismerteti, hogyan adhat felhőalapú háttérszolgáltatásokat Xamarin.Android-alkalmazásokhoz. További információ: [Mi a Mobile Apps szolgáltatás?](app-service-mobile-value-prop.md).
@@ -59,9 +51,9 @@ Már kiépített egy Azure Mobile Apps-háttérszolgáltatást, amelyet mobil ü
 
 2. Lépjen a [Azure Portalra](https://portal.azure.com/) , és navigáljon a létrehozott mobil alkalmazáshoz. A `Overview` panelen keresse meg azt az URL-címet, amely a Mobile App nyilvános végpontja. Példa – az sitename "test123" neve https://test123.azurewebsites.net lesz.
 
-3. Nyissa meg a `ToDoActivity.cs` fájlt ebben a mappában – xamarin. Android/ZUMOAPPNAME/ToDoActivity. cs. Az alkalmazás neve `ZUMOAPPNAME`.
+3. Nyissa meg a fájlt `ToDoActivity.cs` ebben a mappában – xamarin. Android/ZUMOAPPNAME/ToDoActivity. cs. Az alkalmazás neve `ZUMOAPPNAME`.
 
-4. @No__t – 0 osztályban cserélje le a fenti nyilvános végponttal rendelkező `ZUMOAPPURL` változót.
+4. `ToDoActivity` osztályban cserélje le az `ZUMOAPPURL` változót a fenti nyilvános végpontra.
 
     `const string applicationURL = @"ZUMOAPPURL";`
 

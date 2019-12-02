@@ -7,32 +7,29 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b69cdb1ee04e3824bf5fd20a7db2401161fdf6e7
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 113c039c9b7f0319bb724bcde1432044c0770672
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031668"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667672"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Event hub-adatkapcsolat létrehozása az Azure Adatkezelőhoz a Python használatával
 
 > [!div class="op_single_selector"]
-> * [Portál](ingest-data-event-hub.md)
+> * [Portal](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
+> * [Azure Resource Manager-sablon](data-connection-event-hub-resource-manager.md)
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a betöltést (az adatok betöltését) Event Hubs, IoT hubokból és blob-tárolóba írt blobokból biztosítja. Ebben a cikkben a Python használatával hoz létre egy Event hub-adatkapcsolatot az Azure Adatkezelőhoz.
+Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a betöltést (az adatok betöltését) Event Hubs, IoT hubokból és blob-tárolóba írt blobokból biztosítja. Ebben a cikkben a Python használatával hoz létre egy Event hub-adatkapcsolatot az Azure Adatkezelőhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-
 * [Fürt és adatbázis](create-cluster-database-csharp.md) létrehozása
-
 * [Tábla-és oszlop-hozzárendelés](net-standard-ingest-data.md#create-a-table-on-your-test-cluster) létrehozása
-
 * [Adatbázis-és táblázat-házirendek](database-table-policies-csharp.md) beállítása (nem kötelező)
-
 * Hozzon létre egy [Event hub-t a](ingest-data-event-hub.md#create-an-event-hub)betöltéshez szükséges adattal. 
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]

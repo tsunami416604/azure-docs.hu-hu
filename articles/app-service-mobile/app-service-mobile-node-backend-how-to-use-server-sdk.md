@@ -1,25 +1,17 @@
 ---
-title: A Node. js háttérrendszer-kiszolgáló SDK használata a Mobile Appshoz | Microsoft Docs
+title: A Node. js háttér-kiszolgáló SDK használata
 description: Megtudhatja, hogyan dolgozhat a Azure App Service Mobile Apps Node. js-alapú háttér-kiszolgálói SDK-val.
-services: app-service\mobile
-documentationcenter: ''
-author: elamalani
-manager: elamalani
-editor: ''
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: a3883d233bd621607ec724e0c85734b508195340
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: fe5ced96a74bfbfbacf3ce1874d64711f6db7449
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388662"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668764"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Az Mobile Apps Node. js SDK használata
 
@@ -95,11 +87,11 @@ Minden Mobile Apps Node. js-háttér ExpressJS-alkalmazásként indul el. A Expr
 Ez az alkalmazás egy olyan mobil optimalizált webes API-t hoz létre egyetlen végponttal (`/tables/TodoItem`), amely nem hitelesített hozzáférést biztosít egy alapul szolgáló SQL-adattárhoz egy dinamikus séma használatával. Ez az ügyféloldali kódtár gyors üzembe helyezéséhez használható:
 
 * [Android-ügyfél rövid útmutatója]
-* [Apache Cordova-ügyfél gyors üzembe helyezés]
+* [Apache Cordova-ügyfél rövid útmutatója]
 * [iOS-ügyfél rövid útmutatója]
 * [Windows áruházbeli ügyfél rövid útmutatója]
 * [Xamarin. iOS-ügyfél rövid útmutatója]
-* [Xamarin.Android Client quickstart]
+* [Xamarin. Android-ügyfél rövid útmutatója]
 * [Xamarin. Forms-ügyfél rövid útmutatója]
 
 Az alapszintű alkalmazás kódját a [basicapp-minta a GitHubon]találja.
@@ -144,7 +136,7 @@ A Visual Studio 2015 használatához bővítmény szükséges a Node. js-alkalma
 
 ### <a name="create-node-backend-portal"></a>Node. js-háttér létrehozása a Azure Portal használatával
 
-A [Azure Portal]közvetlenül is létrehozhat egy Mobile apps. Az alábbi lépéseket végrehajthatja, vagy létrehozhat egy ügyfelet és egy kiszolgálót a [Mobile App létrehozása](app-service-mobile-ios-get-started.md) oktatóanyag követésével. Az oktatóanyag az utasítások egyszerűsített verzióját tartalmazza, és a legjobb megoldás a megvalósíthatósági projektekhez.
+A [Azure Portalra]közvetlenül is létrehozhat egy Mobile apps. Az alábbi lépéseket végrehajthatja, vagy létrehozhat egy ügyfelet és egy kiszolgálót a [Mobile App létrehozása](app-service-mobile-ios-get-started.md) oktatóanyag követésével. Az oktatóanyag az utasítások egyszerűsített verzióját tartalmazza, és a legjobb megoldás a megvalósíthatósági projektekhez.
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
@@ -341,7 +333,7 @@ Az adatbázis elérése TCP/IP-kapcsolaton keresztül. Adja meg a kapcsolatok fe
 
 ### <a name="howto-config-localdev"></a>A projekt konfigurálása helyi fejlesztéshez
 
-Mobile Apps beolvas egy *azureMobile. js* nevű JavaScript-fájlt a helyi fájlrendszerből. Ne használja ezt a fájlt az Mobile Apps SDK éles környezetben való konfigurálásához. Ehelyett használja a [Azure Portal] **alkalmazás beállításait** .
+Mobile Apps beolvas egy *azureMobile. js* nevű JavaScript-fájlt a helyi fájlrendszerből. Ne használja ezt a fájlt az Mobile Apps SDK éles környezetben való konfigurálásához. Ehelyett használja a [Azure Portalra] **alkalmazás beállításait** .
 
 A azureMobile. js fájlnak exportálnia kell egy konfigurációs objektumot. A leggyakoribb beállítások a következők:
 
@@ -369,25 +361,25 @@ module.exports = {
 };
 ```
 
-Javasoljuk, hogy vegye fel a **azureMobile. js** fájlt a **. gitignore** fájlba (vagy más forráskód-vezérlőelem figyelmen kívül hagyása), hogy megakadályozza a jelszavak felhőben történő tárolását. Az **alkalmazás beállításaiban** mindig konfigurálja a termelési beállításokat a [Azure Portal]belül.
+Javasoljuk, hogy vegye fel a **azureMobile. js** fájlt a **. gitignore** fájlba (vagy más forráskód-vezérlőelem figyelmen kívül hagyása), hogy megakadályozza a jelszavak felhőben történő tárolását. Az **alkalmazás beállításaiban** mindig konfigurálja a termelési beállításokat a [Azure Portalra]belül.
 
 ### <a name="howto-appsettings"></a>Alkalmazásbeállítások konfigurálása a Mobile App számára
 
-A azureMobile. js fájl legtöbb beállítása egyenértékű alkalmazás-beállítást tartalmaz a [Azure Portal]. A következő lista használatával konfigurálhatja az alkalmazást az **alkalmazás beállításaiban**:
+A azureMobile. js fájl legtöbb beállítása egyenértékű alkalmazás-beállítást tartalmaz a [Azure Portalra]. A következő lista használatával konfigurálhatja az alkalmazást az **alkalmazás beállításaiban**:
 
-| Alkalmazás beállítása | azureMobile.js setting | Leírás | Érvényes értékek |
+| Alkalmazás beállítása | azureMobile. js-beállítás | Leírás | Érvényes értékek |
 |:--- |:--- |:--- |:--- |
 | **MS_MobileAppName** |név |Az alkalmazás neve |sztring |
 | **MS_MobileLoggingLevel** |naplózási szint |A naplózandó üzenetek minimális naplózási szintje |hiba, figyelmeztetés, információ, részletes, hibakeresés, buta |
-| **MS_DebugMode** |debug |Hibakeresési mód engedélyezése vagy letiltása |true, false |
+| **MS_DebugMode** |debug |Hibakeresési mód engedélyezése vagy letiltása |igaz, hamis |
 | **MS_TableSchema** |az Adatséma |SQL-táblák alapértelmezett sémájának neve |karakterlánc (alapértelmezett: dbo) |
-| **MS_DynamicSchema** |az dynamicSchema. |Hibakeresési mód engedélyezése vagy letiltása |true, false |
-| **MS_DisableVersionHeader** |verzió (nem definiált értékre van állítva) |Letiltja az X-ZUMO-Server-Version fejlécet |true, false |
-| **MS_SkipVersionCheck** |skipversioncheck |Letiltja az ügyfél API-verziójának ellenőrzését |true, false |
+| **MS_DynamicSchema** |az dynamicSchema. |Hibakeresési mód engedélyezése vagy letiltása |igaz, hamis |
+| **MS_DisableVersionHeader** |verzió (nem definiált értékre van állítva) |Letiltja az X-ZUMO-Server-Version fejlécet |igaz, hamis |
+| **MS_SkipVersionCheck** |skipversioncheck |Letiltja az ügyfél API-verziójának ellenőrzését |igaz, hamis |
 
 Alkalmazás beállításának beállítása:
 
-1. Bejelentkezés az [Azure Portal].
+1. Jelentkezzen be az [Azure Portalra].
 1. Válassza ki az **összes erőforrás** vagy **app Services**lehetőséget, majd válassza ki a mobil alkalmazás nevét.
 1. A **Beállítások** ablaktábla alapértelmezés szerint megnyílik. Ha nem, válassza a **Beállítások**lehetőséget.
 1. Az **általános** menüben válassza az **Alkalmazásbeállítások**lehetőséget.
@@ -404,7 +396,7 @@ A legtöbb alkalmazás beállításainak módosításához a szolgáltatás újr
 
 A Azure SQL Database adattárakként való használata azonos az összes Azure App Service alkalmazás típusával. Ha még nem tette meg, kövesse az alábbi lépéseket Mobile Apps háttér létrehozásához:
 
-1. Bejelentkezés az [Azure Portal].
+1. Jelentkezzen be az [Azure Portalra].
 1. Az ablak bal felső részén válassza az **+ új** gombot > **web és mobil** > **Mobile App**elemet, majd adja meg a Mobile apps háttér nevét.
 1. Az **erőforráscsoport** mezőben adja meg az alkalmazás nevének megadását.
 1. Az alapértelmezett App Service terv van kiválasztva. Ha módosítani szeretné a App Service tervet:
@@ -442,7 +434,7 @@ Az adatbázis létrehozása eltarthat néhány percig. A központi telepítés e
 
 ### <a name="howto-tables-auth"></a>A táblákhoz való hozzáférés hitelesítésének megkövetelése
 
-Ha App Service hitelesítést kíván használni a `tables` végponttal, először konfigurálnia kell App Service hitelesítést a [Azure Portal] . További információkért tekintse meg a használni kívánt identitás-szolgáltató konfigurációs útmutatóját:
+Ha App Service hitelesítést kíván használni a `tables` végponttal, először konfigurálnia kell App Service hitelesítést a [Azure Portalra] . További információkért tekintse meg a használni kívánt identitás-szolgáltató konfigurációs útmutatóját:
 
 * [Azure Active Directory hitelesítés konfigurálása]
 * [Facebook-hitelesítés konfigurálása]
@@ -753,7 +745,7 @@ Ha hitelesített ügyfélről regisztrál leküldéses értesítéseket, a regis
 
 Az `/tables` végponton keresztül az adatelérési API mellett Mobile Apps egyéni API-lefedettséget is biztosíthat. Az egyéni API-k hasonló módon vannak definiálva a táblázat-definíciók számára, és hozzáférhetnek ugyanahhoz a szolgáltatáshoz, beleértve a hitelesítést is.
 
-Ha egyéni API-val szeretne App Service hitelesítést használni, először konfigurálnia kell App Service hitelesítést a [Azure Portal] . További információkért tekintse meg a használni kívánt identitás-szolgáltató konfigurációs útmutatóját:
+Ha egyéni API-val szeretne App Service hitelesítést használni, először konfigurálnia kell App Service hitelesítést a [Azure Portalra] . További információkért tekintse meg a használni kívánt identitás-szolgáltató konfigurációs útmutatóját:
 
 * [Azure Active Directory hitelesítés konfigurálása]
 * [Facebook-hitelesítés konfigurálása]
@@ -907,7 +899,7 @@ A Node. js Mobile Apps háttér hibaelhárításának megkezdéséhez tekintse m
 * [Diagnosztikai naplózás engedélyezése Azure App Service]
 * [A Visual Studióban Azure App Service hibakeresése]
 
-A Node. js-alkalmazások számos diagnosztikai naplózási eszközhöz férnek hozzá. Belsőleg a Mobile Apps Node. js SDK a [Winston] használja a diagnosztikai naplózáshoz. A naplózás automatikusan engedélyezve van, ha engedélyezi a hibakeresési módot, vagy ha a [Azure Portal]a `MS_DebugMode` alkalmazás beállítása igaz értékre van állítva. A generált naplók a [Azure Portal]diagnosztikai naplóiban jelennek meg.
+A Node. js-alkalmazások számos diagnosztikai naplózási eszközhöz férnek hozzá. Belsőleg a Mobile Apps Node. js SDK a [Winston] használja a diagnosztikai naplózáshoz. A naplózás automatikusan engedélyezve van, ha engedélyezi a hibakeresési módot, vagy ha a [Azure Portalra]a `MS_DebugMode` alkalmazás beállítása igaz értékre van állítva. A generált naplók a [Azure Portalra]diagnosztikai naplóiban jelennek meg.
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png
@@ -920,10 +912,10 @@ A Node. js-alkalmazások számos diagnosztikai naplózási eszközhöz férnek h
 
 <!-- URLs -->
 [Android-ügyfél rövid útmutatója]: app-service-mobile-android-get-started.md
-[Apache Cordova-ügyfél gyors üzembe helyezés]: app-service-mobile-cordova-get-started.md
+[Apache Cordova-ügyfél rövid útmutatója]: app-service-mobile-cordova-get-started.md
 [iOS-ügyfél rövid útmutatója]: app-service-mobile-ios-get-started.md
 [Xamarin. iOS-ügyfél rövid útmutatója]: app-service-mobile-xamarin-ios-get-started.md
-[Xamarin.Android Client quickstart]: app-service-mobile-xamarin-android-get-started.md
+[Xamarin. Android-ügyfél rövid útmutatója]: app-service-mobile-xamarin-android-get-started.md
 [Xamarin. Forms-ügyfél rövid útmutatója]: app-service-mobile-xamarin-forms-get-started.md
 [Windows áruházbeli ügyfél rövid útmutatója]: app-service-mobile-windows-store-dotnet-get-started.md
 [Offline adatszinkronizálás]: app-service-mobile-offline-data-sync.md
@@ -943,7 +935,7 @@ A Node. js-alkalmazások számos diagnosztikai naplózási eszközhöz férnek h
 [Express]: https://expressjs.com/
 [Swagger]: https://swagger.io/
 
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/
 [OData]: https://www.odata.org
 [Ígéret]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [basicapp-minta a GitHubon]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app

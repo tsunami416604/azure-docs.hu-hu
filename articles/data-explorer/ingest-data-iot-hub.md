@@ -7,30 +7,28 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 9f1bd795af2802af642d48b4a16a55425c5f4c7f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cbad0e5409dfaa25eda040e3c7409b49728a4169
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028474"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667411"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Adatok beolvasása IoT Hubból az Azure Adatkezelőba (előzetes verzió)
 
 > [!div class="op_single_selector"]
-> * [Portál](ingest-data-iot-hub.md)
+> * [Portal](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
+> * [Azure Resource Manager-sablon](data-connection-iot-hub-resource-manager.md)
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a IoT Hub, a big data streaming platform és a IoT betöltési szolgáltatás által betöltött adatok betöltését biztosítja.
+Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a IoT Hub, a big data streaming platform és a IoT betöltési szolgáltatás által betöltött adatok betöltését biztosítja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-
 * Hozzon létre egy *testdb*adatbázis-névvel rendelkező [tesztelési fürtöt és adatbázist](create-cluster-database-portal.md) .
-
 * [Egy minta alkalmazás](https://github.com/Azure-Samples/azure-iot-samples-csharp) és egy eszköz szimulálása.
-
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) a minta alkalmazás futtatásához.
 
 ## <a name="create-an-iot-hub"></a>IOT hub létrehozása
@@ -97,7 +95,7 @@ Most csatlakozik az Azure Adatkezelő IoT Hub. Ha ez a csatlakozás befejeződö
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Tábla | *TestTable* | A **testdb**-ben létrehozott tábla. |
+    | Table | *TestTable* | A **testdb**-ben létrehozott tábla. |
     | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, SOHSV, SCSV, TSV, TSVE és TXT. |
     | Oszlopleképezés | *TestMapping* | A **testdb**-ben létrehozott [leképezés](/azure/kusto/management/mappings) , amely leképezi a bejövő JSON-adattípusokat a **testdb**tartozó oszlopnevek és adattípusok számára. JSON-, többsoros JSON-és AVRO szükséges, és nem kötelező más formátumokhoz.|
     | | |
@@ -116,7 +114,7 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
 
 1. Nyissa meg a **SimulatedDevice.cs** fájlt egy Ön által választott szövegszerkesztőben.
 
-    Cserélje le a `s_connectionString` változó értékét az eszköz-kapcsolódási sztringre az [eszköz regisztrálása a IoT hub](#register-a-device-to-the-iot-hub). Ezután mentse a **SimulatedDevice.cs** fájl módosításait.
+    Cserélje le a `s_connectionString` változó értékét az eszköz kapcsolódási karakterláncára az [eszköz regisztrálása a IoT hub](#register-a-device-to-the-iot-hub). Ezután mentse a **SimulatedDevice.cs** fájl módosításait.
 
 1. Futtassa az alábbi parancsokat a helyi terminálablakban a szimulálteszköz-alkalmazáshoz szükséges csomagok telepítéséhez:
 
@@ -177,6 +175,6 @@ Ha nem tervezi a IoT Hub újbóli használatát, törölje a **test-hub-RG-** t,
 
 1. Az új ablakban írja be a törölni kívánt erőforráscsoport nevét (*test-hub-rg*), majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Adatkezelő lekérdezése](web-query-data.md)

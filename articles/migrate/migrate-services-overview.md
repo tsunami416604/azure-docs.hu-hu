@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 04e6eddb86d34089db0243ff102d5ebd5ee77e43
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 5843e6a5669cd90cdc0572e7a104c4fdf70ac2b3
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666120"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669132"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -49,7 +49,7 @@ A natív Azure-eszközökön kívül a Azure Migrate számos ISV-ajánlattal is 
 [A kölcsönzés technológiája](https://www.corenttech.com/AzureMigrate/) | Kiszolgálók értékelése és migrálása
 [Eszköz 42](https://docs.device42.com/) | Kiszolgálók értékelése
 [Tóparti](https://go.microsoft.com/fwlink/?linkid=2104908) | VDI értékelése
-[RackWare](https://www.rackwareinc.com/cloud-migration) | Kiszolgálók migrálása
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Kiszolgálók migrálása
 [Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Kiszolgálók értékelése
 [UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Kiszolgálók és adatbázisok értékelése
 

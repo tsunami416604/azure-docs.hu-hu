@@ -1,25 +1,17 @@
 ---
-title: Hitelesítés hozzáadása az Apache Cordova és a Mobile Apps között | Microsoft Docs
-description: Megtudhatja, hogyan használhatja a Mobile Apps a Azure App Serviceban az Apache Cordova-alkalmazás felhasználóinak a különböző identitás-szolgáltatók, például a Google, a Facebook, a Twitter és a Microsoft segítségével történő hitelesítéséhez.
-services: app-service\mobile
-documentationcenter: javascript
-author: elamalani
-manager: crdun
-editor: ''
+title: Hitelesítés hozzáadása az Apache Cordova-ben
+description: Megtudhatja, hogyan használhatja a Mobile Apps a Azure App Serviceban az Apache Cordova-alkalmazás felhasználóinak hitelesítésére, például a Google, a Facebook, a Twitter és a Microsoft számára.
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: c42cf2c944457b6b738578f738cd338977df8185
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f85c8e4f8eedccf3039038308f2262727fb18197
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388810"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668555"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Hitelesítés hozzáadása az Apache Cordova-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388810"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="summary"></a>Összefoglalás
 Ebben az oktatóanyagban egy támogatott identitás-szolgáltató használatával adja hozzá a hitelesítést az Apache Cordova-beli ToDoList gyors üzembe helyezési projekthez. Ez az oktatóanyag az első [Ismerkedés a Mobile Apps] oktatóanyagon alapul, amelyet először végre kell hajtania.
@@ -65,7 +57,7 @@ Ezután frissítse az alkalmazást a felhasználók hitelesítéséhez, mielőtt
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'
             data: gap: https://login.microsoftonline.com https://yourapp.azurewebsites.net; style-src 'self'">
 
-    Cserélje le a `https://login.microsoftonline.com` értéket a OAuth gazdagépre az előző táblázatból.  A Content-Security – Policy meta címkével kapcsolatos további információkért tekintse meg a [Content-Security – Policy dokumentáció].
+    Cserélje le a `https://login.microsoftonline.com`t a OAuth gazdagépre az előző táblázatból.  A Content-Security – Policy meta címkével kapcsolatos további információkért tekintse meg a [Content-Security – Policy dokumentáció].
 
     Egyes hitelesítésszolgáltatók nem igénylik a tartalom-biztonsági házirend módosítását a megfelelő mobileszközökön való használatkor.  Például a Google-hitelesítés androidos eszközön való használata esetén nem szükséges a Content-Security-Policy módosítása.
 
@@ -95,7 +87,7 @@ Ezután frissítse az alkalmazást a felhasználók hitelesítéséhez, mielőtt
 
     A login () metódus elindítja a hitelesítést a szolgáltatóval. A login () metódus egy aszinkron függvény, amely egy JavaScript-ígéretet ad vissza.  Az inicializálás többi része az ígéretre adott válaszon belül kerül, így a rendszer nem hajtja végre, amíg a bejelentkezési () metódus be nem fejeződik.
 
-4. Az imént hozzáadott kódban cserélje le a `SDK_Provider_Name` értéket a bejelentkezési szolgáltatójának nevére. Azure Active Directory például a következőt használja: `client.login('aad')`.
+4. Az imént hozzáadott kódban cserélje le a `SDK_Provider_Name` nevet a bejelentkezési szolgáltatójának nevére. Azure Active Directory esetében például használja a `client.login('aad')`.
 5. Futtassa a projektet.  A projekt inicializálásának befejeződése után az alkalmazás megjeleníti a OAuth bejelentkezési oldalát a kiválasztott hitelesítési szolgáltatóhoz.
 
 ## <a name="next-steps"></a>Következő lépések

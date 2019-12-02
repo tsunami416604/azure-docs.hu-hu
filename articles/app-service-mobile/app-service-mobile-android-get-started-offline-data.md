@@ -1,24 +1,17 @@
 ---
-title: Offline szinkronizálás engedélyezése az Azure Mobile alkalmazásban (Android)
-description: Megtudhatja, hogyan használhatja a App Service Mobile Appst az offline adatkapcsolatok gyorsítótárazásához és szinkronizálásához az Android-alkalmazásokban
-documentationcenter: android
-author: elamalani
-manager: crdun
-services: app-service\mobile
+title: Offline szinkronizálás engedélyezése (Android)
+description: Megtudhatja, hogyan használhatja a App Service Mobile Appst az offline adatkapcsolatok gyorsítótárazásához és az Android-alkalmazásban való szinkronizálásához.
 ms.assetid: 32a8a079-9b3c-4faf-8588-ccff02097224
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 9c845c09c6b05436017f98323dfa78185cd58aa6
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8449b4f92636a7b73d07c34515f33dc9dc6816ab
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388983"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668929"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Az Android Mobile-alkalmazás offline szinkronizálásának engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

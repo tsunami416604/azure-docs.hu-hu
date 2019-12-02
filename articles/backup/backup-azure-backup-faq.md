@@ -3,12 +3,12 @@ title: Válaszok a gyakori kérdésekre
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: f95a4e7e9084c304838b01bdfaceee261d8151cf
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4005b171ef61fa02821b4a32db3be26cfb94c9ff
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173229"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668079"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – gyakran ismételt kérdések
 
@@ -88,7 +88,7 @@ Windows Server 2016 64 bit | Standard, Datacenter, Essentials | A legújabb szer
 Windows Server 2012 R2 64 bit | Standard, Datacenter, Foundation | A legújabb szervizcsomagokkal/frissítésekkel.
 Windows Server 2012 64 bit | Datacenter, Foundation, Standard | A legújabb szervizcsomagokkal/frissítésekkel.
 Windows Storage Server 2016 64 bit | Standard, Workgroup | A legújabb szervizcsomagokkal/frissítésekkel.
-Windows Storage Server 2012 R2 64 bit | Standard, Workgroup, Essential | A legújabb szervizcsomagokkal/frissítésekkel.
+Windows Storage Server 2012 R2 64 bit | Standard, munkacsoport, alapvető | A legújabb szervizcsomagokkal/frissítésekkel.
 Windows Storage Server 2012 64 bit | Standard, Workgroup | A legújabb szervizcsomagokkal/frissítésekkel.
 Windows Server 2008 R2 SP1 64 bites | Standard, Enterprise, Datacenter, Foundation | A legújabb frissítésekkel.
 Windows Server 2008 64 bit | Standard, Enterprise, Datacenter | A legújabb frissítésekkel.
@@ -104,7 +104,7 @@ A méretek korlátai a következők:
 Operációs rendszer/számítógép | Adatforrás maximális mérete
 --- | ---
 Windows 8 vagy újabb | 54 400 GB
-Windows 7 |1700 GB
+Windows 7 rendszeren |1700 GB
 Windows Server 2012 vagy újabb | 54 400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
 Azure VM | 16 adatlemez<br/><br/> 4095 GB-ig elmentett adatlemez
@@ -116,9 +116,9 @@ Az alábbi táblázat megmagyarázza, hogy az egyes adatforrásméretek hogyan l
 **Adatforrás** | **Részletek**
 --- | ---
 Kötet |Azon adatok mennyisége, amelyekről biztonsági mentés készül egy köteten lévő virtuális gépről.
-SQL Server-adatbázis |A biztonsági mentés alatt álló egypéldányos SQL-adatbázis mérete.
+Adatbázis SQL Server |A biztonsági mentés alatt álló egypéldányos SQL-adatbázis mérete.
 SharePoint | A biztonsági mentés alatt álló SharePoint-farmon belüli tartalom-és konfigurációs adatbázisok összege.
-Exchange |Egy biztonsági mentés alatt álló Exchange-kiszolgálón lévő Exchange-adatbázisok összege.
+Adatcsere |Egy biztonsági mentés alatt álló Exchange-kiszolgálón lévő Exchange-adatbázisok összege.
 BMR/rendszerállapot |A BMR vagy a számítógép rendszerállapotának minden egyes példánya, amelyről biztonsági mentés készül.
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Korlátozva van-e a Recovery Services-tárolóval biztonsági mentésre kerülő adatmennyiség?
@@ -176,7 +176,7 @@ Az Azure Backup tárolási architektúrája ezen két megoldás előnyeit ötvö
 
 Védett példányonként 9999 helyreállítási pontot hozhat létre. A védett példányok olyan számítógépek, kiszolgálók (fizikai vagy virtuális) vagy munkaterhelések, amelyek az Azure-ba készülnek.
 
-- További információ a [biztonsági mentésről és a megőrzésről](./backup-overview.md#backup-and-retention).
+- További információ a [biztonsági mentésről és a megőrzésről](./backup-support-matrix.md).
 
 ### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Hányszor lehet helyreállítani az Azure-ba mentett adatokat?
 

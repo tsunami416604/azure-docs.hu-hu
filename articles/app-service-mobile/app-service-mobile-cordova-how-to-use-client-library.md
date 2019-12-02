@@ -1,25 +1,17 @@
 ---
-title: Az Apache Cordova beépülő modul használata az Azure Mobile Apps
+title: Az Apache Cordova beépülő modul használata
 description: Az Apache Cordova beépülő modul használata az Azure Mobile Apps
-services: app-service\mobile
-documentationcenter: javascript
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: a56a1ce4-de0c-4f3c-8763-66252c52aa59
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 25bff77da6c2bd89916fe40ebb153ff9631e62eb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ecca8f719a01abe68b368987fce4ea883193e844
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388793"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668502"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Az Apache Cordova ügyféloldali kódtár használata az Azure-ban Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388793"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez az útmutató bemutatja, hogyan végezheti el a gyakori forgatókönyveket az [Apache Cordova beépülő modul az Azure Mobile Appshoz]használatával. Ha még nem ismeri az Azure Mobile Appst, először fejezze be az [azure Mobile Apps gyorskonfigurálás] a háttérrendszer létrehozásához, egy tábla létrehozásához és egy előre elkészített Apache Cordova-projekt letöltéséhez. Ebben az útmutatóban az ügyféloldali Apache Cordova beépülő modulra fogunk összpontosítani.
@@ -59,7 +51,7 @@ cd projectName
 ionic plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-Adja hozzá a következő sorokat a `app.component.ts` értékhez az ügyfél-objektum létrehozásához:
+Adja hozzá a következő sorokat a `app.component.ts`hoz az ügyfél-objektum létrehozásához:
 
 ```typescript
 declare var WindowsAzure: any;
@@ -73,7 +65,7 @@ ionic platform add browser
 ionic run browser
 ```
 
-Az Azure Mobile Apps Cordova beépülő modulja az ionos v1 és v2 alkalmazásokat egyaránt támogatja.  Csak az ionos v2-alkalmazások igénylik a `WindowsAzure` objektum további deklarációját.
+Az Azure Mobile Apps Cordova beépülő modulja az ionos v1 és v2 alkalmazásokat egyaránt támogatja.  Csak az ionos v2-alkalmazások igénylik a `WindowsAzure` objektumra vonatkozó további deklarációt.
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
@@ -112,7 +104,7 @@ Kövesse az alábbi utasításokat a helyi beállítások a konfigurációhoz va
              "https://localhost:3000"
          ],
 
-    Cserélje le az URL-címeket a szolgáltatás URL-címeire.  Ilyenek például a következők: `http://localhost:3000` (a Node. js minta szolgáltatáshoz), vagy `http://localhost:4400` (a lüktető szolgáltatás esetében).  Ezek az URL-címek például a helyzetek, például a példákban említett szolgáltatások esetében eltérőek lehetnek.
+    Cserélje le az URL-címeket a szolgáltatás URL-címeire.  Ilyenek például a következők: `http://localhost:3000` (a Node. js-minta szolgáltatáshoz), vagy `http://localhost:4400` (a lüktető szolgáltatáshoz).  Ezek az URL-címek például a helyzetek, például a példákban említett szolgáltatások esetében eltérőek lehetnek.
 8. Kattintson a képernyő jobb felső sarkában található **olvasás/írás** gombra.
 9. Kattintson a zöld **put** gombra.
 
@@ -130,7 +122,7 @@ Adja hozzá ezeket a visszacsatolási URL-címeket is a App Service CORS-beáll�
 Az új beállítások érvénybe léptetéséhez körülbelül 10-15 másodperc szükséges.
 
 ## <a name="register-for-push"></a>Útmutató: a leküldéses értesítések regisztrálása
-Telepítse a [telefon-beépülő modult] a leküldéses értesítések kezeléséhez.  Ez a beépülő modul egyszerűen hozzáadható a parancssorban található `cordova plugin add` paranccsal, vagy a Visual studión belül a git beépülő modul telepítőjének használatával.  Az Apache Cordova-alkalmazás következő kódja regisztrálja az eszközt a leküldéses értesítésekhez:
+Telepítse a [telefon-beépülő modult] a leküldéses értesítések kezeléséhez.  Ez a beépülő modul egyszerűen hozzáadható a parancssorban a `cordova plugin add` parancs használatával, vagy a Visual studión belüli git beépülő modullal.  Az Apache Cordova-alkalmazás következő kódja regisztrálja az eszközt a leküldéses értesítésekhez:
 
 ```javascript
 var pushOptions = {

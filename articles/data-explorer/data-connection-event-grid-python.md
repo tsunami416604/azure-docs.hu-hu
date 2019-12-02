@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 11ae18714d1806aac1cc4f55ce6511fc12498440
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 16f944146cf97666fd9866607ff436a49d5fb031
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800442"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667724"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-python"></a>Event Grid adatkapcsolatok létrehozása az Azure Adatkezelőhoz a Python használatával
 
@@ -20,19 +20,16 @@ ms.locfileid: "72800442"
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
+> * [Azure Resource Manager-sablon](data-connection-event-grid-resource-manager.md)
 
 Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a betöltést (az adatok betöltését) Event Hubs, IoT hubokból és blob-tárolóba írt blobokból biztosítja. Ebben a cikkben a Python használatával hoz létre Event Grid adatösszekötő Azure Adatkezelő.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-
 * [Fürt és adatbázis](create-cluster-database-csharp.md) létrehozása
-
 * [Tábla-és oszlop-hozzárendelés](net-standard-ingest-data.md#create-a-table-on-your-test-cluster) létrehozása
-
 * [Adatbázis-és táblázat-házirendek](database-table-policies-csharp.md) beállítása (nem kötelező)
-
 * Hozzon létre egy [Event Grid-előfizetéssel rendelkező Storage-fiókot](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account).
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
@@ -91,7 +88,7 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | client_secret | *XXXXXXXXXXXXXX* | Az alkalmazás ügyfél-titka, amely hozzáférhet a bérlő erőforrásaihoz. |
 | resource_group_name | *testrg* | A fürtöt tartalmazó erőforráscsoport neve.|
 | cluster_name | *mykustocluster* | A fürt neve.|
-| adatbázisnév | *mykustodatabase* | A fürtben lévő céladatbázis neve.|
+| database_name | *mykustodatabase* | A fürtben lévő céladatbázis neve.|
 | data_connection_name | *myeventhubconnect* | Az adathálózat kívánt neve.|
 | table_name | *StormEvents* | A céladatbázis neve a célként megadott adatbázisban.|
 | mapping_rule_name | *StormEvents_CSV_Mapping* | A célként megadott táblához kapcsolódó oszlop-hozzárendelés neve|
