@@ -6,20 +6,20 @@ author: bmitchell287
 manager: barbkess
 ms.devlang: java
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a3e0bbb414dd1f47e70de6b7a25a84a2b27c0dc7
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
-ms.translationtype: HT
+ms.openlocfilehash: edb8f25ff1e4fa01e905c3ae5c7d0ec7ab58f8bb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671854"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705935"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linuxos Java-alkalmazás konfigurálása Azure App Servicehoz
 
-A Linuxon Azure App Service lehetővé teszi a Java-fejlesztők számára, hogy a Tomcat vagy Java Standard Edition (SE) csomagban lévő webalkalmazásokat egy teljes körűen felügyelt Linux-alapú szolgáltatáson keresztül gyorsan építsék, telepítsék és méretezhetik. Alkalmazásokat telepíthet a Maven beépülő modulokból a parancssorból vagy olyan szerkesztőkből, mint például a IntelliJ, az Eclipse vagy a Visual Studio code.
+A Linuxon Azure App Service lehetővé teszi a Java-fejlesztők számára a Tomcat-, WildFly-vagy Java Standard Edition-(SE-) csomagolt webalkalmazások gyors fejlesztését, üzembe helyezését és méretezését egy teljes körűen felügyelt Linux-alapú szolgáltatáson. Alkalmazásokat telepíthet a Maven beépülő modulokból a parancssorból vagy olyan szerkesztőkből, mint például a IntelliJ, az Eclipse vagy a Visual Studio code.
 
 Ez az útmutató olyan Java-fejlesztőknek nyújt főbb fogalmakat és útmutatást, amelyek a App Service beépített Linux-tárolóját használják. Ha még soha nem használta a Azure App Servicet, először kövesse a [Java](quickstart-java.md) gyors üzembe helyezést és a [Java-t a PostgreSQL oktatóanyaggal](tutorial-java-enterprise-postgresql-app.md) .
 
@@ -50,7 +50,7 @@ További információ: [stream-naplók Cloud Shellban](../troubleshoot-diagnosti
 
 ### <a name="app-logging"></a>Alkalmazás naplózása
 
-Az Azure Portal vagy az [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) -n keresztül történő [alkalmazás-naplózás](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) engedélyezésével beállíthatja, hogy a app Service az alkalmazás szabványos konzoljának kimenetét és standard konzoljának hibáit a helyi fájlrendszerbe vagy az Azure-Blob Storageba írja. A helyi App Service filesystem-példányra való naplózás a konfigurálás után 12 órával le van tiltva. Ha nagyobb adatmegőrzésre van szüksége, konfigurálja úgy az alkalmazást, hogy egy blob Storage-tárolóba írja a kimenetet. A Java-és a Tomcat-alkalmazás naplói a */Home/LogFiles/Application/* könyvtárban találhatók.
+Az Azure Portal vagy az [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) -n keresztül történő [alkalmazás-naplózás](../troubleshoot-diagnostic-logs.md?toc=/azure/app-service/containers/toc.json#enable-application-logging-windows) engedélyezésével beállíthatja, hogy a app Service az alkalmazás szabványos konzoljának kimenetét és standard konzoljának hibáit a helyi fájlrendszerbe vagy az Azure-Blob Storageba írja. A helyi App Service filesystem-példányra való naplózás a konfigurálás után 12 órával le van tiltva. Ha nagyobb adatmegőrzésre van szüksége, konfigurálja úgy az alkalmazást, hogy egy blob Storage-tárolóba írja a kimenetet. A Java-és a Tomcat-alkalmazás naplói a */Home/LogFiles/Application/* könyvtárban találhatók.
 
 Ha az alkalmazás [Logback](https://logback.qos.ch/) -t vagy [Log4j](https://logging.apache.org/log4j) -t használ a nyomkövetéshez, továbbíthatja ezeket a nyomkövetéseket az Azure Application Insightsba való áttelepítéshez a naplózási keretrendszer konfigurációs utasításait követve, a [Java-nyomkövetési naplók megismeréséhez Application Insights](/azure/application-insights/app-insights-java-trace-logs).
 
@@ -105,15 +105,15 @@ A [FTPS](../deploy-ftp.md) használatával töltse le a JFR-fájlt a helyi gépr
 
 A Linux rendszerhez készült Azure App Service a Azure Portal és a CLI használatával támogatja a Box finomhangolását és testreszabását. Tekintse át a következő cikkeket a nem Java-specifikus webalkalmazás-konfigurációhoz:
 
-- [Alkalmazásbeállítások konfigurálása](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
-- [Egyéni tartomány beállítása](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [SSL-kötések konfigurálása](../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [CDN hozzáadása](../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Alkalmazásbeállítások konfigurálása](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings)
+- [Egyéni tartomány beállítása](../app-service-web-tutorial-custom-domain.md?toc=/azure/app-service/containers/toc.json)
+- [SSL-kötések konfigurálása](../configure-ssl-bindings.md?toc=/azure/app-service/containers/toc.json)
+- [CDN hozzáadása](../../cdn/cdn-add-to-web-app.md?toc=/azure/app-service/containers/toc.json)
 - [A kudu hely konfigurálása](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
 ### <a name="set-java-runtime-options"></a>Java-futtatókörnyezet beállításainak megadása
 
-Ha a Tomcat és a Java SE környezetekben lévő lefoglalt memóriát vagy egyéb JVM-futtatókörnyezetet is meg szeretné határozni, hozzon létre egy `JAVA_OPTS` nevű [alkalmazás-beállítást](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) a beállításokkal. App Service a Linux indításakor ezt a beállítást környezeti változóként adja át a Java futtatókörnyezetnek.
+Ha a Tomcat és a Java SE környezetekben lévő lefoglalt memóriát vagy egyéb JVM-futtatókörnyezetet is meg szeretné határozni, hozzon létre egy `JAVA_OPTS` nevű [alkalmazás-beállítást](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings) a beállításokkal. App Service a Linux indításakor ezt a beállítást környezeti változóként adja át a Java futtatókörnyezetnek.
 
 A Azure Portal a webalkalmazás **Alkalmazásbeállítások** területén hozzon létre egy új, `JAVA_OPTS` nevű alkalmazás-beállítást, amely tartalmazza a további beállításokat, például a `-Xms512m -Xmx1204m`.
 
@@ -184,11 +184,11 @@ A Linux App Service-on futó Java-alkalmazásokhoz ugyanaz a [biztonsági eljár
 
 ### <a name="authenticate-users-easy-auth"></a>Felhasználók hitelesítése (egyszerű hitelesítés)
 
-Az alkalmazás hitelesítésének beállítása a Azure Portal a **hitelesítés és engedélyezés** lehetőséggel. Itt engedélyezheti a hitelesítést Azure Active Directory vagy közösségi bejelentkezéssel, például a Facebook, a Google vagy a GitHub használatával. Azure Portal konfiguráció csak egyetlen hitelesítési szolgáltató konfigurálásakor működik. További információ: [a app Service alkalmazás konfigurálása Azure Active Directory bejelentkezési adatok használatára](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) és a kapcsolódó cikkek más identitás-szolgáltatóknak való használatára. Ha több bejelentkezési szolgáltatót is engedélyeznie kell, kövesse az [app Service-hitelesítés testreszabása](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) című cikk utasításait.
+Az alkalmazás hitelesítésének beállítása a Azure Portal a **hitelesítés és engedélyezés** lehetőséggel. Itt engedélyezheti a hitelesítést Azure Active Directory vagy közösségi bejelentkezéssel, például a Facebook, a Google vagy a GitHub használatával. Azure Portal konfiguráció csak egyetlen hitelesítési szolgáltató konfigurálásakor működik. További információ: [a app Service alkalmazás konfigurálása Azure Active Directory bejelentkezési adatok használatára](../configure-authentication-provider-aad.md?toc=/azure/app-service/containers/toc.json) és a kapcsolódó cikkek más identitás-szolgáltatóknak való használatára. Ha több bejelentkezési szolgáltatót is engedélyeznie kell, kövesse az [app Service-hitelesítés testreszabása](../app-service-authentication-how-to.md?toc=/azure/app-service/containers/toc.json) című cikk utasításait.
 
-#### <a name="tomcat-and-wildfly"></a>Tomcat és Wildfly
+#### <a name="tomcat-and-wildfly"></a>Tomcat és WildFly
 
-A Tomcat-vagy Wildfly-alkalmazás közvetlenül a servletből fér hozzá a felhasználó jogcímeihez, ha a fő objektumot egy Térkép objektummá helyezi. A Térkép objektum az egyes jogcím-típusokat az adott típusú jogcímek gyűjteményéhez rendeli. Az alábbi kódban `request` a `HttpServletRequest`egy példánya.
+A Tomcat-vagy WildFly-alkalmazás közvetlenül a servletből fér hozzá a felhasználó jogcímeihez, ha a fő objektumot egy Térkép objektummá helyezi. A Térkép objektum az egyes jogcím-típusokat az adott típusú jogcímek gyűjteményéhez rendeli. Az alábbi kódban `request` a `HttpServletRequest`egy példánya.
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -226,7 +226,7 @@ A Spring boot-fejlesztők a [Azure Active Directory Spring boot Starter](/java/a
 
 ### <a name="configure-tlsssl"></a>A TLS/SSL konfigurálása
 
-A meglévő SSL-tanúsítvány feltöltéséhez és az alkalmazás tartománynevéhez való kötéséhez kövesse az [Egyéni DNS-név biztonságossá tétele SSL-kötéssel Azure app Serviceban](../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) található utasításokat. Alapértelmezés szerint az alkalmazás továbbra is engedélyezi a HTTP-kapcsolatokat – az oktatóanyag adott lépéseinek végrehajtásával kényszerítheti az SSL és a TLS használatát.
+A meglévő SSL-tanúsítvány feltöltéséhez és az alkalmazás tartománynevéhez való kötéséhez kövesse az [Egyéni DNS-név biztonságossá tétele SSL-kötéssel Azure app Serviceban](../configure-ssl-bindings.md?toc=/azure/app-service/containers/toc.json) található utasításokat. Alapértelmezés szerint az alkalmazás továbbra is engedélyezi a HTTP-kapcsolatokat – az oktatóanyag adott lépéseinek végrehajtásával kényszerítheti az SSL és a TLS használatát.
 
 ### <a name="use-keyvault-references"></a>Kulcstartó-hivatkozások használata
 
@@ -250,7 +250,7 @@ A JDBC-kapcsolatok titkosításához további konfigurálásra lehet szükség. 
 
 #### <a name="manually-initialize-and-load-the-key-store"></a>A Key Store manuális inicializálása és betöltése
 
-A kulcstárolót inicializálhatja, és manuálisan is hozzáadhat tanúsítványokat. Hozzon létre egy alkalmazás-beállítást, `SKIP_JAVA_KEYSTORE_LOAD`a `1` értékkel, hogy letiltsa App Service a tanúsítványok automatikus betöltését a Key Store-ba. Az Azure Portalon App Service feltöltött nyilvános tanúsítványokat a rendszer a `/var/ssl/certs/`alatt tárolja. A privát tanúsítványokat a `/var/ssl/private/`alatt tárolja.
+A kulcstárolót inicializálhatja, és manuálisan is hozzáadhat tanúsítványokat. Hozzon létre egy alkalmazás-beállítást, `SKIP_JAVA_KEYSTORE_LOAD`a `1` értékkel, hogy letiltsa App Service a tanúsítványok automatikus betöltését a Key Store-ba. Azure Portal az App Service-on keresztül feltöltött összes nyilvános tanúsítvány `/var/ssl/certs/`alatt tárolódik. A privát tanúsítványokat a `/var/ssl/private/`alatt tárolja.
 
 A Webáruház API-val kapcsolatos további információkért tekintse meg [a hivatalos dokumentációt](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
 
@@ -282,7 +282,8 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azu
     - Ha a **tomcat**-t használja, hozzon létre egy `CATALINA_OPTS` nevű környezeti változót az érték `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` ahol a `<app-name>` a app Service neve.
     - Ha a **WildFly**-t használja, a Java-ügynök és a JBoss-konfiguráció telepítésével kapcsolatos útmutatásért tekintse [meg a](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) AppDynamics dokumentációját.
 
->  Ha már rendelkezik környezeti változóval `JAVA_OPTS` vagy `CATALINA_OPTS`, fűzze hozzá az `-javaagent:/...` lehetőséget az aktuális érték végéhez.
+> [!NOTE]
+> Ha már rendelkezik környezeti változóval `JAVA_OPTS` vagy `CATALINA_OPTS`, fűzze hozzá az `-javaagent:/...` lehetőséget az aktuális érték végéhez.
 
 ## <a name="configure-jar-applications"></a>JAR-alkalmazások konfigurálása
 
@@ -454,7 +455,7 @@ Végül helyezze el az illesztőprogram-tégelyeket a Tomcat osztályútvonal, �
 
     3. Kapcsolódjon a helyi bújtatási porthoz az SFTP-ügyféllel, és töltse fel a fájlokat a */Home/tomcat/lib* mappába.
 
-    Azt is megteheti, hogy FTP-ügyfél használatával tölti fel a JDBC-illesztőt. Az [FTP-hitelesítő adatok beszerzéséhez kövesse az alábbi utasításokat](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+    Azt is megteheti, hogy FTP-ügyfél használatával tölti fel a JDBC-illesztőt. Az [FTP-hitelesítő adatok beszerzéséhez kövesse az alábbi utasításokat](../deploy-configure-credentials.md?toc=/azure/app-service/containers/toc.json).
 
 2. Ha létrehozta a kiszolgálói szintű adatforrást, indítsa újra a App Service Linux alkalmazást. A Tomcat alaphelyzetbe állítja `CATALINA_BASE` `/home/tomcat` és a frissített konfigurációt használja.
 
@@ -487,13 +488,13 @@ Ez a szakasz a következő alszakaszokat tartalmazza:
 - [Alkalmazáskiszolgáló konfigurációjának testreszabása](#customize-application-server-configuration)
 - [Modulok és függőségek telepítése](#install-modules-and-dependencies)
 - [Adatforrások konfigurálása](#configure-data-sources)
-- [Üzenetkezelési szolgáltatók engedélyezése](#enable-messaging-providers)
+- [Service Bus használata üzenetkezelési közvetítőként](#use-service-bus-as-a-message-broker)
 
 ### <a name="scale-with-app-service"></a>Méretezés App Service
 
 A Linuxon App Service futó WildFly-alkalmazáskiszolgáló önálló módban fut, nem pedig tartományi konfigurációban. A App Service terv kiskálázásakor minden WildFly-példány önálló kiszolgálóként van konfigurálva.
 
-Az alkalmazást függőlegesen vagy horizontálisan méretezheti méretezési [szabályokkal](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) , és [növelheti a példányszámot](../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+Az alkalmazást függőlegesen vagy horizontálisan méretezheti méretezési [szabályokkal](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) , és [növelheti a példányszámot](../manage-scale-up.md?toc=/azure/app-service/containers/toc.json).
 
 ### <a name="customize-application-server-configuration"></a>Alkalmazáskiszolgáló konfigurációjának testreszabása
 
@@ -516,7 +517,7 @@ Az FTP használatával töltse fel az indítási szkriptet a App Service-példá
 
 A Azure Portal **indítási parancsfájl** mezőjében adja meg az indítási rendszerhéj parancsfájljának helyét (például */Home/site/Deployments/Tools/Your-Startup-script.sh*).
 
-Adja [meg az](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) alkalmazás konfigurációjában a környezeti változók átadását a parancsfájlban való használathoz. Az Alkalmazásbeállítások megtartják a kapcsolatok karakterláncait és az alkalmazás verziószám-vezérlésének konfigurálásához szükséges egyéb titkokat.
+Adja [meg az](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings) alkalmazás konfigurációjában a környezeti változók átadását a parancsfájlban való használathoz. Az Alkalmazásbeállítások megtartják a kapcsolatok karakterláncait és az alkalmazás verziószám-vezérlésének konfigurálásához szükséges egyéb titkokat.
 
 ### <a name="install-modules-and-dependencies"></a>Modulok és függőségek telepítése
 
@@ -693,36 +694,323 @@ A App Service-példánya már konfigurálva van az adatbázis elérésére.
 
 További információ az adatbázis-kapcsolat WildFly való konfigurálásáról: [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7), [MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource)vagy [SQL Server](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898).
 
-### <a name="enable-messaging-providers"></a>Üzenetkezelési szolgáltatók engedélyezése
+### <a name="use-service-bus-as-a-message-broker"></a>Service Bus használata üzenetkezelési közvetítőként
 
-Az üzenet-vezérelt bab engedélyezése a Service Bus használatával üzenetküldési mechanizmusként:
+A WildFly és az üzenet-vezérelt bab konfigurálható úgy, hogy a [Azure Service Bus](/azure/service-bus-messaging) használja az üzenetkezelési közvetítőként. A konfigurálást követően az [Apache csontos](https://qpid.apache.org) használatával küldhet és fogadhat üzeneteket a Java Message Service (JMS) ügyfélként. Van néhány lépés egy JMS Resource adapter (JMS RA) konfigurálására, amely lehetővé teszi a vállalati Java bab (EJBs) számára, hogy konfigurálja a távoli JMS-kapcsolódási gyárat és a várólistát. Ez a távoli telepítő Azure Service Busra mutat, és az Apache csontos JMS-szolgáltatót használja a AMQP protokollhoz.
 
-1. Használja az [Apache csontos JMS Messaging Library könyvtárat](https://qpid.apache.org/proton/index.html). Ezt a függőséget az alkalmazáshoz tartozó Pom. XML (vagy más Build-fájl) tartalmazza.
+A következő lépések ismertetik a szükséges konfigurációt és kódot. Ezek a lépések feltételezik, hogy létrehozott egy App Service példányt a Bean, egy Service Bus névtér, egy üzenetsor és egy előfizetéssel rendelkező témakör üzemeltetéséhez. Az erőforrások létrehozásával kapcsolatos információkért lásd:
 
-2. Hozzon létre [Service Bus erőforrásokat](/azure/service-bus-messaging/service-bus-java-how-to-use-jms-api-amqp). Hozzon létre egy Azure Service Bus névteret és várólistát az adott névtéren belül, valamint egy közös hozzáférési szabályzatot a küldési és fogadási funkciókkal.
+- [Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Linuxon](/azure/app-service/containers/quickstart-java)
+- [Gyors útmutató: Service Bus üzenetsor létrehozása az Azure CLI használatával](/azure/service-bus-messaging/service-bus-quickstart-cli)
+- [Rövid útmutató: a Azure Portal használatával létrehozhat egy Service Bus témakört és előfizetéseket a témakörbe](/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal)
 
-3. Adja át a megosztott elérési házirend kulcsát a kódnak URL-kódolással – kódolja a házirend elsődleges kulcsát, vagy [használja a Service Bus SDK](/azure/service-bus-messaging/service-bus-java-how-to-use-jms-api-amqp#setup-jndi-context-and-configure-the-connectionfactory)-t.
+1. Nyisson meg egy bash-terminált, és használja az alábbi parancsokat az Azure-erőforrás adatainak környezeti változókba való mentéséhez. Cserélje le a helyőrzőket (beleértve a szögletes zárójeleket is) a jelzett értékekre.
 
-4. Kövesse a modulok és függőségek telepítése szakasz lépéseit a modul XML-leírójának,. jar-függőségeinek, JBoss CLI-parancsainak és az JMS-szolgáltató indítási parancsfájljának használatával. A négy fájlon kívül létre kell hoznia egy XML-fájlt is, amely meghatározza a JMS-várólista és a témakör JNDI nevét. Tekintse meg [ezt a tárházat](https://github.com/JasonFreeberg/widlfly-server-configs/tree/master/appconfig) a hivatkozási konfigurációs fájlokhoz.
+    | Változó            | Value (Díj)                                                                      |
+    |---------------------|----------------------------------------------------------------------------|
+    | RESOURCEGROUP_NAME  | Az App Service példányt tartalmazó erőforráscsoport neve.       |
+    | WEBAPP_NAME         | Az App Service-példány neve.                                     |
+    | RÉGIÓ              | Annak a régiónak a neve, ahol az alkalmazás üzemeltetve van.                           |
+    | DEFAULT_SBNAMESPACE | A Service Bus névtér neve.                                    |
+    | SB_SAS_POLICY       | A névtér megosztott hozzáférés-aláírási (SAS) házirendjének neve.   |
+    | SB_SAS_KEY          | A várólista SAS-házirendjének elsődleges vagy másodlagos kulcsa.                  |
+    | SB_QUEUE            | Az Service Bus üzenetsor neve.                                        |
+    | SB_TOPIC            | A Service Bus témakör neve.                                        |
+    | SB_SUBSCRIPTION     | A témakörhöz tartozó előfizetés neve.                                |
+
+    ```bash
+    RESOURCEGROUP_NAME=<resource group>
+    WEBAPP_NAME=<web app>
+    WEBAPP_PLAN_NAME=${WEBAPP_NAME}-appservice-plan
+    REGION=<region>
+    DEFAULT_SBNAMESPACE=<namespace>
+    SB_SAS_POLICY=<SAS policy>
+    SB_SAS_KEY=<SAS key>
+    SB_QUEUE=<queue>
+    SB_TOPIC=<topic>
+    SB_SUBSCRIPTION=<subscription>
+    PROVIDER_URL=amqps://${DEFAULT_SBNAMESPACE}.servicebus.windows.net?amqp.idleTimeout=120000
+    ```
+
+    Ezeket az információkat a Azure Portalban találja meg. A SAS-szabályzat és a kulcs esetében ügyeljen arra, hogy a névtér értékeit használja, hogy az alkalmazás hozzáférhessen a várólista és a témakör-előfizetés számára is. Ha meg szeretné keresni ezeket az értékeket a Azure Portalon, keresse meg a névtér erőforrását, válassza a **megosztott hozzáférési házirendek**lehetőséget, majd válassza ki a **RootManageSharedAccessKey** házirendet.
+
+2. Töltse le az [Apache csontos JMS-szolgáltatót](https://qpid.apache.org/components/jms/index.html). Keresse meg a. jar-fájlokat a *lib* és a *lib/opcionális* címtárakban.
+
+3. Hozzon létre egy *Module. XML* nevű fájlt, és adja hozzá a következő jelölést. Cserélje le a `<version>` helyőrző minden példányát (beleértve a szögletes zárójeleket is) az egyes. jar fájlok megfelelő verziójára, hogy a fájlnevek megfeleljenek az 1. lépésben kinyert fájloknak.
+
+    ```xml
+    <module xmlns="urn:jboss:module:1.1" name="org.jboss.genericjms.provider">
+        <resources>
+            <resource-root path="proton-j-<version>.jar"/>
+            <resource-root path="qpid-jms-client-<version>.jar"/>
+            <resource-root path="slf4j-log4j12-<version>.jar"/>
+            <resource-root path="slf4j-api-<version>.jar"/>
+            <resource-root path="log4j-<version>.jar"/>
+            <resource-root path="netty-buffer-<version>.jar" />
+            <resource-root path="netty-codec-<version>.jar" />
+            <resource-root path="netty-codec-http-<version>.jar" />
+            <resource-root path="netty-common-<version>.jar" />
+            <resource-root path="netty-handler-<version>.jar" />
+            <resource-root path="netty-resolver-<version>.jar" />
+            <resource-root path="netty-transport-<version>.jar" />
+            <resource-root path="netty-transport-native-epoll-<version>-linux-x86_64.jar" />
+            <resource-root path="netty-transport-native-kqueue-<version>-osx-x86_64.jar" />
+            <resource-root path="netty-transport-native-unix-common-<version>.jar" />
+            <resource-root path="qpid-jms-discovery-<version>jar" />
+        </resources>
+        <dependencies>
+            <module name="javax.api"/>
+            <module name="javax.jms.api"/>
+        </dependencies>
+    </module>
+    ```
+
+4. Hozzon létre egy *Startup.sh* nevű fájlt, és adja hozzá a következő kódot.
+
+    ```bash
+    echo "Generating jndi.properties file in /home/site/deployments/tools directory"
+    echo "connectionfactory.mymdbconnection=amqps://${DEFAULT_SBNAMESPACE}.servicebus.windows.net?amqp.idleTimeout=120000&jms.username=${SB_SAS_POLICY}&jms.password=${SB_SAS_KEY}" > /home/site/deployments/tools/jndi.properties
+    echo "queue.mymdbqueue=${SB_QUEUE}" >> /home/site/deployments/tools/jndi.properties
+    echo "topic.mymdbtopic=${SB_TOPIC}" >> /home/site/deployments/tools/jndi.properties
+    echo "queue.mymdbsubscription=${SB_TOPIC}/Subscriptions/${SB_SUBSCRIPTION}" >> /home/site/deployments/tools/jndi.properties
+    echo "====== contents of /home/site/deployments/tools/jndi.properties ======"
+    cat /home/site/deployments/tools/jndi.properties
+    echo "====== EOF /home/site/deployments/tools/jndi.properties ======"
+    echo "Generating commands.cli file for /home/site/deployments/tools directory"
+    echo "# Start batching commands" > /home/site/deployments/tools/commands.cli
+    echo "batch" >> /home/site/deployments/tools/commands.cli
+    echo "# Configure the ee subsystem to enable MDB annotation property substitution" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=ee:write-attribute(name=annotation-property-replacement,value=true)" >> /home/site/deployments/tools/commands.cli
+    echo "# Define system properties to be used in the substititution" >> /home/site/deployments/tools/commands.cli
+    echo "/system-property=property.mymdb.queue:add(value=java:global/remoteJMS/mymdbqueue})" >> /home/site/deployments/tools/commands.cli
+    echo "/system-property=property.mymdb.topic:add(value=java:global/remoteJMS/mymdbsubscription)" >> /home/site/deployments/tools/commands.cli
+    echo "/system-property=property.connection.factory:add(value=java:global/remoteJMS/mymdbconnection)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=ee:list-add(name=global-modules, value={\"name\" => \"org.jboss.genericjms.provider\", \"slot\" =>\"main\"}" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=naming/binding=\"java:global/remoteJMS\":add(binding-type=external-context,module=org.jboss.genericjms.provider,class=javax.naming.InitialContext,environment=[java.naming.factory.initial=org.apache.qpid.jms.jndi.JmsInitialContextFactory,org.jboss.as.naming.lookup.by.string=true,java.naming.provider.url=/home/site/deployments/tools/jndi.properties])" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra:add(module=org.jboss.genericjms,transaction-support=XATransaction)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd:add(class-name=org.jboss.resource.adapter.jms.JmsManagedConnectionFactory, jndi-name=java:/jms/mymdbconnection)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd/config-properties=ConnectionFactory:add(value=mymdbconnection)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd/config-properties=JndiParameters:add(value=\"java.naming.factory.initial=org.apache.qpid.jms.jndi.JmsInitialContextFactory;java.naming.provider.url=/home/site/deployments/tools/jndi.properties\")" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd:write-attribute(name=security-application,value=true)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=ejb3:write-attribute(name=default-resource-adapter-name, value=generic-ra)" >> /home/site/deployments/tools/commands.cli
+    echo "# Run the batch commands" >> /home/site/deployments/tools/commands.cli
+    echo "run-batch" >> /home/site/deployments/tools/commands.cli
+    echo "reload" >> /home/site/deployments/tools/commands.cli
+    echo "====== contents of /home/site/deployments/tools/commands.cli ======"
+    cat /home/site/deployments/tools/commands.cli
+    echo "======= EOF /home/site/deployments/tools/commands.cli ========"
+    mkdir /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider
+    mkdir /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main
+    cp  /home/site/deployments/tools/*.jar /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main/
+    cp /home/site/deployments/tools/module.xml /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main/
+    cp /home/site/deployments/tools/jndi.properties /opt/jboss/wildfly/standalone/configuration/
+    /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/home/site/deployments/tools/commands.cli
+    echo "Startup Run done"
+    ```
+
+    A App Service-példány minden indításakor futtatja ezt a parancsfájlt, amely további konfigurálást tesz szükségessé a WildFly számára. Ez a szkript átmásolja az alkalmazás függőségeit a szükséges helyekre. Emellett *JNDI. properties* és *commands. CLI* fájlokat is létrehoz, amelyek az 1. lépésben látható környezeti változókat használják. Ezeket az értékeket egy későbbi lépésben a App Service-példánynak is átadja.
+
+    A *commands. CLI* fájl az indítási parancsfájl által indított [Wildfly CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) -parancsfájl. A fájl parancsai a JMS és a JNDI konfigurálását teszik elérhetővé a *JNDI. properties* fájl használatával. Ezek a parancsok kapcsolatot hoznak létre az alkalmazás és a Service Bus üzenetsor vagy témakör között.
+
+5. Az FTP használatával töltse fel a. jar fájlokat, a *Module. XML* fájlt és a *startup.sh* fájlt a app Service-példányba. Helyezze a *Startup.sh* a */Home* könyvtárba, és helyezze a többi fájlt a */Home/site/Deployments/Tools* könyvtárba. Ügyeljen arra, hogy a *Module. XML* fájlban felsorolt minden. jar fájlt feltöltse a függőségek tranzitív bezárása érdekében. Az FTP-vel kapcsolatos további információkért lásd: [az alkalmazás telepítése Azure app Service FTP/S használatával](https://docs.microsoft.com/azure/app-service/deploy-ftp).
+
+6. Frissítse a MessageListener implementációját, és adja hozzá a következő `import` utasításokat:
+
+    ```java
+    import javax.ejb.ActivationConfigProperty;
+    import javax.ejb.MessageDriven;
+    import javax.ejb.TransactionAttribute;
+    import javax.ejb.TransactionAttributeType;
+    import javax.ejb.TransactionManagement;
+    import javax.ejb.TransactionManagementType;
+    import javax.jms.JMSException;
+    import javax.jms.Message;
+    import javax.jms.MessageListener;
+    import javax.jms.TextMessage;
+    ```
+
+7. Ezután frissítse a figyelő osztályok megjegyzéseit az alábbi példának megfelelően. Ez az osztály az üzenetek fogadását naplózó minta-implementációt biztosít.
+
+    ```java
+    @TransactionManagement(TransactionManagementType.BEAN)
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    @MessageDriven(name = "MyQueueListener", activationConfig = {
+            @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "${property.connection.factory}"),
+            @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "${property.mymdb.queue}"),
+            @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+            @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
+    public class MyQueueListener implements MessageListener {
+
+        private static final Logger LOGGER = Logger.getLogger(TopicListener.class.toString());
+
+        public void onMessage(Message rcvMessage) {
+            TextMessage msg = null;
+            try {
+                if (rcvMessage instanceof TextMessage) {
+                    msg = (TextMessage) rcvMessage;
+                    LOGGER.info("Received Message from topic: " + msg.getText());
+                } else {
+                    LOGGER.warning("Message of wrong type: " + rcvMessage.getClass().getName());
+                }
+            } catch (JMSException e) {
+                LOGGER.warning("Exception on message : " + e.getMessage());
+                throw new RuntimeException(e);
+            }
+        }
+    }
+    ```
+
+    A `connectionFactory` és a `destinationLookup` érték a *Startup.sh* parancsfájl által konfigurált WildFly rendszertulajdonság-értékekre hivatkozik. Az `destinationType` érték `javax.jms.Queue`, amely azt jelzi, hogy Service Bus üzenetsor-példánnyal csatlakozik. Ezt az értéket `javax.jms.Topic`, ha Service Bus témakörhöz csatlakozik, ahogy az itt látható:
+
+    ```java
+    @TransactionManagement(TransactionManagementType.BEAN)
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    @MessageDriven(name = "MyTopicListener", activationConfig = {
+            @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "${property.connection.factory}"),
+            @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "${property.mymdb.topic}"),
+            @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
+            @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
+        public class MyTopicListener implements MessageListener {
+        // ...
+    }
+    ```
+
+8. A következő függőségek hozzáadásához frissítse a *Pom. XML* fájl `dependencies` szakaszát:
+
+    ```xml
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.qpid</groupId>
+            <artifactId>qpid-jms-client</artifactId>
+            <version>0.40.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.qpid</groupId>
+            <artifactId>proton-j</artifactId>
+            <version>0.31.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.jms</groupId>
+            <artifactId>jboss-jms-api_2.0_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.servlet</groupId>
+            <artifactId>jboss-servlet-api_4.0_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.annotation</groupId>
+            <artifactId>jboss-annotations-api_1.3_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    ```
+
+9. Frissítse az `azure-webapp-maven-plugin`-konfigurációt a *Pom. XML* fájlban, és tekintse át a Service Bus-fiók adatait. Ha szükséges, módosítsa `1.7.0` a [Maven beépülő modul](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)aktuális verziójára Azure app Service.
+
+    ```xml
+    <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.7.0</version>
+        <configuration>
+
+            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+            <appServicePlanName>${WEBAPP_PLAN_NAME}</appServicePlanName>
+            <appName>${WEBAPP_NAME}</appName>
+            <region>${REGION}</region>
+
+            <!-- Java Runtime Stack for Web App on Linux-->
+            <linuxRuntime>wildfly 14-jre8</linuxRuntime>
+
+            <appSettings>
+                <property>
+                    <name>DEFAULT_SBNAMESPACE</name>
+                    <value>${DEFAULT_SBNAMESPACE}</value>
+                </property>
+                <property>
+                    <name>SB_SAS_POLICY</name>
+                    <value>${SB_SAS_POLICY}</value>
+                </property>
+                <property>
+                    <name>SB_SAS_KEY</name>
+                    <value>${SB_SAS_KEY}</value>
+                </property>
+                <property>
+                    <name>PROVIDER_URL</name>
+                    <value>${PROVIDER_URL}</value>
+                </property>
+                <property>
+                    <name>SB_QUEUE</name>
+                    <value>${SB_QUEUE}</value>
+                </property>
+                <property>
+                    <name>SB_TOPIC</name>
+                    <value>${SB_TOPIC}</value>
+                </property>
+                <property>
+                    <name>SB_SUBSCRIPTION</name>
+                    <value>${SB_SUBSCRIPTION}</value>
+                </property>
+            </appSettings>
+        </configuration>
+    </plugin>
+    ```
+
+    Ezekkel a beállításokkal konfigurálhatja a App Service példányt úgy, hogy ugyanazokat a környezeti változókat konfigurálja, amelyeket helyileg beállított. Környezeti változókat használ, hogy a fiókadatok a forrásfájlok adatain kívül maradjanak.
+
+10. Építse újra és telepítse újra az alkalmazást.
+
+    ```bash
+    mvn package -DskipTests azure-webapp:deploy
+    ```
+
+Az üzenet által vezérelt Bean most úgy van konfigurálva, hogy a Service Bus használja az üzenetkezelési mechanizmusként.
+
+A App Service következő újraindításakor futtatja az indítási parancsfájlt, és végrehajtja a szükséges konfigurációs lépéseket. Ha ellenőrizni szeretné, hogy ez a konfiguráció megfelelően működik-e, az SSH-val elérheti a App Service, majd a bash parancssorból futtathatja saját indítási parancsfájlját. A App Service naplókat is ellenőrizheti. További információ ezekről a lehetőségekről: [alkalmazások naplózása és hibakeresése](#logging-and-debugging-apps).
+
+Az utasítások tesztelésére használható minta esetén tekintse meg az [áttelepítés-Java-EE-app-to-Azure-2](https://github.com/Azure-Samples/migrate-java-ee-app-to-azure-2) tárházat a githubon, és keresse meg a `helloworld-mdb-propertysubstitution` mintát.
 
 ## <a name="use-redis-as-a-session-cache-with-tomcat"></a>A Redis használata munkamenet-gyorsítótárként a Tomcat használatával
 
 A Tomcat úgy is beállítható, hogy külső munkamenet-tárolót használjon, például az [Azure cache-t a Redis](/azure/azure-cache-for-redis/). Így megőrizheti a felhasználói munkamenet állapotát (például a bevásárlókocsi adatait), amikor a felhasználó átkerül az alkalmazás egy másik példányára, például ha automatikus skálázás, újraindítás vagy feladatátvétel történik.
 
-A Tomcat és a Redis használatához konfigurálnia kell az alkalmazást egy [PersistentManager](http://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) -implementáció használatára. A következő lépések ismertetik ezt a folyamatot a [Pivotal Session Manager használatával: Redis-Store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) példaként.
+A Tomcat és a Redis használatához konfigurálnia kell az alkalmazást egy [PersistentManager](https://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) -implementáció használatára. A következő lépések ismertetik ezt a folyamatot a [Pivotal Session Manager használatával: Redis-Store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) példaként.
 
-1. Nyisson meg egy bash-terminált, és a `export <variable>=<value>` használatával állítsa be az alábbi környezeti változók mindegyikét.
+1. Nyisson meg egy bash-terminált, és a `<variable>=<value>` használatával állítsa be az alábbi környezeti változók mindegyikét.
 
     | Változó                 | Value (Díj)                                                                      |
     |--------------------------|----------------------------------------------------------------------------|
     | RESOURCEGROUP_NAME       | Az App Service példányt tartalmazó erőforráscsoport neve.       |
     | WEBAPP_NAME              | Az App Service-példány neve.                                     |
-    | WEBAPP_PLAN_NAME         | A App Service terv neve                                          |
+    | WEBAPP_PLAN_NAME         | A App Service terv neve.                                         |
     | RÉGIÓ                   | Annak a régiónak a neve, ahol az alkalmazás üzemeltetve van.                           |
     | REDIS_CACHE_NAME         | A Redis-példány Azure-gyorsítótárának neve.                           |
     | REDIS_PORT               | A Redis cache által figyelt SSL-port.                             |
     | REDIS_PASSWORD           | A példány elsődleges hozzáférési kulcsa.                                  |
     | REDIS_SESSION_KEY_PREFIX | Az alkalmazásból érkező munkamenetkulcsok azonosítására megadott érték. |
+
+    ```bash
+    RESOURCEGROUP_NAME=<resource group>
+    WEBAPP_NAME=<web app>
+    WEBAPP_PLAN_NAME=<App Service plan>
+    REGION=<region>
+    REDIS_CACHE_NAME=<cache>
+    REDIS_PORT=<port>
+    REDIS_PASSWORD=<access key>
+    REDIS_SESSION_KEY_PREFIX=<prefix>
+    ```
 
     A Azure Portal nevét, portját és hozzáférési kulcsát a szolgáltatási példány **Tulajdonságok** vagy **hozzáférési kulcsok** szakaszában tekintheti meg.
 
@@ -813,8 +1101,7 @@ A Tomcat és a Redis használatához konfigurálnia kell az alkalmazást egy [Pe
 9. Építse újra és telepítse újra az alkalmazást.
 
     ```bash
-    mvn package
-    mvn azure-webapp:deploy
+    mvn package -DskipTests azure-webapp:deploy
     ```
 
 Az alkalmazás mostantól a Redis cache-t fogja használni a munkamenet-kezeléshez.
