@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 73facea2b99ee038b16053fd818d93d35da4cbdd
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196177"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707730"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Mi az a Azure Machine Learning Designer (előzetes verzió)? 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -45,7 +45,7 @@ A tervező a gépi tanulási modellek készítésére, tesztelésére és üzemb
     + Egy korábban betanított modell használatával közzétehet egy **Batch-következtetési** folyamatot, amellyel előrejelzéseket készíthet az új adatairól.
 + Valós idejű következtetéseket [helyezhet üzembe](#deploy) **egy valós** idejű végponton, hogy valós időben előrejelzéseket készítsen az új adatelemzésekről.
 
-![Munkafolyamati diagram képzésekhez, kötegelt következtetésekhez és valós idejű következtetésekhez a Designerben](media/ui-concept-visual-interface/designer-workflow-diagram.png)
+![Munkafolyamati diagram képzésekhez, kötegelt következtetésekhez és valós idejű következtetésekhez a Designerben](media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>Folyamat
 
@@ -80,17 +80,17 @@ A modulok az adatokon végezhető algoritmusok. A Designer számos modult tartal
 
 A modul rendelkezhet a belső algoritmusok konfigurálásához használható paraméterek készletével. Amikor kiválaszt egy modult a vásznon, a modul paramétereinek a vászontól jobbra látható Tulajdonságok ablaktáblán jelennek meg. A modell hangolásához módosíthatja a paramétereket a panelen. A tervezőben beállíthatja az egyes modulok számítási erőforrásait. 
 
-![Modul tulajdonságai](media/ui-concept-visual-interface/properties.png)
+![Modul tulajdonságai](media/concept-designer/properties.png)
 
 Ha segítségre van az elérhető gépi tanulási algoritmusok könyvtára között, tekintse meg a következő témakört: [algoritmus & modul ismertetése – áttekintés](../algorithm-module-reference/module-reference.md)
 
 ## <a name="compute"></a>Számítási erőforrások
 
-A munkaterületen lévő számítási erőforrások használatával futtathatja a folyamatot, és üzemeltetheti a telepített modelleket valós idejű végpontok vagy folyamat-végpontok (a Batch-következtetések esetében). A támogatott számítási célnak a következők:
+A munkaterületen lévő számítási erőforrások használatával futtathatja a folyamatot, és üzemeltetheti a telepített modelleket valós idejű végpontok vagy folyamat-végpontok (a Batch-következtetések esetében). A támogatott számítási célok a következők:
 
-| Számítási cél | Képzés | Környezet |
+| Számítási cél | Képzés | Üzembe helyezés |
 | ---- |:----:|:----:|
-| Az Azure Machine Learning compute | ✓ | |
+| Azure Machine Learning számítás | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 A számítási célok a Machine Learning [munkaterülethez](concept-workspace.md)vannak csatolva. A számítási célokat a munkaterületen [Azure Machine learning Studióban](https://ml.azure.com)kezelheti.
@@ -107,7 +107,7 @@ A modell üzembe helyezésével kapcsolatos további információkért lásd [: 
 
 A folyamat egy folyamat **végpontján**is közzétehető. A valós idejű végponthoz hasonlóan a folyamat végpontja lehetővé teszi, hogy az új folyamat külső alkalmazásokból is fusson REST-hívásokat használva. Azonban a folyamat végpontján keresztül nem lehet valós időben elküldeni vagy fogadni az adataikat.
 
-A közzétett folyamatok rugalmasak, felhasználhatók modellek betanítására és újraképzésére, kötegelt következtetések elvégzésére, új adatok feldolgozására és sok más lehetőségre. Több folyamatot is közzétehet egyetlen folyamat-végponton, és megadhatja, hogy melyik folyamat melyik verzióját szeretné futtatni.
+A közzétett folyamatok rugalmasak, felhasználhatók modellek betanítására és újraképzésére, [kötegelt következtetések elvégzésére](how-to-run-batch-predictions-designer.md), új adatok feldolgozására és sok más lehetőségre. Több folyamatot is közzétehet egyetlen folyamat-végponton, és megadhatja, hogy melyik folyamat melyik verzióját szeretné futtatni.
 
 A közzétett folyamat az egyes modulokhoz tartozó folyamat piszkozatában definiált számítási erőforrásokon fut.
 

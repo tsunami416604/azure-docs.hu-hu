@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: 8c1736fcd4356e0778c3b36301b4490764efab76
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c018e511bbeed41bc9caf721562349a37ad0e748
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240886"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707222"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Támogatási szabályzatok az Azure Kubernetes Service-hez
 
@@ -41,7 +41,7 @@ Az AK nem teljesen felügyelt fürt megoldás. Egyes összetevők, például a f
 A szolgáltatások *kezelése* abban az értelemben történik, hogy a Microsoft és az AK-csoport üzembe helyezi, működteti és felelős a szolgáltatás rendelkezésre állásának és működésének biztosításáért. Az ügyfelek nem változtathatják meg ezeket a felügyelt összetevőket. A Microsoft korlátozza a testreszabást, hogy konzisztens és skálázható felhasználói élményt biztosítson. A teljes mértékben testreszabható megoldásért lásd: [AK-motor](https://github.com/Azure/aks-engine).
 
 > [!NOTE]
-> Az AK munkavégző csomópontok a Azure Portalban normál Azure IaaS-erőforrásokként jelennek meg. Ezeket a virtuális gépeket azonban egy egyéni Azure-erőforráscsoporthoz helyezik üzembe (az MC\\* előtaggal). Az AK munkavégző csomópontok módosíthatók. Például a Secure Shell (SSH) segítségével módosíthatja az AK feldolgozó csomópontokat a normál virtuális gépek módosításakor (azonban nem módosíthatja az alapszintű rendszerképet, és előfordulhat, hogy a módosítások nem maradnak meg frissítés vagy újraindítás közben), és más Azure-erőforrásokat is csatolhat az AK-hoz munkavégző csomópontok. Ha azonban a *sávon kívüli felügyeletet és a testreszabást* hajtja végre, az AK-fürt nem lesz támogatott. Kerülje a munkavégző csomópontok módosítását, kivéve, ha a Microsoft ügyfélszolgálata a módosítások elvégzésére utasítja.
+> Az AK munkavégző csomópontok a Azure Portalban normál Azure IaaS-erőforrásokként jelennek meg. Ezeket a virtuális gépeket azonban egy egyéni Azure-erőforráscsoporthoz helyezik üzembe (az MC\\* előtaggal ellátott előtagja). Az AK munkavégző csomópontok módosíthatók. Például a Secure Shell (SSH) segítségével módosíthatja az AK feldolgozó csomópontokat a normál virtuális gépek módosításakor (azonban nem módosíthatja az alapszintű rendszerképet, és előfordulhat, hogy a módosítások nem maradnak meg frissítés vagy újraindítás közben), és más Azure-erőforrásokat is csatolhat az AK-hoz munkavégző csomópontok. Ha azonban a *sávon kívüli felügyeletet és a testreszabást* hajtja végre, az AK-fürt nem lesz támogatott. Kerülje a munkavégző csomópontok módosítását, kivéve, ha a Microsoft ügyfélszolgálata a módosítások elvégzésére utasítja.
 
 ## <a name="shared-responsibility"></a>Közös felelősség
 
@@ -89,13 +89,13 @@ A Microsoft és az ügyfelek megosztják a Kubernetes munkavégző csomópontok 
 * Az alap operációs rendszer rendszerképének a szükséges kiegészítései vannak (például figyelési és hálózati ügynökök).
 * A munkavégző csomópontok automatikusan kapják meg az operációs rendszer javításait.
 * A Kubernetes vezérlő síkja a munkavégző csomópontokon futó összetevőivel kapcsolatos problémákat automatikusan szervizeli a rendszer. Az összetevők többek között a következők:
-  * Kube-proxy
+  * Kube – proxy
   * Hálózati alagutak, amelyek kommunikációs útvonalakat biztosítanak a Kubernetes fő összetevőinek
   * Kubelet
   * Docker vagy Moby Daemon
 
 > [!NOTE]
-> Ha egy feldolgozó csomóponton nem működik a vezérlési sík összetevője, előfordulhat, hogy az AK-csapatnak újra kell indítania az egyes összetevőket vagy a teljes munkavégző csomópontot. Ezek az újraindítási műveletek automatizáltak, és automatikus szervizelést biztosítanak a gyakori problémákhoz. Ezek az újraindítások csak a _csomópont_ szintjén, és nem a fürtön történnek, kivéve, ha ezek a vészhelyzeti karbantartás vagy leállás.
+> Ha egy feldolgozó csomóponton nem működik a vezérlési sík összetevője, előfordulhat, hogy az AK-csapatnak újra kell indítania az egyes összetevőket vagy a teljes munkavégző csomópontot. Ezek az újraindítási műveletek automatizáltak, és automatikus szervizelést biztosítanak a gyakori problémákhoz. Ezek az újraindítások csak a _csomópont_ szintjén, és nem a fürtön történnek, kivéve, ha vészhelyzeti karbantartásra vagy kimaradásra van szükség.
 
 ### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Az AK munkavégző csomópontjaihoz tartozó ügyfél-felelősségi körök
 

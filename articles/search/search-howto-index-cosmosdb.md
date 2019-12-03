@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f1e1ae76c44e66c04baaad110b87264279dfdaf1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 33c26ff15095928d6050a77794b74480e364bfb6
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530995"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707760"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB adatai indexelése az Azure-ban indexelő használatával Cognitive Search 
 
@@ -246,7 +246,7 @@ Győződjön meg arról, hogy a célként megadott index sémája kompatibilis a
 > [!NOTE]
 > Particionált gyűjtemények esetén az alapértelmezett dokumentum kulcsa Azure Cosmos DB `_rid` tulajdonsága, amelyet az Azure Cognitive Search automatikusan átnevez `rid`, mert a mezőnevek nem kezdődhetnek aláhúzás karakterrel. Emellett Azure Cosmos DB `_rid` az értékek olyan karaktereket tartalmaznak, amelyek érvénytelenek az Azure Cognitive Search kulcsaiban. Emiatt a `_rid` értékek Base64 kódolású.
 > 
-> A MongoDB-gyűjtemények esetében az Azure Cognitive Search automatikusan átnevezi a `_id` tulajdonságot `doc_id`re.  
+> A MongoDB-gyűjtemények esetében az Azure Cognitive Search automatikusan átnevezi a `_id` tulajdonságot `id`re.  
 
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>A JSON-adattípusok és az Azure Cognitive Search adattípusok közötti leképezés
 | JSON-adattípus | Kompatibilis cél index típusú mezők |

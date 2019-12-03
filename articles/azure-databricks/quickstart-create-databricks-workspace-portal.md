@@ -1,6 +1,6 @@
 ---
-title: Spark-feladatok futtatása Azure Databricks használatával Azure Portal
-description: Ez a rövid útmutató bemutatja, hogyan használható az Azure Portal egy Azure Databricks-munkaterület és egy Apache Spark-fürt létrehozásához, illetve Spark-feladatok futtatásához.
+title: Rövid útmutató – Spark-feladatok futtatása Azure Databricks használatával Azure Portal
+description: Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal egy Azure Databricks munkaterület, egy Apache Spark fürt és egy Spark-feladatok futtatásához.
 services: azure-databricks
 ms.service: azure-databricks
 author: mamccrea
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 004557ab3eb73f3f793b0514913260a414645d40
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 23d04062d5db7c944b7734f5e8339342548062fa
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129364"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706195"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával
 
@@ -27,7 +27,7 @@ Ebben a rövid útmutatóban a Azure Portal használatával hoz létre egy Apach
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 > [!Note]
 > Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós előfizetésével**.
@@ -54,7 +54,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../azure-resource-manager/resource-group-overview.md). |
     |**Hely**     | Válassza az **USA 2. nyugati régióját**. A további elérhető régiókért tekintse meg az [elérhető Azure-szolgáltatások régiók szerinti bontását](https://azure.microsoft.com/regions/services/).        |
     |**Tarifacsomag**     |  Válassza a **standard**, **prémium**vagy **próbaverzió**lehetőséget. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
-    |**Virtuális hálózat**     |  Válassza a saját Virtual Network (VNet) Azure Databricks munkaterület üzembe helyezését. További információ: [Azure Databricks üzembe helyezése az Azure-Virtual Network (VNet Injection)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).        |
+    |**Virtual Network**     |  Válassza a saját Virtual Network (VNet) Azure Databricks munkaterület üzembe helyezését. További információ: [Azure Databricks üzembe helyezése az Azure-Virtual Network (VNet Injection)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).        |
 
     Kattintson a **Létrehozás** gombra.
 
@@ -152,7 +152,7 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
    * Az **Összesítés** mezőben adja meg a **COUNT** értéket.
    * A **megjelenítési típus** beállítása a **tortadiagramra**
 
-     Kattintson az **Alkalmaz** gombra.
+     Kattintson az **Apply** (Alkalmaz) gombra.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -160,9 +160,9 @@ Ha végzett a cikkel, leállíthatja a fürtöt. Ehhez az Azure Databricks-munka
 
 ![Databricks-fürt leállítása](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ön nem állítja le manuálisan a fürt automatikusan leáll, ha a kiválasztott megadott a **leállítása után \_ \_ ennyi perc inaktivitás** jelölőnégyzetet a fürt létrehozásakor. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, a rendszer automatikusan leállítja, ha a fürt létrehozásakor bejelölte **\_\_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy Spark-fürtöt hozott létre a Azure Databricksban, és egy Spark-feladatot futtatott az Azure Open-adatkészletek adatainak használatával. A [Spark-adatforrások](/azure/databricks/data/data-sources/index) áttekintésével azt is megismerheti, hogyan importálhat adatokat más adatforrásokból az Azure Databricksbe. Folytassa a következő cikkel annak megismeréséhez, hogyan végezhet ETL-műveletet (adatok kinyerését, átalakítását és betöltését) az Azure Databricks használatával.
 

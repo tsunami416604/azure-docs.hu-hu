@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 944ecaaceedbff6ed1f86c4b8eb5786ce2b5bae5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473342"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706228"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
@@ -98,7 +98,7 @@ Ebben a példában a felhasználók és a csoportok egy helyszíni címtárhoz c
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Automatikus felhasználó-kiépítés a csak felhőalapú vállalatok számára
 
-Ebben a példában a felhasználó létrehozása az Azure AD-ben történik, az Azure AD-létesítési szolgáltatás pedig felügyeli az automatikus felhasználót a cél (SaaS) alkalmazások számára:
+Ebben a példában a felhasználó létrehozása az Azure AD-ben történik, az Azure AD-létesítési szolgáltatás pedig felügyeli az automatikus felhasználót a cél (SaaS) alkalmazásokhoz.
 
 ![2\. kép](media/auto-user-provision-dp/cloudprovisioning.png)
 
@@ -112,16 +112,17 @@ Ebben a példában a felhasználó létrehozása az Azure AD-ben történik, az 
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>A Felhőbeli HR-alkalmazások automatikus felhasználó általi üzembe helyezése 
 
-Ebben a példában a felhasználók és a csoportok egy Felhőbeli HR-alkalmazásban, például a munkanapokon jönnek létre.
+Ebben a példában a felhasználók és a csoportok egy Felhőbeli HR-alkalmazásban jönnek létre, mint például a munkanap és a SuccessFactors. Az Azure AD kiépítési szolgáltatás és a Azure AD Connect kiépítési ügynök a Cloud HR-alkalmazás bérlője felhasználói adatait a AD-be. Miután a fiókok frissültek az AD-ben, az Azure AD-val szinkronizálva Azure AD Connecton keresztül, és az e-mail-címek és a felhasználónevek attribútumai visszaírhatók a Cloud HR-alkalmazás bérlője számára.
 
 ![2\. kép](media/auto-user-provision-dp/workdayprovisioning.png)
 
-1. A Cloud HR Systemben létrehozott fiókok
-1. Az adatforgalom a helyszíni AD-be az Azure AD kiépítési szolgáltatásával és a kiépítési ügynökkel.
-1. Azure AD Connect szinkronizálja az Azure AD-vel
-1. Az e-mail-cím és a username attribútum visszaírható a Cloud HR-alkalmazásba.
-
-A megoldás architektúrájának és központi telepítésének részletes ismertetését a következő témakörben találja [: oktatóanyag: a munkanap beállítása az automatikus felhasználó](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)kiépítéséhez.
+1.  **HR-csapat** végzi el a tranzakciókat a Cloud HR-alkalmazás bérlője számára.
+2.  Az **Azure ad-kiépítési szolgáltatás** futtatja az ütemezett ciklusokat a Cloud HR-alkalmazás bérlőn, és azonosítja azokat a módosításokat, amelyeket az ad-vel való szinkronizáláshoz kell feldolgozni.
+3.  Az **Azure ad-kiépítési szolgáltatás** meghívja a Azure ad Connect üzembe helyezési ügynököt az ad-fiók létrehozási/frissítési/engedélyezési/letiltási műveleteit tartalmazó kérelem-adattartalommal.
+4.  **Azure ad Connect kiépítési ügynök** egy szolgáltatásfiókot használ az ad-fiókadatok kezeléséhez.
+5.  A **Azure ad Connect** a különbözeti szinkronizálást futtatja az ad-frissítések lekéréséhez.
+6.  Az **ad** -frissítések az Azure ad-vel vannak szinkronizálva. 
+7.  Az **Azure ad kiépítési szolgáltatás** cellavisszaírásokat e-mail-attribútumot és felhasználónevet az Azure ad-ből a Cloud HR-alkalmazás bérlője számára.
 
 ## <a name="plan-the-deployment-project"></a>Az üzembe helyezési projekt megtervezése
 
@@ -326,7 +327,7 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 * [Stack túlfolyó Azure AD-fórum](https://stackoverflow.com/questions/tagged/azure-active-directory)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Automatikus felhasználó-kiépítés konfigurálása](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)
 
 * [Kiépítési konfiguráció exportálása vagy importálása Microsoft Graph API használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration)

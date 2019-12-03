@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3a13f8928ba243195c30200dae0525e72c1c161b
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71844402"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706074"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Nem particionált tárolók áttelepíthetők particionált tárolók számára
 
@@ -24,7 +24,7 @@ A nem particionált tárolók örököltek, és a tárolók és az átviteli seb
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>Tároló átmigrálása a rendszer által definiált partíciós kulccsal
 
-Az áttelepítés támogatásához a Azure Cosmos db egy nevű `/_partitionkey` rendszerpartíció-kulcsot biztosít az összes olyan tárolón, amely nem rendelkezik partíciós kulccsal. A partíciós kulcs definíciója a tárolók migrálása után nem módosítható. Egy particionált tárolóba áttelepített tároló definíciója például a következő lesz:
+Az áttelepítés támogatásához a Azure Cosmos DB egy `/_partitionkey` nevű rendszerpartíciós kulcsot biztosít az összes olyan tárolón, amely nem rendelkezik partíciós kulccsal. A partíciós kulcs definíciója a tárolók migrálása után nem módosítható. Egy particionált tárolóba áttelepített tároló definíciója például a következő lesz:
 
 ```json
 {
@@ -38,7 +38,7 @@ Az áttelepítés támogatásához a Azure Cosmos db egy nevű `/_partitionkey` 
 }
 ```
 
-A tároló migrálása után létrehozhat dokumentumokat úgy, hogy kitölti `_partitionKey` a tulajdonságot a dokumentum többi tulajdonságával együtt. A `_partitionKey` tulajdonság a dokumentumok partíciós kulcsát jelöli.
+A tároló migrálása után létrehozhat dokumentumokat úgy, hogy kitölti a `_partitionKey` tulajdonságot a dokumentum többi tulajdonságával együtt. A `_partitionKey` tulajdonság a dokumentumok partíciós kulcsát jelöli.
 
 A megfelelő partíciós kulcs kiválasztása fontos a kiépített átviteli sebesség optimális kihasználásához. További információ: [How to Choo an Partition Key](partitioning-overview.md) article.
 
@@ -91,11 +91,11 @@ ItemResponse<DeviceInformationItem> readResponse =
 
 ```
 
-A teljes minta esetében tekintse meg a [.net-minták](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) GitHub-tárházát.
+A teljes minta esetében tekintse meg a [.net-minták][1] GitHub-tárházát.
                       
 ## <a name="migrate-the-documents"></a>A dokumentumok migrálása
 
-Amíg a tároló definíciója ki van bővítve egy Partition Key tulajdonsággal, a tárolóban található dokumentumok nem lesznek automatikusan áttelepítve. Ez azt jelenti, hogy a rendszerpartíciós kulcs tulajdonságának `/_partitionKey` elérési útja nincs automatikusan hozzáadva a meglévő dokumentumokhoz. A meglévő dokumentumokat úgy kell újraparticionálni, hogy beolvassa azokat a dokumentumokat, amelyeket nem partíciós kulcs nélkül hoztak `_partitionKey` létre, és visszaírják őket a dokumentumokban szereplő tulajdonsággal.
+Amíg a tároló definíciója ki van bővítve egy Partition Key tulajdonsággal, a tárolóban található dokumentumok nem lesznek automatikusan áttelepítve. Ez azt jelenti, hogy a rendszerpartíció Key tulajdonságának `/_partitionKey` elérési útja nem adódik hozzá automatikusan a meglévő dokumentumokhoz. A meglévő dokumentumokat úgy kell újraparticionálni, hogy beolvassa azokat a dokumentumokat, amelyeket nem partíciós kulcs nélkül hoztak létre, és visszaírják őket a dokumentumok `_partitionKey` tulajdonságával.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>A partíciós kulccsal nem rendelkező dokumentumok elérése
 
@@ -110,7 +110,7 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 ```
 
-A dokumentumok újraparticionálásával kapcsolatos teljes minta a [.net-minták](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) GitHub-tárházában található. 
+A dokumentumok újraparticionálásával kapcsolatos teljes minta a [.net-minták][1] GitHub-tárházában található. 
 
 ## <a name="compatibility-with-sdks"></a>Az SDK-k kompatibilitása
 
@@ -118,9 +118,11 @@ Azure Cosmos DB SDK-k (például v2. x. x és v1. x. x) régebbi verziója nem t
 
 Ha egy áttelepített tárolót az SDK legújabb/v3 verziója használ, és megkezdi a rendszer által definiált partíciós kulcs feltöltését az új dokumentumokon belül, akkor a régebbi SDK-k által már nem férhet hozzá (olvasási, frissítési, törlési, lekérdezési) ilyen dokumentumokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)
-* [Adatforgalom kiépítése a tárolók és adatbázisok számára](set-throughput.md)
+* [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md)
 * [Azure Cosmos-fiók használata](account-overview.md)
+
+[1]: https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/NonPartitionContainerMigration

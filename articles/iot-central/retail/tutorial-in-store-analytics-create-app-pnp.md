@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: áruházbeli elemzési alkalmazás létrehozása az Azure-ban IoT Central'
+title: Oktatóanyag – áruházbeli elemzési alkalmazás létrehozása az Azure-ban IoT Central
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy áruházbeli elemzési kiskereskedelmi alkalmazást IoT Centralban. Létrehozza, testreszabhatja és érzékelő eszközöket adhat hozzá.
 services: iot-central
 ms.service: iot-central
@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 071d432ba2769705213cb98cee644b64e9e81b6e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 145aa87841c6334f7fa12535103b5e97db9c6918
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112898"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702028"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Oktatóanyag: áruházbeli elemzési alkalmazás létrehozása az Azure-ban IoT Central
 
@@ -34,7 +34,7 @@ A pénztári és a feltétel-figyelési megoldást három részből fejlesztheti
 * Az irányítópult testreszabása a kezelők számára az eszközök figyeléséhez és kezeléséhez
 * Az adatexportálás konfigurálása az áruházbeli kezelők számára az elemzések futtatásához és az elemzések megjelenítéséhez
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Hozzon létre egy kiskereskedelmi áruházbeli alkalmazást az Azure IoT Central **in-store Analytics-Checkout** sablon használatával
 > * Az Alkalmazásbeállítások testreszabása
@@ -186,7 +186,7 @@ A `humidity` telemetria típusnál végezze el a következő módosításokat:
 
 1. Módosítsa a **szemantikai típus** beállítást a *nincs* értékről a *nedvességre*.  Megadhatja a séma értékeit a kibontott séma nézetben a páratartalom telemetria típushoz. A séma beállításai lehetővé teszik, hogy részletes ellenőrzési követelményeket hozzon létre az érzékelők által nyomon követett adathoz. Megadhatja például a minimális és a maximális operációsrendszer-értékeket egy adott csatolóhoz.
 
-1. Válassza ki **mentése** a módosítások mentéséhez.
+1. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 
     ![Azure IoT Central RuuviTag-sablon testreszabása](./media/tutorial-in-store-analytics-create-app-pnp/ruuvitag-device-template-customize.png)
 
@@ -214,7 +214,7 @@ A következő értékek megadásával hozzon létre egyéni tulajdonságot az eg
 
     Az eszközök közzétételével láthatóvá válik az alkalmazások operátorai. Miután közzétett egy sablont, a használatával szimulált eszközöket állíthat elő teszteléshez, vagy valódi eszközöket kapcsolhat az alkalmazáshoz. Ha már rendelkezik az alkalmazáshoz csatlakoztatott eszközökkel, a testreszabott sablon közzététele leküldi a módosításokat az eszközökön.
 
-## <a name="add-devices"></a>Eszközök felvétele
+## <a name="add-devices"></a>Eszközök hozzáadása
 Miután létrehozta és testreszabta az eszközök sablonjait, itt az ideje, hogy hozzáadja az eszközöket. 
 
 Ebben az oktatóanyagban a következő valós és szimulált eszközöket használja az alkalmazás létrehozásához:

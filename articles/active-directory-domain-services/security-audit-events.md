@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6ff996129cc140c9154edb8fb60840cd48017a5e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569812"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704294"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Azure Active Directory Domain Services biztonsági naplózásának engedélyezése (előzetes verzió)
 
@@ -68,10 +68,10 @@ Az alábbi táblázat az egyes forrásokhoz tartozó erőforrás-típusokra vona
 > [!IMPORTANT]
 > A Azure AD Domain Services biztonsági naplózás engedélyezése előtt létre kell hoznia a cél erőforrást. Ezeket az erőforrásokat a Azure Portal, Azure PowerShell vagy az Azure CLI használatával hozhatja létre.
 
-| Cél erőforrás | Forgatókönyv |
+| Cél erőforrás | Alkalmazási helyzet |
 |:---|:---|
 |Azure Storage| Ezt a célt akkor kell használni, ha elsődlegesen a biztonsági naplózási események archiválási célból történő tárolására van szükség. Más célok archiválási célokra is használhatók, azonban ezek a célok az archiválás elsődleges igényén felüli képességeket biztosítanak. Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account-1).|
-|Azure Event Hubs| Ezt a célt akkor érdemes használni, ha az elsődlegesen a biztonsági naplózási események megosztására van szükség további szoftverekkel, például az adatelemzési szoftverekkel vagy a biztonsági információkkal & az Event Management (SIEM) szoftverrel. Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy Event hub-t a Azure Portal használatával](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
+|Azure Event Hubs-eseményközpontok| Ezt a célt akkor érdemes használni, ha az elsődlegesen a biztonsági naplózási események megosztására van szükség további szoftverekkel, például az adatelemzési szoftverekkel vagy a biztonsági információkkal & az Event Management (SIEM) szoftverrel. Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy Event hub-t a Azure Portal használatával](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
 |Azure Log Analytics munkaterület| Ezt a célt akkor érdemes használni, ha az elsődleges szükséglet a Azure Portal közvetlen biztonságos naplózásának elemzése és ellenőrzése. Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy log Analytics munkaterületet a Azure Portal.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>Biztonsági naplózási események engedélyezése a Azure Portal használatával
@@ -82,7 +82,7 @@ Az Azure AD DS biztonsági naplózási események az Azure Portal használatáva
 > Az Azure AD DS biztonsági naplózása nem visszamenőleges. Nem lehet lekérdezni az eseményeket a múltból, illetve a múltbeli eseményeket is visszajátszani. Az Azure AD DS csak az engedélyezése után lehet eseményeket küldeni.
 
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
-1. A Azure Portal tetején keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a felügyelt tartományt, például *contoso.com*.
+1. A Azure Portal tetején keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a felügyelt tartományt, például *aadds.contoso.com*.
 1. Az Azure AD DS ablakban válassza a **diagnosztikai beállítások (előzetes verzió)** lehetőséget a bal oldali oldalon.
 1. Alapértelmezés szerint egyetlen diagnosztika sincs konfigurálva. Első lépésként válassza a **diagnosztikai beállítás hozzáadása**elemet.
 
@@ -94,7 +94,7 @@ Az Azure AD DS biztonsági naplózási események az Azure Portal használatáva
 
     ![A szükséges cél és naplózási események típusának engedélyezése a rögzítéshez](./media/security-audit-events/diagnostic-settings-page.png)
 
-    * **Azure Storage tárterület**
+    * **Azure Storage**
         * Válassza az **archiválás egy Storage-fiókba**lehetőséget, majd válassza a **Konfigurálás**lehetőséget.
         * Válassza ki az **előfizetést** és azt a **Storage-fiókot** , amelyet a biztonsági naplózási események archiválásához használni kíván.
         * Ha elkészült, kattintson **az OK gombra**.
@@ -243,7 +243,7 @@ AADDomainServicesAccountLogon
 | summarize count()
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Kusto kapcsolatos konkrét információk a következő cikkekben találhatók:
 

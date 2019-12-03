@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 406f6f7a3db5f63fb50242a93f021c481631adaa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a800336fb6fda8a0ed0af71f243936d29e8079e7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209711"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706831"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Az IoT Hub eszközön található ikrek megismerése és használata
 
@@ -21,7 +21,7 @@ Az *ikrek* olyan JSON-dokumentumok, amelyek az eszköz állapotával kapcsolatos
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Ez a cikk ismerteti:
+Ez a cikk a következőket ismerteti:
 
 * A két eszköz szerkezete: *címkék*, *kívánt* és *jelentett tulajdonságok*.
 * Az eszközön futó alkalmazások és a háttérbeli műveletek az eszközökön is elvégezhetők.
@@ -119,7 +119,7 @@ Az előző példában az eszköz Twin `batteryLevel` tulajdonságot tartalmaz, a
 
 ### <a name="desired-property-example"></a>Példa a kívánt tulajdonságra
 
-Az előző példában a megoldás háttérbe állítása és a jelentett tulajdonságok a `telemetryConfig` Device Twin kívánt és jelentett tulajdonságokat használják az eszköz telemetria-konfigurációjának szinkronizálásához. Például:
+Az előző példában a megoldás háttérbe állítása és a jelentett tulajdonságok a `telemetryConfig` Device Twin kívánt és jelentett tulajdonságokat használják az eszköz telemetria-konfigurációjának szinkronizálásához. Példa:
 
 1. A megoldás háttérbe állítása a kívánt tulajdonságot a kívánt konfigurációs értékkel állítja be. Itt látható a dokumentum azon része, amely a kívánt tulajdonságot beállítja:
 
@@ -182,16 +182,16 @@ A megoldás háttérrendszer a következő, HTTPS protokollon keresztül elérhe
 
   - Tulajdonságok
 
-    | Name (Név) | Érték |
+    | Név | Value (Díj) |
     | --- | --- |
     $content típusa | application/json |
-    $iothub-enqueuedtime |  Az értesítés elküldésének ideje |
-    $iothub-message-source | twinChangeEvents |
-    $content – kódolás | utf-8 |
+    $iothub – enqueuedtime |  Az értesítés elküldésének ideje |
+    $iothub – üzenet – forrás | twinChangeEvents |
+    $content – kódolás | UTF-8 |
     deviceId | Az eszköz azonosítója |
     hubName | IoT Hub neve |
     operationTimestamp | A művelet [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) időbélyege |
-    iothub-message-schema | deviceLifecycleNotification |
+    iothub – üzenet – séma | deviceLifecycleNotification |
     opType | "replaceTwin" vagy "updateTwin" |
 
     Az üzenetrendszer tulajdonságai előtaggal vannak ellátva a `$` szimbólummal.
@@ -285,7 +285,7 @@ A címkék, a kívánt tulajdonságok és a jelentett tulajdonságok a JSON-obje
 
 ## <a name="device-twin-size"></a>Eszköz kettős mérete
 
-IoT Hub kényszeríti a 8 kb korlátozását a `tags`, `properties/desired`és `properties/reported`megfelelő teljes értékeire, kivéve a csak olvasható elemeket.
+IoT Hub kényszeríti a `tags`értékének 8 KB-os korlátját, és egy 32 KB méretű korlátot a `properties/desired` és `properties/reported`értékére. Ezek az összegek kizárólag a csak olvasható elemekből állnak.
 
 A méret kiszámítása az összes karakter számlálásával történik, kivéve a UNICODE vezérlő karaktereket (szegmensek C0 és C1), valamint a karakterlánc-konstansokon kívüli szóközöket.
 
@@ -295,7 +295,7 @@ IoT Hub elutasítja az összes olyan műveletet, amely a határértéknél nagyo
 
 IoT Hub karbantartja az összes JSON-objektum utolsó frissítésének időbélyegét az eszközök Twin-beli kívánt és jelentett tulajdonságaiban. Az időbélyegek UTC szerint vannak kódolva, és a [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) formátuma `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 
-Például:
+Példa:
 
 ```json
 {

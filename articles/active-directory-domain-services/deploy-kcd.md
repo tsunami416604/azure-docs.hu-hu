@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: b6941a159c8be9f7d1921dd281f7366b078b30a7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 8860f2bea2877e7775db20be79181352d8cd55c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546275"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705283"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Kerberos által korlátozott delegálás (KCD) konfigurálása Azure Active Directory Domain Services
 
@@ -56,7 +56,7 @@ Az erőforrás-alapú KCD a PowerShell használatával van konfigurálva. A [set
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>Erőforrás-alapú KCD konfigurálása számítógépfiók számára
 
-Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely a *contoso-WebApp.contoso.com*nevű számítógépen fut. A webalkalmazásnak hozzá kell férnie egy webes API-hoz, amely a *contoso-API.contoso.com* nevű számítógépen fut a tartományi felhasználók környezetében. A forgatókönyv konfigurálásához hajtsa végre a következő lépéseket:
+Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely a *contoso-WebApp.aadds.contoso.com*nevű számítógépen fut. A webalkalmazásnak hozzá kell férnie egy webes API-hoz, amely a *contoso-API.aadds.contoso.com* nevű számítógépen fut a tartományi felhasználók környezetében. A forgatókönyv konfigurálásához hajtsa végre a következő lépéseket:
 
 1. [Hozzon létre egy egyéni szervezeti egységet](create-ou.md). Az Azure AD DS felügyelt tartományában lévő felhasználók számára engedélyeket delegálhat az egyéni szervezeti egység kezeléséhez.
 1. [Tartomány – csatlakozzon a virtuális gépekhez][create-join-windows-vm], amelyek a webalkalmazást futtatják, valamint a webes API-t futtató számítógépeket az Azure AD DS felügyelt tartományhoz. Hozza létre ezeket a számítógépfiókokat az egyéni szervezeti egységben az előző lépésből.
@@ -67,8 +67,8 @@ Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely a *contoso-Web
 1. Végül konfigurálja az erőforrás-alapú KCD a [set-ADComputer PowerShell-][Set-ADComputer] parancsmag használatával. Futtassa a következő parancsmagokat a tartományhoz csatlakoztatott felügyeleti virtuális gépről, és jelentkezzen be felhasználói fiókként, amely az *Azure ad DC-rendszergazdák* csoport tagja. Szükség szerint adja meg saját számítógépe nevét:
     
     ```powershell
-    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.contoso.com
-    Set-ADComputer contoso-api.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aadds.contoso.com
+    Set-ADComputer contoso-api.aadds.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
 ## <a name="configure-resource-based-kcd-for-a-user-account"></a>Erőforrás-alapú KCD konfigurálása felhasználói fiókhoz

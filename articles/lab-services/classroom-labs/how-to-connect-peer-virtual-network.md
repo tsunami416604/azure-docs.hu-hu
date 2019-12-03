@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az Azure Lab Services társ hálózathoz |} A Microsoft Docs
-description: Ismerje meg, hogy a tesztlabor-hálózat csatlakoztatása egy társ, egy másik hálózattal. Például csatlakoztassa a helyszíni iskola/Egyetem hálózati tesztkörnyezet virtuális hálózattal, az Azure-ban.
+title: Kapcsolódás a Azure Lab Services társ hálózatához | Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztatható a labor-hálózat egy másik hálózathoz társként. Például összekapcsolhatja a helyszíni iskolai vagy egyetemi hálózatot a labor virtuális hálózatával az Azure-ban.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,51 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: c9b305beae1b385d4714e3a80e6843c7e76a4f60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3f6acef7491a07f94eec0b2c3b2f3bcd9c01a33
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411011"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701667"
 ---
-# <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>A tesztkörnyezet hálózati csatlakozás és a társ virtuális hálózat az Azure Lab Services 
-Ez a cikk ismerteti, a tesztkörnyezetek hálózat és egy másik hálózat közötti társviszony. 
+# <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>A labor hálózatának összekötése egy társ virtuális hálózattal Azure Lab Services 
+Ez a cikk a labor-hálózat más hálózattal való társításával kapcsolatos információkat tartalmaz. 
 
 ## <a name="overview"></a>Áttekintés
-Virtuális hálózatok közötti társviszony lehetővé teszi, hogy zökkenőmentesen csatlakoztathatja az Azure virtuális hálózatok. A társviszony kialakítását követően a virtuális hálózatok a csatlakozás szempontjából egyetlen hálózatnak látszanak. A virtuális társhálózatokba tartozó virtuális gépek közötti forgalmat továbbítja a rendszer a Microsoft gerincinfrastruktúráján keresztül, lényegében ugyanúgy van a virtuális hálózaton keresztül a magánhálózati IP-címek csak a virtuális gépek között. További információkért lásd: [virtuális hálózatok közötti társviszony](../../virtual-network/virtual-network-peering-overview.md).
+A virtuális hálózatok közötti kapcsolat lehetővé teszi az Azure-beli virtuális hálózatok zökkenőmentes összekapcsolását. A társviszony kialakítását követően a virtuális hálózatok a csatlakozás szempontjából egyetlen hálózatnak látszanak. A virtuális gépek közötti forgalmat a rendszer a Microsoft gerinc-infrastruktúrán keresztül irányítja át, hasonlóan a forgalomhoz, mint az azonos virtuális hálózatban lévő virtuális gépek között, a magánhálózati IP-címeken keresztül. További információ: [Virtual Network peering](../../virtual-network/virtual-network-peering-overview.md).
 
-Szükség lehet a tesztkörnyezet hálózati csatlakozás és a társ virtuális hálózat bizonyos esetekben a következő azokat is beleértve:
+Előfordulhat, hogy a tesztkörnyezet hálózatát egy társ virtuális hálózattal kell összekötnie bizonyos helyzetekben, többek között az alábbiakat:
 
-- A lab-ben a virtuális gépek rendelkezik, amely kapcsolódik a helyszíni licenckiszolgálókat licenc beszerzésére szoftver
-- A lab-ben a virtuális gépek university a hálózati megosztásokon kell az adatkészletek hozzáférést (vagy bármely más fájlok). 
+- A laborban található virtuális gépek olyan szoftverrel rendelkeznek, amely a licencek megvásárlásához csatlakozik a helyszíni licenckiszolgálók számára
+- A laborban található virtuális gépeknek hozzá kell férniük az adatkészletekhez (vagy bármely más fájlhoz) az egyetemi hálózati megosztásokon. 
 
-Bizonyos a helyszíni hálózat csatlakozik vagy Azure virtuális hálózaton keresztül [ExpressRoute](../../expressroute/expressroute-introduction.md) vagy [virtuális hálózati átjáró](../../vpn-gateway/vpn-gateway-about-vpngateways.md). Ezek a szolgáltatások az Azure Lab Services kívül kell állítani. Egy helyszíni hálózat csatlakoztatása az Azure ExpressRoute használatával kapcsolatos további információkért lásd: [az ExpressRoute áttekintése]) (.. /expressroute/expressroute-Introduction.MD). Egy virtuális hálózati átjárót, az átjárót használó helyszíni kapcsolatok virtuális hálózati megadott, és a tesztlabor összes kell ugyanabban a régióban.
+Bizonyos helyszíni hálózatok az Azure-Virtual Networkhoz kapcsolódnak [ExpressRoute](../../expressroute/expressroute-introduction.md) vagy [Virtual Network átjárón](../../vpn-gateway/vpn-gateway-about-vpngateways.md)keresztül. Ezeket a szolgáltatásokat Azure Lab Serviceson kívül kell beállítani. Ha szeretne többet megtudni arról, hogyan csatlakoztathat helyszíni hálózatot az Azure-hoz az ExpressRoute használatával, tekintse meg az [ExpressRoute áttekintése](../../expressroute/expressroute-introduction.md)című témakört. Virtual Network átjárót használó helyszíni kapcsolat esetén az átjárónak, a megadott virtuális hálózatnak és a labor-fióknak ugyanabban a régióban kell lennie.
 
-## <a name="configure-at-the-time-of-lab-account-creation"></a>A labor létrehozása idején konfigurálása
-Új labor-fiók létrehozása során választhat egy meglévő virtuális hálózatot, amely megmutatja, a **társ virtuális hálózatnak** legördülő listából. A kiválasztott virtuális hálózat connected(peered) a Labs szolgáltatásban létrehozott tesztkörnyezet fiók alatt. A virtuális gépek laborokban, amelyek akkor jönnek létre a elvégzése után a változás az erőforrásokhoz való hozzáférés kellene a virtuális társhálózatban működő. 
+## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurálás a labor-fiók létrehozásakor
+Az új Labor-fiók létrehozása során kiválaszthat egy meglévő virtuális hálózatot, amely a **társ virtuális hálózat** legördülő listában látható. A kiválasztott virtuális hálózat csatlakoztatva van a labor-fiókban létrehozott laborokhoz. Az összes olyan virtuális gép, amely a módosítás létrehozása után jön létre, hozzáférhet a virtuális hálózatban lévő erőforrásokhoz. 
 
-![Válassza ki a virtuális hálózat társviszonyba állítása](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
+![VNet kiválasztása társként](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 
 > [!NOTE]
-> Részletes, lépésenkénti útmutatót tesztkörnyezetfiók létrehozásához, lásd: [tesztkörnyezetfiók beállítása](tutorial-setup-lab-account.md)
+> A labor-fiókok létrehozásával kapcsolatos részletes útmutatásért lásd: [labor-fiók beállítása](tutorial-setup-lab-account.md)
 
 
-## <a name="configure-after-the-lab-is-created"></a>A labor létrehozása után konfigurálása
-Ugyanahhoz a tulajdonsághoz engedélyezhető a **Labs konfigurációs** lapján a **labor fiók** lapon, ha nem adott meg egyenrangú hálózat létrehozása a lab-fiók létrehozása idején. Ezzel a beállítással végrehajtott módosítása csak a váltás után létrehozott labs vonatkozik. Ahogy az képen látható, engedélyezése vagy letiltása **társ virtuális hálózatnak** a labs labor-fiókban. 
+## <a name="configure-after-the-lab-is-created"></a>Konfigurálás a tesztkörnyezet létrehozása után
+Ugyanezt a tulajdonságot engedélyezheti a **labor-fiók** lap **Labs-konfiguráció** lapján, ha nem állított be egy társ hálózatot a labor-fiók létrehozásakor. Az erre a beállításra végzett módosítás csak a módosítás után létrehozott laborokra vonatkozik. Ahogy a képen is látható, a labor fiókban engedélyezheti vagy letilthatja a Labs **társ virtuális hálózatát** . 
 
-![Engedélyezheti vagy tilthatja le a virtuális hálózatok közötti társviszonyt a labor létrehozása után](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer-existing-lab.png) 
+![VNet-társítás engedélyezése vagy letiltása a tesztkörnyezet létrehozása után](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer-existing-lab.png) 
 
-Amikor kiválaszt egy virtuális hálózatot a **társ virtuális hálózatnak** mező, a **engedélyezése tesztkörnyezet létrehozója, labor helyre** lehetőség le van tiltva. Fontos, mivel labs labor-fiókban, hogy a társ virtuális hálózatnak az erőforrásokhoz való kapcsolódás labor fiókként ugyanabban a régióban kell lennie. 
+Ha kijelöl egy virtuális hálózatot a **társ virtuális hálózat** mezőhöz, akkor a **tesztkörnyezet-létrehozó engedélyezése a laborban hely** beállítás le van tiltva. Ez azért van, mert a labor-fiókban lévő laboroknak ugyanabban a régióban kell lenniük, mint a társ virtuális hálózatban lévő erőforrásokhoz való kapcsolódáshoz. 
 
 > [!IMPORTANT]
-> A beállítás ezen módosítása csak a Labs szolgáltatásban létrehozott után a változás történik, a meglévő labs, nem vonatkozik. 
+> Ez a beállítás csak a módosítás után létrehozott laborokra vonatkozik, nem a meglévő laborokra. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
-- [Rendszergazdaként hozzon létre, és tesztkörnyezetfiókok kezelése](how-to-manage-lab-accounts.md)
-- [Labortulajdonosként hozzon létre és laborok kezelése](how-to-manage-classroom-labs.md)
-- [Labortulajdonosként állítsa be, és a sablonok közzététele](how-to-create-manage-template.md)
-- [Labor felhasználóként osztályterem-tesztkörnyezetek elérése](how-to-use-classroom-lab.md)
+- [Rendszergazdaként, labor-fiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)
+- [Labor tulajdonosaként Labs létrehozása és kezelése](how-to-manage-classroom-labs.md)
+- [A labor tulajdonosaként hozzon létre és tegyen közzé sablonokat](how-to-create-manage-template.md)
+- [Labor-felhasználóként az osztályterem Labs eléréséhez](how-to-use-classroom-lab.md)
 

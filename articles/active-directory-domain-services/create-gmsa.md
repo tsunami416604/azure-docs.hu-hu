@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: a943d2a8453cb727e9d01e35b12ca90d939ee5e8
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9dc7e6341f77fc17ae26f34ea029b3eb5414dcbc
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546311"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705315"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Csoportosan felügyelt szolgáltatásfiók (gMSA) létrehozása Azure AD Domain Services
 
@@ -65,7 +65,7 @@ Először hozzon létre egy egyéni szervezeti egységet a [New-ADOrganizational
 > [!TIP]
 > A lépések gMSA létrehozásához [használja a felügyeleti virtuális gépet][tutorial-create-management-vm]. Ennek a felügyeleti virtuális gépnek már rendelkeznie kell a szükséges AD PowerShell-parancsmagokkal és a felügyelt tartományhoz való kapcsolódással.
 
-A következő példa létrehoz egy *myNewOU* nevű egyéni szervezeti egységet az Azure AD DS felügyelt tartomány *contoso.com*nevű felügyelt tartományában. Saját szervezeti egység és felügyelt tartománynév használata:
+A következő példa létrehoz egy *myNewOU* nevű egyéni szervezeti egységet az Azure AD DS felügyelt tartomány *aadds.contoso.com*nevű felügyelt tartományában. Saját szervezeti egység és felügyelt tartománynév használata:
 
 ```powershell
 New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
@@ -75,20 +75,20 @@ Most hozzon létre egy gMSA a [New-ADServiceAccount][New-ADServiceAccount] paran
 
 * **-A name** értéke *WebFarmSvc*
 * **-Path** paraméter adja meg az előző lépésben létrehozott gMSA tartozó egyéni szervezeti egységet.
-* A DNS-bejegyzések és egyszerű szolgáltatásnév *WebFarmSvc.contoso.com* vannak beállítva
+* A DNS-bejegyzések és egyszerű szolgáltatásnév *WebFarmSvc.aadds.contoso.com* vannak beállítva
 * A *contoso-Server $* rendszerbiztonsági tag számára engedélyezett a jelszó beolvasása az identitás használatával.
 
 Adja meg a saját nevét és tartományneveit.
 
 ```powershell
 New-ADServiceAccount -Name WebFarmSvc `
-    -DNSHostName WebFarmSvc.contoso.com `
+    -DNSHostName WebFarmSvc.aadds.contoso.com `
     -Path "OU=MYNEWOU,DC=contoso,DC=com" `
     -KerberosEncryptionType AES128, AES256 `
     -ManagedPasswordIntervalInDays 30 `
-    -ServicePrincipalNames http/WebFarmSvc.contoso.com/contoso.com, `
-        http/WebFarmSvc.contoso.com/contoso, `
-        http/WebFarmSvc/contoso.com, `
+    -ServicePrincipalNames http/WebFarmSvc.aadds.contoso.com/aadds.contoso.com, `
+        http/WebFarmSvc.aadds.contoso.com/contoso, `
+        http/WebFarmSvc/aadds.contoso.com, `
         http/WebFarmSvc/contoso `
     -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
 ```

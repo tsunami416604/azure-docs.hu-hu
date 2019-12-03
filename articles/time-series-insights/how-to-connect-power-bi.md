@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e218877ee0d29e493a31091ccbce406ed888f8cc
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114733"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705974"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Adatok megjelenítése Time Series Insightsról Power BI
 
@@ -32,7 +32,10 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy [ingyenes Azure-előfizetés
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Töltse le és telepítse a [Power bi Desktop](https://powerbi.microsoft.com/downloads/) legújabb verzióját
-* [Azure Time Series INSIGHTS GA-példány](time-series-insights-get-started.md) vagy [Azure Time Series Insights előzetes verziójú példányának](time-series-insights-update-how-to-manage.md) létrehozása
+* [Azure Time Series Insights előzetes verziójú példányt](time-series-insights-update-how-to-manage.md) kell létrehoznia, vagy létre kell hoznia
+
+> [!IMPORTANT]
+> A Power BI-összekötő jelenleg a **meleg tároláshoz**konfigurált Time Series Insights előzetes *utólagos* elszámolású környezetekben támogatott.
 
 ## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Adatok összekötése Time Series Insightsról Power BI
 
@@ -65,12 +68,12 @@ Első lépések:
 
        [![-kapcsolat](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. Ha nem konfigurálta a Time Series Insights-példányát a meleg tároláshoz, a rendszer figyelmeztetést küld.
+   1. Ha nem konfigurálta a Time Series Insights-példányát a **meleg tároláshoz**, a rendszer figyelmeztetést küld.
 
        [![-kapcsolat](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > A meglévő példányt a Azure Portal meleg tárolására is konfigurálhatja.
+       > A meglévő példányt a Azure Portal **meleg tárolására** is konfigurálhatja.
 
 1. Válassza **a lekérdezés másolása a vágólapra**lehetőséget.
 1. Most indítsa el Power BI Desktop.
@@ -136,7 +139,7 @@ Ha már betöltött egy adatkészletet a Power BIban, de módosítani szeretné 
 
 Ekkor meg kell jelennie a kívánt változtatásoknak.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Azure Time Series Insights [Power bi-összekötővel kapcsolatos fogalmakról](https://docs.microsoft.com/power-bi/desktop-query-overview) .
 

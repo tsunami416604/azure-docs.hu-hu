@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 044a63274f7f24831b1f791982f36898199616a6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 11/20/2019
+ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052515"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706262"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: gyakori kérdések
 
@@ -90,7 +90,7 @@ Igen. További összetevők telepítéséhez vagy a fürtkonfiguráció testresz
 
 Microsoft ügyfélszolgálata csapatok azonban csak a következő helyzetekben nyújthatnak támogatást:
 
-- A parancsfájl betöltésekor előforduló problémák vagy hibák. Az egyéni parancsfájlok végrehajtása során felmerülő hibák a támogatási jegy hatókörén kívül esnek.
+- A parancsfájl betöltésekor előforduló problémák vagy hibák. Az egyéni szkriptek végrehajtásakor felmerülő hibák kezelésére a támogatási jegyek nem terjednek ki.
 
 - A fürt létrehozási folyamatának részét képező további alkalmazások. 
 
@@ -180,6 +180,11 @@ Igen, egy további virtuális gépet is telepíthet a HDInsight-fürttel azonos 
 - Edge-csomópontok: hozzáadhat egy másik peremhálózati csomópontot a fürthöz, a következő témakörben leírtak szerint: az [üres peremhálózati csomópontok használata Apache Hadoop fürtökön a HDInsight-ben](hdinsight-apps-use-edge-node.md).
 
 - Önálló csomópontok: hozzáadhat egy önálló virtuális gépet ugyanahhoz az alhálózathoz, és elérheti a fürtöt a virtuális gépről a privát végpont `https://<CLUSTERNAME>-int.azurehdinsight.net`használatával. További információ: a [hálózati forgalom szabályozása](hdinsight-plan-virtual-network-deployment.md#networktraffic).
+
+### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>Egy peremhálózati csomópont helyi lemezén kell tárolni az adattárolást?
+
+Nem, a helyi lemezen tárolt adattárolás nem jó ötlet. Ha a csomópont meghibásodik, a helyileg tárolt összes adat el fog veszni. Azt javasoljuk, hogy Azure Data Lake Storage Gen2 vagy Azure Blob Storage-ban tárolja az adattárolást, vagy egy Azure Files-megosztást csatlakoztat az adattároláshoz.
+
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Hozzáadhatok egy meglévő HDInsight-fürtöt egy másik virtuális hálózathoz?
 
