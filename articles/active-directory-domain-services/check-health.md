@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: iainfou
-ms.openlocfilehash: 50b142acb457d16abeb24f22d56b653a38aca76d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 501214f87a65c71436e262608f7e9b3471cc9775
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898247"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705408"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services felügyelt tartomány állapotának ellenőrzését
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan tekintheti meg az Azure AD DS állapotát, és megis
 Egy Azure AD DS felügyelt tartomány állapotának megtekintése a Azure Portal használatával történik. A legutóbbi biztonsági mentési időpontra és az Azure AD-vel való szinkronizálásra vonatkozó információk láthatók a felügyelt tartomány állapotával kapcsolatos problémákat jelző riasztásokkal együtt. Egy Azure AD DS felügyelt tartomány állapotának megtekintéséhez hajtsa végre a következő lépéseket:
 
 1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services**lehetőséget.
-1. Válassza ki az Azure AD DS felügyelt tartományát, például *contoso.com*.
+1. Válassza ki az Azure AD DS felügyelt tartományát, például *aadds.contoso.com*.
 1. Az Azure AD DS erőforrás ablak bal oldalán válassza az **állapot**lehetőséget. Az alábbi képernyőképen egy kifogástalan Azure AD DS felügyelt tartomány és az utolsó biztonsági mentés és az Azure AD szinkronizálás állapota látható:
 
     ![A Azure Active Directory Domain Services állapotot megjelenítő Azure Portal állapot oldalának áttekintése](./media/check-health/health-page.png)
@@ -38,22 +38,22 @@ Az állapot lap *utolsó kiértékelt* időbélyegzője azt mutatja, hogy az Azu
 
 A jobb felső sarokban az Azure AD DS felügyelt tartomány általános állapota látható. Az állapot a tartomány összes meglévő riasztását befolyásolja. Az alábbi táblázat az elérhető állapotjelzőket ismerteti:
 
-| State | Ikon | Magyarázat |
+| Állapot | ikon | Magyarázat |
 | --- | :----: | --- |
 | Fut | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Az Azure AD DS felügyelt tartománya megfelelően fut, és nem rendelkezik kritikus vagy figyelmeztető riasztásokkal. Előfordulhat, hogy a tartomány tájékoztató riasztásokkal rendelkezik. |
 | Figyelmet igényel (figyelmeztetés) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Nincsenek kritikus riasztások az Azure AD DS felügyelt tartományon, de egy vagy több figyelmeztető riasztást kell kezelni. |
 | Figyelmet igényel (kritikus) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Egy vagy több kritikus riasztás található az Azure AD DS felügyelt tartományon, amelyet meg kell oldani. Figyelmeztetési és/vagy tájékoztató riasztásokat is tartalmazhat. |
-| Központi telepítés | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Az Azure AD DS-tartomány üzembe helyezése folyamatban van. |
+| Telepítése | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Az Azure AD DS-tartomány üzembe helyezése folyamatban van. |
 
 ## <a name="understand-monitors-and-alerts"></a>A figyelők és a riasztások ismertetése
 
 Egy Azure AD DS felügyelt tartomány állapota két típusú információt mutat be – figyelők és riasztások. A figyelők megjelenítik az alapvető háttér-feladatok befejezésének időpontját. A riasztások a felügyelt tartomány stabilitásának javításához nyújtanak információt vagy javaslatokat.
 
-### <a name="monitors"></a>Figyelők
+### <a name="monitors"></a>Monitorozások
 
 A figyelők egy Azure AD DS felügyelt tartomány azon területei, amelyek ellenőrzése rendszeresen megtörténik. Ha van aktív riasztás az Azure AD DS felügyelt tartományhoz, akkor előfordulhat, hogy az egyik figyelő egy problémát jelent. Azure AD Domain Services jelenleg a következő területeket figyeli:
 
-* Tartalék
+* Backup
 * Szinkronizálás az Azure AD-vel
 
 #### <a name="backup-monitor"></a>Biztonsági mentési figyelő
@@ -70,7 +70,7 @@ A biztonsági mentési figyelő ellenőrzi, hogy az Azure AD DS felügyelt tarto
 
 Egy Azure AD DS felügyelt tartomány rendszeresen szinkronizál a Azure Active Directoryokkal. A felhasználók és a csoport objektumainak száma, valamint az Azure AD-címtárban az utolsó szinkronizálás óta végrehajtott módosítások száma befolyásolja, hogy mennyi ideig tart a szinkronizálás. Ha az Azure AD DS felügyelt tartomány utolsó szinkronizálása három nappal ezelőtt történt, keresse meg és oldja fel az aktív riasztásokat. Ha a szinkronizálási figyelő nem frissíti az állapotot a legutóbbi szinkronizálás megjelenítéséhez, [Nyisson meg egy Azure-támogatási kérelmet][azure-support].
 
-### <a name="alerts"></a>Riasztások
+### <a name="alerts"></a>Értesítések
 
 Riasztások jönnek létre olyan Azure AD DS felügyelt tartománybeli problémák esetén, amelyeket a szolgáltatás megfelelő futtatásához kell kezelnie. Minden riasztás ismerteti a problémát, és olyan URL-címet ad meg, amely a probléma megoldásának konkrét lépéseit ismerteti. A lehetséges riasztásokról és azok megoldásáról további információt a [riasztások hibaelhárítása](troubleshoot-alerts.md)című témakörben talál.
 
@@ -80,7 +80,7 @@ Az állapot riasztásai a következő súlyossági szintekre vannak kategorizál
  * A **figyelmeztető riasztások** értesítik az Azure AD DS felügyelt tartományi műveletekkel kapcsolatos esetleges problémákról, ha a probléma továbbra is fennáll. Ezek a riasztások a felügyelt tartomány biztonságossá tételére vonatkozó javaslatokat is kínálnak.
  * Az **tájékoztató riasztások** olyan értesítések, amelyek negatív hatással vannak az Azure AD DS felügyelt tartományára. Az tájékoztató riasztások betekintést nyújtanak a felügyelt tartományba tartozó adatokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az állapot lapon megjelenő riasztásokkal kapcsolatos további információkért lásd: [riasztások feloldása a felügyelt tartományon][troubleshoot-alerts]
 

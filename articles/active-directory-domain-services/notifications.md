@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: cd0e77d1534bf540376fd397ee3e6d45bf8c424a
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 140edb3162d4f76c741a5692faa19325581a3ba7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546258"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704489"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>E-mail-értesítések konfigurálása a Azure Active Directory Domain Services kapcsolatos problémákhoz
 
@@ -58,7 +58,7 @@ Azt is megteheti, hogy az Azure AD-címtár minden *globális rendszergazdája* 
 A meglévő e-mailes értesítés címzettjeinek áttekintéséhez vagy további címzettek hozzáadásához hajtsa végre a következő lépéseket:
 
 1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services**lehetőséget.
-1. Válassza ki az Azure AD DS felügyelt tartományát, például *contoso.com*.
+1. Válassza ki az Azure AD DS felügyelt tartományát, például *aadds.contoso.com*.
 1. Az Azure AD DS erőforrás ablak bal oldalán válassza az **értesítési beállítások**lehetőséget. Az e-mail értesítések meglévő címzettjei jelennek meg.
 1. E-mail címzett hozzáadásához írja be az e-mail-címet a további címzettek táblába.
 1. Ha elkészült, válassza a **Mentés** lehetőséget a felső navigációs sávon.

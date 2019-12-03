@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 0ac9247f5156eb1b766aec7403b2dc8473114659
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 6f6c64acf814b39d38138ed0e6a9c6075b693c7d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483712"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707984"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL-kapcsolat architektúrája
 
@@ -45,13 +45,13 @@ A Azure SQL Database a következő három lehetőséget támogatja egy SQL Datab
 
 - **Proxy:** Ebben a módban az összes kapcsolat a Azure SQL Database átjárón keresztül történik, ami nagyobb késést eredményez, és csökkenti az egészet. Az ilyen üzemmódú ügyfelek által használt kapcsolatok esetében engedélyezni kell a bejövő és kimenő kommunikációt az ügyféltől az 1433-es porton Azure SQL Database átjáró IP-címeinek eléréséhez.
 
-- **Alapértelmezett:** Ez a kapcsolódási házirend a létrehozás után minden kiszolgálón érvényben van, kivéve, ha explicit módon módosítja a kapcsolódási szabályzatot `Proxy` vagy `Redirect`. Az alapértelmezett házirend`Redirect` az Azure-ban (például egy Azure-beli virtuális gépről) származó összes ügyfélkapcsolat esetében, és `Proxy`minden olyan ügyfélkapcsolathoz, amely belülről származik (például a helyi munkaállomás kapcsolatai)
+- **Alapértelmezett:** Ez a kapcsolódási házirend a létrehozás után minden kiszolgálón érvényben van, kivéve, ha explicit módon módosítja a kapcsolódási szabályzatot `Proxy` vagy `Redirect`. Az alapértelmezett házirend`Redirect` az Azure-ban (például egy Azure-beli virtuális gépről) származó összes ügyfélkapcsolat esetében, és `Proxy`az összes kívülről (például a helyi munkaállomásról származó kapcsolatokról).
 
  Javasoljuk, hogy a `Redirect` kapcsolati házirendet a legalacsonyabb késés és a legmagasabb átviteli sebesség érdekében a `Proxy` kapcsolati szabályzaton keresztül. Azonban meg kell felelnie a fentiekben ismertetett hálózati forgalom engedélyezésének további követelményeinek. Ha az ügyfél egy Azure-beli virtuális gép, ezt a hálózati biztonsági csoportok (NSG) és a [szolgáltatás-címkék](../virtual-network/security-overview.md#service-tags)használatával végezheti el. Ha az ügyfél helyszíni munkaállomásról csatlakozik, akkor előfordulhat, hogy a hálózati rendszergazdával kell dolgoznia a vállalati tűzfalon keresztüli hálózati forgalom engedélyezéséhez.
 
 ## <a name="connectivity-from-within-azure"></a>Kapcsolat az Azure-on belül
 
-Ha az Azure-ból csatlakozik, a kapcsolatok alapértelmezés szerint `Redirect` kapcsolati házirenddel rendelkeznek. `Redirect` házirend azt jelenti, hogy a TCP-munkamenetnek az Azure SQL Database-adatbázishoz való létrehozása után az ügyfél-munkamenetet a rendszer átirányítja a megfelelő adatbázis-fürtre, és a célként megadott virtuális IP-címet a Azure SQL Database átjárótól a fürt. Ezt követően az összes további csomag közvetlenül a fürtre áramlik, és megkerüli a Azure SQL Database-átjárót. A következő ábra szemlélteti ezt a forgalmat.
+Ha az Azure-ból csatlakozik, a kapcsolatok alapértelmezés szerint `Redirect` kapcsolati házirenddel rendelkeznek. `Redirect` házirend azt jelenti, hogy a TCP-munkamenetnek az Azure SQL Database-adatbázishoz való létrehozása után az ügyfél-munkamenetet a rendszer átirányítja a megfelelő adatbázis-fürtre, és a célként megadott virtuális IP-címet a fürt adott Azure SQL Database átjárójának adott helyére módosítja. Ezt követően az összes további csomag közvetlenül a fürtre áramlik, és megkerüli a Azure SQL Database-átjárót. A következő ábra szemlélteti ezt a forgalmat.
 
 ![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
@@ -72,11 +72,11 @@ Az alábbi táblázat az átjárók régió szerinti IP-címeit sorolja fel. Azu
 A forgalom áttelepítésének részletei az egyes régiókban lévő új átjárók számára a következő cikkben olvashatók: [Azure SQL Database forgalom áttelepítése újabb átjáróra](sql-database-gateway-migration.md)
 
 
-| Régiónév          | Átjáró IP-címei |
+| Régió neve          | Átjáró IP-címei |
 | --- | --- |
 | Ausztrália középső régiója    | 20.36.105.0 |
 | Ausztráliai Central2   | 20.36.113.0 |
-| Kelet-Ausztrália       | 13.75.149.87, 40.79.161.1 |
+| Ausztrália keleti régiója       | 13.75.149.87, 40.79.161.1 |
 | Délkelet-Ausztrália | 191.239.192.109, 13.73.109.251 |
 | Dél-Brazília         | 104.41.11.5, 191.233.200.14 |
 | Közép-Kanada       | 40.85.224.249      |
@@ -98,7 +98,7 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | Kelet-Japán           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
 | Nyugat-Japán           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | Korea középső régiója        | 52.231.32.42       |
-| Korea déli régiója          | 52.231.200.86      |
+| Dél-Korea          | 52.231.200.86      |
 | USA északi középső régiója     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Észak-Európa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Dél-Afrika északi régiója   | 102.133.152.0      |
@@ -107,12 +107,12 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | Délkelet-Ázsia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | Egyesült Arab Emírségek középső régiója          | 20.37.72.64        |
 | Egyesült Arab Emírségek északi régiója            | 65.52.248.0        |
-| Az Egyesült Királyság déli régiója             | 51.140.184.11      |
-| Az Egyesült Királyság nyugati régiója              | 51.141.8.11        |
+| Egyesült Királyság déli régiója             | 51.140.184.11      |
+| Egyesült Királyság nyugati régiója              | 51.141.8.11        |
 | USA nyugati középső régiója      | 13.78.145.25       |
 | Nyugat-Európa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | USA nyugati régiója              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
-| USA nyugati régiója, 2.            | 13.66.226.202      |
+| USA 2. nyugati régiója            | 13.66.226.202      |
 |                      |                    |
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL Databasei kapcsolatok házirendjének módosítása

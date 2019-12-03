@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d8a5f4756f3a6799c7f1b08973e0a84603cb4571
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172337"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703648"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: felügyeleti virtuális gép létrehozása Azure Active Directory Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez
 
@@ -105,7 +105,7 @@ A Active Directory felügyeleti eszközök tartományhoz csatlakoztatott virtuá
 1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
 1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek **lapján kattintson a** **Tovább gombra**.
 1. A *telepítés típusa*beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
-1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.contoso.com*, majd kattintson a **tovább**gombra.
+1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.aadds.contoso.com*, majd kattintson a **tovább**gombra.
 1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább**gombra.
 1. A **szolgáltatások** lapon bontsa ki a **Távoli kiszolgálófelügyelet eszközei** csomópontot, majd bontsa ki a **szerepkör-felügyeleti eszközök** csomópontot.
 
@@ -125,7 +125,7 @@ Ha a felügyeleti eszközök telepítve vannak, lássuk, hogyan használhatja ő
     ![A kiszolgálóra telepített felügyeleti eszközök listája](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. Válassza a **Active Directory felügyeleti központ**lehetőséget.
-1. Az Azure AD DS felügyelt tartomány megismeréséhez válassza ki a tartománynevet a bal oldali ablaktáblán, például *contoso.com*. A *AADDC számítógépek* és a *AADDC-felhasználók* nevű tárolók a lista elejére kerülnek.
+1. Az Azure AD DS felügyelt tartomány megismeréséhez válassza ki a tartománynevet a bal oldali ablaktáblán, például *aadds.contoso.com*. A *AADDC számítógépek* és a *AADDC-felhasználók* nevű tárolók a lista elejére kerülnek.
 
     ![Az Azure AD DS felügyelt tartomány elérhető tárolóinak listázása](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 

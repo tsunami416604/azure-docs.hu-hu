@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 84272336a9f70f663e134e16fe88c7e43bb73548
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef203eec1398e9f23fb162845b9d570316083ecf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208612"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703696"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Oktatóanyag: Azure Active Directory Domain Services-példány létrehozása és konfigurálása
 
@@ -22,7 +22,7 @@ Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartomány
 
 Felügyelt tartományt a Hálózatkezelés és a szinkronizálás alapértelmezett konfigurációs beállításaival hozhat létre, vagy [manuálisan is megadhatja ezeket a beállításokat][tutorial-create-instance-advanced]. Ez az oktatóanyag bemutatja, hogyan használható az alapértelmezett beállítások egy Azure AD DS-példány létrehozására és konfigurálására a Azure Portal használatával.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A felügyelt tartomány DNS-követelményeinek megismerése
@@ -72,7 +72,7 @@ Azure AD DS-példány létrehozásakor meg kell adnia egy DNS-nevet. A DNS-név 
 >
 > Használhatja az Azure AD DS felügyelt tartományának legfelső szintű DNS-nevét, de előfordulhat, hogy további DNS-rekordokat kell létrehoznia a környezetében lévő más szolgáltatásokhoz. Ha például olyan webkiszolgálót futtat, amely a gyökér DNS-nevet használja, akkor olyan elnevezési ütközések lehetnek, amelyek további DNS-bejegyzéseket igényelnek.
 >
-> Ezekben az oktatóanyagokban és útmutatókban a *contoso.com* egyéni tartományát használjuk rövid példaként. Az összes parancsban adja meg a saját tartománynevét, amely tartalmazhat egy egyedi előtagot.
+> Ezekben az oktatóanyagokban és útmutatókban a *aadds.contoso.com* egyéni tartományát használjuk rövid példaként. Az összes parancsban adja meg a saját tartománynevét, amely tartalmazhat egy egyedi előtagot.
 >
 > További információ: [válasszon egy elnevezési előtagot a tartományhoz][naming-prefix].
 
@@ -117,7 +117,7 @@ A varázsló **Összefoglalás** lapján tekintse át a felügyelt tartomány ko
     ![Értesítés a telepítés Azure Portal folyamatban](./media/tutorial-create-instance/deployment-in-progress.png)
 
 1. A lap a telepítési folyamat frissítéseivel töltődik be, beleértve a címtárban lévő új erőforrások létrehozását is.
-1. Válassza ki az erőforráscsoportot, például *myResourceGroup*, majd válassza ki az Azure AD DS példányát az Azure-erőforrások listájából, például *contoso.com*. Az **Áttekintés** lapon látható, hogy a felügyelt tartomány jelenleg *telepítve*van. A felügyelt tartományt nem lehet a teljes kiépítés előtt konfigurálni.
+1. Válassza ki az erőforráscsoportot, például *myResourceGroup*, majd válassza ki az Azure AD DS példányát az Azure-erőforrások listájából, például *aadds.contoso.com*. Az **Áttekintés** lapon látható, hogy a felügyelt tartomány jelenleg *telepítve*van. A felügyelt tartományt nem lehet a teljes kiépítés előtt konfigurálni.
 
     ![Tartományi szolgáltatások állapota a kiépítési állapotban](./media/tutorial-create-instance/provisioning-in-progress.png)
 

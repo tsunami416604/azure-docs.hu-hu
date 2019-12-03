@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: cc72cb4134e6492478805421e448df26a8dc4554
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622415"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706367"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Vész-helyreállítás beállítása többrétegű SharePoint-alkalmazáshoz a vész-helyreállításhoz Azure Site Recovery használatával
 
@@ -65,7 +65,7 @@ Site Recovery az alkalmazás-független, és működnie kell a SharePoint bárme
 **Hyper-V** | Igen | Igen
 **VMware** | Igen | Igen
 **Fizikai kiszolgáló** | Igen | Igen
-**Azure** | NA | Igen
+**Azure** | n/a | Igen
 
 
 ### <a name="things-to-keep-in-mind"></a>Szem előtt tartani kívánt dolgok
@@ -82,7 +82,7 @@ Kövesse [ezt az útmutatót](site-recovery-vmware-to-azure.md) a virtuális gé
 
 * A Active Directory és a DNS védelmével kapcsolatos útmutatásért tekintse meg a [Active Directory és a DNS-dokumentum védelme](site-recovery-active-directory.md) című témakört.
 
-* Az SQL Serveren futó adatbázis-rétegek védelméről a SQL Server dokumentumok [védelme](site-recovery-active-directory.md) című témakörben talál útmutatást.
+* Az SQL Serveren futó adatbázis-rétegek védelméről a SQL Server dokumentumok [védelme](site-recovery-sql.md) című témakörben talál útmutatást.
 
 ## <a name="networking-configuration"></a>Hálózati konfiguráció
 
@@ -104,7 +104,7 @@ Az internetre irányuló webhelyek esetében [hozzon létre egy Traffic Manager 
 
 | **Ahol** | **Forrás** | **Cél**|
 | --- | --- | --- |
-| Nyilvános DNS | Nyilvános DNS a SharePoint-webhelyekhez <br/><br/> Pl.: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
+| Nyilvános DNS | Nyilvános DNS a SharePoint-webhelyekhez <br/><br/> Pl.: sharepoint.contoso.com | Forgalomkezelő <br/><br/> contososharepoint.trafficmanager.net |
 | Helyszíni DNS | sharepointonprem.contoso.com | Nyilvános IP-cím a helyszíni farmon |
 
 
@@ -170,7 +170,7 @@ A leggyakrabban használt Azure Site Recovery szkripteket az Automation-fiókjá
 
     * Ez a módszer azt feltételezi, hogy a "Search Administration" adatbázis biztonsági mentése a DR webhelyen érhető el.
     * Mivel a többi Search Service alkalmazás-adatbázis nem replikálódik, újból létre kell őket hozni. Ehhez navigáljon a központi felügyelet lapra, és törölje a Search Service alkalmazást. A keresési indexet üzemeltető kiszolgálókon törölje az indexfájl fájljait.
-    * Hozza létre újra a Search Service alkalmazást, és ezzel újra létrehozza az adatbázisokat. Azt javasoljuk, hogy egy előkészített parancsfájlt hozzon létre, amely újra létrehozza ezt a szolgáltatásalkalmazás-alkalmazást, mivel az összes műveletet nem lehet végrehajtani a grafikus felhasználói felületen. Például az index meghajtó helyének beállítása és a keresési topológia konfigurálása csak SharePoint PowerShell-parancsmagok használatával lehetséges. Használja a Restore-SPEnterpriseSearchServiceApplication Windows PowerShell-parancsmagot, és adja meg a Search_Service__DB és a replikált keresési felügyeleti adatbázist. Ez a parancsmag megadja a keresési konfigurációt, a sémát, a felügyelt tulajdonságokat, a szabályokat és a forrásokat, és létrehozza a többi összetevő alapértelmezett készletét.
+    * Hozza létre újra a Search Service alkalmazást, és ezzel újra létrehozza az adatbázisokat. Azt javasoljuk, hogy egy előkészített parancsfájlt hozzon létre, amely újra létrehozza ezt a szolgáltatásalkalmazás-alkalmazást, mivel az összes műveletet nem lehet végrehajtani a grafikus felhasználói felületen. Például az index meghajtó helyének beállítása és a keresési topológia konfigurálása csak SharePoint PowerShell-parancsmagok használatával lehetséges. Használja a Restore-SPEnterpriseSearchServiceApplication Windows PowerShell-parancsmagot, és adja meg a naplózott és a replikált keresési felügyeleti adatbázist, Search_Service__DB. Ez a parancsmag megadja a keresési konfigurációt, a sémát, a felügyelt tulajdonságokat, a szabályokat és a forrásokat, és létrehozza a többi összetevő alapértelmezett készletét.
     * Miután a Search Service alkalmazást újra létrehozta, el kell indítania egy teljes bejárást minden tartalomforrás számára a Search Service visszaállításához. A helyszíni farmról bizonyos elemzési információk, például a keresési javaslatok elvesznek.
 
 7. Az összes lépés elvégzése után mentse a helyreállítási tervet, és a végső helyreállítási terv a következőhöz hasonlóan fog kinézni.
@@ -199,5 +199,5 @@ Kövesse [ezt az útmutatót](site-recovery-failover.md) a feladatátvétel vég
 3.  Kattintson a "feladatátvétel" elemre.
 4.  A feladatátvételi folyamat elindításához válassza a helyreállítási pont lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Site Recovery használatával történő [más alkalmazások replikálásáról](site-recovery-workload.md) .

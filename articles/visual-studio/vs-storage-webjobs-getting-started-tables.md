@@ -13,14 +13,15 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 042f2659d3691e8c51e092bf69473187b8615ee6
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e4d8299c06bfa5b0f33bff8fa592a2fa549c695c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299950"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707604"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Első lépések Azure Storage-ban (Azure Webjobs-projektek)
+
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Áttekintés
@@ -31,42 +32,48 @@ Az Azure Table Storage szolgáltatás lehetővé teszi nagy mennyiségű struktu
 A kódrészletek némelyike a manuálisan létrehozott függvények **táblázatban** szereplő attribútumot jeleníti meg, azaz nem az egyik trigger attribútum használatával.
 
 ## <a name="how-to-add-entities-to-a-table"></a>Entitások hozzáadása táblához
+
 Entitások táblához való hozzáadásához használja a **Table** attribútumot egy **ICollector\<t >** vagy a **IAsyncCollector\<t >** paramétert, ahol a **t** meghatározza a felvenni kívánt entitások sémáját. Az attribútum konstruktora egy olyan karakterlánc-paramétert hoz létre, amely megadja a tábla nevét.
 
 A következő mintakód hozzáadja a **személy** entitásokat egy *bejövő*elemek nevű táblához.
 
-        [NoAutomaticTrigger]
-        public static void IngressDemo(
-            [Table("Ingress")] ICollector<Person> tableBinding)
-        {
-            for (int i = 0; i < 100000; i++)
-            {
-                tableBinding.Add(
-                    new Person() {
-                        PartitionKey = "Test",
-                        RowKey = i.ToString(),
-                        Name = "Name" }
-                    );
-            }
-        }
+```csharp
+[NoAutomaticTrigger]
+public static void IngressDemo(
+    [Table("Ingress")] ICollector<Person> tableBinding)
+{
+    for (int i = 0; i < 100000; i++)
+    {
+        tableBinding.Add(
+            new Person() {
+                PartitionKey = "Test",
+                RowKey = i.ToString(),
+                Name = "Name" }
+            );
+    }
+}
+```
 
 A **ICollector** -ben használt típus általában **TableEntity** -ből származik, vagy a **ITableEntity**implementálja, de nem szükséges. A **következő osztályok** egyike **az előző** bemenő eljárásban látható kóddal működik együtt.
 
-        public class Person : TableEntity
-        {
-            public string Name { get; set; }
-        }
+```csharp
+public class Person : TableEntity
+{
+    public string Name { get; set; }
+}
 
-        public class Person
-        {
-            public string PartitionKey { get; set; }
-            public string RowKey { get; set; }
-            public string Name { get; set; }
-        }
+public class Person
+{
+    public string PartitionKey { get; set; }
+    public string RowKey { get; set; }
+    public string Name { get; set; }
+}
+```
 
 Ha közvetlenül az Azure Storage API-val szeretne dolgozni, **CloudStorageAccount** paramétert adhat hozzá a metódus aláírásához.
 
 ## <a name="real-time-monitoring"></a>Valós idejű figyelés
+
 Mivel a beáramlási funkciók gyakran nagy mennyiségű adat feldolgozását dolgozzák fel, a webjobs SDK-irányítópult valós idejű figyelési adatokkal szolgál. A **hívási napló** szakasz azt jelzi, hogy a függvény még fut-e.
 
 ![A bejövő forgalom funkció fut](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
@@ -80,71 +87,80 @@ A függvény befejeződése után a **Meghívási részletek** lap az írt sorok
 ![A bejövő forgalom funkció befejeződött](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>Több entitás beolvasása egy táblából
+
 Egy tábla olvasásához használja a **Table** attribútumot egy olyan **IQueryable\<t >** paraméterrel, amelyben a t típus **a TableEntity** -ből származik, vagy megvalósítja a **ITableEntity**- **t** .
 
 A következő mintakód beolvassa és naplózza az összes sort a **bejövő** forgalom táblából:
 
-        public static void ReadTable(
-            [Table("Ingress")] IQueryable<Person> tableBinding,
-            TextWriter logger)
-        {
-            var query = from p in tableBinding select p;
-            foreach (Person person in query)
-            {
-                logger.WriteLine("PK:{0}, RK:{1}, Name:{2}",
-                    person.PartitionKey, person.RowKey, person.Name);
-            }
-        }
+```csharp
+public static void ReadTable(
+    [Table("Ingress")] IQueryable<Person> tableBinding,
+    TextWriter logger)
+{
+    var query = from p in tableBinding select p;
+    foreach (Person person in query)
+    {
+        logger.WriteLine("PK:{0}, RK:{1}, Name:{2}",
+            person.PartitionKey, person.RowKey, person.Name);
+    }
+}
+```
 
 ### <a name="how-to-read-a-single-entity-from-a-table"></a>Egyetlen entitás beolvasása egy táblából
+
 A **Table** Attribute konstruktor két további paraméterrel rendelkezik, amelyek lehetővé teszik a partíciós kulcs és a sor kulcs megadását, ha egyetlen tábla entitáshoz kíván kötni.
 
-A következő mintakód beolvas egy **személy** entitáshoz tartozó táblázat sort egy üzenetsor-üzenetben kapott partíciós kulcs és sor kulcs értéke alapján:  
+A következő mintakód beolvas egy **személy** entitáshoz tartozó táblázat sort egy üzenetsor-üzenetben kapott partíciós kulcs és sor kulcs értéke alapján:
 
-        public static void ReadTableEntity(
-            [QueueTrigger("inputqueue")] Person personInQueue,
-            [Table("persontable","{PartitionKey}", "{RowKey}")] Person personInTable,
-            TextWriter logger)
-        {
-            if (personInTable == null)
-            {
-                logger.WriteLine("Person not found: PK:{0}, RK:{1}",
-                        personInQueue.PartitionKey, personInQueue.RowKey);
-            }
-            else
-            {
-                logger.WriteLine("Person found: PK:{0}, RK:{1}, Name:{2}",
-                        personInTable.PartitionKey, personInTable.RowKey, personInTable.Name);
-            }
-        }
-
+```csharp
+public static void ReadTableEntity(
+    [QueueTrigger("inputqueue")] Person personInQueue,
+    [Table("persontable","{PartitionKey}", "{RowKey}")] Person personInTable,
+    TextWriter logger)
+{
+    if (personInTable == null)
+    {
+        logger.WriteLine("Person not found: PK:{0}, RK:{1}",
+                personInQueue.PartitionKey, personInQueue.RowKey);
+    }
+    else
+    {
+        logger.WriteLine("Person found: PK:{0}, RK:{1}, Name:{2}",
+                personInTable.PartitionKey, personInTable.RowKey, personInTable.Name);
+    }
+}
+```
 
 Ebben a példában a **person** osztálynak nem kell implementálnia a **ITableEntity**.
 
 ## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>A .NET Storage API közvetlen használata egy táblázattal való együttműködéshez
+
 A **Table** attribútumot egy **CloudTable** objektummal is használhatja, hogy rugalmasabb legyen a tábla használata.
 
 A következő mintakód egy **CloudTable** objektumot használ, amely egyetlen entitást ad hozzá a *bejövő* táblákhoz.
 
-        public static void UseStorageAPI(
-            [Table("Ingress")] CloudTable tableBinding,
-            TextWriter logger)
+```csharp
+public static void UseStorageAPI(
+    [Table("Ingress")] CloudTable tableBinding,
+    TextWriter logger)
+{
+    var person = new Person()
         {
-            var person = new Person()
-                {
-                    PartitionKey = "Test",
-                    RowKey = "100",
-                    Name = "Name"
-                };
-            TableOperation insertOperation = TableOperation.Insert(person);
-            tableBinding.Execute(insertOperation);
-        }
+            PartitionKey = "Test",
+            RowKey = "100",
+            Name = "Name"
+        };
+    TableOperation insertOperation = TableOperation.Insert(person);
+    tableBinding.Execute(insertOperation);
+}
+```
 
 További információ a **CloudTable** objektum használatáról: az [Azure Table Storage használatának első lépései a .NET használatával](../storage/storage-dotnet-how-to-use-tables.md).
 
 ## <a name="related-topics-covered-by-the-queues-how-to-article"></a>A várólisták útmutató cikke által tárgyalt kapcsolódó témakörök
+
 További információ a várólista-üzenet által aktivált táblázatos feldolgozás kezeléséről, illetve a táblázatos feldolgozásra nem jellemző webjobs SDK-forgatókönyvekről: [Ismerkedés az Azure üzenetsor-tárolóval és a Visual Studio csatlakoztatott szolgáltatásaival (webjobs-projektek)](../storage/vs-storage-webjobs-getting-started-queues.md).
 
 ## <a name="next-steps"></a>Következő lépések
-Ez a cikk az Azure Tables használatának gyakori forgatókönyveit bemutató példákat tartalmaz. További információ a Azure WebJobs és a webjobs SDK használatáról: [Azure WebJobs dokumentációs erőforrások](https://go.microsoft.com/fwlink/?linkid=390226).
 
+Ez a cikk az Azure Tables használatának gyakori forgatókönyveit bemutató példákat tartalmaz. További információ a Azure WebJobs és a webjobs SDK használatáról: [Azure WebJobs dokumentációs erőforrások](https://go.microsoft.com/fwlink/?linkid=390226).

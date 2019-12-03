@@ -4,102 +4,107 @@ description: A táblázatos 1200-es és újabb adatmodellek által támogatott a
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 11/14/2019
+ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c92baf5c97597a0161f402cc458e90bb3e637d6c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7616bcdaf2a2ae6f80b0c1e964f311ef5409a64f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170665"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707130"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>A Azure Analysis Services által támogatott adatforrások
 
-A Visual Studióban az adatgyűjtés vagy importálás varázslóban látható adatforrások és összekötők mind Azure Analysis Services, mind SQL Server Analysis Services esetében megjelennek. A Azure Analysis Servicesban azonban nem minden megjelenített adatforrás és összekötő támogatott. A csatlakozáshoz használható adatforrások típusai számos tényezőtől függenek, például a modell kompatibilitási szintjétől, a rendelkezésre álló adatösszekötők, a hitelesítés típusa, a szolgáltatók és a helyszíni adatátjárók támogatása. 
+Az adatforrások és az összekötők a Visual Studióban Analysis Services-projektekkel együtt jelennek meg a beolvasás vagy a tábla importálása varázslóban Azure Analysis Services és SQL Server Analysis Services esetében is. A Azure Analysis Servicesban azonban nem minden megjelenített adatforrás és összekötő támogatott. A csatlakozáshoz használható adatforrások típusai számos tényezőtől függenek, például a modell kompatibilitási szintjétől, a rendelkezésre álló adatösszekötők, a hitelesítési típus és a helyszíni adatátjárók támogatása. Az alábbi táblázatok a Azure Analysis Services támogatott adatforrásait ismertetik.
 
 ## <a name="azure-data-sources"></a>Azure-beli adatforrások
 
-|Adatforrás  |Memóriabeli  |DirectQuery  |
-|---------|---------|---------|
-|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Igen      |    Igen      |
-|Azure SQL Data Warehouse     |   Igen      |   Igen       |
-|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Igen       |    Nem      |
-|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Igen       |    Nem      |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Igen        |  Nem        |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Igen       |    Nem      |
-|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     Igen     |   Nem       |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Igen       |   Nem       |
+|Adatforrás  |Memóriabeli  |DirectQuery  |Megjegyzések |
+|---------|---------|---------|---------|
+|Azure SQL Database      |   Igen      |    Igen      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
+|Azure SQL Data Warehouse      |   Igen      |   Igen       |<sup>[2](#azprovider)</sup>|
+|Azure Blob Storage      |   Igen       |    Nem      | <sup>[1](#tab1400a)</sup> |
+|Azure Table Storage     |   Igen       |    Nem      | <sup>[1](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Igen        |  Nem        |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Igen       |    Nem      |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen2       |   Igen       |    Nem      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
+|Azure HDInsight-HDFS    |     Igen     |   Nem       |<sup>[1](#tab1400a)</sup> |
+|Azure HDInsight Spark     |   Igen       |   Nem       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
-<a name="tab1400a">1</a> – táblázatos 1400 és újabb modellek.   
-<a name="azsqlmanaged">2</a> – Azure SQL Database felügyelt példány támogatott. Mivel a felügyelt példány egy magánhálózati IP-címmel rendelkező Azure VNet fut, a példányon engedélyezni kell a nyilvános végpontot. Ha nincs engedélyezve, helyszíni adatátjáró szükséges.    
-<a name="databricks">3</a> – a Spark-összekötőt használó Azure Databricks jelenleg nem támogatott.   
-<a name="gen2">4</a> – ADLS Gen2 összekötő jelenleg nem támogatott, azonban blob Storage-összekötő ADLS Gen2 adatforrással is használható.
-
-
-**Szolgáltató**   
-Az Azure-adatforrásokhoz csatlakozó memóriában tárolt és DirectQuery modellek a .NET-keretrendszer adatszolgáltatóját használják SQL Serverhoz.
+**Megjegyzések:**    
+<a name="tab1400a">1</a> – táblázatos 1400 és újabb modellek.  
+<a name="azprovider">2</a> – ha *szolgáltatói* adatforrásként van megadva a táblázatos 1200-es és a magasabb modellekben, a memóriában és a DirectQuery-modellekben a Microsoft OLE DB illesztőprogram szükséges a SQL Server MSOLEDBSQL (ajánlott), a SQL Server Native Client 11,0 vagy a .NET-keretrendszer adatszolgáltatójának SQL Server.    
+<a name="azsqlmanaged">3</a> – Azure SQL Database felügyelt példány támogatott. Mivel a felügyelt példány egy magánhálózati IP-címmel rendelkező Azure VNet fut, a példányon engedélyezni kell a nyilvános végpontot. Ha nincs engedélyezve, helyszíni [adatátjáró](analysis-services-gateway.md) szükséges.    
+<a name="databricks">4</a> – Azure Databricks a Spark-összekötő használata jelenleg nem támogatott.   
+<a name="gen2">5</a> – ADLS Gen2 összekötő jelenleg nem támogatott, de az Azure Blob Storage Connector ADLS Gen2 adatforrással is használható.   
 
 ## <a name="other-data-sources"></a>Egyéb adatforrások
 
-Egy Azure Analysis Services kiszolgáló helyszíni adatforrásaihoz való csatlakozáshoz helyszíni átjáró szükséges. Átjáró használata esetén 64 bites szolgáltatók szükségesek.
-
-### <a name="in-memory-and-directquery"></a>Memóriában tárolt és DirectQuery
-
-|Adatforrás | Memóriában lévő szolgáltató | DirectQuery-szolgáltató |
-|  --- | --- | --- |
-| SQL Server |Microsoft OLE DB illesztőprogram a SQL Server MSOLEDBSQL (ajánlott), SQL Server Native Client 11,0, .NET-keretrendszer adatszolgáltatója a SQL Server | .NET-keretrendszer adatszolgáltatója SQL Server |
-| Az SQL Server Data Warehouse |Microsoft OLE DB illesztőprogram a SQL Server MSOLEDBSQL (ajánlott), SQL Server Native Client 11,0, .NET-keretrendszer adatszolgáltatója a SQL Server | .NET-keretrendszer adatszolgáltatója SQL Server |
-| Oracle | OLE DB-szolgáltató Oracle-hez, Oracle-adatszolgáltató a .NET-hez |Oracle-adatszolgáltató a .NET-hez |
-| Teradata |OLE DB szolgáltató a Teradata-hez, Teradata-adatszolgáltató a .NET-hez |Teradata-adatszolgáltató a .NET-hez |
+|Adatforrás | Memóriabeli | DirectQuery |Megjegyzések   |
+|  --- | --- | --- | --- |
+|Access-adatbázis     |  Igen | Nem |  |
+|Active Directory     |  Igen | Nem | <sup>[6](#tab1400b)</sup>  |
+|Analysis Services     |  Igen | Nem |  |
+|Elemzési platform rendszer     |  Igen | Nem |  |
+|CSV-fájl  |Igen | Nem |  |
+|Dynamics 365     |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|Excel-munkafüzet     |  Igen | Nem |  |
+|Adatcsere      |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|Mappa      |Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|IBM Informix  |Igen | Nem |  |
+|JSON-dokumentum      |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|Bináris sorok      | Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|MySQL-adatbázis     | Igen | Nem |  |
+|OData-csatorna      |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|ODBC-lekérdezés     | Igen | Nem |  |
+|OLE DB     |   Igen | Nem |  |
+|Oracle  | Igen  |Igen  | <sup>[9](#oracle)</sup> |
+|PostgreSQL-adatbázis   | Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|Salesforce objektumok|  Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|Salesforce-jelentések |Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|SAP HANA     |  Igen | Nem |  |
+|SAP Business Warehouse    |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|SharePoint-lista      |   Igen | Nem | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
+|SQL Server |Igen   | Igen  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
+|Adattárház SQL Server |Igen   | Igen  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|Sybase-adatbázis     |  Igen | Nem |  |
+|Teradata | Igen  | Igen  | <sup>[10](#teradata)</sup> |
+|TXT-fájl  |Igen | Nem |  |
+|XML-táblázat    |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 | | | |
 
-### <a name="in-memory-only"></a>Csak a memóriában
+**Megjegyzések:**    
+<a name="tab1400b">6</a> – csak táblázatos 1400 és újabb modellek.  
+<a name="sqlim">7</a> – ha *szolgáltatói* adatforrásként van megadva a táblázatos 1200 és a magasabb modellekben, adja meg a Microsoft OLE DB illesztőprogramot SQL Server MSOLEDBSQL (ajánlott), a SQL Server Native Client 11,0 vagy a .NET-keretrendszer adatszolgáltatóját SQL Serverhoz.  
+<a name="instgw">8</a> – ha a MSOLEDBSQL adatszolgáltatóként van megadva, előfordulhat, hogy a helyszíni adatátjáróval megegyező számítógépen le kell töltenie és telepítenie kell a [Microsoft OLE DB illesztőprogramot a SQL Serverhoz](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) .  
+<a name="oracle">9</a> – táblázatos 1200-modellekhez vagy *szolgáltatói* adatforráshoz táblázatos 1400 + modellekben, a .net-hez készült Oracle-adatszolgáltató megadása.  
+<a name="teradata">10</a> – táblázatos 1200-modellekhez vagy *szolgáltatói* adatforrásként táblázatos 1400 + modellekben a Teradata-adatszolgáltató megadása a .net-hez.   
+<a name="filesSP">11</a> – a helyszíni SharePointban található fájlok nem támogatottak.
 
-|Adatforrás  |  
-|---------|
-|Access-adatbázis     |  
-|Active Directory<sup>[1](#tab1400b)</sup>     |  
-|Analysis Services     |  
-|Elemzési platform rendszer     |  
-|CSV-fájl  |
-|Dynamics CRM<sup>[1](#tab1400b)</sup>     |  
-|Excel-munkafüzet     |  
-|Exchange<sup>[1](#tab1400b)</sup>     |  
-|<sup>[1](#tab1400b) . mappa</sup>     |
-|IBM Informix<sup>[1](#tab1400b)</sup> (bétaverzió) |
-|1\. JSON-dokumentum<sup>[](#tab1400b)</sup>     |  
-|Bináris<sup>[1-től](#tab1400b) származó sorok</sup>     | 
-|MySQL-adatbázis     | 
-|1\. OData-hírcsatorna<sup>[](#tab1400b)</sup>     |  
-|ODBC-lekérdezés     | 
-|OLE DB     |   
-|PostgreSQL-adatbázis<sup>[1](#tab1400b)</sup>    | 
-|Salesforce objektumok<sup>[1](#tab1400b)</sup> |  
-|Salesforce-jelentések<sup>[1](#tab1400b)</sup> |
-|SAP HANA<sup>[1](#tab1400b)</sup>    |  
-|SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
-|SharePoint-lista<sup>[1](#tab1400b)</sup>, <sup>[2](#filesSP)</sup>     |   
-|Sybase-adatbázis     |  
-|TXT-fájl  |
-|1\. XML-táblázat<sup>[](#tab1400b)</sup>    |  
-||
- 
-<a name="tab1400b">1</a> – táblázatos 1400 és újabb modellek.   
-<a name="filesSP">2</a> – a helyszíni SharePointban található fájlok nem támogatottak.
+Egy Azure Analysis Services kiszolgáló helyszíni adatforrásaihoz való csatlakozáshoz helyszíni [átjáró](analysis-services-gateway.md)szükséges. Átjáró használata esetén 64 bites szolgáltatók szükségesek. 
 
-## <a name="specifying-a-different-provider"></a>Másik szolgáltató meghatározása
+## <a name="understanding-providers"></a>Szolgáltatók ismertetése
 
-Egyes adatforrásokhoz való kapcsolódáskor a Azure Analysis Services adatmodelljei eltérő adatszolgáltatót igényelhetnek. Bizonyos esetekben a natív szolgáltatók, például a SQL Server Native Client (SQLNCLI11) használatával az adatforrásokhoz csatlakozó táblázatos modellek hibát adhatnak vissza. Ha a MSOLEDBSQL-től eltérő natív szolgáltatókat használ, hibaüzenet jelenik meg: **a (z) "sqlncli 11.1" szolgáltató nincs regisztrálva**. Ha a helyszíni adatforrásokhoz kapcsolódó DirectQuery-modellel rendelkezik, és natív szolgáltatókat használ, a következő hibaüzenet jelenhet meg: **hiba OLE DB sor létrehozásakor. Helytelen szintaxis a "LIMIT" közelében**.
+Táblázatos 1400 és a Visual Studióban a magasabb modellbeli projektek létrehozásakor alapértelmezés szerint nem adhat meg adatszolgáltatót adatforráshoz való csatlakozáskor az **adatlekérdezés**használatával. A táblázatos 1400-es és újabb modellek [Power Query](/power-query/power-query-what-is-power-query.md) összekötőket használnak a kapcsolatok, az adatlekérdezések és az adatforrások és a Analysis Services közötti adategyesítések kezelésére. Ezeket más néven *strukturált* adatforrás-kapcsolatoknak nevezzük, amelyekben a kapcsolati tulajdonságok beállításai vannak beállítva. Engedélyezheti azonban az örökölt adatforrásokat is. Ha engedélyezve van, a **Táblázat importálása varázslóval** kapcsolódhat a táblázatos 1200-ben hagyományosan támogatott adatforrásokhoz, valamint az *örökölt*vagy *szolgáltatói* adatforrásként használt alacsonyabb modellekhez. Ha szolgáltatói adatforrásként van megadva, megadhat egy adott adatszolgáltatót és egyéb speciális kapcsolódási tulajdonságokat. Csatlakozhat például egy helyszíni SQL Server adattárházhoz, vagy akár egy Azure SQL Database örökölt adatforrásként. Ezután kiválaszthatja a OLE DB illesztőprogramot SQL Server MSOLEDBSQL adatszolgáltatóhoz. Ebben az esetben egy OLE DB adatszolgáltató kiválasztása nagyobb teljesítményt biztosíthat az Power Query-összekötőn keresztül. 
 
-Ha helyszíni SQL Server Analysis Services táblázatos modellt telepít át Azure Analysis Servicesre, akkor szükség lehet a szolgáltató módosítására.
+Ha a Visual Studióban a tábla importálása varázslót használja, az adatforrásokhoz való kapcsolódáshoz adatszolgáltató szükséges. Az alapértelmezett adatszolgáltató van kiválasztva. Szükség esetén módosíthatja az adatszolgáltatót. A választott szolgáltató típusa a teljesítménytől függ, függetlenül attól, hogy a modell memóriában tárolt tárolót vagy DirectQuery használ-e, és Analysis Services platformot, amelybe üzembe helyezi a modellt.
 
-**Szolgáltató megadásához**
+### <a name="specify-provider-data-sources-in-tabular-1400-and-higher-model-projects"></a>Szolgáltatói adatforrások meghatározása táblázatos 1400 és magasabb modell-projektekben
 
-1. A Visual Studióban > **táblázatos modell Explorer** > **adatforrások**területen kattintson a jobb gombbal az adatforrás-kapcsolatok elemre, majd kattintson az **Adatforrás szerkesztése**elemre.
-2. A **Kapcsolódás szerkesztése**ablakban kattintson a **speciális** elemre az előzetes Tulajdonságok ablak megnyitásához.
-3. A **Speciális tulajdonságok beállítása** > **szolgáltatók**elemnél válassza ki a megfelelő szolgáltatót.
+A szolgáltatói adatforrások engedélyezéséhez a Visual Studióban kattintson az **eszközök** > **lehetőségre** > **Analysis Services táblázatos** > **adatimportálás**elemre, majd válassza az **örökölt adatforrások engedélyezése**lehetőséget.
+
+![Örökölt adatforrások engedélyezése](media/analysis-services-datasource/aas-enable-legacy-datasources.png)
+
+Ha az örökölt adatforrások engedélyezve vannak, a **táblázatos modell Explorerben**kattintson a jobb gombbal az **adatforrások** elemre > **Importálás adatforrásból (örökölt)** lehetőségre.
+
+![Örökölt adatforrások a táblázatos modell Explorerben](media/analysis-services-datasource/aas-import-legacy-datasources.png)
+
+Mint a táblázatos 1200 modell projektjeihez hasonlóan, a **tábla importálása varázslóval** csatlakozhat egy adatforráshoz. A kapcsolat lapon kattintson a **speciális**elemre. Adja meg az adatszolgáltatót és az egyéb kapcsolatbeállításokat a **Speciális tulajdonságok beállítása**lapon.
+
+![Örökölt adatforrások speciális tulajdonságai](media/analysis-services-datasource/aas-import-legacy-advanced.png)
+
 
 ## <a name="impersonation"></a>Megszemélyesítési
 Bizonyos esetekben szükség lehet egy másik megszemélyesítési fiók megadására. A megszemélyesítési fiók megadható a Visual Studióban vagy a SSMS.

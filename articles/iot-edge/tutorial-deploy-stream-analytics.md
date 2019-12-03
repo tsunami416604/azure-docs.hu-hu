@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Stream Analytics az Edge-Azure IoT Edge'
+title: Oktatóanyag – Stream Analytics az Edge használatával Azure IoT Edge
 description: Ebben az oktatóanyagban üzembe helyezi Azure Stream Analytics modulként egy IoT Edge eszközön
 author: kgremban
 ms.author: kgremban
@@ -7,12 +7,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7fbbe32efcedd4fa2635db1cc21f7ce98557515b
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: b4c4415819ba614bb584f1bc5cb0acfe136c174c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452530"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707067"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Oktatóanyag: Azure Stream Analytics üzembe helyezése IoT Edge modulként
 
@@ -24,7 +24,7 @@ A Azure Stream Analytics a felhőben és a IoT Edge eszközökön egyaránt rés
 
 Ebben az oktatóanyagban a Stream Analytics modul az átlaghőmérsékletet számítja egy gördülő 30 másodperces ablakon belül. Ha az átlag eléri a 70-es értéket, a modul egy riasztást küld az eszköznek, amely egy műveletet hajt végre. Esetünkben a művelet a szimulált hőmérséklet-érzékelő visszaállítása. Éles környezetben ezzel a funkcióval leállíthat egy gépet vagy óvintézkedéseket tehet, amint a hőmérséklet veszélyes szintet ér el. 
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Azure Stream Analytics-feladat létrehozása az adatok a peremeszközökön való feldolgozásához.
@@ -65,12 +65,12 @@ Amikor Azure Stream Analytics-feladatot hoz létre egy IoT Edge-eszköz futtatá
 
 1. Adja meg a következő értékeket a tárfiók létrehozásához:
 
-   | Mező | Érték |
+   | Mező | Value (Díj) |
    | ----- | ----- |
-   | Előfizetést | Válassza ugyanazt az előfizetést, mint az IoT Hub esetében. |
+   | Előfizetés | Válassza ugyanazt az előfizetést, mint az IoT Hub esetében. |
    | Erőforráscsoport | Javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok során elkészített erőforráscsoportot használja minden teszterőforráshoz. Például: **IoTEdgeResources**. |
-   | Name (Név) | Adja meg a tárfiók egyedi nevét. | 
-   | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
+   | Név | Adja meg a tárfiók egyedi nevét. | 
+   | Földrajzi egység | Válassza ki az Önhöz legközelebb eső helyet. |
 
 
 1. Tartsa meg a többi mező alapértelmezett értékeit, és válassza a **felülvizsgálat + létrehozás**lehetőséget.
@@ -83,12 +83,12 @@ Amikor Azure Stream Analytics-feladatot hoz létre egy IoT Edge-eszköz futtatá
 
 1. Adja meg a következő értékeket a feladat létrehozásához:
 
-   | Mező | Érték |
+   | Mező | Value (Díj) |
    | ----- | ----- |
    | Feladat neve | Adja meg a feladat nevét. Például: **IoTEdgeJob** | 
-   | Előfizetést | Válassza ugyanazt az előfizetést, mint az IoT Hub esetében. |
+   | Előfizetés | Válassza ugyanazt az előfizetést, mint az IoT Hub esetében. |
    | Erőforráscsoport | Javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok során elkészített erőforráscsoportot használja minden teszterőforráshoz. Például: **IoTEdgeResources**. |
-   | Hely | Válassza ki az Önhöz legközelebb eső helyet. | 
+   | Földrajzi egység | Válassza ki az Önhöz legközelebb eső helyet. | 
    | Üzemeltetési környezet | Válassza az **Edge** lehetőséget. |
  
 1. Kattintson a **Létrehozás** gombra.
@@ -244,7 +244,7 @@ Most nyissa meg IoT Edge eszközét, és tekintse meg az Azure Stream Analytics 
 
    A gép hőmérsékletét fokozatosan megtekintheti, amíg 30 másodpercig eléri a 70 fokos értéket. A Stream Analytics-modul ekkor kiváltja a rendszer alaphelyzetbe állítását, és a géphőmérséklet visszaáll 21 fokra. 
 
-   ![A parancs kimenete alaphelyzetbe modulnaplóinak be](./media/tutorial-deploy-stream-analytics/docker_log.png)
+   ![Parancs kimenetének visszaállítása modul-naplókba](./media/tutorial-deploy-stream-analytics/docker_log.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 

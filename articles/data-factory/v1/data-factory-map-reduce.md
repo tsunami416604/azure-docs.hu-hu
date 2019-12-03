@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6d32cd12989262ebeaafee60a02bb7ea2a9b1e32
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139302"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703157"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>MapReduce-programok meghívása Data Factory
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -33,15 +33,15 @@ ms.locfileid: "70139302"
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory-szolgáltatás aktuális verzióját használja, tekintse meg az [adatátalakítás az MapReduce-tevékenység használatával című részt](../transform-data-using-hadoop-map-reduce.md)a Data Factoryban.
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory-szolgáltatás aktuális verzióját használja, tekintse meg az [adatátalakítás az MapReduce-tevékenység használatával című részt a Data Factoryban](../transform-data-using-hadoop-map-reduce.md).
 
 
 A Data Factory- [folyamat](data-factory-create-pipelines.md) HDInsight MapReduce-tevékenysége a MapReduce-programokat [saját](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-alapú HDInsight-fürtön hajtja végre. Ez a cikk az Adatátalakítási [tevékenységekről](data-factory-data-transformation-activities.md) szóló cikket ismerteti, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről.
 
 > [!NOTE] 
-> Ha még nem Azure Data Factory, olvassa el a [Azure Data Factory](data-factory-introduction.md) bevezetését, és végezze el az oktatóanyagot: A cikk elolvasása előtt hozza [létre első](data-factory-build-your-first-pipeline.md) adatfolyamatát.  
+> Ha még nem ismeri a Azure Data Factoryt, olvassa el az [Azure Data Factory bevezetését](data-factory-introduction.md) , és végezze el az oktatóanyagot: a cikk elolvasása előtt hozza [létre az első adatfolyamatát](data-factory-build-your-first-pipeline.md) .  
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 Egy Azure-beli adatfeldolgozó folyamata összekapcsolt számítási szolgáltatások használatával dolgozza fel a társított tárolási szolgáltatásokban tárolt adatokkal. Olyan tevékenységek sorát tartalmazza, amelyekben minden tevékenység egy adott feldolgozási műveletet hajt végre. Ez a cikk a HDInsight MapReduce tevékenység használatát ismerteti.
 
 A Pig/kaptár-parancsfájlok Windows-/Linux-alapú HDInsight-fürtökön való futtatásával kapcsolatos részletekért tekintse meg a [Pig](data-factory-pig-activity.md) és a [kaptár](data-factory-hive-activity.md) című témakört a HDInsight Pig és a kaptár tevékenységek használatával. 
@@ -53,7 +53,7 @@ A HDInsight tevékenység JSON-definíciójában:
 2. Adja meg a **Osztálynév** tulajdonság osztályának nevét.
 3. Adja meg a JAR-fájl elérési útját, beleértve a **jarFilePath** tulajdonság fájlnevét.
 4. A **jarLinkedService** tulajdonsághoz tartozó jar-fájlt tartalmazó Azure Blob Storagera hivatkozó társított szolgáltatás megadása.   
-5. Az argumentumok szakaszban adhatja meg a MapReduce program argumentumait. Futásidőben a MapReduce-keretrendszer néhány további argumentuma (például: MapReduce. job. Tags) jelenik meg. Ha meg szeretné különböztetni az argumentumokat a MapReduce argumentumokkal, érdemes lehet mindkét beállítást és értéket argumentumként használni az alábbi példában látható módon (-s,--bemenet,--output stb.).
+5. Az **argumentumok** szakaszban adhatja meg a MapReduce program argumentumait. Futásidőben a MapReduce-keretrendszer néhány további argumentuma (például: MapReduce. job. Tags) jelenik meg. Ha meg szeretné különböztetni az argumentumokat a MapReduce argumentumokkal, érdemes lehet mindkét beállítást és értéket argumentumként használni az alábbi példában látható módon (-s,--bemenet,--output stb.).
 
     ```JSON   
     {
@@ -112,12 +112,12 @@ A HDInsight tevékenység JSON-definíciójában:
    A HDInsight MapReduce tevékenység használatával bármilyen MapReduce jar-fájlt futtathat egy HDInsight-fürtön. A folyamat alábbi JSON-definíciójában a HDInsight tevékenység Mahout JAR-fájl futtatására van konfigurálva.
 
 ## <a name="sample-on-github"></a>Minta a GitHubon
-Letölthető egy minta a HDInsight MapReduce-tevékenység használatához a következőből: [Data Factory minták a githubon](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample).  
+Letölthető egy minta a HDInsight MapReduce-tevékenység használatáról: [Data Factory minták a githubon](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON/MapReduce_Activity_Sample).  
 
 ## <a name="running-the-word-count-program"></a>A Word Count program futtatása
 Az ebben a példában szereplő folyamat futtatja az Azure HDInsight-fürtön található Térkép és a program csökkentése programot.   
 
-### <a name="linked-services"></a>Összekapcsolt szolgáltatások
+### <a name="linked-services"></a>Társított szolgáltatások
 Először létre kell hoznia egy társított szolgáltatást, amely összekapcsolja az Azure HDInsight-fürt által az Azure-beli adatgyárhoz használt Azure-tárolót. Ha a következő kódot másolja/illeszti be, ne felejtse el lecserélni a **fiók nevét** és a **fiók kulcsát** az Azure Storage-beli nevére és kulcsára. 
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
@@ -135,7 +135,7 @@ Először létre kell hoznia egy társított szolgáltatást, amely összekapcso
 ```
 
 #### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight társított szolgáltatás
-Ezután létrehoz egy társított szolgáltatást, amely összekapcsolja az Azure HDInsight-fürtöt az Azure-beli adatgyárral. Ha a következő kódot másolja/illeszti be, cserélje le a **HDInsight** -fürtöt a HDInsight-fürt nevére, és változtassa meg a Felhasználónév és a jelszó értékét.   
+Ezután létrehoz egy társított szolgáltatást, amely összekapcsolja az Azure HDInsight-fürtöt az Azure-beli adatgyárral. Ha a következő kódot másolja/illeszti be, cserélje le a **HDInsight-fürtöt** a HDInsight-fürt nevére, és változtassa meg a Felhasználónév és a jelszó értékét.   
 
 ```JSON
 {
@@ -179,7 +179,7 @@ Az ebben a példában szereplő folyamat nem tesz elérhetővé semmilyen bemene
 ```
 
 ### <a name="pipeline"></a>Folyamat
-Az ebben a példában szereplő folyamatnak csak egy típusú tevékenysége van: HDInsightMapReduce. A JSON legfontosabb tulajdonságai a következők: 
+Az ebben a példában szereplő folyamathoz csak egy: HDInsightMapReduce típusú tevékenység tartozik. A JSON legfontosabb tulajdonságai a következők: 
 
 | Tulajdonság | Megjegyzések |
 |:--- |:--- |
@@ -250,5 +250,5 @@ A MapReduce tevékenység használatával Spark-programokat futtathat a HDInsigh
 * [Pig-tevékenység](data-factory-pig-activity.md)
 * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
 * [Spark-programok meghívása](data-factory-spark.md)
-* [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: ETL-műveletek végrehajtása az Azure Databricks használatával'
-description: Megtudhatja, hogyan nyerheti ki a Data Lake Storage Gen2 adatait a Azure Databricksba, átalakíthatja az adatait, majd betöltheti őket a Azure SQL Data Warehouseba.
+title: Oktatóanyag – ETL-műveletek végrehajtása Azure Databricks használatával
+description: Ebből az oktatóanyagból megtudhatja, hogyan nyerheti ki a Data Lake Storage Gen2 adatait a Azure Databricksba, átalakíthatja az adatait, majd betöltheti őket a Azure SQL Data Warehouseba.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 8ceb9e940584ae4c41484fe31ce5cb1832bb3400
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 11e5aac559370c478b774f2a503bde590dfeedf4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605696"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707457"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával
 
@@ -77,11 +77,11 @@ Győződjön meg arról, hogy elvégezte az oktatóanyag előfeltételeit.
 
    : heavy_check_mark: a blob Storage-fiók elérési kulcsa.
 
-   : heavy_check_mark: a Data Lake Storage Gen2 Storage-fiók neve.
+   : heavy_check_mark: az Data Lake Storage Gen2 Storage-fiók neve.
 
    : heavy_check_mark: az előfizetés bérlői azonosítója.
 
-   : heavy_check_mark: a Azure Active Directory (Azure AD) szolgáltatásban regisztrált alkalmazás AZONOSÍTÓját.
+   : heavy_check_mark: a Azure Active Directory (Azure AD) szolgáltatásban regisztrált alkalmazás alkalmazás-azonosítója.
 
    : heavy_check_mark: az Azure AD-ben regisztrált alkalmazás hitelesítési kulcsa.
 
@@ -242,7 +242,7 @@ A cellában nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtat�
 
 ## <a name="transform-data-in-azure-databricks"></a>Adatok átalakítása az Azure Databricksben
 
-A nyers mintaadatok **small_radio_json. JSON** fájlja a rádióállomások célközönségét rögzíti, és számos oszlopot tartalmaz. Ebben a szakaszban az adatokat úgy alakítja át, hogy csak bizonyos oszlopokat kérjen le az adatkészletből.
+A nyers mintaadatok **small_radio_json. JSON** fájl rögzíti a hallgatóságot egy rádióállomás számára, és számos oszloppal rendelkezik. Ebben a szakaszban az adatokat úgy alakítja át, hogy csak bizonyos oszlopokat kérjen le az adatkészletből.
 
 1. Először a létrehozott dataframe csak a **firstName**, a **lastName**, a **gender**, a **Location**és a **Level** oszlopot kéri le.
 
@@ -388,7 +388,7 @@ Az oktatóanyag befejezése után leállíthatja a fürtöt. A Azure Databricks 
 
 Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte **\_\_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

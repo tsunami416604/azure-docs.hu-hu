@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egyéni szerepkörök az Azure-erőforrások használatával a REST API – Azure |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre egyéni szerepköröket a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrásokhoz a REST API használatával. Ez magában foglalja a listában, létrehozása, frissítése és egyéni szerepkörök törlése.
+title: Egyéni vagy frissítési szerepkörök létrehozása Azure-erőforrásokhoz az REST API-Azure használatával | Microsoft Docs
+description: Megtudhatja, hogyan listázhat, hozhat létre, frissíthet vagy törölhet egyéni szerepköröket a szerepköralapú hozzáférés-vezérléssel (RBAC) az Azure-erőforrásokhoz az REST API használatával.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,112 +15,112 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4024f6fdb40c752ef61f348d15f681e81d81c08c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e5dcd7593ba0992337396bc7c05cc30351644dc
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60596679"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702984"
 ---
-# <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>Az Azure-erőforrásokhoz a REST API-val egyéni szerepkörök létrehozása
+# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Egyéni szerepkörök létrehozása vagy frissítése az Azure-erőforrásokhoz a REST API használatával
 
-Ha a [beépített szerepkörök az Azure-erőforrások](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, saját egyéni szerepköröket is létrehozhat. Ez a cikk ismerteti a REST API-val egyéni szerepkörök létrehozására és kezelésére.
+Ha az [Azure-erőforrások beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ez a cikk az egyéni szerepkörök listázását, létrehozását, frissítését és törlését ismerteti a REST API használatával.
 
 ## <a name="list-custom-roles"></a>Egyéni szerepkörök listázása
 
-A címtár összes egyéni szerepkörök listájában, használja a [szerepkör-definíciók - lista](/rest/api/authorization/roledefinitions/list) REST API-t.
+A címtárban lévő összes egyéni szerepkör listázásához használja a [szerepkör-definíciók – lista](/rest/api/authorization/roledefinitions/list) REST API.
 
-1. Indítsa el a következő kérelmet:
+1. Kezdje a következő kéréssel:
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
     ```
 
-1. Cserélje le *{szűrő}* szerepkör típusú.
+1. Cserélje le a *{Filter}* értéket a szerepkör típusára.
 
-    | Szűrés | Leírás |
+    | Szűrő | Leírás |
     | --- | --- |
-    | `$filter=type%20eq%20'CustomRole'` | Szűrő CustomRole típusa alapján |
+    | `$filter=type%20eq%20'CustomRole'` | Szűrés a CustomRole típusa alapján |
 
-## <a name="list-custom-roles-at-a-scope"></a>Egyéni szerepkörök listája a hatókörben
+## <a name="list-custom-roles-at-a-scope"></a>Hatókörhöz tartozó egyéni szerepkörök listázása
 
-Egyéni szerepkörök hatókörre listájában, használja a [szerepkör-definíciók - lista](/rest/api/authorization/roledefinitions/list) REST API-t.
+Egy hatókörben lévő egyéni szerepkörök listázásához használja a [szerepkör-definíciók – lista](/rest/api/authorization/roledefinitions/list) REST API.
 
-1. Indítsa el a következő kérelmet:
+1. Kezdje a következő kéréssel:
 
     ```http
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
     ```
 
-1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné össze a szerepkörök listáját.
+1. Az URI-n belül cserélje le a *{scope}* értéket arra a hatókörre, amelyre a szerepköröket szeretné listázni.
 
-    | Scope | Típus |
+    | Hatókör | Type (Típus) |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
-1. Cserélje le *{szűrő}* szerepkör típusú.
+1. Cserélje le a *{Filter}* értéket a szerepkör típusára.
 
-    | Szűrés | Leírás |
+    | Szűrő | Leírás |
     | --- | --- |
-    | `$filter=type%20eq%20'CustomRole'` | Szűrő CustomRole típusa alapján |
+    | `$filter=type%20eq%20'CustomRole'` | Szűrés a CustomRole típusa alapján |
 
-## <a name="list-a-custom-role-definition-by-name"></a>Egy egyéni szerepkör-definíció listában név szerint
+## <a name="list-a-custom-role-definition-by-name"></a>Egyéni szerepkör-definíciók listázása név alapján
 
-Egyéni szerepkör kapcsolatos információkat a megjelenített név alapján, amelyet a [szerepkör-definíciók – első](/rest/api/authorization/roledefinitions/get) REST API-t.
+Ha a megjelenített nevével szeretne információt kapni egy egyéni szerepkörről, használja a [szerepkör-definíciókat – get](/rest/api/authorization/roledefinitions/get) REST API.
 
-1. Indítsa el a következő kérelmet:
+1. Kezdje a következő kéréssel:
 
     ```http
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
     ```
 
-1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné össze a szerepkörök listáját.
+1. Az URI-n belül cserélje le a *{scope}* értéket arra a hatókörre, amelyre a szerepköröket szeretné listázni.
 
-    | Scope | Típus |
+    | Hatókör | Type (Típus) |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
-1. Cserélje le *{szűrő}* a szerepkör megjelenített nevét.
+1. Cserélje le a *{Filter}* helyére a szerepkör megjelenített nevét.
 
-    | Szűrés | Leírás |
+    | Szűrő | Leírás |
     | --- | --- |
-    | `$filter=roleName%20eq%20'{roleDisplayName}'` | Az URL-kódolású képernyőn a szerepkör pontos megjelenítendő nevét. Például `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
+    | `$filter=roleName%20eq%20'{roleDisplayName}'` | Használja a szerepkör pontos megjelenítendő neve URL-kódolású formáját. Például `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
-## <a name="list-a-custom-role-definition-by-id"></a>Egy egyéni szerepkör-definíció azonosítója alapján listázása
+## <a name="list-a-custom-role-definition-by-id"></a>Egyéni szerepkör-definíció listázása azonosító alapján
 
-Egyéni szerepkör adatainak lekérése az egyedi azonosítója alapján, használja a [szerepkör-definíciók – első](/rest/api/authorization/roledefinitions/get) REST API-t.
+Ha egyedi azonosítóval szeretne adatokat lekérni egy egyéni szerepkörről, használja a [szerepkör-definíciókat – get](/rest/api/authorization/roledefinitions/get) REST API.
 
-1. Használja a [szerepkör-definíciók - lista](/rest/api/authorization/roledefinitions/list) REST API-t a GUID-azonosító beszerzése a szerepkörhöz.
+1. Használja a szerepkör [-definíciók – lista](/rest/api/authorization/roledefinitions/list) REST API a szerepkör GUID azonosítójának lekéréséhez.
 
-1. Indítsa el a következő kérelmet:
+1. Kezdje a következő kéréssel:
 
     ```http
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné össze a szerepkörök listáját.
+1. Az URI-n belül cserélje le a *{scope}* értéket arra a hatókörre, amelyre a szerepköröket szeretné listázni.
 
-    | Scope | Típus |
+    | Hatókör | Type (Típus) |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
-1. Cserélje le *{roleDefinitionId}* a szerepkör-definíció GUID azonosítóját.
+1. Cserélje le a *{roleDefinitionId}* helyére a szerepkör-definíció GUID azonosítóját.
 
 ## <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
 
-Egyéni szerepkör létrehozásához használja a [szerepkör-definíciók - létrehozási vagy frissítési](/rest/api/authorization/roledefinitions/createorupdate) REST API-t. Az API meghívásához, be kell jelentkeznie jelentkezzen be, amely hozzá van rendelve egy szerepkör, amely rendelkezik a `Microsoft.Authorization/roleDefinitions/write` az összes engedélyt a `assignableScopes`. A beépített szerepkörök, csak [tulajdonosa](built-in-roles.md#owner) és [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) tartalmazzák ezt az engedélyt.
+Egyéni szerepkör létrehozásához használja a [szerepkör-definíciókat – hozzon létre vagy frissítsen](/rest/api/authorization/roledefinitions/createorupdate) REST API. Az API meghívásához olyan felhasználóval kell bejelentkeznie, akinek van olyan szerepköre, amely az összes `assignableScopes``Microsoft.Authorization/roleDefinitions/write` engedéllyel rendelkezik. A beépített szerepkörök közül csak a [tulajdonosi](built-in-roles.md#owner) és a [felhasználói hozzáférés-kezelő rendszergazda](built-in-roles.md#user-access-administrator) adja meg ezt az engedélyt.
 
-1. Tekintse át a [erőforrás-szolgáltatói műveletek](resource-provider-operations.md) , amelyek az engedélyek az egyéni szerepkör létrehozása.
+1. Tekintse át azon [erőforrás-szolgáltatói műveletek](resource-provider-operations.md) listáját, amelyek elérhetők az egyéni szerepkör engedélyeinek létrehozásához.
 
-1. Egy GUID eszköz segítségével hozza létre az egyéni szerepkör-azonosító esetében használt egyedi azonosító. Az azonosító formátuma: `00000000-0000-0000-0000-000000000000`
+1. Egy GUID-eszköz használatával állítson be egy egyedi azonosítót, amelyet a rendszer az egyéni szerepkör-azonosítóhoz fog használni. Az azonosító formátuma: `00000000-0000-0000-0000-000000000000`
 
-1. Indítsa el a következő kérés és a szervezet:
+1. Kezdje a következő kéréssel és szövegtörzstel:
 
     ```http
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
@@ -150,27 +150,27 @@ Egyéni szerepkör létrehozásához használja a [szerepkör-definíciók - lé
     }
     ```
 
-1. Cserélje le az URI-belül *{hatókör}* – az első `assignableScopes` az egyéni szerepkör.
+1. Az URI-n belül cserélje le a *{scope}* értéket az egyéni szerepkör első `assignableScopes`ére.
 
-    | Scope | Típus |
+    | Hatókör | Type (Típus) |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
-1. Cserélje le *{roleDefinitionId}* az egyéni szerepkör GUID azonosítóval.
+1. Cserélje le a *{roleDefinitionId}* helyére az egyéni szerepkör GUID azonosítóját.
 
-1. A kérelem törzsében található az a `assignableScopes` tulajdonságot használja, cserélje le *{roleDefinitionId}* GUID azonosítóval.
+1. A kérelem törzsében a `assignableScopes` tulajdonságban cserélje le a *{roleDefinitionId}* azonosítót a GUID azonosítóra.
 
-1. Cserélje le *{subscriptionId}* az előfizetés-azonosítóval.
+1. Cserélje le a *{subscriptionId}* helyére az előfizetés-azonosítóját.
 
-1. Az a `actions` tulajdonság, adja hozzá a szerepkör lehetővé teszi, hogy a végrehajtandó műveleteket.
+1. A `actions` tulajdonságban adja hozzá azokat a műveleteket, amelyeket a szerepkör engedélyez.
 
-1. Az a `notActions` tulajdonság, a kizárt műveletek hozzáadása az engedélyezett a `actions`.
+1. A `notActions` tulajdonságban adja hozzá azokat a műveleteket, amelyek ki vannak zárva az engedélyezett `actions`ból.
 
-1. Az a `roleName` és `description` tulajdonságai között adjon meg egy egyedi szerepkör nevét és leírását. A tulajdonságokkal kapcsolatos további információkért lásd: [egyéni szerepkörök](custom-roles.md).
+1. A `roleName` és `description` tulajdonságok területen adjon meg egy egyedi szerepkör-nevet és egy leírást. A tulajdonságokkal kapcsolatos további információkért lásd: [Egyéni szerepkörök](custom-roles.md).
 
-    Az alábbiakban látható egy példa a kérelem törzséhez:
+    A következő példa egy kérelem törzsét mutatja be:
 
     ```json
     {
@@ -205,27 +205,27 @@ Egyéni szerepkör létrehozásához használja a [szerepkör-definíciók - lé
 
 ## <a name="update-a-custom-role"></a>Egyéni szerepkörök frissítése
 
-Egyéni szerepkör frissítéséhez használja a [szerepkör-definíciók – létrehozása vagy frissítése](/rest/api/authorization/roledefinitions/createorupdate) REST API-t. Az API meghívásához, be kell jelentkeznie jelentkezzen be, amely hozzá van rendelve egy szerepkör, amely rendelkezik a `Microsoft.Authorization/roleDefinitions/write` az összes engedélyt a `assignableScopes`. A beépített szerepkörök, csak [tulajdonosa](built-in-roles.md#owner) és [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) tartalmazzák ezt az engedélyt.
+Egyéni szerepkör frissítéséhez használja a [szerepkör-definíciók – létrehozás vagy frissítés](/rest/api/authorization/roledefinitions/createorupdate) REST API. Az API meghívásához olyan felhasználóval kell bejelentkeznie, akinek van olyan szerepköre, amely az összes `assignableScopes``Microsoft.Authorization/roleDefinitions/write` engedéllyel rendelkezik. A beépített szerepkörök közül csak a [tulajdonosi](built-in-roles.md#owner) és a [felhasználói hozzáférés-kezelő rendszergazda](built-in-roles.md#user-access-administrator) adja meg ezt az engedélyt.
 
-1. Használja a [szerepkör-definíciók - lista](/rest/api/authorization/roledefinitions/list) vagy [szerepkör-definíciók – első](/rest/api/authorization/roledefinitions/get) REST API-t az egyéni szerepkör adatainak beolvasása. További információkért lásd az előző [egyéni szerepkörök listában](#list-custom-roles) szakaszban.
+1. Használja a [szerepkör-definíciók – lista](/rest/api/authorization/roledefinitions/list) vagy a [szerepkör-definíciók – Get](/rest/api/authorization/roledefinitions/get) REST API az egyéni szerepkörre vonatkozó információk lekéréséhez. További információ: az [Egyéni szerepkörök korábbi listája](#list-custom-roles) szakasz.
 
-1. Indítsa el a következő kérelmet:
+1. Kezdje a következő kéréssel:
 
     ```http
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. Cserélje le az URI-belül *{hatókör}* – az első `assignableScopes` az egyéni szerepkör.
+1. Az URI-n belül cserélje le a *{scope}* értéket az egyéni szerepkör első `assignableScopes`ére.
 
-    | Scope | Típus |
+    | Hatókör | Type (Típus) |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
-1. Cserélje le *{roleDefinitionId}* az egyéni szerepkör GUID azonosítóval.
+1. Cserélje le a *{roleDefinitionId}* helyére az egyéni szerepkör GUID azonosítóját.
 
-1. Az egyéni szerepkör kapcsolatos információk alapján, hozzon létre egy kérelem törzse a következő formátumban:
+1. Az egyéni szerepkörre vonatkozó információk alapján hozzon létre egy kérelem törzsét a következő formátumban:
 
     ```json
     {
@@ -251,9 +251,9 @@ Egyéni szerepkör frissítéséhez használja a [szerepkör-definíciók – l�
     }
     ```
 
-1. A szükséges módosításokat, hogy az egyéni szerepkör frissítése a kérelem törzsében.
+1. Frissítse a kérés törzsét az egyéni szerepkörbe felvenni kívánt módosításokkal.
 
-    Az alábbiakban látható egy példa a kérelem törzsében hozzáadott új diagnosztikai beállítások művelettel:
+    Az alábbi példa egy olyan kérés törzsét mutatja be, amelyben új diagnosztikai beállításokkal kapcsolatos művelet lett hozzáadva:
 
     ```json
     {
@@ -289,28 +289,28 @@ Egyéni szerepkör frissítéséhez használja a [szerepkör-definíciók – l�
 
 ## <a name="delete-a-custom-role"></a>Egyéni szerepkörök törlése
 
-Egyéni szerepkör törléséhez használja a [szerepkör-definíciók – Törlés](/rest/api/authorization/roledefinitions/delete) REST API-t. Az API meghívásához, be kell jelentkeznie jelentkezzen be, amely hozzá van rendelve egy szerepkör, amely rendelkezik a `Microsoft.Authorization/roleDefinitions/delete` az összes engedélyt a `assignableScopes`. A beépített szerepkörök, csak [tulajdonosa](built-in-roles.md#owner) és [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) tartalmazzák ezt az engedélyt.
+Egyéni szerepkör törléséhez használja a [szerepkör-definíciókat – törölje](/rest/api/authorization/roledefinitions/delete) REST API. Az API meghívásához olyan felhasználóval kell bejelentkeznie, akinek van olyan szerepköre, amely az összes `assignableScopes``Microsoft.Authorization/roleDefinitions/delete` engedéllyel rendelkezik. A beépített szerepkörök közül csak a [tulajdonosi](built-in-roles.md#owner) és a [felhasználói hozzáférés-kezelő rendszergazda](built-in-roles.md#user-access-administrator) adja meg ezt az engedélyt.
 
-1. Használja a [szerepkör-definíciók - lista](/rest/api/authorization/roledefinitions/list) vagy [szerepkör-definíciók – első](/rest/api/authorization/roledefinitions/get) REST API-t az egyéni szerepkör GUID azonosítójának lekérése. További információkért lásd az előző [egyéni szerepkörök listában](#list-custom-roles) szakaszban.
+1. Használja a [szerepkör-definíciók – lista](/rest/api/authorization/roledefinitions/list) vagy a [szerepkör-definíciók – Get](/rest/api/authorization/roledefinitions/get) REST API az egyéni szerepkör GUID azonosítójának beszerzéséhez. További információ: az [Egyéni szerepkörök korábbi listája](#list-custom-roles) szakasz.
 
-1. Indítsa el a következő kérelmet:
+1. Kezdje a következő kéréssel:
 
     ```http
     DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. Cserélje le az URI-belül *{hatókör}* törli az egyéni szerepkör a hatókörrel rendelkező.
+1. Az URI-n belül cserélje le a *{scope}* értéket arra a hatókörre, amelynek az egyéni szerepkörét törölni szeretné.
 
-    | Scope | Típus |
+    | Hatókör | Type (Típus) |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
-1. Cserélje le *{roleDefinitionId}* az egyéni szerepkör GUID azonosítóval.
+1. Cserélje le a *{roleDefinitionId}* helyére az egyéni szerepkör GUID azonosítóját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni szerepkörök Azure-erőforrásokhoz](custom-roles.md)
-- [Rbac-RÓL és a REST API használatával Azure-erőforrásokhoz való hozzáférés kezelése](role-assignments-rest.md)
+- [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a REST API használatával](role-assignments-rest.md)
 - [Azure REST API-referencia](/rest/api/azure/)

@@ -1,5 +1,5 @@
 ---
-title: Új Azure IoT Edge eszköz típusának meghatározása az Azure IoT Centralban | Microsoft Docs
+title: Oktatóanyag – új Azure IoT Edge eszköz típusának definiálása az Azure-ban IoT Central
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre új Azure IoT Edge eszközt az Azure IoT Central alkalmazásban. Megadhatja a típus telemetria, állapotát, tulajdonságait és parancsait.
 author: rangv
 ms.author: rangv
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 0a293d74c9e37a6771c5bb246b74bda38db3b7c3
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 97bfd2b1e8b571f44c0b782459567f5677dd36a7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406466"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702790"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Oktatóanyag: új Azure IoT Edge eszköz típusának meghatározása az Azure IoT Central alkalmazásban (előzetes verziójú funkciók)
 
@@ -47,7 +47,7 @@ Ebben az oktatóanyagban egy környezeti átjáró-eszköz sablonját is létreh
 * Más eszköz-képesség modellek kapcsolatainak engedélyezése.
 
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy új Azure IoT Edge eszköz-eszköz sablont.
@@ -103,7 +103,7 @@ A **sablon típusának kiválasztása** lapon válassza a **Azure IoT Edge**lehe
 
 IoT Edge az üzleti logikát modulok formájában helyezheti üzembe és kezelheti. A IoT Edge modulok a IoT Edge által kezelt számítási egységek legkisebb egységei, és tartalmazhatnak Azure-szolgáltatásokat (például Azure Stream Analytics) vagy a saját megoldásra vonatkozó kódokat. A modulok fejlesztésének, üzembe helyezésének és karbantartásának megismeréséhez tekintse meg [IoT Edge modulokat](../../iot-edge/iot-edge-modules.md).
 
-Magas szinten a manifest nasazení az ikermodulokkal, amelyeken a kívánt tulajdonságok listája. Az üzembe helyezési jegyzék egy IoT Edge eszközt (vagy az eszközök egy csoportját) adja meg, mely modulokat kell telepíteni és konfigurálni. Az üzembe helyezési jegyzékek tartalmazzák a különálló modulok kívánt tulajdonságait. IoT Edge az eszközök jelentést készítenek az egyes modulok jelentett tulajdonságairól.
+Az üzembe helyezési jegyzék magas szinten az olyan modulok listája, amelyek a kívánt tulajdonságokkal vannak konfigurálva. Az üzembe helyezési jegyzék egy IoT Edge eszközt (vagy az eszközök egy csoportját) adja meg, mely modulokat kell telepíteni és konfigurálni. Az üzembe helyezési jegyzékek tartalmazzák a különálló modulok kívánt tulajdonságait. IoT Edge az eszközök jelentést készítenek az egyes modulok jelentett tulajdonságairól.
 
 A Visual Studio Code használatával hozzon létre egy üzembe helyezési jegyzéket. További információk: [Azure IoT Edge a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)-hoz.
 
@@ -303,7 +303,7 @@ Az eszközök tartalmazhatnak Felhőbeli tulajdonságokat is. A felhő tulajdons
 
 ### <a name="add-customizations"></a>Testreszabások hozzáadása
 
-A testreszabások segítségével módosíthatja a felületet, vagy IoT Central-specifikus funkciókat adhat hozzá olyan képességekhez, amelyek nem igénylik az eszköz-képességi modell verziójának megadását. A mezőket testreszabhatja, ha a képesség modell Piszkozat vagy közzétett állapotban van. Csak olyan mezőket szabhat testre, amelyek nem bontják le az illesztőfelületek kompatibilitását. Megteheti például a következőt:
+A testreszabások segítségével módosíthatja a felületet, vagy IoT Central-specifikus funkciókat adhat hozzá olyan képességekhez, amelyek nem igénylik az eszköz-képességi modell verziójának megadását. A mezőket testreszabhatja, ha a képesség modell Piszkozat vagy közzétett állapotban van. Csak olyan mezőket szabhat testre, amelyek nem bontják le az illesztőfelületek kompatibilitását. Megteheti például a következőket:
 
 - Testreszabhatja egy képesség megjelenített nevét és egységeit.
 - Adja meg az alapértelmezett színt, amelyet akkor kell használni, ha az érték megjelenik a diagramon.

@@ -1,19 +1,19 @@
 ---
-title: 'Rövid útmutató: a Spring Cloud-alkalmazás elindítása forráskódból'
-description: Ismerje meg, hogyan indíthat Azure Spring Cloud-alkalmazást közvetlenül a forráskódból
+title: Rövid útmutató – Spring Cloud-alkalmazás elindítása forráskódból
+description: Ebből a rövid útmutatóból megtudhatja, hogyan indíthatja el az Azure Spring Cloud-alkalmazást közvetlenül a forráskódból
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 7ca80966ccab83991246f0ed7ea35cf2c9524b1d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 6e18ac6c0fa97125b89ea5760a5d7da6c1545393
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721284"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708889"
 ---
-# <a name="launch-your-spring-cloud-application-from-source-code"></a>A Spring Cloud-alkalmazás elindítása forráskódból
+# <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Rövid útmutató: a Spring Cloud-alkalmazás elindítása forráskódból
 
 Az Azure Spring Cloud lehetővé teszi, hogy könnyedén futtasson Spring Cloud-alapú Service-alkalmazásokat az Azure-ban.
 
@@ -110,7 +110,7 @@ az spring-cloud app deployment create --app <app-name> -n <deployment-name> --ja
 Az Azure Spring Cloud a [kpack](https://github.com/pivotal/kpack) használatával hozza létre a projektet.  Az Azure CLI-vel feltöltheti a forráskódot, felépítheti a projektet a kpack használatával, és üzembe helyezheti azt a célalkalmazás alkalmazásban.
 
 > [!WARNING]
-> A projektnek csak egy JAR-fájlt kell létrehoznia, amelynek `main-class` bejegyzése van a `MANIFEST.MF`-ben `target` (Maven-telepítésekhez vagy `build/libs` (Gradle-környezetek esetén).  Több JAR-fájl `main-class` bejegyzéssel a telepítés sikertelen lesz.
+> A projektnek csak egy JAR-fájlt kell létrehoznia, amelynek `main-class` `MANIFEST.MF` bejegyzése van `target` (Maven-telepítésekhez vagy `build/libs`hoz (Gradle-telepítés esetén).  `main-class`-bejegyzéseket tartalmazó több JAR-fájl esetén a telepítés meghiúsul.
 
 Egymodulos Maven/Gradle-projektekhez:
 
@@ -144,7 +144,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 3. Válassza a **tartomány kiosztása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez néhány percet is igénybe vehet. 
 4. A futó alkalmazás megtekintéséhez adja meg a hozzárendelt nyilvános IP-címet a böngészőben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

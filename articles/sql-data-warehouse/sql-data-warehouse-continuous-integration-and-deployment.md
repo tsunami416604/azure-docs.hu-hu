@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fd03072f4e69fac43874e822ebb06063436ef72c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e8d7e7764a01dbd0169efae093bac4d984982108
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646135"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708668"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>A Azure SQL Data Warehouse folyamatos integrációja és üzembe helyezése
 
@@ -25,12 +25,8 @@ Ez az egyszerű oktatóanyag azt ismerteti, hogyan integrálható a SQL Server A
 
 - Átugorja a [verziókövetés integrációs oktatóanyagát](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)
 
-- Hozzon létre egy olyan saját üzemeltetésű [ügynököt](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops#install) , amely a SSDT előzetes verziójának (16,3 előzetes, 2. és újabb) verziója telepítve van SQL Data Warehouse (előzetes verzió)
-
 - Az Azure DevOps beállítása és kapcsolódás
 
-  > [!NOTE]
-  > A SSDT jelenleg előzetes verzióban érhető el, ahol egy önkiszolgáló ügynököt kell használnia. A Microsoft által üzemeltetett ügynökök a következő néhány hónapban lesznek frissítve.
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Folyamatos integráció a Visual Studio buildtel
 
@@ -49,9 +45,9 @@ Ez az egyszerű oktatóanyag azt ismerteti, hogyan integrálható a SQL Server A
 Ezen a ponton olyan egyszerű környezettel rendelkezik, ahol a forrás-felügyeleti tárház főágának beadása automatikusan elindítja az adatbázis-projekt sikeres Visual Studio-buildjét. Ellenőrizze, hogy az automatizálás működik-e, ha módosítja a helyi adatbázis-projektet, és ellenőrzi, hogy a változás a fő ágra esik-e.
 
 
-## <a name="continuous-deployment-with-the-azure-sql-database-deployment-task"></a>Folyamatos üzembe helyezés a Azure SQL Database üzembe helyezési feladattal
+## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Folyamatos üzembe helyezés a Azure SQL Data Warehouse-(vagy adatbázis-) telepítési feladattal
 
-1. Vegyen fel egy új feladatot a [Azure SQL Database központi telepítési feladattal](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) , és töltse ki a szükséges mezőket a cél adattárházhoz való kapcsolódáshoz. A feladat futtatásakor a rendszer az előző összeállítási folyamatból generált DACPAC telepíti a cél adattárházba.
+1. Vegyen fel egy új feladatot a [Azure SQL Database központi telepítési feladattal](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) , és töltse ki a szükséges mezőket a cél adattárházhoz való kapcsolódáshoz. A feladat futtatásakor a rendszer az előző összeállítási folyamatból generált DACPAC telepíti a cél adattárházba. Használhatja az [Azure SQL Datawarehouse üzembe helyezési feladatát](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) is 
 
       ![Üzembe helyezési feladat](media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Üzembe helyezési feladat")
 
@@ -63,7 +59,7 @@ Ezen a ponton olyan egyszerű környezettel rendelkezik, ahol a forrás-felügye
 
    A folyamat futtatása és ellenőrzése. Helyben végezheti a módosításokat, és ellenőrizheti a verziókövetés módosításait, amelyeknek automatikus buildet és üzembe helyezést kell létrehozniuk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg [Azure SQL Data Warehouse architektúrával](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
 - [SQL Data Warehouse gyors létrehozása][create a SQL Data Warehouse]

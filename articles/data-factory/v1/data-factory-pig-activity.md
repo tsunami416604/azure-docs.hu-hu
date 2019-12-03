@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: a6861a22f853bb0b48eb7c9832adb251bc3467ca
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682397"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703195"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Adatátalakítás a Pig tevékenységgel Azure Data Factory
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -82,7 +82,7 @@ A HDInsight Pig-tevékenység egy Data Factory [folyamat](data-factory-create-pi
 
 ## <a name="syntax-details"></a>Szintaxis részletei
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | név |A tevékenység neve |Igen |
 | leírás |A tevékenység által használt szöveg leírása |Nem |
@@ -224,4 +224,4 @@ A paraméteres Pig-parancsfájl használatához tegye a következőket:
 * [MapReduce tevékenység](data-factory-map-reduce.md)
 * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
 * [Spark-programok meghívása](data-factory-spark.md)
-* [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)

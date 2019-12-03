@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c56961b28750f3ba6450c26c897c1ef6c54b3ed8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667503"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703369"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Adatátalakítás Hadoop-adatfolyam-továbbítási tevékenység használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -98,7 +98,7 @@ Vegye figyelembe a következő szempontokat:
 2. Állítsa be a tevékenység típusát a **HDInsightStreaming**értékre.
 3. A **Mapper** tulajdonságnál adja meg a Mapper végrehajtható fájljának nevét. A példában a Cat. exe a Mapper végrehajtható fájlja.
 4. A **csökkentő** tulajdonságnál adja meg a csökkentő végrehajtható fájl nevét. A példában a WC. exe a csökkentő végrehajtható fájl.
-5. A **bemeneti** típus tulajdonságnál adja meg a Mapper bemeneti fájlját (beleértve a helyét is). A példában: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample a blob tároló, például/az adatfájlok és a Gutenberg mappa, a DaVinci. txt pedig a blob.
+5. A **bemeneti** típus tulajdonságnál adja meg a Mapper bemeneti fájlját (beleértve a helyét is). A példában: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample a blob-tároló, például az adatfájlok és a Gutenberg mappa, a DaVinci. txt pedig a blob.
 6. A **kimeneti** típus tulajdonságnál adja meg a redukáló kimeneti fájlját (beleértve a helyét is). Az Hadoop streaming-feladatok kimenete a tulajdonsághoz megadott helyre íródik.
 7. A **filePaths** szakaszban határozza meg a mapper és a csökkentő végrehajtható fájlok elérési útját. A példában: "adfsample/example/apps/WC. exe", a adfsample a blob tároló, például az alkalmazások mappa, a WC. exe pedig a végrehajtható fájl.
 8. A **fileLinkedService** tulajdonságnál adja meg az Azure Storage társított szolgáltatást, amely az filePaths szakaszban megadott fájlokat tartalmazó Azure Storage-tárolót jelöli.
@@ -227,5 +227,5 @@ A rendszer automatikusan kitölti a HDInsight-fürtöt például a (WC. exe és 
 * [Pig-tevékenység](data-factory-pig-activity.md)
 * [MapReduce tevékenység](data-factory-map-reduce.md)
 * [Spark-programok meghívása](data-factory-spark.md)
-* [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

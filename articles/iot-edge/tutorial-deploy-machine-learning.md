@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Machine Learning üzembe helyezése egy eszközön – Azure IoT Edge'
+title: Oktatóanyag – Azure Machine Learning üzembe helyezése egy eszközön a Azure IoT Edge használatával
 description: Ebben az oktatóanyagban létrehoz egy Azure Machine Learning modellt, majd üzembe helyezi modulként egy peremhálózati eszközön
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3f1bd4ce5b701652318679f3277bc7c9109fa529
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 3d46e0695238ed7a09f180fe59063f8e2590f307
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457633"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701925"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Machine Learning üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
@@ -24,7 +24,7 @@ Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az Io
 
 Az ebben az oktatóanyagban létrehozott Azure Machine Learning-modul kiolvassa az eszköz által előállított környezeti adatokat, illetve rendellenesként vagy nem rendellenesként jelöli meg az üzeneteket.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Azure Machine Learning-modul létrehozása
@@ -141,7 +141,7 @@ A következő lépések azt mutatják be, hogyan állítható be a Visual Studio
 
 2. Ezt követően válassza a **...** , majd az **IoT Hub kapcsolati sztring beállítása** lehetőséget a menüben.
 
-   ![Az IoT Hub kapcsolati karakterlánc beállítása](./media/tutorial-deploy-machine-learning/set-connection.png)
+   ![IoT Hub-kapcsolatok karakterláncának beállítása](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. Az oldal tetején megnyíló szövegmezőben adja meg a saját IoT Hubjához tartozó iothubowner kapcsolati sztringet. IoT Edge-eszközének ekkor meg kell jelennie az IoT Hub-eszközök listájában.
 
@@ -165,4 +165,3 @@ Ebben az oktatóanyagban üzembe helyezett egy, az Azure Machine Learning által
 
 > [!div class="nextstepaction"]
 > [Képek osztályozása a Custom Vision szolgáltatás használatával](tutorial-deploy-custom-vision.md)
-

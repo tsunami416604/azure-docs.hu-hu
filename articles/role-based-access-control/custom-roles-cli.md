@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egyéni szerepkörök az Azure-erőforrások Azure parancssori felületével |} A Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre egyéni szerepköröket a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrások Azure CLI használatával. Ez magában foglalja a listában, létrehozása, frissítése és egyéni szerepkörök törlése.
+title: Azure-erőforrások egyéni szerepköreinek létrehozása vagy frissítése az Azure CLI használatával | Microsoft Docs
+description: Megtudhatja, hogyan listázhat, hozhat létre, frissíthet vagy törölhet egyéni szerepköröket az Azure-erőforrásokhoz készült szerepköralapú hozzáférés-vezérléssel (RBAC) az Azure CLI használatával.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,29 +14,29 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ebced83346a7b130598e4a5f49a72d51ffd18e4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2b2ffde66468ae7cb2818010ac374126d2973be
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118773"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703138"
 ---
-# <a name="create-custom-roles-for-azure-resources-using-azure-cli"></a>Egyéni szerepkörök az Azure CLI használatával Azure-erőforrások létrehozása
+# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-cli"></a>Azure-erőforrások egyéni szerepköreinek létrehozása vagy frissítése az Azure CLI-vel
 
-Ha a [beépített szerepkörök az Azure-erőforrások](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, saját egyéni szerepköröket is létrehozhat. Ez a cikk bemutatja, hogyan hozhat létre és kezelhet az Azure CLI-vel egyéni szerepkörök.
+Ha az [Azure-erőforrások beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ez a cikk azt ismerteti, hogyan lehet egyéni szerepköröket listázni, létrehozni, frissíteni vagy törölni az Azure CLI használatával.
 
-Egyéni szerepkör létrehozásával egy részletes útmutató: [oktatóanyag: Hozzon létre egy egyéni szerepkört az Azure-erőforrások Azure CLI-vel](tutorial-custom-role-cli.md).
+Az egyéni szerepkörök létrehozásával kapcsolatos részletes oktatóanyagért lásd [: oktatóanyag: egyéni szerepkör létrehozása az Azure-erőforrásokhoz az Azure CLI használatával](tutorial-custom-role-cli.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egyéni szerepkörök létrehozása, az alábbiak szükségesek:
+Egyéni szerepkörök létrehozásához a következőkre lesz szüksége:
 
 - Egyéni szerepkörök létrehozására vonatkozó engedélyre, amely lehet például [Tulajdonos](built-in-roles.md#owner) vagy [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator)
-- [Az Azure Cloud Shell](../cloud-shell/overview.md) vagy [az Azure CLI](/cli/azure/install-azure-cli)
+- [Azure Cloud Shell](../cloud-shell/overview.md) vagy [Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="list-custom-roles"></a>Egyéni szerepkörök listázása
 
-Egyéni szerepkörök hozzárendelése elérhető listájában, használja a [az role definition listájában](/cli/azure/role/definition#az-role-definition-list). Az alábbi példákban a egyéni szerepkörök az aktuális előfizetésben.
+A hozzárendeléshez elérhető egyéni szerepkörök listázásához használja [az az role definition List](/cli/azure/role/definition#az-role-definition-list)lehetőséget. Az alábbi példák az aktuális előfizetésben szereplő összes egyéni szerepkört felsorolják.
 
 ```azurecli
 az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "roleType":.roleType}'
@@ -63,15 +63,15 @@ az role definition list --output json | jq '.[] | if .roleType == "CustomRole" t
 ...
 ```
 
-## <a name="list-a-custom-role-definition"></a>Egy egyéni szerepkör-definíció listázása
+## <a name="list-a-custom-role-definition"></a>Egyéni szerepkör-definíció listázása
 
-Egy egyéni szerepkör-definíció listázásához használja [az role definition listájában](/cli/azure/role/definition#az-role-definition-list). Ez a beépített szerepkör használja ugyanazt a parancsot.
+Egyéni szerepkör-definíciók listázásához használja [az az role definition List](/cli/azure/role/definition#az-role-definition-list)lehetőséget. Ez ugyanaz a parancs, amelyet egy beépített szerepkörhöz használ.
 
 ```azurecli
 az role definition list --name <role_name>
 ```
 
-A következő példa listákat a *virtuális gépet üzemeltető* szerepkör-definíció:
+A következő példa a *virtuális gép operátori* szerepkörének definícióját sorolja fel:
 
 ```azurecli
 az role definition list --name "Virtual Machine Operator"
@@ -113,7 +113,7 @@ az role definition list --name "Virtual Machine Operator"
 ]
 ```
 
-Az alábbi példa felsorolja a csak a műveletek a *virtuális gépet üzemeltető* szerepkör:
+Az alábbi példa a *virtuális gép operátori* szerepkörének műveleteit sorolja fel:
 
 ```azurecli
 az role definition list --name "Virtual Machine Operator" --output json | jq '.[] | .permissions[0].actions'
@@ -137,15 +137,15 @@ az role definition list --name "Virtual Machine Operator" --output json | jq '.[
 
 ## <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
 
-Egy egyéni biztonsági szerepkört hozhat létre [az szerepkör-definíció létrehozására](/cli/azure/role/definition#az-role-definition-create). A szerepkör-definíció JSON-leírásuk és a egy JSON-leírásuk tartalmazó fájl elérési útját is lehetnek.
+Egyéni szerepkör létrehozásához használja [az az role definition Create](/cli/azure/role/definition#az-role-definition-create)lehetőséget. A szerepkör-definíció lehet JSON-leírás vagy egy JSON-leírást tartalmazó fájl elérési útja.
 
 ```azurecli
 az role definition create --role-definition <role_definition>
 ```
 
-A következő példában létrehozunk egy egyéni szerepkör nevű *virtuális gépet üzemeltető*. Az egyéni szerepkör-hozzáférési jogosultságot rendel az összes olvasási műveletek *Microsoft.Compute*, *Microsoft.Storage*, és *Microsoft.Network* erőforrás-szolgáltatók és engedményeseire hozzáférés Indítsa el, és indítsa újra a virtuális gépek figyelése céljából. Az egyéni szerepkör is használható két előfizetéssel. Ebben a példában egy JSON-fájlt használja bemenetként.
+Az alábbi példa egy *Virtuálisgép-kezelő*nevű egyéni szerepkört hoz létre. Ez az egyéni szerepkör hozzáférést rendel a *Microsoft. számítás*, a *Microsoft. Storage*és a *Microsoft. Network* erőforrás-szolgáltatók összes olvasási műveletéhez, és hozzáférést rendel a virtuális gépek indításához, újraindításához és figyeléséhez. Ez az egyéni szerepkör két előfizetésben is használható. Ez a példa egy JSON-fájlt használ bemenetként.
 
-vmoperator.json
+vmoperator. JSON
 
 ```json
 {
@@ -180,15 +180,15 @@ az role definition create --role-definition ~/roles/vmoperator.json
 
 ## <a name="update-a-custom-role"></a>Egyéni szerepkörök frissítése
 
-Egyéni szerepkör frissítéséhez először használja [az role definition listájában](/cli/azure/role/definition#az-role-definition-list) a szerepkör-definíció lekéréséhez. A második végezze el a kívánt módosításokat a szerepkör-definíció. Végül a [az szerepkör-definíció frissítési](/cli/azure/role/definition#az-role-definition-update) frissített szerepkör-definíció mentéséhez.
+Egyéni szerepkör frissítéséhez először az [az role definition List](/cli/azure/role/definition#az-role-definition-list) paranccsal kérheti le a szerepkör-definíciót. Másodszor, végezze el a kívánt módosításokat a szerepkör-definícióban. Végül az [az role definition Update](/cli/azure/role/definition#az-role-definition-update) paranccsal mentse a frissített szerepkör-definíciót.
 
 ```azurecli
 az role definition update --role-definition <role_definition>
 ```
 
-Az alábbi példa hozzáadja a *Microsoft.Insights/diagnosticSettings/* művelet a *műveletek* , a *virtuális gépet üzemeltető* egyéni szerepkör.
+A következő példa hozzáadja a *Microsoft. ininsights/diagnosticSettings/* műveletet a *Virtuálisgép-kezelő* egyéni szerepkör *műveleteihez* .
 
-vmoperator.json
+vmoperator. JSON
 
 ```json
 {
@@ -224,20 +224,20 @@ az role definition update --role-definition ~/roles/vmoperator.json
 
 ## <a name="delete-a-custom-role"></a>Egyéni szerepkörök törlése
 
-Egyéni szerepkör törléséhez használja [az szerepkör-definíció törlése](/cli/azure/role/definition#az-role-definition-delete). A szerepkör törléséhez használja a szerepkör neve vagy a szerepkör-azonosítót. A szerepkör-azonosító meghatározásához [az role definition listájában](/cli/azure/role/definition#az-role-definition-list).
+Egyéni szerepkör törléséhez használja [az az role definition delete](/cli/azure/role/definition#az-role-definition-delete)paranccsal. A törlendő szerepkör megadásához használja a szerepkör nevét vagy a szerepkör AZONOSÍTÓját. A szerepkör-azonosító meghatározásához használja az [az role definition List](/cli/azure/role/definition#az-role-definition-list).
 
 ```azurecli
 az role definition delete --name <role_name or role_id>
 ```
 
-Az alábbi példával törölhet a *virtuális gépet üzemeltető* egyéni szerepkör.
+A következő példa törli a *virtuális gép operátorának* egyéni szerepkörét.
 
 ```azurecli
 az role definition delete --name "Virtual Machine Operator"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Oktatóanyag: Az Azure-erőforrások Azure CLI-vel egyéni szerepkör létrehozása](tutorial-custom-role-cli.md)
+- [Oktatóanyag: egyéni szerepkör létrehozása Azure-erőforrásokhoz az Azure CLI használatával](tutorial-custom-role-cli.md)
 - [Egyéni szerepkörök Azure-erőforrásokhoz](custom-roles.md)
-- [Az Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md)
+- [Erőforrás-szolgáltatói műveletek Azure Resource Manager](resource-provider-operations.md)

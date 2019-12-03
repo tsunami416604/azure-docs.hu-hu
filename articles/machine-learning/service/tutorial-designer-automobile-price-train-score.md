@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: ee08ba61aec23078227c40b92771d1728040c4cf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3d0efbaec6905d0d24d9dc1c310d472958011960
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228412"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702082"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -55,7 +55,7 @@ Ha vállalati kiadással rendelkező Azure Machine Learning munkaterülettel ren
 
 1. Válassza a **tervező**lehetőséget.
 
-    ![A tervező elérését bemutató vizualizációs munkaterület képernyőképe](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
+    ![A tervező elérését bemutató vizualizációs munkaterület képernyőképe](./media/tutorial-designer-automobile-price-train-score/launch-designer.png)
 
 1. Válassza **a könnyen használható előre elkészített modulok**elemet.
 
@@ -127,7 +127,7 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 
 1. A Tulajdonságok ablaktáblán válassza a **paraméterek** > a **Megjegyzés** lehetőséget, és adja meg a *normalizált veszteségek kizárása*beállítást.
 
-### <a name="clean-missing-data"></a>Hiányzó adatok tisztítása
+### <a name="clean-missing-data"></a>Hiányzó adatértékek törlése
 
 A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet továbbra is hiányzó értékeket tartalmaz. A fennmaradó hiányzó adatelemet a **tiszta hiányzó** adatmodul használatával távolíthatja el.
 
@@ -170,7 +170,7 @@ Ossza meg az adatait két külön adatkészletbe a modell betanításához és t
 
 1. A Tulajdonságok ablaktábla **Megjegyzés** mezőjébe írja be *az adatkészlet felosztása betanítási készletbe (0,7) és a test set (0,3)* értéket.
 
-### <a name="train-the-model"></a>A modell betanítása
+### <a name="train-the-model"></a>A modell tanítása
 
 A modell betanításához adjon meg egy olyan adathalmazt, amely tartalmazza az árat. A modell megkeresi az adatforrásokat, és összefüggéseket keres az autó funkciói és a modell kiépítése között.
 
@@ -258,7 +258,7 @@ Az oktatóanyag első részében a következő feladatokat végezte el:
 
 * Folyamat létrehozása
 * Az adatok előkészítése
-* A modell betanítása
+* A modell tanítása
 * A modell pontszáma és kiértékelése
 
 A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.

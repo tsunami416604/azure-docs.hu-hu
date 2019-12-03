@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b85c5c6c5642d10c8d917ed9785d0fcf48a5e68
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5d4bdd554fb7c8817ada80a294f3ecb1c6c85b00
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554136"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707032"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkör engedélyei Azure Active Directory
 
@@ -246,7 +246,7 @@ Az ebben a szerepkörben lévő felhasználók beolvashatják a beállításokat
 > Ezek a funkciók jelenleg fejlesztés alatt állnak.
 >
 
-### <a name="group-administratorgroup-administrator"></a>[Csoport rendszergazdája](#group-administrator)
+### <a name="group-administratorgroup-administrator-permissions"></a>[Csoport rendszergazdája](#group-administrator-permissions)
 
 A szerepkör felhasználói létrehozhatnak és kezelhetnek csoportokat és azok beállításait, például az elnevezési és lejárati házirendeket. Fontos tisztában lenni azzal, hogy egy felhasználó ehhez a szerepkörhöz rendelése lehetővé teszi, hogy a bérlő összes csoportját a különböző munkaterhelések, például a csapatok, a SharePoint, a Yammer és az Outlook mellett is kezelhesse. Emellett a felhasználók a különböző csoportok beállításait is kezelhetik különböző felügyeleti portálokon, például a Microsoft felügyeleti központban, a Azure Portalon, valamint a munkaterhelések, például a csapatok és a SharePoint-felügyeleti központok között.
 
@@ -279,7 +279,9 @@ Ezt a szerepkört korábban "password Administrator" néven nevezték a [Azure P
 
 ### <a name="intune-administratorintune-service-administrator-permissions"></a>[Intune-rendszergazda](#intune-service-administrator-permissions)
 
-Az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rendelkeznek Microsoft Intune online-ban, ha a szolgáltatás jelen van. Emellett ez a szerepkör lehetővé teszi a felhasználók és eszközök felügyeletét a házirendek társítása, valamint a csoportok létrehozása és kezelése céljából. További információ a [szerepköralapú adminisztrációs vezérlő (RBAC) és a Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control)
+Az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rendelkeznek Microsoft Intune online-ban, ha a szolgáltatás jelen van. Emellett ez a szerepkör lehetővé teszi a felhasználók és eszközök felügyeletét a házirendek társítása, valamint a csoportok létrehozása és kezelése céljából. További információ a [szerepköralapú adminisztrációs vezérlő (RBAC) és a Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control).
+
+Ez a szerepkör az összes biztonsági csoportot képes létrehozni és kezelni. Az Intune-rendszergazda azonban nem rendelkezik rendszergazdai jogosultságokkal az Office-csoportokon keresztül. Ez azt jelenti, hogy a rendszergazda nem tudja frissíteni a bérlő összes Office-csoportjának tulajdonosait vagy tagságait. Azonban felügyelheti az általa létrehozott Office-csoportot, amely a végfelhasználói jogosultságok részeként jön létre. Ezért az Ön által létrehozott összes Office-csoportot (nem biztonsági csoportot) a 250-es kvóta alapján kell figyelembe venni.
 
 > [!NOTE]
 > A Microsoft Graph API, az Azure AD Graph API és az Azure AD PowerShell esetében ez a szerepkör "Intune szolgáltatás-rendszergazda" néven azonosítható. A [Azure Portal](https://portal.azure.com)"Intune-rendszergazda".
@@ -1081,7 +1083,7 @@ Mindent megtudhat, hogy globális rendszergazda tud-e, de nem szerkeszthet semmi
 | Microsoft. Office 365. usageReports/allEntities/READ | Olvassa el az Office 365 használati jelentéseit. |
 | Microsoft. Office 365. Webportal/allEntities/standard/olvasás   | A Microsoft. Office 365. webporting összes erőforrásának általános tulajdonságainak olvasása. |
 
-### <a name="group-administrator"></a>Csoport rendszergazdája
+### <a name="group-administrator-permissions"></a>Rendszergazdai engedélyek csoportosítása
 Kezelheti a csoportok és a csoportházirend-beállítások összes aspektusát, például az elnevezési és lejárati házirendeket.
 
 | **Műveletek** | **Leírás** |

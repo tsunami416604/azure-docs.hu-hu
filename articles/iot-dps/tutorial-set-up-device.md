@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: eszköz beállítása az Azure IoT Hub Device Provisioning Service'
-description: 'Oktatóanyag: a IoT Hub Device Provisioning Service eszközön való üzembe helyezése az eszköz gyártási folyamata során'
+title: Oktatóanyag – eszköz beállítása az Azure IoT Hub Device Provisioning Service
+description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az eszközt a IoT Hub Device Provisioning Service az eszköz gyártási folyamata során.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e7f6151968fb14d44f1e330fb6ddc06fabad3ee6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: bdda46a89fc2bcf8b16b2ce771c6540c9ceaa3e0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112756"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701983"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Oktatóanyag: eszköz üzembe helyezése az Azure IoT Hub Device Provisioning Service használatával
 
@@ -120,7 +120,7 @@ Attól függően, hogy az SDK-t TPM- vagy x.509-tanúsítványokat használó sz
 
    1. A Visual Studio *Solution Explorer* (Megoldáskezelő) panelén lépjen a **Provision\_Tools** mappára. Kattintson a jobb gombbal a **tpm_device_provision** projektre, és válassza a **Set as Startup Project** (Beállítás kezdőprojektként) lehetőséget. 
 
-   1. Futtassa a megoldást a Hibakeresés menü valamelyik „Indítás” parancsa segítségével. A kimeneti ablak megjeleníti a TPM-szimulátor eszközök beléptetéséhez és regisztrálásához szükséges **_regisztrációs azonosítóját_** és **_ellenőrzőkulcsot_** . Másolja ki ezeket az értékeket későbbi felhasználás céljára. Bezárhatja a regisztrációs azonosítót és az ellenőrzőkulcsot tartalmazó ablakot, de hagyja futni a TPM-szimulátor ablakát, amelyet az 1. lépésben nyitott meg.
+   1. Futtassa a megoldást a Hibakeresés menü valamelyik „Indítás” parancsa segítségével. A kimeneti ablak megjeleníti a TPM-szimulátor eszközök beléptetéséhez és regisztrálásához szükséges **_regisztrációs azonosítóját_** és az **_ellenőrzőkulcsot_** . Másolja ki ezeket az értékeket későbbi felhasználás céljára. Bezárhatja a regisztrációs azonosítót és az ellenőrzőkulcsot tartalmazó ablakot, de hagyja futni a TPM-szimulátor ablakát, amelyet az 1. lépésben nyitott meg.
 
 - Szimulált X.509-eszköz:
 
@@ -165,7 +165,7 @@ Végső lépésként egy olyan regisztrációs alkalmazást kell megírni, amely
 
 1. Mentse a módosításokat, és a „Build” menü „Megoldás létrehozása” parancsát választva hozza létre újból a **prov\_dev\_client\_sample** mintát. 
 
-1. A **Provision\_Samples\_ mappában kattintson a jobb gombbal a \_prov**dev**client\_sample** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget. MÉG NE futtassa a mintaalkalmazást!
+1. A **Provision\_Samples** mappában kattintson a jobb gombbal a **prov\_dev\_client\_sample** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget. MÉG NE futtassa a mintaalkalmazást!
 
 > [!IMPORTANT]
 > Még ne futtassa/indítsa el az eszközt! Először fejezze be a folyamatot, és regisztrálja az eszközt a Device Provisioning Service szolgáltatással. A Következő lépések szakasz a következő cikkre irányítja.
@@ -212,4 +212,3 @@ A következő oktatóanyagra lépve megtudhatja, hogyan regisztrálhatja az eszk
 
 > [!div class="nextstepaction"]
 > [Az eszköz regisztrálása az IoT Hubban](tutorial-provision-device-to-hub.md)
-

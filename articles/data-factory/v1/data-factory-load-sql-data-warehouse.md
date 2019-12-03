@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 05dcff2276a799b1debc76e4f85fbbac6606eb59
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 47ee1682118fd761d55625428e3522de92b9e38a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682553"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703404"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Töltse be az 1 TB-ot Azure SQL Data Warehouse 15 perc alatt Data Factory
 > [!NOTE]
@@ -47,7 +47,7 @@ Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure Blob Storage: Ez a kísérlet az Azure Blob Storaget (GRS) használja a TPC-H tesztelési adatkészlet tárolásához.  Ha nem rendelkezik Azure Storage-fiókkal, Ismerje meg, [hogyan hozhat létre egy Storage](../../storage/common/storage-quickstart-create-account.md)-fiókot.
-* [TPC-h-](http://www.tpc.org/tpch/) adat: a TPC-h-t a tesztelési adatkészletként fogjuk használni.  Ehhez `dbgen`t kell használnia a TPC-H eszközkészletből, amely segítséget nyújt az adatkészlet létrehozásához.  Letöltheti `dbgen` a [TPC-eszközökről](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) , és lefordíthatja saját maga is, vagy letöltheti a lefordított bináris fájlt a [githubról](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools).  Futtassa a dbgen. exe fájlt a következő parancsokkal, hogy 1 TB-os, `lineitem`-táblázathoz tartozó, 10 fájlból kiosztott adatfájlt létrehozzon:
+* [TPC-h-](http://www.tpc.org/tpch/) adat: a TPC-h-t a tesztelési adatkészletként fogjuk használni.  Ehhez `dbgen`t kell használnia a TPC-H eszközkészletből, amely segítséget nyújt az adatkészlet létrehozásához.  Letöltheti `dbgen` a [TPC-eszközökről](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) , és lefordíthatja saját maga is, vagy letöltheti a lefordított bináris fájlt a [githubról](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Futtassa a dbgen. exe fájlt a következő parancsokkal, hogy 1 TB-os, `lineitem`-táblázathoz tartozó, 10 fájlból kiosztott adatfájlt létrehozzon:
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`
@@ -112,7 +112,7 @@ Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való
   Az előfeltételként szükséges lépések elvégzésével most már készen áll a másolási tevékenység konfigurálására a másolás varázslóval.
 
 ## <a name="launch-copy-wizard"></a>A Másolás varázsló indítása
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Kattintson az **erőforrás létrehozása** elemre a bal felső sarokban, kattintson az **intelligencia és Analitika**elemre, majd a **Data Factory**elemre.
 3. Az **új adatgyár** panelen:
 
@@ -124,7 +124,7 @@ Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való
       2. Az erőforráscsoport nevének megadásához válassza ki a **Create new** (Új létrehozása) lehetőséget.
    4. Válassza ki a Data Factory **helyét**.
    5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.  
-   6. Kattintson a **Létrehozás** elemre.
+   6. Kattintson a  **Create** (Létrehozás) gombra.
 4. A létrehozás befejezése után a **Data Factory** panel a következő képen látható módon jelenik meg:
 
    ![Data factory kezdőlap](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
@@ -213,6 +213,6 @@ Alapértelmezés szerint be van jelölve a " **Base** " jelölőnégyzet.  Katti
 
 Részletekért tekintse [meg Azure SQL Data Warehouse ajánlott eljárásait](../../sql-data-warehouse/sql-data-warehouse-best-practices.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Data Factory másolási varázsló](data-factory-copy-wizard.md) – ez a cikk a másolás varázsló részleteit tartalmazza.
 * [Másolási tevékenység teljesítményének és finomhangolásának útmutatója](data-factory-copy-activity-performance.md) – ez a cikk a referenciák teljesítményének méréseit és hangolási útmutatóját tartalmazza.

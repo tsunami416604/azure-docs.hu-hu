@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: aaf59de2425e0725958847477f1043a5b7fac68a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 77be6d8518774a1e2656e23024490dd9c1431865
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839350"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707255"
 ---
 # <a name="onboarding-and-installing"></a>Előkészítés és telepítés
 
@@ -53,7 +53,8 @@ A Microsoft biztonsági kód elemzésének megkezdéséhez szükséges előfelt�
 
 1. A bővítmény Azure DevOps-szervezettel való megosztása után nyissa meg az Azure DevOps-szervezet lapját. Egy ilyen oldal URL-címe `https://dev.azure.com/contoso`.
 1. Válassza a bevásárló táska ikont a neve melletti jobb felső sarokban, majd válassza a **Bővítmények kezelése**lehetőséget.
-1. Válassza ki a Microsoft biztonsági kód elemzése bővítményt, majd nyissa meg az Azure DevOps UI varázslót a telepítés megkezdéséhez.
+1. Válassza a **megosztott**lehetőséget.
+1. Válassza ki a Microsoft biztonsági kód elemzése bővítményt, majd válassza a **telepítés**lehetőséget.
 1. A legördülő listában válassza ki az Azure DevOps-szervezetet a bővítmény telepítéséhez.
 1. Válassza az **Install** (Telepítés) lehetőséget. A telepítés befejezése után elkezdheti használni a bővítményt.
 
@@ -84,7 +85,7 @@ A bővítmény telepítése után a biztonságos fejlesztési felépítési fela
 > - Egyes Azure DevOps-Build feladatok nem támogatottak, ha kiadási folyamaton keresztül futnak. Konkrétabban az Azure DevOps nem támogatja azokat a feladatokat, amelyek egy kiadási folyamaton belül teszik közzé az összetevőket.
 > - Az Azure DevOps Team buildben paraméterként megadható előre definiált változók listáját az [Azure DevOps Build változói](https://docs.microsoft.com/azure/devops/pipelines/build/variables?tabs=batch&view=vsts)című témakörben tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Build-feladatok konfigurálásával kapcsolatos további információkért tekintse meg a [konfigurációs útmutatót](security-code-analysis-customize.md).
 

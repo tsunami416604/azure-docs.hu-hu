@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f03d2fba01dadc443da19416871a93a72289c0c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 87179cbce9fa99d4c3422ce88b630312b5080481
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270149"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706238"
 ---
 # <a name="coarse-relocalization"></a>Durva helyzet-újrameghatározás
 
@@ -128,8 +128,8 @@ Ezután el kell döntenie, hogy mely érzékelőket szeretné használni a durva
 
 |             | Beltéri | Szabadban |
 |-------------|---------|----------|
-| GPS         | Ki | Bekapcsolva |
-| Wi-Fi        | Bekapcsolva | Bekapcsolva (nem kötelező) |
+| GPS         | Ki | Be |
+| Fi        | Be | Bekapcsolva (nem kötelező) |
 | Egyazon figyelő | Bekapcsolva (nem kötelező a kikötésekkel kapcsolatban lásd alább) | Ki |
 
 
@@ -495,7 +495,7 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-Az Azure térbeli horgonyok csak a listán szereplő Bluetooth-figyelőket fogják követni. A fehér listához tartozó UUID-ket tartalmazó rosszindulatú figyelők továbbra is negatív hatással lehetnek a szolgáltatás minőségére. Ezért a figyelőket csak a kihelyezett helyeken kell használni, ahol szabályozhatja az üzembe helyezést.
+Az Azure térbeli horgonyok csak a listán szereplő Bluetooth-figyelőket fogják követni. Azok a rosszindulatú figyelők, amelyeken engedélyezve vannak a felsorolt UUID-azonosítók, továbbra is negatívan befolyásolhatják a szolgáltatás minőségét. Ezért a figyelőket csak a kihelyezett helyeken kell használni, ahol szabályozhatja az üzembe helyezést.
 
 ## <a name="querying-with-sensor-data"></a>Az érzékelővel való lekérdezés
 
@@ -655,7 +655,7 @@ Az alábbi táblázat a várt keresési helyet becsüli meg az egyes érzékelő
 | Érzékelő      | Keresési terület sugara (kb.) | Részletek |
 |-------------|:-------:|---------|
 | GPS         | 20 m – 30 m | A többi tényező között a GPS-bizonytalanság határozza meg. A jelentett számok a-GPS-vel ellátott mobiltelefonok medián GPS-pontosságának becslése, amely 7 méter. |
-| Wi-Fi        | 50 m – 100 m | A vezeték nélküli hozzáférési pontok tartománya határozza meg. A gyakoriságtól, az adó erősségtől, a fizikai akadályoktól, a beavatkozástól és így tovább függ. |
+| Fi        | 50 m – 100 m | A vezeték nélküli hozzáférési pontok tartománya határozza meg. A gyakoriságtól, az adó erősségtől, a fizikai akadályoktól, a beavatkozástól és így tovább függ. |
 | Egyazon figyelő |  70 m | A jeladó tartománya határozza meg. A gyakoriságtól, az átviteli erősségtől, a fizikai akadályoktól, a beavatkozástól és egyebektől függ. |
 
 ## <a name="per-platform-support"></a>Platformon belüli támogatás
@@ -665,8 +665,8 @@ A következő táblázat összefoglalja az egyes támogatott platformokon össze
 
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
-| GPS         | N/A | [LocationManager][3] API-kon keresztül támogatott (a GPS és a hálózat is) | [CLLocationManager][4] API-kon keresztül támogatott |
-| Wi-Fi        | 3 másodpercenként körülbelül egy vizsgálattal támogatott | Támogatott. A 28-as API-szinttől kezdve a Wi-Fi vizsgálat 2 percenként 4 hívásra van Leszabályozva. Az Android 10-es verzióban a szabályozás le lehet tiltani a fejlesztői beállítások menüből. További információt az [Android dokumentációjában][5]talál. | N/A – nincs nyilvános API |
+| GPS         | – | [LocationManager][3] API-kon keresztül támogatott (a GPS és a hálózat is) | [CLLocationManager][4] API-kon keresztül támogatott |
+| Fi        | 3 másodpercenként körülbelül egy vizsgálattal támogatott | Támogatott. A 28-as API-szinttől kezdve a Wi-Fi vizsgálat 2 percenként 4 hívásra van Leszabályozva. Az Android 10-es verzióban a szabályozás le lehet tiltani a fejlesztői beállítások menüből. További információt az [Android dokumentációjában][5]talál. | N/A – nincs nyilvános API |
 | Egyazon figyelő | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik |
 
 ## <a name="next-steps"></a>Következő lépések

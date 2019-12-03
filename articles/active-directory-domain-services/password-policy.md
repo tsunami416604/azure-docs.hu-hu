@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: ffcff84c7778ec3d6395e1c7a706c0deb2a0dc90
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f462a3743eb33bd33e2d392eba1c5944f40ade4f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893435"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704528"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Jelszó-és fiókzárolási házirendek a felügyelt tartományokban
 
@@ -87,7 +87,7 @@ Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszk�
 
 1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik a rendelkezésre álló felügyeleti eszközök listája, amely az oktatóanyagban a [felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm]lett telepítve.
 1. A szervezeti egységek létrehozásához és kezeléséhez válassza ki a **Active Directory felügyeleti központ** elemet a felügyeleti eszközök listájából.
-1. A bal oldali ablaktáblán válassza ki az Azure AD DS felügyelt tartományát, például *contoso.com*.
+1. A bal oldali ablaktáblán válassza ki az Azure AD DS felügyelt tartományát, például *aadds.contoso.com*.
 1. Nyissa meg a **rendszer** tárolót, majd a **jelszóbeállítás-tároló**.
 
     Megjelenik az Azure AD DS felügyelt tartomány beépített jelszavas szabályzata. Ez a beépített házirend nem módosítható. Ehelyett hozzon létre egy egyéni jelszóházirend-szabályzatot az alapértelmezett házirend felülbírálásához.
@@ -112,7 +112,7 @@ Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszk�
 
     ![Válassza ki azokat a felhasználókat és csoportokat, amelyekre alkalmazni szeretné a jelszóházirend alkalmazását](./media/how-to/fgpp-applies-to.png)
 
-1. A jelszóházirend csak csoportokra alkalmazható. A **helyszínek** párbeszédpanelen bontsa ki a tartománynevet (például *contoso.com*), majd válasszon ki egy szervezeti egységet, például a **AADDC-felhasználók**elemet. Ha olyan egyéni szervezeti egységtel rendelkezik, amely az alkalmazni kívánt felhasználói csoportot tartalmazza, válassza ki azt a szervezeti egységet.
+1. A jelszóházirend csak csoportokra alkalmazható. A **helyszínek** párbeszédpanelen bontsa ki a tartománynevet (például *aadds.contoso.com*), majd válasszon ki egy szervezeti egységet, például a **AADDC-felhasználók**elemet. Ha olyan egyéni szervezeti egységtel rendelkezik, amely az alkalmazni kívánt felhasználói csoportot tartalmazza, válassza ki azt a szervezeti egységet.
 
     ![Válassza ki azt a szervezeti egységet, amelyhez a csoport tartozik](./media/how-to/fgpp-container.png)
 

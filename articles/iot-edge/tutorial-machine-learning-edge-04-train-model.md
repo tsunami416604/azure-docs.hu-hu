@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: modell betanítása és üzembe helyezése Machine Learning Azure IoT Edge'
-description: 'Oktatóanyag: gépi tanulási modell betanítása Azure Machine Learning használatával, majd a modell becsomagolása Azure IoT Edge modulként üzembe helyezhető tároló lemezképként.'
+description: Ebben az oktatóanyagban egy gépi tanulási modellt fog betanítani Azure Machine Learning használatával, majd becsomagolja a modellt Azure IoT Edge modulként üzembe helyezhető tároló-képként.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8cb3d0329c41256823a66fc3276711c43da61cdd
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9c0613d319c0c82fa61d75ed016d68d38dfcea8d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112468"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701826"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Oktatóanyag: Azure Machine Learning modell betanítása és üzembe helyezése
 

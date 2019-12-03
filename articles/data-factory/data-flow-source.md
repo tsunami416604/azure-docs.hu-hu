@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 33a63b8a887594747aba03e19c107653e438853f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 27d9b3061794e5673d5ab24fe30d44f46e217c64
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217733"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702039"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamhoz 
 
@@ -156,7 +156,7 @@ Módosíthatja az oszlop adattípusait egy lefelé irányuló adatfolyamból sz�
 
 ### <a name="import-schema"></a>Séma importálása
 
-Az összetett adatstruktúrákat támogató adatkészletek, például a Avro és a CosmosDB nem igénylik a séma-definíciókat az adatkészletben. Ezért a "séma importálása" gombra kattintva megtekintheti az ilyen típusú források kivetítés lapját.
+Az összetett adatstruktúrákat támogató adatkészletek, például a Avro és a CosmosDB nem igénylik a séma-definíciókat az adatkészletben. Ezért az ilyen típusú források **kivetítés** lapján a **séma importálása** gombra kattinthat.
 
 ## <a name="cosmosdb-specific-settings"></a>CosmosDB-specifikus beállítások
 

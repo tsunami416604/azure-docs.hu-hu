@@ -1,6 +1,6 @@
 ---
-title: Szimulált X. 509 eszköz kiépítése az Azure IoT Hub Javával és regisztrációs csoportok használatával
-description: Oktatóanyag – szimulált X. 509 eszköz létrehozása és kiépítése a Java-eszköz és a szolgáltatás-SDK és a regisztrációs csoportok használatával IoT Hub Device Provisioning Service
+title: Oktatóanyag – szimulált X. 509 eszköz kiépítése az Azure IoT Hub Javával és regisztrációs csoportok használatával
+description: Ebben az oktatóanyagban egy szimulált X. 509 eszköz létrehozása és kiépítése a Java-eszköz és a szolgáltatás-SDK és a regisztrációs csoportok használatával IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: a903997c6548aad3638ba5785d23ee7642d403fc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 28cb37ad4fcd41818c3dfc18925ec65b04dddd00
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228335"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702457"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Oktatóanyag: szimulált X. 509 eszköz létrehozása és kiépítése a Java-eszköz és a Service SDK használatával, valamint csoportos regisztrációkkal IoT Hub Device Provisioning Service
 
@@ -116,7 +116,7 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
         private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
         ```
 
-    1. Tanulmányozza a mintakódot, A segítségével létrehozhat, frissíthet, lekérdezhet és törölhet egy csoportos X.509-eszközregisztrációt. Ha ellenőrizni szeretné a regisztráció sikerességét a portálon, ideiglenesen tegye megjegyzésbe a következő kódsorokat a _ServiceEnrollmentGroupSample.java_ fájl végén:
+    1. Tanulmányozza a mintakódot. A segítségével létrehozhat, frissíthet, lekérdezhet és törölhet egy csoportos X.509-eszközregisztrációt. Ha ellenőrizni szeretné a regisztráció sikerességét a portálon, ideiglenesen tegye megjegyzésbe a következő kódsorokat a _ServiceEnrollmentGroupSample.java_ fájl végén:
 
         ```java
         // ************************************** Delete info of enrollmentGroup ***************************************
@@ -255,7 +255,7 @@ Ha azt tervezi, hogy folytatja az eszközügyfél minta használatát és megism
 1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az IoT Hubot. Nyissa meg a hub **IoT-eszközök** paneljét, válassza ki a rövid útmutatóban regisztrált eszköz *ESZKÖZAZONOSÍTÓJÁT*, majd kattintson a felül található **Törlés** gombra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóprogramban egy szimulált X.509-eszközt hozott létre Windows rendszerű gépén, majd kiépítette az IoT Hubon az Azure IoT Hub Device Provisioning Service-szel és regisztrációs csoportokkal. Ha további információra van szüksége az X.509-eszközzel kapcsolatban, folytassa az eszközzel kapcsolatos alapvető információkat ismertető témakörrel. 
 

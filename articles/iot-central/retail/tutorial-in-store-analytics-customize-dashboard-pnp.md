@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: az operátor irányítópultjának testreszabása az Azure-ban IoT Central'
+title: Oktatóanyag – az operátor irányítópultjának testreszabása az Azure-ban IoT Central
 description: Ez az oktatóanyag bemutatja, hogyan szabhatja testre az operátor irányítópultját egy IoT Central alkalmazásban, és hogyan kezelheti az eszközöket.
 services: iot-central
 ms.service: iot-central
@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 0dcabada522bf8189d163936551ea94cb4dd2657
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: f9624f516d5f38f1db02c6a103c40d01f8dc26ca
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112922"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702692"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Oktatóanyag: az operátor irányítópultjának testreszabása és az eszközök kezelése az Azure-ban IoT Central
 
@@ -24,7 +24,7 @@ ms.locfileid: "74112922"
 
 Ebből az oktatóanyagból megtudhatja, hogyan szabhatja testre az operátor irányítópultját az Azure IoT Central Store Analytics-alkalmazásban. Az alkalmazás-kezelők a testreszabott irányítópult használatával futtathatják az alkalmazást, és kezelhetik a csatlakoztatott eszközöket.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Irányítópult nevének módosítása
 > * Képcsempék testreszabása az irányítópulton

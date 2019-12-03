@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 698ca6736af86358de13f6deae8f1e2dba92f46e
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8826dd51766ee0d1059ab73046e7e078f27a8e03
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990646"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703318"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -552,7 +552,7 @@ Ebben a lépésben adatkészleteket hoz létre a bemeneti és kimeneti adatok á
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016-11-16 -00. txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16 -01. txt |
-   | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
+   | 3 |2016-11-16T02:00:00 |2016-11-16 -02. txt |
    | 4 |2016-11-16T03:00:00 |2016-11-16 -03. txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16 -04. txt |
 
@@ -721,8 +721,8 @@ A hibaelhárítás néhány alapvető módszerből áll:
 ## <a name="update-custom-activity"></a>Egyéni tevékenység frissítése
 Ha frissíti az egyéni tevékenység kódját, hozza létre, és töltse fel a blob Storage-ba új bináris fájlokat tartalmazó zip-fájlt.
 
-## <a name="appdomain-isolation"></a>Appdomain isolation
-Tekintse meg a [alkalmazástartomány mintáját](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , amely bemutatja, hogyan hozhat létre olyan egyéni tevékenységet, amely nem korlátozza a Data Factory indító által használt szerelvény-verziókat (például: WindowsAzure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x stb.).
+## <a name="appdomain-isolation"></a>Alkalmazástartomány elkülönítése
+Tekintse meg a [alkalmazástartomány mintáját](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) , amely bemutatja, hogyan hozhat létre olyan egyéni tevékenységet, amely nem korlátozza a Data Factory indító által használt szerelvény-verziókat (például: WindowsAzure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x stb.).
 
 ## <a name="access-extended-properties"></a>Kiterjesztett tulajdonságok elérése
 A következő példában látható módon deklarálhatja a speciális tulajdonságokat a JSON-tevékenységben:
@@ -1022,7 +1022,7 @@ namespace DataFactoryAPITestApp
 A GitHubon található [Azure Data Factory helyi környezeti](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment) minta olyan eszközt tartalmaz, amely lehetővé teszi az egyéni .net-tevékenységek hibakeresését a Visual Studióban.
 
 ## <a name="sample-custom-activities-on-github"></a>Egyéni tevékenységek mintája a GitHubon
-| Sample | Milyen egyéni tevékenységet végez |
+| Minta | Milyen egyéni tevékenységet végez |
 | --- | --- |
 | [Http-adatletöltő](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Letölti az adatait egy HTTP-végpontról az Azure C# -ba Blob Storage a Data Factory egyéni tevékenységével. |
 | [Twitter Hangulatelemzés minta](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Meghívja a Azure Machine Learning Studio modellt, és elvégzi az érzelmek elemzését, pontozását, előrejelzését stb. |

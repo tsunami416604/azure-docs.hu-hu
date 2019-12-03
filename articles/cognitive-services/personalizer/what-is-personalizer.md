@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6b55ce851bb12e37aed37039889aa8e69223a286
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5d38ffeda3600fd90c4ee84acdd29ed599886ae
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467193"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707954"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
-Az Azure személyre szabott felhőalapú API-szolgáltatás lehetővé teszi a felhasználók számára a legjobb felhasználói élmény kiválasztását, a közös valós idejű viselkedésük megismerését.
+Az Azure megszemélyesítő egy felhőalapú API-szolgáltatás, amely lehetővé teszi az alkalmazás számára, hogy kiválassza a legjobb élményt a felhasználók számára, a kollektív valós idejű viselkedéstől való tanulást.
 
 * Adja meg a felhasználókkal és a tartalommal kapcsolatos információkat, és fogadja a legfontosabb műveletet a felhasználók megjelenítéséhez. 
 * A személyre szabás használata előtt nem kell megtisztítani és címkéznie az adatfeliratot.
@@ -60,12 +60,12 @@ A személyre szabott szolgáltatás nem a felhasználói profil adatainak megőr
 
 A személyre szabott szolgáltatás két API-val rendelkezik:
 
-* Információ (_szolgáltatások_) küldése a felhasználókról és a tartalom (_műveletek_) személyre szabásához. A személyre szabás a legfelső szintű művelettel válaszol.
-* Visszajelzés küldése a személyre, hogy a rangsor milyen jól működött a [jutalom pontszáma](concept-rewards.md)alapján. 
+* *Rank*: a Rank API segítségével meghatározhatja, hogy melyik _műveletet_ kell megjeleníteni, az aktuális _környezetben_. A műveletek a JSON-objektumok tömbje lesznek elküldve, az egyes azonosítókkal és információkkal (_funkciókkal_) együtt. a környezet egy másik JSON-objektumként lesz elküldve. Az API azt a Műveletazonosító adja vissza, amelyet az alkalmazásnak a felhasználónak kell megjelenítenie.
+* *Jutalom*: miután a felhasználó kommunikált az alkalmazással, mérje fel, hogy a személyre szabás milyen mértékben működött 0 és 1 közötti számként, és [jutalom pontszámként](concept-rewards.md)küldje el. 
 
 ![Személyre szabott események alapszintű eseménysorozat](media/what-is-personalizer/personalization-intro.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A személyre szabás újdonságai](whats-new.md)
 * [Hogyan működik a megszemélyesítő?](how-personalizer-works.md)

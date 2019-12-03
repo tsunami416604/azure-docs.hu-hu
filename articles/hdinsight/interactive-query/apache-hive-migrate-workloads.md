@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 3d55e0e7ecbd52b6d96c657e333c5557388f2721
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 9f49a9224ed123b76f4d300c27a8dd5822e50ea3
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406509"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706021"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HDInsight 4,0
 
@@ -73,12 +73,12 @@ A metaadattár **másolásának** befejeződése után futtasson egy [séma-fris
 
 Használja az alábbi táblázatban szereplő értékeket. Cserélje le a `SQLSERVERNAME DATABASENAME USERNAME PASSWORD`t a **másolt** Hive-metaadattár megfelelő értékeire, szóközzel elválasztva. Ne adja meg a ". database.windows.net" kifejezést az SQL Server nevének megadásakor.
 
-|Tulajdonság | Érték |
+|Tulajdonság | Value (Díj) |
 |---|---|
 |Parancsfájl típusa|– Egyéni|
-|Name (Név)|Struktúra frissítése|
+|Név|Struktúra frissítése|
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
-|Csomópont típusa (i)|Head|
+|Csomópont típusa (i)|Fej|
 |Paraméterek|SQLSERVERNAME DATABASENAME FELHASZNÁLÓNÉV JELSZAVA|
 
 > [!Warning]  
@@ -118,7 +118,7 @@ Erre a tömörítésre azért van szükség, mert a HDInsight 3,6 és a HDInsigh
 
 A metaadattár áttelepítési és tömörítési lépéseinek elvégzése után áttelepítheti a tényleges raktárat. A kaptár-tárház áttelepítésének befejezése után a HDInsight 4,0 Warehouse a következő tulajdonságokkal fog rendelkezni:
 
-|3.6 |4.0 |
+|3,6 |4,0 |
 |---|---|
 |Külső táblák|Külső táblák|
 |Nem tranzakciós felügyelt táblák|Külső táblák|
@@ -174,14 +174,14 @@ A HDInsight 3,6-fürtön belül két módon hajtható végre a kaptár/LLAP lek�
 
 A HDInsight 4,0-ben a HiveCLI lecserélte a Beeline elemre. A HiveCLI egy takarékossági ügyfél az 1. Hiveserver, a Beeline pedig egy JDBC-ügyfél, amely hozzáférést biztosít a 2. Hiveserver. A Beeline bármely más JDBC-kompatibilis adatbázis-végponthoz való kapcsolódáshoz is használható. A Beeline a 4,0-es HDInsight-on keresztül érhető el anélkül, hogy telepítésre lenne szükség.
 
-A HDInsight 3,6-ben a kaptár-kiszolgálóval való interakcióra szolgáló grafikus felhasználói felület a Ambari struktúra nézet. A HDInsight 4,0 a kaptár nézetet a Hortonworks adatelemzési Studióval (DAS) helyettesíti. A DAS nem a HDInsight-fürtökön található, és nem hivatalosan támogatott csomag. A DAS azonban a következő módon telepíthető a fürtre a [parancsfájl](../hdinsight-hadoop-customize-cluster-linux.md) használatával:
+A HDInsight 3,6-ben a kaptár-kiszolgálóval való interakcióra szolgáló grafikus felhasználói felület a Ambari struktúra nézet. A HDInsight 4,0 nem Ambari nézettel rendelkezik. Lehetőséget biztosítunk ügyfeleinknek az adatelemzési Studio (DAS) használatára, amely nem alapvető HDInsight szolgáltatás. A DAS nem támogatja a HDInsight-fürtöket, és nem hivatalosan támogatott csomag. A DAS azonban a következő módon telepíthető a fürtre a [parancsfájl](../hdinsight-hadoop-customize-cluster-linux.md) használatával:
 
-|Tulajdonság | Érték |
+|Tulajdonság | Value (Díj) |
 |---|---|
 |Parancsfájl típusa|– Egyéni|
-|Name (Név)|DAS|
+|Név|DAS|
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|Csomópont típusa (i)|Head|
+|Csomópont típusa (i)|Fej|
 
 Várjon 5 – 10 percet, majd indítsa el az adatelemzési stúdiót a következő URL-cím használatával: `https://CLUSTERNAME.azurehdinsight.net/das/`.
 

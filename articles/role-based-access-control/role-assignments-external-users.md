@@ -1,6 +1,6 @@
 ---
-title: Az Azure-erőforrásokhoz való hozzáférés kezelése külső vendég felhasználók számára a RBAC használatával | Microsoft Docs
-description: Ismerje meg, hogyan kezelheti az Azure-erőforrásokhoz való hozzáférést a szervezeten kívüli felhasználók számára a szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
+title: Szerepkör-hozzárendelések hozzáadása vagy eltávolítása külső vendég felhasználók számára az Azure RBAC és a Azure Portal használatával
+description: Megtudhatja, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz a szervezeten kívüli felhasználók számára az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,20 +12,26 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 09/12/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 51945940a0f0fd0346e9437c4ad0631f989e0a92
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: db43a3cce27da5f40986968b6573bfd58a1d3cb7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555552"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707882"
 ---
-# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Az Azure-erőforrásokhoz való hozzáférés kezelése külső vendég felhasználók számára a RBAC használatával
+# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Szerepkör-hozzárendelések hozzáadása vagy eltávolítása külső vendég felhasználók számára az Azure RBAC és a Azure Portal használatával
 
-A szerepköralapú hozzáférés-vezérlés (RBAC) nagyobb biztonsági felügyeletet tesz lehetővé a nagyméretű szervezetek számára, valamint a kis-és közepes méretű vállalkozások számára, akik olyan külső közreműködők, szállítók vagy szabadúszók számára készültek, akiknek szükségük van a környezet adott erőforrásaihoz való hozzáférésre, de nem feltétlenül a teljes infrastruktúrára vagy a számlázással kapcsolatos hatókörökre vonatkozik. A [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) funkciói a külső vendég felhasználóival való együttműködéshez használhatók, és a RBAC használatával csak azokat az engedélyeket adhatja meg, amelyekre a vendég felhasználóknak szüksége van a környezetében.
+Az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) nagyobb biztonságot nyújt a nagyméretű szervezetek számára, valamint a kis-és közepes méretű vállalkozások számára, akik olyan külső közreműködők, szállítók vagy szabadúszók számára biztosítanak hozzáférést, amelyek a környezet adott erőforrásaihoz szükségesek, de nem feltétlenül a teljes infrastruktúrához vagy a számlázással kapcsolatos hatókörökhöz. A [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) funkciói a külső vendég felhasználóival való együttműködéshez használhatók, és a RBAC használatával csak azokat az engedélyeket adhatja meg, amelyekre a vendég felhasználóknak szüksége van a környezetében.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Szerepkör-hozzárendelések hozzáadásához vagy eltávolításához a következőket kell tennie:
+
+- `Microsoft.Authorization/roleAssignments/write` és `Microsoft.Authorization/roleAssignments/delete` engedélyek, például a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) vagy a [tulajdonos](built-in-roles.md#owner)
 
 ## <a name="when-would-you-invite-guest-users"></a>Mikor hívja meg a vendég felhasználókat?
 
@@ -61,9 +67,9 @@ Ahhoz, hogy a vendég felhasználó hozzáférhessen a címtárhoz, el kell vég
 
 További információ a Meghívási folyamatról: [Azure Active Directory B2B együttműködés meghívásának beváltása](../active-directory/b2b/redemption-experience.md).
 
-## <a name="grant-access-to-a-guest-user"></a>Hozzáférés biztosítása vendég felhasználó számára
+## <a name="add-a-role-assignment-for-a-guest-user"></a>Szerepkör-hozzárendelés hozzáadása vendég felhasználóhoz
 
-A RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört. Ha hozzáférést szeretne biztosítani egy vendég felhasználóhoz, [ugyanazokat a lépéseket](role-assignments-portal.md#add-a-role-assignment) kell követnie, mint a felhasználó, a csoport, az egyszerű szolgáltatásnév vagy a felügyelt identitás esetében. Kövesse az alábbi lépéseket, ha hozzáférést szeretne biztosítani egy vendég felhasználóhoz különböző hatókörökben.
+A RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört. Ha szerepkör-hozzárendelést szeretne hozzáadni egy vendég felhasználóhoz, akkor [ugyanazokat a lépéseket](role-assignments-portal.md#add-a-role-assignment) kell követnie, mint a felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás esetében. Kövesse az alábbi lépéseket, és adjon hozzá egy szerepkör-hozzárendelést egy vendég felhasználóhoz különböző hatókörökben.
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre.
 
@@ -95,9 +101,9 @@ A RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört. Ha ho
 
     ![Szerepkör-hozzárendelés a virtuális gép közreműködői számára](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>Hozzáférés biztosítása egy vendég felhasználó számára még nem a címtárban
+## <a name="add-a-role-assignment-for-a-guest-user-not-yet-in-your-directory"></a>Szerepkör-hozzárendelés hozzáadása egy vendég felhasználó számára még nem a címtárban
 
-A RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört. Ha hozzáférést szeretne biztosítani egy vendég felhasználóhoz, [ugyanazokat a lépéseket](role-assignments-portal.md#add-a-role-assignment) kell követnie, mint a felhasználó, a csoport, az egyszerű szolgáltatásnév vagy a felügyelt identitás esetében.
+Ha szerepkör-hozzárendelést szeretne hozzáadni egy vendég felhasználóhoz, akkor [ugyanazokat a lépéseket](role-assignments-portal.md#add-a-role-assignment) kell követnie, mint a felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás esetében.
 
 Ha a vendég felhasználó még nem szerepel a címtárban, a felhasználót közvetlenül a szerepkör-hozzárendelés hozzáadása panelen hívhatja meg.
 
@@ -179,7 +185,7 @@ Ha egy vendég felhasználónak további jogosultságokra van szüksége a címt
 
 ### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>A vendég felhasználó nem tallózhat a felhasználók, csoportok vagy egyszerű szolgáltatások között a szerepkörök hozzárendeléséhez
 
-A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. Akkor is, ha a vendég felhasználó egy hatókör [tulajdonosa](built-in-roles.md#owner) , ha olyan szerepkör-hozzárendelést próbálnak létrehozni, amely hozzáférést biztosít valaki másnak, nem tallózhatják a felhasználók, csoportok vagy egyszerű szolgáltatások listáját.
+A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. Akkor is, ha a vendég felhasználó egy hatókör [tulajdonosa](built-in-roles.md#owner) , ha olyan szerepkör-hozzárendelést próbálnak hozzáadni, amely hozzáférést biztosít valaki másnak, nem tallózhatják a felhasználók, csoportok vagy egyszerű szolgáltatások listáját.
 
 ![A vendég felhasználó nem tallózhat a rendszerbiztonsági tag számára szerepkörök hozzárendeléséhez](./media/role-assignments-external-users/directory-no-browse.png)
 

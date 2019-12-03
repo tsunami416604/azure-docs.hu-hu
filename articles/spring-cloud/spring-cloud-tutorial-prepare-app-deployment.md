@@ -1,17 +1,17 @@
 ---
-title: Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez | Microsoft Docs
-description: Ebben a rövid útmutatóban egy Java Spring-alkalmazást készít elő az üzembe helyezéshez.
+title: Oktatóanyag – Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
+description: Ebben az oktatóanyagban egy Java Spring-alkalmazást készít elő az üzembe helyezéshez.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3c567c54f887afe9ac112970a682b9466515d949
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721255"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708737"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Oktatóanyag: Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -32,7 +32,7 @@ Spring boot-verzió | Tavaszi felhő verziója
 2.0. x | Finchley. RELEASE
 2.1. x | Greenwich. RELEASE
 
-Ellenőrizze, hogy a `pom.xml` fájl a verzió alapján a Spring boot és a Spring Cloud függőségeivel rendelkezik-e.
+Ellenőrizze, hogy a `pom.xml`-fájl a verzió alapján a Spring boot és a Spring Cloud függőségeivel rendelkezik-e.
 
 ### <a name="version-20"></a>2,0-es verzió:
 
@@ -119,7 +119,7 @@ Az Azure Spring Cloud beépített funkcióinak engedélyezéséhez az alkalmazá
 
 ### <a name="service-registry"></a>Szolgáltatás beállításjegyzéke
 
-A felügyelt Azure-szolgáltatás beállításjegyzék-szolgáltatásának használatához a `spring-cloud-starter-netflix-eureka-client` értéket adja meg `POM.xml`-ben, az alábbi ábrán látható módon.
+A felügyelt Azure-szolgáltatás beállításjegyzék-szolgáltatásának használatához az alábbi ábrán látható `POM.xml` `spring-cloud-starter-netflix-eureka-client` belefoglalása.
 
 A szolgáltatás beállításjegyzék-kiszolgálójának végpontja automatikusan környezeti változókként lesz befecskendezve az alkalmazással. Az alkalmazások regisztrálhatják magukat a szolgáltatás beállításjegyzék-kiszolgálójával, és felfedezhetik a többi függő szolgáltatást is.
 
@@ -132,7 +132,7 @@ A szolgáltatás beállításjegyzék-kiszolgálójának végpontja automatikusa
 
 ### <a name="distributed-configuration"></a>Elosztott konfiguráció
 
-Az elosztott konfiguráció engedélyezéséhez vegyen fel `spring-cloud-config-client` értéket a `pom.xml` függőségek szakaszában.
+Az elosztott konfiguráció engedélyezéséhez vegyen fel `spring-cloud-config-client`t a `pom.xml`függőségek részében.
 
 ```xml
 <dependency>
@@ -142,11 +142,11 @@ Az elosztott konfiguráció engedélyezéséhez vegyen fel `spring-cloud-config-
 ```
 
 > [!WARNING]
-> Ne határozza meg a rendszerindítási konfigurációban a `spring.cloud.config.enabled=false` értéket, mivel az alkalmazás nem fog működni a konfigurációs kiszolgálóval.
+> Ne határozza meg `spring.cloud.config.enabled=false` a rendszerindítási konfigurációban, mert az alkalmazás nem fog működni a konfigurációs kiszolgálóval.
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
-A Pom. XML függőségek részében adja meg a `spring-boot-starter-actuator` értéket. A metrikák rendszeres időközönként le lesznek húzva a JMX-végpontokról, és a Azure Portal használatával megjeleníthetők.
+`spring-boot-starter-actuator` belefoglalása a Pom. XML függőségek szakaszába. A metrikák rendszeres időközönként le lesznek húzva a JMX-végpontokról, és a Azure Portal használatával megjeleníthetők.
 
 ```xml
 <dependency>
@@ -157,7 +157,7 @@ A Pom. XML függőségek részében adja meg a `spring-boot-starter-actuator` é
 
 ### <a name="distributed-tracing"></a>Elosztott nyomkövetés
 
-Az alábbi módon vegyen fel `spring-cloud-starter-sleuth` és `spring-cloud-starter-zipkin` értéket a Pom. XML függőségek szakaszában. Emellett engedélyeznie kell egy Azure app bepillantást az Azure Spring Cloud Service-példányával. További információ az App bepillantást az Azure Spring Cloudtel című témakörben [talál](spring-cloud-tutorial-distributed-tracing.md)
+Az alábbi módon vegyen fel `spring-cloud-starter-sleuth` és `spring-cloud-starter-zipkin` a Pom. XML függőségek szakaszába. Emellett engedélyeznie kell egy Azure app bepillantást az Azure Spring Cloud Service-példányával. További információ az App bepillantást az Azure Spring Cloudtel című témakörben [talál](spring-cloud-tutorial-distributed-tracing.md)
 
 ```xml
 <dependency>
@@ -170,10 +170,9 @@ Az alábbi módon vegyen fel `spring-cloud-starter-sleuth` és `spring-cloud-sta
 </dependency>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez.  Ha szeretné megtudni, hogyan engedélyezheti a konfigurációs kiszolgálót, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan állíthatja be a konfigurációs kiszolgálót](spring-cloud-tutorial-config-server.md).
-

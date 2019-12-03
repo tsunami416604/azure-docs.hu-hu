@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 7d651849f5c8d930d99e87931eed5b823e90113c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e202eed8e3694245b5b4527578c02cfb518723f4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474743"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705347"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Szervezeti egység (OU) létrehozása Azure AD Domain Services felügyelt tartományban
 
@@ -66,11 +66,11 @@ Egyéni szervezeti egység létrehozásához a Active Directory felügyeleti esz
 1. Jelentkezzen be a felügyeleti virtuális gépre. A Azure Portal használatával történő kapcsolódás lépéseiért lásd: [Kapcsolódás Windows Server rendszerű virtuális géphez][connect-windows-server-vm].
 1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik a rendelkezésre álló felügyeleti eszközök listája, amely az oktatóanyagban a [felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm]lett telepítve.
 1. A szervezeti egységek létrehozásához és kezeléséhez válassza ki a **Active Directory felügyeleti központ** elemet a felügyeleti eszközök listájából.
-1. A bal oldali ablaktáblán válassza ki az Azure AD DS felügyelt tartományát, például *contoso.com*. Megjelenik a meglévő szervezeti egységek és erőforrások listája:
+1. A bal oldali ablaktáblán válassza ki az Azure AD DS felügyelt tartományát, például *aadds.contoso.com*. Megjelenik a meglévő szervezeti egységek és erőforrások listája:
 
     ![Válassza ki az Azure AD DS felügyelt tartományát a Active Directory felügyeleti központ](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
 
-1. A **feladatok** ablaktábla a Active Directory felügyeleti központ jobb oldalán jelenik meg. A tartomány alatt, például a *contoso.com*területen válassza az **új > szervezeti egység**lehetőséget.
+1. A **feladatok** ablaktábla a Active Directory felügyeleti központ jobb oldalán jelenik meg. A tartomány alatt, például a *aadds.contoso.com*területen válassza az **új > szervezeti egység**lehetőséget.
 
     ![Válassza ki az új szervezeti egység létrehozásához szükséges lehetőséget a Active Directory felügyeleti központ](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
 
@@ -82,7 +82,7 @@ Egyéni szervezeti egység létrehozásához a Active Directory felügyeleti esz
 
     ![A Active Directory felügyeleti központ használható egyéni szervezeti egység](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyeleti eszközök használatával, illetve a szolgáltatásfiókok létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

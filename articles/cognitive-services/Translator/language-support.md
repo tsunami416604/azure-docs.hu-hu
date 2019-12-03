@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 06/04/2019
+ms.date: 12/02/2019
 ms.author: swmachan
-ms.openlocfilehash: 25ab298a8b72b3734e41daf66ef5063b8e43a96e
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 62c101751e07d8ee31789191ad45fbdd33a1bc4b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286622"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707961"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvi és területi támogatása
 
@@ -42,10 +42,10 @@ A Translator Text API az alábbi nyelveket támogatja szöveg szöveggé fordít
 
 |Nyelv|  Nyelvkód|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|
-|afrikaans| `af`    |Csak statisztikai|  Neurális|
+|búr| `af`    |Csak statisztikai|  Neurális|
 |arab|    `ar`    |Rendelkezésre álló neurális|  Neurális|
-|Bengáli|    `bn`    |Rendelkezésre álló neurális|  Neurális|
-|bosnyák (latin betűs)|   `bs`    |Rendelkezésre álló neurális|  Neurális|
+|Bangla|    `bn`    |Rendelkezésre álló neurális|  Neurális|
+|Bosnyák (latin betűs)|   `bs`    |Rendelkezésre álló neurális|  Neurális|
 |bolgár| `bg`    |Rendelkezésre álló neurális|  Neurális|
 |Kantoni (hagyományos)|   `yue`   |Csak statisztikai|  Statisztikai|
 |katalán|   `ca`    |Csak statisztikai|  Statisztikai|
@@ -57,28 +57,28 @@ A Translator Text API az alábbi nyelveket támogatja szöveg szöveggé fordít
 |holland| `nl`    |Rendelkezésre álló neurális|  Neurális|
 |Angol|   `en`    |Rendelkezésre álló neurális|  Neurális|
 |észt|  `et`    |Rendelkezésre álló neurális|  Neurális|
-|Fijian|    `fj`    |Csak statisztikai|  Statisztikai|
+|Fidzsi|    `fj`    |Csak statisztikai|  Statisztikai|
 |filippínó|  `fil`   |Csak statisztikai|  Statisztikai|
 |finn|   `fi`    |Rendelkezésre álló neurális|  Neurális|
 |francia|    `fr`    |Rendelkezésre álló neurális|  Neurális|
 |német|    `de`    |Rendelkezésre álló neurális|  Neurális|
 |görög| `el`    |Rendelkezésre álló neurális|  Neurális|
-|Haitian Creole|    `ht`    |Csak statisztikai   |Statisztikai|
+|Haiti kreol|    `ht`    |Csak statisztikai   |Statisztikai|
 |héber |`he`   |Rendelkezésre álló neurális   |Neurális|
 |hindi| `hi`    |Neurális alapértelmezett|    Neurális|
-|Hmong Daw| `mww`   |Csak statisztikai|  Statisztikai|
+|Hmong DAW| `mww`   |Csak statisztikai|  Statisztikai|
 |magyar| `hu`    |Rendelkezésre álló neurális|  Neurális|
 |izlandi| `is`    |Csak neurális|   Neurális|
 |indonéz|    `id`    |Csak statisztikai|  Statisztikai|
 |olasz|   `it`    |Rendelkezésre álló neurális|  Neurális|
 |japán|  `ja`    |Rendelkezésre álló neurális|  Neurális|
-|szuahéli| `sw`    |Csak statisztikai|  Statisztikai|
+|Kiswahili| `sw`    |Csak statisztikai|  Statisztikai|
 |Klingon|   `tlh`   |Csak statisztikai|  Statisztikai|
 |Klingon (plqaD)|   `tlh-Qaak`  |Csak statisztikai|  Statisztikai|
 |koreai |`ko`   |Rendelkezésre álló neurális|  Neurális|
 |lett|   `lv`    |Rendelkezésre álló neurális|  Neurális|
 |litván|    `lt`    |Rendelkezésre álló neurális|  Neurális|
-|Madagaszkári|  `mg`    |Csak statisztikai|  Statisztikai|
+|Malgas|  `mg`    |Csak statisztikai|  Statisztikai|
 |maláj| `ms`    |Csak statisztikai   |Statisztikai|
 |máltai|   `mt`    |Csak statisztikai|  Statisztikai|
 |maori| `mi`  |Csak neurális| Neurális|
@@ -86,40 +86,40 @@ A Translator Text API az alábbi nyelveket támogatja szöveg szöveggé fordít
 |perzsa|   `fa`    |Rendelkezésre álló neurális|  Neurális|
 |lengyel|    `pl`    |Rendelkezésre álló neurális|  Neurális|
 |portugál|    `pt`    |Rendelkezésre álló neurális|  Neurális|
-|Queretaro Otomi|   `otq`   |Csak statisztikai|  Statisztikai|
+|Queretaro otomi|   `otq`   |Csak statisztikai|  Statisztikai|
 |román|  `ro`    |Rendelkezésre álló neurális|  Neurális|
 |orosz|   `ru`    |Rendelkezésre álló neurális|  Neurális|
-|Samoa|    `sm`    |Csak statisztikai|  Statisztikai|
+|Szamoai|    `sm`    |Csak statisztikai|  Statisztikai|
 |szerb (cirill betűs)|    `sr-Cyrl`   |Csak statisztikai|  Statisztikai|
-|szerb (latin betűs)|   `sr-Latn`   |Csak statisztikai   |Statisztikai|
+|Szerb (latin betűs)|   `sr-Latn`   |Csak statisztikai   |Statisztikai|
 |szlovák|    `sk`    |Rendelkezésre álló neurális|  Neurális|
 |szlovén| `sl`    |Rendelkezésre álló neurális|  Neurális|
 |spanyol|   `es`    |Rendelkezésre álló neurális|  Neurális|
 |svéd|   `sv`    |Rendelkezésre álló neurális   |Neurális|
 |Tahitian|  `ty`    |Csak statisztikai|  Statisztikai|
-|tamil| `ta`    |Csak statisztikai|  Statisztikai|
+|tamil| `ta`    |Rendelkezésre álló neurális | Neurális|
 |telugu|    `te`    |Csak neurális|   Neurális|
 |thai|  `th`    |Rendelkezésre álló neurális|  Neurális|
-|Tongan|    `to`    |Csak statisztikai|  Statisztikai|
+|Tongai|    `to`    |Csak statisztikai|  Statisztikai|
 |török|   `tr`    |Rendelkezésre álló neurális   |Neurális|
 |ukrán| `uk`    |Rendelkezésre álló neurális|  Neurális|
 |urdu|  `ur`    |Csak statisztikai|  Statisztikai|
 |vietnami|    `vi`    |Rendelkezésre álló neurális|  Neurális|
 |walesi| `cy`    |Rendelkezésre álló neurális|  Neurális|
-|A Maya alkalmazáshoz Yucatec|  `yua`   |Csak statisztikai|  Statisztikai|
+|Yucatec Maya|  `yua`   |Csak statisztikai|  Statisztikai|
 
 ## <a name="transliteration"></a>Átírás
 
 A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" kifejezés azt jelzi, hogy a nyelv a felsorolt parancsfájlokból vagy azok egyikére is átadható. A "-->" érték azt jelzi, hogy a nyelv csak az egyik parancsfájlból a másikba való átírására használható.
 
-| Nyelv    | Nyelvkód | Szkript | /Feladó | Szkript|
+| Nyelv    | Nyelvkód | Parancsprogramok használata | /Feladó | Parancsprogramok használata|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | arab | `ar` | Arab `Arab` | <--> | Latin `Latn` |
-|Bengáli  | `bn` | Bengáli `Beng` | <--> | Latin `Latn` |
-| kínai (egyszerűsített) | `zh-Hans` | Egyszerűsített kínai `Hans`| <--> | Latin `Latn` |
-| kínai (egyszerűsített) | `zh-Hans` | Egyszerűsített kínai `Hans`| <--> | Hagyományos kínai `Hant`|
-| kínai (hagyományos) | `zh-Hant` | Hagyományos kínai `Hant`| <--> | Latin `Latn` |
-| kínai (hagyományos) | `zh-Hant` | Hagyományos kínai `Hant`| <--> | Egyszerűsített kínai `Hans` |
+|Bangla  | `bn` | Bengáli `Beng` | <--> | Latin `Latn` |
+| Kínai (egyszerűsített) | `zh-Hans` | Egyszerűsített kínai `Hans`| <--> | Latin `Latn` |
+| Kínai (egyszerűsített) | `zh-Hans` | Egyszerűsített kínai `Hans`| <--> | Hagyományos kínai `Hant`|
+| Kínai (hagyományos) | `zh-Hant` | Hagyományos kínai `Hant`| <--> | Latin `Latn` |
+| Kínai (hagyományos) | `zh-Hant` | Hagyományos kínai `Hant`| <--> | Egyszerűsített kínai `Hans` |
 | gudzsaráti | `gu`  | Gudzsaráti `Gujr` | --> | Latin `Latn` |
 | héber | `he` | Héber `Hebr` | <--> | Latin `Latn` |
 | hindi | `hi` | Devanagari `Deva` | <--> | Latin `Latn` |
@@ -130,7 +130,7 @@ A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" k
 | Oriya | `or` | Oriya `Orya` | <--> | Latin `Latn` |
 | pandzsábi | `pa` | Gurmukhi `Guru`  | <--> | Latin `Latn`  |
 | szerb (cirill betűs) | `sr-Cyrl` | Cirill `Cyrl`  | --> | Latin `Latn` |
-| szerb (latin betűs) | `sr-Latn` | Latin `Latn` | --> | Cirill `Cyrl`|
+| Szerb (latin betűs) | `sr-Latn` | Latin `Latn` | --> | Cirill `Cyrl`|
 | tamil | `ta` | Tamil `Taml` | --> | Latin `Latn` |
 | telugu | `te` | Telugu `Telu` | --> | Latin `Latn` |
 | thai | `th` | Thai `Thai` | <--> | Latin `Latn` |
@@ -141,10 +141,10 @@ A szótár a következő nyelveket támogatja angol nyelven vagy angol nyelven a
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
-| afrikaans      | `af`          |
+| búr      | `af`          |
 | arab       | `ar`          |
-| Bengáli      | `bn`          |
-| bosnyák (latin betűs)      | `bs`          |
+| Bangla      | `bn`          |
+| Bosnyák (latin betűs)      | `bs`          |
 | bolgár      | `bg`          |
 | katalán      | `ca`          |
 | kínai (egyszerűsített)      | `zh-Hans`          |
@@ -157,16 +157,16 @@ A szótár a következő nyelveket támogatja angol nyelven vagy angol nyelven a
 | francia      | `fr`          |
 | német      | `de`          |
 | görög      | `el`          |
-| Haitian Creole      | `ht`          |
+| Haiti kreol      | `ht`          |
 | héber      | `he`          |
 | hindi      | `hi`          |
-| Hmong Daw      | `mww`          |
+| Hmong DAW      | `mww`          |
 | magyar      | `hu`          |
 | izlandi    | `is`  |
 | indonéz      | `id`          |
 | olasz      | `it`          |
 | japán      | `ja`          |
-| szuahéli      | `sw`          |
+| Kiswahili      | `sw`          |
 | Klingon      | `tlh`          |
 | koreai      | `ko`          |
 | lett      | `lv`          |
@@ -179,7 +179,7 @@ A szótár a következő nyelveket támogatja angol nyelven vagy angol nyelven a
 | portugál      | `pt`          |
 | román      | `ro`          |
 | orosz      | `ru`          |
-| szerb (latin betűs)      | `sr-Latn`          |
+| Szerb (latin betűs)      | `sr-Latn`          |
 | szlovák     | `sk`          |
 | szlovén      | `sl`          |
 | spanyol      | `es`          |
@@ -210,8 +210,8 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
 | arab       | `ar`          |
-| Bengáli      | `bn`          |
-| bosnyák (latin betűs)      | `bs`          |
+| Bangla      | `bn`          |
+| Bosnyák (latin betűs)      | `bs`          |
 | bolgár      | `bg`          |
 | kínai (egyszerűsített)      | `zh-Hans`          |
 |kínai (hagyományos)|   `zh-Hant`   |
@@ -233,11 +233,11 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | ír | `ga`  |
 | olasz      | `it`          |
 | japán      | `ja`          |
-|szuahéli| `sw`    |
+|Kiswahili| `sw`    |
 | koreai      | `ko`          |
 | lett      | `lv`          |
 | litván      | `lt`          |
-|Madagaszkári|  `mg`    |
+|Malgas|  `mg`    |
 |maori| `mi`  |
 | norvég      | `nb`          |
 | perzsa      | `fa`          |
@@ -245,8 +245,8 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | portugál      | `pt`          |
 | román      | `ro`          |
 | orosz      | `ru`          |
-|Samoa|    `sm`    |
-| szerb (latin betűs)      | `sr-Latn`          |
+|Szamoai|    `sm`    |
+| Szerb (latin betűs)      | `sr-Latn`          |
 | szlovák     | `sk`          |
 | szlovén      | `sl`          |
 | spanyol      | `es`          |

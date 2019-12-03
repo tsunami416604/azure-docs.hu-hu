@@ -5,19 +5,19 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: naF
 ms.topic: conceptual
 ms.date: 01/09/2019
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 264c60c719ffdd94664ae3a85fc67894d14f394d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 904165c4a221e1db30f9aa1ce1f2ce7b21cf04ed
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484453"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703836"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
 
@@ -71,7 +71,7 @@ Mindkét módszer megnyithatja a tárház beállításainak konfigurációs pane
 
 A konfiguráció ablaktáblán a következő Azure Repos-adattár beállításai láthatók:
 
-| Beállítás | Leírás | Érték |
+| Beállítás | Leírás | Value (Díj) |
 |:--- |:--- |:--- |
 | **Tárház típusa** | Az Azure Repos Code adattár típusa.<br/> | Azure DevOps git vagy GitHub |
 | **Azure Active Directory** | Az Azure AD-bérlő neve. | `<your tenant name>` |
@@ -145,7 +145,7 @@ A konfigurációs ablaktábla a GitHub-tárház következő beállításait jele
 | **GitHub Enterprise URL-cím** | A GitHub vállalati gyökérkönyvtárának URL-címe. Például: https://github.mydomain.com. Csak akkor szükséges, ha a **GitHub Enterprise használata** van kiválasztva | `<your GitHub enterprise url>` |                                                           
 | **GitHub-fiók** | A GitHub-fiók neve. Ez a név a https:\//GitHub.com/{Account Name}/{repository neve} címen található. Ezen az oldalon navigálva megadhatja a GitHub-OAuth hitelesítő adatait a GitHub-fiókjában. | `<your GitHub account name>` |
 | **Adattár neve**  | A GitHub-kód tárházának neve. A GitHub-fiókok git-tárházat tartalmaznak a forráskód kezeléséhez. Létrehozhat egy új tárházat, vagy használhat olyan meglévő tárházat, amely már szerepel a fiókjában. | `<your repository name>` |
-| **Együttműködési ág** | A GitHub-együttműködési ág, amely a közzétételhez használatos. Alapértelmezés szerint a főkiszolgálója. Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. | `<your collaboration branch>` |
+| **Együttműködési ág** | A GitHub-együttműködési ág, amely a közzétételhez használatos. Alapértelmezés szerint ez a fő. Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. | `<your collaboration branch>` |
 | **Gyökérmappa** | A legfelső szintű mappa a GitHub-együttműködési ágban. |`<your root folder name>` |
 | **Meglévő Data Factory-erőforrások importálása adattárba** | Meghatározza, hogy a meglévő adatok gyári erőforrásai a UX authoring vászonról egy GitHub-tárházba legyenek importálva. Jelölje be a jelölőnégyzetet az adatfeldolgozó-erőforrások a társított git-tárházba való importálásához JSON formátumban. Ez a művelet egyenként exportálja az egyes erőforrásokat (azaz a társított szolgáltatásokat és adatkészleteket külön JSON-ba exportálja). Ha ez a mező nincs bejelölve, a meglévő erőforrások nem kerülnek importálásra. | Kijelölt (alapértelmezett) |
 | **Erőforrás importálása a következőbe** | Meghatározza, hogy az adat-előállító erőforrásait (folyamatokat, adatkészleteket, társított szolgáltatásokat stb.) milyen ágakba importálja a rendszer. Az erőforrásokat a következő ágak egyikére importálhatja: a. Együttműködés: b. Hozzon létre új c-t. Meglévő használata |  |
@@ -186,7 +186,7 @@ Ha készen áll a szolgáltatással kapcsolatos változások egyesítésére az 
 
 ### <a name="configure-publishing-settings"></a>Közzétételi beállítások konfigurálása
 
-A közzétételi ág konfigurálása – vagyis a Resource Manager-sablonok mentésének helye – adjon hozzá egy `publish_config.json` fájlt az együttműködési ág gyökérkönyvtárához. Data Factory beolvassa ezt a fájlt, a `publishBranch`mezőt keresi, és létrehoz egy új ágat (ha még nem létezik) a megadott értékkel. Ezután menti az összes Resource Manager-sablont a megadott helyre. Például:
+A közzétételi ág konfigurálása – vagyis a Resource Manager-sablonok mentésének helye – adjon hozzá egy `publish_config.json` fájlt az együttműködési ág gyökérkönyvtárához. Data Factory beolvassa ezt a fájlt, a `publishBranch`mezőt keresi, és létrehoz egy új ágat (ha még nem létezik) a megadott értékkel. Ezután menti az összes Resource Manager-sablont a megadott helyre. Példa:
 
 ```json
 {
@@ -236,7 +236,7 @@ Javasoljuk, hogy ne engedélyezze a közvetlen bejelentkezéseket az együttműk
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Jelszavak használata Azure Key Vault
 
-ajánlott a Azure Key Vault használata a Data Factory társított szolgáltatások kapcsolati karakterláncának vagy jelszavának tárolására. Biztonsági okokból nem tárolunk ilyen titkos adatokat a git-ben, így a társított szolgáltatások módosításai azonnal közzé lesznek téve a Azure Data Factory szolgáltatásnak.
+Javasoljuk, hogy a Azure Key Vault használatával tárolja a Data Factory társított szolgáltatások kapcsolati karakterláncait vagy jelszavait. Biztonsági okokból nem tárolunk ilyen titkos adatokat a git-ben, így a társított szolgáltatások módosításai azonnal közzé lesznek téve a Azure Data Factory szolgáltatásnak.
 
 A Key Vault használata is megkönnyíti a folyamatos integrációt és üzembe helyezést, mivel nem kell megadnia ezeket a titkokat a Resource Manager-sablonok üzembe helyezése során.
 

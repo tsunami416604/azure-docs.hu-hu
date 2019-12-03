@@ -1,17 +1,17 @@
 ---
-title: 'Oktatóanyag: elosztott nyomkövetés használata az Azure Spring Cloud használatával | Microsoft Docs'
-description: Ismerje meg, hogyan használhatja a Spring Cloud elosztott nyomkövetését az Azure Application Insights
+title: Oktatóanyag – elosztott nyomkövetés használata az Azure Spring Cloud használatával
+description: Ez az oktatóanyag bemutatja, hogyan használható a Spring Cloud elosztott nyomkövetése az Azure Application Insights
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a9d2100103cdd5858d0d58cf6ef77a6ccac3745f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c049ecbea3c630e0f7d08e4a42bd441ba3f5cfa
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607550"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708758"
 ---
 # <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Oktatóanyag: elosztott nyomkövetés használata az Azure Spring Cloud használatával
 
@@ -39,7 +39,7 @@ Engedélyezze a zipkin feladójának a webes küldést úgy, hogy hozzáadja a k
 spring.zipkin.sender.type = web
 ```
 
-A következő lépés kihagyható, ha követte az [Azure Spring Cloud-alkalmazás prepping szóló útmutatót](spring-cloud-tutorial-prepare-app-deployment.md). Ellenkező esetben lépjen a helyi fejlesztési környezetbe, és szerkessze a `pom.xml` fájlt, hogy tartalmazza a Spring Cloud Sleuth függőségét:
+A következő lépés kihagyható, ha követte az [Azure Spring Cloud-alkalmazás prepping szóló útmutatót](spring-cloud-tutorial-prepare-app-deployment.md). Ellenkező esetben lépjen a helyi fejlesztési környezetbe, és szerkessze `pom.xml`-fájlját, hogy tartalmazza a Spring Cloud Sleuth függőségét:
 
 ```xml
 <dependencyManagement>
@@ -85,7 +85,7 @@ Ha már létrehozta és telepítette az alkalmazást, módosíthatja a mintavét
 
 Térjen vissza az elosztott nyomkövetés lapra, és válassza az **alkalmazás-hozzárendelés megtekintése**lehetőséget. Tekintse át az alkalmazás és a figyelési beállítások vizuális megjelenítését. Az alkalmazás-hozzárendelés használatának megismeréséhez tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
 
-## <a name="search"></a>Keresés
+## <a name="search"></a>Search
 
 Más konkrét telemetria-elemek lekérdezéséhez használja a Search függvényt. Az **elosztott nyomkövetés** lapon válassza a **Keresés**lehetőséget. A Search függvény használatáról további információt [ebben a cikkben](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search)talál.
 
@@ -100,7 +100,7 @@ Application Insights az alkalmazás térképén és a keresésen kívül is bizt
 1. A figyelés szakaszban kattintson az **elosztott nyomkövetés**elemre.
 1. Application Insights letiltásához kattintson a **Letiltás** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan engedélyezheti és értelmezheti az elosztott nyomkövetést az Azure Spring Cloud-ban. Az alkalmazás Azure-CosmosDB való kötésének megismeréséhez folytassa a következő oktatóanyaggal.
 

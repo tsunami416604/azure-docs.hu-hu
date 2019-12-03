@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f159f672c999d7877ef89cd78d23c4a608ccf1ab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666991"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703357"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Az adatátalakítás a kaptár tevékenységgel Azure Data Factory 
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -72,7 +72,7 @@ A Data Factory [folyamat](data-factory-create-pipelines.md) HDInsight-struktúr�
 }
 ```
 ## <a name="syntax-details"></a>Szintaxis részletei
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | név |A tevékenység neve |Igen |
 | leírás |A tevékenység által használt szöveg leírása |Nem |
@@ -246,5 +246,5 @@ A paraméteres struktúra parancsfájljának használatához tegye a következő
 * [MapReduce tevékenység](data-factory-map-reduce.md)
 * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
 * [Spark-programok meghívása](data-factory-spark.md)
-* [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

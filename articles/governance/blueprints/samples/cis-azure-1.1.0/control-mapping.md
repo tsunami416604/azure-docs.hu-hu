@@ -1,14 +1,14 @@
 ---
 title: CIS Microsoft Azure alapítványok teljesítményteszt-mintájának vezérlői
 description: Javaslat a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének leképezése a Azure Policyra.
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 55abac9f7479f0ee7d1adddea64cb81a1c7cf2b5
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544548"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707425"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Javaslat a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének hozzárendelésére
 
@@ -40,6 +40,12 @@ Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciókat rend
 - A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
+
+## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1,23 gondoskodjon arról, hogy ne hozzon létre egyéni előfizetési tulajdonosi szerepkört
+
+Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítségével figyelheti az egyéni előfizetés tulajdonosi szerepköreit, amelyeket el kell távolítani.
+
+- Az egyéni előfizetés tulajdonosi szerepkörei nem létezhetnek
 
 ## <a name="21-ensure-that-standard-pricing-tier-is-selected"></a>2,1 Ellenőrizze, hogy a standard árképzési szint van-e kiválasztva
 
@@ -243,11 +249,35 @@ Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel h
 
 - Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgálókon
 
+## <a name="412-ensure-server-parameter-log_checkpoints-is-set-to-on-for-postgresql-database-server"></a>4,12 ellenőrizze, hogy a (z) "log_checkpoints" kiszolgálói paraméter "ON" értékre van-e állítva a PostgreSQL adatbázis-kiszolgáló esetében
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani a PostgreSQL-adatbázis-kiszolgálók naplójának ellenőrzőpontját.
+
+- A naplózási ellenőrzőpontokat engedélyezni kell a PostgreSQL adatbázis-kiszolgálóinak
+
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4,13 gondoskodjon arról, hogy az "SSL-kapcsolat érvényesítése" beállítás "engedélyezve" legyen a PostgreSQL adatbázis-kiszolgáló számára.
 
 Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani a PostgreSQL adatbázis-kiszolgálóinak az SSL-kapcsolatokat.
 
 - Az SSL-kapcsolat betartatását engedélyezni kell a PostgreSQL-adatbázis-kiszolgálók esetében
+
+## <a name="414-ensure-server-parameter-log_connections-is-set-to-on-for-postgresql-database-server"></a>4,14 ellenőrizze, hogy a (z) "log_connections" kiszolgálói paraméter "ON" értékre van-e állítva a PostgreSQL adatbázis-kiszolgáló esetében
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani a PostgreSQL-adatbázis-kiszolgálók naplózási kapcsolatait.
+
+- A naplózási kapcsolatokat engedélyezni kell a PostgreSQL adatbázis-kiszolgálóinak
+
+## <a name="415-ensure-server-parameter-log_disconnections-is-set-to-on-for-postgresql-database-server"></a>4,15 ellenőrizze, hogy a (z) "log_disconnections" kiszolgálói paraméter "ON" értékre van-e állítva a PostgreSQL adatbázis-kiszolgáló esetében
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani a PostgreSQL-adatbázis-kiszolgálók naplójának leválasztását.
+
+- A leválasztásokat a PostgreSQL adatbázis-kiszolgálóihoz kell naplózni.
+
+## <a name="416-ensure-server-parameter-log_duration-is-set-to-on-for-postgresql-database-server"></a>4,16 ellenőrizze, hogy a (z) "log_duration" kiszolgálói paraméter "ON" értékre van-e állítva a PostgreSQL adatbázis-kiszolgáló esetében
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani a PostgreSQL adatbázis-kiszolgálóinak a befejezett utasítások időtartamának naplózását.
+
+- A naplózási időtartamot engedélyezni kell a PostgreSQL adatbázis-kiszolgálóinak
 
 ## <a name="417-ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>4,17 ellenőrizze, hogy a (z) "connection_throttling" kiszolgálói paraméter "ON" értékre van-e állítva a PostgreSQL adatbázis-kiszolgáló esetében
 
@@ -350,6 +380,71 @@ Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel h
 Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy a webalkalmazások csak biztonságos kapcsolatokon keresztül legyenek elérhetők.
 
 - A webalkalmazás csak HTTPS protokollon keresztül érhető el
+
+## <a name="93-ensure-web-app-is-using-the-latest-version-of-tls-encryption"></a>9,3 Ellenőrizze, hogy a webalkalmazás a TLS-titkosítás legújabb verzióját használja-e
+
+Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy a Web Apps a legújabb TLS-verziót használja.
+
+- A legújabb TLS-verziót kell használni az API-alkalmazásban
+- A legújabb TLS-verziót kell használni a függvényalkalmazás
+- A legújabb TLS-verziót kell használni a webalkalmazásban
+
+## <a name="94-ensure-the-web-app-has-client-certificates-incoming-client-certificates-set-to-on"></a>9,4 Győződjön meg arról, hogy a webalkalmazáshoz "Ügyféltanúsítványok (bejövő Ügyféltanúsítványok)" be van állítva a következőre: "on"
+
+Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy csak az érvényes tanúsítvánnyal rendelkező ügyfelek tudják elérni a webalkalmazásokat.
+
+- Győződjön meg arról, hogy az API-alkalmazás "Ügyféltanúsítványok (bejövő Ügyféltanúsítványok)" értékre van állítva
+- Győződjön meg arról, hogy a Function app "Client certificates (bejövő Ügyféltanúsítványok)" beállítása "on" értékre van állítva
+- Győződjön meg arról, hogy a (z) "on" értékre van állítva a webalkalmazás "Ügyféltanúsítványok (bejövő Ügyféltanúsítványok)" értéke
+
+## <a name="95-ensure-that-register-with-azure-active-directory-is-enabled-on-app-service"></a>9,5 ellenőrizze, hogy engedélyezve van-e a regisztráció a Azure Active Directory App Service
+
+Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy a webalkalmazások felügyelt identitást használjanak.
+
+- Győződjön meg arról, hogy a regisztráció a Azure Active Directory engedélyezve van az API-alkalmazásban
+- Győződjön meg arról, hogy engedélyezve van-e a regisztráció a Azure Active Directory függvényalkalmazás
+- Győződjön meg arról, hogy a regisztráció a Azure Active Directory engedélyezve van a webalkalmazásban
+
+## <a name="96-ensure-that-net-framework-version-is-the-latest-if-used-as-a-part-of-the-web-app"></a>9,6 győződjön meg arról, hogy a .NET-keretrendszer verziója a legújabb, ha a webalkalmazás részeként van használatban
+
+Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy a Web Apps a .NET-keretrendszer legújabb verzióját használja.
+
+- Győződjön meg arról, hogy a .NET-keretrendszer verziója a legújabb, ha az API-alkalmazás részeként van használatban
+- Győződjön meg arról, hogy a .NET-keretrendszer verziója a legújabb, ha a függvényalkalmazás részeként van használatban
+- Győződjön meg arról, hogy a .NET-keretrendszer verziója a legújabb, ha a webalkalmazás részeként van használatban
+
+## <a name="97-ensure-that-php-version-is-the-latest-if-used-to-run-the-web-app"></a>9,7 ellenőrizze, hogy a "PHP-verzió" a legújabb-e, ha a webalkalmazás futtatására használatos
+
+Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy a Web Apps a PHP legújabb verzióját használja.
+
+- Győződjön meg arról, hogy a "PHP-verzió" a legújabb, ha az API-alkalmazás részeként van használatban
+- Győződjön meg arról, hogy a "PHP-verzió" a legújabb, ha a Function alkalmazás részeként van használatban
+- Győződjön meg arról, hogy a "PHP-verzió" a legújabb, ha a webalkalmazás részeként van használatban
+
+## <a name="98-ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>9,8 ellenőrizze, hogy a "Python-verzió" a legújabb-e, ha a webalkalmazás futtatásához használatos
+
+Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy a Web Apps a Python legújabb verzióját használja.
+
+- Győződjön meg arról, hogy a "Python-verzió" a legújabb, ha az API-alkalmazás részeként van használatban
+- Győződjön meg arról, hogy a "Python-verzió" a legújabb, ha a Function alkalmazás részeként van használatban
+- Győződjön meg arról, hogy a "Python-verzió" a legújabb, ha a webalkalmazás részeként van használatban
+
+## <a name="99-ensure-that-java-version-is-the-latest-if-used-to-run-the-web-app"></a>9,9 győződjön meg arról, hogy a Java-verzió a legújabb, ha a webalkalmazás futtatására használatos
+
+Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy a Web Apps a Java legújabb verzióját használja.
+
+- Győződjön meg arról, hogy a Java-verzió a legújabb, ha az API-alkalmazás részeként van használatban
+- Győződjön meg arról, hogy a Java-verzió a legújabb, ha a funtion alkalmazás részeként van használatban
+- Győződjön meg arról, hogy a Java-verzió a legújabb, ha a webalkalmazás részeként van használatban
+
+## <a name="910-ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>9,10 ellenőrizze, hogy a "HTTP-verzió" a legújabb-e, ha a webalkalmazás futtatásához használatos
+
+Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy a Web Apps a http legújabb verzióját használja.
+
+- Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha az API-alkalmazás futtatásához használatos
+- Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha a Function app futtatásához használatos
+- Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha a webalkalmazás futtatására használatos
+
 
 ## <a name="next-steps"></a>Következő lépések
 

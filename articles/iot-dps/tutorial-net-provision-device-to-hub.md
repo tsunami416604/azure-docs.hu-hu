@@ -1,6 +1,6 @@
 ---
-title: Eszköz kiépítése az Azure IoT Hub Device Provisioning Service (.NET) használatával
-description: Oktatóanyag – az eszköz kiépítése egyetlen IoT hubhoz az Azure IoT Hub Device Provisioning Service (.NET) használatával
+title: Oktatóanyag – eszköz kiépítése az Azure IoT Hub Device Provisioning Service (.NET) használatával
+description: Ez az oktatóanyag bemutatja, hogyan építheti ki az eszközt egyetlen IoT hubhoz az Azure IoT Hub Device Provisioning Service (.NET) használatával
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: a19774a163c8725e0232e955a7be907420ce8249
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 98b2ef05a1abb6ebea8dac073fbf7671ed79c06e
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229482"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701992"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Oktatóanyag: az eszköz regisztrálása egy IoT hubhoz az Azure IoT Hub-létesítési szolgáltatás ügyfelének használatával (.NET)
 
@@ -27,7 +27,7 @@ Az előző oktatóanyagban bemutattuk, hogyan állíthat be egy eszközt úgy, h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A folytatás előtt győződjön meg arról, hogy *a kiépítendő eszköz az Azure IoT Hub Device Provisioning Service használatával történő beállítását* ismertető oktatóanyagban leírt módon konfigurálta az eszközt és annak [hardverbiztonsági modulját](./tutorial-set-up-device.md).
+A folytatás előtt győződjön meg arról, hogy [a kiépítendő eszköz az Azure IoT Hub Device Provisioning Service használatával történő beállítását](./tutorial-set-up-device.md) ismertető oktatóanyagban leírt módon konfigurálta az eszközt és annak *hardverbiztonsági modulját*.
 
 * Visual Studio
 
@@ -239,7 +239,7 @@ Az eszköz indítása után a következő műveleteket kell elvégezni. További
 
     ![Sikeres csatlakozás a hubhoz a portálon](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

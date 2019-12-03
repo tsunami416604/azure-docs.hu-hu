@@ -1,18 +1,18 @@
 ---
 title: Oktatóanyag – IoT Hub-események használata az aktiváláshoz Azure Logic Apps
-description: Oktatóanyag – a Azure Event Grid esemény-útválasztási szolgáltatásának használatával automatizált folyamatokat hozhat létre, amelyek IoT Hub események alapján Azure Logic Apps műveleteket hajtanak végre.
+description: Ez az oktatóanyag bemutatja, hogyan használhatja a Azure Event Grid esemény-útválasztási szolgáltatását, és hogyan hozhat létre automatizált folyamatokat IoT Hub események alapján végzett Azure Logic Apps műveletek végrehajtásához.
 services: iot-hub
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
-ms.openlocfilehash: 70ad74715446a54605a23a049ebc92a81d7ee673
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 334b7b2c59b328e8eff3c7c2b9c3ed46bffc3442
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423738"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706432"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Oktatóanyag: az Azure IoT Hub eseményekre vonatkozó e-mailes értesítések küldése Event Grid és Logic Apps használatával
 
@@ -269,7 +269,7 @@ Az esemény-előfizetést akkor is érdemes lehet törölnie, ha megtartja az Io
 
 3. Válassza a **Törlés** elemet. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ [az IoT Hub-eseményekre való válaszadást az Event Griddel kiváltott műveletek használatával](../iot-hub/iot-hub-event-grid.md).
 * [Ismerje meg, hogyan rendezheti az eszközhöz csatlakoztatott és nem csatlakoztatott eseményeket](../iot-hub/iot-hub-how-to-order-connection-state-events.md)

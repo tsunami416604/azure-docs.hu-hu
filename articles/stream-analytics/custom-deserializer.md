@@ -1,5 +1,5 @@
 ---
-title: Egyéni .NET-deszerializálók Azure Stream Analytics felhőalapú feladatokhoz
+title: Oktatóanyag – Azure Stream Analytics felhőalapú feladatok egyéni .NET-deszerializálók
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre egyéni .net-deszerializáló egy Azure stream Analytics felhőalapú feladatokhoz a Visual Studio használatával.
 services: stream-analytics
 author: mamccrea
@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 05/06/2019
-ms.openlocfilehash: 56d0927bff928929ca55433a812dfe6c1405a738
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f5fa0a4398c904113dbce5d80844b42b6e775df0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991917"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702438"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Oktatóanyag: egyéni .NET-deszerializálók a Azure Stream Analytics
 
@@ -137,4 +137,3 @@ Ebben az oktatóanyagban megtanulta, hogyan implementálhat egy egyéni .net des
 
 > [!div class="nextstepaction"]
 > [Különböző .NET-deszerializálók létrehozása Azure Stream Analytics feladatokhoz](custom-deserializer-examples.md)
-

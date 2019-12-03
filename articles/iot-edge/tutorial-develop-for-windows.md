@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: modul fejlesztése Windows-eszközökhöz – Azure IoT Edge'
+title: Oktatóanyag – modul fejlesztése Windows-eszközökhöz Azure IoT Edge használatával
 description: Ez az oktatóanyag végigvezeti a fejlesztői gép és a felhő erőforrásainak beállításán, hogy IoT Edge modulokat fejlesszen a Windows-eszközökön Windows-tárolók használatával
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 67a80178c5cd800ea08d9f5493efd0f37422fe36
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4a56a79798acf4948739b26062ab770fcbb47f7b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113985"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707088"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Oktatóanyag: IoT Edge-modulok fejlesztése Windows-eszközökhöz
 
@@ -24,7 +24,7 @@ A gyors útmutatóban létrehozott egy IoT Edge eszközt egy Windows rendszerű 
 
 Ez az oktatóanyag egy  **C# modul Windows-eszközre**történő központi telepítésének példáját használja. Ez a példa azért lett kiválasztva, mert ez a leggyakoribb fejlesztési forgatókönyv. Ha más nyelven fejleszti a fejlesztést, vagy az Azure-szolgáltatások modulként való üzembe helyezését tervezi, akkor ez az oktatóanyag továbbra is hasznos lehet a fejlesztői eszközök megismeréséhez. A fejlesztési fogalmak megismerése után kiválaszthatja az Ön által választott nyelvet vagy Azure-szolgáltatást, és megismerheti a részleteket. 
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Állítsa be a fejlesztői gépet.
@@ -45,7 +45,7 @@ Ez az oktatóanyag a IoT Edge rendszert futtató Windows-eszközöket célozza m
 
 A következő táblázat a **Windows-tárolók** támogatott fejlesztési forgatókönyveit sorolja fel a Visual Studio Code és a Visual Studio alkalmazásban.
 
-|   | Visual Studio Code | Visual Studio 2017/2019 |
+|   | Visual Studio-kód | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Azure-szolgáltatások** | Azure Functions <br> Azure Stream Analytics |   |
 | **Nyelvek** | C#(a hibakeresés nem támogatott) | C# <br> C# |
@@ -120,7 +120,7 @@ A Azure IoT Edge Tools bővítmény a Visual Studióban az összes támogatott I
 
 1. Válassza a **fájl** > **új** > projekt lehetőséget. **..**
 
-2. Az új projekt ablakban keresse meg **IoT Edge** , és válassza ki a **Azure IoT Edge (Windows amd64)** projektet. Kattintson a **Tovább**gombra. 
+2. Az új projekt ablakban keresse meg **IoT Edge** , és válassza ki a **Azure IoT Edge (Windows amd64)** projektet. Kattintson a **Tovább** gombra. 
 
    ![Új Azure IoT Edge projekt létrehozása](./media/tutorial-develop-for-windows/new-project.png)
 
@@ -130,7 +130,7 @@ A Azure IoT Edge Tools bővítmény a Visual Studióban az összes támogatott I
 
 4. A modul hozzáadása ablakban konfigurálja a projektet a következő értékekkel: 
 
-   | Mező | Érték |
+   | Mező | Value (Díj) |
    | ----- | ----- |
    | Visual Studio-sablon | Válassza ki  **C# a modult**. | 
    | Modul neve | Fogadja el az alapértelmezett **IotEdgeModule1**. | 
@@ -176,7 +176,7 @@ A IoT Edge futtatókörnyezetnek szüksége van a beállításjegyzékbeli hitel
 
 1. Mentse a módosításokat a. env fájlba.
 
-### <a name="review-the-sample-code"></a>Tekintse át a mintakódot
+### <a name="review-the-sample-code"></a>A mintakód áttekintése
 
 A létrehozott megoldási sablon egy IoT Edge modulhoz tartozó mintakód-kódot tartalmaz. Ez a mintakód egyszerűen fogad üzeneteket, majd továbbítja azokat a következőre:. A folyamat funkciója a IoT Edge fontos koncepcióját mutatja be, ami azt szemlélteti, hogyan kommunikálnak a modulok egymással.
 
@@ -211,7 +211,7 @@ A Project C# sablonhoz tartozó mintakód a [ModuleClient osztályt](https://doc
    ![Útvonalak áttekintése a Deployment. template. JSON fájlban](./media/tutorial-develop-for-windows/deployment-routes.png)
 
 
-## <a name="build-and-push-your-solution"></a>És a megoldás leküldéses
+## <a name="build-and-push-your-solution"></a>Megoldás létrehozása és leküldése
 
 Áttekintette a modul kódját és a telepítési sablont, hogy megismerje a kulcsfontosságú telepítési fogalmakat. Most már készen áll arra, hogy létrehozza a IotEdgeModule1-tároló rendszerképét, és leküldi a tároló-beállításjegyzékbe. A Visual studióhoz készült IoT Tools bővítménnyel ez a lépés az üzembe helyezési jegyzékfájlt is létrehozza a sablonfájl információi és a modul információi alapján a megoldás fájljaiban. 
 

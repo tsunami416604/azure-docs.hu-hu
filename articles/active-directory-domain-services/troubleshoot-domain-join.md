@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 1016fbc1478ec713d50a2f04bcc80d08288b03f3
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 73a76c4442bb8af70168e54a294f2cb100ff653c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827242"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703658"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services felügyelt tartományhoz való csatlakozással kapcsolatos problémák elhárítása
 
@@ -32,8 +32,8 @@ Ha a virtuális gép nem találja az Azure AD DS felügyelt tartományt, által�
 
 1. Győződjön meg arról, hogy a virtuális gép ugyanahhoz a virtuális géphez van csatlakoztatva, vagy egy olyan, az Azure AD DS számára engedélyezett virtuális hálózathoz csatlakozik. Ha nem, a virtuális gép nem találja és nem tud csatlakozni a tartományhoz a csatlakozáshoz.
     * Ha a virtuális gép nem csatlakozik ugyanahhoz a virtuális hálózathoz, győződjön meg arról, hogy a virtuális hálózati társ-vagy VPN-kapcsolat *aktív* vagy *csatlakoztatva* van, hogy a forgalom megfelelően működjön.
-1. Próbálja meg pingelni a tartományt az Azure AD DS felügyelt tartományának tartományneve (például `ping contoso.com`) használatával.
-    * Ha a pingelési válasz sikertelen, próbálja meg pingelni az Azure AD DS felügyelt tartományhoz tartozó portál áttekintés lapján megjelenő tartomány IP-címeit, például `ping 10.0.0.4`.
+1. Próbálja meg pingelni a tartományt az Azure AD DS felügyelt tartományának tartományneve (például `ping aadds.contoso.com`) használatával.
+    * Ha a pingelési válasz sikertelen, próbálja meg pingelni a tartományhoz tartozó IP-címeket a portál áttekintés lapján az Azure AD DS felügyelt tartományhoz, például `ping 10.0.0.4`hoz.
     * Ha sikeresen Pingeli az IP-címet, de a tartományt nem, a DNS helytelenül van konfigurálva. Győződjön meg arról, hogy konfigurálta az Azure AD DS felügyelt tartomány DNS-kiszolgálóit a virtuális hálózathoz.
 1. Próbálja meg kiüríteni a DNS-feloldó gyorsítótárát a virtuális gépen, például `ipconfig /flushdns`.
 
@@ -58,7 +58,7 @@ A hitelesítő adatokkal kapcsolatos problémák elhárításához tekintse át 
 1. Próbáljon meg egy olyan felhasználói fiók hitelesítő adatait használni, amely a *HRE DC-rendszergazdák* csoportba tartozik, és csatlakoztassa a virtuális gépeket az Azure AD DS felügyelt tartományhoz.
 1. Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást][enable-password-sync] , és elég sokáig várt a jelszó-szinkronizálás kezdeti befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tartományhoz való csatlakozás művelet részeként a Active Directory folyamatok mélyebb megismeréséhez tekintse meg a [csatlakoztatási és hitelesítési problémák][join-authentication-issues]című témakört.
 

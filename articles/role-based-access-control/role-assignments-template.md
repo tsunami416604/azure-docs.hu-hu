@@ -1,6 +1,6 @@
 ---
-title: Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával | Microsoft Docs
-description: Ismerje meg, hogyan kezelheti az Azure-erőforrásokhoz való hozzáférést a felhasználók, csoportok és alkalmazások számára szerepköralapú hozzáférés-vezérlés (RBAC) és Azure Resource Manager-sablonok használatával.
+title: Szerepkör-hozzárendelések hozzáadása az Azure RBAC és a Azure Resource Manager sablonok használatával
+description: Ismerje meg, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz felhasználók, csoportok, egyszerű szolgáltatások vagy felügyelt identitások számára az Azure szerepköralapú hozzáférés-vezérlés (RBAC) és Azure Resource Manager sablonok használatával.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/21/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 268913fb7aebd1d6c8b377b95939c3bc1f77daca
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: a183dc3b318cb9d740fe91bf553dc9f0c7ec99c4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383990"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707800"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával
+# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Szerepkör-hozzárendelések hozzáadása az Azure RBAC és a Azure Resource Manager sablonok használatával
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. A Azure PowerShell vagy az Azure CLI használata mellett az Azure-erőforrásokhoz való hozzáférést [Azure Resource Manager sablonok](../azure-resource-manager/resource-group-authoring-templates.md)használatával is kezelheti. A sablonok akkor lehetnek hasznosak, ha az erőforrásokat következetesen és ismételten kell telepíteni. Ez a cikk bemutatja, hogyan kezelheti a hozzáférést a RBAC és a sablonok használatával.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] a Azure PowerShell vagy az Azure CLI használata mellett a szerepköröket [Azure Resource Manager sablonok](../azure-resource-manager/resource-group-authoring-templates.md)használatával is hozzárendelheti. A sablonok akkor lehetnek hasznosak, ha az erőforrásokat következetesen és ismételten kell telepíteni. Ez a cikk azt ismerteti, hogyan rendelhet hozzá szerepköröket sablonok használatával.
 
 ## <a name="get-object-ids"></a>Objektum-azonosítók beolvasása
 
@@ -52,7 +52,7 @@ $objectid = (Get-AzADGroup -DisplayName "{name}").id
 objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
 ```
 
-### <a name="application"></a>Alkalmazás
+### <a name="application"></a>Jelentkezés
 
 Egy egyszerű szolgáltatásnév (az alkalmazás által használt identitás) AZONOSÍTÓjának lekéréséhez használhatja a [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) vagy [az ad SP List](/cli/azure/ad/sp#az-ad-sp-list) parancsot. Egyszerű szolgáltatásnév esetén használja az objektumazonosító azonosítót, **ne** pedig az alkalmazás azonosítóját.
 
@@ -64,9 +64,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>Szerepkör-hozzárendelés létrehozása erőforráscsoport-hatókörben (paraméterek nélkül)
+## <a name="add-a-role-assignment"></a>Szerepkör-hozzárendelés hozzáadása
 
-Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létrehozásával történik. A következő sablon alapszintű módszert mutat a szerepkör-hozzárendelés létrehozásához. Néhány érték a sablonban van megadva. A következő sablon a következőket mutatja be:
+A RBAC-ben a hozzáférés engedélyezéséhez hozzá kell adnia egy szerepkör-hozzárendelést.
+
+### <a name="resource-group-without-parameters"></a>Erőforráscsoport (paraméterek nélkül)
+
+A következő sablon alapszintű módszert mutat a szerepkör-hozzárendelés hozzáadásához. Néhány érték a sablonban van megadva. A következő sablon a következőket mutatja be:
 
 -  Az [olvasó](built-in-roles.md#reader) szerepkör társítása egy felhasználóhoz, csoporthoz vagy alkalmazáshoz erőforráscsoport-hatókörben
 
@@ -107,7 +111,7 @@ Az alábbi példa az olvasói szerepkör hozzárendelését mutatja be egy erőf
 
 ![Szerepkör-hozzárendelés erőforrás-csoport hatókörében](./media/role-assignments-template/role-assignment-template.png)
 
-## <a name="create-a-role-assignment-at-a-resource-group-or-subscription-scope"></a>Szerepkör-hozzárendelés létrehozása erőforráscsoport vagy előfizetés hatókörében
+### <a name="resource-group-or-subscription"></a>Erőforráscsoport vagy előfizetés
 
 Az előző sablon nem túl rugalmas. A következő sablon paramétereket használ, és különböző hatókörökben használható. A következő sablon a következőket mutatja be:
 
@@ -191,9 +195,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-scope"></a>Szerepkör-hozzárendelés létrehozása erőforrás-hatókörben
+### <a name="resource"></a>Erőforrás
 
-Ha egy erőforrás szintjén kell létrehoznia egy szerepkör-hozzárendelést, a szerepkör-hozzárendelés formátuma eltérő. Adja meg annak az erőforrás-szolgáltatónak a névterét és erőforrás-típusát, amelyhez hozzá szeretné rendelni a szerepkört. A szerepkör-hozzárendelés neve tartalmazza az erőforrás nevét is.
+Ha egy erőforrás szintjén hozzá kell adnia egy szerepkör-hozzárendelést, a szerepkör-hozzárendelés formátuma eltérő. Adja meg annak az erőforrás-szolgáltatónak a névterét és erőforrás-típusát, amelyhez hozzá szeretné rendelni a szerepkört. A szerepkör-hozzárendelés neve tartalmazza az erőforrás nevét is.
 
 A szerepkör-hozzárendelés típusát és nevét a következő formátumban kell megadni:
 
@@ -287,7 +291,7 @@ A következő példa a közreműködői szerepkör hozzárendelését mutatja be
 
 ![Szerepkör-hozzárendelés erőforrás-hatókörben](./media/role-assignments-template/role-assignment-template-resource.png)
 
-## <a name="create-a-role-assignment-for-a-new-service-principal"></a>Szerepkör-hozzárendelés létrehozása egy új egyszerű szolgáltatáshoz
+### <a name="new-service-principal"></a>Új egyszerű szolgáltatásnév
 
 Ha létrehoz egy új szolgáltatásnevet, és azonnal megpróbál hozzárendelni egy szerepkört az egyszerű szolgáltatáshoz, a szerepkör-hozzárendelés bizonyos esetekben sikertelen lehet. Ha például létrehoz egy új felügyelt identitást, majd megpróbál hozzárendelni egy szerepkört az adott szolgáltatáshoz ugyanahhoz a Azure Resource Manager-sablonhoz, előfordulhat, hogy a szerepkör-hozzárendelés sikertelen lesz. A hiba oka valószínűleg a replikálás késése. Az egyszerű szolgáltatás egy régióban jön létre; a szerepkör-hozzárendelés azonban egy másik régióban is előfordulhat, amely még nem replikálta a szolgáltatásnevet. Ennek a forgatókönyvnek a megoldásához a `principalType` tulajdonságot úgy kell beállítani, hogy `ServicePrincipal` a szerepkör-hozzárendelés létrehozásakor.
 
@@ -355,7 +359,7 @@ Az alábbi példa a közreműködői szerepkör hozzárendelését mutatja be eg
 
 ![Szerepkör-hozzárendelés egy új felügyelt identitás egyszerű szolgáltatásnév számára](./media/role-assignments-template/role-assignment-template-msi.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: Azure Resource Manager-sablon létrehozása és üzembe helyezése az Azure Portalon](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 - [Az Azure Resource Manager-sablonok struktúrája és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md)

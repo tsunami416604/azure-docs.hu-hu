@@ -1,6 +1,6 @@
 ---
-title: Az eszközök monitorozása az Azure IoT Centralban | Microsoft Docs
-description: Operátorként az Azure IoT Central alkalmazással monitorozza az eszközöket.
+title: Rövid útmutató – az eszközök figyelése az Azure IoT Central
+description: Kezelőként az Azure IoT Central alkalmazással figyelheti az eszközöket ebben a rövid útmutatóban.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/24/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: de83315f38766bc1e2f37ac82452bb023930f241
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a6bc4b76dc00330e39526aec8bc5651b9abb590b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893773"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706745"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices-preview-features"></a>Gyors útmutató: az Azure IoT Central használata az eszközök figyelésére (előzetes verziójú funkciók)
 
@@ -56,7 +56,7 @@ Válassza a **környezeti érzékelő tulajdonságai**elemet. Módosítsa a **f�
 
 ![Beállítások frissítése](media/quick-monitor-devices/change-settings.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

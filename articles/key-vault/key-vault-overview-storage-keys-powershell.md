@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 225d9b715c56e4813a8e26d881c876e7bd498155
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 46e6f19a071986cf12590e9bd5c420e070572a14
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204213"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707096"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>A Storage-fiók kulcsainak kezelése Key Vault és Azure PowerShell
 
@@ -42,11 +42,11 @@ Az Azure AD-bérlő minden regisztrált alkalmazást biztosít egy [egyszerű sz
 
 A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőben előre regisztrálva van. A Key Vault minden Azure-felhőben ugyanazzal az alkalmazás-AZONOSÍTÓval van regisztrálva.
 
-| bérlők | Felhő | Alkalmazásazonosító |
+| Bérlők | Felhőbeli | Alkalmazásazonosító |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Azure – nyilvános | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Egyéb  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Nyilvános Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Egyéb  | Bármelyik | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -74,7 +74,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>Változók beállítása
 
-Először állítsa be az alábbi lépésekben a PowerShell-parancsmagok által használandó változókat. Ügyeljen arra, hogy frissítse <YourResourceGroupName>a <YourStorageAccountName>, és <YourKeyVaultName> helyőrzőket, és állítsa be $keyVaultSpAppId `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` a következőre: (az [egyszerű szolgáltatásnév alkalmazásban](#service-principal-application-id)megadott módon).
+Először állítsa be az alábbi lépésekben a PowerShell-parancsmagok által használandó változókat. Ügyeljen arra, hogy frissítse a <YourResourceGroupName>, <YourStorageAccountName>és <YourKeyVaultName> helyőrzőket, és állítsa $keyVaultSpAppId `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`re (a fenti [szolgáltatásnév alkalmazás-azonosítójában](#service-principal-application-id)megadott módon).
 
 A Get [-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) és a [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) parancsmagokkal is Azure PowerShell a felhasználói azonosítót és az Azure Storage-fiók környezetét fogjuk használni.
 
@@ -94,7 +94,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>Key Vault hozzáférés biztosítása a Storage-fiókhoz
 
-Mielőtt Key Vault a Storage-fiók kulcsainak elérését és kezelését, engedélyeznie kell a Storage-fiókjához való hozzáférését. A Key Vault alkalmazásnak engedélyekkel kell rendelkeznie a Storage-fiók kulcsainak listázásához és *újbóli létrehozásához* . Ezek az engedélyek engedélyezve vannak a beépített RBAC szerepkör- [kezelő szolgáltatás](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)szerepkörrel. 
+Mielőtt Key Vault a Storage-fiók kulcsainak elérését és kezelését, engedélyeznie kell a Storage-fiókjához való hozzáférését. A Key Vault alkalmazásnak engedélyekkel kell rendelkeznie a Storage-fiók kulcsainak *listázásához* és *újbóli létrehozásához* . Ezek az engedélyek engedélyezve vannak a beépített RBAC szerepkör- [kezelő szolgáltatás](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)szerepkörrel. 
 
 Rendelje hozzá ezt a szerepkört az Key Vault egyszerű szolgáltatáshoz, és korlátozza a hatókört a Storage-fiókra a Azure PowerShell [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) parancsmag használatával.
 
@@ -185,18 +185,18 @@ Tags                :
 
 ## <a name="shared-access-signature-tokens"></a>Közös hozzáférésű aláírási jogkivonatok
 
-Azt is megteheti, Key Vault hogy közös hozzáférésű aláírási jogkivonatokat állítson elő. Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. A fiók kulcsainak megosztása nélkül megadhatja az ügyfeleknek a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírás biztonságos módot biztosít a tárolási erőforrások megosztására a fiók kulcsainak veszélyeztetése nélkül.
+Azt is megteheti, Key Vault hogy közös hozzáférésű aláírási jogkivonatokat állítson elő. A közös hozzáférésű aláírások delegált hozzáférést biztosítanak a Storage-fiók erőforrásaihoz. A fiók kulcsainak megosztása nélkül megadhatja az ügyfeleknek a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírás biztonságos módot biztosít a tárolási erőforrások megosztására a fiók kulcsainak veszélyeztetése nélkül.
 
 Az ebben a szakaszban szereplő parancsok a következő műveleteket hajtják végre:
 
 - Fiók közös hozzáférésű aláírás-definíciójának beállítása. 
 - Hozzon létre egy fiók közös hozzáférési aláírási tokent a blob-, fájl-, tábla-és üzenetsor-szolgáltatásokhoz. A jogkivonat az erőforrástípusok szolgáltatás, a tároló és az objektum számára lett létrehozva. A jogkivonat minden engedélyekkel, HTTPS-kapcsolattal és a megadott kezdési és befejezési dátumokkal jön létre.
-- Key Vault felügyelt tároló közös hozzáférésű aláírás-definíciójának beállítása a tárban. A definíció a megosztott hozzáférés-aláírási jogkivonat sablonjának URI-JÁT hozza létre. A definíció a közös hozzáférési aláírás típusát adja `account` meg, és N napig érvényes.
+- Key Vault felügyelt tároló közös hozzáférésű aláírás-definíciójának beállítása a tárban. A definíció a megosztott hozzáférés-aláírási jogkivonat sablonjának URI-JÁT hozza létre. A definícióban a közös hozzáférésű aláírás típusa `account`, és N napig érvényes.
 - Ellenőrizze, hogy a közös hozzáférésű aláírás mentve lett-e a Key vaultban titkos kulcsként.
 - 
 ### <a name="set-variables"></a>Változók beállítása
 
-Először állítsa be az alábbi lépésekben a PowerShell-parancsmagok által használandó változókat. Ügyeljen arra, hogy frissítse <YourStorageAccountName> a <YourKeyVaultName> és a helyőrzőket.
+Először állítsa be az alábbi lépésekben a PowerShell-parancsmagok által használandó változókat. Ügyeljen arra, hogy frissítse a <YourStorageAccountName> és <YourKeyVaultName> helyőrzőket.
 
 Az Azure Storage-fiók kontextusának beszerzéséhez az Azure PowerShell [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext?view=azps-2.6.0) parancsmagokat is használjuk.
 
@@ -225,7 +225,7 @@ A $sasToken értéke ehhez hasonlóan fog kinézni.
 
 ### <a name="generate-a-shared-access-signature-definition"></a>Közös hozzáférésű aláírás definíciójának létrehozása
 
-Közös hozzáférési aláírás definíciójának létrehozásához használja a Azure PowerShell [set-AzKeyVaultManagedStorageSasDefinition](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0) parancsmagot.  Megadhatja az Ön által választott nevet a `-Name` paraméternek.
+Közös hozzáférési aláírás definíciójának létrehozásához használja a Azure PowerShell [set-AzKeyVaultManagedStorageSasDefinition](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0) parancsmagot.  Megadhatja a választott nevet a `-Name` paraméternek.
 
 ```azurepowershell-interactive
 Set-AzKeyVaultManagedStorageSasDefinition -AccountName $storageAccountName -VaultName $keyVaultName -Name <YourSASDefinitionName> -TemplateUri $sasToken -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
@@ -238,7 +238,7 @@ A Azure PowerShell [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azk
 Először keresse meg a közös hozzáférési aláírás definícióját a Key vaultban.
 
 ```azurepowershell-interactive
-Get-AzKeyVaultSecret -vault-name <YourKeyVaultName>
+Get-AzKeyVaultSecret -VaultName <YourKeyVaultName>
 ```
 
 Az SAS-definíciónak megfelelő titok a következő tulajdonságokkal rendelkezik:
@@ -251,7 +251,7 @@ Content Type : application/vnd.ms-sastoken-storage
 Tags         :
 ```
 
-Mostantól használhatja a [Get-AzKeyVaultSecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) parancsmagot és a Secret `Name` tulajdonságot is a titkos kód tartalmának megtekintéséhez.
+Mostantól a [Get-AzKeyVaultSecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) parancsmagot és a Secret `Name` tulajdonságot is használhatja a titkos kód tartalmának megtekintéséhez.
 
 ```azurepowershell-interactive
 $secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>
@@ -262,7 +262,7 @@ Write-Host $secret.SecretValueText
 A parancs kimenete az SAS-definíciós karakterláncot jeleníti meg.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt Storage-fiók kulcsainak mintái](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
 - [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)

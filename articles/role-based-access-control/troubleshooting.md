@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 2351e6a63723156cce646a6a1cdda837b18a8f91
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 5429ebb611f852f7672d89de190ddd68dbcb01cf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456825"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707780"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure-erőforrások RBAC kapcsolatos hibák
 
@@ -90,7 +90,7 @@ Hasonlóképpen, ha az Azure CLI használatával listázza ezt a szerepkör-hozz
 }
 ```
 
-Nem jelent problémát a szerepkör-hozzárendelések elhagyása, de a többi szerepkör-hozzárendeléshez hasonló lépések használatával eltávolíthatja őket. További információ a szerepkör-hozzárendelések eltávolításáról: [Azure Portal](role-assignments-portal.md#remove-role-assignments), [Azure POWERSHELL](role-assignments-powershell.md#remove-access)vagy [Azure CLI](role-assignments-cli.md#remove-access)
+Nem jelent problémát a szerepkör-hozzárendelések elhagyása, de a többi szerepkör-hozzárendeléshez hasonló lépések használatával eltávolíthatja őket. További információ a szerepkör-hozzárendelések eltávolításáról: [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)vagy [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
 
 Ha a PowerShellben megpróbálja eltávolítani a szerepkör-hozzárendeléseket az objektumazonosító és a szerepkör-definíció neve alapján, és egynél több szerepkör-hozzárendelés felel meg a paramétereknek, a következő hibaüzenet jelenik meg: "a megadott információ nem képezhető le szerepkör-hozzárendelésre". A következő hibaüzenet egy példát mutat be:
 
@@ -162,7 +162,7 @@ A virtuális gépek a tartománynevek, a virtuális hálózatok, a tárolási fi
 
 Ezeknek az elemeknek **írási** hozzáférésre van szükségük a **virtuális géphez**:
 
-* Végpontok  
+* Endpoints (Végpontok)  
 * IP-címek  
 * Lemezek  
 * Bővítmények  
@@ -183,7 +183,7 @@ A [Azure functions](../azure-functions/functions-overview.md) egyes funkcióinak
 
 Egy olvasó rákattinthat a **platform szolgáltatásai** lapra, majd a **minden beállítás** elemre kattintva megtekintheti a Function alkalmazáshoz kapcsolódó beállításokat (a webalkalmazáshoz hasonlóan), de ezek a beállítások nem módosíthatók. A szolgáltatások eléréséhez szüksége lesz a [közreműködő](built-in-roles.md#contributor) szerepkörre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A vendég felhasználókkal kapcsolatos hibák](role-assignments-external-users.md#troubleshoot)
 - [Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával](role-assignments-portal.md)

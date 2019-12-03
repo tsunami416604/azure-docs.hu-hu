@@ -1,17 +1,17 @@
 ---
-title: 'Gyors útmutató: alkalmazás elindítása a Maven használatával – Azure Spring Cloud'
-description: Minta alkalmazás elindítása Maven használatával
+title: Rövid útmutató – alkalmazás elindítása a Maven és az Azure Spring Cloud használatával
+description: Ebben a rövid útmutatóban egy minta alkalmazást indítunk el a Maven használatával
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 1a719b878f3e5fbade3adf453ac7d0604ea85077
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: ea840d1e133c213c907e596e5eb0a651820291c9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384080"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708868"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Maven beépülő modullal
 
@@ -60,7 +60,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe. A szol
 ## <a name="set-up-your-configuration-server"></a>A konfigurációs kiszolgáló beállítása
 
 1. A szolgáltatás **áttekintése** lapon válassza a **konfigurációs kiszolgáló**lehetőséget.
-1. Az **alapértelmezett adattár** szakaszban állítsa be az **URI** - **t https://github.com/Azure-Samples/piggymetricsre** , állítsa be a **címkét** a **config**értékre, majd kattintson az **alkalmaz** gombra a módosítások mentéséhez.
+1. Az **alapértelmezett adattár** szakaszban állítsa be az **URI** - **t https://github.com/Azure-Samples/piggymetrics re** , állítsa be a **címkét** a **config**értékre, majd kattintson az **alkalmaz** gombra a módosítások mentéséhez.
 
     > [!div class="mx-imgBorder"]
     > ![a konfigurációs beállítások megadása és alkalmazása](media/maven-qs-apply-config.jpg)

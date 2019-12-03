@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: adatküldés az átjárón keresztül – Azure IoT Edge & Machine Learning'
-description: 'Oktatóanyag: a fejlesztői gépet szimulált IoT Edge eszközként használva küldheti el az adatait a IoT Hub számára egy transzparens átjáróként konfigurált eszközön keresztül.'
+title: 'Oktatóanyag: az eszközbeállítások transzparens átjárón keresztüli küldése – Machine Learning on Azure IoT Edge'
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a fejlesztői gépet szimulált IoT Edge eszközként az adatIoT Hubba való adatküldéshez egy transzparens átjáróként konfigurált eszközön keresztül.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cdd1e1d83b1d184e6a904fc64e9c2395c2896d54
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 50f339b257110f0a5dc0ac08b9f40043ee384afb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665627"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706911"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Oktatóanyag: az adatküldés transzparens átjárón keresztül
 

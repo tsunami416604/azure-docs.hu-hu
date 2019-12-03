@@ -1,61 +1,61 @@
 ---
-title: Azure IoT Hub ikermodulok áttekintése |} A Microsoft Docs
-description: Fejlesztői útmutató – használata ikermodulokkal állapotot és a konfigurációs adatokat az IoT Hub és az eszközök közötti szinkronizálása
+title: Az Azure IoT Hub-modul ikrek ismertetése | Microsoft Docs
+description: Fejlesztői útmutató – a modulok ikrek használatával szinkronizálhatók az állapot-és konfigurációs adatokat IoT Hub és az eszközök között
 author: chrissie926
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: cd0a9a66f3014a39a73cf04badfc67cd2ff4c3de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6ab1e3e01f66e071e3d16b196b3ecdcd30c2620
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61363458"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701813"
 ---
-# <a name="understand-and-use-module-twins-in-iot-hub"></a>Ismertetése és használati ikermodulokkal az IoT hubon
+# <a name="understand-and-use-module-twins-in-iot-hub"></a>Az ikrek megismerése és használata IoT Hub
 
-Ez a cikk azt feltételezi, hogy elolvasta [ikereszközök megismerése és használata az IoT Hub](iot-hub-devguide-device-twins.md) első. Az IoT Hub minden egyes eszköz identitás alatt hozhat létre legfeljebb 20 modul identitásokat. Minden modul identitás implicit módon hoz létre egy ikermodul. Ikereszközök hasonlóan ikermodulokkal olyan JSON-dokumentumok, beleértve a metaadatokat, konfigurációkat és állapotokat modul állapot információkat tároló. Az Azure IoT Hub fenntart egy ikermodulja az egyes modulok, csatlakozik az IoT hubnak. 
+Ez a cikk azt feltételezi, hogy elolvasta [az eszközökön található ikreket, és az IoT hub először használja](iot-hub-devguide-device-twins.md) . IoT Hub minden eszköz identitása alatt akár 20 modul-identitást is létrehozhat. Minden modul identitása implicit módon létrehoz egy külön modult. Az eszközökhöz hasonlóan az ikrek olyan JSON-dokumentumok, amelyek a modul állapotával kapcsolatos információkat tárolnak, beleértve a metaadatokat, a konfigurációkat és a feltételeket. Az Azure IoT Hub minden olyan modulhoz külön modult tart fenn, amelyhez IoT Hub csatlakozik. 
 
-Az eszköz oldalán az IoT Hub eszközoldali SDK-k lehetővé teszik modulok, ahol mindegyik megnyílik egy független az IoT Hub-kapcsolat létrehozása. Ez a funkció lehetővé teszi, hogy az önálló névterek különböző összetevőket az eszközön. Például hogy egy Eladóautomata, amely három különböző érzékelők rendelkezik. A vállalat különböző részlegei minden érzékelő vezérli. A modul minden egyes érzékelő hozhat létre. Így minden részleg csak akkor feladatok vagy közvetlen metódusokat küldhet az érzékelő, amelyek szabályozzák, elkerülve az ütközések és a felhasználói hibáinak száma.
+Az eszköz oldalon a IoT Hub eszköz SDK-k lehetővé teszik, hogy olyan modulokat hozzon létre, amelyekben mindegyik egy független kapcsolódást nyit meg a IoT Hubhoz. Ez a funkció lehetővé teszi, hogy külön névtereket használjon az eszköz különböző összetevőihez. Például van egy olyan automatából, amely három különböző érzékelővel rendelkezik. Minden érzékelőt a vállalat különböző részlegei szabályoznak. Mindegyik érzékelőhöz létrehozhat egy modult. Így az egyes részlegek csak feladatokat vagy közvetlen metódusokat küldhetnek az általuk vezérelt érzékelőknek, elkerülve az ütközéseket és a felhasználói hibákat.
 
- A modul identitás- és ikermodul adja meg az eszközidentitást, valamint az ikereszköz, de egy kifinomultabb granularitási ugyanazokat a lehetőségeket. A kifinomultabb granularitási lehetővé teszi a kompatibilis eszközök, például az operációs rendszer-alapú eszközök vagy a belső vezérlőprogrammal rendelkező eszközök kezelése több összetevőből állnak, konfigurációja és az egyes összetevők feltételek elkülönítésére. A modul identitás- és ikermodulokkal adjon meg egy felügyeleti kockázatok elkülönítése az IoT-eszközök, amelyek moduláris szoftverösszetevőket használatakor. A Microsoft célja, a modul ikereszköz szinten az összes eszköz ikereszköz funkciót támogató modul ikereszköz általános rendelkezésre állás szerint. 
+ A modul identitása és a modul Twin ugyanazokat a funkciókat biztosítja, mint az eszköz identitása és az eszközök Twin, de finomabb részletességgel. Ez a finomabb részletesség lehetővé teszi, hogy a képes eszközök, például az operációs rendszer alapú eszközök vagy a belső vezérlőprogram eszközei több összetevőt kezelnek, az egyes összetevők konfigurációjának és feltételeinek elkülönítéséhez. A modul identitása és a modul ikrek a moduláris szoftveres összetevőkkel rendelkező IoT-eszközök használatakor a probléma kezelésének elkülönítését biztosítják. Célunk, hogy az összes eszköz Twin-funkcióját támogassa a modul Twin szintjén, az általános elérhetőségi moduloknál. 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Ez a cikk ismerteti:
+Ez a cikk a következőket ismerteti:
 
-* Az ikermodul szerkezete: *címkék*, *kívánt* és *jelentett tulajdonságokként*.
-* A modulok és a háttérrendszerek ikermodulokkal hajthatnak végre műveleteket.
+* A modul szerkezete (Twin): *címkék*, *kívánt* és *jelentett tulajdonságok*.
+* A modulok és a háttér végén elvégezhető műveletek az ikrek modulján is elvégezhetők.
 
-Tekintse meg [eszközről a felhőbe való kommunikáció útmutatást](iot-hub-devguide-d2c-guidance.md) útmutató használatával a jelentett tulajdonságok, az eszköz – felhő üzeneteket vagy a fájl feltöltése.
+Tekintse meg az [eszközről a felhőbe irányuló kommunikációs útmutatót](iot-hub-devguide-d2c-guidance.md) a jelentett tulajdonságok, az eszközről a felhőbe irányuló üzenetek vagy a fájlfeltöltés használatával kapcsolatos útmutatásért.
 
-Tekintse meg [felhőből az eszközre irányuló kommunikáció útmutatást](iot-hub-devguide-c2d-guidance.md) a kívánt tulajdonságok, a közvetlen metódusok vagy a felhőből az eszközre irányuló üzenetek útmutatást.
+Tekintse át a [felhőből az eszközre irányuló kommunikációs útmutatót](iot-hub-devguide-c2d-guidance.md) , amely útmutatást nyújt a kívánt tulajdonságok, közvetlen metódusok vagy a felhőből az eszközre irányuló üzenetek használatához.
 
-## <a name="module-twins"></a>Ikermodulokkal
+## <a name="module-twins"></a>Ikrek modul
 
-Ikermodulokkal modul kapcsolatos információk tárolására, amelyek:
+A modul ikrek a modulhoz kapcsolódó információkat tárolják:
 
-* Az eszközön, és az IoT Hub modulok segítségével modul feltételek és a konfiguráció szinkronizálása.
+* Az eszközön található modulok és a IoT Hub a modul feltételeinek és konfigurációjának szinkronizálására használhatók.
 
-* A megoldás háttérrendszere segítségével a lekérdezés és a cél hosszú ideig futó műveleteket.
+* A megoldás háttérbeli futtatása a hosszú ideig futó műveletek lekérdezésére és megcélzására használható.
 
-Egy ikermodul életciklusának kapcsolódik a megfelelő [modul identitás](iot-hub-devguide-identity-registry.md). Modulok twins implicit módon létrehozva, és törlődnek, ha egy modul identitás létrehozása vagy törlése az IoT Hub.
+A különálló modulok életciklusa a megfelelő [modul-identitáshoz](iot-hub-devguide-identity-registry.md)van csatolva. A modulok az ikrek számára implicit módon jönnek létre, és törlődnek a modul identitásának létrehozásakor vagy törlésekor IoT Hub.
 
-Egy ikermodul tartalmazó JSON-dokumentumok:
+A Twin modul egy JSON-dokumentum, amely a következőket tartalmazza:
 
-* **A címkék**. A JSON-dokumentum, amely a megoldás háttérrendszere olvasni és írni egy része. A címkék nem láthatók el modulokat az eszközön. A címkék lekérdezése célú vannak beállítva.
+* **Címkék**. A megoldás hátterében lévő JSON-dokumentum egy szakasza, amelyből beolvasható és írható. A címkék nem láthatók az eszközön található moduloknál. A címkék lekérdezés céljára vannak beállítva.
 
-* **Kívánt tulajdonságok**. Modul konfigurációjának vagy feltételeket szinkronizálására használt jelentett tulajdonságokkal együtt. A megoldás háttérrendszere beállíthatja a kívánt tulajdonságok, és a modul alkalmazás olvashatja őket. A modul alkalmazás is fogadhat értesítéseket a módosításokat a kívánt tulajdonságai.
+* **Kívánt tulajdonságok**. A modul konfigurációjának vagy feltételeinek szinkronizálása a jelentett tulajdonságokkal együtt történik. A megoldás háttérbe állítása megadhatja a kívánt tulajdonságokat, a modul alkalmazás pedig elolvashatja őket. A modul alkalmazás a kívánt tulajdonságok változásairól is fogadhat értesítéseket.
 
-* **Jelentett tulajdonságokként**. Modul konfigurációjának vagy feltételeket szinkronizálásához használni kívánt tulajdonságokkal együtt. A modul app be, a jelentett tulajdonságokat, és a megoldás háttérrendszere, olvassa el, és lekérdezheti, ha.
+* **Jelentett tulajdonságok**. A modul konfigurációjának vagy feltételeinek szinkronizálásához a kívánt tulajdonságokkal együtt használható. A modul-alkalmazás beállíthatja a jelentett tulajdonságokat, és a megoldás hátterének olvasására és lekérdezésére is lehetőség van.
 
-* **A modul azonosítótulajdonságokat**. A modul ikereszköz JSON-dokumentum gyökerében tárolt megfelelő modul identitásból írásvédett tulajdonságokat tartalmazza a [eszközidentitás-jegyzék](iot-hub-devguide-identity-registry.md).
+* **Modul identitásának tulajdonságai** A modul kettős JSON-dokumentumának gyökerében az [Identity registryben](iot-hub-devguide-identity-registry.md)tárolt megfelelő modul identitásának írásvédett tulajdonságai szerepelnek.
 
-![Ikereszköz architekturális ábrázolása](./media/iot-hub-devguide-device-twins/module-twin.jpg)
+![Az eszközök Twin architektúrájának ábrázolása](./media/iot-hub-devguide-device-twins/module-twin.jpg)
 
-A következő példában egy JSON-dokumentumok ikermodulja:
+Az alábbi példa egy modul kettős JSON-dokumentumát mutatja be:
 
 ```json
 {
@@ -102,20 +102,20 @@ A következő példában egy JSON-dokumentumok ikermodulja:
 }
 ```
 
-A legfelső szintű objektumban a modul azonosítótulajdonságokat, és a tárolóobjektumok `tags` és mindkét `reported` és `desired` tulajdonságait. A `properties` tároló egyes csak olvasható elemeket tartalmaz (`$metadata`, `$etag`, és `$version`) leírtak a [modul ikereszköz metaadatok](iot-hub-devguide-module-twins.md#module-twin-metadata) és [optimista egyidejűséget](iot-hub-devguide-device-twins.md#optimistic-concurrency) szakaszokat.
+A gyökérszintű objektum a modul identitásának tulajdonságai, valamint a `tags` és a `reported` és a `desired` tulajdonságok tároló objektumai. A `properties` tároló tartalmaz néhány írásvédett elemet (`$metadata`, `$etag`és `$version`), amely a [modul Twin metadata](iot-hub-devguide-module-twins.md#module-twin-metadata) és az [optimista Egyidejűség](iot-hub-devguide-device-twins.md#optimistic-concurrency) szakaszokban van ismertetve.
 
-### <a name="reported-property-example"></a>A példában a jelentett tulajdonságok
+### <a name="reported-property-example"></a>Jelentett tulajdonság – példa
 
-Az előző példában az ikermodul tartalmaz egy `batteryLevel` modul alkalmazás által jelentett tulajdonság. Ez a tulajdonság lekérdezése és a művelethez használandó modulok az utolsó jelentett töltöttségi szint alapján lehetővé teszi. Más ilyenek például a modul alkalmazás jelentéskészítési modul képességek vagy kapcsolati lehetőségek.
+Az előző példában a Twin modul tartalmaz egy `batteryLevel` tulajdonságot, amelyet a modul alkalmazás jelentett. Ez a tulajdonság lehetővé teszi a modulok lekérdezését és működését a legutolsó jelentett akkumulátor-szint alapján. Egyéb példák a modul alkalmazás jelentési moduljának képességei vagy csatlakozási lehetőségei.
 
 > [!NOTE]
-> Jelentett tulajdonságok egyszerűbbé teszik a forgatókönyvek, ahol a megoldás háttérrendszere az utolsó ismert tulajdonság értéke érdekli. Használat [eszköz – felhő üzeneteket](iot-hub-devguide-messages-d2c.md) Ha a megoldás háttérrendszere kell feldolgoznia modul telemetriai időbélyegzővel eseményekről, például a time series sorrendje formájában.
+> A jelentett tulajdonságok leegyszerűsítik az olyan forgatókönyveket, amelyekben a megoldás hátterét egy tulajdonság utolsó ismert értéke érdekli. Az [eszközről a felhőbe](iot-hub-devguide-messages-d2c.md) irányuló üzenetek használata, ha a megoldás hátterének időbélyeg-események (például idősorozat) formájában kell feldolgoznia a modul telemetria.
 
-### <a name="desired-property-example"></a>Kívánt tulajdonság példa
+### <a name="desired-property-example"></a>Példa a kívánt tulajdonságra
 
-Az előző példában a `telemetryConfig` ikermodul kívánt és a jelentett tulajdonságok szinkronizálni a telemetria-konfigurációt a modulhoz tartozó a megoldás háttérrendszere és a modul alkalmazás által használt. Példa:
+Az előző példában a megoldás háttérbe állítása és a telemetria-konfiguráció szinkronizálása a modulhoz, a `telemetryConfig`-modul Twin kívánt és jelentett tulajdonságait használja. Példa:
 
-1. A megoldás háttérrendszere állítja be a kívánt tulajdonságot a szükségeskonfiguráció-értékkel. Íme a dokumentum a kívánt tulajdonság értéke:
+1. A megoldás háttérbe állítása a kívánt tulajdonságot a kívánt konfigurációs értékkel állítja be. Itt látható a dokumentum azon része, amely a kívánt tulajdonságot beállítja:
 
     ```json
     ...
@@ -128,7 +128,7 @@ Az előző példában a `telemetryConfig` ikermodul kívánt és a jelentett tul
     ...
     ```
 
-2. A modul alkalmazást a változás azonnal, ha csatlakozik, vagy első újbóli értesítést kap. A modul alkalmazást, majd jelentést a frissített konfigurációt (vagy egy hiba feltétel használatával a `status` tulajdonság). Íme a jelentett tulajdonságok részéhez:
+2. A modul alkalmazás azonnal értesítést kap a változásról, ha csatlakozik, vagy az első újracsatlakozáskor. A modul alkalmazás ezután jelentést készít a frissített konfigurációról (vagy a `status` tulajdonságot használó hiba feltételéről). Itt látható a jelentett tulajdonságok része:
 
     ```json
     "reported": {
@@ -140,19 +140,19 @@ Az előző példában a `telemetryConfig` ikermodul kívánt és a jelentett tul
     }
     ```
 
-3. A megoldás háttérrendszere nyomon követheti a konfigurálási művelet eredményeinek között számos modulok által [lekérdezése](iot-hub-devguide-query-language.md) ikermodulokkal.
+3. A megoldás háttérbe állításával számos modulban nyomon követheti a konfigurációs művelet eredményét az ikrek modul [lekérdezésével](iot-hub-devguide-query-language.md) .
 
 > [!NOTE]
-> Az előző kódrészletek példák, optimalizálva az olvashatóság érdekében bemutatjuk, hogyan kódolása a modul konfigurációja és állapota. Az IoT Hub az ikermodul kívánt és a jelentett tulajdonságok az ikermodulokkal nem kötelezi egy adott séma.
+> Az előző kódrészletek az olvashatóságra optimalizált példák, amelyek az egyik módszer a modulok konfigurációjának és állapotának kódolására szolgálnak. A IoT Hub nem határoz meg külön sémát a modulhoz, és az ikrek modulban jelentett tulajdonságokat jelent.
 > 
 > 
 
-## <a name="back-end-operations"></a>Háttér-műveletek
-A megoldás háttérrendszere az ikermodul használatával a következő atomi műveletek, a HTTPS-en keresztül elérhetővé tett működik:
+## <a name="back-end-operations"></a>Háttérbeli műveletek
+A megoldás háttérrendszer a különálló modulon működik a következő, HTTPS protokollon keresztül elérhető atomi műveletek használatával:
 
-* **Beolvasása azonosító alapján ikermodul**. A művelet a modul ikereszköz dokumentumot, beleértve a címkék és a rendszer kívánt és a jelentett tulajdonságokat adja vissza.
+* **Beolvassa a modult a Twin azonosító alapján**. Ez a művelet visszaadja a modul dupla dokumentumát, beleértve a címkéket és a kívánt és jelentett rendszertulajdonságokat.
 
-* **Részlegesen frissítése az ikermodul**. Ez a művelet lehetővé teszi, hogy a megoldás háttérrendszere a címkék és a egy ikermodul kívánt tulajdonságai részben frissíteni. A részleges frissítési fejezzük ki, amely bármely vlastnost ad hozzá vagy JSON-dokumentumként. Tulajdonságok beállítása `null` el lesznek távolítva. A következő példában létrehozunk egy új kívánt tulajdonság értékkel `{"newProperty": "newValue"}`, felülírja a meglévő értékét `existingProperty` a `"otherNewValue"`, és eltávolítja a `otherOldProperty`. Nem más változnak meglévő kívánt tulajdonságok vagy címkék:
+* **Részleges frissítési modul Twin**. Ez a művelet lehetővé teszi, hogy a megoldás hátterében részben frissítse a címkéket vagy a kívánt tulajdonságokat egy különálló modulban. A részleges frissítés JSON-dokumentumként van megadva, amely bármilyen tulajdonságot feltesz vagy frissít. A `null`ra beállított tulajdonságok el lesznek távolítva. Az alábbi példa egy új kívánt tulajdonságot hoz létre `{"newProperty": "newValue"}`értékkel, felülírja a `existingProperty` meglévő értékét a `"otherNewValue"`, és eltávolítja `otherOldProperty`. A meglévő kívánt tulajdonságok vagy címkék nem módosulnak:
 
     ```json
     {
@@ -168,32 +168,32 @@ A megoldás háttérrendszere az ikermodul használatával a következő atomi m
     }
     ```
 
-* **Cserélje le a kívánt tulajdonságok**. Ez a művelet lehetővé teszi, hogy a megoldás háttérrendszere teljesen felülírja az összes kívánt tulajdonságokkal, és helyettesítse be az új JSON-dokumentumok `properties/desired`.
+* A **kívánt tulajdonságok cseréje**. Ez a művelet lehetővé teszi a megoldás háttérbe lépését, hogy teljesen felülírja az összes meglévő kívánt tulajdonságot, és új JSON-dokumentumot cseréljen a `properties/desired`re.
 
-* **Cserélje le a címkék**. Ez a művelet lehetővé teszi, hogy a megoldás háttérrendszere teljesen felülírja az összes meglévő címkék, és helyettesítse be az új JSON-dokumentumok `tags`.
+* **Címkék cseréje** Ez a művelet lehetővé teszi, hogy a megoldás háttérrendszer teljesen felülírja az összes meglévő címkét, és új JSON-dokumentumot cseréljen a `tags`.
 
-* **Ikereszköz-értesítések fogadása**. Ez a művelet lehetővé teszi, hogy a megoldás háttérrendszere az ikereszköz módosításakor értesülni kívánnak. Ehhez az IoT-megoldás van szüksége, hozzon létre egy útvonalat és beállíthatja az adatforrás egyenlő *twinChangeEvents*. Alapértelmezés szerint nincs ikereszköz értesítések lesznek küldve, ez azt jelenti, hogy nincs ilyen útvonal már léteznie kell. Ha túl magas a változási gyakoriság, vagy más okból, például a belső hibákat, az IoT Hub küldhet csak egy értesítést, amely tartalmazza az összes módosítást. Ezért ha az alkalmazásnak megbízható vizsgálati és naplózási összes köztes állapotok, használjon eszköz – felhő üzeneteket. Ikereszköz üzenet tulajdonságait és a törzs tartalmaz.
+* **Kettős értesítések fogadása**. Ez a művelet lehetővé teszi a megoldás háttérbeli értesítését, ha a Twin módosítva van. Ehhez a IoT-megoldásnak létre kell hoznia egy útvonalat, és az adatforrást meg kell egyeznie a *twinChangeEvents*értékkel. Alapértelmezés szerint a rendszer nem küld külön értesítéseket, azaz nem léteznek ilyen útvonalak. Ha a változás sebessége túl magas, vagy más okokból, például belső hibák esetén, a IoT Hub csak egy értesítést küldhet, amely az összes módosítást tartalmazza. Ezért, ha az alkalmazásnak az összes közbenső állapot megbízható naplózására és naplózására van szüksége, az eszközről a felhőbe irányuló üzeneteket kell használnia. A kettős értesítési üzenet tartalmazza a tulajdonságokat és a törzset.
 
   - Tulajdonságok
 
-    | Name (Név) | Érték |
+    | Név | Value (Díj) |
     | --- | --- |
-    $content-type | application/json |
-    $iothub-enqueuedtime |  Idő, amikor az értesítés küldése |
-    $iothub-message-source | twinChangeEvents |
-    $content-encoding | utf-8 |
+    $content típusa | application/json |
+    $iothub – enqueuedtime |  Az értesítés elküldésének ideje |
+    $iothub – üzenet – forrás | twinChangeEvents |
+    $content – kódolás | UTF-8 |
     deviceId | Az eszköz azonosítója |
     moduleId | A modul azonosítója |
-    hubName | Name of IoT Hub |
-    operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) időbélyegző-művelet |
-    iothub-message-schema | deviceLifecycleNotification |
+    hubName | IoT Hub neve |
+    operationTimestamp | A művelet [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) időbélyege |
+    iothub – üzenet – séma | deviceLifecycleNotification |
     opType | "replaceTwin" vagy "updateTwin" |
 
-    Üzenet Rendszertulajdonságok van fűzve előtagként a `$` szimbólum.
+    Az üzenetrendszer tulajdonságai előtaggal vannak ellátva a `$` szimbólummal.
 
   - Törzs
         
-    Ebben a szakaszban egy JSON-formátumban ikereszköz módosításokat tartalmazza. Ugyanazt a formátumot használja a javítások, azzal a különbséggel, hogy minden ikereszköz szakasz tartalmazhat: címkék, properties.reported, properties.desired és, hogy a "$metadata" elemeket tartalmazza. Például:
+    Ez a szakasz a JSON-formátum összes kettős módosítását tartalmazza. Ugyanazt a formátumot használja, mint a javítás, a különbséggel, hogy az összes különálló szakaszt tartalmazhatja: címkék, tulajdonságok. jelentett, Properties. desired, és hogy tartalmazza a "$metadata" elemeket. Például:
 
     ```json
     {
@@ -214,33 +214,33 @@ A megoldás háttérrendszere az ikermodul használatával a következő atomi m
     }
     ```
 
-A fenti műveletek támogatásához [optimista egyidejűséget](iot-hub-devguide-device-twins.md#optimistic-concurrency) és szükséges a **ServiceConnect** engedéllyel, ahogyan az az a [hozzáférés vezérlése az IoT hub](iot-hub-devguide-security.md) cikk.
+Az összes korábbi művelet támogatja az [optimista párhuzamosságot](iot-hub-devguide-device-twins.md#optimistic-concurrency) , és megköveteli a **ServiceConnect** engedélyt, ahogyan azt a [hozzáférés vezérlése IoT hub](iot-hub-devguide-security.md) cikk határozza meg.
 
-Ezek a műveletek mellett a megoldás háttérrendszere le tudja kérdezni az ikermodulokkal használatával az SQL-szerű [IoT Hub lekérdezési nyelv](iot-hub-devguide-query-language.md).
+Ezen műveletek mellett a megoldás háttérbe állítása is lekérdezheti az ikrek modult az SQL-szerű [IoT hub lekérdezési nyelv](iot-hub-devguide-query-language.md)használatával.
 
-## <a name="module-operations"></a>Modulműveletek
+## <a name="module-operations"></a>Modul műveletei
 
-A modul alkalmazás használatával a következő atomi műveletek ikermodulja működik:
+A modul-alkalmazás a következő atomi műveletek használatával működik a különálló modulon:
 
-* **Ikermodul lekéréséhez**. A művelet a modul ikereszköz dokumentum (beleértve a címkék és a rendszer kívánt és a jelentett Tulajdonságok) a jelenleg csatlakoztatott modul adja vissza.
+* **Modul beolvasása Twin**. Ez a művelet visszaadja a modul dupla dokumentumát (beleértve a címkéket és a kívánt és jelentett rendszertulajdonságokat) a jelenleg csatlakoztatott modulhoz.
 
-* **Részben a jelentett tulajdonságok frissítésére**. Ez a művelet lehetővé teszi, hogy a jelenleg csatlakoztatott modul az a jelentett tulajdonságok részleges frissítéséhez. Ez a művelet, hogy a megoldás biztonsági célból használ egy részleges kívánt tulajdonságok frissítése ugyanazon JSON frissítés formátumot használja.
+* **Jelentett tulajdonságok részleges frissítése**. Ez a művelet lehetővé teszi a jelenleg csatlakoztatott modul jelentett tulajdonságainak részleges frissítését. Ez a művelet ugyanazt a JSON-frissítési formátumot használja, amelyet a megoldás hátterében a kívánt tulajdonságok részleges frissítése használ.
 
-* **Figyelje meg a kívánt tulajdonságok**. A jelenleg csatlakoztatott modul lehet váltani, ha azok a frissítések a kívánt tulajdonságok értesítést. A modul megkapja a megoldás háttérrendszere által végrehajtott frissítés (részleges vagy teljes csere) ugyanazon az űrlapon.
+* A **kívánt tulajdonságok megfigyelése**. A jelenleg csatlakoztatott modul dönthet úgy, hogy értesítést küld a kívánt tulajdonságok frissítéseiről, amikor azok történnek. A modul a megoldás hátterében futtatott frissítés (részleges vagy teljes csere) azonos formáját kapja.
 
-A fenti műveletekhez szükség van a **ModuleConnect** engedéllyel, ahogyan az a [hozzáférés vezérlése az IoT hub](iot-hub-devguide-security.md) cikk.
+Az összes fenti művelethez szükség van a **ModuleConnect** engedélyre, ahogy [azt a hozzáférés-vezérlés IoT hub](iot-hub-devguide-security.md) cikk határozza meg.
 
-A [Azure IoT eszközoldali SDK-k](iot-hub-devguide-sdks.md) megkönnyítik a fenti műveletek számos nyelven és platformon használja.
+Az [Azure IoT-eszközök SDK](iot-hub-devguide-sdks.md) -k megkönnyítik az előző műveletek használatát számos nyelvről és platformról.
 
-## <a name="tags-and-properties-format"></a>Címkék és tulajdonságok formátum
+## <a name="tags-and-properties-format"></a>Címkék és tulajdonságok formátuma
 
-Címkék, kívánt tulajdonságok, jelentett tulajdonságok jsou JSON-objektumok a következő korlátozásokkal:
+A címkék, a kívánt tulajdonságok és a jelentett tulajdonságok a JSON-objektumok a következő korlátozásokkal:
 
-* A JSON-objektumok összes kulcsokat a kis-és nagybetűket 64 bájt UTF-8 UNICODE karakterláncokat. Engedélyezett karakterek kizárása UNICODE vezérlőkaraktereket (szegmensek C0 és C1), és `.`, SP és `$`.
+* A JSON-objektumok kulcsai a kis-és nagybetűket megkülönböztető 64 bájtos UTF-8 UNICODE-karakterláncok. Az engedélyezett karakterek kizárják a UNICODE vezérlő karaktereket (a C0 és a C1 szegmenst), valamint `.`, SP és `$`.
 
-* JSON-objektumok összes értéke lehet a következő JSON-típusok: boolean, szám, karakterlánc, objektum. Tömbök használata nem engedélyezett. Egész számok maximális értéke 4503599627370495, az egész számok minimális értéke pedig-4503599627370496.
+* A JSON-objektumokban lévő összes érték a következő JSON-típusokkal rendelkezhet: logikai, szám, karakterlánc, objektum. Tömbök használata nem engedélyezett. Az egész számok maximális értéke 4503599627370495, az egész számok minimális értéke pedig-4503599627370496.
 
-* A címkék és a kívánt, és a jelentett tulajdonságok minden JSON-objektumok rendelkezhet 5 maximális mélységét. Például a következő objektum érvénytelen:
+* A címkék, a kívánt és a jelentett tulajdonságok összes JSON-objektuma legfeljebb 5 lehet. Például a következő objektum érvényes:
 
     ```json
     {
@@ -262,19 +262,19 @@ Címkék, kívánt tulajdonságok, jelentett tulajdonságok jsou JSON-objektumok
     }
     ```
 
-* Az összes karakterlánc-értékek legfeljebb 512 bájt hosszúságú lehet.
+* Az összes karakterlánc-érték legfeljebb 512 bájt hosszúságú lehet.
 
-## <a name="module-twin-size"></a>Modul ikereszköz mérete
+## <a name="module-twin-size"></a>Modul mérete (Twin)
 
-Az IoT Hub kényszerít egy 8 KB-os korlátozás megfelelő a Összértékek az egyes `tags`, `properties/desired`, és `properties/reported`, kivéve a csak olvasható elemeket.
+IoT Hub kényszeríti a `tags`értékének 8 KB-os korlátját, és egy 32 KB méretű korlátot a `properties/desired` és `properties/reported`értékére. Ezek az összegek kizárólag a csak olvasható elemekből állnak.
 
-Összes karakter lehet UNICODE vezérlőkaraktereket (szegmensek C0 és C1) alapján számított méretét és a szóközöket a karakterlánc-állandókat kívüli felhasználókhoz tartozik.
+A méret kiszámítása az összes karakter számlálásával történik, kivéve a UNICODE vezérlő karaktereket (szegmensek C0 és C1), valamint a karakterlánc-konstansokon kívüli szóközöket.
 
-Az IoT Hub elutasítja egy hiba miatt minden művelet, amely növelné mérete meghaladja a közzétett dokumentumokat.
+IoT Hub elutasítja az összes olyan műveletet, amely a határértéknél nagyobb mértékben növelné a dokumentumok méretét.
 
-## <a name="module-twin-metadata"></a>A modul ikereszköz metaadatok
+## <a name="module-twin-metadata"></a>Modul – Twin metaadatok
 
-Az IoT Hub fenntartja az időbélyeget utolsó frissítésének minden JSON-objektum az ikermodul kívánt, és jelentett tulajdonságokként. Az időbélyegek (UTC), és a kódolt a [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) formátum `YYYY-MM-DDTHH:MM:SS.mmmZ`.
+IoT Hub megtartja az utolsó frissítés időbélyegét minden egyes JSON-objektumhoz a modul Twin kívánt és jelentett tulajdonságaiban. Az időbélyegek UTC szerint vannak kódolva, és a [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) formátuma `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 Példa:
 
 ```json
@@ -322,19 +322,19 @@ Példa:
 }
 ```
 
-Ezek az információk segítségével megőrizheti a frissítéseket, amelyek objektum bejegyzéseinek eltávolítása tárolt minden szinten (nem csak a JSON-struktúrát levelek).
+Ezek az információk minden szinten megmaradnak (nem csak a JSON-struktúra levelei) az objektumok kulcsait eltávolító frissítések megőrzése érdekében.
 
 ## <a name="optimistic-concurrency"></a>Optimista párhuzamosság
 
-Címkék, szükséges, és jelentett tulajdonságokként minden támogatási optimista egyidejűséget.
-A címkék rendelkezik egy ETag megfelelően [RFC7232](https://tools.ietf.org/html/rfc7232), amely JSON-reprezentációval a címke jelöli. Feltételes frissítési műveleteket a megoldás háttérrendszere az ETag használatával biztosítani a konzisztenciát.
+Címkék, kívánt és jelentett tulajdonságok az optimista párhuzamosságok támogatásával.
+A címkékhez ETag ( [RFC7232](https://tools.ietf.org/html/rfc7232)) tartozik, amely a címke JSON-ábrázolását jelöli. A konzisztencia biztosításához használhatja a megoldás Etagek a feltételes frissítési műveletekben.
 
-Ikermodul kívánt, és jelentett tulajdonságokként ETag nem rendelkezik, de van egy `$version` érték, amely garantáltan növekményes. Hasonlóképpen, az ETag címke, a verzió segítségével a frissítési fél konzisztenciájuk frissítések. Például egy modul alkalmazás a jelentett tulajdonságok vagy kívánt tulajdonság a megoldás háttérrendszeréhez.
+A kiválasztott modul és a jelentett tulajdonságok nem rendelkeznek Etagek, de egy `$version` érték, amely garantáltan növekményes. A ETag hasonlóan a frissítési fél is használhatja a verziót a frissítések konzisztenciájának betartatására. Például egy jelentett tulajdonsághoz tartozó modul-alkalmazás, vagy a kívánt tulajdonsághoz tartozó megoldás háttérbeli vége.
 
-Verziók akkor is hasznos, ha observing ügynök (például a modul az alkalmazás figyelje a kívánt tulajdonságok) meg kell szüntetnie végigszaladsz beolvasása művelet eredményének és a egy frissítési értesítés között. A szakasz [eszköz újrakapcsolódási folyamat](iot-hub-devguide-device-twins.md#device-reconnection-flow) további információkat biztosít. 
+A verziók akkor is hasznosak, ha egy megfigyelő ügynök (például a kívánt tulajdonságokat megfigyelő modul alkalmazás) összeegyezteti a versenyeket egy lekérési művelet és egy frissítési értesítés eredménye között. Az [eszköz újrakapcsolási folyamatának](iot-hub-devguide-device-twins.md#device-reconnection-flow) szakasza további információkat tartalmaz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Próbálja ki a jelen cikkben ismertetett fogalmakat, tekintse meg az IoT Hub anyagra:
+A cikkben ismertetett fogalmak némelyikének kipróbálásához tekintse meg a következő IoT Hub oktatóanyagokat:
 
-* [Ismerkedés az IoT Hub identitás- és modul ikermodul .NET-háttérrendszer és a .NET-eszköz használata](iot-hub-csharp-csharp-module-twin-getstarted.md)
+* [Ismerkedés a IoT Hub modul identitásával és a Twin modullal a .NET back end és a .NET eszköz használatával](iot-hub-csharp-csharp-module-twin-getstarted.md)

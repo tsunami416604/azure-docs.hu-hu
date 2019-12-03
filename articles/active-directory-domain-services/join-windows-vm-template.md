@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f35c9c3c6c974c79dc849425fc91b532aed4d22
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3e1a754d39025136866712cb57026e827c986f6a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755687"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704999"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Windows Server rendszerű virtuális gép csatlakoztatása egy Azure Active Directory Domain Services felügyelt tartományhoz Resource Manager-sablon használatával
 
@@ -93,7 +93,7 @@ Ha Windows Server rendszerű virtuális gépet szeretne létrehozni, csatlakozta
     | Létező alhálózat neve      | A meglévő virtuális hálózat alhálózatának neve, például *munkaterhelések*. |
     | DNS-címke előtagja          | Adja meg a virtuális gép számára használandó DNS-nevet (például *myvm*). |
     | Virtuális gép mérete                   | Meg kell adni a virtuális gép méretét, például *Standard_DS2_v2*. |
-    | Csatlakozás tartományhoz            | Az Azure AD DS felügyelt tartomány DNS-neve, például *contoso.com*. |
+    | Csatlakozás tartományhoz            | Az Azure AD DS felügyelt tartomány DNS-neve, például *aadds.contoso.com*. |
     | Tartomány felhasználóneve           | Az Azure AD DS felügyelt tartomány felhasználói fiókja, amelyet a virtuális gép felügyelt tartományhoz való csatlakoztatására kell használni. Ennek a fióknak az *Azure ad DC-rendszergazdák* csoport tagjának kell lennie. |
     | Tartományi jelszó           | Az előző beállításban megadott felhasználói fiók jelszava. |
     | Választható szervezeti egység elérési útja          | Az az egyéni szervezeti egység, amelyben hozzá szeretné adni a virtuális gépet. Ha nem ad meg értéket ehhez a paraméterhez, a rendszer hozzáadja a virtuális gépet az alapértelmezett *HRE DC számítógépek* szervezeti egységhez. |

@@ -1,6 +1,6 @@
 ---
-title: IoT csatlakoztatása Plug and Play előnézeti eszközről az Azure IoT Centralba | Microsoft Docs
-description: Eszköz-képesség modell használata az eszköz kódjának létrehozásához. Ezután futtassa az eszköz kódját, tekintse meg az eszköz csatlakozik a IoT Central alkalmazáshoz, és használja az automatikusan létrehozott nézeteket.
+title: Oktatóanyag – IoT Plug and Play előnézeti eszköz csatlakoztatása az Azure-hoz IoT Central
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhatja ki az eszköz kódját az eszköz-képesség modell használatával. Ezután futtassa az eszköz kódját, tekintse meg az eszköz csatlakozik a IoT Central alkalmazáshoz, és használja az automatikusan létrehozott nézeteket.
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/08/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: be03684f89382f198c13540bbdfb3de5bf8513a6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 59261d6a1cea034df58bd7e8d53439cdf1fbae6b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404551"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702860"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Oktatóanyag: eszköz-képességi modell használata IoT-Plug and Play eszköz létrehozásához és a IoT Central-alkalmazáshoz való csatlakoztatásához
 
@@ -21,7 +21,7 @@ ms.locfileid: "74404551"
 
 Az _eszköz képességi modellje_ (DCM) ismerteti a [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) eszköz képességeit. IoT Central a DCM használatával létrehozhat egy eszköz sablont és vizualizációkat az eszközhöz, amikor az eszköz az első alkalommal csatlakozik.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A Visual Studio Code használatával hozzon létre egy IoT Plug and Play eszközt DCM használatával.

@@ -6,17 +6,20 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 63fe6c4a2d02489b5e25100aa6aa23407bbe6bc7
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 3af951d120282767bd71bc569d8c0bfe39dafffe
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809382"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705467"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs-adatok inaktív titkosításához a Azure Portal használatával
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure-Event Hubs inaktív adatok titkosításához a Azure Portal (előzetes verzió) használatával
 Az Azure Event Hubs az Azure Storage Service Encryption (Azure SSE) segítségével titkosítja az inaktív adatok titkosítását. Event Hubs az Azure Storage-ra támaszkodik az adattárolásra, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal titkosították a Microsoft által felügyelt kulcsokkal. 
+
+>[!NOTE]
+> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Javasoljuk, hogy éles környezetben ne használja a-t.
 
 ## <a name="overview"></a>Áttekintés
 Az Azure Event Hubs mostantól támogatja az inaktív adatok titkosítását a Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsok használatával (Bring Your Own Key – BYOK). Ez a funkció lehetővé teszi az Azure Event Hubs-adatok inaktív állapotban való titkosításához használt ügyfél által felügyelt kulcsok elérésének létrehozását, elforgatását, letiltását és visszavonását.
@@ -113,7 +116,7 @@ Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva. M
 | keyVault | A Key Vault teljes neve. |
 | kulcs | Az Event Hubs névtér titkosításához használt kulcsnév. |
 | version | A használt kulcs verziószáma. |
-| Művelet | A Key vaultban a kulcsban végrehajtott művelet. Például letilthatja/engedélyezheti a kulcsot, becsomagolhatja vagy kicsomagolhatja |
+| művelet | A Key vaultban a kulcsban végrehajtott művelet. Például letilthatja/engedélyezheti a kulcsot, becsomagolhatja vagy kicsomagolhatja |
 | Kód | A művelethez társított kód. Példa: hibakód, 404 azt jelenti, hogy a kulcs nem található. |
 | message | A művelethez társított hibaüzenetek |
 

@@ -150,9 +150,9 @@
         - name: .NET egyéni tevékenység
           href: data-factory-use-custom-activities.md
         - name: R-szkriptek meghívása
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample'
         - name: Modellek újrafeldolgozása az Azure Analysis Servicesben
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample'
         - name: Társított szolgáltatások számítása
           href: data-factory-compute-linked-services.md
     - name: Fejlesztés

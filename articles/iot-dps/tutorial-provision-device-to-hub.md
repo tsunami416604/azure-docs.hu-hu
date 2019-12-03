@@ -1,6 +1,6 @@
 ---
-title: Eszköz kiépítése az Azure IoT Hub Device Provisioning Service használatával
-description: Oktatóanyag – az eszköz kiépítése egyetlen IoT hubhoz az Azure IoT Hub Device Provisioning Service használatával
+title: Oktatóanyag – eszköz kiépítése az Azure IoT Hub Device Provisioning Service használatával
+description: Ez az oktatóanyag bemutatja, hogyan építheti ki az eszközt egyetlen IoT hubhoz az Azure IoT Hub Device Provisioning Service használatával
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6be3832163d4aa857b15f73671985b96d864b730
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358fa1fdc767919720ecb26497c818f4945badb6
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228294"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702467"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Oktatóanyag: az eszköz kiépítése egy IoT hubhoz az Azure IoT Hub Device Provisioning Service használatával
 
@@ -44,7 +44,7 @@ Ennek a lépésnek a részét képezi az eszköz egyedi biztonsági összetevői
 - X.509-alapú eszközökhöz a következőkre van szükség:
     - Az [X.509-lapkához vagy -szimulációhoz kiadott tanúsítvány](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) *.pem* vagy *.cer* fájlformátumban. Egyéni regisztráció esetén az X. 509 rendszer eszközönként *aláírt tanúsítványát* kell használnia, a regisztrációs csoportok esetében azonban a *főtanúsítványt*kell használnia. 
 
-      [![X.509-igazolás egyéni beléptetésének hozzáadása a portálon](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
+      [![Egyéni regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
 A következő két módon regisztrálható az eszköz a Device Provisioning Service-ben:
 

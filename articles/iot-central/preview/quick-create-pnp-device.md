@@ -1,6 +1,6 @@
 ---
-title: Szimulált eszköz hozzáadása az Azure IoT Centralhoz | Microsoft Docs
-description: Hozzon létre egy sablont, és adjon hozzá egy szimulált eszközt a IoT Central alkalmazáshoz.
+title: Rövid útmutató – szimulált eszköz hozzáadása az Azure IoT Central
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy eszköz-sablont, és hogyan adhat hozzá szimulált eszközt a IoT Central alkalmazáshoz.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/24/2019
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 8b6720af6328242a1fe297e60c9d413d0b83f3d2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 46d325fd609363a5425fc16845552e75b575c231
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893822"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706699"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application-preview-features"></a>Gyors útmutató: szimulált eszköz hozzáadása a IoT Central alkalmazáshoz (előzetes verziójú funkciók)
 
@@ -166,7 +166,7 @@ Miután létrehozta az új szimulált eszközt, a szerkesztő ezzel az eszközze
 
     ![Előnézet eszköz konfigurálása](./media/quick-create-pnp-device/configure-preview.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy **környezeti érzékelőt** tartalmazó eszközt, és hogyan adhat hozzá szimulált eszközt az alkalmazáshoz.
 

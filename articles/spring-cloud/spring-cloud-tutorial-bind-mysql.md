@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL-példány kötése az Azure Spring Cloud-alkalmazáshoz | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan köthető egy Azure Database for MySQL-példány az Azure Spring Cloud-alkalmazáshoz
+title: Oktatóanyag – Azure Database for MySQL-példány kötése az Azure Spring Cloud-alkalmazáshoz
+description: Ez az oktatóanyag bemutatja, hogyan köthető egy Azure Database for MySQL-példány az Azure Spring Cloud-alkalmazáshoz
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6c5cd4ac384affaedbd813f9395f997f92eb69c4
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a9911798e42db55d5aaae90c933cfb64945b244c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151125"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708810"
 ---
 # <a name="tutorial-bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Oktatóanyag: Azure Database for MySQL-példány kötése az Azure Spring Cloud-alkalmazáshoz 
 
@@ -21,7 +21,7 @@ Az Azure Spring Cloud-ban az Azure-szolgáltatások automatikus kiválasztását
 
 * Üzembe helyezett Azure Spring Cloud-példány
 * Egy Azure Database for MySQL fiók
-* Azure CLI
+* Azure parancssori felület (CLI)
 
 Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse a gyors útmutató [: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart-launch-app-portal.md) az első rugós felhőalapú alkalmazás üzembe helyezéséhez.
 
@@ -59,10 +59,9 @@ Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse a gyors
     spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan köthető az Azure Spring Cloud-alkalmazás egy Azure Database for MySQL-példányhoz.  Ha többet szeretne megtudni az Azure Spring Cloud-szolgáltatás kezeléséről, tekintse meg a szolgáltatás felderítésével és regisztrálásával foglalkozó cikket.
 
 > [!div class="nextstepaction"]
 > [A Service Discovery és a regisztráció engedélyezése a Spring Cloud Service-beállításjegyzék használatával](spring-cloud-service-registration.md)
-

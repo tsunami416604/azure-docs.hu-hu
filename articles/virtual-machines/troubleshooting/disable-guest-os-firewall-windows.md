@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2c3f733ad5af46c16a6880b8988754fd81ddabb0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030605"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705549"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>A vendég operációs rendszer tűzfalának letiltása az Azure-beli virtuális gépen
 
@@ -27,13 +27,13 @@ Ez a cikk olyan helyzetekben nyújt olyan helyzeteket, amikor azt gyanítja, hog
 
 ## <a name="solution"></a>Megoldás
 
-A cikkben ismertetett folyamat célja, hogy megkerülő megoldásként lehessen használni, hogy a valós probléma kijavítására koncentráljon, amely a tűzfalszabályok helyes beállítását mutatja be. It\rquote a Microsoft ajánlott eljárása, hogy a Windows tűzfal összetevője engedélyezve legyen. A tűzfalszabályok konfigurálása \cf3 a virtuális gép that\rquote szükséges hozzáférési szinttől függ.
+A cikkben ismertetett folyamat célja, hogy megkerülő megoldásként lehessen használni, hogy a valós probléma kijavítására koncentráljon, amely a tűzfalszabályok helyes beállítását mutatja be. A Microsoft ajánlott eljárása, hogy a Windows tűzfal összetevője engedélyezve legyen. A tűzfalszabályok konfigurálásának módja a szükséges virtuális géphez való hozzáférés szintjétől függ.
 
 ### <a name="online-solutions"></a>Online megoldások 
 
 Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálózaton található másik virtuális gépen is elérhető, akkor a másik virtuális gép használatával is elvégezheti ezeket a megoldásokat.
 
-#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>1\. enyhítés: Egyéni parancsfájl-kiterjesztés vagy futtatási parancs funkció
+#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>1\. enyhítés: egyéni parancsfájl-kiterjesztés vagy futtatási parancs funkció
 
 Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek bővítményét](../extensions/custom-script-windows.md) vagy a [futtatási parancsok](../windows/run-command.md) szolgáltatást (csak Resource Manager-alapú virtuális gépeken) a következő parancsfájlok távoli futtatásához.
 
@@ -54,11 +54,11 @@ Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek 
 >   ```
 >   A házirend újbóli alkalmazása után azonban a távoli munkamenetből kell kiindulnia. A probléma állandó kijavítása a számítógépen alkalmazott szabályzat módosítása.
 
-#### <a name="mitigation-2-remote-powershell"></a>2\. mérséklés: Távoli PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>2\. enyhítés: távoli PowerShell
 
 1.  Kapcsolódjon egy olyan virtuális GÉPHEZ, amely az RDP-kapcsolat használatával nem elérhető virtuális géppel azonos virtuális hálózaton található.
 
-2.  Nyisson meg egy PowerShell-konzolablakot.
+2.  Nyisson meg egy PowerShell-konzolablak ablakát.
 
 3.  Futtassa az alábbi parancsot:
 
@@ -86,7 +86,7 @@ Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek 
     psservice restart mpssvc
     ```
 
-#### <a name="mitigation-4-remote-registry"></a>4\. enyhítés: Távoli beállításjegyzék 
+#### <a name="mitigation-4-remote-registry"></a>4\. mérséklés: távoli beállításjegyzék 
 
 A [Távoli beállításjegyzék](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)használatához kövesse az alábbi lépéseket.
 
@@ -118,9 +118,9 @@ A [Távoli beállításjegyzék](https://support.microsoft.com/help/314837/how-t
 
 Ha olyan helyzet áll fenn, amelyben a virtuális gépet bármilyen módon nem érheti el, az egyéni szkriptek bővítménye sikertelen lesz, és a rendszerlemezen keresztüli közvetlen munkavégzéssel OFFLINE módban kell működnie. Ehhez kövesse az alábbi lépéseket:
 
-1.  [A rendszer lemez csatolása egy helyreállítási virtuális Géphez](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Csatlakoztassa a rendszerlemezt egy helyreállítási virtuális géphez](troubleshoot-recovery-disks-portal-windows.md).
 
-2.  Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
+2.  Távoli asztal-Kapcsolódás elindítása a helyreállítási virtuális géphez.
 
 3.  Győződjön meg arról, hogy a lemez online állapotban van megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott rendszerlemezhez rendelt meghajtóbetűjelet.
 
@@ -130,7 +130,7 @@ Ha olyan helyzet áll fenn, amelyben a virtuális gépet bármilyen módon nem �
 
 6.  Ebben a hibaelhárítási eljárásban a struktúrákat BROKENSYSTEM és BROKENSOFTWARE-ként csatlakoztatjuk.
 
-7.  Jelölje ki a HKEY_LOCAL_MACHINE kulcsot, majd válassza a fájl > betöltési struktúra elemet a menüből.
+7.  Jelölje ki a HKEY_LOCAL_MACHINE kulcsot, majd válassza a fájl > betöltési struktúra lehetőséget a menüből.
 
 8.  Keresse meg a \windows\system32\config\SYSTEM fájlt a csatolt rendszerlemezen.
 
@@ -160,6 +160,6 @@ Ha olyan helyzet áll fenn, amelyben a virtuális gépet bármilyen módon nem �
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [Válassza le a rendszer lemezt, és hozza létre újból a virtuális gép](troubleshoot-recovery-disks-portal-windows.md).
+10. [Válassza le a rendszerlemezt, és hozza létre újra a virtuális gépet](troubleshoot-recovery-disks-portal-windows.md).
 
-11. Ellenőrizze, hogy a probléma megoldódott.
+11. Győződjön meg arról, hogy a probléma megoldódott-e.

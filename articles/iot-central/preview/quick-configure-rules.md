@@ -1,5 +1,5 @@
 ---
-title: Szabályok és műveletek konfigurálása az Azure IoT Centralban | Microsoft Docs
+title: Gyors útmutató – szabályok és műveletek konfigurálása az Azure IoT Central
 description: Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a telemetria szabályokat és műveleteket az Azure IoT Central alkalmazásban.
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 7e2047ee824c3dc8b6387f7879757a1e7be7a4a9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f81171d0f545bbf7f903d54bee761817e9451d9d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894074"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706719"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central-preview-features"></a>Gyors útmutató: szabályok és műveletek konfigurálása az eszközhöz az Azure IoT Central (előzetes verziójú funkciók)
 
@@ -40,11 +40,11 @@ Mielőtt elkezdené, hajtsa végre a két előző rövid útmutató [Azure IoT C
 
 1. A **feltételek** szakaszban megadhatja, hogy mi indítja el a szabályt. A következő információk segítségével határozhat meg egy olyan feltételt, amely a hőmérséklet telemetria:
 
-    | Mező                                        | Érték                             |
+    | Mező                                        | Value (Díj)                             |
     | -------------------------------------------- | ------------------------------    |
     | Mérés                                  | Hőmérséklet                       |
     | Művelet                                     | nagyobb, mint                   |
-    | Érték                                        | 90                                |
+    | Value (Díj)                                        | 90                                |
 
     További feltételek hozzáadásához válassza a **+ feltétel**lehetőséget.
 
@@ -54,10 +54,10 @@ Mielőtt elkezdené, hajtsa végre a két előző rövid útmutató [Azure IoT C
 
 1. A következő táblázatban található információk segítségével definiálhatja a műveletet:
 
-    | Beállítás   | Érték                                             |
+    | Beállítás   | Value (Díj)                                             |
     | --------- | ------------------------------------------------- |
     | Megjelenített név | Kezelői e-mail művelet                          |
-    | Művelet        | Az Ön e-mail-címe                                |
+    | –        | Az Ön e-mail-címe                                |
     | Megjegyzések     | A környezeti hőmérséklet túllépte a küszöbértéket. |
 
     > [!NOTE]
@@ -74,7 +74,7 @@ A szabály a mentése után nem sokkal érvénybe lép. Amikor teljesülnek a sz
 > [!NOTE]
 > A tesztelés befejezése után kapcsolja ki a szabályt, hogy ne kapjon riasztásokat a Beérkezett üzenetek mappájában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

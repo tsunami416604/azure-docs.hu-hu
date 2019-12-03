@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a Train & a modell üzembe helyezése – Azure IoT Edge & Machine Learning'
-description: 'Oktatóanyag: IoT Edge-modulok létrehozása és üzembe helyezése, amelyek a gépi tanulási modellből származó adatok feldolgozását végzik, majd az elemzések elküldésével IoT Hub.'
+title: 'Oktatóanyag: egyéni modulok létrehozása és telepítése – Machine Learning on Azure IoT Edge'
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és helyezhet üzembe olyan IoT Edge modulokat, amelyek a gépi tanulási modell segítségével dolgozzák fel az adatok a Leaf-eszközökről, majd az elemzések elküldésével IoT Hub.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 371c897f0b4858a642322ff35a6008edbe9a651d
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664216"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701847"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Oktatóanyag: egyéni IoT Edge-modulok létrehozása és üzembe helyezése
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: vashan
-ms.openlocfilehash: 7269c76236b7cbe60995d84e85857da596bec961
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: d3d7f92b3803114321bc7420b5c4ba059aabcb9d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264680"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705922"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Értesítés megszakítása az Azure virtuálisgép-méretezési csoport példányaihoz (előzetes verzió)
 A méretezési csoport példányai beállíthatják a példányok leállítási értesítéseinek fogadását, és előre definiált késleltetési időkorlátot állíthatnak be a megszakítási művelethez. A lemondási értesítést az Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md)küldi el, amely értesítések küldését és késleltetését teszi lehetővé, például újraindítást és újbóli üzembe helyezést. Az előzetes verziójú megoldás egy újabb eseményt ad – leáll – a Scheduled Events listájához, a megszakítási eseményhez kapcsolódó késés pedig a méretezési csoport modelljének felhasználói által megadott késleltetési korláttól függ.
@@ -67,7 +67,7 @@ Miután engedélyezte a *scheduledEventsProfile* a méretezési csoport modellj�
 >A méretezési csoport példányain lévő értesítések megszakítása csak a 2019-03-01-es vagy újabb API-verzióval engedélyezhető
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Új méretezési csoport létrehozásakor engedélyezheti a leállítási értesítéseket a méretezési csoporton a [New-AzVmssVM](/powershell/module/az.compute/new-azvmss) parancsmag használatával.
+Új méretezési csoport létrehozásakor engedélyezheti a leállítási értesítéseket a méretezési csoporton a [New-AzVmss](/powershell/module/az.compute/new-azvmss) parancsmag használatával.
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -84,7 +84,7 @@ New-AzVmss `
 
 A fenti példában egy új méretezési csoport jön létre, amely egy 5 perces alapértelmezett időkorláttal rendelkező megszakítási értesítésekkel rendelkezik. Új méretezési csoport létrehozásakor a *TerminateScheduledEvents* paraméter nem igényel értéket. Az időtúllépési érték módosításához a *TerminateScheduledEventNotBeforeTimeoutInMinutes* paraméterrel adhatja meg a kívánt időkorlátot.
 
-Az [Update-AzVmssVM](/powershell/module/az.compute/update-azvmss) parancsmag használatával engedélyezheti a megszakítási értesítéseket egy meglévő méretezési csoporton.
+Az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) parancsmag használatával engedélyezheti a megszakítási értesítéseket egy meglévő méretezési csoporton.
 
 ```azurepowershell-interactive
 Update-AzVmss `
@@ -157,8 +157,8 @@ A [PowerShell](../virtual-machines/windows/scheduled-events.md#powershell-sample
 -   Nincs kötelező várakozás az időtúllépésre – a megszakítási műveletet bármikor elindíthatja az esemény kézhezvétele után, és az esemény *NotBefore* idő lejárta előtt.
 -   Kötelező törlés időkorlátnál – az előzetes verzió nem nyújt lehetőséget az időtúllépési érték kiterjesztésére egy esemény létrehozása után. Az időtúllépés lejárta után a rendszer feldolgozza a függőben lévő megszakítási eseményt, és törli a virtuális gépet.
 -   Módosítható időtúllépési érték – a példány törlése előtt bármikor módosíthatja az időtúllépési értéket, ha módosítja a *notBeforeTimeout* tulajdonságot a méretezési csoport modelljében, és frissíti a virtuálisgép-példányokat a legújabb modellre.
--   Az összes függőben lévő törlés jóváhagyása – ha van olyan függőben lévő törlés a VM_1, amely nincs jóváhagyva, és Ön jóváhagyta egy másik megszakítási eseményt a VM_2, akkor a VM_2 nem törlődik, amíg meg nem történik a VM_1 megszakítási eseménye, vagy az időtúllépése eltelt. Ha jóváhagyta a VM_1 megszakítási eseményét, akkor a VM_1 és a VM_2 is törlődik.
--   Az összes egyidejű törlés jóváhagyása – a fenti példa kibővítésével, ha a VM_1 és a VM_2 ugyanazzal a *NotBefore* -idővel rendelkezik, akkor mindkét megszakítási eseményt jóvá kell hagyni, vagy az időtúllépés lejárta előtt sem kell a virtuális gépet törölni.
+-   Az összes függőben lévő törlés jóváhagyása – ha van függőben lévő törlés a nem jóváhagyott VM_1on, és jóváhagyta egy másik megszakítási eseményt VM_2, akkor VM_2 nem törlődik, amíg a rendszer nem törli az VM_1 megszakítási eseményét, vagy az időtúllépése eltelt. Ha jóváhagyja VM_1 megszakítási eseményét, akkor a VM_1 és a VM_2 is törlődik.
+-   Minden egyidejű törlés jóváhagyása – a fenti példát kiterjesztve, ha VM_1 és VM_2 ugyanazzal a *NotBefore* rendelkezik, akkor mindkét megszakítási eseményt jóvá kell hagyni, vagy egyetlen virtuális gépet sem kell törölni az időkorlát lejárta előtt.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 ### <a name="failure-to-enable-scheduledeventsprofile"></a>Nem sikerült engedélyezni a scheduledEventsProfile

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: ebacd386221ed12e1171034eb5d23236bd234849
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176043"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707574"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Az Azure Virtual Networks erőforrásainak névfeloldása
 
@@ -149,7 +149,7 @@ A DNS-továbbítás lehetővé teszi a DNS-feloldást a virtuális hálózatok k
 > A szerepkör-példányok az ugyanazon a virtuális hálózaton belüli virtuális gépek névfeloldását is elvégezhetik. Ezt a teljes tartománynevet használja, amely a virtuális gép állomásnevét és **Internal.cloudapp.net** DNS-utótagját tartalmazza. Ebben az esetben azonban a névfeloldás csak akkor sikeres, ha a szerepkör-példány rendelkezik a [szerepkör-sémában (. cscfg fájlban)](https://msdn.microsoft.com/library/azure/jj156212.aspx)definiált virtuálisgép-névvel.
 > `<Role name="<role-name>" vmName="<vm-name>">`
 >
-> Azok a szerepkör-példányok, amelyeknek egy másik virtuális hálózatban lévő virtuális gépek névfeloldását kell végrehajtaniuk (az **Internal.cloudapp.net** utótag használatával) ehhez a szakaszban ismertetett módszer használatával kell ezt megtenni (a két virtuális gép között továbbított egyéni DNS-kiszolgálók hálózatok).
+> Azok a szerepkörök, amelyeknek el kell végezniük a virtuális gépek névfeloldását egy másik virtuális hálózatban (a **Internal.cloudapp.net** utótag használatával) az ebben a szakaszban ismertetett módszer használatával (a két virtuális hálózat között továbbított egyéni DNS-kiszolgálók).
 >
 
 ![A virtuális hálózatok közötti DNS diagramja](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
@@ -206,7 +206,7 @@ A Azure Resource Manager üzemi modell használatakor megadhatja a virtuális h�
 A klasszikus üzemi modell használatakor megadhatja a virtuális hálózat DNS-kiszolgálóit a Azure Portal vagy a [hálózati konfigurációs fájlban](https://msdn.microsoft.com/library/azure/jj157100). A Cloud Services esetében a DNS-kiszolgálókat a [szolgáltatás konfigurációs fájljával](https://msdn.microsoft.com/library/azure/ee758710) vagy a PowerShell használatával adhatja meg a [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
-> Ha módosítja egy olyan virtuális hálózat vagy virtuális gép DNS-beállításait, amely már telepítve van, akkor a módosítások érvénybe léptetéséhez újra kell indítania az összes érintett virtuális gépet.
+> Ha módosítja egy olyan virtuális hálózat vagy virtuális gép DNS-beállításait, amely már telepítve van, az új DNS-beállítások érvénybe léptetéséhez a DHCP-bérlet megújítását kell végrehajtania a virtuális hálózatban lévő összes érintett virtuális gépen. A Windows operációs rendszert futtató virtuális gépek esetében a `ipconfig /renew` közvetlenül a virtuális gépen való beírásával teheti meg. A lépések az operációs rendszertől függően változnak. Tekintse meg az operációs rendszer típusának megfelelő dokumentációt. 
 >
 >
 

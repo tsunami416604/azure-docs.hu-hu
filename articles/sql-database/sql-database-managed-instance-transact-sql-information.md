@@ -11,34 +11,34 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 636fd5fd17838c729cdbc9e2a322c1f991d93948
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e517b6030aa1c9549e33c00425851afae90aac42
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186437"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707643"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Felügyelt példányok – T-SQL-különbségek, korlátozások és ismert problémák
 
 Ez a cikk összefoglalja és ismerteti a Azure SQL Database felügyelt példány és a helyszíni SQL Server adatbázismotor közötti szintaxissal és viselkedéssel kapcsolatos különbségeket. A felügyelt példány központi telepítésének lehetősége magas kompatibilitást biztosít a helyszíni SQL Server adatbázis-motorral. A SQL Server adatbázis-működtető funkcióinak többsége felügyelt példányok esetén támogatott.
 
-![Áttelepítés](./media/sql-database-managed-instance/migration.png)
+![Migrálás](./media/sql-database-managed-instance/migration.png)
 
 Néhány, a felügyelt példányban bevezetett és néhány viselkedési változás a SQL Serverhoz képest. A különbségek a következő kategóriákba vannak osztva:<a name="Differences"></a>
 
-- A [rendelkezésre állás](#availability) magában foglalja a [mindig](#always-on-availability) és a [biztonsági mentések](#backup)közötti különbségeket.
+- A [rendelkezésre állás](#availability) magában foglalja az [Always On rendelkezésre állási csoportok](#always-on-availability-groups) és a [biztonsági másolatok](#backup)közötti különbségeket.
 - A [Biztonság](#security) magában foglalja a [naplózás](#auditing), [a tanúsítványok](#certificates), a [hitelesítő adatok](#credential), a [kriptográfiai szolgáltatók](#cryptographic-providers), a [bejelentkezések és a felhasználók](#logins-and-users), valamint a [szolgáltatás kulcsa és a szolgáltatás főkulcsa](#service-key-and-service-master-key)közötti különbségeket.
 - A [konfiguráció](#configuration) magában foglalja a [puffer-bővítmények](#buffer-pool-extension), a [Rendezés](#collation), a [kompatibilitási szintek](#compatibility-levels), az [adatbázis-tükrözés](#database-mirroring), az adatbázis- [Beállítások](#database-options), a [SQL Server Agent](#sql-server-agent)és a [tábla beállításainak](#tables)különbségeit.
-- A [funkciók](#functionalities) közé tartozik a [bulk INSERT/OpenRowset](#bulk-insert--openrowset), a [CLR](#clr), a [DBCC](#dbcc), az [Elosztott tranzakciók](#distributed-transactions), a [bővített események](#extended-events), a [külső kódtárak](#external-libraries), a [FileStream és](#filestream-and-filetable)a lefoglalható, a [teljes szöveges Szemantikai keresés](#full-text-semantic-search), [csatolt kiszolgálók](#linked-servers), [alapszintű](#polybase), [replikálás](#replication), [visszaállítás](#restore-statement), [Service Broker](#service-broker), [tárolt eljárások, függvények és eseményindítók](#stored-procedures-functions-and-triggers).
+- A [funkciók](#functionalities) közé tartoznak a [bulk INSERT/OpenRowset](#bulk-insert--openrowset), a [CLR](#clr), a [DBCC](#dbcc), az [Elosztott tranzakciók](#distributed-transactions), a [kiterjesztett események](#extended-events), a [külső kódtárak](#external-libraries), a [FileStream és](#filestream-and-filetable)a lefoglalható, a [teljes szöveges szemantikai keresés](#full-text-semantic-search), a [csatolt kiszolgálók](#linked-servers), a [bázisok](#polybase), a [replikálás](#replication), a [visszaállítás](#restore-statement), a [Service Broker](#service-broker), a [tárolt eljárások, a függvények](#stored-procedures-functions-and-triggers)
 - [Környezeti beállítások](#Environment) , például virtuális hálózatok és alhálózati konfigurációk.
 
 Ezeknek a funkcióknak a többsége építészeti korlátozás, és a szolgáltatás funkcióit képviseli.
 
 Ezen a lapon a felügyelt példányban felderített [ideiglenes ismert problémák](#Issues) is megtalálhatók, amelyeket később megoldják a rendszer.
 
-## <a name="availability"></a>Rendelkezésre állás
+## <a name="availability"></a>Elérhetőség
 
-### <a name="always-on-availability"></a>Always on
+### <a name="always-on-availability-groups"></a>Always On rendelkezésre állási csoportok
 
 A [magas rendelkezésre állás](sql-database-high-availability.md) a felügyelt példányba van beépítve, és a felhasználók nem vezérelhetők. A következő utasítások nem támogatottak:
 
@@ -95,7 +95,7 @@ Az Azure Blob Storage-ba való naplózás `CREATE AUDIT` szintaxisának főbb el
 - A rendszer új szintaxist `TO URL` biztosít, amellyel megadhatja annak az Azure Blob Storage-tárolónak az URL-címét, amelyben a `.xel` fájlok vannak elhelyezve.
 - A `TO FILE` szintaxis nem támogatott, mert a felügyelt példányok nem férnek hozzá a Windows-fájlmegosztás számára.
 
-További információkért lásd: 
+További információ eléréséhez lásd: 
 
 - [KISZOLGÁLÓ NAPLÓZÁSÁNAK LÉTREHOZÁSA](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -163,7 +163,7 @@ A felügyelt példányok nem férhetnek hozzá a fájlokhoz, így a titkosítás
     - Exportáljon egy adatbázist a felügyelt példányból, és importálja SQL Serverre (2012-es vagy újabb verzióra).
       - Ebben a konfigurációban az összes Azure AD-felhasználó a bejelentkezések nélkül SQL Database rendszerbiztonsági tagként (Users) jön létre. A felhasználók típusa SQL (a sys. database_principals) SQL_USER jelenik meg. Engedélyeik és szerepköreik a SQL Server adatbázis-metaadatokban maradnak, és megszemélyesítésre is használhatók. Azonban nem használhatók a SQL Server való hozzáférésre és bejelentkezésre a hitelesítő adataik használatával.
 
-- Az Azure AD-kiszolgálót csak a felügyelt példány létesítési folyamata által létrehozott kiszolgálói szintű rendszerbiztonsági tag (például `securityadmin` vagy `sysadmin`, illetve más, a bejelentkezési engedélyekkel rendelkező bejelentkezések megváltoztatására jogosult bejelentkezések) tagjai hozhatnak létre. a felügyelt példány főadatbázisában lévő rendszerbiztonsági tag (Logins).
+- Csak a felügyelt példány létesítési folyamata által létrehozott kiszolgálói szintű rendszerbiztonsági tag, a kiszolgálói szerepkörök, például a `securityadmin` vagy a `sysadmin`, illetve a kiszolgálói szinten a bejelentkezési engedélyekkel rendelkező más bejelentkezések a kiszolgáló szintjén hozhatnak létre Azure AD-kiszolgálói rendszerbiztonsági tagokat (bejelentkezéseket) a Master adatbázisban a felügyelt példányok számára.
 - Ha a bejelentkezés egy SQL-rendszerbiztonsági tag, csak a `sysadmin` szerepkör részét képező bejelentkezések használhatók a Create paranccsal az Azure AD-fiókhoz tartozó bejelentkezések létrehozásához.
 - Az Azure AD-bejelentkezésnek egy Azure AD-tagnak kell lennie, amely a Azure SQL Database felügyelt példányához használt könyvtárban található.
 - Az Azure AD-kiszolgáló résztvevői (bejelentkezések) a Object Explorer SQL Server Management Studio 18,0 Preview 5 verziótól kezdődően láthatók.
@@ -191,7 +191,7 @@ A felügyelt példányok nem férhetnek hozzá a fájlokhoz, így a titkosítás
 - A [puffer-készlet kiterjesztése](/sql/database-engine/configure-windows/buffer-pool-extension) nem támogatott.
 - a `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` nem támogatott. Lásd: a [kiszolgáló konfigurációjának módosítása](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
-### <a name="collation"></a>Rendezés
+### <a name="collation"></a>Egybevetés
 
 A példányok alapértelmezett rendezése `SQL_Latin1_General_CP1_CI_AS`, és megadható létrehozási paraméterként. Lásd: [rendezések](/sql/t-sql/statements/collations).
 
@@ -302,7 +302,7 @@ A következő SQL Agent-funkciók jelenleg nem támogatottak:
 - Legközelebbi
 - Feladatok ütemezése üresjárati PROCESSZORon
 - Ügynök engedélyezése vagy letiltása
-- Riasztások
+- Értesítések
 
 További információ a SQL Server Agentről: [SQL Server Agent](/sql/ssms/agent/sql-server-agent).
 
@@ -519,7 +519,7 @@ A következő változók, függvények és nézetek eltérő eredményeket adnak
 
 ## <a name="Environment"></a>Környezeti korlátozások
 
-### <a name="subnet"></a>Subnet
+### <a name="subnet"></a>Alhálózat
 -  Nem helyezhet el semmilyen más erőforrást (például virtuális gépeket) abban az alhálózatban, amelyben a felügyelt példányt telepítette. Ezeket az erőforrásokat egy másik alhálózattal telepítse.
 - Az alhálózatnak elegendő számú elérhető [IP-címmel](sql-database-managed-instance-connectivity-architecture.md#network-requirements)kell rendelkeznie. A minimum 16, míg a javaslat szerint legalább 32 IP-címmel kell rendelkeznie az alhálózatban.
 - [A szolgáltatási végpontok nem társíthatók a felügyelt példány alhálózatához](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Győződjön meg arról, hogy a szolgáltatás-végpontok beállítás le van tiltva a virtuális hálózat létrehozásakor.
@@ -529,7 +529,7 @@ A következő változók, függvények és nézetek eltérő eredményeket adnak
 ### <a name="vnet"></a>VNET
 - A VNet az Resource Model használatával telepíthető – a VNet klasszikus modellje nem támogatott.
 - Felügyelt példány létrehozása után a felügyelt példány vagy VNet másik erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott.
-- Egyes szolgáltatások, például a App Service környezetek, a Logic apps és a felügyelt példányok (földrajzi replikálás, tranzakciós replikálás vagy csatolt kiszolgálókon keresztül) nem férnek hozzá a felügyelt példányokhoz különböző régiókban, ha a virtuális hálózatok [globálisan vannak csatlakoztatva peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Ezekhez az erőforrásokhoz a ExpressRoute vagy a VNet – VNet használatával csatlakozhat a VNet-átjárók segítségével.
+- Egyes szolgáltatások, például a App Service környezetek, a Logic apps és a felügyelt példányok (földrajzi replikáláshoz, tranzakciós replikáláshoz vagy csatolt kiszolgálókon keresztül) nem férnek hozzá a felügyelt példányokhoz különböző régiókban, ha a virtuális hálózatok a [globális társak](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)használatával kapcsolódnak egymáshoz. Ezekhez az erőforrásokhoz a ExpressRoute vagy a VNet – VNet használatával csatlakozhat a VNet-átjárók segítségével.
 
 ### <a name="tempdb"></a>TEMPDB
 
@@ -569,7 +569,7 @@ A folyamatban lévő `RESTORE` utasítás, az adatáttelepítési szolgáltatás
 
 **Dátum:** Sep 2019
 
-[Resource Governor](/sql/relational-databases/resource-governor/resource-governor) funkció, amely lehetővé teszi a felhasználói munkaterheléshez rendelt erőforrások korlátozását, a feladatátvétel vagy a felhasználó által kezdeményezett változás (például a maximális virtuális mag vagy a maximális példány) módosítása után helytelenül osztályozhatja a felhasználói munkaterheléseket. a tárterület mérete).
+[Resource Governor](/sql/relational-databases/resource-governor/resource-governor) funkció, amely lehetővé teszi a felhasználói munkaterheléshez rendelt erőforrások korlátozását, előfordulhat, hogy a feladatátvétel vagy a felhasználó által kezdeményezett változás miatt helytelenül osztályoz bizonyos felhasználói munkaterheléseket (például a maximális virtuális mag vagy a példányok maximális tárolási méretének módosítása).
 
 **Megkerülő megoldás**: futtasson `ALTER RESOURCE GOVERNOR RECONFIGURE` rendszeresen vagy SQL Agent-feladat részeként, amely végrehajtja az SQL-feladatot, amikor a példány elindul, ha [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)használ.
 
@@ -679,7 +679,7 @@ A felügyelt példányba helyezett CLR-modulok, valamint az aktuális példányr
 
 **Áthidaló megoldás:** Ha lehetséges, használjon egy CLR-modul környezeti kapcsolatait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A felügyelt példányokkal kapcsolatos további információkért lásd: [Mi az a felügyelt példány?](sql-database-managed-instance.md)
 - A szolgáltatások és összehasonlítások listájáért lásd: [Azure SQL Database szolgáltatások összehasonlítása](sql-database-features.md).
