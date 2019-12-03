@@ -26,6 +26,8 @@
       href: spring-cloud-tutorial-scale-manual.md
     - name: Alkalmazás monitorozása elosztott nyomkövetés és az App Insights használatával
       href: spring-cloud-tutorial-distributed-tracing.md
+    - name: Spring Cloud-erőforrások monitorozása riasztások és műveletcsoportok használatával
+      href: spring-cloud-tutorial-alerts-action-groups.md
     - name: Alkalmazás kötése az Azure Cosmos DB-hez
       href: spring-cloud-tutorial-bind-cosmos.md
     - name: Alkalmazás kötése az Azure Cache for Redishez
