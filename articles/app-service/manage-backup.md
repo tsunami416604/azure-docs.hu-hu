@@ -1,24 +1,16 @@
 ---
-title: Alkalmazás biztonsági mentése – Azure App Service
-description: Ismerje meg, hogyan hozhat létre biztonsági másolatokat az alkalmazásairól Azure App Serviceban.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: Alkalmazás biztonsági mentése
+description: Ismerje meg, hogyan hozhat létre biztonsági másolatokat az alkalmazásairól Azure App Serviceban. Manuális vagy ütemezett biztonsági mentések futtatása. A biztonsági mentéseket a csatolt adatbázissal is testreszabhatja.
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a56abbcb72afc1f45683259d3bd3bf13309cda07
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886067"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671653"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A [Azure app Service](overview.md) biztonsági mentési és visszaállítási funkciója lehetővé teszi, hogy egyszerűen hozza létre az alkalmazások biztonsági másolatait manuálisan vagy ütemezés szerint. Beállíthatja, hogy a biztonsági másolatok határozatlan ideig maradjanak. Az alkalmazást visszaállíthatja egy korábbi állapot pillanatképére a meglévő alkalmazás felülírásával vagy egy másik alkalmazásra való visszaállítással.

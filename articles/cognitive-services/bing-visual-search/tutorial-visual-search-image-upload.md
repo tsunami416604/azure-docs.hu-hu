@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Kép – a Bing Visual Search feltöltése'
+title: 'Oktatóanyag: Kép feltöltése – Bing Visual Search'
 titleSuffix: Azure Cognitive Services
 description: Lebontja a kép a Bingbe való feltöltésének folyamatát, melynek során a rendszer megállapításokat ad vissza a képről, majd elemzi és megjeleníti a választ.
 services: cognitive-services
@@ -8,35 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 04/03/2019
+ms.date: 11/29/2019
 ms.author: scottwhi
-ms.openlocfilehash: 42a7db316e844e5dbd09fb75a07e1c7883a9cec9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 84a8219221525400a9d3241c2f183d24344c2f6a
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829565"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689177"
 ---
-# <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Oktatóanyag: Képek feltöltése a Bing Visual Search API
+# <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Oktatóanyag: lemezképek feltöltése a Bing Visual Search APIba
 
-A Bing Visual Search API lehetővé teszi a hasonló megjelennek a feltöltött képek weben való kereséshez. Ez az oktatóanyag segítségével hozzon létre egy webalkalmazást, amely egy lemezképet küldhet az API-hoz, és adja vissza, a képernyőn látható weblapon található meg a. Vegye figyelembe, hogy az alkalmazás nem felel meg az összes [követelmények Bing használata és megjelenítése](../bing-web-search/use-display-requirements.md) tartozó API használatával.
+A Bing Visual Search API lehetővé teszi, hogy az Ön által feltöltött képekhez hasonló képeket keressen a weben. Ezzel az Oktatóanyaggal létrehozhat egy webalkalmazást, amely képes képet küldeni az API-nak, és megjeleníti a weblapon visszaadott elemzéseket. Vegye figyelembe, hogy ez az alkalmazás nem felel meg az API-k használatának összes [Bing-és megjelenítési követelményének](../bing-web-search/use-display-requirements.md) .
 
-Megtalálhatja a teljes forráskódot a minta további hibakezelést és jegyzetek [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchUploadImage.html).
+A minta teljes forráskódját a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchUploadImage.html)további hibakezelés és jegyzetek is megtalálhatja.
 
 Az oktatóanyag részeként összeállított alkalmazás a következők bemutatására szolgál:
 
 > [!div class="checklist"]
-> * Feltölthet egy képet a Bing Visual Search API
-> * Egy webalkalmazás kép keresési eredmények megjelenítése
-> * Ismerje meg az API által biztosított különböző elemzések
+> * Rendszerkép feltöltése a Bing Visual Search APIba
+> * Képkeresés eredményeinek megjelenítése egy webalkalmazásban
+> * Ismerkedjen meg az API által nyújtott különböző információkkal
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="create-and-structure-the-webpage"></a>A weblap felépítését
+## <a name="create-and-structure-the-webpage"></a>A weblap létrehozása és szerkezete
 
-Hozzon létre egy HTML-oldalt, amely egy képet küld a Bing Visual Search API, insights kap, és megjeleníti őket. A kedvenc szerkesztőjében, vagy IDE hozzon létre egy "uploaddemo.html" nevű fájlt. Az alábbi alapszintű HTML struktúrával adja hozzá a fájlhoz:
+Hozzon létre egy HTML-oldalt, amely egy képet küld a Bing Visual Search APInak, beolvassa az elemzéseket, és megjeleníti őket. A kedvenc szerkesztőben vagy az IDE-ban hozzon létre egy "uploaddemo. html" nevű fájlt. Adja hozzá a következő alapszintű HTML-struktúrát a fájlhoz:
 
 ```html
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ Hozzon létre egy HTML-oldalt, amely egy képet küld a Bing Visual Search API, 
 </html>
 ```
 
-Az oldal osztása egy kérelem szakaszt, ahol a felhasználó megadja a kéréshez szükséges összes információt, és a egy válasz szakaszt, ahol az insights jelennek meg. Adja hozzá a következő `<div>` -címkék a `<body>`. A `<hr>` címke vizuálisan elkülöníti a kérelem szakaszban, a válasz szakaszban:
+Az oldal felosztása egy kérelem szakaszba, ahol a felhasználó megadja a kéréshez szükséges összes információt, valamint egy válasz szakaszt, ahol megjelennek az információk. Adja hozzá a következő `<div>` címkéket a `<body>`hoz. A `<hr>` címke vizuálisan elválasztja a kérelem szakaszt a válasz szakaszból:
 
 ```html
 <div id="requestSection"></div>
@@ -58,20 +58,20 @@ Az oldal osztása egy kérelem szakaszt, ahol a felhasználó megadja a kérésh
 <div id="responseSection"></div>
 ```
 
-Adjon hozzá egy `<script>` címkét a `<head>` címke tartalmazza a JavaScript, az alkalmazás:
+Vegyen fel egy `<script>` címkét a `<head>` címkébe, hogy tartalmazza az alkalmazáshoz tartozó JavaScriptet:
 
 ```html
 <script>
 <\script>
 ```
 
-## <a name="get-the-upload-file"></a>A feltöltendő fájl beolvasása
+## <a name="get-the-upload-file"></a>A feltöltött fájl letöltése
 
-Ahhoz, hogy a felhasználó számára feltölteni a képet, az alkalmazás használja a `<input>` a type attribútumot állítsa megjelölés `file`. A felhasználói felületen kell, hogy törölje a jelet, hogy használja-e az alkalmazás a Bing keresési eredményt.
+Ahhoz, hogy a felhasználó kiválassza a feltölteni kívánt képet, az alkalmazás a `<input>` címkét használja a Type attribútummal `file`értékre. A felhasználói felületnek egyértelművé kell tennie, hogy az alkalmazás a Bing használatával kapja meg a keresési eredményeket.
 
-Adja hozzá a következő `<div>` , a `requestSection` `<div>`. A bemeneti fájl egyetlen képet fogad el, amely bármilyen típusú lehet (például .jpg, .gif, .png). Az `onchange` esemény megadja a kezelőt, amelyet a rendszer akkor hív meg, amikor a felhasználó kiválaszt egy fájlt.
+Adja hozzá a következő `<div>` a `requestSection` `<div>`hoz. A bemeneti fájl egyetlen képet fogad el, amely bármilyen típusú lehet (például .jpg, .gif, .png). Az `onchange` esemény megadja a kezelőt, amelyet a rendszer akkor hív meg, amikor a felhasználó kiválaszt egy fájlt.
 
-A `<output>` címkét használ a kiválasztott kép egy miniatűr megjelenítéséhez:
+A `<output>` címke a kiválasztott rendszerkép miniatűrjét jeleníti meg:
 
 ```html
 <div>
@@ -83,9 +83,9 @@ A `<output>` címkét használ a kiválasztott kép egy miniatűr megjelenítés
 </div>
 ```
 
-## <a name="create-a-file-handler"></a>Hozzon létre egy fájlt kezelő
+## <a name="create-a-file-handler"></a>Fájlkezelő létrehozása
 
-Hozzon létre egy kezelő funkciót, amely képes olvasni a feltölteni kívánt kép. A fájlok az iterálás során a `FileList` objektumot, a kezelő győződjön meg arról, a kiválasztott fájl képfájlra, és annak mérete 1 MB vagy kisebb. Ha a kép mérete nagyobb, mielőtt feltöltené azokat csökkentenie kell a méretét. Végül a kezelő jeleníti meg a miniatűr kép:
+Hozzon létre egy kezelői függvényt, amely képes olvasni a feltölteni kívánt képet. A `FileList` objektumban található fájlok megismétlése közben a kezelőnek meg kell győződnie arról, hogy a kijelölt fájl képfájl, és hogy mérete 1 MB vagy kevesebb. Ha a rendszerkép mérete nagyobb, akkor a feltöltés előtt csökkentenie kell a méretét. Végül a kezelő megjeleníti a rendszerkép miniatűrjét:
 
 ```javascript
 function handleFileSelect(selector) {
@@ -133,9 +133,9 @@ function handleFileSelect(selector) {
 }
 ```
 
-## <a name="add-and-store-a-subscription-key"></a>Adja hozzá, és a egy előfizetési kulcsot tárolni
+## <a name="add-and-store-a-subscription-key"></a>Előfizetési kulcs hozzáadása és tárolása
 
-Az alkalmazás használatához egy előfizetési kulcsot, így a Bing Visual Search API-hívások. Ehhez az oktatóanyaghoz, amellyel biztosíthatja a felhasználói felületen. Adja hozzá a következő `<input>` címkét (az a szöveges értékre type attribútum) a `<body>` csak a fájl alábbi `<output>` címkét:
+Az alkalmazásnak előfizetési kulcsra van szüksége, hogy hívásokat hajtson végre a Bing Visual Search API. Ebben az oktatóanyagban megadhatja azt a felhasználói felületen. Adja hozzá a következő `<input>` címkét (a Type attribútumot a Text értékre beállítva) a `<body>` a fájl `<output>` címkéje alá:
 
 ```html
     <div>
@@ -145,9 +145,9 @@ Az alkalmazás használatához egy előfizetési kulcsot, így a Bing Visual Sea
     </div>
 ```
 
-A lemezkép és az előfizetési kulcsot győződjön meg, a hívást a Bing Visual Search kaphat elemzési információkat a lemezképet. Ebben az oktatóanyagban a hívás használja az alapértelmezett piaci (`en-us`) és biztonságos keresés (`moderate`).
+A rendszerképpel és az előfizetési kulccsal megadhatja, hogy a Bing Visual Search meghívja a rendszerképet. Ebben az oktatóanyagban a hívás az alapértelmezett piaci (`en-us`) és a biztonságos keresési értéket (`moderate`) használja.
 
-Ez az alkalmazás ezeket az értékeket módosítsa lehetőség van. Adja hozzá a következő `<div>` az előfizetési kulcs alatt `<div>`. Használja az alkalmazás egy `<select>` piaci és biztonságos keresés értékeket adja meg a legördülő listából válassza ki a címkét. Mindkét listái az alapértelmezett érték.
+Ez az alkalmazás lehetősége van módosítani ezeket az értékeket. Adja hozzá a következő `<div>` az előfizetési kulcs `<div>`alatt. Az alkalmazás egy `<select>` címkét használ a piaci és a biztonságos keresési értékek legördülő listájának megadásához. Mindkét listában az alapértelmezett érték látható.
 
 ```html
 <div>
@@ -209,9 +209,9 @@ Ez az alkalmazás ezeket az értékeket módosítsa lehetőség van. Adja hozzá
 </div>
 ```
 
-## <a name="add-search-options-to-the-webpage"></a>A képernyőn látható weblapon keresési beállítások hozzáadása
+## <a name="add-search-options-to-the-webpage"></a>Keresési beállítások hozzáadása a weboldalhoz
 
-Az alkalmazás elrejtése a egy összezárható listákat `<div>` , amelyek vezérlik a lekérdezési beállítások hivatkozására. A lekérdezési beállítások hivatkozására kattintva a `<div>` bontja ki, hogy mit talál és a lekérdezési beállítások módosítása. Ha a lekérdezési beállítások hivatkozásra kattint, a `<div>` magasságúra csökken, és el van rejtve. A következő kódrészlet azt mutatja be, a lekérdezési beállítások hivatkozására `onclick` kezelő. A kezelő szabályozza-e a `<div>` megjelenített vagy rejtett. A kezelő történő hozzáadása a `<script>` szakaszban. A kezelő által az összes használt összecsukható `<div>` bemutató szakaszait.
+Az alkalmazás elrejti a listát egy összecsukható `<div>`, amelyet a lekérdezési beállítások hivatkozása vezérel. Ha a lekérdezési beállítások hivatkozásra kattint, a `<div>` kibővül, így megtekintheti és módosíthatja a lekérdezési beállításokat. Ha ismét rákattint a lekérdezési beállítások hivatkozásra, a `<div>` összecsukja és rejtve marad. A következő kódrészlet a lekérdezési beállítások hivatkozás `onclick` kezelőjét jeleníti meg. A kezelő szabályozza, hogy a `<div>` ki van-e bontva vagy össze van-e csukva. Adja hozzá a kezelőt a `<script>` szakaszhoz. A kezelőt a bemutató összes összecsukható `<div>` része használja.
 
 ```javascript
 // Contains the toggle state of divs.
@@ -233,19 +233,19 @@ function expandCollapse(divToToggle) {
 }
 ```
 
-## <a name="call-the-onclick-handler"></a>Hívja a `onclick` kezelő
+## <a name="call-the-onclick-handler"></a>A `onclick` kezelő meghívása
 
-Adja hozzá a következő `"Get insights"` gombra a beállítások alatt `<div>` törzsében. A gomb lehetővé teszi, hogy a hívás indításához. A gombra kattint, amikor a kurzor módosul, amelyikben a tartalomfogyasztás várakozási mutatót, és a `onclick` kezelő nevezzük.
+Adja hozzá a következő `"Get insights"` gombot a törzs beállítások `<div>` alatt. A gomb lehetővé teszi a hívás kezdeményezését. Ha a gombra kattint, a kurzor a spinning WAIT kurzorra változik, és a rendszer meghívja a `onclick` kezelőt.
 
 ```html
 <p><input type="button" id="query" value="Get insights" onclick="document.body.style.cursor='wait'; handleQuery()" /></p>
 ```
 
-Adja hozzá a gomb `onclick` -kezelő `handleQuery()` , a `<script>` címke.
+Adja hozzá a gomb `onclick` kezelőjét, `handleQuery()` a `<script>` címkéhez.
 
-## <a name="handle-the-query"></a>A lekérdezés kezeléséhez
+## <a name="handle-the-query"></a>A lekérdezés kezelése
 
-A kezelő `handleQuery()` biztosítja a jelen az előfizetési kulcsot és 32 karakter hosszúságú, és az, hogy a lemezkép van kiválasztva. Eltávolítja az előző lekérdezésből származó megállapításokat is. Ezután meghívja a `sendRequest()` függvény a híváshoz.
+A kezelő `handleQuery()` biztosítja, hogy az előfizetési kulcs megjelenő, 32 karakter hosszú legyen, és hogy egy rendszerkép legyen kiválasztva. Eltávolítja az előző lekérdezésből származó megállapításokat is. Ezt követően meghívja a `sendRequest()` függvényt a hívás elvégzéséhez.
 
 ```javascript
 function handleQuery() {
@@ -282,9 +282,9 @@ function handleQuery() {
 }
 ```
 
-## <a name="send-the-search-request"></a>A keresési kérelem küldése
+## <a name="send-the-search-request"></a>A keresési kérelem elküldése
 
-A `sendRequest()` függvény formázza a végpont URL-címe, beállítja a `Ocp-Apim-Subscription-Key` az előfizetési kulcsot a fejléc fűzi hozzá a bináris feltöltése a kép, adja meg a válasz-kezelő és a hívást:
+A `sendRequest()` függvény formázza a végpont URL-címét, beállítja a `Ocp-Apim-Subscription-Key` fejlécet az előfizetési kulcshoz, hozzáfűzi a feltöltéshez a rendszerkép bináris fájlját, megadja a válasz kezelőjét, és a hívást a következő módon hozza:
 
 ```javascript
 function sendRequest(file, key) {
@@ -304,9 +304,9 @@ function sendRequest(file, key) {
 }
 ```
 
-## <a name="get-and-handle-the-api-response"></a>Első és az API-válasz kezelésére is alkalmas
+## <a name="get-and-handle-the-api-response"></a>Az API-válasz beolvasása és kezelése
 
-A `handleResponse()` függvény kezeli a hívást a Bing Visual Search válaszát. Ha a hívás sikeres, elemzi a JSON-választ az egyes címkéknek megfelelően, amelyek a megállapításokat tartalmazzák. Ezután hozzáadja a keresési eredmények a lapot. Az alkalmazás ezután létrehoz egy összecsukható `<div>` minden címke kezeléséhez, hogy mennyi adat jelenik meg. Adja hozzá a kezelő a `<script>` szakaszban.
+A `handleResponse()` függvény kezeli a hívást a Bing Visual Searchre adott választ. Ha a hívás sikeres, elemzi a JSON-választ az egyes címkéknek megfelelően, amelyek a megállapításokat tartalmazzák. Ezután hozzáadja a keresési eredményeket az oldalhoz. Az alkalmazás ezután egy összecsukható `<div>` hoz létre az egyes címkékhez, hogy kezelje a megjelenített adatmennyiséget. Adja hozzá a kezelőt a `<script>` szakaszhoz.
 
 ```javascript
 function handleResponse() {
@@ -326,9 +326,9 @@ function handleResponse() {
 }
 ```
 
-### <a name="parse-the-response"></a>A válasz elemzéséhez
+### <a name="parse-the-response"></a>A válasz elemzése
 
-A `parseResponse` függvény alakítja át a JSON-válasz egy dictionary objektum által iterálás `json.tags`.
+A `parseResponse` függvény a JSON-választ egy szótár objektummá alakítja át `json.tags`használatával.
 
 ```javascript
 function parseResponse(json) {
@@ -349,9 +349,9 @@ function parseResponse(json) {
 }
 ```
 
-### <a name="build-a-tag-section"></a>A kód szakaszban létrehozása
+### <a name="build-a-tag-section"></a>Címke szakasz összeállítása
 
-A `buildTagSections()` függvény végighalad az elemzett JSON-címkékkel és a hívások a `buildDiv()` függvény hozhat létre egy `<div>` minden tag számára. Minden címke egy hivatkozás jelenik meg. Amikor a hivatkozásra kattint, a címke bontja ki, az elemzéseket a címkéhez társított megjelenítése. A szakasz összecsukása a hivatkozásra kattintva újra okoz.
+Az `buildTagSections()` függvény megismétli az elemzett JSON-címkéket, és meghívja a `buildDiv()` függvényt, hogy mindegyik címkéhez létrejöjjön egy `<div>`. Az egyes címkék hivatkozásként jelennek meg. Ha a hivatkozásra kattint, a címke kibontja a címkével kapcsolatos bepillantást. Ha ismét rákattint a hivatkozásra, a szakasz összeomlik.
 
 ```javascript
 function buildTagSections(tags) {
@@ -388,13 +388,13 @@ function buildDiv(tags, tag) {
 }
 ```
 
-## <a name="display-the-search-results-in-the-webpage"></a>A keresési eredmények megjelenítése a weblap
+## <a name="display-the-search-results-in-the-webpage"></a>A keresési eredmények megjelenítése a weblapon
 
-A `buildDiv()` függvény meghívja a `addDivContent` függvény hozhat létre minden egyes címke tartalmát a összecsukható `<div>`.
+A `buildDiv()` függvény meghívja a `addDivContent` függvényt az egyes címkék összecsukható `<div>`tartalmának összeállításához.
 
-A címke tartalmazza a címkéhez tartozó válaszból származó JSON-t. Kezdetben csak az első 100 karakter a JSON jelenik meg, de kattinthat a JSON-karakterlánc minden JSON megjelenítése. Ha ismét rákattint, a JSON-sztring összecsukódik, és ismét csak 100 karakter látható.
+A címke tartalmazza a címkéhez tartozó válaszból származó JSON-t. Kezdetben csak a JSON első 100 karaktere jelenik meg, de a JSON-sztringre kattintva megjelenítheti az összes JSON-t. Ha ismét rákattint, a JSON-sztring összecsukódik, és ismét csak 100 karakter látható.
 
-Következő lépésként adja hozzá a címkében található művelettípusokat. Minden egyes művelettípus hívja meg a megfelelő függvényeket a insights hozzáadása:
+Következő lépésként adja hozzá a címkében található művelettípusokat. Minden Művelettípus esetében hívja meg a megfelelő függvényeket az elemzések hozzáadásához:
 
 ```javascript
 function addDivContent(div, tag, json) {
@@ -469,16 +469,16 @@ function addDivContent(div, tag, json) {
 }
 ```
 
-## <a name="display-insights-for-different-actions"></a>Elemzések a különböző műveletek megjelenítése
+## <a name="display-insights-for-different-actions"></a>Információk megjelenítése különböző műveletekhez
 
-A következő funkciók meg különböző műveletekhez. A functions biztosítani egy kattintható rendszerképet vagy kattintható hivatkozás, amely egy weblaphoz csatlakozott, a lemezkép kapcsolatos további információkat. Ezen a lapon vagy Bing.com vagy a kép eredeti webhelyet üzemelteti. Nem minden az insights-adatok akkor jelenik meg, ebben az alkalmazásban. Az összes egy elemzést az elérhető mezők, olvassa el a [rendszerképek – vizuális keresés](https://aka.ms/bingvisualsearchreferencedoc) referencia.
+A következő függvények a különböző műveletekkel kapcsolatos bepillantást jelenítik meg. A függvények vagy egy olyan kattintható képet vagy kattintható hivatkozást tartalmaznak, amely egy, a képpel kapcsolatos további információval ellátott weblapra küld. Ezt a lapot vagy a Bing.com, vagy a rendszerkép eredeti webhelye tárolja. Ebben az alkalmazásban nem jelenik meg az összes adatelemzési üzenet. A betekintéshez elérhető összes mező megtekintéséhez tekintse meg a [képek – Visual Search](https://aka.ms/bingvisualsearchreferencedoc) referenciát.
 
 > [!NOTE]
-> Nincs egy minimális insight-adatokat a lapon meg kell jelenítenie. Tekintse meg a [Bing keresési API-t használja, és megjelenítési követelményeihez](../bing-web-search/use-display-requirements.md) további.
+> A lapon meg kell adni legalább egy betekintési információt. További információkért tekintse [meg a BING Search API használati és megjelenítési követelményeit](../bing-web-search/use-display-requirements.md) .
 
-### <a name="relatedimages-insights"></a>RelatedImages insights
+### <a name="relatedimages-insights"></a>RelatedImages-ismeretek
 
-A `addRelatedImages()` függvény létrehoz egy címet a webhelyek, a kapcsolódó kép üzemeltető által iterálás a listája minden egyes `RelatedImages` műveleteket és hozzáfűzése egy `<img>` külső címkét `<div>` minden:
+A `addRelatedImages()` függvény létrehoz egy címet a kapcsolódó rendszerképeket üzemeltető összes webhelyhez, és megismétli a `RelatedImages` műveletek listáját, és hozzáfűz egy `<img>` címkét a külső `<div>`hoz:
 
 ```javascript
     function addRelatedImages(div, images) {
@@ -507,9 +507,9 @@ A `addRelatedImages()` függvény létrehoz egy címet a webhelyek, a kapcsolód
     }
 ```
 
-### <a name="pagesincluding-insights"></a>PagesIncluding insights
+### <a name="pagesincluding-insights"></a>PagesIncluding-ismeretek
 
-A `addPagesIncluding()` függvény létrehoz egy hivatkozást a webhelyek, a feltöltött kép üzemeltető által iterálás a listája minden egyes `PagesIncluding` műveleteket és hozzáfűzése egy `<img>` külső címkét `<div>` minden:
+A `addPagesIncluding()` függvény létrehoz egy hivatkozást a feltöltött képet futtató összes webhelyhez, és megismétli a `PagesIncluding` műveletek listáját, és hozzáfűz egy `<img>` címkét a külső `<div>`hoz:
 
 ```javascript
 
@@ -531,9 +531,9 @@ A `addPagesIncluding()` függvény létrehoz egy hivatkozást a webhelyek, a fel
     }
 ```
 
-### <a name="relatedsearches-insights"></a>RelatedSearches insights
+### <a name="relatedsearches-insights"></a>RelatedSearches-ismeretek
 
-A `addRelatedSearches()` függvény létrehoz egy hivatkozást a webhely által listájának iterálás a képen üzemeltető `RelatedSearches` műveleteket és hozzáfűzése egy `<img>` külső címkét `<div>` minden:
+A `addRelatedSearches()` függvény létrehoz egy hivatkozást a rendszerképet futtató webhelyhez, és megismétli a `RelatedSearches` műveletek listáját, és hozzáfűz egy `<img>` címkét a külső `<div>`hoz.
 
 ```javascript
 
@@ -564,9 +564,9 @@ A `addRelatedSearches()` függvény létrehoz egy hivatkozást a webhely által 
     }
 ```
 
-### <a name="recipes-insights"></a>Receptek insights
+### <a name="recipes-insights"></a>Receptek bepillantást
 
-A `addRecipes()` függvény hivatkozást hoz létre az egyes listájának iterálás által visszaadott receptek `Recipes` műveleteket és hozzáfűzése egy `<img>` külső címkét `<div>` minden:
+A `addRecipes()` függvény egy hivatkozást hoz létre a `Recipes` műveletek listájának megismétlésével, valamint egy `<img>` címkének a külső `<div>`hoz való hozzáfűzésével:
 
 ```javascript
     // Display links to the first 10 recipes. Include the recipe's rating,
@@ -596,9 +596,9 @@ A `addRecipes()` függvény hivatkozást hoz létre az egyes listájának iterá
     }
 ```
 
-### <a name="shopping-insights"></a>Insights vásárlás
+### <a name="shopping-insights"></a>Vásárlási ismeretek
 
-A `addShopping()` függvény hivatkozást hoz létre, bármely listájának iterálás vissza vásárlási eredmények `RelatedImages` műveleteket és hozzáfűzése egy `<img>` külső címkét `<div>` minden:
+A `addShopping()` függvény egy hivatkozást hoz létre a visszaadott vásárlási eredményekhez, és megismétli a `RelatedImages` műveletek listáját, és hozzáfűz egy `<img>` címkét a külső `<div>`hoz:
 
 ```javascript
     // Display links for the first 10 shopping offers.
@@ -625,9 +625,9 @@ A `addShopping()` függvény hivatkozást hoz létre, bármely listájának iter
     }
 ```
 
-### <a name="products-insights"></a>Termékek insights
+### <a name="products-insights"></a>Products-ismeretek
 
-A `addProducts()` függvény hivatkozást hoz létre, bármely listájának iterálás vissza termékek eredmények `Products` műveleteket és hozzáfűzése egy `<img>` külső címkét `<div>` minden:
+A `addProducts()` függvény egy hivatkozást hoz létre a visszaadott termékek eredményeihez, ha megismétli a `Products` műveletek listáját, és hozzáfűz egy `<img>` címkét a külső `<div>`hoz:
 
 ```javascript
 
@@ -689,9 +689,9 @@ A `addProducts()` függvény hivatkozást hoz létre, bármely listájának iter
     }
 ```
 
-### <a name="textresult-insights"></a>TextResult insights
+### <a name="textresult-insights"></a>TextResult-ismeretek
 
-A `addTextResult()` függvény a felismert szöveget az ábrán jeleníti meg:
+A `addTextResult()` függvény megjeleníti a rendszerképben felismerhető összes szöveget:
 
 ```javascript
 
@@ -702,7 +702,7 @@ A `addTextResult()` függvény a felismert szöveget az ábrán jeleníti meg:
     }
 ```
 
-A `addEntity()` függvény egy hivatkozás, amely végigvezeti a felhasználót a Bing.com, akkor értesítést kaphatnak az entitástípus adatait a képen Ha bármelyik észlelt jeleníti meg:
+A `addEntity()` függvény egy hivatkozást jelenít meg, amely arra kéri a felhasználót, hogy Bing.com, hol szerezhetnek be adatokat a rendszerképben az entitás típusával kapcsolatban, ha a rendszer a következőt észlelte:
 
 ```javascript
     // If the image is of a person, the tag might include an entity
@@ -718,7 +718,7 @@ A `addEntity()` függvény egy hivatkozás, amely végigvezeti a felhasználót 
     }
 ```
 
-A `addImageWithWebSearchUrl()` függvény egy kattintható kép megjelenítése a `<div>` átkerül a felhasználót, hogy a keresési eredmények a Bing.com oldalon:
+A `addImageWithWebSearchUrl()` függvény egy kattintható képet jelenít meg a `<div>`, amely a felhasználót a Bing.com keresési eredményei alapján keresi:
 
 ```javascript
     function addImageWithWebSearchUrl(div, image, action) {
@@ -735,9 +735,9 @@ A `addImageWithWebSearchUrl()` függvény egy kattintható kép megjelenítése 
 
 ```
 
-## <a name="add-a-css-style"></a>Adjon hozzá egy CSS-stílus
+## <a name="add-a-css-style"></a>CSS-stílus hozzáadása
 
-Adja hozzá a következő `<style>` részt a `<head>` a képernyőn látható weblapon elrendezését címkét:
+Adja hozzá a következő `<style>` szakaszt a `<head>` címkéhez a weblap elrendezésének rendszerezéséhez:
 
 ```html
         <style>
@@ -770,7 +770,7 @@ Adja hozzá a következő `<style>` részt a `<head>` a képernyőn látható we
         </style>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 >[!div class="nextstepaction"]
-> [Oktatóanyag: Keresse meg a korábbi kereséseket ImageInsightsToken használatával hasonló képek](./tutorial-visual-search-insights-token.md)
+> [Oktatóanyag: hasonló rendszerképek keresése az előző keresésekben a ImageInsightsToken használatával](./tutorial-visual-search-insights-token.md)

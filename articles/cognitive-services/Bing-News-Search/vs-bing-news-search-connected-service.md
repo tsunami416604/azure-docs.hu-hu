@@ -3,19 +3,19 @@ title: Csatlakozás Bing News Search APIhoz csatlakoztatott szolgáltatásokkal 
 titleSuffix: Azure Cognitive Services
 description: A Bing News Search használatával lehetővé teheti, hogy alkalmazásai és szolgáltatásai egy reklámmentes keresőmotorral keressenek a weben.
 services: cognitive-services
-author: ghogen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.author: ghogen
-ms.openlocfilehash: 0a8a4f69c94f217cb40146b022adf2b2d56c8d42
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 9cac13f8fb42959e79cafedcc7057d1cb7c2f7d5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111499"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689380"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Oktatóanyag: csatlakozás a Bing News Search APIhoz csatlakoztatott szolgáltatásokkal a Visual Studióban ésC#
 
@@ -26,7 +26,7 @@ A cikk részletes információkat szolgáltat a Visual Studio Bing News Searchh�
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-- A Visual Studio 2019 és a webfejlesztési számítási feladat telepítve van. [Ezt innen töltheti le](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- A Visual Studio 2019 és a webfejlesztési számítási feladat telepítve van. [Töltse le most](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -43,7 +43,7 @@ A cikk részletes információkat szolgáltat a Visual Studio Bing News Searchh�
 
    ![Csatlakoztatott szolgáltatások listájának képernyőképe](./media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-0.PNG)
 
-   Ha bejelentkezett a Visual Studióba, és rendelkezik a fiókjához társított Azure-előfizetéssel, egy lap jelenik meg, amely az előfizetéseit tartalmazza egy legördülő listában. Válassza ki a használni kívánt előfizetést, majd válasszon egy nevet a Bing News Search API-nak. Az **Edit** (Szerkesztés) elem kiválasztásával módosíthatja az automatikusan létrehozott nevet.
+   Ha már bejelentkezett a Visual Studióba, és rendelkezik a fiókhoz társított Azure-előfizetéssel, akkor megjelenik egy oldal az előfizetéseit tartalmazó legördülő listával. Válassza ki a használni kívánt előfizetést, majd válasszon egy nevet a Bing News Search API-nak. Az **Edit** (Szerkesztés) elem kiválasztásával módosíthatja az automatikusan létrehozott nevet.
 
    ![Az előfizetés és név mezők képernyőképe](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-1.PNG)
 
@@ -54,7 +54,7 @@ A cikk részletes információkat szolgáltat a Visual Studio Bing News Searchh�
    A tarifacsomagokkal kapcsolatos további információért válassza a **Review pricing** (Díjszabás áttekintése) lehetőséget.
 
 1. Válassza a **Hozzáadás** gombot a csatlakoztatott szolgáltatáshoz támogatás hozzáadásához.
-   A Visual Studio módosítja a projektet, és hozzáadja a NuGet-csomagokat, a konfigurációs fájlbejegyzéseket, és a Bing News Search API-kapcsolat támogatása érdekében végrehajtott egyéb módosításokat. A kimenet a projektben történt események naplóját mutatja. Az alábbihoz hasonló kimenet jelenik meg:
+   A Visual Studio módosítja a projektet, és hozzáadja a NuGet-csomagokat, a konfigurációs fájlbejegyzéseket, és a Bing News Search API-kapcsolat támogatása érdekében végrehajtott egyéb módosításokat. A kimenet a projektben történt események naplóját mutatja. Az alábbihoz hasonlót kell látnia:
 
    ```output
    [5/4/2018 12:41:21.084 PM] Adding Intelligent Search to the project.
@@ -260,12 +260,12 @@ Most hogy hozzáadta a Bing News Search API támogatását a projekthez, az alá
            
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölheti az erőforráscsoportot. Ezzel törli a Cognitive Services-szolgáltatást és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése a Portalon keresztül:
+Ha már nincs rá szükség, törölheti az erőforráscsoportot. Ezzel törli a Cognitive szolgáltatást és a kapcsolódó erőforrásokat. Az erőforráscsoport törlése a Portalon keresztül:
 
 1. Írja be az erőforráscsoport nevét a Portal tetején található keresőmezőbe. Válassza ki a törölni kívánt erőforráscsoportot.
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Az **Írja be az erőforráscsoport nevét** mezőbe írja be az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Bing News Search API-ról: [Mi a Bing News Search?](index.yml).

@@ -1,27 +1,20 @@
 ---
-title: Java-Webalkalmazás létrehozása Windows rendszeren – Azure App Service
-description: Ebben a rövid útmutatóban percek alatt üzembe helyezheti az első Java-"Helló világ!" alkalmazás Azure App Service Windows rendszeren.
+title: 'Gyors útmutató: Java-alkalmazás létrehozása Windows rendszeren'
+description: Percek alatt üzembe helyezheti az első Java-"Helló világ!" alkalmazás Azure App Service Windows rendszeren. A App Service Maven beépülő modulja lehetővé teszi a Java-alkalmazások üzembe helyezését.
 keywords: Azure, app Service, Web App, Windows, Java, Maven, gyors útmutató
-services: app-service\web
-documentationcenter: ''
 author: msangapu-msft
-manager: jeconnoc
-editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: d119ffdcb952405f17e0df152c817df9a8a63110
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c511ed3f432c8e54a820c01839269712271774bd
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833644"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672159"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Windows rendszeren
 
@@ -50,13 +43,13 @@ mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -Darchetyp
 
 ## <a name="configure-the-maven-plugin"></a>A Maven beépülő moduljának konfigurálása
 
-A Mavenből való üzembe helyezéshez használja a Cloud Shell kódszerkesztőjét a `pom.xml` könyvtár `helloworld` projektfájljának megnyitásához. 
+A Mavenből való üzembe helyezéshez használja a Cloud Shell kódszerkesztőjét a `helloworld` könyvtár `pom.xml` projektfájljának megnyitásához. 
 
 ```bash
 code pom.xml
 ```
 
-Ezután adja hozzá a következő bővítménydefiníciót a `<build>` fájl `pom.xml` részéhez.
+Ezután adja hozzá a következő bővítménydefiníciót a `pom.xml` fájl `<build>` részéhez.
 
 ```xml
 <plugins>
@@ -125,7 +118,7 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Java-fejlesztőknek – erőforrások](/java/azure/)

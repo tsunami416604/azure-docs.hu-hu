@@ -1,30 +1,23 @@
 ---
-title: App Service Environment v1 – Azure létrehozása
-description: Az App Service Environment v1-környezet létrehozási folyamatának leírása
-services: app-service
-documentationcenter: ''
+title: Bemutató v1 létrehozása
+description: Az App Service Environment v1-környezet létrehozási folyamatának leírása. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: 81bd32cf-7ae5-454b-a0d2-23b57b51af47
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 017c79ec1341c85f3bd08393dd5553f90a2f6cef
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 752334e3d594b1f95786aecaca134b74c4e264d5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069744"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688698"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>App Service Environment v1 létrehozása 
 
 > [!NOTE]
-> Ez a cikk a App Service Environment v1-es verzióról szól. A App Service Environment újabb verziója könnyebben használható, és nagyobb teljesítményű infrastruktúrán fut. Ha többet szeretne megtudni az új verzióról, kezdje a [app Service Environment](intro.md)bevezetésével.
+> Ez a cikk a App Service Environment v1-es verzióról szól. A App Service Environment újabb verziója könnyebben használható, és nagyobb teljesítményű infrastruktúrán fut. Ha többet szeretne megtudni az új verzióról, kezdje a [app Service Environment bevezetésével](intro.md).
 > 
 
 ### <a name="overview"></a>Áttekintés
@@ -33,8 +26,8 @@ A App Service Environment (a bevezetési mód) olyan prémium szintű Azure App 
 ### <a name="before-you-create-your-ase"></a>A bekészítés előtt
 Fontos, hogy tisztában legyenek a nem módosítható dolgokkal. A következő szempontok nem változtathatják meg a saját bevonását a létrehozása után:
 
-* Location
-* Subscription
+* Földrajzi egység
+* Előfizetés
 * Erőforráscsoport
 * Használt VNet
 * Használt alhálózat 
@@ -43,7 +36,7 @@ Fontos, hogy tisztában legyenek a nem módosítható dolgokkal. A következő s
 A VNet kiválasztásakor és az alhálózat megadásakor győződjön meg arról, hogy elég nagy a jövőbeli növekedéshez. 
 
 ### <a name="creating-an-app-service-environment-v1"></a>App Service Environment v1 létrehozása
-App Service Environment v1 létrehozásához kereshet az Azure Marketplace-en ***app Service Environment v1***-re, vagy átléphet az **erőforrás** -> létrehozása**web és mobil** -> **app Service Environment**. ASEv1 létrehozása:
+App Service Environment v1 létrehozásához kereshet az Azure Marketplace-en ***app Service Environment v1***-re, vagy átléphet az **erőforrás létrehozása** -> **web és mobil** -> **app Service Environment**. ASEv1 létrehozása:
 
 1. Adja meg a beadás nevét. A központhoz megadott nevet a központhoz tartozó elősegítő alkalmazásban létrehozott alkalmazások használják. Ha a appsvcenvdemo neve a következő lesz: *appsvcenvdemo.p.azurewebsites.net*. Ha így hozott létre egy *mytestapp*nevű alkalmazást, a *mytestapp.appsvcenvdemo.p.azurewebsites.net*címen lehet címezni. A szolgáltató neve nem használható üresen. Ha nagybetűket használ a névben, a tartománynév a név teljes kisbetűs változata lesz. Ha ILB használ, a rendszer nem használja a beléptetési nevet az altartományban, hanem explicit módon meg van határozva a központilag történő létrehozás során.
    
@@ -52,10 +45,10 @@ App Service Environment v1 létrehozásához kereshet az Azure Marketplace-en **
 3. Válasszon ki vagy adjon meg egy új erőforráscsoportot. A kiegészítő szolgáltatáshoz használt erőforráscsoporthoz meg kell egyeznie a VNet. Ha már meglévő VNet választ, a rendszer frissíti az erőforráscsoport-kiválasztást a saját VNet.
    
     ![][2]
-4. Adja meg a Virtual Network és a hely beállításait. Dönthet úgy, hogy új VNet hoz létre, vagy egy már meglévő VNet választ. Ha kiválaszt egy új VNet, akkor megadhatja a nevet és a helyet. Az új VNet a 192.168.250.0/23 címtartományt és egy **alapértelmezett** nevű alhálózatot fog tartalmazni, amely 192.168.250.0/24 néven van meghatározva. Egyszerűen kiválaszthat egy már létező klasszikus vagy Resource Manager-VNet is. A virtuális IP-cím típusának meghatározása meghatározza, hogy a központilag elérhető-e közvetlenül az internetről (külső), vagy belső Load Balancert (ILB) használ. Ha többet szeretne megtudni róluk, olvassa el a [belső Load Balancer egy app Service Environment használatával][ILBASE]című témakört. Ha a külső VIP-típust választja, kiválaszthatja, hogy a rendszer hány külső IP-címet hoz létre a IPSSL célra. Ha a belső lehetőséget választja, akkor meg kell adnia azt az altartományt, amelyet a szolgáltató használni fog. A ASE olyan virtuális hálózatokban is üzembe helyezhetők , amelyek nyilvános címtartományt *vagy* RFC1918 (például magánhálózati címeket) használnak. Ha nyilvános címtartományt használó virtuális hálózatot szeretne használni, az idő előtt létre kell hoznia a VNet. Egy már meglévő VNet kiválasztásakor létre kell hoznia egy új alhálózatot a beléptetési folyamat létrehozása során. **A portálon nem használhat előre létrehozott alhálózatot. Ha egy Resource Manager-sablonnal hozza létre a bevezetőt, létrehozhat egy meglévő alhálózattal rendelkező bevezetőt is.** Ha egy sablonból szeretne létrehozni egy adatforrást, használja az itt található információkat, [hozzon létre egy app Service Environment a sablonból][ILBAseTemplate] , és itt hozzon létre [egy ILB-app Service Environment a sablonból][ASEfromTemplate].
+4. Adja meg a Virtual Network és a hely beállításait. Dönthet úgy, hogy új VNet hoz létre, vagy egy már meglévő VNet választ. Ha kiválaszt egy új VNet, akkor megadhatja a nevet és a helyet. Az új VNet a 192.168.250.0/23 címtartományt és egy **alapértelmezett** nevű alhálózatot fog tartalmazni, amely 192.168.250.0/24 néven van meghatározva. Egyszerűen kiválaszthat egy már létező klasszikus vagy Resource Manager-VNet is. A virtuális IP-cím típusának meghatározása meghatározza, hogy a központilag elérhető-e közvetlenül az internetről (külső), vagy belső Load Balancert (ILB) használ. Ha többet szeretne megtudni róluk, olvassa el a [belső Load Balancer egy app Service Environment használatával][ILBASE]című témakört. Ha a külső VIP-típust választja, kiválaszthatja, hogy a rendszer hány külső IP-címet hoz létre a IPSSL célra. Ha a belső lehetőséget választja, akkor meg kell adnia azt az altartományt, amelyet a szolgáltató használni fog. A ASE olyan virtuális hálózatokban is üzembe helyezhetők, *amelyek nyilvános címtartományt* *vagy* RFC1918 (például magánhálózati címeket) használnak. Ha nyilvános címtartományt használó virtuális hálózatot szeretne használni, az idő előtt létre kell hoznia a VNet. Egy már meglévő VNet kiválasztásakor létre kell hoznia egy új alhálózatot a beléptetési folyamat létrehozása során. **A portálon nem használhat előre létrehozott alhálózatot. Ha egy Resource Manager-sablonnal hozza létre a bevezetőt, létrehozhat egy meglévő alhálózattal rendelkező bevezetőt is.** Ha egy sablonból szeretne létrehozni egy adatforrást, használja az itt található információkat, [hozzon létre egy app Service Environment a sablonból][ILBAseTemplate] , és itt hozzon létre [egy ILB-app Service Environment a sablonból][ASEfromTemplate].
 
 ### <a name="details"></a>Részletek
-A bekészítés két előtérből és 2 feldolgozóból áll. A kezelőfelületek HTTP/HTTPS-végpontként működnek, és elküldik a forgalmat az alkalmazásokat futtató szerepköröknek. A mennyiséget a bekapcsolás utáni létrehozás után módosíthatja, és beállíthatja az ezen erőforráskészlet-eszközökre vonatkozó automatikusan méretezhető szabályokat is. Az App Service Environment manuális skálázásával, kezelésével és figyelésével kapcsolatos további információkért látogasson el ide: [App Service Environment konfigurálása][ASEConfig] 
+A bekészítés két előtérből és 2 feldolgozóból áll. A kezelőfelületek HTTP/HTTPS-végpontként működnek, és elküldik a forgalmat az alkalmazásokat futtató szerepköröknek. A mennyiséget a bekapcsolás utáni létrehozás után módosíthatja, és beállíthatja az ezen erőforráskészlet-eszközökre vonatkozó automatikusan méretezhető szabályokat is. Az App Service Environment manuális skálázásával, kezelésével és figyelésével kapcsolatos további információkért látogasson el ide: [app Service Environment konfigurálása][ASEConfig] 
 
 A szolgáltató által használt alhálózatban csak az egyik kiegészítő szolgáltatás létezhet. Az alhálózat nem használható a központhoz tartozó
 
@@ -67,13 +60,13 @@ A kiegészítő környezet létrehozása után a következőket állíthatja be:
 * IP SSL számára elérhető IP-címek mennyisége
 * Az előtér-és a feldolgozók által használt számítási erőforrások mérete (az előtér minimális mérete P2)
 
-További részletek a App Service környezetek manuális skálázásával, kezelésével és figyelésével kapcsolatban: [App Service Environment konfigurálása][ASEConfig] 
+További részletek a App Service környezetek manuális skálázásával, kezelésével és figyelésével kapcsolatban: [app Service Environment konfigurálása][ASEConfig] 
 
-Az automatikus skálázással kapcsolatos információkért tekintse meg a következő útmutatót: [Az autoskálázás konfigurálása App Service Environment][ASEAutoscale]
+Az automatikus skálázással kapcsolatos információkért tekintse meg a következő útmutatót: az automatikus skálázás [konfigurálása app Service Environment][ASEAutoscale]
 
 Vannak olyan további függőségek, amelyek nem érhetők el a testreszabáshoz, például az adatbázishoz és a tároláshoz. Ezeket az Azure kezeli, és a rendszerbe kerül. A rendszer tárterülete legfeljebb 500 GB-ot támogat a teljes App Service Environment számára, és az adatbázist az Azure a rendszer skálázása által igénybe veszik.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 A App Service Environment v1 használatának megkezdéséhez lásd: [a app Service Environment v1 bemutatása][WhatisASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]

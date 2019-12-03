@@ -1,26 +1,20 @@
 ---
-title: Alkalmazások teljesítményével kapcsolatos gyakori kérdések – Azure App Service | Microsoft Docs
-description: A Azure App Service Web Apps funkciójában a rendelkezésre állással, teljesítménnyel és alkalmazásokkal kapcsolatos problémákkal kapcsolatos gyakori kérdésekre kaphat válaszokat.
-services: app-service\web
-documentationcenter: ''
+title: Az alkalmazások teljesítményével kapcsolatos gyakori kérdések
+description: Válaszok a rendelkezésre állással, teljesítménnyel és alkalmazásokkal kapcsolatos problémákkal kapcsolatos gyakori kérdésekre Azure App Serviceban.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a5af98aae420193b8316a48aa60550cef70a9c4a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122073"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671707"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Az Azure-Web Apps alkalmazások teljesítményével kapcsolatos gyakori kérdések
 
@@ -53,7 +47,7 @@ A PowerShell-parancsmagok használatával felügyelheti és karbantarthatja App 
 A webalkalmazás eseménynaplóinak megtekintése:
 
 1. Jelentkezzen be a [kudu webhelyére](https://*yourwebsitename*.scm.azurewebsites.net).
-2. A menüben válassza a **Debug konzol** > **cmd**elemet.
+2. A menüben válassza a **Debug Console** > **cmd parancsot**.
 3. Válassza a **naplófájlok** mappát.
 4. Az eseménynaplók megtekintéséhez válassza az **Eseménynapló. XML**melletti ceruza ikont.
 5. A naplók letöltéséhez futtassa a PowerShell-parancsmagot `Save-AzureWebSiteLog -Name webappname`.
@@ -65,7 +59,7 @@ A webalkalmazás felhasználói módú memóriaképének rögzítése:
 1. Jelentkezzen be a [kudu webhelyére](https://*yourwebsitename*.scm.azurewebsites.net).
 2. Válassza a **Process Explorer** menüt.
 3. Kattintson a jobb gombbal a **W3wp. exe** folyamatra vagy a webjobs folyamatra.
-4. Válassza a memóriakép **letöltése** > **teljes memóriakép**lehetőséget.
+4. Válassza a memóriakép **letöltése** > **teljes memóriakép**elemet.
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Hogyan megtekintheti a webalkalmazás folyamat-szintű adatait?
 
@@ -87,7 +81,7 @@ A következő három feltétel okozhatja ezt a hibát:
 * A webalkalmazás le lett állítva a portálon.
 * A webalkalmazás elérte az adott erőforrás-kvótára vonatkozó korlátot, amely az ingyenes vagy a megosztott méretezési szolgáltatási csomagra is érvényes lehet.
 
-Ha szeretné megtekinteni, hogy mi okozza a hibát, és hogyan oldja meg a [problémát, kövesse a Web Apps alábbi lépéseit: "Hiba 403 – ez a webalkalmazás leáll"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/).
+Ha szeretné megtekinteni, hogy mi okozza a hibát, és hogyan oldja meg a problémát, kövesse a [Web Apps: "hiba 403 – ez a webalkalmazás leállt"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/)című témakör lépéseit.
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Hol tudhatok meg többet a különböző App Service-csomagok kvótái és korlátairól?
 
@@ -147,8 +141,8 @@ A sikertelen kérelmek nyomkövetésének bekapcsolása:
     </tracing>
     ```
 13. A sikertelen kérelmek nyomkövetésének letöltéséhez nyissa meg a webhelyet a [portálon](https://portal.azure.com).
-15. Válassza az **eszközök** > **kudu** > **Go**lehetőséget.
-18. A menüben válassza a **Debug konzol** > **cmd**elemet.
+15. Válassza az **eszközök** > **kudu** > **Ugrás**lehetőséget.
+18. A menüben válassza a **Debug Console** > **cmd parancsot**.
 19. Jelölje ki a **naplófájlok** mappát, majd válassza ki azt a mappát, amelynek a neve a **W3SVC**karakterlánccal kezdődik.
 20. Az XML-fájl megtekintéséhez válassza a ceruza ikont.
 
@@ -170,7 +164,7 @@ A webjobs a háttérben történő feldolgozásra szolgál. Annyi háttérbeli f
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>ASP.NET Core App Service futtatott alkalmazások néha nem válaszolnak. Hogyan kijavítani ezt a problémát?
 
-A korábbi [vércse-verziók](https://github.com/aspnet/KestrelHttpServer/issues/1182) ismert problémái miatt előfordulhat, hogy egy ASP.net Core 1,0 alkalmazás, amely app Serviceben fut, időnként leállítja a válaszadást. Ezt az üzenetet is láthatja: "A megadott CGI-alkalmazás hibát észlelt, és a kiszolgáló megszakította a folyamatot."
+A korábbi [vércse-verziók](https://github.com/aspnet/KestrelHttpServer/issues/1182) ismert problémái miatt előfordulhat, hogy egy ASP.net Core 1,0 alkalmazás, amely app Serviceben fut, időnként leállítja a válaszadást. Ezt az üzenetet is láthatja: "a megadott CGI-alkalmazás hibát észlelt, és a kiszolgáló megszakította a folyamatot."
 
 Ez a probléma a vércse 1.0.2-es verziójában van kijavítva. Ez a verzió a ASP.NET Core 1.0.3 frissítés részét képezi. A probléma megoldásához győződjön meg arról, hogy az alkalmazás függőségeit a vércse 1.0.2 használatára frissíti. Azt is megteheti, hogy a blogbejegyzésben ismertetett két megkerülő megoldás egyikét használja [app Service web apps 1,0 ASP.net Core lassú](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites)teljesítményű problémák megoldásához.
 
@@ -179,7 +173,7 @@ Ez a probléma a vércse 1.0.2-es verziójában van kijavítva. Ez a verzió a A
 
 Ha a App Service helyi gyorsítótár szolgáltatását használja, a rendszer a App Service-példányhoz tartozó LogFiles és adatmappák mappastruktúrát fogja érinteni. Helyi gyorsítótár használata esetén az almappák a Storage-naplófájlokban és az adatmappákban jönnek létre. Az almappákban az "egyedi azonosító" + időbélyegző szerepel. Minden almappa olyan virtuálisgép-példánynak felel meg, amelyben a webalkalmazás fut vagy fut.
 
-Annak megállapításához, hogy a helyi gyorsítótárat használja-e, ellenőrizze az App Service **Alkalmazásbeállítások** lapot. Ha a helyi gyorsítótár használatban van, az alkalmazás `WEBSITE_LOCAL_CACHE_OPTION` beállítása a következőre van `Always`beállítva:.
+Annak megállapításához, hogy a helyi gyorsítótárat használja-e, ellenőrizze az App Service **Alkalmazásbeállítások** lapot. Ha a helyi gyorsítótár használatban van, az Alkalmazásbeállítások `WEBSITE_LOCAL_CACHE_OPTION` `Always`ra van beállítva.
 
 Ha nem helyi gyorsítótárat használ, és ezt a problémát tapasztalja, küldjön egy támogatási kérést.
 

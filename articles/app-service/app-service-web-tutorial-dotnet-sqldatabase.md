@@ -1,26 +1,17 @@
 ---
-title: ASP.NET-alkalmazás létrehozása a SQL Database-Azure App Servicesal | Microsoft Docs
+title: 'Oktatóanyag: ASP.NET alkalmazás SQL Database'
 description: Ismerje meg egy SQL Server-adatbázist használó C# ASP.NET-alkalmazás Azure-ban való üzembe helyezését.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2f815d99c32c2dcaa1fd35d00110b27a90f53ab4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2a0b3994af48372b8ed0a3c6eaecf4289d0980c1
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471201"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671379"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával
 
@@ -53,7 +44,7 @@ Ha már telepítette a Visual Studiót, adja hozzá a számítási feladatokat a
 - [Töltse le a mintaprojektet](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
 - Bontsa ki (csomagolja ki) a *dotnet-sqldb-tutorial-master.zip* fájlt.
 
-A mintaprojekt az [Entity Framework Code First](https://www.asp.net/mvc) szolgáltatást használó, alapszintű [ASP.NET MVC](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) CRUD (létrehoz-olvas-frissít-töröl) alkalmazást tartalmaz.
+A mintaprojekt az [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) szolgáltatást használó, alapszintű [ASP.NET MVC](https://www.asp.net/mvc) CRUD (létrehoz-olvas-frissít-töröl) alkalmazást tartalmaz.
 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása
 
@@ -96,7 +87,7 @@ Megtarthatja a webalkalmazás létrehozott nevét, vagy módosíthatja egy mási
 
 ![A Create App Service (App Service létrehozása) párbeszédpanel](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
@@ -128,7 +119,7 @@ Adatbázis létrehozása előtt szüksége van egy [logikai Azure SQL-adatbázis
 
 Kattintson az **SQL-adatbázis létrehozása** elemre.
 
-![SQL-adatbázis létrehozása](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
+![SQL Database létrehozása](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
 A **Configure SQL Database** (SQL Database konfigurálása) párbeszédpanelen kattintson az **SQL Server** melletti **New** (Új) elemre. 
 
@@ -145,7 +136,7 @@ Jegyezze meg ezt a felhasználónevet és jelszót. Később szüksége lesz rá
 
 Kattintson az **OK** gombra. Ne zárja még be a **Configure SQL Database** (SQL Database konfigurálása) párbeszédpanelt.
 
-### <a name="create-a-sql-database"></a>SQL-adatbázis létrehozása
+### <a name="create-a-sql-database"></a>SQL Database létrehozása
 
 A **Configure SQL Database** (SQL Database konfigurálása) párbeszédpanelen: 
 
@@ -155,7 +146,7 @@ A **Configure SQL Database** (SQL Database konfigurálása) párbeszédpanelen:
 
 ![SQL Database konfigurálása](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-A **Create App Service** (App Service létrehozása) párbeszédpanel jeleníti meg a konfigurált erőforrásokat. Kattintson a **Létrehozás** elemre. 
+A **Create App Service** (App Service létrehozása) párbeszédpanel jeleníti meg a konfigurált erőforrásokat. Kattintson a  **Create** (Létrehozás) gombra. 
 
 ![a létrehozott erőforrások](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
@@ -285,7 +276,7 @@ Keresse meg az üres `<th></th>` elemet. Az elem felett adja hozzá a következ�
 </th>
 ```
 
-Keresse meg a `<td>` segédmetódusokat tartalmazó `Html.ActionLink()` elemet. Ezenfelett`<td>` adjon hozzá egy másik `<td>` elemet a következő Razor-kóddal:
+Keresse meg a `Html.ActionLink()` segédmetódusokat tartalmazó `<td>` elemet. Ezen `<td>` _felett_ adjon hozzá egy másik `<td>` elemet a következő Razor-kóddal:
 
 ```csharp
 <td>
@@ -408,7 +399,7 @@ Alapértelmezés szerint a portál megjeleníti az **Áttekintés** oldalt. Ezen
 
 [!INCLUDE [Clean up section](../../includes/clean-up-section-portal-web-app.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

@@ -1,33 +1,24 @@
 ---
-title: Ruby-Webalkalmazás létrehozása Linux rendszeren – Azure App Service | Microsoft Docs
-description: Ismerje meg egy Ruby on Rails-alkalmazás létrehozásának menetét a Linuxon futó App Service segítségével.
+title: 'Rövid útmutató: Linux Ruby-alkalmazás létrehozása'
+description: Ismerkedjen meg a Linux-alkalmazásokkal Azure App Service az első Ruby-alkalmazás üzembe helyezésével a App Service Linux-tárolójában.
 keywords: azure app service, linux, oss, ruby, rails
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 07/11/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cfcea4c4450ea806b36d1d46c17c6676f7d92893
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 17c81ab71352f57731d9b36138c88c34421e374c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071069"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689032"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Ruby on Rails-alkalmazás létrehozása a Linuxon futó App Service-ben
 
 A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Ruby on Rails-alkalmazást a Linuxon a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)használatával Azure app Service.
 
 > [!NOTE]
-> A Ruby fejlesztői verem jelenleg csak a Ruby on Railst támogatja. Ha más platformot, például Sinatra-t szeretne használni, vagy ha nem [támogatott Ruby-verziót](app-service-linux-intro.md)szeretne használni, [azt egy egyéni tárolóban](quickstart-docker-go.md)kell futtatnia.
+> A Ruby fejlesztői verem jelenleg csak a Ruby on Railst támogatja. Ha más platformot, például Sinatra-t szeretne használni, vagy ha nem [támogatott Ruby-verziót](app-service-linux-intro.md)szeretne használni, [azt egy egyéni tárolóban kell futtatnia](quickstart-docker-go.md).
 
 ![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 
@@ -50,7 +41,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 Futtassa helyileg az alkalmazást, hogy lássa, hogyan fog kinézni az Azure-ban üzembe helyezve. Nyisson meg egy terminálablakot, váltson át a `hello-world` könyvtárra, és használja a `rails server` parancsot a kiszolgáló elindításához.
 
-Az első lépés a szükséges gemek telepítése. A minta tartalmazza a mintát, ezért csak futtassa a következő parancsot: `Gemfile`
+Az első lépés a szükséges gemek telepítése. A minta egy `Gemfile` tartalmaz, ezért csak futtassa a következő parancsot:
 
 ```bash
 bundle install
@@ -125,12 +116,12 @@ http://<app-name>.azurewebsites.net
 ![frissített webalkalmazás](./media/quickstart-ruby/hello-world-configured.png)
 
 > [!NOTE]
-> Az alkalmazás újraindítása közben megfigyelheti a HTTP-állapotkódot `Error 503 Server unavailable` a böngészőben, vagy az `Hey, Ruby developers!` alapértelmezett lapot is. Az alkalmazás teljes újraindítása eltarthat néhány percig.
+> Az alkalmazás újraindításakor megfigyelheti a HTTP-állapotkódot `Error 503 Server unavailable` a böngészőben, vagy a `Hey, Ruby developers!` alapértelmezett lapot. Az alkalmazás teljes újraindítása eltarthat néhány percig.
 >
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Ruby on Rails és postgres](tutorial-ruby-postgres-app.md)

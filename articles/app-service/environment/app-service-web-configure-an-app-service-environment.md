@@ -1,37 +1,30 @@
 ---
-title: Az App Service Environment v1 konfigurálása – Azure
-description: A App Service Environment v1 konfigurálása, kezelése és figyelése
-services: app-service
-documentationcenter: ''
+title: A beadási v1 konfigurálása
+description: A App Service Environment v1 konfigurálása, kezelése és figyelése. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b8a05b7e8466187202e6a4d11efce288238cc19b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069937"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687259"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>App Service Environment v1 konfigurálása
 
 > [!NOTE]
-> Ez a cikk a App Service Environment v1-es verzióról szól.  A App Service Environment újabb verziója könnyebben használható, és nagyobb teljesítményű infrastruktúrán fut. Ha többet szeretne megtudni az új verzióról, kezdje a [app Service Environment](intro.md)bevezetésével.
+> Ez a cikk a App Service Environment v1-es verzióról szól.  A App Service Environment újabb verziója könnyebben használható, és nagyobb teljesítményű infrastruktúrán fut. Ha többet szeretne megtudni az új verzióról, kezdje a [app Service Environment bevezetésével](intro.md).
 > 
 
 ## <a name="overview"></a>Áttekintés
 Magas szinten az Azure App Service Environment több fő összetevőből áll:
 
 * A App Service Environment üzemeltetett szolgáltatásban futó számítási erőforrások
-* Storage
+* Adattárolás
 * Egy adatbázis
 * Klasszikus (v1) vagy Resource Manager (v2) Azure Virtual Network (VNet) 
 * Olyan alhálózat, amelyen fut a App Service Environment üzemeltetett szolgáltatás
@@ -44,14 +37,14 @@ Az erőforráskészlet (az előtér-és a munkavégzők) gazdagépei nem érhet�
 Beállíthatja az erőforráskészlet mennyiségét és méretét. Egy beadási csomag esetében négy mérettel rendelkezik, amelyek P1-től P4-ig vannak megjelölve. A méretekkel és azok díjszabásával kapcsolatos további információkért lásd: [app Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/).
 A mennyiség vagy a méret módosítását méretezési műveletnek nevezzük.  Egyszerre csak egy skálázási művelet lehet folyamatban.
 
-**Előtér**-végpontok: Az előtér a szolgáltatásban tárolt alkalmazások HTTP/HTTPS-végpontja. Az előtér-munkaterhelések nem futnak.
+**Előtér-kezelőfelületek**: az előtér a saját előfizetésében tárolt alkalmazások HTTP/HTTPS-végpontja. Az előtér-munkaterhelések nem futnak.
 
 * A bevezetési folyamat két P2s, amely elegendő a fejlesztési/tesztelési feladatokhoz és az alacsony szintű éles számítási feladatokhoz. Erősen ajánljuk a P3s közepes és nehéz üzemi számítási feladatokhoz.
 * A mérsékelt és a nagy teljesítményű számítási feladatokhoz legalább négy P3s van szükség ahhoz, hogy az ütemezett karbantartás során elegendő legyen a kezdeti Befejezés. Az ütemezett karbantartási tevékenységek egyszerre egy előtért eredményeznek. Ez csökkenti a rendelkezésre álló előtér-kapacitást a karbantartási tevékenységek során.
 * Az előtér-Befejezés akár egy órát is igénybe vehet. 
 * A részletes Finomhangolás érdekében figyelnie kell a CPU százalékos arányát, a memória százalékos arányát és az aktív kérelmek metrikáját az előtér-készlethez. Ha a P3s futtatásakor a CPU vagy a memória százalékos aránya meghaladja a 70%-ot, adjon hozzá további előtér-végpontokat. Ha az aktív kérelmek értékének átlaga 15 000 – 20 000 kérelemre vonatkozik, akkor további előtér-értékeket is fel kell vennie. Az általános cél a CPU és a memória százalékos arányának 70% alatti megtartása, valamint az aktív kérések, amelyek a P3s futtatásakor az alábbi 15 000-kérelmekre vonatkoznak.  
 
-Feldolgozók: A munkavégzők, ahol az alkalmazásai ténylegesen futnak. A App Service-csomagok vertikális felskálázásakor a rendszer felhasználja a feldolgozókat a társított munkakészletben.
+**Feldolgozók**: az alkalmazások ténylegesen futnak. A App Service-csomagok vertikális felskálázásakor a rendszer felhasználja a feldolgozókat a társított munkakészletben.
 
 * Nem lehet azonnal felvenni a feldolgozókat. Akár egy órát is igénybe vehetnek.
 * Egy számítási erőforrás méretének méretezése bármely készlet esetében < egy órányi frissítési tartományba kerül. 20 frissítési tartomány van jelen a központnál. Ha 10 példánnyal méretezi a munkavégző készlet számítási méretét, akkor akár 10 órát is igénybe vehet.
@@ -68,11 +61,11 @@ Ha alkalmazásai nagyobb számítási erőforrás-méretet igényelnek, akkor ne
 * Rendeljen újra olyan App Service-csomagokat, amelyek olyan alkalmazásokat üzemeltetnek, amelyeknek nagyobb méretűnek kell lenniük az újonnan konfigurált munkavégző készlethez. Ez egy gyors művelet, amelynek elvégzéséhez kevesebb mint egy percet kell igénybe venni.  
 * Ha már nincs szüksége a fel nem használt példányokra, az első munkavégző készletet le kell méreteznie. A művelet végrehajtása néhány percet vesz igénybe.
 
-Automatikus **skálázás**: Az egyik olyan eszköz, amely segíthet a számítási erőforrások felhasználásának kezelésében, automatikus skálázás. Az előtér-vagy feldolgozói készletek automatikus skálázását is használhatja. Olyan dolgok is megtehetnek, mint például az egyes készletekhez tartozó példányok megemelése reggel, és az esti időszakban csökkenthetők. Vagy előfordulhat, hogy olyan példányokat is hozzáadhat, amelyekben a feldolgozói készletben rendelkezésre álló munkavégzők száma egy bizonyos küszöbérték alá esik.
+Automatikus **skálázás**: az egyik olyan eszköz, amely segíthet a számítási erőforrások felhasználásának kezelésében, automatikus skálázás. Az előtér-vagy feldolgozói készletek automatikus skálázását is használhatja. Olyan dolgok is megtehetnek, mint például az egyes készletekhez tartozó példányok megemelése reggel, és az esti időszakban csökkenthetők. Vagy előfordulhat, hogy olyan példányokat is hozzáadhat, amelyekben a feldolgozói készletben rendelkezésre álló munkavégzők száma egy bizonyos küszöbérték alá esik.
 
 Ha szeretné beállítani az autoskálázási szabályokat a számítási erőforráskészlet metrikái között, akkor ne feledje, hogy milyen időpontra van szükség a kiépítés során. További információ az automatikus skálázásról App Service környezetekről: az automatikus [skálázás konfigurálása egy app Service Environment][ASEAutoscale].
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Adattárolás
 Az egyes előállítók 500 GB tárhellyel vannak konfigurálva. Ez a terület a központhoz tartozó összes alkalmazásban használatos. Ez a tárolóhely a szolgáltató része, és jelenleg nem lehet átváltani a tárolóhely használatára. Ha a virtuális hálózat útválasztásának vagy biztonságának módosítását végzi, akkor továbbra is engedélyeznie kell az Azure Storage-hoz való hozzáférést, vagy a kiegészítő funkció nem tud működni.
 
 ### <a name="database"></a>Adatbázis
@@ -116,12 +109,12 @@ Az összes App Service-környezetét felsoroló felhasználói felület megnyit�
 
 Ez az első panel a bemutatókhoz tartozó egyes tulajdonságokat, valamint az erőforráskészlet metrikai diagramját mutatja be. Az **Essentials** blokkban megjelenített tulajdonságok némelyike olyan hiperhivatkozásokat is magában foglal, amelyek a hozzá társított panelt nyitják meg. Kiválaszthatja például a **Virtual Network** nevet a virtuális hálózathoz társított felhasználói felület megnyitásához. **App Service terveket** és **alkalmazásokat** az egyes megnyitott lapokon, amelyek felsorolják ezeket az elemeket.  
 
-### <a name="monitoring"></a>Figyelés
+### <a name="monitoring"></a>Monitoring
 A diagramok lehetővé teszik különböző teljesítménymutatók megjelenítését az egyes erőforráskészletokban. Az előtér-készlet esetében figyelheti az átlagos PROCESSZORt és memóriát. A munkavégző készletek esetében nyomon követheti a felhasznált mennyiséget és az elérhető mennyiséget.
 
 Több App Service-csomag is használhatja a munkavégző készlet feldolgozóit. A számítási feladatok nem ugyanolyan módon oszlanak el, mint az előtér-kiszolgálókon, így a CPU és a memóriahasználat nem sokat nyújt a hasznos információkhoz. Fontos, hogy nyomon kövessük, hány alkalmazottat használtak fel, és melyek elérhetők – különösen akkor, ha a rendszer kezelését mások számára kívánja használni.  
 
-A riasztások beállításához a diagramokon nyomon követhető összes mérőszámot is használhatja. A riasztások beállítása itt ugyanúgy működik, mint a App Serviceban. Riasztást állíthat be a riasztások felhasználói felület részben, vagy bármely metrika felhasználói felületén, és a **riasztás hozzáadása**lehetőség választásával.
+A riasztások beállításához a diagramokon nyomon követhető összes mérőszámot is használhatja. A riasztások beállítása itt ugyanúgy működik, mint a App Serviceban. Riasztást állíthat be a **riasztások** felhasználói felület részben, vagy bármely metrika felhasználói felületén, és a **riasztás hozzáadása**lehetőség választásával.
 
 ![Metrikák felhasználói felület][3]
 
@@ -132,13 +125,13 @@ A teljes App Service csomagok dedikált App Service csomagok. Ez azt jelenti, ho
 ### <a name="settings"></a>Beállítások
 A beadási panelen egy olyan **Beállítások** szakasz található, amely számos fontos funkciót tartalmaz:
 
-Beállítások > **tulajdonságai**: A **Beállítások** panel automatikusan megnyílik a beadási panel indításakor. A tetején a **Tulajdonságok**láthatók. Itt számos elem van, amelyek redundánsak az **alapvető**erőforrásoknál, de a **virtuális IP-cím**és a **kimenő IP-címek**is hasznosak.
+**Beállítások** > **tulajdonságai**: a **Beállítások** panel automatikusan megnyílik a beadási panel megnyitásakor. A tetején a **Tulajdonságok**láthatók. Itt számos elem van, amelyek redundánsak az **alapvető**erőforrásoknál, de a **virtuális IP-cím**és a **kimenő IP-címek**is hasznosak.
 
 ![Beállítások panel és tulajdonságok][4]
 
-Beállítások > **IP-címei**: Ha IP-SSL (SSL) alkalmazást hoz létre a beadásban, szüksége van egy IP SSL-címére. Ahhoz, hogy beszerezze az egyiket, a szolgáltatónak meg kell IP SSLa a hozzárendelni kívánt címeket. A kisegítő szolgáltatás létrehozásakor egy IP SSL-címnek kell megadnia erre a célra, de továbbiak is hozzáadhatók. A további IP SSL címekért díjat számítunk fel, ahogy az a [app Service díjszabásban][AppServicePricing] is látható (az SSL-kapcsolatok szakaszban). A kiegészítő díj a IP SSL díj.
+**Beállítások** > **IP-címek**: Amikor létrehoz egy IP-SSL (SSL-) alkalmazást a beadásban, szüksége lesz egy IP SSL címre. Ahhoz, hogy beszerezze az egyiket, a szolgáltatónak meg kell IP SSLa a hozzárendelni kívánt címeket. A kisegítő szolgáltatás létrehozásakor egy IP SSL-címnek kell megadnia erre a célra, de továbbiak is hozzáadhatók. A további IP SSL címekért díjat számítunk fel, ahogy az a [app Service díjszabásban][AppServicePricing] is látható (az SSL-kapcsolatok szakaszban). A kiegészítő díj a IP SSL díj.
 
-**Beállítások** > előtér- / **munkavégző**készletei: Ezen erőforráskészlet-lapok mindegyike lehetővé teszi, hogy csak az adott erőforráskészlet információit lássuk el, az erőforráskészlet teljes méretezését biztosító vezérlőelemek mellett.  
+**Beállítások** > **előtér-készlet** / **Worker-készletek**esetében: ezek az erőforráskészlet-pengék csak az adott erőforráskészlet információit biztosítják, továbbá a vezérlők teljes méretezésére is lehetőséget biztosítanak.  
 
 Az egyes erőforráskészlet alappaneljének diagramja az adott erőforráskészlet metrikáit tartalmazza. Akárcsak a beadási panelen található diagramoknál, beléphet a diagramba, és igény szerint állíthatja be a riasztásokat. Egy adott erőforráskészlet bekapcsolási paneljéről érkező riasztások beállítása ugyanaz, mint az erőforráskészlet esetében. A Worker Pool **Beállítások** paneljén hozzáférhet az ebben a feldolgozó készletben futó összes alkalmazáshoz vagy app Service-csomaghoz.
 
@@ -155,13 +148,13 @@ A portálon háromféle módon szabályozhatja, hogy hány kiszolgáló van az e
 
 * Egy méretezési művelet a legfelső szintű bevezető panelről. Az előtér-és a munkavégző készleteknél több méretezési konfigurációt is végezhet. Mindegyiket egyetlen műveletként alkalmazza a rendszer.
 * Manuális méretezési művelet az egyes erőforráskészlet- **méretezési** panelről, amely a **Beállítások**területen található.
-* Automatikus skálázás, amely az egyes erőforráskészlet-méretezési panelről állítható be.
+* Automatikus skálázás, amely az egyes erőforráskészlet- **méretezési** panelről állítható be.
 
 Ha a skálázási műveletet a kisegítő panelen szeretné használni, húzza a csúszkát a kívánt mennyiségre, és mentse. Ez a felhasználói felület támogatja a méret módosítását is.  
 
 ![Felhasználói felület méretezése][6]
 
-Ha egy adott erőforráskészlet manuális vagy automatikus méretezési képességeit szeretné használni, válassza a **Beállítások** > **előtér-készlet** / feldolgozói**készletek** lehetőséget. Ezután nyissa meg a módosítani kívánt készletet. Lépjen a **Beállítások** > felskálázás vagy a **Beállítások** > vertikális felskálázás menüpontra. A kibővíthető panel lehetővé teszi a példányok mennyiségének vezérlését. A vertikális felskálázás lehetővé teszi az erőforrások méretének szabályozását.  
+Egy adott erőforráskészlet manuális vagy automatikus méretezési képességeinek használatához lépjen a **beállítások** > **előtér-készlet** / **munkavégző készletek** lehetőségre. Ezután nyissa meg a módosítani kívánt készletet. Válassza a **beállítások** > a vertikális **felskálázás** vagy a **Beállítások** > vertikális **felskálázás**lehetőséget. A **kibővíthető** panel lehetővé teszi a példányok mennyiségének vezérlését. A vertikális **felskálázás** lehetővé teszi az erőforrások méretének szabályozását.  
 
 ![Méretezési beállítások felhasználói felülete][7]
 
@@ -191,7 +184,7 @@ Ha törölni szeretne egy App Service Environment, egyszerűen használja a **T�
 
 ![App Service Environment felhasználói felület törlése][9]  
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 App Service környezetek megkezdéséhez tekintse meg a [app Service Environment létrehozása](app-service-web-how-to-create-an-app-service-environment.md)című témakört.
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]

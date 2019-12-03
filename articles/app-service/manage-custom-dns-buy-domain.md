@@ -1,25 +1,16 @@
 ---
-title: Egyéni tartománynév vásárlása az Azure-ban – App Service
-description: Megtudhatja, hogyan vásárolhat egyéni tartománynevet egy webalkalmazásban Azure App Serviceban.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: Egyéni tartománynév vásárlása
+description: Megtudhatja, hogyan vásárolhat egy App Service tartományt, és hogyan használhatja egyéni tartományként az alkalmazás Azure App Service.
 ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1354f48843f8006b4a6180a2cea60e735413e446
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0723a3b0c96339ba86b98ab851c44d2a65e6f34b
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470390"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672381"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Egyéni tartománynév vásárlása Azure App Service
 
@@ -68,7 +59,7 @@ Ha az App Service-csomag nem az **F1** -es szinten található, akkor a vertiká
 
 Válassza ki bármelyik nem ingyenes szintet (**D1**, **B1**, **B2**, **B3**, vagy a **Production** kategória bármelyik szintje). További beállításokhoz kattintson a **További lehetőségek megjelenítése** lehetőségre.
 
-Kattintson az **Alkalmaz** gombra.
+Kattintson az **Apply** (Alkalmaz) gombra.
 
 ![A tarifacsomag ellenőrzése](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 

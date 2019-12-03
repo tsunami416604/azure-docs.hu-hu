@@ -1,24 +1,15 @@
 ---
-title: ASP.NET Core-alkalmazások konfigurálása – Azure App Service | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhatja ASP.NET Core alkalmazások működését Azure App Service
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Linux ASP.NET Core-alkalmazások konfigurálása
+description: Megtudhatja, hogyan konfigurálhat egy előre elkészített ASP.NET Core tárolót az alkalmazáshoz. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: cephalin
-ms.openlocfilehash: b05120148d3b82829c465effbcdc948da950aaf0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d26c490ad37b25785ff1347cccf1e2be21bba277
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990261"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670466"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Linux ASP.NET Core-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -81,7 +72,7 @@ Ha például a App Service és a *appSettings. JSON*fájlban azonos nevű Alkalm
 
 ## <a name="get-detailed-exceptions-page"></a>Részletes kivételek oldalának beolvasása
 
-Ha a ASP.NET-alkalmazás kivételt hoz létre a Visual Studio debuggerben, a böngésző egy részletes kivétel lapot jelenít meg, de App Service a lapot általános **HTTP 500** -hiba váltja fel, vagy **hiba történt a kérelem feldolgozása során.** üzenetet. A app Service részletes kivétel lapjának megjelenítéséhez adja hozzá az `ASPNETCORE_ENVIRONMENT` alkalmazás beállításait az alkalmazáshoz a következő parancs futtatásával a <a target="_blank" href="https://shell.azure.com" >Cloud Shellban</a>.
+Ha a ASP.NET-alkalmazás kivételt hoz létre a Visual Studio debuggerben, a böngésző egy részletes kivétel lapot jelenít meg, de App Service a lapot általános **HTTP 500** -hiba váltja fel, vagy **hiba történt a kérelem feldolgozása során.** üzenetet. A App Service részletes kivétel lapjának megjelenítéséhez adja hozzá a `ASPNETCORE_ENVIRONMENT` alkalmazás-beállítást az alkalmazáshoz a <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>következő parancsának futtatásával.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -91,9 +82,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának tudnia kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, konfigurálja a továbbított fejlécek middleware-t a *Startup.cs*-ben:
 
-- Konfigurálja a middleware-t a [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) , `X-Forwarded-For` hogy `X-Forwarded-Proto` továbbítsa `Startup.ConfigureServices`a és a fejléceket a alkalmazásban.
+- Konfigurálja a middleware-t a [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) , hogy továbbítsa a `X-Forwarded-For` és `X-Forwarded-Proto` fejléceket `Startup.ConfigureServices`.
 - Adjon hozzá magánhálózati IP-címtartományt az ismert hálózatokhoz, hogy a köztes kapcsolat megbízható legyen a App Service Load balancerben.
-- A [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) metódus `Startup.Configure` meghívása az egyéb köztes közbenső funkciók meghívása előtt.
+- A [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) metódus meghívása a `Startup.Configure`ban, mielőtt más köztes közbensőkat kellene meghívnia.
 
 A három elem együttes elhelyezésével a kód a következő példához hasonlóan néz ki:
 
@@ -122,7 +113,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-További információkért lásd: [a ASP.net Core konfigurálása a proxykiszolgáló és a](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer)terheléselosztó működéséhez.
+További információkért lásd: [a ASP.net Core konfigurálása a proxykiszolgáló és a terheléselosztó működéséhez](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
 
 ## <a name="deploy-multi-project-solutions"></a>Több projektből álló megoldások üzembe helyezése
 
@@ -141,7 +132,7 @@ project = <project-name>/<project-name>.csproj
 
 ### <a name="using-app-settings"></a>Alkalmazásbeállítások használata
 
-A <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>az alábbi CLI-parancs futtatásával adjon hozzá egy alkalmazást az App Service alkalmazáshoz. Cserélje le  *\<az alkalmazás neve >* ,  *\<az erőforrás-csoport neve >* és  *\<a projekt neve >* a megfelelő értékekre.
+A <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>az alábbi CLI-parancs futtatásával adjon hozzá egy alkalmazást az App Service alkalmazáshoz. Cserélje le a *\<app-name >* , *\<erőforráscsoport-név >* és *\<Project-Name >* értéket a megfelelő értékekkel.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -155,10 +146,10 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Alkalmazás ASP.NET Core SQL Database](tutorial-dotnetcore-sqldb-app.md)
+> [Oktatóanyag: ASP.NET Core alkalmazás SQL Database](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
 > [App Service Linux – gyakori kérdések](app-service-linux-faq.md)

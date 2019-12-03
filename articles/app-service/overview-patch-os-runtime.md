@@ -1,24 +1,15 @@
 ---
-title: Operációs rendszer és futtatókörnyezet javításának ritmusa – Azure App Service | Microsoft Docs
-description: Leírja, hogyan Azure App Service frissíti az operációs rendszert és a futtatókörnyezetet, és hogyan kérheti le a frissítési hirdetményeket.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Operációs rendszer és futtatókörnyezet javításának ritmusa
+description: Megtudhatja, hogyan frissíti Azure App Service az operációs rendszer és a futtatókörnyezet frissítéseit, milyen futtatókörnyezeteket és javítási szinteket használ, és hogyan kérheti le a frissítési hirdetményeket.
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3469c4f11a075ceb958e35e4cfc87a78e60b3882
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1a56fed04399325be315d8d977e5a72223bddac5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074133"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688573"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operációs rendszer és futtatókörnyezet javítása Azure App Service
 
@@ -64,7 +55,7 @@ A .NET, a PHP, a Java SDK vagy a Tomcat/Jetty verzióhoz tartozó javítások fr
 
 ### <a name="new-major-and-minor-versions"></a>Új fő-és alverziók
 
-Új fő vagy másodlagos verzió hozzáadásakor a rendszer a meglévő verziókkal együtt telepíti. Az alkalmazást manuálisan is frissítheti az új verzióra. Ha egy konfigurációs fájlban (például `web.config` és `package.json`) konfigurálta a futásidejű verziót, ugyanezt a metódust kell frissítenie. Ha App Service beállítást használt a futtatókörnyezet verziójának konfigurálásához, akkor azt a Azure Portalban vagy egy [](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -parancs futtatásával módosíthatja a [Cloud Shell](../cloud-shell/overview.md), ahogy az alábbi példákban is látható:
+Új fő vagy másodlagos verzió hozzáadásakor a rendszer a meglévő verziókkal együtt telepíti. Az alkalmazást manuálisan is frissítheti az új verzióra. Ha a futásidejű verziót konfigurálta egy konfigurációs fájlban (például `web.config` és `package.json`), akkor ugyanezt a metódust kell frissítenie. Ha App Service beállítást használt a futtatókörnyezet verziójának konfigurálásához, akkor azt a [Azure Portalban](https://portal.azure.com) vagy egy [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -parancs futtatásával módosíthatja a [Cloud Shell](../cloud-shell/overview.md), ahogy az alábbi példákban is látható:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -84,21 +75,21 @@ Habár a kritikus operációsrendszer-információk le vannak tiltva a hozzáfé
 
 Az alábbi táblázat bemutatja, hogyan használhatók a Windows és az alkalmazásokat futtató nyelvi futtatókörnyezetek verziói:
 
-| Information | Hol található | 
+| Információ | Hol található | 
 |-|-|
-| Windows-verzió | Lásd `https://<appname>.scm.azurewebsites.net/Env.cshtml` : (a Rendszerinformáció területen) |
-| .NET-verzió | `https://<appname>.scm.azurewebsites.net/DebugConsole`A alkalmazásban futtassa a következő parancsot a parancssorban: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
-| .NET Core-verzió | `https://<appname>.scm.azurewebsites.net/DebugConsole`A alkalmazásban futtassa a következő parancsot a parancssorban: <br> `dotnet --version` |
-| PHP-verzió | `https://<appname>.scm.azurewebsites.net/DebugConsole`A alkalmazásban futtassa a következő parancsot a parancssorban: <br> `php --version` |
+| Windows-verzió | Lásd: `https://<appname>.scm.azurewebsites.net/Env.cshtml` (a System info alatt) |
+| .NET-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole`on futtassa a következő parancsot a parancssorban: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| .NET Core-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole`on futtassa a következő parancsot a parancssorban: <br> `dotnet --version` |
+| PHP-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole`on futtassa a következő parancsot a parancssorban: <br> `php --version` |
 | Alapértelmezett Node. js-verzió | A [Cloud Shell](../cloud-shell/overview.md)futtassa a következő parancsot: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Python-verzió | `https://<appname>.scm.azurewebsites.net/DebugConsole`A alkalmazásban futtassa a következő parancsot a parancssorban: <br> `python --version` |  
+| Python-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole`on futtassa a következő parancsot a parancssorban: <br> `python --version` |  
 
 > [!NOTE]  
-> Hozzáférés a beállításjegyzék helyéhez `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, ahol a ["kb"](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) -os javításokat tartalmazó információk tárolódnak, zárolva vannak.
+> Hozzáférés a beállításjegyzék helyéhez `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, ahol a ["kb"-os javításokat](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) tartalmazó információk tárolódnak, zárolva van.
 >
 >
 
 ## <a name="more-resources"></a>További források
 
-[Adatvédelmi központ: Biztonság](https://www.microsoft.com/en-us/trustcenter/security)  
+[Adatvédelmi központ: biztonság](https://www.microsoft.com/en-us/trustcenter/security)  
 [64 bites ASP.NET Core Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

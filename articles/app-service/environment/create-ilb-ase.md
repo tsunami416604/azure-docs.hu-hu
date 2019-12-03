@@ -1,24 +1,18 @@
 ---
-title: Belső terheléselosztó létrehozása App Service Environment-Azure-val
-description: Részletes információk az internettől elzárt Azure App Service Environment létrehozásáról.
-services: app-service
-documentationcenter: na
+title: ILB-beadás létrehozása ARM-mel
+description: Megtudhatja, hogyan hozhat létre App Service környezetet belső terheléselosztó (ILB) használatával Azure Resource Manager sablonokkal. Az alkalmazások teljes elkülönítése az internetről.
 author: ccompy
-manager: stefsch
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 07b47374484cf954b1fc4279c93dddcc6cec7e61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ae1d04043c740456368b0831bee84490778f0171
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470574"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687211"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Belső Load Balancer létrehozása és használata App Service Environment 
 
@@ -120,7 +114,7 @@ Az SCM helynév a Kudu konzolhoz irányítja, az Azure Portal **Speciális port�
 
 A GitHubhoz és az Azure DevOpshoz hasonló internetes alapú CI-rendszerek akkor is működnek az ILB ASE környezettel, ha a buildügynök elérhető az internetről, és ugyanazon a hálózaton található, mint az ILB ASE. Tehát az Azure DevOps esetében, ha a buildügynök ugyanazon a VNET-en lett létrehozva, mint az ILB ASE (lehet más alhálózat), képes lesz lekérni a kódot az Azure DevOps-gitről és telepíteni az ILB ASE-re. Ha nem szeretne létrehozni saját buildügynököt, egy lekérési modellt használó CI-rendszert kell használnia helyette, például a Dropboxot.
 
-Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Ez a tartomány az alkalmazás közzétételi profilján és az alkalmazás portálpanelén jelenik meg (**Áttekintés** > **Alapvető szolgáltatások** és **Tulajdonságok**). Ha van olyan ILB-szolgáltatója, amelynek tartomány-utótagja&lt;a (z *)&gt;. appserviceenvironment.net*és egy *mytest*nevű alkalmazás, használja a mytest.&lt;a ( *z)&gt;. appserviceenvironment.net. mytest.scm.contoso.net* a webes telepítéshez.
+Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Ez a tartomány az alkalmazás közzétételi profilján és az alkalmazás portálpanelén jelenik meg (**Áttekintés** > **Alapvető szolgáltatások** és **Tulajdonságok**). Ha rendelkezik egy ILB-bevezetéssel,&lt;a (z) *&gt;. appserviceenvironment.net*vagy egy *mytest*nevű alkalmazás a tartomány utótagja, használja a mytest.&lt;a (z) *&gt;. appserviceenvironment.net* a webes telepítéshez az FTP-hez és a *mytest.SCM.contoso.net* .
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>ILB-beadás konfigurálása WAF-eszközzel ##
 

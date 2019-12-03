@@ -1,25 +1,18 @@
 ---
-title: Az Azure ExpressRoute-App Service hálózati konfigurációjának részletei
-description: Az Azure ExpressRoute-áramkörhöz csatlakoztatott virtuális hálózatok PowerApps App Service Environment hálózati konfigurációjának adatai.
-services: app-service
-documentationcenter: ''
+title: Az Azure ExpressRoute v1 konfigurálása
+description: A PowerApps App Service Environment hálózati konfigurációja az Azure ExpressRoute. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: b10bd15538ecca7934a397ca63db1150a0bfc32c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070038"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688741"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Hálózati konfiguráció részletei App Service Environment PowerApps az Azure ExpressRoute
 
@@ -58,7 +51,7 @@ App Service Environment működéséhez a következő hálózati kapcsolati beá
 
 * A App Service Environment szükséges portok bejövő hálózati hozzáférését engedélyezni kell. Részletekért lásd: a [Bejövő forgalom vezérlése app Service Environmentra][requiredports].
 
-A DNS-követelmények teljesítéséhez győződjön meg arról, hogy érvényes DNS-infrastruktúra van konfigurálva és karbantartva a virtuális hálózat számára. Ha a DNS-konfiguráció App Service Environment létrehozása után módosul, akkor a fejlesztők kényszerítheti App Service Environment az új DNS-konfiguráció felvételére. A működés közbeni környezet újraindítását a [Azure Portal][NewPortal]app Service Environment kezelése elem újraindítási ikonjának használatával aktiválhatja. Az újraindítás hatására a környezet felveszi az új DNS-konfigurációt.
+A DNS-követelmények teljesítéséhez győződjön meg arról, hogy érvényes DNS-infrastruktúra van konfigurálva és karbantartva a virtuális hálózat számára. Ha a DNS-konfiguráció App Service Environment létrehozása után módosul, akkor a fejlesztők kényszerítheti App Service Environment az új DNS-konfiguráció felvételére. A működés közbeni környezet újraindítását a [Azure Portal][NewPortal]app Service Environment kezelése elem **Újraindítási** ikonjának használatával aktiválhatja. Az újraindítás hatására a környezet felveszi az új DNS-konfigurációt.
 
 A bejövő hálózati hozzáférési követelmények teljesítéséhez állítson be egy [hálózati biztonsági csoportot (NSG)][NetworkSecurityGroups] a app Service Environment alhálózaton. A NSG lehetővé teszi a szükséges hozzáférés [vezérlését app Service Environment felé irányuló bejövő forgalom szabályozásához][requiredports].
 
@@ -94,20 +87,20 @@ Ez a szakasz a App Service Environment UDR-konfigurációját mutatja be.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a Azure PowerShellt az [Azure letöltések oldaláról][AzureDownloads]. Válasszon egy, a 2015-es vagy újabb verziót tartalmazó letöltést. A legújabb PowerShell-parancsmagok telepítéséhez a **parancssori eszközök** > **Windows PowerShell**területén válassza a **telepítés** lehetőséget.
+* Telepítse a Azure PowerShellt az [Azure letöltések oldaláról][AzureDownloads]. Válasszon egy, a 2015-es vagy újabb verziót tartalmazó letöltést. A legújabb PowerShell-parancsmagok telepítéséhez a **parancssori eszközök** > **Windows PowerShell**területen válassza a **telepítés** lehetőséget.
 
 * Hozzon létre egy egyedi alhálózatot, amely kizárólagos használatra App Service Environment. Az egyedi alhálózat biztosítja, hogy az alhálózatra alkalmazott UDR csak App Service Environment számára legyen nyitott kimenő forgalom.
 
 > [!IMPORTANT]
 > A konfigurációs lépések elvégzése után csak App Service Environment telepítése. A lépések végrehajtásával biztosítható, hogy a kimenő hálózati kapcsolat elérhető legyen App Service Environment telepítése előtt.
 
-### <a name="step-1-create-a-route-table"></a>1\. lépés: Útválasztási táblázat létrehozása
+### <a name="step-1-create-a-route-table"></a>1\. lépés: útválasztási táblázat létrehozása
 
 Hozzon létre egy **DirectInternetRouteTable** nevű útválasztási táblázatot az USA nyugati régiója Azure-régióban, az alábbi kódrészletben látható módon:
 
 `New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
-### <a name="step-2-create-routes-in-the-table"></a>2\. lépés: Útvonalak létrehozása a táblában
+### <a name="step-2-create-routes-in-the-table"></a>2\. lépés: útvonalak létrehozása a táblában
 
 A kimenő internet-hozzáférés engedélyezéséhez vegyen fel útvonalakat az útválasztási táblázatba.  
 
@@ -126,13 +119,13 @@ Alternatív megoldásként töltse le az Azure által használt CIDR-tartományo
 > Egyetlen UDR alapértelmezett felső korlátja 100 útvonal. Az 100-Route korláton belül az Azure IP-címek tartományait össze kell illeszteni. A UDR megadott útvonalaknak pontosabbnak kell lenniük, mint az ExpressRoute-kapcsolatok által meghirdetett útvonalaknál.
 > 
 
-### <a name="step-3-associate-the-table-to-the-subnet"></a>3\. lépés: A tábla hozzárendelése az alhálózathoz
+### <a name="step-3-associate-the-table-to-the-subnet"></a>3\. lépés: a tábla hozzárendelése az alhálózathoz
 
 Rendelje hozzá az útválasztási táblázatot arra az alhálózatra, ahová App Service Environment szeretné telepíteni. Ez a parancs a **DirectInternetRouteTable** táblát társítja a **ASESubnet** alhálózathoz, amely tartalmazni fogja a app Service Environment.
 
 `Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'`
 
-### <a name="step-4-test-and-confirm-the-route"></a>4\. lépés: Az útvonal tesztelése és megerősítése
+### <a name="step-4-test-and-confirm-the-route"></a>4\. lépés: az útvonal tesztelése és megerősítése
 
 Miután az útválasztási táblázat az alhálózathoz van kötve, tesztelje és erősítse meg az útvonalat.
 
@@ -145,7 +138,7 @@ Miután elvégezte a konfigurációs lépéseket, és erősítse meg az útvonal
 
 Most már készen áll a App Service Environment üzembe helyezésére!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A PowerApps App Service Environment használatának megkezdéséhez tekintse meg a [app Service Environment bemutatása][IntroToAppServiceEnvironment]című témakört.
 

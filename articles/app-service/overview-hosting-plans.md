@@ -1,26 +1,17 @@
 ---
-title: App Service terv áttekintése – Azure | Microsoft Docs
-description: Ismerje meg, hogyan App Service terveket a Azure App Service működéséhez, és hogy a kezelési élmény milyen előnyökkel jár.
+title: App Service-csomagok
+description: Megtudhatja, hogy App Service csomagok hogyan működnek a Azure App Serviceban, hogyan történik a számlázás az ügyfél számára, és Hogyan méretezhetők az igényeinek megfelelően.
 keywords: App Service, Azure app Service, skálázás, skálázható, méretezhetőség, app Service-csomag, app Service-díj
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 78440185b4a26bccc8ffb0258416a19aa929af6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c0b28bd7a854d1b4a8b387e40fb045d47160768d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470239"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672279"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service terv áttekintése
 

@@ -1,27 +1,18 @@
 ---
-title: Node. js-alapú Webalkalmazás létrehozása – Azure App Service | Microsoft Docs
-description: Percek alatt üzembe helyezheti első Hello World Node.js-alkalmazását az App Service Web Apps szolgáltatásban.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Rövid útmutató: Node. js-alapú Webalkalmazás létrehozása'
+description: Percek alatt üzembe helyezheti az első Node. js-"Helló világ!" alkalmazás Azure App Service. A Visual Studio Code használatával telepíthető, amely a App Service üzembe helyezésének számos módszerének egyike.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 09/30/2019
-ms.author: cephalin
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 98d939c69bb03666dbeed124778b06f8a7e73532
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91494cc9c1e3a1fc159702bdbb7f68a4423b604c
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471460"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671364"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban 
 
@@ -41,7 +32,7 @@ Miután telepítette a bővítményt, jelentkezzen be az Azure-fiókjába. Az **
 
 ![Bejelentkezés az Azure-ba](containers/media/quickstart-nodejs/sign-in.png)
 
-### <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="troubleshooting"></a>Hibakeresés
 
 Ha a következő hibaüzenet jelenik meg: **"nem található az előfizetés a (z) [előfizetés-azonosítóval]" névvel**, lehetséges, hogy a proxy mögött van, és nem érhető el az Azure API. A `export`használatával konfigurálhatja a `HTTP_PROXY` és `HTTPS_PROXY` környezeti változókat a terminálon a proxy adataival.
 
@@ -93,7 +84,7 @@ Ezután győződjön meg arról, hogy az alkalmazás fut. A terminálból indít
 npm start
 ```
 
-Most nyissa meg a böngészőt, és navigáljon a [http://localhost:3000hoz ](http://localhost:3000), ahol a következőhöz hasonlónak kell megjelennie:
+Most nyissa meg a böngészőt, és navigáljon a [http://localhost:3000 hoz ](http://localhost:3000), ahol a következőhöz hasonlónak kell megjelennie:
 
 ![Expressz alkalmazás futtatása](containers/media/quickstart-nodejs/express.png)
 
@@ -154,7 +145,7 @@ Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl iko
 
 Miután az üzembe helyezés befejeződött, a kérdésben válassza a **Tallózás webhely** lehetőséget a frissen telepített webalkalmazás megtekintéséhez.
 
-### <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="troubleshooting"></a>Hibakeresés
 
 Ha a következő hibaüzenet jelenik meg: **"nincs engedélye a könyvtár vagy lap megtekintésére."** , akkor az alkalmazás valószínűleg nem indult el megfelelően. Lépjen a következő szakaszra, és tekintse meg a napló kimenetét, és javítsa ki a hibát. Ha nem tudja kijavítani a problémát, lépjen kapcsolatba velünk az alábbi, a **probléma** elhárítása gombra kattintva. Örömmel segítünk!
 
@@ -189,7 +180,7 @@ Néhány másodperc elteltével megjelenik egy üzenet, amely jelzi, hogy csatla
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Rendszerkép kivágása a Bing Visual Search SDK-val'
+title: 'Oktatóanyag: rendszerkép kivágása a Bing Visual Search SDK-val'
 description: A Bing Visual Search SDK-val lekérheti a rendszerkép adott Ares-adatait.
 services: cognitive-services
 titleSuffix: Azure Cognitive Services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 04/26/2019
-ms.author: rosh
-ms.openlocfilehash: a6b625325e2adfe441d8abd2012f100780b659b4
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 7adca44f1710431ad1095cbd0da897d4c7c7f325
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910031"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689352"
 ---
-# <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Oktatóanyag: Rendszerkép levágása a Bing Visual Search SDK-valC#
+# <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Oktatóanyag: rendszerkép kivágása a Bing Visual Search SDK-valC#
 
 A Bing Visual Search SDK lehetővé teszi, hogy egy képet a hasonló online képek keresése előtt levágja. Ez az alkalmazás egyetlen személyt termeszt egy több embert tartalmazó képből, majd visszaadja azokat a keresési eredményeket, amelyek a hasonló, online állapotú képeket tartalmaznak.
 
@@ -49,7 +49,7 @@ Ez az alkalmazás a Microsoft vezető csapatának ezen rendszerképének egy ter
 
 ![A Microsoft felső vezetése](./media/MS_SrLeaders.jpg)
 
-Ezt a képet a rendszer egy `ImageInfo` objektum létrehozásával vágja le a területről, és betölti az `VisualSearchRequest` `ImageInfo` objektumot a-ba. Az `ImageInfo` objektum a rendszerkép URL-címét is tartalmazza:
+Ezt a képet a rendszer egy `ImageInfo` objektum létrehozásával vágja le a növénytermesztési területről, és betölti a `ImageInfo` objektumot egy `VisualSearchRequest`ba. A `ImageInfo` objektum a rendszerkép URL-címét is tartalmazza:
 
 ```csharp
 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
@@ -61,7 +61,7 @@ VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: ima
 
 ## <a name="search-for-images-similar-to-the-crop-area"></a>A körülvágáshoz hasonló rendszerképek keresése
 
-A változó `VisualSearchRequest` a kép körülvágási felületére és URL-címére vonatkozó információkat tartalmaz. A `VisualSearchMethodAsync()` metódus az eredményeket kapja:
+A `VisualSearchRequest` változó a kép körülvágási felületére és URL-címére vonatkozó információkat tartalmaz. A `VisualSearchMethodAsync()` metódus az eredményeket kapja:
 
 ```csharp
 Console.WriteLine("\r\nSending visual search request with knowledgeRequest that contains URL and crop area");
@@ -69,9 +69,9 @@ var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest
 
 ```
 
-## <a name="get-the-url-data-from-imagemoduleaction"></a>Az URL-cím adatainak beolvasása`ImageModuleAction`
+## <a name="get-the-url-data-from-imagemoduleaction"></a>Az URL-adatok lekérése `ImageModuleAction`
 
-Bing Visual Search eredmények `ImageTag` objektumok. Mindegy egyes címke `ImageAction` objektumok listáját tartalmazza. Mindegyik `ImageAction` tartalmaz egy `Data` mezőt, amely a művelet típusától függő értékek listáját tartalmazza.
+Bing Visual Search találatok `ImageTag` objektumok. Mindegy egyes címke `ImageAction` objektumok listáját tartalmazza. Minden `ImageAction` tartalmaz egy `Data` mezőt, amely a művelet típusától függő értékek listáját tartalmazza.
 
 A különböző típusokat a következő kóddal lehet kinyomtatni:
 
@@ -81,22 +81,22 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 
 A teljes alkalmazás a következőket adja vissza:
 
-|ActionType  |URL  | |
+|Művelettípus  |URL-cím  | |
 |---------|---------|---------|
 |PagesIncluding WebSearchURL     |         |
 |MoreSizes WebSearchURL     |         |  
 |VisualSearch WebSearchURL    |         |
 |ImageById WebSearchURL     |         |  
 |RelatedSearches WebSearchURL     |         |
-|Entitás – > WebSearchUrl     | https\://www.Bing.com/CR?ig=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&Rd=1&h=BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v=1&r=HTTPS%3A%2F%2Fwww.Bing.com%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5380.1        |
-|TopicResults – > WebSearchUrl    |  https\://www.Bing.com/CR?ig=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&Rd=1&h=3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v=1&r=HTTPS%3A%2F%2Fwww.Bing.com%2fdiscover%2fnadella%2bsatya&p=DevEx,5382.1        |
-|ImageResults -> WebSearchUrl    |  https\://www.Bing.com/CR?ig=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&Rd=1&h=l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v=1&r=HTTPS%3A%2F%2Fwww.Bing.com%2fimages%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5384.1        |
+|Entitás – > WebSearchUrl     | https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v=1&r=https%3a%2f%2fwww.bing.com%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5380.1        |
+|TopicResults – > WebSearchUrl    |  https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fnadella%2bsatya&p=DevEx,5382.1        |
+|ImageResults – > WebSearchUrl    |  https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5384.1        |
 
-Ahogy az a fentiekben `Entity` is látható, a Művelettípus olyan Bing keresési lekérdezést tartalmaz, amely egy felismerhető személy, hely vagy dolog adatait adja vissza. A `TopicResults` és az `ImageResults` típus a kapcsolódó képekre vonatkozó lekérdezéseket tartalmazza. A listában lévő URL-ek a Bing keresési eredményeire mutatnak.
+Ahogy fent látható, a `Entity` Művelettípus tartalmaz egy olyan Bing keresési lekérdezést, amely egy felismerhető személy, hely vagy dolog adatait adja vissza. A `TopicResults` és az `ImageResults` típus a kapcsolódó képekre vonatkozó lekérdezéseket tartalmazza. A listában lévő URL-ek a Bing keresési eredményeire mutatnak.
 
-## <a name="get-urls-for-pagesincluding-actiontype-images"></a>`ActionType` Képek URL-címeinek `PagesIncluding` beolvasása
+## <a name="get-urls-for-pagesincluding-actiontype-images"></a>`PagesIncluding` `ActionType` rendszerképek URL-címeinek beolvasása
 
-A képek tényleges URL-jeinek a lekéréséhez szükség van egy olyan átalakításra, amely egy `ActionType` típust egy értéklistával rendelkező `Data` elemet tartalmazó `ImageModuleAction` műveletként olvas be. Minden egyes érték egy kép URL-je. A következő művelet a `PagesIncluding` műveletet `ImageModuleAction` írja be, és beolvassa az értékeket:
+A képek tényleges URL-jeinek a lekéréséhez szükség van egy olyan átalakításra, amely egy `ActionType` típust egy értéklistával rendelkező `Data` elemet tartalmazó `ImageModuleAction` műveletként olvas be. Minden egyes érték egy kép URL-je. A következőkben a `PagesIncluding` Művelettípus `ImageModuleAction`, és beolvassa az értékeket:
 
 ```csharp
     if (i.ActionType == "PagesIncluding")
@@ -108,9 +108,9 @@ A képek tényleges URL-jeinek a lekéréséhez szükség van egy olyan átalak�
     }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Visual Search egyoldalas Webalkalmazás létrehozása](tutorial-bing-visual-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 > [Mi a Bing Visual Search API?](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)

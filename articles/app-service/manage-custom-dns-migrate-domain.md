@@ -1,25 +1,17 @@
 ---
-title: Aktív DNS-név migrálása – Azure App Service | Microsoft Docs
+title: Aktív DNS-név átmigrálása
 description: Megtudhatja, hogyan telepíthet át egy élő webhelyhez már hozzárendelt egyéni DNS-tartománynevet állásidő nélkül Azure App Service.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/21/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 172003b13807720df2431a3610947b36d8303fed
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 79bd0a19a9bd8ebd100ed80ca0206656d73ef76c
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470364"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672359"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Aktív DNS-név átmigrálása Azure App Service
 
@@ -119,7 +111,7 @@ A tartományi szolgáltató DNS-rekordok lapján válassza ki a felvenni kíván
 
 A `contoso.com` gyökértartomány esetében például a következő táblázatban szereplő példáknak megfelelően a (z) vagy a CNAME rekord újratársítása: 
 
-| Példa FQDN-re | Rekordtípus | Gazdagép | Érték |
+| Példa FQDN-re | Rekordtípus | Gazdagép | Value (Díj) |
 | - | - | - | - |
 | contoso.com (root) | A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
 | www\.contoso.com (Sub) | CNAME | `www` | _&lt;AppName >. azurewebsites. net_ |
@@ -135,7 +127,7 @@ A DNS-lekérdezések a DNS-propagálás megkezdése után azonnal megoldják a A
 
 Az alkalmazás üzembe helyezési egységét az FTP/S URL-cím `<deployment-unit>.ftp.azurewebsites.windows.net`jának tartománynevével tekintheti meg. Ellenőrizze, hogy a telepítési egység különbözik-e a forrásoldali alkalmazás és a cél alkalmazás között. Az alkalmazás központi telepítési egységét az [app Service-csomag](overview-hosting-plans.md) határozza meg. Az Azure véletlenszerűen választja ki a csomag létrehozásakor, és nem módosítható. Az Azure-ban csak két csomag van ugyanabban a telepítési egységben, amikor [ugyanabban az erőforráscsoportban *és* ugyanabban a régióban hozza létre őket](app-service-plan-manage.md#create-an-app-service-plan), de nem rendelkezik logikai értékkel, hogy a csomagok különböző üzembe helyezési egységekben legyenek. Az egyetlen módja, ha egy másik üzembe helyezési egységben is létrehoz egy csomagot, hogy egy új erőforráscsoport vagy régió számára hozzon létre egy csomagot, amíg egy másik üzembe helyezési egységet nem kap.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató egyéni SSL-tanúsítvány kötéséhez App Servicehoz.
 

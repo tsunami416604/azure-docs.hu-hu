@@ -1,21 +1,19 @@
 ---
-title: Webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studio használatával – Azure
-description: Ismerje meg, hogyan fejlesztheti és helyezheti üzembe a Azure WebJobs a Azure App Service a Visual Studióval.
+title: Webjobs-feladatok fejlesztése és üzembe helyezése a VS használatával
+description: Megtudhatja, hogyan fejlesztheti Azure WebJobs a Visual Studióban, és hogyan helyezheti üzembe azokat Azure App Service, beleértve az ütemezett feladatok létrehozását is.
 author: ggailey777
-manager: gwallace
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
-ms.service: app-service
 ms.topic: conceptual
 ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ac458b01135be8628fbf939e310f8bda02b8d290
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: feacd463a10bae66dc8fa88a99b9ea60f399e9ec
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303548"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684173"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studio használatával – Azure App Service
 
@@ -164,7 +162,7 @@ A párbeszédpanel mezői a Azure Portal **Webjobs hozzáadása** párbeszédpan
 > 
 > 
 
-### <a id="publishsettings"></a>webjob-publish-settings.json
+### <a id="publishsettings"></a>webjobs-publish-Settings. JSON
 Ha a webjobs-telepítéshez konfigurál egy konzol alkalmazást, a Visual Studio telepíti a [Microsoft. Web. Webjobss. publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet csomagot, és az ütemezési információkat egy *webjobs-publish-Settings. JSON* fájlban tárolja a webjobs projekt projekt *tulajdonságai* mappájából. Íme egy példa erre a fájlra:
 
         {
@@ -179,7 +177,7 @@ Ha a webjobs-telepítéshez konfigurál egy konzol alkalmazást, a Visual Studio
 
 Ezt a fájlt közvetlenül szerkesztheti, a Visual Studio pedig IntelliSense-t is biztosít. A fájl sémája [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) tárolódik, és ott is megtekinthető.  
 
-### <a id="webjobslist"></a>webjobs-list.json
+### <a id="webjobslist"></a>webjobs-lista. JSON
 Amikor webjobs-t használó projektet kapcsol össze egy webes projekthez, a Visual Studio a webes projekt *Tulajdonságok* mappájában tárolja a webjobs-projekt nevét egy *webjobs-list. JSON* fájlban. A lista több webjobs-projektet is tartalmazhat, ahogy az alábbi példában is látható:
 
         {
@@ -233,10 +231,10 @@ A webjobs a következő beállításokat támogatja:
 
 | **Beállítás** | **Típus**  | **Leírás** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Összes | Lehetővé teszi a feladatok futtatását anélkül, hogy először egy ideiglenes mappába kellene másolni. További információ: [webjobs Working Directory](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_in_place` | Mind | Lehetővé teszi a feladatok futtatását anélkül, hogy először egy ideiglenes mappába kellene másolni. További információ: [webjobs Working Directory](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Folyamatos | A felskálázáskor csak egyetlen példányon futtassa a webjobs-feladatokat. További információ: [folyamatos munka beállítása](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton)egypéldányos beállítással. |
 | `schedule` | Kiváltott | Futtassa a Webjobs egy CRON-alapú ütemterven. További információért lásd az [időzítő trigger-referenciát ismertető cikket](../azure-functions/functions-bindings-timer.md#ncrontab-expressions). |
-| `stopping_wait_time`| Összes | Lehetővé teszi a leállítási viselkedés vezérlését. További információ: [kecses leállítás](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `stopping_wait_time`| Mind | Lehetővé teszi a leállítási viselkedés vezérlését. További információ: [kecses leállítás](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,26 +1,19 @@
 ---
-title: Ajánlott eljárások és hibaelhárítás a Node. js-Azure App Service
-description: Ismerje meg az ajánlott eljárásokat és a hibaelhárítási lépéseket a Azure App Service lévő Node-alkalmazásokhoz.
-services: app-service\web
-documentationcenter: nodejs
+title: Node. js – ajánlott eljárások és hibaelhárítás
+description: Ismerje meg a Azure App Serviceon futó Node. js-alkalmazások ajánlott eljárásait és hibaelhárítási lépéseit.
 author: ranjithr
-manager: wadeh
-editor: ''
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: bwren
 ms.custom: seodec18
-ms.openlocfilehash: 5ef0cf691ae3a199ea82cb8cfa23c386d30551dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 75195bd7ad228bb66dfd21d2c65997cc8c02680e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024229"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672044"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató a Azure App Service Windows rendszerű csomópont-alkalmazásokhoz
 
@@ -36,7 +29,7 @@ Ez a [sémafájl](https://github.com/Azure/iisnode/blob/master/src/config/iisnod
 
 ### <a name="nodeprocesscountperapplication"></a>nodeProcessCountPerApplication
 
-Ezzel a beállítással szabályozható az IIS-alkalmazásokban elindított csomópont-folyamatok száma. Az alapértelmezett érték az 1. A virtuális gép vCPU számaként akár több Node. exes is elindíthat, ha az értéket 0-ra módosítja. A legtöbb alkalmazás esetében a javasolt érték a 0, így a gépen található összes vCPU használhatja. A Node. exe egyetlen szálból áll, így az egyik Node. exe legfeljebb 1 vCPU használ. A Node-alkalmazás maximális teljesítményének lekéréséhez az összes vCPU használni kívánja.
+Ezzel a beállítással szabályozható az IIS-alkalmazásokban elindított csomópont-folyamatok száma. Az alapértelmezett érték 1. A virtuális gép vCPU számaként akár több Node. exes is elindíthat, ha az értéket 0-ra módosítja. A legtöbb alkalmazás esetében a javasolt érték a 0, így a gépen található összes vCPU használhatja. A Node. exe egyetlen szálból áll, így az egyik Node. exe legfeljebb 1 vCPU használ. A Node-alkalmazás maximális teljesítményének lekéréséhez az összes vCPU használni kívánja.
 
 ### <a name="nodeprocesscommandline"></a>nodeProcessCommandLine
 
@@ -94,7 +87,7 @@ A változások számára figyelt fájlok pontosvesszővel tagolt listája. A fá
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-Az alapértelmezett értéke FALSE (hamis). Ha engedélyezve van, a Node-alkalmazás csatlakozni tud egy nevesített pipe-hoz (környezeti változó IISNODE\_CONTROL\_PIPE), és "újrahasznosítási" üzenetet küld. Ennek hatására a W3wp szabályosan újrahasznosítható.
+Az alapértelmezett érték false (hamis). Ha engedélyezve van, a Node-alkalmazás csatlakozni tud egy nevesített pipe-hoz (környezeti változó IISNODE\_CONTROL\_PIPE), és "újrahasznosítási" üzenetet küld. Ennek hatására a W3wp szabályosan újrahasznosítható.
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -106,7 +99,7 @@ Az alapértelmezett érték 0, ami azt jelenti, hogy ez a szolgáltatás le van 
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-Az alapértelmezett értéke FALSE (hamis). Ha a True értékre van állítva, a iisnode egy HTTP-válasz fejlécét `iisnode-debug` minden olyan HTTP-válaszhoz, amelyet a `iisnode-debug` fejléc értékének URL-címe küld. Az URL-töredékek megkeresésével a rendszer az URL-cím megadásával megnyithatja az egyes diagnosztikai adatokat.
+Az alapértelmezett érték false (hamis). Ha a True értékre van állítva, a iisnode egy HTTP-válasz fejlécét `iisnode-debug` minden olyan HTTP-válaszhoz, amelyet a `iisnode-debug` fejléc értékének URL-címe küld. Az URL-töredékek megkeresésével a rendszer az URL-cím megadásával megnyithatja az egyes diagnosztikai adatokat.
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -114,7 +107,7 @@ Ez a beállítás szabályozza az stdout és a stderr naplózását a iisnode. A
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
-Az alapértelmezett értéke FALSE (hamis). Ha igaz értékre van állítva, a iisnode megjeleníti a HTTP-állapotkódot és a Win32-hibakódot a böngészőben. A Win32-kód bizonyos típusú problémák hibakereséséhez hasznos.
+Az alapértelmezett érték false (hamis). Ha igaz értékre van állítva, a iisnode megjeleníti a HTTP-állapotkódot és a Win32-hibakódot a böngészőben. A Win32-kód bizonyos típusú problémák hibakereséséhez hasznos.
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (ne engedélyezze az éles környezetben futó webhelyeken)
 
@@ -276,7 +269,7 @@ Az alkalmazás sikertelen kérelmek ESEMÉNYTÁROLÁSI engedélyezése a Win32-h
 
 A NODE. exe egy `NODE_PENDING_PIPE_INSTANCES`nevű beállítást tartalmaz. Azure App Service esetén ez az érték 5000-re van állítva. Azt jelenti, hogy a Node. exe egyszerre fogad 5000-kérelmeket a nevesített pipe-on. Az értéknek elég jónak lennie a Azure App Serviceon futó legtöbb Node-alkalmazáshoz. A `NODE_PENDING_PIPE_INSTANCES` nagy értéke miatt nem tekintheti meg a 503,1003 Azure App Service.
 
-## <a name="more-resources"></a>További erőforrások
+## <a name="more-resources"></a>További források
 
 Az alábbi hivatkozásokat követve további információkat tudhat meg a Node. js-alkalmazásokról Azure App Serviceon.
 

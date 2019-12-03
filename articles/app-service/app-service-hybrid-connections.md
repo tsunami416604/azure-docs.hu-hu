@@ -1,25 +1,18 @@
 ---
-title: Hibrid kapcsolatok – Azure App Service | Microsoft Docs
-description: Hibrid kapcsolatok létrehozása és használata a különböző hálózatokban lévő erőforrások eléréséhez
-services: app-service
-documentationcenter: ''
+title: Hibrid kapcsolatok
+description: Megtudhatja, hogyan hozhat létre és használhat hibrid kapcsolatokat Azure App Service a különböző hálózatokban lévő erőforrások eléréséhez.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ff2dac5d27cfffb92922038c1d1c67cd5118557a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ffc5ee32541cfbbda2ae54fd229c1436f133d730
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082400"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671512"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hibrid kapcsolatok #
 
@@ -104,9 +97,9 @@ Az alkalmazáson belüli portálon kívül Hibrid kapcsolatok is létrehozhat a 
 
 A App Service Hibrid kapcsolatok csak az alapszintű, a standard, a prémium és az elkülönített díjszabási SKU-ban érhető el. A díjszabási csomaghoz kötött korlátok vannak kötve.  
 
-| Díjszabási csomag | A tervben használható Hibrid kapcsolatok száma |
+| díjszabási csomag | A tervben használható Hibrid kapcsolatok száma |
 |----|----|
-| Alapszintű | 5 |
+| Basic | 5 |
 | Standard | 25 |
 | Prémium | 200 |
 | Izolált | 200 |
@@ -227,7 +220,7 @@ Meglévő hibrid kapcsolatok más App Service Web Appshoz is hozzáadhatók olya
 
 Bárki, aki `Reader` hozzáféréssel rendelkezik a továbbítóhoz, _megtekintheti_ a hibrid kapcsolatot, amikor megpróbál hozzáadni a webalkalmazáshoz az Azure Portalon, de nem fogja tudni _hozzáadni_ , mert nem rendelkezik a továbbítási kapcsolat létrehozásához használt kapcsolati karakterlánc lekéréséhez szükséges engedélyekkel. A hibrid kapcsolatok sikeres hozzáadásához rendelkeznie kell a `listKeys` engedéllyel (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`). Az `Contributor` szerepkör vagy bármely más szerepkör, amely tartalmazza ezt az engedélyt a továbbítón, lehetővé teszi a felhasználók számára, hogy a hibrid kapcsolatokat használják, és hozzáadja a saját Web Appshoz.
 
-## <a name="troubleshooting"></a>Hibaelhárítás ##
+## <a name="troubleshooting"></a>Hibakeresés ##
 
 A "Connected" állapot azt jelenti, hogy legalább egy HCM a hibrid kapcsolattal van konfigurálva, és képes elérni az Azure-t. Ha a hibrid kapcsolat állapota nem **kapcsolódik a hálózathoz**, a hibrid kapcsolat nincs KONFIGURÁLVA olyan HCM-re, amely hozzáfér az Azure-hoz.
 

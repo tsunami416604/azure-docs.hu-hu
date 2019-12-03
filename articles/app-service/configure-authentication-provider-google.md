@@ -1,25 +1,16 @@
 ---
-title: A Google-hitelesítés konfigurálása – Azure App Service
-description: Megtudhatja, hogyan konfigurálhatja a Google-hitelesítést a App Service alkalmazáshoz.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
+title: A Google-hitelesítés konfigurálása
+description: Megtudhatja, hogyan konfigurálhatja a Google-hitelesítést identitás-szolgáltatóként a App Service-alkalmazáshoz.
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
-ms.service: app-service-mobile
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/02/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 917fa87a0cd0f7b0615a5139a7c15311f866739a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 81ce3e393d308323c8d5a3d688c16c9b45e7be9d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176966"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670813"
 ---
 # <a name="configure-your-app-service-app-to-use-google-login"></a>A App Service alkalmazás konfigurálása a Google bejelentkezés használatára
 
@@ -32,8 +23,8 @@ A témakörben ismertetett eljárás végrehajtásához rendelkeznie kell egy el
 ## <a name="register"> </a>Alkalmazás regisztrálása a Google-ban
 
 1. Az ügyfél-azonosító és az ügyfél titkos kódjának létrehozásához kövesse a Google-beli Google-dokumentációt a [kiszolgálóoldali alkalmazásokhoz](https://developers.google.com/identity/sign-in/web/server-side-flow) . A kód módosítása nem szükséges. Csak használja a következő információkat:
-    - A **JavaScriptek engedélyezéséhez**használja a `https://<app-name>.azurewebsites.net` nevet az alkalmazás nevével *\<app-Name >* .
-    - A **hitelesített átirányítási URI**esetében használja az `https://<app-name>.azurewebsites.net/.auth/login/google/callback` értéket.
+    - A **JavaScript**-alapú hitelesítéshez használja a `https://<app-name>.azurewebsites.net` nevet az alkalmazás nevével *\<app-Name >ban*.
+    - A **hitelesített átirányítási URI**esetében használja a `https://<app-name>.azurewebsites.net/.auth/login/google/callback`.
 1. Másolja az alkalmazás AZONOSÍTÓját és az alkalmazás titkos értékeit.
 
     > [!IMPORTANT]
@@ -42,7 +33,7 @@ A témakörben ismertetett eljárás végrehajtásához rendelkeznie kell egy el
 ## <a name="secrets"> </a>Google-információk hozzáadása az alkalmazáshoz
 
 1. A [Azure Portalra]nyissa meg a app Service alkalmazást.
-1. Válassza a **beállítások** > **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
+1. Válassza a **beállítások** > a **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
 1. Válassza a **Google**lehetőséget, majd illessze be a korábban beszerzett alkalmazás-azonosító és alkalmazás titkos értékeit. Engedélyezze az alkalmazás által igényelt hatóköröket.
 1. Kattintson az **OK** gombra.
 

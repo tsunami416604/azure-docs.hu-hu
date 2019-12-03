@@ -1,26 +1,16 @@
 ---
-title: Átmeneti környezetek beállítása webalkalmazásokhoz Azure App Serviceban | Microsoft Docs
-description: Megtudhatja, hogyan használhatja a szakaszos közzétételt a webalkalmazásokhoz Azure App Serviceban.
-services: app-service
-documentationcenter: ''
-author: cephalin
-writer: cephalin
-manager: jpconnoc
-editor: mollybos
+title: Átmeneti környezetek beállítása
+description: Megtudhatja, hogyan telepíthet alkalmazásokat egy nem éles környezetbe, és hogyan végezheti el az autoswap szolgáltatást éles környezetben. Növelje a megbízhatóságot, és távolítsa el az alkalmazások leállását az üzembe helyezésből.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
-ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7f98ba9851216737712b6be1ec29156ba0b1a68b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1fec6de65fade0bbb35907f9c69334e16d9193bf
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382268"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671756"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezetek beállítása a Azure App Serviceban
 <a name="Overview"></a>

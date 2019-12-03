@@ -1,53 +1,46 @@
 ---
-title: Bejövő IP-cím módosítása – az Azure App Service előkészítése
-description: Ha a bejövő IP-cím lehet módosítani, megtudhatja, mit kell tennie, hogy az alkalmazása továbbra is működik, a módosítás után.
-services: app-service\web
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
+title: Felkészülés a bejövő IP-címek változására
+description: Ha a bejövő IP-cím megváltozik, Ismerje meg, mi a teendő, hogy az alkalmazás továbbra is működni fog a módosítás után.
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: aaa89b5a3bb1af6878ed21e0160a534a1c989228
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 999511c4759ee761f028a61fbfaa0310ac93d9b4
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61270064"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672417"
 ---
-# <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Hogyan készíti elő a bejövő IP-cím módosítása
+# <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Bejövő IP-cím módosításának előkészítése
 
-Ha kapott egy értesítés, hogy az Azure App Service-alkalmazás bejövő IP-címe módosul, kövesse a cikkben.
+Ha értesítést kapott arról, hogy a Azure App Service alkalmazás bejövő IP-címe változik, kövesse a jelen cikk utasításait.
 
-## <a name="determine-if-you-have-to-do-anything"></a>Ha meg semmit sem kell tennie meghatározása
+## <a name="determine-if-you-have-to-do-anything"></a>Annak megállapítása, hogy bármit kell-e tennie
 
-* Option 1: Az App Service-alkalmazás nem rendelkezik egy egyéni tartományt, ha semmit nem kell.
+* 1\. lehetőség: Ha a App Service alkalmazás nem rendelkezik egyéni tartománnyal, nincs szükség beavatkozásra.
 
-* Option 2: Ha csak egy CNAME-rekordot (DNS-rekord mutató URI-t) a tartomány regisztrációs portálon (harmadik féltől származó DNS-szolgáltató vagy az Azure DNS-ben) van konfigurálva, akkor semmit nem kell.
+* 2\. lehetőség: Ha csak egy CNAME rekord (URI-ra mutató DNS-rekord) van konfigurálva a tartományi regisztrációs portálon (harmadik fél DNS-szolgáltatója vagy Azure DNS), nincs szükség beavatkozásra.
 
-* 3\. lehetőség: Ha egy A rekordot (közvetlenül a IP-címre mutató DNS-rekord) a tartomány regisztrációs portálon (harmadik féltől származó DNS-szolgáltató vagy az Azure DNS-ben) van konfigurálva, cserélje le a meglévő IP-cím az újat. Az új IP-cím a következő utasításokat a következő szakaszban találja.
+* 3\. lehetőség: Ha egy rekord (a közvetlenül az IP-címére mutató DNS-rekord) be van állítva a tartományi regisztrációs portálon (harmadik fél DNS-szolgáltatója vagy Azure DNS), cserélje le a meglévő IP-címet az újat. Az új IP-címet a következő szakaszban található utasítások alapján érheti el.
 
-* 4\. lehetőség: Ha az alkalmazás egy terheléselosztó mögé, IP-szűrő vagy bármely más IP mechanizmust, amely szükséges az alkalmazás IP-cím, cserélje le a meglévő IP-cím az újat. Az új IP-cím a következő utasításokat a következő szakaszban találja.
+* 4\. lehetőség: Ha az alkalmazás egy terheléselosztó, IP-szűrő vagy bármely más, az alkalmazás IP-címét igénylő IP-mechanizmus mögött van, cserélje le a meglévő IP-címet az újat. Az új IP-címet a következő szakaszban található utasítások alapján érheti el.
 
-## <a name="find-the-new-inbound-ip-address-in-the-azure-portal"></a>Az Azure Portalon keresse meg az új bejövő IP-cím
+## <a name="find-the-new-inbound-ip-address-in-the-azure-portal"></a>Az új bejövő IP-cím megkeresése a Azure Portal
 
-Az új bejövő IP-cím, az alkalmazás adott van, a portál a **virtuális IP-cím** mező. Az új IP-cím és a régit is csatlakozik az alkalmazás most már, és később a régit le lesz választva.
+Az alkalmazáshoz megadott új bejövő IP-cím a **virtuális IP-cím** mezőben lévő portálon található. Ez az új IP-cím és a régi is csatlakoztatva van az alkalmazáshoz, és később a régi le lesz választva.
 
-1.  Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1.  Nyissa meg az [Azure Portal](https://portal.azure.com).
 
-2.  A bal oldali navigációs menüben válassza ki a **App Services**.
+2.  A bal oldali navigációs menüben válassza a **app Services**lehetőséget.
 
-3.  Válassza ki az App Service-alkalmazást a listából.
+3.  Válassza ki a App Service alkalmazást a listából.
 
-1.  Ha az alkalmazás egy függvényalkalmazást, lásd: [függvényalkalmazás bejövő IP-cím](../azure-functions/ip-addresses.md#function-app-inbound-ip-address).
+1.  Ha az alkalmazás egy függvény alkalmazás, tekintse meg a [Function app bejövő IP-címe](../azure-functions/ip-addresses.md#function-app-inbound-ip-address)című témakört.
 
-4.  Alatt a **beállítások** fejléc, kattintson a **tulajdonságok** a bal oldali navigációs és a keresés feliratú szakasz **virtuális IP-cím**.
+4.  A **Beállítások** fejléc alatt kattintson a bal oldali navigációs menüben a **Tulajdonságok** elemre, és keresse meg a **virtuális IP-cím**feliratú szakaszt.
 
-5. Másolja ki az IP-címet, és konfigurálja újra a tartományi rekord vagy IP-mechanizmust.
+5. Másolja ki az IP-címet, és konfigurálja újra a tartományi rekordot vagy az IP-mechanizmust.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez a cikk részletesen egy IP-cím módosítása az Azure által kezdeményezett előkészítése. IP-címek az Azure App Service kapcsolatos további információkért lásd: [bejövő és kimenő IP-címek az Azure App Service](overview-inbound-outbound-ips.md).
+Ez a cikk azt ismerteti, hogyan lehet előkészíteni az Azure által kezdeményezett IP-címek változásait. A Azure App Service IP-címeivel kapcsolatos további információkért lásd: [bejövő és kimenő IP-címek a Azure app Serviceban](overview-inbound-outbound-ips.md).

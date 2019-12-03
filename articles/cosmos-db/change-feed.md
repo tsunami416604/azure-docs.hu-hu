@@ -1,19 +1,19 @@
 ---
 title: A módosítási hírcsatorna támogatásának használata Azure Cosmos DB
 description: A dokumentumok változásainak nyomon követéséhez és az eseményvezérelt feldolgozások (például triggerek) és a gyorsítótárak és az elemzési rendszerek naprakészen tartásához használja a Azure Cosmos DB módosítási csatorna támogatását.
-author: markjbrown
-ms.author: mjbrown
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8e6bd3dadd636127f212db0ea0c0755a6b52a087
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: eef950c4e8c4a880d331022ed60477bebce65b5d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757028"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689092"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB adatcsatorna módosítása – áttekintés
 
@@ -33,12 +33,12 @@ A Azure Cosmos DB változási csatornája lehetővé teszi, hogy hatékony és m
 
 Ezt a funkciót jelenleg a következő Azure Cosmos DB API-k és ügyféloldali SDK-k támogatják.
 
-| **Ügyfél-illesztőprogramok** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB API-MongoDB** | **Gremlin API**|**Tábla API** |
+| **Ügyfél-illesztőprogramok** | **Azure CLI** | **SQL API** | **Azure Cosmos DB a Cassandra-hez készült API** | **Azure Cosmos DB API-MongoDB** | **Gremlin API**|**Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | n/a | Igen | Nem | Nem | Igen | Nem |
-|Java|n/a|Igen|Nem|Nem|Igen|Nem|
-|Python|n/a|Igen|Nem|Nem|Igen|Nem|
-|Node/JS|n/a|Igen|Nem|Nem|Igen|Nem|
+| .NET | n/a | Igen | Igen | Igen | Igen | Nem |
+|Java|n/a|Igen|Igen|Igen|Igen|Nem|
+|Python|n/a|Igen|Igen|Igen|Igen|Nem|
+|Node/JS|n/a|Igen|Igen|Igen|Igen|Nem|
 
 ## <a name="change-feed-and-different-operations"></a>A hírcsatorna és a különböző műveletek módosítása
 
@@ -56,9 +56,9 @@ Ha egy többrégiós Azure Cosmos-fiókban egy írási régió feladatátvételt
 
 Ha a TTL (time to Live) tulajdonság egy elemre van állítva, akkor a változási csatorna örökre fennmarad. Ha a rendszer nem törli az adatvesztést, akkor a változási hírcsatornában marad.  
 
-### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>A feed és a _etag, a _lsn vagy a _ts módosítása
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>A hírcsatorna és a _etag módosítása, _lsn vagy _ts
 
-A _etag formátuma belső, és nem érdemes attól függővé tenni, mert bármikor megváltozhat. a _ts egy módosítás vagy egy létrehozási időbélyeg. A _ts a kronológiai összehasonlításhoz használhatja. a _lsn egy olyan batch-azonosító, amely csak a változási hírcsatornához lett hozzáadva; Ez a tranzakció AZONOSÍTÓját jelöli. Több elem is rendelkezhet ugyanazzal a _lsn. A FeedResponse lévő ETag eltér az elemen látható _etag. a _etag egy belső azonosító, amelyet a rendszer az elem verziójával kapcsolatos Egyidejűség-vezérlésre használ, míg a ETag a hírcsatorna előkészítésére szolgál.
+A _etag formátuma belső, és nem érdemes attól függővé tenni, mert bármikor megváltozhat. _ts egy módosítás vagy egy létrehozási időbélyeg. A _ts a kronológiai összehasonlításhoz használható. _lsn egy olyan batch-azonosító, amely csak a változási hírcsatornához lett hozzáadva; Ez a tranzakció AZONOSÍTÓját jelöli. Előfordulhat, hogy számos elemnek ugyanaz a _lsna. A FeedResponse lévő ETag eltér az elemen látható _etagtól. a _etag egy belső azonosító, amelyet a rendszer az elem verziójával kapcsolatos Egyidejűség-vezérlésre használ, míg a ETag a hírcsatorna előkészítésére szolgál.
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>Hírcsatorna-használati esetek és forgatókönyvek módosítása
 
@@ -84,7 +84,7 @@ A változási hírcsatornával például a következő feladatokat végezheti el
 
 Az alábbiakban néhány olyan forgatókönyvet talál, amelyekkel könnyedén megvalósíthatja a változási hírcsatornát:
 
-* A [kiszolgáló](https://azure.microsoft.com/solutions/serverless/) nélküli webes vagy mobil alkalmazásaiban nyomon követheti az eseményeket, például az ügyfelek profiljára, beállításaira vagy helyükre vonatkozó módosításokat, és elindíthat bizonyos műveleteket, például leküldéses értesítéseket küldhet az eszközeiknek az Azure-ban [ Függvények](change-feed-functions.md).
+* A [kiszolgáló](https://azure.microsoft.com/solutions/serverless/) nélküli webes vagy mobil alkalmazásaiban nyomon követheti az eseményeket, például az ügyfelek profiljára, beállításaira vagy helyükre vonatkozó módosításokat, és elindíthat bizonyos műveleteket, például leküldéses értesítéseket küldhet az eszközeiknek [Azure functions](change-feed-functions.md)használatával.
 
 * Ha Azure Cosmos DBt használ egy játék létrehozásához, például a változási hírcsatorna használatával valós idejű ranglistákat hozhat létre a befejezett játékok eredményei alapján.
 
@@ -119,6 +119,12 @@ A módosítási hírcsatorna a tárolóban lévő minden logikai partíciós kul
 * A módosítások párhuzamosan érhetők el egy Azure Cosmos-tároló összes logikai partíciós kulcsához. Ez a funkció lehetővé teszi, hogy a nagyméretű tárolók módosításait több fogyasztó is párhuzamosan dolgozza fel.
 
 * Az alkalmazások egyszerre több módosítási csatornát is igényelhetnek ugyanazon a tárolón. A ChangeFeedOptions. Starter használható a kezdeti kiindulási pont biztosításához. Például az adott időponthoz tartozó folytatási token megkereséséhez. A Continuationtoken argumentumot használja, ha meg van adva, a WINS a kezdő és a StartFromBeginning értékeket adja meg. A ChangeFeedOptions. kezdő időpont pontossága ~ 5 másodperc. 
+
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Adatcsatorna módosítása a Cassandra és a MongoDB API-khoz
+
+A MongoDB API-ban és a Cassandra API-ben predikátummal végzett lekérdezésekben a változási csatorna funkciói módosulnak. Ha többet szeretne megtudni a MongoDB API megvalósítási részleteiről, tekintse meg a [streamek módosítása Azure Cosmos db a MONGODB API-ban](mongodb-change-streams.md)című témakört.
+
+A natív Apache Cassandra lehetővé teszi az adatváltozások rögzítését (CDC), egy olyan mechanizmust, amely az archiváláshoz adott táblákat jelöl, valamint elutasítja az írásokat az adott táblákba, amint a CDC-naplóhoz konfigurálható méretű lemez van elérve. A Cassandra Azure Cosmos DB API-ban az adatcsatorna módosítása funkció javítja a CQL-on keresztüli predikátumok lekérdezésének lehetőségét. További információ a megvalósítás részleteiről: [a Azure Cosmos db API használata a Cassandra-ben](cassandra-change-feed.md)című témakörben.
 
 ## <a name="next-steps"></a>Következő lépések
 

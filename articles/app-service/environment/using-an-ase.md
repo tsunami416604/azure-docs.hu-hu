@@ -1,24 +1,18 @@
 ---
-title: App Service-környezet használata – Azure
-description: Alkalmazások létrehozása, közzététele és méretezése Azure App Service-környezetben
-services: app-service
-documentationcenter: na
+title: A bevezetési szolgáltató használata és kezelése
+description: Alkalmazások létrehozása, közzététele és méretezése Azure App Service-környezetben. Egy dokumentum általános feladatainak megkeresése.
 author: ccompy
-manager: stefsch
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 841271c474ba8e24bc352bcae1fa037cf382a8ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5c127673e4b0cb6c68aaf0a9790abbf78758670
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470587"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687097"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata #
 
@@ -53,7 +47,7 @@ Alkalmazás létrehozása a kiegészítőben:
 
     ![Alkalmazás nevének kiválasztása][1]
 
-1. Válasszon egy előfizetést.
+1. Válasszon előfizetést.
 
 1. Adja meg az új erőforráscsoport nevét, vagy válassza a **meglévő használata** lehetőséget, és válasszon egyet a legördülő listából.
 

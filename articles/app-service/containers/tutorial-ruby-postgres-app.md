@@ -1,27 +1,20 @@
 ---
-title: Ruby (Rails) és a Linux - az Azure App Service Postgres |} A Microsoft Docs
-description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő Ruby-alkalmazásra, amely egy Azure-beli PostgreSQL-adatbázishoz csatlakozik. Rails szerepel az oktatóanyagot.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-ms.service: app-service-web
-ms.workload: web
+title: 'Oktatóanyag: Linux Ruby-alkalmazás és postgres'
+description: Ismerje meg, hogyan szerezhet be egy, az Azure-ban egy PostgreSQL-adatbázishoz csatlakozó Linux Ruby-alkalmazást Azure App Serviceban. A Rails használatban van az oktatóanyagban.
 ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3ec19b1c564c09406ab1f29c38aef6332d80f8f1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 6af9da060f7742fe2a9b9656199edd5feb67bec1
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130165"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687412"
 ---
-# <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>A Ruby és Postgres alkalmazás az Azure App Service létrehozása a linuxon
+# <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Ruby-és postgres-alkalmazás létrehozása Linuxon Azure App Service
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan hozhat létre Ruby-alkalmazás, és csatlakoztassa egy PostgreSQL-adatbázis. Az oktatóanyag eredménye egy, a Linux App Service-ben futó [Ruby on Rails](https://rubyonrails.org/)-alkalmazás lesz.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan hozható létre Ruby-alkalmazás, és hogyan csatlakoztatható egy PostgreSQL-adatbázishoz. Az oktatóanyag eredménye egy, a Linux App Service-ben futó [Ruby on Rails](https://rubyonrails.org/)-alkalmazás lesz.
 
 ![Az Azure App Service-ben futó Ruby on Rails-alkalmazás](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
@@ -117,7 +110,7 @@ A Rails-kiszolgáló leállításához írja be a `Ctrl + C` billentyűparancsot
 
 Ebben a lépésben egy Postgres-adatbázist fog létrehozni az [Azure Database for PostgreSQL](/azure/postgresql/) rendszerében. Később konfigurálni fogja a Ruby on Rails-alkalmazást az adatbázishoz való csatlakozásra.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -125,7 +118,7 @@ Ebben a lépésben egy Postgres-adatbázist fog létrehozni az [Azure Database f
 
 A PostgreSQL-kiszolgálót az [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) paranccsal hozhatja létre.
 
-Futtassa a következő parancsot a Cloud shellben, és írjon egy egyedi kiszolgálónevet a  *\<postgres-kiszolgálónév >* helyőrző. A kiszolgálónév az összes Azure-kiszolgálón csak egyszer fordulhat elő. 
+Futtassa a következő parancsot a Cloud Shellban, és helyettesítse be a *\<postgres-Server-name >* helyőrző egyedi kiszolgálójának nevét. A kiszolgálónév az összes Azure-kiszolgálón csak egyszer fordulhat elő. 
 
 ```azurecli-interactive
 az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres-server-name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2
@@ -155,7 +148,7 @@ Az Azure Database for PostgreSQL-kiszolgáló létrehozását követően az Azur
 
 ### <a name="configure-server-firewall"></a>Kiszolgáló tűzfalának konfigurálása
 
-A Cloud Shellben az [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) paranccsal hozzon létre egy tűzfalszabályt a Postgres-kiszolgáló számára az ügyfélkapcsolatok engedélyezésére. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. Írjon egy egyedi kiszolgálónevet a  *\<postgres-kiszolgálónév >* helyőrző.
+A Cloud Shellben az [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) paranccsal hozzon létre egy tűzfalszabályt a Postgres-kiszolgáló számára az ügyfélkapcsolatok engedélyezésére. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. Helyettesítse be a *\<postgres-Server-name >* helyőrző egyedi kiszolgálójának nevét.
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
@@ -167,7 +160,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 
 ### <a name="connect-to-production-postgres-server-locally"></a>Helyi csatlakozás éles Postgres-kiszolgálóhoz
 
-A Cloud Shellben csatlakozzon az Azure-beli Postgres-kiszolgálóhoz. A korábban megadott értéket használja a  _&lt;postgres-kiszolgálónév >_ helyőrzőket.
+A Cloud Shellben csatlakozzon az Azure-beli Postgres-kiszolgálóhoz. Használja a korábban megadott értéket a _&lt;postgres-Server-name >_ helyőrzők esetében.
 
 ```bash
 psql -U adminuser@<postgres-server-name> -h <postgres-server-name>.postgres.database.azure.com postgres
@@ -302,7 +295,7 @@ Ebben a lépésben üzembe helyezi a Postgreshez csatlakoztatott Rails-alkalmaz�
 
 Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ lehet beállítani az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs Cloud Shellben való használatával.
 
-Az alábbi Cloud Shell-parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállításokat konfigurálja. Cserélje le a zárójelben  _&lt;alkalmazásnév >_ és  _&lt;postgres-kiszolgálónév >_ .
+Az alábbi Cloud Shell-parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállításokat konfigurálja. Cserélje le a helyőrzőket _&lt;appname >_ és _&lt;postgres-server-name >_ .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="railsappuser@<postgres-server-name>" DB_PASSWORD="MyPostgresAzure2017"
@@ -310,7 +303,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 ### <a name="configure-rails-environment-variables"></a>Rails környezeti változók konfigurálása
 
-A helyi terminálban [hozzon létre egy új titkos kulcsot](configure-language-ruby.md#set-secret_key_base-manually) a Rails éles környezet az Azure-ban.
+A helyi terminálon [egy új titkot állít elő](configure-language-ruby.md#set-secret_key_base-manually) a Rails éles környezet számára az Azure-ban.
 
 ```bash
 rails secret
@@ -318,13 +311,13 @@ rails secret
 
 Konfigurálja a Rails éles környezet számára szükséges változókat.
 
-A következő Cloud Shell-parancsban cserélje le a két  _&lt;kimeneti a rails titkos >_ helyőrzőt a helyi terminálban létrehozott új titkos kulcsra.
+A következő Cloud Shell parancsban cserélje le a két _&lt;output-of-Rails-secret >_ helyőrzőt a helyi terminálon létrehozott új titkos kulccsal.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
 ```
 
-Az `ASSETS_PRECOMPILE="true"` arra utasítja az alapértelmezett Ruby tárolót, hogy minden Git-üzembehelyezésnél fordítson elő objektumokat. További információkért lásd: [üzembehelyezésnél fordítson elő objektumokat](configure-language-ruby.md#precompile-assets) és [szolgálja ki a statikus objektumokat](configure-language-ruby.md#serve-static-assets).
+Az `ASSETS_PRECOMPILE="true"` arra utasítja az alapértelmezett Ruby tárolót, hogy minden Git-üzembehelyezésnél fordítson elő objektumokat. További információ: [eszközök előfordítása](configure-language-ruby.md#precompile-assets) és [statikus eszközök kiszolgálása](configure-language-ruby.md#serve-static-assets).
 
 ### <a name="push-to-azure-from-git"></a>Leküldéses üzenet küldése a Gitből az Azure-ra
 
@@ -357,7 +350,7 @@ remote: Running deployment command...
 < Output has been truncated for readability >
 ```
 
-### <a name="browse-to-the-azure-app"></a>Az Azure alkalmazás megkeresése tallózással
+### <a name="browse-to-the-azure-app"></a>Tallózással keresse meg az Azure-alkalmazást
 
 Egy böngészőben keresse fel az `http://<app-name>.azurewebsites.net` címet, és vegyen fel néhány feladatot a listára.
 
@@ -470,7 +463,7 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-Miután a `git push` befejeződött, nyissa meg az Azure-alkalmazást, és tesztelje az új funkciót.
+A `git push` befejezése után navigáljon az Azure-alkalmazáshoz, és tesztelje az új funkciót.
 
 ![Az Azure-ban közzétett modell- és adatbázis-módosítások](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
@@ -482,13 +475,13 @@ Ha felvett feladatokat, azok megmaradnak az adatbázisban. Az adatséma frissít
 
 ## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
-Nyissa meg a [az Azure portal](https://portal.azure.com) kezelheti a létrehozott alkalmazást.
+A létrehozott alkalmazás kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) .
 
-A bal oldali menüben kattintson a **App Services**, majd kattintson az Azure-alkalmazás neve.
+A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/tutorial-php-mysql-app/access-portal.png)
 
-Az alkalmazás áttekintése oldal jelenik meg. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
+Megtekintheti az alkalmazás áttekintés lapját. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
 
 A bal oldali menü az alkalmazás konfigurálásához biztosít oldalakat.
 
@@ -498,7 +491,7 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít oldalakat.
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -510,12 +503,12 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Diagnosztikai naplók streamelése az Azure-ból
 > * Az alkalmazás kezelése az Azure Portalon
 
-Folytassa a következő oktatóanyaggal, megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazáshoz.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan képezhető le egyéni DNS-név az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Egyéni DNS-név leképezése az alkalmazás](../app-service-web-tutorial-custom-domain.md)
+> [Oktatóanyag: egyéni DNS-név leképezése az alkalmazáshoz](../app-service-web-tutorial-custom-domain.md)
 
-Vagy tekintse meg az egyéb erőforrások:
+Vagy tekintse meg a többi erőforrást:
 
 > [!div class="nextstepaction"]
 > [Ruby-alkalmazás konfigurálása](configure-language-ruby.md)

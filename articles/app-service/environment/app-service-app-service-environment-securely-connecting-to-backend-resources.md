@@ -1,29 +1,21 @@
 ---
-title: Biztonságos kapcsolódás a háttérbeli erőforrásokhoz App Service környezetből – Azure
-description: További információ a háttérbeli erőforrásokhoz való biztonságos kapcsolódásról egy App Service Environment.
-services: app-service
-documentationcenter: ''
+title: Kapcsolódás a back end V1-hez
+description: További információ a háttérbeli erőforrásokhoz való biztonságos kapcsolódásról egy App Service Environment. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: adb7c246a9f8c8d202d45b58f4d22eeb8d51a773
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 03f773e286697a12188f238cf2f422a18a20054f
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069962"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687298"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Biztonságos kapcsolódás App Service környezetből a végponti erőforrásokhoz
-## <a name="overview"></a>Áttekintés
-Mivel a App Service Environment mindig egy Azure Resource Manager virtuális hálózatban, **vagy** egy klasszikus üzemi modell [virtuális hálózatban][virtualnetwork]jön létre, a kimenő kapcsolatok egy app Service Environmentról más háttér-erőforrásokra kizárólag a virtuális hálózaton keresztül végezhető el.  A 2016 júniusában történt legutóbbi módosítással a ASE olyan virtuális hálózatokon is üzembe helyezhetők, amelyek nyilvános címtartományt vagy RFC1918 (például magánhálózati címeket) használnak.  
+Mivel a App Service Environment **mindig egy Azure Resource Manager** virtuális hálózatban, **vagy** egy klasszikus üzemi modell [virtuális hálózatban][virtualnetwork]jön létre, a app Service Environmentból más háttér-erőforrások felé irányuló kimenő kapcsolatok kizárólag a virtuális hálózaton keresztül áramlanak.  A 2016 júniusában történt legutóbbi módosítással a ASE olyan virtuális hálózatokon is üzembe helyezhetők, amelyek nyilvános címtartományt vagy RFC1918 (például magánhálózati címeket) használnak.  
 
 Előfordulhat például, hogy egy olyan SQL Server fut a virtuális gépek fürtjén, amelyen a 1433-es port le van zárva.  Előfordulhat, hogy a végpont ACLd csak ugyanazon a virtuális hálózaton lévő más erőforrásokból való hozzáférést engedélyezi.  
 
@@ -49,7 +41,7 @@ Egy közös SQL Server konfiguráció egy végpontot figyel a 1433-as porton:
 
 A végpontra irányuló forgalom korlátozásának két módja van:
 
-* [Hálózati Access Control listája][NetworkAccessControlLists] (Hálózati ACL-ek)
+* [Hálózati Access Control listák][NetworkAccessControlLists] (hálózati ACL-ek)
 * [Hálózati biztonsági csoportok][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>Hozzáférés korlátozása hálózati ACL-sel
@@ -84,7 +76,7 @@ A végeredmény olyan biztonsági szabályok összessége, amelyek letiltják a 
 
 ![Alapértelmezett hálózati biztonsági szabályok][DefaultNetworkSecurityRules]
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 App Service környezetek használatának megkezdéséhez tekintse [meg a app Service Environment bemutatása][IntroToAppServiceEnvironment] című témakört.
 
 A App Service Environment bejövő forgalmának szabályozásával kapcsolatban lásd: a [Bejövő forgalom vezérlése egy app Service Environment][ControlInboundASE]

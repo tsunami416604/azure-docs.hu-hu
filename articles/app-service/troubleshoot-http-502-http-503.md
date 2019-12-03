@@ -1,34 +1,25 @@
 ---
-title: 502-es hibás átjáró javítása, 503 szolgáltatás nem érhető el. hibák – Azure App Service | Microsoft Docs
+title: A HTTP 502 és a HTTP 503 hibák elhárítása
 description: Az 502-es hibás átjáró és a 503 szolgáltatás nem érhető el a Azure App Service-ben üzemeltetett alkalmazásban.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
 tags: top-support-issue
 keywords: 502 hibás átjáró, 503 szolgáltatás nem érhető el, hiba 503, Hiba 502
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/06/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fdbd77db349eed62af2eb8cf539ef749217a187a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066687"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688329"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>A "502 hibás átjáró" és "503 szolgáltatás nem érhető el" HTTP-hibák elhárítása Azure App Service
-a "502 hibás átjáró" és a "503 szolgáltatás nem érhető el" gyakori hibák a Azure App Serviceban [](https://go.microsoft.com/fwlink/?LinkId=529714)üzemeltetett alkalmazásban. Ez a cikk segít a hibák elhárításában.
+a "502 hibás átjáró" és a "503 szolgáltatás nem érhető el" gyakori hibák a [Azure app Serviceban](https://go.microsoft.com/fwlink/?LinkId=529714)üzemeltetett alkalmazásban. Ez a cikk segít a hibák elhárításában.
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és kattintson a **támogatás kérése**lehetőségre.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és kattintson a **támogatás kérése**lehetőségre.
 
-## <a name="symptom"></a>Jelenség
+## <a name="symptom"></a>Hibajelenség
 Amikor megkeresi az alkalmazást, egy HTTP "502 hibás átjáró" hibaüzenetet ad vissza, vagy egy HTTP "503 szolgáltatás nem érhető el" hibaüzenet jelenik meg.
 
 ## <a name="cause"></a>Ok
@@ -49,7 +40,7 @@ A hibaelhárítás három különálló feladatra osztható, szekvenciális sorr
 
 <a name="observe" />
 
-### <a name="1-observe-and-monitor-application-behavior"></a>1. Az alkalmazások viselkedésének megfigyelése és figyelése
+### <a name="1-observe-and-monitor-application-behavior"></a>1. az alkalmazások viselkedésének megfigyelése és figyelése
 #### <a name="track-service-health"></a>Szolgáltatás állapotának nyomon követése
 Microsoft Azure minden alkalommal nyilvánosságra kerül, amikor a szolgáltatás megszakad vagy a teljesítmény romlása. A szolgáltatás állapotát az [Azure Portalon](https://portal.azure.com/)követheti nyomon. További információ: a [szolgáltatás állapotának nyomon követése](../monitoring-and-diagnostics/insights-service-health.md).
 
@@ -58,31 +49,31 @@ Ezzel a beállítással megtudhatja, hogy az alkalmazás problémákba ütközik
 
 Előfordulhat, hogy az alkalmazáshoz figyelni kívánt metrikák némelyike
 
-* Átlagos memória-munkakészlet
+* Memória átlagos munkakészlete
 * Átlagos válaszidő
 * CPU-idő
-* Memória-munkakészlet
+* Memória munkakészlete
 * Kérelmek
 
 ![az alkalmazás figyelése a 502-es hibás átjáró HTTP-hibáinak megoldásához, és a 503 szolgáltatás nem érhető el](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
 * [Alkalmazások figyelése Azure App Service](web-sites-monitor.md)
 * [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 <a name="collect" />
 
-### <a name="2-collect-data"></a>2. Adatok gyűjtése
+### <a name="2-collect-data"></a>2. adatgyűjtés
 #### <a name="use-the-diagnostics-tool"></a>A diagnosztikai eszköz használata
 A App Service egy intelligens és interaktív élményt nyújt, amely segít a szükséges konfigurációval kapcsolatos hibák megoldásában. Ha az alkalmazással kapcsolatos problémákba ütközik, a diagnosztikai eszköz kimutatja, hogy mi a baj, hogy a probléma megoldásához könnyebben és gyorsan javítsa a megfelelő információkat.
 
 App Service diagnosztika eléréséhez nyissa meg a App Service alkalmazást vagy App Service Environment a [Azure Portalban](https://portal.azure.com). A bal oldali navigációs sávon kattintson a **problémák diagnosztizálása és megoldása**elemre.
 
 #### <a name="use-the-kudu-debug-console"></a>A kudu hibakeresési konzoljának használata
-A App Service egy hibakeresési konzolt tartalmaz, amellyel hibakeresést végezhet, megvizsgálhatja, feltöltheti és feltölthet fájlokat, valamint JSON-végpontokat a környezettel kapcsolatos információk beszerzéséhez. Ezt nevezzük az alkalmazás *kudu* -konzoljának vagy *SCM* -irányítópultjának.
+A App Service egy hibakeresési konzolt tartalmaz, amellyel hibakeresést végezhet, megvizsgálhatja, feltöltheti és feltölthet fájlokat, valamint JSON-végpontokat a környezettel kapcsolatos információk beszerzéséhez. Ezt nevezzük az alkalmazás *kudu-konzoljának* vagy *SCM-irányítópultjának* .
 
-Ehhez az irányítópulthoz az **alkalmazás&lt;https://>. SCM. azurewebsites. net/** .
+Az irányítópult eléréséhez lépjen a hivatkozás **https://,&lt;az alkalmazás neve >. SCM. azurewebsites. net/** .
 
 A kudu által biztosított néhány dolog:
 
@@ -97,7 +88,7 @@ A kudu-ben elérhető szolgáltatásokkal kapcsolatos további információkért
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. A probléma enyhítése
+### <a name="3-mitigate-the-issue"></a>3. a probléma enyhítése
 #### <a name="scale-the-app"></a>Az alkalmazás méretezése
 Azure App Service a teljesítmény és az átviteli sebesség növelése érdekében módosíthatja azt a méretezést, amelyen az alkalmazást futtatja. Az alkalmazások horizontális felskálázása két kapcsolódó művelettel jár: a App Service terv magasabb árképzési szintre való módosításával, valamint bizonyos beállítások konfigurálásával, miután átváltotta a magasabb díjszabási szintet.
 

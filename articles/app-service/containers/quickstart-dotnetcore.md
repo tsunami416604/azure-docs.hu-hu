@@ -1,26 +1,18 @@
 ---
-title: ASP.NET Core-alkalmazás létrehozása Linux rendszeren – Azure App Service | Microsoft Docs
-description: Percek alatt üzembe helyezheti az első .NET Core Hello World alkalmazását a Linuxon futó App Service-ben.
+title: 'Gyors útmutató: Linux ASP.NET Core-alkalmazás futtatása'
+description: Ismerkedjen meg a Linux-alkalmazásokkal Azure App Service az első ASP.NET Core alkalmazás üzembe helyezésével a App Service Linux-tárolójában.
 keywords: azure app service, webalkalmazás, dotnet, core, linux, oss
-services: app-service
-documentationCenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
 ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
-ms.service: app-service
-ms.workload: web
 ms.tgt_pltfrm: linux
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 43771392adcbf49c9103ee7ebc4b3febbac11b05
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ea9449a89bcfbdb1378f0cceb31a07a288661bf7
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071212"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687559"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>ASP.NET Core-alkalmazás létrehozása Linux rendszeren App Service
 
@@ -94,7 +86,7 @@ git commit -m "first commit"
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-Tallózással keresse meg az újonnan létrehozott alkalmazást. Cserélje le  _&lt;az App-Name >_ az alkalmazás nevére.
+Tallózással keresse meg az újonnan létrehozott alkalmazást. Cserélje le _&lt;app-name >_ az alkalmazás nevére.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -131,7 +123,7 @@ remote:   ...
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://cephalin-dotnetcore.scm.azurewebsites.net/cephalin-dotnetcore.git
+To https://<app-name>.scm.azurewebsites.net/<app-name>.git
  * [new branch]      master -> master
 ```
 
@@ -184,10 +176,10 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Alkalmazás ASP.NET Core SQL Database](tutorial-dotnetcore-sqldb-app.md)
+> [Oktatóanyag: ASP.NET Core alkalmazás SQL Database](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core alkalmazás konfigurálása](configure-language-dotnetcore.md)

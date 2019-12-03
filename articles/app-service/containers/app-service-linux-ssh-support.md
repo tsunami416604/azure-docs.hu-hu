@@ -1,26 +1,19 @@
 ---
-title: SSH-támogatás az App Service Linux rendszeren – Azure | Microsoft Docs
-description: Ismerkedjen meg az SSH és a Linux Azure App Service használatával.
+title: SSH-hozzáférés Linux-tárolók számára
+description: Megnyithat egy SSH-munkamenetet egy Linux-tárolóban Azure App Service. Az egyéni Linux-tárolók az egyéni rendszerkép bizonyos módosításaival támogatottak.
 keywords: Azure app Service, Web App, Linux, OSS
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fef8a17de4539a1427c269cdc512063d07df195c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 299bbfbc50e9ba779898ab0e0e9dec060bf6541d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066870"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687581"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>SSH-támogatás a Azure App Service Linux rendszeren
 
@@ -50,14 +43,14 @@ A TCP-bújtatás használatával hálózati kapcsolatot hozhat létre a fejleszt
 
 Első lépésként telepítenie kell az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t. Ha szeretné megtekinteni, hogyan működik az Azure CLI telepítése nélkül, nyissa meg [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-Nyisson meg egy távoli kapcsolódást az alkalmazáshoz az az [WebApp Remote-Network-kapcsolatkezelő Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) paranccsal. \_Adja meg \<  _\<_  _\<az alkalmazáshoz az előfizetés-azonosító >_ , a csoport neve > és az alkalmazás neve > _.
+Nyisson meg egy távoli kapcsolódást az alkalmazáshoz az az [WebApp Remote-Network-kapcsolatkezelő Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) paranccsal. Adja meg _\<előfizetés-azonosító >_ , _\<csoport neve >_ és \_\<app-Name > _ az alkalmazáshoz.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]
-> `&`a parancs végén a Cloud Shell használata esetén csak kényelmi célokat szolgál. A háttérben futtatja a folyamatot, így a következő parancsot ugyanazon a rendszerhéjon futtathatja.
+> a parancs végén lévő `&` csak akkor használható, ha Cloud Shell használ. A háttérben futtatja a folyamatot, így a következő parancsot ugyanazon a rendszerhéjon futtathatja.
 
 A parancs kimenete megadja az SSH-munkamenet megnyitásához szükséges információkat.
 
@@ -73,7 +66,7 @@ Nyisson meg egy SSH-munkamenetet az Ön által választott ügyféllel a helyi p
 ssh root@127.0.0.1 -p <port>
 ```
 
-Ha a rendszer kéri, `yes` írja be a következőt: a csatlakozás folytatásához. Ezt követően a rendszer kéri a jelszót. Használja `Docker!`, amely korábban volt látható.
+Ha a rendszer kéri, írja be `yes` a csatlakozás folytatásához. Ezt követően a rendszer kéri a jelszót. Használja az `Docker!`, amely korábban látható.
 
 ```
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
@@ -96,7 +89,7 @@ A P P   S E R V I C E   O N   L I N U X
 
 Ezzel csatlakozott az összekötőhöz.  
 
-Próbálja meg futtatni a [felső](https://ss64.com/bash/top.html) parancsot. Az alkalmazás folyamatát meg kell tudnia tekinteni a folyamat listában. Az alábbi példában szereplő kimenetben ez a `PID 263`következő:.
+Próbálja meg futtatni a [felső](https://ss64.com/bash/top.html) parancsot. Az alkalmazás folyamatát meg kell tudnia tekinteni a folyamat listában. Az alábbi példában szereplő kimenetben a `PID 263`.
 
 ```
 Mem: 1578756K used, 127032K free, 8744K shrd, 201592K buff, 341348K cached
@@ -120,7 +113,7 @@ Load average: 0.07 0.04 0.08 4/765 45738
 45738     1 root     Z        0   0%   0   0% [init]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kérdéseket és problémákat tehet közzé az [Azure fórumán](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
 

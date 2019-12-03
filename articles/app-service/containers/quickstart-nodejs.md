@@ -1,18 +1,17 @@
 ---
-title: Node. js-alapú Webalkalmazás létrehozása – Azure App Service
-description: Node. js-alkalmazás üzembe helyezése Azure App Service
-author: msangapu
+title: 'Rövid útmutató: Linux Node. js-alkalmazás létrehozása'
+description: Az első Node. js-alkalmazás egy Linux-tárolóban való üzembe helyezésével megkezdheti a Azure App Service linuxos alkalmazásait App Service.
+author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
-ms.service: app-service
 ms.devlang: javascript
-ms.openlocfilehash: 32e141cae98e3fe34c8207f1565a82d2d76bdd25
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: fb79f4b87d8ddc5303fea834c81329315401464a
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439202"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688973"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Node. js-alkalmazás létrehozása az Azure-ban
 
@@ -32,7 +31,7 @@ Miután telepítette a bővítményt, jelentkezzen be az Azure-fiókjába. A tev
 
 ![Bejelentkezés az Azure-ba](./media/quickstart-nodejs/sign-in.png)
 
-### <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="troubleshooting"></a>Hibakeresés
 
 Ha a következő hibaüzenet jelenik meg: **"nem található az előfizetés a (z) [előfizetés-azonosítóval]" névvel**, lehetséges, hogy a proxy mögött van, és nem érhető el az Azure API. A `export`használatával konfigurálhatja a `HTTP_PROXY` és `HTTPS_PROXY` környezeti változókat a terminálon a proxy adataival.
 
@@ -84,7 +83,7 @@ Ezután győződjön meg arról, hogy az alkalmazás fut. A terminálból indít
 npm start
 ```
 
-Most nyissa meg a böngészőt, és navigáljon a [http://localhost:3000hoz ](http://localhost:3000), ahol a következőhöz hasonlónak kell megjelennie:
+Most nyissa meg a böngészőt, és navigáljon a [http://localhost:3000 hoz ](http://localhost:3000), ahol a következőhöz hasonlónak kell megjelennie:
 
 ![Expressz alkalmazás futtatása](./media/quickstart-nodejs/express.png)
 
@@ -135,7 +134,7 @@ Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl iko
 
 Miután az üzembe helyezés befejeződött, a kérdésben válassza a **Tallózás webhely** lehetőséget a frissen telepített webalkalmazás megtekintéséhez.
 
-### <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="troubleshooting"></a>Hibakeresés
 
 Ha a következő hibaüzenet jelenik meg: **"nincs engedélye a könyvtár vagy lap megtekintésére."** , akkor az alkalmazás valószínűleg nem indult el megfelelően. Lépjen a következő szakaszra, és tekintse meg a napló kimenetét, és javítsa ki a hibát. Ha nem tudja kijavítani a problémát, lépjen kapcsolatba velünk az alábbi, a **probléma** elhárítása gombra kattintva. Örömmel segítünk!
 

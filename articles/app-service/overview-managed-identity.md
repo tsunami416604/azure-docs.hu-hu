@@ -1,22 +1,17 @@
 ---
-title: Felügyelt identitások áttekintése – Azure App Service | Microsoft Docs
-description: Koncepcionális útmutató és telepítési útmutató a felügyelt identitásokhoz Azure App Service és Azure Functions
-services: app-service
+title: Felügyelt identitások
+description: Ismerje meg, hogyan működnek a felügyelt identitások Azure App Service és Azure Functions, hogyan konfigurálhatja a felügyelt identitásokat, és hogyan hozhatja ki a jogkivonatot a háttér-erőforrásokhoz.
 author: mattchenderson
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: a2f6d7f881e404e9e4dbdb8087cabf25f67d561b
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 6fa8e560dc50859fc0501dde8109ddc7cbd596b8
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847319"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688619"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -172,7 +167,7 @@ Először létre kell hoznia egy felhasználó által hozzárendelt identitás-e
 
 5. A **felhasználó által hozzárendelt** lapon kattintson a **Hozzáadás**gombra.
 
-6. Keresse meg a korábban létrehozott identitást, és válassza ki. Kattintson az **Add** (Hozzáadás) parancsra.
+6. Keresse meg a korábban létrehozott identitást, és válassza ki. Kattintson a **Hozzáadás** parancsra.
 
     ![Felügyelt identitás a App Serviceban](media/app-service-managed-service-identity/msi-blade-user.png)
 
@@ -431,7 +426,7 @@ A rendszer által hozzárendelt identitások eltávolítása a HRE-ből is tör�
 > [!NOTE]
 > Van olyan Alkalmazásbeállítás is, amely beállítható, WEBSITE_DISABLE_MSI, amely egyszerűen letiltja a helyi jogkivonat-szolgáltatást. Azonban elhagyja az identitást, és az eszközök továbbra is a felügyelt identitást "be" vagy "engedélyezve" állapotba helyezik. Ennek eredményeképpen a beállítás használata nem ajánlott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Biztonságos hozzáférés SQL Database felügyelt identitás használatával](app-service-web-tutorial-connect-msi.md)

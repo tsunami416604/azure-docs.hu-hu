@@ -1,25 +1,19 @@
 ---
-title: Tartomány-és SSL-tanúsítványok hibáinak megoldása – Azure App Service | Microsoft Docs
-description: A tartomány-és SSL-tanúsítványokkal kapcsolatos problémák elhárítása Azure App Service
-services: app-service\web
-documentationcenter: ''
+title: Tartomány-és SSL-tanúsítványok – problémamegoldás
+description: Megtalálhatja azokat a gyakori problémákat, amelyek akkor merülhetnek fel, amikor tartományi vagy SSL-tanúsítványt konfigurál a Azure App Serviceban.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 778836661ff15c334823f95fef42acadb3e8b649
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2260dddd74d7ed64eb19158a5360ed2e4c09b4a9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470144"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688341"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>A tartomány-és SSL-tanúsítványokkal kapcsolatos problémák elhárítása Azure App Service
 
@@ -94,7 +88,7 @@ Ez a probléma a következő okok bármelyike miatt fordulhat elő:
 
     **Megoldás**: Ha a tanúsítvány csalásként van megjelölve, és 24 óra elteltével nem oldódik meg, kövesse az alábbi lépéseket:
 
-    1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+    1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
     2. Lépjen **app Service a tanúsítványok**elemre, és válassza ki a tanúsítványt.
     3. Válassza ki a **tanúsítvány konfigurációját** > **2. lépés:**  > **tartomány ellenőrzésének**ellenőrzése. Ez a lépés e-mailben értesítést küld az Azure-tanúsítvány szolgáltatójának a probléma megoldásához.
 
@@ -196,7 +190,7 @@ A App Service 48 órán belül automatikusan szinkronizálja a tanúsítványt. 
 
 A tanúsítvány szinkronizálását kényszerítheti:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). Válassza ki **app Service tanúsítványokat**, majd válassza ki a tanúsítványt.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Válassza ki **app Service tanúsítványokat**, majd válassza ki a tanúsítványt.
 2. Válassza a **regenerálás és szinkronizálás**lehetőséget, majd válassza a **szinkronizálás**lehetőséget. A szinkronizálás eltarthat egy ideig. 
 3. A szinkronizálás befejezésekor a következő értesítés jelenik meg: "az összes erőforrás frissítése sikeresen megtörtént a legújabb tanúsítvánnyal."
 
@@ -219,7 +213,7 @@ Alternatív megoldásként a HTML-weblap metódus használatával manuálisan is
 3.  Töltse fel ezt a fájlt a tartományt üzemeltető webkiszolgáló gyökerébe.
 4.  A tanúsítvány állapotának megtekintéséhez válassza a **frissítés** lehetőséget. Az ellenőrzés befejezéséhez néhány percet is igénybe vehet.
 
-Ha például a azure.com standard tanúsítványát vásárolja meg a tartomány-ellenőrzési jogkivonat 1234abcd, akkor a https://azure.com/1234abcd.htmlnek küldött webes kérelemnek 1234abcd kell visszaadnia. 
+Ha például a azure.com standard tanúsítványát vásárolja meg a tartomány-ellenőrzési jogkivonat 1234abcd, akkor a https://azure.com/1234abcd.html nek küldött webes kérelemnek 1234abcd kell visszaadnia. 
 
 > [!IMPORTANT]
 > A tanúsítvány megrendelése csak 15 napot tartalmaz a tartomány-ellenőrzési művelet befejezéséhez. 15 nap elteltével a hitelesítésszolgáltató megtagadja a tanúsítványt, és a tanúsítványért nem számítunk fel díjat. Ebben a helyzetben törölje a tanúsítványt, és próbálkozzon újra.
@@ -235,17 +229,17 @@ A Azure Portal nem vásárolhat App Service tartományt.
 
 Ez a probléma a következő okok egyike miatt fordul elő:
 
-- Nincs bankkártya az Azure-előfizetésben, vagy a bankkártya érvénytelen.
+- Nincs hozzáadva hitelkártya az Azure-előfizetéshez, vagy a hitelkártya érvénytelen.
 
     **Megoldás**: adjon hozzá egy érvényes bankkártyát az előfizetéséhez.
 
-- Nem Ön az előfizetés tulajdonosa, így nincs engedélye a tartomány megvásárlására.
+- Nem Ön az előfizetés tulajdonosa, így nem rendelkezik engedéllyel a tartományvásárláshoz.
 
     **Megoldás**: [rendelje hozzá a tulajdonosi szerepkört](../role-based-access-control/role-assignments-portal.md) a fiókhoz. Vagy forduljon az előfizetés rendszergazdájához, és kérjen engedélyt a tartomány megvásárlására.
-- Elérte az előfizetéshez tartozó tartományok megvásárlásának korlátját. Az aktuális korlát 20.
+- Az előfizetésében elérte a tartományvásárlások maximális számát. Jelenleg legfeljebb 20 tartományt vásárolhat.
 
     **Megoldás**: a korlát növelésének igényléséhez forduljon az [Azure ügyfélszolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Az Azure-előfizetés típusa nem támogatja App Service tartomány megvásárlását.
+- Az Azure-előfizetésének típusa nem támogatja App Service-tartományok vásárlását.
 
     **Megoldás**: frissítse az Azure-előfizetést egy másik előfizetés-típusra, például egy utólagos elszámolású előfizetésre.
 

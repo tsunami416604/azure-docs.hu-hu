@@ -1,24 +1,18 @@
 ---
-title: Hálózatkezelési megfontolások App Service Environment – Azure
-description: Ismerteti a beadási hálózati forgalmat, valamint a NSG és a UDR beállítását
-services: app-service
-documentationcenter: na
+title: Hálózati szempontok
+description: Ismerkedjen meg a bevezető hálózati forgalommal, valamint a hálózati biztonsági csoportok és a felhasználó által megadott útvonalak beállításával a bevezetővel.
 author: ccompy
-manager: stefsch
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ee7e3cb200a20b52a307dba31682a534e9f7b455
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e7d181416123c96e2462180a82c6d0b9670ef5fc
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470655"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687127"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Hálózatkezelési megfontolások App Service Environment #
 
@@ -59,9 +53,9 @@ Vertikális fel-vagy leskálázáskor a rendszer hozzáadja a megfelelő méret�
 
 Ahhoz, hogy a bejelentési funkció működjön, a beadáshoz a következő portok megnyitása szükséges:
 
-| Használat | Kezdő ár | Művelet |
+| Használat | Kezdő ár | – |
 |-----|------|----|
-| Kezelés | Felügyeleti címek App Service | Bekapcsolási alhálózat: 454, 455 |
+| Felügyelet | Felügyeleti címek App Service | Bekapcsolási alhálózat: 454, 455 |
 |  Belső belső kommunikáció | Bekapcsolási alhálózat: minden port | Bekapcsolási alhálózat: minden port
 |  Azure Load Balancer bejövő engedélyezése | Azure Load Balancer | Bemutató alhálózat: 16001
 
@@ -96,7 +90,7 @@ A beadás a következő portokon keresztül kommunikál az internettel elérhet�
 | NTP | 123 |
 | 8CRL, Windows-frissítések, Linux-függőségek, Azure-szolgáltatások | 80/443 |
 | Azure SQL | 1433 | 
-| Figyelés | 12000 |
+| Monitoring | 12000 |
 
 A kimenő függőségek az [app Service Environment kimenő forgalom zárolását](./firewall-integration.md)ismertető dokumentumban találhatók. Ha a beszállító nem fér hozzá a függőségeihez, a működése leáll. Ha ez elég hosszú, a beadás felfüggesztve. 
 
@@ -148,7 +142,7 @@ A külső kiegészítő szolgáltatással IP-címeket rendelhet az egyes alkalma
 
 Ha egy alkalmazás saját IP-alapú SSL-címmel rendelkezik, a beadási osztály két portot rendel az adott IP-címhez. Egy port a HTTP-forgalomhoz, a másik pedig a HTTPS. Ezek a portok az IP-címek szakaszban lévő betekintő felhasználói felületen vannak felsorolva. A forgalomnak képesnek kell lennie a portok elérésére a VIP-címről, vagy az alkalmazások nem érhetők el. Ezt a követelményt fontos megjegyezni a hálózati biztonsági csoportok (NSG) konfigurálásakor.
 
-## <a name="network-security-groups"></a>Network Security Groups (Hálózati biztonsági csoportok) ##
+## <a name="network-security-groups"></a>Hálózati biztonsági csoportok ##
 
 A [hálózati biztonsági csoportok][NSGs] lehetővé teszik a hálózati hozzáférés vezérlését egy VNet belül. Ha a portált használja, a legalacsonyabb prioritású implicit megtagadási szabályt kell megtagadnia minden adat megtagadásához. A buildek az engedélyezési szabályok.
 

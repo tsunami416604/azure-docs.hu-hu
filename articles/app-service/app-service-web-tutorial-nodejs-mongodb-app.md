@@ -1,26 +1,17 @@
 ---
-title: Node. js (MEAN. js) és MongoDB-Azure App Service | Microsoft Docs
-description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő Node.js-alkalmazásra, amely MongoDB kapcsolati sztringgel rendelkező Cosmos DB-hez csatlakozik. A MEAN. js az oktatóanyagban használatos.
-services: app-service\web
-documentationcenter: nodejs
-author: cephalin
-manager: erikre
-editor: ''
+title: 'Oktatóanyag: Node. js-alkalmazás a MongoDB'
+description: Ismerje meg, hogyan szerezhet be egy Azure-beli Node. js-alkalmazást, amely egy Azure-beli MongoDB-adatbázishoz (Cosmos DB) csatlakozik. A MEAN. js az oktatóanyagban használatos.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0b9b10542b861b49e83ff9704912a569cdca7616
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7d0a1d89b0547b1cd982b2717ac7548bec848a77
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024913"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671305"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Oktatóanyag: Node. js-és MongoDB-alkalmazás létrehozása az Azure-ban
 
@@ -129,7 +120,7 @@ Ebben a lépésben egy MongoDB-adatbázist hoz létre az Azure-ban. Miután az a
 
 A MongoDB esetében ez az oktatóanyag az [Azure Cosmos DB-t](/azure/documentdb/) használja. A Cosmos DB támogatja a MongoDB-ügyfélkapcsolatokat.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)] 
 
@@ -464,7 +455,7 @@ git commit -am "added article comment"
 git push azure master
 ```
 
-Miután a `git push` befejeződött, navigáljon az Azure-alkalmazáshoz, és próbálja ki az új funkciókat.
+A `git push` befejezését követően navigáljon az Azure-alkalmazáshoz, és próbálja ki az új funkciókat.
 
 ![Az Azure-ban közzétett modell- és adatbázis-módosítások](media/app-service-web-tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 
@@ -499,7 +490,7 @@ Alapértelmezés szerint a portál az alkalmazás **Áttekintés** lapját jelen
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak elvégzését ismerte meg:
 

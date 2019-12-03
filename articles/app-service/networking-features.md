@@ -1,25 +1,18 @@
 ---
-title: Hálózati telepítési funkciók – Azure App Service | Microsoft Docs
-description: A különböző App Service hálózatkezelési funkciók használata
+title: Hálózatkezelési funkciók
+description: Ismerkedjen meg a Azure App Service hálózati szolgáltatásaival, és hogy mely funkciók szükségesek a hálózat biztonságához vagy működéséhez.
 author: ccompy
-manager: stefsch
-editor: ''
-services: app-service\web
-documentationcenter: ''
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 801692c53ef268f15edc60d31743aefa6a247a78
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6395d62947cda47c3779f15445db08b7515d055d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928508"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672333"
 ---
 # <a name="app-service-networking-features"></a>Hálózati szolgáltatások App Service
 
@@ -43,7 +36,7 @@ Ha másként nincs megadva, az összes funkció együtt használható. A külön
 
 A probléma megoldásához bizonyos használati eseteket is használhat.  A megfelelő szolgáltatást esetenként a használati eseten kívüli okok miatt is érdemes használni. A következő bejövő használati esetek azt sugallják, hogyan használhatók a App Service hálózatkezelési funkciói az alkalmazásra irányuló forgalom szabályozásával kapcsolatos problémák megoldásához. 
  
-| Bejövő használati esetek | Funkció |
+| Bejövő használati esetek | Szolgáltatás |
 |---------------------|-------------------|
 | Az alkalmazás IP-alapú SSL-igényeinek támogatása | Alkalmazáshoz rendelt címe |
 | Nem megosztott, dedikált bejövő címe az alkalmazáshoz | Alkalmazáshoz rendelt címe |
@@ -57,7 +50,7 @@ A probléma megoldásához bizonyos használati eseteket is használhat.  A megf
 
 A következő kimenő használati esetek azt mutatják be, hogyan használhatók a App Service hálózatkezelési funkciói az alkalmazás kimenő hozzáférési igényeinek megoldásához. 
 
-| Kimenő használati esetek | Funkció |
+| Kimenő használati esetek | Szolgáltatás |
 |---------------------|-------------------|
 | Egy adott régióban található Azure-Virtual Network erőforrásainak elérése | VNet-integráció </br> ASE |
 | Erőforrásokhoz való hozzáférés egy másik régióban lévő Azure-Virtual Network | Átjáró szükséges VNet-integráció </br> VNet-társítás |

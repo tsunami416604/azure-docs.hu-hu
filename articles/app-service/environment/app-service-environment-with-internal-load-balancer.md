@@ -1,30 +1,23 @@
 ---
-title: Belső terheléselosztó létrehozása és használata App Service környezettel – Azure | Microsoft Docs
-description: ILB létrehozása és használata
-services: app-service
-documentationcenter: ''
+title: ILB-beli bemutató v1 létrehozása
+description: ILB-vel rendelkező bekészítés létrehozása és használata. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 65d62df954dbbfbdd221adb33eccd82f73588fae
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d8ed6b1806e1cbb0ca7419c5892a4a84bc62e541
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069898"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688728"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Belső Load Balancer használata App Service Environment
 
 > [!NOTE] 
-> Ez a cikk a App Service Environment v1-es verzióról szól. A App Service Environment újabb verziója könnyebben használható, és nagyobb teljesítményű infrastruktúrán fut. Ha többet szeretne megtudni az új verzióról, kezdje a [app Service Environment](intro.md)bevezetésével.
+> Ez a cikk a App Service Environment v1-es verzióról szól. A App Service Environment újabb verziója könnyebben használható, és nagyobb teljesítményű infrastruktúrán fut. Ha többet szeretne megtudni az új verzióról, kezdje a [app Service Environment bevezetésével](intro.md).
 >
 
 A App Service Environment (bevezetési) funkció egy olyan prémium szintű Azure App Service, amely olyan továbbfejlesztett konfigurációs képességet biztosít, amely nem érhető el a több-bérlős bélyegzők szolgáltatásban. A bevezetési funkció lényegében üzembe helyezi a Azure App Servicet az Azure-Virtual Networkban (VNet). A App Service környezetek által kínált képességek jobb megismeréséhez olvassa el a [Mi az a app Service Environment][WhatisASE] dokumentációt. Ha nem tudja, milyen előnyökkel jár a VNet való működés, olvassa el az [Azure Virtual Network – gyakori kérdések][virtualnetwork]című részt. 
@@ -32,9 +25,9 @@ A App Service Environment (bevezetési) funkció egy olyan prémium szintű Azur
 ## <a name="overview"></a>Áttekintés
 A bevezetést egy internetről elérhető végponttal vagy egy IP-címmel lehet üzembe helyezni a VNet. Ahhoz, hogy az IP-címet egy VNet-címhez szeretné beállítani, belső Load Balancer (ILB) kell központilag telepítenie a bevezetést. Ha a kisegítő ILB konfigurálva van, az alábbiakat biztosítja:
 
-* your own domain or subdomain. Az egyszerűvé tétel érdekében ez a dokumentum feltételezi az altartományt, de mindkét irányban konfigurálható. 
+* saját tartománya vagy altartománya. Az egyszerűvé tétel érdekében ez a dokumentum feltételezi az altartományt, de mindkét irányban konfigurálható. 
 * a HTTPS-hez használt tanúsítvány
-* DNS management for your subdomain. 
+* DNS-kezelés az altartományhoz. 
 
 Cserébe többek között az alábbiakat teheti meg:
 
@@ -94,21 +87,21 @@ Ha egyszerűen próbálkozik a dolgokkal, és nem tudja, hogyan hozhat létre eg
 
 Ha saját tanúsítványokkal szeretné kipróbálni a folyamatot, és a HTTP-és HTTPS-hozzáférést is tesztelni kívánja a saját előállítók számára:
 
-1. Ugrás a beadási felhasználói felületre, miután a beadási szolgáltatás létrejött a be>i **Beállítások-> ILB tanúsítványokat**.
+1. Ugrás a beadási felhasználói felületre, miután a beadási szolgáltatás létrejött a **be>i beállítások-> ILB tanúsítványokat**.
 2. Állítsa be a ILB tanúsítványát a tanúsítvány PFX-fájljának kiválasztásával és a jelszó megadásával. Ez a lépés eltarthat egy kis ideig a folyamat során, és megjelenik egy, a skálázási művelet által folyamatban lévő üzenet.
-3. Szerezze be a ILB-címet a központhoz (be>i**Tulajdonságok-> virtuális IP-cím**).
+3. Szerezze be a ILB-címet a központhoz (**be>i tulajdonságok-> virtuális IP-cím**).
 4. Hozzon létre egy webes alkalmazást a létrehozás után. 
 5. Hozzon létre egy virtuális gépet, ha még nem rendelkezik ilyennel a VNET (nem ugyanabban az alhálózatban, ahol a központot vagy a betörést).
-6. Set DNS for your subdomain. Használhat helyettesítő karaktert a DNS-beli altartományhoz, vagy ha néhány egyszerű tesztet szeretne végezni, szerkessze a virtuális gépen található gazdagépek fájlt a webalkalmazás nevének VIP IP-címként való beállításához. Ha a szolgáltató altartománynévvel rendelkezik. ilbase.com, és elvégezte a webalkalmazás-mytestapp, hogy az a mytestapp.ilbase.com-ben legyen felhasználva, állítsa be, hogy az a Hosts fájlban legyen. (Windows rendszeren a gazdagépek fájlja a következő címen található: C:\Windows\System32\drivers\etc\)
-7. Használjon böngészőt a virtuális gépen, és nyissa https://mytestapp.ilbase.com meg a (z) (vagy bármilyen webalkalmazás nevét a saját altartománnyal együtt).
+6. Állítsa be a DNS-t az altartományhoz. Használhat helyettesítő karaktert a DNS-beli altartományhoz, vagy ha néhány egyszerű tesztet szeretne végezni, szerkessze a virtuális gépen található gazdagépek fájlt a webalkalmazás nevének VIP IP-címként való beállításához. Ha a szolgáltató altartománynévvel rendelkezik. ilbase.com, és elvégezte a webalkalmazás-mytestapp, hogy az a mytestapp.ilbase.com-ben legyen felhasználva, állítsa be, hogy az a Hosts fájlban legyen. (Windows rendszeren a Hosts fájl a következő helyen található: C:\Windows\System32\drivers\etc\)
+7. Használjon böngészőt a virtuális gépen, és lépjen a https://mytestapp.ilbase.com ra (vagy bármilyen webalkalmazás neve a saját altartománnyal együtt).
 8. A virtuális gép böngészőjével keresse fel a következő oldalt: https://mytestapp.ilbase.com. Önaláírt tanúsítvány használata esetén el kell fogadnia a biztonság hiányát. 
 
 A ILB IP-címe a tulajdonságok között a virtuális IP-cím mezőben jelenik meg.
 
 ![][4]
 
-## <a name="using-an-ilb-ase"></a>ILB ASE használata
-#### <a name="network-security-groups"></a>Network Security Groups (Hálózati biztonsági csoportok)
+## <a name="using-an-ilb-ase"></a>ILB-kiegészítő szolgáltatás használata
+#### <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 Az ILB-beadási szolgáltatás lehetővé teszi az alkalmazások hálózati elkülönítését. Az alkalmazások nem érhetők el, vagy az Internet sem ismeri. Ez a megközelítés kiválóan használható az intranetes webhelyek, például az üzletági alkalmazások üzemeltetéséhez. Ha továbbra is korlátozni szeretné a hozzáférést, továbbra is használhat hálózati biztonsági csoportokat (NSG) a hozzáférés vezérléséhez a hálózati szinten. 
 
 Ha a NSG-t szeretné a hozzáférés további korlátozására használni, meg kell győződnie arról, hogy nem kell megszüntetnie a szolgáltató működéséhez szükséges kommunikációt. Annak ellenére, hogy a HTTP/HTTPS-hozzáférés csak a szolgáltató által használt ILB keresztül történik, a szolgáltató továbbra is a VNet kívüli erőforrásokból függ. Ha szeretné megtekinteni, hogy milyen hálózati hozzáférésre van szükség, tekintse meg a [Bejövő forgalom vezérlése egy app Service Environment][ControlInbound] és [hálózati konfiguráció részleteit app Service környezetek ExpressRoute][ExpressRoute]. 
@@ -123,13 +116,13 @@ Egy ILB-bevezetési szolgáltatás kezelése nagyjából azonos a közüzemi kö
 A további felügyeleti elemek a Tanúsítványkezelő és a DNS-kezelés. Be kell szereznie és fel kell töltenie a HTTPS-hez használt tanúsítványt, miután az ILB-t létrehozta, és lecseréli az érvényesség lejárta előtt. Mivel az Azure tulajdonosa az alaptartomány, az informatikai részleg tanúsítványokat biztosít a külső VIP-ASE. Mivel a ILB-előállítók által használt altartomány bármi lehet, meg kell adnia a saját tanúsítványát a HTTPS-hez. 
 
 #### <a name="dns-configuration"></a>DNS-konfiguráció
-Külső VIP használata esetén a DNS-t az Azure felügyeli. Az ASE környezetben létrehozott összes alkalmazás automatikusan hozzáadódik Azure DNS-hez, amely egy nyilvános DNS. Az ILB ASE környezetben Önnek kell kezelnie a saját DNS-ét. For a given subdomain, such as contoso.corp.net, you must create DNS A records that point to your ILB address for:
+Külső VIP használata esetén a DNS-t az Azure felügyeli. Az ASE környezetben létrehozott összes alkalmazás automatikusan hozzáadódik Azure DNS-hez, amely egy nyilvános DNS. Az ILB ASE környezetben Önnek kell kezelnie a saját DNS-ét. Egy adott altartományhoz, például a contoso.corp.net-hoz létre kell hoznia egy DNS-rekordot, amely a ILB-címere mutat:
 
     * 
     *. SCM FTP-közzététel 
 
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 App Service környezetek használatának megkezdéséhez tekintse [meg a app Service környezetek bemutatása][WhatisASE] című témakört.
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]

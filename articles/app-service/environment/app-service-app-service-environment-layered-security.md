@@ -1,28 +1,20 @@
 ---
-title: Többrétegű biztonsági architektúra App Service környezetekkel – Azure
-description: Többrétegű biztonsági architektúra megvalósítása App Service környezetekkel.
-services: app-service
-documentationcenter: ''
+title: Rétegzett biztonság v1
+description: Ismerje meg, hogyan valósítható meg egy rétegzett biztonsági architektúra a App Service-környezetben. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 2d9eedcdc66dceabdd6506c5b64f0c15c874efee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a8920e97d315dc7bfd0ba22386b8b637afb7c05e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070131"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688800"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Többrétegű biztonsági architektúra megvalósítása App Service környezetekkel
-## <a name="overview"></a>Áttekintés
 Mivel App Service környezetek egy virtuális hálózaton üzembe helyezett elkülönített futtatókörnyezeti környezetet biztosítanak, a fejlesztők létrehozhatnak egy rétegzett biztonsági architektúrát, amely különböző szintű hálózati hozzáférést biztosít az egyes fizikai alkalmazások szintjeihez.
 
 Gyakori a célja, hogy elrejtse az API-t az általános Internet-hozzáféréstől, és csak a felsőbb rétegbeli webalkalmazások számára engedélyezze az API-k meghívását.  A [hálózati biztonsági csoportok (NSG-k)][NetworkSecurityGroups] a app Service környezeteket tartalmazó alhálózatokon használhatók az API-alkalmazásokhoz való nyilvános hozzáférés korlátozására.

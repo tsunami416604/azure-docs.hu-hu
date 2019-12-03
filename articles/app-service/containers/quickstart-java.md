@@ -1,27 +1,19 @@
 ---
-title: Java-Webalkalmazás létrehozása Linux rendszeren – Azure App Service
-description: Ezzel a rövid útmutatóval percek alatt üzembe helyezheti első Hello World Java-alkalmazását a Linuxon futó Azure App Service-ben.
+title: 'Gyors útmutató: linuxos Java-alkalmazás létrehozása'
+description: Ismerkedjen meg a Linux-alkalmazásokkal Azure App Service az első Java-alkalmazás üzembe helyezésével a App Service Linux-tárolójában.
 keywords: Azure, app Service, Web App, Linux, Java, Maven, gyors útmutató
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.author: msangapu
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 3f50c94dafd01c6493f4765270c53c7903360c44
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: eb5c6ef9b342b149851f907b7bc81370327b12ca
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665168"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689002"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Linuxon
 

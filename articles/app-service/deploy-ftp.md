@@ -1,26 +1,17 @@
 ---
-title: Tartalom üzembe helyezése FTP/S-Azure App Service használatával | Microsoft Docs
-description: Megtudhatja, hogyan helyezheti üzembe az alkalmazást Azure App Service FTP-vagy FTPS használatával.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: Tartalom üzembe helyezése FTP/S használatával
+description: Megtudhatja, hogyan helyezheti üzembe az alkalmazást Azure App Service FTP-vagy FTPS használatával. A titkosítatlan FTP letiltásával javíthatja a webhelyek biztonságát.
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/18/2019
-ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 6e8a6820b3cf3031f11ab04d9baf4a7888491c81
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: bccf4fa0b17f261d41c0a80d9f75fe391f591bfb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098067"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671727"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Az alkalmazás üzembe helyezése az Azure App Service FTP/S használatával
 
@@ -32,7 +23,7 @@ Az alkalmazáshoz tartozó FTP/S végpont már aktív. Az FTP/S központi telep�
 
 A [Azure Portal](https://portal.azure.com)nyissa meg az alkalmazás [erőforrás-lapját](../azure-resource-manager/manage-resources-portal.md#manage-resources).
 
-Az FTP-irányítópult megnyitásához kattintson a **központi telepítési központ** > **FTP** > -**irányítópult**elemre.
+Az FTP-irányítópult megnyitásához kattintson a **központi telepítési központ** > **FTP** - > **irányítópult**elemre.
 
 ![FTP-irányítópult megnyitása](./media/app-service-deploy-ftp/open-dashboard.png)
 
@@ -54,8 +45,8 @@ Javasoljuk, hogy az alkalmazáshoz tartozó **hitelesítő adatok** használatá
 
 ## <a name="deploy-files-to-azure"></a>Fájlok üzembe helyezése az Azure-ban
 
-1. Az FTP-ügyfélről (például [Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/)vagy megnyerő) használja az összegyűjtött kapcsolati adatokat az alkalmazáshoz való kapcsolódáshoz. [](https://winscp.net/index.php)
-2. Másolja a fájlokat és a hozzá tartozó címtár-struktúrát a [ **/site/wwwroot** könyvtárba](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) az Azure-ban (vagy a webjobs **/site/wwwroot/App_Data/Jobs/** -címtárában).
+1. Az FTP-ügyfélről (például [Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/)vagy [megnyerő](https://winscp.net/index.php)) használja az összegyűjtött kapcsolati adatokat az alkalmazáshoz való kapcsolódáshoz.
+2. Másolja a fájlokat és a hozzá tartozó címtár-struktúrát a [ **/site/wwwroot** könyvtárba](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) az Azure-ban (vagy a **/site/wwwroot/App_Data/Jobs/** könyvtárat a webjobs szolgáltatáshoz).
 3. Keresse meg az alkalmazás URL-címét, és ellenőrizze, hogy az alkalmazás megfelelően fut-e. 
 
 > [!NOTE] 
@@ -72,7 +63,7 @@ Javasoljuk, hogy az alkalmazáshoz tartozó **hitelesítő adatok** használatá
 
 A fokozott biztonság érdekében engedélyezze az FTP-t csak SSL-en keresztül. Ha nem használja az FTP-telepítést, le is tilthatja az FTP-t és a FTPS.
 
-Az alkalmazás erőforrás-lapja [Azure Portalban](https://portal.azure.com)válassza a **konfiguráció** > **általános beállítások** lehetőséget a bal oldali navigációs sávon.
+Az alkalmazás Resource ( [Azure Portal](https://portal.azure.com)) lapján válassza a **konfiguráció** > **általános beállítások** lehetőséget a bal oldali navigációs sávon.
 
 A titkosítatlan FTP letiltásához válassza a **FTPS csak** **FTP-állapotban**lehetőséget. Az FTP és a FTPS teljes letiltásához válassza a **Letiltva**lehetőséget. Amikor végzett, kattintson a **Mentés** gombra. Ha **csak a FTPS**-t használja, a webalkalmazás **TLS/SSL-beállítások** paneljére kell kikényszeríteni a TLS 1,2-es vagy újabb verzióját. A TLS 1,0 és 1,1 **csak a FTPS**esetében támogatott.
 
@@ -89,7 +80,7 @@ Az [Azure PowerShell](/cli/azure)használatával történő FTP-telepítéssel k
 ## <a name="troubleshoot-ftp-deployment"></a>FTP-telepítés hibáinak megoldása
 
 - [Hogyan lehet elhárítani az FTP-telepítést?](#how-can-i-troubleshoot-ftp-deployment)
-- [Nem tudok FTP-hez csatlakozni, és közzétenni a kódot. Hogyan oldható fel a probléma?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [Nem tudok FTP-t és közzétenni a kódot. Hogyan oldható fel a probléma?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
 - [Hogyan csatlakozhatok az FTP-hez Azure App Service passzív módban?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>Hogyan lehet elhárítani az FTP-telepítést?
@@ -105,13 +96,13 @@ Az üzembe helyezési vagy futásidejű probléma okának meghatározásához l�
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>Nem tudok FTP-t és közzétenni a kódot. Hogyan oldható fel a probléma?
 Győződjön meg arról, hogy a helyes állomásnevet és [hitelesítő adatokat](#open-ftp-dashboard)adta meg. Győződjön meg arról is, hogy a számítógépen a következő FTP-portok nincsenek letiltva a tűzfalon:
 
-- FTP-vezérlő kapcsolati portja: 21
+- FTP-vezérlőkapcsolati port: 21
 - FTP-adatkapcsolati port: 989, 10001-10300
  
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Hogyan csatlakozhatok az FTP-hez Azure App Service passzív módban?
 Azure App Service támogatja az aktív és passzív módban történő csatlakozást. A passzív üzemmód használata ajánlott, mert az üzembe helyezési gépek általában tűzfal mögött vannak (az operációs rendszeren vagy otthoni vagy üzleti hálózat részeként). Tekintse meg [a megnyerő dokumentációban található példát](https://winscp.net/docs/ui_login_connection). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A speciális üzembe helyezési forgatókönyvek esetében próbálja meg [üzembe helyezni az Azure-ban a git használatával](deploy-local-git.md). Az Azure-hoz készült git-alapú üzembe helyezés lehetővé teszi a verziókövetés, a csomagok visszaállítása, az MSBuild és egyebek használatát.
 

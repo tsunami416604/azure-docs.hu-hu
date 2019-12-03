@@ -1,26 +1,17 @@
 ---
-title: Hitelesítés és engedélyezés – Azure App Service | Microsoft Docs
-description: A Azure App Service hitelesítési/engedélyezési funkciójának fogalmi referenciája és áttekintése
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
+title: Hitelesítés és engedélyezés
+description: Ismerje meg a Azure App Service beépített hitelesítési és engedélyezési támogatását, valamint azt, hogy miként segítheti az alkalmazás védelmét a jogosulatlan hozzáférés ellen.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 2179f4e7d5350cdf9d82413e4f70647c20c3c399
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808751"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672247"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
 
@@ -32,8 +23,10 @@ A Azure App Service beépített hitelesítési és engedélyezési támogatást 
 
 A biztonságos hitelesítés és az engedélyezés a biztonság alapos megismerését igényli, beleértve az összevonás, a titkosítás, a [JSON webes tokenek (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) kezelését, a [támogatás típusát](https://oauth.net/2/grant-types/)és így tovább. App Service biztosítja ezeket a segédprogramokat, így több időt és energiát is igénybe vehet, hogy üzleti értéket biztosítson az ügyfelek számára.
 
-> [!NOTE]
-> A hitelesítéshez és engedélyezéshez nem szükséges App Service használata. Számos webes keretrendszer biztonsági funkciókkal van ellátva, és igény szerint használhatja őket. Ha több rugalmasságra van szüksége, mint amennyit App Service biztosít, saját segédprogramjait is megírhatja.  
+> [!IMPORTANT]
+> Nem szükséges App Service használni a AuthN/AuthO. Számos webes keretrendszer biztonsági funkciókkal van ellátva, és igény szerint használhatja őket. Ha több rugalmasságra van szüksége, mint amennyit App Service biztosít, saját segédprogramjait is megírhatja.  
+>
+> Ha azonban a távoli hitelesítéshez nem App Service lehetőségek bármelyikét használja, vegye figyelembe, hogy a [Chrome 80 a cookie-k SameSite-re való bevezetését](https://www.chromestatus.com/feature/5088147346030592) (kiadás dátuma: március 2020), és az alkalmazás hitelesítési mechanizmusa megszakíthatja az ügyféloldali böngészők frissítésének időpontját. Az ASP.NET Core dokumentációja arról tartalmaz információt, hogyan kezelheti ezt az alkalmazásban, a [http: Browser SameSite módosítja a hatás hitelesítését](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication). Hasznos útmutatást nyújt arról, hogyan tesztelheti ezt a feltörési változást a főbb böngészőknél, függetlenül attól, hogy ASP.NET Core vagy sem használ.
 >
 
 A natív Mobile apps szolgáltatással kapcsolatos információkért lásd: a [felhasználói hitelesítés és a mobileszközök engedélyezése a Azure app Service](../app-service-mobile/app-service-mobile-auth.md)használatával.

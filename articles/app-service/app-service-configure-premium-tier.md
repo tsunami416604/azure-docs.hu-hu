@@ -1,26 +1,17 @@
 ---
-title: PremiumV2-réteg konfigurálása – Azure App Service | Microsoft Docs
+title: PremiumV2 szintű csomag konfigurálása
 description: Ismerje meg, hogyan javíthatja a teljesítményt a webes, mobil-és API-alkalmazásokban Azure App Service az új PremiumV2 díjszabási szintjére való skálázással.
 keywords: app service, azure app service, méret, méretezhető, app service-csomag, app service ára
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/25/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: aa1e522e395f869f73c0b250623665a9b175384e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067236"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672207"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service PremiumV2-szintjeinek konfigurálása
 
@@ -36,7 +27,7 @@ Egy alkalmazás **PremiumV2**való felskálázásához rendelkeznie kell egy oly
 
 A **PremiumV2** szinten a _Windows_ és a _Linux_app Service is elérhető.
 
-A **PremiumV2** a legtöbb Azure-régióban elérhető. Ha szeretné megtekinteni, hogy elérhető-e az Ön régiójában, futtassa a következő [](../cloud-shell/overview.md)Azure CLI-parancsot a Azure Cloud Shellban:
+A **PremiumV2** a legtöbb Azure-régióban elérhető. Ha szeretné megtekinteni, hogy elérhető-e az Ön régiójában, futtassa a következő Azure CLI-parancsot a [Azure Cloud Shellban](../cloud-shell/overview.md):
 
 ```azurecli-interactive
 az appservice list-locations --sku P1V2
@@ -48,7 +39,7 @@ az appservice list-locations --sku P1V2
 
 Az App Service alkalmazás díjszabási szintje a [app Service](overview-hosting-plans.md) -csomagban van definiálva. Létrehozhat egy App Service tervet saját maga vagy az alkalmazás létrehozása részeként is.
 
-Ha a App Service csomagot a Azure Portalban <a href="https://portal.azure.com" target="_blank"></a>konfigurálja, válassza az **árképzési szintet**. 
+Ha a App Service csomagot a <a href="https://portal.azure.com" target="_blank">Azure Portalban</a>konfigurálja, válassza az **árképzési szintet**. 
 
 Válassza az **éles környezet**, majd az **P1V2**, a **P2V2**vagy a **P3V2**lehetőséget, majd kattintson az **alkalmaz**gombra.
 
@@ -98,9 +89,9 @@ Ha az alkalmazás olyan App Service üzemelő példányban fut, ahol a **Premium
 
 Az **PremiumV2** szinten automatizálhatja az alkalmazások létrehozását az [Azure CLI](/cli/azure/install-azure-cli) vagy a [Azure PowerShell](/powershell/azure/overview)használatával.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
-A következő parancs egy App Service tervet hoz létre a _P1V2_-ben. A Cloud Shell futtathatja. A következő lehetőségei `--sku` : P1V2, _P2V2_és _P3V2_.
+A következő parancs egy App Service tervet hoz létre a _P1V2_-ben. A Cloud Shell futtathatja. A `--sku` beállításai a következők: P1V2, _P2V2_és _P3V2_.
 
 ```azurecli-interactive
 az appservice plan create \
@@ -113,7 +104,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A következő parancs egy App Service tervet hoz létre a _P1V2_-ben. A _kis_, `-WorkerSize` _közepes_és _nagyméretű_beállítások.
+A következő parancs egy App Service tervet hoz létre a _P1V2_-ben. A `-WorkerSize` beállításai _kicsi_, _közepes_és _nagy méretűek_.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `

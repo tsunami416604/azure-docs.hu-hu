@@ -1,18 +1,18 @@
 ---
-title: Hibaelhárítás
+title: Hibakeresés
 description: Az Azure FarmBeats hibáinak megoldása.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 88a1280fb4a91d7ba45f2d0cfe92e604cd66ff0b
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131981"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672584"
 ---
-# <a name="troubleshooting"></a>Hibaelhárítás
+# <a name="troubleshooting"></a>Hibakeresés
 
 A következő szakaszok ismertetik az Azure FarmBeats kapcsolatos gyakori problémákat és azok javításának módját.
 
@@ -39,7 +39,17 @@ További segítségért írjon nekünk a következő címen: farmbeatssupport@mi
 3. Ha nincsenek **beérkező üzenetek**, forduljon az eszköz partneréhez.  
 4. Ha vannak **Bejövő üzenetek**, lépjen kapcsolatba farmbeatssupport@microsoft.com adatközponttal és gyorssegéd-naplókkal, valamint rögzített telemetria.
 
-A naplók letöltésének megismeréséhez tekintse meg a dokumentum [naplók szakaszát](#collect-logs-manually) .    
+A naplók letöltésének megismeréséhez tekintse meg a dokumentum [naplók szakaszát](#collect-logs-manually) .  
+
+### <a name="dont-have-the-eventhub-connection-string"></a>Nem rendelkezik a Eventhub-kapcsolatok karakterláncával
+
+**Javítási művelet**: látogasson el a Datahub hencegő oldalra, és kövesse az alábbi lépéseket:
+1. Navigáljon a partner API-hoz
+2. Kattintson a GET-> kipróbálás – > végrehajtás lehetőségre
+3. Jegyezze fel annak az érzékelő-partnernek a Partner-azonosítóját, amelyre kíváncsi
+4. Lépjen vissza a partner API-ra, és kattintson a GET/{ID} elemre.
+5. Határozza meg a 3. lépésben szereplő azonosítót, és kattintson a végrehajtás gombra.
+6. Az API-válasznak tartalmaznia kell a EventHub-kapcsolatok sztringjét.
 
 ### <a name="device-appears-offline"></a>Az eszköz offline állapotban jelenik meg
 
@@ -84,7 +94,7 @@ Az alábbi gyakori hibák fordulnak elő egy eszköz törlésekor:
 
 ## <a name="accelerator-troubleshooting"></a>Gyorssegéd hibaelhárítása
 
-### <a name="access-control"></a>Hozzáférés-vezérlés
+### <a name="access-control"></a>Access Control
 
 **Hiba történt a szerepkör-hozzárendelés hozzáadásakor**
 
@@ -278,6 +288,6 @@ Az erőforráscsoport irányítópultján keresse meg a (datahublogs...) Storage
 2.  Válassza ki az App Service-t.  
 3.  Lépjen a vertikális felskálázás (App Service terv) lehetőségre, és válasszon ki egy megfelelő [árképzési szintet](https://azure.microsoft.com/pricing/details/app-service/windows/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha továbbra is problémákba ütközik, lépjen kapcsolatba velünk a [támogatási fórumon](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats).

@@ -1,28 +1,19 @@
 ---
-title: Operációs rendszer funkciói a App Service-ben – Azure
-description: Ismerje meg a webalkalmazások, a mobil alkalmazások és a Azure App Service API-alkalmazásai számára elérhető operációsrendszer-funkciókat
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: mollybos
+title: Operációs rendszer funkcionalitása
+description: Ismerkedjen meg a Windows Azure App Service operációs rendszerbeli funkcióival. Ismerje meg, hogy az alkalmazás milyen típusú fájl-, hálózati és beállításjegyzék-hozzáférést kap.
 ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b108814caaace83cd417dc8858e27ed01d54c39e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066767"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671611"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Operációs rendszer funkciójának Azure App Service
-Ez a cikk a Azure App Serviceon futó összes Windows-alkalmazás számára elérhető általános alapkonfiguráció operációs rendszer [](https://go.microsoft.com/fwlink/?LinkId=529714)funkcióit ismerteti. Ez a funkció magában foglalja a fájl-, hálózat-és beállításjegyzék-hozzáférést, valamint a diagnosztikai naplókat és eseményeket. 
+Ez a cikk a [Azure app Serviceon](https://go.microsoft.com/fwlink/?LinkId=529714)futó összes Windows-alkalmazás számára elérhető általános alapkonfiguráció operációs rendszer funkcióit ismerteti. Ez a funkció magában foglalja a fájl-, hálózat-és beállításjegyzék-hozzáférést, valamint a diagnosztikai naplókat és eseményeket. 
 
 > [!NOTE] 
 > A App Service [linuxos alkalmazásai](containers/app-service-linux-intro.md) saját tárolókban futnak. A gazdagép operációs rendszeréhez való hozzáférés nem engedélyezett, a tárolóhoz rendszergazdai hozzáférése van. Hasonlóképpen, a [Windows-tárolókban futó alkalmazások](app-service-web-get-started-windows-container.md)esetében rendszergazdai hozzáféréssel rendelkezik a tárolóhoz, de nem fér hozzá a gazdagép operációs rendszeréhez. 
@@ -31,7 +22,7 @@ Ez a cikk a Azure App Serviceon futó összes Windows-alkalmazás számára elé
 <a id="tiers"></a>
 
 ## <a name="app-service-plan-tiers"></a>App Service csomag szintjei
-App Service a több-bérlős üzemeltetési környezetben futtatja az alkalmazásokat. Az **ingyenes** és a **közös** szinten üzembe helyezett alkalmazások megosztott virtuális gépeken futnak a munkavégző folyamatokban, míg a **standard** és a **prémium** szinteken üzembe helyezett alkalmazások a kifejezetten a társított alkalmazásokhoz dedikált virtuális gépen futnak. egyetlen ügyféllel.
+App Service a több-bérlős üzemeltetési környezetben futtatja az alkalmazásokat. Az **ingyenes** és a **közös** szinten üzembe helyezett alkalmazások megosztott virtuális gépeken futnak munkavégző folyamatokban, míg a **standard** és a **prémium** csomagokban üzembe helyezett alkalmazások kifejezetten az egyetlen ügyfélhez társított alkalmazások számára dedikált virtuális gépeken futnak.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -64,7 +55,7 @@ Fontos, hogy az alkalmazás növekedésével figyelje a lemez kihasználtságát
 
 - Az alkalmazás olyan hibát okozhat, amely nem elegendő helyet jelez a lemezen.
 - Előfordulhat, hogy a kudu-konzolra való tallózáskor lemezhibák jelenhetnek meg.
-- Az `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`Azure DevOps vagy a Visual studióból történő üzembe helyezés sikertelen lehet.
+- Az Azure DevOps vagy a Visual studióból történő üzembe helyezés sikertelen lehet `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`.
 - Az alkalmazás teljesítménye csökkenhet.
 
 <a id="NetworkDrives"></a>
@@ -85,7 +76,7 @@ Az alkalmazást futtató virtuális géphez csatlakoztatott helyi meghajtókon A
 
 Két példa arra, hogy a App Service hogyan használja az ideiglenes helyi tárolást az ideiglenes ASP.NET-fájlok és az IIS-hez tömörített fájlok könyvtára számára. A ASP.NET-fordítási rendszer az "ideiglenes ASP.NET fájlok" könyvtárat használja ideiglenes fordítási gyorsítótárként. Az IIS az "IIS ideiglenes tömörített fájlok" könyvtárat használja a tömörített válasz kimenetének tárolására. Mindkét fájltípust (valamint másokat) a App Service az alkalmazáson belüli ideiglenes helyi tárterületre rendeli hozzá. Ez az újramegfeleltetés biztosítja, hogy a funkciók a várt módon folytatódnak.
 
-A App Serviceban lévő alkalmazások véletlenszerűen egyedi, alacsony jogosultsági szintű munkavégző folyamat identitásának nevezett "alkalmazáskészlet-identitás" néven futnak, amely az [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)itt olvasható:. Az alkalmazás kódja ezt az identitást használja az operációs rendszer meghajtójának alapszintű írásvédett eléréséhez (a D:\ meghajtó). Ez azt jelenti, hogy az alkalmazás kódja listázhatja az általános címtár-struktúrákat, és beolvashatja az operációs rendszer meghajtóján található általános fájlokat Bár ez némileg szélesebb körű hozzáférésnek tűnhet, ugyanazok a könyvtárak és fájlok érhetők el, amikor feldolgozói szerepkört helyez üzembe egy Azure által üzemeltetett szolgáltatásban, és beolvassa a meghajtó tartalmát. 
+A App Serviceban futó alkalmazások véletlenszerűen egyedi, alacsony jogosultsági szintű munkavégző folyamat identitásának nevezett "alkalmazáskészlet-identitás" néven futnak, amelyet itt talál: [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities). Az alkalmazás kódja ezt az identitást használja az operációs rendszer meghajtójának alapszintű írásvédett eléréséhez (a D:\ meghajtó). Ez azt jelenti, hogy az alkalmazás kódja listázhatja az általános címtár-struktúrákat, és beolvashatja az operációs rendszer meghajtóján található általános fájlokat Bár ez némileg szélesebb körű hozzáférésnek tűnhet, ugyanazok a könyvtárak és fájlok érhetők el, amikor feldolgozói szerepkört helyez üzembe egy Azure által üzemeltetett szolgáltatásban, és beolvassa a meghajtó tartalmát. 
 
 <a name="multipleinstances"></a>
 
@@ -124,7 +115,7 @@ Az alkalmazások számára nem elérhető diagnosztikai naplózási és nyomköv
 <a id="RegistryAccess"></a>
 
 ## <a name="registry-access"></a>Beállításjegyzék-hozzáférés
-Az alkalmazások csak olvasási hozzáféréssel rendelkeznek a virtuális gép beállításjegyzékéhez, amelyen futnak. A gyakorlatban ez olyan beállításkulcsokat jelent, amely lehetővé teszi, hogy az alkalmazások csak olvasási hozzáférést engedélyezzenek a helyi felhasználók csoport számára. A beállításjegyzék egyik területe, amely jelenleg nem támogatott olvasási vagy írási hozzáférés esetén, a HKEY\_aktuális\_felhasználói struktúrája.
+Az alkalmazások csak olvasási hozzáféréssel rendelkeznek a virtuális gép beállításjegyzékéhez, amelyen futnak. A gyakorlatban ez olyan beállításkulcsokat jelent, amely lehetővé teszi, hogy az alkalmazások csak olvasási hozzáférést engedélyezzenek a helyi felhasználók csoport számára. A beállításjegyzék egyik területe, amely jelenleg nem támogatott olvasási vagy írási hozzáférés esetén, a HKEY\_aktuális\_felhasználói struktúra.
 
 A beállításjegyzékhez való írási hozzáférés le van tiltva, beleértve a felhasználónkénti beállításkulcsok elérését is. Az alkalmazás szemszögéből az írási hozzáférés a beállításjegyzékhez soha nem támaszkodhat az Azure-környezetben, mivel az alkalmazások a különböző virtuális gépeken telepíthetők át (és nem). Az egyetlen alkalmazástól függő, az alkalmazáson belüli, az App Service UNC-megosztásokon tárolt alkalmazások közötti tartalmi könyvtár szerkezete. 
 

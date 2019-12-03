@@ -1,33 +1,26 @@
 ---
-title: Automatikus skálázás és App Service Environment v1 – Azure
-description: Automatikus skálázás és App Service Environment
-services: app-service
-documentationcenter: ''
+title: Automatikus skálázás v1
+description: Automatikus skálázás és App Service Environment v1. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: btardif
-manager: erikre
-editor: ''
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f0c49e1835412b61817ff3571dd3ee1eaa29f21f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070085"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687281"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Automatikus skálázás és App Service Environment v1
 
 > [!NOTE]
-> Ez a cikk a App Service Environment v1-es verzióról szól.  A App Service Environment újabb verziója könnyebben használható, és nagyobb teljesítményű infrastruktúrán fut. Ha többet szeretne megtudni az új verzióról, kezdje a [app Service Environment](intro.md)bevezetésével.
+> Ez a cikk a App Service Environment v1-es verzióról szól.  A App Service Environment újabb verziója könnyebben használható, és nagyobb teljesítményű infrastruktúrán fut. Ha többet szeretne megtudni az új verzióról, kezdje a [app Service Environment bevezetésével](intro.md).
 > 
 
-Azure App Service környezetektámogatják az automatikus skálázást. Az egyes munkavégző készleteket mérőszámok vagy ütemezés alapján is átméretezheti.
+Azure App Service környezetek támogatják az automatikus *skálázást*. Az egyes munkavégző készleteket mérőszámok vagy ütemezés alapján is átméretezheti.
 
 ![Munkavégző készletre vonatkozó autoskálázási beállítások][intro]
 
@@ -67,9 +60,9 @@ Frank a rendszergazda, aki áttelepítette az App Service-környezetbe felügyel
 A App Service környezet kézi méretezésre van konfigurálva a következőképpen:
 
 * **Előtér-végpontok:** 3
-* **1. munkavégző készlet**: 10
-* **2. munkavégző készlet**: 5
-* **3. munkavégző készlet**: 5
+* **Worker Pool 1**: 10
+* **Worker Pool 2**: 5
+* **Worker Pool 3**: 5
 
 A Worker Pool 1 az éles számítási feladatokhoz használatos, a 2. munkavégző készlet és a 3. munkavégző készlet pedig a minőségbiztosítási (QA) és a fejlesztési számítási feladatokhoz használatos.
 
@@ -81,31 +74,31 @@ Frank nagyon ismeri az alkalmazást. Tudják, hogy a betöltés maximális ideje
 
 | **Autoscale Profile – hétköznapok – App Service terv** | **Autoscale Profile – weekends – App Service terv** |
 | --- | --- |
-| **név:** Hétköznap profil |**név:** Hétvégi profil |
+| **Név:** Hétköznap profil |**Név:** Hétvégi profil |
 | **Skálázás:** Ütemterv és teljesítmény szabályok |**Skálázás:** Ütemterv és teljesítmény szabályok |
-| **Profil** Hétköznapokon |**Profil** Hétvégi |
-| **Típusa** Ismétlődés |**Típusa** Ismétlődés |
+| **Profil:** Hétköznapokon |**Profil:** Hétvégi |
+| **Írja be a következőt:** Megismétlődésének |**Írja be a következőt:** Megismétlődésének |
 | **Céltartomány:** 5 – 20 példány |**Céltartomány:** 3 – 10 példány |
-| **Nap** Hétfő, kedd, szerda, csütörtök, péntek |**Nap** Szombat, vasárnap |
+| **Napok:** Hétfő, kedd, szerda, csütörtök, péntek |**Napok:** Szombat, vasárnap |
 | **Kezdés időpontja:** 9:00 |**Kezdés időpontja:** 9:00 |
-| **Időzóna:** UTC-08 |**Időzóna:** UTC-08 |
+| **Időzóna:** UTC – 08 |**Időzóna:** UTC – 08 |
 |  | |
 | **Autoskálázási szabály (vertikális felskálázás)** |**Autoskálázási szabály (vertikális felskálázás)** |
-| **Erőforrás** Éles üzem (App Service Environment) |**Erőforrás** Éles üzem (App Service Environment) |
-| **Metrika** CPU |**Metrika** CPU |
-| **Művelet** Nagyobb, mint 60% |**Művelet** Nagyobb, mint 80% |
-| **Időtartama** 5 perc |**Időtartama** 10 perc |
-| **Idő összesítése:** Average |**Idő összesítése:** Average |
-| **Művelet** Növekedés száma 2 szerint |**Művelet** Növekedés száma 1 szerint |
+| **Erőforrás:** Éles üzem (App Service Environment) |**Erőforrás:** Éles üzem (App Service Environment) |
+| **Metrika:** CPU |**Metrika:** CPU |
+| **Művelet:** Nagyobb, mint 60% |**Művelet:** Nagyobb, mint 80% |
+| **Időtartam:** 5 perc |**Időtartam:** 10 perc |
+| **Idő összesítése:** Átlagos |**Idő összesítése:** Átlagos |
+| **Művelet:** Növekedés száma 2 szerint |**Művelet:** Növekedés száma 1 szerint |
 | **Lehűlni (perc):** 15 |**Lehűlni (perc):** 20 |
 |  | |
 | **Autoskálázási szabály (vertikális leskálázás)** |**Autoskálázási szabály (vertikális leskálázás)** |
-| **Erőforrás** Éles üzem (App Service Environment) |**Erőforrás** Éles üzem (App Service Environment) |
-| **Metrika** CPU |**Metrika** CPU |
-| **Művelet** Kevesebb mint 30% |**Művelet** Kevesebb mint 20% |
-| **Időtartama** 10 perc |**Időtartama** 15 perc |
-| **Idő összesítése:** Average |**Idő összesítése:** Average |
-| **Művelet** Szám csökkentése 1 szerint |**Művelet** Szám csökkentése 1 szerint |
+| **Erőforrás:** Éles üzem (App Service Environment) |**Erőforrás:** Éles üzem (App Service Environment) |
+| **Metrika:** CPU |**Metrika:** CPU |
+| **Művelet:** Kevesebb mint 30% |**Művelet:** Kevesebb mint 20% |
+| **Időtartam:** 10 perc |**Időtartam:** 15 perc |
+| **Idő összesítése:** Átlagos |**Idő összesítése:** Átlagos |
+| **Művelet:** Szám csökkentése 1 szerint |**Művelet:** Szám csökkentése 1 szerint |
 | **Lehűlni (perc):** 20 |**Lehűlni (perc):** 10 |
 
 ### <a name="app-service-plan-inflation-rate"></a>Az inflációs ráta App Service tervezése
@@ -152,31 +145,31 @@ Ezekkel az információkkal a frank meghatározhatja a következő autoscale-pro
 
 | **Autoscale profil – hétköznapok** | **Autoskálázási profil – hétvégek** |
 | --- | --- |
-| **név:** Hétköznap profil |**név:** Hétvégi profil |
+| **Név:** Hétköznap profil |**Név:** Hétvégi profil |
 | **Skálázás:** Ütemterv és teljesítmény szabályok |**Skálázás:** Ütemterv és teljesítmény szabályok |
-| **Profil** Hétköznapokon |**Profil** Hétvégi |
-| **Típusa** Ismétlődés |**Típusa** Ismétlődés |
+| **Profil:** Hétköznapokon |**Profil:** Hétvégi |
+| **Írja be a következőt:** Megismétlődésének |**Írja be a következőt:** Megismétlődésének |
 | **Céltartomány:** 13 – 25 példány |**Céltartomány:** 6 – 15 példány |
-| **Nap** Hétfő, kedd, szerda, csütörtök, péntek |**Nap** Szombat, vasárnap |
+| **Napok:** Hétfő, kedd, szerda, csütörtök, péntek |**Napok:** Szombat, vasárnap |
 | **Kezdés időpontja:** 7:00 |**Kezdés időpontja:** 9:00 |
-| **Időzóna:** UTC-08 |**Időzóna:** UTC-08 |
+| **Időzóna:** UTC – 08 |**Időzóna:** UTC – 08 |
 |  | |
 | **Autoskálázási szabály (vertikális felskálázás)** |**Autoskálázási szabály (vertikális felskálázás)** |
-| **Erőforrás** 1. munkavégző készlet |**Erőforrás** 1. munkavégző készlet |
-| **Metrika** WorkersAvailable |**Metrika** WorkersAvailable |
-| **Művelet** Kevesebb mint 8 |**Művelet** Kevesebb mint 3 |
-| **Időtartama** 20 perc |**Időtartama** 30 perc |
-| **Idő összesítése:** Average |**Idő összesítése:** Average |
-| **Művelet** Növekedés száma 8 szerint |**Művelet** Növekedés száma 3 szerint |
+| **Erőforrás:** 1. munkavégző készlet |**Erőforrás:** 1. munkavégző készlet |
+| **Metrika:** WorkersAvailable |**Metrika:** WorkersAvailable |
+| **Művelet:** Kevesebb mint 8 |**Művelet:** Kevesebb mint 3 |
+| **Időtartam:** 20 perc |**Időtartam:** 30 perc |
+| **Idő összesítése:** Átlagos |**Idő összesítése:** Átlagos |
+| **Művelet:** Növekedés száma 8 szerint |**Művelet:** Növekedés száma 3 szerint |
 | **Lehűlni (perc):** 180 |**Lehűlni (perc):** 180 |
 |  | |
 | **Autoskálázási szabály (vertikális leskálázás)** |**Autoskálázási szabály (vertikális leskálázás)** |
-| **Erőforrás** 1. munkavégző készlet |**Erőforrás** 1. munkavégző készlet |
-| **Metrika** WorkersAvailable |**Metrika** WorkersAvailable |
-| **Művelet** Nagyobb, mint 8 |**Művelet** Nagyobb, mint 3 |
-| **Időtartama** 20 perc |**Időtartama** 15 perc |
-| **Idő összesítése:** Average |**Idő összesítése:** Average |
-| **Művelet** Csökkenés száma 2 szerint |**Művelet** Csökkenés száma 3 szerint |
+| **Erőforrás:** 1. munkavégző készlet |**Erőforrás:** 1. munkavégző készlet |
+| **Metrika:** WorkersAvailable |**Metrika:** WorkersAvailable |
+| **Művelet:** Nagyobb, mint 8 |**Művelet:** Nagyobb, mint 3 |
+| **Időtartam:** 20 perc |**Időtartam:** 15 perc |
+| **Idő összesítése:** Átlagos |**Idő összesítése:** Átlagos |
+| **Művelet:** Csökkenés száma 2 szerint |**Művelet:** Csökkenés száma 3 szerint |
 | **Lehűlni (perc):** 120 |**Lehűlni (perc):** 120 |
 
 A profilban definiált céltartomány a App Service terv + puffer számára a profilban meghatározott minimális példányszám szerint van kiszámítva.
@@ -197,31 +190,31 @@ Ebben a forgatókönyvben Frank tudja, hogy a hibák száma nő, miután az elő
 
 | **Autoscale profil – előtér** |
 | --- |
-| **név:** Autoscale – elülső végek |
+| **Név:** Autoscale – elülső végek |
 | **Skálázás:** Ütemterv és teljesítmény szabályok |
-| **Profil** Mindennap |
-| **Típusa** Ismétlődés |
+| **Profil:** Mindennap |
+| **Írja be a következőt:** Megismétlődésének |
 | **Céltartomány:** 3 – 10 példány |
-| **Nap** Mindennap |
+| **Napok:** Mindennap |
 | **Kezdés időpontja:** 9:00 |
-| **Időzóna:** UTC-08 |
+| **Időzóna:** UTC – 08 |
 |  |
 | **Autoskálázási szabály (vertikális felskálázás)** |
-| **Erőforrás** Előtér-készlet |
-| **Metrika** CPU |
-| **Művelet** Nagyobb, mint 60% |
-| **Időtartama** 20 perc |
-| **Idő összesítése:** Average |
-| **Művelet** Növekedés száma 3 szerint |
+| **Erőforrás:** Előtér-készlet |
+| **Metrika:** CPU |
+| **Művelet:** Nagyobb, mint 60% |
+| **Időtartam:** 20 perc |
+| **Idő összesítése:** Átlagos |
+| **Művelet:** Növekedés száma 3 szerint |
 | **Lehűlni (perc):** 120 |
 |  |
 | **Autoskálázási szabály (vertikális leskálázás)** |
-| **Erőforrás** 1. munkavégző készlet |
-| **Metrika** CPU |
-| **Művelet** Kevesebb mint 30% |
-| **Időtartama** 20 perc |
-| **Idő összesítése:** Average |
-| **Művelet** Csökkenés száma 3 szerint |
+| **Erőforrás:** 1. munkavégző készlet |
+| **Metrika:** CPU |
+| **Művelet:** Kevesebb mint 30% |
+| **Időtartam:** 20 perc |
+| **Idő összesítése:** Átlagos |
+| **Művelet:** Csökkenés száma 3 szerint |
 | **Lehűlni (perc):** 120 |
 
 <!-- IMAGES -->

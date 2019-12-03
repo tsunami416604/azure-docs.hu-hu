@@ -1,25 +1,19 @@
 ---
-title: Azure PowerShell-példaszkript – Webalkalmazás biztonsági másolatának törlése | Microsoft Docs
-description: Azure PowerShell-példaszkript – Webalkalmazás biztonsági másolatának törlése
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'PowerShell: alkalmazás biztonsági másolatának törlése'
+description: Megtudhatja, hogyan használhatja a Azure PowerShell a App Service üzembe helyezésének és kezelésének automatizálására. Ez a minta bemutatja, hogyan törölhet egy alkalmazás biztonsági másolatát.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: ebcadb49-755d-4202-a5eb-f211827a9168
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9b9a6ecc93489c6690e0128ef9129c480f506b31
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b8d3175b4266e132d94f6f2dde163cb60fb11396
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098430"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685803"
 ---
 # <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Webes biztonsági másolat törlése Azure PowerShell használatával
 
@@ -50,7 +44,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Lekéri egy webalkalmazás biztonsági másolatainak listáját. |
 | [Remove-AzWebAppBackup](/powershell/module/az.websites/remove-azwebappbackup) | Eltávolítja a webalkalmazás megadott biztonsági másolatát. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 

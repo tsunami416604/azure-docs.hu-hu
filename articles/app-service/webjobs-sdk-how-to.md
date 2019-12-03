@@ -1,24 +1,17 @@
 ---
-title: A webjobs SDK használata – Azure
-description: További információ a webjobs SDK kódjának írásához. Az Azure-szolgáltatásokban és külső szolgáltatásokban tárolt adatokhoz hozzáférő eseményvezérelt háttér-feldolgozási feladatok hozhatók létre.
-services: app-service\web, storage
-documentationcenter: .net
+title: A webjobs SDK használata
+description: További információ a webjobs SDK kódjának írásához. Hozzon létre eseményvezérelt háttér-feldolgozási feladatokat, amelyek az Azure-ban és a külső szolgáltatásokban tárolt adatokhoz férnek hozzá.
 author: ggailey777
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 67cd7f82597d306c8bf3c463d11457199aec7277
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 8e29c632ff3920c77a757fe45475a12c212cf579
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815740"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684002"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményvezérelt háttérben végzett feldolgozáshoz
 
@@ -284,7 +277,7 @@ Az alapszolgáltatások részét képező időzítő vagy fájlok kötésének h
 
 Ezek az triggerek és kötési típusok a 2. verzióban szerepelnek. a `Microsoft.Azure.WebJobs` csomag *x* :
 
-* Blob Storage
+* Blobtároló
 * Queue Storage
 * Table Storage
 
@@ -302,7 +295,7 @@ static void Main()
 
 A fájlok kötésének használatához telepítse a `Microsoft.Azure.WebJobs.Extensions`t, és hívja meg `UseFiles`.
 
-### <a name="executioncontext"></a>executionContext
+### <a name="executioncontext"></a>ExecutionContext
 
 A webjobs lehetővé teszi egy [`ExecutionContext`]kötését. Ezzel a kötéssel a [`ExecutionContext`] a függvény aláírása paraméterként érheti el. Az alábbi kód például a környezeti objektum használatával fér hozzá a Meghívási AZONOSÍTÓhoz, amellyel az adott függvény által létrehozott összes naplót összekapcsolhatja.  
 
@@ -752,7 +745,7 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 }
 ```
 
-### <a name="singletonmodelistener"></a>SingletonMode.Listener
+### <a name="singletonmodelistener"></a>SingletonMode. Listener
 
 Egyes eseményindítók beépített támogatást biztosítanak a párhuzamosságok kezeléséhez:
 
@@ -782,7 +775,7 @@ public class WorkItem
 }
 ```
 
-### <a name="singletonscopehost"></a>SingletonScope.Host
+### <a name="singletonscopehost"></a>SingletonScope. Host
 
 A zárolás alapértelmezett hatóköre `SingletonScope.Function`, ami azt jelenti, hogy a zárolási hatókör (a blob címbérleti útvonala) a teljes függvény nevéhez van kötve. A függvények közötti zároláshoz adja meg a `SingletonScope.Host`, és használja a hatókör-azonosító nevét, amely ugyanaz, mint az összes olyan függvény, amelyet nem szeretne egyszerre futtatni. A következő példában `AddItem` vagy `RemoveItem` egyszerre csak egy példánya fut:
 
@@ -834,7 +827,7 @@ Javasoljuk a ASP.NET fejlesztett naplózási keretrendszert. Az [első lépések
 
 Minden `ILogger`-példány által létrehozott naplóhoz társított `Category` és `Level`tartozik. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) egy enumerálás, és az egész szám kód relatív fontosságot jelez:
 
-|LogLevel    |Kód|
+|Naplózási szint    |Kód|
 |------------|---|
 |Nyomkövetés       | 0 |
 |Hibakeresés       | 1 |
@@ -1011,9 +1004,9 @@ config.LoggerFactory = new LoggerFactory()
 
 Ez a cikk kódrészleteket adott meg, amelyek bemutatják, hogyan kezelheti a webjobs SDK-val való használat gyakori forgatókönyveit. A teljes mintákat lásd: [Azure-webjobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 
-[`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
-[`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient
-[`ConfigureServices`]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
-[`ITelemetryInitializer`]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
-[`TelemetryConfiguration`]: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
-[`JobHostConfiguration`]: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs
+[ExecutionContext]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
+[TelemetryClient]: /dotnet/api/microsoft.applicationinsights.telemetryclient
+[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
+['ITelemetryInitializer']: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
+['TelemetryConfiguration']: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
+['JobHostConfiguration']: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs

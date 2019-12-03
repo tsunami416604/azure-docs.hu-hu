@@ -1,32 +1,24 @@
 ---
-title: App Service környezetek hálózati architektúrájának áttekintése – Azure
-description: A hálózati topológia ofApp-szolgáltatási környezetének építészeti áttekintése.
-services: app-service
-documentationcenter: ''
+title: Hálózati architektúra v1
+description: App Service környezetek hálózati topológiájának építészeti áttekintése. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 98eb4d7440126bedb3d2e1de5711141eaac8b07a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070067"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687348"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Az App Service Environment-környezetek hálózati architektúrájának áttekintése
-## <a name="introduction"></a>Bevezetés
 App Service környezetek mindig egy [virtuális hálózat][virtualnetwork] alhálózatán belül jönnek létre – a app Service Environmentban futó alkalmazások képesek kommunikálni az azonos virtuális hálózati topológián belül található privát végpontokkal.  Mivel az ügyfelek lefoglalhatják a virtuális hálózati infrastruktúrájuk egyes részeit, fontos megérteni, hogy milyen típusú hálózati kommunikációs folyamatok történnek egy App Service Environment.
 
 ## <a name="general-network-flow"></a>Általános hálózati folyamat
-Ha egy App Service Environment (beadási) nyilvános virtuális IP-címet (VIP) használ az alkalmazásokhoz, az összes bejövő forgalom a nyilvános VIP-címen érkezik.  Ez magában foglalja az alkalmazások HTTP-és HTTPS-forgalmát, valamint az FTP, a Távoli hibakeresési funkció és az Azure felügyeleti műveleteinek egyéb forgalmát.  A nyilvános VIP-címen elérhető megadott portok teljes listájáért tekintse meg a [Bejövő forgalom][controllinginboundtraffic] app Service Environmentra való szabályozásáról szóló cikket. 
+Ha egy App Service Environment (beadási) nyilvános virtuális IP-címet (VIP) használ az alkalmazásokhoz, az összes bejövő forgalom a nyilvános VIP-címen érkezik.  Ez magában foglalja az alkalmazások HTTP-és HTTPS-forgalmát, valamint az FTP, a Távoli hibakeresési funkció és az Azure felügyeleti műveleteinek egyéb forgalmát.  A nyilvános VIP-címen elérhető megadott portok teljes listájáért tekintse meg a bejövő forgalom App Service Environmentra való [szabályozásáról][controllinginboundtraffic] szóló cikket. 
 
 App Service környezetek támogatják az olyan alkalmazások futtatását is, amelyek csak a virtuális hálózat belső címeihez kötődnek, amelyet ILB (belső terheléselosztó) címnek is neveznek.  Az alkalmazások ILB, valamint a HTTP-és HTTPS-forgalom az alkalmazásokhoz és a Távoli hibakeresési hívásokhoz a ILB-címen érhető el.  A ILB-ben a leggyakoribb, az FTP-/FTPS-forgalom a ILB-címen is megérkezik.  Az Azure felügyeleti műveletei azonban továbbra is a 454/455-es portokra áramlanak egy ILB-t támogató bekapcsoló nyilvános VIP-címen.
 
@@ -54,7 +46,7 @@ Ha a hívott végpont a virtuális hálózati topológián **kívül esik** , ak
 
 ![Kimenő IP-cím][OutboundIPAddress]
 
-Ez a cím olyan ASE is meghatározható, amelyeknek csak nyilvános VIP-je van, ha létrehoz egy alkalmazást a App Service Environmentban, majd az alkalmazás címén egy nslookupt hajt végre. Az eredő IP-cím a nyilvános VIP, valamint a App Service Environment kimenő NAT-címe.
+Ez a cím olyan ASE is meghatározható, amelyeknek csak nyilvános VIP-je van, ha létrehoz egy alkalmazást a App Service Environmentban, majd az alkalmazás címén egy *nslookupt* hajt végre. Az eredő IP-cím a nyilvános VIP, valamint a App Service Environment kimenő NAT-címe.
 
 Ha a hívott végpont a virtuális hálózati topológián **belül** van, a hívó alkalmazás kimenő címe az alkalmazást futtató egyedi számítási erőforrás belső IP-címe lesz.  Azonban a virtuális hálózatok belső IP-címeinek nem állandó hozzárendelése az alkalmazásokhoz.  Az alkalmazások áthelyezhetők különböző számítási erőforrások között, és a App Service Environment rendelkezésre álló számítási erőforrások készlete a skálázási műveletek miatt változhat.
 
@@ -72,7 +64,7 @@ A fenti ábrán:
 ## <a name="calls-between-app-service-environments"></a>Hívások App Service környezetek között
 Összetettebb forgatókönyv akkor fordulhat elő, ha több App Service környezetet telepít ugyanabban a virtuális hálózatban, és a kimenő hívásokat az egyik App Service Environment egy másik App Service Environment hajtja végre.  Az ilyen típusú App Service Environment hívásokat "Internet" hívásként is kezeli a rendszer.
 
-Az alábbi ábrán egy olyan rétegzett architektúra látható, amelyben az alkalmazások egy App Service Environmenton (például A "bejárati ajtó" webalkalmazások egy második App Service Environment (például az internetről elérhető belső háttérbeli API-alkalmazások) hívja meg az alkalmazásokat. 
+Az alábbi ábrán egy olyan többrétegű architektúra látható, amely egy App Service Environment (például "bejárati ajtó" webalkalmazások) alkalmazásokat hív meg egy második App Service Environment (például belső háttérbeli API-alkalmazások, amelyek nem az internetről elérhetők). 
 
 ![Hívások App Service környezetek között][CallsBetweenAppServiceEnvironments] 
 

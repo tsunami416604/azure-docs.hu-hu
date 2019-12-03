@@ -1,24 +1,17 @@
 ---
-title: SSL-tanúsítványok hozzáadása és kezelése – Azure App Service | Microsoft Docs
-description: Megtudhatja, hogyan vásárolhat egy App Service tanúsítványt, és hogyan köthető a App Service alkalmazáshoz
-services: app-service
-author: cephalin
-manager: gwallace
+title: SSL-tanúsítványok hozzáadása és kezelése
+description: Hozzon létre egy ingyenes tanúsítványt, importáljon egy App Service tanúsítványt, importáljon egy Key Vault tanúsítványt, vagy vásároljon egy App Service tanúsítványt a Azure App Serviceban.
 tags: buy-ssl-certificates
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 10/25/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 48c8390eff52466d11f781447c448d04ba567f31
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 2cba4e8223e98f95fc8d0f0472c10b2f9b67a658
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907140"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670737"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>SSL-tanúsítvány hozzáadása Azure App Service
 
@@ -28,7 +21,7 @@ Miután hozzáadta a tanúsítványt a App Service app vagy [Function alkalmazá
 
 A következő táblázat felsorolja azokat a beállításokat, amelyekkel tanúsítványokat adhat hozzá a App Serviceban:
 
-|Beállítás|Leírás|
+|Lehetőség|Leírás|
 |-|-|
 | Ingyenes App Service felügyelt tanúsítvány létrehozása (előzetes verzió) | Egy könnyen használható privát tanúsítvány, ha csak az `www` [Egyéni tartományát](app-service-web-tutorial-custom-domain.md) vagy a app Serviceban található nem meztelen tartományt kell védenie. |
 | App Service-tanúsítvány vásárlása | Az Azure által felügyelt privát tanúsítvány. A szolgáltatás ötvözi az automatizált tanúsítványok kezelését, valamint a megújítási és exportálási lehetőségek rugalmasságát. |
@@ -118,9 +111,9 @@ A következő táblázat segítséget nyújt a tanúsítvány konfigurálásába
 
 | Beállítás | Leírás |
 |-|-|
-| Name (Név) | A App Service tanúsítvány rövid neve. |
+| Név | A App Service tanúsítvány rövid neve. |
 | Naked domain Host neve | Itt adhatja meg a legfelső szintű tartományt. A kiállított tanúsítvány a legfelső szintű tartományt és a `www` altartományt *is* védi. A kiállított tanúsítványban a köznapi név mező tartalmazza a gyökértartomány tartományát, a tulajdonos alternatív neve mező pedig a `www` tartományt tartalmazza. Csak az altartományok biztonságossá tételéhez adja meg az altartomány teljes tartománynevét (például `mysubdomain.contoso.com`).|
-| Előfizetést | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
+| Előfizetés | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
 | Erőforráscsoport | A tanúsítványt tartalmazó erőforráscsoport. Használhat új erőforráscsoportot, vagy kiválaszthatja ugyanazt az erőforráscsoportot, mint a App Service alkalmazás, például:. |
 | Tanúsítvány SKU | Meghatározza a létrehozandó tanúsítvány típusát, legyen az egy standard tanúsítvány vagy egy [helyettesítő tanúsítvány](https://wikipedia.org/wiki/Wildcard_certificate). |
 | Jogi feltételek | Ide kattintva erősítse meg, hogy elfogadja a jogi feltételeket. A tanúsítványok a GoDaddyből szerezhetők be. |
@@ -139,10 +132,10 @@ A **Key Vault állapota** lapon kattintson a Key Vault adattár elemre egy új t
 
 | Beállítás | Leírás |
 |-|-|
-| Name (Név) | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
+| Név | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
 | Erőforráscsoport | Javaslatként válassza ki ugyanazt az erőforráscsoportot, mint a App Service-tanúsítványt. |
-| Hely | Válassza ki ugyanazt a helyet, mint a App Service alkalmazás. |
-| Tarifacsomag | További információ: [Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). |
+| Földrajzi egység | Válassza ki ugyanazt a helyet, mint a App Service alkalmazás. |
+| Díjcsomag | További információ: [Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Hozzáférési szabályzatok| Meghatározza az alkalmazásokat és az engedélyezett hozzáférést a tároló erőforrásaihoz. Később is konfigurálhatja, ha a lépéseket követve [számos alkalmazás hozzáférést biztosít a kulcstartóhoz](../key-vault/key-vault-group-permissions-for-apps.md). |
 | Virtual Network hozzáférés | A tár bizonyos Azure-beli virtuális hálózatokhoz való hozzáférésének korlátozása. Később is konfigurálhatja, a [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](../key-vault/key-vault-network-security.md) című témakör lépéseit követve. |
 
@@ -196,7 +189,7 @@ A következő táblázat segítségével választhatja ki a tanúsítványt.
 
 | Beállítás | Leírás |
 |-|-|
-| Előfizetést | Az előfizetés, amelyhez a Key Vault tartozik. |
+| Előfizetés | Az előfizetés, amelyhez a Key Vault tartozik. |
 | Key Vault | Az importálni kívánt tanúsítvánnyal rendelkező tároló. |
 | Tanúsítvány | Válassza ki a PKCS12/pfx-profil-tanúsítványok listáját a tárolóban. A tár összes PKCS12/pfx-profil-tanúsítványa szerepel a ujjlenyomatai megfelelnek, de a App Serviceban nem támogatottak. |
 
@@ -364,7 +357,7 @@ Most törölheti a App Service tanúsítványt. A bal oldali navigációs sávon
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
@@ -372,7 +365,7 @@ Most törölheti a App Service tanúsítványt. A bal oldali navigációs sávon
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>További erőforrások
+## <a name="more-resources"></a>További források
 
 * [Egyéni DNS-név biztonságossá tétele SSL-kötéssel](configure-ssl-bindings.md)
 * [HTTPS kényszerítése](configure-ssl-bindings.md#enforce-https)

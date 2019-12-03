@@ -1,24 +1,18 @@
 ---
-title: ILB-App Service Environment integrálása Application Gateway-Azure-val
-description: Útmutató az alkalmazások ILB App Service Environment való integrálásához Application Gateway
-services: app-service
-documentationcenter: na
+title: Integrálás az Application Gateway szolgáltatással
+description: Ismerje meg, hogyan integrálhat egy alkalmazást a ILB App Service Environment egy, a végpontok közötti átjárást tartalmazó Application Gateway.
 author: ccompy
-manager: stefsch
 ms.assetid: a6a74f17-bb57-40dd-8113-a20b50ba3050
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 090952a065b8c3b2b25ad737992b68b9bc9aa9ec
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: dfb6d72b3f8f61e1350101173ecec6134a614edf
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069472"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687138"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Environment integrálása az Azure Application Gateway #
 
@@ -46,7 +40,7 @@ Ahhoz, hogy a Application Gateway integrálása a ILB App Service Environment, a
 * Egy ILB App Service Environment.
 * A ILB App Service Environment futó alkalmazás.
 * A ILB App Service Environmentban az alkalmazáshoz használandó Internet-útválasztós tartománynév.
-* A ILB App Service Environment által használt ILB-címe. Ez az információ a app Service Environment-portál **Beállítások** > **IP-címei**területen található:
+* A ILB App Service Environment által használt ILB-címe. Ez az információ a App Service Environment-portálon, a **beállítások** > **IP-címek**területen található:
 
     ![A ILB által használt IP-címek példáinak listája App Service Environment][9]
     
@@ -116,7 +110,7 @@ Nem helyezheti el az átjárót abban az alhálózatban, amelyet a ILB App Servi
 
    ![Egyéni tartománynév beállítása az alkalmazásban][8]
 
-A webalkalmazásokhoz tartozó egyéni tartománynevek beállítására vonatkozó információk a webalkalmazás [Egyéni tartománynevének beállítása][custom-domain]című cikkben találhatók. Egy ILB App Service Environment alkalmazás esetében azonban nincs érvényesítés a tartománynévben. Mivel Ön az alkalmazás-végpontokat kezelő DNS-t birtokolja, bármit is igénybe vehet. Az ebben az esetben hozzáadott egyéni tartománynévnek nem kell a DNS-ben lennie, de még be kell állítania az alkalmazással. 
+A webalkalmazásokhoz tartozó egyéni tartománynevek beállítására vonatkozó információk a [webalkalmazás egyéni tartománynevének beállítása][custom-domain]című cikkben találhatók. Egy ILB App Service Environment alkalmazás esetében azonban nincs érvényesítés a tartománynévben. Mivel Ön az alkalmazás-végpontokat kezelő DNS-t birtokolja, bármit is igénybe vehet. Az ebben az esetben hozzáadott egyéni tartománynévnek nem kell a DNS-ben lennie, de még be kell állítania az alkalmazással. 
 
 Miután a telepítés befejeződött, és a DNS-módosítások propagálásához szükséges rövid idő, az alkalmazáshoz az Ön által létrehozott egyéni tartománynév használatával férhet hozzá. 
 

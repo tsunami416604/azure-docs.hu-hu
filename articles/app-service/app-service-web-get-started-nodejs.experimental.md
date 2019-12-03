@@ -1,25 +1,18 @@
 ---
-title: Node. js-alapú Webalkalmazás létrehozása – Azure App Service | Microsoft Docs
-description: Percek alatt üzembe helyezheti első Hello World Node.js-alkalmazását az App Service Web Apps szolgáltatásban.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Rövid útmutató: Node. js-alapú Webalkalmazás létrehozása'
+description: Percek alatt üzembe helyezheti az első Node. js-"Helló világ!" alkalmazás Azure App Service. Az üzembe helyezést egy ZIP-csomaggal végezheti el, amely a App Service üzembe helyezésének számos módszerének egyike.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7d81dae25b793144bfe044f8434a6df181dbcd1b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+experimental: false
+experiment_id: a231f2b4-2625-4d
+ms.openlocfilehash: c02caf7c70dfe88bd3312742fce08137bc360a2e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067404"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671407"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -107,13 +100,13 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=10.14.1
 ```
 
-Tallózással keresse meg az újonnan létrehozott webalkalmazást. Cserélje le `<app_name>` egy egyedi névre.
+Tallózással keresse meg az újonnan létrehozott webalkalmazást. Cserélje le a `<app_name>`t egy egyedi alkalmazás nevére.
 
 ```
 http://<app_name>.azurewebsites.net
 ```
 
-Az új webalkalmazásnak így kell kinéznie: ![A webalkalmazás üres lapja](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
+Az új webalkalmazásnak így kell kinéznie: ![a webalkalmazás üres lapja](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
 
 ## <a name="deploy-zip-file"></a>ZIP-fájl telepítése
 
@@ -152,7 +145,7 @@ A Node.js mintakód az Azure App Service webalkalmazásban fut.
 
 ## <a name="update-and-redeploy-the-code"></a>A kód frissítése és ismételt üzembe helyezése
 
-A Cloud Shell a Cloud Shell szerkesztő `code index.js` megnyitásához írja be a következőt:.
+A Cloud Shell írja be a `code index.js`t a Cloud Shell-szerkesztő megnyitásához.
 
 ![Code index. js](media/app-service-web-get-started-nodejs-poc/code-indexjs.png)
 
@@ -193,7 +186,7 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Node.js és MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)

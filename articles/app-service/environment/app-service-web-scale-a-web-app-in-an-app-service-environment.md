@@ -1,27 +1,20 @@
 ---
-title: Alkalmazások méretezése egy App Service Environmentban – Azure
-description: Alkalmazás méretezése App Service Environment
-services: app-service
-documentationcenter: ''
+title: Alkalmazás méretezése a bemutató v1-ben
+description: Alkalmazás méretezése egy App Service Environmentban. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: ccompy
-manager: stefsch
-editor: jimbe
 ms.assetid: 78eb1e49-4fcd-49e7-b3c7-f1906f0f22e3
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 711dc4d59785418d6637eb144b644948ed495e2c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 43849ca7084f2237c37ad537c50f4e94ac4ea7c0
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069725"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688683"
 ---
-# <a name="scaling-apps-in-an-app-service-environment"></a>Alkalmazások méretezése App Service-környezetben
+# <a name="scaling-apps-in-an-app-service-environment-v1"></a>Alkalmazások méretezése egy App Service Environment v1-ben
 A Azure App Service általában három dolgot lehet méretezni:
 
 * díjszabási csomag
@@ -39,14 +32,14 @@ Bármelyik tétel módosítása a szolgáltatott App Service-csomagokhoz tartoz�
 
 ![][1]
 
-Az ASP nem méretezhető fel az ASP-ben lévő munkavégző készletben elérhető számítási erőforrások számánál túl.  Ha számítási erőforrásokra van szüksége az adott munkavégző készletben, akkor hozzá kell adnia a beszerzéshez a beküldés-rendszergazdát.  A következő témakörben talál információt a betekintő szolgáltatás újrakonfigurálásával kapcsolatban: [App Service környezet konfigurálása][HowtoConfigureASE].  Érdemes lehet kihasználnia a kisegítő lehetőségekkel, hogy kihasználhassa a kapacitást az ütemterv vagy a mérőszámok alapján.  Ha további részleteket szeretne megtudni arról, hogyan konfigurálhatja az autoskálázást a beadási környezettel kapcsolatban, tekintse meg, [hogyan kell konfigurálni][ASEAutoscale]az autoskálázást app Service Environment
+Az ASP nem méretezhető fel az ASP-ben lévő munkavégző készletben elérhető számítási erőforrások számánál túl.  Ha számítási erőforrásokra van szüksége az adott munkavégző készletben, akkor hozzá kell adnia a beszerzéshez a beküldés-rendszergazdát.  A következő témakörben olvashat bővebben [arról, hogyan konfigurálhatja][HowtoConfigureASE]a betekintő adatokat: app Service környezet konfigurálása.  Érdemes lehet kihasználnia a kisegítő lehetőségekkel, hogy kihasználhassa a kapacitást az ütemterv vagy a mérőszámok alapján.  Ha további részleteket szeretne megtudni arról, hogyan konfigurálhatja az autoskálázást a beadási környezettel kapcsolatban, tekintse meg, [hogyan kell konfigurálni az autoskálázást app Service Environment][ASEAutoscale]
 
 Több app Service-csomagot is létrehozhat különböző munkavégző készletekből származó számítási erőforrásokkal, vagy használhatja ugyanazt a munkavégző készletet.  Ha például (10) elérhető számítási erőforrások találhatók az 1. munkavégző készletben, dönthet úgy, hogy létrehoz egy app Service-csomagot (6) számítási erőforrásokkal, és egy második app Service-csomagot, amely (4) számítási erőforrásokat használ.
 
 ### <a name="scaling-the-number-of-instances"></a>A példányok számának méretezése
 Amikor először hozza létre a webalkalmazást egy App Service Environment, akkor 1 példánnyal kezdődik.  Ezután további példányokat is kibővítheti, hogy további számítási erőforrásokat biztosítson az alkalmazáshoz.   
 
-Ha a beszerzett eszköz kapacitása elegendő, akkor ez elég egyszerű.  Nyissa meg a App Service tervet, amely a vertikálisan felskálázást és a méretezést választja.  Ekkor megnyílik a felhasználói felület, amelyen manuálisan állíthatja be az ASP méretezési szabályait, vagy konfigurálhatja az ASP-re vonatkozó autoskálázási szabályokat.  Az alkalmazás manuális méretezéséhez egyszerűen állítsa be a skálázást a ***manuálisan***megadott példányszámra.  Innen húzza a csúszkát a kívánt mennyiségre, vagy írja be a csúszkát a csúszka melletti mezőbe.  
+Ha a beszerzett eszköz kapacitása elegendő, akkor ez elég egyszerű.  Nyissa meg a App Service tervet, amely a vertikálisan felskálázást és a méretezést választja.  Ekkor megnyílik a felhasználói felület, amelyen manuálisan állíthatja be az ASP méretezési szabályait, vagy konfigurálhatja az ASP-re vonatkozó autoskálázási szabályokat.  Az alkalmazás manuális méretezéséhez egyszerűen állítsa be a ***skálázást*** a ***manuálisan megadott példányszámra***.  Innen húzza a csúszkát a kívánt mennyiségre, vagy írja be a csúszkát a csúszka melletti mezőbe.  
 
 ![][2] 
 
@@ -64,7 +57,7 @@ Mielőtt áthelyezi az ASP-t az egyik munkavégző készletből a másikba, font
 > 
 > 
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 App Service környezetek megismeréséhez tekintse meg a [app Service Environment létrehozása][HowtoCreateASE] című témakört.
 
 <!--Image references-->

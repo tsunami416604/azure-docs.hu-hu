@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 661dd94caa2a1998b26ec1270688c0729011c15a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5bc7ce5cee6235125cf65f492d9294af5214a760
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503625"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672606"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>Gyors útmutató: az iOS-es Swift-beszéd felismerése a Speech SDK használatával
 
@@ -36,7 +36,7 @@ A Kezdés előtt a következőkre lesz szüksége:
 
 Ez az oktatóanyag a 1.6.0-nél korábbi SDK-verzióval nem működik.
 
-Az iOS-hez készült Cognitive Services Speech SDK-t keretrendszer-csomagként terjesztik. Xcode-projektekben használható [CocoaPod](https://cocoapods.org/) , és manuálisan is letölthetők a https://aka.ms/csspeech/macosbinaryból. Ez a cikk egy CocoaPod használ.
+Az iOS-hez készült Cognitive Services Speech SDK-t keretrendszer-csomagként terjesztik. Xcode-projektekben használható [CocoaPod](https://cocoapods.org/) , és manuálisan is letölthetők a https://aka.ms/csspeech/iosbinary ból. Ez a cikk egy CocoaPod használ.
 
 ## <a name="create-an-xcode-project"></a>Xcode-projekt létrehozása
 
@@ -95,7 +95,7 @@ Az alábbi párbeszédpaneleken végezze el a következő beállításokat.
 1. Hozza létre és futtassa a példában szereplő kódot az iOS-szimulátorban úgy, hogy kijelöli a menü **termék** > **futtatása** elemét. A **Lejátszás** gombot is kiválaszthatja.
 1. Miután kiválasztotta a **felismerés** gombot az alkalmazásban, és néhány szót kimondottan, a képernyő alsó részén megjelenő szöveget kell látnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A GitHubon található minták megismerése](https://aka.ms/csspeech/samples)

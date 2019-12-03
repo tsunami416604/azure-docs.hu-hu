@@ -1,22 +1,16 @@
 ---
-title: PHP (Laravel) MySQL-vel Linux rendszeren – Azure App Service | Microsoft Docs
-description: Megtudhatja, hogyan szerezhet be egy olyan PHP-alkalmazást, amely Azure App Service Linux rendszeren működik, és az Azure-ban MySQL-adatbázishoz kapcsolódik. A Laravel az oktatóanyagban van használatban.
-services: app-service\web
-author: cephalin
-manager: jeconnoc
-ms.service: app-service-web
-ms.workload: web
+title: 'Oktatóanyag: Linux PHP-alkalmazás és MySQL'
+description: Ismerje meg, hogyan szerezhet be egy, az Azure-ban egy MySQL-adatbázishoz csatlakozó Linux Node. js-alkalmazást Azure App Serviceon. Ebben az oktatóanyagban a Laravel van használatban.
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4fade03d798096e250cb5b56fbb2003ea4b58e1b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: be8bbfde7e9873f9cef3a85cacc2dfcf4db9039b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481331"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687429"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>PHP-és MySQL-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -28,7 +22,7 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhe
 
 ![Az Azure App Service-ben futó PHP-alkalmazás](./media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * MySQL-adatbázis létrehozása az Azure-ban
@@ -89,7 +83,7 @@ Ebben a lépésben egy Laravel-mintaalkalmazásra tesz szert, konfigurálja anna
 
 A terminálablakban a `cd` paranccsal lépjen egy munkakönyvtárra.
 
-Futtassa a következő parancsot a mintatárház klónozásához.
+Futtassa a következő parancsot a minta tárház klónozásához.
 
 ```bash
 git clone https://github.com/Azure-Samples/laravel-tasks
@@ -119,7 +113,7 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-A _Laravel-környezet konfigurációjával_ foglalkozó cikkben tekinthet meg információt arról, hogy a Laravel hogyan használja a [.env](https://laravel.com/docs/5.4/configuration#environment-configuration) fájlt.
+A [Laravel-környezet konfigurációjával](https://laravel.com/docs/5.4/configuration#environment-configuration) foglalkozó cikkben tekinthet meg információt arról, hogy a Laravel hogyan használja a _.env_ fájlt.
 
 ### <a name="run-the-sample-locally"></a>A minta futtatása helyben
 
@@ -153,7 +147,7 @@ A PHP leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
 
 Ebben a lépésben egy MySQL-adatbázist hoz létre az [Azure Database for MySQL-ben](/azure/mysql). Később konfigurálni fogja a PHP-alkalmazást az adatbázishoz való csatlakozásra.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -456,7 +450,7 @@ public function up()
 }
 ```
 
-A fenti kód egy `tasks` nevű logikai oszlopot ad hozzá a `complete` táblában.
+A fenti kód egy `complete` nevű logikai oszlopot ad hozzá a `tasks` táblában.
 
 Cserélje le a `down` metódust az alábbi kódra a visszaállítási művelethez:
 

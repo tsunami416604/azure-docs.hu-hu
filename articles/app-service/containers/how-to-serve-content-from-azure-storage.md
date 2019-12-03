@@ -1,23 +1,20 @@
 ---
-title: Tartalom kiszolgálása az Azure Storage-ból Linux rendszeren – App Service
-description: Az Azure Storage-ban található tartalmak konfigurálása és kiszolgálása Azure App Service Linuxon.
-author: msangapu
-manager: jeconnoc
-ms.service: app-service
-ms.workload: web
+title: Egyéni Storage-tároló csatolása Linux rendszeren
+description: Megtudhatja, hogyan csatolhat egyéni hálózati megosztást a Linux-tárolóhoz a Azure App Serviceban. Fájlok megosztása az alkalmazások között, a statikus tartalmak távoli és helyileg elérhetővé való kezelése stb.
+author: msangapu-msft
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu
-ms.openlocfilehash: 97c03ad294bba1f8a0285fff4595991ca0acc8b5
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 00c60edeefa5fd8d1304aa5fc301a3b0304f5ca3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018273"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671789"
 ---
-# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Tartalom kiszolgálása az Azure Storage-ban App Service Linuxon
+# <a name="attach-azure-storage-containers-to-linux-containers"></a>Azure Storage-tárolók csatlakoztatása Linux-tárolóhoz
 
-Ez az útmutató bemutatja, hogyan használhatók a statikus tartalmak App Service Linuxon az [Azure Storage](/azure/storage/common/storage-introduction)használatával. Az előnyök közé tartozik a biztonságos tartalom, a tartalom hordozhatósága, az állandó tárolás, a több alkalmazáshoz való hozzáférés és a több átadási módszer.
+Ez az útmutató azt mutatja be, hogyan lehet hálózati megosztásokat csatlakoztatni a Linux-App Service az [Azure Storage](/azure/storage/common/storage-introduction)használatával. Az előnyök közé tartozik a biztonságos tartalom, a tartalom hordozhatósága, az állandó tárolás, a több alkalmazáshoz való hozzáférés és a több átadási módszer.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +41,7 @@ az storage container create --name <storage_container_name> --account-name <stor
 
 ## <a name="upload-files-to-azure-storage"></a>Fájlok feltöltése az Azure Storage-ba
 
-Ha egy helyi könyvtárat szeretne feltölteni a Storage-fiókba, a [`az storage blob upload-batch`](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-upload-batch) következő példához hasonló parancsot kell használnia:
+Helyi könyvtár a Storage-fiókba való feltöltéséhez használja a [`az storage blob upload-batch`](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-upload-batch) parancsot az alábbi példához hasonlóan:
 
 ```azurecli
 az storage blob upload-batch -d <full_path_to_local_directory> --account-name <storage_account_name> --account-key "<access_key>" -s <source_location_name>
@@ -56,7 +53,7 @@ az storage blob upload-batch -d <full_path_to_local_directory> --account-name <s
 > Ha egy webalkalmazás egy meglévő könyvtárát egy Storage-fiókhoz csatolja, a rendszer törli a könyvtár tartalmát. Ha egy meglévő alkalmazás fájljainak áttelepítését végzi, a Kezdés előtt készítsen biztonsági másolatot az alkalmazásról és annak tartalmáról.
 >
 
-Ha Storage-fiókot szeretne csatlakoztatni a app Service alkalmazás egyik könyvtárába, használja az [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) parancsot. A tárolási típus lehet AzureBlob vagy AzureFiles. Ehhez a tárolóhoz a AzureBlob-t használja.
+Ha Storage-fiókot szeretne csatlakoztatni a App Service alkalmazás egyik könyvtárához, használja a [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) parancsot. A tárolási típus lehet AzureBlob vagy AzureFiles. Ehhez a tárolóhoz a AzureBlob-t használja.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureBlob --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory>
@@ -64,7 +61,7 @@ az webapp config storage-account add --resource-group <group_name> --name <app_n
 
 Ezt minden olyan címtárhoz el kell végeznie, amelyet hozzá szeretne kapcsolni egy Storage-fiókhoz.
 
-## <a name="verify"></a>Megerősítés
+## <a name="verify"></a>Ellenőrzés
 
 Ha egy tároló egy webalkalmazáshoz van társítva, akkor a következő parancs futtatásával ellenőrizheti:
 
@@ -74,9 +71,9 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 ## <a name="use-custom-storage-in-docker-compose"></a>Egyéni tároló használata a Docker-összeállításban
 
-Az Azure Storage a Custom-ID használatával több tárolós alkalmazással is csatlakoztatható. Az egyéni azonosító nevének megtekintéséhez futtassa a parancsot [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
+Az Azure Storage a Custom-ID használatával több tárolós alkalmazással is csatlakoztatható. Az egyéni azonosító nevét a [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)futtatásával tekintheti meg.
 
-A *Docker-compose. YML* fájlban rendelje hozzá `volumes` `custom-id`a () beállítást. Példa:
+A *Docker-compose. YML* fájlban rendelje hozzá a `custom-id`hoz a `volumes` lehetőséget. Példa:
 
 ```yaml
 wordpress:
@@ -85,6 +82,6 @@ wordpress:
   - <custom-id>:<path_in_container>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Webalkalmazások konfigurálása Azure app Serviceban](../configure-common.md).

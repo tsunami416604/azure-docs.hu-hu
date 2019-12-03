@@ -1,26 +1,20 @@
 ---
 title: Üzembe helyezéssel kapcsolatos gyakori kérdések – Azure App Service | Microsoft Docs
 description: Választ kaphat a Azure App Service Web Apps funkciójának üzembe helyezésével kapcsolatos gyakori kérdésekre.
-services: app-service\web
-documentationcenter: ''
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 0a01f25894d1226466473dec7333859c7415f1fd
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 25f43051f11d42c4f8565039d3168f2ae162eb37
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121205"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671683"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Az Azure-Web Apps üzembe helyezésével kapcsolatos gyakori kérdések
 
@@ -39,7 +33,7 @@ További információ: [az alkalmazás üzembe helyezése app Service](deploy-lo
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>Hibaüzenet jelenik meg, amikor megpróbálok üzembe helyezni a Visual studióból. Hogyan a hiba elhárítása?
 
-Ha a következő üzenet jelenik meg, lehetséges, hogy az SDK egy régebbi verzióját használja: "Hiba történt a (z)" YourResourceGroup "erőforráscsoport" YourResourceName "erőforrásának üzembe helyezése során: MissingRegistrationForLocation: Az előfizetés nincs regisztrálva az "Components" erőforrástípus számára az "USA középső régiója" helyen. Regisztrálja újra a szolgáltatót ahhoz, hogy hozzáférhessen ehhez a helyhez. " 
+Ha a következő üzenet jelenik meg, lehet, hogy az SDK egy régebbi verzióját használja: "hiba történt a (z)" YourResourceGroup "erőforráscsoport" YourResourceName "erőforrásának üzembe helyezése során: MissingRegistrationForLocation: az előfizetés nincs regisztrálva a (z) "Components" erőforrástípus az "USA középső régiója" helyen. Regisztrálja újra a szolgáltatót ahhoz, hogy hozzáférhessen ehhez a helyhez. " 
 
 A hiba megoldásához frissítsen a [legújabb SDK](https://azure.microsoft.com/downloads/)-ra. Ha ezt az üzenetet látja, és rendelkezik a legújabb SDK-val, küldjön be egy támogatási kérést.
 
@@ -74,12 +68,12 @@ FTP-hibák elhárítása:
 
 1. Ellenőrizze, hogy a helyes állomásnevet és hitelesítő adatokat adta-e meg. További információk a hitelesítő adatok különböző típusairól és használatáról: [telepítési hitelesítő adatok](https://github.com/projectkudu/kudu/wiki/Deployment-credentials).
 2. Ellenőrizze, hogy a tűzfal nem blokkolja-e az FTP-portokat. A portoknak a következő beállításokkal kell rendelkezniük:
-    * FTP-vezérlő kapcsolati portja: 21
+    * FTP-vezérlőkapcsolati port: 21
     * FTP-adatkapcsolati port: 989, 10001-10300
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>Hogyan közzétenni a kódot a App Service?
 
-Az Azure rövid útmutató úgy lett kialakítva, hogy segítséget nyújtson az alkalmazás üzembe helyezéséhez az üzembe helyezési verem és a választott módszer használatával. A rövid útmutató használatához a Azure Portal nyissa meg az App Service-t az **üzembe helyezés**alatt,majd válassza a rövid útmutató lehetőséget.
+Az Azure rövid útmutató úgy lett kialakítva, hogy segítséget nyújtson az alkalmazás üzembe helyezéséhez az üzembe helyezési verem és a választott módszer használatával. A rövid útmutató használatához a Azure Portal nyissa meg az App Service-t az **üzembe helyezés**alatt, **majd válassza a**rövid útmutató lehetőséget.
 
 ## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Miért indítja újra az alkalmazást az üzembe helyezés után App Service?
 

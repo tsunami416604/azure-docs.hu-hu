@@ -3,12 +3,12 @@ title: Kimenetek a sablonokban
 description: Ismerteti, hogyan lehet kimeneti értékeket definiálni egy Azure Resource Manager sablonban.
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: b4c652d71436202b9b6e551f9c582e5c98508259
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 61120b9941a6a20812ea046265ecbe13014d769e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149186"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689143"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Kimenetek Azure Resource Manager sablonban
 
@@ -16,7 +16,7 @@ Ez a cikk bemutatja, hogyan határozhatja meg a kimeneti értékeket a Azure Res
 
 ## <a name="define-output-values"></a>Kimeneti értékek definiálása
 
-Az alábbi példa bemutatja, hogyan állítható vissza a nyilvános IP-cím erőforrás-azonosító:
+Az alábbi példa azt szemlélteti, hogyan lehet visszaadni egy nyilvános IP-cím erőforrás-AZONOSÍTÓját:
 
 ```json
 "outputs": {
@@ -43,7 +43,7 @@ A kimenetek szakaszban feltételesen adhat vissza értéket. A kimenetekben jell
 
 A feltételes kimenet egyszerű példáját lásd: [feltételes kimeneti sablon](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
 
-## <a name="linked-templates"></a>Hivatkozott sablonok
+## <a name="linked-templates"></a>Összekapcsolt sablonok
 
 Egy csatolt sablon kimeneti értékének lekéréséhez használja a fölérendelt sablon [hivatkozási](resource-group-template-functions-resource.md#reference) függvényét. A fölérendelt sablon szintaxisa a következőket eredményezi:
 
@@ -51,7 +51,7 @@ Egy csatolt sablon kimeneti értékének lekéréséhez használja a fölérende
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
 
-Amikor egy kimeneti tulajdonság lekérése egy hivatkozott sablonnak, a tulajdonság neve nem tartalmazhatja az kötőjellel.
+Ha csatolt sablonból kap kimeneti tulajdonságot, a tulajdonság neve nem tartalmazhat kötőjelet.
 
 Az alábbi példa bemutatja, hogyan állíthatja be az IP-címet egy terheléselosztó számára egy érték egy csatolt sablonból való beolvasásával.
 
@@ -61,7 +61,7 @@ Az alábbi példa bemutatja, hogyan állíthatja be az IP-címet egy terhelésel
 }
 ```
 
-Nem használhatja a `reference` függvény kimenetek szakaszában egy [beágyazott sablont](resource-group-linked-templates.md#nested-template). Az értékeket egy üzembe helyezett erőforrás visszaadása egy beágyazott sablont, váltson egy hivatkozott sablonnak a beágyazott sablont.
+[Beágyazott sablon](resource-group-linked-templates.md#nested-template)kimenetek szakaszában nem használhatja a `reference` függvényt. Egy beágyazott sablonban lévő üzembe helyezett erőforrás értékeinek visszaküldéséhez alakítsa át a beágyazott sablont egy csatolt sablonba.
 
 ## <a name="get-output-values"></a>Kimeneti értékek beolvasása
 
@@ -88,17 +88,16 @@ az group deployment show \
 
 ---
 
-## <a name="example-templates"></a>Példa sablonok
+## <a name="example-templates"></a>Példák sablonokra
 
 Az alábbi példák a kimenetek használatának forgatókönyveit mutatják be.
 
 |Sablon  |Leírás  |
 |---------|---------|
-|[Másolja a változók](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Komplex változók hoz létre, és kiírja ezeket az értékeket. Nem telepíti az erőforrásokat. |
-|[Nyilvános IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Létrehoz egy nyilvános IP-címet, és kiírja az erőforrás-azonosítója. |
-|[Terheléselosztó](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Az előző sablon mutató hivatkozásokat tartalmaz. A terheléselosztó létrehozásakor használja a kimenetben az erőforrás-azonosítója. |
+|[Változók másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Összetett változókat hoz létre, és megjeleníti ezeket az értékeket. Nem helyez üzembe semmilyen erőforrást. |
+|[Nyilvános IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Létrehoz egy nyilvános IP-címet, és kiírja az erőforrás-azonosítót. |
+|[Terheléselosztó](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Az előző sablonra mutató hivatkozások. A terheléselosztó létrehozásakor a kimenetben lévő erőforrás-azonosítót használja. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a kimenetek elérhető tulajdonságairól: [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](resource-group-authoring-templates.md).
-* A kimenetek létrehozásával kapcsolatos javaslatokért lásd: [ajánlott eljárások – kimenetek](template-best-practices.md#outputs).

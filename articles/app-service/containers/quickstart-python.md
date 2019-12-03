@@ -1,27 +1,17 @@
 ---
-title: 'Gyors útmutató: Python-alkalmazás létrehozása Linux rendszeren – Azure App Service'
-description: Percek alatt üzembe helyezheti első Hello World Python-alkalmazását a Linuxon futó Azure App Service-ben.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 'Rövid útmutató: Linux Python-alkalmazás létrehozása'
+description: Ismerkedjen meg a Linux-alkalmazásokkal Azure App Service az első Python-alkalmazás üzembe helyezésével a App Service Linux-tárolójában.
 ms.topic: quickstart
 ms.date: 10/22/2019
-ms.author: cephalin
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 69e7cfef01005432a99dd10ed5bc7f004562e582
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 67fbffbe96bc32b6ec38fa75c1e754c7f11d38d6
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470817"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687472"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -182,7 +172,7 @@ Az üzembe helyezés befejezését követően váltson vissza a `http://<app-nam
 
 Elérheti az alkalmazáson belül létrehozott konzol naplóit, valamint azt a tárolót, amelyben a fut. A naplók a `print` utasítások használatával generált kimeneteket tartalmazzák.
 
-Először kapcsolja be a tároló naplózását úgy, hogy futtatja a következő parancsot egy terminálon, és lecseréli `<app-name>` az alkalmazás nevére, és `<resource-group-name>` a használt `az webapp up` parancs kimenetében látható erőforráscsoport nevével (például "appsvc_rg_Linux_centralus"). ):
+Először kapcsolja be a tároló naplózását úgy, hogy futtatja a következő parancsot egy terminálon, és lecseréli `<app-name>` az alkalmazás nevére, és `<resource-group-name>` a használt `az webapp up` parancs kimenetében látható erőforráscsoport nevével (például "appsvc_rg_Linux_centralus"):
 
 ```terminal
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
@@ -225,13 +215,13 @@ A App Service menü különböző lapokat biztosít az alkalmazás konfigurálá
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Az erőforráscsoport neve például "appsvc_rg_Linux_CentralUS", a tartózkodási helytől függően. Ha az ingyenes F1-es csomagtól eltérő App Service SKU-t használ, ezek az erőforrások folyamatos költségekkel járnak.
 
-Ha nem várható, hogy szükség van ezekre az erőforrásokra a jövőben, törölje az erőforráscsoportot a következő parancs futtatásával, és cserélje le a `<resource-group-name>`t az `az webapp up` parancs kimenetében látható erőforráscsoporthoz, például "appsvc_rg_Linux_centralus". A parancs végrehajtása egy percet is igénybe vehet.
+Ha nem szeretné, hogy a jövőben is szükség lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a következő parancs futtatásával, és cserélje le a `<resource-group-name>`t az `az webapp up` parancs kimenetében látható erőforráscsoporthoz, például: "appsvc_rg_Linux_centralus". A parancs végrehajtása egy percet is igénybe vehet.
 
 ```terminal
 az group delete -n <resource-group-name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python (Django) webalkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)

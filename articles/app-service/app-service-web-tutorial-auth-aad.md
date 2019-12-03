@@ -1,26 +1,17 @@
 ---
-title: Felhasználók hitelesítése és engedélyezése végpontok közötti Azure App Service | Microsoft Docs
+title: 'Oktatóanyag: AuthN/AuthO végpontok közötti'
 description: Ez a cikk ismerteti, hogyan használhatja az App Service-hitelesítést és -engedélyezést az App Service-alkalmazások védelmének biztosításához, beleértve a távoli API-khoz történő hozzáférést.
 keywords: app service, azure app service, authN, authZ, védelem, biztonság, többrétegű, azure active directory, azure ad
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 55ba5a193e15ac4e8bd83ac046deeac1f12d61d0
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 6c243839e59038d439e177847df4427d253dbe98
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961961"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672055"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Oktatóanyag: Felhasználók hitelesítése és engedélyezése végpontok között az Azure App Service-ben
 
@@ -166,7 +157,7 @@ return Content(data, "application/json");
 
 Az első sor `GET /api/Todo/{id}` hívást indít a háttérrendszeri API-alkalmazás felé.
 
-Ezt követően keresse meg a `Create([FromBody] TodoItem item)` metódust, és cserélje le a kapcsos zárójelek közötti kódot a következőre:
+Ezt követően keresse meg az `Create([FromBody] TodoItem item)` metódust, és cserélje le a kapcsos zárójelek közötti kódot a következőre:
 
 ```cs
 var response = _client.PostAsJsonAsync($"{_remoteUrl}/api/Todo", item).Result;
@@ -176,7 +167,7 @@ return Content(data, "application/json");
 
 Az első sor `POST /api/Todo` hívást indít a háttérrendszeri API-alkalmazás felé.
 
-Ezt követően keresse meg a `Update(long id, [FromBody] TodoItem item)` metódust, és cserélje le a kapcsos zárójelek közötti kódot a következőre:
+Ezt követően keresse meg az `Update(long id, [FromBody] TodoItem item)` metódust, és cserélje le a kapcsos zárójelek közötti kódot a következőre:
 
 ```cs
 var res = _client.PutAsJsonAsync($"{_remoteUrl}/api/Todo/{id}", item).Result;
@@ -185,7 +176,7 @@ return new NoContentResult();
 
 Az első sor `PUT /api/Todo/{id}` hívást indít a háttérrendszeri API-alkalmazás felé.
 
-Ezt követően keresse meg a `Delete(long id)` metódust, és cserélje le a kapcsos zárójelek közötti kódot a következőre:
+Ezt követően keresse meg az `Delete(long id)` metódust, és cserélje le a kapcsos zárójelek közötti kódot a következőre:
 
 ```cs
 var res = _client.DeleteAsync($"{_remoteUrl}/api/Todo/{id}").Result;
@@ -281,7 +272,7 @@ Jelentkezzen be az [Azure Erőforrás-kezelőbe](https://resources.azure.com). K
 
 ![Az Azure App Service-ben futó ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-A bal oldali böngészőben kattintson az **előfizetések** >  **_\<az előfizetése >_**  > **resourceGroups** > **myAuthResourceGroup** > **szolgáltatók** > **Microsoft. Web** > **helyek** >  **_\<előtér-alkalmazás neve >_**  > **config** > **authsettings elemre**.
+A bal oldali böngészőben kattintson az **előfizetések** >  **_\<az előfizetése >_**  > **resourceGroups** > **myAuthResourceGroup** > **szolgáltatók** > **Microsoft. Web** > **helyek** >  **_\<előtér-alkalmazás-neve >_**  > **config** > **authsettings elemre**.
 
 Az **authsettings** nézetben kattintson a **Szerkesztés** gombra. Állítsa `additionalLoginParams` a következő JSON-karakterláncra a másolt ügyfél-azonosító használatával. 
 

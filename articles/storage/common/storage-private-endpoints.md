@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 06b96bf548be45952e1ff21f0433a1607ab36501
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e9781d9c277d19257d9b00bea3106adb3b04ffd6
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227885"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672521"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Privát végpontok használata az Azure Storage-hoz (előzetes verzió)
 
@@ -32,7 +32,9 @@ A privát végpontok egy speciális hálózati adapterek egy Azure-szolgáltatá
 
 A VNet lévő alkalmazások zökkenőmentesen kapcsolódhatnak a tárolási szolgáltatáshoz a magánhálózati végponton keresztül, **ugyanazokkal a kapcsolati karakterláncokkal és engedélyezési mechanizmusokkal, amelyeket egyébként használni**fognak. A magánhálózati végpontok a Storage-fiók által támogatott összes protokollal használhatók, beleértve a REST és az SMB protokollt is.
 
-Amikor saját VNet hoz létre egy tárolási szolgáltatáshoz egy magánhálózati végpontot, a rendszer beleegyezési kérelmet küld jóváhagyásra a Storage-fiók tulajdonosának. Ha a privát végpont létrehozását kérő felhasználó a Storage-fiók tulajdonosa is, akkor a rendszer ezt a jóváhagyási kérést automatikusan jóváhagyja.
+A magánhálózati végpontok olyan alhálózatokban hozhatók létre, amelyek [szolgáltatási végpontokat](/azure/virtual-network/virtual-network-service-endpoints-overview.md)használnak. Az alhálózaton lévő ügyfelek így egy privát végpont használatával csatlakozhatnak egy Storage-fiókhoz, míg más szolgáltatás-végpontok használatával is hozzáférhetnek.
+
+Ha létrehoz egy privát végpontot a virtuális hálózaton található egyik tárolási szolgáltatáshoz, a rendszer egy hozzájárulási kérést küld a tárfiók tulajdonosának jóváhagyás céljából. Ha a privát végpont létrehozását kérő felhasználó a Storage-fiók tulajdonosa is, akkor a rendszer ezt a jóváhagyási kérést automatikusan jóváhagyja.
 
 A Storage-fiók tulajdonosai a [Azure Portal](https://portal.azure.com)a Storage-fiókhoz tartozó*privát végpontok*lapján kezelhetik a belefoglalt kérelmeket és a privát végpontokat.
 
@@ -50,7 +52,7 @@ A magánhálózati végpont létrehozásakor meg kell adnia a Storage-fiókot é
 
 Ha olvasási hozzáférésre van szüksége egy [írásvédett földrajzi redundáns Storage-fiókhoz](storage-redundancy-grs.md#read-access-geo-redundant-storage), külön magánhálózati végpontokra van szükség a szolgáltatás elsődleges és másodlagos példányai esetében is. A **feladatátvételhez**nem kell létrehoznia privát végpontot a másodlagos példányhoz. A magánhálózati végpont automatikusan csatlakozni fog az új elsődleges példányhoz a feladatátvétel után.
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>Segédanyagok és eszközök
 
 A privát végpontok Storage-fiókhoz való létrehozásával kapcsolatos részletes információkért tekintse meg a következő cikkeket:
 
@@ -70,13 +72,13 @@ A VNet csatolt [saját DNS-zónát](../../dns/private-dns-overview.md) hozunk l�
 
 ## <a name="dns-changes-for-private-endpoints"></a>A magánhálózati végpontok DNS-módosításai
 
-Egy privát végponttal rendelkező Storage-fiókhoz tartozó DNS CNAME erőforrásrekord a "*privatelink*" előtaggal rendelkező altartományban található aliasra frissül. Alapértelmezés szerint a (z) "*privatelink*" előtaggal rendelkező altartományhoz tartozó VNet csatolt [privát DNS-zónát](../../dns/private-dns-overview.md) is létrehozunk, és a DNS a privát végpontokhoz tartozó erőforrásrekordokat tartalmazza.
+Privát végpont létrehozásakor a rendszer a Storage-fiókhoz tartozó DNS CNAME erőforrásrekordot a "*privatelink*" előtaggal rendelkező altartományban lévő aliasra frissíti. Alapértelmezés szerint a "*privatelink*" altartománynak megfelelő [privát DNS-zónát](../../dns/private-dns-overview.md)is létrehozunk, a DNS a saját végpontokhoz tartozó erőforrásrekordokat.
 
 Ha a VNet kívülről oldja fel a tárolási végpont URL-címét a privát végponttal, a rendszer a Storage szolgáltatás nyilvános végpontját oldja fel. A magánhálózati végpontot futtató VNet feloldva a tárolási végpont URL-címe feloldja a magánhálózati végpont IP-címét.
 
 A fenti ábrán látható példában a "StorageAccountA" Storage-fiókhoz tartozó DNS-erőforrásrekordok a privát végpontot üzemeltető VNet kívülről történő feloldáskor a következők:
 
-| Name (Név)                                                  | Típus  | Érték                                                 |
+| Név                                                  | Type (Típus)  | Value (Díj)                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<Storage szolgáltatás nyilvános végpontja\>                   |
@@ -86,14 +88,14 @@ Amint azt korábban említettük, a VNet kívüli ügyfelek számára a nyilván
 
 A StorageAccountA tartozó DNS-erőforrásrekordok, amikor a privát végpontot üzemeltető VNet-ügyfél feloldotta a következőt:
 
-| Name (Név)                                                  | Típus  | Érték                                                 |
+| Név                                                  | Type (Típus)  | Value (Díj)                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
 Ez a megközelítés lehetővé teszi, hogy a Storage-fiókhoz **ugyanazt a kapcsolati karakterláncot használja** , mint a privát végpontokat üzemeltető VNet lévő ügyfelek, valamint a VNet kívüli ügyfelek számára.
 
-Ha a hálózaton egyéni DNS-kiszolgálót használ, az ügyfeleknek fel kell tudniuk oldani a Storage-fiók végpontjának teljes tartománynevét a magánhálózati végpont IP-címére. Ehhez úgy kell konfigurálnia a DNS-kiszolgálót, hogy delegálja a magánhálózati kapcsolat altartományát a VNet tartozó magánhálózati DNS-zónához, vagy konfigurálja a "*StorageAccountA.privatelink.blob.Core.Windows.net*" rekordját a magánhálózati végpont IP-címével. 
+Ha a hálózaton egyéni DNS-kiszolgálót használ, az ügyfeleknek fel kell tudniuk oldani a Storage-fiók végpontjának teljes tartománynevét a magánhálózati végpont IP-címére. A DNS-kiszolgálót úgy kell konfigurálni, hogy delegálja a magánhálózati kapcsolat altartományát a VNet tartozó magánhálózati DNS-zónához, vagy konfigurálja a "*StorageAccountA.privatelink.blob.Core.Windows.net*" rekordját a magánhálózati végpont IP-címével.
 
 > [!TIP]
 > Egyéni vagy helyszíni DNS-kiszolgáló használatakor a DNS-kiszolgálót úgy kell konfigurálni, hogy az "privatelink" altartományban lévő Storage-fiók nevét a magánhálózati végpont IP-címére oldja fel. Ezt úgy teheti meg, hogy delegálja a "privatelink" altartományt a VNet magánhálózati DNS-zónájába, vagy konfigurálja a DNS-zónát a DNS-kiszolgálón, és hozzáadja a DNS-rekordot.
@@ -102,16 +104,16 @@ A tárolási szolgáltatásokhoz tartozó magánhálózati végpontok ajánlott 
 
 | Tárolási szolgáltatás        | Zóna neve                            |
 | :--------------------- | :----------------------------------- |
-| Blob szolgáltatás           | `privatelink.blob.core.windows.net`  |
-| 2\. generációs Data Lake Storage | `privatelink.dfs.core.windows.net`   |
+| Blob service           | `privatelink.blob.core.windows.net`  |
+| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
 | Fájlszolgáltatások           | `privatelink.file.core.windows.net`  |
 | Queue szolgáltatás          | `privatelink.queue.core.windows.net` |
 | Table service          | `privatelink.table.core.windows.net` |
 | Statikus webhelyek        | `privatelink.web.core.windows.net`   |
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>Segédanyagok és eszközök
 
-A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konfigurálásával kapcsolatos további útmutatásért tekintse meg a következő cikkeket:
+A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konfigurálásával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Azure virtuális hálózatokon található erőforrások névfeloldása](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
 - [A magánhálózati végpontok DNS-konfigurációja](/private-link/private-endpoint-overview#dns-configuration)
@@ -125,9 +127,6 @@ A díjszabással kapcsolatos információkért lásd: az [Azure Private link dí
 ### <a name="copy-blob-support"></a>BLOB-támogatás másolása
 
 Az előzetes verzió ideje alatt nem támogatott a privát végpontokon keresztül elért Storage-fiókok számára kiadott blob-parancsok [másolása](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) , ha a forrásként szolgáló Storage-fiókot tűzfal védi.
-
-### <a name="subnets-with-service-endpoints"></a>Alhálózatok szolgáltatási végpontokkal
-Jelenleg nem hozhat létre olyan magánhálózati végpontot olyan alhálózatban, amely szolgáltatási végpontokkal rendelkezik. Megkerülő megoldásként létrehozhat különálló alhálózatokat ugyanabban a VNet a szolgáltatási végpontok és a magánhálózati végpontok számára.
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Tároló-hozzáférési megkötések a virtuális hálózatok-beli ügyfelek számára privát végpontokkal
 

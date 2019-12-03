@@ -1,26 +1,19 @@
 ---
-title: Folyamatos üzembe helyezés a Web App for Containers-Azure App Servicerel | Microsoft Docs
-description: Folyamatos üzembe helyezés beállítása a Web App for Containersban.
+title: CI/CD – egyéni Linux-tárolók
+description: Megtudhatja, hogyan állíthatja be a folyamatos üzembe helyezést egy egyéni Linux-tárolóra Azure App Serviceban. A folyamatos üzembe helyezés a Docker hub és az ACR esetében támogatott.
 keywords: Azure app Service, Linux, Docker, ACR, OSS
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1dc776f0a61ac1a29ab3fe3ebdd542469863cd50
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d43491de7500204ed470757a1b744017a8180b57
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071359"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687636"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Folyamatos üzembe helyezés a Web App for Containers
 
@@ -30,7 +23,7 @@ Ebben az oktatóanyagban a folyamatos üzembe helyezést konfigurálja a felügy
 
 ![Képernyőfelvétel az ACR webhookról](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-02.png)
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Kattintson a lap bal oldalán található **app Service** lehetőségre.
 3. Válassza ki annak az alkalmazásnak a nevét, amelyhez a folyamatos üzembe helyezést konfigurálni kívánja.
 4. A **tároló beállításai** lapon válassza az **egyetlen tároló** elemet.
@@ -48,7 +41,7 @@ Az aktuális webhookok megtekintéséhez a Container Registry kattintson a webho
 
 ## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>Folyamatos üzembe helyezés engedélyezése a Docker hub-ban (opcionális)
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Kattintson a lap bal oldalán található **app Service** lehetőségre.
 3. Válassza ki annak az alkalmazásnak a nevét, amelyhez a folyamatos üzembe helyezést konfigurálni kívánja.
 4. A **tároló beállításai** lapon válassza az **egyetlen tároló** elemet.
@@ -58,9 +51,9 @@ Az aktuális webhookok megtekintéséhez a Container Registry kattintson a webho
 
 ![Képernyőkép az alkalmazás beállításáról](./media/app-service-webapp-service-linux-ci-cd/ci-cd-docker-02.png)
 
-Másolja a webhook URL-címét. Ha webhookot szeretne hozzáadni a Docker hub-hoz, kövesse a <a href="https://docs.docker.com/docker-hub/webhooks/" target="_blank">Docker hub</a>webhookait.
+Másolja a webhook URL-címét. Ha webhookot szeretne hozzáadni a Docker hub-hoz, kövesse a <a href="https://docs.docker.com/docker-hub/webhooks/" target="_blank">Docker hub webhookait</a>.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Linux Azure App Service bemutatása](./app-service-linux-intro.md)
 * [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)

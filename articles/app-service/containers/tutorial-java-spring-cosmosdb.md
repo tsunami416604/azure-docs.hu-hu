@@ -1,20 +1,18 @@
 ---
-title: Java-Webalkalmazás létrehozása Linux rendszeren – Azure App Service
-description: Spring boot Java-webalkalmazások létrehozása, üzembe helyezése és méretezése Azure App Service Linux és Azure Cosmos DB rendszeren.
+title: 'Oktatóanyag: linuxos Java-alkalmazás és MongoDB'
+description: Megtudhatja, hogyan szerezhet be egy Azure App Serviceon működő, adatvezérelt linuxos Java-alkalmazást az Azure-ban (Cosmos DB) futó MongoDB való kapcsolattal.
 author: rloutlaw
 ms.author: routlaw
-manager: angerobe
-ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 077c9b22dbb629c8408d431de3e2e621b79c9c48
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a3e9c05fbe68bf1b03f45d045afd8754753fecd3
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747677"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688832"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Oktatóanyag: Java Spring boot-Webalkalmazás létrehozása Azure App Service Linux és Azure Cosmos DB rendszeren
 
@@ -22,7 +20,7 @@ Ez az oktatóanyag végigvezeti a Java-webalkalmazások Azure-ban való létreho
 
 ![A Spring boot Application az adattárolást Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Cosmos DB adatbázist.
@@ -146,7 +144,7 @@ A minta futtatásához használja a Mavent.
 mvn package spring-boot:run
 ```
 
-A kimenet a következőhöz hasonlóan kell kinéznie.
+A kimenetnek az alábbihoz hasonlóan kell kinéznie.
 
 ```bash
 bash-3.2$ mvn package spring-boot:run

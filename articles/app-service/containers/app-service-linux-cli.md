@@ -1,26 +1,18 @@
 ---
-title: Web App for Containers kezelése az Azure CLI-Azure App Service használatával | Microsoft Docs
-description: Web App for Containers kezelése az Azure CLI-vel.
+title: Egyéni Linux-tárolók kezelése a CLI-vel
+description: Ismerje meg, hogyan kezelheti az egyéni Linux-tárolókat Azure App Service a parancssorból. Automatizálhatja az alkalmazások üzembe helyezését vagy karbantartását.
 keywords: Azure app Service, webalkalmazás, CLI, Linux, OSS
-services: app-service
-documentationCenter: ''
 author: ahmedelnably
-manager: cfowler
-editor: ''
-ms.assetid: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 5481e9f28d8fc47936ad62bd8d974beb5ca85fcd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 773c8036a345383162013f9f7103164b0f382f12
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071312"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689062"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Web App for Containers kezelése az Azure CLI-vel
 
@@ -102,7 +94,7 @@ Az alkalmazáshoz tartozó git-telepítések beállításához használja a köv
 az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> --branch <branch>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Linux Azure App Service?](app-service-linux-intro.md)
 * [Az Azure parancssori felület telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli)

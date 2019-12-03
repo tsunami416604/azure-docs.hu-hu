@@ -7,16 +7,16 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 98598a28e14dfd8175cbb019ff1b001c65503580
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: c4ee4ed81cd4cc443a8f412462a5a7f204c91898
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73644600"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688196"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>Az Azure-ba való betöltéshez használjon egykattintásos betöltést Adatkezelő
 
-Ez a cikk bemutatja, hogyan használható az egykattintásos betöltés a JSON-vagy CSV-formátumú új tábla gyors betöltéséhez a Storage szolgáltatásból az Azure Adatkezelőba. Az adatgyűjtés után szerkesztheti a táblázatot, és futtathatja a lekérdezéseket a webes KEZELŐFELÜLET használatával.
+Ebből a cikkből megtudhatja, hogyan használhatja az egykattintásos betöltést a JSON-vagy CSV-formátumú új tábla gyors betöltéséhez a Storage-ból vagy a helyi fájlból egy meglévő táblába vagy egy új táblába az Azure Adatkezelőban. Használja az intuitív varázslót, és néhány percen belül betöltheti az adatait, szerkesztheti a táblázatot, és futtathat lekérdezéseket a webes KEZELŐFELÜLET használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -88,7 +88,7 @@ Ez a cikk bemutatja, hogyan használható az egykattintásos betöltés a JSON-v
     > [!TIP]
     > Előfordulhat, hogy `.drop` parancsok használatával elvesznek az adatai. Gondosan használja őket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Adatkezelő webes felhasználói felületének lekérdezése](web-query-data.md)
 * [Írási lekérdezések az Azure Adatkezelő Kusto lekérdezési nyelv használatával](write-queries.md)

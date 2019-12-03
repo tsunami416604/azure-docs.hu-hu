@@ -2,18 +2,18 @@
 title: Apache Hive & Data Lake Tools for Visual Studio – Azure HDInsight
 description: Ismerje meg, hogy a Visual studióhoz készült Data Lake Tools segítségével hogyan futtathat Apache Hive-lekérdezéseket az Azure HDInsight Apache Hadoop használatával.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5b10cc5a8b7468b222fec3f2e66a8258470047ae
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: 27ab13481525819eb1435f4c9ac256a21acd21fb
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931882"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687804"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Apache Hive lekérdezések futtatása a Visual studióhoz készült Data Lake Tools használatával
 
@@ -38,9 +38,9 @@ Hive-lekérdezések létrehozására és futtatására két lehetősége van:
 
 Az alkalmi lekérdezések **kötegelt** vagy **interaktív** módban is végrehajthatók.
 
-1. Nyissa meg a **Visual studiót**.
+1. Indítsa el a **Visual studiót** , és válassza a **Folytatás kód nélkül**lehetőséget.
 
-2. A **Server Explorerben**navigáljon az **Azure** > **HDInsight**.
+2. A **Server Explorerben**kattintson a jobb gombbal az **Azure**elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez**... lehetőséget, és fejezze be a bejelentkezési folyamatot.
 
 3. Bontsa ki a **HDInsight**csomópontot, kattintson a jobb gombbal arra a fürtre, amelyen futtatni szeretné a lekérdezést, majd válassza a **kaptár-lekérdezés írása**lehetőséget.
 
@@ -99,7 +99,7 @@ Ha kaptár-lekérdezést szeretne futtatni egy kaptár-alkalmazás létrehozás�
         > A külső táblákat akkor kell használni, ha a mögöttes adatokat külső forrás, például egy MapReduce vagy egy Azure-szolgáltatás frissíti.
         >
         > Egy külső tábla eldobása **nem** törli az adatforrást, csak a tábla definícióját.
-    
+
     * `ROW FORMAT`: azt jelzi, hogy az adat hogyan formázott. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.
 
     * `STORED AS TEXTFILE LOCATION`: arra utasítja a kaptárt, hogy a *példában vagy* az adatkönyvtárban tárolja az adott adattárat, és hogy az a szövegként van tárolva.
@@ -138,7 +138,7 @@ Az alábbi példa az előző eljárásban létrehozott `log4jLogs` táblára tá
         > A `EXTERNAL` tábláktól eltérően a belső tábla eldobása a mögöttes adatokat is törli.
 
     * `STORED AS ORC`: az adatok az *optimalizált sorok oszlopos* (ORK) formátumban vannak tárolva. Az ork kiválóan optimalizált és hatékony formátum a kaptárak adatok tárolására.
-    
+
     * `INSERT OVERWRITE ... SELECT`: kiválasztja a `[ERROR]`t tartalmazó `log4jLogs` táblázat sorait, majd beszúrja az adatait a `errorLogs` táblába.
 
 3. Szükség esetén módosítsa az **interaktív** elemet a **Batch** szolgáltatásban, majd válassza a **Küldés**lehetőséget.
@@ -149,14 +149,8 @@ Az alábbi példa az előző eljárásban létrehozott `log4jLogs` táblára tá
 
 Amint láthatja, a Visual studióhoz készült HDInsight Tools egyszerű módszert biztosít a HDInsight-beli kaptár-lekérdezésekkel való együttműködésre.
 
-Általános információk a HDInsight-struktúrával kapcsolatban:
+* A HDInsight struktúrával kapcsolatos általános információkért lásd: [Mi az a Apache Hive és a HiveQL az Azure HDInsight?](hdinsight-use-hive.md)
 
-* [Mi a Apache Hive és a HiveQL az Azure HDInsight?](hdinsight-use-hive.md)
+* További információ a HDInsight-beli Hadoop-használattal kapcsolatos egyéb módszerekről: a [MapReduce használata az Apache Hadoop on HDInsight](hdinsight-use-mapreduce.md)
 
-További információ a Hadoop a HDInsight-ben való használatával kapcsolatos egyéb módszerekről:
-
-* [A MapReduce használata a HDInsight-alapú Apache Hadoopban](hdinsight-use-mapreduce.md)
-
-További információ a Visual studióhoz készült HDInsight-eszközökről:
-
-* [Data Lake Tools for Visual Studio használata az Azure HDInsight való kapcsolódáshoz és Apache Hive lekérdezések futtatásához](apache-hadoop-visual-studio-tools-get-started.md)
+* További információ a Visual studióhoz készült HDInsight-eszközökről:[Data Lake eszközök használata a Visual studióhoz az Azure HDInsight való kapcsolódáshoz és Apache Hive lekérdezések futtatásához](apache-hadoop-visual-studio-tools-get-started.md)

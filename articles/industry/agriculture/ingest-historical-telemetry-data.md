@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 5ae64371bd114a898ddca874e23b499bc4a2b8a3
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 27aec53fd2e92e19f1c749e833217fb8b5deae57
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128778"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672573"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
 
@@ -18,9 +18,10 @@ Ez a cikk azt ismerteti, hogyan lehet bevezetni a korábbi érzékelőkre vonatk
 
 Az olyan erőforrások, mint az eszközök és érzékelők eszközök internetes hálózata (IoT) múltbeli adatainak betöltése gyakori forgatókönyv a FarmBeats-ben. Az eszközökhöz és érzékelőkhöz metaadatokat hozhat létre, majd a korábbi adatokat kanonikus formátumban FarmBeats.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Mielőtt folytatná ezt a cikket, győződjön meg róla, hogy telepítette a FarmBeats-t, és összegyűjtötte a korábbi adatokat a IoT.
+A partnerek hozzáférését is engedélyeznie kell az alábbi lépésekben leírtak szerint.
 
 ## <a name="enable-partner-access"></a>Partneri hozzáférés engedélyezése
 
@@ -29,7 +30,7 @@ Engedélyeznie kell a partner-integrációt az Azure FarmBeats-példányához. E
 - API-végpont – ez az adatközpont URL-címe, például https://<datahub>. azurewebsites.net
 - Bérlőazonosító
 - Ügyfél-azonosító
-- Titkos ügyfélkulcs
+- Ügyfél titka
 - EventHub-kapcsolatok karakterlánca
 
 Ezek létrehozásához kövesse az alábbi lépéseket:
@@ -80,16 +81,16 @@ Ezek létrehozásához kövesse az alábbi lépéseket:
 |          Gyártó            |         2 csillag     |
 |  ProductCode                    |  Eszköz Termékkód vagy modell neve/száma. Például: EnviroMonitor # 6800.  |
 |            Portok          |     Port neve és típusa (digitális/analóg)
-|     Name (Név)                 |  Az erőforrást azonosító név. Például: modell neve/terméknév.
+|     Név                 |  Az erőforrást azonosító név. Például: modell neve/terméknév.
       Leírás     | Adjon meg egy értelmes leírást a modellről
 |    Tulajdonságok          |    További tulajdonságok a gyártótól   |
-|    **Device**             |                      |
+|    **Eszköz**             |                      |
 |   DeviceModelId     |     A társított eszköz-modell azonosítója  |
 |  HardwareId          | Az eszköz egyedi azonosítója, például MAC-címe stb.
 |  ReportingInterval        |   Jelentéskészítési időköz (másodperc)
 |  Földrajzi egység            |  Eszköz szélesség (-90 – + 90)/Longitude (-180 – 180)/Elevation (méter)   
 |ParentDeviceId       |    Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Például egy átjáróhoz csatlakozó csomópont. A csomópontok átjáróként lesznek parentDeviceId.  |
-|    Name (Név)            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
+|    Név            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
 |     Leírás       |      Adjon meg egy értelmes Leírást  |
 |     Tulajdonságok    |  További tulajdonságok a gyártótól
 |     **Érzékelő modell**        |          |
@@ -101,7 +102,7 @@ Ezek létrehozásához kövesse az alábbi lépéseket:
 |    SensorMeasures > típusa    |Az érzékelő telemetria-adattípusának mértékegysége A rendszer által definiált típusok a következők: AmbientTemperature, CO2, mélység, ElectricalConductivity, LeafWetness, Length, LiquidLevel, nitrát, O2, PH, foszfát, PointInTime, kálium, nyomás, RainGauge, RelativeHumidity, sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, szélsebesség, párolgás, PAR. További részletekért lásd a/ExtendedType API-t.|
 |        SensorMeasures > egység              | Az érzékelő telemetria-adategysége. A következő rendszer által meghatározott egységek: nincs egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, Meter, hüvelyk, láb, Mile, km, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, másodperc, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour továbbiak hozzáadásához tekintse meg a/ ExtendedType API.|
 |    SensorMeasures > aggregationType    |  Az értékek lehetnek nem, átlag, maximum, minimum vagy StandardDeviation.  |
-|          Name (Név)            | Az erőforrást azonosító név. Például: modell neve/terméknév.  |
+|          Név            | Az erőforrást azonosító név. Például: modell neve/terméknév.  |
 |    Leírás        | Adjon meg egy értelmes leírást a modellről  |
 |   Tulajdonságok       |  További tulajdonságok a gyártótól  |
 |    **Érzékelő**      |          |
@@ -110,7 +111,7 @@ Ezek létrehozásához kövesse az alábbi lépéseket:
 | location          |  Érzékelő szélesség (-90 – + 90)/Longitude (-180 – 180)/Elevation (méter)|
 |   port > neve        |  Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek az eszköz modelljében definiált névnek kell lennie. |
 |    DeviceID  |    Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik     |
-| Name (Név)            |   Az erőforrást azonosító név. Például: érzékelő neve/terméknév és modell száma/Termékkód.|
+| Név            |   Az erőforrást azonosító név. Például: érzékelő neve/terméknév és modell száma/Termékkód.|
 |    Leírás      | Adjon meg egy értelmes Leírást |
 |    Tulajdonságok        |További tulajdonságok a gyártótól |
 
@@ -125,7 +126,7 @@ API-kérelem létrehozásához egyesítse a HTTP-(POST-) metódust, az API szolg
 A FarmBeats adatközpont tulajdonosi hitelesítést használ, amelyhez a következő szakaszban létrehozott hitelesítő adatok szükségesek.
 
 - Ügyfél-azonosító
-- Titkos ügyfélkulcs
+- Ügyfél titka
 - Bérlőazonosító  
 
 A fenti hitelesítő adatok használatával a hívó kérhet egy hozzáférési jogkivonatot, amelyet a következő API-kérelmekben kell elküldeni a fejléc szakaszban a következő módon:
@@ -337,6 +338,6 @@ Példa telemetria-üzenetre:
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a REST API-alapú integráció részleteiről: [REST API](references-for-farmbeats.md#rest-api).

@@ -1,26 +1,17 @@
 ---
-title: Alkalmazások konfigurálása a portálon – Azure App Service
-description: Megtudhatja, hogyan konfigurálhat egy App Service alkalmazás általános beállításait a Azure Portal.
+title: Alkalmazások konfigurálása a portálon
+description: Megtudhatja, hogyan konfigurálhat egy App Service alkalmazás általános beállításait a Azure Portal. Alkalmazásbeállítások, kapcsolatok karakterláncai, platform, nyelvi verem, tároló stb.
 keywords: Azure app Service, webalkalmazás, Alkalmazásbeállítások, környezeti változók
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c22f88487fd8b34d48d3012c706bb0415760b21e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45de3b79263fd43a93fcea73c271ede4bc5f96fe
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470939"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671962"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service alkalmazás konfigurálása a Azure Portal
 
@@ -34,7 +25,7 @@ A [Azure Portal]navigáljon az alkalmazás felügyeleti lapjára. Az alkalmazás
 
 ![Alkalmazásbeállítások](./media/configure-common/open-ui.png)
 
-A ASP.NET és a ASP.NET Core fejlesztők számára az Alkalmazásbeállítások beállítása a App Serviceban, például a *web. config* vagy a *appSettings. json*fájlban lévő `<appSettings>`ban, de a app Service felülbírálja a *web. config* vagy a *appSettings. JSON fájlban szereplő értékeket.* . A fejlesztői beállítások (például a helyi MySQL-jelszó) a *web. config* vagy a *appSettings. JSON*fájlban maradhatnak, de az üzemi titkok (például az Azure MySQL-adatbázis jelszava) biztonságosak a app Serviceban. Ugyanez a kód a helyi hibakeresés során a fejlesztési beállításokat használja, és az Azure-ba való üzembe helyezéskor az éles titkot használja.
+A ASP.NET és a ASP.NET Core fejlesztők számára az Alkalmazásbeállítások beállítása App Serviceekben, `<appSettings>` például a *web. config* vagy a *appSettings. JSON*fájlban, de a app Service felülbírálja a *web. config* vagy a *appSettings. JSON*fájlban található értékeket. A fejlesztői beállítások (például a helyi MySQL-jelszó) a *web. config* vagy a *appSettings. JSON*fájlban maradhatnak, de az üzemi titkok (például az Azure MySQL-adatbázis jelszava) biztonságosak a app Serviceban. Ugyanez a kód a helyi hibakeresés során a fejlesztési beállításokat használja, és az Azure-ba való üzembe helyezéskor az éles titkot használja.
 
 Más nyelvi stackekhez hasonlóan az Alkalmazásbeállítások környezeti változókként is beszerezhetők futásidőben. A nyelvspecifikus speciális lépéseiért lásd:
 
@@ -89,7 +80,7 @@ Az Alkalmazásbeállítások a következő JSON-formátummal rendelkeznek:
 ]
 ```
 
-## <a name="configure-connection-strings"></a>Kapcsolati sztringek konfigurálása
+## <a name="configure-connection-strings"></a>Csatlakozási sztringek konfigurálása
 
 A [Azure Portal]navigáljon az alkalmazás felügyeleti lapjára. Az alkalmazás bal oldali menüjében kattintson a **konfiguráció** > **Alkalmazásbeállítások**elemre.
 
@@ -247,11 +238,11 @@ Linux-alkalmazások esetén lásd:
 
 Lásd: [Egyéni Linux-tároló konfigurálása Azure app Servicehoz](containers/configure-custom-container.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni tartománynév konfigurálása az Azure App Service-ben]
 - [Átmeneti környezetek beállítása az Azure App Service-ben]
-- [Egyéni DNS-név biztonságossá tétele SSL-kötéssel Azure App Service](configure-ssl-bindings.md)
+- [Egyéni DNS-név védelme SSL-kötéssel az Azure App Service-ben](configure-ssl-bindings.md)
 - [Diagnosztikai naplók engedélyezése](troubleshoot-diagnostic-logs.md)
 - [Alkalmazás méretezése Azure App Service]
 - [A Azure App Service figyelésének alapjai]

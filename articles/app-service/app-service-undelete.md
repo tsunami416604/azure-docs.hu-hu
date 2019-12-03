@@ -1,17 +1,16 @@
 ---
-title: Törölt App Service-alkalmazások visszaállítása – Azure App Service
-description: Megtudhatja, hogyan állíthatja vissza a törölt App Service alkalmazást a PowerShell használatával.
+title: Törölt alkalmazások visszaállítása
+description: Megtudhatja, hogyan állíthatja vissza egy törölt alkalmazást a Azure App Serviceban. Kerülje a véletlenül törölt alkalmazások fejfájását.
 author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.service: app-service
-ms.openlocfilehash: 6a3a62053a488f95e22cae13ef9d0714a7b5dd05
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a30ac638422f99134ebe9cc26e4b418f5de079b9
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173742"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672149"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Törölt App Service-alkalmazás visszaállítása a PowerShell használatával
 

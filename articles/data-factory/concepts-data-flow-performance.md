@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 20a08345d8335b4857ca9777efb55f953ee63e9f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9ae6ff5fb5a5bfc6ba9299e06bad9afafc1403f3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681537"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671590"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -121,7 +121,15 @@ Ha például az 2019-es számú adatfájlok listáját szeretné feldolgozni a B
 
 A helyettesítő karakterek használatával a folyamat csak egy adatfolyam-tevékenységet fog tartalmazni. Ez jobb teljesítményt nyújt, mint a blob-tárolón végzett keresés, amely az összes egyező fájlon megismétli a ForEach-t egy folyamaton belüli végrehajtási adatáramlási tevékenységgel.
 
-## <a name="next-steps"></a>További lépések
+### <a name="optimizing-for-cosmosdb"></a>Optimalizálás a CosmosDB
+
+Az átviteli sebesség és a Batch tulajdonságainak beállítása a CosmosDB-tárolók esetében csak az adott adatfolyamnak egy folyamat adatfolyam-tevékenységből való végrehajtásakor lép érvénybe. Az eredeti gyűjtemény beállításait a CosmosDB az adatfolyam-végrehajtás után fogja tiszteletben venni.
+
+* Köteg mérete: kiszámítja az adatainak durva sorszámát, és győződjön meg arról, hogy a rowSize * batch mérete kisebb, mint 2 000 000. Ha igen, növelje a köteg méretét, hogy jobb teljesítményt kapjon
+* Througput: magasabb átviteli sebesség beállításának beállítása, amely lehetővé teszi a dokumentumok gyorsabb írását a CosmosDB. Ne feledje, hogy a magasabb szintű RU-költségek nagy adatátviteli beállításokon alapulnak.
+*   Írási átviteli sebesség költségvetése: olyan értéket használjon, amely kisebb, mint a percenkénti összes RUs. Ha nagy számú Spark-partitiongs rendelkező adatfolyamattal rendelkezik, a költségvetés átviteli sebességének beállítása nagyobb egyensúlyt tesz lehetővé a partíciók között.
+
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a teljesítménnyel kapcsolatos egyéb adatfolyam-cikkeket:
 

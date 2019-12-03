@@ -1,27 +1,20 @@
 ---
-title: Földrajzilag elosztott méretezés App Service környezetekkel – Azure
+title: Földrajzilag elosztott skála
 description: Megtudhatja, hogyan méretezheti horizontálisan az alkalmazásokat Traffic Manager és App Service környezetekkel való geo-terjesztéssel.
-services: app-service
-documentationcenter: ''
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: eaefebc569f5bf5461ff7c4407fa77a0c62d4fe8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7ab04e23b838f2dfd39b73476db7492947d62e6e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070219"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688817"
 ---
-# <a name="geo-distributed-scale-with-app-service-environments"></a>Földrajzi alapú méretezés App Service-környezetekkel
+# <a name="geo-distributed-scale-with-app-service-environments"></a>Földrajzilag elosztott méretezés App Service Environment-környezetekkel
 ## <a name="overview"></a>Áttekintés
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -45,10 +38,10 @@ A témakör további részében ismertetjük a több App Service környezet hasz
 ## <a name="planning-the-topology"></a>A topológia megtervezése
 Mielőtt kiépít egy elosztott alkalmazás-lábnyomot, a rendszer segít néhány adat megkezdése előtt.
 
-* **Egyéni tartomány az alkalmazáshoz:**  Mi az az Egyéni tartománynév, amelyet az ügyfelek használni fognak az alkalmazás eléréséhez?  A minta alkalmazás esetében az Egyéni tartománynév a következő:`www.scalableasedemo.com`
+* **Egyéni tartomány az alkalmazáshoz:**  Mi az az Egyéni tartománynév, amelyet az ügyfelek használni fognak az alkalmazás eléréséhez?  A minta alkalmazás esetében az Egyéni tartománynév `www.scalableasedemo.com`
 * **Traffic Manager tartomány:**  [Azure Traffic Manager-profil][AzureTrafficManagerProfile]létrehozásakor ki kell választani a tartománynevet.  Ezt a nevet a rendszer a *trafficmanager.net* utótaggal kombinálva regisztrálja Traffic Manager által felügyelt tartományi bejegyzést.  A minta alkalmazás esetében a választott név a *skálázható – a bemutató*.  Ennek eredményeképpen a Traffic Manager által felügyelt teljes tartománynév *Scalable-ASE-demo.trafficmanager.net*.
 * **Az alkalmazás helyigényének méretezésére szolgáló stratégia:**  Az alkalmazási lábnyom több App Service környezetbe kerül elosztásra egyetlen régióban?  Több régió?  Mindkét megközelítés kombinációja és megfeleltetése?  A döntésnek azon elvárások alapján kell megjelennie, amelyekkel az ügyfelek forgalmát, valamint azt, hogy az alkalmazás milyen mértékben képes a háttér-infrastruktúra támogatására.  Például egy 100%-os állapot nélküli alkalmazás esetében az alkalmazások nagy mértékben méretezhetők az Azure-régiók több App Service környezetének kombinációjával, és a több Azure-régióban üzembe helyezett App Service környezetek szorzatával.  A 15 és a nyilvános Azure-régiók közül választhatnak, így az ügyfelek valóban globális platformot építhetnek ki az alkalmazások számára.  A cikkben használt minta alkalmazáshoz három App Service környezet lett létrehozva egyetlen Azure-régióban (USA déli középső régiója).
-* **A App Service környezetek elnevezési konvenciója:**  Minden App Service Environment egyedi nevet igényel.  Egy vagy két App Service környezeten túl hasznos elnevezési konvenció az egyes App Service Environmentok azonosításához.  A minta alkalmazáshoz egyszerű elnevezési konvenció volt használatban.  A három App Service környezet neve *fe1ase*, *fe2ase*és *fe3ase*.
+* **A app Service környezetek elnevezési konvenciója:**  Minden App Service Environment egyedi nevet igényel.  Egy vagy két App Service környezeten túl hasznos elnevezési konvenció az egyes App Service Environmentok azonosításához.  A minta alkalmazáshoz egyszerű elnevezési konvenció volt használatban.  A három App Service környezet neve *fe1ase*, *fe2ase*és *fe3ase*.
 * **Az alkalmazások elnevezési konvenciója:**  Mivel az alkalmazás több példánya is telepítve lesz, a központilag telepített alkalmazás minden példányához nevet kell megadni.  App Service környezetek egyik kevéssé ismert funkciója, hogy ugyanazt az alkalmazást több App Service környezetben is használhatja.  Mivel minden App Service Environment egyedi tartományi utótaggal rendelkezik, a fejlesztők úgy dönthetnek, hogy az egyes környezetekben ugyanazt az alkalmazást használják újra.  Előfordulhat például, hogy egy fejlesztőnek a következőképpen kell megneveznie az alkalmazásokat: *MyApp.Foo1.p.azurewebsites.net*, *MyApp.Foo2.p.azurewebsites.net*, *MyApp.Foo3.p.azurewebsites.net*stb.  A minta alkalmazás esetében, bár minden alkalmazás példánya egyedi névvel is rendelkezik.  Az *webfrontend1*, a *webfrontend2*és a *webfrontend3*használt alkalmazás-példányok nevei.
 
 ## <a name="setting-up-the-traffic-manager-profile"></a>A Traffic Manager profil beállítása
@@ -64,7 +57,7 @@ Első lépésként létre kell hoznia egy Azure Traffic Manager-profilt.  Az al�
 
     $profile = New-AzureTrafficManagerProfile –Name scalableasedemo -ResourceGroupName yourRGNameHere -TrafficRoutingMethod Weighted -RelativeDnsName scalable-ase-demo -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
 
-Figyelje meg, hogyan lett beállítva a *RelativeDnsName* paraméter *skálázható-* beadási-bemutatóra.  Így jön létre a *Scalable-ASE-demo.trafficmanager.net* tartománynév, és társítva van egy Traffic Manager profilhoz.
+Figyelje meg, hogyan lett beállítva a *RelativeDnsName* paraméter skálázható-beadási *-bemutatóra*.  Így jön létre a *Scalable-ASE-demo.trafficmanager.net* tartománynév, és társítva van egy Traffic Manager profilhoz.
 
 A *TrafficRoutingMethod* paraméter határozza meg a terheléselosztási házirendet, Traffic Manager a segítségével határozza meg, hogy a rendszer hogyan terjessze az ügyfelek terhelését az összes rendelkezésre álló végponton.  Ebben a példában a *súlyozott* metódus lett kiválasztva.  Ez azt eredményezi, hogy az ügyfelek kérései a regisztrált alkalmazási végpontok között oszlanak meg az egyes végpontokhoz társított relatív súlyok alapján. 
 
@@ -83,10 +76,10 @@ A létrehozott profillal a rendszer minden egyes alkalmazás-példányt natív A
 
 Figyelje meg, hogy az egyes alkalmazás-példányok esetében van *-e AzureTrafficManagerEndpointConfig-* hívás.  Az egyes PowerShell-parancsok *targetresourceid azonosítója* paramétere a három telepített alkalmazás egyik példányára hivatkozik.  A Traffic Manager profil a profilban regisztrált mindhárom végpont terhelését fogja osztani.
 
-Mindhárom végpont ugyanazt az értéket (10) használja a súlyozási paraméterhez.  Ez azt eredményezi, hogy Traffic Manager az ügyfelek kérelmeit az összes három alkalmazás-példány között viszonylag egyenletesen terjeszti. 
+Mindhárom végpont ugyanazt az értéket (10) használja a *súlyozási* paraméterhez.  Ez azt eredményezi, hogy Traffic Manager az ügyfelek kérelmeit az összes három alkalmazás-példány között viszonylag egyenletesen terjeszti. 
 
 ## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Az alkalmazás egyéni tartományának mutatása a Traffic Manager tartományban
-Az utolsó lépés ahhoz szükséges, hogy az alkalmazás egyéni tartományát a Traffic Manager tartományban mutasson.  A minta alkalmazás esetében ez azt jelenti `www.scalableasedemo.com` , `scalable-ase-demo.trafficmanager.net`hogy a következő mutat:.  Ezt a lépést az egyéni tartományt felügyelő tartományregisztráló használatával kell végrehajtani.  
+Az utolsó lépés ahhoz szükséges, hogy az alkalmazás egyéni tartományát a Traffic Manager tartományban mutasson.  A minta alkalmazás esetében ez azt jelenti, hogy a `scalable-ase-demo.trafficmanager.net``www.scalableasedemo.com` mutat.  Ezt a lépést az egyéni tartományt felügyelő tartományregisztráló használatával kell végrehajtani.  
 
 A regisztrátor tartományi felügyeleti eszközeinek használatával létre kell hoznia egy CNAME rekordot, amely az Traffic Manager tartományban lévő egyéni tartományt mutat.  Az alábbi képen látható egy példa arra, hogy a CNAME konfiguráció hogyan néz ki:
 
@@ -94,16 +87,16 @@ A regisztrátor tartományi felügyeleti eszközeinek használatával létre kel
 
 Bár ez a témakör nem foglalkozik, ne feledje, hogy minden egyes alkalmazás-példánynak rendelkeznie kell az egyéni tartománnyal is.  Ellenkező esetben, ha egy kérelem egy alkalmazás-példányra vonatkozik, és az alkalmazás nem rendelkezik az alkalmazásban regisztrált egyéni tartománnyal, a kérelem sikertelen lesz.  
 
-Ebben a példában az egyéni tartomány `www.scalableasedemo.com`a, és minden alkalmazás-példányhoz hozzá van rendelve egy egyéni tartomány.
+Ebben a példában az egyéni tartomány `www.scalableasedemo.com`, és minden alkalmazás-példányhoz hozzá van rendelve egy egyéni tartomány.
 
 ![Egyéni tartomány][CustomDomain] 
 
 Az egyéni tartományok Azure App Service alkalmazásokkal való regisztrálásának bekapcsolásához tekintse meg a következő cikket az [Egyéni tartományok regisztrálásáról][RegisterCustomDomain].
 
 ## <a name="trying-out-the-distributed-topology"></a>Az elosztott topológia kipróbálása
-A Traffic Manager és a DNS konfigurációjának végeredménye az, hogy a `www.scalableasedemo.com` kérelmek a következő sorozatot követik majd át:
+A Traffic Manager és a DNS-konfiguráció végeredménye az, hogy a `www.scalableasedemo.com`-kérelmek a következő műveletsorral fognak folyni:
 
-1. Egy böngésző vagy eszköz DNS-keresést végez a következőhöz:`www.scalableasedemo.com`
+1. Egy böngésző vagy eszköz DNS-keresést végez a `www.scalableasedemo.com`
 2. A tartományregisztrálónál lévő CNAME bejegyzés a DNS-címkeresés átirányítását okozza az Azure Traffic Manager.
 3. A rendszer DNS-keresést végez az Azure Traffic Manager DNS-kiszolgálók egyikének *Scalable-ASE-demo.trafficmanager.net* .
 4. A terheléselosztási házirend (a Traffic Manager profil létrehozásakor korábban használt *TrafficRoutingMethod* paraméter) alapján Traffic Manager kiválasztja az egyik konfigurált végpontot, és a VÉGPONT teljes tartománynevét visszaadja a böngészőnek vagy az eszköznek.

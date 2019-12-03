@@ -1,25 +1,17 @@
 ---
-title: Azure PowerShell parancsfájl-minta – alkalmazás létrehozása és kód üzembe helyezése átmeneti tárolóhelyre | Microsoft Docs
-description: Azure PowerShell példaszkript – Webalkalmazás létrehozása és kód üzembe helyezése átmeneti környezetben
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 'PowerShell: kód üzembe helyezése átmeneti tárolóhelyre'
+description: Megtudhatja, hogyan használhatja a Azure PowerShell a App Service üzembe helyezésének és kezelésének automatizálására. Ez a minta bemutatja, hogyan helyezhet üzembe programkódot átmeneti környezetben.
 tags: azure-service-management
 ms.assetid: 27cf0680-c3a9-4a58-9f71-6dec09f6b874
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7d65a5977ff8db8d31fe7a46d4f99569a8c2270a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7e8ebe28fa7989997b5d3adfd14c582438a00b1b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087599"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684773"
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Webalkalmazás létrehozása és kód üzembe helyezése átmeneti környezetben
 
@@ -48,14 +40,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
-| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Webalkalmazást hoz létre. |
+| [Új – AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
+| [Új – AzWebApp](/powershell/module/az.websites/new-azwebapp) | Webalkalmazást hoz létre. |
 | [Set-AzAppServicePlan](/powershell/module/az.websites/set-azappserviceplan) | Egy App Service-csomag tarifacsomagját módosítja. |
-| [New-AzWebAppSlot](/powershell/module/az.websites/new-azwebappslot) | Üzembehelyezési pontot hoz létre egy webalkalmazáshoz. |
+| [Új – AzWebAppSlot](/powershell/module/az.websites/new-azwebappslot) | Üzembehelyezési pontot hoz létre egy webalkalmazáshoz. |
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | Módosít egy erőforrást egy erőforráscsoportban. |
-| [Switch-AzWebAppSlot](/powershell/module/az.websites/switch-azwebappslot) | Egy webalkalmazás üzembehelyezési pontját éles környezetbe helyezi át. |
+| [Kapcsoló – AzWebAppSlot](/powershell/module/az.websites/switch-azwebappslot) | Egy webalkalmazás üzembehelyezési pontját éles környezetbe helyezi át. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 

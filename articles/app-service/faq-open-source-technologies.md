@@ -1,26 +1,20 @@
 ---
-title: Nyílt forráskódú technológiák – GYIK – Azure App Service | Microsoft Docs
-description: A Azure App Service Web Apps funkciójában választ kaphat a nyílt forráskódú technológiákkal kapcsolatos gyakori kérdésekre.
-services: app-service\web
-documentationcenter: ''
+title: Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések
+description: Választ kaphat a Azure App Service nyílt forráskódú technológiákkal kapcsolatos gyakori kérdésekre.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: b92fe0a8073437d2cf0e908b4e734a0c01c342eb
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169682"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672430"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések az Azure-beli Web Apps
 
@@ -33,7 +27,7 @@ Ez a cikk a [Azure App Service Web Apps funkciójának](https://azure.microsoft.
 A PHP-naplózás bekapcsolása:
 
 1. Jelentkezzen be a [kudu webhelyére](https://*yourwebsitename*.scm.azurewebsites.net).
-2. A felső menüben válassza a **Debug Console** > **cmd**elemet.
+2. A felső menüben válassza a **Debug Console** > **cmd parancsot**.
 3. Válassza ki a **hely** mappáját.
 4. Válassza ki a **wwwroot** mappát.
 5. Válassza ki a **+** ikont, majd válassza az **új fájl**elemet.
@@ -61,7 +55,7 @@ A Node. js-alkalmazás verziójának módosításához a következő lehetőség
 * Az Azure Portalban használja az **Alkalmazásbeállítások alkalmazást**.
   1. A Azure Portal nyissa meg a webalkalmazást.
   2. A **Beállítások** panelen válassza az **Alkalmazásbeállítások**lehetőséget.
-  3. Az **Alkalmazásbeállítások**között megadhatja a WEBSITE_NODE_DEFAULT_VERSION kulcsot, valamint az értékként használni kívánt Node. js-verziót.
+  3. Az **Alkalmazásbeállítások**között megadhatja a kulcsként WEBSITE_NODE_DEFAULT_VERSION, valamint az értékként használni kívánt Node. js-verziót.
   4. Nyissa meg a [kudu-konzolt](https://*yourwebsitename*.scm.azurewebsites.net).
   5. A Node. js verziójának megadásához írja be a következő parancsot:  
      ```
@@ -78,7 +72,7 @@ A Node. js-alkalmazás verziójának módosításához a következő lehetőség
   Az Azure-verziókövetés telepítési folyamata a következő lépésekkel jár:
   1. Tartalmat helyez át az Azure-webalkalmazásba.
   2. Létrehoz egy alapértelmezett telepítési parancsfájlt, ha nincs egyetlen (Deploy. cmd,. Deployment Files) a webalkalmazás gyökérkönyvtárában.
-  3. Futtat egy telepítési parancsfájlt, amelyben létrehoz egy iisnode. YML fájlt, ha megemlíti a Node. js-verziót a Package. JSON fájlban > Engine `"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Futtat egy központi telepítési parancsfájlt, amelyben létrehoz egy iisnode. YML fájlt, ha megemlíti a Node. js-verziót a Package. JSON fájlban > Engine `"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. A iisnode. YML fájl a következő kódrészlettel rendelkezik:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -86,7 +80,7 @@ A Node. js-alkalmazás verziójának módosításához a következő lehetőség
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>"Hiba történt az adatbázis-kapcsolatok létrehozásakor" üzenet jelenik meg a saját WordPress-alkalmazásban, amely a App Serviceban található. Hogyan a hibával kapcsolatban?
 
-Ha ezt a hibát látja az Azure WordPress-alkalmazásban, a php_errors. log és a Debug. log naplófájl engedélyezéséhez hajtsa végre a [WordPress-naplók engedélyezése](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/)című témakör részletes lépéseit.
+Ha ezt a hibaüzenetet látja az Azure WordPress-alkalmazásban, a php_errors. log és a Debug. log naplófájl engedélyezéséhez végezze el a [WordPress-hibák naplózásának engedélyezése](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/)című témakör lépéseit.
 
 Ha a naplók engedélyezve vannak, reprodukálja a hibát, majd ellenőrizze a naplókat, hogy kifogyott-e a kapcsolatok:
 ```
@@ -144,7 +138,7 @@ A hiba elhárítása:
 
 1. Távolítsa el az sqljdbc*. jar fájlt az alkalmazás/lib mappából.
 2. Ha az egyéni tomcat vagy az Azure Marketplace tomcat webkiszolgálót használja, másolja ezt a. jar-fájlt a Tomcat lib mappájába.
-3. Ha engedélyezi a javát a Azure Portalból (válassza a **java 1,8** > **Tomcat-kiszolgáló**lehetőséget), másolja a sqljdbc. * jar fájlt az alkalmazással párhuzamos mappába. Ezután adja hozzá a következő osztályútvonal-beállítást a web. config fájlhoz:
+3. Ha engedélyezi a Java-t a Azure Portalból (válassza ki a **java 1,8** > **tomcat-kiszolgálót**), másolja a sqljdbc. * jar fájlt az alkalmazásával párhuzamos mappába. Ezután adja hozzá a következő osztályútvonal-beállítást a web. config fájlhoz:
 
     ```xml
     <httpPlatform>

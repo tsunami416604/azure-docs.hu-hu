@@ -1,19 +1,18 @@
 ---
-title: Docker-alkalmazás üzembe helyezése Linux rendszeren – Azure App Service
-description: Docker-rendszerkép üzembe helyezése az Azure-App Services Linuxra
-author: msangapu
+title: 'Gyors útmutató: egyéni Linux-tároló futtatása'
+description: Ismerkedjen meg a Linux-tárolókkal Azure App Service az első egyéni tároló üzembe helyezésével az Azure Container-jegyzékek használatával.
+author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
-ms.service: app-service
-ms.openlocfilehash: 2a7dc477b4cd0be0c50569d84e10cfe1d666eac9
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 14ea5444d3d8827919405a4d5aa8a176746c2e72
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392113"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688963"
 ---
-# <a name="deploy-to-azure-using-docker"></a>Üzembe helyezés az Azure-ban a Docker használatával
+# <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>Egyéni Linux-tároló üzembe helyezése Azure App Service
 
 A Linuxon futó App Service a Linuxon előre definiált alkalmazásokat biztosít, amelyek támogatják a .NET, a PHP, a Node. js és más nyelveket. Használhat egyéni Docker rendszerképet is, hogy a webalkalmazást egy, az Azure-ban nem meghatározott alkalmazáscsoportban futtassa. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy rendszerképet egy [Azure Container Registryból](/azure/container-registry) (ACR) a app Serviceba.
 
@@ -27,7 +26,7 @@ A Linuxon futó App Service a Linuxon előre definiált alkalmazásokat biztosí
 
 ## <a name="create-an-image"></a>Rendszerkép létrehozása
 
-A rövid útmutató elvégzéséhez szüksége lesz egy [Azure Container Registryban](/azure/container-registry)tárolt megfelelő webalkalmazás-rendszerképre. Kövesse a gyors útmutatóban található [utasításokat: Hozzon létre egy privát tároló-beállításjegyzéket a Azure Portal](/azure/container-registry/container-registry-get-started-portal)használatával, de a `hello-world` rendszerkép helyett használja a `mcr.microsoft.com/azuredocs/go` rendszerképet.
+A rövid útmutató elvégzéséhez szüksége lesz egy [Azure Container Registryban](/azure/container-registry)tárolt megfelelő webalkalmazás-rendszerképre. Kövesse a rövid útmutató [: Private Container Registry létrehozása a Azure Portal segítségével](/azure/container-registry/container-registry-get-started-portal), de az `hello-world` rendszerkép helyett használja a `mcr.microsoft.com/azuredocs/go` rendszerképet.
 
 > [!IMPORTANT]
 > Ügyeljen arra, hogy a **rendszergazda felhasználó** beállítással **engedélyezze** a tároló-beállításjegyzék létrehozását. Azt is megteheti, hogy a beállításjegyzék oldalának **hozzáférési kulcsok** szakasza is be van állítva a Azure Portal. Ez a beállítás App Service hozzáféréshez szükséges.
@@ -62,7 +61,7 @@ Keresse meg a rendszerképet **a** **Docker** Explorer beállításjegyzékek cs
 
 Itt az alábbi utasításokat követve választhatja ki az előfizetést, egy globálisan egyedi alkalmazás nevét, egy erőforráscsoportot és egy App Service tervet. Válassza a **B1 alapszintű** lehetőséget a díjszabási szinthez és a régióhoz.
 
-Az üzembe helyezés után az alkalmazás a következő `http://<app name>.azurewebsites.net`címen érhető el:.
+Az üzembe helyezés után az alkalmazás a következő címen érhető el: `http://<app name>.azurewebsites.net`.
 
 Az **erőforráscsoport** az alkalmazás összes erőforrásának elnevezett gyűjteménye az Azure-ban. Egy erőforráscsoport például tartalmazhat egy webhelyre, egy adatbázisra és egy Azure-függvényre mutató hivatkozást is.
 
@@ -75,7 +74,7 @@ A rendszer az üzembe helyezés során megnyílik a **kimeneti** panel, hogy jel
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
 

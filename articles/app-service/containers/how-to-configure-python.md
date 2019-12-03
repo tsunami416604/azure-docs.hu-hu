@@ -1,34 +1,24 @@
 ---
-title: Python-alkalmazások konfigurálása – Azure App Service
-description: Ez az oktatóanyag a Python-alkalmazások szerzői műveleteit és konfigurálási lehetőségeit ismerteti az Azure App Service-hez Linux rendszeren.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Linux Python-alkalmazások konfigurálása
+description: Megtudhatja, hogyan konfigurálhat egy előre elkészített Python-tárolót az alkalmazásához. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: cephalin
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 8563e0ac060e5cce6853472dfb1c51c6c2c36a4d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b8de6df5761baef79310062614f578a92f17b826
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071090"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670484"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
 Ez a cikk leírja, hogyan futtatja [Azure app Service](app-service-linux-intro.md) a Python-alkalmazásokat, és hogyan szabhatja testre a app Service viselkedését, ha szükséges. A Python-alkalmazásokat az összes szükséges [pip](https://pypi.org/project/pip/) -modullal telepíteni kell.
 
-A app Service üzembe helyezési motor automatikusan aktiválja a virtuális környezetet, `pip install -r requirements.txt` és a [git-tárház](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)üzembe helyezésekor, vagy a létrehozási folyamatokkal rendelkező [zip](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) -csomagon fut.
+A App Service üzembe helyezési motor automatikusan aktiválja a virtuális környezetet, és futtatja `pip install -r requirements.txt` a git- [tárház](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)telepítésekor, vagy egy olyan [ZIP-csomagot](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) , amelyen a Build-folyamatok be lettek kapcsolva.
 
-Ez az útmutató ismerteti a Python-fejlesztők számára a App Service beépített Linux-tárolóját használó főbb fogalmakat és útmutatást. Ha még soha nem használta a Azure App Servicet, először kövesse a [Python](quickstart-python.md) rövid útmutatóját és a Pythont a [PostgreSQL oktatóanyaggal](tutorial-python-postgresql-app.md) .
+Ez az útmutató ismerteti a Python-fejlesztők számára a App Service beépített Linux-tárolóját használó főbb fogalmakat és útmutatást. Ha még soha nem használta a Azure App Servicet, először kövesse a [Python](quickstart-python.md) rövid [útmutatóját és a Pythont a PostgreSQL oktatóanyaggal](tutorial-python-postgresql-app.md) .
 
 > [!NOTE]
 > A Linux jelenleg az ajánlott lehetőség a Python-alkalmazások App Service-ben való futtatására. További információ a Windows lehetőségről: [Python a app Service Windows-íz](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service).
@@ -119,7 +109,7 @@ A tároló indítási viselkedését egy egyéni Gunicorn indítási parancs meg
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-Ha például van egy olyan lombik-alkalmazás, amelynek a fő modulja a *Hello.py* , és az abban a fájlban található lombik `myapp`alkalmazás-objektum neve, akkor  *\<a Custom-Command >* a következő:
+Ha például van egy olyan lombik-alkalmazás, amelynek a fő modulja a *Hello.py* , és az abban a fájlban található lombik alkalmazás-objektum neve `myapp`, akkor *\<custom-Command >* a következő:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -131,9 +121,9 @@ Ha a főmodul egy almappában található (például `website`), a mappát a `--
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-További argumentumokat is hozzáadhat a Gunicorn az  *\<egyéni parancsok >hoz*, például `--workers=4`:. További információkért lásd: [A Gunicorn futtatása](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
+A Gunicorn további argumentumait is hozzáadhatja *\<egyéni parancs >* , például `--workers=4`. További információkért lásd: [A Gunicorn futtatása](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-Ha nem Gunicorn-kiszolgálót (például [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)) szeretne használni, az alábbihoz hasonló módon lecserélheti  *\<az egyéni parancsok >* :
+Ha nem Gunicorn-kiszolgálót (például [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)) szeretne használni, az alábbihoz hasonló módon lecserélheti *\<custom-Command >* :
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -144,7 +134,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>Hozzáférési környezeti változók
 
-App Service az [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően a szabványos [operációs rendszer. Enviro](https://docs.python.org/3/library/os.html#os.environ) minta használatával férhet hozzájuk. Ha például egy nevű `WEBSITE_SITE_NAME`alkalmazáshoz szeretne hozzáférni, használja a következő kódot:
+App Service az [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően a szabványos [operációs rendszer. Enviro](https://docs.python.org/3/library/os.html#os.environ) minta használatával férhet hozzájuk. Ha például egy `WEBSITE_SITE_NAME`nevű alkalmazás-beállítást szeretne elérni, használja a következő kódot:
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -152,14 +142,14 @@ os.environ['WEBSITE_SITE_NAME']
 
 ## <a name="detect-https-session"></a>HTTPS-munkamenet észlelése
 
-App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e `X-Forwarded-Proto` , vagy sem, vizsgálja meg a fejlécet.
+App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, vizsgálja meg a `X-Forwarded-Proto` fejlécét.
 
 ```python
 if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto'] == 'https':
 # Do something when HTTPS is used
 ```
 
-A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabványos alkalmazási mintában lévő információk elérését. A [CodeIgniter](https://codeigniter.com/)-ben a [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) alapértelmezés `X_FORWARDED_PROTO` szerint ellenőrzi a értéket.
+A népszerű webes keretrendszerek lehetővé teszik a szabványos alkalmazási mintában lévő `X-Forwarded-*` információk elérését. A [CodeIgniter](https://codeigniter.com/)-ben a [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) alapértelmezés szerint ellenőrzi `X_FORWARDED_PROTO` értékét.
 
 ## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
 
@@ -169,7 +159,7 @@ A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabvány
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 - **Saját alkalmazáskódjának telepítése után megjelenik az alapértelmezett alkalmazás.** Az alapértelmezett alkalmazás jelenik meg, mert vagy nem telepítette az alkalmazás kódját App Servicere, vagy App Service nem találta meg az alkalmazás kódját, és nem futtatta az alapértelmezett alkalmazást.
 - Indítsa újra az App Service-t, várjon 15-20 másodpercet, és ellenőrizze újra az alkalmazást.
@@ -181,13 +171,13 @@ A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabvány
 - Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#customize-startup-command).
 - [A log stream elérése](#access-diagnostic-logs).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Python-alkalmazás a PostgreSQL-sel](tutorial-python-postgresql-app.md)
+> [Oktatóanyag: Python-alkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Üzembe helyezés Private Container adattárból](tutorial-custom-docker-image.md)
+> [Oktatóanyag: üzembe helyezés Private Container adattárból](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
 > [App Service Linux – gyakori kérdések](app-service-linux-faq.md)

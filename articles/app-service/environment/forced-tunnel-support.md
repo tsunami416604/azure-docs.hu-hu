@@ -1,24 +1,18 @@
 ---
-title: App Service Environment konfigurálása kényszerített bújtatáshoz – Azure
-description: Az App Service-környezet működtetése kimenő forgalom kényszerített bújtatása közben
-services: app-service
-documentationcenter: na
+title: Kényszerített bújtatás konfigurálása
+description: Megtudhatja, hogyan engedélyezheti a App Service Environment működését, ha a kimenő forgalom kényszerített bújtatást végez a virtuális hálózaton.
 author: ccompy
-manager: stefsch
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e80c0e4e57f8af067c17d0dcfefd26ce7ce8255f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e0164ac3903c63632c97c4a089066cf6ad23b31b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069452"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687176"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Az App Service-környezet konfigurálása kényszerített bújtatással
 
@@ -101,13 +95,13 @@ Ha az Azure Storage felé irányuló forgalmon kívül bújtatni szeretné az AS
 
 3. Szerezze be az App Service-környezetből az internetre irányuló összes kimenő forgalomhoz használt címeket. Ha a helyszínen irányítja át a forgalmat, ezek a címek a NAT-ok és az átjárók IP-címei. Ha az App Service-környezet kimenő forgalmát egy hálózati virtuális berendezésen keresztül szeretné vezetni, a kimenő forgalom címe a hálózati virtuális berendezés nyilvános IP-címe lesz.
 
-4. _A kimenő címek címeinek beállítása meglévő App Service Environmentban:_ Nyissa meg a Resources.Azure.com-t, és\<lépjen az előfizetés/\<előfizetés-azonosító >/resourceGroups/\<-> a/Providers/Microsoft.Web/hostingEnvironments/-csoport neve >. Itt láthatja az App Service-környezetet leíró JSON-t. Győződjön meg arról, hogy a lap tetején ott az **olvasás/írás** felirat. Válassza a **Szerkesztés** elemet. Görgessen le a lap aljáig. Módosítsa a **userWhitelistedIpRanges** beállítást **null** értékről az alábbihoz hasonlóra. Használja azokat a címeket, amelyeket a kimenő forgalom címtartományának kíván beállítani. 
+4. _Kimenő forgalom címeinek beállítása egy meglévő App Service-környezetben:_ Látogasson el a resources.azure.com webhelyre, és váltson a következő elérési útra: Subscription/\<előfizetési azonosító>/resourceGroups/\<ase-erőforráscsoport>/providers/Microsoft.Web/hostingEnvironments/\<ase-név>. Itt láthatja az App Service-környezetet leíró JSON-t. Győződjön meg arról, hogy a lap tetején ott az **olvasás/írás** felirat. Válassza a **Szerkesztés** elemet. Görgessen le a lap aljáig. Módosítsa a **userWhitelistedIpRanges** beállítást **null** értékről az alábbihoz hasonlóra. Használja azokat a címeket, amelyeket a kimenő forgalom címtartományának kíván beállítani. 
 
         "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 
    A lap tetején kattintson a **PUT** elemre. Ez a lehetőség aktivál egy méretezési műveletet az App Service-környezetben, és beállítja a tűzfalat.
 
-A bevezetők _címeinek létrehozása_: Kövesse az [app Service Environment sablonhoz való létrehozásához][template] és a megfelelő sablon lekéréséhez szükséges utasításokat.  Szerkessze az azuredeploy.json fájl „resources” (erőforrások) szakaszát, de a „properties” (tulajdonságok) blokkot ne, és a **userWhitelistedIpRanges** értékhez adjon hozzá egy sort a saját értékeivel.
+A bevezetők _címeinek létrehozásához_kövesse az [app Service Environment sablonban való létrehozása][template] és a megfelelő sablon lekérése című témakör útmutatását.  Szerkessze az azuredeploy.json fájl „resources” (erőforrások) szakaszát, de a „properties” (tulajdonságok) blokkot ne, és a **userWhitelistedIpRanges** értékhez adjon hozzá egy sort a saját értékeivel.
 
     "resources": [
       {

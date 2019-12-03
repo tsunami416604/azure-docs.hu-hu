@@ -1,77 +1,68 @@
 ---
-title: Node.js-alkalmazások – az Azure App Service konfigurálása |} A Microsoft Docs
-description: Ismerje meg, hogyan működik az Azure App Service Node.js-alkalmazások konfigurálása
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jpconnock
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+title: Node. js-alkalmazások konfigurálása
+description: Megtudhatja, hogyan konfigurálhat egy előre elkészített Node. js-tárolót az alkalmazáshoz. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
+ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: cephalin
-ms.openlocfilehash: 9422d543ad83f29d60fd7e1de51a79c3416e5b14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cf60472307a378d2fd4258a9777152344a11ded
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956177"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670271"
 ---
-# <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Az Azure App Service Linux Node.js-alkalmazás konfigurálása
+# <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Linux Node. js-alkalmazás konfigurálása Azure App Servicehoz
 
-NODE.js-alkalmazásokat kell telepíteni a szükséges NPM függőségeit. Az App Service üzembe helyezési motorban (Kudu) automatikusan futtatja `npm install --production` , ha telepít egy [Git-tárház](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json), vagy egy [Zip-csomagját](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) az összeállítási folyamatairól be van kapcsolva. Ha a fájlok használatával telepít [FTP/S](../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json), azonban töltse fel a szükséges csomagokat manuálisan kell.
+A Node. js-alkalmazásokat az összes szükséges NPM-függőséggel telepíteni kell. A App Service Deployment Engine (kudu) automatikusan futtatja az `npm install --production`, amikor git- [tárházat](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)telepít, vagy egy olyan [ZIP-csomagot](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) , amelyen a Build-folyamatok be lettek kapcsolva. Ha az [FTP/S](../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)használatával helyezi üzembe a fájlokat, akkor manuálisan kell feltöltenie a szükséges csomagokat.
 
-Ez az útmutató a főbb fogalmakat és az App Service-ben egy beépített Linux-tárolót használó Node.js-fejlesztőknek utasításokat tartalmaz. Ha korábban nem használta az Azure App Service, kövesse a [Node.js rövid](quickstart-nodejs.md) és [Node.js és MongoDB-oktatóanyag](tutorial-nodejs-mongodb-app.md) első.
+Ez az útmutató ismerteti a Node. js-fejlesztők számára a App Service beépített Linux-tárolóját használó főbb fogalmakat és útmutatásokat. Ha még soha nem használta a Azure App Servicet, kövesse a [Node. js](quickstart-nodejs.md) rövid útmutatót és a [Node. js-t a MongoDB-oktatóanyag](tutorial-nodejs-mongodb-app.md) első lépésével.
 
-## <a name="show-nodejs-version"></a>Node.js-verzió megjelenítése
+## <a name="show-nodejs-version"></a>Node. js-verzió megjelenítése
 
-Az aktuális Node.js verzió megjelenítéséhez futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com):
+Az aktuális Node. js-verzió megjelenítéséhez futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-Összes támogatott Node.js verzió megjelenítéséhez futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com):
+Az összes támogatott Node. js-verzió megjelenítéséhez futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep NODE
 ```
 
-## <a name="set-nodejs-version"></a>Node.js-verzió beállítása
+## <a name="set-nodejs-version"></a>Node. js-verzió beállítása
 
-Állítsa az alkalmazás egy [Node.js-verzió támogatott](#show-nodejs-version), futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com):
+Ha az alkalmazást egy [támogatott Node. js-verzióra](#show-nodejs-version)szeretné beállítani, futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "NODE|10.14"
 ```
 
-Ezzel a beállítással a Node.js-verzió használatához futásidőben, és a Kudu automatizált csomag-visszaállítás során is.
+Ezzel a beállítással adható meg a Node. js-verzió, amelyet a rendszer futásidőben és az automatikus csomag visszaállításakor a kudu-ben használ.
 
 > [!NOTE]
-> A projekt kell beállítania a Node.js-verzió `package.json`. Egy külön tárolót, amely tartalmazza az összes támogatott Node.js-verzió fut az üzembe helyezési motorban.
+> Állítsa be a Node. js-verziót a projekt `package.json`. Az üzembe helyezési motor egy külön tárolóban fut, amely tartalmazza az összes támogatott Node. js-verziót.
 
-## <a name="configure-nodejs-server"></a>Node.js-kiszolgáló konfigurálása
+## <a name="configure-nodejs-server"></a>Node. js-kiszolgáló konfigurálása
 
-A Node.js-tárolók kapható [PM2](https://pm2.keymetrics.io/), egy üzem folyamatkezelő. Az alkalmazás elindításához a PM2, vagy az npm-mel, vagy egy egyéni paranccsal konfigurálhatja.
+A Node. js-tárolók a [PM2](https://pm2.keymetrics.io/), a Production Process Manager szolgáltatással jönnek. Beállíthatja, hogy az alkalmazás a PM2 vagy a NPM, vagy egy egyéni paranccsal induljon el.
 
 - [Egyéni parancs futtatása](#run-custom-command)
-- [Futtatásához npm start](#run-npm-start)
-- [Futtassa a PM2](#run-with-pm2)
+- [NPM-indítás futtatása](#run-npm-start)
+- [Futtatás a PM2](#run-with-pm2)
 
 ### <a name="run-custom-command"></a>Egyéni parancs futtatása
 
-App Service-ben, mint például egy végrehajtható fájl, például elindíthatja az alkalmazás egy egyéni paranccsal *run.sh*. Futtassa például `npm run start:prod`, futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com):
+App Service elindíthatja az alkalmazást egy egyéni parancs használatával, például egy végrehajtható fájlt (például *Run.sh*). `npm run start:prod`futtatásához például futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
 ```
 
-### <a name="run-npm-start"></a>Futtatásához npm start
+### <a name="run-npm-start"></a>NPM-indítás futtatása
 
-Az alkalmazás használatának megkezdéséhez `npm start`, ügyeljen rá, hogy egy `start` szkript szerepel a *package.json* fájlt. Példa:
+Ha `npm start`használatával szeretné elindítani az alkalmazást, győződjön meg arról, hogy a *Package. JSON* fájlban a `start` parancsfájl szerepel. Példa:
 
 ```json
 {
@@ -84,29 +75,29 @@ Az alkalmazás használatának megkezdéséhez `npm start`, ügyeljen rá, hogy 
 }
 ```
 
-Egyéni használandó *package.json* projektbe, futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com):
+Ha egyéni *Package. JSON* fájlt szeretne használni a projektben, futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filename>.json"
 ```
 
-### <a name="run-with-pm2"></a>Futtassa a PM2
+### <a name="run-with-pm2"></a>Futtatás a PM2
 
-Egy közös Node.js fájlt a projektben található a tároló automatikusan elindul az alkalmazás a PM2:
+A tároló automatikusan elindítja az alkalmazást a PM-ben, ha az egyik Common. js fájl található a projektben:
 
 - *bin/www*
-- *server.js*
-- *app.js*
-- *index.js*
-- *hostingstart.js*
-- Az alábbi [PM2 fájlok](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json* és *ecosystem.config.js*
+- *Server. js*
+- *app. js*
+- *index. js*
+- *hostingstart. js*
+- A következő PM2- [fájlok](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)egyike: *Process. JSON* és *ökoszisztéma. config. js*
 
-Egy egyéni indítási fájlt a következő kiterjesztésű is konfigurálhatja:
+Egyéni indítási fájlt is beállíthat a következő kiterjesztésekkel:
 
-- A *.js* fájl
-- A [PM2 fájl](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) kiterjesztésű *.json*, *. config.js*, *.yaml*, vagy *yml*
+- Egy *. js* -fájl
+- Egy *. JSON*, *. config. js*, *. YAML*vagy *. YML* kiterjesztésű [PM2-fájl](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
 
-Adjon hozzá egy egyéni indítási fájlt, futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com):
+Egyéni indítási fájl hozzáadásához futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filname-with-extension>"
@@ -115,11 +106,11 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 ## <a name="debug-remotely"></a>Távoli hibakeresés
 
 > [!NOTE]
-> Távoli hibakeresés jelenleg csak előzetes formában.
+> A távoli hibakeresés jelenleg előzetes verzióban érhető el.
 
-A távolról a Node.js-alkalmazás hibakeresése is [Visual Studio Code](https://code.visualstudio.com/) konfigurálja úgy, hogy ha [futtassa a PM2](#run-with-pm2), kivéve, ha futtatja a egy *. config.js, *.yml, vagy *.yaml*.
+A Node. js-alkalmazást távolról is lekérdezheti a [Visual Studio Code](https://code.visualstudio.com/) -ban, ha úgy konfigurálja, hogy a PM-sel [fusson](#run-with-pm2), kivéve ha *. config. js, *. YML vagy *. YAML*használatával futtatja.
 
-A legtöbb esetben nem szükséges az alkalmazás további konfiguráció nélkül. Ha az alkalmazás futását egy *process.json* fájlt (alapértelmezett vagy egyéni), rendelkeznie kell egy `script` tulajdonság JSON gyökere. Példa:
+A legtöbb esetben nincs szükség további konfigurációra az alkalmazáshoz. Ha az alkalmazás egy *Process. JSON* fájllal (alapértelmezett vagy egyéni) fut, akkor a JSON-gyökérben `script` tulajdonsággal kell rendelkeznie. Példa:
 
 ```json
 {
@@ -129,25 +120,25 @@ A legtöbb esetben nem szükséges az alkalmazás további konfiguráció nélk�
 }
 ```
 
-Távoli hibakeresés beállításához a Visual Studio Code, telepítse a [App Service-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Kövesse az utasításokat a bővítmény oldalon, és jelentkezzen be az Azure-bA a Visual Studio Code-ban.
+Ha a Visual Studio Code-ot szeretné beállítani a távoli hibakereséshez, telepítse az [app Service-bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Kövesse a bővítmény lapon megjelenő utasításokat, és jelentkezzen be az Azure-ba a Visual Studio Code-ban.
 
-Keresse meg a hibakeresés, kattintson a jobb gombbal, és válassza ki a kívánt alkalmazást az Azure explorer **távoli hibakeresés indítása**. Kattintson a **Igen** engedélyezheti az alkalmazás számára. App Service-ben elindítja egy alagutat proxyt az Ön számára, és csatolja a hibakeresőt. Ezután kéréseket küld az alkalmazást, és tekintse meg a hibakeresőt break időpontokban felfüggesztése.
+Az Azure Explorerben keresse meg a hibakereséshez használni kívánt alkalmazást, kattintson rá a jobb gombbal, és válassza a **távoli hibakeresés indítása**lehetőséget. Az alkalmazás engedélyezéséhez kattintson az **Igen** gombra. App Service elindít egy bújtatási proxyt, és csatolja a hibakeresőt. Ezután megteheti a kérelmeket az alkalmazásnak, és megtekintheti a hibakereső szüneteltetését a megszakítási pontokon.
 
-Miután befejeződött a hibakeresést, a hibakereső leállítása kiválasztásával **Disconnect**. Amikor a rendszer kéri, kattintson **Igen** távoli hibakeresés letiltása. Később letiltja, kattintson a jobb gombbal a Azure explorer újra az alkalmazást, és válassza **távoli hibakeresés letiltása**.
+Miután végzett a hibakereséssel, állítsa le a hibakeresőt a **kapcsolat bontása**lehetőség kiválasztásával. Ha a rendszer kéri, kattintson az **Igen** gombra a távoli hibakeresés letiltásához. Ha később szeretné letiltani, kattintson a jobb gombbal az alkalmazásra az Azure Explorerben, és válassza a **távoli hibakeresés letiltása**lehetőséget.
 
-## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
+## <a name="access-environment-variables"></a>Hozzáférési környezeti változók
 
-Az App Service-ben is [állítsa be az alkalmazásbeállításokat](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) kívül a kódját. Ezután elérheti azokat a standard szintű Node.js-minta használatával. Például egy alkalmazás-beállítás eléréséhez nevű `NODE_ENV`, a következő kóddal:
+App Service az [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően a standard Node. js-minta használatával érheti el őket. Ha például egy `NODE_ENV`nevű alkalmazás-beállítást szeretne elérni, használja a következő kódot:
 
 ```javascript
 process.env.NODE_ENV
 ```
 
-## <a name="run-gruntbowergulp"></a>Futtassa a Grunt/Bower/Gulp
+## <a name="run-gruntbowergulp"></a>Morog/Bower/Nyelő futtatása
 
-Alapértelmezés szerint a Kudu futtat `npm install --production` Ha észleli egy Node.js-alkalmazás telepítve van. Ha az adott alkalmazáshoz szükséges a népszerű automatizálási eszközök, például Grunt, Bower vagy Gulp, meg kell adnia egy [egyéni üzembehelyezési szkript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) a futtatáshoz.
+Alapértelmezés szerint a kudu `npm install --production` fut, amikor felismeri a Node. js-alkalmazást. Ha az alkalmazáshoz a népszerű Automation-eszközök, például a morog, a Bower vagy a Nyelő szükséges, egy [egyéni telepítési parancsfájlt](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) kell megadnia a futtatásához.
 
-Ahhoz, hogy az eszközöket a tárházban, hozzáadhatja őket a függőségeket kell *package.json.* Példa:
+Ha engedélyezni szeretné, hogy a tárház futtassa ezeket az eszközöket, hozzá kell adnia őket a *Package. JSON* -ban található függőségekhez. Példa:
 
 ```json
 "dependencies": {
@@ -158,16 +149,16 @@ Ahhoz, hogy az eszközöket a tárházban, hozzáadhatja őket a függőségeket
 }
 ```
 
-A helyi terminálablakból az adattár gyökérkönyvtárában abba a könyvtárba, és futtassa a következő parancsokat:
+Egy helyi terminál ablakban váltson át a tárház gyökerére, és futtassa a következő parancsokat:
 
 ```bash
 npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-Az adattár gyökérkönyvtárában most már két további fájllal rendelkezik: *.deployment* és *deploy.sh*.
+A tárház gyökerének most két további fájlja van: *. Deployment* és *Deploy.sh*.
 
-Nyissa meg *deploy.sh* , és keresse meg a `Deployment` szakaszban, mely kell kinéznie:
+Nyissa meg a *Deploy.sh* , és keresse meg a `Deployment` szakaszt, amely a következőképpen néz ki:
 
 ```bash
 ##################################################################################################################################
@@ -175,17 +166,17 @@ Nyissa meg *deploy.sh* , és keresse meg a `Deployment` szakaszban, mely kell ki
 # ----------
 ```
 
-Ez a szakasz végződik futó `npm install --production`. Adja hozzá a kód szakaszban kell futtatnia a szükséges eszköz *végén* , a `Deployment` szakaszban:
+Ez a szakasz a `npm install --production`futtatásával végződik. Adja hozzá a Code (kód) szakaszt a `Deployment` szakasz *végén* a szükséges eszköz futtatásához:
 
 - [Bower](#bower)
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
-Tekintse meg az [a MEAN.js-mintában példa](https://github.com/Azure-Samples/meanjs/blob/master/deploy.sh#L112-L135), ahol a telepítési szkript is fut egy egyéni `npm install` parancsot.
+Tekintse [meg a Mean. js mintában szereplő példát](https://github.com/Azure-Samples/meanjs/blob/master/deploy.sh#L112-L135), ahol az üzembe helyezési parancsfájl egy egyéni `npm install` parancsot is futtat.
 
 ### <a name="bower"></a>Bower
 
-Ez a kódrészlet futtatása `bower install`.
+Ez a kódrészlet `bower install`futtat.
 
 ```bash
 if [ -e "$DEPLOYMENT_TARGET/bower.json" ]; then
@@ -198,7 +189,7 @@ fi
 
 ### <a name="gulp"></a>Gulp
 
-Ez a kódrészlet futtatása `gulp imagemin`.
+Ez a kódrészlet `gulp imagemin`futtat.
 
 ```bash
 if [ -e "$DEPLOYMENT_TARGET/gulpfile.js" ]; then
@@ -211,7 +202,7 @@ fi
 
 ### <a name="grunt"></a>Grunt
 
-Ez a kódrészlet futtatása `grunt`.
+Ez a kódrészlet `grunt`futtat.
 
 ```bash
 if [ -e "$DEPLOYMENT_TARGET/Gruntfile.js" ]; then
@@ -222,11 +213,11 @@ if [ -e "$DEPLOYMENT_TARGET/Gruntfile.js" ]; then
 fi
 ```
 
-## <a name="detect-https-session"></a>Észleli a HTTPS-KAPCSOLATON keresztül
+## <a name="detect-https-session"></a>HTTPS-munkamenet észlelése
 
-Az App Service-ben [SSL-lezárást](https://wikipedia.org/wiki/TLS_termination_proxy) történik, ha a hálózati terheléselosztók, így az összes HTTPS-kérelmek elérni az alkalmazás nem titkosított HTTP-kérések. Ha az alkalmazás logikai igényeinek megfelelően, ellenőrizze, hogy ha a felhasználói kérelmek titkosítottak-e vagy sem, vizsgálja meg a `X-Forwarded-Proto` fejléc.
+App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, vizsgálja meg a `X-Forwarded-Proto` fejlécét.
 
-Népszerű webes keretrendszerek, hozzáférést biztosítanak a `X-Forwarded-*` a szabványos mintában információkat. A [Express](https://expressjs.com/), használhat [proxyk megbízható](https://expressjs.com/guide/behind-proxies.html). Példa:
+A népszerű webes keretrendszerek lehetővé teszik a szabványos alkalmazási mintában lévő `X-Forwarded-*` információk elérését. Az [Express](https://expressjs.com/)-ben [megbízhatósági proxykat](https://expressjs.com/guide/behind-proxies.html)használhat. Példa:
 
 ```javascript
 app.set('trust proxy', 1)
@@ -240,25 +231,25 @@ if (req.secure) {
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="open-ssh-session-in-browser"></a>Nyissa meg böngészőben SSH-munkamenet
+## <a name="open-ssh-session-in-browser"></a>SSH-munkamenet megnyitása böngészőben
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
-Amikor egy működő Node.js-alkalmazás működését eltérően az App Service-ben, vagy hibát, megpróbálkozhat a következőkkel:
+Ha egy működő Node. js-alkalmazás máshogy viselkedik App Service vagy hibákat tartalmaz, próbálkozzon a következőkkel:
 
-- [A naplózási adatfolyam eléréséhez](#access-diagnostic-logs).
-- Az alkalmazás helyi tesztelése éles módban. App Service-ben a a Node.js-alkalmazások éles módban fut, ezért győződjön meg arról, hogy a projekt megfelelően működik-e helyi éles módban kell. Példa:
-    - Attól függően, a *package.json*, különböző csomagokban megtalál mindent éles üzemmódhoz előfordulhat, hogy telepíteni (`dependencies` és `devDependencies`).
-    - Bizonyos webes keretrendszerek statikus fájlok eltérően éles módban helyezheti üzembe.
-    - Bizonyos webes keretrendszerek egyéni indítási parancsfájlok felhasználhatja az éles módban való futtatáskor.
-- Az alkalmazás futtatása az App Service-ben a fejlesztői módban. Például a [MEAN.js](https://meanjs.org/), fejlesztői mód által futtatókörnyezetben is beállíthatja az alkalmazás [beállítás a `NODE_ENV` Alkalmazásbeállítás](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
+- [A log stream elérése](#access-diagnostic-logs).
+- Az alkalmazás helyi tesztelése éles módban. App Service a Node. js-alkalmazásokat éles módban futtatja, ezért a projektnek a várt módon kell működnie a helyi üzemi módban. Példa:
+    - A *Package. JSON*fájltól függően különböző csomagok is telepíthetők üzemi módba (`dependencies` vagy `devDependencies`).
+    - Bizonyos webes keretrendszerek eltérő üzemi módban telepíthetnek statikus fájlokat.
+    - Bizonyos webes keretrendszerek éles módban történő futtatáskor egyéni indítási parancsfájlokat is használhatnak.
+- Az alkalmazást App Service fejlesztési módban futtathatja. A [Mean. js](https://meanjs.org/)fájlban például beállíthatja, hogy az alkalmazás a Futtatás közben fejlesztési módba legyen állítva [a `NODE_ENV` alkalmazás beállításával](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
-## <a name="next-steps"></a>További lépések
-
-> [!div class="nextstepaction"]
-> [Oktatóanyag: NODE.js-alkalmazás MongoDB-vel](tutorial-nodejs-mongodb-app.md)
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Az App Service Linux – gyakori kérdések](app-service-linux-faq.md)
+> [Oktatóanyag: Node. js-alkalmazás a MongoDB](tutorial-nodejs-mongodb-app.md)
+
+> [!div class="nextstepaction"]
+> [App Service Linux – gyakori kérdések](app-service-linux-faq.md)

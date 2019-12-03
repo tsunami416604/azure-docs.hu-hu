@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.author: rosh
-ms.openlocfilehash: 5f4faa290fe4ed02ab1ed75d23755af5dc20f215
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: dff96b19f40c2d897b6a018a4c46cec60f8aa201
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880611"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689307"
 ---
 # <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>Hasonló képek keresése az előző keresésekben a ImageInsightsToken használatával
 
-A Visual Search SDK lehetővé teszi, hogy az előző keresések `ImageInsightsToken`alapján online megkeresse a képeket. Ez az alkalmazás `ImageInsightsToken` lekérdezi és felhasználja a tokent egy későbbi keresés során. Ezután elküldi a `ImageInsightsToken` a bingnek, és olyan eredményeket ad vissza, amelyek tartalmazzák az online-ban található hasonló lemezképek Bing Search URL-címét és URL-címét.
+A Visual Search SDK lehetővé teszi, hogy az előző, `ImageInsightsToken`okat visszaadó keresésekkel online képeket keressen. Ez az alkalmazás beolvas egy `ImageInsightsToken`, és a tokent használja egy későbbi keresésben. Ezután elküldi a `ImageInsightsToken` a Bingnek, és olyan eredményeket ad vissza, amelyek tartalmazzák Bing Search URL-címeket és a hasonló rendszerképek URL-címeit.
 
 Az oktatóanyag teljes forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs)található további hibakezelés és jegyzetek használatával érhető el.
 
@@ -38,7 +38,7 @@ Az oktatóanyag teljes forráskódja a [githubon](https://github.com/Azure-Sampl
 
 ## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>A ImageInsightsToken beszerzése a Bing Image Search SDK-ból
 
-Ez az alkalmazás a `ImageInsightsToken` [Bing Image Search SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)-val kapott beszerzést használja. Egy új C# konzol alkalmazásban hozzon létre egy ügyfelet az API- `ImageSearchClient()`nak a használatával történő meghívásához. Ezután használja `SearchAsync()` a lekérdezést:
+Ez az alkalmazás az [BING Image Search SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)-val beszerzett `ImageInsightsToken` használ. Egy új C# konzol alkalmazásban hozzon létre egy ügyfelet az API meghívásához `ImageSearchClient()`használatával. Ezután használja a `SearchAsync()`t a lekérdezéssel:
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
@@ -46,7 +46,7 @@ var imageResults = client.Images.SearchAsync(query: "canadian rockies").Result;
 Console.WriteLine("Search images for query \"canadian rockies\"");
 ```
 
-Tárolja az első keresési eredményt a `imageResults.Value.First()`használatával, majd tárolja a rendszerkép `ImageInsightsToken`betekintését.
+Tárolja az első keresési eredményt `imageResults.Value.First()`használatával, majd tárolja a képelemzés `ImageInsightsToken`ét.
 
 ```csharp
 String insightTok = "None";
@@ -62,11 +62,11 @@ else
 }
 ```
 
-Ezt `ImageInsightsToken` a rendszer a kérelemben Bing Visual Search küldi el.
+Ezt a `ImageInsightsToken` küldi el a rendszer a kérések Bing Visual Search.
 
 ## <a name="add-the-imageinsightstoken-to-a-visual-search-request"></a>A ImageInsightsToken hozzáadása Visual Search kérelemhez
 
-Adjon meg egy Visual Search kérést úgy, hogy `ImageInfo` egy objektumot hoz `ImageInsightsToken` létre a Bing Visual Searchokból származó válaszokban szereplő objektumból. `ImageInsightsToken`
+Visual Search kérelem `ImageInsightsToken`ának megadása egy `ImageInfo` objektum létrehozásával az Bing Visual Search által küldött válaszokban szereplő `ImageInsightsToken`.
 
 ```csharp
 ImageInfo ImageInfo = new ImageInfo(imageInsightsToken: insightsTok);
@@ -74,7 +74,7 @@ ImageInfo ImageInfo = new ImageInfo(imageInsightsToken: insightsTok);
 
 ## <a name="use-bing-visual-search-to-find-images-from-an-imageinsightstoken"></a>Képek keresése a ImageInsightsToken Bing Visual Search használatával
 
-Az `VisualSearchRequest` objektum a keresendő `ImageInfo` rendszerképpel kapcsolatos információkat tartalmaz. A `VisualSearchMethodAsync()` metódus az eredményeket kéri le. Nem kell megadnia bináris képfájlt, mert a rendszerképet a jogkivonat jelképezi.
+A `VisualSearchRequest` objektum a keresendő `ImageInfo` rendszerképpel kapcsolatos információkat tartalmaz. A `VisualSearchMethodAsync()` metódus az eredményeket kéri le. Nem kell megadnia bináris képfájlt, mert a rendszerképet a jogkivonat jelképezi.
 
 ```csharp
 VisualSearchRequest VisualSearchRequest = new VisualSearchRequest(ImageInfo);
@@ -85,7 +85,7 @@ var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest
 
 ## <a name="iterate-through-the-visual-search-results"></a>Iteráció a Visual Search eredményei között
 
-A Visual Search eredményei `ImageTag` objektumok. Mindegy egyes címke `ImageAction` objektumok listáját tartalmazza. Mindegyik `ImageAction` tartalmaz egy `Data` mezőt, amely a művelet típusától függő értékek listáját tartalmazza. Megismételheti a `ImageTag` objektumokat a alkalmazásban `visualSearchResults.Tags`, `ImageAction` például a címkén belül. Az alábbi minta a műveletek részleteit `PagesIncluding` nyomtatja ki:
+A Visual Search eredményei `ImageTag` objektumok. Mindegy egyes címke `ImageAction` objektumok listáját tartalmazza. Minden `ImageAction` tartalmaz egy `Data` mezőt, amely a művelet típusától függő értékek listáját tartalmazza. Megismételheti a `visualSearchResults.Tags``ImageTag` objektumait, például lekérheti a `ImageAction` címkét. Az alábbi minta a `PagesIncluding` műveletek részleteit nyomtatja ki:
 
 ```csharp
 if (visualSearchResults.Tags.Count > 0)
@@ -111,7 +111,7 @@ if (visualSearchResults.Tags.Count > 0)
 
 ### <a name="pagesincluding-actiontypes"></a>PagesIncluding ActionTypes
 
-A tényleges képurl-címek műveleti típusokból való lekéréséhez olyan `ActionType` leadott `ImageModuleAction`műveletre van szükség `Data` , amely egy olyan elemet tartalmaz, amely tartalmazza az értékek listáját. Minden egyes érték egy kép URL-je.  A következő művelet a `PagesIncluding` műveletet `ImageModuleAction` írja be, és beolvassa az értékeket:
+A tényleges képurl-címek műveleti típusokból való lekéréséhez olyan leadott műveletre van szükség, amely egy `ActionType` beolvasása `ImageModuleAction`, amely egy `Data` elemet tartalmaz az értékek listájával. Minden egyes érték egy kép URL-je.  A következőkben a `PagesIncluding` Művelettípus `ImageModuleAction`, és beolvassa az értékeket:
 
 ```csharp
     if (i.ActionType == "PagesIncluding")
@@ -129,19 +129,19 @@ További információk ezekről az adattípusokról: [Képek – Visual Search](
 
 A teljes alkalmazás a következő URL-címeket adja vissza:
 
-|ActionType  |URL  | |
+|Művelettípus  |URL-cím  | |
 |---------|---------|---------|
 |MoreSizes – > WebSearchUrl     |         |
 |VisualSearch – > WebSearchUrl     |         |
 |ImageById – > WebSearchUrl    |         |
 |RelatedSearches – > WebSearchUrl:    |         |
 |DocumentLevelSuggestions – > WebSearchUrl:     |         |
-|TopicResults – > WebSearchUrl    | https:\//www.Bing.com/CR?ig=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&Rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=HTTPS%3A%2F%2Fwww.Bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1       |
-|ImageResults -> WebSearchUrl    |  https:\//www.Bing.com/CR?ig=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&Rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=HTTPS%3A%2F%2Fwww.Bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1       |
+|TopicResults – > WebSearchUrl    | https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1       |
+|ImageResults – > WebSearchUrl    |  https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1       |
 
-Ahogy az a fentiekben `TopicResults` is `ImageResults` látható, a és a típusok a kapcsolódó képek lekérdezéseit tartalmazzák. A Bing keresési eredményeire mutató URL-címek.
+Ahogy az a fentiekben látható, a `TopicResults` és a `ImageResults` típus a kapcsolódó képek lekérdezéseit tartalmazza. A Bing keresési eredményeire mutató URL-címek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Visual Search egyoldalas Webalkalmazás létrehozása](tutorial-bing-visual-search-single-page-app.md)

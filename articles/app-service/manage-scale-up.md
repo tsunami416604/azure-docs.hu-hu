@@ -1,24 +1,16 @@
 ---
-title: Szolgáltatások és kapacitások vertikális felskálázása – Azure App Service | Microsoft Docs
-description: Megtudhatja, hogyan méretezheti fel Azure App Service alkalmazásait a kapacitás és a szolgáltatások hozzáadásához.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: Funkciók és kapacitások vertikális felskálázása
+description: Megtudhatja, hogyan méretezheti fel Azure App Service alkalmazásait. A processzor, a memória, a lemezterület és a további funkciók beolvasása.
 ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/19/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 91a6681c2ef4a6d0ac01889e6e92e752975e90a5
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 37120377f87bee53f73fe4d3dd7ced59551a491f
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74089459"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672313"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Alkalmazás vertikális felskálázása Azure App Service
 
@@ -83,7 +75,7 @@ A szolgáltatási korlátok, kvóták és megkötések, valamint az egyes réteg
 
 <a name="Next Steps"></a>
 
-## <a name="more-resources"></a>További erőforrások
+## <a name="more-resources"></a>További források
 
 [Példányszám manuális vagy automatikus méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md)  
 [App Service PremiumV2-szintjeinek konfigurálása](app-service-configure-premium-tier.md)

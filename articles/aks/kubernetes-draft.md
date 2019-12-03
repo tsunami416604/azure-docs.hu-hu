@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: bd099b9d76e17eda36be1650ef5081e5aaa7e53a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9338f0e26595c1ab25ab51578880daf8c0c5bbc4
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "67303545"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672452"
 ---
-# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Gyors útmutató: Fejlesztés az Azure Kubernetes szolgáltatásban (ak) a Drafttal
+# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Gyors útmutató: fejlesztés az Azure Kubernetes Service-ben (ak) a Drafttal
 
-A draft egy nyílt forráskódú eszköz, amely megkönnyíti a Kubernetes-fürtben lévő alkalmazás-tárolók előkészítését és futtatását. A draft használatával gyorsan újratelepítheti az alkalmazásokat, hogy Kubernetes, és ne véglegesítse a módosításokat a verziókövetés előtt. A vázlattal kapcsolatos további információkért tekintse [meg][draft-documentation]a következő témakört: a githubon található dokumentáció vázlata.
+A draft egy nyílt forráskódú eszköz, amely megkönnyíti a Kubernetes-fürtben lévő alkalmazás-tárolók előkészítését és futtatását. A draft használatával gyorsan újratelepítheti az alkalmazásokat, hogy Kubernetes, és ne véglegesítse a módosításokat a verziókövetés előtt. A vázlattal kapcsolatos további információkért tekintse meg a következő témakört: a [githubon található dokumentáció vázlata][draft-documentation].
 
 Ebből a cikkből megtudhatja, hogyan használhatja a draft-csomagot, és hogyan futtathat alkalmazást az AK-on.
 
@@ -26,7 +26,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a draft-csomagot, és hogyan
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free).
 * [Telepített Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 * A Docker telepítése és konfigurálása megtörtént. A Docker olyan csomagokat biztosít, amelyek a Docker-t egy [Mac][docker-for-mac], [Windows][docker-for-windows]vagy [Linux][docker-for-linux] rendszeren konfigurálják.
-* A [Helm telepítve van](https://github.com/helm/helm/blob/master/docs/install.md).
+* A [Helm telepítve van](https://github.com/helm/helm#install).
 * A [Piszkozat telepítve van][draft-documentation].
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása
@@ -39,7 +39,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Stand
 ```
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry létrehozása
-Ha a Piszkozat használatával szeretné futtatni az alkalmazást az AK-fürtben, szüksége lesz egy Azure Container Registry a tároló lemezképének tárolására. Az alábbi példa az [az ACR Create][az-acr-create] paranccsal hoz létre egy *MyDraftACR* nevű ACR-t a *MyResourceGroup* -erőforráscsoporthoz az alapszintű SKU használatával. Adja meg a saját egyedi regisztrációs nevét. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az *Alapszintű* termékváltozat költséghatékony, fejlesztési célú belépési pontként szolgál, és kiegyenlített tárolási kapacitást és teljesítményt biztosít.
+Ha a Piszkozat használatával szeretné futtatni az alkalmazást az AK-fürtben, szüksége lesz egy Azure Container Registry a tároló lemezképének tárolására. Az alábbi példa az [az ACR Create][az-acr-create] paranccsal hoz létre egy *MyDraftACR* nevű ACR-t a *MyResourceGroup* -erőforráscsoporthoz az *alapszintű* SKU használatával. Adja meg a saját egyedi regisztrációs nevét. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az *Alapszintű* termékváltozat költséghatékony, fejlesztési célú belépési pontként szolgál, és kiegyenlített tárolási kapacitást és teljesítményt biztosít.
 
 ```azurecli
 az acr create --resource-group MyResourceGroup --name MyDraftACR --sku Basic
@@ -103,7 +103,7 @@ Ha az Azure Cloud Shellt használja, a `kubectl` már telepítve van. Helyben is
 az aks install-cli
 ```
 
-A Kubernetes `kubectl` -fürthöz való kapcsolódás konfigurálásához használja az az az [AK Get-hitelesítőadats][] parancsot. A következő példa a *MyAKS* nevű AK-fürt hitelesítő adatait kéri le a *MyResourceGroup*:
+Ha `kubectl` szeretne konfigurálni a Kubernetes-fürthöz való kapcsolódáshoz, használja az az [AK Get-hitelesítőadats][] parancsot. A következő példa a *MyAKS* nevű AK-fürt hitelesítő adatait kéri le a *MyResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -136,14 +136,14 @@ subjects:
     namespace: kube-system
 ```
 
-Hozza létre a szolgáltatásfiók és a szerepkör kötését `kubectl apply` a paranccsal:
+Hozzon létre egy szolgáltatásfiókot és egy szerepkör-kötést a `kubectl apply` paranccsal:
 
 ```console
 kubectl apply -f helm-rbac.yaml
 ```
 
 ## <a name="configure-helm"></a>A Helm konfigurálása
-Alapszintű kormányrúd egy AK-fürtbe történő üzembe helyezéséhez használja a [Helm init][helm-init] parancsot. Ha a fürt nincs engedélyezve a RBAC, távolítsa el az argumentumot és az `--service-account` értéket.
+Alapszintű kormányrúd egy AK-fürtbe történő üzembe helyezéséhez használja a [Helm init][helm-init] parancsot. Ha a fürt nincs engedélyezve a RBAC, távolítsa el a `--service-account` argumentumot és az értéket.
 
 ```console
 helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="linux"
@@ -151,7 +151,7 @@ helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="lin
 
 ## <a name="configure-draft"></a>Piszkozat konfigurálása
 
-Ha nem konfigurálta a piszkozatot a helyi gépen, `draft init`futtassa a következőt:
+Ha nem konfigurálta a piszkozatot a helyi gépen, futtassa `draft init`:
 
 ```console
 $ draft init
@@ -162,7 +162,7 @@ Installing default pack repositories...
 Happy Sailing!
 ```
 
-Az ACR *lekéréséhez* használatához is konfigurálnia kell a vázlatot. A következő parancs `draft config set` a-t `mydraftacr.azurecr.io` használja beállításjegyzékként való használatra.
+Az ACR *lekéréséhez* használatához is konfigurálnia kell a vázlatot. A következő parancs a `draft config set`t használja a `mydraftacr.azurecr.io` beállításjegyzékként való használatára.
 
 ```console
 draft config set registry mydraftacr.azurecr.io
@@ -172,7 +172,7 @@ Az ACR használatára konfigurálta a piszkozatot, a draft pedig leküldheti a t
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 
-Ez a rövid útmutató [egy példa Java-alkalmazást használ a GitHub-tárházból][example-java]. Klónozott az alkalmazást a githubról, és navigáljon a `draft/examples/example-java/` címtárhoz.
+Ez a rövid útmutató [egy példa Java-alkalmazást használ a GitHub-tárházból][example-java]. Klónozott az alkalmazást a GitHubról, és navigáljon a `draft/examples/example-java/` könyvtárba.
 
 ```console
 git clone https://github.com/Azure/draft
@@ -181,7 +181,7 @@ cd draft/examples/example-java/
 
 ## <a name="run-the-sample-application-with-draft"></a>A minta alkalmazás futtatása vázlattal
 
-Az alkalmazás `draft create` előkészítéséhez használja az parancsot.
+Az alkalmazás előkészítéséhez használja a `draft create` parancsot.
 
 ```console
 draft create
@@ -196,7 +196,7 @@ $ draft create
 --> Ready to sail
 ```
 
-A minta alkalmazás az AK-fürtön való futtatásához használja `draft up` az parancsot.
+A minta alkalmazás az AK-fürtön való futtatásához használja a `draft up` parancsot.
 
 ```console
 draft up
@@ -216,7 +216,7 @@ Inspect the logs with `draft logs 01CMZAR1F4T1TJZ8SWJQ70HCNH`
 
 ## <a name="connect-to-the-running-sample-application-from-your-local-machine"></a>Kapcsolódás a futó minta alkalmazáshoz a helyi gépről
 
-Az alkalmazás teszteléséhez használja az `draft connect` parancsot.
+Az alkalmazás teszteléséhez használja a `draft connect` parancsot.
 
 ```console
 draft connect
@@ -235,13 +235,13 @@ Connect to java:4567 on localhost:49804
 [java]: >> Listening on 0.0.0.0:4567
 ```
 
-Navigáljon az alkalmazáshoz egy böngészőben az `localhost` URL-cím használatával a minta alkalmazás megtekintéséhez. A fenti példában az URL-cím `http://localhost:49804`:. Állítsa le a kapcsolatokat `Ctrl+c`a használatával.
+Nyissa meg az alkalmazást egy böngészőben a `localhost` URL-cím használatával, és tekintse meg a minta alkalmazást. A fenti példában az URL-cím `http://localhost:49804`. A `Ctrl+c`használatával állítsa le a kapcsolatokat.
 
 ## <a name="access-the-application-on-the-internet"></a>Az alkalmazás elérése az interneten
 
 Az előző lépésben létrehozott egy proxy-kapcsolódást az Application Pod-hoz az AK-fürtben. Az alkalmazás fejlesztése és tesztelése során előfordulhat, hogy az alkalmazást elérhetővé szeretné tenni az interneten. Ahhoz, hogy egy alkalmazás elérhető legyen az interneten, létrehozhat egy Kubernetes szolgáltatást [terheléselosztó][kubernetes-service-loadbalancer].
 
-Frissítsen `charts/example-java/values.yaml` egy *terheléselosztó* -szolgáltatás létrehozásához. Módosítsa a *Service. Type* értéket a *ClusterIP* és a *terheléselosztó*érték között.
+`charts/example-java/values.yaml` frissítése *terheléselosztó* -szolgáltatás létrehozásához. Módosítsa a *Service. Type* értéket a *ClusterIP* és a *terheléselosztó*érték között.
 
 ```yaml
 ...
@@ -253,13 +253,13 @@ service:
 ...
 ```
 
-Mentse a módosításokat, zárjuk be a fájlt, és `draft up` futtassa újra az alkalmazást.
+Mentse a módosításokat, majd a fájl bezárásához és a `draft up` futtatásához futtassa újból az alkalmazást.
 
 ```console
 draft up
 ```
 
-Néhány percet vesz igénybe, hogy a szolgáltatás egy nyilvános IP-címet ad vissza. A folyamat figyeléséhez használja `kubectl get service` az parancsot a *Watch* paraméterrel:
+Néhány percet vesz igénybe, hogy a szolgáltatás egy nyilvános IP-címet ad vissza. A folyamat figyeléséhez használja a `kubectl get service` parancsot a *Watch* paraméterrel:
 
 ```console
 $ kubectl get service --watch
@@ -270,11 +270,11 @@ example-java-java   LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 example-java-java   LoadBalancer   10.0.141.72   52.175.224.118  80:32150/TCP   7m
 ```
 
-Nyissa meg az alkalmazás Load balancerét egy böngészőben a *külső IP* használatával a minta alkalmazás megtekintéséhez. A fenti példában az IP `52.175.224.118`:.
+Nyissa meg az alkalmazás Load balancerét egy böngészőben a *külső IP* használatával a minta alkalmazás megtekintéséhez. A fenti példában az IP `52.175.224.118`.
 
 ## <a name="iterate-on-the-application"></a>Iteráció az alkalmazásban
 
-Megismételheti az alkalmazást úgy, hogy helyben módosítja a módosításokat, `draft up`és újból futtatja azokat.
+Az alkalmazást úgy is megismételheti, hogy helyi módosításokat végez, és újra futtatja `draft up`.
 
 Frissítse a visszaadott üzenetet az [src/Main/Java/HelloWorld/Hello. Java 7. sorban][example-java-hello-l7]
 
@@ -284,7 +284,7 @@ Frissítse a visszaadott üzenetet az [src/Main/Java/HelloWorld/Hello. Java 7. s
     }
 ```
 
-Futtassa a `draft up` parancsot az alkalmazás újbóli üzembe helyezéséhez:
+Futtassa az `draft up` parancsot az alkalmazás újbóli üzembe helyezéséhez:
 
 ```console
 $ draft up
@@ -309,7 +309,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. Az egyszerű szolgáltatás eltávolításának lépéseiért lásd: az [AK szolgáltatással kapcsolatos főbb megfontolások és törlés][sp-delete].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A draft használatával kapcsolatos további információkért tekintse meg a következő témakört: a GitHubon található dokumentáció vázlata.
 

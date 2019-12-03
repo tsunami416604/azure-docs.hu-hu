@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 0dd07b3394e385b3931e01867d467af7559b4f8b
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664165"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684134"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Linux rendszerű virtuális gép hibaelhárítása, ha nincs hozzáférés az Azure soros konzolhoz, és a lemez elrendezése az LVM (logikai kötet kezelője) használatával történik.
 
@@ -211,6 +211,29 @@ Ha szükséges, távolítsa el vagy frissítse a **kernel**
 ### <a name="example-3---enable-serial-console"></a>3\. példa – soros konzol engedélyezése
 Ha a hozzáférés nem volt lehetséges az Azure soros konzolon, ellenőrizze a GRUB-konfigurációs paramétereket a linuxos virtuális gépen, és javítsa ki azokat. Részletes információkat [ebben a dokumentumban](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration) találhat
 
+### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>4\. példa – kernel betöltése problémás LVM swap-kötettel
+
+Előfordulhat, hogy egy virtuális gép nem tud teljes rendszerindítást kezdeményezni, és beleesik a **Dracut** -parancssorba.
+A hiba további részleteit az Azure soros konzolról vagy a Azure Portal-> rendszerindítási diagnosztika – > soros napló
+
+
+A következőhöz hasonló hiba fordulhat elő:
+
+```
+[  188.000765] dracut-initqueue[324]: Warning: /dev/VG/SwapVol does not exist
+         Starting Dracut Emergency Shell...
+Warning: /dev/VG/SwapVol does not exist
+```
+
+Ebben a példában a grub. cfg úgy van konfigurálva, hogy betöltsön egy LV-t a **Rd. LVM. lv = VG/SwapVol** névvel, és a virtuális gép nem találja ezt. Ebben a sorban látható, hogyan töltődik be a kernel az LV SwapVol
+
+```
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
+[    0.000000] e820: BIOS-provided physical RAM map:
+```
+
+ Távolítsa el a jogsértő LV-t a/etc/default/grub-konfigurációból, és hozza létre újra a GRUB2. cfg fájlt
+
 
 ## <a name="exit-chroot-and-swap-the-os-disk"></a>Kilépés a kromátból és az operációsrendszer-lemez cseréje
 
@@ -247,4 +270,8 @@ Ha a virtuális gép futtatja a lemezes cserét, állítsa le, indítsa újra a 
 
 
 ## <a name="next-steps"></a>Következő lépések
-További információ az [Azure soros konzolról]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+További információ
+
+ [Azure soros konzol]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+
+[Egyfelhasználós mód](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)

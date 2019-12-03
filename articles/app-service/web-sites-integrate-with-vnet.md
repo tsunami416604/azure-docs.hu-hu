@@ -1,24 +1,18 @@
 ---
-title: Alkalmazás integrálása az Azure Virtual Network-Azure App Service
-description: Bemutatja, hogyan csatlakoztatható egy alkalmazás Azure App Service egy új vagy meglévő Azure-beli virtuális hálózathoz
-services: app-service
-documentationcenter: ''
+title: Alkalmazás integrálása az Azure Virtual Network
+description: Ismerje meg, hogyan integrálható a Azure App Service az Azure Virtual Networkval, és hogyan csatlakozhat egy alkalmazáshoz egy virtuális hálózathoz.
 author: ccompy
-manager: stefsch
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a6d0cba41e694e154da32a878cb4c076aae13e65
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 71dc37fc000b2f195478e06f7e755fa8df926444
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034724"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688291"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása Azure-Virtual Network
 Ez a dokumentum ismerteti a Azure App Service Virtual Network Integration funkciót, valamint azt, hogyan állíthatja be az alkalmazásokkal a [Azure app Serviceban](https://go.microsoft.com/fwlink/?LinkId=529714). Az [Azure Virtual Networks][VNETOverview] (virtuális hálózatok) lehetővé teszi, hogy számos Azure-erőforrást egy nem internetes útválasztású hálózaton helyezzen el.  
@@ -112,7 +106,7 @@ A regionális VNet-integrációhoz az integrációs alhálózat delegálása sz�
 Ha le szeretné bontani az alkalmazást a VNet, válassza a **Leválasztás**lehetőséget. Ezzel újraindítja a webalkalmazást. 
 
 
-#### <a name="web-app-for-containers"></a>Tárolókhoz készült Web App
+#### <a name="web-app-for-containers"></a>Web App for Containers
 
 Ha a beépített rendszerképeket használó Linuxon App Service használ, a regionális VNet-integrációs funkció további változtatások nélkül működik. Ha Web App for Containers használ, módosítania kell a Docker-rendszerképet, hogy használni lehessen a VNet-integrációt. A Docker-rendszerképben használja a PORT környezeti változót a fő webkiszolgáló figyelési portjának hardcoded helyett. A PORT környezeti változót automatikusan App Service platform állítja be a tároló indítási ideje szerint. Ha SSH-t használ, az SSH démont úgy kell konfigurálni, hogy figyelje a SSH_PORT környezeti változó által megadott portszámot a regionális VNet-integráció használatakor.
 
@@ -149,7 +143,7 @@ Ez a funkció nem támogatja a következőket:
 * Erőforrásokhoz való hozzáférés ExpressRoute-on keresztül 
 * Erőforrásokhoz való hozzáférés szolgáltatásvégpontokon keresztül 
 
-### <a name="getting-started"></a>Első lépések
+### <a name="getting-started"></a>Bevezetés
 
 Az alábbiakban néhány dolgot figyelembe kell vennie, mielőtt csatlakoztatja a webalkalmazást egy virtuális hálózathoz:
 
@@ -244,7 +238,7 @@ Ha az átjárót a szükséges VNet-integrációval használja, néhány tovább
 1. Nyissa meg a App Service tervet > hálózatkezelés > VNet integrációs felhasználói felületét a portálon.  Válassza ki azt a VNet, amelyhez az alkalmazás csatlakozik. Az Útválasztás szakaszban adja meg a VNet azon VNet, amelyhez az alkalmazás csatlakoztatva van.  
 
 
-## <a name="pricing-details"></a>Díjszabás részletei
+## <a name="pricing-details"></a>Díjszabás
 A regionális VNet-integrációs szolgáltatásnak nem kell további díjat fizetnie az ASP díjszabási szintjein túli használatért.
 
 Az átjáró szükséges VNet-integrációs funkciója három kapcsolódó díjjal jár:
@@ -254,7 +248,7 @@ Az átjáró szükséges VNet-integrációs funkciója három kapcsolódó díjj
 * VPN Gateway költségek – a pont – hely típusú VPN-hez szükséges VNet-átjáró költségeinek költsége. A részletek a [VPN Gateway díjszabási][VNETPricing] oldalán találhatók.
 
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 Habár a funkció egyszerűen beállítható, ez nem jelenti azt, hogy a probléma ingyenes lesz. Ha problémák merülnek fel a kívánt végpont elérésekor, néhány segédprogram használható az alkalmazás-konzolról való kapcsolat tesztelésére. Két konzolt használhat. Az egyik a kudu-konzol, a másik pedig a Azure Portal konzolja. A kudu-konzol alkalmazásból való eléréséhez nyissa meg az eszközök-> kudu. A Kudo-konzolt a következő helyen is elérheti: [sitename]. SCM. azurewebsites. net. A webhely betöltése után lépjen a Debug konzol lapra. Az Azure Portal üzemeltetett konzoljának eléréséhez nyissa meg az eszközök-> konzolt. 
 
 #### <a name="tools"></a>Eszközök

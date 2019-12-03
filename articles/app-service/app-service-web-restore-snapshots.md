@@ -1,26 +1,19 @@
 ---
-title: Visszaállítás biztonsági másolatból – Azure App Service
-description: Ismerje meg, hogyan állíthatja vissza az alkalmazást egy pillanatképből.
-services: app-service
-documentationcenter: ''
+title: Alkalmazás visszaállítása pillanatképből
+description: Ismerje meg, hogyan állíthatja vissza az alkalmazást egy pillanatképből. A prémium szintű adatvesztés miatt nem várt adatvesztéssel állítható vissza az automatikus árnyékmásolatok.
 author: ahmedelnably
-manager: cfowler
-editor: ''
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: multiple
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: aelnably
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: 4b3b10177b119c9362f807206a915d4b0b367e16
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e5b48e05d6bd9a310b4527300126464c4b755c8d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639751"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671142"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Azure-beli alkalmazás visszaállítása pillanatképből
 Ebből a cikkből megtudhatja, hogyan állíthat vissza egy alkalmazást [Azure app Service](../app-service/overview.md) egy pillanatképből. Az alkalmazás egy korábbi állapotba állítható vissza az alkalmazás pillanatképei alapján. Nem kell engedélyeznie a pillanatképek biztonsági mentését, a platform automatikusan elmenti az összes alkalmazás pillanatképét az adatok helyreállításához.
@@ -44,7 +37,7 @@ A pillanatképek visszaállítása a **prémium** szintű vagy magasabb szintű 
 
 ## <a name="restore-an-app-from-a-snapshot"></a>Alkalmazás visszaállítása pillanatképből
 
-1. Az alkalmazás **Beállítások** lapján a Azure Portalban kattintson a [](https://portal.azure.com) **biztonsági** mentések elemre a **biztonsági mentések** lap megjelenítéséhez. Ezután kattintson a **visszaállítás** elemre a **Pillanatkép (előzetes verzió)** szakaszban.
+1. Az alkalmazás **Beállítások** lapján a [Azure Portalban](https://portal.azure.com)kattintson a **biztonsági** mentések elemre a **biztonsági mentések** lap megjelenítéséhez. Ezután kattintson a **visszaállítás** elemre a **Pillanatkép (előzetes verzió)** szakaszban.
    
     ![](./media/app-service-web-restore-snapshots/1.png)
 
@@ -52,7 +45,7 @@ A pillanatképek visszaállítása a **prémium** szintű vagy magasabb szintű 
    
     ![](./media/app-service-web-restore-snapshots/2.png)
    
-3. Adja meg az alkalmazás visszaállításának célhelyéta visszaállítási célhelyen.
+3. Adja meg az alkalmazás visszaállításának célhelyét a **visszaállítási célhelyen**.
    
     ![](./media/app-service-web-restore-snapshots/3.png)
    

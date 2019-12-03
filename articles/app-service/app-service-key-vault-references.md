@@ -1,22 +1,17 @@
 ---
-title: Key Vault referenciák – Azure App Service | Microsoft Docs
-description: A Azure App Service és a Azure Functions Azure Key Vault referenciáinak fogalmi referenciája és beállítási útmutatója
-services: app-service
+title: Key Vault referenciák használata
+description: Megtudhatja, hogyan állíthatja be Azure App Service és Azure Functions Azure Key Vault-hivatkozások használatára. Key Vault titkokat elérhetővé teheti az alkalmazás kódjában.
 author: mattchenderson
-manager: jeconnoc
-editor: ''
-ms.service: app-service
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 8f237e4c676a53f6df15940a196a998bee529f6b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f0d3d36d3489557f0a07e9400c59debb2dca7073
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817968"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671470"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Key Vault referenciák használata App Service és Azure Functions
 

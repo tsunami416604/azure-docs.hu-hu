@@ -1,29 +1,22 @@
 ---
-title: App Service környezet felé irányuló bejövő forgalom vezérlése – Azure
-description: Útmutató a hálózati biztonsági szabályok konfigurálásához egy App Service Environment bejövő forgalmának vezérléséhez.
-services: app-service
-documentationcenter: ''
+title: Bejövő forgalom vezérlése v1
+description: Ismerje meg, hogyan vezérelheti a bejövő forgalmat egy App Service Environment. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: ccompy
-manager: erikre
-editor: ''
 ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: c887ae5568bfd0f72f8d90daecd95547ed7b8b7d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070405"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687387"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Bejövő forgalom vezérlése App Service Environment
 ## <a name="overview"></a>Áttekintés
-App Service Environment hozható létre Azure Resource Manager virtuális hálózaton **vagy** egy klasszikus üzemi modell [virtuális hálózatban][virtualnetwork].  Egy új virtuális hálózat és egy új alhálózat is meghatározható a App Service Environment létrehozásakor.  Alternatív megoldásként létrehozhat egy App Service Environment egy meglévő virtuális hálózatban és már meglévő alhálózatban is.  A 2016 júniusában történt módosításokkal a ASE olyan virtuális hálózatokon is üzembe helyezhetők, amelyek nyilvános címtartományt vagy RFC1918 (azaz magánhálózati címeket) használnak.  App Service Environment létrehozásával kapcsolatos további információkért tekintse meg a [app Service Environment létrehozását][HowToCreateAnAppServiceEnvironment]ismertető témakört.
+App Service Environment hozható létre Azure Resource Manager virtuális hálózaton **vagy** **egy klasszikus** üzemi modell [virtuális hálózatban][virtualnetwork].  Egy új virtuális hálózat és egy új alhálózat is meghatározható a App Service Environment létrehozásakor.  Alternatív megoldásként létrehozhat egy App Service Environment egy meglévő virtuális hálózatban és már meglévő alhálózatban is.  A 2016 júniusában történt módosításokkal a ASE olyan virtuális hálózatokon is üzembe helyezhetők, amelyek nyilvános címtartományt vagy RFC1918 (azaz magánhálózati címeket) használnak.  App Service Environment létrehozásával kapcsolatos további információkért tekintse meg a [app Service Environment létrehozását][HowToCreateAnAppServiceEnvironment]ismertető témakört.
 
 Egy App Service Environment mindig létre kell hozni egy alhálózaton belül, mert egy alhálózat hálózati határt biztosít, amely a felsőbb rétegbeli eszközök és szolgáltatások mögötti bejövő forgalom zárolására használható, így a HTTP-és HTTPS-forgalom csak adott felsőbb rétegből fogadható el. IP-címek.
 
@@ -38,16 +31,16 @@ Mielőtt zárolja a bejövő hálózati forgalmat egy hálózati biztonsági cso
 
 Az alábbi lista az App Service Environment által használt portok listáját tartalmazza. Az összes port a **TCP**, kivéve, ha más egyértelműen feljegyezték:
 
-* 454:  Az Azure-infrastruktúra által az App Service környezetek SSL-n keresztül történő kezelésére és karbantartására használt **szükséges port** .  Ne blokkolja a forgalmat erre a portra.  Ez a port mindig a bevezetés nyilvános VIP-címéhez van kötve.
-* 455:  Az Azure-infrastruktúra által az App Service környezetek SSL-n keresztül történő kezelésére és karbantartására használt **szükséges port** .  Ne blokkolja a forgalmat erre a portra.  Ez a port mindig a bevezetés nyilvános VIP-címéhez van kötve.
-* 80:  Alapértelmezett port a App Service-csomagokban futó alkalmazások bejövő HTTP-forgalmához egy App Service Environment.  Egy ILB-kompatibilis beadási porton ez a port a ILB-címnek van kötve.
-* 443: Alapértelmezett port a App Service-csomagokban futó alkalmazások bejövő SSL-forgalmához egy App Service Environment.  Egy ILB-kompatibilis beadási porton ez a port a ILB-címnek van kötve.
-* 21:  Az FTP-vezérlési csatorna.  Ez a port biztonságosan blokkolható, ha az FTP nincs használatban.  A ILB-kompatibilis beadási szolgáltatásban ez a port a ILB-címekhez köthető.
-* 990:  A FTPS vezérlési csatornája.  Ez a port biztonságosan blokkolható, ha a FTPS nincs használatban.  A ILB-kompatibilis beadási szolgáltatásban ez a port a ILB-címekhez köthető.
-* 10001-10020: Adatcsatornák FTP-hez.  A vezérlési csatornához hasonlóan ezek a portok biztonságosan blokkolva lesznek, ha az FTP nincs használatban.  A ILB-kompatibilis kiegészítő szolgáltatásban ez a port a beadási ILB-címnek is köthető.
-* 4016: Távoli hibakereséshez használatos a Visual Studio 2012-mel.  Ez a port biztonságosan blokkolható, ha a szolgáltatás nincs használatban.  Egy ILB-kompatibilis beadási porton ez a port a ILB-címnek van kötve.
-* 4018: Távoli hibakereséshez használatos a Visual Studio 2013-mel.  Ez a port biztonságosan blokkolható, ha a szolgáltatás nincs használatban.  Egy ILB-kompatibilis beadási porton ez a port a ILB-címnek van kötve.
-* 4020: Távoli hibakereséshez használatos a Visual Studio 2015-mel.  Ez a port biztonságosan blokkolható, ha a szolgáltatás nincs használatban.  Egy ILB-kompatibilis beadási porton ez a port a ILB-címnek van kötve.
+* 454: az Azure-infrastruktúra által az App Service környezetek SSL-n keresztül történő kezelésére és karbantartására használt **szükséges port** .  Ne blokkolja a forgalmat erre a portra.  Ez a port mindig a bevezetés nyilvános VIP-címéhez van kötve.
+* 455: az Azure-infrastruktúra által az App Service környezetek SSL-n keresztül történő kezelésére és karbantartására használt **szükséges port** .  Ne blokkolja a forgalmat erre a portra.  Ez a port mindig a bevezetés nyilvános VIP-címéhez van kötve.
+* 80: alapértelmezett port a bejövő HTTP-forgalomhoz App Service-csomagokban futó alkalmazásokban egy App Service Environment.  Egy ILB-kompatibilis beadási porton ez a port a ILB-címnek van kötve.
+* 443: a bejövő SSL-forgalom alapértelmezett portja App Service csomagokban futó alkalmazások számára egy App Service Environment.  Egy ILB-kompatibilis beadási porton ez a port a ILB-címnek van kötve.
+* 21: vezérlési csatorna az FTP-hez.  Ez a port biztonságosan blokkolható, ha az FTP nincs használatban.  A ILB-kompatibilis beadási szolgáltatásban ez a port a ILB-címekhez köthető.
+* 990: vezérlési csatorna a FTPS számára.  Ez a port biztonságosan blokkolható, ha a FTPS nincs használatban.  A ILB-kompatibilis beadási szolgáltatásban ez a port a ILB-címekhez köthető.
+* 10001-10020: adatcsatornák FTP-hez.  A vezérlési csatornához hasonlóan ezek a portok biztonságosan blokkolva lesznek, ha az FTP nincs használatban.  A ILB-kompatibilis kiegészítő szolgáltatásban ez a port a beadási ILB-címnek is köthető.
+* 4016: a Visual Studio 2012 használatával történő távoli hibakereséshez használatos.  Ez a port biztonságosan blokkolható, ha a szolgáltatás nincs használatban.  Egy ILB-kompatibilis beadási porton ez a port a ILB-címnek van kötve.
+* 4018: a Visual Studio 2013 használatával történő távoli hibakereséshez használatos.  Ez a port biztonságosan blokkolható, ha a szolgáltatás nincs használatban.  Egy ILB-kompatibilis beadási porton ez a port a ILB-címnek van kötve.
+* 4020: a Visual Studio 2015 használatával történő távoli hibakereséshez használatos.  Ez a port biztonságosan blokkolható, ha a szolgáltatás nincs használatban.  Egy ILB-kompatibilis beadási porton ez a port a ILB-címnek van kötve.
 
 ## <a name="outbound-connectivity-and-dns-requirements"></a>Kimenő kapcsolat és DNS-követelmények
 Ahhoz, hogy egy App Service Environment megfelelően működjön, a különböző végpontokhoz is kimenő hozzáférést igényel. A szolgáltató által használt külső végpontok teljes listája a [ExpressRoute hálózati konfigurációjának](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) "szükséges hálózati kapcsolat" szakaszában található.
@@ -95,7 +88,7 @@ Ha a Visual Studióval végzett távoli hibakeresést használ, a következő sz
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT RemoteDebuggingVS2015" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '4020' -Protocol TCP
 
 ## <a name="assigning-a-network-security-group-to-a-subnet"></a>Hálózati biztonsági csoport társítása egy alhálózathoz
-A hálózati biztonsági csoport rendelkezik egy alapértelmezett biztonsági szabállyal, amely megtagadja az összes külső forgalom elérését.  A fent ismertetett hálózati biztonsági szabályok és az alapértelmezett biztonsági szabály kombinálásával a bejövő forgalmat blokkoló eredmény az, hogy csak az *engedélyezési* művelethez társított forráscím-tartományokból érkező forgalom küldhet forgalmat a-ben futó alkalmazásokba App Service Environment.
+A hálózati biztonsági csoport rendelkezik egy alapértelmezett biztonsági szabállyal, amely megtagadja az összes külső forgalom elérését.  A fent ismertetett hálózati biztonsági szabályok és az alapértelmezett biztonsági szabály kombinálásával a bejövő forgalmat blokkoló eredmény az, hogy csak az *engedélyezési* művelethez társított forráscím-tartományokból érkező forgalom küldhet forgalmat a app Service Environment futó alkalmazásokba.
 
 A hálózati biztonsági csoport biztonsági szabályokkal való feltöltése után hozzá kell rendelni a App Service Environmentt tartalmazó alhálózathoz.  A hozzárendelési parancs arra a virtuális hálózatra hivatkozik, ahol a App Service Environment található, valamint annak az alhálózatnak a nevét, ahol a App Service Environment létrejött.  
 
@@ -110,13 +103,13 @@ A teljesség kedvéért a következő példa azt mutatja be, hogyan távolíthat
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Remove-AzureNetworkSecurityGroupFromSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
 ## <a name="special-considerations-for-explicit-ip-ssl"></a>Speciális szempontok explicit IP-hez – SSL
-Ha egy alkalmazás explicit IP-SSL-címmel van konfigurálva ( *csak* a nyilvános virtuális ASE érvényesek), a app Service Environment alapértelmezett IP-címének használata helyett a http-és a https-forgalom az alhálózatba más portok között áramlik be. a 80-es és a 443-es portokon kívül.
+Ha egy alkalmazás egy explicit IP-SSL-címmel van konfigurálva ( *csak* a nyilvános VIP-mel rendelkező ASE vonatkozik), a app Service Environment alapértelmezett IP-címének használata helyett a http-és HTTPS-forgalom a 80-es és 443-es portokon kívül más portokon keresztül áramlik az alhálózatba.
 
 Az egyes IP-alapú SSL-címek által használt egyes portok a portál felhasználói felületén találhatók a App Service Environment részletek UX paneljén.  Válassza a "minden beállítás"--> "IP-címek" lehetőséget.  Az "IP-címek" panel a App Service Environment explicit módon konfigurált IP-SSL-címeinek táblázatát jeleníti meg, valamint a speciális portszámot, amely az egyes IP-címekhez kapcsolódó HTTP-és HTTPS-forgalom irányítására szolgál.  Ezt a portszámot kell használni a DestinationPortRange paraméterekhez a hálózati biztonsági csoport szabályainak konfigurálásakor.
 
 Ha egy adatszolgáltatón belüli alkalmazás IP-SSL használatára van konfigurálva, a külső ügyfelek nem látják, és nem kell aggódniuk a speciális port párok leképezésével kapcsolatban.  Az alkalmazások felé irányuló forgalom általában a beállított IP-SSL-címen fog folyni.  A speciális portra való fordítás automatikusan történik a beléptetési forgalomnak a központot tartalmazó alhálózatba való útválasztási utolsó szakasza során. 
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 App Service környezetek használatának megkezdéséhez tekintse [meg a app Service Environment bemutatása][IntroToAppServiceEnvironment] című témakört.
 
 Az alkalmazásoknak a háttér-erőforráshoz való biztonságos csatlakozásának App Service Environmentáról a következő témakörben talál további információt: [biztonságos csatlakozás a háttérbeli erőforrásokhoz egy app Service Environment][SecurelyConnecttoBackend]

@@ -1,30 +1,23 @@
 ---
-title: A App Service Environment v1 – Azure bemutatása
-description: Ismerkedjen meg a App Service Environment v1 szolgáltatással, amely biztonságos, VNet és dedikált méretezési egységeket biztosít az összes alkalmazás futtatásához.
-services: app-service
-documentationcenter: ''
+title: Bevezetés a bevezető v1-be
+description: A App Service Environment v1 funkcióinak megismerése. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 32450d0c5fbb5599b286921b9653ae68faf40ecf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070158"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687362"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>A App Service Environment v1 bemutatása
 
 > [!NOTE]
-> Ez a cikk a App Service Environment v1-es verzióról szól.  A App Service Environment újabb verziója könnyebben használható, és nagyobb teljesítményű infrastruktúrán fut. Ha többet szeretne megtudni az új verzióról, kezdje a [app Service Environment](intro.md)bevezetésével.
+> Ez a cikk a App Service Environment v1-es verzióról szól.  A App Service Environment újabb verziója könnyebben használható, és nagyobb teljesítményű infrastruktúrán fut. Ha többet szeretne megtudni az új verzióról, kezdje a [app Service Environment bevezetésével](intro.md).
 
 ## <a name="overview"></a>Áttekintés
 
@@ -67,7 +60,7 @@ Az App Service Environment által támogatott számítási erőforrások méret�
 
 ## <a name="virtual-network-support"></a>Virtual Network támogatás
 
-App Service Environment hozható létre Azure Resource Manager virtuális hálózaton **vagy** egy klasszikus üzemi modell virtuális hálózatban ([További információ a virtuális hálózatokról][MoreInfoOnVirtualNetworks]).  Mivel egy App Service Environment mindig létezik egy virtuális hálózatban, és pontosabban a virtuális hálózat alhálózatán belül, a virtuális hálózatok biztonsági funkcióit kihasználva vezérelheti a bejövő és a kimenő hálózati kommunikációt is.  
+App Service Environment hozható létre Azure Resource Manager virtuális hálózaton **vagy** **egy klasszikus** üzemi modell virtuális hálózatban ([További információ a virtuális hálózatokról][MoreInfoOnVirtualNetworks]).  Mivel egy App Service Environment mindig létezik egy virtuális hálózatban, és pontosabban a virtuális hálózat alhálózatán belül, a virtuális hálózatok biztonsági funkcióit kihasználva vezérelheti a bejövő és a kimenő hálózati kommunikációt is.  
 
 Egy App Service Environment lehet egy nyilvános IP-címmel vagy egy belső, csak az Azure belső Load Balancer (ILB) címmel rendelkező internetkapcsolat.
 
@@ -77,7 +70,7 @@ Az alkalmazásoknak gyakran kell hozzáférniük vállalati erőforrásokhoz, p�
 
 A virtuális hálózatokkal és a helyszíni hálózatokkal App Service környezetek működésével kapcsolatos további információkért lásd a [hálózati architektúrával][NetworkArchitectureOverview], a [Bejövő forgalom szabályozásával][ControllingInboundTraffic]és a [háttérrendszer biztonságos csatlakoztatásával][SecurelyConnectingToBackends]kapcsolatos alábbi cikkeket. 
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 App Service környezetek megismeréséhez tekintse meg a [app Service Environment létrehozása][HowToCreateAnAppServiceEnvironment] című témakört.
 
