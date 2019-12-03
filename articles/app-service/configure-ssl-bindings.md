@@ -1,24 +1,17 @@
 ---
-title: Egyéni DNS-név biztonságossá tétele SSL-kötéssel – Azure App Service | Microsoft Docs
-description: Megtudhatja, hogyan vásárolhat egy App Service tanúsítványt, és hogyan köthető a App Service alkalmazáshoz
-services: app-service
-author: cephalin
-manager: gwallace
+title: Egyéni DNS biztonságossá tétele SSL-kötéssel
+description: Biztonságos HTTPS-hozzáférés az egyéni tartományhoz egy tanúsítványhoz tartozó TLS/SSL-kötés létrehozásával. Javítsa a webhely biztonságát a HTTPS vagy a TLS 1,2 betartatásával.
 tags: buy-ssl-certificates
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 10/25/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 259a4d33ba6e8c072f8df906da4784119b299822
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b967e4cfad2444e39c7df8cfddcc2154bd48367d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501217"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670675"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Egyéni DNS-név biztonságossá tétele SSL-kötéssel Azure App Service
 
@@ -162,7 +155,7 @@ A művelet befejezése után az alkalmazás elutasítja a korábbi TLS-verziój�
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>További erőforrások
+## <a name="more-resources"></a>További források
 
 * [SSL-tanúsítvány használata az alkalmazás kódjában](configure-ssl-certificate-in-code.md)
 * [Gyakori kérdések: App Service tanúsítványok](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

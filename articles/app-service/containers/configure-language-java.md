@@ -1,24 +1,21 @@
 ---
-title: Linuxos Java-alkalmazások konfigurálása – Azure App Service | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhatja a Linuxon Azure App Service futó Java-alkalmazásokat.
+title: Linuxos Java-alkalmazások konfigurálása
+description: Megtudhatja, hogyan konfigurálhat egy előre elkészített Java-tárolót az alkalmazáshoz. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 keywords: Azure app Service, webalkalmazás, Linux, OSS, Java, Java EE, JavaEE
-services: app-service
 author: bmitchell287
 manager: barbkess
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
+ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9625870132d088bf1de6df06f05f0cac41a1e7fa
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
-ms.translationtype: MT
+ms.openlocfilehash: a3e0bbb414dd1f47e70de6b7a25a84a2b27c0dc7
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144233"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671854"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linuxos Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -55,7 +52,7 @@ További információ: [stream-naplók Cloud Shellban](../troubleshoot-diagnosti
 
 Az Azure Portal vagy az [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) -n keresztül történő [alkalmazás-naplózás](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) engedélyezésével beállíthatja, hogy a app Service az alkalmazás szabványos konzoljának kimenetét és standard konzoljának hibáit a helyi fájlrendszerbe vagy az Azure-Blob Storageba írja. A helyi App Service filesystem-példányra való naplózás a konfigurálás után 12 órával le van tiltva. Ha nagyobb adatmegőrzésre van szüksége, konfigurálja úgy az alkalmazást, hogy egy blob Storage-tárolóba írja a kimenetet. A Java-és a Tomcat-alkalmazás naplói a */Home/LogFiles/Application/* könyvtárban találhatók.
 
-Ha az alkalmazás [Logback](https://logback.qos.ch/) vagy [Log4j](https://logging.apache.org/log4j) használ a nyomkövetéshez, ezeket a nyomkövetéseket áttekintheti az Azure [Application Insights-ba Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
+Ha az alkalmazás [Logback](https://logback.qos.ch/) -t vagy [Log4j](https://logging.apache.org/log4j) -t használ a nyomkövetéshez, továbbíthatja ezeket a nyomkövetéseket az Azure Application Insightsba való áttelepítéshez a naplózási keretrendszer konfigurációs utasításait követve, a [Java-nyomkövetési naplók megismeréséhez Application Insights](/azure/application-insights/app-insights-java-trace-logs).
 
 ### <a name="troubleshooting-tools"></a>Hibaelhárítási eszközök
 
@@ -477,7 +474,7 @@ Ha a Spring boot-alkalmazásokban lévő adatforrásokhoz szeretne csatlakozni, 
 
 Erről a témakörről a [Spring boot dokumentációjában](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html) talál további információt az adathozzáférésről és a [külső konfigurációkról](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) .
 
-## <a name="configure-java-ee-wildfly"></a>Configure Java EE (WildFly)
+## <a name="configure-java-ee-wildfly"></a>Java EE konfigurálása (WildFly)
 
 > [!NOTE]
 > A Java Enterprise Edition App Service Linux rendszeren jelenleg előzetes verzióban érhető el. Ez a verem éles munkához **nem** ajánlott.
@@ -618,7 +615,7 @@ A következő lépések ismertetik a meglévő App Service és adatbázis össze
 
 6. Az Azure CLI-vel olyan beállításokat adhat hozzá az App Servicehoz, amelyek az adatbázis-kapcsolódási adatokat tárolják. Cserélje le a `<resource group>` és a `<webapp name>` értéket a App Service által használt értékekre. Cserélje le `<database server name>`, `<database name>`, `<admin name>`és `<admin password>` az adatbázis-kapcsolatok adataira. A App Service és az adatbázis adatai a Azure Portalból szerezhetők be.
 
-    **PostgreSQL:**
+    **PostgreSQL**
 
     ```bash
     az webapp config appsettings set \
@@ -630,7 +627,7 @@ A következő lépések ismertetik a meglévő App Service és adatbázis össze
             DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
     ```
 
-    **MySQL:**
+    **MySQL**
 
     ```bash
     az webapp config appsettings set \
@@ -716,7 +713,7 @@ A Tomcat és a Redis használatához konfigurálnia kell az alkalmazást egy [Pe
 
 1. Nyisson meg egy bash-terminált, és a `export <variable>=<value>` használatával állítsa be az alábbi környezeti változók mindegyikét.
 
-    | Változó                 | Érték                                                                      |
+    | Változó                 | Value (Díj)                                                                      |
     |--------------------------|----------------------------------------------------------------------------|
     | RESOURCEGROUP_NAME       | Az App Service példányt tartalmazó erőforráscsoport neve.       |
     | WEBAPP_NAME              | Az App Service-példány neve.                                     |
@@ -851,7 +848,7 @@ A főbb biztonsági rések javításait és javításait a rendszer azonnal fels
 
 Ha egy támogatott Java-futtatókörnyezet megszűnik, az érintett futtatókörnyezetet használó Azure-fejlesztők elavult értesítést kapnak a futtatókörnyezet kivonása előtt legalább hat hónappal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Látogasson el az Azure [for Java Developers](/java/azure/) Center webhelyre, ahol megtalálhatja az Azure rövid útmutatók, oktatóanyagok és a Java-dokumentációt.
 

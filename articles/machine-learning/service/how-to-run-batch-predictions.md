@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 3613639b43db1cd5310a7ea5d7fa18f34e22ed44
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 62a2c3324df70c7ccdbbac273d314ff94cbb7b9a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276729"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671564"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-következtetés futtatása nagy mennyiségű adattal a Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Ebben az útmutatóban a következő feladatokat ismerheti meg:
 
 * A saját környezetének és függőségeinek kezeléséhez tekintse meg a saját környezet konfigurálásának [útmutatója](how-to-configure-environment.md) című témakört. Futtassa `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` a környezetben a szükséges függőségek letöltéséhez.
 
-## <a name="set-up-machine-learning-resources"></a>Állítsa be a machine learning-erőforrások
+## <a name="set-up-machine-learning-resources"></a>Gépi tanulási erőforrások beállítása
 
 A következő műveletek a Batch-következtetési folyamat futtatásához szükséges erőforrásokat határozzák meg:
 
@@ -255,7 +255,7 @@ batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
 batch_env.docker.enabled = True
-batch_env.docker.base_image = DEFAULT_CPU_IMAGE
+batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 batch_env.spark.precache_packages = False
 ```
 
@@ -292,7 +292,7 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>A folyamat lépés létrehozása
+### <a name="create-the-pipeline-step"></a>A folyamat lépésének létrehozása
 
 Hozza létre a folyamat lépéseit a parancsfájl, a környezeti konfiguráció és a paraméterek használatával. Adja meg a munkaterülethez már csatolt számítási célt a parancsfájl végrehajtásának céljaként. A `ParallelRunStep` használatával hozza létre a Batch következtetési folyamatának lépését, amely a következő paramétereket veszi figyelembe:
 - `name`: a lépés neve a következő elnevezési korlátozásokkal: Unique, 3-32 karakter és regex ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.
@@ -335,7 +335,7 @@ pipeline_run = Experiment(ws, 'digit_identification').submit(pipeline)
 
 A Batch-következtetési feladatok végrehajtása hosszú időt is igénybe vehet. Ez a példa egy Jupyter Widget használatával figyeli a folyamat előrehaladását. A feladatok előrehaladását a használatával is kezelheti:
 
-* Az Azure Machine Learning Studióban. 
+* Azure Machine Learning Studio. 
 * Konzol kimenete a [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) objektumból.
 
 ```python

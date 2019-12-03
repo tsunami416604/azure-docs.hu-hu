@@ -1,24 +1,15 @@
 ---
-title: ASP.NET-alkalmazás létrehozása Windows-tárolóval (előzetes verzió) – Azure App Service | Microsoft Docs
-description: Megtudhatja, hogyan helyezhet üzembe egyéni Windows-tárolókat Azure App Service és hogyan helyezhet üzembe egyéni szoftvereket a tárolóban.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.topic: quickstart
+title: 'Oktatóanyag: örökölt alkalmazás tárolóval (előzetes verzió)'
+description: Megtudhatja, hogyan telepíthet át egyéni Windows-tárolókat Azure App Serviceba, és hogyan helyezhet üzembe egyéni szoftvereket a tárolóban.
+ms.topic: tutorial
 ms.date: 10/22/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6f9005b0e73e60bf479d0d3c059c301668f3b848
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5fc65a4d3f9989ac462d7716b7652a1011281413
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787314"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671983"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>ASP.NET-alkalmazás áttelepítése az Azure App Service szolgáltatásba egy Windows-tároló (előzetes verzió) használatával
 

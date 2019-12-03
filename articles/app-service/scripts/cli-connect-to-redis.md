@@ -1,31 +1,24 @@
 ---
-title: Az Azure CLI Példaszkript – alkalmazás csatlakoztatása az Azure Cache redis |} A Microsoft Docs
-description: Az Azure CLI Példaszkript – alkalmazás csatlakoztatása az Azure Cache redis
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'CLI: alkalmazás összekötése a Redis'
+description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a minta bemutatja, hogyan csatlakoztatható egy alkalmazás egy Azure cache-hez a Redis-hez.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: bc8345b2-8487-40c6-a91f-77414e8688e6
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 87e4e56e429039d943d85fe74003edb8cb148cac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5654ea8c0333e21421e0f9c55cc00d70a7be567
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136865"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688429"
 ---
-# <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>Az App Service alkalmazás csatlakoztatása az Azure Cache a redis CLI-vel
+# <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>App Service-alkalmazás összekötése egy Azure cache-Redis a CLI használatával
 
-Ez a példaszkript egy Azure Cache a Redis és a egy App Service-alkalmazást hoz létre. Ezután Alkalmazásbeállítások használatával az alkalmazás az Azure Cache redis hivatkozásokat.
+Ez a példa egy Azure cache-t hoz létre a Redis és egy App Service alkalmazáshoz. Ezután az alkalmazás beállításainak használatával összekapcsolja az Azure cache-t az alkalmazás Redis.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -41,18 +34,18 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja egy erőforráscsoport, az App Service-alkalmazás, a Redis Azure Cache létrehozása és az összes kapcsolódó erőforrás. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, egy App Service alkalmazás, az Azure cache for Redis és az összes kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
-| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | Hozzon létre új Azure Cache a Redis-példányt. |
-| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | A Redis-példányt az Azure Cache elérési kulcsainak listázása. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Létrehozza vagy frissíti az App Service-alkalmazások tartozó alkalmazásbeállítást. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
+| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | Hozzon létre új Azure cache-t a Redis-példányhoz. |
+| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | A Redis-példányhoz tartozó Azure cache elérési kulcsainak listázása. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Egy App Service alkalmazás alkalmazás-beállításainak létrehozása vagy frissítése. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
