@@ -45,7 +45,7 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/azure-maps/tutorial-geofence">Geokerítés beállítása</a>
-          - html: <a href="/azure-maps/tutorial-iot-hub-maps">Térelemzés</a>
+          - html: <a href="/azure/azure-maps/tutorial-iot-hub-maps">Térelemzés</a>
           - html: <a href=/azure/azure-maps/tutorial-ev-routing">EV-útválasztás az Azure Notebooks használatával (Python)</a>
   - title: Referencia
     items:

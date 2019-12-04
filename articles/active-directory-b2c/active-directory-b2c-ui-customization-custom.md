@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ef4ddc422041de623b96f3a0c85f067427cacd7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 2f0e13b4e68ee4b94a254cb8497a44cc0b8b470f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374225"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209450"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Testre szabhatja az alkalmazás felhasználói felületét egy egyéni házirend használatával Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ A következőképpen működik: Azure AD B2C futtatja a kódot az ügyfél böng
 
 Hozzon létre HTML-tartalmat a termék márkájának nevében.
 
-1. Másolja a következő HTML-kódrészletet. Jól formázott HTML5 egy olyan üres elemmel, amelynek neve *\<div id = "API" \> @ no__t-3/div @ no__t-4* a *\<body @ no__t-7* címkén belül található. Ez az elem azt jelzi, hogy hol kell beszúrni Azure AD B2C tartalmat.
+1. Másolja a következő HTML-kódrészletet. Jól formázott HTML5, amely egy *\<div id = "API" nevű üres elemmel rendelkezik\>\</div\>* a *\<törzs\>* címkén belül található. Ez az elem azt jelzi, hogy hol kell beszúrni Azure AD B2C tartalmat.
 
    ```html
    <!DOCTYPE html>
@@ -56,14 +56,14 @@ Hozzon létre HTML-tartalmat a termék márkájának nevében.
 > [!NOTE]
 > A HTML-űrlap elemei a biztonsági korlátozások miatt törlődnek, ha login.microsoftonline.com használ. Ha HTML-űrlap elemeket szeretne használni az egyéni HTML-tartalomban, használja a b2clogin.com-t. További előnyöket a [B2clogin.com használata](b2clogin.md) című témakörben talál.
 
-## <a name="create-an-azure-blob-storage-account"></a>Azure Blob Storage-fiók létrehozása
+## <a name="create-an-azure-blob-storage-account"></a>Azure Blob storage-fiók létrehozása
 
 >[!NOTE]
 > Ebben a cikkben az Azure Blob Storage-t használjuk a tartalom üzemeltetéséhez. Dönthet úgy, hogy webkiszolgálón üzemelteti a tartalmat, de engedélyeznie kell a [CORS a webkiszolgálón](https://enable-cors.org/server.html).
 
 Ha ezt a HTML-tartalmat a blob Storage-ban szeretné tárolni, hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A **központi** menüben válassza az **új** > **Storage** > **Storage-fiók**lehetőséget.
 1. Válasszon egy **előfizetést** a Storage-fiókjához.
 1. Hozzon létre egy **erőforráscsoportot** , vagy válasszon ki egy meglévőt.
@@ -93,15 +93,15 @@ Ha nyilvános tárolót szeretne létrehozni a blob Storage-ban, hajtsa végre a
 1. Válassza a **Feltöltés** lehetőséget.
 1. Válassza ki a feltöltött **Customize-UI. html** blobot.
 1. Az **URL-cím** szövegmező jobb oldalán válassza a **Másolás vágólapra** ikont az URL-cím vágólapra másolásához.
-1. A böngészőben nyissa meg a vágólapra másolt URL-címet, és ellenőrizze, hogy a feltöltött blob elérhető-e. Ha nem érhető el, például ha `ResourceNotFound` hibába ütközik, győződjön meg arról, hogy a tároló hozzáférési típusa **blob**.
+1. A böngészőben nyissa meg a vágólapra másolt URL-címet, és ellenőrizze, hogy a feltöltött blob elérhető-e. Ha nem érhető el, például ha `ResourceNotFound` hibát tapasztal, győződjön meg arról, hogy a tároló hozzáférési típusa **blob**.
 
 ## <a name="configure-cors"></a>A CORS konfigurálása
 
 Az alábbi lépések végrehajtásával konfigurálja a blob Storage-t az idegen eredetű erőforrás-megosztáshoz:
 
 1. A menüben válassza a **CORS**lehetőséget.
-1. Az **engedélyezett eredetek**mezőbe írja be a következőt: `https://your-tenant-name.b2clogin.com`. Cserélje le a `your-tenant-name` értéket a Azure AD B2C bérlő nevére. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor az összes kisbetűs betűt kell használnia.
-1. Az **engedélyezett módszerek**esetében válassza az `GET` és a `OPTIONS` lehetőséget.
+1. Az **engedélyezett eredetek**mezőben adja meg a `https://your-tenant-name.b2clogin.com`. Cserélje le a `your-tenant-name`t a Azure AD B2C bérlő nevére. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor az összes kisbetűs betűt kell használnia.
+1. Az **engedélyezett módszerek**esetében válassza a `GET` és a `OPTIONS`lehetőséget.
 1. Az **engedélyezett fejlécek**mezőbe írjon be egy csillagot (*).
 1. A közzétett **fejlécek**esetében írjon be egy csillagot (*).
 1. A **Max Age**értéknél adja meg a 200 értéket.
@@ -119,11 +119,11 @@ Ellenőrizze, hogy készen áll-e a következő lépések végrehajtásával:
 
 A felhasználói felület testreszabásának konfigurálásához másolja a **ContentDefinition** és annak alárendelt elemeit az alapfájlból a kiterjesztések fájlba.
 
-1. Nyissa meg a szabályzat alapfájlját. Például: <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> . Ez az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Nyissa meg a szabályzat alapfájlját. Például <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> . Ez az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Keresse meg és másolja a **ContentDefinitions** elem teljes tartalmát.
 1. Nyissa meg a kiterjesztési fájlt. Például: *TrustFrameworkExtensions. XML*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
 1. Illessze be a **ContentDefinitions** elem teljes tartalmát, amelyet a **BuildingBlocks** elem gyermekeiként másolt.
-1. Keressen rá a **ContentDefinition** elemre, amely a másolt XML-ben a `Id="api.signuporsignin"` elemet tartalmazza.
+1. Keresse meg a **ContentDefinition** elemet, amely a másolt XML-ben `Id="api.signuporsignin"` tartalmaz.
 1. Módosítsa a **tartalomdefinícióban** értékét a Storage-ba feltöltött HTML-fájl URL-címére. Például: `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
 
     Az egyéni szabályzatnak a következőhöz hasonlóan kell kinéznie:
@@ -160,7 +160,7 @@ A felhasználói felület testreszabásának konfigurálásához másolja a **Co
 1. Válassza ki a feltöltött egyéni szabályzatot, majd kattintson a **Futtatás most** gombra.
 1. Regisztrálnia kell egy e-mail-cím használatával.
 
-## <a name="reference"></a>Leírások
+## <a name="reference"></a>Referencia
 
 ### <a name="sample-templates"></a>Példasablonok
 A felhasználói felület testreszabásához itt talál példákat:
@@ -181,16 +181,16 @@ A sample_templates/Wingtip mappa a következő HTML-fájlokat tartalmazza:
 
 A példa a következőképpen használható:
 
-1. A tárház klónozása a helyi gépen. Válasszon egy sablon mappát a sample_templates területen. Használhatja a `wingtip` vagy a `contoso` értéket.
-1. Töltse fel az összes fájlt a `css`, `fonts` és `images` mappából a blob Storage-ba az előző szakaszokban leírtak szerint.
-1. Ezután nyissa meg az egyes @no__t -0. html fájlt a `wingtip` vagy a `contoso` (amelyik az első lépésben van kiválasztva), és cserélje le a "http://localhost" összes példányát a 2. lépésben feltöltött CSS, images és Fonts fájlok URL-címeire.
-1. Mentse a @no__t -0. html fájlt, és töltse fel őket a blob Storage-ba.
+1. A tárház klónozása a helyi gépen. Válasszon egy sablon mappát a sample_templates alatt. `wingtip` vagy `contoso`is használható.
+1. Töltse fel az `css`, `fonts`és `images` mappák mappában található összes fájlt a blob Storage-ba az előző szakaszokban leírtak szerint.
+1. Ezután nyissa meg az egyes \*. html fájlokat `wingtip` vagy `contoso` gyökerében (amelyik az első lépésben van kiválasztva), és cserélje le a "http://localhost" összes példányát a CSS, a képek és a 2. lépésben feltöltött fájlok URL-címeire.
+1. Mentse a \*. html fájlokat, és töltse fel őket a blob Storage-ba.
 1. Most módosítsa a kiterjesztések fájlt, ahogy azt korábban már említettük a [kiterjesztések fájl módosításakor](#modify-the-extensions-file).
-1. Ha a hiányzó betűkészleteket, képeket vagy CSS-ket látja, tekintse át a hivatkozásokat a kiterjesztések házirendben és a @no__t -0. html fájlban.
+1. Ha nem látja a hiányzó betűkészleteket, képeket vagy CSS-ket, tekintse át a hivatkozásokat a kiterjesztések házirendben és a \*. html fájlban.
 
 ### <a name="content-definition-ids"></a>Tartalom-definíciós azonosítók
 
-A regisztrálási vagy bejelentkezési egyéni házirend módosítása szakaszban a `api.idpselections` tartalom definícióját konfigurálta. A Azure AD B2C Identity Experience Framework által felismert és a leírások teljes készletét a következő táblázat tartalmazza:
+A regisztrálási vagy bejelentkezési egyéni házirend módosítása szakaszban konfigurálta a `api.idpselections`tartalmának definícióját. A Azure AD B2C Identity Experience Framework által felismert és a leírások teljes készletét a következő táblázat tartalmazza:
 
 | Tartalom definíciójának azonosítója | Leírás |
 |-----------------------|-------------|
@@ -207,4 +207,4 @@ A regisztrálási vagy bejelentkezési egyéni házirend módosítása szakaszba
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a testreszabható felhasználói felületi elemekről: [útmutató a beépített szabályzatok felhasználói felületének testreszabásához](active-directory-b2c-reference-ui-customization.md).
+További információ a testreszabható felhasználói felületi elemekről: [útmutató a felhasználói folyamatokhoz használható felhasználói felület testreszabásához](active-directory-b2c-reference-ui-customization.md).

@@ -46,10 +46,10 @@
         - name: 2. Felhasználói adatok kinyerése
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+        - name: 3. Hangulat lekérése a felhasználó által kimondott szövegekből
+          href: tutorial-publish-settings.md
     - name: Alkalmazás létrehozása
       items:
-        - name: Hangulat lekérése a felhasználó által kimondott szövegekből
-          href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: Helyesen formázott adatok lekérése reguláris kifejezésekkel
           href: luis-quickstart-intents-regex-entity.md
         - name: Pontos szövegegyezések lekérése listákkal

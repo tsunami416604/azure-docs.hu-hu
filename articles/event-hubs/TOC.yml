@@ -168,7 +168,7 @@
           href: configure-customer-managed-key.md
     - name: Hibaelhárítás
       items:
-        - name: Kivételek
+        - name: Hibaelhárítási útmutató
           href: event-hubs-messaging-exceptions.md
 - name: Referencia
   items:
