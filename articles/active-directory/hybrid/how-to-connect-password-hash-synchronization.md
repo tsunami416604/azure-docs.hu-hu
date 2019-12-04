@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e77368c7c0c104e777595a16735a7cf1e797a48
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: dfb4b7d2cb34855208eb54c6d30b29e4bbff636b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539012"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766616"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszó-kivonatolási szinkronizálás implementálása Azure AD Connect szinkronizálással
 Ez a cikk azokat az információkat tartalmazza, amelyekkel szinkronizálhatja a felhasználói jelszavakat egy helyszíni Active Directory-példányról egy felhőalapú Azure Active Directory-(Azure AD-) példányra.
@@ -123,13 +123,9 @@ Figyelmeztetés: ha vannak olyan szinkronizált fiókok, amelyeknek az Azure AD-
   
 Az ideiglenes jelszó funkció segítségével biztosítható, hogy a hitelesítő adatok tulajdonjogának átruházása az első használatnál legyen elvégezve, hogy minimálisra csökkentse azt az időtartamot, ameddig több személy ismeri a hitelesítő adatokat.
 
-Az Azure AD-ben a szinkronizált felhasználók ideiglenes jelszavainak támogatásához engedélyezheti a *ForcePasswordResetOnLogonFeature* szolgáltatást, ha az alábbi parancsot futtatja a Azure ad Connect-kiszolgálón, és lecseréli a <AAD Connector Name> a környezetéhez tartozó összekötő nevére:
+Az Azure AD-ben a szinkronizált felhasználók számára az ideiglenes jelszavak támogatásához engedélyezheti a *ForcePasswordResetOnLogonFeature* szolgáltatást a következő parancs futtatásával a Azure ad Connect-kiszolgálón:
 
-`Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
-
-Az összekötő nevét az alábbi parancs használatával állapíthatja meg:
-
-`(Get-ADSyncConnector | where{$_.ListName -eq "Windows Azure Active Directory (Microsoft)"}).Name`
+`Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
 
 Figyelmeztetés: a következő bejelentkezéskor a felhasználónak a jelszavuk módosítására való kényszerítéséhez egy időben kell módosítani a jelszót.  Az Active Directory-csatlakozás nem fogja tudni felvenni a kényszerített jelszó-módosítási jelzőt önmagában, a jelszó-kivonat szinkronizálásakor előforduló észlelt jelszó-módosítással kiegészítve.
 

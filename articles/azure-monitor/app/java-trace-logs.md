@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: 23e3116a0cc3283191d00079e0926dc206e677f0
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a1a0a1462c8a4e52a065eafad315aab3ddae5f3b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819336"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784595"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Ismerkedjen meg a Java-nyomkövetési naplók Application Insights
 Ha a nyomkövetéshez Logback vagy Log4J (v 1.2 vagy v 2.0) használ, a nyomkövetési naplókat automatikusan elküldheti Application Insights ahol megtekintheti és megkeresheti őket.
@@ -22,27 +22,41 @@ Ha a nyomkövetéshez Logback vagy Log4J (v 1.2 vagy v 2.0) használ, a nyomköv
 
 ## <a name="using-the-application-insights-java-agent"></a>A Application Insights Java-ügynök használata
 
-A Application Insights Java-ügynököt úgy is beállíthatja, hogy automatikusan rögzítse a naplókat a szolgáltatásnak a `AI-Agent.xml` fájlban való engedélyezésével:
+Alapértelmezés szerint a Application Insights Java-ügynök automatikusan rögzíti a naplózást a `WARN` szinten és felett.
+
+A `AI-Agent.xml` fájl használatával rögzített naplózási küszöbértéket módosíthatja:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsightsAgent>
    <Instrumentation>
-      <BuiltIn enabled="true">
-         <Logging enabled="true" />
+      <BuiltIn>
+         <Logging threshold="info"/>
       </BuiltIn>
    </Instrumentation>
-   <AgentLogger />
 </ApplicationInsightsAgent>
 ```
 
-Azt is megteheti, hogy az alábbi utasításokat követi.
+A Java-ügynök naplózási rögzítését a `AI-Agent.xml` fájl használatával tilthatja le:
 
-## <a name="install-the-java-sdk"></a>A Java SDK telepítése
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging enabled="false"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>Másik lehetőségként (a Java-ügynök használata helyett) kövesse az alábbi utasításokat.
+
+### <a name="install-the-java-sdk"></a>A Java SDK telepítése
 
 Ha még nem tette meg, kövesse az utasításokat a [Java Application INSIGHTS SDK][java]telepítéséhez.
 
-## <a name="add-logging-libraries-to-your-project"></a>Naplózási kódtárak hozzáadása a projekthez
+### <a name="add-logging-libraries-to-your-project"></a>Naplózási kódtárak hozzáadása a projekthez
 *Válassza ki a projektnek megfelelő módszert.*
 
 #### <a name="if-youre-using-maven"></a>Ha Mavent használ...
@@ -123,7 +137,7 @@ Kövesse az irányelveket a Application Insights Java SDK manuális telepítés�
 | Log4j 2.0-s verzió |[Log4J v 1.2 hozzáfűzése jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights – naplózás – log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>A hozzáfűzése hozzáadása a naplózási keretrendszerhez
+### <a name="add-the-appender-to-your-logging-framework"></a>A hozzáfűzése hozzáadása a naplózási keretrendszerhez
 A nyomkövetési lépések elindításához egyesítse a megfelelő kódrészletet a Log4J vagy a Logback konfigurációs fájlba: 
 
 *Logback*

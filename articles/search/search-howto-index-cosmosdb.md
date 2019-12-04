@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 33c26ff15095928d6050a77794b74480e364bfb6
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9301da884e26a65b198c885000159c383655b2d5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707760"
+ms.locfileid: "74771462"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB adatai indexelése az Azure-ban indexelő használatával Cognitive Search 
 
@@ -294,7 +294,7 @@ Az általánosan elérhető .NET SDK teljes paritással rendelkezik az általán
 
 ## <a name="indexing-changed-documents"></a>Módosított dokumentumok indexelése
 
-Az adatváltozás-észlelési szabályzat célja, hogy hatékonyan azonosítsa a módosított adatelemeket. Jelenleg az egyetlen támogatott szabályzat a `High Water Mark` szabályzat, amely a Azure Cosmos DB által megadott `_ts` (timestamp) tulajdonságot használja, amely a következőképpen van megadva:
+Az adatváltozás-észlelési szabályzat célja, hogy hatékonyan azonosítsa a módosított adatelemeket. Jelenleg az egyetlen támogatott szabályzat a [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) a Azure Cosmos db által megadott `_ts` (timestamp) tulajdonsággal, amely a következőképpen van megadva:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",

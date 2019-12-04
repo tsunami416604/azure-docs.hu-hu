@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 9aa41e63c275737874d57ba016e297a64f3eb124
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823021"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791350"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Kereskedelmi piactér tranzakciós képességei és szempontjai
 
@@ -66,7 +66,7 @@ A használt tranzakciós lehetőségtől függően a közzétevő szoftverlicenc
 
 * Utólagos elszámolás: a szoftveres licencelési díjak a felhasznált Azure-infrastruktúra alapján óránkénti (vCPU) díjszabás szerint jelennek meg. Ez csak Virtual Machines és Azure-alkalmazásokra vonatkozik.
 
-* • Előfizetés díjszabása: a szoftverlicenc-díj a havi vagy éves, ismétlődő díj, amely átalányként vagy munkaállomásonkéntiként van feltüntetve. Ez csak az SaaS-alkalmazásokra és az Azure-alkalmazások által felügyelt alkalmazásokra vonatkozik.
+* Az előfizetés díjszabása: a szoftverlicenc-díj havi vagy éves, ismétlődő díj, amely átalányként vagy ülőhelyként van kiszámlázva. Ez csak az SaaS-alkalmazásokra és az Azure-alkalmazások által felügyelt alkalmazásokra vonatkozik.
 
 * Ingyenes szoftver próbaverziója: a szoftveres licencek díjmentesek, 30 vagy 90 napig.
 
@@ -182,7 +182,7 @@ Ha az ügyfél Nagyvállalati Szerződés használatával vásárol:
 |Rendelési időszak | Augusztus 15., 2018-augusztus 30., 2018 |
 |Befejezési időszak (negyedév) | Szeptember 30., 2018 |
 |Számlázási dátum | Október 15., 2018 |
-|Letéti időszak (csak bankkártyák, 30 nap) | n/a |
+|Letéti időszak (csak bankkártyák, 30 nap) | – |
 |Gyűjtési időszak kezdete | Október 15., 2018 |
 |Gyűjtési időszak vége (maximum, 90 nap) | Jan. január 15., 2019 |
 |Ügyfél-fizetési dátum | Dec. 30, 2018 |
@@ -238,7 +238,7 @@ Válassza az ingyenes, a saját licences vagy az utólagos elszámolású modell
 
 Egy vagy több virtuális gépet kell kiépíteni, és a virtuális gép díjszabásának összegével kell lekérnie. Egyetlen csomagban felügyelt alkalmazások esetén a virtuális gépek díjszabása helyett egy átalánydíjas havi előfizetés is kiválasztható a díjszabási modellként. Bizonyos esetekben az Azure-infrastruktúra használati díjait a rendszer külön adja át az ügyfélnek a szoftverlicenc-díjaktól, de ugyanarra a számlázási utasításra. Ha azonban a felügyelt alkalmazáshoz az ISV-infrastruktúra díjait konfigurálja, az Azure-erőforrások számlázása a kiadóra történik, és az ügyfél egy átalánydíjas díjat kap, amely magában foglalja az infrastruktúra, a szoftverlicenc és a felügyeleti szolgáltatások költségeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az ajánlat kiválasztásának és konfigurálásának véglegesítéséhez tekintse át a támogathatósági követelményeket a közzétételi beállítások az ajánlat típusa szerint szakaszban.
 * Tekintse át a közzétételi mintákat a kirakati példákkal, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.

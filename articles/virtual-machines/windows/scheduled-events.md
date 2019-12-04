@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 7889ee66ec80ee0b77b92efc5755e1a84a5cbf04
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f6e3e370201b49da149c09d87ed7cec63fef8ebf
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073287"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792249"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events a Windows rendszerű virtuális gépekhez
 
@@ -47,9 +47,9 @@ Scheduled Events a következő használati esetekben nyújt eseményeket:
 - [Platform által kezdeményezett karbantartás](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates) (például virtuális gép újraindítása, élő áttelepítés vagy memória megőrzése a gazdagépen)
 - Csökkentett teljesítményű hardver
 - A felhasználó által kezdeményezett karbantartás (például a felhasználó újraindítja vagy újratelepíti a virtuális gépet)
-- [Alacsony prioritású virtuális gépek kizárása](https://azure.microsoft.com/blog/low-priority-scale-sets) a méretezési csoportokban
+- [Helyszíni virtuális gép](spot-vms.md) és [direktszín-méretezési csoport](../../virtual-machine-scale-sets/use-spot.md) példányainak kizárása
 
-## <a name="the-basics"></a>Alapismeretek  
+## <a name="the-basics"></a>Az alapok  
 
 Az Azure metaadat-szolgáltatás a virtuális gépről elérhető REST-végpont használatával teszi elérhetővé Virtual Machines futtatásával kapcsolatos információkat. Az információ nem irányítható IP-címen keresztül érhető el, hogy a virtuális gépen kívülről ne legyen kitéve.
 
@@ -63,11 +63,11 @@ Ha a virtuális gép nem egy Virtual Networkon belül jön létre, a Cloud Servi
 ### <a name="version-and-region-availability"></a>Verzió és régió elérhetősége
 A Scheduled Events szolgáltatás verziója. A verziók megadása kötelező, és az aktuális verzió `2017-11-01`.
 
-| Verzió | Kiadás típusa | Regions | Kibocsátási megjegyzések | 
+| Verzió | Kiadás típusa | Térségek | Kibocsátási megjegyzések | 
 | - | - | - | - |
-| 2017-11-01 | Általános rendelkezésre állás | Összes | <li> Az alacsony prioritású virtuális gép kizárásának támogatása a "megelőzik" EventType<br> | 
-| 2017-08-01 | Általános rendelkezésre állás | Összes | <li> Eltávolított előtagértéke aláhúzás a IaaS virtuális gépek erőforrásainak neveiből<br><li>Metaadatok fejlécére vonatkozó követelmények kényszerítve az összes kérelemhez | 
-| 2017-03-01 | Előzetes verzió | Összes |<li>Kezdeti kiadás
+| 2017-11-01 | Általános rendelkezésre állás | Mind | <li> Az alacsony prioritású virtuális gép kizárásának támogatása a "megelőzik" EventType<br> | 
+| 2017-08-01 | Általános rendelkezésre állás | Mind | <li> Eltávolított előtagértéke aláhúzás a IaaS virtuális gépek erőforrásainak neveiből<br><li>Metaadatok fejlécére vonatkozó követelmények kényszerítve az összes kérelemhez | 
+| 2017-03-01 | Előzetes verzió | Mind |<li>Kezdeti kiadás
 
 > [!NOTE] 
 > Az ütemezett események korábbi előzetes kiadásai ({Latest}) API-verzióként támogatottak. Ez a formátum már nem támogatott, és a jövőben elavulttá válik.
@@ -117,10 +117,10 @@ A DocumentIncarnation egy ETag, és egyszerűen megvizsgálhatja, hogy az esemé
 ### <a name="event-properties"></a>Esemény tulajdonságai
 |Tulajdonság  |  Leírás |
 | - | - |
-| EventId | Az esemény globálisan egyedi azonosítója. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| Napszállta | Az esemény globálisan egyedi azonosítója. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | Ez az esemény okozza a hatását. <br><br> Értékek: <br><ul><li> `Freeze`: a virtuális gép néhány másodpercig szünetelteti az ütemezést. Előfordulhat, hogy a processzor és a hálózati kapcsolat fel van függesztve, de nincs hatással a memóriára vagy a megnyitott fájlokra. <li>`Reboot`: a virtuális gép újraindításra van ütemezve (nem állandó memória elvész). <li>`Redeploy`: a virtuális gép egy másik csomópontra való áthelyezésre van ütemezve (az ideiglenes lemezek elvesznek). <li>`Preempt`: az alacsony prioritású virtuális gép törlődik (az ideiglenes lemezek elvesznek).|
 | ResourceType | Az esemény által gyakorolt erőforrás típusa <br><br> Értékek: <ul><li>`VirtualMachine`|
-| Erőforrások| Az események által gyakorolt erőforrások listája. Ez garantáltan legfeljebb egy [frissítési tartományból](manage-availability.md)származó gépeket tartalmazhat, de nem tartalmazhatja az UD összes számítógépét. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Segédanyagok és eszközök| Az események által gyakorolt erőforrások listája. Ez garantáltan legfeljebb egy [frissítési tartományból](manage-availability.md)származó gépeket tartalmazhat, de nem tartalmazhatja az UD összes számítógépét. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Esemény állapota | Az esemény állapota. <br><br> Értékek: <ul><li>`Scheduled`: ez az esemény a `NotBefore` tulajdonságban megadott idő után indul el.<li>`Started`: ez az esemény megkezdődött.</ul> Még nincs megadva `Completed` vagy hasonló állapot; az eseményt a rendszer a továbbiakban nem adja vissza az esemény befejezésekor.
 | NotBefore| Az az idő, amely után ez az esemény kezdődhet. <br><br> Példa: <br><ul><li> Hétfő, 19 Sep 2016 18:29:47 GMT  |
 
@@ -226,7 +226,7 @@ foreach($event in $scheduledEvents.Events)
 }
 ``` 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - Tekintse meg az Azure Friday [Scheduled Events bemutatóját](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) . 
 - Tekintse át a Scheduled Events kód mintáit az [Azure-példány metaadatainak Scheduled Events GitHub-tárházban](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)

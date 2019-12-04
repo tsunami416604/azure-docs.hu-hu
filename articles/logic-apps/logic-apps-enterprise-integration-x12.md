@@ -1,20 +1,19 @@
 ---
-title: X12-üzenetek a B2B-integrációhoz – Azure Logic Apps
+title: X12 üzenetek a B2B-integrációhoz
 description: Az Exchange X12-üzeneteinek összevonása EDI formátumban a VÁLLALATKÖZI vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/31/2017
-ms.openlocfilehash: 8bc5c458240925af1fdd74ebc9b2d4c3db71fb05
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 77ec5434b83c4246dc448578dcf2902e19f42e95
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679998"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792314"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-üzenetek a B2B vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
 

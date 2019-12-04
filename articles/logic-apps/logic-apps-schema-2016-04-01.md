@@ -1,29 +1,27 @@
 ---
-title: Schema Updates június-1-2016-Azure Logic Apps | Microsoft Docs
+title: Schema Updates június-1-2016
 description: A 2016-06-01-es verzió a Logic app-definíciók esetében Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
-ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 0558c309cc22f39c2ed439b7930443ca0adb071e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385377"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792877"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Séma frissítései Azure Logic Apps – június 1-től 2016
 
 A Azure Logic Apps [frissített sémája](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) és API-verziója olyan kulcsfontosságú funkciókat tartalmaz, amelyek megbízhatóbb és könnyebben használhatóvá teszik a logikai alkalmazásokat:
 
 * A [hatókörök](#scopes) lehetővé teszik műveletek gyűjteményként történő csoportosítását vagy beágyazását.
-* A [feltételek és](#conditions-loops) a hurkok mostantól az első osztályú műveletek.
-* Pontosabb sorrend a műveletek futtatásához a `runAfter` tulajdonsággal, lecserélve`dependsOn`
+* A [feltételek és a hurkok](#conditions-loops) mostantól az első osztályú műveletek.
+* Pontosabb sorrend a műveletek futtatásához a `runAfter` tulajdonsággal, lecserélve `dependsOn`
 
 A logikai alkalmazások 2015-as augusztus 1-től a 2016-es verzióra való frissítéséhez tekintse [meg a frissítés szakaszt](#upgrade-your-schema).
 
@@ -87,7 +85,7 @@ A korábbi sémák verzióiban a feltételek és a hurkok egyetlen művelethez t
 
 ## <a name="runafter-property"></a>"runAfter" tulajdonság
 
-A `runAfter` tulajdonság lecserélésekor `dependsOn`nagyobb pontosságot biztosít, ha az előző műveletek állapota alapján adja meg a műveletek futtatási sorrendjét. A `dependsOn` tulajdonság azt jelzi, hogy "a művelet futott és sikeres volt-e", attól függően, hogy az előző művelet sikeres volt-e, sikertelen vagy kihagyott-e, nem a művelet futtatásához szükséges idő. A `runAfter` tulajdonság rugalmasságot biztosít olyan objektumként, amely az összes művelet nevét adja meg, amely után az objektum fut. Ez a tulajdonság határozza meg az eseményindítóként elfogadható állapotok tömbjét is. Ha például azt szeretné, hogy egy művelet sikeres művelet után fusson, és a B művelet sikeres vagy sikertelen volt-e, állítsa be a `runAfter` következő tulajdonságot:
+A `runAfter` tulajdonság lecseréli az `dependsOn`, így nagyobb pontosságot biztosít a műveletek futtatási sorrendjének megadásakor a korábbi műveletek állapota alapján. A `dependsOn` tulajdonság azt jelzi, hogy "a művelet futott és sikeres volt-e", attól függően, hogy az előző művelet sikeres volt-e, sikertelen vagy kihagyott-e, nem pedig az a szám, ahányszor szeretné futtatni a műveletet. A `runAfter` tulajdonság rugalmasságot biztosít olyan objektumként, amely az összes művelet nevét adja meg, amely után az objektum fut. Ez a tulajdonság határozza meg az eseményindítóként elfogadható állapotok tömbjét is. Ha például azt szeretné, hogy egy művelet sikeres művelet után fusson, és a B művelet sikeres vagy sikertelen volt-e, állítsa be ezt a `runAfter` tulajdonságot:
 
 ```json
 {
@@ -129,7 +127,7 @@ A [legújabb sémára](https://schema.management.azure.com/schemas/2016-06-01/Mi
 
 ### <a name="mapping-conditions"></a>Leképezési feltételek
 
-A frissített definícióban az eszköz a legjobb erőfeszítést teszi az igaz és a hamis ág-műveletek hatókörként való csoportosításához. Pontosabban, a tervező mintázata `@equals(actions('a').status, 'Skipped')` `else` műveletként jelenik meg. Ha azonban az eszköz nem felismerhető mintákat észlel, az eszköz külön feltételeket hozhat létre az igaz és a hamis ág esetében is. Ha szükséges, újra felveheti a műveleteket a frissítés után.
+A frissített definícióban az eszköz a legjobb erőfeszítést teszi az igaz és a hamis ág-műveletek hatókörként való csoportosításához. Pontosabban a `@equals(actions('a').status, 'Skipped')` tervezői mintája `else` műveletként jelenik meg. Ha azonban az eszköz nem felismerhető mintákat észlel, az eszköz külön feltételeket hozhat létre az igaz és a hamis ág esetében is. Ha szükséges, újra felveheti a műveleteket a frissítés után.
 
 #### <a name="foreach-loop-with-condition"></a>"foreach" hurok feltétellel
 
@@ -139,23 +137,23 @@ Az új sémában a szűrés művelettel replikálhatja azt a mintát, amely **mi
 
 A frissítés után a rendszer eltávolítja az erőforrás-címkéket, ezért alaphelyzetbe kell állítania a frissített munkafolyamatot.
 
-## <a name="other-changes"></a>Egyéb módosítások
+## <a name="other-changes"></a>Egyéb változások
 
 ### <a name="renamed-manual-trigger-to-request-trigger"></a>A "Manual" trigger átnevezve a "Request" triggerre
 
-Az `manual` trigger típusa elavult, és a típusra `http`lett átnevezve `request` . Ez a változás nagyobb konzisztenciát eredményez a trigger által felépített minta típusához képest.
+A `manual` trigger típusa elavult, és átnevezve lett a (z) `http`típusú `request`ra. Ez a változás nagyobb konzisztenciát eredményez a trigger által felépített minta típusához képest.
 
 ### <a name="new-filter-action"></a>Új "szűrő" művelet
 
-Ha egy nagyméretű tömböt kisebb készletekre szeretne szűrni, az új `filter` típus fogad egy tömböt és egy feltételt, kiértékeli az egyes elemek feltételeit, és egy tömböt ad vissza, amelyben a feltételnek megfelelő elemek szerepelnek.
+Ha egy nagyméretű tömböt kisebb készletekre szeretne szűrni, az új `filter` típus fogad egy tömböt és egy feltételt, kiértékeli az egyes elemek feltételeit, és visszaadja a feltételnek megfelelő elemeket tartalmazó tömböt.
 
 ### <a name="restrictions-for-foreach-and-until-actions"></a>A "foreach" és a "ig" műveletre vonatkozó korlátozások
 
-A `foreach` és`until` a hurok egyetlen műveletre korlátozódik.
+A `foreach` és `until` hurok egyetlen műveletre korlátozódik.
 
 ### <a name="new-trackedproperties-for-actions"></a>Új "trackedProperties" a műveletekhez
 
-A műveletek most már rendelkezhetnek további tulajdonsággal `trackedProperties`, amely a testvér a és `type` a `runAfter` tulajdonságok. Ez az objektum a munkafolyamat részeként kibocsátott Azure diagnosztikai telemetria felvenni kívánt műveletek bemeneteit és kimeneteit határozza meg. Példa:
+A műveletek most már rendelkezhetnek egy `trackedProperties`nevű további tulajdonsággal, amely a `runAfter` és a `type` tulajdonságaihoz tartozó testvér. Ez az objektum a munkafolyamat részeként kibocsátott Azure diagnosztikai telemetria felvenni kívánt műveletek bemeneteit és kimeneteit határozza meg. Példa:
 
 ``` json
 {
@@ -174,7 +172,7 @@ A műveletek most már rendelkezhetnek további tulajdonsággal `trackedProperti
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Munkafolyamat-definíciók létrehozása logikai alkalmazásokhoz](../logic-apps/logic-apps-author-definitions.md)
 * [A logikai alkalmazások telepítésének automatizálása](logic-apps-azure-resource-manager-templates-overview.md)

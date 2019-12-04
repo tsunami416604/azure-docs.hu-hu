@@ -1,6 +1,6 @@
 ---
-title: Egyoldalas alkalmazás (Váltás az éles környezetben) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazás (Váltás az éles környezetben)
+title: Egyoldalas alkalmazás (áttérés éles környezetbe) – Microsoft Identity platform
+description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazást (áttérés éles környezetbe)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,42 +15,38 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6a04f5d62ec750cfbe44765e833552bd694654d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2dbb481c75323304d71f85a722fc45a9b634055
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65075010"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766106"
 ---
-# <a name="single-page-application---move-to-production"></a>Egyoldalas alkalmazás – áthelyezése éles környezetbe
+# <a name="single-page-application-move-to-production"></a>Egyoldalas alkalmazás: áthelyezés éles környezetbe
 
-Most, hogy tudja, hogyan webes API-k hívása a tokenek beszerzésére, megtudhatja, hogyan helyezze át az éles környezetbe.
+Most, hogy már tudja, hogyan szerezzen be tokent a webes API-k hívásához, Ismerje meg, hogyan helyezheti át az éles környezetbe.
 
-## <a name="improve-your-app"></a>Az alkalmazás fejlesztéséhez
+## <a name="improve-your-app"></a>Az alkalmazás fejlesztése
 
-Kövesse a lépéseket, hogy készen áll az alkalmazás éles szükséges.
+[Engedélyezze a naplózást](msal-logging.md) , hogy az alkalmazás előállítása készen álljon.
 
-- [Naplózás engedélyezése](msal-logging.md) az alkalmazásban.
+## <a name="test-your-integration"></a>Az integráció tesztelése
 
-## <a name="test-your-integration"></a>A-integráció tesztelése
+Tesztelje az integrációt a [Microsoft Identity platform Integration ellenőrzőlista](identity-platform-integration-checklist.md)követésével.
 
-- Az integráció teszteléséhez a következő a [a Microsoft identity platform integrációs ellenőrzőlista](identity-platform-integration-checklist.md).
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
+A gyors üzembe helyezési minta részletes bemutatása, amely leírja, hogyan lehet bejelentkezni a felhasználókba, és hogyan kérhet hozzáférési jogkivonatot a Microsoft Graph API MSAL. js használatával történő meghívásához:
 
-Az alábbiakban néhány egyéb minták és oktatóanyagok:
+> [!div class="nextstepaction"]
+> [JavaScript SPA – oktatóanyag](./tutorial-v2-javascript-spa.md)
 
-- A rövid útmutató részletes bemutatása mintát, amely leírja, hogy a felhasználók és az MSAL.js használatával az MS Graph API meghívása a hozzáférési jogkivonatot kapjon a kódot
+Minta, amely bemutatja, hogyan szerezhet jogkivonatokat a saját háttérbeli webes API-hoz a MSAL. js használatával:
 
-    > [!div class="nextstepaction"]
-    > [JavaScript SPA-oktatóanyag](./tutorial-v2-javascript-spa.md)
+> [!div class="nextstepaction"]
+> [SPA ASP.NET-háttérrel](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
 
-- A minta bemutatja, hogyan lehet a saját háttérrendszer webes API-khoz MSAL.js használatával tokenekhez
+Ez a minta bemutatja, hogyan lehet a MSAL. js használatával bejelentkezni a felhasználókba Azure Active Directory B2C (Azure AD B2C) szolgáltatásban regisztrált alkalmazásokban:
 
-     > [!div class="nextstepaction"]
-     > [Egy ASP.NET-háttérrendszerrel SPA-ALKALMAZÁSOKBA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
-
-- Minta MSAL.js használatával jelentkezzen be az Azure AD B2C-vel regisztrált egy alkalmazást a felhasználók megjelenítése
-
-    > [!div class="nextstepaction"]
-    > [SPA-ALKALMAZÁSOKBA az Azure AD B2C-vel](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+> [!div class="nextstepaction"]
+> [SPA Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)

@@ -1,26 +1,23 @@
 ---
-title: Logic app-sablonok üzembe helyezése – Azure Logic Apps
+title: Logikaialkalmazás-sablonok üzembe helyezése
 description: Megtudhatja, hogyan telepítheti a Azure Logic Appshoz létrehozott Azure Resource Manager sablonokat
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 083c908609ebcf1bdc6dcad5e37ae03daa41758f
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 73c4c8839bd1d9e37f3dc4f0802ad5a648b1026b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706505"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793047"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése
 
 Miután létrehozott egy Azure Resource Manager sablont a logikai alkalmazáshoz, a következő módon telepítheti a sablont:
 
-* [Azure Portal](#portal)
+* [Azure Portalra](#portal)
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Azure CLI](#cli)
@@ -46,12 +43,12 @@ Ha például a Azure Portalba való bejelentkezés után kéri a következő inf
 
 További információkért tekintse meg a következő témaköröket:
 
-* [Áttekintés A Logic apps üzembe helyezésének automatizálása Azure Resource Manager-sablonokkal](logic-apps-azure-resource-manager-templates-overview.md)
+* [Áttekintés: a Logic apps üzembe helyezésének automatizálása Azure Resource Manager-sablonokkal](logic-apps-azure-resource-manager-templates-overview.md)
 * [Erőforrások üzembe helyezése Azure Resource Manager-sablonokkal és a Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 
 <a name="visual-studio"></a>
 
-## <a name="deploy-with-visual-studio"></a>Üzembe helyezés a Visual Studióval
+## <a name="deploy-with-visual-studio"></a>Üzembe helyezés a Visual Studio használatával
 
 Ha a Visual Studióval létrehozott Azure erőforráscsoport-projektből szeretne logikai alkalmazást telepíteni, kövesse az alábbi [lépéseket a logikai alkalmazás manuális üzembe helyezéséhez](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure) az Azure-ban.
 
@@ -72,7 +69,7 @@ További információkért tekintse meg a következő témaköröket:
 
 <a name="cli"></a>
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 Egy adott *Azure-erőforráscsoport*üzembe helyezéséhez használja a következő parancsot:
 
@@ -94,11 +91,11 @@ A logikai alkalmazások sablonjainak üzembe helyezéséhez és a környezetek k
 További információ a folyamatos integrációról és a folyamatos üzembe helyezésről (CI/CD) az Azure-folyamatokkal rendelkező Azure Resource Manager-sablonokkal kapcsolatban: a következő témakörökben és példákban:
 
 * [Resource Manager-sablonok integrálása az Azure-folyamatokkal](../azure-resource-manager/vs-resource-groups-project-devops-pipelines.md)
-* [Oktatóanyag: Azure Resource Manager sablonok folyamatos integrálása az Azure-folyamatokkal](../azure-resource-manager/resource-manager-tutorial-use-azure-pipelines.md)
+* [Oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal](../azure-resource-manager/resource-manager-tutorial-use-azure-pipelines.md)
 * [Minta: Kapcsolódás Azure Service Bus várólistákhoz Azure Logic Apps és üzembe helyezése Azure-folyamatokkal az Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Minta: Kapcsolódás Azure Storage-fiókokhoz Azure Logic Apps és üzembe helyezése Azure-DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Minta: Function app-művelet beállítása Azure Logic Apps és üzembe helyezése az Azure-DevOps Azure-folyamatokkal](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Minta: Csatlakozás egy integrációs fiókhoz Azure Logic Apps és üzembe helyezése Azure-folyamatokkal az Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Minta: Kapcsolódás Azure Storage-fiókokhoz Azure Logic Apps és üzembe helyezés az Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Minta: Function app-művelet beállítása az Azure DevOps Azure-folyamatokkal való üzembe helyezéséhez és üzembe helyezéséhez Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Minta: csatlakozás egy integrációs fiókhoz Azure Logic Apps és üzembe helyezése Azure-folyamatokkal az Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 Az Azure-folyamatok használatának általános magas szintű lépései:
 
@@ -114,7 +111,7 @@ Az Azure-folyamatok használatának általános magas szintű lépései:
 
 1. Adjon hozzá hivatkozásokat a logikai alkalmazás sablonja és a sablon paramétereinek fájljaihoz.
 
-1. Továbbra is hozhatja létre a környezet, automatizált tesztelési vagy igény szerint a jóváhagyók a kibocsátási folyamat lépéseit.
+1. Szükség szerint folytassa a kiadási folyamat lépéseit bármilyen más környezet, automatizált teszt vagy jóváhagyó esetében.
 
 <a name="authorize-oauth-connections"></a>
 
@@ -126,9 +123,9 @@ Az üzembe helyezés után a logikai alkalmazás teljes körűen működik, és 
 
 * A OAuth-kapcsolatok manuális engedélyezéséhez nyissa meg a logikai alkalmazást a Logic app Designerben, vagy a Azure Portal vagy a Visual Studióban. A tervezőben engedélyezze a szükséges kapcsolatokat.
 
-Ha a kapcsolatok [engedélyezése helyett egy](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory (Azure ad) szolgáltatásnevet használ, megtudhatja, hogyan [adhat meg egyszerű szolgáltatásnév-paramétereket a logikai alkalmazás sablonjában](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections).
+Ha a kapcsolatok engedélyezése helyett egy Azure Active Directory (Azure AD [) szolgáltatásnevet használ](../active-directory/develop/app-objects-and-service-principals.md) , megtudhatja, hogyan [adhat meg egyszerű szolgáltatásnév-paramétereket a logikai alkalmazás sablonjában](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Logikai alkalmazások figyelése](../logic-apps/logic-apps-monitor-your-logic-apps.md)

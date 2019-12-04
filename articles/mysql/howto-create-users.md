@@ -1,35 +1,35 @@
 ---
-title: Felhasználók létrehozása az Azure Database for MySQL-kiszolgáló
-description: Ez a cikk bemutatja, hogyan kommunikálhat egy Azure Database for MySQL-kiszolgáló új felhasználói fiókokat hozhat létre.
+title: Felhasználók létrehozása – Azure Database for MySQL
+description: Ez a cikk azt ismerteti, hogyan hozhat létre új felhasználói fiókokat Azure Database for MySQL-kiszolgálóval való kommunikációhoz.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 4cd2305ed3d7f88f6c3825d8f7cdb5d81f9a0f6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: e76e63030cc8e10c857d361cca69e1d35ba8c2c1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61460184"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770475"
 ---
-# <a name="create-users-in-azure-database-for-mysql-server"></a>Felhasználók létrehozása az Azure Database for MySQL-kiszolgáló 
-Ez a cikk bemutatja, hogyan hozhat létre felhasználókat az Azure Database for MySQL-kiszolgálót.
+# <a name="create-users-in-azure-database-for-mysql-server"></a>Felhasználók létrehozása Azure Database for MySQL-kiszolgálón 
+Ez a cikk azt ismerteti, hogyan hozhat létre felhasználókat egy Azure Database for MySQL-kiszolgálón.
 
-Első létrehozásakor az Azure Database for MySQL-hez, a megadott egy kiszolgálói rendszergazda felhasználónevét és jelszavát. További információkért kövesse a [rövid](quickstart-create-mysql-server-database-using-azure-portal.md). Megkeresheti a kiszolgáló rendszergazdai bejelentkezési felhasználónevet, az Azure Portalról.
+Amikor először hozta létre a Azure Database for MySQL, a kiszolgáló-rendszergazdai bejelentkezési felhasználónevet és jelszót adott meg. További információt a rövid útmutatóban [talál.](quickstart-create-mysql-server-database-using-azure-portal.md) A kiszolgáló-rendszergazdai bejelentkezési felhasználónevet megkeresheti a Azure Portal.
 
-A kiszolgáló-rendszergazdai felhasználó néhány jogosultsággal, a kiszolgáló felsorolt beolvasása: VÁLASSZA KI, BESZÚRÁSA, FRISSÍTÉSE, TÖRLÉSE, LÉTREHOZÁSA, DOBJA EL, TÖLTSE BE ÚJRA, FELDOLGOZNI, HIVATKOZÁSOK, INDEX, ALTER, ADATBÁZISOK, MEGJELENÍTÉSE LÉTREHOZÁSA IDEIGLENES TÁBLÁK, TÁBLÁZATOK, ZÁROLÁSA HAJTHATÓ VÉGRE, A REPLIKÁCIÓ ALÁRENDELT, REPLIKÁCIÓS ÜGYFÉL, HOZZON LÉTRE MEGTEKINTÉSE, NÉZET MEGJELENÍTÉSE, LÉTREHOZÁSA RUTIN, ALTER RUTIN, FELHASZNÁLÓ LÉTREHOZÁSA , EVENT, ESEMÉNYINDÍTÓ
+A kiszolgáló-rendszergazda felhasználó bizonyos jogosultságokat kap a kiszolgáló számára a felsoroltak szerint: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCIÁk, INDEX, ALTER, adatbázisok megjelenítése, ideiglenes táblák létrehozása, táblák ZÁROLÁSa, végrehajtás, REPLIKÁLÁSi SLAVE, REPLIKÁCIÓ ÜGYFÉL, NÉZET LÉTREHOZÁSA, NÉZET MEGJELENÍTÉSE, RUTIN LÉTREHOZÁSA, ALTER RUTIN, FELHASZNÁLÓ LÉTREHOZÁSA, ESEMÉNY, ESEMÉNYINDÍTÓ
 
-Az Azure Database for MySQL-kiszolgáló létrehozása után további felhasználók létrehozása az első kiszolgálói rendszergazdai felhasználói fiók segítségével, rendszergazdai hozzáférést biztosít számukra. Emellett a kiszolgálói rendszergazdai fiókkal, amelyhez hozzáférése egyes adatbázissémák kevesebb jogosultsággal rendelkező felhasználók létrehozásához használható.
+A Azure Database for MySQL-kiszolgáló létrehozása után az első kiszolgáló-rendszergazdai felhasználói fiókkal további felhasználókat hozhat létre, és rendszergazdai hozzáférést adhat hozzájuk. A kiszolgálói rendszergazdai fiókkal kevesebb jogosultsággal rendelkező felhasználó hozható létre, akik egyéni adatbázis-sémákkal rendelkeznek hozzáféréssel.
 
-## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>További rendszergazdai felhasználók létrehozása az Azure Database MySQL-hez
-1. Kérje le a kapcsolati információkat és a rendszergazdai felhasználó nevét.
-   Az adatbázis-kiszolgálóhoz való csatlakozáshoz szüksége van a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra. Megtalálhatja a kiszolgáló nevét és bejelentkezési adatait a kiszolgálóról **áttekintése** lap vagy az **tulajdonságok** oldal az Azure Portalon. 
+## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>További rendszergazda felhasználók létrehozása a Azure Database for MySQLban
+1. Kérje le a kapcsolatfelvételi adatokat és a rendszergazda felhasználónevét.
+   Az adatbázis-kiszolgálóhoz való csatlakozáshoz szüksége van a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra. A kiszolgáló és a bejelentkezési adatok könnyen megtalálhatók a kiszolgáló **Áttekintés** lapján vagy a Azure Portal **Tulajdonságok** lapján. 
 
-2. A rendszergazdai fiókot és jelszót használja az adatbázis-kiszolgálóhoz való kapcsolódáshoz. Használja az ügyfél előnyben részesített eszközt, például a MySQL Workbench, mysql.exe, HeidiSQL vagy mások. 
-   Ha biztos benne, hogy hogyan kapcsolódhat, [való csatlakozás és adatlekérdezés a MySQL Workbench](./connect-workbench.md)
+2. Az adatbázis-kiszolgálóhoz való kapcsolódáshoz használja a rendszergazdai fiókot és a jelszót. Használhatja az előnyben részesített ügyfélprogramot, például a MySQL Workbench, a MySQL. exe, a HeidiSQL vagy más eszközöket. 
+   Ha nem tudja, hogyan csatlakozhat, tekintse meg a következőt: a [MySQL Workbench használata a kapcsolódáshoz és az adatlekérdezéshez](./connect-workbench.md)
 
-3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét az új felhasználói nevet `new_master_user`. Ezt a szintaxist biztosít a listában szereplő összes adatbázissémák jogosultságokkal ( *.* ), a felhasználó nevét (ebben a példában new_master_user). 
+3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le az új felhasználónevet a helyőrző értékre `new_master_user`. Ez a szintaxis megadja a felsorolt jogosultságokat az összes adatbázis-sémán ( *.* ) a felhasználónévre (new_master_user ebben a példában). 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -39,24 +39,24 @@ Az Azure Database for MySQL-kiszolgáló létrehozása után további felhaszná
    FLUSH PRIVILEGES;
    ```
 
-4. A jogok ellenőrzése 
+4. A támogatások ellenőrzése 
    ```sql
    USE sys;
    
    SHOW GRANTS FOR 'new_master_user'@'%';
    ```
 
-## <a name="how-to-create-database-users-in-azure-database-for-mysql"></a>Adatbázis-felhasználók létrehozása az Azure Database MySQL-hez
+## <a name="how-to-create-database-users-in-azure-database-for-mysql"></a>Adatbázis-felhasználók létrehozása a Azure Database for MySQLban
 
-1. Kérje le a kapcsolati információkat és a rendszergazdai felhasználó nevét.
-   Az adatbázis-kiszolgálóhoz való csatlakozáshoz szüksége van a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra. Megtalálhatja a kiszolgáló nevét és bejelentkezési adatait a kiszolgálóról **áttekintése** lap vagy az **tulajdonságok** oldal az Azure Portalon. 
+1. Kérje le a kapcsolatfelvételi adatokat és a rendszergazda felhasználónevét.
+   Az adatbázis-kiszolgálóhoz való csatlakozáshoz szüksége van a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra. A kiszolgáló és a bejelentkezési adatok könnyen megtalálhatók a kiszolgáló **Áttekintés** lapján vagy a Azure Portal **Tulajdonságok** lapján. 
 
-2. A rendszergazdai fiókot és jelszót használja az adatbázis-kiszolgálóhoz való kapcsolódáshoz. Használja az ügyfél előnyben részesített eszközt, például a MySQL Workbench, mysql.exe, HeidiSQL vagy mások. 
-   Ha biztos benne, hogy hogyan kapcsolódhat, [való csatlakozás és adatlekérdezés a MySQL Workbench](./connect-workbench.md)
+2. Az adatbázis-kiszolgálóhoz való kapcsolódáshoz használja a rendszergazdai fiókot és a jelszót. Használhatja az előnyben részesített ügyfélprogramot, például a MySQL Workbench, a MySQL. exe, a HeidiSQL vagy más eszközöket. 
+   Ha nem tudja, hogyan csatlakozhat, tekintse meg a következőt: a [MySQL Workbench használata a kapcsolódáshoz és az adatlekérdezéshez](./connect-workbench.md)
 
-3. Szerkessze és futtassa a következő SQL-kódot. A helyőrző értékét cserélje le `db_user` a kívánt új felhasználónevet és a helyőrző értékét `testdb` a saját adatbázis nevére.
+3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét `db_user` a kívánt új felhasználónévre, és a helyőrző értékét `testdb` a saját adatbázisának nevére.
 
-   Az sql-kódot szintaxis létrehoz egy új adatbázist testdb nevű példa célokra. Ezután létrehoz egy új felhasználót a MySQL szolgáltatásban, és az új adatbázis-séma az összes jogosultságot biztosít (testdb.\*) az adott felhasználó. 
+   Ez az SQL Code-szintaxis egy új, testdb nevű adatbázist hoz létre példaként. Ezután létrehoz egy új felhasználót a MySQL szolgáltatásban, és minden jogosultságot biztosít az új adatbázis-sémához (testdb.\*) az adott felhasználó számára. 
 
    ```sql
    CREATE DATABASE testdb;
@@ -68,20 +68,20 @@ Az Azure Database for MySQL-kiszolgáló létrehozása után további felhaszná
    FLUSH PRIVILEGES;
    ```
 
-4. Ellenőrizze a engedélyezi az adatbázison belül.
+4. Ellenőrizze az adatbázison belüli támogatást.
    ```sql
    USE testdb;
    
    SHOW GRANTS FOR 'db_user'@'%';
    ```
 
-5. Jelentkezzen be a kiszolgálóra, és adja meg a kijelölt adatbázis, az új felhasználónévvel és jelszóval. Ez a példa bemutatja a mysql parancssorból. Ezzel a paranccsal kéri a felhasználónévhez tartozó jelszót. Cserélje le a saját kiszolgáló nevét, az adatbázis neve és a felhasználó neve.
+5. Jelentkezzen be a kiszolgálóra, és adja meg a kijelölt adatbázist az új Felhasználónév és jelszó használatával. Ez a példa a MySQL parancssort jeleníti meg. Ezzel a paranccsal a rendszer a felhasználónévhez tartozó jelszót kéri. Cserélje le a saját kiszolgáló nevét, az adatbázis nevét és a felhasználónevet.
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
 
-## <a name="next-steps"></a>További lépések
-Megnyitja a tűzfalat, hogy azok tudjanak csatlakozni az új felhasználók gépek IP-címek: [Hozzon létre és kezelhető az Azure Database for MySQL tűzfalszabályok az Azure portal használatával](howto-manage-firewall-using-portal.md) vagy [Azure CLI-vel](howto-manage-firewall-using-cli.md).
+## <a name="next-steps"></a>Következő lépések
+Nyissa meg a tűzfalat az új felhasználói gépek IP-címei számára a kapcsolódáshoz: [Azure Database for MySQL tűzfalszabályok létrehozása és kezelése a Azure Portal vagy az](howto-manage-firewall-using-portal.md) [Azure CLI](howto-manage-firewall-using-cli.md)használatával.
 
-Fiókkezeléssel kapcsolatos további információkért tekintse meg a MySQL termékhez tartozó dokumentáció [felhasználóifiók-kezelés](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html), [GRANT szintaxis](https://dev.mysql.com/doc/refman/5.7/en/grant.html), és [jogosultságokkal](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).
+A felhasználói fiókok kezelésével kapcsolatos további információkért tekintse meg a következő témakört: MySQL termékdokumentáció a [felhasználói fiókok kezeléséhez](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html), szintaxis és [jogosultságok](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html) [megadása](https://dev.mysql.com/doc/refman/5.7/en/grant.html).

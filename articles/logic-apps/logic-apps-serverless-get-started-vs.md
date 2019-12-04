@@ -1,21 +1,17 @@
 ---
-title: Az első kiszolgáló nélküli alkalmazás létrehozása a Visual Studióban – Azure Logic Apps
+title: Az első kiszolgáló nélküli alkalmazás létrehozása a Visual Studióban
 description: Kiszolgáló nélküli alkalmazások létrehozása, üzembe helyezése és kezelése a Visual Studióban Azure Logic Apps és Azure Functions használatával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-ms.workload: vs-azure
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 76ab76440ddc25f4b1cf51f7d540a6e21614541d
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 4ed2ad2d2ff92e9320a7b9c773c4d6e5857fb905
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680127"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792966"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Az első kiszolgáló nélküli alkalmazás létrehozása a Visual Studióban Azure Logic Apps és Azure Functions használatával
 
@@ -68,7 +64,7 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
    ![Új projekt létrehozása a Visual Studióban](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
-1. A **Telepítve** területen válassza a **Visual C#** vagy a **Visual Basic** elemet. Ezután válassza ki a **Cloud**  > **Azure-erőforráscsoportot**.
+1. A **Telepítve** területen válassza a **Visual C#** vagy a **Visual Basic** elemet. Ezután válassza ki a **Cloud** > **Azure-erőforráscsoportot**.
 
    > [!NOTE]
    > Ha a **felhő** vagy az **Azure erőforráscsoport** -projekt nem létezik, győződjön meg arról, hogy telepítette a Visual STUDIÓhoz készült Azure SDK-t.
@@ -104,7 +100,7 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
 Mielőtt megnyithatja a logikai alkalmazást a Logic app Designerben a Visual Studióban, rendelkeznie kell egy, az Azure-ban már üzembe helyezett Azure-erőforráscsoport használatával. A tervező ezután létrehozhat kapcsolatokat a logikai alkalmazás erőforrásaihoz és szolgáltatásaihoz. Ehhez a feladathoz kövesse az alábbi lépéseket a megoldás Visual studióból a Azure Portalba való üzembe helyezéséhez:
 
-1. Megoldáskezelő az erőforrás-projekt helyi menüjében válassza a  >  új **telepítése** lehetőséget.
+1. Megoldáskezelő az erőforrás-projekt helyi menüjében válassza a > új **telepítése** lehetőséget.
 
    ![Új központi telepítés létrehozása erőforráscsoport számára](./media/logic-apps-serverless-get-started-vs/deploy.png)
 

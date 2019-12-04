@@ -1,17 +1,17 @@
 ---
-title: Olvasási replikák létrehozása és kezelése a Azure Database for MariaDBban
+title: Olvasási replikák kezelése – Azure Portal-Azure Database for MariaDB
 description: Ez a cikk bemutatja, hogyan állíthat be és kezelhet olvasási replikákat Azure Database for MariaDB a portál használatával
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: cceb1814089436efe4d4f9352f40f24d6eae790d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 12/02/2019
+ms.openlocfilehash: 7e290e6d773485b84ef42c7a79abf084e3b0da9f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123593"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765936"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MariaDB a Azure Portal használatával
 
@@ -22,15 +22,15 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási repli
 - Egy [Azure Database for MariaDB kiszolgáló](quickstart-create-mariadb-server-database-using-azure-portal.md) , amely főkiszolgálóként lesz felhasználva.
 
 > [!IMPORTANT]
-> Az olvasási replika funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MariaDB-kiszolgálókon érhető el. Győződjön meg, hogy a fölérendelt kiszolgáló árképzési szintek egyikét.
+> Az olvasási replika funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MariaDB-kiszolgálókon érhető el. Győződjön meg arról, hogy a főkiszolgáló a fenti díjszabási szintek egyikében van.
 
-## <a name="create-a-read-replica"></a>Hozzon létre egy olvasható replika
+## <a name="create-a-read-replica"></a>Olvasási replika létrehozása
 
 Az olvasási replika kiszolgáló a következő lépések segítségével hozható létre:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza ki a meglévő Azure Database for MariaDB kiszolgálót, amelyet főkiszolgálóként kíván használni. Ez a művelet megnyitja a **áttekintése** lapot.
+2. Válassza ki a meglévő Azure Database for MariaDB kiszolgálót, amelyet főkiszolgálóként kíván használni. Ez a művelet megnyitja az **Áttekintés** lapot.
 
 3. Válassza a **replikálás** lehetőséget a menü **Beállítások**területén.
 
@@ -52,16 +52,16 @@ Az olvasási replika kiszolgáló a következő lépések segítségével hozhat
 7. A replika létrehozásának jóváhagyásához kattintson **az OK gombra** .
 
 > [!NOTE]
-> A kiszolgáló konfigurációval megegyező a fő olvasható replikák jönnek létre. A másodpéldány konfigurációjának a létrehozása után módosítható. Javasoljuk, hogy az adatbázisreplika-kiszolgáló konfigurációs kell tárolni annak érdekében, hogy a replika nem tudják tartani a főkiszolgálóval a főkiszolgáló-nál nagyobb vagy egyenlő értéken.
+> Az olvasási replikák ugyanazzal a kiszolgáló-konfigurációval jönnek létre, mint a főkiszolgáló. A replika-kiszolgáló konfigurációja a létrehozása után módosítható. Azt javasoljuk, hogy a replika-kiszolgáló konfigurációját a főkiszolgálónál egyenlő vagy nagyobb értékekkel kell megőrizni, hogy a replika képes legyen lépést tartani a főkiszolgálóval.
 
 A replika-kiszolgáló létrehozása után a **replikáció** panelről is megtekinthető.
 
    ![Azure Database for MariaDB – replikák listázása](./media/howto-read-replica-portal/list-replica.png)
 
-## <a name="stop-replication-to-a-replica-server"></a>Az adatbázisreplika-kiszolgáló replikáció leállítása
+## <a name="stop-replication-to-a-replica-server"></a>Replikálás megszakítása egy másodpéldány-kiszolgálón
 
 > [!IMPORTANT]
-> A kiszolgáló replikációjának leállítása nem vonható vissza. Ha a replikáció leállt, a master és a replika között, nem lehet visszavonni. Az adatbázisreplika-kiszolgáló ezután lesz egy önálló kiszolgáló, és már támogatja az olvasási és írási műveletek. Ez a kiszolgáló nem hajtható végre egy replika be újra.
+> A kiszolgálók replikálásának leállítása visszafordíthatatlan. Miután leállította a replikálást egy fő és egy replika között, nem vonható vissza. A replika-kiszolgáló ezután önálló kiszolgáló lesz, és már támogatja az olvasást és az írást is. Ez a kiszolgáló nem hozható létre újra replikába.
 
 Ha le szeretné állítani a replikációt egy fő és egy replika kiszolgáló között a Azure Portalból, kövesse az alábbi lépéseket:
 
@@ -81,7 +81,7 @@ Ha le szeretné állítani a replikációt egy fő és egy replika kiszolgáló 
 
    ![Azure Database for MariaDB – replikálás leállítása – megerősítés](./media/howto-read-replica-portal/stop-replication-confirm.png)
 
-## <a name="delete-a-replica-server"></a>Adatbázisreplika-kiszolgáló törlése
+## <a name="delete-a-replica-server"></a>Replika-kiszolgáló törlése
 
 Ha törölni szeretne egy olvasási replika kiszolgálót a Azure Portalről, kövesse az alábbi lépéseket:
 
@@ -101,10 +101,10 @@ Ha törölni szeretne egy olvasási replika kiszolgálót a Azure Portalről, k�
 
    ![Azure Database for MariaDB – replika törlése – megerősítés](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
-## <a name="delete-a-master-server"></a>Egy fölérendelt kiszolgáló törlése
+## <a name="delete-a-master-server"></a>Főkiszolgáló törlése
 
 > [!IMPORTANT]
-> Egy fölérendelt kiszolgáló törlése az összes replika kiszolgálók replikálását, és törli magát a főkiszolgáló. Replikakiszolgáló önálló kiszolgálók által mostantól támogatják az olvasási és írási műveletek válnak.
+> A főkiszolgáló törlése leállítja a replikálást az összes replikakiszolgálón, magát a főkiszolgálót pedig törli. A replikakiszolgálókból különálló kiszolgálók lesznek, amelyek az olvasási és írási műveleteket egyaránt támogatják.
 
 A főkiszolgáló a Azure Portalból való törléséhez kövesse az alábbi lépéseket:
 
@@ -122,7 +122,7 @@ A főkiszolgáló a Azure Portalból való törléséhez kövesse az alábbi lé
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a figyelni kívánt replikát Azure Database for MariaDB-kiszolgálót.
 
-2. Az oldalsáv **figyelés** szakaszában válassza a metrikák elemet:
+2. Az oldalsáv **figyelés** szakaszában válassza a **metrikák**elemet:
 
 3. A rendelkezésre álló metrikák legördülő listájában válassza a **replikálás késése másodpercben** lehetőséget.
 
@@ -136,6 +136,6 @@ A főkiszolgáló a Azure Portalból való törléséhez kövesse az alábbi lé
 
    ![Időtartomány kiválasztása](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tudjon meg többet [replikák olvasása](concepts-read-replicas.md)
+- További információ az [olvasási replikáról](concepts-read-replicas.md)

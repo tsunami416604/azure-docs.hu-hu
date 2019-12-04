@@ -1,17 +1,17 @@
 ---
-title: Kiszolgáló-naplók konfigurálása és elérése Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal
-description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni és elérni a kiszolgálói naplókat Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portalból.
+title: Naplók kezelése – Azure Portal-Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni és elérni a kiszolgálói naplókat (. naplófájlokat) Azure Database for PostgreSQL egyetlen kiszolgálón a Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: c77e708e14d34545754ca38095aedb63ff0172a1
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 3da48a9b6d3acb1f2811bc279de7963fa1d83918
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841519"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763691"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Azure Database for PostgreSQL – egy kiszolgáló naplófájljainak konfigurálása és elérése a Azure Portal
 
@@ -23,7 +23,7 @@ A cikkben ismertetett lépések végrehajtásához Azure Database for PostgreSQL
 ## <a name="configure-logging"></a>Naplózás konfigurálása
 Konfigurálja a lekérdezési naplók és a hibanapló elérését. 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Válassza ki az Azure Database for PostgreSQL kiszolgálóját.
 
@@ -53,7 +53,7 @@ A naplózás megkezdése után megtekintheti az elérhető naplók listáját, �
    ![Képernyőkép a kiszolgálói naplók lapról, a Kiemelt naplók listájával](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > A napló elnevezési konvenciója a **PostgreSQL-yyyy-mm-dd_hh0000. log**. A fájlnévben használt dátum és idő a napló kiadásának időpontja. A naplófájlok óránként, vagy 100 MB-ban forognak, attól függően, hogy melyik következik be először.
+   > A napló elnevezési konvenciója: **PostgreSQL-éééé-hh-dd_hh0000. log**. A fájlnévben használt dátum és idő a napló kiadásának időpontja. A naplófájlok óránként, vagy 100 MB-ban forognak, attól függően, hogy melyik következik be először.
 
 4. Ha szükséges, a keresőmező használatával gyorsan leszűkítheti egy adott naplóra a dátum és idő alapján. A keresés a napló nevében található.
 
@@ -63,7 +63,7 @@ A naplózás megkezdése után megtekintheti az elérhető naplók listáját, �
 
    ![Képernyőkép a kiszolgálói naplók lapról, a lefelé mutató nyíl ikon kiemelve](./media/howto-configure-server-logs-in-portal/6-download.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A naplófájlok programozott módon történő letöltésének megismeréséhez tekintse meg [a hozzáférési kiszolgáló naplófájljai a CLI-ben](howto-configure-server-logs-using-cli.md) című témakört.
 - További információ a Azure Database for PostgreSQL [kiszolgálói naplóiról](concepts-server-logs.md) . 
 - A paraméter-definíciókkal és a PostgreSQL-naplózással kapcsolatos további információkért tekintse meg a PostgreSQL dokumentációját a [hibajelentés és a naplózás](https://www.postgresql.org/docs/current/static/runtime-config-logging.html)témakörben.

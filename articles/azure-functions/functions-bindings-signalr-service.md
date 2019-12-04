@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 4c7d5d4d8777fee445585b43b58ceb261176b7f4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a1de59ebb5ef0d7f5522a388aa9a2f5818495a9f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231018"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786333"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-szolgáltatáskötések az Azure Functionshöz
 
@@ -18,14 +18,15 @@ Ez a cikk bemutatja, hogyan hitelesítheti és küldheti el a valós idejű üze
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
+## <a name="packages---functions-2x"></a>Csomagok – 2. x függvények
 
-A Signaler szolgáltatás kötései a [Microsoft. Azure. webjobs. Extensions. SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet csomagban találhatók, 1. verzió. *. A csomag forráskódja az [Azure-functions-signalrservice-Extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub-tárházban található.
+A Signaler szolgáltatás kötései a [Microsoft. Azure. webjobs. Extensions. SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) Nuget csomagban találhatók, 1. verzió. *. A csomag forráskódja az [Azure-functions-signalrservice-Extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub-tárházban található.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2-manual-portal.md)]
 
+A Signaler Azure Functions szolgáltatás konfigurálásával és használatával kapcsolatos további részletekért tekintse meg a [Azure functions fejlesztés és konfigurálás az Azure signaler szolgáltatással](../azure-signalr/signalr-concept-serverless-development-config.md)című témakört.
 
-### <a name="java-annotations"></a>Java-jegyzetek
+### <a name="annotations-library-java-only"></a>Jegyzetek könyvtára (csak Java)
 
 Ahhoz, hogy használni lehessen a Signaler szolgáltatás megjegyzéseit a Java-függvényekben, hozzá kell adnia egy függőséget az *Azure-functions-Java-Library-signaler* összetevőhöz (1,0-es vagy újabb verzió) a Pom. xml fájlhoz.
 
@@ -37,26 +38,13 @@ Ahhoz, hogy használni lehessen a Signaler szolgáltatás megjegyzéseit a Java-
 </dependency>
 ```
 
-> [!NOTE]
-> Ha a Signaler szolgáltatáshoz tartozó kötéseket a javában szeretné használni, győződjön meg róla, hogy a Azure Functions Core Tools (2.4.419) vagy újabb verzióját használja (a gazdagép verziója 2.0.12332).
-
-## <a name="using-signalr-service-with-azure-functions"></a>A Signaler szolgáltatás használata Azure Functions
-
-A Signaler Azure Functions szolgáltatás konfigurálásával és használatával kapcsolatos további részletekért tekintse meg a [Azure functions fejlesztés és konfigurálás az Azure signaler szolgáltatással](../azure-signalr/signalr-concept-serverless-development-config.md)című témakört.
-
-## <a name="signalr-connection-info-input-binding"></a>A jelző kapcsolódási adatainak bemeneti kötése
+## <a name="input"></a>Input (Bemenet)
 
 Ahhoz, hogy az ügyfél csatlakozni tudjanak az Azure Signaler szolgáltatáshoz, le kell kérnie a szolgáltatási végpont URL-címét és egy érvényes hozzáférési tokent. A *SignalRConnectionInfo* bemeneti kötése létrehozza a signaler szolgáltatás végpontjának URL-címét és a szolgáltatáshoz való kapcsolódáshoz használt érvényes jogkivonatot. Mivel a jogkivonat időkorlátja korlátozott, és egy adott felhasználó egy kapcsolathoz való hitelesítésére használható, ne gyorsítótárazza a tokent, vagy ossza meg az ügyfelek között. A kötést használó HTTP-triggereket az ügyfelek használhatják a kapcsolati adatok lekérésére.
 
-Tekintse meg az adott nyelvű példa:
-
-* [2. xC#](#2x-c-input-examples)
-* [2. x JavaScript](#2x-javascript-input-examples)
-* [2. x Java](#2x-java-input-examples)
-
 Ha további információra van szükség arról, hogy ez a kötés hogyan használható a Signaler ügyféloldali SDK által felhasználható "egyeztetés" függvény létrehozásához, tekintse meg a következő témakört: [Azure functions fejlesztés és konfiguráció cikk](../azure-signalr/signalr-concept-serverless-development-config.md) a Signaler szolgáltatással kapcsolatos fogalmak dokumentációjában.
 
-### <a name="2x-c-input-examples"></a>2. x C# bemeneti példák
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely a bemeneti kötés használatával beolvassa a Signal-kapcsolati adatokat, és visszaadja a HTTP-n keresztül.
 
@@ -70,26 +58,37 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-#### <a name="authenticated-tokens"></a>Hitelesített tokenek
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
-Ha a függvényt egy hitelesített ügyfél indítja el, felhasználói azonosító jogcímet adhat hozzá a generált jogkivonathoz. [App Service hitelesítés](../app-service/overview-authentication-authorization.md)használatával egyszerűen adhat hozzá hitelesítést egy Function alkalmazáshoz.
+Az alábbi példa egy Signal-kapcsolati adatbeviteli kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötés használatával adja vissza a kapcsolati adatokat.
 
-App Service a hitelesítés beállítja a `x-ms-client-principal-id` és `x-ms-client-principal-name` nevű HTTP-fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-AZONOSÍTÓját és nevét. A kötés `UserId` tulajdonságát beállíthatja bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`. 
+Itt a *function. JSON* fájlban található kötési adat:
+
+Példa a function. JSON fájlra:
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+A C# szkript kódja:
 
 ```cs
-[FunctionName("negotiate")]
-public static SignalRConnectionInfo Negotiate(
-    [HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req, 
-    [SignalRConnectionInfo
-        (HubName = "chat", UserId = "{headers.x-ms-client-principal-id}")]
-        SignalRConnectionInfo connectionInfo)
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo connectionInfo)
 {
-    // connectionInfo contains an access key token with a name identifier claim set to the authenticated user
     return connectionInfo;
 }
 ```
 
-### <a name="2x-javascript-input-examples"></a>2. x JavaScript bemeneti példák
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Az alábbi példa egy Signal-kapcsolati adatokat tartalmazó bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja a kapcsolati adatok visszaadásához.
 
@@ -107,7 +106,7 @@ Példa a function. JSON fájlra:
 }
 ```
 
-A következő JavaScript-kódot:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -115,11 +114,11 @@ module.exports = async function (context, req, connectionInfo) {
 };
 ```
 
-#### <a name="authenticated-tokens"></a>Hitelesített tokenek
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-Ha a függvényt egy hitelesített ügyfél indítja el, felhasználói azonosító jogcímet adhat hozzá a generált jogkivonathoz. [App Service hitelesítés](../app-service/overview-authentication-authorization.md)használatával egyszerűen adhat hozzá hitelesítést egy Function alkalmazáshoz.
+Az alábbi példa egy Signal-kapcsolati adatbeviteli kötést mutat be egy *function. JSON* fájlban és egy [Python-függvényben](functions-reference-python.md) , amely a kötés használatával adja vissza a kapcsolati adatokat.
 
-App Service a hitelesítés beállítja a `x-ms-client-principal-id` és `x-ms-client-principal-name` nevű HTTP-fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-AZONOSÍTÓját és nevét. A kötés `userId` tulajdonságát beállíthatja bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`. 
+Itt a *function. JSON* fájlban található kötési adat:
 
 Példa a function. JSON fájlra:
 
@@ -128,23 +127,25 @@ Példa a function. JSON fájlra:
     "type": "signalRConnectionInfo",
     "name": "connectionInfo",
     "hubName": "chat",
-    "userId": "{headers.x-ms-client-principal-id}",
     "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
     "direction": "in"
 }
 ```
 
-A következő JavaScript-kódot:
+Itt látható a Python-kód:
 
-```javascript
-module.exports = async function (context, req, connectionInfo) {
-    // connectionInfo contains an access key token with a name identifier
-    // claim set to the authenticated user
-    context.res.body = connectionInfo;
-};
+```python
+def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
+    return func.HttpResponse(
+        connectionInfoJson,
+        status_code=200,
+        headers={
+            'Content-type': 'application/json'
+        }
+    )
 ```
 
-### <a name="2x-java-input-examples"></a>2. x Java-bemeneti példák
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 Az alábbi példa egy [Java-függvényt](functions-reference-java.md) mutat be, amely a bemeneti kötés használatával szerzi be a jelző kapcsolati adatait, és visszaadja a HTTP protokollon keresztül.
 
@@ -162,11 +163,124 @@ public SignalRConnectionInfo negotiate(
 }
 ```
 
-#### <a name="authenticated-tokens"></a>Hitelesített tokenek
+---
+
+### <a name="authenticated-tokens"></a>Hitelesített tokenek
 
 Ha a függvényt egy hitelesített ügyfél indítja el, felhasználói azonosító jogcímet adhat hozzá a generált jogkivonathoz. [App Service hitelesítés](../app-service/overview-authentication-authorization.md)használatával egyszerűen adhat hozzá hitelesítést egy Function alkalmazáshoz.
 
-App Service a hitelesítés beállítja a `x-ms-client-principal-id` és `x-ms-client-principal-name` nevű HTTP-fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-AZONOSÍTÓját és nevét. A kötés `UserId` tulajdonságát beállíthatja bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
+App Service a hitelesítés beállítja a `x-ms-client-principal-id` és `x-ms-client-principal-name` nevű HTTP-fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-AZONOSÍTÓját és nevét.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+A kötés `UserId` tulajdonságát beállíthatja bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
+
+```cs
+[FunctionName("negotiate")]
+public static SignalRConnectionInfo Negotiate(
+    [HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req, 
+    [SignalRConnectionInfo
+        (HubName = "chat", UserId = "{headers.x-ms-client-principal-id}")]
+        SignalRConnectionInfo connectionInfo)
+{
+    // connectionInfo contains an access key token with a name identifier claim set to the authenticated user
+    return connectionInfo;
+}
+```
+
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+
+A kötés `userId` tulajdonságát beállíthatja bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
+
+Példa a function. JSON fájlra:
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "userId": "{headers.x-ms-client-principal-id}",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+A C# szkript kódja:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo connectionInfo)
+{
+    // connectionInfo contains an access key token with a name identifier
+    // claim set to the authenticated user
+    return connectionInfo;
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+A kötés `userId` tulajdonságát beállíthatja bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
+
+Példa a function. JSON fájlra:
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "userId": "{headers.x-ms-client-principal-id}",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+Itt látható a JavaScript-kód:
+
+```javascript
+module.exports = async function (context, req, connectionInfo) {
+    // connectionInfo contains an access key token with a name identifier
+    // claim set to the authenticated user
+    context.res.body = connectionInfo;
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A kötés `userId` tulajdonságát beállíthatja bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
+
+Példa a function. JSON fájlra:
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "userId": "{headers.x-ms-client-principal-id}",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+Itt látható a Python-kód:
+
+```python
+def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
+    # connectionInfo contains an access key token with a name identifier
+    # claim set to the authenticated user
+    return func.HttpResponse(
+        connectionInfoJson,
+        status_code=200,
+        headers={
+            'Content-type': 'application/json'
+        }
+    )
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A kötés `userId` tulajdonságát beállíthatja bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
 
 ```java
 @FunctionName("negotiate")
@@ -183,23 +297,19 @@ public SignalRConnectionInfo negotiate(
 }
 ```
 
-## <a name="signalr-output-binding"></a>Jelző kimeneti kötése
+---
+
+## <a name="output"></a>Kimenet
 
 A *signaler* kimeneti kötés használatával küldjön egy vagy több üzenetet az Azure Signaler szolgáltatással. Küldhet üzenetet az összes csatlakoztatott ügyfélnek, vagy csak az adott felhasználó számára hitelesített csatlakoztatott ügyfelek számára is közvetítheti.
 
 Azt is megteheti, hogy felügyeli azokat a csoportokat, amelyekhez a felhasználó tartozik.
 
-Tekintse meg az adott nyelvű példa:
+### <a name="broadcast-to-all-clients"></a>Közvetítés az összes ügyfél számára
 
-* [2. xC#](#2x-c-send-message-output-examples)
-* [2. x JavaScript](#2x-javascript-send-message-output-examples)
-* [2. x Java](#2x-java-send-message-output-examples)
+Az alábbi példa egy olyan függvényt mutat be, amely az összes csatlakoztatott ügyfél kimeneti kötését használva üzenetet küld. A *cél* az egyes ügyfeleken meghívott metódus neve. Az *argumentumok* az ügyfél metódusának átadandó nulla vagy több objektum tömbje.
 
-### <a name="2x-c-send-message-output-examples"></a>2. x C# üzenet küldése kimeneti példák
-
-#### <a name="broadcast-to-all-clients"></a>Közvetítés az összes ügyfél számára
-
-Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely az összes csatlakoztatott ügyfél kimeneti kötését használva üzenetet küld. A `Target` az egyes ügyfeleken meghívott metódus neve. A `Arguments` tulajdonság az ügyfél metódusának átadandó nulla vagy több objektum tömbje.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -216,9 +326,120 @@ public static Task SendMessage(
 }
 ```
 
-#### <a name="send-to-a-user"></a>Küldés felhasználó számára
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
-A jelző üzenet `UserId` tulajdonságának beállításával csak a felhasználó számára hitelesített kapcsolatokra küldhet üzenetet.
+Itt a *function. JSON* fájlban található kötési adat:
+
+Példa a function. JSON fájlra:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+A C# szkript kódja:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Itt a *function. JSON* fájlban található kötési adat:
+
+Példa a function. JSON fájlra:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Itt látható a JavaScript-kód:
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Itt a *function. JSON* fájlban található kötési adat:
+
+Példa a function. JSON fájlra:
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Itt látható a Python-kód:
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+@FunctionName("sendMessage")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRMessage sendMessage(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+
+    SignalRMessage message = new SignalRMessage();
+    message.target = "newMessage";
+    message.arguments.add(req.getBody());
+    return message;
+}
+```
+
+---
+
+### <a name="send-to-a-user"></a>Küldés felhasználó számára
+
+Csak a felhasználó számára hitelesített kapcsolatokra küldhet üzenetet, ha beállítja a *felhasználói azonosítót* a jelző üzenetben.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -237,9 +458,123 @@ public static Task SendMessage(
 }
 ```
 
-#### <a name="send-to-a-group"></a>Küldés egy csoportba
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
-A jelző üzenet `GroupName` tulajdonságának beállításával csak a csoportba felvett kapcsolatokhoz küldhet üzenetet.
+Példa a function. JSON fájlra:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+A C# szkript kódja:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            // the message will only be sent to this user ID
+            UserId = "userId1",
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Példa a function. JSON fájlra:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Itt látható a JavaScript-kód:
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        // message will only be sent to this user ID
+        "userId": "userId1",
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Itt a *function. JSON* fájlban található kötési adat:
+
+Példa a function. JSON fájlra:
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Itt látható a Python-kód:
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        #message will only be sent to this user ID
+        'userId': 'userId1',
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+@FunctionName("sendMessage")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRMessage sendMessage(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+
+    SignalRMessage message = new SignalRMessage();
+    message.userId = "userId1";
+    message.target = "newMessage";
+    message.arguments.add(req.getBody());
+    return message;
+}
+```
+
+---
+
+### <a name="send-to-a-group"></a>Küldés egy csoportba
+
+Az üzenetet csak olyan kapcsolatokhoz küldheti, amelyeket a rendszer hozzáad egy csoporthoz a *csoport nevének* a jelző üzenetben való beállításával.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -258,9 +593,123 @@ public static Task SendMessage(
 }
 ```
 
-### <a name="2x-c-group-management-output-examples"></a>2. x C# csoport-felügyeleti kimeneti példák
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
-A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A `SignalRGroupAction` osztályt a `SignalR` kimeneti kötés használatával kezelheti a felhasználók csoporttagság.
+Példa a function. JSON fájlra:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+A C# szkript kódja:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            // the message will be sent to the group with this name
+            GroupName = "myGroup",
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Példa a function. JSON fájlra:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Itt látható a JavaScript-kód:
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        // message will only be sent to this group
+        "groupName": "myGroup",
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Itt a *function. JSON* fájlban található kötési adat:
+
+Példa a function. JSON fájlra:
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Itt látható a Python-kód:
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        #message will only be sent to this group
+        'groupName': 'myGroup',
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+@FunctionName("sendMessage")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRMessage sendMessage(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+
+    SignalRMessage message = new SignalRMessage();
+    message.groupName = "myGroup";
+    message.target = "newMessage";
+    message.arguments.add(req.getBody());
+    return message;
+}
+```
+
+---
+
+### <a name="group-management"></a>Csoport kezelése
+
+A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A felhasználó csoporttagság kezeléséhez használhatja a `SignalR` kimeneti kötést.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 #### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
@@ -311,107 +760,102 @@ public static Task RemoveFromGroup(
 > [!NOTE]
 > Ahhoz, hogy a `ClaimsPrincipal` megfelelően kötve legyen, konfigurálnia kell a hitelesítési beállításokat a Azure Functionsban.
 
-### <a name="2x-javascript-send-message-output-examples"></a>2. x JavaScript-üzenetek küldésére vonatkozó példák
-
-#### <a name="broadcast-to-all-clients"></a>Közvetítés az összes ügyfél számára
-
-Az alábbi példa egy Signaler kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötés használatával küld egy üzenetet az Azure signaler szolgáltatással. Adja meg a kimeneti kötést egy vagy több jelző üzenet tömbje számára. A jelző üzenet egy `target` tulajdonságból áll, amely meghatározza az egyes ügyfeleken meghívott metódus nevét, valamint egy `arguments` tulajdonságot, amely az ügyfél metódusának argumentumként való továbbítására szolgáló objektumok tömbje.
-
-Itt a *function. JSON* fájlban található kötési adat:
-
-Példa a function. JSON fájlra:
-
-```json
-{
-  "type": "signalR",
-  "name": "signalRMessages",
-  "hubName": "<hub_name>",
-  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
-  "direction": "out"
-}
-```
-
-A következő JavaScript-kódot:
-
-```javascript
-module.exports = async function (context, req) {
-    context.bindings.signalRMessages = [{
-        "target": "newMessage",
-        "arguments": [ req.body ]
-    }];
-};
-```
-
-#### <a name="send-to-a-user"></a>Küldés felhasználó számára
-
-A jelző üzenet `userId` tulajdonságának beállításával csak a felhasználó számára hitelesített kapcsolatokra küldhet üzenetet.
-
-a *function. JSON* ugyanaz marad. A következő JavaScript-kódot:
-
-```javascript
-module.exports = async function (context, req) {
-    context.bindings.signalRMessages = [{
-        // message will only be sent to this user ID
-        "userId": "userId1",
-        "target": "newMessage",
-        "arguments": [ req.body ]
-    }];
-};
-```
-
-#### <a name="send-to-a-group"></a>Küldés egy csoportba
-
-A jelző üzenet `groupName` tulajdonságának beállításával csak a csoportba felvett kapcsolatokhoz küldhet üzenetet.
-
-a *function. JSON* ugyanaz marad. A következő JavaScript-kódot:
-
-```javascript
-module.exports = async function (context, req) {
-    context.bindings.signalRMessages = [{
-        // message will only be sent to this group
-        "groupName": "myGroup",
-        "target": "newMessage",
-        "arguments": [ req.body ]
-    }];
-};
-```
-
-### <a name="2x-javascript-group-management-output-examples"></a>2. x JavaScript csoport-felügyeleti kimeneti példák
-
-A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A felhasználó csoporttagság kezeléséhez használhatja a `SignalR` kimeneti kötést.
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 #### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
 A következő példa egy felhasználót egy csoportba helyez.
 
-*function. JSON*
+Példa *function. JSON*
 
 ```json
 {
-  "disabled": false,
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    },
-    {
-      "type": "signalR",
-      "name": "signalRGroupActions",
-      "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
-      "hubName": "chat",
-      "direction": "out"
-    }
-  ]
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*Futtassa a. CSX*
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Add
+        });
+}
+```
+
+#### <a name="remove-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
+
+A következő példa egy felhasználót távolít el egy csoportból.
+
+Példa *function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*Futtassa a. CSX*
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Remove
+        });
+}
+```
+
+> [!NOTE]
+> Ahhoz, hogy a `ClaimsPrincipal` megfelelően kötve legyen, konfigurálnia kell a hitelesítési beállításokat a Azure Functionsban.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
+
+A következő példa egy felhasználót egy csoportba helyez.
+
+Példa *function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
 }
 ```
 
@@ -431,34 +875,15 @@ module.exports = async function (context, req) {
 
 A következő példa egy felhasználót távolít el egy csoportból.
 
-*function. JSON*
+Példa *function. JSON*
 
 ```json
 {
-  "disabled": false,
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    },
-    {
-      "type": "signalR",
-      "name": "signalRGroupActions",
-      "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
-      "hubName": "chat",
-      "direction": "out"
-    }
-  ]
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
 }
 ```
 
@@ -474,73 +899,63 @@ module.exports = async function (context, req) {
 };
 ```
 
-### <a name="2x-java-send-message-output-examples"></a>2. x Java-üzenet küldése kimeneti példák
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-#### <a name="broadcast-to-all-clients"></a>Közvetítés az összes ügyfél számára
+#### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
-Az alábbi példa egy [Java-függvényt](functions-reference-java.md) mutat be, amely az összes csatlakoztatott ügyfél kimeneti kötését használva üzenetet küld. A `target` az egyes ügyfeleken meghívott metódus neve. A `arguments` tulajdonság az ügyfél metódusának átadandó nulla vagy több objektum tömbje.
+A következő példa egy felhasználót egy csoportba helyez.
 
-```java
-@FunctionName("sendMessage")
-@SignalROutput(name = "$return", hubName = "chat")
-public SignalRMessage sendMessage(
-        @HttpTrigger(
-            name = "req",
-            methods = { HttpMethod.POST },
-            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+Példa *function. JSON*
 
-    SignalRMessage message = new SignalRMessage();
-    message.target = "newMessage";
-    message.arguments.add(req.getBody());
-    return message;
+```json
+{
+    "type": "signalR",
+    "name": "action",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
 }
 ```
 
-#### <a name="send-to-a-user"></a>Küldés felhasználó számára
+*\_\_init. py__*
 
-A jelző üzenet `userId` tulajdonságának beállításával csak a felhasználó számára hitelesített kapcsolatokra küldhet üzenetet.
+```python
+def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
+    action.set(json.dumps({
+        'userId': 'userId1',
+        'groupName': 'myGroup',
+        'action': 'add'
+    }))
+```
 
-```java
-@FunctionName("sendMessage")
-@SignalROutput(name = "$return", hubName = "chat")
-public SignalRMessage sendMessage(
-        @HttpTrigger(
-            name = "req",
-            methods = { HttpMethod.POST },
-            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+#### <a name="remove-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
 
-    SignalRMessage message = new SignalRMessage();
-    message.userId = "userId1";
-    message.target = "newMessage";
-    message.arguments.add(req.getBody());
-    return message;
+A következő példa egy felhasználót távolít el egy csoportból.
+
+Példa *function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "action",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
 }
 ```
 
-#### <a name="send-to-a-group"></a>Küldés egy csoportba
+*\_\_init. py__*
 
-A jelző üzenet `groupName` tulajdonságának beállításával csak a csoportba felvett kapcsolatokhoz küldhet üzenetet.
-
-```java
-@FunctionName("sendMessage")
-@SignalROutput(name = "$return", hubName = "chat")
-public SignalRMessage sendMessage(
-        @HttpTrigger(
-            name = "req",
-            methods = { HttpMethod.POST },
-            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
-
-    SignalRMessage message = new SignalRMessage();
-    message.groupName = "myGroup";
-    message.target = "newMessage";
-    message.arguments.add(req.getBody());
-    return message;
-}
+```python
+def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
+    action.set(json.dumps({
+        'userId': 'userId1',
+        'groupName': 'myGroup',
+        'action': 'remove'
+    }))
 ```
 
-### <a name="2x-java-group-management-output-examples"></a>2. x Java csoport-felügyeleti kimeneti példák
-
-A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A `SignalRGroupAction` osztályt a `SignalROutput` kimeneti kötés használatával kezelheti a felhasználók csoporttagság.
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 #### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
@@ -586,13 +1001,15 @@ public SignalRGroupAction removeFromGroup(
 }
 ```
 
+---
+
 ## <a name="configuration"></a>Konfiguráció
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
 Az alábbi táblázat a *function. JSON* fájlban és a `SignalRConnectionInfo` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
+|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**type**|| `signalRConnectionInfo`értékre kell állítani.|
 |**direction**|| `in`értékre kell állítani.|
@@ -605,7 +1022,7 @@ Az alábbi táblázat a *function. JSON* fájlban és a `SignalRConnectionInfo` 
 
 Az alábbi táblázat a *function. JSON* fájlban és a `SignalR` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
+|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**type**|| `signalR`értékre kell állítani.|
 |**direction**|| `out`értékre kell állítani.|
@@ -615,7 +1032,7 @@ Az alábbi táblázat a *function. JSON* fájlban és a `SignalR` attribútumban
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

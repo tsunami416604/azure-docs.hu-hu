@@ -1,33 +1,34 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: fe726986b3f93ab3bb447b8973727a658ac1c706
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: 96943405f3fce02b8a07158f797dd204eb4bb8e2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179381"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789707"
 ---
-### <a name="prerequisites"></a>Előfeltételek
-* A [Google Drive-hoz](https://www.google.com/drive/) fiók  
+## <a name="prerequisites"></a>Előfeltételek
 
-A Google Drive-hoz fiók a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazást a Google Drive-hoz-fiókhoz való csatlakozáshoz. Szerencsére a ehhez egyszerűen, a logikai alkalmazás az Azure Portal webhelyen belül.  
+* Egy [GoogleDrive](https://www.google.com/drive/) -fiók  
 
-A logikai alkalmazást a Google Drive-hoz-fiókhoz való csatlakozás engedélyezése lépései a következők:  
+Ahhoz, hogy GoogleDrive-fiókját a logikai alkalmazásban használhassa, engedélyeznie kell a logikai alkalmazásnak a GoogleDrive-fiókhoz való kapcsolódást. Szerencsére ezt könnyedén elvégezheti az Azure Portalon a logikai alkalmazáson belül.  
 
-1. A Logic app Designerben Google Drive-hoz, a kapcsolat létrehozásához válassza **megjelenítése a Microsoft által felügyelt API-k** a legördülő listában adja meg *Google Drive-hoz* kifejezést a keresőmezőbe. Válassza ki az eseményindítót vagy műveletet fogja kíván használni:  
-   ![Kapcsolat-létrehozási lépés Google Drive-hoz](./media/connectors-create-api-googledrive/googledrive-1.png)  
-2. Ha még nem hozott létre a googledrive-ba, mielőtt kapcsolatokat, első kéri a Google Drive-hoz hitelesítő adatokat. Ezekkel a hitelesítő adatokkal kapcsolódni a logikai alkalmazás hitelesítéséhez használható, és a Google Drive-hoz fiókhoz tartozó adatok eléréséhez:  
-   ![Kapcsolat-létrehozási lépés Google Drive-hoz](./media/connectors-create-api-googledrive/googledrive-2.png)  
-3. Adja meg a Google Drive-hoz e-mail-címét:  
-   ![Kapcsolat-létrehozási lépés Google Drive-hoz](./media/connectors-create-api-googledrive/googledrive-3.png)  
-4. Adja meg a Google Drive-hoz jelszavát, hogy a logikai alkalmazás engedélyezése:  
-   ![Kapcsolat-létrehozási lépés Google Drive-hoz](./media/connectors-create-api-googledrive/googledrive-4.png)
-5. A Google Drive-hoz való csatlakozás engedélyezése  
-   ![Kapcsolat-létrehozási lépés Google Drive-hoz](./media/connectors-create-api-googledrive/googledrive-5.png)  
-6. Figyelje meg, hogy a kapcsolat létrejött, és most már szabadon folytassa a további lépésekkel, a logikai alkalmazásban:  
-   ![Kapcsolat-létrehozási lépés Google Drive-hoz](./media/connectors-create-api-googledrive/googledrive-6.png)  
+Az alábbi lépésekkel engedélyezheti a logikai alkalmazásnak a GoogleDrive-fiókhoz való kapcsolódást:  
+
+1. A GoogleDrive-kapcsolat létrehozásához a Logic app Designerben válassza a **Microsoft felügyelt API** -k megjelenítése lehetőséget a legördülő listában, majd írja be a *GoogleDrive* kifejezést a keresőmezőbe. Válassza ki a használni kívánt triggert vagy műveletet:  
+   ![GoogleDrive-kapcsolatok létrehozási lépése](./media/connectors-create-api-googledrive/googledrive-1.png)  
+2. Ha korábban még nem hozott létre kapcsolatot a GoogleDrive, a rendszer kérni fogja, hogy adja meg a GoogleDrive hitelesítő adatait. Ezek a hitelesítő adatok a logikai alkalmazáshoz való kapcsolódáshoz és a GoogleDrive-fiók adatainak eléréséhez lesznek használva:  
+   ![GoogleDrive-kapcsolatok létrehozási lépése](./media/connectors-create-api-googledrive/googledrive-2.png)  
+3. Adja meg a GoogleDrive e-mail-címét:  
+   ![GoogleDrive-kapcsolatok létrehozási lépése](./media/connectors-create-api-googledrive/googledrive-3.png)  
+4. Adja meg a GoogleDrive jelszavát a logikai alkalmazás engedélyezéséhez:  
+   ![GoogleDrive-kapcsolatok létrehozási lépése](./media/connectors-create-api-googledrive/googledrive-4.png)
+5. GoogleDrive való kapcsolódás engedélyezése  
+   ![GoogleDrive-kapcsolatok létrehozási lépése](./media/connectors-create-api-googledrive/googledrive-5.png)  
+6. Figyelje meg, hogy létrejött a kapcsolódás, és most már ingyenesen folytathatja a logikai alkalmazás egyéb lépéseit:  
+   ![GoogleDrive-kapcsolatok létrehozási lépése](./media/connectors-create-api-googledrive/googledrive-6.png)  
 

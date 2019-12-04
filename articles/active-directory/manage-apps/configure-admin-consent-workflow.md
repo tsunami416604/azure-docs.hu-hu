@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d1654556df455accb7f615442d3a97952c5e50
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b9e1af654f0e82017bab4db5eb529b7d65b44714
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180419"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786435"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Rendszergazdai engedélyezési munkafolyamat (előzetes verzió) konfigurálása
 
@@ -33,10 +33,10 @@ A kérések jóváhagyásához a véleményezőnek globális rendszergazdának, 
 
 A rendszergazdai engedélyekkel rendelkező munkafolyamat engedélyezése és a véleményezők kiválasztása:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként.
-2. Kattintson a **minden szolgáltatás** elemre a bal oldali navigációs menü tetején. Megnyílik a **Azure Active Directory bővítmény** .
-3. A szűrő keresőmezőbe írja be a "**Azure Active Directory**" kifejezést, és válassza ki **a Azure Active Directory** elemet.
-4. A navigációs menüben kattintson a **vállalati alkalmazások**elemre. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
+2. A bal oldali navigációs menü tetején kattintson a **minden szolgáltatás** elemre. Megnyílik a **Azure Active Directory bővítmény** .
+3. A szűrő keresése mezőbe írja be a "**Azure Active Directory**" kifejezést, majd válassza ki **a Azure Active Directory** elemet.
+4. A navigációs menüben kattintson a **vállalati alkalmazások**elemre. 
 5. A **kezelés**területen válassza a **felhasználói beállítások**lehetőséget.
 6. A **rendszergazda által megadott kérések (előzetes verzió)** alatt állítsa be a felhasználók számára, hogy rendszergazdai jogosultságot **kérjenek az alkalmazásoknak, amelyek nem tudnak** hozzájárulni az **Igen**értékre
 
@@ -74,10 +74,10 @@ Ha a rendszergazdai hozzájárulási munkafolyamat engedélyezve van, a felhaszn
 
 A rendszergazdai engedélyezési kérelmek áttekintése és a művelet végrehajtása:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) ba a rendszergazdai beleegyező munkafolyamat egyik regisztrált véleményezője.
-2. Válassza a **minden szolgáltatás** a bal oldali navigációs menü tetején. Megnyílik a **Azure Active Directory bővítmény** .
-3. A szűrő keresőmezőbe írja be a "**Azure Active Directory**" kifejezést, és válassza ki a **Azure Active Directory** elemet.
-4. A navigációs menüben kattintson a **vállalati alkalmazások**elemre.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) a rendszergazdai engedélyezési munkafolyamat egyik regisztrált véleményezője.
+2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali navigációs menü tetején. Megnyílik a **Azure Active Directory bővítmény** .
+3. A szűrő keresése mezőbe írja be a "**Azure Active Directory**" kifejezést, majd válassza ki a **Azure Active Directory** elemet.
+4. A navigációs menüben kattintson a **vállalati alkalmazások**elemre.
 5. A **tevékenység**területen válassza a **rendszergazdai engedélyezési kérelmek (előzetes verzió)** lehetőséget.
 
    > [!NOTE]
@@ -120,14 +120,14 @@ Az alábbi táblázat a rendszergazdai engedélyezési munkafolyamathoz elérhet
 
 |Alkalmazási helyzet  |Naplózási szolgáltatás  |Naplózási kategória  |Naplózási tevékenység  |Könyvvizsgálói színész  |Naplózási naplók korlátai  |
 |---------|---------|---------|---------|---------|---------|
-|A beleegyező kérelem munkafolyamatát engedélyező rendszergazda        |Hozzáférési felülvizsgálatok           |UserManagement           |Irányítási házirend létrehozása sablon          |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet            |
-|Rendszergazda letilthatja a beleegyező kérelem munkafolyamatát       |Hozzáférési felülvizsgálatok           |UserManagement           |Irányítási házirend sablonjának törlése          |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet           |
-|Rendszergazda a beleegyező munkafolyamat-konfigurációk frissítése        |Hozzáférési felülvizsgálatok           |UserManagement           |Irányítási házirend sablonjának frissítése          |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet           |
-|A végfelhasználó rendszergazdai beleegyező kérelmet hoz létre az alkalmazáshoz       |Hozzáférési felülvizsgálatok           |Szabályzat         |Kérelem létrehozása           |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet           |
-|Rendszergazdai jóváhagyást kérő véleményezők jóváhagyása       |Hozzáférési felülvizsgálatok           |UserManagement           |Minden kérelem jóváhagyása a Business flow-ban          |Alkalmazás környezete            |Jelenleg nem található a rendszergazdai jogosultsággal rendelkező felhasználói környezet vagy alkalmazás-azonosító.           |
-|Rendszergazdai beleegyező kérést elutasító felülvizsgálók       |Hozzáférési felülvizsgálatok           |UserManagement           |Minden kérelem jóváhagyása a Business flow-ban          |Alkalmazás környezete            | Jelenleg nem találja a rendszergazdai jóváhagyásra vonatkozó kérést elutasító színész felhasználói környezetét.          |
+|A beleegyező kérelem munkafolyamatát engedélyező rendszergazda        |Hozzáférési felülvizsgálatok           |UserManagement           |Irányítási házirend létrehozása sablon          |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet            |
+|Rendszergazda letilthatja a beleegyező kérelem munkafolyamatát       |Hozzáférési felülvizsgálatok           |UserManagement           |Irányítási házirend sablonjának törlése          |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet           |
+|Rendszergazda a beleegyező munkafolyamat-konfigurációk frissítése        |Hozzáférési felülvizsgálatok           |UserManagement           |Irányítási házirend sablonjának frissítése          |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet           |
+|A végfelhasználó rendszergazdai beleegyező kérelmet hoz létre az alkalmazáshoz       |Hozzáférési felülvizsgálatok           |Szabályzat         |Kérelem létrehozása           |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet           |
+|Rendszergazdai jóváhagyást kérő véleményezők jóváhagyása       |Hozzáférési felülvizsgálatok           |UserManagement           |Minden kérelem jóváhagyása a Business flow-ban          |Alkalmazás környezete            |Jelenleg nem található a rendszergazdai jogosultsággal rendelkező felhasználói környezet vagy alkalmazás-azonosító.           |
+|Rendszergazdai beleegyező kérést elutasító felülvizsgálók       |Hozzáférési felülvizsgálatok           |UserManagement           |Minden kérelem jóváhagyása a Business flow-ban          |Alkalmazás környezete            | Jelenleg nem találja a rendszergazdai jóváhagyásra vonatkozó kérést elutasító színész felhasználói környezetét.          |
 
-## <a name="faq"></a>GYIK 
+## <a name="faq"></a>Gyakori kérdések 
 
 **Bekapcsoltam ezt a munkafolyamatot, de a funkciók kipróbálásakor miért nem látom az új "jóváhagyás szükséges" kérést, amely lehetővé teszi a hozzáférést?**
 

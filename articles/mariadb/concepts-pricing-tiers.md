@@ -1,36 +1,36 @@
 ---
-title: A Azure Database for MariaDB díjszabási szintjei
+title: Árképzési szintek – Azure Database for MariaDB
 description: Ismerkedjen meg a Azure Database for MariaDB különböző díjszabási szintjeivel, beleértve a számítási generációkat, a tárolási típusokat, a tárterület méretét, a virtuális mag, a memóriát és a biztonsági másolatok megőrzési időszakait.
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: ca9552ee60237158bd570ede4a13dbc349b6d1d1
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 36563e11d7a5fb7cfd5878294c3b83977f6bb619
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973564"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772397"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Árképzési szintek Azure Database for MariaDB
 
-Egy Azure Database for MariaDB-kiszolgálót a három különböző díjszabási csomag egyikében hozhat létre: Alapszintű, általános célú és memória optimalizálva. Az árképzési csomagokat a virtuális mag olyan számítási mennyisége különbözteti meg, amely kiépíthető, memóriát virtuális mag, valamint az adatok tárolására szolgáló tárolási technológiát. Az összes erőforrást a MariaDB-kiszolgáló szintjén kell kiépíteni. A kiszolgálók egy vagy több adatbázissal rendelkezhetnek.
+A Azure Database for MariaDB-kiszolgálót a három különböző díjszabási szint egyikében hozhatja létre: alapszintű, általános célú és memória optimalizálva. Az árképzési csomagokat a virtuális mag olyan számítási mennyisége különbözteti meg, amely kiépíthető, memóriát virtuális mag, valamint az adatok tárolására szolgáló tárolási technológiát. Az összes erőforrást a MariaDB-kiszolgáló szintjén kell kiépíteni. A kiszolgálók egy vagy több adatbázissal rendelkezhetnek.
 
 |    | **Basic** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási generáció | Gen 5 |Gen 5 | Gen 5 |
-| Virtuális magok | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
+| Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Memória/virtuális mag | 2 GB | 5 GB | 10 GB |
 | Tárterület mérete | 5 GB – 1 TB | 5 GB – 4 TB | 5 GB – 4 TB |
-| Tárolótípus | Azure standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Tárhely típusa | Azure standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Adatbázis biztonsági másolatának megőrzési időtartama | 7 – 35 nap | 7 – 35 nap | 7 – 35 nap |
 
 Árképzési szintek kiválasztásához használja a következő táblázatot kiindulási pontként.
 
-| Tarifacsomag | Kívánt teljesítményprofilok |
+| Díjcsomag | Kívánt teljesítményprofilok |
 |:-------------|:-----------------|
-| Alapszintű | Könnyű számítási és I/O-teljesítményt igénylő munkaterhelések. Ilyenek például a fejlesztéshez és teszteléshez használt kiszolgálók, vagy a kisméretű, ritkán használt alkalmazások. |
+| Basic | Könnyű számítási és I/O-teljesítményt igénylő munkaterhelések. Ilyenek például a fejlesztéshez és teszteléshez használt kiszolgálók, vagy a kisméretű, ritkán használt alkalmazások. |
 | Általános rendeltetés | A legtöbb üzleti számítási feladat, amely kiegyensúlyozott számítást és memóriát igényel a méretezhető I/O-átviteli sebességgel. Ilyenek például a web-és mobil alkalmazások és más vállalati alkalmazások üzemeltetésére szolgáló kiszolgálók.|
 | Memóriára optimalizált | Nagy teljesítményű adatbázis-munkaterhelések, amelyek memóriabeli teljesítményt igényelnek a gyorsabb tranzakció-feldolgozáshoz és a nagyobb egyidejűséghez. Ilyenek például a valós idejű és a nagy teljesítményű tranzakciós vagy analitikai alkalmazások feldolgozására szolgáló kiszolgálók.|
 
@@ -40,16 +40,16 @@ A kiszolgáló létrehozása után a virtuális mag száma és az árképzési s
 
 A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapul szolgáló hardver logikai PROCESSZORát jelöli. A Gen 5 logikai CPU-alapú Intel E5-2673 v4 (Broadwell) 2,3-GHz-es processzorok.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Adattárolás
 
 Az Ön által kiépített tárterület a Azure Database for MariaDB-kiszolgáló számára elérhető tárolási kapacitás mennyisége. A tároló az adatbázisfájlok, az ideiglenes fájlok, a tranzakciós naplók és a MariaDB-kiszolgáló naplóihoz használható. A kiépített tárterület teljes mennyisége határozza meg a kiszolgáló számára elérhető I/O-kapacitást is.
 
 |    | **Basic** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
-| Tárolótípus | Azure standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Tárhely típusa | Azure standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Tárterület mérete | 5 GB – 1 TB | 5 GB – 4 TB | 5 GB – 4 TB |
 | Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
-| IOPS | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 6000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 6000 IOPS |
+| IO | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 6000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 6000 IOPS |
 
 A kiszolgáló létrehozásakor és után további tárolókapacitást is hozzáadhat, és lehetővé teheti, hogy a rendszer automatikusan növelje a tárterületet a számítási feladatok tárolási feladatainak megfelelően.
 
@@ -78,7 +78,7 @@ Ha például 1000 GB tárhelyet használ, és a tényleges kihasználtság megha
 
 Ne feledje, hogy a tárterület csak akkor méretezhető, ha nem.
 
-## <a name="backup"></a>Biztonsági másolat
+## <a name="backup"></a>Backup
 
 A szolgáltatás automatikusan biztonsági másolatot készít a kiszolgálóról. A biztonsági mentések minimális megőrzési ideje hét nap. 35 napos megőrzési időtartamot is beállíthat. A megőrzés a kiszolgáló élettartama alatt bármikor módosítható. A helyileg redundáns és a Geo-redundáns biztonsági mentések közül választhat. A Geo-redundáns biztonsági mentéseket a kiszolgáló által létrehozott régió [földrajzi összepárosítású régiójában](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) is tárolja a rendszer. Ez a redundancia katasztrófa esetén nyújt védelmet. Lehetősége van arra is, hogy a kiszolgálót bármely olyan Azure-régióba visszaállítsa, amelyben a szolgáltatás a Geo-redundáns biztonsági mentésekkel elérhető. A kiszolgáló létrehozása után a két biztonsági mentési tárolási lehetőség között nem lehet módosítani.
 
@@ -96,7 +96,7 @@ A tárterület skálázása és a biztonsági mentés megőrzési időtartamána
 
 A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/mariadb/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.MariaDBServer) a kiválasztott beállítások alapján megjeleníti a havi költséget a **díjszabási szintek** lapon. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és **Azure Database for MariaDB** a beállítások testreszabásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg a [szolgáltatási korlátozásokat](concepts-limits.md).
 - Megtudhatja, hogyan [hozhat létre MariaDB-kiszolgálót a Azure Portalban](quickstart-create-mariadb-server-database-using-azure-portal.md).
 

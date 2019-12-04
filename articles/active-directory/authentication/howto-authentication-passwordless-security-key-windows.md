@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/02/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5343387da7b2027e1071b19be826e329494cdd3e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 05230e39175e71f4eec2c99cd6cbd2f44f05df30
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452946"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766361"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése Windows 10-es eszközökre (előzetes verzió)
 
@@ -56,22 +56,22 @@ Az Azure AD-hez csatlakoztatott eszközöknek, amelyekkel kísérletezni fog, a 
 A szervezetek az alábbi módszerek közül egyet vagy többet is választhatnak, hogy a szervezet követelményei alapján engedélyezzék a Windows-bejelentkezéshez szükséges biztonsági kulcsok használatát.
 
 - [Engedélyezés az Intune-nal](#enable-with-intune)
-   - [Célként megadott Intune-telepítés](#targeted-intune-deployment)
+- [Célként megadott Intune-telepítés](#targeted-intune-deployment)
 - [Engedélyezés kiépítési csomaggal](#enable-with-a-provisioning-package)
 
 ### <a name="enable-with-intune"></a>Engedélyezés az Intune-nal
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Keresse meg **Microsoft Intune** > **eszköz beléptetése** > **Windows-regisztráció** > **Windows Hello for Business** > **tulajdonságokat**.
 1. A **Settings (beállítások** ) beállításnál a **bejelentkezéshez a biztonsági kulcsok használata** **engedélyezett**.
 
 A bejelentkezéshez szükséges biztonsági kulcsok konfigurálása nem függ a vállalati Windows Hello konfigurálásának.
 
-#### <a name="targeted-intune-deployment"></a>Célként megadott Intune-telepítés
+### <a name="targeted-intune-deployment"></a>Célként megadott Intune-telepítés
 
 A hitelesítő adatok szolgáltatójának engedélyezéséhez a következő egyéni beállításokat használhatja az Intune-on keresztül.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Tallózással keresse meg **Microsoft Intune** > az **eszköz konfigurációjának** > **profiljait** , > **hozza létre a profilt**.
 1. Konfigurálja az új profilt a következő beállításokkal
    1. Név: biztonsági kulcsok a Windows-bejelentkezéshez

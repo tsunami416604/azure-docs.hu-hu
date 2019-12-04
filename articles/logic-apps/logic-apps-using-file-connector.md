@@ -1,20 +1,19 @@
 ---
-title: Kapcsolódás helyi fájlrendszerek számára – Azure Logic Apps
+title: Kapcsolódás a helyi fájlrendszerek számára
 description: Automatizálja a helyszíni fájlrendszerekhez csatlakozó feladatokat és munkafolyamatokat a helyi adatátjárón keresztül a Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 1b5cf27c49a003042086cd9452f288c7f348d343
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799703"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792774"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Kapcsolódás helyi fájlrendszerekhez Azure Logic Apps
 
@@ -68,7 +67,7 @@ Ez a cikk bemutatja, hogyan kapcsolódhat a helyi fájlrendszerhez a példa pél
 
    | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    | -------- | -------- | ----- | ----------- |
-   | **Kapcsolat neve** | Igen | < a*kapcsolatok neve* > | A kapcsolatok kívánt neve |
+   | **Kapcsolat neve** | Igen | <a *kapcsolatok neve*> | A kapcsolatok kívánt neve |
    | **Gyökérmappa** | Igen | <*gyökér-mappa neve*> | A fájlrendszer gyökérkönyvtára, például ha telepítette a helyszíni adatátjárót, például egy helyi mappát azon a számítógépen, amelyen a helyszíni adatátjáró telepítve van, vagy egy hálózati megosztás mappája, amelyhez a számítógép hozzáférhet. <p>Például:`\\PublicShare\\DropboxFiles` <p>A gyökérmappa a fő szülő mappa, amely a fájlokkal kapcsolatos összes művelet relatív elérési útjaihoz használható. |
    | **Hitelesítés típusa** | Nem | <*hitelesítési típus*> | A fájlrendszer által használt hitelesítés típusa, például **Windows** |
    | **Felhasználónév** | Igen | <*tartomány*>\\<*Felhasználónév*> | Annak a számítógépnek a felhasználóneve, amelyen a fájlrendszere van |

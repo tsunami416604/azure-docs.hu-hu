@@ -1,22 +1,18 @@
 ---
-title: Kapcsolódás az Excel online-hoz – Azure Logic Apps
+title: Kapcsolódás az Excel online-hoz
 description: Adatok kezelése az Excel online REST API-kkal és Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: d3c6395f7fd66e1b89fc49536e228249bc4ed2a9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a4356b4f88df3fc457917be563a79e9054a1638e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859254"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789801"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Az Excel online-beli adatkezelési Azure Logic Apps
 
@@ -70,6 +66,6 @@ A technikai részleteket, például az eseményindítókat, a műveleteket és a
 * [Vállalati Excel online](/connectors/excelonlinebusiness/)
 * [Excel online OneDrive](/connectors/excelonline/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

@@ -1,21 +1,21 @@
 ---
-title: Azure Database for PostgreSQL – egyetlen kiszolgáló olvasási replikáinak kezelése a Azure Portal
+title: Olvasási replikák kezelése – Azure Portal-Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ismerje meg, hogyan kezelheti az olvasási replikákat Azure Database for PostgreSQL – egyetlen kiszolgáló a Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 0ff6cd50a5a6cb1599a2248fbc61b0b6b307e791
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 5e031354d4695a1d7eb6f199e23e74b796273230
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995455"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770220"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási replikákat Azure Database for PostgreSQL a Azure Portalból. Az olvasási replikákkal kapcsolatos további tudnivalókért tekintse meg [](concepts-read-replicas.md)az áttekintést.
+Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási replikákat Azure Database for PostgreSQL a Azure Portalból. Az olvasási replikákkal kapcsolatos további tudnivalókért tekintse meg az [áttekintést](concepts-read-replicas.md).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -47,7 +47,7 @@ Ezeket a lépéseket kell használni a főkiszolgáló előkészítéséhez a á
 A replikáció támogatásának engedélyezése a főkiszolgálón egyszeri művelet. Az Ön kényelme érdekében meg kell adni a **replikálási támogatás letiltása** gombot. Nem javasoljuk a replikálás támogatásának letiltását, hacsak nem biztos benne, hogy soha nem fog replikát létrehozni ezen a főkiszolgálón. A replikálás támogatása nem tiltható le, amíg a főkiszolgáló meglévő replikákkal rendelkezik.
 
 
-## <a name="create-a-read-replica"></a>Hozzon létre egy olvasható replika
+## <a name="create-a-read-replica"></a>Olvasási replika létrehozása
 Olvasási replika létrehozásához kövesse az alábbi lépéseket:
 
 1. Válassza ki azt a meglévő Azure Database for PostgreSQL kiszolgálót, amelyet főkiszolgálóként kíván használni. 
@@ -64,7 +64,7 @@ Olvasási replika létrehozásához kövesse az alábbi lépéseket:
 
 5. Válassza ki a replika helyét. Az alapértelmezett hely megegyezik a főkiszolgálóval.
 
-    ![Válasszon ki egy helyet](./media/howto-read-replicas-portal/location-replica.png)
+    ![Válasszon helyet](./media/howto-read-replicas-portal/location-replica.png)
 
    > [!NOTE]
    > Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md). 
@@ -106,7 +106,7 @@ Ha le szeretné állítani a főkiszolgáló és egy olvasási replika közötti
    ![A replikáció leállításának megerősítése](./media/howto-read-replicas-portal/confirm-stop-replication.png)
  
 
-## <a name="delete-a-master-server"></a>Egy fölérendelt kiszolgáló törlése
+## <a name="delete-a-master-server"></a>Főkiszolgáló törlése
 A főkiszolgálók törléséhez ugyanazokat a lépéseket kell használni, mint az önálló Azure Database for PostgreSQL-kiszolgáló törléséhez. 
 
 > [!IMPORTANT]
@@ -177,6 +177,6 @@ A **replika késésének** mérőszáma az utolsó visszajátszott tranzakció �
  
 3. Az **összesítéshez**válassza a **Max**lehetőséget. 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ [az olvasási replikákkal kapcsolatban Azure Database for PostgreSQL](concepts-read-replicas.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI-ben és a REST APIban](howto-read-replicas-cli.md).

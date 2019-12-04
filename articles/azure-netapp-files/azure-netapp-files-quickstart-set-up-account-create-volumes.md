@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/12/2019
+ms.date: 12/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 06ebe8ed22453289fa02c238d9b2e6ef13191f2a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 912fd6bde4d00cca304a1506465a524cda947a07
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888554"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769846"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása 
 
@@ -34,7 +34,7 @@ Ebben a rövid útmutatóban a következő elemeket fogja beállítani:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előkészületek 
+## <a name="before-you-begin"></a>Előzetes teendők 
 
 > [!IMPORTANT] 
 > Hozzáférést kell biztosítania a Azure NetApp Files szolgáltatáshoz.  Ha hozzáférést szeretne kérni a szolgáltatáshoz, tekintse meg a [Azure NetApp Files várólista-beküldési lapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u).  A folytatás előtt meg kell várnia a hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól. 
@@ -49,7 +49,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 > A regisztrációs folyamat hosszabb időt is igénybe vehet.
 >
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 A portál használatával történő regisztráció lépéseihez nyisson meg egy Cloud Shell-munkamenetet a fent jelzett módon, és kövesse az alábbi Azure CLI-lépéseket:
 
@@ -77,7 +77,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 ## <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. A Azure Portal keresési mezőjébe írja be a **Azure NetApp Files** , majd a megjelenő listából válassza a **Azure NetApp Files** lehetőséget.
 
@@ -161,7 +161,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 ## <a name="set-up-a-capacity-pool"></a>Kapacitáskészlet beállítása
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. A Azure NetApp Files-kezelés panelen válassza ki a NetApp-fiókját (**myaccount1**).
 
@@ -224,7 +224,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 ## <a name="create-nfs-volume-for-azure-netapp-files"></a>NFS-kötet létrehozása a Azure NetApp Fileshoz
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. A NetApp-fiók Azure NetApp Files felügyelet paneljén kattintson a **kötetek**elemre.
 
@@ -257,9 +257,6 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
     * Válassza ki a kötet NFS-verzióját (**NFSv3** vagy **nfsv 4.1**).  
       Lásd az NFS-verziók [szempontjait](azure-netapp-files-create-volumes.md#considerations) és [ajánlott eljárásait](azure-netapp-files-create-volumes.md#best-practice) . 
       
-> [!IMPORTANT] 
-> A NFSv 4.1 szolgáltatáshoz való hozzáféréshez az engedélyezés szükséges.  Az engedélyezési kérelem elküldéséhez küldje el a <anffeedback@microsoft.com>. 
-
   ![Az NFS protokoll megadása a gyors üzembe helyezéshez](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. Kattintson az **Áttekintés + létrehozás** elemre.
@@ -366,7 +363,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Ha elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőforráscsoport törlésének művelete visszafordíthatatlan.  
 
@@ -418,7 +415,7 @@ Ha elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőf
     ```
 ---
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 > [!div class="nextstepaction"]
 > [Kötetek kezelése Azure NetApp Files használatával](azure-netapp-files-manage-volumes.md)  

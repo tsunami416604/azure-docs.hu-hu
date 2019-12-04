@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL illesztőprogramok és felügyeleti eszközök kompatibilitása
+title: Illesztőprogramok és eszközök kompatibilitása – Azure Database for MySQL
 description: Ez a cikk a Azure Database for MySQL rendszerrel kompatibilis MySQL-illesztőprogramokat és-felügyeleti eszközöket ismerteti.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.openlocfilehash: 916c02c30f6d54aef44459775a7a437fe96a4ff9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 12/02/2019
+ms.openlocfilehash: 83c1463beec47ed3535811de822348cc7706f757
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720141"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765341"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>A Azure Database for MySQL-kompatibilis MySQL-illesztőprogramok és-felügyeleti eszközök
 Ez a cikk a Azure Database for MySQL kompatibilis illesztőprogramokat és felügyeleti eszközöket ismerteti.
@@ -21,7 +21,7 @@ Azure Database for MySQL a MySQL-adatbázis világ legnépszerűbb közösségi 
 
 | **Programozási nyelv** | **Illesztőprogram** | **Linkek** | **Kompatibilis verziók** | **Nem kompatibilis verziók** | **Megjegyzések** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |
-| PHP | mysqli, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5,3 | Az SSL-MySQLi rendelkező PHP 7,0-kapcsolathoz adja hozzá a MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT a kapcsolati karakterláncban. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> OEM set: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` lehetőség hamis értékre.|
+| PHP | mysqli, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5,3 | Az SSL-MySQLi rendelkező PHP 7,0-kapcsolathoz adja hozzá a MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERTt a kapcsolati karakterláncban. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> OEM set: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` lehetőség hamis értékre.|
 | .NET | Aszinkron MySQL-összekötő a .NET-hez | https://github.com/mysql-net/MySqlConnector <br> [Telepítőcsomag a Nuget](https://www.nuget.org/packages/MySqlConnector/) | 0,27 és utána | 0.26.5 és előtte | |
 | .NET | MySQL-összekötő/háló | https://github.com/mysql/mysql-connector-net | 8,0, 7,0, 6,10 |  | A kódolási hibák miatt a kapcsolatok sikertelenek lehetnek bizonyos nem UTF8 Windows rendszereken. |
 | Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> Telepítőcsomag a NPM-ből:<br> `npm install mysql` futtatása a NPM | 2,15 | 2.14.1 és előtte | |
@@ -40,7 +40,7 @@ Azure Database for MySQL a MySQL-adatbázis világ legnépszerűbb közösségi 
 | Swift | MySQL – Swift | https://github.com/novi/mysql-swift | 0.7.2 + | | |
 | Swift | gőz/MySQL | https://github.com/vapor/mysql-kit | 2.0.1 + | | |
 
-## <a name="management-tools"></a>Kezelőeszközök
+## <a name="management-tools"></a>Felügyeleti eszközök
 A kompatibilitási előny az adatbázis-felügyeleti eszközökre is kiterjed. A meglévő eszközeinek továbbra is működniük kell Azure Database for MySQLsal, feltéve, hogy az adatbázis-manipuláció a felhasználói engedélyek határain belül működik. A következő táblázatban található három általános adatbázis-felügyeleti eszköz, amelyet teszteltek, és amelyek kompatibilisek a Azure Database for MySQL 5,6-as és 5,7-es verzióval:
 
 |                                     | **MySQL Workbench 6. x és fel** | **Navicat 12** | **PHPMyAdmin 4. x és fel** |
@@ -54,6 +54,6 @@ A kompatibilitási előny az adatbázis-felügyeleti eszközökre is kiterjed. A
 | Kiszolgáló paramétereinek megjelenítése | X | X | X |
 | Ügyfélkapcsolatok megjelenítése | X | X | X |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Database for MySQL csatlakoztatási hibáinak elhárítása](howto-troubleshoot-common-connection-issues.md)

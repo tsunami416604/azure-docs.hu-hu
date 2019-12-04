@@ -1,6 +1,6 @@
 ---
-title: Single-page application (alkalmazás regisztrációja) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazás (alkalmazásregisztráció)
+title: Egyoldalas alkalmazás (alkalmazás-regisztráció) – Microsoft Identity platform
+description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazást (alkalmazás-regisztráció)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,38 +15,38 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1faf4669dca2aaaf3f873e66f859473ccd99f10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ef23b08beeee4cd7e82a5fc33a01b4988ddffb6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074830"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764695"
 ---
-# <a name="single-page-application---app-registration"></a>Egyoldalas alkalmazás – alkalmazás regisztrálása
+# <a name="single-page-application-app-registration"></a>Egyoldalas alkalmazás: alkalmazás regisztrálása
 
-Ezen a lapon egy egyoldalas alkalmazás (SPA)-alkalmazás regisztrációja adatait ismerteti.
+Ezen a lapon megtudhatja, hogy egy egyoldalas alkalmazás (SPA) mely alkalmazás-regisztrációs sajátosságai vannak.
 
-Kövesse a lépéseket a [egy új alkalmazás regisztrálása a Microsoft identity Platform](quickstart-register-app.md), és válassza ki az alkalmazás a támogatott fiókokat. Az SPA-forgatókönyv fiókokkal történő hitelesítés is támogatja a szervezet vagy a bármely szervezet és a személyes Microsoft-fiókok.
+A lépéseket követve [regisztrálhat egy új alkalmazást a Microsoft Identity platformon](quickstart-register-app.md), és kiválaszthatja az alkalmazás támogatott fiókját. A SPA-forgatókönyv támogatja a hitelesítést a szervezetében lévő fiókokkal, illetve bármely szervezet és személyes Microsoft-fiókkal.
 
-Következőként ismerje meg, hogy az alkalmazás regisztrációja konkrét elemeit, amely a alkalmazni a egyoldalas alkalmazások.
+Következő lépésként Ismerkedjen meg az alkalmazások regisztrációjának adott szempontjaival, amelyek az egyoldalas alkalmazásokra vonatkoznak.
 
-## <a name="register-a-redirect-uri"></a>Átirányítási URI-t regisztrálása
+## <a name="register-a-redirect-uri"></a>Átirányítási URI regisztrálása
 
-Az implicit folyamatot küldi a jogkivonatok átirányítási az egyoldalas alkalmazást a böngészőben. Ezért célszerű regisztrálni az átirányítási URI, ahol az alkalmazás fogadhat-e a tokenek egy fontos követelmény. Győződjön meg arról, hogy az átirányítási URI-t az alkalmazás URI-azonosítójú pontosan megegyezik.
+Az implicit folyamat átirányítja a jogkivonatokat egy webböngészőn futó egyoldalas alkalmazásba. Ezért fontos regisztrálni egy átirányítási URI-t, amelyben az alkalmazás megkapja a jogkivonatokat. Győződjön meg arról, hogy az átirányítási URI pontosan megegyezik az alkalmazás URI azonosítóval.
 
-A a [az Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908), a regisztrált egy alkalmazást, nyissa meg a **hitelesítési** az alkalmazásnak, válassza az oldal a **webes** platform, és adja meg az értékét a átirányítási URI-ban az alkalmazás a **átirányítási URI-t** mező.
+A [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2083908)lépjen a regisztrált alkalmazáshoz. Az alkalmazás **hitelesítés** lapján válassza **ki a** webplatformot. Az **átirányítási URI mezőben adja** meg az alkalmazás ÁTIRÁNYÍTÁSI URI azonosítóját.
 
 ## <a name="enable-the-implicit-flow"></a>Az implicit folyamat engedélyezése
 
-Az azonos **hitelesítési** lap **speciális beállítások**, is engedélyeznie kell a **típusú Implicit engedélyezés**. Az alkalmazás csak jelentkezzen be a felhasználók és az azonosító jogkivonatok lekérésének lépéseiről teljesítményének vizsgálatához, hogy elegendő ahhoz, hogy **azonosító-jogkivonatokat** jelölőnégyzetet.
+Ugyanazon a **hitelesítési** lapon a **Speciális beállítások**területen engedélyeznie kell az **implicit engedélyezést**is. Ha az alkalmazás csak a felhasználókba jelentkezik be, és azonosító jogkivonatokat kap, akkor elég kijelölni az **azonosító tokeneket** jelölőnégyzetet.
 
-Ha az alkalmazásnak is kell beolvasni a hozzáférési jogkivonatok az API-kat, ügyeljen arra, hogy engedélyezze a **hozzáférési jogkivonatokat** jelölőnégyzetet is. További információkért lásd: [azonosító-jogkivonatokat](./id-tokens.md) és [hozzáférési jogkivonatokat](./access-tokens.md).
+Ha az alkalmazásnak hozzáférési tokeneket is kell kérnie az API-k meghívásához, jelölje be a **hozzáférési tokenek** jelölőnégyzetet is. További információ: [azonosító jogkivonatok](./id-tokens.md) és [hozzáférési jogkivonatok](./access-tokens.md).
 
 ## <a name="api-permissions"></a>API-engedélyek
 
-Egyoldalas alkalmazások hívhatják a API-k a bejelentkezett felhasználó nevében. Delegált engedélyek kéréséhez szükséges. További információkért lásd: [webes API-k elérésére vonatkozó engedélyek hozzáadása](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)
+Az egyoldalas alkalmazások a bejelentkezett felhasználó nevében hívhatnak API-kat. Delegált engedélyeket kell kérniük. Részletekért lásd: [a webes API-k eléréséhez szükséges engedélyek hozzáadása](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Alkalmazás kód konfigurációját](scenario-spa-app-configuration.md)
+> [Az alkalmazás kódjának konfigurálása](scenario-spa-app-configuration.md)

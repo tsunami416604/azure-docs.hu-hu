@@ -1,18 +1,18 @@
 ---
-title: Átmeneti hibák kezelése és hatékony kapcsolódás a Azure Database for MySQLhoz | Microsoft Docs
+title: Átmeneti kapcsolódási hibák – Azure Database for MySQL
 description: Megtudhatja, hogyan kezelheti az átmeneti kapcsolódási hibákat, és hogyan csatlakozhat hatékonyan a Azure Database for MySQLhoz.
 keywords: MySQL-kapcsolat, kapcsolati karakterlánc, kapcsolódási problémák, átmeneti hiba, kapcsolódási hiba, hatékony csatlakozás
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: 4bc5281c891a9d4cd27a48aa365e6cfcec16ad82
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 12/02/2019
+ms.openlocfilehash: b598fafbbfce9a2c0a824dd6530d07a5933a2873
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598252"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765206"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Átmeneti hibák kezelése és hatékony kapcsolódás Azure Database for MySQL
 

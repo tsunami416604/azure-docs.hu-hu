@@ -1,6 +1,6 @@
 ---
-title: Protokoll támogatása az Azure bejárati ajtajának Service HTTP-fejlécek |} A Microsoft Docs
-description: Ez a cikk ismerteti a HTTP-fejléc protokollok bejárati ajtajának szolgáltatás által támogatott.
+title: Protokoll-támogatás a HTTP-fejlécekhez az Azure-beli előtérben szolgáltatásban | Microsoft Docs
+description: Ez a cikk a bejárati szolgáltatás által támogatott HTTP-fejléceket ismerteti.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,51 +11,52 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 92e8435e4336c68982e4becc2a95f99b2c776c0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3579aee46c610e5bb3efc0942944bbfc3fcb801d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736640"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790513"
 ---
-# <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Az Azure bejárati ajtajának Service HTTP-fejlécek protokoll támogatása
-Ez a cikk ismerteti a bejárati ajtajának Service támogatja. a hívás elérési útjának részei a protokollt (lásd a képen). A következő szakaszok további információ a bejárati ajtajának szolgáltatás által támogatott HTTP-fejléceket.
+# <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>A HTTP-fejlécek protokoll-támogatása az Azure-beli előtérben szolgáltatásban
+Ez a cikk azt a protokollt ismerteti, amelyet a bevezető ajtó szolgáltatás a hívási útvonal részeivel támogat (lásd a képet). A következő szakaszokban további információk találhatók a bejárati szolgáltatás által támogatott HTTP-fejlécekről.
 
-![Az Azure bejárati ajtó a HTTP-fejlécek protokoll][1]
+![Azure bejárati ajtó szolgáltatás HTTP-fejlécek protokollja][1]
 
 >[!IMPORTANT]
->Bejárati ajtajának szolgáltatás bármely itt nem dokumentált HTTP-fejlécek nem igazolja.
+>A bejárati ajtó szolgáltatás nem tanúsít olyan HTTP-fejléceket, amelyek nincsenek dokumentálva.
 
-## <a name="client-to-front-door-service"></a>Ügyfél számára a bejárati ajtajának szolgáltatás
-Bejárati ajtajának szolgáltatás a bejövő kérelem legtöbb fejléc elfogadja őket módosítása nélkül. Néhány fenntartott fejléc el lesznek távolítva a bejövő kérelem elküldve, ha a x fejlécekkel együtt – FD-* előtag.
+## <a name="client-to-front-door-service"></a>Ügyfél és a bejárati ajtó szolgáltatás
+A bejárati ajtó szolgáltatás a bejövő kérelem legtöbb fejlécét a módosítás nélkül fogadja el. Egyes fenntartott fejlécek el lesznek távolítva a bejövő kérelemből, ha el vannak küldve, beleértve az X-FD-* előtaggal rendelkező fejléceket is.
 
-## <a name="front-door-service-to-backend"></a>Bejárati ajtajának szolgáltatás háttérrendszerhez
+## <a name="front-door-service-to-backend"></a>Bejárati ajtó szolgáltatás a háttérrendszer számára
 
-Bejárati ajtajának szolgáltatás tartalmaz egy bejövő kérésnek fejlécet, kivéve, ha az eltávolított korlátozásai miatt. Bejárati ajtajának is a következő fejléceket ad hozzá:
+A befelé irányuló szolgáltatás a bejövő kérelmek fejléceit is tartalmazza, hacsak a korlátozások miatt nem távolítja el azokat. A bejárati ajtó a következő fejléceket is hozzáadja:
 
 | Fejléc  | Példa és leírás |
 | ------------- | ------------- |
-| -n keresztül |  Keresztül: 1.1 azure </br> Bejárati ajtajának hozzáadja az ügyfél HTTP-verzió követ *Azure* a Via fejléc értékeként. Ez azt jelzi, hogy az ügyfél HTTP-verzió és bejárati ajtó a kérelem, az ügyfél és a háttérrendszer között egy köztes címzettnek.  |
-| X-Azure-ClientIP | X-Azure-ClientIP: 127.0.0.1 </br> A kérés feldolgozása folyamatban társított ügyfél IP-címet jelenti. Például egy proxy érkező kérelmet előfordulhat, hogy adja hozzá az X-továbbított – a fejléc jelzi az eredeti hívó IP-címét. |
-| X-Azure-SocketIP |  X-Azure-SocketIP: 127.0.0.1 </br> A szoftvercsatorna IP-címet, amely az aktuális kérelem származik a TCP-kapcsolathoz társított jelenti. A kérés ügyfél IP-cím nem feltétlenül szoftvercsatorna IP-címének egyenlő, mert lehet önkényesen felülírni azt a felhasználó által.|
-| X-Azure-Ref |  X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> A kérés kiszolgálása az internetszolgáltatójuk által bejárati ajtajának azonosító egyedi hivatkozást karakterlánc. Hozzáférési naplók keresése szolgál, kritikus fontosságú hibakeresési.|
-| X-Azure-RequestChain |  X-Azure-RequestChain: ugrások = 1 </br> Fejléc, hogy bejárati ajtajának kérelem hurkok észleléséhez használja, és azon felhasználók függőség sem tarthat tovább. |
-| X-továbbított-számára | X-továbbított-esetén: 127.0.0.1 </br> A X-Forwarded-For (XFF) HTTP-fejléc mező gyakran azonosítja az ügyfél számára egy HTTP-proxy vagy terheléselosztó keresztül csatlakozik az eredeti IP-címét. Ha egy meglévő XFF fejlécet, bejárati ajtajának fűzi hozzá az ügyfél a szoftvercsatorna IP-Címét, vagy az ügyfél IP-szoftvercsatorna XFF fejléc hozzáadása. |
-| X-Forwarded-Host | X-Forwarded-Host: contoso.azurefd.net </br> A X továbbított fogadó HTTP-fejléc mező a módszert gyakran az eredeti gazdára, a fogadó HTTP-kérés fejlécében az ügyfél által kért azonosítására szolgál. Ennek az oka a kérést a háttérkiszolgálónak eltérhetnek a bejárati ajtó a gazdagép nevét. |
-| X-Forwarded-Proto | X továbbított Proto: http </br> Az X továbbított Proto HTTP fejlécmezőt gyakran használják a azonosítani az eredeti protokoll HTTP-kérés, mert a bejárati ajtajának alapján, előfordulhat, hogy kommunikálni a háttérrendszer HTTPS-en keresztül. Ez igaz, akkor is, ha a kérés és a fordított proxy HTTP. |
+| Keresztül |  A: 1,1 Azure-on keresztül </br> A bejárati ajtó hozzáadja az ügyfél HTTP-verzióját, majd az *Azure* -t a on keresztül fejléc értékeként. Ez azt jelzi, hogy az ügyfél HTTP-verziója, és a bejárati ajtó egy köztes címzett volt az ügyfél és a háttér közötti kérelemhez.  |
+| X – Azure – Ügyfélip | X-Azure-Ügyfélip: 127.0.0.1 </br> A feldolgozott kérelemhez társított ügyfél IP-címét jelöli. Egy proxytól érkező kérés például hozzáadhatja az X által továbbított-for fejlécet, hogy jelezze az eredeti hívó IP-címét. |
+| X – Azure – SocketIP |  X-Azure-SocketIP: 127.0.0.1 </br> Azt a szoftvercsatorna IP-címet jelöli, amely a jelenlegi kérelemből származó TCP-kapcsolathoz tartozik. Előfordulhat, hogy a kérelem ügyfél-IP-címe nem egyenlő a szoftvercsatorna IP-címével, mert azt egy felhasználó önkényesen felülírhatja.|
+| X – Azure-ref |  X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> Egy egyedi hivatkozási sztring, amely a bejárati ajtó által kiszolgált kéréseket azonosítja. A rendszer a hozzáférési naplók keresésére, valamint a hibaelhárítás szempontjából kritikus fontosságú megoldására szolgál.|
+| X – Azure – RequestChain |  X-Azure-RequestChain: ugrások = 1 </br> Az a fejléc, amelyet a bejárati ajtó használ a kérési hurkok észlelésére, és a felhasználók nem hozhatnak függőséget. |
+| X – továbbított – a következőhöz: | X – továbbított – a következőhöz: 127.0.0.1 </br> Az X-továbbított-for (XFF) HTTP-fejléc mező gyakran azonosítja a webkiszolgálóhoz a HTTP-proxyn vagy a Load balanceren keresztül csatlakozó ügyfél származó IP-címét. Ha van meglévő XFF-fejléc, akkor a bejárati ajtó hozzáfűzi az ügyfél szoftvercsatorna IP-címét, vagy hozzáadja a XFF-fejlécet az ügyfél szoftvercsatorna IP-címéhez. |
+| X-továbbított-gazdagép | X-továbbított-gazdagép: contoso.azurefd.net </br> Az X-Forwarded-Host HTTP-fejléc mező az ügyfél által a gazdagép HTTP-kérelmének fejlécében kért eredeti gazdagép azonosítására szolgáló közös módszer. Ennek az az oka, hogy az előtérben lévő gazdagép neve eltérhet a kérést kezelő háttér-kiszolgálótól. |
+| X – továbbított – proto | X – továbbított – proto: http </br> Az X-továbbított-proto HTTP-fejléc mező gyakran használatos a HTTP-kérések kezdeményező protokolljának azonosítására, mert a bejárati ajtó a konfiguráció alapján a HTTPS használatával kommunikálhat a háttérrel. Ez akkor is igaz, ha a fordított proxyra irányuló kérelem HTTP. |
+| X-FD-HealthProbe | Az X-FD-HealthProbe HTTP-fejléc mező a bejárati állapot azonosítására szolgál. Ha ez a fejléc 1 értékre van beállítva, a kérelem állapota az állapot. Akkor használhatja, ha az paticular bejárati ajtón lévő, X-Host fejléc mezővel szeretne szigorú hozzáférést elérni. |
 
-## <a name="front-door-service-to-client"></a>Ügyfél bejárati ajtajának szolgáltatás
+## <a name="front-door-service-to-client"></a>A bejárati ajtó szolgáltatás az ügyfél felé
 
-A háttérrendszer a bejárati ajtajának küldött fejlécek is továbbítja a rendszer az ügyfél számára. A következő fejlécek az bejárati ajtajának az ügyfeleknek küldött.
+A háttérbeli bejáratra küldött fejlécek is át lesznek adva az ügyfélnek. A következőkben a bejárati ajtóról az ügyfeleknek továbbított fejlécek találhatók.
 
 | Fejléc  | Példa |
 | ------------- | ------------- |
-| X-Azure-Ref |  *X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Ez egy karakterláncérték egyedi hivatkozás, amely azonosítja a bejárati ajtajának által kiszolgált kérés. Ez fontos a hibaelhárítási, hozzáférési naplók keresése szolgál.|
+| X – Azure-ref |  *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Ez egy egyedi hivatkozási karakterlánc, amely a bejárati ajtó által kiszolgált kéréseket azonosítja. Ez kritikus fontosságú a hibaelhárításhoz, mivel a hozzáférési naplók keresésére szolgál.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Hozzon létre egy bejárati ajtó](quickstart-create-front-door.md)
-- [Hogyan működik a bejárati ajtó](front-door-routing-architecture.md)
+- [Bejárati ajtó létrehozása](quickstart-create-front-door.md)
+- [Az előtérben működik](front-door-routing-architecture.md)
 
 <!--Image references-->
 [1]: ./media/front-door-http-headers-protocol/front-door-protocol-summary.png

@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b265ff8831275a9f4b84f7dac28b82ae75630f8b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d9daff390aa1678c25f4bf9c29b0293d96c43f48
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889786"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775928"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Vész-helyreállítási és Storage-fiók feladatátvétele (előzetes verzió) az Azure Storage-ban
 
@@ -121,7 +121,7 @@ A fiók feladatátvétele az GRS-t vagy RA-GRS-t használó összes ügyfél sz�
 
 - Kelet-Ázsia
 - Délkelet-Ázsia
-- Kelet-Ausztrália
+- Ausztrália keleti régiója
 - Délkelet-Ausztrália
 - USA középső régiója
 - USA 2. keleti régiója
@@ -139,7 +139,7 @@ Connect-AzAccount -SubscriptionId <subscription-id>
 Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
-Az előzetes verzió jóváhagyása 1-2 napig is eltarthat. A regisztráció jóváhagyásának ellenőrzéséhez futtassa a következő parancsot:
+Az előzetes verzió jóváhagyása 5-7 napig is eltarthat. A regisztráció jóváhagyásának ellenőrzéséhez futtassa a következő parancsot:
 
 ```powershell
 Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
@@ -149,7 +149,7 @@ Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace
 
 Tekintse át az ebben a szakaszban ismertetett további szempontokat annak megismeréséhez, hogy az alkalmazások és szolgáltatások milyen hatással lehetnek a feladatátvétel kényszerítésére az előzetes verzió ideje alatt.
 
-#### <a name="azure-virtual-machines"></a>Azure virtuális gépek
+#### <a name="azure-virtual-machines"></a>Azure-alapú virtuális gépek
 
 Az Azure Virtual Machines (VM) nem végez feladatátvételt a fiók feladatátvételének részeként. Ha az elsődleges régió elérhetetlenné válik, és feladatátvételt hajt végre a másodlagos régióban, akkor a feladatátvételt követően újra létre kell hoznia a virtuális gépeket. 
 

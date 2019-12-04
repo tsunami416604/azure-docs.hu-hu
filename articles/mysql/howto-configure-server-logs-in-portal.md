@@ -1,17 +1,17 @@
 ---
-title: Lassú lekérdezési naplók konfigurálása és elérése Azure Database for MySQL a Azure Portal
+title: Lassú lekérdezési naplók elérése – Azure Portal-Azure Database for MySQL
 description: Ez a cikk bemutatja, hogyan konfigurálhatja és érheti el a Azure Database for MySQL lassú naplóit a Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 7eeeb729973e484e9acb26f3ac8cc42693f72eea
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 12/02/2019
+ms.openlocfilehash: 52d219a94676e0f1ce4ceac31b0b50c9d36665ba
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841587"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770577"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Lassú lekérdezési naplók konfigurálása és elérése a Azure Portal
 
@@ -23,9 +23,9 @@ A cikkben ismertetett lépések végrehajtásához Azure Database for MySQL- [ki
 ## <a name="configure-logging"></a>Naplózás konfigurálása
 Konfigurálja a MySQL lassú lekérdezési napló elérését. 
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-2. Válassza ki az Azure Database for MySQL-kiszolgálóhoz.
+2. Válassza ki a Azure Database for MySQL-kiszolgálót.
 
 3. Az oldalsáv **figyelés** szakaszában válassza a **kiszolgálói naplók**lehetőséget. 
    a kiszolgálói naplók beállításainak ![képernyőképe](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
@@ -45,7 +45,7 @@ A naplózás megkezdése után megtekintheti az elérhető lassú lekérdezési 
 
 1. Nyissa meg az Azure Portalt.
 
-2. Válassza ki az Azure Database for MySQL-kiszolgálóhoz.
+2. Válassza ki a Azure Database for MySQL-kiszolgálót.
 
 3. Az oldalsáv **figyelés** szakaszában válassza a **kiszolgálói naplók**lehetőséget. A lap megjeleníti a naplófájlok listáját.
 

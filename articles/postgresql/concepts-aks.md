@@ -1,57 +1,57 @@
 ---
-title: Csatlakozás az Azure Kubernetes Service (AKS) az Azure Database for PostgreSQL – egyetlen kiszolgáló
-description: További tudnivalók az Azure Kubernetes Service csatlakoztatása az Azure Database for PostgreSQL – egyetlen kiszolgáló
+title: Kapcsolódás az Azure Kubernetes szolgáltatáshoz – Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Tudnivalók az Azure Kubernetes szolgáltatás (ak) az Azure Database for PostgreSQL-Single Serverrel való csatlakoztatásáról
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.date: 5/6/2019
 ms.topic: conceptual
-ms.openlocfilehash: a98d9b89db0406d67d1b067c3e53eb5c3dae7957
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46aa411826dd3ea578a2d98b0fe631ab0a12ef4a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068942"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769880"
 ---
-# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Csatlakozás az Azure Kubernetes Service és az Azure Database for PostgreSQL – egyetlen kiszolgáló
+# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Az Azure Kubernetes szolgáltatás és Azure Database for PostgreSQL – egyetlen kiszolgáló csatlakoztatása
 
-Az Azure Kubernetes Service (AKS) biztosít egy felügyelt Kubernetes-fürtöt az Azure-ban is használhatja. Az alábbiakban néhány lehetőség használatakor figyelembe kell AKS és Azure Database for PostgreSQL együtt alkalmazás létrehozása.
+Az Azure Kubernetes Service (ak) egy felügyelt Kubernetes-fürtöt biztosít, amelyet az Azure-ban használhat. Az alábbiakban néhány olyan lehetőség közül választhat, amely az AK-t használja, és Azure Database for PostgreSQL együtt egy alkalmazás létrehozásához.
 
 
 ## <a name="accelerated-networking"></a>Gyorsított hálózatkezelés
-A gyorsított hálózati üzemmódú alapjául szolgáló virtuális gépeinek az AKS-fürt használatát. Ha egy virtuális gépen engedélyezve van a gyorsított hálózatkezelés, nincs kisebb hálózati késést, végrehajtását alacsonyabb jitter és csökkent, a virtuális gép CPU-kihasználtság. Ismerje meg bővebben tájékozódhat a gyorsított hálózati működik, a támogatott operációs rendszerekről, és a Virtuálisgép-példányok esetében támogatott [Linux](../virtual-network/create-vm-accelerated-networking-cli.md).
+Gyorsított hálózatkezeléssel rendelkező mögöttes virtuális gépek használata az AK-fürtben. Ha a gyorsított hálózatkezelés engedélyezve van egy virtuális gépen, alacsonyabb a késés, a csökkent jitter és a CPU-kihasználtság csökkent a virtuális gépen. További információ a gyorsított hálózatkezelés működéséről, a támogatott operációsrendszer-verziókról és a [Linux](../virtual-network/create-vm-accelerated-networking-cli.md)rendszerhez támogatott VM-példányokról.
 
-A 2018 November AKS gyorsított hálózatkezelés támogatott Virtuálisgép-példányok használatát támogatja. A virtuális gépek használó új AKS-fürtök alapértelmezés szerint engedélyezve van a gyorsított hálózatkezeléssel.
+Az AK november 2018-én támogatja a gyorsított hálózatkezelést a támogatott VM-példányokon. A gyorsított hálózatkezelés alapértelmezés szerint engedélyezve van a virtuális gépeket használó új AK-fürtökön.
 
-Ellenőrizheti, hogy az AKS-fürt rendelkezik gyorsított hálózatkezelést:
-1. Nyissa meg az Azure Portalon, és válassza ki az AKS-fürt.
-2. Válassza a Tulajdonságok lapot.
-3. Másolja ki a nevét a **infrastruktúra erőforráscsoport**.
-4. A portál Keresősáv használatával keresse meg és nyissa meg az infrastruktúra erőforráscsoportot.
-5. Válasszon egy virtuális Gépet az erőforráscsoport.
-6. Nyissa meg a virtuális gép **hálózatkezelés** fülre.
-7. Győződjön meg róla hogy **gyorsított hálózatkezelés** "Engedélyezve van."
+Megerősítheti, hogy az AK-fürt felgyorsult hálózattal rendelkezik-e:
+1. Nyissa meg a Azure Portal, és válassza ki az AK-fürtöt.
+2. Válassza a tulajdonságok lapot.
+3. Másolja az **infrastruktúra-erőforráscsoport**nevét.
+4. Az infrastruktúra-erőforráscsoport megkereséséhez és megnyitásához használja a portál keresési sávját.
+5. Válasszon ki egy virtuális gépet az adott erőforráscsoporthoz.
+6. Nyissa meg a virtuális gép **hálózatkezelés** lapját.
+7. Győződjön meg arról, hogy a **gyorsított hálózatkezelés** engedélyezve van-e.
 
 Vagy az Azure CLI-n keresztül az alábbi két parancs használatával:
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
 ```
-A kimenet a létrehozott erőforráscsoportot, hogy az AKS hoz létre, amely tartalmazza a hálózati adapter lesz. "NodeResourceGroup" nevét, és a következő parancsot használhatja. **EnableAcceleratedNetworking** vagy lesz true vagy FALSE (hamis):
+A kimenet a létrehozott erőforráscsoport, amely a hálózati adaptert tartalmazó AK-t hozza létre. Adja meg a "nodeResourceGroup" nevet, és használja a következő parancsban. A **EnableAcceleratedNetworking** értéke TRUE (igaz) vagy FALSE (hamis) lesz:
 ```azurecli
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
 ## <a name="open-service-broker-for-azure"></a>Open Service Broker for Azure 
-[Nyissa meg a Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) lehetővé teszi a közvetlenül a Kubernetes vagy a Cloud Foundry Azure-szolgáltatások kiépítése. Ez egy [Open Service Broker API](https://www.openservicebrokerapi.org/) megvalósítása az Azure-hoz.
+[A nyílt Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) lehetővé teszi az Azure-szolgáltatások kiépítését közvetlenül a Kubernetes vagy a Cloud Foundryból. Ez egy [nyílt Service Broker API](https://www.openservicebrokerapi.org/) -implementáció az Azure-hoz.
 
-Az OSBA hozzon létre egy Azure Database for PostgreSQL-kiszolgálóhoz, és kösse az AKS-fürt Kubernetes általi natív nyelv használatával. Megtudhatja, hogyan használandó OSBA és az Azure Database for postgresql-hez együtt a [OSBA GitHub-oldalon](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md). 
-
-
-## <a name="connection-pooling"></a>Kapcsolatkészletezést
-Egy csatlakozáskészlet minimálisra csökkenti a költségek és a kapcsolódó létrehozását és az adatbázishoz való csatlakozás új záró idő. A készlet, amelyek felhasználhatók kapcsolatok gyűjteménye. 
-
-Nincsenek több kapcsolat poolers PostgreSQL használható. Ezek közül az egyik [PgBouncer](https://pgbouncer.github.io/). A Microsoft Tárolójegyzéket biztosítunk egy egyszerűsített tárolóalapú PgBouncer, amelyek segítségével az oldalkocsi készlet az AKS az Azure Database for postgresql-hez. Látogasson el a [docker hub oldalon](https://hub.docker.com/r/microsoft/azureossdb-tools-pgbouncer/) megtudhatja, hogyan, hogy eléri és használja ezt a képet. 
+A OSBA-mel létrehozhat egy Azure Database for PostgreSQL-kiszolgálót, és összekapcsolhatja azt az AK-fürttel az Kubernetes natív nyelv használatával. Ismerje meg, hogyan használható a OSBA és a Azure Database for PostgreSQL együtt a [OSBA GitHub oldalon](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md). 
 
 
-## <a name="next-steps"></a>További lépések
--  [Az Azure Kubernetes Service-fürt létrehozása](../aks/kubernetes-walkthrough.md)
+## <a name="connection-pooling"></a>Kapcsolatok készletezése
+A kapcsolat Pooler az adatbázishoz való új kapcsolatok létrehozásához és bezárásához kapcsolódó költségeket és időt is lekicsinyíti. A készlet olyan kapcsolatok gyűjteménye, amelyek újra felhasználhatók. 
+
+A PostgreSQL-sel több összekapcsolási készlet is használható. Ezek egyike a [PgBouncer](https://pgbouncer.github.io/). A Microsoft Container Registry egy kis méretű, tárolóban lévő PgBouncer biztosítunk, amely az oldalkocsiban használható az AK-ról Azure Database for PostgreSQL-ra való csatlakozásra. Látogasson el a [Docker hub oldalára](https://hub.docker.com/r/microsoft/azureossdb-tools-pgbouncer/) , ahol megtudhatja, hogyan érheti el és használhatja ezt a rendszerképet. 
+
+
+## <a name="next-steps"></a>Következő lépések
+-  [Azure Kubernetes Service-fürt létrehozása](../aks/kubernetes-walkthrough.md)

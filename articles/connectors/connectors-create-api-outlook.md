@@ -1,22 +1,18 @@
 ---
-title: Kapcsolódás a Outlook.com-Azure Logic Appshoz | Microsoft Docs
+title: Kapcsolódás a Outlook.com
 description: E-mailek, naptárak és névjegyek kezelése a Outlook.com REST API-kkal és Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-manager: jeconnoc
-ms.assetid: 87113c85-d158-4dd5-9ed5-5748130003d6
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/18/2016
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 4586255e96647267bc913f2bc054610163e16bd3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 750efc2cb928bf127c4f3c68d5a58c5f52ca7d51
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050884"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789365"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-with-azure-logic-apps"></a>E-mailek, naptárak és névjegyek kezelése a Outlook.com-ben Azure Logic Apps
 
@@ -53,6 +49,6 @@ A technikai részleteket, például az eseményindítókat, a műveleteket és a
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

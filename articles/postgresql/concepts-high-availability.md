@@ -1,36 +1,36 @@
 ---
-title: Az Azure Database for PostgreSQL - kiszolgáló egyetlen magas rendelkezésre állású fogalmak
-description: Ez a cikk nyújt információkat a magas rendelkezésre állás, Azure Database for PostgreSQL - kiszolgáló egyetlen használata.
+title: Magas rendelkezésre állás – Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk a Azure Database for PostgreSQL-Single Server magas rendelkezésre állásával kapcsolatos információkat tartalmaz.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: f54c83099957b4d8795c4049be52d70e8a0e2a61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80229ff78c4570db583f1218d5d2f72da2dec388
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073436"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768571"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Az Azure Database for PostgreSQL - kiszolgáló egyetlen magas rendelkezésre állású fogalmak
-Az Azure Database for PostgreSQL szolgáltatás garantált magas szintű rendelkezésre állást biztosít. A pénzügyi felelősséggel vállalt garantált szolgáltatási szinttel (SLA) 99,99 %-os általános elérhetővé tételtől. Gyakorlatilag alkalmazások egyike sem állásidő a szolgáltatás használata esetén.
+# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Magas rendelkezésre állással kapcsolatos fogalmak Azure Database for PostgreSQL – egyetlen kiszolgálón
+A Azure Database for PostgreSQL szolgáltatás garantált magas szintű rendelkezésre állást biztosít. A pénzügyileg támogatott szolgáltatói szerződés (SLA) az általánosan elérhető 99,99%-os. A szolgáltatás használata során gyakorlatilag nincs alkalmazás-leállási idő.
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
-A magas rendelkezésre ÁLLÁS modell beépített feladatátvételi mechanizmusok alapján egy csomópont-szintű megszakadása esetén. Egy csomópont-szintű megszakítás akkor fordulhat elő, hardverhiba miatt, vagy a szolgáltatások üzembe helyezéséhez.
+A magas rendelkezésre állású (HA) modell a beépített feladatátvételi mechanizmusokon alapul, ha csomópont szintű megszakítás történik. A csomópont-szintű megszakítás hardverhiba miatt vagy egy szolgáltatás központi telepítésére adott válaszként fordulhat elő.
 
-Mindig egy Azure Database for PostgreSQL-adatbáziskiszolgáló végrehajtott módosítások történnek, egy tranzakció környezetében. A változásokat elszámolni szinkron módon történik az Azure storage-ban Ha a tranzakció véglegesítése. Ha egy csomópont-szintű megszakítás történik, az adatbázis-kiszolgáló automatikusan létrehoz egy új csomópont, és adattárolás csatolja az új csomópont. Minden aktív kapcsolat a rendszer elveti és megszakít tranzakciók nem kerülnek.
+Egy Azure Database for PostgreSQL adatbázis-kiszolgálón végzett módosítások mindig egy tranzakció kontextusában történnek. A módosításokat a rendszer szinkron módon rögzíti az Azure Storage-ban a tranzakció véglegesítése közben. Ha csomópont-szintű megszakítás történik, az adatbázis-kiszolgáló automatikusan létrehoz egy új csomópontot, és az új csomóponthoz csatolja az adattárat. Minden aktív kapcsolat el lesz dobva, és a fedélzeti tranzakciók nincsenek véglegesítve.
 
-## <a name="application-retry-logic-is-essential"></a>Alkalmazás újrapróbálkozási logikát elengedhetetlen.
-Fontos, hogy a PostgreSQL adatbázis-alkalmazások észlelése, és ismételje meg a beépített kapcsolatok csökkent, és nem sikerült a tranzakció. Az alkalmazás újrapróbálkozik, ha az alkalmazás által létesített kapcsolatban a rendszer transzparens módon átirányítja az újonnan létrehozott példány, amely átveszi a hibás szolgáltatáspéldányt a.
+## <a name="application-retry-logic-is-essential"></a>Az alkalmazás újrapróbálkozási logikája elengedhetetlen
+Fontos, hogy a PostgreSQL-adatbázis alkalmazásai felkészültek az eldobott kapcsolatok észlelésére és újrapróbálkozására, valamint a sikertelen tranzakciókat. Az alkalmazás újrapróbálkozásakor az alkalmazás kapcsolata transzparens módon át lesz irányítva az újonnan létrehozott példányra, amely átveszi a sikertelen példányra.
 
-Belsőleg az Azure-ban, az átjáró segítségével átirányítja a kapcsolatot az új példány. Alapján megszakadásának a feladatátvétel teljes folyamat általában több tíz másodpercet vesz igénybe. Az átirányítási belsőleg kezeli az átjárót, mert a külső kapcsolati karakterlánc ugyanaz marad, az ügyfélalkalmazások számára.
+Az Azure-ban belsőleg az átjáró az új példánnyal létesített kapcsolatok átirányítására szolgál. Megszakítás esetén a teljes feladatátvételi folyamat általában több tízezer másodpercig tart. Mivel az átirányítás belsőleg van kezelve az átjárón, a külső kapcsolatok karakterlánca ugyanaz marad az ügyfélalkalmazások számára.
 
-## <a name="scaling-up-or-down"></a>Felfelé és lefelé skálázás
-A magas rendelkezésre ÁLLÁSÚ modell, amikor egy Azure Database for PostgreSQL méretezése felfelé vagy lefelé hasonlóan egy új példány a megadott méretű jön létre. A meglévő adatok tárolási leválasztása az eredeti példányban, és az új példány csatlakozik.
+## <a name="scaling-up-or-down"></a>Felfelé vagy lefelé skálázás
+A HA-modellhez hasonlóan, amikor egy Azure Database for PostgreSQL vertikálisan fel-vagy leskálázásra kerül, létrejön egy új kiszolgálópéldány a megadott mérettel. A meglévő adattárolás le van választva az eredeti példányból, és az új példányhoz van csatolva.
 
-A skálázási művelet során az adatbázis-kapcsolatok romlását történik. Az ügyfélalkalmazások le vannak választva, és nyissa meg a nem véglegesített tranzakciót megszakították. Az ügyfélalkalmazás újrapróbálja a kapcsolódást, vagy egy új kapcsolatot, miután az átjáró irányítja a kapcsolat az újonnan méretű példánnyal. 
+A skálázási művelet során az adatbázis-kapcsolatok megszakítása történik. Az ügyfélalkalmazások le vannak választva, és a nyitott nem véglegesített tranzakciók megszakadnak. Miután az ügyfélalkalmazás újrapróbálkozik a kapcsolódással, vagy új kapcsolódást végez, az átjáró irányítja a kapcsolódást az újonnan méretezett példányhoz. 
 
-## <a name="next-steps"></a>További lépések
-- Ismerje meg [átmeneti kapcsolati hibák kezelése](concepts-connectivity.md)
-- Ismerje meg, hogyan [olvasható replikákat az adatok replikálása](howto-read-replicas-portal.md)
+## <a name="next-steps"></a>Következő lépések
+- Tudnivalók az [átmeneti kapcsolódási hibák kezelésére](concepts-connectivity.md)
+- Ismerje meg, hogyan [replikálhatja adatait olvasási replikákkal](howto-read-replicas-portal.md)

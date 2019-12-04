@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 7a2b15ffdcc1a611c2cb165b4f2657ad7276e05b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 77497d709d7106bf7c13d1fafcc4e64ee0ed1d39
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706353"
+ms.locfileid: "74790311"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Válasszon az Azure Messaging Services – Event Grid, Event Hubs és Service Bus között
 
@@ -98,7 +98,7 @@ Más esetekben összekapcsolhatja őket, hogy egy esemény- és adatfolyamatot a
 
 ## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket: 
-- [Aszinkron üzenetkezelési lehetőségek az Azure-ban](/azure/architecture/guide/technology-choices/messaging.md)
+- [Aszinkron üzenetkezelési lehetőségek az Azure-ban](/azure/architecture/guide/technology-choices/messaging)
 - [Események, adatpontok és üzenetek – a megfelelő Azure Messaging szolgáltatás kiválasztása az adataihoz](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).
 - [Tárolási várólisták és Service Bus várólisták – összehasonlítás és kontrasztos](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - Az Event Grid használatának első lépései: [Egyéni események létrehozása és átirányítása az Azure Event Griddel](custom-event-quickstart.md).

@@ -13,32 +13,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: bf33fe29b18b09bf903e1fc331f1c378eacb3e17
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21feed73d025e0c0a4b2c7bb07d23f450780126e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201715"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766786"
 ---
-# <a name="protect-your-network-resources-in-azure-security-center"></a>A hálózati erőforrások védetté Azure Security Center
+# <a name="protect-your-network-resources"></a>A hálózati erőforrások megóvása
 Azure Security Center folyamatosan elemzi az Azure-erőforrások biztonsági állapotát a hálózati biztonsággal kapcsolatos ajánlott eljárásokhoz. Ha Security Center észleli a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.
+
+Ez a cikk ismerteti a Azure Security Center erőforrás-biztonsági szakaszának **hálózatkezelés** lapját, valamint néhány olyan javaslatot, amelyet itt láthat.
+
+A hálózatkezeléssel kapcsolatos javaslatok teljes listáját lásd: [hálózatkezelési javaslatok](recommendations-network.md).
 
 Ez a cikk az Azure-erőforrásokra vonatkozó ajánlásokat tárgyalja a hálózati biztonsági szempontból. Hálózatkezelési javaslatok központ a következő generációs tűzfalak, hálózati biztonsági csoportok, JIT virtuális gép hozzáférése a bejövő forgalmi szabályokhoz, és így tovább. A hálózati javaslatok és a javítási műveletek listáját lásd: [biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md).
 
 > [!NOTE]
-> A **hálózatkezelés** oldalon részletesen megismerheti az Azure-erőforrások állapotát hálózati perspektívából. A hálózati Térkép és az adaptív hálózati vezérlők csak a standard szintű Azure Security Center érhetők el. [Ha az ingyenes szintet használja, akkor a gombra kattintva megtekintheti az örökölt hálózatkezelési és a hálózati erőforrásokra vonatkozó ajánlásokat](#legacy-networking).
+> A **hálózatkezelés** oldalon részletesen megismerheti az Azure-erőforrások állapotát hálózati perspektívából. A hálózati Térkép és az adaptív hálózati vezérlők csak a standard szintű Azure Security Center érhetők el. [Ha az ingyenes szintet használja, akkor a gombra kattintva **megtekintheti az örökölt hálózatkezelési** és a hálózati erőforrásokra vonatkozó ajánlásokat](#legacy-networking).
 >
 
 A **hálózatkezelés** oldal áttekintést nyújt azokról a részekről, amelyeket részletesen bemutathat a hálózati erőforrások állapotával kapcsolatos további információk eléréséhez:
 
 - Hálózati Térkép (csak Azure Security Center Standard szint)
-- Hálózatok adaptív megerősítése
+- Adaptív hálózat-megerősítés
 - Hálózatkezelési biztonsági javaslatok.
 - Örökölt **hálózatkezelés** panel (az előző hálózatkezelés panel) 
  
 ![Hálózatkezelés panel](./media/security-center-network-recommendations/networking-pane.png)
 
-## <a name="network-map"></a>Hálózati térkép
+## <a name="network-map"></a>Hálózati Térkép
 Az interaktív hálózati Térkép grafikus nézetet biztosít a biztonsági átfedésekkel, így javaslatokat és bepillantást nyerhet a hálózati erőforrások megerősítéséhez. A Térkép használatával megtekintheti az Azure-beli számítási feladatok hálózati topológiáját, a virtuális gépek és az alhálózatok közötti kapcsolatokat, valamint a térképről adott erőforrásokra és az ezekre az erőforrásokra vonatkozó javaslatokkal való részletezés lehetőségét.
 
 A hálózati Térkép megnyitása:
@@ -59,7 +63,7 @@ A topológiai Térkép alapértelmezett nézete a következőket jeleníti meg:
 
 ## <a name="understanding-the-network-map"></a>A hálózati Térkép ismertetése
 
-A hálózati Térkép az Azure-erőforrásokat topológiai nézetben és **forgalmi** nézetben jelenítheti meg.
+A hálózati Térkép az Azure-erőforrásokat **topológiai** nézetben és **forgalmi** nézetben jelenítheti meg.
 
 ### <a name="the-topology-view"></a>A topológia nézet
 
@@ -75,9 +79,9 @@ Mivel a Térkép interaktív és dinamikus, minden csomópont kattintható, a n�
 
 1. A hálózat térképen a felül látható szűrők használatával módosíthatja a megjelenő tudnivalókat. A térképen a következők alapján lehet összpontosítani:
 
-   -  **Biztonsági állapot**: Az Azure-erőforrások súlyossága (magas, közepes, alacsony) alapján szűrheti a térképet.
-   - **Javaslatok**: Kiválaszthatja, hogy mely erőforrások jelenjenek meg az adott erőforrásokon aktív javaslatok alapján. Megtekintheti például azokat az erőforrásokat, amelyekhez Security Center azt javasolja, hogy engedélyezze a hálózati biztonsági csoportokat.
-   - **Hálózati zónák**: Alapértelmezés szerint a Térkép csak az internet felé irányuló erőforrásokat jeleníti meg, a belső virtuális gépeket is kiválaszthatja.
+   -  **Biztonsági állapot**: az Azure-erőforrások súlyossága (magas, közepes, alacsony) alapján szűrheti a térképet.
+   - **Javaslatok**: kiválaszthatja, hogy mely erőforrások jelenjenek meg az adott erőforrásokon aktív javaslatok alapján. Megtekintheti például azokat az erőforrásokat, amelyekhez Security Center azt javasolja, hogy engedélyezze a hálózati biztonsági csoportokat.
+   - **Hálózati zónák**: alapértelmezés szerint a Térkép csak az internetre irányuló erőforrásokat jeleníti meg, a belső virtuális gépeket is kiválaszthatja.
  
 2. A bal felső sarokban lévő **visszaállítás** gombra kattintva bármikor visszatérhet a térképhez az alapértelmezett állapotba.
 
@@ -118,7 +122,7 @@ Ezen információk eléréséhez a hálózatkezelés panelen kattintson a **rég
 ![Örökölt hálózatkezelés](./media/security-center-network-recommendations/legacy-networking.png)
 
 ### <a name="internet-facing-endpoints-section"></a>Internet facing endpoints (Internet felé néző végpontok) szakasz
-Az internetre irányuló **végpontok** szakaszban megtekintheti azokat a virtuális gépeket, amelyek jelenleg egy internetkapcsolattal rendelkező végponttal és annak állapotával vannak konfigurálva.
+Az **internetre irányuló végpontok** szakaszban megtekintheti azokat a virtuális gépeket, amelyek jelenleg egy internetkapcsolattal rendelkező végponttal és annak állapotával vannak konfigurálva.
 
 Ez a tábla a végpont nevét, az internet felé irányuló IP-címet, valamint a hálózati biztonsági csoport aktuális súlyossági állapotát és a NGFW-javaslatokat tartalmazza. A tábla súlyosság szerint rendezve jelennek meg.
 
@@ -131,31 +135,8 @@ Ebben a topológia nézetben az első szint a virtuális hálózatok jeleníti m
 
 A harmadik szint a korábban leírthoz hasonló virtuális gépeket jelenít meg. Az erőforrásokra kattintva további információkat kaphat, vagy alkalmazhatja a szükséges biztonsági vezérlést vagy konfigurációt.
 
-## <a name="network-recommendations"></a>Hálózatokra vonatkozó javaslatok
-
-|Ajánlás neve|Leírás|severity|Biztonsági pontszám|Erőforrás típusa|
-|----|----|----|----|----|----|
-|Az alhálózat szintjén engedélyezni kell a hálózati biztonsági csoportokat.|Engedélyezze a hálózati biztonsági csoportok számára az alhálózatokban üzembe helyezett erőforrások hálózati hozzáférésének szabályozását.|Magas/közepes|30|Subnet|
-|A virtuális gépeket hálózati biztonsági csoporttal kell társítani|Engedélyezze a hálózati biztonsági csoportok számára a virtuális gépek hálózati hozzáférésének szabályozását.|Magas/közepes|30|Virtuális gép|
-|A hozzáférésnek korlátozva kell lennie az internetre irányuló virtuális gépekkel rendelkező, engedékeny hálózati biztonsági csoportoknak|A meglévő engedélyezési szabályok elérésének korlátozásával megerősítheti az internetre irányuló virtuális gépek hálózati biztonsági csoportjait.|Magas|20|Virtuális gép|
-|A IaaS-NSG lévő webalkalmazások szabályait meg kell erősíteni|Megerősítheti a webalkalmazásokat futtató virtuális gépek hálózati biztonsági csoportját (NSG) olyan NSG-szabályokkal, amelyek túlzottan engedékenyek a webalkalmazási portok tekintetében.|Magas|20|Virtuális gép|
-|A App Serviceshoz való hozzáférést korlátozni kell|Korlátozza a hozzáférést a App Services a hálózati konfiguráció módosításával, hogy megtagadja a bejövő forgalmat a túl széles tartományokból.|Magas|10|App Service-ben|
-|A felügyeleti portokat be kell zárni a virtuális gépeken|A felügyeleti portokhoz való hozzáférés korlátozása érdekében a virtuális gépek hálózati biztonsági csoportjának megerősítése.|Magas|10|Virtuális gép|
-DDoS Protection a standardot engedélyezni kell|A DDoS Protection szolgáltatás szabványának engedélyezésével biztosíthatja a nyilvános IP-címekkel rendelkező alkalmazásokat tartalmazó virtuális hálózatok védelmét. A DDoS elleni védelem lehetővé teszi a hálózati térfogatos és a protokollok elleni támadások enyhítését.|Magas|10|Virtuális hálózat|
-|A virtuális gépen lévő IP-továbbítást le kell tiltani|Tiltsa le az IP-továbbítást. Ha az IP-továbbítás engedélyezve van egy virtuális gép hálózati adapterén, a gép más célhelyekre irányuló forgalmat is fogadhat. Az IP-továbbítást ritkán kell végrehajtani (például ha a virtuális GÉPET hálózati virtuális készülékként használja), ezért ezt a hálózati biztonsági csapatnak kell áttekintenie.|Közepes|10|Virtuális gép|
-|Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül|A "csak HTTPS" hozzáférés engedélyezése a webes alkalmazásokhoz. A HTTPS használata biztosítja a kiszolgálók/szolgáltatások hitelesítését, és védelmet biztosít a hálózati réteg-lehallgatási támadásoktól érkező adatforgalomban.|Közepes|20|Webalkalmazás|
-|Igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken|Alkalmazzon igény szerinti (JIT) virtuálisgép-hozzáférés-vezérlést a kiválasztott portok elérésének végleges zárolásához, és engedélyezze, hogy a jogosult felhasználók csak korlátozott ideig nyissák meg őket a JIT használatával.|Magas|20|Virtuális gép|
-|A Function apps csak HTTPS-kapcsolaton keresztül érhető el|A "csak HTTPS" hozzáférés engedélyezése a Function apps alkalmazásokhoz. A HTTPS használata biztosítja a kiszolgálók/szolgáltatások hitelesítését, és védelmet biztosít a hálózati réteg-lehallgatási támadásoktól érkező adatforgalomban.|Közepes|20|Függvényalkalmazás|
-|A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell|Biztonságos átvitel engedélyezése a Storage-fiókokba. A biztonságos átvitel olyan lehetőség, amely arra kényszeríti a Storage-fiókot, hogy csak biztonságos kapcsolatokból (HTTPS) fogadja a kéréseket. A HTTPS használata biztosítja a hitelesítést a kiszolgáló és a szolgáltatás között, és védelmet biztosít a hálózati rétegbeli támadásoktól, például az embertől a középponttól, a lehallgatás és a munkamenet-eltérítéstől.|Magas|20|Tárfiók|
-
-## <a name="see-also"></a>Lásd még
-Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:
+## <a name="see-also"></a>Lásd még:
+Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következőket:
 
 * [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)
-* [Az Azure SQL-szolgáltatás az Azure Security Center védelme](security-center-sql-service-recommendations.md)
-
-A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
-
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
-* [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
-* [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
+* [Az Azure SQL-szolgáltatás védelme Azure Security Center](security-center-sql-service-recommendations.md)

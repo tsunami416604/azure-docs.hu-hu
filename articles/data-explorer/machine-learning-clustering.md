@@ -1,30 +1,32 @@
 ---
-title: Machine learning-funkció az Azure Data Explorer
-description: Machine learning a kiváltó okok elemzését az Azure Adatkezelőben fürtszolgáltatás használatát.
+title: Gépi tanulási képesség az Azure Adatkezelő
+description: A gépi tanulási fürtszolgáltatás használata az Azure Adatkezelő a kiváltó okok elemzéséhez.
 author: orspod
 ms.author: orspodek
-ms.reviewer: jasonh
+ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: bc72cc21ab525ec82d9ce4b24e80ce82d92a5d21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe72031ef9ade7473dc4d5de7e090e92ef2a6843
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233493"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769931"
 ---
-# <a name="machine-learning-capability-in-azure-data-explorer"></a>Machine learning-funkció az Azure Data Explorer
+# <a name="machine-learning-capability-in-azure-data-explorer"></a>Gépi tanulási képesség az Azure Adatkezelő
 
-Az Azure az adatkezelőt, a Big Data-elemzési platform, a service health, QoS vagy nem megfelelően működő eszközök beépített rendellenes viselkedések figyelésére használható [rendellenességek észlelése és előrejelzését](/azure/data-explorer/anomaly-detection) funkciók. Egy rendellenes minta észlelésekor, miután a legfelső szintű okok elemzése (RCA) csökkentése vagy oldja meg az anomáliadetektálási történik meg.
+Az Azure Adatkezelő egy Big adatelemzési platform, amely a szolgáltatás állapotának, a QoS-nek vagy a rendellenes viselkedésű eszközöknek a beépített [anomália-észlelési és előrejelzési](/azure/data-explorer/anomaly-detection) függvények használatával történő figyelésére szolgál. A rendellenes minta észlelése után a rendszer kiváltó okok elemzését (RCA) hajtja végre az anomália enyhítése vagy feloldása érdekében.
 
-Az elemzés céljából való összetett és hosszú és tartomány-szakértők által végzett. A folyamat magában foglalja a beolvasása, illetve további adatokat az időkeretből, több dimenzióban, diagramkészítési további változók értékeinek eloszlását változásai keres a különböző forrásokból származó csatlakoztatásához és egyéb technikák alapján adatait és intuition. Mivel ezek a diagnosztikai forgatókönyvek az Azure Data Explorer közös, machine learning beépülő modulok érhetők el a diagnosztika szakasz egyszerűbbé és az RCA rövidíteni.
+A diagnosztikai folyamat összetett és hosszadalmas, és tartományi szakértők által végezhető el. A folyamat magában foglalja a különböző forrásokból származó további adatok egyidejű beolvasását és összekapcsolását, a több dimenzióban lévő értékek eloszlásának változásait, a további változók ábrázolását, valamint a tartományi tudásbázison alapuló egyéb technikákat. intuíció. Mivel ezek a diagnosztikai forgatókönyvek az Azure-Adatkezelő gyakoriak, a gépi tanulási beépülő modulok megkönnyítik a diagnosztikai fázist, és lerövidítik az RCA időtartamát.
 
-Az Azure adatkezelő rendelkezik három Machine Learning beépülő modulok: [ `autocluster` ](/azure/kusto/query/autoclusterplugin), [ `basket` ](/azure/kusto/query/basketplugin), és [ `diffpatterns` ](/azure/kusto/query/diffpatternsplugin). Az összes beépülő modulok fürtözési algoritmust megvalósításához. A `autocluster` és `basket` beépülő modulokat a fürt egyetlen rekordhalmaz és a `diffpatterns` beépülő fürtök két rekordhalmazok közötti különbségeket.
+Az Azure Adatkezelő három Machine Learning beépülő modult tartalmaz: [`autocluster`](/azure/kusto/query/autoclusterplugin), [`basket`](/azure/kusto/query/basketplugin)és [`diffpatterns`](/azure/kusto/query/diffpatternsplugin). Minden beépülő modul implementálja a fürtszolgáltatási algoritmusokat. A `autocluster` és `basket` beépülő modul egyetlen rekordhalmazsal és a `diffpatterns` beépülő modullal csoportosítja a két rekordhalmaz közötti különbségeket.
 
-## <a name="clustering-a-single-record-set"></a>Fürtszolgáltatás egyetlen rekordhalmazok
+## <a name="clustering-a-single-record-set"></a>Egyetlen rekordazonosító fürtözése
 
-Egy gyakori forgatókönyv például ez alatt az időszak, amely a rendellenes viselkedést, magas hőmérséklet eszköz olvasmányok, hosszú időtartam parancsokat és kiadások felhasználók felső szolgáltatásnak egy adott feltételnek által kiválasztott adatkészlet tartalmaz. Gyakori minták (szegmensek) megkeresendő az adatok gyorsan és egyszerűen úgy szeretnénk. Minták az adatkészlet, amelynek rekordok ugyanazokat az értékeket osszanak meg több dimenziót (kategorikus oszlopok) a részhalmazát képezik. A következő lekérdezés hozza létre, és a egy idősorozat szolgáltatás kivételek megjeleníti egy adott héten 10 perc bins:
+Egy gyakori forgatókönyv olyan adathalmazt tartalmaz, amelyet egy adott feltétel választ ki, például az időablakot, amely rendellenes viselkedést, magas hőmérsékletű eszközök olvasását, hosszú időtartamú parancsokat és legjelentősebb kiadási felhasználókat mutat be. Szeretnénk egyszerűen és gyorsan megkeresni az adathalmazok közös mintáit (szegmenseit). A minták az adathalmazok egy részhalmaza, amelynek rekordjai ugyanazokat az értékeket használják, mint több dimenzió (kategorikus oszlop). A következő lekérdezés egy idősorozatot hoz létre a szolgáltatási kivételek közül, és megjeleníti a tíz perces raktárhelyeken:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPsaoCQQyF4d6nCFa7oHCtZd9B0F6G8ajByWTJZHS5+PDOgpVgYRn485EkOAnno9NAriWGFKw7QfQYUy0O43zZ0JNKFQnG/5jrbmeIXHBgwd6DjH2/JVqk2QrTL1aYvlifa4tni29YlzaiUK4yRK3Zu54006dBZ1N5/+X6PqpRI23+pFGGfIKRtz5egzk92K+dsycMyz3szhGEKWJ01lxI760O9ABuq0bMcvV2hqFoqnOz7F9BdSHlSgEAAA==) **\]**
 
 ```kusto
 let min_t = toscalar(demo_clustering1 | summarize min(PreciseTimeStamp));  
@@ -34,11 +36,13 @@ demo_clustering1
 | render timechart with(title="Service exceptions over a week, 10 minutes resolution")
 ```
 
-![Szolgáltatás kivételek idődiagramját](media/machine-learning-clustering/service-exceptions-timechart.png)
+![Szolgáltatási kivételek idődiagramját](media/machine-learning-clustering/service-exceptions-timechart.png)
 
-A szolgáltatás kivételek száma utal. a teljes forgalom szolgáltatás. Hétfőtől péntekig üzleti nap a napi minta egyértelműen láthatja, nőtt a szolgáltatás a kivétel közepes nap száma, valamint az éjszaka száma csökken. Kis száma láthatók a hétvégén. Kivétel ugrásszerűen használatával lehet észlelt [time series anomáliadetektálás](/azure/data-explorer/anomaly-detection?#time-series-anomaly-detection) az Azure Data Explorer.
+A szolgáltatási kivételek száma összefügg a szolgáltatás általános forgalmával. A napi mintát a hétfőtől péntekig megjelenő munkanapokon láthatja, és a szolgáltatási kivételek a középső nap folyamán növekednek, és az éjszaka folyamán csökken. Az alacsony számok a hétvégén láthatók. Az Azure Adatkezelőban a [Time Series anomália észlelésével](/azure/data-explorer/anomaly-detection?#time-series-anomaly-detection) észlelhetők a kivételek.
 
-Az adatok a második megnövekedett keddi délután történik. A következő lekérdezéssel további diagnosztizálása érdekében a megnövekedett. A lekérdezés segítségével újrarajzolja a diagram a nagyobb felbontást (nyolc órát perces bins) megnövekedett körül, ellenőrizze, hogy azt nem éles ugrásszerű, és a határai megtekintéséhez.
+Az adatsorok második csúcsa kedd délután történik. A következő lekérdezés a tüske további diagnosztizálására szolgál. A lekérdezés segítségével állítsa át a diagramot a csúcs körül a magasabb felbontásban (egyperces raktárhelyeken nyolc órán belül) annak ellenőrzéséhez, hogy az éles szeg-e, és megtekintse a szegélyeit.
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXNwQrCMBAE0Hu/YvHUooWkghSl/yDoyUsJyWpCk2xJNnjx403pbeYwbzwyBBdnnoxiZBewHYS89GLshzNIeRWiuzUGA83al8yYXPzI5gdBLdjnWjFDLGHSVCK3HVCEe0LtMj4r9mAVVngnCvsLMO3hOFqo2goyVCxhNJhgu9dWJYavY9uyY4/T4UV1XVm2CEM0kFe34AnkBhXGOs7kCzuKh+4P3/XM5M8AAAA=) **\]**
 
 ```kusto
 let min_t=datetime(2016-08-23 11:00);
@@ -47,9 +51,11 @@ demo_clustering1
 | render timechart with(title="Zoom on the 2nd spike, 1 minute resolution")
 ```
 
-![Megnövekedett idődiagramját összpontosíthat](media/machine-learning-clustering/focus-spike-timechart.png)
+![Hangsúly a Spike idődiagramját](media/machine-learning-clustering/focus-spike-timechart.png)
 
-Keskeny kétperces ugrásszerű a 15:00, 15:02 látható. A következő lekérdezést Ez két perces ablakban a kivételek száma:
+A 15:00 és 15:02 közötti keskeny kétpercenkénti tüske látható. A következő lekérdezésben az ebben a két perces ablakban szereplő kivételek száma:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIzcyLL0hNzI4vsU1JLEktycxN1TAyMDTTNbDQNTJWMDS1MjDQtObKASlNrCCk1AioNCU1Nz8+Oae0uCS1KDMv3ZCrRqE8I7UoVSGgKDU5szg1BKgvuCQxt0AhKbWkPDU1TwPhBj09hCWaQI3J+aV5JQACnQoRpwAAAA==) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -59,11 +65,13 @@ demo_clustering1
 | count
 ```
 
-|Count |
+|Mennyiség |
 |---------|
 |972    |
 
-A következő lekérdezést a minta 20 kivételek 972 kívül:
+A következő lekérdezésben, a 972-as számú kivétel:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4XOsQrCMBSF4b1Pccd2aLmJKKL4DoLu4doeNDSJJb1SBx/eOHV0/37OCVCKPrkJMjo9DaJQH1FbNruW963dkNkemJtjFX5U3v+oLXRAfLo+vGZF9uluqg8tD2TQOaP3M66lu6jEiW7QBUj1+qHr1pGmhCojyPIX7QHvzakAAAA=) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -73,7 +81,7 @@ demo_clustering1
 | take 20
 ```
 
-| PreciseTimeStamp            | Régió | ScaleUnit | DeploymentId                     | Tracepoint | ServiceHost                          |
+| PreciseTimeStamp            | Region (Régió) | ScaleUnit | DeploymentId                     | Tracepoint | ServiceHost                          |
 |-----------------------------|--------|-----------|----------------------------------|------------|--------------------------------------|
 | 2016-08-23 15:00:08.7302460 | scus   | su5       | 9dbd1b161d5b4779a73cf19a7836ebd6 | 100005     | 00000000-0000-0000-0000-000000000000 |
 | 2016-08-23 15:00:09.9496584 | scus   | su5       | 9dbd1b161d5b4779a73cf19a7836ebd6 | 10007006   | 8d257da1-7a1c-44f5-9acd-f9e02ff507fd |
@@ -96,9 +104,11 @@ demo_clustering1
 | 2016-08-23 15:00:58.2222707 | scus   | su5       | 9dbd1b161d5b4779a73cf19a7836ebd6 | 10007007   | 8215dcf6-2de0-42bd-9c90-181c70486c9c |
 | 2016-08-23 15:00:59.9382620 | scus   | su3       | 90d3d2fc7ecc430c9621ece335651a01 | 10007006   | 451e3c4c-0808-4566-a64d-84d85cf30978 |
 
-### <a name="use-autocluster-for-single-record-set-clustering"></a>Fürtszolgáltatás egyetlen rekordot autocluster() használata
+### <a name="use-autocluster-for-single-record-set-clustering"></a>Az autocluster () használata egyetlen erőforrásrekord-fürtözéshez
 
-Annak ellenére, hogy kevesebb mint Kaliforniában kivételek vannak, ez megegyezik továbbra is nehéz megtalálni a közös szegmensek több értékek vannak az egyes oszlopokban. Használhat [ `autocluster()` ](/azure/kusto/query/autoclusterplugin) azonnal kibontása egy kis közös szegmensek listájához, és keresse meg az érdekes beépülő modul a megnövekedett két percen belül fürtök, ahogyan az a következő lekérdezést:
+Bár kevesebb mint ezer kivétel van, még mindig nehéz megkeresni a közös szegmenseket, mivel az egyes oszlopokban több érték is van. A [`autocluster()`](/azure/kusto/query/autoclusterplugin) beépülő modullal azonnal kinyerheti a közös szegmensek kisméretű listáját, és megkeresheti a Spike két percén belüli érdekes fürtöket az alábbi lekérdezésben látható módon:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQrCMBRF937FG5OhJYkoovQfBN1DbC8aTNqSvlgHP94IQkf3c+65AUzRD3aCe1hue8dgHyGM0rta7WuzIb09KCWPVfii7vUPNQXtEUfbhTwzkh9uunrTckcCnRI6P+NSvDO7ONEVvACDWD80zRqRRcTThVxa5DKPv00hP81KL1+4AAAA) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -108,21 +118,23 @@ demo_clustering1
 | evaluate autocluster()
 ```
 
-| SegmentId | Count | Százalék | Régió | ScaleUnit | DeploymentId | ServiceHost |
+| SegmentId | Mennyiség | Százalék | Region (Régió) | ScaleUnit | DeploymentId | ServiceHost |
 |-----------|-------|------------------|--------|-----------|----------------------------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 1 | 94 | 9.67078189300411 | scus | su5 | 9dbd1b161d5b4779a73cf19a7836ebd6 |  |
 | 2 | 82 | 8.43621399176955 | ncus | su1 | e24ef436e02b4823ac5d5b1465a9401e |  |
 | 3 | 68 | 6.99588477366255 | scus | su3 | 90d3d2fc7ecc430c9621ece335651a01 |  |
-| 4 | 55 | 5.65843621399177 | weu | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |
+| 4 | 55 | 5.65843621399177 | Nyugat | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |
 
-Az eredményekből látható, hogy a legtöbb domináns szegmens 65.74 % a teljes kivétel rekordokat tartalmaz, és négy dimenziók megosztja. A következő szegmens sokkal kevésbé gyakori, csak a rekordok 9.67 % tartalmaz, és megosztja háromdimenziós. Akár kevésbé gyakoriak a többi szegmens szerepel. 
+A fenti eredményekből megtudhatja, hogy a legjelentősebb szegmens a teljes kivételek 65,74%-át és négy dimenziót oszt meg. A következő szegmens sokkal kevésbé gyakori, csak a rekordok 9,67%-át és három dimenziót oszt meg. A többi szegmens még kevésbé gyakori. 
 
-Autocluster adatbányászati több dimenzióban, és érdekes szegmensek kinyeréséhez szellemi tulajdont képező algoritmust használ. "Érdekes" azt jelenti, hogy rendelkezik-e mind a rekordokat és a szolgáltatásokat jelentős lefedettsége minden szegmensben. A szegmensek is fürtre, ami azt jelenti, hogy mindegyikhez jelentősen eltér a többi. Egy vagy több ezekben a szegmensekben az RCA-folyamat szempontjából releváns lehet. Szegmens tekintse át és felmérési minimalizálása érdekében autocluster csak kisebb szegmensek listáját adja eredményül.
+Az autocluster egy szabadalmaztatott algoritmust használ több dimenzió kinyeréséhez és érdekes szegmensek kinyeréséhez. Az "érdekes" érték azt jelenti, hogy minden szegmens jelentős lefedettséggel rendelkezik a rekordhalmaz és a beállított szolgáltatások esetében is. A szegmensek is eltérnek, ami azt jelenti, hogy mindegyik jelentősen eltér a többitől. Az RCA-folyamathoz tartozó egy vagy több szegmens is releváns lehet. A szegmensek áttekintésének és értékelésének minimalizálásához az autocluster csak egy kis szegmens listát bont ki.
 
-### <a name="use-basket-for-single-record-set-clustering"></a>Fürtszolgáltatás egyetlen rekordot basket() használata
+### <a name="use-basket-for-single-record-set-clustering"></a>A kosár () használata egyetlen rekordazonosító-fürtözéshez
 
-Is használhatja a [ `basket()` ](/azure/kusto/query/basketplugin) beépülő modult, ahogyan az a következő lekérdezést:
+Használhatja a [`basket()`](/azure/kusto/query/basketplugin) beépülő modult is, ahogy az a következő lekérdezésben látható:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQ6CMBgGd57iH9sB0tZojMZ3MNG9KfBFG1og7Y84+PDWidH9LncBTNGPdoYbLF96x2AfIYzSh1oda7MjvT8pJc9V+KHu/Q81Be0RJ9uFJTOSHx+6+tD6RAJdEzqfcS/ejV2cqQWvwCi2h6bZIrKIeLmwlBa1Lg9gIb9KJv2TswAAAA==) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -132,7 +144,7 @@ demo_clustering1
 | evaluate basket()
 ```
 
-| SegmentId | Darabszám | Százalék | Régió | ScaleUnit | DeploymentId | Tracepoint | ServiceHost |
+| SegmentId | Mennyiség | Százalék | Region (Régió) | ScaleUnit | DeploymentId | Tracepoint | ServiceHost |
 |-----------|-------|------------------|--------|-----------|----------------------------------|------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 1 | 642 | 66.0493827160494 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |  |
@@ -143,20 +155,22 @@ demo_clustering1
 | 6 | 82 | 8.43621399176955 | ncus | su1 | e24ef436e02b4823ac5d5b1465a9401e |  |  |
 | 7 | 68 | 6.99588477366255 | scus | su3 | 90d3d2fc7ecc430c9621ece335651a01 |  |  |
 | 8 | 167 | 17.1810699588477 | scus |  |  |  |  |
-| 9 | 55 | 5.65843621399177 | weu | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |  |
+| 9 | 55 | 5.65843621399177 | Nyugat | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |  |
 | 10 | 92 | 9.46502057613169 |  |  |  | 10007007 |  |
 | 11 | 90 | 9.25925925925926 |  |  |  | 10007006 |  |
 | 12 | 57 | 5.8641975308642 |  |  |  |  | 00000000-0000-0000-0000-000000000000 |
 
-Kosár a Apriori algoritmust valósít meg, elemet beállítva az adatbányászati, és kinyeri az összes szegmens, amelynek lefedettség beállított rekord egy küszöbértéket (az alapértelmezett érték 5 %) felett van. Láthatja, hogy további szegmensek hasonlóság alapján (a példában, 0, 1 vagy 2,3 szegmensekre) a könyvtárban találhatók.
+A kosár megvalósítja a Apriori algoritmust az elemek kinyeréséhez, és kinyeri az összes olyan szegmenst, amelynek lefedettsége meghaladja a küszöbértéket (alapértelmezés szerint 5%). Láthatja, hogy több szegmens lett kinyerve hasonló módon (például 0, 1 vagy 2, 3. szegmens).
 
-Mindkét beépülő modulok hatékony és könnyen használható, de azok jelentős korlátozás oka, hogy az azokat a fürt egy egyetlen rekordot felügyeletlen módon (a címkéket). Nem így egyértelmű, hogy a kinyert minták írhatók le a kiválasztott rekordhalmaz (a rendellenes rekordokat) vagy a globális rekordhalmaz.
+Mindkét beépülő modul hatékony és könnyen használható, de jelentős korlátozás szerint egyetlen, nem felügyelt módon üzemelő rekordot (címkék nélkül) is felhasználhat. Ezért nem egyértelmű, hogy a kinyert minták a kiválasztott rekordhalmazt (a rendellenes rekordokat) vagy a globális rekordhalmazt jellemzik-e.
 
-## <a name="clustering-the-difference-between-two-records-sets"></a>A különbség a két rekordhalmazok fürtszolgáltatás
+## <a name="clustering-the-difference-between-two-records-sets"></a>Két rekordhalmaz közötti különbség csoportosítása
 
-A [ `diffpatterns()` ](/azure/kusto/query/diffpatternsplugin) beépülő modul a szolgáltatásoknak a overcomes `autocluster` és `basket`. `Diffpatterns` két rekordhalmazok vesz igénybe, és kinyeri a fő szegmensek, amelyek különböző közöttük. Általában a tartalmazza a rendellenes rekordhalmaz vizsgálata folyamatban van egy (az egyik által elemzett `autocluster` és `basket`). A többi tartalmazza a referencia-rekordhalmaz (alapkonfiguráció). 
+A [`diffpatterns()`](/azure/kusto/query/diffpatternsplugin) beépülő modul a `autocluster` és a `basket`korlátozását is feldolgozza. `Diffpatterns` két rekordhalmazt vesz fel, és kinyeri az egymástól eltérő fő szegmenseket. Egy készlet általában tartalmazza a vizsgált rendellenes rekordokat (az egyiket `autocluster` és `basket`elemzi). A másik készlet tartalmazza a hivatkozási rekordot (alapterv). 
 
-Az alábbi lekérdezést, a használunk `diffpatterns` érdekes fürtök keresése a megnövekedett két percen belül, amely eltér az alaptervnek fürtök, mint a. Az alapkonfiguráció ablak meghatározzuk, 15:00 nyolc percet (Ha a megnövekedett kezdődött). Is kell-e egy adott rekord az alaptervhez, vagy a rendellenes csoporthoz tartozik-e megadása bináris oszlop (AB) által bővítése. `Diffpatterns` felügyelt tanulási algoritmus, ahol a két osztály címkéket a referenciakonfiguráció jelző (AB) és a rendellenes által generált valósítja meg.
+Az alábbi lekérdezésben a `diffpatterns` segítségével érdekes fürtöket talál a Spike két percén belül, amelyek eltérnek az alapkonfigurációban lévő fürtöktől. Az alapablakot nyolc perccel a 15:00 előtt definiáljuk (amikor a nyárs elindult). Azt is meg kell hosszabbítani egy bináris oszlop (AB) alapján, hogy egy adott rekord az alaptervhez vagy a rendellenes készlethez tartozik-e. `Diffpatterns` megvalósít egy felügyelt tanulási algoritmust, ahol a két osztály címkéit a rendellenesség és az alapkonfiguráció jelzője (AB) hozta létre.
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42QzU+DQBDF7/wVcwOi5UtrmhJM4OzBRO9kWqbtpssuYacfGv94t0CrxFTd02by5jfvPUkMtVBlQ7gtOauQiUVNXhLFD5NoNknuIJ7Oo8hPHXmS4vEvaXKWWuoCDUmh6Jr8fj79Tv6HfOanEIbwRLgnQFhjAwviA5EC3hCcCYCq6gamEVsC1oB7LfoRt6iMYKEVvGtFQXfeNFKc7mXe2MjNVzl+mARR6lRU63Ipd4apFWodOx9w2FBL4D23tBSGXi3mhbG+OPPGVQTB+ITvg24dGN7vlN5JTxhc+dYAHZls4LzIxGr1k/B4iXcLbq50jfLNtd9i8OB2jD3KnW0dKstokG08Zby8uLbyCfX/tG46AgAA) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -171,17 +185,19 @@ demo_clustering1
 | evaluate diffpatterns(AB, 'Anomaly', 'Baseline')
 ```
 
-| SegmentId | CountA | CountB | PercentA | PercentB | PercentDiffAB | Régió | ScaleUnit | DeploymentId | Tracepoint |
+| SegmentId | CountA | CountB | Százalék | PercentB | PercentDiffAB | Region (Régió) | ScaleUnit | DeploymentId | Tracepoint |
 |-----------|--------|--------|----------|----------|---------------|--------|-----------|----------------------------------|------------|
-| 0 | 639 | 21 | 65.74 | 1.7 | 64.04 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |
-| 1 | 167 | 544 | 17.18 | 44.16 | 26.97 | scus |  |  |  |
-| 2 | 92 | 356 | 9.47 | 28.9 | 19.43 |  |  |  | 10007007 |
-| 3 | 90 | 336 | 9.26 | 27.27 | 18.01 |  |  |  | 10007006 |
-| 4 | 82 | 318 | 8.44 | 25.81 | 17.38 | ncus | su1 | e24ef436e02b4823ac5d5b1465a9401e |  |
-| 5 | 55 | 252 | 5.66 | 20.45 | 14.8 | weu | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |
-| 6 | 57 | 204 | 5.86 | 16.56 | 10.69 |  |  |  |  |
+| 0 | 639 | 21 | 65,74 | 1,7 | 64,04 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |
+| 1 | 167 | 544 | 17,18 | 44,16 | 26,97 | scus |  |  |  |
+| 2 | 92 | 356 | 9,47 | 28,9 | 19,43 |  |  |  | 10007007 |
+| 3 | 90 | 336 | 9,26 | 27,27 | 18,01 |  |  |  | 10007006 |
+| 4 | 82 | 318 | 8,44 | 25,81 | 17,38 | ncus | su1 | e24ef436e02b4823ac5d5b1465a9401e |  |
+| 5 | 55 | 252 | 5,66 | 20,45 | 14,8 | Nyugat | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |
+| 6 | 57 | 204 | 5,86 | 16,56 | 10,69 |  |  |  |  |
 
-A legtöbb domináns szegmens pedig az ugyanazon a szegmensen által kinyert `autocluster`, kiterjesztette lefedettségét a kétperces rendellenes ablakban egyben 65.74 %. De kiterjesztette lefedettségét a nyolc perces alapkonfiguráció ablakban csak az 1.7-es %. Az különbség a 64.04 %. Ez a különbség úgy tűnik, hogy a rendellenes kiugrás kapcsolódnak. Ezt a feltételezést azokat a rekordokat, és a többi szegmens, ahogy az alábbi lekérdezést a problémás szegmenshez tartozó az eredeti diagram halmazra ellenőrizheti:
+A legjelentősebb szegmens ugyanaz a szegmens, amelyet `autocluster`kinyert, a két perces rendellenes időszakra vonatkozó lefedettség is 65,74%. A 8 perces alapkonfiguráció azonban csak 1,7%-os lefedettséggel rendelkezik. A különbség 64,04%. Úgy tűnik, ez a különbség a rendellenes csúcshoz kapcsolódik. Ezt a feltételezést úgy ellenőrizheti, hogy az eredeti diagramot a problémás szegmensbe tartozó rekordokra bontja, az alábbi lekérdezésben látható módon:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRsWrDMBCG9zzF4cmGGuJUjh2Ktw7tUkLTzuEsnRNRnRQkuSQlD185yRTo0EWIO913/J8MRWBttxE6iC5INOhzRey20owhktd2V8EZwsiMXv/Q9Dpfe5I60Idm2kTkQ1E8AczMxMLjf1h4/IN1PzY7Ax0jWQWBdomvhyF/p512FroOMsIxA0zdTdpKn1bHSzmMzbX8TAfjTkw2vqpLp69VpYQaatEogXOBsqrbtl5WDake6yabXWjkv7WkFxeuPGqG5VzWqhQrIUqx6B/L1WKB6aBViy01imT2ANnau94QT9c35xlNVqQAjF9UhpSHAtiRO+lGG/MCUoZ7CTB4x7ePie5mNbk4QDVn6E+ThUT0SQh5iGlM7tHHX4WFgLHOAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_clustering1 | summarize min(PreciseTimeStamp));  
@@ -193,12 +209,12 @@ and ServiceHost == "e7f60c5d-4944-42b3-922a-92e98a8e7dec", "Problem", "Normal")
 | render timechart
 ```
 
-!["Diffpattern" szegmens idődiagramját ellenőrzése](media/machine-learning-clustering/validating-diffpattern-timechart.png)
+![A "diffpattern" szegmens idődiagramját ellenőrzése](media/machine-learning-clustering/validating-diffpattern-timechart.png)
 
-A diagram lehetővé teszi számunkra, hogy a megnövekedett keddi délután az volt az adott szegmens, módszerével észlelt alóli kivételek miatt a `diffpatterns` beépülő modult.
+Ez a diagram lehetővé teszi számunkra, hogy kedd délután megtekintse a nyársat az adott szegmens kivételei miatt, amely a `diffpatterns` beépülő modullal lett felderítve.
 
 ## <a name="summary"></a>Összefoglalás
 
-Az Azure Data Explorer Machine Learning beépülő modulok hasznosak számos forgatókönyv esetében. A `autocluster` és `basket` felügyeletlen tanulási algoritmus és a könnyen használható megvalósításához. `Diffpatterns` megvalósítja a tanulási algoritmus felügyelt, és bár összetettebb, legyen az RCA differenciálás szegmensek kibontása a hatékonyabb.
+Az Azure Adatkezelő Machine Learning beépülő modulok számos forgatókönyv esetén hasznosak lehetnek. A `autocluster` és `basket` nem felügyelt tanulási algoritmust implementál, és könnyen használható. `Diffpatterns` megvalósítja a felügyelt tanulási algoritmust, és bár összetettebb, a differenciált elemek az RCA-ben való kinyerése erősebb.
 
-Ad hoc forgatókönyvek és a közel valós idejű figyelési szolgáltatásokat automatikus ezek beépülő modulok interaktív módon használhatók. Az Adatkezelőben az Azure time series anomáliadetektálás követ egy diagnosztikai folyamat, amely a szükséges teljesítményt szabványainak való optimalizálhatja.
+Ezek a beépülő modulok interaktív módon, alkalmi forgatókönyvekben és automatikus, közel valós idejű figyelési szolgáltatásokban használatosak. Az Azure Adatkezelő-ban a Time Series anomália észlelését egy olyan diagnosztikai folyamat követi, amely a szükséges teljesítményi követelmények kielégítése érdekében nagyon optimalizált.

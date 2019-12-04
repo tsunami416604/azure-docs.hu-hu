@@ -1,20 +1,17 @@
 ---
-title: Helyszíni adatforrások elérése – Azure Logic Apps
+title: Az adatforrások elérése a helyszínen
 description: Helyi adatforrásokhoz való kapcsolódás Azure Logic Apps egy Azure helyszíni adatátjáró-erőforrás létrehozásával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: arthii, LADocs
+ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 20cdcfdd3795a7614c054ed96b82cc99fc2c5894
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 5adb342b733563fd0b062dd263a4fdd83259d166
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068893"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792052"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Helyi adatforrásokhoz való kapcsolódás Azure Logic Apps
 
@@ -96,7 +93,7 @@ Miután telepítette az átjárót egy helyi számítógépre, hozza létre az A
 
 <a name="connect-logic-app-gateway"></a>
 
-## <a name="connect-to-on-premises-data"></a>Csatlakozás helyszíni adatokhoz
+## <a name="connect-to-on-premises-data"></a>Helyileg tárolt adatok elérése
 
 Miután létrehozta az átjáró-erőforrást, és társítja az Azure-előfizetést ehhez az erőforráshoz, mostantól létrehozhat egy kapcsolatot a logikai alkalmazás és a helyszíni adatforrás között az átjáró használatával.
 
@@ -153,7 +150,7 @@ Egy másik átjáró-erőforrás létrehozásához csatolja az átjáró telepí
 
 1. Ha még nincs bejelölve, az átjáró erőforrás menüjében válassza **a helyszíni adatátjáró**lehetőséget. Az átjáró erőforrás eszköztárán válassza a **Törlés**lehetőséget.
 
-   Például:
+   Példa:
 
    ![Átjáró erőforrásának törlése az Azure-ban](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
 
@@ -172,7 +169,7 @@ Egy másik átjáró-erőforrás létrehozásához csatolja az átjáró telepí
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A logikai alkalmazások védelme](./logic-apps-securing-a-logic-app.md)
 * [Gyakori példák és forgatókönyvek logikai alkalmazásokhoz](./logic-apps-examples-and-scenarios.md)

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 09defe9648208e2300594169add990d4bcbd7a39
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 348bc2d92f636d1f3c3b50ea31334355da59a60f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112572"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790500"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>A dúsított dokumentumok növekményes indexelésének beállítása az Azure-ban Cognitive Search
 
@@ -41,13 +41,32 @@ api-key: [admin key]
 
 ### <a name="step-2-add-the-cache-property"></a>2\. lépés: a cache tulajdonság hozzáadása
 
-Szerkessze a GET kérelem válaszát, hogy hozzáadja a `cache` tulajdonságot az indexelő számára. A gyorsítótár objektum csak egyetlen tulajdonságot igényel, amely egy Azure Storage-fiók kapcsolati karakterlánca.
+< < < < < < < HEAD a GET kérelem válaszának szerkesztésével adja hozzá a `cache` tulajdonságot az indexelő alkalmazáshoz. A gyorsítótár objektum csak egyetlen tulajdonságot igényel, `storageConnectionString` amely a Storage-fiókhoz tartozó kapcsolati karakterlánc. = = = = = = = A GET kérelem válaszának szerkesztése lehetőségre kattintva adja hozzá a `cache` tulajdonságot az indexelő számára. A gyorsítótár objektum csak egyetlen tulajdonságot igényel, amely egy Azure Storage-fiók kapcsolati karakterlánca.
+>>>>>>> 3519a330aa86b6827d31403690529105825b1b16
 
 ```json
-    "cache": {
-        "storageConnectionString": "[your storage connection string]"
+{
+    "name": "myIndexerName",
+    "targetIndexName": "myIndex",
+    "dataSourceName": "myDatasource",
+    "skillsetName": "mySkillset",
+    "cache" : {
+        "storageConnectionString" : "Your storage account connection string",
+        "enableReprocessing": true,
+        "id" : "Auto generated Id you do not need to set"
+    },
+    "fieldMappings" : [],
+    "outputFieldMappings": [],
+    "parameters": {
+        "configuration": {
+            "enableAnnotationCache": true
+        }
     }
+}
 ```
+#### <a name="enable-reporocessing"></a>Reporocessing engedélyezése
+
+Igény szerint beállíthatja a gyorsítótárban lévő `enableReprocessing` logikai tulajdonságot, amely alapértelmezés szerint True (igaz) értékre van állítva. A `enableReprocessing` jelzővel szabályozhatja az indexelő viselkedését. Olyan esetekben, amikor azt szeretné, hogy az indexelő rangsorolja az új dokumentumokat az indexhez, a jelzőt false értékre kell állítani. Miután az indexelő felzárkózott az új dokumentumokkal, a jelölőt True értékre kell állítani, így az indexelő megkezdheti a meglévő dokumentumok végleges konzisztenciájának megkezdését. Abban az időszakban, amikor a `enableReprocessing` jelző értéke false (hamis), az indexelő csak a gyorsítótárba ír, de nem dolgozza fel a meglévő dokumentumokat a dúsítási folyamat által azonosított változások alapján.
 
 ### <a name="step-3-reset-the-indexer"></a>3\. lépés: az indexelő alaphelyzetbe állítása
 
@@ -103,7 +122,7 @@ Ha olyan frissítéseket végez a készségkészlet, amelyek inkonzisztensként 
 
 A példány akkor jelenik meg, ha azt szeretné, hogy az indexelési folyamat felismerje a külső entitások módosítását, például az egyéni képességek új verziójának telepítését, frissítenie kell a készségkészlet, és az "érintés" tulajdonságot a szaktudás definíciójának szerkesztésével, pontosabban a kényszerített URL-címmel kell megadnia. módosítsa az észlelést, és érvénytelenítse az adott szakértelem gyorsítótárát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a szakértelmével tartalmazó indexelő növekményes indexelését ismerteti. Az ismeretek további fellépéséhez tekintse át az általános, az Azure Cognitive Search összes indexelési forgatókönyvére vonatkozó cikket.
 

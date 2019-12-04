@@ -1,91 +1,91 @@
 ---
-title: Onedrive-hoz – Azure Logic Apps |} A Microsoft Docs
-description: Töltheti fel és kezelheti a fájlok a onedrive vállalati verzió REST API-k és az Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 10/18/2016
-ms.topic: article
-ms.service: logic-apps
+title: Kapcsolódás a OneDrive
+description: Fájlok feltöltése és kezelése a OneDrive REST API-kkal és Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 840a010f8606387a250552d884621a96d0031f90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93528e257ab45644a79c58fbf600dca10317eb0b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62106227"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789683"
 ---
-# <a name="get-started-with-the-onedrive-connector"></a>A onedrive vállalati verzió-összekötő használatának első lépései
-Kezelheti a fájlokat, beleértve a feltöltés a onedrive-hoz, beolvasása, törölje a fájlokat, és több. 
+# <a name="get-started-with-the-onedrive-connector"></a>Ismerkedés az OneDrive-összekötővel
 
-A onedrive vállalati verziója akkor: 
+Kapcsolódjon a OneDrive a fájlok kezeléséhez, beleértve a feltöltési, a lekérési, a fájlok törlését és egyebeket. A OneDrive segítségével a következő feladatokat hajthatja végre:
 
-* A munkafolyamat létrehozása-fájlok tárolása a onedrive-on, vagy frissítse a meglévő fájlokat a onedrive-on. 
-* Eseményindítók használatával indítsa el a munkafolyamatot, amikor egy fájl létrehozásakor vagy frissítésekor a onedrive-on belül.
-* Hozzon létre egy fájlt, törölhet egy fájlt, és további műveletek használata. Például egy új Office 365 e-mailek érkezésekor (eseményindító) mellékletet hozzon létre egy új fájlt a onedrive-on (művelet).
+* Hozza létre a munkafolyamatot úgy, hogy fájlokat tárol a OneDrive-ben, vagy frissíti a meglévő fájlokat a OneDrive-ben. 
+* Az eseményindítók használatával elindíthatja a munkafolyamatot egy fájl létrehozásakor vagy frissítésekor a OneDrive belül.
+* Egy fájl létrehozásához, egy fájl törléséhez és egyéb műveletekhez használjon műveleteket. Ha például egy új Office 365 e-mail érkezik egy melléklettel (triggerrel), hozzon létre egy új fájlt a OneDrive (egy művelet).
 
-Ez a cikk bemutatja, hogyan a onedrive vállalati verzió-összekötő használata a Logic Apps-alkalmazás, és felsorolja a triggereket és műveleteket.
+Ez a cikk bemutatja, hogyan használhatja a OneDrive-összekötőt egy logikai alkalmazásban, és felsorolja az eseményindítókat és műveleteket.
 
-Logic Apps szolgáltatással kapcsolatos további tudnivalókért lásd: [logic Apps](../logic-apps/logic-apps-overview.md) és [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Ha többet szeretne megtudni a Logic Appsről, tekintse meg a [Mi a Logic apps](../logic-apps/logic-apps-overview.md) és [a logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakört.
 
-## <a name="connect-to-onedrive"></a>Onedrive-hoz
-A logikai alkalmazás bármely szolgáltatáshoz férjenek hozzá, akkor először hozzon létre egy *kapcsolat* a szolgáltatáshoz. Kapcsolatot biztosít a Logic Apps-alkalmazás és a egy másik szolgáltatás közötti kapcsolat. Ha például szeretne csatlakozni a onedrive vállalati verzió, először egy onedrive vállalati verzió *kapcsolat*. A kapcsolat létrehozásához írja be a szokásos módon szeretne csatlakozni a szolgáltatáshoz való hozzáféréshez használt hitelesítő adatokat. Így a OneDrive, adja meg a hitelesítő adatokat hozhat létre a kapcsolatot a OneDrive-fiókjába.
+## <a name="connect-to-onedrive"></a>Kapcsolódás a OneDrive
+
+Ahhoz, hogy a logikai alkalmazás hozzáférhessen bármely szolgáltatáshoz, először létre kell hoznia egy *kapcsolatot* a szolgáltatással. A kapcsolat kapcsolatot biztosít egy logikai alkalmazás és egy másik szolgáltatás között. Ha például csatlakozni szeretne a OneDrive-hoz, először egy OneDrive- *kapcsolatra*van szüksége. Kapcsolat létrehozásához adja meg azokat a hitelesítő adatokat, amelyeket általában a kapcsolódáshoz használni kívánt szolgáltatás eléréséhez használ. Így a OneDrive esetében adja meg a OneDrive-fiók hitelesítő adatait a kapcsolódás létrehozásához.
 
 ### <a name="create-the-connection"></a>A kapcsolat létrehozása
-> [!INCLUDE [Steps to create a connection to OneDrive](../../includes/connectors-create-api-onedrive.md)]
-> 
-> 
 
-## <a name="use-a-trigger"></a>Triggert
-Egy trigger egy eseményt, amely a logikai alkalmazásban definiált munkafolyamat elindításához használható. Eseményindítók "elindítja a lekérdezést" a szolgáltatás az intervallum és a kívánt gyakorisággal. [További tudnivalók a triggerek](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+[!INCLUDE [Steps to create a connection to OneDrive](../../includes/connectors-create-api-onedrive.md)]
 
-1. Írja be a logikai alkalmazás "onedrive vállalati verzió" listáját az eseményindító:  
-   
-    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. Válassza ki **fájl módosításakor**. Ha a kapcsolat már létezik, majd válasszon ki egy mappát a választó megjelenítése gombra.
-   
-    ![](./media/connectors-create-api-onedrive/sample-folder.png)
-   
-    Ha a rendszer kéri, jelentkezzen be, akkor írja be a bejelentkezést a kapcsolat létrehozásához szükséges adatok. [Hozza létre a kapcsolatot](connectors-create-api-onedrive.md#create-the-connection) ebben a cikkben található lépéseket tartalmazza. 
-   
-   > [!NOTE]
-   > Ebben a példában a logikai alkalmazás fut, amikor egy fájl a mappában, úgy dönt, frissül. Ez az eseményindító eredményeinek megtekintéséhez adjon hozzá egy újabb műveletet, amely e-mailt küld Önnek. Például adja hozzá az Office 365 Outlook *e-mail küldése* műveletet, amely e-mailt küld, ha egy fájl frissül. 
+## <a name="use-a-trigger"></a>Trigger használata
 
-3. Válassza ki a **szerkesztése** gombra, és állítsa be a **gyakorisága** és **időköz** értékeket. Például, ha azt szeretné, hogy az eseményindító 15 percenként lekérdezéséhez, majd állítsa be a **gyakorisága** való **perc**, és állítsa be a **időköz** való **15**. 
-   
-    ![](./media/connectors-create-api-onedrive/trigger-properties.png)
-4. **Mentés** a módosításokat (bal felső sarokban az eszköztár). A logikai alkalmazás a rendszer menti, és előfordulhat, hogy automatikusan engedélyezve kell lennie.
+Az eseményindító egy olyan esemény, amely a logikai alkalmazásban definiált munkafolyamat elindítására szolgál. A "lekérdezés" a szolgáltatást a kívánt időközönként és gyakorisággal indítja el. [További információ az eseményindítókkal kapcsolatban](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-## <a name="use-an-action"></a>Egy művelet használata
-Művelet definiálva, a logikai alkalmazás a munkafolyamat által végzett művelet. [További információért azokról a műveletekről](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+1. A logikai alkalmazásban írja be a "onedrive" kifejezést az eseményindítók listájának lekéréséhez:  
 
-1. Kattintson a plusz jelre. Sokféle lehetőség jelenik meg: **Művelet hozzáadása**, **feltétel hozzáadása**, vagy az egyik a **további** beállítások.
-   
-    ![](./media/connectors-create-api-onedrive/add-action.png)
-2. Válasszon **művelet hozzáadása**.
-3. A szövegmezőbe írja be "onedrive vállalati verzió" az elérhető műveletek listáját.
-   
-    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
-4. Ebben a példában válassza **OneDrive - fájl létrehozása**. Ha a kapcsolat már létezik, majd válassza ki a **mappa elérési útja** helyezni a fájlt, írja be a **Fájlnév**, és válassza a **fájl tartalma** szeretné:  
-   
-    ![](./media/connectors-create-api-onedrive/sample-action.png)
-   
-    Ha a rendszer kéri a kapcsolati információkat, adja meg a részleteket a kapcsolat létrehozásához. [Hozza létre a kapcsolatot](connectors-create-api-onedrive.md#create-the-connection) ebben a cikkben azt ismerteti, ezeket a tulajdonságokat. 
-   
-   > [!NOTE]
-   > Ebben a példában létrehozunk egy új fájlt a OneDrive-mappában. Egy másik trigger kimenete használhatja a OneDrive-fájl létrehozásához. Például adja hozzá az Office 365 Outlook *új e-mail érkezésekor* eseményindító. Majd adja hozzá a onedrive vállalati verzió *fájl létrehozása* műveletet, amely a mellékleteket és a Content-Type mezőket egy ForEach hozhat létre az új fájl a onedrive-on belül. 
-   > 
-   > ![](./media/connectors-create-api-onedrive/foreach-action.png)
+   ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
-5. **Mentés** a módosításokat (bal felső sarokban az eszköztár). A logikai alkalmazás a rendszer menti, és előfordulhat, hogy automatikusan engedélyezve kell lennie.
+2. Válassza ki **a fájl módosításának időpontját**. Ha a kapcsolat már létezik, kattintson a választó megjelenítése gombra a mappa kiválasztásához.
 
+   ![](./media/connectors-create-api-onedrive/sample-folder.png)
 
-## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
+   Ha a rendszer kéri, hogy jelentkezzen be, adja meg a bejelentkezés részleteit a kapcsolat létrehozásához. [Hozza létre a](connectors-create-api-onedrive.md#create-the-connection) jelen cikkben található, a lépéseket felsoroló témakört.
 
-Megtekintheti a valamennyi eseményindítót és műveletet a swaggerben meghatározott, és emellett a korlátozott a [összekötő részletei](/connectors/onedriveconnector/).
+   Ebben a példában a logikai alkalmazás akkor fut le, amikor a kiválasztott mappában található fájl frissül. Az trigger eredményeinek megtekintéséhez adjon hozzá egy másik műveletet, amely e-mailt küld Önnek. Például adja hozzá az Office 365 Outlook *E-mail küldése* műveletet, amely e-mailt küld a fájl frissítésekor.
 
-## <a name="more-connectors"></a>További összekötők
-Lépjen vissza a [API-k listája](apis-list.md).
+3. Kattintson a **Szerkesztés** gombra, és állítsa be a **gyakoriság** és az **intervallum** értékét. Ha például azt szeretné, hogy a trigger 15 percenként lekérdezzen, állítsa a **gyakoriságot** **percre**, és állítsa be az **intervallumot** **15**-re. 
+
+   ![](./media/connectors-create-api-onedrive/trigger-properties.png)
+
+4. **Mentse** a módosításokat (az eszköztár bal felső sarkában). A logikai alkalmazás mentése megtörtént, és lehet, hogy automatikusan engedélyezve van.
+
+## <a name="use-an-action"></a>Művelet használata
+
+A művelet egy logikai alkalmazásban definiált munkafolyamat által végrehajtott művelet. [További információ a műveletekről](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+
+1. Válassza ki a plusz jelet. Több lehetőség is megjelenik: **művelet hozzáadása**, **feltétel hozzáadása**vagy a **további** lehetőségek egyike.
+
+   ![](./media/connectors-create-api-onedrive/add-action.png)
+
+2. Válassza **a művelet hozzáadása**lehetőséget.
+
+3. A szövegmezőbe írja be a "onedrive" kifejezést az összes elérhető művelet listájának lekéréséhez.
+
+   ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
+
+4. A példánkban válassza a **OneDrive – fájl létrehozása**lehetőséget. Ha már létezik egy kapcsolódás, válassza ki a **mappa elérési útját** , adja meg a fájl **nevét**, és válassza ki a kívánt **fájlt** :  
+
+   ![](./media/connectors-create-api-onedrive/sample-action.png)
+
+   Ha a rendszer a kapcsolódási adatok megadását kéri, adja meg a kapcsolat létrehozásához szükséges adatokat a jelen témakörben [leírtak szerint](#create-the-connection) .
+
+   Ebben a példában egy új fájlt hoz létre egy OneDrive mappában. A OneDrive fájl létrehozásához egy másik trigger kimenetét is használhatja. Adja meg például az Office 365 Outlookot, *Amikor új e-mail érkezik* triggerre. Ezután adja hozzá a OneDrive *create file (fájl létrehozása* ) műveletet, amely a foreach található mellékletek és tartalomtípus mezőket használja az új fájl létrehozásához a OneDrive-ben.
+
+   ![](./media/connectors-create-api-onedrive/foreach-action.png)
+
+5. **Mentse** a módosításokat (az eszköztár bal felső sarkában). A logikai alkalmazás mentése megtörtént, és lehet, hogy automatikusan engedélyezve van.
+
+## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
+
+Megtekintheti a hencegés során definiált összes eseményindítót és műveletet, valamint az [összekötő részleteiben](/connectors/onedriveconnector/)megjelenő korlátokat is.
+
+## <a name="next-steps"></a>Következő lépések
+
+* [Az Azure Logic Apps összekötői](apis-list.md)

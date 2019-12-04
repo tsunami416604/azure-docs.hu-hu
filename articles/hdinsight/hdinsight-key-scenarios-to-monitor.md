@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 7a7544ef9fe5724d1f6c11918411a76461d908e5
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: c6e60474f74a23add429bf13ca7744afb8e8e1a3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104399"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777572"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>A fürt teljesítményének figyelése az Azure HDInsight
 
@@ -30,10 +30,10 @@ Ha magas szintű áttekintést szeretne kapni a fürt csomópontjairól és bet�
 | Szín | Leírás |
 | --- | --- |
 | Piros | A gazdagépen legalább egy fő összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
-| Narancssárga | A gazdagépen legalább egy másodlagos összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
-| Sárga | A Ambari-kiszolgáló több mint 3 percen belül nem kapott szívverést a gazdagépen. |
+| Orange | A gazdagépen legalább egy másodlagos összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
+| Sárga | A Ambari-kiszolgáló több mint 3 percen belül nem kapott szívverést a gazdagépről. |
 | Zöld | Normál Futási állapot. |
-
+ 
 Emellett az egyes gazdagépek magok számát és a RAM mennyiségét, valamint a lemezek kihasználtságát és a terhelés átlagát ábrázoló oszlopokat is láthat.
 
 ![Apache Ambari-gazdagépek lapja – áttekintés](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -52,7 +52,7 @@ A fonal a JobTracker, az erőforrás-kezelés és a feladatok ütemezésének é
 
 A Resource Manager egy *tiszta ütemező*, és kizárólag az összes versengő alkalmazás között a rendelkezésre álló erőforrások egyeztetését. A Resource Manager biztosítja, hogy minden erőforrás mindig használatban legyen, optimalizálja a különböző állandókat, például a SLA-kat, a kapacitási garanciákat és így tovább. A ApplicationMaster egyezteti az erőforrásokat a Resource Managerben, és együttműködik a NodeManager (ok) val a tárolók és az erőforrások felhasználásának végrehajtásához és figyeléséhez.
 
-Ha több bérlő is osztozik egy nagyméretű fürtön, a fürt erőforrásainak versenye van. A CapacityScheduler egy csatlakoztatható ütemező, amely a kérések várólistára helyezésével segíti az erőforrások megosztását. A CapacityScheduler a *hierarchikus várólistákat* is támogatja annak biztosítására, hogy az erőforrások meg legyenek osztva egy szervezet alvárólisták között, mielőtt más alkalmazások várólistái is használhatják az ingyenes erőforrásokat.
+Ha több bérlő is osztozik egy nagy fürtön, a fürt erőforrásainak versenye van. A CapacityScheduler egy csatlakoztatható ütemező, amely a kérések várólistára helyezésével segíti az erőforrások megosztását. A CapacityScheduler a *hierarchikus várólistákat* is támogatja annak biztosítására, hogy az erőforrások meg legyenek osztva egy szervezet alvárólisták között, mielőtt más alkalmazások várólistái is használhatják az ingyenes erőforrásokat.
 
 A fonal lehetővé teszi, hogy erőforrásokat foglaljon le ezekhez a várólistákhoz, és megjeleníti, hogy az összes rendelkezésre álló erőforrás hozzá van-e rendelve. A várólistákkal kapcsolatos információk megtekintéséhez jelentkezzen be a Ambari webes felhasználói felületére, majd a felső menüben válassza a **fonal Queue Manager** lehetőséget.
 
@@ -72,17 +72,17 @@ A Resource Manager felhasználói felületén válassza a **Scheduler** lehetős
 
 ## <a name="storage-throttling"></a>Tárolás szabályozása
 
-A fürt teljesítményének szűk keresztmetszete a tárolási szinten fordulhat elő. Ezt a szűk keresztmetszetet gyakran a bemeneti/kimeneti (IO) műveletek *blokkolása* okozza, amely akkor fordul elő, amikor a futó feladatok több IO-t küldenek, mint amennyit a Storage szolgáltatás kezelhet. Ez a blokkolás létrehoz egy várólistát a feldolgozásra váró IO-kérelmekről, amíg a jelenlegi IOs-t nem dolgozza fel. A blokkokat a *tárolási sávszélesség*okozta, amely nem egy fizikai korlát, hanem a tárolási szolgáltatás által a szolgáltatói szerződés (SLA) által előírt korlát. Ez a korlát biztosítja, hogy egyetlen ügyfél vagy bérlő se Sajátítsa el a szolgáltatást. Az SLA korlátozza a másodpercenkénti IOs-(IOPS-) adatok számát az Azure Storage-ban – részletekért lásd: az [Azure Storage skálázhatósági és teljesítményi céljai](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
+A fürt teljesítményének szűk keresztmetszete a tárolási szinten fordulhat elő. Ez a szűk keresztmetszet leggyakrabban a bemeneti/kimeneti (i/o) műveletek *blokkolása* miatt fordul elő, amelyek akkor történnek, ha a futó feladatok több IO-t küldenek, mint amennyit a Storage szolgáltatás tud kezelni. Ez a blokkolás létrehoz egy várólistát a feldolgozásra váró IO-kérelmekről, amíg a jelenlegi IOs-t nem dolgozza fel. A blokkok *tárolási szabályozás*miatt, amely nem egy fizikai korlát, hanem a tárolási szolgáltatás által a szolgáltatói szerződés (SLA) által kiszabott korlát. Ez a korlát biztosítja, hogy egyetlen ügyfél vagy bérlő se Sajátítsa el a szolgáltatást. Az SLA korlátozza a másodpercenkénti IOs-(IOPS-) adatok számát az Azure Storage-ban – részletekért lásd: az [Azure Storage skálázhatósági és teljesítményi céljai](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
 
-Ha az Azure Storage szolgáltatást használja, a tárolással kapcsolatos problémák figyelésével, beleértve a szabályozást, lásd: [figyelés, diagnosztizálás és hibaelhárítás Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
+Ha az Azure Storage-t használja, a tárolással kapcsolatos problémák figyelésével, beleértve a szabályozást is, tekintse meg az [Microsoft Azure Storage figyelése, diagnosztizálása és hibaelhárítása](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting)című témakört.
 
-Ha a fürtön lévő tároló Azure Data Lake Storage (ADLS), a sávszélesség-korlátozás miatt a szabályozás legvalószínűbb. Ebben az esetben a szabályozás a feladatok naplóiban előforduló szabályozási hibák megfigyelésével azonosítható. A ADLS kapcsolatos további információkért tekintse meg a szabályozás szakaszt a megfelelő szolgáltatáshoz a következő cikkekben:
+Ha a fürtön lévő tároló Azure Data Lake Storage (ADLS), akkor a sávszélesség-korlátozás miatt a szabályozás legvalószínűbb. Ebben az esetben a szabályozás a feladatok naplóiban előforduló szabályozási hibák megfigyelésével azonosítható. A ADLS kapcsolatos további információkért tekintse meg a szabályozás szakaszt a megfelelő szolgáltatáshoz a következő cikkekben:
 
 * [Teljesítmény-finomhangolási útmutató a HDInsight és a Azure Data Lake Storage Apache Hive](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [Teljesítmény-finomhangolási útmutató a HDInsight és Azure Data Lake Storage MapReduce](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
 * [Teljesítmény-finomhangolási útmutató a HDInsight és a Azure Data Lake Storage Apache Storm](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fürtök hibaelhárításával és figyelésével kapcsolatos további információkért tekintse meg az alábbi hivatkozásokat:
 

@@ -1,17 +1,17 @@
 ---
-title: Biztonsági mentés és visszaállítás Azure Database for PostgreSQL – egyetlen kiszolgáló
+title: Biztonsági mentés és visszaállítás – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ismerkedjen meg az automatikus biztonsági mentéssel és a Azure Database for PostgreSQL kiszolgáló – egyetlen kiszolgáló visszaállításával.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cbd434f2f9e1217a3a481a28988f4e1d855ba08b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: be6b9c30fe462b0754ae5e5c1a7eeac242af00f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209642"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769863"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Biztonsági mentés és visszaállítás Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL biztonsági másolatokat készít az adatfájlokr�
 
 ### <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
 
-Általánosságban elmondható, hogy a teljes biztonsági mentések hetente, a különbözeti biztonsági mentések naponta kétszer történnek a 4 TB-os maximális támogatott tárterülettel rendelkező kiszolgálók esetében. A pillanatképes biztonsági mentések naponta legalább egyszer történnek olyan kiszolgálók esetében, amelyek legfeljebb 16 TB tárterületet támogatnak. A tranzakciónapló biztonsági mentései mindkét esetben öt percenként történnek. A teljes biztonsági mentés első pillanatképét a rendszer a kiszolgáló létrehozása után azonnal ütemezi. A kezdeti teljes biztonsági mentés hosszabb időt vehet igénybe egy nagy visszaállított kiszolgálón. Az a legkorábbi időpont, ameddig egy új kiszolgáló visszaállítható a kezdeti teljes biztonsági mentés befejezésének időpontjára. Mivel a pillanatképek instantanious, a legfeljebb 16 TB tárhellyel rendelkező kiszolgálók visszaállíthatók egészen a létrehozási időre.
+Általánosságban elmondható, hogy a teljes biztonsági mentések hetente, a különbözeti biztonsági mentések naponta kétszer történnek a 4 TB-os maximális támogatott tárterülettel rendelkező kiszolgálók esetében. A pillanatképek biztonsági mentése legalább naponta egyszer történik a legfeljebb 16 TB tárterületet támogató kiszolgálók esetén. A tranzakciós naplók biztonsági mentése mindkét esetben öt percenként történik. A teljes biztonsági mentés első pillanatképét a rendszer a kiszolgáló létrehozása után azonnal ütemezi. A kezdeti teljes biztonsági mentés hosszabb időt vehet igénybe egy nagy visszaállított kiszolgálón. Az a legkorábbi időpont, ameddig egy új kiszolgáló visszaállítható a kezdeti teljes biztonsági mentés befejezésének időpontjára. Mivel a pillanatképek azonnaliek, a legfeljebb 16 TB tárhellyel rendelkező kiszolgálók bármikor visszaállíthatók a létrehozási időre.
 
 ### <a name="backup-redundancy-options"></a>A Backup redundancia beállításai
 
@@ -52,7 +52,7 @@ A helyreállítás becsült ideje több tényezőtől függ, többek között az
 > [!IMPORTANT]
 > A törölt kiszolgálók **nem** állíthatók vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. A kiszolgálói erőforrások, a telepítés után a véletlen törlés vagy a váratlan módosítások elleni védelem érdekében a rendszergazdák kihasználhatják a [felügyeleti zárolásokat](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
-### <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
+### <a name="point-in-time-restore"></a>Időponthoz kötött visszaállítás
 
 A biztonsági mentési redundancia-beállítástól függetlenül a biztonsági másolatok megőrzési időszakán belül bármikor elvégezheti a visszaállítást. A rendszer létrehoz egy új kiszolgálót ugyanabban az Azure-régióban, mint az eredeti kiszolgálót. A rendszer az eredeti kiszolgáló konfigurációját hozza létre a díjszabási csomag, a számítási generáció, a virtuális mag száma, a tárterület mérete, a biztonsági másolatok megőrzési időtartama és a biztonsági mentési redundancia beállítás esetében.
 
@@ -77,7 +77,7 @@ A helyreállítási mechanizmusból való visszaállítás után a következő f
 - Győződjön meg arról, hogy a megfelelő bejelentkezések és az adatbázis-szintű engedélyek vannak érvényben
 - Konfigurálja a riasztásokat, ha szükséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan lehet visszaállítani [a Azure Portal](howto-restore-server-portal.md)használatával.
 - Ismerje meg, hogyan állíthatja vissza [Az Azure CLI](howto-restore-server-cli.md)használatával.

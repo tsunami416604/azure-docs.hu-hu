@@ -1,5 +1,5 @@
 ---
-title: A Java használata a Azure Database for MySQLhoz való kapcsolódáshoz
+title: Kapcsolat a Java-Azure Database for MySQL használatával
 description: Ez a rövid útmutató egy olyan Java-kódrészletet tartalmaz, amellyel csatlakozhat egy Azure Database for MySQL adatbázisból, és lekérdezheti azokat.
 author: ajlam
 ms.author: andrela
@@ -7,20 +7,20 @@ ms.service: mysql
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 08/08/2019
-ms.openlocfilehash: 9df95a754d4bd423ddd7f57c634b86bd33e906ca
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.date: 12/02/2019
+ms.openlocfilehash: 5f463434261dd782bb180f55986cc0f05c71cbe9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155539"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770747"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Gyors útmutató: A Java használatával csatlakozhat a Azure Database for MySQLhoz, és lekérdezheti azokat
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a Java használatával csatlakozhat a Azure Database for MySQLhoz, és lekérdezheti azokat
 
-Ez a rövid útmutató azt ismerteti, hogyan csatlakozhat egy Azure Database for MySQLhoz egy Java-alkalmazás és a [MariaDB Connector/J JDBC-](https://mariadb.com/kb/en/library/mariadb-connector-j/)illesztő használatával. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A cikk feltételezi, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for MySQL használatában pedig még járatlan.
+Ez a rövid útmutató azt ismerteti, hogyan csatlakozhat egy Azure Database for MySQLhoz egy Java-alkalmazás és a [MariaDB Connector/J JDBC-](https://mariadb.com/kb/en/library/mariadb-connector-j/)illesztő használatával. Bemutatjuk, hogy SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A cikk feltételezi, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for MySQL használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehozott erőforrásokat használunk kiindulási pontként:
+1. A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
    - [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával](./quickstart-create-mysql-server-database-using-azure-portal.md)
    - [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
@@ -31,7 +31,7 @@ Ez a rövid útmutató azt ismerteti, hogyan csatlakozhat egy Azure Database for
    - Töltse le a [MariaDB Connector/J](https://downloads.mariadb.org/connector-java/) JDBC-illesztőt, és adja meg a JDBC jar-fájlt (például MariaDB-Java-Client-2.4.3. jar) az alkalmazás osztályútvonal. Ha problémát tapasztal az osztályútvonalakkal kapcsolatban, tekintse meg környezete dokumentációját az osztályok elérési útvonalával kapcsolatban (például: [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) vagy [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)).
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
-Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Ehhez szükség lesz a teljes kiszolgálónévre és bejelentkezési hitelesítő adatokra.
+Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Azure Portal bal oldali menüjében válassza a **minden erőforrás**elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver**).
@@ -391,7 +391,7 @@ public class DeleteTable {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával](concepts-migrate-dump-restore.md)

@@ -1,20 +1,19 @@
 ---
-title: B2B-üzenetek monitorozása Azure Monitor-Azure Logic Apps
+title: B2B-üzenetek figyelése Azure Monitor
 description: Diagnosztikai naplózás beállítása AS2-, X12-és EDIFACT-üzenetekhez a Azure Logic Appsban Azure Monitor használatával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: e5c8e5f3d42f4e85406fcc7dd5a2f6602045c8ed
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: cd96376f764ec3075b916bf2207ec6ee3dd3fcbd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680202"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791938"
 ---
 # <a name="set-up-diagnostics-logging-for-b2b-messages-in-azure-logic-apps-by-using-azure-monitor"></a>Diagnosztikai naplózás beállítása a Azure Logic Appsban lévő B2B-üzenetekhez Azure Monitor használatával
 
@@ -49,9 +48,9 @@ Ha elkészült, válassza a **diagnosztikai beállítás hozzáadása**elemet.
    | Tulajdonság | Value (Díj) | Leírás | 
    |----------|-------|-------------|
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az integrációs fiókjához társított Azure-előfizetés | 
-   | **Erőforráscsoport** | <*Azure-Erőforrás-csoport neve* > | Az integrációs fiókhoz tartozó Azure-erőforráscsoport | 
+   | **Erőforráscsoport** | <*Azure-Erőforrás-csoport neve*> | Az integrációs fiókhoz tartozó Azure-erőforráscsoport | 
    | **Erőforrás típusa** | **Integrációs fiókok** | Az Azure-Erőforrás típusa, amelyen be szeretné kapcsolni a naplózást | 
-   | **Erőforrás** | <*integráció – fiók neve* > | Annak az Azure-erőforrásnak a neve, amelyen be szeretné kapcsolni a naplózást | 
+   | **Erőforrás** | <*integráció – fiók neve*> | Annak az Azure-erőforrásnak a neve, amelyen be szeretné kapcsolni a naplózást | 
    ||||  
 
    Példa:
@@ -91,9 +90,9 @@ Ha elkészült, válassza a **diagnosztikai beállítás hozzáadása**elemet.
    | Tulajdonság | Value (Díj) | Leírás | 
    |----------|-------|-------------|
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az integrációs fiókjához társított Azure-előfizetés | 
-   | **Erőforráscsoport** | <*Azure-Erőforrás-csoport neve* > | Az integrációs fiókhoz tartozó Azure-erőforráscsoport | 
+   | **Erőforráscsoport** | <*Azure-Erőforrás-csoport neve*> | Az integrációs fiókhoz tartozó Azure-erőforráscsoport | 
    | **Erőforrás típusa** | **Integrációs fiókok** | Az Azure-Erőforrás típusa, amelyen be szeretné kapcsolni a naplózást | 
-   | **Erőforrás** | <*integráció – fiók neve* > | Annak az Azure-erőforrásnak a neve, amelyen be szeretné kapcsolni a naplózást | 
+   | **Erőforrás** | <*integráció – fiók neve*> | Annak az Azure-erőforrásnak a neve, amelyen be szeretné kapcsolni a naplózást | 
    ||||  
 
    Példa:

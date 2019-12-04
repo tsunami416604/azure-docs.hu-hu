@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 3151d72c0e74e7eb694ef2bdd5737f65992fe905
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 10c27c18b8003bf286789e478f504bca98ebe7ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824380"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766482"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Tudnivalók az Azure hálózatkezelési MSP-partnereiről
 
-Az [Azure hálózatkezeléssel felügyelt szolgáltatói (msp) Partnerprogram](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/) lehetővé teszi, hogy a hálózati szolgáltatások célzott MSP, telcos és rendszerintegrátorai (SIs) a Felhőbeli és a hibrid hálózatkezelési szolgáltatásokat nyújtsanak az Azure hálózati termékek portfóliójának körébe és szolgáltatások.
+Az [Azure hálózatkezeléssel felügyelt szolgáltatói (msp) Partnerprogram](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/) lehetővé teszi, hogy a hálózati szolgáltatások, a telcos és a rendszerintegrátorok (SIs) olyan felhőalapú és hibrid hálózati szolgáltatásokat nyújtsanak, amelyek az Azure hálózatkezelési termékeinek és szolgáltatásainak körébe vannak foglalva.
 
 Az Azure hálózatkezelési MSP a felügyelt szolgáltatók speciális készletei, amelyek a Felhőbeli és a hibrid hálózatkezelés minden aspektusában a vállalati Felhőbeli hálózatkezelési igényeket és kihívásokat kezelik. A felügyelt hálózati szolgáltatások közé tartozik a következő szolgáltatások legalább egyike: hálózati architektúra, tervezés, üzembe helyezés, műveletek, karbantartás és optimalizálás.
 
@@ -28,12 +28,13 @@ Az ügyfelek az Azure Marketplace-en vagy közvetlenül az MSP-ből vásárolhat
 
 Az ebben a szakaszban található hivatkozásokra kattintva további információt találhat az Azure hálózati MSP-partnerek által kínált felügyelt felhőalapú hálózati szolgáltatásokról. Ha a Cloud Network Services-partner nem szerepel az alábbi szakaszban, akkor a szolgáltató vegye fel velünk a kapcsolatot. Felvehetik velünk a kapcsolatot, ha e-mailt küldenek a ManagedVirtualWAN@microsoft.comnak. 
 
-| **MSP** | **Cloud Network Transformation Services** | **Felügyelt ExpressRoute** | **Felügyelt virtuális WAN** | **Felügyelt hálózati biztonsági szolgáltatások** |**Felügyelt hálózati Edge-számítás** |
+| **MSP** | **Cloud Network Transformation Services** | **Felügyelt ExpressRoute** | **Felügyelt virtuális WAN** | **Felügyelt hálózati biztonsági szolgáltatások** |**Felügyelt Multi-Access Edge-számítás** |
 | ---| ---| ---| ---| ---| ---|
 |[Amdocs](https://www.amdocs.com/)|||||Igen|
 |[ANS csoport, Egyesült Királyság](https://www.ans.co.uk/)|Igen|Igen||||
 |[Aryaka Networks hálózatok](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)|Igen |Igen |Igen | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|Igen|Igen|Igen|||
+|[Kialakulás](https://www.coevolve.com/services/azure-networking-services/)|Igen||Igen|Igen||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|Igen|||||
 |[Dimenziós adatértékek](https://www.dimensiondata.com/)|Igen|||||
 |[Equinix](https://www.equinix.com/)|Igen|Igen||||

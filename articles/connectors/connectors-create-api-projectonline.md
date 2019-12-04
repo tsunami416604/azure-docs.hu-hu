@@ -1,22 +1,18 @@
 ---
-title: Kapcsolódás a Project online-hoz a Azure Logic Appsból | Microsoft Docs
+title: Kapcsolódás a Project online-hoz a Azure Logic Apps
 description: A Project online-projektek,-feladatok és-erőforrások figyelésére, létrehozására és kezelésére szolgáló munkafolyamatok automatizálása Azure Logic Apps használatával
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: fe571209d28fe098ce9b507cb67b0a9a5abd25a3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 116922e018410f260b33f4dfd76e5983fbbcc0a5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050861"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789324"
 ---
 # <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>A Project online-projektek,-feladatok és-erőforrások kezelése Azure Logic Apps használatával
 
@@ -33,7 +29,7 @@ A Project online lehetővé teszi, hogy a projektek és a projekt-portfólió be
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* A Project online egy [Office 365](https://www.office.com/)-fiókon keresztül érhető el, 
+* A Project online egy [Office 365-fiókon](https://www.office.com/)keresztül érhető el, 
 
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -69,6 +65,6 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai r�
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

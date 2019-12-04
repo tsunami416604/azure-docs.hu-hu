@@ -1,20 +1,20 @@
 ---
-title: A szolgáltatás paramétereinek konfigurálása – Azure Database for MySQL
+title: Kiszolgálói paraméterek konfigurálása – Azure CLI – Azure Database for MySQL
 description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni a szolgáltatás paramétereit Azure Database for MySQL az Azure CLI parancssori segédprogram használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.openlocfilehash: a107c5130968ca960036d7e0f948cf6ea5d209a8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.date: 12/02/2019
+ms.openlocfilehash: 2a53debb72cfd5da73c2bceb7993288eb828237a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350330"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770526"
 ---
-# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Kiszolgáló konfigurációs paramétereinek testreszabása az Azure CLI használatával
+# <a name="customize-server-parameters-by-using-azure-cli"></a>Kiszolgálói paraméterek testreszabása az Azure CLI használatával
 Az Azure CLI, az Azure parancssori segédprogram használatával listázhatja, megjelenítheti és frissítheti az Azure Database for MySQL-kiszolgáló konfigurációs paramétereit. A motor konfigurációjának egy részhalmaza a kiszolgáló szintjén érhető el, és módosítható. 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -51,20 +51,20 @@ az mysql server configuration set --name slow_query_log --resource-group myresou
 ```
 Ez a kód visszaállítja a **lassú\_lekérdezési\_naplózási** konfigurációját az **alapértelmezett értékre**. 
 
-## <a name="working-with-the-time-zone-parameter"></a>Időzóna-paraméter használata
+## <a name="working-with-the-time-zone-parameter"></a>Az időzóna-paraméter használata
 
-### <a name="populating-the-time-zone-tables"></a>Az időzóna táblák feltöltése
+### <a name="populating-the-time-zone-tables"></a>Az időzóna-táblák feltöltése
 
-A kiszolgálón az időzóna táblázatok meghívásával lehet adatokkal feltölteni a `az_load_timezone` tárolt eljárás egy eszközt, például a MySQL parancssori vagy a MySQL Workbench segítségével.
+A kiszolgálón található időzóna-táblákat úgy töltheti fel, hogy meghívja a `az_load_timezone` tárolt eljárást egy olyan eszközről, mint a MySQL parancssori vagy a MySQL Workbench.
 
 > [!NOTE]
-> Ha futtatja a `az_load_timezone` parancsot a MySQL Workbench, szükség lehet az első biztonságos frissítési mód kikapcsolása használatával `SET SQL_SAFE_UPDATES=0;`.
+> Ha a MySQL Workbench `az_load_timezone` parancsát futtatja, előfordulhat, hogy először a `SET SQL_SAFE_UPDATES=0;`használatával kell kikapcsolnia a biztonságos frissítési módot.
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
-Rendelkezésre álló időzóna értékek megtekintéséhez futtassa a következő parancsot:
+A rendelkezésre álló időzóna-értékek megtekintéséhez futtassa a következő parancsot:
 
 ```sql
 SELECT name FROM mysql.time_zone_name;
@@ -80,15 +80,15 @@ A következő parancs frissíti az **idő\_zóna** kiszolgálójának konfigurá
 az mysql server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
 ```
 
-### <a name="setting-the-session-level-time-zone"></a>A munkamenet szintű időzóna beállítása
+### <a name="setting-the-session-level-time-zone"></a>A munkamenet-szint időzónájának beállítása
 
-A munkamenet-szolgáltatói időzóna futtatásával állítható a `SET time_zone` egy eszköz, például a MySQL-parancssor vagy a MySQL Workbench parancsot. Az alábbi példa állítja be az időzónát a **USA / csendes-óceáni térség** időzóna.  
+A munkamenet-szint időzónája beállítható úgy, hogy a `SET time_zone` parancsot egy olyan eszközről futtatja, mint a MySQL parancssori vagy a MySQL Workbench. Az alábbi példa az időzónát az **USA/csendes-óceáni** időzónára állítja be.  
 
 ```sql
 SET time_zone = 'US/Pacific';
 ```
 
-A MySQL dokumentációjában [dátum és időpont függvényeinek](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
+Tekintse meg a MySQL dokumentációját a [dátum-és Időfüggvényekhez](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
 
 ## <a name="next-steps"></a>Következő lépések

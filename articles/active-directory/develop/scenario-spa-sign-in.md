@@ -17,34 +17,34 @@ ms.date: 05/06/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bf614a5523e78fc72918db973ef8d738a171fff
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e0fd546724b8d684746a9f4d63a03bc6b58ded52
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031780"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764644"
 ---
-# <a name="single-page-application---sign-in"></a>Egyoldalas alkalmazás – bejelentkezés
+# <a name="single-page-application-sign-in"></a>Egyoldalas alkalmazás: bejelentkezés
 
 Megtudhatja, hogyan adhat hozzá bejelentkezést az egyoldalas alkalmazás kódjához.
 
-Ahhoz, hogy a tokenek hozzáférjenek az API-khoz az alkalmazásban, szüksége lesz egy hitelesített felhasználói környezetre. A felhasználókat a MSAL. js fájlban kétféleképpen lehet bejelentkezni:
+Ahhoz, hogy a tokenek hozzáférjenek az alkalmazás API-khoz, hitelesített felhasználói környezetre van szükség. A felhasználókat a MSAL. js fájlban kétféleképpen lehet bejelentkezni:
 
-* [Bejelentkezés előugró ablakban](#sign-in-with-a-pop-up-window) a metódus használatával `loginPopup`
-* [Bejelentkezés az átirányítás](#sign-in-with-redirect) használatával `loginRedirect` metódussal
+* [Előugró ablak](#sign-in-with-a-pop-up-window)a `loginPopup` metódus használatával
+* [Átirányítás](#sign-in-with-redirect)a `loginRedirect` metódus használatával
 
-Igény szerint átadhatja azon API-k hatóköreit, amelyekhez a felhasználó beleegyezik a bejelentkezés időpontjában.
+Igény szerint átadhatja azon API-k hatóköreit, amelyekhez a felhasználónak a bejelentkezéskor hozzá kell járulnia.
 
 > [!NOTE]
-> Ha az alkalmazásnak már van hozzáférése egy hitelesített felhasználói környezethez vagy azonosító jogkivonathoz, kihagyhatja a bejelentkezési lépést, és közvetlenül is beszerezheti a jogkivonatokat. További részletekért lásd: [SSO msal. js bejelentkezés nélkül](msal-js-sso.md#sso-without-msaljs-login).
+> Ha az alkalmazásnak már van hozzáférése egy hitelesített felhasználói környezethez vagy azonosító jogkivonathoz, kihagyhatja a bejelentkezési lépést, és közvetlenül is beszerezheti a jogkivonatokat. Részletekért lásd: [SSO MSAL. js bejelentkezés nélkül](msal-js-sso.md#sso-without-msaljs-login).
 
 ## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Egy előugró vagy átirányítási élmény közötti választás
 
-Az előugró és az átirányítási módszerek kombinációja nem használható az alkalmazásban. Az előugró vagy átirányítási élmény közötti választás az alkalmazási folyamattól függ.
+Az alkalmazásban nem használhatók az előugró és az átirányítási módszerek. Az előugró vagy átirányítási élmény közötti választás az alkalmazási folyamattól függ:
 
-* Ha nem szeretné, hogy a felhasználó az alkalmazás főoldaláról navigáljon a hitelesítés során, javasoljuk, hogy használja az előugró metódusokat. Mivel a hitelesítés átirányítása egy előugró ablakban történik, a fő alkalmazás állapota megmarad.
+* Ha nem szeretné, hogy a felhasználók a hitelesítés során elmozdulnak a fő alkalmazási lapról, javasoljuk, hogy az előugró metódust. Mivel a hitelesítés átirányítása egy előugró ablakban történik, a fő alkalmazás állapota megmarad.
 
-* Bizonyos esetekben előfordulhat, hogy az átirányítás módszereit kell használnia. Ha az alkalmazás felhasználói olyan böngészőbeli korlátozásokkal vagy házirendekkel rendelkeznek, amelyekben az előugró ablakok le vannak tiltva, akkor használhatja az átirányítási módszereket. Használja az átirányítás módszereit az Internet Explorer böngészőben, mivel az előugró ablakok kezelése során bizonyos [ismert problémák merültek fel az Internet Explorerben](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser) .
+* Ha a felhasználók olyan böngészőbeli korlátozásokkal vagy házirendekkel rendelkeznek, amelyekben az előugró ablakok le vannak tiltva, használhatja az átirányítási módszert. Használja az átirányítás módszert az Internet Explorer böngészővel, mert az [Internet Explorerben ismert problémák léptek fel az előugró ablakokban](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser).
 
 ## <a name="sign-in-with-a-pop-up-window"></a>Bejelentkezés előugró ablakkal
 
@@ -66,7 +66,7 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 
 ### <a name="angular"></a>Angular
 
-A MSAL szögletes burkolója lehetővé teszi, hogy az alkalmazásban meghatározott útvonalakat az útvonal definíciójának hozzáadásával `MsalGuard` biztosítsa. Ez az őr meghívja a metódust, hogy bejelentkezzen az útvonal elérésekor.
+A MSAL szögletes burkolója lehetővé teszi, hogy az alkalmazás adott útvonalait az útvonal-definícióhoz `MsalGuard` hozzáadásával biztosítsa. Ez az őr meghívja a metódust, hogy bejelentkezzen az útvonal elérésekor.
 
 ```javascript
 // In app.routes.ts
@@ -91,11 +91,11 @@ Az előugró ablak felhasználói felületén engedélyezze a `popUp` konfigurá
          })
 ```
 
-## <a name="sign-in-with-redirect"></a>Bejelentkezés átirányítás
+## <a name="sign-in-with-redirect"></a>Bejelentkezés átirányítással
 
 ### <a name="javascript"></a>JavaScript
 
-Az átirányítási módszerek nem adnak vissza ígéretet a fő alkalmazástól érkező Navigálás miatt. A visszaadott tokenek feldolgozásához és eléréséhez regisztrálnia kell a sikeres és a sikertelen visszahívásokat az átirányítási módszerek meghívása előtt.
+Az átirányítási módszerek nem adnak vissza ígéretet a fő alkalmazásból való elmozdulás miatt. A visszaadott tokenek feldolgozásához és eléréséhez regisztrálnia kell a sikeres és a sikertelen visszahívásokat az átirányítási módszerek meghívása előtt.
 
 ```javascript
 function authCallback(error, response) {
@@ -113,16 +113,16 @@ userAgentApplication.loginRedirect(loginRequest);
 
 ### <a name="angular"></a>Angular
 
-A kód itt megegyeznek a bejelentkezés előugró ablakban című szakaszban leírtak szerint. Az alapértelmezett folyamat átirányítása.
+A kód itt ugyanaz, mint az előugró ablakba való bejelentkezéssel kapcsolatos szakasz korábbi részében leírtak szerint. Az alapértelmezett folyamat átirányítása.
 
 > [!NOTE]
-> Az azonosító jogkivonat nem tartalmazza a beleegyezett hatóköröket, és csak a hitelesített felhasználót jelöli. A rendszer a következő lépésben megszerzett hozzáférési jogkivonatban adja vissza a megegyezett hatóköröket.
+> Az azonosító jogkivonat nem tartalmazza a beleegyezett hatóköröket, és csak a hitelesített felhasználót jelöli. A rendszer visszaadja a megadott hatóköröket a hozzáférési jogkivonatban, amelyet a következő lépésben fog beszerezni.
 
 ## <a name="sign-out"></a>Kijelentkezés
 
-A MSAL könyvtár olyan `logout` metódust biztosít, amely törli a gyorsítótárat a böngésző tárolójában, és kijelentkezési kérést küld az Azure ad-nek. A kijelentkezés után a rendszer alapértelmezés szerint átirányítja az alkalmazás kezdőlapját.
+A MSAL könyvtár olyan `logout` metódust biztosít, amely törli a gyorsítótárat a böngészőalapú tárolóban, és kijelentkezési kérést küld Azure Active Directory (Azure AD) számára. A kijelentkezés után a könyvtár alapértelmezés szerint átirányítja az alkalmazás kezdőlapját.
 
-Beállíthatja azt az URI-t, amelyre a `postLogoutRedirectUri`kijelentkezés után át kell irányítani. Ezt az URI-t a kijelentkezési URI-ként is regisztrálni kell az alkalmazás regisztrálásakor.
+Beállíthatja azt az URI-t, amelyre a kijelentkezést követően át kell irányítani a `postLogoutRedirectUri`beállításával. Ezt az URI-t a kijelentkezési URI-ként is regisztrálni kell az alkalmazás regisztrálásakor.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -156,7 +156,7 @@ userAgentApplication.logout();
 this.authService.logout();
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Token beszerzése az alkalmazáshoz](scenario-spa-acquire-token.md)

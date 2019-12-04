@@ -1,27 +1,28 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 46a6fcb57a21f3f1e30b39fc6967256550e31616
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: 94f18b20d84a1929368053c44b4f07793e385b38
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179379"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789570"
 ---
-### <a name="prerequisites"></a>Előfeltételek
-* A [MicrosoftTranslator](https://www.microsoft.com/translator) fiók  
+## <a name="prerequisites"></a>Előfeltételek
 
-MicrosoftTranslator fiókja, a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás a MicrosoftTranslator fiókhoz való csatlakozáshoz. Szerencsére a ehhez egyszerűen, a logikai alkalmazás az Azure Portal webhelyen belül.  
+* Egy [MicrosoftTranslator](https://www.microsoft.com/translator) -fiók  
 
-A logikai alkalmazás a MicrosoftTranslator fiókhoz való csatlakozás engedélyezése lépései a következők:  
+Ahhoz, hogy MicrosoftTranslator-fiókját a logikai alkalmazásban használhassa, engedélyeznie kell a logikai alkalmazásnak a MicrosoftTranslator-fiókhoz való kapcsolódást. Szerencsére ezt könnyedén elvégezheti az Azure Portalon a logikai alkalmazáson belül.  
 
-1. A Logic app Designerben MicrosoftTranslator, kapcsolat létrehozásához válassza **megjelenítése a Microsoft által felügyelt API-k** a legördülő listában adja meg *MicrosoftTranslator* kifejezést a keresőmezőbe. Válassza ki az eseményindítót vagy műveletet fogja kíván használni:  
-   ![MicrosoftTranslator kapcsolat létrehozási lépés](./media/connectors-create-api-microsofttranslator/microsofttranslator-1.png)  
-2. Ha még nem hozott létre, mielőtt MicrosoftTranslator kapcsolatokat, első kéri a MicrosoftTranslator hitelesítő adatokat. Ezekkel a hitelesítő adatokkal kapcsolódni a logikai alkalmazás hitelesítéséhez használható, és a MicrosoftTranslator fiókhoz tartozó adatok eléréséhez:  
-   ![MicrosoftTranslator kapcsolat létrehozási lépés](./media/connectors-create-api-microsofttranslator/microsofttranslator-2.png)  
-3. Figyelje meg, hogy a kapcsolat létrejött, és most már szabadon folytassa a további lépésekkel, a logikai alkalmazásban:  
-   ![MicrosoftTranslator kapcsolat létrehozási lépés](./media/connectors-create-api-microsofttranslator/microsofttranslator-3.png)  
+Az alábbi lépésekkel engedélyezheti a logikai alkalmazásnak a MicrosoftTranslator-fiókhoz való kapcsolódást:  
+
+1. A MicrosoftTranslator-kapcsolat létrehozásához a Logic app Designerben válassza a **Microsoft felügyelt API** -k megjelenítése lehetőséget a legördülő listában, majd írja be a *MicrosoftTranslator* kifejezést a keresőmezőbe. Válassza ki a használni kívánt triggert vagy műveletet:  
+   ![MicrosoftTranslator-kapcsolatok létrehozási lépése](./media/connectors-create-api-microsofttranslator/microsofttranslator-1.png)  
+2. Ha korábban még nem hozott létre kapcsolatot a MicrosoftTranslator, a rendszer kérni fogja, hogy adja meg a MicrosoftTranslator hitelesítő adatait. Ezek a hitelesítő adatok a logikai alkalmazáshoz való kapcsolódáshoz és a MicrosoftTranslator-fiók adatainak eléréséhez lesznek használva:  
+   ![MicrosoftTranslator-kapcsolatok létrehozási lépése](./media/connectors-create-api-microsofttranslator/microsofttranslator-2.png)  
+3. Figyelje meg, hogy létrejött a kapcsolódás, és most már ingyenesen folytathatja a logikai alkalmazás egyéb lépéseit:  
+   ![MicrosoftTranslator-kapcsolatok létrehozási lépése](./media/connectors-create-api-microsofttranslator/microsofttranslator-3.png)  
 

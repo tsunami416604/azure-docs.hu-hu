@@ -1,32 +1,32 @@
 ---
 title: Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz .NET-tel (előzetes verzió) – Azure Storage
-description: Megtudhatja, hogyan hozhat létre felhasználói delegálási SAS-t az Azure Storage Azure Active Directory hitelesítő adataival a .NET ügyféloldali kódtár használatával.
+description: Megtudhatja, hogyan hozhat létre felhasználói delegálási SAS-t (előzetes verzió) Azure Active Directory hitelesítő adatokkal az Azure Storage-ban a .NET ügyféloldali kódtár használatával.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 12/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: c75a13a20c1dbb222db69145e24838deb111fb66
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 32bcb12f39d65d63af1c6595c0d57c695ce0533f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595211"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792215"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz .NET-tel (előzetes verzió)
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Ez a cikk bemutatja, hogyan használhatók a Azure Active Directory (Azure AD) hitelesítő adatai egy felhasználói delegálási SAS létrehozásához egy tárolóhoz vagy blobhoz a .NET-hez készült Azure Storage ügyféloldali kódtár használatával.
+Ez a cikk bemutatja, hogyan használhatók a Azure Active Directory (Azure AD) hitelesítő adatok egy felhasználói delegálási SAS (előzetes verzió) létrehozásához egy tárolóhoz vagy blobhoz a .NET-hez készült Azure Storage ügyféloldali kódtár használatával.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="authenticate-with-the-azure-identity-library-preview"></a>Hitelesítés az Azure Identity Library (előzetes verzió) használatával
+## <a name="authenticate-with-the-azure-identity-library"></a>Hitelesítés az Azure Identity Library használatával
 
-Az Azure Identity .NET-hez készült ügyféloldali kódtára (előzetes verzió) egy rendszerbiztonsági tag hitelesítésére szolgál. Ha a kód az Azure-ban fut, a rendszerbiztonsági tag felügyelt identitás az Azure-erőforrásokhoz.
+Az Azure Identity .NET-hez készült ügyféloldali kódtára hitelesíti a rendszerbiztonsági tag nevét. Ha a kód az Azure-ban fut, a rendszerbiztonsági tag felügyelt identitás az Azure-erőforrásokhoz.
 
 Ha a kód a fejlesztési környezetben fut, a hitelesítés automatikusan kezelhető, vagy szükség lehet egy böngészőbeli bejelentkezésre, attól függően, hogy melyik eszközt használja. A Microsoft Visual Studio támogatja az egyszeri bejelentkezést (SSO), így az aktív Azure AD-felhasználói fiók automatikusan használatos a hitelesítéshez. További információ az egyszeri bejelentkezésről: [egyszeri bejelentkezés az alkalmazásokba](../../active-directory/manage-apps/what-is-single-sign-on.md).
 
@@ -40,30 +40,30 @@ Az Azure Identity ügyféloldali függvénytárával kapcsolatos további inform
 
 Amikor egy Azure AD rendszerbiztonsági tag megpróbál hozzáférni a blob-adatforráshoz, a rendszerbiztonsági tag engedélyekkel kell rendelkeznie az erőforráshoz. Azt jelzi, hogy a rendszerbiztonsági tag felügyelt identitás-e az Azure-ban vagy egy olyan Azure AD-felhasználói fiók, amely kódot futtat a fejlesztési környezetben, a rendszerbiztonsági tag számára olyan RBAC-szerepkört kell hozzárendelni, amely hozzáférést biztosít az Azure Storage-beli blob- Az engedélyek **RBAC-n** keresztüli hozzárendelésével kapcsolatos információkért tekintse meg az [Azure-blobok és-várólisták hozzáférésének engedélyezése a Azure Active Directory használatával](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)című témakör című szakaszát.
 
-## <a name="install-the-preview-packages"></a>Az előzetes verziójú csomagok telepítése
+## <a name="install-the-packages"></a>A csomagok telepítése
 
-A jelen cikkben szereplő példák az [Azure Storage ügyféloldali kódtár](https://www.nuget.org/packages/Azure.Storage.Blobs)legújabb előzetes verzióját használják a blob Storage-hoz. Az előnézeti csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
+A jelen cikkben szereplő példák az [Azure Storage ügyféloldali kódtár](https://www.nuget.org/packages/Azure.Storage.Blobs)legújabb verzióját használják a blob Storage-hoz. A csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
 
 ```powershell
-Install-Package Azure.Storage.Blobs -IncludePrerelease
+Install-Package Azure.Storage.Blobs
 ```
 
-A cikkben szereplő példák a [.net-hez készült Azure Identity Client Library](https://www.nuget.org/packages/Azure.Identity/) legújabb előzetes verzióját is használják az Azure ad-beli hitelesítő adatokkal való hitelesítéshez. Az előnézeti csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
+A cikkben szereplő példák a [.net-hez készült Azure Identity Client Library](https://www.nuget.org/packages/Azure.Identity/) legújabb verzióját is használják az Azure ad-beli hitelesítő adatokkal való hitelesítéshez. A csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
 
 ```powershell
-Install-Package Azure.Identity -IncludePrerelease
+Install-Package Azure.Identity
 ```
 
 ## <a name="add-using-directives"></a>Hozzáadás irányelvekkel
 
-Adja hozzá a következő `using`-irányelveket a kódjához az Azure Identity és az Azure Storage ügyféloldali kódtárainak előzetes verziójának használatához.
+Adja hozzá az alábbi `using`-irányelveket a kódhoz az Azure Identity és az Azure Storage ügyféloldali kódtárainak használatához.
 
 ```csharp
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Identity;
-using Azure.Storage;
 using Azure.Storage.Sas;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
@@ -76,8 +76,10 @@ Ha meg szeretné kapni a jogkivonat hitelesítő adatait, amelyet a kód haszná
 A következő kódrészlet bemutatja, hogyan kérheti le a hitelesített jogkivonat hitelesítő adatait, és hogyan hozhat létre szolgáltatási ügyfelet a blob Storage-hoz:
 
 ```csharp
+// Construct the blob endpoint from the account name.
 string blobEndpoint = string.Format("https://{0}.blob.core.windows.net", accountName);
 
+// Create a new Blob service client with Azure AD credentials.
 BlobServiceClient blobClient = new BlobServiceClient(new Uri(blobEndpoint),
                                                      new DefaultAzureCredential());
 ```
@@ -96,14 +98,17 @@ A következő módszerek egyikével kérheti le a felhasználói delegálási ku
 A következő kódrészlet lekéri a felhasználói delegálási kulcsot, és kiírja a tulajdonságait:
 
 ```csharp
+// Get a user delegation key for the Blob service that's valid for seven days.
+// You can use the key to generate any number of shared access signatures over the lifetime of the key.
 UserDelegationKey key = await blobClient.GetUserDelegationKeyAsync(DateTimeOffset.UtcNow,
                                                                    DateTimeOffset.UtcNow.AddDays(7));
 
+// Read the key's properties.
 Console.WriteLine("User delegation key properties:");
-Console.WriteLine("Key signed start: {0}", key.SignedStart);
-Console.WriteLine("Key signed expiry: {0}", key.SignedExpiry);
-Console.WriteLine("Key signed object ID: {0}", key.SignedOid);
-Console.WriteLine("Key signed tenant ID: {0}", key.SignedTid);
+Console.WriteLine("Key signed start: {0}", key.SignedStartsOn);
+Console.WriteLine("Key signed expiry: {0}", key.SignedExpiresOn);
+Console.WriteLine("Key signed object ID: {0}", key.SignedObjectId);
+Console.WriteLine("Key signed tenant ID: {0}", key.SignedTenantId);
 Console.WriteLine("Key signed service: {0}", key.SignedService);
 Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 ```
@@ -113,18 +118,23 @@ Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 A következő kódrészlet az új [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) létrehozását mutatja be, és megadja a felhasználói delegálási sas paramétereit. A kódrészlet ezután meghívja a [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) az SAS-jogkivonat karakterláncának beolvasásához. Végül a kód létrehozza a teljes URI-t, beleértve az erőforrás-címeket és az SAS-tokent.
 
 ```csharp
-BlobSasBuilder builder = new BlobSasBuilder()
+// Create a SAS token that's valid for one hour.
+BlobSasBuilder sasBuilder = new BlobSasBuilder()
 {
-    ContainerName = containerName,
+    BlobContainerName = containerName,
     BlobName = blobName,
-    Permissions = "r",
     Resource = "b",
-    StartTime = DateTimeOffset.UtcNow,
-    ExpiryTime = DateTimeOffset.UtcNow.AddMinutes(5)
+    StartsOn = DateTimeOffset.UtcNow,
+    ExpiresOn = DateTimeOffset.UtcNow.AddHours(1)
 };
 
+// Specify read permissions for the SAS.
+sasBuilder.SetPermissions(BlobSasPermissions.Read);
+
+// Use the key to get the SAS token.
 string sasToken = sasBuilder.ToSasQueryParameters(key, accountName).ToString();
 
+// Construct the full URI, including the SAS token.
 UriBuilder fullUri = new UriBuilder()
 {
     Scheme = "https",
@@ -149,29 +159,32 @@ async static Task<Uri> GetUserDelegationSasBlob(string accountName, string conta
                                                             new DefaultAzureCredential());
 
     // Get a user delegation key for the Blob service that's valid for seven days.
-    // Use the key to generate any number of shared access signatures over the lifetime of the key.
-    UserDelegationKey key = await blobClient.GetUserDelegationKeyAsync(DateTimeOffset.UtcNow,
-                                                                       DateTimeOffset.UtcNow.AddDays(7));
+    // You can use the key to generate any number of shared access signatures over the lifetime of the key.
+    UserDelegationKey key = await blobClient.GetUserDelegationKeyAsync(DateTimeOffset.UtcNow, 
+                                                                        DateTimeOffset.UtcNow.AddDays(7));
 
     // Read the key's properties.
     Console.WriteLine("User delegation key properties:");
-    Console.WriteLine("Key signed start: {0}", key.SignedStart);
-    Console.WriteLine("Key signed expiry: {0}", key.SignedExpiry);
-    Console.WriteLine("Key signed object ID: {0}", key.SignedOid);
-    Console.WriteLine("Key signed tenant ID: {0}", key.SignedTid);
+    Console.WriteLine("Key signed start: {0}", key.SignedStartsOn);
+    Console.WriteLine("Key signed expiry: {0}", key.SignedExpiresOn);
+    Console.WriteLine("Key signed object ID: {0}", key.SignedObjectId);
+    Console.WriteLine("Key signed tenant ID: {0}", key.SignedTenantId);
     Console.WriteLine("Key signed service: {0}", key.SignedService);
     Console.WriteLine("Key signed version: {0}", key.SignedVersion);
+    Console.WriteLine();
 
-    // Create a SAS token that's valid a short interval.
+    // Create a SAS token that's valid for one hour.
     BlobSasBuilder sasBuilder = new BlobSasBuilder()
     {
-        ContainerName = containerName,
+        BlobContainerName = containerName,
         BlobName = blobName,
-        Permissions = "r",
         Resource = "b",
-        StartTime = DateTimeOffset.UtcNow,
-        ExpiryTime = DateTimeOffset.UtcNow.AddMinutes(5)
+        StartsOn = DateTimeOffset.UtcNow,
+        ExpiresOn = DateTimeOffset.UtcNow.AddHours(1)
     };
+
+    // Specify read permissions for the SAS.
+    sasBuilder.SetPermissions(BlobSasPermissions.Read);
 
     // Use the key to get the SAS token.
     string sasToken = sasBuilder.ToSasQueryParameters(key, accountName).ToString();
@@ -186,6 +199,7 @@ async static Task<Uri> GetUserDelegationSasBlob(string accountName, string conta
     };
 
     Console.WriteLine("User delegation SAS URI: {0}", fullUri);
+    Console.WriteLine();
     return fullUri.Uri;
 }
 ```
@@ -220,7 +234,7 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
         Console.WriteLine("Read operation succeeded for SAS {0}", sasUri);
         Console.WriteLine();
     }
-    catch (StorageRequestFailedException e)
+    catch (RequestFailedException e)
     {
         // Check for a 403 (Forbidden) error. If the SAS is invalid, 
         // Azure Storage returns this error.

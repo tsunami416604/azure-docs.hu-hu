@@ -1,40 +1,40 @@
 ---
-title: Rövid útmutató – Azure-adatbázis létrehozása MySQL-CLI-paranccsal egy egyszerű Azure - be (előzetes verzió) az mysql-hez
-description: A rövid útmutató hozhat létre az Azure Database for MySQL-kiszolgálóhoz az Azure CLI (parancssori felület) használatával parancsot.
+title: 'Gyors útmutató: Azure Database for MySQL létrehozása az az MySQL up használatával'
+description: Útmutató az Azure Database for MySQL-kiszolgáló létrehozásához az Azure CLI (parancssori felület) paranccsal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 3/18/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: aa0d2a9e990faa8d99355744824f34e26aeb519e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4bb5c62a7df53548ff59a03c6ccc8fb28f1503d3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61231080"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765683"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Gyors útmutató: Egy Azure Database for MySQL használatával egy egyszerű Azure CLI-paranccsal - be (előzetes verzió) az mysql létrehozása
+# <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Gyors útmutató: Azure Database for MySQL létrehozása egyszerű Azure CLI-parancs használatával – az MySQL up (előzetes verzió)
 
 > [!IMPORTANT]
-> A [fel az mysql](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI-paranccsal előzetes verzióban érhető el.
+> Az az [MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI-parancs előzetes verzióban érhető el.
 
-A MySQL-hez készült Azure Database egy felügyelt szolgáltatás, amely lehetővé teszi a magas rendelkezésre állású MySQL-adatbázisok futtatását, kezelését és skálázását a felhőben. Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan használható a [fel az mysql](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) paranccsal hozzon létre egy Azure Database for MySQL-kiszolgálóhoz az Azure CLI használatával. A kiszolgáló létrehozása mellett a `az mysql up` parancs hoz létre egy mintaadatbázist, a gyökér szintű felhasználó az adatbázisban, megnyitja a tűzfalat az Azure-szolgáltatásokhoz és az ügyfélszámítógép tűzfal-szabályokat hoz létre a alapértelmezett. Ez segít a fejlesztési folyamat meggyorsítása.
+A MySQL-hez készült Azure Database egy felügyelt szolgáltatás, amely lehetővé teszi a magas rendelkezésre állású MySQL-adatbázisok futtatását, kezelését és skálázását a felhőben. Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató azt ismerteti, hogyan használható az az [MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) parancs egy Azure Database for MySQL kiszolgáló létrehozásához az Azure CLI használatával. A-kiszolgáló létrehozása mellett a `az mysql up` parancs létrehoz egy minta-adatbázist, egy gyökérszintű felhasználót az adatbázisban, megnyitja a tűzfalat az Azure-szolgáltatásokhoz, és létrehozza az alapértelmezett tűzfalszabályok az ügyfélszámítógépen. Ez segít a fejlesztési folyamat felgyorsításában.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-Ehhez a cikkhez futtat az Azure CLI verziója a 2.0-s vagy újabb helyileg. A telepített verziók megtekintéséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verzióját kell futtatnia helyileg. A telepített verziók megtekintéséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-Jelentkezzen be a fiók használatával kell a [az bejelentkezési](/cli/azure/authenticate-azure-cli?view=interactive-log-in) parancsot. Jegyezze fel a megfelelő előfizetésnév parancskimenetéből az **id** tulajdonságot.
+Az az [login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel a megfelelő előfizetésnév parancskimenetéből az **id** tulajdonságot.
 
 ```azurecli
 az login
 ```
 
-Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Válassza ki a megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account) paranccsal. Helyettesítse be a **előfizetés-azonosító** tulajdonságot a **az bejelentkezési** kimeneti be az előfizetés-azonosító helyőrzője helyére.
+Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Válassza ki a megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account) paranccsal. **Az előfizetés-azonosító tulajdonságot** az előfizetés-azonosító helyőrzőbe írja be az előfizetéshez tartozó **bejelentkezési** kimenetből.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -42,69 +42,69 @@ az account set --subscription <subscription id>
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
 
-A parancsok használatához telepítse a [db felfelé](/cli/azure/ext/db-up) bővítmény. Ha hibát ad vissza, győződjön meg arról, telepítette az Azure CLI legújabb verzióját. Lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli).
+A parancsok használatához telepítse a [db-up](/cli/azure/ext/db-up) bővítményt. Ha a rendszer hibát ad vissza, győződjön meg róla, hogy telepítette az Azure CLI legújabb verzióját. Lásd: az [Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ```azurecli
 az extension add --name db-up
 ```
 
-Hozzon létre egy Azure Database for MySQL-kiszolgáló a következő paranccsal:
+Hozzon létre egy Azure Database for MySQL-kiszolgálót a következő parancs használatával:
 
 ```azurecli
 az mysql up
 ```
 
-A kiszolgáló létrehozása az alábbi alapértelmezett értékekkel (kivéve, ha manuálisan felül):
+A kiszolgáló a következő alapértelmezett értékekkel jön létre (kivéve, ha manuálisan felülbírálja őket):
 
 **Beállítás** | **Alapértelmezett érték** | **Leírás**
 ---|---|---
-server-name | A rendszer által létrehozott | Egy egyedi név, amely azonosítja a MySQL-kiszolgálóhoz készült Azure-adatbázist.
-resource-group | A rendszer által létrehozott | Egy új Azure-erőforráscsoportot.
-sku-name | GP_Gen5_2 | A termékváltozat neve. A {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi rövidített módon. Az alapértelmezett érték egy általános célú Gen5 kiszolgáló 2 virtuális maggal. Tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/mysql/) a rétegek további információt.
+server-name | Rendszer által generált | Egy egyedi név, amely azonosítja a MySQL-kiszolgálóhoz készült Azure-adatbázist.
+resource-group | Rendszer által generált | Egy új Azure-erőforráscsoport.
+sku-name | GP_Gen5_2 | A termékváltozat neve. A {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi rövidített módon. Az alapértelmezett érték egy általános célú Gen5-kiszolgáló 2 virtuális mag. A szintekkel kapcsolatos további információkért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/mysql/) oldalunkat.
 backup-retention | 7 | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap.
 geo-redundant-backup | Letiltva | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz.
 location | westus2 | A kiszolgáló Azure-helye.
 ssl-enforcement | Letiltva | Azt adja meg, hogy engedélyezni kell-e az ssl-t ehhez a kiszolgálóhoz.
 storage-size | 5120 | A kiszolgáló tárkapacitása (megabájtban megadva).
 version | 5.7 | A MySQL legújabb főverziója.
-admin-user | A rendszer által létrehozott | A rendszergazda bejelentkezéshez használt felhasználóneve.
-admin-password | A rendszer által létrehozott | A rendszergazda felhasználó jelszava.
+admin-user | Rendszer által generált | A rendszergazda bejelentkezéshez használt felhasználóneve.
+admin-password | Rendszer által generált | A rendszergazda felhasználó jelszava.
 
 > [!NOTE]
-> További információ a `az mysql up` parancs, és a további paraméterek, tekintse meg a [Azure CLI dokumentációját](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up).
+> További információ a `az mysql up` parancsról és a további paraméterekről: az [Azure CLI dokumentációja](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up).
 
 A kiszolgáló létrehozása után a következő beállításokkal rendelkezik:
 
-- Egy tűzfalszabály "devbox" néven jön létre. Az Azure CLI megpróbálja észlelni a gép IP-címét a `az mysql up` parancs futtatható és engedélyezési listákkal az adott IP-cím.
-- "Az Azure-szolgáltatásokhoz való hozzáférés engedélyezése" be van állítva. Ezzel a beállítással a kiszolgálója tűzfalán, hogy az összes Azure-erőforrás, beleértve az erőforrásokat az előfizetésben nem-kapcsolatok fogadására.
-- A `wait_timeout` paraméter értéke: 8 óránként
-- Egy "sampledb" nevű üres adatbázis létrehozása
-- Nevű, "root", "sampledb" jogosultságokkal rendelkező új felhasználó létrehozása
+- Létrejön egy "devbox" nevű tűzfalszabály. Az Azure CLI megpróbálja felderíteni a gép IP-címét, és az IP-címet a `az mysql up` parancsot futtatja és engedélyezte.
+- "Az Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás be értékre van állítva. Ezzel a beállítással konfigurálható a kiszolgáló tűzfala, hogy fogadja az összes Azure-erőforrás kapcsolatait, beleértve az előfizetésben nem szereplő erőforrásokat is.
+- A `wait_timeout` paraméter értéke 8 óra
+- A rendszer létrehoz egy "sampledb" nevű üres adatbázist.
+- Létrejön egy "root" nevű új felhasználó, amely jogosultsággal rendelkezik a "sampledb" létrehozásához.
 
 > [!NOTE]
-> Azure Database for MySQL-hez a 3306-os porton keresztül kommunikál. Ha egy vállalati hálózaton belül csatlakozik, a hálózati tűzfal előfordulhat, hogy nem engedélyezett a kimenő forgalom a 3306-os porton keresztül. Rendelkezik az IT-részleg, nyissa meg a kiszolgálóhoz való csatlakozáshoz a 3306-os portot.
+> A Azure Database for MySQL a 3306-es porton keresztül kommunikál. Ha vállalati hálózaton belülről csatlakozik, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 3306-as porton keresztül. Az IT-részleg az 3306-as portot nyitja meg a kiszolgálóhoz való csatlakozáshoz.
 
 ## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése
 
-Miután a `az mysql up` parancs végrehajtása után, a kapcsolati karakterláncok olyan népszerű programozási nyelvet küld vissza azt. Ezek a kapcsolati karakterláncok olyan előre konfigurált az újonnan létrehozott Azure Database for MySQL-kiszolgáló adott attribútumait.
+Az `az mysql up` parancs befejezése után a rendszer a népszerű programozási nyelvekhez tartozó kapcsolódási karakterláncok listáját adja vissza Önnek. Ezek a csatlakozási karakterláncok előre konfigurálva vannak az újonnan létrehozott Azure Database for MySQL-kiszolgáló adott attribútumaival.
 
-Használhatja a [az mysql show-connection-string](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-show-connection-string) paranccsal listát készíthet a kapcsolati karakterláncok újra.
+A kapcsolati karakterláncok újbóli listázásához használja az az [MySQL show-kapcsolat-string](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-show-connection-string) parancsot.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ez a rövid útmutató az alábbi parancs használatával létrehozott összes erőforrást törölni. Ez a parancs törli az Azure Database for MySQL-kiszolgáló és az erőforráscsoportot.
+A következő parancs használatával törölje a gyors útmutatóban létrehozott összes erőforrást. Ez a parancs törli a Azure Database for MySQL kiszolgálót és az erőforráscsoportot.
 
 ```azurecli
 az mysql down --delete-group
 ```
 
-Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja [le az mysql](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-down) parancsot.
+Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja az [az MySQL Down](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-down) parancsot.
 
 ```azurecli
 az mysql down
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [MySQL-adatbázis tervezése az Azure CLI-vel](./tutorial-design-database-using-cli.md)

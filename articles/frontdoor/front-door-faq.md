@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: c8f95a1de85fd2eb00b0525fca8e62ade87dd57f
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: fa9de74c89ba3f0351169f143146dc21b80ee666
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184642"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790527"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Gyakori kérdések az Azure-előtérben szolgáltatásról
 
@@ -26,7 +26,7 @@ Ez a cikk az Azure bejárati szolgáltatás funkcióit és funkcióit érintő g
 2. [Azure bejárati ajtó szolgáltatás UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
 3. **Microsoft ügyfélszolgálata:** Új támogatási kérelem létrehozásához a Azure Portal **Súgó** lapján kattintson a **Súgó + támogatás** gombra, majd válassza az **új támogatási kérelem**lehetőséget.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-azure-front-door-service"></a>Mi az az Azure Front Door Service?
 
@@ -180,6 +180,8 @@ Az Azure bejárati ajtó szolgáltatás által támogatott jelenlegi titkosítá
 - TLS_RSA_WITH_AES_128_CBC_SHA256
 - TLS_RSA_WITH_AES_256_CBC_SHA
 - TLS_RSA_WITH_AES_128_CBC_SHA
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
 ### <a name="does-azure-front-door-service-also-support-re-encryption-of-traffic-to-the-backend"></a>Támogatja az Azure bejárati ajtó szolgáltatás a háttérbeli forgalom újratitkosítását is?
 
@@ -213,5 +215,5 @@ Igen, az Azure bejárati ajtó szolgáltatás támogatja a riasztásokat. A rias
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
+- A [Front Door létrehozására](quickstart-create-front-door.md) vonatkozó információk.
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

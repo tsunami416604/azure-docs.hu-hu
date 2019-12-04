@@ -1,53 +1,53 @@
 ---
-title: Csatlakozás a meglévő Azure App Service az Azure Database for MySQL-hez
-description: Utasítások megfelelően csatlakoztatása egy meglévő Azure App Service az Azure Database for MySQL
+title: Kapcsolódás Azure App Servicehoz – Azure Database for MySQL
+description: A meglévő Azure App Service megfelelő összekapcsolásának lépései Azure Database for MySQL
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/21/2019
-ms.openlocfilehash: 3fbffc805afb540499e38f1c0853260968228b22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 63ef9ac55fcfaebfd58ae1ccdb34107d41900be5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002007"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770543"
 ---
-# <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Csatlakozás a meglévő Azure App Service az Azure Database for MySQL-kiszolgáló
-Ez a témakör azt ismerteti, hogyan csatlakozhat az Azure Database for MySQL-kiszolgáló egy meglévő Azure App Service.
+# <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Meglévő Azure App Service összekötése Azure Database for MySQL-kiszolgálóval
+Ez a témakör azt ismerteti, hogyan csatlakoztatható egy meglévő Azure App Service a Azure Database for MySQL-kiszolgálóhoz.
 
-## <a name="before-you-begin"></a>Előkészületek
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Hozzon létre egy Azure Database for MySQL-kiszolgálóhoz. Részletekért tekintse meg a [hogyan hozhat létre az Azure Database for MySQL-kiszolgáló portálról](quickstart-create-mysql-server-database-using-azure-portal.md) vagy [hogyan hozhat létre az Azure Database for MySQL-kiszolgáló CLI-vel](quickstart-create-mysql-server-database-using-azure-cli.md).
+## <a name="before-you-begin"></a>Előzetes teendők
+Jelentkezzen be az [Azure portálra](https://portal.azure.com). Hozzon létre egy Azure Database for MySQL-kiszolgálót. Részletekért lásd: [Azure Database for MySQL kiszolgáló létrehozása a portálról](quickstart-create-mysql-server-database-using-azure-portal.md) , vagy [Azure Database for MySQL kiszolgáló létrehozása a parancssori felület használatával](quickstart-create-mysql-server-database-using-azure-cli.md).
 
-Jelenleg nincsenek két megoldás MySQL-hez készült Azure-adatbázis az Azure App Service elérésének engedélyezéséhez. A két megoldás magában foglalja a kiszolgálószintű tűzfalszabályok beállítása.
+Jelenleg két megoldás áll rendelkezésre a Azure App Service és az Azure Database for MySQL közötti hozzáférés engedélyezéséhez. Mindkét megoldás a kiszolgálói szintű tűzfalszabályok beállítását is magában foglalja.
 
-## <a name="solution-1---allow-azure-services"></a>1 - megoldás az Azure-szolgáltatások engedélyezése
-Azure Database for MySQL tűzfalat használ az adatok védelme érdekében hozzáférés-biztonságot nyújt. Történő csatlakozás egy Azure App Service az Azure Database for MySQL-kiszolgáló, vegye figyelembe, hogy az App Service kimenő IP-címek dinamikusak jellegűek. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás lehetővé teszi az app service, a MySQL-kiszolgálóhoz való csatlakozáshoz.
+## <a name="solution-1---allow-azure-services"></a>1\. megoldás – Azure-szolgáltatások engedélyezése
+A Azure Database for MySQL tűzfal használatával biztosít hozzáférést a biztonsághoz az adatai védelméhez. Ha Azure App Serviceról Azure Database for MySQL kiszolgálóra csatlakozik, vegye figyelembe, hogy a App Service kimenő IP-címeinek dinamikus jellegűek. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás kiválasztásával engedélyezheti az App Service számára a MySQL-kiszolgálóhoz való kapcsolódást.
 
-1. Az MySQL server a beállítások panelen kattintson a fejléc **kapcsolatbiztonság** a kapcsolatbiztonság panel megnyitásához az Azure Database for MySQL-hez.
+1. A MySQL-kiszolgáló panelen, a beállítások fejléc alatt kattintson a **kapcsolatbiztonsági** elemre a Azure Database for MySQL kapcsolatbiztonsági paneljének megnyitásához.
 
-   ![Az Azure portal – kapcsolatbiztonság kattintson](./media/howto-connect-webapp/1-connection-security.png)
+   ![Azure Portal – kattintson a kapcsolatbiztonsági lehetőségre](./media/howto-connect-webapp/1-connection-security.png)
 
-2. Válassza ki **ON** a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése**, majd **mentése**.
-   ![Az Azure portal – engedélyezi az Azure-hozzáférés](./media/howto-connect-webapp/allow-azure.png)
+2. Válassza **a** be **lehetőséget az Azure-szolgáltatásokhoz való hozzáférés engedélyezése**, majd a **Mentés**lehetőségre.
+   ![Azure Portal – Azure-hozzáférés engedélyezése](./media/howto-connect-webapp/allow-azure.png)
 
-## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>2\. megoldás, hozzon létre egy tűzfalszabályt, hogy kifejezetten engedélyezzék a kimenő IP-címek
-Minden a kimenő IP-címet az Azure App Service explicit módon adhat hozzá.
+## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>2\. megoldás – tűzfalszabály létrehozása a kimenő IP-címek explicit engedélyezéséhez
+Explicit módon hozzáadhatja a Azure App Service összes kimenő IP-címeit.
 
-1. App Service-tulajdonságok paneljén megtekintheti a **kimenő IP-cím**.
+1. A App Service Tulajdonságok panelen tekintse meg a **kimenő IP-címet**.
 
-   ![Az Azure portal - nézet kimenő IP-címek](./media/howto-connect-webapp/2_1-outbound-ip-address.png)
+   ![Azure Portal – kimenő IP-címek megtekintése](./media/howto-connect-webapp/2_1-outbound-ip-address.png)
 
-2. A MySQL-kapcsolat biztonsági panelen adja hozzá a kimenő IP-címek egyesével.
+2. A MySQL-kapcsolatok biztonsági paneljén egyenként adja hozzá a kimenő IP-címeket.
 
-   ![Az Azure portal - explicit IP-címek hozzáadása](./media/howto-connect-webapp/2_2-add-explicit-ips.png)
+   ![Azure Portal – explicit IP-címek hozzáadása](./media/howto-connect-webapp/2_2-add-explicit-ips.png)
 
-3. Ne felejtse el **mentése** a tűzfalszabályokat.
+3. Ne felejtse el menteni a tűzfalszabályok **mentését** .
 
-Bár az Azure App Service-ben, hogy állandó IP-címek idővel megpróbálja, nincsenek esetekben, ahol az IP-címek változhat. Például ez akkor fordulhat elő, amikor az alkalmazás újrahasznosítást vagy egy skálázási művelet történik, vagy amikor új számítógépek kerülnek az Azure regionális adatközpontokat növeli a kapacitást. Az IP-címek módosítása, ha az alkalmazás sikerült szoftverkarbantartás abban az esetben, ha már nem képes csatlakozni a MySQL-kiszolgálóhoz. A fenti megoldások kiválasztásakor vegye figyelembe a figyelmet.
+Bár az Azure app Service idővel megkísérli az IP-címek állandó megőrzését, az IP-címek változhatnak. Ez például akkor fordulhat elő, ha az alkalmazás újrahasznosítja vagy egy méretezési műveletet végez, vagy ha új számítógépeket adnak hozzá az Azure regionális adatközpontokban a kapacitás növeléséhez. Ha az IP-címek változnak, az alkalmazás leállást tapasztalhat abban az esetben, ha már nem tud csatlakozni a MySQL-kiszolgálóhoz. Vegye figyelembe, hogy az előző megoldások egyikének kiválasztásakor ne feledje.
 
-## <a name="ssl-configuration"></a>SSL-konfigurációja
-Azure Database for MySQL-hez SSL alapértelmezés szerint engedélyezve van. Ha az alkalmazás nem használ SSL az adatbázishoz való csatlakozáshoz, majd szeretné tiltani az SSL a MySQL-kiszolgálón. További részletek az SSL konfigurálása: [SSL használatával az Azure Database for MySQL](howto-configure-ssl.md).
+## <a name="ssl-configuration"></a>SSL-konfiguráció
+A Azure Database for MySQL alapértelmezés szerint engedélyezve van az SSL-ben. Ha az alkalmazás nem használ SSL-t az adatbázishoz való kapcsolódáshoz, le kell tiltania az SSL-t a MySQL-kiszolgálón. Az SSL konfigurálásával kapcsolatos további információkért lásd: [az SSL használata a Azure Database for MySQL használatával](howto-configure-ssl.md).
 
 ### <a name="django-pymysql"></a>Django (PyMySQL)
 ```python
@@ -66,5 +66,5 @@ DATABASES = {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
-Kapcsolati karakterláncokkel kapcsolatos további információkért tekintse meg [kapcsolati karakterláncok](howto-connection-string.md).
+## <a name="next-steps"></a>Következő lépések
+A kapcsolódási karakterláncokkal kapcsolatos további információkért tekintse meg a [kapcsolódási karakterláncokat](howto-connection-string.md).

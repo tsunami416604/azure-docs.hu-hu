@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 4aa9e93831b902ff9f0a0659c650cd2ca123b1a3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d9967b6f1177281759dd66122ffd0183bb2b813d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74124006"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775833"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer hibaelhárítási útmutató
 
@@ -89,13 +89,13 @@ Ha nem biztos abban, hogy honnan származik a tanúsítvány, kövesse az alább
 
 Ha a fenti lépések követésével nem talál önaláírt tanúsítványokat, lépjen kapcsolatba velünk a visszajelzési eszköz használatával. Storage Explorer a parancssorból is megnyithatja a `--ignore-certificate-errors` jelző használatával. Ezzel a jelzővel megnyitva Storage Explorer figyelmen kívül hagyja a tanúsítvány hibáit.
 
-## <a name="sign-in-issues"></a>Bejelentkezési problémák
+## <a name="sign-in-issues"></a>Bejelentkezéssel kapcsolatos problémák
 
 ### <a name="blank-sign-in-dialog-box"></a>Üres bejelentkezési párbeszédpanel
 
 Az üres bejelentkezési párbeszédpanelek leggyakrabban akkor fordulnak elő, ha a Active Directory összevonási szolgáltatások (AD FS) (AD FS) az elektron által nem támogatott átirányítás elvégzésére kéri Storage Explorer. A probléma megkerüléséhez próbálja meg a bejelentkezéshez használni az eszköz kódjának folyamatát. Ehhez kövesse az alábbi lépéseket:
 
-1. A menüben válassza az **előnézet** > az **eszköz kódjának használata bejelentkezés**lehetőséget.
+1. A bal oldali függőleges eszköztáron nyissa meg a **Beállítások menüpontot**. A beállítások panelen lépjen az **alkalmazás** > **Bejelentkezés elemre**. Engedélyezze **az eszköz kódjának áramlását a bejelentkezést**.
 2. Nyissa meg a **Csatlakoztatás** párbeszédpanelt (vagy a bal oldali függőleges sávban a dugó ikonra kattintva vagy a fiók **hozzáadása** a fiók paneljén).
 3. Válassza ki azt a környezetet, amelyre be szeretné jelentkezni.
 4. Válassza **a bejelentkezés**lehetőséget.
@@ -366,7 +366,7 @@ Ha a Azure Portal **Megnyitás a Explorerben** gomb nem működik, győződjön 
 * Google Chrome
 * Microsoft Internet Explorer
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha egyik megoldás sem működik, [Nyisson meg egy problémát a githubon](https://github.com/Microsoft/AzureStorageExplorer/issues). Ezt úgy is megteheti, hogy kijelöli a **jelentéssel kapcsolatos problémát a GitHub** gombra a bal alsó sarokban.
 

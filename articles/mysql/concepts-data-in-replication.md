@@ -1,17 +1,17 @@
 ---
-title: Az adatreplikálás Azure Database for MySQLba
+title: Adatreplikálás – Azure Database for MySQL
 description: További információ a külső kiszolgálóról a Azure Database for MySQL szolgáltatásba való szinkronizáláshoz szükséges adatreplikálás használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.openlocfilehash: b501a1f1ea54aff5617932dc5085d6d19f86976c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 58882f7569e26ebcba237158db2eb23e76bcd015
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970352"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765086"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Az adatreplikálás Azure Database for MySQLba
 
@@ -33,7 +33,7 @@ A főkiszolgálón található [*MySQL rendszeradatbázis*](https://dev.mysql.co
 ### <a name="requirements"></a>Követelmények
 - A főkiszolgáló verziójának legalább a MySQL 5,6-es verziójának kell lennie. 
 - A fő-és a replika-kiszolgáló verziószámának azonosnak kell lennie. Például mindkettőnek a MySQL 5,6-es vagy újabb verziójúnak kell lennie a MySQL 5,7-es verziójának.
-- Minden táblának elsődleges kulccsal kell rendelkeznie.
+- Minden táblának rendelkeznie kell egy elsődleges kulccsal.
 - A főkiszolgálónak a MySQL InnoDB motort kell használnia.
 - A felhasználónak rendelkeznie kell engedéllyel a bináris naplózás konfigurálásához és új felhasználók létrehozásához a főkiszolgálón.
 - Ha a főkiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány szerepel-e a `mysql.az_replication_change_master` tárolt eljárásban. Tekintse át az alábbi [példákat](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) és a `master_ssl_ca` paramétert.
@@ -45,7 +45,7 @@ A főkiszolgálón található [*MySQL rendszeradatbázis*](https://dev.mysql.co
 - Az adatreplikálás csak általános célú és a memória optimalizált díjszabási szintjein támogatott.
 - A globális tranzakciós azonosítók (GTID-EK) nem támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan [állíthatja be az adatreplikációt](howto-data-in-replication.md)
 - Tudnivalók [Az Azure-beli replikálásról olvasási replikákkal](concepts-read-replicas.md)
 - Az [adatáttelepítés minimális állásidővel való áttelepítésének ismertetése a DMS használatával](howto-migrate-online.md)

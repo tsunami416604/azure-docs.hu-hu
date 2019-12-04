@@ -7,12 +7,12 @@ ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: b92b4233b6ecd8743f98f7f0dd13e07ad4c76c81
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: aa54b9ce23ffab266ed6403e3525ae1290d99cec
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484250"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775721"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikai riasztások működésének ismertetése Azure Monitor
 
@@ -133,7 +133,7 @@ A figyelés hatókörét egyetlen metrikai riasztással adhatja meg a háromfél
 - az előfizetésben lévő egy vagy több erőforráscsoport összes virtuális gépe (egy Azure-régióban)
 - minden virtuális gép (egy Azure-régióban) egy előfizetésben
 
-Több erőforrást figyelő metrikai riasztási szabályok létrehozása olyan, mint [bármely más metrikai riasztás](alerts-metric.md) , amely egyetlen erőforrás figyelésére szolgál. Csak a különbség, hogy az összes figyelni kívánt erőforrást kijelöli. Ezeket a szabályokat [Azure Resource Manager sablonokon](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources)keresztül is létrehozhatja. Minden egyes virtuális géphez külön értesítést fog kapni.
+Több erőforrást figyelő metrikai riasztási szabályok létrehozása olyan, mint [bármely más metrikai riasztás](alerts-metric.md) , amely egyetlen erőforrás figyelésére szolgál. Csak a különbség, hogy az összes figyelni kívánt erőforrást kijelöli. Ezeket a szabályokat [Azure Resource Manager sablonokon](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)keresztül is létrehozhatja. Minden egyes virtuális géphez külön értesítést fog kapni.
 
 ## <a name="typical-latency"></a>Jellemző késés
 

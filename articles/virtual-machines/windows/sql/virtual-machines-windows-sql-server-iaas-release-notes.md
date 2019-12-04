@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: 2f89b57257088b0b647fd5f0159a58c2ac03bda7
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c122baa21c5d94b57f29cb0530f0a2655faa87d0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897262"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790372"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server dokumentációjának változásai Virtual Machines
 
 Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépített lemezképével végezheti el. Ez a cikk az új funkciókkal és fejlesztésekkel kapcsolatos dokumentációs módosításokat összegzi az [Azure Virtual Machines SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)legújabb kiadásaiban. 
 
 
-## <a name="october-2019"></a>Október 2019
+## <a name="october-2019"></a>2019. október
 
 | Változások | Részletek |
 | --- | --- |
@@ -56,7 +56,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 | --- | --- |
 | **Új SQL-IaaS telepítési módjai** | A SQL Server szolgáltatás újraindításának elkerülése érdekében mostantól a SQL Server IaaS-bővítményt [egyszerűsített módban](virtual-machines-windows-sql-server-agent-extension.md) is telepítheti.  |
 | **SQL Server kiadás módosítása** | Most már módosíthatja a SQL Server VM [kiadás tulajdonságát](virtual-machines-windows-sql-change-edition.md) . |
-| **Az SQL virtuális gép erőforrás-szolgáltatójának módosításai** | A [SQL Server VM az SQL VM erőforrás-szolgáltatóban regisztrálhatja](virtual-machines-windows-sql-register-with-resource-provider.md) az új SQL IaaS módok használatával. Ez a funkció [Windows 2008 rendszerképeket](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)tartalmaz.|
+| **Az SQL virtuális gép erőforrás-szolgáltatójának módosításai** | A [SQL Server VM az SQL VM erőforrás-szolgáltatóban regisztrálhatja](virtual-machines-windows-sql-register-with-resource-provider.md) az új SQL IaaS módok használatával. Ez a funkció [Windows Server 2008](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) rendszerképeket tartalmaz.|
 | **Saját licencű lemezképek a Azure Hybrid Benefit használatával** | Az Azure Marketplace-ről üzembe helyezett saját licencű lemezképek mostantól az utólagos elszámolású [licencre](virtual-machines-windows-sql-ahb.md#remarks)válthatnak.| 
 | &nbsp; | &nbsp; |
 

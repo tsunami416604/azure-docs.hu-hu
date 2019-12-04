@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f05b9ae490ea2b9d8e7b89ce02c7c1eb818bb0a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679947"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769575"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Adatfolyam-tevékenység Azure Data Factory
 
@@ -49,7 +49,7 @@ Az adatfolyam tevékenységgel átalakíthatja és áthelyezheti az adatait a le
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
-Tulajdonság | Leírás | Megengedett értékek | Kötelező
+Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
 adatfolyam | A végrehajtandó adatfolyamra mutató hivatkozás | DataFlowReference | Igen
 integrationRuntime | Az a számítási környezet, amelyen az adatfolyam fut | IntegrationRuntimeReference | Igen
@@ -99,7 +99,44 @@ A hibakeresési folyamat az aktív hibakeresési fürtön fut, nem az adatáraml
 
 Az adatfolyam-tevékenység speciális figyelési felülettel rendelkezik, ahol megtekintheti a particionálást, a szakasz időpontját és az adatvonal-információkat. Nyissa meg a figyelés panelt a **műveletek**területen található szemüvegek ikon használatával. További információ: [az adatfolyamatok figyelése](concepts-data-flow-monitoring.md).
 
-## <a name="next-steps"></a>További lépések
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Adatfolyam-tevékenységek eredményeinek használata egy későbbi tevékenységben
+
+Az adatfolyam tevékenység az egyes fogadók számára írt sorok számát és az egyes forrásokból beolvasott sorokra vonatkozó mérőszámokat jeleníti meg. Ezek az eredmények a tevékenység futtatási eredményének `output` szakaszában lesznek visszaadva. A visszaadott metrikák az alábbi JSON formátumban jelennek meg.
+
+``` json
+{
+    "runStatus": {
+        "metrics": {
+            "<your sink name1>": {
+                "rowsWritten": <number of rows written>,
+                "sinkProcessingTime": <sink processing time in ms>,
+                "sources": {
+                    "<your source name1>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    "<your source name2>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    ...
+                }
+            },
+            "<your sink name2>": {
+                ...
+            },
+            ...
+        }
+    }
+}
+```
+
+Ha például a "sink1" nevű fogadóba írt sorok számát szeretné lekérni egy "dataflowActivity" nevű tevékenységben, használja a `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`.
+
+Ha le szeretné kérni a fogadóban használt "source1" nevű forrásból beolvasott sorok számát, használja a `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`.
+
+> [!NOTE]
+> Ha a fogadó nulla sorból áll, akkor nem jelenik meg a mérőszámokban. A létezés ellenőrizhető a `contains` függvény használatával. `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` például megvizsgálhatja, hogy a sorok sink1-e.
+
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: Data Factory által támogatott vezérlési flow-tevékenységek: 
 

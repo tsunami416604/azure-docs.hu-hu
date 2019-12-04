@@ -1,17 +1,17 @@
 ---
-title: A Azure Database for MariaDB kapcsolódási problémáinak elhárítása
+title: A kapcsolatok problémáinak elhárítása – Azure Database for MariaDB
 description: Ismerje meg, hogy miként lehet elhárítani a Azure Database for MariaDB kapcsolódási problémáit, beleértve az újrapróbálkozásokat igénylő átmeneti hibákat, a tűzfal problémáit és az kimaradásokat.
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: troubleshooting
-ms.date: 11/09/2018
-ms.openlocfilehash: a8354cdc364f221a086f4d2f4ec7da95c55baf6e
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 613de96ee58d37e6270266852e513e53857a441a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973522"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765732"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>A Azure Database for MariaDB kapcsolódási problémáinak elhárítása
 
@@ -39,7 +39,7 @@ A Azure Database for MariaDBhoz való kapcsolódási problémák általában a k
 1. Győződjön meg arról, hogy a [Microsoft Azure szolgáltatás irányítópultján](https://azure.microsoft.com/status) az alkalmazás által jelentett hibák ideje alatt bekövetkezett ismert kimaradások szerepelnek.
 2. A felhőalapú szolgáltatásokhoz, például Azure Database for MariaDBokhoz csatlakozó alkalmazásoknak átmeneti hibákat kell elvárniuk, és az újrapróbálkozási logikát kell végrehajtaniuk, hogy ezeket a hibákat az alkalmazás hibáiként felhasználja a felhasználók számára. Az átmeneti hibák kezelésével kapcsolatos ajánlott eljárásokért és tervezési útmutatóért tekintse át [Azure Database for MariaDB átmeneti csatlakozási hibák kezelését](concepts-connectivity.md) .
 3. Mivel a kiszolgáló megközelíti az erőforrás-korlátait, úgy tűnik, hogy a hibák átmeneti kapcsolódási problémát jelentenek. Tekintse [meg a Azure Database for MariaDB korlátozásait](concepts-limits.md).
-4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy ha az alkalmazás az időtartamot meghaladja a 60 másodpercnél, vagy ha egy adott nap több előfordulását látja a hibával, az Azure-támogatási kérést az Azure- **támogatás beszerzése** lehetőség választásával kérheti le. [ Támogatási](https://azure.microsoft.com/support/options) webhely.
+4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy ha az alkalmazás az időtartamot meghaladja a 60 másodpercnél, vagy ha egy adott nap több előfordulását látja a hibával, az Azure-támogatási kérést az [Azure](https://azure.microsoft.com/support/options) támogatási webhelyén, a **támogatás beszerzése** lehetőség választásával kérheti le.
 
 ## <a name="troubleshoot-persistent-errors"></a>Állandó hibák elhárítása
 

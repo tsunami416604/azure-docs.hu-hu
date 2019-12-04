@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL kiszolgáló naplófájljai
+title: Lassú lekérdezési naplók – Azure Database for MySQL
 description: A Azure Database for MySQLban elérhető lassú lekérdezési naplókat, valamint a különböző naplózási szintek engedélyezéséhez elérhető paramétereket ismerteti.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 90f3e80c92cd4409a77d4661462ae027c535eaf7
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: cd0d09e4d46747b7f3f8e6fb714dd711beef9484
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434283"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770839"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Lassú lekérdezési naplók a Azure Database for MySQL
 Azure Database for MySQL a lassú lekérdezési napló elérhető a felhasználók számára. A tranzakciónaplóhoz való hozzáférés nem támogatott. A lassú lekérdezési napló használatával azonosíthatók a hibaelhárítási teljesítménybeli szűk keresztmetszetek.
@@ -21,9 +21,9 @@ További információ a MySQL lassú lekérdezési naplóról: a MySQL-hivatkoz�
 ## <a name="access-slow-query-logs"></a>Lassú lekérdezési naplók elérése
 A Azure Portal és az Azure CLI használatával Azure Database for MySQL lassú lekérdezési naplókat listázhat és tölthet le.
 
-Az Azure Portalon válassza ki az Azure Database for MySQL-kiszolgálóhoz. A **figyelés** fejléc alatt válassza ki a **kiszolgálói naplók** lapot.
+A Azure Portal válassza ki a Azure Database for MySQL kiszolgálót. A **figyelés** fejléc alatt válassza ki a **kiszolgálói naplók** lapot.
 
-Az Azure CLI-vel kapcsolatos további információkért lásd: [kiszolgálók naplófájljainak konfigurálása és elérése az Azure CLI használatával](howto-configure-server-logs-in-cli.md).
+Az Azure CLI-vel kapcsolatos további információkért lásd: [lassú lekérdezési naplók konfigurálása és elérése az Azure CLI használatával](howto-configure-server-logs-in-cli.md).
 
 ## <a name="log-retention"></a>Napló megőrzése
 A naplók akár hét napig is elérhetők a létrehozásuk után. Ha a rendelkezésre álló naplók teljes mérete meghaladja a 7 GB-ot, a rendszer törli a legrégebbi fájlokat, amíg a szabad terület elérhetővé válik. 
@@ -81,5 +81,5 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 | `thread_id_s` | Szál azonosítója |
 | `\_ResourceId` | Erőforrás URI-ja |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [A kiszolgálói naplók konfigurálása és elérése az Azure CLI-](howto-configure-server-logs-in-cli.md)vel.

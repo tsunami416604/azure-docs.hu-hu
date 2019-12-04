@@ -1,34 +1,32 @@
 ---
-title: A B2B-üzeneteken alapuló Azure Logic Apps - sémák nyomon követése X12 |} A Microsoft Docs
-description: Hozzon létre X12, hogy az integrációs fiókok B2B-üzenetek monitorozása az Azure Logic Apps Enterprise Integration Pack-sémák nyomon követése
+title: VÁLLALATKÖZI üzenetek X12 követési sémái
+description: X12-követési sémák létrehozása, amelyek az Azure Logic Apps integrációs fiókjaiban található B2B-üzeneteket figyelik Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.date: 01/27/2017
-ms.openlocfilehash: 1db324006e1e6332b5fdd8afd28ebed8a32ac707
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f2356600f5b6a637da731c650b26d968092e2f6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845766"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791714"
 ---
-# <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Sémák nyomon követési X12 létrehozása az Azure Logic Apps integrációs fiókjainak üzenetek
+# <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Sémák létrehozása a X12-üzenetek nyomon követéséhez Azure Logic Apps integrációs fiókjaiban
 
-Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tranzakciókhoz üzenettulajdonságok használhatja ezeket az integrációs fiókjában sémák nyomon követése X12:
+Ha segítségre van szüksége a vállalatok közötti (B2B) tranzakciók sikerességének, hibáinak és üzenetének figyeléséhez, a következő X12-követési sémákat használhatja az integrációs fiókjában:
 
-* X12 tranzakciókészlet követési séma
-* X12 tranzakciókészlet nyugtázása követési séma
-* X12 adatcsere követési séma
-* X12 adatcsere nyugtázása követési séma
-* X12 funkcionális csoport követési séma
-* X12 funkcionális csoport nyugtázása követési séma
+* X12-tranzakció készletének követési sémája
+* X12 tranzakciós készlet nyugtázási követési sémája
+* X12-csere követési sémája
+* X12 Interchange visszaigazolás-követési séma
+* X12 funkcionális csoport követési sémája
+* X12 funkcionális csoport nyugtázási követési sémája
 
-## <a name="x12-transaction-set-tracking-schema"></a>X12 tranzakciókészlet követési séma
+## <a name="x12-transaction-set-tracking-schema"></a>X12-tranzakció készletének követési sémája
 
 ```json
 {
@@ -57,29 +55,29 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 }
 ```
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Type (Típus) | Leírás |
 | --- | --- | --- |
-| senderPartnerName | String | X12 üzenetet küldő partner neve. (Választható lehetőség) |
-| receiverPartnerName | String | X12 üzenetet fogadó partner nevének. (Választható lehetőség) |
-| senderQualifier | String | Partner minősítő küldése. (Kötelező) |
-| senderIdentifier | String | Küldeni a partner azonosítója. (Kötelező) |
-| receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
-| receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
-| agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
-| interchangeControlNumber | String | Adatcsere ellenőrzőszáma. (Választható lehetőség) |
-| functionalGroupControlNumber | String | Funkcionális ellenőrző szám. (Választható lehetőség) |
-| transactionSetControlNumber | String | A tranzakciókészlet ellenőrzőszáma. (Választható lehetőség) |
-| CorrelationMessageId | String | Korrelációs állapotüzenet-azonosító. {Agreementname tulajdonság} kombinációját {*GroupControlNumber*} {TransactionSetControlNumber}. (Választható lehetőség) |
-| messageType | String | Tranzakció állítsa be, vagy a dokumentum típusa. (Választható lehetőség) |
-| isMessageFailed | Boolean | -E a X12 üzenetet nem sikerült. (Kötelező) |
-| isTechnicalAcknowledgmentExpected | Boolean | A technikai nyugtázása a X12 beállított e szerződés. (Kötelező) |
-| isFunctionalAcknowledgmentExpected | Boolean | A működési nyugtázása a X12 beállított e szerződés. (Kötelező) |
-| needAk2LoopForValidMessages | Boolean | E a: AK2 hurok kötelező megadni egy érvényes üzenetet. (Kötelező) |
-| segmentsCount | Integer | A X12 a szegmensek száma tranzakciókészlet. (Választható lehetőség) |
+| senderPartnerName | Sztring | A X12-üzenet küldője partnerének neve. Választható |
+| receiverPartnerName | Sztring | X12-üzenet fogadójának partnere neve. Választható |
+| senderQualifier | Sztring | Partner minősítő küldése. Kötelező |
+| senderIdentifier | Sztring | Partner azonosítójának küldése Kötelező |
+| receiverQualifier | Sztring | Fogadási partner minősítője. Kötelező |
+| receiverIdentifier | Sztring | Fogadási partner azonosítója. Kötelező |
+| agreementName | Sztring | Azon X12-szerződés neve, amelybe az üzenetek fel lesznek oldva. Választható |
+| irány | Felsorolás | Az üzenet folyamatának, fogadásának vagy küldésének iránya. Kötelező |
+| interchangeControlNumber | Sztring | Az adatcsere-vezérlési szám. Választható |
+| functionalGroupControlNumber | Sztring | Funkcionális vezérlési szám. Választható |
+| transactionSetControlNumber | Sztring | Tranzakciónapló-vezérlő száma Választható |
+| CorrelationMessageId | Sztring | Korrelációs üzenet azonosítója. {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber} kombinációja. Választható |
+| messageType | Sztring | Készlettranzakció vagy bizonylattípus. Választható |
+| isMessageFailed | Logikai | Azt jelzi, hogy a X12 üzenet sikertelen-e. Kötelező |
+| isTechnicalAcknowledgmentExpected | Logikai | Azt határozza meg, hogy a technikai nyugtázás konfigurálva van-e a X12-szerződésben. Kötelező |
+| isFunctionalAcknowledgmentExpected | Logikai | Azt határozza meg, hogy a funkcionális nyugtázás konfigurálva van-e a X12-szerződésben. Kötelező |
+| needAk2LoopForValidMessages | Logikai | Azt jelzi, hogy az AK2 hurok szükséges-e egy érvényes üzenethez. Kötelező |
+| segmentsCount | Egész szám | A X12-tranzakció készletében lévő szegmensek száma. Választható |
 ||||
 
-## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>X12 tranzakciókészlet nyugtázása követési séma
+## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>X12 tranzakciós készlet nyugtázási követési sémája
 
 ```json
 {
@@ -113,35 +111,35 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 }
 ```
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Type (Típus) | Leírás |
 | --- | --- | --- |
-| senderPartnerName | String | X12 üzenetet küldő partner neve. (Választható lehetőség) |
-| receiverPartnerName | String | X12 üzenetet fogadó partner nevének. (Választható lehetőség) |
-| senderQualifier | String | Partner minősítő küldése. (Kötelező) |
-| senderIdentifier | String | Küldeni a partner azonosítója. (Kötelező) |
-| receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
-| receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
-| agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
-| interchangeControlNumber | String | Adatcsere ellenőrzőszáma, a funkcionális nyugtázással leállt. Érték tölti fel a küldési oldalon, ahol érkezik, a funkcionális nyugtázási küldött üzenetek csak a partnernek. (Választható lehetőség) |
-| functionalGroupControlNumber | String | Funkcionális csoport-ellenőrzőszám az működési átvételi. Érték tölti fel a küldési oldalon, ahol érkezik, a funkcionális nyugtázási küldött üzenetek csak a partnernek. (Választható lehetőség) |
-| isaSegment | String | Az ISA-szegmens az üzenet. Érték tölti fel a küldési oldalon, ahol érkezik, a funkcionális nyugtázási küldött üzenetek csak a partnernek. (Választható lehetőség) |
-| gsSegment | String | A GS-szegmens az üzenet. Érték tölti fel a küldési oldalon, ahol érkezik, a funkcionális nyugtázási küldött üzenetek csak a partnernek. (Választható lehetőség) |
-| respondingfunctionalGroupControlNumber | String | Adatcsere ellenőrzőszáma válaszol. (Választható lehetőség) |
-| respondingFunctionalGroupId | String | Funkcionális csoport azonosítója, amely AK101 a visszaigazolás válaszol. (Választható lehetőség) |
-| respondingtransactionSetControlNumber | String | Tranzakciókészlet ellenőrzőszáma válaszol-e. (Választható lehetőség) |
-| respondingTransactionSetId | String | Válaszol tranzakciókészlet-Azonosítót, amelynek a visszaigazolás AK201 rendeli. (Választható lehetőség) |
-| statusCode | Boolean | A tranzakciókészlet a nyugta állapotkódjának. (Kötelező) |
-| segmentsCount | Enum | A nyugta állapotkódjának. Engedélyezett értékek a következők **elfogadva**, **elutasítva**, és **AcceptedWithErrors**. (Kötelező) |
-| processingStatus | Enum | A nyugtázási feldolgozási állapotát. Engedélyezett értékek a következők **fogadott**, **Generated**, és **elküldött**. (Kötelező) |
-| CorrelationMessageId | String | Korrelációs állapotüzenet-azonosító. {Agreementname tulajdonság} kombinációját {*GroupControlNumber*} {TransactionSetControlNumber}. (Választható lehetőség) |
-| isMessageFailed | Boolean | -E a X12 üzenetet nem sikerült. (Kötelező) |
-| ak2Segment | String | Egy tranzakció, állítsa be a kapott funkcionális csoport nyugtázása. (Választható lehetőség) |
-| ak3Segment | String | Az adatok szegmens hibát jelez. (Választható lehetőség) |
-| ak5Segment | String | Jelentés-e a szegmensben: AK2 azonosított tranzakciókészlet van elfogad vagy elutasít, és hogy miért. (Választható lehetőség) |
+| senderPartnerName | Sztring | A X12-üzenet küldője partnerének neve. Választható |
+| receiverPartnerName | Sztring | X12-üzenet fogadójának partnere neve. Választható |
+| senderQualifier | Sztring | Partner minősítő küldése. Kötelező |
+| senderIdentifier | Sztring | Partner azonosítójának küldése Kötelező |
+| receiverQualifier | Sztring | Fogadási partner minősítője. Kötelező |
+| receiverIdentifier | Sztring | Fogadási partner azonosítója. Kötelező |
+| agreementName | Sztring | Azon X12-szerződés neve, amelybe az üzenetek fel lesznek oldva. Választható |
+| irány | Felsorolás | Az üzenet folyamatának, fogadásának vagy küldésének iránya. Kötelező |
+| interchangeControlNumber | Sztring | A funkcionális visszaigazolás átirányítási számának száma. Az érték csak a Send (küldés) oldalnál töltődik fel, ahol a partnernek küldött üzenetek esetében a funkcionális visszaigazolás érkezett. Választható |
+| functionalGroupControlNumber | Sztring | Funkcionális csoport vezérlési számának ellenőrzése. Az érték csak a Send (küldés) oldalnál töltődik fel, ahol a partnernek küldött üzenetek esetében a funkcionális visszaigazolás érkezett. Választható |
+| isaSegment | Sztring | Az üzenet ISA-szegmense. Az érték csak a Send (küldés) oldalnál töltődik fel, ahol a partnernek küldött üzenetek esetében a funkcionális visszaigazolás érkezett. Választható |
+| gsSegment | Sztring | Az üzenet GS-szegmense. Az érték csak a Send (küldés) oldalnál töltődik fel, ahol a partnernek küldött üzenetek esetében a funkcionális visszaigazolás érkezett. Választható |
+| respondingfunctionalGroupControlNumber | Sztring | Az adatcsere-vezérlési számra válaszol. Választható |
+| respondingFunctionalGroupId | Sztring | Funkcionális csoport AZONOSÍTÓjának válaszolása, amely a nyugtán lévő AK101 képezi le. Választható |
+| respondingtransactionSetControlNumber | Sztring | A tranzakció-set vezérlő számának válaszolása. Választható |
+| respondingTransactionSetId | Sztring | A tranzakció-készlet AZONOSÍTÓjának válaszolása, amely a nyugtán lévő AK201 képezi le. Választható |
+| StatusCode | Logikai | A tranzakció beállított nyugtázási állapotkódot. Kötelező |
+| segmentsCount | Felsorolás | Nyugtázási állapotkód. Az engedélyezett értékek **elfogadása**, **elutasítása**és **AcceptedWithErrors**. Kötelező |
+| processingStatus | Felsorolás | A visszaigazolás feldolgozási állapota. Az engedélyezett értékek **fogadása**, **generálása**és **elküldése**. Kötelező |
+| CorrelationMessageId | Sztring | Korrelációs üzenet azonosítója. {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber} kombinációja. Választható |
+| isMessageFailed | Logikai | Azt jelzi, hogy a X12 üzenet sikertelen-e. Kötelező |
+| ak2Segment | Sztring | A fogadott funkcionális csoporton belüli tranzakcióhoz tartozó nyugtázási érték. Választható |
+| ak3Segment | Sztring | Hibát jelez egy adatszegmensben. Választható |
+| ak5Segment | Sztring | Azt jelenti, hogy a AK2-szegmensben azonosított tranzakciótípusok elfogadva vagy visszautasítva lettek-e, és miért. Választható |
 ||||
 
-## <a name="x12-interchange-tracking-schema"></a>X12 adatcsere követési séma
+## <a name="x12-interchange-tracking-schema"></a>X12-csere követési sémája
 
 ```json
 {
@@ -171,30 +169,30 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 }
 ```
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Type (Típus) | Leírás |
 | --- | --- | --- |
-| senderPartnerName | String | X12 üzenetet küldő partner neve. (Választható lehetőség) |
-| receiverPartnerName | String | X12 üzenetet fogadó partner nevének. (Választható lehetőség) |
-| senderQualifier | String | Partner minősítő küldése. (Kötelező) |
-| senderIdentifier | String | Küldeni a partner azonosítója. (Kötelező) |
-| receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
-| receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
-| agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
-| interchangeControlNumber | String | Adatcsere ellenőrzőszáma. (Választható lehetőség) |
-| isaSegment | String | Az ISA-szegmens üzenet. (Választható lehetőség) |
-| isTechnicalAcknowledgmentExpected | Boolean | A technikai nyugtázása a X12 beállított e szerződés. (Kötelező) |
-| isMessageFailed | Boolean | -E a X12 üzenetet nem sikerült. (Kötelező) |
-| isa09 | String | A dokumentum adatcsere X12 dátum. (Választható lehetőség) |
-| isa10 | String | A dokumentum adatcsere idő X12. (Választható lehetőség) |
-| isa11 | String | X12 adatcsere vezérlési szabványok azonosítója. (Választható lehetőség) |
-| isa12 | String | X12 adatcsere-ellenőrző verziószám. (Választható lehetőség) |
-| isa14 | String | X12 nyugtázási van szükség. (Választható lehetőség) |
-| isa15 | String | A tesztelési és éles mutató. (Választható lehetőség) |
-| isa16 | String | Adatelem-elválasztó. (Választható lehetőség) |
+| senderPartnerName | Sztring | A X12-üzenet küldője partnerének neve. Választható |
+| receiverPartnerName | Sztring | X12-üzenet fogadójának partnere neve. Választható |
+| senderQualifier | Sztring | Partner minősítő küldése. Kötelező |
+| senderIdentifier | Sztring | Partner azonosítójának küldése Kötelező |
+| receiverQualifier | Sztring | Fogadási partner minősítője. Kötelező |
+| receiverIdentifier | Sztring | Fogadási partner azonosítója. Kötelező |
+| agreementName | Sztring | Azon X12-szerződés neve, amelybe az üzenetek fel lesznek oldva. Választható |
+| irány | Felsorolás | Az üzenet folyamatának, fogadásának vagy küldésének iránya. Kötelező |
+| interchangeControlNumber | Sztring | Az adatcsere-vezérlési szám. Választható |
+| isaSegment | Sztring | Üzenet ISA-szegmense. Választható |
+| isTechnicalAcknowledgmentExpected | Logikai | Azt határozza meg, hogy a technikai nyugtázás konfigurálva van-e a X12-szerződésben. Kötelező |
+| isMessageFailed | Logikai | Azt jelzi, hogy a X12 üzenet sikertelen-e. Kötelező |
+| isa09 | Sztring | X12 dokumentum-csere dátuma. Választható |
+| isa10 | Sztring | X12 dokumentum-átváltási idő. Választható |
+| isa11 | Sztring | A X12 Interchange Control szabványainak azonosítója. Választható |
+| isa12 | Sztring | X12-vezérlő verziószáma. Választható |
+| isa14 | Sztring | A rendszer X12 nyugtát kér. Választható |
+| isa15 | Sztring | Tesztelési vagy éles üzemi kijelző. Választható |
+| isa16 | Sztring | Elem elválasztója Választható |
 ||||
 
-## <a name="x12-interchange-acknowledgement-tracking-schema"></a>X12 adatcsere nyugtázása követési séma
+## <a name="x12-interchange-acknowledgement-tracking-schema"></a>X12 Interchange visszaigazolás-követési séma
 
 ```json
 {
@@ -222,28 +220,28 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 }
 ```
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Type (Típus) | Leírás |
 | --- | --- | --- |
-| senderPartnerName | String | X12 üzenetet küldő partner neve. (Választható lehetőség) |
-| receiverPartnerName | String | X12 üzenetet fogadó partner nevének. (Választható lehetőség) |
-| senderQualifier | String | Partner minősítő küldése. (Kötelező) |
-| senderIdentifier | String | Küldeni a partner azonosítója. (Kötelező) |
-| receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
-| receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
-| agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
-| interchangeControlNumber | String | Adatcsere ellenőrzőszáma az műszaki átvételi partnerek érkezett. (Választható lehetőség) |
-| isaSegment | String | Az ISA-szegmens a műszaki nyugtázási partnerek érkezett. (Választható lehetőség) |
-| respondingInterchangeControlNumber |String | Adatcsere ellenőrzőszáma a partnertől kapott a műszaki nyugtázás. (Választható lehetőség) |
-| isMessageFailed | Boolean | -E a X12 üzenetet nem sikerült. (Kötelező) |
-| statusCode | Enum | A nyugta állapotkódjának adatcsere. Engedélyezett értékek a következők **elfogadva**, **elutasítva**, és **AcceptedWithErrors**. (Kötelező) |
-| processingStatus | Enum | Nyugtázási állapot. Engedélyezett értékek a következők **fogadott**, **Generated**, és **elküldött**. (Kötelező) |
-| ta102 | String | Adatcsere dátum. (Választható lehetőség) |
-| ta103 | String | Adatcsere idő. (Választható lehetőség) |
-| ta105 | String | Adatcsere Megjegyzés kódot. (Választható lehetőség) |
+| senderPartnerName | Sztring | A X12-üzenet küldője partnerének neve. Választható |
+| receiverPartnerName | Sztring | X12-üzenet fogadójának partnere neve. Választható |
+| senderQualifier | Sztring | Partner minősítő küldése. Kötelező |
+| senderIdentifier | Sztring | Partner azonosítójának küldése Kötelező |
+| receiverQualifier | Sztring | Fogadási partner minősítője. Kötelező |
+| receiverIdentifier | Sztring | Fogadási partner azonosítója. Kötelező |
+| agreementName | Sztring | Azon X12-szerződés neve, amelybe az üzenetek fel lesznek oldva. Választható |
+| irány | Felsorolás | Az üzenet folyamatának, fogadásának vagy küldésének iránya. Kötelező |
+| interchangeControlNumber | Sztring | A partnerektől kapott technikai nyugtázási adatcsere-vezérlési száma. Választható |
+| isaSegment | Sztring | A partnerektől kapott technikai nyugtázás ISA-szegmense. Választható |
+| respondingInterchangeControlNumber |Sztring | A partnerektől kapott technikai Köszönetnyilvánítás esetében az adatcsere-vezérlési szám. Választható |
+| isMessageFailed | Logikai | Azt jelzi, hogy a X12 üzenet sikertelen-e. Kötelező |
+| StatusCode | Felsorolás | Az adatcsere nyugtázási állapotának kódja. Az engedélyezett értékek **elfogadása**, **elutasítása**és **AcceptedWithErrors**. Kötelező |
+| processingStatus | Felsorolás | Nyugtázási állapot. Az engedélyezett értékek **fogadása**, **generálása**és **elküldése**. Kötelező |
+| TA102 | Sztring | Az adatcsere dátuma. Választható |
+| ta103 | Sztring | Adatcsere ideje. Választható |
+| ta105 | Sztring | Adatcsere-Megjegyzés kódja Választható |
 ||||
 
-## <a name="x12-functional-group-tracking-schema"></a>X12 funkcionális csoport követési séma
+## <a name="x12-functional-group-tracking-schema"></a>X12 funkcionális csoport követési sémája
 
 ```json
 {
@@ -275,32 +273,32 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 }
 ```
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Type (Típus) | Leírás |
 | --- | --- | --- |
-| senderPartnerName | String | X12 üzenetet küldő partner neve. (Választható lehetőség) |
-| receiverPartnerName | String | X12 üzenetet fogadó partner nevének. (Választható lehetőség) |
-| senderQualifier | String | Partner minősítő küldése. (Kötelező) |
-| senderIdentifier | String | Küldeni a partner azonosítója. (Kötelező) |
-| receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
-| receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
-| agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
-| interchangeControlNumber | String | Adatcsere ellenőrzőszáma. (Választható lehetőség) |
-| functionalGroupControlNumber | String | Funkcionális ellenőrző szám. (Választható lehetőség) |
-| gsSegment | String | Üzenet GS szegmens. (Választható lehetőség) |
-| isTechnicalAcknowledgmentExpected | Boolean | A technikai nyugtázása a X12 beállított e szerződés. (Kötelező) |
-| isFunctionalAcknowledgmentExpected | Boolean | A működési nyugtázása a X12 beállított e szerződés. (Kötelező) |
-| isMessageFailed | Boolean | -E a X12 üzenetet nem sikerült. (Kötelező)|
-| gs01 | String | Funkcionális azonosító kód. (Választható lehetőség) |
-| gs02 | String | Alkalmazás küldő kód. (Választható lehetőség) |
-| gs03 | String | Alkalmazás fogadó kódot. (Választható lehetőség) |
-| gs04 | String | Funkcionális csoport dátuma. (Választható lehetőség) |
-| gs05 | String | Funkcionális csoport ideje. (Választható lehetőség) |
-| gs07 | String | Felelős ügynöksége-kód. (Választható lehetőség) |
-| gs08 | String | Verzió és kiadás/iparági kód. (Választható lehetőség) |
+| senderPartnerName | Sztring | A X12-üzenet küldője partnerének neve. Választható |
+| receiverPartnerName | Sztring | X12-üzenet fogadójának partnere neve. Választható |
+| senderQualifier | Sztring | Partner minősítő küldése. Kötelező |
+| senderIdentifier | Sztring | Partner azonosítójának küldése Kötelező |
+| receiverQualifier | Sztring | Fogadási partner minősítője. Kötelező |
+| receiverIdentifier | Sztring | Fogadási partner azonosítója. Kötelező |
+| agreementName | Sztring | Azon X12-szerződés neve, amelybe az üzenetek fel lesznek oldva. Választható |
+| irány | Felsorolás | Az üzenet folyamatának, fogadásának vagy küldésének iránya. Kötelező |
+| interchangeControlNumber | Sztring | Az adatcsere-vezérlési szám. Választható |
+| functionalGroupControlNumber | Sztring | Funkcionális vezérlési szám. Választható |
+| gsSegment | Sztring | Message GS-szegmens Választható |
+| isTechnicalAcknowledgmentExpected | Logikai | Azt határozza meg, hogy a technikai nyugtázás konfigurálva van-e a X12-szerződésben. Kötelező |
+| isFunctionalAcknowledgmentExpected | Logikai | Azt határozza meg, hogy a funkcionális nyugtázás konfigurálva van-e a X12-szerződésben. Kötelező |
+| isMessageFailed | Logikai | Azt jelzi, hogy a X12 üzenet sikertelen-e. Kötelező|
+| gs01 | Sztring | Funkcionális azonosító kódja. Választható |
+| gs02 | Sztring | Az alkalmazás feladójának kódja. Választható |
+| gs03 | Sztring | Az alkalmazás fogadójának kódja. Választható |
+| gs04 | Sztring | Működési csoport dátuma. Választható |
+| gs05 | Sztring | Működési csoport ideje. Választható |
+| gs07 | Sztring | Felelős Ügynökség kódja. Választható |
+| gs08 | Sztring | Verzió/kiadás/iparági azonosító kódja. Választható |
 ||||
 
-## <a name="x12-functional-group-acknowledgement-tracking-schema"></a>X12 funkcionális csoport nyugtázása követési séma
+## <a name="x12-functional-group-acknowledgement-tracking-schema"></a>X12 funkcionális csoport nyugtázási követési sémája
 
 ```json
 {
@@ -331,38 +329,38 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 }
 ```
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Type (Típus) | Leírás |
 | --- | --- | --- |
-| senderPartnerName | String | X12 üzenetet küldő partner neve. (Választható lehetőség) |
-| receiverPartnerName | String | X12 üzenetet fogadó partner nevének. (Választható lehetőség) |
-| senderQualifier | String | Partner minősítő küldése. (Kötelező) |
-| senderIdentifier | String | Küldeni a partner azonosítója. (Kötelező) |
-| receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
-| receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
-| agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
-| interchangeControlNumber | String | Adatcsere ellenőrzőszáma, amely feltölti a küldési oldalon műszaki nyugtázási partnerek fogadásakor. (Választható lehetőség) |
-| functionalGroupControlNumber | String | Funkcionális csoport ellenőrzőszám az műszaki átvételi, amely feltölti a küldési oldalon műszaki nyugtázási partnerek fogadásakor. (Választható lehetőség) |
-| isaSegment | String | Ugyanaz, mint a adatcsere ellenőrzés száma, de csak bizonyos esetekben ki van töltve. (Választható lehetőség) |
-| gsSegment | String | Ugyanaz, mint a funkcionális csoport szabályozhatja a száma, de csak bizonyos esetekben ki van töltve. (Választható lehetőség) |
-| respondingfunctionalGroupControlNumber | String | Az eredeti funkcionális csoport-ellenőrzőszám. (Választható lehetőség) |
-| respondingFunctionalGroupId | String | Funkcionális csoport nyugtázása AK101 a Maps-azonosító. (Választható lehetőség) |
-| isMessageFailed | Boolean | -E a X12 üzenetet nem sikerült. (Kötelező) |
-| statusCode | Enum | A nyugta állapotkódjának. Engedélyezett értékek a következők **elfogadva**, **elutasítva**, és **AcceptedWithErrors**. (Kötelező) |
-| processingStatus | Enum | A nyugtázási feldolgozási állapotát. Engedélyezett értékek a következők **fogadott**, **Generated**, és **elküldött**. (Kötelező) |
-| ak903 | String | Fogadott tranzakciókészletek száma. (Választható lehetőség) |
-| ak904 | String | Az azonosított funkcionális csoport elfogadott tranzakciókészletek száma. (Választható lehetőség) |
-| ak9Segment | String | A funkcionális csoporttal, a AK1 szegmensben van elfogad vagy elutasít-e, és hogy miért. (Választható lehetőség) |
+| senderPartnerName | Sztring | A X12-üzenet küldője partnerének neve. Választható |
+| receiverPartnerName | Sztring | X12-üzenet fogadójának partnere neve. Választható |
+| senderQualifier | Sztring | Partner minősítő küldése. Kötelező |
+| senderIdentifier | Sztring | Partner azonosítójának küldése Kötelező |
+| receiverQualifier | Sztring | Fogadási partner minősítője. Kötelező |
+| receiverIdentifier | Sztring | Fogadási partner azonosítója. Kötelező |
+| agreementName | Sztring | Azon X12-szerződés neve, amelybe az üzenetek fel lesznek oldva. Választható |
+| irány | Felsorolás | Az üzenet folyamatának, fogadásának vagy küldésének iránya. Kötelező |
+| interchangeControlNumber | Sztring | Az adatcsere-vezérlési szám, amely a küldési oldalra töltődik fel, ha a partnerektől technikai nyugtázás érkezik. Választható |
+| functionalGroupControlNumber | Sztring | A technikai nyugtázás funkcionális csoport általi vezérlésének száma, amely a küldési oldal feltöltésére szolgál, ha a partnerektől technikai nyugtázás érkezik. Választható |
+| isaSegment | Sztring | Ugyanaz, mint az adatcsere-vezérlőelem száma, de csak bizonyos esetekben van feltöltve. Választható |
+| gsSegment | Sztring | Ugyanaz, mint a funkcionális csoport vezérlőelem száma, de csak bizonyos esetekben van feltöltve. Választható |
+| respondingfunctionalGroupControlNumber | Sztring | Az eredeti funkcionális csoport vezérlési száma. Választható |
+| respondingFunctionalGroupId | Sztring | A AK101 leképezése a nyugtázási funkcionális csoport azonosítója alapján. Választható |
+| isMessageFailed | Logikai | Azt jelzi, hogy a X12 üzenet sikertelen-e. Kötelező |
+| StatusCode | Felsorolás | Nyugtázási állapotkód. Az engedélyezett értékek **elfogadása**, **elutasítása**és **AcceptedWithErrors**. Kötelező |
+| processingStatus | Felsorolás | A visszaigazolás feldolgozási állapota. Az engedélyezett értékek **fogadása**, **generálása**és **elküldése**. Kötelező |
+| ak903 | Sztring | A fogadott tranzakciónaplók száma. Választható |
+| ak904 | Sztring | Az azonosított funkcionális csoportban elfogadott tranzakciótípusok száma. Választható |
+| ak9Segment | Sztring | Azt határozza meg, hogy a AK1-szegmensben azonosított funkcionális csoport el van-e fogadva vagy elutasítva, és miért. Választható |
 |||| 
 
-## <a name="b2b-protocol-tracking-schemas"></a>B2B-protokoll követési sémák
+## <a name="b2b-protocol-tracking-schemas"></a>B2B protokoll-követési sémák
 
-B2B-protokoll követési sémák kapcsolatos információkért lásd:
+További információ a B2B protokoll-követési sémákkal kapcsolatban:
 
 * [AS2-követési sémák](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
-* [B2B egyéni követési sémák](logic-apps-track-integration-account-custom-tracking-schema.md)
+* [Egyéni B2B-követési sémák](logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Tudjon meg többet [B2B-üzenetek figyelési](logic-apps-monitor-b2b-message.md).
-* Ismerje meg [az Azure Monitor naplóira B2B üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* További információ a [B2B-üzenetek monitorozásáról](logic-apps-monitor-b2b-message.md).
+* Ismerje meg [, hogyan követheti nyomon a B2B-üzeneteket Azure monitor naplókban](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).

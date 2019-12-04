@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50e4778693e448b9a989d70d3ca8cf91c76ce380
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 0d840cbaba2cc8325c619248bb7f4421d3b2f83c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482047"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766072"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Felhasználók számára bejelentkező webalkalmazás: alkalmazás regisztrálása
 
@@ -68,27 +68,27 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
    1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára. Írja be például a következőt: **MailApp-openidconnect-v2**.
    1. Az **átirányítási URI (nem kötelező)** szakaszban válassza a kombinált lista **web** elemét, és adja meg a következő átirányítási uri-t: **https://localhost:44326/** .
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
-1. Válassza a **hitelesítés** menüt. 
+1. Válassza a **hitelesítés** menüt.
 1. A **Speciális beállítások** | **implicit támogatás** szakaszban válassza az **azonosító tokenek**elemet. Ehhez a mintához engedélyezni kell, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
 1. Kattintson a **Mentés** gombra.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-1. Amikor megjelenik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás megjelenítendő nevét. Írja be például a következőt: **Java-WebApp**. 
+1. Amikor megjelenik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás megjelenítendő nevét. Írja be például a következőt: **Java-WebApp**.
 1. Válassza **a fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban (például Skype, Xbox, Outlook.com)** , majd válassza a webalkalmazás **/API** lehetőséget az **alkalmazás típusához**.
 1. Az alkalmazás regisztrálásához válassza a **regisztráció** lehetőséget.
-1. A bal oldali menüben válassza a **hitelesítés**lehetőséget. Az **átirányítási URI**-k területen válassza a **web**lehetőséget. 
+1. A bal oldali menüben válassza a **hitelesítés**lehetőséget. Az **átirányítási URI**-k területen válassza a **web**lehetőséget.
 
 1. Adjon meg két átirányítási URI-t: egyet a bejelentkezési oldalhoz, egy pedig a Graph oldalhoz. Mindkettő esetében ugyanazt a gazdagépet és portszámot kell használnia, amelyet a bejelentkezési oldal **/msal4jsample/Secure/aad** , valamint a felhasználói adatok oldalának **msal4jsample/Graph/Me** elemében követ.
- 
+
    Alapértelmezés szerint a minta a következőket használja:
 
    - **http://localhost:8080/msal4jsample/secure/aad**
    - **http://localhost:8080/msal4jsample/graph/me**
 
-1. A **Speciális beállítások** szakaszban állítsa be **http://localhost:8080/msal4jsample/sign_out** a **kijelentkezési URL-címet** . Ezt követően válassza a **Mentés** lehetőséget.
+  Ezt követően válassza a **Mentés** lehetőséget.
 
-1. Válassza a **tanúsítványok & a titkok** lehetőséget a menüből. 
+1. Válassza a **tanúsítványok & a titkok** lehetőséget a menüből.
 1. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka**elemet, majd a következőket:
 
    1. Adja meg a kulcs leírását.
@@ -104,7 +104,6 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
    1. Az **átirányítási URI (nem kötelező)** szakaszban válassza a kombinált lista **web** elemét, és adja meg a következő átirányítási uri-t: **http://localhost:5000/getAToken** .
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Az alkalmazás **Áttekintés** lapján keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később. Ehhez a projekthez a Visual Studio konfigurációs fájlját kell konfigurálnia.
-1. Válassza a **hitelesítés** szakaszt. A **Speciális beállítások**területen állítsa be **http://localhost:5000/logout** a **kijelentkezési URL-címet** . Ezt követően válassza a **Mentés** lehetőséget.
 1. A bal oldali menüben válassza a **tanúsítványok & Secrets**elemet.
 1. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka**elemet, majd a következőket:
 

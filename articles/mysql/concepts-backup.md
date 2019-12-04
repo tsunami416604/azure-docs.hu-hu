@@ -1,17 +1,17 @@
 ---
-title: Biztonsági mentés és visszaállítás Azure Database for MySQL
+title: Biztonsági mentés és visszaállítás – Azure Database for MySQL
 description: Ismerje meg a Azure Database for MySQL-kiszolgáló automatikus biztonsági mentését és visszaállítását.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: a2a1fb5f84612630d4168c8af908ed86330938c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/02/2019
+ms.openlocfilehash: d5941ef7ac2236137fada7202a8dd3cf2ebcc120
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213122"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776290"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Biztonsági mentés és visszaállítás Azure Database for MySQL
 
@@ -23,7 +23,7 @@ Azure Database for MySQL biztonsági másolatokat készít az adatfájlokról é
 
 ### <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
 
-Általánosságban elmondható, hogy a teljes biztonsági mentések hetente, a különbözeti biztonsági mentések naponta kétszer történnek a 4 TB-os maximális támogatott tárterülettel rendelkező kiszolgálók esetében. A pillanatképes biztonsági mentések naponta legalább egyszer történnek olyan kiszolgálók esetében, amelyek legfeljebb 16 TB tárterületet támogatnak. A tranzakciónapló biztonsági mentései mindkét esetben öt percenként történnek. A teljes biztonsági mentés első pillanatképét a rendszer a kiszolgáló létrehozása után azonnal ütemezi. A kezdeti teljes biztonsági mentés hosszabb időt vehet igénybe egy nagy visszaállított kiszolgálón. Az a legkorábbi időpont, ameddig egy új kiszolgáló visszaállítható a kezdeti teljes biztonsági mentés befejezésének időpontjára. Mivel a pillanatképek instantanious, a legfeljebb 16 TB tárhellyel rendelkező kiszolgálók visszaállíthatók egészen a létrehozási időre.
+Általánosságban elmondható, hogy a teljes biztonsági mentések hetente, a különbözeti biztonsági mentések naponta kétszer történnek a 4 TB-os maximális támogatott tárterülettel rendelkező kiszolgálók esetében. A pillanatképek biztonsági mentése legalább naponta egyszer történik a legfeljebb 16 TB tárterületet támogató kiszolgálók esetén. A tranzakciós naplók biztonsági mentése mindkét esetben öt percenként történik. A teljes biztonsági mentés első pillanatképét a rendszer a kiszolgáló létrehozása után azonnal ütemezi. A kezdeti teljes biztonsági mentés hosszabb időt vehet igénybe egy nagy visszaállított kiszolgálón. Az a legkorábbi időpont, ameddig egy új kiszolgáló visszaállítható a kezdeti teljes biztonsági mentés befejezésének időpontjára. Mivel a pillanatképek instantanious, a legfeljebb 16 TB tárhellyel rendelkező kiszolgálók visszaállíthatók egészen a létrehozási időre.
 
 ### <a name="backup-redundancy-options"></a>A Backup redundancia beállításai
 
@@ -52,7 +52,7 @@ A helyreállítás becsült ideje több tényezőtől függ, többek között az
 > [!IMPORTANT]
 > A törölt kiszolgálók **nem** állíthatók vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. A kiszolgálói erőforrások, a telepítés után a véletlen törlés vagy a váratlan módosítások elleni védelem érdekében a rendszergazdák kihasználhatják a [felügyeleti zárolásokat](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
-### <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
+### <a name="point-in-time-restore"></a>Időponthoz kötött visszaállítás
 
 A biztonsági mentési redundancia-beállítástól függetlenül a biztonsági másolatok megőrzési időszakán belül bármikor elvégezheti a visszaállítást. A rendszer létrehoz egy új kiszolgálót ugyanabban az Azure-régióban, mint az eredeti kiszolgálót. A rendszer az eredeti kiszolgáló konfigurációját hozza létre a díjszabási csomag, a számítási generáció, a virtuális mag száma, a tárterület mérete, a biztonsági másolatok megőrzési időtartama és a biztonsági mentési redundancia beállítás esetében.
 
@@ -77,7 +77,7 @@ A helyreállítási mechanizmusból való visszaállítás után a következő f
 - Győződjön meg arról, hogy a megfelelő bejelentkezések és az adatbázis-szintű engedélyek vannak érvényben
 - Konfigurálja a riasztásokat, ha szükséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az üzletmenet folytonosságával kapcsolatos további tudnivalókért tekintse meg az [üzletmenet folytonosságának áttekintése](concepts-business-continuity.md)című témakört.
 - Ha a Azure Portal használatával szeretne visszaállítani egy adott időpontra, tekintse meg [az adatbázis visszaállítása egy időpontra a Azure Portal használatával](howto-restore-server-portal.md)című témakört.

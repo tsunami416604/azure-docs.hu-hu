@@ -1,22 +1,20 @@
 ---
-title: Kapcsolódás a Dynamics 365hoz – Azure Logic Apps
+title: Kapcsolódás a Dynamics 365-hoz
 description: Rekordok létrehozása és kezelése a Dynamics 365 (online) REST API-kkal és Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: Mattp123
 ms.author: matp
-manager: carmonm
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: ce83e6b1847a8f08467cb7877e517bdaace27953
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 9837b68fbfba783a468712d8ba1883b198af4954
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051009"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789886"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Dynamics 365-rekordok kezelése a Azure Logic Apps
 
@@ -43,7 +41,7 @@ Először vegyen fel egy Dynamics 365-eseményindítót, amely akkor következik
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg az üres logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. A keresőmezőbe írja be a "Dynamics 365" kifejezést a szűrőként. Ebben a példában az eseményindítók listáról válassza ki ezt az eseményindítót: **Rekord létrehozásakor**
+1. A keresőmezőbe írja be a "Dynamics 365" kifejezést a szűrőként. Ebben a példában az eseményindítók listában válassza ki ezt az eseményindítót: **rekord létrehozásakor**
 
    ![Trigger kiválasztása](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
@@ -51,7 +49,7 @@ Először vegyen fel egy Dynamics 365-eseményindítót, amely akkor következik
 
 1. Adja meg az alábbi trigger részleteit:
 
-   | Tulajdonság | Kötelező | Leírás |
+   | Tulajdonság | Szükséges | Leírás |
    |----------|----------|-------------|
    | **Szervezet neve** | Igen | A szervezet Dynamics 365-példányának neve, amely figyeli, például "contoso" |
    | **Entitás neve** | Igen | A figyelni kívánt entitás neve, például "leads" | 
@@ -67,13 +65,13 @@ Most adja hozzá a Dynamics 365 műveletet, amely létrehoz egy feladatot a reko
 
 1. Az trigger alatt válassza az **új lépés**lehetőséget.
 
-1. A keresőmezőbe írja be a "Dynamics 365" kifejezést a szűrőként. A műveletek listából válassza ki ezt a műveletet: **Új rekord létrehozása**
+1. A keresőmezőbe írja be a "Dynamics 365" kifejezést a szűrőként. A műveletek listából válassza ki ezt a műveletet: **új rekord létrehozása**
 
    ![Művelet kiválasztása](./media/connectors-create-api-crmonline/select-action.png)
 
 1. Adja meg a következő művelet részleteit:
 
-   | Tulajdonság | Kötelező | Leírás |
+   | Tulajdonság | Szükséges | Leírás |
    |----------|----------|-------------|
    | **Szervezet neve** | Igen | A Dynamics 365-példány, amelyben létre kívánja hozni a rekordot, és nem feltétlenül azonos példánynak kell lennie az triggerben, de ebben a példában a "contoso". |
    | **Entitás neve** | Igen | Az entitás, amelyben létre szeretné hozni a rekordot, például "feladatok" |
@@ -86,7 +84,7 @@ Most adja hozzá a Dynamics 365 műveletet, amely létrehoz egy feladatot a reko
    | Mező | Leírás |
    |-------|-------------|
    | **Vezetéknév** | Az érdeklődő utolsó neve a rekordban elsődleges partnerként |
-   | **A témakör** | A rekordban lévő érdeklődő leíró neve |
+   | **Témakör** | A rekordban lévő érdeklődő leíró neve |
    | | |
 
    ![Feladat rekordjának részletei](./media/connectors-create-api-crmonline/create-record-details.png)
@@ -104,7 +102,7 @@ Most adja hozzá a Dynamics 365 műveletet, amely létrehoz egy feladatot a reko
 Ha meg szeretné határozni, hogyan kell szűrni a Dynamics 365 műveleteit, válassza a művelet **Speciális beállítások megjelenítése** elemét. Ezután hozzáadhat egy szűrőt vagy rendezést lekérdezéssel.
 Egy szűrő lekérdezéssel például csak az aktív fiókokat lehet beolvasni, és megrendelni a rekordokat a fiók neve alapján. Ehhez a feladathoz kövesse az alábbi lépéseket:
 
-1. A **szűrő lekérdezése**szakaszban adja meg ezt a OData-szűrési lekérdezést:`statuscode eq 1`
+1. A **szűrő lekérdezése**szakaszban adja meg ezt a OData-szűrési lekérdezést: `statuscode eq 1`
 
 2. A **sorrend szerint beállításnál**a dinamikus tartalmak listájának megjelenésekor válassza a **fióknév**lehetőséget. 
 
@@ -121,11 +119,11 @@ Ha egy művelet vagy trigger mezőjében megad egy értéket, az érték adattí
 
 Ez a táblázat néhány mezőtípus és az értékek kötelező adattípusait ismerteti.
 
-| Mezőtípus | Szükséges adattípus | Leírás | 
+| Mező típusa | Szükséges adattípus | Leírás | 
 |------------|--------------------|-------------|
-| Szövegmezők | Egysoros szöveg | Ezeknek a mezőknek egyetlen, szöveg típusú szöveggel vagy dinamikus tartalommal kell rendelkezniük. <p><p>*Példa mezői*: **Leírás** és **Kategória** | 
-| Egész szám mezők | Egész szám | Egyes mezők egész szám típusú vagy dinamikus tartalmat igényelnek. <p><p>*Példa mezői*: **Készültségi százalék** és **időtartam** | 
-| Dátum mezők | Dátum és idő | Egyes mezőkben egy HH/NN/ÉÉÉÉ formátumú dátum vagy egy dátum típusú dinamikus tartalom szükséges. <p><p>*Példa mezői*: **Létrehozva**, **kezdési dátum**, **Tényleges kezdés**, **Tényleges befejezés**és határidő | 
+| Szövegmezők | Egysoros szöveg | Ezeknek a mezőknek egyetlen, szöveg típusú szöveggel vagy dinamikus tartalommal kell rendelkezniük. <p><p>*Példa mezőkre*: **Leírás** és **Kategória** | 
+| Egész szám mezők | Egész szám | Egyes mezők egész szám típusú vagy dinamikus tartalmat igényelnek. <p><p>*Példa mezők*: készültségi **százalék** és **időtartam** | 
+| Dátum mezők | Dátum és idő | Egyes mezőkben egy HH/NN/ÉÉÉÉ formátumú dátum vagy egy dátum típusú dinamikus tartalom szükséges. <p><p>*Példa mezők*: **Létrehozás**dátuma, **kezdési dátum**, **tényleges indítás**, **Tényleges befejezés**és **esedékesség dátuma** | 
 | A rekordazonosító és a keresési típust igénylő mezők | Elsődleges kulcs | Néhány olyan mező, amely egy másik entitási rekordra hivatkozik, a rekord AZONOSÍTÓját és a keresési típust is igényli. | 
 ||||
 
@@ -134,11 +132,11 @@ A következő típusú mezők kibontása például a Dynamics 365-eseményindít
 | Mező | Leírás |
 |-------|-------------|
 | **Tulajdonos** | Érvényes felhasználói AZONOSÍTÓnak vagy Team Record AZONOSÍTÓnak kell lennie. |
-| **Tulajdonos típusa** | A következők `systemusers` egyikének `teams`kell lennie: vagy. |
+| **Tulajdonos típusa** | `systemusers` vagy `teams`nek kell lennie. |
 | **Vonatkozó** | Érvényes rekordazonosítónek kell lennie, például egy fiókazonosító vagy egy kapcsolattartói rekord azonosítója. |
 | **Kapcsolódó típus** | Keresési típusnak kell lennie, például `accounts` vagy `contacts`. |
 | **Ügyfél** | Érvényes rekordazonosítónek kell lennie, például egy fiókazonosító vagy egy kapcsolattartói rekord azonosítója. |
-| **Ügyfél típusa** | A keresési típusnak kell lennie, `accounts` például `contacts`: vagy. |
+| **Ügyfél típusa** | A keresési típusnak kell lennie, például `accounts` vagy `contacts`. |
 |||
 
 Ebben a példában az **új rekord létrehozása** nevű művelet létrehoz egy új feladatot:
@@ -161,10 +159,10 @@ A rekord AZONOSÍTÓjának megkereséséhez kövesse az alábbi lépéseket:
 
 2. A műveletek eszköztáron válassza a következő lépések egyikét:
 
-   * Válasszaki a kiugró elemet. ![popout-rekord](./media/connectors-create-api-crmonline/popout-record.png) 
+   * Válassza ki a **kiugró**elemet. ![popout-rekord](./media/connectors-create-api-crmonline/popout-record.png) 
    * Válassza a **hivatkozás küldése e-mailben** lehetőséget, hogy a teljes URL-címet másolja az alapértelmezett e-mail-programba.
 
-   A rekordazonosító megjelenik az URL-cím és `%7b` `%7d` a kódolási karakterek között:
+   A rekordazonosító a `%7b` és a `%7d` Kódolási karakterek közötti URL-címben jelenik meg:
 
    ![Rekord AZONOSÍTÓjának keresése](./media/connectors-create-api-crmonline/find-record-ID.png)
 
@@ -190,6 +188,6 @@ A Logic apps hibaelhárításával kapcsolatos további információkért lásd:
 
 A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő OpenAPI (korábban hencegő) fájljában leírtak szerint tekintse [meg az összekötő hivatkozási oldalát](/connectors/dynamicscrmonline/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

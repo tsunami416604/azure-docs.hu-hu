@@ -1,81 +1,81 @@
 ---
-title: Az adatok replikálása az Azure Database-be a MySQL-hez készült adatok a replikáció konfigurálása.
-description: Ez a cikk azt ismerteti, hogyan állítható be adatokat a replikáció az Azure Database for MySQL.
+title: Az adatreplikálás konfigurálása – Azure Database for MySQL
+description: Ez a cikk a Azure Database for MySQL felhőbe irányuló replikálás beállítását ismerteti.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/31/2018
-ms.openlocfilehash: 7d56d7f8fcbd53d4f69863d260591ef80f3d7188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: eaebcf50084223e1c1f4df30294bece96cffda6d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459079"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774296"
 ---
-# <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database MySQL-adatok a replikáció konfigurálása
+# <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL konfigurálása felhőbe irányuló replikálás
 
-Ebből a cikkből megtudhatja, hogyan állítható be adatok a replikáció az Azure Database for MySQL-szolgáltatás által a master és a replika kiszolgálók konfigurálása az. Adatok a replikáció lehetővé teszi egy fő MySQL-kiszolgálót a helyszínen futó virtuális gépeket vagy adatbázis-szolgáltatások az Azure Database for MySQL-szolgáltatás egy replika az egyéb felhőszolgáltatók által üzemeltetett adatai szinkronizálva. 
+Ebből a cikkből megtudhatja, hogyan állíthatja be a felhőbe irányuló replikálást a Azure Database for MySQL szolgáltatásban a fő-és a replika-kiszolgálók konfigurálásával. Felhőbe irányuló replikálás lehetővé teszi, hogy szinkronizálja az adatokat egy helyszíni, virtuális gépeken vagy más felhőalapú szolgáltató által üzemeltetett, a Azure Database for MySQL szolgáltatásban egy replikán futó fő MySQL-kiszolgálóról. 
 
-Ez a cikk azt feltételezi, hogy legalább némi tapasztalattal a MySQL-kiszolgálók és adatbázisok.
+Ez a cikk azt feltételezi, hogy a MySQL-kiszolgálókkal és-adatbázisokkal kapcsolatban legalább néhány korábbi élmény van.
 
-## <a name="create-a-mysql-server-to-be-used-as-replica"></a>Hozzon létre egy MySQL-kiszolgáló replikaként használni
+## <a name="create-a-mysql-server-to-be-used-as-replica"></a>Replikaként használandó MySQL-kiszolgáló létrehozása
 
-1. Hozzon létre egy új, Azure Database for MySQL-kiszolgáló
+1. Új Azure Database for MySQL-kiszolgáló létrehozása
 
-   Hozzon létre egy új MySQL-kiszolgáló (például. "replica.mysql.database.azure.com"). Tekintse meg [egy Azure Database for MySQL-kiszolgáló létrehozása az Azure portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md) a kiszolgáló létrehozásához. Ez a kiszolgáló pedig a "" replikakiszolgáló adatok a replikáció.
+   Hozzon létre egy új MySQL-kiszolgálót (pl. "replica.mysql.database.azure.com"). A kiszolgáló létrehozásához [a Azure Portal használatával Azure Database for MySQL kiszolgáló létrehozása](quickstart-create-mysql-server-database-using-azure-portal.md) című témakörben talál további információt. Ez a kiszolgáló a felhőbe irányuló replikálás replika-kiszolgálója.
 
    > [!IMPORTANT]
-   > Az általános célú és memóriahasználatra optimalizált tarifacsomagok az Azure Database for MySQL-kiszolgálót kell létrehozni.
+   > A Azure Database for MySQL-kiszolgálót a általános célú vagy a memória optimalizált díjszabási szintjein kell létrehozni.
    > 
 
-2. Azonos felhasználói fiókok és a megfelelő jogosultságok létrehozása
+2. Azonos felhasználói fiókok és megfelelő jogosultságok létrehozása
 
-   Felhasználói fiókok nem lesznek replikálva a fő kiszolgálóról a replikakiszolgálóra. Ha azt tervezi, hogy az adatbázisreplika-kiszolgálón való hozzáférést biztosítanak a felhasználók számára, manuálisan hozzon létre az újonnan létrehozott Azure Database for MySQL-kiszolgáló a fiókok és a megfelelő jogosultságokat szeretne.
+   A felhasználói fiókok nem replikálódnak a főkiszolgálóról a másodpéldány-kiszolgálóra. Ha azt tervezi, hogy hozzáférést biztosít a felhasználóknak a másodpéldány-kiszolgálóhoz, manuálisan kell létrehoznia az összes fiókot és a hozzá tartozó jogosultságokat az újonnan létrehozott Azure Database for MySQL-kiszolgálón.
 
-## <a name="configure-the-master-server"></a>A fölérendelt kiszolgáló konfigurálása
-Az alábbi lépéseket előkészítése, és a MySQL futó kiszolgálót a helyszínen, konfigurálhat egy virtuális géphez, vagy az adatok a replikáció egyéb felhőszolgáltatók által üzemeltetett adatbázis-szolgáltatás. A kiszolgáló nem a replikációs adatok a "master". 
+## <a name="configure-the-master-server"></a>A főkiszolgáló konfigurálása
+Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszínen üzemeltetett MySQL-kiszolgálót egy virtuális gépen vagy más felhőalapú szolgáltató által a felhőbe irányuló replikálás számára üzemeltetett adatbázis-szolgáltatásban. Ez a kiszolgáló a "Master" az adatok replikálásához. 
 
 1. Bináris naplózás bekapcsolása
 
-   Ellenőrizze, hogy ha a bináris naplózás engedélyezve van a a fő a következő parancs futtatásával: 
+   Ellenőrizze, hogy a bináris naplózás engedélyezve van-e a főkiszolgálón a következő parancs futtatásával: 
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   Ha a változó [ `log_bin` ](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) adja vissza "Be" értéket, a bináris naplózás engedélyezve van a kiszolgálón. 
+   Ha a [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) változót a "on" értékkel adja vissza, a bináris naplózás engedélyezve van a kiszolgálón. 
 
-   Ha `log_bin` van hibát adott vissza az érték "OFF", kapcsolja be a bináris naplózás, ezért a my.cnf fájl szerkesztésével, amely `log_bin=ON` , és indítsa újra a kiszolgálót, a módosítás érvénybe léptetéséhez.
+   Ha a `log_bin` a "OFF" értékkel tér vissza, kapcsolja be a bináris naplózást a saját. cnf fájl szerkesztésével, hogy a módosítás érvénybe léptetéséhez `log_bin=ON` és indítsa újra a kiszolgálót.
 
 2. Fő kiszolgáló beállításai
 
-   Adatok a replikációhoz az szükséges, a paraméter `lower_case_table_names` összhangban a master és a replika között kell lennie. Ez a paraméter értéke 1, Azure Database for MySQL alapértelmezés szerint. 
+   Felhőbe irányuló replikálás megköveteli, hogy a (z) `lower_case_table_names` paraméterek konzisztensek legyenek a fő-és a replika-kiszolgálók között. Ez a paraméter a Azure Database for MySQL alapértelmezés szerint 1. 
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-3. Hozzon létre egy új replikációs szerepkör és az engedélyek beállítása
+3. Új replikációs szerepkör létrehozása és az engedélyek beállítása
 
-   A fő kiszolgálón konfigurált replikációs jogosultságokkal rendelkező felhasználói fiók létrehozása. Ezt az SQL-parancsokat vagy egy eszköz, például a MySQL Workbench segítségével teheti meg. Vegye figyelembe, hogy azt tervezi, hogy SSL-lel való replikálásához, ezt is meg kell adni, ha a felhasználó létrehozása. A MySQL-dokumentációban tudni, hogyan [felhasználói fiókokat felvenni](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html) a fölérendelt kiszolgálón. 
+   Hozzon létre egy felhasználói fiókot a fő kiszolgálón, amely replikációs jogosultságokkal van konfigurálva. Ez az SQL-parancsokkal vagy egy olyan eszközzel végezhető el, mint például a MySQL Workbench. Gondolja át, hogy az SSL-sel való replikálást tervezi-e, mivel ezt a felhasználó létrehozásakor meg kell adni. Tekintse át a MySQL dokumentációját, hogy megtudja, hogyan [adhat hozzá felhasználói fiókokat](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html) a főkiszolgálón. 
 
-   Az alábbi parancsokat a létrehozott új replikációs szerepkör minden olyan gép, nem csak magát a fő futtató géphez, a fő elérhetik. Ez történik, megadásával "syncuser@'%" "a Létrehozás felhasználói parancsban. A MySQL dokumentációjában talál további információkat talál [nevének megadásával](https://dev.mysql.com/doc/refman/5.7/en/account-names.html).
+   Az alábbi parancsokban az új, létrehozott replikációs szerepkör minden gépről képes hozzáférni a főkiszolgálóhoz, nem csak a főkiszolgálót üzemeltető gépről. Ezt a "syncuser@"% "beállítás megadásával teheti meg a felhasználó létrehozása parancsban. A [fiókok nevének megadásával](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)kapcsolatos további információkért tekintse meg a MySQL dokumentációját.
 
-   **SQL Command**
+   **SQL-parancs**
 
-   *Replikációs SSL-lel*
+   *Replikáció SSL használatával*
 
-   SSL megkövetelése minden felhasználói kapcsolat, hozzon létre egy felhasználót a következő parancs segítségével: 
+   Az SSL minden felhasználói kapcsolathoz való megköveteléséhez használja a következő parancsot egy felhasználó létrehozásához: 
 
    ```sql
    CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
    GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%' REQUIRE SSL;
    ```
 
-   *SSL nélküli replikációs*
+   *Replikáció SSL nélkül*
 
-   Ha az SSL nem szükséges az összes kapcsolat, a következő parancs segítségével hozzon létre egy felhasználót:
+   Ha az SSL nem szükséges minden kapcsolathoz, használja a következő parancsot egy felhasználó létrehozásához:
 
    ```sql
    CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
@@ -84,86 +84,86 @@ Az alábbi lépéseket előkészítése, és a MySQL futó kiszolgálót a helys
 
    **MySQL Workbench**
 
-   A MySQL Workbench a replikációs szerepkör létrehozásához nyissa meg a **felhasználók és jogosultságok** a panelen a **felügyeleti** panel. Kattintson a **fiók hozzáadása**. 
+   A MySQL Workbench replikációs szerepkörének létrehozásához nyissa meg a **felhasználók és jogosultságok** panelt a **felügyeleti** panelen. Ezután kattintson a **fiók hozzáadása**lehetőségre. 
  
    ![Felhasználók és jogosultságok](./media/howto-data-in-replication/users_privileges.png)
 
-   Írja be a felhasználónevet, a **bejelentkezési név** mező. 
+   Írja be a felhasználónevet a **bejelentkezési név** mezőbe. 
 
    ![Felhasználó szinkronizálása](./media/howto-data-in-replication/syncuser.png)
  
-   Kattintson a a **rendszergazdai szerepkörök** panelen, majd **replikációs alárendelt** listájából **globális jogosultságokkal**. Kattintson a **alkalmaz** a replikációs szerepkör létrehozásához.
+   Kattintson a **felügyeleti szerepkörök** panelre, majd válassza ki a **replikálás Slave** elemet a **globális jogosultságok**listájáról. Ezután kattintson az **Apply (alkalmaz** ) gombra a replikációs szerepkör létrehozásához.
 
-   ![Replikációs alárendelt](./media/howto-data-in-replication/replicationslave.png)
+   ![Replikálási Slave](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. A fölérendelt kiszolgáló csak olvasható módra beállítva
+4. A főkiszolgáló beállítása írásvédett módra
 
-   Mielőtt hozzákezdene kiírása ki az adatbázist, a kiszolgálónak van szüksége, csak olvasható módban kell helyezni. Csak olvasható módban, a fő lesz írási tranzakciók feldolgozása nem sikerült. Elemezheti a hatását, az üzleti, és a csak olvasható ablak ütemezheti a csúcsidőszakon, ha szükséges.
+   Az adatbázis kiírásának megkezdése előtt a kiszolgálót csak olvasható módban kell elhelyezni. A csak olvasható módban a főkiszolgáló nem tudja feldolgozni az írási tranzakciókat. Értékelje ki a vállalatra gyakorolt hatást, és szükség esetén ütemezze a csak olvasási időszakot.
 
    ```sql
    FLUSH TABLES WITH READ LOCK;
    SET GLOBAL read_only = ON;
    ```
 
-5. Bináris naplófájl nevét és eltolása
+5. Bináris naplófájl nevének és eltolásának beolvasása
 
-   Futtassa a [ `show master status` ](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) parancsot annak meghatározásához, a jelenlegi bináris naplófájl nevét és eltolását.
+   Futtassa a [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) parancsot az aktuális bináris naplófájl nevének és eltolásának meghatározásához.
     
    ```sql
    show master status;
    ```
-   Az eredmények hasonló kell lennie. Mindenképpen jegyezze fel a bináris fájl neve, a későbbi lépésekben fog használni.
+   Az eredménynek a következőhöz hasonlónak kell lennie. Ügyeljen arra, hogy a bináris fájl nevét jegyezze fel, mivel a későbbi lépésekben lesz használva.
 
-   ![Fő állapotinformáció](./media/howto-data-in-replication/masterstatus.png)
+   ![Fő állapot eredményei](./media/howto-data-in-replication/masterstatus.png)
  
-## <a name="dump-and-restore-master-server"></a>Memóriakép és a fölérendelt kiszolgáló visszaállítása
+## <a name="dump-and-restore-master-server"></a>Főkiszolgáló kiírása és visszaállítása
 
-1. Minden adatbázis főkiszolgálóról memóriakép
+1. Az összes adatbázis kiírása a főkiszolgálóról
 
-   Memóriakép adatbázisok mysqldump segítségével a főágból. Részletekért tekintse meg a [memóriakép és visszaállítás](concepts-migrate-dump-restore.md). Nem szükséges MySQL könyvtár dump és a teszt-erőforrástár.
+   A mysqldump segítségével kitörölheti az adatbázisokat a főkiszolgálóról. Részletekért tekintse meg a következőt: [Dump & Restore](concepts-migrate-dump-restore.md). A MySQL-függvénytár és a tesztelési könyvtár kiírása nem szükséges.
 
-2. Írási/olvasási mód fő kiszolgáló beállítása
+2. Főkiszolgáló beállítása olvasási/írási módra
 
-   Miután az adatbázis rendelkezik lett kiírt, módosítsa a fő MySQL server újra az olvasási/írási módban.
+   Az adatbázis kiírása után állítsa vissza a fő MySQL-kiszolgálót olvasási/írási módba.
 
    ```sql
    SET GLOBAL read_only = OFF;
    UNLOCK TABLES;
    ```
 
-3. Visszaállítás új kiszolgálóra memóriakép-fájl
+3. Memóriakép-fájl visszaállítása új kiszolgálóra
 
-   Állítsa vissza a memóriakép-fájl az Azure Database for MySQL-szolgáltatás a kiszolgálójához. Tekintse meg [memóriakép és visszaállítás](concepts-migrate-dump-restore.md) a memóriakép-fájl visszaállítása egy MySQL-kiszolgálóhoz. Ha a memóriakép-fájl túl nagy, töltse fel az Azure-ban és az adatbázisreplika-kiszolgáló ugyanabban a régióban lévő virtuális géphez. Állítsa vissza az Azure database for MySQL-kiszolgáló a virtuális gépről.
+   Állítsa vissza a memóriakép-fájlt a Azure Database for MySQL szolgáltatásban létrehozott kiszolgálóra. A dump-fájlok MySQL-kiszolgálóra való visszaállításával kapcsolatban tekintse meg a [dump & Restore](concepts-migrate-dump-restore.md) című témakört. Ha a Memóriakép fájlja nagyméretű, töltse fel az Azure-beli virtuális gépre a replika-kiszolgálóval megegyező régión belül. Állítsa vissza a Azure Database for MySQL-kiszolgálóra a virtuális gépről.
 
-## <a name="link-master-and-replica-servers-to-start-data-in-replication"></a>Adatok a replikáció a master és a replika kiszolgálók összekapcsolása
+## <a name="link-master-and-replica-servers-to-start-data-in-replication"></a>A fő-és a replika-kiszolgálók összekapcsolása a felhőbe irányuló replikálás indításához
 
-1. Fő kiszolgáló beállítása
+1. Főkiszolgáló beállítása
 
-   Minden replikációs adatokat a függvény a tárolt eljárásokat kell elvégeznie. Található összes eljárást annak [adatokat a replikálási tárolt eljárások](reference-data-in-stored-procedures.md). A tárolt eljárások a MySQL-rendszerhéj vagy a MySQL Workbench környezetben is futtatható. 
+   Az összes felhőbe irányuló replikálás függvényt tárolt eljárások hajtják végre. Az összes eljárást [felhőbe irányuló replikálás tárolt eljárásokban](reference-data-in-stored-procedures.md)találja. A tárolt eljárások a MySQL-rendszerhéjban vagy a MySQL Workbenchben is futtathatók. 
 
-   Két kiszolgálók összekapcsolása, és indítsa el a replikációt, jelentkezzen be a cél replikakiszolgáló, a MySQL szolgáltatáshoz készült Azure DB-ben, és a külső példány állítja be a főkiszolgáló. Ennek segítségével történik a `mysql.az_replication_change_master` tárolt eljárást a MySQL-kiszolgálóhoz készült Azure DB.
+   Két kiszolgáló összekapcsolásához és a replikáció megkezdéséhez jelentkezzen be a cél replikát futtató kiszolgálóra az Azure DB for MySQL szolgáltatásban, és állítsa be a külső példányt főkiszolgálóként. Ezt a `mysql.az_replication_change_master` tárolt eljárással végezheti el a MySQL-hez készült Azure-ADATBÁZISon.
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
    ```
 
-   - master_host: hostname of the master server
-   - master_user: a főkiszolgáló felhasználónevét
-   - master_password: a főkiszolgáló jelszavát
-   - master_log_file: futását bináris naplófájl neve `show master status`
-   - master_log_pos: futását bináris naplójának pozíciója `show master status`
-   - master_ssl_ca: Hitelesítésszolgáltatói tanúsítvány környezet. Ha nem használ SSL, üres karakterláncot adja át.
-       - Javasoljuk, hogy ezt a paramétert a átadhatja egy változóként. Az alábbiakban talál további információt.
+   - master_host: a fő kiszolgáló állomásneve
+   - master_user: a fő kiszolgáló felhasználóneve
+   - master_password: a főkiszolgáló jelszava
+   - master_log_file: bináris naplófájl neve a futtatási `show master status`
+   - master_log_pos: bináris naplózási pozíció futtatása `show master status`
+   - master_ssl_ca: HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány környezete. Ha nem használ SSL-t, adja át az üres karakterláncot.
+       - Azt javasoljuk, hogy ezt a paramétert változóként adja át. További információért tekintse meg az alábbi példákat.
 
 > [!NOTE]
-> Ha a fölérendelt kiszolgáló az Azure virtuális gép üzemel, állítsa a "Azure-szolgáltatásokhoz való hozzáférés engedélyezése", "Be" a master és a replika kiszolgálók kommunikálnak egymással. Ez a beállítás módosítható az a **kapcsolatbiztonság** beállítások. Tekintse meg [portállal tűzfalszabályok kezelése a](howto-manage-firewall-using-portal.md) további információt.
+> Ha a főkiszolgáló egy Azure-beli virtuális gépen fut, állítsa be az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" lehetőséget a "be" értékre, hogy a fő-és a replika-kiszolgálók kommunikálhassanak egymással. Ez a beállítás a **kapcsolatok biztonsági** beállításaiból módosítható. További információt a [Tűzfalszabályok kezelése a portál használatával](howto-manage-firewall-using-portal.md) című témakörben talál.
 
    **Példák**
 
-   *Replikációs SSL-lel*
+   *Replikáció SSL használatával*
 
-   A változó `@cert` jön létre a következő MySQL-parancsok futtatásával: 
+   A `@cert` változó a következő MySQL-parancsok futtatásával hozható létre: 
 
    ```sql
    SET @cert = '-----BEGIN CERTIFICATE-----
@@ -171,62 +171,62 @@ Az alábbi lépéseket előkészítése, és a MySQL futó kiszolgálót a helys
    -----END CERTIFICATE-----'
    ```
 
-   SSL-lel való replikáció be van állítva a főkiszolgálóval a "companya.com" tartományban lévő üzemeltetett és a egy MySQL-hez készült Azure Database-ben üzemeltetett adatbázisreplika-kiszolgáló között. Ez a tárolt eljárás futtatása a replikán. 
+   Az SSL-sel történő replikáció beállítása a "companya.com" tartományban üzemeltetett főkiszolgáló és a Azure Database for MySQLban üzemeltetett replika-kiszolgáló között történik. Ez a tárolt eljárás fut a replikán. 
 
    ```sql
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
    ```
-   *SSL nélküli replikációs*
+   *Replikáció SSL nélkül*
 
-   A "companya.com" tartományban lévő üzemeltetett főkiszolgálóvá és a egy MySQL-hez készült Azure Database-ben üzemeltetett adatbázisreplika-kiszolgáló közötti SSL nélküli replikációs be van állítva. Ez a tárolt eljárás futtatása a replikán.
+   Az SSL nélküli replikáció beállítása a "companya.com" tartományban üzemeltetett főkiszolgáló és a Azure Database for MySQLban üzemeltetett replika-kiszolgáló között történik. Ez a tárolt eljárás fut a replikán.
 
    ```sql
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
    ```
 
-1. Indítsa el a replikációt
+1. Replikáció indítása
 
-   Hívja a `mysql.az_replication_start` tárolt eljárás replikáció kezdeményezéséhez.
+   Az `mysql.az_replication_start` tárolt eljárás meghívásával kezdeményezheti a replikálást.
 
    ```sql
    CALL mysql.az_replication_start;
    ```
 
-1. Replikációs állapot ellenőrzése
+1. Replikáció állapotának megtekintése
 
-   Hívja a [ `show slave status` ](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) a replikakiszolgálón a replikációs állapot megtekintéséről parancsot.
+   A replikálási állapot megtekintéséhez hívja meg a [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) parancsot a replika kiszolgálóján.
     
    ```sql
    show slave status;
    ```
 
-   Ha állapotát `Slave_IO_Running` és `Slave_SQL_Running` "yes" és az értékét `Seconds_Behind_Master` "0", a replikálás működik jól. `Seconds_Behind_Master` azt jelzi, hogyan késői a replikát. Ha az értéke nem "0", az azt jelenti, hogy a replika frissítések feldolgozása. 
+   Ha `Slave_IO_Running` és `Slave_SQL_Running` állapota "igen", és a `Seconds_Behind_Master` értéke "0", a replikálás jól működik. `Seconds_Behind_Master` jelzi, hogy a replika milyen későn van. Ha az érték nem "0", az azt jelenti, hogy a replika frissítéseket dolgoz fel. 
 
-## <a name="other-stored-procedures"></a>Más tárolt eljárások
+## <a name="other-stored-procedures"></a>Egyéb tárolt eljárások
 
 ### <a name="stop-replication"></a>Replikáció leállítása
 
-A fő és az adatbázisreplika-kiszolgáló közötti replikáció megszüntetéséhez használja a következő tárolt eljárást:
+A fő-és a replika-kiszolgáló közötti replikáció leállításához használja a következő tárolt eljárást:
 
 ```sql
 CALL mysql.az_replication_stop;
 ```
 
-### <a name="remove-replication-relationship"></a>A replikálási kapcsolat eltávolítása
+### <a name="remove-replication-relationship"></a>Replikációs kapcsolat eltávolítása
 
-A master és a replika-kiszolgáló közötti kapcsolat eltávolításához használja a következő tárolt eljárást:
+A fő-és a replika-kiszolgáló közötti kapcsolat eltávolításához használja a következő tárolt eljárást:
 
 ```sql
 CALL mysql.az_replication_remove_master;
 ```
 
-### <a name="skip-replication-error"></a>Hagyja ki a replikációs hiba
+### <a name="skip-replication-error"></a>Replikálási hiba kihagyása
 
-Egy replikációs hiba kihagyásához és a replikáció folytatja, használja a következő tárolt eljárást:
+A replikálási hibák kihagyásához és a replikálás folytatásához használja a következő tárolt eljárást:
     
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>További lépések
-- Tudjon meg többet [adatok a replikáció](concepts-data-in-replication.md) az Azure Database for MySQL-hez. 
+## <a name="next-steps"></a>Következő lépések
+- További információ a Azure Database for MySQL [felhőbe irányuló replikálásról](concepts-data-in-replication.md) . 

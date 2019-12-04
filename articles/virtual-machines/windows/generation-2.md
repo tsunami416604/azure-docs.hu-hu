@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 12/03/2019
 ms.author: lahugh
-ms.openlocfilehash: d6fcbcb7f5d1b6bb25840ad1bddc5327b068c15d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6f03826bf0b82150fa89ad6e17cbcb76f98bb835
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075467"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790040"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2\. generációs virtuális gépek támogatása az Azure-ban
 
@@ -37,7 +37,7 @@ Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja a
 * [Dsv2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) és [Dsv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 * [Esv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
-* [GS-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
+* [GS sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
 * [HB sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hb-series)
 * [HC sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hc-series)
 * Az [ls-sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) és a [Lsv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
@@ -53,15 +53,12 @@ Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja a
 
 A 2. generációs virtuális gépek a következő Piactéri rendszerképeket támogatják:
 
-* Windows Server 2019 Datacenter
-* Windows Server 2016 Datacenter
-* Windows Server 2012 R2 Datacenter
-* Windows Server 2012 Datacenter
+* Windows Server 2019, 2016, 2012 R2, 2012
+* Windows 10
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
-* Ubuntu Server 16.04, 18.04, 19,04, 19,10
+* Ubuntu Server 16,04, 18,04, 19,04, 19,10 
 * RHEL 8,0
-
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Helyszíni és Azure 2. generációs virtuális gépek
 
@@ -79,15 +76,15 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 ### <a name="generation-1-vs-generation-2-features"></a>1\. generációs, 2. generációs funkciók
 
-| Funkció | 1\. generáció | 2\. generáció |
+| Szolgáltatás | 1\. generáció | 2\. generáció |
 |---------|--------------|--------------|
 | Rendszerindítás             | PCAT                      | UEFI                               |
 | Lemezvezérlő-vezérlők | IDE                       | SCSI                               |
-| A virtuális gépek mérete         | Minden VM-méret | Csak a Premium Storage-t támogató virtuális gépek |
+| Virtuálisgép-méretek         | Minden VM-méret | Csak a Premium Storage-t támogató virtuális gépek |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>1\. generációs, 2. generációs képességek
 
-| Képesség | 1\. generáció | 2\. generáció |
+| Szolgáltatás | 1\. generáció | 2\. generáció |
 |------------|--------------|--------------|
 | OPERÁCIÓSRENDSZER-lemez > 2 TB                    | x                | :heavy_check_mark: |
 | Egyéni lemez/lemezkép/swap operációs rendszer         | :heavy_check_mark: | :heavy_check_mark: |
@@ -193,7 +190,7 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
 * **Áttelepíthetek egy virtuális gépet az 1. generációról a 2. generációra?**  
     Nem, a létrehozás után nem módosítható a virtuális gép generációja. Ha váltania kell a virtuálisgép-generációk között, hozzon létre egy másik generációs új virtuális gépet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a [2. generációs virtuális gépekkel a Hyper-V-ben](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 

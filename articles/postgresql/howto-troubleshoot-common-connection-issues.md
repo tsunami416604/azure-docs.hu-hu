@@ -1,62 +1,62 @@
 ---
-title: PostgreSQL - hez-kiszolgáló egyetlen Azure-adatbázis-kapcsolatok problémáinak hibaelhárítása
-description: Ismerje meg, hogyan háríthatók el a kapcsolódási problémák az Azure Database for PostgreSQL – egyetlen kiszolgáló.
-keywords: postgresql-kapcsolat, kapcsolati karakterlánc, kapcsolódási problémák, átmeneti hiba, kapcsolódási hiba
+title: Kapcsolatok – Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Megtudhatja, hogyan lehet elhárítani a Azure Database for PostgreSQL-kiszolgáló kapcsolódási problémáit.
+keywords: PostgreSQL-kapcsolat, kapcsolati karakterlánc, csatlakozási problémák, átmeneti hiba, kapcsolódási hiba
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 8a0fe87703c9fb471174c761a6e8296e6e7a37ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c74b819893133116b8ac6905988f3fe11220ed95
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952111"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770067"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>PostgreSQL - hez-kiszolgáló egyetlen Azure-adatbázis-kapcsolatok problémáinak hibaelhárítása
+# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló kapcsolódási problémáinak elhárítása
 
-Csatlakozási problémák oka lehet a különböző dolgok, többek között:
+A kapcsolódási problémákat számos különböző dolog okozhatja, többek között:
 
 * Tűzfalbeállítások
-* A kapcsolat időkorlátja
-* Helytelen bejelentkezési információk
-* Az egyes, Azure Database for PostgreSQL erőforrás elérte a maximális korlátját
-* A szolgáltatás az infrastruktúrával kapcsolatos problémák
-* A szolgáltatásban végzett karbantartási
-* A kiszolgáló számítási lefoglalt módosítja a virtuális magok vagy áthelyezése egy másik szolgáltatásszinthez számának méretezése
+* A kapcsolatok időtúllépése
+* Helytelen bejelentkezési adatok
+* Néhány Azure Database for PostgreSQL erőforráshoz elérte a maximális korlátot
+* A szolgáltatás infrastruktúrájának problémái
+* A szolgáltatásban végrehajtott karbantartás
+* A kiszolgáló számítási kiosztását a virtuális mag számának méretezésével vagy egy másik szolgáltatási szinten való áthelyezéssel módosítjuk.
 
-Általában a kapcsolódási problémák, Azure database for PostgreSQL segítségével osztályozzák:
+A Azure Database for PostgreSQLhoz való kapcsolódási problémák általában a következőképpen sorolhatók be:
 
-* Átmeneti hibák (rövid ideig tartó vagy időszakos)
-* Állandó és nem átmeneti hibák (, rendszeresen ismétlődő hibák)
+* Átmeneti hibák (rövid életű vagy időszakos)
+* Állandó vagy nem átmeneti hibák (a rendszeresen ismétlődő hibák)
 
 ## <a name="troubleshoot-transient-errors"></a>Átmeneti hibák elhárítása
 
-Átmeneti hibák fordulhatnak elő, amikor a karbantartásra azért, a rendszer a hardveres vagy szoftveres hiba fordul elő, vagy a kiszolgáló virtuális magok vagy szolgáltatási szintjének módosítása. Az Azure Database for PostgreSQL szolgáltatás beépített magas szinten rendelkezésre áll, és célja, hogy az ilyen típusú problémák megoldásához automatikusan. Azonban az alkalmazás megszakad a kapcsolat a kiszolgálóval általában kevesebb, mint 60 másodpercre, rövid ideig legfeljebb. Egyes események időnként több időt vesz igénybe, például ha olyan nagy tranzakciót miatt a hosszú futású helyreállítási csökkentése érdekében.
+Átmeneti hibák történnek a karbantartás végrehajtásakor, a rendszer hibát észlel a hardverrel vagy a szoftverrel kapcsolatban, vagy megváltoztatja a kiszolgáló virtuális mag vagy szolgáltatási szintjét. A Azure Database for PostgreSQL szolgáltatás beépített magas rendelkezésre állással rendelkezik, és úgy van kialakítva, hogy az ilyen típusú problémákat automatikusan enyhítse. Az alkalmazás azonban nem éri el a kiszolgálóval való kapcsolatát egy rövid ideig, amely általában kevesebb, mint 60 másodperc. Egyes események esetenként hosszabb időt vehetnek igénybe, például ha egy nagy tranzakció hosszan futó helyreállítást okoz.
 
-### <a name="steps-to-resolve-transient-connectivity-issues"></a>Átmeneti kapcsolódási problémák megoldásának lépései
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Az átmeneti kapcsolódási problémák megoldásának lépései
 
-1. Ellenőrizze a [a Microsoft Azure-szolgáltatások irányítópultját](https://azure.microsoft.com/status) , amelyben a jelenített meg az alkalmazás az idő során fellépő ismert szolgáltatáskimaradások.
-2. Az alkalmazásokat, amelyek csatlakozni a cloud service, Azure Database for PostgreSQL kell átmeneti hibák várhatóan és megvalósításához újrapróbálkozási logika kezelje ezeket a hibákat, felszínre hozza a ezeket az adatokat az alkalmazáshibák felhasználók helyett. Felülvizsgálat [átmeneti kapcsolati hibákat kezelése az Azure Database for postgresql-hez](concepts-connectivity.md) ajánlott eljárások és tervezési útmutatást az átmeneti hibák kezelése.
-3. Egy kiszolgáló megközelíti az erőforrás-korlátozások, mint hibák úgy is tűnik, hogy átmeneti kapcsolati probléma. Lásd: [korlátozások az Azure Database for postgresql-hez](concepts-limits.md).
-4. Ha csatlakozási problémák továbbra is, vagy ha, amelynek az alkalmazás a hiba lép fel, mint 60 másodperc, vagy ha a hiba több példányban jelenik meg egy adott napon egy Azure-támogatáskérést fájl kiválasztásával **első támogatja**a a [Azure-támogatási](https://azure.microsoft.com/support/options) hely.
+1. Győződjön meg arról, hogy a [Microsoft Azure szolgáltatás irányítópultján](https://azure.microsoft.com/status) az alkalmazás által jelentett hibák ideje alatt bekövetkezett ismert kimaradások szerepelnek.
+2. A felhőalapú szolgáltatásokhoz, például Azure Database for PostgreSQLokhoz csatlakozó alkalmazásoknak átmeneti hibákat kell elvárniuk, és az újrapróbálkozási logikát kell végrehajtaniuk, hogy ezeket a hibákat az alkalmazás hibáiként felhasználja a felhasználók számára. Az átmeneti hibák kezelésével kapcsolatos ajánlott eljárásokért és tervezési útmutatóért tekintse át [Azure Database for PostgreSQL átmeneti csatlakozási hibák kezelését](concepts-connectivity.md) .
+3. Mivel a kiszolgáló megközelíti az erőforrás-korlátait, úgy tűnik, hogy a hibák átmeneti kapcsolódási problémát jelentenek. Tekintse [meg a Azure Database for PostgreSQL korlátozásait](concepts-limits.md).
+4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy ha az alkalmazás az időtartamot meghaladja a 60 másodpercnél, vagy ha egy adott nap több előfordulását látja a hibával, az Azure-támogatási kérést az [Azure](https://azure.microsoft.com/support/options) támogatási webhelyén, a **támogatás beszerzése** lehetőség választásával kérheti le.
 
-## <a name="troubleshoot-persistent-errors"></a>Az állandó hibák elhárítása
+## <a name="troubleshoot-persistent-errors"></a>Állandó hibák elhárítása
 
-Ha az alkalmazás nem állandó csatlakozás az Azure Database for postgresql-hez, azt általában azt jelzi, hogy probléma az alábbi lehetőségek közül:
+Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for PostgreSQLhoz, általában a következők egyikével kapcsolatos problémát jelez:
 
-* Kiszolgálói tűzfal-konfiguráció: Győződjön meg arról, hogy az Azure Database for PostgreSQL-kiszolgáló tűzfal az ügyfélről, beleértve a proxy-kiszolgálók és az átjárók kapcsolatok engedélyezésére van konfigurálva.
-* Ügyfél tűzfal-konfiguráció: Az ügyfélen a tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz csatlakozhat. IP-címek és portok nem lehet a kiszolgáló és az egyes tűzfalak például PostgreSQL alkalmazásnevek engedélyezni kell.
-* Felhasználói hiba: Előfordulhat, hogy a kapcsolati paramétereket, például a kiszolgáló neve a kapcsolati karakterlánc vagy egy hiányzó elgépelte  *\@servername* utótagot a felhasználó nevében.
+* Kiszolgáló tűzfal-konfigurációja: Ellenőrizze, hogy a Azure Database for PostgreSQL kiszolgáló tűzfala úgy van-e konfigurálva, hogy engedélyezze a kapcsolódást az ügyfélről, beleértve a proxykiszolgálót és az átjárókat is.
+* Ügyféloldali tűzfal konfigurációja: az ügyfélen lévő tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz való kapcsolódást. A kiszolgáló azon IP-címeit és portjait, amelyeket nem lehet engedélyezni, valamint az alkalmazások nevét, például a PostgreSQL-t egyes tűzfalakon.
+* Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva, például a kiszolgáló neve a (z) és a (z) felhasználónévben a (z) *\@kiszolgálónévben* .
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Állandó kapcsolattal összefüggő problémák megoldásának lépései
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 
-1. Állítsa be a [tűzfalszabályok](howto-manage-firewall-using-portal.md) lehetővé teszi az ügyfél IP-címet. Ideiglenes kizárólag tesztelési célra egy tűzfalszabályt 0.0.0.0 használja, mint a kezdő IP-cím és a 255.255.255.255 használja, mint a záró IP-cím beállított. Ekkor megnyílik a kiszolgáló összes IP-címet. A kapcsolódási probléma így megoldódik, amennyiben ez a szabály eltávolításához, és hozzon létre egy tűzfalszabályt megfelelően korlátozott IP-címet vagy címtartományt.
-2. Az ügyfél és az internet közötti összes tűzfalnak győződjön meg róla, hogy 5432-es port nyitva a kimenő kapcsolatok számára.
-3. Ellenőrizze a kapcsolati karakterláncot, és egyéb kapcsolati beállításokat.
-4. Ellenőrizze a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy van egy regionális kimaradás, [üzletmenet-folytonossági funkcióinak áttekintése az Azure Database for PostgreSQL](concepts-business-continuity.md) a lépéseket egy új régióban helyreállításához.
+1. [Tűzfalszabályok](howto-manage-firewall-using-portal.md) beállítása az ügyfél IP-címének engedélyezéséhez. Csak ideiglenes tesztelési célokra állítson be egy tűzfalszabály használatát a 0.0.0.0 értékkel a kezdő IP-címként, és használja a 255.255.255.255 a záró IP-címként. Ekkor megnyílik a kiszolgáló minden IP-címre. Ha ezzel feloldja a kapcsolódási problémát, távolítsa el ezt a szabályt, és hozzon létre egy tűzfalszabályot a megfelelő korlátozott IP-címhez vagy címtartomány létrehozásához.
+2. Az ügyfél és az Internet közötti összes tűzfalon ellenőrizze, hogy a 5432-es port nyitva van-e a kimenő kapcsolatok számára.
+3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat.
+4. Keresse meg a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy regionális leállás van, tekintse meg az [üzletmenet folytonosságának áttekintése](concepts-business-continuity.md) című témakört, amely az új régióba való helyreállítás lépéseit Azure Database for PostgreSQL.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Átmeneti kapcsolati hibákat kezelése az Azure Database for postgresql-hez](concepts-connectivity.md)
+* [Azure Database for PostgreSQL átmeneti kapcsolódási hibáinak kezelése](concepts-connectivity.md)

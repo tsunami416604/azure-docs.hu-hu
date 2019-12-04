@@ -1,17 +1,17 @@
 ---
-title: Lekérdezési tároló Azure Database for MariaDB
+title: Lekérdezési tároló – Azure Database for MariaDB
 description: További információ a Azure Database for MariaDB található lekérdezés-tárolási szolgáltatásról, amely segítséget nyújt a teljesítmény időbeli nyomon követéséhez.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 67ca6aa36166e8ae08bedec82441e45930976b80
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: fbc814b5d263e20cea1d961891afb19894b78965
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603999"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772216"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>A Azure Database for MariaDB teljesítményének figyelése a lekérdezési tárolóval
 
@@ -89,7 +89,7 @@ A lekérdezési tároló paramétereinek konfigurálásához a következő beál
 
 | **Paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
 |---|---|---|---|
-| query_store_capture_mode | A lekérdezési tároló funkció be-és kikapcsolása az érték alapján. Megjegyzés: Ha a performance_schema ki van kapcsolva, a query_store_capture_mode bekapcsolása bekapcsolja a performance_schema-t és a szolgáltatáshoz szükséges teljesítmény-séma eszközök egy részhalmazát. | ÖSSZES | NINCS, AZ ÖSSZES |
+| query_store_capture_mode | A lekérdezési tároló funkció be-és kikapcsolása az érték alapján. Megjegyzés: Ha a performance_schema ki van kapcsolva, a bekapcsolás query_store_capture_mode bekapcsolja performance_schema és a teljesítmény-séma eszközeinek egy részhalmazát, amely ehhez a szolgáltatáshoz szükséges. | ÖSSZES | NINCS, AZ ÖSSZES |
 | query_store_capture_interval | A lekérdezési tár rögzítési időköze percben kifejezve. Lehetővé teszi a lekérdezési metrikák összesítésének intervallumának megadását | 15 | 5 - 60 |
 | query_store_capture_utility_queries | Be-és kikapcsolás a rendszeren futtatott összes segédprogram-lekérdezés rögzítéséhez. | NO | IGEN, NEM |
 | query_store_retention_period_in_days | A lekérdezési tárolóban tárolt adatmegőrzési idő (nap). | 7 | 1 - 30 |
@@ -102,7 +102,7 @@ A következő lehetőségek kifejezetten a várakozási statisztikára vonatkozn
 | query_store_wait_sampling_frequency | Megváltoztatja a várakozási mintavételezés gyakoriságát másodpercben. 5 – 300 másodperc. | 30 | 5-300 |
 
 > [!NOTE]
-> Jelenleg a **query_store_capture_mode** felülírja ezt a konfigurációt, ami azt jelenti, hogy a **query_store_capture_mode** és a **query_store_wait_sampling_capture_mode** egyaránt engedélyezve kell lennie mind a várakozási statisztikák működéséhez. Ha a **query_store_capture_mode** ki van kapcsolva, a várakozási statisztikák ki vannak kapcsolva, a várakozási statisztikák pedig a performance_schema által engedélyezett és a lekérdezési tároló által rögzített query_text is használják.
+> Jelenleg **query_store_capture_mode** felülbírálja ezt a konfigurációt, ami azt jelenti, hogy mind a **query_store_capture_mode** , mind pedig a **query_store_wait_sampling_capture_modenak** engedélyezve kell lennie a várakozási statisztikák működéséhez. Ha a **query_store_capture_mode** ki van kapcsolva, a várakozási statisztikák ki vannak kapcsolva, a várakozási statisztikák pedig a performance_schema engedélyezve lehetőséget, a lekérdezési tároló által rögzített query_texteket is.
 
 A [Azure Portal](howto-server-parameters.md) használatával beolvashatja vagy beállíthatja a paraméterhez tartozó eltérő értéket.
 
@@ -120,7 +120,7 @@ Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. 
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | A séma neve |
 | `query_id`| bigint (20) | NO| Az adott lekérdezéshez generált egyedi azonosító, ha ugyanazt a lekérdezést különböző sémában hajtja végre, a rendszer új azonosítót fog generálni. |
-| `timestamp_id` | időbélyeg| NO| A lekérdezés végrehajtásának időbélyegzője. Ez a query_store_interval-konfiguráción alapul.|
+| `timestamp_id` | időbélyeg| NO| A lekérdezés végrehajtásának időbélyegzője. Ez a query_store_interval konfiguráción alapul.|
 | `query_digest_text`| LONGTEXT| NO| A normalizált lekérdezés szövege az összes literál eltávolítása után|
 | `query_sample_text` | LONGTEXT| NO| A tényleges lekérdezés első megjelenése literálokkal|
 | `query_digest_truncated` | bites| igen| Azt jelzi, hogy a lekérdezés szövege csonkítva lett-e. Az érték igen, ha a lekérdezés hosszabb 1 KB-nál|
@@ -174,8 +174,8 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 - Ha a MariaDB-kiszolgáló `default_transaction_read_only` paraméterrel rendelkezik, a Query Store nem tudja rögzíteni az adatmennyiséget.
 - A lekérdezés-tárolási funkció megszakítható, ha hosszú Unicode-lekérdezéseket (\>= 6000 bájt) tapasztal.
 - A várakozási statisztikák megőrzési időtartama 24 óra.
-- A várakozási statisztikában a példa az események töredékét rögzíti. A gyakoriság a `query_store_wait_sampling_frequency` paraméter használatával módosítható.
+- A várakozási statisztikában a példa az események töredékét rögzíti. A gyakoriság a `query_store_wait_sampling_frequency`paraméter használatával módosítható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [lekérdezési teljesítményről](concepts-query-performance-insight.md)

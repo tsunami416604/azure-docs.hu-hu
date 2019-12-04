@@ -1,90 +1,90 @@
 ---
-title: A Linuxos ügynök ellenőrzésének az eredménye az Azure az Update Management ismertetése
-description: Ismerje meg, az Update Management ügynökkel kapcsolatos problémák elhárítása.
+title: Ismerje meg a Linux Hybrid Runbook Worker Health-t az Azure-ban Update Management
+description: Ismerje meg, hogy miként lehet elhárítani a Update Managementt támogató Linuxon futó hibrid Runbook-feldolgozóval kapcsolatos problémákat.
 services: automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: c37d8be8862e75a6520ccefe4b9df93dd993b2a8
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: def0ac11edfa5a17a8e506c79d91885dd3c9ab66
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477115"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770387"
 ---
-# <a name="understand-the-linux-agent-check-results-in-update-management"></a>A Linuxos ügynök ellenőrzésének az eredménye az Update Management ismertetése
+# <a name="understand-the-linux-hybrid-runbook-worker-health-in-update-management"></a>A Linux Hybrid Runbook Worker állapotának megismerése Update Management
 
-Előfordulhat, hogy a gép nem látható, számos oka lehet **készen** az Update Management. Az Update Management ellenőrizheti az határozza meg a hibát kiváltó problémát hibrid feldolgozó ügynök állapotát. Ez a cikk ismerteti az Azure-beli gépek hibaelhárító futtatása az Azure Portalon és a nem Azure-gépek a [offline forgatókönyv](#troubleshoot-offline).
+Előfordulhat, hogy a gép számos okból nem **áll készen** a Update Management. Update Management a hibrid Runbook Worker Agent állapotának ellenőrzését a probléma okának megállapításához. Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépekhez tartozó hibakeresőt a Azure Portal és a nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline).
 
-Az alábbi lista a gép is lehet három készenléti állapotok:
+A következő lista az alábbi három felkészültségi állapotot tartalmazza:
 
-* **Kész** – az update-ügynök van telepítve, és kevesebb mint 1 órája történt legutóbbi volt látható.
-* **Leválasztott** – az update-ügynök van telepítve, és több mint 1 órája történt legutóbbi volt látható.
-* **Nincs konfigurálva** – az update-ügynök nem található vagy nem fejeződött be az előkészítés.
-
-> [!NOTE]
-> Előfordulhat, hogy egy kis idő között az Azure portal megjeleníti, és a gép aktuális állapotát.
-
-## <a name="start-the-troubleshooter"></a>Indítsa el a hibaelhárító
-
-Azure-beli gépek, kattintson a **hibaelhárítás** hivatkozásra a **frissítési ügynök készültsége** oszlopa a portál elindítja a **hibaelhárítása Windows Update Agent** lap. Nem Azure-gépek a hivatkozás teszi elérhetővé, az ebben a cikkben. Tekintse meg a kapcsolat nélküli egy nem Azure-beli gép hibaelhárítása.
-
-![virtuális gép listáját tartalmazó lapon](../media/update-agent-issues-linux/vm-list.png)
+* **Kész** – a hibrid Runbook Worker üzembe helyezése megtörtént, és legalább 1 órával ezelőtt volt látható.
+* **Leválasztva** – a hibrid Runbook Worker üzembe helyezése megtörtént, és a rendszer az elmúlt 1 órája óta utoljára látott el.
+* **Nincs konfigurálva** – a hibrid Runbook Worker nem található vagy nem fejeződött be.
 
 > [!NOTE]
-> Az ellenőrzések futtatását van szüksége. Ha a virtuális gép nem fut egy gombra kattintva megnyílik **indítsa el a virtuális Gépet**.
+> A Azure Portal és a gép aktuális állapota között enyhe késés fordulhat elő.
 
-Az a **hibaelhárítása Windows Update Agent** kattintson **ellenőrzések futtatása**, a hibaelhárító elindításához. Használja a hibaelhárító [futtatása paranccsal](../../virtual-machines/linux/run-command.md) parancsfájl futtatása a függőségeket, amelyen az ügynök ellenőrzése a számítógépen. A hibaelhárító befejeződése után az ellenőrzések eredményét adja vissza.
+## <a name="start-the-troubleshooter"></a>A hibakereső elindítása
 
-![Hibaelhárítás lap](../media/update-agent-issues-linux/troubleshoot-page.png)
+Az Azure-gépek esetében a portál **frissítési ügynök készültsége** oszlopának **hibakeresés** hivatkozására kattintva elindítja az **ügynök frissítése** lapot. A nem Azure-beli gépek esetében a hivatkozás a jelen cikkre mutat. A nem Azure-beli gépek hibáinak megoldásához tekintse meg az offline utasításokat.
 
-Amikor végzett, a rendszer visszairányítja az eredményeket az ablakban. A jelölőnégyzet részek a mi minden ellenőrzés keres.
+![Virtuálisgép-lista lapja](../media/update-agent-issues-linux/vm-list.png)
 
-![Az ügynök ellenőrzése lap frissítése](../media/update-agent-issues-linux/update-agent-checks.png)
+> [!NOTE]
+> Az ellenőrzésekhez szükség van a virtuális gép futtatására. Ha a virtuális gép nem fut, megjelenik egy gomb a **virtuális gép elindításához**.
 
-## <a name="prerequisite-checks"></a>Előfeltétel-ellenőrzések
+Az **ügynök frissítése** lapon kattintson az **ellenőrzések futtatása**gombra a hibakereső elindításához. A hibakereső a [Futtatás parancs](../../virtual-machines/linux/run-command.md) használatával futtat egy parancsfájlt a gépen a függőségek ellenőrzéséhez. A hibakereső befejezése után visszaadja az ellenőrzések eredményét.
+
+![Hibakeresési oldal](../media/update-agent-issues-linux/troubleshoot-page.png)
+
+Ha elkészült, a rendszer az eredményeket az ablakban adja vissza. Az ellenőrzési szakaszokból megtudhatja, hogy mit keres az egyes ellenőrzések.
+
+![Ügynök-ellenőrzési oldal frissítése](../media/update-agent-issues-linux/update-agent-checks.png)
+
+## <a name="prerequisite-checks"></a>Előfeltételek ellenőrzése
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Az operációs rendszer ellenőrzés ellenőrzi, hogy ha a hibrid Runbook-feldolgozót a következő operációs rendszerek egyikét futtatja:
+Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgozó a következő operációs rendszerek egyikét futtatja-e:
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
-|CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz. "Yum" besorolásalapú javítás szükséges, amely CentOS nem rendelkezik beépített biztonsági adatokat adja vissza.         |
+|CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz. A besoroláson alapuló javításhoz a "yum" utasítás szükséges ahhoz, hogy a CentOS ne legyen a dobozban.         |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
-|Ubuntu 14.04 LTS, 16.04 LTS és 18.04 LTS (x86/x64)      |A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.         |
+|Ubuntu 14,04 LTS, 16,04 LTS és 18,04 LTS (x86/x64)      |A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.         |
 
-## <a name="monitoring-agent-service-health-checks"></a>Figyelési ügynök szolgáltatás állapot-ellenőrzések
+## <a name="monitoring-agent-service-health-checks"></a>Figyelési ügynök szolgáltatás állapotának ellenőrzése
 
-### <a name="oms-agent"></a>Az OMS-ügynök
+### <a name="log-analytics-agent"></a>Log Analytics ügynök
 
-Ez az ellenőrzés biztosítja, hogy a Linuxhoz készült OMS-ügynök telepítve van-e. Hogyan kell telepíteni, útmutatásért lásd: [a Linuxhoz készült ügynök telepítése](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
+Ez az ellenőrzési funkció biztosítja, hogy a Linux rendszerhez készült Log Analytics-ügynök telepítve legyen. A telepítésével kapcsolatos útmutatásért lásd: [a Linux-ügynök telepítése](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
 ).
 
-### <a name="oms-agent-status"></a>Az OMS-ügynök állapota
+### <a name="log-analytics-agent-status"></a>Log Analytics ügynök állapota
 
-Ez az ellenőrzés biztosítja, hogy a Linuxhoz készült OMS-ügynök fut-e. Ha az ügynök nem fut, próbálja meg újraindítani a következő parancsot futtathatja. Az ügynök hibaelhárítással kapcsolatos további információkért lásd: [Linux hibrid Runbook-feldolgozó hibaelhárítása](hybrid-runbook-worker.md#linux)
+Ez az ellenőrzési funkció biztosítja, hogy a Linux Log Analytics ügynöke fusson. Ha az ügynök nem fut, akkor a következő parancs futtatásával próbálja meg újraindítani. Az ügynök hibaelhárításával kapcsolatos további információkért lásd: [Linux Hybrid Runbook Worker – hibaelhárítás](hybrid-runbook-worker.md#linux)
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
 ```
 
-### <a name="multihoming"></a>Frissítéskor
+### <a name="multihoming"></a>Többhelyű
 
-Ez az ellenőrzés határozza meg, ha a ügynök több munkaterülethez is jelent. Többkiszolgálós nem támogatja az Update Management.
+Ez az érték határozza meg, hogy az ügynök több munkaterületnek jelent-e jelentést. Update Management nem támogatja a többszörös vezérlést.
 
-### <a name="hybrid-runbook-worker"></a>hibrid runbook-feldolgozó
+### <a name="hybrid-runbook-worker"></a>Hibrid forgatókönyv-feldolgozó
 
-Ez az ellenőrzés ellenőrzi, hogy rendelkezik-e a Linuxhoz készült OMS-ügynök a hibrid Runbook-feldolgozó csomag. Ez a csomag az Update Management működéséhez szükség.
+Ez az ellenőrzés ellenőrzi, hogy a Linux Log Analytics-ügynöke a hibrid Runbook Worker csomaggal rendelkezik-e. Ez a csomag a Update Management működéséhez szükséges.
 
-### <a name="hybrid-runbook-worker-status"></a>A hibrid Runbook-feldolgozó állapota
+### <a name="hybrid-runbook-worker-status"></a>Hibrid Runbook Worker állapota
 
-Ez az ellenőrzés biztosítja, hogy a hibrid Runbook-feldolgozó fut a gépen. A következő folyamatok végrehajtásának kell van jelen, ha a hibrid Runbook-feldolgozó megfelelően működnek-e. További tudnivalókért lásd: [hibáinak elhárítása a Log Analytics-ügynök Linux](hybrid-runbook-worker.md#oms-agent-not-running).
+Ez az ellenőrzés ellenőrzi, hogy a hibrid Runbook Worker fut-e a gépen. Ha a hibrid Runbook Worker megfelelően fut, a következő folyamatoknak kell szerepelniük. További információ: [a Linux rendszerhez készült log Analytics-ügynök hibaelhárítása](hybrid-runbook-worker.md#oms-agent-not-running).
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -92,39 +92,39 @@ nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
 ```
 
-## <a name="connectivity-checks"></a>Kapcsolat ellenőrzése
+## <a name="connectivity-checks"></a>Kapcsolatok ellenőrzése
 
 ### <a name="general-internet-connectivity"></a>Általános internetkapcsolat
 
-Ez az ellenőrzés gondoskodik arról, hogy a gép rendelkezik internetkapcsolattal.
+Ez az ellenőrzés biztosítja, hogy a számítógép hozzáférjen az internethez.
 
 ### <a name="registration-endpoint"></a>Regisztrációs végpont
 
-Ez az ellenőrzés határozza meg, ha az ügynök megfelelően kommunikálhat az ügynök szolgáltatással.
+Ez az érték határozza meg, hogy a hibrid Runbook-feldolgozó megfelelően tud-e kommunikálni Azure Automation a Log Analytics munkaterülettel.
 
-Proxy és tűzfal-konfiguráció lehetővé teszi a hibrid Runbook-feldolgozó ügynök a regisztrációs végponttal való kommunikációhoz. Címek és portok megnyitásához listáját lásd: [hálózati hibrid feldolgozók tervezése](../automation-hybrid-runbook-worker.md#network-planning)
+A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook Worker ügynök kommunikáljon a regisztrációs végponttal. A megnyitni kívánt címek és portok listáját lásd: a [hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning)
 
-### <a name="operations-endpoint"></a>Műveletek végpont
+### <a name="operations-endpoint"></a>Műveleti végpont
 
-Ez az ellenőrzés határozza meg, ha az ügynök megfelelően kommunikál a feladat futásidejű adatok szolgáltatással.
+Ez az érték határozza meg, hogy az ügynök megfelelően tud-e kommunikálni a feladatütemezés adatszolgáltatásával.
 
-Proxy és a tűzfal beállításait a hibrid Runbook-feldolgozó ügynök kommunikáljon a feladat modul Data Service lehetővé teszi. Címek és portok megnyitásához listáját lásd: [hálózati hibrid feldolgozók tervezése](../automation-hybrid-runbook-worker.md#network-planning)
+A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook-feldolgozó ügynök kommunikáljon a feladatütemezés adatszolgáltatásával. A megnyitni kívánt címek és portok listáját lásd: a [hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning)
 
-### <a name="log-analytics-endpoint-1"></a>Log Analytics-végpont 1
+### <a name="log-analytics-endpoint-1"></a>Log Analytics 1. végpont
 
-Ellenőrzi, hogy a gép rendelkezik-e hozzáféréssel a végpontokra, szükség szerint a Log Analytics-ügynököket.
+Ez az ellenőrzés ellenőrzi, hogy a számítógép rendelkezik-e hozzáféréssel a Log Analytics ügynök által igényelt végpontokhoz.
 
-### <a name="log-analytics-endpoint-2"></a>Log Analytics-végpont 2
+### <a name="log-analytics-endpoint-2"></a>Log Analytics 2. végpont
 
-Ellenőrzi, hogy a gép rendelkezik-e hozzáféréssel a végpontokra, szükség szerint a Log Analytics-ügynököket.
+Ez az ellenőrzés ellenőrzi, hogy a számítógép rendelkezik-e hozzáféréssel a Log Analytics ügynök által igényelt végpontokhoz.
 
-### <a name="log-analytics-endpoint-3"></a>Log Analytics-végpont 3
+### <a name="log-analytics-endpoint-3"></a>Log Analytics 3. végpont
 
-Ellenőrzi, hogy a gép rendelkezik-e hozzáféréssel a végpontokra, szükség szerint a Log Analytics-ügynököket.
+Ez az ellenőrzés ellenőrzi, hogy a számítógép rendelkezik-e hozzáféréssel a Log Analytics ügynök által igényelt végpontokhoz.
 
-## <a name="troubleshoot-offline"></a>Kapcsolat nélküli hibaelhárítása
+## <a name="troubleshoot-offline"></a>Offline hibák
 
-Használhatja a hibaelhárító offline egy hibrid Runbook-feldolgozón a szkript helyi futtatásával. A python-szkriptet [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) Script Centerben tekintheti meg. Ez a szkript a kimenetét egy példát a következő példában látható:
+A hibakeresőt offline módon használhatja hibrid Runbook-feldolgozón a parancsfájl helyi futtatásával. A [update_mgmt_health_check.](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) a Python-szkript a script Centerben található. A szkript kimenetének példája az alábbi példában látható:
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2
@@ -177,7 +177,6 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A hibrid Runbook-feldolgozók további problémák hibaelhárítása: [hibaelhárítás – a hibrid Runbook-feldolgozók](hybrid-runbook-worker.md)
-
+A hibrid Runbook-feldolgozókkal kapcsolatos további problémák elhárítása: [Hibaelhárítás – hibrid Runbook-feldolgozók](hybrid-runbook-worker.md)

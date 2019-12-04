@@ -3,12 +3,12 @@ title: Nem érhető el az SKU-hibák
 description: Ismerteti, hogyan lehet elhárítani az SKU nem elérhető hibáját az erőforrások Azure Resource Manager használatával történő telepítésekor.
 ms.topic: troubleshooting
 ms.date: 10/19/2018
-ms.openlocfilehash: 56afca6b6a59ca08f3fd59c4d9b3ebf12bda415a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 0b3696d3207a88d87b11e65f4697473963f960d5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150495"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769135"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Az SKU-hoz nem elérhető hibák elhárítása
 
@@ -30,7 +30,9 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 Ez a hiba akkor jelenik meg, ha a kiválasztott erőforrás-SKU (például a virtuális gép mérete) nem érhető el a kiválasztott helyhez.
 
-## <a name="solution-1---powershell"></a>Megoldás 1 – PowerShell
+Ha egy Azure spot VM-vagy direktszín-méretezési csoport példányát telepíti, akkor ezen a helyen nem áll rendelkezésre kapacitás az Azure-hoz. További információ: [spot hibaüzenetek](../virtual-machines/error-codes-spot.md).
+
+## <a name="solution-1---powershell"></a>1\. megoldás – PowerShell
 
 Az egyes régiókban elérhető SKU-ket a [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) parancs használatával állapíthatja meg. Az eredmények kiszűrése hely szerint. Ehhez a parancshoz a PowerShell legújabb verzióját kell megadnia.
 
@@ -48,7 +50,7 @@ virtualMachines       Standard_A1 centralus   NotAvailableForSubscription      M
 virtualMachines       Standard_A2 centralus   NotAvailableForSubscription      MaxResourceVolumeMB  138240
 ```
 
-## <a name="solution-2---azure-cli"></a>2 – Azure CLI megoldás
+## <a name="solution-2---azure-cli"></a>2\. megoldás – Azure CLI
 
 Az adott régióban elérhető SKU-ket a `az vm list-skus` parancs használatával állapíthatja meg. A `--location` paraméter használatával szűrheti a kimenetet a használt helyre. A `--size` paraméterrel megkeresheti a részleges méret nevét.
 
@@ -68,7 +70,7 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 ```
 
 
-## <a name="solution-3---azure-portal"></a>3 – Azure portal megoldás
+## <a name="solution-3---azure-portal"></a>3\. megoldás – Azure Portal
 
 Az adott régióban elérhető SKU-ket a [portálon](https://portal.azure.com)állapíthatja meg. Jelentkezzen be a portálra, és adjon hozzá egy erőforrást az interfészen keresztül. Az értékek megadásakor az adott erőforráshoz rendelkezésre álló SKU-ket láthatja. Nem kell végrehajtania az üzembe helyezést.
 

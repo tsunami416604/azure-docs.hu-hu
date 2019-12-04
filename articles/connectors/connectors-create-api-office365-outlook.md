@@ -1,96 +1,92 @@
 ---
-title: Kapcsolódás az Office 365 Outlook – Azure Logic Apps |} A Microsoft Docs
-description: E-mailek, partneradatok és az Office 365 REST API-k és az Azure Logic Apps naptárak kezelése
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 10/18/2016
-ms.topic: article
-ms.service: logic-apps
+title: Kapcsolódás az Office 365 Outlookhoz
+description: Kezelheti az e-maileket, a névjegyeket és a naptárakat az Office 365 REST API-kkal és Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 52abf17e869216e65780129a7b48df79bd79f67a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 858366947fe21a20d6f112fc51899d1533a36472
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105054"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789610"
 ---
-# <a name="get-started-with-the-office-365-outlook-connector"></a>Az Office 365 Outlook-összekötő használatának első lépései
-Az Office 365 Outlook-összekötő lehetővé teszi, hogy az Office 365 Outlook-szal. Ez az összekötő használatával létrehozása, szerkesztése, és a partnerek és a naptári elemek, frissítése és is, küldése és válasz e-mail-cím.
+# <a name="get-started-with-the-office-365-outlook-connector"></a>Ismerkedés az Office 365 Outlook connectorral
+Az Office 365 Outlook Connector lehetővé teszi az Office 365-ban való interakciót az Outlookkal. Ezzel az összekötővel névjegyeket és naptári elemeket hozhat létre, szerkeszthet és frissíthet, valamint az e-mailek fogadására, küldésére és megválaszolására is választ kaphat.
 
-Az Office 365 Outlookban hogy:
+Az Office 365 Outlookban a következőket végezheti el:
 
-* Létrehozhatja a munkafolyamatot, használja az e-mailek és a naptári funkciókat az Office 365-ben. 
-* Indítsa el a munkafolyamatot, ha van egy új e-mailt, amikor frissül egy naptárelemet és más triggerek használatát.
-* E-mailt küldeni, hozzon létre egy új naptáresemény és egyéb műveletek használata. Például ha egy új objektumot a Salesforce-ban (egy eseményindító), e-mail küldése az Office 365 Outlookba (művelet). 
+* Hozza létre a munkafolyamatot az Office 365 e-mail és naptár funkcióinak használatával. 
+* Az eseményindítók használatával elindíthatja a munkafolyamatot, ha új e-mail-cím van, amikor a naptár elem frissül, és így tovább.
+* E-mailek küldéséhez, új naptári esemény létrehozásához és egyéb műveletekhez használhatja a műveleteket. Ha például egy új objektum van a Salesforce (trigger), küldjön egy e-mailt az Office 365 Outlookba (egy művelet). 
 
-Ez a cikk bemutatja, hogyan használható az Office 365 Outlook-összekötőt, a logikai alkalmazás, és felsorolja a triggereket és műveleteket.
+Ez a cikk bemutatja, hogyan használható az Office 365 Outlook Connector egy logikai alkalmazásban, valamint az eseményindítók és műveletek felsorolása is.
 
 > [!NOTE]
-> A cikk e verziója a Logic Apps általánosan (elérhetővé tétel GA) vonatkozik.
+> A cikk jelen verziója a Logic Apps általánosan elérhető (GA) verzióra vonatkozik.
 > 
 > 
 
-Logic Apps szolgáltatással kapcsolatos további tudnivalókért lásd: [logic Apps](../logic-apps/logic-apps-overview.md) és [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Ha többet szeretne megtudni a Logic Appsről, tekintse meg a [Mi a Logic apps](../logic-apps/logic-apps-overview.md) és [a logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakört.
 
 ## <a name="connect-to-office-365"></a>Csatlakozás az Office 365-höz
-A logikai alkalmazás bármely szolgáltatáshoz férjenek hozzá, akkor először hozzon létre egy *kapcsolat* a szolgáltatáshoz. Kapcsolatot biztosít a Logic Apps-alkalmazás és a egy másik szolgáltatás közötti kapcsolat. Ha például szeretne csatlakozni az Office 365 Outlook, először egy Office 365 *kapcsolat*. A kapcsolat létrehozásához írja be a szokásos módon szeretne csatlakozni a szolgáltatáshoz való hozzáféréshez használt hitelesítő adatokat. Ezért az Office 365 Outlookban, adja meg a hitelesítő adatokat az Office 365-fiók, a kapcsolat létrehozásához.
+Ahhoz, hogy a logikai alkalmazás hozzáférhessen bármely szolgáltatáshoz, először létre kell hoznia egy *kapcsolatot* a szolgáltatással. A kapcsolat kapcsolatot biztosít egy logikai alkalmazás és egy másik szolgáltatás között. Például az Office 365 Outlookhoz való kapcsolódáshoz először Office 365- *kapcsolatra*van szükség. Kapcsolat létrehozásához adja meg azokat a hitelesítő adatokat, amelyeket általában a kapcsolódáshoz használni kívánt szolgáltatás eléréséhez használ. Tehát az Office 365 Outlook esetében adja meg az Office 365-fiók hitelesítő adatait a kapcsolódás létrehozásához.
 
 ## <a name="create-the-connection"></a>A kapcsolat létrehozása
 > [!INCLUDE [Steps to create a connection to Office 365](../../includes/connectors-create-api-office365-outlook.md)]
 > 
 > 
 
-## <a name="use-a-trigger"></a>Triggert
-Egy trigger egy eseményt, amely a logikai alkalmazásban definiált munkafolyamat elindításához használható. Eseményindítók "elindítja a lekérdezést" a szolgáltatás az intervallum és a kívánt gyakorisággal. [További tudnivalók a triggerek](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+## <a name="use-a-trigger"></a>Trigger használata
+Az eseményindító egy olyan esemény, amely a logikai alkalmazásban definiált munkafolyamat elindítására szolgál. A "lekérdezés" a szolgáltatást a kívánt időközönként és gyakorisággal indítja el. [További információ az eseményindítókkal kapcsolatban](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. Írja be a logikai alkalmazás "office 365", az eseményindítók listájának lekérése:  
+1. Az eseményindítók listájának lekéréséhez írja be az "Office 365" kifejezést a logikai alkalmazásba:  
    
     ![](./media/connectors-create-api-office365-outlook/office365-trigger.png)
-2. Válassza ki **Office 365 Outlook – Ha egy közelgő esemény hamarosan kezdődik**. Ha a kapcsolat már létezik, majd naptár kijelölése a legördülő listából.
+2. Válassza **az Office 365 Outlook lehetőséget, ha egy közelgő esemény hamarosan elindul**. Ha már létezik egy kapcsolatok, válasszon ki egy naptárat a legördülő listából.
    
     ![](./media/connectors-create-api-office365-outlook/sample-calendar.png)
    
-    Ha a rendszer kéri, jelentkezzen be, akkor írja be a bejelentkezést a kapcsolat létrehozásához szükséges adatok. [Hozza létre a kapcsolatot](connectors-create-api-office365-outlook.md#create-the-connection) Ez a témakör felsorolja azokat a lépéseket. 
+    Ha a rendszer kéri, hogy jelentkezzen be, adja meg a bejelentkezés részleteit a kapcsolat létrehozásához. A jelen témakörben található [kapcsolatok létrehozása](connectors-create-api-office365-outlook.md#create-the-connection) a lépéseket tartalmazza. 
    
    > [!NOTE]
-   > Ebben a példában a logikai alkalmazás fut, amikor frissül egy naptáresemény. Ez az eseményindító eredményeinek megtekintéséhez adjon hozzá egy másik művelet, amely egy szöveges üzenetet küld Önnek. Például adja hozzá a Twilio *üzenetküldés* művelet a szövegek, ha a naptáresemény kezdetekor 15 percet vesz igénybe. 
+   > Ebben a példában a logikai alkalmazás egy naptári esemény frissítésekor fut. Az trigger eredményeinek megtekintéséhez adjon hozzá egy másik műveletet, amely szöveges üzenetet küld. Adja meg például a Twilio küldése műveletet, amely a naptári esemény 15 percen belüli indításakor megjelenő szöveget *jeleníti* meg. 
    > 
    > 
-3. Válassza ki a **szerkesztése** gombra, és állítsa be a **gyakorisága** és **időköz** értékeket. Például, ha azt szeretné, hogy az eseményindító 15 percenként lekérdezéséhez, majd állítsa be a **gyakorisága** való **perc**, és állítsa be a **időköz** való **15**. 
+3. Kattintson a **Szerkesztés** gombra, és állítsa be a **gyakoriság** és az **intervallum** értékét. Ha például azt szeretné, hogy a trigger 15 percenként lekérdezzen, állítsa a **gyakoriságot** **percre**, és állítsa be az **intervallumot** **15**-re. 
    
     ![](./media/connectors-create-api-office365-outlook/calendar-settings.png)
-4. **Mentés** a módosításokat (bal felső sarokban az eszköztár). A logikai alkalmazás a rendszer menti, és előfordulhat, hogy automatikusan engedélyezve kell lennie.
+4. **Mentse** a módosításokat (az eszköztár bal felső sarkában). A logikai alkalmazás mentése megtörtént, és lehet, hogy automatikusan engedélyezve van.
 
-## <a name="use-an-action"></a>Egy művelet használata
-Művelet definiálva, a logikai alkalmazás a munkafolyamat által végzett művelet. [További információért azokról a műveletekről](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+## <a name="use-an-action"></a>Művelet használata
+A művelet egy logikai alkalmazásban definiált munkafolyamat által végrehajtott művelet. [További információ a műveletekről](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. Kattintson a plusz jelre. Sokféle lehetőség jelenik meg: **Művelet hozzáadása**, **feltétel hozzáadása**, vagy az egyik a **további** beállítások.
+1. Válassza ki a plusz jelet. Több lehetőség is megjelenik: **művelet hozzáadása**, **feltétel hozzáadása**vagy a **további** lehetőségek egyike.
    
     ![](./media/connectors-create-api-office365-outlook/add-action.png)
-2. Válasszon **művelet hozzáadása**.
-3. A szövegmezőbe írja be a "office 365" az elérhető műveletek listáját.
+2. Válassza **a művelet hozzáadása**lehetőséget.
+3. A szövegmezőbe írja be az "Office 365" kifejezést az összes elérhető művelet listájának lekéréséhez.
    
     ![](./media/connectors-create-api-office365-outlook/office365-actions.png) 
-4. Ebben a példában válassza **Office 365 Outlook - névjegy létrehozása**. Ha a kapcsolat már létezik, majd válassza a **Mappaazonosító**, **Utónév**, és egyéb tulajdonságok:  
+4. A példánkban válassza az **Office 365 Outlook – kapcsolat létrehozása**lehetőséget. Ha már létezik egy kapcsolatok, válassza ki a **mappa azonosítóját**, a **nevet**és a többi tulajdonságot:  
    
     ![](./media/connectors-create-api-office365-outlook/office365-sampleaction.png)
    
-    Ha a rendszer kéri a kapcsolati információkat, adja meg a részleteket a kapcsolat létrehozásához. [Hozza létre a kapcsolatot](connectors-create-api-office365-outlook.md#create-the-connection) Ez a témakör azt ismerteti, ezeket a tulajdonságokat. 
+    Ha a rendszer a kapcsolati adatok megadását kéri, adja meg a kapcsolat létrehozásához szükséges adatokat. A jelen témakörben található [kapcsolatok létrehozása](connectors-create-api-office365-outlook.md#create-the-connection) ezeket a tulajdonságokat ismerteti. 
    
    > [!NOTE]
-   > Ebben a példában egy új névjegyet az Office 365 Outlook hozunk létre. Egy másik trigger kimenete használatával hozzon létre az ügyfélhez. Hozzáadhat például a SalesForce *objektum létrehozásakor* eseményindító. Majd adja hozzá az Office 365 Outlook *névjegy létrehozása* műveletet, amely a SalesForce-mezők használatával hozzon létre az új névjegyet az Office 365-ben. 
+   > Ebben a példában egy új névjegyet hozunk létre az Office 365 Outlookban. Egy másik trigger kimenetét is használhatja a partner létrehozásához. Adja meg például, hogy a SalesForce *egy objektum létrehozásakor* trigger. Ezután adja hozzá az Office 365 Outlook *Create contact* műveletét, amely az Salesforce mezőket használja az Office 365-ben létrehozott új partner létrehozásához. 
    > 
    > 
-5. **Mentés** a módosításokat (bal felső sarokban az eszköztár). A logikai alkalmazás a rendszer menti, és előfordulhat, hogy automatikusan engedélyezve kell lennie.
+5. **Mentse** a módosításokat (az eszköztár bal felső sarkában). A logikai alkalmazás mentése megtörtént, és lehet, hogy automatikusan engedélyezve van.
 
-## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
+## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
-Megtekintheti a valamennyi eseményindítót és műveletet a swaggerben meghatározott, és emellett a korlátozott a [összekötő részletei](/connectors/office365connector/). 
+Megtekintheti a hencegés során definiált összes eseményindítót és műveletet, valamint az [összekötő részleteiben](/connectors/office365connector/)megjelenő korlátokat is. 
 
-## <a name="next-steps"></a>További lépések
-[Hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ismerje meg az egyéb elérhető összekötők a Logic Apps, a [API-k listája](apis-list.md).
+## <a name="next-steps"></a>Következő lépések
 
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

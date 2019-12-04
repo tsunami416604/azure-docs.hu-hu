@@ -1,31 +1,31 @@
 ---
-title: Alkalmazások az Azure Database for MariaDB csatlakoztatása
-description: Ez a dokumentum a jelenleg támogatott kapcsolati karakterlánc, a csatlakozás az Azure Database for MariaDB, beleértve a (C#) ADO.NET, JDBC, Node.js, ODBC, PHP, Python és Ruby-alkalmazások listája.
+title: Kapcsolatok karakterláncai – Azure Database for MariaDB
+description: Ez a dokumentum felsorolja a jelenleg támogatott kapcsolati karakterláncokat, amelyekkel az alkalmazások csatlakozhatnakC#Azure Database for MariaDBhoz, beleértve a ADO.net (), a JDBC, a Node. js, az ODBC, a PHP, a Python és a Ruby nyelveket.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 70cd25ff63101fa2a477cde2502d5d286b289366
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 1b598385d533b3fc157a7a90ecc34c3cb18df4ac
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61039690"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767279"
 ---
-# <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Alkalmazások az Azure Database for MariaDB csatlakoztatása
-Ez a témakör felsorolja a kapcsolati karakterlánc típusú által támogatott Azure Database for MariaDB, sablonok és a példák együtt. Lehetséges, hogy különböző paraméterek és beállítások a kapcsolati karakterláncban.
+# <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Alkalmazások összekapcsolásának Azure Database for MariaDB
+Ez a témakör felsorolja a Azure Database for MariaDB által támogatott, a sablonokkal és példákkal együtt támogatott kapcsolatok karakterlánc-típusokat. Előfordulhat, hogy a kapcsolatok karakterláncában különböző paraméterek és beállítások vannak.
 
-- A tanúsítvány beszerzéséről [SSL konfigurálása](./howto-configure-ssl.md).
-- {your_host} = [servername].mariadb.database.azure.com
-- {your_user}@{servername} = megfelelően a felhasználói azonosító formátuma a hitelesítéshez.  Ha csak a felhasználói azonosítót használja, a hitelesítés sikertelen lesz.
+- A tanúsítvány beszerzéséhez lásd: [az SSL konfigurálása](./howto-configure-ssl.md).
+- {your_host} = [servername]. MariaDB. database. Azure. com
+- {your_user} @ {servername} = userID-formátum a hitelesítéshez.  Ha csak a felhasználóazonosító-t használja, a hitelesítés sikertelen lesz.
 
 ## <a name="adonet"></a>ADO.NET
 ```csharp
 Server={your_host}; Port=3306; Database={your_database}; Uid={username@servername}; Pwd={your_password}; SslMode=Preferred;
 ```
 
-Ebben a példában a kiszolgáló neve, `mydemoserver`, az adatbázisnév `wpdb`, a felhasználónév `WPAdmin`, és a jelszó `mypassword!2`. Ennek eredményeképpen a kapcsolati karakterláncot kell lennie:
+Ebben a példában a kiszolgáló neve `mydemoserver`, az adatbázis neve `wpdb`, a Felhasználónév `WPAdmin`, és a jelszó `mypassword!2`. Ennek eredményeképpen a kapcsolatok karakterláncának a következőképpen kell szerepelnie:
 
 ```csharp
 Server= "mydemoserver.mariadb.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -61,10 +61,10 @@ cnx = mysql.connector.connect(user="{username@servername}", password={your_passw
 client = Mysql2::Client.new(username: "{username@servername}", password: {your_password}, database: {your_database}, host: "{your_host}", port: 3306, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA')
 ```
 
-## <a name="get-the-connection-string-details-from-the-azure-portal"></a>A kapcsolati karakterlánc adatait lekérése az Azure Portalról
-Az a [az Azure portal](https://portal.azure.com), nyissa meg az Azure Database for MariaDB-kiszolgálót, és kattintson **kapcsolati karakterláncok** karakterlánc lekéréséhez a példány: ![A kapcsolati karakterlánc ablaktáblán az Azure Portalon](./media/howto-connection-strings/connection-strings-on-portal.png)
+## <a name="get-the-connection-string-details-from-the-azure-portal"></a>A kapcsolati sztring részleteinek beolvasása a Azure Portal
+A [Azure Portal](https://portal.azure.com)nyissa meg a Azure Database for MariaDB-kiszolgálót, majd kattintson a **kapcsolódási karakterláncok** lehetőségre a példányhoz tartozó karakterláncok listájának lekéréséhez: ![a Azure Portal kapcsolódási karakterláncok paneljét](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-A karakterláncban biztosít például az illesztőprogram, a kiszolgáló és az egyéb adatbázis kapcsolódási paraméterek. Módosítsa a példákat a saját paramétereivel, például az adatbázis nevét, jelszó és így tovább. Ezután használhatja ezt a karakterláncot a kód és az alkalmazások csatlakozni a kiszolgálóhoz.
+A karakterlánc olyan adatokat tartalmaz, mint például az illesztőprogram, a kiszolgáló és más adatbázis-kapcsolati paraméterek. Módosítsa ezeket a példákat saját paraméterek használatára, például az adatbázis nevére, jelszavára stb. Ezt a karakterláncot használhatja a kód és az alkalmazások kiszolgálóhoz való kapcsolódáshoz.
 
 <!-- 
 ## Next steps

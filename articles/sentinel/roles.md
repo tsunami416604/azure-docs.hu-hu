@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 02d87ed5f26d36b7cd438b0d818c7bdcce43520d
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: cf02708ae4ba3f203448398fdf954e8f48cce614
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464111"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762702"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Engedélyek az Azure Sentinelben
 
@@ -30,9 +30,9 @@ A RBAC használatával a biztonsági műveleti csapaton belül szerepköröket h
 
 Három speciális beépített Azure Sentinel-szerepkör létezik.  
 **Az Azure Sentinel beépített szerepkörei olvasási hozzáférést biztosítanak az Azure Sentinel-munkaterület adataihoz.**
-- **Azure Sentinel-olvasó**: további információt a [beépített szerepkörök](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) című témakörben talál.
-- **Azure Sentinel-válaszadó**: További információ: [beépített szerepkörök](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
-- **Azure Sentinel közreműködő**: További információ: [beépített szerepkörök](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
+- [Azure Sentinel-olvasó](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
+- [Azure Sentinel-válaszadó](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
+- [Azure Sentinel közreműködő](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
 
 Az Azure Sentinel dedikált RBAC szerepkörein kívül olyan Azure-és Log Analytics-szerepkörök is rendelkezésre állnak, amelyek az Azure Sentinel-munkaterülethez és egyéb erőforrásokhoz való hozzáférést biztosító, szélesebb körű engedélyeket is RBAC:
 

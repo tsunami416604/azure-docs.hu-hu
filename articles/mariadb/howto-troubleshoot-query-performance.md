@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB lekérdezési teljesítményének hibakeresése
+title: Lekérdezési teljesítmény – Azure Database for MariaDB
 description: Megtudhatja, hogyan használhatja a MAGYARÁZATot a Azure Database for MariaDB lekérdezési teljesítményének hibakereséséhez.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: troubleshooting
-ms.date: 11/09/2018
-ms.openlocfilehash: a2f5e7e7c9ca39c092e13242ecdac2675b09fc0d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 36571cc1ac4fbdcd5c0c6a4007a6c43858c97193
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973506"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770985"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>A profil lekérdezési teljesítményének ismertetése a Azure Database for MariaDB
 A **magyarázat** egy praktikus eszköz a lekérdezések optimalizálásához. A magyarázó utasítás használatával információkat kaphat az SQL-utasítások végrehajtásáról. A következő kimenet egy példát mutat be a magyarázó utasítások végrehajtásához.
@@ -165,5 +165,5 @@ A magyarázat azt mutatja, hogy a MariaDB képes a kombinált index használatá
  
 A magyarázat és a különböző típusú indexek használata jelentősen növelheti a teljesítményt. A tábla indexe nem feltétlenül jelenti azt, hogy a MariaDB használni tudná a lekérdezésekhez. Az indexek használatával mindig érvényesítse a feltételezéseket a lekérdezések MAGYARÁZATával és optimalizálásával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ha a leginkább érintett kérdésekre ad választ, vagy új kérdést/választ tesz közzé, látogasson el az [MSDN fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) vagy a [stack Overflowra](https://stackoverflow.com/questions/tagged/azure-database-mariadb).

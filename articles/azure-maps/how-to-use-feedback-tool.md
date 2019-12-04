@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 076f98cb240014bcc88a395902203413e31fe0f1
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 28c463204080296e431edb3c30b4fdd66f07a189
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642122"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776592"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Adatvisszajelzés biztosítása Azure Maps
 
-A Azure Maps a május 2018 óta általánosan elérhető, amely friss térképi adatokkal, könnyen használható REST API-kkal és nagy teljesítményű SDK-kkal segíti a nagyvállalati ügyfeleket a különböző üzleti használati esetekben. A valós világ minden másodpercen át változik, és fontos számunkra, hogy tényszerű digitális képviseletet nyújtson ügyfeleinknek. Azon ügyfeleinknek, akik nyitva vagy le szeretnék nyitni a létesítményeket, gondoskodni kell arról, hogy a Maps frissítése azonnal megtörténjen, hogy hatékonyan tervezzenek a szállításra, a karbantartásra vagy az ügyfélszolgálatra a megfelelő létesítményekben. Létrehoztuk a Azure Maps adatvisszajelzési eszközt, amely lehetővé teszi ügyfeleink számára, hogy közvetlen adatvisszajelzéseket nyújtsanak. Az ügyfelek adatvisszajelzése közvetlenül az adatszolgáltatókhoz és azok Térkép-szerkesztőjéhez kapcsolódik, akik gyorsan kiértékelik és beépíthetik a leképezési termékekre vonatkozó visszajelzéseket.  
+A Azure Maps a május 2018 óta általánosan elérhető, amely friss térképi adatokkal, könnyen használható REST API-kkal és nagy teljesítményű SDK-kkal segíti a nagyvállalati ügyfeleket a különböző üzleti használati esetekben. A valós világ minden másodpercen át változik, és fontos számunkra, hogy tényszerű digitális képviseletet nyújtson ügyfeleinknek. Azon ügyfeleinknek, akik nyitva vagy le szeretnék nyitni a létesítményeket, gondoskodni kell arról, hogy a Maps frissítése azonnal megtörténjen, hogy hatékonyan tervezzenek a szállításra, a karbantartásra vagy az ügyfélszolgálatra a megfelelő létesítményekben. Létrehoztuk a Azure Maps adatvisszajelzési webhelyet, amely lehetővé teszi ügyfeleink számára, hogy közvetlen adatvisszajelzéseket nyújtsanak. Az ügyfelek adatvisszajelzése közvetlenül az adatszolgáltatókhoz és azok Térkép-szerkesztőjéhez kapcsolódik, akik gyorsan kiértékelik és beépíthetik a leképezési termékekre vonatkozó visszajelzéseket.  
 
-[Azure Maps adatvisszajelzési eszköz](https://feedback.azuremaps.com) egyszerű módszert kínál ügyfeleinknek a térképes adatvisszajelzések megadására, különösen az üzleti pontokra és a lakossági címekre. Ez a cikk bemutatja, hogyan biztosíthat különböző visszajelzést a Azure Maps visszajelzési eszköz használatával.
+[Azure Maps adatvisszajelzési webhely](https://feedback.azuremaps.com) egyszerű módszert kínál ügyfeleinknek a térképes adatvisszajelzések megadására, különösen az üzleti pontokra és a lakossági címekre. Ez a cikk bemutatja, hogyan biztosíthat különböző visszajelzést a Azure Maps visszajelzési webhelyen.
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>Üzleti hely vagy lakcím hozzáadása 
 
-Előfordulhat, hogy visszajelzést szeretne küldeni a Térkép hiányzó hasznos pontjáról vagy lakcíméről. Ezt kétféleképpen teheti meg, nyissa meg az Azure Map adatvisszajelzési eszközét, és keresse meg a hiányzó hely koordinátáit, majd kattintson a "hely hozzáadása" gombra.
+Előfordulhat, hogy visszajelzést szeretne küldeni a Térkép hiányzó hasznos pontjáról vagy lakcíméről. Ezt kétféleképpen teheti meg, nyissa meg az Azure Map adatvisszajelzési webhelyét, és keresse meg a hiányzó hely koordinátáit, majd kattintson a "hely hozzáadása" gombra.
 
   ![hiányzó hely keresése](./media/how-to-use-feedback-tool/search-poi.png)
 
@@ -38,7 +38,7 @@ Ha rákattint, a rendszer egy űrlapra irányítja, hogy megadja a helyhez tarto
 
 ## <a name="fix-a-business-place-or-a-residential-address"></a>Üzleti vagy lakossági címek javítása 
 
-A visszajelzési eszköz lehetővé teszi, hogy megkeresse és keresse meg a munkahelyi helyet vagy a címeket, és visszajelzést küldjön a címnek vagy a PIN-kód helyének kijavításához, ha azok nem megfelelőek. Ha visszajelzést szeretne küldeni a címnek a kijavításához, használja a keresősáv-t egy üzleti hely vagy egy lakcím megkereséséhez. Kattintson a kívánt helyre a találatok listájában, és kattintson a "megoldás kijavítása" gombra.
+A visszajelzési webhely lehetővé teszi, hogy megkeresse és keresse meg a munkahelyi helyet vagy a címeket, és visszajelzést küldjön a címnek vagy a PIN-kód helyének kijavításához, ha azok nem megfelelőek. Ha visszajelzést szeretne küldeni a címnek a kijavításához, használja a keresősáv-t egy üzleti hely vagy egy lakcím megkereséséhez. Kattintson a kívánt helyre a találatok listájában, és kattintson a "megoldás kijavítása" gombra.
 
   ![keresési hely a javításhoz](./media/how-to-use-feedback-tool/fix-place.png)
 
@@ -56,14 +56,14 @@ A tartózkodási hely keresése mellett a visszajelzési eszköz is lehetővé t
 
   ![Megjegyzés hozzáadása](./media/how-to-use-feedback-tool/add-comment.png)
 
-## <a name="track-status"></a>Állapotkövetés 
+## <a name="track-status"></a>Állapot nyomon követése 
 
 A kérés állapotát nyomon követheti is, ha az "állapot nyomon követése" négyzet bejelölésével bejelöli az e-mail-címet a kérelem végrehajtása közben. A rendszer egy nyomkövetési hivatkozást fog kapni az e-mailben, amely naprakész állapotot biztosít a kérelme számára. 
 
   ![visszajelzés állapota](./media/how-to-use-feedback-tool/feedback-status.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Azure Maps kapcsolatos technikai kérdések közzétételéhez látogasson el ide:
 

@@ -1,17 +1,17 @@
 ---
-title: Naplók Azure Database for PostgreSQL – egyetlen kiszolgáló
-description: A naplózás konfigurációjának, tárolásának és elemzésének fogalma Azure Database for PostgreSQL – egyetlen kiszolgálón
+title: Naplók – Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ismerteti a naplózás konfigurációját, tárolását és elemzését Azure Database for PostgreSQL – egyetlen kiszolgálón
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 9e8b1d08e950849773c9d8413c3ba4188d257d5b
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 87f79f0ed21ec1f6a550c47f9f60d18511883300
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965935"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768214"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Naplók Azure Database for PostgreSQL – egyetlen kiszolgáló
 Azure Database for PostgreSQL lehetővé teszi a postgres szabványos naplófájljainak konfigurálását és elérését. A naplók használatával azonosíthatja, elháríthatja és kijavíthatja a konfigurációs hibákat és az optimális teljesítményt. A konfigurálható és elérhető naplózási információk közé tartoznak a hibák, a lekérdezési információk, az autoporszívós rekordok, a kapcsolatok és az ellenőrzőpontok. (A tranzakciós naplókhoz való hozzáférés nem érhető el).
@@ -111,7 +111,7 @@ A következő táblázat a **PostgreSQLLogs** típusának mezőit ismerteti. A k
 | errorLevel | Naplózási szint, példa: napló, hiba, figyelmeztetés |
 | Üzenet | Elsődleges napló üzenete | 
 | Domain | Kiszolgáló verziója, példa: postgres-10 |
-| Részletes | Másodlagos napló üzenete (ha van ilyen) |
+| részletes | Másodlagos napló üzenete (ha van ilyen) |
 | ColumnName | Az oszlop neve (ha van ilyen) |
 | SchemaName | A séma neve (ha van ilyen) |
 | DatatypeName | Az adattípus neve (ha van ilyen) |

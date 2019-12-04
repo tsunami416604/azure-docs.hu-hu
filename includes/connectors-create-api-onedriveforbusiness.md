@@ -1,17 +1,18 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 6c905842778f43196ac463b99993a3cbcd436fa5
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 11/03/2016
+ms.openlocfilehash: 3a0cb48e7fe5f3eef101f644e4f72fcfa2689d6e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036715"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789450"
 ---
-### <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
+
 * Egy [OneDrive](https://OneDrive.com) -fiók 
 
 Ahhoz, hogy a OneDrive vállalati fiókhoz használhassa a logikai alkalmazásokban, engedélyeznie kell a logikai alkalmazásnak, hogy kapcsolódjon a OneDrive for Business-fiókhoz. Szerencsére ezt könnyedén elvégezheti az Azure Portalon a logikai alkalmazáson belül. 

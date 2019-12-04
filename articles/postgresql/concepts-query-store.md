@@ -1,17 +1,17 @@
 ---
-title: Lekérdezési tár Azure Database for PostgreSQL – egyetlen kiszolgáló
+title: Lekérdezési tár – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk a Azure Database for PostgreSQL-Single Server lekérdezés-tárolási szolgáltatását ismerteti.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 198ef6889ffb7874c44f15338afbd8b3135ae3ef
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ccc503e6718ee8f516920cfbea3ad86e7ed81d84
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331322"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768265"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Teljesítmény figyelése a lekérdezési tárolóval
 
@@ -91,18 +91,18 @@ Ha a lekérdezési tároló engedélyezve van, a rendszer 15 perces összesíté
 
 A lekérdezési tároló paramétereinek konfigurálásához a következő beállítások érhetők el.
 
-| **A paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány**|
+| **Paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | Meghatározza, hogy mely utasítások legyenek követve. | Nincs | nincs, felül, mind |
+| pg_qs. query_capture_mode | Meghatározza, hogy mely utasítások legyenek követve. | Nincs | nincs, felül, mind |
 | pg_qs. max_query_text_length | Beállítja a maximálisan menthető lekérdezési hosszt. A rendszer csonkolja a hosszú lekérdezéseket. | 6000 | 100 – 10K |
-| pg_qs.retention_period_in_days | Beállítja a megőrzési időtartamot. | 7 | 1 - 30 |
-| pg_qs.track_utility | Beállítja, hogy nyomon követhető-e a segédprogram parancsai | be | be, ki |
+| pg_qs. retention_period_in_days | Beállítja a megőrzési időtartamot. | 7 | 1 - 30 |
+| pg_qs. track_utility | Beállítja, hogy nyomon követhető-e a segédprogram parancsai | a | be, ki |
 
 A következő lehetőségek kifejezetten a várakozási statisztikára vonatkoznak.
 
-| **A paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány**|
+| **Paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány**|
 |---|---|---|---|
-| pgms_wait_sampling.query_capture_mode | Meghatározza, hogy mely utasítások követik nyomon a várakozási statisztikát. | Nincs | nincs, az összes|
+| pgms_wait_sampling. query_capture_mode | Meghatározza, hogy mely utasítások követik nyomon a várakozási statisztikát. | Nincs | nincs, az összes|
 | Pgms_wait_sampling. history_period | Adja meg a gyakoriságot (ezredmásodpercben), amikor a várakozási események mintavételezése történik. | 100 | 1-600000 |
 
 > [!NOTE] 
@@ -122,8 +122,8 @@ Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. 
 |**Name (Név)**   |**Típus** | **Hivatkozik**  | **Leírás**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | AZONOSÍTÓ az runtime_stats_entries táblából|
-|user_id    |oid    |pg_authid.oid  |Az utasítást végrehajtó felhasználó OID azonosítója|
-|db_id  |oid    |pg_database.oid    |Az utasítást elvégező adatbázis OID azonosítója|
+|user_id    |OID    |pg_authid. OID  |Az utasítást végrehajtó felhasználó OID azonosítója|
+|db_id  |OID    |pg_database. OID    |Az utasítást elvégező adatbázis OID azonosítója|
 |query_id   |bigint  || Belső kivonatoló kód, amely az utasítás elemzési fájából lett kiszámítva|
 |query_sql_text |Varchar (10000)  || Egy reprezentatív utasítás szövege. Az azonos struktúrával rendelkező különböző lekérdezések együtt vannak csoportosítva; Ez a szöveg a fürtben lévő lekérdezések első példányának szövege.|
 |plan_id    |bigint |   |A lekérdezésnek megfelelő csomag azonosítója, még nem érhető el|
@@ -162,8 +162,8 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 
 |**Name (Név)**|  **Típus**|   **Hivatkozik**| **Leírás**|
 |---|---|---|---|
-|user_id    |oid    |pg_authid.oid  |Az utasítást végrehajtó felhasználó OID azonosítója|
-|db_id  |oid    |pg_database.oid    |Az utasítást elvégező adatbázis OID azonosítója|
+|user_id    |OID    |pg_authid. OID  |Az utasítást végrehajtó felhasználó OID azonosítója|
+|db_id  |OID    |pg_database. OID    |Az utasítást elvégező adatbázis OID azonosítója|
 |query_id   |bigint     ||Belső kivonatoló kód, amely az utasítás elemzési fájából lett kiszámítva|
 |event_type |szöveg       ||Az esemény típusa, amelynek a háttere várakozik|
 |esemény  |szöveg       ||A várakozási esemény neve, ha a háttér jelenleg várakozik|

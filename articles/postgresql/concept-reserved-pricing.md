@@ -1,17 +1,17 @@
 ---
-title: Előre fizetés Azure Database for PostgreSQL számítási erőforrások számára fenntartott kapacitással
+title: Fenntartott számítási díjszabás – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Előre fizetés Azure Database for PostgreSQL számítási erőforrások számára fenntartott kapacitással
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 753d962cbefd38ec991fb9e63805760fe07a8f2d
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 634ab645ea49c29bb5624afd82e549dfbc8d0fdf
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123872"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769897"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Előre fizetés Azure Database for PostgreSQL számítási erőforrások számára fenntartott kapacitással
 
@@ -28,7 +28,7 @@ A [Azure Portal](https://portal.azure.com/)Azure Database for PostgreSQL fenntar
 * Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor az előfizetés egyik nagyvállalati rendszergazdájának kell lennie.
 * A Cloud Solution Provider (CSP) program esetében csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatják meg Azure Database for PostgreSQL fenntartott kapacitást. </br>
 
-Az ügyfelek és az utólagos elszámolású ügyfelek díjszabása a foglalások beszerzésével kapcsolatban: az [Azure foglalási szolgáltatás használatának megismerése a nagyvállalati beléptetéssel](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) kapcsolatban, valamint az [Azure foglalás használatának ismertetése előfizetés](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
+Az ügyfelek és az utólagos elszámolású ügyfelek díjszabása a foglalások beszerzése után: az [Azure foglalási szolgáltatás használatának megismerése a nagyvállalati beléptetéshez](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) , valamint az [Azure-foglalás használatának](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)ismertetése az utólagos elszámolású előfizetéshez.
 
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>A kiszolgáló megfelelő méretének meghatározása a vásárlás előtt
@@ -40,7 +40,7 @@ Tegyük fel például, hogy egy általános célt futtat, Gen5 – 32 virtuális
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>Azure Database for PostgreSQL fenntartott kapacitás vásárlása
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza a **Minden szolgáltatás** > **Reservations** lehetőséget.
 3. Válassza a **Hozzáadás** lehetőséget, majd a foglalások ablaktáblán válassza a **Azure Database for PostgreSQL** lehetőséget a PostgreSQL-adatbázisok új foglalásának megvásárlásához.
 4. Töltse ki a kötelező mezőket. Meglévő vagy új adatbázisok, amelyek megfelelnek a kiválasztott attribútumoknak, a fenntartott kapacitás kedvezményét kapják meg. A kedvezményt megkapó Azure Database for PostgreSQL kiszolgálók tényleges száma függ a hatókörtől és a kiválasztott mennyiségtől.
@@ -53,9 +53,9 @@ A következő táblázat a kötelező mezőket ismerteti.
 
 | Mező | Leírás |
 | :------------ | :------- |
-| Előfizetést   | A Azure Database for PostgreSQL fenntartott kapacitás foglalásának megfizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési módot a Azure Database for PostgreSQL fenntartott kapacitás foglalásának előzetes költségei alapján számítjuk fel. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P), vagy az utólagos elszámolású díjszabással rendelkező egyéni szerződés (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású előfizetések esetében az előfizetés díjait a bankkártya vagy a számla fizetési módja alapján számítjuk fel.
+| Előfizetés   | A Azure Database for PostgreSQL fenntartott kapacitás foglalásának megfizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési módot a Azure Database for PostgreSQL fenntartott kapacitás foglalásának előzetes költségei alapján számítjuk fel. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P), vagy az utólagos elszámolású díjszabással rendelkező egyéni szerződés (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású előfizetések esetében az előfizetés díjait a bankkártya vagy a számla fizetési módja alapján számítjuk fel.
 | Hatókör | A virtuális mag foglalási hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja: </br></br> **Megosztva**a virtuális mag foglalási kedvezményt a számlázási környezetben lévő előfizetésekben futó Azure Database for PostgreSQL-kiszolgálókra alkalmazza a rendszer. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.</br></br> **Egyszeri előfizetés**esetén a virtuális mag foglalási kedvezményt az előfizetésben lévő Azure Database for PostgreSQL-kiszolgálókra alkalmazza a rendszer. </br></br> **Egy erőforráscsoport**, a foglalási kedvezményt a rendszer a kijelölt előfizetésben található Azure Database for PostgreSQL-kiszolgálókra és az adott előfizetéshez tartozó kiválasztott erőforráscsoporthoz alkalmazza.
-| Régió | Az Azure Database for PostgreSQL fenntartott kapacitás foglalása által érintett Azure-régió.
+| Region (Régió) | Az Azure Database for PostgreSQL fenntartott kapacitás foglalása által érintett Azure-régió.
 | Központi telepítés típusa | Az a Azure Database for PostgreSQL erőforrástípus, amelyre a foglalást megvásárolni szeretné.
 | Teljesítményszint | A Azure Database for PostgreSQL-kiszolgálók szolgáltatási szintje.
 | Időtartam | Egy év
@@ -69,11 +69,11 @@ Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréj
 
 a virtuális mag méretének rugalmassága segít a teljesítmény-és a régión belüli vertikális felskálázásban, a fenntartott kapacitási juttatás elvesztése nélkül. 
 
-## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális mag foglalási kedvezmény automatikusan érvényes azon Azure Database for PostgreSQL-kiszolgálók számára, amelyek megfelelnek az Azure Database for PostgreSQL fenntartott kapacitás foglalási hatókörének és attribútumainak. A PostgreSQL-hez készült Azure-adatbázis hatókörét a Azure Portal, a PowerShell, a CLI vagy az API segítségével frissítheti. </br></br>
 A Azure Database for PostgreSQL fenntartott kapacitás kezelésével kapcsolatos információkért lásd: Azure Database for PostgreSQL fenntartott kapacitás kezelése.

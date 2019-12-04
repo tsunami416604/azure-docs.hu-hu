@@ -1,16 +1,16 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/09/2018
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 3fa71085d649ace95aa24ac87c8714a7268f5386
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/09/2018
+ms.openlocfilehash: 89c2467843d7abc7c005804fd5263fe3beb668b6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179712"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793442"
 ---
-Pontosabb használati költségeinek kiszámításához, érdemes lehet a lehető legkevesebb üzenetek és események, amely lehet bármelyik nap az ügyfélszámítógépekre érkeznek ahelyett, hogy a számítások alapján csak a lekérdezési időköz. Ha egy esemény vagy az üzenet megfelel a indítófeltételek, sok eseményindító azonnal próbálkozzon bármely és minden más várakozó eseményeket, vagy a megadott feltételeknek megfelelő üzenetek olvasásához. Ezzel a módszerrel, amely akkor is, ha kiválaszt egy hosszabb lekérdezési időközt, az eseményindító elindulása várakozó eseményeket, vagy üzeneteket, amelyek indítása a munkafolyamatok száma alapján. Eseményindítókat, amelyek kövesse ezt a viselkedést az Azure Service Bus és az Azure Event Hub tartalmazza.
+A pontosabb használati költségek becsléséhez vegye figyelembe, hogy az adott napon esetlegesen megjelenő üzenetek vagy események száma nem a számítások csak a lekérdezési időintervallumban való kiosztása alapján történik. Ha egy esemény vagy üzenet megfelel az eseményindító feltételeinek, számos eseményindító azonnal megpróbálja beolvasni a feltételeknek megfelelő összes többi várakozási eseményt vagy üzenetet. Ez azt jelenti, hogy még akkor is, ha egy több lekérdezési időközt választ ki, az eseményindító a várakozó események vagy a munkafolyamatok elindítására jogosító üzenetek száma alapján indul el. A viselkedést követő triggerek közé tartozik a Azure Service Bus és az Azure Event hub.
 
-Tehát tegyük fel, beállíthat egy eseményindítót, amely ellenőrzi a végpont minden nap. Ha a trigger ellenőrzi a végpont, és megkeresi a megadott feltételeket teljesítő 15 események, a akkor aktiválódik, majd futtatja a megfelelő munkafolyamatot 15 alkalommal. A Logic Apps-mérőszámai összes műveletet, hogy azok a 15 munkafolyamatok hajt végre, beleértve a kérelmeket. A lehetséges költségek kiszámítása, próbálja meg a [Azure díjkalkulátorát](https://azure.microsoft.com/pricing/calculator/).
+Tegyük fel például, hogy olyan triggert állít be, amely naponta ellenőrzi a végpontot. Amikor az eseményindító ellenőrzi a végpontot, és 15 olyan eseményt talál, amely megfelel a feltételeknek, az eseményindító a megfelelő munkafolyamatot 15 alkalommal futtatja és futtatja. Logic Apps a 15 munkafolyamat által végrehajtott összes műveletet, beleértve az indító kérelmeket. A lehetséges költségek kiszámításához próbálja ki az [Azure díjszabási számológépét](https://azure.microsoft.com/pricing/calculator/).

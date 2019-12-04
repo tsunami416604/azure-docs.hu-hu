@@ -1,20 +1,19 @@
 ---
-title: Kereskedelmi partneri szerződések – Azure Logic Apps
+title: Kereskedelmi partneri szerződések
 description: Szerződések létrehozása és kezelése a kereskedelmi partnerek között Azure Logic Apps és Enterprise Integration Pack használatával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 35ebaab47edd110258f537dbbb044387515ed6c4
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680421"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790737"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Kereskedelmi partneri szerződések létrehozása és kezelése Azure Logic Apps
 
@@ -41,7 +40,7 @@ A RosettaNet-üzenetek cseréjére vonatkozó szerződések létrehozásával ka
 
 ## <a name="create-agreements"></a>Szerződések létrehozása
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. A keresőmezőbe írja be szűrőként az "integráció" kifejezést. Az eredmények közül válassza ki ezt az erőforrást: **integrációs fiókok**
 
    ![Integrációs fiók megkeresése](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
@@ -58,12 +57,12 @@ Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. A k
 
    ![Válassza a "Hozzáadás" lehetőséget.](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    |----------|----------|-------|-------------|
    | **Name (Név)** | Igen | <*Szerződés – név*> | A szerződés neve |
    | **Szerződés típusa** | Igen | **AS2**, **X12**vagy **EDIFACT** | A szerződéshez tartozó protokoll típusa. A szerződési fájl létrehozásakor a fájl tartalmának meg kell egyeznie a szerződés típusával. | |  
-   | **Gazda partner** | Igen | <*host-partner-name*> | A fogadó partner a szerződést megadó szervezetet jelöli. |
-   | **Gazdagép identitása** | Igen | <*host-partner-identifier*> | A gazda partner azonosítója |
+   | **Gazda partner** | Igen | <*gazdagép-partner-név*> | A fogadó partner a szerződést megadó szervezetet jelöli. |
+   | **Gazdagép identitása** | Igen | <*gazdagép – partner-azonosító*> | A gazda partner azonosítója |
    | **Vendég partner** | Igen | <*vendég-partner-név*> | A vendég partner a gazda partnerrel üzleti tevékenységet folytató szervezetet jelöl |
    | **Vendég identitás** | Igen | <*vendég-partner-azonosító*> | A vendég partner azonosítója |
    | **Fogadási beállítások** | Változó | Változó | Ezek a tulajdonságok határozzák meg, hogy a gazdagép partnere hogyan fogadja az összes bejövő üzenetet a szerződésben szereplő vendég partnertől. További információért lásd a vonatkozó szerződés típusát: <p>- [AS2-üzenetek beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>[EDIFACT - üzenet beállításai](logic-apps-enterprise-integration-edifact.md) <br>[X12 - üzenet beállításai](logic-apps-enterprise-integration-x12.md) |

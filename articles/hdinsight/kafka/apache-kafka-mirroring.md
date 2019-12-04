@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/24/2019
-ms.openlocfilehash: 270bc5401e58f4e5c99cae3c5ab06b4f03ae9543
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 11/29/2019
+ms.openlocfilehash: 2bd25ad823217c5e9260142912a3d2d748b9c15a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123244"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767705"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>A MirrorMaker használata a HDInsight-beli Kafka-vel kapcsolatos témakörök Apache Kafka replikálásához
 
@@ -42,11 +42,11 @@ Az elsődleges és a másodlagos fürtök eltérőek lehetnek a csomópontok és
 
 Ha a Kafka-fürtök különböző hálózatokban való tükrözése szükséges, a következő szempontokat kell figyelembe vennie:
 
-* **Átjárók**: A hálózatoknak képesnek kell lenniük a kommunikációra a TCP/IP szintjén.
+* **Átjárók**: a hálózatoknak képesnek kell lenniük a TCP/IP szintjén való kommunikációra.
 
-* **Kiszolgáló címzése**: Kiválaszthatja, hogy a fürtcsomópontok IP-címük vagy teljes tartományneveik alapján legyenek kezelve.
+* **Kiszolgáló kezelése**: dönthet úgy, hogy a fürt CSOMÓPONTJAIT IP-címük vagy teljes tartományneveik alapján kezeli.
 
-    * **IP-címek**: Ha úgy konfigurálja a Kafka-fürtöket, hogy az IP-címek reklámozását használják, folytathatja a tükrözés telepítését a Broker-csomópontok és a Zookeeper-csomópontok IP-címeivel.
+    * **IP-címek**: Ha a Kafka-fürtöket IP-címek reklámozására konfigurálja, a tükrözési beállítás a közvetítő csomópontok és a Zookeeper-csomópontok IP-címeivel is folytatható.
     
     * **Tartománynevek**: Ha nem konfigurálja a Kafka-fürtöket az IP-címek reklámozásához, a fürtöknek teljes tartománynevek (FQDN) használatával kell tudniuk csatlakozni egymáshoz. Ehhez minden olyan hálózaton meg kell adni egy DNS-kiszolgálót, amely a kérelmek más hálózatokra való továbbítására van konfigurálva. Azure-Virtual Network létrehozásakor a hálózattal megadott automatikus DNS használata helyett meg kell adnia egy egyéni DNS-kiszolgálót és a kiszolgáló IP-címét. A Virtual Network létrehozása után létre kell hoznia egy, az adott IP-címet használó Azure-beli virtuális gépet, majd telepítenie és konfigurálnia kell a DNS-szoftvert.
 
@@ -63,7 +63,7 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 
 1. Hozzon létre két új erőforráscsoportot:
 
-    |Erőforráscsoport | Location |
+    |Erőforráscsoport | Földrajzi egység |
     |---|---|
     | Kafka – elsődleges – RG | USA középső régiója |
     | Kafka – másodlagos – RG | USA északi középső régiója |
@@ -73,24 +73,24 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 
 1. Hozzon létre két új Kafka-fürtöt:
 
-    | Fürt neve | Erőforráscsoport | Virtuális hálózat | Tárfiók |
+    | Fürt neve | Erőforráscsoport | Virtual Network (Virtuális hálózat) | Tárfiók |
     |---|---|---|---|
     | Kafka – elsődleges – fürt | Kafka – elsődleges – RG | Kafka – elsődleges – vnet | kafkaprimarystorage |
     | Kafka – másodlagos – fürt | Kafka – másodlagos – RG | Kafka – másodlagos – vnet | kafkasecondarystorage |
 
 1. Hozzon létre virtuális hálózati társításokat. Ez a lépés két társítást hoz létre: egyet a **Kafka-Primary-vnet** és a **Kafka-másodlagos-vnet** , valamint a Kafka- **másodlagos-vnet** és a **Kafka-Primary-vnet**között.
     1. Válassza ki a **Kafka-Primary-vnet** virtuális hálózatot.
-    1. Kattintson a **Beállítások**területen a társítások **elemre** .
-    1. Kattintson a **Hozzáadás**lehetőségre.
+    1. Válassza **a** **Beállítások**területen a társítások lehetőséget.
+    1. Válassza a **Hozzáadás** lehetőséget.
     1. A társ-kezelés **hozzáadása** képernyőn adja meg a részleteket az alábbi képernyőképen látható módon.
 
         ![HDInsight Kafka vnet-társítás hozzáadása](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. IP-hirdetés konfigurálása:
-    1. Nyissa meg az elsődleges fürt Ambari-irányítópultját `https://PRIMARYCLUSTERNAME.azurehdinsight.net`:.
-    1. Kattintson a **szolgáltatások** > **Kafka**lehetőségre. Kattintson a **konfigurációk** fülre.
-    1. Adja hozzá a következő konfigurációs sorokat az alsó **Kafka-env sablon** szakaszhoz. Kattintson a **Save** (Mentés) gombra.
-    
+    1. Nyissa meg az elsődleges fürt Ambari-irányítópultját: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
+    1. Válassza a **szolgáltatások** > **Kafka**lehetőséget. CliSelectck a **konfigurációk** lapon.
+    1. Adja hozzá a következő konfigurációs sorokat az alsó **Kafka-env sablon** szakaszhoz. Kattintson a **Mentés** gombra.
+
         ```
         # Configure Kafka to advertise IP addresses instead of FQDN
         IP_ADDRESS=$(hostname -i)
@@ -101,18 +101,18 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 
     1. Írjon be egy megjegyzést a **konfiguráció mentése** képernyőn, majd kattintson a **Mentés**gombra.
     1. Ha a rendszer konfigurációs figyelmeztetést kér, kattintson a **Folytatás**gombra.
-    1. Kattintson az **OK** gombra a **konfiguráció módosításainak mentése**elemre.
-    1. Az újraindítás **szükséges** értesítésben kattintson az**összes érintett** újraindítás újraindítása elemre. >  Kattintson **az összes újraindításának megerősítése**gombra.
+    1. Kattintson az **OK gombra** a **konfiguráció módosításainak mentése**elemre.
+    1. Válassza **az újraindítás > ** az újraindítás **szükséges** értesítésben az **összes érintett újraindítása** lehetőséget. Válassza **az összes újraindításának megerősítése**lehetőséget.
 
         ![Az Apache Ambari újraindítása minden érintett](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 1. A Kafka beállítása az összes hálózati adapter figyelésére.
-    1. Maradjon a **konfigurációk** lapon a**Kafka**- **szolgáltatások** > területen. A **Kafka-átvitelszervező** szakaszban állítsa be a **figyelők** tulajdonságot `PLAINTEXT://0.0.0.0:9092`a következőre:.
-    1. Kattintson a **Save** (Mentés) gombra.
-    1. Kattintson az **Újraindítás**gombra, és **erősítse meg az összes újraindítását**.
+    1. Maradjon a **konfigurációk** lapon a > **Kafka** **szolgáltatások** területen. A **Kafka-közvetítő** szakaszban állítsa be a **figyelők** tulajdonságot `PLAINTEXT://0.0.0.0:9092`ra.
+    1. Kattintson a **Mentés** gombra.
+    1. Válassza az **Újraindítás**lehetőséget, és **erősítse meg az összes újraindítását**.
 
 1. A Broker IP-címeinek és Zookeeper címeinek rögzítése az elsődleges fürthöz.
-    1. A Ambari Irányítópultján kattintson a **gazdagépek** elemre.
+    1. Válassza a **gazdagépek** lehetőséget a Ambari irányítópultján.
     1. Jegyezze fel a közvetítők és a Zookeeperek IP-címeit. A közvetítő csomópontok az állomásnév első két betűje szerint **lefelé** , a Zookeeper-csomópontok pedig az **ZK** első két betűjét jelölik.
 
         ![Apache Ambari-nézet csomópontjának IP-címei](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
@@ -127,32 +127,32 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
     ssh sshuser@PRIMARYCLUSTER-ssh.azurehdinsight.net
     ```
 
-    Cserélje le a **sshuser** -t a fürt létrehozásakor használt SSH-felhasználónévre. Cserélje le a **BASENAME** a fürt létrehozásakor használt alapnévre.
+    Cserélje le a **sshuser** -t a fürt létrehozásakor használt SSH-felhasználónévre. Cserélje le a **PRIMARYCLUSTER** a fürt létrehozásakor használt alapnévre.
 
     További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Az alábbi paranccsal hozzon létre egy változót az Apache Zookeeper-gazdagépek használatával az elsődleges fürthöz. A hasonló `ZOOKEEPER_IP_ADDRESS1` sztringeket a korábban rögzített aktuális IP-címekkel, `10.23.0.11` például a és `10.23.0.7`a kifejezéssel kell helyettesíteni. Ha FQDN-feloldást használ egyéni DNS-kiszolgálóval, kövesse az [alábbi lépéseket](apache-kafka-get-started.md#getkafkainfo) a közvetítő és a Zookeeper nevének beszerzéséhez:
+1. Az alábbi paranccsal hozzon létre egy változót az Apache Zookeeper-gazdagépek használatával az elsődleges fürthöz. A (z) `ZOOKEEPER_IP_ADDRESS1` sztringeket a korábban rögzített aktuális IP-címekkel kell helyettesíteni, például `10.23.0.11` és `10.23.0.7`. Ha FQDN-feloldást használ egyéni DNS-kiszolgálóval, kövesse az [alábbi lépéseket](apache-kafka-get-started.md#getkafkainfo) a közvetítő és a Zookeeper nevének beszerzéséhez:
 
     ```bash
     # get the zookeeper hosts for the primary cluster
     export PRIMARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181, ZOOKEEPER_IP_ADDRESS2:2181, ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-3. Egy nevű `testtopic`témakör létrehozásához használja a következő parancsot:
+1. `testtopic`nevű témakör létrehozásához használja a következő parancsot:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $PRIMARY_ZKHOSTS
     ```
 
-3. A következő parancs használatával ellenőrizheti, hogy létrejött-e a témakör:
+1. A következő parancs használatával ellenőrizheti, hogy létrejött-e a témakör:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $PRIMARY_ZKHOSTS
     ```
 
-    A válasz tartalmaz `testtopic`.
+    A válasz `testtopic`tartalmaz.
 
-4. A következő paranccsal tekintheti meg az adott ( **elsődleges**) fürt Zookeeper-gazdagépének adatait:
+1. A következő paranccsal tekintheti meg az adott ( **elsődleges**) fürt Zookeeper-gazdagépének adatait:
 
     ```bash
     echo $PRIMARY_ZKHOSTS
@@ -162,7 +162,7 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 
     `10.23.0.11:2181,10.23.0.7:2181,10.23.0.9:2181`
 
-    Mentse ezt az információt. A következő szakaszban használatos.
+    Mentse ezt az információt. Ez a következő szakaszban használatos.
 
 ## <a name="configure-mirroring"></a>Tükrözés konfigurálása
 
@@ -176,62 +176,62 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 
     További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. A `consumer.properties` rendszer egy fájlt használ az **elsődleges** fürttel való kommunikáció konfigurálására. A fájl létrehozásához használja a következő parancsot:
+1. Az **elsődleges** fürttel való kommunikáció konfigurálásához `consumer.properties` fájl használható. A fájl létrehozásához használja a következő parancsot:
 
     ```bash
     nano consumer.properties
     ```
 
-    Használja a következő szöveget a `consumer.properties` fájl tartalmának:
+    Használja a következő szöveget a `consumer.properties` fájl tartalmához:
 
     ```yaml
     zookeeper.connect=PRIMARY_ZKHOSTS
     group.id=mirrorgroup
     ```
 
-    Cserélje le az **PRIMARY_ZKHOSTS** -t az **elsődleges** fürt Zookeeper IP-címeire.
+    Cserélje le a **PRIMARY_ZKHOSTSt** az **elsődleges** fürt Zookeeper IP-címeire.
 
     Ez a fájl az elsődleges Kafka-fürtről való olvasáskor használandó fogyasztói adatokat ismerteti. További információ a fogyasztói konfigurációról: [fogyasztói konfigurációk](https://kafka.apache.org/documentation#consumerconfigs) a Kafka.Apache.org címen.
 
     A fájl mentéséhez használja a **CTRL + X billentyűkombinációt** **, majd** **írja be**a következőt:.
 
-3. Mielőtt konfigurálja a másodlagos fürttel kommunikáló gyártót, állítson be egy változót a **másodlagos** fürt Broker IP-címeihez. A változó létrehozásához használja a következő parancsokat:
+1. Mielőtt konfigurálja a másodlagos fürttel kommunikáló gyártót, állítson be egy változót a **másodlagos** fürt Broker IP-címeihez. A változó létrehozásához használja a következő parancsokat:
 
     ```bash
     export SECONDARY_BROKERHOSTS='BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092'
     ```
 
-    A parancsnak `echo $SECONDARY_BROKERHOSTS` az alábbi szöveghez hasonló adatokat kell visszaadnia:
+    Az `echo $SECONDARY_BROKERHOSTS` parancsnak az alábbi szöveghez hasonló adatokat kell visszaadnia:
 
     `10.23.0.14:9092,10.23.0.4:9092,10.23.0.12:9092`
 
-4. A `producer.properties` rendszer egy fájlt használ a **másodlagos** fürt kommunikációjához. A fájl létrehozásához használja a következő parancsot:
+1. A **másodlagos** fürt a `producer.properties` fájl használatával kommunikál. A fájl létrehozásához használja a következő parancsot:
 
     ```bash
     nano producer.properties
     ```
 
-    Használja a következő szöveget a `producer.properties` fájl tartalmának:
+    Használja a következő szöveget a `producer.properties` fájl tartalmához:
 
     ```yaml
     bootstrap.servers=SECONDARY_BROKERHOSTS
     compression.type=none
     ```
 
-    Cserélje le a **SECONDARY_BROKERHOSTS** az előző lépésben használt Broker IP-címekre.
+    Cserélje le a **SECONDARY_BROKERHOSTSt** az előző lépésben használt Broker IP-címekre.
 
     További információ a gyártói konfigurációról: a kafka.apache.org- [beli gyártói konfigurációk](https://kafka.apache.org/documentation#producerconfigs) .
 
-5. A következő parancsokkal hozhat létre környezeti változót a másodlagos fürthöz tartozó Zookeeper-gazdagépek IP-címeivel:
+1. A következő parancsokkal hozhat létre környezeti változót a másodlagos fürthöz tartozó Zookeeper-gazdagépek IP-címeivel:
 
     ```bash
     # get the zookeeper hosts for the secondary cluster
     export SECONDARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181,ZOOKEEPER_IP_ADDRESS2:2181,ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-7. A Kafka on HDInsight alapértelmezett konfigurációja nem teszi lehetővé a témakörök automatikus létrehozását. A tükrözési folyamat megkezdése előtt a következő lehetőségek egyikét kell használnia:
+1. A Kafka on HDInsight alapértelmezett konfigurációja nem teszi lehetővé a témakörök automatikus létrehozását. A tükrözési folyamat megkezdése előtt a következő lehetőségek egyikét kell használnia:
 
-    * **A témakörök létrehozása a másodlagos fürtön**: Ezzel a beállítással megadhatja a partíciók számát és a replikálási tényezőt is.
+    * **Témakörök létrehozása a másodlagos fürtön**: Ez a beállítás azt is lehetővé teszi, hogy beállítsa a partíciók számát és a replikálási tényezőt.
 
         A következő paranccsal hozhat létre témákat az idő előtt:
 
@@ -239,17 +239,17 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
         /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SECONDARY_ZKHOSTS
         ```
 
-        A `testtopic` helyére írja be a létrehozandó témakör nevét.
+        Cserélje le a `testtopic`t a létrehozandó témakör nevére.
 
-    * **Konfigurálja a fürtöt az automatikus témakör létrehozásához**: Ez a beállítás lehetővé teszi, hogy a MirrorMaker automatikusan hozzon létre témákat, azonban az elsődleges témakörtől eltérő számú partícióval vagy replikációs tényezővel is létrehozhatók.
+    * **A fürt konfigurálása automatikus témakör-létrehozáshoz**: Ez a beállítás lehetővé teszi, hogy a MirrorMaker automatikusan hozzon létre témákat, azonban az elsődleges témakörtől eltérő számú partícióval vagy replikációs tényezővel is létrehozhatók.
 
         Ha úgy szeretné beállítani a másodlagos fürtöt, hogy automatikusan hozzon létre témákat, hajtsa végre a következő lépéseket:
 
         1. Nyissa meg a Ambari irányítópultot a másodlagos fürthöz: `https://SECONDARYCLUSTERNAME.azurehdinsight.net`.
         1. Kattintson a **szolgáltatások** > **Kafka**lehetőségre. Kattintson a **konfigurációk** fülre.
-        5. A __szűrő__ mezőbe írja be a értékét `auto.create`. Ezzel kiszűri a tulajdonságok listáját, és `auto.create.topics.enable` megjeleníti a beállítást.
-        6. Módosítsa az értéket True `auto.create.topics.enable` értékre, majd válassza a __Mentés__lehetőséget. Vegyen fel egy megjegyzést, majd válassza a __Mentés__ újra lehetőséget.
-        7. Válassza ki a __Kafka__ szolgáltatást, válassza az __Újraindítás__lehetőséget, majd kattintson az __összes érintett újraindítása__elemre. Ha a rendszer kéri, válassza __az összes újraindításának megerősítése__lehetőséget.
+        1. A __szűrő__ mezőbe írja be a `auto.create`értékét. Ez szűri a tulajdonságok listáját, és megjeleníti a `auto.create.topics.enable` beállítást.
+        1. Módosítsa `auto.create.topics.enable` értékét igaz értékre, majd válassza a __Mentés__lehetőséget. Vegyen fel egy megjegyzést, majd válassza a __Mentés__ újra lehetőséget.
+        1. Válassza ki a __Kafka__ szolgáltatást, válassza az __Újraindítás__lehetőséget, majd kattintson az __összes érintett újraindítása__elemre. Ha a rendszer kéri, válassza __az összes újraindításának megerősítése__lehetőséget.
 
         ![a Kafka automatikus létrehozási témaköreinek engedélyezése](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
@@ -263,13 +263,12 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 
     Az ebben a példában használt paraméterek a következők:
 
-    * **--consumer.config**: A fogyasztói tulajdonságokat tartalmazó fájlt adja meg. Ezek a tulajdonságok az *elsődleges* Kafka-fürtből beolvasott fogyasztó létrehozására szolgálnak.
-
-    * **--producer. config**: A gyártói tulajdonságokat tartalmazó fájlt adja meg. Ezek a tulajdonságok egy olyan gyártó létrehozásához használatosak, amely a *másodlagos* Kafka-fürtbe ír.
-
-    * **--engedélyezési lista**: Azon témakörök listája, amelyeket a MirrorMaker az elsődleges fürtről a másodlagosra replikál.
-
-    * **--NUM. streamek**: A létrehozandó felhasználói szálak száma.
+    |Paraméter |Leírás |
+    |---|---|
+    |– Consumer. config|A fogyasztói tulajdonságokat tartalmazó fájlt adja meg. Ezek a tulajdonságok az *elsődleges* Kafka-fürtből beolvasott fogyasztó létrehozására szolgálnak.|
+    |--producer. config|A gyártói tulajdonságokat tartalmazó fájlt adja meg. Ezek a tulajdonságok egy olyan gyártó létrehozásához használatosak, amely a *másodlagos* Kafka-fürtbe ír.|
+    |--engedélyezési lista|Azon témakörök listája, amelyeket a MirrorMaker az elsődleges fürtről a másodlagosra replikál.|
+    |--NUM. streamek|A létrehozandó felhasználói szálak száma.|
 
     A másodlagos csomóponton lévő fogyasztó most már üzenetek fogadására vár.
 
@@ -288,7 +287,7 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $SECONDARY_ZKHOSTS --topic testtopic --from-beginning
     ```
 
-    A témakörök listája mostantól tartalmazza `testtopic`, amely akkor jön létre, amikor a MirrorMaster az elsődleges fürtről a másodlagosra tükrözi a témakört. A témakörből beolvasott üzenetek megegyeznek az elsődleges fürtön megadott adatokkal.
+    A témakörök listája mostantól `testtopic`is tartalmaz, amely akkor jön létre, amikor a MirrorMaster az elsődleges fürtről a másodlagosra tükrözi a témakört. A témakörből beolvasott üzenetek megegyeznek az elsődleges fürtön megadott adatokkal.
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
@@ -296,11 +295,11 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 
 A jelen dokumentum lépései különböző Azure-erőforráscsoportok által létrehozott fürtöket hoztak létre. Az összes létrehozott erőforrás törléséhez törölheti a két létrehozott erőforráscsoportot: **Kafka-Primary-RG** és **Kafka-secondary_rg**. Az erőforráscsoportok törlésével eltávolíthatja a dokumentum alapján létrehozott összes erőforrást, beleértve a fürtöket, a virtuális hálózatokat és a Storage-fiókokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan használhatja a [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) -t egy [Apache Kafka](https://kafka.apache.org/) -fürt replikájának létrehozásához. Az alábbi hivatkozásokat követve megismerheti a Kafka használatának egyéb módjait:
 
-* [Apache Kafka MirrorMaker documentation](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) at cwiki.apache.org.
+* [Apache Kafka MirrorMaker dokumentációját](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) a cwiki.Apache.org címen.
 * [Ismerkedés a HDInsight Apache Kafkaával](apache-kafka-get-started.md)
 * [Apache Spark használata a HDInsight Apache Kafka használatával](../hdinsight-apache-spark-with-kafka.md)
 * [Apache Storm használata a HDInsight Apache Kafka használatával](../hdinsight-apache-storm-with-kafka.md)

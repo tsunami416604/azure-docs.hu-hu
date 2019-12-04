@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL naplózási naplói
+title: Naplók – Azure Database for MySQL
 description: Ismerteti a Azure Database for MySQLban elérhető naplókat, valamint a naplózási szintek engedélyezéséhez elérhető paramétereket.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/26/2019
-ms.openlocfilehash: 42881fcb12f29ec14bbdc0ec4942b2eef17c7312
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 12/02/2019
+ms.openlocfilehash: ea536742b6481cb06fbd3130279ca5d08ba1bc08
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434400"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773568"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Naplók naplózása Azure Database for MySQL
 
@@ -81,7 +81,7 @@ A következő szakaszok ismertetik a MySQL-naplók kimenetét az esemény típus
 | `db_s` | A következőhöz kapcsolódó adatbázis neve |
 | `\_ResourceId` | Erőforrás URI-ja |
 
-### <a name="general"></a>Általános kérdések
+### <a name="general"></a>Általános
 
 Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a DCL és a rendszergazdai események típusára vonatkozik.
 

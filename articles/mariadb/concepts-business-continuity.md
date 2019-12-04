@@ -1,17 +1,17 @@
 ---
-title: Az üzletmenet folytonosságának megismerése Azure Database for MariaDB
+title: Üzletmenet-folytonosság – Azure Database for MariaDB
 description: Ismerje meg az üzletmenet folytonosságát (az időponthoz tartozó visszaállítást, az adatközpont-kimaradást, a Geo-visszaállítást) Azure Database for MariaDB szolgáltatás használatakor.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: d364c3a5fafaca514baade25cd3f5b4c0f10dc26
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 76e749b26be5a5204b247d294f26da169f84094c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973609"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773017"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Az üzletmenet folytonosságának megismerése Azure Database for MariaDB
 
@@ -48,7 +48,7 @@ A másik lehetőség a Azure Database for MariaDB geo-visszaállítási funkció
 > [!IMPORTANT]
 > A Geo-visszaállítás csak akkor lehetséges, ha a kiszolgálót geo-redundáns biztonsági mentési tárolóval kiépített.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az automatikus biztonsági mentéssel kapcsolatos további tudnivalókért tekintse meg a [biztonsági mentések a Azure Database for MariaDBban](concepts-backup.md)című témakört.
 - Ha a Azure Portal használatával szeretne visszaállítani egy adott időpontra, tekintse meg [az adatbázis visszaállítása egy időpontra a Azure Portal használatával](howto-restore-server-portal.md)című témakört.

@@ -1,31 +1,31 @@
 ---
-title: Csatlakozás az alkalmazások az Azure Database for MySQL-hez
-description: Ez a dokumentum a jelenleg támogatott kapcsolati karakterlánc, a csatlakozás az Azure Database for MySQL, beleértve a (C#) ADO.NET, JDBC, Node.js, ODBC, PHP, Python és Ruby-alkalmazások listája.
+title: Kapcsolatok karakterláncai – Azure Database for MySQL
+description: Ez a dokumentum felsorolja a jelenleg támogatott kapcsolati karakterláncokat, amelyekkel az alkalmazások csatlakozhatnakC#Azure Database for MySQLhoz, beleértve a ADO.net (), a JDBC, a Node. js, az ODBC, a PHP, a Python és a Ruby nyelveket.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 503b7764ba7958a5448903b217b00e204ffcbf61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: bee98accd8ac404eb223975571b082dae754571a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459270"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770492"
 ---
-# <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Kapcsolódás az alkalmazások az Azure Database for MySQL-hez
-Ez a témakör felsorolja a kapcsolati karakterlánc típusú által támogatott Azure Database for MySQL, példák és sablonok. Lehetséges, hogy különböző paraméterek és beállítások a kapcsolati karakterláncban.
+# <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Alkalmazások összekapcsolásának Azure Database for MySQL
+Ez a témakör felsorolja a Azure Database for MySQL által támogatott, a sablonokkal és példákkal együtt támogatott kapcsolatok karakterlánc-típusokat. Előfordulhat, hogy a kapcsolatok karakterláncában különböző paraméterek és beállítások vannak.
 
-- A tanúsítvány beszerzéséről [SSL konfigurálása](./howto-configure-ssl.md).
-- {your_host} = \<servername>.mysql.database.azure.com
-- {your_user}@{servername} = megfelelően a felhasználói azonosító formátuma a hitelesítéshez.  Ha csak a felhasználói azonosítót használja, a hitelesítés sikertelen lesz.
+- A tanúsítvány beszerzéséhez lásd: [az SSL konfigurálása](./howto-configure-ssl.md).
+- {your_host} = \<servername >. mysql. database. Azure. com
+- {your_user} @ {servername} = userID-formátum a hitelesítéshez.  Ha csak a felhasználóazonosító-t használja, a hitelesítés sikertelen lesz.
 
 ## <a name="adonet"></a>ADO.NET
 ```ado.net
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-Ebben a példában a kiszolgáló neve, `mydemoserver`, az adatbázisnév `wpdb`, a felhasználónév `WPAdmin`, és a jelszó `mypassword!2`. Ennek eredményeképpen a kapcsolati karakterláncot kell lennie:
+Ebben a példában a kiszolgáló neve `mydemoserver`, az adatbázis neve `wpdb`, a Felhasználónév `WPAdmin`, és a jelszó `mypassword!2`. Ennek eredményeképpen a kapcsolatok karakterláncának a következőképpen kell szerepelnie:
 
 ```ado.net
 Server= "mydemoserver.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -61,10 +61,10 @@ cnx = mysql.connector.connect(user={username@servername}, password={your_passwor
 client = Mysql2::Client.new(username: {username@servername}, password: {your_password}, database: {your_database}, host: {your_host}, port: {your_port}[, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA'])
 ```
 
-## <a name="get-the-connection-string-details-from-the-azure-portal"></a>A kapcsolati karakterlánc adatait lekérése az Azure Portalról
-Az a [az Azure portal](https://portal.azure.com), nyissa meg az Azure Database for MySQL-kiszolgálóhoz, és kattintson **kapcsolati karakterláncok** karakterlánc lekéréséhez a példány: ![A kapcsolati karakterlánc ablaktáblán az Azure Portalon](./media/howto-connection-strings/connection-strings-on-portal.png)
+## <a name="get-the-connection-string-details-from-the-azure-portal"></a>A kapcsolati sztring részleteinek beolvasása a Azure Portal
+A [Azure Portal](https://portal.azure.com)nyissa meg a Azure Database for MySQL-kiszolgálót, majd kattintson a **kapcsolódási karakterláncok** lehetőségre a példányhoz tartozó karakterláncok listájának lekéréséhez: ![a Azure Portal kapcsolódási karakterláncok paneljét](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-A karakterláncban biztosít például az illesztőprogram, a kiszolgáló és az egyéb adatbázis kapcsolódási paraméterek. Módosítsa a példákat a saját paramétereivel, például az adatbázis nevét, jelszó és így tovább. Ezután használhatja ezt a karakterláncot a kód és az alkalmazások csatlakozni a kiszolgálóhoz.
+A karakterlánc olyan adatokat tartalmaz, mint például az illesztőprogram, a kiszolgáló és más adatbázis-kapcsolati paraméterek. Módosítsa ezeket a példákat saját paraméterek használatára, például az adatbázis nevére, jelszavára stb. Ezt a karakterláncot használhatja a kód és az alkalmazások kiszolgálóhoz való kapcsolódáshoz.
 
-## <a name="next-steps"></a>További lépések
-- Csatlakozási kódtárak kapcsolatos további információkért lásd: [alapelvei – adatkapcsolattárak](./concepts-connection-libraries.md).
+## <a name="next-steps"></a>Következő lépések
+- További információ a kapcsolatok könyvtárairól: [fogalmak – kapcsolatok kódtárai](./concepts-connection-libraries.md).

@@ -1,28 +1,28 @@
 ---
-title: Figyelés Azure Database for MySQL
+title: Figyelés – Azure Database for MySQL
 description: Ez a cikk a Azure Database for MySQL figyelésére és riasztására vonatkozó mérőszámokat ismerteti, beleértve a CPU-t, a tárolást és a kapcsolatok statisztikáit.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: df03f8ba0e522aacd305b6337e506f53e309660a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/02/2019
+ms.openlocfilehash: ec99db9406c5c83cdcbf322c45cea40c6643ee8f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384047"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770883"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Figyelés Azure Database for MySQL
 A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. A Azure Database for MySQL különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a kiszolgáló működésére.
 
-## <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Metrikák
 Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30 napos előzményt biztosít. A mérőszámokra vonatkozó riasztásokat is beállíthat. Részletes útmutatást a [riasztások beállítása](howto-alert-on-metric.md)című témakörben talál. Az egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések végrehajtása és az archiválási előzmények. További információt az [Azure mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)című témakörben talál.
 
 ### <a name="list-of-metrics"></a>Metrikák listája
 Ezek a metrikák a Azure Database for MySQL számára érhetők el:
 
-|Metrika|Metrika megjelenített neve|Unit (Egység)|Leírás|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Leírás|
 |---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|
 |memory_percent|Memória százaléka|Százalék|A használatban lévő memória százalékos aránya.|
@@ -33,9 +33,9 @@ Ezek a metrikák a Azure Database for MySQL számára érhetők el:
 |serverlog_storage_usage|Kiszolgáló naplójának tárolója|Bájt|A kiszolgáló által használt log-tároló mennyisége.|
 |serverlog_storage_limit|Kiszolgáló naplójának tárolási korlátja|Bájt|A kiszolgáló maximális kiszolgálói naplózási tárterülete.|
 |storage_limit|Tárolási korlát|Bájt|A kiszolgáló maximális tárterülete.|
-|active_connections|Aktív kapcsolatok|Darabszám|A kiszolgálóval létesített aktív kapcsolatok száma.|
-|connections_failed|Sikertelen kapcsolatok|Darabszám|A kiszolgálóhoz való sikertelen kapcsolódások száma.|
-|seconds_behind_master|Replikálás késése másodpercben|Darabszám|Azon másodpercek száma, ameddig a replika kiszolgáló lemarad a főkiszolgálón.|
+|active_connections|Aktív kapcsolatok|Mennyiség|A kiszolgálóval létesített aktív kapcsolatok száma.|
+|connections_failed|Sikertelen kapcsolatok|Mennyiség|A kiszolgálóhoz való sikertelen kapcsolódások száma.|
+|seconds_behind_master|Replikálás késése másodpercben|Mennyiség|Azon másodpercek száma, ameddig a replika kiszolgáló lemarad a főkiszolgálón.|
 |network_bytes_egress|Kimenő hálózat|Bájt|A hálózat aktív kapcsolatokon keresztül.|
 |network_bytes_ingress|Bejövő hálózat|Bájt|A hálózat aktív kapcsolatokon keresztül.|
 |backup_storage_used|Felhasznált biztonsági mentési tár|Bájt|A felhasznált biztonsági mentési tár mennyisége.|
@@ -46,13 +46,13 @@ Engedélyezheti a lassú lekérdezést és a naplózást a kiszolgálón. Ezek a
 ## <a name="query-store"></a>Lekérdezéstár
 A [lekérdezési tároló](concepts-query-store.md) egy olyan szolgáltatás, amely nyomon követi a lekérdezési teljesítményt az idő múlásával, beleértve a lekérdezési futtatókörnyezet statisztikáit és a várakozási eseményeket. A szolgáltatás megtartja a lekérdezés futásidejű teljesítményére vonatkozó információkat a **MySQL** -sémában. Az adatgyűjtést és-tárolást különböző konfigurációs gombokon keresztül szabályozhatja.
 
-## <a name="query-performance-insight"></a>Lekérdezési terheléselemző
+## <a name="query-performance-insight"></a>Információ a lekérdezések teljesítményéről
 A [lekérdezési terheléselemző](concepts-query-performance-insight.md) a lekérdezési tárolóval együtt a Azure Portal elérhető vizualizációk biztosítására is használható. Ezek a diagramok lehetővé teszik a teljesítményre gyakorolt legfontosabb lekérdezések azonosítását. A Lekérdezési terheléselemző a Azure Database for MySQL-kiszolgáló portál lapjának **intelligens teljesítmény** szakaszában érhető el.
 
 ## <a name="performance-recommendations"></a>Teljesítménnyel kapcsolatos javaslatok
 A [teljesítményre vonatkozó javaslatok](concepts-performance-recommendations.md) funkció a munkaterhelés teljesítményének növelésére szolgáló lehetőségeket azonosítja. A teljesítménnyel kapcsolatos javaslatok olyan új indexek létrehozásához nyújtanak javaslatokat, amelyek képesek a számítási feladatok teljesítményének javítására. Az indexelési javaslatok előállításához a funkció figyelembe veszi a különböző adatbázis-jellemzőket, beleértve annak sémáját és a lekérdezési tároló által jelentett munkaterhelést. A teljesítményre vonatkozó javaslat bevezetését követően az ügyfeleknek tesztelni kell a teljesítményt a változások hatásának kiértékeléséhez.
 
-## <a name="service-health"></a>Szolgáltatás állapota
+## <a name="service-health"></a>Szolgáltatások állapota
 Az [Azure szolgáltatás állapota](../service-health/overview.md) az előfizetésben lévő összes szolgáltatás állapotára vonatkozó értesítéseket tartalmazza. Service Health riasztásokat állíthat be, amelyek az előnyben részesített kommunikációs csatornákon keresztül értesítik Önt, ha vannak olyan problémák vagy változások, amelyek befolyásolhatják az Ön által használt Azure-szolgáltatásokat és-régiókat.
 
 A Azure Database for MySQL ütemezett karbantartási eseményei a **tervezett karbantartási** esemény típusával tekinthetők meg. A **szolgáltatás-állapottal kapcsolatos riasztások**létrehozásával kapcsolatban tekintse meg a [műveletnapló riasztások létrehozása a szolgáltatás értesítéseiről](../service-health/alerts-activity-log-service-notifications.md) című cikket.

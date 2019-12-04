@@ -1,20 +1,17 @@
 ---
-title: Korlátok és konfiguráció – Azure Logic Apps
+title: Korlátozások és konfiguráció
 description: A szolgáltatás korlátai, például az időtartam, az átviteli sebesség és a kapacitás, valamint a konfigurációs értékek, például az engedélyezni kívánt IP-címek, Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/19/2019
-ms.openlocfilehash: 89b4a08a3ecb85abd56f0b2ae852123ac2883364
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 13bced5cb692366f46032d51c3b635533110d781
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547537"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791979"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -71,7 +68,7 @@ A futtatási időtartam és a tárolási megőrzés alapértelmezett korlátján
 
    > [!NOTE]
    > A több-bérlős Azure-beli Logic apps esetében a 90 napos alapértelmezett korlát megegyezik a maximális korláttal. Ezt az értéket csak csökkenteni lehet.
-   > A Logic apps integrációs szolgáltatási környezetben decreause vagy növelheti a 90 napos alapértelmezett korlátot.
+   > Az integrációs szolgáltatási környezetben lévő Logic apps esetében csökkentheti vagy növelheti a 90 napos alapértelmezett korlátot.
 
 <a name="looping-debatching-limits"></a>
 

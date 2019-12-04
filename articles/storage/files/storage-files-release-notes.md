@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/8/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 8328170d73d75e8e2eb1a84881375ce21c72a61b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 633465e9123d679b1aa0e7f7ad048b17c18f2acb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227835"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771036"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>A Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -23,8 +23,9 @@ A jelen cikk az Azure File Sync ügynök támogatott verzióinak kibocsátási m
 ## <a name="supported-versions"></a>Támogatott verziók
 Az Azure File Sync ügynök alábbi verziói támogatottak:
 
-| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | status |
+| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | Állapot |
 |----|----------------------|--------------|------------------|
+| V9-es kiadás – [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019. december 2. | Támogatott – Berepülés |
 | V8-as kiadás – [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019. október 8. | Támogatott |
 | 2019. júliusi kumulatív frissítés – [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019. július 24. | Támogatott |
 | 2019. júliusi kumulatív frissítés – [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019. július 12. | Támogatott |
@@ -36,12 +37,100 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 | 2019. április kumulatív frissítés – [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019. április 4. | Támogatott |
 | Március 2019 kumulatív frissítés – [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | Március 7., 2019 | Támogatott |
 | V5-kiadás – [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | Február 12., 2019 | Támogatott |
-| V4-kiadás | 4.0.1.0 – 4.3.0.0 | N/A | Nem támogatott – az ügynök verziói 2019 november 6-án lejártak |
-| V3 kiadás | 3.1.0.0 – 3.4.0.0 | N/A | Nem támogatott – az ügynök verziói lejártak a 2019-es augusztus 19-én |
-| Pre-GA ügynökök | 1.1.0.0 – 3.0.13.0 | N/A | Nem támogatott – az ügynök verziói lejártak 2018 október 1-jén |
+| V4-kiadás | 4.0.1.0 – 4.3.0.0 | – | Nem támogatott – az ügynök verziói 2019 november 6-án lejártak |
+| V3 kiadás | 3.1.0.0 – 3.4.0.0 | – | Nem támogatott – az ügynök verziói lejártak a 2019-es augusztus 19-én |
+| Pre-GA ügynökök | 1.1.0.0 – 3.0.13.0 | – | Nem támogatott – az ügynök verziói lejártak 2018 október 1-jén |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-9000"></a>Ügynök verziója 9.0.0.0
+A következő kibocsátási megjegyzések az Azure File Sync-ügynök verziójának 9.0.0.0 vonatkoznak (2019. december 2.).
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Javított javítás és problémák
+
+- Önkiszolgáló visszaállítás támogatása
+    - A felhasználók mostantól visszaállíthatják a fájljaikat az előző verzió funkció használatával. A V9-es kiadás előtt a korábbi verzió funkció nem támogatott olyan köteteken, amelyeken engedélyezve van a felhőalapú rétegek használata. Ezt a funkciót külön kell engedélyezni az egyes köteteken, amelyeken engedélyezve van egy, a felhőalapú rétegek használatát engedélyező végpont. További információ:  
+Önkiszolgáló [Visszaállítás az előző verziók és a VSS (Kötet árnyékmásolata szolgáltatás) használatával](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service). 
+ 
+- Nagyobb fájlmegosztás-méretek támogatása 
+    - Azure File Sync mostantól legfeljebb 64TiB és 100 000 000 fájlt támogat egyetlen, szinkronizált névtérben.  
+ 
+- Az deduplikálás támogatása a 2019-es kiszolgálón 
+    - Az deduplikálás mostantól támogatott a Windows Server 2019-on futó felhőalapú rétegek esetén. Ahhoz, hogy támogassa az deduplikált köteteken a felhőalapú rétegek, telepíteni kell a Windows Update [KB4520062](https://support.microsoft.com/help/4520062) . 
+ 
+- Magasabb fájlméret a fájl számára a szinthez 
+    - A fájlnak a réteghez való minimális mérete mostantól a fájlrendszer fürtjének méretétől függ (a fájlrendszer fürt méretének kétszerese). Alapértelmezés szerint például az NTFS fájlrendszerű fürt mérete 4KB, a fájlhoz tartozó minimális fájlméret pedig 8 kb. 
+ 
+- Hálózati kapcsolat tesztelése parancsmag 
+    - Azure File Sync konfiguráció részeként több szolgáltatás-végpontot is kapcsolatba kell lépnie. Mindegyiknek saját DNS-névvel kell rendelkeznie, amelynek a kiszolgálónak elérhetőnek kell lennie. Ezek az URL-címek arra a régióra is jellemzőek, amelyhez a kiszolgáló regisztrálva van. A kiszolgáló regisztrálását követően a kapcsolati teszt parancsmag (PowerShell és kiszolgáló regisztrálása) használható a kiszolgálóhoz tartozó összes URL-címmel folytatott kommunikáció tesztelésére. Ez a parancsmag segít elhárítani a hiányos kommunikációt, ami megakadályozza, hogy a kiszolgáló teljes mértékben működjön a Azure File Sync, és használható a proxy és a tűzfal konfigurációinak finomhangolására.  
+ 
+        A hálózati kapcsolati teszt futtatásához futtassa a következő PowerShell-parancsokat: 
+ 
+        Importálás – "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll" modul  
+        Teszt – StorageSyncNetworkConnectivity
+ 
+- A kiszolgálói végpontok javításának eltávolítása, ha engedélyezve van a felhőalapú rétegek használata 
+    - Ahogy korábban is, a kiszolgálói végpont eltávolítása nem eredményezi a fájlok eltávolítását az Azure-fájlmegosztás során. A helyi kiszolgálón található újraelemzési pontok viselkedése azonban megváltozott. A kiszolgálói végpontok eltávolításakor a rendszer törli az újraelemzési pontokat (a kiszolgálón nem helyi fájlok mutatóit). A teljes gyorsítótárban lévő fájlok a kiszolgálón maradnak. Ezzel a fejlesztéssel megakadályozható, hogy a rendszer az [árva rétegekből álló fájlokat](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) a kiszolgálói végpontok eltávolításakor megakadályozza. Ha a kiszolgálói végpontot újra létrehozza, a rendszer újból létrehozza a lépcsőzetes fájlok újraelemzési pontjait a kiszolgálón.  
+ 
+- Teljesítmény-és megbízhatósági változások 
+    - Csökkentett visszahívási hibák. A visszahívás mérete mostantól automatikusan igazodik a hálózati sávszélesség alapján. 
+    - Továbbfejlesztett letöltési teljesítmény új kiszolgáló szinkronizálási csoportba való felvételekor. 
+    - A korlátozási ütközések miatt nem szinkronizált fájlok csökkentése. 
+
+### <a name="evaluation-tool"></a>Kiértékelési eszköz
+Azure File Sync telepítése előtt ki kell értékelnie, hogy kompatibilis-e a rendszerrel a Azure File Sync próbaverziós eszköz használatával. Ez az eszköz egy Azure PowerShell parancsmag, amely a fájlrendszer és az adatkészlet esetleges problémáit ellenőrzi, például a nem támogatott karaktereket vagy az operációs rendszer nem támogatott verzióját. A telepítési és használati utasításokért tekintse meg a tervezési útmutató [kiértékelési eszköz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) című szakaszát. 
+
+### <a name="agent-installation-and-server-configuration"></a>Az ügynök telepítése és a kiszolgáló konfigurálása
+A Azure File Sync ügynök Windows Serverrel való telepítésével és konfigurálásával kapcsolatos további információkért lásd: [Azure file Sync központi telepítés tervezése](storage-sync-files-planning.md) és a [Azure file Sync üzembe helyezése](storage-sync-files-deployment-guide.md).
+
+- Az ügynök telepítési csomagját emelt szintű (rendszergazdai) engedélyekkel kell telepíteni.
+- Az ügynök nem támogatott a nano Server-telepítés esetén.
+- Az ügynök csak a Windows Server 2019, a Windows Server 2016 és a Windows Server 2012 R2 rendszeren támogatott.
+- Az ügynök legalább 2 GiB memóriát igényel. Ha a kiszolgáló olyan virtuális gépen fut, amelyen engedélyezve van a dinamikus memória, a virtuális gépet legalább 2048 MiB memóriával kell konfigurálni.
+- A Storage Sync Agent (FileSyncSvc) szolgáltatás nem támogatja az olyan köteteken található kiszolgálói végpontokat, amelyeken a rendszerkötet információi (SVI) könyvtára tömörítve van. Ez a konfiguráció nem várt eredményeket fog eredményezni.
+
+### <a name="interoperability"></a>Együttműködési lehetőség
+- A víruskeresők, a biztonsági mentést készítő és a rétegzett fájlokhoz hozzáférő más alkalmazások nem kívánt újrahívást okozhatnak, ha nem veszik figyelembe az offline attribútumot, és nem mellőzik ezen fájlok tartalmának olvasását. További információ: [Azure file Sync hibáinak megoldása](storage-sync-files-troubleshoot.md).
+- A Fájlkiszolgálói erőforrás-kezelő (FSRM) fájlszűrők végtelen szinkronizálási hibákat okozhatnak, ha a fájlok a fájl képernyője miatt le vannak tiltva.
+- A Sysprep futtatása olyan kiszolgálón, amelyen a Azure File Sync ügynök telepítve van, és nem várt eredményekhez vezethet. A Azure File Sync-ügynököt telepíteni kell a kiszolgálói lemezkép telepítése és a Sysprep minitelepítés befejezése után.
+
+### <a name="sync-limitations"></a>A szinkronizálás korlátozásai
+A következő elemek nem szinkronizálhatók, de a rendszer többi része továbbra is a szokott módon működik:
+- Nem támogatott karaktereket tartalmazó fájlok. A nem támogatott karakterek listáját a [hibaelhárítási útmutatóban](storage-sync-files-troubleshoot.md#handling-unsupported-characters) találja.
+- Egy ponttal lezáró fájlok vagy könyvtárak.
+- A 2048 karakternél hosszabb elérési utak.
+- A biztonsági leíró tulajdonosi hozzáférés-vezérlési lista (DACL) része, ha az 2 KB-nál nagyobb. (Ez csak akkor probléma, ha több mint 40 hozzáférés-vezérlési bejegyzés (ACE) van egyetlen elemen.)
+- Biztonsági leíró naplózáshoz használt rendszerhozzáférés-vezérlési lista (SACL) része.
+- Kiterjesztett attribútumok.
+- Alternatív adatstreamek.
+- Újraelemzési pontok.
+- Rögzített hivatkozások.
+- A tömörítés (ha kiszolgálófájlon van beállítva) nem marad meg, amikor a módosításokat erre a fájlra szinkronizálja más végpontokból.
+- Az EFS (vagy más felhasználói módú) titkosítással titkosított összes fájl, amely meggátolja, hogy a szolgáltatás beolvassa az adatokat.
+
+    > [!Note]  
+    > Az Azure File Sync mindig titkosítja az átvitt adatokat. Az adatok inaktív állapotban is mindig titkosítva vannak az Azure-ban.
+ 
+### <a name="server-endpoint"></a>Kiszolgálói végpont
+- Kiszolgálóvégpontok csak NTFS-köteteken hozhatók létre. Az ReFS, FAT, FAT32 és más fájlrendszereket az Azure File Sync jelenleg nem támogatja.
+- A többcsoportos fájlok elérhetetlenné válnak, ha a rendszer nem hívja meg a fájlokat a kiszolgálói végpont törlése előtt. A fájlok elérésének visszaállításához hozza létre újra a kiszolgálói végpontot. Ha a kiszolgáló-végpont törlése vagy a Felhőbeli végpont törlése óta 30 nap telt el, akkor a nem visszanevezett, többelemű fájlok használhatatlanná válhatnak. További információért lásd a kiszolgálói [végpont törlése után a kiszolgálón nem érhetők el a lépcsőzetes fájlok](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint).
+- A felhő-rétegek nem támogatottak a rendszerköteten. Ha kiszolgálói végpontot szeretne létrehozni a rendszerköteten, tiltsa le a Felhőbeli rétegek létrehozását a kiszolgálói végpont létrehozásakor.
+- A feladatátvételi fürtszolgáltatás csak fürtözött lemezekkel támogatott, megosztott fürtkötetekkel (CSV-kkel) nem.
+- A kiszolgálóvégpontok nem ágyazhatók be. Ugyanazon a köteten azonban szerepelhetnek egymás mellett.
+- Ne tároljon operációs rendszer vagy alkalmazás lapozófájlját a kiszolgálói végpontok helyén.
+- A kiszolgáló neve nem frissül a portálon, ha a kiszolgáló át lett nevezve.
+
+### <a name="cloud-endpoint"></a>Felhőbeli végpont
+- Azure File Sync támogatja az Azure-fájlmegosztás közvetlen módosítását. Az Azure-fájlmegosztást érintő módosításokat azonban először egy Azure File Sync változás-észlelési feladatokkal kell felderíteni. A rendszer 24 óránként egyszer egy változás-észlelési feladatot kezdeményez a Felhőbeli végpontok számára. Az Azure-fájlmegosztás által módosított fájlok azonnali szinkronizálásához a [Meghívási AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell-parancsmag használatával manuálisan indíthatja el az Azure-fájlmegosztás változásainak észlelését. Emellett az Azure-fájlmegosztás REST protokollon keresztül végrehajtott módosításai nem frissítik az SMB utolsó módosításának időpontját, és a szinkronizálás nem lesz látható változásként.
+- A Storage Sync szolgáltatás és/vagy a Storage-fiók áthelyezhető egy másik erőforráscsoporthoz vagy előfizetésbe a meglévő Azure AD-bérlőn belül. Ha áthelyezi a Storage-fiókot, meg kell adnia a hibrid File Sync szolgáltatás elérését a Storage-fiókhoz (lásd: [Azure file Sync hozzáférése a Storage-fiókhoz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+
+    > [!Note]  
+    > A Azure File Sync nem támogatja az előfizetés másik Azure AD-bérlőre való áthelyezését.
+
+### <a name="cloud-tiering"></a>Felhőbeli rétegzés
+- Ha egy rétegzett fájlt a Robocopy használatával másik helyre másol, az eredményül kapott fájl nem lesz rétegzett. Előfordulhat, hogy az offline attribútum be lesz állítva, mert a Robocopy helytelenül belefoglalja ezt az attribútumot a másolási műveletekbe.
+- Fájlok a Robocopy használatával történő másolásakor használja a/MIR beállítást a fájl időbélyegének megőrzéséhez. Ezzel biztosíthatja, hogy a régebbi fájlok a legutóbb használt fájlokhoz legyenek bontva.
 
 ## <a name="agent-version-8000"></a>Ügynök verziója 8.0.0.0
 A következő kibocsátási megjegyzések a Azure File Sync ügynök verziójának 8.0.0.0 vonatkoznak (2019. október 8.).

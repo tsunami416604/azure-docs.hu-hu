@@ -1,66 +1,66 @@
 ---
-title: A komplex veszélyforrások elleni védelem – Azure Database for PostgreSQL – egyetlen kiszolgáló
-description: Veszélyforrások elleni védelem észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések az adatbázishoz.
-author: bolzmj
-ms.author: mbolz
+title: Összetett veszélyforrások elleni védelem használata – Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: A fenyegetések elleni védelem rendellenes adatbázis-tevékenységeket észlel, ami az adatbázis potenciális biztonsági fenyegetéseket jelez.
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: a69a8b651188b9566fdbec4bc6de09a8fec164c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b7f52ea318432e97a450a54526f6481b14139c9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067468"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776143"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló komplex veszélyforrások elleni védelem
+# <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Komplex veszélyforrások elleni védelem Azure Database for PostgreSQL – egyetlen kiszolgáló
 
 Az Azure Database for PostgreSQL-hez készült Komplex veszélyforrások elleni védelem észleli az adatbázisok hozzáférésére és az adatbázisok biztonságának megsértésére tett szokatlan és potenciálisan kártevő szándékú kísérleteket.
 
-Komplex veszélyforrások elleni védelem a speciális adatbiztonság ajánlat, amely egy fejlett biztonsági képességek az egyesített csomag részét képezi. Komplex veszélyforrások elleni védelem érheti el és keresztül kezeli a [az Azure portal](https://portal.azure.com) és jelenleg előzetes verzióban érhető el.
+A komplex veszélyforrások elleni védelem a fejlett adatbiztonsági ajánlat része, amely egy egységes csomag a speciális biztonsági funkciókhoz. A komplex veszélyforrások elleni védelem a [Azure Portalon](https://portal.azure.com) keresztül érhető el és felügyelhető, és jelenleg előzetes verzióban érhető el.
 
 > [!NOTE]
-> A komplex veszélyforrások elleni védelem funkció **nem** a következő az Azure government és szuverén felhő-régiók: US Gov Texas, USA beli államigazgatás – Arizona, USA beli államigazgatás – Iowa, USA, beli államigazgatás – Virginia, USA védelmi Minisztériuma – keleti régiója, USA védelmi Minisztériuma – középső régiója, Németország közép-India, Németország Észak, kelet-Kína, kelet-Kína 2. Látogasson el [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) általános rendelkezésre állás érdekében.
+> A komplex veszélyforrások elleni védelem funkció a következő Azure Government-és szuverén felhő-régiókban **nem** érhető el: US Gov Texas, US Gov Arizona, US gov Iowa, USA, gov Virginia, US DoD – keleti régió, US DoD – középső régió, Közép-németország, Észak-Németország, Kelet-Kína, Kelet-Kína 2. Tekintse meg a [régiók által elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/) az általános termékek rendelkezésre állása érdekében.
 >
 
 > [!NOTE]
-> Ez a funkció érhető el minden régióban az Azure, Azure Database for PostgreSQL általános célú és memóriahasználatra optimalizált kiszolgálók telepítési helyét.
+> Ez a funkció az Azure minden régiójában elérhető, ahol a Azure Database for PostgreSQL általános célú és a memóriára optimalizált kiszolgálók esetében van telepítve.
 
-## <a name="set-up-threat-detection"></a>Állítsa be a fenyegetések észlelése
-1. Indítsa el az Azure Portalra a [ https://portal.azure.com ](https://portal.azure.com).
-2. Keresse meg az Azure Database for PostgreSQL-kiszolgáló védeni kívánt konfiguráció lapján. Válassza ki a biztonsági beállítások **komplex veszélyforrások elleni védelem (előzetes verzió)** .
-3. Az a **komplex veszélyforrások elleni védelem (előzetes verzió)** konfigurációs lapon:
+## <a name="set-up-threat-detection"></a>Fenyegetés észlelésének beállítása
+1. Indítsa el a Azure Portalt a [https://portal.azure.com](https://portal.azure.com).
+2. Navigáljon a védelemmel ellátni kívánt Azure Database for PostgreSQL-kiszolgáló konfigurációs lapjára. A biztonsági beállítások területen válassza a **speciális veszélyforrások elleni védelem (előzetes verzió)** lehetőséget.
+3. A **speciális veszélyforrások elleni védelem (előzetes verzió)** konfigurációs lapján:
 
-   - Komplex veszélyforrások elleni védelem engedélyezése a kiszolgálón.
-   - A **komplex veszélyforrások elleni védelmi beállításait**, a a **küldje a riasztásokat** szöveget adja meg a rendellenes adatbázis-tevékenységek észlelésekor biztonsági riasztást küld e-mailek listáját.
+   - Az összetett veszélyforrások elleni védelem engedélyezése a kiszolgálón.
+   - Az **összetett veszélyforrások elleni védelem beállításaiban**a **riasztások küldése** a szövegmezőbe mezőbe írja be azoknak az e-maileknek a listáját, amelyek biztonsági riasztásokat kapnak a rendellenes adatbázis-tevékenységek észlelése után.
   
-   ![Állítsa be a fenyegetések észlelése](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
+   ![Fenyegetés észlelésének beállítása](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
 
-## <a name="explore-anomalous-database-activities"></a>Ismerkedés a rendellenes adatbázis-tevékenységek
+## <a name="explore-anomalous-database-activities"></a>A rendellenes adatbázis-tevékenységek megismerése
 
-Rendellenes adatbázis-tevékenységek észlelésekor e-mail-értesítést kap. Az e-mailt a gyanús biztonsági eseményről, beleértve az esetleges rendellenes tevékenységekről, adatbázisnevet, kiszolgáló neve, alkalmazás neve és az esemény időpontját jellege nyújt tájékoztatást. Emellett az e-mailt információkat biztosít a lehetséges okokat, és javasolt műveleteket is vizsgálata és enyhítése érdekében az esetleges adatbázis-fenyegetések.
+A rendellenes adatbázis-tevékenységek észlelése után e-mailben értesítést kap. Az e-mail információt nyújt a gyanús biztonsági eseményekről, beleértve a rendellenes tevékenységek jellegét, az adatbázis nevét, a kiszolgáló nevét, az alkalmazás nevét és az esemény időpontját. Emellett az e-mail-cím a lehetséges okokkal és a javasolt műveletekkel kapcsolatos információkat nyújt az adatbázis lehetséges fenyegetésének kivizsgálásához és enyhítéséhez.
     
-1. Kattintson a **legutóbbi riasztás megtekintése** hivatkozásra az e-mailben, megnyílik az Azure portal és az aktív fenyegetéseket észlel áttekintést nyújt az SQL database az Azure Security Center riasztások lap megjelenítése.
+1. Kattintson a **legutóbbi riasztások megtekintése** hivatkozásra az e-mailben a Azure Portal elindításához és a Azure Security Center riasztások oldal megjelenítéséhez, amely áttekintést nyújt az SQL Database-ben észlelt aktív fenyegetésekről.
     
     ![Rendellenes tevékenység jelentés](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
 
     Aktív fenyegetések megtekintése:
 
-    ![aktív fenyegetések](./media/howto-database-threat-protection-portal/active-threats.png)
+    ![Aktív fenyegetések](./media/howto-database-threat-protection-portal/active-threats.png)
 
-2. Kattintson egy adott riasztás kivizsgálása a fenyegetés és a jövőbeli fenyegetésekkel szembeni szervizelését további részletek és műveletek beolvasásához.
+2. Egy adott riasztásra kattintva további részleteket és műveleteket kaphat a fenyegetés kivizsgálásához és a jövőbeli fenyegetések szervizelését.
     
     ![Adott riasztás](./media/howto-database-threat-protection-portal/specific-alert.png)
 
-## <a name="explore-threat-detection-alerts"></a>Ismerkedés a fenyegetésészlelés riasztásai
+## <a name="explore-threat-detection-alerts"></a>Fenyegetések észlelésével kapcsolatos riasztások megismerése
 
-Komplex veszélyforrások elleni védelem integrálható a riasztásokat az [az Azure Security Center](https://azure.microsoft.com/services/security-center/). 
+A komplex veszélyforrások elleni védelem a [Azure Security Centerával](https://azure.microsoft.com/services/security-center/)integrálja a riasztásokat. 
 
-Kattintson a **biztonsági riasztások** alatt **veszélyforrások elleni védelem** indítsa el az Azure Security Center a riasztások lapon, és áttekintheti a aktív SQL észlelt veszélyforrások alapján az adatbázis.
+Kattintson a **biztonsági riasztások** elemre a **veszélyforrások védelme** területen a Azure Security Center riasztások oldal elindításához, és tekintse át az adatbázisban észlelt aktív SQL-fenyegetéseket.
 
-  ![Veszélyforrások elleni védelem asc](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+  ![Veszélyforrások elleni védelem ASC](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Tudjon meg többet [Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Díjszabási információkért tekintse meg a [, Azure Database for PostgreSQL-díjszabás](https://azure.microsoft.com/pricing/details/postgresql/)  
+* További információ a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* A díjszabással kapcsolatos további információkért tekintse meg a [Azure Database for PostgreSQL díjszabási oldalát](https://azure.microsoft.com/pricing/details/postgresql/) .  

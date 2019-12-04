@@ -1,20 +1,19 @@
 ---
-title: EDIFACT-üzenetek a B2B-integrációhoz – Azure Logic Apps
+title: EDIFACT üzenetek a B2B-integrációhoz
 description: Az Exchange EDIFACT-üzeneteinek összevonása EDI formátumban a VÁLLALATKÖZI vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/26/2016
-ms.openlocfilehash: 42197f8bf08ae1f36c531c220ebbf78484a5946e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: b6a6ee21774ba931d9982d82b99008f312d19736
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680344"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793020"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange EDIFACT-üzenetek a B2B vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
 

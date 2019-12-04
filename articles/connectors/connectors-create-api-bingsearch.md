@@ -1,22 +1,18 @@
 ---
-title: Kapcsolódás Bing Searchhoz – Azure Logic Apps
+title: Kapcsolódás Bing Searchhoz
 description: Hírek keresése Bing Search REST API-kkal és Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: f7558a5836d8f087e719346fb38bbf24ece2c8fb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c3b6cb61e2f7b91b3b1e3595da2d105c5cdb01c8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026769"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789950"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Hírek keresése Bing Search és Azure Logic Apps
 
@@ -54,16 +50,16 @@ Ha már létezik a kapcsolatai, adja meg a szükséges információkat az trigge
 
    Ebben a példában megadhatja, hogy a rendszer hogyan adja vissza a megfelelő híreket a Bing Search.
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    |----------|----------|-------|-------------|
-   | Search Query | Igen | <*search-words*> | Adja meg a használni kívánt keresési kulcsszavakat. |
-   | Market | Igen | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
-   | Safe Search | Igen | <*search-level*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
-   | Darabszám | Nem | <*results-count*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
-   | Eltolás | Nem | <*skip-value*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
+   | Keresési lekérdezés | Igen | <*Keresés – szavak*> | Adja meg a használni kívánt keresési kulcsszavakat. |
+   | Piac | Igen | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
+   | Biztonságos Keresés | Igen | <*keresési szintű*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
+   | Mennyiség | Nem | <*találatok száma*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
+   | Eltolás | Nem | <*kihagyás – érték*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
    |||||
 
-   Például:
+   Példa:
 
    ![Trigger beállítása](./media/connectors-create-api-bing-search/bing-search-trigger.png)
 
@@ -105,13 +101,13 @@ A műveletek listából válassza ki a kívánt műveletet.
 
    Ebben a példában adja meg az trigger eredményeinek egy részhalmazának visszaküldési feltételeit.
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    |----------|----------|-------|-------------|
-   | Search Query | Igen | <*search-expression*> | Adjon meg egy kifejezést az trigger eredményeinek lekérdezéséhez. A dinamikus tartalom lista mezői közül választhat, vagy létrehozhat egy kifejezést a Kifejezésszerkesztő használatával. |
-   | Market | Igen | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
-   | Safe Search | Igen | <*search-level*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
-   | Darabszám | Nem | <*results-count*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
-   | Eltolás | Nem | <*skip-value*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
+   | Keresési lekérdezés | Igen | <*keresési kifejezés*> | Adjon meg egy kifejezést az trigger eredményeinek lekérdezéséhez. A dinamikus tartalom lista mezői közül választhat, vagy létrehozhat egy kifejezést a Kifejezésszerkesztő használatával. |
+   | Piac | Igen | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
+   | Biztonságos Keresés | Igen | <*keresési szintű*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
+   | Mennyiség | Nem | <*találatok száma*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
+   | Eltolás | Nem | <*kihagyás – érték*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
    |||||
 
    Tegyük fel például, hogy azokat az eredményeket szeretné használni, amelyek kategóriájának neve tartalmazza a "Tech" szót.
@@ -152,14 +148,14 @@ A műveletek listából válassza ki a kívánt műveletet.
 
 1. Ha a rendszer a kapcsolódási adatok megadását kéri, adja meg a következő adatokat:
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    |----------|----------|-------|-------------|
    | Kapcsolat neve | Igen | <a *kapcsolatok neve*> | A kapcsolódáshoz létrehozandó név |
    | API-verzió | Igen | <*API-version*> | Alapértelmezés szerint a Bing Search API verziója az aktuális verzióra van beállítva. Szükség szerint a korábbi verziót is kiválaszthatja. |
    | API-kulcs | Igen | <*API-kulcs*> | A korábban kapott Bing Search API-kulcs. Ha nem rendelkezik kulccsal, szerezze be az [API-kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
-   Például:
+   Példa:
 
    ![Kapcsolat létrehozása](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 

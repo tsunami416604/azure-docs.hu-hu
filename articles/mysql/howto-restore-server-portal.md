@@ -1,17 +1,17 @@
 ---
-title: Kiszolgáló visszaállítása Azure Database for MySQL
+title: Biztonsági mentés és visszaállítás – Azure Portal – Azure Database for MySQL
 description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani egy kiszolgálót Azure Database for MySQL a Azure Portal használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 2813567eeb9435ca5e1d29dc6a0a246f9cca3b05
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.date: 12/02/2019
+ms.openlocfilehash: f8005bccf3a726a6022efdecb2eb5738669f3bc2
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965950"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762624"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Kiszolgálók biztonsági mentése és visszaállítása Azure Database for MySQL a Azure Portal használatával
 

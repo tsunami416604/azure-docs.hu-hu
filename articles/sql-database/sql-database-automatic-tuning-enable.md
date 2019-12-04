@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 0abf4bb015be52a10178423a566433b87127a167
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/03/2019
+ms.openlocfilehash: bdd33d85ee0aac4808c343af088d4db1a0dc963e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821916"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767772"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Automatikus hangolás engedélyezése a lekérdezések figyeléséhez és a munkaterhelés teljesítményének növeléséhez
 
@@ -92,7 +92,7 @@ Az egyes Automatikus hangolási beállítások T-SQL-kapcsolaton keresztüli kon
 ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_INDEX = DEFAULT, DROP_INDEX = OFF)
 ```
 
-Ha az egyéni hangolási beállítást be értékre állítja, a felülbírálja az adatbázis által örökölt beállításokat, és engedélyezte a hangolási beállítást. Ha kikapcsolja a beállítást, az az adatbázis által örökölt beállításokat is felülbírálja, és letiltja a hangolási beállítást. Az Automatikus hangolási beállítás, amelynél az alapértelmezett érték meg van adva, a örökli a konfigurációt az adatbázis szintjének Automatikus hangolási beállításával.  
+Ha az egyéni hangolási beállítást be értékre állítja, a felülbírálja az adatbázis által örökölt beállításokat, és engedélyezte a hangolási beállítást. Ha kikapcsolja a beállítást, az az adatbázis által örökölt beállításokat is felülbírálja, és letiltja a hangolási beállítást. Az Automatikus hangolási beállítás, amelynél az alapértelmezett érték meg van adva, a a kiszolgálói szintű beállításoktól örökli az Automatikus hangolási konfigurációt.  
 
 > [!IMPORTANT]
 > [Aktív földrajzi replikálás](sql-database-auto-failover-group.md)esetén az automatikus finomhangolást csak az elsődleges adatbázison kell konfigurálni. Automatikusan alkalmazott hangolási műveletek, például index létrehozása vagy törlése automatikusan replikálódnak a csak olvasható másodlagosra. Ha a csak olvasási jogosultsággal rendelkező T-SQL-n keresztül szeretné engedélyezni az automatikus hangolást, a rendszer hibát okoz, mivel a csak olvasási jogosultsággal rendelkező másodlagos konfiguráció nem támogatott.
@@ -114,7 +114,7 @@ Az automatikus hangolás használatához minimálisan szükséges engedély a fe
 
 Lásd: az [e-mail értesítések automatikus finomhangolása](sql-database-automatic-tuning-email-notifications.md) útmutató.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az automatikus hangolással kapcsolatos további információkért olvassa el az automatikus finomhangolásról szóló [cikket](sql-database-automatic-tuning.md) , és azt, hogy miként segíthet a teljesítmény javításában.
 * Tekintse meg a teljesítményre vonatkozó [javaslatokat](sql-database-advisor.md) a Azure SQL Database teljesítményével kapcsolatos javaslatok áttekintéséhez.

@@ -2,19 +2,16 @@
 title: Áttekintés – az üzembe helyezés automatizálása Azure Logic Apps
 description: Ismerkedjen meg Azure Resource Manager-sablonokkal a Azure Logic Apps üzembe helyezésének automatizálásához
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: bc61e39a02d16827521758ca8248488e46c109b5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f5216181efcd6593fc9f85de0792b98a5d7fd0a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838101"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792552"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Áttekintés: üzembe helyezés automatizálása Azure Logic Appshez Azure Resource Manager sablonok használatával
 
@@ -322,7 +319,7 @@ A logikai alkalmazás erőforrás-definíciója a `properties` objektummal kezd�
 
 A logikai alkalmazás erőforrás-definíciójának attribútumai a következők:
 
-| Attribútum | Kötelező | Típus | Leírás |
+| Attribútum | Szükséges | Type (Típus) | Leírás |
 |-----------|----------|------|-------------|
 | `state` | Igen | Sztring | A logikai alkalmazás állapota az üzembe helyezéskor, ahol a `Enabled` azt jelenti, hogy a logikai alkalmazás élő, és `Disabled` azt jelenti, hogy a logikai alkalmazás inaktív. Ha például nem áll készen a logikai alkalmazás életbe léptetésére, de a Piszkozat verzióját szeretné telepíteni, használhatja a `Disabled` lehetőséget. |
 | `integrationAccount` | Nem | Objektum | Ha a logikai alkalmazás egy integrációs fiókot használ, amely a vállalatok közötti (B2B) forgatókönyvek összetevőit tárolja, ez az objektum tartalmazza a `id` attribútumot, amely meghatározza az integrációs fiók AZONOSÍTÓját. |
@@ -1246,7 +1243,7 @@ Itt látható a témakörben ismertetett paraméteres minta sablon, amelyet a k�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Logikai alkalmazás-sablonok létrehozása](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)

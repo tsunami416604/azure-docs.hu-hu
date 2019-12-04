@@ -1,52 +1,56 @@
 ---
-title: Az Azure az adatkezelő segítségével idősorozat-adatok elemzése
-description: Ismerje meg, hogyan elemezheti a felhőben az Azure Data Explorer használatával.
+title: Idősorozat-adatgyűjtés elemzése az Azure Adatkezelő
+description: Megtudhatja, hogyan elemezheti a felhőben lévő idősorozat-információkat az Azure Adatkezelő használatával.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: 7415e13a445a73af197362c6cfbd3a865a2fea02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3873b25394f91ce1c1601c348de2098198ba7fdd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604051"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765483"
 ---
-# <a name="time-series-analysis-in-azure-data-explorer"></a>Az Azure Data Explorer idősoros elemzés
+# <a name="time-series-analysis-in-azure-data-explorer"></a>Idősorozat-elemzés az Azure-ban Adatkezelő
 
-Az Azure Data Explorer (ADX) telemetriai adatok gyűjtésének folyamatos cloud services vagy az IoT-eszközök hajt végre. Ezek az adatok elemezhetők a különféle elemzéseket, például a figyelési szolgáltatás állapotát, fizikai gyártási folyamatok és használati trendeket. Elemzés az eltérés a tipikus alapkonfiguráció minta képest minta található kiválasztott metrikák időbeli adatsoroknál történik.
-ADX létrehozását, kezelését és több idősorozat-elemzési natív támogatást tartalmaz. Ebben a témakörben megtudhatja, hogyan ADX használható létrehozása és elemzése **idősorozat másodpercek alatt több ezer**, lehetővé téve, közel valós idejű megfigyelési megoldásokat, és munkafolyamatokat.
+Az Azure Adatkezelő (ADX) telemetria-adatok folyamatos gyűjtését végzi a Cloud Services-ből vagy a IoT-eszközökről. Ezeket az adatokat elemezheti különböző elemzésekhez, például a szolgáltatás állapotának figyeléséhez, a fizikai üzemi folyamatokhoz és a használati trendekhez. Az elemzés a kiválasztott mérőszámok idősorozatán történik, hogy a mintázatot a jellemző alaptervhez képest megkeresse.
+A ADX natív támogatást tartalmaz több idősorozat létrehozásához, kezeléséhez és elemzéséhez. Ebből a témakörből megtudhatja, hogyan lehet **másodpercek**alatt létrehozni és elemezni az ADX, így közel valós idejű figyelési megoldásokat és munkafolyamatokat hozhat létre.
 
-## <a name="time-series-creation"></a>Time series létrehozása
+## <a name="time-series-creation"></a>Idősorozat létrehozása
 
-Ebben a szakaszban létrehozunk rengeteg rendszeres időbeli adatsorok használatával egyszerűen és intuitív módon a `make-series` operátor és a kitöltés a hiányzó értékeket a szükséges.
-Az első lépés az idősoros elemzés particionálja, és a time series készletét használja az eredeti telemetriai tábla átalakítása. A tábla az időbélyegző-oszlopa, környezetfüggő dimenziók és választható metrikák általában tartalmazza. A dimenziók segítségével az adatok particionálásához. A cél, hogy rendszeres időközönként idősorozat partíciónként több ezer létrehozása.
+Ebben a szakaszban a rendszeres idősorozatok nagy készletét hozunk létre egyszerűen és intuitív módon a `make-series` operátor használatával, és szükség szerint kitöltheti a hiányzó értékeket.
+Az idősorozat-elemzés első lépése az eredeti telemetria-tábla particionálása és átalakítása idősorozatra. A tábla általában időbélyeg-oszlopot, környezetfüggő dimenziókat és választható metrikákat tartalmaz. A dimenziók az adatparticionálásra szolgálnak. A cél az, hogy a partíciók több ezer időpontot hozzon létre a rendszeres időközönként.
 
-A bemeneti tábla *demo_make_series1* tetszőleges webes szolgáltatás forgalom 600 ezer rekordot tartalmaz. Használja az alábbi parancsot a minta a 10 rekordot:
+A bemeneti tábla *demo_make_series1* a webszolgáltatások tetszőleges 600K tartozó rekordokat tartalmazza. Használja az alábbi parancsot a 10-es rekordok mintavételéhez:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03MTo0vTi3KTC02VKhRKAFyFQwNADOyzKUbAAAA) **\]**
 
 ```kusto
 demo_make_series1 | take 10 
 ```
 
-Az eredményül kapott tábla időbélyegző-oszlopa, három környezetfüggő dimenziók, és a metrika sem tartalmazza:
+Az eredményül kapott tábla timestamp oszlopot, három környezetfüggő dimenzió oszlopot tartalmaz, és nincsenek metrikák:
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | TimeStamp | BrowserVer | OsVer | Ország/régió |
-|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | Egyesült Királyság |
-|   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
-|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | Egyesült Királyság |
-|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | Egyesült Királyság |
-|   | 2016-08-25 09:12:46.5570000 | Chrome 52.0 | Windows 10 | Litván Köztársaság |
-|   | 2016-08-25 09:12:47.0470000 | Chrome 52.0 | Windows 8.1 | India |
-|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | Egyesült Királyság |
-|   | 2016-08-25 09:12:51.6930000 | Chrome 52.0 | Windows 7 | Hollandia |
-|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | Egyesült Királyság |
-|   | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | India |
+|   | Időbélyeg | BrowserVer | OsVer | Ország/régió |
+|   | 2016-08-25 09:12:35.4020000 | Chrome 51,0 | Windows 7 rendszeren | Egyesült Királyság |
+|   | 2016-08-25 09:12:41.1120000 | Chrome 52,0 | Windows 10 |   |
+|   | 2016-08-25 09:12:46.2300000 | Chrome 52,0 | Windows 7 rendszeren | Egyesült Királyság |
+|   | 2016-08-25 09:12:46.5100000 | Chrome 52,0 | Windows 10 | Egyesült Királyság |
+|   | 2016-08-25 09:12:46.5570000 | Chrome 52,0 | Windows 10 | Litván Köztársaság |
+|   | 2016-08-25 09:12:47.0470000 | Chrome 52,0 | Windows 8.1 | India |
+|   | 2016-08-25 09:12:51.3600000 | Chrome 52,0 | Windows 10 | Egyesült Királyság |
+|   | 2016-08-25 09:12:51.6930000 | Chrome 52,0 | Windows 7 rendszeren | Hollandia |
+|   | 2016-08-25 09:12:56.4240000 | Chrome 52,0 | Windows 10 | Egyesült Királyság |
+|   | 2016-08-25 09:13:08.7230000 | Chrome 52,0 | Windows 10 | India |
 
-Mivel ebben az esetben nincs metrikák, a forgalom száma, az operációs rendszer a következő lekérdezéssel dokumentumtárolási jelölő a time series készletét csak olyan:
+Mivel nincsenek mérőszámok, az operációs rendszer az alábbi lekérdezéssel particionálja az idősorozatot, amely a forgalmi számlálót jelöli:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPwQrCMBAE0Hu/Yo4NVLBn6Td4ULyWtV1tMJtIsoEq/XhbC4J48jgw+5h1rBDrW0UDDakjR7HsWUIrdOM2cbScakxIWYSiffJSL49W+KAkd2N2hVsMGv8yaPw2furFhCVu1gifpelC9loa9Hyh7LTZInh8FFiPSP7K5fufap1UoR4Mzg/s04njjEb2PUfofNYNFPUFtJiguAEBAAA=) **\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -56,29 +60,31 @@ demo_make_series1
 | render timechart 
 ```
 
-- Használja a [ `make-series` ](/azure/kusto/query/make-seriesoperator) operátor létre egy három idősorozat, ahol:
-    - `num=count()`: time series forgalom
-    - `range(min_t, max_t, 1h)`: a time series jön létre a következő időtartományban: (a tábla rekordjait legrégebbi és a legújabb időbélyegeket) 1 óra bins
-    - `default=0`: Adja meg a hiányzó bins hozhat létre a rendszeres time series kitöltés módszert. Alternatív megoldásként [ `series_fill_const()` ](/azure/kusto/query/series-fill-constfunction), [ `series_fill_forward()` ](/azure/kusto/query/series-fill-forwardfunction), [ `series_fill_backward()` ](/azure/kusto/query/series-fill-backwardfunction) és [ `series_fill_linear()` ](/azure/kusto/query/series-fill-linearfunction) módosítások
-    - `byOsVer`: az operációs rendszer által partíció
-- A tényleges idősorozat-adatok struktúrát az összesített érték minden egyes alkalommal bin / numerikus tömbje. Használjuk a `render timechart` Vizualizáció céljából.
+- A [`make-series`](/azure/kusto/query/make-seriesoperator) operátor használatával hozzon létre egy három idősorozatot, ahol:
+    - `num=count()`: forgalmi idő sorozata
+    - `range(min_t, max_t, 1h)`: az idősorozat 1 órás raktárhelyekben jön létre az időtartományban (a tábla rekordjainak legrégebbi és legmodernebb időbélyege)
+    - `default=0`: adjon meg kitöltési metódust a hiányzó raktárhelyekhez a normál idősorozatok létrehozásához. Alternatív megoldásként [`series_fill_const()`](/azure/kusto/query/series-fill-constfunction), [`series_fill_forward()`](/azure/kusto/query/series-fill-forwardfunction), [`series_fill_backward()`](/azure/kusto/query/series-fill-backwardfunction) és [`series_fill_linear()`](/azure/kusto/query/series-fill-linearfunction) is használhatja a módosításokat
+    - `byOsVer`: particionálás operációs rendszer szerint
+- A tényleges idősorozat adatstruktúrája az összesített érték numerikus tömbje az egyes időraktárhelyek esetében. A vizualizációhoz `render timechart` használjuk.
 
-A fenti táblázatban három partíció van. Létrehozhatunk egy külön idősorozat: Windows 10 (vörös), 7 (kék) és 8.1-es (zöld) minden egyes operációs rendszer verzió a grafikonon látható módon:
+A fenti táblázatban három partíció található. Létrehozhatunk egy külön idősorozatot: Windows 10 (vörös), 7 (kék) és 8,1 (zöld) minden egyes operációsrendszer-verzióhoz, ahogyan az a gráfban látható:
 
-![Time series partíció](media/time-series-analysis/time-series-partition.png)
+![Idősorozat-partíció](media/time-series-analysis/time-series-partition.png)
 
-## <a name="time-series-analysis-functions"></a>Time series elemzési funkciók
+## <a name="time-series-analysis-functions"></a>Idősorozat-elemzési függvények
 
-Ebben a szakaszban azt feldolgozási funkciók jellemző sorozat kell végrehajtani.
-A time series készletét létrehozása után ADX támogatja az egyre nagyobb számban elérhető függvények feldolgozására és elemzésére azokat, amelyek megtalálhatók a [sorozat dokumentációja idő](/azure/kusto/query/machine-learning-and-tsa). Néhány reprezentatív funkciók feldolgozásához és elemzéséhez a time series bemutatunk néhányat.
+Ebben a szakaszban a tipikus adatsorozat-feldolgozási függvényeket fogjuk elvégezni.
+Az idősorozatok létrehozása után a ADX támogatja a függvények egyre növekvő listáját, amelyekkel feldolgozhatja és elemezheti azokat, amelyek a [Time Series dokumentációjában](/azure/kusto/query/machine-learning-and-tsa)találhatók meg. Az idősorozatok feldolgozásához és elemzéséhez néhány reprezentatív funkciót ismertetünk.
 
-### <a name="filtering"></a>Filtering
+### <a name="filtering"></a>Szűrés
 
-Szűrés egy gyakori eljárás a jel feldolgozási és hasznos idősorozat-feldolgozási feladatokat (például zajos jel smooth, észlelés módosításához).
-- Nincsenek két általános szűrési funkciók:
-    - [`series_fir()`](/azure/kusto/query/series-firfunction): RÉSZÉHEZ szűrő alkalmazásával. A mozgó átlag és az üzleti differenciálás a idősorozat címváltozásának felderítését a egyszerű kiszámításához használt.
-    - [`series_iir()`](/azure/kusto/query/series-iirfunction): IIR szűrő alkalmazásával. Exponenciális simítás és sum összesítő használható.
-- `Extend` az idősorozat, adja hozzá az új mozgó átlag sorozatát állítsa 5 dobozok mérete (nevű *ma_num*) a lekérdezés:
+A szűrés gyakori eljárás a jelfeldolgozásban, és hasznos az idősorozat-feldolgozási feladatokhoz (például Smooth a zajos jel, változások észlelése).
+- Két általános szűrési funkció létezik:
+    - [`series_fir()`](/azure/kusto/query/series-firfunction): a FIR-szűrő alkalmazása. A mozgóátlag és a változás észlelésének idősorozatának egyszerű kiszámítására használatos.
+    - [`series_iir()`](/azure/kusto/query/series-iirfunction): IIR-szűrő alkalmazása. Exponenciális simításhoz és halmozott összeghez használatos.
+- `Extend` az idősorozatot úgy, hogy az 5. méretű ( *ma_num*nevű) raktárhelyek új mozgóátlag-sorozatát adja hozzá a lekérdezéshez:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=) **\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -91,13 +97,15 @@ demo_make_series1
 
 ![Idősorozat-szűrés](media/time-series-analysis/time-series-filtering.png)
 
-### <a name="regression-analysis"></a>Regressziós elemzést
+### <a name="regression-analysis"></a>Regressziós elemzés
 
-Támogatja a ADX szegmentált becsült alakulását az idősor lineáris regressziós elemzést.
-- Használat [series_fit_line()](/azure/kusto/query/series-fit-linefunction) megfelelően a legjobb sor a time Series általános trendjét észleléséhez.
-- Használat [series_fit_2lines()](/azure/kusto/query/series-fit-2linesfunction) trend változások, az alaptervhez képest, amelyek hasznosak a figyelési forgatókönyvek az észleléséhez.
+A ADX támogatja a szegmentált lineáris regressziós elemzést az idősorozat trendének becslése érdekében.
+- A [series_fit_line ()](/azure/kusto/query/series-fit-linefunction) használatával illessze be a legjobb sort egy idősorozatra az általános trendek észlelése érdekében.
+- A [series_fit_2lines ()](/azure/kusto/query/series-fit-2linesfunction) használatával azonosíthatja az alaptervhez viszonyított trendek változásait, amelyek a figyelési helyzetekben hasznosak.
 
-Példa `series_fit_line()` és `series_fit_2lines()` függvények a time series lekérdezés:
+Példa `series_fit_line()` és `series_fit_2lines()` függvényekre egy idősorozat-lekérdezésben:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=) **\]**
 
 ```kusto
 demo_series2
@@ -105,33 +113,37 @@ demo_series2
 | render linechart with(xcolumn=x)
 ```
 
-![Time series regresszió](media/time-series-analysis/time-series-regression.png)
+![Idősorozat-regresszió](media/time-series-analysis/time-series-regression.png)
 
 - Kék: eredeti idősorozat
-- Zöld: felszerelt sor
-- Red: két illesztett sorok
+- Zöld: beépített vonal
+- Piros: két beépített vonal
 
 > [!NOTE]
-> A függvény ismerte fel a jump (a szint módosítása) pontra.
+> A függvény pontosan észlelte a Jump (szint változás) pontot.
 
-### <a name="seasonality-detection"></a>Szezonalitás észlelése
+### <a name="seasonality-detection"></a>Szezonális észlelés
 
-Számos metrikák szezonális (rendszeres) minták kövesse. A cloud services, a felhasználói adatforgalmat általában tartalmazza a napi és heti mintákat, amelyek a középső üzleti napi és a legalacsonyabb legmagasabb éjszaka és a hétvégén. IoT-érzékelőkről mérték rendszeres időközönként. Például a hőmérsékletet, nyomás vagy páratartalom fizikai mértékek is megjelenhetnek szezonális viselkedését.
+Számos mérőszám a szezonális (időszakos) mintákat követi. A Cloud Services felhasználói forgalma általában napi és heti mintákat tartalmaz, amelyek a legközelebb vannak az üzleti nap közepéhez és a legalacsonyabb éjszakán, illetve a hétvégén. IoT-érzékelők mérése rendszeres időközönként. A fizikai mérések, például a hőmérséklet, a nyomás vagy a páratartalom is megjeleníthetik a szezonális viselkedést.
 
-Az alábbi példa egy hónap (2 óra bins) webszolgáltatás forgalmát a szezonalitás észlelési vonatkozik:
+Az alábbi példa egy webszolgáltatások egy hónapos forgalmára alkalmazza a szezonális észlelést (2 órás raktárhelyek):
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuaqUShKzUtJLVIoycxNTc5ILCoBAHrjE80fAAAA) **\]**
 
 ```kusto
 demo_series3
 | render timechart 
 ```
 
-![Time series szezonalitás](media/time-series-analysis/time-series-seasonality.png)
+![Idősorozatos szezonális](media/time-series-analysis/time-series-seasonality.png)
 
-- Használat [series_periods_detect()](/azure/kusto/query/series-periods-detectfunction) automatikusan észlelni az időszakok idősorozatban található. 
-- Használat [series_periods_validate()](/azure/kusto/query/series-periods-validatefunction) Ha tudjuk, hogy egy metrika kell rendelkeznie az adott különböző megismétlésével, és győződjön meg arról, hogy azok léteznek szeretnénk.
+- A [series_periods_detect ()](/azure/kusto/query/series-periods-detectfunction) használatával automatikusan észlelhetők az idősorozatban lévő időszakok. 
+- [Series_periods_validate ()](/azure/kusto/query/series-periods-validatefunction) használata, ha tudjuk, hogy egy metrika adott időtartam (oka) t tartalmazhat, és azt szeretnénk ellenőrizni, hogy létezik-e.
 
 > [!NOTE]
-> Ha még nem léteznek a megadott különböző időszakok anomáliát
+> Ez egy anomália, ha nem létezik konkrét eltérő időszak
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OwQ6CMBBE737FHKmpVtAr39IguwkYyzZ0IZj48TZSLx533szOEAfxieeR0/XwRpzlwb2iilkSShapl5mTQYvd5QvxxJqd1bQEi8vZor6RawaLxsA5FewcOjBKBOP0PXUMXL7lyrCeeIvdRPjrzIw35Qyoe6W2GY4qJMv9yb91xtX0AS7N323BAAAA) **\]**
 
 ```kusto
 demo_series3
@@ -142,15 +154,17 @@ demo_series3
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | időszakok | Pontszámok | days |
+|   | időszakok | Kotta | nap |
 |   | 84 | 0.820622786055595 | 7 |
 |   | 12 | 0.764601405803502 | 1 |
 
-A függvény a napi és heti szezonalitás észleli. A napi kisebb, mint a heti pontszámmodell, mivel hétvégi napok különböznek a weekdays is.
+A függvény napi és heti szezonális feladatait észleli. A napi pontszám kevesebb, mint a hetente, mert a hétvégi napok eltérnek a hétköznaptól.
 
-### <a name="element-wise-functions"></a>Element-Wise funkciók
+### <a name="element-wise-functions"></a>Elem – Wise függvények
 
-Egy time Series aritmetikai és logikai műveleteket végezheti el. Használatával [series_subtract()](/azure/kusto/query/series-subtractfunction) lehet egy maradék idősorozat, amely, az eredeti nyers metrika- és a egy visszametszéses közötti különbség kiszámítása, és keresse meg a fennmaradó jel protokollmegvalósításokat:
+Az aritmetikai és logikai műveletek egy idősorozaton is elvégezhető. A [series_subtract ()](/azure/kusto/query/series-subtractfunction) használatával kiszámíthatja a hátralévő idősorozatot, azaz az eredeti nyers metrika és a simított érték közötti különbséget, és megkeresheti a fennmaradó jel rendellenességeit:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=) **\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -163,15 +177,17 @@ demo_make_series1
 | render timechart
 ```
 
-![Time series műveletek](media/time-series-analysis/time-series-operations.png)
+![Idősorozat-műveletek](media/time-series-analysis/time-series-operations.png)
 
 - Kék: eredeti idősorozat
-- Piros: a time series Görbített
-- Zöld: maradék idősorozat
+- Piros: simított idősorozat
+- Zöld: hátralévő idő sorozat
 
-## <a name="time-series-workflow-at-scale"></a>Time series munkafolyamat ipari méretekben
+## <a name="time-series-workflow-at-scale"></a>Idősorozat-munkafolyamatok méretezése
 
-Az alábbi példa bemutatja, hogyan ezek a függvények futhatnak ipari méretekben a time series ezer anomáliadetektálás másodpercben. Egy adatbázis-szolgáltatás olvasási száma mérőszám néhány minta telemetriai rekordok megtekintéséhez a négy nap a következő lekérdezés futtatásával:
+Az alábbi példa azt mutatja be, hogy ezek a függvények hogyan futhatnak több ezer időpontra, másodpercek alatt, a anomáliák észlelése érdekében. Ha egy adatbázis-szolgáltatás olvasási darabszám metrikájának néhány telemetria rekordját szeretné megtekinteni négy nap alatt, futtassa a következő lekérdezést:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKEnMTlUwAQArfAiiGgAAAA==) **\]**
 
 ```kusto
 demo_many_series1
@@ -180,13 +196,15 @@ demo_many_series1
 
 |   |   |   |   |   |   |
 | --- | --- | --- | --- | --- | --- |
-|   | TIMESTAMP | hely | anonOp | DB | DataRead |
-|   | 2016-09-11 21:00:00.0000000 | Hely 9 | 5117853934049630089 | 262 | 0 |
-|   | 2016-09-11 21:00:00.0000000 | Hely 9 | 5117853934049630089 | 241 | 0 |
-|   | 2016-09-11 21:00:00.0000000 | Hely 9 | -865998331941149874 | 262 | 279862 |
-|   | 2016-09-11 21:00:00.0000000 | Hely 9 | 371921734563783410 | 255 | 0 |
+|   | IDŐBÉLYEG | Loc | anonOp | DB | DataRead |
+|   | 2016-09-11 21:00:00.0000000 | Loc. 9 | 5117853934049630089 | 262 | 0 |
+|   | 2016-09-11 21:00:00.0000000 | Loc. 9 | 5117853934049630089 | 241 | 0 |
+|   | 2016-09-11 21:00:00.0000000 | Loc. 9 | – 865998331941149874 | 262 | 279862 |
+|   | 2016-09-11 21:00:00.0000000 | Loc. 9 | 371921734563783410 | 255 | 0 |
 
-És egyszerű statisztikai:
+És egyszerű statisztikák:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVcgrzbVNzi/NK9HQ1FHIzcyLL7EFkhohnr6uwSGOvgEg0cQKkGhiBZIoAEq2dK9VAAAA) **\]**
 
 ```kusto
 demo_many_series1
@@ -195,10 +213,12 @@ demo_many_series1
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | num | Min\_t | max\_t |
+|   | NUM | min\_t | maximális\_t |
 |   | 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
 
-A mérőszám olvasási 1 óra dobozok az idősor lépésközi létrehozásához (összesen négy nap * 24 óra = 96 pontok), normál minta ingadozása eredményezi:
+Idősorozatok létrehozása az olvasási metrika 1 órás tárolójában (összesen négy nap * 24 óra = 96 pont), a normális mintázat ingadozását eredményezi:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBSE9/6KGxOoYGfpIOjgUBDtXh7twwabFF6ittIfb2rBQSfHg+8+7joOsMZVATlC72vqSFTDtq8subHyLIZ9hgn+Zi2JefKMq/JQ7M/ltjhqvQGSbrbQ8JeFhm/LTyGZInbl1RIhTI3P6X5ROwp0ikmjd/hYYByE3IXV+1G6TEqRtTqahF3DgmAs1y1JwMOEVo0Rzdf6BbBH5FAHAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -208,11 +228,13 @@ demo_many_series1
 | render timechart with(ymin=0) 
 ```
 
-![Időbeli adatsorok ipari méretekben](media/time-series-analysis/time-series-at-scale.png)
+![Idősorozat a skálán](media/time-series-analysis/time-series-at-scale.png)
 
-A fenti viselkedése azért félrevezető, mert az egy normál idősorozat összesített értéket jelenít meg a különböző példányok, amelyek esetlegesen rendellenes minták több ezer eszközről. Ezért hozunk létre egy idősorozat példányonként. Egy példány Csatornatérképeket (hely), a anonOp (művelet) és a DB (az adott gép) határozzák meg.
+A fenti viselkedés félrevezető, mivel az egyetlen normál idősorozat több ezer különböző példányból van összesítve, amelyek rendellenes mintákat tartalmazhatnak. Ezért hozzunk létre egy idősorozatot egy példányban. A példányokat a Loc (hely), a anonOp (művelet) és az adatbázis (adott gép) határozza meg.
 
-Hány idősorozat is létrehozunk?
+Hány idősorozat hozható létre?
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVUiqVPDJT9ZR8C/QUXBxAkol55fmlQAAWEsFxjQAAAA=) **\]**
 
 ```kusto
 demo_many_series1
@@ -222,10 +244,12 @@ demo_many_series1
 
 |   |   |
 | --- | --- |
-|   | Count |
+|   | Mennyiség |
 |   | 18339 |
 
-Most fogunk olvasási száma mérőszám 18339 idősorozat csoportját hozhatja létre. Adjuk hozzá a `by` záradékot a márka sorozat utasítás lineáris regressziós érvényesek, és válassza a felső két idősorozat, akinek a legjelentősebb csökkenő trend:
+Most hozzuk létre az olvasási szám metrikájának 18339-es idősorozatát. Hozzáadjuk a `by` záradékot a make-Series utasításhoz, lineáris regressziót alkalmazunk, és kiválasztjuk a legjelentősebb csökkenő trendtel rendelkező első két idősorozatot:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsU7DQBBE+3zFdLmTTGHSgFAKUCiQiIKIe2u5rJ0T9l3YWwcH5eO5JBIFVJSzmnmz07Gi96FWzKExOepIzIb7WPcUDnVi8ZxKHJGGvifxX3yym+pp+biu7pcv1t4Bk+5EofFfFBp/U/4EJsdse+eri4QwbdKc9q1ZkNJrVhYx4IcCHyAUWjbnRcXlpQLl1uLtgOfoCqx2BRYPGcyjctjASPoYSLhA6uKObR5waasbr3XnA5tzrc0RjTtcn0hnKyg55KtkDAvU9+y2JIpPr1ujXjueT9cse+8YlVDTeIfVoNQymiiZ5ENSCi4vM3FQxAblzWx2a6f2G2UcBRyWAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -237,9 +261,11 @@ demo_many_series1
 | render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
 ```
 
-![A Time series az első két](media/time-series-analysis/time-series-top-2.png)
+![Első két idősorozat](media/time-series-analysis/time-series-top-2.png)
 
-Megjeleníti a példányok:
+A példányok megjelenítése:
+
+**\[** [**kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvW4CMRCEe55iSlsyBWkjChApIoESAb21udsQg38O26AD8fDx3SEUJVXKWc18s2M5wxmvM6bIIVVkKYqaXdCO/EUnjobTBDekk3MUzZU7u9i+rl4229nqXcpnYGQ7CrX/olD7m/InMLoV24HHg0RkqtOUzjuxoEzroiSCx4MC4xHJ71j0i9TwksLkS+LjgmWoFN4ahcW8gLnN7GuImI4niqyQbGhYlgFDm/40WVvjWfS1skRyaPDUkXorKFXl2MSw5yr/pN9Z31SyxuhbAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -253,15 +279,15 @@ demo_many_series1
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | hely | Op | DB | görbét |
-|   | Hely 15 | 37 | 1151 | -102743.910227889 |
-|   | Hely 13 | 37 | 1249 | -86303.2334644601 |
+|   | Loc | Op | DB | lejtőn |
+|   | Loc. 15 | 37 | 1151 | – 102743,910227889 |
+|   | Loc 13 | 37 | 1249 | -86303.2334644601 |
 
-Kevesebb mint két perc alatt ADX közel 20 000 idősorozat elemzett, és azt észlelte, amelyben az olvasási száma hirtelen eldobott két rendellenes idősorozat.
+A ADX kevesebb mint két perc alatt elemezte a 20 000-es idősorozatot, és két rendellenes idősorozatot észlelt, amelyben az olvasási szám hirtelen eldobásra kerül.
 
-Speciális képességek ADX gyors teljesítményt kombinálva adja meg a idősoros elemzés egyedi és hatékony megoldást.
+Ezek a fejlett funkciók a ADX gyors teljesítményével kombinálva egyedi és hatékony megoldást biztosítanak az idősorozat-elemzésekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg [alkalommal sorozat rendellenességek észlelése és előrejelzés](/azure/data-explorer/anomaly-detection) az Azure Data Explorer.
-* Ismerje meg [gépi tanulási funkciókat](/azure/data-explorer/machine-learning-clustering) az Azure Data Explorer.
+* Ismerje meg a [Time Series anomália észlelését és előrejelzését](/azure/data-explorer/anomaly-detection) az Azure Adatkezelőban.
+* Ismerje meg az Azure Adatkezelő [gépi tanulási funkcióit](/azure/data-explorer/machine-learning-clustering) .

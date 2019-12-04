@@ -1,19 +1,19 @@
 ---
-title: Biztonság Azure Database for MySQL – egyetlen kiszolgáló
-description: A Azure Database for MySQL-egy kiszolgáló biztonsági funkcióinak áttekintése.
+title: Biztonság – Azure Database for MySQL
+description: A Azure Database for MySQL biztonsági funkcióinak áttekintése.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 06f895d2e8cd7936141c9f35c5ed0c81fb7e3e15
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: 421604bcec5277d337b7e7f73a869f40fa73158a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485054"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764967"
 ---
-# <a name="security-in-azure-database-for-mysql---single-server"></a>Biztonság Azure Database for MySQL – egyetlen kiszolgáló
+# <a name="security-in-azure-database-for-mysql"></a>Biztonság az Azure Database for MySQL-ben
 
 Több biztonsági réteg is rendelkezésre áll, amelyek a Azure Database for MySQL-kiszolgálón lévő adatvédelmet biztosítanak. Ez a cikk ezeket a biztonsági beállításokat ismerteti.
 

@@ -1,18 +1,18 @@
 ---
-title: Kiszolgáló biztonsági mentése és visszaállítása Azure Database for MariaDB
+title: Biztonsági mentés és visszaállítás – Azure CLI – Azure Database for MariaDB
 description: Megtudhatja, hogyan készíthet biztonsági mentést és visszaállítást Azure Database for MariaDB-kiszolgálóról az Azure CLI használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: ae2e8049c58be312eed380fe2197985e61d28a26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.date: 12/02/2019
+ms.openlocfilehash: 4564aff5e8fe2119a494af33e71ff927718646db
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965228"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765851"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Azure Database for MariaDB-kiszolgáló biztonsági mentése és visszaállítása az Azure CLI használatával
 
@@ -117,7 +117,7 @@ A `az mariadb server georestore` parancshoz a következő paraméterek szükség
 |név | mydemoserver – georestored | Az új kiszolgáló neve. |
 |source-server | mydemoserver | Annak a meglévő kiszolgálónak a neve, amelynek a földrajzi redundáns biztonsági másolatait használja a rendszer. |
 |location | eastus | Az új kiszolgáló helye. |
-|sku-name| GP_Gen5_8 | Ez a paraméter beállítja az árképzési szintet, a számítási generációt és az új kiszolgáló virtuális mag számát. A GP_Gen5_8 leképez egy általános célú, Gen 5 Server 8 virtuális mag.|
+|sku-name| GP_Gen5_8 | Ez a paraméter beállítja az árképzési szintet, a számítási generációt és az új kiszolgáló virtuális mag számát. GP_Gen5_8 térképeket egy általános célú, Gen 5 Server 8 virtuális mag.|
 
 Amikor új kiszolgálót hoz létre a Geo-visszaállítással, az örökli a forráskiszolgáló azonos tárolási méretét és díjszabási szintjét. Ezek az értékek nem módosíthatók a létrehozás során. Az új kiszolgáló létrehozása után a tárolási mérete méretezhető.
 

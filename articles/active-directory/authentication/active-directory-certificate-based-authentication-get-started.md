@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bfe306f089a26258ba9c7a07c54925f4540b44b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 90dc42ed6ca16947902622cba0e5a81a2bc900e3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382027"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74785994"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>A tanúsítványalapú hitelesítés első lépései a Azure Active Directory
 
@@ -36,13 +36,16 @@ Ez a témakör:
 
 A tanúsítványalapú hitelesítés konfigurálásához a következő utasításoknak igaznak kell lenniük:
 
-- A tanúsítványalapú hitelesítés (CBA) csak a böngészőbeli alkalmazások és a modern hitelesítést (ADAL) használó natív ügyfelek összevont környezetei esetében támogatott. Az egyetlen kivétel Exchange Active Sync (EAS) az Exchange Online-hoz (EXO), amely összevont és felügyelt fiókokhoz is használható.
+- A tanúsítványalapú hitelesítés (CBA) csak a böngészőalapú alkalmazások, a modern hitelesítést (ADAL) használó natív ügyfelek és a MSAL-kódtárak összevont környezetei esetében támogatott. Az egyetlen kivétel Exchange Active Sync (EAS) az Exchange Online-hoz (EXO), amely összevont és felügyelt fiókokhoz is használható.
 - A legfelső szintű hitelesítésszolgáltató és a köztes hitelesítésszolgáltatók konfigurálását Azure Active Directory kell beállítani.
 - Minden hitelesítésszolgáltatónál szerepelnie kell egy olyan visszavont tanúsítványok listájának (CRL), amely egy internetre irányuló URL-cím használatával hivatkozható.
 - Rendelkeznie kell legalább egy, Azure Active Directory konfigurált hitelesítésszolgáltatóval. A kapcsolódó lépések a [hitelesítésszolgáltatók konfigurálása](#step-2-configure-the-certificate-authorities) szakaszban találhatók.
 - Az Exchange ActiveSync-ügyfelek esetében az ügyféltanúsítványt a felhasználónak az Exchange Online-ban lévő, a tulajdonos alternatív neve mező egyszerű neve vagy RFC822 neve mezőjében kell megadnia. Azure Active Directory leképezi a RFC822 értékét a címtárban található proxy címe attribútumra.
 - Az eszköznek hozzáféréssel kell rendelkeznie legalább egy olyan hitelesítésszolgáltatóhoz, amely ügyféltanúsítványt bocsát ki.
 - Az ügyfél-hitelesítéshez meg kell adni az ügyfél tanúsítványát.
+
+>[!IMPORTANT]
+>A sikeres letöltéshez és gyorsítótárhoz Azure Active Directory visszavont tanúsítványok listájának maximális mérete 20MB, a CRL letöltéséhez szükséges idő pedig nem haladhatja meg a 10 másodpercet.  Ha Azure Active Directory nem tudja letölteni a CRL-t, a tanúsítvány alapú hitelesítés sikertelen lesz, ha a megfelelő HITELESÍTÉSSZOLGÁLTATÓ által kiadott tanúsítványokat használ. Ajánlott eljárások a CRL-fájlok méretének korlátozására a tanúsítványok élettartamának ésszerű korlátokon belüli megőrzése, valamint a lejárt tanúsítványok törlése érdekében. 
 
 ## <a name="step-1-select-your-device-platform"></a>1\. lépés: válassza ki az eszköz platformját
 
@@ -202,7 +205,7 @@ Az EAS-profilok a mobileszköz-felügyelet (MDM), például az Intune használat
 1. Konfiguráljon egy EAS-profilt az alkalmazásban, amely megfelel az előző szakaszban foglalt követelményeknek.
 2. Nyissa meg az alkalmazást, és ellenőrizze, hogy a levelek szinkronizálása folyamatban van-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a tanúsítványalapú hitelesítésről Android-eszközökön.](active-directory-certificate-based-authentication-android.md)
 

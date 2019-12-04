@@ -1,20 +1,19 @@
 ---
-title: B2B integrációs fiókok létrehozása vagy kezelése – Azure Logic Apps
+title: VÁLLALATKÖZI integrációs fiókok létrehozása vagy kezelése
 description: Integrációs fiókok létrehozása, összekapcsolása és kezelése a Azure Logic Apps-vel való vállalati integrációhoz
 services: logic-apps
-ms.service: logic-apps
-ms.workload: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: de184b189c00cce64932a3ab17d41ed84e197a7e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 650355bc79e786839377a9b3e574dfbfa08868d6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534093"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793059"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Integrációs fiókok létrehozása és kezelése a B2B vállalati integrációk Azure Logic Apps
 

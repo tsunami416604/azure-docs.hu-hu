@@ -1,8 +1,7 @@
 ---
-title: Kapcsolódás 3270-alkalmazásokhoz IBM mainframe-Azure Logic Apps
+title: Kapcsolódás 3270-alkalmazásokhoz IBM-es nagyszámítógépeken
 description: A 3270-es képernyő-vezérelt alkalmazások integrálása és automatizálása az Azure-ban Azure Logic Apps és IBM 3270-összekötő használatával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: ChristopherHouser
 ms.author: chrishou
@@ -10,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: f039d0cbfa2b34fecbcdee53ebe2b56b6e9b6d69
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 309cf59c4b27c2a5906acfc519edd5306dece2d5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787576"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789239"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>A 3270-es képernyő-vezérelt alkalmazások integrálása az Azure-ba a Azure Logic Apps és az IBM 3270 Connector használatával
 
@@ -221,7 +220,7 @@ Azt is tegyük fel, hogy megismétli ezeket a lépéseket, de helytelen adatbevi
 
 * MSG – 10
 * CICS Üdvözöljük
-* üres
+* Üres
 * WBGB_1 (bemenet)
 * WBGB_2 (hiba)
 * Empty_1
@@ -361,8 +360,8 @@ Ha befejezi ezeket a lépéseket, használhatja a logikai alkalmazásban létreh
 
    | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    |----------|----------|-------|-------------|
-   | **Kapcsolat neve** | Igen | < a*kapcsolatok neve* > | A kapcsolatok neve |
-   | **Integrációs fiók azonosítója** | Igen | <*integráció – fiók neve* > | Az integrációs fiók neve |
+   | **Kapcsolat neve** | Igen | <a *kapcsolatok neve*> | A kapcsolatok neve |
+   | **Integrációs fiók azonosítója** | Igen | <*integráció – fiók neve*> | Az integrációs fiók neve |
    | **Integrációs fiók SAS URL-címe** | Igen | <*Integration-Account-sas-URL-* > | Az integrációs fiók közös hozzáférés-aláírási (SAS) URL-címe, amelyet a Azure Portal az integrációs fiók beállításai alapján hozhatja meg. <p>1. az integrációs fiók menüjének **Beállítások**területén válassza a **visszahívási URL-cím**elemet. <br>2. a jobb oldali ablaktáblában másolja a **generált visszahívási URL** értékét. |
    | **Kiszolgáló** | Igen | <*TN3270-kiszolgáló neve*> | A TN3270 szolgáltatás kiszolgálójának neve |
    | **Port** | Nem | <*TN3270-Server-port*> | A TN3270-kiszolgáló által használt port. Ha üresen hagyja, az összekötő a `23` használja alapértelmezett értékként. |

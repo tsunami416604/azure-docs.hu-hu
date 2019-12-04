@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e7ed7eef961e357b8c1e4e59790f9f150c286c61
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326592"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790001"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Kivetítések használata az Azure-beli Knowledge Store-ban Cognitive Search
 
@@ -28,11 +28,11 @@ A vetítés táblázatos lehet, az Azure Table Storage-ban sorokban és oszlopok
 
 A Tudásbázis háromféle típusú kivetítést támogat:
 
-+ **Táblák**: a táblázatos kivetítések lehetővé teszik a sematikus-alakzat vagy-leképezés megadását a táblázatos tárolóban.
++ **Táblák**: a táblázatos kivetítések lehetővé teszik a sematikus-alakzat vagy-leképezés megadását a táblázatos tárolóban. Csak az érvényes JSON-objektumokat lehet táblázatként kiszolgálni, a dúsított dokumentum olyan csomópontokat tartalmazhat, amelyek neve nem JSON-objektum, és az objektumok kivetítése során hozzon létre egy érvényes JSON-objektumot egy formáló képességgel vagy egy beágyazott formázással.
 
-+ **Objektumok**: Ha az adatai és a bővítések JSON-ábrázolására van szüksége, az objektum-vetítések blobként lesznek mentve.
++ **Objektumok**: Ha az adatai és a bővítések JSON-ábrázolására van szüksége, az objektum-vetítések blobként lesznek mentve. Csak az érvényes JSON-objektumok állíthatók be objektumként, a dúsított dokumentum olyan csomópontokat tartalmazhat, amelyek neve nem JSON-objektum, és az objektumok kivetítése során hozzon létre egy érvényes JSON-objektumot egy formáló képességgel vagy beágyazott kialakítással.
 
-+ **Fájlok**: Ha mentenie kell a dokumentumokból kinyert képeket, a fájl-kivetítések lehetővé teszik a normalizált rendszerképek mentését.
++ **Fájlok**: Ha mentenie kell a dokumentumokból kinyert képeket, a fájl-kivetítések lehetővé teszik a normalizált képek mentését a blob Storage-ba.
 
 Ha meg szeretné tekinteni a kontextusban definiált kivetítéseket, tekintse át az [Ismerkedés a Knowledge Store szolgáltatással](knowledge-store-howto.md)című témakört.
 
@@ -47,7 +47,7 @@ Ez a függetlenség azt feltételezi, hogy ugyanazokat az adatszerkezeteket kell
 
 ### <a name="relatedness"></a>Rokonság
 
-A kivetítési csoportok mostantól lehetővé teszik a dokumentumok kivetítését a leképezési típusok között, miközben megőrzi a különböző leképezési típusok közötti kapcsolatokat. Az egyetlen kivetítési csoporton belül megjelenő összes tartalom megőrzi az adatokat a leképezési típusok közötti kapcsolaton belül. A táblákon belül a kapcsolatok egy generált kulcson alapulnak, és minden alárendelt csomópont megőrzi a szülő csomópontra mutató hivatkozást. A különböző típusok (táblák, objektumok és fájlok) között a kapcsolatok megmaradnak, ha egyetlen csomópontot terveznek a különböző típusok között. Vegyünk például egy olyan forgatókönyvet, amelyben van egy kép és szöveg tartalmú dokumentum. A szöveget táblázatokra vagy objektumokra, valamint azokra a fájlokra is felhasználhatja, amelyekben a táblák vagy objektumok a fájl URL-címét tartalmazó tulajdonsággal rendelkeznek.
+A kivetítési csoportok mostantól lehetővé teszik a dokumentumok kivetítését a leképezési típusok között, miközben megőrzi a különböző leképezési típusok közötti kapcsolatokat. Az egyetlen kivetítési csoporton belül megjelenő összes tartalom megőrzi az adatokat a leképezési típusok közötti kapcsolaton belül. A táblákon belül a kapcsolatok egy generált kulcson alapulnak, és minden alárendelt csomópont megőrzi a szülő csomópontra mutató hivatkozást. A különböző típusok (táblák, objektumok és fájlok) között a kapcsolatok megmaradnak, ha egyetlen csomópontot terveznek a különböző típusok között. Vegyünk például egy olyan forgatókönyvet, amelyben van egy kép és szöveg tartalmú dokumentum. A szöveget táblázatokra vagy objektumokra, valamint azokra a fájlokra is felhasználhatja, amelyekben a táblák vagy objektumok a fájl URL-címét tartalmazó oszlop/tulajdonsággal rendelkeznek.
 
 ## <a name="input-shaping"></a>Bevitel kialakítása
 

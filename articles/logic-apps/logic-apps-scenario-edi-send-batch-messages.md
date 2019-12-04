@@ -1,19 +1,18 @@
 ---
-title: Batch – EDI-üzenetek feldolgozása csoportként – Azure Logic Apps
+title: Kötegelt feldolgozás – EDI-üzenetek csoportként
 description: EDI-üzenetek küldése és fogadása kötegként, csoportként vagy gyűjteményként Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 28e51363ca99182c9b6520ab1dea5aa13b16ea12
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680183"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793000"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>EDI-üzenetek küldése kötegekben kereskedelmi partnereknek Azure Logic Apps
 
@@ -72,7 +71,7 @@ Ehhez a Batch-fogadóhoz meg kell adnia a Batch-módot, a nevet, a kiadási felt
    | **Kiadási feltételek** | Üzenetek száma alapján, ütemterv alapján | Csak **beágyazott** batch-módban érhető el | 
    | **Üzenetek száma** | 10 | Csak az **üzenetek számán alapuló** kiadási feltételekkel érhető el | 
    | **Intervallum** | 10 | Csak a **Schedule-alapú** kiadási feltételekkel érhető el | 
-   | **Gyakoriság** | Percenként | Csak a **Schedule-alapú** kiadási feltételekkel érhető el | 
+   | **Gyakoriság** | percenként | Csak a **Schedule-alapú** kiadási feltételekkel érhető el | 
    ||| 
 
    ![Batch-trigger részleteinek megadása](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
@@ -168,9 +167,9 @@ Most hozzon létre egy vagy több olyan logikai alkalmazást, amely üzeneteket 
 
       ![A "batch receiver" logikai alkalmazás kiválasztása](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Válassza ki ezt a műveletet: **Batch_messages-<*a-Batch-fogadó* >**
+   4. Válassza ki ezt a műveletet: **Batch_messages-<*a-Batch-fogadó*>**
 
-      ![A "Batch_messages" művelet kiválasztása](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
+      !["Batch_messages" művelet kiválasztása](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 
 4. A Batch-feladó tulajdonságainak beállítása
 

@@ -1,22 +1,18 @@
 ---
-title: Kapcsolódás az SMTP-hez Azure Logic Appsról | Microsoft Docs
+title: Kapcsolódás az SMTP-hez Azure Logic Apps
 description: Automatizálja a feladatokat és munkafolyamatokat, amelyek e-mailt küldenek az SMTP (Simple Mail Transfer Protocol) fiók használatával Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 1649f197d4dbd88e2b485ab32f254a2d09696a84
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: fb501a158c839e6d4d71fc2af5ae50e48c248466
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050742"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789154"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail küldése az SMTP-fiókból Azure Logic Apps
 
@@ -53,7 +49,7 @@ A Azure Logic Apps és a Simple Mail Transfer Protocol (SMTP) összekötővel au
 
 1. Ha a rendszer kéri, adja meg a következő kapcsolódási adatokat:
 
-   | Tulajdonság | Kötelező | Leírás |
+   | Tulajdonság | Szükséges | Leírás |
    |----------|----------|-------------|
    | **Kapcsolat neve** | Igen | Az SMTP-kiszolgálóhoz való kapcsolódás neve | 
    | **SMTP-kiszolgáló címe** | Igen | Az SMTP-kiszolgáló címe | 
@@ -76,6 +72,6 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai r�
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

@@ -1,97 +1,95 @@
 ---
-title: Kódolás X12 üzeneteket – Azure Logic Apps |} A Microsoft Docs
-description: EDI ellenőrzése és átalakítása XML-ként kódolt üzenetek X12 az üzenetet az Azure Logic Apps Enterprise Integration Pack-kódoló
+title: X12-üzenetek kódolása
+description: Ellenőrizze az EDIt és alakítsa át az XML-kódolású üzeneteket a Azure Logic Appsban lévő X12-üzenet kódolóval Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.date: 01/27/2017
-ms.openlocfilehash: 871d6d2b2019372bd258f8909ed0feeeddac4af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c87a61dc77e656a1cfe667ce87f852303a0cc486
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705698"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792347"
 ---
-# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Kódolás X12 üzeneteket az Azure Logic Appsben és Enterprise Integration Pack
+# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>X12-üzenetek kódolása Azure Logic Appsban Enterprise Integration Pack
 
-A Encode X12 üzenet Connector EDI és partneri jellemző tulajdonságok ellenőrzése, EDI tranzakciókészletek az adatcsere XML-ként kódolt üzenetek alakíthatja, és technikai nyugtázási vagy működési nyugtázása kérése.
-Az összekötő használatához hozzá kell adnia az összekötő egy meglévő eseményindítót a logikai alkalmazásban.
+Az X12-összekötő kódolásával érvényesítheti az EDI-és a Partner-specifikus tulajdonságokat, konvertálhatja az XML-kódolású üzeneteket a csomópontban található EDI-tranzakciótípusokba, valamint műszaki nyugtázási, funkcionális nyugtát vagy mindkettőt igényelhet.
+Az összekötő használatához hozzá kell adnia az összekötőt egy meglévő triggerhez a logikai alkalmazásban.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-A következő szükséges elemek:
+Az alábbi elemek szükségesek:
 
-* Az Azure-fiók; létrehozhat egy [ingyenes fiókkal](https://azure.microsoft.com/free)
-* Egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , amely már definiált és az Azure-előfizetéséhez társított. A Encode X12 üzenet connector használatához egy integrációs fiókhoz kell rendelkeznie.
-* Legalább két [partnerek](logic-apps-enterprise-integration-partners.md) , amely már definiálva vannak az integrációs fiók
-* Egy [X12 szerződés](logic-apps-enterprise-integration-x12.md) , amely már definiálva van az integrációs fiók
+* Egy Azure-fiók; létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free)
+* Egy már definiált és az Azure-előfizetéshez társított [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) . Rendelkeznie kell egy integrációs fiókkal a kódolás X12 üzenet-összekötő használatához.
+* Legalább két olyan [partner](logic-apps-enterprise-integration-partners.md) , amely már definiálva van az integrációs fiókban
+* Az integrációs fiókban már definiált [X12-szerződés](logic-apps-enterprise-integration-x12.md)
 
-## <a name="encode-x12-messages"></a>Kódolás X12 üzenetek
+## <a name="encode-x12-messages"></a>X12-üzenetek kódolása
 
 1. [Hozzon létre egy logikai alkalmazást](quickstart-create-first-logic-app-workflow.md).
 
-2. A Encode X12 üzenet connector nincs eseményindítók, ezért hozzá kell adnia egy eseményindítót a logikai alkalmazást, például a kérelem-eseményindítóval indítása. A Logic App Designerben az eseményindító hozzáadása, és adja hozzá a művelet a logikai alkalmazáshoz.
+2. Az X12 kódolása nem rendelkezik eseményindítókkal, ezért hozzá kell adnia egy eseményindítót a logikai alkalmazás indításához, például egy kérelem eseményindítóhoz. A Logic app Designerben adjon hozzá egy triggert, majd adjon hozzá egy műveletet a logikai alkalmazáshoz.
 
-3.  A keresőmezőbe adja meg a szűrőnek "x12". A következők közül választhat **X12 kódolás X12-üzenetbe egyezménynév szerint** vagy **X12 kódolás X12-üzenetbe identitások szerint**.
+3.  A keresőmezőbe írja be a "x12" kifejezést a szűrőhöz. Válassza ki **a X12-kódolást, hogy X12 az üzenetet a szerződés neve** vagy a **X12-kódolás a X12 üzenet identitások alapján**.
    
-    ![Keressen a "x12"](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
+    ![A "x12" kifejezés keresése](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
 
-3. Korábban létrehozott kapcsolatokat az integrációs fiókba, most, hogy a kapcsolat létrehozására kéri. Nevezze el a kapcsolatot, és válassza ki az integrációs fiók, amely kapcsolódni szeretne. 
+3. Ha korábban nem hozott létre kapcsolatot az integrációs fiókkal, a rendszer felszólítja, hogy hozza létre a kapcsolatot most. Nevezze el a kapcsolatot, majd válassza ki a csatlakoztatni kívánt integrációs fiókot. 
    
-    ![integrációs fiók kapcsolat](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage1.png)
+    ![integrációs fiók kapcsolatai](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage1.png)
 
-    Tulajdonságok csillaggal szükség.
+    A csillaggal rendelkező tulajdonságok megadása kötelező.
 
     | Tulajdonság | Részletek |
     | --- | --- |
-    | Connection Name * |Adja meg a kapcsolat bármilyen nevet. |
-    | Integration Account * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon Azure-helyen. |
+    | Kapcsolatok neve * |Adja meg a kapcsolatok nevét. |
+    | Integrációs fiók * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon az Azure-helyen található. |
 
-5.  Ha elkészült, a kapcsolat adatait példához hasonlóan kell kinéznie. A kapcsolat létrehozásának befejezéséhez válasszon **létrehozás**.
+5.  Ha elkészült, a kapcsolat részleteinek ehhez a példához hasonlóan kell kinéznie. A kapcsolódás létrehozásához kattintson a **Létrehozás**gombra.
 
-    ![integrációs fiók kapcsolat létrehozása](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
+    ![integrációs fiók-csatlakozás létrehozva](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
 
-    Ekkor létrejön a kapcsolat.
+    Ezzel létrejön a kapcsolatok.
 
-    ![integrációs fiók kapcsolat részletei](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage3.png) 
+    ![integrációs fiók kapcsolatának részletei](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage3.png) 
 
-#### <a name="encode-x12-messages-by-agreement-name"></a>Kódolás X12 üzenetek egyezménynév szerint
+#### <a name="encode-x12-messages-by-agreement-name"></a>X12-üzenetek kódolása a szerződés neve szerint
 
-Ha úgy döntött, hogy X12 kódolása üzenetek szerződés neve, nyissa meg a **X12 nevére szerződés** listában adja meg vagy válassza ki a meglévő X12 szerződés. Adja meg az XML-üzenet kódolása.
+Ha úgy döntött, hogy a X12-üzeneteket a szerződés neve szerint kódolja, nyissa meg a **X12-szerződés nevét** , adja meg vagy válassza ki a meglévő X12-szerződést. Adja meg a kódolni kívánt XML-üzenetet.
 
-![Adja meg a X12 szerződés neve és az XML-üzenet kódolása](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
+![Adja meg a X12-szerződés nevét és az XML-üzenetet a kódoláshoz](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
 
-#### <a name="encode-x12-messages-by-identities"></a>X12 kódolása identitások szerint üzenetek
+#### <a name="encode-x12-messages-by-identities"></a>X12-üzenetek kódolása identitások szerint
 
-Ha úgy dönt, hogy X12 kódolása identitások, szerint üzeneteket adja meg a feladó azonosítója, a feladó minősítője, a címzett azonosítója és a címzett minősítője a X12 konfigurált szerződés. Válassza ki a kódolni kívánt XML-üzenet.
+Ha úgy dönt, hogy identitások alapján kódolja a X12-üzeneteket, adja meg a küldő azonosítóját, a küldő minősítőjét, a fogadó azonosítóját, valamint a fogadói minősítőt a X12-szerződésben konfigurált módon. Válassza ki a kódolni kívánt XML-üzenetet.
    
-![Adja meg a küldő és fogadó identitásainak, válassza ki a kódolni kívánt XML-üzenet](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
+![Adja meg a küldő és a fogadó identitását, és válassza ki a kódolni kívánt XML-üzenetet.](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
 
-## <a name="x12-encode-details"></a>X12 kódolása részletei
+## <a name="x12-encode-details"></a>X12-Kódolás részletei
 
-A X12 Encode összekötő az alábbi feladatokat hajtja végre:
+A X12 kódolású összekötő a következő feladatokat hajtja végre:
 
-* Egyezményt egyeztetése küldői és fogadói környezeti tulajdonsága alapján.
-* Szerializálja a EDI adatcsere, EDI tranzakciókészletek az adatcsere XML-ként kódolt üzenetek történő konvertálásakor.
-* Tranzakció set fejléc és bemutató szegmensek vonatkozik
-* Létrehoz egy adatcsere-ellenőrzőszám, a csoport-ellenőrzőszám és a tranzakciókészlet ellenőrzőszáma minden kimenő adatcserét
-* A hasznos adatok elválasztóként váltja fel
-* EDI- és partner jellemző tulajdonságok ellenőrzése
-  * Az üzenet séma elleni tranzakciókészlet adatelemet séma érvényesítése
-  * EDI-ellenőrzés végrehajtani a tranzakciókészlet adatelemeket.
-  * A tranzakciókészlet adatelem végrehajtott bővített ellenőrzés
-* A műszaki és/vagy funkcionális visszaigazolás-lekérdezések (Ha be van állítva).
-  * A technikai visszaigazolás fejléc érvényesítési eredményeként létrehozott. A technikai nyugtázást jelentések egy adatcsere fejlécet és a cím fogadó bemutató feldolgozását állapota
-  * A működési visszaigazolás törzs érvényesítési eredményeként létrehozott. A működési nyugtázást jelentések minden egyes hibához a kapott dokumentumot feldolgozásakor
+* A szerződés feloldása a feladó és a fogadó környezeti tulajdonságainak egyeztetésével.
+* Szerializálja az EDI-adatcserét, és átalakítja az XML-kódolású üzeneteket az adatcsere EDI-tranzakciós csoportjaiba.
+* A tranzakciónapló fejlécének és a pótkocsi szegmensének alkalmazása
+* Létrehoz egy Interchange Control számot, egy csoport vezérlőelem-számot és egy tranzakciónapló-vezérlő számot az egyes kimenő adatcserékhez
+* A hasznos adatokban szereplő elválasztók cseréje
+* Az EDI és a Partner-specifikus tulajdonságok ellenőrzése
+  * A tranzakció-set adatelemek sémájának érvényesítése az üzenet sémája alapján
+  * A tranzakció-set adatelemeken végrehajtott EDI-ellenőrzés.
+  * Kiterjesztett ellenőrzés a tranzakció-set adatelemeken
+* Technikai és/vagy működési Visszaigazolás kérése (ha be van állítva).
+  * A technikai nyugtázás a fejléc-ellenőrzés eredményeképpen jön létre. A technikai nyugtázás jelentést készít a Interchange fejléc és a trailer feldolgozásának állapotáról a címzett
+  * A rendszer a törzs érvényesítésének eredményeképpen létrehoz egy funkcionális visszaigazolást. A funkcionális nyugtázási jelentések minden hibát észleltek a fogadott dokumentum feldolgozása során
 
-## <a name="view-the-swagger"></a>A swagger megtekintése
-Tekintse meg a [részletek swagger](/connectors/x12/). 
+## <a name="view-the-swagger"></a>A hencegés megtekintése
+Tekintse meg a [hencegés részleteit](/connectors/x12/). 
 
-## <a name="next-steps"></a>További lépések
-[További információ az Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "megismerheti a vállalati integrációs csomag") 
+## <a name="next-steps"></a>Következő lépések
+[További információ a Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack") 
 

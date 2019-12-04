@@ -1,42 +1,39 @@
 ---
-title: Kapcsolódás a Mailchimphez – Azure Logic Apps |} A Microsoft Docs
-description: Létrehozása és kezelése a MailChimp REST API-k és az Azure Logic Apps marketingcélú e-mailek
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 08/18/2016
-ms.topic: article
-ms.service: logic-apps
+title: Kapcsolódás a MailChimp
+description: Marketing e-mailek létrehozása és kezelése a MailChimp REST API-kkal és Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 08/18/2016
 tags: connectors
-ms.openlocfilehash: ffe2760c004db24d503ee381b8752c875c286fca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a440f702058abc25bb360111418c451d59c3ab1b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105836"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789635"
 ---
-# <a name="get-started-with-the-mailchimp-connector"></a>A MailChimp-összekötő használatának első lépései
-A MailChimp egy SaaS-szolgáltatás, amely lehetővé teszi, hogy kezelheti és automatizálhatja e-mailek marketing tevékenységeket, beleértve a küldő marketingcélú e-mailek, automatizált üzenetek és célzott kampányok.
+# <a name="get-started-with-the-mailchimp-connector"></a>Ismerkedés az MailChimp-összekötővel
 
-Hozzon létre egy logikai alkalmazás most már megkezdheti, lásd: [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+A MailChimp egy SaaS-szolgáltatás, amely lehetővé teszi a vállalkozásoknak e-mail-marketing tevékenységek felügyeletét és automatizálását, beleértve a marketing e-mailek, automatizált üzenetek és célzott kampányok küldését.
 
-## <a name="create-a-connection-to-mailchimp"></a>Hozzon létre egy kapcsolatot a MailChimp
-Logikai alkalmazások létrehozása a MailChimp, akkor először létre kell hozni egy **kapcsolat** adja meg a részleteket a következő tulajdonságokkal:
+A logikai alkalmazások létrehozásának első lépéseiről a [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakörben olvashat.
+
+## <a name="create-a-connection-to-mailchimp"></a>MailChimp-kapcsolatok létrehozása
+
+Ha logikai alkalmazásokat szeretne létrehozni a MailChimp, először létre kell hoznia egy **kapcsolatokat** , majd meg kell adnia a következő tulajdonságok részleteit:
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
-| Jogkivonat |Igen |Mailchimpes hitelesítő adatok megadása |
+| Jogkivonat |Igen |MailChimp hitelesítő adatok megadása |
 
 > [!INCLUDE [Steps to create a connection to MailChimp](../../includes/connectors-create-api-mailchimp.md)]
-> 
 
+## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
-## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
-
-Megtekintheti a valamennyi eseményindítót és műveletet a swaggerben meghatározott, és emellett a korlátozott a [összekötő részletei](/connectors/mailchimp/).
+Megtekintheti a hencegés során definiált összes eseményindítót és műveletet, valamint az [összekötő részleteiben](/connectors/mailchimp/)megjelenő korlátokat is.
 
 ## <a name="more-connectors"></a>További összekötők
-Lépjen vissza a [API-k listája](apis-list.md).
+
+Lépjen vissza az API-k [listájára](apis-list.md).

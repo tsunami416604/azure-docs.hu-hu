@@ -1,20 +1,17 @@
 ---
-title: Hurkok hozzáadása az ismétlődő műveletekhez – Azure Logic Apps
+title: Hurkok hozzáadása az Ismétlési műveletekhez
 description: A munkafolyamat-műveleteket ismétlődő vagy a Azure Logic Appsban feldolgozó hurkok létrehozása
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 31885749a7194a94a403e5c156220b3fceab951d
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680452"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791745"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>A munkafolyamat-műveleteket ismétlődő vagy a Azure Logic Appsban feldolgozó hurkok létrehozása
 
@@ -235,9 +232,9 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
       | Tulajdonság | Value (Díj) | Leírás |
       | -------- | ----- | ----------- | 
-      | **Címzett** | *\<email – címek \@domain >* | A címzett e-mail-címe. Teszteléshez használja a saját e-mail-címét. | 
+      | **Címzett** | *\<e-mail-cím\@tartomány >* | a címzett e-mail-címe. Teszteléshez használja a saját e-mail-címét. | 
       | **Tárgy** | A "Limit" jelenlegi értéke **limit** | Határozza meg az e-mail tárgyát. Ebben a példában ellenőrizze, hogy tartalmazza-e a **határérték** változót. | 
-      | **Törzs** | <*e-mail-tartalom* > | Itt adhatja meg a küldeni kívánt e-mail üzenet tartalmát. Ebben a példában írjon be egy tetszőleges szöveget. | 
+      | **Törzs** | <*e-mail-tartalom*> | Itt adhatja meg a küldeni kívánt e-mail üzenet tartalmát. Ebben a példában írjon be egy tetszőleges szöveget. | 
       |||| 
 
 1. Mentse a logikai alkalmazást. A logikai alkalmazás manuális teszteléséhez a tervező eszköztárán válassza a **Futtatás**lehetőséget.

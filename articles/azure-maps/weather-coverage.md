@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0af2d306a5f5923f5e14eb0ebc4707f9c5caee90
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 87e1d94fe9f86f5916219feac732bf80af1f3121
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288567"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769030"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps időjárási lefedettség
 
@@ -28,7 +28,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 |*       |A Route, a CURRENT conditions, az óránkénti előrejelzés, a negyedéves előrejelzés és a napi előrejelzési API-k esetében érvényes. |
 
 
-## <a name="americas"></a>Amerika
+## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
 | Ország/régió              |  Műholdas csempék | Perc előrejelzés, radar csempék | Más | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
@@ -199,7 +199,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Japán                             | ✓ | ✓ |  ✓| 
 | Kazahsztán                        | ✓ |   |  ✓| 
 | Kiribati                          | ✓ |   |  ✓| 
-| Korea                             | ✓ | ✓ |  ✓| 
+| Dél-Korea                             | ✓ | ✓ |  ✓| 
 | Kirgizisztán                        | ✓ |   |  ✓| 
 | Laosz                              | ✓ |   |  ✓| 
 | Makaó KKT                         | ✓ |   |  ✓| 

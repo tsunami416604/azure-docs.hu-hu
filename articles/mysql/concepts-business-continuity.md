@@ -1,17 +1,17 @@
 ---
-title: Az üzletmenet folytonosságának megismerése Azure Database for MySQL
+title: Üzletmenet-folytonosság – Azure Database for MySQL
 description: Ismerje meg az üzletmenet folytonosságát (az időponthoz tartozó visszaállítást, az adatközpont-kimaradást, a Geo-visszaállítást) Azure Database for MySQL szolgáltatás használatakor.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 28cd46077e67aa48169421607cd977103da735c5
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 3f82dfd5e289b09761dbdbdc5af4da76d7c961d4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972892"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765358"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Az üzletmenet folytonosságának megismerése Azure Database for MySQL
 
@@ -48,7 +48,7 @@ A másik lehetőség a Azure Database for MySQL geo-visszaállítási funkciój�
 > [!IMPORTANT]
 > A Geo-visszaállítás csak akkor lehetséges, ha a kiszolgálót geo-redundáns biztonsági mentési tárolóval kiépített. Ha szeretné, hogy a helyileg redundáns biztonsági mentést a meglévő kiszolgálókon, akkor a meglévő kiszolgáló mysqldump használatával készítsen memóriaképet, és állítsa vissza egy, a Geo-redundáns biztonsági mentéssel konfigurált, újonnan létrehozott kiszolgálóra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Database for MySQL automatikus biztonsági mentéséről](concepts-backup.md).
 - Ismerje meg, hogyan lehet visszaállítani [a Azure Portal](howto-restore-server-portal.md) vagy [Az Azure CLI](howto-restore-server-cli.md)használatával.

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 072c58377645c807328bfcd79028daad70df7338
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b1578547fbca4caaecb209021569f0fbb2f1ae24
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102113"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790635"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>SQL Server virtuális gépek kiépítése Azure PowerShell használatával
 
@@ -63,10 +63,10 @@ $StorageName = $ResourceGroupName + "storage"
 $StorageSku = "Premium_LRS"
 ```
 
-### <a name="network-properties"></a>Hálózat tulajdonságai
+### <a name="network-properties"></a>Hálózati tulajdonságok
 Adja meg a virtuális gépen a hálózat által használandó tulajdonságokat. 
 
-- Hálózati adapter
+- Hálózati illesztő
 - TCP/IP-kiosztási módszer
 - Virtuális hálózat neve
 - Virtuális alhálózat neve
@@ -103,7 +103,7 @@ $OSDiskName = $VMName + "OSDisk"
 
 A következő változók használatával határozhatja meg a virtuális géphez használni kívánt SQL Server-rendszerképet. 
 
-1. Először is sorolja fel az összes SQL Server rendszerkép-ajánlatát a `Get-AzVMImageOffer` paranccsal. Ez a parancs felsorolja az Azure Portalon elérhető aktuális lemezképeket és a régebbi rendszerképeket, amelyek csak a PowerShell használatával telepíthetők:
+1. Először a `Get-AzVMImageOffer` paranccsal tekintse meg az összes SQL Server rendszerkép-ajánlatát. Ez a parancs felsorolja az Azure Portalon elérhető aktuális lemezképeket és a régebbi rendszerképeket, amelyek csak a PowerShell használatával telepíthetők:
 
    ```powershell
    Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
@@ -129,7 +129,7 @@ A következő változók használatával határozhatja meg a virtuális géphez 
    $Sku = "SQLDEV"
    ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 A Resource Manager-alapú üzemi modellben az elsőként létrehozott objektum az erőforráscsoport. A [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával hozzon létre egy Azure-erőforráscsoportot és annak erőforrásait. Adja meg az erőforráscsoport nevének és helyének korábban inicializált változóit.
 
 Futtassa ezt a parancsmagot az új erőforráscsoport létrehozásához.
@@ -138,7 +138,7 @@ Futtassa ezt a parancsmagot az új erőforráscsoport létrehozásához.
 New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 ```
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-a-storage-account"></a>Create a storage account
 A virtuális gépnek tárolási erőforrásokat kell megadnia az operációsrendszer-lemezhez, valamint a SQL Server-és naplófájlokhoz. Az egyszerűség kedvéért egyetlen lemezt fog létrehozni mindkettőhöz. Az [Add-Azure Disk](https://docs.microsoft.com/powershell/module/servicemanagement/azure/add-azuredisk) parancsmaggal később további lemezeket is csatolhat, hogy a SQL Server adatait és naplófájljait dedikált lemezekre helyezze. A [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) parancsmag használatával hozzon létre egy szabványos Storage-fiókot az új erőforráscsoporthoz. Adja meg a Storage-fiók neve, a tárolási SKU-név és a hely számára korábban inicializált változókat.
 
 Futtassa ezt a parancsmagot az új Storage-fiók létrehozásához.
@@ -337,12 +337,13 @@ Létrejön a virtuális gép.
 > Ha hibaüzenet jelenik meg a rendszerindítási diagnosztika használatával kapcsolatban, figyelmen kívül hagyhatja azt. A rendszer létrehoz egy standard szintű Storage-fiókot a rendszerindítási diagnosztika számára, mert a virtuális gép lemezéhez megadott Storage-fiók prémium szintű Storage-fiók.
 
 ## <a name="install-the-sql-iaas-agent"></a>Az SQL IaaS-ügynök telepítése
-SQL Server virtuális gépek támogatják az automatikus felügyeleti funkciókat a [SQL Server IaaS-ügynök bővítménnyel](virtual-machines-windows-sql-server-agent-extension.md). Ha az ügynököt az új virtuális gépre szeretné telepíteni, futtassa a következő parancsot a létrehozása után.
+SQL Server virtuális gépek támogatják az automatikus felügyeleti funkciókat a [SQL Server IaaS-ügynök bővítménnyel](virtual-machines-windows-sql-server-agent-extension.md). Ha telepíteni szeretné az ügynököt az új virtuális gépre, és regisztrálja az erőforrás-szolgáltatóval, futtassa a [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) parancsot a virtuális gép létrehozása után. Adja meg a SQL Server VM licencének típusát, válassza az utólagos elszámolású vagy a saját licencet a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával. A licenceléssel kapcsolatos további információkért lásd: [licencelési modell](virtual-machines-windows-sql-ahb.md). 
 
 
    ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
 
 ## <a name="stop-or-remove-a-vm"></a>Virtuális gép leállítása vagy eltávolítása
 
@@ -419,11 +420,11 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName $Publis
 # Create the VM in Azure
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 
-# Add the SQL IaaS Extension
-Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+# Add the SQL IaaS Extension, and choose the license type
+New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A virtuális gép létrehozása után a következőket teheti:
 
 - Kapcsolódás a virtuális géphez RDP használatával

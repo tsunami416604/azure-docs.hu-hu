@@ -1,6 +1,6 @@
 ---
-title: Egyoldalas alkalmazás (egy webes API hívása) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazás (egy webes API hívása)
+title: Egyoldalas alkalmazás (webes API meghívása) – Microsoft Identity platform
+description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazást (webes API meghívása)
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -15,22 +15,22 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77a4ed01ac55a1153a62c672b33056a543b912ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4170a6642d35802581b5d1ff28eb802a6eb3482b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545610"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766157"
 ---
-# <a name="single-page-application---call-a-web-api"></a>Egyoldalas alkalmazás – egy webes API hívása
+# <a name="single-page-application-call-a-web-api"></a>Egyoldalas alkalmazás: webes API meghívása
 
-Azt javasoljuk, hogy meghívja a `acquireTokenSilent` metódus hardvervásárlásra és a egy webes API hívása előtt hozzáférési jogkivonat megújításához. Miután megkapta a jogkivonatot, meghívhatja egy védett webes API-t.
+Javasoljuk, hogy a webes API meghívása előtt hívja meg a `acquireTokenSilent` metódust egy hozzáférési jogkivonat beszerzéséhez vagy megújításához. A jogkivonat meghívása után meghívhat egy védett webes API-t.
 
 ## <a name="call-a-web-api"></a>Webes API-hívás
 
 ### <a name="javascript"></a>JavaScript
 
-Egy HTTP-kérelem tulajdonosi minden webes API-k, például a Microsoft Graph API meghívásához a beszerezni a hozzáférési jogkivonatot használjuk. Példa:
+A beszerzett hozzáférési jogkivonatot tulajdonosként egy HTTP-kérelemben használhatja bármilyen webes API meghívásához, például Microsoft Graph API-t. Példa:
 
 ```javascript
     var headers = new Headers();
@@ -50,9 +50,9 @@ Egy HTTP-kérelem tulajdonosi minden webes API-k, például a Microsoft Graph AP
 
 ### <a name="angular"></a>Angular
 
-Említetteknek megfelelően az [beszerzése a tokenek szakaszban](scenario-spa-acquire-token.md), az MSAL Angular burkoló használja a HTTP elfogó automatikusan csendes beszerezni a hozzáférési jogkivonatok, és csatolja őket az API-k HTTP-kérelmekre.
+A MSAL szögletes burkolója kihasználja a HTTP-Interceptor előnyeit, hogy a hozzáférési jogkivonatokat csendesen szerezze be, és csatolja őket a HTTP-kérésekhez API-khoz. További információ: [token beszerzése API meghívásához](scenario-spa-acquire-token.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Helyezze át az éles környezetbe](scenario-spa-production.md)
+> [Áthelyezés éles környezetbe](scenario-spa-production.md)

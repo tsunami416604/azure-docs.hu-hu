@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 08549935c7a0651709a08bef61624e4e436d4aad
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 1a69741ba3ced91b6b0d1fc4bcd4aea887452151
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084088"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792178"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása Azure-beli virtuális gépeken
 
@@ -63,7 +63,7 @@ A licencelési SQL Serverával kapcsolatos teljes információkért tekintse meg
 
 Ezt a teljes megoldást létrehozhatja az Azure-ban egy sablonból. Egy sablon például elérhető a GitHub [Azure gyorsindító-sablonokban](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad). Ez a példa nincs megtervezve vagy tesztelve az adott számítási feladatokhoz. A sablon futtatásával létrehozhat egy SQL Server a tartományhoz csatlakoztatott Közvetlen tárolóhelyek-tárolóval. Kiértékelheti a sablont, és módosíthatja azt a célra.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A Kezdés előtt néhány dologra van szükség.
 
@@ -81,9 +81,7 @@ Ezen technológiák általános megismerése is szükséges:
 - [Azure-erőforráscsoportok](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Jelenleg SQL Server az Azure-beli virtuális gépeken futó feladatátvevő fürtök példányai csak az [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) [egyszerűsített](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) felügyeleti módjával támogatottak. Távolítsa el a teljes bővítményt a feladatátvevő fürtben részt vevő virtuális gépekről, majd az egyszerűsített módban regisztrálja őket az SQL VM erőforrás-szolgáltatóval.
->
-> A teljes bővítmény támogatja az olyan szolgáltatásokat, mint az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem működnek SQL Server virtuális gépeken, miután az ügynököt újratelepítette az egyszerűsített felügyeleti módban.
+> Jelenleg az Azure Virtual Machines szolgáltatásban SQL Server feladatátvevő fürt példányai csak a [SQL Server IaaS-ügynök bővítményének](virtual-machines-windows-sql-server-agent-extension.md) [egyszerűsített felügyeleti módjával](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) támogatottak. Ha a teljes bővítmény módból egyszerűre szeretne váltani, törölje a megfelelő virtuális gépekhez tartozó **SQL** -virtuálisgép-erőforrást, majd az egyszerűsített módban regisztrálja őket az SQL VM erőforrás-szolgáltatóval. Ha a Azure Portal használatával törli az SQL-alapú **virtuális gép** erőforrását, **törölje a megfelelő virtuális gép melletti jelölőnégyzet**jelölését. A teljes bővítmény olyan funkciókat támogat, mint például az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem fognak működni az SQL virtuális gépeken, miután az ügynököt egyszerűsített felügyeleti módban újratelepítette.
 
 ### <a name="what-to-have"></a>Mi a teendő
 
@@ -176,7 +174,7 @@ Ezeknek az előfeltételeknek a megkezdése után elkezdheti felépíteni a fela
 
    Az egyes virtuális gépeken nyissa meg ezeket a portokat a Windows tűzfalon:
 
-   | Cél | TCP-port | Megjegyzések
+   | Rendeltetés | TCP-port | Megjegyzések
    | ------ | ------ | ------
    | SQL Server | 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot.
    | Állapotadat-mintavétel | 59999 | Bármilyen nyitott TCP-port. Egy későbbi lépésben konfigurálja a terheléselosztó [állapotának](#probe) mintavételét és a fürtöt, hogy ezt a portot használja.  
@@ -294,7 +292,7 @@ A Felhőbeli tanúsító az Azure Storage-blobokban tárolt fürtözött kvórum
 
 1. Konfigurálja a feladatátvevő fürtöt tanúsító kvórumot. Lásd: [a kvórum tanúsító beállítása a felhasználói felületen](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
 
-### <a name="add-storage"></a>Tároló hozzáadása
+### <a name="add-storage"></a>Tárhely hozzáadása
 
 A Közvetlen tárolóhelyek lemezének üresnek kell lennie. Nem tartalmazhatnak partíciókat vagy egyéb adatforrásokat. A lemezek tisztításához kövesse az [útmutató lépéseit](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct?redirectedfrom=MSDN#step-31-clean-drives).
 
@@ -501,7 +499,7 @@ Az Azure Virtual Machines szolgáltatásban az MSDTC nem támogatott a Windows S
 - A fürtözött MSDTC-erőforrás nem konfigurálható megosztott tároló használatára. Windows Server 2016 rendszeren, ha MSDTC-erőforrást hoz létre, az nem fog tudni használni megosztott tárterületet, még akkor sem, ha rendelkezésre áll tárterület. Ezt a problémát a Windows Server 2019-es verzióban javítottuk.
 - Az alapszintű Load Balancer nem kezeli az RPC-portokat.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 [Közvetlen tárolóhelyek beállítása a Távoli asztallal (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 

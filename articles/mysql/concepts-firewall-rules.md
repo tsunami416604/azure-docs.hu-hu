@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL kiszolgálói tűzfalszabályok
+title: Tűzfalszabályok – Azure Database for MySQL
 description: Tudnivalók a tűzfalszabályok használatáról a Azure Database for MySQL-kiszolgálóhoz való csatlakozás engedélyezéséhez.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 434ecbcf5158009b8e74ae392aeea95b5ea8b281
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.date: 12/02/2019
+ms.openlocfilehash: 6b78c3ffa11d481c77f393bbbd156f2ba76f36e0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72963441"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770288"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL kiszolgálói tűzfalszabályok
 A tűzfalak mindaddig megakadályozzák az adatbázis-kiszolgáló elérését, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. A tűzfal az egyes kérések származó IP-címe alapján engedélyezi a hozzáférést a kiszolgálóhoz.

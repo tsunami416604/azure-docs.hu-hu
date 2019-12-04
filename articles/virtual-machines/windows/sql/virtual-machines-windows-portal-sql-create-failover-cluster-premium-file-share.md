@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 10a3c2bf421c7182dca00dfcbf7c3f559141a745
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7676077f0122cb731d2d5d2c7acf78acbd8aa1a7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084082"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792205"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása prémium fájlmegosztás esetén az Azure Virtual Machines szolgáltatásban
 
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan hozható létre egy SQL Server feladatátvevő f
 A prémium szintű fájlmegosztás SSD-alapú, következetesen alacsony késésű fájlmegosztás, amely teljes mértékben támogatott a Windows Server 2012 vagy újabb rendszerű feladatátvevő fürt példányaival SQL Server 2012-es vagy későbbi verzióiban. A prémium szintű fájlmegosztás nagyobb rugalmasságot biztosít, ami lehetővé teszi a fájlmegosztás átméretezését és méretezését leállás nélkül.
 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A Kezdés előtt néhány dologra van szükség.
 
@@ -45,9 +45,7 @@ Ezen technológiák általános megismerése is szükséges:
 - [Azure-erőforráscsoportok](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Jelenleg SQL Server az Azure-beli virtuális gépeken futó feladatátvevő fürtök példányai csak az [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) [egyszerűsített](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) felügyeleti módjával támogatottak. Ha a teljes bővítmény módból egyszerűsített módba szeretné váltani, törölje a megfelelő virtuális **gépekhez tartozó SQL-alapú virtuális gép** erőforrását, majd az [egyszerűsített](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) módban regisztrálja őket az SQL VM erőforrás-szolgáltatóval. Ha a Azure Portal használatával törli az SQL-alapú **virtuális gép** erőforrását, törölje a megfelelő virtuális gép melletti jelölőnégyzet jelölését.
->
-> A teljes bővítmény támogatja az olyan szolgáltatásokat, mint az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem működnek SQL Server virtuális gépeken, miután az ügynököt újratelepítette az [egyszerűsített](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) felügyeleti módban.
+> Jelenleg az Azure Virtual Machines szolgáltatásban SQL Server feladatátvevő fürt példányai csak a [SQL Server IaaS-ügynök bővítményének](virtual-machines-windows-sql-server-agent-extension.md) [egyszerűsített felügyeleti módjával](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) támogatottak. Ha a teljes bővítmény módból egyszerűre szeretne váltani, törölje a megfelelő virtuális gépekhez tartozó **SQL** -virtuálisgép-erőforrást, majd az egyszerűsített módban regisztrálja őket az SQL VM erőforrás-szolgáltatóval. Ha a Azure Portal használatával törli az SQL-alapú **virtuális gép** erőforrását, **törölje a megfelelő virtuális gép melletti jelölőnégyzet**jelölését. A teljes bővítmény olyan funkciókat támogat, mint például az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem fognak működni az SQL virtuális gépeken, miután az ügynököt egyszerűsített felügyeleti módban újratelepítette.
 
 A prémium fájlmegosztás biztosítja a IOPS és a teljes kapacitást, amelyek kielégítik a sok számítási feladat igényeit. Az i/o-igényű számítási feladatokhoz a felügyelt prémium lemezeken vagy az ultra Disks [szolgáltatáson alapuló SQL Server feladatátvevő fürt példányainak közvetlen tárolóhelyek](virtual-machines-windows-portal-sql-create-failover-cluster.md)-mel kell rendelkezniük.  
 
@@ -154,7 +152,7 @@ Ezeknek az előfeltételeknek a megkezdése után elkezdheti felépíteni a fela
 
    Az egyes virtuális gépeken nyissa meg ezeket a portokat a Windows tűzfalon:
 
-   | Cél | TCP-port | Megjegyzések
+   | Rendeltetés | TCP-port | Megjegyzések
    | ------ | ------ | ------
    | SQL Server | 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot.
    | Állapotadat-mintavétel | 59999 | Bármilyen nyitott TCP-port. Egy későbbi lépésben konfigurálja a terheléselosztó [állapotának](#probe) mintavételét és a fürtöt, hogy ezt a portot használja.
@@ -461,7 +459,7 @@ Az Azure Virtual Machines szolgáltatásban az MSDTC nem támogatott a Windows S
 - A fürtözött MSDTC-erőforrás nem konfigurálható megosztott tároló használatára. Windows Server 2016 rendszeren, ha MSDTC-erőforrást hoz létre, az nem fog tudni használni megosztott tárterületet, még akkor sem, ha rendelkezésre áll tárterület. Ezt a problémát a Windows Server 2019-es verzióban javítottuk.
 - Az alapszintű Load Balancer nem kezeli az RPC-portokat.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

@@ -1,22 +1,18 @@
 ---
-title: Kapcsolódás RSS-hírcsatornához a Azure Logic Appsból | Microsoft Docs
+title: Kapcsolódás RSS-hírcsatornához Azure Logic Apps
 description: Automatizálja az RSS-hírcsatornákat Azure Logic Apps használatával figyelő és kezelő feladatokat és munkafolyamatokat
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 70b250074395977f70ac1b3eb0ce3ffdc96fced1
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 3f1e092c2ff325cdcbc32c617af316d6fbe6dd74
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050845"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789341"
 ---
 # <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>RSS-hírcsatornák kezelése Azure Logic Apps használatával
 
@@ -37,7 +33,7 @@ Olyan RSS-triggert használhat, amely az RSS-hírcsatornából választ kap, és
 
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Az a logikai alkalmazás, amelyhez el szeretné érni az RSS-hírcsatornát. Ha RSS-triggert szeretne kezdeni, [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). RSS-művelet használatához indítsa el a logikai alkalmazást egy másik eseményindítóval, például az ismétlődési eseményindítóval.
+* Az a logikai alkalmazás, amelyhez el szeretné érni az RSS-hírcsatornát. Ha RSS-triggert szeretne kezdeni, [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). RSS-művelet használatához indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
 
 ## <a name="connect-to-an-rss-feed"></a>Kapcsolódás RSS-hírcsatornához
 
@@ -62,6 +58,6 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai r�
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

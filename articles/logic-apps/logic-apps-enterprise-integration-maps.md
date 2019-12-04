@@ -1,229 +1,226 @@
 ---
-title: XML átalakítása az XSLT-leképezések – Azure Logic Apps |} A Microsoft Docs
-description: XSLT képez le az Azure Logic Apps Enterprise Integration Pack az XML-átalakítás hozzáadása
+title: XML átalakítása XSLT-leképezésekkel
+description: XSLT-leképezések hozzáadása az XML átalakításához Azure Logic Appsban Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
-manager: carmonm
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 02/06/2019
-ms.openlocfilehash: d0d40ca0ae6ccd4f709d7d94d52764d4affcc215
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e510cc4073a4b0075cdaeb80091657dbee93fcb
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244697"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792484"
 ---
-# <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Az Azure Logic Apps Enterprise Integration Pack-leképezések XML-átalakítás
+# <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML átalakítása Azure Logic Apps leképezésekkel Enterprise Integration Pack
 
-XML-adatok átviteléhez a vállalati integrációs forgatókönyvek az Azure Logic Appsben formátumok közötti, a logikai alkalmazás maps, vagy még pontosabban bővíthető stíluslap nyelvi XSLT átalakítások térképek használhat. Térkép az XML-dokumentum, amely ismerteti, hogyan lehet egy másik formátumba alakítsa át adatait egy XML-dokumentumból. 
+Ha Azure Logic Apps a vállalati integrációs forgatókönyvek formátumai közötti XML-adatok átvitelét szeretné elvégezni, a logikai alkalmazás térképeket vagy pontosabban bővíthető stíluslap nyelvi átalakítási (XSLT) leképezéseket is használhat. A Térkép egy XML-dokumentum, amely leírja, hogyan lehet XML-dokumentumból más formátumba konvertálni az adatok adatait. 
 
-Tegyük fel, hogy rendszeresen kapott B2B rendeléseket és számlákat olyan ügyfelünk, akit a YYYMMDD dátum formátumot használja. Azonban a szervezet használja a MMDDYYY dátumformátum. Határozza meg, és a egy leképezéssel, amely a YYYMMDD dátumformátum MMDDYYY formátumra alakítja át a sorrend, illetve számla részleteinek a felhasználói tevékenység adatbázisban való tárolás előtt.
+Tegyük fel például, hogy rendszeresen kap B2B-rendeléseket vagy-számlákat a YYYMMDD-formátumot használó ügyféltől. A szervezet azonban a MMDDYYY formátumot használja. Megadhatja és használhatja azt a térképet, amely átalakítja a YYYMMDD a MMDDYYY formátumba, mielőtt a rendelés vagy a számla részleteit a felhasználói tevékenység adatbázisában tárolja.
 
-Integrációs fiókok és összetevőket, például a maps kapcsolódó korlátozásairól lásd: [korlátozásai és konfigurációs adatokat az Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
+Az integrációs fiókokkal és összetevőkkel, például a térképekkel kapcsolatos korlátokat lásd: [Azure Logic apps korlátozásai és konfigurációs adatai](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , ahol tárolja a maps és más összetevőket, vállalati integráció és a vállalatközi (B2B) megoldásokat.
+* Egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , amelyben a Maps és egyéb összetevők a vállalati integrációs és a vállalatközi (B2B) megoldások számára is tárolhatók.
 
-* Ha a leképezés egy külső szerelvény hivatkozik, hogy feltöltése *a szerelvényt és a térkép* az integrációs fiókba. Győződjön meg arról, hogy [ *először töltse fel a szerelvény*](#add-assembly), majd töltse fel a térképet, amely a szerelvény hivatkozik.
+* Ha a Térkép egy külső szerelvényre hivatkozik, akkor *a szerelvényt és a térképet* is fel kell töltenie az integrációs fiókjába. [*Először töltse fel a szerelvényt*](#add-assembly), majd töltse fel a szerelvényre hivatkozó térképet.
 
-  Ha a szerelvény 2 MB vagy annál kisebb, adhat hozzá a szerelvényt az integrációs fiók *közvetlenül* az Azure Portalról. Azonban a szerelvényt vagy a térkép-e 2 MB-nál nagyobb méretű, de nem nagyobb, mint a [mérete legfeljebb szerelvényeknek vagy a térképek](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits), a következőket teheti:
+  Ha a szerelvény mérete 2 MB vagy kisebb, *közvetlenül* a Azure Portal adhatja hozzá a szerelvényt az integrációs fiókhoz. Ha azonban a szerelvény vagy a Térkép 2 MB-nál nagyobb, de nem nagyobb, mint a [szerelvények vagy a térképek mérete](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits), a következő lehetőségek közül választhat:
 
-  * Szerelvényeket szüksége lesz egy Azure blob-tárolóba, ahol feltöltheti a szerelvényt és a tároló helye. Ezzel a módszerrel megadhatja, hogy a hely később az integrációs fiók hozzáadásakor a szerelvény. 
-  Ebben a feladatban a következőkre van szükség:
+  * Szerelvények esetén szüksége van egy Azure Blob-tárolóra, ahol feltöltheti a szerelvényt és a tároló helyét. Így később is megadhatja ezt a helyet, amikor hozzáadja a szerelvényt az integrációs fiókhoz. 
+  Ehhez a feladathoz a következő elemek szükségesek:
 
-    | Elem | Leírás |
+    | Tétel | Leírás |
     |------|-------------|
-    | [Azure Storage-fiók](../storage/common/storage-account-overview.md) | Ezt a fiókot hozzon létre egy Azure blob-tároló a szerelvény. Ismerje meg, [storage-fiók létrehozása](../storage/common/storage-quickstart-create-account.md). |
-    | BLOB-tároló | Ebben a tárolóban feltöltheti a szerelvényt. Az integrációs fiók hozzáadásakor a szerelvény is szükséges a tároló helye. Ismerje meg, hogyan [hozzon létre egy blobtárolót](../storage/blobs/storage-quickstart-blobs-portal.md). |
-    | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Ez az eszköz segítségével további egyszerűen tárfiókok kezelését és blobtárolók. Vagy használhatja a Storage Explorer, [töltse le és telepítse az Azure Storage Explorer](https://www.storageexplorer.com/). Ezt követően csatlakoztassa a Storage Explorert a tárfiókhoz a lépéseket követve [Ismerkedés a Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md). További tudnivalókért lásd: [a rövid útmutató: Blob létrehozása objektumtárban az Azure Storage Explorerrel](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Vagy az Azure Portalon keresse meg és válassza ki a tárfiókját. Válassza ki a tárfiók menüjében **Tártallózó**. |
+    | [Azure Storage-fiók](../storage/common/storage-account-overview.md) | Ebben a fiókban hozzon létre egy Azure BLOB-tárolót a szerelvényhez. Megtudhatja [, hogyan hozhat létre egy Storage-fiókot](../storage/common/storage-quickstart-create-account.md). |
+    | Blobtároló | Ebben a tárolóban feltöltheti a szerelvényt. Erre a tárolóra is szüksége lesz, amikor hozzáadja a szerelvényt az integrációs fiókhoz. Megtudhatja, hogyan [hozhat létre BLOB-tárolót](../storage/blobs/storage-quickstart-blobs-portal.md). |
+    | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Ezzel az eszközzel könnyebben kezelhetők a Storage-fiókok és a blob-tárolók. Storage Explorer használatához [töltse le és telepítse a Azure Storage Explorert](https://www.storageexplorer.com/). Ezután csatlakoztasson Storage Explorer a Storage-fiókjához a [Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)első lépéseinek lépéseit követve. További információ: gyors útmutató [: blob létrehozása az objektum-tárolóban Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)használatával. <p>Vagy a Azure Portalban keresse meg és válassza ki a Storage-fiókját. A Storage-fiók menüjében válassza a **Storage Explorer**lehetőséget. |
     |||
 
-  * A térképek szolgáltatáshoz, akkor jelenleg használatával adhat hozzá nagyobb maps a [Azure Logic Apps alkalmazások REST API - térképek](https://docs.microsoft.com/rest/api/logic/maps/createorupdate).
+  * A Maps esetében jelenleg nagyobb leképezéseket adhat hozzá a [Azure Logic Apps REST API-Maps](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)használatával.
 
-Logic Apps-alkalmazás létrehozásakor, és a maps hozzáadása nem szükséges. Szeretne használni egy térképet, azonban a logikai alkalmazás kell létrehozhatja, ha integrációs fiókot, ahol azt tárolja. Ismerje meg, [a logic apps és integrációs fiókok összekapcsolása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Ha még nem rendelkezik egy logikai alkalmazást, további [létrehozása a logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Térképek létrehozásakor és hozzáadásakor nincs szükség logikai alkalmazásra. A Térkép használatához azonban a logikai alkalmazásnak olyan integrációs fiókhoz kell kapcsolódnia, ahol a térképet tárolja. Útmutató [logikai alkalmazások integrációs fiókokhoz való összekapcsolásához](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Ha még nem rendelkezik logikai alkalmazással, Ismerje meg, [hogyan hozhat létre logikai alkalmazásokat](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="add-assembly"></a>
 
-## <a name="add-referenced-assemblies"></a>Odkazovaná sestavení hozzáadása
+## <a name="add-referenced-assemblies"></a>Hivatkozott szerelvények hozzáadása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
 
-1. Keresse meg és nyissa meg az integrációs fiók az Azure fő menüjéből válassza **minden szolgáltatás**. 
-   A Keresés mezőbe írja be az "integrációs fiók". 
-   Válassza ki **integrációs fiókok**.
+1. Az integrációs fiók megkereséséhez és megnyitásához az Azure főmenüjében válassza a **minden szolgáltatás**lehetőséget. 
+   A keresőmezőbe írja be az "integrációs fiók" kifejezést. 
+   Válassza az **integrációs fiókok**elemet.
 
-   ![Integrációs fiók található](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
+   ![Integrációs fiók keresése](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
 
-1. Válassza ki, hol szeretné adja hozzá például a szerelvény integrációs fiók:
+1. Válassza ki azt az integrációs fiókot, amelyhez hozzá szeretné adni a szerelvényt, például:
 
-   ![Válassza ki az integrációs fiók](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
+   ![Integrációs fiók kiválasztása](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Az integrációs fiók **áttekintése** lap **összetevők**, jelölje be a **szerelvények** csempére.
+1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **szerelvények** csempét.
 
-   ![Válassza ki a "Szerelvényeket."](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
+   !["Szerelvények" kiválasztása](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
 
-1. Miután a **szerelvények** lapon megnyílik a **Hozzáadás**.
+1. A **szerelvények** lap megnyitása után válassza a **Hozzáadás**lehetőséget.
 
-   ![Válassza az "Add"](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
+   ![Válassza a "Hozzáadás" lehetőséget.](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
-A szerelvényfájl mérete alapján, kövesse a lépéseket, amelyek vagy szerelvény feltöltése [akár 2 MB](#smaller-assembly) vagy [több mint 2 MB, de csak legfeljebb 8 MB](#larger-assembly).
-A szerelvény integrációs fiókok mennyiségek korlátozásairól lásd: [korlátozások és konfiguráció az Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
+A szerelvény fájljának mérete alapján hajtsa végre az olyan szerelvények feltöltésének lépéseit, amelyek akár [2](#smaller-assembly) MB vagy [több mint 2 MB méretűek, de legfeljebb 8 MB](#larger-assembly)-ra.
+A szerelvények mennyiségi korlátozásai az integrációs fiókokban: [Azure Logic apps korlátai és konfigurálása](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
 
 > [!NOTE]
-> Ha módosítja a szerelvény, is frissítenie kell a térkép-e a térkép módosításokat tartalmaz.
+> Ha módosítja a szerelvényt, akkor a térképet is frissítenie kell, hogy a Térkép módosult-e.
 
 <a name="smaller-assembly"></a>
 
-### <a name="add-assemblies-up-to-2-mb"></a>Szerelvények hozzáadása akár 2 MB
+### <a name="add-assemblies-up-to-2-mb"></a>Szerelvények hozzáadása 2 MB-ig
 
-1. A **szerelvény hozzáadása**, adja meg a szerelvény nevét. Tartsa **kis méretű fájlt** kiválasztott. Mellett a **szerelvény** válassza ki a mappa ikont. Keresse meg és válassza ki a feltöltendő, például szerelvény:
+1. A **szerelvény hozzáadása**területen adja meg a szerelvény nevét. **Kis fájlok** kiválasztásának megtartása. A **szerelvény** mező mellett válassza a mappa ikont. Keresse meg és válassza ki a feltölteni kívánt szerelvényt, például:
 
-   ![Töltse fel a kisebb sestavení](./media/logic-apps-enterprise-integration-maps/upload-assembly-file.png)
+   ![Kisebb szerelvény feltöltése](./media/logic-apps-enterprise-integration-maps/upload-assembly-file.png)
 
-   Az a **szerelvénynév** tulajdonság, a szerelvényfájlnévre automatikusan megjelenik a szerelvény kiválasztása után.
+   A szerelvény **neve** tulajdonságban a szerelvény fájljának neve automatikusan megjelenik a szerelvény kiválasztása után.
 
-1. Amikor elkészült, válassza ki a **OK**.
+1. Ha elkészült, kattintson **az OK gombra**.
 
-   A szerelvényfájl a feltöltés befejezését követően a szerelvény megjelenik a **szerelvények** listája.
+   Miután a szerelvény-fájl feltöltése befejeződött, a szerelvény megjelenik a **szerelvények** listájában.
 
    ![Feltöltött szerelvények listája](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies-list.png)
 
-   Az integrációs fiók **áttekintése** lap **összetevők**, a **szerelvények** csempe most számát jeleníti meg a feltöltött szerelvényeket, például:
+   Az integrációs fiók **áttekintő** lapjának **összetevők**területén a **szerelvények** csempe most a feltöltött szerelvények számát jeleníti meg, például:
 
    ![Feltöltött szerelvények](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies.png)
 
 <a name="larger-assembly"></a>
 
-### <a name="add-assemblies-more-than-2-mb"></a>2 MB-nál több szerelvények hozzáadása
+### <a name="add-assemblies-more-than-2-mb"></a>2 MB-nál nagyobb szerelvények hozzáadása
 
-Nagyobb szerelvények hozzáadásához a szerelvény feltölthet egy Azure blob-tárolóba az Azure storage-fiókban. A szerelvények hozzáadásának lépései a licenctár-e a blobtárolót nyilvános olvasási hozzáféréssel rendelkezik. Ezért először ellenőrizze-e a blob-tároló nyilvános olvasási hozzáféréssel rendelkezik az alábbi lépéseket: [Blob-tároló nyilvános hozzáférési szintjének beállítása](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+Nagyobb szerelvények hozzáadásához feltöltheti a szerelvényt egy Azure Blob-tárolóba az Azure Storage-fiókban. A szerelvények hozzáadásának lépései eltérnek attól függően, hogy a blob-tároló nyilvános olvasási hozzáféréssel rendelkezik-e. Először is győződjön meg arról, hogy a blob-tároló nyilvános olvasási hozzáféréssel rendelkezik-e a következő lépésekkel: [nyilvános hozzáférési szint beállítása blob-tárolóhoz](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
-#### <a name="check-container-access-level"></a>Ellenőrizze a tároló hozzáférési szint
+#### <a name="check-container-access-level"></a>Tároló hozzáférési szintjének keresése
 
-1. Nyissa meg az Azure Storage Explorerben. Ha még nincs kibontva Intéző ablakában bontsa ki az Azure-előfizetésében.
+1. Nyissa meg Azure Storage Explorer. Az Explorer ablakban bontsa ki az Azure-előfizetését, ha még nincs kibontva.
 
-1. Bontsa ki a **Tárfiókok** > {*a storage-fiók*} > **Blobtárolók**. Válassza ki a blob-tárolóba.
+1. Bontsa ki a **Storage-fiókok** > {*a-Storage-Account*} > **blob-tárolók**elemet. Válassza ki a BLOB-tárolót.
 
-1. A blob-tároló helyi menüjén válassza **nyilvános hozzáférési szint beállítása**.
+1. A blob-tároló helyi menüjében válassza a **nyilvános hozzáférési szint beállítása**lehetőséget.
 
-   * Ha a blob-tároló legalább nyilvános hozzáférése van, válassza ki a **Mégse**, és kövesse az alábbi lépéseket a későbbiekben ezen az oldalon: [Nyilvános hozzáférés tárolók feltöltése](#public-access-assemblies)
+   * Ha a blob-tároló legalább nyilvános hozzáféréssel rendelkezik, válassza a **Mégse**lehetőséget, majd kövesse az alábbi lépéseket ezen az oldalon: [feltöltés a nyilvános hozzáféréssel rendelkező tárolók számára](#public-access-assemblies)
 
      ![Nyilvános hozzáférés](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * Ha a blob-tároló nyilvános hozzáférése nem, válassza ki a **Mégse**, és kövesse az alábbi lépéseket a későbbiekben ezen az oldalon: [Nyilvános hozzáférés nélkül tárolók feltöltése](#no-public-access-assemblies)
+   * Ha a blob-tároló nem rendelkezik nyilvános hozzáféréssel, válassza a **Mégse**lehetőséget, majd kövesse az alábbi lépéseket az oldalon: [feltöltés nyilvános hozzáférés nélküli tárolókban](#no-public-access-assemblies)
 
      ![Nincs nyilvános hozzáférés](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
 <a name="public-access-assemblies"></a>
 
-#### <a name="upload-to-containers-with-public-access"></a>Nyilvános hozzáférés tárolók feltöltése
+#### <a name="upload-to-containers-with-public-access"></a>Nyilvános hozzáféréssel rendelkező tárolók feltöltése
 
-1. Töltse fel a tárfiók a szerelvényt. 
-   Válassza a jobb oldali ablakban **feltöltése**.
+1. Töltse fel a szerelvényt a Storage-fiókjába. 
+   A jobb oldali ablakban válassza a **feltöltés**lehetőséget.
 
-1. Feltöltése után válassza ki a feltöltött sestavení. Az eszköztáron válassza **példány URL-cím** úgy, hogy másolja a szerelvény URL-CÍMÉT.
+1. A feltöltés befejezése után válassza ki a feltöltött szerelvényt. Az eszköztáron válassza az **URL másolása** lehetőséget, hogy a szerelvény URL-címét másolja.
 
-1. Térjen vissza az Azure Portalon, a **szerelvény hozzáadása** panel meg nyitva. 
+1. Térjen vissza a Azure Portal, ahol a **szerelvény hozzáadása** panel meg van nyitva. 
    Adja meg a szerelvény nevét. 
-   Válasszon **nagy fájlok (2 MB-nál nagyobb)** .
+   Válassza a **nagyméretű fájl (2 MB-nál nagyobb)** lehetőséget.
 
-   A **tartalom URI-JÁT** be most már megjelenik, helyett a **szerelvény** mezőbe.
+   A **tartalom URI-ja** mező most megjelenik, nem pedig a **szerelvény** mező.
 
-1. Az a **tartalom URI-JÁT** mezőbe illessze be a szerelvény URL-CÍMÉT. 
-   A szerelvény hozzáadásának befejezéséhez.
+1. A **tartalom URI-ja** mezőbe illessze be a szerelvény URL-címét. 
+   Fejezze be a szerelvény hozzáadását.
 
-A szerelvény a feltöltés befejezését követően a séma megjelenik a **szerelvények** listája.
-Az integrációs fiók **áttekintése** lap **összetevők**, a **szerelvények** csempe most feltöltött szerelvények számát jeleníti meg.
+Miután a szerelvény befejezte a feltöltést, a séma megjelenik a **szerelvények** listájában.
+Az integrációs fiók **áttekintő** lapjának **összetevők**területén a **szerelvények** csempe most a feltöltött szerelvények számát jeleníti meg.
 
 <a name="no-public-access-assemblies"></a>
 
-#### <a name="upload-to-containers-without-public-access"></a>Nyilvános hozzáférés nélkül tárolók feltöltése
+#### <a name="upload-to-containers-without-public-access"></a>Nyilvános hozzáférés nélküli tárolók feltöltése
 
-1. Töltse fel a tárfiók a szerelvényt. 
-   Válassza a jobb oldali ablakban **feltöltése**.
+1. Töltse fel a szerelvényt a Storage-fiókjába. 
+   A jobb oldali ablakban válassza a **feltöltés**lehetőséget.
 
-1. Feltöltése után közös hozzáférésű jogosultságkód (SAS) a szerelvény hozza létre. 
-   A szerelvény helyi menüjén válassza **közös hozzáférési jogosultságkód igénylése**.
+1. A feltöltés befejezése után létrehoz egy közös hozzáférési aláírást (SAS) a szerelvényhez. 
+   A szerelvény helyi menüjében válassza a **közös hozzáférési aláírás beolvasása**elemet.
 
-1. Az a **közös hozzáférésű Jogosultságkód** ablaktáblán válassza **Generate tároló-szintű közös hozzáférésű jogosultságkód URI** > **létrehozás**. 
-   Az SAS URL-cím generálása lekérdezi a után a **URL-cím** válassza **másolási**.
+1. A **megosztott hozzáférés aláírása** ablaktáblán válassza a **tároló szintű közös hozzáférésű aláírás-URI** **létrehozása > létrehozás**lehetőséget. 
+   A SAS URL-cím generálása után az **URL-cím** mező mellett válassza a **Másolás**lehetőséget.
 
-1. Térjen vissza az Azure Portalon, a **szerelvény hozzáadása** panel meg nyitva. 
+1. Térjen vissza a Azure Portal, ahol a **szerelvény hozzáadása** panel meg van nyitva. 
    Adja meg a szerelvény nevét. 
-   Válasszon **nagy fájlok (2 MB-nál nagyobb)** .
+   Válassza a **nagyméretű fájl (2 MB-nál nagyobb)** lehetőséget.
 
-   A **tartalom URI-JÁT** be most már megjelenik, helyett a **szerelvény** mezőbe.
+   A **tartalom URI-ja** mező most megjelenik, nem pedig a **szerelvény** mező.
 
-1. Az a **tartalom URI-JÁT** mezőbe illessze be a korábban létrehozott SAS URI-t. A szerelvény hozzáadásának befejezéséhez.
+1. A **tartalom URI-ja** mezőben illessze be a korábban létrehozott sas URI-t. Fejezze be a szerelvény hozzáadását.
 
-A szerelvény a feltöltés befejezését követően a szerelvény megjelenik a **sémák** listája. Az integrációs fiók **áttekintése** lap **összetevők**, a **szerelvények** csempe most feltöltött szerelvények számát jeleníti meg.
+A szerelvény feltöltésének befejezése után a szerelvény megjelenik a **sémák** listájában. Az integrációs fiók **áttekintő** lapjának **összetevők**területén a **szerelvények** csempe most a feltöltött szerelvények számát jeleníti meg.
 
 ## <a name="create-maps"></a>Térképek létrehozása
 
-Lehetővé teszi egy térképet, az az XSLT-dokumentum létrehozásához, használhatja a Visual Studio 2015 használatával BizTalk-integráció projekt létrehozására szolgáló a [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md). Ebben a projektben egy integrációs térkép fájlt, amely lehetővé teszi elemek között két XML-séma fájlok vizuálisan leképezése hozhat létre. A projekt elkészítése, miután az XSLT-dokumentum kap.
-A térkép mennyiségeket az integrációs fiókok korlátozásairól lásd: [korlátozások és konfiguráció az Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits). 
+Térképként használható XSLT-dokumentum létrehozásához használhatja a Visual Studio 2015-et a BizTalk integrációs projekt létrehozásához a [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)használatával. Ebben a projektben létrehozhat egy integrációs leképezési fájlt, amely lehetővé teszi, hogy az elemeket vizuálisan képezze két XML-sémafájl között. A projekt létrehozása után egy XSLT-dokumentumot kap.
+Az integrációs fiókokban lévő leképezési mennyiségek korlátozásai: [Azure Logic apps korlátozásai és konfigurálása](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits). 
 
-## <a name="add-maps"></a>Leképezések hozzáadása
+## <a name="add-maps"></a>Térképek hozzáadása
 
-Miután feltölti a térkép hivatkozó bármely szerelvényeket, a térkép most tölthet fel.
+A térképre hivatkozó szerelvények feltöltése után már feltöltheti a térképet.
 
-1. Ha Ön még nem tette meg, jelentkezzen be a [az Azure portal](https://portal.azure.com) az Azure-fiók hitelesítő adataival. 
+1. Ha még nem jelentkezett be, jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure-fiókja hitelesítő adataival. 
 
-1. Ha az integrációs fiók még nincs megnyitva, az Azure fő menüjéből, válassza ki a **minden szolgáltatás**. 
-   A Keresés mezőbe írja be az "integrációs fiók". 
-   Válassza ki **integrációs fiókok**.
+1. Ha az integrációs fiók még nincs megnyitva, az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. 
+   A keresőmezőbe írja be az "integrációs fiók" kifejezést. 
+   Válassza az **integrációs fiókok**elemet.
 
-   ![Integrációs fiók található](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
+   ![Integrációs fiók keresése](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
 
-1. Válassza ki az integrációs fiók kívánja adja hozzá a térkép, például:
+1. Válassza ki azt az integrációs fiókot, amelyhez hozzá szeretné adni a térképet, például:
 
-   ![Válassza ki az integrációs fiók](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
+   ![Integrációs fiók kiválasztása](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Az integrációs fiók **áttekintése** lap **összetevők**, jelölje be a **Maps** csempére.
+1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **Maps (térképek** ) csempét.
 
-   ![Válassza ki a "Térképek"](./media/logic-apps-enterprise-integration-maps/select-maps.png)
+   ![Válassza a "Maps" lehetőséget.](./media/logic-apps-enterprise-integration-maps/select-maps.png)
 
-1. Miután a **Maps** lapon megnyílik a **Hozzáadás**.
+1. A **térképek** lap megnyitása után válassza a **Hozzáadás**lehetőséget.
 
-   ![Válassza az "Add"](./media/logic-apps-enterprise-integration-maps/add-map.png)  
+   ![Válassza a "Hozzáadás" lehetőséget.](./media/logic-apps-enterprise-integration-maps/add-map.png)  
 
 <a name="smaller-map"></a>
 
-### <a name="add-maps-up-to-2-mb"></a>Leképezések hozzáadása akár 2 MB
+### <a name="add-maps-up-to-2-mb"></a>Térképek hozzáadása legfeljebb 2 MB
 
-1. A **térkép hozzáadása**, adjon meg egy nevet a térképen. 
+1. A **Térkép hozzáadása**területen adja meg a Térkép nevét. 
 
-1. A **leképezés típusa**, adja meg, például: **Folyékony**, **XSLT**, **XSLT 2.0**, vagy **XSLT 3.0**.
+1. A **Térkép típusa**területen válassza ki a típust, például: **Liquid**, **XSLT**, **XSLT 2,0**vagy **XSLT 3,0**.
 
-1. Tartsa **kis méretű fájlt** kiválasztott. Mellett a **térkép** válassza ki a mappa ikont. Keresse meg és válassza ki a térkép videófájl, például:
+1. **Kis fájlok** kiválasztásának megtartása. A **Térkép** mező mellett válassza a mappa ikont. Keresse meg és válassza ki a feltölteni kívánt térképet, például:
 
-   ![Töltse fel a térkép](./media/logic-apps-enterprise-integration-maps/upload-map-file.png)
+   ![Térkép feltöltése](./media/logic-apps-enterprise-integration-maps/upload-map-file.png)
 
-   Ha nem törli a **neve** tulajdonság üres, a térkép fájl neve automatikusan megjelenik a tulajdonság automatikusan a térkép-fájl kiválasztása után. 
-   Bármely egyedi név is használhatja.
+   Ha üresen hagyta a **Name (név** ) tulajdonságot, a leképezés fájljának neve automatikusan megjelenik a tulajdonságban, miután kiválasztja a térkép fájlt. 
+   Azonban bármilyen egyedi nevet használhat.
 
-1. Amikor elkészült, válassza ki a **OK**. 
-   Feltöltése a leképezés befejeződése után a térkép megjelenik a **Maps** listája.
+1. Ha elkészült, kattintson **az OK gombra**. 
+   Miután a leképezési fájl befejezte a feltöltést, a Térkép megjelenik a **Maps** listán.
 
-   ![Feltöltött maps listája](./media/logic-apps-enterprise-integration-maps/uploaded-maps-list.png)
+   ![Feltöltött térképek listája](./media/logic-apps-enterprise-integration-maps/uploaded-maps-list.png)
 
-   Az integrációs fiók **áttekintése** lap **összetevők**, a **térképek** csempe most számát jeleníti meg a feltöltött térképek, például:
+   Az integrációs fiók **áttekintő** lapjának **összetevők**területén a **Maps (térképek** ) csempén a feltöltött térképek száma látható, például:
 
    ![Feltöltött térképek](./media/logic-apps-enterprise-integration-maps/uploaded-maps.png)
 
 <a name="larger-map"></a>
 
-### <a name="add-maps-more-than-2-mb"></a>2 MB-nál több leképezések hozzáadása
+### <a name="add-maps-more-than-2-mb"></a>Térképek hozzáadása 2 MB-nál több
 
-Jelenleg nagyobb maps hozzáadásához használja a [Azure Logic Apps alkalmazások REST API - térképek](https://docs.microsoft.com/rest/api/logic/maps/createorupdate).
+Jelenleg nagyobb térképek hozzáadásához használja a [Azure Logic Apps REST API-Maps](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)szolgáltatást.
 
 <!--
 
@@ -311,44 +308,44 @@ the map appears in the **Maps** list.
 
 -->
 
-## <a name="edit-maps"></a>A maps szerkesztése
+## <a name="edit-maps"></a>Térképek szerkesztése
 
-Egy meglévő térkép frissíteni, akkor töltse fel egy új térkép fájlt, amely rendelkezik a szükséges módosításokat. Azonban először töltheti le a meglévő térkép szerkesztésre.
+Egy meglévő Térkép frissítéséhez fel kell töltenie egy új leképezési fájlt, amely a kívánt módosításokkal rendelkezik. Először azonban letöltheti a meglévő térképet szerkesztésre.
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse meg és nyissa meg az integrációs fiók, ha nem már megnyitásához.
+1. A [Azure Portalban](https://portal.azure.com)keresse meg és nyissa meg az integrációs fiókot, ha még nincs megnyitva.
 
-1. Az Azure fő menüjéből válassza **minden szolgáltatás**. A Keresés mezőbe írja be az "integrációs fiók". Válassza ki **integrációs fiókok**.
+1. Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. A keresőmezőbe írja be az "integrációs fiók" kifejezést. Válassza az **integrációs fiókok**elemet.
 
-1. Válassza ki az integrációs fiók, ahol szeretné frissíteni a térképet.
+1. Válassza ki azt az integrációs fiókot, ahol frissíteni szeretné a térképet.
 
-1. Az integrációs fiók **áttekintése** lap **összetevők**, jelölje be a **Maps** csempére.
+1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **Maps (térképek** ) csempét.
 
-1. Miután a **Maps** lap megnyitásakor, válassza ki a térképet. 
-   Töltse le és a leképezés szerkesztése először válassza a **letöltése**, és mentse a térképen.
+1. A **térképek** lap megnyitása után válassza ki a térképet. 
+   Ha először szeretné letölteni és szerkeszteni a térképet, válassza a **Letöltés**lehetőséget, és mentse a térképet.
 
-1. Amikor készen áll a frissített térkép feltölteni kívánt a **Maps** lapra, jelölje be a térkép szeretné frissíteni, és válassza a **frissítése**.
+1. Amikor készen áll a frissített Térkép feltöltésére, a **Maps** lapon válassza ki a frissíteni kívánt térképet, és válassza a **frissítés**lehetőséget.
 
-1. Keresse meg és válassza ki a feltölteni kívánt frissített térképet. 
-   Feltöltése a leképezés befejeződése után a frissített térkép megjelenik a **Maps** listája.
+1. Keresse meg és válassza ki a frissített térképet, amelyet fel szeretne tölteni. 
+   A leképezési fájl feltöltésének befejeződése után a frissített Térkép megjelenik a **Maps** listában.
 
-## <a name="delete-maps"></a>A maps törlése
+## <a name="delete-maps"></a>Térképek törlése
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse meg és nyissa meg az integrációs fiók, ha nem már megnyitásához.
+1. A [Azure Portalban](https://portal.azure.com)keresse meg és nyissa meg az integrációs fiókot, ha még nincs megnyitva.
 
-1. Az Azure fő menüjéből válassza **minden szolgáltatás**. 
-   A Keresés mezőbe írja be az "integrációs fiók". 
-   Válassza ki **integrációs fiókok**.
+1. Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. 
+   A keresőmezőbe írja be az "integrációs fiók" kifejezést. 
+   Válassza az **integrációs fiókok**elemet.
 
-1. Válassza ki az integrációs fiók, ha törölni szeretné a térképen.
+1. Válassza ki azt az integrációs fiókot, ahová a térképet törölni szeretné.
 
-1. Az integrációs fiók **áttekintése** lap **összetevők**, jelölje be a **Maps** csempére.
+1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **Maps (térképek** ) csempét.
 
-1. Miután a **Maps** lap megnyitásakor, válassza ki a térképet, és válassza **törlése**.
+1. A **térképek** lap megnyitása után válassza ki a térképet, és válassza a **Törlés**lehetőséget.
 
-1. Annak ellenőrzéséhez, hogy törli a térképen, válassza ki a **Igen**.
+1. Annak megerősítéséhez, hogy törölni kívánja a térképet, válassza az **Igen**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [További információ az Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)  
-* [További tudnivalók a sémák](../logic-apps/logic-apps-enterprise-integration-schemas.md)
-* [További tudnivalók a átalakítások](../logic-apps/logic-apps-enterprise-integration-transform.md)
+* [További információ a Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)  
+* [További információ a sémákkal kapcsolatban](../logic-apps/logic-apps-enterprise-integration-schemas.md)
+* [További információ az átalakításokról](../logic-apps/logic-apps-enterprise-integration-transform.md)

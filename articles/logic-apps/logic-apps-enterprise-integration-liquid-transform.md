@@ -1,20 +1,19 @@
 ---
-title: JSON-adatátalakítások átalakítása folyékony átalakításokkal – Azure Logic Apps | Microsoft Docs
+title: JSON-adatátalakítás a folyékony átalakításokkal
 description: Átalakítások vagy leképezések létrehozása speciális JSON-átalakításokhoz Logic Apps és folyékony sablon használatával
 services: logic-apps
-ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
-ms.suite: integration
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 203c57a2755a3287566a774e2878a87b847337b9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900662"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792513"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Speciális JSON-átalakítások elvégzése folyékony sablonokkal Azure Logic Apps
 
@@ -58,7 +57,7 @@ A logikai alkalmazásban a folyékony átalakítás elvégzése előtt meg kell 
    }
    ```
 
-2. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Az Azure fő menüjében válassza az **összes erőforrás**lehetőséget. A keresőmezőbe keresse meg és válassza ki az integrációs fiókját.
+2. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Az Azure fő menüjében válassza az **összes erőforrás**lehetőséget. A keresőmezőbe keresse meg és válassza ki az integrációs fiókját.
 
    ![Integrációs fiók kiválasztása](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
@@ -68,11 +67,11 @@ A logikai alkalmazásban a folyékony átalakítás elvégzése előtt meg kell 
 
 4. Válassza a **Hozzáadás** lehetőséget, és adja meg a térképen a következő adatokat:
 
-   | Tulajdonság | Érték | Leírás | 
+   | Tulajdonság | Value (Díj) | Leírás | 
    |----------|-------|-------------|
-   | **Name** | JsonToJsonTemplate | A Térkép neve, amely ebben a példában "JsonToJsonTemplate". | 
+   | **Name (Név)** | JsonToJsonTemplate | A Térkép neve, amely ebben a példában "JsonToJsonTemplate". | 
    | **Térkép típusa** | **folyékony** | A Térkép típusa A JSON-ből a JSON-átalakításhoz ki kell választania a **folyadék**elemet. | 
-   | **Térkép** | "SimpleJsonToJsonTemplate.liquid" | Ebben a példában a "SimpleJsonToJsonTemplate. Liquid" nevű meglévő likvid sablon vagy leképezési fájl, amely az átalakításhoz használható. A fájl megkereséséhez használhatja a fájl-választót. |
+   | **Térkép** | "SimpleJsonToJsonTemplate. Liquid" | Ebben a példában a "SimpleJsonToJsonTemplate. Liquid" nevű meglévő likvid sablon vagy leképezési fájl, amely az átalakításhoz használható. A fájl megkereséséhez használhatja a fájl-választót. |
    ||| 
 
    ![Likvid sablon hozzáadása](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
@@ -84,7 +83,7 @@ A logikai alkalmazásban a folyékony átalakítás elvégzése előtt meg kell 
 2. A Logic app Designerben adja hozzá a [kérelem-triggert](../connectors/connectors-native-reqres.md#add-request) a logikai alkalmazáshoz.
 
 3. Az trigger alatt válassza az **új lépés**lehetőséget. 
-   A keresőmezőbe írja be szűrőként a "Liquid" kifejezést, majd válassza a következő műveletet: **JSON átalakítása JSON-folyadékba**
+   A keresőmezőbe írja be szűrőként a "Liquid" kifejezést, majd válassza a következő műveletet: **JSON átalakítása JSON-Liquid**
 
    ![Likvid művelet keresése és kiválasztása](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -125,7 +124,7 @@ A folyadék nem korlátozódik kizárólag a JSON-átalakításokra. Az alábbia
   
    ![Példa kimeneti JSON-szövegre](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
 
-* XML átalakítása JSON-ná
+* XML átalakítása JSON-formátumba
   
   Itt látható a következő példában használt likvid sablon:
    
@@ -150,8 +149,8 @@ A folyadék nem korlátozódik kizárólag a JSON-átalakításokra. Az alábbia
 
    ![Példa kimeneti XML-szövegre](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [További információ a Enterprise Integration Pack] Tudnivalók (../logic-apps/logic-apps-enterprise-integration-overview.md "a Enterprise Integration Pack")  
-* [További információ a mapsről] (../logic-apps/logic-apps-enterprise-integration-maps.md "További tudnivalók a vállalati integrációs térképekről")  
+* [További információ a Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack")  
+* [További információ a mapsről](../logic-apps/logic-apps-enterprise-integration-maps.md "További tudnivalók a vállalati integrációs térképekről")  
 

@@ -1,22 +1,18 @@
 ---
-title: Kapcsolódás a GitHubhoz – Azure Logic Apps
+title: Kapcsolódás a GitHubhoz
 description: GitHub-események monitorozása a GitHub REST API-kkal és Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
-ms.openlocfilehash: 6a6e2a803ee2a272189abf0f21796b2305eea40b
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 7dc865f520b6f4667ace720e656a210e0252d1a1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050903"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789755"
 ---
 # <a name="connect-to-github-from-azure-logic-apps"></a>Kapcsolódás a GitHubhoz Azure Logic Apps
 
@@ -28,7 +24,7 @@ Első lépésként [hozzon létre egy logikai alkalmazást](../logic-apps/quicks
 
 Ha logikai alkalmazásban szeretné használni a GitHub-összekötőt, először létre kell hoznia egy *kapcsolatokat* , majd meg kell adnia a következő tulajdonságokkal kapcsolatos adatokat: 
 
-| Tulajdonság | Kötelező | Leírás | 
+| Tulajdonság | Szükséges | Leírás | 
 | -------- | -------- | ----------- | 
 | Jogkivonat | Igen | Adja meg a GitHub hitelesítő adatait. |
 
@@ -41,6 +37,6 @@ A kapcsolatok létrehozása után végrehajthatja a műveleteket, és figyelheti
 
 Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az [összekötő hivatkozási oldalát](/connectors/github/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

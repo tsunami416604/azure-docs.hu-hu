@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a1c6f2d869d8d7ad865005ebd319beac56bdbacd
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: aa32f671756b8ba7f17c25592b6a15b66de42b2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720099"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790030"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Az Azure Cognitive Search tudásbázisának bemutatása
 
@@ -32,7 +32,7 @@ A Knowledge Store használatához adjon hozzá egy `knowledgeStore` elemet egy k
 
 ## <a name="benefits-of-knowledge-store"></a>A Knowledge Store előnyei
 
-A Knowledge Store strukturálatlan és félig strukturált adatfájlok, például a Blobok, az elemzésen átesett képfájlok, vagy akár az új űrlapokra átalakított strukturált adatok összegyűjtését teszi lehetővé. Egy [lépésenkénti útmutatóban](knowledge-store-howto.md)megtekintheti, hogyan particionálja a vastag JSON-dokumentumot alstruktúrákba, új struktúrákba felépítve, és egyéb módon elérhetővé teszi azokat az alárendelt folyamatokhoz, mint például a gépi tanulás és az adattudomány számítási feladatok.
+A Knowledge Store strukturálatlan és félig strukturált adatfájlok, például a Blobok, az elemzésen átesett képfájlok, vagy akár az új űrlapokra átalakított strukturált adatok összegyűjtését teszi lehetővé. Egy [lépésenkénti útmutatóban](knowledge-store-howto.md)megtekintheti, hogy egy sűrű JSON-dokumentum hogyan osztható ki alstruktúrákba, új struktúrákba felépítve, és egyéb módon elérhetővé válik az alárendelt folyamatokhoz, például a gépi tanuláshoz és az adatelemzési feladatokhoz.
 
 Bár hasznos lehet megtekinteni, hogy mit hozhat létre az AI-bővítési folyamat, a Knowledge Store valódi ereje az Adatátalakítási képesség. Érdemes lehet egy alapszintű készségkészlet, majd megismételni a szerkezet növelését, amelyet később új struktúrákba, más alkalmazásokban pedig az Azure Cognitive Search is használhat.
 
@@ -61,7 +61,9 @@ A `knowledgeStore` kapcsolatokből és kivetítésből áll.
 
 + A kapcsolódás egy olyan Storage-fiókhoz, amely ugyanabban a régióban található, mint az Azure Cognitive Search. 
 
-+ A vetítések Tables-Objects párok. `Tables` megadhatja a dúsított dokumentumok fizikai kifejezését az Azure Table Storage-ban. `Objects` adja meg a fizikai objektumokat az Azure Blob Storage-ban.
++ A kivetítések táblázatos, JSON-objektumokat vagy fájlokat is használhatnak. `Tables` megadhatja a dúsított dokumentumok fizikai kifejezését az Azure Table Storage-ban. `Objects` a fizikai JSON-objektumokat definiálja az Azure Blob Storage-ban. a `Files` bináris fájlok, például a dokumentumból kinyert képek, amelyeket a rendszer megőrzi.
+
++ A vetítések a kivetítési objektumok gyűjteményei, és mindegyik kivetítési objektum `tables`, `objects` és `files`tartalmazhat. Az egyetlen kivetítésen belül kivetített dúsítások akkor is kapcsolódnak egymáshoz, ha típusok (táblák, objektumok vagy fájlok) között vannak kijelölve. A kivetítési objektumok közötti előrejelzések nem kapcsolódnak egymáshoz, és függetlenek egymástól. Ugyanez az alakzat több kivetítési objektum is lehet.
 
 ```json
 {
@@ -109,7 +111,10 @@ A `knowledgeStore` kapcsolatokből és kivetítésből áll.
             ], 
             "objects": [ 
                
-            ]      
+            ], 
+            "files": [
+
+            ]  
         },
         { 
             "tables": [ 
@@ -121,13 +126,17 @@ A `knowledgeStore` kapcsolatokből és kivetítésből áll.
                 "source": "/document/Review", 
                 "key": "/document/Review/Id" 
                 } 
-            ]      
+            ],
+            "files": [
+                
+            ]  
         }        
     ]     
     } 
 }
 ```
 
+Ez a minta nem tartalmaz lemezképeket, például a [kivetítések](knowledge-store-projection-overview.md)használata című témakörben talál példát a kivetítések használatára.
 ### <a name="sources-of-data-for-a-knowledge-store"></a>A Tudásbázisban tárolt adatforrások
 
 Ha egy Tudásbázis kimenete egy mesterséges intelligencia-dúsítási folyamatból származik, milyen bemenetek vannak? A kinyerni, bővíteni és végül menteni kívánt eredeti adatok a keresési indexelő által támogatott bármely Azure-adatforrásból származhatnak: 

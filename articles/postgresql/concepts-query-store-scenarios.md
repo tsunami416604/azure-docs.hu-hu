@@ -1,17 +1,17 @@
 ---
-title: Lekérdezési tár használati forgatókönyvei Azure Database for PostgreSQL – egyetlen kiszolgálón
+title: Lekérdezés-tárolási forgatókönyvek – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk a Azure Database for PostgreSQL-Single Server lekérdezési tárolójának egyes forgatókönyveit ismerteti.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 3cdb0d4e00e667b0369cdf612662830f18dc5fb8
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 31e3f82b6ea1b1fc15c0832dc03edce2a59f1e1b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764278"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768350"
 ---
 # <a name="usage-scenarios-for-query-store"></a>A lekérdezési tároló használati forgatókönyvei
 
@@ -19,7 +19,7 @@ ms.locfileid: "70764278"
 
 A lekérdezési tároló számos olyan forgatókönyvben használható, amelyben kritikus fontosságú a kiszámítható számítási feladatok teljesítményének nyomon követése és karbantartása. Vegye figyelembe az alábbi példákat: 
 - A legfontosabb költséges lekérdezések azonosítása és finomhangolása 
-- A / B tesztelés 
+- A/B-tesztelés 
 - A teljesítmény stabil tartása a frissítések során 
 - Ad hoc számítási feladatok azonosítása és javítása 
 
@@ -38,7 +38,7 @@ Ha az optimális teljesítményt biztosító lekérdezést azonosít, a művelet
 - Érdemes lehet költséges lekérdezéseket újraírni. Kihasználhatja például a lekérdezési paraméterezés előnyeit, és csökkentheti a dinamikus SQL használatát. Az Adatszűrés az adatbázis-oldalon való alkalmazásakor, például az alkalmazás oldalán nem alkalmazható, optimális logikát kell megvalósítani. 
 
 
-## <a name="ab-testing"></a>A / B tesztelés 
+## <a name="ab-testing"></a>A/B-tesztelés 
 A lekérdezési tároló használatával hasonlíthatja össze a számítási feladatok teljesítményét a bevezetéshez szükséges alkalmazások módosítása előtt és után. Példák a lekérdezési tároló használatára a környezet vagy az alkalmazás munkaterhelés-teljesítményre gyakorolt hatásának felméréséhez: 
 - Egy alkalmazás új verziójának elkészítése. 
 - További erőforrások hozzáadása a kiszolgálóhoz. 
@@ -57,5 +57,5 @@ Bizonyos munkaterhelések nem rendelkeznek olyan domináns lekérdezésekkel, am
  
 Az alkalmazás kódjának ellenőrzésekor érdemes lehet átírni az adatelérési réteget a tárolt eljárások vagy a paraméteres lekérdezések használatára. Ez a helyzet azonban javítható az alkalmazások módosítása nélkül is, ha a lekérdezési paraméterezés a teljes adatbázisra (az összes lekérdezésre) vagy az ugyanazon lekérdezési kivonattal rendelkező különálló lekérdezési sablonokra kényszeríti. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [query Store használatának ajánlott eljárásairól](concepts-query-store-best-practices.md)

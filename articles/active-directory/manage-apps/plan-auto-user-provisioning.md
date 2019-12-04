@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 944ecaaceedbff6ed1f86c4b8eb5786ce2b5bae5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706228"
+ms.locfileid: "74786418"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
@@ -90,11 +90,11 @@ Ebben a példában a felhasználók és a csoportok egy helyszíni címtárhoz c
 
 1. A felhasználók/csoportok egy helyszíni HR-alkalmazásban/rendszerben, például az SAP-ben jönnek létre. 
 
-1. Azure AD Connect ügynök az identitások (felhasználók és csoportok) ütemezett szinkronizálását futtatja a helyi AD-ből az Azure AD-be.
+1. **Azure ad Connect ügynök** az identitások (felhasználók és csoportok) ütemezett szinkronizálását futtatja a helyi ad-ből az Azure ad-be.
 
-1. Az Azure AD kiépítési szolgáltatás megkezdi a [kezdeti ciklust](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) a forrásrendszer és a célként megadott rendszeren. 
+1. Az **Azure ad kiépítési szolgáltatás** megkezdi a [kezdeti ciklust](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) a forrásrendszer és a célként megadott rendszeren. 
 
-1. Az Azure AD kiépítési szolgáltatás a kezdeti ciklus óta megváltoztatott bármely felhasználó és csoport forrásrendszer-rendszerét lekérdezi, és elküldi a módosításokat a [növekményes ciklusokban](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. Az **Azure ad kiépítési szolgáltatás** a kezdeti ciklus óta megváltoztatott bármely felhasználó és csoport forrásrendszer-rendszerét lekérdezi, és elküldi a módosításokat a [növekményes ciklusokban](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Automatikus felhasználó-kiépítés a csak felhőalapú vállalatok számára
 
@@ -106,9 +106,9 @@ Ebben a példában a felhasználó létrehozása az Azure AD-ben történik, az 
 
 1. A felhasználók/csoportok az Azure AD-ben jönnek létre.
 
-1. Az Azure AD kiépítési szolgáltatás megkezdi a [kezdeti ciklust](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) a forrásrendszer és a célként megadott rendszeren. 
+1. Az **Azure ad kiépítési szolgáltatás** megkezdi a [kezdeti ciklust](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) a forrásrendszer és a célként megadott rendszeren. 
 
-1. Az Azure AD kiépítési szolgáltatás lekérdezi a forrásrendszer minden olyan felhasználó és csoport számára, amely a kezdeti ciklus óta frissült, és végrehajtja a [növekményes ciklusokat](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. Az **Azure ad kiépítési szolgáltatás** lekérdezi a forrásrendszer minden olyan felhasználó és csoport számára, amely a kezdeti ciklus óta frissült, és végrehajtja a [növekményes ciklusokat](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>A Felhőbeli HR-alkalmazások automatikus felhasználó általi üzembe helyezése 
 

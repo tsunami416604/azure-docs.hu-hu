@@ -1,43 +1,40 @@
 ---
-title: Csatlakozhat a Google drive-on – Azure Logic Apps |} A Microsoft Docs
-description: A Google Drive REST API-k és az Azure Logic Apps-fájlok létrehozásáról és kezeléséről
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 11/07/2016
-ms.topic: article
-ms.service: logic-apps
+title: Kapcsolódás a Google Drive-hoz
+description: Fájlok létrehozása és kezelése a Google Drive REST API-kkal és Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 43bd5248f1bb80c71a85935c585deac6152be78b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6310c3b7e5b84915fa336708bc702e94317ad04c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105089"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789715"
 ---
-# <a name="get-started-with-the-google-drive-connector"></a>A Google Drive-összekötő használatának első lépései
-Csatlakozhat a Google Drive-fájlok, sorok beolvasása és egyéb létrehozásához. A Google Drive-bA a következőket teheti: 
+# <a name="get-started-with-the-google-drive-connector"></a>Ismerkedés a Google Drive-összekötővel
 
-* Az üzleti folyamat kap a keresési adatok alapján történő létrehozása. 
-* Képek, hogy a hírek és egyéb műveletek használatával. Ezek a műveletek válaszol, és végezze el a kimenetet más műveletek esetében érhető el. Például keresse meg a videót, és majd a Twitter segítségével, amely egy Twitter-hírcsatornáján videó közzététele.
+Kapcsolódjon a Google Drive-hoz fájlok létrehozásához, sorok beszerzéséhez és egyebekhez. A Google Drive használatával a következőket teheti: 
 
-Hozzon létre egy logikai alkalmazás most már megkezdheti, lásd: [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Hozza létre üzleti folyamatát a kereséstől kapott adatok alapján. 
+* Használjon műveleteket a képek kereséséhez, a hírek kereséséhez és egyebekhez. Ezek a műveletek választ kapnak, majd elérhetővé teszik a kimenetet más műveletekhez. Kereshet például egy videót, majd a Twitter használatával közzéteheti a videót egy Twitter-hírcsatornában.
 
-## <a name="create-the-connection-to-google-drive"></a>Hozza létre a kapcsolatot a Google Drive-bA
-Ha ezt az összekötőt a logic apps hozzáad, engedélyeznie kell a logic apps csatlakozhat a Google Drive-bA.
+A logikai alkalmazások létrehozásának első lépéseiről a [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakörben olvashat.
+
+## <a name="create-the-connection-to-google-drive"></a>A Google Drive-hoz való kapcsolódás létrehozása
+
+Ha hozzáadja ezt az összekötőt a logikai alkalmazásokhoz, engedélyezni kell a Logic Apps szolgáltatást a Google Drive-hoz való csatlakozáshoz.
 
 > [!INCLUDE [Steps to create a connection to googledrive](../../includes/connectors-create-api-googledrive.md)]
-> 
-> 
 
-Miután létrehozta a kapcsolatot, adja meg a Google drive-on tulajdonságait, például a mappa elérési útját vagy a fájl nevét. 
+A kapcsolatok létrehozása után adja meg a Google Drive tulajdonságait, például a mappa elérési útját vagy fájlnevét. 
 
-## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
+## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
-Megtekintheti a valamennyi eseményindítót és műveletet a swaggerben meghatározott, és emellett a korlátozott a [összekötő részletei](/connectors/googledrive/).
+Megtekintheti a hencegés során definiált összes eseményindítót és műveletet, valamint az [összekötő részleteiben](/connectors/googledrive/)megjelenő korlátokat is.
 
 ## <a name="more-connectors"></a>További összekötők
-Lépjen vissza a [API-k listája](apis-list.md).
+
+Lépjen vissza az API-k [listájára](apis-list.md).

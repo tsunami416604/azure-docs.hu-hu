@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL – egyetlen kiszolgáló Lekérdezési terheléselemző
+title: Lekérdezési terheléselemző-Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk a Azure Database for PostgreSQL egyetlen kiszolgáló Lekérdezési terheléselemző funkcióját ismerteti.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 748c6f08da535013724f68b8be424e50a2d49dfd
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: dd5b4ec53d82421ddd9d680ca41e48eeecc43c2c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764434"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768384"
 ---
-# <a name="query-performance-insight"></a>Lekérdezési terheléselemző 
+# <a name="query-performance-insight"></a>Információ a lekérdezések teljesítményéről 
 
 **A következőkre vonatkozik:** Azure Database for PostgreSQL – egykiszolgálós verzió: 9,6, 10, 11
 
@@ -45,7 +45,7 @@ A kiszolgálóval kapcsolatos megfelelő várakozási adatok vizualizációinak 
 ## <a name="considerations"></a>Megfontolandó szempontok
 * Lekérdezési terheléselemző nem érhető el az [olvasási replikák](concepts-read-replicas.md)esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információk az Azure Database for PostgreSQL [monitoringjához és finomhangolásához](concepts-monitoring.md).
 
 

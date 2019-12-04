@@ -1,193 +1,191 @@
 ---
-title: XML érvényességének ellenőrzése sémákkal – Azure Logic Apps |} A Microsoft Docs
-description: Sémák XML-dokumentumok, az Azure Logic Appsben és Enterprise Integration Pack ellenőrzése hozzáadása
+title: XML érvényesítése sémákkal
+description: Sémák hozzáadása a Azure Logic Appsban lévő XML-dokumentumok érvényesítéséhez Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.date: 02/06/2019
-ms.openlocfilehash: 3cca995b353b88cc481cbda68df4211a724f7f09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cde620b4949da8a6cff4ad89a863c80f0514f1c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60846377"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792403"
 ---
-# <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML érvényességének ellenőrzése az Azure Logic Apps Enterprise Integration Pack-sémákkal
+# <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Az XML érvényesítése Azure Logic Apps sémákkal a Enterprise Integration Pack
 
-Ellenőrizze, hogy a dokumentum érvényes XML-t használja, és a várt adatokkal rendelkeznek a vállalati integrációs forgatókönyvek az Azure Logic Appsben az előre meghatározott formátumban, a logikai alkalmazás sémák használja. Egy sémát is ellenőrizheti, amely vállalatközi (B2B) forgatókönyvekben a logic apps exchange-üzeneteket.
+Annak ellenőrzéséhez, hogy a dokumentumok érvényes XML-t használnak-e, és hogy a várt adatok a Azure Logic Apps vállalati integrációs forgatókönyvek esetében előre meghatározott formátumban vannak-e, a logikai alkalmazás sémákat használhat. A sémák azt is ellenőrizhetik, hogy a Logic apps Exchange a vállalatközi (B2B) helyzetekben van-e.
 
-Integrációs fiókok és az összetevők, például sémákkal kapcsolatos korlátozásairól lásd: [korlátozásai és konfigurációs adatokat az Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
+Az integrációs fiókokhoz és összetevőkhöz (például sémák) kapcsolódó korlátokat a [Azure Logic apps korlátozásai és konfigurációs adatai](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)című részben találja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha még nincs előfizetése, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
 
-* Egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , ahol tárolja a sémák és más összetevőket, vállalati integráció és a vállalatközi (B2B) megoldásokat. 
+* Egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , amelyben a sémákat és egyéb összetevőket a vállalati integrációs és a vállalatközi (B2B) megoldások számára tárolja. 
 
-  Ha a séma [2 MB vagy kisebb](#smaller-schema), adhat hozzá a sémát az integrációs fiók közvetlenül az Azure Portalról. Azonban ha a séma 2 MB-nál nagyobb méretű, de nem nagyobb, mint a [séma méretkorlát](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits), feltöltheti a sémát az Azure storage-fiókba. 
-  Szeretne hozzáadni a sémát az integrációs fiók, majd hozzákapcsolhatja a tárfiókot az integrációs fiókból. 
-  Ebben a feladatban az alábbiakban szükséges elemek: 
+  Ha a séma [mérete 2 MB vagy kisebb](#smaller-schema), közvetlenül a Azure Portal adhatja hozzá a sémát az integrációs fiókhoz. Ha azonban a séma mérete meghaladja a 2 MB-ot, de a [séma méretétől](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)nem nagyobb, akkor feltöltheti a sémát egy Azure Storage-fiókba. 
+  Ha hozzá szeretné adni a sémát az integrációs fiókhoz, akkor az integrációs fiókjából is hivatkozhat a Storage-fiókjára. 
+  Ehhez a feladathoz az alábbi elemek szükségesek: 
 
-  * [Az Azure storage-fiók](../storage/common/storage-account-overview.md) ahol egy blobtárolót hoz létre a séma. Ismerje meg, hogyan [hozzon létre egy tárfiókot](../storage/common/storage-quickstart-create-account.md). 
+  * [Azure Storage-fiók](../storage/common/storage-account-overview.md) , amelyben létrehoz egy BLOB-tárolót a sémához. Megtudhatja, hogyan [hozhat létre egy Storage-fiókot](../storage/common/storage-quickstart-create-account.md). 
 
-  * A séma tárolására szolgáló BLOB-tároló. Ismerje meg, hogyan [hozzon létre egy blobtárolót](../storage/blobs/storage-quickstart-blobs-portal.md). 
-  Később szüksége lesz a tároló tartalom URI-JÁT a sémát az integrációs fiók hozzáadásakor.
+  * A séma tárolására szolgáló blob-tároló. Megtudhatja, hogyan [hozhat létre BLOB-tárolót](../storage/blobs/storage-quickstart-blobs-portal.md). 
+  A tároló tartalmi URI-JÁT később, a séma integrációs fiókjához való hozzáadásakor kell megadnia.
 
-  * [Az Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md), amely blob-tárolók és storage-fiókok felügyeletéhez használhatja. 
-  Használhatja a Storage Explorer, válassza ki bármelyik beállítást is választja itt:
+  * [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md), amely a Storage-fiókok és a blob-tárolók kezeléséhez használható. 
+  A Storage Explorer használatához válassza az alábbi lehetőségek egyikét:
   
-    * Az Azure Portalon keresse meg és válassza ki a tárfiókját. 
-    Válassza ki a tárfiók menüjében **Tártallózó**.
+    * A Azure Portal keresse meg és válassza ki a Storage-fiókját. 
+    A Storage-fiók menüjében válassza a **Storage Explorer**lehetőséget.
 
-    * Az asztali verzió [töltse le és telepítse az Azure Storage Explorer](https://www.storageexplorer.com/). 
-    Ezt követően csatlakoztassa a Storage Explorert a tárfiókhoz a lépéseket követve [Ismerkedés a Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md). 
-    További tudnivalókért lásd: [a rövid útmutató: Blob létrehozása objektumtárban az Azure Storage Explorerrel](../storage/blobs/storage-quickstart-blobs-storage-explorer.md).
+    * Az asztali verziónál [töltse le és telepítse a Azure Storage Explorer](https://www.storageexplorer.com/). 
+    Ezután csatlakoztasson Storage Explorer a Storage-fiókjához a [Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)első lépéseinek lépéseit követve. 
+    További információ: gyors útmutató [: blob létrehozása az objektum-tárolóban Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)használatával.
 
-Logic Apps-alkalmazás létrehozásakor és sémák hozzáadása nem szükséges. A sémát használja, azonban a logikai alkalmazás kell létrehozhatja, ha integrációs fiókot, ahol a séma tárolja. Ismerje meg, [a logic apps és integrációs fiókok összekapcsolása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Ha még nem rendelkezik egy logikai alkalmazást, további [létrehozása a logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Sémák létrehozásakor és hozzáadásakor nincs szükség logikai alkalmazásra. Ha azonban sémát szeretne használni, a logikai alkalmazásnak egy integrációs fiókhoz kell kapcsolódnia, ahol a sémát tárolja. Útmutató [logikai alkalmazások integrációs fiókokhoz való összekapcsolásához](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Ha még nem rendelkezik logikai alkalmazással, Ismerje meg, [hogyan hozhat létre logikai alkalmazásokat](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="add-schemas"></a>Sémák hozzáadása
 
 1. Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a> az Azure-fiókja hitelesítő adataival.
 
-1. Keresse meg és nyissa meg az integrációs fiók az Azure fő menüjéből válassza **minden szolgáltatás**. A Keresés mezőbe írja be az "integrációs fiók". Válassza ki **integrációs fiókok**.
+1. Az integrációs fiók megkereséséhez és megnyitásához az Azure főmenüjében válassza a **minden szolgáltatás**lehetőséget. A keresőmezőbe írja be az "integrációs fiók" kifejezést. Válassza az **integrációs fiókok**elemet.
 
-   ![Integrációs fiók található](./media/logic-apps-enterprise-integration-schemas/find-integration-account.png)
+   ![Integrációs fiók keresése](./media/logic-apps-enterprise-integration-schemas/find-integration-account.png)
 
-1. Válassza ki az integrációs fiók kívánja adja hozzá a séma, például:
+1. Válassza ki azt az integrációs fiókot, amelyhez hozzá szeretné adni a sémát, például:
 
-   ![Válassza ki az integrációs fiók](./media/logic-apps-enterprise-integration-schemas/select-integration-account.png)
+   ![Integrációs fiók kiválasztása](./media/logic-apps-enterprise-integration-schemas/select-integration-account.png)
 
-1. Az integrációs fiók **áttekintése** lap **összetevők**, jelölje be a **sémák** csempére.
+1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **sémák** csempét.
 
-   ![Válassza ki a "Sémák"](./media/logic-apps-enterprise-integration-schemas/select-schemas.png)
+   ![Válassza a "sémák" lehetőséget.](./media/logic-apps-enterprise-integration-schemas/select-schemas.png)
 
-1. Miután a **sémák** lapon megnyílik a **Hozzáadás**.
+1. A **sémák** lap megnyitása után válassza a **Hozzáadás**lehetőséget.
 
-   ![Válassza az "Add"](./media/logic-apps-enterprise-integration-schemas/add-schema.png)
+   ![Válassza a "Hozzáadás" lehetőséget.](./media/logic-apps-enterprise-integration-schemas/add-schema.png)
 
-A séma (.xsd) fájl mérete alapján, kövesse a lépéseket, amelyek vagy a séma feltöltése [akár 2 MB](#smaller-schema) vagy [2 MB-nál több, legfeljebb 8 MB méretű](#larger-schema).
+A séma (. xsd) fájljának mérete alapján végezze el a [2](#smaller-schema) MB-nál több vagy 2 MB-nál nagyobb méretű sémák feltöltésének lépéseit [, akár 8 MB-ot is](#larger-schema)megadhat.
 
 <a name="smaller-schema"></a>
 
-### <a name="add-schemas-up-to-2-mb"></a>Sémák hozzáadása akár 2 MB
+### <a name="add-schemas-up-to-2-mb"></a>Sémák hozzáadása 2 MB-ig
 
-1. A **séma hozzáadása**, adja meg a séma nevét. 
-   Tartsa **kis méretű fájlt** kiválasztott. Mellett a **séma** válassza ki a mappa ikont. Keresse meg és válassza ki a sémát videófájl, például:
+1. A **séma hozzáadása**területen adja meg a séma nevét. 
+   **Kis fájlok** kiválasztásának megtartása. A **séma** mező mellett válassza a mappa ikont. Keresse meg és válassza ki a feltölteni kívánt sémát, például:
 
    ![Kisebb séma feltöltése](./media/logic-apps-enterprise-integration-schemas/upload-smaller-schema-file.png)
 
-1. Amikor elkészült, válassza ki a **OK**.
+1. Ha elkészült, kattintson **az OK gombra**.
 
-   A séma a feltöltés befejezését követően a séma megjelenik a **sémák** listája.
+   Miután a séma befejezte a feltöltést, a séma megjelenik a **sémák** listájában.
 
 <a name="larger-schema"></a>
 
-### <a name="add-schemas-more-than-2-mb"></a>2 MB-nál több sémák hozzáadása
+### <a name="add-schemas-more-than-2-mb"></a>Sémák hozzáadása 2 MB-nál több
 
-Nagyobb sémák hozzáadásához a séma feltölthet egy Azure blob-tárolóba az Azure storage-fiókban. A sémák hozzáadásának lépései a licenctár-e a blobtárolót nyilvános olvasási hozzáféréssel rendelkezik. Ezért először ellenőrizze-e a blob-tároló nyilvános olvasási hozzáféréssel rendelkezik az alábbi lépéseket: [Blob-tároló nyilvános hozzáférési szintjének beállítása](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+Nagyobb sémák hozzáadásához feltöltheti a sémát egy Azure Blob-tárolóba az Azure Storage-fiókjában. A sémák hozzáadásának lépései eltérőek lehetnek attól függően, hogy a blob-tároló nyilvános olvasási hozzáféréssel rendelkezik-e. Először is győződjön meg arról, hogy a blob-tároló nyilvános olvasási hozzáféréssel rendelkezik-e a következő lépésekkel: [nyilvános hozzáférési szint beállítása blob-tárolóhoz](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
-#### <a name="check-container-access-level"></a>Ellenőrizze a tároló hozzáférési szint
+#### <a name="check-container-access-level"></a>Tároló hozzáférési szintjének keresése
 
-1. Nyissa meg az Azure Storage Explorerben. Ha még nincs kibontva Intéző ablakában bontsa ki az Azure-előfizetésében.
+1. Nyissa meg Azure Storage Explorer. Az Explorer ablakban bontsa ki az Azure-előfizetését, ha még nincs kibontva.
 
-1. Bontsa ki a **Tárfiókok** > {*a storage-fiók*} > **Blobtárolók**. Válassza ki a blob-tárolóba.
+1. Bontsa ki a **Storage-fiókok** > {*a-Storage-Account*} > **blob-tárolók**elemet. Válassza ki a BLOB-tárolót.
 
-1. A blob-tároló helyi menüjén válassza **nyilvános hozzáférési szint beállítása**.
+1. A blob-tároló helyi menüjében válassza a **nyilvános hozzáférési szint beállítása**lehetőséget.
 
-   * Ha a blob-tároló legalább nyilvános hozzáférése van, válassza ki a **Mégse**, és kövesse az alábbi lépéseket a későbbiekben ezen az oldalon: [Nyilvános hozzáférés tárolók feltöltése](#public-access)
+   * Ha a blob-tároló legalább nyilvános hozzáféréssel rendelkezik, válassza a **Mégse**lehetőséget, majd kövesse az alábbi lépéseket ezen az oldalon: [feltöltés a nyilvános hozzáféréssel rendelkező tárolók számára](#public-access)
 
      ![Nyilvános hozzáférés](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * Ha a blob-tároló nyilvános hozzáférése nem, válassza ki a **Mégse**, és kövesse az alábbi lépéseket a későbbiekben ezen az oldalon: [Nyilvános hozzáférés nélkül tárolók feltöltése](#public-access)
+   * Ha a blob-tároló nem rendelkezik nyilvános hozzáféréssel, válassza a **Mégse**lehetőséget, majd kövesse az alábbi lépéseket az oldalon: [feltöltés nyilvános hozzáférés nélküli tárolókban](#public-access)
 
      ![Nincs nyilvános hozzáférés](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
 <a name="public-access"></a>
 
-#### <a name="upload-to-containers-with-public-access"></a>Nyilvános hozzáférés tárolók feltöltése
+#### <a name="upload-to-containers-with-public-access"></a>Nyilvános hozzáféréssel rendelkező tárolók feltöltése
 
-1. A séma feltöltése a tárfiókba. 
-   Válassza a jobb oldali ablakban **feltöltése**.
+1. Töltse fel a sémát a Storage-fiókjába. 
+   A jobb oldali ablakban válassza a **feltöltés**lehetőséget.
 
-1. Miután befejezte a feltöltés, válassza ki a feltöltött sémát. Az eszköztáron válassza **példány URL-cím** úgy, hogy a séma URL-címet másolja.
+1. A feltöltés befejezése után válassza ki a feltöltött sémát. Az eszköztáron válassza az **URL másolása** lehetőséget, hogy a séma URL-címét másolja.
 
-1. Térjen vissza az Azure Portalon, a **séma hozzáadása** panel meg nyitva. 
+1. Térjen vissza a Azure Portal, ahol a **séma hozzáadása** panel meg van nyitva. 
    Adja meg a szerelvény nevét. 
-   Válasszon **nagy fájlok (2 MB-nál nagyobb)** . 
+   Válassza a **nagyméretű fájl (2 MB-nál nagyobb)** lehetőséget. 
 
-   A **tartalom URI-JÁT** be most már megjelenik, helyett a **séma** mezőbe.
+   A **tartalom URI-ja** mező ekkor megjelenik a **séma** mező helyett.
 
-1. Az a **tartalom URI-JÁT** mezőbe illessze be a séma URL-CÍMÉT. 
-   A séma hozzáadásának befejezéséhez.
+1. A **tartalom URI-ja** mezőbe illessze be a séma URL-címét. 
+   Fejezze be a séma hozzáadását.
 
-A séma a feltöltés befejezését követően a séma megjelenik a **sémák** listája. Az integrációs fiók **áttekintése** lap **összetevők**, a **sémák** csempe most feltöltött sémák számát jeleníti meg.
+Miután a séma befejezte a feltöltést, a séma megjelenik a **sémák** listájában. Az integrációs fiók **áttekintő** lapjának **összetevők**területén a **sémák** csempe most a feltöltött sémák számát jeleníti meg.
 
 <a name="no-public-access"></a>
 
-#### <a name="upload-to-containers-without-public-access"></a>Nyilvános hozzáférés nélkül tárolók feltöltése
+#### <a name="upload-to-containers-without-public-access"></a>Nyilvános hozzáférés nélküli tárolók feltöltése
 
-1. A séma feltöltése a tárfiókba. 
-   Válassza a jobb oldali ablakban **feltöltése**.
+1. Töltse fel a sémát a Storage-fiókjába. 
+   A jobb oldali ablakban válassza a **feltöltés**lehetőséget.
 
-1. Feltöltés után hozzon létre egy közös hozzáférésű jogosultságkód (SAS) a séma. 
-   A séma helyi menüjén válassza **közös hozzáférési jogosultságkód igénylése**.
+1. A feltöltés befejezése után létrehoz egy közös hozzáférési aláírást (SAS) a sémához. 
+   A séma helyi menüjében válassza a **közös hozzáférési aláírás beolvasása**elemet.
 
-1. Az a **közös hozzáférésű Jogosultságkód** ablaktáblán válassza **Generate tároló-szintű közös hozzáférésű jogosultságkód URI** > **létrehozás**. 
-   Az SAS URL-cím generálása lekérdezi a után a **URL-cím** válassza **másolási**.
+1. A **megosztott hozzáférés aláírása** ablaktáblán válassza a **tároló szintű közös hozzáférésű aláírás-URI** **létrehozása > létrehozás**lehetőséget. 
+   A SAS URL-cím generálása után az **URL-cím** mező mellett válassza a **Másolás**lehetőséget.
 
-1. Térjen vissza az Azure Portalon, a **séma hozzáadása** panel meg nyitva. Válasszon **nagy méretű fájlok**.
+1. Térjen vissza a Azure Portal, ahol a **séma hozzáadása** panel meg van nyitva. Válassza a **nagyméretű fájl**lehetőséget.
 
-   A **tartalom URI-JÁT** be most már megjelenik, helyett a **séma** mezőbe.
+   A **tartalom URI-ja** mező ekkor megjelenik a **séma** mező helyett.
 
-1. Az a **tartalom URI-JÁT** mezőbe illessze be a korábban létrehozott SAS URI-t. A séma hozzáadásának befejezéséhez.
+1. A **tartalom URI-ja** mezőben illessze be a korábban létrehozott sas URI-t. Fejezze be a séma hozzáadását.
 
-A séma a feltöltés befejezését követően a séma megjelenik a **sémák** listája. Az integrációs fiók **áttekintése** lap **összetevők**, a **sémák** csempe most feltöltött sémák számát jeleníti meg.
+Miután a séma befejezte a feltöltést, a séma megjelenik a **sémák** listájában. Az integrációs fiók **áttekintő** lapjának **összetevők**területén a **sémák** csempe most a feltöltött sémák számát jeleníti meg.
 
 ## <a name="edit-schemas"></a>Sémák szerkesztése
 
-Egy meglévő séma frissítésére, akkor töltse fel új sémát fájlt, amely rendelkezik a szükséges módosításokat. Azonban először töltheti le a meglévő sémák szerkesztésre.
+Egy meglévő séma frissítéséhez fel kell töltenie egy új, a kívánt módosításokat tartalmazó sémafájl-fájlt. Először azonban le is töltheti a meglévő sémát szerkesztésre.
 
-1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, keresse meg és nyissa meg az integrációs fiók, ha nem már megnyitásához.
+1. A <a href="https://portal.azure.com" target="_blank">Azure Portalban</a>keresse meg és nyissa meg az integrációs fiókot, ha még nincs megnyitva.
 
-1. Az Azure fő menüjéből válassza **minden szolgáltatás**. 
-   A Keresés mezőbe írja be az "integrációs fiók". 
-   Válassza ki **integrációs fiókok**.
+1. Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. 
+   A keresőmezőbe írja be az "integrációs fiók" kifejezést. 
+   Válassza az **integrációs fiókok**elemet.
 
-1. Válassza ki az integrációs fiók, ahol szeretné frissíteni a sémát.
+1. Válassza ki azt az integrációs fiókot, ahol frissíteni szeretné a sémát.
 
-1. Az integrációs fiók **áttekintése** lap **összetevők**, jelölje be a **sémák** csempére.
+1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **sémák** csempét.
 
-1. Miután a **sémák** lap megnyitásakor, válassza ki a sémát. 
-   Töltse le és a séma szerkesztése először válassza a **letöltése**, és a sémát.
+1. A **sémák** lap megnyitása után válassza ki a sémát. 
+   Először a séma letöltéséhez és szerkesztéséhez válassza a **Letöltés**lehetőséget, majd mentse a sémát.
 
-1. Amikor készen áll a frissített séma feltöltése a a **sémák** lapon, válassza ki a sémát, frissítése, és válassza a **frissítése**.
+1. Amikor készen áll a frissített séma feltöltésére, a **sémák** lapon válassza ki a frissíteni kívánt sémát, és válassza a **frissítés**lehetőséget.
 
-1. Keresse meg és válassza ki a feltölteni kívánt frissített sémát. 
-   A sémafájl a feltöltés befejezését követően a frissített séma megjelenik a **sémák** listája.
+1. Keresse meg és válassza ki a frissített sémát, amelyet fel szeretne tölteni. 
+   Miután a sémafájl befejezte a feltöltést, **a sémák listájában** megjelenik a frissített séma.
 
 ## <a name="delete-schemas"></a>Sémák törlése
 
-1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, keresse meg és nyissa meg az integrációs fiók, ha nem már megnyitásához.
+1. A <a href="https://portal.azure.com" target="_blank">Azure Portalban</a>keresse meg és nyissa meg az integrációs fiókot, ha még nincs megnyitva.
 
-1. Az Azure fő menüjéből válassza **minden szolgáltatás**. 
-   A Keresés mezőbe írja be az "integrációs fiók". 
-   Válassza ki **integrációs fiókok**.
+1. Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. 
+   A keresőmezőbe írja be az "integrációs fiók" kifejezést. 
+   Válassza az **integrációs fiókok**elemet.
 
-1. Válassza ki az integrációs fiók, ha törölni szeretné a sémát.
+1. Válassza ki azt az integrációs fiókot, ahol törölni szeretné a sémát.
 
-1. Az integrációs fiók **áttekintése** lap **összetevők**, jelölje be a **sémák** csempére.
+1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **sémák** csempét.
 
-1. Miután a **sémák** lap megnyitásakor, válassza ki a sémát, és válassza ki **törlése**.
+1. A **sémák** lap megnyitása után válassza ki a sémát, és válassza a **Törlés**lehetőséget.
 
-1. Győződjön meg arról, hogy szeretné-e a séma törlés, válassza a **Igen**.
+1. Annak megerősítéséhez, hogy törölni kívánja a sémát, válassza az **Igen**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [További információ az Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
-* [További tudnivalók a térképek](../logic-apps/logic-apps-enterprise-integration-maps.md)
-* [További tudnivalók a átalakítások](../logic-apps/logic-apps-enterprise-integration-transform.md)
+* [További információ a Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
+* [További információ a mapsről](../logic-apps/logic-apps-enterprise-integration-maps.md)
+* [További információ az átalakításokról](../logic-apps/logic-apps-enterprise-integration-transform.md)

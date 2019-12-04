@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 08/05/2019
+ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 06d7b7abe7741c465f3d40a90340e03b2c24f258
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0aa2cbad75319de93c34128a09f94971e5c70216
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707499"
+ms.locfileid: "74790613"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>SQL Server virtuális gép licencelési modelljének módosítása az Azure-ban
 Ez a cikk azt ismerteti, hogyan változtatható meg egy SQL Server virtuális gép (VM) licencelési modellje az Azure-ban az új SQL VM erőforrás-szolgáltató, a **Microsoft. SqlVirtualMachine**használatával.
@@ -95,29 +95,16 @@ A következő kódrészlet bekapcsolja az utólagos elszámolású licencelési 
 
 ```powershell-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
-#example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
-$SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
-$SqlVm.Properties.sqlServerLicenseType="AHUB"
-<# the following code snippet is only necessary if using Azure Powershell version > 4
-$SqlVm.Kind= "LicenseChange"
-$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
-$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
-$SqlVm | Set-AzResource -Force 
+Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType AHUB
 ```
 
 Az alábbi kódrészlet a saját licences modellre vált az utólagos elszámolású modellre:
 
 ```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
-#example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
-$SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
-$SqlVm.Properties.sqlServerLicenseType="PAYG"
-<# the following code snippet is only necessary if using Azure Powershell version > 4
-$SqlVm.Kind= "LicenseChange"
-$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
-$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
-$SqlVm | Set-AzResource -Force 
+Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType PAYG
 ```
+
 ---
 
 ## <a name="change-the-license-for-vms-not-registered-with-the-resource-provider"></a>Az erőforrás-szolgáltatónál nem regisztrált virtuális gépek licencének módosítása
@@ -138,44 +125,29 @@ A SQL Server VM licencének típusa csak akkor módosítható, ha a SQL Server V
 
 ## <a name="limitations"></a>Korlátozások
 
-- A licencelési modell módosítása csak a frissítési garanciával rendelkező ügyfelek számára érhető el.
-- A licencelési modell módosítása csak a SQL Server standard és Enterprise kiadásában támogatott. Az Express, a web és a Developer licencelési módosításai nem támogatottak. 
-- A licencelési modell módosítása csak a Azure Resource Manager modellen keresztül üzembe helyezett virtuális gépek esetén támogatott. A klasszikus modellen keresztül üzembe helyezett virtuális gépek nem támogatottak. Telepítheti a virtuális gépet a Klasszikusból a Resource Manager-modellbe, és regisztrálhatja az SQL VM erőforrás-szolgáltatóval. Miután a virtuális gép regisztrálva lett az SQL VM erőforrás-szolgáltatónál, a licenc-modell módosításai elérhetők lesznek a virtuális gépen.
-- A licencelési modell módosítása csak a nyilvános Felhőbeli telepítésekhez engedélyezett.
-- A licencelési modell módosítása csak olyan virtuális gépeken támogatott, amelyek egyetlen hálózati adapterrel rendelkeznek. Az egynél több hálózati adapterrel rendelkező virtuális gépeken először távolítsa el az egyik hálózati adaptert (a Azure Portal használatával) az eljárás megkísérlése előtt. Ellenkező esetben a következőhöz hasonló hibaüzenet jelenik meg: 
-   
-  `The virtual machine '\<vmname\>' has more than one NIC associated.` 
-   
-  Bár lehetséges, hogy a hálózati adaptert újra hozzá szeretné adni a virtuális géphez a licencelési modell módosítása után, a Azure Portal SQL Server konfiguráció lapján végrehajtott műveletek, például az automatikus javítás és a biztonsági mentés, a továbbiakban nem lesznek támogatottak.
+A licencelési modell módosítása:
+   - Csak frissítési [garanciával](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-overview)rendelkező ügyfelek számára érhető el.
+   - Csak a SQL Server standard és Enterprise kiadásai esetében támogatott. Az Express, a web és a Developer licencelési módosításai nem támogatottak. 
+   - Csak a Azure Resource Manager modellen keresztül üzembe helyezett virtuális gépek esetében támogatott. A klasszikus modellen keresztül üzembe helyezett virtuális gépek nem támogatottak. 
+   - Csak a nyilvános Felhőbeli telepítésekhez érhető el. 
+   - Csak olyan virtuális gépek esetében támogatott, amelyek egyetlen hálózati adapterrel (NIC) rendelkeznek. 
+
 
 ## <a name="known-errors"></a>Ismert hibák
 
 ### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>Nem található a (z) "\<erőforráscsoport >" erőforráscsoport "Microsoft. SqlVirtualMachine/SqlVirtualMachines/\<erőforrás-csoport >" erőforrása.
+
 Ez a hiba akkor fordul elő, ha olyan SQL Server VMon próbálja meg módosítani a licencet, amely még nincs regisztrálva az SQL VM erőforrás-szolgáltatónál:
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
 Regisztrálnia kell az előfizetését az erőforrás-szolgáltatónál, majd [regisztrálnia kell a SQL Server VM az erőforrás-szolgáltatóval](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
-### <a name="cannot-validate-argument-on-parameter-sku"></a>Az "SKU" paraméter argumentuma nem ellenőrizhető
-Ez a hiba akkor fordulhat elő, amikor a 4,0-nál újabb Azure PowerShell-verziókkal próbálja meg módosítani a SQL Server VM licenc modelljét:
 
-`Set-AzResource: Cannot validate argument on parameter 'Sku'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.`
+## <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>A (z)\<vmname\>virtuális gépnek több hálózati adaptere van társítva
 
-Ennek a hibának a megoldásához szüntesse meg az előzőleg említett PowerShell-kódrészlet megjegyzéseit a licencelési modell váltásakor:
+Ez a hiba olyan virtuális gépeken fordul elő, amelyek egynél több hálózati adapterrel rendelkeznek. A licencelési modell módosítása előtt távolítsa el az egyik hálózati adaptert. Bár a licenc modell módosítása után a hálózati adaptert visszaállíthatja a virtuális géphez, a Azure Portal, például az automatikus biztonsági mentés és a javítások nem lesznek többé támogatottak. 
 
-  ```powershell-interactive
-  # the following code snippet is necessary if using Azure Powershell version > 4
-  $SqlVm.Kind= "LicenseChange"
-  $SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
-  $SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new()
-  ```
-  
-A Azure PowerShell verziójának ellenőrzéséhez használja a következő kódot:
-  
-  ```powershell-interactive
-  Get-Module -ListAvailable -Name Azure -Refresh
-  ```
 
 ## <a name="next-steps"></a>Következő lépések
 

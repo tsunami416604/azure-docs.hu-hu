@@ -1,17 +1,17 @@
 ---
-title: Tárterület automatikus növekedése a Azure Database for PostgreSQL egyetlen kiszolgáló Azure Portal használatával
-description: Ez a cikk azt ismerteti, hogyan engedélyezheti az automatikus növekedés tárterületét az Azure Database for PostgreSQL-Single Server Azure Portal használatával
+title: Tárterület automatikus növekedése – Azure Portal-Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk azt ismerteti, hogyan konfigurálható a tárterület automatikus növekedése a Azure Database for PostgreSQL-Single Server Azure Portal használatával
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/29/2019
-ms.openlocfilehash: 1d028093b030e1f2cf00ceae9297563c36c314c5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5e4f9d68d02edf456394d4ce10b7b6af5f8643d9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142867"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769234"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Tárterület automatikus növekedése a Azure Database for PostgreSQL egyetlen kiszolgáló Azure Portal használatával
 Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for PostgreSQL-kiszolgáló tárterületét úgy, hogy az a munkaterhelés befolyásolása nélkül is növekszik.
@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for PostgreSQL
 Ha egy kiszolgáló eléri a lefoglalt tárterület korlátját, a kiszolgáló csak olvashatóként van megjelölve. Ha azonban engedélyezi a tárterület automatikus növekedését, a kiszolgáló tárterülete megnöveli a növekvő adatmennyiséget. A 100 GB-nál kevesebb kiosztott tárterülettel rendelkező kiszolgálók esetében a kiépített tárterület mérete 5 GB-kal nő, amint az ingyenes tárterület a kiépített tárterület nagyobb 1 GB-os vagy 10%-ában kisebb. A 100 GB-nál több kiosztott tárterülettel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5%-kal nő, ha a szabad tárterület mérete a kiosztott tárterület méretének 5%-a alá esik. Az [itt](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) megadott maximális tárolási korlátozások érvényesek.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató végrehajtásához lesz szüksége:
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 - Egy [Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md)
 
 ## <a name="enable-storage-auto-grow"></a>Tárterület automatikus növekedésének engedélyezése 
@@ -34,12 +34,12 @@ A PostgreSQL-kiszolgáló tárterület automatikus növekedésének beállítás
 
     ![Azure Database for PostgreSQL-Settings_Pricing_tier – automatikus növekedés](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
 
-4. A változtatások mentéséhez kattintson az **OK** gombra.
+4. A módosítások mentéséhez kattintson az **OK** gombra.
 
 5. Egy értesítés megerősíti, hogy az automatikus növekedés sikeresen engedélyezve lett.
 
     ![Azure Database for PostgreSQL – az automatikus növekedés sikere](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-on-metric.md).

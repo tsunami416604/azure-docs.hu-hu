@@ -1,33 +1,33 @@
 ---
-title: Komplex veszélyforrások elleni védelem – Azure Database for MySQL
+title: Komplex veszélyforrások elleni védelem – Azure Portal – Azure Database for MySQL
 description: Ismerje meg, hogyan konfigurálhatja a komplex veszélyforrások elleni védelmet a rendellenes adatbázis-tevékenységek észlelésére, amely az adatbázis lehetséges biztonsági fenyegetéseket jelez.
 author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: fe058433cfe4c6c9f89f14d2c74e33ff1b8372ac
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 11ac05c710f7daf709ffbc29aebff706aea704d5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970483"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765046"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Komplex veszélyforrások elleni védelem Azure Database for MySQL
+# <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Komplex veszélyforrások elleni védelem az Azure Database for MySQL-hez
 
-Az Advanced Threat Protection for Azure Database for MySQL észleli a rendellenes tevékenységeket, amelyek az adatbázisok hozzáférésére vagy kihasználására irányuló szokatlan és potenciálisan rosszindulatú kísérletekre utalnak.
+Az Azure Database for MySQL-hez készült Komplex veszélyforrások elleni védelem észleli az adatbázisok hozzáférésére és az adatbázisok biztonságának megsértésére tett szokatlan és potenciálisan kártevő szándékú kísérleteket.
 
 A komplex veszélyforrások elleni védelem a fejlett adatbiztonsági ajánlat része, amely egy egységes csomag a speciális biztonsági funkciókhoz. A komplex veszélyforrások elleni védelem a [Azure Portalon](https://portal.azure.com) keresztül érhető el és felügyelhető, és jelenleg előzetes verzióban érhető el.
 
 > [!NOTE]
-> A komplex veszélyforrások elleni védelem funkció a következő Azure Government és szuverén Felhőbeli régiókban **nem** érhető el: US Gov Texas, US Gov Arizona, US Gov Iowa, USA, gov Virginia, US DoD – keleti régió, US DoD – középső régió, Közép-Németország, Észak-Németország, Kelet-Kína, Kelet-Kína 2. Tekintse meg a [régiók által elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/) az általános termékek rendelkezésre állása érdekében.
+> A komplex veszélyforrások elleni védelem funkció a következő Azure Government-és szuverén felhő-régiókban **nem** érhető el: US Gov Texas, US Gov Arizona, US gov Iowa, USA, gov Virginia, US DoD – keleti régió, US DoD – középső régió, Közép-németország, Észak-Németország, Kelet-Kína, Kelet-Kína 2. Tekintse meg a [régiók által elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/) az általános termékek rendelkezésre állása érdekében.
 >
 
 > [!NOTE]
 > Ez a funkció az Azure minden régiójában elérhető, ahol a Azure Database for MySQL általános célú és a memóriára optimalizált kiszolgálók esetében van telepítve.
 
 ## <a name="set-up-threat-detection"></a>Fenyegetés észlelésének beállítása
-1. Indítsa el a Azure Portalt a következő helyen: [https://portal.azure.com](https://portal.azure.com).
+1. Indítsa el a Azure Portalt a [https://portal.azure.com](https://portal.azure.com).
 2. Navigáljon a védelemmel ellátni kívánt Azure Database for MySQL-kiszolgáló konfigurációs lapjára. A biztonsági beállítások területen válassza a **speciális veszélyforrások elleni védelem (előzetes verzió)** lehetőséget.
 3. A **speciális veszélyforrások elleni védelem (előzetes verzió)** konfigurációs lapján:
 
@@ -61,7 +61,7 @@ Kattintson a **veszélyforrások észlelése riasztásra** a Azure Security Cent
    ![Veszélyforrások észlelésének riasztása](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
    
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * A díjszabással kapcsolatos további információkért tekintse meg a [Azure Database for MySQL díjszabási oldalát](https://azure.microsoft.com/pricing/details/mysql/) .  

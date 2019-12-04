@@ -1,22 +1,18 @@
 ---
-title: Kapcsolódás a Facebookhoz – Azure Logic Apps
+title: Kapcsolódás a Facebookhoz
 description: Az ütemterv és az oldal kezelése a Facebook REST API-kkal és Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 83431184d7e9c5970ece6af143ee9b5166da96d5
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 1aa936f902dc17c9a401959c19824f6c581547b1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050954"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789846"
 ---
 # <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>Facebook-ütemterv és-oldal kezelése Azure Logic Apps használatával
 
@@ -43,6 +39,6 @@ Ha hozzáadja ezt az összekötőt a logikai alkalmazásokhoz, engedélyezni kel
 
 A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő OpenAPI (korábban hencegő) fájljában leírtak szerint tekintse [meg az összekötő hivatkozási oldalát](/connectors/facebook/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

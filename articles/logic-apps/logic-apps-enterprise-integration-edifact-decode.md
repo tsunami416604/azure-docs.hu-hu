@@ -1,101 +1,99 @@
 ---
-title: EDIFACT-üzenetek – Azure Logic Apps-dekódolást |} A Microsoft Docs
-description: EDI ellenőrzése és nyugtázását az EDIFACT-üzenet dekódoló az Azure Logic Apps Enterprise Integration Pack-a
+title: EDIFACT-üzenetek dekódolása
+description: Az EDI érvényesítése és a visszaigazolások előállítása a Azure Logic Apps EDIFACT-üzeneteinek dekóderével Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.assetid: 0e61501d-21a2-4419-8c6c-88724d346e81
 ms.date: 01/27/2017
-ms.openlocfilehash: ccad6eab68fff0891ba287a076692f9437495a4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78c0d20c0f32a6d63d134e958b30d38fe11fcc5c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696193"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790665"
 ---
-# <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Az Azure Logic Apps és az Enterprise Integration Pack EDIFACT-üzenetek dekódolása
+# <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Azure Logic Apps EDIFACT-üzeneteinek dekódolása a Enterprise Integration Pack
 
-Az EDIFACT-dekódolást üzenet Connector EDI és partneri jellemző tulajdonságok ellenőrzése, tranzakciók csoportokba adatcsere felosztása vagy a teljes adatcsere megőrzése és feldolgozott tranzakciók visszaigazoló üzenetet létrehozni. Az összekötő használatához hozzá kell adnia az összekötő egy meglévő eseményindítót a logikai alkalmazásban.
+Az EDIFACT-összekötő dekódolásával érvényesítheti az EDI és a Partner-specifikus tulajdonságokat, megoszthatja a tranzakciók készleteit, vagy megőrizheti a teljes módosításokat, és visszaigazolhatja a feldolgozott tranzakciókat. Az összekötő használatához hozzá kell adnia az összekötőt egy meglévő triggerhez a logikai alkalmazásban.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-A következő szükséges elemek:
+Az alábbi elemek szükségesek:
 
-* Az Azure-fiók; létrehozhat egy [ingyenes fiókkal](https://azure.microsoft.com/free)
-* Egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , amely már definiált és az Azure-előfizetéséhez társított. Az EDIFACT-dekódolást üzenet connector használatához egy integrációs fiókhoz kell rendelkeznie. 
-* Legalább két [partnerek](logic-apps-enterprise-integration-partners.md) , amely már definiálva vannak az integrációs fiók
-* Egy [EDIFACT-egyezmény](logic-apps-enterprise-integration-edifact.md) , amely már definiálva van az integrációs fiók
+* Egy Azure-fiók; létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free)
+* Egy már definiált és az Azure-előfizetéshez társított [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) . A dekódolási EDIFACT üzenet-összekötő használatához integrációs fiókkal kell rendelkeznie. 
+* Legalább két olyan [partner](logic-apps-enterprise-integration-partners.md) , amely már definiálva van az integrációs fiókban
+* Az integrációs fiókban már definiált [EDIFACT-szerződés](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="decode-edifact-messages"></a>EDIFACT-üzenetek dekódolása
 
 1. [Hozzon létre egy logikai alkalmazást](quickstart-create-first-logic-app-workflow.md).
 
-2. Az EDIFACT-dekódolást üzenet connector eseményindítók, nem rendelkezik, ezért hozzá kell adnia egy eseményindítót a logikai alkalmazást, például a kérelem-eseményindítóval indítása. A Logic App Designerben az eseményindító hozzáadása, és adja hozzá a művelet a logikai alkalmazáshoz.
+2. Az EDIFACT dekódolása nem rendelkezik eseményindítókkal, ezért hozzá kell adnia egy eseményindítót a logikai alkalmazás indításához, például egy kérelem eseményindítóhoz. A Logic app Designerben adjon hozzá egy triggert, majd adjon hozzá egy műveletet a logikai alkalmazáshoz.
 
-3. A Keresés mezőbe írja be szűrőként "EDIFACT". Válassza ki **EDIFACT-üzenet dekódolása**.
+3. A keresőmezőbe írja be szűrőként a "EDIFACT" kifejezést. Válassza a **dekódolás EDIFACT üzenetet**.
    
     ![EDIFACT keresése](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
 
-3. Korábban létrehozott kapcsolatokat az integrációs fiókba, most, hogy a kapcsolat létrehozására kéri. Nevezze el a kapcsolatot, és válassza ki az integrációs fiók, amely kapcsolódni szeretne.
+3. Ha korábban nem hozott létre kapcsolatot az integrációs fiókkal, a rendszer felszólítja, hogy hozza létre a kapcsolatot most. Nevezze el a kapcsolatot, majd válassza ki a csatlakoztatni kívánt integrációs fiókot.
    
     ![integrációs fiók létrehozása](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)
 
-    Tulajdonságok csillaggal szükség.
+    A csillaggal rendelkező tulajdonságok megadása kötelező.
 
     | Tulajdonság | Részletek |
     | --- | --- |
-    | Connection Name * |Adja meg a kapcsolat bármilyen nevet. |
-    | Integration Account * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon Azure-helyen. |
+    | Kapcsolatok neve * |Adja meg a kapcsolatok nevét. |
+    | Integrációs fiók * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon az Azure-helyen található. |
 
-4. Ha elkészült, a a kapcsolat létrehozásának befejezéséhez válasszon **létrehozás**. A kapcsolat adatait példához hasonlóan kell kinéznie:
+4. Amikor elkészült a csatlakozás létrehozásával, válassza a **Létrehozás**lehetőséget. A kapcsolat részleteinek ehhez a példához hasonlóan kell kinéznie:
 
-    ![integrációs fiók adatai](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
+    ![integrációs fiók részletei](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 
-5. Ha a kapcsolat létrejött, ebben a példában látható módon, válassza ki az egybesimított fájlos EDIFACT-üzenet dekódolása.
+5. Miután létrejött a kapcsolódás, ahogy az ebben a példában is látható, válassza ki a dekódoláshoz használandó EDIFACT-fájl üzenetet.
 
-    ![integrációs fiók kapcsolat létrehozása](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
+    ![integrációs fiók-csatlakozás létrehozva](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
     Példa:
 
-    ![Válassza ki az egybesimított fájlos EDIFACT-üzenet dekódolása számára](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
+    ![EDIFACT-üzenet kiválasztása a dekódoláshoz](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
-## <a name="edifact-decoder-details"></a>EDIFACT-dekódoló részletei
+## <a name="edifact-decoder-details"></a>EDIFACT-dekóder részletei
 
-Az EDIFACT-dekódolást-összekötő az alábbi feladatokat hajtja végre: 
+A dekódolási EDIFACT-összekötő a következő feladatokat hajtja végre: 
 
-* Ellenőrzi a boríték kereskedelmi partneri szerződés ellen.
-* A megállapodás feloldása egyeztetése a feladó minősítője & azonosító és a címzett minősítője & azonosítója alapján.
-* Oszt fel egy adatcsere több tranzakcióra, ha az adatcsere fogadni a konfigurációs beállítások több mint egy-egy tranzakció a szerződés alapján.
-* Az adatcsere visszafejti.
-* Ellenőrzi, EDI és a partner-specifikus tulajdonságokat, többek között:
-  * Az adatcsere-boríték struktúra érvényesítése
-  * A vezérlő sémának a boríték séma érvényesítése
-  * Az üzenet séma tranzakciókészlet adatelemet séma érvényesítése
-  * A tranzakciókészlet adatelem végrehajtott EDI-ellenőrzés
-* Ellenőrzi, hogy az adatcsere, a csoport és a tranzakciós set ellenőrzőszámok nem azonosak (Ha be van állítva) 
-  * Ellenőrzi, az adatcsere-ellenőrzőszám korábban fogadott adatcsere ellen. 
-  * A csoport-ellenőrzőszám szemben a többi csoport ellenőrzőszámok az adatcsere ellenőrzi. 
-  * Ellenőrzi, hogy a tranzakciókészlet ellenőrzőszáma egyéb tranzakció beállítása, hogy a csoportban ellenőrzőszámok ellen.
-* A tranzakció csoportokba adatcsere felosztása, vagy megőrzi a teljes adatcsere:
-  * Adatcsere felosztása tranzakciókészletekre – tranzakciókészletek felfüggesztése hiba esetén: Tranzakció az elágazást adatcsere állítja be, és minden egyes tranzakciókészlet elemzi. 
-  A X12 dekódolási műveleti kimenetek csak azokat a tranzakció állítja be, amelyek sikertelen érvényesítést `badMessages`, és beállítja a fennmaradó tranzakciók kimenetek `goodMessages`.
-  * Adatcsere felosztása tranzakciókészletekre – adatcsere felfüggesztése hiba esetén: Tranzakció az elágazást adatcsere állítja be, és minden egyes tranzakciókészlet elemzi. 
-  Ha egy vagy több tranzakció beállítja az adatcsere sikertelen ellenőrzést követően az dekódolási műveleti kimenetek összes tranzakció beállítja, hogy az adatcsere X12 `badMessages`.
-  * Adatcsere megőrzése – tranzakciókészletek felfüggesztése hiba esetén: Az adatcsere, és a teljes kötegelt adatcsere feldolgozása. 
-  A X12 dekódolási műveleti kimenetek csak azokat a tranzakció állítja be, amelyek sikertelen érvényesítést `badMessages`, és beállítja a fennmaradó tranzakciók kimenetek `goodMessages`.
-  * Adatcsere megőrzése – adatcsere felfüggesztése hiba esetén: Az adatcsere, és a teljes kötegelt adatcsere feldolgozása. 
-  Ha egy vagy több tranzakció beállítja az adatcsere sikertelen ellenőrzést követően az dekódolási műveleti kimenetek összes tranzakció beállítja, hogy az adatcsere X12 `badMessages`.
-* Állít elő egy műszaki (vezérlő) és/vagy működési nyugtázása (Ha be van állítva).
-  * A műszaki visszaigazolás vagy a CONTRL ACK-jelentések egy teljes kapott adatcsere szintaktikai ellenőrzés eredményeit.
-  * A működési visszaigazolás nyugtázza elfogadása vagy elutasítása kapott adatcsere vagy felhasználói csoport
+* Ellenőrzi a borítékot a kereskedelmi partneri szerződés alapján.
+* A megegyezést a küldő minősítő & azonosítójának és a fogadó minősítő & azonosítójának egyeztetésével oldja fel.
+* Több tranzakcióra osztja szét a cserét, ha a csomópont több tranzakciót is tartalmaz a szerződés fogadási beállítások konfigurációja alapján.
+* Kibontja a csomópontot.
+* Az EDI és a Partner-specifikus tulajdonságok ellenőrzése, beleértve a következőket:
+  * Az adatcsere-boríték szerkezetének érvényesítése
+  * A boríték sémájának ellenőrzése a vezérlő sémája alapján
+  * A tranzakció-set adatelemek sémájának érvényesítése az üzenet sémája alapján
+  * A tranzakció-set adatelemeken végrehajtott EDI-érvényesítés
+* Ellenőrzi, hogy az adatcsere, a csoport és a tranzakciónapló-vezérlők száma nem ismétlődik-e (ha be van állítva) 
+  * Ellenőrzi az adatcsere-vezérlési számot a korábban fogadott adatváltozásokkal szemben. 
+  * Ellenőrzi a csoport vezérlőelem számát a csomóponton lévő más csoportok vezérlőelem-számokkal. 
+  * Ellenőrzi a tranzakciónapló-vezérlő számát az adott csoportban lévő más tranzakciónapló-vezérlők számával.
+* Feldarabolja a csomópontot a tranzakciós készletekbe, vagy megőrzi a teljes adatcsomópontot:
+  * Csomópont felosztása tranzakciónaplóként – a tranzakciók felfüggesztése a következő hiba miatt: felosztás tranzakciós készletekre, és az egyes tranzakciótípusok elemzése. 
+  A X12-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg, amelyek nem tudják érvényesíteni a `badMessages`, és a fennmaradó tranzakciós készleteket `goodMessages`re állítja.
+  * Csomópont felosztása tranzakciótípusokként – adatcsere felfüggesztése a következő hiba miatt: a rendszer elosztja a csomópontot a tranzakciónaplók között, és elemzi az egyes tranzakciós készleteket. 
+  Ha egy vagy több tranzakció-készlet nem sikerül az ellenőrzésben, a X12 dekódolás művelet az adott csomóponton lévő összes tranzakciós készletet kiírja `badMessages`.
+  * Adatcsere megőrzése – tranzakciók felfüggesztése hiba esetén: őrizze meg a cserét, és dolgozza fel a teljes batchd-adatcserét. 
+  A X12-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg, amelyek nem tudják érvényesíteni a `badMessages`, és a fennmaradó tranzakciós készleteket `goodMessages`re állítja.
+  * Adatcsere megőrzése – az adatcsere felfüggesztése hiba esetén: őrizze meg a cserét, és dolgozza fel a teljes batchd-adatcserét. 
+  Ha egy vagy több tranzakció-készlet nem sikerül az ellenőrzésben, a X12 dekódolás művelet az adott csomóponton lévő összes tranzakciós készletet kiírja `badMessages`.
+* Létrehoz egy technikai (vezérlő) és/vagy funkcionális visszaigazolást (ha be van állítva).
+  * A technikai nyugtázás vagy a CONTRL ACK a teljes fogadott adatcsere szintaktikai vizsgálatának eredményét jelenti.
+  * A funkcionális nyugták elfogadják vagy elutasítja a fogadott adatcserét vagy csoportot
 
-## <a name="view-swagger-file"></a>A Swagger-fájl megtekintése
-Az EDIFACT-összekötő Swagger részleteinek megtekintéséhez: [EDIFACT](/connectors/edifact/).
+## <a name="view-swagger-file"></a>Hencegő fájl megtekintése
+A EDIFACT-összekötőhöz tartozó felvágási részletek megtekintéséhez lásd: [EDIFACT](/connectors/edifact/).
 
-## <a name="next-steps"></a>További lépések
-[További információ az Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "megismerheti a vállalati integrációs csomag") 
+## <a name="next-steps"></a>Következő lépések
+[További információ a Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack") 
 

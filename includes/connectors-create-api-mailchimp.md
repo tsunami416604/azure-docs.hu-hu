@@ -1,29 +1,30 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 752c43604349a2361a8f5b26cd6d0bce7b516bc0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: a7290e46a0c5e228689dd1f1a0dc7f9a1182ad60
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179380"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789653"
 ---
-### <a name="prerequisites"></a>Előfeltételek
-* A [MailChimp](https://www.MailChimp.com/) fiók 
+## <a name="prerequisites"></a>Előfeltételek
 
-A MailChimp-fiókban, a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás a MailChimp-fiókban való kapcsolódáshoz. Szerencsére a ehhez egyszerűen, a logikai alkalmazás az Azure Portal webhelyen belül. 
+* Egy [MailChimp](https://www.MailChimp.com/) -fiók 
 
-A logikai alkalmazás a MailChimp-fiókhoz való csatlakozás engedélyezése lépései a következők:
+Ahhoz, hogy MailChimp-fiókját a logikai alkalmazásban használhassa, engedélyeznie kell a logikai alkalmazásnak a MailChimp-fiókhoz való kapcsolódást. Szerencsére ezt könnyedén elvégezheti az Azure Portalon a logikai alkalmazáson belül. 
 
-1. A Logic app Designerben MailChimp, a kapcsolat létrehozásához válassza **megjelenítése a Microsoft által felügyelt API-k** a legördülő listában adja meg *MailChimp* kifejezést a keresőmezőbe. Válassza ki az eseményindítót vagy műveletet fogja kíván használni:  
-   ![A MailChimp 1. lépés.](./media/connectors-create-api-mailchimp/mailchimp-1.png)
-2. Ha még nem hozott létre, mielőtt MailChimp kapcsolatokat, első kéri a MailChimp hitelesítő adatokat. Ezeket a hitelesítő adatokat szeretne csatlakozni a logikai alkalmazás hitelesítéséhez használható, és a MailChimp-fiókban adatok elérésére:  
-   ![A MailChimp 2. lépés.](./media/connectors-create-api-mailchimp/mailchimp-2.png)
-3. Adja meg a MailChimp felhasználónevet és jelszót, hogy a logikai alkalmazás engedélyezése:  
-   ![A MailChimp 3. lépés.](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
-4. Figyelje meg, hogy a kapcsolat létrejött, és most már szabadon folytassa a további lépésekkel, a logikai alkalmazásban:  
-   ![MailChimp step 4](./media/connectors-create-api-mailchimp/mailchimp-4.png)
+Az alábbi lépésekkel engedélyezheti a logikai alkalmazásnak a MailChimp-fiókhoz való kapcsolódást:
+
+1. A MailChimp-kapcsolat létrehozásához a Logic app Designerben válassza a **Microsoft felügyelt API** -k megjelenítése lehetőséget a legördülő listában, majd írja be a *MailChimp* kifejezést a keresőmezőbe. Válassza ki a használni kívánt triggert vagy műveletet:  
+   ![MailChimp 1. lépés](./media/connectors-create-api-mailchimp/mailchimp-1.png)
+2. Ha korábban még nem hozott létre kapcsolatot a MailChimp, a rendszer kérni fogja, hogy adja meg a MailChimp hitelesítő adatait. Ezek a hitelesítő adatok a logikai alkalmazáshoz való kapcsolódáshoz és a MailChimp-fiók adatainak eléréséhez lesznek használva:  
+   ![MailChimp 2. lépés](./media/connectors-create-api-mailchimp/mailchimp-2.png)
+3. Adja meg a MailChimp felhasználónevét és jelszavát a logikai alkalmazás engedélyezéséhez:  
+   ![MailChimp 3. lépés](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
+4. Figyelje meg, hogy létrejött a kapcsolódás, és most már ingyenesen folytathatja a logikai alkalmazás egyéb lépéseit:  
+   ![4\. lépés MailChimp](./media/connectors-create-api-mailchimp/mailchimp-4.png)
 

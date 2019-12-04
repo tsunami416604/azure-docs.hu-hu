@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607399"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791156"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
@@ -123,7 +123,7 @@ Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a m
 1. Töltse le az ügynök új verzióját a munkamenet-gazda virtuális gépre.
 2. Indítsa el a Feladatkezelő eszközt, és a szolgáltatás lapon állítsa le a RDAgentBootLoader szolgáltatást.
 3. Futtassa a telepítőt a Windows rendszerű virtuális asztali ügynök új verziójához.
-4. Ha a rendszer kéri a regisztrációs tokent, távolítsa el a INVALID_TOKEN bejegyzést, és nyomja meg a Next (új token nem szükséges) elemet.
+4. Ha a rendszer kéri a regisztrációs tokent, távolítsa el a bejegyzést INVALID_TOKEN és nyomja meg a Next (új token nem szükséges) elemet.
 5. Fejezze be a telepítővarázsló lépéseit.
 6. Nyissa meg a Feladatkezelő eszközt, és indítsa el a RDAgentBootLoader szolgáltatást.
 
@@ -201,7 +201,7 @@ Vizsgálja meg az alább felsorolt beállításjegyzék-bejegyzéseket, és elle
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>Hiba: O_REVERSE_CONNECT_STACK_FAILURE
 
-![O_REVERSE_CONNECT_STACK_FAILURE-hibakód.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+![O_REVERSE_CONNECT_STACK_FAILURE hibakód.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **OK:** A párhuzamos verem nincs telepítve a munkamenet-gazdagép virtuális gépén.
 
@@ -233,7 +233,7 @@ A szervizelés futtatásához használt virtuális gépnek ugyanazon az alháló
 Az alábbi utasításokat követve futtassa a szervizelést ugyanarról az alhálózatról és tartományról:
 
 1. Kapcsolódjon a standard RDP protokoll (RDP) szolgáltatáshoz a virtuális géphez, ahonnan a javítást alkalmazni fogja.
-2. A PsExec letöltése https://docs.microsoft.com/sysinternals/downloads/psexecról.
+2. A PsExec letöltése https://docs.microsoft.com/sysinternals/downloads/psexec ról.
 3. Bontsa ki a letöltött fájlt.
 4. Indítsa el a parancssort helyi rendszergazdaként.
 5. Navigáljon a mappához, ahol a PsExec ki lett csomagolva.
@@ -309,7 +309,7 @@ Ha ezeket az üzeneteket látja, ez azt jelenti, hogy a lemezképen nincsenek te
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>A Távoli asztal licencelési mód csoportházirend-beállításának letiltása
 
-A csoportházirend-beállítás megadásához nyissa meg a Csoportházirend-szerkesztőt a virtuális gépen, és navigáljon **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > **licencelési** > **állítsa be a távoli asztal licencelési módot**. Ha a csoportházirend-beállítás **engedélyezve**van, módosítsa a szolgáltatást **Letiltva**értékre. Ha már le van tiltva, akkor hagyja a következőképpen:.
+A csoportházirend-beállítás megadásával nyissa meg a Csoportházirend-szerkesztőt a virtuális gépen, és navigáljon **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > távoli asztal **munkamenet-gazdagép** > **licencelési** > **állítsa be a távoli asztal licencelési módot**. Ha a csoportházirend-beállítás **engedélyezve**van, módosítsa a szolgáltatást **Letiltva**értékre. Ha már le van tiltva, akkor hagyja a következőképpen:.
 
 >[!NOTE]
 >Ha a csoportházirendet a tartományon keresztül állítja be, tiltsa le ezt a beállítást a Windows 10 Enterprise több munkamenetet használó virtuális gépeket megcélozó házirendekben.
@@ -333,9 +333,9 @@ Ha a verziószáma a "1809" értéket adja meg, telepítse [a KB4516077 frissít
 
 ### <a name="version-1903"></a>1903-es verzió
 
-Ha a verziószáma a "1903" értéket adja meg, telepítse [a KB4517211 frissítését](https://support.microsoft.com/help/4517211).
+Telepítse újra a gazdagép operációs rendszerét a Windows 10 1903-es verziójú lemezképének legújabb verziójával az Azure Gallery-ből.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A bérlők és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [bérlői és az alkalmazáskészletek létrehozását](troubleshoot-set-up-issues.md)ismertető részt.

@@ -1,17 +1,17 @@
 ---
-title: Kiszolgálói fogalmak Azure Database for PostgreSQL – egyetlen kiszolgáló
+title: Kiszolgálók – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk a Azure Database for PostgreSQL – egyetlen kiszolgáló konfigurálásához és kezeléséhez szükséges szempontokat és irányelveket ismerteti.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bd7c24489e8ac7b26cb703923ddf9cbb741cfd68
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029969"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768163"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló
 Ez a cikk a Azure Database for PostgreSQL egyetlen kiszolgálóval való használattal kapcsolatos szempontokat és irányelveket ismerteti.
@@ -46,9 +46,9 @@ A következő elemek segítenek biztosítani az adatbázis biztonságos elérés
 ## <a name="managing-your-server"></a>A kiszolgáló kezelése
 Azure Database for PostgreSQL-kiszolgálókat a [Azure Portal](https://portal.azure.com) vagy az [Azure CLI](/cli/azure/postgres)használatával kezelheti.
 
-A kiszolgáló létrehozásakor be kell állítania a rendszergazdai felhasználó hitelesítő adatait. A rendszergazda felhasználó a legmagasabb jogosultsággal rendelkező felhasználó a kiszolgálón. A szerepkör azure_pg_admin tartozik. Ez a szerepkör nem rendelkezik teljes körű rendszergazdai jogosultságokkal. 
+A kiszolgáló létrehozásakor be kell állítania a rendszergazdai felhasználó hitelesítő adatait. A rendszergazda felhasználó a legmagasabb jogosultsággal rendelkező felhasználó a kiszolgálón. A szerepkör azure_pg_adminhoz tartozik. Ez a szerepkör nem rendelkezik teljes körű rendszergazdai jogosultságokkal. 
 
-A PostgreSQL adminisztrátor attribútum hozzá van rendelve a azure_superuser, amely a felügyelt szolgáltatáshoz tartozik. Nincs hozzáférése ehhez a szerepkörhöz.
+A PostgreSQL adminisztrátori attribútum hozzá van rendelve a azure_superuserhoz, amely a felügyelt szolgáltatáshoz tartozik. Nincs hozzáférése ehhez a szerepkörhöz.
 
 Az Azure Database for PostgreSQL-kiszolgáló alapértelmezett adatbázisokkal rendelkezik: 
 - **postgres** – egy alapértelmezett adatbázis, amelyet a kiszolgáló létrehozása után tud csatlakozni.
@@ -62,7 +62,7 @@ A PostgreSQL-kiszolgáló paraméterei határozzák meg a kiszolgáló konfigur�
 A postgres felügyelt szolgáltatásaként a Azure Database for PostgreSQL konfigurálható paramétereinek a helyi postgres-példány paramétereinek egy részhalmaza (a postgres paraméterekkel kapcsolatos további információért lásd a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/9.6/static/runtime-config.html)). A Azure Database for PostgreSQL-kiszolgáló az egyes paraméterekhez tartozó alapértelmezett értékekkel van engedélyezve a létrehozáskor. A felhasználó nem konfigurálhat olyan paramétereket, amelyek szükségesek a kiszolgáló újraindításához vagy a rendszergazdai hozzáférés a módosítások életbe léptetéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A szolgáltatás áttekintését itt tekintheti meg: [Azure Database for PostgreSQL Overview (áttekintés](overview.md)).
 - A **szolgáltatási szintek**alapján meghatározott erőforrás-kvótákkal és korlátozásokkal kapcsolatos információkért lásd: [szolgáltatási szintek](concepts-pricing-tiers.md).
 - További információ a szolgáltatáshoz való csatlakozásról: [Azure Database for PostgreSQL kapcsolódási kódtárai](concepts-connection-libraries.md).

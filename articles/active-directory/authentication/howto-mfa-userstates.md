@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 258675a343387eb6930cd3511bf885bf510050c6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 6261de14f80f966718507d2d3506e55db9786df9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404210"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74785857"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Egy felhasználó kétlépéses ellenőrzésének megkövetelése
 
@@ -41,11 +41,14 @@ Azure AD Identity Protection által engedélyezett – ez a módszer a Azure AD 
 
 Az Azure Multi-Factor Authentication felhasználói fiókjai a következő három különböző állapottal rendelkeznek:
 
+> [!IMPORTANT]
+> Az Azure MFA feltételes hozzáférési házirenddel való engedélyezése nem változtatja meg a felhasználó állapotát. Ne legyenek letiltva a riasztást használó felhasználók. A feltételes hozzáférés nem változtatja meg az állapotot. **A szervezetek nem engedélyezhetik és nem kényszerítik ki a felhasználókat, ha feltételes hozzáférési szabályzatokat használnak.**
+
 | Állapot | Leírás | Érintett nem böngészőbeli alkalmazások | Érintett böngészőalapú alkalmazások | A modern hitelesítés érintett |
-|:---:|:---:|:---:|:--:|:--:|
-| Letiltva |Az Azure MFA-ban nem regisztrált új felhasználó alapértelmezett állapota. |Nem |Nem |Nem |
-| Engedélyezve |A felhasználó regisztrálva lett az Azure MFA-ban, de nincs regisztrálva. A következő bejelentkezés alkalmával a rendszer felszólítja a regisztrálásra. |Nem.  Továbbra is működnek, amíg a regisztrációs folyamat be nem fejeződik. | Igen. A munkamenet lejárata után az Azure MFA-regisztrációra van szükség.| Igen. A hozzáférési jogkivonat lejárta után az Azure MFA-regisztrációra van szükség. |
-| Kényszerítve |A felhasználó regisztrálva lett, és befejezte az Azure MFA regisztrációs folyamatát. |Igen. Az alkalmazásokhoz alkalmazások jelszava szükséges. |Igen. Bejelentkezéskor az Azure MFA szükséges. | Igen. Bejelentkezéskor az Azure MFA szükséges. |
+|:---:| --- |:---:|:--:|:--:|
+| Letiltva | Az Azure MFA-ban nem regisztrált új felhasználó alapértelmezett állapota. | Nem | Nem | Nem |
+| Engedélyezve | A felhasználó regisztrálva lett az Azure MFA-ban, de nincs regisztrálva. A következő bejelentkezés alkalmával a rendszer felszólítja a regisztrálásra. | Nem.  Továbbra is működnek, amíg a regisztrációs folyamat be nem fejeződik. | Igen. A munkamenet lejárata után az Azure MFA-regisztrációra van szükség.| Igen. A hozzáférési jogkivonat lejárta után az Azure MFA-regisztrációra van szükség. |
+| Kényszerítve | A felhasználó regisztrálva lett, és befejezte az Azure MFA regisztrációs folyamatát. | Igen. Az alkalmazásokhoz alkalmazások jelszava szükséges. | Igen. Bejelentkezéskor az Azure MFA szükséges. | Igen. Bejelentkezéskor az Azure MFA szükséges. |
 
 A felhasználó állapota azt jelzi, hogy egy rendszergazda regisztrálta-e őket az Azure MFA-ban, és hogy elvégezték-e a regisztrációs folyamatot.
 
@@ -177,7 +180,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 > [!NOTE]
 > Nemrég módosítottuk a viselkedést és a PowerShell-szkriptet a fentieknek megfelelően. Korábban a parancsfájl mentve az MFA-metódusokból, letiltotta az MFA-t, és visszaállította a metódusokat. Ez már nem szükséges ahhoz, hogy a Letiltás alapértelmezett viselkedése ne törölje a metódusokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Miért volt a felhasználó, vagy a rendszer nem kéri az MFA elvégzésére? Tekintse [meg az Azure ad-beli bejelentkezések jelentését az Azure-multi-Factor Authentication dokumentum jelentéseiben](howto-mfa-reporting.md#azure-ad-sign-ins-report).
 * További beállítások, például a megbízható IP-címek, az egyéni hangüzenetek és a csalási riasztások konfigurálásához tekintse meg az [Azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md) című cikket.

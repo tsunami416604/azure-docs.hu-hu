@@ -1,20 +1,19 @@
 ---
-title: Állapot ellenõrzése, naplózás beállítása és riasztások beolvasása – Azure Logic Apps
+title: Állapot ellenõrzése, naplózás beállítása és riasztások beolvasása
 description: Az állapot figyelése, a naplózási diagnosztika adatait és a riasztások beállítása Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/21/2017
-ms.openlocfilehash: 336e2ac93a954c35b7afc8dbb98dd1fca1838985
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: ca1e2836ddfb38de640a5a90cf53e416b8923c04
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680301"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791919"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Figyelő állapota, diagnosztikai naplózás beállítása és riasztások bekapcsolása Azure Logic Apps
 
@@ -85,7 +84,7 @@ A Kezdés előtt rendelkeznie kell egy Log Analytics munkaterülettel. Megtudhat
 
 3. A **diagnosztika beállításai**területen válassza **a be**lehetőséget.
 
-   ![diagnosztikai naplók bekapcsolása](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
+   ![Diagnosztikai naplók bekapcsolása](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
 
 4. Most válassza ki a Log Analytics munkaterületet és az esemény kategóriáját a naplózáshoz, ahogy az látható:
 
@@ -179,7 +178,7 @@ A logikai alkalmazáshoz tartozó konkrét metrikák vagy túllépte küszöbér
 
 [Azure monitor naplók](../log-analytics/log-analytics-overview.md)nélküli riasztások beállításához kövesse az alábbi lépéseket. Ha további speciális riasztási feltételeket és műveleteket kíván [beállítani, állítsa be Azure monitor naplókat](#azure-diagnostics) is.
 
-1. A logikai alkalmazás panel menüjének **figyelés**területén válassza a **diagnosztika**  > **riasztási szabályok**  >  riasztás**hozzáadása** lehetőséget az itt látható módon:
+1. A logikai alkalmazás panel menüjének **figyelés**területén válassza a **diagnosztika** > **riasztási szabályok** > riasztás **hozzáadása** lehetőséget az itt látható módon:
 
    ![Riasztás hozzáadása a logikai alkalmazáshoz](media/logic-apps-monitor-your-logic-apps/set-up-alerts.png)
 

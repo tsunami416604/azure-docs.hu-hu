@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 27fbd0084f9f8c91ee83802efe6a96213363b78f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: b5a59e51190fc8309d35445fba7ef4a2dd22b970
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422050"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770441"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a Javához
 
@@ -46,7 +46,7 @@ Ebből a szakaszból megtudhatja, hogyan készít elő egy projektet az Azure Bl
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-Hozzon létre egy *blob-Gyorsindítás-V12*nevű Java Core-alkalmazást.
+Hozzon létre egy *blob-Gyorsindítás-V12*nevű Java-alkalmazást.
 
 1. A konzol ablakban (például cmd, PowerShell vagy bash) a Maven használatával hozzon létre egy új, *blob-Gyorsindítás-V12*nevű Console-alkalmazást. Írja be az alábbi **MVN** -parancsot egyetlen sorba, és hozzon létre egy egyszerű "Helló világ!" Java-projekt. A parancs itt jelenik meg több sorban az olvashatóság érdekében.
 

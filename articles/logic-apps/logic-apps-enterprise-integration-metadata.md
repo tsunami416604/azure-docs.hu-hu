@@ -1,20 +1,19 @@
 ---
-title: Integrációs fiók összetevő-metaadatainak kezelése – Azure Logic Apps
+title: Integrációs fiókhoz tartozó összetevők metaadatainak kezelése
 description: Az Azure Logic Apps integrációs fiókjainak hozzáadása vagy beolvasása az Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
-ms.openlocfilehash: e8e2daf1de9223766c8cec835f7718007a8cf309
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679974"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792472"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Az összetevők metaadatainak kezelése az integrációs fiókokban Azure Logic Apps és Enterprise Integration Pack
 
@@ -54,7 +53,7 @@ Megadhat egyéni metaadatokat az összetevőkhöz az integrációs fiókokban, �
 
 1. A Azure Portal nyissa meg a kívánt integrációs fiókhoz csatolt logikai alkalmazást. 
 
-1. Ha a Logic app Designerben hozzáadja a metaadatok beolvasásához szükséges lépést a munkafolyamat trigger vagy utolsó művelete alatt, válassza az **új lépés**  > **művelet hozzáadása lehetőséget**. 
+1. Ha a Logic app Designerben hozzáadja a metaadatok beolvasásához szükséges lépést a munkafolyamat trigger vagy utolsó művelete alatt, válassza az **új lépés** > **művelet hozzáadása lehetőséget**. 
 
 1. A keresőmezőbe írja be az "integrációs fiók" kifejezést. A keresőmező alatt válassza az **összes**lehetőséget. A műveletek listából válassza a következő műveletet: **integrációs fiók összetevő keresése – integrációs fiók**
 
@@ -65,7 +64,7 @@ Megadhat egyéni metaadatokat az összetevőkhöz az integrációs fiókokban, �
    | Tulajdonság | Szükséges | Value (Díj) | Leírás | 
    |----------|---------|-------|-------------| 
    | **Összetevő típusa** | Igen | **Séma**, **Térkép**, **partner**, **Szerződés**vagy egyéni típus | A kívánt összetevő típusa | 
-   | **Összetevő neve** | Igen | < összetevő*neve* > | A kívánt összetevő neve | 
+   | **Összetevő neve** | Igen | <összetevő *neve*> | A kívánt összetevő neve | 
    ||| 
 
    Tegyük fel például, hogy egy kereskedelmi partneri összetevő metaadatait szeretné lekérni:
@@ -86,10 +85,10 @@ Megadhat egyéni metaadatokat az összetevőkhöz az integrációs fiókokban, �
 
       | Tulajdonság | Szükséges | Value (Díj) | Leírás | 
       |----------|----------|-------|-------------| 
-      | **Metódus** | Igen | <*művelet – futtatás* > | Az összetevőn futtatandó HTTP-művelet. Ez a HTTP-művelet például a **Get** metódust használja. | 
-      | **URI** | Igen | <*metaadatok – hely* > | A `routingUrl` metaadatok értékének a beolvasott összetevőből való eléréséhez használhat egy kifejezést, például: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **Fejlécek** | Nem | <*header-values* > | Minden olyan fejléc kimenete a triggerből, amelyet át szeretne adni a HTTP-műveletbe. Ha például át szeretné adni az trigger `headers` tulajdonságának értékét: használhat kifejezéseket, például: <p>`@triggeroutputs()['headers']` | 
-      | **Törzs** | Nem | <*törzs – tartalom* > | Minden más olyan tartalom, amelyet át szeretne adni a HTTP-művelet `body` tulajdonságán. Ez a példa a lelet `properties` értékeit adja át a HTTP-műveletnek: <p>1. kattintson a **Body (törzs** ) tulajdonságra, hogy a dinamikus tartalom lista megjelenjen. Ha nem jelenik meg a tulajdonságok, válassza a **továbbiak**lehetőséget. <br>2. a dinamikus tartalom listából válassza a **Tulajdonságok**lehetőséget az **integrációs fiók**összetevőinek keresése területen. | 
+      | **Metódus** | Igen | <*művelet – futtatás*> | Az összetevőn futtatandó HTTP-művelet. Ez a HTTP-művelet például a **Get** metódust használja. | 
+      | **URI** | Igen | <*metaadatok – hely*> | A `routingUrl` metaadatok értékének a beolvasott összetevőből való eléréséhez használhat egy kifejezést, például: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **Fejlécek** | Nem | <*header-values*> | Minden olyan fejléc kimenete a triggerből, amelyet át szeretne adni a HTTP-műveletbe. Ha például át szeretné adni az trigger `headers` tulajdonságának értékét: használhat kifejezéseket, például: <p>`@triggeroutputs()['headers']` | 
+      | **Törzs** | Nem | <*törzs – tartalom*> | Minden más olyan tartalom, amelyet át szeretne adni a HTTP-művelet `body` tulajdonságán. Ez a példa a lelet `properties` értékeit adja át a HTTP-műveletnek: <p>1. kattintson a **Body (törzs** ) tulajdonságra, hogy a dinamikus tartalom lista megjelenjen. Ha nem jelenik meg a tulajdonságok, válassza a **továbbiak**lehetőséget. <br>2. a dinamikus tartalom listából válassza a **Tulajdonságok**lehetőséget az **integrációs fiók**összetevőinek keresése területen. | 
       |||| 
 
       Példa:

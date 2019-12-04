@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB kiszolgáló naplófájljai
+title: Lassú lekérdezési naplók – Azure Database for MariaDB
 description: Ismerteti a Azure Database for MariaDBban elérhető naplókat, valamint a különböző naplózási szintek engedélyezéséhez elérhető paramétereket.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: 10dbd4d7fa838ee7f8a3f70b3caadb570877d685
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 12/02/2019
+ms.openlocfilehash: 8a451b06c8166b48fd892050e53204e2b65856c3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259968"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772104"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Lassú lekérdezési naplók a Azure Database for MariaDB
 Azure Database for MariaDB a lassú lekérdezési napló elérhető a felhasználók számára. A tranzakciónaplóhoz való hozzáférés nem támogatott. A lassú lekérdezési napló használatával azonosíthatók a hibaelhárítási teljesítménybeli szűk keresztmetszetek.
@@ -31,14 +31,14 @@ A naplók akár hét napig is elérhetők a létrehozásuk után. Ha a rendelkez
 A naplók 24 óránként vagy 7 GB-onként vannak elforgatva, attól függően, hogy melyik érkezik először.
 
 ## <a name="configure-slow-query-logging"></a>Lassú lekérdezések naplózásának konfigurálása
-Alapértelmezés szerint a lassú lekérdezési napló le van tiltva. Az engedélyezéshez állítsa be a slow_query_log a következőre:.
+Alapértelmezés szerint a lassú lekérdezési napló le van tiltva. Az engedélyezéshez állítsa be slow_query_log a következőre:.
 
 Az egyéb paraméterek a következők:
 
-- **long_query_time**: Ha egy lekérdezés a lekérdezés naplózott long_query_time (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték 10 másodperc.
-- **log_slow_admin_statements**: Ha a on olyan felügyeleti utasítások szerepelnek, mint például a ALTER_TABLE és a ANALYZE_TABLE a slow_query_log írt utasításokban.
+- **long_query_time**: Ha a lekérdezés a lekérdezés naplózása long_query_time (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték 10 másodperc.
+- **log_slow_admin_statements**: Ha a on olyan felügyeleti utasítások is szerepelnek, mint például a ALTER_TABLE és a ANALYZE_TABLE a slow_query_logba írt utasításokban.
 - **log_queries_not_using_indexes**: meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e a slow_query_log
-- **log_throttle_queries_not_using_indexes**: Ez a paraméter korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, ha a log_queries_not_using_indexes beállítása be értékre van állítva.
+- **log_throttle_queries_not_using_indexes**: Ez a paraméter korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, amikor a log_queries_not_using_indexes be van állítva.
 
 A lassú lekérdezési napló paramétereinek teljes leírását a MariaDB [lassú lekérdezési napló dokumentációjában](https://mariadb.com/kb/en/library/slow-query-log-overview/) találja.
 
@@ -54,7 +54,7 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 |---|---|
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | A napló UTC-ben való rögzítésének időbélyegzője |
+| `TimeGenerated` [UTC] | A napló UTC-ben való rögzítésének időbélyegzője |
 | `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
 | `ResourceGroup` | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
@@ -65,7 +65,7 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | A kiszolgáló neve |
-| `start_time_t`UTC | A lekérdezés elkezdésének ideje |
+| `start_time_t` [UTC] | A lekérdezés elkezdésének ideje |
 | `query_time_s` | A lekérdezés végrehajtásának teljes ideje |
 | `lock_time_s` | A lekérdezés zárolásának teljes ideje |
 | `user_host_s` | Felhasználónév |
@@ -78,5 +78,5 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 | `thread_id_s` | Szál azonosítója |
 | `\_ResourceId` | Erőforrás URI-ja |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [A kiszolgálók naplófájljainak konfigurálása és elérése a Azure Portal](howto-configure-server-logs-portal.md).

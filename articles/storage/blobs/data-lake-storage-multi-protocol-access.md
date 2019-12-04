@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3470e27f64a672db0165b0132996db91a1447c08
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: aebd7b58a2107ac109a03d3ce12f27d65ba0ab90
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033981"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769812"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Több protokollos hozzáférés Azure Data Lake Storage
 
@@ -48,10 +48,13 @@ Az ebben a táblázatban megjelenő elemek a blob Storage-szolgáltatások támo
 |BLOB Storage szolgáltatás | Támogatási szint |
 |---|---|
 |[Lassú elérési szint](storage-blob-storage-tiers.md)|Általánosan elérhető|
-|BLOB SDK-k |Általánosan elérhető|
 |BLOB REST API-k|Általánosan elérhető|
-|[PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Általánosan elérhető|
-|[Parancssori felület](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Általánosan elérhető|
+|BLOB SDK-k |Általánosan elérhető|
+|[PowerShell (blob)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Általánosan elérhető|
+|[CLI (blob)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Általánosan elérhető|
+|BLOB SDK-k fájlrendszer-szemantikai szolgáltatással ([.net](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-dotnet) &vert; [Python](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-python) &vert; [Java](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-java))|Előzetes verzió|
+|[PowerShell fájlrendszer-szemantikai beállításokkal](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-powershell)|Előzetes verzió|
+|[CLI fájlrendszer-szemantikai beállításokkal](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-cli)|Előzetes verzió|
 |[Diagnosztikai naplók](../common/storage-analytics-logging.md)| Előzetes verzió|
 |[Életciklus-kezelési szabályzatok](storage-lifecycle-management-concepts.md)| Előzetes verzió|
 |[Értesítések Azure Event Grid keresztül](data-lake-storage-events.md)|Előzetes verzió|

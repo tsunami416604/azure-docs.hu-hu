@@ -1,18 +1,18 @@
 ---
-title: Kiszolgálók biztonsági mentése és visszaállítása Azure Database for PostgreSQL – egyetlen kiszolgálón
-description: Megtudhatja, hogyan készíthet biztonsági másolatot és állíthat vissza egy kiszolgálót Azure Database for PostgreSQL egyetlen kiszolgálón az Azure CLI használatával.
+title: Biztonsági mentés és visszaállítás – Azure CLI-Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Megtudhatja, hogyan állíthatja be a biztonsági mentési konfigurációkat, és hogyan állíthatja vissza a kiszolgálót Azure Database for PostgreSQL egyetlen kiszolgálón az Azure CLI használatával.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: c1706f72f894baa7d07c49880a82dc96ef03d7cf
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: f0ea24133d7b6acdc4b099ee21a8711a2d99095d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965807"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775704"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Kiszolgáló biztonsági mentése és visszaállítása Azure Database for PostgreSQL – egyetlen kiszolgálón az Azure CLI használatával
 
@@ -114,7 +114,7 @@ A `az postgres server georestore` parancshoz a következő paraméterek szüksé
 |név | mydemoserver – georestored | Az új kiszolgáló neve. |
 |source-server | mydemoserver | Annak a meglévő kiszolgálónak a neve, amelynek a földrajzi redundáns biztonsági másolatait használja a rendszer. |
 |location | eastus | Az új kiszolgáló helye. |
-|sku-name| GP_Gen4_8 | Ez a paraméter beállítja az árképzési szintet, a számítási generációt és az új kiszolgáló virtuális mag számát. A GP_Gen4_8 leképez egy általános célú, Gen 4 Server 8 virtuális mag.|
+|sku-name| GP_Gen4_8 | Ez a paraméter beállítja az árképzési szintet, a számítási generációt és az új kiszolgáló virtuális mag számát. GP_Gen4_8 térképeket egy általános célú, Gen 4 Server 8 virtuális mag.|
 
 Amikor új kiszolgálót hoz létre a Geo-visszaállítással, az örökli a forráskiszolgáló azonos tárolási méretét és díjszabási szintjét. Ezek az értékek nem módosíthatók a létrehozás során. Az új kiszolgáló létrehozása után a tárolási mérete méretezhető.
 

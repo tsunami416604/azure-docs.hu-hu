@@ -1,20 +1,17 @@
 ---
-title: Műveletek csoportosítása és futtatása hatókör szerint – Azure Logic Apps
+title: Műveletek csoportosítása és futtatása hatókör szerint
 description: A csoport állapota alapján futó hatókörön belüli műveletek létrehozása Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: b0f53d1dbcd5b8bbbe38ffe3dd9ba62087ed3432
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680006"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791488"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Műveletek futtatása a csoport állapota alapján a Azure Logic Apps hatókörök használatával
 
@@ -78,8 +75,8 @@ A logikai alkalmazást bármikor mentheti, így gyakran mentheti a munkáját.
 
       | Beállítás | Value (Díj) | Leírás |
       | ------- | ----- | ----------- |
-      | **1. útvonalpont** | <*start* > | Adja meg az útvonal forrását. | 
-      | **2. útvonalpont** | <*vége* > | Adja meg az útvonal célhelyét. | 
+      | **1. útvonalpont** | <*start*> | Adja meg az útvonal forrását. | 
+      | **2. útvonalpont** | <*vége*> | Adja meg az útvonal célhelyét. | 
       | **Elkerülés** | None | Adja meg azokat az elemeket, amelyeket el szeretne kerülni az útvonalon, például autópályákon, útdíjon és így tovább. A lehetséges értékekért lásd: [útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optimalizálás** | timeWithTraffic | Válasszon egy paramétert az útvonal optimalizálásához, például a távolságot, az aktuális forgalmi információkkal rendelkező időt és így tovább. Ez a példa a következő értéket használja: "timeWithTraffic" | 
       | **Távolság mértékegysége** | <*igény-szerint*> | Adja meg az útvonal kiszámításához használandó távolsági egységet. Ez a példa a következő értéket használja: "Mile" | 
@@ -150,7 +147,7 @@ A logikai alkalmazást bármikor mentheti, így gyakran mentheti a munkáját.
   
        A **törzs** mező most a következő példához hasonlít:
 
-       ![Finished "Body" mező ](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![befejeződött a "Body" mező](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
    <!-- markdownlint-enable MD038 -->
 
 1. Mentse a logikai alkalmazást.

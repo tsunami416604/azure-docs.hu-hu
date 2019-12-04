@@ -1,6 +1,6 @@
 ---
-title: Riasztások létrehozása az Azure monitorban dinamikus küszöbértékekkel
-description: Riasztások létrehozása a machine learning-alapú dinamikus küszöbértékekkel
+title: Riasztások létrehozása dinamikus küszöbértékekkel Azure Monitor
+description: Riasztások létrehozása gépi tanuláson alapuló dinamikus küszöbértékekkel
 author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,169 +8,186 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d6c578186dab9622ce650f535e11d505efcecb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 750aded128804468ae557d7c016a50c5378d9217
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067618"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762512"
 ---
-# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások dinamikus küszöbértékekkel az Azure monitorban
+# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikus riasztások dinamikus küszöbértékekkel Azure Monitor
 
-Metrikariasztás dinamikus küszöbértékek észlelése a fejlett gépi tanulási (ML) további metrikák általi korábbi viselkedés, mintákat és rendellenességeket, amelyek jelzik a lehetséges szolgáltatással kapcsolatos problémák azonosítására használ. Egy egyszerű felhasználói felület és a méretezett operations támogatást biztosít a felhasználók olyan teljesen automatizált módon konfigurálhatja a riasztási szabályok az Azure Resource Manager API-n keresztül.
+A dinamikus küszöbértékek észlelésével rendelkező metrikus riasztások speciális gépi tanulást (ML) biztosítanak a mérőszámok korábbi viselkedésének megismeréséhez, a lehetséges szolgáltatási problémákat jelző mintázatok és rendellenességek azonosításához. Támogatja mind az egyszerű felhasználói felületet, mind a nagy léptékű műveletek támogatását azáltal, hogy lehetővé teszi a felhasználók számára, hogy a riasztási szabályokat a Azure Resource Manager API-n keresztül, teljesen automatizált módon konfigurálja.
 
-Riasztási szabály létrehozása után fog aktiválódni csak amikor a figyelt metrika nem viselkednek, várt, a testre szabott küszöbértékek alapján.
+A riasztási szabály létrehozása után csak akkor fog bejárni, ha a figyelt metrika nem a várt módon működik, a testre szabott küszöbértékek alapján.
 
-Örömmel vennénk visszajelzéseit, legyen hamarosan <azurealertsfeedback@microsoft.com>.
+Szívesen halljuk a visszajelzését, és megtartjuk <azurealertsfeedback@microsoft.com>.
 
-## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Miért és mikor ajánlott a dinamikus feltétel típusa használ?
+## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Miért és Mikor ajánlott használni a dinamikus feltétel típusát?
 
-1. **Méretezhető riasztási** – riasztások szabályokat hozhat létre dinamikus küszöbértékek metrika sorozat több száz küszöbértékek szabott egyszerre. Riasztási szabály meghatározása csak egyetlen mértéket a ugyanolyan könnyű még biztosítása. Használata kezelheti a felhasználói felületen vagy az Azure Resource Manager API-eredmények kevesebb riasztási szabályok az. A méretezhető módszer különösen hasznos, metrika méretek esetén, vagy több erőforrásokhoz, például az összes előfizetés erőforrások alkalmazása esetén. Amely fordítja le a felügyeleti és a riasztásokat szabályok létrehozását mentése jelentős mennyiségű időt. [További tudnivalók a metrika riasztások dinamikus küszöbértékekkel sablonokkal konfigurálása](alerts-metric-create-templates.md).
+1. **Skálázható riasztás** – a dinamikus küszöbérték riasztási szabályai egyszerre több száz metrikai sorozatra szabott küszöbértékeket hozhatnak létre, ugyanakkor a riasztási szabályok egyetlen mérőszámon való definiálását is lehetővé teszik. Kevesebb riasztást biztosítanak a létrehozásához és kezeléséhez. A létrehozáshoz Azure Portal vagy a Azure Resource Manager API-t használhatja. A skálázható megközelítés különösen akkor hasznos, ha metrikus dimenziókat használ, vagy ha több erőforrásra, például az összes előfizetési erőforrásra alkalmazza.  [További információ a metrikus riasztások dinamikus küszöbértékekkel való konfigurálásáról a sablonok használatával](alerts-metric-create-templates.md).
 
-1. **A metrika mintafelismerést intelligens** – az egyedi gépi Tanulási technológiával képesek vagyunk metrikamintákhoz észlelése és tudjon alkalmazkodni metrika idővel, amely gyakran szezonalitás (óránként / naponta / hetente). Idő és a riasztási gyakorlattól eltérő minta alapján a metrikák általi viselkedéséhez gyakorlatainak mentesíti az, hogy mindegyik metrikát "megfelelő" küszöbértéke terhe. A dinamikus küszöbértékek használt gépi Tanulási algoritmus úgy tervezték, hogy megakadályozza a zajos (kis pontosságú) és az adott várt mintának nem rendelkező wide (alacsony visszaírási) küszöbértékeket.
+1. **Intelligens metrikai minták felismerése** – a ml-technológia használatával automatikusan észlelhetők a metrikus mintázatok, és a metrikai változásokhoz is alkalmazkodnak az idő múlásával, ami gyakran magában foglalhatja a szezonális (óránkénti/napi/heti) időszakot. A mérőszámok viselkedésének időbeli változása és a mintázattól való eltérések alapján történő riasztása csökkenti az egyes mérőszámok "jobb" küszöbértékét. A dinamikus küszöbértékekben használt ML-algoritmus úgy van kialakítva, hogy megakadályozza a várt mintázattal nem rendelkező zajos (kis pontosságú) vagy nagy (alacsony visszahívás) küszöbértékek használatát.
 
-1. **Intuitív konfigurációs** – dinamikus küszöbértékek engedélyezése kell rendelkeznie a metrika tartalmazó tartományhoz ismerete enyhítése fogalmait, használatával metrikákhoz kapcsolódó riasztások beállítását.
+1. **Intuitív konfiguráció** – a dinamikus küszöbértékek lehetővé teszik a metrikus riasztások magas szintű fogalmakkal történő beállítását, ami csökkenti a metrikával kapcsolatos kiterjedt tartományi ismereteket.
 
-## <a name="how-to-configure-alerts-rules-with-dynamic-thresholds"></a>Hogyan konfigurálhatók a riasztásokat szabályok dinamikus küszöbértékekkel?
+## <a name="how-to-configure-alerts-rules-with-dynamic-thresholds"></a>Riasztási szabályok konfigurálása dinamikus küszöbértékekkel
 
-Riasztások dinamikus küszöbértékekkel metrika riasztások az Azure Monitor használatával konfigurálható. [További információ a metrika-riasztások konfigurálása](alerts-metric.md).
+A dinamikus küszöbértékekkel rendelkező riasztások a Azure Monitorban metrikai riasztások segítségével konfigurálhatók. [További információ a metrikai riasztások konfigurálásáról](alerts-metric.md).
 
-## <a name="how-are-the-thresholds-calculated"></a>Hogyan számítják ki a küszöbértékek?
+## <a name="how-are-the-thresholds-calculated"></a>Hogyan számítják ki a küszöbértékeket?
 
-Dinamikus küszöbérték folyamatosan tanul az adatokat a metrika sorozat harmadik része, és algoritmusok és módszerek használatával modellezheti megpróbálja. Minták észleli az adatok, például a szezonalitás (óránként / naponta / hetente), és képesek zajos metrikákat (például a gép CPU és memória) kezelésére és metrikák alacsony diszperziós (például a rendelkezésre állás és a hiba mellett).
+A dinamikus küszöbértékek folyamatosan tanulják a metrikai sorozat adatait, és algoritmusok és metódusok használatával próbálják meg modellezni azokat. Az adatok olyan mintázatait észleli, mint például a szezonális (óránkénti/napi/heti), és képes kezelni a zajos metrikákat (például a gépi PROCESSZORt vagy a memóriát), valamint az alacsony szórású metrikákat (például a rendelkezésre állást és a hibák arányát).
 
-A küszöbértékek oly módon, hogy ezeket a küszöbértékeket eltérést jelöli a metrikákkal kapcsolatos viselkedést anomáliát ki van jelölve.
+A küszöbértékek úgy vannak kiválasztva, hogy a küszöbértéktől való eltérés a metrika viselkedésében anomália.
 
 > [!NOTE]
-> Egy óra, napi vagy heti időköz szezonális észlelési van beállítva. Ez azt jelenti, hogy más bihourly mintája hasonló minták vagy semiweekly előfordulhat, hogy nem észlelhető.
+> Az időszakos minta észlelése egy óra, nap vagy hét intervallumra van beállítva. Ez azt jelenti, hogy nem észlelhető más mintázatok, például a bihourly minta vagy a semiweekly.
 
-## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Dinamikus küszöbérték középérték "Érzékenysége" beállítás mire?
+## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Mit jelent a dinamikus küszöbértékek "érzékenység" beállítása?
 
-Riasztási küszöbérték érzékenységét egy magas szintű fogalom, amely szabályozza a metrikákkal kapcsolatos viselkedés riasztást kiváltó szükséges eltérés.
-Ezt a beállítást nem szükséges a mérőszám, például a statikus küszöbérték kapcsolatos adatait. Az elérhető lehetőségek:
+A riasztási küszöbértékek érzékenysége olyan magas szintű fogalom, amely a riasztások kiváltásához szükséges metrikai viselkedéstől való eltérés mértékét vezérli.
+Ehhez a beállításhoz nem szükséges tartomány-ismeret a mérőszámhoz, például a statikus küszöbértékhez. Az elérhető lehetőségek:
 
-- Magas – a küszöbértékeket a rövid és a metrika sorozat minta közeli lesz. A legkisebb eltérés, így további riasztások egy riasztási szabályt aktiválódik.
-- Közepes – kevesebb szoros és több elosztott terhelésű küszöbértékek, kevesebb riasztást, mint a magas érzékenységi (alapértelmezett).
-- Alacsony – a küszöbértékek lesz metrika sorozat minta további távolsága a laza. Riasztási szabály csak aktiválják a nagy eltéréseket, kevesebb riasztást eredményez.
+- High (magas) – a küszöbértékek feszesek lesznek, és a metrikák sorozatának mintázata is megközelíthető. A rendszer riasztási szabályt indít el a legkisebb eltérés miatt, ami több riasztást eredményez.
+- Közepes – kevésbé szűk és kiegyensúlyozottabb küszöbértékek, kevesebb riasztás, mint a magas érzékenység (alapértelmezett).
+- Alacsony – a küszöbértékek a metrikus adatsorozat mintájának nagyobb távolságával lesznek megoldva. Egy riasztási szabály csak nagy eltéréseket indít el, így kevesebb riasztást fog eredményezni.
 
-## <a name="what-are-the-operator-setting-options-in-dynamic-thresholds"></a>Mik a dinamikus küszöbértékek "Kezelő" beállítás lehetőségei?
+## <a name="what-are-the-operator-setting-options-in-dynamic-thresholds"></a>Mik az "operátor" beállítási lehetőségei a dinamikus küszöbértékekben?
 
-A szabály riasztásokat hozhat létre dinamikus küszöbértékek szabott küszöbértékek mindkét felső a metrikákkal kapcsolatos viselkedést és dolní meze használatával ugyanaz a riasztási szabály alapján.
-A riasztás a következő három feltétel egyikének aktiválását közül választhat:
+A dinamikus küszöbértékek riasztási szabálya olyan személyre szabott küszöbértékeket hozhat létre, amelyek a felső és az alsó határ metrikájának viselkedése alapján azonos riasztási szabályt használnak.
+A következő három feltétel egyikén aktiválhatja a riasztást:
 
-- A felső küszöbértéknél nagyobb vagy kisebb, mint az alsó küszöbértéket (alapértelmezett)
+- Nagyobb, mint a felső küszöbérték, vagy alacsonyabb az alsó küszöbértéknél (alapértelmezett)
 - Nagyobb, mint a felső küszöbérték
-- Az alsó küszöbérték alatti.
+- Alacsonyabb, mint az alsó küszöbérték.
 
-## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Mit dinamikus küszöbértékek középérték speciális beállításait?
+## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Mit jelentenek a dinamikus küszöbértékek speciális beállításai?
 
-**Sikertelen időszakok** -dinamikus küszöbértékek is lehetővé teszi, hogy "A riasztást kiváltó szabálysértések száma", konfigurálhatja a minimálisan szükséges (az időkeret alapértelmezett értéke négy riasztást a rendszer egy adott időtartományon belül szorzataként eltérések 20 percig). A felhasználó sikertelen időszakok konfigurálhatja, és válassza ki a, a sikertelen és a időtartomány módosításával riasztást kap. A riasztási zaj átmeneti által generált csökkenti. Példa:
+**Sikertelen időszakok** – a dinamikus küszöbértékek lehetővé teszik a "a riasztás kiváltásához szükséges számok megsértésének megadását", a rendszer egy adott időszakon belül egy adott időintervallumban megkövetelt eltérések minimális számát (az alapértelmezett időablak négy eltérés 20 perc alatt). A felhasználó beállíthatja a sikertelen időszakokat, és kiválaszthatja, hogy mi legyen a riasztás, ha módosítja a sikertelen időszakokat és az időintervallumot. Ez a képesség csökkenti az átmeneti tüskék által generált riasztási zajt. Példa:
 
-Riasztást kiváltó, ha a probléma folyamatos 20 perc, 5 perc elteltével egy adott időszak csoportosítása 4 egymást követő alkalommal használja a következő beállításokat:
+Ha a probléma 20 percen belül folyamatos, 4 egymást követő alkalommal, 5 perces csoportosításban, akkor a következő beállításokat kell használnia:
 
-![Folyamatos probléma időszakok beállításainak 20 perc, 5 perces időszak adott csoportja 4 egymást követő alkalommal sikertelen](media/alerts-dynamic-thresholds/0008.png)
+![Sikertelen időszakok beállításai a folyamatos hibákhoz 20 percen keresztül, 4 egymást követő alkalommal 5 percen belül csoportosítva](media/alerts-dynamic-thresholds/0008.png)
 
-Ha hiba történt a dinamikus küszöbérték megsértését az elmúlt 30 perc, 5 perces időtartammal 20 perce a riasztást kiváltó, használja a következő beállításokat:
+Ha riasztást szeretne indítani, ha a dinamikus küszöbértékek megsértése miatt 20 perccel az elmúlt 30 percen belül megsérti az 5 perces időszakot, használja a következő beállításokat:
 
-![Sikertelen időszakok beállításait a probléma az elmúlt 30 perc, 5 perces időszak csoportosítása a 20 perce](media/alerts-dynamic-thresholds/0009.png)
+![Sikertelen időszakok beállításai a probléma 20 percen belül az elmúlt 30 percben az 5 perces időszakos csoportosítással](media/alerts-dynamic-thresholds/0009.png)
 
-**Időpontnál régebbi adatok mellőzése** -felhasználók is adhat meg, amelyből a rendszer kell kezdődnie kiszámítása a küszöbértékeket a kezdő dátumot. Egy tipikus használati eset akkor fordulhat elő, ha egy erőforrást egy tesztelési módban futó volt, és a egy éles környezetbeli számítási feladatokra kiszolgálása érdekében mostantól hitelesítenie kelljen magát, és ezért a tesztelési fázis során bármilyen mérőszám viselkedését kell figyelmen kívül kell hagyni.
+**Adatok figyelmen kívül hagyása** – a felhasználók tetszés szerint meghatározhatnak egy kezdő dátumot, amelyből a rendszernek meg kell kezdenie a küszöbértékek kiszámítását. Egy tipikus használati eset akkor fordulhat elő, ha egy erőforrás tesztelési módban fut, és most már az éles számítási feladatok kiszolgálására lett előléptetve, ezért a tesztelési fázisban lévő bármely metrika viselkedését figyelmen kívül kell hagynia.
 
-## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>Hogyan találja meg, miért lett elindítva egy dinamikus küszöbérték-értesítés?
+## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>Honnan tudhatja meg, miért váltott ki a dinamikus küszöbértékek riasztása?
 
-Megismerheti a riasztások nézetben aktivált riasztás példányok vagy kattintson a hivatkozásra az e-mail vagy szöveges üzenet, vagy a böngészőben a riasztások megtekintése az Azure Portalon. [További információ a riasztások nézetben](alerts-overview.md#alerts-experience).
+Az aktivált riasztási példányokat a riasztások nézetben tekintheti meg, ha az e-mailben vagy szöveges üzenetben található hivatkozásra kattint, vagy a böngészőben a riasztások nézetét szeretné látni a Azure Portal. [További információ a riasztások nézetről](alerts-overview.md#alerts-experience).
 
-A riasztás nézetet jelenít meg:
+A riasztás nézet a következőket jeleníti meg:
 
-- Jelenleg minden metrika részletei a dinamikus küszöbértékek riasztás aktiválva.
-- Az időszak, amelyben a riasztás aktiválódott, amely tartalmazza a dinamikus küszöbértékeket, abban az időpontban használt diagram.
-- Szeretne visszajelzést adni dinamikus küszöbértékek riasztás és a riasztások nézet élményt, amely javíthatja a jövőbeli észlelések képessége.
+- A dinamikus küszöbértékek riasztásának pillanatában az összes metrikai adat.
+- Annak az időszaknak a diagramja, amelyben a riasztás aktiválva lett, beleértve az adott időpontban használt dinamikus küszöbértékeket is.
+- A dinamikus küszöbértékekkel kapcsolatos riasztások és a riasztások megtekintésének lehetősége, amely javíthatja a jövőbeli észleléseket.
 
-## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>Lassú viselkedés módosítani fogja a metrikaindító metrikanevét riasztást?
+## <a name="will-slow-behavior-changes-in-the-metric-trigger-an-alert"></a>A metrikában a lassú viselkedés változása riasztást vált ki?
 
-Valószínűleg nem. Dinamikus küszöbérték jók jelentős eltérések észlelése lassan fejlődő problémák helyett.
+Valószínűleg nem. A dinamikus küszöbértékek kiválóan alkalmasak a jelentős eltérések észlelésére, nem pedig lassan változó problémákra.
 
-## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Mennyi adatot szolgál, és ezután kiszámíthatja a küszöbértékeket?
+## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Mennyi adattal kell megtekinteni, majd kiszámítani a küszöbértékeket?
 
-A küszöbértékeket a diagramon jelennek meg a mérőszám a riasztási szabály létrehozása előtt elég előzményadatok alapján számítja ki órás vagy napi szezonális minták (10 nap) alapján számítjuk. Riasztási szabály létrehozása után a dinamikus küszöbértékek minden szükséges előzményadatok, elérhető és a rendszer folyamatosan tanulhasson belőlük és idomulhasson új adatok alapján, hogy a küszöbértékek pontosabb fogja használni. Ez azt jelenti, hogy ehhez a számításhoz után a diagram is látható heti mintákat.
+A és a riasztás első létrehozásakor a diagramon megjelenő küszöbértékek az óra vagy napi szezonális mintázatok (10 nap) kiszámításához elegendő múltbeli érték alapján számítjuk ki a számítást. A riasztási szabály létrehozása után a dinamikus küszöbértékek a rendelkezésre álló összes szükséges korábbi információt használják, és az új értékek alapján folyamatosan tanulnak és alkalmazkodnak, hogy a küszöbértékek pontosabbak legyenek. Ez azt jelenti, hogy a számítás után a diagram hetente mintákat is fog megjeleníteni.
 
-## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Mennyi adatot a riasztást kiváltó van szükség?
+## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Mennyi információra van szükség a riasztás indításához?
 
-Ha egy új erőforrást vagy hiányzó metrikaadatok, dinamikus küszöbérték nem aktiválja riasztások a előtt az adatok három nap biztosítására pontosan küszöbértékek érhetők el.
+Ha új erőforrással vagy hiányzó metrikai adatokkal rendelkezik, a dinamikus küszöbértékek nem indítanak riasztást, mielőtt a rendszer a pontos küszöbértékek megadását követően három napig elérhetővé válik.
 
-## <a name="dynamic-thresholds-best-practices"></a>Dinamikus küszöbérték ajánlott eljárások
+## <a name="dynamic-thresholds-best-practices"></a>Dinamikus küszöbértékek – ajánlott eljárások
 
-Dinamikus küszöbérték alkalmazhatók bármely platformra és az Azure monitorban egyéni metrika, és azt is hangolt volt a közös alkalmazás- és infrastruktúra metrikákat.
-A következő elemeket a gyakorlati tanácsok a riasztások konfigurálása az egyes ezeket a metrikákat használó dinamikus küszöbérték.
+A dinamikus küszöbértékek alkalmazhatók a Azure Monitor bármely platformra vagy egyéni metrikára, és az általános alkalmazás-és infrastruktúra-metrikára is be lett hangolva.
+A következő elemek ajánlott eljárások arra vonatkozóan, hogyan konfigurálhat riasztásokat ezen mérőszámok némelyikén dinamikus küszöbértékek használatával.
 
-### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>A virtuális gép Processzor-százalékos metrikák dinamikus küszöbérték
+### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>Dinamikus küszöbértékek a virtuális gép CPU-százalékos metrikái esetében
 
-1. A [az Azure portal](https://portal.azure.com), kattintson a **figyelő**. A figyelő nézet az összes figyelési beállítást és adatokat egyetlen nézetben egyesíti.
+1. [Azure Portal](https://portal.azure.com)kattintson a **figyelés**elemre. A figyelő nézet egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
 
-2. Kattintson a **riasztások** kattintson **+ Új riasztási szabály**.
+2. Kattintson a **riasztások** , majd az **+ új riasztási szabály**elemre.
 
     > [!TIP]
-    > A legtöbb erőforráspanelek is, hogy **riasztások** azok erőforrás menüben alatt **figyelés**, létrehozhat riasztásokat onnan.
+    > A legtöbb erőforrás-panel a **figyelés**alatt is tartalmaz **riasztásokat** az erőforrás menüjében, és onnan is létrehozhat riasztásokat.
 
-3. Kattintson a **cél kiválasztása**, környezet, amely betölti panelén válassza a célként megadott erőforrás-riasztás kívánt. Használja **előfizetés** és **"Virtual Machines" erőforrástípus** legördülő listákból a figyelni kívánt erőforrás található. A Keresősáv használatával keresse meg az erőforrást.
+3. Kattintson a **cél kiválasztása**lehetőségre, a betöltött környezet ablaktáblán válassza ki azt a cél erőforrást, amelyre a riasztást szeretné használni. Az **előfizetés** és a **"Virtual Machines" erőforrástípus** legördülő lista használatával keresse meg a figyelni kívánt erőforrást. Az erőforrást a keresősáv használatával is megkeresheti.
 
-4. Miután kiválasztotta a célként megadott erőforrás, kattintson a **feltétel hozzáadása**.
+4. A cél erőforrás kiválasztása után kattintson a **feltétel hozzáadása**elemre.
 
-5. Válassza ki a **"CPU Percentage"** .
+5. Válassza ki a **"CPU-százalék" értéket**.
 
-6. Szükség esetén pontosíthatja a metrika módosításával **időszak** és **összesítési**. Metrikus típus használata "Maximum" összesítés típusa, kevésbé tükrözik a működését, mert nem ajánlott. Az "Maximális" összesítési típus statikus küszöbérték esetleg több megfelelő.
+6. Szükség esetén pontosíthatja a metrikát az **időszak** és az **Összesítés**beállításával. A rendszer nem használja fel a "maximális" összesítési típust ehhez a metrikai típushoz, mert kevésbé jellemző a viselkedésre. A "maximális" összesítési típusnál a statikus küszöbérték talán megfelelőbb.
 
-7. Az elmúlt 6 óra látni fogja a metrika egy diagram. Adja meg a riasztási paraméterekkel:
-    1. **A feltétel típusát** – válassza ki a "Dinamikus" beállítást.
-    1. **Érzékenységi** – válassza a közepes vagy alacsony érzékenységi riasztási zaj csökkentéséhez.
-    1. **Operátor** – kivéve, ha viselkedés jelöli az Alkalmazáshasználat "Nagyobb mint" válassza.
-    1. **Gyakoriság** -fontolja meg a riasztás üzletmenetre gyakorolt hatás csökkentése alapján.
-    1. **Sikertelen időszakok** (speciális lehetőség) – a hely vissza ablak legalább 15 percet kell lennie. Például ha öt perc alatt az időszak van beállítva, majd az időszakok sikertelen kell lennie legalább három vagy több.
+7. Ekkor megjelenik egy diagram a metrikához az elmúlt 6 órában. A riasztás paramétereinek megadása:
+    1. **Feltétel típusa** – válassza a "dinamikus" lehetőséget.
+    1. **Érzékenység** – a riasztási zaj csökkentése érdekében válassza a közepes/alacsony érzékenység lehetőséget.
+    1. **Operátor** – válassza a "nagyobb, mint" lehetőséget, ha a viselkedés az alkalmazás használatát jelenti.
+    1. **Gyakoriság** – csökkentse a riasztás üzleti hatásának csökkentését.
+    1. **Sikertelen időszakok** (speciális beállítás) – a visszatekintő ablaknak legalább 15 percnek kell lennie. Ha például az időtartam öt percre van beállítva, akkor a sikertelen időszakoknak legalább háromnak kell lenniük.
 
-8. A metrikadiagram jelenik meg a legújabb adatok alapján számított küszöbértékeket.
+8. A metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket.
 
 9. Kattintson a **Done** (Kész) gombra.
 
-10. Töltse ki **riasztás részletei** például **riasztási szabály neve**, **leírás**, és **súlyossági**.
+10. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását**és **súlyosságát**.
 
-11. Műveletcsoport hozzáadása a riasztást, vagy egy új műveletcsoport létrehozása vagy meglévő műveletcsoport kiválasztása.
+11. Adjon hozzá egy műveleti csoportot a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
 
-12. Kattintson a **kész** a metrikaalapú riasztási szabály mentéséhez.
+12. Kattintson a **kész** gombra a metrika riasztási szabályának mentéséhez.
 
 > [!NOTE]
-> Metrikariasztás portálon keresztül létrehozott szabályok jönnek létre a célként megadott erőforrás azonos erőforráscsoportban.
+> A portálon létrehozott metrikai riasztási szabályok ugyanabban az erőforráscsoporthoz jönnek létre, mint a célként megadott erőforrás.
 
-### <a name="dynamic-thresholds-on-application-insights-http-request-execution-time"></a>Dinamikus küszöbérték Application Insights HTTP-kérelem végrehajtási ideje
+### <a name="dynamic-thresholds-on-application-insights-http-request-execution-time"></a>Dinamikus küszöbértékek Application Insights HTTP-kérelem végrehajtási idején
 
-1. A [az Azure portal](https://portal.azure.com), kattintson a **figyelő**. A figyelő nézet az összes figyelési beállítást és adatokat egyetlen nézetben egyesíti.
+1. [Azure Portal](https://portal.azure.com)kattintson a **figyelés**elemre. A figyelő nézet egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
 
-2. Kattintson a **riasztások** kattintson **+ Új riasztási szabály**.
+2. Kattintson a **riasztások** , majd az **+ új riasztási szabály**elemre.
 
     > [!TIP]
-    > A legtöbb erőforráspanelek is, hogy **riasztások** azok erőforrás menüben alatt **figyelés**, létrehozhat riasztásokat onnan.
+    > A legtöbb erőforrás-panel a **figyelés**alatt is tartalmaz **riasztásokat** az erőforrás menüjében, és onnan is létrehozhat riasztásokat.
 
-3. Kattintson a **cél kiválasztása**, környezet, amely betölti panelén válassza a célként megadott erőforrás-riasztás kívánt. Használja **előfizetés** és **"Application Insights" erőforrástípus** legördülő listákból a figyelni kívánt erőforrás található. A Keresősáv használatával keresse meg az erőforrást.
+3. Kattintson a **cél kiválasztása**lehetőségre, a betöltött környezet ablaktáblán válassza ki azt a cél erőforrást, amelyre a riasztást szeretné használni. Az **előfizetés** és a **"Application Insights" erőforrástípus** legördülő lista használatával keresse meg a figyelni kívánt erőforrást. Az erőforrást a keresősáv használatával is megkeresheti.
 
-4. Miután kiválasztotta a célként megadott erőforrás, kattintson a **feltétel hozzáadása**.
+4. A cél erőforrás kiválasztása után kattintson a **feltétel hozzáadása**elemre.
 
-5. Válassza ki a **"HTTP kérelem végrehajtási idő"** .
+5. Válassza a **"http-kérelem végrehajtási ideje"** lehetőséget.
 
-6. Szükség esetén pontosíthatja a metrika módosításával **időszak** és **összesítési**. Metrikus típus használata "Maximum" összesítés típusa, kevésbé tükrözik a működését, mert nem ajánlott. Az "Maximális" összesítési típus statikus küszöbérték esetleg több megfelelő.
+6. Szükség esetén pontosíthatja a metrikát az **időszak** és az **Összesítés**beállításával. A rendszer nem használja fel a "maximális" összesítési típust ehhez a metrikai típushoz, mert kevésbé jellemző a viselkedésre. A "maximális" összesítési típusnál a statikus küszöbérték talán megfelelőbb.
 
-7. Az elmúlt 6 óra látni fogja a metrika egy diagram. Adja meg a riasztási paraméterekkel:
-    1. **A feltétel típusát** – válassza ki a "Dinamikus" beállítást.
-    1. **Operátor** – válassza a "Nagyobb, mint" az az időtartam fokozása aktivált riasztások csökkentése érdekében.
-    1. **Gyakoriság** -fontolja meg a riasztás üzletmenetre gyakorolt hatás csökkentése alapján.
+7. Ekkor megjelenik egy diagram a metrikához az elmúlt 6 órában. A riasztás paramétereinek megadása:
+    1. **Feltétel típusa** – válassza a "dinamikus" lehetőséget.
+    1. **Operátor** – válassza a "nagyobb, mint" lehetőséget, hogy csökkentse a riasztások időbeli javulását.
+    1. **Gyakoriság** – csökkentse a riasztás üzleti hatásának csökkentését.
 
-8. A metrikadiagram jelenik meg a legújabb adatok alapján számított küszöbértékeket.
+8. A metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket.
 
 9. Kattintson a **Done** (Kész) gombra.
 
-10. Töltse ki **riasztás részletei** például **riasztási szabály neve**, **leírás**, és **súlyossági**.
+10. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását**és **súlyosságát**.
 
-11. Műveletcsoport hozzáadása a riasztást, vagy egy új műveletcsoport létrehozása vagy meglévő műveletcsoport kiválasztása.
+11. Adjon hozzá egy műveleti csoportot a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
 
-12. Kattintson a **kész** a metrikaalapú riasztási szabály mentéséhez.
+12. Kattintson a **kész** gombra a metrika riasztási szabályának mentéséhez.
 
 > [!NOTE]
-> Metrikariasztás portálon keresztül létrehozott szabályok jönnek létre a célként megadott erőforrás azonos erőforráscsoportban.
+> A portálon létrehozott metrikai riasztási szabályok ugyanabban az erőforráscsoporthoz jönnek létre, mint a célként megadott erőforrás.
+
+## <a name="interpreting-dynamic-threshold-charts"></a>Dinamikus küszöbértékű diagramok értelmezése
+
+A következő táblázat egy mérőszámot, a dinamikus küszöbértékeit és néhány riasztást mutat be, amikor az érték az engedélyezett küszöbértékeken kívül esik.
+
+![További információ a metrikus riasztások konfigurálásáról](media/alerts-dynamic-thresholds/threshold-picture-8bit.png)
+
+Az előző diagram értelmezéséhez használja az alábbi információkat.
+
+- **Kék vonal** – a tényleges mért metrika az idő függvényében.
+- **Kék árnyékolású térség** – a metrika megengedett tartományát mutatja. Ha a metrika értékei ezen a tartományon belül maradnak, nem kerül sor riasztásra.
+- **Kék pontok** – ha a diagram egy részén bal gombbal kattint, majd a kék vonal fölé viszi, megjelenik egy kék pont a kurzor alatt, amely egy egyedi összesített metrikai értéket jelenít meg.
+- **Felugró ablak kék ponttal** – megjeleníti a mért metrikai értéket (a kék pontot), valamint az engedélyezett tartomány alsó és felső értékét.  
+- **Piros pont és egy fekete kör** – a megengedett tartomány első metrikai értékét jeleníti meg. Ez az az érték, amely egy metrikai riasztást indít el, és aktív állapotba helyezi.
+- **Piros pontok**– a megengedett tartományon kívül eső további mért értékeket jelez. Nem fognak további metrikai riasztásokat kiváltani, a riasztás azonban aktív marad.
+- **Vörös terület** – azt az időpontot jeleníti meg, amikor a metrika értéke kívül esik az engedélyezett tartományon. A riasztás aktív állapotban marad mindaddig, amíg a későbbi mért értékek az engedélyezett tartományon kívül esnek, de új riasztások nem jelennek meg.
+- A **vörös terület vége** – ha a kék vonal az engedélyezett értékeken belül van, a vörös terület leáll, a mért érték pedig kék színűre változik. A metrika riasztásának állapota a piros pont és a fekete körvonal közötti időszakban megoldott értékre van állítva. 

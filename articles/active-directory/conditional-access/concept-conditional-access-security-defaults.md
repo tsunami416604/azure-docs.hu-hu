@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806447f788b7a394b29ee08e8b562662c2cc3e1b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 420a046ddf66270f52001d4ff4f3ad49895d4c11
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208396"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784551"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
@@ -79,7 +79,7 @@ A szervezetek a Azure Resource Manager API-n keresztül felügyelt különböző
 
 - Azure Portal 
 - Azure PowerShell 
-- Azure CLI
+- Azure parancssori felület (CLI)
 
 A Azure Resource Manager használata a szolgáltatások kezeléséhez magas jogosultsági szintű művelet. Azure Resource Manager megváltoztathatja a bérlői szintű konfigurációkat, például a szolgáltatás beállításait és az előfizetés számlázását. Az egytényezős hitelesítés számos különböző támadáshoz, például az adathalászathoz és a jelszó-permetezéshez van kitéve. 
 
@@ -124,6 +124,20 @@ A biztonsági alapértelmezett beállítások engedélyezése a címtárban:
 1. Tallózással keresse meg **Azure Active Directory** > **tulajdonságokat**.
 1. Válassza a **biztonsági beállítások kezelése**lehetőséget.
 1. Állítsa a **biztonsági Alapértelmezések engedélyezése** kapcsolót **Igen**értékre.
+1. Kattintson a **Mentés** gombra.
+
+## <a name="disabling-security-defaults"></a>Biztonsági alapértékek letiltása
+
+Azok a szervezetek, amelyek a biztonsági alapértékeket lecserélő feltételes hozzáférési házirendek megvalósítását választják, le kell tiltaniuk a biztonsági alapértékeket. 
+
+![Figyelmeztető üzenet a feltételes hozzáférés engedélyezéséhez tiltsa le a biztonsági alapértelmezéseket](./media/concept-conditional-access-security-defaults/security-defaults-disable-before-conditional-access.png)
+
+A biztonsági alapértelmezett beállítások letiltása a címtárban:
+
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) biztonsági rendszergazdaként, feltételes hozzáférésű rendszergazdaként vagy globális rendszergazdaként.
+1. Tallózással keresse meg **Azure Active Directory** > **tulajdonságokat**.
+1. Válassza a **biztonsági beállítások kezelése**lehetőséget.
+1. Állítsa be a **biztonsági beállítások engedélyezése** beállítást a **nem**értékre.
 1. Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések

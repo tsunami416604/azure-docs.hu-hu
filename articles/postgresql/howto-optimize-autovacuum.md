@@ -1,97 +1,97 @@
 ---
-title: Optimalizálhatja autovacuum egy Azure database for PostgreSQL – egyetlen kiszolgáló
-description: Ez a cikk bemutatja, hogyan optimalizálhatók a autovacuum egy Azure database for PostgreSQL – egyetlen kiszolgáló
+title: Autovákuum optimalizálása – Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk azt ismerteti, hogyan optimalizálható az autoporszívó egy Azure Database for PostgreSQL egyetlen kiszolgálón
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: fb1ab9525974601a8b8c22ccc44e2cf37baf21a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1917bd6744e100db54fe959292e29486f8a1784b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65069117"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770186"
 ---
-# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Optimalizálhatja autovacuum egy Azure database for PostgreSQL – egyetlen kiszolgáló
-Ez a cikk ismerteti egy Azure Database for PostgreSQL-kiszolgáló a autovacuum hatékonyan optimalizálása.
+# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Az autovákuum optimalizálása egy Azure Database for PostgreSQL egyetlen kiszolgálón
+Ez a cikk bemutatja, hogyan optimalizálhatja hatékonyan az autovákuumot egy Azure Database for PostgreSQL-kiszolgálón.
 
-## <a name="overview-of-autovacuum"></a>Autovacuum áttekintése
-PostgreSQL database nagyobb párhuzamosság engedélyezése multiversion egyidejűség-vezérlés (MVCC) használja. Minden frissítés egy beszúrási és törlési eredményez, és minden törlése folyamatban van a helyreállítható megjelölve törlésre sorok eredményez. Helyreállítható-jelölés azonosítja a kézbesíthetetlen később kiürítendő rekordok. Ezek a feladatok elvégzésére PostgreSQL vákuumos feladatot futtat egy.
+## <a name="overview-of-autovacuum"></a>Az autovacuum áttekintése
+A PostgreSQL a többverziós Egyidejűség-vezérlést (MVCC) használja a nagyobb adatbázis-párhuzamosságok engedélyezéséhez. Minden frissítés egy beszúrást és egy törlést eredményez, és minden törlési eredmény a sorokban törlésre van kijelölve. A Soft-Mark olyan halott rekordok azonosít, amelyet később törölni kell. Ezeknek a feladatoknak a végrehajtásához a PostgreSQL egy vákuum-feladatot futtat.
 
-Manuálisan vagy automatikusan a vákuumos feladat indítható el. További kézbesíthetetlen rekordokat tartalmazó létezik, amikor az adatbázis (nagy erőforrásigényű) frissítési vagy törlési művelet. Kevesebb kézbesíthetetlen rekordokat tartalmazó létezik, amikor az adatbázis inaktív. Az adatbázis-terhelés esetén (nagy erőforrásigényű), ami lehetővé teszi futó vákuumos feladatok gyakran vákuum kell *manuálisan* kényelmetlen lehet.
+A vákuum-feladatok manuálisan vagy automatikusan is elindíthatók. Több halott rekordok létezik, amikor az adatbázis nagy mennyiségű frissítési vagy törlési műveletet tapasztal. Kevesebb halott rekordok létezik, ha az adatbázis üresjáratban van. Gyakrabban kell vákuumot használnia, ha az adatbázis terhelése nehéz, így a vákuum-feladatok *manuális* futtatása nem megfelelő.
 
-Autovacuum konfigurálható és a hangolási előnyeit. Az alapértelmezett értékeket, PostgreSQL részét képező próbálja meg a termék a különféle eszközök működésének ellenőrzésére. Ilyen eszköz például a Raspberry a feldolgozási. Az ideális konfigurációs értékek függenek a:
-- Összes erőforrás érhető el, például a Termékváltozat és a tárhely mérete.
-- Erőforrás-használatot.
-- Az egyes objektumok jellemzőit.
+Az automatikus porszívó konfigurálható és kihasználható a hangolás előnyeivel. A PostgreSQL által szállított alapértelmezett értékek, amelyekkel biztosítható, hogy a termék bármilyen típusú eszközön működjön. Ezek az eszközök közé tartozik a málna PiS. Az ideális konfigurációs értékek a következőktől függenek:
+- Az összes rendelkezésre álló erőforrás, például az SKU és a tárterület mérete.
+- Erőforrás-használat.
+- Az egyes objektumok jellemzői.
 
-## <a name="autovacuum-benefits"></a>Autovacuum előnyei
-Ha nem időről időre vákuum, a kézbesíthetetlen rekordok felsorolásának gyűlnek eredményezhet:
-- Adatok közelítés, például a nagyobb méretű adatbázisokat és táblákat.
-- Nagyobb az optimálisnál rosszabb indexek.
-- Nagyobb i/o.
+## <a name="autovacuum-benefits"></a>Autovacuum előnyök
+Ha nem vákuumot időről időre, a felhalmozott rekordok a következőket eredményezheti:
+- Az adatközelítés, például nagyobb adatbázisok és táblák.
+- Nagyobb, optimálisnál rosszabb indexek.
+- Nagyobb I/O-műveletek.
 
-## <a name="monitor-bloat-with-autovacuum-queries"></a>A figyelő növekedést autovacuum lekérdezésekkel
-Az alábbi mintalekérdezés úgy terveztek, hogy az XYZ nevű tábla élő és nem elő rekordok számát:
+## <a name="monitor-bloat-with-autovacuum-queries"></a>A duzzadás figyelése autovacuum lekérdezésekkel
+A következő minta-lekérdezés célja, hogy azonosítsa az XYZ nevű táblázatban lévő elhalt és élő rekordok számát:
  
     'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
 
-## <a name="autovacuum-configurations"></a>Autovacuum konfigurációk
-A konfigurációs paramétereket, amelyek vezérlik a autovacuum alapuló két legfontosabb kérdésekre kaphat választ:
-- Ez indításának időpontját?
-- Mennyit kell azt tiszta elindítása után?
+## <a name="autovacuum-configurations"></a>Autovákuum-konfigurációk
+Az autovákuumot vezérlő konfigurációs paraméterek két fő kérdésre választanak:
+- Mikor érdemes elkezdeni?
+- Mennyi legyen tiszta a megkezdése után?
 
-Az alábbiakban néhány autovacuum konfigurációs paramétereket, frissítheti a fenti kérdések, valamint útmutatást alapján.
+Íme néhány automatikus vákuum-konfigurációs paraméter, amelyet az előző kérdések alapján frissíthet, és útmutatást kaphat.
 
 Paraméter|Leírás|Alapértelmezett érték
 ---|---|---
-autovacuum_vacuum_threshold|A frissített vagy törölt rekordok egy táblában vákuumos műveletet aktiválásához szükséges minimális számát határozza meg. Az alapértelmezett érték 50 rekordokat. A paraméter értéke csak a postgresql.conf fájlban vagy a kiszolgáló parancssorból. Egyedi táblák a beállításának felülbírálása, módosítsa a table storage paramétereket.|50
-autovacuum_vacuum_scale_factor|Adja meg a tábla mérete autovacuum_vacuum_threshold hozzá, amikor eldönti, hogy egy vákuumos műveletet aktiválásához töredékéért. Az alapértelmezett érték 0.2-es, amely tábla méretének 20 százaléka. A paraméter értéke csak a postgresql.conf fájlban vagy a kiszolgáló parancssorból. Egyedi táblák a beállításának felülbírálása, módosítsa a table storage paramétereket.|5 %-os
-autovacuum_vacuum_cost_limit|Automatikus vákuumos műveletekben használt költség korlát értékét adja meg. Ha a -1 van megadva, ez az alapértelmezett beállítás, a rendszeres vacuum_cost_limit érték szolgál. Ha egynél több feldolgozói, az érték eloszlik a futó autovacuum dolgozók körében. A minden korlátokat összegét nem haladja meg a változó értékét. A paraméter értéke csak a postgresql.conf fájlban vagy a kiszolgáló parancssorból. Egyedi táblák a beállításának felülbírálása, módosítsa a table storage paramétereket.|-1
-autovacuum_vacuum_cost_delay|Az automatikus vákuumos műveletekben használt költség késleltetés értéket ad meg. Ha meg van adva a -1, a rendszeres vacuum_cost_delay érték szolgál. Az alapértelmezett érték: 20 ezredmásodperc. A paraméter értéke csak a postgresql.conf fájlban vagy a kiszolgáló parancssorból. Egyedi táblák a beállításának felülbírálása, módosítsa a table storage paramétereket.|20 ms
-autovacuum_nap_time|Adja meg a minimális késleltetési autovacuum közötti bármely adott adatbázist futtat. Mindegyik ciklikus a démon megvizsgálja az adatbázist, és problémák VÁKUUM és elemzés parancsok szükség szerint az adott adatbázisban lévő táblák. A késleltetés idejének mérése másodpercben történik, és az alapértelmezett érték egy perc (1 perc). A paraméter értéke csak a postgresql.conf fájlban vagy a kiszolgáló parancssorból.|15 s
-autovacuum_max_workers|Itt adható meg autovacuum folyamatok, a autovacuum indítója, egyidejűleg futtatható eltérő maximális számát. Az alapértelmezett érték három. A paraméter értéke csak a kiszolgáló indításakor.|3
+autovacuum_vacuum_threshold|Meghatározza, hogy legalább hány frissített vagy törölt rekordok van szükség ahhoz, hogy a vákuum-műveletet egyetlen táblában lehessen elindítani. Az alapértelmezett érték a 50 rekordok. Ezt a paramétert csak a PostgreSQL. conf fájlban vagy a Server parancssorban állítsa be. Az egyes táblák beállításainak felülbírálásához módosítsa a tábla tárolási paramétereit.|50
+autovacuum_vacuum_scale_factor|Megadja a tábla azon méretének a töredékét, amelyet hozzá szeretne adni a autovacuum_vacuum_thresholdhoz, amikor eldönti, hogy kell-e vákuum-műveletet indítania. Az alapértelmezett érték a 0,2, amely a tábla méretének 20 százalékát képezi. Ezt a paramétert csak a PostgreSQL. conf fájlban vagy a Server parancssorban állítsa be. Az egyes táblák beállításainak felülbírálásához módosítsa a tábla tárolási paramétereit.|5 százalék
+autovacuum_vacuum_cost_limit|Meghatározza az automatikus vákuum-műveletekben használt költségfelosztás értékét. Ha-1 van megadva, amely az alapértelmezett, a rendszer a normál vacuum_cost_limit értéket használja. Ha több feldolgozó is van, akkor az értéket a futó autovacuum-feldolgozók között arányosan osztják el. Az egyes feldolgozók korlátainak összege nem haladja meg a változó értékét. Ezt a paramétert csak a PostgreSQL. conf fájlban vagy a Server parancssorban állítsa be. Az egyes táblák beállításainak felülbírálásához módosítsa a tábla tárolási paramétereit.|-1
+autovacuum_vacuum_cost_delay|Meghatározza az automatikus vákuum-műveletekben használt költséghatékonysági értéket. Ha a-1 érték van megadva, a rendszer a normál vacuum_cost_delay értéket használja. Az alapértelmezett érték 20 ezredmásodperc. Ezt a paramétert csak a PostgreSQL. conf fájlban vagy a Server parancssorban állítsa be. Az egyes táblák beállításainak felülbírálásához módosítsa a tábla tárolási paramétereit.|20 MS
+autovacuum_nap_time|Meghatározza az autoporszívó futtatásának minimális késleltetését az adott adatbázison. A démon minden körben megvizsgálja az adatbázist, és az adatbázisban lévő táblákhoz szükség szerint a szükséges vákuum-és elemzési parancsokat. A késleltetés mérése másodpercben történik, és az alapértelmezett érték egy perc (1 perc). Ezt a paramétert csak a PostgreSQL. conf fájlban vagy a Server parancssorban állítsa be.|15 s
+autovacuum_max_workers|Meghatározza, hogy az autovákuum-indítón kívül legfeljebb hány autoporszívós folyamat fusson egyszerre. Az alapértelmezett érték három. Ezt a paramétert csak a kiszolgáló indításakor állítsa be.|3
 
-Bírálja felül az egyes táblák beállításait, módosítsa a table storage paramétereket. 
+Az egyes táblák beállításainak felülbírálásához módosítsa a tábla tárolási paramétereit. 
 
-## <a name="autovacuum-cost"></a>Autovacuum költség
-Az alábbiakban a "" futtatásával járó költségek vákuumos műveletet:
+## <a name="autovacuum-cost"></a>Autoporszívós díj
+Az alábbi "költségek" a vákuumos művelet futtatásakor:
 
-- A lapok, amely a vákuum futtat zárolva vannak.
-- Számítást és memóriát használatosak, amikor egy vákuumos feladat fut-e.
+- A vákuumban futó adatlapok zárolva vannak.
+- A rendszer a számítási és a memóriát használja a vákuumos feladatok futtatásakor.
 
-Ennek eredményeképpen nem vákuumos feladatok futtatása vagy túl gyakran, vagy túl ritkán. Egy vákuumos feladatnak szüksége van a számítási feladathoz igazítani. Tesztelje az összes autovacuum paraméter módosításokat a kompromisszumot kínál a mindegyiknek miatt.
+Ennek eredményeképpen ne futtasson túl gyakran vagy túl ritkán a vákuum-feladatokat. A vákuum-feladatnak alkalmazkodnia kell a munkaterheléshez. Tesztelje az összes autovákuum paramétert az egyes kompromisszumok miatt.
 
-## <a name="autovacuum-start-trigger"></a>Autovacuum kezdő eseményindító
-Autovacuum akkor aktiválódik, ha a kézbesíthetetlen rekordok száma meghaladja a autovacuum_vacuum_threshold + autovacuum_vacuum_scale_factor * reltuples. Reltuples Íme egy konstans.
+## <a name="autovacuum-start-trigger"></a>Autovacuum indítási trigger
+Az autoporszívó akkor aktiválódik, ha a halott rekordok száma meghaladja a autovacuum_vacuum_threshold + autovacuum_vacuum_scale_factor * reltuples. Itt a reltuples állandó.
 
-Az adatbázis betöltési autovacuum adattisztítást kell tartani. Ellenkező esetben előfordulhat, hogy elfogy a storage, és a lekérdezések egy általános lassulás élmény. Amortizált idővel, a sebesség, amellyel egy vákuumos művelet megtisztítja kézbesíthetetlen rekordokat tartalmazó meg kell egyeznie az a sebesség, amellyel kézbesíthetetlen rekordok jönnek létre.
+Az autoporszívóból történő karbantartásnak meg kell őriznie az adatbázis terhelését. Ellenkező esetben előfordulhat, hogy elfogy a tárterület, és általános lassulást tapasztal a lekérdezésekben. Az idő múlásával a vákuum-művelet megtisztítja a kézbesítetlen rekordok, és ezzel egyenlő arányban kell megegyeznie a halott rekordok létrehozásával.
 
-Számos frissítések és törlések adatbázis további kézbesíthetetlen rekordokat tartalmazó rendelkezik, és további tárterületre van szükség. Általában a legtöbb adatbázisok frissíti, és benefit töröl az autovacuum_vacuum_scale_factor és autovacuum_vacuum_threshold alacsony értéket. A kis-értékek kézbesíthetetlen rekordokat tartalmazó hosszan tartó felhalmozódásához megakadályozása. A magasabb értékek használhatja mindkét paraméter kisebb adatbázisok, mert vacuuming szükség a kevésbé sürgős. Gyakori vacuuming cserébe számítási és memória érhető el.
+A sok frissítéssel és törléssel rendelkező adatbázisok több halott rekordok rendelkeznek, és több helyre van szükségük. Általában a sok frissítéssel rendelkező adatbázisok és a autovacuum_vacuum_scale_factor és autovacuum_vacuum_threshold alacsony értékeinek kihasználása. Az alacsony értékek meggátolják a halott rekordok hosszú távú felhalmozódását. A kisebb adatbázisokkal rendelkező paramétereknél nagyobb értékeket is használhat, mert a porszívózási igény kevésbé sürgős. A gyakori porszívózás a számítási és a memória díja.
 
-Az alapértelmezett mértéktényező 20 %-os jól alacsony százalékos arányában kézbesíthetetlen rekordokat tartalmazó táblák működik. A magas százalékos kézbesíthetetlen rekordokat tartalmazó táblák jól nem működik. Például egy 20 GB-os tábla a méretezési tényező a rendszer lefordítja arra kézbesíthetetlen rekordokat tartalmazó 4 GB. Egy 1 TB-os tábla leállási rekordokat 200 GB.
+A 20%-os alapértelmezett méretezési tényező jól működik olyan táblákon, amelyek alacsony százalékban elhalt rekordok rendelkeznek. Nem működik jól olyan táblákon, amelyek nagy százalékban elhalt rekordok rendelkeznek. Egy 20 GB-os táblázatban például ez a skálázási tényező 4 GB-nyi elhalt rekordok-t fordít. 1 TB-os táblán a 200 GB-os elhalt rekordok.
 
-A PostgreSQL táblázat vagy a példány szintjén állíthatja be ezeket a paramétereket. Még ma beállíthatja ezeket a paramétereket a tábla szintjén csak az Azure Database for postgresql-hez.
+A PostgreSQL használatával ezeket a paramétereket a tábla szintjén vagy a példány szintjén állíthatja be. Manapság a táblázat szintjén állíthatja be ezeket a paramétereket Azure Database for PostgreSQL.
 
-## <a name="estimate-the-cost-of-autovacuum"></a>Autovacuum költségének
-Futó autovacuum "költséges", és a futtatókörnyezet vákuumos műveletek szabályozása paraméterei. A következő paraméterek segítségével vákuum futtatásával járó költségeket megbecsülheti:
+## <a name="estimate-the-cost-of-autovacuum"></a>Az autoporszívó díjainak becslése
+Az autoporszívó futtatása "költséges", és vannak paraméterek a vákuum-műveletek futtatókörnyezetének szabályozására. A következő paraméterek segítenek megbecsülni a vákuum futtatásának költségeit:
 - vacuum_cost_page_hit = 1
 - vacuum_cost_page_miss = 10
 - vacuum_cost_page_dirty = 20
 
-A vákuumos folyamat olvassa be a fizikai lapok és kézbesíthetetlen rekordokat keres. Kell díjat fizetni, 1 (vacuum_cost_page_hit) összes lapjának shared_buffers minősül. Az összes többi oldalán tekinthetők kell 20 (vacuum_cost_page_dirty), ha kézbesíthetetlen rekordokat tartalmazó létezik, vagy (vacuum_cost_page_miss), 10 díjat fizetni, ha nincs kézbesíthetetlen rekordok léteznek. A vákuumos művelet leáll, amikor a folyamat meghaladja a autovacuum_vacuum_cost_limit. 
+A vákuumos folyamat fizikai oldalakat olvas be, és ellenőrzi a kézbesítetlen rekordok. A shared_buffers minden lapja 1 (vacuum_cost_page_hit) értéknek tekintendő. Az összes többi oldal ára 20 (vacuum_cost_page_dirty), ha az elhalt rekordok létezik, vagy 10 (vacuum_cost_page_miss), ha nem létezik halott rekordok. A vákuum-művelet leáll, ha a folyamat túllépi a autovacuum_vacuum_cost_limit. 
 
-A korlát elérése után a folyamat alvó állapotban marad a autovacuum_vacuum_cost_delay paraméterrel megadott újra megkezdése előtt idejére. Ha nem elérte a korlátot, autovacuum elindul, a autovacuum_nap_time paraméter által meghatározott érték utáni.
+A korlát elérésekor a folyamat a autovacuum_vacuum_cost_delay paraméter által megadott időtartamra alvó állapotba lép, mielőtt újra megkezdené. Ha a korlát nem érhető el, az autovacuum a autovacuum_nap_time paraméter által megadott érték után indul el.
 
-Összefoglalva a autovacuum_vacuum_cost_delay és autovacuum_vacuum_cost_limit paraméterek szabályozhatja, mennyi adat-karbantartási idő egységenként engedélyezett. Fontos, hogy a legtöbb tarifacsomagok túl alacsony az alapértelmezett értékeket. Az optimális a paraméterek értékei vannak árképzési szint-függő, és ennek megfelelően kell konfigurálni.
+Az összefoglalás területen a autovacuum_vacuum_cost_delay és autovacuum_vacuum_cost_limit paraméterek határozzák meg, hogy mennyi idő alatt engedélyezett az adattisztítás. Vegye figyelembe, hogy az alapértelmezett értékek túl alacsonyak a legtöbb árképzési szinten. Ezeknek a paramétereknek az optimális értéke az árképzési rétegtől függ, és ennek megfelelően kell konfigurálni.
 
-A autovacuum_max_workers paraméter határozza meg, amelyek egyidejűleg futtathatók autovacuum folyamatok maximális számát.
+A autovacuum_max_workers paraméter határozza meg a párhuzamosan futtatható autoporszívós folyamatok maximális számát.
 
-A PostgreSQL táblázat vagy a példány szintjén állíthatja be ezeket a paramétereket. Még ma beállíthatja ezeket a paramétereket a tábla szintjén csak az Azure Database for postgresql-hez.
+A PostgreSQL használatával ezeket a paramétereket a tábla szintjén vagy a példány szintjén állíthatja be. Manapság a táblázat szintjén állíthatja be ezeket a paramétereket Azure Database for PostgreSQL.
 
-## <a name="optimize-autovacuum-per-table"></a>Táblánként autovacuum optimalizálása
-Minden az előző konfigurációs paramétereket táblánként konfigurálhatja. Például:
+## <a name="optimize-autovacuum-per-table"></a>Autovákuum optimalizálása táblázat szerint
+A táblázat összes korábbi konfigurációs paraméterét beállíthatja. Például:
 ```sql
 ALTER TABLE t SET (autovacuum_vacuum_threshold = 1000);
 ALTER TABLE t SET (autovacuum_vacuum_scale_factor = 0.1);
@@ -99,10 +99,10 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_limit = 1000);
 ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 ```
 
-Autovacuum egy olyan tábla szinkron folyamat. Nagyobb százalékos aránya, amelyek a tábla rendelkezik, a magasabb kézbesíthetetlen rekordok autovacuum "költség". Akkor is feloszthatja az táblákat, amelyek nagy mértékű és törléseket több táblára felosztva. Táblák felosztás segít autovacuum párhuzamosíthatja, és költségcsökkentés a "" egy táblán autovacuum végrehajtásához. Győződjön meg arról, hogy a munkavállalók liberally ütemezett párhuzamos autovacuum-feldolgozók száma is növelhető.
+Az autoporszívó egy táblázatos szinkron folyamat. Egy tábla rekordok nagyobb hányada, annál magasabb a "Cost" az autoporszívóhoz. A nagy mennyiségű frissítéssel rendelkező táblákat és a több táblába való törlést is eloszthatja. A táblázatok felosztásával integrálással az autovákuumot, és csökkentheti a "Cost"-t az autoporszívó egyetlen táblán való elvégzéséhez. Emellett növelheti a párhuzamos autovákuumos munkavégzők számát is, hogy a dolgozók ne legyenek liberális módon ütemezve.
 
-## <a name="next-steps"></a>További lépések
-Használja, és finomhangolása autovacuum kapcsolatos további tudnivalókért tekintse meg a következő PostgreSQL dokumentációja:
+## <a name="next-steps"></a>Következő lépések
+Ha többet szeretne megtudni az autoporszívó használatáról és finomhangolásáról, tekintse meg a következő PostgreSQL-dokumentációt:
 
- - [Fejezet 18-kiszolgálókonfiguráció](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
- - [24. fejezet rutin adatbázis-karbantartási feladatok](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)
+ - [18. fejezet, kiszolgáló konfigurációja](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
+ - [24. fejezet, az adatbázis-karbantartási feladatok rutinja](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)

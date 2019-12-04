@@ -1,17 +1,17 @@
 ---
-title: Konfigurálás és bejelentkezés az Azure AD-vel Azure Database for PostgreSQL – egyetlen kiszolgáló
-description: Ismerje meg, hogyan állíthat be Azure Active Directoryt a hitelesítéshez Azure Database for PostgreSQL – egyetlen kiszolgálóval
+title: Azure Active Directory-Azure Database for PostgreSQL – egyetlen kiszolgáló használata
+description: Ismerje meg, hogyan állíthat be Azure Active Directory (HRE) a Azure Database for PostgreSQL – egyetlen kiszolgálóval történő hitelesítéshez
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d5abfe4cc6aa0679d8009343fa24c1059700bb79
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c929ac1c171547a4ff485fc43f0f329440f9c3b5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516031"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763640"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory használata a PostgreSQL-sel való hitelesítéshez
 
@@ -193,7 +193,7 @@ Mostantól képesek lesznek bejelentkezni az Azure AD hitelesítő adataival ahe
 
 ### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>2\. eset: a PostgreSQL felhasználóneve eltér az Azure AD egyszerű Felhasználónevetől
 
-Ha egy PostgreSQL-felhasználó vagy nem létezik az Azure AD-ben, vagy más felhasználóneve van, akkor az Azure AD-csoportok használatával hitelesítheti magát a PostgreSQL-felhasználóként. A meglévő Azure Database for PostgreSQL felhasználókat áttelepítheti az Azure AD-be egy olyan nevű Azure AD-csoport létrehozásával, amely megfelel a PostgreSQL-felhasználónak, majd a szerepkör azure_ad_user a meglévő PostgreSQL-felhasználónak adja meg:
+Ha egy PostgreSQL-felhasználó vagy nem létezik az Azure AD-ben, vagy más felhasználóneve van, akkor az Azure AD-csoportok használatával hitelesítheti magát a PostgreSQL-felhasználóként. A meglévő Azure Database for PostgreSQL felhasználókat áttelepítheti az Azure AD-ba úgy, hogy létrehoz egy olyan nevű Azure AD-csoportot, amelynek a neve megegyezik a PostgreSQL-felhasználóval, majd megadhatja a szerepkört azure_ad_user a meglévő PostgreSQL-felhasználónak:
 
 ```sql
 GRANT azure_ad_user TO "DBReadUser";
@@ -201,7 +201,7 @@ GRANT azure_ad_user TO "DBReadUser";
 
 Ez azt feltételezi, hogy létrehozott egy "DBReadUser" csoportot az Azure AD-ben. Az adott csoportba tartozó felhasználók mostantól a felhasználóként bejelentkezhetnek az adatbázisba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [Azure Database for PostgreSQL – egyetlen kiszolgálóval Azure Active Directory hitelesítéssel](concepts-aad-authentication.md) kapcsolatos általános fogalmakat
 

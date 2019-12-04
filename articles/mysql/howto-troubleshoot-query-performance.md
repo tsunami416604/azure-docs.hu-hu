@@ -1,17 +1,17 @@
 ---
-title: A lekérdezés teljesítményének hibakeresése Azure Database for MySQL
+title: Lekérdezési teljesítmény – Azure Database for MySQL
 description: Megtudhatja, hogyan használhatja a MAGYARÁZATot a Azure Database for MySQL lekérdezési teljesítményének hibakereséséhez.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 02/28/2018
-ms.openlocfilehash: d58721f1fedd234b3c400a82035048d8e70f8c32
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 5bfefe3215558a94396e729a318e0746a4fb3aec
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972855"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764797"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>A profil lekérdezési teljesítményének ismertetése a Azure Database for MySQL
 A **magyarázat** egy praktikus eszköz a lekérdezések optimalizálásához. A magyarázó utasítás használatával információkat kaphat az SQL-utasítások végrehajtásáról. A következő kimenet egy példát mutat be a magyarázó utasítások végrehajtásához.
@@ -166,5 +166,5 @@ A magyarázat azt mutatja, hogy a MySQL képes a kombinált index használatára
 A magyarázat és a különböző típusú indexek használata jelentősen növelheti a teljesítményt. A táblázat indexe nem feltétlenül jelenti azt, hogy a MySQL használni tudná a lekérdezésekhez. Az indexek használatával mindig érvényesítse a feltételezéseket a lekérdezések MAGYARÁZATával és optimalizálásával.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ha a leginkább érintett kérdésekre ad választ, vagy új kérdést/választ tesz közzé, látogasson el az [MSDN fórumára](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) vagy a [stack Overflowra](https://stackoverflow.com/questions/tagged/azure-database-mysql).

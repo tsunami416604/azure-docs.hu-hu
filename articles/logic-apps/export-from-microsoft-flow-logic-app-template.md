@@ -2,21 +2,18 @@
 title: Folyamatok exportálása a Power Gyorsbüféból a Azure Logic Appsba
 description: Áttelepítheti a folyamatokat a Power Gyorsbüféból a Azure Logic Apps Azure Resource Manager sablonként való exportálással
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e0dda5c2097243143d18851c47e7006c81769c87
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583257"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792645"
 ---
-# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Folyamatok exportálása a Power Gyorsbüféból és üzembe helyezése Azure Logic Apps
+# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Folyamatok exportálása a Power Automate-ből és üzembe helyezés az Azure Logic Appsben
 
 A flow képességeinek bővítéséhez és kibővítéséhez áttelepítheti a folyamatot a [Power gyorsbüféból](https://flow.microsoft.com) a [Azure Logic Appsba](../logic-apps/logic-apps-overview.md). Exportálhatja a folyamatot Azure Resource Manager sablonként egy logikai alkalmazáshoz, üzembe helyezheti a logikai alkalmazás sablonját egy Azure-erőforráscsoporthoz, majd megnyithatja a logikai alkalmazást a Logic app Designerben.
 
@@ -144,7 +141,7 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
    ![Telepítési paraméterek szerkesztése](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   Amikor az üzembe helyezés elindul, az alkalmazás üzembehelyezési állapota a Visual Studio **Kimenet** ablakában jelenik meg. Ha az állapot nem jelenik meg, nyissa meg a **Kimenet mutatása innen** listát, és válassza ki az Azure-erőforráscsoportot. Például:
+   Amikor az üzembe helyezés elindul, az alkalmazás üzembehelyezési állapota a Visual Studio **Kimenet** ablakában jelenik meg. Ha az állapot nem jelenik meg, nyissa meg a **Kimenet mutatása innen** listát, és válassza ki az Azure-erőforráscsoportot. Példa:
 
    ![Kimeneti ablak](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 
@@ -160,7 +157,7 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
 További információ ezekről az üzembe helyezési lépésekről: rövid útmutató [: automatizált feladatok, folyamatok és munkafolyamatok létrehozása Azure Logic apps-Visual Studióval](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-to-Azure)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [Azure Logic apps-összekötők számára](../connectors/apis-list.md)
 * További információ a [Azure Logic apps](../logic-apps/logic-apps-overview.md)

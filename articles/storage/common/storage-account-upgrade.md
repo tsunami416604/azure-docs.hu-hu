@@ -7,25 +7,25 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: 3ad82a1312ccce5029685d903a3c5e3caff50f8a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: edee0e2efadd8e92ebf3533f0716c82029a0c680
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495970"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791705"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Frissítés általános célú v2 Storage-fiókra
 
-Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb funkcióit, és az általános célú v1-és blob Storage-fiókok összes funkcióját beépítik. Az általános célú v2-fiókok használata a legtöbb tárolási helyzetben ajánlott. Az általános célú v2-fiókok az Azure Storage-ban a legalacsonyabb/GB-os kapacitást biztosítják, valamint az iparágban versenyképes tranzakciós árakat.
+Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb funkcióit, és az általános célú v1-és blob Storage-fiókok összes funkcióját beépítik. Az általános célú v2-fiókok használata a legtöbb tárolási helyzetben ajánlott. Az általános célú v2-fiókok az Azure Storage-ban a legalacsonyabb/GB-os kapacitást biztosítják, valamint az iparágban versenyképes tranzakciós árakat. A General-célra v2-fiókok támogatják az alapértelmezett fiók-hozzáférési szinteket a gyakori vagy ritka elérésű, valamint a blobos szinteken a gyakori, ritka vagy archív adatok között.
 
 Egy általános célú v2-es Storage-fiókra való frissítés az általános célú v1-vagy blob Storage-fiókokból egyszerű. A frissítést a Azure Portal, a PowerShell vagy az Azure CLI használatával végezheti el.
 
 > [!IMPORTANT]
 > Az általános célú v1-vagy blob Storage-fiókok általános célú v2-re való frissítése végleges, és nem vonható vissza.
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Nyissa meg a tárfiókot.
 3. A **Beállítások** szakaszban kattintson a **konfiguráció**elemre.
 4. A **Fiók típusa** területen kattintson a **Frissítés** elemre.
@@ -40,19 +40,19 @@ Egy általános célú v2-es Storage-fiókra való frissítés az általános c�
 
 Ha egy általános célú v1-fiókot szeretne egy általános célú v2-fiókra frissíteni a PowerShell használatával, először frissítse a PowerShellt, hogy az az **. Storage** modul legújabb verzióját használja. A PowerShell telepítésével kapcsolatos információkért lásd [az Azure PowerShell telepítését és konfigurálását](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket.
 
-Ezután hívja meg a következő parancsot a fiók frissítéséhez, amely az erőforráscsoport és a Storage-fiók nevét helyettesíti:
+Ezután a következő parancs meghívásával frissítse a fiókot, és cserélje le az erőforráscsoport nevét, a Storage-fiók nevét és a kívánt fiók hozzáférési szintjét.
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
+Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Ha egy általános célú v1-fiókot az Azure CLI használatával szeretne általános célú v2-fiókra frissíteni, először telepítse az Azure CLI legújabb verzióját. A CLI telepítésével kapcsolatban lásd [az Azure CLI 2.0-s verziójának telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető szakaszt.
 
-Ezután hívja meg a következő parancsot a fiók frissítéséhez, amely az erőforráscsoport és a Storage-fiók nevét helyettesíti:
+Ezután a következő parancs meghívásával frissítse a fiókot, és cserélje le az erőforráscsoport nevét, a Storage-fiók nevét és a kívánt fiók hozzáférési szintjét.
 
 ```cli
-az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
+az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
 ```
 
 ---
@@ -72,7 +72,7 @@ Mindkét esetben az első prioritás az általános célú v2 Storage-fiókban t
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
-Egy v1-es Storage-fiók egy általános célú v2-fiókra való frissítése ingyenes. A tárolási hozzáférési réteg módosítása azonban változásokat eredményezhet a számlán. 
+Egy v1-es Storage-fiók egy általános célú v2-fiókra való frissítése ingyenes. A frissítési folyamat során megadhatja a kívánt fiók szintjét. Ha nincs megadva a fiók szintje a Verziófrissítéskor, a frissített fiók alapértelmezett fiókjának szintje `Hot`lesz. Ha azonban a frissítés után módosítja a tárolási hozzáférési szintet, akkor a számla módosítása is előfordulhat, hogy a frissítés során javasolt az új fiók rétegének megadására.
 
 Az összes tárfiók az egyes blobok szintjén alapuló árképzési modellt alkalmaz a blobtároláshoz. Tárfiókok használatakor az alábbi számlázási szempontok érvényesülnek:
 
@@ -106,7 +106,7 @@ Annak érdekében, hogy az igényeinek megfelelő hozzáférési szintet döntse
 
 ### <a name="monitoring-existing-storage-accounts"></a>A meglévő tárfiókok figyelése
 
-A meglévő tárfiókok monitorozásához és az ezzel kapcsolatos adatgyűjtéshez nyújt segítséget az Azure Storage Analytics, amellyel naplózhatja a tárfiókokat, és a fiókokra vonatkozó mérőszámokat kaphat. A Storage Analytics olyan mérőszámokat tárol, amelyek a tárolási szolgáltatáshoz érkező kérések összesített tranzakcióstatisztikáját és kapacitási adatait tartalmazzák mind a GPv1 és a GPv2, mind a Blob Storage fióktípus esetében. Ezeket az adatokat a jól ismert táblák tárolják az adott tárfiókban.
+A meglévő tárfiókok monitorozásához és az ezzel kapcsolatos adatgyűjtéshez nyújt segítséget az Azure Storage Analytics, amellyel naplózhatja a tárfiókokat, és megnézheti a fiókokra vonatkozó mérőszámokat. A Storage Analytics olyan mérőszámokat tárol, amelyek a tárolási szolgáltatáshoz érkező kérések összesített tranzakcióstatisztikáját és kapacitási adatait tartalmazzák mind a GPv1 és a GPv2, mind a Blob Storage fióktípus esetében. Ezeket az adatokat a jól ismert táblák tárolják az adott tárfiókban.
 
 További információért lásd [a Storage Analytics mérőszámainak áttekintését](https://msdn.microsoft.com/library/azure/hh343258.aspx) és [a Storage Analytics mérőszámainak táblasémáját](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
@@ -114,7 +114,7 @@ További információért lásd [a Storage Analytics mérőszámainak áttekint�
 > A Blob Storage-tárfiókok a tábla szolgáltatásvégpontját csak az adott fiók mérőszámadatainak tárolásához és eléréséhez jelenítik meg.
 
 A Blob Storage tárolófelhasználásának figyeléséhez engedélyeznie kell a kapacitási mérőszámot.
-Ha ez a mérőszám engedélyezve van, a rendszer naponta rögzíti a tárfiók Blob szolgáltatásának kapacitásadatait, és létrehoz egy táblabejegyzést az adott tárfiók *$MetricsCapacityBlob* táblájában.
+Ha ez a mérőszám engedélyezve van, a rendszer naponta rögzíti a tárfiók blobszolgáltatásának kapacitásadatait, és létrehoz egy táblabejegyzést az adott tárfiók *$MetricsCapacityBlob* táblájában.
 
 A Blob Storage adathozzáférési mintáinak figyeléséhez engedélyeznie kell az óránkénti tranzakciók mérőszámát az API szintjén. Ha az óránkénti tranzakciók mérőszáma engedélyezve van, a rendszer óránként összesíti az API-tranzakciókat, és táblabejegyzést hoz létre az adott tárfiók *$MetricsHourPrimaryTransactionsBlob* táblájában. A *$MetricsHourSecondaryTransactionsBlob* tábla a másodlagos végpontra rögzíti a tranzakciókat RA-GRS-tárfiókok használata esetében.
 
@@ -152,7 +152,7 @@ A GPv1-tárfiókok tranzakciós költségeinek becsléséhez összesítenie kell
 
 Bár a tároló elemzése nem jelzi a tárfiókból olvasott és a tárfiókba írt adatok mennyiségét, a tranzakciók mérőszámának táblája alapján lehetőség van megközelítőleges becslésre. A tranzakciók mérőszámának táblájában az adott API-hoz tartozó bejegyzések *„TotalIngress”* összege mutatja az adott API bejövő adatainak teljes mennyiségét bájtban. Hasonlóképpen a *„TotalEgress”* összege a kimenő adatok teljes mennyiségét mutatja bájtban.
 
-A Blob Storage-tárfiókok adat-hozzáférési költségeinek kiszámításához a tranzakciókat két csoportra kell felosztania.
+A Blob Storage-tárfiókok adathozzáférési költségeinek kiszámításához a tranzakciókat két csoportra kell felosztania.
 
 * A tárfiókból lekért adatok mennyisége a *„TotalEgress”* összegéből becsülhető meg, elsődlegesen a *„GetBlob”* és a *„CopyBlob”* művelet alapján.
 
@@ -163,7 +163,7 @@ A Blob Storage-tárfiókok georeplikációs adatátviteli költségei szintén a
 > [!NOTE]
 > A gyakori és ritka elérésű tárolási hozzáférési szint használatának költségeinek kiszámításához tekintse meg a *"mi a gyors és a lassú elérési szint, és Hogyan határozható meg, hogy melyiket érdemes használni?"* című részt. az [Azure Storage díjszabását tartalmazó oldalon](https://azure.microsoft.com/pricing/details/storage/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tárfiók létrehozása](storage-quickstart-create-account.md)
 - [Azure Storage-fiókok kezelése](storage-account-manage.md)

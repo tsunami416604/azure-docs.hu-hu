@@ -1,19 +1,19 @@
 ---
-title: Biztonság Azure Database for MariaDB – egyetlen kiszolgáló
-description: A Azure Database for MariaDB-egy kiszolgáló biztonsági funkcióinak áttekintése.
+title: Biztonság – Azure Database for MariaDB
+description: A Azure Database for MariaDB biztonsági funkcióinak áttekintése.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 1a2d7ac449c131519473afaa80eb3a57c287eb28
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: d23eabdacc57a3f5a10d9e3b132a6daac42fbd4d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485184"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772148"
 ---
-# <a name="security-in-azure-database-for-mariadb---single-server"></a>Biztonság Azure Database for MariaDB – egyetlen kiszolgáló
+# <a name="security-in-azure-database-for-mariadb"></a>Biztonság az Azure Database for MariaDB-ben
 
 Több biztonsági réteg is rendelkezésre áll, amelyek a Azure Database for MariaDB-kiszolgálón lévő adatvédelmet biztosítanak. Ez a cikk ezeket a biztonsági beállításokat ismerteti.
 

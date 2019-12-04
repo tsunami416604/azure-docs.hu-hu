@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 8604df894367ccc25d7e9ffae4453a6b3080b7d8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 24bee8ffe23d524553143b2097560979a39329d7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226699"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784714"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
 
@@ -133,7 +133,7 @@ Az alábbi [lépések segítségével telepítheti az alapvető](https://wiki.de
 
 1. Ha nem tervezi a [bővítmények]használatát, telepítse [a .net Core 2. x SDK-t a Linux rendszerhez](https://www.microsoft.com/net/download/linux).
 
-## <a name="create-a-local-functions-project"></a>Egy helyi Functions-projekt létrehozása
+## <a name="create-a-local-functions-project"></a>Helyi functions-projekt létrehozása
 
 A functions projekt könyvtára tartalmazza a [Host. JSON](functions-host-json.md) és a [Local. Settings. JSON](#local-settings-file)fájlt, valamint az egyes függvények kódját tartalmazó almappákat. Ez a könyvtár egyenértékű egy Azure-beli Function alkalmazással. A functions mappa struktúrájával kapcsolatos további tudnivalókért tekintse meg a [Azure functions fejlesztői útmutató](functions-reference.md#folder-structure)című témakört.
 
@@ -171,7 +171,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 a `func init` a következő beállításokat támogatja, amelyek csak 2. x verziójúak, hacsak másként nincs jelezve:
 
-| Beállítás     | Leírás                            |
+| Lehetőség     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | Egy [ C# Class Library-(. cs) projekt](functions-dotnet-class-library.md)inicializálása. |
 | **`--csx`** | Egy [ C# parancsfájl-(. CSX) projekt](functions-reference-csharp.md)inicializálása. A következő parancsokban meg kell adnia `--csx`. |
@@ -211,7 +211,7 @@ Ha nincs beállítva érvényes tárolási kapcsolódási karakterlánc a [`Azur
 
 Még ha a Storage emulatort is szeretné használni a fejlesztéshez, érdemes lehet egy tényleges tárolási kapcsolatban is tesztelni. Feltételezve, hogy már [létrehozott egy Storage-fiókot](../storage/common/storage-create-storage-account.md), a következő módokon szerezhet be érvényes tárolási kapcsolatok karakterláncot:
 
-- A [Azure Portal]keresse meg és válassza ki a **Storage-fiókok**lehetőséget. 
+- A [Azure Portalra]keresse meg és válassza ki a **Storage-fiókok**lehetőséget. 
   ![válassza ki a Storage-fiókokat Azure Portal](./media/functions-run-local/select-storage-accounts.png)
   
   Válassza ki a Storage-fiókját, válassza a **hozzáférési kulcsok** lehetőséget a **Beállítások**területen, majd másolja a **kapcsolati karakterlánc** egyik értékét.
@@ -238,7 +238,7 @@ Még ha a Storage emulatort is szeretné használni a fejlesztéshez, érdemes l
 
 ## <a name="create-func"></a>Függvény létrehozása
 
-Hozzon létre egy függvényt, futtassa a következő parancsot:
+Függvény létrehozásához futtassa a következő parancsot:
 
 ```bash
 func new
@@ -328,7 +328,7 @@ func host start
 
 `func start` a következő lehetőségeket támogatja:
 
-| Beállítás     | Leírás                            |
+| Lehetőség     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | A Futtatás előtt ne hozzon létre aktuális projektet. Csak a DotNet-projektekhez. Az alapértelmezett érték false (hamis). Csak 2. x verzió. |
 | **`--cert`** | A titkos kulcsot tartalmazó. pfx-fájl elérési útja. Csak `--useHttps`használatos. Csak 2. x verzió. |
@@ -418,7 +418,7 @@ A függvényeket közvetlenül a `func run <FunctionName>` használatával is me
 
 `func run` a következő lehetőségeket támogatja:
 
-| Beállítás     | Leírás                            |
+| Lehetőség     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | Beágyazott tartalom. |
 | **`--debug -d`** | A függvény futtatása előtt csatoljon egy hibakeresőt a gazdagéphez.|
@@ -454,14 +454,14 @@ Ez a parancs egy meglévő Function alkalmazásba tesz közzé az Azure-ban. Hib
 
 A következő közzétételi beállítások mindkét verzióra érvényesek: 1. x és 2. x.
 
-| Beállítás     | Leírás                            |
+| Lehetőség     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  A beállítások közzététele a local. Settings. JSON fájlban az Azure-ba, ha a beállítás már létezik, a rendszer megkéri a felülírásra. Ha a Storage emulatort használja, először módosítsa az alkalmazás beállításait egy [tényleges Storage-kapcsolatban](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | `--publish-local-settings -i` használatakor a rendszer letiltja az Alkalmazásbeállítások felülírását.|
 
 A következő közzétételi beállítások csak a 2. x verzióban támogatottak:
 
-| Beállítás     | Leírás                            |
+| Lehetőség     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only -o`** |  Csak a beállítások közzététele és a tartalom kihagyása. Az alapértelmezett érték a prompt. |
 |**`--list-ignored-files`** | A közzététel során figyelmen kívül hagyott fájlok listáját jeleníti meg, amely a. funcignore fájlon alapul. |
@@ -485,7 +485,7 @@ func deploy
 
 A következő egyéni tároló üzembe helyezési lehetőségei érhetők el:
 
-| Beállítás     | Leírás                            |
+| Lehetőség     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | Annak a Docker-beállításjegyzéknek a neve, amelyre az aktuális felhasználó bejelentkezett. |
 | **`--platform`** | Üzemeltetési platform a Function alkalmazáshoz. Az érvényes beállítások a következők `kubernetes` |
@@ -517,13 +517,13 @@ Az ilyen típusú folyamatos átviteli naplókhoz [engedélyeznie kell Applicati
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Azure Functions Core Tools [nyílt forráskódú, és a githubon fut](https://github.com/azure/azure-functions-cli).  
+Megtudhatja, hogyan fejlesztheti, tesztelheti és teheti közzé Azure Functions a Azure Functions Core Tools [Microsoft Learning modul](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) használatával Azure functions Core Tools [nyílt forráskódú, és a githubon üzemeltethető](https://github.com/azure/azure-functions-cli).  
 Egy hiba vagy szolgáltatás kérésének megkereséséhez [Nyisson meg egy GitHub-problémát](https://github.com/azure/azure-functions-cli/issues).
 
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure Portalra]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage

@@ -1,42 +1,42 @@
 ---
-title: Lekérdezési statisztikák gyűjtemény egy Azure database for PostgreSQL - kiszolgáló egyetlen optimalizálása
-description: Ez a cikk bemutatja, hogyan optimalizálhatók a lekérdezési statisztikák gyűjtemény egy Azure database for PostgreSQL – egyetlen kiszolgáló
+title: Lekérdezési statisztikák gyűjtésének optimalizálása – Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk azt ismerteti, hogyan optimalizálható a lekérdezési statisztikák gyűjtése egy Azure Database for PostgreSQL egyetlen kiszolgálón
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 7425ee7916fd71625f336a7af35f6481d1ed2474
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f467f01118470eb51f7decf3bd6457917c566723
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068959"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770169"
 ---
-# <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>Lekérdezési statisztikák gyűjtését az Azure Database for PostgreSQL - kiszolgáló egyetlen optimalizálása
-Ez a cikk ismerteti, hogyan optimalizálható a lekérdezési statisztikák gyűjtését az Azure Database for PostgreSQL-kiszolgálót.
+# <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>Lekérdezési statisztikák gyűjtésének optimalizálása egy Azure Database for PostgreSQL egyetlen kiszolgálón
+Ez a cikk azt ismerteti, hogyan optimalizálható a lekérdezési statisztikák gyűjteménye egy Azure Database for PostgreSQL kiszolgálón.
 
-## <a name="use-pgstatsstatements"></a>Pg_stats_statements használata
-**Pg_stat_statements** egy PostgreSQL-bővítmény, amely a PostgreSQL-hez készült Azure Database-ben alapértelmezés szerint engedélyezve van. A bővítmény megadja egy azt jelenti, hogy a kiszolgáló által végrehajtott összes SQL-utasítások végrehajtási statisztikák nyomon követéséhez. Ez a modul be minden lekérdezés-végrehajtás csatlakozik, és nem triviális teljesítményt is tartalmaz. Engedélyezés **pg_stat_statements** kényszeríti a lekérdezés szöveges írások a lemezen tárolt fájlok.
+## <a name="use-pg_stats_statements"></a>Pg_stats_statements használata
+**Pg_stat_statements** egy PostgreSQL-bővítmény, amely alapértelmezés szerint engedélyezve van a Azure Database for PostgreSQLban. A bővítmény segítségével nyomon követhető a kiszolgáló által végrehajtott összes SQL-utasítás végrehajtási statisztikája. Ez a modul minden lekérdezés-végrehajtáshoz csatlakozik, és nem triviális teljesítménnyel jár. A **pg_stat_statements** kényszeríti a szöveges írásokat a lemezen lévő fájlokba.
 
-Ha hosszú lekérdezés szövege egyedi lekérdezések van, vagy nem aktívan figyeljük **pg_stat_statements**, tiltsa le **pg_stat_statements** a legjobb teljesítmény érdekében. Ehhez állítsa a beállítást `pg_stat_statements.track = NONE`.
+Ha olyan egyedi lekérdezésekkel rendelkezik, amelyek hosszú lekérdezési szöveggel rendelkeznek, vagy ha nem figyeli aktívan a **pg_stat_statements**, tiltsa le **pg_stat_statements** a legjobb teljesítmény érdekében. Ehhez módosítsa a beállítást `pg_stat_statements.track = NONE`ra.
 
-Néhány ügyfél munkaterheléseinek láthatta, legfeljebb 50 százalékos teljesítményjavulást amikor **pg_stat_statements** le van tiltva. A kompromisszummal jár, győződjön meg arról, ha letiltja a pg_stat_statements megakadályozhatják a teljesítménnyel kapcsolatos problémák elhárításához.
+Egyes ügyfelek munkaterhelései egy 50 százalékos teljesítménybeli javulást észleltek, ha **pg_stat_statements** le van tiltva. A pg_stat_statements letiltásakor felmerülő kompromisszum nem képes a teljesítménnyel kapcsolatos problémák elhárítására.
 
-Beállítása `pg_stat_statements.track = NONE`:
+`pg_stat_statements.track = NONE`beállítása:
 
-- Az Azure Portalon nyissa meg a [PostgreSQL erőforrás-kezelés lapon, és válassza a kiszolgáló paraméterei panelen](howto-configure-server-parameters-using-portal.md).
+- A Azure Portal lépjen a [PostgreSQL erőforrás-kezelés lapra, és válassza a kiszolgálói paraméterek](howto-configure-server-parameters-using-portal.md)panelt.
 
-  ![PostgreSQL-kiszolgáló paraméter panel](./media/howto-optimize-query-stats-collection/pg_stats_statements_portal.png)
+  ![PostgreSQL-kiszolgáló paraméterének panelje](./media/howto-optimize-query-stats-collection/pg_stats_statements_portal.png)
 
-- Használja a [Azure CLI-vel](howto-configure-server-parameters-using-cli.md) az postgres server configuration beállítása `--name pg_stat_statements.track --resource-group myresourcegroup --server mydemoserver --value NONE`.
+- Használja az [Azure CLI](howto-configure-server-parameters-using-cli.md) az postgres Server Configuration set to `--name pg_stat_statements.track --resource-group myresourcegroup --server mydemoserver --value NONE`.
 
-## <a name="use-the-query-store"></a>A Query Store használata 
-A [Query Store](concepts-query-store.md) PostgreSQL lekérdezési statisztikák nyomon hatékonyabb módszert biztosít az Azure Database szolgáltatásával. Ez a funkció használata helyett javasoljuk *pg_stats_statements*. 
+## <a name="use-the-query-store"></a>A lekérdezési tároló használata 
+A Azure Database for PostgreSQL [lekérdezés-tárolási](concepts-query-store.md) funkciója hatékonyabb módszert biztosít a lekérdezési statisztikák nyomon követésére. Ezt a funkciót a *pg_stats_statements*használatának alternatívájaként ajánljuk. 
 
-## <a name="next-steps"></a>További lépések
-Érdemes lehet `pg_stat_statements.track = NONE` a a [az Azure portal](howto-configure-server-parameters-using-portal.md) vagy a [Azure CLI-vel](howto-configure-server-parameters-using-cli.md).
+## <a name="next-steps"></a>Következő lépések
+Érdemes lehet `pg_stat_statements.track = NONE` beállítani a [Azure Portal](howto-configure-server-parameters-using-portal.md) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md)használatával.
 
-További információkért lásd: 
+További információ eléréséhez lásd: 
 - [Lekérdezéstár – használati forgatókönyvek](concepts-query-store-scenarios.md) 
-- [Query Store ajánlott eljárások](concepts-query-store-best-practices.md) 
+- [A lekérdezési tároló ajánlott eljárásai](concepts-query-store-best-practices.md) 

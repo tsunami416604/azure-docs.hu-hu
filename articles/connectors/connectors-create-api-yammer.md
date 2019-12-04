@@ -1,22 +1,18 @@
 ---
-title: Kapcsolódás a Yammer-hez Azure Logic Appsról | Microsoft Docs
+title: Kapcsolódás a Yammer-hez Azure Logic Apps
 description: Automatizálhatja az üzeneteket, a hírcsatornákat és a Yammer figyelését, közzétételét és kezelését a Azure Logic Apps használatával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 9228a94dcf27d8987b16e2caa2681cf973db0657
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 194c08d034d44ba0a4472b3b516fc45d1d262d28
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050637"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789069"
 ---
 # <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>A Yammer-fiók figyelése és kezelése Azure Logic Apps használatával
 
@@ -78,6 +74,6 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai r�
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

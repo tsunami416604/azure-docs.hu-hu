@@ -1,53 +1,53 @@
 ---
-title: Csatlakozás az Azure Kubernetes Service (AKS) az Azure Database for MySQL
-description: További tudnivalók az Azure Kubernetes Service csatlakoztatása az Azure Database for MySQL-hez
+title: Kapcsolódás az Azure Kubernetes szolgáltatáshoz – Azure Database for MySQL
+description: Tudnivalók az Azure Kubernetes szolgáltatás az Azure Database for MySQL-vel való csatlakoztatásáról
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/28/2018
-ms.openlocfilehash: d9f2e26a2bc89329ca9038c666c0d960289e2670
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 71b266231b7ed3012e5ea7f65fe9487eeb5fb358
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790521"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773611"
 ---
-# <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Csatlakozás az Azure Kubernetes Service és az Azure Database for MySQL-hez
+# <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Az Azure Kubernetes szolgáltatás és a Azure Database for MySQL csatlakoztatása
 
-Az Azure Kubernetes Service (AKS) biztosít egy felügyelt Kubernetes-fürtöt az Azure-ban is használhatja. Az alábbiakban néhány lehetőség használatakor figyelembe kell AKS és Azure Database for MySQL együtt alkalmazás létrehozása.
+Az Azure Kubernetes Service (ak) egy felügyelt Kubernetes-fürtöt biztosít, amelyet az Azure-ban használhat. Az alábbiakban néhány olyan lehetőség közül választhat, amely az AK-t használja, és Azure Database for MySQL együtt egy alkalmazás létrehozásához.
 
 
 ## <a name="accelerated-networking"></a>Gyorsított hálózatkezelés
-A gyorsított hálózati üzemmódú alapjául szolgáló virtuális gépeinek az AKS-fürt használatát. Ha egy virtuális gépen engedélyezve van a gyorsított hálózatkezelés, nincs kisebb hálózati késést, végrehajtását alacsonyabb jitter és csökkent, a virtuális gép CPU-kihasználtság. Ismerje meg bővebben tájékozódhat a gyorsított hálózati működik, a támogatott operációs rendszerekről, és a Virtuálisgép-példányok esetében támogatott [Linux](../virtual-network/create-vm-accelerated-networking-cli.md).
+Gyorsított hálózatkezeléssel rendelkező mögöttes virtuális gépek használata az AK-fürtben. Ha a gyorsított hálózatkezelés engedélyezve van egy virtuális gépen, alacsonyabb a késés, a csökkent jitter és a CPU-kihasználtság csökkent a virtuális gépen. További információ a gyorsított hálózatkezelés működéséről, a támogatott operációsrendszer-verziókról és a [Linux](../virtual-network/create-vm-accelerated-networking-cli.md)rendszerhez támogatott VM-példányokról.
 
-A 2018 November AKS gyorsított hálózatkezelés támogatott Virtuálisgép-példányok használatát támogatja. A virtuális gépek használó új AKS-fürtök alapértelmezés szerint engedélyezve van a gyorsított hálózatkezeléssel.
+Az AK november 2018-én támogatja a gyorsított hálózatkezelést a támogatott VM-példányokon. A gyorsított hálózatkezelés alapértelmezés szerint engedélyezve van a virtuális gépeket használó új AK-fürtökön.
 
-Ellenőrizheti, hogy az AKS-fürt rendelkezik gyorsított hálózatkezelést:
-1. Nyissa meg az Azure Portalon, és válassza ki az AKS-fürt.
-2. Válassza a Tulajdonságok lapot.
-3. Másolja ki a nevét a **infrastruktúra erőforráscsoport**.
-4. A portál Keresősáv használatával keresse meg és nyissa meg az infrastruktúra erőforráscsoportot.
-5. Válasszon egy virtuális Gépet az erőforráscsoport.
-6. Nyissa meg a virtuális gép **hálózatkezelés** fülre.
-7. Győződjön meg róla hogy **gyorsított hálózatkezelés** "Engedélyezve van."
+Megerősítheti, hogy az AK-fürt felgyorsult hálózattal rendelkezik-e:
+1. Nyissa meg a Azure Portal, és válassza ki az AK-fürtöt.
+2. Válassza a tulajdonságok lapot.
+3. Másolja az **infrastruktúra-erőforráscsoport**nevét.
+4. Az infrastruktúra-erőforráscsoport megkereséséhez és megnyitásához használja a portál keresési sávját.
+5. Válasszon ki egy virtuális gépet az adott erőforráscsoporthoz.
+6. Nyissa meg a virtuális gép **hálózatkezelés** lapját.
+7. Győződjön meg arról, hogy a **gyorsított hálózatkezelés** engedélyezve van-e.
 
 Vagy az Azure CLI-n keresztül az alábbi két parancs használatával:
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
 ```
-A kimenet a létrehozott erőforráscsoportot, hogy az AKS hoz létre, amely tartalmazza a hálózati adapter lesz. "NodeResourceGroup" nevét, és a következő parancsot használhatja. **EnableAcceleratedNetworking** vagy lesz true vagy FALSE (hamis):
+A kimenet a létrehozott erőforráscsoport, amely a hálózati adaptert tartalmazó AK-t hozza létre. Adja meg a "nodeResourceGroup" nevet, és használja a következő parancsban. A **EnableAcceleratedNetworking** értéke TRUE (igaz) vagy FALSE (hamis) lesz:
 ```azurecli
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
 ## <a name="open-service-broker-for-azure"></a>Open Service Broker for Azure 
-[Nyissa meg a Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) lehetővé teszi a közvetlenül a Kubernetes vagy a Cloud Foundry Azure-szolgáltatások kiépítése. Ez egy [Open Service Broker API](https://www.openservicebrokerapi.org/) megvalósítása az Azure-hoz.
+[A nyílt Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) lehetővé teszi az Azure-szolgáltatások kiépítését közvetlenül a Kubernetes vagy a Cloud Foundryból. Ez egy [nyílt Service Broker API](https://www.openservicebrokerapi.org/) -implementáció az Azure-hoz.
 
-Az OSBA hozzon létre egy Azure Database for MySQL-kiszolgálóhoz, és kösse az AKS-fürt Kubernetes általi natív nyelv használatával. Megtudhatja, hogyan használandó OSBA és az Azure Database for MySQL-hez együtt a [OSBA GitHub-oldalon](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md). 
+A OSBA-mel létrehozhat egy Azure Database for MySQL-kiszolgálót, és összekapcsolhatja azt az AK-fürttel az Kubernetes natív nyelv használatával. Ismerje meg, hogyan használható a OSBA és a Azure Database for MySQL együtt a [OSBA GitHub oldalon](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md). 
 
 
 
-## <a name="next-steps"></a>További lépések
-- [Az Azure Kubernetes Service-fürt létrehozása](../aks/kubernetes-walkthrough.md)
-- Ismerje meg, hogyan [WordPress telepítése egy Helm-diagramból OSBA és az Azure Database for MySQL használatával](../aks/integrate-azure.md)
+## <a name="next-steps"></a>Következő lépések
+- [Azure Kubernetes Service-fürt létrehozása](../aks/kubernetes-walkthrough.md)
+- Ismerje meg, hogyan [telepítheti a WordPresst egy Helm-diagramon a OSBA és a Azure Database for MySQL használatával](../aks/integrate-azure.md)

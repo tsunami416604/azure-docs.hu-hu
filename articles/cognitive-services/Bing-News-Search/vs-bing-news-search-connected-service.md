@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: 9cac13f8fb42959e79cafedcc7057d1cb7c2f7d5
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2afe9a66d9f0ebecaef9626ef6caf9fc30f20841
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689380"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771070"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Oktatóanyag: csatlakozás a Bing News Search APIhoz csatlakoztatott szolgáltatásokkal a Visual Studióban ésC#
 
@@ -268,4 +268,4 @@ Ha már nincs rá szükség, törölheti az erőforráscsoportot. Ezzel törli a
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a Bing News Search API-ról: [Mi a Bing News Search?](index.yml).
+További információ a Bing News Search API-ról: [Mi a Bing News Search?](search-the-web.md).

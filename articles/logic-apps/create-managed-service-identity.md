@@ -1,24 +1,21 @@
 ---
-title: Hitelesítés felügyelt identitásokkal – Azure Logic Apps
+title: Hitelesítés felügyelt identitásokkal
 description: Más Azure Active Directory bérlők erőforrásainak elérése a hitelesítő adatokkal vagy titkos kódokkal való bejelentkezés nélkül felügyelt identitás használatával
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 2d1dbde2499dbe793a895f894e5ae83c36c54449
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 49c925cfe61084d8fedfdf953d469db4bd2c10b1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200626"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792675"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps
 
-Ha más Azure Active Directory-(Azure AD-) bérlők erőforrásaihoz szeretne hozzáférni, és a bejelentkezés nélkül hitelesíti az identitást, a logikai alkalmazás a rendszerhez rendelt [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén Managed Service Identity vagy msi) is használhatja, nem pedig hitelesítő adatok vagy titkos kódok. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia. Ez a cikk bemutatja, hogyan állíthatja be és használhatja a rendszerhez rendelt felügyelt identitást a logikai alkalmazásban. A felügyelt identitások jelenleg csak [meghatározott beépített eseményindítókkal és műveletekkel](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls)működnek, nem felügyelt összekötőket és kapcsolatokat.
+Ha más Azure Active Directory-(Azure AD-) bérlők erőforrásaihoz szeretne hozzáférni, és hitelesítés nélkül hitelesíti az identitást, a logikai alkalmazás a hitelesítő adatok vagy titkos kódok helyett a rendszerhez rendelt [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén Managed Service Identity vagy msi) is használhatja. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia. Ez a cikk bemutatja, hogyan állíthatja be és használhatja a rendszerhez rendelt felügyelt identitást a logikai alkalmazásban. A felügyelt identitások jelenleg csak [meghatározott beépített eseményindítókkal és műveletekkel](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls)működnek, nem felügyelt összekötőket és kapcsolatokat.
 
 További információkért tekintse meg a következő témaköröket:
 

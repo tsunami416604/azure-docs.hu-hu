@@ -1,29 +1,30 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: ebae0fac5edc0bb79e6a19d8bdc741960f0b0e20
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: 3ca8d631110f8b175e7dc68d61cc6da4ac87d375
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179377"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789518"
 ---
-### <a name="prerequisites"></a>Előfeltételek
-* Egy [Office 365-felhasználók](https://office365.com) fiók  
+## <a name="prerequisites"></a>Előfeltételek
 
-Az Office 365 felhasználói fiók, a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás az Office 365 felhasználói fiókhoz való csatlakozáshoz. Szerencsére a ehhez egyszerűen, a logikai alkalmazás az Azure Portal webhelyen belül.  
+* [Office 365 felhasználói](https://office365.com) fiók  
 
-A logikai alkalmazás az Office 365 felhasználói fiókhoz való csatlakozás engedélyezése lépései a következők:  
+Ahhoz, hogy használhassa az Office 365-felhasználói fiókját egy logikai alkalmazásban, engedélyeznie kell a logikai alkalmazásnak az Office 365-felhasználói fiókhoz való kapcsolódást. Szerencsére ezt könnyedén elvégezheti az Azure Portalon a logikai alkalmazáson belül.  
 
-1. A Logic app Designerben az Office 365 Users-kapcsolat létrehozásához jelölje ki a **megjelenítése a Microsoft által felügyelt API-k** a legördülő listában adja meg *Office 365-felhasználók* kifejezést a keresőmezőbe. Válassza ki az eseményindítót vagy műveletet fogja kíván használni:  
-   ![Az Office 365 felhasználók kapcsolódási létrehozási lépés](./media/connectors-create-api-office365users/office365users-1.png)  
-2. Ha még nem hozott létre az Office 365-felhasználók előtt a kapcsolatokat, első kéri, adja meg az Office 365-felhasználók hitelesítő adatait. Ezekkel a hitelesítő adatokkal kapcsolódni a logikai alkalmazás hitelesítéséhez használható, és a Office 365 felhasználói fiókhoz tartozó adatok eléréséhez:  
-   ![Az Office 365 felhasználók kapcsolódási létrehozási lépés](./media/connectors-create-api-office365users/office365users-2.png)  
-3. Adja meg a Office 365-felhasználók felhasználónevét és jelszavát a logikai alkalmazás engedélyezése:  
-   ![Az Office 365 felhasználók kapcsolódási létrehozási lépés](./media/connectors-create-api-office365users/office365users-3.png)  
-4. Figyelje meg, hogy a kapcsolat létrejött, és most már szabadon folytassa a további lépésekkel, a logikai alkalmazásban:  
-   ![Az Office 365 felhasználók kapcsolódási létrehozási lépés](./media/connectors-create-api-office365users/office365users-4.png)  
+Az alábbi lépésekkel engedélyezheti a logikai alkalmazásnak, hogy kapcsolódjon az Office 365 felhasználói fiókjához:  
+
+1. Ha az Office 365-felhasználók kapcsolatát szeretné létrehozni, a Logic app Designerben válassza a **Microsoft felügyelt API** -k megjelenítése lehetőséget a legördülő listában, majd írja be az *Office 365-felhasználók* kifejezést a keresőmezőbe. Válassza ki a használni kívánt triggert vagy műveletet:  
+   ![Office 365 felhasználói kapcsolatok létrehozási lépése](./media/connectors-create-api-office365users/office365users-1.png)  
+2. Ha korábban még nem hozott létre kapcsolatot az Office 365-felhasználók számára, a rendszer felszólítja az Office 365-felhasználók hitelesítő adatainak megadására. Ezeket a hitelesítő adatokat fogja használni a logikai alkalmazáshoz való kapcsolódáshoz és az Office 365 felhasználói fiók adatainak eléréséhez:  
+   ![Office 365 felhasználói kapcsolatok létrehozási lépése](./media/connectors-create-api-office365users/office365users-2.png)  
+3. Adja meg az Office 365 felhasználói felhasználónevét és jelszavát a logikai alkalmazás engedélyezéséhez:  
+   ![Office 365 felhasználói kapcsolatok létrehozási lépése](./media/connectors-create-api-office365users/office365users-3.png)  
+4. Figyelje meg, hogy létrejött a kapcsolódás, és most már ingyenesen folytathatja a logikai alkalmazás egyéb lépéseit:  
+   ![Office 365 felhasználói kapcsolatok létrehozási lépése](./media/connectors-create-api-office365users/office365users-4.png)  
 

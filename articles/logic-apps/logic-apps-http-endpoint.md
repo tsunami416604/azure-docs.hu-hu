@@ -1,20 +1,17 @@
 ---
-title: Logikai alkalmazások hívása, triggere vagy beágyazása – Azure Logic Apps
+title: Logikai alkalmazások hívása, aktiválása vagy beágyazása
 description: HTTP-végpontok beállítása a logikai alkalmazások munkafolyamatainak meghívásához, triggeréhez vagy beágyazásához Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.workload: integration
-author: ecfan
-ms.author: klam
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: 27a3bf036cce27a5f215068ff71928cb7e181452
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833916"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792030"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Logikai alkalmazások hívása, elindítása vagy beágyazása HTTP-végpontok használatával Azure Logic Apps
 
@@ -39,7 +36,7 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse meg a [Mi az a Azure
 
 ## <a name="create-a-callable-endpoint"></a>Hívható végpont létrehozása
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). Hozzon létre és nyisson meg egy üres logikai alkalmazást a Logic app Designerben.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Hozzon létre és nyisson meg egy üres logikai alkalmazást a Logic app Designerben.
 
    Ez a példa a kérelem triggert használja, de bármilyen olyan triggert használhat, amely képes fogadni a bejövő HTTP-kérelmeket. Ezek az eseményindítók mindegyike azonos elveket alkalmaz. További információ a kérések triggeréről: [fogadás és válaszadás a bejövő HTTPS-hívásokra Azure Logic Apps használatával](../connectors/connectors-native-reqres.md).
 
@@ -326,6 +323,6 @@ Válasz **: igen**, a http-végpontok az [Azure API Management](../api-managemen
 * A API Management-tartományok beállítása a [Azure Portal](https://portal.azure.com/)
 * Házirend beállítása az egyszerű hitelesítés kereséséhez
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejövő HTTPS-hívások fogadása és válaszadás a Azure Logic Apps használatával](../connectors/connectors-native-reqres.md)

@@ -3,21 +3,21 @@ title: Közzétételi tervre vonatkozó irányelvek
 titleSuffix: Azure Cognitive Services
 description: Bevezetés a közzétételi tervezési irányelvekbe és a közzétételi szint kiértékelésére.
 services: cognitive-services
-author: angle
+author: sharonlo101
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/03/2019
 ms.author: angle
-ms.openlocfilehash: 7dffa3d9f6e96adc6146a1059e7360c77926ece3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837378"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776385"
 ---
-# <a name="disclosure-design-guidelines"></a>Közzétételi tervre vonatkozó irányelvek
+# <a name="disclosure-design-guidelines"></a>Közzététel-tervezési irányelvek
 Ismerje meg, hogyan hozhat létre és tarthat fenn megbízhatóságot az ügyfelekkel a hangélmény szintetikus természetének átláthatósága érdekében.
 
 ## <a name="what-is-disclosure"></a>Mi a nyilvánosságra hozatal?
@@ -80,6 +80,6 @@ A következő ábra segítségével meghatározhatja, hogy a szintetikus hangél
 * [Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez](concepts-guidelines-responsible-deployment-synthetic.md)
 * [A kapuzás áttekintése](concepts-gating-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Közzétételi tervezési minták](concepts-disclosure-patterns.md)

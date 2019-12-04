@@ -2,19 +2,16 @@
 title: Integrációs szolgáltatási környezetek kezelése Azure Logic Apps
 description: A hálózati állapot és a Logic apps, kapcsolatok, egyéni összekötők és integrációs fiókok kezelése a Azure Logic Apps integrációs szolgáltatási környezetében (ISE)
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6a6b096911ac8596fe29aeb4596f1da6d5266794
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 1d91813e0f39207bcf7768de89600a6bdee0fc53
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967812"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792621"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Az integrációs szolgáltatási környezet (ISE) kezelése Azure Logic Apps
 
@@ -22,7 +19,7 @@ Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtua
 
 ## <a name="view-your-ise"></a>Az ISE megtekintése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 1. A portál keresési mezőjébe írja be az "integrációs szolgáltatási környezetek" kifejezést, majd válassza az **integrációs szolgáltatási környezetek**lehetőséget.
 
@@ -100,6 +97,6 @@ Megtekintheti és kezelheti az ISE-ben üzembe helyezett egyéni összekötőket
 
 1. Ha már nincs rá szükség az integrációs fiókok eltávolítására az ISE-ből, válassza ki ezeket az integrációs fiókokat, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Megtudhatja, hogyan [csatlakozhat az elkülönített logikai alkalmazásokból származó Azure](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) -beli virtuális hálózatokhoz
+* Megtudhatja, hogyan [csatlakozhat az elkülönített logikai alkalmazásokból származó Azure-beli virtuális hálózatokhoz](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)

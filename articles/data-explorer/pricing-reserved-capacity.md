@@ -1,18 +1,18 @@
 ---
 title: Előre fizetés az Azure Adatkezelő Markup szolgáltatásban pénz megtakarítása érdekében
 description: Megtudhatja, hogyan vásárolhat Azure Adatkezelő fenntartott kapacitást az Azure-Adatkezelő költségeinek mentéséhez.
-author: avnera
+author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 66c5644df7d796669105693d08788548334ae93a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c728f3b9a4c10d52d7361ca76e9b40198a6a0dba
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681626"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769098"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Előre fizetés az Azure Adatkezelő Markup egységek számára az Azure Adatkezelő fenntartott kapacitással
 
@@ -65,7 +65,7 @@ Az Azure Adatkezelő Markup Unit foglalási kedvezmény automatikusan érvényes
 > * Az Azure Adatkezelő fenntartott kapacitás foglalásának hatókörét a [Azure Portal](https://portal.azure.com), a PowerShell, a CLI vagy az API segítségével frissítheti.
 > * Az Azure Adatkezelő fenntartott kapacitás foglalásának kezelésével kapcsolatos információkért lásd: az [azure adatkezelő fenntartott kapacitás kezelése](../billing/billing-understand-kusto-azuredataexplorer-reservation-charges.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
@@ -76,6 +76,6 @@ Az Azure Reservationszel kapcsolatos további információkért tekintse meg a k
 * [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../billing/billing-understand-reserved-instance-usage-ea.md)
 * [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolat
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

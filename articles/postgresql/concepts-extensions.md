@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL-bővítmények használata Azure Database for PostgreSQL – egyetlen kiszolgálón
-description: Leírja, hogy az adatbázis funkciói kiterjeszthetők-e az Azure Database for PostgreSQL-egyetlen kiszolgáló bővítményeivel.
+title: Bővítmények – Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: További tudnivalók a Azure Database for PostgreSQL-egyetlen kiszolgálón elérhető postgres-bővítményekről
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 4f81b23378427faa522071f4a20e07485f5c3387
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 12/03/2019
+ms.openlocfilehash: 7a55cc9398cc511ced0a43f0d7a0c1aa6e37f155
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296415"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790399"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-bővítmények Azure Database for PostgreSQL – egyetlen kiszolgáló
 A PostgreSQL lehetőséget nyújt az adatbázis funkcióinak kiterjesztésére a bővítmények használatával. A bővítmények több kapcsolódó SQL-objektumot egyesítenek egyetlen csomagban, amely egyetlen paranccsal tölthető be vagy távolítható el az adatbázisból. Az adatbázisba való betöltés után a bővítmények a beépített funkciókhoz hasonlóan működnek.
@@ -33,7 +33,7 @@ A következő bővítmények érhetők el a postgres 11-es verzióját tartalmaz
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | gyakori adattípusok indexelésének támogatása a GIN-ben|
 > |[btree_gist](https://www.postgresql.org/docs/11/btree-gist.html)                   | 1.5             | gyakori adattípusok indexelésének támogatása a lényegeben|
 > |[citext](https://www.postgresql.org/docs/11/citext.html)                       | 1.5             | kis-és nagybetűket megkülönböztető karakterláncok adattípusa|
-> |[cube](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | többdimenziós kockák adattípusa|
+> |[adatkocka](https://www.postgresql.org/docs/11/cube.html)                         | 1,4             | többdimenziós kockák adattípusa|
 > |[dblink](https://www.postgresql.org/docs/11/dblink.html)                       | 1.2             | Kapcsolódás más PostgreSQL-adatbázisokhoz egy adatbázison belülről|
 > |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1.0             | szöveges keresési szótár sablonja egész számokhoz|
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | nagy hatótávolságú távolságok kiszámítása a Föld felszínén|
@@ -52,8 +52,8 @@ A következő bővítmények érhetők el a postgres 11-es verzióját tartalmaz
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | a megosztott puffer gyorsítótárának vizsgálata|
 > |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 4.0.0           | Bővítmény a particionált táblák kezeléséhez idő vagy azonosító alapján|
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | előmelegítő kapcsolatok adatvédelme|
-> |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
-> |[pg_trgm](https://www.postgresql.org/docs/11/pgtrgm.html)                      | 1.4             | a szöveg hasonlóságának mérése és indexelése Trigrams alapján|
+> |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1,6             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
+> |[pg_trgm](https://www.postgresql.org/docs/11/pgtrgm.html)                      | 1,4             | a szöveg hasonlóságának mérése és indexelése Trigrams alapján|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL eljárási nyelv|
 > |[plv8](https://plv8.github.io/)                         | 2.3.11          | PL/JavaScript (V8) megbízható eljárási nyelv|
 > |[PostGIS](https://www.postgis.net/)                      | 2.5.1           | Geometriai, földrajzi és raszteres térbeli típusok és függvények PostGIS|
@@ -63,8 +63,8 @@ A következő bővítmények érhetők el a postgres 11-es verzióját tartalmaz
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | a teljes táblákat, például a kereszttáblás funkciókat kezelő függvények|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | Méretezhető lapkákat és összetett lekérdezéseket engedélyez az idősorozat-adatsorokhoz|
-> |[unaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | ékezeteket eltávolító szöveges keresési szótár|
-> |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
+> |[nem ékezetes](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | ékezeteket eltávolító szöveges keresési szótár|
+> |[UUID – ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
 
 ## <a name="postgres-10-extensions"></a>Postgres 10 bővítmény 
 
@@ -78,13 +78,13 @@ A következő bővítmények érhetők el olyan Azure Database for PostgreSQL-ki
 > |[btree_gin](https://www.postgresql.org/docs/10/btree-gin.html)                    | 1.3             | gyakori adattípusok indexelésének támogatása a GIN-ben|
 > |[btree_gist](https://www.postgresql.org/docs/10/btree-gist.html)                   | 1.5             | gyakori adattípusok indexelésének támogatása a lényegeben|
 > |[chkpass](https://www.postgresql.org/docs/10/chkpass.html)                       | 1.0             | az automatikusan titkosított jelszavak adattípusa|
-> |[citext](https://www.postgresql.org/docs/10/citext.html)                       | 1.4             | kis-és nagybetűket megkülönböztető karakterláncok adattípusa|
-> |[cube](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | többdimenziós kockák adattípusa|
+> |[citext](https://www.postgresql.org/docs/10/citext.html)                       | 1,4             | kis-és nagybetűket megkülönböztető karakterláncok adattípusa|
+> |[adatkocka](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | többdimenziós kockák adattípusa|
 > |[dblink](https://www.postgresql.org/docs/10/dblink.html)                       | 1.2             | Kapcsolódás más PostgreSQL-adatbázisokhoz egy adatbázison belülről|
 > |[dict_int](https://www.postgresql.org/docs/10/dict-int.html)                     | 1.0             | szöveges keresési szótár sablonja egész számokhoz|
 > |[earthdistance](https://www.postgresql.org/docs/10/earthdistance.html)                | 1.1             | nagy hatótávolságú távolságok kiszámítása a Föld felszínén|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/10/fuzzystrmatch.html)                | 1.1             | a karakterláncok közötti hasonlóságok és távolságok meghatározása|
-> |[hstore](https://www.postgresql.org/docs/10/hstore.html)                       | 1.4             | a (kulcs, érték) párok tárolására szolgáló adattípus|
+> |[hstore](https://www.postgresql.org/docs/10/hstore.html)                       | 1,4             | a (kulcs, érték) párok tárolására szolgáló adattípus|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | Feltételezett indexek a PostgreSQL-hez|
 > |[intarray](https://www.postgresql.org/docs/10/intarray.html)                     | 1.2             | függvények, operátorok és indexek támogatása egész számok 1-D tömbhöz|
 > |[helytelen átvitt](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | a nemzetközi termékek számozási szabványainak adattípusai|
@@ -98,7 +98,7 @@ A következő bővítmények érhetők el olyan Azure Database for PostgreSQL-ki
 > |[pg_buffercache](https://www.postgresql.org/docs/10/pgbuffercache.html)               | 1.3             | a megosztott puffer gyorsítótárának vizsgálata|
 > |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 2.6.3           | Bővítmény a particionált táblák kezeléséhez idő vagy azonosító alapján|
 > |[pg_prewarm](https://www.postgresql.org/docs/10/pgprewarm.html)                   | 1.1             | előmelegítő kapcsolatok adatvédelme|
-> |[pg_stat_statements](https://www.postgresql.org/docs/10/pgstatstatements.html)           | 1.6             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
+> |[pg_stat_statements](https://www.postgresql.org/docs/10/pgstatstatements.html)           | 1,6             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
 > |[pg_trgm](https://www.postgresql.org/docs/10/pgtrgm.html)                      | 1.3             | a szöveg hasonlóságának mérése és indexelése Trigrams alapján|
 > |[plpgsql](https://www.postgresql.org/docs/10/plpgsql.html)                      | 1.0             | PL/pgSQL eljárási nyelv|
 > |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript (V8) megbízható eljárási nyelv|
@@ -109,8 +109,8 @@ A következő bővítmények érhetők el olyan Azure Database for PostgreSQL-ki
 > |[postgres_fdw](https://www.postgresql.org/docs/10/postgres-fdw.html)                 | 1.0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
 > |[tablefunc](https://www.postgresql.org/docs/10/tablefunc.html)                    | 1.0             | a teljes táblákat, például a kereszttáblás funkciókat kezelő függvények|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Méretezhető lapkákat és összetett lekérdezéseket engedélyez az idősorozat-adatsorokhoz|
-> |[unaccent](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | ékezeteket eltávolító szöveges keresési szótár|
-> |[uuid-ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
+> |[nem ékezetes](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | ékezeteket eltávolító szöveges keresési szótár|
+> |[UUID – ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
 
 ## <a name="postgres-96-extensions"></a>Postgres 9,6-bővítmények 
 
@@ -125,12 +125,12 @@ A következő bővítmények érhetők el a 9,6-es postgres-verzióval rendelkez
 > |[btree_gist](https://www.postgresql.org/docs/9.6/btree-gist.html)                   | 1.2             | gyakori adattípusok indexelésének támogatása a lényegeben|
 > |[chkpass](https://www.postgresql.org/docs/9.6/chkpass.html)                       | 1.0             | az automatikusan titkosított jelszavak adattípusa|
 > |[citext](https://www.postgresql.org/docs/9.6/citext.html)                       | 1.3             | kis-és nagybetűket megkülönböztető karakterláncok adattípusa|
-> |[cube](https://www.postgresql.org/docs/9.6/cube.html)                         | 1.2             | többdimenziós kockák adattípusa|
+> |[adatkocka](https://www.postgresql.org/docs/9.6/cube.html)                         | 1.2             | többdimenziós kockák adattípusa|
 > |[dblink](https://www.postgresql.org/docs/9.6/dblink.html)                       | 1.2             | Kapcsolódás más PostgreSQL-adatbázisokhoz egy adatbázison belülről|
 > |[dict_int](https://www.postgresql.org/docs/9.6/dict-int.html)                     | 1.0             | szöveges keresési szótár sablonja egész számokhoz|
 > |[earthdistance](https://www.postgresql.org/docs/9.6/earthdistance.html)                | 1.1             | nagy hatótávolságú távolságok kiszámítása a Föld felszínén|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/9.6/fuzzystrmatch.html)                | 1.1             | a karakterláncok közötti hasonlóságok és távolságok meghatározása|
-> |[hstore](https://www.postgresql.org/docs/9.6/hstore.html)                       | 1.4             | a (kulcs, érték) párok tárolására szolgáló adattípus|
+> |[hstore](https://www.postgresql.org/docs/9.6/hstore.html)                       | 1,4             | a (kulcs, érték) párok tárolására szolgáló adattípus|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | Feltételezett indexek a PostgreSQL-hez|
 > |[intarray](https://www.postgresql.org/docs/9.6/intarray.html)                     | 1.2             | függvények, operátorok és indexek támogatása egész számok 1-D tömbhöz|
 > |[helytelen átvitt](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | a nemzetközi termékek számozási szabványainak adattípusai|
@@ -140,11 +140,11 @@ A következő bővítmények érhetők el a 9,6-es postgres-verzióval rendelkez
 > |[pgcrypto](https://www.postgresql.org/docs/9.6/pgcrypto.html)                     | 1.3             | titkosítási függvények|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.2           | pgRouting-bővítmény|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.6/pgrowlocks.html)                   | 1.2             | sor szintű zárolási információk megjelenítése|
-> |[pgstattuple](https://www.postgresql.org/docs/9.6/pgstattuple.html)                  | 1.4             | rekord szintű statisztikák megjelenítése|
+> |[pgstattuple](https://www.postgresql.org/docs/9.6/pgstattuple.html)                  | 1,4             | rekord szintű statisztikák megjelenítése|
 > |[pg_buffercache](https://www.postgresql.org/docs/9.6/pgbuffercache.html)               | 1.2             | a megosztott puffer gyorsítótárának vizsgálata|
 > |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 2.6.3           | Bővítmény a particionált táblák kezeléséhez idő vagy azonosító alapján|
 > |[pg_prewarm](https://www.postgresql.org/docs/9.6/pgprewarm.html)                   | 1.1             | előmelegítő kapcsolatok adatvédelme|
-> |[pg_stat_statements](https://www.postgresql.org/docs/9.6/pgstatstatements.html)           | 1.4             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
+> |[pg_stat_statements](https://www.postgresql.org/docs/9.6/pgstatstatements.html)           | 1,4             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
 > |[pg_trgm](https://www.postgresql.org/docs/9.6/pgtrgm.html)                      | 1.3             | a szöveg hasonlóságának mérése és indexelése Trigrams alapján|
 > |[plpgsql](https://www.postgresql.org/docs/9.6/plpgsql.html)                      | 1.0             | PL/pgSQL eljárási nyelv|
 > |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript (V8) megbízható eljárási nyelv|
@@ -155,8 +155,8 @@ A következő bővítmények érhetők el a 9,6-es postgres-verzióval rendelkez
 > |[postgres_fdw](https://www.postgresql.org/docs/9.6/postgres-fdw.html)                 | 1.0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
 > |[tablefunc](https://www.postgresql.org/docs/9.6/tablefunc.html)                    | 1.0             | a teljes táblákat, például a kereszttáblás funkciókat kezelő függvények|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Méretezhető lapkákat és összetett lekérdezéseket engedélyez az idősorozat-adatsorokhoz|
-> |[unaccent](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | ékezeteket eltávolító szöveges keresési szótár|
-> |[uuid-ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
+> |[nem ékezetes](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | ékezeteket eltávolító szöveges keresési szótár|
+> |[UUID – ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
 
 ## <a name="postgres-95-extensions"></a>Postgres 9,5-bővítmények 
 
@@ -171,7 +171,7 @@ A következő bővítmények érhetők el a 9,5-es postgres-verzióval rendelkez
 > |[btree_gist](https://www.postgresql.org/docs/9.5/btree-gist.html)                   | 1.1             | gyakori adattípusok indexelésének támogatása a lényegeben|
 > |[chkpass](https://www.postgresql.org/docs/9.5/chkpass.html)                       | 1.0             | az automatikusan titkosított jelszavak adattípusa|
 > |[citext](https://www.postgresql.org/docs/9.5/citext.html)                       | 1.1             | kis-és nagybetűket megkülönböztető karakterláncok adattípusa|
-> |[cube](https://www.postgresql.org/docs/9.5/cube.html)                         | 1.0             | többdimenziós kockák adattípusa|
+> |[adatkocka](https://www.postgresql.org/docs/9.5/cube.html)                         | 1.0             | többdimenziós kockák adattípusa|
 > |[dblink](https://www.postgresql.org/docs/9.5/dblink.html)                       | 1.1             | Kapcsolódás más PostgreSQL-adatbázisokhoz egy adatbázison belülről|
 > |[dict_int](https://www.postgresql.org/docs/9.5/dict-int.html)                     | 1.0             | szöveges keresési szótár sablonja egész számokhoz|
 > |[earthdistance](https://www.postgresql.org/docs/9.5/earthdistance.html)                | 1.0             | nagy hatótávolságú távolságok kiszámítása a Föld felszínén|
@@ -199,8 +199,8 @@ A következő bővítmények érhetők el a 9,5-es postgres-verzióval rendelkez
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.0           | PostGIS-topológia térbeli típusai és funkciói|
 > |[postgres_fdw](https://www.postgresql.org/docs/9.5/postgres-fdw.html)                 | 1.0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
 > |[tablefunc](https://www.postgresql.org/docs/9.5/tablefunc.html)                    | 1.0             | a teljes táblákat, például a kereszttáblás funkciókat kezelő függvények|
-> |[unaccent](https://www.postgresql.org/docs/9.5/unaccent.html)                     | 1.0             | ékezeteket eltávolító szöveges keresési szótár|
-> |[uuid-ossp](https://www.postgresql.org/docs/9.5/uuid-ossp.html)                    | 1.0             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
+> |[nem ékezetes](https://www.postgresql.org/docs/9.5/unaccent.html)                     | 1.0             | ékezeteket eltávolító szöveges keresési szótár|
+> |[UUID – ossp](https://www.postgresql.org/docs/9.5/uuid-ossp.html)                    | 1.0             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
@@ -224,7 +224,7 @@ Az pgAudit bővítmény munkamenet-és objektum-naplózási naplózást biztosí
 ## <a name="timescaledb"></a>TimescaleDB
 A TimescaleDB egy idősorozat-adatbázis, amely a PostgreSQL-bővítményként van csomagolva. A TimescaleDB időalapú analitikai funkciókat, optimalizálásokat és skálázási postgres biztosít az idősoros számítási feladatokhoz.
 
-[További információ a TimescaleDB-ről](https://docs.timescale.com/latest): az [időskála, Inc.](https://www.timescale.com/) bejegyzett védjegye.
+[További információ a TimescaleDB-ről](https://docs.timescale.com/latest): az [időskála, Inc.](https://www.timescale.com/)bejegyzett védjegye. A Azure Database for PostgreSQL az időskála nyílt forráskódú verzióját biztosítja. A jelen verzióban elérhető időkeret-funkciókkal kapcsolatos további információkért tekintse meg [az időskála termék-összehasonlítását](https://www.timescale.com/products/).
 
 ### <a name="installing-timescaledb"></a>A TimescaleDB telepítése
 A TimescaleDB telepítéséhez fel kell vennie azt a kiszolgáló megosztott előtelepítő könyvtáraiba. A postgres `shared_preload_libraries` paraméterének módosítása a **kiszolgáló újraindítását** igényli. A paramétereket a [Azure Portal](howto-configure-server-parameters-using-portal.md) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md)használatával módosíthatja.

@@ -1,22 +1,22 @@
 ---
 title: A titkok kezelése az Azure fejlesztői területtel való munka során
 services: azure-dev-spaces
-ms.date: 05/11/2018
+ms.date: 12/03/2019
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
-ms.openlocfilehash: 49f53683b2499e790414d139dcb0bc0833005647
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b184f72dfbbfe093443ab8a9b79bafbece3a3d51
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280008"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790170"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>A titkok kezelése az Azure fejlesztői területtel való munka során
 
 A szolgáltatásokhoz bizonyos jelszavak, a kapcsolatok karakterláncai és egyéb titkos kulcsok, például adatbázisok vagy egyéb biztonságos Azure-szolgáltatások szükségesek. Ha beállítja a titkos kódok értékeit a konfigurációs fájlokban, a programkódban környezeti változókként elérhetővé teheti őket.  Ezeket körültekintően kell kezelni, hogy ne veszélyeztesse a titkok biztonságát.
 
-Az Azure dev Spaces szolgáltatás két ajánlott, zökkenőmentesen használható lehetőséget biztosít a titkok tárolására az Azure dev Spaces-ügyfél eszközei által létrehozott Helm-diagramokon: az Values. dev. YAML fájlban, és közvetlenül a azds. YAML fájlban. A titkokat nem ajánlott a Values. YAML tárolni. A jelen cikkben definiált ügyféleszközök által létrehozott Helm-diagramok két megközelítésén kívül, ha létrehoz egy saját Helm-diagramot, a Helm diagramot közvetlenül is használhatja a titkok kezeléséhez és tárolásához.
+Az Azure dev Spaces szolgáltatás két ajánlott, egyszerűbb lehetőséget biztosít a titkok tárolására az Azure dev Spaces-ügyfél eszközei által létrehozott Helm-diagramokon: a `values.dev.yaml` fájlban, és közvetlenül a `azds.yaml`. A titkok tárolása nem ajánlott `values.yaml`ban. A jelen cikkben definiált ügyféleszközök által létrehozott Helm-diagramok két megközelítésén kívül, ha létrehoz egy saját Helm-diagramot, a Helm diagramot közvetlenül is használhatja a titkok kezeléséhez és tárolásához.
 
 ## <a name="method-1-valuesdevyaml"></a>1\. módszer: Values. dev. YAML
 1. Nyissa meg a VS Code-ot a projekttel, amely engedélyezve van az Azure dev Spaces szolgáltatásban.
@@ -62,7 +62,7 @@ Az Azure dev Spaces szolgáltatás két ajánlott, zökkenőmentesen használhat
 7. Győződjön meg arról, hogy a _. gitignore_ fájlhoz adja hozzá a _Values. dev. YAML_ fájlt, hogy elkerülje a titkos kódok véglegesítését a verziókövetés során.
  
  
-## <a name="method-2-inline-directly-in-azdsyaml"></a>2\. módszer: beágyazott közvetlenül a azds. YAML
+## <a name="method-2-azdsyaml"></a>2\. módszer: azds. YAML
 1.  A _azds. YAML_szakaszban állítsa be a titkokat a YAML szakasz konfigurációk/fejlesztés/telepítés területén. Bár a titkos értékeket közvetlenül is megadhatja, nem ajánlott, mert a _azds. YAML_ be van jelölve a verziókövetésba. Ehelyett adja hozzá a helyőrzőket a "$PLACEHOLDER" szintaxis használatával.
 
     ```yaml
@@ -105,7 +105,45 @@ Az Azure dev Spaces szolgáltatás két ajánlott, zökkenőmentesen használhat
     kubectl get secret --namespace default -o yaml
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="passing-secrets-as-build-arguments"></a>Titkok átadása Build argumentumként
+
+Az előző fejezetek azt mutatták be, hogyan lehet átadni a titkokat a tároló futási idején. Egy titkos kulcsot is átadhat a tároló felépítési idejére, például egy privát NuGet tartozó jelszót `azds.yaml`használatával.
+
+A `azds.yaml`ban állítsa be a konfigurációkban a létrehozási idő titkait. a `<variable name>: ${secret.<secret name>.<secret key>}` szintaxissal alakítsa ki a Build. *Build. ARG* -t. Példa:
+
+```yaml
+configurations:
+  develop:
+    build:
+      dockerfile: Dockerfile.develop
+      useGitIgnore: true
+      args:
+        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Debug}
+        MYTOKEN: ${secret.mynugetsecret.pattoken}
+```
+
+A fenti példában a *mynugetsecret* egy meglévő titkos kulcs, és a *pattoken* egy meglévő kulcs.
+
+>[!NOTE]
+> A titkos nevek és kulcsok a `.` karaktert is tartalmazhatják. A `\` használatával Escape-`.` a titkokat Build argumentumként való átadásakor. Ha például egy *foo. bar* nevű titkos kulcsot szeretne átadni a *token*kulcsaként: `MYTOKEN: ${secret.foo\.bar.token}`. Emellett a titkokat előtaggal és Postfix szöveggel is kiértékelheti. Például: `MYURL: eus-${secret.foo\.bar.token}-version1`. Emellett a szülő és a nagyszülő terekben elérhető titkokat Build argumentumként lehet átadni.
+
+A Docker használja az *ARG* direktívát a titkos kód felhasználásához, majd használja ugyanezt a változót később a Docker. Példa:
+
+```dockerfile
+...
+ARG MYTOKEN
+...
+ARG NUGET_EXTERNAL_FEED_ENDPOINTS="{'endpointCredentials': [{'endpoint':'PRIVATE_NUGET_ENDPOINT', 'password':'${MYTOKEN}'}]}"
+...
+```
+
+Frissítse a fürtön futó szolgáltatásokat ezekkel a módosításokkal. A parancssorban futtassa a következő parancsot:
+
+```
+azds up
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 Ezekkel a módszerekkel mostantól biztonságosan csatlakozhat egy adatbázishoz, egy Azure-gyorsítótárhoz a Redis-hez, vagy hozzáférhet a biztonságos Azure-szolgáltatásokhoz.
  

@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e9d484da1b59c456b30cf0b465ec6de5af77d1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 1ed91396dd747bb800d88bc3cd083439a5648624
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014301"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786367"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenység jelentésének hibakódja 
 
@@ -181,7 +181,8 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |90051| Érvénytelen delegálási jogkivonat. Érvénytelen nemzeti felhő-azonosító ({cloudId}) van megadva.|
 |90072| Először hozzá kell adni a fiókot külső felhasználóként a bérlőhöz. Jelentkezzen ki, majd jelentkezzen be újra egy másik Azure AD-fiókkal.|
 |90094| A támogatáshoz rendszergazdai engedélyek szükségesek. Kérje meg a bérlői rendszergazdát, hogy adja meg az alkalmazáshoz való hozzájárulásukat.|
-|500021|A bérlőt a vállalati proxy korlátozza. Az erőforrás-hozzáférés megtagadása.|
+|500011| Az <site address> nevű egyszerű erőforrás nem található a (z) <tenant ID>nevű bérlőben. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy a bérlő bármelyik felhasználója beleegyezett. Elképzelhető, hogy rossz bérlőhöz küldte a hitelesítési kérést.|
+|500021| A bérlőt a vállalati proxy korlátozza. Az erőforrás-hozzáférés megtagadása.|
 |500121| Az erős hitelesítési kérelem során sikertelen volt a hitelesítés.|
 |500133| Az érvényesítés nem az érvényes időtartományán belül van. Győződjön meg arról, hogy a hozzáférési jogkivonat nem járt le, mielőtt felhasználói állításhoz használta, vagy kérjen új jogkivonatot.|
 |530021|Az alkalmazás nem felel meg a feltételes hozzáférés jóváhagyott alkalmazási követelményeinek.|

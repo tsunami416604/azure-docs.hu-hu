@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQLhoz tartozó kapcsolatok kódtárai
+title: Kapcsolatok kódtárai – Azure Database for MySQL
 description: Ez a cikk felsorolja az összes olyan könyvtárat vagy illesztőprogramot, amelyet az ügyfélalkalmazások használhatnak Azure Database for MySQLhoz való csatlakozáskor.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 2eda6986f0c7c2ab58849a5da6c355d458714f37
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 12/02/2019
+ms.openlocfilehash: 276adcb796c6fcdf1ef2d38458ca8f6ac73e5f5a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177766"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765275"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Azure Database for MySQLhoz tartozó kapcsolatok kódtárai
 Ez a cikk felsorolja az összes olyan könyvtárat vagy illesztőprogramot, amelyet az ügyfélalkalmazások használhatnak Azure Database for MySQLhoz való csatlakozáskor.

@@ -1,17 +1,17 @@
 ---
-title: Lekérdezési tároló Azure Database for MySQL
+title: Lekérdezési tároló – Azure Database for MySQL
 description: További információ a Azure Database for MySQL található lekérdezés-tárolási szolgáltatásról, amely segítséget nyújt a teljesítmény időbeli nyomon követéséhez.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: c8891fc96e3e511e4127b4e114a45b5a865cf8eb
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: 4ac6e4c71b028b66ef50ac949c169a1e02a2c0e3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603028"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770840"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>A Azure Database for MySQL teljesítményének figyelése a lekérdezési tárolóval
 
@@ -87,7 +87,7 @@ Ha a lekérdezési tároló engedélyezve van, a rendszer 15 perces összesíté
 
 A lekérdezési tároló paramétereinek konfigurálásához a következő beállítások érhetők el.
 
-| **A paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
+| **Paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
 |---|---|---|---|
 | query_store_capture_mode | A lekérdezési tároló funkció be-és kikapcsolása az érték alapján. Megjegyzés: Ha a performance_schema ki van kapcsolva, a bekapcsolás query_store_capture_mode bekapcsolja performance_schema és a teljesítmény-séma eszközeinek egy részhalmazát, amely ehhez a szolgáltatáshoz szükséges. | ÖSSZES | NINCS, AZ ÖSSZES |
 | query_store_capture_interval | A lekérdezési tár rögzítési időköze percben kifejezve. Lehetővé teszi a lekérdezési metrikák összesítésének intervallumának megadását | 15 | 5 - 60 |
@@ -96,7 +96,7 @@ A lekérdezési tároló paramétereinek konfigurálásához a következő beál
 
 A következő lehetőségek kifejezetten a várakozási statisztikára vonatkoznak.
 
-| **A paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
+| **Paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Engedélyezi a várakozási statisztika bekapcsolását vagy kikapcsolását. | NEZ egy | NINCS, AZ ÖSSZES |
 | query_store_wait_sampling_frequency | Megváltoztatja a várakozási mintavételezés gyakoriságát másodpercben. 5 – 300 másodperc. | 30 | 5-300 |
@@ -123,7 +123,7 @@ Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. 
 | `timestamp_id` | időbélyeg| NO| A lekérdezés végrehajtásának időbélyegzője. Ez a query_store_interval konfiguráción alapul.|
 | `query_digest_text`| LONGTEXT| NO| A normalizált lekérdezés szövege az összes literál eltávolítása után|
 | `query_sample_text` | LONGTEXT| NO| A tényleges lekérdezés első megjelenése literálokkal|
-| `query_digest_truncated` | bit| igen| Azt jelzi, hogy a lekérdezés szövege csonkítva lett-e. Az érték igen, ha a lekérdezés hosszabb 1 KB-nál|
+| `query_digest_truncated` | bites| igen| Azt jelzi, hogy a lekérdezés szövege csonkítva lett-e. Az érték igen, ha a lekérdezés hosszabb 1 KB-nál|
 | `execution_count` | bigint (20)| NO| A lekérdezésnek az időbélyeg-AZONOSÍTÓhoz/a beállított intervallum időszakában végrehajtott végrehajtásainak száma|
 | `warning_count` | bigint (20)| NO| A belső művelet során a lekérdezés által generált figyelmeztetések száma|
 | `error_count` | bigint (20)| NO| A lekérdezés által az intervallum során generált hibák száma|

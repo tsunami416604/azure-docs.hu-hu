@@ -1,51 +1,51 @@
 ---
-title: Indítsa újra az Azure Database MariaDB-kiszolgálóhoz az Azure portal használatával
-description: Ez a cikk bemutatja, hogyan újraindítható egy Azure Database for MariaDB-kiszolgálóhoz az Azure Portal használatával.
+title: Kiszolgáló újraindítása – Azure Portal – Azure Database for MariaDB
+description: Ez a cikk azt ismerteti, hogyan lehet újraindítani egy Azure Database for MariaDB kiszolgálót az Azure Portal használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 2/7/2019
-ms.openlocfilehash: 232037562c4a84ee9217e2e89a0da2ffdc37d560
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: fb4e56a3f40573a65b679ee026c22dfc5d6e5fa2
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60745799"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769421"
 ---
-# <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Indítsa újra az Azure Database MariaDB-kiszolgálóhoz az Azure portal használatával
-Ez a témakör ismerteti, hogyan egy Azure Database for MariaDB server újraindításával. Indítsa újra a kiszolgálót, a kiszolgáló a műveletet hajt végre egy rövid kimaradás okozó karbantartási okokból szükségessé.
+# <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Azure Database for MariaDB kiszolgáló újraindítása Azure Portal használatával
+Ez a témakör azt ismerteti, hogyan lehet újraindítani egy Azure Database for MariaDB-kiszolgálót. Előfordulhat, hogy a kiszolgálót karbantartás miatt újra kell indítania, ami rövid kimaradást okoz, mivel a kiszolgáló végrehajtja a műveletet.
 
-A kiszolgáló újraindítására, ha a szolgáltatás nem foglalt le lesz tiltva. Ha például a szolgáltatás feldolgozás lehet egy korábban kért művelet, például a virtuális magok méretezés.
+A kiszolgáló újraindítása le lesz tiltva, ha a szolgáltatás foglalt. Előfordulhat például, hogy a szolgáltatás feldolgoz egy korábban kért műveletet, például a skálázási virtuális mag.
 
-Befejezéséhez újraindítás szükséges idő attól függ, hogy a MariaDB helyreállítási folyamatot. Az újraindítás idő csökkentéséhez, javasoljuk, hogy a kiszolgálón, az újraindítás előtt előforduló tevékenység minimalizálására.
+Az újraindítás befejezéséhez szükséges idő a MariaDB helyreállítási folyamattól függ. Az újraindítási idő csökkentése érdekében javasoljuk, hogy csökkentse a kiszolgálón előforduló tevékenységek mennyiségét az újraindítás előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató végrehajtásához lesz szüksége:
-- Egy [, Azure Database for MariaDB-kiszolgáló](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+- Egy [Azure Database for MariaDB-kiszolgáló](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 
-## <a name="perform-server-restart"></a>Hajtsa végre a kiszolgáló újraindítása
+## <a name="perform-server-restart"></a>Kiszolgáló újraindítása
 
-Az alábbi lépéseket a MariaDB-kiszolgáló újraindítása:
+A következő lépésekkel indítsa újra a MariaDB-kiszolgálót:
 
-1. Az Azure Portalon válassza ki az Azure Database for MariaDB-kiszolgáló.
+1. A Azure Portal válassza ki a Azure Database for MariaDB kiszolgálót.
 
-2. Az eszköztáron a kiszolgáló **áttekintése** kattintson **indítsa újra a**.
+2. A kiszolgáló **Áttekintés** lapjának eszköztárán kattintson az **Újraindítás**elemre.
 
-   ![Azure Database for MariaDB - áttekintés – újraindítás gomb](./media/howto-restart-server-portal/2-server.png)
+   ![Azure Database for MariaDB – áttekintés – Újraindítás gomb](./media/howto-restart-server-portal/2-server.png)
 
-3. Kattintson a **Igen** annak ellenőrzéséhez, hogy a kiszolgáló újraindítása.
+3. A kiszolgáló újraindításának megerősítéséhez kattintson az **Igen** gombra.
 
-   ![Azure Database for MariaDB - Újraindítás megerősítése](./media/howto-restart-server-portal/3-restart-confirm.png)
+   ![Azure Database for MariaDB – újraindítás megerősítése](./media/howto-restart-server-portal/3-restart-confirm.png)
 
-4. Figyelje meg, hogy a kiszolgáló állapota "Újraindítás folyamatban".
+4. Figyelje meg, hogy a kiszolgáló állapota "újraindítás" értékűre változik.
 
-   ![Azure Database for MariaDB - újraindítás állapota](./media/howto-restart-server-portal/4-restarting-status.png)
+   ![Azure Database for MariaDB – újraindítás állapota](./media/howto-restart-server-portal/4-restarting-status.png)
 
-5. Ellenőrizze, hogy létrejött a kiszolgáló újraindítására.
+5. A kiszolgáló újraindításának megerősítése sikeres volt.
 
-   ![Azure Database for MariaDB - újraindítása sikerült](./media/howto-restart-server-portal/5-restart-success.png)
+   ![Azure Database for MariaDB – sikeres újraindítás](./media/howto-restart-server-portal/5-restart-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Rövid útmutató: Az Azure-adatbázis létrehozása a MariaDB-kiszolgálóhoz az Azure portal használatával](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+[Gyors útmutató: Azure Database for MariaDB kiszolgáló létrehozása Azure Portal használatával](./quickstart-create-mariadb-server-database-using-azure-portal.md)

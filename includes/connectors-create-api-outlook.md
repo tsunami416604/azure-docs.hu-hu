@@ -1,27 +1,27 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 187906a912c999142d764de6ad5da3daccf63ba7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: e42292f7848eba0b4545b713f7bbc491f35fe4a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179373"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789366"
 ---
-1. A keresőmezőbe írja be szűrőként "Outlook.com-os". Ebben a példában ez az eseményindító kiválasztása: **Új e-mail érkezésekor**
+1. A keresőmezőbe írja be szűrőként a "outlook.com" kifejezést. Ebben a példában válassza ezt az triggert: **új e-mail érkezésekor**
 
-   ![Keresse meg az Outlook.com-os eseményindítók és műveletek](./media/connectors-create-api-outlook/select-outlook.png)
+   ![Outlook.com-eseményindítók vagy-műveletek keresése](./media/connectors-create-api-outlook/select-outlook.png)
 
-1. Miután kiválasztotta a trigger (vagy a művelet), kéri, hogy jelentkezzen be az Outlook.com-fiókjából, ha már nem jelentkezik be. Válasszon **jelentkezzen be a**.
+1. Miután kiválasztotta az triggert (vagy műveletet), a rendszer felszólítja, hogy jelentkezzen be a Outlook.com-fiókjába, ha már nem jelentkezett be. Válassza **a bejelentkezés**lehetőséget.
 
-   ![Jelentkezzen be az Outlook.com-fiókjából](./media/connectors-create-api-outlook/sign-in-outlook.png)  
+   ![Jelentkezzen be a Outlook.com-fiókjába](./media/connectors-create-api-outlook/sign-in-outlook.png)  
 
-3. Válassza ki az Outlook.com-fiókja hitelesítő adataival.
+1. Válassza ki a Outlook.com-fiókjának hitelesítő adatait.
 
-   ![Válassza ki a bejelentkezési fiók](./media/connectors-create-api-outlook/outlook-sign-in.png)  
+   ![Bejelentkezési fiók kiválasztása](./media/connectors-create-api-outlook/outlook-sign-in.png)  
 
-   Csatlakozás és az Outlook.com-fiókjából adatok elérése a hitelesítő adatok használhatók.
-   A kapcsolat bármely más logic app használatával újból felhasználhatja az Azure-előfizetésében. 
+   A hitelesítő adatai a Outlook.com-fiók adatainak csatlakoztatására és elérésére szolgálnak.
+   Ezt a kapcsolatokat az Azure-előfizetésében lévő más logikai alkalmazásokkal is felhasználhatja. 

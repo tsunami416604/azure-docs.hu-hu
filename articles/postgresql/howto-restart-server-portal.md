@@ -1,51 +1,51 @@
 ---
-title: Indítsa újra az Azure Database for postgresql-hez - Azure portal használatával egyetlen kiszolgáló
-description: Ez a cikk bemutatja, hogyan újraindíthatja az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure portal használatával.
+title: Kiszolgáló újraindítása – Azure Portal-Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk azt ismerteti, hogyan lehet újraindítani egy Azure Database for PostgreSQL-egy kiszolgálót a Azure Portal használatával.
 author: ajlam
 ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: fd92e27f53f52de3e9a7fd65d577c9dfea44991b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52ffb3943e6e3f209fd236216cc44026dff59dad
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65066839"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770084"
 ---
-# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Indítsa újra az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure portal használatával
-Ez a témakör ismerteti, hogyan újraindítható egy Azure Database for PostgreSQL-kiszolgálóhoz. Indítsa újra a kiszolgálót, a kiszolgáló a műveletet hajt végre egy rövid kimaradás okozó karbantartási okokból szükségessé.
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure Database for PostgreSQL újraindítása – egyetlen kiszolgáló a Azure Portal használatával
+Ez a témakör azt ismerteti, hogyan lehet újraindítani egy Azure Database for PostgreSQL-kiszolgálót. Előfordulhat, hogy a kiszolgálót karbantartás miatt újra kell indítania, ami rövid kimaradást okoz, mivel a kiszolgáló végrehajtja a műveletet.
 
-A kiszolgáló újraindítására, ha a szolgáltatás nem foglalt le lesz tiltva. Ha például a szolgáltatás feldolgozás lehet egy korábban kért művelet, például a virtuális magok méretezés.
+A kiszolgáló újraindítása le lesz tiltva, ha a szolgáltatás foglalt. Előfordulhat például, hogy a szolgáltatás feldolgoz egy korábban kért műveletet, például a skálázási virtuális mag.
  
-Befejezéséhez újraindítás szükséges idő attól függ, hogy a PostgreSQL-helyreállítási folyamatot. Az újraindítás idő csökkentéséhez, javasoljuk, hogy a kiszolgálón, az újraindítás előtt előforduló tevékenység minimalizálására.
+Az újraindítás befejezéséhez szükséges idő a PostgreSQL helyreállítási folyamattól függ. Az újraindítási idő csökkentése érdekében javasoljuk, hogy csökkentse a kiszolgálón előforduló tevékenységek mennyiségét az újraindítás előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató végrehajtásához lesz szüksége:
-- Egy [, Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md)
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+- Egy [Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md)
 
-## <a name="perform-server-restart"></a>Hajtsa végre a kiszolgáló újraindítása
+## <a name="perform-server-restart"></a>Kiszolgáló újraindítása
 
-Az alábbi lépéseket a PostgreSQL-kiszolgáló újraindítása:
+A következő lépések újraindítják a PostgreSQL-kiszolgálót:
 
-1. Az a [az Azure portal](https://portal.azure.com/), válassza ki az Azure Database for PostgreSQL-kiszolgálóhoz.
+1. A [Azure Portal](https://portal.azure.com/)válassza ki a Azure Database for PostgreSQL kiszolgálót.
 
-2. Az eszköztáron a kiszolgáló **áttekintése** kattintson **indítsa újra a**.
+2. A kiszolgáló **Áttekintés** lapjának eszköztárán kattintson az **Újraindítás**elemre.
 
-   ![Azure Database for PostgreSQL – áttekintés – újraindítás gomb](./media/howto-restart-server-portal/2-server.png)
+   ![Azure Database for PostgreSQL – áttekintés – Újraindítás gomb](./media/howto-restart-server-portal/2-server.png)
 
-3. Kattintson a **Igen** annak ellenőrzéséhez, hogy a kiszolgáló újraindítása.
+3. A kiszolgáló újraindításának megerősítéséhez kattintson az **Igen** gombra.
 
-   ![Azure Database for PostgreSQL – Újraindítás megerősítése](./media/howto-restart-server-portal/3-restart-confirm.png)
+   ![Azure Database for PostgreSQL – újraindítás megerősítése](./media/howto-restart-server-portal/3-restart-confirm.png)
 
-4. Figyelje meg, hogy a kiszolgáló állapota "Újraindítás folyamatban".
+4. Figyelje meg, hogy a kiszolgáló állapota "újraindítás" értékűre változik.
 
    ![Azure Database for PostgreSQL – újraindítás állapota](./media/howto-restart-server-portal/4-restarting-status.png)
 
-5. Ellenőrizze, hogy létrejött a kiszolgáló újraindítására.
+5. A kiszolgáló újraindításának megerősítése sikeres volt.
 
-   ![Azure Database for PostgreSQL - újraindítása sikerült](./media/howto-restart-server-portal/5-restart-success.png)
+   ![Azure Database for PostgreSQL – sikeres újraindítás](./media/howto-restart-server-portal/5-restart-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg [hogyan paraméterek beállítása az Azure Database for postgresql-hez](howto-configure-server-parameters-using-portal.md)
+Útmutató [Paraméterek beállításához a Azure Database for PostgreSQL](howto-configure-server-parameters-using-portal.md)

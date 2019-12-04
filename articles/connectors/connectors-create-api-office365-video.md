@@ -1,44 +1,43 @@
 ---
-title: Kapcsolódás az Office 365 videó – Azure Logic Apps |} A Microsoft Docs
-description: Office 365 videó REST API-k és az Azure Logic Apps-videók kezelése
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 05/18/2016
-ms.topic: article
-ms.service: logic-apps
+title: Kapcsolódás az Office 365 videóhoz
+description: Videók kezelése az Office 365 videó REST API-kkal és Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 05/18/2016
 tags: connectors
-ms.openlocfilehash: c10a2aa097b63fd3751be01bbfeb6097080bbb9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf3c7c4faac3fcd4dd0c3f368fbe18a224ed591b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105819"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789484"
 ---
-# <a name="get-started-with-the-office365-video-connector"></a>Az Office 365 videó-összekötő használatának első lépései
-Csatlakozás az Office 365 videó videó az Office 365 adatainak beolvasása, videók és egyéb listáját. Az Office 365 videó segítségével:
+# <a name="get-started-with-the-office365-video-connector"></a>Ismerkedés a Office 365 videó-összekötővel
 
-* Az üzleti folyamat kap az Office 365 videó adatok alapján történő létrehozása. 
-* A videóportál állapotának ellenőrzése, az összes videó egy csatornát, és további listája-műveletek használata. Ezek a műveletek válaszol, és végezze el a kimenetet más műveletek esetében érhető el. Ha például a Bing Search connector használata az Office 365-videók keresése, és az Office 365 videó-összekötő használatával, hogy a videó adatainak beolvasása. Ha a videó megfelel a követelményeknek, a Facebookon könyvelheti ezt a videót. 
+Kapcsolódjon az Office 365 videóhoz az Office 365-videóval kapcsolatos információk beszerzéséhez, a videók listájának lekéréséhez és egyebekhez. Az Office 365 videóval a következőket teheti:
 
-Hozzon létre egy logikai alkalmazás most már megkezdheti, lásd: [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Hozza létre üzleti folyamatát az Office 365 videóból kapott adatok alapján. 
 
-## <a name="create-a-connection-to-office365-video-connector"></a>Kapcsolatot létesíthet az Office 365 videó-összekötő
-Ha ezt az összekötőt a logic apps hozzáad, kell jelentkezzen be fiókjába az Office 365 videó és a logic apps a fiókhoz való csatlakozás engedélyezése.
+* Használjon olyan műveleteket, amelyek a videó-portál állapotát keresik, valamint a csatorna összes Videójának listáját, és így tovább. Ezek a műveletek választ kapnak, majd elérhetővé teszik a kimenetet más műveletekhez. 
+
+A Bing Search-összekötővel például megkeresheti az Office 365-videókat, majd az Office 365 videó-összekötő használatával lekérheti a videóval kapcsolatos információkat. Ha a videó megfelel a követelményeknek, ezt a videót a Facebookon teheti közzé.
+
+A logikai alkalmazások létrehozásának első lépéseiről a [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakörben olvashat.
+
+## <a name="create-a-connection-to-office365-video-connector"></a>Csatlakozás a Office 365 video connectorhoz
+
+Ha hozzáadja ezt az összekötőt a logikai alkalmazásokhoz, be kell jelentkeznie az Office 365 video-fiókjába, és engedélyeznie kell a Logic apps számára a fiókhoz való csatlakozást.
 
 > [!INCLUDE [Steps to create a connection to Office 365 Video](../../includes/connectors-create-api-office365video.md)]
-> 
-> 
 
-Miután létrehozta a kapcsolatot, az Office 365 videó tulajdonságait, például a bérlő nevét adja meg, vagy csatorna azonosítója. 
+A kapcsolatok létrehozása után adja meg az Office 365-videó tulajdonságait, például a bérlő nevét vagy a csatorna AZONOSÍTÓját. 
 
+## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
-## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
+Megtekintheti a hencegés során definiált összes eseményindítót és műveletet, valamint az [összekötő részleteiben](/connectors/office365videoconnector/)megjelenő korlátokat is.
 
-Megtekintheti a valamennyi eseményindítót és műveletet a swaggerben meghatározott, és emellett a korlátozott a [összekötő részletei](/connectors/office365videoconnector/).
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="more-connectors"></a>További összekötők
-Lépjen vissza a [API-k listája](apis-list.md).
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

@@ -1,17 +1,17 @@
 ---
-title: Kapcsolati architektúra a Azure Database for MySQLban
+title: Kapcsolati architektúra – Azure Database for MySQL
 description: A Azure Database for MySQL-kiszolgáló kapcsolati architektúráját ismerteti.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/15/2019
-ms.openlocfilehash: c4fecfadefedf10f7e11534b4efbd197c4d7fdae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/02/2019
+ms.openlocfilehash: 22c77bee95533606156ec6cc337af1d743018005
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213151"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765324"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Kapcsolati architektúra a Azure Database for MySQLban
 Ez a cikk ismerteti a Azure Database for MySQL kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for MySQL-példányra az Azure-on belüli és kívüli ügyfelektől.
@@ -28,7 +28,7 @@ A következő táblázat felsorolja az Azure Database for MySQL átjáró elsőd
 
 | **Régió neve** | **Elsődleges IP-cím** | **Másodlagos IP-cím** |
 |:----------------|:-------------|:------------------------|
-| Kelet-Ausztrália | 13.75.149.87 | 40.79.161.1 |
+| Ausztrália keleti régiója | 13.75.149.87 | 40.79.161.1 |
 | Délkelet-Ausztrália | 191.239.192.109 | 13.73.109.251 |
 | Dél-Brazília | 104.41.11.5 | |
 | Közép-Kanada | 40.85.224.249 | |
@@ -49,7 +49,7 @@ A következő táblázat felsorolja az Azure Database for MySQL átjáró elsőd
 | Kelet-Japán | 191.237.240.43 | 13.78.61.196 |
 | Nyugat-Japán | 191.238.68.11 | 104.214.148.156 |
 | Korea középső régiója | 52.231.32.42 | |
-| Korea déli régiója | 52.231.200.86 |  |
+| Dél-Korea | 52.231.200.86 |  |
 | USA északi középső régiója | 23.98.55.75 | 23.96.178.199 |
 | Észak-Európa | 191.235.193.75 | 40.113.93.91 |
 | USA déli középső régiója | 23.98.162.75 | 13.66.62.124 |
@@ -57,23 +57,15 @@ A következő táblázat felsorolja az Azure Database for MySQL átjáró elsőd
 | Dél-Afrika északi régiója | 102.133.152.0 | |
 | Dél-Afrika nyugati régiója | 102.133.24.0 | |
 | Egyesült Arab Emírségek északi régiója | 65.52.248.0 | |
-| Az Egyesült Királyság déli régiója | 51.140.184.11 | |
-| Az Egyesült Királyság nyugati régiója | 51.141.8.11| |
+| Egyesült Királyság déli régiója | 51.140.184.11 | |
+| Egyesült Királyság nyugati régiója | 51.141.8.11| |
 | Nyugat-Európa | 191.237.232.75 | 40.68.37.158 |
 | USA nyugati régiója 1 | 23.99.34.75 | 104.42.238.205 |
-| USA nyugati régiója, 2. | 13.66.226.202 | |
+| USA 2. nyugati régiója | 13.66.226.202 | |
 ||||
 
 > [!NOTE]
 > Az *USA 2. keleti* régiójában a `52.167.104.0`harmadlagos IP-címe is szerepel.
-
-## <a name="connection-redirection"></a>Kapcsolatok átirányítása
-
-Azure Database for MySQL támogatja a további kapcsolati házirendet, az **átirányítást**, amely segít csökkenteni a hálózati késést az ügyfélalkalmazások és a MySQL-kiszolgálók között. Ezzel a szolgáltatással, miután a kezdeti TCP-munkamenet létrejött a Azure Database for MySQL-kiszolgálón, a kiszolgáló visszaadja a MySQL-kiszolgálót futtató csomópont háttérbeli címeit az ügyfélnek. Ezt követően az összes további csomag közvetlenül a kiszolgálóra áramlik, és megkerüli az átjárót. Mivel a csomagok közvetlenül a kiszolgálóra áramlanak, a késés és az átviteli sebesség jobb teljesítményt biztosít.
-
-Ez a funkció a 5,6-es, 5,7-as és 8,0-os motorral rendelkező Azure Database for MySQL-kiszolgálókon támogatott.
-
-Az átirányítás előzetes támogatása a Microsoft által fejlesztett [PHP mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) -bővítményben érhető el, és a [PECL](https://pecl.php.net/package/mysqlnd_azure)-ben érhető el. Az átirányítás az alkalmazásokban való használatáról további információt az [átirányítás konfigurálása](./howto-redirection.md) című cikkben talál. 
 
 ## <a name="next-steps"></a>Következő lépések
 

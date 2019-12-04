@@ -1,43 +1,39 @@
 ---
-title: Kapcsolódás az Office 365-felhasználók – Azure Logic Apps |} A Microsoft Docs
-description: Az Office 365 felhasználók REST API-k és az Azure Logic Apps felhasználói profilok kezelése
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
+title: Kapcsolódás az Office 365-felhasználókhoz
+description: Felhasználói profilok kezelése az Office 365-felhasználók REST API-kkal és Azure Logic Apps
+services: logic-apps
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.date: 08/18/2016
 ms.topic: article
-ms.service: logic-apps
-services: logic-apps
-ms.reviewer: klam, LADocs
-ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 3865fbc4fbc39da0860218565b0a8956b2dad8ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: addb64a9b43c51af8363caa6f0fb3261a618e893
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105871"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789519"
 ---
-# <a name="get-started-with-the-office-365-users-connector"></a>Az Office 365 Users összekötővel használatának első lépései
-Csatlakozhat Office 365-felhasználói profilok, a felhasználók keresése és egyéb beolvasásához. Az Office 365-felhasználók a következőket teheti:
+# <a name="get-started-with-the-office-365-users-connector"></a>Ismerkedés az Office 365 felhasználói összekötővel
+Kapcsolódjon az Office 365-felhasználókhoz profilok, keresés a felhasználók és egyebek között. Az Office 365-felhasználókkal a következőket teheti:
 
-* Az üzleti folyamat kap Office 365 felhasználói adatok alapján történő létrehozása. 
-* Használható műveletek, amelyek a közvetlen beosztottak, beolvasása lekéréséhez-kezelő felhasználói profil stb. Ezek a műveletek válaszol, és végezze el a kimenetet más műveletek esetében érhető el. Ha például egy személy közvetlen beosztottak, beolvasása ezt az adatot és egy SQL Azure adatbázis frissítése. 
+* Az Office 365-felhasználóktól kapott adatok alapján hozza létre üzleti folyamatát. 
+* Olyan műveleteket használhat, amelyek közvetlen jelentéseket kapnak, beszerezhetik a felettes felhasználói profilját és egyebeket. Ezek a műveletek választ kapnak, majd elérhetővé teszik a kimenetet más műveletekhez. Például beszerezhet egy személy közvetlen jelentéseit, majd elvégezheti ezeket az adatokat, és frissítheti SQL Azure adatbázisát. 
 
-Hozzon létre egy logikai alkalmazás most már megkezdheti, lásd: [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+A logikai alkalmazások létrehozásának első lépéseiről a [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakörben olvashat.
 
-## <a name="create-a-connection-to-office-365-users"></a>Hozzon létre egy kapcsolatot az Office 365-felhasználók
-Ha ezt az összekötőt a logic apps hozzáad, kell jelentkezzen be az Office 365 felhasználói fiók és a logic apps a fiókhoz való csatlakozás engedélyezése.
+## <a name="create-a-connection-to-office-365-users"></a>Office 365-felhasználók közötti kapcsolatok létrehozása
+Ha hozzáadja ezt az összekötőt a logikai alkalmazásokhoz, be kell jelentkeznie az Office 365 felhasználói fiókjába, és engedélyeznie kell a Logic apps számára a fiókhoz való csatlakozást.
 
 > [!INCLUDE [Steps to create a connection to Office 365 Users](../../includes/connectors-create-api-office365users.md)]
 > 
 > 
 
-Miután létrehozta a kapcsolatot, akkor adja meg az Office 365-felhasználók tulajdonságai, például a felhasználói azonosítóját. A **REST API-referencia** ebben a cikkben azt ismerteti, ezeket a tulajdonságokat.
+A kapcsolatok létrehozása után adja meg az Office 365-felhasználók tulajdonságait, például a felhasználói azonosítót. A cikkben szereplő **REST API-hivatkozás** ezeket a tulajdonságokat ismerteti.
 
-## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
+## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
-Megtekintheti a valamennyi eseményindítót és műveletet a swaggerben meghatározott, és emellett a korlátozott a [összekötő részletei](/connectors/officeusers/).
+Megtekintheti a hencegés során definiált összes eseményindítót és műveletet, valamint az [összekötő részleteiben](/connectors/officeusers/)megjelenő korlátokat is.
 
 ## <a name="more-connectors"></a>További összekötők
-Lépjen vissza a [API-k listája](apis-list.md).
+Lépjen vissza az API-k [listájára](apis-list.md).

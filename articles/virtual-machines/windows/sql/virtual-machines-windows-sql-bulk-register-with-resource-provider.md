@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 97541484501a3ecdd1bd5998314c1ee9e7a4e3a5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4ee9d651e1ec7807d191bc3393c0c280ce1e52f9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489080"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790555"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL-alapú virtuális gépek tömeges regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 
@@ -39,7 +39,7 @@ A SQL Server VM erőforrás-szolgáltatóval való regisztrálásához a követk
 - Az az [PowerShell](/powershell/azure/new-azureps-module-az)legújabb verziója. 
 - Az az [. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)legújabb verziója.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 A továbblépés előtt először létre kell hoznia egy helyi példányt a parancsfájlból, majd importálnia kell egy PowerShell-modulként, és kapcsolódnia kell az Azure-hoz. 
 
@@ -222,7 +222,7 @@ A hibák naplózása a `VMsNotRegisteredDueToError<Timestamp>.log` nevű naplóf
 
 Ha a megadott parancsfájllal regisztrálja SQL Server virtuális gépeket az erőforrás-szolgáltatón keresztül, vegye figyelembe a következőket:
 
-- Az erőforrás-szolgáltatóval való regisztrációhoz a SQL Server VM futó vendég ügynöknek kell futnia. A Windows Server 2008-lemezképek nem rendelkeznek vendég ügynökkel, így ezek a virtuális gépek sikertelenek lesznek, és manuálisan kell regisztrálni a nem [ügynök-felügyeleti mód](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)használatával.
+- Az erőforrás-szolgáltatóval való regisztrációhoz a SQL Server VM futó vendég ügynöknek kell futnia. A Windows Server 2008-lemezképek nem rendelkeznek vendég ügynökkel, így ezek a virtuális gépek sikertelenek lesznek, és manuálisan kell regisztrálni a nem [ügynök-felügyeleti mód](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)használatával.
 - A beépített újrapróbálkozási logika az átlátható hibák elhárítására szolgál. Ha a virtuális gép regisztrálása sikeresen megtörtént, akkor gyors művelet. Ha azonban a regisztráció meghiúsul, minden egyes virtuális gép újra próbálkozik.  Ezért jelentős időt kell biztosítani a regisztrációs folyamat befejezéséhez – bár a tényleges idő követelménye a hibák típusától és számától függ. 
 
 ## <a name="full-script"></a>Teljes szkript
@@ -235,7 +235,7 @@ Másolja a teljes parancsfájlt, és mentse `RegisterSqLVMs.psm1`ként.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket: 
 

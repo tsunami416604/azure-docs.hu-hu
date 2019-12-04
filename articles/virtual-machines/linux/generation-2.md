@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 12/03/2019
 ms.author: lahugh
-ms.openlocfilehash: 02ab7cdcbf0f150157eb44ef5e28e8284621b813
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cfa8d28a41bb5551277bca29c118698ecaa8d112
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173957"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791730"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2\. generációs virtuális gépek támogatása az Azure-ban
 
@@ -37,7 +37,7 @@ Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja a
 * [Dsv2](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series) és [Dsv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
 * [Esv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
 * [Fsv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
-* [GS-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
+* [GS sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
 * [HB sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hb-series)
 * [HC sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hc-series)
 * Az [ls-sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) és a [Lsv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-storage#lsv2-series)
@@ -53,13 +53,11 @@ Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja a
 
 A 2. generációs virtuális gépek a következő Piactéri rendszerképeket támogatják:
 
-* Windows Server 2019 Datacenter
-* Windows Server 2016 Datacenter
-* Windows Server 2012 R2 Datacenter
-* Windows Server 2012 Datacenter
+* Windows Server 2019, 2016, 2012 R2, 2012
+* Windows 10
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
-* Ubuntu Server 16.04, 18.04, 19,04, 19,10 
+* Ubuntu Server 16,04, 18,04, 19,04, 19,10 
 * RHEL 8,0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Helyszíni és Azure 2. generációs virtuális gépek
@@ -78,15 +76,15 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 ### <a name="generation-1-vs-generation-2-features"></a>1\. generációs, 2. generációs funkciók
 
-| Funkció | 1\. generáció | 2\. generáció |
+| Szolgáltatás | 1\. generáció | 2\. generáció |
 |---------|--------------|--------------|
 | Rendszerindítás             | PCAT         | UEFI |
 | Lemezvezérlő-vezérlők | IDE          | SCSI |
-| A virtuális gépek mérete         | Minden VM-méret | Csak a Premium Storage-t támogató virtuális gépek |
+| Virtuálisgép-méretek         | Minden VM-méret | Csak a Premium Storage-t támogató virtuális gépek |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>1\. generációs, 2. generációs képességek
 
-| Képesség | 1\. generáció | 2\. generáció |
+| Szolgáltatás | 1\. generáció | 2\. generáció |
 |------------|--------------|--------------|
 | OPERÁCIÓSRENDSZER-lemez > 2 TB                    | x                | :heavy_check_mark: |
 | Egyéni lemez/lemezkép/swap operációs rendszer         | :heavy_check_mark: | :heavy_check_mark: |
@@ -140,7 +138,7 @@ A támogatott Piactéri rendszerképek aktuális listáját a [szolgáltatások 
 
 A 2. generációs virtuális gépeket ugyanúgy hozhatja létre felügyelt lemezképből vagy felügyelt lemezről, mint az 1. generációs virtuális gépeket.
 
-### <a name="virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok
+### <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
 A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok használatával is létrehozhatja. Az Azure CLI-ben a 2. generációs virtuális gépek létrehozásához használja az Azure-méretezési csoportokat.
 

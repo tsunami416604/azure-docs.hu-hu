@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB kezelése – Azure Portal
+title: Kiszolgáló kezelése – Azure Portal – Azure Database for MariaDB
 description: Megtudhatja, hogyan kezelheti Azure Database for MariaDB-kiszolgálókat a Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 7e09db9308f9ecf623ce0ab0d948ed1056dd21b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/02/2019
+ms.openlocfilehash: b70b4810f32941938b6afe217f94e18a0f2f3523
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534340"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767126"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Azure Database for MariaDB-kiszolgáló kezelése a Azure Portal használatával
 Ez a cikk bemutatja, hogyan kezelheti a Azure Database for MariaDB-kiszolgálókat. A felügyeleti feladatok közé tartozik a számítási és tárolási skálázás, a rendszergazdai jelszó alaphelyzetbe állítása és a kiszolgáló adatainak megtekintése.
@@ -79,7 +79,7 @@ A rendszergazdai szerepkör jelszava a Azure Portal használatával módosíthat
 
 2. Adjon meg egy új jelszót, és erősítse meg a jelszót. A szövegmező a jelszó bonyolultságára vonatkozó követelményeket fogja kérni.
 
-   ![Jelszó alaphelyzetbe állítása](./media/howto-create-manage-server-portal/reset-password.png)
+   ![jelszó alaphelyzetbe állítása](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Az új jelszó mentéséhez kattintson **az OK gombra** .
 

@@ -1,22 +1,18 @@
 ---
-title: Kapcsolódás a Twilio-hez Azure Logic Appsról | Microsoft Docs
+title: Kapcsolódás a Twilio-hez Azure Logic Apps
 description: A globális SMS-, MMS-és IP-üzeneteket kezelő feladatok és munkafolyamatok automatizálása a Twilio-fiókon keresztül a Azure Logic Apps használatával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 09d4a6acf93f5fb01c70f9e9bd935c404c5abf50
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: e5b218efd9c8cfaad99d76d8118d181390a977c3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050707"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789103"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Üzenetek kezelése a Twilio-ben Azure Logic Apps
 
@@ -76,6 +72,6 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai r�
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

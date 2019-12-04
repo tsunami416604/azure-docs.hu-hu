@@ -1,17 +1,17 @@
 ---
-title: Azure Active Directory hitelesítés Azure Database for PostgreSQL – egyetlen kiszolgálóval
+title: Active Directory hitelesítés – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ismerje meg a Azure Database for PostgreSQL-Single Serverrel való hitelesítéshez Azure Active Directory fogalmakat
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 47637396581beeafb0748066cd6a66f011e8eaa1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ec853657d6dd1f3b019d8a414cfa28edc1083b29
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518735"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769914"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory használata a PostgreSQL-sel való hitelesítéshez
 
@@ -88,7 +88,7 @@ Miután hitelesítette a Active Directory, lekérheti a tokent. Ez a jogkivonat 
 - Ha az Azure AD-rendszergazda el lett távolítva a kiszolgálóról, a kiszolgáló már nem lesz társítva az Azure AD-bérlőhöz, ezért az összes Azure AD-bejelentkezés le lesz tiltva a kiszolgálón. Ha új Azure AD-rendszergazdát ad hozzá ugyanahhoz a bérlőhöz, az Azure AD-bejelentkezések ismét engedélyezve lesznek.
 - A Azure Database for PostgreSQL a felhasználó egyedi Azure AD-felhasználói AZONOSÍTÓjának használatával egyezteti a hozzáférési jogkivonatokat a Azure Database for PostgreSQL szerepkörhöz, a Felhasználónév használata helyett. Ez azt jelenti, hogy ha egy Azure AD-felhasználót törölnek az Azure AD-ben, és egy azonos nevű új felhasználó lett létrehozva, Azure Database for PostgreSQL úgy véli, hogy egy másik felhasználó. Ezért ha egy felhasználó törlődik az Azure AD-ből, és egy új, azonos nevű felhasználó lett hozzáadva, az új felhasználó nem fog tudni csatlakozni a meglévő szerepkörhöz. Ennek engedélyezéséhez a Azure Database for PostgreSQL Azure AD-rendszergazdának vissza kell vonnia a felhasználót, majd a "azure_ad_user" szerepkört kell megadnia a felhasználónak az Azure AD felhasználói AZONOSÍTÓjának frissítéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha szeretné megtudni, hogyan hozhat létre és tölthet fel Azure AD-t, majd hogyan konfigurálhatja az Azure AD-t a Azure Database for PostgreSQLsal, tekintse meg az Azure ad- [vel való konfigurálást és bejelentkezést Azure Database for PostgreSQL](howto-configure-sign-in-aad-authentication.md)
 - A bejelentkezések, a felhasználók és az adatbázis-szerepkörök Azure Database for PostgreSQL áttekintését lásd: [felhasználók létrehozása a Azure Database for PostgreSQL-Single Serverben](howto-create-users.md).

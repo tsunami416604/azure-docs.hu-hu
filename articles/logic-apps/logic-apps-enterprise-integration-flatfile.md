@@ -1,84 +1,82 @@
 ---
-title: Kódolás, vagy a dekódolandó egybesimított fájlok – Azure Logic Apps |} A Microsoft Docs
-description: Kódolás, vagy enterprise integration és Azure Logic Apps és az Enterprise Integration Pack egybesimított fájl dekódolása
+title: Lapos fájlok kódolása vagy dekódolása
+description: A nagyvállalati integráció Azure Logic Apps és Enterprise Integration Packsal
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.date: 07/08/2016
-ms.openlocfilehash: d0ef61b94d7bd604b6c0062341224510f3048c57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53d9935f68c21238cb4f90f78e543a7ab343ced2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61467261"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792518"
 ---
-# <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>Kódolás, vagy az Azure Logic Apps és az Enterprise Integration Pack egybesimított fájl dekódolása
+# <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>Lapos fájlok kódolása vagy dekódolása Azure Logic Apps és Enterprise Integration Pack
 
-Kódolandó XML-tartalom egy üzleti partnertől-vállalatközi (B2B) forgatókönyvekben való elküldés előtt érdemes. Ehhez a logikai alkalmazás, használhatja az egybesimított fájl kódolása összekötő. A logikai alkalmazás által létrehozott tudnak tartalmat beolvasni a hozzá tartozó XML számos különféle forrásból, például egy HTTP-kérés eseményindító, más alkalmazásból származó, vagy akár egy a többhöz [összekötők](../connectors/apis-list.md). Logic apps szolgáltatással kapcsolatos további információkért lásd: a [logic apps-dokumentáció](logic-apps-overview.md "további tudnivalók a Logic apps").  
+Előfordulhat, hogy az XML-tartalom kódolása szükséges ahhoz, hogy üzleti partnernek küldje a vállalatközi (B2B) forgatókönyvben. A logikai alkalmazásokban ezt elvégezheti a sima file Encoding-összekötővel. A létrehozott logikai alkalmazás különböző forrásokból, például egy HTTP-kérelem eseményindítóból, egy másik alkalmazásból, vagy akár a sok [összekötőből](../connectors/apis-list.md)származó XML-tartalmakat is elérheti. A Logic apps szolgáltatással kapcsolatos további információkért tekintse meg a [Logic apps dokumentációját](logic-apps-overview.md "További információ a Logic apps szolgáltatásról").  
 
-## <a name="create-the-flat-file-encoding-connector"></a>Az egybesimított fájl kódolása összekötő létrehozása
-Kövesse az alábbi lépéseket egy egybesimított fájl kódolása a logikai alkalmazás-összekötő hozzáadásához.
+## <a name="create-the-flat-file-encoding-connector"></a>Az egyszerű fájl kódolási összekötő létrehozása
+A következő lépésekkel adhat hozzá egy sima file Encoding-összekötőt a logikai alkalmazáshoz.
 
-1. Hozzon létre egy logikai alkalmazást, és [hivatkozás az integrációs fiókba](logic-apps-enterprise-integration-accounts.md "Ismerkedjen meg az integrációs fiók összekapcsolása egy logikai alkalmazást"). Ennek a fióknak a használatával az XML-adatok kódolása sémát tartalmaz.  
-1. Adjon hozzá egy **kérelem – Ha egy HTTP-kérelem érkezett** eseményindítót a logikai alkalmazáshoz.  
-   ![Képernyőkép – trigger kiválasztása](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-1. Adja hozzá a következő kódolási művelet, egybesimított fájl:
+1. Hozzon létre egy logikai alkalmazást, és [kapcsolja össze az integrációs fiókjával](logic-apps-enterprise-integration-accounts.md "Integrációs fiók összekapcsolása logikai alkalmazással"). Ez a fiók tartalmazza azt a sémát, amelyet az XML-adatfájlok kódolásához fog használni.  
+1. Kérelem hozzáadása **– Ha egy HTTP-kérést kap** a logikai alkalmazáshoz, a rendszer elindít egy HTTP-kérelmet.  
+   ![képernyőkép az triggerről a](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png) kiválasztásához    
+1. Adja hozzá a sima fájl kódolási műveletét az alábbiak szerint:
    
-    a. Válassza ki a **plusz** bejelentkezést.
+    a. Válassza ki a **plusz** jelet.
    
-    b. Válassza ki a **művelet hozzáadása** (jelenik meg, miután kiválasztotta a plusz jelre) hivatkozásra.
+    b. Válassza a **művelet hozzáadása** hivatkozást (ekkor megjelenik a plusz jel kiválasztása után).
    
-    c. A Keresés mezőbe írja be a *Egybesimított* szűrése, amely a használni kívánt összes műveletet.
+    c. A keresőmezőbe írja be a *Flat* értéket a használni kívánt összes művelet szűréséhez.
    
-    d. Válassza ki a **Egybesimított fájl kódolása** lehetőséget a listából.   
-   ![Képernyőkép az Egybesimított fájl kódolása lehetőség](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-1. Az a **Egybesimított fájl kódolása** párbeszédpanelen válassza ki a **tartalom** szövegmezőben.  
-   ![Képernyőfelvétel: a tartalom szövegmező](media/logic-apps-enterprise-integration-flatfile/flatfile-3.png)  
-1. Válassza ki a kódolni kívánt tartalom a törzscímkét. A törzscímkét fel a tartalom mező.     
-   ![Képernyőkép a törzscímkét](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
-1. Válassza ki a **sémanév** listán, és válassza ki a sémát, a bemeneti tartalom kódolása a használni kívánt.    
-   ![A sémanév képernyőkép listamező](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
+    d. Válassza ki a **lapos fájl kódolása** lehetőséget a listából.   
+   ![a lapos fájl kódolási lehetőségének képernyőképe](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
+1. A **sima fájl kódolása** párbeszédpanelen jelölje ki a **tartalom** szövegmezőt.  
+   a tartalom szövegmező ![képernyőképe](media/logic-apps-enterprise-integration-flatfile/flatfile-3.png)  
+1. Válassza ki a törzs címkét a kódolni kívánt tartalomhoz. A törzs címkéje feltölti a tartalom mezőt.     
+   ![Képernyőfelvétel a Body címkéről](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
+1. Válassza ki a **séma neve** listát, és válassza ki azt a sémát, amelyet a bemeneti tartalom kódolásához használni kíván.    
+   a séma neve lista ![képernyőképe](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
 1. Mentse a munkáját.   
-   ![Képernyőkép a mentés ikon](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)  
+   ![Képernyőkép a Mentés ikonról](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)  
 
-Ezen a ponton végzett az egybesimított fájl kódolási connector beállítása. Egy valós alkalmazás esetében érdemes a kódolt adatok tárolása egy sor üzleti alkalmazás, például a Salesforce-hoz. Vagy, hogy a kódolt adatok egy kereskedelmi partneri küldhet. Egyszerűen hozzáadhat egy olyan műveletet, a kódolási művelet kimenetét, vagy a Salesforce-hoz a kereskedelmi partner által biztosított az egyéb összekötőkhöz valamelyikét használja.
+Ezen a ponton befejezte a sima file Encoding-összekötő beállítását. Egy valós alkalmazásban érdemes lehet a kódolt adatmennyiséget egy üzletági alkalmazásban (például Salesforce) tárolni. Vagy elküldheti a kódolt adategységeket egy kereskedelmi partnernek. Egyszerűen hozzáadhat egy műveletet, amely a kódolási művelet kimenetét Salesforce vagy a kereskedelmi partnernek küldi el a többi elérhető összekötő használatával.
 
-Az összekötő most tesztelheti a kérés végpontjához, és többek között az XML-tartalom a kérelem törzsében.  
+Most tesztelheti az összekötőt úgy, hogy egy kérést küld a HTTP-végpontnak, és tartalmazza a kérelem törzsében lévő XML-tartalmat is.  
 
-## <a name="create-the-flat-file-decoding-connector"></a>Az egybesimított fájl dekódolása összekötő létrehozása
+## <a name="create-the-flat-file-decoding-connector"></a>Az egyszerű fájl dekódolása összekötő létrehozása
 
 > [!NOTE]
-> A lépések elvégzéséhez szüksége már fel van töltve az integrációs fiók sémájának fájlt.
+> A lépések végrehajtásához rendelkeznie kell egy, az integrációs fiókba már feltöltött sémafájl-fájllal.
 
-1. Adjon hozzá egy **kérelem – Ha egy HTTP-kérelem érkezett** eseményindítót a logikai alkalmazáshoz.  
-   ![Képernyőkép – trigger kiválasztása](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-1. Adja hozzá a következő dekódolás művelet, egybesimított fájl:
+1. Kérelem hozzáadása **– Ha egy HTTP-kérést kap** a logikai alkalmazáshoz, a rendszer elindít egy HTTP-kérelmet.  
+   ![képernyőkép az triggerről a](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png) kiválasztásához    
+1. Adja hozzá a lapos fájl dekódolása műveletet a következőképpen:
    
-    a. Válassza ki a **plusz** bejelentkezést.
+    a. Válassza ki a **plusz** jelet.
    
-    b. Válassza ki a **művelet hozzáadása** (jelenik meg, miután kiválasztotta a plusz jelre) hivatkozásra.
+    b. Válassza a **művelet hozzáadása** hivatkozást (ekkor megjelenik a plusz jel kiválasztása után).
    
-    c. A Keresés mezőbe írja be a *Egybesimított* szűrése, amely a használni kívánt összes műveletet.
+    c. A keresőmezőbe írja be a *Flat* értéket a használni kívánt összes művelet szűréséhez.
    
-    d. Válassza ki a **Egybesimított fájl dekódolása** lehetőséget a listából.   
-   ![Képernyőkép az Egybesimított fájl dekódolása lehetőség](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-1. Válassza ki a **tartalom** vezérlő. Ez a korábbi lépésekben való dekódolandó a tartalom lehet használni a tartalom listáját hoz létre. Figyelje meg, hogy a *törzs* a bejövő HTTP kérés számára érhető el a tartalom dekódolására használhatók. A tartalom való dekódolandó közvetlenül is megadhat a **tartalom** vezérlő.     
-1. Válassza ki a *törzs* címke. A törzscímkét már az értesítés a **tartalom** vezérlő.
-1. Válassza ki azt a sémát, a tartalom dekódolandó használni kívánt nevét. Az alábbi képernyőképen az látható, hogy *OrderFile* kijelölt séma neve. A sémanév volna fel lett töltve az integrációs fiókba korábban.
+    d. Válassza ki a **lapos fájl dekódolása** lehetőséget a listából.   
+   ![a lapos fájl dekódolási lehetőségének képernyőképét](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
+1. Válassza ki a **tartalom** vezérlőelemet. Ez megjeleníti a korábbi lépésekből származó tartalom listáját, amelyet a dekódolható tartalomként használhat. Figyelje meg, hogy a bejövő HTTP-kérés *törzse* elérhető a dekódolni kívánt tartalomként való használathoz. Azt is megadhatja, hogy a tartalom közvetlenül a **Content** Control vezérlőelembe legyen dekódolva.     
+1. Válassza ki a *törzs* címkét. Figyelje meg, hogy a Body címke most már szerepel a **Content** vezérlőelemben.
+1. Válassza ki annak a sémának a nevét, amelyet a tartalom dekódolásához használni kíván. Az alábbi képernyőfelvételen látható, hogy a *OrderFile* a kiválasztott séma neve. A séma neve korábban már fel lett töltve az integrációs fiókba.
    
-   ![Képernyőkép az Egybesimított fájl dekódolása párbeszédpanel](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png)    
+   ![A lapos fájl dekódolása párbeszédpanel képernyőképe](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png)    
 1. Mentse a munkáját.  
-   ![Képernyőkép a mentés ikon](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)    
+   ![Képernyőkép a Mentés ikonról](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)    
 
-Ezen a ponton végzett az egybesimított fájl dekódolása connector beállítása. Egy valós alkalmazás esetében érdemes a dekódolt adatok tárolása egy üzleti alkalmazást például a Salesforce-ban. Egyszerűen hozzáadhat egy olyan műveletet, a Salesforce-hoz a dekódolási művelet kimenetét.
+Ekkor elkészült a sima fájl dekódolási összekötő beállításával. Egy valós alkalmazásban érdemes lehet a dekódolású adatmennyiséget egy üzletági alkalmazásban (például Salesforce) tárolni. Egyszerűen hozzáadhat egy műveletet a dekódolási művelet kimenetének Salesforce való elküldéséhez.
 
-Most tesztelheti az összekötő egy kérés a HTTP-végpontot, és többek között a kérelem törzsében dekódolni kívánt XML-tartalom.  
+Most tesztelheti az összekötőt úgy, hogy egy kérést küld a HTTP-végpontnak, és a kérelem törzsében dekódolni kívánt XML-tartalmat is tartalmazza.  
 
-## <a name="next-steps"></a>További lépések
-* [További információ az Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "megismerheti a vállalati integrációs csomag").  
+## <a name="next-steps"></a>Következő lépések
+* [További információ a Enterprise Integration packról](logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack").  
 
