@@ -153,8 +153,10 @@
         - name: Hálózati teljesítmény
           href: ../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Virtuálisgép-típusok és -méretek
-      href: sizes.md
+      href: null
       items:
+        - name: Méretcsaládok
+          href: sizes.md
         - name: 2. generációs virtuális gépek
           href: generation-2.md
         - name: Általános célú
@@ -187,6 +189,16 @@
         - name: Nagy teljesítményű számítás
           displayName: H-series
           href: sizes-hpc.md
+        - name: Fenntartott példányok
+          items:
+            - name: Előre fizetés virtuális gépekért
+              href: prepay-reserved-vm-instances.md
+            - name: Mi az az Azure Reservations?
+              href: ../../billing/billing-save-compute-costs-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+            - name: Virtuálisgép-példányok méretrugalmassága
+              href: reserved-vm-instance-size-flexibility.md
+        - name: Spot virtuális gépek
+          href: spot-vms.md
         - name: Előző generációk
           href: sizes-previous-gen.md
           displayName: D-series Ds-series A-series Basic
@@ -260,6 +272,16 @@
               href: dedicated-hosts-powershell.md
             - name: Portál
               href: dedicated-hosts-portal.md
+        - name: Spot virtuális gépek üzembe helyezése
+          items:
+            - name: Portál
+              href: spot-portal.md
+            - name: PowerShell
+              href: spot-powershell.md
+            - name: Sablon
+              href: ../linux/spot-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+            - name: Hibakódok
+              href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: 'A C# használata'
           href: csharp.md
         - name: Speciális lemez használata

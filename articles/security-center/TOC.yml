@@ -127,8 +127,12 @@
           href: security-center-monitoring.md
         - name: Gépek és alkalmazások védelme
           href: security-center-virtual-machine-protection.md
+        - name: Gépekkel és alkalmazásokkal kapcsolatos javaslatok referenciája
+          href: recommendations-compute-and-apps.md
         - name: Hálózati erőforrások védelme
           href: security-center-network-recommendations.md
+        - name: Hálózatokra vonatkozó javaslatok referenciája
+          href: recommendations-network.md
         - name: Adatok és tárolási szolgáltatások védelme
           href: security-center-sql-service-recommendations.md
         - name: Identitás és hozzáférés védelme

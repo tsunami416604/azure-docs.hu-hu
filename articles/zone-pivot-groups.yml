@@ -1,14 +1,14 @@
 ### YamlMime:Yaml
-ms.openlocfilehash: 8f0811dacfbedd59726fcdfe58d6a71cb02797da
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
-ms.translationtype: MT
+ms.openlocfilehash: 798a3ad1a2e81eae8621ae43d47d41031603331f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968409"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74734460"
 groups:
 - id: programming-languages-set-one
   title: Programozási nyelvek
-  prompt: Programozási nyelv kiválasztása
+  prompt: Válasszon egy programozási nyelvet
   pivots:
   - id: programming-language-csharp
     title: C#
@@ -19,4 +19,84 @@ groups:
   - id: programming-language-nodejs
     title: Node.js
   - id: programming-language-go
-    title: Ugrás
+    title: Indítás
+- id: cogsvcs-text-analytics-features
+  title: Text Analytics-funkciók
+  prompt: Válasszon ki egy Text Analytics-funkcióajánlatot
+  pivots:
+  - id: text-analytics-key-phrase-extraction
+    title: Kulcskifejezések kinyerése
+  - id: text-analytics-language-detection
+    title: Nyelvfelismerés
+  - id: text-analytics-sentiment-analysis
+    title: Hangulatelemzés
+- id: client-operating-system
+  title: Programozási nyelvek
+  prompt: Válasszon egy ügyféloldali operációs rendszert
+  pivots:
+  - id: client-operating-system-linux
+    title: Linux
+  - id: client-operating-system-macos
+    title: MacOS
+  - id: client-operating-system-windows
+    title: Windows
+- id: programming-languages-set-two
+  title: Programozási nyelvek
+  prompt: Válasszon egy programozási nyelvet
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-more
+    title: További nyelvek...
+- id: programming-languages-set-three
+  title: Programozási nyelvek
+  prompt: Válasszon egy programozási nyelvet
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-four
+  title: Programozási nyelvek
+  prompt: Válasszon egy programozási nyelvet
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-more
+    title: További nyelvek...
+- id: programming-languages-set-five
+  title: Programozási nyelvek
+  prompt: Válasszon egy programozási nyelvet
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-go
+    title: Indítás
+  - id: programming-language-ruby
+    title: Ruby
+- id: URL-test-interface
+  title: URL-tesztelőeszköz
+  prompt: 'Válasszon egyet a következő lehetőségek közül:'
+  pivots:
+  - id: url-test-tool-curl
+    title: cURL
+  - id: url-test-tool-postman
+    title: Postman

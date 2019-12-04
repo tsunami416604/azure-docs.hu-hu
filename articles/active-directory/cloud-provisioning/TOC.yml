@@ -1,0 +1,66 @@
+- name: Felhőalapú jogosultságkiosztás
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az identitáslétesítés?
+      href: what-is-provisioning.md
+    - name: Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?
+      href: what-is-cloud-provisioning.md
+      maintainContext: true
+- name: Oktatóanyagok
+  expanded: true
+  items:
+    - name: Egyetlen AD-erdő integrálása egyetlen Azure AD-bérlővel
+      href: tutorial-single-forest.md
+    - name: Egy meglévő erdő és egy új erdő integrálása egyetlen Azure AD-bérlővel
+      href: tutorial-existing-forest.md
+    - name: 'Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén'
+      href: tutorial-pilot-aadc-aadccp.md
+- name: Alapelvek
+  items:
+    - name: Mi az a jelszókivonat szinkronizálása?
+      href: /azure/active-directory/hybrid/whatis-phs?context=azure/active-directory/cloud-provisioning/context/cloud-provisioning-context
+    - name: 'Az Azure AD-séma, -attribútumok és -kifejezések ismertetése'
+      href: concept-attributes.md
+    - name: Kifejezések írása attribútumleképezéshez az Azure Active Directoryban
+      href: reference-expressions.md
+- name: Útmutatók
+  items:
+    - name: Telepítés és frissítés
+      items:
+        - name: Telepítési előfeltételek
+          href: how-to-prerequisites.md
+        - name: Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök telepítése
+          href: how-to-install.md
+        - name: Felhőalapú jogosultságkiosztás konfigurálása
+          href: how-to-configure.md
+    - name: Tervezés és kialakítás
+      items:
+        - name: Topológiák és forgatókönyvek az Azure AD Connect felhőalapú jogosultságkiosztáshoz
+          href: plan-cloud-provisioning-topologies.md
+    - name: Kezelés
+      items:
+        - name: Ügynök automatikus frissítése
+          href: how-to-automatic-upgrade.md
+    - name: Fejlesztés
+      items:
+        - name: Átalakítások
+          href: how-to-transformation.md
+        - name: Azure AD szinkronizálási API
+          href: 'https://docs.microsoft.com/graph/api/resources/synchronization-overview'
+    - name: Hibaelhárítás
+      items:
+        - name: A felhőalapú üzembe helyezés hibaelhárítása
+          href: how-to-troubleshoot.md
+        - name: Duplikált attribútumok
+          href: 'https://docs.microsoft.com/office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync'
+- name: Referencia
+  items:
+    - name: Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök verzióelőzményei
+      href: /azure/active-directory/manage-apps/provisioning-agent-release-version-history?context=azure/active-directory/cloud-provisioning/context/cp-context
+    - name: Azure AD Connect felhőalapú jogosultságkiosztás – gyakori kérdések
+      href: reference-cloud-provisioning-faq.md
+    - name: Szinkronizált attribútumok
+      href: /azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized?context=azure/active-directory/cloud-provisioning/context/cp-context
+    - name: Alapszintű Active Directory és Azure AD-környezet
+      href: tutorial-basic-ad-azure.md

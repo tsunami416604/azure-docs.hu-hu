@@ -49,6 +49,8 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: A fürtök kapacitástervezése
           href: ./hdinsight-capacity-planning.md
+        - name: Ajánlott fürtkezelési eljárások
+          href: ./cluster-management-best-practices.md
         - name: Rendelkezésre állás és megbízhatóság
           href: ./hdinsight-high-availability-linux.md
         - name: Tárolási lehetőségek összehasonlítása

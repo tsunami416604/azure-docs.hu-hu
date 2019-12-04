@@ -1,0 +1,50 @@
+### YamlMime:Landing
+title: Az Azure AD Connect felhőalapú jogosultságkiosztás dokumentációja
+summary: A felhőalapú jogosultságkiosztással egyszerűsítheti és automatizálhatja a helyszíni felhasználók felügyeletét, mivel mindent a felhőben tárolhat.
+metadata:
+  author: billmath
+  description: A felhőalapú jogosultságkiosztás révén egyszerűsítheti és automatizálhatja az Azure AD-felhasználók felügyeletét a felhasználók meglévő AD-erdőkből történő szinkronizálására szolgáló, felhőben kezelt szabályok használatával.
+  ms.author: billmath
+  ms.collection: na
+  ms.date: 09/05/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 89f3cf397322be65166e05c20b2e1d978a837581
+  ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74795241"
+landingContent:
+- title: A felhőalapú jogosultságkiosztás
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?
+      url: what-is-cloud-provisioning.md
+- title: Ismerje meg, hogyan implementálhatja a felhasználók és csoportok életciklusának felügyeletére szolgáló legjobb megoldást
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Egyetlen AD-erdő integrálása egyetlen Azure AD-bérlővel
+      url: tutorial-single-forest.md
+    - text: Egy meglévő erdő és egy új erdő integrálása egyetlen Azure AD-bérlővel
+      url: tutorial-existing-forest.md
+    - text: Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén
+      url: tutorial-pilot-aadc-aadccp.md
+- title: A felhőalapú jogosultságkiosztás első lépései
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure AD Connect felhőalapú jogosultságkiosztás előfeltételei
+      url: how-to-prerequisites.md
+    - text: Az Azure AD Connect felhőalapú jogosultságkiosztás telepítése
+      url: how-to-install.md
+    - text: Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök konfigurálása
+      url: how-to-configure.md
+  - linkListType: reference
+    links:
+    - text: Támogatott topológiák és forgatókönyvek
+      url: plan-cloud-provisioning-topologies.md

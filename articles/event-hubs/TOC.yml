@@ -164,7 +164,7 @@
           href: event-hubs-service-endpoints.md
         - name: Virtuális hálózati integráció és a tűzfalak engedélyezése Event Hubs-névtérben
           href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: Ügyfél által kezelt kulcsok konfigurálása inaktív adatok titkosításához
+        - name: Ügyfél által kezelt kulcsok konfigurálása inaktív adatok titkosításához (előzetes verzió)
           href: configure-customer-managed-key.md
     - name: Hibaelhárítás
       items:

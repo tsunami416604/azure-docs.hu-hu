@@ -190,6 +190,8 @@
       href: /javascript/api/overview/azure/container-registry
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.containerregistry/registries
+    - name: Feladatok – YAML
+      href: container-registry-tasks-reference-yaml.md
     - name: Webhookséma
       href: container-registry-webhook-reference.md
     - name: Event Grid-séma

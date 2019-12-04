@@ -28,15 +28,31 @@
       href: tutorial-custom-role-cli.md
 - name: Alapelvek
   items:
-    - name: A szerepkör-definíciók ismertetése
-      href: role-definitions.md
     - name: PIM Azure-erőforrásokhoz
       href: pim-azure-resource.md
     - name: Feltételes hozzáférés az Azure felügyeleti szolgáltatásaihoz
       href: conditional-access-azure-management.md
 - name: Útmutatók
   items:
-    - name: Hozzáférés kezelése
+    - name: Szerepkör-definíciók felsorolása
+      items:
+        - name: Áttekintés
+          href: role-definitions.md
+        - name: Szerepkör-definíciók felsorolása
+          href: role-definitions-list.md
+        - name: Beépített szerepkörök
+          href: built-in-roles.md
+    - name: Szerepkör-hozzárendelések felsorolása
+      items:
+        - name: Portál
+          href: role-assignments-list-portal.md
+        - name: PowerShell
+          href: role-assignments-list-powershell.md
+        - name: parancssori felület
+          href: role-assignments-list-cli.md
+        - name: REST API
+          href: role-assignments-list-rest.md
+    - name: Szerepkör-hozzárendelések hozzáadása vagy eltávolítása
       items:
         - name: Portál
           href: role-assignments-portal.md
@@ -50,9 +66,9 @@
           href: role-assignments-rest.md
         - name: Sablon
           href: role-assignments-template.md
-    - name: Hozzáférés megtagadása
+    - name: Megtagadás-hozzárendelések felsorolása
       items:
-        - name: Megtagadás-hozzárendelések
+        - name: Áttekintés
           href: deny-assignments.md
         - name: Portál
           href: deny-assignments-portal.md
@@ -60,7 +76,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: Egyéni szerepkörök
+    - name: Egyéni szerepkörök létrehozása
       items:
         - name: Áttekintés
           href: custom-roles.md
@@ -72,7 +88,7 @@
           href: custom-roles-rest.md
     - name: Tevékenységnaplók megtekintése
       href: change-history-report.md
-    - name: Hozzáférési jogosultságszint emelése az összes előfizetés kezeléséhez
+    - name: Hozzáférési szint emelése
       href: elevate-access-global-admin.md
     - name: Klasszikus adminisztrátorok
       href: classic-administrators.md
@@ -80,8 +96,6 @@
       href: troubleshooting.md
 - name: Referencia
   items:
-    - name: Beépített szerepkörök
-      href: built-in-roles.md
     - name: Erőforrás-szolgáltatói műveletek
       href: resource-provider-operations.md
     - name: RBAC-korlátozások

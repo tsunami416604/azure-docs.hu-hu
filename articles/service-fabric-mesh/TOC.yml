@@ -77,6 +77,8 @@
   items:
     - name: A Service Fabric Mesh erőforrás-szolgáltatói REST API-jai
       href: /rest/api/servicefabric/sfmeshrp-index
+    - name: A Service Fabric Mesh parancssori felületével kapcsolatos referencia
+      href: /cli/azure/ext/mesh
     - name: Service Fabric ügyfél-erőforrás REST API-k
       href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
     - name: Service Fabric Maven parancssori felületével kapcsolatos referencia

@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Az Azure IoT-megoldásgyorsítók dokumentációja
+summary: Az Azure IoT-megoldásgyorsítók teljes körű, üzembe helyezésre kész IoT-megoldások, amelyek gyakori IoT-forgatókönyveket, például távoli monitorozást implementálnak.
+metadata:
+  title: Az Azure IoT-megoldásgyorsítók dokumentációja
+  description: Az IoT-megoldásgyorsítók teljes körű, üzembe helyezésre kész IoT-megoldások, amelyek gyakori IoT-forgatókönyveket implementálnak. A forgatókönyvek közé tartozik a távoli monitorozás, a csatlakoztatott gyár, a prediktív karbantartás és az eszközszimuláció. A megoldásgyorsítók üzembe helyezésekor az üzemelő példány magában foglalja az összes szükséges felhőalapú szolgáltatást és minden szükséges alkalmazáskódot.
+  services: iot-accelerators
+  ms.service: iot-accelerators
+  ms.topic: landing-page
+  author: dominicbetts
+  ms.author: dobett
+  manager: philmea
+  ms.date: 09/16/2019
+  ms.openlocfilehash: cdad55cb8972e54f613319e890f052c26d94f0ef
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74781626"
+landingContent:
+- title: Az IoT-megoldásgyorsítók ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mik az Azure IoT-megoldásgyorsítók?
+      url: about-iot-accelerators.md
+    - text: Az AzureIoTSolutions.com webhely
+      url: iot-accelerators-permissions.md
+- title: Ismerkedés a távoli monitorozással
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A távoli monitorozási megoldásgyorsító áttekintése
+      url: iot-accelerators-remote-monitoring-sample-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: Távoli felhőalapú monitorozási megoldás kipróbálása
+      url: quickstart-remote-monitoring-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Eszközök monitorozása
+      url: iot-accelerators-remote-monitoring-monitor.md
+    - text: Eszközökkel kapcsolatos hibák észlelése
+      url: iot-accelerators-remote-monitoring-automate.md
+- title: Ismerkedés az ipari IoT-vel
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az ipari IoT áttekintése
+      url: overview-iot-industrial.md
+    - text: Az OPC-iker áttekintése
+      url: overview-opc-twin.md
+    - text: Az OPC-tároló áttekintése
+      url: overview-opc-vault.md
+    - text: Az OPC-közzétevő áttekintése
+      url: overview-opc-publisher.md
+    - text: Mi az az ipari IoT?
+      url: iot-accelerators-connected-factory-features.md
+  - linkListType: quickstart
+    links:
+    - text: Felhőalapú csatlakoztatottgyár-megoldás kipróbálása
+      url: quickstart-connected-factory-deploy.md
+- title: Ismerkedés az eszközszimulációval
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az eszközszimulációs megoldásgyorsító áttekintése
+      url: iot-accelerators-device-simulation-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Eszközszimulációs megoldás kipróbálása
+      url: quickstart-device-simulation-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: IoT-eszközszimuláció üzembe helyezése és futtatása
+      url: iot-accelerators-device-simulation-create-simulation.md
+    - text: Egyéni szimulált eszköz létrehozása
+      url: iot-accelerators-device-simulation-create-custom-device.md
+- title: Ismerkedés a prediktív karbantartással
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A prediktív karbantartási megoldásgyorsító áttekintése
+      url: iot-accelerators-predictive-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: Prediktív karbantartási megoldás kipróbálása
+      url: quickstart-predictive-maintenance-deploy.md

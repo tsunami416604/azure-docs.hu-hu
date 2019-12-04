@@ -14,8 +14,14 @@
       href: add-columns.md
     - name: Sorok hozzáadása
       href: add-rows.md
+    - name: Matematikai művelet alkalmazása
+      href: apply-math-operation.md
     - name: SQL-átalakítás alkalmazása
       href: apply-sql-transformation.md
+    - name: Hiányzó adatok törlése
+      href: clean-missing-data.md
+    - name: Értékek levágása
+      href: clip-values.md
     - name: Konvertálás CSV formátumba
       href: convert-to-csv.md
     - name: Átalakítás adathalmazzá
@@ -28,74 +34,28 @@
       href: join-data.md
     - name: Adatok normalizálása
       href: normalize-data.md
+    - name: Partíció és minta
+      href: partition-and-sample.md
     - name: Ismétlődő sorok eltávolítása
       href: remove-duplicate-rows.md
+    - name: SMOTE
+      href: smote.md
     - name: Oszlopok kiválasztása átalakításhoz
       href: select-columns-transform.md
     - name: Oszlopok kiválasztása az adathalmazban
       href: select-columns-in-dataset.md
-- name: Mintavételezés
-  items:
-    - name: Modell keresztellenőrzése
-      href: cross-validate-model.md
-    - name: Partíció és minta
-      href: partition-and-sample.md
-    - name: SMOTE
-      href: smote.md
-    - name: Adatok felosztása
-      href: split-data.md
 - name: Szolgáltatás kiválasztása
   items:
     - name: Szűrőalapú szolgáltatásválasztás
       href: filter-based-feature-selection.md
     - name: A permutáció funkció fontossága
       href: permutation-feature-importance.md
-- name: Python és R
+- name: Statisztikai függvények
   items:
-    - name: Python-modell létrehozása
-      href: create-python-model.md
-    - name: Python-szkript futtatása
-      href: execute-python-script.md
-    - name: R-szkript végrehajtása
-      href: execute-r-script.md
-- name: Szövegelemzés
-  items:
-    - name: N-Gram-funkciók kinyerése szövegből
-      href: extract-n-gram-features-from-text.md
-    - name: Funkciókivonatolás
-      href: feature-hashing.md
-    - name: Szöveg előfeldolgozása
-      href: preprocess-text.md
+    - name: Adatok összegzése
+      href: summarize-data.md
 - name: Gépi tanulási algoritmusok
   items:
-    - name: Osztályozás
-      items:
-        - name: Többosztályos döntési erdő
-          href: multiclass-decision-forest.md
-        - name: Többosztályos súlyozott döntési fa
-          href: multiclass-boosted-decision-tree.md
-        - name: Többosztályos logisztikai regresszió
-          href: multiclass-logistic-regression.md
-        - name: Többosztályos neurális hálózat
-          href: multiclass-neural-network.md
-        - name: One vs. All Multiclass
-          href: one-vs-all-multiclass.md
-        - name: Kétosztályos logisztikai regresszió
-          href: two-class-logistic-regression.md
-        - name: Kétosztályos átlagolt perceptron
-          href: two-class-averaged-perceptron.md
-        - name: Kétosztályos súlyozott döntési fa
-          href: two-class-boosted-decision-tree.md
-        - name: Kétosztályos döntési erdő
-          href: two-class-decision-forest.md
-        - name: Kétosztályos neurális hálózat
-          href: two-class-neural-network.md
-        - name: Kétosztályos támogató vektorgép
-          href: two-class-support-vector-machine.md
-    - name: Fürtözés
-      items:
-        - name: K-közép csoportosítás
-          href: k-means-clustering.md
     - name: Regresszió
       items:
         - name: Súlyozott döntési fa típusú regresszió
@@ -106,37 +66,79 @@
           href: linear-regression.md
         - name: Neurális hálózat típusú regresszió
           href: neural-network-regression.md
-    - name: Ajánló
+    - name: Fürtözés
       items:
-        - name: SVD-ajánló betanítása
-          href: train-svd-recommender.md
-- name: Modell betanítása
+        - name: K-közép csoportosítás
+          href: k-means-clustering.md
+    - name: Osztályozás
+      items:
+        - name: Többosztályos súlyozott döntési fa
+          href: multiclass-boosted-decision-tree.md
+        - name: Többosztályos döntési erdő
+          href: multiclass-decision-forest.md
+        - name: Többosztályos logisztikai regresszió
+          href: multiclass-logistic-regression.md
+        - name: Többosztályos neurális hálózat
+          href: multiclass-neural-network.md
+        - name: One vs. All Multiclass
+          href: one-vs-all-multiclass.md
+        - name: Kétosztályos átlagolt perceptron
+          href: two-class-averaged-perceptron.md
+        - name: Kétosztályos súlyozott döntési fa
+          href: two-class-boosted-decision-tree.md
+        - name: Kétosztályos döntési erdő
+          href: two-class-decision-forest.md
+        - name: Kétosztályos logisztikai regresszió
+          href: two-class-logistic-regression.md
+        - name: Kétosztályos neurális hálózat
+          href: two-class-neural-network.md
+        - name: Kétosztályos támogató vektorgép
+          href: two-class-support-vector-machine.md
+- name: A modell betanítása
   items:
-    - name: Modell betanítása
-      href: train-model.md
     - name: Csoportosítási modell betanítása
       href: train-clustering-model.md
+    - name: Modell betanítása
+      href: train-model.md
     - name: Modell-hiperparaméterek hangolása
       href: tune-model-hyperparameters.md
-- name: Modell értékelése
-  items:
-    - name: Modell értékelése
-      href: evaluate-model.md
-    - name: Ajánló értékelése
-      href: evaluate-recommender.md
-- name: Relevanciamodell
+- name: Modellpontozás és értékelés
   items:
     - name: Átalakítás alkalmazása
       href: apply-transformation.md
     - name: Adatok hozzárendelése fürtökhöz
       href: assign-data-to-clusters.md
+    - name: Modell keresztellenőrzése
+      href: cross-validate-model.md
+    - name: Modell értékelése
+      href: evaluate-model.md
     - name: Relevanciamodell
       href: score-model.md
+- name: Python nyelv
+  items:
+    - name: Python-modell létrehozása
+      href: create-python-model.md
+    - name: Python-szkript futtatása
+      href: execute-python-script.md
+- name: R nyelv
+  items:
+    - name: R-szkript végrehajtása
+      href: execute-r-script.md
+- name: Szövegelemzés
+  items:
+    - name: N-Gram-funkciók kinyerése szövegből
+      href: extract-n-gram-features-from-text.md
+    - name: Funkciókivonatolás
+      href: feature-hashing.md
+    - name: Szöveg előfeldolgozása
+      href: preprocess-text.md
+- name: Ajánlás
+  items:
+    - name: Ajánló értékelése
+      href: evaluate-recommender.md
     - name: SVD-ajánló pontozása
       href: score-svd-recommender.md
-- name: Statisztikai függvények
-  items:
-    - name: Matematikai művelet alkalmazása
-      href: apply-math-operation.md
-    - name: Adatok összegzése
-      href: summarize-data.md
+    - name: SVD-ajánló betanítása
+      href: train-svd-recommender.md
+- name: Modulhibák és hibaelhárítás
+  href: machine-learning-module-error-codes.md

@@ -231,8 +231,8 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Méretezési csoport sablonjának konvertálása felügyelt lemez használatához
           href: virtual-machine-scale-sets-convert-template-to-md.md
-        - name: Alacsony prioritás használata
-          href: virtual-machine-scale-sets-use-low-priority.md
+        - name: Spot-példány használata
+          href: use-spot.md
     - name: Kezelés
       items:
         - name: Általános kezelési feladatok

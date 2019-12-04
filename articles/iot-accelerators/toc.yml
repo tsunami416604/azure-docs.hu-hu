@@ -1,24 +1,42 @@
 - name: Az IoT-megoldásgyorsítók dokumentációja
-  href: index.md
+  href: index.yml
 - name: Áttekintés
-  expanded: true
   items:
     - name: Mik az IoT-megoldásgyorsítók?
       href: about-iot-accelerators.md
-    - name: AzureIoTSolution.com
+    - name: AzureIoTSolutions.com
       href: iot-accelerators-permissions.md
-- name: Távoli monitorozás
-  items:
-    - name: Áttekintés
+    - name: Távoli figyelés
       href: iot-accelerators-remote-monitoring-sample-walkthrough.md
+    - name: Ipari IoT
+      href: overview-iot-industrial.md
       items:
-        - name: Az architektúrával kapcsolatos választási lehetőségek
-          href: iot-accelerators-remote-monitoring-architectural-choices.md
-    - name: Gyors útmutatók
-      items:
-        - name: Távoli monitorozási megoldás kipróbálása
-          href: quickstart-remote-monitoring-deploy.md
-    - name: Oktatóanyagok
+        - name: Mi az az OPC-iker?
+          href: overview-opc-twin.md
+        - name: Mi az az OPC-tároló?
+          href: overview-opc-vault.md
+        - name: Mi az az OPC Publisher?
+          href: overview-opc-publisher.md
+        - name: Mi az a csatlakoztatott gyár?
+          href: iot-accelerators-connected-factory-features.md
+    - name: Eszközszimuláció
+      href: iot-accelerators-device-simulation-overview.md
+    - name: Prediktív karbantartás
+      href: iot-accelerators-predictive-walkthrough.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Távoli monitorozási megoldás kipróbálása
+      href: quickstart-remote-monitoring-deploy.md
+    - name: Csatlakoztatottgyár-megoldás kipróbálása
+      href: quickstart-connected-factory-deploy.md
+    - name: Eszközszimulációs megoldás kipróbálása
+      href: quickstart-device-simulation-deploy.md
+    - name: Prediktív karbantartási megoldás kipróbálása
+      href: quickstart-predictive-maintenance-deploy.md
+- name: Oktatóanyagok
+  items:
+    - name: Távoli figyelés
       items:
         - name: IoT-eszközök monitorozása
           href: iot-accelerators-remote-monitoring-monitor.md
@@ -34,7 +52,31 @@
           href: iot-accelerators-remote-monitoring-bulk-configuration-update.md
         - name: Rendellenességek észlelése a peremhálózaton
           href: iot-accelerators-remote-monitoring-edge.md
-    - name: Útmutatók
+    - name: Eszközszimuláció
+      items:
+        - name: Szimuláció létrehozása és futtatása
+          href: iot-accelerators-device-simulation-create-simulation.md
+        - name: Egyéni szimulált eszköz létrehozása
+          href: iot-accelerators-device-simulation-create-custom-device.md
+- name: Alapelvek
+  items:
+    - name: Távoli figyelés
+      items:
+        - name: Architektúra
+          href: iot-accelerators-remote-monitoring-architectural-choices.md
+        - name: Eszközmodell sémája
+          href: iot-accelerators-remote-monitoring-device-schema.md
+        - name: Eszközmodell viselkedése
+          href: iot-accelerators-remote-monitoring-device-behavior.md
+    - name: Ipari IoT
+      items:
+        - name: OPC-ikerarchitektúra
+          href: overview-opc-twin-architecture.md
+        - name: OPC-tárolóarchitektúra
+          href: overview-opc-vault-architecture.md
+- name: Útmutatók
+  items:
+    - name: Távoli figyelés
       items:
         - name: A megoldás üzembe helyezése
           items:
@@ -107,51 +149,7 @@
               href: iot-accelerators-remote-monitoring-rbac-tsi.md
         - name: SIM-adatok integrálása
           href: iot-accelerators-remote-monitoring-telefonica-sim.md
-    - name: Referencia
-      items:
-        - name: Eszközmodell sémája
-          href: iot-accelerators-remote-monitoring-device-schema.md
-        - name: Eszközmodell viselkedése
-          href: iot-accelerators-remote-monitoring-device-behavior.md
-    - name: További források
-      items:
-        - name: Fejlesztői referencia-útmutató (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
-        - name: Fejlesztői referencia-útmutató (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
-        - name: Fejlesztői hibaelhárítási útmutató
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
-        - name: GitHub-adattár (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
-        - name: GitHub-adattár (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
-        - name: Gyakori kérdések a távoli monitorozásról
-          href: iot-accelerators-faq-rm-v2.md
-- name: Ipari IoT
-  items:
-    - name: Áttekintés
-      items:
-        - name: Mi az az Ipari IoT?
-          href: overview-iot-industrial.md
-        - name: Mi az az OPC-iker?
-          href: overview-opc-twin.md
-        - name: Mi az az OPC-tároló?
-          href: overview-opc-vault.md
-        - name: Mi az az OPC Publisher?
-          href: overview-opc-publisher.md
-        - name: Mi az a csatlakoztatott gyár?
-          href: iot-accelerators-connected-factory-features.md
-    - name: Gyors útmutatók
-      items:
-        - name: Csatlakoztatottgyár-megoldás kipróbálása
-          href: quickstart-connected-factory-deploy.md
-    - name: Alapelvek
-      items:
-        - name: OPC-ikerarchitektúra
-          href: overview-opc-twin-architecture.md
-        - name: OPC-tárolóarchitektúra
-          href: overview-opc-vault-architecture.md
-    - name: Útmutatók
+    - name: Ipari IoT
       items:
         - name: Csatlakoztatott gyár
           items:
@@ -185,27 +183,7 @@
               href: howto-opc-publisher-configure.md
             - name: Az OPC Publisher futtatása
               href: howto-opc-publisher-run.md
-    - name: További források
-      items:
-        - name: GitHub-adattár
-          href: 'https://github.com/Azure/azure-iot-connected-factory'
-        - name: Csatlakoztatott gyár – GYIK
-          href: iot-accelerators-faq-cf.md
-- name: Eszközszimuláció
-  items:
-    - name: Áttekintés
-      href: iot-accelerators-device-simulation-overview.md
-    - name: Gyors útmutatók
-      items:
-        - name: Eszközszimulációs megoldás kipróbálása
-          href: quickstart-device-simulation-deploy.md
-    - name: Oktatóanyagok
-      items:
-        - name: Szimuláció létrehozása és futtatása
-          href: iot-accelerators-device-simulation-create-simulation.md
-        - name: Egyéni szimulált eszköz létrehozása
-          href: iot-accelerators-device-simulation-create-custom-device.md
-    - name: Útmutatók
+    - name: Eszközszimuláció
       items:
         - name: Meglévő IoT Hub használata
           href: iot-accelerators-device-simulation-choose-hub.md
@@ -217,44 +195,10 @@
           href: iot-accelerators-device-simulation-protobuf.md
         - name: Egyéni Docker-rendszerkép üzembe helyezése
           href: iot-accelerators-device-simulation-deploy-image.md
-    - name: További források
-      items:
-        - name: Fejlesztői referencia-útmutató
-          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
-        - name: GitHub-adattár
-          href: 'https://github.com/Azure/device-simulation-dotnet'
-- name: Prediktív karbantartás
-  items:
-    - name: Áttekintés
-      href: iot-accelerators-predictive-walkthrough.md
-    - name: Gyors útmutatók
-      items:
-        - name: Prediktív karbantartási megoldás kipróbálása
-          href: quickstart-predictive-maintenance-deploy.md
-    - name: További források
-      items:
-        - name: GitHub-adattár
-          href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
-- name: Referenciaarchitektúra
-  items:
-    - name: Áttekintés
-      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/iot/'
-    - name: Partnerimplementációk
-      items:
-        - name: Intel Connected Logistics Platform
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
-        - name: Edge Dynamometer Analysis
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
-        - name: Digitális aláírási megoldás
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
 - name: Kapcsolódó témakörök
   items:
-    - name: Megoldások
-      items:
-        - name: IoT-központ
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: IoT-megoldásgyorsítók
-          href: /azure/iot-accelerators
+    - name: IoT-központ
+      href: 'https://docs.microsoft.com/microsoft-iot-central/'
     - name: Platformszolgáltatások
       items:
         - name: IoT Hub
@@ -277,8 +221,47 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: További források
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Távoli figyelés
+      items:
+        - name: Fejlesztői referencia-útmutató (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
+        - name: Fejlesztői referencia-útmutató (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
+        - name: Fejlesztői hibaelhárítási útmutató
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
+        - name: GitHub-adattár (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
+        - name: GitHub-adattár (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
+        - name: Gyakori kérdések a távoli monitorozásról
+          href: iot-accelerators-faq-rm-v2.md
+    - name: Ipari IoT
+      items:
+        - name: GitHub-adattár
+          href: 'https://github.com/Azure/azure-iot-connected-factory'
+        - name: Csatlakoztatott gyár – GYIK
+          href: iot-accelerators-faq-cf.md
+    - name: Eszközszimuláció
+      items:
+        - name: Fejlesztői referencia-útmutató
+          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
+        - name: GitHub-adattár
+          href: 'https://github.com/Azure/device-simulation-dotnet'
+    - name: A prediktív karbantartás GitHub-adattára
+      href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
+    - name: Referenciaarchitektúra
+      href: iot-accelerators-architecture-overview.md
+      items:
+        - name: Letöltés
+          href: 'https://aka.ms/iotrefarchitecture'
+        - name: Partnerimplementációk
+          items:
+            - name: Intel Connected Logistics Platform
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
+            - name: Edge Dynamometer Analysis
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
+            - name: Digitális aláírási megoldás
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
     - name: GYIK
       href: iot-accelerators-faq.md
     - name: Stack Overflow
