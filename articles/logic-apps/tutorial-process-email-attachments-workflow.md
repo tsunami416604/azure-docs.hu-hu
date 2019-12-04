@@ -1,22 +1,18 @@
 ---
-title: Feladatok automatizálása több Azure-szolgáltatással – Azure Logic Apps
+title: Több Azure-szolgáltatással rendelkező feladatok automatizálása
 description: Oktatóanyag – automatizált munkafolyamatok létrehozása az e-mailek feldolgozásához Azure Logic Apps, Azure Storage és Azure Functions használatával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 52c9a23e3e00075e934b9f9f22a835090e02f1b9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 6486427753543e0f4fe9a197b6825a555ef2fc70
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820099"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793473"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Oktatóanyag: feladatok automatizálása az e-mailek feldolgozásához Azure Logic Apps, Azure Functions és Azure Storage használatával
 
@@ -61,8 +57,8 @@ A bejövő e-mailek és mellékletek blobként menthetőek egy [Azure Storage-t�
    | Beállítás | Value (Díj) | Leírás |
    |---------|-------|-------------|
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az Azure-előfizetés neve |  
-   | **Erőforráscsoport** | <*Azure-Resource-group*> | A kapcsolódó erőforrások rendezéséhez és felügyeletéhez használt [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) neve. Ez a példa a "LA-tutorial-RG" protokollt használja. <p>**Megjegyzés:** Az erőforráscsoportok adott régiókon belül léteznek. Bár az ebben az oktatóanyagban bemutatott elemek nem feltétlenül érhetőek el minden régióban, igyekezzen ugyanazt a régiót használni, amikor csak lehetséges. |
-   | **Storage-fiók neve** | <*Azure-Storage-fiók-név* > | A Storage-fiók neve, amelynek 3-24 karakterből kell állnia, és csak kisbetűket és számokat tartalmazhat. Ez a példa a "attachmentstorageacct" kifejezést használja. |
+   | **Erőforráscsoport** | <*Azure-Erőforrás-csoport*> | A kapcsolódó erőforrások rendezéséhez és felügyeletéhez használt [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) neve. Ez a példa a "LA-tutorial-RG" protokollt használja. <p>**Megjegyzés:** Az erőforráscsoportok adott régiókon belül léteznek. Bár az ebben az oktatóanyagban bemutatott elemek nem feltétlenül érhetőek el minden régióban, igyekezzen ugyanazt a régiót használni, amikor csak lehetséges. |
+   | **Storage-fiók neve** | <*Azure-Storage-fiók-név*> | A Storage-fiók neve, amelynek 3-24 karakterből kell állnia, és csak kisbetűket és számokat tartalmazhat. Ez a példa a "attachmentstorageacct" kifejezést használja. |
    | **Hely** | <*Azure-régió*> | Az a régió, ahol a Storage-fiókkal kapcsolatos információkat tárolhatja. Ez a példa a "West US"-t használja. |
    | **Teljesítmény** | Standard | Ez a beállítás adja meg a támogatott adattípusokat és az adathordozót az adatok tárolásához. Lásd: [A tárfiókok típusai](../storage/common/storage-introduction.md#types-of-storage-accounts). |
    | **Fióktípus** | Általános rendeltetésű | A [tárfiók típusa](../storage/common/storage-introduction.md#types-of-storage-accounts) |
@@ -144,7 +140,7 @@ Most az ezekben a lépésekben megadott kódrészlet használatával hozzon lét
 
    | Beállítás | Value (Díj) | Leírás |
    | ------- | ----- | ----------- |
-   | **Alkalmazás neve** | <*függvény – alkalmazás-név* > | A Function alkalmazás neve, amelynek az Azure-ban globálisan egyedinek kell lennie. Ez a példa már használja a "CleanTextFunctionApp" nevet, ezért adjon meg egy másik nevet, például: "MyCleanTextFunctionApp-<*Your-name*>" |
+   | **Alkalmazás neve** | <*függvény – alkalmazás-név*> | A Function alkalmazás neve, amelynek az Azure-ban globálisan egyedinek kell lennie. Ez a példa már használja a "CleanTextFunctionApp" nevet, ezért adjon meg egy másik nevet, például: "MyCleanTextFunctionApp-<*Your-name*>" |
    | **Előfizetés** | <*your-Azure-subscription-name*> | A korábban is használt Azure-előfizetés |
    | **Erőforráscsoport** | LA-Tutorial-RG | A korábban is használt Azure-erőforráscsoport |
    | **OS** | <*az operációs rendszer*> | Válassza ki azt az operációs rendszert, amely támogatja kedvenc funkciójának programozási nyelvét. Ebben a példában válassza a **Windows**lehetőséget. |

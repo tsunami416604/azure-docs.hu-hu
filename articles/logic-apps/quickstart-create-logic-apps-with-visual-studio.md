@@ -1,23 +1,18 @@
 ---
-title: Feladat-munkafolyamatok automatizálása a Visual Studióban – Azure Logic Apps
+title: Feladat-munkafolyamatok automatizálása a Visual Studióban
 description: Ismétlődő munkafolyamatok létrehozása, ütemezett és futtatása a vállalati integrációhoz Azure Logic Apps és a Visual Studio használatával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-ms.workload: azure-vs
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.manager: carmonm
+ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: e7ce31f489ae274eddb02c1bfb7e57eb486f5851
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 49269cf2171269063de4a3cf5de1f22ebc545005
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796901"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790820"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Gyors útmutató: automatizált feladatok, folyamatok és munkafolyamatok létrehozása Azure Logic Apps-Visual Studióval
 
@@ -204,7 +199,7 @@ Ha elkészült a logikai alkalmazással, törölje a logikai alkalmazást és a 
 
 1. Törölje a Visual Studio-megoldást a helyi számítógépről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy logikai alkalmazást állított össze, helyezett üzembe és futtatott a Visual Studióval. A Logic apps és a Visual Studio használatával végzett speciális üzembe helyezés kezelésével és végrehajtásával kapcsolatos információkért tekintse meg a következő cikkeket:
 

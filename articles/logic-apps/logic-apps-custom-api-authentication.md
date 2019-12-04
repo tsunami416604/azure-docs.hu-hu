@@ -1,20 +1,17 @@
 ---
-title: Hitelesítés hozzáadása egyéni API-khoz – Azure Logic Apps | Microsoft Docs
+title: Hitelesítés hozzáadása egyéni API-khoz
 description: Hitelesítés beállítása egyéni API-k hívásához Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: fb9f986c2711e0cbc8ac3facd073f1a72f46043d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f6dfa98550dcfb092ca1fb52a5cf0bed32e697ad
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039130"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793154"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Egyéni API-k biztonságos hívása Azure Logic Apps
 
@@ -200,16 +197,16 @@ Nyissa meg a logikai alkalmazás definícióját a kód nézetben, nyissa meg a 
 }
 ```
 
-| Tulajdonság | Kötelező | Leírás | 
+| Tulajdonság | Szükséges | Leírás | 
 | -------- | -------- | ----------- | 
-| tenant | Igen | Az Azure AD-bérlő GUID azonosítója | 
-| audience | Igen | Az elérni kívánt cél erőforrás GUID azonosítója, amely a webalkalmazás vagy API-alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
+| Bérlő | Igen | Az Azure AD-bérlő GUID azonosítója | 
+| célközönség | Igen | Az elérni kívánt cél erőforrás GUID azonosítója, amely a webalkalmazás vagy API-alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
 | clientId | Igen | A hozzáférést kérő ügyfél GUID azonosítója, amely a logikai alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
 | titkos kód | Igen | A hozzáférési jogkivonatot kérő ügyfélhez tartozó alkalmazás identitásának kulcsa vagy jelszava | 
 | type | Igen | A hitelesítési típus. ActiveDirectoryOAuth-hitelesítés esetén az érték `ActiveDirectoryOAuth`. | 
 |||| 
 
-Például:
+Példa:
 
 ``` json
 {
@@ -251,7 +248,7 @@ Az **Engedélyezés** szakaszban adja meg a következő tulajdonságokat:
 } 
 ```
 
-| Tulajdonság | Kötelező | Leírás |
+| Tulajdonság | Szükséges | Leírás |
 | -------- | -------- | ----------- |
 | `type` | Igen | A hitelesítési típus. Az SSL-Ügyféltanúsítványok esetében az értéknek `ClientCertificate`nak kell lennie. |
 | `password` | Nem | Az ügyféltanúsítvány eléréséhez használt jelszó (PFX-fájl) |
@@ -274,7 +271,7 @@ Az **Engedélyezés** szakaszban adja meg a következő tulajdonságokat:
 }
 ```
 
-| Tulajdonság | Kötelező | Leírás | 
+| Tulajdonság | Szükséges | Leírás | 
 | -------- | -------- | ----------- | 
 | type | Igen | A használni kívánt hitelesítési típus. Az alapszintű hitelesítés esetében az értéknek `Basic`nak kell lennie. | 
 | felhasználónév | Igen | A hitelesítéshez használni kívánt Felhasználónév | 

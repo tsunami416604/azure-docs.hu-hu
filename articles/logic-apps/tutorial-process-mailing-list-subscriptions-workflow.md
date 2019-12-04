@@ -1,22 +1,18 @@
 ---
-title: Jóváhagyási alapú automatizált munkafolyamatok létrehozása – Azure Logic Apps
+title: Jóváhagyási alapú automatizált munkafolyamatok létrehozása
 description: Oktatóanyag – jóváhagyási alapú automatikus munkafolyamat létrehozása, amely a levelezőlista-előfizetéseket dolgozza fel Azure Logic Apps használatával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: f720e22542533d17fc7ab581f8ba8d9c03a89570
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: bcd90859066911797d78737187cae6d361029ddd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025603"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784663"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Oktatóanyag: automatikus jóváhagyási alapú munkafolyamatok létrehozása Azure Logic Apps használatával
 
@@ -68,7 +64,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja h
    | **Log Analytics** | Ki | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. |
    ||||
 
-1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztárán válassza az **értesítések**  >  a telepített logikai alkalmazás**erőforrásának keresése** lehetőséget.
+1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztárán válassza az **értesítések** > a telepített logikai alkalmazás **erőforrásának keresése** lehetőséget.
 
    ![Ugrás az új Logic app-erőforrásra](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app-resource.png)
 

@@ -4,19 +4,22 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: bcf353fa0783429702143b2bf0bdf2114dd4bed6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ebabeccc43998c229bcd28063b6cbabae4b046ea
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503660"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795825"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
+
+Az első lépések előtt:
 
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=jre)
+> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -36,6 +39,9 @@ ms.locfileid: "73503660"
 
 1. Mentse a projekt módosításait.
 
+> [!NOTE]
+> A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
+
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
 Nyomja le az F11 billentyűt, vagy válassza a **Run** > **Debug** (Futtatás, Hibakeresés) lehetőséget.
@@ -43,6 +49,6 @@ A mikrofonból érkező következő 15 másodpercnyi beszédet a rendszer felism
 
 ![Képernyőkép a konzolról a sikeres felismerést követően](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-07-console-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

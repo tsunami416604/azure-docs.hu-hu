@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0ba76ed2bd7d6259307e2e8046c4695786ff3045
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0dbfab9b1886b39f166b94447fed8dc6707404bd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504248"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795734"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -17,6 +17,8 @@ ms.locfileid: "73504248"
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=jre)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -109,6 +111,9 @@ ms.locfileid: "73504248"
 
 1. Mentse a projekt módosításait.
 
+> [!NOTE]
+> A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
+
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
 Nyomja le az F11 billentyűt, vagy válassza a **Run** > **Debug** (Futtatás, Hibakeresés) lehetőséget.
@@ -119,6 +124,6 @@ A hangfájl első 15 másodpercét a rendszer felismeri és naplózza a konzol a
    We recognized: What's the weather like?
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

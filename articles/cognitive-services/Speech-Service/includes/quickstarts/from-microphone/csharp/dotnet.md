@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 88ac0f05bf937af19a0bd6bf3cf2253fd3052f4c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 106a11959bdaf34f44faa0c6a2b031ccba537835
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503485"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796102"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt ügyeljen a következőre:
+Az első lépések előtt:
 
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
 ## <a name="open-your-project-in-visual-studio"></a>A projekt megnyitása a Visual Studióban
 
@@ -45,6 +46,7 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez. Jegy
 > [!NOTE]
 > Ez a példa a `FromSubscription()` metódust használja a `SpeechConfig`létrehozásához. Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=16)]
+> A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
 
 ## <a name="initialize-a-speechrecognizer"></a>SpeechRecognizer inicializálása
 
@@ -75,6 +77,6 @@ Most már készen áll az alkalmazás felépítésére és a beszédfelismerési
 2. **Indítsa el az alkalmazást** – a menüsávban válassza a **hibakeresés** > a **hibakeresés indítása** vagy az **F5**billentyű lenyomása lehetőséget.
 3. **Felismerés elindítása** – felszólítja, hogy beszéljen egy angol nyelvű kifejezéssel. A rendszer elküldje a beszédet a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

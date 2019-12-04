@@ -18,16 +18,16 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: a5d600e761ce3c3cebbe155c6be7e0f5a377eb32
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: afa1d2ca59bacec2695aaff0cacb119a8fbf787b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419631"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766599"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Virtuális gép bejövő és kimenő hálózati forgalmának naplózása az Azure Portal használatával
 
-A hálózati biztonsági csoportok (NSG-k) lehetővé teszik a virtuális gépek bejövő és kimenő forgalmának szűrését. A Network Watcher NSG-folyamatnaplózási funkciójával naplózhatja az egyes hálózati biztonsági csoportokon áthaladó hálózati forgalmat. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+A hálózati biztonsági csoportok (NSG-k) lehetővé teszik a virtuális gépek bejövő és kimenő forgalmának szűrését. A Network Watcher NSG-folyamatnaplózási funkciójával naplózhatja az egyes hálózati biztonsági csoportokon áthaladó hálózati forgalmat. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hálózati biztonsági csoporttal rendelkező virtuális gép létrehozása
@@ -44,14 +44,14 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 2. Válassza a **számítás**lehetőséget, majd válassza a **Windows Server 2016 Datacenter** vagy az **Ubuntu Server**verzióját.
 3. Adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza az **OK** elemet:
 
-    |Beállítás|Érték|
+    |Beállítás|Value (Díj)|
     |---|---|
-    |Name (Név)|myVM|
+    |Név|myVM|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Előfizetést| Válassza ki előfizetését.|
+    |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+    |Földrajzi egység| Válassza az **USA keleti régiója** lehetőséget.|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **Beállítások** területen fogadja el az összes alapértelmezett beállítást, majd kattintson az **OK** gombra.
@@ -63,8 +63,8 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne ugorjon a
 
 Ha már engedélyezve van a Network Watcher az USA keleti régiójában, folytassa az [Insights-szolgáltató regisztrálása](#register-insights-provider) szakasszal.
 
-1. Válassza a portálon a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
-2. Válassza a **Régiók** lehetőséget a kibontáshoz, majd válassza a **...** jelet az **USA keleti régiója** melletti jobb oldalon, az alábbi ábrán látható módon:
+1. Válassza a portálon a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor a **Network Watcher** elem megjelenik az eredmények között, válassza ki.
+2. Válassza a **Régiók** elemet a kibontásához, majd válassza az **USA keleti régiója** elem jobb oldalán található **...** lehetőséget az alábbi ábrán látható módon:
 
     ![A Network Watcher engedélyezése](./media/network-watcher-nsg-flow-logging-portal/enable-network-watcher.png)
 
@@ -87,10 +87,10 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
 2. Válassza a **Storage** elemet, majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőséget.
 3. Adja meg vagy válassza ki a következő adatokat, fogadja el a fennmaradó alapértelmezett adatokat, majd válassza a **Létrehozás** elemet.
 
-    | Beállítás        | Érték                                                        |
+    | Beállítás        | Value (Díj)                                                        |
     | ---            | ---   |
-    | Name (Név)           | A hossza 3–24 karakter lehet, kizárólag kisbetűket és számokat tartalmazhat, és egyedinek kell lennie az összes Azure Storage-fiókban.                                                               |
-    | Hely       | Válassza az **USA keleti régiója** lehetőséget.                                           |
+    | Név           | A hossza 3–24 karakter lehet, kizárólag kisbetűket és számokat tartalmazhat, és egyedinek kell lennie az összes Azure Storage-fiókban.                                                               |
+    | Földrajzi egység       | Válassza az **USA keleti régiója** lehetőséget.                                           |
     | Erőforráscsoport | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
 
     A Storage-fiók létrehozása nagyjából egy percet vesz igénybe. Ne folytassa a további lépésekkel, amíg a tárfiók létrehozása be nem fejeződött. Ha meglévő Storage-fiókot használ új létrehozása helyett, győződjön meg arról, hogy olyan fiókot választ, amely esetében a **BEÁLLÍTÁSOK** területen a **Tűzfalak és virtuális hálózatok** beállítása **Minden hálózat** (alapértelmezett). A Storage-fióknak minden esetben ugyanabban a régióban kell lennie, mint a NSG. 
@@ -127,7 +127,7 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
    ![Folyamatnaplók letöltése](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Válassza ki az [NSG-folyamatnapló engedélyezése](#enable-nsg-flow-log) szakasz 2. lépésében konfigurált Storage-fiókot.
-4. A **blob Service**területen válassza a **Blobok**lehetőséget, majd válassza ki az elemzések **-naplók-networksecuritygroupflowevent** tárolót.
+4. A **blob Service**területen válassza a **tárolók**lehetőséget, majd válassza ki az elemzések **– naplók-networksecuritygroupflowevent** tárolót.
 5. A tárolóban navigáljon a mappa-hierarchiába, amíg nem kap egy PT1H. JSON fájlt, ahogy az a következő képen is látható. A naplófájlokat a rendszer a következő elnevezési konvenciót követő mappa-hierarchiába írja: https://{storageAccountName}. blob. Core. Windows. net/elemzések-naplók-networksecuritygroupflowevent/resourceId =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {hónap}/d = {Day}/h = {Hour}/m = 00/macAddress = {macAddress}/PT1H.json
 
    ![Folyamat naplója](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
@@ -216,7 +216,7 @@ A **mac** érték az előző kimenetben azon hálózati adapter MAC-címét jel�
 | 13.67.143.118     | Cél IP-cím | A cél IP-cím, ahová a forgalom tartott.                                                                                  |
 | 44931        | Forrásport            | A forrásport, ahonnan a forgalom érkezett.                                           |
 | 443         | Célport       | A célport, ahová a forgalom tartott. Mivel a forgalom a 443-as portra lett szánva, az **UserRule_default-Allow-RDP**nevű szabály a naplófájlban feldolgozta a folyamatot.                                                |
-| T            | Protokoll               | Azt jelöli, hogy a forgalom protokollja TCP (T) vagy UDP (U) volt-e.                                  |
+| T            | Protocol (Protokoll)               | Azt jelöli, hogy a forgalom protokollja TCP (T) vagy UDP (U) volt-e.                                  |
 | O            | Irány              | Azt jelöli, hogy a forgalom bejövő (I) vagy kimenő (O) volt-e.                                     |
 | A            | Műveletek                 | Azt jelöli, hogy a forgalom engedélyezve (A) vagy elutasítva (D) lett-e.  
 | C#            | Csak a flow állapota **2. verzió** | Rögzíti a folyamat állapotát. A lehetséges állapotok a **B**: Begin, amikor létrejön egy folyamat. Nincs megadva statisztika. **C**: folyamatos folyamat folytatása. A statisztikák 5 perces időközönként vannak megadva. **E**: Befejezés, ha egy folyamat leáll. Statisztikákat biztosítunk. |

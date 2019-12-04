@@ -1,21 +1,18 @@
 ---
-title: Várjon, és válaszoljon az eseményekre – Azure Logic Apps
+title: Várjon, és válaszoljon az eseményekre
 description: Automatizálhatja, szüneteltetheti és folytathatja a munkafolyamatokat egy szolgáltatási végpont eseményei alapján a Azure Logic Apps használatával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: ee86f53795b1b3e7bd61480a490d4e18c844d4c2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 7ff411ae082acfe2d465ab9d3371982b0693c226
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804265"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787046"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Automatizált eseményvezérelt munkafolyamatok létrehozása és futtatása HTTP-webhookok használatával Azure Logic Apps
 
@@ -83,7 +80,7 @@ Ez a beépített trigger egy visszahívási URL-címet regisztrál a megadott sz
 
    A logikai alkalmazás mentése meghívja az előfizetés végpontot, és regisztrálja a visszahívási URL-címet a logikai alkalmazás aktiválásához.
 
-1. Most, amikor a TARGET szolgáltatás egy `HTTP POST` kérést küld a visszahívási URL-címre, a logikai alkalmazás tüzeket tartalmaz, és tartalmazza a kérelemben átadott adatokat.
+1. Most, amikor a TARGET szolgáltatás egy `HTTP POST` kérelmet küld a visszahívási URL-címre, a logikai alkalmazás tüzeket tartalmaz, és tartalmazza a kérelemben átadott adatokat.
 
 ## <a name="add-an-http-webhook-action"></a>HTTP-webhook művelet hozzáadása
 

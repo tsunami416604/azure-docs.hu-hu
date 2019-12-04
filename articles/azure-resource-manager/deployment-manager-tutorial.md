@@ -1,16 +1,16 @@
 ---
-title: Az Azure Deployment Manager Resource Manager-sablonokkal való használata | Microsoft Docs
-description: Az Azure Deployment Managerben használhat Resource Manager-sablonokat az Azure-erőforrások üzembe helyezéséhez.
+title: Sablonok üzembe helyezése az Azure telepítéskezelő használatával
+description: Ismerje meg, hogyan helyezhet üzembe Azure-erőforrásokat az Azure telepítéskezelő Resource Manager-sablonok használatával.
 author: mumian
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: db130da9943007e647adf77411b456914af9886f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: f8091aedcf1f03ef83dbab3b27e9af6b2912d25a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307025"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789987"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Oktatóanyag: Az Azure Deployment Manager Resource Manager-sablonokkal való használata (nyilvános előzetes verzió)
 
@@ -34,7 +34,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A szolgáltatástopológia-sablon létrehozása
 > * A bevezetési sablon létrehozása
 > * A sablonok üzembe helyezése
-> * A telepítés ellenőrzése
+> * Az üzemelő példány ellenőrzése
 > * Az újabb verzió üzembe helyezése
 > * Az erőforrások eltávolítása
 
@@ -186,7 +186,7 @@ Az oktatóanyag későbbi részében üzembe helyezünk egy bevezetést. Az üze
 
 Létre kell hoznia egy felhasználó által hozzárendelt felügyelt identitást, és konfigurálnia az előfizetése hozzáférés-vezérlését.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Hozzon létre egy [felhasználó által hozzárendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. A portál bal oldali menüjében válassza az **Előfizetések** lehetőséget, majd válassza ki az előfizetést.
 4. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget, majd válassza a **szerepkör-hozzárendelés hozzáadása**elemet.
@@ -425,9 +425,9 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
     A bevezetés sikeres üzembe helyezése után két további erőforráscsoport (szolgáltatásonként egy-egy) létrehozása is látható.
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
-1. Nyissa meg az [Azure portált](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 2. Tallózással keresse meg az újonnan létrehozott webalkalmazásokat a bevezetés üzembe helyezése során létrehozott új erőforráscsoportok alatt.
 3. Nyissa meg a webalkalmazást egy webböngészőben. Ellenőrizze a helyet és a verziót az index.html fájlban.
 

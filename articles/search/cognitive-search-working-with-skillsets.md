@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113644"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790883"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Készségkészlet-fogalmak és-összeállítás az Azure Cognitive Search
 
@@ -43,9 +43,9 @@ Ha egy dokumentum a dúsítási folyamatban van, akkor a rendszer a tartalom és
 
 |AdatSource\Parsing mód|Alapértelmezett|JSON, JSON-sorok & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
-|SQL|/document/{column1}<br>/document/{column2}<br>…|N/A |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N/A|
+|Blob Storage|/document/content<br>/Document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
+|SQL|/document/{column1}<br>/document/{column2}<br>...|– |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|–|
 
  A képességek végrehajtásával új csomópontokat vesznek fel a dúsítási fában. Ezek az új csomópontok ezután az alárendelt képességekhez bemenetként, a Knowledge Store-ban való kivetítéssel, vagy az index mezőihez való leképezéssel használhatók. A dúsítások nem változtathatók meg, a csomópontok nem szerkeszthetők. Mivel a szakértelmével összetettebbek, így a dúsítási fában marad, de a dúsítási fában nem minden csomópontnak kell azt az indexbe vagy a tudásbázisba tenni. A dúsítások csak egy részhalmazát különítheti el az indexbe vagy a Knowledge Store-ba.
 
@@ -65,7 +65,7 @@ Minden egyes szaktudáshoz környezet szükséges. A környezet meghatározza A 
 
 ### <a name="sourcecontext"></a>SourceContext
 
-A `sourceContext` csak a [formáló ismeretekben](cognitive-search-skill-shaper.md) és a [kivetítésekben](knowledge-store-projection-overview.md)használatos. Többszintű, beágyazott objektumok létrehozásához használatos. A `sourceContext` lehetővé teszi egy hierarchikus, névtelen típusú objektum összeállítását, amely több ismeretet igényelne, ha csak a környezetet használta. A `sourceContext` használata a következő szakaszban látható.
+A `sourceContext` csak a szaktudás bemenetei és a [kivetítések](knowledge-store-projection-overview.md)esetében használatos. Többszintű, beágyazott objektumok létrehozásához használatos. Előfordulhat, hogy létre kell hoznia egy új ojekt, hogy beírja bemenetként egy képességbe vagy projektbe a Tudásbázisban. Mivel a dúsítási csomópontok nem lehetnek érvényes JSON-objektumok a dúsítási fában, és a fában lévő csomópontok refrencing csak a csomópont állapotát adja vissza a létrehozáskor, a alkoholtartalom-növelési vagy-kivetítési feladatokhoz egy jól formázott JSON-objektumot kell létrehoznia. A `sourceContext` lehetővé teszi egy hierarchikus, névtelen típusú objektum összeállítását, amely több ismeretet igényelne, ha csak a környezetet használta. A `sourceContext` használata a következő szakaszban látható. Tekintse meg a szakértelem kimenetét, amely a dúsítást generálta annak megállapításához, hogy az érvényes JSON-objektum-e, és nem egyszerű típus.
 
 ### <a name="projections"></a>Leképezések
 
@@ -297,7 +297,7 @@ A beágyazott alakítási megközelítés nem igényel formálói képességet, 
   
 A módszerek közül az egyik megfigyelés, hogy az `"Keyphrases"` értékeit hogyan tervezték a `"sourceContext"`. A karakterláncok gyűjteményét tartalmazó `"Keyphrases"` csomópont maga az oldal szövegének gyermeke. Mivel azonban a vetítésekhez JSON-objektumra van szükség, és az oldal egy primitív (string), a `"sourceContext"` a kulcs kifejezésének egy nevesített tulajdonsággal rendelkező objektumba való becsomagolására szolgál. Ez a módszer lehetővé teszi, hogy a primitívek egymástól függetlenül legyenek kitervezve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépésként hozza létre az első készségkészlet kognitív ismeretekkel.
 

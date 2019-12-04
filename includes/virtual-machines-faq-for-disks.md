@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 8eda3ed7d35c9ff94a00eacb49f2e4f3b3e6f150
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008578"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796149"
 ---
 Ez a cikk az Azure Managed Disks és az Azure prémium SSD-lemezekkel kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="managed-disks"></a>Felügyelt lemezek
+## <a name="managed-disks"></a>Managed Disks
 
 **Mi az Azure Managed Disks?**
 
@@ -137,7 +137,9 @@ Felügyelt lemezek esetében nem nevezhető át. A nem felügyelt lemezeket azon
 
 **Használhatok GPT particionálást egy Azure-lemezen?**
 
-A GPT-particionálás csak olyan adatlemezeken használható, amelyek nem operációsrendszer-lemezek. Az operációsrendszer-lemezeknek az MBR-partíció stílusát kell használniuk.
+Az 1. generációs képek csak a GPT-particionálást használhatják adatlemezeken, nem operációsrendszer-lemezeken. Az operációsrendszer-lemezeknek az MBR-partíció stílusát kell használniuk.
+
+A [2. generációs lemezképek](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) GPT particionálást használhatnak az operációsrendszer-lemezen és az adatlemezeken is.
 
 **Milyen típusú lemezek támogatják a pillanatképeket?**
 
@@ -149,7 +151,7 @@ Prémium SSD, standard SSD és standard szintű HDD-támogatási Pillanatképek.
 A lemezes foglalás az a lehetőség, hogy egy évig előre megvásárolja a lemezes tárolást, ami csökkenti a teljes költségeket.
 
 **Milyen lehetőségeket kínál az Azure Disk foglalás?**
-Az Azure Disk foglalás lehetőséget biztosít a prémium SSD-k megvásárlására a megadott SKU-P30 (1 TiB) akár P80 (32 TiB), egy éves időszakra. A lemezes foglalás megvásárlásához szükséges lemezek minimális száma nem korlátozott. Emellett dönthet úgy is, hogy egyszeri, előzetes fizetési vagy havi fizetéssel fizet. Prémium SSD Managed Disks esetében nem alkalmazható további tranzakciós díj.
+Az Azure Disk foglalás lehetőséget biztosít a prémium SSD-k megvásárlására a megadott SKU-P30 (1 TiB) akár P80 (32 TiB), egy éves időszakra. A lemezes foglalás megvásárlásához szükséges lemezek minimális száma nem korlátozott. Emellett egyetlen összegben, előre kifizetheti a díjat, vagy havidíjas fizetést választhat. Prémium SSD Managed Disks esetében nem alkalmazható további tranzakciós díj.
 
 A foglalások lemezek formájában, nem kapacitással történnek. Más szóval, ha P80 (32 TiB) lemezt foglal le, egyetlen P80-lemezt kap, akkor az adott foglalást nem divvy két kisebb P70 (16 TiB) lemezre. Természetesen a lehető legtöbb vagy kevés lemezt is lefoglalhatja, többek között két külön P70 (16 TiB) lemezt.
 
@@ -252,7 +254,7 @@ Az standard SSD-lemezek sablonnal történő létrehozásával kapcsolatos péld
 
 **Átválthatom a meglévő lemezeket standard SSDre?**
 Igen. Tekintse át az [Azure Managed Disks Storage standard és Premium közötti átalakítását, és fordítva](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) a Managed Disks átalakítására vonatkozó általános irányelveket. Továbbá a következő érték használatával frissítse a lemez típusát standard SSDra.
--AccountType StandardSSD_LRS
+– AccountType StandardSSD_LRS
 
 **Milyen előnyökkel jár a standard SSD lemezek használata a HDD helyett?**
 Standard SSD lemezek jobb késést, következetességet, rendelkezésre állást és megbízhatóságot biztosítanak a HDD-lemezekhez képest. Az alkalmazás munkaterhelései sokkal simábban futnak a standard SSD miatt. Vegye figyelembe, prémium SSD lemezek a legtöbb IO-igényes éles számítási feladathoz ajánlott megoldás.
@@ -263,7 +265,7 @@ Nem, a standard SSD lemezek csak Managed Disksként érhetők el.
 **Standard SSD lemezek támogatják az "egypéldányos VM SLA" szolgáltatást?**
 Nem, a standard SSD-k nem rendelkeznek egyetlen példányú VM SLA-val. Az Egypéldányos VM SLA-hoz prémium SSD lemezeket használjon.
 
-## <a name="migrate-to-managed-disks"></a>Migrálás felügyelt lemezekre
+## <a name="migrate-to-managed-disks"></a>Áttérés a Managed Disks szolgáltatásra
 
 **Van-e hatással az áttelepítés a Managed Disks teljesítményére?**
 

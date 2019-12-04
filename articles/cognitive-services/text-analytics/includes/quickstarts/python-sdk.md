@@ -4,17 +4,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/05/2019
 ms.author: aahi
-ms.openlocfilehash: 3623d18e53881768ea6409c970065de231d233c3
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6d4076563ac803c72f3749399bed6aaa235a0343
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750224"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795946"
 ---
 <a name="HOLTop"></a>
 
 
-[Dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [minták](https://github.com/Azure-Samples/samples-cognitive-services-python-sdk/)
+[Dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -72,7 +72,7 @@ Hozzon létre egy új [TextAnalyticsClient](https://docs.microsoft.com/python/ap
 
 [!code-python[client authentication](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=authentication)]
 
-## <a name="sentiment-analysis"></a>Hangulatelemzés
+## <a name="sentiment-analysis"></a>Véleményelemzés
 
 Hitelesítse az ügyfél objektumát, és hívja meg a [hangulat ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt. Ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a hangulat pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
 
@@ -89,7 +89,7 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-A korábban létrehozott ügyfél használatával hívja meg a [detect_language ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) , és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az első visszaadott nyelvet.
+A korábban létrehozott ügyfél használatával hívja meg [detect_language ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) , és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az első visszaadott nyelvet.
 
 [!code-python[language detection](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=languageDetection)]
 
@@ -147,7 +147,7 @@ Document ID: 2
         Offset: 88, Length: 7,  Score: 0.9998779296875
 ```
 
-## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
+## <a name="key-phrase-extraction"></a>A kulcsfontosságú kifejezések kinyerése
 
 A korábban létrehozott ügyfél használatával hívja meg a [key_phrases ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az abban található fő kifejezéseket.
 

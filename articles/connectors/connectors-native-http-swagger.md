@@ -2,20 +2,17 @@
 title: Kapcsolódás REST-végpontokhoz Azure Logic Apps
 description: A REST-végpontok figyelése az automatizált feladatokban, folyamatokban és munkafolyamatokban Azure Logic Apps használatával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 030401623a61e7fcff40187f522309255482647f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824824"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787369"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-végpontok hívása Azure Logic Apps használatával
 
@@ -33,7 +30,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített htt
 
   * A hencegő fájlnak engedélyezni kell a [több eredetű erőforrás-megosztást (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
 
-  Ha olyan hencegő fájlra szeretne hivatkozni, amely nem található meg, vagy nem felel meg a biztonsági és az egyéb eredetű követelményeknek, [feltöltheti a hencegő fájlt egy Azure Storage-fiókban lévő blob-tárolóba](#host-swagger), és engedélyezheti a CORS a Storage-fiókban, hogy hivatkozzon a fájl.
+  Ha olyan hencegő fájlra szeretne hivatkozni, amely nem található meg, vagy nem felel meg a biztonsági és az egyéb eredetű követelményeknek, [feltöltheti a hencegő fájlt egy Azure Storage-fiókban található blob-tárolóba](#host-swagger), és engedélyezheti a CORS a fájlra való hivatkozáshoz.
 
   A jelen témakörben szereplő példák a [Cognitive Services Face APIt](https://docs.microsoft.com/azure/cognitive-services/face/overview)használják, amelyhez [Cognitive Services fiók és hozzáférési kulcs](../cognitive-services/cognitive-services-apis-create-account.md)szükséges.
 
@@ -125,7 +122,7 @@ Hivatkozhat olyan hencegő fájlra, amely nem üzemeltetett, vagy nem felel meg 
 
 1. Most engedélyezze a CORS a blobhoz. A Storage-fiók menüjében válassza a **CORS**lehetőséget. A **blob Service** lapon adja meg ezeket az értékeket, majd kattintson a **Mentés**gombra.
 
-   | Tulajdonság | Érték |
+   | Tulajdonság | Value (Díj) |
    |----------|-------|
    | **Engedélyezett eredetek** | `*` |
    | **Engedélyezett metódusok** | `GET`, `HEAD`, `PUT` |
@@ -148,7 +145,7 @@ Hivatkozhat olyan hencegő fájlra, amely nem üzemeltetett, vagy nem felel meg 
 
 Itt talál további információt a HTTP + hencegő triggerből vagy műveletből származó kimenetekről. A HTTP + hencegés hívása ezt az információt adja vissza:
 
-| Tulajdonság neve | Típus | Leírás |
+| Tulajdonság neve | Type (Típus) | Leírás |
 |---------------|------|-------------|
 | fejlécek | objektum | A kérelemben szereplő fejlécek |
 | törzse | objektum | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
@@ -166,6 +163,6 @@ Itt talál további információt a HTTP + hencegő triggerből vagy műveletbő
 | 500 | Belső kiszolgálóhiba. Ismeretlen hiba történt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

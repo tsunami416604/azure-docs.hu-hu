@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 492fa7f4989a40ea1d5ec91a4fbf4dbbe79ef6ce
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7700c61a978532a63fc5b3298d45b8e7041dba40
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383261"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790342"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Oktatóanyag: értesítések fogadása Azure digitális Twins-tárhelyekről Logic Apps használatával
 
@@ -24,7 +24,7 @@ Miután üzembe helyezte az Azure Digital Twins-példányt, kiépítheti a tárh
 
 Ez az oktatóanyag bemutatja, hogyan integrálhatja ezeket az értesítéseket az Azure Logic Appsszel és küldhet e-mailt, amint egy ilyen helyiség elérhetővé válik. Az irodai rendszergazda ezekkel az információkkal segíthet a munkatársaknak lefoglalni a legmegfelelőbb tárgyalótermet.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Események integrálása a Azure Event Gridsal.
@@ -51,7 +51,7 @@ Ebben a szakaszban be kell állítania [Event Grid](../event-grid/overview.md) a
 
 Az [Event Grid-témakör](../event-grid/concepts.md#topics) egy felületet biztosít a felhasználó által definiált függvény által generált események útválasztásához. 
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 1. A bal oldali panelen válassza az **Erőforrás létrehozása** elemet. 
 
@@ -118,9 +118,9 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatással aut
 
 1. Az üzembe helyezéskor nyissa meg Logic Apps erőforrását, majd nyissa meg a **Logic app Designer** panelt. 
 
-1. Válassza ki, hogy **mikor történjen egy Event Grid erőforrás-esemény** eseményindító. Ha a rendszer kéri, jelentkezzen be a bérlőbe az Azure-fiókjával. Ha a rendszer kéri, válassza a **hozzáférés engedélyezése** a Event Grid erőforráshoz lehetőséget. Válassza a **Folytatás** elemet.
+1. Válassza ki, hogy **mikor történjen egy Event Grid erőforrás-esemény** eseményindító. Bontsa ki a **Azure Event Grid** lehetőséget, és amikor a rendszer kéri, jelentkezzen be a bérlőbe az Azure-fiókjával. Ha a rendszer kéri, válassza a **hozzáférés engedélyezése** a Event Grid erőforráshoz lehetőséget. Válassza a **Folytatás** elemet.
 
-1. Az **erőforrás-esemény bekövetkezésekor (előzetes verzió)** ablakban: 
+1. Az **erőforrás-esemény bekövetkeztekor** ablakban: 
    
    a. Válassza ki az Event Grid-témakör létrehozásához használt **előfizetést** .
 
@@ -198,12 +198,12 @@ Az e-mailek fogadásának leállításához nyissa meg az Logic Apps erőforrás
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt szeretné, ezen a ponton felfedezése az Azure digitális Twins leállítására, nyugodtan ebben az oktatóanyagban létrehozott erőforrások törléséhez:
+Ha ezen a ponton szeretné leállítani az Azure digitális Twins felfedezését, nyugodtan törölheti az ebben az oktatóanyagban létrehozott erőforrásokat:
 
 1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**elemet, válassza ki a digitális Twins-erőforráscsoportot, és válassza a **Törlés**lehetőséget.
 
     > [!TIP]
-    > Ha törli a digitális Twins-példány problémajegyek tapasztal, szolgáltatás frissítése lett állítva a javítás. Ismételje meg a példány törlése.
+    > Ha hibát észlelt a digitális Twins-példány törlésével kapcsolatban, a javítás a szolgáltatásban frissült. Próbálkozzon újra a példány törlésével.
 
 2. Ha szükséges, törölje a mintául szolgáló alkalmazásokat a munkahelyi gépen.
 

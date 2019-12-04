@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 1a08a5413ae41ef8c17e817a01be9e9efcb7ff99
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dd31ae7b0fbbd9c411cf1bb511551bfba57a1838
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503639"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795953"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt ügyeljen a következőre:
+Az első lépések előtt:
 
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=windows)
+> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -40,6 +41,9 @@ Az első lépések előtt ügyeljen a következőre:
 
 1. A menüsávban válassza a **fájl** > **az összes mentése**lehetőséget.
 
+> [!NOTE]
+> A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
+
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
 1. A menüsávban válassza a **build** > Build **megoldás** elemet az alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
@@ -50,6 +54,6 @@ Az első lépések előtt ügyeljen a következőre:
 
    ![A sikeres felismerést követően a konzol kimenete](~/articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-08-console-output-release.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

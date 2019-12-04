@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 0d1da9a9ef32aed1975595bb15909b9531ab2400
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 50de8fd6ba28039c5ca7660c96c6d863f53cf02a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503555"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795774"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt ügyeljen a következőre:
+Az első lépések előtt:
 
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=uwp)
 > * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=uwp)
+> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
 Ha már megtette ezt, remek. Folytasd a munkát.
 
@@ -90,6 +91,6 @@ Most már készen áll az alkalmazás létrehozására és tesztelésére.
 
    ![Beszédfelismerés felhasználói felülete](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-11-ui-result.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

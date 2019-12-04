@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 3ea77eb5dd8a03f877164179e3accc3a6f6d0aef
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548316"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793361"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -48,14 +48,12 @@ A nem felügyelt virtuálisgép-lemezek nem támogatottak olyan fiókoknál, ame
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="api-scope-for-data-lake-storage-client-library-for-sdk-powershell-and-cli"></a>Az SDK, a PowerShell és a CLI Data Lake Storage ügyféloldali kódtára API-hatóköre
-
-### <a name="filesystem-support-in-sdks"></a>Fájlrendszer-támogatás SDK-k esetén
+## <a name="filesystem-support-in-sdks"></a>Fájlrendszer-támogatás SDK-k esetén
 
 - A .NET, a Java és a Python nyilvános előzetes verzióban érhető el. Más SDK-k jelenleg nem támogatottak.
 - Az ACL-ek lekérése és beállítása jelenleg nem rekurzív.
 
-### <a name="filesystem-support-in-powershell-and-azure-cli"></a>Fájlrendszer-támogatás a PowerShellben és az Azure CLI-ben
+## <a name="filesystem-support-in-powershell-and-azure-cli"></a>Fájlrendszer-támogatás a PowerShellben és az Azure CLI-ben
 
 Az ACL-ek lekérése és beállítása jelenleg nem rekurzív.
 
@@ -77,7 +75,6 @@ A következő táblázat felsorolja az összes olyan funkciót és eszközt, ame
 | **Diagnosztikai naplózás** |A diagnosztikai naplók támogatottak (előzetes verzió).<br><br>A naplók engedélyezése a Azure Portal jelenleg nem támogatott. Az alábbi példa bemutatja, hogyan engedélyezheti a naplókat a PowerShell használatával. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>` kérdésre adott válaszban foglalt lépéseket. <br><br>Győződjön meg arról, hogy a `-ServiceType` paraméter értékeként `Blob` értéket kell megadnia, ahogy az ebben a példában is látható. <br><br>A Azure Storage Explorer jelenleg nem használható a diagnosztikai naplók megtekintéséhez. A naplók megtekintéséhez használja a AzCopy vagy SDK-kat.
 | **Megváltoztathatatlan tároló** |Még nem támogatott <br><br>A nem módosítható tárterület lehetővé teszi az adattárolást egy [féregben (egyszer írható, olvasható)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) állapottal.|
 | **Objektum szintű szintek** |A ritka elérésű és az archív rétegek támogatottak. Az archiválási szint előzetes verzióban érhető el. Az összes többi hozzáférési szintet még nem támogatja a rendszer. <br><br> Jelenleg vannak olyan hibák, amelyek hatással vannak az archív hozzáférési szintre.  Regisztráljon az archív [hozzáférési szint előzetes](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)verziójára.|
-| **A PowerShell és a parancssori felület támogatása** | Korlátozott funkcionalitás <br><br>A blob-műveletek támogatottak. A címtárak használata és a hozzáférés-vezérlési listák (ACL-ek) beállítása még nem támogatott. |
 | **Statikus webhelyek** |Még nem támogatott <br><br>Konkrétan a fájlok [statikus webhelyekre](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)való kiszolgálásának lehetősége.|
 | **Harmadik féltől származó alkalmazások** | Korlátozott támogatás <br><br>A REST API-kat használó harmadik féltől származó alkalmazások továbbra is működni fognak, ha Data Lake Storage Gen2 használatával használják őket. <br>A blob API-kat meghívó alkalmazások valószínűleg működni fognak.|
 |**Helyreállítható törlés** |Még nem támogatott|

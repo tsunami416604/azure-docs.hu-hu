@@ -1,42 +1,40 @@
 ---
-title: Munkafolyamatok létrehozása sablonokból – Azure Logic Apps |} A Microsoft Docs
-description: Gyorsabb munkafolyamatok létrehozása az Azure Logic Appsben logic app-sablonok használatával
+title: Munkafolyamatok létrehozása sablonokból
+description: Munkafolyamatok gyorsabb létrehozása a Logic app-sablonok használatával Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.openlocfilehash: 134a8f9625b45a8196ebd47f10286093f6ba0d46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7033185ac3a5411568195d788242a674b569183
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459692"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793182"
 ---
-# <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Logikai alkalmazás munkafolyamatok létrehozása előre összeállított sablonokból
+# <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Logikai alkalmazások munkafolyamatainak létrehozása előre elkészített sablonokból
 
-Ahhoz, hogy gyorsabban létre munkafolyamatokat, a Logic Apps biztosít a sablonokat, amelyek előre összeállított logic Apps, az alábbi gyakran használt minták. Megadott használja ezeket a sablonokat, vagy módosíthatja őket saját forgatókönyvéhez igazítva.
+A munkafolyamatok gyorsabb létrehozásának megkezdéséhez Logic Apps biztosít sablonokat, amelyek előre elkészített logikai alkalmazások, amelyek gyakran használt mintákat követnek. Használja ezeket a sablonokat a megadott módon, vagy szerkessze őket, hogy illeszkedjenek a forgatókönyvhöz.
 
-Az alábbiakban néhány alkalmazássablon-kategóriák:
+Néhány sablon-Kategória:
 
 | Sablon típusa | Leírás | 
 | ------------- | ----------- | 
-| Vállalati felhő-sablonok | Használható az Azure Blob, a Dynamics CRM, a Salesforce, Box, és egyéb összekötőkhöz tartalmaz a vállalati felhőhöz van szüksége. Ezek a sablonok használatával például rendezheti az érdeklődők, vagy a vállalati adatok biztonsági mentése. | 
-| Személyes hatékonysági sablonok | Személyes termelékenység növelése a napi emlékeztetőket beállításával, fontos bekapcsolásával a munkaelemek teendőlistáit, valamint automatizálhatja hosszadalmas feladatok le egy egyetlen felhasználó jóváhagyási lépést. | 
-| Fogyasztói felhőalapú sablonok | Például a Twitter és a közösségi médiába Slack integrálása, és e-mailt. Hasznos meg a kezdeményezések marketing, a közösségi médiában. Ezeket a sablonokat is tartalmaznak a feladatokat, köztük a másolja, növeli a hatékonyságot a időmegtakarítás hagyományosan ismétlődő feladatokat a felhőben. | 
-| Vállalati integráció felügyeleticsomag-sablonok | VETER konfigurálásához (érvényesítéséhez, kinyerése, átalakítása, bővítését, irányíthatja a) a folyamatok X12 fogadása AS2 és az XML-átalakítás és kezelési X12, EDIFACT, EDI-dokumentum és az AS2-üzenetek. | 
-| Protokoll minta sablonok | Végrehajtási protokoll mintákat, például a kérés-válasz HTTP-és integrációk FTP és SFTP. Használja ezeket a sablonokat, a megadott, vagy azokat az összetett protokoll mintákat hozhat létre. | 
+| Vállalati felhőalapú sablonok | Az Azure Blob, a Dynamics CRM, a Salesforce, a Box és más összekötők integrálása a vállalati felhő igényei szerint. Ezekkel a sablonokkal például rendszerezheti az üzleti érdeklődőket, vagy biztonsági másolatot készíthet a vállalati fájlok adatairól. | 
+| Személyes hatékonyságnövelő sablonok | A napi emlékeztetők megadásával javíthatja a személyes hatékonyságot, a fontos munkaelemeket a feladatlistába helyezheti, és a hosszadalmas feladatok automatizálását egyetlen felhasználói jóváhagyási lépéshez hajthatja végre. | 
+| Fogyasztói felhőalapú sablonok | A közösségi média-szolgáltatások, például a Twitter, a Slack és az e-mailek integrálásához. Hasznos a közösségi média marketing-kezdeményezéseinek megerősítéséhez. Ezek a sablonok olyan feladatokat is tartalmaznak, mint például a Felhőbeli másolás, ami növeli a hatékonyságot a hagyományosan ismétlődő feladatokhoz való idő megtakarításával. | 
+| Enterprise Integration Pack-sablonok | A VETER (validate, Extract, Transform, gazdagabbá, Route) folyamatok konfigurálásához, X12 EDI-dokumentum fogadásához az AS2 használatával és az XML-re való átalakításhoz, valamint a X12, a EDIFACT és az AS2-üzenetek kezelésére. | 
+| Protokoll-minta sablonok | Olyan protokollok megvalósításához, mint például a kérés-válasz HTTP-n keresztül, valamint az FTP és az SFTP közötti integráció. Ezeket a sablonokat a megadott módon használhatja, vagy összetett protokoll-mintázatokra építhet rájuk. | 
 ||| 
 
-Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/) az eljárás megkezdése előtt. Logikai alkalmazás létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/) az eljárás megkezdése előtt. A logikai alkalmazások létrehozásával kapcsolatos további információkért lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-logic-apps-from-templates"></a>Logikai alkalmazások létrehozása sablonból
+## <a name="create-logic-apps-from-templates"></a>Logikai alkalmazások létrehozása sablonokból
 
-1. Ha még nem tette, jelentkezzen be a [az Azure portal](https://portal.azure.com "az Azure portal").
+1. Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.com "Azure Portal").
 
 2. Az Azure fő menüjéből válassza az **Erőforrás létrehozása** > **Enterprise Integration** > **Logic App** elemet.
 
@@ -50,9 +48,9 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
    | ------- | ----- | ----------- | 
    | **Name (Név)** | *a-logikai-alkalmazása-neve* | Adjon meg egy egyedi nevet a logikai alkalmazás számára. | 
    | **Előfizetés** | *az-Ön-Azure-előfizetésének-neve* | Válassza ki a használni kívánt Azure-előfizetést. | 
-   | **Erőforráscsoport** | *az-Ön-Azure-erőforráscsoportjának-neve* | Hozzon létre vagy válasszon egy [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) a logikai alkalmazás és az ehhez az alkalmazáshoz kapcsolódó összes erőforrás rendszerezéséhez. | 
+   | **Erőforráscsoport** | *az-Ön-Azure-erőforráscsoportjának-neve* | Hozzon létre vagy válasszon ki egy [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) ehhez a logikai alkalmazáshoz, és rendezze az ehhez az alkalmazáshoz társított összes erőforrást. | 
    | **Hely** | *az-Ön-Azure-adatközpont-régiója* | Válassza ki az adatközpont-régiót a logikai alkalmazás üzembe helyezéséhez, például az USA nyugati régióját. | 
-   | **Log Analytics** | **Ki** (alapértelmezés) vagy **a** | Kapcsolja be a [diagnosztikai naplózás](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) a logikai alkalmazás keresztül [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md). Megköveteli, hogy Ön már egy Log Analytics-munkaterületet. | 
+   | **Log Analytics** | **Kikapcsolva** (alapértelmezett **) vagy** | A logikai alkalmazás [diagnosztikai naplózásának](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) bekapcsolása [Azure monitor naplókon](../log-analytics/log-analytics-overview.md)keresztül. A használatához már van Log Analytics munkaterület. | 
    |||| 
 
 4. Amikor végzett, válassza a **Rögzítés az irányítópulton** lehetőséget. Így a logikai alkalmazás automatikusan megjelenik az Azure-irányítópulton, és megnyílik az üzembe helyezés után. Válassza a **Létrehozás** elemet.
@@ -63,97 +61,97 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
    Miután az Azure üzembe helyezte a logikai alkalmazást, megnyílik a Logic Apps Designer, és egy bemutató videót tartalmazó oldalt jelenít meg. 
    A videó alatt megtalálja a gyakori logikaialkalmazás-minták sablonjait. 
 
-5. Görgessen lefelé a bevezető videó és a gyakori eseményindítókon az elmúlt **sablonok**. Válasszon ki egy előre elkészített sablont. Példa:
+5. Görgesse át a bevezető videót és a gyakori eseményindítókat a **sablonokhoz**. Válasszon egy előre elkészített sablont. Példa:
 
-   ![A logikaialkalmazás-sablon kiválasztása](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
+   ![Logikai alkalmazás sablonjának kiválasztása](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
    > [!TIP]
-   > Válassza ki a logikai alkalmazás létrehozása előzmények, **üres logikai alkalmazás**.
+   > A logikai alkalmazás előzmények nélküli létrehozásához válassza az **üres logikai alkalmazás**lehetőséget.
 
-   Amikor kiválaszt egy előre elkészített sablont, megtekintheti, hogy a sablon további információt. 
+   Egy előre elkészített sablon kiválasztásakor a sablonra vonatkozó további információk is megtekinthetők. 
    Példa:
 
-   ![Válasszon ki egy előre elkészített sablont](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
+   ![Előre elkészített sablon kiválasztása](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
-6. A kiválasztott sablon alapján folytatásához válasszon **ezzel a sablonnal**. 
+6. A kiválasztott sablon folytatásához válassza a **sablon használata**lehetőséget. 
 
-7. Az összekötők a sablon alapján, a rendszer felszólítja, hajtsa végre az alábbi lépések bármelyikét:
+7. A sablon összekötői alapján a rendszer a következő lépések bármelyikét kéri:
 
-   * Jelentkezzen be hitelesítő adataival, és a sablon által hivatkozott szolgáltatások vagy -rendszerekkel.
+   * Jelentkezzen be a hitelesítő adataival a sablon által hivatkozott rendszerekhez vagy szolgáltatásokhoz.
 
-   * A szolgáltatások vagy a sablon által hivatkozott rendszerek kapcsolatok létrehozása. Egy kapcsolat létrehozásához adja meg a kapcsolat nevét, és ha szükséges, válassza ki az erőforrást, amelyet használni szeretne. 
+   * Hozzon létre kapcsolatokat a sablon által hivatkozott bármely szolgáltatáshoz vagy rendszerhez. A kapcsolatok létrehozásához adja meg a kapcsolódás nevét, és ha szükséges, válassza ki a használni kívánt erőforrást. 
 
-   * Ha már beállította ezeket a kapcsolatokat, válassza a **Folytatás**.
+   * Ha már beállította ezeket a kapcsolatokat, válassza a **Folytatás**lehetőséget.
 
    Példa:
 
    ![Kapcsolatok létrehozása](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
-   Ha elkészült, a logikai alkalmazás megnyílik, és a Logic Apps Designerben megjelennek.
+   Ha elkészült, megnyílik a logikai alkalmazás, és megjelenik a Logic Apps Designerben.
 
    > [!TIP]
-   > Térjen vissza a sablon megjelenítő, kattintson a **sablonok** a Tervező eszköztárán. Ez a művelet elveti a nem mentett módosítások, így egy figyelmeztető üzenet jelenik meg, ellenőrizze a kérelem.
+   > A sablon megjelenítőhöz való visszatéréshez válassza a tervező eszköztár **sablonok** elemét. Ez a művelet elveti a nem mentett módosításokat, ezért megjelenik egy figyelmeztető üzenet, amely megerősíti a kérést.
 
-8. Továbbra is összeállítani saját logikai alkalmazását.
+8. Folytassa a logikai alkalmazás összeállítását.
 
    > [!NOTE] 
-   > Számos sablon összekötők, előfordulhat, hogy már rendelkezik előre feltöltve kötelező tulajdonságai közé tartozik. Azonban bizonyos sablonok továbbra is szükség lehet, hogy értékeket ad meg a logikai alkalmazás megfelelően telepítése előtt. Ha megpróbál üzembe helyezése nélkül a hiányzó tulajdonság mezőket, hibaüzenetet kap. 
+   > Számos sablon olyan összekötőket tartalmaz, amelyek már rendelkezhetnek előre feltöltött kötelező tulajdonságokkal. Előfordulhat azonban, hogy egyes sablonok esetében továbbra is meg kell adnia az értékeket, mielőtt megfelelően telepítené a logikai alkalmazást. Ha a hiányzó tulajdonságmezők befejezése nélkül próbálkozik a telepítéssel, hibaüzenet jelenik meg. 
 
-## <a name="update-logic-apps-with-templates"></a>Frissítés a logic apps-sablonokkal
+## <a name="update-logic-apps-with-templates"></a>Logikai alkalmazások frissítése sablonokkal
 
-1. Az a [az Azure portal](https://portal.azure.com "az Azure portal"), keresse meg és nyissa meg a logikai alkalmazás th Logikaialkalmazás-Tervező.
+1. A [Azure Portal](https://portal.azure.com "Azure Portal")a Logic app Designerben keresse meg és nyissa meg a logikai alkalmazást.
 
-2. A Tervező eszköztárán válassza **sablonok**. Ez a művelet elveti a nem mentett módosítások, így egy figyelmeztető üzenet jelenik meg, így ellenőrizheti, hogy szeretné-e továbbra is. Győződjön meg arról, hogy válasszon **OK**. Példa:
+2. A tervező eszköztárán válassza a **sablonok**lehetőséget. Ez a művelet elveti a nem mentett módosításokat, ezért megjelenik egy figyelmeztető üzenet, amely megerősíti, hogy folytatja a műveletet. A megerősítéshez kattintson **az OK gombra**. Példa:
 
-   ![Válassza a "Sablon"](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
+   ![Válassza a "sablonok" lehetőséget.](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
 
-3. Görgessen lefelé a bevezető videó és a gyakori eseményindítókon az elmúlt **sablonok**. Válasszon ki egy előre elkészített sablont. Példa:
+3. Görgesse át a bevezető videót és a gyakori eseményindítókat a **sablonokhoz**. Válasszon egy előre elkészített sablont. Példa:
 
-   ![A logikaialkalmazás-sablon kiválasztása](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
+   ![Logikai alkalmazás sablonjának kiválasztása](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
-   Amikor kiválaszt egy előre elkészített sablont, megtekintheti, hogy a sablon további információt. 
+   Egy előre elkészített sablon kiválasztásakor a sablonra vonatkozó további információk is megtekinthetők. 
    Példa:
 
-   ![Válasszon ki egy előre elkészített sablont](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
+   ![Előre elkészített sablon kiválasztása](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
-4. A kiválasztott sablon alapján folytatásához válasszon **ezzel a sablonnal**. 
+4. A kiválasztott sablon folytatásához válassza a **sablon használata**lehetőséget. 
 
-5. Az összekötők a sablon alapján, a rendszer felszólítja, hajtsa végre az alábbi lépések bármelyikét:
+5. A sablon összekötői alapján a rendszer a következő lépések bármelyikét kéri:
 
-   * Jelentkezzen be hitelesítő adataival, és a sablon által hivatkozott szolgáltatások vagy -rendszerekkel.
+   * Jelentkezzen be a hitelesítő adataival a sablon által hivatkozott rendszerekhez vagy szolgáltatásokhoz.
 
-   * A szolgáltatások vagy a sablon által hivatkozott rendszerek kapcsolatok létrehozása. Egy kapcsolat létrehozásához adja meg a kapcsolat nevét, és ha szükséges, válassza ki az erőforrást, amelyet használni szeretne. 
+   * Hozzon létre kapcsolatokat a sablon által hivatkozott bármely szolgáltatáshoz vagy rendszerhez. A kapcsolatok létrehozásához adja meg a kapcsolódás nevét, és ha szükséges, válassza ki a használni kívánt erőforrást. 
 
-   * Ha már beállította ezeket a kapcsolatokat, válassza a **Folytatás**.
+   * Ha már beállította ezeket a kapcsolatokat, válassza a **Folytatás**lehetőséget.
 
    ![Kapcsolatok létrehozása](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
-   A logikai alkalmazás most megnyílik, és a Logic Apps Designerben megjelennek.
+   Ekkor megnyílik a logikai alkalmazás, és megjelenik a Logic Apps Designerben.
 
-8. Továbbra is összeállítani saját logikai alkalmazását. 
+8. Folytassa a logikai alkalmazás összeállítását. 
 
    > [!TIP]
-   > Ha még nem mentette a módosításokat, elvetheti a munkáját, és térjen vissza az előző logikai alkalmazás. A Tervező eszköztárán válassza **elveti**.
+   > Ha még nem mentette a módosításokat, elvetheti a munkáját, és visszatérhet az előző logikai alkalmazáshoz. A tervező eszköztárán válassza az **Elvetés**lehetőséget.
 
 > [!NOTE] 
-> Számos sablon összekötők, előfordulhat, hogy rendelkezik már előre fel van töltve kötelező tulajdonságai közé tartozik. Azonban bizonyos sablonok továbbra is szükség lehet, hogy értékeket ad meg a logikai alkalmazás megfelelően telepítése előtt. Ha megpróbál üzembe helyezése nélkül a hiányzó tulajdonság mezőket, hibaüzenetet kap.
+> Számos sablon olyan összekötőket tartalmaz, amelyek már előre feltöltött kötelező tulajdonságokkal rendelkezhetnek. Előfordulhat azonban, hogy egyes sablonok esetében továbbra is meg kell adnia az értékeket, mielőtt megfelelően telepítené a logikai alkalmazást. Ha a hiányzó tulajdonságmezők befejezése nélkül próbálkozik a telepítéssel, hibaüzenet jelenik meg.
 
-## <a name="deploy-logic-apps-built-from-templates"></a>A logic apps beépített sablonokból üzembe helyezése
+## <a name="deploy-logic-apps-built-from-templates"></a>Sablonokból készített logikai alkalmazások üzembe helyezése
 
-A módosítása után a sablonhoz, mentheti a módosításokat. Ez a művelet automatikusan közzéteszi a logikai alkalmazást.
+Miután elvégezte a módosításokat a sablonban, mentheti a módosításokat. Ez a művelet automatikusan közzéteszi a logikai alkalmazást is.
 
 A tervező eszköztárán válassza a **Mentés** parancsot.
 
-![Mentés és közzététel a logikai alkalmazás](./media/logic-apps-create-logic-apps-from-templates/logic-app-save.png)  
+![Logikai alkalmazás mentése és közzététele](./media/logic-apps-create-logic-apps-from-templates/logic-app-save.png)  
 
 ## <a name="get-support"></a>Támogatás kérése
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg a logikai alkalmazások példák, forgatókönyvek, ügyfelek beszámolói és útmutatók révén.
+Tudnivalók a logikai alkalmazások létrehozásáról példákkal, forgatókönyvekkel, vásárlói történetekkel és forgatókönyvekkel.
 
 > [!div class="nextstepaction"]
-> [Tekintse át a logikai alkalmazás példák, forgatókönyvek és útmutatók](../logic-apps/logic-apps-examples-and-scenarios.md)
+> [A Logic apps-példák, forgatókönyvek és forgatókönyvek áttekintése](../logic-apps/logic-apps-examples-and-scenarios.md)

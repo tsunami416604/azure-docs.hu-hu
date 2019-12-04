@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 5236536abbe8ad7a415f0ea94036edf49b892052
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: eda87a8146c936287ce82966602d162f047de7c8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503569"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795658"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt ügyeljen a következőre:
+Az első lépések előtt:
 
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=linux)
 > * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=linux)
+> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -35,6 +36,9 @@ Az első lépések előtt ügyeljen a következőre:
 1. Ebben az új fájlban cserélje le a `YourSubscriptionKey` karakterláncot a Speech Services előfizetési kulcsával.
 
 1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
+
+> [!NOTE]
+> A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
 
 ## <a name="build-the-app"></a>Alkalmazás készítése
 
@@ -94,6 +98,6 @@ Az első lépések előtt ügyeljen a következőre:
    We recognized: What's the weather like?
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

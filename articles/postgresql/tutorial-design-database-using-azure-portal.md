@@ -1,20 +1,20 @@
 ---
-title: 'Oktatóanyag: Azure Database for postgresql-hez - Azure portal használatával egyetlen kiszolgáló tervezése'
-description: Ez az oktatóanyag bemutatja, hogyan tervezhet az első Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure portal használatával.
+title: 'Oktatóanyag: Azure Database for PostgreSQL – egyetlen kiszolgáló megtervezése – Azure Portal'
+description: Ez az oktatóanyag bemutatja, hogyan tervezheti meg az első Azure Database for PostgreSQL-kiszolgálót a Azure Portal használatával.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 421d5cde46b466c0c13a52755abdf137e52f2f6b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 11276d532f0f978b127f48924e383b7aeb7f4ad5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443106"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770101"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Oktatóanyag: Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure portal használatával tervezése
+# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Oktatóanyag: Azure Database for PostgreSQL – egyetlen kiszolgáló tervezése a Azure Portal használatával
 
 A PostgreSQL-hez készült Azure Database felügyelt szolgáltatás, amely lehetővé teszi a magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, kezelését és skálázását a felhőben. Az Azure Portallal könnyedén kezelheti a kiszolgálót és tervezhet adatbázist.
 
@@ -40,36 +40,36 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
 2. Az **Új** panelen válassza az **Adatbázisok** lehetőséget, majd az **Adatbázisok** panelen válassza az **Azure-adatbázis PostgreSQL-kiszolgálóhoz** lehetőséget.
    ![Azure-adatbázis PostgreSQL-hez - Az adatbázis létrehozása](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
 
-3. Válassza ki a **egykiszolgálós** telepítési lehetőséget.
+3. Válassza az **egykiszolgálós** telepítés lehetőséget.
 
-   ![Válassza ki az Azure Database for PostgreSQL – egykiszolgálós telepítési lehetőség](./media/tutorial-design-database-using-azure-portal/select-deployment-option.png)
+   ![Azure Database for PostgreSQL kiválasztása – egykiszolgálós üzembe helyezési lehetőség](./media/tutorial-design-database-using-azure-portal/select-deployment-option.png)
 
-4. Töltse ki a **alapjai** űrlapján az alábbi adatokat:
+4. Töltse ki az **alapok** űrlapot a következő információkkal:
 
-    ![A kiszolgáló létrehozása](./media/tutorial-design-database-using-azure-portal/create-basics.png)
+    ![Kiszolgáló létrehozása](./media/tutorial-design-database-using-azure-portal/create-basics.png)
 
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
     Előfizetés|Az Ön előfizetésének neve|A kiszolgálóhoz használni kívánt Azure-előfizetés. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amely részeként fizet az erőforrásért.
     Erőforráscsoport|*myresourcegroup*| Egy új erőforráscsoport neve vagy egy meglévő az előfizetéséből.
     Kiszolgálónév |*mydemoserver*|Egy egyedi név, amely az Azure Database for PostgreSQL-kiszolgálót azonosítja. A rendszer hozzáfűzi a *postgres.database.azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgáló neve csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Legalább 3, és legfeljebb 63 karakterből állhat.
-    Adatforrás | *Nincsenek* | Válassza ki *nincs* az új kiszolgáló létrehozása az alapoktól. (Ha egy meglévő Azure Database for PostgreSQL-kiszolgáló georedundáns biztonsági mentéséből hoz létre kiszolgálót, válassza a *Biztonsági mentés* lehetőséget).
-    Rendszergazdai felhasználónév |*myadmin*| A kiszolgálóhoz való csatlakozáshoz használt bejelentkezési fiókja. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** és **public**. Nem kezdődhet a következővel: **pg_** .
-    Jelszó |Az Ön jelszava| Egy új jelszó a kiszolgálói rendszergazdai fiók számára. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: Angol nagybetűs betűket, angol kisbetűs karakterek, számjegyek (0 – 9) és nem alfanumerikus karakterek (!, $, #, %, stb.).
-    Location|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.
-    Version|A legújabb főverzió| A legújabb PostgreSQL-főverzió, hacsak nincsenek más konkrét követelmények.
-    Számítás és tárolás | **Általános célú**, **5. generációs**, **2 virtuális mag**, **5 GB**, **7 nap**, **Georedundáns** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza ki **kiszolgáló konfigurálása**. majd az **Általános célú** lapot. *Velikost haldy 5*, *4 virtuális magot kapnak*, *100 GB-os*, és *7 nap* az alapértelmezett értékei lesznek **számítási generáció**,  **virtuális mag**, **tárolási**, és **biztonsági mentések megőrzési időszaka**. Hagyhatja ezeket, vagy módosítsa a csúszkák. A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Biztonsági másolat redundanciabeállításai** területen a **Georedundáns** lehetőséget. A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
+    Adatforrás | *NEz egy* | Válassza a *nincs* lehetőséget, ha teljesen új kiszolgálót szeretne létrehozni. (Ha egy meglévő Azure Database for PostgreSQL-kiszolgáló georedundáns biztonsági mentéséből hoz létre kiszolgálót, válassza a *Biztonsági mentés* lehetőséget).
+    Rendszergazdai Felhasználónév |*myadmin*| A kiszolgálóhoz való csatlakozáshoz használt bejelentkezési fiókja. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** és **public**. Nem kezdődhet a következővel: **pg_** .
+    Jelszó |Az Ön jelszava| Egy új jelszó a kiszolgálói rendszergazdai fiók számára. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
+    Földrajzi egység|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.
+    Verzió|A legújabb főverzió| A legújabb PostgreSQL-főverzió, hacsak nincsenek más konkrét követelmények.
+    Számítás és tárolás | **Általános célú**, **5. generációs**, **2 virtuális mag**, **5 GB**, **7 nap**, **Georedundáns** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **kiszolgáló konfigurálása**lehetőséget. Ezután válassza a **általános célú** fület. a *Gen 5*, *4 virtuális mag*, *100 GB*és *7 nap* a **számítási generáció**, a **virtuális mag**, a **tárolás**és a **biztonsági másolatok megőrzési időszakának**alapértelmezett értékei. Ezeket a csúszkákat meghagyhatja, vagy módosíthatja is azokat. A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Biztonsági másolat redundanciabeállításai** területen a **Georedundáns** lehetőséget. A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
 
    > [!NOTE]
-   > Fontolja meg az alapszintű díjcsomag kis számítási és i/o-e megfelelő, a számítási feladatok számára. Vegye figyelembe, hogy a kiszolgálók, az alapszintű tarifacsomagban létrehozott később nem lehet az általános célú és memóriahasználatra optimalizált skálázhatók. Tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/postgresql/) további információt.
+   > Érdemes lehet az alapszintű díjszabást használni, ha a számítási feladathoz elegendő a könnyű számítás és az I/O. Vegye figyelembe, hogy az alapszintű díjszabásban létrehozott kiszolgálók később nem méretezhetők át általános célú vagy a memóriára optimalizált értékre. További információért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/postgresql/) .
    > 
 
     ![A „Tarifacsomag” panel](./media/quickstart-create-database-portal/2-pricing-tier.png)
 
     > [!TIP]
-    > A **auto-növekedés** engedélyezve van a kiszolgáló tárterület is nő, amikor Ön hamarosan eléri a lefoglalt korlátot, a számítási feladatok befolyásolása nélkül.
+    > Az **automatikus növekedés** lehetővé teszi, hogy a kiszolgáló növelje a tárterületet, ha közeledik a lefoglalt korláthoz, anélkül, hogy ez befolyásolná a munkaterhelést.
 
-5. Válassza ki **tekintse át + létrehozása** , tekintse át a beállításokat. A kiszolgáló üzembe helyezéséhez válassza a **Létrehozás** lehetőséget. A művelet eltarthat néhány percig.
+5. Válassza a **felülvizsgálat + létrehozás** lehetőséget a beállítások áttekintéséhez. A kiszolgáló üzembe helyezéséhez válassza a **Létrehozás** lehetőséget. A művelet eltarthat néhány percig.
 
 6. Az eszköztáron válassza az **Értesítések** ikont (csengő) az üzembehelyezési folyamat megfigyeléséhez. Az üzembe helyezés után kiválaszthatja a **Rögzítés az irányítópulton** lehetőséget, amellyel létrehoz egy csempét a kiszolgálóhoz az Azure Portal irányítópultján. A csempe a kiszolgáló **Áttekintés** oldalának közvetlen megnyitására szolgál. Az **Erőforrás megnyitása** lehetőség kiválasztásával megnyitja a kiszolgáló **Áttekintés** oldalát.
 
@@ -88,7 +88,7 @@ Az Azure Database for PostgreSQL szolgáltatás a kiszolgáló szintjén haszná
 
 2. A kiszolgáló lapján válassza a **Kapcsolatbiztonság** elemet. 
 
-3. Kattintson a szövegmező alatt található **szabálynév,** , és adjon hozzá egy új tűzfalszabályt az IP-címtartomány megadásához. Adja meg az IP-címtartományt. Kattintson a **Save** (Mentés) gombra.
+3. Kattintson a **szabály neve** alatt található szövegmezőre, és adjon hozzá egy új tűzfalszabály-szabályt a kapcsolat IP-tartományának megadásához. Adja meg az IP-címtartományt. Kattintson a **Save** (Mentés) gombra.
 
    ![Azure-adatbázis PostgreSQL-hez - Tűzfalszabály létrehozása](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 
@@ -128,7 +128,7 @@ Ha az ügyfélszámítógépen telepítve van a PostgreSQL, akkor használhatja 
    ```
 
    > [!TIP]
-   > Ha inkább a Postgres csatlakozni egy URL-címet használja, az URL-cím kódolása a @ karakter a felhasználónevet, a `%40`. Ha például a kapcsolati karakterláncot a psql-jének lenne,
+   > Ha inkább URL-elérési utat szeretne használni a postgres-hez való kapcsolódáshoz, akkor az URL-cím kódolja a felhasználónevet a következővel: `%40`. Például a psql tartozó kapcsolatok karakterlánca a következő:.
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -196,13 +196,13 @@ Tegyük fel, hogy véletlenül töröltünk egy fontos adatbázistáblát. Ebbő
 
    ![Azure Portal – A Visszaállítás űrlap beállításai](./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png)
 
-   - **Visszaállítási pont**: Válasszon egy pont kötött, amely a kiszolgáló módosítása előtti
-   - **Célkiszolgáló**: Adja meg a visszaállítani kívánt új kiszolgáló nevét
-   - **Hely**: Nem választhat ki a régiót, alapértelmezés szerint ugyanaz, mint a forráskiszolgálón
-   - **A tarifacsomag**: Ez az érték nem módosítható, ha a kiszolgáló visszaállítása. Ugyanaz, mint a forráskiszolgálóé. 
+   - **Visszaállítási pont**: Válasszon ki egy, a kiszolgáló módosítása előtti időpontot
+   - **Célkiszolgáló**: Adja meg az új kiszolgáló nevét, amelyre a biztonsági másolatot vissza kívánja állítani
+   - **Hely**: Nem választhatja ki a régiót – alapértelmezés szerint ugyanaz lesz, mint a forráskiszolgálóé
+   - **Tarifacsomag**: A kiszolgáló visszaállításakor nem módosíthatja ezt az értéket. Ugyanaz, mint a forráskiszolgálóé. 
 3. Az **OK** gombra kattintva [visszaállíthatja a kiszolgálót a tábla törlése előtti időpontra](./howto-restore-server-portal.md). A kiszolgáló egy másik időpontra való visszaállítása létrehozza a kiszolgáló megadott időpontra vonatkozó duplikált új másolatát, amennyiben az adott pont a [tarifacsomag](./concepts-pricing-tiers.md) adatmegőrzési időszakán belül esik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket az Azure Portal és más segédprogramok használatával:
 > [!div class="checklist"]
 > * Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
@@ -213,4 +213,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket az Az
 > * Adatok frissítése
 > * Adatok visszaállítása
 
-Ezután megtudhatja, hogyan végezhet el hasonló feladatokat az Azure CLI használatával, tekintse át az oktatóanyag: [Az első Azure Database for postgresql-hez az Azure CLI használatával tervezése](tutorial-design-database-using-azure-cli.md)
+Ezután, ha meg szeretné tudni, hogyan végezhet el hasonló feladatokat az Azure CLI-vel, tekintse át a következő oktatóanyagot: [Az első Azure Database for PostgreSQL szolgáltatás megtervezése az Azure CLI használatával](tutorial-design-database-using-azure-cli.md)

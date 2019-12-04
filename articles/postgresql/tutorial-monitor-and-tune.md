@@ -1,19 +1,19 @@
 ---
-title: Az oktatóanyag figyelése és finomhangolása az Azure Database for PostgreSQL – egyetlen kiszolgáló
-description: Ez az oktatóanyag végigvezeti azon figyelése és finomhangolása az Azure Database for PostgreSQL – egyetlen kiszolgáló.
+title: 'Oktatóanyag: figyelés és Finomhangolás – Azure Database for PostgreSQL – egyetlen kiszolgáló'
+description: Ez az oktatóanyag végigvezeti a figyelésen és hangoláson Azure Database for PostgreSQL-egyetlen kiszolgálón.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: dcd8363db33809e2a33885f43e570c53807505fd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073090"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774737"
 ---
-# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Oktatóanyag: Figyelése és finomhangolása az Azure Database for PostgreSQL - kiszolgáló egyetlen
+# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Oktatóanyag: Azure Database for PostgreSQL figyelése és finomhangolása – egyetlen kiszolgáló
 
 Az Azure Database for PostgreSQL olyan funkciókkal rendelkezik, amelyek segítenek megérteni és javítani a kiszolgálója teljesítményét. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > [!div class="checklist"]
@@ -23,7 +23,7 @@ Az Azure Database for PostgreSQL olyan funkciókkal rendelkezik, amelyek segíte
 > * Adatbázis-elemzés a teljesítménnyel kapcsolatos javaslatokért
 > * Teljesítménnyel kapcsolatos javaslatok alkalmazása
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 Szükség van egy 9.6-os vagy 10-es verziójú PostgreSQL-t futtató Azure Database for PostgreSQL kiszolgálóra. A kiszolgáló létrehozásához kövesse a [Létrehozási oktatóanyagban](tutorial-design-database-using-azure-portal.md) megadott lépéseket.
 
 > [!IMPORTANT]
@@ -92,5 +92,5 @@ A [Teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendation
 ### <a name="permissions"></a>Engedélyek
 A Teljesítménnyel kapcsolatos javaslatok funkcióval futtatott elemzéshez **Tulajdonos** vagy **Közreműködő** jogosultság szükséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információk az Azure Database for PostgreSQL [monitoringjához és finomhangolásához](concepts-monitoring.md).

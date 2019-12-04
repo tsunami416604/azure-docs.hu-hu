@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9efaeb9d3fe0ec8684f10c58897f5490d0f28cb9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e1ec0dd844dea8cf98621130d6a19b415bda1cf0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74182440"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786486"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-mel
 
@@ -163,13 +163,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML** és **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
 1. Az **F5 beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
@@ -179,9 +179,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést az F5 elérésének biztosításával.
 
@@ -189,7 +189,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alkalmazások listában válassza az **F5**elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -269,7 +269,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
  
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure12.png)
 
-1. Miután az alkalmazás **befejeződik**, kattintson a Befejezés gombra.
+1. Az alkalmazás konfigurálását követően kattintson a **Befejezés**gombra.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure13.png)
 
@@ -284,7 +284,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
 1.  A fő lapon kattintson a **hozzáférési házirend > AAA-kiszolgálók > Active Directory**elemre. Megnyílik a Active Directory Servers List képernyő.
 
-2.  Kattintson a **Létrehozás** gombra. Megnyílik az új kiszolgáló tulajdonságai képernyő.
+2.  Kattintson a  **Create** (Létrehozás) gombra. Megnyílik az új kiszolgáló tulajdonságai képernyő.
 
 3.  A **név** mezőbe írjon be egy egyedi nevet a hitelesítési kiszolgálónak.
 
@@ -477,11 +477,11 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
 ### <a name="create-f5-test-user"></a>F5 test User létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre az F5 billentyűvel. A felhasználók az F5 platformon való hozzáadásához az [F5 ügyfél-támogatási csapat](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) használható. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre az F5 billentyűvel. A felhasználók az F5 platformon való hozzáadásához az [F5 ügyfél-támogatási csapat](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) használható. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat. 
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
 Amikor a hozzáférési panelen az F5 csempére kattint, automatikusan be kell jelentkeznie az F5-be, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

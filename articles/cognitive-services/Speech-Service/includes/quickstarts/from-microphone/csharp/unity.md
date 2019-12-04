@@ -10,24 +10,27 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: babc6b1c0b6207d404091db3117f95f6d71c53ac
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b6439c6461ca9f4fa272eb43ef16240175fdec4f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503499"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796214"
 ---
 > [!NOTE]
 > Az Unity Speech SDK támogatja a Windows Desktopot (x86 és x64) vagy Univerzális Windows-platform (x86, x64, ARM/ARM64), Android (x86, ARM32/64) és iOS (x64 Simulator, ARM32 és ARM64)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt ügyeljen a következőre:
+Az első lépések előtt:
 
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=unity) Ha már megtette ezt, remek. Folytasd a munkát.
+> * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=unity)
+> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
+
+Ha már megtette ezt, remek. Folytasd a munkát.
 
 ## <a name="create-a-unity-project"></a>Unity-projekt létrehozása
 
@@ -130,6 +133,6 @@ Most már készen áll az alkalmazás futtatására az Unity Editoron belül.
 Ez az alkalmazás Android-alkalmazásként, Windows önálló alkalmazásként vagy UWP alkalmazásként is üzembe helyezhető.
 További információkért tekintse meg a [minta tárházat](https://aka.ms/csspeech/samples). A `quickstart/csharp-unity` mappa ismerteti ezen további célok konfigurációját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

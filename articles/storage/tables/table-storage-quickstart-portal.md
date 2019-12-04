@@ -1,19 +1,19 @@
 ---
-title: Rövid útmutató – az Azure Table Storage áttekintése
+title: Rövid útmutató – Azure Storage-tábla létrehozása a Azure Portal
 description: Ebben a rövid útmutatóban hozzon létre egy Azure Storage Table service táblát a Azure Portalban.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/23/2018
+ms.date: 12/02/2019
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 5f397505c4b9d4b41353021fd9ab1f4d6a36ecfc
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4cfb44964b06c811d6d587f2a406cdcfb8048a42
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702379"
+ms.locfileid: "74793334"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Rövid útmutató: Azure Storage-tábla létrehozása az Azure Portalon 
 

@@ -1,28 +1,24 @@
 ---
-title: Ütemterv-alapú automatizált munkafolyamatok létrehozása – Azure Logic Apps
+title: Ütemterv-alapú automatizált munkafolyamatok összeállítása
 description: Oktatóanyag – ütemezett, ismétlődő és automatizált munkafolyamatok létrehozása Azure Logic Apps használatával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: eae2319e8d1c162969a04f8dafa18eec671ee1d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f9203f77d5b398f53fcb7c9fceb70604b364a4e0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034661"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790302"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Oktatóanyag: automatizált, ütemezett és ismétlődő munkafolyamatok létrehozása Azure Logic Apps használatával
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre egy [logikai alkalmazást](../logic-apps/logic-apps-overview.md) , és hogyan automatizálhat egy ütemezett, ismétlődő munkafolyamatot. Ez a példa a logikai alkalmazást minden hétköznap reggel futtatja, és ellenőrzi az utazási időt, beleértve a forgalmat, két hely között. Ha az idő meghaladja a megadott határértéket, a logikai alkalmazás e-mailt küld, amely az utazási időt és az úti cél eléréséhez szükséges többletidőt tartalmazza.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Üres logikai alkalmazás létrehozása.
@@ -58,7 +54,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja h
 
    ![Adja meg a logikai alkalmazással kapcsolatos információkat](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | Tulajdonság | Érték | Leírás |
+   | Tulajdonság | Value (Díj) | Leírás |
    |----------|-------|-------------|
    | **Name (Név)** | LA-TravelTime | A logikai alkalmazás neve, amely csak betűket, számokat, kötőjeleket (`-`), aláhúzást (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "LA-TravelTime" kifejezést használja. |
    | **Előfizetés** | <*your-Azure-subscription-name*> | Az Azure-előfizetés neve |
@@ -93,7 +89,7 @@ Ezután adja hozzá az ismétlődési [eseményindítót](../logic-apps/logic-ap
 
    ![Az ismétlődési eseményindító intervallumának és gyakoriságának módosítása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    |----------|----------|-------|-------------|
    | **Intervallum** | Igen | 1 | Az ellenőrzések között kivárt intervallumok száma |
    | **Gyakoriság** | Igen | Hét | Az ismétlődéshez használni kívánt időegység |
@@ -111,7 +107,7 @@ Ezután adja hozzá az ismétlődési [eseményindítót](../logic-apps/logic-ap
 
    ![Az ütemezés és az ismétlődés részleteinek megadása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/recurrence-trigger-property-values.png)
 
-   | Tulajdonság | Érték | Leírás |
+   | Tulajdonság | Value (Díj) | Leírás |
    |----------|-------|-------------|
    | **Ezeken a napokon** | Hétfő, kedd, szerda, csütörtök, péntek | Csak akkor érhető el, ha a **Gyakoriság** értéke „Hét” |
    | **Ezekben az órákban** | 7, 8, 9 | Csak akkor érhető el, ha a **Gyakoriság** értéke „Hét” vagy „Nap”. Válassza ki, hogy a nap melyik órájában fusson az ismétlődés. Ez a példa 7, 8 és 9 órakor fut. |
@@ -142,7 +138,7 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
    ![A Bing Maps API-hoz való kapcsolódás létrehozása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    |----------|----------|-------|-------------|
    | **Kapcsolat neve** | Igen | BingMapsConnection | Adja meg a kapcsolat nevét. Ez a példa a "BingMapsConnection" kifejezést használja. |
    | **API-kulcs** | Igen | <*saját-Bing-Térképek-kulcsa*> | Adja meg a korábban kapott Bing Térképek-kulcsot. Ha nem rendelkezik Bing Térképek-kulccsal, tudja meg, [hogyan kérhet le kulcsot](https://msdn.microsoft.com/library/ff428642.aspx). |
@@ -162,7 +158,7 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
    ![Az "útvonal lekérése" művelet részleteinek megadása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    |----------|----------|-------|-------------|
    | **1. útvonalpont** | Igen | <*kiindulási-hely*> | Az útvonal kiindulópontja |
    | **2. útvonalpont** | Igen | <*érkezési-hely*> | Az útvonal célállomása |
@@ -193,7 +189,7 @@ Alapértelmezés szerint az előző **Útvonal lekérése** művelet a jelenlegi
 
 1. Adja meg a változó részleteit az itt leírt módon:
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    |----------|----------|-------|-------------|
    | **Name (Név)** | Igen | travelTime | A változó neve. Ez a példa a "travelTime" kifejezést használja. |
    | **Típus** | Igen | Egész szám | A változó adattípusa |

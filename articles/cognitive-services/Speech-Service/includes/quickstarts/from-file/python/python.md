@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 91b136b7986dc3551ebc28b7e35bfe206b273497
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 221a5ef40f2ebe59b0a40b3cd666b53fabf82e85
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504276"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795593"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -26,6 +26,8 @@ Az első lépések előtt ügyeljen a következőre:
 > * [LUIS-alkalmazás létrehozása és végponti kulcs beszerzése](../../../../quickstarts/create-luis.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md)
 > * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="support-and-updates"></a>Támogatás és frissítések
 
@@ -48,6 +50,9 @@ python quickstart.py
 Vagy letöltheti ezt a rövid útmutatót [Jupyter](https://jupyter.org) jegyzetfüzetként a [Speech SDK Sample adattárból](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) , és futtathatja jegyzetfüzetként.
 
 ### <a name="sample-code"></a>Mintakód
+
+> [!NOTE]
+> A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
 
 ````Python
 
@@ -124,6 +129,6 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 Ha az utasítások követésével kapcsolatos problémái vannak, tekintse meg a kiterjedt [Visual Studio Code Python oktatóanyagot](https://code.visualstudio.com/docs/python/python-tutorial).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

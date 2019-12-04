@@ -1,19 +1,19 @@
 ---
-title: 'Oktatóanyag: Azure Database for MySQL-kiszolgáló kiépítése Azure Resource Manager sablon használatával'
+title: 'Oktatóanyag: Azure Database for MySQL-Azure Resource Manager sablon létrehozása'
 description: Ez az oktatóanyag azt ismerteti, hogyan lehet kiépíteni és automatizálni Azure Database for MySQL Server-telepítéseket Azure Resource Manager sablon használatával.
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.devlang: json
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 69025dd70ffe88c1592cf656e956b3e78a97a5e7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163904"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771088"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Oktatóanyag: Azure Database for MySQL-kiszolgáló kiépítése Azure Resource Manager sablon használatával
 
@@ -88,11 +88,11 @@ Ebben a kérésben a testre szabható értékek a következők:
 +   `sku/tier` – alapszintű, GeneralPurpose vagy MemoryOptimized szint megadása az üzembe helyezéshez.
 +   `sku/capacity` – megadja a virtuális mag kapacitását. A lehetséges értékek a következők: 2, 4, 8, 16, 32 vagy 64.
 +   `sku/family` – adja meg a Gen5 a kiszolgáló telepítéséhez.
-+   `sku/name` – TierPrefix_family_capacity meghatározása. Például: B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Tekintse meg a [díjszabási szintek](./concepts-pricing-tiers.md) dokumentációját, hogy megértse az érvényes értékeket régiónként és szintenként.
++   `sku/name` – TierPrefix_family_capacity megadására. Például B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Tekintse meg a [díjszabási szintek](./concepts-pricing-tiers.md) dokumentációját, hogy megértse az érvényes értékeket régiónként és szintenként.
 +   `resources/properties/virtualNetworkSubnetId` – megadhatja annak az alhálózatnak az Azure-azonosítóját a VNet, ahol az Azure MySQL-kiszolgálót el kell helyezni. 
 +   `tags(optional)` – a választható címkék megadása olyan kulcs-érték párok, amelyeket a számlázási erőforrások kategorizálásához kíván használni.
 
-Ha olyan Azure Resource Manager sablont szeretne létrehozni, amely automatizálja Azure Database for MySQL üzemelő példányait a szervezet számára, akkor a javaslat az Azure rövid útmutató GitHub-katalógusában található minta [Azure Resource Manager sablonból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) indul el. Először is építsen rá. 
+Ha olyan Azure Resource Manager sablont szeretne létrehozni, amely automatizálja Azure Database for MySQL üzemelő példányait a szervezete számára, akkor a javaslat az Azure rövid útmutatójában a GitHub-katalógus mintájának [Azure Resource Manager sablonjában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) elsőként fog megjelenni, és fel kell építenie rá. 
 
 Ha új Azure Resource Manager sablonokat, és szeretné kipróbálni, az alábbi lépéseket követve kezdheti el:
 +   A minta [Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) klónozása vagy letöltése az Azure Gyorsindítás galériából.  

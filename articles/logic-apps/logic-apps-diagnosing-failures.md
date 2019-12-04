@@ -1,116 +1,112 @@
 ---
-title: Hibaelhárítását és diagnosztizálását hibák – Azure Logic Apps |} A Microsoft Docs
-description: Ismerje meg az Azure Logic Apps munkafolyamat-hibák diagnosztizálására és megoldására
+title: Hibák elhárítása és diagnosztizálása
+description: A munkafolyamat-hibák elhárítása és diagnosztizálása Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.date: 10/15/2017
-ms.openlocfilehash: 62a74364939fffb6e06f51f1c0cabb6cce8c10e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93b6d9d2975aa1758afffd19deb1d315b974cc47
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60999806"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790767"
 ---
-# <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-hibák diagnosztizálása és hibáinak elhárítása
+# <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Munkafolyamatok hibáinak elhárítása és diagnosztizálása Azure Logic Apps
 
-A logikai alkalmazás állít elő, információkat, amelyek segítségével diagnosztizálhatja és elháríthatja a problémákat az alkalmazásban. Felderítheti a logikai alkalmazás a munkafolyamat az Azure Portalon minden lépése áttekintésével. Vagy a munkafolyamat futásidejű hibakeresést is hozzáadhat néhány lépést.
+A logikai alkalmazás olyan információkat hoz létre, amelyek segíthetnek az alkalmazásban felmerülő problémák diagnosztizálásában és hibakeresésében. A logikai alkalmazások diagnosztizálásához tekintse át a munkafolyamat egyes lépéseit a Azure Portalon keresztül. Vagy hozzáadhat néhány lépést egy munkafolyamathoz a futásidejű hibakereséshez.
 
-## <a name="review-trigger-history"></a>Triggerelőzmények áttekintése
+## <a name="review-trigger-history"></a>Triggerek előzményeinek áttekintése
 
-Minden logikai alkalmazás az eseményindító kezdődik. Ha az eseményindító nem indul el, először ellenőrizze az eseményindító-előzményeket. Az előzményekben felsorolja az összes eseményindító kísérleteket, a logikai alkalmazás által végrehajtott és bemenetek és kimenetek minden trigger kísérlet részleteit.
+Az egyes logikai alkalmazások triggerrel kezdődnek. Ha az trigger nem indul el, először ellenőrizze az aktiválási előzményeket. Ez az előzmények felsorolja az összes olyan triggert, amelyet a logikai alkalmazás elkészített, valamint az egyes triggerekhez tartozó bemeneti és kimeneti adatokról.
 
-1. Ellenőrizze, hogy az eseményindító aktiválódott, a logikai alkalmazás menüjében válassza a **áttekintése**. A **eseményindítási előzményeinek**, tekintse át a trigger állapotát.
+1. A logikai alkalmazás menüjében az **Áttekintés**elemre kattintva ellenőrizhető, hogy a trigger kilőtte-e. Az **aktiválási előzmények**szakaszban tekintse át az trigger állapotát.
 
    > [!TIP]
    > Ha nem látja a logikai alkalmazás menüjét, próbáljon meg visszatérni az Azure-irányítópultra, és nyissa meg ismét a logikai alkalmazást.
 
-   ![Triggerelőzmények áttekintése](./media/logic-apps-diagnosing-failures/logic-app-trigger-history-overview.png)
+   ![Triggerek előzményeinek áttekintése](./media/logic-apps-diagnosing-failures/logic-app-trigger-history-overview.png)
 
    > [!TIP]
-   > * Ha nem találja a várt adatok, próbálkozzon **frissítése** az eszköztáron.
-   > * Ha a lista számos aktiválása kísérletek, és nem találja a kívánt bejegyzést jeleníti meg, próbálja meg a tanúsítványlista.
+   > * Ha nem találja a várt adatok valamelyikét, próbálja meg a **frissítés** elemet kiválasztani az eszköztáron.
+   > * Ha a lista számos trigger-kísérletet mutat, és nem találja a kívánt bejegyzést, próbálja meg szűrni a listát.
 
-   Az alábbiakban egy eseményindító kísérlet a lehetséges állapotok:
+   Itt láthatók az triggerek lehetséges állapotai:
 
    | Állapot | Leírás | 
    | ------ | ----------- | 
-   | **Succeeded** | Az eseményindító be van jelölve a végpont, és a rendelkezésre álló adatok találhatók. Általában egy "Fired" állapota is mellett ez az állapot jelenik meg. Ha nem, az eseményindító definíciójában előfordulhat, hogy rendelkezik egy feltétel, vagy `SplitOn` parancsot, amely nem teljesült. <p>Ez az állapot egy manuális eseményindító, ismétlődési eseményindító vagy egy lekérdezés eseményindító alkalmazhatja. A trigger sikeresen futtatható, de maga a Futtatás továbbra is meghiúsulhat, ha a művelet nem kezelt hibát. | 
-   | **Kihagyva** | Az eseményindító be van jelölve, a végpont, de adatot nem található. | 
-   | **Nem sikerült** | Hiba történt. Tekintse át a sikertelen eseményindítók létrehozott hibaüzeneteket, a trigger kísérlet válassza, majd **kimenetek**. Észreveheti például bemenet nem érvényes. | 
+   | **Sikerült** | A trigger ellenőrizte a végpontot, és talált elérhető adatértékeket. Általában a "tüzelt" állapot is megjelenik az állapot mellett. Ha nem, az trigger definíciója rendelkezhet olyan feltételsel vagy `SplitOn` paranccsal, amely nem teljesült. <p>Ez az állapot manuális eseményindítóra, ismétlődési eseményindítóra vagy lekérdezési eseményindítóra alkalmazható. Egy trigger sikeresen futtatható, de a Futtatás akkor is meghiúsul, ha a műveletek nem kezelt hibákat eredményeznek. | 
+   | **Kihagyva** | A trigger ellenőrizte a végpontot, de nem talált semmilyen adatsort. | 
+   | **Sikertelen** | Hiba történt. A sikertelen triggerek által generált hibaüzenetek áttekintéséhez válassza ki az aktiválási kísérletet, és válassza a **kimenetek**lehetőséget. Előfordulhat például, hogy olyan bemeneteket talál, amelyek nem érvényesek. | 
    ||| 
 
-   Előfordulhat, hogy több eseményindító bejegyzések ilyen dátumot és időpontot, amely a történik, ha a logikai alkalmazás több elem is talál. 
-   Minden akkor aktiválódik, a Logic Apps-motor létrehoz egy logikaialkalmazás-példányt a munkafolyamat futtatásához. Alapértelmezés szerint minden példány párhuzamosan fut, hogy nem a munkafolyamat nem futtató indítása előtt.
+   Több trigger-bejegyzés is lehet ugyanazzal a dátummal és időponttal, ami akkor történik, ha a logikai alkalmazás több elemet talál. 
+   A Logic Apps motor a folyamat minden indításakor létrehoz egy logikai alkalmazás-példányt a munkafolyamat futtatásához. Alapértelmezés szerint minden példány párhuzamosan fut, így a Futtatás elindítása előtt egyetlen munkafolyamatnak sem kell várakoznia.
 
    > [!TIP]
-   > Az eseményindító pontosítható Várakozás a következő ismétlődés nélkül. Az Áttekintés eszköztáron válassza **trigger futtatása**, és válassza ki az eseményindító, amely arra kényszeríti az ellenőrzést. Vagy válassza **futtatása** a Logic Apps Designer eszköztáron.
+   > A következő ismétlődés megkezdése nélkül újra megtekintheti az eseményindítót. Az Áttekintés eszköztáron válassza az **trigger futtatása**lehetőséget, majd válassza ki az triggert, amely az ellenőrzések elindítását kényszeríti. Vagy válassza a **futtatás** Logic apps Designer eszköztáron lehetőséget.
 
-3. Egy eseményindító kísérlet részleteinek vizsgálatához alatt **eseményindítási előzményeinek**, válassza ki, hogy az eseményindító kísérlet. 
+3. Ha meg szeretné vizsgálni egy trigger-kísérlet részleteit, az **aktiválási előzmények**területen válassza ki az aktiválási kísérletet. 
 
-   ![Válasszon egy eseményindító kísérlet](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
+   ![Trigger-kísérlet kiválasztása](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
 
-4. Tekintse át a bemeneteit és kimeneteit, az eseményindító által előállított. Triggerek be jeleníthetők meg a tartalomcsomagokból származó az eseményindító. Ezeket a kimeneteket segítségével meghatározhatja, hogy e az összes tulajdonság a várt módon adja vissza.
+4. Tekintse át a bemeneteket és az trigger által generált kimeneteket. A trigger kimenetei az triggerből származó adatokat jelenítik meg. Ezek a kimenetek segítenek megállapítani, hogy az összes tulajdonság a várt módon lett-e visszaadva.
 
    > [!NOTE]
-   > Ha nem ismeri a tartalmak, ismerje meg az Azure Logic Apps [kezeli a különböző típusú tartalmakra](../logic-apps/logic-apps-content-type.md).
+   > Ha olyan tartalmat talál, amelyet nem ismer, Ismerje meg, hogyan [kezeli a különböző tartalomtípusokat](../logic-apps/logic-apps-content-type.md)a Azure Logic apps.
 
-   ![Trigger kimenete](./media/logic-apps-diagnosing-failures/trigger-outputs.png)
+   ![Trigger kimenetek](./media/logic-apps-diagnosing-failures/trigger-outputs.png)
 
 ## <a name="review-run-history"></a>Futtatási előzmények áttekintése
 
-Minden egyes elindított trigger elindítja egy munkafolyamat-Futtatás. Mi történt, amely futtatja, beleértve az egyes lépések állapotát a munkafolyamatot, valamint bemeneteit és kimeneteit mindegyik lépéshez során tekintheti meg.
+Minden kilőtt trigger elindítja a munkafolyamat futtatását. Áttekintheti, hogy mi történt a Futtatás során, beleértve a munkafolyamat egyes lépéseinek állapotát, valamint az egyes lépések bemeneteit és kimeneteit is.
 
-1. A logikai alkalmazás menüjében válassza az **Áttekintés** lehetőséget. A **futtatási előzmények**, tekintse át a az elindított trigger futtatása.
+1. A logikai alkalmazás menüjében válassza az **Áttekintés** lehetőséget. A futtatási **Előzmények**szakaszban tekintse át az indító trigger futtatását.
 
    > [!TIP]
    > Ha nem látja a logikai alkalmazás menüjét, próbáljon meg visszatérni az Azure-irányítópultra, és nyissa meg ismét a logikai alkalmazást.
 
-   ![A futtatási előzmények áttekintése](./media/logic-apps-diagnosing-failures/logic-app-runs-history-overview.png)
+   ![Futtatási előzmények áttekintése](./media/logic-apps-diagnosing-failures/logic-app-runs-history-overview.png)
 
    > [!TIP]
-   > * Ha nem találja a várt adatok, próbálkozzon **frissítése** az eszköztáron.
-   > * Ha a listán megjelenik számos fut, és nem találja a kívánt bejegyzést, próbálja meg a tanúsítványlista.
+   > * Ha nem találja a várt adatok valamelyikét, próbálja meg a **frissítés** elemet kiválasztani az eszköztáron.
+   > * Ha a lista számos futtatást mutat, és nem találja a kívánt bejegyzést, próbálja meg szűrni a listát.
 
-   Futtatás a lehetséges állapotok a következők:
+   A Futtatás lehetséges állapota:
 
    | Állapot | Leírás | 
    | ------ | ----------- | 
-   | **Succeeded** | Minden művelet sikeresen befejeződött. <p>Ha hibákat egy adott működés közben történt, a munkafolyamat a következő művelet kezeli, a hiba. | 
-   | **Nem sikerült** | Legalább egy műveletet nem sikerült, és a munkafolyamatban a későbbi műveletek nem állított be a hiba kezelésére. | 
-   | **Megszakítva** | A munkafolyamat működő állapotban volt, de a megszakítási kérelem érkezett. | 
-   | **Fut** | A munkafolyamat jelenleg fut. <p>Ez az állapot akkor fordulhat elő, szabályozott munkafolyamatokat, akár a jelenlegi díjszabási csomag miatt. További információkért lásd: a [művelet korlátok a díjszabási lapon](https://azure.microsoft.com/pricing/details/logic-apps/). Ha beállította a [diagnosztikai célú naplózásának](../logic-apps/logic-apps-monitor-your-logic-apps.md), bármely történik késleltetési eseményekkel kapcsolatos információkat is kaphat. | 
+   | **Sikerült** | Az összes művelet sikeres volt. <p>Ha valamilyen hiba történt egy adott művelet során, akkor a munkafolyamatban a következő művelet kezelte a hibát. | 
+   | **Sikertelen** | Legalább egy művelet meghiúsult, és a munkafolyamatban a későbbi műveletek nem lettek beállítva a hiba kezelésére. | 
+   | **Megszakítva** | A munkafolyamat futott, de megszakítási kérelmet kapott. | 
+   | **Fut** | A munkafolyamat jelenleg fut. <p>Ez az állapot a szabályozott munkafolyamatok esetében vagy a jelenlegi díjszabási csomag miatt fordulhat elő. További információkért tekintse meg a [díjszabási oldalon található műveletek korlátait](https://azure.microsoft.com/pricing/details/logic-apps/). Ha beállítja a [diagnosztikai naplózást](../logic-apps/logic-apps-monitor-your-logic-apps.md), az esetlegesen előforduló szabályozási eseményekről is kaphat információt. | 
    ||| 
 
-2. Egy adott Futtatás minden lépése részleteit is érdemes megvizsgálni. A **futtatási előzmények**, válassza ki a vizsgálni kívánt Futtatás.
+2. Tekintse át az egyes lépések részleteit egy adott futtatásban. A futtatási **Előzmények**területen válassza ki a vizsgálni kívánt futtatást.
 
-   ![A futtatási előzmények áttekintése](./media/logic-apps-diagnosing-failures/logic-app-run-history.png)
+   ![Futtatási előzmények áttekintése](./media/logic-apps-diagnosing-failures/logic-app-run-history.png)
 
-   E a Futtatás sikeres vagy sikertelen magát, a Futtatás részletei nézeten áttekintheti az egyes lépések, és hogy azok sikeres vagy sikertelen.
+   Azt jelzi, hogy a Futtatás sikeres vagy sikertelen volt-e, a Futtatás részletei nézet megjeleníti az egyes lépéseket, valamint azt, hogy sikeresek vagy sikertelenek voltak-e.
 
    ![Logikai alkalmazás futtatási részleteinek megtekintése](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. Vizsgálja meg a bemenetek, kimenetek és egy adott lépésre vonatkozó hibaüzeneteket, válassza ezt a lépést, hogy az alakzat oktatóanyagon, és a részleteket jeleníti meg. Példa:
+3. Egy adott lépéshez tartozó bemenetek, kimenetek és hibaüzenetek vizsgálatához válassza ki ezt a lépést az alakzat kibontása és a Részletek megjelenítése érdekében. Példa:
 
    ![Lépés részleteinek megtekintése](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 
-## <a name="perform-runtime-debugging"></a>Hajtsa végre a futásidejű hibakeresést
+## <a name="perform-runtime-debugging"></a>Futásidejű hibakeresés végrehajtása
 
-A hibakeresés érdekében hozzáadhat diagnosztikai lépések egy munkafolyamathoz, és az eseményindító áttekintése és a futtatási előzmények. Például használatára vonatkozó lépéseket adhat hozzá a [Webhook tesztelő](https://webhook.site/) szolgáltatást, hogy vizsgálja meg a HTTP-kérelmekre, és a pontos méretét, az alakzat és a formátum meghatározása.
+Ha segítségre van szüksége a hibakereséshez, diagnosztikai lépéseket adhat hozzá egy munkafolyamathoz, valamint az trigger és a futtatási előzmények áttekintését. Hozzáadhat például olyan lépéseket, amelyek a [webhook Tester](https://webhook.site/) szolgáltatást használják, így ELLENŐRIZHETI a http-kérelmeket, és meghatározhatja a pontos méretet, alakot és formátumot.
 
-1. Látogasson el [Webhook tesztelő](https://webhook.site/) , és másolja az egyedi URL-cím létrehozása
+1. [Webhook Tester](https://webhook.site/) megnyitása és a létrehozott egyedi URL-cím másolása
 
-2. A logikai alkalmazásban adjon hozzá egy HTTP POST műveletet, amelyet szeretne tesztelni, például szövegtörzse, lépés másik kimeneti vagy egy kifejezés.
+2. A logikai alkalmazásban adjon hozzá egy HTTP POST műveletet a vizsgálni kívánt szövegtörzshöz, például egy kifejezéshez vagy egy másik lépés kimenetéhez.
 
-3. Illessze be az URL-címet a Webhook Tester a HTTP POST műveletet.
+3. Illessze be a webhook-tesztelő URL-címét a HTTP POST műveletbe.
 
-4. Tekintse át, hogyan lett létrehozva egy kérelmet a Logic Apps-motor által létrehozott, a logikai alkalmazás futtatása és Webhook tesztelő részletekért lásd:.
+4. Ha szeretné áttekinteni, hogyan hozza létre a rendszer a Logic Apps motorból generált kérést, futtassa a logikai alkalmazást, és tekintse meg a következőt: webhook Tester.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A logikai alkalmazás figyelése](../logic-apps/logic-apps-monitor-your-logic-apps.md)

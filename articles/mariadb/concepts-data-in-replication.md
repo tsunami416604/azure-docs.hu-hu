@@ -1,17 +1,17 @@
 ---
-title: Az adatreplikálás Azure Database for MariaDBba
+title: Adatreplikálás – Azure Database for MariaDB
 description: További információ a külső kiszolgálóról a Azure Database for MariaDB szolgáltatásba való szinkronizáláshoz szükséges adatreplikálás használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.openlocfilehash: 826a6db289bf8b938e85d270f91836b3d8790206
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: e98f0dffe1ae004905c2b0969d825a1bca89014a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973641"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772638"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Az adatreplikálás Azure Database for MariaDBba
 
@@ -31,7 +31,7 @@ A főkiszolgálón található [*MySQL rendszeradatbázis*](https://mariadb.com/
 ### <a name="requirements"></a>Követelmények
 - A főkiszolgáló verziójának legalább MariaDB 10,2-es verziójúnak kell lennie.
 - A fő-és a replika-kiszolgáló verziószámának azonosnak kell lennie. Például mindkettőnek a 10,2-es verzió MariaDB kell lennie.
-- Minden táblának elsődleges kulccsal kell rendelkeznie.
+- Minden táblának rendelkeznie kell egy elsődleges kulccsal.
 - A főkiszolgálónak a InnoDB motort kell használnia.
 - A felhasználónak rendelkeznie kell engedéllyel a bináris naplózás konfigurálásához és új felhasználók létrehozásához a főkiszolgálón.
 - Ha a főkiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány szerepel-e a `mariadb.az_replication_change_master` tárolt eljárásban. Tekintse át az alábbi [példákat](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) és a `master_ssl_ca` paramétert.
@@ -42,5 +42,5 @@ A főkiszolgálón található [*MySQL rendszeradatbázis*](https://mariadb.com/
 ### <a name="other"></a>Egyéb
 - Az adatreplikálás csak általános célú és a memória optimalizált díjszabási szintjein támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Megtudhatja, hogyan [állíthatja be az adatreplikációt](howto-data-in-replication.md).

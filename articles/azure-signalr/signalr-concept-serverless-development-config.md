@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: 68ada90699fe9a9db6faeb32a04e8eb02c176944
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74157650"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786775"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions fejlesztés és konfigurálás az Azure Signaler szolgáltatással
 
@@ -40,7 +40,7 @@ Az ügyfélalkalmazás érvényes hozzáférési jogkivonatot igényel az Azure 
 
 A kapcsolati információ objektum létrehozásához használjon HTTP-triggert használó Azure-függvényt és a *SignalRConnectionInfo* bemeneti kötését. A függvénynek olyan HTTP-útvonalon kell lennie, amely `/negotiate`ban ér véget.
 
-Az egyeztetési függvény létrehozásával kapcsolatos további információkért tekintse meg a [ *SignalRConnectionInfo* bemeneti kötési referenciáját](../azure-functions/functions-bindings-signalr-service.md#signalr-connection-info-input-binding).
+Az egyeztetési függvény létrehozásával kapcsolatos további információkért tekintse meg a [ *SignalRConnectionInfo* bemeneti kötési referenciáját](../azure-functions/functions-bindings-signalr-service.md#input).
 
 A hitelesített tokenek létrehozásáról a [app Service hitelesítés használata](#using-app-service-authentication)című témakörben olvashat bővebben.
 
@@ -50,7 +50,7 @@ A *signaler* kimeneti kötés használatával üzeneteket küldhet az Azure Sign
 
 A felhasználók hozzáadhatók egy vagy több csoporthoz. A *jelző* kimeneti kötés használatával felhasználókat adhat hozzá vagy távolíthat el a csoportokból.
 
-További információ: a [ *signaler* output kötési referenciája](../azure-functions/functions-bindings-signalr-service.md#signalr-output-binding).
+További információ: a [ *signaler* output kötési referenciája](../azure-functions/functions-bindings-signalr-service.md#output).
 
 ### <a name="signalr-hubs"></a>Szignáló hubok
 

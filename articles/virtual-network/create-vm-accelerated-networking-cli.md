@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 29014674cee4d6498ca7b56582313265da886122
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: eb44163922e318d17d675143ca2d6a3a1fa4ed75
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083674"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793319"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Linux rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel az Azure CLI használatával
 
@@ -62,7 +62,10 @@ A feleznie támogató példányokon a gyorsított hálózatkezelést a 4 vagy t�
 
 A virtuálisgép-példányokkal kapcsolatos további információkért lásd: Linux rendszerű [virtuális gépek mérete](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="regions"></a>Regions
+### <a name="custom-images"></a>Egyéni rendszerképek
+Ha egyéni rendszerképet használ, és a rendszerkép támogatja a gyorsított hálózatkezelést, győződjön meg arról, hogy a szükséges illesztőprogramok működnek a Mellanox ConnectX-3 és a ConnectX-4 LX hálózati adapterek használatával az Azure-ban.
+
+### <a name="regions"></a>Térségek
 Az összes nyilvános Azure-régióban, valamint Azure Government felhőkben is elérhető.
 
 <!-- ### Network interface creation 

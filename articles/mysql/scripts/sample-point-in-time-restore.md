@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-szkript – Azure Database for MySQL-kiszolgáló visszaállítása
+title: CLI-szkript – kiszolgáló visszaállítása – Azure Database for MySQL
 description: Ez az Azure CLI-példaszkript bemutatja egy Azure Database for MySQL-kiszolgáló és a hozzá tartozó adatbázisok visszaállítását egy korábbi időpontra.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 02/28/2018
-ms.openlocfilehash: 7bc4b1533da272bed9b7b7b8a0abe9b509e02386
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: 5a84a44a4ea941bf3b77f0762fc764ec069919c7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343086"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771328"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure Database for MySQL-kiszolgáló visszaállítása az Azure CLI-vel
 Ez az Azure CLI-példaszkript egyetlen Azure Database for MySQL-kiszolgálót állít vissza egy korábbi időpontban fennálló állapotra.
@@ -40,6 +40,6 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az mysql server restore](/cli/azure/mysql/server#az-mysql-server-restore) | Visszaállít egy kiszolgálót egy biztonsági másolatból. |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
-- Az Azure CLI-vel kapcsolatos további információkért tekintse meg: [Az Azure CLI dokumentációját](/cli/azure).
-- További szkripteket: [Az Azure CLI-minták az Azure Database for MySQL-hez](../sample-scripts-azure-cli.md)
+## <a name="next-steps"></a>Következő lépések
+- Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
+- További szkripteket az [Azure Database for MySQL-hez való Azure CLI-példák](../sample-scripts-azure-cli.md) között találhat.

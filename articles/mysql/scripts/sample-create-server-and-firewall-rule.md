@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-szkript – Azure Database for MySQL létrehozása
+title: CLI-szkript – kiszolgáló létrehozása – Azure Database for MySQL
 description: Ez a CLI-mintaszkript létrehoz egy Azure Database for MySQL-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.custom: mvc
 ms.topic: sample
-ms.date: 02/28/2018
-ms.openlocfilehash: 6a73041218ab6182d8aa3df6261697cc8dd4efe7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: a210d2d11c9d9fccd000a6dffbf1f8730bda0c8b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343256"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765794"
 ---
 # <a name="create-a-mysql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>MySQL-kiszolgáló létrehozása és tűzfalszabály konfigurálása az Azure CLI-vel
 Ez a CLI-mintaszkript létrehoz egy Azure Database for MySQL-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt. A szkript sikeres futtatása után a MySQL-kiszolgáló elérhetővé válik a konfigurált IP-címről és az összes Azure-szolgáltatás számára.
@@ -40,6 +40,6 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az mysql server firewall create](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) | Létrehoz egy tűzfalszabályt, amely engedélyezi a kiszolgáló és az azon lévő adatbázisok elérését a megadott IP-címtartományból. |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
-- Az Azure CLI-vel kapcsolatos további információkért tekintse meg: [Az Azure CLI dokumentációját](/cli/azure).
-- További szkripteket: [Az Azure CLI-minták az Azure Database for MySQL-hez](../sample-scripts-azure-cli.md)
+## <a name="next-steps"></a>Következő lépések
+- Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
+- További szkripteket az [Azure Database for MySQL-hez való Azure CLI-példák](../sample-scripts-azure-cli.md) között találhat.

@@ -1,25 +1,23 @@
 ---
-title: Kapcsolódás az SFTP-kiszolgálóhoz SSH-Azure Logic Apps
+title: Kapcsolódás az SFTP-kiszolgálóhoz SSH-val
 description: Automatizálhatja az SFTP-kiszolgálókhoz tartozó fájlok figyelését, létrehozását, kezelését, küldését és fogadását SSH és Azure Logic Apps használatával.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, klam, LADocs
+author: divyaswarnkar
+ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: f52fc91d218e1a5448f6e6e7465f6416a04fd67d
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 54a1d1183ac16f5ec3db5477cda75c6e1a776b3d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837137"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786884"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok figyelése, létrehozása és kezelése SSH és Azure Logic Apps használatával
 
-A [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokoll használatával a biztonságos [File Transfer Protocol-(SFTP-)](https://www.ssh.com/ssh/sftp/) kiszolgálón lévő fájlok figyelésére, létrehozására, küldésére és fogadására szolgáló feladatok automatizálásához az integrációs munkafolyamatokat Azure Logic apps és az SFTP-SSH használatával is felépítheti és automatizálhatja. összekötő. Az SFTP olyan hálózati protokoll, amely fájlhozzáférést, fájlátvitelt és fájlfelügyeletet biztosít valamilyen megbízható adatstreamen keresztül. Íme néhány példa a feladatok automatizálására:
+A [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokoll használatával a biztonságos [File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) kiszolgálón lévő fájlok figyelésére, létrehozására, küldésére és fogadására szolgáló feladatok automatizálásához Azure Logic apps és az SFTP-SSH összekötő használatával hozhat létre és automatizálhat integrációs munkafolyamatokat. Az SFTP olyan hálózati protokoll, amely fájlhozzáférést, fájlátvitelt és fájlfelügyeletet biztosít valamilyen megbízható adatstreamen keresztül. Íme néhány példa a feladatok automatizálására:
 
 * A fájlok hozzáadásának vagy módosításának figyelése.
 * Fájlok lekérése, létrehozása, másolása, átnevezése, frissítése, listázása és törlése.
@@ -186,6 +184,6 @@ Ez a művelet lekérdezi a tartalmat egy SFTP-kiszolgálón lévő fájlból. Í
 
 Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/sftpconnector/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

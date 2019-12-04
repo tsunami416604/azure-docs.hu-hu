@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 5dc33de19ef71a0714052a6457bef9f32fc159c3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 92fe564b849c728952dd549757be42b8b5131b25
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720161"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791030"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Az AI bemutatása az Azure-ban Cognitive Search
 
@@ -21,7 +21,7 @@ Az AI-bővítés az Azure Cognitive Search a képekből, blobokból és egyéb s
 
 + A **természetes nyelvi feldolgozási** képességek közé tartozik az [entitások felismerése](cognitive-search-skill-entity-recognition.md), a [nyelvfelismerés](cognitive-search-skill-language-detection.md), a [kulcsfontosságú kifejezés kinyerése](cognitive-search-skill-keyphrases.md), a szöveg-manipuláció és a [hangulat észlelése](cognitive-search-skill-sentiment.md). Ezekkel a képességekkel a strukturálatlan szöveg feltételezheti, hogy az indexben kereshető és szűrhető mezőkként leképezett új űrlapok is megadhatók.
 
-+ A **képfeldolgozási** képességek közé tartozik az [optikai karakterfelismerés (OCR)](cognitive-search-skill-ocr.md) és a [vizuális funkciók](cognitive-search-skill-image-analysis.md)azonosítása, például az Arcfelismerés, a képek értelmezése, a képfelismerés (híres személyek és tereptárgyak) vagy a hasonló attribútumok színek vagy képek tájolása Az Azure Cognitive Search összes lekérdezési funkciójának használatával szöveget hozhat létre a képtartalom ábrázolásával.
++ A **képfeldolgozási** képességek közé tartozik az [optikai karakterfelismerés (OCR)](cognitive-search-skill-ocr.md) és a [vizuális funkciók](cognitive-search-skill-image-analysis.md)azonosítása, például az arc észlelése, a képek értelmezése, a képfelismerés (híres személyek és tereptárgyak) vagy az attribútumok, például a színek vagy a képek tájolása. Az Azure Cognitive Search összes lekérdezési funkciójának használatával szöveget hozhat létre a képtartalom ábrázolásával.
 
 ![Dúsítási folyamat diagramja](./media/cognitive-search-intro/cogsearch-architecture.png "a dúsítási folyamat áttekintése")
 
@@ -69,7 +69,7 @@ A dúsítási folyamat olyan [*Indexelő*](search-indexer-overview.md) eszközö
 
 A folyamat elején strukturálatlan szöveggel vagy nem szöveges tartalommal (például kép és beolvasott dokumentum JPEG-fájlok) rendelkezik. Az adattáraknak olyan Azure-beli adattárolási szolgáltatásban kell lenniük, amely egy indexelő segítségével érhető el. Az indexelő "kiváló" forrás dokumentumokat gyűjthetnek a forrásadatokből származó szöveg kinyeréséhez.
 
-![A dokumentum repedésének fázisa](./media/cognitive-search-intro/document-cracking-phase-blowup.png "A dokumentum repedése")
+![A dokumentum repedésének fázisa](./media/cognitive-search-intro/document-cracking-phase-blowup.png "a dokumentum repedése")
 
  A támogatott források közé tartozik az Azure Blob Storage, az Azure Table Storage, a Azure SQL Database és az Azure Cosmos DB. A szöveges tartalmat a következő fájltípusokból lehet kinyerni: PDF-fájlok, Word-, PowerPoint-és CSV-fájlok. A teljes listát lásd: [támogatott formátumok](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
 
@@ -101,7 +101,7 @@ Az indexek olyan index-sémából jönnek létre, amely meghatározza az adott i
 
 <a name="feature-concepts"></a>
 
-## <a name="key-features-and-concepts"></a>A legfontosabb jellemzők és fogalmak
+## <a name="key-features-and-concepts"></a>Alapfunkciók és -fogalmak
 
 | Fogalom | Leírás| Hivatkozások |
 |---------|------------|-------|
@@ -116,6 +116,8 @@ Az indexek olyan index-sémából jönnek létre, amely meghatározza az adott i
 | Indexelő |  Egy webbejáró, amely Kinyeri a kereshető adatokat és metaadatokat egy külső adatforrásból, és feltölti az indexet az index és az adatforrása közötti mező-mező leképezések alapján. Az AI-bővítésekhez az indexelő meghívja a készségkészlet, és tartalmazza azokat a mező-hozzárendeléseket, amelyek a dúsítási kimenetet társítják az index mezőihez. Az indexelő definíciója a feldolgozási műveletek összes utasítását és hivatkozását tartalmazza, a folyamat pedig az indexelő futtatásakor lesz meghívva. A további beállításokkal újra felhasználhatja a meglévő feldolgozást, és csak azokat a lépéseket és képességeket hajthatja végre, amelyek módosultak. | Lásd: [Indexelő](search-indexer-overview.md) és [növekményes indexelés (előzetes verzió)](cognitive-search-incremental-indexing-conceptual.md). |
 | Adatforrás  | Az indexelő által az Azure-ban támogatott típusok külső adatforráshoz való kapcsolódásra használt objektum. | Lásd: [Indexelő – áttekintés](search-indexer-overview.md) |
 | Index | Egy megőrzött keresési index az Azure Cognitive Searchban, amely egy olyan index-sémából épül, amely meghatározza a mező szerkezetét és használatát. | Lásd: [alapszintű index létrehozása](search-what-is-an-index.md) | 
+| Tudástár | Olyan Storage-fiók, amelyben a keresési indexen kívül a dúsított dokumentumok formázható és kiterjeszthetők | Lásd: [a Knowledge Store bemutatása](knowledge-store-concept-intro.md) | 
+| Indexelő gyorsítótár | A Storage-fiókhoz tartozó szaktudás kimeneteit az indexelő gyorsítótárazza. A gyorsítótár lehetővé teszi a indexeer számára, hogy csökkentse a nagy mennyiségű dokumentum újrafeldolgozásának költségeit a készségkészlet szerkesztésekor. | Lásd: [növekményes indexelés](cognitive-search-incremental-indexing-conceptual.md) | 
 
 <a name="where-do-i-start"></a>
 
@@ -166,7 +168,7 @@ Ez a lépés a REST API-kkal hozza létre az AI-gazdagító megoldást. Az AI-b�
 
 További információ az adott kérdésekről vagy problémákról: [hibaelhárítási tippek](cognitive-search-concept-troubleshooting.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [AI-gazdagító dokumentációs hivatkozások](cognitive-search-resources-documentation.md)
 + [Gyors útmutató: az AI-gazdagítás kipróbálása egy portálon](cognitive-search-quickstart-blob.md)

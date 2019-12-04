@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0ba69715998f110d88015bdba2fbf340a6b64089
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: acd601512f2240802de47483a015f03a226da115
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491638"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796183"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Mi a különbség az Azure Virtual Network Gateway (VPN Gateway) és egy Azure virtuális WAN VPN Gateway között?
 
@@ -36,8 +36,6 @@ A partnerek automatizálásának lépéseiért tekintse át [a Virtual WAN-partn
 Nem. Bármely olyan VPN-kompatibilis eszközt használhat, amely megfelel az Azure IKEv2/IKEv1 IPsec-támogatásra vonatkozó követelményeinek.
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Hogyan csatlakozhatnak a Virtual WAN-partnerek automatikusan az Azure Virtual WAN-hoz?
-
-A szoftveralapú csatlakozási megoldások jellemzően vezérlővel vagy eszközkiépítési központtal kezelik a kompatibilis eszközöket. A vezérlők Azure API-kat is használhatnak az Azure Virtual WAN-hoz való automatikus csatlakozáshoz. További információért tekintse meg a Virtual WAN-partnerek automatizálásával foglalkozó részt.
 
 A szoftveralapú csatlakozási megoldások jellemzően vezérlővel vagy eszközkiépítési központtal kezelik a kompatibilis eszközöket. A vezérlők Azure API-kat is használhatnak az Azure Virtual WAN-hoz való automatikus csatlakozáshoz. Az Automation magában foglalja a fiókirodák feltöltését, az Azure-konfiguráció letöltését, az IPSec-alagutak Azure-beli virtuális hubokba való beállítását, valamint a kapcsolat automatikus beállítását az Azure Virtual WAN-hoz. Ha több száz ága van, a virtuális WAN CPE-partnerekkel való csatlakozás egyszerű, mivel a bevezetési élmény eltartja a nagyméretű IPsec-kapcsolatok beállításának, konfigurálásának és felügyeletének szükségességét. További információért tekintse meg a [Virtual WAN-partnerek automatizálásával](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) foglalkozó részt.
 

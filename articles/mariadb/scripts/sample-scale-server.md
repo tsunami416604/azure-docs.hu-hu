@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-szkript – Azure Database for MariaDB kiszolgáló méretezése
+title: CLI-parancsfájl – méretezési kiszolgáló – Azure Database for MariaDB
 description: Ez a CLI-parancsfájl a metrikák lekérdezése után átméretezi Azure Database for MariaDB kiszolgálót egy másik teljesítményszint.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 08/07/2019
-ms.openlocfilehash: 772c4de9c53f618d0c7c5d8b8d6acc2830595f55
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 12/02/2019
+ms.openlocfilehash: 562f265cccf444740c177a41e516f9066188613e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884151"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771635"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure Database for MariaDB-kiszolgáló monitorozása és méretezése az Azure CLI-vel
 Ez a CLI-parancsfájl a metrikák lekérdezése után egy Azure Database for MariaDB kiszolgáló számítási és tárolási kapacitását méretezi. A számítás vertikális fel-vagy leskálázást végez. A tárterület csak vertikális felskálázásra használható.
@@ -41,7 +41,7 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) | Listázza az erőforrások metrikaértékét. |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Azure Database for MariaDB számítási és tárolási](../concepts-pricing-tiers.md) feladatokról
-- További parancsfájlok kipróbálása: [Azure CLI-minták a Azure Database for MariaDBhoz](../sample-scripts-azure-cli.md)
+- További parancsfájlok kipróbálása: [Azure CLI-minták a Azure Database for MariaDB](../sample-scripts-azure-cli.md)
 - További információ az [Azure CLI](/cli/azure) -ről

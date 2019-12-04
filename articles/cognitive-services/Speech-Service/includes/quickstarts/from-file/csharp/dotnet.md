@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: fdb747212914769b8551d9cd12f1fbc8a01245dc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6a570ec7e7eaae13515edc268d465df18674fc22
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504192"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796180"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,6 +25,8 @@ Az első lépések előtt ügyeljen a következőre:
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=dotnet)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="open-your-project-in-visual-studio"></a>A projekt megnyitása a Visual Studióban
 
@@ -66,6 +68,7 @@ namespace helloworld
 
 > [!NOTE]
 > Ez a példa a `FromSubscription()` metódust használja a `SpeechConfig`létrehozásához. Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+> A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
 
 ````C#
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -203,6 +206,6 @@ Most már készen áll az alkalmazás felépítésére és a beszédfelismerési
    We recognized: What's the weather like?
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4d970e61fc2628843ef847526dcdb4e44bf9796f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4b61cbc8a3e870e9fd2123fd3dcbd941c5dde80c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176931"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786945"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Adatbázisok, tárolók és elemek használata Azure Cosmos DBban
 
@@ -56,7 +56,7 @@ Azure Cosmos-tároló létrehozásakor az átviteli sebességet az alábbi módo
 * **Megosztott kiépített átviteli sebesség**: ezek a tárolók megosztják a kiosztott átviteli sebességet ugyanabban az adatbázisban lévő többi tárolóval (kivéve a dedikált kiosztott átviteli sebességgel konfigurált tárolókat). Ez azt jelenti, hogy az adatbázison kiosztott átviteli sebesség a "megosztott átviteli sebesség" tárolók között van megosztva. További információ: [az átviteli sebesség kiépítése egy Azure Cosmos-adatbázisban](how-to-provision-database-throughput.md).
 
 > [!NOTE]
-> A megosztott és a dedikált átviteli sebességet csak az adatbázis és a tároló létrehozásakor lehet konfigurálni. A dedikált átviteli mód és a megosztott átviteli sebesség közötti váltáshoz (és fordítva) a tároló létrehozása után létre kell hoznia egy új tárolót, és át kell telepítenie az új tárolóba. Az adatáttelepítés a Azure Cosmos DB módosítási funkció használatával végezhető el.
+> A megosztott és a dedikált átviteli sebességet csak az adatbázis és a tároló létrehozásakor lehet konfigurálni. A dedikált teljesítményű módról a megosztott teljesítményű módra (és fordítva) való váltáshoz a tároló létrehozása után egy új tárolót kell létrehoznia, és migrálnia kell az adatokat az új tárolóba. Az adatáttelepítés a Azure Cosmos DB módosítási funkció használatával végezhető el.
 
 Az Azure Cosmos-tároló rugalmasan méretezhető, függetlenül attól, hogy dedikált vagy megosztott kiosztású átviteli módok használatával hoz létre tárolókat.
 
@@ -82,7 +82,7 @@ Az Azure Cosmos-tárolók rendszer által definiált tulajdonságokkal rendelkez
 
 | Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható | Rendeltetés | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Tábla API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_azonosítója | Rendszer által generált | Tároló egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
+|\_RID | Rendszer által generált | Tároló egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
 |\_ETAG | Rendszer által generált | Optimista Egyidejűség-vezérléshez használt entitás címkéje | Igen | Nem | Nem | Nem | Nem |
 |\_TS | Rendszer által generált | A tároló utolsó frissített időbélyegzője | Igen | Nem | Nem | Nem | Nem |
 |\_saját | Rendszer által generált | A tároló címezhető URI-ja | Igen | Nem | Nem | Nem | Nem |
@@ -110,7 +110,7 @@ Attól függően, hogy melyik API-t használja, egy Azure Cosmos-elem a gyűjtem
 
 | Cosmos-entitás | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Tábla API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-tétel | Dokumentum | sor | Dokumentum | Csomópont vagy peremhálózati | Tétel |
+|Azure Cosmos-tétel | Dokumentum | Sor | Dokumentum | Csomópont vagy peremhálózati | Tétel |
 
 ### <a name="properties-of-an-item"></a>Egy tétel tulajdonságai
 

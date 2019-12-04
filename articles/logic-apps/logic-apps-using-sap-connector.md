@@ -1,21 +1,20 @@
 ---
-title: Kapcsolódás SAP-rendszerekhez – Azure Logic Apps
+title: Kapcsolódás SAP-rendszerekhez
 description: Az SAP-erőforrások elérése és kezelése a munkafolyamatok automatizálásával Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 90348ad05879aff75dadab85af4e905d92228a2d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a9cf818e8b31ea2efb2f2ef2f0848a759e017dfa
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287124"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790877"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Kapcsolódás SAP-rendszerekhez Azure Logic Apps
 
@@ -301,7 +300,7 @@ Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDOCs egy csomagból
 
 1. A Kezdés előtt egy SAP-triggerrel rendelkező logikai alkalmazásra van szükség. Ha még nem rendelkezik ezzel a logikai alkalmazással, az ebben a témakörben ismertetett lépéseket követve [beállíthat egy SAP-triggerrel rendelkező logikai alkalmazást](#receive-from-sap).
 
-   Például:
+   Példa:
 
    ![SAP-trigger hozzáadása a logikai alkalmazáshoz](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 

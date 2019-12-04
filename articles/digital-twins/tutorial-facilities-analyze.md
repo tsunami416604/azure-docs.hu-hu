@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: c52bf372f21d9c2ef3d1a148aadd899435ad4181
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: cab13fd65e9fdbd7179e6ba759b1aa696ef95fa1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383061"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790332"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Oktatóanyag: az Azure Digital Twins eseményeinek megjelenítése és elemzése Time Series Insights használatával
 
@@ -24,7 +24,7 @@ Miután üzembe helyezte az Azure Digital Twins-példányt, kiépítheti a tárh
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az Azure Digital Twins-telepítőből érkező értesítéseket és az adatok Azure Time Series Insights használatával. Ezután az érzékelő értékeit az idő múlásával jelenítheti meg. Megkeresheti azokat a trendeket, mint a legtöbbet a legtöbbet, és amelyek a nap legforgalmasabb időpontját használják. Észlelheti a rendellenességeket is, például hogy mely helyiségek stuffier és melegebbek, illetve hogy az épületben lévő területek konzisztensen magas hőmérsékletű értékeket küldenek-e, jelezve a hibás légkondicionálást.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Adatfolyamok továbbítása az Azure Event Hubs használatával.
@@ -48,7 +48,7 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
 ### <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 1. A bal oldali panelen válassza az **Erőforrás létrehozása** elemet.
 
@@ -82,7 +82,7 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
     > [!TIP]
     > Győződjön meg arról, hogy a névtér helyett a SAS-szabályzatot hozza létre az Event hub-példányhoz.
 
-1. Nyissa meg az imént létrehozott **ManageSend** szabályzatot, és másolja a **Kapcsolati sztring – elsődleges kulcs** és a **Kapcsolati sztring – másodlagos kulcs** értékeit egy ideiglenes fájlba. Ezekre az értékekre szüksége lesz az Event hub végpontjának létrehozásához a következő szakaszban.
+1. Nyissa meg a létrehozott **ManageSend** -szabályzatot, és másolja a **kapcsolódási karakterlánc értékeit – elsődleges kulcs** és **kapcsolódási karakterlánc – másodlagos kulcs** egy ideiglenes fájlba. Ezekre az értékekre szüksége lesz az Event hub végpontjának létrehozásához a következő szakaszban.
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>Végpont létrehozása az Event hub számára
 
@@ -114,7 +114,7 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Cserélje le a helyőrzőket `Secondary_connection_string_for_your_event_hub` az Event hub **kapcsolati karakterláncának értéke – másodlagos kulcs** értékére. Győződjön meg arról, hogy a következő karakterlánc formátuma a következő: 
+1. Cserélje le a helyőrzőket `Secondary_connection_string_for_your_event_hub` a kapcsolati karakterlánc értékére – az Event hub **másodlagos kulcsát** . Győződjön meg arról, hogy a következő karakterlánc formátuma a következő: 
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
@@ -145,7 +145,7 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
     [Time Series Insights példány létrehozásához ![kiválasztása](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
-1. Az **eseményforrás** lapon adjon meg egy **nevet**, válassza az **Event hub** lehetőséget a **forrás típusaként**, és győződjön meg arról, hogy a többi érték helyesen van kiválasztva. Válassza az **ManageSend** lehetőséget az **Event hub hozzáférési házirendjének neveként**, majd válassza ki azt a fogyasztói csoportot, amelyet az **Event hub fogyasztói csoportjának**előző szakaszában hozott létre. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Az **eseményforrás** lapon adjon meg egy **nevet**, válassza ki az **Event hub** elemet a **forrás típusaként**, és győződjön meg arról, hogy a többi érték helyesen van kiválasztva a létrehozott Event hub-ra való hivatkozáshoz. Válassza az **ManageSend** lehetőséget az **Event hub hozzáférési házirendjének neveként**, majd válassza ki azt a fogyasztói csoportot, amelyet az **Event hub fogyasztói csoportjának**előző szakaszában hozott létre. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
     [az eseményforrás létrehozásának ![kiválasztása](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
@@ -174,7 +174,7 @@ Ha le szeretné állítani az Azure digitális ikrek felfedezését ezen a ponto
 1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**elemet, válassza ki a digitális Twins erőforráscsoportot, majd válassza a **Törlés**lehetőséget.
 
     > [!TIP]
-    > Ha törli a digitális Twins-példány problémajegyek tapasztal, szolgáltatás frissítése lett állítva a javítás. Ismételje meg a példány törlése.
+    > Ha hibát észlelt a digitális Twins-példány törlésével kapcsolatban, a javítás a szolgáltatásban frissült. Próbálkozzon újra a példány törlésével.
 
 2. Ha szükséges, törölje a mintául szolgáló alkalmazásokat a munkahelyi gépen.
 

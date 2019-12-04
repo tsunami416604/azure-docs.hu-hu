@@ -1,16 +1,16 @@
 ---
-title: Az Azure telepítéskezelő használata sablonokkal
-description: Az Azure Deployment Managerben használhat Resource Manager-sablonokat az Azure-erőforrások üzembe helyezéséhez.
+title: Az Azure telepítéskezelő állapot-ellenőrzési szolgáltatása
+description: Az állapot-ellenőrzési lehetőséggel biztonságosan telepíthet Azure-erőforrásokat az Azure telepítéskezelő használatával.
 author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0ce37a744cdf22beddcef433fca1a64252e1673d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 355a40db7714ddae39c4171aaa0ebe4b5e5f777e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149897"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784680"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Oktatóanyag: állapot-ellenőrzési funkció használata az Azure telepítéskezelő (nyilvános előzetes verzió)
 
@@ -73,7 +73,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 Az Azure-függvény ellenőrzése és tesztelése:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 1. Nyissa meg az erőforráscsoportot.  Az alapértelmezett név a projekt neve **RG** hozzáfűzéssel.
 1. Válassza ki az App Service-t az erőforráscsoporthoz.  Az App Service alapértelmezett neve a projekt neve **WebApp** hozzáfűzéssel.
 1. Bontsa ki a **függvények**csomópontot, majd válassza a **HttpTrigger1**lehetőséget.
@@ -346,9 +346,9 @@ A bevezetés befejezése után egy további, az USA nyugati régiója számára 
 
 Ennek a szakasznak a megismétlésével újra üzembe helyezheti a bevezetést a kifogástalan állapot URL-címével.  A bevezetést követően egy további, az USA keleti régiója számára létrehozott erőforráscsoport fog megjelenni.
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 2. Tallózással keresse meg az újonnan létrehozott webalkalmazásokat a bevezetés üzembe helyezése során létrehozott új erőforráscsoportok alatt.
 3. Nyissa meg a webalkalmazást egy webböngészőben. Ellenőrizze a helyet és a verziót az index.html fájlban.
 
@@ -367,6 +367,6 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 5. Ennek a két lépésnek az ismétlésével törölje az oktatóanyagban létrehozott több erőforráscsoportot is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja az Azure telepítéskezelő állapot-ellenőrzési funkcióját. További információért tekintse meg [az Azure Resource Manager dokumentációját](/azure/azure-resource-manager/).

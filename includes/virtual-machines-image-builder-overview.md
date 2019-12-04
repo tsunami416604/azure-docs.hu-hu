@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 04/30/2019
+ms.date: 11/25/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2bd40db51d82bd2278bd716615636968adf8277b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2a763bbd50f009ae469be889e6ebae0b0d90848b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391664"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796000"
 ---
 A szabványosított virtuálisgép-lemezképek lehetővé teszik a szervezetek számára a felhőbe való Migrálás és az üzemelő példányok egységességének biztosítását. A képek jellemzően előre definiált biztonsági és konfigurációs beállításokat és szükséges szoftvereket tartalmaznak. A saját képfeldolgozási folyamatának beállítása idő, infrastruktúra és beállítás szükséges, de az Azure VM rendszerkép-készítővel egyszerűen egy egyszerű konfigurációt kell megadnia, amely leírja a lemezképet, beküldi a szolgáltatást, és a lemezképet összeállította és terjeszti.
  
@@ -20,7 +20,7 @@ Az Azure VM Image Builder (Azure Image Builder) segítségével elkezdheti a Win
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Előzetes verziójú funkciók
+## <a name="preview-features"></a>Előzetes verziók
 
 Az előzetes verzióban ezek a funkciók támogatottak:
 
@@ -33,13 +33,13 @@ Az előzetes verzióban ezek a funkciók támogatottak:
 - Lemezképek létrehozása VHD formátumban.
  
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>Térségek
 Az Azure rendszerkép-szerkesztő szolgáltatás elérhető lesz az előzetes verzióban ezekben a régiókban. A képeket ezen régiókon kívül is el lehet osztani.
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA nyugati középső régiója
 - USA nyugati régiója
-- USA nyugati régiója, 2.
+- USA 2. nyugati régiója
 
 ## <a name="os-support"></a>Operációs rendszer támogatása
 A AIB az Azure Marketplace alap operációsrendszer-lemezképeit fogja támogatni:
@@ -73,7 +73,7 @@ Az Azure rendszerkép-szerkesztő egy teljes körűen felügyelt Azure-szolgált
 
 1. Hozza létre a rendszerkép sablonját. JSON-fájlként. Ez a. JSON fájl a rendszerkép forrásával, testreszabásával és terjesztésével kapcsolatos információkat tartalmaz. Az [Azure rendszerkép-készítő GitHub-tárházban](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)több példa is van.
 1. Küldje el a szolgáltatást, amely létrehoz egy Képsablon-összetevőt az Ön által megadott erőforráscsoporthoz. A háttérben a rendszerkép-szerkesztő szükség szerint letölti a forrás-vagy ISO-és parancsfájl-fájlokat. Ezeket egy külön erőforráscsoport tárolja, amely automatikusan létrejön az előfizetésben, a következő formátumban: IT_\<DestinationResourceGroup > _\<TemplateName >. 
-1. A rendszerkép-sablon létrehozása után létrehozhatja a rendszerképet. A háttérben futó rendszerkép-készítő a sablon és a forrásfájlok használatával hozza létre a virtuális gépet (D1v2), a hálózatot, a nyilvános IP-címet és a tárolót a IT_\<DestinationResourceGroup > _\<TemplateName > erőforráscsoportot.
+1. A rendszerkép-sablon létrehozása után létrehozhatja a rendszerképet. A háttérben futó rendszerkép-szerkesztőben a sablon és a forrásfájlok használatával hozzon létre egy virtuális gépet (alapértelmezett méret: Standard_D1_v2), hálózat, nyilvános IP-cím, NSG és tárterület a IT_\<DestinationResourceGroup > _\<TemplateName > erőforráscsoporthoz.
 1. A rendszerkép létrehozása során a rendszerkép-szerkesztő a sablon alapján osztja el a képet, majd törli a további erőforrásokat a IT_\<DestinationResourceGroup > _\<TemplateName > erőforráscsoporthoz, amelyet a folyamathoz hoztak létre.
 
 

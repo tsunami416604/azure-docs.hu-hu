@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: 8e4cc65ceb6e2a4f8093a094617cc7bb4f9e0c26
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 70fe64ac0d2c1211c1b6570a78746e080ba132ed
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482692"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793407"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a __munkaterüle
 
 **Becsült idő**: körülbelül 20 perc.
 
-Egy AK-fürt létrehozása vagy csatolása egy egyszeri folyamat a munkaterülethez. Újból felhasználhatja a fürt több telepítéshez. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, létre kell hoznia egy új fürtöt, amikor legközelebb telepítenie kell. A munkaterülethez több AK-alapú fürtök is tartozhatnak.
+Egy AK-fürt létrehozása vagy csatolása egy egyszeri folyamat a munkaterülethez. Ezt a fürtöt több központi telepítéshez is felhasználhatja. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, létre kell hoznia egy új fürtöt, amikor legközelebb telepítenie kell. A munkaterülethez több AK-alapú fürtök is tartozhatnak.
 
 > [!TIP]
 > Ha Azure-Virtual Network használatával szeretné biztonságossá tenni az AK-fürtöt, először létre kell hoznia a virtuális hálózatot. További információ: [biztonságos kísérletezés és következtetés az Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
@@ -115,7 +115,7 @@ További információ: az [ml computetarget Create Ask](https://docs.microsoft.c
 
 **Becsült idő:** Körülbelül 5 percet vesz igénybe.
 
-Ha már rendelkezik AK-fürttel az Azure-előfizetésben, és az a 1,14-es verziónál alacsonyabb, akkor a lemezkép üzembe helyezéséhez használhatja.
+Ha már rendelkezik AK-fürttel az Azure-előfizetésben, és az a 1,15-es verziónál alacsonyabb, akkor a lemezkép üzembe helyezéséhez használhatja.
 
 > [!TIP]
 > A meglévő AK-fürt a Azure Machine Learning munkaterülettől eltérő Azure-régióban is lehet.
@@ -339,7 +339,7 @@ print(token)
 >
 > A Microsoft nyomatékosan javasolja, hogy a Azure Machine Learning munkaterületet ugyanabban a régióban hozza létre, mint az Azure Kubernetes Service-fürtöt. A webszolgáltatások tokenekkel történő hitelesítéséhez a webszolgáltatás meghívja a Azure Machine Learning munkaterület létrehozásához használt régiót. Ha a munkaterület régiója nem érhető el, akkor sem fogja tudni lehívni a webszolgáltatáshoz tartozó jogkivonatot, ha a fürt a munkaterülettől eltérő régióban található. Ez gyakorlatilag a jogkivonat-alapú hitelesítés nem érhető el, amíg a munkaterület régiója újra elérhetővé nem válik. Emellett minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál hosszabb ideig tart a token beolvasása.
 
-## <a name="update-the-web-service"></a>A web service frissítése
+## <a name="update-the-web-service"></a>Webszolgáltatás frissítése
 
 [!INCLUDE [aml-update-web-service](../../../includes/machine-learning-update-web-service.md)]
 

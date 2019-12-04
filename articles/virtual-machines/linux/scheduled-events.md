@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 1e348adc06a970fcd7222ce612c13f0ff3e01585
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 818ebbf15cdbc985c7a1cc14597dc538e62894cf
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035099"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793395"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux rendszerű virtuális gépekhez Scheduled Events
 
@@ -48,9 +48,9 @@ Scheduled Events a következő használati esetekben nyújt eseményeket:
 - [Platform által kezdeményezett karbantartás](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (például virtuális gép újraindítása, élő áttelepítés vagy memória megőrzése a gazdagépen)
 - Csökkentett teljesítményű hardver
 - Felhasználó által kezdeményezett karbantartás (például egy felhasználó újraindítja vagy újratelepíti a virtuális gépet)
-- [Alacsony prioritású virtuális gépek kizárása](https://azure.microsoft.com/blog/low-priority-scale-sets) a méretezési csoportokban
+- [Helyszíni virtuális gép](spot-vms.md) és [direktszín-méretezési csoport](../../virtual-machine-scale-sets/use-spot.md) példányainak kizárása.
 
-## <a name="the-basics"></a>Alapismeretek  
+## <a name="the-basics"></a>Az alapok  
 
   A Metadata Service a virtuális gépekről elérhető REST-végpontok segítségével teszi elérhetővé a futó virtuális gépek információit. Az információk egy nem irányítható IP-címen keresztül érhetők el, hogy a virtuális gépen kívül ne legyen kitéve.
 
@@ -74,11 +74,11 @@ Ha a virtuális gép nem egy Virtual Networkon belül jön létre, a Cloud Servi
 ### <a name="version-and-region-availability"></a>Verzió és régió elérhetősége
 A Scheduled Events szolgáltatás verziója. A verziók megadása kötelező; az aktuális verzió `2017-11-01`.
 
-| Verzió | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
+| Verzió | Kiadás típusa | Térségek | Kibocsátási megjegyzések | 
 | - | - | - | - | 
-| 2017-11-01 | Általános rendelkezésre állás | Összes | <li> Az alacsony prioritású virtuális gép kizárásának támogatása a "megelőzik" EventType<br> | 
-| 2017-08-01 | Általános rendelkezésre állás | Összes | <li> Eltávolított előtagértéke aláhúzás a IaaS virtuális gépek erőforrásainak neveiből<br><li>Metaadatok fejlécére vonatkozó követelmények kényszerítve az összes kérelemhez | 
-| 2017-03-01 | Előzetes verzió | Összes | <li>Kezdeti kiadás
+| 2017-11-01 | Általános rendelkezésre állás | Mind | <li> Az alacsony prioritású virtuális gép kizárásának támogatása a "megelőzik" EventType<br> | 
+| 2017-08-01 | Általános rendelkezésre állás | Mind | <li> Eltávolított előtagértéke aláhúzás a IaaS virtuális gépek erőforrásainak neveiből<br><li>Metaadatok fejlécére vonatkozó követelmények kényszerítve az összes kérelemhez | 
+| 2017-03-01 | Előzetes verzió | Mind | <li>Kezdeti kiadás
 
 
 > [!NOTE] 
@@ -128,10 +128,10 @@ Abban az esetben, ha ütemezett események vannak, a válasz események tömbjé
 ### <a name="event-properties"></a>Esemény tulajdonságai
 |Tulajdonság  |  Leírás |
 | - | - |
-| EventId | Az esemény globálisan egyedi azonosítója. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| Napszállta | Az esemény globálisan egyedi azonosítója. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | Ez az esemény okozza a hatását. <br><br> Értékek: <br><ul><li> `Freeze`: a virtuális gép néhány másodpercig szünetelteti az ütemezést. Előfordulhat, hogy a processzor és a hálózati kapcsolat fel van függesztve, de nincs hatással a memóriára vagy a megnyitott fájlokra.<li>`Reboot`: a virtuális gép újraindításra van ütemezve (nem állandó memória elvész). <li>`Redeploy`: a virtuális gép egy másik csomópontra való áthelyezésre van ütemezve (az ideiglenes lemezek elvesznek). <li>`Preempt`: az alacsony prioritású virtuális gép törlődik (az ideiglenes lemezek elvesznek).|
 | ResourceType | Az eseményt érintő erőforrás típusa. <br><br> Értékek: <ul><li>`VirtualMachine`|
-| Erőforrások| Az eseményt érintő erőforrások listája. A lista garantáltan legfeljebb egy [frissítési tartományból](manage-availability.md)származó gépeket tartalmazhat, de előfordulhat, hogy nem tartalmazza a UD összes számítógépét. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Segédanyagok és eszközök| Az eseményt érintő erőforrások listája. A lista garantáltan legfeljebb egy [frissítési tartományból](manage-availability.md)származó gépeket tartalmazhat, de előfordulhat, hogy nem tartalmazza a UD összes számítógépét. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Az esemény állapota. <br><br> Értékek: <ul><li>`Scheduled`: ez az esemény a `NotBefore` tulajdonságban megadott idő után indul el.<li>`Started`: ez az esemény megkezdődött.</ul> Még nincs megadva `Completed` vagy hasonló állapot. Az eseményt a rendszer már nem adja vissza az esemény befejeződése után.
 | NotBefore| Az esemény elindításának időpontja. <br><br> Példa: <br><ul><li> Hétfő, 19 Sep 2016 18:29:47 GMT  |
 

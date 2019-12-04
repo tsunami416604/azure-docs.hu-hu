@@ -3,17 +3,17 @@ title: Azure Automation-modulok kezelése
 description: Ez a cikk a Azure Automation moduljainak kezelését ismerteti
 services: automation
 ms.service: automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 06/05/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 492dd182c782b0f6375c2f857cfa4921b065c546
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 65759b32889f9a99b0322823bb8a4924788e8c09
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231577"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786469"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation-modulok kezelése
 
@@ -34,6 +34,14 @@ A [New-AzureRmAutomationModule](/powershell/module/azurerm.automation/new-azurer
 New-AzureRmAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
 ```
 
+Ugyanezt a parancsmagot használhatja arra is, hogy PowerShell-galéria közvetlenül importáljon egy modult. Ügyeljen arra, hogy a **ModuleName** és a **ModuleVersion** a [PowerShell-Galéria](https://www.powershellgallery.com).
+
+```azurepowershell-interactive
+$moduleName = <ModuleName>
+$moduleVersion = <ModuleVersion>
+New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -Name $moduleName -ContentLinkUri "https://www.powershellgallery.com/api/v2/package/$moduleName/$moduleVersion"
+```
+
 ### <a name="azure-portal"></a>Azure Portal
 
 A Azure Portal navigáljon az Automation-fiókjához, és válassza a **modulok** elemet a **megosztott erőforrások**területen. Kattintson **a + modul hozzáadása**lehetőségre. Válassza ki a modult tartalmazó **. zip** fájlt, és kattintson **az OK** gombra az importálási folyamat megkezdéséhez.
@@ -42,7 +50,7 @@ A Azure Portal navigáljon az Automation-fiókjához, és válassza a **modulok*
 
 A PowerShell-galériából származó modulok közvetlenül a [PowerShell-Galéria](https://www.powershellgallery.com) importálhatók, vagy az Automation-fiókjából.
 
-Ha egy modult szeretne importálni a PowerShell-galériaból, lépjen a https://www.powershellgallery.comra, és keresse meg az importálni kívánt modult. Kattintson a telepítés gombra a **Azure Automation** lapon a **telepítési beállítások**alatt **Azure Automation** . Ez a művelet megnyitja a Azure Portal. Az **Importálás** lapon válassza ki az Automation-fiókját, és kattintson az **OK**gombra.
+Ha egy modult szeretne importálni a PowerShell-galériaból, lépjen a https://www.powershellgallery.com ra, és keresse meg az importálni kívánt modult. Kattintson a telepítés gombra a **Azure Automation** lapon a **telepítési beállítások**alatt **Azure Automation** . Ez a művelet megnyitja a Azure Portal. Az **Importálás** lapon válassza ki az Automation-fiókját, és kattintson az **OK**gombra.
 
 ![PowerShell-galéria importálási modul](../media/modules/powershell-gallery.png)
 
@@ -70,7 +78,11 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 
 A következő lista felsorolja a belső `Orchestrator.AssetManagement.Cmdlets` modulban lévő parancsmagokat, amelyeket minden Automation-fiókba importálnak. Ezek a parancsmagok elérhetők a runbookok és a DSC-konfigurációkban, és lehetővé teszik, hogy az Automation-fiókján belül kommunikáljon az eszközeivel. Emellett a belső parancsmagok lehetővé teszik a titkos **változók** , a **hitelesítő adatok**és a titkosított **kapcsolódási** mezők titkainak beolvasását. A Azure PowerShell-parancsmagok nem tudják beolvasni ezeket a titkokat. Ezek a parancsmagok nem igénylik az Azure-hoz való implicit csatlakozást a használatakor, például futtató fiók használatával az Azure-ban való hitelesítéshez.
 
-|Name (Név)|Leírás|
+>[!NOTE]
+>Ezek a belső parancsmagok nem érhetők el hibrid Runbook-feldolgozón, csak az Azure-ban futó runbookok érhetők el. Használja a megfelelő [AzureRM. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) vagy az az- [modulokat](../az-modules.md) a runbookok közvetlenül a számítógépen vagy a környezet erőforrásain. 
+>
+
+|Név|Leírás|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -78,7 +90,7 @@ A következő lista felsorolja a belső `Orchestrator.AssetManagement.Cmdlets` m
 |Get-AutomationVariable|`Get-AutomationVariable [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]`|
 |Set-AutomationVariable|`Set-AutomationVariable [-Name] <string> -Value <Object> [<CommonParameters>]` |
 |Start – AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
-|Wait-AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
+|Várakozás – AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
 
 ## <a name="add-a-connection-type-to-your-module"></a>Kapcsolattípus hozzáadása a modulhoz
 
@@ -252,13 +264,13 @@ A következő táblázat felsorolja az Automation-fiók létrehozásakor alapér
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0.2 |
-| Microsoft.PowerShell.Core | 0 |
+| GPRegistryPolicyParser | 0,2 |
+| Microsoft. PowerShell. Core | 0 |
 | Microsoft. PowerShell. Diagnostics |  |
-| Microsoft.PowerShell.Management |  |
-| Microsoft.PowerShell.Security |  |
+| Microsoft. PowerShell. Management |  |
+| Microsoft. PowerShell. Security |  |
 | Microsoft.PowerShell.Utility |  |
-| Microsoft.WSMan.Management |  |
+| Microsoft. WSMan. Management |  |
 | Orchestrator. AssetManagement. parancsmagok | 1 |
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |

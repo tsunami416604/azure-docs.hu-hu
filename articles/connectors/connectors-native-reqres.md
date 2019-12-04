@@ -1,23 +1,18 @@
 ---
-title: HTTPS-hívások fogadása és megválaszolása – Azure Logic Apps
+title: HTTPS-hívások fogadása és megválaszolása
 description: HTTPS-kérelmek és-események kezelése valós időben a Azure Logic Apps használatával
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewers: klam, LADocs
-manager: carmonm
-ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
+ms.reviewers: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: 6062ca1ce09eb243825b1fb9ae4ecb3d5ac95d1a
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: b3723ccc247b8a9451b9a5fdc628bff58da361a0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264351"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786995"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Bejövő HTTPS-hívások fogadása és válaszadás a Azure Logic Apps használatával
 
@@ -108,7 +103,7 @@ Ez a beépített trigger egy manuálisan megadható HTTPS-végpontot hoz létre,
    }
    ```
 
-   Ha JSON-sémát ad meg, a tervező egy emlékeztetőt jelenít meg, amely tartalmazza a `Content-Type` fejlécet a kérelemben, és a fejléc értékét `application/json` értékre állítja. További információ: [tartalomtípusok kezelése](../logic-apps/logic-apps-content-type.md).
+   Ha JSON-sémát ad meg, a tervező egy emlékeztetőt jelenít meg, amely tartalmazza a `Content-Type` fejlécét a kérelemben, és a fejléc értékét `application/json`értékre állítja. További információ: [tartalomtípusok kezelése](../logic-apps/logic-apps-content-type.md).
 
    ![Emlékeztető a "Content-Type" fejléc belefoglalásához](./media/connectors-native-reqres/include-content-type.png)
 
@@ -169,7 +164,7 @@ Ez a beépített trigger egy manuálisan megadható HTTPS-végpontot hoz létre,
 
    Választhatja például a kérést [egy válasz művelet hozzáadásával](#add-response), amelyet egy testreszabott válasz visszaadására használhat, és a jelen témakör későbbi részében is ismertetjük.
 
-   A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Feltételezve, hogy a logikai alkalmazás munkafolyamata tartalmaz egy válasz műveletet, ha a logikai alkalmazás nem ad vissza választ az adott idő elteltével, a logikai alkalmazás egy `504 GATEWAY TIMEOUT` értéket ad vissza a hívónak. Ellenkező esetben, ha a logikai alkalmazás nem tartalmaz válasz műveletet, a logikai alkalmazás azonnal visszaadja a hívónak `202 ACCEPTED` választ.
+   A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Feltételezve, hogy a logikai alkalmazás munkafolyamata tartalmaz egy válasz műveletet, ha a logikai alkalmazás nem ad vissza választ az adott idő elteltével, a logikai alkalmazás egy `504 GATEWAY TIMEOUT` ad vissza a hívónak. Ellenkező esetben, ha a logikai alkalmazás nem tartalmaz válasz műveletet, a logikai alkalmazás azonnal visszaadja a `202 ACCEPTED` választ a hívónak.
 
 1. Ha elkészült, mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget. 
 
@@ -195,7 +190,7 @@ További információ a kérelmek trigger kimenetéről:
 
 A válasz művelettel válaszolhat egy adattartalomra (adatok) egy bejövő HTTPS-kérelemre, de csak egy HTTPS-kérelem által aktivált logikai alkalmazásban. A válasz műveletet a munkafolyamat bármely pontjára felveheti. További információ az adott trigger alapjául szolgáló JSON-definícióról: [Válasz művelet típusa](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
 
-A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Feltételezve, hogy a logikai alkalmazás munkafolyamata tartalmaz egy válasz műveletet, ha a logikai alkalmazás nem ad vissza választ az adott idő elteltével, a logikai alkalmazás egy `504 GATEWAY TIMEOUT` értéket ad vissza a hívónak. Ellenkező esetben, ha a logikai alkalmazás nem tartalmaz válasz műveletet, a logikai alkalmazás azonnal visszaadja a hívónak `202 ACCEPTED` választ.
+A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Feltételezve, hogy a logikai alkalmazás munkafolyamata tartalmaz egy válasz műveletet, ha a logikai alkalmazás nem ad vissza választ az adott idő elteltével, a logikai alkalmazás egy `504 GATEWAY TIMEOUT` ad vissza a hívónak. Ellenkező esetben, ha a logikai alkalmazás nem tartalmaz válasz műveletet, a logikai alkalmazás azonnal visszaadja a `202 ACCEPTED` választ a hívónak.
 
 1. A Logic app Designerben abban a lépésben, amelyhez hozzá szeretne adni egy válasz műveletet, válassza az **új lépés**lehetőséget.
 
@@ -215,7 +210,7 @@ A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Felté
 
    Egyes mezőkben a szövegdobozokra kattintva megnyílik a dinamikus tartalmak listája. Ezután kiválaszthatja azokat a jogkivonatokat, amelyek a munkafolyamat előző lépéseiből származó elérhető kimeneteket jelölik. A korábbi példában megadott sémából származó tulajdonságok most megjelennek a dinamikus tartalmak listájában.
 
-   Például a **headers (fejlécek** ) mezőben adja meg a `Content-Type` értéket a kulcs neveként, és állítsa a kulcs értékét `application/json` értékre, ahogy az a jelen témakör korábbi részében is szerepel. A **törzs** mezőben kiválaszthatja a dinamikus tartalom lista trigger törzsének kimenetét.
+   Például a **headers (fejlécek** ) mezőben adja meg a `Content-Type` nevet a kulcs neveként, és állítsa be a kulcs értékét `application/json` a jelen témakör korábbi részében említettek szerint. A **törzs** mezőben kiválaszthatja a dinamikus tartalom lista trigger törzsének kimenetét.
 
    ![Válasz művelet részletei](./media/connectors-native-reqres/response-details.png)
 

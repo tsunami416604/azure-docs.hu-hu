@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Egy Azure Database for PostgreSQL – Azure CLI használatával egyetlen kiszolgáló megtervezése'
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre, konfigurálhatja és lekérdezés az első Azure Database for postgresql-hez - Azure CLI használatával egyetlen kiszolgáló.
+title: 'Oktatóanyag: Azure Database for PostgreSQL – egyetlen kiszolgáló tervezése – Azure CLI'
+description: Ez az oktatóanyag bemutatja, hogyan hozhatja létre, konfigurálhatja és kérdezheti le az első Azure Database for PostgreSQL egyetlen kiszolgálót az Azure CLI használatával.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,14 +8,14 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: db0ff9facbd8609955c5ef1918b0f8a6aa53ea65
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0f1f4c07f3dc694bcae9b540c71a11e53a00eb7f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447229"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773680"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Oktatóanyag: Egy Azure Database for PostgreSQL – Azure CLI használatával egyetlen kiszolgáló megtervezése 
+# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Oktatóanyag: Azure Database for PostgreSQL egyetlen kiszolgáló megtervezése az Azure CLI használatával 
 Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédprogramok segítségével a következőket sajátíthatja el:
 > [!div class="checklist"]
 > * Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
@@ -37,7 +37,7 @@ Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amel
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) az [az group create](/cli/azure/group) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
@@ -46,12 +46,12 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
 Hozzon létre egy [Azure-adatbázist PostgreSQL- kiszolgálóhoz](overview.md) az [az postgres server create](/cli/azure/postgres/server) paranccsal. A kiszolgáló adatbázisok egy csoportját tartalmazza, amelyeket a rendszer egy csoportként kezel. 
 
-A következő példában létrehozunk egy `mydemoserver` nevű kiszolgálót a `myresourcegroup` erőforráscsoportban `myadmin` kiszolgálói rendszergazdai bejelentkezéssel. A kiszolgáló neve DNS-névbe van leképezve, ezért globálisan egyedinek kell lennie az Azure-ban. A `<server_admin_password>` helyére írja be saját értékét. Egy általános célú, 2 virtuális mag Gen 5 kiszolgáló.
+A következő példában létrehozunk egy `mydemoserver` nevű kiszolgálót a `myresourcegroup` erőforráscsoportban `myadmin` kiszolgálói rendszergazdai bejelentkezéssel. A kiszolgáló neve DNS-névbe van leképezve, ezért globálisan egyedinek kell lennie az Azure-ban. A `<server_admin_password>` helyére írja be saját értékét. Ez egy általános célú, Gen 5 kiszolgáló 2 virtuális mag.
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 9.6
 ```
 Az sku-name paraméter értéke a {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi, a következő példákban látható módon:
-+ `--sku-name B_Gen5_2` Alapszintű, a Gen 5 és a 2 virtuális mag leképezések.
++ `--sku-name B_Gen5_2` az alapszintű, a Gen 5 és a 2 virtuális mag.
 + `--sku-name GP_Gen5_32` jelentése: Általános célú, 5. generációs és 32 virtuális mag.
 + `--sku-name MO_Gen5_2` jelentése: Memóriaoptimalizált, 5. generációs és 2 virtuális mag.
 
@@ -132,7 +132,7 @@ Ha az ügyfélszámítógépen telepítve van a PostgreSQL, akkor használhatja 
    ```
 
    > [!TIP]
-   > Ha inkább a Postgres csatlakozni egy URL-címet használja, az URL-cím kódolása a @ karakter a felhasználónevet, a `%40`. Ha például a kapcsolati karakterláncot a psql-jének lenne,
+   > Ha inkább URL-elérési utat szeretne használni a postgres-hez való kapcsolódáshoz, akkor az URL-cím kódolja a felhasználónevet a következővel: `%40`. Például a psql tartozó kapcsolatok karakterlánca a következő:.
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -202,7 +202,7 @@ Az `az postgres server restore` parancshoz a következő paraméterekre van szü
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
-| name | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Válassza ki az időpontot, amelynek az állapotát vissza szeretné állítani. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. ISO8601 dátum- és időformátumot használjon. Használhatja például a saját helyi időzónáját (például `2017-04-13T05:59:00-08:00`), de UTC Zulu formátumot is használhat (`2017-04-13T13:59:00Z`). |
 | source-server | mydemoserver | A forráskiszolgáló neve vagy azonosítója, amelyről a visszaállítást végzi. |
 
@@ -211,7 +211,7 @@ Ha egy adott időpontra állít vissza egy kiszolgálót, azzal létrehoz egy ú
 Egy szinkron parancsról van szó, amelyet a rendszer a kiszolgáló visszaállítása után visszaad. Ha a visszaállítás kész, keresse meg a létrehozott új kiszolgálót. Ellenőrizze, hogy az adatok a várt módon álltak-e vissza.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket az Azure CLI (parancssori felület) és más segédprogramok használatával:
 > [!div class="checklist"]
 > * Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
@@ -222,4 +222,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket az Az
 > * Adatok frissítése
 > * Adatok visszaállítása
 
-Ezután megtudhatja, hogyan végezhet el hasonló feladatokat, tekintse át az ebben az oktatóanyagban az Azure portal használatával: [Az első Azure Database for postgresql-hez az Azure portal használatával tervezése](tutorial-design-database-using-azure-portal.md)
+Ha azt is meg szeretné tudni, hogyan végezhet el hasonló feladatokat az Azure Portallal, tekintse át a következő oktatóanyagot: [Az első Azure Database for PostgreSQL megtervezése az Azure Portallal](tutorial-design-database-using-azure-portal.md)

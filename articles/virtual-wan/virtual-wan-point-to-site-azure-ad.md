@@ -1,22 +1,24 @@
 ---
-title: Az Azure-ba irányuló pont–hely típusú kapcsolat létrehozása az Azure Virtual WAN használatával | Microsoft Docs
-description: Ez az oktatóanyag az Azure-ba irányuló pont–hely VPN-kapcsolat létrehozását ismerteti az Azure Virtual WAN használatával.
+title: Azure AD-hitelesítés konfigurálása pont – hely kapcsolathoz az Azure-hoz | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhatja Azure Active Directory hitelesítését a felhasználói VPN-hez.
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 12/02/2019
 ms.author: alzam
-ms.openlocfilehash: 0572a919675ab363c55938f8731c691cd8129826
+ms.openlocfilehash: 19aa029311584b5a9762691d24ed10c1666a032c
 ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767653"
+ms.locfileid: "74782430"
 ---
-# <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Oktatóanyag: felhasználói VPN-kapcsolat létrehozása az Azure Virtual WAN használatával
+# <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>Oktatóanyag: felhasználói VPN-kapcsolat létrehozása az Azure Virtual WAN használatával
 
-Ez az oktatóanyag bemutatja, hogyan kapcsolódhat a Virtual WAN használatával az Azure-ban lévő erőforrásaihoz IPsec/IKE (IKEv2) vagy OpenVPN VPN-kapcsolaton keresztül. Ehhez a kapcsolattípushoz konfigurálni kell egy ügyfelet az ügyfélszámítógépen. A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).
+Ez az oktatóanyag bemutatja, hogyan konfigurálhatja az Azure AD-hitelesítést a virtuális WAN-beli felhasználói VPN-hez az Azure-beli erőforrásokhoz való csatlakozáshoz egy OpenVPN VPN-kapcsolaton keresztül. Azure Active Directory hitelesítés csak az OpenVPN protokollt használó átjárók és a Windows rendszerű ügyfelek esetében érhető el.
+
+Ehhez a kapcsolattípushoz konfigurálni kell egy ügyfelet az ügyfélszámítógépen. A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -53,7 +55,7 @@ Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd 
 2. Válassza ki a **virtuális WAN** elemet az eredmények közül. A virtuális WAN lapon kattintson a **Létrehozás** elemre a WAN létrehozása lap megnyitásához.
 3. A **WAN létrehozása** lap **alapok** lapján töltse ki a következő mezőket:
 
-   ![Virtuális WAN](./media/virtual-wan-point-to-site-portal/vwan.png)
+   ![Virtuális WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
 
    * **Előfizetés** – Válassza ki a használni kívánt előfizetést.
    * **Erőforráscsoport** – új létrehozása vagy meglévő használata.
@@ -65,9 +67,9 @@ Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd 
 
 ## <a name="site"></a>Üres virtuális központ létrehozása
 
-1. A virtuális WAN területen válassza a hubok lehetőséget, majd kattintson az **+ új hub** elemre.
+1. A virtuális WAN területen válassza a hubok lehetőséget, majd kattintson az **+ új hub**elemre.
 
-   ![új hely](media/virtual-wan-point-to-site-portal/hub1.jpg)
+   ![új hely](media/virtual-wan-point-to-site-azure-ad/hub1.jpg)
 2. A virtuális központ létrehozása lapon töltse ki a következő mezőket.
 
    **Régió** – válassza ki azt a régiót, amelyben a virtuális hubot telepíteni szeretné.
@@ -76,44 +78,40 @@ Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd 
 
    **Hub magánhálózati címtartomány** – a központ CIDR jelölése.
 
-   ![új hely](media/virtual-wan-point-to-site-portal/hub2.jpg)  
-3. Kattintson a **felülvizsgálat + létrehozás** gombra.
-4. Az **átadott érvényesítés** lapon kattintson a **Létrehozás** gombra.
+   ![új hely](media/virtual-wan-point-to-site-azure-ad/hub2.jpg)  
+3. Kattintson az **Áttekintés + létrehozás** elemre.
+4. Az **átadott érvényesítés** lapon kattintson a **Létrehozás**gombra.
 
-## <a name="site"></a>P2S-konfiguráció létrehozása
+## <a name="site"></a>Új P2S-konfiguráció létrehozása
 
 A pont–hely konfiguráció határozza meg a távoli ügyfelek csatlakoztatására vonatkozó paramétereket.
 
-1. Lépjen a **Minden erőforrás** menüpontra.
-2. Kattintson a létrehozott virtuális WAN-ra.
-3. Kattintson a lap tetején a **+ felhasználói VPN-konfiguráció létrehozása** lehetőségre az **új felhasználói VPN-konfiguráció létrehozása** lap megnyitásához.
+1. Állítsa be a következő változókat, és szükség szerint cserélje le az értékeket a környezetéhez.
 
-   ![új hely](media/virtual-wan-point-to-site-portal/p2s1.jpg)
-4. Az **új felhasználói VPN-konfiguráció létrehozása** lapon töltse ki a következő mezőket:
+   ```powershell
+   $aadAudience = "00000000-abcd-abcd-abcd-999999999999"
+   $aadIssuer = "https://sts.windows.net/00000000-abcd-abcd-abcd-999999999999/"
+   $aadTenant = "https://login.microsoftonline.com/00000000-abcd-abcd-abcd-999999999999"    
+   ```
 
-   **Konfiguráció neve** – Ez az a név, amellyel hivatkozni szeretne a konfigurációra.
+2. A konfiguráció létrehozásához futtassa a következő parancsokat:
 
-   **Alagút típusa** – Az alagúthoz használni kívánt protokoll.
-
-   **Főtanúsítvány neve** – A tanúsítvány leíró neve.
-
-   **Nyilvános tanúsítvány-adatok** -Base-64 kódolt X. 509 tanúsítvány-adatok.
-  
-   ![új hely](media/virtual-wan-point-to-site-portal/p2s2.jpg)
-5. Kattintson a **Létrehozás** elemre a konfiguráció létrehozásához.
+   ```powershell
+   $aadConfig = New-AzVpnServerConfiguration -ResourceGroupName <ResourceGroup> -Name newAADConfig -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudience -Location westcentralus
+   ```
 
 ## <a name="hub"></a>Hub-hozzárendelés szerkesztése
 
-1. Navigáljon a virtuális WAN alatt lévő **hubok** panelre
-2. Válassza ki azt a hubot, amelyhez hozzá szeretné rendelni a VPN-kiszolgáló konfigurációját, és kattintson a **.** ..
+1. Navigáljon a virtuális WAN alatt lévő **hubok** panelre.
+2. Válassza ki azt a hubot, amelyhez hozzá szeretné rendelni a VPN-kiszolgáló konfigurációját, majd kattintson a három pontra (...).
 
-   ![új hely](media/virtual-wan-point-to-site-portal/p2s4.jpg)
+   ![új hely](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
 3. Kattintson a **virtuális központ szerkesztése**elemre.
 4. Jelölje be a **pont – hely átjáró belefoglalása** jelölőnégyzetet, és válassza ki a kívánt **átjáró-méretezési egységet** .
 
-   ![új hely](media/virtual-wan-point-to-site-portal/p2s2.jpg)
+   ![új hely](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
 5. Adja meg azt a **címkészletet** , amelyből a VPN-ügyfelek IP-címeket rendelnek.
-6. Kattintson a **megerősítés** gombra.
+6. Kattintson a **Megerősítés** gombra.
 7. A művelet végrehajtása akár 30 percet is igénybe vehet.
 
 ## <a name="device"></a>VPN-profil letöltése
@@ -125,27 +123,67 @@ A VPN-profillal konfigurálhatja az ügyfeleket.
 3. Miután befejeződött a fájl létrehozása, a hivatkozásra kattintva letöltheti.
 4. A profil fájl segítségével konfigurálja a VPN-ügyfeleket.
 
-### <a name="configure-user-vpn-clients"></a>Felhasználói VPN-ügyfelek konfigurálása
-A letöltött profillal konfigurálhatja a távelérésű ügyfeleket. Az eljárás minden operációs rendszer esetén eltérő, kövesse az alábbi utasításokat:
+## <a name="configure-user-vpn-clients"></a>Felhasználói VPN-ügyfelek konfigurálása
 
-#### <a name="microsoft-windows"></a>Microsoft Windows
-##### <a name="openvpn"></a>OpenVPN
+A csatlakozáshoz le kell töltenie az Azure VPN-ügyfelet (előzetes verzió), és importálnia kell az előző lépésekben letöltött VPN-ügyféloldali profilt minden olyan számítógépen, amely csatlakozni szeretne a VNet.
 
-1. Töltse le az OpenVPN-ügyfelet a hivatalos webhelyről, majd telepítse.
-2. Töltse le az átjáró VPN-profilját. Ezt a Azure Portal a felhasználó VPN-konfigurációk lapján vagy a PowerShell új AzureRmVpnClientConfiguration teheti meg.
-3. Csomagolja ki a profilt. Nyissa meg az OpenVPN mappában található vpnconfig.ovpn konfigurációs fájlt a Jegyzettömbben.
-4. Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. PEM formátumú tanúsítvány esetén egyszerűen nyissa meg a .cer-fájlt, és másolja a Base64-kódolású kulcsot a tanúsítványfejlécek között. Tekintse meg a [Tanúsítvány exportálása a kódolt nyilvános kulcs beolvasására](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site) című témakört.
-5. Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. Itt tekintheti meg a titkos kulcs kinyerésének a módját.
-6. Ne módosítson semmilyen egyéb mezőt. Az ügyfélbemenet kitöltött konfigurációjával csatlakozhat a VPN-hez.
-7. Másolja a vpnconfig.ovpn fájlt a C:\Program Files\OpenVPN\config mappába.
-8. Kattintson a jobb gombbal az OpenVPN ikonjára a rendszertálcán, majd kattintson a Csatlakozás parancsra.
+> [!NOTE]
+> Az Azure AD-hitelesítés csak az OpenVPN® protokoll-kapcsolatok esetén támogatott.
+>
 
-##### <a name="ikev2"></a>IKEv2
+#### <a name="to-download-the-azure-vpn-client"></a>Az Azure VPN-ügyfél letöltése
 
-1. Válassza ki a Windows rendszerű számítógép architektúrájának megfelelő VPN-ügyfélkonfigurációs fájlokat. 64 bites processzorarchitektúra esetén a „VpnClientSetupAmd64” telepítőcsomagot válassza. 32 bites processzorarchitektúra esetén a „VpnClientSetupX86” telepítőcsomagot válassza.
-2. Kattintson duplán a csomagra a telepítéséhez. Ha megjelenik a SmartScreen egy előugró ablaka, kattintson a További információ, majd a Futtatás mindenképpen elemre.
-3. Nyissa meg az ügyfélszámítógépen a Hálózati beállítások eszközt, és kattintson a VPN elemre. A VPN-kapcsolat megjeleníti annak a virtuális hálózatnak a nevét, amelyhez csatlakozott.
-4. Mielőtt megkísérli a csatlakozást, ellenőrizze, hogy telepített-e ügyféltanúsítványt az ügyfélszámítógépen. A natív Azure-tanúsítványhitelesítési típus használata esetén a hitelesítéshez ügyféltanúsítványra van szükség. A tanúsítványok létrehozásával kapcsolatos további információkért lásd: [tanúsítványok létrehozása](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site). Az ügyféltanúsítvány telepítésével kapcsolatban az ügyféltanúsítvány telepítésével foglalkozó témakörben tekinthet meg további információt.
+Ezzel a [hivatkozással](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) töltheti le az Azure VPN-ügyfelet (előzetes verzió).
+
+#### <a name="import"></a>Ügyféloldali profil importálása
+
+1. A lapon válassza az **Importálás**lehetőséget.
+
+    ![importálása](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
+
+2. Keresse meg a profil XML-fájlját, és jelölje ki. A fájl kijelölése után válassza a **Megnyitás**lehetőséget.
+
+    ![importálása](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
+
+3. Adja meg a profil nevét, majd válassza a **Mentés**lehetőséget.
+
+    ![importálása](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
+
+4. Válassza a **Csatlakozás** lehetőséget a VPN-hez való csatlakozáshoz.
+
+    ![importálása](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
+
+5. A csatlakozás után az ikon zöldre vált, és a rendszer a **csatlakozást**.
+
+    ![importálása](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
+
+#### <a name="delete"></a>Ügyféloldali profil törlése
+
+1. Válassza a törölni kívánt ügyféloldali profil melletti három pontot (...). Ezután válassza az **Eltávolítás**lehetőséget.
+
+    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
+
+2. Válassza az **Eltávolítás** elemet a törléshez.
+
+    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
+
+#### <a name="diagnose"></a>Kapcsolatok problémáinak diagnosztizálása
+
+1. A kapcsolódási problémák diagnosztizálásához használhatja a **Diagnosztizálás** eszközt. Válassza ki a használni kívánt VPN-kapcsolat melletti három pontot (...) a menü megjelenítéséhez. Ezután válassza a **Diagnosztizálás**lehetőséget.
+
+    ![diagnosztizálása](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
+
+2. A **kapcsolatok tulajdonságai** lapon válassza a **diagnosztika futtatása**lehetőséget.
+
+    ![diagnosztizálása](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
+
+3. Jelentkezzen be a hitelesítő adataival.
+
+    ![diagnosztizálása](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
+
+4. A diagnosztika eredményeinek megtekintése.
+
+    ![diagnosztizálása](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
 
 ## <a name="viewwan"></a>Virtuális WAN megtekintése
 

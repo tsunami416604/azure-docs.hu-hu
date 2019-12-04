@@ -1,20 +1,17 @@
 ---
-title: Séma a munkafolyamat-definíciós nyelvhez – Azure Logic Apps
+title: Séma a munkafolyamat-definíciós nyelvhez
 description: Séma-referenciák a munkafolyamat-definíciós nyelvhez Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 64c01baf0852e7e09ce9ffed2d079b47e95f7190
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 9c235c76e3d96ce02efc113c65c62081fcba20ee
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680077"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790811"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Séma-útmutató a munkafolyamat-definíciós nyelvhez Azure Logic Apps
 
@@ -79,14 +76,14 @@ A paraméterek definíciójának általános szerkezete:
 
 | Attribútum | Szükséges | Type (Típus) | Leírás |
 |-----------|----------|------|-------------|
-| <*paraméter – név* > | Igen | Sztring | A definiálni kívánt paraméter neve |
-| <*paraméter típusa* > | Igen | int, float, string, bool, Array, Object, SecureString, secureobject <p><p>**Megjegyzés**: az összes jelszóhoz, kulcshoz és titokhoz használja a `securestring` vagy a `secureobject` típust, mert az `GET` művelet nem ad vissza ilyen típusokat. A paraméterek biztonságossá tételével kapcsolatos további információkért lásd: [biztonsági javaslatok a műveletekhez és a bemeneti paraméterekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | A paraméter típusa |
-| <*alapértelmezett – paraméter-érték* > | Igen | Ugyanaz, mint `type` | Az alapértelmezett paraméterérték, amelyet akkor kell használni, ha nincs megadva érték a munkafolyamat példányainak létrehozásakor. A `defaultValue` attribútum megadása kötelező, hogy a Logic app Designer helyesen tudja megjeleníteni a paramétert, de megadhat egy üres értéket. |
-| <*tömb – engedélyezett-paraméter-értékekkel* > | Nem | Tömb | Egy tömb, amely a paraméter által elfogadható értékekkel rendelkezik |
-| <*paraméter – leírás* > | Nem | JSON-objektum | Egyéb paraméterek részletei, például a paraméter leírása |
+| <*paraméter – név*> | Igen | Sztring | A definiálni kívánt paraméter neve |
+| <*paraméter típusa*> | Igen | int, float, string, bool, Array, Object, SecureString, secureobject <p><p>**Megjegyzés**: az összes jelszóhoz, kulcshoz és titokhoz használja a `securestring` vagy a `secureobject` típust, mert az `GET` művelet nem ad vissza ilyen típusokat. A paraméterek biztonságossá tételével kapcsolatos további információkért lásd: [biztonsági javaslatok a műveletekhez és a bemeneti paraméterekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | A paraméter típusa |
+| <*alapértelmezett – paraméter-érték*> | Igen | Ugyanaz, mint `type` | Az alapértelmezett paraméterérték, amelyet akkor kell használni, ha nincs megadva érték a munkafolyamat példányainak létrehozásakor. A `defaultValue` attribútum megadása kötelező, hogy a Logic app Designer helyesen tudja megjeleníteni a paramétert, de megadhat egy üres értéket. |
+| <*tömb – engedélyezett-paraméter-értékekkel*> | Nem | Tömb | Egy tömb, amely a paraméter által elfogadható értékekkel rendelkezik |
+| <*paraméter – leírás*> | Nem | JSON-objektum | Egyéb paraméterek részletei, például a paraméter leírása |
 ||||
 
-Ezután hozzon létre egy [Azure Resource Manager sablont](../azure-resource-manager/resource-group-overview.md) a munkafolyamat-definícióhoz, definiálja azokat a sablon-paramétereket, amelyek elfogadják a központi telepítésben használni kívánt értékeket, cserélje le a hardcoded értékeket a sablonra vagy a munkafolyamat-definíciós paraméterekre megfelelő, és tárolja a telepítéskor használandó értékeket egy külön [paraméter fájljában](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Így a logikai alkalmazás frissítése és újbóli üzembe helyezése nélkül is könnyebben módosíthatja ezeket az értékeket a paraméter fájlján keresztül. A bizalmas vagy biztonságossá tett információk, például a felhasználónevek, a jelszavak és a titkos kulcsok esetében Azure Key Vault tárolhatja ezeket az értékeket, és a paraméter-fájllal lekérheti ezeket az értékeket a kulcstartóból. További információk és példák a paraméterek definiálására a sablon és a munkafolyamat-definíció szintjein: [Áttekintés: az üzembe helyezés automatizálása a Logic apps alkalmazásokhoz Azure Resource Manager-sablonokkal](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
+Ezután hozzon létre egy [Azure Resource Manager sablont](../azure-resource-manager/resource-group-overview.md) a munkafolyamat-definícióhoz, definiálja a központi telepítésben használni kívánt értékeket elfogadó sablon paramétereit, cserélje le a hardcoded értékeket a sablonra vagy a munkafolyamat-definíció paramétereinek megfelelő értékekre, és tárolja a telepítéskor használandó értékeket egy külön [paraméter fájljában](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Így a logikai alkalmazás frissítése és újbóli üzembe helyezése nélkül is könnyebben módosíthatja ezeket az értékeket a paraméter fájlján keresztül. A bizalmas vagy biztonságossá tett információk, például a felhasználónevek, a jelszavak és a titkos kulcsok esetében Azure Key Vault tárolhatja ezeket az értékeket, és a paraméter-fájllal lekérheti ezeket az értékeket a kulcstartóból. További információk és példák a paraméterek definiálására a sablon és a munkafolyamat-definíció szintjein: [Áttekintés: az üzembe helyezés automatizálása a Logic apps alkalmazásokhoz Azure Resource Manager-sablonokkal](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
 <a name="static-results"></a>
 
@@ -117,11 +114,11 @@ A `staticResults` attribútumban Definiáljon egy művelet modelljét `outputs` 
 
 | Attribútum | Szükséges | Type (Típus) | Leírás |
 |-----------|----------|------|-------------|
-| <*statikus-result-definition-name* > | Igen | Sztring | Egy olyan statikus eredmény-definíció neve, amelyet a műveleti definíció egy `runtimeConfiguration.staticResult` objektumon keresztül tud hivatkozni. További információ: [futásidejű konfigurációs beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Bármilyen egyedi nevet használhat. Alapértelmezés szerint ez az egyedi név egy számmal van hozzáfűzve, amely szükség szerint növekszik. |
-| <*output-attributes-and-Values – visszaadott* > | Igen | Változó | Az attribútumokra vonatkozó követelmények eltérő feltételek alapján változnak. Ha például a `status` `Succeeded`, a `outputs` attribútum a művelet által az ál-kimenetként visszaadott attribútumokat és értékeket tartalmazza. Ha a `status` `Failed`, a `outputs` attribútum magában foglalja a `errors` attribútumot, amely egy vagy több hibás adatokat tartalmazó tömb `message`. |
-| <*header-values* > | Nem | JSON | A művelet által visszaadott fejléc-értékek |
-| <*állapot – kód – visszaadott* > | Igen | Sztring | A művelet által visszaadott állapotkód |
-| <*művelet – állapot* > | Igen | Sztring | A művelet állapota, például `Succeeded` vagy `Failed` |
+| <*statikus-result-definition-name*> | Igen | Sztring | Egy olyan statikus eredmény-definíció neve, amelyet a műveleti definíció egy `runtimeConfiguration.staticResult` objektumon keresztül tud hivatkozni. További információ: [futásidejű konfigurációs beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Bármilyen egyedi nevet használhat. Alapértelmezés szerint ez az egyedi név egy számmal van hozzáfűzve, amely szükség szerint növekszik. |
+| <*output-attributes-and-Values – visszaadott*> | Igen | Változó | Az attribútumokra vonatkozó követelmények eltérő feltételek alapján változnak. Ha például a `status` `Succeeded`, a `outputs` attribútum a művelet által az ál-kimenetként visszaadott attribútumokat és értékeket tartalmazza. Ha a `status` `Failed`, a `outputs` attribútum magában foglalja a `errors` attribútumot, amely egy vagy több hibás adatokat tartalmazó tömb `message`. |
+| <*header-values*> | Nem | JSON | A művelet által visszaadott fejléc-értékek |
+| <*állapot – kód – visszaadott*> | Igen | Sztring | A művelet által visszaadott állapotkód |
+| <*művelet – állapot*> | Igen | Sztring | A művelet állapota, például `Succeeded` vagy `Failed` |
 |||||
 
 Ebben a HTTP-művelet definíciójában például a `runtimeConfiguration.staticResult.name` attribútum a `staticResults` attribútumon belüli `HTTP0`ra hivatkozik, ahol a művelethez tartozó Mock kimenetek definiálva vannak. A `runtimeConfiguration.staticResult.staticResultOptions` attribútum azt adja meg, hogy a statikus eredmény beállítása `Enabled` a HTTP-műveletnél.
@@ -202,7 +199,7 @@ Az eredmény mindig karakterlánc, így a funkció a `concat()` függvényhez ha
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-Ha van olyan literális karakterlánca, amely a \@ karakterrel kezdődik, a \@ karaktert egy másik \@ karakterrel együtt Escape-karakterként: \@ \@
+Ha van olyan literális karakterlánca, amely a \@ karakterrel kezdődik, a \@ karaktert egy másik \@ karakterrel együtt Escape-karakterként: \@\@
 
 Ezek a példák a kifejezések kiértékelésének módját mutatják be:
 
@@ -210,7 +207,7 @@ Ezek a példák a kifejezések kiértékelésének módját mutatják be:
 |------------|--------|
 | "Sophia Owen" | A következő karakterek visszaadása: "Sophia Owen" |
 | "tömb [1]" | A következő karakterek visszaadása: "Array [1]" |
-| "\@ \@" | A karaktereket a következő karakterként kell visszaadni: "\@" |
+| "\@\@" | A karaktereket a következő karakterként kell visszaadni: "\@" |
 | "\@" | A karaktereket a következő két karakterből álló karakterláncként kell visszaadni: "\@" |
 |||
 
@@ -225,13 +222,13 @@ Ezek a példák a következő kifejezések kiértékelésének módját mutatjá
 
 | JSON-kifejezés | Eredmény |
 |-----------------|--------|
-| "\@parameters (" myBirthMonth ")" | A következő sztring visszaadása: "január" |
-| "\@ {parameters (' myBirthMonth ')}" | A következő sztring visszaadása: "január" |
-| "\@parameters (" myAge ")" | A következő szám visszaadása: 42 |
-| "\@ {parameters (' myAge ')}" | A szám visszaadása karakterláncként: "42" |
-| "Az életkorom \@ {parameters (' myAge ')} ' | A következő sztring visszaadása: "My Age is 42" |
+| "\@parameters (' myBirthMonth ')" | A következő sztring visszaadása: "január" |
+| "\@{parameters (' myBirthMonth ')}" | A következő sztring visszaadása: "január" |
+| "\@parameters (' myAge ')" | A következő szám visszaadása: 42 |
+| "\@{parameters (' myAge ')}" | A szám visszaadása karakterláncként: "42" |
+| "Az életkorom \@{parameters (' myAge ')} ' | A következő sztring visszaadása: "My Age is 42" |
 | "\@concat (' My Age is ', string (parameters (' myAge '))) | A következő sztring visszaadása: "My Age is 42" |
-| "Az életkorom \@ \@ {parameters (' myAge ')} ' | Adja vissza ezt a karakterláncot, amely tartalmazza a következő kifejezést: "az életkorom \@ {parameters (' myAge ')} '. |
+| "Az életkorom \@\@{parameters (' myAge ')} ' | Adja vissza ezt a karakterláncot, amely tartalmazza a következő kifejezést: "az életkorom \@{parameters (' myAge ')} '. |
 |||
 
 Amikor vizuálisan dolgozik a Logic Apps Designerben, létrehozhat kifejezéseket a Kifejezésszerkesztő használatával, például:
@@ -280,9 +277,9 @@ A kimenet definíciójának általános szerkezete:
 
 | Attribútum | Szükséges | Type (Típus) | Leírás |
 |-----------|----------|------|-------------|
-| <*kulcs neve* > | Igen | Sztring | A kimenet visszatérési értékének kulcsa |
-| <*kulcs típusú* > | Igen | int, float, string, SecureString, bool, Array, JSON objektum | A kimenet visszatérési értékének típusa |
-| <*kulcs-érték* > | Igen | Ugyanaz, mint <*Key-type* > | A kimenet visszatérési értéke |
+| <*kulcs neve*> | Igen | Sztring | A kimenet visszatérési értékének kulcsa |
+| <*kulcs típusú*> | Igen | int, float, string, SecureString, bool, Array, JSON objektum | A kimenet visszatérési értékének típusa |
+| <*kulcs-érték*> | Igen | Ugyanaz, mint <*Key-type*> | A kimenet visszatérési értéke |
 |||||
 
 Egy munkafolyamat-Futtatás kimenetének lekéréséhez tekintse át a logikai alkalmazás futtatási előzményeit és részleteit a Azure Portal, vagy használja a [munkafolyamat-REST API](https://docs.microsoft.com/rest/api/logic/workflows). Külső rendszereknek is átadhatja a kimenetet, például Power BI, hogy irányítópultokat lehessen létrehozni.

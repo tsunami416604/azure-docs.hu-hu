@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f39ddc8a3460bc026bdac96c18b5bea4d6ecfc0f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 0729bee2f01dbd230b6f4442fc8e429a4fef3e16
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280403"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795666"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,6 +43,7 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 `IntentRecognizer` objektum inicializálásához létre kell hoznia egy olyan konfigurációt, amely a LUIS Endpoint kulcsát és régióját használja. Szúrja be a következő kódot.
 
 Ez a minta a `SpeechConfig` objektumot a LUIS kulcs és a régió használatával hozza létre. Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
+A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
 
 > [!NOTE]
 > Fontos, hogy a LUIS Endpoint kulcsot használja, nem pedig a kezdő vagy a szerzői kulcsot, mert csak a végpont kulcsa érvényes a beszédfelismerési szándék felismerésére. A megfelelő kulcs beszerzésével kapcsolatos útmutatásért lásd: [Luis-alkalmazás létrehozása és végponti kulcs beszerzése](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) .

@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-szkript – Kiszolgálókonfigurációk módosítása
+title: CLI-parancsfájl – kiszolgáló paramétereinek módosítása – Azure Database for MariaDB
 description: Ez a CLI-példaszkript felsorolja az összes elérhető kiszolgálókonfigurációt, és frissíti az innodb_lock_wait_timeout értékét.
 author: ajlam
 ms.author: andrela
@@ -7,16 +7,16 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 11/28/2018
-ms.openlocfilehash: 514f2fe7e8c2b94e175bc6f6fb0cec8ea3d0c9c6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 12/02/2019
+ms.openlocfilehash: 515eb7523c5a08d52ad5eb4f7bd261f3f4e03fc4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125882"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771808"
 ---
-# <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Az Azure Database for MariaDB-kiszolgálót az Azure CLI-konfigurációinak felsorolása és frissítése
-A CLI-példaszkript felsorolja az összes elérhető konfigurációs paraméterét, valamint azok engedélyezett értékeit Azure Database for MariaDB-kiszolgáló, és beállítja a *innodb_lock_wait_timeout* , az alapértelmezett értéktől eltérő értékre.
+# <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure Database for MariaDB-kiszolgáló konfigurációinak listázása és frissítése az Azure CLI használatával
+Ez a CLI-parancsfájl felsorolja az összes rendelkezésre álló konfigurációs paramétert, valamint a Azure Database for MariaDB kiszolgáló számára engedélyezett értékeit, és beállítja a *innodb_lock_wait_timeoutt* olyan értékre, amely nem az alapértelmezett.
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -36,13 +36,13 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | **Parancs** | **Megjegyzések** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az mariadb-kiszolgáló létrehozása](/cli/azure/mariadb/server#az-mariadb-server-create) | Létrehoz egy MariaDB-kiszolgálót, amelyen az adatbázisok futnak. |
-| [az mariadb server configuration list](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) | Felsorolja egy Azure Database for MariaDB-kiszolgáló konfigurációit. |
-| [az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) | Frissíti egy Azure Database for MariaDB-kiszolgáló konfigurációját. |
-| [az mariadb server configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) | Megjeleníti egy Azure Database for MariaDB-kiszolgáló konfigurációját. |
+| [az MariaDB Server Create](/cli/azure/mariadb/server#az-mariadb-server-create) | Létrehoz egy MariaDB-kiszolgálót, amely az adatbázisokat üzemelteti. |
+| [az MariaDB Server Configuration List](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) | Egy Azure Database for MariaDB-kiszolgáló konfigurációinak listázása. |
+| [az MariaDB Server Configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) | Azure Database for MariaDB-kiszolgáló konfigurációjának frissítése. |
+| [az MariaDB Server Configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) | Azure Database for MariaDB-kiszolgáló konfigurációjának megjelenítése. |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
-- Az Azure CLI-vel kapcsolatos további információkért tekintse meg: [Az Azure CLI dokumentációját](/cli/azure).
-- További szkripteket: [Azure CLI-minták az Azure Database for MariaDB](../sample-scripts-azure-cli.md)
-- A kiszolgáló paramétereinek további információkért lásd: [hogyan való konfigurálása kiszolgálóparaméterek az Azure Database for MariaDB](../howto-server-parameters.md).
+## <a name="next-steps"></a>Következő lépések
+- Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
+- További parancsfájlok kipróbálása: [Azure CLI-minták a Azure Database for MariaDB](../sample-scripts-azure-cli.md)
+- A kiszolgálói paraméterekkel kapcsolatos további információkért lásd: [kiszolgálói paraméterek konfigurálása Azure Database for MariaDBban](../howto-server-parameters.md).

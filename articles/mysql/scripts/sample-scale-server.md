@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-szkript – Azure Database for MySQL-kiszolgáló skálázása
+title: CLI-parancsfájl – méretezési kiszolgáló – Azure Database for MySQL
 description: Ez a CLI-példaszkript egy Azure Database for MySQL-kiszolgálót skáláz más teljesítményszintre a metrikák lekérdezése után.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 08/07/2019
-ms.openlocfilehash: f54b3f6fa8bb37f57479d6a9e7bc05340e411a48
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 12/02/2019
+ms.openlocfilehash: 54082daeeee2d5cc894aee49e2c3456e377637f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882941"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771311"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure Database for MySQL-kiszolgáló monitorozása és skálázása az Azure CLI használatával
 Ez a CLI-parancsfájl a metrikák lekérdezése után egy Azure Database for MySQL kiszolgáló számítási és tárolási kapacitását méretezi. A számítás vertikális fel-vagy leskálázást végez. A tárterület csak vertikális felskálázásra használható.
@@ -41,7 +41,7 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) | Listázza az erőforrások metrikaértékét. |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Azure Database for MySQL számítási és tárolási](../concepts-pricing-tiers.md) feladatokról
-- További parancsfájlok kipróbálása: [Azure CLI-minták a Azure Database for MySQLhoz](../sample-scripts-azure-cli.md)
+- További szkripteket az [Azure Database for MySQL-hez való Azure CLI-példák](../sample-scripts-azure-cli.md) között találhat.
 - További információ az [Azure CLI](/cli/azure) -ről

@@ -1,21 +1,21 @@
 ---
-title: 'Oktatóanyag: Azure Database for MySQL-hez az Azure CLI használatával tervezése'
+title: 'Oktatóanyag: kiszolgáló tervezése – Azure CLI – Azure Database for MySQL'
 description: Ez az oktatóanyag azt ismerteti, hogyan hozható létre és kezelhető az Azure Database for MySQL-kiszolgáló és -adatbázis az Azure CLI parancssorból történő használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 04/29/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 00c2efacab72c08d33b0004650bece2c369c757b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 00beae5a65e61f814d3498dbb41af02aaf0287fb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935996"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771212"
 ---
-# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Oktatóanyag: Azure Database for MySQL-hez az Azure CLI használatával tervezése
+# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Oktatóanyag: Azure Database for MySQL tervezése az Azure CLI használatával
 
 Az Azure Database for MySQL egy relációsadatbázis-szolgáltatás a Microsoft Cloudban, amely a MySQL Community Edition adatbázismotoron alapul. Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédprogramok segítségével a következőket sajátíthatja el:
 
@@ -41,7 +41,7 @@ Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amel
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Hozzon létre egy [Azure-erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) az [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat.
 
 A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
@@ -53,13 +53,13 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
 Hozzon létre egy Azure Database for MySQL-kiszolgálót az az mysql server create paranccsal. Egy kiszolgáló több adatbázist is tud kezelni. Általában külön adatbázissal rendelkezik minden projekt vagy felhasználó.
 
-A következő példában létrehozunk egy `mydemoserver` nevű Azure-adatbázist MySQL-kiszolgálóhoz a `myresourcegroup` erőforráscsoportban a `westus`-ben. A kiszolgáló rendelkezik egy nevű rendszergazda felhasználó `myadmin`. Egy általános célú, 2 virtuális mag Gen 5 kiszolgáló. A `<server_admin_password>` helyére írja be saját értékét.
+A következő példában létrehozunk egy `mydemoserver` nevű Azure-adatbázist MySQL-kiszolgálóhoz a `myresourcegroup` erőforráscsoportban a `westus`-ben. A kiszolgálónak `myadmin`nevű rendszergazda felhasználója van. Ez egy általános célú, Gen 5 kiszolgáló 2 virtuális mag. A `<server_admin_password>` helyére írja be saját értékét.
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
 ```
 Az sku-name paraméter értéke a {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi, a következő példákban látható módon:
-+ `--sku-name B_Gen5_2` Alapszintű, a Gen 5 és a 2 virtuális mag leképezések.
++ `--sku-name B_Gen5_2` az alapszintű, a Gen 5 és a 2 virtuális mag.
 + `--sku-name GP_Gen5_32` jelentése: Általános célú, 5. generációs és 32 virtuális mag.
 + `--sku-name MO_Gen5_2` jelentése: Memóriaoptimalizált, 5. generációs és 2 virtuális mag.
 
@@ -174,10 +174,10 @@ Tegyük fel, hogy véletlenül töröltünk egy fontos adatbázistáblát. Ez ne
 
 A visszaállításhoz a rendszer a következő információk megadását kéri:
 
-- Visszaállítási pont: Válasszon egy pont kötött, amely a kiszolgáló módosítása előtti. Ez a pont nem lehet korábbi, mint az adatbázis legrégebbi biztonsági másolata.
-- Célkiszolgáló: Adja meg a visszaállítani kívánt új kiszolgáló nevét
-- Forráskiszolgáló: Adja meg a visszaállítani kívánt kiszolgáló nevét
-- Hely: Nem választhat ki a régiót, alapértelmezés szerint ugyanaz, mint a forráskiszolgálón
+- Visszaállítási pont: Válasszon ki egy, a kiszolgáló módosítása előtti időpontot. Ez a pont nem lehet korábbi, mint az adatbázis legrégebbi biztonsági másolata.
+- Célkiszolgáló: Adja meg az új kiszolgáló nevét, amelyre a biztonsági másolatot vissza kívánja állítani.
+- Forráskiszolgáló: Adja meg a kiszolgáló nevét, amelyről a biztonsági másolatot vissza kívánja állítani.
+- Hely: Nem választhatja ki a régiót – alapértelmezés szerint ugyanaz lesz, mint a forráskiszolgálóé.
 
 ```azurecli-interactive
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
@@ -188,7 +188,7 @@ Az `az mysql server restore` parancshoz a következő paraméterekre van szüks�
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
-| name | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Válassza ki az időpontot, amelynek az állapotát vissza szeretné állítani. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. ISO8601 dátum- és időformátumot használjon. Használhatja például a saját helyi időzónáját (például `2017-04-13T05:59:00-08:00`), de UTC Zulu formátumot is használhat (`2017-04-13T13:59:00Z`). |
 | source-server | mydemoserver | A forráskiszolgáló neve vagy azonosítója, amelyről a visszaállítást végzi. |
 
@@ -196,7 +196,7 @@ Ha egy adott időpontra állít vissza egy kiszolgálót, azzal létrehoz egy ú
 
 Egy szinkron parancsról van szó, amelyet a rendszer a kiszolgáló visszaállítása után visszaad. Ha a visszaállítás kész, keresse meg a létrehozott új kiszolgálót. Ellenőrizze, hogy az adatok a várt módon álltak-e vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag a következőket mutatta be:
 > [!div class="checklist"]
 > * Azure-adatbázis létrehozása MySQL-kiszolgálóhoz

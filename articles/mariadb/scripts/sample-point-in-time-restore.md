@@ -1,22 +1,22 @@
 ---
-title: Azure CLI-példaszkript – egy Azure Database for MariaDB-kiszolgáló visszaállítása
-description: Az Azure CLI-példaszkript bemutatja egy Azure Database for MariaDB-kiszolgáló és a hozzá tartozó adatbázisok visszaállítása egy korábbi időpontra időben.
+title: CLI-szkript – kiszolgáló visszaállítása – Azure Database for MariaDB
+description: Ez a minta Azure CLI-szkript bemutatja, hogyan lehet visszaállítani egy Azure Database for MariaDB-kiszolgálót és annak adatbázisait egy korábbi időpontra.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 11/28/2018
-ms.openlocfilehash: 2d294f5b43ba3fb7587ca1d03903e39d75291754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: d7591c4f88026644ee2453150cfa226a155ab32d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171352"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771704"
 ---
-# <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure Database for MariaDB-kiszolgálót az Azure CLI-visszaállítás
-A CLI-példaszkript egyetlen Azure Database for MariaDB-kiszolgálót egy korábbi időpontra időben visszaállítja.
+# <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure Database for MariaDB-kiszolgáló visszaállítása az Azure CLI használatával
+Ez a CLI-parancsfájl egyetlen Azure Database for MariaDB kiszolgálót állít vissza egy korábbi időpontra.
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -36,10 +36,10 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | **Parancs** | **Megjegyzések** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az mariadb-kiszolgáló létrehozása](/cli/azure/mariadb/server#az-mariadb-server-create) | Létrehoz egy MariaDB-kiszolgálót, amelyen az adatbázisok futnak. |
-| [az mariadb-kiszolgálójának visszaállítását](/cli/azure/mariadb/server#az-mariadb-server-restore) | Visszaállít egy kiszolgálót egy biztonsági másolatból. |
+| [az MariaDB Server Create](/cli/azure/mariadb/server#az-mariadb-server-create) | Létrehoz egy MariaDB-kiszolgálót, amely az adatbázisokat üzemelteti. |
+| [az MariaDB Server Restore](/cli/azure/mariadb/server#az-mariadb-server-restore) | Visszaállít egy kiszolgálót egy biztonsági másolatból. |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
-- Az Azure CLI-vel kapcsolatos további információkért tekintse meg: [Az Azure CLI dokumentációját](/cli/azure).
-- További szkripteket: [Azure CLI-minták az Azure Database for MariaDB](../sample-scripts-azure-cli.md)
+## <a name="next-steps"></a>Következő lépések
+- Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
+- További parancsfájlok kipróbálása: [Azure CLI-minták a Azure Database for MariaDB](../sample-scripts-azure-cli.md)

@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c44228d7e1456bce870765935beb011cb24626d5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113602"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790931"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Mi az Azure Cognitive Search növekményes indexelése?
 
@@ -47,7 +47,7 @@ A növekményes indexelésből való kihasználás megkezdéséhez be kell áll�
     },
     "fieldMappings" : [],
     "outputFieldMappings": [],
-    "parameters":{}
+    "parameters": {}
 }
 ```
 
@@ -83,7 +83,7 @@ Az indexelő nem csak az új dokumentumokat helyezi át és dolgozza fel, de mos
 
 ### <a name="invalidating-changes"></a>Módosítások érvénytelenítése
 
-A módosítások érvénytelenítése ritkán fordul elő, de jelentős hatással van a dúsítási folyamat állapotára. Az érvénytelenítési változás egy olyan esetben, amikor a teljes gyorsítótár már nem érvényes. Az érvénytelenítési változások például az adatforrás frissítésének egyike. Ha tudja, hogy a módosítás ne érvénytelenítse a gyorsítótárat, például a kulcsot a Storage-fiókban, a `ignoreResetRequirement` querystring paramétert úgy kell beállítani, hogy az adott erőforrás frissítési művelete `true` legyen, így biztosítva, hogy a művelet nem elutasítva.
+A módosítások érvénytelenítése ritkán fordul elő, de jelentős hatással van a dúsítási folyamat állapotára. Az érvénytelenítési változás egy olyan esetben, amikor a teljes gyorsítótár már nem érvényes. Az érvénytelenítési változások például az adatforrás frissítésének egyike. Ha tudja, hogy a módosítás ne érvénytelenítse a gyorsítótárat, például a kulcsot a Storage-fiókban, a `ignoreResetRequirement` querystring paramétert úgy kell beállítani, hogy az adott erőforrás frissítési művelete `true` legyen, hogy a művelet ne legyen elutasítva.
 
 Itt látható a gyorsítótárat érvénytelenítő módosítások teljes listája:
 
@@ -152,7 +152,7 @@ Az `ignoreResetRequirement`t takarékosan használhatja, mivel az olyan nem kív
 
 A növekményes indexelés egy hatékony szolgáltatás, amely kibővíti a változások nyomon követését az adatforrásból a dúsítási folyamat valamennyi aspektusára, beleértve az adatforrást, a készségkészlet aktuális verzióját és az indexelő. A szaktudás, a szakértelmével vagy a gazdagítás fejlődése során a dúsítási folyamat biztosítja a lehető legkisebb munkát, miközben továbbra is a dokumentumokat a végleges konzisztencia érdekében hajtja végre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a növekményes indexeléssel egy meglévő indexelő gyorsítótárának hozzáadásával, vagy adja hozzá a gyorsítótárat egy új indexelő definiálásához.
 

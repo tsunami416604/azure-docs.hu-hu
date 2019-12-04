@@ -1,27 +1,23 @@
 ---
-title: Adatműveleti minták – Azure Logic Apps
+title: Adatműveleti minták
 description: Példák a Azure Logic Apps adatműveleti műveleteinek kódjára
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 09/01/2019
-ms.openlocfilehash: d692d943249c9fc6b46ed6eb1ddff3f07152f5b6
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: d59e461fab52bddf9cb1f881d52a751931c7312b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179147"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793089"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Adatműveleti kód mintái Azure Logic Apps
 
 Az alábbi kódrészletek a cikkben szereplő adatművelet-definíciók esetében az adatműveletek [elvégzésére](../logic-apps/logic-apps-perform-data-operations.md)szolgálnak. Ezeket a mintákat akkor használhatja, ha a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióját, Azure-előfizetését és API-kapcsolatait szeretné kipróbálni. Csak másolja és illessze be ezeket a műveleti definíciókat a logikai alkalmazás munkafolyamat-definíciójának kód nézet szerkesztőjébe, majd módosítsa az adott munkafolyamathoz tartozó definíciókat. 
 
-A JavaScript Object Notation-(JSON-) szabványok alapján ezek a műveleti definíciók betűrendben jelennek meg. A Logic app Designerben azonban minden definíció a munkafolyamat megfelelő sorában jelenik meg, mert minden műveleti definíció `runAfter` tulajdonsága megadja a futtatási sorrendet.
+A JavaScript Object Notation-(JSON-) szabványok alapján ezek a műveleti definíciók betűrendben jelennek meg. A Logic app Designerben azonban minden definíció a munkafolyamatban a megfelelő sorrendben jelenik meg, mert a műveleti definíciók `runAfter` tulajdonsága határozza meg a futtatási sorrendet.
 
 <a name="compose-action-example"></a>
 
@@ -326,7 +322,7 @@ A [ **JSON elemzési** művelet példájának](../logic-apps/logic-apps-perform-
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>Kiválasztás
+## <a name="select"></a>Válassza ezt:
 
 A [ **Select** Action példa](../logic-apps/logic-apps-perform-data-operations.md#select-action)kipróbálásához a következő művelet-definíciókat használhatja:
 
@@ -367,6 +363,6 @@ A [ **Select** Action példa](../logic-apps/logic-apps-perform-data-operations.m
 },
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Adatműveletek végrehajtása](../logic-apps/logic-apps-perform-data-operations.md)

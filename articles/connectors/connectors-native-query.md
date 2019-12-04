@@ -1,27 +1,21 @@
 ---
-title: A lekérdezési művelet hozzáadása a Logic Appsben | Microsoft Docs
-description: A lekérdezési művelet áttekintése, például a Filter Array művelet végrehajtása.
-services: ''
-documentationcenter: ''
-author: jeffhollan
-manager: erikre
-editor: ''
-tags: connectors
-ms.assetid: 34e702c7-f9e5-4885-9266-fc7404adecfe
-ms.service: logic-apps
+title: A lekérdezési művelet hozzáadása a Logic Appsben
+description: A lekérdezési műveletek áttekintése, például a Filter Array
+services: logic-apps
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/20/2016
-ms.author: jehollan
-ms.openlocfilehash: 10332b95e0d385d7155003efcc52b4bae3969313
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+tags: connectors
+ms.openlocfilehash: 2e5c9d371a280b776699b2e10d3e8e94b5f41f6f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973751"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787132"
 ---
 # <a name="get-started-with-the-query-action"></a>Ismerkedés a lekérdezési művelettel
+
 A lekérdezési művelettel a következő műveleteket végezheti el a munkafolyamatok végrehajtásához a kötegek és tömbök használatával:
 
 * Hozzon létre egy feladatot az adatbázis összes magas prioritású rekordjához.
@@ -30,6 +24,7 @@ A lekérdezési művelettel a következő műveleteket végezheti el a munkafoly
 A logikai alkalmazásokban a lekérdezési művelet használatának megkezdéséhez lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-query-action"></a>A lekérdezési művelet használata
+
 A művelet olyan művelet, amelyet a logikai alkalmazásban definiált munkafolyamat hajt végre. 
 [További információ a műveletekről](../connectors/apis-list.md).  
 
@@ -68,7 +63,7 @@ A * azt jelenti, hogy a mező kitöltése kötelező.
 
 | Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| A |from |A szűrni kívánt tömb |
+| A |a |A szűrni kívánt tömb |
 | Feltétel |ahol |Az egyes elemek kiértékelésének feltétele |
 
 <br>

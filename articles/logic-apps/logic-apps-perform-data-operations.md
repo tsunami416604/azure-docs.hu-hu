@@ -1,21 +1,17 @@
 ---
-title: Műveletek végrehajtása az adatokon – Azure Logic Apps
+title: Műveletek végrehajtása adatokon
 description: Az adatkimenetek és a formátumok konvertálása, kezelése és módosítása Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: a21b7f510b6da40d3ab2c72fcfbcb2a746b75db1
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990609"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793113"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Adatműveletek végrehajtása a Azure Logic Appsban
 
@@ -80,7 +76,7 @@ Például létrehozhat egy JSON-üzenetet több változóból, például karakte
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Egy példa kipróbálásához kövesse az alábbi lépéseket a Logic app Designer használatával. Ha inkább a Code View Editor használatával szeretne dolgozni, akkor a jelen cikkben szereplő, a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba másolhatja a példa **összeállítási** és **inicializálási változóit** : az [adatműveleti kódokra vonatkozó példák – Összeállítás](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+Egy példa kipróbálásához kövesse az alábbi lépéseket a Logic app Designer használatával. Ha inkább a Code View Editor használatával szeretne dolgozni, akkor a jelen cikkben szereplő, a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba másolhatja az **összeállítási** és **inicializálási változók** definícióját: [adatműveleti kód példák – összeállítás](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben.
 
@@ -138,7 +134,7 @@ Annak ellenőrzéséhez, hogy az **összeállítás** művelet létrehozza-e a v
 
 Egy olyan vesszővel tagolt (CSV) tábla létrehozásához, amely egy tömb JavaScript Object Notation (JSON) objektumainak tulajdonságait és értékeit tartalmazza, használja a **CSV-táblázat létrehozása** műveletet. Ezután használhatja az eredményül kapott táblázatot a **CSV-táblázat létrehozása** műveletet követő műveletekben.
 
-Ha inkább a Code View Editor használatával szeretne dolgozni, a példa **CSV-táblázat létrehozása** és a változó műveleti definíciók **inicializálása** ebből a cikkből a saját logikai alkalmazás mögöttes munkafolyamat-definíciója szerint: [adatműveleti kód példák – CSV-tábla létrehozása](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
+Ha inkább a Code View Editor használatával szeretne dolgozni, a példa **CSV-táblázat létrehozása** és a változó műveleti definíciók **inicializálása** ebből a cikkből a saját logikai alkalmazás mögöttes munkafolyamat-definíciója szerint: [adatműveleti kód példák – CSV-táblázat létrehozása](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben.
 
@@ -289,7 +285,7 @@ Annak ellenőrzéséhez, hogy a **CSV-táblázat létrehozása** művelet létre
 
 Ha olyan HTML-táblázatot szeretne létrehozni, amely egy tömb JavaScript Object Notation (JSON) objektumainak tulajdonságait és értékeit tartalmazza, használja a **HTML-táblázat létrehozása** műveletet. Ezután használhatja az eredményül kapott táblázatot a **HTML-táblázat létrehozása** műveletet követő műveletekben.
 
-Ha inkább a Code View Editor használatával szeretne dolgozni, a jelen cikkben található példa **HTML-táblázat létrehozása** és a változó műveleti definíciók **inicializálása** a saját logikai alkalmazás mögöttes munkafolyamat-definíciója szerint: [adatműveleti kód példák – HTML-tábla létrehozása](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+Ha inkább a Code View Editor használatával szeretne dolgozni, másolhatja a HTML- **táblázat létrehozása** és a változó műveleti definíciók **inicializálása** ebből a cikkből a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióját: [adatműveleti kód példák – HTML-táblázat létrehozása](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben.
 
@@ -448,7 +444,7 @@ Ha olyan kisebb tömböt szeretne létrehozni, amely meghatározott feltételekn
 > 
 > Ha a tömb kimenetét a tömb **szűrése** művelettel szeretné használni, akkor a műveleteknek el kell fogadniuk a tömböket bemenetként, vagy esetleg át kell alakítania a kimeneti tömböt egy másik kompatibilis formátumba.
 
-Ha inkább a Code View Editor használatával szeretne dolgozni, a jelen cikkben szereplő, a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba másolhatja a példa **szűrő tömbjét** és az **inicializálás változó** műveleti definícióit: az [adatműveleti kódokra vonatkozó példák – Tömb szűrése](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
+Ha inkább a Code View Editor használatával szeretne dolgozni, a jelen cikkben **szereplő, a** saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba másolhatja a jelen cikk **változó** műveleti definícióját: [adatműveleti kód példák – szűrő tömb](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben.
 
@@ -497,7 +493,7 @@ Annak ellenőrzéséhez, hogy a **tömb szűrése** művelet létrehozza-e a vá
 
    `@actionBody('Filter_array')`
 
-   Ez a példa az Office 365 Outlook **E-mail küldése** műveletét használja, és tartalmazza a **ActionBody ("Filter_array")** kifejezés kimeneteit az e-mail törzsében:
+   Ez a példa az Office 365 Outlook **E-mail küldése** műveletét használja, és tartalmazza a **actionBody ("Filter_array")** kifejezés kimeneteit az e-mail törzsében:
 
    ![A "tömb szűrése" művelet kimenetei](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 
@@ -573,7 +569,7 @@ Annak ellenőrzéséhez, hogy a **JOIN** művelet létrehozza-e a várt eredmén
 
 JavaScript Object Notation-(JSON-) tartalomban lévő tulajdonságok hivatkozásához vagy eléréséhez a **JSON** elemzése művelettel létrehozhat felhasználóbarát mezőket vagy jogkivonatokat ezekhez a tulajdonságokhoz. Így kiválaszthatja ezeket a tulajdonságokat a dinamikus tartalmak listájából, ha a logikai alkalmazás bemeneteit adja meg. Ehhez a művelethez egy JSON-sémát adhat meg, vagy létrehozhat egy JSON-sémát a mintául szolgáló JSON-tartalomból vagy adattartalomból.
 
-Ha inkább a Code View Editor használatával szeretne dolgozni, a cikkből átmásolhatja a **JSON** -t, és **inicializálhatja a változó** műveleti definícióit ebből a cikkből a saját logikai alkalmazás mögöttes munkafolyamat-definíciójában: [adatműveleti kódok példái – elemzés JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
+Ha inkább a Code View Editor használatával szeretne dolgozni, a cikkből átmásolhatja a **JSON** -t, és **inicializálhatja a változó** műveleti definícióit ebből a cikkből a saját logikai alkalmazás mögöttes munkafolyamat-definíciójában: [adatműveleti kód példák-parse JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben.
 
@@ -648,7 +644,7 @@ Egy meglévő tömb értékeiből származó JSON-objektumokat tartalmazó tömb
 > [!NOTE]
 > A **Select** művelet által a tömb kimenetét használó műveletekhez a műveleteknek el kell fogadniuk a tömböket bemenetként, vagy esetleg át kell alakítania a kimeneti tömböt egy másik kompatibilis formátumba. 
 
-Ha inkább a Code View Editor használatával szeretne dolgozni, másolhatja a jelen cikk **változó** műveleti definícióit a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba: [adatműveleti kódokra vonatkozó példák – kiválasztás ](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+Ha inkább a Code View Editor használatával szeretne dolgozni, másolhatja a jelen cikk **változó** műveleti definícióit a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba: [adatműveleti kódokra vonatkozó példák – kiválasztás](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben.
 
@@ -676,7 +672,7 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, másolhatja a j
 
 1. A **Térkép** mező bal oldali oszlopában adja meg a forrás tömbben az egyes értékek hozzárendeléséhez használni kívánt tulajdonság nevét. A jobb oldali oszlopban adjon meg egy kifejezést, amely a tulajdonságot hozzárendelni kívánt értéket jelöli.
 
-   Ez a példa a "Product_ID" tulajdonságot adja meg az egész tömbben lévő értékek hozzárendeléséhez, az egyes tömbökhöz hozzáférő kifejezésben a `item()` függvény használatával. 
+   Ez a példa a "Product_ID" nevet adja meg az egész tömbben lévő összes érték hozzárendeléséhez, az egyes tömbökhöz hozzáférő kifejezésekben a `item()` függvény használatával. 
 
    ![A JSON-objektum tulajdonságainak és értékeinek meghatározása tömb létrehozásához](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 

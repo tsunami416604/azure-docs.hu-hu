@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 09e0b6fbfcb8541a0756a855d4548e456a7b5c90
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68a52ddd7bcf711f64860b6598cc982e961075ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504220"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795996"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,6 +25,8 @@ Az első lépések előtt ügyeljen a következőre:
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=windows)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -84,6 +86,9 @@ Az első lépések előtt ügyeljen a következőre:
 
 1. A menüsávban válassza a **fájl** > **az összes mentése**lehetőséget.
 
+> [!NOTE]
+> A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
+
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
 1. A menüsávban válassza a **build** > Build **megoldás** elemet az alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
@@ -97,6 +102,6 @@ Az első lépések előtt ügyeljen a következőre:
    We recognized: What's the weather like?
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

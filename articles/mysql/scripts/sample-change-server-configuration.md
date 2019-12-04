@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-szkript – kiszolgálói konfigurációk módosítása (MySQL)
+title: CLI-parancsfájl – kiszolgáló paramétereinek módosítása – Azure Database for MySQL
 description: Ez a CLI-példaszkript felsorolja az összes elérhető kiszolgálókonfigurációt, és frissíti az innodb_lock_wait_timeout értékét.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 02/28/2018
-ms.openlocfilehash: faeebc2b4c963b46a0cbb805269078dee562a3f4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: c8781ec34cb54afc4040d858722b28e10d68bccd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970623"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765787"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure Database for MySQL-kiszolgáló konfigurációinak felsorolása és frissítése az Azure CLI-vel
 Ez a CLI-példaszkript felsorolja egy Azure Database for MySQL-kiszolgáló összes elérhető konfigurációs paraméterét és azok engedélyezett értékeit, és beállítja az *innodb_lock_wait_timeout* paramétert egy, az alapértelmezett értéktől eltérő értékre.
@@ -42,7 +42,7 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az mysql server configuration show](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-show) | Megjeleníti egy Azure Database for MySQL-kiszolgáló konfigurációját. |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
-- További információ az Azure CLI-ről: Az [Azure CLI dokumentációja](/cli/azure).
-- További parancsfájlok kipróbálása: [Azure CLI-minták a Azure Database for MySQLhoz](../sample-scripts-azure-cli.md)
+## <a name="next-steps"></a>Következő lépések
+- Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
+- További szkripteket az [Azure Database for MySQL-hez való Azure CLI-példák](../sample-scripts-azure-cli.md) között találhat.
 - A kiszolgálóparaméterekkel kapcsolatos további információért lásd [a kiszolgálóparaméterek Azure Database for MySQL-ben történő konfigurálását](../howto-server-parameters.md) ismertető szakaszt.

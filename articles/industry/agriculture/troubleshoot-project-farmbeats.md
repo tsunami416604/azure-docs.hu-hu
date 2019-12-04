@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 88a1280fb4a91d7ba45f2d0cfe92e604cd66ff0b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 22c304b26eddaee4444f6eb12957e2a6fedf7810
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672584"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793282"
 ---
 # <a name="troubleshooting"></a>Hibakeresés
 
@@ -34,12 +34,12 @@ További segítségért írjon nekünk a következő címen: farmbeatssupport@mi
 
 **Javítási művelet**: látogasson el a Azure Portalra, és kövesse az alábbi lépéseket:
 
-1. Nyissa meg a FarmBeats adatközpont-erőforráscsoportot.   
-2. Válassza ki az **Event hubot** (DatafeedEventHubNamespace...)  és keresse meg a bejövő üzenetek számát.   
+1. Nyissa meg a FarmBeats adatközpont-erőforráscsoportot.   
+2. Válassza az **Event hub** (DatafeedEventHubNamespace...) lehetőséget, és keresse meg a bejövő üzenetek számát.   
 3. Ha nincsenek **beérkező üzenetek**, forduljon az eszköz partneréhez.  
 4. Ha vannak **Bejövő üzenetek**, lépjen kapcsolatba farmbeatssupport@microsoft.com adatközponttal és gyorssegéd-naplókkal, valamint rögzített telemetria.
 
-A naplók letöltésének megismeréséhez tekintse meg a dokumentum [naplók szakaszát](#collect-logs-manually) .  
+A naplók letöltésének megismeréséhez tekintse meg a dokumentum [naplók szakaszát](#collect-logs-manually) .  
 
 ### <a name="dont-have-the-eventhub-connection-string"></a>Nem rendelkezik a Eventhub-kapcsolatok karakterláncával
 
@@ -55,7 +55,7 @@ A naplók letöltésének megismeréséhez tekintse meg a dokumentum [naplók sz
 
 **Tünetek**: az eszközök telepítve vannak, és az FarmBeats társítva van. Az eszközök online állapotba kerülnek, és telemetria adatokat küldenek, de offline állapotban jelennek meg.
 
-**Javító művelet**: a jelentési időköz nincs konfigurálva ehhez az eszközhöz. A jelentéskészítési időköz beállításához forduljon az eszköz gyártójához. 
+**Javító művelet**: a jelentési időköz nincs konfigurálva ehhez az eszközhöz. A jelentéskészítési időköz beállításához forduljon az eszköz gyártójához. 
 
 ### <a name="error-deleting-a-resource"></a>Hiba történt az erőforrás törlésekor
 
@@ -135,44 +135,44 @@ Zárjunk be minden olyan böngésző fület, amelynél a Gyorssegéd meg van nyi
 
 **Javítási művelet**: futtassa újra a sikertelen feladatot, vagy futtasson egy Satellite Indexes feladatot a 5-7 napos dátumtartomány esetében, és ellenőrizze, hogy a feladatok sikeresek-e.
 
-### <a name="sentinel-hub-wrongurlor-not-accessible"></a>Sentinel hub helytelen URL-cím vagy nem érhető el 
+### <a name="sentinel-hub-wrong-url-or-not-accessible"></a>Sentinel hub helytelen URL-cím vagy nem érhető el 
 
-**Sikertelen feladatok üzenete**: Hoppá, hiba történt. Az elérni próbált lap (átmenetileg) nem érhető el. 
+**Sikertelen feladatok üzenete**: Hoppá, hiba történt. Az elérni próbált lap (átmenetileg) nem érhető el. 
 
 **Javítási művelet**:
-1.  Nyissa meg a Sentinel URL-címét (https://scihub.copernicus.eu/dhus/) a böngészőben, és ellenőrizze, hogy a webhely elérhető-e. 
-2.  Ha a webhely nem érhető el, ellenőrizze, hogy a tűzfal vagy a vállalati hálózat stb. blokkolja-e a webhelyet, és hajtsa végre a fenti URL-cím engedélyezéséhez szükséges lépéseket. 
+1.  Nyissa meg a Sentinel URL-címét (https://scihub.copernicus.eu/dhus/) a böngészőben, és ellenőrizze, hogy a webhely elérhető-e. 
+2.  Ha a webhely nem érhető el, ellenőrizze, hogy a tűzfal vagy a vállalati hálózat stb. blokkolja-e a webhelyet, és hajtsa végre a fenti URL-cím engedélyezéséhez szükséges lépéseket. 
 3.  Futtassa újra a sikertelen feladatot, vagy futtasson egy Satellite Indexes feladatot a 5-7 napos dátumtartomány esetében, és ellenőrizze, hogy a feladatok sikeresek-e.  
 
 ### <a name="sentinel-server-down-for-maintenance"></a>Sentinel-kiszolgáló leállása karbantartáshoz
 
-**Sikertelen feladatok üzenete**: a Kopernikusz Open Access hub hamarosan vissza fog térni! Sajnos a kellemetlenségért elnézést végzünk. Hamarosan ismét online fogunk! 
+**Sikertelen feladatok üzenete**: a Kopernikusz Open Access hub hamarosan vissza fog térni! Sajnos a kellemetlenségért elnézést végzünk. Hamarosan ismét online fogunk! 
 
 **Javítási művelet**:
 
-1.  Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karbantartási tevékenység történik. 
-2.  Ha egy adott feladatnak vagy folyamatnak a fenti ok miatt meghiúsul, egy kis idő elteltével küldje el újra a feladatot. 
-3.  A felhasználó meglátogathatja https://scihub.copernicus.eu/news/ a tervezett/nem tervezett Sentinel karbantartási tevékenységekkel kapcsolatos információk megtekintéséhez.  
+1.  Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karbantartási tevékenység történik. 
+2.  Ha egy adott feladatnak vagy folyamatnak a fenti ok miatt meghiúsul, egy kis idő elteltével küldje el újra a feladatot. 
+3.  A felhasználó meglátogathatja https://scihub.copernicus.eu/news/ a tervezett/nem tervezett Sentinel karbantartási tevékenységekkel kapcsolatos információk megtekintéséhez.  
 4.  Futtassa újra a sikertelen feladatot, vagy futtasson egy Satellite Indexes feladatot a 5-7 napos dátumtartomány esetében, és ellenőrizze, hogy a feladatok sikeresek-e.
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>A Sentinel elérte a kapcsolatok maximális számát
 
-**Sikertelen feladatok üzenete**: a "<username>" felhasználó által elért két egyidejű folyamat maximális száma 
+**Sikertelen feladatok üzenete**: a "<username>" felhasználó által elért két egyidejű folyamat maximális száma 
 
 **Javító művelet**
-1.  Ha bármelyik feladatot a fenti ok miatt nem sikerül végrehajtani, ugyanazt a Sentinel-fiókot használja egy másik telepítésben/szoftverben. 
+1.  Ha bármelyik feladatot a fenti ok miatt nem sikerül végrehajtani, ugyanazt a Sentinel-fiókot használja egy másik telepítésben/szoftverben. 
 2.  A felhasználó létrehozhat új Sentinel-fiókot, és újból futtathatja a telepítőt az adatközpont új Sentinel-felhasználónévvel és jelszóval való frissítéséhez.  
 3.  Futtassa újra a sikertelen feladatot, vagy futtasson egy Satellite Indexes feladatot a 5-7 napos dátumtartomány esetében, és ellenőrizze, hogy a feladatok sikeresek-e.
 
-### <a name="sentinel-server-refused-connection"></a>A Sentinel-kiszolgáló elutasította a kapcsolatokat 
+### <a name="sentinel-server-refused-connection"></a>A Sentinel-kiszolgáló elutasította a kapcsolatokat 
 
 **Sikertelen feladatok üzenete**:
 
-A kiszolgáló visszautasította a következő helyen lévő kapcsolatokat: http://172.30.175.69:8983/solr/dhus 
+A kiszolgáló visszautasította a következő helyen lévő kapcsolatokat: http://172.30.175.69:8983/solr/dhus 
 
-**Javító művelet**: Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karbantartási tevékenység történik. 
-1.  Ha egy adott feladatnak vagy folyamatnak a fenti ok miatt meghiúsul, egy kis idő elteltével küldje el újra a feladatot. 
-2.  A felhasználó meglátogathatja https://scihub.copernicus.eu/news/ a tervezett/nem tervezett Sentinel karbantartási tevékenységekkel kapcsolatos információk megtekintéséhez.  
+**Javító művelet**: Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karbantartási tevékenység történik. 
+1.  Ha egy adott feladatnak vagy folyamatnak a fenti ok miatt meghiúsul, egy kis idő elteltével küldje el újra a feladatot. 
+2.  A felhasználó meglátogathatja https://scihub.copernicus.eu/news/ a tervezett/nem tervezett Sentinel karbantartási tevékenységekkel kapcsolatos információk megtekintéséhez.  
 3.  Futtassa újra a sikertelen feladatot, vagy futtasson egy Satellite Indexes feladatot a 5-7 napos dátumtartomány esetében, és ellenőrizze, hogy a feladatok sikeresek-e.
 
 
@@ -281,11 +281,11 @@ Az erőforráscsoport irányítópultján keresse meg a (datahublogs...) Storage
 
 ## <a name="high-cpu-usage"></a>Magas processzorhasználat
 
-**Hiba**: e-mail-riasztást kap a nagy CPU-használati riasztásra vonatkozólag. 
+**Hiba**: e-mail-riasztást kap a nagy CPU-használati riasztásra vonatkozólag. 
 
-**Javítási művelet**: 
+**Javítási művelet**: 
 1.  Nyissa meg a FarmBeats adatközpont-erőforráscsoportot.
-2.  Válassza ki az App Service-t.  
+2.  Válassza ki az App Service-t.  
 3.  Lépjen a vertikális felskálázás (App Service terv) lehetőségre, és válasszon ki egy megfelelő [árképzési szintet](https://azure.microsoft.com/pricing/details/app-service/windows/)
 
 ## <a name="next-steps"></a>Következő lépések
