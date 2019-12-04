@@ -1,5 +1,5 @@
 - name: A Bing Custom Search dokumentációja
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Áttekintés
   expanded: true
   items:

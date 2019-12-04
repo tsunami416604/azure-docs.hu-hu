@@ -170,8 +170,6 @@
           href: howto-configure-ssl.md
         - name: Webalkalmazások
           href: howto-connect-webapp.md
-        - name: Kapcsolódás átirányítással
-          href: howto-redirection.md
     - name: Kiszolgáló paramétereinek konfigurálása
       items:
         - name: Azure Portal

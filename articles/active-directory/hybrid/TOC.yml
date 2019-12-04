@@ -148,8 +148,6 @@
               href: plan-migrate-adfs-password-hash-sync.md
             - name: Migrálás összevont környezetből PTA-ba
               href: plan-migrate-adfs-pass-through-authentication.md
-            - name: Felhőalapú hitelesítés – előkészített kibocsátás (nyilvános előzetes verzió)
-              href: how-to-connect-staged-rollout.md
         - name: Hibrid identitáskezelés – kialakítási szempontok
           items:
             - name: Hibrid identitáskezelés – a kialakítási szempontok áttekintése

@@ -1,5 +1,5 @@
 - name: A Bing Entity Search dokumentációja
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Áttekintés
   items:
     - name: Mi a Bing Entity Search?
