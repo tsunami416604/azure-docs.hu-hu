@@ -1,5 +1,5 @@
 - name: A Bing Image Search API dokumentációja
-  href: index.yml
+  href: ../bing-web-search/index.yml
 - name: Áttekintés
   expanded: true
   items:
