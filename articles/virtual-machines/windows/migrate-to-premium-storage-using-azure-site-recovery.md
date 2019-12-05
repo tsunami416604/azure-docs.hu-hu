@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 1dc119f0f5949b37603bbc1100a4d89d4f420fd6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bd5f9fc787a6299e8d7c14f4b99f6f4d59cf78af
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033454"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819062"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrálás Premium Storagere Azure Site Recovery használatával
 
@@ -76,10 +76,10 @@ Site Recovery használatával áttelepítheti az Azure IaaS virtuális gépeket 
 
 ### <a name="step-1-create-a-recovery-services-vault"></a>1\. lépés: Recovery Services-tároló létrehozása
 
-1. Nyissa meg az [Azure portált](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 2. Válassza **az erőforrás létrehozása** > **felügyeleti** > **Backup és site Recovery (OMS)** lehetőséget. Másik lehetőségként kiválaszthatja a **tallózás** > **Recovery Services** tár > **Hozzáadás**lehetőséget.
    >[!NOTE]
-   >A Backup és a Site Recovery korábban a ![OMS Suite](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)része volt.
+   >A Backup és a Site Recovery korábban a [OMS Suite](/azure/azure-monitor/terminology#april-2018---retirement-of-operations-management-suite-brand)része volt.
 1. Itt adhatja meg azt a régiót, amelyet a virtuális gépek replikálnak a rendszerbe. Ugyanabban a régióban a Migrálás céljából válassza ki azt a régiót, ahol a forrásként használt virtuális gépek és a forrás Storage-fiókok találhatók. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>2\. lépés: a védelmi célok kiválasztása 
@@ -195,7 +195,7 @@ A feladatátvételi teszt befejezése után futtassa a feladatátvételt, hogy �
 
 Site Recovery létre fog hozni egy virtuálisgép-példányt, amelynek típusa azonos, vagy hasonló egy Premium Storage-kompatibilis virtuális géphez. A különböző virtuálisgép-példányok teljesítményének és árának ellenőrzéséhez tekintse meg [Windows Virtual Machines díjszabását](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) , vagy [Linux Virtual Machines díjszabását](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-## <a name="post-migration-steps"></a>Áttelepítés utáni lépések
+## <a name="post-migration-steps"></a>A migrálást követő lépések
 
 1. **Ha alkalmazható, konfigurálja a replikált virtuális gépeket a rendelkezésre állási csoportba**. A Site Recovery nem támogatja a virtuális gépek áttelepítését a rendelkezésre állási csoporttal együtt. A replikált virtuális gép központi telepítésének függvényében hajtsa végre az alábbi műveletek egyikét:
    * A klasszikus üzemi modellel létrehozott virtuális gépek esetében: vegye fel a virtuális gépet a rendelkezésre állási csoportba a Azure Portal. A részletes lépésekért lépjen a [meglévő virtuális gép hozzáadása egy rendelkezésre állási csoporthoz lehetőségre](../linux/classic/configure-availability-classic.md).
@@ -205,7 +205,7 @@ Site Recovery létre fog hozni egy virtuálisgép-példányt, amelynek típusa a
 
 3. **Tisztítsa meg az Azure site Recovery infrastruktúrát**. Ha Site Recoveryra már nincs szükség, megtisztíthatja infrastruktúráját. Törölje a replikált elemeket, a konfigurációs kiszolgálót és a helyreállítási szabályzatot, majd törölje a Azure Site Recovery-tárolót.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 * [A virtuális gépek és a fizikai kiszolgálók védelmének figyelése és hibakeresése](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
 * [Microsoft Azure Site Recovery fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)

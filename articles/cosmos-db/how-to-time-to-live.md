@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: e36b894ec9c7433bc114145e0de5f519f73486f1
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 8bae2db08a5279225eba7492c63706dc9fc3df02
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815915"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819516"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Állítsa be az élettartamot Azure Cosmos DB
 
@@ -21,7 +21,7 @@ A Azure Cosmos DBban beállíthatja, hogy az élettartam (TTL) a tároló szintj
 
 A következő lépésekkel engedélyezheti, hogy a lejárati idő nélkül egy tárolón lehessen élni. Ezzel a beállítással engedélyezheti, hogy az élettartam felülbírálható legyen az elemszintű szinten. Az ÉLETTARTAMot úgy is beállíthatja, hogy nem nulla értéket adjon meg másodpercben.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Hozzon létre egy új Azure Cosmos-fiókot, vagy válasszon ki egy meglévő fiókot.
 
@@ -77,7 +77,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 
 ## <a name="set-time-to-live-on-a-container-using-sdk"></a>Időtartam beállítása egy tárolón az SDK használatával
 
-Ha meg szeretné adni az időt egy tárolón való működéshez, meg kell adnia egy nullától eltérő pozitív számot, amely a másodpercben megadott időtartamot jelzi. A beállított TTL-érték alapján a tárolóban lévő összes elem törlődik az elem `_ts` utolsó módosításának időbélyegzője után.
+Ha meg szeretné adni az időt egy tárolón való működéshez, meg kell adnia egy nullától eltérő pozitív számot, amely a másodpercben megadott időtartamot jelzi. A beállított TTL-érték alapján a tárolóban lévő összes elem törlődik a `_ts` elem utolsó módosításának időbélyegzője után.
 
 ### <a id="dotnet-enable-withexpiry"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
@@ -86,7 +86,7 @@ Ha meg szeretné adni az időt egy tárolón való működéshez, meg kell adnia
 DocumentCollection collectionDefinition = new DocumentCollection();
 collectionDefinition.Id = "myContainer";
 collectionDefinition.PartitionKey.Paths.Add("/myPartitionKey");
-collectionDefinition.DefaultTimeToLive = 90 * 60 * 60 * 24; // expire all documents after 90 days
+collectionDefinition.DefaultTimeToLive = 90 * 60 * 60 * 24 // expire all documents after 90 days
 
 DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionAsync(
     UriFactory.CreateDatabaseUri("myDatabaseName"),
@@ -123,7 +123,7 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
 A tárolók alapértelmezett élettartamának beállítása mellett beállíthatja, hogy az egyes elemek Mikor éljünk. Az elemszintű élettartam beállítása felülbírálja az adott tárolóban lévő elemek alapértelmezett ÉLETTARTAMát.
 
-* Egy elem ÉLETTARTAMának beállításához meg kell adnia egy nullától eltérő pozitív számot, amely azt jelzi, hogy a másodpercben az elem utolsó módosításának időbélyegzője `_ts`után hány pontot kell lejárni.
+* Egy elem ÉLETTARTAMának beállításához meg kell adnia egy nullától eltérő pozitív számot, amely azt jelzi, hogy az elem hány másodperc múlva jár le az elem utolsó módosításának időbélyegzője után `_ts`.
 
 * Ha az elem nem rendelkezik TTL mezővel, akkor alapértelmezés szerint a tárolóra beállított TTL-érték lesz érvényes az elemre.
 
@@ -133,7 +133,7 @@ A tárolók alapértelmezett élettartamának beállítása mellett beállíthat
 
 A következő lépésekkel engedélyezheti az élettartamot egy elemen:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Hozzon létre egy új Azure Cosmos-fiókot, vagy válasszon ki egy meglévő fiókot.
 
@@ -146,7 +146,7 @@ A következő lépésekkel engedélyezheti az élettartamot egy elemen:
    * Válassza **a be lehetőséget (nincs alapértelmezett)** , vagy válassza **a** be lehetőséget, és állítsa be a TTL értéket. 
    * Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-5. Ezután Navigáljon arra az elemre, amelyre az élettartamot szeretné beállítani, adja hozzá `ttl` a tulajdonságot, és válassza a **frissítés**lehetőséget. 
+5. Ezután Navigáljon arra az elemre, amelyre az élettartamot szeretné beállítani, adja hozzá a `ttl` tulajdonságot, és válassza a **frissítés**lehetőséget. 
 
    ```json
    {
@@ -198,7 +198,7 @@ const itemDefinition = {
 
 ## <a name="reset-time-to-live"></a>Élettartam visszaállítása
 
-Az elemre vonatkozó írási vagy frissítési művelet végrehajtásával visszaállíthatja az élettartamot egy adott elemen. Az írási vagy frissítési művelet az aktuális időpontot állítja be `_ts` , a lejárati idő élettartama pedig újra elindul. Ha módosítani szeretné egy elem ÉLETTARTAMát, akkor a mezőt ugyanúgy frissítheti, mint bármely más mezőt.
+Az elemre vonatkozó írási vagy frissítési művelet végrehajtásával visszaállíthatja az élettartamot egy adott elemen. Az írási vagy frissítési művelet a `_ts` az aktuális időpontra állítja be, a lejárati idő ÉLETTARTAMa pedig újra elindul. Ha módosítani szeretné egy elem ÉLETTARTAMát, akkor a mezőt ugyanúgy frissítheti, mint bármely más mezőt.
 
 ### <a id="dotnet-extend-ttl-item"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
@@ -257,7 +257,7 @@ await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse
 
 ## <a name="disable-time-to-live"></a>Élettartam letiltása
 
-Ha le szeretné tiltani az időt egy tárolóban, és leállítja a háttérben futó folyamatot a lejárt elemek `DefaultTimeToLive` ellenőrzésével, a tárolóban lévő tulajdonságot törölni kell. A tulajdonság törlése eltér az-1 értéktől. Ha a-1 értékre állítja, a tárolóhoz hozzáadott új elemek örökre életbe kerülnek, de felülbírálhatja ezt az értéket a tároló adott elemein. Ha eltávolítja a TTL tulajdonságot a tárolóból, az elemek soha nem járnak le, még akkor sem, ha az előző alapértelmezett TTL-értéket explicit módon felülbírálták.
+Ha le szeretné tiltani az időt egy tárolón való működésre, és leállítja a háttérben futó folyamatot a lejárt elemek ellenőrzésével, a tárolóban lévő `DefaultTimeToLive` tulajdonságot törölni kell. A tulajdonság törlése eltér az-1 értéktől. Ha a-1 értékre állítja, a tárolóhoz hozzáadott új elemek örökre életbe kerülnek, de felülbírálhatja ezt az értéket a tároló adott elemein. Ha eltávolítja a TTL tulajdonságot a tárolóból, az elemek soha nem járnak le, még akkor sem, ha az előző alapértelmezett TTL-értéket explicit módon felülbírálták.
 
 ### <a id="dotnet-disable-ttl"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
@@ -279,7 +279,7 @@ containerResponse.Resource.DefaultTimeToLive = null;
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a következő cikkben található idő megadásáról:
 

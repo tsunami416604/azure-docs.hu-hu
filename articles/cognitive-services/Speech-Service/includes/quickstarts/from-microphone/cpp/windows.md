@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: dd31ae7b0fbbd9c411cf1bb511551bfba57a1838
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 74bc77fbb9436983c26c572b521d96795f14cfcd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795953"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818908"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,7 +50,7 @@ Az első lépések előtt:
 
 1. A **HelloWorld** alkalmazás **indításához válassza a hibakeresés > ** a **hibakeresés indítása** (vagy az **F5**billentyű lenyomása) lehetőséget.
 
-1. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás továbbítja a beszédet a Speech Services szolgáltatásnak, amely szöveget ad vissza, és visszaküldi az alkalmazásnak a megjelenítéshez.
+1. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás továbbítja a beszédet a Speech szolgáltatásnak, amely szöveget ad át, és visszaküldi az alkalmazásnak a megjelenítéshez.
 
    ![A sikeres felismerést követően a konzol kimenete](~/articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-08-console-output-release.png)
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 40b226796b4dfb9aced3c6b00eba1a12bad66894
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9223fa484d45b927059c73e23e0607526e70fae4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504024"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828926"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,7 +36,7 @@ Kövesse az alábbi lépéseket a telepítéshez:
 
 1. Nyissa meg a következőt: https://editor.swagger.io.
 1. Kattintson a **fájl**, majd az **URL importálása**elemre.
-1. Adja meg a felvágási URL-címet, beleértve a Speech Services-előfizetés régióját: `https://<your-region>.cris.ai/docs/v2.0/swagger`.
+1. Adja meg a felvágási URL-címet, beleértve a Speech Service-előfizetés régióját: `https://<your-region>.cris.ai/docs/v2.0/swagger`.
 1. Kattintson az **ügyfél előállítása** és a **Python**elemre.
 1. Mentse az ügyféloldali kódtárat.
 1. Bontsa ki a letöltött Python-Client-Generated. zip fájlt a fájlrendszerben.
@@ -101,6 +101,6 @@ Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzés
 
 Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

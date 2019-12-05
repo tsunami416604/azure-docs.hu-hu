@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5864424f003ce9254a6452d8374d78c54516f2bc
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08c1db1a8e377edd1bf9b8f1b942e65b970edf56
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322734"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803680"
 ---
 # <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Feltételes hozzáférés: megbízható hely megkövetelése az MFA-regisztrációhoz
 
@@ -26,7 +26,7 @@ Az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállí
 
 A következő házirend az összes kijelölt felhasználóra vonatkozik, akik a közös regisztrációs élmény használatával próbálnak regisztrálni, és blokkolja a hozzáférést, kivéve, ha egy megbízható hálózatként megjelölt helyről csatlakoznak.
 
-1. A **Azure Portal**keresse meg **Azure Active Directory** > **feltételes hozzáférés**lehetőséget.
+1. A **Azure Portal**keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**lehetőséget.
 1. Válassza az **új szabályzat**lehetőséget.
 1. A név mezőben adja meg a szabályzat nevét. Például **a megbízható hálózatokon található kombinált biztonsági adatok regisztrálása**.
 1. A **hozzárendelések**területen kattintson a **felhasználók és csoportok**elemre, majd válassza ki azokat a felhasználókat és csoportokat, amelyekre alkalmazni szeretné a szabályzatot.
@@ -44,7 +44,7 @@ A következő házirend az összes kijelölt felhasználóra vonatkozik, akik a 
 1. A **hozzáférés-vezérlés** > a **támogatás**elemre.
    1. Kattintson a **hozzáférés letiltása**elemre.
    1. Ezután kattintson a **Kiválasztás** elemre.
-1. **Engedélyezze a házirend engedélyezése beállítást** **a**következőre:.
+1. Állítsa a **Házirend engedélyezése** kapcsolót **Be** állásba.
 1. Ezután kattintson a **Save** (Mentés) gombra.
 
 ## <a name="next-steps"></a>Következő lépések

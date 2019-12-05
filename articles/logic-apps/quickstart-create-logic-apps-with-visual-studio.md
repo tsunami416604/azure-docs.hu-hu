@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: 49269cf2171269063de4a3cf5de1f22ebc545005
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f4d10f6b0934e7dea9779f45d0f05d7c28966965
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790820"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819165"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Gyors útmutató: automatizált feladatok, folyamatok és munkafolyamatok létrehozása Azure Logic Apps-Visual Studióval
 
@@ -191,11 +191,11 @@ Ha elkészült a logikai alkalmazással, törölje a logikai alkalmazást és a 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) a logikai alkalmazás létrehozásához használt fiókkal.
 
-1. Az Azure főmenüjében válassza az **Erőforráscsoportok** lehetőséget. Válassza ki a logikai alkalmazáshoz tartozó erőforráscsoportot, és válassza az **Áttekintés**lehetőséget.
+1. A Azure Portal menüben válassza az **erőforráscsoportok**lehetőséget, vagy keresse meg és válassza ki az **erőforráscsoportot** bármelyik oldalon. Válassza ki a logikai alkalmazáshoz tartozó erőforráscsoportot.
 
 1. Az **Áttekintés** lapon válassza az **erőforráscsoport törlése**elemet. Adja meg az erőforráscsoport nevét megerősítésként, majd válassza a **Törlés**lehetőséget.
 
-   ![„Erőforráscsoportok” > „Áttekintés” > „Erőforráscsoport törlése”](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
+   ![„Erőforráscsoportok” > „Áttekintés” > „Erőforráscsoport törlése”](./media/quickstart-create-logic-apps-with-visual-studio/clean-up-resources.png)
 
 1. Törölje a Visual Studio-megoldást a helyi számítógépről.
 
