@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 39e0a512e42dd861c0ee2c833501c7594204cb8b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110071"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806150"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Útmutató: parancsok teljesítése az ügyfélen a Speech SDK-val (előzetes verzió)
 
@@ -29,7 +29,7 @@ Ebben a cikkben a következőket fogja megtekinteni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Egy Azure-előfizetési kulcs a Speech Serviceshez
+- A Speech Service-hez készült Azure-előfizetési kulcs
   - [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com)
 - Egy korábban létrehozott egyéni parancsok alkalmazás
   - [Gyors útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)](./quickstart-custom-speech-commands-create-parameters.md)
@@ -139,7 +139,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. Mondjuk `turn on the tv`
 1. A TV vizualizációs állapotának "on" értékre kell váltania
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató: az egyéni parancsok paramétereinek megadása (előzetes verzió)](./how-to-custom-speech-commands-validations.md)

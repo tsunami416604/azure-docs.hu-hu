@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: a800336fb6fda8a0ed0af71f243936d29e8079e7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4b80004a3d818e66cc2fb61f3d611bbe3e3ded92
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706831"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807034"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Az IoT Hub eszközön található ikrek megismerése és használata
 
@@ -191,7 +191,7 @@ A megoldás háttérrendszer a következő, HTTPS protokollon keresztül elérhe
     deviceId | Az eszköz azonosítója |
     hubName | IoT Hub neve |
     operationTimestamp | A művelet [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) időbélyege |
-    iothub – üzenet – séma | deviceLifecycleNotification |
+    iothub – üzenet – séma | twinChangeNotification |
     opType | "replaceTwin" vagy "updateTwin" |
 
     Az üzenetrendszer tulajdonságai előtaggal vannak ellátva a `$` szimbólummal.

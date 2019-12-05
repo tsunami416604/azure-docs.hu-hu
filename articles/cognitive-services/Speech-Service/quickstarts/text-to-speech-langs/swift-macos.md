@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 727929efb499f32dcd42a964b6b6c8e762803590
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 616d212c9968fe740811805eb6ecdc200c749ed7
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503464"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817731"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Rövid útmutató: a beszédfelismerési szolgáltatás gyors használata macOS rendszeren a Speech SDK használatával
 
@@ -33,7 +33,7 @@ Az első lépések megkezdése előtt tekintse meg az előfeltételek listáját
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 A macOS rendszerhez készült Cognitive Services Speech SDK-t keretrendszer-csomagként terjesztik.
-A Xcode-projektekben [CocoaPod](https://cocoapods.org/), illetve manuálisan is letölthetők a https://aka.ms/csspeech/macosbinaryból, és kézzel is összekapcsolhatók. Ez az útmutató egy CocoaPod használ.
+A Xcode-projektekben [CocoaPod](https://cocoapods.org/), illetve manuálisan is letölthetők a https://aka.ms/csspeech/macosbinary ból, és kézzel is összekapcsolhatók. Ez az útmutató egy CocoaPod használ.
 
 > [!NOTE] 
 > Ez az oktatóanyag nem fog működni a 1.7.0-nél korábbi SDK-verziókkal.
@@ -83,7 +83,7 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
 1. A mintakód létrehozásához és futtatásához válassza a **termék** > **Futtatás** elemet a menüből, vagy kattintson a **Lejátszás** gombra.
 1. Miután beírt valamilyen szöveget, és rákattintott a gombra az alkalmazásban, hallania kell a szintetizált hanglejátszást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A GitHubon található minták megismerése](https://aka.ms/csspeech/samples)

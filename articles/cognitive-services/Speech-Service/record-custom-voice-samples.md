@@ -1,7 +1,7 @@
 ---
 title: Egyéni hangminták rögzítése – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Győződjön meg arról, a gyártási minőségű egyéni beszédfelismerési robusztus parancsfájl előkészítése, mindegyik hangalapú jó szakembereket és professzionális rögzítése.
+description: Egy robusztus szkript előkészítésével, a jó hangtehetségek bérbeadásával és a professzionális felvételsel kiváló minőségű egyéni hang készíthető.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,214 +10,214 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 47e1f8bf178723a5d4be323f24724214a67499e2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b5cf375b1e5e4c09617dc6ae74513d303a9a6a4a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559197"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816677"
 ---
-# <a name="record-voice-samples-to-create-a-custom-voice"></a>Hozzon létre egy egyéni beszédfelismerési rekord hangalapú minták
+# <a name="record-voice-samples-to-create-a-custom-voice"></a>Hangminták rögzítése egyéni hang létrehozásához
 
-A magas színvonalú éles egyéni beszédfelismerési létrehozása előzmények nem hangvételt, mintha kötelezettségvállalás. A központi összetevője egy egyéni beszédfelismerési hangmintát emberi beszéd nagy gyűjteménye. Rendkívül fontos, hogy ezek hangfelvételeket kiváló minőségű kell-e. Válassza egy hang szakembereket tapasztalt, így a felvételt az ilyen típusú, és azokat egy professzionális berendezések használatával illetékes felvétel mérnök által rögzített.
+A kiváló minőségű éles környezetből származó egyéni hang létrehozása nem alkalmi vállalkozás. Az egyéni hang központi összetevője az emberi beszéd hangmintáinak nagy gyűjteménye. Fontos, hogy ezek a hangfelvételek kiváló minőségűek legyenek. Válasszon ki egy olyan hangtehetséget, aki tapasztalattal rendelkezik az ilyen típusú felvételekhez, és egy hozzáértő hangvételi szakember rögzíti őket.
 
-Mielőtt elvégezné ezeket a felvételt, azonban szüksége parancsfájl: által a hangalapú szakembereket hozhat létre a hangmintát fog kell felolvasott szavakat. A legjobb eredmények érdekében a parancsfájl helyes fonetikus lefedettsége és az egyéni beszédfelismerési modell betanításához elegendő különböző kell rendelkeznie.
+A felvételek elvégzéséhez azonban szükség van egy parancsfájlra: a hangfelvételek által a hangmintáknak kimondott szavak. A legjobb eredmények elérése érdekében a szkriptnek jó fonetikusan kell rendelkeznie, és elegendő különbözőnek kell lennie az egyéni hangmodell betanításához.
 
-A professzionális hangrögzítés sok kis, de fontos részleteket fel. Ez az útmutató olyan egy ütemtervet a folyamatot, amely segít a megfelelő, következetes eredményeinek beolvasása.
+Sok kicsi, de fontos részlet a professzionális hangfelvételek létrehozásában. Ez az útmutató egy olyan folyamat ütemterve, amely segítséget nyújt a jó és konzisztens eredmények megszerzésében.
 
 > [!TIP]
-> A legmagasabb minőségű eredmények között fontolja meg a Microsoft az egyéni beszédfelismerési fejlesztéséhez vonzó. A Microsoft magas színvonalú beszédhangot a saját termékek, köztük a Cortana és az Office előállító széles körű ismeretekkel rendelkezik.
+> A legjobb minőség érdekében érdemes megfontolni a Microsoftot abban, hogy fejlessze saját hangját. A Microsoft széles körű tapasztalattal rendelkezik a saját termékeire, például a Cortana és az Office-ra való kiváló minőségű hangok készítésére.
 
-## <a name="voice-recording-roles"></a>A hangrögzítés letltása szerepkörök
+## <a name="voice-recording-roles"></a>Hangrögzítési szerepkörök
 
-Egyéni beszédfelismerési felvétel projekt négy alapvető szerepkörök szerepelnek:
+Az egyéni hangrögzítési projektben négy alapvető szerepkör található:
 
-Szerepkör|Cél
+Szerepkör|Rendeltetés
 -|-
-Hangalapú szakembereket        |A személy hangalapú vevőrendelési fog az egyéni beszédfelismerési.
-Felvétel a visszafejtés  |Hogyan felügyeli a felvétel technikai aspektusait és a rögzítés berendezések működtetésével foglalkozik.
-Igazgató            |A parancsfájl előkészíti, és a hangalapú szakembereket teljesítmény coaches.
-Szerkesztő              |Finalizes, a hangfájlokat, és felkészítheti őket a beállításhoz az egyéni beszédfelismerési portálon való feltöltéshez.
+Hangalapú tehetség        |Ez a személy hangja az egyéni hang alapját képezi majd.
+Felvételi mérnök  |Felügyeli a rögzítés technikai szempontjait, és működteti a menetíró készüléket.
+Igazgató            |Előkészíti a szkriptet, és elkészíti a hang tehetségének teljesítményét.
+Szerkesztő              |Véglegesíti a hangfájlokat, és előkészíti azokat az egyéni hangportálra való feltöltéshez.
 
-Egyéni előfordulhat, hogy töltse ki a több szerepkört. Ez az útmutató feltételezi, hogy lesz kell elsősorban a igazgató szerepkör kitöltését és humánerőforrás-egy hang szakembereket és a egy felvételt mérnök. Ha azt szeretné, hogy a felvételt saját magának, ez a cikk tartalmaz némi információt a felvételt a visszafejtés szerepkör. A szerkesztő szerepkör a munkamenetet, így az igazgató, vagy a rögzítés mérnök végezhető után nincs szükség.
+Egy személy több szerepkört is kitölthet. Ez az útmutató azt feltételezi, hogy elsődlegesen az igazgatói szerepkört fogja kitölteni, és a hangvételi és a felvételi mérnök is felveszi őket. Ha saját maga szeretné elvégezni a felvételeket, ez a cikk néhány információt tartalmaz a felvételi mérnök szerepkörről. A szerkesztői szerepkörre nincs szükség a munkamenet befejezése után, így az igazgató vagy a rögzítési mérnök is elvégezheti.
 
-## <a name="choose-your-voice-talent"></a>Válassza ki a hangalapú szakembereket
+## <a name="choose-your-voice-talent"></a>Válassza ki a hangtehetségét
 
-Actors-tapasztalattal voiceover vagy szóbeli karakter munkahelyi egyéni beszédfelismerési jó szakembereket ellenőrizze. Megfelelő szakembereket announcers és hírolvasó gyakran is megtalálhatja.
+A kommentáros vagy hangkarakteres tapasztalatokkal rendelkező szereplők jó egyéni hangtehetséget tesznek elérhetővé. A kiállítók és a hírolvasók között gyakran is talál megfelelő tehetséget.
 
-Válassza ki a hangalapú szakembereket, amelynek a természetes hangtípus, például. Hozhat létre egyedi "character" beszédhangot, lehetséges, de legyen, következetesen hajtsa végre a legtöbb szakembereket sokkal nehezebb, és részéről az erőfeszítés hangalapú törzs okozhat.
-
-> [!TIP]
-> Általában kerülje a felismerhető beszédhangot hozhat létre olyan egyéni beszédfelismerési – kivéve, ha természetesen célja az, hogy a hírességek hang előállításához. Alacsonyabb szintű ismert beszédhangot olyan általában kevésbé zavaró a felhasználók számára.
-
-Az egyik legfontosabb tényező hangalapú szakembereket kiválasztására vonatkozó konzisztencia. A felvételek kell az összes hang-, módosította őket ugyanarra a napra ugyanabban a helyiségben. Ez ideális jó felvétel eljárások és mérnöki keretében is készíthető elő.
-
-A szóbeli szakembereket a másik fele a egyenlet. Képesnek kell lenniük az állandó, a hangerő, a szurok és a tónus megszólalása érdekében. Egyértelmű diction kell. A tehetségnek emellett képesnek kell lennie szigorúan szabályozni a szurok változatát, az érzelmi befolyásolást és a beszéd stílust.
-
-Egyedi Hangüzenetek minták rögzítése több fatiguing, mint más hangalapú munka lehet. A legtöbb hangalapú szakembereket napi két vagy három órán vehet fel. Ha lehetséges korlátozza a munkamenetek három vagy négy egy hét naponta köztes ki.
-
-Arról, hogy egy hang modell felvételek kötődsz semleges kell lennie. Azt jelenti egy távozik utterance (kifejezés) nem olvasható távozik módon. Hangulatának a szintetizált prosody vezérlők segítségével később is hozzáadhatók. A szóbeli szakembereket fejlesztéséhez egy "személy", amely meghatározza az egyéni beszédfelismerési teljes hang- és érzelmi képviselő hangvételét működnek. A folyamat során meg fog azonosíthatja a milyen "semleges" hangzik, mint az adott személy.
-
-Egy személy lehet például egy természetes módon upbeat felhőszerepkör felel. Ezt "saját" hangjával előfordulhat, hogy végrehajtott műveletek közül sokat optimism jegyezze akkor is, ha ők is beszélnek neutrally. Az ilyen egy személy is leálljon azonban finom és egységes kell lennie. A kívánt elemére képet kapjon a meglévő beszédhangot által olvasmányok fog.
+Válassza ki azokat a hangtehetségeket, amelyek természetes hangja tetszik. Lehetőség van egyedi "karakter" hangokat létrehozni, de sokkal nehezebb a legtöbb tehetséget következetesen végrehajtani, és az erőfeszítés hangsúlyt eredményezhet.
 
 > [!TIP]
-> Általában érdemes a hangalapú felvétel választja ki a saját. A beszédfelismerési szakembereket kell lennie a projekt egy munkahelyi – a felvételi külön kezelhető.
+> Általában ne használjon felismerhető hangokat egyéni hang létrehozásához – kivéve, ha a cél az, hogy egy híresség beszédet hozzon létre. A kevésbé ismert hangok általában kevésbé zavaróak a felhasználók számára.
+
+A hangtehetségek kiválasztásának egyetlen legfontosabb tényezője a konzisztencia. A felvételek mindegyike úgy hangzik, mintha ugyanazon a napon, ugyanabban a nap lett volna. Ez ideális megoldás a megfelelő rögzítési eljárások és mérnöki megoldások révén.
+
+A hangtehetség az egyenlet másik fele. Képesnek kell lenniük az állandó, a hangerő, a szurok és a tónus megszólalása érdekében. A tiltás törlése kötelező. A tehetségnek emellett képesnek kell lennie szigorúan szabályozni a szurok változatát, az érzelmi befolyásolást és a beszéd stílust.
+
+Az egyéni hangminták rögzítése több fárasztó is lehet, mint más típusú hangminták. A legtöbb hangtehetség naponta kettő vagy három órát is képes rögzíteni. A munkamenetek legfeljebb három vagy négy hétig állíthatók be, és ha lehetséges, az egyik napról a másikra.
+
+A hangmodellek számára készített felvételeknek érzelmileg semlegesnek kell lenniük. Ez azt eredményezi, hogy egy szomorú Kimondás nem olvasható be szomorú módon. A prosody vezérlők segítségével később is hozzáadhatók a szintetizált beszédekhez. A hangtehetségek használatával olyan "Personát" fejleszthet, amely az egyéni hang teljes hangját és érzelmi tónusát határozza meg. A folyamat során meg kell határoznia, hogy milyen "semleges" hangzik a Persona számára.
+
+Előfordulhat például, hogy egy Persona egy természetesen optimista személyiséggel rendelkezik. Tehát a "saját" hangon is szerepelhetnek az optimizmussal kapcsolatos megjegyzések, még akkor is, ha semleges módon beszélnek. Egy ilyen személyiségi tulajdonság azonban finom és konzisztens lehet. Hallgassa meg a meglévő hangok olvasásait, hogy megtudja, mi a célja.
+
+> [!TIP]
+> A hangfelvételeket általában saját maga szeretné elkészíteni. A hangtehetségnek a projekthez tartozó, munkahelyi használatra vonatkozó szerződéssel kell rendelkeznie.
 
 ## <a name="create-a-script"></a>Parancsfájl létrehozása
 
-Minden olyan egyéni beszédfelismerési munkamenet rögzítése kiindulópontjaként a parancsfájlt, amely tartalmazza a hangalapú szakembereket által felolvasott lehet a kimondott szöveg. ("Beszédmódok" kifejezés magában foglalja a teljes mondatokat és rövidebb mondatok is.)
+Az egyéni hangrögzítési munkamenet kiindulási pontja a szkript, amely tartalmazza a hangtehetségek által hosszúságú kimondott szöveg kívánt szöveget. (A "hosszúságú kimondott szöveg" kifejezés magában foglalja a teljes mondatokat és a rövidebb kifejezéseket is.)
 
-A parancsfájlban megcímkézzen származhatnak bárhol: fantasztikus, nem fantasztikus, beszédek, news jelentések és bármi más elérhető átiratok nyomtatott űrlap. Ha azt szeretné, hogy a hangját does is az adott típusú szavakat (például terminológiát vagy programozási szakkifejezéseivel), érdemes mondatokat egyetemi tanulmányok vagy műszaki dokumentáció tartalmazza. A lehetséges jogi problémák rövid leírását, tekintse meg a ["Legalities"](#legalities) szakaszban. A saját szöveget is írhat.
+A szkriptben található hosszúságú kimondott szöveg bárhonnan elérhető: fikció, nem fikció, beszédek átirata, híradás és bármi más nyomtatott formában. Ha biztos szeretne lenni abban, hogy a hangja jól működik-e az adott típusú szavak (például az orvosi terminológia vagy a programozási zsargon) esetében, érdemes lehet olyan mondatokat is bevonni a tudományos dokumentumokból vagy a technikai dokumentumokból. A lehetséges jogi problémák rövid megvitatására tekintse meg a ["törvényességek"](#legalities) című szakaszt. Írhat saját szöveget is.
 
-A kimondott szöveg nem kell azonos forrásból, vagy a forrás ugyanolyan típusú származnak. Nem is szükséges, ami ehhez egymással. Azonban akkor, ha fogja használata állítsa mondatokat (például "sikeresen bejelentkezett") az speech-alkalmazás ügyeljen arra, hogy a szkriptet fogja össze őket. Ez lehetőséget biztosít az egyéni beszédfelismerési jobb esélye a ezeket a kifejezéseket is felel. És kell való használatra megad egy felvételt szintetizált helyett, ha már rendelkezik, az azonos használatának.
+A hosszúságú kimondott szöveg nem kell ugyanabból a forrásból vagy azonos forrásból származnia. Még semmit sem kell tenniük egymással. Ha azonban beállított kifejezéseket fog használni (például "sikeresen bejelentkezett") a beszédfelismerési alkalmazásban, ügyeljen rá, hogy a szkriptben szerepeljenek bennük. Így az egyéni hang nagyobb eséllyel kimondhatja ezeket a kifejezéseket. Ha azonban úgy dönt, hogy a szintetizált beszéd helyett egy felvételt használ, akkor már ugyanazt a hangot fogja látni.
 
-Kulcsot hangalapú szakembereket kiválasztása a konzisztencia pedig különböző a hallmark jó parancsfájlra. A szkript számos más szavakat és a mondat hosszúságú, és a hangulatokra különböző mondatokat tartalmaznia kell. Minden nyelven hang mindig és számos olyan környezeteket kezeli őket több kell lennie (nevű *fonetikus lefedettség*).
+Habár a hangtehetségek kiválasztásának kulcsa a konzisztencia, a Variety egy jó parancsfájl fémjelzi. A szkriptnek számos különböző szót és mondatot kell tartalmaznia, különböző mondatokkal, struktúrákkal és hangulatokkal. A nyelv minden hangjának többször és számos kontextusban kell szerepelnie ( *fonetikus lefedettségnek*nevezik).
 
-Továbbá a szöveget kell tartalmazniuk, összes lehetséges, hogy az adott hang írásban jelölhető, és helyezze el az egyes hang különböző helyeken a mondatokban. Deklaratív mondatokat és kérdéseket is érdemes lehet tartalmazza, és olvassa el a megfelelő intonation.
+Emellett a szövegnek tartalmaznia kell egy adott hang írásos megjelenítésének összes módját, és az egyes hangokat a mondatokban különböző helyeken helyezheti el. A deklaratív mondatokat és kérdéseket is bele kell foglalni, és a megfelelő hanglejtéssel kell olvasni.
 
-Nehéz írni egy parancsfájlt, amely biztosít *éppen elegendő* ahhoz, hogy a Custom Speech-portál hozhat létre egy jó hangalapú adatokat. A gyakorlatban a legegyszerűbb módja, hogy egy parancsfájl, amely hatékony fonetikus lefedettséget biztosít az minták nagy számú. A Microsoft által nyújtott standard beszédhangot utterances tízezer lett létrehozva. Jegyezze fel a több ezer utterances legalább egy gyártási minőségű egyéni beszédfelismerési hozhat létre néhány előkészített kell lennie.
+Nehéz megírni egy olyan parancsfájlt, amely *elegendő* adatmennyiséget biztosít ahhoz, hogy a Custom Speech-portál jó hangvételt hozzon létre. A gyakorlatban a megbízható fonetikus lefedettséget biztosító szkriptek legegyszerűbb módja, ha nagy mennyiségű mintát tartalmaz. A Microsoft által biztosított standard hangok több tízezer hosszúságú kimondott szöveg készültek. Fel kell készülnie arra, hogy legalább néhány ezer hosszúságú kimondott szöveg feljegyezzen, hogy minőségi egyéni hangvételt hozzon létre.
 
-Ellenőrizze a parancsfájl alaposan a hibákat. Ha lehetséges valaki más próbálja túl van. Amikor a szakembereket futtatja a parancsfájl segítségével, valószínűleg az néhány további hibák tényleges lesz.
+A parancsfájlt alaposan tekintse meg a hibákért. Ha lehetséges, azt is ellenőrizze, hogy valaki más-e. Ha a szkripten keresztül futtatja a tehetségét, valószínűleg néhány hibát fog elsajátítani.
 
-### <a name="script-format"></a>Parancsfájl-formátum
+### <a name="script-format"></a>Parancsfájl formátuma
 
-A szkript írhat a Microsoft Word programban. A parancsfájl a rögzítési munkamenet közben van, így beállíthatja úgy találja egyszerűen dolgozhat bármilyen módon. A szövegfájl, amely szükséges az egyéni beszédfelismerési portal külön-külön létrehozni.
+A parancsfájlt a Microsoft Wordben is megírhatja. A szkript a rögzítési munkamenet során használható, így bármilyen módon megadhatja, hogy könnyen működjön. Hozza létre az egyéni hangportál számára szükséges szövegfájlt külön.
 
-Alapvető parancsprogram formátum három oszlopot tartalmaz:
+Az alapszintű parancsfájlok formátuma három oszlopot tartalmaz:
 
-* Az utterance (kifejezés), 1-gyel kezdődik száma. Számozása megkönnyíti a Studio hivatkozni egy adott utterance (kifejezés) mindenki számára ("próbálkozzon szám 356 újra"). A Word bekezdés számozása szolgáltatás segítségével automatikusan száma a tábla sorait.
-* Egy üres oszlop, ahol fogja írni a lekérési szám, vagy minden kimondásakor segítséget nyújtanak a befejezett felvétel az található kód idő.
-* Az utterance (kifejezés) maga szövege.
+* A Kimondás száma, 1-től kezdődően. A számozás megkönnyíti a Studióban mindenki számára, hogy egy adott részletre hivatkozzon ("próbálkozzon újra a 356 számmal"). A Word bekezdés számozási funkciójával a tábla sorait automatikusan számba állíthatja.
+* Egy üres oszlop, amelyben minden egyes kiíráshoz szükséges számot vagy időpontot kell írni, hogy segítsen a kész rögzítésben.
+* A Kimondás szövege.
 
 ![Példaszkript](media/custom-voice/script.png)
 
 > [!NOTE]
-> A legtöbb studios rögzítése rövid néven szegmensek *veszi*. Minden egyes hajtsa végre a megfelelő általában 10 – 24 kimondott szöveg tartalmazza. A lekérési szám csak megállapítva is használhatók az utterance (kifejezés) később található. A studióban, amely arra törekszik, hosszabb felvételek rögzítését, ha szeretné inkább vegye figyelembe az idő kódjában. A studio egy neves idő megjelenítése fog rendelkezni.
+> A legtöbb stúdió-rekord az úgynevezett rövid szegmensekben *szerepel.* A Take általában 10 – 24 hosszúságú kimondott szöveg tartalmaz. A Take number (belevételi szám) értékének megkeresése elegendő ahhoz, hogy később is megkereshető legyen. Ha olyan Studióban végez felvételt, amely inkább több felvételt szeretne készíteni, érdemes megjegyezni az időkódot. A Studióban látható idő jelenik meg.
 
-Után minden sort írhat jegyzeteket, hagyja elég hely. Győződjön meg arról, hogy nincs utterance (kifejezés) oldalai között van felosztva. A lapok száma, és nyomtassa ki a parancsfájl a papír oldalán.
+Az egyes sorok után hagyjon elég helyet a megjegyzések írásához. Ügyeljen arra, hogy ne Ossza szét a lapok között a teljes kiosztást. Adja meg a lapok számát, és nyomtassa ki a szkriptet a papír egyik oldalára.
 
-Nyomtassa ki a parancsfájl három másolata: egyet a szakembereket, egyet a visszafejtés és egyet a igazgató, (,). A tanulmány klip staples helyett használjon: egy tapasztalt hangalapú előadó elkülönített az oldalakat a lapok vannak kapcsolva, így a zaj elkerülése érdekében.
+Nyomtassa ki a szkript három példányát: egyet a tehetséghez, egyet a mérnökhöz, egyet pedig az igazgatóhoz (Ön). A tűzés helyett a gemkapocs használata: egy tapasztalt hangművész elkülöníti a lapokat, hogy elkerülje az oldalak bekapcsolását.
 
 ### <a name="legalities"></a>Legalities
 
-Szerzői jogi szerzői jogvédelem alatt álló szöveg egy szereplő olvasási előfordulhat, hogy a teljesítmény, amelynek a szerző a munka kell bude kompenzována. A teljesítmény nem ismerhető fel a végtermékben, az egyéni beszédfelismerési. Még ha így nem megalapozott a jogszerűségét, szerzői jogvédelem alatt álló munkahelyi használatának erre a célra. A Microsoft nem biztosít jogi tanácsadásként ennél a hibánál; Tekintse meg a saját tanácsadóként.
+A szerzői jogi törvények szerint a szerzői jog által védett szöveg elolvasása olyan teljesítmény lehet, amelynek a feladatának elvégzését kompenzálni kell. Ez a teljesítmény nem ismerhető fel a végtermék, az egyéni hang. Ennek ellenére az erre a célra szolgáló szerzői jog használatának jogszerűsége nem jól bevált. A Microsoft nem tud jogi tanácsot adni a probléma megoldásához; forduljon a saját Tanácsához.
 
-Szerencsére a lehetőség a problémák teljes egészében elkerülése érdekében. Nincsenek számos forrásból szöveg engedéllyel vagy licenc nélkül is használhatja.
+Szerencsére lehetséges elkerülni ezeket a problémákat. A szöveg számos forrást használhat engedély vagy licenc nélkül.
 
-|Szöveg forrás|Leírás|
+|Szöveges forrás|Leírás|
 |-|-|
-|[CMU tavi forrásgyűjteményébe](http://festvox.org/cmu_arctic/)|Kifejezetten a speech összefoglaló projektekben használható out-az-szerzői jogok a kiválasztott készül 1100 mondatokat. Egy remek kiindulási pont.|
-|Már nem működik.<br>a szerzői jogi|Általában works 1923 előtt közzé. Az angol nyelvű tájékoztatáshoz [projekt Gutenberg](https://www.gutenberg.org/) kínál több ezer, az ilyen működik. Előfordulhat, hogy szeretné, a nyelv modern angol közelebb lesz újabb works összpontosíthat.|
+|[CMU Arctic Corpus](http://festvox.org/cmu_arctic/)|Az out-of-Copyright által kiválasztott 1100 mondatok kifejezetten a beszédfelismerési projektekben használhatók. Kiváló kiindulási pont.|
+|Már nem működik<br>szerzői jog|A általában a 1923-nél korábbi verziókban van közzétéve. Angol nyelven a [Project Gutenberg](https://www.gutenberg.org/) több tízezer ilyen munkát kínál. Érdemes lehet az újabb verzióra összpontosítani, mivel a nyelv közelebb lesz a modern angolhoz.|
 |Kormányzati&nbsp;működik|A Egyesült Államok kormányzat által létrehozott alkotások nem tartoznak a Egyesült Államokra, bár a kormány más országokban/régiókban is igényelhet szerzői jogokat.|
-|Nyilvános tartományt|Melyik copyright explicit módon biztosítják, illetve, hogy működik a nyilvános tartomány rendelkezik lett kijelölve. Nem lehet elengedni néhány jogi szabályozásainak teljes egészében a szerzői jog lehetséges.|
-|Permissively licenccel rendelkező működése|Például a Creative Commons licencet, vagy a GNU ingyenes dokumentáció licenc (GFDL) forgalmazva működik. Wikipedia a GFDL használ. Néhány licenccel, azonban előfordulhat, hogy korlátozásokat alkalmazzanak a teljesítmény, a licencelt tartalom, amely hatással lehet egy egyéni beszédfelismerési modell létrehozását, olvassa el a licencet.|
+|Nyilvános tartomány|Azok a munkálatok, amelyekhez kifejezetten elutasításra került a szerzői jog, vagy amelyeket a nyilvános tartományhoz rendeltek. Előfordulhat, hogy a szerzői jogok teljes körű lemondása bizonyos jogszabályokban nem lehetséges.|
+|Permissively – licencelt működés|Az olyan licencek keretében terjesztett munkák, mint a Creative Commons vagy a GNU Free dokumentációs licence (GFDL). A wikipedia a GFDL használja. Bizonyos licencek azonban korlátozásokat szabhatnak a licencelt tartalom teljesítményére, ami hatással lehet az egyéni hangmodell létrehozására, ezért alaposan olvassa el a licencet.|
 
 ## <a name="recording-your-script"></a>A szkript rögzítése
 
-Jegyezze fel a található szakmai felvétel stúdióban, amely a szkriptet az hangalapú során. A rögzítés érzékelőadatainak, a megfelelő eszközök és működjön, a megfelelő személyeknek rendelkeznek. Nem, a rögzítés mulassza fizet.
+Jegyezze fel a szkriptet egy olyan Professional Recording Studióban, amely a hangvételre specializálódott. Egy regisztráló-standtal, a megfelelő berendezéssel és a megfelelő személyekkel fognak működni. A rögzítés nem teszi ki a szűkös terhelést.
 
-Beszéljen a projektről a Studio rögzítési mérnökével, és hallgassa meg a véleményét. A felvétel alig vagy egyáltalán nem dinamikus tartományának tömörítés (legfeljebb 4:1) kell rendelkeznie. Rendkívül fontos, hogy a hanganyag konzisztens kötet és a egy magas jel zaj arány rendelkezik ugyanakkor nemkívánatos hangok ingyenes.
+Beszéljen a projektről a Studio rögzítési mérnökével, és hallgassa meg a véleményét. A rögzítésnek kis vagy egyetlen dinamikus tartományból álló tömörítéssel kell rendelkeznie (legfeljebb 4:1). Kritikus fontosságú, hogy a hang konzisztens kötettel rendelkezzen, és magas a jelek és a zaj aránya, miközben a nem kívánt hangokat nem szabad használni.
 
-### <a name="do-it-yourself"></a>Ön megteheti
+### <a name="do-it-yourself"></a>Saját magának
 
-Ha azt szeretné, hogy a felvétel saját maga is ahelyett, a rögzítés studióba, itt látható egy rövid ismertetését. Otthoni felvétel és kínálja a hallgatóknak márkáik, köszönhetően egyszerűbb, mint valaha használatával megtalálhatja a helyes felvétel tanácsokat és erőforrások online.
+Ha saját kezűleg szeretné elvégezni a rögzítést, ahelyett, hogy a rögzítési studióba kerül, itt egy rövid ismertetőt talál. A Home Recording és a podcasting növekedésének köszönhetően minden eddiginél könnyebben találhatja meg a megfelelő rögzítési tanácsokat és erőforrásokat online.
 
-A "rögzítés érzékelőadatainak" kell lennie egy kis szoba nincs észrevehető echo vagy a "hely képviselő hangvételét." Azt is csendes és a lehető soundproof kell lennie. A falak drapériát segítségével csökkentheti az echo és semlegesítsük vagy "deaden" a hangot a helyet.
+A "Recording Booth" olyan kis helyiségnek kell lennie, amely nem érzékelhető visszhangot vagy "Room Tone". A lehető legcsendesnek és a hangszigeteltnek kell lennie. A falakon lévő drapériák segítségével csökkentheti az ECHO és a semlegesítés vagy a "deaden" a helyiség hangját.
 
-Használjon szánt rögzítése a voice studio magas színvonalú hűtő mikrofont (röviden "mic" jelöli). Sennheiser AKG és még újabb nagyítás megkérhetném jó eredmények eredményezhet. A mic vásárolni, vagy bérelhet egy helyi audiovizuális bérleti cég közül. Keressen egy olyan USB-kapcsolat. Az ilyen típusú mic kényelmesen egyesíti a mikrofon elem preamp és analóg digitális converter egy csomagot, leegyszerűsíti a összekapcsolása.
+A hangrögzítéshez a kiváló minőségű Studio kondenzátor mikrofon ("MIC") használható. A Sennheiser, az AKG és az újabb nagyítású mikrofonok is jó eredményeket tudnak eredményezni. Vásárolhat egy mikrofont, vagy béreljen egy helyi hang-vizuális kölcsönzési vállalatot. Keresse meg az egyiket egy USB-adapterrel. Ez a típusú mikrofon kényelmesen kombinálja a mikrofon elemét, az előerősítő és az analóg – digitális átalakítót egyetlen csomagba, egyszerűbbé téve a kapcsolódást.
 
-Egy analóg mikrofon is használhatja. Számos bérleti házak "szüreti" mikrofonok elismert a hangalapú karakter kínálnak. Vegye figyelembe, hogy a professzionális analóg fogaskerék használ elosztott terhelésű XLR összekötők, nem pedig az 1/4-es beépülő fogyasztói berendezést használ. Ha analóg, is szüksége lesz egy preamp és a egy számítógép hang felületen ezeket az összekötőket.
+Analóg mikrofont is használhat. Számos bérelt ház "vintage" mikrofont kínál a hangkarakterek számára. Vegye figyelembe, hogy a Professional Analog Gear kiegyensúlyozott XLR-összekötőket használ, nem pedig a felhasználói berendezésekben használt 1/4 hüvelykes beépülő modult. Ha az analógt választja, szüksége lesz egy előerősítő és egy számítógép-hangillesztőre is ezekkel az összekötővel.
 
-Telepítse a mikrofon egy önálló vagy bumm, és telepítése előtt a mikrofon "plosive" mássalhangzók, például a "p" és "b". a háttérzaj kiküszöbölése pop szűrő Néhány mikrofonok, amely elkülöníti azokat a rezgés bővíteni, ami hasznos lehet a felfüggesztés csatlakoztatási kapható.
+Telepítse a mikrofont egy állványra vagy fellendülésre, és telepítsen egy pop-szűrőt a mikrofon elé a "zárhang" mássalhangzók (például "p" és "b") által okozott zaj elkerülése érdekében. Egyes mikrofonok olyan felfüggesztési csatlakoztatással rendelkeznek, amely elkülöníti őket a standon található rezgéstől, ami hasznos lehet.
 
-A szóbeli szakembereket a mikrofon konzisztens távolságra kell maradnia. A padlón lévő szalag használatával megjelölheti, hol kell állnia. Szeretném a szakembereket részesíti előnyben, különös gondot mic távolság figyelése, és elkerülheti az elnöki zaj igénybe vehet.
+A hangtehetségnek konzisztens távolságban kell maradnia a mikrofontól. A padlón lévő szalag használatával megjelölheti, hol kell állnia. Ha a tehetség inkább ülni szeretne, ügyeljen arra, hogy figyelje a MIC-távolságot, és elkerülje az elnöki zajt.
 
-Használjon a parancsfájl tárolásához. Kerülje a horgászat bővíteni, hogy tükrözzék, hang, mikrofon felé.
+A szkript tárolására használjon állványt. Kerülje az állvány Horgászatát, hogy az tükrözze a hangerőt a mikrofon irányába.
 
-A személy, aki a rögzítés készülék – a mérnök – a szakembereket valamilyen módon a szakembereket a rögzítés érzékelőadatainak az kommunikáljon az egy helyiségben kell lennie (egy *talkback kapcsolatcsoport).*
+A regisztráló berendezést üzemeltető személy – a mérnök – a tehetségtől különálló helyiségben kell lennie, és valamilyen módon a rögzítési standon ( *Talkback-áramkör)* található tehetséggel kommunikálhat.
 
-A felvételt, kis zaj, amennyire csak lehetséges, amelynek az a célja egy 80-as-db jel zaj aránynak vagy jobb tartalmaznia kell.
+A rögzítésnek a lehető legkevesebb zajt kell tartalmaznia, amelynek célja egy 80-db jel-zaj arány vagy jobb.
 
-A "érzékelőadatainak," zaj ahol származik, és az OK kiküszöbölése vizsgálhatja a csend felvétel szorosan fog. Közös zaj forrásai szellőzőnyílásokkal, fluoreszcens világos fénycsőelőtétek, forgalom a közeli utak és berendezések ventilátor (még akkor is, a jegyzetfüzet számítógépek lehet ventilátorok). Mikrofon és kábelek folytattuk a munkát a közeli AC-háttérszolgáltatást, általában egy hum elektromos zaj vagy lelkesítő. Egy lelkesítő is okozhatja. egy *földön hurok*, amely több mint egy áramkör-e csatlakoztatva berendezés okozza.
+Hallgassa meg szorosan a "standján" lévő csend rögzítését, és állapítsa meg, hogy hol található a zaj, és ne zárja ki az okot. A zaj gyakori forrásai a légszellőzők, a fluoreszkáló fényanyagok, a közeli utakon lévő forgalom és a berendezések rajongói (még a notebookos számítógépek is rendelkezhetnek). A mikrofonok és a kábelek a közeli AC-vezetékektől, általában a zümmögéstől vagy a Buzz-tól származó elektromos zajt is választhatnak. A zümmögés oka egy *körkörös hurok*is lehet, amelyet a berendezések több elektromos áramkörhöz való csatlakoztatása okoz.
 
 > [!TIP]
-> Bizonyos esetekben fogja tudni használni egy hangszínszabályzó vagy egy zaj csökkentésére szoftverfrissítési beépülő modul segítségével távolítsa el a felvételek zaj, bár minden esetben célszerű állítsa le a forrásban.
+> Bizonyos esetekben lehet, hogy egy Hangszínszabályzót vagy egy zajcsökkentő szoftveres beépülő modult használ a felvételekből származó zaj eltávolításához, de mindig a legjobb, ha leállítja a forrását.
 
-A legtöbb digitális felvétel elérhető dinamikus tartományának overdriving nélkül történik, így szintek megadása Jelenti a hanganyag hangos állítva, de hangos nem úgy, hogy az informatikai torzított válik. A jó felvétel hullám példa a következő képen:
+Állítsa be a szinteket úgy, hogy a rendszer a rendelkezésre álló dinamikus tartomány nagy részét túlvezetés nélkül használja. Ez azt jelenti, hogy a hang hangosan van beállítva, de nem annyira hangos, hogy torzul. A megfelelő rögzítés hullámformájának példája az alábbi képen látható:
 
-![Egy jó felvétel hullám](media/custom-voice/good-recording.png)
+![Egy jó rögzítési hullámforma](media/custom-voice/good-recording.png)
 
-Itt a tartomány (magasság) a legtöbb használatos, de a jel a legmagasabb csúcsok nem érte el a top vagy az ablak alsó részén. Is láthatja, hogy a csend elszámolása megközelíti a dinamikus kiosztás vízszintes vonal, egy alacsony zaj emelet jelzi. Ez a felvétel elfogadható dinamikus tartomány és a jel zaj arány rendelkezik.
+Itt a legtöbb tartomány (magasság) használatos, de a jel legmagasabb csúcsa nem éri el az ablak tetején vagy alján. Azt is láthatja, hogy a rögzítés csendje körülbelül egy vékony vízszintes vonalat mutat, amely egy alacsony zajszintet jelez. A rögzítés elfogadható dinamikus tartománnyal és a jel-zaj aránysal rendelkezik.
 
-Közvetlenül a számítógéphez egy kiváló minőségű hang felület vagy egy USB-porttal, attól függően, a mic rekordot használ. Analóg, tartsa meg a hang lánc egyszerű: mic, preamp, hang felület, a számítógép. Mindkét licencelheti [Avid Pro eszközök](https://www.avid.com/en/pro-tools) és [Adobe Audition](https://www.adobe.com/products/audition.html) havi elfogadható áron. Ha a költségvetés rendkívül szoros, próbálja ki az ingyenes [Audacity](https://www.audacityteam.org/).
+Az Ön által használt MIC-től függően közvetlenül a számítógépre kell rögzíteni a kiváló minőségű hang-vagy USB-porton keresztül. Az Analog esetében az egyszerű hangláncot a következőket kell megtartani: MIC, előerősítő, hang interfész, számítógép. A [lelkes Pro-eszközöket](https://www.avid.com/en/pro-tools) és az [Adobe Audition](https://www.adobe.com/products/audition.html) -t havonta, ésszerű költséggel is elvégezheti. Ha a költségvetés rendkívül szűk, próbálja ki az ingyenes [Audacityt](https://www.audacityteam.org/).
 
-Jegyezze fel minőségben 44,1 kHz 16 bites monophonic (CD), vagy még jobb. Aktuális állapot,-legújabb 48 kHz 24 bites esetén a berendezés támogatja azt. Akkor lesz lefelé-sample 16 kHz 16 bites, a hang az egyéni beszédfelismerési portálra való mentése előtt. Továbbra is hogy megéri rendelkezik egy kiváló minőségű eredeti rögzítése abban az esetben, ha módosítások szükségesek.
+Rekord: 44,1 kHz 16 bites egyszólamú (CD-minőség) vagy jobb. A jelenlegi legkorszerűbb a 48 kHz 24 bites, ha a berendezés támogatja azt. Az egyéni hangportálra való beküldése előtt a rendszer leállítja a hangját 16 kHz-re. Mégis fontos, hogy az események szerkesztéséhez kiváló minőségű eredeti felvételre van szükség.
 
-A szerepkörök igazgató, a visszafejtés és szakembereket szolgálja ki a különböző emberek ideális esetben van. Ne kísérelje meg ezt az összes saját magának. A csippentés több személy lehet az igazgató és a visszafejtés is.
+Ideális esetben a különböző személyek a Director, a Engineering és a Talent szerepköreiben szolgálnak. Ne próbálja meg önállóan. Egy csipetnyi egy személy lehet az igazgató és a mérnök is.
 
-### <a name="before-the-session"></a>Mielőtt a munkamenet
+### <a name="before-the-session"></a>A munkamenet előtt
 
-Elkerülése érdekében, ami pazarolja a studio idő, futtassa a parancsfájlt a hangalapú szakembereket keresztül a rögzítési munkamenet előtt. Míg a hangtehetségek megismerik a szöveget, megtekinthetik az ismeretlen szavak kiejtését.
+A Studio-idő pazarlásának elkerülése érdekében a rögzítési munkamenet előtt futtassa a parancsfájlt a hangtehetséggel. Míg a hangtehetségek megismerik a szöveget, megtekinthetik az ismeretlen szavak kiejtését.
 
 > [!NOTE]
-> A legtöbb felvétel studios elektronikus megjelenítését a rögzítés érzékelőadatainak parancsfájlok kínálnak. Ebben az esetben a run-through megjegyzések közvetlenül írja be a parancsfájl-dokumentumot. Érdemes a papír másolatot feljegyzéseket a munkamenet során azonban továbbra is. A legtöbb mérnökök túl érdemes egy merevlemez másolása. És továbbra is gondoskodni a harmadik a szakembereket a biztonsági nyomtatott példány, abban az esetben, ha a számítógép nem működik.
+> A legtöbb regisztráló stúdió a szkriptek elektronikus megjelenítését kínálja a rögzítési fülkében. Ebben az esetben közvetlenül a szkript dokumentumában adja meg a futtatási megjegyzéseit. Továbbra is azt szeretné, hogy a dokumentum másolata vegyen fel megjegyzéseket a munkamenet során. A mérnökök többsége is szeretne egy merevlemezt másolni. És továbbra is szeretne egy harmadik nyomtatott másolatot készíteni a tehetségről, ha a számítógép nem áll le.
 
-A beszédfelismerési szakembereket megcélzó (az "operatív szót") az utterance (kifejezés) szeretné word kérheti. Mondja el nekik, hogy természetes olvasásra van szüksége, amely nem különösebb hangsúlyt mutat. Kiemelés speech synthesized van; Ha adhatók hozzá nem lehet az eredeti felvétel részét.
+A hangalapú tehetség megkérdezheti, hogy melyik szót kívánja kiemelni ("operatív szó"). Mondja el nekik, hogy természetes olvasásra van szüksége, amely nem különösebb hangsúlyt mutat. Hangsúlyt adhat hozzá a beszéd szintetizálása során. nem lehet az eredeti rögzítés része.
 
-Közvetlenül a szakembereket a jelszórészek mondjuk ki szavakat. A parancsfájl minden szó kell lennie ejtsd formában. Hangok nem szabad nincs megadva vagy slurred, gyakori az alkalmi-beszéd átalakítás, együttesen *, kivéve, ha azok alkalmazáskonfigurációjának ezzel a módszerrel a szkriptben*.
+A tehetséget elkülönítve kimondhatja a szavakat. A szkript minden szavát írásban kell kiejteni. A hangokat nem szabad kihagyni vagy összekeverni, ahogyan az az alkalmi beszédben gyakori, *kivéve, ha a parancsfájlban nem írták*.
 
-|Írt szöveg|A nem kívánt hangvételt, mintha kiejtése|
+|Írott szöveg|Nemkívánatos véletlen kiejtés|
 |-|-|
-|soha nem szeretné, hogy Ön|soha nem szeretné, hogy Ön|
-|négy jelzőfény|ott van a négy lámpa|
-|hogyan alakul mai időjárás|Hogyan történik az adatok "mai időjárás|
-|a kis barátjának búcsút|Tegyük fel, saját lil hello "typu friend|
+|Soha ne adja meg|Soha ne adja meg|
+|négy jelzőfény van|négy lámpa van|
+|a mai Időjárás|Mi a mai Időjárás|
+|kis barátomnak köszönhető|mondja el a Lil barátomnak|
 
-A szakembereket kell *nem* adja hozzá a szavak közötti különböző szünetel. A mondat továbbra is áramlásának magától értetődő, kevés formális riasztások hang közben is. Ezt a gondot megkülönböztetést kellhet eljárás is igénybe vehet.
+A tehetség *nem* adhat hozzá különböző szüneteltetéseket a szavak között. A mondatnak természetesen természetesnek kell lennie, még akkor is, ha egy kis formálisan hangzik. Ez a részletes különbségtétel a helyesség gyakorlását is elvégezheti.
 
 ### <a name="the-recording-session"></a>A rögzítési munkamenet
 
-Hozzon létre egy felvételt, referencia vagy *egyezés fájlt,* egy tipikus utterance (kifejezés), a munkamenet elején annak. Ismételje meg ezt a sort, hogy a szakembereket minden oldalon fel, tehát. Minden alkalommal, amikor, hasonlítsa össze az új rögzítés-referenciáját. Ez az eljárás segítségével a szakembereket a kötetet, tempo, lényegét és intonation konzisztens marad. Eközben a mérnök használhatja az egyezés fájl hivatkozásként van listázva szinteket és az e hang.
+Hozzon létre egy hivatkozási rögzítést vagy egy *egyező fájlt* a munkamenet elején. Kérje meg a tehetséget, hogy ismételje meg ezt a sort minden oldalon vagy így. Minden alkalommal, amikor összehasonlítja az új felvételt a hivatkozással. Ez a gyakorlat segít a tehetségnek a mennyiség, a tempó, a szurok és a hanglejtés egységességének megőrzése terén. Eközben a mérnök is használhatja a fájl egyeztetését a hangszintek és a teljes konzisztencia tekintetében.
 
-A match fájl különösen fontos, ha rögzítés folytatásához, vagy egy másik napot az szünet után. Érdemes a szakembereket a néhányszor, lejátszásához, és ismételje meg minden egyes alkalommal, amíg nem jól megfelelő őket.
+Az egyeztetési fájl különösen akkor fontos, ha egy megszakítás után vagy egy másik nap múlva folytatja a rögzítést. Néhány alkalommal szeretné lejátszani a tehetséget, és minden alkalommal ismételje meg őket, amíg azok nem megfelelőek.
 
-A részletes például és a egy kis ideig, mielőtt minden kimondásakor szüneteltetése a szakembereket coach. Jegyezze fel a néhány másodperc csend között a kimondott szöveg. Szavak kell lennie ejtsd ugyanúgy jelennek meg, figyelembe véve a környezet minden alkalommal. Például "jegyezze fel" mivel a művelet van ejtsd eltérően a "rekord" főnévként.
+Vegye igénybe a tehetségét, és szakítson meg egy kis időt az egyes részletek előtt. Rögzítsen néhány másodperces csendet a hosszúságú kimondott szöveg között. A szavakat minden egyes alkalommal meg kell adni, a kontextust figyelembe véve. Például a "Record" utasítás a "Record" kifejezéstől eltérőként van kimondva.
 
-Jegyezze fel a helyes öt másodpercenként az első rögzítés előtt csend rögzítheti a "hely képviselő hangvételét." Ez az eljárás a minden fennmaradó lényeget a felvételt a meghiúsult lépések kompenzációjához egyéni beszédfelismerési portál segítségével.
-
-> [!TIP]
-> Igazán rögzítésére szüksége a hangalapú szakembereket érdekében, hogy csak azok a sorok monophonic (single-csatorna) felvétel. Azonban ha sztereó rögzíti, a második csatorna segítségével rögzítse az adott sorokat tárgyalása rögzítése a vezérlő helyiségben a chatter, vagy vesz igénybe. A verzió, az egyéni beszédfelismerési portal feltöltött, távolítsa el a nyomon követése.
-
-Szorosan, figyelési, fejhallgatót a hangalapú szakembereket teljesítménye. Helyes, de természetes diction írásmódja megfelelő és nem kívánt hangok hiánya keres. Ne habozzon, kérje meg a szakembereket újra jegyezze fel az utterance (kifejezés), amely nem felel meg ezeknek a szabványoknak.
+Rögzítsen egy jó, öt másodperces csendet az első felvétel előtt, hogy rögzítse a "helyiség tónusát". Ezzel a gyakorlattal az egyéni hangportál kompenzálja a felvételek fennmaradó zajait.
 
 > [!TIP]
-> Ha nagy számú utterances használ, egy egyetlen utterance (kifejezés) nem feltétlenül a eredő egyéni beszédfelismerési észrevehető hatása. További legcélszerűbb egyszerűen megjegyezni megszólalásokat problémákkal, zárja ki őket az adatkészlet, és tekintse meg, hogyan az egyéni beszédfelismerési elemről kiderül, hogy lehet. Mindig lépjen vissza a studióban, és jegyezze fel a kihagyott minták később.
+> A hangvételhez csak a hangtehetségek szükségesek, így egy egyszólamú (egycsatornás) rögzítést is készíthet. Ha azonban a sztereóban rögzíti a hangfelvételt, a második csatornát használva rögzítheti a vezérlési helyiségben lévő fecsegést, hogy rögzítse az adott vonalak vagy a beérkező beszélgetéseket. Távolítsa el ezt a számot az egyéni hangportálra feltöltött verzióról.
 
-Megjegyzés: a lekérési szám, vagy minden kimondásakor, amikor a parancsfájlt a kódot. Kérje meg a felvételt metaadatok vagy köteg lap, valamint minden kimondásakor megjelölni a mérnök.
+Hallgassa meg szorosan a fejhallgatók használatával a hangtehetségek teljesítményét. Jó, de természetes letiltást, helyes kiejtést és nem kívánatos hangokat keres. Ne habozzon megkérdezni a tehetségét, hogy ismételten jegyezze fel, hogy nem felelnek meg a követelményeknek.
+
+> [!TIP]
+> Ha nagy mennyiségű hosszúságú kimondott szöveg használ, akkor előfordulhat, hogy egyetlen Kimondás nem észlelhető hatással az eredményül kapott egyéni hangra. Elképzelhető, hogy a problémákkal kapcsolatos hosszúságú kimondott szöveg egyszerűen jegyezze fel, kizárhatja azokat az adatkészletből, és megtudhatja, hogyan derül ki az egyéni hang. Bármikor visszatérhet a studióhoz, és később rögzítheti a kihagyott mintákat.
+
+Vegye figyelembe, hogy minden egyes kiíráshoz a szkriptben szereplő szám vagy idő kód szerepel. Kérje meg a mérnöket, hogy minden egyes kiírást megjelölje a rögzítés metaadatait vagy a végszót is.
 
 Készítsen rendszeres szüneteket, és adjon meg egy olyan italt, amely segít a hangtehetségnek jó formában megtartani a hangját.
 
 ### <a name="after-the-session"></a>A munkamenet után
 
-A modern felvétel studios futtasson azokon a számítógépeken. A munkamenet végén egy vagy több audio-fájlokat kap, nem szalagon. Ezek a fájlok valószínűleg a CD-minőségi (44,1 kHz 16-bit) WAV vagy AIFF formátumot kell használni, vagy jobb. 48 kHz 24 bites a közös és kívánatos. Nagyobb mintavételi arányt, 96 kHz, például általában nincs szükség.
+A modern rögzítési stúdiók számítógépeken futnak. A munkamenet végén egy vagy több hangfájl jelenik meg, nem pedig szalag. Ezek a fájlok valószínűleg WAV vagy AIFF formátumúak CD-minőségben (44,1 kHz 16 bites) vagy jobb. 48 kHz 24 bites gyakori és kívánatos. A nagyobb mintavételi sebességek, például az 96 kHz, általában nem szükségesek.
 
-Az egyéni beszédfelismerési portálon minden egyes megadott utterance (kifejezés) kell lennie a saját fájl szükséges. A studio által kínált egyes hangfájl több kimondott szöveg tartalmazza. Ezért az elsődleges utáni üzemi feladata felosztani a máshogy a felvételt, és készítse elő azokat küldésének. A rögzítés mérnök lehet, hogy a fájlban elhelyezni jelölők (vagy egy külön köteg táblázatban megadott) annak jelzésére, ahol minden kimondásakor kezdődik.
+Az egyéni hangportál használatához minden megadott kifejezésnek saját fájlban kell lennie. A Studio által szállított összes hangfájl több hosszúságú kimondott szöveg tartalmaz. Ezért az elsődleges gyártás utáni feladat az, hogy feldarabolja a felvételeket, és előkészítse őket a beküldéshez. Előfordulhat, hogy a rögzítési mérnök a fájlban (vagy egy külön Dákón) elhelyezett jelölőket tartalmaz, amely jelzi, hogy az egyes kiírások hol kezdődnek.
 
-Található, a pontos vesz igénybe, a megjegyzéseket szeretne, és hogyan segédprogram, például a Szerkesztés hang használatát [Avid Pro eszközök](https://www.avid.com/en/pro-tools), [Adobe Audition](https://www.adobe.com/products/audition.html), vagy az ingyenes [Audacity](https://www.audacityteam.org/), minden egyes másolása utterance (kifejezés) egy új fájlba.
+A megjegyzésekkel pontosan megtalálhatja a kívánt igényt, majd egy hangszerkesztő segédprogramot, például a [lelkes Pro-eszközöket](https://www.avid.com/en/pro-tools), az [Adobe auditiont](https://www.adobe.com/products/audition.html)vagy az ingyenes [Audacityt](https://www.audacityteam.org/)egy új fájlba másolhatja.
 
-Hagyja üresen a csend elején és végén, az első kivételével minden klip mindössze 0,2 másodperc. Ezt a fájlt kell kezdődnie teljes csend öt másodperc. Ne használjon "nulla out" csendes részére a fájl egy hang szerkesztőben. Többek között a "hely"hangfrekvenciás az egyéni beszédfelismerési bármely maradék háttérzaj meghiúsult lépések kompenzációjához algoritmusok segítségével.
+Az egyes klipek elején és végén csak az 0,2 másodperces csendet hagyja meg, kivéve az elsőt. A fájlnak a csend teljes öt másodpercével kell kezdődnie. Ne használjon hangszerkesztőt a fájl csendes részeinek "nulla" értékre való felvételéhez. A "Room Tone" is segít az egyéni hangalgoritmusok kompenzálására a fennmaradó háttérzajok esetében.
 
-Alaposan az egyes fájlok figyelésére. Ezen a ponton ki, amelyek kimaradtak a felvételt, például egy sort, mielőtt egy enyhe nyelvi csomag smack kis nemkívánatos hangok szerkesztheti, de ügyeljen arra, hogy bármilyen tényleges speech eltávolítása. Ha egy fájl nem oldja meg, távolítsa el az adatkészletet, és vegye figyelembe, hogy még meg.
+Hallgassa meg figyelmesen az egyes fájlokat. Ebben a szakaszban szerkesztheti azokat a kisméretű nemkívánatos hangokat, amelyeket a rögzítés során kihagyott, például egy enyhe ajak-csettint a sor előtt, de ügyeljen arra, hogy ne távolítsa el a tényleges beszédet. Ha nem tudja kijavítani a fájlt, távolítsa el az adatkészletből, és vegye figyelembe, hogy ezt megtette.
 
-Minden egyes fájl átalakítása 16 bites és a egy mintavételi gyakoriság 16 kHz mentés előtt, és ha a studio chatter rögzített, távolítsa el a második csatornát. Mentse a fájlokat a WAV-formátumban, a fájlok elnevezési a parancsfájl az utterance (kifejezés) számát.
+Konvertálja az egyes fájlokat 16 bitesre, a Mentés előtt pedig 16 kHz-es mintavételezési sebességet, és ha rögzítette a Studio csevegést, távolítsa el a második csatornát. Mentse az összes fájlt WAV formátumban, nevezze el a fájlokat a szkriptből a teljes számmal.
 
-Végül hozza létre a *átirat* egyes WAV-fájl, amely társítja a megfelelő utterance (kifejezés) megjelenő szöveges változata. [Egyéni hangtípust létrehozása](how-to-customize-voice-font.md) olyan, megfelelő formátumú adatokat tartalmaz. Közvetlenül a szkriptet a másolhatja a szöveget. Ezután hozzon létre egy Zip-fájlban a WAV-fájlok és a szöveg a szövegben.
+Végül hozza létre azt az *átiratot* , amely az egyes WAV-fájlokat a megfelelő kifejezés szöveges verziójával társítja. Az [Egyéni hangbetűkészletek létrehozása](how-to-customize-voice-font.md) a szükséges formátum részleteit tartalmazza. A szöveget közvetlenül a szkriptből is másolhatja. Ezután hozzon létre egy zip-fájlt a WAV-fájlokból és a szöveges átiratból.
 
-Az eredeti felvételek biztonságos helyen, archiválhatja, abban az esetben szüksége lesz rájuk később. A szkript és a megjegyzések, túl megőrzése.
+Ha később szüksége van rájuk, archiválja az eredeti felvételeket biztonságos helyen. Őrizze meg a parancsfájlt és a jegyzeteket is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Készen áll a felvételek feltöltése és létrehozása egyéni hangminta.
+Készen áll a felvételek feltöltésére és az egyéni hang létrehozására.
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egyéni hangtípust](how-to-customize-voice-font.md)
+> [Egyéni hangbetűkészletek létrehozása](how-to-customize-voice-font.md)

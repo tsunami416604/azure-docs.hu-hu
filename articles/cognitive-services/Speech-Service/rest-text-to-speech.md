@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9fa0157bd458d2de028cab8ff9c836761e99562f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 779df2794267a1cb62d9918fc718da02e94c48cb
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481211"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816618"
 ---
-# <a name="text-to-speech-rest-api"></a>Szöveg – beszéd REST API
+# <a name="text-to-speech-rest-api"></a>Szövegfelolvasás REST API
 
-A beszédfelismerési szolgáltatások lehetővé teszik [szöveg konvertálását szintetizált beszédre](#convert-text-to-speech) , és egy adott régióhoz tartozó [támogatott hangok listáját](#get-a-list-of-voices) a REST API-k használatával. Minden elérhető végpont egy régióhoz van társítva. A használni kívánt végpont/régió előfizetési kulcsának megadása kötelező.
+A beszédfelismerési szolgáltatás lehetővé teszi, hogy [szövegeket Konvertáljon a szintetizált beszédbe](#convert-text-to-speech) , és [lekérje a támogatott hangok LISTÁJÁT](#get-a-list-of-voices) egy régió REST API-k használatával. Minden elérhető végpont egy régióhoz van társítva. A használni kívánt végpont/régió előfizetési kulcsának megadása kötelező.
 
 A szöveg-beszéd REST API támogatja a neurális és a szabványos szöveg-beszéd hangokat, amelyek mindegyike egy adott nyelvet és dialektust támogat, területi beállítással azonosítva.
 
@@ -41,9 +41,9 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióhoz vagy végpo
 
 ### <a name="regions-and-endpoints"></a>Régiók és végpontok
 
-| Régió | Végpont |
+| Region (Régió) | Végpont |
 |--------|----------|
-| Kelet-Ausztrália | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Ausztrália keleti régiója | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Dél-Brazília | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Közép-Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA középső régiója | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -63,13 +63,13 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióhoz vagy végpo
 | USA nyugati régiója | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA 2. nyugati régiója | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
-### <a name="request-headers"></a>Kérések fejlécei
+### <a name="request-headers"></a>Kérésfejlécek
 
 Ez a táblázat a szöveg-beszéd kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
 
 | Fejléc | Leírás | Kötelező/nem kötelező |
 |--------|-------------|---------------------|
-| `Authorization` | A `Bearer`szó előtt egy engedélyezési jogkivonat. További információért lásd: [Hitelesítés](#authentication). | Kötelező |
+| `Authorization` | A `Bearer`szó előtt egy engedélyezési jogkivonat. További információért lásd: [Hitelesítés](#authentication). | Szükséges |
 
 ### <a name="request-body"></a>A kérés törzse
 
@@ -154,20 +154,20 @@ Ezek a régiók a REST API használatával történő szöveg-beszéd kommuniká
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
-### <a name="request-headers"></a>Kérések fejlécei
+### <a name="request-headers"></a>Kérésfejlécek
 
 Ez a táblázat a szöveg-beszéd kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
 
 | Fejléc | Leírás | Kötelező/nem kötelező |
 |--------|-------------|---------------------|
-| `Authorization` | A `Bearer`szó előtt egy engedélyezési jogkivonat. További információért lásd: [Hitelesítés](#authentication). | Kötelező |
-| `Content-Type` | Megadja a megadott szöveg tartalomtípusát. Elfogadott érték: `application/ssml+xml`. | Kötelező |
-| `X-Microsoft-OutputFormat` | Megadja az audió kimeneti formátumot. Az elfogadott értékek teljes listájáért lásd: [hang kimenetek](#audio-outputs). | Kötelező |
-| `User-Agent` | Az alkalmazás neve. A megadott értéknek 255 karakternél rövidebbnek kell lennie. | Kötelező |
+| `Authorization` | A `Bearer`szó előtt egy engedélyezési jogkivonat. További információért lásd: [Hitelesítés](#authentication). | Szükséges |
+| `Content-Type` | Megadja a megadott szöveg tartalomtípusát. Elfogadott érték: `application/ssml+xml`. | Szükséges |
+| `X-Microsoft-OutputFormat` | Megadja az audió kimeneti formátumot. Az elfogadott értékek teljes listájáért lásd: [hang kimenetek](#audio-outputs). | Szükséges |
+| `User-Agent` | Az alkalmazás neve. A megadott értéknek 255 karakternél rövidebbnek kell lennie. | Szükséges |
 
 ### <a name="audio-outputs"></a>Hangkimenetek
 
-Az egyes kérésekben a `X-Microsoft-OutputFormat` fejlécként elküldhető támogatott hangformátumok listája. Mindegyik tartalmaz egy bitrátát és egy kódolási típust. A Speech Services 24 kHz, 16 kHz és 8 kHz audió kimenetet támogat.
+Az egyes kérésekben a `X-Microsoft-OutputFormat` fejlécként elküldhető támogatott hangformátumok listája. Mindegyik tartalmaz egy bitrátát és egy kódolási típust. A Speech Service 24 kHz, 16 kHz és 8 kHz audió kimenetet támogat.
 
 |||
 |-|-|
@@ -230,7 +230,7 @@ Az egyes válaszok HTTP-állapotkód sikeres vagy gyakori hibákat jelez.
 
 Ha a HTTP-állapot `200 OK`, a válasz törzse egy hangfájlt tartalmaz a kért formátumban. Ezt a fájlt áthelyezték, pufferbe mentve vagy fájlba mentve lehet lejátszani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 - [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)

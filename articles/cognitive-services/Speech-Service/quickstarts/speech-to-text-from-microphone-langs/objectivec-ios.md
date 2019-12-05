@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 0d353b115acbf48bfffa6c2033b507721de501c5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 652754c31711df7b14c055b31d6d96a6b0217d29
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503618"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815606"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-by-using-the-speech-sdk"></a>Gyors útmutató: az iOS-ben a Objective-C beszédének felismerése a Speech SDK használatával
 
@@ -51,7 +51,7 @@ Az alábbi párbeszédpaneleken végezze el a következő beállításokat.
     1. Ügyeljen arra, hogy a projekt nyelve legyen a **Objective-C** beállítás.
     1. Törölje az összes jelölőnégyzetet a tesztekhez és az alapértékekhez.
 
-    ![Projekt beállításai](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-project-settings.png)
+    ![Projektbeállítások](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-project-settings.png)
 
 1. Válasszon egy projekt könyvtárat:
    1. Válassza ki a projekt tárolására használt kezdőkönyvtárat. Ez a lépés létrehoz egy HelloWorld könyvtárat a saját könyvtárában, amely a Xcode projekt összes fájlját tartalmazza.
@@ -100,7 +100,7 @@ Cserélje le az automatikusan létrehozott XML-kódot a következő kódra:
 
 1. Miután kiválasztotta a **felismerés (mikrofon)** gombot az alkalmazásban, és mondjuk egy pár szót, meg kell jelennie a képernyő alsó részén látható szövegnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A Objective-C minták megismerése a GitHubon](https://aka.ms/csspeech/samples)

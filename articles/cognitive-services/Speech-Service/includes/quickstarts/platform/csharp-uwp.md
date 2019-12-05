@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: C# univerzális Windows-platform Speech SDK (UWP) platform beállítása – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ezzel az útmutatóval beállíthatja a platformot C# a univerzális Windows-platform (UWP) alatt a SPEECH Services SDK használatával.
+description: Ezzel az útmutatóval beállíthatja a platformot C# a univerzális Windows-platform (UWP) alatt a SPEECH Service SDK-val.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 89b318af37f30179a7026df135cf864727976762
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ea6218066ce381bbfa7ae8c6a02991b351163084
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502533"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815035"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a C# univerzális Windows-platform [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t (UWP).
 
@@ -36,6 +36,6 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 Ezután az alábbi [lépésekkel](#next-steps) léphet tovább.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [windows](../quickstart-list.md)]

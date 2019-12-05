@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 5adb342b733563fd0b062dd263a4fdd83259d166
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792052"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815159"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Helyi adatforrásokhoz való kapcsolódás Azure Logic Apps
 
@@ -70,7 +70,7 @@ Miután telepítette az átjárót egy helyi számítógépre, hozza létre az A
 
 1. A Azure Portal keresőmezőbe írja be a "helyszíni adatátjáró" kifejezést, és válassza a helyszíni **adatátjárók**lehetőséget.
 
-   !["Helyszíni adatátjáró" keresése](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
+   !["Helyszíni adatátjáró" keresése](./media/logic-apps-gateway-connection/search-for-on-premises-data-gateway.png)
 
 1. **A helyszíni adatátjárók**területen válassza a **Hozzáadás**lehetőséget.
 
@@ -89,7 +89,7 @@ Miután telepítette az átjárót egy helyi számítógépre, hozza létre az A
 
    Az alábbi példa egy olyan átjáró telepítését mutatja be, amely ugyanabban a régióban található, mint az átjáró-erőforrás, és ugyanahhoz az Azure-fiókhoz van társítva:
 
-   ![Adja meg az adatátjáró-erőforrás létrehozásának részleteit](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
+   ![Adja meg az adatátjáró-erőforrás létrehozásának részleteit](./media/logic-apps-gateway-connection/on-premises-data-gateway-create-connection.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -128,7 +128,7 @@ Az átjáró-kapcsolatok beállításainak frissítéséhez szerkesztheti a kapc
 
 1. A logikai alkalmazás összes API-kapcsolatának megkereséséhez a logikai alkalmazás menüjében, a **fejlesztői eszközök**területen válassza az **API-kapcsolatok**elemet.
 
-   ![A logikai alkalmazás menüjében válassza az "API-kapcsolatok" lehetőséget.](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
+   ![A logikai alkalmazás menüjében válassza az "API-kapcsolatok" lehetőséget.](./media/logic-apps-gateway-connection/logic-app-api-connections.png)
 
 1. Válassza ki a kívánt átjáró-kapcsolatokat, majd válassza az **API-kapcsolatok szerkesztése**lehetőséget.
 
@@ -137,8 +137,8 @@ Az átjáró-kapcsolatok beállításainak frissítéséhez szerkesztheti a kapc
 
 Az Azure-előfizetéshez társított összes API-kapcsolat megkeresése:
 
-* Az Azure fő menüjében lépjen a **minden szolgáltatás** > **webes** > **API-kapcsolatok**elemre.
-* Vagy az Azure főmenüjében válassza az **összes erőforrás**lehetőséget. Állítsa a **típus** szűrőt **API-kapcsolatok**értékre.
+* A Azure Portal menüben válassza a **minden szolgáltatás** > **webes** > **API-kapcsolatok**elemet.
+* Vagy a Azure Portal menüben válassza a **minden erőforrás**elemet. Állítsa a **típus** szűrőt **API-kapcsolatok**értékre.
 
 <a name="change-delete-gateway-resource"></a>
 
@@ -146,13 +146,13 @@ Az Azure-előfizetéshez társított összes API-kapcsolat megkeresése:
 
 Egy másik átjáró-erőforrás létrehozásához csatolja az átjáró telepítését egy másik átjáró-erőforráshoz, vagy távolítsa el az átjáró erőforrását anélkül, hogy ez befolyásolná az átjáró telepítését.
 
-1. Az Azure főmenüjében válassza az **összes erőforrás**lehetőséget. Keresse meg és válassza ki az átjáró erőforrását.
+1. A Azure Portal menüben válassza a **minden erőforrás**lehetőséget, vagy keresse meg és válassza ki az **összes erőforrás** elemet bármelyik oldalon. Keresse meg és válassza ki az átjáró erőforrását.
 
 1. Ha még nincs bejelölve, az átjáró erőforrás menüjében válassza **a helyszíni adatátjáró**lehetőséget. Az átjáró erőforrás eszköztárán válassza a **Törlés**lehetőséget.
 
    Példa:
 
-   ![Átjáró erőforrásának törlése az Azure-ban](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
+   ![Átjáró erőforrásának törlése az Azure-ban](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 
 <a name="faq"></a>
 

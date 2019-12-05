@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 585828855cdbd3a585ced1aa6803482c3f26f0f4
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 74fcce412b2673a3ec9e4809cef018f1afbc3530
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121579"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812836"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>A TLS 1,0-es és 1,1-es verziójának eltávolítása az Azure cache használatával a Redis-hez
 
@@ -33,7 +33,7 @@ A legtöbb alkalmazás Redis-kódtárakat használ a gyorsítótárral való kom
 
 A Redis .NET-ügyfelek alapértelmezés szerint a legkorábbi TLS-verziót használják a .NET-keretrendszer 4.5.2-es vagy korábbi verziójában, és a legújabb TLS-verziót használják a .NET-keretrendszer 4,6-es vagy újabb verziójára Ha a .NET-keretrendszer régebbi verzióját használja, a TLS 1,2-et manuálisan is engedélyezheti:
 
-* **StackExchange. Redis:** `ssl=true` és `sslprotocls=tls12` beállítása a kapcsolatok karakterláncában.
+* **StackExchange. Redis:** `ssl=true` és `sslprotocols=tls12` beállítása a kapcsolatok karakterláncában.
 * **ServiceStack. Redis:** Kövesse a [ServiceStack. Redis utasításait](https://github.com/ServiceStack/ServiceStack.Redis/pull/247).
 
 ### <a name="net-core"></a>.NET Core
@@ -92,6 +92,6 @@ A Redis-másolási szolgáltatás alapértelmezés szerint a TLS 1,2 protokollt 
 
 A Redigo alapértelmezés szerint a TLS 1,2-et használja.
 
-## <a name="additional-information"></a>További információ
+## <a name="additional-information"></a>További információk
 
 - [Az Azure cache konfigurálása a Redis-hez](cache-configure.md)

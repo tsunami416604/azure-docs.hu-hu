@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 277d8e3fe8f54b8e95d8acc93d26100d3ac64db1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110699"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814856"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
 Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb támogatási lehetőségeket](support.md).
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 **K: mi a különbség az alapmodell és a szöveges modell egyéni beszéde között?**
 
@@ -65,11 +65,32 @@ A régi adatkészletet és az új adatkészletet egyetlen. zip fájlban (akuszti
 
 Ha kiigazította és telepítette az alapkonfiguráció 1.0-s verziójával rendelkező modellt, akkor az üzemelő példány a következőképpen marad. Az ügyfelek leszerelik az üzembe helyezett modellt, újra alkalmazkodnak az alapkonfiguráció újabb verziójához, és újból üzembe helyezik azokat.
 
+**K: le tudom tölteni a modellt, és helyileg futtatom?**
+
+**A: a**modellek nem tölthetők le és nem hajthatók végre helyileg.
+
+**K: a rendszer naplózza a kérelmeket?**
+
+Válasz **: Ön**dönthet úgy, hogy a nyomkövetés kikapcsolásához létrehoz egy központi telepítést. Ekkor a rendszer nem naplózza a hanganyagot vagy az átírást. Ellenkező esetben a rendszer általában a biztonságos tárolóban naplózza a kérelmeket az Azure-ban.
+
+**K: a kérelmek szabályozva vannak?**
+
+**A**: a REST API 5 másodpercenként 25 másodpercenként korlátozza a kérelmeket. A részletek megtalálhatók az oldalain a [szövegre való beszédhez](speech-to-text.md).
+
+**K: Hogyan számítunk fel díjat a kettős csatornás hangért?**
+
+Válasz: Ha az egyes csatornákat külön küldi el (mindegyik csatornát a saját fájljában), **a rendszer a**fájl időtartamára számítja fel. Ha egyetlen fájlt küld el minden egyes csatornával együtt, akkor az adott fájl időtartamára kell fizetnie.
+
+> [!IMPORTANT]
+> Ha további adatvédelmi kérdései vannak, amelyek tiltják a Custom Speech Service használatát, lépjen kapcsolatba az egyik támogatási csatornával.
+
+## <a name="increasing-concurrency"></a>Párhuzamosság növelése
+
 **K: mi a teendő, ha a portálon elérhetőnél magasabb szintű egyidejűségre van szükségem a saját üzembe helyezett modellhez?**
 
 **A**: akár 20 egyidejű kérést is felhasználhat a modell vertikális felskálázásához.
 
-Ha nagyobb méretűre van szüksége, forduljon a [beszédfelismerési támogatási szolgálathoz](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) .
+A szükséges információkkal hozzon létre egy támogatási kérést az [Azure támogatási portálján](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Ne tegye közzé a [támogatási oldalon](support.md)említett nyilvános csatornákon (GitHub, StackOverflow,...) lévő adatokat.
 
 Az ***Egyéni modell***egyidejűségének növeléséhez a következő információkra van szükségünk:
 
@@ -97,25 +118,6 @@ vagy
   - a megjelenített szolgáltatások közül válassza ki azt a beszédfelismerési szolgáltatást, amelyhez a párhuzamosságot növelni szeretné,
   - a szolgáltatáshoz tartozó `Properties` megjelenítése;
   - másolja a teljes `Resource ID`.
-
-**K: le tudom tölteni a modellt, és helyileg futtatom?**
-
-**A: a**modellek nem tölthetők le és nem hajthatók végre helyileg.
-
-**K: a rendszer naplózza a kérelmeket?**
-
-Válasz **: Ön**dönthet úgy, hogy a nyomkövetés kikapcsolásához létrehoz egy központi telepítést. Ekkor a rendszer nem naplózza a hanganyagot vagy az átírást. Ellenkező esetben a rendszer általában a biztonságos tárolóban naplózza a kérelmeket az Azure-ban.
-
-**K: a kérelmek szabályozva vannak?**
-
-**A**: a REST API 5 másodpercenként 25 másodpercenként korlátozza a kérelmeket. A részletek megtalálhatók az oldalain a [szövegre való beszédhez](speech-to-text.md).
-
-**K: Hogyan számítunk fel díjat a kettős csatornás hangért?**
-
-Válasz: Ha az egyes csatornákat külön küldi el (mindegyik csatornát a saját fájljában), **a rendszer a**fájl időtartamára számítja fel. Ha egyetlen fájlt küld el minden egyes csatornával együtt, akkor az adott fájl időtartamára kell fizetnie.
-
-> [!IMPORTANT]
-> Ha további adatvédelmi kérdései vannak, amelyek tiltják a Custom Speech Service használatát, lépjen kapcsolatba az egyik támogatási csatornával.
 
 ## <a name="importing-data"></a>Adatok importálása
 
@@ -189,11 +191,11 @@ Válasz **: attól**függ, hogy az alkalmazásban használt szókincs és kifeje
 
 **K: milyen beszédfelismerési élményt fejlesztenek a bérlői modell?**
 
-**A:** Ha a bérlői modell engedélyezése, létrehozása és közzététele megtörténik, a rendszer a beszédfelismerési szolgáltatással létrehozott vállalati alkalmazások felismerését is javítja. Ez egy felhasználói HRE tokent is továbbít, amely a vállalatnak való tagságot jelzi.
+**A:** Ha a bérlői modell engedélyezése, létrehozása és közzététele megtörténik, a rendszer a beszédfelismerési szolgáltatással létrehozott vállalati alkalmazások felismerését javítja. Ez egy felhasználói HRE tokent is továbbít, amely a vállalatnak való tagságot jelzi.
 
 Az Office 365-ben beépített beszédfelismerési élmények, például a diktálás és a PowerPoint-feliratok, nem változnak, amikor létrehoz egy bérlői modellt a Speech Service-alkalmazásokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Hibaelhárítás](troubleshooting.md)
-- [Kibocsátási megjegyzések](releasenotes.md)
+- [hibaelhárítással](troubleshooting.md)
+- [Kiadási megjegyzések](releasenotes.md)

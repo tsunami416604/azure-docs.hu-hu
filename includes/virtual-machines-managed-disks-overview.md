@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7ceff623c6559ef5e929d6d5bff9e07cca9039d2
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796278"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828879"
 ---
 ## <a name="benefits-of-managed-disks"></a>A felügyelt lemezek előnyei
 
@@ -37,7 +37,7 @@ A Managed Disks támogatja a [Availability Zonest](../articles/availability-zone
 
 ### <a name="azure-backup-support"></a>Azure Backup támogatás
 
-A regionális katasztrófák elleni védelem érdekében [Azure Backup](../articles/backup/backup-overview.md) használható biztonsági mentési feladatok létrehozására időalapú biztonsági mentéssel és adatmegőrzési szabályzatokkal. Így egyszerűen elvégezheti a virtuális gépek helyreállítását. A Azure Backup jelenleg legfeljebb négy tebibyte (TiB) lemezt támogat.  Azure Backup támogatja a felügyelt lemezek biztonsági mentését és helyreállítását. [További](../articles/backup/backup-support-matrix-iaas.md) információ az Azure virtuális gépek biztonsági mentésének támogatásáról.
+A regionális katasztrófák elleni védelem érdekében [Azure Backup](../articles/backup/backup-overview.md) használható biztonsági mentési feladatok létrehozására időalapú biztonsági mentéssel és adatmegőrzési szabályzatokkal. Így egyszerűen elvégezheti a virtuális gépek helyreállítását. Azure Backup támogatja a felügyelt lemezek biztonsági mentését és helyreállítását. [További](../articles/backup/backup-support-matrix-iaas.md) információ az Azure virtuális gépek biztonsági mentésének támogatásáról.
 
 ### <a name="granular-access-control"></a>Részletes hozzáférés-vezérlés
 
@@ -61,7 +61,7 @@ Az [Azure kiszolgálóoldali titkosítása](../articles/virtual-machines/windows
 
 Azure Disk Encryption lehetővé teszi a IaaS virtuális gépek által használt operációs rendszer és adatlemezek titkosítását. Ez a titkosítás felügyelt lemezeket tartalmaz. A Windows rendszerben a meghajtók titkosítása az iparági szabványnak megfelelő BitLocker titkosítási technológiával történik. A Linux rendszerben a lemezek titkosítása a DM-Crypt technológiával történik. A titkosítási folyamat integrálva van az Azure Key Vaulttal, így vezérelheti és felügyelheti a lemeztitkosítási kulcsokat. További információ: [Azure Disk Encryption IaaS virtuális gépekhez](../articles/security/azure-security-disk-encryption-overview.md).
 
-## <a name="disk-roles"></a>Lemez szerepkörei
+## <a name="disk-roles"></a>Lemezes szerepkörök
 
 Az Azure-ban három fő lemez szerepkör található: az adatlemez, az operációsrendszer-lemez és az ideiglenes lemez. Ezek a szerepkörök leképezik a virtuális géphez csatolt lemezeket.
 
@@ -92,7 +92,7 @@ Ha szeretne többet megtudni arról, hogyan hozhat létre pillanatképeket a fel
 * [Felügyelt lemez pillanatképének létrehozása a Windowsban](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Felügyelt lemez pillanatképének létrehozása Linux rendszerben](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
-### <a name="images"></a>Képek
+### <a name="images"></a>Lemezképek
 
 A felügyelt lemezek támogatják a felügyelt Egyéni rendszerképek létrehozását is. Létrehozhat egy rendszerképet az egyéni VHD-ből egy Storage-fiókban, vagy közvetlenül egy általánosított (Sysprep használatával létrehozott) virtuális gépről. Ez a folyamat egyetlen lemezképet rögzít. Ez a rendszerkép a virtuális géphez társított összes felügyelt lemezt tartalmazza, beleértve az operációs rendszert és az adatlemezeket is. Ez a felügyelt egyéni rendszerkép lehetővé teszi több száz virtuális gép létrehozását az egyéni rendszerkép használatával anélkül, hogy bármilyen Storage-fiókot kellene másolni vagy kezelnie.
 
@@ -117,14 +117,14 @@ A következő ábra a sávszélesség és a IOPS valós idejű kiosztását ábr
 
 Az első szintű kiépítés a lemezes IOPS és a sávszélesség-hozzárendelést állítja be.  A második szinten a számítási kiszolgáló gazdagépe az SSD-kiépítés megvalósítását végzi, csak a kiszolgáló SSD-fájljain tárolt adatokra alkalmazza, beleértve a gyorsítótárazást (ReadWrite és ReadOnly) tartalmazó lemezeket, valamint a helyi és a temp lemezeket. Végezetül, a virtuálisgép-hálózat kiépítés minden olyan I/O-szinten zajlik, amelyet a számítási gazdagép az Azure Storage háttérbe küld. Ezzel a rendszerrel a virtuális gépek teljesítménye számos tényezőtől függ, attól, hogy a virtuális gép hogyan használja a helyi SSD-t, a csatlakoztatott lemezek számát, valamint a csatlakoztatott lemezek teljesítményét és gyorsítótárazási típusát.
 
-A korlátozások példái közé a Standard_DS1v1 virtuális gép megakadályozza a P30-lemezek 5 000-es IOPS-potenciáljának megvalósítását, függetlenül attól, hogy gyorsítótárazva van-e vagy sem, az SSD-k és a hálózati szintek korlátai miatt:
+A korlátozások példái közé a Standard_DS1v1 virtuális gép nem érhető el a P30-lemezek 5 000-as IOPS, függetlenül attól, hogy gyorsítótárazva van-e, vagy sem, az SSD-k és a hálózati szintek korlátai miatt:
 
-![Standard_DS1v1-példa foglalása](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
+![Standard_DS1v1 példa foglalásra](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
 
 Az Azure rangsorolt hálózati csatornát használ a lemezes forgalomhoz, ami elsőbbséget élvez a hálózati forgalom más alacsony prioritásával szemben. Ez segít a lemezeknek a várt teljesítményük fenntartásában hálózati tartalom esetén. Hasonlóképpen, az Azure Storage az erőforrás-tartalmakat és a háttérben lévő egyéb problémákat az automatikus terheléselosztással kezeli. Az Azure Storage a szükséges erőforrásokat foglalja le lemez létrehozásakor, és az erőforrások proaktív és reaktív kiegyensúlyozását alkalmazza a forgalmi szint kezeléséhez. Ez biztosítja, hogy a lemezek továbbra is megtartsák a várt IOPS és teljesítménybeli célokat. A virtuális gépek szintjének és a lemez szintű metrikák segítségével nyomon követheti a teljesítményt, és szükség szerint beállíthatja a riasztásokat.
 
 Tekintse meg a [nagy teljesítményű cikk kialakítását](../articles/virtual-machines/windows/premium-storage-performance.md) ismertető cikket, amelyből MEGISMERHETI a virtuális gépek és lemezek konfigurációinak optimalizálásával kapcsolatos ajánlott eljárásokat, hogy elérhető legyen a kívánt teljesítmény
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-ajánlatok egyes típusairól, amelyek típusa jól illeszkedik az igényeihez, és megismerheti a teljesítményre vonatkozó célokat a lemez típusainak leírásában.

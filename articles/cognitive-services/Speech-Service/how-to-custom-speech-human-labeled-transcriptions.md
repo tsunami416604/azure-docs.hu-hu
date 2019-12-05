@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 1eeb2e7ccf5c365fedd02a8de4c6b442dd3d5bc8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075814"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806062"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Emberi címkével ellátott átiratok létrehozása
 
@@ -29,7 +29,7 @@ Az angol hanganyaghoz tartozó emberi feliratú átírásokat egyszerű szövegk
 
 Íme, néhány példa:
 
-| Kerülendő karakterek | Helyettesítés | Megjegyzések |
+| Kerülendő karakterek | Substitution | Megjegyzések |
 | ------------------- | ------------ | ----- |
 | "Helló világ" | "Helló világ" | A nyitó és záró idézőjelek a megfelelő ASCII-karakterekkel lettek helyettesítve. |
 | John 's Day | John 's Day | Az aposztróf a megfelelő ASCII-karakterrel lett helyettesítve. |
@@ -51,13 +51,13 @@ A szöveg normalizálása a szavak átalakítása a modell betanításakor haszn
 | --------------------------- | ------------------------------------- |
 | Dr. Bruce-banner            | Orvos Bruce-banner                   |
 | James Bond, 007             | James Bond, dupla Oh Seven           |
-| Ke$ha                       | Kesha                                 |
+| Ke $ ha                       | Kesha                                 |
 | Mennyi ideig tart a 2x4         | Meddig a kettő négy           |
 | Az értekezlet 1 – 15 óra | Az értekezlet egy-három PM-ből kerül |
 | A vérem típusa O +         | A vérem típusa O pozitív           |
 | A víz H20                | A víz H 2 O                        |
 | Play OU812 by van Halen     | O U 8 1 2 lejátszási mód: Van Halen           |
-| UTF-8 az AJ-vel              | U T F 8 az AJ-vel                      |
+| UTF-8 AJ-vel              | U T F 8 az AJ-vel                      |
 
 A következő normalizálás szabályok automatikusan érvényesek az átírásokra:
 
@@ -84,7 +84,7 @@ A mandarin kínai hang emberi címkével ellátott átírásait UTF-8 kódoláss
 
 Íme, néhány példa:
 
-| Kerülendő karakterek | Helyettesítés   | Megjegyzések |
+| Kerülendő karakterek | Substitution   | Megjegyzések |
 | ------------------- | -------------- | ----- |
 | "你好" | "你好" | A nyitó és záró idézőjelek a megfelelő karakterekkel lettek helyettesítve. |
 | 需要什么帮助? | 需要什么帮助？| A kérdőjel a megfelelő karakterrel lett helyettesítve. |
@@ -143,7 +143,7 @@ A szöveg normalizálása a szavak átalakítása a modell betanításakor haszn
 | Eredeti szöveg    | Felhasználói normalizálás utáni szöveg | A rendszernormalizálás utáni szöveg       |
 | ---------------- | ----------------------------- | ------------------------------------- |
 | Es ist 12,23 UHR | Es ist 12:23 UHR              | es ist zwölf UHR Drei und Zwanzig UHR |
-| {12,45}          | {12,45}                       | zwölf komma vier fünf                 |
+| {12,45}          | {12,45}                       | zwölf komma Vier Fünf                 |
 | 2 + 3-4        | 2 plusz 3 mínusz 4              | Zwei Plus Drei, mínusz Vier             |
 
 A következő normalizálás szabályok automatikusan érvényesek az átírásokra:
@@ -162,7 +162,7 @@ A következő normalizálás szabályok automatikusan érvényesek az átíráso
 | ¡ Eine Frag!     | Eine-Frag               |
 | Wir, a Hegedűs       | Wir-Hegedűs                |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
 - [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)

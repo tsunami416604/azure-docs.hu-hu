@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/20/2019
+ms.date: 12/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: df65267924cfbfdc856b81928c4b6d7029f61184
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: fd3b7767bad104f4074b2460ecba3fe89d5a23e1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665967"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806626"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-by-using-azure-cli"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Storage-hoz az Azure CLI használatával
 
@@ -91,7 +91,7 @@ az keyvault key create
 
 Alapértelmezés szerint az Azure Storage-titkosítás a Microsoft által felügyelt kulcsokat használja. Konfigurálja az Azure Storage-fiókot az ügyfél által felügyelt kulcsokhoz, és adja meg a Storage-fiókhoz társítandó kulcsot.
 
-A Storage-fiók titkosítási beállításainak frissítéséhez hívja az [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update)menüpontot. Ez a példa a Key Vault URI-JÁT és a kulcs verziószámát is lekérdezi, és mindkét értékre szükség van ahhoz, hogy a kulcsot társítsa a Storage-fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
+A Storage-fiók titkosítási beállításainak frissítéséhez hívja az [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update)menüpontot. Ez a példa a Key Vault URI-JÁT és a legújabb verziószámot is lekérdezi, és mindkét értékre szükség van ahhoz, hogy a kulcsot társítsa a Storage-fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -102,7 +102,7 @@ key_vault_uri=$(az keyvault show \
 key_version=$(az keyvault key list-versions \
     --name <key> \
     --vault-name <key-vault> \
-    --query [].kid \
+    --query [-1].kid \
     --output tsv | cut -d '/' -f 6)
 az storage account update 
     --name <storage-account> \

@@ -1,7 +1,7 @@
 ---
 title: Áttelepítés Custom Speech Serviceról a Speech Service-be
 titleSuffix: Azure Cognitive Services
-description: A Custom Speech Service most már a beszédfelismerési szolgáltatás részét képezi. Váltson a beszédfelismerési szolgáltatás számára, hogy a legújabb minőségi és frissítéseket.
+description: A Custom Speech Service mostantól a Speech Service részét képezi. Váltson a beszédfelismerési szolgáltatásra a legújabb minőségi és szolgáltatás-frissítések kihasználása érdekében.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -11,55 +11,55 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 01b853c59723a8ed79cb32b0ee9c245c9c3ffb3f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9c93286329316d081f8fd99ebd360195931b7b09
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562756"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805926"
 ---
-# <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>A Custom Speech Service áttelepít a beszédszolgáltatás
+# <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrálás a Custom Speech Serviceról a beszédfelismerési szolgáltatásba
 
-Ez a cikk segítségével az alkalmazások áttelepíthetők a Custom Speech Service a Speech Service.
+Ebből a cikkből megtudhatja, hogyan telepíthet alkalmazásokat a Custom Speech Serviceról a Speech szolgáltatásba.
 
-A Custom Speech Service most már a beszédfelismerési szolgáltatás részét képezi. Váltson a Speech Servicesre, és használja ki a legújabb minőségi és szolgáltatás-frissítéseket.
+A Custom Speech Service mostantól a Speech Service részét képezi. Váltson a beszédfelismerési szolgáltatásra a legújabb minőségi és szolgáltatás-frissítések kihasználása érdekében.
 
-## <a name="migration-for-new-customers"></a>Az új ügyfelek áttelepítése
+## <a name="migration-for-new-customers"></a>Áttelepítés új ügyfelek számára
 
-A díjszabási modell az egyszerűbb, a beszédfelismerési szolgáltatás egy óra-alapú díjszabási modell használatával.  
+A díjszabási modell egyszerűbb, a beszédfelismerési szolgáltatás óradíjas díjszabási modelljét használva.  
 
-1. Hol érhető el az alkalmazás minden régióban hozzon létre egy Azure-erőforrás. Az Azure-erőforrás neve **Speech**. Egyetlen Azure-erőforrás a következő szolgáltatásokat ugyanabban a régióban, ahelyett, hogy létrehozná a különálló erőforrásokat is használhatja:
+1. Hozzon létre egy Azure-erőforrást minden olyan régióban, ahol az alkalmazás elérhető. Az Azure-Erőforrás neve **beszéd**. Különálló erőforrások létrehozása helyett egyetlen Azure-erőforrást is használhat az adott régióban lévő következő szolgáltatásokhoz:
 
-    * Speech-to-text
-    * Egyéni hang-szöveg
+    * Diktálás
+    * Egyéni beszéd – szöveg
     * Szövegfelolvasás
-    * Tolmácsolás
+    * Beszédfordítás
 
-2. Töltse le a [beszéd SDK](speech-sdk.md).
+2. Töltse le a [SPEECH SDK](speech-sdk.md)-t.
 
-3. Kövesse a gyors útmutatók és az SDK-minták a megfelelő API-k használata. A REST API-k használatakor is szeretné használni a megfelelő végpontokra és erőforrás kulcsainak.
+3. A megfelelő API-k használatához kövesse a rövid útmutatók és az SDK-minták című témakört. Ha a REST API-kat használja, a megfelelő végpontokat és erőforrás-kulcsokat is használni kell.
 
-4. Az ügyfélalkalmazás frissítése a Speech Services és API-k használatára.
+4. Az ügyfélalkalmazás frissítése a beszédfelismerési szolgáltatás és az API-k használatára.
 
-## <a name="migration-for-existing-customers"></a>Meglévő ügyfelek migrálása
+## <a name="migration-for-existing-customers"></a>Migrálás meglévő ügyfelek számára
 
-Migrálja meglévő erőforrás-kulcsait a Speech Services portálon. Ehhez a következő lépések szükségesek:
+Migrálja meglévő erőforrás-kulcsait a Speech szolgáltatás portálon. Ehhez a következő lépések szükségesek:
 
 > [!NOTE]
-> Erőforrás kulcsainak csak áttelepíthetők ugyanazon a régión belül.
+> Az erőforrás-kulcsok csak ugyanazon a régión belül helyezhetők át.
 
-1. Jelentkezzen be a [cris.ai](https://cris.ai/Home/CustomSpeech) portálon, és válassza a jobb felső menüjében az előfizetéshez.
+1. Jelentkezzen be a [Cris.ai](https://cris.ai/Home/CustomSpeech) -portálra, és válassza ki az előfizetést a jobb felső menüben.
 
-2. Válassza ki **kiválasztott előfizetés áttelepítése**.
+2. Válassza a **kiválasztott előfizetés áttelepíteni**lehetőséget.
 
-3. A mezőben adja meg az előfizetési kulcsot, és válassza ki **áttelepítése**.
+3. Írja be az előfizetési kulcsot a szövegmezőbe, majd kattintson az **áttelepítés**elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Próbálja ki ingyenesen a Speech Services szolgáltatást](get-started.md).
-* Ismerje meg, [beszédfelismerés](./speech-to-text.md) fogalmakat.
+* [Próbálja ki ingyenesen a Speech szolgáltatást](get-started.md).
+* Megtudhatja [a szöveg](./speech-to-text.md) fogalmait.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-* [Mi az a Speech Service](overview.md)
-* [A Speech Services és a Speech SDK dokumentációja](speech-sdk.md#get-the-sdk)
+* [Mi a beszédfelismerési szolgáltatás?](overview.md)
+* [A Speech Service és a Speech SDK dokumentációja](speech-sdk.md#get-the-sdk)

@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
-ms.openlocfilehash: 8e522b49c53dd40a4438755520481383984c1e01
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 45dba8de8ef735bdb9df102ac367e6a1653bf481
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535885"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807085"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Virtuális gépek karbantartása az Azure-ban
 
@@ -29,7 +29,7 @@ A frissítések ritkán érintik az üzemeltetett virtuális gépeket. Ha a fris
 
 Ez a lap leírja, hogy az Azure hogyan hajtja végre mindkét típusú karbantartást. További információ a nem tervezett eseményekről (kimaradások): [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./windows/manage-availability.md) , illetve a megfelelő [Linux](./linux/manage-availability.md)-cikk.
 
-A virtuális gépeken belül a Windows vagy [Linux](/linux/scheduled-events.md)rendszerhez [készült Scheduled Events használatával](/windows/scheduled-events.md) értesítéseket kaphat a közelgő karbantartásról.
+A virtuális gépeken belül a Windows vagy [Linux](./linux/scheduled-events.md)rendszerhez [készült Scheduled Events használatával](./windows/scheduled-events.md) értesítéseket kaphat a közelgő karbantartásról.
 
 
 
@@ -43,7 +43,7 @@ Memória – a karbantartási munkálatok az Azure-beli virtuális gépek több 
 
 Az újraindítást nem igénylő karbantartási műveletek egyszerre csak egy tartalék tartományt alkalmaznak. Ezek akkor állnak le, ha figyelmeztetési állapotra utaló jeleket kapnak. 
 
-Az ilyen típusú frissítések hatással lehetnek egyes alkalmazásokra. Ha a virtuális gép élő áttelepítése egy másik gazdagépre történik, egyes érzékeny munkaterhelések némi teljesítménybeli romlást jelezhetnek néhány perc alatt, ami a virtuális gép szüneteltetését eredményezi. A virtuális gépek karbantartásának előkészítéséhez és az Azure-karbantartás során felmerülő hatás csökkentéséhez próbálkozzon az [Scheduled Events Windows](/windows/scheduled-events.md) vagy [Linux](/linux/scheduled-events.md) rendszerű alkalmazásokkal való használatával. 
+Az ilyen típusú frissítések hatással lehetnek egyes alkalmazásokra. Ha a virtuális gép élő áttelepítése egy másik gazdagépre történik, egyes érzékeny munkaterhelések némi teljesítménybeli romlást jelezhetnek néhány perc alatt, ami a virtuális gép szüneteltetését eredményezi. A virtuális gépek karbantartásának előkészítéséhez és az Azure-karbantartás során felmerülő hatás csökkentéséhez próbálkozzon az [Scheduled Events Windows](./windows/scheduled-events.md) vagy [Linux](./linux/scheduled-events.md) rendszerű alkalmazásokkal való használatával. 
 
 A nyilvános előzetes verzióban elérhető egy funkció, egy karbantartási vezérlő is, amely segíthet a nem újraindítást igénylő karbantartás kezelésében. Az [Azure dedikált gazdagépeit](./linux/dedicated-hosts.md) vagy egy [elkülönített virtuális gépet](../security/fundamentals/isolation-choices.md)kell használnia. A karbantartási ellenőrzés lehetőséget biztosít a platform frissítéseinek kihagyására és a frissítések alkalmazására az adott időpontban, egy 35 napos időszakon belül. További információ: [a frissítések kezelése a karbantartási és az Azure CLI](maintenance-control-cli.md)használatával.
 

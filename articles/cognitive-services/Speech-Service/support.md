@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 925d21d22806ab2854be29b9648aab78138741ec
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 741217cde5068468a7063a64361df8425346b590
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422606"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815456"
 ---
 # <a name="support-and-help-options"></a>Támogatás és Súgó lehetőségek
 
-Most megkezdi a Speech Services funkcionalitásának megismerését? Új funkciót implementál az alkalmazásban? Itt találja azokat a javaslatokat, amelyekkel fejlesztőként kaphat segítséget.
+Most megkezdi a beszédfelismerési szolgáltatás funkcióinak megismerését? Új funkciót implementál az alkalmazásban? Itt találja azokat a javaslatokat, amelyekkel fejlesztőként kaphat segítséget.
 
 > [!div class="checklist"]
 > * Tájékozódjon az *Azure Cognitive Services*új fejleményeiről, vagy keresse meg a *beszédfelismerési szolgáltatással*kapcsolatos legfrissebb híreket.
@@ -31,13 +31,13 @@ Most megkezdi a Speech Services funkcionalitásának megismerését? Új funkci�
 
 ## <a name="stay-informed"></a>Naprakész lehet
 
-A Cognitive Servicesról szóló híreket a [Cognitive Services blogban](https://azure.microsoft.com/blog/topics/cognitive-services/)gyűjtöttük össze. A beszédfelismerési szolgáltatásokkal kapcsolatos legfrissebb információkért kövesse a [Speech Services blogját](https://azure.microsoft.com/blog/tag/speech-service/).
+A Cognitive Servicesról szóló híreket a [Cognitive Services blogban](https://azure.microsoft.com/blog/topics/cognitive-services/)gyűjtöttük össze. A beszédfelismerési szolgáltatással kapcsolatos legfrissebb információkért kövesse a [Speech Service blogját](https://azure.microsoft.com/blog/tag/speech-service/).
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 A [kibocsátási megjegyzések](https://aka.ms/csspeech/whatsnew) azonnal frissülnek, amint új kiadás érhető el. A megjegyzések az új funkciókkal, javításokkal és hibajavításokkal kapcsolatos információkat tartalmaznak.
 
-## <a name="search"></a>Keresés
+## <a name="search"></a>Search
 
 Megtalálhatja a szükséges választ a dokumentációban, a mintákban, illetve választ kaphat a [stack overflow](https://www.stackoverflow.com) kérdésekre vagy a mintákra.
 
@@ -55,7 +55,7 @@ Ahol *{a keresési kifejezések}* a keresési kulcsszavak.
 
 Az Azure-ügyfelek támogatási kérelmeket hozhatnak létre és kezelhetnek a Azure Portalban.
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portalra](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [A Egyesült Államok Government Azure Portal](https://portal.azure.us)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Kérdés közzététele Stack Overflow

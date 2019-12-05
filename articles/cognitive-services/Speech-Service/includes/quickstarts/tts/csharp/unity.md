@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 281fbcf3f42160b18adcad3f06f6ef4a7b8de243
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f3b3d68e0154913e3eb6d101965ad33530502954
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502925"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818313"
 ---
 > [!NOTE]
 > Az Unity támogatja a Windows asztali (x86 és x64) vagy a Univerzális Windows-platform (x86, x64, ARM/ARM64), az Android (x86, ARM32/64) és az iOS (x64 Simulator, ARM32 és ARM64) használatát.
@@ -64,7 +64,7 @@ Ha elkészült, a felhasználói felületnek a következő képernyőképhez has
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/text-to-speech/Assets/Scripts/HelloWorld.cs#code)]
 
-1. Keresse meg és cserélje le a `YourSubscriptionKey` karakterláncot a Speech Services előfizetési kulcsával.
+1. Keresse meg és cserélje le a `YourSubscriptionKey` karakterláncot a Speech Service előfizetési kulcsával.
 
 1. Keresse meg és cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md). Például a régió `westus`, ha az ingyenes próbaverziót használja.
 
@@ -83,7 +83,7 @@ Ha elkészült, a felhasználói felületnek a következő képernyőképhez has
 ## <a name="run-the-application-in-the-unity-editor"></a>Az alkalmazás futtatása az Unity Editorban
 
 * Válassza az Unity Editor eszköztár **Lejátszás** gombját a menüsáv alatt.
-* Az alkalmazás elindítása után írjon be egy szöveget a beviteli mezőbe, majd kattintson a gombra. A szöveg a beszédfelismerési szolgáltatásba kerül, és a beszédbe lett szintetizálva, amely a beszélőn játszik.
+* Az alkalmazás elindítása után írjon be egy szöveget a beviteli mezőbe, majd kattintson a gombra. A rendszer továbbítja a szöveget a Speech Service-nek, és szintetizálta a beszédet, amely a beszélőn játszik.
 
   [![képernyőkép a futó rövid útmutatóról az Unity játék ablakban](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-inline.png)](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-expanded.png#lightbox)
 
@@ -94,11 +94,11 @@ Ha elkészült, a felhasználói felületnek a következő képernyőképhez has
 Ez az alkalmazás az Android rendszerre is telepíthető Windows önálló alkalmazásként vagy UWP-alkalmazásként.
 Tekintse meg a [minta tárházat](https://aka.ms/csspeech/samples) a rövid útmutató/csharp-Unity mappában, amely leírja ezeknek a további céloknak a konfigurációját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Egyéni hang létrehozása](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Egyéni hangminták rögzítése](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

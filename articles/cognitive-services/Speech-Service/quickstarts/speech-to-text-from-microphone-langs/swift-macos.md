@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/28/2019
 ms.author: cbasoglu
-ms.openlocfilehash: af01ab7b3a3c9a93cc470646b40779ee0527d41e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 083ac49919bcf60fdd0b34a5007e03d215c23280
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503527"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815009"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Gyors útmutató: a beszédfelismerési szolgáltatás felismerése a macOS rendszeren a Speech SDK használatával
 
@@ -37,7 +37,7 @@ Az első lépések megkezdése előtt tekintse meg az előfeltételek listáját
 Vegye figyelembe, hogy ez az oktatóanyag nem fog működni a 1.6.0-nál korábbi SDK-verzióval.
 
 A macOS rendszerhez készült Cognitive Services Speech SDK-t keretrendszer-csomagként terjesztik.
-A Xcode-projektekben [CocoaPod](https://cocoapods.org/), illetve manuálisan is letölthetők a https://aka.ms/csspeech/macosbinaryból, és kézzel is összekapcsolhatók. Ez az útmutató egy CocoaPod használ.
+A Xcode-projektekben [CocoaPod](https://cocoapods.org/), illetve manuálisan is letölthetők a https://aka.ms/csspeech/macosbinary ból, és kézzel is összekapcsolhatók. Ez az útmutató egy CocoaPod használ.
 
 ## <a name="create-an-xcode-project"></a>Xcode-projekt létrehozása
 
@@ -90,7 +90,7 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
 1. A mintakód létrehozásához és futtatásához válassza a **termék** > **Futtatás** elemet a menüből, vagy kattintson a **Lejátszás** gombra.
 1. Miután rákattintott az alkalmazás "felismerés" gombjára, és néhány szót mondott, az alkalmazás ablakának alsó részén látható szöveget kell látnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A GitHubon található minták megismerése](https://aka.ms/csspeech/samples)

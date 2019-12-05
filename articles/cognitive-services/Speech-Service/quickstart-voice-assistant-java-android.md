@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 58bc33c54a7bd878d717b2c6e44d9ac8657c245f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 077f34e94423918d324eb41b56ab84c64a0db719
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111794"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816192"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Rövid útmutató: hangsegéd létrehozása Java nyelven Androidon a Speech SDK használatával
 
@@ -30,7 +30,7 @@ Ez az alkalmazás a Speech SDK Maven-csomaggal és Android Studio 3,3-mel kész�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com).
+- Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com).
 - Korábban létrehozott, a [közvetlen vonalas beszéd csatornával](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) konfigurált robot
 - [Android Studio](https://developer.android.com/studio/) v 3.3-as vagy újabb verzió
 
@@ -260,7 +260,7 @@ A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a követk
 
     * A `YourSpeechSubscriptionKey` helyére írja be az előfizetési kulcsot.
 
-    * A `YourServiceRegion` az előfizetéshez társított [régió](regions.md) helyett csak a Speech Services-régiók egy részhalmaza támogatja a közvetlen vonalas beszédfelismerést. További információ: [régiók](regions.md#voice-assistants).
+    * A `YourServiceRegion` az előfizetéshez társított [régió](regions.md) helyett csak a Speech Service-régiók egy részhalmaza támogatja a közvetlen vonalas beszédfelismerést. További információ: [régiók](regions.md#voice-assistants).
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
@@ -278,14 +278,14 @@ Az alkalmazás és a tevékenység elindítása után a gombra kattintva megkezd
 
 ![Az Android-alkalmazás képernyőképe](media/sdk/qs-java-android-assistant-completed-turn.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 - [A hangsegédek ismertetése](voice-assistants.md)
-- [Ingyenes Speech Services-előfizetési kulcs beszerzése](get-started.md)
+- [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
 - [Egyéni kulcsszavak](speech-devices-sdk-create-kws.md)
 - [Közvetlen vonalas beszéd összekötése a robottal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [A Java-minták megismerése a GitHubon](https://aka.ms/csspeech/samples)

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 8dec673408b706a92a29f418af3bef4cc05a8d2d
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 28b9c55df8cd7883e05e964b8b67e08c7a3eb8c1
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668574"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812727"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Az Azure Adatkezelő üzembe helyezése a Virtual Network (előzetes verzió)
 
@@ -52,7 +52,7 @@ Az IP-címek teljes száma:
 | --- | --- |
 | Motor szolgáltatás | 1/példány |
 | Adatkezelési szolgáltatás | 2 |
-| Belső terheléselosztó | 2 |
+| Belső terheléselosztók | 2 |
 | Azure-beli fenntartott címek | 5 |
 | **Teljes** | **#engine_instances + 9** |
 
@@ -75,7 +75,7 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 
 #### <a name="inbound-nsg-configuration"></a>Bejövő NSG-konfiguráció
 
-| **Használat**   | **A**   | **Címzett**   | **Protocol (Protokoll)**   |
+| **Használat**   | **From**   | **Címzett**   | **Protocol (Protokoll)**   |
 | --- | --- | --- | --- |
 | Felügyelet  |[ADX-felügyeleti címek](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | ADX alhálózat: 443  | TCP  |
 | Állapotfigyelés  | [ADX állapot-figyelési címei](#health-monitoring-addresses)  | ADX alhálózat: 443  | TCP  |
@@ -84,7 +84,7 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 
 #### <a name="outbound-nsg-configuration"></a>Kimenő NSG-konfiguráció
 
-| **Használat**   | **A**   | **Címzett**   | **Protocol (Protokoll)**   |
+| **Használat**   | **From**   | **Címzett**   | **Protocol (Protokoll)**   |
 | --- | --- | --- | --- |
 | Függőség az Azure Storage-ban  | ADX alhálózat  | Tárolás: 443  | TCP  |
 | Függőség Azure Data Lake  | ADX alhálózat  | AzureDataLake: 443  | TCP  |
@@ -236,7 +236,6 @@ azureprofilerfrontdoor.cloudapp.net:443
 *.core.windows.net:443
 *.servicebus.windows.net:443
 shoebox2.metrics.nsatc.net:443
-production.diagnostics.monitoring.core.windows.net:443
 prod-dsts.dsts.core.windows.net:443
 ocsp.msocsp.com:80
 *.windowsupdate.com:80

@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: Speech C++ SDK (MacOS) platform beállítása – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ezzel az útmutatóval beállíthatja a platformot C++ MacOS rendszeren a SPEECH Services SDK használatával.
+description: Ezzel az útmutatóval beállíthatja a platformot C++ MacOS rendszeren a SPEECH Service SDK használatával.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 2c6a186eef631372f08b876083dacede31cf1077
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1b01a7df286af65d3363956706ad2703a339a255
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502547"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818550"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) C++ -t MacOS 10,13-es vagy újabb verzióra.
 
@@ -56,6 +56,6 @@ macOS 10,13 és újabb verziók
 
 Ezután az alábbi [lépésekkel](#next-steps) léphet tovább.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [windows](../quickstart-list.md)]

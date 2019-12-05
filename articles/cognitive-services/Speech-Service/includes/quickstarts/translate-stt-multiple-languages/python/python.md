@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: fe969b45384568a41fe74415995b0173450eeaf4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 44fafa361744f3c405cdb5c7ad416146fc0b1de2
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503072"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817235"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -91,7 +91,7 @@ Az első lépések előtt ügyeljen a következőre:
    python quickstart.py
    ```
 
-1. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás elküldi a beszédét a Speech Services szolgáltatásnak, amely szöveget (ebben az esetben francia és német nyelven) fordít le és mutat be. A Speech Services ezután visszaküldi a szöveget az alkalmazásnak a megjelenítéshez.
+1. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás elküldi a beszédét a Speech szolgáltatásnak, amely szöveget (ebben az esetben francia és német nyelven) fordít és másol. A beszédfelismerési szolgáltatás ezután visszaküldi a szöveget az alkalmazásnak a megjelenítéshez.
 
    ```
    Say something...
@@ -100,6 +100,6 @@ Az első lépések előtt ügyeljen a következőre:
    TRANSLATED into 'fr': Quel temps fait-il à Seattle ?
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

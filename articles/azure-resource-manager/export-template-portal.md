@@ -2,13 +2,13 @@
 title: Sablon exportálása Azure Portal
 description: A Azure Portal használatával exportálhat egy Azure Resource Manager sablont az előfizetése erőforrásaiból.
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 9e6a4089758809cbebc6a3c0cd586cb418ca42bf
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.date: 12/03/2019
+ms.openlocfilehash: 74812799ce1ccb428128ea0923d9cda556b9d9ee
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306786"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815069"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Egy-és többerőforrásos exportálás Azure Portal sablonba
 
@@ -33,7 +33,7 @@ A választott lehetőségtől függően az exportált sablonok különböző tul
 | A sablon az erőforrások aktuális állapotának pillanatképe. Az üzembe helyezés után végzett manuális módosításokat is tartalmazza. | A sablon csak az erőforrások állapotát jeleníti meg a telepítés időpontjában. Az üzembe helyezést követően elvégzett manuális módosítások nem szerepelnek. |
 | Kiválaszthatja, hogy mely erőforrások legyenek exportálva az erőforráscsoporthoz. | A rendszer minden erőforrást tartalmaz egy adott központi telepítéshez. Ezekhez az erőforrásokhoz nem választhat részhalmazt, illetve nem adhat hozzá egy másik időpontban hozzáadott erőforrásokat. |
 | A sablon az erőforrások összes tulajdonságát tartalmazza, beleértve az üzembe helyezés során általában nem beállított tulajdonságokat is. Előfordulhat, hogy a sablon újrafelhasználása előtt el kívánja távolítani vagy törölni szeretné ezeket a tulajdonságokat. | A sablon csak a központi telepítéshez szükséges tulajdonságokat tartalmazza. A sablon használatra kész. |
-| A sablon valószínűleg nem tartalmazza az újrafelhasználáshoz szükséges összes paramétert. A legtöbb tulajdonság értéke rögzített a sablonban. A sablon más környezetekben való újbóli üzembe helyezéséhez olyan paramétereket kell hozzáadnia, amelyek növelik az erőforrások konfigurálásának lehetőségét.  Lehetőség van a kijelölés kiválasztására is **, hogy** saját paramétereket lehessen létrehozni. | A sablon olyan paramétereket tartalmaz, amelyek megkönnyítik a különböző környezetekben történő újraüzembe helyezést. |
+| A sablon valószínűleg nem tartalmazza az újrafelhasználáshoz szükséges összes paramétert. A legtöbb tulajdonság értéke rögzített a sablonban. A sablon más környezetekben való újbóli üzembe helyezéséhez olyan paramétereket kell hozzáadnia, amelyek növelik az erőforrások konfigurálásának lehetőségét.  Kiválaszthatja a **Paraméterek belefoglalása** lehetőséget is, így saját paramétereket hozhat létre. | A sablon olyan paramétereket tartalmaz, amelyek megkönnyítik a különböző környezetekben történő újraüzembe helyezést. |
 
 Exportálja a sablont egy erőforráscsoporthoz vagy erőforrásból, ha:
 
@@ -63,6 +63,8 @@ Egy vagy több erőforrás exportálása egy erőforráscsoporthoz:
    ![Sablon megjelenítése](./media/export-template-portal/show-template.png)
 
    A **include paraméterek** alapértelmezés szerint ki vannak választva.  Ha be van jelölve, a sablon létrehozásakor minden sablon paraméter szerepelni fog. Ha saját paramétereket szeretne létrehozni, akkor a jelölőnégyzet bejelölésével ne vegye fel őket.
+
+Az exportált sablon az egyes erőforrástípusok [közzétett sémái](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) alapján jön létre. Alkalmanként a séma nem rendelkezik az erőforrástípus legújabb verziójával. Ellenőrizze az exportált sablont, és győződjön meg róla, hogy tartalmazza a szükséges tulajdonságokat. Ha szükséges, szerkessze az exportált sablont a szükséges API-verzió használatára.
 
 ## <a name="export-template-from-a-resource"></a>Sablon exportálása erőforrásból
 

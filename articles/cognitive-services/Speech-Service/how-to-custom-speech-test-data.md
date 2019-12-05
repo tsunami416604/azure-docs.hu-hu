@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 577a76b628e40b7651345698a46cba255b16a828
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2d02ed5a9fb2cb10e4cf18fe7d878da5b032fe0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464564"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816400"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speechi adatfeldolgozás előkészítése
 
@@ -25,7 +25,7 @@ Függetlenül attól, hogy a Microsoft beszédfelismerés pontos felismerése va
 
 Ez a táblázat felsorolja az elfogadott adattípusokat, valamint az egyes adattípusok használatát, valamint az ajánlott mennyiséget. Nem minden adattípus szükséges a modell létrehozásához. Az adatkövetelmények attól függően változnak, hogy szeretne-e tesztet létrehozni vagy egy modellt betanítani.
 
-| Data type | Tesztelési módszer | Mennyiség | Képzéshez használatos | Mennyiség |
+| Data type | Tesztelési módszer | Ajánlott mennyiség | Képzéshez használatos | Ajánlott mennyiség |
 |-----------|-----------------|----------|-------------------|----------|
 | [Hang](#audio-data-for-testing) | Igen<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | Nem | N/a |
 | [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Igen<br>A pontosság kiértékeléséhez használatos | 0,5 – 5 órányi hang | Igen | 1 – 1 000 órányi hang |
@@ -52,7 +52,7 @@ A hangadatok optimálisan tesztelik a Microsoft alapvető beszédfelismerési mo
 
 Ezzel a táblázattal ellenőrizheti, hogy a hangfájlok formátuma helyesen van-e formázva a Custom Speech használatával:
 
-| Tulajdonság | Érték |
+| Tulajdonság | Value (Díj) |
 |----------|-------|
 | Fájl formátuma | RIFF (WAV) |
 | Mintavételezési arány | 8 000 Hz vagy 16 000 Hz |
@@ -73,7 +73,7 @@ Ha a hang nem elégíti ki ezeket a tulajdonságokat, vagy ha igen, akkor javaso
 
 Ha a Microsoft beszéd-szöveg pontosságát szeretné mérni a hangfájlok feldolgozásakor, az összehasonlításhoz meg kell adnia az emberi címkével ellátott átírásokat (Word-by-Word). Míg az emberi címkével ellátott átírás gyakran időigényes, a pontosság kiértékelése és a modell betanítása szükséges a használati esetekhez. Ne feledje, hogy az elismerés fejlesztése csak a megadott adatszolgáltatások esetében lesz megfelelő. Ezért fontos, hogy csak a kiváló minőségű átiratok legyenek feltöltve.  
 
-| Tulajdonság | Érték |
+| Tulajdonság | Value (Díj) |
 |----------|-------|
 | Fájl formátuma | RIFF (WAV) |
 | Mintavételezési arány | 8 000 Hz vagy 16 000 Hz |
@@ -117,7 +117,7 @@ Ha kapcsolódó szöveggel szeretne egyéni modellt létrehozni, meg kell adnia 
 
 Ezzel a táblázattal ellenőrizheti, hogy a hosszúságú kimondott szöveg kapcsolódó adatfájlja helyesen van-e formázva:
 
-| Tulajdonság | Érték |
+| Tulajdonság | Value (Díj) |
 |----------|-------|
 | Szövegkódolás | UTF-8 BOM |
 | Kimondott szövegek száma soronként | 1 |
@@ -151,17 +151,17 @@ A testreszabott kiejtés angol (en-US) és német (de-DE) nyelven érhető el. E
 | Nyelv | Területi beállítás | Karaktereket |
 |----------|--------|------------|
 | Angol | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
-| német | de-DE | ä, √, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| Német | de-DE | ä, √, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
 Ezzel a táblázattal ellenőrizheti, hogy a kiejtésekhez kapcsolódó adatfájl megfelelően van-e formázva. A kiejtési fájlok kicsik, és nem léphetnek túl néhány Tudásbázis.
 
-| Tulajdonság | Érték |
+| Tulajdonság | Value (Díj) |
 |----------|-------|
 | Szövegkódolás | UTF-8 AJ (ANSI is támogatott angol nyelven) |
 | kiejtések száma soronként | 1 |
 | Maximális fájlméret | 1 MB (1 KB ingyenes szinten) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)
 * [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)

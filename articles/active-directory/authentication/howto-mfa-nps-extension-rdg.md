@@ -1,6 +1,6 @@
 ---
 title: A RDG integrálása az Azure MFA NPS-bővítményrel – Azure Active Directory
-description: A távoli asztali átjáró infrastruktúra integrálása az Azure MFA használata a hálózati házirend-kiszolgáló bővítmény a Microsoft Azure
+description: A Távoli asztali átjáró-infrastruktúra integrálása az Azure MFA-val a hálózati házirend-kiszolgáló bővítmény használatával Microsoft Azure
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,113 +11,113 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ec402cf2c741d88d230e5734485bf9eb0dd1b03
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: c0eafc12f9207ca93651363316c06eeadb7c8436
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381814"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74813182"
 ---
-# <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A távoli asztali átjáró-infrastruktúra használata a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD integrálása
+# <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A Távoli asztali átjáró-infrastruktúra integrálása a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD használatával
 
-Ez a cikk részletes adatokat biztosít a távoli asztali átjáró infrastruktúra integrálása az Azure multi-factor Authentication (MFA) a hálózati házirend-kiszolgáló (NPS) bővítmény használata a Microsoft Azure-hoz.
+Ez a cikk részletesen ismerteti a Távoli asztali átjáró infrastruktúra Azure Multi-Factor Authentication (MFA) szolgáltatással való integrálásának részleteit az Microsoft Azure hálózati házirend-kiszolgáló (NPS) bővítményének használatával.
 
-Az Azure-hoz készült hálózati házirend-kiszolgáló (NPS) bővítmény lehetővé teszi, hogy az ügyfelek az Azure felhőalapú [multi-Factor Authentication (MFA)](multi-factor-authentication.md)használatával megóvják Remote Authentication Dial-In User Service (RADIUS) ügyfél-hitelesítést. Ez a megoldás második biztonsági réteget ad hozzá felhasználói bejelentkezéseket és tranzakciókat kétlépéses ellenőrzést biztosít.
+Az Azure-hoz készült hálózati házirend-kiszolgáló (NPS) bővítmény lehetővé teszi, hogy az ügyfelek az Azure felhőalapú [multi-Factor Authentication (MFA)](multi-factor-authentication.md)használatával megóvják Remote Authentication Dial-In User Service (RADIUS) ügyfél-hitelesítést. Ez a megoldás kétlépéses ellenőrzést biztosít a felhasználói bejelentkezésekhez és tranzakciókra való második biztonsági réteg hozzáadásához.
 
-Ebben a cikkben részletes útmutatást nyújt a hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure MFA számára a hálózati házirend-bővítmény használata az Azure-hoz. Ez lehetővé teszi a távoli asztali átjáró bejelentkezni próbáló felhasználók biztonságos ellenőrzése.
+Ez a cikk lépésről lépésre bemutatja, hogyan integrálhatja az NPS-infrastruktúrát az Azure MFA-val az Azure NPS-bővítményének használatával. Ez lehetővé teszi, hogy a felhasználók biztonságosan ellenőrizhessék a Távoli asztali átjáróba való bejelentkezést.
 
 > [!NOTE]
 > Ez a cikk nem használható az MFA-kiszolgálók üzembe helyezéséhez, és csak az Azure MFA (felhőalapú) környezetekben használható.
 
-A hálózati házirend- és hozzáférés-szolgáltatások (NPS) révén a szervezetek a következőket teszi:
+A hálózati házirend-és elérési szolgáltatások (NPS) lehetővé teszi a szervezetek számára a következők elvégzését:
 
-* Adja meg a központi felügyeleti helyek és a vezérlő megadásával, akik csatlakozhatnak a hálózati kérelmek, milyen alkalommal nap-kapcsolatok engedélyezettek, a kapcsolatok időtartama, és a biztonság, az ügyfelek kell kapcsolódni, és így tovább. Ahelyett, hogy ezek a szabályzatok megadása minden VPN- vagy távoli asztali (RD) átjáró kiszolgálón, ezek a szabályzatok egyszer adható meg egy központi helyen. A RADIUS protokollal biztosít a központosított hitelesítési, engedélyezési és nyilvántartási (AAA).
-* Hozzon létre, és érvényesíti a hálózatvédelem (NAP) ügyfél állapotházirendeket, amelyek meghatározzák, hogy eszközök, amelyekhez hozzáférést korlátozás nélküli vagy korlátozott a hálózati erőforrásokhoz.
-* Adja meg a hitelesítési és engedélyezési 802.1 hozzáférés kényszerítésére azt jelenti, hogy x-kompatibilis vezeték nélküli hozzáférési pontok és Ethernet-kapcsolók.
+* Adja meg a hálózati kérelmek felügyeletének és felügyeletének központi helyeit a kapcsolódási lehetőség megadásával, a napi kapcsolatok időtartamával, a kapcsolatok időtartamától, valamint az ügyfelek által a csatlakozáshoz használt biztonsági szinttel és így tovább. Ahelyett, hogy ezeket a házirendeket az egyes VPN-vagy Távoli asztal-(RD-) átjárókiszolgálón adja meg, ezeket a házirendeket egy központi helyen lehet megadnia. A RADIUS protokoll biztosítja a központosított hitelesítést, engedélyezést és nyilvántartást (AAA).
+* A hálózatvédelmi (NAP-) ügyfelek állapot-házirendjeinek létrehozása és kényszerítése, amelyek meghatározzák, hogy az eszközök nem korlátozott vagy korlátozott hozzáférést kapnak-e a hálózati erőforrásokhoz.
+* A 802.1 x-kompatibilis vezeték nélküli hozzáférési pontokhoz és Ethernet-kapcsolókhoz való hozzáférés hitelesítésének és engedélyezésének megkövetelése.
 
-A szervezetek általában a hálózati házirend-kiszolgáló (RADIUS) használatával egyszerűsítik és központosítják a VPN-házirendek kezelését. Azonban számos szervezet is használhatja az NPS egyszerűbbé tétele és a távoli asztali asztali kapcsolatengedélyezési házirendek (RD CAPs) kezelésének központosítása.
+A szervezetek általában a hálózati házirend-kiszolgáló (RADIUS) használatával egyszerűsítik és központosítják a VPN-házirendek kezelését. Számos szervezet azonban a hálózati házirend-kiszolgáló használatával egyszerűsíti és központosítja a távoli asztali asztali kapcsolatengedélyezési házirendek (RD CAPs) felügyeletét.
 
-Szervezetek is integrálhatja az Azure MFA megfelelőségi magas szintű biztonság növelése és a hálózati házirend-kiszolgáló. Ezzel biztosíthatja, hogy a felhasználók kétlépéses ellenőrzést, jelentkezzen be a távoli asztali átjáró létrehozásához. A felhasználók számára hozzáférést biztosítani a felhasználónév/jelszó kombináció, amely a felhasználó rendelkezik a hatókörükön információkkal együtt kell adnia. Ezeket az információkat megbízható legyen, és nem nehezen másolható, például egy mobiltelefonszámot, a mobiltelefonra száma, az alkalmazás egy mobileszközön, és így tovább. A RDG jelenleg támogatja a Microsoft hitelesítő alkalmazási módszereinek telefonos hívását és leküldéses értesítéseit a 2FA. A támogatott hitelesítési módszerekkel kapcsolatos további információkért tekintse [meg a felhasználók által használható hitelesítési módszerek meghatározását](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use)ismertető szakaszt.
+A szervezetek a hálózati házirend-kiszolgálót az Azure MFA-nal is integrálva növelhetik a biztonságot, és magas szintű megfelelőséget biztosíthatnak. Ezzel biztosíthatja, hogy a felhasználók kétlépéses ellenőrzést hozzanak létre a Távoli asztali átjáróba való bejelentkezéshez. Ahhoz, hogy a felhasználók hozzáférjenek a hozzáféréshez, meg kell adniuk a Felhasználónév/jelszó kombinációját, valamint azokat az információkat, amelyekkel a felhasználó a vezérlőben található. Ennek az információnak megbízhatónak kell lennie, és nem lehet könnyen duplikált, mint például a mobiltelefonszám, a vezetékes szám, az alkalmazás mobil eszközön stb. A RDG jelenleg támogatja a Microsoft hitelesítő alkalmazási módszereinek telefonos hívását és leküldéses értesítéseit a 2FA. A támogatott hitelesítési módszerekkel kapcsolatos további információkért tekintse [meg a felhasználók által használható hitelesítési módszerek meghatározását](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use)ismertető szakaszt.
 
 Az Azure-hoz készült NPS-bővítmény rendelkezésre állása előtt azok az ügyfelek, akik az integrált hálózati házirend-kiszolgáló és az Azure MFA-környezetek kétlépéses ellenőrzésének megvalósítását kívánják végrehajtani, külön MFA-kiszolgálót kellett konfigurálniuk és karbantartani a helyszíni környezetben, ahogyan azt a [Távoli asztali átjáró és az azure multi-Factor Authentication-kiszolgáló RADIUS használatával](howto-mfaserver-nps-rdg.md)dokumentálták.
 
-Az NPS-bővítményt, az Azure-ban rendelkezésre állásának most vállalatok számára teszi lehetővé a kiválasztott vagy egy helyszíni MFA-megoldást, vagy egy MFA felhőalapú megoldás üzembe biztonságos RADIUS-ügyfél-hitelesítés.
+A hálózati házirend-kiszolgáló bővítményének rendelkezésre állása mostantól lehetővé teszi a szervezetek számára, hogy a RADIUS-ügyfél hitelesítésének biztosításához helyszíni, MFA-vagy felhőalapú MFA-megoldást telepítsenek.
 
-## <a name="authentication-flow"></a>A hitelesítési folyamatból
+## <a name="authentication-flow"></a>A hitelesítési folyamat
 
-Távoli asztali átjárón keresztül a hálózati erőforrásokhoz való hozzáférést nyerni korlátozott felhasználók számára egy távoli asztali kapcsolat engedélyezési házirendje (RD CAP) és a egy távoli asztali erőforrás engedélyezési házirendje (RD RAP) a megadott feltételeknek kell megfelelniük. A távoli asztali CAPs adja meg, ki jogosult csatlakozni a távoli asztali átjáró. RD RAP-k adja meg a hálózati erőforrások, például a távoli asztali vagy távoli alkalmazások esetében, amelyet a felhasználó számára az RD-átjárón keresztül.
+Ahhoz, hogy a felhasználók hozzáférhessenek a hálózati erőforrásokhoz egy Távoli asztali átjáróon keresztül, meg kell felelniük az egy távoli asztali kapcsolat engedélyezési házirendjében (RD CAP) és egy távoli asztali erőforrás-engedélyezési házirendben (RD RAP) meghatározott feltételeknek. A RD CAPs megadja, hogy ki jogosult a távoli asztali átjáróhoz való kapcsolódásra. RD RAP a hálózati erőforrásokat, például a távoli asztalokat vagy a távoli alkalmazásokat határozza meg, hogy a felhasználó csatlakozhat a RD-átjáróon keresztül.
 
-Az RD átjáró központi házirend áruházbeli használandó távoli asztali CAPs konfigurálható. RD RAP-k nem használhatja egy központi házirend feldolgozása az RD-átjárón. RD-átjárón konfigurált központi házirend áruházbeli használandó távoli asztali CAPs egyik példája egy RADIUS-ügyfél egy másik hálózati házirend-kiszolgálóra, amely a központi házirend tárolóként szolgál.
+A RD-átjáró konfigurálható úgy, hogy egy központi házirend-tárolót használjanak a távoli asztali kapcsolatengedélyezési szolgáltatásokhoz. A távoli asztali erőforrás-engedélyezési szolgáltatás nem tud központi házirendet használni, mivel azokat a RD-átjáró dolgozzák fel. A távoli asztali kapcsolatengedélyezési szolgáltatás központi házirendjének tárolására konfigurált RD-átjáró például egy RADIUS-ügyfél egy másik NPS-kiszolgálónak, amely központi házirend-tárolóként szolgál.
 
-Ha az NPS-bővítményt, az Azure-ban a hálózati házirend-kiszolgáló és a távoli asztali átjáró integrálva van, a sikeres hitelesítési folyamat következőképpen történik:
+Ha az Azure-hoz készült NPS-bővítmény integrálva van a hálózati házirend-kiszolgálóval és a Távoli asztali átjáró, a sikeres hitelesítési folyamat a következő:
 
-1. A távoli asztali átjáró kiszolgálójának szeretne csatlakozni egy erőforrást, például a távoli asztali munkamenetet a távoli asztali felhasználók hitelesítési kérést kap. RADIUS-ügyfélként működő, a távoli asztali átjáró kiszolgálójának RADIUS Access-kérelem üzenet konvertálja a kérést, és a üzenetet küld a RADIUS (NPS) kiszolgálóhoz, amelyen telepítve van-e az NPS-bővítményének.
-1. A felhasználónév és jelszó kombinációjával ellenőrzése az Active Directoryban, és a felhasználó hitelesítését.
-1. Ha a hálózati házirend-kiszolgáló kapcsolódási kérelmet, és a hálózati házirendek megadott feltételek mindegyike teljesül (például időpont vagy csoport tagsági korlátozások), az NPS-bővítményének elindítja az Azure MFA másodlagos hitelesítési kérést.
-1. Az Azure MFA kommunikál az Azure ad-vel, a felhasználó adatait kérdezi le, és végrehajtja a másodlagos hitelesítést támogatott módszerrel.
-1. Követően sikeres, az MFA-hitelesítést az Azure MFA kommunikál az NPS-bővítményt az eredményt.
-1. A hálózati házirend-kiszolgáló, amelyen a bővítményt telepíti, a távoli asztali átjáró kiszolgálójának az RD CAP házirend RADIUS Access-Accept üzenetet küld.
-1. A felhasználó hozzáférést kap a kért hálózati erőforrás az RD átjárón keresztül.
+1. A Távoli asztali átjáró kiszolgáló hitelesítési kérést kap egy távoli asztali felhasználótól egy erőforráshoz, például egy Távoli asztal-munkamenethez való kapcsolódáshoz. RADIUS-ügyfélként a Távoli asztali átjáró-kiszolgáló átalakítja a kérést egy RADIUS Access-Request üzenetre, és elküldi az üzenetet arra a RADIUS-(NPS-) kiszolgálóra, amelyen a hálózati házirend-kiszolgáló bővítmény telepítve van.
+1. A Felhasználónév és a jelszó kombinációja Active Directory ellenőrzése alatt áll, és a felhasználó hitelesítése megtörtént.
+1. Ha az NPS-csatlakozási kérelemben és a hálózati házirendekben megadott összes feltétel teljesül (például a napszak vagy a csoporttagság korlátozása), akkor a hálózati házirend-kiszolgáló bővítmény a másodlagos hitelesítésre vonatkozó kérelmet indít el az Azure MFA-val.
+1. Az Azure MFA kommunikál az Azure AD-vel, lekéri a felhasználó adatait, és a támogatott módszerek használatával végrehajtja a másodlagos hitelesítést.
+1. Az MFA-kérdés sikeressége után az Azure MFA a hálózati házirend-kiszolgáló bővítményének eredményét továbbítja.
+1. Az NPS-kiszolgáló, ahol a bővítmény telepítve van, egy RADIUS Access-Accept üzenetet küld a RD CAP szabályzatnak a Távoli asztali átjáró kiszolgálónak.
+1. A felhasználó hozzáférést kap a kért hálózati erőforráshoz a RD-átjáróon keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a szakasz részletesen előtt az Azure MFA integrálása a távoli asztali átjáró szükséges előfeltételeket. Mielőtt elkezdené, az alábbi előfeltételek teljesülnek kell rendelkeznie.  
+Ez a szakasz részletesen ismerteti az Azure MFA és a Távoli asztali átjáró integrálásához szükséges előfeltételeket. Mielőtt elkezdené, a következő előfeltételeket kell megadnia.  
 
 * Távoli asztali szolgáltatások (RDS) infrastruktúra
-* Az Azure MFA-licenc
-* A Windows Servert
-* Hálózati házirend- és hozzáférés-szolgáltatások (NPS) szerepkör
-* Az Azure Active Directory a helyszíni Active Directoryval szinkronizált
-* Azure Active Directory GUID ID
+* Azure MFA-licenc
+* Windows Server szoftver
+* Hálózati házirend-és elérési szolgáltatások (NPS) szerepkör
+* Azure Active Directory szinkronizálva a helyszíni Active Directory
+* Azure Active Directory GUID azonosító
 
 ### <a name="remote-desktop-services-rds-infrastructure"></a>Távoli asztali szolgáltatások (RDS) infrastruktúra
 
-Rendelkeznie kell egy működő infrastruktúra a távoli asztali szolgáltatások (RDS) helyen. Ha nem, akkor gyorsan létrehozhatja ezt az infrastruktúrát az Azure-ban a következő rövid útmutató sablon használatával: [Távoli asztal munkamenet-gyűjtemény központi telepítésének létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
+A helyén működő Távoli asztali szolgáltatások (RDS) infrastruktúra szükséges. Ha nem, akkor gyorsan létrehozhatja ezt az infrastruktúrát az Azure-ban a következő rövid útmutató sablon használatával: [Távoli asztal munkamenet-gyűjtemény központi telepítésének létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
 
-Ha szeretné manuálisan létrehozni egy helyszíni távoli asztali szolgáltatások infrastruktúrát gyorsan tesztelésre, lépésekkel üzembe helyez egyet.
+Ha manuálisan kívánja létrehozni a helyszíni RDS-infrastruktúrát tesztelési célokra, kövesse az üzembe helyezés lépéseit.
 **További információ**: [az RDS üzembe helyezése az Azure](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) rövid útmutatóval és az [alapszintű RDS infrastruktúra üzembe helyezésével](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
-### <a name="azure-mfa-license"></a>Az Azure MFA-licenc
+### <a name="azure-mfa-license"></a>Azure MFA-licenc
 
-Required (kötelező) a licenc az Azure MFA-hoz, elérhető prémium szintű Azure AD vagy az egyéb csomagok, amelyek tartalmazzák azt. Fogyasztásalapú licencek az Azure MFA-hoz, például felhasználói megfelelően vagy hitelesítési licencekkel, amelyek nem kompatibilisek az NPS-bővítményt. További információt az [Azure-multi-Factor Authentication beszerzését](concept-mfa-licensing.md)ismertető témakörben talál. Tesztelési célokra használhatja egy próba-előfizetést.
+Kötelező az Azure MFA licence, amely prémium szintű Azure AD vagy más, az azt tartalmazó csomagokon keresztül érhető el. Az Azure MFA (például felhasználónkénti vagy hitelesítési licencek) fogyasztáson alapuló licencei nem kompatibilisek a hálózati házirend-kiszolgáló bővítménnyel. További információt az [Azure-multi-Factor Authentication beszerzését](concept-mfa-licensing.md)ismertető témakörben talál. Tesztelési célból próbaverziós előfizetést is használhat.
 
-### <a name="windows-server-software"></a>A Windows Servert
+### <a name="windows-server-software"></a>Windows Server szoftver
 
-Az NPS-bővítményének megköveteli a Windows Server 2008 R2 SP1 vagy újabb verzió és az NPS szerepkör-szolgáltatás telepítve van. Ebben a szakaszban található összes lépést a Windows Server 2016 használatával lettek végrehajtva.
+A hálózati házirend-kiszolgáló bővítményéhez telepíteni kell a Windows Server 2008 R2 SP1 vagy újabb verzióját a hálózati házirend-kiszolgáló szerepkör-szolgáltatással. Az ebben a szakaszban szereplő összes lépés a Windows Server 2016-es verzióval lett végrehajtva.
 
-### <a name="network-policy-and-access-services-nps-role"></a>Hálózati házirend- és hozzáférés-szolgáltatások (NPS) szerepkör
+### <a name="network-policy-and-access-services-nps-role"></a>Hálózati házirend-és elérési szolgáltatások (NPS) szerepkör
 
-A hálózati házirend-kiszolgáló szerepkör-szolgáltatást biztosít a RADIUS-kiszolgáló és az ügyfél funkcióit, valamint a hálózati házirend-Állapotfigyelő szolgáltatás. Az infrastruktúra legalább két számítógépre telepíteni kell a szerepet: A távoli asztali átjáró és a egy másik tagkiszolgáló vagy tartományvezérlő. Alapértelmezés szerint a szerepkör már létezik a számítógépen, a távoli asztali átjáró konfigurálva.  Emellett telepítenie kell az NPS szerepkör a legalább egy másik számítógépre, például egy tartományvezérlő vagy tagkiszolgáló.
+A hálózati házirend-kiszolgáló szerepkör-szolgáltatás biztosítja a RADIUS-kiszolgálót és az ügyfelek funkcióit, valamint a hálózati hozzáférési házirend állapotfigyelő szolgáltatását. Ezt a szerepkört az infrastruktúra legalább két számítógépén kell telepíteni: a Távoli asztali átjáró és egy másik tagkiszolgáló vagy tartományvezérlő. Alapértelmezés szerint a szerepkör már szerepel a Távoli asztali átjáró konfigurált számítógépen.  A hálózati házirend-kiszolgáló szerepkört legalább egy másik számítógépen, például tartományvezérlőn vagy tagkiszolgálón is telepítenie kell.
 
 A hálózati házirend-kiszolgáló szerepkör-szolgáltatás Windows Server 2012-es vagy régebbi verziójának telepítésével kapcsolatos információkért lásd: NAP állapotházirend- [kiszolgáló telepítése](https://technet.microsoft.com/library/dd296890.aspx). A hálózati házirend-kiszolgálóval kapcsolatos ajánlott eljárások leírását, beleértve a hálózati házirend-kiszolgáló tartományvezérlőre történő telepítésének javaslatát, lásd: [ajánlott eljárások az NPS-hez](https://technet.microsoft.com/library/cc771746).
 
-### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Az Azure Active Directory a helyszíni Active Directoryval szinkronizált
+### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory szinkronizálva a helyszíni Active Directory
 
-Az NPS-bővítményének használatához a helyszíni felhasználók lehet az Azure ad-vel szinkronizált, és engedélyezve van az MFA-hoz. Ez a szakasz azt feltételezi, hogy a helyszíni felhasználók vannak szinkronizálva az Azure ad-vel AD Connect használatával. Az Azure AD-kapcsolattal kapcsolatos információkért lásd: [a helyszíni címtárak integrálása Azure Active Directorysal](../hybrid/whatis-hybrid-identity.md).
+A hálózati házirend-kiszolgáló bővítmény használatához a helyszíni felhasználókat szinkronizálni kell az Azure AD-vel, és engedélyezni kell az MFA-t. Ez a szakasz azt feltételezi, hogy a helyszíni felhasználók az AD-kapcsolat használatával szinkronizálva vannak az Azure AD-vel. Az Azure AD-kapcsolattal kapcsolatos információkért lásd: [a helyszíni címtárak integrálása Azure Active Directorysal](../hybrid/whatis-hybrid-identity.md).
 
-### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID
+### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID azonosító
 
-Az NPS-bővítményének telepítése, ismernie kell a GUID azonosítóját az Azure ad-ben. Keresés, a GUID azonosítóját az Azure AD útmutatást az alábbiakban találhatók.
+A hálózati házirend-kiszolgáló bővítmény telepítéséhez ismernie kell az Azure AD GUID azonosítóját. Az Azure AD GUID azonosítójának megkeresésére vonatkozó utasítások alább találhatók.
 
-## <a name="configure-multi-factor-authentication"></a>A multi-factor Authentication szolgáltatás konfigurálása
+## <a name="configure-multi-factor-authentication"></a>Multi-Factor Authentication konfigurálása
 
-Ez a szakasz ismerteti az Azure MFA integrálása a távoli asztali átjáró. A rendszergazdák konfigurálnia kell az Azure MFA szolgáltatás segítségével a felhasználók saját magukat a multi-factor Authentication eszközök vagy alkalmazások.
+Ez a szakasz útmutatást nyújt az Azure MFA és a Távoli asztali átjáró integrálásához. Rendszergazdaként konfigurálnia kell az Azure MFA szolgáltatást, mielőtt a felhasználók saját maguk is regisztrálhatják a multi-Factor Devices vagy alkalmazásaikat.
 
 Kövesse az [azure multi-Factor Authentication használatának első lépései a felhőben](howto-mfa-getstarted.md) című témakör lépéseit, és engedélyezze az MFA használatát az Azure ad-felhasználók számára.
 
-### <a name="configure-accounts-for-two-step-verification"></a>A kétlépéses ellenőrzéshez fiókok beállítása
+### <a name="configure-accounts-for-two-step-verification"></a>Fiókok konfigurálása kétlépéses ellenőrzéshez
 
-Ha a multi-factor Authentication-fiók engedélyezve van, nem jelentkezhet be többtényezős hitelesítési szabályzat szabályozzák, amíg sikeresen konfigurálta a megbízható eszköz használata a hitelesítés második tényezőjét, és elvégezte a hitelesítést használni a kétlépéses ellenőrzést erőforrások.
+Miután engedélyezte a fiók engedélyezését az MFA-ban, nem tud bejelentkezni az MFA-szabályzat hatálya alá tartozó erőforrásokra egészen addig, amíg sikeresen konfigurálta a megbízható eszközt a második hitelesítési tényezőhöz, és a hitelesítés a kétlépéses ellenőrzés használatával történt.
 
 Kövesse a [Mit jelent az Azure multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user.md) című témakörben ismertetett lépéseket a felhasználói fiókkal kapcsolatos MFA-eszközök megismeréséhez és megfelelő konfigurálásához.
 
-## <a name="install-and-configure-nps-extension"></a>Telepítse és konfigurálja az NPS-bővítményének
+## <a name="install-and-configure-nps-extension"></a>Az NPS bővítmény telepítése és konfigurálása
 
-Ez a szakasz útmutatást nyújt a távoli asztali szolgáltatások-infrastruktúra konfigurálása az Azure MFA használatát az ügyfél-hitelesítéshez és a távoli asztali átjáró.
+Ez a szakasz útmutatást nyújt az RDS infrastruktúra Azure MFA használatára való konfigurálásához a Távoli asztali átjáró használatával.
 
-### <a name="acquire-azure-active-directory-guid-id"></a>Az Azure Active Directory GUID-azonosító beszerzése
+### <a name="acquire-azure-active-directory-guid-id"></a>Azure Active Directory GUID azonosító beszerzése
 
-Az NPS-bővítményének konfigurációjának részeként meg kell megadnia az Azure AD-bérlő rendszergazdai hitelesítő adatokat és az Azure AD-azonosítója. A következő lépések bemutatják, hogyan tehet szert a bérlő azonosítója.
+A hálózati házirend-kiszolgáló bővítmény konfigurációjának részeként rendszergazdai hitelesítő adatokat és az Azure ad-bérlőhöz tartozó Azure AD-azonosítót kell megadnia. A következő lépések bemutatják, hogyan kérheti le a bérlő AZONOSÍTÓját.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure-bérlő globális rendszergazdájaként.
 1. A bal oldali navigációs sávon válassza a **Azure Active Directory** ikont.
@@ -126,43 +126,43 @@ Az NPS-bővítményének konfigurációjának részeként meg kell megadnia az A
 
    ![A könyvtár AZONOSÍTÓjának beolvasása a Azure Portalból](./media/howto-mfa-nps-extension-rdg/image1.png)
 
-### <a name="install-the-nps-extension"></a>Az NPS-bővítményének telepítése
+### <a name="install-the-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének telepítése
 
-Telepítse az NPS-bővítményt egy kiszolgálóra, amelyen telepítve van a hálózati házirend- és hozzáférés-szolgáltatások (NPS) szerepkör. Ez a kialakítás a RADIUS-kiszolgáló működik.
+Telepítse a hálózati házirend-kiszolgáló bővítményt egy olyan kiszolgálóra, amelyen telepítve van a hálózati házirend-és elérési szolgáltatások (NPS) szerepkör. Ez a megoldás RADIUS-kiszolgálóként működik.
 
 > [!Important]
-> Győződjön meg arról, hogy nem telepíti a távoli asztali átjáró kiszolgálón az NPS-bővítményt.
+> Ügyeljen arra, hogy ne telepítse az NPS-bővítményt a Távoli asztali átjáró-kiszolgálóra.
 >
 
 1. Töltse le a [hálózati házirend-kiszolgáló bővítményét](https://aka.ms/npsmfa).
-1. Másolja a végrehajtható fájl (NpsExtnForAzureMfaInstaller.exe) a hálózati házirend-kiszolgálóra.
+1. Másolja a telepítő végrehajtható fájlját (NpsExtnForAzureMfaInstaller. exe) az NPS-kiszolgálóra.
 1. Az NPS-kiszolgálón kattintson duplán a **NpsExtnForAzureMfaInstaller. exe fájlra**. Ha a rendszer kéri, kattintson a **Futtatás**gombra.
 1. Az Azure MFA beállítása párbeszédpanel NPS-bővítménye párbeszédpanelen tekintse át a szoftverlicenc-feltételeket, ellenőrizze, **hogy elfogadom-e a licencfeltételeket**, majd kattintson a **telepítés**gombra.
 1. Az Azure MFA beállítása párbeszédpanel NPS-bővítménye párbeszédpanelen kattintson a **Bezárás**gombra.
 
-### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Az NPS-bővítményt egy PowerShell-szkripttel használt tanúsítványok konfigurálása
+### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Tanúsítványok konfigurálása a hálózati házirend-kiszolgáló bővítménnyel való használatra PowerShell-parancsfájl használatával
 
-Ezután meg kell az NPS-bővítményének annak biztosítása érdekében a biztonságos kommunikációt és az ellenőrzés által használt tanúsítványok konfigurálása. A hálózati házirend-kiszolgáló-összetevők közé tartozik egy Windows PowerShell-parancsprogram, amely beállítja a hálózati házirend-kiszolgáló egy önaláírt tanúsítványt.
+Ezután konfigurálnia kell a tanúsítványokat a hálózati házirend-kiszolgáló bővítmény általi használatra, hogy biztosítsa a biztonságos kommunikációt és a biztonságot. A hálózati házirend-kiszolgáló összetevői közé tartozik egy Windows PowerShell-parancsfájl, amely egy önaláírt tanúsítványt konfigurál a hálózati házirend-kiszolgálóval való használatra.
 
-A szkript a következő műveleteket hajtja végre:
+A parancsfájl a következő műveleteket hajtja végre:
 
-* Létrehoz egy önaláírt tanúsítványt
-* Társítja az Azure AD egyszerű szolgáltatás a tanúsítvány nyilvános kulcsa
-* Tárolja a tanúsítvány a helyi számítógép tárolójában
-* A tanúsítvány titkos kulcsa a hálózati felhasználó számára a hozzáférést
-* Hálózati házirend-kiszolgáló szolgáltatás újraindítása
+* Önaláírt tanúsítvány létrehozása
+* A tanúsítvány nyilvános kulcsának társítása az Azure AD-ben az egyszerű szolgáltatásnév számára
+* A tanúsítvány tárolása a helyi számítógép-tárolóban
+* Hozzáférést biztosít a tanúsítvány titkos kulcsához a hálózati felhasználó számára
+* A hálózati házirend-kiszolgáló szolgáltatás újraindítása
 
-Ha azt szeretné, a saját tanúsítványok, szeretne társítani az egyszerű szolgáltatás a tanúsítvány nyilvános kulcsát az Azure ad-ben, és így tovább.
+Ha saját tanúsítványokat kíván használni, a tanúsítvány nyilvános kulcsát az Azure AD-beli egyszerű szolgáltatáshoz kell rendelnie, és így tovább.
 
-A szkript használatához adja meg a bővítmény az Azure AD rendszergazdai hitelesítő adatok és az Azure AD-bérlő azonosítója, amelyet korábban vágólapra másolt. Futtassa a szkriptet minden egyes hálózati házirend-kiszolgálón, amelyre telepítve van az NPS-bővítményt. Ezután tegye a következőket:
+A szkript használatához adja meg a bővítményt az Azure AD-beli rendszergazdai hitelesítő adataival és a korábban átmásolt Azure AD-bérlői AZONOSÍTÓval. Futtassa a parancsfájlt minden olyan NPS-kiszolgálón, amelyre az NPS-bővítményt telepítette. Ezután tegye a következőket:
 
-1. Nyisson meg egy rendszergazda Windows PowerShell-parancssorban.
+1. Nyisson meg egy rendszergazdai Windows PowerShell-parancssort.
 1. A PowerShell parancssorába írja be a `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`parancsot, majd nyomja le az **ENTER**billentyűt.
-1. Írja be `.\AzureMfaNpsExtnConfigSetup.ps1`, majd nyomja le az **ENTER**billentyűt. A parancsfájl ellenőrzi, hogy ha az Azure Active Directory PowerShell-modul telepítve van-e. Ha nincs telepítve, a parancsfájl telepíti a modult.
+1. Írja be `.\AzureMfaNpsExtnConfigSetup.ps1`, majd nyomja le az **ENTER**billentyűt. A parancsfájl ellenőrzi, hogy telepítve van-e a Azure Active Directory PowerShell-modul. Ha nincs telepítve, a parancsfájl telepíti a modult.
 
    ![A AzureMfaNpsExtnConfigSetup. ps1 futtatása az Azure AD PowerShellben](./media/howto-mfa-nps-extension-rdg/image4.png)
   
-1. Miután a parancsfájl ellenőrzi a PowerShell-modul telepítését, az Azure Active Directory PowerShell modul párbeszédpanel jeleníti meg. A párbeszédpanelen adja meg az Azure AD-beli rendszergazdai hitelesítő adatait és jelszavát, majd kattintson a **Bejelentkezés**elemre.
+1. Miután a parancsfájl ellenőrzi a PowerShell-modul telepítését, megjeleníti a Azure Active Directory PowerShell-modul párbeszédpanelt. A párbeszédpanelen adja meg az Azure AD-beli rendszergazdai hitelesítő adatait és jelszavát, majd kattintson a **Bejelentkezés**elemre.
 
    ![Hitelesítés az Azure AD-ben a PowerShellben](./media/howto-mfa-nps-extension-rdg/image5.png)
 
@@ -170,19 +170,19 @@ A szkript használatához adja meg a bővítmény az Azure AD rendszergazdai hit
 
    ![A címtár-azonosító üzembe helyezése a PowerShellben](./media/howto-mfa-nps-extension-rdg/image6.png)
 
-1. A szkript létrehoz egy önaláírt tanúsítványt, és más konfigurációs módosításokat hajt végre. A kimenet az alábbi képhez hasonlóan kell lennie.
+1. A szkript létrehoz egy önaláírt tanúsítványt, és végrehajtja a többi konfigurációs módosítást. A kimenetnek az alább látható képhez hasonlóan kell lennie.
 
    ![Az önaláírt tanúsítványt megjelenítő PowerShell kimenete](./media/howto-mfa-nps-extension-rdg/image7.png)
 
-## <a name="configure-nps-components-on-remote-desktop-gateway"></a>A távoli asztali átjáró NPS összetevők konfigurálása
+## <a name="configure-nps-components-on-remote-desktop-gateway"></a>NPS-összetevők konfigurálása Távoli asztali átjáró
 
-Ebben a szakaszban konfigurálja a távoli asztali átjáró kapcsolatengedélyezési házirendek és más RADIUS-beállításokat.
+Ebben a szakaszban a Távoli asztali átjáró a kapcsolatkérelem-házirendeket és az egyéb RADIUS-beállításokat konfigurálja.
 
-A hitelesítési folyamat megköveteli, hogy a RADIUS-üzenetek a Távoli asztali átjáró és az NPS-kiszolgáló között legyenek cserélve, ahol az NPS bővítmény telepítve van. Ez azt jelenti, hogy konfigurálnia kell a RADIUS-ügyfélbeállításokat a távoli asztali átjáró és a hálózati házirend-kiszolgáló, amelyen telepítve van-e az NPS-bővítményének is.
+A hitelesítési folyamat megköveteli, hogy a RADIUS-üzenetek a Távoli asztali átjáró és az NPS-kiszolgáló között legyenek cserélve, ahol az NPS bővítmény telepítve van. Ez azt jelenti, hogy a RADIUS-ügyfélbeállítások mind Távoli asztali átjáró, mind a hálózati házirend-kiszolgáló bővítményét futtató NPS-kiszolgálón be kell állítani.
 
-### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Konfigurálja a távoli asztali átjáró kapcsolatengedélyezési házirendek központi tároló használata
+### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Távoli asztali átjáró-hitelesítési házirendek konfigurálása központi tároló használatára
 
-A távoli asztali kapcsolat engedélyezési házirendek (RD CAPs) adja meg a távoli asztali átjáró kiszolgálóhoz való kapcsolódás követelményeinek. A távoli asztali CAPs helyben kell tárolni (alapértelmezett) kell tárolni, vagy egy központi, NPS-t futtató RD CAP tárolóban. Az Azure MFA-integráció konfigurálása a távoli asztali szolgáltatások, adjon meg egy központi tárolóban használatát kell.
+Távoli asztal a kapcsolatengedélyezési házirendek (RD CAPs) a Távoli asztali átjáró-kiszolgálóhoz való csatlakozás követelményeit határozzák meg. A távoli asztali kapcsolatengedélyezési házirendek helyileg tárolhatók (alapértelmezett), vagy egy központi RD CAP-tárolóban tárolhatók, amely NPS-t futtat. Az Azure MFA és az RDS integrálásának konfigurálásához meg kell adnia egy központi tároló használatát.
 
 1. A RD-átjáró-kiszolgálón nyissa meg a **Kiszolgálókezelő eszközt**.
 1. A menüben kattintson az **eszközök**elemre, mutasson a **Távoli asztali szolgáltatások**pontra, majd kattintson az **Távoli asztali átjárókezelő**elemre.
@@ -193,22 +193,22 @@ A távoli asztali kapcsolat engedélyezési házirendek (RD CAPs) adja meg a tá
 
    ![Adja meg az NPS-kiszolgáló nevét vagy IP-címét](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. Kattintson az **Hozzáadás** parancsra.
-1. A **közös titok** párbeszédpanelen adjon meg egy közös titkos kulcsot, majd kattintson **az OK**gombra. Győződjön meg arról, jegyezze fel a közös titkos kulcsot, és tárolja biztonságos helyen a rekordot.
+1. Kattintson a **Hozzáadás** parancsra.
+1. A **közös titok** párbeszédpanelen adjon meg egy közös titkos kulcsot, majd kattintson **az OK**gombra. Ügyeljen rá, hogy rögzítse ezt a közös titkot, és tárolja biztonságosan a rekordot.
 
    >[!NOTE]
-   >Közös titkos kulcsot a RADIUS-kiszolgálók és ügyfelek közötti megbízhatósági kapcsolat létesítésére szolgál. A hosszú és összetett titkos kulcs létrehozása.
+   >A közös titok a RADIUS-kiszolgálók és az ügyfelek közötti megbízhatósági kapcsolat létrehozására szolgál. Hozzon létre egy hosszú és összetett titkot.
    >
 
    ![Közös titok létrehozása a megbízhatósági kapcsolat létrehozásához](./media/howto-mfa-nps-extension-rdg/image11.png)
 
 1. A párbeszédpanel bezárásához kattintson az **OK** gombra.
 
-### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>A távoli asztali átjáró NPS RADIUS időkorlátja konfigurálása
+### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>A RADIUS időtúllépési értékének konfigurálása Távoli asztali átjáró hálózati házirend-kiszolgálón
 
-Biztosítják, hogy a felhasználók hitelesítő adatainak ellenőrzésére, kétlépéses hitelesítés végrehajtására, válaszokat kaphatnak és válaszolni RADIUS-üzeneteket, a RADIUS-időtúllépési érték beállításához szükséges időt.
+Annak biztosítása érdekében, hogy a felhasználók hitelesítő adatai ellenőrizhetők legyenek, végezze el a kétlépéses ellenőrzést, a válaszok fogadását és a RADIUS-üzenetekre adott válaszokat, a RADIUS időtúllépési értékét kell módosítania.
 
-1. A távoli asztali átjáró kiszolgálón nyissa meg a Kiszolgálókezelőt. A menüben kattintson az **eszközök**, majd a **hálózati házirend-kiszolgáló**elemre.
+1. A RD-átjáró-kiszolgálón nyissa meg a Kiszolgálókezelő eszközt. A menüben kattintson az **eszközök**, majd a **hálózati házirend-kiszolgáló**elemre.
 1. Az **NPS (helyi)** konzolon bontsa ki a **RADIUS-ügyfelek és-kiszolgálók**csomópontot, és válassza a **távoli RADIUS-kiszolgáló**lehetőséget.
 
    ![A hálózati házirend-kiszolgáló felügyeleti konzolja, amely a távoli RADIUS-kiszolgálót mutatja](./media/howto-mfa-nps-extension-rdg/image12.png)
@@ -216,7 +216,7 @@ Biztosítják, hogy a felhasználók hitelesítő adatainak ellenőrzésére, k�
 1. A részleteket tartalmazó ablaktáblán kattintson duplán a **terminálszolgáltatási ÁTJÁRÓKISZOLGÁLÓ csoport**elemre.
 
    >[!NOTE]
-   >A RADIUS-kiszolgálócsoport konfigurálta az NPS-házirendek központi kiszolgáló hozott létre. A távoli asztali átjáró RADIUS üzeneteket ehhez a kiszolgálóhoz vagy a kiszolgálók, a csoport továbbít, ha egynél több, a csoportban.
+   >Ez a RADIUS-kiszolgálócsoport akkor jött létre, amikor konfigurálta a központi kiszolgálót az NPS-házirendekhez. A RD-átjáró a RADIUS-üzeneteket továbbítja erre a kiszolgálóra vagy kiszolgálókra, ha a csoportban egynél több szerepel.
    >
 
 1. A **TS Gateway Server-csoport tulajdonságai** párbeszédpanelen válassza ki a RD capss tárolásához konfigurált NPS-kiszolgáló IP-címét vagy nevét, majd kattintson a **Szerkesztés**gombra.
@@ -231,26 +231,29 @@ Biztosítják, hogy a felhasználók hitelesítő adatainak ellenőrzésére, k�
 
 1. Kattintson kétszer az **OK** gombra a párbeszédpanelek bezárásához.
 
-### <a name="verify-connection-request-policies"></a>Ellenőrizze a kapcsolatkérelem-házirendek
+### <a name="verify-connection-request-policies"></a>Kapcsolatkérelem-házirendek ellenőrzése
 
-Alapértelmezés szerint egy központi házirend store használandó kapcsolat engedélyezési házirendek, a távoli asztali átjáró konfigurálásakor a távoli asztali átjáró van konfigurálva a hálózati házirend-kiszolgáló CAP kérelmeket továbbítja. Az Azure MFA-bővítménnyel, telepítve van, a hálózati házirend-kiszolgáló a RADIUS hozzáférési kérés dolgozza fel. A következő lépések bemutatják, hogyan lehet ellenőrizni az alapértelmezett házirendet.
+Alapértelmezés szerint, amikor a RD-átjáró egy központi házirend-tároló használatára konfigurálja a kapcsolódási engedélyezési házirendekhez, a RD-átjáró úgy van konfigurálva, hogy a CAP-kérelmeket a hálózati házirend-kiszolgáló felé továbbítsa. Az NPS-kiszolgáló, amelyen telepítve van az Azure MFA bővítmény, feldolgozza a RADIUS-hozzáférési kérést. A következő lépések bemutatják, hogyan ellenőrizheti az alapértelmezett kapcsolatkérelem-házirendet.  
 
 1. A RD-átjáró a hálózati házirend-kiszolgáló (helyi) konzolon bontsa ki a **házirendek**csomópontot, és válassza a **Kapcsolatkérelem-házirendek**elemet.
 1. Kattintson duplán a **terminálszolgáltatási ÁTJÁRÓ engedélyezési házirendje**elemre.
 1. A **terminálszolgáltatási ÁTJÁRÓ engedélyezési házirendjének tulajdonságai** párbeszédpanelen kattintson a **Beállítások** fülre.
-1. A **Beállítások** lap kapcsolatkérelem továbbítása területén kattintson a **hitelesítés**elemre. RADIUS-ügyfél hitelesítési kérelmek előre van konfigurálva.
+1. A **Beállítások** lap kapcsolatkérelem továbbítása területén kattintson a **hitelesítés**elemre. A RADIUS-ügyfél a hitelesítésre irányuló kérelmek továbbítására van konfigurálva.
 
    ![A kiszolgálói csoport hitelesítési beállításainak megadása](./media/howto-mfa-nps-extension-rdg/image15.png)
 
 1. Kattintson a **Mégse**gombra.
 
-## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Az NPS konfigurálásához a kiszolgálón, amelyen telepítve van-e az NPS bővítményével
+>[!NOTE]
+> A kapcsolatkérelem-házirend létrehozásával kapcsolatos további információkért tekintse meg a [Kapcsolatkérelem-házirendek](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) dokumentációjának konfigurálása című cikket. 
 
-A hálózati házirend-kiszolgáló, amelyen telepítve van-e az NPS-bővítményének képesnek kell lennie, a hálózati házirend-kiszolgáló a távoli asztali átjáró RADIUS üzeneteket. Ahhoz, hogy ez az üzenet exchange, kell konfigurálni a hálózati házirend-kiszolgáló-összetevők a kiszolgálón, ahol a hálózati házirend-kiszolgáló bővítmény szolgáltatás telepítve van.
+## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Konfigurálja a hálózati házirend-kiszolgálót azon a kiszolgálón, amelyen a hálózati házirend-bővítmény telepítve van
 
-### <a name="register-server-in-active-directory"></a>Regisztrálja a kiszolgálót az Active Directoryban
+A hálózati házirend-kiszolgáló bővítményét tartalmazó NPS-kiszolgálónak képesnek kell lennie a RADIUS-üzenetek Exchange-kiszolgálóval való átváltására a Távoli asztali átjáró. Az üzenetváltás engedélyezéséhez konfigurálnia kell az NPS-összetevőket azon a kiszolgálón, amelyen telepítve van az NPS-bővítmény.
 
-Ebben a forgatókönyvben megfelelő működéséhez, az NPS-kiszolgáló regisztrálva kell lennie az Active Directoryban.
+### <a name="register-server-in-active-directory"></a>Kiszolgáló regisztrálása Active Directory
+
+A megfelelő működéshez az NPS-kiszolgálónak regisztrálnia kell Active Directoryban.
 
 1. A hálózati házirend-kiszolgálón nyissa meg a **Kiszolgálókezelő eszközt**.
 1. A Kiszolgálókezelőben kattintson az **eszközök**, majd a **hálózati házirend-kiszolgáló**elemre.
@@ -259,11 +262,11 @@ Ebben a forgatókönyvben megfelelő működéséhez, az NPS-kiszolgáló regisz
 
    ![A hálózati házirend-kiszolgáló regisztrálása Active Directory](./media/howto-mfa-nps-extension-rdg/image16.png)
 
-1. Hagyja nyitva a következő eljárással a konzolon.
+1. Hagyja nyitva a konzolt a következő eljáráshoz.
 
-### <a name="create-and-configure-radius-client"></a>Hozzon létre, és a RADIUS-ügyfél konfigurálása
+### <a name="create-and-configure-radius-client"></a>RADIUS-ügyfél létrehozása és konfigurálása
 
-A hálózati házirend-kiszolgáló RADIUS-ügyfélként konfigurálni kell a távoli asztali átjáró.
+A Távoli asztali átjáró a hálózati házirend-kiszolgáló RADIUS-ügyfeleként kell konfigurálni.
 
 1. Azon az NPS-kiszolgálón, amelyen a hálózati házirend-kiszolgáló bővítmény telepítve van, az **NPS (helyi)** konzolon kattintson a jobb gombbal a **RADIUS-ügyfelek** elemre, majd kattintson az **új**elemre.
 
@@ -276,9 +279,9 @@ A hálózati házirend-kiszolgáló RADIUS-ügyfélként konfigurálni kell a t�
 
 1. Az új RADIUS-ügyfél párbeszédpanel bezárásához kattintson **az OK** gombra.
 
-### <a name="configure-network-policy"></a>A hálózati házirend konfigurálása
+### <a name="configure-network-policy"></a>Hálózati házirend konfigurálása
 
-Ne felejtse el, hogy az Azure MFA-bővítménnyel a hálózati házirend-kiszolgáló-e a kijelölt központi házirend a kapcsolat engedélyezési házirend (CAP). Ezért kell megvalósítani a Tengelysapka a hálózati házirend-kiszolgálón érvényes kapcsolat kérelmek hitelesítéséhez.  
+Ne felejtse el, hogy az Azure MFA kiterjesztésű NPS-kiszolgáló a kijelölt központi házirend-tároló a kapcsolatkérelem-házirendhez (CAP). Ezért meg kell valósítania egy CAP-t a hálózati házirend-kiszolgálón az érvényes csatlakozási kérelmek engedélyezéséhez.  
 
 1. Az NPS-kiszolgálón nyissa meg a hálózati házirend-kiszolgáló (helyi) konzolt, bontsa ki a **házirendek**csomópontot, majd kattintson a **hálózati házirendek**elemre.
 1. Kattintson a jobb gombbal **a kapcsolatok más hozzáférési kiszolgálókhoz**lehetőségre, majd kattintson az **ismétlődő házirend**elemre.
@@ -299,54 +302,54 @@ Ne felejtse el, hogy az Azure MFA-bővítménnyel a hálózati házirend-kiszolg
    ![Nem kötelezően megadhatja a kapcsolatok feltételeit](./media/howto-mfa-nps-extension-rdg/image23.png)
 
 1. Kattintson az **OK** gombra. Amikor a rendszer kéri, hogy tekintse meg a megfelelő súgótémakört, kattintson a **nem**gombra.
-1. Győződjön meg arról, hogy az új szabályzat tetején található a listában, hogy a szabályzat engedélyezve van, és hozzáférést biztosít.
+1. Győződjön meg arról, hogy az új szabályzat a lista elejére kerül, hogy a házirend engedélyezve van, és hogy hozzáférést biztosít.
 
    ![A szabályzat áthelyezése a lista elejére](./media/howto-mfa-nps-extension-rdg/image24.png)
 
 ## <a name="verify-configuration"></a>Konfiguráció ellenőrzése
 
-A konfiguráció ellenőrzéséhez jelentkezzen be a távoli asztali átjáró-megfelelő RDP-ügyfelet kell. Győződjön meg arról, fiók, amely a házirendek által engedélyezett, és engedélyezve van az Azure MFA-kiszolgáló használatára.
+A konfiguráció ellenőrzéséhez be kell jelentkeznie a Távoli asztali átjáróba egy megfelelő RDP-ügyféllel. Ügyeljen arra, hogy olyan fiókot használjon, amelyet a kapcsolatkérelem-házirendek engedélyeznek, és engedélyezve van az Azure MFA.
 
 Ahogy az alábbi képen is látható, használhatja a **Távoli asztal webes elérés** lapot.
 
 ![Tesztelés Távoli asztal webes eléréssel](./media/howto-mfa-nps-extension-rdg/image25.png)
 
-Sikeresen megadta a hitelesítő adatait az elsődleges hitelesítéshez, hogy a távoli asztali kapcsolat párbeszédpanel állapotát jeleníti meg egy távoli kapcsolat kezdeményezése alább látható módon. 
+Miután sikeresen megadta a hitelesítő adatait az elsődleges hitelesítéshez, a Távoli asztal csatlakozás párbeszédpanel megjeleníti a távoli kapcsolat kezdeményezésének állapotát az alább látható módon. 
 
-Sikerült a hitelesítést az Azure MFA-ban korábban konfigurált másodlagos hitelesítési módszert, ha csatlakozik az erőforrást. Ha a másodlagos hitelesítés nem sikeres, az erőforráshoz való hozzáférés nem engedélyezett. 
+Ha sikeresen elvégezte a hitelesítést az Azure MFA-ban korábban konfigurált másodlagos hitelesítési módszerrel, akkor az erőforráshoz csatlakozik. Ha azonban a másodlagos hitelesítés sikertelen, a rendszer megtagadja a hozzáférést az erőforráshoz. 
 
 ![Távoli asztali kapcsolat távoli kapcsolatok kezdeményezése](./media/howto-mfa-nps-extension-rdg/image26.png)
 
-Az alábbi példában az Authenticator alkalmazás Windows Phone-eszközön szolgál a másodlagos hitelesítő adatokat megadnia.
+Az alábbi példában a hitelesítő alkalmazás a Windows Phone rendszeren a másodlagos hitelesítés biztosítására szolgál.
 
 ![Példa Windows Phone-telefon hitelesítő alkalmazásra, amely tartalmazza az ellenőrzést](./media/howto-mfa-nps-extension-rdg/image27.png)
 
-A hitelesítés sikerült a másodlagos hitelesítési módszerrel, miután bejelentkezett a távoli asztali átjáró szokásos módon. Mivel azonban másodlagos hitelesítési módszert kell használnia egy megbízható eszközön lévő Mobile alkalmazás használatával, a bejelentkezési folyamat biztonságosabb, mint egyébként.
+Miután sikeresen elvégezte a hitelesítést a másodlagos hitelesítési módszer használatával, a rendszer a szokásos módon bejelentkezett a Távoli asztali átjáróba. Mivel azonban másodlagos hitelesítési módszert kell használnia egy megbízható eszközön lévő Mobile alkalmazás használatával, a bejelentkezési folyamat biztonságosabb, mint egyébként.
 
-### <a name="view-event-viewer-logs-for-successful-logon-events"></a>Sikeres bejelentkezési események Eseménynapló naplóinak megtekintése
+### <a name="view-event-viewer-logs-for-successful-logon-events"></a>A sikeres bejelentkezési események naplóinak megtekintése Eseménynapló
 
-A sikeres bejelentkezési események megtekintése a Windows-eseménynaplók, adja ki a következő Windows PowerShell-parancsot a Windows Terminálszolgáltatások és a Windows biztonsági naplók lekérdezése.
+Ha meg szeretné tekinteni a sikeres bejelentkezési eseményeket a Windows Eseménynapló naplófájljaiban, az alábbi Windows PowerShell-paranccsal kérdezheti le a Windows Terminálszolgáltatások és a Windows biztonsági naplóit.
 
 A sikeres bejelentkezési események az átjáró operatív naplóiban való lekérdezéséhez _(Event \ alkalmazás és Services Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_ használja a következő PowerShell-parancsokat:
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '300'} | FL`
-* Ez a parancs azt mutatják be, a felhasználó teljesíti az erőforrás-engedélyezési házirend követelményeinek (RD RAP), és hozzáférést Windows-eseményeket jeleníti meg.
+* Ez a parancs azokat a Windows-eseményeket jeleníti meg, amelyek megmutatják, hogy a felhasználó megfelelt az erőforrás-engedélyezési házirend követelményeinek (RD RAP).
 
 ![Események megtekintése a PowerShell használatával](./media/howto-mfa-nps-extension-rdg/image28.png)
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '200'} | FL`
-* Ez a parancs a felhasználói kapcsolat engedélyezési házirend követelményeinek teljesülése esetén megjelenítő eseményeket jeleníti meg.
+* Ez a parancs megjeleníti azokat az eseményeket, amelyek megmutatják, hogy mikor találkozott a felhasználó a kapcsolat engedélyezési házirendjének követelményeivel
 
 ![a kapcsolatkérelem-házirend megtekintése a PowerShell használatával](./media/howto-mfa-nps-extension-rdg/image29.png)
 
-Ez a napló és szűrő azonosítóval, 300, és 200-as esemény is megtekintheti. A biztonsági eseménynapló sikeres bejelentkezési események lekérdezés, használja a következő parancsot:
+Ezt a naplót és a szűrőt megtekintheti az eseményazonosító, a 300 és a 200 azonosítóval is. A sikeres bejelentkezési események lekérdezéséhez a biztonsági eseménynapló naplóiban használja a következő parancsot:
 
 * `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
-* Ez a parancs futtatható a központi NPS-t vagy a távoli asztali átjárókiszolgálón.
+* Ez a parancs a központi hálózati házirend-kiszolgáló vagy a RD-átjáró kiszolgálón is futtatható.
 
 ![Sikeres bejelentkezési események mintája](./media/howto-mfa-nps-extension-rdg/image30.png)
 
-Alább látható módon a biztonsági napló vagy a hálózati házirend- és elérési szolgáltatások egyéni nézet is megtekintheti:
+A biztonsági naplót vagy a hálózati házirend-és elérési szolgáltatások egyéni nézetét is megtekintheti a lent látható módon:
 
 ![Hálózati házirend-és elérési szolgáltatások Eseménynapló](./media/howto-mfa-nps-extension-rdg/image31.png)
 
@@ -354,23 +357,23 @@ Azon a kiszolgálón, amelyen telepítette az Azure MFA-hoz készült NPS-bőví
 
 ![Eseménynapló AuthZ](./media/howto-mfa-nps-extension-rdg/image32.png)
 
-## <a name="troubleshoot-guide"></a>Útmutató hibaelhárítása
+## <a name="troubleshoot-guide"></a>Útmutató a hibakereséshez
 
-A konfiguráció nem várt módon működik, ha az első hely hibaelhárítás indítása az győződjön meg arról, hogy a felhasználó az Azure MFA használatára van konfigurálva. A felhasználó csatlakozik a [Azure Portalhoz](https://portal.azure.com). Ha a felhasználók másodlagos ellenőrzőkulcs a rendszer kéri, és sikeresen be tud hitelesítést, megszüntetheti az Azure MFA nem megfelelő konfiguráció.
+Ha a konfiguráció nem a várt módon működik, az első lépés a hibakereséshez, hogy ellenőrizze, hogy a felhasználó az Azure MFA használatára van-e konfigurálva. A felhasználó csatlakozik a [Azure Portalhoz](https://portal.azure.com). Ha a rendszer felszólítja a felhasználókat a másodlagos ellenőrzésre, és sikeresen hitelesíteni tudják, az Azure MFA helytelen konfigurációját törölheti.
 
-Az Azure MFA a felhasználó esetében működik, ha, tekintse át a megfelelő eseménynaplók. Ezek közé tartozik a biztonsági esemény, az átjáró működési és az előző szakaszban tárgyalt Azure MFA-naplókat.
+Ha az Azure MFA dolgozik a felhasználó (k) számára, tekintse át a kapcsolódó eseménynaplókat. Ezek közé tartozik a biztonsági esemény, az átjáró működési és az Azure MFA-naplók, amelyeket az előző szakaszban ismertetünk.
 
-Alább a biztonsági napló a sikertelen bejelentkezési esemény (Event ID 6273) bemutató példa kimenet.
+Az alábbi példa a biztonsági napló egy olyan kimenetét mutatja be, amely egy sikertelen bejelentkezési eseményt mutat (6273-es AZONOSÍTÓJÚ esemény).
 
 ![Sikertelen bejelentkezési esemény mintája](./media/howto-mfa-nps-extension-rdg/image33.png)
 
-Alább az AzureMFA naplók a kapcsolódó esemény:
+Alább látható egy kapcsolódó esemény a AzureMFA-naplókból:
 
 ![Azure MFA-bejelentkezés mintája Eseménynapló](./media/howto-mfa-nps-extension-rdg/image34.png)
 
-Hajtsa végre a Speciális beállítások hibaelhárítása, tekintse meg a hálózati házirend-kiszolgáló adatbázis formátum naplófájlokat ahol a hálózati házirend-kiszolgáló szolgáltatás telepítve van. Ezek a naplófájlok a _%systemroot%\System32\Logs_ mappában, vesszővel tagolt szövegfájlként jönnek létre.
+A speciális hibakeresési beállítások végrehajtásához tekintse meg az NPS-adatbázis formátumú naplófájlokat, ahol a hálózati házirend-kiszolgáló szolgáltatás telepítve van. Ezek a naplófájlok a _%systemroot%\System32\Logs_ mappában, vesszővel tagolt szövegfájlként jönnek létre.
 
-A naplófájlok leírását lásd: a [hálózati házirend-kiszolgáló adatbázis-formátumú naplófájljainak értelmezése](https://technet.microsoft.com/library/cc771748.aspx). Ezekben a naplófájlokban lévő bejegyzéseket nehéz értelmezni anélkül, hogy importálná őket egy külön táblázatban vagy az adatbázis is lehet. Több IAS elemzők online megtalálhatja a segítséget nyújtanak a naplófájlok értelmezése.
+A naplófájlok leírását lásd: a [hálózati házirend-kiszolgáló adatbázis-formátumú naplófájljainak értelmezése](https://technet.microsoft.com/library/cc771748.aspx). Az ezekben a naplófájlokban található bejegyzéseket nehéz lehet értelmezni anélkül, hogy azokat importálni kellene egy táblázatba vagy egy adatbázisba. A naplófájlok értelmezéséhez több IAS-elemzőt is találhat online.
 
 Az alábbi képen egy ilyen letölthető [shareware-alkalmazás](https://www.deepsoftware.com/iasviewer)kimenete látható.
 
@@ -382,7 +385,7 @@ Az alábbi képen a Microsoft Message Analyzer a **CONTOSO\AliceC**felhasználó
 
 ![Szűrt forgalmat bemutató Microsoft Message Analyzer](./media/howto-mfa-nps-extension-rdg/image36.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Multi-Factor Authentication beszerzése](concept-mfa-licensing.md)
 

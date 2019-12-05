@@ -8,18 +8,18 @@ ms.reviewer: ''
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: a00e5be4493b8c8116e2925e88a3ce4bf8cfb722
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8cf9fc0b3d9c13ebc5309be6d27c7be0f2e60878
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74085316"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805688"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure Managed Applications értesítésekkel
 
 Az Azure Managed Application Notifications lehetővé teszi, hogy a közzétevők a felügyelt alkalmazás példányainak Életciklus-eseményei alapján automatizálják a műveleteket. A közzétevők egyéni értesítési webhook-végpontokat is megadhatnak az új és a meglévő felügyelt alkalmazási példányokkal kapcsolatos esemény-értesítések fogadásához. Lehetővé teszi, hogy a közzétevő egyéni munkafolyamatokat állítson be az alkalmazások üzembe helyezése, frissítése és törlése során.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 A felügyelt alkalmazások fogadásának megkezdéséhez hozzon létre egy nyilvános HTTPS-végpontot, és adja meg a Service Catalog alkalmazás definíciójának vagy a Piactéri ajánlat közzétételének idejét.
 
 Az alábbi lépésekkel gyorsan megkezdheti a működést:
@@ -71,11 +71,11 @@ Az alábbi táblázat a EventType + ProvisioningState és az eseményindítók l
 
 EventType | ProvisioningState | Értesítési trigger
 ---|---|---
-PUT | Elfogadott | A felügyelt erőforráscsoport létre lett hozva, és az alkalmazás üzembe helyezése után sikeresen megtörtént. (Az üzembe helyezés előtt a felügyelt RG-on belül a központi telepítés indul.)
+PUT | Elfogadva | A felügyelt erőforráscsoport létre lett hozva, és az alkalmazás üzembe helyezése után sikeresen megtörtént. (Az üzembe helyezés előtt a felügyelt RG-on belül a központi telepítés indul.)
 PUT | Sikeres | A felügyelt alkalmazás teljes kiépítés sikerült egy PUT után.
 PUT | Meghiúsult | Az alkalmazás-példány üzembe helyezésének meghibásodása bármely ponton.
 JAVÍTÁS | Sikeres | A felügyelt alkalmazás példányának sikeres JAVÍTÁSát követően a címkék, a JIT hozzáférési házirend vagy a felügyelt identitás frissítése sikerült.
-DELETE | Törlése | Amint a felhasználó elindít egy felügyelt alkalmazás példányának TÖRLÉSét.
+DELETE | Törlés folyamatban | Amint a felhasználó elindít egy felügyelt alkalmazás példányának TÖRLÉSét.
 DELETE | Törölve | A felügyelt alkalmazás teljes és sikeres törlése után.
 DELETE | Meghiúsult | A törlést blokkoló megszüntetési folyamat során felmerülő bármilyen hiba.
 ## <a name="notification-schema"></a>Értesítési séma
@@ -132,6 +132,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Succeeded",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -152,6 +155,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Failed",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -174,13 +180,14 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 Paraméter | Leírás
 ---|---
-eventType | Az értesítést kiváltó esemény típusa. (például "PUT", "javítás", "DELETE")
+EventType | Az értesítést kiváltó esemény típusa. (például "PUT", "javítás", "DELETE")
 applicationId | Annak a felügyelt alkalmazásnak a teljes erőforrás-azonosítója, amelyhez az értesítés aktiválva lett. 
 eventTime | Az értesítést kiváltó esemény időbélyegzője. (Dátum és idő UTC ISO 8601 formátumban)
 ProvisioningState | A felügyelt alkalmazás példányának kiépítési állapota. (például "sikeres", "sikertelen", "Törlés", "törölt")
+billingDetails | A felügyelt alkalmazás példányának számlázási adatai. Azokat a resourceUsageId tartalmazza, amelyekkel lekérdezhető a piactér használati adatai.
 error | *Csak akkor van megadva, ha a ProvisioningState sikertelen*. A hibát okozó probléma kódját, üzenetét és részleteit tartalmazza.
 applicationDefinitionId | *Csak a Service Catalog által felügyelt alkalmazásokhoz van megadva*. Annak az alkalmazás-definíciónak a teljes erőforrás-azonosítóját jelöli, amelyhez a felügyelt alkalmazás példánya ki lett építve.
-csomag | *Csak a piactér által felügyelt alkalmazásokhoz van megadva*. A felügyelt alkalmazás példányának közzétevőjét, ajánlatát, SKU-jának és verziószámát jelöli.
+útiterv | *Csak a piactér által felügyelt alkalmazásokhoz van megadva*. A felügyelt alkalmazás példányának közzétevőjét, ajánlatát, SKU-jának és verziószámát jelöli.
 
 ## <a name="endpoint-authentication"></a>Végponti hitelesítés
 A webhook-végpont biztonságossá tételéhez és az értesítés hitelességének biztosításához:

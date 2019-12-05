@@ -10,31 +10,31 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
-ms.openlocfilehash: 9a757402360b4b69e760315a809482be9b4e04d4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c590e0972de289a36890a75b220eddbded701ea8
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558910"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815562"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>A Beszédeszközök SDK hibaelhárítása
 
 Ez a cikk a Speech Devices SDK használatakor felmerülő problémák megoldásához nyújt segítséget.
 
-## <a name="certificate-failures"></a>Tanúsítványhibák
+## <a name="certificate-failures"></a>Tanúsítvány meghibásodása
 
-Ha a beszédfelismerési szolgáltatások használatakor hibaüzenetet kap, győződjön meg arról, hogy az eszköz rendelkezik a megfelelő dátummal és időponttal:
+Ha a beszédfelismerési szolgáltatás használatakor hibaüzenetet kap, győződjön meg arról, hogy az eszköz rendelkezik a megfelelő dátummal és időponttal:
 
-1. Lépjen a **beállítások**. A **rendszer**válassza **dátum és idő**.
+1. Válassza a **Beállítások lehetőséget**. A **rendszerben**válassza a **dátum & idő**lehetőséget.
 
-    ![A beállítások területen válassza ki a dátum és idő](media/speech-devices-sdk/qsg-12.png)
+    ![A beállítások területen válassza a dátum & idő lehetőséget.](media/speech-devices-sdk/qsg-12.png)
 
-1. Tartsa a **automatikus dátum és idő** lehetőség van kijelölve. A **válassza időzóna**, válassza ki az aktuális időzóna.
+1. Tartsa meg az **automatikus dátum &** a kiválasztott idő beállítást. Az **időzóna kiválasztása**területen válassza ki az aktuális időzónát.
 
-    ![Válassza ki a dátum és időzóna-beállításai](media/speech-devices-sdk/qsg-13.png)
+    ![Dátum-és időzóna beállításainak kiválasztása](media/speech-devices-sdk/qsg-13.png)
 
-    Ha látja, hogy a fejlesztői csomag idő megegyezik-e a számítógépen lévő idő, a fejlesztői csomag csatlakozik az internethez.
+    Amikor azt látja, hogy a fejlesztői készlet ideje megfelel a számítógépen beállított időpontnak, a fejlesztői csomag csatlakozik az internethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Tekintse át a kibocsátási megjegyzések](devices-sdk-release-notes.md)
+* [A kibocsátási megjegyzések áttekintése](devices-sdk-release-notes.md)

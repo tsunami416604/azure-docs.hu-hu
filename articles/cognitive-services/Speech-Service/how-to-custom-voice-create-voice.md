@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 370b5005f27fbfe6ee8fc96d6dd7e467a581ec67
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 437b87a3d684d7751adc89ba77b20ea86b3455e4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464609"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805994"
 ---
 # <a name="create-a-custom-voice"></a>Egyéni hang létrehozása
 
@@ -44,7 +44,7 @@ Az adatkészletek automatikusan érvényesítve lesznek a feltöltés gomb megny
 
 Az alábbi táblázat az importált adatkészletek feldolgozási állapotait mutatja be:
 
-| Állapot | Jelentés |
+| Állami | Jelentés |
 | ----- | ------- |
 | Feldolgozás | Az adatkészlet beérkezett, és feldolgozás alatt áll. |
 | Sikeres | Az adatkészlet érvényesítve lett, és most már használható hangmodell létrehozásához. |
@@ -86,7 +86,7 @@ A betanítási táblázat egy új bejegyzést jelenít meg, amely megfelel az ú
 
 A megjelenített állapot az adatkészlet hangmodellre alakításának folyamatát tükrözi, ahogy az itt látható.
 
-| Állapot | Jelentés |
+| Állami | Jelentés |
 | ----- | ------- |
 | Feldolgozás | A hangmodell létrehozása folyamatban van. |
 | Sikeres | A hangmodell létrehozása megtörtént, és üzembe helyezhető. |
@@ -117,7 +117,7 @@ A hangalapú betűkészlet sikeres létrehozása után tesztelheti a használat�
     > [!NOTE]
     > A szöveg nyelvének meg kell egyeznie a hang betűkészletének nyelvével. Csak a sikeresen betanított modellek tesztelése lehetséges. Ebben a lépésben csak egyszerű szöveg támogatott.
 
-5.  Kattintson a **Létrehozás** elemre.
+5.  Kattintson a  **Create** (Létrehozás) gombra.
 
 A tesztelési kérelem elküldése után vissza fog térni a teszt lapra. A tábla most már tartalmaz egy bejegyzést, amely megfelel az új kérésnek és az állapot oszlopnak. Néhány percet is igénybe vehet a beszédfelismerés. Ha az Állapot oszlopban a **sikeres**művelet látható, lejátszhatja a hangot, vagy letöltheti a szövegbeviteli szöveget (egy. txt fájlt) és hangkimenetet (egy. wav fájlt), és az utóbbit a minőségre is meghallgathatja.
 
@@ -143,7 +143,7 @@ A végpont online tesztelése az egyéni hangportálon keresztül is elérhető.
 
 Az egyéni végpont funkcionálisan megegyezik a szöveg-beszéd kérelmekhez használt standard végponttal. További információ: [REST API](rest-text-to-speech.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Útmutató: hangminták rögzítése](record-custom-voice-samples.md)
 * [Szöveg – beszéd API-hivatkozás](rest-text-to-speech.md)

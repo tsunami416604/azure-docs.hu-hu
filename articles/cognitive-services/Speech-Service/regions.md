@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 478a62eaddcf3b9b831812a0930ff10c1adce99d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 409ce8b904997f2ab75f70b2138ec5b1e70a0e69
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072446"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816649"
 ---
-# <a name="speech-service-supported-regions"></a>Beszédszolgáltatás támogatott régiók
+# <a name="speech-service-supported-regions"></a>Beszédfelismerési szolgáltatás által támogatott régiók
 
-A Speech service lehetővé teszi, hogy az alkalmazás hanganyagot alakíthat át szöveggé, beszédalapú fordítási és fedett szöveg-beszéd átalakítás elvégzéséhez. A szolgáltatás az egyedi végpontok a Speech SDK és a REST API-k több régióban érhető el.
+A beszédfelismerési szolgáltatás lehetővé teszi, hogy az alkalmazás hangot Konvertáljon szöveggé, beszéd fordítást végezzen, és szövegeket készítsen a beszédhez. A szolgáltatás több régióban is elérhető a Speech SDK és a REST API-k egyedi végpontokkal.
 
-Győződjön meg arról, hogy használja-e a végpontot, amely megfelel annak a régiónak az előfizetéshez.
+Győződjön meg arról, hogy az előfizetéséhez tartozó régiónak megfelelő végpontot használja.
 
-## <a name="speech-sdk"></a>Beszéd SDK
+## <a name="speech-sdk"></a>Speech SDK
 
 A [SPEECH SDK](speech-sdk.md)-ban a régiók karakterláncként vannak megadva (például a Speech SDK-ban `SpeechConfig.FromSubscription` paraméterként C#).
 
@@ -32,10 +32,10 @@ A [SPEECH SDK](speech-sdk.md)-ban a régiók karakterláncként vannak megadva (
 
 A Speech SDK a következő régiókban érhető el a beszédfelismerés, a **szöveg és a beszéd** **megjelenítéséhez**, valamint a **fordításhoz**:
 
-| Régió           | Beszéd SDK paraméter | Speech-portál testreszabása    |
+| Region (Régió)           | Speech SDK-paraméter | Beszédfelismerési testreszabási portál    |
 | ---------------- | -------------------- | ------------------------------ |
 | USA nyugati régiója          | `westus`             | https://westus.cris.ai         |
-| USA nyugati régiója, 2.        | `westus2`            | https://westus2.cris.ai        |
+| USA 2. nyugati régiója        | `westus2`            | https://westus2.cris.ai        |
 | USA keleti régiója          | `eastus`             | https://eastus.cris.ai         |
 | USA 2. keleti régiója        | `eastus2`            | https://eastus2.cris.ai        |
 | USA középső régiója       | `centralus`          | https://centralus.cris.ai      |
@@ -50,14 +50,14 @@ A Speech SDK a következő régiókban érhető el a beszédfelismerés, a **sz�
 | Közép-Kanada   | `canadacentral`      | https://canadacentral.cris.ai  |
 | Észak-Európa     | `northeurope`        | https://northeurope.cris.ai    |
 | Nyugat-Európa      | `westeurope`         | https://westeurope.cris.ai     |
-| Az Egyesült Királyság déli régiója         | `uksouth`            | https://uksouth.cris.ai        |
+| Egyesült Királyság déli régiója         | `uksouth`            | https://uksouth.cris.ai        |
 | Közép-Franciaország   | `francecentral`      | https://francecentral.cris.ai  |
 
 ### <a name="intent-recognition"></a>Szándékfelismerés
 
 Az elérhető régiók a beszédfelismerési SDK-n keresztül történő **szándék-felismeréshez** a következők:
 
-| Globális régió | Régió           | Beszéd SDK paraméter |
+| Globális régió | Region (Régió)           | Speech SDK-paraméter |
 | ------------- | ---------------- | -------------------- |
 | Ázsia          | Kelet-Ázsia        | `eastasia`           |
 | Ázsia          | Délkelet-Ázsia   | `southeastasia`      |
@@ -69,7 +69,7 @@ Az elérhető régiók a beszédfelismerési SDK-n keresztül történő **szán
 | Észak-Amerika | USA déli középső régiója | `southcentralus`     |
 | Észak-Amerika | USA nyugati középső régiója  | `westcentralus`      |
 | Észak-Amerika | USA nyugati régiója          | `westus`             |
-| Észak-Amerika | USA nyugati régiója, 2.        | `westus2`            |
+| Észak-Amerika | USA 2. nyugati régiója        | `westus2`            |
 | Dél-Amerika | Dél-Brazília     | `brazilsouth`        |
 
 Ez a [Language Understanding szolgáltatás (Luis)](/azure/cognitive-services/luis/luis-reference-regions)által támogatott közzétételi régiók részhalmaza.
@@ -78,10 +78,10 @@ Ez a [Language Understanding szolgáltatás (Luis)](/azure/cognitive-services/lu
 
 A [SPEECH SDK](speech-sdk.md) a következő régiókban támogatja a **hangsegéd** képességeit:
 
-| Régió         | Beszéd SDK paraméter |
+| Region (Régió)         | Speech SDK-paraméter |
 | -------------- | -------------------- |
 | USA nyugati régiója        | `westus`             |
-| USA nyugati régiója, 2.      | `westus2`            |
+| USA 2. nyugati régiója      | `westus2`            |
 | USA keleti régiója        | `eastus`             |
 | USA 2. keleti régiója      | `eastus2`            |
 | Nyugat-Európa    | `westeurope`         |
@@ -90,7 +90,7 @@ A [SPEECH SDK](speech-sdk.md) a következő régiókban támogatja a **hangsegé
 
 ## <a name="rest-apis"></a>REST API-k
 
-A beszédfelismerési szolgáltatás is elérhetővé teszi a hang-szöveg és a szöveg-hang transzformációs kérések REST-végpontokat.
+A beszédfelismerési szolgáltatás a REST-végpontokat is elérhetővé teszi a beszéd – szöveg és a szöveg – beszéd kérésekhez.
 
 ### <a name="speech-to-text"></a>Diktálás
 

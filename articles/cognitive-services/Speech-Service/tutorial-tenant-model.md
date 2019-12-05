@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: c8a2855ce9cd320be3aea8b3b4a05f3b3eb39976
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8ca31dcadebf2dc47d5a4b4db715f26fb38e204e
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578220"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816379"
 ---
 # <a name="create-a-tenant-model-preview"></a>Bérlői modell létrehozása (előzetes verzió)
 
@@ -55,13 +55,13 @@ Ha ki kell kapcsolnia a bérlői modellt, térjen vissza erre a képernyőre, t�
 Ahhoz, hogy a Speech SDK-val bérlői modellt lehessen használni, szüksége lesz egy beszédfelismerési erőforrásra és a hozzá tartozó előfizetési kulcsra.
 
 1. Jelentkezzen be az [Azure Portalra](https://aka.ms/azureportal).
-2. Válassza **az erőforrás létrehozása**lehetőséget.
+2. Válassza az **Erőforrás létrehozása** lehetőséget.
 3. A keresősáv mezőbe írja be a következőt: **Speech**.
 4. Válassza a **beszéd**lehetőséget, majd kattintson a **Létrehozás**gombra.
 5. Az erőforrás létrehozásához kövesse a képernyőn megjelenő utasításokat. biztosra menni:
    * A **hely** a **eastus** vagy a **westus**értékre van beállítva.
    * A **díjszabás** a **S0**értékre van állítva.
-6. Kattintson a **Létrehozás** elemre.
+6. Kattintson a  **Create** (Létrehozás) gombra.
 7. Néhány perc elteltével létrejön az erőforrás. Az előfizetési kulcs az erőforrás **Áttekintés** szakaszában érhető el.
 
 ## <a name="create-a-model"></a>Modell létrehozása
@@ -289,12 +289,12 @@ Ezután újra kell építenie és futtatnia kell a projektet a parancssorból. A
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
-4. Futtassa a parancsot:
+4. Futtassa a következő parancsot:
    ```bash
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Speech Studio](https://speech.microsoft.com/)
 * [Beszéd SDK](speech-sdk.md)

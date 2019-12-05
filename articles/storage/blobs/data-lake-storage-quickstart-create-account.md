@@ -1,5 +1,5 @@
 ---
-title: Az Azure Data Lake Storage Gen2-storage-fiók létrehozása |} A Microsoft Docs
+title: Azure Data Lake Storage Gen2 Storage-fiók létrehozása | Microsoft Docs
 description: Gyorsan megtudhatja, hogyan hozhat létre Data Lake Storage Gen2 hozzáféréssel rendelkező új Storage-fiókot a Azure Portal, a Azure PowerShell vagy az Azure CLI használatával.
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 57350bd00a33c36b5aef3a0ccd3034b4db3d2c55
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e8deb8ed16186862349cecf70c9d617a4ad30399
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227953"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806898"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage Gen2 Storage-fiók létrehozása
 
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 |-----------|--------------|
 |Portál     | None         |
 |PowerShell | Ehhez a cikkhez a PowerShell-modul az. Storage **0,7** -es vagy újabb verziójára van szükség. Az aktuális verzió megkereséséhez futtassa a `Get-Module -ListAvailable Az.Storage` parancsot. Ha a parancs futtatása után nem jelenik meg eredmény, vagy ha a **0,7** -nál kisebb verzió jelenik meg, akkor frissítenie kell a PowerShell-modult. Lásd a jelen útmutató [PowerShell-modul frissítése](#upgrade-your-powershell-module) című szakaszát.
-|parancssori felület        | Jelentkezzen be az Azure-ba, és futtassa az Azure CLI-parancsokat kétféleképpen: <ul><li>A CLI-parancsok az Azure Portalról, az Azure Cloud Shell felületén futtathatók </li><li>Telepítheti a parancssori felületet, így helyben is futtathatja a CLI-parancsokat</li></ul>|
+|CLI        | Jelentkezzen be az Azure-ba, és futtassa az Azure CLI-parancsokat kétféleképpen: <ul><li>A CLI-parancsok az Azure Portalról, az Azure Cloud Shell felületén futtathatók </li><li>Telepítheti a parancssori felületet, így helyben is futtathatja a CLI-parancsokat</li></ul>|
 
 Ha a parancssori felületet használja, futtathatja az Azure Cloud Shellt vagy telepítheti a parancssori felületet helyileg.
 
@@ -58,7 +58,7 @@ További információ a tárfiókokról: [Az Azure Storage-fiókok áttekintése
 
 ## <a name="create-an-account-using-the-azure-portal"></a>Fiókok létrehozása az Azure Portalon
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ### <a name="create-a-storage-account"></a>Create a storage account
 
@@ -81,7 +81,7 @@ Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozás
 7. Szükség esetén módosítsa a következő mezők értékeit: **teljesítmény**, **replikálás**, **hozzáférési szintek**. További információ ezekről a lehetőségekről: [Az Azure Storage bemutatása](https://docs.microsoft.com/azure/storage/common/storage-introduction#azure-storage-services).
 8. Válassza a **speciális** lapot.
 10. A **Data Lake Storage Gen2** szakaszban a **hierarchikus névtér** beállítása **engedélyezve**értékre.
-11. A Storage-fiók létrehozásához kattintson a **felülvizsgálat + létrehozás** lehetőségre.
+11. Kattintson az **Ellenőrzés és létrehozás** elemre a tárfiók létrehozásához.
 
 Ezzel a tárfiók létrejött a portálon.
 
@@ -105,9 +105,9 @@ Ezután frissítse a PowerShell-modult, jelentkezzen be az Azure-előfizetésbe,
 
 Ha a PowerShell használatával szeretne Data Lake Storage Gen2 kommunikálni, telepítenie kell a modult az. Storage **0,7** -es vagy újabb verziójára.
 
-Először nyissa meg egy PowerShell-munkamenetet emelt szintű engedélyekkel.
+Először nyisson meg egy PowerShell-munkamenetet emelt szintű engedélyekkel.
 
-A Az.Storage modul telepítése
+Az az. Storage modul telepítése
 
 ```powershell
 Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
@@ -121,7 +121,7 @@ Használja a `Login-AzAccount` parancsot, és kövesse a képernyőn megjelenő 
 Login-AzAccount
 ```
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Új erőforráscsoport PowerShell-lel való létrehozásához használja a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot: 
 
@@ -169,13 +169,13 @@ Ha be szeretné jelentkezni a CLI helyi telepítésére, futtassa a login paranc
 az login
 ```
 
-### <a name="add-the-cli-extension-for-azure-data-lake-gen-2"></a>A CLI-bővítmény hozzáadása az Azure Data Lake általános 2
+### <a name="add-the-cli-extension-for-azure-data-lake-gen-2"></a>A CLI-bővítmény hozzáadása a Azure Data Lake Gen 2 számára
 
-A parancssori felület használatával kommunikálhat a Data Lake Storage Gen2, kell adja hozzá egy bővítményt parancshéjban.
+Ha a parancssori felülettel kívánja használni a Data Lake Storage Gen2t, hozzá kell adnia egy bővítményt a rendszerhéjhoz.
 
 Ehhez írja be a következő parancsot a Cloud Shell vagy egy helyi rendszerhéj használatával: `az extension add --name storage-preview`
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Ha az Azure CLI használatával kíván új erőforráscsoportot létrehozni, használja az [az group create](/cli/azure/group) parancsot.
 
@@ -199,7 +199,7 @@ az storage account create `
     --location westus2 `
     --sku Standard_LRS `
     --kind StorageV2 `
-    --hierarchical-namespace true
+    --enable-hierarchical-namespace true
 ```
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -212,6 +212,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben Data Lake Storage Gen2 képességekkel rendelkező Storage-fiókot hozott létre. Megtudhatja, hogyan fel-és letölteni az BLOB storage-fiókjába, a következő témakörben talál.
+Ebben a cikkben Data Lake Storage Gen2 képességekkel rendelkező Storage-fiókot hozott létre. A következő témakörből megtudhatja, hogyan tölthet fel és tölthet le blobokat a Storage-fiókjából, illetve hogyan töltheti le azokat.
 
 * [AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

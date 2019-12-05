@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: b24778434596f583be44572612c856fa4e0cecde
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860229"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806708"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Jelenetek, felvételek és kulcsképkockák
 
@@ -30,7 +30,7 @@ Video Indexer határozza meg, hogy a jelenet Mikor változik a videóban a vizua
 > [!NOTE]
 > Olyan videókra vonatkozik, amelyek legalább 3 jelenetet tartalmaznak.
 
-## <a name="shot-detection"></a>Felvételészlelés
+## <a name="shot-detection"></a>Lövés észlelése
 
 Video Indexer meghatározza, hogy mikor változik a videó a vizualizációs dákó alapján, hogy a rendszer hirtelen és fokozatos átmeneteket is nyomon követ a szomszédos keretek színsémájában. A shot metaadatai a kezdő és a záró időpontot is tartalmazzák, valamint a lövéshez tartozó kulcsképek listáját. A felvételek egymást követő képkockák, amelyek ugyanabból a kamerából származnak.
 
@@ -38,9 +38,71 @@ Video Indexer meghatározza, hogy mikor változik a videó a vizualizációs dá
 
 Kiválasztja a lövéshez legjobban illő keretet (ka) t. A kulcsképek a teljes videóban az esztétikai tulajdonságok (például a kontraszt és a stabilitás) alapján kiválasztott reprezentatív keretek. Video Indexer lekéri a kulcsképek-azonosítók listáját a shot metaadatainak részeként, amely alapján az ügyfelek kinyerhetik a kulcsképek miniatűrjét. 
 
-A kulcsképek a kimenet JSON-ban található felvételekhez vannak társítva. 
+### <a name="extracting-keyframes"></a>Kulcsképek kibontása
+
+A videóhoz tartozó nagy felbontású kulcsképek kinyeréséhez először fel kell töltenie és indexelni kell a videót.
+
+![Kulcsképek](./media/scenes-shots-keyframes/extracting-keyframes.png)
+
+#### <a name="with-the-video-indexer-website"></a>A Video Indexer webhelyén
+
+A kulcsképek kinyeréséhez használja a Video Indexer webhelyet, töltse fel és indexelje a videóját. Az indexelési feladatok befejezését követően kattintson a **Letöltés** gombra, és válassza az összetevők **(zip)** lehetőséget. Ezzel letölti az összetevők mappát a számítógépére. 
+
+![Kulcsképek](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+ 
+Bontsa ki és nyissa meg a mappát. A *_KeyframeThumbnail* mappában a videóból kinyert összes kulcsképek megtalálhatók. 
+
+#### <a name="with-the-video-indexer-api"></a>A Video Indexer API-val
+
+Ha a Video Indexer API-val szeretné lekérni a kulcsképek használatát, töltse fel és indexelje a videót a [videó feltöltése](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) hívás használatával. Az indexelési feladatok befejezése után hívja meg a [Get video indexet](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?). Ez megadja az összes olyan bepillantást, amelyet a rendszer egy JSON-fájlban lévő tartalomból Video Indexer kinyerni.  
+
+Ekkor megjelenik a kulcsképek azonosítóinak listája az egyes shot metaadatok részeként. 
+
+```json
+"shots":[  
+    {  
+      "id":0,
+      "keyFrames":[  
+          {  
+            "id":0,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:00.209",
+                  "end":"0:00:00.251",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          },
+          {  
+            "id":1,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:04.755",
+                  "end":"0:00:04.797",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          }
+      ],
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
+      ]
+    },
+
+]
+```
+
+Ekkor futtatnia kell ezeket a kulcsképek-azonosítókat a [miniatűrök beolvasása](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) hívásban. Ezzel letölti a kulcsképek lemezképeit a számítógépre. 
 
 ## <a name="editorial-shot-type-detection"></a>Szerkesztői shot típusú észlelés
+
+A kulcsképek a kimenet JSON-ban található felvételekhez vannak társítva. 
 
 Az adatforrások JSON-beli felvételéhez tartozó shot típus a szerkesztői típust jelöli. Ezek a shot Type-jellemzők hasznosak lehetnek a videók klipek, pótkocsik számára történő szerkesztésekor, illetve a képkockák adott stílusának művészi célokra való keresésekor. A különböző típusok meghatározása az egyes lövések első képkockájának elemzése alapján történik. A képeket az első képkockában megjelenő arcok méretezése, mérete és helye azonosítja. 
 
@@ -64,6 +126,7 @@ További jellemzők:
 * Két kép: két személy közepes méretű arca látható.
 * Több arc: több mint két személy.
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="next-steps"></a>Következő lépések
 
 [Vizsgálja meg az API által létrehozott Video Indexer kimenetet](video-indexer-output-json-v2.md#scenes)

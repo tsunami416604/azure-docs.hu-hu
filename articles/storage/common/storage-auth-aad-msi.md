@@ -9,12 +9,12 @@ ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3e24cb2d4b5b82f6878647cdd631bd8ebca16199
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3bb3b632a184985f9a3a27d0e56e940ec7c30885
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666161"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806583"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Blobok és várólisták hozzáférésének engedélyezése Azure Active Directory és felügyelt identitásokkal az Azure-erőforrásokhoz
 
@@ -36,13 +36,13 @@ A felügyelt identitásokkal kapcsolatos további információkért lásd: [fel�
 
 ## <a name="authenticate-with-the-azure-identity-library"></a>Hitelesítés az Azure Identity Library használatával
 
-Az Azure Identity Client Library előnye, hogy lehetővé teszi, hogy ugyanazt a kódot használja annak hitelesítésére, hogy az alkalmazás a fejlesztői környezetben vagy az Azure-ban fut-e. Az Azure-környezetben futó kódban az ügyféloldali kódtár felügyelt identitást hitelesít az Azure-erőforrásokhoz. A fejlesztői környezetben a felügyelt identitás nem létezik, így az ügyfél-függvénytár tesztelési célból hitelesíti a felhasználót vagy az egyszerű szolgáltatást.
+Az Azure Identity ügyféloldali kódtára az Azure AD-jogkivonat hitelesítésének támogatását biztosítja az Azure [SDK](https://github.com/Azure/azure-sdk)-hoz. Az Azure Storage ügyféloldali kódtárainak legújabb verziói a .NET, a Java, a Python és a JavaScript integrálására az Azure Identity Library használatával egyszerű és biztonságos eszközöket biztosítanak az Azure Storage-kérelmek engedélyezéséhez szükséges OAuth 2,0-token beszerzéséhez.
 
-Az Azure Identity .NET-hez készült ügyféloldali kódtára hitelesíti a rendszerbiztonsági tag nevét. Ha a kód az Azure-ban fut, a rendszerbiztonsági tag felügyelt identitás az Azure-erőforrásokhoz.
+Az Azure Identity Client Library előnye, hogy lehetővé teszi, hogy ugyanazt a kódot használja annak hitelesítésére, hogy az alkalmazás a fejlesztői környezetben vagy az Azure-ban fut-e. Az Azure Identity .NET-hez készült ügyféloldali kódtára hitelesíti a rendszerbiztonsági tag nevét. Ha a kód az Azure-ban fut, a rendszerbiztonsági tag felügyelt identitás az Azure-erőforrásokhoz. A fejlesztői környezetben a felügyelt identitás nem létezik, így az ügyfél-függvénytár tesztelési célból hitelesíti a felhasználót vagy az egyszerű szolgáltatást.
 
 A hitelesítés után az Azure Identity Client Library megkapja a jogkivonat hitelesítő adatait. Ezt a jogkivonat hitelesítő adatait a rendszer az Azure Storage szolgáltatással kapcsolatos műveletek elvégzéséhez létrehozott szolgáltatási ügyfél objektumba ágyazza be. A könyvtár a megfelelő jogkivonat-hitelesítő adatok lekérésével zökkenőmentesen kezeli ezt.
 
-Az Azure Identity ügyféloldali függvénytárával kapcsolatos további információkért lásd: az [Azure Identity ügyféloldali kódtára a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
+A .NET-hez készült Azure Identity ügyféloldali kódtáraval kapcsolatos további információkért lásd: az [Azure Identity ügyféloldali kódtára a .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)-hez. Az Azure Identity ügyféloldali kódtár dokumentációját lásd: az [Azure. Identity névtér](/dotnet/api/azure.identity).
 
 ### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>Szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök kiosztása az adathoz való hozzáféréshez
 
@@ -50,7 +50,7 @@ Ha egy Azure AD rendszerbiztonsági tag megpróbál hozzáférni a blob-vagy üz
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>A felhasználó hitelesítése a fejlesztői környezetben
 
-Ha a kód a fejlesztési környezetben fut, a hitelesítés automatikusan kezelhető, vagy szükség lehet egy böngészőbeli bejelentkezésre, attól függően, hogy melyik eszközt használja. A Microsoft Visual Studio támogatja az egyszeri bejelentkezést (SSO), így az aktív Azure AD-felhasználói fiók automatikusan használatos a hitelesítéshez. További információ az egyszeri bejelentkezésről: [egyszeri bejelentkezés az alkalmazásokba](../../active-directory/manage-apps/what-is-single-sign-on.md).
+Ha a kód a fejlesztési környezetben fut, a hitelesítés automatikusan kezelhető, vagy szükség lehet egy böngészőbeli bejelentkezésre, attól függően, hogy melyik eszközt használja. A Microsoft Visual Studio például támogatja az egyszeri bejelentkezést (SSO), így az aktív Azure AD-felhasználói fiók automatikusan használatos a hitelesítéshez. További információ az egyszeri bejelentkezésről: [egyszeri bejelentkezés az alkalmazásokba](../../active-directory/manage-apps/what-is-single-sign-on.md).
 
 Más fejlesztői eszközök megkérhetik a bejelentkezést egy webböngészőn keresztül.
 
@@ -161,6 +161,6 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha többet szeretne megtudni az Azure Storage RBAC szerepköreiről, tekintse meg a [hozzáférési jogosultságok kezelése a RBAC](storage-auth-aad-rbac.md)szolgáltatással című témakört.
-- Ha szeretné megtudni, hogyan engedélyezheti a tárolók és a várólisták hozzáférését a Storage-alkalmazásokban, tekintse meg az [Azure ad és a Storage-alkalmazások használatát](storage-auth-aad-app.md)ismertető témakört.
-- Az Azure CLI és a PowerShell-parancsok Azure AD-beli hitelesítő adatokkal való futtatásával kapcsolatos információkért lásd: [Azure CLI-vagy PowerShell-parancsok futtatása Azure ad-hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez](storage-auth-aad-script.md).
+- [A tárolási és a RBAC közötti hozzáférési jogosultságok kezelése](storage-auth-aad-rbac.md).
+- [Használja az Azure ad-t a Storage-alkalmazásokhoz](storage-auth-aad-app.md).
+- Azure [CLI-vagy PowerShell-parancsok futtatása Azure ad-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez](storage-auth-aad-script.md).

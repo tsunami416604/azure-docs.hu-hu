@@ -10,37 +10,37 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 08bac7cd833f52d2dfec4561c2f87330a4119748
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552877"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815587"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>Eszköz: Roobo Smart audio dev Kit
 
 Ez a cikk a Roobo Smart audio dev Kit eszközre vonatkozó információkat tartalmaz.
 
-## <a name="set-up-the-development-kit"></a>A fejlesztői készlet beállítása
+## <a name="set-up-the-development-kit"></a>A fejlesztői csomag beállítása
 
 1. A fejlesztői készlet két Micro USB-összekötővel rendelkezik. A bal oldali összekötő a fejlesztői készlet bekapcsolására szolgál, és az alábbi képen Kiemelt teljesítményként jelenik meg. Az egyik az, hogy irányítsa, és a képen hibakeresést jelöl.
 
-    ![Csatlakozás a fejlesztői csomag](media/speech-devices-sdk/qsg-1.png)
+    ![A fejlesztői csomag csatlakoztatása](media/speech-devices-sdk/qsg-1.png)
 
 1. A Power port SZÁMÍTÓGÉPekhez vagy hálózati adapterhez való csatlakoztatásához használjon egy Micro USB-kábelt a fejlesztői készlethez. A felső táblán egy zöld energiaellátási kijelző jelenik meg.
 
 1. A fejlesztői csomag vezérléséhez csatlakoztassa a hibakeresési portot egy számítógéphez egy második Micro USB-kábel használatával. A megbízható kommunikáció biztosítása érdekében elengedhetetlen a kiváló minőségű kábelek használata.
 
-1. Elhelyezés a fejlesztői készlet sem a kör alakú és lineáris konfigurációját.
+1. A körkörös vagy lineáris konfigurációhoz tartozó fejlesztői készlet tájolása.
 
-    |Development kit konfigurálása|Tájolás|
+    |Fejlesztői csomag konfigurációja|Tájolás legördülő listából|
     |-----------------------------|------------|
-    |Kör alakú|Mintha a mikrofonok a felső határ irányuló|
-    |Lineáris|Az oldalán a mikrofonok felénk (az alábbi ábrán látható)|
+    |Körkörös|Egyenesen, a felső határt megnéző mikrofonokkal|
+    |Lineáris|Az oldalon, az Ön felé irányuló mikrofonokkal (az alábbi képen látható)|
 
-    ![lineáris dev csomag tájolása](media/speech-devices-sdk/qsg-2.png)
+    ![Lineáris fejlesztői csomag tájolása](media/speech-devices-sdk/qsg-2.png)
 
-1. Telepítse a tanúsítványokat, és állítsa be a hangeszköz engedélyeit. Egy parancssori ablakban írja be a következő parancsokat:
+1. Telepítse a tanúsítványokat, és állítsa be a hangeszköz engedélyeit. Írja be a következő parancsokat a parancssor ablakába:
 
    ```powershell
    adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/
@@ -52,14 +52,14 @@ Ez a cikk a Roobo Smart audio dev Kit eszközre vonatkozó információkat tarta
    ```
 
     > [!NOTE]
-    > Ezek a parancsok használata az Android-hibakeresési híd `adb.exe`, amely az Android Studio telepítést része. Ez az eszköz található C:\Users\[felhasználónév] \AppData\Local\Android\Sdk\platform-eszközöket. Ebben a címtárban is hozzáadhat az elérési úthoz, hogy kényelmesebbé meghívásához `adb`. Ellenkező esetben meg kell adnia a teljes elérési útja a telepített minden parancshoz, amely meghívja a adb.exe `adb`.
+    > Ezek a parancsok az androidos hibakeresési hidat használják, `adb.exe`, amely a Android Studio telepítés részét képezi. Ez az eszköz a C:\Users\[Felhasználónév] \AppData\Local\Android\Sdk\platform-tools. található. Ezt a könyvtárat hozzáadhatja az elérési úthoz, hogy kényelmesebb legyen a `adb`meghívása. Ellenkező esetben meg kell adnia az ADB. exe telepítésének teljes elérési útját minden olyan parancsnál, amely meghívja a `adb`.
     >
-    > Ha hibaüzenet `no devices/emulators found` jelenik meg, ellenőrizze, hogy az USB-kábel csatlakoztatva van-e, és kiváló minőségű kábel-e. A használatával `adb devices` ellenőrizhető, hogy a számítógép tud-e kommunikálni a fejlesztői csomaggal, mert az eszközök listáját fogja visszaadni.
+    > Ha hibaüzenet jelenik meg `no devices/emulators found` akkor ellenőrizze, hogy az USB-kábel csatlakoztatva van-e, és kiváló minőségű kábel-e. A `adb devices` segítségével ellenőrizhető, hogy a számítógép tud-e kommunikálni a fejlesztői csomaggal, mert az eszközök listáját fogja visszaadni.
     >
     > [!TIP]
-    > A számítógép mikrofon és előadó, és ellenőrizze, hogy dolgozik a fejlesztői készlet mikrofonok vypnutí. Így nem fog véletlenül indít el az eszközt az audio a számítógépről.
+    > A számítógép mikrofonjának és hangszórójának elnémításával győződjön meg arról, hogy dolgozik a fejlesztői csomag mikrofonjában. Így nem fogja véletlenül elindítani az eszközt a számítógép hangján.
 
-1. Ha azt szeretné, a beszélő csatlakoztatása a fejlesztői csomag, akkor csatlakozhat ki a következő vonal. Válasszon egy kiváló minőségű hangszórót 3,5 mm-es analóg csatlakozóval.
+1. Ha hangszórót szeretne csatlakoztatni a fejlesztői csomaghoz, csatlakoztathatja azt a hangbemenethez. Válasszon egy kiváló minőségű hangszórót 3,5 mm-es analóg csatlakozóval.
 
     ![Vysor hang](media/speech-devices-sdk/qsg-14.png)
 
@@ -69,8 +69,8 @@ További fejlesztési információk: [Roobo fejlesztői útmutató](http://dwn.r
 
 ## <a name="audio"></a>Hang
 
-A Roobo olyan eszközt biztosít, amely rögzíti az összes hang-és flash-memóriát. Hang elhárításának segíthet. Az eszköz egy verzióját minden egyes development kit konfiguráció biztosítunk. A [Roobo oldalon](https://ddk.roobo.com/)válassza ki az eszközt, majd kattintson a lap alján található **Roobo-eszközök** hivatkozásra.
+A Roobo olyan eszközt biztosít, amely rögzíti az összes hang-és flash-memóriát. Hasznos lehet a hangproblémák elhárításában. Az eszköz egy verzióját az egyes fejlesztői csomagokhoz tartozó konfigurációkhoz biztosítjuk. A [Roobo oldalon](https://ddk.roobo.com/)válassza ki az eszközt, majd kattintson a lap alján található **Roobo-eszközök** hivatkozásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Android-minta alkalmazás futtatása](speech-devices-sdk-android-quickstart.md)

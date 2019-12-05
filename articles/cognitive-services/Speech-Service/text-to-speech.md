@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 0d233f63879326f05cafb873d2a0243543b00c6b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 85022d52c9513e53da31cc3c962f3a54dd538371
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075708"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815489"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 
-Az Azure Speech Services egy olyan szolgáltatás, amely lehetővé teszi, hogy az alkalmazások, eszközök vagy eszközök szöveggé alakítsanak természetes, emberi – például szintetizált beszédbe. Válasszon a standard és a neurális hangok közül, vagy hozzon létre saját egyéni hangját a termék vagy a márka számára. a 75 + standard hangok több mint 45 nyelven és területi beállításban érhetők el, és az 5 neurális hang 4 nyelven és területi beállításban érhető el. A teljes listát lásd: [támogatott nyelvek](language-support.md#text-to-speech).
+A beszédfelismerési szolgáltatás szöveg-beszéd formátuma lehetővé teszi, hogy az alkalmazások, az eszközök vagy az eszközök természetes emberi – például szintetizált beszédbe alakítsanak szöveget. Válasszon a standard és a neurális hangok közül, vagy hozzon létre saját egyéni hangját a termék vagy a márka számára. a 75 + standard hangok több mint 45 nyelven és területi beállításban érhetők el, és az 5 neurális hang 4 nyelven és területi beállításban érhető el. A teljes listát lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
 A szövegről beszédre irányuló technológia lehetővé teszi, hogy a Content Creator különböző módokon kommunikáljon a felhasználóival. A szöveg és a beszéd közötti kommunikáció javíthatja a hozzáférést azáltal, hogy a felhasználók számára lehetővé teszi a tartalmak hallható módon történő használatát. Azt jelzi, hogy a felhasználó rendelkezik-e a vizualizációs fogyatékossággal, a tanulási fogyatékossággal vagy a navigációs információk megadásával, miközben a szöveg és a beszéd is javíthatja a meglévő felhasználói élményt. A szöveg és a beszéd is értékes kiegészítő funkció a hangvezérelt robotok és a hangsegédek számára.
 
@@ -31,7 +31,7 @@ A standard hangok statisztikai számszerű szintézis és/vagy összefűzési m�
 
 ### <a name="neural-voices"></a>Neurális hangok
 
-A neurális hangok mély neurális hálózatokkal használják fel a hagyományos szöveg-beszéd rendszerek korlátait a stressz és a hanglejtés mintázatának, valamint a hangvételi egységeknek a számítógépes hangra való beépítésével. A standard szöveg – beszéd típusú bontás a prosody különböző nyelvi elemzési és akusztikai előrejelzési lépésekre bontja fel, amelyek független modellekre vonatkoznak, ami tompa hangszintézist eredményezhet. A neurális képességgel párhuzamosan prosody az előrejelzés és a hangszintézis, ami több folyadékot és természetes hangú hangot eredményez.
+A neurális hangok mély neurális hálózatokkal használják fel a hagyományos szöveg-beszéd rendszerek korlátait a stressz és a hanglejtés mintázatának, valamint a hangvételi egységeknek a számítógépes hangra való beépítésével. A standard szöveg – beszéd típusú bontás a prosody különböző nyelvi elemzési és akusztikai előrejelzési lépésekre bontja fel, amelyek független modellekre vonatkoznak, ami tompa hangszintézist eredményezhet. A neurális funkció egyszerre végzi a hangmértékek előrejelzését és a hangszintézist, ami folyékonyabb és természetesebbnek tetsző hangot eredményez.
 
 A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel való interakcióra, így természetesebb és vonzó, digitális szövegeket, például e-könyveket készíthet hangoskönyvekbe, és hatékonyabbá teheti az autós navigációs rendszereket. Az emberi jellegű természetes prosody és a szavak egyértelmű megfogalmazásával a neurális hangok jelentősen csökkentik a figyelés fáradtságot, amikor az AI-rendszerekkel kommunikál.
 
@@ -84,7 +84,7 @@ Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt fu
 
 ### <a name="sdk-quickstarts"></a>SDK-gyors útmutatók
 
-| Gyors útmutató (SDK) | Platform | API-hivatkozás |
+| Gyors útmutató (SDK) | Platform | API-leírások |
 | ---------------- | -------- | ------------- |
 | [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)  | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
 | [C#, .NET-keretrendszer](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
@@ -102,7 +102,7 @@ Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt fu
 
 ### <a name="rest-quickstarts"></a>REST-útmutató
 
-| Gyors útmutató (REST) | Platform | API-referencia |
+| Gyors útmutató (REST) | Platform | API-leírások |
 | ----------------- | -------- | ------------- |
 | [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Node.js](quickstart-nodejs-text-to-speech.md) | Ablak, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
@@ -118,12 +118,12 @@ A szöveg és a beszéd mintája a GitHubon érhető el. Ezek a minták a legné
 ## <a name="reference-docs"></a>Segédanyagok
 
 - [Beszéd SDK](speech-sdk-reference.md)
-- [Speech Devices SDK](speech-devices-sdk.md)
+- [Beszédfelismerési eszközök SDK](speech-devices-sdk.md)
 - [REST API: beszéd – szöveg](rest-speech-to-text.md)
 - [REST API: szövegről beszédre](rest-text-to-speech.md)
 - [REST API: kötegelt átírás és testreszabás](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Ingyenes Speech Services-előfizetés beszerzése](get-started.md)
-- [Hozzon létre egyéni hangtípust](how-to-customize-voice-font.md)
+- [Ingyenes beszédfelismerési szolgáltatás előfizetésének beszerzése](get-started.md)
+- [Egyéni hangbetűkészletek létrehozása](how-to-customize-voice-font.md)

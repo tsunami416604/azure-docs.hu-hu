@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/27/2019
 ms.author: yinhew
-ms.openlocfilehash: af101862e824d6527c08c232812913565536bb4a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 38dac73d253245fce86ac419c7a4eb3a106df3f0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503149"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818219"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +32,7 @@ Az első lépések előtt ügyeljen a következőre:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/text-to-speech/helloworld/Program.cs#code)]
 
-1. Keresse meg a `YourSubscriptionKey`karakterláncot, és cserélje le a Speech Services előfizetési kulcsára.
+1. Keresse meg a `YourSubscriptionKey`karakterláncot, és cserélje le a Speech Service előfizetési kulcsára.
 
 1. Keresse meg a `YourServiceRegion`karakterláncot, és cserélje le az előfizetéséhez tartozó [régióra](~/articles/cognitive-services/Speech-Service/regions.md) . Ha például az ingyenes próbaverziós előfizetést használja, akkor a régió `westus`.
 
@@ -44,15 +44,15 @@ Az első lépések előtt ügyeljen a következőre:
 
 1. A **HelloWorld** alkalmazás indításához válassza a hibakeresés > a **hibakeresés megkezdése** (vagy az **F5**kiválasztása **) lehetőséget.**
 
-1. Írjon be egy angol kifejezést vagy mondatot. Az alkalmazás továbbítja a szöveget a beszédfelismerési szolgáltatásoknak, amelyek szintetizált beszédet küldenek az alkalmazásnak a beszélőn való lejátszáshoz.
+1. Írjon be egy angol kifejezést vagy mondatot. Az alkalmazás továbbítja a szöveget a beszédfelismerési szolgáltatásnak, amely szintetizált beszédet küld az alkalmazásnak a beszélőn való lejátszáshoz.
 
    ![Speech szintézis felhasználói felület](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Egyéni hang létrehozása](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Egyéni hangminták rögzítése](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

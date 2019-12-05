@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: hangok engedélyezése a robotnak a Speech SDK használatával'
+title: 'Oktatóanyag: hangok engedélyezése a robotnak a Speech SDK – Speech Service használatával'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban egy echo-robotot fog létrehozni a Microsoft bot-Framework használatával, üzembe helyezi az Azure-ban, és regisztrálja azt a robot-keretrendszer Direct line beszédfelismerési csatornával. Ezután konfigurálhat egy Windows rendszerbeli ügyfélalkalmazás-alkalmazást, amely lehetővé teszi, hogy beszéljen a robothoz, és meghallgassa, hogy válaszoljon vissza Önnek.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: c95bc7b58f3883fee54aaa8095cb187eaefdb3e0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b42314d1c8c1bd734181f02c36ae3f43507e9b79
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836965"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815206"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Oktatóanyag: hang – a robot engedélyezése a Speech SDK használatával
 
-Most már használhatja a Speech Services hatékonyságát, így egyszerűen elvégezheti a csevegési robot használatát.
+Most már használhatja a beszédfelismerési szolgáltatást, így egyszerűen elvégezheti a csevegési robot használatát.
 
 Ebben az oktatóanyagban egy echo-robotot fog létrehozni a Microsoft bot-Framework használatával, üzembe helyezi az Azure-ban, és regisztrálja azt a robot-keretrendszer Direct line beszédfelismerési csatornával. Ezután konfigurálhat egy Windows rendszerbeli ügyfélalkalmazás-alkalmazást, amely lehetővé teszi, hogy beszéljen a robothoz, és meghallgassa, hogy válaszoljon vissza Önnek.
 
@@ -39,7 +39,7 @@ A gyakorlat végén egy olyan rendszer lesz beállítva, amely a következőkép
 ![diagram – címke](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "A beszédfelismerési csatorna folyamata")
 
 > [!NOTE]
-> Az oktatóanyag lépései nem igényelnek fizetős szolgáltatást. Új Azure-felhasználóként használhat krediteket az ingyenes Azure próbaverziós előfizetésből, és a Speech Services ingyenes szintjéről is elvégezheti az oktatóanyagot.
+> Az oktatóanyag lépései nem igényelnek fizetős szolgáltatást. Új Azure-felhasználóként használhat krediteket az ingyenes Azure próbaverziós előfizetésből, és a beszédfelismerési szolgáltatás ingyenes szintjéről is elvégezheti ezt az oktatóanyagot.
 
 Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
@@ -58,12 +58,12 @@ Az oktatóanyag elvégzéséhez a következőket kell elvégeznie:
 - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) vagy újabb
 - [.NET Core SDK](https://dotnet.microsoft.com/download) 2,1-es vagy újabb verzió
 - Egy Azure-fiók. [Regisztráljon ingyen](https://azure.microsoft.com/free/ai/).
-- Egy [GitHub](https://github.com/) -fiók
+- Egy [GitHub](https://github.com/)-fiók
 - [Git for Windows](https://git-scm.com/download/win)
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az oktatóanyagban létrehozandó ügyfélalkalmazás néhány Azure-szolgáltatást használ. Ha csökkenteni szeretné a robottól érkező válaszok időkorlátját, győződjön meg arról, hogy ezek a szolgáltatások ugyanabban az Azure-régióban találhatók. Ebben a szakaszban egy erőforráscsoportot hoz létre az **USA nyugati** régiójában. Ezt az erőforráscsoportot fogja használni a rendszer a bot-Framework, a Direct line Speech Channel és a Speech Services egyedi erőforrásainak létrehozásakor.
+Az oktatóanyagban létrehozandó ügyfélalkalmazás néhány Azure-szolgáltatást használ. Ha csökkenteni szeretné a robottól érkező válaszok időkorlátját, győződjön meg arról, hogy ezek a szolgáltatások ugyanabban az Azure-régióban találhatók. Ebben a szakaszban egy erőforráscsoportot hoz létre az **USA nyugati** régiójában. Ezt az erőforráscsoportot fogja használni a rendszer az egyes erőforrások létrehozásához a bot-Framework, a Direct line Speech Channel és a Speech Service számára.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A bal oldali navigációs sávon válassza az **erőforráscsoportok**lehetőséget. Ezután kattintson a **Hozzáadás** gombra egy új erőforráscsoport hozzáadásához.
@@ -72,7 +72,7 @@ Az oktatóanyagban létrehozandó ügyfélalkalmazás néhány Azure-szolgáltat
    * Adja meg az **erőforráscsoport**nevét. Javasoljuk, hogy **SpeechEchoBotTutorial-ResourceGroup**.
    * A régió legördülő menüben válassza az **USA nyugati** **régiója** lehetőséget.
 1. Kattintson **a felülvizsgálat és létrehozás**gombra. Ekkor meg kell jelennie egy olyan szalagcímnek, amely beolvasta az **érvényesítést**.
-1. Kattintson a **Létrehozás** elemre. Az erőforráscsoport létrehozása eltarthat néhány percig.
+1. Kattintson a  **Create** (Létrehozás) gombra. Az erőforráscsoport létrehozása eltarthat néhány percig.
 1. Az oktatóanyag későbbi részében létrehozott erőforrásokhoz hasonlóan érdemes ezt az erőforráscsoportot az irányítópultra rögzíteni az egyszerű hozzáférés érdekében. Ha rögzíteni szeretné ezt az erőforráscsoportot, kattintson az irányítópult jobb felső sarkában található rögzítés ikonra.
 
 ### <a name="choosing-an-azure-region"></a>Azure-régió kiválasztása
@@ -89,7 +89,7 @@ A régiókkal kapcsolatos további információkért lásd: Azure-beli [telephel
 
 Most, hogy már van egy erőforráscsoport az **USA nyugati** régiójában, a következő lépés az oktatóanyagban használni kívánt egyes szolgáltatások egyedi erőforrásainak létrehozása.
 
-### <a name="create-a-speech-services-resource"></a>Speech Services-erőforrás létrehozása
+### <a name="create-a-speech-service-resource"></a>Beszédfelismerési szolgáltatás erőforrásának létrehozása
 
 A beszédfelismerési erőforrások létrehozásához kövesse az alábbi utasításokat:
 
@@ -107,7 +107,7 @@ A beszédfelismerési erőforrások létrehozásához kövesse az alábbi utasí
 
 Ezen a ponton győződjön meg arról, hogy az erőforráscsoport (**SpeechEchoBotTutorial-ResourceGroup**) rendelkezik beszédfelismerési erőforrással:
 
-| név | TÍPUS  | HELYEN |
+| NÉV | TÍPUS  | HELY |
 |------|-------|----------|
 | SpeechEchoBotTutorial – beszéd | Cognitive Services | USA nyugati régiója |
 
@@ -117,7 +117,7 @@ A következő lépés egy App Service terv létrehozása. Az App Service-csomago
 
 1. Lépjen a [Azure Portal](https://portal.azure.com) , és válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs sávon.
 2. A keresősáv mezőbe írja be **app Service tervet**. Ezután keresse meg és válassza ki a **app Service megtervezése** kártyát a keresési eredmények közül.
-3. Kattintson a **Létrehozás** elemre.
+3. Kattintson a  **Create** (Létrehozás) gombra.
 4. A rendszer a következő információk megadását kéri:
    * **Előfizetés** beállítása az **ingyenes próbaverzióra** (meglévő előfizetést is használhat).
    * Az **erőforráscsoport**területen válassza a **SpeechEchoBotTutorial-ResourceGroup**elemet.
@@ -126,11 +126,11 @@ A következő lépés egy App Service terv létrehozása. Az App Service-csomago
    * A régió területen válassza az **USA nyugati** **régiója**lehetőséget.
    * Az **árképzési szint**esetében ellenőrizze, hogy a **standard S1** van-e kiválasztva. Ennek az alapértelmezett értéknek kell lennie. Ha nem, ügyeljen arra, hogy az operációs rendszert a fent ismertetett módon állítsa be a **Windows** **rendszerre** .
 5. Kattintson **a felülvizsgálat és létrehozás**gombra. Ekkor meg kell jelennie egy olyan szalagcímnek, amely beolvasta az **érvényesítést**.
-6. Kattintson a **Létrehozás** elemre. Az erőforráscsoport létrehozása eltarthat néhány percig.
+6. Kattintson a  **Create** (Létrehozás) gombra. Az erőforráscsoport létrehozása eltarthat néhány percig.
 
 Ezen a ponton győződjön meg arról, hogy az erőforráscsoport (**SpeechEchoBotTutorial-ResourceGroup**) két erőforrással rendelkezik:
 
-| név | TÍPUS  | HELYEN |
+| NÉV | TÍPUS  | HELY |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service-csomag | USA nyugati régiója |
 | SpeechEchoBotTutorial – beszéd | Cognitive Services | USA nyugati régiója |
@@ -166,13 +166,13 @@ A [bot Framework Emulator](https://github.com/microsoft/botframework-emulator) e
 1. A [bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) 4.3.0 vagy újabb verziójának telepítése
 2. Indítsa el a robot Framework emulátort, és nyissa meg a robotját:
    * **Fájl** -> a **robot megnyitása**.
-3. Adja meg a robot URL-címét. Például:
+3. Adja meg a robot URL-címét. Példa:
 
    ```
    http://localhost:3978/api/messages
    ```
    kattintson a "kapcsolat" gombra.
-4. A robotnak azonnal el kell köszönteni a "Hello and Welcome!" kifejezéssel. Üzenetet. Írjon be bármilyen szöveges üzenetet, és erősítse meg, hogy választ kap a robottól.
+4. A robotnak azonnal el kell köszönteni a "Hello and Welcome!" kifejezéssel. üzenet. Írjon be bármilyen szöveges üzenetet, és erősítse meg, hogy választ kap a robottól.
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>A robot üzembe helyezése egy Azure App Service
 
@@ -207,7 +207,7 @@ A következő lépés az ECHO-robot üzembe helyezése az Azure-ban. A robot üz
 1. Az alapértelmezett böngészőnek meg kell nyitnia és meg kell jelennie az alábbi beolvasott oldalnak: "a robot elkészült!".
 1. Ezen a ponton ellenőrizze, hogy az erőforráscsoport **SpeechEchoBotTutorial-ResourceGroup szerepel-** e a Azure Portalban, és ellenőrizze, hogy vannak-e három erőforrás:
 
-| név | TÍPUS  | HELYEN |
+| NÉV | TÍPUS  | HELY |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA nyugati régiója |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-csomag | USA nyugati régiója |
@@ -233,9 +233,9 @@ Most, hogy létrehozott egy Azure App Service a robot üzemeltetéséhez, a köv
 > [!NOTE]
 > Ha többet szeretne megtudni arról, hogy a robotok hogyan használják ki a csatornákat, tekintse meg [a bot összekapcsolása csatornákkal](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)című témakört.
 
-1. Első lépésként létre kell hoznia egy új erőforrást a regisztrációhoz. A [Azure Portal](https://portal.azure.com)kattintson az **erőforrás létrehozása**elemre.
+1. Első lépésként létre kell hoznia egy új erőforrást a regisztrációhoz. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforrás létrehozása** elemre.
 2. A keresési sáv típusának **robotja**az eredmények megjelenése után válassza a **robot-csatornák regisztrálása**lehetőséget.
-3. Kattintson a **Létrehozás** elemre.
+3. Kattintson a  **Create** (Létrehozás) gombra.
 4. A rendszer a következő információk megadását kéri:
    * A **bot neve**mezőbe írja be a következőt: **SpeechEchoBotTutorial-BotRegistration**.
    * Az **előfizetés**mezőben válassza az **ingyenes próbaverzió**lehetőséget.
@@ -249,11 +249,11 @@ Most, hogy létrehozott egy Azure App Service a robot üzemeltetéséhez, a köv
 
 Ekkor a Azure Portalban keresse meg az **SpeechEchoBotTutorial-ResourceGroup** erőforráscsoportot. Ekkor négy erőforrást kell megjelenítenie:
 
-| név | TÍPUS  | HELYEN |
+| NÉV | TÍPUS  | HELY |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA nyugati régiója |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-csomag | USA nyugati régiója |
-| SpeechEchoBotTutorial-BotRegistration | Robot-csatornák regisztrálása | Globális |
+| SpeechEchoBotTutorial-BotRegistration | Bot Channels Registration | Globális |
 | SpeechEchoBotTutorial – beszéd | Cognitive Services | USA nyugati régiója |
 
 > [!IMPORTANT]
@@ -415,7 +415,7 @@ Ha nem folytatja a jelen oktatóanyagban üzembe helyezett echo-bot használatá
 2. Keresse meg az erőforráscsoport neve: **SpeechEchoBotTutorial-ResourceGroup**. Kattintson a három pontra (...).
 3. Válassza az **Erőforráscsoport törlése** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Saját ügyfélalkalmazás létrehozása a Speech SDK-val](quickstart-voice-assistant-csharp-uwp.md)
@@ -426,7 +426,7 @@ Ha nem folytatja a jelen oktatóanyagban üzembe helyezett echo-bot használatá
 * [Magas színvonalú NEURÁLIS TTS-hangokat támogató Azure-régió](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices) üzembe helyezése
 * A Direct line Speech Channel szolgáltatáshoz kapcsolódó díjszabás:
   * [A bot Service díjszabása](https://azure.microsoft.com/pricing/details/bot-service/)
-  * [Speech Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
+  * [Beszédfelismerési szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * Saját hang-kompatibilis bot kiépítése és üzembe helyezése:
   * Hozzon létre egy [robot-keretrendszer robotot](https://dev.botframework.com/). Regisztrálja a [Direct line Speech Channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) használatával, és [szabja testre a robotját](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)
   * Ismerkedjen meg a meglévő [bot-Framework megoldásokkal](https://microsoft.github.io/botframework-solutions/index): létrehozhat egy [virtuális asszisztenst](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) , és [kiterjesztheti a közvetlen vonalas beszédre](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

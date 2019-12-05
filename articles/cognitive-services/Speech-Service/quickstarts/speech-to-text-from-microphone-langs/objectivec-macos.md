@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 0025e6e84a8a76ad3a332056f51f802ca95da23f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: be5f62a75d9a3998d843e9865768b46658b8386c
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503590"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815029"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>Gyors útmutató: beszéd felismerése a macOS-ben a "Objective-C"-ben a Speech SDK használatával
 
@@ -34,7 +34,7 @@ A Kezdés előtt a következőkre lesz szüksége:
 
 [!INCLUDE [License notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-A Mac rendszerhez készült Cognitive Services Speech SDK-t keretrendszer-csomagként terjesztik. Xcode-projektekben használható [CocoaPod](https://cocoapods.org/) , és manuálisan is letölthetők a https://aka.ms/csspeech/macosbinaryból. Ez a cikk egy CocoaPod használ.
+A Mac rendszerhez készült Cognitive Services Speech SDK-t keretrendszer-csomagként terjesztik. Xcode-projektekben használható [CocoaPod](https://cocoapods.org/) , és manuálisan is letölthetők a https://aka.ms/csspeech/macosbinary ból. Ez a cikk egy CocoaPod használ.
 
 ## <a name="create-an-xcode-project"></a>Xcode-projekt létrehozása
 
@@ -49,7 +49,7 @@ Az alábbi párbeszédpaneleken végezze el a következő beállításokat.
     1. Törölje a jelölést a forgatókönyvek használatához, és hozzon létre egy dokumentum alapú alkalmazást. A minta alkalmazás egyszerű felhasználói felületét programozott módon hozza létre.
     1. Törölje az összes jelölőnégyzetet a tesztekhez és az alapértékekhez.
 
-    ![Projekt beállításai](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-project-settings.png)
+    ![Projektbeállítások](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-project-settings.png)
 
 1. Válasszon egy projekt könyvtárat:
     1. Válassza ki azt a könyvtárat, ahová a projektet be szeretné állítani. Ez a lépés létrehoz egy HelloWorld könyvtárat a saját könyvtárában, amely a Xcode projekt összes fájlját tartalmazza.
@@ -89,7 +89,7 @@ Az alábbi párbeszédpaneleken végezze el a következő beállításokat.
 1. Hozza létre és futtassa a példaként szolgáló kódot a menüből válassza a **termék** > **Futtatás** lehetőséget. Választhatja a **Lejátszás**lehetőséget is.
 1. Miután kiválasztotta a gombot, és mondjuk egy pár szót, látnia kell a képernyő alsó részén megjelenő szöveget. Amikor első alkalommal futtatja az alkalmazást, a rendszer kérni fogja, hogy az alkalmazás hozzáférjen a számítógép mikrofonja számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A Objective-C minták megismerése a GitHubon](https://aka.ms/csspeech/samples)

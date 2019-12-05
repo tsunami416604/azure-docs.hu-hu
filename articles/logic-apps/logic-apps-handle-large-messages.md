@@ -6,13 +6,13 @@ ms.suite: integration
 author: shae-hurst
 ms.author: shhurst
 ms.topic: article
-ms.date: 4/27/2018
-ms.openlocfilehash: e583bf53021d772db54c30ed5a4c9ea2a029e093
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/03/2019
+ms.openlocfilehash: 8c2e857808b0638fbba54cfe9a623ba3fd764119
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792017"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815089"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Nagy méretű üzenetek kezelése Azure Logic Apps
 
@@ -39,6 +39,9 @@ Ellenkező esetben futásidejű hibaüzenetet kap, amikor megpróbál hozzáfér
 A Logic Apps kommunikáló szolgáltatások rendelkezhetnek saját üzenetek méretével. Ezek a korlátok gyakran kisebbek, mint a Logic Apps korlát. Tegyük fel például, hogy egy összekötő támogatja az adatdarabolást, az összekötők akár egy 30 MB méretű üzenetet is megtekinthetnek, a Logic Apps azonban nem. Az összekötő korlátjának betartása érdekében Logic Apps a 30 MB-nál nagyobb méretű üzeneteket kisebb adattömbökre osztja fel.
 
 A darabolást támogató összekötők esetében az alapul szolgáló adatdarabolási protokoll láthatatlan a végfelhasználók számára. Azonban nem minden összekötő támogatja a darabolást, így ezek az összekötők futásidejű hibákat eredményeznek, ha a bejövő üzenetek túllépik az összekötők méretének korlátait.
+
+> [!NOTE]
+> A darabolást használó műveletek esetében nem lehet átadni az trigger törzsét, vagy olyan kifejezéseket használhat, mint például a `@triggerBody()?['Content']` az adott műveletekben. Ehelyett szöveges vagy JSON-fájl tartalma esetén megpróbálhatja az [ **összeállítási** műveletet](../logic-apps/logic-apps-perform-data-operations.md#compose-action) használni, vagy [létrehozhat egy változót](../logic-apps/logic-apps-create-variables-store-values.md) a tartalom kezeléséhez. Ha az trigger törzse más tartalomtípusokat is tartalmaz, például médiafájlokat, más lépéseket kell végrehajtania a tartalom kezeléséhez.
 
 <a name="set-up-chunking"></a>
 
@@ -112,7 +115,7 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
    | Logic Apps kérelem fejlécének mezője | Value (Díj) | Type (Típus) | Leírás |
    |---------------------------------|-------|------|-------------|
-   | **x-MS – átvitel üzemmód** | darabolásos | Sztring | Azt jelzi, hogy a tartalom fel van töltve a darabokban |
+   | **x-MS – átvitel üzemmód** | adatrészlet | Sztring | Azt jelzi, hogy a tartalom fel van töltve a darabokban |
    | **x-MS-Content-Length** | <*Content-length*> | Egész szám | A teljes tartalom mérete bájtban a darabolás előtt |
    ||||
 

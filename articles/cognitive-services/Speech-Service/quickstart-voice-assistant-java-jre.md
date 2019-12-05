@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: bidishac
-ms.openlocfilehash: 54a5be769ace97ffa9a4f5f38a9227d9565abfd1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111710"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815853"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Rövid útmutató: hangsegéd létrehozása a Speech SDK-val, Java (előzetes verzió)
 
@@ -30,7 +30,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 - Operációs rendszer: Windows (64 bites), Ubuntu Linux 16.04/18.04 (64 bites), vagy macOS 10,13 vagy újabb.
 - [Eclipse Java ide](https://www.eclipse.org/downloads/).
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) vagy [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
-- Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be az egyiket ingyenesen](get-started.md) , vagy hozza létre a [Azure Portalban](https://portal.azure.com).
+- Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md) , vagy hozza létre a [Azure Portalban](https://portal.azure.com).
 - A bot Framework 4,2-es vagy újabb verziójának használatával létrehozott előre konfigurált robot. A robotnak elő kell fizetnünk az új közvetlen vonalas beszéd csatornára a hangbemenetek fogadásához.
 
   > [!NOTE]
@@ -467,17 +467,17 @@ Ezen a ponton beszéljen egy angol nyelvű kifejezéssel vagy mondattal, amelyet
 
 ![Képernyőkép a konzolról a sikeres felismerést követően](media/sdk/qs-java-jre-08-console-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GitHubon további minták is elérhetők, például a hangfájlok beszédének olvasása.
 
 > [!div class="nextstepaction"]
 > [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [A hangsegédek ismertetése](voice-assistants.md)
-- [Ingyenes Speech Services-előfizetési kulcs beszerzése](get-started.md)
+- [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
 - [Egyéni kulcsszavak](speech-devices-sdk-create-kws.md)
 - [Közvetlen vonalas beszéd összekötése a robottal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [A Java-minták megismerése a GitHubon](https://aka.ms/csspeech/samples)

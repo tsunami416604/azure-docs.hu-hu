@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: edee0e2efadd8e92ebf3533f0716c82029a0c680
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e24b7efb9f4af9f730ce79751e2fc5a9d210edbd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791705"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806983"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Frissítés általános célú v2 Storage-fiókra
 
-Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb funkcióit, és az általános célú v1-és blob Storage-fiókok összes funkcióját beépítik. Az általános célú v2-fiókok használata a legtöbb tárolási helyzetben ajánlott. Az általános célú v2-fiókok az Azure Storage-ban a legalacsonyabb/GB-os kapacitást biztosítják, valamint az iparágban versenyképes tranzakciós árakat. A General-célra v2-fiókok támogatják az alapértelmezett fiók-hozzáférési szinteket a gyakori vagy ritka elérésű, valamint a blobos szinteken a gyakori, ritka vagy archív adatok között.
+Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb funkcióit, és az általános célú v1-és blob Storage-fiókok összes funkcióját beépítik. Az általános célú v2-fiókok használata a legtöbb tárolási helyzetben ajánlott. Az általános célú v2-fiókok az Azure Storage-ban a legalacsonyabb/GB-os kapacitást biztosítják, valamint az iparágban versenyképes tranzakciós árakat. Az általános célú v2-fiókok támogatják az alapértelmezett fiók-hozzáférési szinteket a gyakori vagy ritka elérésű és a blob szintű, a gyakori és a ritka elérésű, illetve az archiválási szintek között.
 
 Egy általános célú v2-es Storage-fiókra való frissítés az általános célú v1-vagy blob Storage-fiókokból egyszerű. A frissítést a Azure Portal, a PowerShell vagy az Azure CLI használatával végezheti el.
 
@@ -40,7 +40,7 @@ Egy általános célú v2-es Storage-fiókra való frissítés az általános c�
 
 Ha egy általános célú v1-fiókot szeretne egy általános célú v2-fiókra frissíteni a PowerShell használatával, először frissítse a PowerShellt, hogy az az **. Storage** modul legújabb verzióját használja. A PowerShell telepítésével kapcsolatos információkért lásd [az Azure PowerShell telepítését és konfigurálását](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket.
 
-Ezután a következő parancs meghívásával frissítse a fiókot, és cserélje le az erőforráscsoport nevét, a Storage-fiók nevét és a kívánt fiók hozzáférési szintjét.
+Ezután hívja meg a következő parancsot a fiók frissítéséhez, az erőforráscsoport nevének, a Storage-fiók nevének és a kívánt fiók hozzáférési szintjének a behelyettesítéséhez.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
@@ -49,7 +49,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 Ha egy általános célú v1-fiókot az Azure CLI használatával szeretne általános célú v2-fiókra frissíteni, először telepítse az Azure CLI legújabb verzióját. A CLI telepítésével kapcsolatban lásd [az Azure CLI 2.0-s verziójának telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető szakaszt.
 
-Ezután a következő parancs meghívásával frissítse a fiókot, és cserélje le az erőforráscsoport nevét, a Storage-fiók nevét és a kívánt fiók hozzáférési szintjét.
+Ezután hívja meg a következő parancsot a fiók frissítéséhez, az erőforráscsoport nevének, a Storage-fiók nevének és a kívánt fiók hozzáférési szintjének a behelyettesítéséhez.
 
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
@@ -59,11 +59,11 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Hozzáférési szintek megadása a blob-adatértékekhez
 
-Az általános célú v2-fiókok támogatják az összes Azure Storage-szolgáltatást és-adatobjektumot, de a hozzáférési szintek csak a blob Storage-ban található blokk Blobok esetén érhetők el. Általános célú v2 Storage-fiókra való frissítéskor megadhat egy hozzáférési szintet a blob adataihoz.
+Az általános célú v2-fiókok támogatják az összes Azure Storage-szolgáltatást és-adatobjektumot, de a hozzáférési szintek csak a blob Storage-ban található blokk-Blobok esetében érhetők el. Egy általános célú v2-es Storage-fiókra való frissítéskor megadhat egy alapértelmezett fiók-hozzáférési szintet, amely az alapértelmezett szint, a blob-adatok feltöltése, ha nincs megadva az egyéni blob-hozzáférési réteg paraméter.
 
-A hozzáférési rétegek lehetővé teszik a leginkább költséghatékony tárterület kiválasztását a várt használati minták alapján. A blokkos Blobok a gyakori, ritka vagy archív szinteken tárolhatók. A hozzáférési szintekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
+A blob hozzáférési szintjei lehetővé teszik a leginkább költséghatékony tárterület kiválasztását a várt használati minták alapján. A blokkos Blobok a gyakori, ritka vagy archív szinteken tárolhatók. A hozzáférési szintekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
 
-Alapértelmezés szerint a rendszer egy új Storage-fiókot hoz létre a gyors elérési szinten, és egy általános célú v1-es Storage-fiókot frissít a gyors elérési szintre. Ha azt vizsgálja, hogy a frissítés után melyik hozzáférési réteghez kell használni az adatait, gondolja át a forgatókönyvet. Az általános célú v2-fiókokba való áttelepítéshez két tipikus felhasználói forgatókönyv van:
+Alapértelmezés szerint a rendszer létrehoz egy új Storage-fiókot a gyors elérési szinten, és egy általános célú v1-es Storage-fiókot is frissít a gyakori vagy a ritkán használt fiók szintjére. Ha nincs megadva fiók-hozzáférési szint a Verziófrissítéskor, a rendszer alapértelmezés szerint a frissítésre frissíti. Ha vizsgálja meg, hogy melyik hozzáférési szintet szeretné használni a frissítéshez, vegye figyelembe az aktuális adatfelhasználási forgatókönyvet. Az általános célú v2-fiókokba való áttelepítéshez két tipikus felhasználói forgatókönyv van:
 
 * Rendelkezik egy meglévő általános célú v1 Storage-fiókkal, és szeretné kiértékelni az általános célú v2 Storage-fiókra való frissítést, a blob-adatelérési réteg megfelelő tárolási hozzáférési szintjével.
 * Úgy döntött, hogy egy általános célú v2-es Storage-fiókot használ, vagy már rendelkezik ilyennel, és szeretné kiértékelni, hogy érdemes-e a gyakori vagy ritka elérésű tárolási hozzáférési szintet használni a blob-adatokhoz.

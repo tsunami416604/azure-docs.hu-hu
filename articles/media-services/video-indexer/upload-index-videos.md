@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: juliako
-ms.openlocfilehash: a1fd37b65c3449e7000db6189c8c71def1f96b0a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: beb44c469aa8a03430cd5cb5a162966855aad448
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790056"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815397"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -59,7 +59,7 @@ Ezzel a paraméterrel megadhat egy azonosítót, amely társítva lesz a videóh
 Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére szolgál az alábbi eseményekről:
 
 - Az indexelési állapot változása: 
-    - Tulajdonságok    
+    - Tulajdonságok:    
     
         |Név|Leírás|
         |---|---|
@@ -88,9 +88,9 @@ Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére
 Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttérzajt tartalmaznak. Ez a paraméter az indexelési folyamat konfigurálására szolgál. A következő értékeket adhatja meg:
 
 - `AudioOnly` – Indexelés és elemzések kinyerése csak audiotartalmak használatával (videotartalmak figyelmen kívül hagyása)
+- `VideoOnly` – az elemzések indexelése és kinyerése csak videó használatával (hang figyelmen kívül hagyása)
 - `Default` – Indexelés és elemzések kinyerése audio- és videotartalmak használatával
 - `DefaultWithNoiseReduction` – Indexelés és elemzések kinyerése audio- és videotartalmakból, és zajcsökkentő algoritmusok alkalmazása az audiostreamen
-- `VideoOnly` – az adatok indexelése és kinyerése csak videó használatával 
 
 Az árat a kiválasztott indexelési lehetőség határozza meg.  
 

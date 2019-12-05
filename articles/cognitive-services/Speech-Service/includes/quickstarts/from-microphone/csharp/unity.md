@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: b6439c6461ca9f4fa272eb43ef16240175fdec4f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b0a9eddf147eedfa972e0574e62c9e7c2eace84f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796214"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818744"
 ---
 > [!NOTE]
 > Az Unity Speech SDK támogatja a Windows Desktopot (x86 és x64) vagy Univerzális Windows-platform (x86, x64, ARM/ARM64), Android (x86, ARM32/64) és iOS (x64 Simulator, ARM32 és ARM64)
@@ -89,7 +89,7 @@ A következő lépésekkel adhatja hozzá a minta parancsfájl kódját az Unity
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/from-microphone/Assets/Scripts/HelloWorld.cs#code)]
 
-1. Keresse meg és cserélje le a `YourSubscriptionKey` karakterláncot a Speech Services előfizetési kulcsával.
+1. Keresse meg és cserélje le a `YourSubscriptionKey` karakterláncot a beszédfelismerési szolgáltatás előfizetési kulcsával.
 
 1. Keresse meg és cserélje le a karakterláncot `YourServiceRegion` az előfizetéséhez társított [régióval](~/articles/cognitive-services/Speech-Service/regions.md) . Ha például az ingyenes próbaverziót használja, akkor a régió a `westus`.
 
@@ -120,7 +120,7 @@ Most már készen áll az alkalmazás futtatására az Unity Editoron belül.
 
 1. Nyissa meg a [ **játék** nézetet](https://docs.unity3d.com/Manual/GameView.html), és várja meg, amíg a **text** objektum a **beszédfelismerés felismeréséhez kattintson a gombra**. ( **Új szöveget** jelenít meg, ha az alkalmazás nem indult el, vagy nem áll készen a válaszadásra.)
 
-1. Kattintson a gombra, és beszéljen egy angol kifejezéssel vagy mondattal a számítógép mikrofonjában. A beszéd a beszédfelismerési szolgáltatásokhoz lett továbbítva, és szövegbe kerül, amely a **játék** nézetben jelenik meg.
+1. Kattintson a gombra, és beszéljen egy angol kifejezéssel vagy mondattal a számítógép mikrofonjában. A beszéd a beszédfelismerési szolgáltatáshoz lett továbbítva, és szövegbe kerül, amely a **játék** nézetben jelenik meg.
 
    [![játék nézet az Unity Editorban](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png#lightbox)
 

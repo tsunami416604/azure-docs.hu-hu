@@ -1,7 +1,7 @@
 ---
 title: Stream codec tömörített hang az iOS-es Speech SDK-val
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan továbbíthatja a tömörített hanganyagokat az Azure Speech Servicesbe az iOS-es Speech SDK-val.
+description: Ismerje meg, hogyan továbbíthatja a tömörített hanganyagot a beszédfelismerési szolgáltatásnak az iOS-es Speech SDK-val.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 1d78c690fd07eb974418f0ea17d71d1f394d863d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2089f4191ddd57fa8dc19862bd195756c166f2d4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109586"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805858"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Útmutató: a kodekkel tömörített hangbemenet használata az iOS-es Speech SDK-val
 
@@ -42,7 +42,7 @@ Nyissa meg a projektet a Xcode-ben, és hozza létre az **általános iOS-eszkö
 
 A Build lépés dinamikus keretrendszerű köteget hoz létre egy dinamikus könyvtárral a `GStreamerWrapper.framework`nevű összes szükséges architektúrához.
 
-Ezt a keretrendszert minden olyan alkalmazásnak tartalmaznia kell, amely a Speech Services SDK-val tömörített hangadatfolyamokat használ.
+Ezt a keretrendszert minden olyan alkalmazásnak tartalmaznia kell, amely a Speech Service SDK-val tömörített hangstreameket használ.
 
 A következő beállítások alkalmazása a Xcode-projektben a következőképpen valósítható meg:
 
@@ -54,7 +54,7 @@ A következő beállítások alkalmazása a Xcode-projektben a következőképpe
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Kód tömörített hangbemenetet használó programkód
 
-Ha tömörített hangformátumot szeretne továbbítani a Speech Servicesbe, hozzon létre egy `SPXPullAudioInputStream` vagy `SPXPushAudioInputStream`.
+Ha tömörített hangformátumot szeretne továbbítani a beszédfelismerési szolgáltatásba, hozzon létre egy `SPXPullAudioInputStream` vagy `SPXPushAudioInputStream`.
 
 Az alábbi kódrészletből megtudhatja, hogyan hozhat létre egy `SPXAudioConfiguration`t egy `SPXPushAudioInputStream`egy példányáról, és hogyan adható meg az adatfolyam tömörítési formátuma az MP3-ban.
 
@@ -64,7 +64,7 @@ A következő kódrészlet azt mutatja be, hogyan olvashatók be a tömörített
 
 [!code-objectivec[Push compressed audio data into the stream](~/samples-cognitive-services-speech-sdk/samples/objective-c/ios/compressed-streams/CompressedStreamsSample/CompressedStreamsSample/ViewController.m?range=105-151&highlight=19-44)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 - [Lásd: a beszédfelismerés felismerése Java-ban](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

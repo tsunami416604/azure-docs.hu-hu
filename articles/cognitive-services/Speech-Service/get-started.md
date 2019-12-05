@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 30bdbf9fa0ea346892622c3e7f24f9f31652a650
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3ddba414ef1801b812d157ad734847099a8a9f25
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280501"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806184"
 ---
 # <a name="try-the-speech-service-for-free"></a>Próbálja ki ingyenesen a Beszédszolgáltatást
 
@@ -32,7 +32,7 @@ Ebben a cikkben az igényeinek leginkább megfelelő lehetőségek közül vála
 >
 > Ha az ingyenes, kis mennyiségű Speech Service-szintet használja, akkor az ingyenes próbaverzió vagy a szolgáltatási jóváírás lejárta után is megtarthatja ezt az ingyenes előfizetést.
 >
-> További információ: [Cognitive Services díjszabása-Speech Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> További információ: [Cognitive Services díjszabása-Speech Service](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ## <a name="try-the-speech-service-without-credit-card-info"></a>Próbálja ki a beszédfelismerési szolgáltatást bankkártyás adatok nélkül
 
@@ -53,16 +53,16 @@ A számlázási lehetőségek közül választhat. Válassza az ingyenes lehető
 
 ## <a name="try-the-speech-service-using-a-new-azure-account"></a>Próbálja ki a Speech szolgáltatást egy új Azure-fiók használatával
 
-Új Azure-fiók regisztrálásához szüksége lesz egy Microsoft-fiókra. Ha nem rendelkezik Microsoft-fiókval, a [Microsoft-fiók portálon](https://account.microsoft.com/account)ingyenesen regisztrálhat. Válassza a **Bejelentkezés Microsoft-fiókkal** lehetőséget, majd amikor a rendszer kéri a bejelentkezést, válassza **a Microsoft-fiók létrehozása**lehetőséget. A lépésekkel hozhat létre, és ellenőrizze az új Microsoft-fiókjával.
+Új Azure-fiók regisztrálásához szüksége lesz egy Microsoft-fiókra. Ha nem rendelkezik Microsoft-fiókval, a [Microsoft-fiók portálon](https://account.microsoft.com/account)ingyenesen regisztrálhat. Válassza a **Bejelentkezés Microsoft-fiókkal** lehetőséget, majd amikor a rendszer kéri a bejelentkezést, válassza **a Microsoft-fiók létrehozása**lehetőséget. Az új Microsoft-fiók létrehozásához és ellenőrzéséhez kövesse az alábbi lépéseket.
 
 Ha Microsoft-fiók, nyissa meg az [Azure regisztrációs oldalát](https://azure.microsoft.com/free/ai/), válassza az **ingyenes indítás**lehetőséget, és hozzon létre egy új Azure-fiókot egy Microsoft-fiók használatával.
 
-### <a name="create-a-speech-resource-in-azure"></a>Beszéd erőforrás létrehozása az Azure-ban
+### <a name="create-a-speech-resource-in-azure"></a>Beszédfelismerési erőforrás létrehozása az Azure-ban
 
 > [!NOTE]
-> Standard szintű előfizetés korlátlan számú egy vagy több régióban hozhat létre. Azonban csak egy ingyenes szintű előfizetést hozhat létre. A 7 napig használatban lévő, ingyenes szinten lévő központi telepítéseket a rendszer automatikusan leszereli.
+> Korlátlan számú standard szintű előfizetést hozhat létre egy vagy több régióban. Azonban csak egy ingyenes rétegbeli előfizetést hozhat létre. A 7 napig használatban lévő, ingyenes szinten lévő központi telepítéseket a rendszer automatikusan leszereli.
 
-A beszédfelismerési szolgáltatás-erőforrás (ingyenes vagy fizetős szint) hozzáadása az Azure-fiókjával:
+A Speech Service-erőforrások (ingyenes vagy fizetős szintek) hozzáadása az Azure-fiókhoz:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a Microsoft-fiók használatával.
 
@@ -78,31 +78,31 @@ A beszédfelismerési szolgáltatás-erőforrás (ingyenes vagy fizetős szint) 
 
 1. Válassza a **Létrehozás**lehetőséget, majd:
 
-   - Adjon egyedi nevet az új erőforrásnak. A név segítségével megkülönböztetésére, amelyek ugyanazt a szolgáltatást több előfizetést.
-   - Válassza ki az Azure-előfizetést, amelyhez az új erőforrás a határozza meg, hogy a díjak számlázása van társítva.
+   - Adjon egyedi nevet az új erőforrásnak. A név segít különbséget tenni több előfizetés között ugyanahhoz a szolgáltatáshoz.
+   - Válassza ki azt az Azure-előfizetést, amelyhez az új erőforrás társítva van, hogy megtudja, hogyan történik a díjak számlázása.
    - Válassza ki azt a [régiót](regions.md) , ahol az erőforrást használni szeretné.
    - Válassza az ingyenes (F0) vagy a fizetős (S0) árképzési szintet. Az egyes szintek díjszabásával és használati kvótákkal kapcsolatos teljes információkért válassza a **teljes díjszabás**megjelenítése lehetőséget.
-   - Hozzon létre egy új erőforráscsoportot, beszéd ehhez az előfizetéshez, vagy az előfizetés hozzárendelése egy meglévő erőforráscsoportot. Erőforráscsoportokat tarthatja rendezve különböző Azure-előfizetéseit.
+   - Hozzon létre egy új erőforráscsoportot ehhez a beszédfelismerési előfizetéshez, vagy rendelje hozzá az előfizetést egy meglévő erőforráscsoporthoz. Az erőforráscsoportok segítségével megőrizheti különböző Azure-előfizetéseit.
    - Kattintson a **Létrehozás** gombra. Ezzel áttekintheti a központi telepítés áttekintését és megjeleníti az üzembe helyezési folyamat üzeneteit.
 
-Az új beszédfelismerési erőforrás üzembe helyezése néhány percet vesz igénybe. Az üzembe helyezés befejezése után válassza az **erőforráshoz való ugrás** lehetőséget, majd a bal oldali navigációs panelen válassza a **kulcsok** lehetőséget a beszédfelismerési szolgáltatás előfizetési kulcsai megjelenítéséhez. Minden előfizetési csomaghoz tartozik két kulcs; mindkét kulcsot is használhatja az alkalmazásban. Ha gyorsan szeretne másolni/beilleszteni egy kulcsot a Kódszerkesztő vagy más helyre, válassza az egyes kulcsok melletti másolás gombot, a Windowst a vágólap tartalmának a kívánt helyre való beillesztéséhez.
+Az új beszédfelismerési erőforrás üzembe helyezése néhány percet vesz igénybe. Az üzembe helyezés befejezése után válassza az **erőforráshoz való ugrás** lehetőséget, majd a bal oldali navigációs panelen válassza a **kulcsok** lehetőséget a beszédfelismerési szolgáltatás előfizetési kulcsai megjelenítéséhez. Minden előfizetés két kulccsal rendelkezik; az alkalmazásban bármelyik kulcsot használhatja. Ha gyorsan szeretne másolni/beilleszteni egy kulcsot a Kódszerkesztő vagy más helyre, válassza az egyes kulcsok melletti másolás gombot, a Windowst a vágólap tartalmának a kívánt helyre való beillesztéséhez.
 
 > [!IMPORTANT]
 > Ezek az előfizetési kulcsok hozzáférnek a kognitív szolgáltatás API-hoz. Ne ossza meg a kulcsokat. Biztonságos tárolás – például Azure Key Vault használatával. Javasoljuk továbbá, hogy rendszeresen újragenerálja ezeket a kulcsokat. API-hívások létrehozásához csak egy kulcs szükséges. Az első kulcs újragenerálásakor a második kulcsot használhatja a szolgáltatás folyamatos eléréséhez.
 
-## <a name="switch-to-a-new-subscription"></a>Új előfizetésre Váltás
+## <a name="switch-to-a-new-subscription"></a>Váltás új előfizetésre
 
-Váltson egy előfizetésből egy másikba, például amikor az ingyenes próbaverzió érvényessége lejár, vagy az alkalmazás közzétételekor cserélje le a régió és előfizetési kulcsot a kódban a régió és egy előfizetési kulcsra az új Azure-erőforrás.
+Ha az egyik előfizetésből egy másikra szeretne váltani, például ha az ingyenes próbaidőszak lejár, vagy amikor közzéteszi az alkalmazást, cserélje le a régiót és az előfizetési kulcsot a kódban az új Azure-erőforrás régiója és előfizetési kulcsa alapján.
 
 ## <a name="about-regions"></a>A régiókról
 
 - Ha az alkalmazás egy [SPEECH SDK](speech-sdk.md)-t használ, akkor a beszédfelismerési konfiguráció létrehozásakor megadja a régiókódot, például a `westus`.
 - Ha az alkalmazás a beszédfelismerési szolgáltatás [REST API](rest-apis.md)-jának egyikét használja, akkor a régió a kérések végrehajtásakor használt végponti URI része.
-- Régió létrehozott kulcsok csak az adott régióban érvényesek. Próbál használni őket a más régiókban hitelesítési hibákat eredményez.
+- A régióhoz létrehozott kulcsok csak az adott régióban érvényesek. A más régiókkal való használatának megkísérlése hitelesítési hibákat eredményez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Hajtsa végre a 10 perces gyors útmutatók, vagy tekintse meg az SDK-minták:
+Fejezze be az egyik 10 perces rövid útmutatót, vagy tekintse meg az SDK-mintákat:
 
 > [!div class="nextstepaction"]
 > Gyors útmutató [: beszédfelismerés felismerése C# ](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

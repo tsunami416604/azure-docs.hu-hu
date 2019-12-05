@@ -8,12 +8,12 @@ ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: dd2b3bd584bb39810e0a5c9acde1a961330c273d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093760"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819144"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Az Azure Adatkezelő integrálása Azure Data Factory
 
@@ -90,16 +90,16 @@ A másolási tevékenység és az adatok Azure Adatkezelőba másolására szolg
 
 A következő táblázat felsorolja a Azure Data Factory integrációjának különböző lépéseihez szükséges engedélyeket.
 
-| Lépés | Művelet | Engedélyek minimális szintje | Megjegyzések |
+| Lépés: | Művelet | Engedélyek minimális szintje | Megjegyzések |
 |---|---|---|---|
 | **Társított szolgáltatás létrehozása** | Adatbázis-navigáció | *adatbázis megjelenítője* <br>Az ADF használatával bejelentkezett felhasználó számára engedélyezni kell az adatbázis metaadatainak olvasását. | A felhasználó manuálisan is megadhatja az adatbázis nevét. |
-| | A kapcsolatok tesztelése | *Adatbázis-figyelő* vagy- *tábla lenyelése* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell az adatbázis-szint `.show` a parancsok vagy a tábla szintjének betöltését. | <ul><li>A TestConnection ellenőrzi a kapcsolódást a fürthöz, és nem az adatbázishoz. Ez akkor is sikeres lehet, ha az adatbázis nem létezik.</li><li>A tábla-rendszergazdai engedélyek nem elegendőek.</li></ul>|
+| | Kapcsolat tesztelése | *Adatbázis-figyelő* vagy- *tábla lenyelése* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell az adatbázis-szint `.show` a parancsok vagy a tábla szintjének betöltését. | <ul><li>A TestConnection ellenőrzi a kapcsolódást a fürthöz, és nem az adatbázishoz. Ez akkor is sikeres lehet, ha az adatbázis nem létezik.</li><li>A tábla-rendszergazdai engedélyek nem elegendőek.</li></ul>|
 | **Adatkészlet létrehozása** | Táblázatos Navigálás | *Adatbázis-figyelő* <br>Az ADF használatával bejelentkezett felhasználónak engedélyezni kell az adatbázis-szintű `.show` parancsok futtatását. | A felhasználó manuálisan is megadhatja a táblanév nevét.|
 | **Adatkészlet** vagy **másolási tevékenység** létrehozása | Előzetes verzió | *adatbázis megjelenítője* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell az adatbázis-metaadatok olvasását. | | 
 |   | Séma importálása | *adatbázis megjelenítője* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell az adatbázis-metaadatok olvasását. | Ha a ADX egy táblázatos táblázatos másolás forrása, akkor az ADF automatikusan importálja a sémát, még akkor is, ha a felhasználó nem importál explicit módon sémát. |
 | **ADX fogadóként** | Név szerinti oszlop leképezésének létrehozása | *Adatbázis-figyelő* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell az adatbázis-szintű `.show` parancsok futtatását. | <ul><li>Az összes kötelező művelet működni fog a *Table*betöltéssel.</li><li> Néhány választható művelet sikertelen lehet.</li></ul> |
 |   | <ul><li>CSV-megfeleltetés létrehozása a táblában</li><li>A leképezés eldobása</li></ul>| *Table* betöltés vagy *adatbázis-rendszergazda* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell a tábla módosítását. | |
-|   | Adatok betöltése | *Table* betöltés vagy *adatbázis-rendszergazda* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell a tábla módosítását. | | 
+|   | Adatok kigyűjtése | *Table* betöltés vagy *adatbázis-rendszergazda* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell a tábla módosítását. | | 
 | **ADX forrásként** | Lekérdezés végrehajtása | *adatbázis megjelenítője* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell az adatbázis-metaadatok olvasását. | |
 | **Kusto parancs** | | Az egyes parancsok engedélyei szintjének megfelelően. |
 
@@ -118,13 +118,90 @@ Ez a szakasz a másolási tevékenység használatát tárgyalja, ahol az Azure 
 | **Adatfeldolgozás bonyolultsága** | A késés a forrásfájl formátuma, az oszlopok leképezése és a tömörítés alapján változhat.|
 | **Az integrációs modult futtató virtuális gép** | <ul><li>Az Azure Copy esetében az ADF-alapú virtuális gépek és a gép SKU-i nem módosíthatók.</li><li> Az Azure-beli másoláshoz ellenőrizze, hogy a saját üzemeltetésű integrációs modult üzemeltető virtuális gép elég erős-e.</li></ul>|
 
-## <a name="monitor-activity-progress"></a>Tevékenységek előrehaladásának figyelése
+## <a name="tips-and-common-pitfalls"></a>Tippek és gyakori buktatók
+
+### <a name="monitor-activity-progress"></a>Tevékenységek előrehaladásának figyelése
 
 * A tevékenység előrehaladásának figyelése során az *adatírást* megadó tulajdonság sokkal nagyobb lehet az *adatolvasási* tulajdonságnál, mert a rendszer a bináris fájl mérete alapján számítja ki az *adatolvasást* , míg az *írás* a memóriában tárolt méret szerint történik, az adatmennyiség deszerializálása és kibontása után.
 
 * A tevékenység előrehaladásának monitorozásakor láthatja, hogy az Azure Adatkezelő fogadóba írja az adott információt. Az Azure Adatkezelő tábla lekérdezésekor láthatja, hogy az adatvesztés nem érkezett meg. Ennek az az oka, hogy az Azure Adatkezelőba való másoláskor két fázis van. 
     * Az első szakasz beolvassa a forrásadatokat, feldarabolja azt 900 MB-nyi darabokra, és feltölti az egyes adattömböket egy Azure-Blobba. Az első szakaszt az ADF tevékenység előrehaladási nézete látja. 
     * A második szakasz akkor kezdődik, amikor az összes adattal feltölti az Azure-blobokat. Az Azure Adatkezelő Engine-csomópontok letöltik a blobokat, és betöltik az adatot a fogadó táblába. Az Azure-Adatkezelő táblázatban láthatók az adatai.
+
+### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>Nem sikerült bevenni a CSV-fájlokat a nem megfelelő Escape miatt
+
+Az Azure Adatkezelő CSV-fájlokat vár az [RFC 4180](https://www.ietf.org/rfc/rfc4180.txt)-hez való igazításhoz.
+A következőket várja:
+* Azok a mezők, amelyek Escape-karaktert (például "és új vonalakat") tartalmazó karaktereket tartalmaznak **, egy** karakterrel kell kezdődnie és végződnie, szóköz nélkül. *A mezőben* **lévő összes karakter** megmenekül egy dupla **"** karakter (" **"** ) használatával. Például a _"Hello", "World"_ "" egy érvényes CSV-fájl, amelynek egyetlen rekordja egyetlen oszlop vagy mező a _"World"_ tartalommal.
+* A fájl összes rekordjának azonos számú oszlopot és mezőt kell tartalmaznia.
+
+Azure Data Factory lehetővé teszi a fordított perjel (Escape) karakter használatát. Ha Azure Data Factory használatával létrehoz egy fordított perjel karaktert tartalmazó CSV-fájlt, a fájl betöltése az Azure-ba Adatkezelő sikertelen lesz.
+
+#### <a name="example"></a>Példa
+
+A következő szöveges értékek: Hello, "World"<br/>
+ABC-DEF<br/>
+"ABC\D" EF<br/>
+"ABC DEF<br/>
+
+A következőnek kell megjelennie egy megfelelő CSV-fájlban: "Hello", "World" ""<br/>
+"ABC DEF"<br/>
+"" "ABC DEF"<br/>
+"" "ABC\D" "EF"<br/>
+
+Az alapértelmezett escape-karakter (fordított perjel) használatával a következő CSV nem fog működni az Azure Adatkezelő: "Hello, \"World\""<br/>
+"ABC DEF"<br/>
+"\"ABC DEF"<br/>
+"\"ABC\D\"EF"<br/>
+
+### <a name="nested-json-objects"></a>Beágyazott JSON-objektumok
+
+JSON-fájl Azure Adatkezelőba való másolása során vegye figyelembe a következőket:
+* A tömbök nem támogatottak.
+* Ha a JSON-struktúra objektum adattípusokat tartalmaz, a Azure Data Factory lelapul az objektum alárendelt elemeit, és az egyes alárendelt elemeket az Azure Adatkezelő-tábla egy másik oszlopához próbálja meg leképezni. Ha azt szeretné, hogy a teljes objektum elem le legyen képezve egyetlen oszlopra az Azure Adatkezelőban:
+    * A teljes JSON-sor betöltése egyetlen dinamikus oszlopba az Azure Adatkezelőban.
+    * Manuálisan szerkessze a folyamat definícióját Azure Data Factory JSON-szerkesztő használatával. A **leképezésekben**
+       * Távolítsa el az egyes alárendelt elemekhez létrehozott több leképezést, és adjon hozzá egyetlen leképezést, amely leképezi az objektum típusát a Table (tábla) oszlophoz.
+       * A záró szögletes zárójel után adjon hozzá egy vesszőt, majd a következőt:<br/>
+       `"mapComplexValuesToString": true` kérdésre adott válaszban foglalt lépéseket.
+
+### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>AdditionalProperties megadása az Azure-ba való másoláskor Adatkezelő
+
+> [!NOTE]
+> Ez a funkció jelenleg a JSON-adattartalom manuális szerkesztésével érhető el. 
+
+Vegyen fel egyetlen sort a másolási tevékenység "fogadó" szakaszában a következőképpen:
+
+```json
+"sink": {
+    "type": "AzureDataExplorerSink",
+    "additionalProperties": "{\"tags\":\"[\\\"drop-by:account_FiscalYearID_2020\\\"]\"}"
+},
+```
+
+Az érték Escape-értéke trükkös lehet. A következő kódrészletet használja hivatkozásként:
+
+```csharp
+static void Main(string[] args)
+{
+       Dictionary<string, string> additionalProperties = new Dictionary<string, string>();
+       additionalProperties.Add("ignoreFirstRecord", "false");
+       additionalProperties.Add("csvMappingReference", "Table1_mapping_1");
+       IEnumerable<string> ingestIfNotExists = new List<string> { "Part0001" };
+       additionalProperties.Add("ingestIfNotExists", JsonConvert.SerializeObject(ingestIfNotExists));
+       IEnumerable<string> tags = new List<string> { "ingest-by:Part0001", "ingest-by:IngestedByTest" };
+       additionalProperties.Add("tags", JsonConvert.SerializeObject(tags));
+       var additionalPropertiesForPayload = JsonConvert.SerializeObject(additionalProperties);
+       Console.WriteLine(additionalPropertiesForPayload);
+       Console.ReadLine();
+}
+```
+
+A kinyomtatott érték:
+
+```json
+{"ignoreFirstRecord":"false","csvMappingReference":"Table1_mapping_1","ingestIfNotExists":"[\"Part0001\"]","tags":"[\"ingest-by:Part0001\",\"ingest-by:IngestedByTest\"]"}
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

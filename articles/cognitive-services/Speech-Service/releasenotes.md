@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: f38e23f0648d802ba7b09391d6f6bbd0c093d989
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 74b34a1d65f6beb097a649658c508da6ff48f1ac
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888177"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816602"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -193,7 +193,7 @@ Ez egy hibajavítási kiadás, amely csak a natív/felügyelt SDK-t érinti. Ez 
 
 **Új funkciók**
 
-- A Speech SDK a AudioConfig osztályon keresztül támogatja a bemeneti mikrofon kijelölését. Ez lehetővé teszi a hangadatoknak a beszédfelismerési szolgáltatásokhoz való továbbítását egy nem alapértelmezett mikrofonból. További információkért tekintse meg a [hangbeviteli eszköz kijelölését](how-to-select-audio-input-devices.md)ismertető dokumentációt. Ez a funkció még nem érhető el a JavaScriptből.
+- A Speech SDK a AudioConfig osztályon keresztül támogatja a bemeneti mikrofon kijelölését. Ez lehetővé teszi a hangadatoknak a beszédfelismerési szolgáltatásba való továbbítását egy nem alapértelmezett mikrofonból. További információkért tekintse meg a [hangbeviteli eszköz kijelölését](how-to-select-audio-input-devices.md)ismertető dokumentációt. Ez a funkció még nem érhető el a JavaScriptből.
 - A Speech SDK mostantól támogatja az Unity használatát egy bétaverziós verzióban. Visszajelzés küldése a [GitHub-minta tárházának](https://aka.ms/csspeech/samples)probléma szakaszában. Ez a kiadás támogatja az Unity használatát a Windows x86 és x64 (asztali vagy Univerzális Windows-platform alkalmazások) és az Android (ARM32/64, x86) esetében. További információ az [Unity](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)gyors üzembe helyezési útmutatójában található.
 - A (korábbi kiadásokban szállított) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` fájl már nem szükséges. A funkció mostantól integrálva van az alap SDK-ba.
 
@@ -261,7 +261,7 @@ Ez egy csak JavaScript kiadás. Nem lettek hozzáadva funkciók. A következő j
 - Android
   - Engedélyezve van a kisegítő képesség az APK-generációban.
 
-**Fejlesztései**
+**Fejlesztések**
 
 - A belső szál használatának fejlesztése, a szálak, a zárolások és a mutexek számának csökkentése.
 - Továbbfejlesztett hibajelentés/információk. Számos esetben a hibaüzenetek nem lettek propagálva az összes kiút.
@@ -293,7 +293,7 @@ Ez egy csak JavaScript kiadás. Nem lettek hozzáadva funkciók. A következő j
 - Proxy támogatása: a SpeechConfig objektumban mostantól meghívhat egy függvényt a proxy információk (állomásnév, port, Felhasználónév és jelszó) beállítására. Ez a funkció még nem érhető el az iOS rendszeren.
 - Javított hibakódok és üzenetek. Ha egy felismerés hibát adott vissza, akkor a `Reason` (a megszakított eseménynél), vagy `CancellationDetails` (az elismerés eredménye) `Error`. A megszakított esemény most két további tagot tartalmaz, `ErrorCode` és `ErrorDetails`. Ha a kiszolgáló további hibaüzeneteket adott vissza a jelentett hibával, mostantól elérhető lesz az új tagokban.
 
-**Fejlesztései**
+**Fejlesztések**
 
 - További ellenőrzés történt a felismerő konfigurációjában, és további hibaüzenetet adott hozzá.
 - Hatékonyabban kezelhető a hosszú idő a hangfájlok közepén.

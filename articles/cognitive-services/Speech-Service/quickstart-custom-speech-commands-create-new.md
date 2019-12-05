@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 80eb0a2018ece23de80e8eb9c4a68c149b590440
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 5c90c91791af8a9a16039e9650765bd24433ff38
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111372"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815816"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Gyors útmutató: Egyéni parancs létrehozása (előzetes verzió)
 
@@ -105,7 +105,7 @@ Most adjon hozzá egy befejezési szabályt, amely arra figyelmezteti a felhaszn
 | Beállítás    | Ajánlott érték                        | Leírás                                        |
 | ---------- | -------------------------------------- | -------------------------------------------------- |
 | Szabály neve  | "ConfirmationResponse"                 | A szabály célját leíró név          |
-| Feltételek | Nincs                                   | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
+| Feltételek | None                                   | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
 | Műveletek    | SpeechResponse "ok, bekapcsolás a TÉVÉn" | A szabály feltételének teljesülésekor végrehajtandó művelet |
 
 ## <a name="try-it-out"></a>Próbálja ki!
@@ -118,6 +118,6 @@ Tesztelje a viselkedést a test chat panel használatával.
 - Gépelje be a következőt: "a TV bekapcsolása"
 - Várt válasz: "ok, bekapcsolás a televízióban"
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Gyors útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)](./quickstart-custom-speech-commands-create-parameters.md)

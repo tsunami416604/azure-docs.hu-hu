@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: acd601512f2240802de47483a015f03a226da115
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b65cf26bcea628f784eb086d1b9c88febade25f6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796183"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828892"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Mi a különbség az Azure Virtual Network Gateway (VPN Gateway) és egy Azure virtuális WAN VPN Gateway között?
 
@@ -113,7 +113,9 @@ A VNet egy másik régióban is kapcsolódhat, mint a virtuális WAN-t.
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>Tudnak egymással kommunikálni a virtuális központhoz csatlakoztatott küllő virtuális hálózatok?
 
-Igen. A küllős virtuális hálózatok közvetlenül tud kommunikálni Virtual Network-társon keresztül. További információ: [Társviszony létesítése virtuális hálózatok között](../articles/virtual-network/virtual-network-peering-overview.md). A tranzitívnak-t az elosztón keresztül kommunikáló virtuális hálózatok is támogatjuk.
+Igen. A standard szintű virtuális WAN támogatja a vnet, hogy vnet a tranzitív kapcsolatot a virtuális WAN-hubhoz, amelyhez a virtuális hálózatok csatlakozik. A virtuális WAN-terminológiában ezeket az útvonalakat "helyi virtuális WAN VNet Transit"-ként tekintjük át egyetlen régióban lévő virtuális WAN-központhoz csatlakoztatott virtuális hálózatok, és a "globális virtuális WAN VNet Transit" a több virtuális WAN-hubhoz csatlakoztatott virtuális hálózatok régiók. A VNet-tranzit a nyilvános előzetes verzióban akár 3 GB-os átviteli sebességet is támogat. Az átviteli sebesség ki lesz bővítve, amikor a globális átvitel megy.   
+
+Bizonyos forgatókönyvek esetében a küllős virtuális hálózatok a helyi vagy globális virtuális WAN VNet-átvitelen kívül közvetlenül [Virtual Network](../articles/virtual-network/virtual-network-peering-overview.md) egymással is összekapcsolódhat. Ebben az esetben a vnet-társítás a virtuális WAN-központon keresztül elsőbbséget élvez a tranzitív kapcsolattal szemben. 
 
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Mi az az Azure Virtual WAN-hoz kapcsolódó fiókiroda?
 

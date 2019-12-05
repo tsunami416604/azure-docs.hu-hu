@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3d9826e3eae2a60b217df1406d26d83c78fbdefb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a826bb01a906153b4ca2a3c854623c83b6192aec
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67673378"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828895"
 ---
 Az alábbi lépésekkel hozhat létre egy VNetet a Resource Manager-alapú üzemi modellben az Azure Portallal. A képernyőképek csak példaként szolgálnak. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. További információ a virtuális hálózatok használatáról: [Virtual Network Overview](../articles/virtual-network/virtual-networks-overview.md) (Virtuális hálózatok áttekintése).
 
@@ -22,10 +22,12 @@ Az alábbi lépésekkel hozhat létre egy VNetet a Resource Manager-alapú üzem
 >
 >
 
-1. Egy böngészőből keresse fel az [Azure portált](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával, ha szükséges.
-2. Kattintson az **+** elemre. A **Piactér keresése** mezőbe írja be a „Virtuális hálózat” kifejezést. A visszaadott listában keresse meg a **Virtuális hálózat** elemet, és rákattintva nyissa meg a **Virtuális hálózat** lapot.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).  A Azure Portal menüben vagy a **kezdőlapon** válassza az **erőforrás létrehozása**lehetőséget. Megnyílik az **új** oldal.
 
-   ![Virtual Network erőforrás oldalának megkeresése](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/newvnetportal700.png "Virtuális hálózati erőforrás keresése lap")
+2. A **Keresés a piactéren**mezőbe írja be a *virtuális hálózat* kifejezést, és válassza a **Virtual Network** lehetőséget az eredmények közül.
+
+   ![Virtual Network erőforrás oldalának megkeresése](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/search-marketplace-for-virtual-network.png "Virtuális hálózati erőforrás keresése lap")
+
 3. A Virtuális hálózat lap alján, a **Telepítési modell kiválasztása** listában válassza ki a **Resource Manager** elemet, majd kattintson a **Létrehozás** elemre.
 
    ![Resource Manager kiválasztása](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/resourcemanager250.png "A Resource Manager kiválasztása")

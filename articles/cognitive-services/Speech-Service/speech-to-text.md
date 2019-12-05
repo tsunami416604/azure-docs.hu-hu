@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: erhopf
-ms.openlocfilehash: f04ad388922ad7f73bf4409f9a846291cbb08da3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 651a30bbcba7b4d4f5d00765c651be73953cd748
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74774008"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815496"
 ---
 # <a name="what-is-speech-to-text"></a>Mi az a diktálás?
 
-Az Azure Speech Services, más néven beszéd – szöveg szövegre való beszédfelismerés lehetővé teszi a hangadatfolyamok valós idejű átírását olyan szöveggé, amelyet az alkalmazások, az eszközök vagy az eszközök felhasználhatnak, megjeleníthetnek, és műveleteket végezhetnek a parancs bemenetének megfelelően. Ezt a szolgáltatást a Microsoft a Cortana és az Office-termékekhez használt felismerési technológiával működteti, és zökkenőmentesen együttműködik a fordítással és szöveg-beszédtel. Az elérhető beszéd – szöveg nyelvek teljes listáját a [támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text)című részben tekintheti meg.
+A beszédfelismerési szolgáltatással, más néven beszéd-szöveggel való beszéd-szöveg, lehetővé teszi a hangadatfolyamok valós idejű átírását olyan szöveggé, amelyet az alkalmazások, eszközök vagy eszközök használhatnak, megjeleníthetnek, és műveleteket végezhetnek a parancs bemenetének megfelelően. Ezt a szolgáltatást a Microsoft a Cortana és az Office-termékekhez használt felismerési technológiával működteti, és zökkenőmentesen együttműködik a fordítással és szöveg-beszédtel. Az elérhető beszéd – szöveg nyelvek teljes listáját a [támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text)című részben tekintheti meg.
 
 Alapértelmezés szerint a beszédfelismerési szolgáltatás az univerzális nyelvi modellt használja. Ez a modell a Microsoft tulajdonában lévő adataival lett betanítva, és a felhőben van üzembe helyezve. Ez optimális a társalgási és a diktálási forgatókönyvek esetében. Ha egy egyedi környezetben beszéd-szövegeket használ az elismeréshez és az átíráshoz, létrehozhat és betaníthat egyéni akusztikai, nyelvi és kiejtési modelleket a környezeti zajok vagy az iparági specifikus szókincsek kezeléséhez.
 
@@ -54,7 +54,7 @@ Ha inkább a beszéd-szöveg REST-szolgáltatást szeretné használni, lásd: [
 
 ## <a name="tutorials-and-sample-code"></a>Oktatóanyagok és mintakód
 
-A Speech Services használatának lehetősége után próbálja ki az oktatóanyagot, amely bemutatja, hogyan ismerheti fel a beszédfelismerési szándékokat a Speech SDK és a LUIS használatával.
+A beszédfelismerési szolgáltatás használatának lehetősége után próbálja ki az oktatóanyagot, amely bemutatja, hogyan ismerheti fel a beszédfelismerési szándékokat a Speech SDK és a LUIS használatával.
 
 - [Oktatóanyag: beszédfelismerési szándékok felismerése a Speech SDK és a LUIS használatávalC#](how-to-recognize-intents-from-speech-csharp.md)
 
@@ -65,7 +65,7 @@ A Speech SDK mintakód a GitHubon érhető el. Ezek a minták olyan gyakori forg
 
 ## <a name="customization"></a>Testreszabás
 
-A Speech Services által használt standard alapkonfiguráción kívül a modelleket a rendelkezésre álló adatokkal is testreszabhatja, így leküzdheti a beszédfelismerési korlátokat, például a beszéd stílusát, a szókincset és a háttérzajt, lásd: [Custom Speech](how-to-custom-speech.md)
+A beszédfelismerési szolgáltatás által használt standard alapmodellen kívül a rendelkezésre álló adatokkal testreszabhatja a modelleket, és elháríthatja a beszédfelismerési korlátokat, például a beszéd stílusát, a szókincset és a háttérzajt, lásd: [Custom Speech](how-to-custom-speech.md)
 
 > [!NOTE]
 > A testreszabási lehetőségek nyelv/területi beállítás szerint változnak (lásd a [támogatott nyelveket](supported-languages.md)).
@@ -75,10 +75,10 @@ A Speech Services által használt standard alapkonfiguráción kívül a modell
 > [!WARNING]
 > A Bing Speech 2019. október 15-én lett leszerelve.
 
-Ha alkalmazásai, eszközei vagy termékei a Bing Speech API-kat vagy Custom Speech használják, a rendszer útmutatók létrehozásával segít a Speech Services szolgáltatásba való Migrálás során.
+Ha alkalmazásai, eszközei vagy termékei a Bing Speech API-kat vagy Custom Speech-t használják, a beszédfelismerési szolgáltatásba való Migrálás megkönnyítéséhez útmutatókat hoztunk létre.
 
-- [Áttelepítés Bing Speechról a Speech Services szolgáltatásba](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
-- [Áttelepítés Custom Speechról a Speech Services szolgáltatásba](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
+- [Áttelepítés Bing Speechról a beszédfelismerési szolgáltatásba](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
+- [Áttelepítés Custom Speechról a beszédfelismerési szolgáltatásba](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
 
 ## <a name="reference-docs"></a>Segédanyagok
 
@@ -90,5 +90,5 @@ Ha alkalmazásai, eszközei vagy termékei a Bing Speech API-kat vagy Custom Spe
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Ingyenes Speech Services-előfizetési kulcs beszerzése](get-started.md)
+- [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
 - [A Speech SDK beszerzése](speech-sdk.md)

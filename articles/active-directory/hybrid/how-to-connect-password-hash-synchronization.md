@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfb4b7d2cb34855208eb54c6d30b29e4bbff636b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0c903e3378e06734a8785531c1a16c695d4b6c21
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766616"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814936"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszó-kivonatolási szinkronizálás implementálása Azure AD Connect szinkronizálással
 Ez a cikk azokat az információkat tartalmazza, amelyekkel szinkronizálhatja a felhasználói jelszavakat egy helyszíni Active Directory-példányról egy felhőalapú Azure Active Directory-(Azure AD-) példányra.
@@ -127,7 +127,8 @@ Az Azure AD-ben a szinkronizált felhasználók számára az ideiglenes jelszava
 
 `Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
 
-Figyelmeztetés: a következő bejelentkezéskor a felhasználónak a jelszavuk módosítására való kényszerítéséhez egy időben kell módosítani a jelszót.  Az Active Directory-csatlakozás nem fogja tudni felvenni a kényszerített jelszó-módosítási jelzőt önmagában, a jelszó-kivonat szinkronizálásakor előforduló észlelt jelszó-módosítással kiegészítve.
+> [!NOTE]
+> Ha arra kényszeríti a felhasználót, hogy a következő bejelentkezéskor megváltoztassa a jelszavát, a jelszó módosítására is szükség van.  Az Active Directory-kapcsolat nem veszi igénybe az kényszerített jelszó-módosítási jelzőt önmagában; Ez a jelszó-kivonat szinkronizálásakor megjelenő észlelt jelszóval kiegészítve történik.
 
 > [!CAUTION]
 > Ha nem engedélyezi az Azure AD-felhasználók számára az önkiszolgáló jelszó-visszaállítást (SSPR), akkor a rendszer zavaros élményt nyújt, amikor alaphelyzetbe állítja a jelszavát az Azure AD-ben, majd megpróbál bejelentkezni a Active Directoryba az új jelszóval, mivel az új jelszó nem érvényes a Active Directory . Ezt a funkciót csak akkor használja, ha a SSPR és a jelszó visszaírási engedélyezve van a bérlőn.
