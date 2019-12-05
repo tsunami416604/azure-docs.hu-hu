@@ -1,5 +1,5 @@
 ---
-title: A Microsoft Azure Storage Explorer kibocsátási megjegyzései
+title: Microsoft Azure Storage Explorer kibocsátási megjegyzések
 description: A Microsoft Azure Storage Explorer kibocsátási megjegyzései
 services: storage
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 0b2ffc00b6c96f2c31a4b711f618e7b87b6f69e0
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 1adfb59843150ffaa6ed76411d07d8ec6cf6a44b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482097"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555269"
 ---
-# <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Storage Explorer kibocsátási megjegyzései
+# <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer kibocsátási megjegyzések
 
 Ez a cikk a Azure Storage Explorer legújabb kibocsátási megjegyzéseit, valamint a korábbi verziók kibocsátási megjegyzéseit tartalmazza. 
 
@@ -45,7 +45,7 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
       * Letöltés
       * & Beillesztés másolása
       * Törlés, beleértve a mappa törlését
-   * Felügyelt lemezek
+   * Managed Disks
       * Feltöltés
       * Letöltés
       * & Beillesztés másolása
@@ -74,9 +74,9 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * Egy felügyelt lemez pillanatképének létrehozásakor az alapértelmezett név van megadva. #1847
 * Ha az Azure AD-hez csatol egy ADLS Gen2 BLOB-tárolót, akkor az "(ADLS Gen2)" jelenik meg a csomópont mellett. #1861
 
-### <a name="fixes"></a>Javítások
-* Nagyméretű lemezek másolása, feltöltése vagy letöltése során a Storage Explorer időnként nem fogja tudni visszavonni a műveletben részt vevő lemezekhez való hozzáférést. Ez megoldottuk. #2048
-* A tábla statisztikái nem sikerült a partíciós kulcs lekérdezésének megtekintésekor. Ez megoldottuk. #1886
+### <a name="fixes"></a>Hibajavítások
+* Nagyméretű lemezek másolása, feltöltése vagy letöltése során a Storage Explorer időnként nem fogja tudni visszavonni a műveletben részt vevő lemezekhez való hozzáférést. Ez rögzített. #2048
+* A tábla statisztikái nem sikerült a partíciós kulcs lekérdezésének megtekintésekor. Ez rögzített. #1886
 
 ### <a name="known-issues"></a>Ismert problémák
 * Storage Explorer 1.11.0 most egy elosztott fájlrendszerbeli végpontra (például "myaccount.dfs.core.windows.net") van szükség ahhoz, hogy ADLS Gen2 tárolóhoz lehessen csatolni. A Storage Explorer korábbi verziói lehetővé tették a blob-végpont használatát. Előfordulhat, hogy ezek a mellékletek a 1.11.0 való frissítés után már nem működnek. Ha ezt a problémát tapasztalja, csatlakoztassa újra az elosztott fájlrendszerbeli végpont használatával.
@@ -87,22 +87,22 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * Ha egy lemez feltöltése vagy beillesztése meghiúsul, és a hiba előtt új lemez lett létrehozva, akkor Storage Explorer nem törli a lemezt.
 * Attól függően, hogy mikor szakítja meg a lemez feltöltését vagy beillesztését, megsérült állapotban hagyhatja az új lemezt. Ha ez történik, törölnie kell az új lemezt, vagy manuálisan kell meghívnia a lemez API-jait a lemez tartalmának lecserélése érdekében, hogy az már ne legyen megsérült.
 * A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
-* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez frissítse a a csoport csomópontot. Tekintse meg a #537 további információt.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Az Azure Stack nem támogatja a következő funkciókat. Ezek a szolgáltatások használata közben az Azure Stack használatával próbál erőforrások váratlan hibákhoz vezethet.
+* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* A Azure Stack nem támogatja a következő funkciókat: Ha a Azure Stack-erőforrások használata során megkísérli használni ezeket a funkciókat, a rendszer váratlan hibákat eredményezhet.
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
    * ADLS Gen2
-   * Felügyelt lemezek
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+   * Managed Disks
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -157,7 +157,7 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 9/19/2019
 
 ### <a name="hotfix"></a>Gyorsjavítás
-* Egyes felhasználók hibát észleltek a 1.10.0, miközben megpróbálták megtekinteni az ADLS 1. generációs fiókjaikat. Ez a hiba megakadályozta az Explorer panel megfelelő megjelenítését. Ez megoldottuk. #1853 #1865
+* Egyes felhasználók hibát észleltek a 1.10.0, miközben megpróbálták megtekinteni az ADLS 1. generációs fiókjaikat. Ez a hiba megakadályozta az Explorer panel megfelelő megjelenítését. Ez rögzített. #1853 #1865
 
 ### <a name="new"></a>Új
 * Storage Explorer most egy dedikált beállítások felhasználói felülettel rendelkezik. A Szerkesztés → beállítások menüpontból vagy a bal oldali függőleges eszköztár beállítások ikonjára (a fogaskerékre) kattintva érheti el. Ez a funkció az első lépés, amellyel számos [felhasználó által kért beállítást](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate)biztosítunk. A jelen kiadástól kezdve a következő beállítások támogatottak:
@@ -168,7 +168,7 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
   * Automatikus frissítés #1526
   * AzCopy engedélyezése
   * AzCopy SAS-időtartam, ha más profilsablonban szeretné látni, [Nyisson meg egy problémát a githubon](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=) , amely leírja a kívánt beállítást.
-* A Storage Explorer mostantól támogatja a Managed Disks. A következőket teheti:
+* A Storage Explorer mostantól támogatja a Managed Disks. Előnyök:
   * Helyszíni virtuális merevlemez feltöltése új lemezre
   * Lemez letöltése
   * Lemezek másolása és beillesztése erőforrás-csoportok és régiók között
@@ -185,12 +185,12 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * Ha egy AzCopy-átvitel kihagyásokat tartalmaz, és nincsenek hibák, Storage Explorer ekkor egy figyelmeztető ikon jelenik meg, amely kiemeli, hogy a kihagyások bekövetkeztek. #1490
 * Az integrált AzCopy frissítve lett a 10.2.1 verzióra. Emellett most már megtekintheti a névjegy párbeszédablakban telepített AzCopy verzióját is. #1343
 
-### <a name="fixes"></a>Javítások
+### <a name="fixes"></a>Hibajavítások
 * Számos felhasználó több "nem definiált verziója nem olvasható" vagy "nem definiált kapcsolat nem olvasható" hibát észlelt a csatlakoztatott Storage-fiókok használatakor. Bár továbbra is vizsgáljuk a probléma alapvető okát, a 1.10.0 javítottuk a csatlakoztatott Storage-fiókok betöltésével kapcsolatos hibákat. #1626, #985 és #1532
-* Lehetséges, hogy az Explorer faszerkezete (bal oldali) olyan állapotba kerül, amelyben a fókusz többször is a legfelső csomópontra ugrik. Ez megoldottuk. #1596
-* Egy blob pillanatképének kezelésekor a képernyőolvasó nem olvassa be a pillanatképhez társított időbélyeget. Ez megoldottuk. #1202
-* A macOS-re vonatkozó proxybeállítások nem lettek beállítva időben a hitelesítési folyamat használatára. Ez megoldottuk. #1567
-* Ha egy szuverén felhőben lévő Storage-fiók neve és kulcsa alapján lett csatolva, a AzCopy nem fog működni. Ez megoldottuk. #1544
+* Lehetséges, hogy az Explorer faszerkezete (bal oldali) olyan állapotba kerül, amelyben a fókusz többször is a legfelső csomópontra ugrik. Ez rögzített. #1596
+* Egy blob pillanatképének kezelésekor a képernyőolvasó nem olvassa be a pillanatképhez társított időbélyeget. Ez rögzített. #1202
+* A macOS-re vonatkozó proxybeállítások nem lettek beállítva időben a hitelesítési folyamat használatára. Ez rögzített. #1567
+* Ha egy szuverén felhőben lévő Storage-fiók neve és kulcsa alapján lett csatolva, a AzCopy nem fog működni. Ez rögzített. #1544
 * Ha egy kapcsolódási karakterláncon keresztül csatlakozik, Storage Explorer most eltávolítja a záró szóközöket. #1387
 
 ### <a name="known-issues"></a>Ismert problémák
@@ -201,22 +201,22 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * Attól függően, hogy mikor szakítja meg a lemez feltöltését vagy beillesztését, megsérült állapotban hagyhatja az új lemezt. Ha ez történik, törölnie kell az új lemezt, vagy manuálisan kell meghívnia a lemez API-jait a lemez tartalmának lecserélése érdekében, hogy az már ne legyen megsérült.
 * A nem AzCopy Blobok letöltésének végrehajtásakor a nagyméretű fájlok MD5-hitelesítése nem történik meg. Ezt a Storage SDK hibája okozza. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
 * A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
-* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez frissítse a a csoport csomópontot. Tekintse meg a #537 további információt.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Az Azure Stack nem támogatja a következő funkciókat. Ezek a szolgáltatások használata közben az Azure Stack használatával próbál erőforrások váratlan hibákhoz vezethet.
+* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* A Azure Stack nem támogatja a következő funkciókat: Ha a Azure Stack-erőforrások használata során megkísérli használni ezeket a funkciókat, a rendszer váratlan hibákat eredményezhet.
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
    * ADLS Gen2
-   * Felügyelt lemezek
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+   * Managed Disks
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -240,7 +240,7 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
     * AzCopy SAS időtartama
 
     Ha további profilsablonban szeretné látni, [Nyisson meg egy problémát a githubon, amely leírja a kívánt beállítást](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=).
-* A Storage Explorer mostantól támogatja a Managed Disks. A következőket teheti:
+* A Storage Explorer mostantól támogatja a Managed Disks. Előnyök:
     * Helyszíni virtuális merevlemez feltöltése új lemezre
     * Lemez letöltése
     * Lemezek másolása és beillesztése erőforrás-csoportok és régiók között
@@ -258,13 +258,13 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * Ha egy AzCopy-átvitel kihagyásokat tartalmaz, és nincsenek hibák, Storage Explorer ekkor egy figyelmeztető ikon jelenik meg, amely kiemeli, hogy a kihagyások bekövetkeztek. [#1490](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1490)
 * Az integrált AzCopy frissítve lett a 10.2.1 verzióra. Emellett most már megtekintheti a névjegy párbeszédablakban telepített AzCopy verzióját is. [#1343](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1343)
 
-### <a name="fixes"></a>Javítások
+### <a name="fixes"></a>Hibajavítások
 
 * Számos felhasználó több "nem definiált verziója nem olvasható" vagy "nem definiált kapcsolat nem olvasható" hibát észlelt a csatlakoztatott Storage-fiókok használatakor. Bár továbbra is vizsgáljuk a probléma alapvető okát, a 1.10.0 javítottuk a csatlakoztatott Storage-fiókok betöltésével kapcsolatos hibákat. [#1626](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1626), [#985](https://www.github.com/Microsoft/AzureStorageExplorer/issues/985)és [#1532](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1532)
-* Lehetséges, hogy az Explorer faszerkezete (bal oldali) olyan állapotba kerül, amelyben a fókusz többször is a legfelső csomópontra ugrik. Ez megoldottuk. [#1596](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1596)
-* Egy blob pillanatképének kezelésekor a képernyőolvasó nem olvassa be a pillanatképhez társított időbélyeget. Ez megoldottuk. [#1202](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1202)
-* A macOS-re vonatkozó proxybeállítások nem lettek beállítva időben a hitelesítési folyamat használatára. Ez megoldottuk. [#1567](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1567)
-* Ha egy szuverén felhőben lévő Storage-fiók neve és kulcsa alapján lett csatolva, a AzCopy nem fog működni. Ez megoldottuk. [#1544](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1544)
+* Lehetséges, hogy az Explorer faszerkezete (bal oldali) olyan állapotba kerül, amelyben a fókusz többször is a legfelső csomópontra ugrik. Ez rögzített. [#1596](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1596)
+* Egy blob pillanatképének kezelésekor a képernyőolvasó nem olvassa be a pillanatképhez társított időbélyeget. Ez rögzített. [#1202](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1202)
+* A macOS-re vonatkozó proxybeállítások nem lettek beállítva időben a hitelesítési folyamat használatára. Ez rögzített. [#1567](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1567)
+* Ha egy szuverén felhőben lévő Storage-fiók neve és kulcsa alapján lett csatolva, a AzCopy nem fog működni. Ez rögzített. [#1544](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1544)
 * Ha egy kapcsolódási karakterláncon keresztül csatlakozik, Storage Explorer most eltávolítja a záró szóközöket. [#1387](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1387)
 
 ### <a name="known-issues"></a>Ismert problémák
@@ -275,22 +275,22 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * Attól függően, hogy mikor szakítja meg a lemez feltöltését vagy beillesztését, megsérült állapotban hagyhatja az új lemezt. Ha ez történik, törölnie kell az új lemezt, vagy manuálisan kell meghívnia a lemez API-jait a lemez tartalmának lecserélése érdekében, hogy az már ne legyen megsérült.
 * A nem AzCopy Blobok letöltésének végrehajtásakor a nagyméretű fájlok MD5-hitelesítése nem történik meg. Ezt a Storage SDK hibája okozza. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
 * A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
-* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez frissítse a a csoport csomópontot. Tekintse meg a #537 további információt.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Az Azure Stack nem támogatja a következő funkciókat. Ezek a szolgáltatások használata közben az Azure Stack használatával próbál erőforrások váratlan hibákhoz vezethet.
+* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* A Azure Stack nem támogatja a következő funkciókat: Ha a Azure Stack-erőforrások használata során megkísérli használni ezeket a funkciókat, a rendszer váratlan hibákat eredményezhet.
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
    * ADLS Gen2
-   * Felügyelt lemezek
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+   * Managed Disks
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -315,12 +315,12 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * A blob hozzáférési rétegének módosítása mostantól a RBAC-mel működik. [#1446](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1446)
 * Mostantól gyorsan visszaállíthatja a gyors elérést a "Súgó" → "alaphelyzetbe állítás" lehetőségen keresztül. [#1327](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1327)
 
-### <a name="preview-features"></a>Előzetes verziójú funkciók
+### <a name="preview-features"></a>Előzetes állapotú szolgáltatások
 
 * Az eszköz kódjának bejelentkezési folyamata mostantól előzetes verzióként érhető el. Az engedélyezéshez nyissa meg az "Előnézet" → "az eszköz kódjának bejelentkezni" című részt. Javasoljuk, hogy minden olyan felhasználó számára, aki üres bejelentkezési Windows-problémával rendelkezett, próbálja ki ezt a funkciót, mivel a bejelentkezés megbízhatóbb formája lehet.
 * A AzCopy szolgáltatással integrált Storage Explorer jelenleg előzetes verzióban érhető el. Az engedélyezéshez nyissa meg az "Előnézet" → "a AzCopy használata a blob-feltöltéshez és a letöltéshez" lehetőséget. Az AzCopy-mel végzett blob-átviteleknek gyorsabbnak és nagyobb teljesítménynek kell lenniük.
 
-### <a name="fixes"></a>Javítások
+### <a name="fixes"></a>Hibajavítások
 
 * A rögzített nem tud több mint 50 előfizetést betölteni egy fiókhoz. [#1416](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1416)
 * A "Bejelentkezés" gomb nem működik az információs sávon, amely akkor jelenik meg, ha egy közvetlen kapcsolat meghiúsul. [#1358](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1358)
@@ -334,21 +334,21 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * A nem AzCopy Blobok letöltésének végrehajtásakor a nagyméretű fájlok MD5-hitelesítése nem történik meg. Ezt a Storage SDK hibája okozza. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
 * A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
 * Sikertelen volt a ADLS Gen2 Blobok elérésének megkísérlése a proxy mögött.
-* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez frissítse a a csoport csomópontot. Tekintse meg a #537 további információt.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Az Azure Stack nem támogatja a következő funkciókat. Ezek a szolgáltatások használata közben az Azure Stack használatával próbál erőforrások váratlan hibákhoz vezethet.
+* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* A Azure Stack nem támogatja a következő funkciókat: Ha a Azure Stack-erőforrások használata során megkísérli használni ezeket a funkciókat, a rendszer váratlan hibákat eredményezhet.
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
    * ADLS Gen2
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -360,9 +360,9 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 5/13/2019
 
 ### <a name="hotfixes"></a>Gyorsjavítások
-* Bizonyos esetekben a "több betöltés" gombra kattintva az erőforrás szintjén nem fog visszaadni az erőforrások következő oldalára. Ez megoldottuk. [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
-* Windows rendszeren a AzCopy letöltése meghiúsul, ha egyetlen fájlt vagy mappát töltött le, és a fájl vagy mappa neve érvénytelen volt egy Windows elérési útra. Ez megoldottuk. [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
-* Rendkívül ritka esetekben, amikor egy fájlmegosztás átnevezését vagy egy fájlmegosztás átnevezését végzi, ha az átnevezéshez tartozó másolatok sikertelenek voltak, vagy ha a Storage Explore nem tudta megerősíteni a másolatok sikerességét az Azure-ban, lehetséges, hogy Storage Explorer törölni az o-t a másolás befejezése előtt riginal fájlokat. Ez megoldottuk.
+* Bizonyos esetekben a "több betöltés" gombra kattintva az erőforrás szintjén nem fog visszaadni az erőforrások következő oldalára. Ez rögzített. [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
+* Windows rendszeren a AzCopy letöltése meghiúsul, ha egyetlen fájlt vagy mappát töltött le, és a fájl vagy mappa neve érvénytelen volt egy Windows elérési útra. Ez rögzített. [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
+* Rendkívül ritka esetekben, amikor egy fájlmegosztás átnevezését vagy egy fájlmegosztás átnevezését végzi, ha az átnevezéshez tartozó másolatok sikertelenek voltak, vagy ha a Storage Explore nem tudta megerősíteni a másolatok sikerességét az Azure-ban, lehetséges, hogy Storage Explorer törölni az o-t a másolás befejezése előtt riginal fájlokat. Ez rögzített.
 
 ### <a name="new"></a>Új
 
@@ -373,12 +373,12 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * A AzCopy-feltöltések esetében az MD5-kivonat kiszámítására és beállítására szolgáló jelző már engedélyezve van. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
-### <a name="preview-features"></a>Előzetes verziójú funkciók
+### <a name="preview-features"></a>Előzetes állapotú szolgáltatások
 
 * Az eszköz kódjának bejelentkezési folyamata mostantól előzetes verzióként érhető el. Az engedélyezéshez nyissa meg az "Előnézet" → "az eszköz kódjának bejelentkezni" című részt. Javasoljuk, hogy minden olyan felhasználó számára, aki üres bejelentkezési Windows-problémával rendelkezett, próbálja ki ezt a funkciót, mivel a bejelentkezés megbízhatóbb formája lehet.
 * A AzCopy szolgáltatással integrált Storage Explorer jelenleg előzetes verzióban érhető el. Az engedélyezéshez nyissa meg az "Előnézet" → "a AzCopy használata a blob-feltöltéshez és a letöltéshez" lehetőséget. Az AzCopy-mel végzett blob-átviteleknek gyorsabbnak és nagyobb teljesítménynek kell lenniük.
 
-### <a name="fixes"></a>Javítások
+### <a name="fixes"></a>Hibajavítások
 
 * A hozzáférési házirendek párbeszédpanel nem fog lejárati dátumot beállítani a nem lejáró tárolási hozzáférési házirendekben. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
 * Bizonyos módosítások történtek a SAS létrehozása párbeszédpanelen, hogy a tárolt hozzáférési szabályzatok megfelelően legyenek használatban SAS létrehozásakor. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
@@ -391,21 +391,21 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * A nem AzCopy Blobok letöltésének végrehajtásakor a nagyméretű fájlok MD5-hitelesítése nem történik meg. Ezt a Storage SDK hibája okozza. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
 * A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
 * Sikertelen volt a ADLS Gen2 Blobok elérésének megkísérlése a proxy mögött.
-* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez frissítse a a csoport csomópontot. Tekintse meg a #537 további információt.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Az Azure Stack nem támogatja a következő funkciókat. Ezek a szolgáltatások használata közben az Azure Stack használatával próbál erőforrások váratlan hibákhoz vezethet.
+* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* A Azure Stack nem támogatja a következő funkciókat: Ha a Azure Stack-erőforrások használata során megkísérli használni ezeket a funkciókat, a rendszer váratlan hibákat eredményezhet.
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
    * ADLS Gen2
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -425,12 +425,12 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * A AzCopy-feltöltések esetében az MD5-kivonat kiszámítására és beállítására szolgáló jelző már engedélyezve van. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
-### <a name="preview-features"></a>Előzetes verziójú funkciók
+### <a name="preview-features"></a>Előzetes állapotú szolgáltatások
 
 * Az eszköz kódjának bejelentkezési folyamata mostantól előzetes verzióként érhető el. Az engedélyezéshez nyissa meg az "Előnézet" → "az eszköz kódjának bejelentkezni" című részt. Javasoljuk, hogy minden olyan felhasználó számára, aki üres bejelentkezési Windows-problémával rendelkezett, próbálja ki ezt a funkciót, mivel a bejelentkezés megbízhatóbb formája lehet.
 * A AzCopy szolgáltatással integrált Storage Explorer jelenleg előzetes verzióban érhető el. Az engedélyezéshez nyissa meg az "Előnézet" → "a AzCopy használata a blob-feltöltéshez és a letöltéshez" lehetőséget. Az AzCopy-mel végzett blob-átviteleknek gyorsabbnak és nagyobb teljesítménynek kell lenniük.
 
-### <a name="fixes"></a>Javítások
+### <a name="fixes"></a>Hibajavítások
 
 * A hozzáférési házirendek párbeszédpanel nem fog lejárati dátumot beállítani a nem lejáró tárolási hozzáférési házirendekben. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
 * Bizonyos módosítások történtek a SAS létrehozása párbeszédpanelen, hogy a tárolt hozzáférési szabályzatok megfelelően legyenek használatban SAS létrehozásakor. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
@@ -443,21 +443,21 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * A nem AzCopy Blobok letöltésének végrehajtásakor a nagyméretű fájlok MD5-hitelesítése nem történik meg. Ezt a Storage SDK hibája okozza. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
 * A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
 * Sikertelen volt a ADLS Gen2 Blobok elérésének megkísérlése a proxy mögött.
-* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez frissítse a a csoport csomópontot. Tekintse meg a #537 további információt.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Az Azure Stack nem támogatja a következő funkciókat. Ezek a szolgáltatások használata közben az Azure Stack használatával próbál erőforrások váratlan hibákhoz vezethet.
+* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* A Azure Stack nem támogatja a következő funkciókat: Ha a Azure Stack-erőforrások használata során megkísérli használni ezeket a funkciókat, a rendszer váratlan hibákat eredményezhet.
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
    * ADLS Gen2
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -478,49 +478,49 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * Most már megváltoztathatja a tulajdonos és a tulajdonos csoportot ADLS Gen2 tároló, fájl vagy mappa hozzáférésének kezelésekor.
 * Windows rendszeren a terméken belüli Storage Explorer frissítése mostantól növekményes telepítés. Ennek eredményeképpen gyorsabb frissítési élményre lehet. Ha a tiszta telepítést részesíti előnyben, töltse le a [telepítőt](https://azure.microsoft.com/features/storage-explorer/) , majd telepítse manuálisan. #1089
 
-### <a name="preview-features"></a>Előzetes verziójú funkciók
+### <a name="preview-features"></a>Előzetes állapotú szolgáltatások
 
 * Az eszköz kódjának bejelentkezési folyamata mostantól előzetes verzióként érhető el. Az engedélyezéshez nyissa meg az "Előnézet" → "az eszköz kódjának bejelentkezni" című részt. Javasoljuk, hogy minden olyan felhasználó számára, aki üres bejelentkezési Windows-problémával rendelkezett, próbálja ki ezt a funkciót, mivel a bejelentkezés megbízhatóbb formája lehet. #938
 * A AzCopy szolgáltatással integrált Storage Explorer jelenleg előzetes verzióban érhető el. Az engedélyezéshez nyissa meg az "Előnézet" → "a AzCopy használata a blob-feltöltéshez és a letöltéshez" lehetőséget. Az AzCopy-mel végzett blob-átviteleknek gyorsabbnak és nagyobb teljesítménynek kell lenniük.
 
-### <a name="fixes"></a>Javítások
+### <a name="fixes"></a>Hibajavítások
 
 * Most kiválaszthatja azt a blob-típust, amelyet a AzCopy engedélyezésekor feltölthet. #1111
-* Korábban, ha engedélyezte a statikus webhelyeket egy ADLS Gen2 Storage-fiókhoz, és azt névvel és kulccsal csatolta, Storage Explorer nem észlelte, hogy a hierarchikus névtér engedélyezve lett. Ez megoldottuk. #1081
-* A blob-szerkesztőben a rendezés a hátralévő megőrzési napok vagy az állapot megszakadásával történhet. Ez megoldottuk. #1106
-* A 1.5.0 után Storage Explorer már nem várta a kiszolgálóoldali másolatok befejeződését, mielőtt az Átnevezés vagy a másolás & beillesztéskor befejeződik a sikeres jelentéskészítés. Ez megoldottuk. #976
+* Korábban, ha engedélyezte a statikus webhelyeket egy ADLS Gen2 Storage-fiókhoz, és azt névvel és kulccsal csatolta, Storage Explorer nem észlelte, hogy a hierarchikus névtér engedélyezve lett. Ez rögzített. #1081
+* A blob-szerkesztőben a rendezés a hátralévő megőrzési napok vagy az állapot megszakadásával történhet. Ez rögzített. #1106
+* A 1.5.0 után Storage Explorer már nem várta a kiszolgálóoldali másolatok befejeződését, mielőtt az Átnevezés vagy a másolás & beillesztéskor befejeződik a sikeres jelentéskészítés. Ez rögzített. #976
 * A kísérleti AzCopy funkció használatakor a Másolás parancs vágólapra való másolása után másolt parancs nem mindig a saját futtatható. Ekkor a rendszer az átvitel manuális futtatásához szükséges összes parancsot átmásolja. #1079
 * Korábban ADLS Gen2 Blobok nem voltak elérhetők, ha a proxy mögött volt. Ezt a Storage SDK által használt új hálózati könyvtár hibája okozta. A 1.7.0-ben a probléma enyhítésére tett kísérlet történt, de egyes felhasználók továbbra is láthatják a problémákat. A teljes javítás egy jövőbeli frissítésben jelenik meg. #1090
 * A 1.7.0-ben a fájl mentése párbeszédpanel helyesen emlékszik az utolsó olyan helyre, ahol a fájlt mentette. #16
-* A Tulajdonságok panelen egy Storage-fiók SKU-szintje jelenik meg a fiók típusaként. Ez megoldottuk. #654
-* Időnként előfordulhat, hogy nem sikerült megszüntetni egy blob bérletét, még akkor is, ha helyesen adta meg a blob nevét. Ez megoldottuk. #1070
+* A Tulajdonságok panelen egy Storage-fiók SKU-szintje jelenik meg a fiók típusaként. Ez rögzített. #654
+* Időnként előfordulhat, hogy nem sikerült megszüntetni egy blob bérletét, még akkor is, ha helyesen adta meg a blob nevét. Ez rögzített. #1070
 
 ### <a name="known-issues"></a>Ismert problémák
 
 * A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
 * Sikertelen volt a ADLS Gen2 Blobok elérésének megkísérlése a proxy mögött.
-* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez frissítse a a csoport csomópontot. Tekintse meg a #537 további információt.
-* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez frissítse a a csoport csomópontot. További információ: #537.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Az Azure Stack nem támogatja a következő funkciókat. Ezek a szolgáltatások használata közben az Azure Stack használatával próbál erőforrások váratlan hibákhoz vezethet.
+* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
+* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* A Azure Stack nem támogatja a következő funkciókat: Ha a Azure Stack-erőforrások használata során megkísérli használni ezeket a funkciókat, a rendszer váratlan hibákat eredményezhet.
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)-es frissítést.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://dotnet.microsoft.com/download/dotnet-core/2.0)-es frissítést.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -529,7 +529,7 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
@@ -540,19 +540,19 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 
 ### <a name="hotfixes"></a>Gyorsjavítások
 * A 1.6.1-ben a ObjectId által ADLS Gen2 ACL-ek számára hozzáadott entitások, amelyek nem a felhasználók csoportként lettek hozzáadva. Mostantól csak a csoportok lesznek hozzáadva csoportként, és az olyan entitások, mint például a vállalati alkalmazások, andService lesznek hozzáadva felhasználóként. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
-* Ha egy ADLS Gen2 Storage-fiók nem rendelkezett tárolóval, és a név és a kulcs névvel lett csatolva, akkor Storage Explorer nem fogja észlelni, hogy a Storage-fiók ADLS Gen2 volt. Ez megoldottuk. [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
+* Ha egy ADLS Gen2 Storage-fiók nem rendelkezett tárolóval, és a név és a kulcs névvel lett csatolva, akkor Storage Explorer nem fogja észlelni, hogy a Storage-fiók ADLS Gen2 volt. Ez rögzített. [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
 * A 1.6.0-ben a másolás és beillesztés során fellépő ütközések nem kérik fel a megoldást. Ehelyett az ütköző másolat egyszerűen meghiúsul. Az első ütközés után a rendszer megkérdezi, hogyan szeretné megoldani. [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
 * Az API-korlátozások miatt a ObjectIds összes érvényesítése le van tiltva a hozzáférés kezelése párbeszédpanelen. Az érvényesítés most csak a felhasználói UPN-ket veszi fel. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
-* A ADLS Gen2 hozzáférés kezelése párbeszédpanelen a csoport engedélyei nem módosíthatók. Ez megoldottuk. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* A ADLS Gen2 hozzáférés kezelése párbeszédpanelen a csoport engedélyei nem módosíthatók. Ez rögzített. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
 * A ADLS Gen2 szerkesztőhöz a fogd és vidd feltöltési támogatás hozzáadva. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
-* A ADLS Gen2 fájlok és mappák Tulajdonságok párbeszédpanelének URL-tulajdonsága néha hiányzik a következőhöz: "/". Ez megoldottuk. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* A ADLS Gen2 fájlok és mappák Tulajdonságok párbeszédpanelének URL-tulajdonsága néha hiányzik a következőhöz: "/". Ez rögzített. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
 * Ha egy ADLS Gen2 tárolóhoz, fájlhoz vagy mappához tartozó jelenlegi engedélyek beolvasása meghiúsul, akkor a hiba mostantól a tevékenység naplójában jelenik meg. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
 * A fájlok megnyitására szolgáló ideiglenes elérési út lerövidítve lett, így csökkenthető az esélye annak, hogy az elérési út hosszabb, mint a Windows MAX_PATH. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
 * A csatlakozás párbeszédpanel helyesen jelenik meg, ha nincsenek bejelentkezett felhasználók, és nincsenek csatolva erőforrások. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
 * A 1.6.0-ben a nem HNS blobok és fájlok tulajdonságainak mentése az összes tulajdonság értékét kódolja. Ez szükségtelen kódolási értéket eredményezett, amely csak ASCII-karaktereket tartalmaz. Az értékek mostantól csak akkor lesznek kódolva, ha nem ASCII-karaktereket tartalmaznak. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
-* A mappa nem HNS blob-tárolóba való feltöltése sikertelen lesz, ha a SAS használatban van, és az SAS nem rendelkezik olvasási engedéllyel. Ez megoldottuk. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
-* A AzCopy-átvitel megszakítása nem működött. Ez megoldottuk. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
-* A AzCopy akkor sikertelen, amikor egy ADLS Gen2 blob-tárolóból próbál meg letölteni egy mappát, ha a mappában szerepel a neve. Ez megoldottuk. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* A mappa nem HNS blob-tárolóba való feltöltése sikertelen lesz, ha a SAS használatban van, és az SAS nem rendelkezik olvasási engedéllyel. Ez rögzített. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* A AzCopy-átvitel megszakítása nem működött. Ez rögzített. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* A AzCopy akkor sikertelen, amikor egy ADLS Gen2 blob-tárolóból próbál meg letölteni egy mappát, ha a mappában szerepel a neve. Ez rögzített. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
 * A CosmosDB-szerkesztő megszakadt a 1.6.0-ben. Most már kijavítva van. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
 ### <a name="new"></a>Új
@@ -572,27 +572,27 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 ### <a name="known-issues"></a>Ismert problémák
 
 * ADLS Gen2 Storage-fiókból való letöltéskor, ha az átvitt fájlok egyike már létezik, akkor a AzCopy időnként összeomlik. Ezt a rendszer egy közelgő gyorsjavításban rögzíti.
-* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez frissítse a a csoport csomópontot. További információ: #537.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Az Azure Stack nem támogatja a következő funkciókat. Ezek a szolgáltatások használata közben az Azure Stack használatával próbál erőforrások váratlan hibákhoz vezethet.
+* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* A Azure Stack nem támogatja a következő funkciókat: Ha a Azure Stack-erőforrások használata során megkísérli használni ezeket a funkciókat, a rendszer váratlan hibákat eredményezhet.
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)-es frissítést.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://dotnet.microsoft.com/download/dotnet-core/2.0)-es frissítést.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -601,7 +601,7 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
@@ -612,16 +612,16 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 
 ### <a name="hotfixes"></a>Gyorsjavítások
 * Az API-korlátozások miatt a ObjectIds összes érvényesítése le van tiltva a hozzáférés kezelése párbeszédpanelen. Az érvényesítés most csak a felhasználói UPN-ket veszi fel. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
-* A ADLS Gen2 hozzáférés kezelése párbeszédpanelen a csoport engedélyei nem módosíthatók. Ez megoldottuk. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* A ADLS Gen2 hozzáférés kezelése párbeszédpanelen a csoport engedélyei nem módosíthatók. Ez rögzített. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
 * A ADLS Gen2 szerkesztőhöz a fogd és vidd feltöltési támogatás hozzáadva. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
-* A ADLS Gen2 fájlok és mappák Tulajdonságok párbeszédpanelének URL-tulajdonsága néha hiányzik a következőhöz: "/". Ez megoldottuk. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* A ADLS Gen2 fájlok és mappák Tulajdonságok párbeszédpanelének URL-tulajdonsága néha hiányzik a következőhöz: "/". Ez rögzített. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
 * Ha egy ADLS Gen2 tárolóhoz, fájlhoz vagy mappához tartozó jelenlegi engedélyek beolvasása meghiúsul, akkor a hiba mostantól a tevékenység naplójában jelenik meg. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
 * A fájlok megnyitására szolgáló ideiglenes elérési út lerövidítve lett, így csökkenthető az esélye annak, hogy az elérési út hosszabb, mint a Windows MAX_PATH. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
 * A csatlakozás párbeszédpanel helyesen jelenik meg, ha nincsenek bejelentkezett felhasználók, és nincsenek csatolva erőforrások. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
 * A 1.6.0-ben a nem HNS blobok és fájlok tulajdonságainak mentése az összes tulajdonság értékét kódolja. Ez szükségtelen kódolási értéket eredményezett, amely csak ASCII-karaktereket tartalmaz. Az értékek mostantól csak akkor lesznek kódolva, ha nem ASCII-karaktereket tartalmaznak. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
-* A mappa nem HNS blob-tárolóba való feltöltése sikertelen lesz, ha a SAS használatban van, és az SAS nem rendelkezik olvasási engedéllyel. Ez megoldottuk. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
-* A AzCopy-átvitel megszakítása nem működött. Ez megoldottuk. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
-* A AzCopy akkor sikertelen, amikor egy ADLS Gen2 blob-tárolóból próbál meg letölteni egy mappát, ha a mappában szerepel a neve. Ez megoldottuk. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* A mappa nem HNS blob-tárolóba való feltöltése sikertelen lesz, ha a SAS használatban van, és az SAS nem rendelkezik olvasási engedéllyel. Ez rögzített. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* A AzCopy-átvitel megszakítása nem működött. Ez rögzített. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* A AzCopy akkor sikertelen, amikor egy ADLS Gen2 blob-tárolóból próbál meg letölteni egy mappát, ha a mappában szerepel a neve. Ez rögzített. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
 * A CosmosDB-szerkesztő megszakadt a 1.6.0-ben. Most már kijavítva van. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
 ### <a name="new"></a>Új
@@ -641,27 +641,27 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 ### <a name="known-issues"></a>Ismert problémák
 
 * ADLS Gen2 Storage-fiókból való letöltéskor, ha az átvitt fájlok egyike már létezik, akkor a AzCopy időnként összeomlik. Ezt a rendszer egy közelgő gyorsjavításban rögzíti.
-* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez frissítse a a csoport csomópontot. További információ: #537.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Az Azure Stack nem támogatja a következő funkciókat. Ezek a szolgáltatások használata közben az Azure Stack használatával próbál erőforrások váratlan hibákhoz vezethet.
+* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* A Azure Stack nem támogatja a következő funkciókat: Ha a Azure Stack-erőforrások használata során megkísérli használni ezeket a funkciókat, a rendszer váratlan hibákat eredményezhet.
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)-es frissítést.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://dotnet.microsoft.com/download/dotnet-core/2.0)-es frissítést.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -670,7 +670,7 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
@@ -696,27 +696,27 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 ### <a name="known-issues"></a>Ismert problémák
 
 * ADLS Gen2 Storage-fiókból való letöltéskor, ha az átvitt fájlok egyike már létezik, akkor a AzCopy időnként összeomlik. Ezt a rendszer egy közelgő gyorsjavításban rögzíti.
-* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez frissítse a a csoport csomópontot. További információ: #537.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Az Azure Stack nem támogatja a következő funkciókat. Ezek a szolgáltatások használata közben az Azure Stack használatával próbál erőforrások váratlan hibákhoz vezethet.
+* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* A Azure Stack nem támogatja a következő funkciókat: Ha a Azure Stack-erőforrások használata során megkísérli használni ezeket a funkciókat, a rendszer váratlan hibákat eredményezhet.
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)-es frissítést.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://dotnet.microsoft.com/download/dotnet-core/2.0)-es frissítést.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -725,62 +725,62 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-150"></a>Verzió 1.5.0
-10/29 vagy 2018.
+## <a name="version-150"></a>1\.5.0-es verzió
+10/29/2018
 
 ### <a name="new"></a>Új
 
-* Most már használhatja a [AzCopy v10 (előzetes verzió)](https://github.com/Azure/azure-storage-azcopy) használatát a Blobok feltöltéséhez és letöltéséhez. Ez a funkció engedélyezéséhez válassza a "Kísérleti" menü, és kattintson a "Használata az AzCopy a továbbfejlesztett Blob feltöltése és letöltése". Ha engedélyezve van, az AzCopy fogja használni a következő esetekben:
-   * Töltse fel a blob-tárolók, akár az eszköztár fájlokat és mappákat, vagy húzza.
-   * Letölti a mappákat és fájlokat, vagy az eszköztár vagy helyi menüjében.
+* Most már használhatja a [AzCopy v10 (előzetes verzió)](https://github.com/Azure/azure-storage-azcopy) használatát a Blobok feltöltéséhez és letöltéséhez. A funkció engedélyezéséhez lépjen a "kísérleti" menüre, majd kattintson a "AzCopy használata a továbbfejlesztett blob-feltöltéshez és a letöltéshez" lehetőségre. Ha ez a beállítás engedélyezve van, a rendszer a következő helyzetekben fogja használni a AzCopy:
+   * Mappák és fájlok feltöltése blob-tárolóba az eszköztáron vagy a drag and drop használatával.
+   * Mappák és fájlok letöltése az eszköztár vagy a helyi menü segítségével.
 
-* Ezenkívül az AzCopy használata esetén:
-   * A vágólapra az átadás végrehajtására szolgáló AzCopy-parancs másolásával. Egyszerűen kattintson a "Másolás AzCopy parancs vágólapra" a tevékenységnaplóban.
-   * A blob-szerkesztő feltöltése után manuálisan frissítenie kell.
+* Emellett a AzCopy használata esetén:
+   * A vágólapra történő átvitel végrehajtásához használt AzCopy-parancsot másolhatja. Egyszerűen kattintson a AzCopy parancs másolása a vágólapra elemre a tevékenység naplójában.
+   * A feltöltés után manuálisan frissítenie kell a blob-szerkesztőt.
    * A fájlok hozzáfűzési blobokhoz való feltöltése nem támogatott, a VHD-fájlok pedig blobként lesznek feltöltve, és az összes többi fájl is fel lesz töltve.
    * A feltöltés vagy a letöltés során felmerülő hibák és ütközések addig nem lesznek felszínben, amíg a feltöltés vagy a letöltés be nem fejeződik.
 
-Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhető a jövőben.
-* Storage Explorer Electron 2.0.11 verziót használ.
-* Használhatatlanná tévő bérleteket is most már csak hajtható végre egy blob egy időben. Ezenkívül rendelkezik az a blob nevét, amelynek meg bontja bérleti meg. Ez a változás azért történt, hogy csökkentse a bérlet véletlen megszakításának valószínűségét, különösen a virtuális gépek esetében. #394
-* Ha minden eddiginél bejelentkezési problémák, most megpróbálhat alaphelyzetbe állítása hitelesítési. Nyissa meg a "Súgó" menü, és kattintson az "Új" Ez a funkció eléréséhez. #419
+Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövőben fog megjelenni.
+* Storage Explorer mostantól az Electron 2.0.11-verziót használja.
+* A megszakított bérletek mostantól egyszerre csak egy blobon hajthatók végre. Emellett meg kell adnia annak a blobnak a nevét, amelynek a bérletét megszakította. Ez a változás azért történt, hogy csökkentse a bérlet véletlen megszakításának valószínűségét, különösen a virtuális gépek esetében. #394
+* Ha bármikor bejelentkezik a bejelentkezési problémákba, most már próbálkozhat a hitelesítés alaphelyzetbe állításával. Lépjen a "Súgó" menüre, és kattintson az "alaphelyzetbe állítás" gombra a funkció eléréséhez. #419
 
-### <a name="fix"></a>Javítás
+### <a name="fix"></a>Javítsa ki
 
-* Erős felhasználói visszajelzéseket, miután az alapértelmezett emulátor csomópont újra engedélyezve lett. Továbbra is hozzáadhat további emulátor kapcsolatok keresztül a Csatlakozás párbeszédpanel, de ha az emulátor az alapértelmezett portok használatára van konfigurálva az "Emulátor * alapértelmezett portok" csomópont "Helyi és csatolt/Storage-fiókok" is használható. #669
-* Storage Explorer többé nem tesztszabályzatokat állíthat a blob metaadatértékeket rendelkező kezdő vagy záró szóközt. #760
-* A "Bejelentkezés" gomb mindig engedélyezték a Csatlakozás párbeszédpanel azonos oldalain. Most már tiltva, ha szükséges. #761
-* A gyors hozzáférés már nem generál hibát a konzolon a gyors hozzáférés elemek hozzáadásakor.
+* Az erős felhasználói visszajelzés után az emulátor alapértelmezett csomópontja újra engedélyezve lett. Továbbra is hozzáadhat további Emulator-kapcsolatokat a csatlakozás párbeszédpanelen, de ha az emulátor az alapértelmezett portok használatára van konfigurálva, akkor az "emulátor * alapértelmezett portok" csomópontot is használhatja a "helyi & csatolt/Storage-fiókok" területen. #669
+* Storage Explorer többé nem teszi lehetővé a blob-metaadatok kezdő vagy záró szóközt tartalmazó értékének beállítását. #760
+* A "Bejelentkezés" gomb mindig engedélyezve volt a csatlakozási párbeszédpanel ugyanazon oldalain. Ha szükséges, le van tiltva. #761
+* A gyors hozzáférés többé nem eredményez hibát a konzolon, ha nem lettek hozzáadva gyors elérésű elemek.
 
 ### <a name="known-issues"></a>Ismert problémák
 
-* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez frissítse a a csoport csomópontot. További információ: #537.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Az Azure Stack nem támogatja a következő funkciókat. Ezek a szolgáltatások használata közben az Azure Stack használatával próbál erőforrások váratlan hibákhoz vezethet.
+* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba. A probléma megoldásához blob-tárolóból történő feltöltéskor vagy letöltéskor használhatja a kísérleti AzCopy funkciót.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* A Azure Stack nem támogatja a következő funkciókat: Ha a Azure Stack-erőforrások használata során megkísérli használni ezeket a funkciókat, a rendszer váratlan hibákat eredményezhet.
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)-es frissítést.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://dotnet.microsoft.com/download/dotnet-core/2.0)-es frissítést.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -789,55 +789,55 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
 
-## <a name="version-144"></a>Verzió 1.4.4
-10/15/2018.
+## <a name="version-144"></a>1\.4.4-es verzió
+10/15/2018
 
 ### <a name="hotfixes"></a>Gyorsjavítások
 * Az Azure Resource Management API verziója vissza lett állítva az Azure US government-felhasználók blokkolásának feloldására. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
-* Betöltés pörgettyű most már használ a CSS-animációk Rövidítse le a Storage Explorer által használt GPU. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
+* A tárcsa betöltése mostantól a CSS-animációk használatával csökkenti az Storage Explorer által használt GPU mennyiségét. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
 ### <a name="new"></a>Új
-* Külső erőforrás-mellékleteket, például a SAS-kapcsolatok és emulátorok, jelentősen javult. Most a következőket teheti:
-   * Testre szabhatja a csatolni kívánt erőforrás megjelenített neve. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
-   * Különböző portok használata több helyi emulátor csatolása. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
-   * Csatolt erőforrások hozzáadása a gyorselérési eszköztáron. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer mostantól támogatja a helyreállítható törlés. A következőket teheti:
-   * A helyreállítható törlés házirend konfigurálásához kattintson a jobb gombbal a tárfiók Blob-tárolók csomóponton.
-   * Helyreállíthatóan törölt megtekintése blobok a Blob-szerkesztőben kiválasztásával "aktív és a blobok törlése" mellett a navigációs sávban a legördülő listában.
-   * Helyreállíthatóan törölt BLOB törlésének visszavonása.
+* A külső erőforrások mellékletei, például az SAS-kapcsolatok és az emulátorok, jelentősen javultak. Mostantól a következőket teheti:
+   * Szabja testre a csatolni kívánt erőforrás megjelenítendő nevét. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Több helyi emulátorhoz is csatolhat különböző portokat használva. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Csatolt erőforrások hozzáadása a gyors eléréshez. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* A Storage Explorer mostantól támogatja a Soft delete használatát. Előnyök:
+   * A helyreállítható törlési házirend konfigurálásához kattintson a jobb gombbal a Storage-fiók blob-tárolók csomópontjára.
+   * A legördülő menüben kattintson az "aktív és törölt Blobok" elemre a navigációs sáv melletti legördülő listában.
+   * Törölje a törölt Blobok törlését.
 
-### <a name="fixes"></a>Javítások
-* A "Konfigurálja a CORS-beállítások" művelet már nem elérhető a Premium Storage-fiókok, mert a prémium szintű Storage-fiókok nem támogatják a CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
-* Most már rendelkezésre áll egy SAS-hez csatolt szolgáltatások közös hozzáférésű Jogosultságkód tulajdonsága. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
-* Az "Alapértelmezett hozzáférési szint beállítása" művelet már elérhető a Blob és a GPV2 Storage-fiókok, amely gyors hozzáférést van rögzítve. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
-* Egyes esetekben a Storage Explorer megjelenítéséhez a klasszikus tárfiókok meghiúsul. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+### <a name="fixes"></a>Hibajavítások
+* A "CORS-beállítások konfigurálása" művelet már nem érhető el Premium Storage fiókokon, mert Premium Storage fiókok nem támogatják a CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* Már van egy közös hozzáférés-aláírási tulajdonság a SAS-hez csatolt szolgáltatásokhoz. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* Az "alapértelmezett hozzáférési szintek beállítása" művelet mostantól elérhető a gyors hozzáféréshez rögzített blob-és GPV2-tároló fiókok esetében. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* Időnként a Storage Explorer nem fogja tudni megjeleníteni a klasszikus Storage-fiókokat. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
 
 ### <a name="known-issues"></a>Ismert problémák
-* Emulátory systému, például az Azure Storage Emulator vagy Azurite, használatakor kell figyelni a kapcsolatokat, az alapértelmezett porton őket. Ellenkező esetben Storage Explorer nem képes csatlakozni hozzájuk.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az emulátorok, például az Azure Storage Emulator vagy a Azurite használata esetén az alapértelmezett portokon figyelnie kell a kapcsolatokat. Ellenkező esetben Storage Explorer nem fog tudni csatlakozni hozzájuk.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)-es frissítést.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://dotnet.microsoft.com/download/dotnet-core/2.0)-es frissítést.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -846,54 +846,54 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-143"></a>Verzió 1.4.3
-10/11/2018.
+## <a name="version-143"></a>1\.4.3 verziója
+10/11/2018
 
 ### <a name="hotfixes"></a>Gyorsjavítások
 * Az Azure Resource Management API verziója vissza lett állítva az Azure US government-felhasználók blokkolásának feloldására. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
-* Betöltés pörgettyű most már használ a CSS-animációk Rövidítse le a Storage Explorer által használt GPU. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
+* A tárcsa betöltése mostantól a CSS-animációk használatával csökkenti az Storage Explorer által használt GPU mennyiségét. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
 ### <a name="new"></a>Új
-* Külső erőforrás-mellékleteket, például a SAS-kapcsolatok és emulátorok, jelentősen javult. Most a következőket teheti:
-   * Testre szabhatja a csatolni kívánt erőforrás megjelenített neve. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
-   * Különböző portok használata több helyi emulátor csatolása. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
-   * Csatolt erőforrások hozzáadása a gyorselérési eszköztáron. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer mostantól támogatja a helyreállítható törlés. A következőket teheti:
-   * A helyreállítható törlés házirend konfigurálásához kattintson a jobb gombbal a tárfiók Blob-tárolók csomóponton.
-   * Helyreállíthatóan törölt megtekintése blobok a Blob-szerkesztőben kiválasztásával "aktív és a blobok törlése" mellett a navigációs sávban a legördülő listában.
-   * Helyreállíthatóan törölt BLOB törlésének visszavonása.
+* A külső erőforrások mellékletei, például az SAS-kapcsolatok és az emulátorok, jelentősen javultak. Mostantól a következőket teheti:
+   * Szabja testre a csatolni kívánt erőforrás megjelenítendő nevét. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Több helyi emulátorhoz is csatolhat különböző portokat használva. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Csatolt erőforrások hozzáadása a gyors eléréshez. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* A Storage Explorer mostantól támogatja a Soft delete használatát. Előnyök:
+   * A helyreállítható törlési házirend konfigurálásához kattintson a jobb gombbal a Storage-fiók blob-tárolók csomópontjára.
+   * A legördülő menüben kattintson az "aktív és törölt Blobok" elemre a navigációs sáv melletti legördülő listában.
+   * Törölje a törölt Blobok törlését.
 
-### <a name="fixes"></a>Javítások
-* A "Konfigurálja a CORS-beállítások" művelet már nem elérhető a Premium Storage-fiókok, mert a prémium szintű Storage-fiókok nem támogatják a CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
-* Most már rendelkezésre áll egy SAS-hez csatolt szolgáltatások közös hozzáférésű Jogosultságkód tulajdonsága. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
-* Az "Alapértelmezett hozzáférési szint beállítása" művelet már elérhető a Blob és a GPV2 Storage-fiókok, amely gyors hozzáférést van rögzítve. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
-* Egyes esetekben a Storage Explorer megjelenítéséhez a klasszikus tárfiókok meghiúsul. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+### <a name="fixes"></a>Hibajavítások
+* A "CORS-beállítások konfigurálása" művelet már nem érhető el Premium Storage fiókokon, mert Premium Storage fiókok nem támogatják a CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* Már van egy közös hozzáférés-aláírási tulajdonság a SAS-hez csatolt szolgáltatásokhoz. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* Az "alapértelmezett hozzáférési szintek beállítása" művelet mostantól elérhető a gyors hozzáféréshez rögzített blob-és GPV2-tároló fiókok esetében. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* Időnként a Storage Explorer nem fogja tudni megjeleníteni a klasszikus Storage-fiókokat. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
 
 ### <a name="known-issues"></a>Ismert problémák
-* Emulátory systému, például az Azure Storage Emulator vagy Azurite, használatakor kell figyelni a kapcsolatokat, az alapértelmezett porton őket. Ellenkező esetben Storage Explorer nem képes csatlakozni hozzájuk.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az emulátorok, például az Azure Storage Emulator vagy a Azurite használata esetén az alapértelmezett portokon figyelnie kell a kapcsolatokat. Ellenkező esetben Storage Explorer nem fog tudni csatlakozni hozzájuk.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)-es frissítést.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://dotnet.microsoft.com/download/dotnet-core/2.0)-es frissítést.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -902,53 +902,53 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-142"></a>1\.4.2 verziója
-09/24/2018.
+## <a name="version-142"></a>1\.4.2-es verzió
+09/24/2018
 
 ### <a name="hotfixes"></a>Gyorsjavítások
 * Az Azure Resource Management API verziójának frissítése 2018-07-01-re az új Azure Storage-fiókok támogatásának hozzáadásához. [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
 
 ### <a name="new"></a>Új
-* Külső erőforrás-mellékleteket, például a SAS-kapcsolatok és emulátorok, jelentősen javult. Most a következőket teheti:
-   * Testre szabhatja a csatolni kívánt erőforrás megjelenített neve. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
-   * Különböző portok használata több helyi emulátor csatolása. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
-   * Csatolt erőforrások hozzáadása a gyorselérési eszköztáron. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer mostantól támogatja a helyreállítható törlés. A következőket teheti:
-   * A helyreállítható törlés házirend konfigurálásához kattintson a jobb gombbal a tárfiók Blob-tárolók csomóponton.
-   * Helyreállíthatóan törölt megtekintése blobok a Blob-szerkesztőben kiválasztásával "aktív és a blobok törlése" mellett a navigációs sávban a legördülő listában.
-   * Helyreállíthatóan törölt BLOB törlésének visszavonása.
+* A külső erőforrások mellékletei, például az SAS-kapcsolatok és az emulátorok, jelentősen javultak. Mostantól a következőket teheti:
+   * Szabja testre a csatolni kívánt erőforrás megjelenítendő nevét. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Több helyi emulátorhoz is csatolhat különböző portokat használva. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Csatolt erőforrások hozzáadása a gyors eléréshez. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* A Storage Explorer mostantól támogatja a Soft delete használatát. Előnyök:
+   * A helyreállítható törlési házirend konfigurálásához kattintson a jobb gombbal a Storage-fiók blob-tárolók csomópontjára.
+   * A legördülő menüben kattintson az "aktív és törölt Blobok" elemre a navigációs sáv melletti legördülő listában.
+   * Törölje a törölt Blobok törlését.
 
-### <a name="fixes"></a>Javítások
-* A "Konfigurálja a CORS-beállítások" művelet már nem elérhető a Premium Storage-fiókok, mert a prémium szintű Storage-fiókok nem támogatják a CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
-* Most már rendelkezésre áll egy SAS-hez csatolt szolgáltatások közös hozzáférésű Jogosultságkód tulajdonsága. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
-* Az "Alapértelmezett hozzáférési szint beállítása" művelet már elérhető a Blob és a GPV2 Storage-fiókok, amely gyors hozzáférést van rögzítve. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
-* Egyes esetekben a Storage Explorer megjelenítéséhez a klasszikus tárfiókok meghiúsul. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+### <a name="fixes"></a>Hibajavítások
+* A "CORS-beállítások konfigurálása" művelet már nem érhető el Premium Storage fiókokon, mert Premium Storage fiókok nem támogatják a CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* Már van egy közös hozzáférés-aláírási tulajdonság a SAS-hez csatolt szolgáltatásokhoz. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* Az "alapértelmezett hozzáférési szintek beállítása" művelet mostantól elérhető a gyors hozzáféréshez rögzített blob-és GPV2-tároló fiókok esetében. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* Időnként a Storage Explorer nem fogja tudni megjeleníteni a klasszikus Storage-fiókokat. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
 
 ### <a name="known-issues"></a>Ismert problémák
-* Emulátory systému, például az Azure Storage Emulator vagy Azurite, használatakor kell figyelni a kapcsolatokat, az alapértelmezett porton őket. Ellenkező esetben Storage Explorer nem képes csatlakozni hozzájuk.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az emulátorok, például az Azure Storage Emulator vagy a Azurite használata esetén az alapértelmezett portokon figyelnie kell a kapcsolatokat. Ellenkező esetben Storage Explorer nem fog tudni csatlakozni hozzájuk.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)-es frissítést.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://dotnet.microsoft.com/download/dotnet-core/2.0)-es frissítést.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -957,58 +957,58 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-141"></a>1\.4.1 verzió
-08/28/2018.
+## <a name="version-141"></a>1\.4.1-es verzió
+08/28/2018
 
 ### <a name="hotfixes"></a>Gyorsjavítások
-* Az alkalmazás első indításakor a Storage Explorer nem tudta létrehozni a bizalmas adatok titkosításához használt kulcs. Emiatt problémák gyors hozzáférés használata esetén és a kapcsolódó erőforrásokat. [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
-* Ha a fiók nem volt szükség az MFA az otthoni bérlő számára, de néhány más bérlők esetében tette, a Storage Explorer az előfizetések listája nem lehet lenne. Most az ilyen egy fiókkal történő bejelentkezés után a Tártallózó ekkor megkérdezi, írja be újra a hitelesítő adatait, és végezze el az MFA. [#74](https://github.com/Microsoft/AzureStorageExplorer/issues/74)
-* Storage Explorer nem tudta csatolni az erőforrásokat az Azure Germany és Azure US Government. [#572](https://github.com/Microsoft/AzureStorageExplorer/issues/572)
-* Ha bejelentkezett, két fiókot, amely ugyanazt az e-mail címet rendelkezett, Storage Explorer időnként meghiúsul a fanézetben megtekintheti az erőforrások megjelenítéséhez. [#580](https://github.com/Microsoft/AzureStorageExplorer/issues/580)
-* Lassabb Windows-gépeken a kezdőképernyőjén néha igénybe jelentős mennyiségű időt jelennek meg. [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
-* A Csatlakozás párbeszédpanel tűnik, még akkor is, ha voltak a csatolt fiókhoz vagy szolgáltatáshoz. [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
+* Az első indításkor a Storage Explorer nem tudta előállítani a bizalmas adatok titkosításához használt kulcsot. Ez problémát okozhat a gyors elérés és az erőforrások csatolása során. [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
+* Ha a fiókja nem igényelte az MFA használatát a saját bérlője számára, de más bérlők esetében nem, Storage Explorer nem fogja tudni listázni az előfizetéseket. A fiókkal való bejelentkezés után Storage Explorer kérni fogja, hogy adja meg újból a hitelesítő adatait, és végezzen el MFA-t. [#74](https://github.com/Microsoft/AzureStorageExplorer/issues/74)
+* Storage Explorer nem tudott erőforrásokat csatlakoztatni az Azure Germany és az USA kormányzati szervei számára. [#572](https://github.com/Microsoft/AzureStorageExplorer/issues/572)
+* Ha két olyan fiókba jelentkezett be, amely ugyanazzal az e-mail-címmel rendelkezik, Storage Explorer időnként nem fogja tudni megjeleníteni az erőforrásokat a fanézetben. [#580](https://github.com/Microsoft/AzureStorageExplorer/issues/580)
+* A lassabb Windowsos gépeken a splash-képernyő esetenként jelentős mennyiségű időt is igénybe veheti. [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
+* A csatlakozási párbeszédpanel akkor is megjelenik, ha csatolva vannak fiókok vagy szolgáltatások. [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
 
 ### <a name="new"></a>Új
-* Külső erőforrás-mellékleteket, például a SAS-kapcsolatok és emulátorok, jelentősen javult. Most a következőket teheti:
-   * Testre szabhatja a csatolni kívánt erőforrás megjelenített neve. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
-   * Különböző portok használata több helyi emulátor csatolása. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
-   * Csatolt erőforrások hozzáadása a gyorselérési eszköztáron. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer mostantól támogatja a helyreállítható törlés. A következőket teheti:
-   * A helyreállítható törlés házirend konfigurálásához kattintson a jobb gombbal a tárfiók Blob-tárolók csomóponton.
-   * Helyreállíthatóan törölt megtekintése blobok a Blob-szerkesztőben kiválasztásával "aktív és a blobok törlése" mellett a navigációs sávban a legördülő listában.
-   * Helyreállíthatóan törölt BLOB törlésének visszavonása.
+* A külső erőforrások mellékletei, például az SAS-kapcsolatok és az emulátorok, jelentősen javultak. Mostantól a következőket teheti:
+   * Szabja testre a csatolni kívánt erőforrás megjelenítendő nevét. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Több helyi emulátorhoz is csatolhat különböző portokat használva. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Csatolt erőforrások hozzáadása a gyors eléréshez. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* A Storage Explorer mostantól támogatja a Soft delete használatát. Előnyök:
+   * A helyreállítható törlési házirend konfigurálásához kattintson a jobb gombbal a Storage-fiók blob-tárolók csomópontjára.
+   * A legördülő menüben kattintson az "aktív és törölt Blobok" elemre a navigációs sáv melletti legördülő listában.
+   * Törölje a törölt Blobok törlését.
 
-### <a name="fixes"></a>Javítások
-* A "Konfigurálja a CORS-beállítások" művelet már nem elérhető a Premium Storage-fiókok, mert a prémium szintű Storage-fiókok nem támogatják a CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
-* Most már rendelkezésre áll egy SAS-hez csatolt szolgáltatások közös hozzáférésű Jogosultságkód tulajdonsága. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
-* Az "Alapértelmezett hozzáférési szint beállítása" művelet már elérhető a Blob és a GPV2 Storage-fiókok, amely gyors hozzáférést van rögzítve. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
-* Egyes esetekben a Storage Explorer megjelenítéséhez a klasszikus tárfiókok meghiúsul. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+### <a name="fixes"></a>Hibajavítások
+* A "CORS-beállítások konfigurálása" művelet már nem érhető el Premium Storage fiókokon, mert Premium Storage fiókok nem támogatják a CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* Már van egy közös hozzáférés-aláírási tulajdonság a SAS-hez csatolt szolgáltatásokhoz. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* Az "alapértelmezett hozzáférési szintek beállítása" művelet mostantól elérhető a gyors hozzáféréshez rögzített blob-és GPV2-tároló fiókok esetében. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* Időnként a Storage Explorer nem fogja tudni megjeleníteni a klasszikus Storage-fiókokat. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
 
 ### <a name="known-issues"></a>Ismert problémák
-* Emulátory systému, például az Azure Storage Emulator vagy Azurite, használatakor kell figyelni a kapcsolatokat, az alapértelmezett porton őket. Ellenkező esetben Storage Explorer nem képes csatlakozni hozzájuk.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az emulátorok, például az Azure Storage Emulator vagy a Azurite használata esetén az alapértelmezett portokon figyelnie kell a kapcsolatokat. Ellenkező esetben Storage Explorer nem fog tudni csatlakozni hozzájuk.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)-es frissítést.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://dotnet.microsoft.com/download/dotnet-core/2.0)-es frissítést.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1017,55 +1017,55 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-130"></a>Verzió 1.3.0
-07/09/2018.
+## <a name="version-130"></a>1\.3.0 verziója
+07/09/2018
 
 ### <a name="new"></a>Új
-* Mostantól támogatott a statikus webhelyek által használt $web tárolók elérése. Ez lehetővé teszi, hogy könnyedén töltheti fel és kezelheti a fájlok és mappák, a webhely által használt. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
-* MacOS rendszeren alkalmazássávon az átszervezett már rendelkezik. A változások a következők: a Fájl menü, helyi legfontosabb változások és számos új parancsokat az alkalmazás menüjében. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
+* A statikus webhelyek által használt $web tárolók elérése mostantól támogatott. Így könnyedén feltöltheti és kezelheti a webhely által használt fájlokat és mappákat. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
+* A macOS-ben lévő alkalmazás-sáv újra lett rendszerezve. A változtatások közé tartozik a Fájl menü, néhány billentyűparancs, valamint az alkalmazás menüjében számos új parancs. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
 * Az Azure US Governmentbe való bejelentkezéshez használt szolgáltatói végpont a következőre változott: https://login.microsoftonline.us/
-* Kisegítő lehetőségek: Ha egy képernyőolvasó aktív, most már a billentyűzetnavigációt együttműködik elemek megjelenítéséhez a jobb oldali használt táblák. Használhatja a nyílbillentyűkkel navigálhat a sorok és oszlopok, adjon meg alapértelmezett műveletek, a helyi menü kulcs egy elem, a helyi menü megnyitásához és a Shift vagy a többszörös kijelölés vezérlőelem meghívásához. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+* Kisegítő lehetőségek: Ha egy képernyőolvasó aktív, a billentyűzetes Navigálás már együttműködik a jobb oldalon található elemek megjelenítéséhez használt táblázatokkal. A nyílbillentyűk segítségével navigáljon a sorokhoz és az oszlopokhoz, és az alapértelmezett műveletek meghívásához adja meg a helyi menüt, és nyissa meg az elemhez tartozó helyi menüt, és váltson át vagy vezérelje a többkijelölést. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
 
-### <a name="fixes"></a>Javítások
-*  Az egyes gépek alárendelt indítása hosszú ideig is tart. Ez akkor fordulhat elő, amikor egy "gyermek folyamata nem tudott időben elindítani" hibát jelent. Indítsa el a gyermek a folyamat a várt időn most 20-ról értékre nőtt 90 másodperc alatt. Ha a probléma továbbra is érint, adjon fűzni a csatolt GitHub-problémát. [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
-* Amely az adott nem rendelkezik olvasási engedéllyel a SAS használatával, amikor nem lehetett feltölteni a nagyméretű blobok. A feltöltés logika csapatmunkában vesz részt ebben a forgatókönyvben módosították. [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
-* A nyilvános hozzáférés szintje beállítása egy tároló el kell távolítani az összes hozzáférési házirendeket, és ez fordítva is igaz. Nyilvános hozzáférés szintje és a hozzáférési szabályzatok megmaradnak, vagy a kettő beállításakor. [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
-* A Tulajdonságok párbeszédpanelen "AccessTierChangeTime" byl zkrácen. Ez megoldottuk. [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
-* A "Microsoft Azure Storage Explorer –" előtag hiányzott az új könyvtár létrehozása párbeszédpanel. Ez megoldottuk. [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
-* Kisegítő lehetőségek: Az entitás hozzáadása párbeszédpanelen keresse meg a VoiceOver használatakor bonyolult volt. Fejlesztések történtek-e. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* Kisegítő lehetőségek: A háttérszíne, a műveletek és a Tulajdonságok ablak összecsukása és bontsa ki a gombjára a Kontrasztos fekete témában hasonló felhasználói felületi vezérlők inkonzisztens volt. A szín megváltozott. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
-* Kisegítő lehetőségek: Kontrasztos fekete témában a fókuszt, ha az "X" gomb a Tulajdonságok párbeszédpanelen nem volt látható. Ez megoldottuk. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
-* Kisegítő lehetőségek: A műveletek és a Tulajdonságok lapon lett(ek) subpar képernyő olvasó élmény szabványosította számos aria-értékét. A hiányzó aria-értékek hozzáadása megtörtént. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* Kisegítő lehetőségek: Összecsukott fa csomópontjait a bal oldali nem folyamatban van a kapott egy aria-kibontva értéke hamis. Ez megoldottuk. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+### <a name="fixes"></a>Hibajavítások
+*  Egyes gépeken a gyermek folyamatok elindításának ideje hosszabb időt vesz igénybe. Ha ez történne, a "gyermek folyamat nem indult el időben" hibaüzenet jelenik meg. Egy alárendelt folyamat elindításához megadott idő mostantól 20 és 90 másodperc közötti értékre nőtt. Ha a probléma továbbra is fennáll, akkor véleményezze a csatolt GitHub-problémát. [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
+* Ha olyan SAS-t használ, amely nem rendelkezik olvasási engedéllyel, akkor nem lehetett feltölteni egy nagyméretű blobot. A feltöltés logikája úgy lett módosítva, hogy működjön ebben a forgatókönyvben. [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
+* Egy tároló nyilvános hozzáférési szintjének beállítása az összes hozzáférési házirendet eltávolítja, és fordítva. Most a nyilvános hozzáférési szint és a hozzáférési szabályzatok megmaradnak a kettő beállításakor. [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
+* A "AccessTierChangeTime" csonkolt a Tulajdonságok párbeszédpanelen. Ez rögzített. [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
+* A "Microsoft Azure Storage Explorer-" előtag hiányzik az új könyvtár létrehozása párbeszédpanelen. Ez rögzített. [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
+* Kisegítő lehetőségek: az entitás hozzáadása párbeszédpanel nehezen navigálható a kommentár használatakor. Előrelépés történt. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* Kisegítő lehetőségek: a műveletek és Tulajdonságok ablaktábla összecsukás/Kibontás gombjának háttérszíne inkonzisztens volt kontrasztos megjelenítés fekete téma hasonló felhasználói felületi vezérlőkkel. A szín megváltozott. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
+* Kisegítő lehetőségek: kontrasztos megjelenítés fekete témában a Tulajdonságok párbeszédpanelen található X gomb fókusz stílusa nem látható. Ez rögzített. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* Kisegítő lehetőségek: a műveletek és tulajdonságok lapokon számos olyan ARIA-érték hiányzik, amely egy subpar képernyőolvasó élményt eredményezett. A hiányzó ARIA-értékek már hozzá lettek adva. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
+* Kisegítő lehetőségek: a bal oldalon összeomlott facsomópontok nem kaptak ARIA-kibővített értéket hamis értékre. Ez rögzített. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
 
 ### <a name="known-issues"></a>Ismert problémák
-* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez frissítse a a csoport csomópontot. További információért tekintse meg [ezt a problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/537) .
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Az Azure Stack nem támogatja a következő funkciókat, és a váratlan hibákat eredményezhet próbál használni őket az Azure Stack használata során:
+* A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információért tekintse meg [ezt a problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/537) .
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* A Azure Stack nem támogatja a következő szolgáltatásokat, és a Azure Stack használata közben nem várt hibákhoz vezethet:
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)-es frissítést.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://dotnet.microsoft.com/download/dotnet-core/2.0)-es frissítést.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1074,55 +1074,55 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-120"></a>1\.2.0-s vagy annál újabb verzió
-06/12/2018.
+## <a name="version-120"></a>1\.2.0 verziója
+06/12/2018
 
 ### <a name="new"></a>Új
-* Ha a Storage Explorer nem tudja betölteni az előfizetések a bérlők csak egy részhalmazát, majd sikeresen betöltve előfizetésekkel megjelenik együtt egy hibaüzenet kifejezetten a bérlők számára, amely nem sikerült a. [#159](https://github.com/Microsoft/AzureStorageExplorer/issues/159)
-* Windows, a frissítés érhető el, ha most kiválaszthatja a "Frissítéséhez a Bezárás". Ezzel a beállítással kivétele történik, amikor a telepítő a frissítés a Storage Explorer bezárása után fog futni. [#21](https://github.com/Microsoft/AzureStorageExplorer/issues/21)
+* Ha Storage Explorer nem tudja betölteni az előfizetéseket a bérlők csak egy részhalmazára, akkor a sikeres betöltésű előfizetések a meghiúsult bérlők számára külön hibaüzenettel együtt jelennek meg. [#159](https://github.com/Microsoft/AzureStorageExplorer/issues/159)
+* Windows rendszeren, ha egy frissítés elérhető, mostantól kiválaszthatja a "frissítés bezáráskor" lehetőséget. Ha ezt a lehetőséget választja, a frissítéshez tartozó telepítő a Storage Explorer bezárását követően fog futni. [#21](https://github.com/Microsoft/AzureStorageExplorer/issues/21)
 * A fájlmegosztás pillanatképének megtekintésekor a visszaállítási pillanatkép hozzá lett adva a fájlmegosztás-szerkesztő helyi menüjéhez. [#131](https://github.com/Microsoft/AzureStorageExplorer/issues/131)
 * A várólista törlése gomb most mindig engedélyezve van. [#135](https://github.com/Microsoft/AzureStorageExplorer/issues/135)
-* Az AD FS az Azure Stackhez bejelentkezés támogatása lett újra engedélyezni. Az Azure Stack 1804 vagy újabb verziójára szükség. [#150](https://github.com/Microsoft/AzureStorageExplorer/issues/150)
+* Az ADFS-Azure Stack való bejelentkezés támogatása újra engedélyezve lett. A Azure Stack 1804-es vagy újabb verziójára van szükség. [#150](https://github.com/Microsoft/AzureStorageExplorer/issues/150)
 
-### <a name="fixes"></a>Javítások
-* Ha, amelynek a neve lett egy másik fájlmegosztásra ugyanabban a tárfiókban lévő meg egy fájlmegosztás pillanatképekre vonatkozó, majd a fájlmegosztás pillanatképeinek is lesz feltüntetve. Ez a probléma megoldódott. [#255](https://github.com/Microsoft/AzureStorageExplorer/issues/255)
-* Csatlakoztatott SAS-n keresztül, ha hiba történt a fájl visszaállítása a fájl megosztási pillanatképből eredményez. Ez a probléma megoldódott. [#211](https://github.com/Microsoft/AzureStorageExplorer/issues/211)
-* Egy blob pillanatképének megtekintésekor a pillanatkép előléptetése művelet lett engedélyezve, amikor az alap blob és a egy egységes pillanatképet jelölt ki. A művelet csak engedélyezve van egy egységes pillanatképet választásakor. [#230](https://github.com/Microsoft/AzureStorageExplorer/issues/230)
-* Ha egy feladat (például blob letöltése) lett elindítva, és később nem sikerült, ez lenne nem automatikusan próbálja meg újra mindaddig, amíg egy másik, azonos típusú feladat indítása. Az összes feladat most kell automatikus újrapróbálkozás, függetlenül attól, hogy hány feladatok rendelkezik várólistára.
-* Szerkesztők megnyitni az újonnan létrehozott blob-tárolók a GPV2 és Blob Storage-fiókok nem rendelkezett egy hozzáférési szint oszlop. Ez a probléma megoldódott. [#109](https://github.com/Microsoft/AzureStorageExplorer/issues/109)
-* Egy hozzáférési szint oszlop néha nem jelenik meg, ha egy tárfiókot, vagy a blobtároló SAS-n keresztül lett csatolva. Az oszlopban mindig jelennek meg, de ha nincsenek hozzáférési szint beállítása üres értékkel. [#160](https://github.com/Microsoft/AzureStorageExplorer/issues/160)
-* Az újonnan feltöltött blokkblob hozzáférési szintjének beállítását le lett tiltva. Ez a probléma megoldódott. [#171](https://github.com/Microsoft/AzureStorageExplorer/issues/171)
-* A "Tartsa lapon nyissa meg" gombra a billentyűzet használatával lett meghívva, ha a billentyűzetfókusz elveszett lenne. A fókusz most, hogy megtartotta nyissa meg a lap mehet. [#163](https://github.com/Microsoft/AzureStorageExplorer/issues/163)
-* Egy lekérdezést a Lekérdezésszerkesztő, a VoiceOver volt nem engedélyezi az aktuális operátor használható leírását. Most már több beszédes legyen. [#207](https://github.com/Microsoft/AzureStorageExplorer/issues/207)
-* A rendszer nem leíró a tördelés hivatkozások a különböző szerkesztők. Lehet kifejezőbb megváltoztak. [#205](https://github.com/Microsoft/AzureStorageExplorer/issues/205)
-* Entitás hozzáadása párbeszédpanelen VoiceOver volt nem bejelentése milyen oszlop a bemeneti elem része volt. Elem leírása most már szerepel az aktuális oszlop neve. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* Választógombok és a jelölőnégyzetek nem volt látható a fókuszban lévő szegély. Ez a probléma megoldódott. [#237](https://github.com/Microsoft/AzureStorageExplorer/issues/237)
+### <a name="fixes"></a>Hibajavítások
+* Ha olyan fájlmegosztás pillanatképeit tekinti meg, amelynek a neve egy másik fájlmegosztás előtagja ugyanabban a Storage-fiókban, akkor a többi fájlmegosztás pillanatképei is szerepelni fognak. A probléma kijavítva. [#255](https://github.com/Microsoft/AzureStorageExplorer/issues/255)
+* Ha SAS-n keresztül csatolja a fájlt, a fájlmegosztás pillanatképének visszaállítása hibát eredményezhet. A probléma kijavítva. [#211](https://github.com/Microsoft/AzureStorageExplorer/issues/211)
+* Egy blob pillanatképének megtekintésekor a rendszer engedélyezte az előléptetési pillanatképet, amikor az alap blobot és egyetlen pillanatképet választott ki. A művelet mostantól csak akkor engedélyezett, ha egyetlen pillanatkép van kiválasztva. [#230](https://github.com/Microsoft/AzureStorageExplorer/issues/230)
+* Ha egyetlen feladat (például egy blob letöltése) elindult, és később sikertelen volt, akkor nem próbálja meg automatikusan újrapróbálkozni, amíg el nem indít egy ugyanilyen típusú feladatot. Az összes feladatnak most újra kell próbálkoznia, függetlenül attól, hogy hány feladat van a várólistán.
+* Az újonnan létrehozott blob-tárolók számára megnyitott szerkesztők a GPV2-ben, és a Blob Storage fiókok nem rendelkeznek hozzáférési szintű oszloppal. A probléma kijavítva. [#109](https://github.com/Microsoft/AzureStorageExplorer/issues/109)
+* A hozzáférési szintek oszlopa esetenként nem jelenik meg, ha a Storage-fiók vagy a blob-tároló SAS-n keresztül lett csatolva. Az oszlop ekkor mindig megjelenik, de üres értékkel, ha nincs hozzáférési szintű készlet. [#160](https://github.com/Microsoft/AzureStorageExplorer/issues/160)
+* Az újonnan feltöltött blokk blob hozzáférési szintjeinek beállítása le lett tiltva. A probléma kijavítva. [#171](https://github.com/Microsoft/AzureStorageExplorer/issues/171)
+* Ha a "Folytatás lap megnyitása" gomb meghívása a billentyűzet használatával megtörtént, akkor a billentyűzet fókusza elvész. A fókusz ekkor a megnyitott lapra lép. [#163](https://github.com/Microsoft/AzureStorageExplorer/issues/163)
+* A Lekérdezéskészítő lévő lekérdezések esetében a kommentár nem adta meg az aktuális operátor felhasználható leírását. Ez a leíró jellegű. [#207](https://github.com/Microsoft/AzureStorageExplorer/issues/207)
+* A különböző szerkesztők tördelési hivatkozásai nem voltak leíró jellegűek. Úgy módosították, hogy jobban leíró jellegűek legyenek. [#205](https://github.com/Microsoft/AzureStorageExplorer/issues/205)
+* Az entitás hozzáadása párbeszédpanelen a kommentár nem jelent meg, hogy a bemeneti elem melyik oszlop része volt. Az aktuális oszlop neve már szerepel az elem leírásában. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* A választógombok és a jelölőnégyzetek nem rendelkeznek látható szegéllyel a fókuszban. A probléma kijavítva. [#237](https://github.com/Microsoft/AzureStorageExplorer/issues/237)
 
 ### <a name="known-issues"></a>Ismert problémák
-* Emulátory systému, például az Azure Storage Emulator vagy Azurite, használatakor kell figyelni a kapcsolatokat, az alapértelmezett porton őket. Ellenkező esetben Storage Explorer nem képes csatlakozni hozzájuk.
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Az emulátorok, például az Azure Storage Emulator vagy a Azurite használata esetén az alapértelmezett portokon figyelnie kell a kapcsolatokat. Ellenkező esetben Storage Explorer nem fog tudni csatlakozni hozzájuk.
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)-es frissítést.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://dotnet.microsoft.com/download/dotnet-core/2.0)-es frissítést.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1131,52 +1131,52 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-110"></a>1\.1.0-s verzió
-2018/05/09
+## <a name="version-110"></a>1\.1.0-es verzió
+05/09/2018
 
 ### <a name="new"></a>Új
-* Storage Explorer mostantól támogatja a Azurite. Megjegyzés: az alapértelmezett fejlesztési végpontjaira szoftveresen kötött áll a kapcsolat Azurite.
-* Storage Explorer mostantól támogatja az elérési szint csak Blob és a GPV2-Tárfiókok esetében. További információ a hozzáférési szintekről [.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)
-* Kezdési idő már nem szükséges, SAS készítésekor.
+* A Storage Explorer mostantól támogatja a Azurite használatát. Megjegyzés: a Azurite-hez való kapcsolódás az alapértelmezett fejlesztési végpontok hardcoded.
+* A Storage Explorer mostantól támogatja a csak a Blobokhoz és a GPV2 tartozó hozzáférési szinteket. További információ a hozzáférési szintekről [.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)
+* SAS létrehozásakor már nincs szükség kezdő időpontra.
 
-### <a name="fixes"></a>Javítások
-* Az előfizetések US Government-fiókok beolvasása megszakadt. Ez a probléma megoldódott. [#61](https://github.com/Microsoft/AzureStorageExplorer/issues/61)
-* Hozzáférési szabályzatok lejárati ideje nem lett megfelelően folyamatban van mentve. Ez a probléma megoldódott. [#50](https://github.com/Microsoft/AzureStorageExplorer/issues/50)
-* Ha egy SAS URL-cím létrehozása egy elem a tárolóban, az elem nevét volt nem hozzáfűzésekor az URL-címre. Ez a probléma megoldódott. [#44](https://github.com/Microsoft/AzureStorageExplorer/issues/44)
-* SAS létrehozása esetén, amelyek az elmúlt a lejárati idő néha lenne az alapértelmezett érték. Ez a Storage Explorer használata az elmúlt alapértékei kezdési és lejárati idő miatt volt. Most már minden alkalommal, amikor megnyitja az SAS párbeszédpanel, az alapértelmezett értékek új készlet jön létre. [#35](https://github.com/Microsoft/AzureStorageExplorer/issues/35)
-* Másolás a Storage-fiókok között, ha egy 24 órás SAS jön létre. Ha a másolási tartott 24 óránál hosszabb, a Másolás meghiúsul. Megnöveltük az SAS által az elmúlt 1 hét meghiúsul egy lejárt SAS miatt másolatot esélyének csökkentése érdekében. [#62](https://github.com/Microsoft/AzureStorageExplorer/issues/62)
-* Bizonyos tevékenységek a "Mégse"gombra kattintva nem minden esetben működik. Ez a probléma megoldódott. [#125](https://github.com/Microsoft/AzureStorageExplorer/issues/125)
-* Bizonyos tevékenységek az átviteli sebesség hibás volt. Ez a probléma megoldódott. [#124](https://github.com/Microsoft/AzureStorageExplorer/issues/124)
-* A Nézet menü "Előző" helyesírás-hibás volt. Ez most már megfelelően írta be. [#71](https://github.com/Microsoft/AzureStorageExplorer/issues/71)
-* A Windows telepítő utolsó lapján kellett a Next (Tovább) gombra. A "Befejezés" gombra a megváltozott. [#70](https://github.com/Microsoft/AzureStorageExplorer/issues/70)
-* TAB billentyű fókusz nem látható a párbeszédpanelek gombjain, a hibrid kapcsolat fekete téma használata esetén. Most már látható. [#64](https://github.com/Microsoft/AzureStorageExplorer/issues/64)
-* A kis-és az "Automatikus feloldása" műveletek a tevékenységnaplóban hibás volt. Már megfelelő. [#51](https://github.com/Microsoft/AzureStorageExplorer/issues/51)
-* Egy táblából egy entitás törlésekor megerősítését kéri a párbeszédpanelen megjelenik a hibajelző ikon. A párbeszédpanel már használja egy figyelmeztető ikon. [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
+### <a name="fixes"></a>Hibajavítások
+* Az Egyesült államokbeli kormányzati fiókokra vonatkozó előfizetések beolvasása megszakadt. A probléma kijavítva. [#61](https://github.com/Microsoft/AzureStorageExplorer/issues/61)
+* A hozzáférési házirendek lejárati ideje nem lett megfelelően mentve. A probléma kijavítva. [#50](https://github.com/Microsoft/AzureStorageExplorer/issues/50)
+* Egy tárolóban lévő elem SAS URL-címének létrehozásakor az elem neve nem lett hozzáfűzve az URL-címhez. A probléma kijavítva. [#44](https://github.com/Microsoft/AzureStorageExplorer/issues/44)
+* SAS létrehozásakor a lejárt lejárati idő esetenként az alapértelmezett érték. Ennek oka az volt, hogy Storage Explorer az utolsó felhasznált kezdési és lejárati időt használta alapértelmezett értékként. Most, hogy minden alkalommal, amikor megnyitja az SAS párbeszédpanelt, új alapértelmezett értékek jönnek létre. [#35](https://github.com/Microsoft/AzureStorageExplorer/issues/35)
+* A Storage-fiókok közötti másoláskor a rendszer egy 24 órás SAS-t hoz létre. Ha a másolat 24 óránál hosszabb ideig tartott, akkor a másolás sikertelen lesz. Megnövelte az SAS-t az elmúlt 1 hétben, hogy csökkentse annak esélyét, hogy egy lejárt SAS miatt sikertelen volt a másolás. [#62](https://github.com/Microsoft/AzureStorageExplorer/issues/62)
+* Egyes tevékenységek a "Mégse" gombra kattintva nem mindig működnek. A probléma kijavítva. [#125](https://github.com/Microsoft/AzureStorageExplorer/issues/125)
+* Bizonyos tevékenységek esetében az átviteli sebesség helytelen volt. A probléma kijavítva. [#124](https://github.com/Microsoft/AzureStorageExplorer/issues/124)
+* A Nézet menü "Previous" (előző) helyesírása helytelen volt. A szolgáltatás már helyesen van írva. [#71](https://github.com/Microsoft/AzureStorageExplorer/issues/71)
+* A Windows Installer utolsó lapja "Next" (tovább) gombra mutat. Egy "Finish" (Befejezés) gombra változott. [#70](https://github.com/Microsoft/AzureStorageExplorer/issues/70)
+* A TAB billentyű a HC fekete téma használatakor nem látható a párbeszédpanelek gombjain. Most már látható. [#64](https://github.com/Microsoft/AzureStorageExplorer/issues/64)
+* A tevékenység naplójában lévő műveletek "automatikus feloldása" burkolata helytelen. Most már helyes. [#51](https://github.com/Microsoft/AzureStorageExplorer/issues/51)
+* Ha egy táblából töröl egy entitást, akkor a megerősítést kérő párbeszédpanel hibaüzenetet jelenít meg. A párbeszédpanel most egy figyelmeztető ikont használ. [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
 
 ### <a name="known-issues"></a>Ismert problémák
-* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha ez nem oldja fel a tiltást, kérjük, véleményezze a [problémát](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A OneDrive mappából való feltöltés nem működik a NodeJS hibája miatt. A hiba javítva lett, de még nincs integrálva az Elektronba.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)-es frissítést.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://dotnet.microsoft.com/download/dotnet-core/2.0)-es frissítést.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1185,64 +1185,64 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
 
-## <a name="version-100"></a>1\.0.0-s verziójának
-04/16 és 2018.
+## <a name="version-100"></a>A 1.0.0 verziója
+04/16/2018
 
 ### <a name="new"></a>Új
-* Lehetővé teszi, hogy a Storage Explorer az azonos fióktároló adatokként a Visual Studio 2017 fejlett hitelesítést. Ez a funkció használatához szüksége lesz a fiókok újra bejelentkezni, és újra beállítani a szűrt előfizetések.
-* AAD által támogatott Azure Stack-fiókok esetében Storage Explorer-kezelő most beolvassa Azure Stack-előfizetést, amikor a "Cél Azure Stack" engedélyezve van. Már nincs szüksége egy egyéni bejelentkezési környezetet hozhat létre.
-* Gyorsabb navigációt parancsikonokat bővült. Ezek közé tartoznak a különböző panelek váltását, és a szerkesztők közötti áthelyezése. Tekintse meg a Nézet menü További részletekért.
-* Storage Explorer visszajelzés most lakik a Githubon. Ha a bal alsó sarokban található visszajelzés gombra kattint, a [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues)gombra kattintva elérheti a problémák oldalát. Kérdéseit elküldheti a javaslatokat, problémák jelentése, kérdéseket tehet fel, vagy hagyja üresen a visszajelzés bármilyen más formájában.
-* Ha SSL-tanúsítványokkal kapcsolatos problémákba ütközik, és nem találja a jogsértő tanúsítványt, most már elindíthatja a Storage Explorert a parancssorból a `--ignore-certificate-errors` jelzővel. Ez a jelző indításakor Storage Explorer figyelmen kívül hagyja az SSL-tanúsítvánnyal kapcsolatos hiba.
-* Már létezik egy "Letöltés" lehetőséget a helyi menüben a blobok és fájlok elemek.
-* Javított kisegítő lehetőségek és képernyőolvasó támogatása. Ha a kisegítő lehetőségek valamelyikét használja, további információért tekintse meg a [kisegítő lehetőségek dokumentációját](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility) .
-* Storage Explorer Electron 1.8.3 használja
+* Továbbfejlesztett hitelesítés, amely lehetővé teszi, hogy Storage Explorer ugyanazt a fiókot használja, mint a Visual Studio 2017. A szolgáltatás használatához újra be kell jelentkeznie a fiókjaiba, és újra be kell állítania a szűrt előfizetéseket.
+* A HRE által támogatott Azure Stack fiókok esetében Storage Explorer most lekéri Azure Stack előfizetéseket, ha engedélyezve van a "Target Azure Stack". Már nem kell egyéni bejelentkezési környezetet létrehoznia.
+* Több parancsikon lett hozzáadva a gyorsabb navigáláshoz. Ezek közé tartoznak a különböző panelek és a szerkesztők közötti váltás. További részletekért tekintse meg a Nézet menüt.
+* Storage Explorer visszajelzés most a GitHubon él. Ha a bal alsó sarokban található visszajelzés gombra kattint, a [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues)gombra kattintva elérheti a problémák oldalát. Nyugodtan javaslatokat tehet, jelenthet problémákat, kérdéseket tehet fel, vagy bármilyen más visszajelzést is küldhet.
+* Ha SSL-tanúsítványokkal kapcsolatos problémákba ütközik, és nem találja a jogsértő tanúsítványt, most már elindíthatja a Storage Explorert a parancssorból a `--ignore-certificate-errors` jelzővel. Ha ezzel a jelzővel indult el, Storage Explorer figyelmen kívül hagyja az SSL-tanúsítványok hibáit.
+* A blob és a file items (helyi) menüjében már van egy "Letöltés" lehetőség.
+* Továbbfejlesztett kisegítő lehetőségek és képernyőolvasók támogatása. Ha a kisegítő lehetőségek valamelyikét használja, további információért tekintse meg a [kisegítő lehetőségek dokumentációját](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility) .
+* Storage Explorer mostantól az Electron 1.8.3-t használja
 
 ### <a name="breaking-changes"></a>Kompatibilitástörő változások
-* Storage Explorer egy új hitelesítési tár változott. A kapcsolót, hogy a szalagtár részeként kell a fiókok újra bejelentkezni, és újra beállítani a szűrt előfizetések
-* A bizalmas adatok titkosításához használt módszer megváltozott. Emiatt előfordulhat, hogy egyes kellene újra hozzáadni a gyors hozzáférés elemeket, illetve, hogy kapcsolt erőforrások kellene csatolni.
+* Storage Explorer új hitelesítési tárba váltott. A könyvtárra váltás részeként újra be kell jelentkeznie a fiókjaiba, és újra be kell állítania a szűrt előfizetéseket
+* A bizalmas adatok titkosítására használt módszer megváltozott. Ez azt eredményezheti, hogy a gyors elérésű elemeket újra hozzá kell adni, és/vagy néhány csatlakoztatott erőforrást újra kell csatolni.
 
-### <a name="fixes"></a>Javítások
-* Néhány felhasználó proxyk mögött kell csoport blob feltöltések vagy letöltések szakította meg egy "nem oldható fel a(z)" hibaüzenet jelenik meg. Ez a probléma megoldódott.
-* Ha be volt szükség egy közvetlen hivatkozást, és kattintson a "Bejelentkezés" üzenet a használatával egy üres párbeszédpanelt kellene felugró közben. Ez a probléma megoldódott.
-* Linuxon, ha a Storage Explorer nem tudja elindítani egy GPU folyamat összeomlása miatt most értesíteni fogjuk az összeomlás előtt a szolgáltatás használatához a "--disable-gpu" kapcsolót, és a Storage Explorer fogja automatikusan újraindítja a kapcsoló engedélyezve van.
-* Érvénytelen hozzáférési szabályzatok a hozzáférési szabályzatok párbeszédpanelen identitás nehéz volt. Érvénytelen hozzáférési szabályzat azonosítói most leírt pirosat a láthatóságot.
-* A tevékenységnapló néha kellene tevékenység különböző részei közötti szóköz nagy területéhez. Ez a probléma megoldódott.
-* A tábla Lekérdezésszerkesztő egy időbélyegző-záradék érvénytelen állapotban marad, és ezután módosítását kísérelte meg egy másik záradékban, ha a szerkesztő szeretné rögzíteni. A szerkesztő most visszaállítja a timestamp záradék utolsó érvényes állapotát egy másik záradék változás észlelésekor.
-* A fanézetben a keresési lekérdezésben gépelés közben szüneteltetésekor kezdik meg a Keresés és fókusz lenne ellophatják a szövegmezőben. Most meg kell explicit módon kezdeni a keresést az "Enter" billentyűt lenyomásával, vagy kattintson a start Keresés gombra.
-* A "Get közös hozzáférésű Jogosultságkód" parancsot bővítés néha le lesz tiltva, ha a jobb gombbal kattintva a fájlmegosztásban lévő fájl. Ez a probléma megoldódott.
-* Az erőforrás facsomópont az aktuális keresés közben lett szűrve, ha Ön nem sikerült a erőforrás fába lapon és a nyílbillentyűkkel navigálhat az erőforrás-fa. Most ha a célzott erőforrás facsomópont rejtett, az első csomópontot az erőforrás-fa lesz automatikusan fordítani.
-* Az extra elválasztó néha lenne az eszköztáron látható. Ez a probléma megoldódott.
-* A webhely-navigációs szövegmező néha túlcsordulást. Ez a probléma megoldódott.
-* A Blob- és fájlmegosztás szerkesztők néha folyamatosan frissíti, egyszerre sok fájl feltöltésekor. Ez a probléma megoldódott.
-* A "Mappa statisztika" funkció nincs szerepük volt a fájlmegosztás pillanatképeinek-kezelés nézetben. Most már le lett tiltva.
-* A Linux a Fájl menü fejeződött nem jelennek meg. Ez a probléma megoldódott.
-* Mappa feltöltése egy fájlmegosztásba alapértelmezés szerint, ha csak a mappa tartalmának feltöltve. Most az alapértelmezett viselkedést, hogy a mappa tartalmának feltöltése a fájlmegosztás a megfelelő mappájába.
-* Az eredménykészlet sorrendjét a több párbeszédpanelek gombok kellett lettek fordítva. Ez a probléma megoldódott.
-* A kapcsolódó különböző biztonsági javításokat.
+### <a name="fixes"></a>Hibajavítások
+* Néhány proxy mögötti felhasználónak a "nem sikerült feloldani" hibaüzenet jelenik meg a csoport blobjának feltöltésével vagy a letöltések megszakításával. A probléma kijavítva.
+* Ha bejelentkezésre van szükség a közvetlen hivatkozás használata során, a "Bejelentkezés" parancssorba való kattintáskor egy üres párbeszédpanel jelenik meg. A probléma kijavítva.
+* Linux rendszeren, ha Storage Explorer nem tud elindítani egy GPU-folyamat összeomlása miatt, az összeomlásról tájékoztatni fogjuk, és a "--disable-GPU" kapcsolót kell használnia, és a Storage Explorer automatikusan újraindul, ha engedélyezve van a kapcsoló.
+* Érvénytelen hozzáférési szabályzatok lettek megnehezítik a hozzáférési házirendek párbeszédablakban. A hozzáférési szabályzatok azonosítói mostantól a piros színnel jelennek meg a láthatóság érdekében.
+* A műveletnapló esetenként nagy területtel rendelkezik a tevékenységek különböző részei között. A probléma kijavítva.
+* Ha a tábla lekérdezési szerkesztőjében érvénytelen állapotba hagyott egy időbélyeg-záradékot, majd megpróbálta módosítani egy másik záradékot, a szerkesztő lefagy. A szerkesztő most visszaállítja az időbélyegző záradékot az utolsó érvényes állapotba, ha a rendszer egy másik záradékban változást észlel.
+* Ha a keresési lekérdezés fanézetbe való beírásakor szünetelteti a keresést, a keresés megkezdődik és a fókuszt a szövegmezőből ellopja. Most explicit módon meg kell kezdenie a keresést a "Enter" billentyű lenyomásával, vagy a Keresés indítása gombra kattintva.
+* A "Shared Access Signature" parancs esetenként le lesz tiltva, ha a jobb gombbal rákattint egy fájlmegosztás egyik fájljára. A probléma kijavítva.
+* Ha a fókuszban lévő erőforrás-facsomópontot a keresés során kiszűrték, nem lehet fület beilleszteni az erőforrás-fába, és a nyílbillentyűk segítségével navigáljon az erőforrás-fában. Ha a fókuszban lévő erőforrás-fa csomópont el van rejtve, akkor az erőforrás-fa első csomópontja automatikusan fókuszál.
+* Egy további elválasztó időnként a szerkesztő eszköztárán látható. A probléma kijavítva.
+* A navigációs szövegmező időnként túlcsordulást eredményezne. A probléma kijavítva.
+* A blob-és fájlmegosztás-szerkesztő időnként folyamatosan frissül, amikor sok fájlt tölt fel egyszerre. A probléma kijavítva.
+* A "mappa statisztikája" szolgáltatásnak nincs célja a fájlmegosztás-Pillanatképek kezelése nézetben. A szolgáltatás már le van tiltva.
+* Linux rendszeren a Fájl menü nem jelenik meg. A probléma kijavítva.
+* Amikor egy mappát egy fájlmegosztás számára tölt fel, alapértelmezés szerint csak a mappa tartalma lett feltöltve. Most az alapértelmezett viselkedés a mappa tartalmának feltöltése a fájlmegosztás megfelelő mappájába.
+* A gombok rendezése több párbeszédablakban megfordult. A probléma kijavítva.
+* Különböző biztonsággal kapcsolatos javítások.
 
 ### <a name="known-issues"></a>Ismert problémák
-* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* Ritka esetekben előfordulhat, hogy a fa fókusza a gyors eléréssel is elakad. A fókusz kitöltéséhez frissítheti az összeset.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)-es frissítést.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Linux-felhasználók esetén telepítenie kell a [.net Core 2,0](https://dotnet.microsoft.com/download/dotnet-core/2.0)-es frissítést.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1251,34 +1251,34 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-096"></a>Verzió 0.9.6
-2018-02-28
+## <a name="version-096"></a>0\.9.6 verziója
+02/28/2018
 
-### <a name="fixes"></a>Javítások
-* Probléma miatt nem sikerült a várt blobok és fájlok a szerkesztőben listázását. Ez a probléma megoldódott.
-* Problémát az okozza, pillanatképnézet helytelenül megjelenítendő elemek közötti váltáskor. Ez a probléma megoldódott.
+### <a name="fixes"></a>Hibajavítások
+* Egy hiba miatt nem sikerült a várt Blobok vagy fájlok listázása a szerkesztőben. A probléma kijavítva.
+* Hiba történt a pillanatkép-nézetek közötti váltás miatt, hogy az elemek helytelenek jelenjenek meg. A probléma kijavítva.
 
 ### <a name="known-issues"></a>Ismert problémák
-* Storage Explorer nem támogatja az AD FS-fiókokat.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* A fiók beállítások panel jelenhet meg, hogy szeretne-e az előfizetések szűrése hitelesítő adatok újbóli.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* A Storage Explorer nem támogatja az ADFS-fiókokat.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az [itt](https://github.com/Azure/azure-storage-node/issues/317)leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* Előfordulhat, hogy a Fiókbeállítások panel megmutathatja, hogy újra meg kell adnia a hitelesítő adatokat az előfizetések szűréséhez.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1287,47 +1287,47 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-095"></a>Verzió 0.9.5
-2018/02/06
+## <a name="version-095"></a>0\.9.5 verziója
+02/06/2018
 
 ### <a name="new"></a>Új
 
-* Fájlmegosztások pillanatképeinek támogatása:
-    * Hozzon létre, és a fájlmegosztások pillanatképeinek kezelése.
-    * Könnyedén nézetváltás a fájlmegosztások pillanatképeinek között is.
-    * Állítsa vissza a fájlok korábbi verzióit.
-* Az Azure Data Lake Store előzetes verziós támogatást:
-    * Csatlakozzon az ADLS-erőforrások több fiókban.
-    * Csatlakozhat, és megoszthatja az ADLS-erőforrások ADL URI-k használatával.
-    * Hajtsa végre az alapszintű fájl vagy mappa műveletek rekurzív módon.
-    * A gyors hozzáférés PIN-kód egyes mappák.
-    * Mappa statisztikái jelennek meg.
+* Fájlmegosztás-Pillanatképek támogatása:
+    * Pillanatképek létrehozása és kezelése a fájlmegosztás számára.
+    * A tallózással könnyedén válthat a fájlmegosztás pillanatképei között.
+    * A fájlok korábbi verzióinak visszaállítása.
+* A Azure Data Lake Store előzetes verziójának támogatása:
+    * Több fiók között csatlakozhat a ADLS-erőforrásokhoz.
+    * ADLS-erőforrások kapcsolódása és megosztása ADL URI-k használatával.
+    * A fájl-és mappaengedélyek alapszintű műveleteit rekurzív módon végezze el.
+    * Egyedi mappák rögzítése a gyors hozzáférés érdekében.
+    * Mappa statisztikáinak megjelenítése
 
-### <a name="fixes"></a>Javítások
-* Indítási teljesítménnyel kapcsolatos fejlesztések.
+### <a name="fixes"></a>Hibajavítások
+* Az indítási teljesítmény fejlesztése.
 * Különböző hibajavítások.
 
 ### <a name="known-issues"></a>Ismert problémák
-* Storage Explorer nem támogatja az AD FS-fiókokat.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* A fiók beállítások panel jelenhet meg, hogy szeretne-e az előfizetések szűrése hitelesítő adatok újbóli.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* A Storage Explorer nem támogatja az ADFS-fiókokat.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* Előfordulhat, hogy a Fiókbeállítások panel megmutathatja, hogy újra meg kell adnia a hitelesítő adatokat az előfizetések szűréséhez.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1336,45 +1336,45 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-094-and-093"></a>0\.9.4 és 0.9.3-as verzió
-2018-01-21
+## <a name="version-094-and-093"></a>0\.9.4 és 0.9.3 verzió
+01/21/2018
 
 ### <a name="new"></a>Új
-* A meglévő Storage Explorer ablak lesz újra felhasználni mikor:
-    * A Storage Explorerben jön létre közvetlen hivatkozások megnyitásakor.
+* A meglévő Storage Explorer ablakát a rendszer újra felhasználja:
+    * Storage Explorer-ben generált közvetlen hivatkozások megnyitása.
     * Storage Explorer megnyitása a portálról.
-    * Nyissa meg a Storage Explorer az Azure Storage a VS Code-bővítményében (hamarosan).
-* A hozzáadott lehetőség új ablak megnyitása a Storage Explorer a Storage Explorerben.
-    * A Windows van egy "Új ablakban" lehetőséget a Fájl menü alatt, és a helyi menüben, a tálcán.
-    * A Mac van egy "Új ablakban" lehetőséget az alkalmazás menüpont alatt.
+    * Storage Explorer megnyitása az Azure Storage VS Code bővítménnyel (hamarosan elérhető).
+* Új Storage Explorer ablak megnyitásának lehetősége a Storage Explorer belülről.
+    * A Windows esetében egy "új ablak" lehetőség található a Fájl menü és a feladat sávjának helyi menüjében.
+    * Mac esetén az alkalmazás menüben az új ablak lehetőség van kiválasztva.
 
-### <a name="fixes"></a>Javítások
-* Egy biztonsági javítva. Az Önnek legkorábbi, 0.9.4 frissítsen.
-* Régi tevékenységek is nem megfelelő alatt lettek törölve. Ez az érintett hosszabb ideig futó feladatok teljesítményét. Akkor most folyamatban törlődnek megfelelően.
-* Műveletek, például nagy mennyiségű fájlok és könyvtárak alkalmanként okozna befagyasztani a Storage Explorerben. Az Azure-fájlmegosztások kérelmek most szabályozott rendszer erőforrás-használat korlátozásához.
+### <a name="fixes"></a>Hibajavítások
+* Kijavítva egy biztonsági problémát. A lehető leghamarabb frissítsen a 0.9.4.
+* A régi tevékenységek nem lettek megfelelően törölve. Ez hatással volt a hosszú ideig futó feladatok teljesítményére. Mostantól megfelelően törlődnek.
+* A nagy mennyiségű fájlt és könyvtárat érintő műveletek időnként Storage Explorer lefagyását okozzák. A fájlmegosztás Azure-ra irányuló kérései mostantól szabályozva vannak a rendszererőforrás-használat korlátozására.
 
 ### <a name="known-issues"></a>Ismert problémák
-* Storage Explorer nem támogatja az AD FS-fiókokat.
-* Billentyűparancsok a "Nézet Explorer" és "Nézet felügyeletének" kell lennie a Ctrl / Cmd + Shift + E, és a Ctrl / Cmd + Shift + A jelölik.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* A fiók beállítások panel jelenhet meg, hogy szeretne-e az előfizetések szűrése hitelesítő adatok újbóli.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* A Storage Explorer nem támogatja az ADFS-fiókokat.
+* A "View Explorer" és a "Fiókkezelés megtekintése" billentyűparancsoknak CTRL/cmd + SHIFT + E és CTRL/cmd + SHIFT + A billentyűkombinációnak kell lenniük.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* Előfordulhat, hogy a Fiókbeállítások panel megmutathatja, hogy újra meg kell adnia a hitelesítő adatokat az előfizetések szűréséhez.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer --disable-gpu
     ```
 
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1383,62 +1383,62 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-092"></a>Verzió 0.9.2
+## <a name="version-092"></a>0\.9.2 verziója
 11/01/2017
 
 ### <a name="hotfixes"></a>Gyorsjavítások
-* Váratlan adatok változásának voltak, attól függően, a helyi időzónát táblaentitások Edm.DateTime értékeit szerkesztése során. A szerkesztő használja egy egyszerű szöveges mezőben Edm.DateTime értékek pontos, konzisztens ad.
-* A blobok nevére és kulcsára csatolt csoport feltöltése/letöltése nem indul el. Ez a probléma megoldódott.
-* Korábban lenne Storage Explorer csak kérni fogja, hogy hitelesítse magát újra egy elavult fiókot, ha egy, vagy a fiók-előfizetések több lett kiválasztva. Most már a Tártallózó felkéri, még akkor is, ha a fiók teljes kiszűrte.
-* A végpontok tartományát az Azure US Government hibás volt. Megoldottuk.
-* Az Alkalmaz gombra a fiókok kezelése panelen néha nehéz kattintson volt. Ez már nem történjen.
+* Váratlan adatváltozások voltak lehetségesek, amikor a helyi időzónától függően EDM. dátum és idő értékeket szerkeszt. A szerkesztő mostantól egy egyszerű szövegmezőt használ, amely precíz, konzisztens vezérlést biztosít a EDM. DateTime értékekhez képest.
+* Blobok csoportjának feltöltése/letöltése, ha a név és a kulcs csatolása nem indul el. A probléma kijavítva.
+* Korábban Storage Explorer csak akkor kéri egy elavult fiók ismételt hitelesítését, ha egy vagy több fiók előfizetése ki van választva. Most Storage Explorer akkor is rákérdez, ha a fiók teljesen ki van szűrve.
+* Az Azure US government végpontok tartománya helytelen. Megoldódott.
+* Néha nehéz rákattintani a Manage accounts (fiókok kezelése) panel Apply (alkalmaz) gombjára. Ez már nem történhet meg.
 
 ### <a name="new"></a>Új
-* Azure Cosmos DB előzetes verziós támogatást:
+* A Azure Cosmos DB előzetes verziójának támogatása:
     * [Online dokumentáció](./cosmos-db/storage-explorer.md)
     * Adatbázisok és gyűjtemények létrehozása
     * Adatok kezelése
-    * Lekérdezés, hozzon létre vagy dokumentumok törlése
-    * Frissítse a tárolt eljárások, felhasználó által definiált függvények és eseményindítók
-    * Kapcsolati karakterláncok használatával csatlakozhat, és az adatbázisok kezelése
-* Javult a teljesítmény a sok kis méretű BLOB feltöltése/letöltése.
-* "Az összes újra" művelet hozzáadva, ha hibákat észlel egy blob feltöltése vagy a blob letöltése csoport.
-* Storage Explorer most szüneteltetheti a ismétlés során a blob feltöltése/letöltése, ha észleli a hálózati kapcsolat megszakadt. Ismétlés majd folytatni, lett, hogy a hálózati kapcsolat újbóli létesítése után.
-* Képes hozzáadni "Zárja be az összes", "Bezárás mások" és a "Bezárás" lapon helyi menüjében.
-* Storage Explorer mostantól a natív párbeszédpanelek és nativního kontextu menüket használja.
-* Storage Explorer mostantól könnyebben elérhetővé vált. Fejlesztések a következők:
-    * Továbbfejlesztett képernyőolvasó támogatása, a Windows NVDA, valamint a VoiceOver Mac gépen
-    * Továbbfejlesztett kontrasztos témája
-    * A bejárási és billentyűzettel billentyűzetfókuszt javítások
+    * Dokumentumok lekérdezése, létrehozása vagy törlése
+    * Tárolt eljárások, felhasználó által definiált függvények vagy eseményindítók frissítése
+    * Kapcsolati karakterláncok használata az adatbázisok csatlakoztatásához és kezeléséhez
+* Javítottuk a sok kis blob feltöltésének/letöltésének teljesítményét.
+* Egy "újrapróbálkozás az összes művelettel" műveletet adott meg, ha hiba történt egy blob-feltöltési csoport vagy egy blob letöltési csoportjában.
+* A Storage Explorer most szünetelteti az iterációt a blob feltöltése/letöltése során, ha az észleli, hogy a hálózati kapcsolat megszakadt. Ezután folytathatja az iterációt a hálózati kapcsolatok újbóli létrehozása után.
+* Lehetőség van az "összes lezárása", a "Bezárás mások" és a "Bezárás" fülek hozzáadására a helyi menün keresztül.
+* Storage Explorer mostantól natív párbeszédpaneleket és natív helyi menüket használ.
+* A Storage Explorer mostantól elérhető. A tökéletesítések a következők:
+    * Továbbfejlesztett képernyőolvasó-támogatás, a Windows rendszerhez készült NVDA, valamint a Mac-hez készült kommentár
+    * Javított kontrasztos
+    * A billentyűzet-tabbing és a billentyűzet fókuszának javításai
 
-### <a name="fixes"></a>Javítások
-* Ha próbált megnyitni vagy letölt egy blobot egy érvénytelen Windows nevére, a művelet sikertelen lesz. Storage Explorer mostantól észleli, ha egy blob neve érvénytelen, és kérje meg, ha szeretne kódolni, vagy hagyja ki a blob. Storage Explorer is észlelni fogja, ha a fájl nevét úgy tűnik, hogy értéket kódolni kell, és kérje meg, ha kívánja dekódolni a feltöltés előtt.
-* Blob feltöltésekor a blob céltárolón-szerkesztő lenne néha nem megfelelően frissülnek. Ez a probléma megoldódott.
-* Kapcsolati karakterláncok és a SAS URI-k számos formája támogatása közleményében szerepelt. Az összes ismert problémák foglalkoztak egyelőre küldjön visszajelzést, ha problémák merülnek fel további.
-* A frissítési értesítés: a 0.9.0 az egyes felhasználók megszakadt. Ezt a problémát megjavítottuk, és a hiba által érintettek számára [a Storage Explorer legújabb](https://azure.microsoft.com/features/storage-explorer/)verzióját manuálisan is letöltheti.
+### <a name="fixes"></a>Hibajavítások
+* Ha egy érvénytelen Windows-fájlnévvel rendelkező blobot próbált megnyitni vagy letölteni, a művelet sikertelen lesz. A Storage Explorer mostantól felismeri, ha a blob neve érvénytelen, és megkérdezi, hogy szeretné-e kódolni vagy kihagyni a blobot. A Storage Explorer azt is felismeri, hogy a fájl neve kódolásra van-e kódolva, és megkérdezi, hogy szeretné-e dekódolni a feltöltés előtt.
+* A blob feltöltése során a cél blob-tároló szerkesztője esetenként nem fog megfelelően frissülni. A probléma kijavítva.
+* A kapcsolatok és SAS URI-k romlott különböző formáinak támogatása. Minden ismert problémát megoldottunk, de küldjön visszajelzést, ha további problémákba ütközik.
+* A frissítési értesítés megszakadt a 0.9.0 egyes felhasználói számára. Ezt a problémát megjavítottuk, és a hiba által érintettek számára [a Storage Explorer legújabb](https://azure.microsoft.com/features/storage-explorer/)verzióját manuálisan is letöltheti.
 
 ### <a name="known-issues"></a>Ismert problémák
-* Storage Explorer nem támogatja az AD FS-fiókokat.
-* Billentyűparancsok a "Nézet Explorer" és "Nézet felügyeletének" kell lennie a Ctrl / Cmd + Shift + E, és a Ctrl / Cmd + Shift + A jelölik.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* A fiók beállítások panel jelenhet meg, hogy szeretne-e az előfizetések szűrése hitelesítő adatok újbóli.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* A Storage Explorer nem támogatja az ADFS-fiókokat.
+* A "View Explorer" és a "Fiókkezelés megtekintése" billentyűparancsoknak CTRL/cmd + SHIFT + E és CTRL/cmd + SHIFT + A billentyűkombinációnak kell lenniük.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* Előfordulhat, hogy a Fiókbeállítások panel megmutathatja, hogy újra meg kell adnia a hitelesítő adatokat az előfizetések szűréséhez.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer --disable-gpu
     ```
 
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1447,54 +1447,54 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-091-and-090"></a>0\.9.1 és 0.9.0-s verziója
+## <a name="version-091-and-090"></a>0\.9.1 és 0.9.0 verzió
 10/20/2017
 ### <a name="new"></a>Új
-* Azure Cosmos DB előzetes verziós támogatást:
+* A Azure Cosmos DB előzetes verziójának támogatása:
     * [Online dokumentáció](./cosmos-db/storage-explorer.md)
     * Adatbázisok és gyűjtemények létrehozása
     * Adatok kezelése
-    * Lekérdezés, hozzon létre vagy dokumentumok törlése
-    * Frissítse a tárolt eljárások, felhasználó által definiált függvények és eseményindítók
-    * Kapcsolati karakterláncok használatával csatlakozhat, és az adatbázisok kezelése
-* Javult a teljesítmény a sok kis méretű BLOB feltöltése/letöltése.
-* "Az összes újra" művelet hozzáadva, ha hibákat észlel egy blob feltöltése vagy a blob letöltése csoport.
-* Storage Explorer most szüneteltetheti a ismétlés során a blob feltöltése/letöltése, ha észleli a hálózati kapcsolat megszakadt. Ismétlés majd folytatni, lett, hogy a hálózati kapcsolat újbóli létesítése után.
-* Képes hozzáadni "Zárja be az összes", "Bezárás mások" és a "Bezárás" lapon helyi menüjében.
-* Storage Explorer mostantól a natív párbeszédpanelek és nativního kontextu menüket használja.
-* Storage Explorer mostantól könnyebben elérhetővé vált. Fejlesztések a következők:
-    * Továbbfejlesztett képernyőolvasó támogatása, a Windows NVDA, valamint a VoiceOver Mac gépen
-    * Továbbfejlesztett kontrasztos témája
-    * A bejárási és billentyűzettel billentyűzetfókuszt javítások
+    * Dokumentumok lekérdezése, létrehozása vagy törlése
+    * Tárolt eljárások, felhasználó által definiált függvények vagy eseményindítók frissítése
+    * Kapcsolati karakterláncok használata az adatbázisok csatlakoztatásához és kezeléséhez
+* Javítottuk a sok kis blob feltöltésének/letöltésének teljesítményét.
+* Egy "újrapróbálkozás az összes művelettel" műveletet adott meg, ha hiba történt egy blob-feltöltési csoport vagy egy blob letöltési csoportjában.
+* A Storage Explorer most szünetelteti az iterációt a blob feltöltése/letöltése során, ha az észleli, hogy a hálózati kapcsolat megszakadt. Ezután folytathatja az iterációt a hálózati kapcsolatok újbóli létrehozása után.
+* Lehetőség van az "összes lezárása", a "Bezárás mások" és a "Bezárás" fülek hozzáadására a helyi menün keresztül.
+* Storage Explorer mostantól natív párbeszédpaneleket és natív helyi menüket használ.
+* A Storage Explorer mostantól elérhető. A tökéletesítések a következők:
+    * Továbbfejlesztett képernyőolvasó-támogatás, a Windows rendszerhez készült NVDA, valamint a Mac-hez készült kommentár
+    * Javított kontrasztos
+    * A billentyűzet-tabbing és a billentyűzet fókuszának javításai
 
-### <a name="fixes"></a>Javítások
-* Ha próbált megnyitni vagy letölt egy blobot egy érvénytelen Windows nevére, a művelet sikertelen lesz. Storage Explorer mostantól észleli, ha egy blob neve érvénytelen, és kérje meg, ha szeretne kódolni, vagy hagyja ki a blob. Storage Explorer is észlelni fogja, ha a fájl nevét úgy tűnik, hogy értéket kódolni kell, és kérje meg, ha kívánja dekódolni a feltöltés előtt.
-* Blob feltöltésekor a blob céltárolón-szerkesztő lenne néha nem megfelelően frissülnek. Ez a probléma megoldódott.
-* Kapcsolati karakterláncok és a SAS URI-k számos formája támogatása közleményében szerepelt. Az összes ismert problémák foglalkoztak egyelőre küldjön visszajelzést, ha problémák merülnek fel további.
-* A frissítési értesítés: a 0.9.0 az egyes felhasználók megszakadt. Ezt a problémát megjavítottuk, és a hiba által érintettek számára [a Storage Explorer legújabb](https://azure.microsoft.com/features/storage-explorer/) verzióját manuálisan is letöltheti.
+### <a name="fixes"></a>Hibajavítások
+* Ha egy érvénytelen Windows-fájlnévvel rendelkező blobot próbált megnyitni vagy letölteni, a művelet sikertelen lesz. A Storage Explorer mostantól felismeri, ha a blob neve érvénytelen, és megkérdezi, hogy szeretné-e kódolni vagy kihagyni a blobot. A Storage Explorer azt is felismeri, hogy a fájl neve kódolásra van-e kódolva, és megkérdezi, hogy szeretné-e dekódolni a feltöltés előtt.
+* A blob feltöltése során a cél blob-tároló szerkesztője esetenként nem fog megfelelően frissülni. A probléma kijavítva.
+* A kapcsolatok és SAS URI-k romlott különböző formáinak támogatása. Minden ismert problémát megoldottunk, de küldjön visszajelzést, ha további problémákba ütközik.
+* A frissítési értesítés megszakadt a 0.9.0 egyes felhasználói számára. Ezt a problémát megjavítottuk, és a hiba által érintettek számára [a Storage Explorer legújabb](https://azure.microsoft.com/features/storage-explorer/) verzióját manuálisan is letöltheti.
 
 ### <a name="known-issues"></a>Ismert problémák
-* Storage Explorer nem támogatja az AD FS-fiókokat.
-* Billentyűparancsok a "Nézet Explorer" és "Nézet felügyeletének" kell lennie a Ctrl / Cmd + Shift + E, és a Ctrl / Cmd + Shift + A jelölik.
-* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* A fiók beállítások panel jelenhet meg, hogy szeretne-e az előfizetések szűrése hitelesítő adatok újbóli.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
+* A Storage Explorer nem támogatja az ADFS-fiókokat.
+* A "View Explorer" és a "Fiókkezelés megtekintése" billentyűparancsoknak CTRL/cmd + SHIFT + E és CTRL/cmd + SHIFT + A billentyűkombinációnak kell lenniük.
+* A Azure Stack célzásakor előfordulhat, hogy bizonyos fájlokat a hozzáfűző Blobok feltöltésével nem sikerül feltölteni.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ennek az az oka, hogy az itt leírtak szerint az itt leírt megszakítási szűrőt használjuk.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* Előfordulhat, hogy a Fiókbeállítások panel megmutathatja, hogy újra meg kell adnia a hitelesítő adatokat az előfizetések szűréséhez.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha a Storage Explorer üres (üres) főablakot jelenít meg, akkor a `--disable-gpu` kapcsoló hozzáadásával kipróbálhatja a parancssorból a Storage Explorer indítását, és letilthatja a GPU-gyorsítást:
 
     ```
     ./StorageExplorer --disable-gpu
     ```
 
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1503,38 +1503,38 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-0816"></a>Verzió 0.8.16
+## <a name="version-0816"></a>0\.8.16 verziója
 8/21/2017
 
 ### <a name="new"></a>Új
-* Amikor megnyit egy blob, a Storage Explorer felkéri, hogy a letöltött fájl feltöltése, ha változás észlelésekor
-* Azure Stack bejelentkezési élmény
-* Feltöltése/letöltése sok kis méretű fájl egy időben teljesítményének növelése
+* Amikor megnyit egy blobot, Storage Explorer kéri a letöltött fájl feltöltését, ha a rendszer változást észlel
+* Továbbfejlesztett Azure Stack bejelentkezési élmény
+* Javítottuk a sok kis fájl feltöltésének vagy letöltésének teljesítményét egy időben
 
 
-### <a name="fixes"></a>Javítások
-* Néhány blob esetében válassza a "replace" során egy feltöltési ütközés néha eredményez a feltöltés folyamatban van az újraindítása.
-* 0\.8.15 verzióban feltöltések lenne néha – megrekedésének 99 %-ában.
-* Ha a fájlok feltöltése egy fájlmegosztásba, ha úgy döntött, hogy egy könyvtárat, amely nem történt meg feltölteni, még létezik, a feltöltés sikertelen lesz.
-* Storage Explorer helytelenül lett létrehozni a közös hozzáférésű jogosultságkódok és a tábla lekérdezések időbélyegzőket.
+### <a name="fixes"></a>Hibajavítások
+* Egyes blob-típusok esetén a feltöltési ütközés során a "csere" gombra kattintva időnként a feltöltés újraindul.
+* A 0.8.15 verzióban a feltöltések időnként 99%-nál is elakadnak.
+* Ha fájlokat tölt fel egy fájlmegosztás számára, ha úgy döntött, hogy egy olyan könyvtárba tölti fel a fájlt, amely még nem létezik, akkor a feltöltés sikertelen lesz.
+* A Storage Explorer helytelenül eredményezte a megosztott hozzáférési aláírások és a táblák lekérdezése időbélyegét.
 
 
 ### <a name="known-issues"></a>Ismert problémák
-* Név és kulcs kapcsolati karakterlánca nem működik. Ez a következő kiadás javítja. Addig is használhat csatolása nevére és kulcsára.
-* Próbál nyissa meg a fájlt a Windows fájl neve érvénytelen, ha a letöltés egy fájl nem található az hibát eredményez.
-* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ez az az Azure Storage-csomópont kódtár korlátozása.
-* Miután befejezte a blob feltöltése, a lapon, ami a feltöltés kezdeményezett frissülnek. Ez előző viselkedés eltérő, és is eredményezheti, hogy biztosan megfeleljen az a tároló gyökérkönyvtárába visszalépteti.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
-* A fiók beállítások panel jelenhet meg, hogy szeretne-e az előfizetések szűrése hitelesítő adatok újbóli.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* A név és a kulcs típusú kapcsolatok karakterláncának használata jelenleg nem működik. A következő kiadásban lesz kijavítva. Addig is használhatja a csatolást a név és a kulcs használatával.
+* Ha érvénytelen Windows-fájlnévvel próbál megnyitni egy fájlt, a letöltés nem található hibaüzenetet eredményez.
+* Ha egy feladatban a "Mégse" gombra kattint, eltarthat egy ideig, amíg a feladat meg nem szakítja a műveletet. Ez az Azure Storage-csomópont függvénytárának korlátozása.
+* A blob feltöltésének befejezése után a feltöltést kezdeményező lap frissül. Ez a korábbi viselkedés változása, és azt is eredményezi, hogy vissza kell térnie a tároló gyökeréhez.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
+* Előfordulhat, hogy a Fiókbeállítások panel megmutathatja, hogy újra meg kell adnia a hitelesítő adatokat az előfizetések szűréséhez.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Ubuntu 14,04-es felhasználóknak biztosítania kell, hogy a GCC naprakész legyen – ez a következő parancsok futtatásával, majd a gép újraindításával végezhető el:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1543,31 +1543,31 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+* Ubuntu 17,04 rendszerű felhasználók esetén telepítenie kell a GConf-ezt a következő parancsok futtatásával, majd a gép újraindításával:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-### <a name="version-0814"></a>Verzió 0.8.14
+### <a name="version-0814"></a>0\.8.14 verziója
 06/22/2017
 
 ### <a name="new"></a>Új
 
-* Számos fontos biztonsági frissítések kihasználása érdekében 1.7.2-es verzióra Electron
-* Most már gyorsan elérheti a online – hibaelhárítási útmutató a Súgó menü
+* Frissítette az Electron-verziót a 1.7.2-be, hogy kihasználhassa több kritikus biztonsági frissítést
+* Mostantól gyorsan elérheti az online hibaelhárítási útmutatót a Súgó menüből.
 * Storage Explorer hibaelhárítási [útmutató][2]
 * [Útmutató][3] Azure stack-előfizetéshez való csatlakozáshoz
 
 ### <a name="known-issues"></a>Ismert problémák
 
-* Gombok a megerősítő párbeszédpanelen delete mappa nem regisztrálja a kattintásokat Linux rendszeren. megkerülő megoldásként használja az ENTER billentyűt.
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt kell ahhoz, hogy rendelkezik a Storage Explorer elfelejtette a döntést újraindítása
-* A fájlok feltöltése egy időben és blobok legfeljebb 3 csoportok kellene hibát okozhat
-* A fiók beállítások panel jelenhet meg, hogy szeretne-e a hitelesítő adatok újbóli annak érdekében, hogy az előfizetések szűrése
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* Ubuntu 14.04-es telepítés van szüksége a gcc-verziójához, vagy frissített – frissítésére lépéseket alább:
+* A mappa törlése megerősítő párbeszédpanelen lévő gombok nem regisztrálják magukat a Linuxon futó egérkattintással. megkerülő megoldásként használja az ENTER billentyűt.
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, újra kell indítania a döntést, hogy Storage Explorer elfelejteni a határozatot
+* Ha a Blobok több mint 3 csoportja vagy a fájlok egy időben való feltöltésekor hibák fordulnak elő
+* Előfordulhat, hogy a Fiókbeállítások panelen újra meg kell adnia a hitelesítő adatokat, hogy szűrni lehessen az előfizetéseket
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, a fájlmegosztás csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Ubuntu 14,04 telepítésének szüksége van a GCC verziófrissítésére vagy frissítésére – a frissítés lépései a következők:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1576,7 +1576,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get dist-upgrade
     ```
 
-### <a name="version-0813"></a>Verzió 0.8.13
+### <a name="version-0813"></a>0\.8.13 verziója
 05/12/2017
 
 #### <a name="new"></a>Új
@@ -1584,24 +1584,24 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Storage Explorer hibaelhárítási [útmutató][2]
 * [Útmutató][3] Azure stack-előfizetéshez való csatlakozáshoz
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Kijavítva: A fájl feltöltése kellett kívüli elég memória hiba okozza, nagy valószínűséggel
-* Kijavítva: Is most jelentkezik be a PIN-kód/intelligens kártya
+* Kijavítva: a fájlfeltöltés nagy eséllyel okozta a memória hibáját.
+* Kijavítva: mostantól PIN-kóddal vagy intelligens kártyával is bejelentkezhet
 * Kijavítva: a Megnyitás a portálon mostantól működik az Azure China 21Vianet, az Azure Germany, az Azure US government és a Azure Stack
-* Kijavítva: Mappa feltöltése a blob-tárolóba, során "Szabálytalan műveletet" hiba néha fel
-* Kijavítva: Az összes kijelölése le lett tiltva a pillanatképek kezelése során
-* Kijavítva: Az alap blob metaadatait előfordulhat, hogy első felül után annak pillanatképei tulajdonságainak megtekintése
+* Kijavítva: egy mappa blob-tárolóba való feltöltésekor előfordulhat, hogy egy "szabálytalan művelet" hiba fordul elő.
+* Kijavítva: az összes kijelölése le lett tiltva a pillanatképek kezelése közben
+* Kijavítva: a pillanatképek tulajdonságainak megtekintése után előfordulhat, hogy felülírja az alap blob metaadatait
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt kell ahhoz, hogy rendelkezik a Storage Explorer elfelejtette a döntést újraindítása
-* Vagy nagyítása, míg a nagyítási szint rövid ideig alaphelyzetbe állíthatja az alapértelmezett szintre
-* A fájlok feltöltése egy időben és blobok legfeljebb 3 csoportok kellene hibát okozhat
-* A fiók beállítások panel jelenhet meg, hogy szeretne-e a hitelesítő adatok újbóli annak érdekében, hogy az előfizetések szűrése
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* Ubuntu 14.04-es telepítés van szüksége a gcc-verziójához, vagy frissített – frissítésére lépéseket alább:
+* Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, újra kell indítania a döntést, hogy Storage Explorer elfelejteni a határozatot
+* Nagyítás vagy kicsinyítés közben a nagyítási szint az alapértelmezett szintre térhet vissza.
+* Ha a Blobok több mint 3 csoportja vagy a fájlok egy időben való feltöltésekor hibák fordulnak elő
+* Előfordulhat, hogy a Fiókbeállítások panelen újra meg kell adnia a hitelesítő adatokat, hogy szűrni lehessen az előfizetéseket
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Ubuntu 14,04 telepítésének szüksége van a GCC verziófrissítésére vagy frissítésére – a frissítés lépései a következők:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1611,40 +1611,40 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     ```
 
 
-### <a name="version-0812-and-0811-and-0810"></a>0\.8.12 és 0.8.11 és 0.8.10 verzió
+### <a name="version-0812-and-0811-and-0810"></a>0\.8.12-és 0.8.11-és 0.8.10-verziók
 04/07/2017
 
 #### <a name="new"></a>Új
 
-* Storage Explorer automatikusan bezárul amikor frissítést telepít, a frissítési értesítés
-* A gyors hozzáférés a helyben a gyakran használt erőforrásokat az használata hatékonyabb tartalmaz
-* A Blob-tároló-szerkesztőben megtekintheti melyik virtuális gép tartozik egy bérelt blob
-* Most már összecsukhatja a bal oldali panel
-* Felderítés most le egyidejűleg fog futni
-* A Blob-tárolóba, a fájlmegosztás és a tábla szerkesztők statisztika segítségével megtekintheti a erőforrás vagy a kiválasztott mérete
-* Most jelentkezzen be az Azure Active Directory (AAD) alapú az Azure Stack-fiókokat is.
-* Most már feltöltheti archív fájlokban több mint 32 MB méretű prémium szintű storage-fiókok
-* Továbbfejlesztett kisegítő lehetőségek támogatása
+* A Storage Explorer mostantól automatikusan bezárul, amikor frissítést telepít a frissítési értesítésből
+* A helyszíni gyors hozzáférés nagyobb élményt biztosít a gyakran használt erőforrások kezeléséhez
+* A blob Container Editorban mostantól megtekintheti, hogy melyik virtuális gép tartalmaz egy bérelt blobot
+* Most már összecsukhatja a bal oldali panelt
+* A felderítés mostantól a letöltéssel megegyező időpontban fut
+* Az erőforrás vagy a kijelölés méretének megtekintéséhez használja a blob tárolóban, a fájlmegosztásban és a táblák szerkesztőjében található statisztikát.
+* Most már bejelentkezhet Azure Active Directory (HRE)-alapú Azure Stack-fiókokba.
+* Most már feltöltheti az archív fájlokat a 32MB-ből a Premium Storage-fiókokba
+* Továbbfejlesztett akadálymentesítési támogatás
 * Mostantól megbízható alap-64 kódolású X. 509 SSL-tanúsítványokat is hozzáadhat a Szerkesztés –&gt; SSL-tanúsítványok –&gt; importálási tanúsítványok
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Kijavítva: egy fiók hitelesítő adatainak frissítése, miután a fanézetben lenne néha nem frissül automatikusan
-* Kijavítva: SAS-emulátor üzenetsorok és táblák létrehozása eredményez olyan URL-címe érvénytelen
-* Kijavítva: prémium szintű storage-fiókok mostantól kibővíthetők a proxy engedélyezve van
-* Kijavítva: az Alkalmaz gombra a felügyeleti fiókok lapon nem működne Ha a kiválasztott fiók 1 vagy 0
-* Kijavítva: ütközések feloldásának igénylő blobok feltöltése meghiúsulhat - 0.8.11 rögzített
-* Kijavítva: küldjön visszajelzést volt működésképtelenné 0.8.11 - 0.8.12 rögzített
+* Kijavítva: a fiók hitelesítő adatainak frissítése után a fanézet esetenként nem frissül automatikusan
+* Kijavítva: SAS létrehozása az Emulator-várólistákhoz és-táblákhoz érvénytelen URL-címet eredményezne
+* Kijavítva: a Premium Storage-fiókok mostantól kiterjeszthetők a proxy engedélyezésekor
+* Kijavítva: az Apply (alkalmaz) gomb a fiókok kezelése lapon nem fog működni, ha 1 vagy 0 fiók van kiválasztva
+* Kijavítva: az ütközési felbontást igénylő Blobok feltöltése a 0.8.11-ben sikertelen lehet – kijavítva
+* Kijavítva: a visszajelzés küldése megszakadt a 0.8.11-ben – javítva a 0.8.12-ben
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* 0\.8.10 termékcsaládba, szüksége lesz az összes a hitelesítő adatok frissítése.
-* Vagy nagyítása, míg a nagyítási szint rövid ideig alaphelyzetbe állíthatja az alapértelmezett szintre.
-* A fájlok feltöltése egy időben és blobok legfeljebb 3 csoportok kellene hibákat okozhat.
-* A fiók beállítások panel jelenhet meg, hogy szeretne-e a hitelesítő adatok újbóli előfizetések szűrése érdekében.
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
-* Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
-* Ubuntu 14.04-es telepítés van szüksége a gcc-verziójához, vagy frissített – frissítésére lépéseket alább:
+* A 0.8.10-re való frissítés után frissítenie kell az összes hitelesítő adatot.
+* Nagyítás vagy kicsinyítés közben a nagyítási szint az alapértelmezett szintre térhet vissza.
+* Ha a Blobok több mint 3 csoportja vagy egy időben feltöltött fájl is hibákat okoz.
+* Előfordulhat, hogy a Fiókbeállítások panelen újra meg kell adnia a hitelesítő adatokat, hogy szűrni lehessen az előfizetéseket.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
+* Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
+* Az Ubuntu 14,04 telepítésének szüksége van a GCC verziófrissítésére vagy frissítésére – a frissítés lépései a következők:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1664,189 +1664,189 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 
 #### <a name="new"></a>Új
 
-* Storage Explorer 0.8.9 automatikusan letöltheti a legújabb frissítések.
-* A gyorsjavítás: a portál használatával létrehozott SAS URI-t egy tárfiók csatolása eredményez hiba.
-* Most már létrehozása, kezelése és blobpillanatképeket előléptetése.
+* Storage Explorer 0.8.9 automatikusan letölti a legújabb verziót a frissítésekhez.
+* Gyorsjavítás: Ha egy portálon létrehozott SAS URI-t használ a Storage-fiók csatolásához, a rendszer hibát eredményezne.
+* Most már létrehozhatja, kezelheti és előléptetheti a blob-pillanatképeket.
 * Most már bejelentkezhet az Azure China 21Vianet, az Azure Germany és az USA Azure Government-fiókjaiba.
-* Mostantól módosíthatja a nagyítási szint. A Nézet menü Nagyítás, kicsinyítés és Nagyítás alaphelyzetbe a beállításokat használják.
-* Unicode-karaktereket felhasználói metaadatok a blobok és fájlok mostantól támogatottak.
-* Javított kisegítő lehetőségek.
-* A következő verzió kibocsátási megjegyzések a frissítési értesítés is megtekinthetők. A jelenlegi kiadási megjegyzések a Súgó menüben is megtekintheti.
+* Most már módosíthatja a nagyítási szintet. A nagyításhoz, a nagyításhoz és a nagyítás visszaállításához használja a Nézet menü beállításait.
+* Az Unicode-karakterek mostantól a blobok és fájlok felhasználói metaadatainak esetében is támogatottak.
+* A kisegítő lehetőségek fejlesztése.
+* A következő verzió kibocsátási megjegyzései megtekinthetők a frissítési értesítésből. A Súgó menü aktuális kibocsátási megjegyzéseit is megtekintheti.
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Kijavítva: a verziószám megfelelően megjelenik a Vezérlőpulton a Windows
-* Kijavítva: keresés már nem legfeljebb 50 000 csomópontok
-* Kijavítva: feltöltése egy fájlmegosztásba örökre is, ha a célkönyvtárban duplikátum már nem létezik
-* Kijavítva: jobb stabilitás hosszú feltöltéseket és letöltések
+* Kijavítva: a verziószám mostantól helyesen jelenik meg a Vezérlőpulton a Windows rendszerben
+* Kijavítva: a keresés már nem korlátozódik 50 000 csomópontra
+* Kijavítva: a fájlmegosztás feltöltése örökre megpördült, ha a cél könyvtára még nem létezett.
+* Javítva: továbbfejlesztett stabilitás a hosszú feltöltések és letöltések számára
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* Vagy nagyítása, míg a nagyítási szint rövid ideig alaphelyzetbe állíthatja az alapértelmezett szintre.
-* A gyors hozzáférés csak az előfizetés-alapú elemek működik. Ebben a kiadásban nem támogatottak a helyi erőforrások vagy kulccsal vagy SAS-jogkivonat keresztül csatlakoztatott erőforrásokhoz.
-* A gyors hozzáférés a néhány másodperc alatt keresse meg a célként megadott erőforrás hány erőforrásokhoz rendelkezik függően vehet igénybe.
-* A fájlok feltöltése egy időben és blobok legfeljebb 3 csoportok kellene hibákat okozhat.
+* Nagyítás vagy kicsinyítés közben a nagyítási szint az alapértelmezett szintre térhet vissza.
+* A gyors hozzáférés csak az előfizetés-alapú elemek esetében működik. Ebben a kiadásban nem támogatottak a helyi erőforrások vagy a kulcs vagy SAS-token használatával csatolt erőforrások.
+* A cél erőforráshoz való belépéshez igénybe vehet néhány másodpercig, attól függően, hogy hány erőforrásra van szüksége.
+* Ha a Blobok több mint 3 csoportja vagy egy időben feltöltött fájl is hibákat okoz.
 
 12/16/2016
-### <a name="version-087"></a>Verzió 0.8.7
+### <a name="version-087"></a>0\.8.7 verziója
 
 >[!VIDEO https://www.youtube.com/embed/Me4Y4jxoer8?ecver=1]
 
 #### <a name="new"></a>Új
 
-* Kiválaszthatja, hogyan egy frissítés, a letöltési vagy a másolási munkamenet elején a tevékenységek ablak az ütközések feloldása
-* A kurzort egy lapján megtekintheti a storage-erőforrások teljes elérési útja
-* Egy fülre kattintva, szinkronizálja a hellyel, a bal oldali navigációs panelen
+* Megadhatja, hogyan oldják fel az ütközéseket a frissítések elején, a letöltés vagy a másolás munkamenetet a tevékenységek ablakban.
+* Vigye az egérmutatót egy lapra a tárolási erőforrás teljes elérési útjának megtekintéséhez
+* Ha rákattint egy lapra, szinkronizálja a helyét a bal oldali navigációs panelen.
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Kijavítva: Storage Explorer jelenleg egy megbízható alkalmazások Mac gépen
-* Kijavítva: Ubuntu 14.04 újra támogatott
-* Kijavítva: Néha fiók felhasználói felület hozzáadása tokenkódot előfizetések betöltésekor
-* Kijavítva: Néha nem minden tárolási erőforrások felsorolt a bal oldali navigációs panelen
-* Kijavítva: A művelet ablaktáblában néha megjelenített üres műveletek
-* Kijavítva: Most megőrzött a legutóbbi lezárt munkamenetet a az ablak mérete
-* Kijavítva: Megnyithatja a helyi menü használatával ugyanarra az erőforrásra vonatkozó több lap
+* Kijavítva: a Storage Explorer mostantól egy megbízható alkalmazás Mac gépen
+* Javítva: az Ubuntu 14,04 ismét támogatott
+* Kijavítva: időnként a fiók hozzáadása KEZELŐFELÜLET villan fel az előfizetések betöltésekor
+* Kijavítva: néha nem minden tárolási erőforrás szerepel a bal oldali navigációs panelen.
+* Kijavítva: a művelet ablaktábla időnként üres műveleteket jelenít meg
+* Kijavítva: a rendszer megőrzi az utolsó lezárt munkamenet ablakának méretét.
+* Kijavítva: több fület is megnyithat ugyanahhoz az erőforráshoz a helyi menü használatával.
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* A gyors hozzáférés csak az előfizetés-alapú elemek működik. Helyi erőforrások vagy kulcs- vagy SAS-jogkivonat összekapcsolnia erőforrások nem támogatottak ebben a kiadásban
-* A gyors hozzáférés igénybe vehet, keresse meg a célként megadott erőforrás hány erőforrásokhoz rendelkezik függően néhány másodperccel
-* A fájlok feltöltése egy időben és blobok legfeljebb 3 csoportok kellene hibát okozhat
-* Ezt követően a körülbelül 50 000 csomópont - keresés keresési kezeli teljesítmény kimaradására vagy okozhat a nem kezelt kivétel
-* Az első alkalommal a Storage Explorer használatával a MacOS-gépeken megjelenhet több utasításokat a felhasználó a kulcslánc hozzáférési engedélyt kér. Javasoljuk, hogy mindig választja, az így a rendszer nem jelennek meg újra
+* A gyors hozzáférés csak az előfizetés-alapú elemek esetében működik. Ebben a kiadásban nem támogatottak a helyi erőforrások vagy a kulcs vagy SAS-token használatával csatolt erőforrások.
+* A cél erőforráshoz való belépéshez igénybe vehet néhány másodpercet, attól függően, hogy hány erőforrást tartalmaz
+* Ha a Blobok több mint 3 csoportja vagy a fájlok egy időben való feltöltésekor hibák fordulnak elő
+* A keresés a nagyjából 50 000 csomópontok közötti keresést végzi – ezt követően a teljesítmény hatással lehet vagy nem kezelt kivételt okozhat.
+* Ha első alkalommal használja a Storage Explorer macOS rendszeren, több kérdés jelenhet meg, amely arra kéri a felhasználótól, hogy hozzáférjen a kulcstartóhoz. Javasoljuk, hogy válassza a mindig Engedélyezés lehetőséget, hogy a kérdés ne jelenjen meg újra
 
 11/18/2016
-### <a name="version-086"></a>Verzió 0.8.6
+### <a name="version-086"></a>0\.8.6 verziója
 
 #### <a name="new"></a>Új
 
-* Most már egyszerűen megtalálható a leggyakrabban használt szolgáltatásokat, a gyors hozzáférés PIN-kód
-* Most megnyithatja több szerkesztők különböző lapokon. Egyetlen kattintással megnyitható egy ideiglenes lap; Kattintson ide duplán egy állandó lap megnyitásához. Az ideiglenes lapra is kattinthat, hogy az állandó lapot jelenítse meg
-* Hajtottunk végre észlelhető teljesítménybeli, és a stabilitás tölt fel, és letölti, különösen a nagy méretű fájlok gyors gépeken
-* Üres "virtuális" mappák most már létrehozhatja az blob-tárolók
-* Újra bevezettük az új kibővített karakterláncrészletet keresés a hatókörös keresésre, így most már a keresés során két lehetősége van:
-    * Globális keresés – csak adja meg egy keresett kifejezést a keresési szövegmezőbe
-    * Hatókörös keresésre - kattintson a Nagyító ikont mellett a csomópontot, majd az elérési út végéhez adja hozzá a keresési kifejezés vagy kattintson a jobb gombbal és "Keresés a itt"
-* Hozzáadtuk a különböző témákat: világos (alapértelmezett), sötét, kontrasztos fekete és kontrasztos fehér. Válassza a Szerkesztés –&gt; témák lehetőséget a rájuk vonatkozó beállítások módosításához
-* Módosíthatja a Blobok és fájlok tulajdonságai
-* Mostantól támogatjuk a kódolt (base64) és megmaradnak kódolatlan üzenetsorbeli üzenetek esetén
-* Linuxon, egy 64 bites operációs rendszer már szükséges. Az ebben a kiadásban csak támogatja 16.04.1 64 bites Ubuntu LTS
-* Frissítettük az embléma!
+* Most már rögzítheti a leggyakrabban használt szolgáltatásokat a gyors eléréshez az egyszerű navigálás érdekében
+* Mostantól több szerkesztőt is megnyithat különböző lapokon. Egyetlen kattintással megnyitható egy ideiglenes lap; Kattintson ide duplán egy állandó lap megnyitásához. Az ideiglenes lapra is kattinthat, hogy az állandó lapot jelenítse meg
+* Észrevehető teljesítmény-és stabilitási előrelépés történt a feltöltések és a letöltések esetében, különösen a gyors gépek nagy fájljai esetében
+* Az üres "virtuális" mappák már létrehozhatók a blob-tárolókban.
+* A hatókörön belüli keresést újra bevezetjük az új, továbbfejlesztett alsztring-kereséssel, így mostantól két lehetőség közül választhat:
+    * Globális keresés – csak adja meg a keresési kifejezést a keresési szövegmezőbe
+    * Hatókörön belüli keresés – kattintson a csomópont melletti nagyító ikonra, majd vegyen fel egy keresési kifejezést az elérési út végére, vagy kattintson a jobb gombbal, és válassza a "keresés innen" lehetőséget.
+* A következő témákat adta hozzá: Light (alapértelmezett), sötét, kontrasztos megjelenítés Black és kontrasztos megjelenítés White. Válassza a Szerkesztés –&gt; témák lehetőséget a rájuk vonatkozó beállítások módosításához
+* A blobok és a fájlok tulajdonságai módosíthatók
+* Mostantól támogatjuk a kódolt (Base64) és a nem kódolt üzenetsor-üzeneteket
+* Linux rendszeren a 64 bites operációs rendszer már szükséges. Ebben a kiadásban csak a 64 bites Ubuntu 16.04.1-t támogatjuk
+* Frissítettük a logót!
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Kijavítva: Képernyőn fagyasztási kapcsolatos problémák
-* Kijavítva: Fokozott biztonság
-* Kijavítva: Néha ismétlődő csatolt fiókok fog megjelenni
-* Kijavítva: Egy nem definiált tartalomtípus rendelkező sikerült kivételt hoz létre
-* Kijavítva: Az üres táblát a lekérdezés Panel megnyitása nem sikerült
-* Kijavítva: Változik, a keresés hibák
-* Kijavítva: Növelni az erőforrások számát betöltődnek 50 és 100 kattint a "Továbbiak betöltése"
-* Kijavítva: Első futtatásakor, ha egy fiók bejelentkezett, most kiválasztjuk az adott fiók összes előfizetés alapértelmezés szerint
+* Kijavítva: képernyő-fagyasztási problémák
+* Kijavítva: fokozott biztonság
+* Kijavítva: néha duplikált csatolt fiókok jelenhetnek meg
+* Kijavítva: A nem definiált tartalomtípusú Blobok kivételt hozhatnak létre.
+* Kijavítva: a lekérdezési panel megnyitása üres táblán nem lehetséges
+* Kijavítva: a keresési hibák változói
+* Kijavítva: megnövelte a 50 és 100 között betöltött erőforrások számát, ha a "betöltés" gombra kattint.
+* Kijavítva: az első futtatáskor, ha egy fiók be van jelentkezve, mostantól a fiókhoz tartozó összes előfizetést kiválasztjuk.
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* Ebben a kiadásban a Storage Explorer nem fut az Ubuntu 14.04
-* Ugyanarra az erőforrásra vonatkozó több lap megnyitásához, ne folyamatosan kattintson ugyanazon az erőforráson futó. Kattintson egy másik erőforrás, és ezután lépjen vissza, és kattintson a egy másik lapon újra megnyitni az eredeti erőforrás
-* A gyors hozzáférés csak az előfizetés-alapú elemek működik. Helyi erőforrások vagy kulcs- vagy SAS-jogkivonat összekapcsolnia erőforrások nem támogatottak ebben a kiadásban
-* A gyors hozzáférés igénybe vehet, keresse meg a célként megadott erőforrás hány erőforrásokhoz rendelkezik függően néhány másodperccel
-* A fájlok feltöltése egy időben és blobok legfeljebb 3 csoportok kellene hibát okozhat
-* Ezt követően a körülbelül 50 000 csomópont - keresés keresési kezeli teljesítmény kimaradására vagy okozhat a nem kezelt kivétel
+* A Storage Explorer ezen kiadása nem fut az Ubuntu 14,04
+* Ha több lapot szeretne megnyitni ugyanahhoz az erőforráshoz, ne folyamatosan kattintson ugyanarra az erőforrásra. Kattintson egy másik erőforrásra, majd lépjen vissza, és kattintson az eredeti erőforrásra, és nyissa meg újra egy másik lapon
+* A gyors hozzáférés csak az előfizetés-alapú elemek esetében működik. Ebben a kiadásban nem támogatottak a helyi erőforrások vagy a kulcs vagy SAS-token használatával csatolt erőforrások.
+* A cél erőforráshoz való belépéshez igénybe vehet néhány másodpercet, attól függően, hogy hány erőforrást tartalmaz
+* Ha a Blobok több mint 3 csoportja vagy a fájlok egy időben való feltöltésekor hibák fordulnak elő
+* A keresés a nagyjából 50 000 csomópontok közötti keresést végzi – ezt követően a teljesítmény hatással lehet vagy nem kezelt kivételt okozhat.
 
 10/03/2016
-### <a name="version-085"></a>Verzió 0.8.5
+### <a name="version-085"></a>0\.8.5 verziója
 
 #### <a name="new"></a>Új
 
-* Használhatják a portál által létrehozott SAS-kulcsok, Tárfiókok és erőforrások csatolása
+* Mostantól a portál által generált SAS-kulcsok használatával csatolhatók a Storage-fiókokhoz és-erőforrásokhoz
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Kijavítva: néha a keresés közben versenyhelyzet miatt csomópontok nem kibontható válik
-* Kijavítva: "HTTP használata" nem működik a fiók nevére és kulcsára Tárfiókokban való csatlakozáskor
-* Kijavítva: SAS-kulcsok (kifejezetten portál által létrehozott kapcsolatok) hibaüzenetet ad vissza "záró perjellel"
-* Kijavítva: table-importálási hibák elhárítása
-    * Néha partíciókulccsal és sorkulccsal lettek visszaállítva
-    * Nem sikerült beolvasni a "null" Partíciókulcsok
+* Kijavítva: a keresés során előforduló versenyhelyzet miatt a csomópontok nem bővíthetővé válnak
+* Kijavítva: a "HTTP használata" nem működik, ha a fiók nevével és kulcsával csatlakozik a Storage-fiókokhoz.
+* Kijavítva: a SAS-kulcsok (a speciális portálon létrehozott) "záró perjel" hibát adnak vissza.
+* Kijavítva: tábla importálásával kapcsolatos problémák
+    * Néha a partíciós kulcs és a sor kulcsa fordított volt.
+    * A "NULL" partíciós kulcsok nem olvashatók
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* Ezt követően a körülbelül 50 000 csomópont - keresés keresési leírók legyen negatív hatással a teljesítményre
-* Az Azure Stack jelenleg nem támogatja fájlok, így megpróbálja kibontani a fájlok megjelenítése hiba
+* A keresés a nagyjából 50 000 csomópontok közötti keresést végzi – ezt követően a teljesítmény hatással lehet
+* Azure Stack jelenleg nem támogatja a fájlokat, ezért a fájlok kibontására tett kísérlet hibát jelez
 
 09/12/2016
-### <a name="version-084"></a>Verzió 0.8.4
+### <a name="version-084"></a>0\.8.4 verziója
 
 >[!VIDEO https://www.youtube.com/embed/cr5tOGyGrIQ?ecver=1]
 
 #### <a name="new"></a>Új
 
-* Tárfiókok, tárolók, üzenetsorok, táblák vagy megosztási fájlmegosztások közvetlen hivatkozások létrehozása és a Windows és Mac OS - erőforrásokhoz való könnyű hozzáférést támogatja
-* Keresse meg a blobtárolók, táblák, üzenetsorok, fájlmegosztások vagy a keresőmezőbe a storage-fiókok
-* Most már csoportosíthatók záradékot a tábla a Lekérdezésszerkesztő
-* Nevezze át és blobtárolók, fájlmegosztások, táblák, blobok, blob mappákat, fájlokat és könyvtárakat az SAS-hez csatolt fiókok és a tárolók másolja és illessze be
-* Blobtárolók átnevezése, valamint másolására, és most fájlmegosztások őrizni tulajdonságok és metaadatok
+* Közvetlen hivatkozásokat készíthet a Storage-fiókok, tárolók, várólisták, táblák vagy fájlmegosztás számára az erőforrások megosztásához és egyszerű eléréséhez – Windows és Mac OS támogatás
+* Keresse meg a blob-tárolókat, a táblákat, a várólistákat, a fájlmegosztást vagy a Storage-fiókokat a keresőmezőbe.
+* Most már csoportosíthatjuk a záradékokat a tábla lekérdezés-szerkesztőben
+* BLOB-tárolók, fájlmegosztás, táblák, blobok, blob-mappák, fájlok és könyvtárak átnevezése és másolása/beillesztése a SAS-hez csatolt fiókok és tárolók között
+* BLOB-tárolók és fájlmegosztás átnevezése és másolása most megőrzi a tulajdonságokat és a metaadatokat
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Kijavítva: nem szerkeszthető táblaentitások tartalmazó logikai vagy bináris tulajdonságok
+* Kijavítva: a Table entitások nem szerkeszthetők, ha logikai vagy bináris tulajdonságokat tartalmaznak
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* Ezt követően a körülbelül 50 000 csomópont - keresés keresési leírók legyen negatív hatással a teljesítményre
+* A keresés a nagyjából 50 000 csomópontok közötti keresést végzi – ezt követően a teljesítmény hatással lehet
 
 08/03/2016
-### <a name="version-083"></a>Verzió 0.8.3
+### <a name="version-083"></a>0\.8.3 verziója
 
 >[!VIDEO https://www.youtube.com/embed/HeGW-jkSd9Y?ecver=1]
 
 #### <a name="new"></a>Új
 
-* Nevezze át a tárolók, a táblákat, a fájlmegosztások
-* Lekérdezés-szerkesztő továbbfejlesztett
-* Mentés és a lekérdezések betöltése
-* Közvetlen hivatkozásokat a storage-fiókok vagy tárolók, üzenetsorok, táblák, vagy a fájlmegosztások megosztásához, és könnyedén az erőforrásokhoz hozzáférő (csak Windows - macOS támogatása hamarosan elérhető!)
-* Kezelheti és CORS-szabályok konfigurálása
+* Tárolók, táblák, fájlmegosztás átnevezése
+* Továbbfejlesztett lekérdezés-szerkesztői élmény
+* Lekérdezések mentésének és betöltésének lehetősége
+* Közvetlen hivatkozások a Storage-fiókokra vagy-tárolóra, a várólistákra, a táblázatokra vagy a fájlmegosztás megosztására és az erőforrások egyszerű elérésére (csak Windows macOS-támogatás hamarosan elérhető)
+* CORS-szabályok kezelése és konfigurálása
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Kijavítva: A Microsoft Accounts újbóli hitelesítés szükséges 8 – 12 óránként
+* Kijavítva: a Microsoft-fiókoknak minden 8-12 óránként újra kell hitelesíteniük magukat
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* Egyes esetekben előfordulhat, hogy válaszol a felhasználói felület – során az ablak maximális segít a probléma megoldásához
-* telepítés macOS szükség lehet emelt jogosultsági szintű
-* Fiók beállítások panel jelenhet meg, hogy szeretne-e a hitelesítő adatok újbóli annak érdekében, hogy az előfizetések szűrése
-* Fájlmegosztások, blob-tárolók és táblák átnevezése nem őrzi meg a metaadatok vagy egyéb tulajdonságok, például a fájlmegosztás kvótájának, a nyilvános hozzáférés szintje vagy a hozzáférési házirendek a tárolón
-* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások minden egyéb tulajdonsága és metaadatai megmaradnak az Átnevezés során
-* Másolása, illetve az erőforrás átnevezése nem működik a fiók SAS-hez csatolt belül
+* Időnként előfordulhat, hogy a felhasználói felület megfagyott – maximalizálja az ablakot a probléma megoldásához
+* a macOS telepítéséhez emelt szintű engedélyekre lehet szükség
+* Előfordulhat, hogy a Fiókbeállítások panelen újra meg kell adnia a hitelesítő adatokat, hogy szűrni lehessen az előfizetéseket
+* A fájlmegosztás, a blob-tárolók és a táblák átnevezése nem őrzi meg a tárolók metaadatait vagy egyéb tulajdonságait, például a fájlmegosztás kvótáját, a nyilvános hozzáférési szintet vagy a hozzáférési házirendeket.
+* A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások minden egyéb tulajdonsága és metaadatai megmaradnak az Átnevezés során
+* Az erőforrások másolása vagy átnevezése nem működik SAS-vel csatlakoztatott fiókokon belül
 
 07/07/2016
-### <a name="version-082"></a>Verzió 0.8.2
+### <a name="version-082"></a>0\.8.2 verziója
 
 >[!VIDEO https://www.youtube.com/embed/nYgKbRUNYZA?ecver=1]
 
 #### <a name="new"></a>Új
 
-* Storage-fiókok előfizetések; szerint vannak csoportosítva fejlesztési tárterülettel és a kulcs vagy SAS-n keresztül csatlakoztatott erőforrásokhoz jelennek meg (helyi és csatolt) csomópont alatt
+* A Storage-fiókok előfizetések szerint vannak csoportosítva; a (helyi és csatolt) csomópont alatt a kulcs-vagy SAS-n keresztül csatolt fejlesztői tárolók és erőforrások láthatók.
 * Kijelentkezés a fiókok közül az "Azure-fiók beállításai" panelen
-* Proxybeállítások engedélyezheti és kezelheti a bejelentkezés konfigurálása
-* Hozzon létre és az blob bérleteket
-* Nyissa meg a blob-tárolók, üzenetsorok, táblák és fájlok egyetlen kattintással
+* Proxybeállítások konfigurálása a bejelentkezés engedélyezéséhez és kezeléséhez
+* BLOB-bérletek létrehozása és megszakítása
+* BLOB-tárolók,-várólisták,-táblák és-fájlok megnyitása egyetlen kattintással
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Kijavítva: .NET vagy Java-kódtárakat beszúrt üzenetsorbeli üzenetek vannak se megfelelően dekódovat a Base64 kódolású anyag
-* Kijavítva: $metrics táblákat nem jelennek meg a Blob Storage-fiókok
-* Kijavítva: táblák csomópont nem működik a helyi (fejlesztés) tároló
+* Kijavítva: a .NET-vagy Java-kódtárakkal beszúrt üzenetsor-üzenetek nem lettek megfelelően dekódolva a Base64-ből
+* Kijavítva: $metrics táblák nem jelennek meg Blob Storage-fiókok esetében
+* Kijavítva: a táblák csomópont nem működik a helyi (fejlesztői) tároláshoz
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* telepítés macOS szükség lehet emelt jogosultsági szintű
+* a macOS telepítéséhez emelt szintű engedélyekre lehet szükség
 
 06/15/2016
-### <a name="version-080"></a>Verzió 0.8.0
+### <a name="version-080"></a>0\.8.0 verziója
 
 >[!VIDEO https://www.youtube.com/embed/ycfQhKztSIY?ecver=1]
 
@@ -1856,34 +1856,34 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 
 #### <a name="new"></a>Új
 
-* A fájl megosztási támogatási: megtekintése, feltöltése, letöltése, másolja a fájlokat és könyvtárakat, SAS URI-k (létrehozás és csatlakozás)
-* Növelt felhasználói élmény a SAS URI-k vagy a fiók a tárolóhoz való kapcsolódás
-* Tábla lekérdezési eredmények exportálása
-* Tábla oszlop újra sorrendbe rendezés és a Testreszabás
-* Megtekintés $logs blob-tárolók és a $metrics táblákat Tárfiókok esetében engedélyezett metrikákkal
-* Továbbfejlesztett exportálása és importálása viselkedés, mostantól tartalmazza a tulajdonságérték-típus
+* Fájlmegosztás támogatása: fájlok és könyvtárak, SAS URI-k (létrehozás és kapcsolat) megtekintése, feltöltése, letöltése, másolása
+* Továbbfejlesztett felhasználói élmény az SAS URI-k vagy a fiók kulcsainak tárolásához való csatlakozáshoz
+* Tábla lekérdezési eredményeinek exportálása
+* Táblázatos oszlopok átrendezése és testreszabása
+* $logs blob-tárolók és $metrics táblák megtekintése az engedélyezett metrikákkal rendelkező Storage-fiókok számára
+* Továbbfejlesztett exportálási és importálási viselkedés, mostantól tulajdonság-értéktípus is szerepel
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Kijavítva: fel- vagy nagyméretű blobok letöltéséhez eredményezhet hiányos feltöltések vagy letöltések
-* Kijavítva: szerkesztése, hozzáadásával vagy importálásával numerikus karakterlánc-érték ("1") rendelkező entitás konvertálja a dupla
-* Kijavítva: Nem lehet a helyi fejlesztési környezetben a tábla a csomópont kibontása
+* Kijavítva: a nagyméretű Blobok feltöltése vagy letöltése hiányos feltöltéseket vagy letöltéseket eredményezhet
+* Kijavítva: numerikus karakterlánc-értékkel ("1") rendelkező entitások szerkesztése, hozzáadása vagy importálása dupla értékre
+* Kijavítva: nem lehet kibontani a tábla csomópontot a helyi fejlesztési környezetben.
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* $metrics táblákat nem láthatók a Blob Storage-fiókok
-* Programozott módon hozzáadva üzenetsorbeli üzenetek nem jeleníthető meg megfelelően, ha az üzenetek kódolt Base64 kódolással
+* Blob Storage-fiókok $metrics táblái nem láthatók
+* A programozott módon hozzáadott üzenetsor-üzenetek nem jelennek meg megfelelően, ha az üzenetek Base64 kódolással vannak kódolva
 
 05/17/2016
-### <a name="version-07201605090"></a>Verzió 0.7.20160509.0
+### <a name="version-07201605090"></a>0\.7.20160509.0 verziója
 
 #### <a name="new"></a>Új
 
-* Jobb hibakezelés alkalmazás összeomlik
+* Jobb hibakezelés az alkalmazások összeomlásakor
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Kijavítva a hiba, információs sáv üzenetek néha nem jelennek meg, amikor szükség volt a bejelentkezési hitelesítő adataival
+* Kijavítva a hiba, ahol az információs sáv üzenetei időnként nem jelennek meg a bejelentkezési hitelesítő adatok megadásakor
 
 #### <a name="known-issues"></a>Ismert problémák
 
@@ -1891,7 +1891,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 
 03/31/2016
 
-### <a name="version-07201603250"></a>Verzió 0.7.20160325.0
+### <a name="version-07201603250"></a>0\.7.20160325.0 verziója
 
 >[!VIDEO https://www.youtube.com/embed/imbgBRHX65A?ecver=1]
 
@@ -1899,93 +1899,93 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 
 #### <a name="new"></a>Új
 
-* Táblázat a támogatási: megtekintése lekérdezése, importálása és exportálása az entitások CRUD-műveletek
-* Várólista-támogatás: megtekintését, hozzáadását, dequeueing üzenetek
-* Storage-fiókok SAS URI-k létrehozása
-* Kapcsolódás a SAS URI-k a Storage-fiókok
-* Frissítési értesítések, a Storage Explorer jövőbeli frissítései
-* Frissített Megjelenés és működés
+* Tábla támogatása: entitások megtekintése, lekérdezés, exportálás, Importálás és szifilisz-műveletek
+* Üzenetsor-támogatás: üzenetek megtekintése, hozzáadása, üzenetsor-várólistára helyezése
+* SAS URI-k létrehozása a Storage-fiókokhoz
+* Csatlakozás a Storage-fiókokhoz SAS URI-k használatával
+* A Storage Explorer jövőbeli frissítéseire vonatkozó értesítések frissítése
+* Frissített megjelenés és működés
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Teljesítmény és megbízhatóság fejlesztései
+* Teljesítmény-és megbízhatósági változások
 
 ### <a name="known-issues-amp-mitigations"></a>Ismert problémák &amp; enyhítések
 
-* A nagy méretű blob fájlok letöltése nem működik megfelelően – azt javasoljuk, hogy a probléma megoldása az AzCopy használatával
-* Fiók hitelesítő adatai nem fogja beolvasni és gyorsítótárazva, ha a kezdőmappa nem található vagy nem lehet írni
+* A nagyméretű blob-fájlok letöltése nem működik megfelelően – a probléma megoldásához a AzCopy használatát javasoljuk.
+* A fiók hitelesítő adatait nem lehet beolvasni és gyorsítótárazni, ha a kezdőmappa nem található vagy nem írható
 * Ha olyan entitást ad hozzá, szerkeszt vagy importál, amelynek tulajdonsága egyértelmű numerikus értékkel rendelkezik (például "1" vagy "1,0"), és a felhasználó megpróbálja `Edm.String`ként elküldeni, az érték visszakerül az ügyfél API-EDM. Double
-* Többsoros rekordokat tartalmazó CSV-fájlok importálásakor az adatok lekérése darabolja esetleg betűtípus
+* Többsoros rekordokkal rendelkező CSV-fájlok importálásakor előfordulhat, hogy az adatok fel vannak vágva vagy kódoltak
 
 02/03/2016
 
-### <a name="version-07201601291"></a>Verzió 0.7.20160129.1
+### <a name="version-07201601291"></a>0\.7.20160129.1 verziója
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Teljesítmény javítása általában amikor feltöltése, letöltése és a blobok másolása
+* Továbbfejlesztett általános teljesítmény a Blobok feltöltésekor, letöltésekor és másolásakor
 
 01/14/2016
 
-### <a name="version-07201601050"></a>Verzió 0.7.20160105.0
+### <a name="version-07201601050"></a>0\.7.20160105.0 verziója
 
 #### <a name="new"></a>Új
 
-* Linux-támogatás (OSX szolgáltatások paritásos)
-* Adja hozzá a blob-tárolók közös hozzáférésű Jogosultságkódok (SAS) kulccsal
+* Linux-támogatás (paritásos funkciók az OSX-hez)
+* BLOB-tárolók hozzáadása közös hozzáférésű aláírás (SAS) kulccsal
 * Storage-fiókok hozzáadása az Azure China 21Vianet
-* Egyéni végpontokkal rendelkező Tárfiókok hozzáadása
-* Megnyithatja és megtekintheti az szöveg és képek tartalmának blobok
-* Blob tulajdonságai és metaadatainak megtekintése és szerkesztése
+* Egyéni végpontokkal rendelkező Storage-fiókok hozzáadása
+* A tartalom szöveg-és képblobok megnyitása és megtekintése
+* BLOB tulajdonságainak és metaadatainak megtekintése és szerkesztése
 
-#### <a name="fixes"></a>Javítások
+#### <a name="fixes"></a>Hibajavítások
 
-* Kijavítva: feltöltése vagy sok (500 +) blobok letöltése néha eredményezheti, hogy az alkalmazásnak, hogy rendelkezik egy fehér képernyő
-* Kijavítva: blob tároló nyilvános hozzáférés szintje beállításakor az új érték nem frissül mindaddig, amíg újra a fókuszt a tárolón. Emellett a párbeszédpanelen mindig az alapértelmezett "Nincs nyilvános hozzáférés", és nem a tényleges aktuális érték.
-* Jobb általános billentyűzet/kisegítő és a felhasználói felület támogatja
-* Ha a fehér területtel hosszú fussa útkövetés előzmények szöveg
-* SAS párbeszédpanel támogatja a bemenet-ellenőrzés
-* Helyi tároló továbbra is elérhető akkor is, ha a felhasználói hitelesítő adatok lejártak.
-* Egy megnyitott blob-tároló törlése esetén a jobb oldalon a blob explorer bezárása
+* Kijavítva: nagy mennyiségű blob feltöltése vagy letöltése (500 +) időnként előfordulhat, hogy az alkalmazás fehér képernyőt tartalmaz
+* Kijavítva: a blob-tároló nyilvános hozzáférési szintjének beállításakor az új érték addig nem frissül, amíg újra be nem állítja a fókuszt a tárolóra. Emellett a párbeszédpanel mindig alapértelmezés szerint "nincs nyilvános hozzáférés", és nem a tényleges aktuális érték.
+* Jobb általános billentyűzet/kisegítő lehetőségek és felhasználói felületi támogatás
+* A Zsemlemorzsa-előzmények szövege, ha hosszú, szóközzel van ellátva
+* SAS-párbeszédpanel támogatja a bemeneti ellenőrzést
+* A helyi tárterület továbbra is elérhető marad, még akkor is, ha a felhasználói hitelesítő adatok lejártak
+* A megnyitott blob-tároló törlése után a jobb oldalon található blob Explorer bezárul
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* Telepítés Linux rendszeren van szüksége a gcc-verziójához, vagy frissített – frissítésére lépéseket alább:
+* A Linux telepítéséhez a GCC frissített vagy frissített verziója szükséges – a frissítés lépései a következők:
     * `sudo add-apt-repository ppa:ubuntu-toolchain-r/test`
     * `sudo apt-get update`
     * `sudo apt-get upgrade`
     * `sudo apt-get dist-upgrade`
 
 11/18/2015
-### <a name="version-07201511160"></a>Verzió 0.7.20151116.0
+### <a name="version-07201511160"></a>0\.7.20151116.0 verziója
 
 #### <a name="new"></a>Új
 
-* macOS és Windows-verziók
-* Jelentkezzen be a Storage-fiókok nézet, – használja a szervezeti fiókot, a Microsoft Account, 2FA, stb.
-* Helyi fejlesztési tárterülettel (storage emulatorral csak Windows)
-* Az Azure Resource Manager és klasszikus erőforrások támogatása
-* Hozzon létre vagy töröljön a blobok, üzenetsorok vagy táblák
-* Keresse meg az adott blobok, üzenetsorok vagy táblák
-* Fedezze fel a blob-tárolók tartalma
-* Megtekintheti, és haladjon végig a könyvtárak
-* Feltöltése, letöltése és törlése a blobok és mappák
-* Blob tulajdonságai és metaadatainak megtekintése és szerkesztése
-* SAS-kulcsok létrehozása
-* Kezelheti, és a tárolt hozzáférési szabályzatok (SAP) létrehozása
-* Keresés a blobokban előtag alapján
-* Húzza az ajánlatból el fájlokat tölthetnek fel vagy le
+* macOS és Windows verziók
+* Bejelentkezés a Storage-fiókok megtekintéséhez – szervezeti fiókja, Microsoft-fiókja, 2FA stb. használatával.
+* Helyi fejlesztési tároló (a Storage Emulator használata, csak Windows)
+* Azure Resource Manager és klasszikus erőforrás-támogatás
+* Blobok, várólisták vagy táblák létrehozása és törlése
+* Adott Blobok, várólisták vagy táblák keresése
+* A blob-tárolók tartalmának megismerése
+* Könyvtárak megtekintése és navigálása
+* Blobok és mappák feltöltése, letöltése és törlése
+* BLOB tulajdonságainak és metaadatainak megtekintése és szerkesztése
+* SAS-kulcsok generálása
+* Tárolt hozzáférési szabályzatok kezelése és létrehozása (SAP)
+* Blobok keresése előtag alapján
+* Húzza a fájlokat a feltöltéshez vagy a letöltéshez.
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* Blob tároló nyilvános hozzáférés szintje beállításakor az új érték nem frissül, amíg újra a fókuszt a tárolón
-* A párbeszédpanelen állítsa be a nyilvános hozzáférés szintje megnyitásakor, mindig megjeleníti a "Nincs nyilvános hozzáférés" az alapértelmezett, és nem a tényleges aktuális érték
-* A letöltött blobokat nem nevezhető át.
-* Tevékenységnapló-bejegyzései fog néha "elakadnak a" egy folyamatban lévő állapot, amikor hiba történik, és a hibaüzenet nem jelenik meg
-* Néha összeomlik, vagy teljesen fehér bekapcsolja a fel-vagy nagy számú blobok letöltése közben
-* Néha az a másolási művelet megszakítása nem működik
-* Során (a blob/üzenetsor vagy tábla) tároló létrehozása, ha a bemeneti neve érvénytelen, és a egy másik egy másik tárolóba típus alatt létrehozhatja nem állítható be fókusz új típus
-* Nem hozható létre új mappát, vagy nem mappa átnevezése
+* A blob-tároló nyilvános hozzáférési szintjének beállításakor az új érték addig nem frissül, amíg újra be nem állítja a fókuszt a tárolóra.
+* Amikor megnyitja a párbeszédpanelt a nyilvános hozzáférési szint megadásához, mindig a "nincs nyilvános hozzáférés" érték jelenik meg alapértelmezettként, nem pedig a tényleges aktuális érték.
+* A letöltött Blobok nem nevezhetők át
+* A műveletnapló bejegyzései időnként "ragadt" állapotba kerülnek, ha hiba történik, és a hiba nem jelenik meg
+* A nagy mennyiségű blob feltöltésekor vagy letöltésekor időnként összeomlik vagy teljesen fehérre vált.
+* A másolási művelet megszakítása néha nem működik
+* Tároló létrehozásakor (blob/üzenetsor/tábla) Ha érvénytelen nevet adott meg, és egy másik típusú tárolóban folytatja a létrehozást, nem állítható be fókusz az új típusra.
+* Nem lehet létrehozni új mappát vagy átnevezni a mappát
 
 
 

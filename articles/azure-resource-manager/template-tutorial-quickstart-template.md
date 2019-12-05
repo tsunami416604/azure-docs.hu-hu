@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Use quickstart templates
-description: Learn how to use Azure Quickstart templates to complete your template development.
+title: Oktatóanyag – gyorsindítási sablonok használata
+description: Ismerje meg, hogyan végezheti el a sablonok fejlesztését az Azure Gyorsindítás sablonjaival.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,56 +12,56 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74405954"
 ---
-# <a name="tutorial-use-azure-quickstart-templates"></a>Tutorial: Use Azure Quickstart templates
+# <a name="tutorial-use-azure-quickstart-templates"></a>Oktatóanyag: az Azure Gyorsindítás sablonjainak használata
 
-[Azure Quickstart templates](https://azure.microsoft.com/resources/templates/) is a repository of community contributed templates. You can use the sample templates in your template development. In this tutorial, you find a website resource definition, and add it to your own template. It takes about **12 minutes** to complete.
+Az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) a Közösség által biztosított sablonok tárháza. A sablonok fejlesztésében a sablonokat is használhatja. Ebben az oktatóanyagban megtalálja a webhely erőforrás-definícióját, és hozzáadja a saját sablonhoz. A művelet végrehajtása körülbelül **12 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-We recommend that you complete the [tutorial about exported templates](template-tutorial-export-template.md), but it's not required.
+Javasoljuk, hogy végezze el az [exportált sablonokkal kapcsolatos oktatóanyagot](template-tutorial-export-template.md), de ez nem kötelező.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővítménnyel, valamint Azure PowerShell vagy az Azure CLI-vel. További információ: [sablon eszközei](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Sablon áttekintése
 
-At the end of the previous tutorial, your template had the following JSON:
+Az előző oktatóanyag végén a sablon a következő JSON-t használta:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json)]
 
-This template works for deploying storage accounts and app service plans, but you might want to add a website to it. You can use pre-built templates to quickly discover the JSON required for deploying a resource.
+Ez a sablon a Storage-fiókok és az App Service-csomagok üzembe helyezésére használható, de előfordulhat, hogy hozzá szeretne adni egy webhelyet. Az előre elkészített sablonok segítségével gyorsan felderítheti az erőforrások üzembe helyezéséhez szükséges JSON-t.
 
-## <a name="find-template"></a>Find template
+## <a name="find-template"></a>Sablon keresése
 
-1. Open [Azure Quickstart templates](https://azure.microsoft.com/resources/templates/)
-1. In **Search**, enter **deploy linux web app**.
-1. Select the one with the title **Deploy a basic Linux web app**. If you have trouble finding it, here's the [direct link](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
-1. Select **Browse on GitHub**.
-1. Select **azuredeploy.json**.
-1. Review the template. In particular, look for the `Microsoft.Web/sites` resource.
+1. [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/) megnyitása
+1. A **Search (keresés**) mezőbe írja be a **linuxos webalkalmazás üzembe helyezése**kifejezést.
+1. Válassza ki a címet egy **alapszintű linuxos webalkalmazás üzembe helyezésével**. Ha nem találja meg a problémát, a [közvetlen hivatkozás](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)látható.
+1. Válassza **a Tallózás lehetőséget a githubon**.
+1. Válassza ki a **azuredeploy. JSON**fájlt.
+1. Tekintse át a sablont. Különösen keresse meg a `Microsoft.Web/sites` erőforrást.
 
-    ![Resource Manager template quickstart web site](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
+    ![Resource Manager-sablon – gyors üzembe helyezési webhely](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
 
-## <a name="revise-existing-template"></a>Revise existing template
+## <a name="revise-existing-template"></a>Meglévő sablon módosítása
 
-Merge the quickstart template with the existing template:
+A gyors üzembe helyezési sablon egyesítése a meglévő sablonnal:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json?range=1-108&highlight=32-45,49,85-100)]
 
-The web app name needs to be unique across Azure. To prevent having duplicate names, the **webAppPortalName** variable has been updated from **"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"** to **"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"** .
+A webalkalmazás nevének egyedinek kell lennie az Azure-ban. Ha meg szeretné akadályozni, hogy a rendszer duplikálja a neveket, a **webAppPortalName** változót a " **webAppPortalName": "[concat (parameters (" webAppName "),"-WebApp "]]** és **" webAppPortalName ":" [concat (parameters (' webAppName '), uniqueString (resourceGroup (). id)] "** értékre frissíti.
 
-Add a comma at the end of the `Microsoft.Web/serverfarms` definition to separate the resource definition from the `Microsoft.Web/sites` definition.
+Adja hozzá a `Microsoft.Web/serverfarms` definíciójának végén található vesszőt az erőforrás-definíció `Microsoft.Web/sites`-definícióból való elkülönítéséhez.
 
-There are a couple of important features to note in this new resource.
+Ebben az új erőforrásban néhány fontos szempontot figyelembe kell venni.
 
-You'll notice it has an element named **dependsOn** that is set to the app service plan. This setting is required because the app service plan must exist before the web app is created. The **dependsOn** element tells Resource Manager how to order the resources for deployment.
+Megfigyelheti, hogy egy **dependsOn** nevű elemet tartalmaz, amely az App Service-csomagra van beállítva. Erre a beállításra azért van szükség, mert az App Service-csomagnak léteznie kell a webalkalmazás létrehozása előtt. A **dependsOn** elem azt mutatja be, hogy a Resource Manager hogyan rendeli hozzá az erőforrásokat az üzembe helyezéshez.
 
-The **serverFarmId** property uses the [resourceId](resource-group-template-functions-resource.md#resourceid) function. This function gets the unique identifier for a resource. In this case, it gets the unique identifier for the app service plan. The web app is associated with one specific app service plan.
+A **serverFarmId** tulajdonság a [resourceId](resource-group-template-functions-resource.md#resourceid) függvényt használja. Ez a függvény egy erőforrás egyedi azonosítóját kapja meg. Ebben az esetben az App Service-csomag egyedi azonosítóját kapja meg. A webalkalmazás egy adott app Service-csomaghoz van társítva.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-Use either Azure CLI or Azure PowerShell to deploy a template.
+Sablon üzembe helyezéséhez használja az Azure CLI-t vagy a Azure PowerShell-t.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -89,9 +89,9 @@ az group deployment create \
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőforráscsoport törlésével.
 
 1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
@@ -100,7 +100,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Következő lépések
 
-You learned how to use a quickstart template for your template development. In the next tutorial, you add tags to the resources.
+Megtanulta, hogyan használhat egy rövid útmutató sablont a sablonok fejlesztéséhez. A következő oktatóanyagban címkéket adhat hozzá az erőforrásokhoz.
 
 > [!div class="nextstepaction"]
-> [Add tags](template-tutorial-add-tags.md)
+> [Címkék hozzáadása](template-tutorial-add-tags.md)

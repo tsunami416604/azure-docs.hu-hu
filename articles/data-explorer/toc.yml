@@ -102,8 +102,12 @@
           href: data-lake-query-data.md
         - name: Adatok lekérdezése az Azure Monitorban
           href: query-monitor-data.md
-        - name: Python
-          href: python-query-data.md
+        - name: KQL Inline Python hibakeresése
+          href: debug-inline-python.md
+        - name: SDK-k használatával
+          items:
+            - name: Python
+              href: python-query-data.md
         - name: Idősorozat-elemzés és gépi tanulás
           items:
             - name: Idősorozat-elemzések

@@ -40,6 +40,10 @@
       href: virtual-wan-custom-ipsec-portal.md
     - name: Tanúsítványok konfigurálása felhasználói VPN-hez (pont–hely)
       href: certificates-point-to-site.md
+    - name: Azure AD-bérlő konfigurálása felhasználói VPN-hez
+      href: openvpn-azure-ad-tenant.md
+    - name: Többtényezős hitelesítés (MFA) engedélyezése felhasználói VPN-hez
+      href: openvpn-azure-ad-mfa.md
     - name: Azure AD-hitelesítés konfigurálása felhasználói VPN-hez (előzetes verzió)
       href: virtual-wan-point-to-site-azure-ad.md
     - name: Automatizálás konfigurálása (virtuális WAN-partnerek)

@@ -68,6 +68,8 @@
           href: devtest-lab-configure-cost-management.md
         - name: Automatikus leállítással kapcsolatos értesítések küldése
           href: devtest-lab-auto-shutdown.md
+        - name: Automatikus indítás beállítása a tesztkörnyezet virtuális gépeihez
+          href: devtest-lab-auto-startup-vm.md
         - name: A tesztkörnyezet skálázása
           href: devtest-lab-scale-lab.md
         - name: Virtuálisgép-bázisok felügyelete
@@ -193,6 +195,8 @@
           href: add-artifact-repository.md
         - name: Kötelező összetevők megadása
           href: devtest-lab-mandatory-artifacts.md
+        - name: Összetevők alkalmazásával kapcsolatos hibák elhárítása
+          href: devtest-lab-troubleshoot-apply-artifacts.md
     - name: Integrálás a CI/CD-vel
       items:
         - name: Tesztkörnyezetek integrálása az Azure Pipelines CI/CD-folyamatába
