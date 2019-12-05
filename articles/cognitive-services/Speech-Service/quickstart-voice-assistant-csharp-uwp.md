@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 75ecbe8351e68b77a59b40709a2beb15d09b16df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 25d74b640f1bf567792c317626da0178ead7e34f
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504087"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816228"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-uwp"></a>Rövid útmutató: hangsegéd létrehozása a Speech SDK-val, UWP
 
@@ -31,7 +31,7 @@ Ebben a cikkben egy C# univerzális Windows-platform (UWP) alkalmazást fejleszt
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
-* Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com).
+* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com).
 * Egy korábban létrehozott, a [közvetlen vonalas beszéd csatornával](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)konfigurált robot.
 
   > [!NOTE]
@@ -108,7 +108,7 @@ A Tervező nézet frissül az alkalmazás felhasználói felületének megjelen�
 
 Ezután hozzáadja a forráskód mögötti forrást, hogy az alkalmazás a várt módon működjön. A kód mögötti forrás a következőket tartalmazza:
 
-- `using` utasítások az `Speech` és a `Speech.Dialog` névterekhez
+- a `Speech` és `Speech.Dialog` névterek `using` utasításai
 - Egyszerű implementáció a mikrofon elérésének biztosításához, amely a gomb kezelőjéhez van kötve
 - Alapvető felhasználói felületi segítők az alkalmazásban lévő üzenetek és hibák megjelenítéséhez
 - Az inicializálási kód elérési útjának kiinduló pontja, amelyet később fel kell tölteni
@@ -289,10 +289,10 @@ A kód mögötti forrás hozzáadásához kövesse az alábbi lépéseket:
     }
     ```
 
-1. Adja hozzá a következő kódrészletet a metódus törzséhez `InitializeDialogServiceConnector`. Ez a kód a `DialogServiceConnector` értéket hozza létre az előfizetési adataival.
+1. Adja hozzá a következő kódrészletet a metódus törzséhez `InitializeDialogServiceConnector`. Ez a kód a `DialogServiceConnector` az előfizetési adatokkal hozza létre.
 
     ```csharp
-    // Create a BotFrameworkConfig by providing a Speech Service subscription key
+    // Create a BotFrameworkConfig by providing a Speech service subscription key
     // the RecoLanguage property is optional (default en-US)
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
     const string region = "YourServiceRegion"; // Your subscription service region.
@@ -310,7 +310,7 @@ A kód mögötti forrás hozzáadásához kövesse az alábbi lépéseket:
 
 1. Cserélje le a sztringeket `YourChannelSecret`, `YourSpeechSubscriptionKey`és `YourServiceRegion` a robot, a Speech előfizetés és a [régió](regions.md)saját értékeire.
 
-1. Fűzze hozzá a következő kódrészletet az `InitializeDialogServiceConnector` metódus törzsének végéhez. Ez a kód a `DialogServiceConnector` által hivatkozott események kezelőit állítja be a robot tevékenységei, a beszédfelismerés eredményei és egyéb információk közlésére.
+1. Fűzze hozzá a következő kódrészletet az `InitializeDialogServiceConnector`metódus törzsének végéhez. Ez a kód a `DialogServiceConnector` által hivatkozott események kezelőit állítja be a robot tevékenységei, a beszédfelismerés eredményei és egyéb információk közlésére.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client 
@@ -365,7 +365,7 @@ A kód mögötti forrás hozzáadásához kövesse az alábbi lépéseket:
     };
     ```
 
-1. Adja hozzá a következő kódrészletet a `ListenButton_ButtonClicked` metódus törzséhez a `MainPage` osztályban. Ez a kód `DialogServiceConnector` értéket állít be a figyeléshez, mivel már megalakította a konfigurációt, és regisztrálta az eseménykezelőket.
+1. Adja hozzá a következő kódrészletet a `ListenButton_ButtonClicked` metódus törzséhez a `MainPage` osztályban. Ez a kód a figyelésre `DialogServiceConnector` állítja be, mert már megalakította a konfigurációt és regisztrálta az eseménykezelőket.
 
     ```csharp
     if (connector == null)
@@ -414,15 +414,15 @@ Most már készen áll az alkalmazás létrehozására és tesztelésére.
 <!--
     ![Successful bot response](media/voice-assistants/quickstart-cs-uwp-bot-successful-turn.png)
 -->
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [A hangsegédek ismertetése](voice-assistants.md)
-- [Ingyenes Speech Services-előfizetési kulcs beszerzése](get-started.md)
+- [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
 - [Egyéni kulcsszavak](speech-devices-sdk-create-kws.md)
 - [Közvetlen vonalas beszéd összekötése a robottal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [Minták C# feltárása a githubon](https://aka.ms/csspeech/samples)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 75edb385a86be849ec7c165759d3b451eab804f6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: fec81e843753656d651c6d5d0b73077a964be9d4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828513"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807442"
 ---
 # <a name="azure-service-fabric-security"></a>Az Azure Service Fabric biztonsága 
 
@@ -166,7 +166,7 @@ Ha hozzáférést szeretne adni az alkalmazáshoz a titkokhoz, vegye fel a tanú
 ```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Service Fabric-alkalmazások hitelesítése az Azure-erőforrásokhoz Managed Service Identity (MSI) használatával
 
-Az Azure-erőforrások felügyelt identitásának megismeréséhez tekintse meg a [Mi az Azure-erőforrások felügyelt identitásai?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-it-work)című témakört.
+Az Azure-erőforrások felügyelt identitásának megismeréséhez tekintse meg a [Mi az Azure-erőforrások felügyelt identitásai?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)című témakört.
 Az Azure Service Fabric-fürtök a [Managed Service Identityt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)támogató Virtual Machine Scale sets futnak.
 Az MSI-t használó szolgáltatások listájának lekéréséhez tekintse meg az [Azure Active Directory hitelesítést támogató Azure-szolgáltatásokat](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication).
 
@@ -219,14 +219,14 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 ## <a name="azure-firewall"></a>Azure Firewall
 A [Azure Firewall felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely megvédi az Azure-Virtual Network erőforrásait. Ez egy teljesen állapot-nyilvántartó tűzfal, amely beépített, magas rendelkezésre állású és korlátlan Felhőbeli méretezhetőséggel rendelkezik.](https://docs.microsoft.com/azure/firewall/overview) Ez lehetővé teszi, hogy a kimenő HTTP/S forgalmat a teljes tartománynevek (FQDN) egy adott listájára korlátozza, beleértve a helyettesítő kártyákat is. Ehhez a szolgáltatáshoz nem szükséges SSL-lezárás. Javasoljuk, hogy a Windows-frissítések [Azure Firewall FQDN-címkéit](https://docs.microsoft.com/azure/firewall/fqdn-tags) használja, és engedélyezze a hálózati forgalmat a Microsoft Windows Update végpontok számára a tűzfalon keresztül. [Azure Firewall üzembe helyezése sablon használatával](https://docs.microsoft.com/azure/firewall/deploy-template) a Microsoft. Network/azureFirewalls erőforrás-sablon definícióját tartalmazza. Az Service Fabric alkalmazások számára közös tűzfalszabályok lehetővé teszik a következők használatát a fürtök virtuális hálózata számára:
 
-- *download.microsoft.com
-- *servicefabric.azure.com
+- \* download.microsoft.com
+- \* servicefabric.azure.com
 - *.core.windows.net
 
 Ezek a tűzfalszabályok kiegészítik az engedélyezett kimenő hálózati biztonsági csoportokat, amelyek a ServiceFabric és a tárterületet is tartalmazzák a virtuális hálózatból engedélyezett célhelyként.
 
-## <a name="tls-12"></a>TLS 1,2
-[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
+## <a name="tls-12"></a>TLS 1.2
+[HKT](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 
 

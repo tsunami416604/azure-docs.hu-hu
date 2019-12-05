@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: cb37bd0c83956b9858639a78d4995e14811498e5
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: b09e5366584e9974e67d47d34f22a3483be14f7a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559327"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805756"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
@@ -70,7 +70,7 @@ A nagy kapacitású szolgáltatási szintje csak a [virtuális mag modellben](sq
 
   A nagy kapacitású számítási egységének díja replika. A [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) árát a rendszer automatikusan beolvassa a skálázási replikákat. Alapértelmezés szerint egy elsődleges replikát és egy írásvédett replikát hozunk létre nagy kapacitású-adatbázisban.  A felhasználók a replikák teljes számát módosíthatják, beleértve az elsődleges 1-5-as értéket is.
 
-- **Tárterület**:
+- **Tárolás**:
 
   A nagy kapacitású-adatbázis konfigurálásakor nem kell megadnia a maximális adatméretet. A rugalmas méretezés szintjén az adatbázis tárolási díjai a tényleges használat alapján lesznek kiszámlázva. A tárterületet a rendszer automatikusan 10 GB és 100 TB között osztja el a 10 GB és 40 GB közötti dinamikusan igazított növekményekben.  
 
@@ -246,7 +246,7 @@ Ezek a nagy kapacitású szolgáltatási szintjére vonatkozó jelenlegi korlát
 | Rugalmas készletek |  A rugalmas készletek jelenleg nem támogatottak SQL Database nagy kapacitású.|
 | A nagy kapacitású-re történő áttelepítés jelenleg egyirányú művelet | Ha egy adatbázis át lett telepítve a nagy kapacitású-be, az nem telepíthető át közvetlenül egy nem nagy kapacitású szolgáltatási rétegre. Jelenleg az adatbázisnak a nagy kapacitású-ből a nem nagy kapacitású-be való migrálása a BACPAC-fájl vagy más adatáthelyezési technológiák (tömeges másolás, Azure Data Factory, Azure Databricks, SSIS stb.) használatával történik.|
 | Adatbázisok áttelepítése állandó memóriában tárolt objektumokkal | A nagy kapacitású csak a nem állandó memóriabeli objektumokat támogatja (a táblák típusai, a natív SPs és a functions).  Az állandó memóriában lévő táblákat és egyéb objektumokat el kell dobni, és nem memóriában lévő objektumként kell újból létrehozni, mielőtt áttelepíti az adatbázist a nagy kapacitású szolgáltatási szintjére.|
-| Változáskövetés | Az Azure SQL nagy kapacitású-adatbázisokkal még nem konfigurálható és nem használható Change Tracking. |
+| Változáskövetés | Change Tracking jelenleg nyilvános előzetes verzióban érhető el, és az új vagy meglévő nagy kapacitású-adatbázisokon engedélyezhető. |
 | Georeplikáció  | Azure SQL Database nagy kapacitású esetében még nem konfigurálhatja a Geo-replikációt. |
 | Adatbázis másolása | Az adatbázis másolása még nem használható új adatbázis létrehozására az Azure SQL-nagy kapacitású. |
 | TDE/AKV-integráció | A Azure Key Vault (általában saját kulcsú vagy BYOK) használatával történő transzparens adatbázis-titkosítás még nem támogatott Azure SQL Database nagy kapacitású, azonban a szolgáltatás által felügyelt kulcsokkal való TDE teljes mértékben támogatott. |

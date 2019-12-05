@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 890d2200a8047bc12c99eed97277e11776806def
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: da90e1fb8ab6241cbe0bfa583e1b4a3fbe338ad8
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111150"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812960"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Gyors útmutató: Kapcsolódás egyéni parancsok alkalmazáshoz a Speech SDK-val (előzetes verzió)
 
@@ -36,7 +36,7 @@ A cikk végrehajtásához egyéni parancsokat tartalmazó alkalmazás szüksége
 A következőkre is szüksége lesz:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com)
+- Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com)
 
 ## <a name="optional-get-started-fast"></a>Opcionális: gyors kezdés
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2173dbabc83ff0a03c0cfd18e02a6f3183ef90e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 313332689b0f2df9698f868297c72be7d8bde5bb
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503968"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829145"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -95,6 +95,6 @@ Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzés
 
 Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

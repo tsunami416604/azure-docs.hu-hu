@@ -8,42 +8,44 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a601b0c40f84832101e97a7abf7dd7418a0a5c69
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 5bf93980a8be86c77240ab981eb812a738a96204
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673375"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828796"
 ---
-A következő lépésekkel hozhat létre egy virtuális hálózathoz a Resource Manager üzemi modell és az Azure Portalon. Virtuális hálózatokkal kapcsolatos további információkért lásd: [Virtual Network áttekintése](../articles/virtual-network/virtual-networks-overview.md).
+Az alábbi lépéseket követve létrehozhat egy VNet a Resource Manager-alapú üzemi modellel és a Azure Portal. További információ a virtuális hálózatokról: [Virtual Network Overview (áttekintés](../articles/virtual-network/virtual-networks-overview.md)).
 
 >[!NOTE]
->A vnet egy helyszíni helyhez csatlakozzon egyeztetnie a helyi rendszergazda, hogy különítsen el egy IP-címtartományt, amely, kifejezetten ehhez a virtuális hálózathoz használhat. Ha a VPN-kapcsolat mindkét oldalán ismétlődő címtartomány, forgalom nem várt módon irányítja át. Ráadásul ha ezt a VNetet egy másik VNethez szeretné csatlakoztatni, a címtér nem lehet átfedésben másik VNettel. Ennek megfelelően tervezze meg a hálózati konfigurációt.
+>Ahhoz, hogy a VNet egy helyszíni helyhez kapcsolódjon, egyeztessen a helyszíni hálózati rendszergazdájával, hogy kifaragjon egy olyan IP-címtartományt, amelyet kifejezetten ehhez a virtuális hálózathoz használhat. Ha egy duplikált címtartomány létezik a VPN-kapcsolat mindkét oldalán, a forgalom nem várt módon lesz átirányítva. Ráadásul ha ezt a VNetet egy másik VNethez szeretné csatlakoztatni, a címtér nem lehet átfedésben másik VNettel. Ennek megfelelően tervezze meg a hálózati konfigurációt.
 >
 >
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) válassza **erőforrás létrehozása**. A **új** lap megnyitásakor.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).  A Azure Portal menüben vagy a **kezdőlapon** válassza az **erőforrás létrehozása**lehetőséget. Megnyílik az **új** oldal.
 
-2. Az a **keresés a piactéren** írja be a következőt *virtuális hálózat* válassza **virtuális hálózati** a visszaadott listában. A **virtuális hálózati** lap megnyitásakor.
+2. A **Keresés a piactéren**mezőbe írja be a *virtuális hálózat* kifejezést, és válassza a **Virtual Network** lehetőséget az eredmények közül.
 
-   ![Virtuális hálózati erőforrás keresése lap](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal700.png "Virtuális hálózati erőforrás keresése lap")
+   ![Virtual Network erőforrás oldalának megkeresése](./media/vpn-gateway-basic-vnet-rm-portal-include/search-marketplace-for-virtual-network.png "Virtuális hálózati erőforrás keresése lap")
 
-3. Az a **telepítési modell kiválasztása** listában válassza az oldal alján **Resource Manager**, majd válassza ki **létrehozás**. A **virtuális hálózat létrehozása** lap megnyitásakor.
+   Megnyílik a **virtuális hálózat** lap.
+
+3. Az oldal alján, a **telepítési modell kiválasztása** listában válassza ki a **Resource Manager**elemet, majd válassza a **Létrehozás**lehetőséget. Megnyílik a **virtuális hálózat létrehozása** lap.
 
    ![Virtuális hálózat létrehozása lap](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet.png "Virtuális hálózat létrehozása lap")
 
-4. A **Virtuális hálózat létrehozása** lapon konfigurálja a VNet beállításait. A mezők kitöltésekor a vörös felkiáltójelből zöld pipa válik, amikor a rendszer érvényesíti a, adja meg a mezőben karakterek. Egyes értékek autofilled, amit a saját értékeire:
+4. A **Virtuális hálózat létrehozása** lapon konfigurálja a VNet beállításait. Amikor kitölti a mezőket, a vörös felkiáltójel zöld pipa lesz, ha a mezőbe beírt karakterek ellenőrzése megtörténik. Néhány érték autofilled, amelyet a saját értékeivel helyettesíthet:
 
-   - **Név**: Adja meg a virtuális hálózat nevét.
+   - **Név:** adja meg a virtuális hálózat nevét.
 
-   - **Címtér**: Adja meg a címteret. Ha több címteret szeretne felvenni, adja meg itt az első címterét. A virtuális hálózat létrehozása után később is felvehet a további címtereket.
+   - **Címtér**: adja meg a címteret. Ha több címtartományt is fel szeretne venni, adja meg az első címtartomány itt. Később további címtartományt is hozzáadhat, miután létrehozta a VNet.
 
-   - **Előfizetés**: Ellenőrizze, hogy a felsorolt előfizetések a megfelelőt. Az előfizetéseket a legördülő menüben módosíthatja.
+   - **Előfizetés:** ellenőrizze, hogy a megfelelő előfizetés jelenik-e meg a listában. Az előfizetéseket a legördülő menüben módosíthatja.
 
-   - **Erőforráscsoport**: Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat az új erőforráscsoport-név beírásával. Ha egy új csoportot hoz létre, adjon nevet az erőforráscsoport, a tervezett konfigurációs értékeknek megfelelően. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
+   - **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat az új erőforráscsoport nevének megadásával. Ha új csoportot hoz létre, a tervezett konfigurációs értékeknek megfelelően nevezze el az erőforráscsoportot. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
 
-   - **Hely**: Válassza ki a virtuális hálózat helyét. A hely határozza meg, ahol a virtuális hálózaton üzembe helyezett erőforrások megtalálhatók lesznek.
+   - **Hely**: válassza ki a Vnet helyét. A hely határozza meg, hogy az adott VNet üzembe helyezett erőforrások hol fognak élni.
 
-   - **Alhálózat**: Az alhálózat hozzáadása **neve** és alhálózati **címtartomány**. Később is hozzáadhat további alhálózatokat, virtuális hálózat létrehozása után. 
+   - **Alhálózat**: adja hozzá az alhálózat **nevét** és az alhálózati **címtartományt**. Később további alhálózatokat is hozzáadhat, miután létrehozta a VNet. 
      
 5. Kattintson a **Létrehozás** gombra.

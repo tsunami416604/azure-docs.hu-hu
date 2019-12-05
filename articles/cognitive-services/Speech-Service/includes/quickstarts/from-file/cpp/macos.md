@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: e96f27a7a99bcb6600ab0c3d01b1fb509d4e554e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 5cd7173d2df6f08b79d544a3a371039c24d5882a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796038"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819260"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -76,7 +76,7 @@ Az első lépések előtt ügyeljen a következőre:
 
    ````
 
-1. Ebben az új fájlban cserélje le a `YourSubscriptionKey` karakterláncot a Speech Services előfizetési kulcsával.
+1. Ebben az új fájlban cserélje le a `YourSubscriptionKey` sztringet a Speech Service előfizetői azonosítójára.
 
 1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
 
@@ -110,7 +110,7 @@ Az első lépések előtt ügyeljen a következőre:
    ./helloworld
    ```
 
-1. A rendszer továbbítja a hangfájlt a beszédfelismerési szolgáltatásoknak, és a fájl első kiírása szövegbe kerül, amely ugyanabban az ablakban jelenik meg.
+1. A rendszer továbbítja a hangfájlt a beszédfelismerési szolgáltatásnak, és a fájl első kiírása szövegbe kerül, amely ugyanabban az ablakban jelenik meg.
 
    ```text
    Recognizing first result...

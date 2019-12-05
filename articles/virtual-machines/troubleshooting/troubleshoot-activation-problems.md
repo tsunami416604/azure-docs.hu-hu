@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: f3ad58c4094e9f39bcf9782b7b98e351e9d7809b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a1c2049d7355ab946dbf426ec71f7f6178b8f153
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058137"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819102"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Az Azure Windows rendszerű virtuális gépek aktiválási problémáinak elhárítása
 
@@ -26,18 +26,18 @@ Ha az Azure Windows rendszerű virtuális gép (VM) egyéni rendszerképből val
 
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Azure KMS-végpontok ismertetése az Azure-beli Windows termékaktiválás Virtual Machines
 
-Az Azure különböző végpontokat használ a KMS-aktiváláshoz attól függően, hogy melyik Felhőbeli régióban található a virtuális gép. A hibaelhárítási útmutató használatakor használja az adott régióra érvényes KMS-végpontot.
+Az Azure különböző végpontokat használ a KMS (kulcskezelő szolgáltatások) aktiválásához attól függően, hogy melyik felhő-régión belül található a virtuális gép. A hibaelhárítási útmutató használatakor használja az adott régióra érvényes KMS-végpontot.
 
-* Azure public cloud regions: kms.core.windows.net:1688
-* Azure China 21Vianet national cloud regions: kms.core.chinacloudapi.cn:1688
+* Azure nyilvános felhő régiói: kms.core.windows.net:1688
+* Azure China 21Vianet nemzeti Felhőbeli régiók: kms.core.chinacloudapi.cn:1688
 * Azure Germany – nemzeti Felhőbeli régiók: kms.core.cloudapi.de:1688
 * Azure US Gov nemzeti Felhőbeli régiók: kms.core.usgovcloudapi.net:1688
 
-## <a name="symptom"></a>Jelenség
+## <a name="symptom"></a>Hibajelenség
 
 Amikor egy Azure Windows rendszerű virtuális gépet próbál aktiválni, a következőhöz hasonló hibaüzenet jelenik meg:
 
-**Hiba: 0xC004F074 a szoftver LicensingService jelentett, hogy a számítógép nem aktiválható. Nem lehet kapcsolatot létesíteni a kulcs ManagementService (KMS). További információért tekintse meg az alkalmazás eseménynaplóját.**
+**Hiba: a 0xC004F074 LicensingService jelentett, hogy a számítógép nem aktiválható. Nem lehet kapcsolatot létesíteni a kulcs ManagementService (KMS). További információért tekintse meg az alkalmazás eseménynaplóját.**
 
 ## <a name="cause"></a>Ok
 
@@ -87,14 +87,14 @@ Az egyéni rendszerképből létrehozott virtuális gép esetében konfigurálni
     Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
 
-    A parancsnak ehhez hasonlókat kell visszaadnia: A kulcskezelő szolgáltatás számítógépnév beállítása kms.core.windows.net:1688 sikeres.
+    A parancsnak vissza kell térnie: a kulcskezelő szolgáltatás kms.core.windows.net:1688 beállítása sikeres.
 
 4. A Psping használatával ellenőrizze, hogy van-e kapcsolat a KMS-kiszolgálóval. Lépjen abba a mappába, amelybe kibontotta a letöltött Pstools.zip fájlt, majd futtassa a következőt:
   
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-   Győződjön meg arról, hogy a kimenet utolsó előtti sorában a következők láthatók: Elküldött = 4, fogadott = 4, elveszett = 0 (0% veszteség).
+   A kimenet második – utolsó sorában ellenőrizze, hogy látható-e: elküldött = 4, fogadott = 4, elveszett = 0 (0% Loss).
 
    Ha az elveszett érték nagyobb nullánál (nulla), a virtuális gépnek nincs kapcsolata a KMS-kiszolgálóval. Ebben az esetben, ha a virtuális gép egy virtuális hálózaton található, és van megadva egyéni DNS-kiszolgáló, meg kell győződnie arról, hogy a DNS-kiszolgáló képes a kms.core.windows.net feloldására. Vagy módosítsa a DNS-kiszolgálót úgy, hogy az a kms.core.windows.net oldja fel.
 
@@ -112,7 +112,7 @@ Az egyéni rendszerképből létrehozott virtuális gép esetében konfigurálni
     
     **Windows (R), pl. serverdatacenter Edition aktiválása (12345678-1234-1234-1234-12345678)...  A termék sikeresen aktiválva.**
 
-## <a name="faq"></a>GYIK 
+## <a name="faq"></a>Gyakori kérdések 
 
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Létrehoztam a Windows Server 2016-et az Azure Marketplace-ről. Be kell állítania a KMS-kulcsot a Windows Server 2016 aktiválásához? 
 
@@ -130,6 +130,6 @@ Igen.
  
 Ha a türelmi időszak lejárt, és a Windows még nem aktiválódik, a Windows Server 2008 R2 és a Windows újabb verziói további értesítéseket jelenítenek meg az aktiválással kapcsolatban. Az asztali háttérkép feketén marad, és a Windows Update csak a biztonsági és kritikus frissítéseket telepíti, de nem kötelező frissítéseket is. Tekintse meg az értesítések szakaszt a [licencelési feltételek](https://technet.microsoft.com/library/ff793403.aspx) lap alján.   
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
+## <a name="need-help-contact-support"></a>Segítség Vegye fel a kapcsolatot az ügyfélszolgálattal.
 
 Ha további segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

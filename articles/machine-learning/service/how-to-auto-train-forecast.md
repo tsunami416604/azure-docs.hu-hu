@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 276e741a9462c19a3cba9ad1f9ac44e2da7ef1d3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cd1f516b3d3840262d9221db772f2c186650462e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580707"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807391"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "73580707"
 Ebből a cikkből megtudhatja, hogyan végezheti el az idősorozat-előrejelzési regressziós modell betanítását a Azure Machine Learning automatikus gépi tanulásával. Az előrejelzési modell konfigurálása hasonló ahhoz, hogy szabványos regressziós modellt állítson be automatizált gépi tanulással, de bizonyos konfigurációs beállítások és előfeldolgozási lépések léteznek az idősorozat-információkkal való munkavégzéshez. Az alábbi példák a következőket mutatják be:
 
 * Az idősorozat-modellezéssel kapcsolatos adatelőkészítés
-* Adott idősorozat-paraméterek konfigurálása egy [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) objektumban
+* Adott idősorozat-paraméterek konfigurálása egy [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) objektumban
 * Előrejelzések futtatása idősoros adattal
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
@@ -113,7 +113,7 @@ Az előrejelzési feladatokhoz az automatizált gépi tanulás az idősorozat-ad
 
 A `AutoMLConfig` objektum az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget határozza meg. A regressziós problémákhoz hasonlóan szabványos betanítási paramétereket is definiálhat, például a feladattípust, az ismétlések számát, a betanítási adatok számát és az eltérő érvényességi értéket. Az előrejelzési feladatokhoz további paramétereket kell megadni, amelyek hatással vannak a kísérletre. Az alábbi táblázat az egyes paramétereket és azok használatát ismerteti.
 
-| Param | Leírás | Kötelező |
+| Paraméter | Leírás | Szükséges |
 |-------|-------|-------|
 |`time_column_name`|A dátum-és idősorozatok létrehozásához használt bemeneti adatok datetime oszlopának megadására szolgál.|✓|
 |`grain_column_names`|Az egyes adatsorozat-csoportokat meghatározó nevek a bemeneti adatokban. Ha a gabona nincs meghatározva, a rendszer az adathalmazt egy idősorozatra feltételezi.||
@@ -122,7 +122,7 @@ A `AutoMLConfig` objektum az automatizált gépi tanulási feladatokhoz szüksé
 |`target_rolling_window_size`|*n* korábbi időszakok, amelyeket az előre jelzett értékek előállítására használhat, < = betanítási készlet mérete. Ha nincs megadva, az *n* a teljes betanítási készlet mérete. Akkor válassza ezt a paramétert, ha csak bizonyos mennyiségű előzményt szeretne figyelembe venni a modell betanításakor.||
 |`enable_dnn`|Előrejelzési DNN engedélyezése.||
 
-További információt a [dokumentációban](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) talál.
+További információt a [dokumentációban](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) talál.
 
 Hozzon létre egy idősorozat-beállításokat szótár objektumként. Állítsa a `time_column_name` az adathalmaz `day_datetime` mezőjére. Adja meg a `grain_column_names` paramétert annak biztosításához, hogy **két különálló idősorozat-csoport** legyen létrehozva az adatsorokhoz; az A és B tároló egyike. Végül állítsa a `max_horizon` 50-re, hogy a teljes tesztelési készletet előre meg lehessen jósolni. Állítsa be az előrejelzési időszakot 10, `target_rolling_window_size`értékkel rendelkező időszakra, és az `target_lags` paraméterrel előrébb álló két időszakra vonatkozóan egyetlen késést határozzon meg.
 
@@ -240,7 +240,7 @@ Ismételje meg a szükséges lépéseket a jövőbeli adatok dataframe való bet
 > [!NOTE]
 > Nem lehet előre jelezni a `max_horizon`nál nagyobb időszakok számának értékét. A modellt újra be kell tanítani, hogy az aktuális horizonton túli jövőbeli értékek előrejelzése nagyobb horizonton történjen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Kövesse az [oktatóanyagot](tutorial-auto-train-models.md) , amelyből megtudhatja, hogyan hozhat létre kísérleteket automatizált gépi tanulással.
 * Tekintse meg a [Azure Machine learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) dokumentációját.

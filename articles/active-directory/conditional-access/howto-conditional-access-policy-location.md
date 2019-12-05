@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64b7add9ddb1734d763c46e93d6788ce21a2c321
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 26299ca12071b521fc825a0b1ab1425f24af67e0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150877"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803597"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Feltételes hozzáférés: hozzáférés letiltása hely szerint
 
@@ -25,20 +25,20 @@ A feltételes hozzáférés helyének feltételével a felhasználó hálózati 
 ## <a name="define-locations"></a>Telephelyek definiálása
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
-1. Tallózással keresse meg **Azure Active Directory** > **feltételes hozzáférést**.
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**lehetőséget.
 1. Válassza az **új hely**lehetőséget.
 1. Adjon nevet a helynek.
 1. Válassza az **IP-címtartományok** lehetőséget, ha ismeri az adott helyet vagy **országokat vagy régiókat**alkotó, külsőleg elérhető IPv4-címtartományt.
    1. Adja meg az **IP-tartományokat** , vagy válassza ki a megadott hely **országait/régióit** .
       * Ha az országok/régiók lehetőséget választotta, dönthet úgy, hogy ismeretlen területeket is tartalmaz.
-1. **Mentés** kiválasztása
+1. Válassza a **Mentés** elemet.
 
 A feltételes hozzáférés hely feltételével kapcsolatos további információkért tekintse meg a cikk a [feltételes hozzáférés Azure Active Directory a hely feltételeit](location-condition.md) ismertető cikket.
 
 ## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
-1. Tallózással keresse meg **Azure Active Directory** > **feltételes hozzáférést**.
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**lehetőséget.
 1. Válassza az **új szabályzat**lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
@@ -49,8 +49,8 @@ A feltételes hozzáférés hely feltételével kapcsolatos további informáci�
    1. **Konfigurálás** beállítása **Igen** értékre
    1. **Kiválasztott helyszínek** kijelölése
    1. Válassza ki a szervezet számára létrehozott tiltott helyet.
-   1. Kattintson a **kijelölés** > **kész** > **kész**lehetőségre.
-1. A **hozzáférés-vezérlés** > **blokk**alatt válassza a **kiválasztás**lehetőséget.
+   1. Kattintson a **kiválasztás** > **kész** > **kész**lehetőségre.
+1. A **hozzáférés-vezérlés** > **blokk**területen válassza a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 

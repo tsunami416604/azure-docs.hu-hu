@@ -9,12 +9,12 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 29edd7da42a5eb4586cd52cc0f913a56e199a5ba
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e1638c9779ca50507a1ce30dd3bbc9c18248964a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808278"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807068"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL Database importálási/exportálási szolgáltatás hosszú időt vesz igénybe az adatbázisok importálásához vagy exportálásához
 
@@ -22,7 +22,7 @@ Ha a Azure SQL Database importálási/exportálási szolgáltatást használja, 
 
 ## <a name="azure-sql-database-importexport-service"></a>Azure SQL Database importálási/exportálási szolgáltatás
 
-A Azure SQL Database import/export szolgáltatás egy REST-alapú webszolgáltatás, amely minden Azure-adatközpontban fut. A szolgáltatás akkor lesz meghívva, ha az [adatbázis importálása](https://docs.microsoft.com/azure/sql-database/sql-database-import#import-from-a-bacpac-file-in-the-azure-portal) vagy [exportálása](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) lehetőséget használja az SQL-adatbázis áthelyezéséhez a Azure Portal. A szolgáltatás ingyenes kérelmek üzenetsor-kezelő és számítási szolgáltatásokat biztosít az Azure SQL Database és az Azure Blob Storage közötti importálás és exportálás végrehajtásához.
+A Azure SQL Database import/export szolgáltatás egy REST-alapú webszolgáltatás, amely minden Azure-adatközpontban fut. A szolgáltatás akkor lesz meghívva, ha az [adatbázis importálása](sql-database-import.md#using-azure-portal) vagy [exportálása](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) lehetőséget használja az SQL-adatbázis áthelyezéséhez a Azure Portal. A szolgáltatás ingyenes kérelmek üzenetsor-kezelő és számítási szolgáltatásokat biztosít az Azure SQL Database és az Azure Blob Storage közötti importálás és exportálás végrehajtásához.
 
 Az importálási és exportálási műveletek nem a hagyományos fizikai adatbázis biztonsági mentését jelentik, hanem a speciális BACPAC formátumot használó adatbázis logikai biztonsági mentését. A BACPAC formátuma lehetővé teszi, hogy ne kelljen olyan fizikai formátumot használnia, amely a Microsoft SQL Server és Azure SQL Database verziói között változhat. Ezért a segítségével biztonságosan visszaállíthatja az adatbázist egy SQL Server adatbázisba és egy SQL-adatbázisba.
 

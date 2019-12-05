@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 158a99b1691e59fa58207f3c9291ca9d37a6679c
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 2cccd17ce04b3954a7d0720d9ba25bbe792da3b6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538115"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806337"
 ---
 # <a name="why-use-batch-transcription"></a>Miért érdemes a Batch-átírást használni?
 
@@ -23,12 +23,12 @@ A Batch-átírás ideális megoldás, ha nagy mennyiségű hanganyagot szeretne 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="subscription-key"></a>Előfizetési kulcs
+### <a name="subscription-key"></a>Előfizetői azonosító
 
 Ahogy a Speech Service összes funkciója esetében, létrehozhat egy előfizetési kulcsot a [Azure Portal](https://portal.azure.com) az első [lépéseket ismertető útmutatóban](get-started.md). Ha tervbe kell vennie az alapmodellből való átírásokat, a kulcs létrehozásához mindössze annyit kell tennie.
 
 >[!NOTE]
-> A Batch átírásához szabványos előfizetés (S0) szükséges a Speech Services használatához. Az ingyenes előfizetés kulcsa (F0) nem fog működni. További információ: [díjszabás és korlátok](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> A Batch-átírás használatához standard előfizetés (S0) szükséges a Speech Service-hez. Az ingyenes előfizetés kulcsa (F0) nem fog működni. További információ: [díjszabás és korlátok](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="custom-models"></a>Egyéni modellek
 
@@ -86,7 +86,7 @@ Ezeket a választható tulajdonságokat az átírás konfigurálásához haszná
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| `ProfanityFilterMode` | Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerésében. Az elfogadott értékek olyan `None`, amelyek letiltják a káromkodások szűrését, `masked` amely a csillagokkal való káromkodást váltja fel, `removed`, amely eltávolítja az eredményből az összes káromkodást, vagy `tags`, amely a "káromkodás" címkét adja meg. Az alapértelmezett beállítás a `masked`. |
+| `ProfanityFilterMode` | Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerésében. Az elfogadott értékek olyan `None`, amelyek letiltják a káromkodások szűrését, `masked` amely a csillagokkal való káromkodást váltja fel, `removed`, amely eltávolítja az eredményből az összes káromkodást, vagy `tags`, amely a "káromkodás" címkét adja meg. Az alapértelmezett beállítás: `masked`. |
 | `PunctuationMode` | Meghatározza, hogyan kezelhető a központozás a felismerési eredményekben. Az elfogadott értékek olyan `None`, amelyek letiltják a központozást, `dictated` amely explicit írásjeleket feltételez, `automatic`, amely lehetővé teszi, hogy a dekóder a központozás vagy a `dictatedandautomatic`, amely a diktált írásjeleket vagy az automatikus értéket jelenti. |
  | `AddWordLevelTimestamps` | Megadja, hogy a rendszer hozzáadja-e a Word szintű időbélyegeket a kimenethez. Az elfogadott értékek olyan `true`, amelyek lehetővé teszik a Word szintű időbélyegek és a `false` (az alapértelmezett érték) letiltását. |
  | `AddSentiment` | Azt adja meg, hogy a rendszer milyen érzést kell hozzáadnia a teljes értékhez. Az elfogadott értékek `true`, amelyek lehetővé teszik a vélemények kiértékelését és a `false` (az alapértelmezett érték) letiltását. |

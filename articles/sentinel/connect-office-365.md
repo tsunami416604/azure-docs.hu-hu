@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: a38beb0700e470d325545a2523143ecdab9f6dfb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: df5aade7244f69e7264f901364ecc164351eec50
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74777417"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815785"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Adatok összekötése az Office 365-naplókból
 
@@ -42,12 +42,12 @@ Egyetlen kattintással továbbíthatja az [Office 365](https://docs.microsoft.co
 
 1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, majd kattintson az **Office 365** csempére.
 
-2. Ha még nem tette volna meg, ezt az **Adatösszekötők** panelen, az **Office 365** -összekötő kiválasztásával teheti meg. Itt rákattinthat az **összekötő megnyitása lapra** , és a konfiguráció szakaszban **az Office 365-megoldás engedélyezése a munkaterületen** a **megoldás telepítése** gombra kattintva engedélyezheti. Ha már engedélyezve van, akkor a rendszer a már engedélyezett módon azonosítja a kapcsolatok képernyőjén.
+2. Ha még nem tette volna meg, ezt az **Adatösszekötők** panelen, az **Office 365** -összekötő kiválasztásával teheti meg. Itt rákattinthat az **összekötő megnyitása lapra** , és a konfiguráció szakaszban címkézve **engedélyezheti az Office 365-megoldás használatát a munkaterületen** a **megoldás telepítése** gombra kattintva engedélyezheti. Ha már engedélyezve van, akkor a rendszer a már engedélyezett módon azonosítja a kapcsolatok képernyőjén.
 1. Az Office 365 lehetővé teszi az adatok több bérlőről az Azure Sentinelbe való továbbítását. Minden olyan bérlőhöz, amelyhez csatlakozni szeretne, adja hozzá a bérlőt az **Azure sentinelhez a bérlők összekapcsolásához**. 
 1. Megnyílik egy Active Directory képernyő. A rendszer arra kéri, hogy a globális rendszergazda felhasználóval hitelesítse magát minden olyan bérlőn, amelyhez csatlakozni szeretne az Azure Sentinel szolgáltatáshoz, és adja meg az Azure Sentinel számára a naplók olvasásához szükséges engedélyeket. 
-5. A stream Office 365 Activity naplók területen kattintson a **kiválasztás** elemre, és válassza ki, hogy mely naplózási típusokat szeretné továbbítani az Azure sentinelbe. Az Azure Sentinel jelenleg támogatja az Exchange-et és a SharePointot.
+5. A bérlői listában láthatja az Azure AD-címtár AZONOSÍTÓját (bérlői AZONOSÍTÓját) és két jelölőnégyzetet az Exchange-és SharePoint-naplókhoz. Kiválaszthatja azokat a felsorolt szolgáltatásokat, amelyeket be szeretne venni a Sentinelbe. Jelenleg az Azure Sentinel támogatja az Exchange-és SharePoint-naplókat a meglévő Office 365-szolgáltatásokon belül.
 
-4. Kattintson a **módosítások alkalmazása**lehetőségre.
+4. Miután kiválasztotta a szolgáltatásokat (Exchange, SharePoint stb.), kattintson a Save (Mentés) gombra a bérlői hozzáadási kereten az oldalon. 
 
 3. Az Office 365-naplókhoz tartozó Log Analytics vonatkozó sémájának használatához keresse meg a **OfficeActivity**.
 

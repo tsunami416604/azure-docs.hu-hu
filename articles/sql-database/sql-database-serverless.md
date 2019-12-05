@@ -4,19 +4,19 @@ description: Ez a cikk az új kiszolgáló nélküli számítási szintet ismert
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
+ms.custom: test
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: a304b7fb0ba90d4ccf3805f47a5b04a2d3d8765e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d1f3bf6cb1467d0bb4906ff2409e72828b22cd20
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775583"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807017"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 
@@ -334,7 +334,7 @@ Ebben az esetben az adatbázist a számítás és a tárolás után számítjuk 
 
 Pontosabban, a példában szereplő számítási számla kiszámítása a következőképpen történik:
 
-|Időtartam|másodpercenként használt virtuális mag|GB használt másodpercenként|Számítási dimenzió számlázása|Virtuális mag másodpercben elszámolt időtartam|
+|Időintervallum|másodpercenként használt virtuális mag|GB használt másodpercenként|Számítási dimenzió számlázása|Virtuális mag másodpercben elszámolt időtartam|
 |---|---|---|---|---|
 |0:00-1:00|4|9|használt virtuális mag|4 virtuális mag * 3600 másodperc = 14400 virtuális mag másodperc|
 |1:00-2:00|1|12|Felhasznált memória|12 GB * 1/3 * 3600 másodperc = 14400 virtuális mag másodperc|

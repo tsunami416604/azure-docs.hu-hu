@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6a6ef6c0070642e1c2f762f5cb19f97bd4d1e8cb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa6b49f7e79b72ff1f8de8ede4b34c8d7de1462b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503184"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817392"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -143,7 +143,7 @@ Az első lépések előtt ügyeljen a következőre:
 
 Nyomja le az F11 billentyűt, vagy válassza a **Run** > **Debug** (Futtatás, Hibakeresés) lehetőséget.
 
-1. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás továbbítja a beszédet a Speech Services szolgáltatásnak, amely szöveget (ebben az esetben a német nyelvre) fordítja le és írja át. A Speech Services ezután a szintetizált hangot és a szöveget visszaküldi az alkalmazásnak a megjelenítéshez.
+1. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás elküldi a beszédét a Speech szolgáltatásnak, amely szöveget (ebben az esetben a németre) fordítja le és írja át. A beszédfelismerési szolgáltatás ezután a szintetizált hangot és a szöveget visszaküldi az alkalmazásnak a megjelenítéshez.
 
 ````
 Say something...
@@ -153,6 +153,6 @@ RECOGNIZED 'en-US': What's the weather in Seattle?
 TRANSLATED into 'de': Wie ist das Wetter in Seattle?
 ````
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

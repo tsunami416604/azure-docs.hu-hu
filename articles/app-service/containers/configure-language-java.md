@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: edb8f25ff1e4fa01e905c3ae5c7d0ec7ab58f8bb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 571d4cd395cd0cec0982fedf267a88143fd73872
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705935"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805739"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linuxos Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -54,7 +54,7 @@ Az Azure Portal vagy az [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 
 
 Ha az alkalmazás [Logback](https://logback.qos.ch/) -t vagy [Log4j](https://logging.apache.org/log4j) -t használ a nyomkövetéshez, továbbíthatja ezeket a nyomkövetéseket az Azure Application Insightsba való áttelepítéshez a naplózási keretrendszer konfigurációs utasításait követve, a [Java-nyomkövetési naplók megismeréséhez Application Insights](/azure/application-insights/app-insights-java-trace-logs).
 
-### <a name="troubleshooting-tools"></a>Hibaelhárítási eszközök
+### <a name="troubleshooting-tools"></a>Hibaelhárító eszközök
 
 A beépített Java-lemezképek az [alpesi Linux](https://alpine-linux.readthedocs.io/en/latest/getting_started.html) operációs rendszeren alapulnak. A `apk` csomagkezelő segítségével telepítheti a hibaelhárítási eszközöket és parancsokat.
 
@@ -247,6 +247,9 @@ A JDBC-kapcsolatok titkosításához további konfigurálásra lehet szükség. 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
+- [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
+- [Cassandra](https://docs.datastax.com/developer/java-driver/4.3/)
+
 
 #### <a name="manually-initialize-and-load-the-key-store"></a>A Key Store manuális inicializálása és betöltése
 

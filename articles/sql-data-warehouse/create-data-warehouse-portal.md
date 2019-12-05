@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a9a68e9d71324ba05e24ba98802863211a569689
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 4ae1d9ce8a4683f8d55962843fb1070ef24b3a87
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839923"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815799"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors útmutató: Azure SQL Data Warehouse létrehozása és lekérdezése a Azure Portal
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 > [!NOTE]
 > A SQL Data Warehouse létrehozása egy új számlázható szolgáltatás létrejöttét eredményezheti. További információ: [SQL Data Warehouse díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.
 
@@ -51,16 +51,14 @@ Kövesse az alábbi lépéseket egy olyan SQL Data Warehouse létrehozásához, 
 
     | Beállítás | Ajánlott érték | Leírás |
     | :------ | :-------------- | :---------- |
-    | **Adatbázis neve** | mySampleDataWarehouse | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers) ismertető cikket. Megjegyzés: Az adattárház az adatbázisok egy típusa.|
     | **Előfizetés** | Az Ön előfizetése | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
     | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
-    | **Forrás kiválasztása** | Sample | Megköveteli egy mintaadatbázis betöltését. Megjegyzés: Az adattárház az adatbázisok egy típusa. |
-    | **Minta kiválasztása** | AdventureWorksDW | Megköveteli az AdventureWorksDW mintaadatbázis betöltését. |
+    | **Adatraktár neve** | mySampleDataWarehouse | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers) ismertető cikket. Megjegyzés: Az adattárház az adatbázisok egy típusa.|
     ||||
 
     ![adattárház létrehozása](media/create-data-warehouse-portal/select-sample.png)
 
-4. Kattintson a **Kiszolgáló** lehetőségre új kiszolgáló létrehozásához és konfigurálásához az új adatbázis számára. Adja meg az alábbi adatokat az **Új kiszolgálóűrlapon**: 
+4. Válasszon ki egy meglévő **kiszolgálót** , vagy kattintson az **új létrehozása** lehetőségre új kiszolgáló létrehozásához és konfigurálásához az új adatbázishoz. Adja meg az alábbi adatokat az **Új kiszolgálóűrlapon**: 
 
     | Beállítás | Ajánlott érték | Leírás |
     | :------ | :-------------- | :---------- |
@@ -80,9 +78,9 @@ Kövesse az alábbi lépéseket egy olyan SQL Data Warehouse létrehozásához, 
 
     ![teljesítmény konfigurálása](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. Kattintson az **Alkalmaz** gombra.
+8. Kattintson az **Apply** (Alkalmaz) gombra.
 
-9. Most, hogy végrehajtotta a SQL Data Warehouse űrlapot, kattintson a **Létrehozás** gombra az adatbázis kiépítéséhez. Az üzembe helyezés eltarthat néhány percig.
+9. Most, hogy végrehajtotta a SQL Data Warehouse űrlap alapismeretek lapját, kattintson a **felülvizsgálat + létrehozás** elemre az adatbázis kiépítéséhez. Az üzembe helyezés eltarthat néhány percig.
 
     ![kattintson a létrehozás parancsra](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 
@@ -144,7 +142,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
    | :------ | :-------------- | :---------- |
    | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
    | Kiszolgálónév | A teljes kiszolgálónév | Íme egy példa: **mynewserver-20180430.database.Windows.net**. |
-   | Authentication | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
+   | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
    | Bejelentkezés | A kiszolgálói rendszergazdai fiók | A kiszolgáló létrehozásakor megadott fiók. |
    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | A kiszolgáló létrehozásakor megadott jelszó. |
    ||||
@@ -202,7 +200,7 @@ Kövesse az alábbi lépéseket a már nem szükséges erőforrások törléséh
 
 5. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Létrehozott egy adattárházat, létrehozott egy tűzfalszabályot, kapcsolódott az adattárházhoz, és futtat néhány lekérdezést. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 

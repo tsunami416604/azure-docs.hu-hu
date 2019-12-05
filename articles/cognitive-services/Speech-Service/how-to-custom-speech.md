@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d8e473afa2c8e7c0abf58e2dbc9caea030f2f5f
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554974"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806011"
 ---
 # <a name="what-is-custom-speech"></a>Mi az Custom Speech?
 
@@ -23,13 +23,13 @@ A [Custom Speech](https://aka.ms/customspeech) olyan online eszközöket biztos�
 
 ## <a name="whats-in-custom-speech"></a>Mi a Custom Speech?
 
-Mielőtt bármit elvégezhet a Custom Speech, szüksége lesz egy Azure-fiókra és egy Speech Services-előfizetésre. Ha már rendelkezik fiókkal, előkészítheti az adatait, betaníthatja és tesztelheti a modelleket, ellenőrizheti a minőség felismerését, kiértékelheti a pontosságot, és végső soron üzembe helyezheti és használhatja az egyéni beszéd – szöveg modellt.
+Mielőtt bármit elvégezhet a Custom Speech, szüksége lesz egy Azure-fiókra és egy Speech Service-előfizetésre. Ha már rendelkezik fiókkal, előkészítheti az adatait, betaníthatja és tesztelheti a modelleket, ellenőrizheti a minőség felismerését, kiértékelheti a pontosságot, és végső soron üzembe helyezheti és használhatja az egyéni beszéd – szöveg modellt.
 
 Ez a diagram kiemeli a [Custom Speech portált](https://aka.ms/customspeech)alkotó elemeket. Az alábbi hivatkozásokat követve további információkat tudhat meg az egyes lépésekről.
 
 ![Kiemeli a Custom Speech portált alkotó különböző összetevőket.](./media/custom-speech/custom-speech-overview.png)
 
-1. [Projekt előfizetése és létrehozása](#set-up-your-azure-account) – hozzon létre egy Azure-fiókot, és fizessen elő a Speech Services szolgáltatásra. Ez az egyesített előfizetés hozzáférést biztosít a beszéd-szöveg, a szöveg és a beszéd fordításához, valamint a [Custom Speech portálhoz](https://speech.microsoft.com/customspeech). Ezután használja a Speech Services-előfizetését, és hozza létre első Custom Speech projektjét.
+1. [Előfizetés és projekt létrehozása](#set-up-your-azure-account) – hozzon létre egy Azure-fiókot, és fizessen elő a beszédfelismerési szolgáltatásra. Ez az egyesített előfizetés hozzáférést biztosít a beszéd-szöveg, a szöveg és a beszéd fordításához, valamint a [Custom Speech portálhoz](https://speech.microsoft.com/customspeech). Ezután használja a Speech Service-előfizetését, és hozza létre első Custom Speech projektjét.
 
 2. [Töltse fel a tesztelési](how-to-custom-speech-test-data.md) adatok feltöltésének tesztelési adatait (hangfájlok), hogy kiértékelje a Microsoft beszéd-szöveges ajánlatát az alkalmazásaihoz, eszközeihez és termékeihez.
 
@@ -43,14 +43,14 @@ Ez a diagram kiemeli a [Custom Speech portált](https://aka.ms/customspeech)alko
 
 ## <a name="set-up-your-azure-account"></a>Azure-fiók beállítása
 
-Egy Speech Services-előfizetésre van szükség ahhoz, hogy a [Custom Speech portálon](https://speech.microsoft.com/customspeech) egyéni modellt lehessen létrehozni. A standard Speech Services-előfizetés létrehozásához kövesse az alábbi utasításokat: [beszédfelismerési előfizetés létrehozása](get-started.md#try-the-speech-service-using-a-new-azure-account).
+Egy beszédfelismerési szolgáltatás előfizetése szükséges ahhoz, hogy a [Custom Speech portálon](https://speech.microsoft.com/customspeech) egyéni modellt hozzon létre. A standard Speech Service-előfizetés létrehozásához kövesse az alábbi utasításokat: [beszédfelismerési előfizetés létrehozása](get-started.md#try-the-speech-service-using-a-new-azure-account).
 
 > [!NOTE]
 > Ügyeljen arra, hogy standard (S0) előfizetéseket hozzon létre, az ingyenes próbaverziós (F0) előfizetések nem támogatottak.
 
-Miután létrehozott egy Azure-fiókot és egy Speech Services-előfizetést, be kell jelentkeznie [Custom Speech portálra](https://speech.microsoft.com/customspeech) , és hozzá kell kötnie az előfizetését.
+Miután létrehozott egy Azure-fiókot és egy Speech Service-előfizetést, be kell jelentkeznie [Custom Speech portálra](https://speech.microsoft.com/customspeech) , és hozzá kell kötnie az előfizetését.
 
-1. Szerezze be a Speech Services-előfizetési kulcsot a Azure Portal.
+1. Szerezze be a beszédfelismerési szolgáltatás előfizetési kulcsát a Azure Portal.
 2. Jelentkezzen be a [Custom Speech portálra](https://aka.ms/custom-speech).
 3. Válassza ki azt az előfizetést, amelyre dolgozni szeretne, és hozzon létre egy beszédfelismerési projektet.
 4. Ha módosítani szeretné az előfizetését, használja a felső navigációs sávban található **fogaskerék** ikont.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 77dc50df7b46aeb6ddfddf92710d576f85492471
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801543"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806096"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Custom Speech pontosságának kiértékelése
 
@@ -29,9 +29,9 @@ A modell pontosságának méréséhez használt iparági szabvány a *Word Error
 
 A helytelenül azonosított szavak három kategóriába sorolhatók:
 
-* Beszúrás (I): A hipotézis átiratában helytelenül hozzáadott szavak
-* Törlés (D): A hipotézis átiratában nem észlelhető szavak
-* Helyettesítő (k): A hivatkozás és a hipotézis között helyettesített szavak
+* Beszúrás (I): helytelenül hozzáadott szavak a hipotézis átiratában
+* Törlés (D): a hipotézis átiratában nem észlelhető szavak
+* Helyettesítő (k): a hivatkozás és a hipotézis között helyettesített szavak
 
 Például:
 
@@ -56,7 +56,7 @@ Modellek kiértékelése egymás mellett:
 3. Kattintson a **teszt hozzáadása**gombra.
 4. Válassza ki a **pontosság kiértékelése**elemet. Adja meg a teszt nevét, leírását, és válassza ki a hang + emberi-címkével ellátott átírási adatkészletet.
 5. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
-6. Kattintson a **Create** (Létrehozás) gombra.
+6. Kattintson a  **Create** (Létrehozás) gombra.
 
 A teszt sikeres létrehozása után összehasonlíthatja az eredményeket egymás mellett.
 
@@ -64,7 +64,7 @@ A teszt sikeres létrehozása után összehasonlíthatja az eredményeket egymá
 
 A teszt befejezése után az állapot változása *sikeres*volt, a tesztben szereplő mindkét modellhez meg kell adni egy wer-számot. Kattintson a teszt nevére a tesztelési részletek oldal megtekintéséhez. Ez a részletes lap felsorolja az adatkészlet összes hosszúságú kimondott szöveg, amely a két modell felismerési eredményét jelzi a beküldött adatkészlet átírása mellett. Az egymás melletti összehasonlítások megvizsgálása érdekében különböző típusú hibákat válthat ki, beleértve a beszúrást, a törlést és a helyettesítést is. Ha az egyes oszlopokban figyeli a hangfelismerési eredményeket, és összehasonlítja az összes olyan oszlopot, amely az emberi címkével ellátott átírást és az eredményeket mutatja két beszéd – szöveg modell esetében, eldöntheti, hogy melyik modell felel meg az igényeinek, és hogy a további képzések és Újdonságok szükséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A modell betanítása](how-to-custom-speech-train-model.md)
 * [A modell üzembe helyezése](how-to-custom-speech-deploy-model.md)

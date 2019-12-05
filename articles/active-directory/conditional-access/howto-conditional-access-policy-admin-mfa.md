@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50978b51fd1451cf65e33b38ca0699694cb115b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dd3de14d8c82a3e51d38a1e32241cb106e0f95b3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151188"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74804618"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Feltételes hozzáférés: MFA megkövetelése rendszergazdák számára
 
@@ -30,7 +30,7 @@ A Microsoft azt javasolja, hogy az MFA-t legalább a következő szerepkörökh�
 * Feltételes hozzáférésű rendszergazda
 * Biztonsági rendszergazda
 * Segélyszolgálat (jelszó) rendszergazdája
-* Jelszó-rendszergazda
+* Jelszókezelő
 * Számlázási rendszergazda
 * Felhasználói rendszergazda
 
@@ -50,7 +50,7 @@ A feltételes hozzáférési szabályzatok hatékony eszközök, ezért javasolj
 A következő lépésekkel létrehozhat egy feltételes hozzáférési szabályzatot, amely a többtényezős hitelesítés végrehajtásához a hozzárendelt rendszergazdai szerepköröket igényli.
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
-1. Tallózással keresse meg **Azure Active Directory** > **feltételes hozzáférést**.
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**lehetőséget.
 1. Válassza az **új szabályzat**lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
@@ -61,7 +61,7 @@ A következő lépésekkel létrehozhat egy feltételes hozzáférési szabályz
       * Feltételes hozzáférésű rendszergazda
       * Biztonsági rendszergazda
       * Segélyszolgálat rendszergazdája
-      * Jelszó-rendszergazda
+      * Jelszókezelő
       * Számlázási rendszergazda
       * Felhasználói rendszergazda
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 

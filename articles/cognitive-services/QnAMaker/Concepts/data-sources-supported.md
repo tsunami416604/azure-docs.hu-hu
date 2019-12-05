@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: a1fcc1bec5db3ad64dc045cf5e1a449fce808132
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dc948629784254c9153f7f48ead7ff253e5f4453
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721210"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806388"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Adatforrások QnA Maker tartalomhoz
 
@@ -30,7 +30,7 @@ Az alábbi táblázat összefoglalja a QnA Maker által támogatott tartalom-és
 |Source Type (Forrás típusa)|Tartalom típusa| Példák|
 |--|--|--|
 |URL-cím|Gyakori kérdések<br> (Lapos, szakaszok vagy témakörök kezdőlapja)<br>Támogatási lapok <br> (Egyoldalas útmutató cikkek, hibaelhárítási cikkek stb.)|[Egyszerű gyakori kérdések](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs) <br>[Gyakori kérdések a hivatkozásokkal kapcsolatban](https://www.microsoft.com/en-us/software-download/faq)<br> [GYIK a témakörök kezdőlapján](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Támogatási cikk](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
-|PDF/DOC|GYIK<br> Termék kézi,<br> brosúrák<br> Tanulmány<br> Szórólap-szabályzat,<br> Támogatási útmutató,<br> Strukturált QnA,<br> stb.|[Strukturált QnA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Minta termék kézi. pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Példa: Semi-Structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Minta: tanulmány. pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf),<br>[Példa: Multi-turn. docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)|
+|PDF/DOC|GYIK<br> Termék kézi,<br> Brosúrák<br> Tanulmány<br> Szórólap-szabályzat,<br> Támogatási útmutató,<br> Strukturált QnA,<br> stb.|[Strukturált QnA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/structured.docx),<br> [Minta termék kézi. pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Példa: Semi-Structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Minta: tanulmány. pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf),<br>[Példa: Multi-turn. docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)|
 |\* Excel|Strukturált QnA-fájl<br> (többek között az RTF, a HTML-támogatás)|[Minta QnA – GYIK. xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |\* TXT/TSV|Strukturált QnA-fájl|[Példa: Chit-Chat. TSV](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
@@ -174,7 +174,7 @@ A Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Az 
 | Kérdés  | Válasz  | Forrás| Metaadatok (1 kulcs: 1 érték) |          
 |-----------|---------|----|---------------------|
 | Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
-| Question2 | Answer2 | Szerkesztői|    `Key:Value`       |
+| Question2 | Answer2 | Szerkesztői besorolás|    `Key:Value`       |
 
 ## <a name="editorially-add-to-knowledge-base"></a>Szerkesztői Hozzáadás a tudásbázishoz
 
@@ -190,7 +190,7 @@ Ha közvetlenül a Tudásbázisban adja hozzá vagy szerkeszti a tartalmat, a **
 
 Az alábbiakban a QnA Maker használható Markdown-formátumok listája látható: 
 
-|Cél|Formátum|Példa Markdown|Renderelés<br>a csevegési robotban megjelenő módon|
+|Rendeltetés|Formátum|Markdown-példa|Renderelés<br>a csevegési robotban megjelenő módon|
 |--|--|--|--|
 Egy új sor két mondat között.|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![új sor formázása két mondat között](../media/qnamaker-concepts-datasources/format-newline.png)|
 |A H1-től a H6-ig terjedő fejlécek száma `#` jelzi, hogy melyik fejlécet jelöli. 1 `#` a H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![formátum Markdown-fejlécekkel](../media/qnamaker-concepts-datasources/format-headers.png)<br>![formátum Markdown fejlécekkel H1 – H5](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
@@ -204,8 +204,8 @@ Egy új sor két mondat között.|`\n\n`|`How can I create a bot with \n\n QnA M
 |Dőlt betűs URL a hivatkozáshoz|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![dőlt betűs URL formátuma](../media/qnamaker-concepts-datasources/format-url-italics.png)|
 |Escape Markdown szimbólumok|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![dőlt betűs URL formátuma](../media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Rendezett lista|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Az előző példában a Markdown beépített automatikus számozást használ.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Az előző példa explicit számozást használ.|![rendezett lista formátuma](../media/qnamaker-concepts-datasources/format-ordered-list.png)|
-|Rendezetlen lista|`\n * item1 \n * item2`<br>vagy<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![Rendezetlen lista formátuma](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
-|Beágyazott felsorolások|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>A rendezett és rendezetlen listák együtt is ágyazhatók egymásba. A `\t`lapon a gyermek elem behúzási szintje látható.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![beágyazott Rendezetlen lista formátuma](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![beágyazott rendezett lista formátuma](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
+|Rendezetlen listák|`\n * item1 \n * item2`<br>vagy<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![Rendezetlen lista formátuma](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
+|Beágyazott listák|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>A rendezett és rendezetlen listák együtt is ágyazhatók egymásba. A `\t`lapon a gyermek elem behúzási szintje látható.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![beágyazott Rendezetlen lista formátuma](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![beágyazott rendezett lista formátuma](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
 \* QnA Maker semmilyen módon nem dolgozza fel a rendszerképet. Ez az ügyfélalkalmazás szerepe a rendszerkép megjelenítéséhez. 
 
@@ -234,7 +234,7 @@ A Markdown ellenőrzéséhez használja a **[CommonMark](https://commonmark.org/
 
 Az adatverzió-vezérlést a **Beállítások** lap [Importálás/exportálás funkciójával](development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) biztosítjuk. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker szolgáltatás beállítása](../How-To/set-up-qnamaker-service-azure.md)

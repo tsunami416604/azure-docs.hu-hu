@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: 9a5b5de71ee290b39603968cf4309171689e22e4
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 15a0e27f3f96eda27182e8437dc95d047f56e260
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184828"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815292"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Egyéni kulcsszó létrehozása a Speech Service használatával
 
@@ -27,19 +27,19 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre egyéni kulcsszót az eszkö
 
 A kulcsszó kiválasztásakor vegye figyelembe a következő irányelveket:
 
-* A kulcsszónak angol szónak vagy kifejezésnek kell lennie. Érdemes igénybe legfeljebb két másodpercen övezi.
+* A kulcsszónak angol szónak vagy kifejezésnek kell lennie. Nem lehet hosszabb két másodpercnél.
 
-* A 4-7 szótagokat határoznak szavak működnek a legjobban. Például a "Hé, számítógép" egy jó kulcsszó. Csak a "Hey", adott gyenge.
+* A 4 – 7 szótag szavai a legjobban működnek. Például a "Hé, számítógép" egy jó kulcsszó. Csak a "Hey" egy rossz.
 
 * A kulcsszavaknak a gyakori angol kiejtési szabályokat kell követniük.
 
-* Egy egyedi vagy akár egy közös angol nyelvű írásmódja szabályok a következő feldolgozott szó előfordulhat, hogy csökkenti a vakriasztások. Előfordulhat például, hogy a "computerama" kulcsszó jó.
+* Egy egyedi vagy akár egy, a közös angol Kiejtési szabályt követő szó is csökkentheti a téves pozitív értéket. Előfordulhat például, hogy a "computerama" kulcsszó jó.
 
-* Ne adja meg egy gyakori szót. Például "étkezési" és "go" olyan szavak, amelyek az emberek gyakran tegyük fel, a szokásos beszélgetésekben. Az eszköz hamis eseményindítók lehetnek.
+* Ne válasszon közös szót. Például az "Eat" és a "Go" kifejezés olyan szavakat mutat be, amelyekben gyakran előfordul a hétköznapi beszélgetés. Lehet, hogy az eszköz hamis eseményindítókat tartalmaz.
 
-* Ne használjon olyan kulcsszót, amely alternatív kiejtésekkel rendelkezhet. Felhasználók a saját eszköz válaszol "megfelelő" kiejtés ismernie kell. Ha például olyan "509" is ejtsd, "öt nulla nine," "öt hoppá kilenc," vagy "öt száz és kilenc." "R.E.I." "az r-e-i" vagy "ray." ejtsd is Is lehet ejtsd a "Live", "/līv/" vagy "/liv/".
+* Ne használjon olyan kulcsszót, amely alternatív kiejtésekkel rendelkezhet. A felhasználóknak ismerniük kell a "jobb" kiejtést, hogy az eszközük válaszoljon. Például: "509" lehet "5 0 9", "5 0 9" vagy "509". "R.E.I." "r-e-i" vagy "Ray" lehet. Az "élő" kifejezés "/līv/" vagy "/Liv/" lehet.
 
-* Ne használja a speciális karaktereket, szimbólumok és számjegy. Például a "Go #" és a "20 + Cats" nem lenne jó kulcsszó. Azonban "Ugrás éles" vagy "húsz macskák plusz" működhetnek. Továbbra is a szimbólumok használata a márkajelzési beállításokat, és marketing- és dokumentáció segítségével a megfelelő kiejtés megerősítése.
+* Ne használjon speciális karaktereket, szimbólumokat vagy számokat. Például a "Go #" és a "20 + Cats" nem lenne jó kulcsszó. Azonban a "Go Sharp" vagy a "húsz Plus Cats" is működhet. Továbbra is használhatja a branding szimbólumokat, és a marketing és a dokumentáció használatával megerősítheti a megfelelő kiejtést.
 
 > [!NOTE]
 > Ha kulcsszóként választ egy védjeggyel ellátott szót, akkor győződjön meg arról, hogy a védjegy tulajdonosa, vagy hogy a védjegy tulajdonosának van-e engedélye a szó használatára. A Microsoft nem vállal felelősséget az Ön által választott kulcsszótól esetlegesen felmerülő jogi problémákért.
@@ -62,8 +62,8 @@ Egyéni kulcsszó használata előtt létre kell hoznia egy kulcsszót a [Speech
 
     ![A kulcsszó letöltése](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
 
-1. Mentse a .zip-fájlt a számítógépre. Erre a fájlra szüksége lesz az egyéni kulcsszó üzembe helyezéséhez az eszközön.
+1. Mentse a. zip fájlt a számítógépére. Erre a fájlra szüksége lesz az egyéni kulcsszó üzembe helyezéséhez az eszközön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tesztelje egyéni kulcsszavait a [Speech Devices SDK](https://aka.ms/sdsdk-quickstart)gyors útmutatójában.

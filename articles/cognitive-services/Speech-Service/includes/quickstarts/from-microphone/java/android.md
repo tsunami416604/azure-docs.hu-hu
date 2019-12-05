@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 3e4045345f8dce54067aebf559bb2554b65f13b3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e492381c4ab2f7ab41b5363ed70f9c5c6b12ce99
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795858"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818987"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -72,7 +72,7 @@ A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a követk
 
    ![A Select Deployment Target (Üzembehelyezési cél kiválasztása) ablak képernyőképe](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-12-deploy.png)
 
-A beszédfelismerési szakasz elindításához kattintson az alkalmazásban a gombra. A rendszer a következő 15 másodperces angol nyelvű beszédet küldi el a Speech Servicesnek és az átiratoknak. Az eredmény az Android-alkalmazásban és az Android Studio logcat ablakában jelenik meg.
+A beszédfelismerési szakasz elindításához kattintson az alkalmazásban a gombra. A következő 15 másodpercben kimondott (angol nyelvű) beszédet a rendszer elküldi a Speech Service-nek, amely írott szöveggé alakítja. Az eredmény az Android-alkalmazásban és az Android Studio logcat ablakában jelenik meg.
 
 ![Az Android-alkalmazás képernyőképe](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-13-gui-on-device.png)
 

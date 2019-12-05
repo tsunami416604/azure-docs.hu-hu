@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: 4ee597f96d28b43b9c69d1515634aadde2f0ab7c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 93f0117096a5601632ccced6b698e84a0714bbd4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608051"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805807"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Valós idejű beszélgetés átirata (előzetes verzió)
 
-A Speech SDK **ConversationTranscriber** API-jával több résztvevő felvételét, eltávolítását és azonosítását végezheti el a hang-és beszédfelismerési szolgáltatásokkal `PullStream` vagy `PushStream`használatával. Ebből a témakörből megtudhatja, hogyan használható a Speech-Text a Speech SDK-val (1.8.0 vagy újabb verzió). További információ: [Mi a Speech Services](overview.md).
+A Speech SDK **ConversationTranscriber** API-jával több résztvevő felvételét, eltávolítását és azonosítását is lehetővé teheti, hogy a hang-és hangvételi szolgáltatást `PullStream` vagy `PushStream`használatával közvetíti a beszédfelismerési szolgáltatásnak. Ebből a témakörből megtudhatja, hogyan használható a Speech-Text a Speech SDK-val (1.8.0 vagy újabb verzió). További információ: [Mi a Speech Services](overview.md).
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -37,7 +37,7 @@ A Speech Device SDK a Javaban a valós idejű hangrögzítéshez 8 csatornán ke
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy Speech Services-előfizetés. Ha még nem rendelkezik [előfizetéssel, lekérheti a beszédfelismerési próbaverziót](https://azure.microsoft.com/try/cognitive-services/) .
+Beszédfelismerési szolgáltatás előfizetése. Ha még nem rendelkezik [előfizetéssel, lekérheti a beszédfelismerési próbaverziót](https://azure.microsoft.com/try/cognitive-services/) .
 
 ## <a name="create-voice-signatures"></a>Hangaláírások létrehozása
 
@@ -214,7 +214,7 @@ public class MyConversationTranscriber
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Aszinkron beszélgetés átírása](how-to-async-conversation-transcription.md)

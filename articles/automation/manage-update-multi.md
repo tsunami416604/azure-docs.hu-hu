@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 70f4f4163a143354cd1fe5adf031c4d9cd87a46e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 16e79043db80b69d2a2ca7d0a90e6d4921c15b22
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278680"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806507"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -114,11 +114,15 @@ A vizsgálati ütemterven kívül a frissítési megfelelőség vizsgálata az M
 
 Linux rendszerű számítógépek esetében a megfelelőségi vizsgálat alapértelmezés szerint óránként történik. Az MMA-ügynök újraindításakor a megfelelőségi vizsgálat 15 percen belül megkezdődik.
 
-A felügyelt számítógépekről származó frissített adatok megjelenítéséhez az irányítópult 30 perc és 6 óra között is eltarthat.
+30 perctől akár 6 óráig is eltarthat, amíg megjelennek a felügyelt számítógépekből származó frissített adatok az irányítópulton.
 
 ## <a name="schedule-an-update-deployment"></a>Frissítéstelepítés ütemezése
 
 A frissítések telepítéséhez ütemezzen egy központi telepítést, amely igazodik a kiadási ütemtervhez és a szolgáltatás ablakához. Kiválaszthatja, hogy a telepítés milyen típusú frissítéseket tartalmazzon. Például hozzáadhatja a kritikus vagy a biztonsági frissítéseket, és kizárhatja a kumulatív frissítéseket.
+
+>[!NOTE]
+>A frissítések központi telepítésének megkezdése után egy olyan [ütemezett](shared-resources/schedules.md) erőforrást hoz létre, amely kapcsolódik a **MicrosoftOMSComputers** runbook, amely kezeli a frissítés központi telepítését a célszámítógépen. Ha törli az ütemezési erőforrást a Azure Portal vagy a PowerShellt a központi telepítés létrehozása után, megszakítja az ütemezett frissítést, és hibaüzenetet jelenít meg, amikor megkísérli az újrakonfigurálást a portálról. Az ütemezett erőforrást csak a megfelelő központi telepítési ütemterv törlésével törölheti.
+>
 
 Ha egy vagy több virtuális gép új frissítési központi telepítését szeretné ütemezni **, válassza az** **Update Management**(frissítés kezelése) lehetőséget.
 
@@ -159,7 +163,7 @@ Az **új frissítés központi telepítése** ablaktáblán a következő inform
 
 - **Újraindítás vezérlése** – ez a beállítás határozza meg, hogy a rendszer hogyan kezeli az újraindításokat a frissítés központi telepítéséhez.
 
-   |Beállítás|Leírás|
+   |Lehetőség|Leírás|
    |---|---|
    |Újraindítás szükség esetén| **(Alapértelmezett)** Ha szükséges, a rendszer újraindítást kezdeményez, ha a karbantartási időszak lehetővé teszi.|
    |Mindig induljon újra|A rendszer újraindítást kezdeményez, függetlenül attól, hogy szükség van-e rá. |

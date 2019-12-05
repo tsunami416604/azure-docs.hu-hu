@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: ee7a03f27ab03feadedb7ac8441675a90468655c
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ab8ef516e5434ac5a9cde9324798d8dd1706a04e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535807"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807408"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Tervezett karbantartási értesítések feldolgozása
 
@@ -80,7 +80,7 @@ A következő esetekben ajánlott önkiszolgáló karbantartást használni:
 
 **A:** A rendelkezésre állási csoportokban vagy virtuálisgép-méretezési csoportokban üzembe helyezett virtuális gépek a frissítési tartományok (UD) fogalmát jelentik. A karbantartás végrehajtásakor az Azure tiszteletben tartja az UD korlátozást, és nem indít újra a virtuális gépeket a különböző UD-ból (ugyanazon rendelkezésre állási csoporton belül).  Az Azure a virtuális gépek következő csoportjára való áttérés előtt is legalább 30 percet vár. 
 
-További információ a magas rendelkezésre állásról: [virtuális gépek rendelkezésre állása az Azure-ban](/linux/availability.md).
+További információ a magas rendelkezésre állásról: [virtuális gépek rendelkezésre állása az Azure-ban](./linux/availability.md).
 
 **K: Hogyan értesítést kap a tervezett karbantartásról?**
 
@@ -92,7 +92,7 @@ További információ a magas rendelkezésre állásról: [virtuális gépek ren
 
 **K: van mód arra, hogy pontosan megtudjam, mikor érinti a virtuális gépet?**
 
-**A:** Az ütemterv beállításakor több napos időablakot határozunk meg. Az ebben az ablakban található kiszolgálók (és virtuális gépek) pontos sorrendje azonban ismeretlen. Azok az ügyfelek, akik szeretnék megismerni a virtuális gépek pontos idejét, használhatnak [ütemezett eseményeket](/linux/scheduled-events.md) és lekérdezéseket a virtuális gépen, és 15 perces értesítést kapnak a virtuális gép újraindítása előtt.
+**A:** Az ütemterv beállításakor több napos időablakot határozunk meg. Az ebben az ablakban található kiszolgálók (és virtuális gépek) pontos sorrendje azonban ismeretlen. Azok az ügyfelek, akik szeretnék megismerni a virtuális gépek pontos idejét, használhatnak [ütemezett eseményeket](./linux/scheduled-events.md) és lekérdezéseket a virtuális gépen, és 15 perces értesítést kapnak a virtuális gép újraindítása előtt.
 
 **K: mennyi időt vesz igénybe a virtuális gép újraindítása?**
 

@@ -4,17 +4,17 @@ description: Ez a cikk bemutatja, hogyan kezelheti a Windows-és Linux-számít�
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 05/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 66acb1284f0814eec91715284259272a065dbae2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 06d7ede1e9b91832f908c87a22cca37ec2866365
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690896"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806541"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -31,16 +31,16 @@ A virtuális gépek (VM-EK) Update Management a Azure Automation-fiókból is en
 
 A Update Management által felügyelt számítógépek a következő konfigurációkat használják az értékelés végrehajtásához és a központi telepítések frissítéséhez:
 
-* Microsoft monitoring Agent (MMA) Windows vagy Linux rendszerhez
+* Microsoft Monitoring Agent (MMA) Windows vagy Linux rendszerhez
 * PowerShell-célállapotkonfiguráció (DSC) Linux rendszerre
 * Automation hibrid runbook-feldolgozó
-* Microsoft Update vagy Windows Server Update Services (WSUS) Windows rendszerű számítógépekhez
+* Microsoft Update vagy Windows Server Update Services (WSUS) Windows-számítógépekhez
 
 A következő ábra azt szemlélteti, hogy a megoldás hogyan vizsgálja és alkalmazza a biztonsági frissítéseket a munkaterület minden csatlakoztatott Windows Server-és Linux-számítógépén:
 
 ![Update Management folyamat](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-A Update Management a különböző előfizetésekben lévő gépek natív módon történő bevezetésére használható ugyanazon a bérlőn.
+Az Update Management ahhoz is használható, hogy ugyanabban a bérlőben több előfizetésben készítse elő natív módon a gépeket.
 
 A csomag felszabadítása után 2 – 3 órát vesz igénybe, hogy a javítás megjelenjen a Linux rendszerű gépek értékeléséhez. A Windows rendszerű gépek esetében 12 – 15 órát vesz igénybe, hogy a javítás megjelenjen az értékelés után.
 
@@ -95,7 +95,7 @@ A következő táblázat a nem támogatott operációs rendszereket sorolja fel:
 |Windows Server 2016 Nano Server     | Nem támogatott.       |
 |Azure Kubernetes szolgáltatási csomópontok | Nem támogatott. Használja a [biztonsági és kernel-frissítések alkalmazása Linux-csomópontokra az Azure Kubernetes szolgáltatásban (ak)](../aks/node-updates-kured.md) című témakörben ismertetett javítási folyamatot|
 
-### <a name="client-requirements"></a>Ügyfélre vonatkozó követelmények
+### <a name="client-requirements"></a>Ügyfélkövetelmények
 
 Az alábbi információk az operációs rendszerre vonatkozó ügyfelek követelményeit ismertetik. További útmutatásért lásd: [hálózati tervezés](#ports).
 
@@ -132,13 +132,13 @@ A megoldás a következő erőforrásokból áll. A rendszer hozzáadja az erőf
 
 A megoldás engedélyezése után a Log Analytics munkaterülethez közvetlenül csatlakozó Windows-számítógépek automatikusan hibrid Runbook-feldolgozóként vannak konfigurálva, hogy támogassák a megoldásban foglalt runbookok.
 
-A megoldás által felügyelt Windows-számítógépek a **hibrid munkavégző csoportok** ablaktáblán jelennek meg az Automation-fiókhoz tartozó **rendszer hibrid feldolgozói csoportként** . A megoldások az *ÁLLOMÁSNÉV FQDN_GUID* elnevezési konvenciót használják. Ezek a csoportok nem állíthatók be a runbookok a fiókjában. Ha próbálkozik, a kísérlet sikertelen lesz. Ezek a csoportok kizárólag a felügyeleti megoldást támogatják.
+A megoldás által felügyelt Windows-számítógépek a **hibrid munkavégző csoportok** ablaktáblán jelennek meg az Automation-fiókhoz tartozó **rendszer hibrid feldolgozói csoportként** . A megoldások az *állomásnév FQDN_GUID* elnevezési konvenciót használják. Ezek a csoportok nem állíthatók be a runbookok a fiókjában. Ha próbálkozik, a kísérlet sikertelen lesz. Ezek a csoportok kizárólag a felügyeleti megoldást támogatják.
 
 A Windows rendszerű számítógépeket felveheti az Automation-fiókjában lévő hibrid Runbook-feldolgozó csoportba az Automation-runbookok támogatásához, ha ugyanazt a fiókot használja mind a megoldáshoz, mind a hibrid Runbook Worker Group tagsághoz. Ez a funkció a hibrid Runbook-feldolgozó verziójának 7.2.12024.0 lett hozzáadva.
 
 ### <a name="management-packs"></a>Felügyeleti csomagok
 
-Ha a System Center Operations Manager felügyeleti csoport egy Log Analytics munkaterülethez csatlakozik, a következő felügyeleti csomagok lesznek telepítve a Operations Managerban. Ezeket a felügyeleti csomagokat a megoldás hozzáadása után közvetlenül csatlakoztatott Windows rendszerű számítógépekre is telepíti a rendszer. Ezeket a felügyeleti csomagokat nem kell konfigurálnia vagy kezelnie.
+Ha a System Center Operations Manager felügyeleti csoportja össze van kapcsolva egy Log Analytics-munkaterülettel, az alábbi felügyeleti csomagok is telepítve lesznek az Operations Managerben. Ezeket a felügyeleti csomagokat a megoldás hozzáadását követően a rendszer a közvetlenül kapcsolódó Windows rendszerű számítógépekre is telepíti. A felügyeleti csomagokat nem szükséges konfigurálni vagy felügyelni.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -170,7 +170,7 @@ Minden felügyelt Windows-számítógép naponta kétszer végez vizsgálatot. A
 
 Minden egyes felügyelt Linux rendszerű számítógéphez óránként vizsgálatot kell végrehajtani.
 
-A felügyelt számítógépekről származó frissített adatok megjelenítéséhez az irányítópult 30 perc és 6 óra között is eltarthat.
+30 perctől akár 6 óráig is eltarthat, amíg megjelennek a felügyelt számítógépekből származó frissített adatok az irányítópulton.
 
 Egy Update Management-t használó gép átlagos adatfelhasználása Azure Monitor-naplók havonta körülbelül 25 megabájt (MB). Ez az érték csak egy közelítés, és változhat a környezettől függően. Javasoljuk, hogy figyelje a környezetét, hogy nyomon követhesse a pontos használatot.
 
@@ -178,7 +178,7 @@ Egy Update Management-t használó gép átlagos adatfelhasználása Azure Monit
 
 A következő címek megadása kifejezetten a Update Management. A címekkel folytatott kommunikáció az 443-as porton keresztül történik.
 
-|Nyilvános Azure  |Azure Government  |
+|Azure Public  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |

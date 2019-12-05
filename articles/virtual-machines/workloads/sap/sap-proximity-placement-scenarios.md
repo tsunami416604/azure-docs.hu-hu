@@ -1,5 +1,5 @@
 ---
-title: Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal | Microsoft Docs
+title: Azure Proximity-elhelyezési csoportok SAP-alkalmazásokhoz | Microsoft Docs
 description: Az Azure Proximity-elhelyezési csoportokkal kapcsolatos SAP-telepítési forgatókönyvek ismertetése
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: deffcb81a4f66783fedc89c3e21ea46b15ad1c64
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: cef5058936a45badd700a573611c82398ca4d546
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720000"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805705"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal
 Az SAP NetWeaver vagy az SAP S/4HANA architektúrán alapuló SAP-alkalmazások érzékenyek az SAP-alkalmazási rétegek és az SAP-adatbázis szintjei közötti hálózati késésre. Ez az érzékenység az alkalmazási rétegben futó üzleti logika legnagyobb része. Mivel az SAP-alkalmazás rétege futtatja az üzleti logikát, nagy gyakorisággal kérdezi le a lekérdezéseket az adatbázis-rétegre, és másodpercenként több ezer vagy több tízezer értéket ad meg. A legtöbb esetben a lekérdezések természete egyszerű. Általában 500-s vagy annál kisebb adatbázis-szinten futnak.

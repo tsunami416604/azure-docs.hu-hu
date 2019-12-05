@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 68a52ddd7bcf711f64860b6598cc982e961075ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 005d3c36525546443f96ec2134a2c8f9ad44b4dd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795996"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819324"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -95,7 +95,7 @@ Az első lépések előtt ügyeljen a következőre:
 
 1. A **HelloWorld** alkalmazás **indításához válassza a hibakeresés > ** a **hibakeresés indítása** (vagy az **F5**billentyű lenyomása) lehetőséget.
 
-1. A rendszer továbbítja a hangfájlt a beszédfelismerési szolgáltatásoknak, és a fájl első kiírása szövegbe kerül, amely ugyanabban az ablakban jelenik meg.
+1. A rendszer továbbítja a hangfájlt a beszédfelismerési szolgáltatásnak, és a fájl első kiírása szövegbe kerül, amely ugyanabban az ablakban jelenik meg.
 
    ```text
    Recognizing first result...

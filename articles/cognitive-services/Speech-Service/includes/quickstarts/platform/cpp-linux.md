@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: Speech C++ SDK (Linux) platform beállítása – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ezzel az útmutatóval beállíthatja a platformját C++ Linux rendszeren a SPEECH Services SDK-val.
+description: Ezzel az útmutatóval beállíthatja a platformját C++ Linux rendszeren a SPEECH Service SDK-val.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 96e4c12d7b0aaceea3d652a81f2df8721c43954c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 03aafb133f1d4a18ffe2b46ae5ec36225865a239
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502617"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819037"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a Linux rendszerhez készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t
 
@@ -49,7 +49,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="install-speech-sdk"></a>A Speech SDK telepítése
 
-A Linuxhoz készült Speech SDK 64 és 32 bites alkalmazások létrehozásához is használható. A szükséges kódtárak és fejlécek a https://aka.ms/csspeech/linuxbinary-ból tölthetők le tar-fájlként.
+A Linuxhoz készült Speech SDK 64 és 32 bites alkalmazások létrehozásához is használható. A szükséges kódtárak és fejlécek a https://aka.ms/csspeech/linuxbinary -ból tölthetők le tar-fájlként.
 
 Az SDK letöltése és telepítése a következőképpen történik:
 
@@ -78,12 +78,12 @@ Az SDK letöltése és telepítése a következőképpen történik:
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   A könyvtárlistának tartalmaznia kell a harmadik felekkel kapcsolatos közleményt, a licencfájlokat, valamint a fejlécfájlokat (`include`) tartalmazó `.h` könyvtárat, és a kódtárakat tartalmazó `lib` könyvtárat.
+   A könyvtárlistának tartalmaznia kell a harmadik felekkel kapcsolatos közleményt, a licencfájlokat, valamint a fejlécfájlokat (`.h`) tartalmazó `include` könyvtárat, és a kódtárakat tartalmazó `lib` könyvtárat.
 
    [!INCLUDE [Linux Binary Archive Content](~/includes/cognitive-services-speech-service-linuxbinary-content.md)]
 
 Ezután az alábbi [lépésekkel](#next-steps) léphet tovább.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [windows](../quickstart-list.md)]

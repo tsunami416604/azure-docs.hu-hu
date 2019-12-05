@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2be8f7f2e8859301285e4b87cfb5da88e3317e3
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 82db94dd201676b769f1ea151b23fa1b149f609c
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483356"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807102"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -29,7 +29,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
 
 + **Változtatások megszakítása**
   + Azureml – AutoML frissítési problémák
-    + Frissítés a azureml-Train-automl > = 1.0.76 from azureml-automl < 1.0.76 részleges telepítéseket okozhat, ami miatt egyes automl-importálások sikertelenek lesznek. Ennek megoldásához futtassa a https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/automl_setup.cmdcímen található telepítési parancsfájlt. Vagy ha közvetlenül a pip-et használja, a következőket teheti:
+    + Frissítés a azureml-Train-automl > = 1.0.76 from azureml-automl < 1.0.76 részleges telepítéseket okozhat, ami miatt egyes automl-importálások sikertelenek lesznek. Ennek megoldásához futtassa a https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/automl_setup.cmd címen található telepítési parancsfájlt. Vagy ha közvetlenül a pip-et használja, a következőket teheti:
       + "pip install--upgrade azureml-Train-automl"
       + "pip install--Mellőzés – telepített azureml-Train-automl-Client"
     + vagy eltávolíthatja a régi verziót a frissítés előtt
@@ -131,8 +131,8 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
 | Webalapú eszköz | Leírás | Kiadás |
 |-|-|-|
 | Notebook VM (előzetes verzió) | Teljes körűen felügyelt felhőalapú munkaállomás | Alapszintű & Enterprise |
-| [Automatikus gépi tanulás](tutorial-first-experiment-automated-ml.md) (előzetes verzió) | Nincs programkód a gépi tanulási modellek fejlesztésének automatizálásához | Vállalati |
-| [Designer](ui-concept-visual-interface.md) (előzetes verzió) | A korábban a tervezőnek nevezett gépi tanulási modellezési eszköz húzása és eltávolítása | Vállalati |
+| [Automatikus gépi tanulás](tutorial-first-experiment-automated-ml.md) (előzetes verzió) | Nincs programkód a gépi tanulási modellek fejlesztésének automatizálásához | Enterprise |
+| [Designer](ui-concept-visual-interface.md) (előzetes verzió) | A korábban a tervezőnek nevezett gépi tanulási modellezési eszköz húzása és eltávolítása | Enterprise |
 
 
 ### <a name="azure-machine-learning-designer-enhancements"></a>Azure Machine Learning Designer fejlesztései 
@@ -221,7 +221,7 @@ A teljes dokumentációért tekintse meg a [csomag webhelyét](https://azure.git
     + Ha az adatkészlet regisztrálva van, módosítsa [`Dataset.get_by_id`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29#get-by-id-workspace--id-) a regisztrációs név és a verzió visszaküldéséhez.
     + Javítsa ki azt a hibát, amelyet a ScriptRunConfig az adatkészletben argumentummal nem lehet ismételten használni a kísérlet futtatásának elküldéséhez.
     + A Futtatás során lekért adatkészleteket a rendszer nyomon követi, és megtekintheti a Futtatás részletei lapon, vagy meghívja a [`run.get_details()`t](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29#get-details--) a Futtatás befejezése után.
-    + Azure Machine Learning folyamat közbenső adatfolyamatainak átalakítása táblázatos adatkészletbe, és a [`AutoMLStep`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlstep)használata.
+    + Azure Machine Learning folyamat közbenső adatfolyamatainak átalakítása táblázatos adatkészletbe, és a [`AutoMLStep`](/python/api/azureml-train-automl-runtime/azureml.train.automl.runtime.automlstep)használata.
     + Támogatott modellek (ONNX, scikit-Learn és TensorFlow) üzembe helyezésének és csomagolásának támogatása InferenceConfig-példány nélkül.
     + A szolgáltatás üzembe helyezésének (ACI és ak) felülírási jelzője hozzáadva az SDK-ban és a CLI-ben. Ha meg van jelölve, a felülírja a meglévő szolgáltatást, ha már létezik ilyen nevű szolgáltatás. Ha a szolgáltatás nem létezik, új szolgáltatást fog létrehozni.
     +  A modellek regisztrálása két új keretrendszerrel, Onnx és Tensorflow lehetséges. A modell regisztrációja fogadja a minta bemeneti adatokat, a modell kimeneti adatait és erőforrás-konfigurációját.
@@ -238,7 +238,7 @@ A teljes dokumentációért tekintse meg a [csomag webhelyét](https://azure.git
     + Különböző hibajavítások 
   + [**azureml – folyamat – mag**](https://docs.microsoft.com/python/api/azureml-pipeline-core)
     + a azureml-adatelőkészítés már nincs szükség ahhoz, hogy beküldjön egy Azure Machine Learning folyamat futtatását a folyamat `yaml` fájlból.
-  + [**azureml-Train-automl**](https://docs.microsoft.com/python/api/azureml-train-automl)
+  + [**azureml-Train-automl**](/python/api/azureml-train-automl-runtime/)
     + Azureml hozzáadása – alapértelmezés szerint automatikusan generált Conda env a modell telepítési hibájának megoldása érdekében
     + A AutoML Remote Training mostantól tartalmazza a azureml-alapértékeket, amelyek lehetővé teszik a betanítási env használatának újbóli használatát.
   + **azureml-Train-Core**
@@ -284,7 +284,7 @@ A teljes dokumentációért tekintse meg a [csomag webhelyét](https://azure.git
     + azureml – a (z)-detörzsi-magyarázat-Model csomag át lett nevezve a azureml-retribal-értelmezze névre.
   + **[azureml – mag](https://docs.microsoft.com/python/api/azureml-core)**
     + API hozzáadása az adatkészletek regisztrációjának megszüntetéséhez. adatkészlet. [unregister_all_versions ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_datastore.abstractdatastore#unregister--).
-    + Az adatkészlet API-ját hozzáadta az adatváltozások időpontjához. `dataset.data_changed_time`.
+    + Az adatkészlet API-ját hozzáadta az adatváltozások időpontjához. `dataset.data_changed_time` kérdésre adott válaszban foglalt lépéseket.
     + Felhasználható `FileDataset` és `TabularDataset` bemenetként a `PythonScriptStep`, a `EstimatorStep`és a `HyperDriveStep` a folyamatokban
     + A `FileDataset.mount` teljesítménye a nagy mennyiségű fájllal rendelkező mappák esetében javult
     + A [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset) és a [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset) felhasználható bemenetként a [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep), a [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep)és a [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyperdrivestep) Azure Machine learning folyamatba.
@@ -350,7 +350,7 @@ A teljes dokumentációért tekintse meg a [csomag webhelyét](https://azure.git
     + Nagyobb teljesítmény a nagy adatcsatornák létrehozásához.
   + **[azureml-Train-Core](https://docs.microsoft.com/python/api/azureml-train-core)**
     + TensorFlow 2,0 támogatás hozzáadva a [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow) kalkulátorhoz.
-  + **[azureml-Train-automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
+  + **[azureml-Train-automl](/python/api/azureml-train-automl-runtime/)**
     + A szülő futtatása nem fog sikerülni, ha a telepítés iterációja meghiúsult, mivel a folyamat már gondoskodik róla.
     + Helyi Docker-és helyi Conda-támogatás hozzáadva a AutoML-kísérletekhez
     + Helyi Docker-és helyi Conda támogatása a AutoML-kísérleteknél.
@@ -374,12 +374,12 @@ Frissült az [Új munkaterület-portál](https://ml.azure.com) Experiment (kís�
     + Válogatott környezetek lettek hozzáadva. Ezek a környezetek előre konfigurálva vannak könyvtárakkal a gyakori gépi tanulási feladatokhoz, és a gyorsabb végrehajtás érdekében Docker-rendszerképekként előre felépítve és gyorsítótárazva lettek. Alapértelmezés szerint a [munkaterület](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29)"AzureML" előtagú környezetének listájában jelennek meg.
   
   + **azureml-Train-automl**
-  + **[azureml-Train-automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
+  + **[azureml-Train-automl](/python/api/azureml-train-automl-runtime/)**
     + A ONNX-átalakítás támogatása az ADB és a HDI esetében
 
 + **Előzetes verziójú funkciók**  
   + **azureml-Train-automl**
-  + **[azureml-Train-automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
+  + **[azureml-Train-automl](/python/api/azureml-train-automl-runtime/)**
     + Támogatott BERT és BiLSTM as text Képtulajdonság (csak előzetes verzió)
     + Az oszlop céljának és a transzformátor paramétereinek támogatott featurization testreszabása (csak előzetes verzió)
     + Támogatott nyers magyarázatok, ha a felhasználó a betanítás során engedélyezi a modell magyarázatát (csak előzetes verzió)
@@ -391,7 +391,7 @@ Frissült az [Új munkaterület-portál](https://ml.azure.com) Experiment (kís�
 + **Hibajavítások és javítások**
   + **azureml-automl-Core**
     + Bevezette a FeaturizationConfig a AutoMLConfig és a AutoMLBaseSettings
-    + Bevezette a FeaturizationConfig a [AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig) és a AutoMLBaseSettings
+    + Bevezette a FeaturizationConfig a [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) és a AutoMLBaseSettings
       + A Featurization oszlopának felülbírálása a megadott oszlop és szolgáltatás típusával
       + A transzformátor paramétereinek felülbírálása
     + Elavult üzenet hozzáadva a explain_model () és a retrieve_model_explanations () rendszerhez
@@ -436,9 +436,9 @@ Frissült az [Új munkaterület-portál](https://ml.azure.com) Experiment (kís�
   + **[azureml – folyamat – lépések](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
     + A [RScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.rscriptstep) hozzáadva a pénzmosás-folyamaton keresztüli R-szkriptek támogatásához.
     + A [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep) -elemzésben rögzített metaadat-paraméterek a következő hibaüzenetet okozzák: "a SubscriptionId paraméter nem lett megadva.
-  + **[azureml-Train-automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
+  + **[azureml-Train-automl](/python/api/azureml-train-automl-runtime/)**
     + Támogatott training_data, validation_data, label_column_name weight_column_name adatbevitel formátuma.
-    + Elavult üzenet lett hozzáadva a [explain_model ()](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer#explain-model-fitted-model--x-train--x-test--best-run-none--features-none--y-train-none----kwargs-) és a [retrieve_model_explanations ()](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer#retrieve-model-explanation-child-run-)rendszerhez.
+    + Elavult üzenet lett hozzáadva a [explain_model ()](/python/api/azureml-train-automl-runtime/azureml.train.automl.runtime.automlexplainer#explain-model-fitted-model--x-train--x-test--best-run-none--features-none--y-train-none----kwargs-) és a [retrieve_model_explanations ()](/python/api/azureml-train-automl-runtime/azureml.train.automl.runtime.automlexplainer#retrieve-model-explanation-child-run-)rendszerhez.
 
   
 ## <a name="2019-09-16"></a>2019-09-16
@@ -477,7 +477,7 @@ Frissült az [Új munkaterület-portál](https://ml.azure.com) Experiment (kís�
     + Rögzített megváltoztathatatlan hiba történt a tulajdonságok beállításakor, ha két különböző típusú modellt használ a magyarázó ügyféllel való feltöltéshez
     + Egy get_raw paramétert adott hozzá a magyarázathoz. magyarázza el (), hogy az egyik pontozási elmagyarázó a mesterséges és a nyers értékeket is visszaadja.
   + **azureml-Train-automl**
-    + Nyilvános API-kat vezetett be a AutoML-ből, hogy támogassa a magyarázatokat `automl` magyarázatot nyújt az SDK-hoz, amely a AutoML-featurization leválasztásával, valamint az SDK-val integrált, a azureml magyarázata és a AutoML magyarázza az SDK-ba való integrálásával modellek.
+    + Nyilvános API-kat vezetett be a AutoML-ből, hogy támogassa a magyarázatokat `automl` magyarázza az SDK-t – újabb módszer a AutoML-magyarázatok támogatásához a AutoML-featurization leválasztásával és az SDK-val integrált, a azureml magyarázó SDK-k AutoML-modellekkel kapcsolatos,
     + Azureml eltávolítása – Alapértelmezések a távoli képzési környezetekben.
     + A FileCacheStore alapján módosította az alapértelmezett gyorsítótár-tároló helyét, hogy a AzureFileCacheStore egy AutoML Azure Databricks a kód elérési útján.
     + A bemeneti adatok helyes érvényesítésének javítása, ha adatfolyam formátumban vannak megadva
@@ -660,7 +660,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
 ### <a name="azure-portal"></a>Azure Portal
 + **Előzetes verzió funkció**
   + A log és a output file streaming mostantól elérhető a futtatási részletek oldalain. A fájlok valós időben továbbítják a frissítéseket, amikor bekapcsolják az előnézeti kapcsolót.
-  + A kvóta megadásának lehetősége a munkaterület szintjén előzetes verzióban érhető el. A AmlCompute-kvóták az előfizetés szintjén vannak lefoglalva, de mostantól lehetővé tesszük, hogy az adott kvótát a munkaterületek között, és a méltányos megosztáshoz és irányításhoz ossza ki. A munkaterület bal oldali navigációs sávján kattintson a **használat + kvóták** panelre, és válassza a **kvóták konfigurálása** fület. vegye figyelembe, hogy a kvóták a munkaterület szintjén való beállítása, mivel ez egy több munkaterület művelet.
+  + A kvóta megadásának lehetősége a munkaterület szintjén előzetes verzióban érhető el. A AmlCompute-kvóták az előfizetés szintjén vannak lefoglalva, de mostantól lehetővé tesszük, hogy az adott kvótát a munkaterületek között, és a méltányos megosztáshoz és irányításhoz ossza ki. A munkaterület bal oldali navigációs sávján kattintson a **használat + kvóták** panelre, és válassza a **kvóták konfigurálása** fület. vegye figyelembe, hogy a kvóták a munkaterület szintjén való beállítása, mivel ez egy több-munkaterület művelet.
 
 ## <a name="2019-08-05"></a>2019-08-05
 
@@ -680,7 +680,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
   + **azureml – feltörzs – magyarázat – modell**
     + Model_task jelző hozzáadása a magyarázatokhoz, amely lehetővé teszi, hogy a felhasználó felülbírálja a modell típusának alapértelmezett automatikus következtetési logikáját
     + Widget-változások: automatikusan települ a `contrib`, nincs több `nbextension` telepítése/engedélyezése – támogatás magyarázata csak globális funkció fontosságával (pl. Permutative)
-    + Irányítópult-változások: Box-mintaterületek és hegedű-diagramok, valamint az összefoglalás oldalának `beeswarm` ábrázolása – sokkal gyorsabb, ha a "Top-k" csúszka módosítására szolgáló `beeswarm`-ábrázolást a "felülről nincs megadva információ
+    + Irányítópult-változások: Box-mintaterületek és hegedű-mintaterületek az összefoglalás oldalának `beeswarm` teleken felül – sokkal gyorsabb, ha a "Top-k" csúszka módosítására szolgáló `beeswarm`-ábrázolás a "felülről
   + **azureml – mag**
     + A Model. package () metódussal olyan Docker-lemezképeket és Dockerfiles hozhat létre, amelyek a modelleket és a függőségeiket beágyazzák.
     + Frissített helyi webszolgáltatások a környezeti objektumokat tartalmazó InferenceConfigs fogadásához.
@@ -747,7 +747,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
     + Az előrejelzési feladatokban a `target_lags` paraméter mostantól egyetlen egész értéket, vagy egész számok listáját fogadja el. Ha az egész számot adta meg, csak egy késés lesz létrehozva. Ha egy lista van megadva, a rendszer a lemaradás egyedi értékeit veszi figyelembe. target_lags = [1, 2, 2, 4] egy, 2 és 4 időszakból álló késéseket fog létrehozni.
     + Javítsa ki a hibát az oszlopok típusának elvesztése után az átalakítás után (hiba összekapcsolva);
     + A `model.forecast(X, y_query)`ban engedélyezze a nem (ka) t tartalmazó objektumtípus y_query használatát a BEGIN (#459519) elemnél.
-    + várt értékek hozzáadása `automl` kimenethez
+    + Várt értékek hozzáadása `automl` kimenethez
   + **azureml – datadrift**
     +  Többek között a jegyzetfüzetek fejlesztése, beleértve a azureml-opendatasets való váltást, a azureml-opendatasets és a teljesítmény javítását az adatgazdagítás során
   + **azureml – feltörzs – magyarázat – modell**
@@ -1071,7 +1071,7 @@ A notebookos virtuális gépek biztonságos, nagyvállalati használatra kész �
   + A tároló üzembe helyezése egy [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) kiszolgáló eszközön
   + Adja meg az adatait a gRPC-végponttal ezzel a [mintával](https://github.com/Azure-Samples/aml-hardware-accelerated-models)
 
-### <a name="automated-machine-learning"></a>Automatizált Machine Learning
+### <a name="automated-machine-learning"></a>Automatizált gépi tanulás
 
 + A funkciók dinamikus hozzáadásával lehetővé teszi, hogy dinamikusan vegyen fel :::no-loc text="featurizers"::: a teljesítmény optimalizálása érdekében. Új :::no-loc text="featurizers":::: a munkabeágyazások, a bizonyítékok súlya, a célként megadott kódolások, a szöveges cél kódolása, a fürt távolsága
 + Intelligens önéletrajz a betanítási/érvényes osztások automatikus ML-ben való kezeléséhez
@@ -1126,7 +1126,7 @@ Megjegyzés: az adatprep Python SDK többé nem telepíti `numpy` és `pandas` c
   + Mostantól a pivot átalakítót is használhatja.
     + Útmutató: [pivot notebook](https://aka.ms/aml-data-prep-pivot-nb)
   + Mostantól reguláris kifejezéseket is használhat natív függvényekben.
-    + Például:
+    + Példák:
       + `dflow.filter(dprep.RegEx('pattern').is_match(dflow['column_name']))`
       + `dflow.assert_value('column_name', dprep.RegEx('pattern').is_match(dprep.value))`
   + Most már használhatja a `to_upper` és a `to_lower` függvények kifejezést a kifejezés nyelvén.
@@ -1297,11 +1297,11 @@ Megjegyzés: az adatprep Python SDK többé nem telepíti `numpy` és `pandas` c
   + Javítottuk az adatprofilok beolvasásának teljesítményét.
   + A hibajelentéssel kapcsolatos rögzített kisebb hibák.
   
-### <a name="azure-portal-new-features"></a>Az Azure portal: új funkciók
+### <a name="azure-portal-new-features"></a>Azure Portal: új funkciók
 + A jelentések új, húzással kapcsolatos felhasználói felülete. A felhasználók a megfelelő típusú oszlopokat vagy attribútumokat a diagram területére húzhatja, ahol a rendszer automatikusan kiválasztja a megfelelő diagramtípust a felhasználó számára az adatok típusától függően. A felhasználók módosíthatják a diagram típusát más alkalmazható típusokra, illetve további attribútumokat adhatnak hozzá.
 
     Támogatott diagramok típusai:
-    - Vonalas diagram
+    - Vonaldiagram
     - Hisztogram
     - Halmozott sávdiagram
     - Box-ábra
@@ -1354,7 +1354,7 @@ Megjegyzés: az adatprep Python SDK többé nem telepíti `numpy` és `pandas` c
 
 A Azure Machine Learning már általánosan elérhető.
 
-### <a name="azure-machine-learning-compute"></a>Az Azure Machine Learning Compute
+### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
 Ebben a kiadásban bejelentjük az új felügyelt számítási élményt a [Azure Machine learning számítási](how-to-set-up-training-targets.md#amlcompute)feladatokon keresztül. Ez a számítási cél a Azure Machine Learning Azure Batch AI számítását váltja fel. 
 
 Ez a számítási cél:
@@ -1365,47 +1365,47 @@ Ez a számítási cél:
 + A processzor-és a GPU-erőforrások támogatása 
 + Alacsony prioritású virtuális gépek használatát teszi lehetővé csökkentett áron
 
-Az Azure Machine Learning Compute a Python, az Azure portal vagy a parancssori felület használatával hozható létre. A munkaterület a régióban kell létrehozni, és bármilyen egyéb munkaterülethez nem csatolható. Ez a számítási cél egy Docker-tárolót használ a futtatásához, és a függőségek csomagjaival replikálja ugyanazt a környezetet az összes csomóponton.
+Azure Machine Learning a számításokat a Pythonban, Azure Portal vagy a parancssori felület használatával lehet létrehozni. Ezt a munkaterület régiójában kell létrehozni, és nem csatolhatók más munkaterületekhez. Ez a számítási cél egy Docker-tárolót használ a futtatásához, és a függőségek csomagjaival replikálja ugyanazt a környezetet az összes csomóponton.
 
 > [!Warning]
-> Azt javasoljuk, hogy használata az Azure Machine Learning Compute új munkaterület létrehozása. Nincs távoli előfordulhat, hogy a felhasználók próbál létrehozni egy meglévő munkaterületet az Azure Machine Learning COMPUTE számítási hiba láthatják. A munkaterületen található meglévő számítási továbbra is változatlanul működik.
+> Javasoljuk, hogy hozzon létre egy új munkaterületet Azure Machine Learning számítás használatához. Távoli esély van arra, hogy a felhasználók egy meglévő munkaterületről próbálnak létrehozni Azure Machine Learning számítást, és ez hibát jelez. A munkaterületen lévő meglévő számítások továbbra is nem érintik a munkát.
 
-### <a name="azure-machine-learning-sdk-for-python-v102"></a>Az Azure Machine Learning SDK for Python v1.0.2
+### <a name="azure-machine-learning-sdk-for-python-v102"></a>Azure Machine Learning SDK a Python v 1.0.2-hez
 + **Változtatások megszakítása**
-  + Ettől a kiadástól kezdve megszüntetjük a virtuális gép létrehozása az Azure Machine Learning támogatása. Továbbra is csatolhat a virtuális gép meglévő felhő vagy egy távoli helyszíni kiszolgáló. 
-  + Emellett megszüntetjük BatchAI, mindegyike támogatnia kell az Azure Machine Learning Compute révén most támogatása.
+  + Ezzel a kiadással eltávolítjuk a virtuális gépek Azure Machine Learningból való létrehozásának támogatását. Továbbra is csatlakoztathat meglévő Felhőbeli virtuális gépet vagy távoli helyszíni kiszolgálót. 
+  + Emellett a BatchAI támogatását is eltávolítja, amelyek mindegyikét Azure Machine Learning számításon keresztül kell támogatni.
 
 + **Új**
-  + A machine learning-folyamatokat:
+  + Gépi tanulási folyamatokhoz:
     + [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimator_step.estimatorstep?view=azure-ml-py)
     + [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyper_drive_step.hyperdrivestep?view=azure-ml-py)
     + [MpiStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.mpi_step.mpistep?view=azure-ml-py)
 
 
 + **Frissített**
-  + A machine learning-folyamatokat:
+  + Gépi tanulási folyamatokhoz:
     + A [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) most elfogadja a runconfig
     + A [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) mostantól egy SQL-adatforrásból másolható
-    + Az SDK-t létrehozni és frissíteni a közzétett folyamatok futó ütemezések funkció ütemezéséhez
+    + Az SDK-ban a közzétett folyamatok futtatásához szükséges ütemtervek létrehozásához és frissítéséhez tartozó funkciók ütemezhetők.
 
 <!--+ **Bugs fixed**-->
 
-### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Az Azure Machine Learning adat-előkészítési SDK v0.5.2
+### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Azure Machine Learning adat-előkészítési SDK v 0.5.2
 + **Változtatások megszakítása** 
   * a `SummaryFunction.N` átnevezve `SummaryFunction.Count`re.
   
 + **Hibajavítások**
-  * Legújabb AML futtatása jogkivonat használata a távoli Futtatás adattárainak való írásakor vagy olvasásakor a. Korábban az AML futtatása Token frissül a Python, ha az Adatelőkészítés-modul nem frissül a frissített AML futtatása jogkivonat a.
+  * A legújabb pénzmosás-jogkivonatot használja a távoli futtatásokban lévő adattárolók beolvasásához és az azokból való íráshoz. Korábban, ha a pénzmosás-futtatási jogkivonat frissült a Pythonban, az adatelőkészítési futtatókörnyezet nem frissül a frissített pénzmosás-futtatási jogkivonattal.
   * További világosabb hibaüzenetek
   * a to_spark_dataframe () nem fog összeomlani, ha a Spark `Kryo` szerializálást használ
-  * Értékek száma vizsgáló most már 1000-nél több egyedi értékeket jeleníti meg
-  * Véletlenszerű Split már nem sikertelen lesz, ha az eredeti adatfolyam nem rendelkezik egy nevet  
+  * Az értékek száma felügyelő mostantól több mint 1000 egyedi értéket jeleníthet meg
+  * A véletlenszerű felosztás már nem sikerül, ha az eredeti adatfolyam nem rendelkezik névvel  
 
 + **További információ**
   * [Azure Machine Learning adat-előkészítési SDK](https://aka.ms/data-prep-sdk)
 
-### <a name="docs-and-notebooks"></a>Docs és jegyzetfüzetek
-+ Gépi Tanulási folyamatok
+### <a name="docs-and-notebooks"></a>Dokumentumok és jegyzetfüzetek
++ ML-folyamatok
   + Új és frissített jegyzetfüzetek a folyamatok, a kötegek hatóköre és a stílus-átadási példákkal való ismerkedéshez: https://aka.ms/aml-pipeline-notebooks
   + Ismerje meg, hogyan [hozhatja létre első folyamatát](how-to-create-your-first-pipeline.md)
   + Útmutató a [Batch-előrejelzések folyamatokkal történő futtatásához](how-to-run-batch-predictions.md)
@@ -1413,94 +1413,94 @@ Az Azure Machine Learning Compute a Python, az Azure portal vagy a parancssori f
   + A [minta jegyzetfüzetek](https://aka.ms/aml-notebooks) mostantól frissülnek az új felügyelt számítás használatára.
   + [További tudnivalók a számítási feladatokról](how-to-set-up-training-targets.md#amlcompute)
 
-### <a name="azure-portal-new-features"></a>Az Azure portal: új funkciók
+### <a name="azure-portal-new-features"></a>Azure Portal: új funkciók
 + [Azure Machine learning számítási](how-to-set-up-training-targets.md#amlcompute) típusok létrehozása és kezelése a portálon.
 + A kvóta használatának figyelése és a Azure Machine Learning számításhoz szükséges [kvóta igénylése](how-to-manage-quotas.md) .
 + Azure Machine Learning számítási fürt állapotának valós idejű megtekintése.
-+ Virtuálishálózat-támogatást az Azure Machine Learning COMPUTE számítási és az Azure Kubernetes Service létrehozásakor lett hozzáadva.
++ A virtuális hálózatok támogatása Azure Machine Learning számítási és Azure Kubernetes-szolgáltatás létrehozásakor lett hozzáadva.
 + Futtassa újra a közzétett folyamatokat a meglévő paraméterekkel.
 + Új [automatizált gépi tanulási diagramok](how-to-understand-automated-ml.md) a besorolási modellekhez (lift, nyereség, kalibrálás, funkció fontossági diagramja modell-magyarázattal) és regressziós modellekkel (maradványok és funkciók fontossági diagramja a modell magyarázatával). 
-+ A folyamatok tekinthetnek meg az Azure Portalon
++ A folyamatok megtekinthetők Azure Portal
 
 
 
 
 ## <a name="2018-11-20"></a>2018-11-20
 
-### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Az Azure Machine Learning SDK for Python v0.1.80
+### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Azure Machine Learning SDK a Python v 0.1.80
 
 + **Változtatások megszakítása** 
   * a *azureml. Train. Widgets* névtér át lett helyezve a *azureml. Widgets*-re.
-  * *azureml. Core. számítás. a AmlCompute* a következő osztályokat elavult: *azureml. Core. számítás. BatchAICompute* és *azureml. Core. számítás. DSVMCompute*. Az utóbbi osztály törlődni fog a következő kiadásokban. A AmlCompute osztály mostantól könnyebben definícióval rendelkezik egyszerűen egy vm_size és a max_nodes van szüksége, és automatikus méretezése a max_nodes 0-tól a fürthöz, amikor a rendszer elküld egy feladatot. A [mintául szolgáló jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) frissítve lettek ezzel az információval, és használati példákat kell megadni. Reméljük, mint például az egyszerűsítés és a egy későbbi kiadásban lesz több izgalmas funkciók számos!
+  * *azureml. Core. számítás. a AmlCompute* a következő osztályokat elavult: *azureml. Core. számítás. BatchAICompute* és *azureml. Core. számítás. DSVMCompute*. A későbbi kiadásokban az utóbbi osztály el lesz távolítva. A AmlCompute osztálynak egyszerűbb definíciója van, és egyszerűen csak egy vm_sizere és a max_nodesra van szüksége, és a fürt automatikusan a 0 értékről a max_nodesre méretezi, amikor egy feladatot elküldenek. A [mintául szolgáló jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) frissítve lettek ezzel az információval, és használati példákat kell megadni. Reméljük, hogy ezt az egyszerűsítést és a sok izgalmas funkciót egy későbbi kiadásban szeretné megtekinteni!
 
-### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Az Azure Machine Learning adat-előkészítési SDK v0.5.1 
+### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Azure Machine Learning adat-előkészítési SDK v 0.5.1 
 
 További információ az adat-előkészítő SDK-ról a [dokumentációs dokumentumok](https://aka.ms/data-prep-sdk)beolvasásával.
 + **Új funkciók**
-   * Létrehozott egy új Adatelőkészítés CLI hajtsa végre az Adatelőkészítés-csomagok és az adatkészlet vagy adatfolyam adatok profiljának megtekintése
-   * Újratervezett SetColumnType API használhatóság javítása érdekében
-   * Átnevezett smart_read_file auto_read_file
-   * Mostantól tartalmazza a Adatprofil döntés és értékek
-   * A rétegzett mintavételi is minta
-   * CSV-fájlokat tartalmazó zip-fájlokat is olvashat
+   * Létrehozott egy új Adatelőkészítés CLI-t a Adatelőkészítés-csomagok végrehajtásához és egy adatkészlet vagy adatfolyam adatprofiljának megtekintéséhez.
+   * Újratervezett SetColumnType API a használhatóság javítása érdekében
+   * Átnevezve smart_read_file auto_read_file
+   * Most már tartalmazza az adatprofilban található ferde és csúcsosságát
+   * Minta rétegzett mintavételezéssel
+   * A CSV-fájlokat tartalmazó Zip-fájlokból is olvasható
    * Feloszthatja az adathalmazokat a Wise véletlenszerű felosztással (például test-Train készletekbe)
    * Az összes oszlop adattípusát lekérheti egy adatfolyam vagy egy adatprofilból a `.dtypes` meghívásával
    * Lekérheti a sorok darabszámát egy adatfolyam vagy egy adatprofilból a `.row_count` meghívásával
 
 + **Hibajavítások**
-   * Mennyi ideig dupla átalakítás rögzített 
-   * Rögzített vyhodnocení után bármely oszlop hozzáadása 
-   * FuzzyGrouping, ahol azt szeretné nem csoportok egyes esetekben képes észlelni kijavítva
-   * Több oszlopot rendezési sorrend figyelembe veszi a rögzített rendezési funkció
+   * Rögzített hosszú – dupla átalakítás 
+   * Rögzített érvényesítés az oszlop hozzáadása után 
+   * Kijavított egy problémát a FuzzyGrouping, amelyben bizonyos esetekben nem észlelhetők a csoportok
+   * Rögzített rendezési függvény a többoszlopos rendezési sorrend figyelembevételéhez
    * A rögzített és/vagy kifejezéseket a `pandas` kezeli.
-   * Rögzített olvasásakor dbfs elérési útja
-   * Hibaüzenetek a könnyebb érthetőség érdekében 
-   * Most már nem akkor, ha az AML-jogkivonat használatával távoli számítási cél olvasó
-   * Most már nem meghiúsul, a Linux-dsvm-hez
-   * Most már nem összeomlik, ha nem sztring típusú értékek a következők az olyan predikátumokban karakterlánc
-   * Most már kezeli a helyességi feltétel hibákat, amikor adatfolyamot megfelelően kell-e sikertelen
-   * Most már támogatja az Azure databricks szolgáltatásban dbutils csatlakoztatott tárolási helyek
+   * Rögzített olvasás a dbfs útvonalról
+   * A hibaüzenetek jobban megérthetők 
+   * Most már nem fog sikerülni a távoli számítási célhoz a pénzmosás-token használatával való olvasáskor
+   * A Linux DSVM már nem sikerül
+   * Most már nem összeomlik, ha a nem sztring típusú értékek karakterlánc-predikátumokban vannak
+   * A most már kezeli az állítási hibákat, ha a adatfolyam megfelelően működnek
+   * A mostantól támogatja a dbutils csatlakoztatott tárolási tárolóhelyeket Azure Databricks
 
 ## <a name="2018-11-05"></a>2018-11-05
 
 ### <a name="azure-portal"></a>Azure Portal 
 A Azure Machine Learning Azure Portal a következő frissítésekkel rendelkezik:
   * Új **folyamatok** lap a közzétett folyamatokhoz.
-  * Támogatás hozzáadva a csatolása egy meglévő HDInsight-fürt egy számítási célnak.
+  * Meglévő HDInsight-fürt számítási célként való csatolásának támogatása.
 
-### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Az Azure Machine Learning SDK for Python v0.1.74
+### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Azure Machine Learning SDK a Python v 0.1.74
 
 + **Változtatások megszakítása** 
   * \* A munkaterület. compute_targets, az adattárolók, a kísérletek, a képek, a modellek és a *webszolgáltatások* a metódusok helyett tulajdonságok. Például cserélje le a *munkaterület. compute_targets ()* *munkaterületre. compute_targets*.
-  * A *Run. get_context* a *Run. get_submitted_run*elavult. Az utóbbi módszer a következő kiadásokban törlődni fog.
+  * A *Run. get_context* a *Run. get_submitted_run*elavult. Az utóbbi metódus el lesz távolítva a következő kiadásokban.
   * A *PipelineData* osztály most datastore_name helyett paraméterként egy adattár-objektumot vár. Hasonlóképpen, a *folyamat* default_datastore_name helyett a default_datastore is elfogadja.
 
 + **Új funkciók**
   * A Azure Machine Learning-folyamatok [minta notebookja](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-mpi-batch-prediction.ipynb) már MPI-lépéseket használ.
-  * A Jupyter-notebookokhoz RunDetails widget megjelenítéséhez a vizualizációt, a folyamat frissül.
+  * A Jupyter-jegyzetfüzetek RunDetails widgetje frissül a folyamat vizualizációjának megjelenítéséhez.
 
-### <a name="azure-machine-learning-data-prep-sdk-v040"></a>Az Azure Machine Learning adat-előkészítési SDK v0.4.0 
+### <a name="azure-machine-learning-data-prep-sdk-v040"></a>Azure Machine Learning adat-előkészítési SDK v 0.4.0 
  
 + **Új funkciók**
-  * Adatprofil hozzáadott száma 
-  * Értékek száma és a hisztogram már elérhető
-  * További. percentilisei az Adatprofil
-  * A középérték érhető el összegzés
-  * Mostantól támogatott Python 3.7.
-  * Amikor menti egy adatfolyam, amely tartalmazza az adattárolók Adatelőkészítés csomaghoz, az adattár-információk maradnak az Adatelőkészítés-csomag részeként
-  * Mostantól támogatott az adattárhoz való írás 
+  * Az adatprofilba felvett típusok száma 
+  * Az értékek száma és a hisztogram mostantól elérhető
+  * További százalékos érték az adatprofilban
+  * A medián az összegzésben érhető el
+  * A Python 3,7 mostantól támogatott
+  * Ha olyan adatfolyam ment, amely adattárolókat tartalmaz egy Adatelőkészítés-csomagba, az adattár adatai a Adatelőkészítés-csomag részeként maradnak meg
+  * Az adattárba való írás mostantól támogatott 
         
 + **Hiba javítva**
   * a 64 bites, előjel nélküli egész túlcsordulások mostantól megfelelően kezelhetők Linux rendszeren
-  * Egyszerű szöveges fájlok smart_read rögzített helytelen felirat
-  * Karakterlánc oszloptípus most már megjelenik-e metrikák megtekintése
-  * Száma már rögzített egyesével helyett egyetlen FieldType leképezve ValueKinds megjelenítése
-  * Write_to_csv már nem sikertelen lesz, amikor az elérési út egy karakterláncként van megadva.
-  * Cserélje le használatakor "keresése" üresen hagyja már nem meghiúsul 
+  * A smart_readban található egyszerű szövegfájlok helytelen szöveges címkével rendelkeznek
+  * A karakterlánc-oszlop típusa most megjelenik a metrikák nézetben
+  * A types Count most úgy van rögzítve, hogy megjelenítse az egyes FieldType leképezett ValueKinds az egyes felhasználók helyett
+  * Write_to_csv már nem sikerül, ha az elérési út karakterláncként van megadva
+  * A Replace utasítás használata esetén a "keresés" üres érték nem fog működni. 
 
 ## <a name="2018-10-12"></a>2018-10-12
 
-### <a name="azure-machine-learning-sdk-for-python-v0168"></a>Az Azure Machine Learning SDK for Python v0.1.68
+### <a name="azure-machine-learning-sdk-for-python-v0168"></a>Azure Machine Learning SDK a Python v 0.1.68
 
 + **Új funkciók**
   * Több-bérlős támogatás új munkaterület létrehozásakor.
@@ -1508,73 +1508,73 @@ A Azure Machine Learning Azure Portal a következő frissítésekkel rendelkezik
 + **Kijavított hibák**
   * A webszolgáltatás telepítésekor már nem kell rögzítenie a pynacl-függvénytár verzióját.
 
-### <a name="azure-machine-learning-data-prep-sdk-v030"></a>Az Azure Machine Learning adat-előkészítési SDK v0.3.0
+### <a name="azure-machine-learning-data-prep-sdk-v030"></a>Azure Machine Learning adat-előkészítési SDK v 0.3.0
 
 + **Új funkciók**
-  * Hozzáadott metódus transform_partition_with_file(script_path), amely lehetővé teszi a felhasználók számára, hogy az elérési útját egy Python-fájlt, végrehajtására
+  * Hozzáadott metódus transform_partition_with_file (script_path), amely lehetővé teszi a felhasználók számára a végrehajtandó Python-fájl elérési útjának továbbítását
 
 ## <a name="2018-10-01"></a>2018-10-01
 
-### <a name="azure-machine-learning-sdk-for-python-v0165"></a>Az Azure Machine Learning SDK for Python v0.1.65
+### <a name="azure-machine-learning-sdk-for-python-v0165"></a>Azure Machine Learning SDK a Python v 0.1.65
 A [0.1.65 verzió](https://pypi.org/project/azureml-sdk/0.1.65) új funkciókat, több dokumentációt, hibajavítást és több [minta jegyzetfüzetet](https://aka.ms/aml-notebooks)tartalmaz.
 
 Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az ismert problémák listáját](resource-known-issues.md) .
 
 + **Változtatások megszakítása**
-  * Workspace.experiments, Workspace.models, Workspace.compute_targets, Workspace.images, Workspace.web_services visszatérési szótár, korábban visszaadott listában. Lásd: [azureml. Core. Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API-dokumentáció.
+  * Munkaterület. kísérletek, munkaterület. modellek, munkaterület. compute_targets, munkaterület. images, munkaterület. web_services visszatérési szótár, korábban visszaadott lista. Lásd: [azureml. Core. Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API-dokumentáció.
 
-  * Automatizált Machine Learning Normalizált négyzetes hiba eltávolítja az elsődleges metrikákat.
+  * Az automatizált Machine Learning az elsődleges mérőszámokból származó normalizált középértékes hibát eltávolította.
 
 + **HyperDrive**
-  * Különböző HyperDrive hibajavítások a Bayes, a javított teljesítménye, metrikák hívások beolvasása. 
-  * 1\.9 Tensorflow 1.10 verzióról 
-  * Docker-rendszerkép optimalizálást a hidegindítás. 
+  * Különböző HyperDrive-hibajavítások a Bayes-as verzióhoz, teljesítménybeli javítások a metrikák beszerzése érdekében. 
+  * Tensorflow 1,10 verziófrissítés 1,9 
+  * Docker-rendszerkép optimalizálása a hideg indításhoz. 
   * A feladatok mostantól akkor is helyes állapotot jelentenek, ha a nullától eltérő hibakóddal kilépnek. 
-  * RunConfig attribútum érvényesítése, az SDK-t. 
-  * Futtatás HyperDrive objektum Futtatás szabályos hasonló Mégse támogatja: nincs szükség adja át a paramétereket. 
-  * Widget fejlesztései legördülő értékeit az elosztott futtatási és HyperDrive futtatások állapotának fenntartásához. 
-  * Paraméterkiszolgáló TensorBoard és a többi napló-fájloknak támogatniuk rögzíteni. 
-  * Intel(R) MPI szolgáltatás oldalán támogatja. 
-  * Bugfix a finomhangolással az elosztott futtatási javítás BatchAI az érvényesítés során. 
-  * Környezet Manager mostantól azonosítja az elsődleges példány. 
+  * RunConfig az SDK-ban. 
+  * A HyperDrive futtatási objektuma támogatja a megszakítást a normál futtatáshoz hasonlóan: nem kell paramétereket átadni. 
+  * A widgetek az elosztott futtatások és a HyperDrive futtatására szolgáló legördülő értékek állapotának fenntartására szolgáló funkciókat biztosítanak. 
+  * A TensorBoard és más naplófájlok támogatják a paraméter-kiszolgálót. 
+  * Az Intel (R) MPI támogatása a szolgáltatás oldalán. 
+  * Hibajavítás az elosztott Futtatás javításához a BatchAI-ben történő ellenőrzés során. 
+  * A Context Manager most azonosítja az elsődleges példányt. 
 
 + **Azure Portali élmény**
-  * Futtatás részletei log_table() és log_row() támogatottak. 
+  * a log_table () és a log_row () támogatottak a Futtatás részleteiben. 
   * Diagramok automatikus létrehozása a táblázatok és sorok számára 1, 2 vagy 3 numerikus oszlop és egy nem kötelezően megadandó oszlop esetében.
 
 + **Automatizált Machine Learning**
-  * Továbbfejlesztett hiba- és dokumentáció 
-  * Rögzített futtatási tulajdonság lekérése teljesítménybeli problémák. 
-  * Rögzített futtatási a probléma továbbra is. 
+  * Javított hibakezelés és dokumentáció 
+  * A futtatási tulajdonságok lekérési teljesítményével kapcsolatos hibák elhárítása. 
+  * Rögzített folytatási hiba történt. 
   * Rögzített :::no-loc text="ensembling"::: iterációs problémák.
-  * Rögzített méretű betanítási módosítási hiba a MAC OS.
-  * Egyszerűsítés makró átlagos Pull-kérelem/ROC-görbe egyéni ellenőrzési forgatókönyvben.
-  * Eltávolítja a felesleges index logikát.
-  * Szűrő távolítva get_output API-t.
+  * Rögzített betanítási hiba a MAC operációs rendszeren.
+  * Az egyéni ellenőrzési forgatókönyvben lévő PR/ROC görbe leegyszerűsítése a makróban.
+  * Eltávolított további index-logikát.
+  * Eltávolított szűrő a get_output API-ból.
 
 + **Folyamatok**
-  * A metódus egy folyamatot, közvetlenül közzé anélkül, hogy az első futtatás végrehajtási Pipeline.publish() hozzá.   
+  * A () metódust hozzáadta egy folyamathoz, amely közvetlenül a végrehajtás megkövetelése nélkül teszi közzé a folyamatot.   
   * A rendszer hozzáadta a PipelineRun. get_pipeline_runs () metódust a közzétett folyamatból generált folyamat-futtatások beolvasásához.
 
 + **Projekt agyhullám**
-  * FPGA-kban elérhető új AI modelleket frissített támogatása.
+  * Frissített támogatás a FPGA-on elérhető új AI-modellekhez.
 
-### <a name="azure-machine-learning-data-prep-sdk-v020"></a>Az Azure Machine Learning adat-előkészítési SDK v0.2.0
+### <a name="azure-machine-learning-data-prep-sdk-v020"></a>Azure Machine Learning adat-előkészítési SDK v 0.2.0
 A [0.2.0 verziója](https://pypi.org/project/azureml-dataprep/0.2.0/) a következő funkciókat és hibajavításokat tartalmazza:
 
 + **Új funkciók**
-  * Egy gyakori kódolási támogatása
-  * Ki osztóérték átalakító támogatása
+  * Egy gyors kódolás támogatása
+  * A quantile átalakítás támogatása
    
 + **Hiba javítva:**
-  * Bármely tornádó verziójával működik nincs szükség alacsonyabb szolgáltatásszintre váltásához az tornádó verzió
-  * Értékek száma az összes értéket, nem csak az első három
+  * Bármely Tornado-verzióval működik, nincs szükség a tornádó verziójának visszalépésére
+  * Az értékek száma az összes értéknél, nem csak az első három
 
 ## <a name="2018-09-public-preview-refresh"></a>2018-09 (nyilvános előzetes verzió frissítése)
 
 Azure Machine Learning új, frissített kiadása: További információ erről a kiadásról: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el az [Azure Machine Learning](../service/overview-what-is-azure-ml.md) áttekintését.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: 1c61f8c0fe1c2a04d390567cc0bc94f22bc5e897
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110155"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805892"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>A beszédfelismerés céljainak felismerése a Speech SDK-valC#
 
@@ -44,11 +44,11 @@ Az útmutató elkezdése előtt győződjön meg arról, hogy rendelkezik az al�
 
 ## <a name="luis-and-speech"></a>A LUIS és a beszéd
 
-A LUIS integrálva van a Speech Services szolgáltatással, hogy felismerje a beszédfelismerési szándékokat. Nincs szüksége a Speech Services-előfizetésre, csak LUIS-ra.
+A LUIS integrálható a Speech Service szolgáltatással a beszédből való szándékfelismerés céljából. Ehhez nincs szükség Speech Service-előfizetésre, csak a LUIS-ra.
 
 A LUIS háromféle kulcsot használ:
 
-| Kulcs típusa  | Cél                                               |
+| Kulcs típusa  | Rendeltetés                                               |
 | --------- | ----------------------------------------------------- |
 | Tartalomkészítés | Lehetővé teszi a LUIS-alkalmazások programozott módon történő létrehozását és módosítását |
 | Kezdő   | Lehetővé teszi a LUIS-alkalmazás tesztelését csak szöveg használatával   |
@@ -56,7 +56,7 @@ A LUIS háromféle kulcsot használ:
 
 Ebben az útmutatóban a végponti kulcs típusát kell megadnia. Ez az útmutató a példaként szolgáló Home Automation LUIS alkalmazást használja, amelyet az [előre elkészített Home Automation-alkalmazás használatának](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) első lépésein hozhat létre. Ha saját LUIS-alkalmazást hozott létre, azt használhatja helyette.
 
-LUIS-alkalmazás létrehozásakor a LUIS automatikusan létrehoz egy alapszintű kulcsot, amellyel szöveges lekérdezések használatával tesztelheti az alkalmazást. Ez a kulcs nem engedélyezi a beszédfelismerési szolgáltatások integrációját, és nem fog működni ezzel az útmutatóval. Hozzon létre egy LUIS-erőforrást az Azure irányítópulton, és rendelje hozzá a LUIS alkalmazáshoz. Ehhez az útmutatóhoz használhatja az ingyenes előfizetési szintet.
+LUIS-alkalmazás létrehozásakor a LUIS automatikusan létrehoz egy alapszintű kulcsot, amellyel szöveges lekérdezések használatával tesztelheti az alkalmazást. Ez a kulcs nem engedélyezi a beszédfelismerési szolgáltatás integrációját, és nem fog működni ezzel az útmutatóval. Hozzon létre egy LUIS-erőforrást az Azure irányítópulton, és rendelje hozzá a LUIS alkalmazáshoz. Ehhez az útmutatóhoz használhatja az ingyenes előfizetési szintet.
 
 Miután létrehozta a LUIS-erőforrást az Azure-irányítópulton, jelentkezzen be a [Luis portálra](https://www.luis.ai/home), válassza ki az alkalmazást a **saját alkalmazások** lapon, majd váltson az alkalmazás **kezelése** lapra. Végül válassza a **kulcsok és végpontok** lehetőséget az oldalsávon.
 
@@ -128,7 +128,7 @@ A kód ismertetése a következő szakaszokban szerepel.
 Először létre kell hoznia egy beszédfelismerési konfigurációt a LUIS Endpoint kulcsból és régióból. A beszédfelismerési konfigurációk segítségével felismerőket hozhat létre a Speech SDK különböző képességeihez. A beszédfelismerési konfiguráció több módon is megadhatja a használni kívánt előfizetést. Itt `FromSubscription`t használunk, amely az előfizetési kulcsot és régiót veszi igénybe.
 
 > [!NOTE]
-> Használja a LUIS-előfizetés kulcsát és régióját, nem pedig a Speech Services-előfizetést.
+> Használja a LUIS-előfizetés kulcsát és régióját, nem pedig a Speech Service-előfizetést.
 
 A következő lépés egy szándékfelismerő létrehozása a `new IntentRecognizer(config)` metódus használatával. Mivel a konfiguráció már tudja, hogy melyik előfizetést szeretné használni, nem kell újra megadnia az előfizetési kulcsot és a végpontot a felismerő létrehozásakor.
 
@@ -138,12 +138,12 @@ Most importálja a modellt a LUIS-appból a `LanguageUnderstandingModel.FromAppI
 
 A leképezések hozzáadásához három argumentumot kell megadnia: a LUIS modellt (amelyet létrehoztak, és a neve `model`), a szándék neve és a szándék azonosítója. Az azonosító és a név közötti különbség a következő.
 
-| `AddIntent()`&nbsp;argumentum | Cél |
+| `AddIntent()`&nbsp;argumentum | Rendeltetés |
 | --------------------------- | ------- |
 | `intentName` | A szándék LUIS-appban meghatározott neve. Ennek az értéknek pontosan egyeznie kell a LUIS-cél nevével. |
 | `intentID` | A Speech SDK által felismert szándékhoz rendelt azonosító. Ez az érték lehet bármilyen hasonló; nem kell megegyeznie a cél nevével a LUIS alkalmazásban meghatározottak szerint. Ha például ugyanaz a kód több szándékot is kezel, használhatja hozzájuk ugyanazt az azonosítót. |
 
-A Home Automation LUIS alkalmazásnak két célja van: egyet az eszköz bekapcsolásához, egy másikat pedig egy eszköz kikapcsolásához. A felismerő az alábbi sorokkal adható hozzá a felismerőhöz. Cserélje le a `AddIntent` metódus három `RecognizeIntentAsync()` sorát erre a kódra.
+A Home Automation LUIS alkalmazásnak két célja van: egyet az eszköz bekapcsolásához, egy másikat pedig egy eszköz kikapcsolásához. A felismerő az alábbi sorokkal adható hozzá a felismerőhöz. Cserélje le a `RecognizeIntentAsync()` metódus három `AddIntent` sorát erre a kódra.
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
@@ -194,7 +194,7 @@ Ha például a "fények kikapcsolása", a pause, majd a "fények bekapcsolása" 
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Keresse meg a kódot ebből a cikkből a **Samples/csharp/sharedcontent/Console** mappában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Gyors útmutató: beszéd felismerése mikrofonból](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

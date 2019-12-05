@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 12/03/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e7b0c379783af2f9131d487f45c0f4e2009e258
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 706cc38c997c91efc890b213444ff779eb86d5c1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232151"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805273"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -47,7 +47,7 @@ Ez a cikk áttekintést nyújt a bejelentkezési jelentésről.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Milyen Azure AD-licencre van szükség a bejelentkezési tevékenységhez való hozzáféréshez?
 
-* A bérlőnek prémium szintű Azure AD licenccel kell rendelkeznie ahhoz, hogy láthassa az összes bejelentkezési tevékenység jelentését. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört. A frissítés előtt néhány napig is eltarthat, hogy az adatai megjelenjenek a jelentésekben, miután a frissítés előtt adattevékenység nélküli prémium szintű licencre frissít.
+* A bejelentkezési tevékenységek teljes jelentésének megtekintéséhez a bérlőnek Prémium szintű Microsoft Azure AD-licenccel kell rendelkeznie. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört. A frissítés előtt néhány napig is eltarthat, hogy az adatai megjelenjenek a jelentésekben, miután a frissítés előtt adattevékenység nélküli prémium szintű licencre frissít.
 
 ## <a name="sign-ins-report"></a>Bejelentkezések jelentés
 
@@ -81,7 +81,7 @@ A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szab
 
 További mezőket vagy a már megjelenített mezők eltávolítását jeleníti meg.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/02.png "Bejelentkezési tevékenység")
+![Bejelentkezési tevékenység](./media/concept-sign-ins/columns.png "Bejelentkezési tevékenység")
 
 Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
@@ -105,19 +105,19 @@ Az **Alkalmazás** szűrővel egy konkrét alkalmazás nevét adhatja meg.
 
 A **Bejelentkezési állapot** szűrővel az alábbi lehetőségek közül választhat:
 
-- Összes
+- Mind
 - Sikeres
 - Hiba
 
 A **feltételes hozzáférés** szűrővel kiválaszthatja a bejelentkezéshez használt hitelesítésszolgáltatói házirend állapotát:
 
-- Összes
+- Mind
 - Nincs alkalmazva
 - Sikeres
 - Hiba
 
 A **Dátum** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz.  
-Lehetséges értékek a következők:
+Lehetséges értékek:
 
 - Egy hónap
 - 7 nap
@@ -146,7 +146,7 @@ Ha további mezőket ad hozzá a bejelentkezési nézethez, a rendszer automatik
         Az Office 2013 az alapértelmezett konfigurációban, ahol a ADAL nincs engedélyezve, és a MAPI vagy az Office 2016, ahol a ADAL le van tiltva.
     - **POP**  
         Egy örökölt levelezési ügyfélprogram, amely a POP3 használatával kéri le az e-maileket.
-    - **SMTP-**  
+    - **SMTP**  
         Egy örökölt levelezési ügyfélprogram, amely az SMTP protokollal küld e-mailt.
 
 ## <a name="download-sign-in-activities"></a>Bejelentkezési tevékenységek letöltése
@@ -185,13 +185,13 @@ A bejelentkezési tevékenységek listájának minden sora a következőkről ad
 
 Az elemekre kattintva részletes információk érhetők el a bejelentkezési műveletről:
 
-- Felhasználói azonosító
+- Felhasználóazonosító
 - Felhasználó
 - Felhasználónév
 - Alkalmazásazonosító
-- Alkalmazás
+- Jelentkezés
 - Ügyfél
-- Hely
+- Földrajzi egység
 - IP-cím
 - Dátum
 - Az MFA megadása kötelező
@@ -234,7 +234,7 @@ Az Office 365-tevékenységek naplóit a [Microsoft 365 felügyeleti központbó
 
 Az Office 365-tevékenység naplóit programozott módon is elérheti az [office 365 felügyeleti API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)-k használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejelentkezési tevékenység jelentésének hibakódja](reference-sign-ins-error-codes.md)
 * [Az Azure AD adatmegőrzési szabályzatai](reference-reports-data-retention.md)

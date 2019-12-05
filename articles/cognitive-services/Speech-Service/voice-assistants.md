@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 403768bc81b476dd144d5e4496f3501a3001da8a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195939"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812909"
 ---
 # <a name="about-voice-assistants"></a>A hangsegédek ismertetése
 
-Az Azure Speech Servicest használó hangsegédek lehetővé teszik a fejlesztők számára, hogy természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban.
+A beszédfelismerési szolgáltatást használó hangsegédek lehetővé teszik a fejlesztők számára, hogy természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban.
 
 A hangsegéd szolgáltatás gyors, megbízható interakciót tesz lehetővé egy eszköz és egy asszisztens implementációja között, amely vagy (1) a bot Framework közvetlen vonalú beszédfelismerési csatornáját, vagy (2) az integrált egyéni parancsok (előzetes verzió) szolgáltatást használja a feladatok befejezéséhez.
 
@@ -29,7 +29,7 @@ Az alkalmazások a beszédfelismerési szoftverfejlesztői készlettel (SDK) csa
 
 ## <a name="choosing-an-assistant-solution"></a>Asszisztensi megoldás kiválasztása
 
-A hangsegéd létrehozásának első lépése, hogy eldöntse, mit kell tennie. Az Azure Speech Services több, egymást kiegészítő megoldást biztosít a Segéd-interakciók kialakításához. Legyen szó akár a rugalmasságról és a sokoldalúságról, amit a bot Framework [közvetlen vonalas beszédének](direct-line-speech.md) csatornája biztosít, vagy az egyszerű forgatókönyvekhez [(előzetes verzió)](custom-commands.md) egyszerűen, a megfelelő eszközök kiválasztásával kezdheti meg az első lépéseket.
+A hangsegéd létrehozásának első lépése, hogy eldöntse, mit kell tennie. A beszédfelismerési szolgáltatás több, egymást kiegészítő megoldást biztosít a Segéd interakcióinak kialakításához. Legyen szó akár a rugalmasságról és a sokoldalúságról, amit a bot Framework [közvetlen vonalas beszédének](direct-line-speech.md) csatornája biztosít, vagy az egyszerű forgatókönyvekhez [(előzetes verzió)](custom-commands.md) egyszerűen, a megfelelő eszközök kiválasztásával kezdheti meg az első lépéseket.
 
 | Ehhez a feladathoz... | Ezt követően tekintse meg... | Például... |
 |-------------------|------------------|----------------|
@@ -46,17 +46,17 @@ Az [egyéni parancsok (előzetes verzió)](custom-commands.md) egy egyszerűsít
 
 Akár [közvetlen vonalas beszédet](direct-line-speech.md) , akár [egyéni parancsokat (előzetes verzió)](custom-commands.md) választ a Segéd-interakciók létrehozásához, a testreszabási funkciók széles választékával testre szabhatja a Segédet a márka, a termék és a személyiség számára.
 
-| Kategória | Szolgáltatások |
+| Kategória | Jellemzők |
 |----------|----------|
 |[Egyéni kulcsszó](speech-devices-sdk-create-kws.md) | A felhasználók olyan egyéni kulcsszóval indíthatnak el beszélgetéseket, mint például a "Hey contoso". Az alkalmazás a Speech SDK-ban egy egyéni kulcsszavas motorral rendelkezik, amely konfigurálható egy egyéni kulcsszóval, [amelyet itt is](speech-devices-sdk-create-kws.md)létrehozhat. A hangsegédek kiszolgálóoldali ellenőrzés használatával növelhetik a kulcsszó aktiválásának pontosságát (az eszköz helyett).
-|[Beszéd szövege](speech-to-text.md) | A hangsegédek valós idejű hangfelismerést végeznek az Azure Speech Servicesből származó [beszéd – szöveg](speech-to-text.md) használatával. Ez a szöveg a Segéd implementációjában és az ügyfélalkalmazásban is elérhető.
-|[Szöveg – beszéd](text-to-speech.md) | A Segéd szöveges válaszai az Azure Speech Servicesből származó [szöveges – beszéd szövegből](text-to-speech.md) lettek szintetizálva. Ezt a szintézist ezután az ügyfélalkalmazás elérhetővé válik egy hangadatfolyamként. A Microsoft lehetőséget nyújt saját, kiváló minőségű neurális TTS-hang létrehozására, amely hangvételt biztosít a márka számára. További információért [vegye fel velünk a kapcsolatot](mailto:mstts@microsoft.com).
+|[Beszéd szövege](speech-to-text.md) | A hangsegédek valós idejű hanganyagot alakítanak át felismert szöveggé a beszédfelismerési szolgáltatásból származó [beszéd – szöveg](speech-to-text.md) használatával. Ez a szöveg a Segéd implementációjában és az ügyfélalkalmazásban is elérhető.
+|[Szöveg – beszéd](text-to-speech.md) | A Segédtől érkező szöveges válaszokat a beszédfelismerési szolgáltatás [szövegről beszédre](text-to-speech.md) történő felhasználásával szintetizálja. Ezt a szintézist ezután az ügyfélalkalmazás elérhetővé válik egy hangadatfolyamként. A Microsoft lehetőséget nyújt saját, kiváló minőségű neurális TTS-hang létrehozására, amely hangvételt biztosít a márka számára. További információért [vegye fel velünk a kapcsolatot](mailto:mstts@microsoft.com).
 
 ## <a name="getting-started-with-voice-assistants"></a>Első lépések a hangsegédek használatába
 
 Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt futtatják a kódot. Ez a táblázat a hangsegéd-gyors üzembe helyezések listáját tartalmazza, nyelv szerint rendezve.
 
-| Első lépések | Platform | API-referencia |
+| Gyors útmutató | Platform | API-leírások |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
 | Java | Windows, macOS, Linux | [Tallózás](https://aka.ms/csspeech/javaref) |
@@ -75,7 +75,7 @@ Egy oktatóanyag, amely bemutatja, hogyan [engedélyezheti a Segédet a SPEECH S
 
 ## <a name="customization"></a>Testreszabás
 
-Az Azure Speech Services használatával készített hangsegédek teljes körű testreszabási lehetőségeket használhatnak a [beszéd-szöveg](speech-to-text.md), a [szöveg-beszéd](text-to-speech.md)és az [Egyéni kulcsszavak kiválasztásához](speech-devices-sdk-create-kws.md).
+A beszédfelismerési szolgáltatással létrehozott hangsegédek teljes körű testreszabási lehetőségeket használhatnak a [beszéd – szöveg](speech-to-text.md), a [szöveg-beszéd](text-to-speech.md)és az [Egyéni kulcsszavak kiválasztásához](speech-devices-sdk-create-kws.md).
 
 > [!NOTE]
 > A testreszabási lehetőségek nyelv/területi beállítás szerint változnak (lásd a [támogatott nyelveket](supported-languages.md)).
@@ -87,7 +87,7 @@ Az Azure Speech Services használatával készített hangsegédek teljes körű 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Ingyenes Speech Services-előfizetési kulcs beszerzése](get-started.md)
+* [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
 * [A Speech SDK beszerzése](speech-sdk.md)
 * [További információ az egyéni parancsokról (előzetes verzió)](custom-commands.md)
 * [További információ a közvetlen vonalas beszédről](direct-line-speech.md)

@@ -3,16 +3,17 @@ title: A Linux rendszerhez készült virtuálisgép-bővítmény Azure Key Vault
 description: Telepítsen egy ügynököt, amely a virtuális gépek Key Vault tanúsítványainak automatikus frissítését végzi a virtuálisgép-bővítmény használatával.
 services: virtual-machines-linux
 author: msmbaldwin
+tags: keyvault
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.date: 09/23/2018
+ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2de8a072aec66c2c087541ed9620f3dbdc137ee9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d6b8cdf43fea63fa4709dd5fc5319bb92ddefc63
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073004"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806973"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -29,7 +30,7 @@ A Key Vault virtuálisgép-bővítmény támogatja ezeket a Linux-disztribúció
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti meg. A kiterjesztéshez nincs szükség védett beállításokra – az összes beállítás biztonsági hatás nélkül tekinthető információnak. A bővítményhez meg kell adni a figyelt titkok listáját, a lekérdezés gyakoriságát és a célhely tanúsítványtárolóját. Ezek:  
+A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti meg. A kiterjesztéshez nincs szükség védett beállításokra – az összes beállítás biztonsági hatás nélkül tekinthető információnak. A bővítményhez meg kell adni a figyelt titkok listáját, a lekérdezés gyakoriságát és a célhely tanúsítványtárolóját. Konkrétan:  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -40,20 +41,20 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault.Edp",
-            "type": "KeyVaultForLinux",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "secretsManagementSettings": {
-                    "pollingIntervalInS": <polling interval in seconds>,
-                    "certificateStoreName": <certificate store name, e.g.: "MY">,
-                    "linkOnRenewal": <Not available on Linux e.g.: false>,
-                    "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
-                    "requireInitialSync": <initial synchronization of certificates e..g: true>,
-                    "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-                }         
-            }
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForLinux",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "secretsManagementSettings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
+          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "linkOnRenewal": <Not available on Linux e.g.: false>,
+          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "requireInitialSync": <initial synchronization of certificates e..g: true>,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+        }      
+      }
       }
     }
 ```
@@ -64,25 +65,25 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 > Ennek az az oka, hogy a `/secrets` útvonal a teljes tanúsítványt adja vissza, beleértve a titkos kulcsot is, míg a `/certificates` útvonal nem. A tanúsítványokkal kapcsolatos további információkért tekintse meg a következőt: [Key Vault tanúsítványok](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 
-### <a name="property-values"></a>Tulajdonságok értékei
+### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték és példa | Adattípus |
+| Név | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | dátum |
-| publisher | Microsoft. Azure. kulcstartó. EDP | sztring |
+| közzétevő | Microsoft. Azure. kulcstartó | sztring |
 | type | KeyVaultForLinux | sztring |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | sztring |
 | certificateStoreName | MY | sztring |
-| linkOnRenewal | false | logikai |
+| linkOnRenewal | hamis | logikai |
 | certificateStoreLocation  | LocalMachine | sztring |
-| requiredInitialSync | true | logikai |
+| requiredInitialSync | igaz | logikai |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | karakterlánc-tömb
 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amelyek a tanúsítványok telepítés utáni frissítését igénylik. A bővítmény az egyes virtuális gépekre vagy virtuálisgép-méretezési csoportokra is telepíthető. A séma és a konfiguráció a sablonok típusainál is gyakori. 
+Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amelyek a tanúsítványok telepítés utáni frissítését igénylik. A bővítmény az egyes virtuális gépekre vagy virtuálisgép-méretezési csoportokra is telepíthető. A séma és a konfiguráció a sablonok típusainál is gyakori. 
 
 A virtuálisgép-bővítmények JSON-konfigurációját a sablon virtuálisgép-erőforrás szilánkján belül kell beágyazni, különösen `"resources": []` objektumot a virtuálisgép-sablonhoz, és a `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` objektum alatti virtuálisgép-méretezési csoport esetén.
 
@@ -96,17 +97,17 @@ A virtuálisgép-bővítmények JSON-konfigurációját a sablon virtuálisgép-
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault.Edp",
-            "type": "KeyVaultForLinux",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                    "pollingIntervalInS": <polling interval in seconds>,
-                    "certificateStoreName": <certificate store name, e.g.: "MY">,
-                    "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
-                    "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-                }         
-            }
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForLinux",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
+          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+        }      
+      }
       }
     }
 ```
@@ -121,12 +122,12 @@ A Azure PowerShell használatával telepítheti a Key Vault virtuálisgép-bőv�
     ```powershell
         # Build settings
         $settings = '{"secretsManagementSettings": 
-            { "pollingIntervalInS": "' + <pollingInterval> + 
-            '", "certificateStoreName": "' + <certStoreName> + 
-            '", "certificateStoreLocation": "' + <certStoreLoc> + 
-            '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        { "pollingIntervalInS": "' + <pollingInterval> + 
+        '", "certificateStoreName": "' + <certStoreName> + 
+        '", "certificateStoreLocation": "' + <certStoreLoc> + 
+        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName =  "KeyVaultForLinux"
-        $extPublisher = "Microsoft.Azure.KeyVault.Edp"
+        $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForLinux"
        
     
@@ -141,12 +142,12 @@ A Azure PowerShell használatával telepítheti a Key Vault virtuálisgép-bőv�
     
         # Build settings
         $settings = '{"secretsManagementSettings": 
-            { "pollingIntervalInS": "' + <pollingInterval> + 
-            '", "certificateStoreName": "' + <certStoreName> + 
-            '", "certificateStoreLocation": "' + <certStoreLoc> + 
-            '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        { "pollingIntervalInS": "' + <pollingInterval> + 
+        '", "certificateStoreName": "' + <certStoreName> + 
+        '", "certificateStoreLocation": "' + <certStoreLoc> + 
+        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName = "KeyVaultForLinux"
-        $extPublisher = "Microsoft.Azure.KeyVault.Edp"
+        $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForLinux"
         
         # Add Extension to VMSS
@@ -158,7 +159,7 @@ A Azure PowerShell használatával telepítheti a Key Vault virtuálisgép-bőv�
     
     ```
 
-## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
+## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
 
 Az Azure CLI használatával telepítheti a Key Vault virtuálisgép-bővítményt egy meglévő virtuális gépre vagy virtuálisgép-méretezési csoportba. 
  
@@ -186,11 +187,11 @@ Az Azure CLI használatával telepítheti a Key Vault virtuálisgép-bővítmén
 
 Vegye figyelembe a következő korlátozásokat/követelményeket:
 - Key Vault korlátozások:
-    - A telepítés időpontjában léteznie kell 
-    - Key Vault hozzáférési szabályzat a VM/VMSS identitáshoz van beállítva az MSI használatával
+  - A telepítés időpontjában léteznie kell 
+  - Key Vault hozzáférési szabályzat a VM/VMSS identitáshoz van beállítva az MSI használatával
 
 
-## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
+## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -201,11 +202,11 @@ A bővítmények állapotával kapcsolatos adatok beolvashatók a Azure Portalb�
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
 
 ### <a name="support"></a>Támogatás
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

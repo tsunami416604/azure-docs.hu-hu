@@ -1,7 +1,7 @@
 ---
 title: Stream codec tömörített hang az Androidon futó Speech SDK-val
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan továbbíthatja a tömörített hanganyagokat az Azure Speech Servicesbe az Androidon futó Speech SDK-val.
+description: Megtudhatja, hogyan továbbíthat tömörített hangot a beszédfelismerési szolgáltatásnak az Androidon futó Speech SDK-val.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 01135229167dde3784137ab1b06dfc931766a2e0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109902"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805841"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Útmutató: a kodekkel tömörített hangbemenet használata az Androidon futó Speech SDK-val
 
@@ -37,7 +37,7 @@ A WAV/PCM esetében tekintse meg a fővonal beszédének dokumentációját. A W
 
 A kodekkel tömörített hang a [GStreamer](https://gstreamer.freedesktop.org)használatával valósítható meg. Licencelési okokból a GStreamer bináris fájljai nincsenek lefordítva az SDK-val. Az Androidhoz készült előre elkészített bináris fájlokat kell használnia. Az előre elkészített kódtárak letöltéséhez lásd: [telepítés Android-fejlesztéshez](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
-`libgstreamer_android.so` megadása kötelező. Győződjön meg arról, hogy a GStreamer beépülő modulja `libgstreamer_android.so`van csatolva.
+A `libgstreamer_android.so` használata kötelező. Győződjön meg arról, hogy a GStreamer beépülő modulja `libgstreamer_android.so`van csatolva.
 
 ```make
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 audioresample audioparsers ogg opusparse opus wavparse alaw mulaw flac
@@ -133,7 +133,7 @@ Miután a megosztott objektum (libgstreamer_android. so) létrehozta az alkalmaz
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Kód tömörített hangbemenetet használó programkód
 
-Ha tömörített hangformátumot szeretne továbbítani a Speech Servicesbe, hozzon létre `PullAudioInputStream` vagy `PushAudioInputStream`. Ezután hozzon létre egy `AudioConfig` a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
+Ha tömörített hangformátumot szeretne továbbítani a beszédfelismerési szolgáltatásba, hozzon létre `PullAudioInputStream` vagy `PushAudioInputStream`. Ezután hozzon létre egy `AudioConfig` a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
 
 Tegyük fel, hogy rendelkezik egy `myPullStream` nevű bemeneti adatfolyam-osztállyal, és az OPUS/OGG-t használja. A kód így néz ki:
 
@@ -157,7 +157,7 @@ SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get()
 String text = result.getText();
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 - [Lásd: a beszédfelismerés felismerése Java-ban](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 6b9d5eb3adb8cad963ec513d327d237e73f94878
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535586"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803733"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>A Azure Active Directory Authentication Management üzemeltetési útmutatója
 
@@ -141,7 +141,7 @@ Ha MDM vagy Microsoft Intune eszközzel felügyeli az eszközöket, de a feltét
 #### <a name="device-trust-access-policies-recommended-reading"></a>Az eszköz megbízhatóságához való hozzáférési szabályzatok ajánlott olvasmányok
 
 - [Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-- [Identitás-és eszköz-hozzáférési konfigurációk](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Identitás- és eszköz-hozzáférési konfigurációk](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Vállalati Windows Hello
 
@@ -194,7 +194,7 @@ Ha azonban olyan alkalmazásokat talál, amelyek egyéni felhasználókhoz rende
 
 ## <a name="access-policies"></a>Hozzáférési szabályzatok
 
-### <a name="named-locations"></a>Elnevezett helyszínek
+### <a name="named-locations"></a>Nevesített helyek
 
 Az Azure AD-ben [elnevezett helyekkel](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) megbízható IP-címtartományok is felcímkézhető a szervezetében. Az Azure AD a nevesített helyeket a következő célokra használja:
 
@@ -256,7 +256,7 @@ A feltételes hozzáférés elengedhetetlen eszköz a szervezet biztonsági hely
 #### <a name="conditional-access-recommended-reading"></a>Feltételes hozzáférés ajánlott olvasmánya
 
 - [Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [Identitás-és eszköz-hozzáférési konfigurációk](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Identitás- és eszköz-hozzáférési konfigurációk](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory feltételes hozzáférési beállítások ismertetése](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
 - [Általános feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
 
@@ -363,7 +363,7 @@ A bejelentkezési tevékenységhez való hozzáférés, az Azure AD naplózási 
 - [Az Azure AD Reporting API és a tanúsítványok használatával kapott adatlekérdezés](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-with-certificates)
 - [Azure Active Directory Identity Protection Microsoft Graph](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
 - [Office 365 felügyeleti tevékenység API-referenciája](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
-- [A Azure Active Directory Power BI Content Pack használata](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-power-bi-content-pack-how-to)
+- [A Azure Active Directory Power BI Content Pack használata](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ## <a name="summary"></a>Összefoglalás
 

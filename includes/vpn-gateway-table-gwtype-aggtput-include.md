@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cba54c65a314919b5509e1de029ad05f8722baa2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075441"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828945"
 ---
-|**VPN<br>átjáró<br>generáció** |**Termékváltozat**   | **S2S/Virtuális hálózatok közötti kapcsolat<br>alagutak** | **P2S<br> SSTP-kapcsolatok** | **P2S<br> IKEv2/OpenVPN-kapcsolatok** | **Összesített<br>átviteli sebesség tesztje** | **BGP** | **Zone-redundant** |
+|**VPN<br>átjáró<br>generáció** |**Termékváltozat**   | **S2S/Virtuális hálózatok közötti kapcsolat<br>alagutak** | **P2S<br> SSTP-kapcsolatok** | **P2S<br> IKEv2/OpenVPN-kapcsolatok** | **Összesített<br>átviteli sebesség tesztje** | **BGP** | **Zóna – redundáns** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
-|**Generation1**|**Basic**   | Legfeljebb 10    | Legfeljebb 128  | Nem támogatott  | 100 Mbps  | Nem támogatott| Nem |
+|**Generation1**|**Basic**   | Legfeljebb 10    | Legfeljebb 128  | Nem támogatott  | 100 Mb/s  | Nem támogatott| Nem |
 |**Generation1**|**VpnGw1**  | Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 250       | 650 Mbps  | Támogatott | Nem |
 |**Generation1**|**VpnGw2**  | Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 500       | 1 Gb/s    | Támogatott | Nem |
 |**Generation1**|**VpnGw3**  | Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 1000      | 1,25 Gbps | Támogatott | Nem |
@@ -27,12 +27,12 @@ ms.locfileid: "74075441"
 |        |            |            |           |                |           |           |     |
 |**Generation2**|**VpnGw2**  | Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 500       | 1,25 Gbps | Támogatott | Nem |
 |**Generation2**|**VpnGw3**  | Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 1000      | 2,5 GB/s  | Támogatott | Nem |
-|**Generation2**|**VpnGw4**  | Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 1000      | 5 Gbps    | Támogatott | Nem |
-|**Generation2**|**VpnGw5**  | Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 1000      | 10 Gb/s   | Támogatott | Nem |
+|**Generation2**|**VpnGw4**  | Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 5000      | 5 Gbps    | Támogatott | Nem |
+|**Generation2**|**VpnGw5**  | Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 10000      | 10 Gb/s   | Támogatott | Nem |
 |**Generation2**|**VpnGw2AZ**| Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 500       | 1,25 Gbps | Támogatott | Igen |
 |**Generation2**|**VpnGw3AZ**| Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 1000      | 2,5 GB/s  | Támogatott | Igen |
-|**Generation2**|**VpnGw4AZ**| Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 1000      | 5 Gbps    | Támogatott | Igen |
-|**Generation2**|**VpnGw5AZ**| Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 1000      | 10 Gb/s   | Támogatott | Igen |
+|**Generation2**|**VpnGw4AZ**| Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 5000      | 5 Gbps    | Támogatott | Igen |
+|**Generation2**|**VpnGw5AZ**| Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 10000      | 10 Gb/s   | Támogatott | Igen |
 
 (*) Ha 30 S2S VPN-alagútnál többre van szüksége, használja a [Virtual WAN-t](../articles/virtual-wan/virtual-wan-about.md).
 
@@ -50,9 +50,9 @@ Annak érdekében, hogy ügyfeleink megértsék az SKU-ket a különböző algor
 
 |**Generációs**|**Termékváltozat**   | **Használt algoritmusok<br>** | **Átviteli sebesség<br>megfigyelt** | **Másodpercenként megfigyelt csomagok másodpercenként<br>** |
 |---           |---       | ---                 | ---            | ---                    |
-|**Generation1**|**VpnGw1**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mbps<br>120 Mbps   | 58 000<br>50 000<br>50 000|
-|**Generation1**|**VpnGw2**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gb/s<br>500 Mbps<br>120 Mbps | 90,000<br>80,000<br>55 000|
-|**Generation1**|**VpnGw3**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1,25 Gbps<br>550 Mbps<br>120 Mbps | 105 000<br>90,000<br>60,000|
-|**Generation1**|**VpnGw1AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mbps<br>120 Mbps   | 58 000<br>50 000<br>50 000|
-|**Generation1**|**VpnGw2AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gb/s<br>500 Mbps<br>120 Mbps | 90,000<br>80,000<br>55 000|
-|**Generation1**|**VpnGw3AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1,25 Gbps<br>550 Mbps<br>120 Mbps | 105 000<br>90,000<br>60,000|
+|**Generation1**|**VpnGw1**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mb/s<br>120 Mbps   | 58 000<br>50 000<br>50 000|
+|**Generation1**|**VpnGw2**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gb/s<br>500 Mb/s<br>120 Mbps | 90,000<br>80,000<br>55 000|
+|**Generation1**|**VpnGw3**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1,25 Gbps<br>550 Mbps<br>120 Mbps | 105 000<br>90,000<br>60.000|
+|**Generation1**|**VpnGw1AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mb/s<br>120 Mbps   | 58 000<br>50 000<br>50 000|
+|**Generation1**|**VpnGw2AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gb/s<br>500 Mb/s<br>120 Mbps | 90,000<br>80,000<br>55 000|
+|**Generation1**|**VpnGw3AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1,25 Gbps<br>550 Mbps<br>120 Mbps | 105 000<br>90,000<br>60.000|
