@@ -21,6 +21,8 @@
   items:
     - name: A FarmBeats üzembe helyezése
       href: prepare-for-deployment.md
+    - name: Felhasználók kezelése
+      href: manage-users.md
     - name: Farmok kezelése
       href: manage-farms.md
     - name: Érzékelői adatok lekérése

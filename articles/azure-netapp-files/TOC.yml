@@ -75,3 +75,11 @@
       href: 'https://docs.microsoft.com/rest/api/netapp/'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.netapp/allversions
+- name: További források
+  items:
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/netapp/'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=netapp'
+    - name: Videók
+      href: azure-netapp-files-videos.md

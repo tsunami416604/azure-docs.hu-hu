@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: d7ceb3acb1d2e3d174f3b665ec6210d3ddac9970
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: bdb459a69557269a20d36f05acc2da502064efb9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059165"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851349"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Azure-beli virtuális gépek hibaelhárítása
 
 ## <a name="tools-for-troubleshooting"></a>Hibaelhárítási eszközök
 
-- [Soros konzol](serial-console-windows.md)
+- [Soros konzol](serial-console-overview.md)
 - [Rendszerindítási diagnosztika](boot-diagnostics.md)
 - [Windows rendszerű virtuális gép: Csatlakoztassa az operációsrendszer-lemezt egy másik virtuális géphez a hibaelhárításhoz.](troubleshoot-recovery-disks-portal-windows.md)
 - [Linux rendszerű virtuális gép: Csatlakoztassa az operációsrendszer-lemezt egy másik virtuális géphez a hibaelhárításhoz.](troubleshoot-recovery-disks-portal-linux.md)
@@ -46,7 +46,7 @@ ms.locfileid: "71059165"
 
 **Virtuális gép rendszerindítási hibái**
 
-* [BitLocker rendszerindítási hibái](troubleshoot-bitlocker-boot-error.md) 
+* [BitLocker rendszerindítási hibái](troubleshoot-bitlocker-boot-error.md)
 * [A Windows „A fájlrendszer ellenőrzése” üzenetet jeleníti meg a rendszerindítás során](troubleshoot-check-disk-boot-error.md)
 * [Kék képernyős hibák](troubleshoot-common-blue-screen-error.md)
 * [A virtuális gép indítása elakadt „A Windows előkészítése.](troubleshoot-vm-boot-configure-update.md)
