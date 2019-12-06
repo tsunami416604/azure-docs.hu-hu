@@ -3,12 +3,12 @@ title: Az ACR-feladatok áttekintése
 description: Az ACR-feladatok, a Azure Container Registry szolgáltatásainak egyik csomagja, amely biztonságos, automatizált tároló-rendszerképek készítését, kezelését és javítását teszi lehetővé a felhőben.
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: b4710591dfd78f0633d5071c78d80e300349f498
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456155"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74840765"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>A tárolók rendszerképének fejlesztése és karbantartása ACR-feladatokkal
 
@@ -52,16 +52,19 @@ Megtudhatja, hogyan használhatja a gyors feladatokat az első ACR-feladatok okt
 
 ## <a name="trigger-task-on-source-code-update"></a>Feladat elindítása a forráskód frissítésekor
 
-Hozzon létre egy tároló-rendszerkép Build vagy többlépéses feladatot a kód véglegesítése, vagy egy lekéréses kérelem vagy frissítés után a GitHubon vagy az Azure DevOps található git-tárházban. Például konfiguráljon egy Build feladatot az Azure CLI-parancs az [ACR Task Create][az-acr-task-create] paranccsal egy git-tárház és opcionálisan egy ág-és Docker megadásával. Amikor a csapat frissíti a tárházban lévő kódot, az ACR-feladatok által létrehozott webhook elindítja a tárházban definiált tároló-rendszerkép összeállítását. 
+Hozzon létre egy tároló-rendszerkép Build vagy többlépéses feladatot a kód véglegesítése, vagy egy lekéréses kérelem vagy frissítés után egy nyilvános vagy privát git-tárházban a GitHubon vagy az Azure DevOps. Például konfiguráljon egy Build feladatot az Azure CLI-parancs az [ACR Task Create][az-acr-task-create] paranccsal egy git-tárház és opcionálisan egy ág-és Docker megadásával. Amikor a csapat frissíti a tárházban lévő kódot, az ACR-feladatok által létrehozott webhook elindítja a tárházban definiált tároló-rendszerkép összeállítását. 
 
 Az ACR-feladatok a következő eseményindítókat támogatják, amikor a git-tárházat a feladat kontextusa szerint állítja be:
 
-| Eseményindító | Alapértelmezés szerint engedélyezve |
+| Eseményindító | Alapértelmezés szerint engedélyezett |
 | ------- | ------------------ |
 | Véglegesítés | Igen |
 | Lekéréses kérelem | Nem |
 
-Az trigger konfigurálásához adja meg a személyes hozzáférési jogkivonat (PAT) feladatát, hogy beállítsa a webhookot a GitHub vagy az Azure DevOps-tárházban.
+A forráskód-frissítési trigger konfigurálásához meg kell adnia a feladatot egy személyes hozzáférési jogkivonat (PAT) számára, hogy a webhookot a nyilvános vagy privát GitHub vagy az Azure DevOps-tárházban állítsa be.
+
+> [!NOTE]
+> Az ACR-feladatok jelenleg nem támogatják a commit vagy a pull kérelem eseményindítóit a GitHub Enterprise reposban.
 
 Ismerje meg, hogyan indíthat triggert forráskód-végrehajtásra a második ACR-feladatok oktatóanyagban, és [automatizálja a tárolók rendszerképét Azure Container Registry feladatokkal](container-registry-tutorial-build-task.md).
 
@@ -116,11 +119,14 @@ Az alábbi táblázat néhány példát mutat be az ACR-feladatok támogatott k�
 | Környezet helye | Leírás | Példa |
 | ---------------- | ----------- | ------- |
 | Helyi fájlrendszer | A helyi fájlrendszer egyik könyvtárában található fájlok. | `/home/user/projects/myapp` |
-| GitHub-főkiszolgáló ág | A GitHub-tárház fő (vagy más alapértelmezett) ágában található fájlok.  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub-ág | Egy GitHub-tárház adott ága.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub-almappa | Egy GitHub-tárházban lévő almappában található fájlok. Példa egy ág és almappa specifikációjának kombinációját mutatja be. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| Azure DevOps almappa | Egy Azure-tárház almappájába tartozó fájlok. Példa az ág és az almappa specifikációjának kombinációját mutatja be. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
+| GitHub-főkiszolgáló ág | Egy nyilvános vagy privát GitHub-tárház főkiszolgálójának (vagy más alapértelmezett) ágában lévő fájljai.  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub-ág | Nyilvános vagy privát GitHub-tárház adott ága.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub-almappa | Egy nyilvános vagy privát GitHub-tárház almappájába tartozó fájlok. Példa egy ág és almappa specifikációjának kombinációját mutatja be. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Azure DevOps almappa | Egy nyilvános vagy privát Azure-tárház almappájába tartozó fájlok. Példa az ág és az almappa specifikációjának kombinációját mutatja be. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Távoli Fez | Tömörített archívumban található fájlok egy távoli webkiszolgálón. | `http://remoteserver/myapp.tar.gz` |
+
+> [!NOTE]
+> Ha privát git-tárházat használ egy tevékenység környezetében, meg kell adnia egy személyes hozzáférési jogkivonatot (PAT).
 
 ## <a name="image-platforms"></a>Képplatformok
 
@@ -128,7 +134,7 @@ Alapértelmezés szerint az ACR-feladatok lemezképeket készítenek a Linux ope
 
 | Operációs rendszer | Architektúra|
 | --- | ------- | 
-| Linux | amd64<br/>kar<br/>arm64<br/>386 |
+| Linux | amd64<br/>arm<br/>arm64<br/>386 |
 | Windows | amd64 |
 
 ## <a name="view-task-logs"></a>Feladatütemezés megtekintése
@@ -141,7 +147,7 @@ Alapértelmezés szerint a rendszer a beállításjegyzékben futtatott feladato
 az acr task update-run --registry myregistry --run-id cf11 --no-archive false
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha készen áll a tárolók rendszerképének és a Felhőbeli karbantartásának automatizálására, tekintse meg az [ACR feladatok oktatóanyag-sorozatát](container-registry-tutorial-quick-task.md).
 
