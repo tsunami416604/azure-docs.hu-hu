@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9f340ad12fbf26190a17bc4df97bfc95473093c
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bc2c68c53a7c03d1de08e5cde528f27aa61b0096
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381289"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847269"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének üzembe helyezése az Azure AD-ben
 
@@ -31,7 +31,7 @@ A felhasználók gyorsan regisztrálhatnak a SSPR a szervezet egy másik alkalma
 
 A SSPR üzembe helyezése előtt a szervezetek dönthetnek arról, hogy hány jelszó-visszaállítási kapcsolódó ügyfélszolgálati hívás történik az idő múlásával, és az egyes hívások átlagos díjait. Ezeket az adatposta üzembe helyezésével megjelenítheti a szervezete számára SSPR értéket.  
 
-## <a name="how-sspr-works"></a>A SSPR működése
+## <a name="how-sspr-works"></a>Az SSPR működése
 
 1. Amikor egy felhasználó megpróbálja alaphelyzetbe állítani a jelszót, ellenőriznie kell a korábban regisztrált hitelesítési módszereket vagy metódusokat, hogy igazolják személyazonosságát.
 1. Ezután a felhasználó új jelszót ad meg.
@@ -56,17 +56,17 @@ A kombinált regisztrációs élmény nem igényli, hogy a szervezetek mind a SS
 
 A következő beállítások szükségesek a SSPR engedélyezéséhez az ajánlott értékekkel együtt.
 
-| Terület | Beállítás | Érték |
+| Terület | Beállítás | Value (Díj) |
 | --- | --- | --- |
 | **SSPR tulajdonságai** | Önkiszolgáló jelszó-visszaállítás engedélyezve | **Kijelölt** csoport a próbaüzem/ **mind** az éles környezethez |
 | **Hitelesítési módszerek** | A regisztráláshoz szükséges hitelesítési módszerek | Az alaphelyzetbe állításhoz mindig 1 nagyobb érték szükséges |
 |   | Az alaphelyzetbe állításhoz szükséges hitelesítési módszerek | Egy vagy kettő |
 | **Regisztráció** | Szükséges a felhasználóknak regisztrálniuk a bejelentkezéskor? | Igen |
-|   | Azon napok száma, amely után a felhasználóknak újra meg kell erősíteniük hitelesítési adataikat | 90 – 180 nap |
+|   | A napok száma, amely előtt a rendszer kéri a felhasználóktól a hitelesítési adataik ismételt megerősítését | 90 – 180 nap |
 | **Értesítések** | Értesítse a felhasználókat új jelszó kérésekor? | Igen |
 |   | Minden rendszergazda kapjon értesítést, ha más rendszergazdák új jelszót kérnek? | Igen |
-| **Testreszabási** | Segélyszolgálat hivatkozásának testreszabása | Igen |
-|   | Egyéni segélyszolgálat e-mail-címe vagy URL-címe | Támogatási webhely vagy e-mail-cím |
+| **Testreszabási** | Támogatási szolgálat hivatkozásának testreszabása | Igen |
+|   | Egyéni támogatási szolgálat e-mail-címe vagy URL-címe | Támogatási webhely vagy e-mail-cím |
 | **Helyszíni integráció** | Jelszavak visszaírása a helyszíni AD-be | Igen |
 |   | Fiók feloldásának engedélyezése a felhasználók számára a jelszó alaphelyzetbe állítása nélkül | Igen |
 
@@ -76,7 +76,7 @@ Az önkiszolgáló jelszó-visszaállítás engedélyezésekor válassza ki a pr
 
 Ha a szolgáltatás szélesebb körű elindítását tervezi, javasoljuk, hogy az összes beállítás használatával kényszerítse ki a SSPR mindenki számára a szervezeten belül. Ha nem állítható be az összes értékre, válassza ki az Azure ad-vel szinkronizált megfelelő Azure AD biztonsági csoportot vagy AD-csoportot.
 
-### <a name="authentication-methods"></a>Hitelesítési módszerek
+### <a name="authentication-methods"></a>Hitelesítési módok
 
 Adja meg az alaphelyzetbe állításhoz szükséges hitelesítési módszereket a legalább egy értékre való regisztráláshoz. Lehetővé teszi, hogy több felhasználó rugalmasságot biztosítson, amikor alaphelyzetbe kell állítani őket.
 
@@ -90,7 +90,7 @@ Tekintse meg, mi az a [hitelesítési módszer](concept-authentication-methods.m
 
 Adja meg a **napok számát, mielőtt a rendszer megkéri a felhasználóktól, hogy hitelesítő adataikat** a **90** és **180** nap között újra erősítse meg, kivéve, ha a szervezetnek rövidebb időre van szüksége üzleti igényekre.
 
-### <a name="notifications-settings"></a>Értesítések beállításai
+### <a name="notifications-settings"></a>Értesítésbeállítások
 
 Konfigurálja mind a **felhasználók értesítése jelszó** **alaphelyzetbe állítását, mind a rendszergazdák értesítése, ha más rendszergazdák Igen értékre állítják vissza a jelszavukat** . Ha az **Igen** lehetőséget választja, mindkettő növeli a biztonságot azáltal, hogy a felhasználók tisztában vannak a jelszavuk alaphelyzetbe állítását követően, és az összes rendszergazda tisztában van azzal, hogy a rendszergazda módosítja a jelszót. Ha a felhasználók vagy rendszergazdák ilyen értesítést kapnak, és nem kezdeményezték a változást, azonnal jelenthetik a potenciális biztonsági problémákat.
 
@@ -183,7 +183,7 @@ A megvalósítani kívánt csoportokhoz hozzá kell rendelni az Azure AD Premium
 
 A licencek felhasználói csoportokhoz való hozzárendelésével kapcsolatos információk a cikkben találhatók, [licencek felhasználókhoz rendelése csoporttagság alapján Azure Active Directory](../users-groups-roles/licensing-groups-assign.md).
 
-### <a name="configure-sspr"></a>SSPR konfigurálása
+### <a name="configure-sspr"></a>Az SSPR konfigurálása
 
 #### <a name="enable-groups-for-sspr"></a>Csoportok engedélyezése a SSPR
 
@@ -217,7 +217,7 @@ Az önkiszolgáló jelszó-visszaállításhoz társított szolgáltatások keze
 
 | Üzleti szerepkör/persona | Azure AD-szerepkör (ha szükséges) |
 | :---: | :---: |
-| 1\. szint segélyszolgálat | Jelszó-rendszergazda |
+| 1\. szint segélyszolgálat | Jelszókezelő |
 | 2\. szint helpdesk | Felhasználói rendszergazda |
 | SSPR-rendszergazda | Globális rendszergazda |
 
@@ -225,7 +225,7 @@ Az önkiszolgáló jelszó-visszaállításhoz társított szolgáltatások keze
 
 A támogatási csapat sikerességének engedélyezéséhez a felhasználóktól kapott kérdések alapján hozhat létre GYIK-et. A következő táblázat általános támogatási forgatókönyveket tartalmaz.
 
-| Forgatókönyvek | Leírás |
+| Alkalmazási helyzetek | Leírás |
 | --- | --- |
 | A felhasználónak nincs elérhető regisztrált hitelesítési módszere. | A felhasználó megpróbálja alaphelyzetbe állítani a jelszavát, de nem rendelkezik a rendelkezésre álló hitelesítési módszerekkel (például a mobiltelefonját otthon hagyta, és nem fér hozzá az e-mailekhez) |
 | A felhasználó nem kap SMS-t vagy hívást az irodában vagy a mobiltelefonján | A felhasználó szöveges vagy hívási identitást próbál meg ellenőrizni, de nem kap szöveget vagy hívást. |
@@ -242,7 +242,7 @@ További hibaelhárításhoz az alábbi információkat is érdemes feltüntetni
 
 Az önkiszolgáló jelszó-visszaállítás hibaelhárítását ismertető online dokumentációban is tájékozódhat a leggyakoribb SSPR forgatókönyvek általános hibaelhárítási lépéseinek megismeréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure AD jelszavas védelem megvalósításának megfontolása](concept-password-ban-bad.md)
 

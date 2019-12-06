@@ -1,21 +1,21 @@
 ---
-title: Egybevetés
+title: Rendezés
 description: Azure SQL Data Warehouse támogatott rendezési típusok.
 services: sql-data-warehouse
 author: antvgski
 manager: igorstan
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f05e54a3dd4b69fff2bc7d122391d145b222b295
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49a250a43c7b2654e1317981c853b0117fa0cf28
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692554"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851791"
 ---
 # <a name="database-collation-support-for-azure-sql-data-warehouse"></a>Adatbázis-rendezési támogatás Azure SQL Data Warehouse
 
@@ -25,7 +25,7 @@ A rendezések lehetővé teszik a területi beállítás, a kódlap, a rendezés
 ## <a name="changing-collation"></a>Rendezés módosítása
 Az alapértelmezett rendezés módosításához egyszerűen frissítse a rendezési mezőt a létesítési élményben.
 
-Ha például módosítani szeretné az alapértelmezett rendezést a kis-és nagybetűk megkülönböztetésére, egyszerűen átnevezheti a rendezést a SQL_Latin1_General_CP1_CI_AS és a SQL_Latin1_General_CP1_CS_AS között. 
+Ha például meg szeretné változtatni az alapértelmezett rendezést a kis-és nagybetűk megkülönböztetésére, egyszerűen nevezze át a rendezést SQL_Latin1_General_CP1_CI_ASról SQL_Latin1_General_CP1_CS_ASra. 
 
 ## <a name="list-of-unsupported-collation-types"></a>Nem támogatott rendezési típusok listája
 *   Japanese_Bushu_Kakusu_140_BIN
@@ -100,5 +100,9 @@ Ha például módosítani szeretné az alapértelmezett rendezést a kis-és nag
 *   SQL_EBCDIC277_2_CP1_CS_AS
 
 ## <a name="checking-the-current-collation"></a>Az aktuális rendezés ellenőrzése
-Az adatbázis aktuális rendezésének megtekintéséhez futtassa a következő T-SQL-kódrészletet: SELECT DATABASEPROPERTYEX (DB_NAME (), ' rendezés ') rendezésként; Ha a tulajdonság paraméterként a "rendezés" értéket adta át, a DatabasePropertyEx függvény a megadott adatbázis aktuális rendezését adja vissza. További információ a DatabasePropertyEx függvényről az MSDN webhelyen.
+Az adatbázis aktuális rendezésének ellenőrzését a következő T-SQL-kódrészlet futtatásával végezheti el:
+```sql
+SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
+```
+Ha a tulajdonság paraméterként a "rendezés" értéket adta át, a DatabasePropertyEx függvény a megadott adatbázis aktuális rendezését adja vissza. További információ a DatabasePropertyEx függvényről az MSDN webhelyen.
 

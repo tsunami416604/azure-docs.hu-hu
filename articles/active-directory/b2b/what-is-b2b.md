@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18d60614a07895c7e9468d35b2d389a28129af4d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f1ca0baa98336570d870a98c75c45a5303bdfaca
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271651"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868905"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Mi az vendég hozzáférés az Azure Active Directory B2B-ben?
 
@@ -61,7 +61,7 @@ A rendszergazdák egyszerűen felvehetnek vendégfelhasználókat a szervezetbe 
 - A vendégfelhasználó azonnal kap egy testre szabható meghívót, amely lehetővé teszi, hogy bejelentkezzen a hozzáférési panelen.
 - A vendégfelhasználók a címtárban hozzárendelhetők alkalmazásokhoz és csoportokhoz.  
 
-![Képernyőfelvétel az új vendég felhasználó Meghívási bejegyzését megjelenítő oldalról](media/what-is-b2b/adding-b2b-users-admin.png)
+![Képernyőfelvétel az új vendég felhasználó Meghívási bejegyzését megjelenítő oldalról](media/what-is-b2b/add-a-b2b-user-to-azure-portal.png)
 
 ## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>Alkalmazás és csoport gazdák számára saját vendégfelhasználóik kezelésének lehetővé tétele
 
@@ -79,7 +79,7 @@ Külső partnereit saját szervezete igényeinek megfelelően vegye fel.
 
 ![A minta regisztrációs portált ábrázoló képernyőfelvétel](media/what-is-b2b/sign-up-portal.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD B2B-együttműködés licencelési útmutató](licensing-guidance.md)
 - [B2B közreműködő vendégfelhasználók hozzáadása a portálon](add-users-administrator.md)

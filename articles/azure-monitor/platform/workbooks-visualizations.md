@@ -1,5 +1,5 @@
 ---
-title: Interaktív jelentések létrehozása Azure Monitor munkafüzetek vizualizációkkal | Microsoft docs
+title: Azure Monitor munkafüzetek vizualizációi
 description: Tudjon meg többet a Azure Monitor munkafüzet vizualizációs összetevőiről, beleértve a szöveget, a diagramokat, a rácsokat, a fákat és a diagramokat.
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d878e8b5dd49ba517f85ebb74332bc6a245c33ca
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: bcc60c0f934111f779e3fdedc399881acb16f208
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165055"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872791"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor munkafüzetek vizualizációi
 
@@ -41,7 +41,7 @@ A szöveg egy Markdown-vezérlőn keresztül lett hozzáadva, amely teljes form�
 > [!TIP]
 > Ez a [Markdown-Cheat-adatlap](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) a különböző formázási beállítások megismerésére használható.
 
-## <a name="charts"></a>diagramok
+## <a name="charts"></a>Diagramok
 
 A munkafüzetek lehetővé teszik, hogy a figyelési adatgyűjtés diagramként legyen megjelenítve. A támogatott diagramtípusok közé tartozik a vonal, a sáv, a kategorikus, a terület, a pontdiagram, a torta és az idő. A szerzők dönthetnek úgy, hogy testre szabják a diagram magasságát, szélességét, színpalettáját, jelmagyarázatát, címeit, nem adatüzeneteit stb.
 

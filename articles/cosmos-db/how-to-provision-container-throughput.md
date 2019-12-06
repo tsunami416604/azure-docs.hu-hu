@@ -1,17 +1,17 @@
 ---
 title: Tároló átviteli sebességének kiosztása Azure Cosmos DB-ben
-description: Megtudhatja, hogyan oszthatja ki az átviteli sebességet tárolói szinten az Azure Cosmos DB-ben
+description: Megtudhatja, hogyan helyezhet üzembe átviteli sebességet a Azure Cosmos DB tároló szintjén a Azure Portal, a CLI, a PowerShell és a különböző egyéb SDK-k használatával.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/12/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0b48652f7b181f1254a4b20af75b83593c2aba05
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ed6a55c8b6049f16e96a4a95ecf3ef125db908d7
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147596"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872043"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Átviteli sebesség kiépítése Azure Cosmos-tárolón
 
@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan lehet átviteli sebességet kiépíteni egy tár
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-sql-api-dotnet.md#create-account), vagy válasszon ki egy meglévő Azure Cosmos-fiókot.
 
@@ -49,7 +49,7 @@ Tároló létrehozása dedikált átviteli sebességgel:
 > Az SQL API-hoz készült Cosmos SDK-k segítségével az összes Cosmos DB API-t kiépítheti az Cassandra API kivételével.
 
 ### <a id="dotnet-most"></a>SQL, MongoDB, Gremlin és Table API
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+### <a name="net-v2-sdk"></a>.NET v2 SDK
 
 ```csharp
 // Create a container with a partition key and provision throughput of 400 RU/s
@@ -63,7 +63,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 400 });
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+### <a name="net-v3-sdk"></a>.Net v3 SDK
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/ContainerDocsSampleCode.cs?name=ContainerCreateWithThroughput)]
 
 ## <a name="javascript-sdk"></a>JavaScript SDK
@@ -115,7 +115,7 @@ session.Execute("ALTER TABLE myKeySpace.myTable WITH cosmosdb_provisioned_throug
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekből megtudhatja, hogyan lehet kiépíteni az átviteli sebességet a Azure Cosmos DBban:
 

@@ -1,17 +1,17 @@
 ---
 title: Adatbázis átviteli sebességének kiosztása Azure Cosmos DB-ben
-description: Tudnivalók az adatbázisszinten kiosztható átviteli sebességről az Azure Cosmos DB-ben
+description: Megtudhatja, hogyan építhet ki adatátviteli sebességet Azure Cosmos DB adatbázis szintjén a Azure Portal, a CLI, a PowerShell és a különböző egyéb SDK-k használatával.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 64a8bc9f4c9f5192dad22cb55cb4d2c4816d4fa5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8b64d933057b3ddb07f5f99889c7d7c23c74f545
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575143"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873658"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Átviteli sebesség kiépítése egy adatbázisba Azure Cosmos DB
 
@@ -48,7 +48,7 @@ Megosztott átviteli sebességgel rendelkező adatbázis létrehozása:
 
 ### <a id="dotnet-all"></a>Minden API
 
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+### <a name="net-v2-sdk"></a>.NET v2 SDK
 
 ```csharp
 //set the throughput for the database
@@ -63,7 +63,7 @@ await client.CreateDatabaseIfNotExistsAsync(
     options);
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+### <a name="net-v3-sdk"></a>.Net v3 SDK
 
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
@@ -74,11 +74,11 @@ Hasonló parancs bármely CQL-kompatibilis illesztőprogrammal végrehajtható.
 session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400");
 ```
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi cikkekből megtudhatja, hogyan lehet kiépíteni az átviteli sebességet Azure Cosmos DBban:
 
 * [Kiosztott átviteli sebesség globális skálázása](scaling-throughput.md)
-* [Adatforgalom kiépítése a tárolók és adatbázisok számára](set-throughput.md)
+* [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md)
 * [Átviteli sebesség kiosztása tárolókhoz](how-to-provision-container-throughput.md)
 * [Kérelemegységek és átviteli sebesség az Azure Cosmos DB-ben](request-units.md)

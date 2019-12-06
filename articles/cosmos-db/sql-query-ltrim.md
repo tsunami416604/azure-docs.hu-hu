@@ -1,21 +1,21 @@
 ---
 title: LTRIM Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function LTRIM Azure Cosmos DB.
+description: A LTRIM SQL System függvényének megismerése Azure Cosmos DB egy karakterlánc-kifejezés visszaadása, miután eltávolítja a kezdő üreseket
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bbc9c09bd97b02a323e01c0b0d72ca1df3d13b15
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 652204416c201ccca024aff0239fc10dcc3eb105
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349690"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870989"
 ---
 # <a name="ltrim-azure-cosmos-db"></a>LTRIM (Azure Cosmos DB)
- Egy karakterlánc-kifejezés adja vissza, miután eltávolítja a vezető üres.  
+ Egy karakterlánc-kifejezést ad vissza, miután eltávolítja a kezdő üres értékeket.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -30,23 +30,23 @@ LTRIM(<str_expr>)
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy karakterlánc-kifejezés adja vissza.  
+  Egy karakterlánc-kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti, hogyan használható a `LTRIM` a lekérdezésekben.  
+  Az alábbi példa bemutatja, hogyan használható a `LTRIM` egy lekérdezésen belül.  
   
 ```sql
 SELECT LTRIM("  abc") AS l1, LTRIM("abc") AS l2, LTRIM("abc   ") AS l3 
 ```  
   
- Íme az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{"l1": "abc", "l2": "abc", "l3": "abc   "}]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

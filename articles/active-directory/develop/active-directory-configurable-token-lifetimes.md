@@ -3,32 +3,28 @@ title: Konfigurálható jogkivonat élettartama Azure Active Directory
 titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan állíthatja be az Azure AD által kiállított jogkivonatok élettartamát.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 021d0c19ecc4bf63861bf95d99b6ba6b8e910220
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 5abd6928ed92b80caabe71dd27dc2db2e53b1abf
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046555"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845246"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurálható jogkivonat élettartama Azure Active Directory (előzetes verzió)
 
-Megadhatja Azure Active Directory (Azure AD) által kiállított jogkivonatok élettartamát. A szervezeten belüli összes alkalmazáshoz, több-bérlős (többszervezetes) alkalmazáshoz vagy a szervezet egy adott egyszerű szolgáltatásához is beállíthat jogkivonat-élettartamot.
+Megadhatja az Azure Active Directory (Azure AD) által kiállított jogkivonatok élettartamát. Beállíthatja a cégen belüli összes alkalmazás jogkivonatának élettartamát több-bérlős alkalmazások (több cég) vagy munkahelyen belüli adott szolgáltatásnév esetén.
 
 > [!IMPORTANT]
 > Az előzetes verzióban az ügyfelek meghallgatása után az Azure AD feltételes hozzáférés szolgáltatásban implementálta a [hitelesítési munkamenet-kezelési képességeket](https://go.microsoft.com/fwlink/?linkid=2083106) . Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával. 2020. május 1-től nem fogja tudni konfigurálni a konfigurálható jogkivonat-élettartam-szabályzatot a munkamenet-és frissítési tokenek konfigurálásához. A hozzáférési token élettartamát továbbra is beállíthatja az elavulás után.
@@ -41,7 +37,6 @@ Megadhat egy házirendet a szervezet alapértelmezett szabályzatának megfelel�
 > A konfigurálható jogkivonat élettartama házirend nem támogatott a SharePoint Online-ban.  Bár a szabályzat a PowerShell használatával is létrehozható, a SharePoint Online nem fogja nyugtázni a szabályzatot. Ha többet szeretne megtudni az üresjárati munkamenetek időtúllépésének konfigurálásáról, tekintse meg a [SharePoint Online blogját](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) .
 >* A SharePoint Online hozzáférési token alapértelmezett élettartama 1 óra. 
 >* A SharePoint Online frissítési token alapértelmezett maximális inaktív ideje 90 nap.
-
 
 ## <a name="token-types"></a>Token-típusok
 
@@ -95,10 +90,10 @@ A jogkivonat élettartama házirend olyan házirend-objektum, amely a jogkivonat
 | --- | --- | --- | --- | --- | --- |
 | Hozzáférési jogkivonat élettartama |<sup>2</sup> . AccessTokenLifetime |Hozzáférési tokenek, azonosító tokenek, egy SAML2 tokenek |1 óra |10 perc |1 nap |
 | Frissítési jogkivonat maximális inaktív ideje |MaxInactiveTime |Tokenek frissítése |90 nap |10 perc |90 nap |
-| Egy tényező frissítési Tokenének maximális kora |MaxAgeSingleFactor |Tokenek frissítése (bármely felhasználó esetében) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
-| Multi-Factor refresh token Max Age |MaxAgeMultiFactor |Tokenek frissítése (bármely felhasználó esetében) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
-| Egy tényezős munkamenet-token maximális kora |MaxAgeSessionSingleFactor |Munkamenet-tokenek (állandó és nem állandó) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
-| Többtényezős munkamenet-token maximális kora |MaxAgeSessionMultiFactor |Munkamenet-tokenek (állandó és nem állandó) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
+| Egy tényező frissítési Tokenének maximális kora |MaxAgeSingleFactor |Tokenek frissítése (bármely felhasználó esetében) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
+| Multi-Factor refresh token Max Age |MaxAgeMultiFactor |Tokenek frissítése (bármely felhasználó esetében) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
+| Egy tényezős munkamenet-token maximális kora |MaxAgeSessionSingleFactor |Munkamenet-tokenek (állandó és nem állandó) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
+| Többtényezős munkamenet-token maximális kora |MaxAgeSessionMultiFactor |Munkamenet-tokenek (állandó és nem állandó) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
 
 * <sup>1</sup>365 nappal az attribútumok maximális explicit hosszúsága adható meg.
 * <sup>2</sup> A Microsoft Teams Web Client működésének biztosítása érdekében ajánlott a AccessTokenLifetime 15 percnél hosszabb ideig megőrizni a Microsoft Teams szolgáltatásban.
@@ -108,7 +103,7 @@ A jogkivonat élettartama házirend olyan házirend-objektum, amely a jogkivonat
 | --- | --- | --- |
 | Frissítési jogkivonat maximális kora (a nem elegendő visszavonási<sup>információval</sup>rendelkező összevont felhasználók számára kiállított) |Frissítési tokenek (olyan összevont felhasználók számára, akik nem rendelkeznek elegendő visszavonási információval<sup>1</sup>) |12 óra |
 | Frissítési jogkivonat maximális inaktív ideje (bizalmas ügyfelek számára kiállítva) |Frissítési tokenek (bizalmas ügyfelek számára kiállítva) |90 nap |
-| Frissítési token maximális kora (bizalmas ügyfelek számára kiállítva) |Frissítési tokenek (bizalmas ügyfelek számára kiállítva) |Until-revoked |
+| Frissítési token maximális kora (bizalmas ügyfelek számára kiállítva) |Frissítési tokenek (bizalmas ügyfelek számára kiállítva) |Visszavonásig |
 
 * <sup>1</sup> Azok az összevont felhasználók, akik nem rendelkeznek elegendő visszavonási információval, minden olyan felhasználóhoz tartoznak, akik nem rendelkeznek szinkronizált "LastPasswordChangeTimestamp" attribútummal. Ezek a felhasználók ezt a rövid maximális kort kapják meg, mert a HRE nem tudja ellenőrizni, hogy mikor kell visszavonni a régi hitelesítő adatokhoz kötődő jogkivonatokat (például a jelszót, amely megváltozott), és gyakrabban kell visszanéznie, hogy a felhasználó és a társított jogkivonatok továbbra is megfelelőek legyenek.  állandó. A környezet javítása érdekében a bérlői rendszergazdáknak biztosítaniuk kell, hogy szinkronizálják a "LastPasswordChangeTimestamp" attribútumot (ezt a felhasználói objektumhoz a PowerShell vagy a AADSync használatával lehet beállítani).
 
@@ -381,13 +376,13 @@ Ebben a példában néhány szabályzatot hoz létre a prioritási rendszer műk
 
     Most már rendelkezik a szolgáltatáshoz tartozó eredeti házirenddel, és az új szabályzat beállítása a szervezet alapértelmezett házirendje. Fontos megjegyezni, hogy az egyszerű szolgáltatásokra alkalmazott szabályzatok elsőbbséget élveznek a szervezet alapértelmezett házirendjeivel szemben.
 
-## <a name="cmdlet-reference"></a>Parancsmag-referencia
+## <a name="cmdlet-reference"></a>A parancsmagok leírása
 
-### <a name="manage-policies"></a>Házirendek kezelése
+### <a name="manage-policies"></a>A szabályzatok kezelése
 
 A szabályzatok kezeléséhez a következő parancsmagokat használhatja.
 
-#### <a name="new-azureadpolicy"></a>New-AzureADPolicy
+#### <a name="new-azureadpolicy"></a>Új – AzureADPolicy
 
 Létrehoz egy új szabályzatot.
 
@@ -462,7 +457,7 @@ A megadott házirend törlése.
 
 </br></br>
 
-### <a name="application-policies"></a>Alkalmazás-házirendek
+### <a name="application-policies"></a>Tanúsítványhasználati házirend
 Az alkalmazás-házirendekhez a következő parancsmagokat használhatja.</br></br>
 
 #### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy

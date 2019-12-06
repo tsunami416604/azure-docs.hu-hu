@@ -2,28 +2,23 @@
 title: Ismerje meg, hogyan biztosíthat opcionális jogcímeket az Azure AD-alkalmazáshoz
 titleSuffix: Microsoft identity platform
 description: Útmutató egyéni vagy további jogcímek hozzáadásához a Azure Active Directory által kiadott SAML 2,0 és JSON web tokens (JWT) jogkivonatokhoz.
-documentationcenter: na
 author: rwike77
-services: active-directory
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/03/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b74e680979ccbcc94f8a49e993c6d64797ab80b1
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a1364a491122ae15f86bec98afbfd4e5110e8e07
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803405"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844719"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Útmutató: opcionális jogcímek megadása az Azure AD-alkalmazáshoz
 
@@ -35,7 +30,7 @@ A következő választható jogcímeket használhatja:
 - Módosítsa az Azure AD által a jogkivonatokban visszaadott jogcímek viselkedését.
 - Egyéni jogcímek hozzáadása és elérése az alkalmazáshoz.
 
-A standard jogcímek listájáért tekintse meg a [hozzáférési jogkivonat](access-tokens.md) és a [id_token](id-tokens.md) -jogcímek dokumentációját. 
+A standard jogcímek listájáért tekintse meg a [hozzáférési jogkivonat](access-tokens.md) és a [id_token](id-tokens.md) jogcím dokumentációját. 
 
 Míg a választható jogcímek a v 1.0 és a v 2.0 formátumú jogkivonatokban, valamint az SAML-jogkivonatokban is támogatottak, az értékük nagy részét az 1.0 és a v 2.0 közötti váltáskor adja meg. A 2.0-s [Microsoft Identity platform végpontjának](active-directory-appmodel-v2-overview.md) egyik célja kisebb token-méret az ügyfelek optimális teljesítményének biztosítása érdekében. Ennek eredményeképpen számos, korábban a hozzáférési és azonosító jogkivonatban szereplő jogcím már nem található meg a v 2.0-s jogkivonatokban, és a kérést külön alkalmazási alapon kell megadnia.
 
@@ -61,7 +56,7 @@ Az alábbi listában a használni kívánt alkalmazások alapértelmezett válas
 | `tenant_region_scope`      | Az erőforrás-bérlő régiója | JWT        |           | |
 | `home_oid`                 | Vendég felhasználók számára a felhasználó saját bérlője objektumának AZONOSÍTÓját.| JWT        |           | |
 | `sid`                      | Munkamenet-azonosító, amely a felhasználónkénti felhasználói kijelentkezéshez használatos. | JWT        |  Személyes és Azure AD-fiókok.   |         |
-| `platf`                    | Eszköz platformja    | JWT        |           | Olyan felügyelt eszközökre korlátozódik, amelyek ellenőrizhetik az eszköz típusát.|
+| `platf`                    | Eszközplatform    | JWT        |           | Olyan felügyelt eszközökre korlátozódik, amelyek ellenőrizhetik az eszköz típusát.|
 | `verified_primary_email`   | A felhasználó PrimaryAuthoritativeEmail származik      | JWT        |           |         |
 | `verified_secondary_email` | A felhasználó SecondaryAuthoritativeEmail származik   | JWT        |           |        |
 | `enfpolids`                | Kényszerített szabályzat-azonosítók. Az aktuális felhasználó számára kiértékelt szabályzat-azonosítók listája. | JWT |  |  |
@@ -186,7 +181,7 @@ Ha egy adott jogcím támogatja, a OptionalClaim viselkedését a AdditionalProp
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | A választható jogcím neve.                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | A jogcím forrása (Directory-objektum). A bővítmény tulajdonságaiban előre definiált jogcímek és felhasználó által definiált jogcímek találhatók. Ha a forrás értéke null, a jogcím egy előre meghatározott opcionális jogcím. Ha a forrás értéke felhasználó, a Name (név) tulajdonság értéke a felhasználói objektum kiterjesztés tulajdonsága. |
-| `essential`            | Edm.Boolean             | Ha az érték TRUE (igaz), akkor az ügyfél által megadott jogcím szükséges a végfelhasználó által kért feladat zökkenőmentes engedélyezési élményének biztosításához. Az alapértelmezett érték false (hamis).                                                                                                             |
+| `essential`            | Edm.Boolean             | Ha az érték TRUE (igaz), akkor az ügyfél által megadott jogcím szükséges a végfelhasználó által kért feladat zökkenőmentes engedélyezési élményének biztosításához. Az alapértelmezett érték a hamis.                                                                                                             |
 | `additionalProperties` | Gyűjtemény (EDM. String) | A jogcím további tulajdonságai. Ha egy tulajdonság létezik ebben a gyűjteményben, a módosítja a Name (név) tulajdonságban megadott választható jogcím viselkedését.                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>A címtár-bővítmény választható jogcímeinek konfigurálása
 
@@ -220,7 +215,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 
    Az érvényes értékek a következők:
 
-   - Összes
+   - "All" (összes)
    - "SecurityGroup"
    - "DistributionList"
    - "DirectoryRole"
@@ -260,14 +255,14 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
    | **név:** | "Groups" értéknek kell lennie |
    | **forrás** | Nincs használatban. Kihagyás vagy a Null érték meghatározása |
    | **alapvető** | Nincs használatban. Kihagyás vagy a hamis meghatározása |
-   | **additionalProperties:** | További tulajdonságok listája.  Az érvényes beállítások a következők: "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
+   | **additionalProperties:** | További tulajdonságok listája.  Az érvényes beállítások: "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
 
-   A additionalProperties csak a "sam_account_name", a "dns_domain_and_sam_account_name", a "netbios_domain_and_sam_account_name" egyike szükséges.  Ha egynél több van jelen, az első használatban van, és minden más figyelmen kívül lesz hagyva.
+   A additionalProperties-ben a "sam_account_name", a "dns_domain_and_sam_account_name", a "netbios_domain_and_sam_account_name" értéknek csak az egyike szükséges.  Ha egynél több van jelen, az első használatban van, és minden más figyelmen kívül lesz hagyva.
 
-   Egyes alkalmazások a szerepkör-jogcímben szereplő felhasználóra vonatkozó csoportos adatokat igényelnek.  Ha módosítani szeretné a jogcím típusát egy csoport jogcímen egy szerepkör-jogcímre, adja hozzá a "emit_as_roles" elemet a további tulajdonságokhoz.  A csoport értékeit a rendszer a szerepkör-jogcímben fogja kiállítani.
+   Egyes alkalmazások a szerepkör-jogcímben szereplő felhasználóra vonatkozó csoportos adatokat igényelnek.  Ha módosítani szeretné a jogcím típusát egy csoport jogcímen egy szerepkör-jogcímre, adja hozzá a "emit_as_roles" értéket a további tulajdonságokhoz.  A csoport értékeit a rendszer a szerepkör-jogcímben fogja kiállítani.
 
    > [!NOTE]
-   > Ha a "emit_as_roles" minden olyan alkalmazási szerepkört használ, amelyhez a felhasználó hozzá van rendelve, nem jelenik meg a szerepkör-jogcímben.
+   > Ha a "emit_as_roles" minden olyan alkalmazási szerepkört használ, amelyet a felhasználóhoz rendeltek, nem jelennek meg a szerepkör-jogcímben
 
 **Példák:** Csoportok kibocsátása csoport neveként a OAuth hozzáférési jogkivonatokban dnsDomainName\sAMAccountName formátumban
 
@@ -340,7 +335,7 @@ Több lehetőség is rendelkezésre áll az alkalmazás identitás-konfiguráci�
 
     ```
 
-    Ebben az esetben különböző választható jogcímek lettek hozzáadva az egyes tokenekhez, amelyeket az alkalmazás fogadni tud. Az azonosító tokenek mostantól a teljes űrlapon (`<upn>_<homedomain>#EXT#@<resourcedomain>`) is tartalmazzák az összevont felhasználók egyszerű felhasználónevét. Az alkalmazáshoz tartozó más ügyfelek által igényelt hozzáférési jogkivonatok mostantól a auth_time jogcímet is tartalmazzák. Az SAML-tokenek mostantól tartalmazzák a skypeId Directory sémakezelő bővítményt (ebben a példában az alkalmazáshoz tartozó ab603c56068041afb2f6832e2a17e237). Az SAML-tokenek `extension_skypeId`ként teszik elérhetővé a Skype-azonosítót.
+    Ebben az esetben különböző választható jogcímek lettek hozzáadva az egyes tokenekhez, amelyeket az alkalmazás fogadni tud. Az azonosító tokenek mostantól a teljes űrlapon (`<upn>_<homedomain>#EXT#@<resourcedomain>`) is tartalmazzák az összevont felhasználók egyszerű felhasználónevét. Az alkalmazáshoz tartozó más ügyfelek által igényelt hozzáférési jogkivonatok mostantól tartalmazzák a auth_time jogcímet. Az SAML-tokenek mostantól tartalmazzák a skypeId Directory sémakezelő bővítményt (ebben a példában az alkalmazáshoz tartozó ab603c56068041afb2f6832e2a17e237). Az SAML-tokenek `extension_skypeId`ként teszik elérhetővé a Skype-azonosítót.
 
 1. Amikor befejezte a jegyzékfájl frissítését, kattintson a **Mentés** gombra a jegyzékfájl mentéséhez
 
@@ -348,5 +343,5 @@ Több lehetőség is rendelkezésre áll az alkalmazás identitás-konfiguráci�
 
 További információ az Azure AD által biztosított standard jogcímekről.
 
-- [AZONOSÍTÓ jogkivonatok](id-tokens.md)
+- [Azonosító jogkivonatok](id-tokens.md)
 - [Hozzáférési jogkivonatok](access-tokens.md)

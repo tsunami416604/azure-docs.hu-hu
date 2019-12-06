@@ -3,18 +3,18 @@ title: Ismerje meg, hogyan készíthet Update Management-, Change Tracking-és l
 description: Ismerje meg, hogyan készíthet Azure-beli virtuális gépeket a Azure Automation részét képező Update Management-, Change Tracking-és leltározási megoldásokkal.
 services: automation
 ms.service: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: e117c6f8aa8526392678f37a05ec61b55983a1c7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ab934db026b598e80541f98d74df70c893692120
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374438"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849700"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management-, Change Tracking-és leltározási megoldások
 
@@ -139,7 +139,7 @@ Ha a Update Management megoldást használta, érdemes lehet eltávolítani a k�
 
 * Frissítési ütemtervek – minden olyan névvel rendelkezik, amely megfelel a létrehozott frissítési központi telepítésnek.
 
-* A megoldáshoz létrehozott hibrid feldolgozói csoportok – mindegyik neve hasonló lesz a machine1. contoso. com _9ceb8108-26c9-4051-b6b3-227600d715c8).
+* A megoldáshoz létrehozott hibrid feldolgozói csoportok – mindegyik neve hasonló lesz a machine1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
 
 Ha az indítási és leállítási virtuális gépeket a munkaidőn kívüli megoldás során használta, szükség esetén előfordulhat, hogy el kívánja távolítani a következő elemeket, amelyek már nem szükségesek a megoldás eltávolítása után.
 
@@ -153,7 +153,7 @@ Azt is megteheti, hogy kikapcsolja a munkaterületet az Automation-fiókjából 
 
 Virtuális gép eltávolítása Update Managementról:
 
-* A Log Analytics munkaterületen távolítsa el a virtuális gépet a hatókör-konfiguráció `MicrosoftDefaultScopeConfig-Updates` mentett keresésből. A mentett keresések a munkaterület **általános** területén találhatók.
+* A Log Analytics munkaterületen távolítsa el a virtuális gépet a hatókör-konfigurációs `MicrosoftDefaultScopeConfig-Updates`mentett keresésével. A mentett keresések a munkaterület **általános** területén találhatók.
 * Távolítsa el a [Microsoft monitoring agentet](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy a [Linux rendszerhez készült log Analytics-ügynököt](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Következő lépések

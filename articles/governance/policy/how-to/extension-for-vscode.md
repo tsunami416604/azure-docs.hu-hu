@@ -2,13 +2,13 @@
 title: Azure Policy-bővítmény a Visual Studio Code-hoz
 description: Megtudhatja, hogyan használhatja a Visual Studio Code Azure Policy bővítményét Resource Manager-aliasok kereséséhez.
 ms.date: 11/04/2019
-ms.topic: conceptual
-ms.openlocfilehash: cbc0e14ed70fbacc297126aef58cd722d2235a3d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.topic: how-to
+ms.openlocfilehash: 48ef098cf970b5128185c40c92f8bb02ad8d9698
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072038"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873114"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-bővítmény használata a Visual Studio Code-hoz
 
@@ -74,7 +74,7 @@ Az erőforrások és a keresési aliasok kiértékeléséhez csatlakoznia kell a
 
 1. Az Azure-ba való bejelentkezéshez kövesse a bejelentkezési utasításokat. A csatlakozás után az Azure-fiók neve megjelenik a Visual Studio Code ablak alján található állapotsorban.
 
-## <a name="select-subscriptions"></a>Keresés az előfizetések között
+## <a name="select-subscriptions"></a>előfizetések kiválasztása
 
 Amikor először jelentkezik be, csak az alapértelmezett előfizetési erőforrásokat és házirendeket tölti be a Azure Policy bővítmény. Az erőforrások és házirendek megjelenítéséhez szükséges előfizetések hozzáadásához vagy eltávolításához kövesse az alábbi lépéseket:
 
@@ -153,7 +153,7 @@ Amikor kijelöl egy házirendet vagy hozzárendelést, legyen az a keresési fel
 
 A menüsávban válassza a > **parancs-paletta** **megjelenítése** elemet, majd írja be az **Azure: kijelentkezés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

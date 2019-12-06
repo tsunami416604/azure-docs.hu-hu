@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB lekérdezési nyelvet tartalmaz
-description: Az SQL System függvény ismertetése a Azure Cosmos DBban.
+description: Ismerje meg, hogy az Azure Cosmos DB SQL System függvénye hogyan ad vissza egy logikai értéket, amely azt jelzi, hogy az első karakterlánc-kifejezés tartalmazza-e a másodpercet
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5d5018d0173c316a0a31bd2f70e15e5ff972d153
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 59c0e2628bfde24200bd386adc858ba778790231
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351089"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871533"
 ---
 # <a name="contains-azure-cosmos-db"></a>TARTALMAZZA (Azure Cosmos DB)
- Visszaadja egy logikai arról a második-e az első karakterlánc-kifejezést tartalmaz.  
+ Egy logikai értéket ad vissza, amely azt jelzi, hogy az első karakterlánc-kifejezés tartalmazza-e a másodpercet.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -33,7 +33,7 @@ CONTAINS(<str_expr1>, <str_expr2>)
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy logikai kifejezés adja vissza.  
+  Egy logikai kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
@@ -43,13 +43,13 @@ CONTAINS(<str_expr1>, <str_expr2>)
 SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2 
 ```  
   
- Íme az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{"c1": true, "c2": false}]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

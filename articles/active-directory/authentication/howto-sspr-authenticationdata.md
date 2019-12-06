@@ -1,89 +1,89 @@
 ---
-title: Az Azure AD SSPR adatok követelményei – Azure Active Directory
-description: Adatok követelményei az Azure AD önkiszolgáló jelszó-visszaállítás, és hogyan kielégítése érdekében
+title: Az Azure AD SSPR-adatkövetelményei – Azure Active Directory
+description: Az Azure AD önkiszolgáló jelszavának alaphelyzetbe állításához és az azokhoz való hozzáféréshez szükséges adatkövetelmények
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1c00d0f4ba365442762df6e041f02ea0a39f099
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358029"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847303"
 ---
-# <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Jelszó-visszaállítás anélkül, hogy a végfelhasználói regisztrációs üzembe helyezése
+# <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Jelszó-visszaállítás üzembe helyezése végfelhasználói regisztráció nélkül
 
-Az Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) üzembe helyezéséhez hitelesítési adatok megtalálhatónak kell lennie. Egyes szervezeteknél lehetőséget adja meg a hitelesítési adataikat, maguk a felhasználók számára. Azonban számos szervezet inkább szinkronizálása az Active Directoryban már meglévő adataival. A szinkronizált adatok szeretné elérhetővé tenni az Azure AD és felhasználói beavatkozás nélkül, ha az SSPR meg:
+A Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) üzembe helyezéséhez a hitelesítési adatértékeknek jelen kell lenniük. Néhány szervezet saját maga adja meg a saját hitelesítési adatbevitelét. Számos szervezet azonban inkább a Active Directoryban már meglévő adatokat szeretné szinkronizálni. A szinkronizált adathozzáférés az Azure AD és a SSPR számára elérhetővé válik anélkül, hogy felhasználói beavatkozásra lenne szükség, ha:
 
-* Megfelelően formázza az adatokat a helyszíni címtárban.
-* Konfigurálása [a gyorsbeállítások használatával az Azure AD Connect](../hybrid/how-to-connect-install-express.md).
+* Megfelelően formázza a helyszíni címtárban tárolt adatait.
+* Konfigurálja [Azure ad Connect az expressz beállítások használatával](../hybrid/how-to-connect-install-express.md).
 
-Megfelelően működjön, telefonszámokat a következő formátumban kell lennie *és CountryCode PhoneNumber*, például + 1 4255551234.
+A megfelelő működéshez a telefonszámoknak a *+ országhívószám telefonszám*formátumban kell lenniük, például: + 1 4255551234.
 
 > [!NOTE]
-> Szükség van egy országhívószámát és telefonszámát közötti hely.
+> Az országkód és a telefonszám között szóköz szükséges.
 >
-> Új jelszó kérése a telefonos mellékek nem támogatja. A + 1 4255551234 X 12345 formátumban, még akkor is, bővítmények előtt távolítsa el a a hívást kezdeményeznek.
+> A jelszó-visszaállítás nem támogatja a telefonos bővítményeket. A rendszer a hívás elhelyezése előtt is eltávolítja a bővítményeket a + 1 4255551234X12345 formátumban.
 
-## <a name="fields-populated"></a>Mezői
+## <a name="fields-populated"></a>Mezők kitöltve
 
-Ha az Azure AD Connect az alapértelmezett beállításokat használja, a következő hozzárendeléseket születnek:
+Ha a Azure AD Connect alapértelmezett beállításait használja, a következő leképezések lesznek:
 
 | Helyszíni Active Directory | Azure AD |
 | --- | --- |
 | telephoneNumber | Irodai telefon |
 | mobil | Mobiltelefon |
 
-Amikor a felhasználó ellenőriztette a mobiltelefon számával, a telefonos hitelesítési kapcsolattartási adatok az Azure ad-ben mezőre is tölti fel ezt a számot.
+Ha a felhasználó ellenőrizte a mobiltelefonja számát, az Azure AD-ben a hitelesítési kapcsolattartási adatok területen található telefonos mező is fel lesz töltve az adott számmal.
 
 ## <a name="authentication-contact-info"></a>Hitelesítési kapcsolattartási adatok
 
-Globális rendszergazda manuálisan is állíthat be a hitelesítési kapcsolattartási adatok egy felhasználó az alábbi képernyőfelvételen a név jelenik meg.
+A globális rendszergazda manuálisan állíthatja be a felhasználó hitelesítési kapcsolattartási adatait, ahogy az alábbi képernyőképen is látható.
 
-![Hitelesítés a felhasználó adatai forduljon az Azure AD-ben][Contact]
+![Hitelesítési kapcsolattartási adatok az Azure AD-ben egy felhasználónál][Contact]
 
-Ha a telefonszám mező fel van töltve, és az SSPR-házirendben engedélyezve van a mobiltelefon, a felhasználó jelenik meg, hogy a szám, a jelszó alaphelyzetbe állítása való regisztrációhoz, és közben a jelszó alaphelyzetbe állítása munkafolyamat.
+Ha a telefon mező fel van töltve, és a mobiltelefon engedélyezve van a SSPR-házirendben, a felhasználó ezt a számot fogja látni a jelszó-visszaállítási regisztrációs lapon és a jelszó-visszaállítási munkafolyamat során.
 
-A másodlagos telefonszám mező nem használatos a jelszó-visszaállításhoz.
+A másodlagos telefon mező nem használatos a jelszó-visszaállításhoz.
 
-Ha az E-mail mező fel van töltve, és e-mailt az SSPR-házirendben engedélyezve van, a felhasználó jelenik meg, hogy e-mailt a jelszó alaphelyzetbe állítása való regisztrációhoz, és közben a jelszó alaphelyzetbe állítása a munkafolyamatot.
+Ha az e-mail-mező fel van töltve, és az e-mailek engedélyezve vannak a SSPR szabályzatban, a felhasználó láthatja, hogy a jelszó-visszaállítási regisztrációs lapon és a jelszó-visszaállítási munkafolyamatban megjelenik a levelezés
 
-Ha a másodlagos e-mail-cím mező fel van töltve, és e-mailt az SSPR-házirendben engedélyezve van, a felhasználó fog **nem** tekintse meg, hogy e-mailjeit a jelszó-visszaállítási regisztrációs oldal, de akkor fogja látni az során a jelszó alaphelyzetbe állítása a munkafolyamatot.
+Ha a másodlagos e-mail mező fel van töltve, és az e-mailek engedélyezve vannak a SSPR szabályzatban, a felhasználó **nem** látja ezt az e-mailt a jelszó-visszaállítási regisztrációs lapon, de a jelszó-visszaállítási munkafolyamat során megjelenik.
 
 ## <a name="security-questions-and-answers"></a>Biztonsági kérdések és válaszok
 
-Biztonsági kérdések és válaszok az Azure AD-bérlő biztonságosan tárolódnak, és csak keresztül a felhasználók a [önkiszolgáló jelszó-változtatási](https://aka.ms/ssprsetup). A rendszergazdák nem láthatják, állítsa be, vagy egy másik felhasználói kérdések és válaszok tartalmát módosítjuk.
+A biztonsági kérdéseket és válaszokat a rendszer biztonságosan tárolja az Azure AD-bérlőben, és csak a [SSPR regisztrációs portálon](https://aka.ms/ssprsetup)keresztül érhető el a felhasználók számára. A rendszergazdák nem láthatják, nem állíthatják be és nem módosíthatják más felhasználók kérdéseit és válaszait.
 
-## <a name="what-happens-when-a-user-registers"></a>Mi történik, ha a felhasználó regisztrálása
+## <a name="what-happens-when-a-user-registers"></a>Mi történik, ha egy felhasználó regisztrálja
 
-Amikor egy felhasználó regisztrálja magát, a regisztrációs oldalhoz beállítja a következő mezőket:
+Amikor egy felhasználó regisztrál, a regisztrációs oldal a következő mezőket állítja be:
 
-* **Hitelesítéshez használt telefon**
-* **Hitelesítő e-mail-cím**
+* **Hitelesítő telefon**
+* **Hitelesítési E-mail**
 * **Biztonsági kérdések és válaszok**
 
-Ha a megadott értéket **mobiltelefon** vagy **másodlagos e-mail cím**, felhasználók azonnal használhatja ezeket az értékeket a jelszavaikat, még akkor is, ha azok még nem regisztrált a szolgáltatáshoz. Emellett a felhasználók ezeket az értékeket látják azokat először regisztráljon, és módosíthatják azokat, ha szeretne. Miután regisztrálta sikeresen, ezeket az értékeket a őrzött a **hitelesítéshez használt telefon** és **hitelesítési E-mail** mezőket, illetve.
+Ha a **mobiltelefon** vagy a **másodlagos e-mail**esetében értéket adott meg, a felhasználók azonnal felhasználhatják ezeket az értékeket a jelszavuk visszaállítására, még akkor is, ha nincsenek regisztrálva a szolgáltatáshoz. Emellett a felhasználók ezeket az értékeket is láthatják, amikor első alkalommal regisztrálják magukat, és ha szeretné, módosíthatja azokat. A sikeres regisztráció után ezek az értékek a **hitelesítés telefonos** és a **hitelesítő e-mail** -mezőiben is megmaradnak.
 
-## <a name="set-and-read-the-authentication-data-through-powershell"></a>Állítsa be, és olvassa el a Powershellen keresztül a hitelesítési adatok
+## <a name="set-and-read-the-authentication-data-through-powershell"></a>A hitelesítési információk beállítása és olvasása a PowerShell-lel
 
-A következő mezőket a PowerShell használatával állítható:
+A következő mezők állíthatók be a PowerShell használatával:
 
-* **Másodlagos e-mail-cím**
+* **Másodlagos e-mail cím**
 * **Mobiltelefon**
-* **Irodai telefon**: Csak akkor állítható, ha egy helyszíni címtár nem vagyunk szinkronizálása
+* **Office Phone**: csak akkor állítható be, ha nem a helyszíni címtárral szinkronizál
 
-### <a name="use-powershell-version-1"></a>1\. verzió PowerShell-lel
+### <a name="use-powershell-version-1"></a>A PowerShell 1-es verziójának használata
 
-Első lépésként kell [töltse le és telepítse az Azure AD PowerShell modul](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). Ha már van telepítve, használhatja az egyes mezők konfigurálása szükséges.
+Első lépésként [le kell töltenie és telepítenie kell az Azure ad PowerShell-modult](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). A telepítése után a következő lépésekkel konfigurálhatja az egyes mezőket.
 
-#### <a name="set-the-authentication-data-with-powershell-version-1"></a>Állítsa be a hitelesítési adatokat a PowerShell-lel 1-es verzió
+#### <a name="set-the-authentication-data-with-powershell-version-1"></a>A hitelesítési adatértékek beállítása a PowerShell 1-es verziójával
 
 ```PowerShell
 Connect-MsolService
@@ -95,7 +95,7 @@ Set-MsolUser -UserPrincipalName user@domain.com -PhoneNumber "+1 1234567890"
 Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com") -MobilePhone "+1 1234567890" -PhoneNumber "+1 1234567890"
 ```
 
-#### <a name="read-the-authentication-data-with-powershell-version-1"></a>A hitelesítési adatokat a PowerShell-lel 1-es verzió
+#### <a name="read-the-authentication-data-with-powershell-version-1"></a>A hitelesítési információk beolvasása a PowerShell 1-es verziójával
 
 ```PowerShell
 Connect-MsolService
@@ -107,9 +107,9 @@ Get-MsolUser -UserPrincipalName user@domain.com | select PhoneNumber
 Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,MobilePhone,PhoneNumber | Format-Table
 ```
 
-#### <a name="read-the-authentication-phone-and-authentication-email-options"></a>Olvassa el a hitelesítéshez használt telefon és a hitelesítési E-mail beállítások
+#### <a name="read-the-authentication-phone-and-authentication-email-options"></a>A hitelesítés telefonos és hitelesítési e-mail-beállításainak beolvasása
 
-Olvasni a **hitelesítéshez használt telefon** és **hitelesítési E-mail** PowerShell 1-es verzió használata esetén használja a következő parancsokat:
+Ha a PowerShell 1-es verziójának használatakor szeretné beolvasni a **hitelesítési telefonos** és a **hitelesítési e-mailt** , használja a következő parancsokat:
 
 ```PowerShell
 Connect-MsolService
@@ -117,11 +117,11 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
 ```
 
-### <a name="use-powershell-version-2"></a>2\. verziójú PowerShell-lel
+### <a name="use-powershell-version-2"></a>A PowerShell 2-es verziójának használata
 
-Első lépésként kell [töltse le és telepítse az Azure AD 2. verziójú PowerShell-modul](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0). Ha már van telepítve, használhatja az egyes mezők konfigurálása szükséges.
+Első lépésként [le kell töltenie és telepítenie kell az Azure ad 2-es verziójú PowerShell-modulját](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0). A telepítése után a következő lépésekkel konfigurálhatja az egyes mezőket.
 
-A PowerShell legújabb verzióit támogatja az Install-Module gyors telepítéséhez futtassa a következő parancsokat. (Az első sorban ellenőrzi, hogy ha a modul már telepítve van.)
+A következő parancsok futtatásával gyorsan telepítheti a PowerShell legújabb verzióit, amelyek támogatják a telepítő modult. (Az első sor ellenőrzi, hogy a modul már telepítve van-e.)
 
 ```PowerShell
 Get-Module AzureADPreview
@@ -129,7 +129,7 @@ Install-Module AzureADPreview
 Connect-AzureAD
 ```
 
-#### <a name="set-the-authentication-data-with-powershell-version-2"></a>Állítsa be a hitelesítési adatokat a 2. verziójú PowerShell-lel
+#### <a name="set-the-authentication-data-with-powershell-version-2"></a>A hitelesítési adatértékek beállítása a PowerShell 2-es verziójával
 
 ```PowerShell
 Connect-AzureAD
@@ -141,7 +141,7 @@ Set-AzureADUser -ObjectId user@domain.com -TelephoneNumber "+1 1234567890"
 Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mobile "+1 1234567890" -TelephoneNumber "+1 1234567890"
 ```
 
-#### <a name="read-the-authentication-data-with-powershell-version-2"></a>A hitelesítési adatokat a 2. verziójú PowerShell-lel
+#### <a name="read-the-authentication-data-with-powershell-version-2"></a>A hitelesítési információk beolvasása a PowerShell 2-es verziójával
 
 ```PowerShell
 Connect-AzureAD
@@ -153,7 +153,7 @@ Get-AzureADUser -ObjectID user@domain.com | select TelephoneNumber
 Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,TelephoneNumber | Format-Table
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
 * [Jelszó visszaállítása vagy módosítása](../user-help/active-directory-passwords-update-your-own-password.md)
@@ -164,7 +164,7 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 * [Mi a jelszóvisszaíró, és miért fontos?](howto-sspr-writeback.md)
 * [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](howto-sspr-reporting.md)
 * [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
-* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
+* [Úgy gondolom, hogy valami megszakadt. Hogyan a SSPR hibáinak megoldása?](active-directory-passwords-troubleshoot.md)
 * [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
 
-[Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "A globális rendszergazdák módosíthatja a felhasználó hitelesítési kapcsolattartási adatok"
+[Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "A globális rendszergazdák módosíthatják a felhasználó hitelesítési kapcsolattartási adatait"

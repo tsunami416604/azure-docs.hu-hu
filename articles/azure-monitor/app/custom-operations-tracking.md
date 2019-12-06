@@ -1,5 +1,5 @@
 ---
-title: Egyéni műveletek nyomon követése az Azure Application Insights .NET SDK-val | Microsoft Docs
+title: Egyéni műveletek nyomon követése az Azure Application Insights .NET SDK-val
 description: Egyéni műveletek nyomon követése az Azure Application Insights .NET SDK-val
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 3e316527992b4a478b82bef61fb6da608e218ba5
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: dabdfa43a87aadadbd6c22b886b8bfe08aa69f02
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554925"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872655"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Egyéni műveletek nyomon követése Application Insights .NET SDK-val
 
@@ -343,9 +343,9 @@ Ha a hangszer-üzenetek törlését végzi, ügyeljen rá, hogy a művelet (korr
 
 - Hozzon létre egy új `Activity`, miután megkapta az elemet a várólistából.
 - A `Activity.SetParentId(message.ParentId)` a fogyasztói és a termelői naplók összekapcsolására használható.
-- Indítsa el a `Activity`.
+- Indítsa el a `Activity`t.
 - A deüzenetsor, a folyamat és a törlési műveletek követése `Start/StopOperation` segítők használatával. Ugyanezt az aszinkron vezérlési folyamat (végrehajtási környezet) alapján végezze el. Így megfelelően korrelálnak.
-- Állítsa le a `Activity`.
+- Állítsa le az `Activity` eszközt.
 - Használjon `Start/StopOperation`, vagy hívja meg a `Track` telemetria manuálisan.
 
 ### <a name="dependency-types"></a>Függőségi típusok

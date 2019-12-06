@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 02/18/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 013a14505f7ac1382bce369e161fdae834f605fc
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1b9d07099f8de996181948921330ef6744b302a8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200218"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848646"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Az Azure AD jelszavas védelem betartatása a Windows Server Active Directory
 
@@ -43,7 +43,7 @@ Az Azure AD jelszavas védelem DC-ügynök szoftvere csak akkor tudja érvényes
 
 Számos szervezet szeretne körültekintően tesztelni az Azure AD jelszavas védelmét a tartományvezérlők egy részhalmazán a teljes üzembe helyezés előtt. Az Azure AD jelszavas védelme támogatja a részleges üzembe helyezést, azaz az adott TARTOMÁNYVEZÉRLŐn a DC Agent szoftver aktívan érvényesíti a jelszavakat, még akkor is, ha a tartomány más tartományvezérlői nem rendelkeznek a DC Agent szoftverrel. Az ilyen típusú részleges központi telepítések nem biztonságosak, és nem ajánlott tesztelési célokra.
 
-## <a name="architectural-diagram"></a>Építészeti diagram
+## <a name="architectural-diagram"></a>Architekturális diagram
 
 Az Azure AD jelszavas védelem helyszíni Active Directory környezetben való üzembe helyezése előtt fontos megérteni a mögöttes tervezési és működési fogalmakat. Az alábbi ábra bemutatja, hogyan működik együtt a jelszavas védelem összetevői:
 
@@ -91,5 +91,5 @@ Az erdőben lévő Active Directory erdőt és az összes telepített proxy szol
 
 Az Azure AD jelszavas védelem két szükséges ügynök-telepítője a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=57071)érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Azure AD jelszóvédelem üzembe helyezése](howto-password-ban-bad-on-premises-deploy.md)

@@ -1,17 +1,17 @@
 ---
 title: Tömbök és objektumok használata Azure Cosmos DB
-description: Tudnivalók a tömb-és objektum-létrehozási SQL-szintaxisról Azure Cosmos DB.
+description: Megtudhatja, hogyan hozhat létre tömböket és objektumokat a Azure Cosmos DBban az SQL-szintaxisban. Ez a cikk néhány példát is tartalmaz a tömb objektumain végrehajtott műveletek végrehajtására.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/21/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 17a0e4ddf5acd267a4cfbb68c218fe9409a91d57
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003934"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870921"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Tömbök és objektumok használata Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Tömböket a következő példában látható módon hozhat létre:
     FROM Families f
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [
@@ -52,7 +52,7 @@ SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as Ch
 FROM f
 ```
 
-## <a id="Iteration"></a>Iteráció
+## <a id="Iteration"></a>Ismétlés
 
 Az SQL API támogatást nyújt a JSON-tömbök megismétléséhez, és egy új, a FROM forrásban található [kulcsszóval](sql-query-keywords.md#in) hozzáadott összeállítást biztosít. A következő példában:
 
@@ -61,7 +61,7 @@ Az SQL API támogatást nyújt a JSON-tömbök megismétléséhez, és egy új, 
     FROM Families.children
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [
@@ -90,14 +90,14 @@ Az eredmények a következők:
     ]
 ```
 
-A következő lekérdezés ismétlést `children` `Families` hajt végre a tárolóban. A kimeneti tömb eltér az előző lekérdezéstől. Ez a példa feldarabolja `children`, és az eredményeket egyetlen tömbbe simítsa:  
+A következő lekérdezés a `Families` tárolóban `children`on végzett iterációt hajt végre. A kimeneti tömb eltér az előző lekérdezéstől. Ez a példa feldarabolja `children`, és az eredményeket egyetlen tömbbe simítsa:  
 
 ```sql
     SELECT *
     FROM c IN Families.children
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [
@@ -130,7 +130,7 @@ A tömb egyes bejegyzésein tovább szűrhető, ahogy az alábbi példában is l
     WHERE c.grade = 8
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [{
@@ -145,7 +145,7 @@ Egy tömb iterációs eredménye is összesíthető. Az alábbi lekérdezés pé
     FROM child IN Families.children
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [
@@ -155,8 +155,8 @@ Az eredmények a következők:
     ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Bevezetés](sql-query-getting-started.md)
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Első lépések](sql-query-getting-started.md)
+- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Csatlakozik](sql-query-join.md)

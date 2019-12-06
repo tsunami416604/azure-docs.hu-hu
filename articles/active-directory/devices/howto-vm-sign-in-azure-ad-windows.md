@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac52fa7eab055a2b2e9154481019d49acdca65d9
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420543"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842407"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -33,7 +33,7 @@ Az Azure AD-hitelesítés használatának számos előnye van az Azure-beli Wind
 - A továbbiakban nem kell helyi rendszergazdai fiókokat kezelnie.
 - Az Azure RBAC lehetővé teszi a megfelelő hozzáférés megadását a virtuális gépek igény szerinti eléréséhez, és ha már nincs rá szükség, távolítsa el azt.
 - A virtuális géphez való hozzáférés engedélyezése előtt az Azure AD feltételes hozzáférése további követelményeket is kikényszerítheti, például: 
-   - Multi-Factor Authentication
+   - Többtényezős hitelesítés
    - Bejelentkezési kockázat-ellenőrzési
 - Automatizálhatja és méretezheti az Azure AD Joint az Azure Windows rendszerű virtuális gépekhez, amelyek részét képezik a VDI üzembe helyezésének.
 
@@ -79,7 +79,7 @@ Windows Server 2019 Datacenter rendszerű virtuális gép létrehozása az Azure
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)egy olyan fiókkal, amely hozzáfér a virtuális gépek létrehozásához, majd válassza az **+ erőforrás létrehozása**lehetőséget.
 1. Írja be a **Windows Server** kifejezést a piactér keresési sávjában.
    1. Kattintson a **Windows Server** lehetőségre, és válassza a **Windows Server 2019 Datacenter** elemet a szoftvercsomag kiválasztása listából.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 1. A "felügyelet" lapon engedélyezze a **HRE hitelesítő adatokkal (előzetes verzió) való bejelentkezést** a Azure Active Directory szakasz alatt, a ki és **be**lehetőségnél.
 1. Győződjön **meg**arról, hogy a **rendszerhez rendelt felügyelt identitás** az identitás szakaszban be értékre van állítva. A műveletnek automatikusan kell történnie, ha engedélyezi a bejelentkezést az Azure AD-beli hitelesítő adatokkal.
 1. Ugorjon végig a virtuális gép létrehozásának további tapasztalatain. Ebben az előzetes verzióban létre kell hoznia egy rendszergazdai felhasználónevet és jelszót a virtuális géphez.
@@ -116,6 +116,9 @@ az vm create \
     --admin-username azureuser \
     --admin-password yourpassword
 ```
+
+> [!NOTE]
+> Az Azure AD bejelentkezési virtuálisgép-bővítmény telepítése előtt engedélyeznie kell a rendszerhez rendelt felügyelt identitást a virtuális gépen.
 
 A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe.
 
@@ -230,24 +233,24 @@ A AADLoginForWindows-bővítményt sikeresen kell telepíteni ahhoz, hogy a virt
 
    | Futtatandó parancs | Várt kimenet |
    | --- | --- |
-   | Curl-H metaadatok: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Az Azure-beli virtuális géppel kapcsolatos adatok javítása |
-   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Az Azure-előfizetéshez társított érvényes bérlői azonosító |
-   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | A virtuális géphez hozzárendelt felügyelt identitás Azure Active Directory által kiállított érvényes hozzáférési jogkivonat |
+   | Curl-H metaadatok: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Az Azure-beli virtuális géppel kapcsolatos adatok javítása |
+   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Az Azure-előfizetéshez társított érvényes bérlői azonosító |
+   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | A virtuális géphez hozzárendelt felügyelt identitás Azure Active Directory által kiállított érvényes hozzáférési jogkivonat |
 
    > [!NOTE]
    > A hozzáférési jogkivonat dekódolható egy olyan eszköz használatával, mint a [http://calebb.net/](http://calebb.net/). Ellenőrizze, hogy a hozzáférési jogkivonat "AppID" egyezik-e a virtuális géphez hozzárendelt felügyelt identitással.
 
 1. Győződjön meg arról, hogy a szükséges végpontok elérhetők a virtuális gépről a parancssor használatával:
    
-   - Curl https://login.microsoftonline.com/-D –
-   - Curl https://login.microsoftonline.com/`<TenantID>`/-D –
+   - Curl https://login.microsoftonline.com/ -D –
+   - Curl https://login.microsoftonline.com/`<TenantID>` /-D –
 
    > [!NOTE]
    > Cserélje le a `<TenantID>`t az Azure-előfizetéshez társított Azure AD-bérlői AZONOSÍTÓra.
 
-   - Curl https://enterpriseregistration.windows.net/-D-
-   - Curl https://device.login.microsoftonline.com/-D-
-   - Curl https://pas.windows.net/-D-
+   - Curl https://enterpriseregistration.windows.net/ -D-
+   - Curl https://device.login.microsoftonline.com/ -D-
+   - Curl https://pas.windows.net/ -D-
 
 1. Az eszköz állapotát `dsregcmd /status`futtatásával lehet megtekinteni. A cél az eszköz állapota `AzureAdJoined : YES`megjelenítéséhez.
 
@@ -274,15 +277,15 @@ Ez a kilépési kód lefordítja a DSREG_AUTOJOIN_DISC_FAILED, mert a bővítmé
 
 1. Ellenőrizze, hogy a szükséges végpontok elérhetők-e a virtuális gépről a parancssor használatával:
 
-   - Curl https://login.microsoftonline.com/-D –
-   - Curl https://login.microsoftonline.com/`<TenantID>`/-D –
+   - Curl https://login.microsoftonline.com/ -D –
+   - Curl https://login.microsoftonline.com/`<TenantID>` /-D –
    
    > [!NOTE]
    > Cserélje le a `<TenantID>`t az Azure-előfizetéshez társított Azure AD-bérlői AZONOSÍTÓra. Ha meg kell találnia a bérlő AZONOSÍTÓját, a fiók neve fölé helyezheti a címtár/bérlő AZONOSÍTÓját, vagy kiválaszthatja Azure Active Directory > Tulajdonságok > Directory-azonosító a Azure Portalban.
 
-   - Curl https://enterpriseregistration.windows.net/-D-
-   - Curl https://device.login.microsoftonline.com/-D-
-   - Curl https://pas.windows.net/-D-
+   - Curl https://enterpriseregistration.windows.net/ -D-
+   - Curl https://device.login.microsoftonline.com/ -D-
+   - Curl https://pas.windows.net/ -D-
 
 1. Ha a parancsok bármelyike meghiúsul "a gazdagép `<URL>`feloldása" művelettel, próbálja meg futtatni ezt a parancsot a virtuális gép által használt DNS-kiszolgáló meghatározásához.
    

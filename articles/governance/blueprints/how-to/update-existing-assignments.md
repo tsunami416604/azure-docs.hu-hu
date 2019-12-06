@@ -2,13 +2,13 @@
 title: Meglévő hozzárendelés frissítése a portálról
 description: Ismerje meg, hogyan frissíthet egy meglévő tervezet-hozzárendelést a portálról az Azure-tervezetekben.
 ms.date: 11/21/2019
-ms.topic: conceptual
-ms.openlocfilehash: b4cf03d88103b85bc00dbd815816ead2740f2093
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.topic: how-to
+ms.openlocfilehash: 3cce84127475b2f11388b4ad4eb48dedec19cd1d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406383"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873165"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Meglévő terv-hozzárendelés frissítése
 
@@ -20,7 +20,7 @@ Tervezet hozzárendelésekor a hozzárendelés frissíthető. A meglévő hozzá
 
 ## <a name="updating-assignments"></a>Hozzárendelések frissítése
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
 
 1. Válassza ki a **kijelölt tervrajzokat** a bal oldali oldalról.
 
@@ -63,7 +63,7 @@ Korlátlan számú hozzárendelés frissíthető. Ha hiba történik, állapíts
 - Már létező objektum
 - Azure Resource Manager által nem támogatott módosítás
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.

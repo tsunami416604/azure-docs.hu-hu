@@ -2,27 +2,24 @@
 title: Microsoft Identity platform-fiókok és bérlői profilok (Android) | Azure
 description: Az Androidhoz készült Microsoft Identity platform-fiókok áttekintése
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.devlang: java
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7beab6759524037f86c83429644c1bb1fffe4d07
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 9af7d8c5a1793b34dd609c2cfd68fb468884ef8f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679840"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845722"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Fiókok és bérlői profilok (Android)
 
@@ -32,10 +29,10 @@ A Microsoft Authentication Library (MSAL) API lecseréli a *felhasználó* kifej
 
 A Microsoft Identity platform egyik fiókja a következőkből áll:
 
-  - Egyedi azonosító.
-  - Egy vagy több hitelesítő adat, amely a fiók tulajdonjogának vagy vezérlésének bemutatására szolgál.
-  - Egy vagy több olyan attribútum, amely többek között a következőkből áll:
-    - Kép, Utónév, család neve, cím, iroda helye
+- Egyedi azonosító.  
+- Egy vagy több hitelesítő adat, amely a fiók tulajdonjogának vagy vezérlésének bemutatására szolgál.
+- Egy vagy több olyan attribútum, amely többek között a következőkből áll:
+  - Kép, Utónév, család neve, cím, iroda helye
 - A fióknak van egy szolgáltatói vagy nyilvántartási forrása. Ez az a rendszer, ahol a fiók létrejön, és ahol a fiókhoz társított hitelesítő adatok tárolódnak. A több-bérlős rendszerek (például a Microsoft Identity platform) esetében a rekord rendszere a fiók létrehozásának `tenant`. Ez a bérlő a `home tenant`néven is ismert.
 - A Microsoft Identity platform fiókjai a következő nyilvántartási rendszerekkel rendelkeznek:
   - Azure Active Directory, beleértve a Azure Active Directory B2C.
@@ -49,7 +46,6 @@ A Microsoft Identity platform egyik fiókja a következőkből áll:
   - Ez a helyi rekord, amely a fiók ábrázolása, az eredeti fiókhoz van kötve.
   - A MSAL ezt a helyi rekordot `Tenant Profile`ként teszi elérhetővé.
   - A bérlői profilnak különböző attribútumai lehetnek, amelyek megfelelnek a helyi környezetnek, például a beosztás, az iroda helye, a kapcsolattartási adatok stb.
- 
 - Mivel előfordulhat, hogy egy fiók egy vagy több bérlőn is megtalálható, egy fiók több profillal is rendelkezhet.
 
 > [!NOTE]
@@ -102,7 +98,7 @@ IAccount account = app.getAccount("<tom@live.com woodgrovebank user object id>")
 A hozzáférési token igénylése mellett a MSAL is minden bérlőtől kér azonosító jogkivonatot. Ezt mindig a következő hatókörökre kéri:
 
 - OpenID
-- profile
+- profil
 
 Az azonosító jogkivonat a jogcímek listáját tartalmazza. `Claims` a fiókhoz tartozó név-érték párok, és a kérést használják.
 
@@ -110,7 +106,7 @@ Ahogy azt korábban említettük, az egyes bérlők, ahol egy fiók létezik, k�
 
 Habár egy fiók lehet tag vagy vendég több szervezeten belül, a MSAL nem kérdez le egy szolgáltatást, hogy lekérje azon bérlők listáját, amelyeknek a fiók tagja. Ehelyett a MSAL létrehoz egy listát azokról a bérlők listájáról, amelyeken a fiók szerepel, a jogkivonat-kérelmek eredményeképpen.
 
-A fiók objektumon közzétett jogcímek mindig a fiók "Kezdőlap bérlője"/{Authority} származó jogcímek. Ha ez a fiók nem használ jogkivonatot a saját bérlője számára, a MSAL nem tud jogcímeket biztosítani a fiók objektumon keresztül.  Például:
+A fiók objektumon közzétett jogcímek mindig a fiók "Kezdőlap bérlője"/{Authority} származó jogcímek. Ha ez a fiók nem használ jogkivonatot a saját bérlője számára, a MSAL nem tud jogcímeket biztosítani a fiók objektumon keresztül.  Példa:
 
 ```java
 // Psuedo Code
@@ -130,7 +126,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>Bérlői profil jogcímeinek elérése
 
-Ha más bérlők által megjelenő fiókhoz szeretne jogcímeket elérni, először el kell végeznie a fiók objektumát `IMultiTenantAccount`. Az összes fiók több-bérlő lehet, de a MSAL-n keresztül elérhető bérlői profilok száma attól függ, hogy mely bérlők igényeltek jogkivonatot az aktuális fiók használatával.  Például:
+Ha más bérlők által megjelenő fiókhoz szeretne jogcímeket elérni, először el kell végeznie a fiók objektumát `IMultiTenantAccount`. Az összes fiók több-bérlő lehet, de a MSAL-n keresztül elérhető bérlői profilok száma attól függ, hogy mely bérlők igényeltek jogkivonatot az aktuális fiók használatával.  Példa:
 
 ```java
 // Psuedo Code
@@ -145,7 +141,7 @@ multiTenantAccount.getTenantProfiles().get("tenantid for contoso").getClaims().g
 
 A fiókok frissítési jogkivonatai nem oszthatók meg a B2C-szabályzatok között. Ennek eredményeképpen a tokeneket használó egyszeri bejelentkezés nem lehetséges. Ez nem jelenti azt, hogy az egyszeri bejelentkezés nem lehetséges. Ez azt jelenti, hogy az egyszeri bejelentkezéshez olyan interaktív élményt kell használni, amelyben az egyszeri bejelentkezés lehetővé teszi a cookie-t.
 
-Ez azt is jelenti, hogy a MSAL esetén, ha különböző B2C-szabályzatokat használó jogkivonatokat vásárol, ezeket külön fiókokként kezeli a rendszer, amelyek mindegyike saját azonosítóval rendelkezik. Ha `acquireTokenSilent`használatával szeretne jogkivonatot kérni egy fiókkal, akkor ki kell választania a fiókot azon fiókok listájából, amelyek megfelelnek a jogkivonat-kérelemmel használt szabályzatnak. Például:
+Ez azt is jelenti, hogy a MSAL esetén, ha különböző B2C-szabályzatokat használó jogkivonatokat vásárol, ezeket külön fiókokként kezeli a rendszer, amelyek mindegyike saját azonosítóval rendelkezik. Ha `acquireTokenSilent`használatával szeretne jogkivonatot kérni egy fiókkal, akkor ki kell választania a fiókot azon fiókok listájából, amelyek megfelelnek a jogkivonat-kérelemmel használt szabályzatnak. Példa:
 
 ```java
 // Get Account For Policy

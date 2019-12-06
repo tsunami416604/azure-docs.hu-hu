@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d5b0ebc2d1b64dd4be677c38de30af7f7a954637
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9c3fac7aecaf37b5822ad6e8c655867f6f2c683c
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075106"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872706"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Rövid útmutató: a webes forgalom közvetlen továbbítása az Azure Application Gateway használatával Azure PowerShell
 
@@ -71,63 +71,7 @@ New-AzPublicIpAddress `
   -AllocationMethod Static `
   -Sku Standard
 ```
-### <a name="backend-servers"></a>Háttér-kiszolgálók
-
-A háttér a hálózati adapterek, a virtuálisgép-méretezési csoportok, a nyilvános IP-címek, a belső IP-címek, a teljes tartománynevek (FQDN) és a több-bérlős háttérrendszer, például a Azure App Service tagjai lehetnek. Ebben a példában két virtuális gépet hoz létre az Azure-hoz, hogy háttér-kiszolgálóként használja az Application Gateway-t. Az IIS-t a virtuális gépeken is telepítheti annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Application Gateway-t.
-
-#### <a name="create-two-virtual-machines"></a>Két virtuális gép létrehozása
-
-1. Hozzon létre egy hálózati adaptert a [New-AzNetworkInterface](/powershell/module/Az.network/new-Aznetworkinterface). 
-2. Hozzon létre egy virtuálisgép-konfigurációt a [New-AzVMConfig](/powershell/module/Az.compute/new-Azvmconfig).
-3. Hozza létre a virtuális gépet a [New-AzVM](/powershell/module/Az.compute/new-Azvm).
-
-Ha a virtuális gépek létrehozásához az alábbi mintakód-mintát futtatja, az Azure kéri a hitelesítő adatok megadását. Adja meg az *azureuser* felhasználónevet és az *Azure123456!* a jelszóhoz:
-    
-```azurepowershell-interactive
-$vnet   = Get-AzVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
-$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name myBackendSubnet
-$cred = Get-Credential
-for ($i=1; $i -le 2; $i++)
-{
-  $nic = New-AzNetworkInterface `
-    -Name myNic$i `
-    -ResourceGroupName myResourceGroupAG `
-    -Location EastUS `
-    -SubnetId $subnet.Id
-  $vm = New-AzVMConfig `
-    -VMName myVM$i `
-    -VMSize Standard_DS2_v2
-  Set-AzVMOperatingSystem `
-    -VM $vm `
-    -Windows `
-    -ComputerName myVM$i `
-    -Credential $cred
-  Set-AzVMSourceImage `
-    -VM $vm `
-    -PublisherName MicrosoftWindowsServer `
-    -Offer WindowsServer `
-    -Skus 2016-Datacenter `
-    -Version latest
-  Add-AzVMNetworkInterface `
-    -VM $vm `
-    -Id $nic.Id
-  Set-AzVMBootDiagnostic `
-    -VM $vm `
-    -Disable
-  New-AzVM -ResourceGroupName myResourceGroupAG -Location EastUS -VM $vm
-  Set-AzVMExtension `
-    -ResourceGroupName myResourceGroupAG `
-    -ExtensionName IIS `
-    -VMName myVM$i `
-    -Publisher Microsoft.Compute `
-    -ExtensionType CustomScriptExtension `
-    -TypeHandlerVersion 1.4 `
-    -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-    -Location EastUS
-}
-```
-
-## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
+## <a name="create-an-application-gateway"></a>Alkalmazásátjáró létrehozása
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Az IP-konfigurációk és az előtérbeli port létrehozása
 
@@ -152,21 +96,20 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool"></a>A háttérkészlet létrehozása
 
-1. A [New-AzApplicationGatewayBackendAddressPool](/powershell/module/Az.network/new-Azapplicationgatewaybackendaddresspool) használatával hozza létre a háttér-készletet az Application Gateway számára. 
+1. A [New-AzApplicationGatewayBackendAddressPool](/powershell/module/Az.network/new-Azapplicationgatewaybackendaddresspool) használatával hozza létre a háttér-készletet az Application Gateway számára. A háttér-készlet most üres lesz, és a háttér-kiszolgálói hálózati adapterek a következő szakaszban való létrehozásakor a rendszer hozzáadja azokat a háttér-készlethez.
 2. Konfigurálja a háttér-készlet beállításait a [New-AzApplicationGatewayBackendHttpSetting](/powershell/module/Az.network/new-Azapplicationgatewaybackendhttpsetting).
 
 ```azurepowershell-interactive
 $address1 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic1
 $address2 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic2
 $backendPool = New-AzApplicationGatewayBackendAddressPool `
-  -Name myAGBackendPool `
-  -BackendIPAddresses $address1.ipconfigurations[0].privateipaddress, $address2.ipconfigurations[0].privateipaddress
+  -Name myAGBackendPool
 $poolSettings = New-AzApplicationGatewayBackendHttpSetting `
   -Name myPoolSettings `
   -Port 80 `
   -Protocol Http `
   -CookieBasedAffinity Enabled `
-  -RequestTimeout 120
+  -RequestTimeout 30
 ```
 
 ### <a name="create-the-listener-and-add-a-rule"></a>Figyelő létrehozása és szabály hozzáadása
@@ -216,6 +159,66 @@ New-AzApplicationGateway `
   -Sku $sku
 ```
 
+### <a name="backend-servers"></a>Háttérkiszolgálók
+
+Most, hogy létrehozta a Application Gateway, hozza létre a háttérben futó virtuális gépeket, amelyek a webhelyeket üzemeltetik. A háttér a hálózati adapterek, a virtuálisgép-méretezési csoportok, a nyilvános IP-címek, a belső IP-címek, a teljes tartománynevek (FQDN) és a több-bérlős háttérrendszer, például a Azure App Service tagjai lehetnek. Ebben a példában két virtuális gépet hoz létre az Azure-hoz, hogy háttér-kiszolgálóként használja az Application Gateway-t. Az IIS-t a virtuális gépeken is telepítheti annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Application Gateway-t.
+
+#### <a name="create-two-virtual-machines"></a>Két virtuális gép létrehozása
+
+1. A legutóbb létrehozott Application Gateway backend-készlet konfigurációjának beolvasása a [Get-AzApplicationGatewayBackendAddressPool](/powershell/module/Az.network/get-Azapplicationgatewaybackendaddresspool)
+2. Hozzon létre egy hálózati adaptert a [New-AzNetworkInterface](/powershell/module/Az.network/new-Aznetworkinterface). 
+3. Hozzon létre egy virtuálisgép-konfigurációt a [New-AzVMConfig](/powershell/module/Az.compute/new-Azvmconfig).
+4. Hozza létre a virtuális gépet a [New-AzVM](/powershell/module/Az.compute/new-Azvm).
+
+Ha a virtuális gépek létrehozásához az alábbi mintakód-mintát futtatja, az Azure kéri a hitelesítő adatok megadását. Adja meg az *azureuser* felhasználónevet és az *Azure123456!* a jelszóhoz:
+    
+```azurepowershell-interactive
+$appgw = Get-AzApplicationGateway -ResourceGroupName myResourceGroupAG -Name myAppGateway
+$backendPool = Get-AzApplicationGatewayBackendAddressPool -Name myAGBackendPool -ApplicationGateway $appgw
+$vnet   = Get-AzVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name myBackendSubnet
+$cred = Get-Credential
+for ($i=1; $i -le 2; $i++)
+{
+  $nic = New-AzNetworkInterface `
+    -Name myNic$i `
+    -ResourceGroupName myResourceGroupAG `
+    -Location EastUS `
+    -Subnet $subnet `
+    -ApplicationGatewayBackendAddressPool $backendpool
+  $vm = New-AzVMConfig `
+    -VMName myVM$i `
+    -VMSize Standard_DS2_v2
+  Set-AzVMOperatingSystem `
+    -VM $vm `
+    -Windows `
+    -ComputerName myVM$i `
+    -Credential $cred
+  Set-AzVMSourceImage `
+    -VM $vm `
+    -PublisherName MicrosoftWindowsServer `
+    -Offer WindowsServer `
+    -Skus 2016-Datacenter `
+    -Version latest
+  Add-AzVMNetworkInterface `
+    -VM $vm `
+    -Id $nic.Id
+  Set-AzVMBootDiagnostic `
+    -VM $vm `
+    -Disable
+  New-AzVM -ResourceGroupName myResourceGroupAG -Location EastUS -VM $vm
+  Set-AzVMExtension `
+    -ResourceGroupName myResourceGroupAG `
+    -ExtensionName IIS `
+    -VMName myVM$i `
+    -Publisher Microsoft.Compute `
+    -ExtensionType CustomScriptExtension `
+    -TypeHandlerVersion 1.4 `
+    -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
+    -Location EastUS
+}
+```
+
 ## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
 Bár az IIS nem szükséges az Application Gateway létrehozásához, ezt a rövid útmutatóban telepítette annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Application Gatewayt. Az IIS használata az Application Gateway teszteléséhez:
@@ -240,7 +243,7 @@ Az erőforráscsoport eltávolításához hívja meg a [Remove-AzResourceGroup](
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webes forgalom kezelése alkalmazásátjáróval az Azure PowerShell használatával](./tutorial-manage-web-traffic-powershell.md)

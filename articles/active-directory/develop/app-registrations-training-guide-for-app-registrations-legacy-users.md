@@ -2,29 +2,25 @@
 title: Betanítási útmutató a Alkalmazásregisztrációk (örökölt) rendszerről az új Alkalmazásregisztrációk-élményre való áttéréshez Azure Portal
 description: Bevezetés az új alkalmazás regisztrációs felületére a Azure Portal
 services: active-directory
-documentationcenter: ''
 author: archieag
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01d543262a9eb358643c0860b24ac4306d2c5edf
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2f49cac5c8c49fb5c53d3320cb0ab52e0f61acda
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927094"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844260"
 ---
-# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Áttérés Alkalmazásregisztrációk (örökölt) rendszerről az új Alkalmazásregisztrációk-élményre a Azure Portal
+# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Váltás az Appok regisztrálása felületről (régi) az új Alkalmazásregisztrációk felületre az Azure Portalon
 
 Számos újdonságot talál a Azure Portal új [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felületén. Ha már ismeri a Azure Portal Alkalmazásregisztrációk (örökölt) felületét, az új felület használatának megkezdéséhez használja ezt a tanítási útmutatót.
 
@@ -61,13 +57,13 @@ A régi felület **tulajdonságlapja** volt. A **Tulajdonságok** a következő 
 
 - **Name (Név)**
 - **Objektumazonosító**
-- **Alkalmazás azonosítója**
+- **Alkalmazásazonosító**
 - **Alkalmazásazonosító URI**
 - **Embléma**
 - **Kezdőlap URL-címe**
 - **Kijelentkezési URL-cím**
 - **Szolgáltatási feltételek URL-címe**
-- **Adatvédelmi nyilatkozat URL-címe**
+- **Az adatvédelmi nyilatkozat URL-címe**
 - **Alkalmazás típusa**
 - **Több-bérlős**
 

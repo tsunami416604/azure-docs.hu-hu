@@ -4,17 +4,17 @@ description: Ez a cikk a Azure Automation hibrid Runbook-feldolgozók telepíté
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8e497d18e39a199f34ff76b11b0e6c2c213f35fb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 01dcb30fca2819bc4cf85ea624de5735cc84801b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129849"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850822"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -52,7 +52,7 @@ A Linux hibrid Runbook-feldolgozók minimális követelményei a következők:
 |Openssl| OpenSSL-kódtárak | 1,0 (a TLS 1,1 és a TLS 1,2 támogatott|
 |Curl | cURL webes ügyfél | 7.15.5|
 |Python – ctypes | A Python 2. x megadása kötelező |
-|PAM | Csatlakoztatható hitelesítési modulok|
+|PAM | Cserélhető hitelesítési modulok|
 | **Választható csomag** | **Leírás** | **Minimális verzió**|
 | PowerShell Core | A PowerShell-runbookok futtatásához a PowerShellt telepíteni kell, lásd: [a PowerShell Core telepítése Linuxon](/powershell/scripting/install/installing-powershell-core-on-linux) , hogy megtudja, hogyan telepítheti.  | 6.0.0 |
 
@@ -114,7 +114,7 @@ A következő runbook-típusok nem működnek linuxos hibrid feldolgozón:
 * Grafikus
 * Grafikus PowerShell-munkafolyamat
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretné megtudni, hogyan konfigurálhatja a runbookok a helyszíni adatközpontban vagy más felhőalapú környezetben lévő folyamatok automatizálására, tekintse meg a [Runbookok futtatása hibrid Runbook-feldolgozón](automation-hrw-run-runbooks.md)című témakört.
 * A hibrid Runbook-feldolgozók eltávolításával kapcsolatos útmutatásért lásd: [Azure Automation hibrid Runbook-feldolgozók eltávolítása](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).

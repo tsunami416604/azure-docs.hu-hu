@@ -2,28 +2,24 @@
 title: Tudnivalók a Microsoft Identity platform által támogatott engedélyezési protokollokról | Azure
 description: Útmutató a OAuth 2,0 és az OpenID Connect protokollokhoz, amelyeket a Microsoft Identity platform végpontja támogat.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 446d7178973c1d43d55ff89c429b05c2a10118ba
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 50f2b4d5da2cdda35de0adc5dc646065f2b64a41
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835286"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844702"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Microsoft Identity platform-protokollok
 
@@ -43,7 +39,7 @@ Csaknem minden OAuth 2,0 és OpenID Connect-folyamaton belül négy fél vesz r�
 * Az **OAuth-ügyfél** az alkalmazás azonosítója alapján azonosított alkalmazás. A OAuth-ügyfél általában az a fél, akit a végfelhasználó kommunikál, és az engedélyezési kiszolgálótól kér jogkivonatokat. Az ügyfélnek engedélyt kell adni az erőforrás tulajdonos általi eléréséhez.
 * Az **erőforrás-kiszolgáló** , ahol az erőforrás vagy az adat található. Megbízik az engedélyezési kiszolgálón, hogy biztonságosan hitelesítse és engedélyezze az OAuth-ügyfelet, és a tulajdonos hozzáférési jogkivonatait használja annak biztosítására, hogy az erőforrásokhoz való hozzáférés megadható legyen.
 
-## <a name="app-registration"></a>Alkalmazás regisztrálása
+## <a name="app-registration"></a>Alkalmazásregisztráció
 
 Minden olyan alkalmazást, amely a személyes és munkahelyi vagy iskolai fiókokat is el kívánja fogadni, regisztrálnia kell a [Azure Portal](https://aka.ms/appregistrations) **Alkalmazásregisztrációk** -felületén, mielőtt aláírja ezeket a felhasználókat a OAuth 2,0 vagy OpenID Connect használatával. Az alkalmazás regisztrációs folyamata összegyűjti és hozzárendel néhány értéket az alkalmazáshoz:
 
@@ -53,7 +49,7 @@ Minden olyan alkalmazást, amely a személyes és munkahelyi vagy iskolai fióko
 
 További részletekért ismerkedjen meg az [alkalmazások regisztrálásának folyamatával](quickstart-register-app.md).
 
-## <a name="endpoints"></a>Végpontok
+## <a name="endpoints"></a>Endpoints (Végpontok)
 
 A regisztrációt követően az alkalmazás a Microsoft Identity platformmal kommunikál, ha kéréseket küld a végpontnak:
 
@@ -62,9 +58,9 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
-Ahol a `{tenant}` a négy különböző érték egyikét hajthatja végre:
+Ahol a `{tenant}` négy különböző érték egyikét hajthatja végre:
 
-| Value | Leírás |
+| Value (Díj) | Leírás |
 | --- | --- |
 | `common` | Lehetővé teszi, hogy a felhasználók személyes Microsoft-fiókokkal és munkahelyi/iskolai fiókkal jelentkezzenek be az Azure AD-be az alkalmazásba. |
 | `organizations` | Csak az Azure AD-beli munkahelyi vagy iskolai fiókkal rendelkező felhasználók számára engedélyezi az alkalmazásba való bejelentkezést. |

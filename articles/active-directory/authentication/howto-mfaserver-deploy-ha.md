@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18f56665041fed301faf3b4b5f99c78c1d468f8e
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: a7b2df4e87dddcfedd10682e4e3ab6c014ad7bbb
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404306"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848187"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Az Azure Multi-Factor Authentication-kiszolgáló konfigurálása a magas rendelkezésre állás érdekében
 
@@ -41,7 +41,7 @@ Az AD-vel való sikeres hitelesítés után az MFA-kiszolgáló kommunikálni fo
 
 Ha az MFA-főkiszolgáló offline állapotba kerül, a hitelesítések továbbra is feldolgozhatók, de az MFA-adatbázis módosítását igénylő műveletek nem dolgozhatók fel. (Példák: a felhasználók hozzáadása, az önkiszolgáló PIN-kód módosítása, a felhasználói adatok módosítása vagy a felhasználói portálhoz való hozzáférés)
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
 Vegye figyelembe a következő fontos pontokat az Azure MFA-kiszolgáló és a hozzá kapcsolódó összetevők terheléselosztásához.
 
@@ -72,6 +72,6 @@ Jegyezze fel a következő elemeket az előző diagram megfelelő számú terül
    ![Azure MFA-kiszolgáló – felhasználói portál és mobil App Service HA](./media/howto-mfaserver-deploy-ha/mfaportal.png)
 3. Az ADFS-kiszolgálófarm elosztott terhelésű, és a peremhálózaton elosztott terhelésű ADFS-proxyk használatával történik az interneten való közzététele. Minden ADFS-kiszolgáló az ADFS-ügynököt használja az Azure MFA-kiszolgálókkal való kommunikációhoz egyetlen terheléselosztási URL-cím (mfaapp.contoso.com) használatával a 443-as TCP-porton keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure MFA-kiszolgáló telepítése és konfigurálása](howto-mfaserver-deploy.md)

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704294"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848891"
 ---
-# <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Azure Active Directory Domain Services biztonsági naplózásának engedélyezése (előzetes verzió)
+# <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services biztonsági naplózásának engedélyezése
 
 A Azure Active Directory Domain Services (Azure AD DS) biztonsági naplózás lehetővé teszi az Azure stream biztonsági eseményeinek megadását a célként megadott erőforrásokhoz. Ezek az erőforrások például az Azure Storage, az Azure Log Analytics-munkaterületek vagy az Azure Event hub. A biztonsági naplózási események engedélyezése után az Azure AD DS a kijelölt kategóriába tartozó összes naplózott eseményt elküldi a célként megadott erőforrásnak. Az eseményeket az Azure Storage-ba és a streambe való beküldéssel is archiválhatja az Azure Event Hubs használatával, vagy saját elemzéssel és az Azure Log Analytics-munkaterületek használatával az Azure Portal.
 
@@ -83,7 +83,7 @@ Az Azure AD DS biztonsági naplózási események az Azure Portal használatáva
 
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 1. A Azure Portal tetején keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a felügyelt tartományt, például *aadds.contoso.com*.
-1. Az Azure AD DS ablakban válassza a **diagnosztikai beállítások (előzetes verzió)** lehetőséget a bal oldali oldalon.
+1. Az Azure AD DS ablakban válassza a **diagnosztikai beállítások** elemet a bal oldali oldalon.
 1. Alapértelmezés szerint egyetlen diagnosztika sincs konfigurálva. Első lépésként válassza a **diagnosztikai beállítás hozzáadása**elemet.
 
     ![Diagnosztikai beállítás hozzáadása a Azure AD Domain Serviceshoz](./media/security-audit-events/add-diagnostic-settings.png)
@@ -175,7 +175,7 @@ A log analitikai munkaterületek lehetővé teszik a biztonsági naplózási ese
 * [Az Azure Monitor dokumentációja](https://docs.microsoft.com/azure/azure-monitor/)
 * [Ismerkedés a Log Analyticsával Azure Monitor](../azure-monitor/log-query/get-started-portal.md)
 * [Ismerkedés a Azure Monitor-naplózási lekérdezésekkel](../azure-monitor/log-query/get-started-queries.md)
-* [Irányítópultok létrehozása és megosztása Log Analytics-adatkészletből](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Irányítópultok létrehozása és megosztása Log Analytics-adatokból](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 Az alábbi példák segítségével megkezdheti az Azure AD DS biztonsági naplózási eseményeinek elemzését.
 

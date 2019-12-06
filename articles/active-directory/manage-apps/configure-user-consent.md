@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a187ea9d22efa40c482ea8930be0271d84a899a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8ba3cc27777d13448b0e1114413128b550b0b2f5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273989"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842288"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>A végfelhasználók beleegyezett az alkalmazásba Azure Active Directory
 Megtudhatja, hogyan konfigurálhatja a felhasználók az alkalmazás engedélyeihez való hozzájárulásukat. A felhasználói élményt a rendszergazdai jóváhagyás megadásával egyszerűsítheti le. Ez a cikk a felhasználói beleegyezikés különböző lehetőségeit ismerteti. A módszerek a Azure Active Directory (Azure AD) bérlő összes végfelhasználója számára érvényesek. 
@@ -27,6 +27,8 @@ További információ az alkalmazásokkal való hozzájárulásról: [Azure Acti
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rendszergazdai jóváhagyás megadása megköveteli, hogy globális rendszergazdaként, alkalmazás-rendszergazdaként vagy felhőalapú alkalmazás-rendszergazdaként jelentkezzen be.
+
+Ahhoz, hogy rendszergazdai jóváhagyást adjon a Microsoft Graph és az Azure AD Graph engedélyeihez, globális rendszergazdai jogosultságokkal kell rendelkeznie. 
 
 Az alkalmazásokhoz való hozzáférés korlátozásához felhasználói hozzárendelést kell megkövetelni, majd hozzá kell rendelnie a felhasználókat vagy csoportokat az alkalmazáshoz.  További információ: [felhasználók és csoportok hozzárendelésének módszerei](methods-for-assigning-users-and-groups.md).
 

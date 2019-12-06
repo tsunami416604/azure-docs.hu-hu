@@ -1,17 +1,17 @@
 ---
 title: Paraméteres lekérdezések a Azure Cosmos DBban
-description: Tudnivalók az SQL paraméteres lekérdezésekről
+description: Ismerje meg, hogy az SQL-paraméterek lekérdezései Hogyan biztosítják a felhasználói adatok hatékony kezelését és elkerülését, valamint az SQL-injektálással való véletlen adatexpozíciót.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: 45c1344c32e35f60f35ba8ed105e912d92574cce
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003609"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870819"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Paraméteres lekérdezések a Azure Cosmos DBban
 
@@ -19,7 +19,7 @@ Cosmos DB támogatja a ismerős @ jelöléssel kifejezett paramétereket tartalm
 
 ## <a name="examples"></a>Példák
 
-Írhat például egy `lastName` olyan lekérdezést, amely `address.state` paramétereket fogad `lastName` el, és paraméterként végrehajtja azt, és a felhasználói bevitelen `address.state` alapuló különböző értékekre hajtja végre.
+Írhat például egy olyan lekérdezést, amely `lastName` és `address.state` paramétereket, és végrehajtja a `lastName` és a `address.state` különböző értékeinek felhasználói bevitele alapján.
 
 ```sql
     SELECT *
@@ -53,7 +53,7 @@ A következő példa a felső argumentumot egy paraméteres lekérdezéssel áll
 A paraméter értéke lehet bármilyen érvényes JSON: karakterlánc, szám, logikai érték, null, páros vagy beágyazott JSON. Mivel Cosmos DB séma nélküli, a paraméterek nem ellenőrizhetők semmilyen típuson.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Dokumentum-adattípusok](modeling-data.md)

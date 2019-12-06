@@ -2,18 +2,18 @@
 title: Azure Automation megosztott erőforrásokkal kapcsolatos hibák elhárítása
 description: Ismerje meg, hogyan lehet elhárítani a Azure Automation megosztott erőforrásokkal kapcsolatos problémákat
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: a2836f40b55a71e080288fce7e48275747962c16
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9313b042433489307a2bd2822a96d1e0e127362b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231538"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849292"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Megosztott erőforrásokkal kapcsolatos hibák elhárítása
 
@@ -31,7 +31,7 @@ Egy modul az **importálási** állapotba kerül, amikor importálja vagy friss�
 
 A PowerShell-modulok importálása egy összetett, többlépéses folyamat. Ez a folyamat bevezeti a modul helytelen importálásának lehetőségét. Ha ez a probléma merül fel, az importálandó modul átmeneti állapotba helyezhető. További információ erről a folyamatról: [PowerShell-modul importálása](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process).
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 A probléma megoldásához el kell távolítania az **importálási** állapotba beragadt modult a [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) parancsmag használatával. Ezután újra megpróbálkozhat a modul importálásával.
 
@@ -53,7 +53,7 @@ Azure modules are being updated
 
 Ismert hiba történt a AzureRM-modulok egy olyan Automation-fiókban való frissítésekor, amely egy 0 karakterrel kezdődő numerikus névvel rendelkező erőforráscsoport.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 Az Automation-fiókban lévő Azure-modulok frissítéséhez egy alfanumerikus névvel rendelkező erőforráscsoporthoz kell tartoznia. A 0 értékkel kezdődő numerikus nevekkel rendelkező erőforráscsoportok jelenleg nem tudják frissíteni a AzureRM modulokat.
 
@@ -72,7 +72,7 @@ Néhány gyakori ok, amiért előfordulhat, hogy egy modul nem importálható si
 * A modulban hiányzik a függőségei a mappában.
 * A `New-AzureRmAutomationModule` parancsmag a modul feltöltésére szolgál, és nem adta meg a teljes tárolási útvonalat, vagy nem töltötte be a modult nyilvánosan elérhető URL-cím használatával.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 A következő megoldások bármelyike elháríthatja a problémát:
 
@@ -90,7 +90,7 @@ Ha a [Update-AzureModule. ps1](https://github.com/azureautomation/runbooks/blob/
 
 Az alapértelmezett beállítás azt határozza meg, hogy hány modult kell frissíteni egyszerre 10 a `Update-AzureModule.ps1` parancsfájl használata esetén. A frissítési folyamat olyan hibákhoz van kitéve, amikor túl sok modul frissül egyidejűleg.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 Nem gyakori, hogy az összes AzureRM-modulnak ugyanabban az Automation-fiókban kell lennie. Javasoljuk, hogy csak a szükséges AzureRM-modulokat importálja.
 
@@ -132,7 +132,7 @@ You do not have permissions to create…
 
 Nem rendelkezik a futtató fiók létrehozásához vagy frissítéséhez szükséges engedélyekkel, vagy az erőforrás zárolva van egy erőforráscsoport szintjén.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 Futtató fiók létrehozásához vagy frissítéséhez megfelelő engedélyekkel kell rendelkeznie a futtató fiók által használt különféle erőforrásokhoz. A futtató fiók létrehozásához vagy frissítéséhez szükséges engedélyekről a [futtató fiók engedélyei](../manage-runas-account.md#permissions)című témakörben olvashat bővebben.
 
@@ -152,7 +152,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 Ezt a hibát valószínűleg egy helytelenül konfigurált [futtató fiók](../manage-runas-account.md)okozza.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 Győződjön meg arról, hogy a [futtató fiók](../manage-runas-account.md) megfelelően van konfigurálva. Ha megfelelően van konfigurálva, ellenőrizze, hogy rendelkezik-e a megfelelő kóddal a runbook az Azure-beli hitelesítéshez. Az alábbi példa egy kódrészletet mutat be az Azure-ban való hitelesítéshez egy runbook egy futtató fiók használatával.
 

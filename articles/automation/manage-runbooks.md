@@ -4,32 +4,32 @@ description: Ez a cikk bemutatja, hogyan kezelheti a runbookok a Azure Automatio
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5a477811e46d97375d4dce4d83072dda60ca797c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 42b973ce8a25abff60211afb34ef719d42366175
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717220"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850499"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbookok kezelése Azure Automation
 
-Hozzáadhat egy runbook a Azure Automationhoz, vagy létrehozhat [egy újat](#create-a-runbook) , vagy importálhat egy meglévő runbook egy fájlból vagy a [runbook](automation-runbook-gallery.md)-gyűjteményből. Ez a cikk a runbookok fájlokból való létrehozásával és importálásával kapcsolatos információkat tartalmaz.  A [Runbook-ben és a Azure Automation](automation-runbook-gallery.md)-modulban elérhető közösségi runbookok és moduljaihoz való hozzáférés összes részletét bemutathatja.
+Hozzáadhat egy runbook a Azure Automationhoz, vagy létrehozhat [egy újat](#create-a-runbook) , vagy importálhat egy meglévő runbook egy fájlból vagy a [runbook-gyűjteményből](automation-runbook-gallery.md). Ez a cikk a runbookok fájlokból való létrehozásával és importálásával kapcsolatos információkat tartalmaz.  A [Runbook-ben és a Azure Automation-modulban](automation-runbook-gallery.md)elérhető közösségi runbookok és moduljaihoz való hozzáférés összes részletét bemutathatja.
 
-## <a name="create-a-runbook"></a>Forgatókönyv létrehozása
+## <a name="create-a-runbook"></a>Runbook létrehozása
 
-Az Azure-portálok vagy a Windows PowerShell használatával létrehozhat egy új runbook Azure Automation. A runbook létrehozása után szerkesztheti azt a [PowerShell](automation-powershell-workflow.md) -munkafolyamatok és [a Azure Automation grafikus](automation-graphical-authoring-intro.md)felhasználói felületének megismerése című témakörben található információk segítségével.
+Az Azure-portálok vagy a Windows PowerShell használatával létrehozhat egy új runbook Azure Automation. A runbook létrehozása után szerkesztheti azt a [PowerShell-munkafolyamatok](automation-powershell-workflow.md) és [a Azure Automation grafikus](automation-graphical-authoring-intro.md)felhasználói felületének megismerése című témakörben található információk segítségével.
 
 ### <a name="create-a-runbook-in-the-azure-portal"></a>Runbook létrehozása a Azure Portalban
 
 1. Az Azure Portalon nyissa meg az Automation-fiókját.
 2. A központban válassza a **runbookok** lehetőséget a runbookok listájának megnyitásához.
-3. Kattintson a **Runbook hozzáadása** gombra, és hozzon **létre egy új runbook**.
-4. Adja meg a runbook **nevét** , és válassza ki a [típusát](automation-runbook-types.md). A runbook neve egy betűvel kell kezdődnie, és rendelkezhetnek, betűket, számokat, aláhúzásjeleket és kötőjeleket tartalmazhat.
+3. Kattintson a **Runbook hozzáadása** gombra, és **hozzon létre egy új runbook**.
+4. Adja meg a runbook **nevét** , és válassza ki a [típusát](automation-runbook-types.md). A runbook nevének betűvel kell kezdődnie, és tartalmazhat betűket, számokat, aláhúzásjeleket és kötőjeleket.
 5. A runbook létrehozásához és a szerkesztő megnyitásához kattintson a **Létrehozás** gombra.
 
 ### <a name="create-a-runbook-with-powershell"></a>Runbook létrehozása a PowerShell-lel
@@ -48,9 +48,9 @@ New-AzureRmAutomationRunbook -AutomationAccountName MyAccount `
 Azure Automation létrehozhat egy új runbook egy PowerShell-parancsfájl vagy egy PowerShell-munkafolyamat (. ps1 kiterjesztés), egy exportált grafikus runbook (. graphrunbook) vagy egy Python 2 parancsfájl (. Másolás kiterjesztés) importálásával.  Meg kell adnia az importálás során létrehozott [runbook típusát](automation-runbook-types.md) , figyelembe véve az alábbi szempontokat.
 
 * Egy `.graphrunbook` fájl csak új [grafikus runbook](automation-runbook-types.md#graphical-runbooks)importálható, és a grafikus runbookok csak `.graphrunbook` fájlból hozhatók létre.
-* A PowerShell-munkafolyamatokat tartalmazó [](automation-runbook-types.md#powershell-workflow-runbooks) fájlokcsakPowerShellmunkafolyamat-runbook`.ps1` importálhatók. Ha a fájl több PowerShell-munkafolyamatot tartalmaz, az importálás sikertelen lesz. Minden munkafolyamatot a saját fájljába kell mentenie, és külön kell importálnia azokat.
-* Egy PowerShell-munkafolyamatot tartalmazó [](automation-runbook-types.md#powershell-runbooks) fájlnemimportálhatóPowerShell-runbook,mertaPowerShell-parancsfájlmotorjanemismeri`.ps1` fel.
-* Egy `.ps1` munkafolyamatot nem tartalmazó fájl nem importálható [PowerShell-runbook](automation-runbook-types.md#powershell-runbooks) vagy PowerShell- [munkafolyamat-runbook](automation-runbook-types.md#powershell-workflow-runbooks).  Ha egy PowerShell-munkafolyamati runbook lett importálva, akkor a rendszer egy munkafolyamatba konvertálja, és a megjegyzéseket a runbook tartalmazza, és megadja az elvégzett módosításokat.
+* A PowerShell-munkafolyamatokat tartalmazó `.ps1`-fájlok csak PowerShell- [munkafolyamatok runbook](automation-runbook-types.md#powershell-workflow-runbooks)importálhatók. Ha a fájl több PowerShell-munkafolyamatot tartalmaz, az importálás sikertelen lesz. Minden munkafolyamatot a saját fájljába kell mentenie, és külön kell importálnia azokat.
+* Egy PowerShell-munkafolyamatot tartalmazó `.ps1` fájl nem importálható [PowerShell-runbook](automation-runbook-types.md#powershell-runbooks), mert a PowerShell-parancsfájl motorja nem ismeri fel.
+* A munkafolyamatokat nem tartalmazó `.ps1`-fájlok a [PowerShell-runbook](automation-runbook-types.md#powershell-runbooks) vagy a [PowerShell-munkafolyamat runbook](automation-runbook-types.md#powershell-workflow-runbooks)importálhatók.  Ha egy PowerShell-munkafolyamati runbook lett importálva, akkor a rendszer egy munkafolyamatba konvertálja, és a megjegyzéseket a runbook tartalmazza, és megadja az elvégzett módosításokat.
 
 ### <a name="to-import-a-runbook-from-a-file-with-the-azure-portal"></a>Runbook importálása fájlból a Azure Portal
 
@@ -63,7 +63,7 @@ A parancsfájlokat a következő eljárással importálhatja Azure Automationba.
 2. A központban válassza a **runbookok** lehetőséget a runbookok listájának megnyitásához.
 3. Kattintson a **Runbook hozzáadása** gombra, majd az **Importálás**elemre.
 4. Az importálandó fájl kiválasztásához kattintson a **Runbook fájl** elemre.
-5. Ha a **név** mező engedélyezve van, akkor lehetősége van módosítani.  A runbook neve egy betűvel kell kezdődnie, és rendelkezhetnek, betűket, számokat, aláhúzásjeleket és kötőjeleket tartalmazhat.
+5. Ha a **név** mező engedélyezve van, akkor lehetősége van módosítani.  A runbook nevének betűvel kell kezdődnie, és tartalmazhat betűket, számokat, aláhúzásjeleket és kötőjeleket.
 6. A [runbook típusa](automation-runbook-types.md) automatikusan ki van választva, de a megfelelő korlátozások figyelembe vétele után módosíthatja a típust.
 7. Az új runbook megjelenik az Automation-fiók runbookok listájában.
 8. A Futtatás előtt közzé kell tennie [a runbook](#publish-a-runbook) .
@@ -88,7 +88,7 @@ Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
 -Type PowerShellWorkflow
 ```
 
-## <a name="test-a-runbook"></a>Runbook tesztelése
+## <a name="test-a-runbook"></a>Forgatókönyv tesztelése
 
 A runbook tesztelésekor a rendszer végrehajtja a [Piszkozat verzióját](#publish-a-runbook) , és az általa végrehajtott műveletek befejeződtek. A rendszer nem hoz létre munkaelőzményeket, de a [kimenet](automation-runbook-output-and-messages.md#output-stream) és a [Figyelmeztetés és a hiba](automation-runbook-output-and-messages.md#message-streams) streamek a test output (teszt kimenet) ablaktáblán jelennek meg. A [részletes adatfolyamba](automation-runbook-output-and-messages.md#message-streams) küldött üzenetek csak akkor jelennek meg a kimeneti ablaktáblán, ha a [$VerbosePreference változó](automation-runbook-output-and-messages.md#preference-variables) a folytatás értékre van állítva.
 
@@ -99,19 +99,19 @@ Az egyes [runbook-típusok](automation-runbook-types.md) tesztelésének eljár�
 1. Nyissa meg a runbook Piszkozat verzióját a [szöveges szerkesztőben](automation-edit-textual-runbook.md) vagy a [grafikus szerkesztőben](automation-graphical-authoring-intro.md).
 1. Kattintson a **teszt** gombra a teszt lap megnyitásához.
 1. Ha a runbook paraméterekkel rendelkezik, azok a bal oldali panelen jelennek meg, ahol megadhatja a teszthez használni kívánt értékeket.
-1. Ha a tesztet [hibrid Runbook](automation-hybrid-runbook-worker.md)-feldolgozón szeretné futtatni, akkor módosítsa a **futtatási beállításokat** **hibrid** feldolgozóra, majd válassza ki a célcsoport nevét.  Ellenkező esetben tartsa meg az alapértelmezett **Azure** -t a teszt felhőben való futtatásához.
+1. Ha a tesztet [hibrid Runbook-feldolgozón](automation-hybrid-runbook-worker.md)szeretné futtatni, akkor módosítsa a **futtatási beállításokat** **hibrid feldolgozóra** , majd válassza ki a célcsoport nevét.  Ellenkező esetben tartsa meg az alapértelmezett **Azure** -t a teszt felhőben való futtatásához.
 1. A teszt elindításához kattintson a **Start** gombra.
-1. Ha a runbook [PowerShell-munkafolyamat](automation-runbook-types.md#powershell-workflow-runbooks) vagy [grafikus](automation-runbook-types.md#graphical-runbooks), akkor leállíthatja vagy felfüggesztheti a kimenet panel alatti gombokkal végzett tesztelés során. A runbook felfüggesztésekor előtt felfüggeszti végrehajtja az aktuális tevékenységet. Ha a runbook fel van függesztve, állítsa le, vagy újraindíthatja.
+1. Ha a runbook [PowerShell-munkafolyamat](automation-runbook-types.md#powershell-workflow-runbooks) vagy [grafikus](automation-runbook-types.md#graphical-runbooks), akkor leállíthatja vagy felfüggesztheti a kimenet panel alatti gombokkal végzett tesztelés során. A runbook felfüggesztésekor a teszt a felfüggesztés előtt még végrehajtja az aktuális tevékenységet. A felfüggesztés után a runbookot megállíthatja vagy újraindíthatja.
 1. Vizsgálja meg a kimenet ablaktáblán látható runbook.
 
 ## <a name="publish-a-runbook"></a>Forgatókönyv közzététele
 
-Új runbook létrehozásakor vagy importálásakor a Futtatás előtt közzé kell tennie.  Az Automation minden runbook rendelkezik egy Piszkozatmal és egy közzétett verzióval. Csak a közzétett verziót lehet futtatni, és kizárólag a piszkozat verzió szerkeszthető. A közzétett verzióra nincsenek hatással a piszkozat verzióban végrehajtott módosítások. Ha elérhetővé kell tenni a Piszkozat verzióját, akkor azt közzé kell tennie, amely felülírja a közzétett verziót a Piszkozat verziójával.
+Új runbook létrehozásakor vagy importálásakor a Futtatás előtt közzé kell tennie.  Az Automation minden runbook rendelkezik egy Piszkozatmal és egy közzétett verzióval. Kizárólag a Közzétett verziót lehet futtatni, és kizárólag a Piszkozat verzió szerkeszthető. A Közzétett verzióra nincsenek hatással a Piszkozat verzióban végrehajtott módosítások. Ha elérhetővé kell tenni a Piszkozat verzióját, akkor azt közzé kell tennie, amely felülírja a közzétett verziót a Piszkozat verziójával.
 
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Nyissa meg a runbook a Azure Portalban.
-2. Kattintson a **Szerkesztés** gombra.
+2. Kattintson az **Edit** (Szerkesztés) gombra.
 3. Kattintson a **Közzététel** gombra, majd az **Igen** gombra az ellenőrző üzenethez.
 
 ### <a name="powershell"></a>PowerShell
@@ -127,7 +127,7 @@ Publish-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Runbook és a PowerShell modul-katalógus előnyeinek megismeréséhez lásd: [Runbook és modul-galériák a Azure Automation](automation-runbook-gallery.md)
 * Ha többet szeretne megtudni a PowerShell-és a PowerShell-munkafolyamat runbookok a szöveges szerkesztővel való szerkesztésével kapcsolatban, tekintse meg a [szöveges Runbookok szerkesztése Azure Automation](automation-edit-textual-runbook.md)

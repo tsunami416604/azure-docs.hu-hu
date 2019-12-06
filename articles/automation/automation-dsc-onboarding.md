@@ -4,17 +4,17 @@ description: Gépek beállítása felügyeletre Azure Automation állapot-konfig
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: cf95a66cf68cf0b33444a17cf762bae79db4b50c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 80038cf5fba18eca4fbbe1405df2a76cfc84e2db
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243434"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850329"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez
 
@@ -102,7 +102,7 @@ A helyszíni vagy más felhőalapú környezetekben üzemelő Linux-kiszolgáló
 1. Győződjön meg arról, hogy a Linux rendszerhez készült [PowerShell kívánt állapot-konfiguráció](https://github.com/Microsoft/PowerShell-DSC-for-Linux) legújabb verziója telepítve van azokon a gépeken, amelyeken be szeretné állítani Azure Automation állapot konfigurációját.
 1. Ha a [POWERSHELL DSC helyi Configuration Manager alapértelmezett](/powershell/scripting/dsc/managing-nodes/metaConfig4) beállításai megfelelnek a használati esetnek, és olyan gépeket kíván **bevezetni** , amelyeknek a lekérése és jelentése a Azure Automation állapot konfigurációját jelenti:
 
-   - Minden Linux rendszerű gépen Azure Automation állapot konfigurációjának bevezetéséhez használja a `Register.py` értéket a PowerShell DSC helyi Configuration Manager alapértelmezett értékeinek használatával:
+   - Minden Linux-gépen Azure Automation állapot konfigurációjának bevezetéséhez használja a `Register.py` a bevezetéshez a PowerShell DSC helyi Configuration Manager alapértelmezett beállítások használatával:
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
@@ -126,7 +126,7 @@ A helyszíni vagy más felhőalapú környezetekben üzemelő Linux-kiszolgáló
 
 A parancs futtatásához szükséges számítógépnek a [WMF 5](https://aka.ms/wmf5latest) legújabb verzióját kell telepítenie.
 
-1. Ha nem tudja távolról alkalmazni a PowerShell DSC-metaconfigurations, másolja a számítógépnek megfelelő metaconfiguration az 5. lépésben a Linux rendszerű számítógép mappájába. Ezután hívja meg `SetDscLocalConfigurationManager.py`-at helyileg minden olyan linuxos gépen, amelyet be szeretne állítani Azure Automation állapot-konfigurációba:
+1. Ha nem tudja távolról alkalmazni a PowerShell DSC-metaconfigurations, másolja a számítógépnek megfelelő metaconfiguration az 5. lépésben a Linux rendszerű számítógép mappájába. Ezután hívja meg `SetDscLocalConfigurationManager.py` helyileg minden olyan linuxos gépen, amelyet be szeretne állítani Azure Automation állapot-konfigurációba:
 
    `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
 
@@ -270,7 +270,7 @@ Ahhoz, hogy Azure Automation állapot konfigurációjában a gépeket általáno
 Ha a PowerShell DSC helyi Configuration Manager alapértelmezett beállításai megfelelnek a használati esetnek, és olyan gépeket kíván bevezetni, amelyeknek a lekérése és jelentése is Azure Automation az állapot-konfigurációra, a Azure Automation-parancsmagok egyszerűsített módszert biztosítanak a létrehozáshoz a DSC-metaconfigurations szükséges:
 
 1. Nyissa meg a PowerShell-konzolt vagy a VSCode rendszergazdaként a helyi környezetben lévő számítógépeken.
-2. Kapcsolódás Azure Resource Manager `Connect-AzAccount` használatával
+2. Kapcsolódás Azure Resource Manager a `Connect-AzAccount` használatával
 3. Töltse le a PowerShell DSC-metaconfigurations azon gépekhez, amelyeket az Automation-fiókból kíván bevezetni, amelybe be szeretné állítani a csomópontokat:
 
    ```powershell

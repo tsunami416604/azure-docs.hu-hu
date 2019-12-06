@@ -1,24 +1,24 @@
 ---
 title: Átviteli sebesség méretezése Azure Cosmos DB
-description: Ez a cikk azt ismerteti, hogyan rugalmasan méretezhetők a Azure Cosmos DBek átviteli sebessége
-author: dharmas-cosmos
+description: Ez a cikk azt ismerteti, hogy a Azure Cosmos DB hogyan méretezi át az átviteli sebességet a különböző régiókban, ahol az Azure Cosmos-fiókot kiosztották.
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 29a92f04a1d36004fa082bfafe2310f9e0e3e5c6
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467603"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873505"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Kiosztott átviteli sebesség globális skálázása 
 
 Azure Cosmos DB a kiépített átviteli sebesség a kérelmek egység/másodperc (RU/s vagy a többes számú RUs) formájában jelenik meg. A RUs az olvasási és írási műveletek költségeit a Cosmos-tárolón méri, ahogy az alábbi képen is látható:
 
-![Kérelemegységek](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+![Kérelemegység](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
 
 Egy Cosmos-tárolón vagy egy Cosmos-adatbázison is kiépítheti az RUs-t. A tárolón kiépített RUs kizárólag az adott tárolón végrehajtott műveletekhez érhető el. Az adatbázison kiépített RUs az adott adatbázisban található összes tároló között megoszlik (kivéve a kizárólag hozzárendelt RUs-mel rendelkező tárolókat).
 
@@ -34,9 +34,9 @@ Feltételezve, hogy egy Cosmos-tároló *"R"* RUs-vel van konfigurálva, és a C
 
 - Ha a Cosmos-fiók több írási régióval van konfigurálva, akkor a tárolóban az összes globálisan elérhető RUs az = *R* x (*N*+ 1). A további *R* RUs-ket a rendszer automatikusan kiépíti a frissítési ütközések és az entrópia-alapú forgalom feldolgozásához a régiók között.
 
-Az Ön által választott [konzisztencia-modell](consistency-levels.md) az átviteli sebességet is befolyásolja. Körülbelül 2x olvasási sebességet érhet el a nyugodtabb konzisztencia-szintek (például *munkamenet*, *konzisztens előtag* és *végleges* konzisztencia) tekintetében az erősebb konzisztencia-szintekhez képest (például *határos* elavulás vagy  *erős* konzisztencia).
+Az Ön által választott [konzisztencia-modell](consistency-levels.md) az átviteli sebességet is befolyásolja. Körülbelül 2x olvasási sebességet érhet el a nyugodtabb konzisztencia-szintek (például *munkamenet*, *konzisztens előtag* és *végleges* konzisztencia) tekintetében az erősebb konzisztencia-szintekhez képest (például *kötött* elavulás vagy *erős* konzisztencia).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Következő lépésként megtudhatja, hogyan konfigurálhatja az átviteli sebességet egy tárolón vagy adatbázisban:
 

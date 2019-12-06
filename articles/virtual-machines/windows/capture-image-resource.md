@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 5557028304d0e2bd5940dd9b01dddf525806d0c6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 01619027ddc79530dc9541584efa9a3e518f5136
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033665"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842058"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban
 
-A felügyelt lemezképek erőforrásai olyan általánosított virtuális gépről (VM) hozhatók létre, amely felügyelt lemezként vagy nem felügyelt lemezként van tárolva egy Storage-fiókban. A rendszerkép ezután több virtuális gép létrehozására is használható. További információ a felügyelt lemezképek számlázásáról: [Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/). 
+Az olyan általánosított virtuális gépekből (VM-ekből), amelyek felügyelt lemezként vagy nem felügyelt lemezként vannak tárolva egy tárfiókban, létrehozható egy felügyelt rendszerkép-erőforrás. A rendszerkép ezután több virtuális gép létrehozásához is használható. További információ a felügyelt lemezképek számlázásáról: [Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
  
 
@@ -70,9 +70,9 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Felügyelt rendszerkép létrehozása a portálon 
 
-1. Nyissa meg az [Azure portált](https://portal.azure.com).
+1. A virtuális gép rendszerképének kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki a **virtuális gépeket**.
 
-2. A bal oldali menüben válassza a **virtuális gépek** lehetőséget, majd válassza ki a virtuális gépet a listából.
+2. Válassza ki a virtuális gépet a listából.
 
 3. A **virtuális gép virtuálisgép** -lapjának felső menüjében válassza a **rögzítés**lehetőséget.
 
@@ -80,7 +80,7 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
 
 4. A **név**mezőben fogadja el az előre megadott nevet, vagy adjon meg egy nevet, amelyet a képhez használni szeretne.
 
-5. Az **erőforráscsoport**területen válassza az **új létrehozása** elemet, adjon meg egy nevet, vagy válassza a **meglévő használata** lehetőséget, és válasszon ki egy erőforráscsoportot, amelyet használni szeretne a legördülő listából.
+5. Az **erőforráscsoport**területen válassza az **új létrehozása** elemet, adjon meg egy nevet, vagy válasszon ki egy erőforráscsoportot, amelyet a legördülő listából szeretne használni.
 
 6. Ha a rendszerkép létrehozása után törölni szeretné a forrás virtuális gépet, jelölje be a **virtuális gép automatikus törlése a rendszerkép létrehozása után**jelölőnégyzetet.
 
@@ -88,7 +88,7 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
 
 8. A rendszerkép létrehozásához válassza a **Létrehozás** lehetőséget.
 
-9. A rendszerkép létrehozása után **képerőforrásként** megkeresheti az erőforráscsoport erőforrásainak listáját.
+A rendszerkép létrehozása után **képerőforrásként** megkeresheti az erőforráscsoport erőforrásainak listáját.
 
 
 
@@ -218,7 +218,7 @@ A következő lépések végrehajtásával hozhat létre felügyelt rendszerkép
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Rendszerkép létrehozása a Storage-fiókot használó virtuális gépről
 
-Ha olyan virtuális gépről szeretne felügyelt rendszerképet létrehozni, amely nem felügyelt lemezeket használ, akkor a Storage-fiókban a következő formátumban kell megadnia az operációs rendszer virtuális merevlemezének URI-JÁT: https://*mystorageaccount*. blob.core.windows.net/*vhdcontainer*/*vhdfilename. vhd* . Ebben a példában a VHD a *mystorageaccount*, egy *vhdcontainer*nevű TÁROLÓban, a VHD-fájl pedig *vhdfilename. vhd*.
+Ha olyan virtuális gépről szeretne felügyelt rendszerképet létrehozni, amely nem felügyelt lemezeket használ, akkor a Storage-fiókban az operációs rendszer virtuális merevlemezének URI-ja szükséges, a következő formátumban: https://*mystorageaccount*. blob.core.windows.net/*vhdcontainer*/*vhdfilename. vhd*. Ebben a példában a VHD a *mystorageaccount*, egy *vhdcontainer*nevű TÁROLÓban, a VHD-fájl pedig *vhdfilename. vhd*.
 
 
 1.  Hozzon létre néhány változót.

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 93c35eb4f69cc4f9b16f669d96c2df53f50bcf84
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 789af25cc37183e9eeae253e1e8529615abdd308
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231192"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849802"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions verziók áttekintése
 
@@ -55,7 +55,7 @@ Durable Functions 2. x több feltörési változást vezet be. Durable Functions
 Durable Functions 2. x egy új Host. JSON sémát használ. Az 1. x fő változásai a következők:
 
 * `"storageProvider"` (és a `"azureStorage"` alszakasz) a Storage-specifikus konfigurációhoz.
-* `"tracking"` a konfiguráció nyomon követéséhez és naplózásához.
+* `"tracing"` a konfiguráció nyomon követéséhez és naplózásához.
 * `"notifications"` (és az `"eventGrid"` alszakasz) az Event Grid-értesítési konfigurációhoz.
 
 A részletekért tekintse meg a [Durable functions Host. JSON dokumentációját](durable-functions-bindings.md#durable-functions-2-0-host-json) .

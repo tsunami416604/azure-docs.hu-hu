@@ -1,18 +1,18 @@
 ---
 title: LOG10 Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function LOG10 Azure Cosmos DB.
+description: További információ a Azure Cosmos DB LOG10 SQL System függvényéről a megadott numerikus kifejezés 10-es alapú logaritmusának visszaadásához
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 56f1e96e7d4ee1b5f38ee7392665e17819ae554b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5950a2a40a78716a76e49fcdaeb3129948b6a0e1
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349717"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871057"
 ---
 # <a name="log10-azure-cosmos-db"></a>LOG10 (Azure Cosmos DB)
  A megadott numerikus kifejezés 10-es alapú logaritmusát adja vissza.  
@@ -26,31 +26,31 @@ LOG10 (<numeric_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expression*  
-   A numerikus kifejezés.  
+   Egy numerikus kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  A numerikus kifejezést ad vissza.  
+  Egy numerikus kifejezést ad vissza.  
   
 ## <a name="remarks"></a>Megjegyzések
   
-  A LOG10 és a POWER függvény intenzitásfokozatok kapcsolódnak egymáshoz. Ha például 10 ^ LOG10(n) = n.  
+  A LOG10 és a POWER függvények fordítottan kapcsolódnak egymáshoz. Például: 10 ^ LOG10 (n) = n.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa egy változó deklarálja, és a megadott változó (100) LOG10 értékét adja vissza.  
+  A következő példa deklarál egy változót, és visszaadja a megadott változó LOG10 értékét (100).  
   
 ```sql
 SELECT LOG10(100) AS log10 
 ```  
   
- Íme az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{log10: 2}]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

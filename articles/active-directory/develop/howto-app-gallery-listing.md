@@ -2,28 +2,24 @@
 title: Az alkalmazás listázása a Azure Active Directory Application Galleryben | Microsoft Docs
 description: Útmutató az egyszeri bejelentkezést támogató alkalmazások listázásához a Azure Active Directory app Galleryben
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: ryanwi
-ms.reviewer: elisol, bryanla
+ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 3e1763b8d6402a6093499f1f06253fe4c7502255
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374072"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842778"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -114,7 +110,7 @@ Egy meglévő alkalmazás Azure AD-katalógusban való frissítéséhez vagy elt
 
 ## <a name="list-requests-by-customers"></a>Ügyfelek által küldött kérések listázása
 
-Az ügyfelek az alkalmazásra **vonatkozó kérelmeket az ügyfelek által** > **új kérelem beküldése**lehetőség kiválasztásával kérhetik az alkalmazások listázására.
+Az ügyfelek az alkalmazásra **vonatkozó kérelmek** kiválasztásával kérelmet küldhetnek az alkalmazások listázásához > **új kérést küldhetnek**.
 
 ![Az ügyfél által kért alkalmazások csempe megjelenítése](./media/howto-app-gallery-listing/customer-submit-request.png)
 
@@ -122,7 +118,7 @@ Az ügyfél által kért alkalmazások folyamata.
 
 ![Az ügyfél által kért alkalmazások folyamatát jeleníti meg](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Ütemtervek
+## <a name="timelines"></a>Idősorok
 
 Az SAML 2,0 vagy WS-fed alkalmazás a katalógusban való listázásának ütemterve 7 – 10 munkanap.
 
@@ -134,4 +130,4 @@ A katalógusban található OpenID Connect-alkalmazás listázási folyamatának
 
 ## <a name="escalations"></a>Azok következményeinek
 
-Minden eszkaláció esetében küldjön e-mailt az [Azure ad SSO integrációs csapatának](mailto:SaaSApplicationIntegrations@service.microsoft.com) SaaSApplicationIntegrations@service.microsoft.com címen, és a lehető leghamarabb válaszoljon.
+Minden eszkaláció esetén küldjön e-mailt az [Azure ad SSO integrációs csapatának](mailto:SaaSApplicationIntegrations@service.microsoft.com) SaaSApplicationIntegrations@service.microsoft.comcímen, és a lehető leghamarabb válaszolunk.

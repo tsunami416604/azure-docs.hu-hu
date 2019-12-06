@@ -1,17 +1,17 @@
 ---
 title: Megismerheti, hogyan kezelhet adatbázisfiókokat az Azure Cosmos DB-ben.
-description: Megismerheti, hogyan kezelhet adatbázisfiókokat az Azure Cosmos DB-ben.
+description: Megtudhatja, hogyan kezelheti Azure Cosmos DB erőforrásait a Azure Portal, a PowerShell, a CLI és a Azure Resource Manager sablonok használatával
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 049be390403fe984ed4f8f38a4cdc86e24060e49
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582623"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873675"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos-fiók kezelése
 
@@ -228,7 +228,7 @@ Lásd: [a manuális feladatátvétel elindítása az Azure CLI-vel](manage-with-
 
 Lásd: [a manuális feladatátvétel elindítása a PowerShell](manage-with-powershell.md#trigger-manual-failover) -lel
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Cosmos-fiók, valamint az adatbázis és a tárolók kezelésével kapcsolatos további információkért és példákért olvassa el a következő cikkeket:
 

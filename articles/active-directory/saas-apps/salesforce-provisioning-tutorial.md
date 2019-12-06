@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d87f935f503098757e4efe402b37958283431b6e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 32f3c439460ddc61dbf08fc4e8d7b7a000aa20f9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120549"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849173"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Salesforce konfigurálása
 
@@ -60,7 +60,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a [Salesforce felhasználói fiók lé
 > [!Tip]
 > Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a Salesforce, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="configure-automatic-user-account-provisioning"></a>a felhasználói fiókok automatikus üzembe helyezésének konfigurálása
+### <a name="configure-automatic-user-account-provisioning"></a>A felhasználói fiókok automatikus üzembe helyezésének konfigurálása
 
 Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active Directory felhasználói fiókok Salesforce való kiépítés.
 
@@ -106,7 +106,7 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 15. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Salesforce lehetőséget.**
 
-16. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Salesforce-be szinkronizált felhasználói attribútumokat. Vegye figyelembe, hogy az **egyező** tulajdonságokként kiválasztott attribútumok a Salesforce felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+16. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Salesforce-be szinkronizált felhasználói attribútumokat. Vegye figyelembe, hogy az **egyező** tulajdonságokként kiválasztott attribútumok a Salesforce felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
 
 17. Az Azure AD-kiépítési szolgáltatás Salesforce való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a beállítások **szakaszban:**
 
@@ -117,7 +117,7 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 Ezzel elindítja a felhasználók és csoportok szakaszban Salesforce rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a Salesforce alkalmazásban végrehajtott összes műveletet.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../manage-apps/check-status-user-account-provisioning.md)helyezéséhez.
 
 ## <a name="common-issues"></a>Gyakori problémák
 * Ha olyan problémák merülnek fel, amelyek engedélyezik a Salesforce való hozzáférést, ügyeljen a következőkre:
@@ -129,6 +129,7 @@ Az Azure AD létesítési naplók olvasása további információkért lásd: [-
 * **SalesforceDuplicateUserName:** A felhasználót nem lehet kiépíteni, mert egy másik Salesforce.com-bérlőben duplikált "username" Salesforce.com rendelkezik.  A Salesforce.com-ben a "username" attribútum értékének egyedinek kell lennie az összes Salesforce.com-bérlőn.  Alapértelmezés szerint a felhasználó userPrincipalName Azure Active Directory a "username" lesz a Salesforce.com.   Két lehetőség közül választhat.  Az egyik lehetőség, hogy megkeresse és átnevezi a felhasználót a "username" névvel a másik Salesforce.com-bérlőben, ha a másik bérlőt is felügyeli.  A másik lehetőség az Azure Active Directory felhasználó hozzáférésének eltávolítása arra a Salesforce.com-bérlőre, amelyhez a címtár integrálva van. A következő szinkronizálási kísérlet során újra próbálkozunk a művelettel. 
 * **SalesforceRequiredFieldMissing:** A Salesforce használatához bizonyos attribútumoknak jelen kell lennie a felhasználó számára a felhasználó sikeres létrehozásához vagy frissítéséhez. Ez a felhasználó nem rendelkezik a szükséges attribútumok egyikével. Győződjön meg arról, hogy az attribútumok, például az e-mailek és az aliasok fel vannak töltve az összes olyan felhasználóra, akit a Salesforce kíván kiépíteni. Azokat a felhasználókat, akik nem rendelkeznek ezekkel az attribútumokkal, [attribútum-alapú hatóköri szűrőket](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)használnak fel. 
 * A Salesforce való kiépítés alapértelmezett attribútumának leképezése magában foglalja az SingleAppRoleAssignments kifejezést, amely az Azure AD-ben a Salesforce-ben történő appRoleAssignments leképezésére használható. Győződjön meg arról, hogy a felhasználók nem rendelkeznek több alkalmazás-szerepkör-hozzárendeléssel az Azure AD-ben, mivel az attribútumok leképezése csak az egyik szerepkör kiosztását támogatja. 
+* A Salesforce megköveteli, hogy az e-mail-frissítéseket manuálisan kell jóváhagyni a módosítás előtt. Ennek eredményeképpen előfordulhat, hogy a kiépítési naplók több bejegyzést is láthatnak a felhasználó e-mail-címének frissítéséhez (az e-mail módosításának jóváhagyása után).
 
 
 ## <a name="additional-resources"></a>További források

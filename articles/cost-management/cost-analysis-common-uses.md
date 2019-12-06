@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/16/2019
+ms.date: 12/04/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
-ms.openlocfilehash: 01087f3e40e278490abb87d0ab3b7b6ab5052b6b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4798b6908069af229c2bed4a2e5f38fa60e0d554
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219488"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849105"
 ---
 # <a name="common-cost-analysis-uses"></a>Közös Cost Analysis-használat
 
@@ -64,6 +64,8 @@ A napi és havi költségek megvizsgálása révén jobban megismerheti, hogy va
 ## <a name="view-costs-for-a-specific-tag"></a>Adott címke költségeinek megtekintése
 
 Számos Azure-felhasználó címkét alkalmaz az erőforrásokra, például egy költséghely-vagy fejlesztői környezetre (éles és tesztelés), hogy jobban kategorizálja a díjakat. A címkék dimenzióként jelennek meg a Cost Analysis szolgáltatásban. A dimenzió használatával betekintést nyerhet az egyéni címkézési kategorizálásokra.
+
+A címkék támogatása a címkének az erőforrásra való alkalmazása *után* jelentett használatra vonatkozik. A címkék nem jelennek meg visszamenőlegesen a Cost összesítések esetében.
 
 1. A Azure Portal navigáljon a hatókör Cost Analysis eleméhez. Például: **Cost Management + számlázási** > **Cost Management** > **Cost Analysis**.
 1. A címke alapján válassza a **Csoportosítás** lehetőséget.

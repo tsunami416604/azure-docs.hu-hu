@@ -1,20 +1,21 @@
 ---
-title: Teljesítmény-riasztások létrehozása a tárolók Azure Monitor használatával | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan használhatók a Azure Monitor a tárolók számára, hogy egyéni riasztásokat hozzon létre a memória és a CPU-kihasználtság naplózási lekérdezése alapján.
+title: Teljesítmény-riasztások létrehozása a Azure Monitor for containers szolgáltatáshoz | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan hozhatók létre egyéni riasztások a memória és a CPU-használat Azure Monitor a tárolók számára történő naplózási lekérdezései alapján.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/26/2019
-ms.openlocfilehash: dd92f5aedd1fbc51531730e6a7826322570cd1b1
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 66baa3095744c8b486430d587b992ba507d87733
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195021"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841625"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Riasztások beállítása a Azure Monitor a tárolók teljesítményével kapcsolatos problémákhoz
+
 A tárolók Azure Monitor figyelik az Azure Kubernetes szolgáltatásban (ak) üzemeltetett, Azure Container Instances vagy felügyelt Kubernetes-fürtökön üzembe helyezett tároló-munkaterhelések teljesítményét.
 
 Ez a cikk a riasztások engedélyezését ismerteti a következő helyzetekben:
@@ -30,6 +31,7 @@ Ha magas CPU-vagy memóriahasználat-kihasználtságot szeretne használni, vagy
 Ha nem ismeri a Azure Monitor riasztásokat, a Kezdés előtt tekintse meg [a Microsoft Azure riasztások áttekintése](../platform/alerts-overview.md) című témakört. Ha többet szeretne megtudni a naplózási lekérdezéseket használó riasztásokról, tekintse meg a következő témakörben [szereplő riasztásokat: Azure monitor](../platform/alerts-unified-log.md). A metrikus riasztásokról további információt a [metrikus riasztások Azure monitorban](../platform/alerts-metric-overview.md)című témakörben talál.
 
 ## <a name="resource-utilization-log-search-queries"></a>Erőforrás-felhasználási naplók keresési lekérdezései
+
 Az ebben a szakaszban található lekérdezések támogatják az egyes riasztási forgatókönyveket. A cikk a [riasztás létrehozása](#create-an-alert-rule) szakasz 7. lépésében használatos.
 
 A következő lekérdezés az átlagos CPU-kihasználtságot számítja ki percenként a tagok CPU-kihasználtságának átlaga alapján.  
@@ -278,13 +280,14 @@ InsightsMetrics
 ```
 
 ## <a name="create-an-alert-rule"></a>Riasztási szabály létrehozása
-Az alábbi lépéseket követve hozzon létre egy naplózási riasztást Azure Monitorban a korábban megadott napló-keresési szabályok egyikének használatával.  
+
+Az alábbi lépéseket követve hozzon létre egy naplózási riasztást Azure Monitorban a korábban megadott napló-keresési szabályok egyikének használatával. ARM-sablon használatával történő létrehozáshoz lásd: [példa a naplóbeli riasztások létrehozására az Azure Resource template használatával](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template).
 
 >[!NOTE]
 >A tárolók erőforrás-felhasználására vonatkozó riasztási szabály létrehozásához a következő eljárással kell váltania egy új naplózási riasztási API-ra, amelyet a [váltás API-beállítások a naplók számára](../platform/alerts-log-api-switch.md)című témakörben talál.
 >
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. A bal oldali ablaktáblán válassza a **figyelő** elemet. Az **Áttekintés**területen válassza a **tárolók**lehetőséget.
 3. A **figyelt fürtök** lapon válasszon ki egy fürtöt a listából.
 4. A **figyelés**területen a bal oldali ablaktáblán válassza a **naplók** lehetőséget a Azure monitor naplók lap megnyitásához. Ezen a lapon Azure Log Analytics-lekérdezéseket írhat és futtathat.

@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 7fb24d53876ab8c06fca4fbfe929c06a889335f3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b5299f49663fbf2e828f76d9c240a86fdccb2ff2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786350"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872689"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Gyors útmutató: számítógépek összekötése az Azure-hoz az Azure arc for Servers használatával – PowerShell
 
@@ -54,6 +54,12 @@ DisplayName           : Hybrid-RP
 Id                    : 5be92c87-01c4-42f5-bade-c1c10af87758
 Type                  :
 ```
+
+> [!NOTE] 
+> Az SPN-engedélyek megfelelő kitöltése hosszabb időt is igénybe vehet. A következő szerepkör-hozzárendelés futtatásával sokkal gyorsabban állíthatja be az engedélyeket.
+> ``` PowerShell
+> New-AzRoleAssignment -RoleDefinitionName "Azure Connected Machine Onboarding" -ServicePrincipalName $sp.ApplicationId
+> ```
 
 Most kérje le a jelszót a PowerShell használatával.
 

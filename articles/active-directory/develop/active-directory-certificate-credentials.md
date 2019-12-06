@@ -3,28 +3,24 @@ title: Tanúsítvány hitelesítő adatai az Azure AD-ben
 titleSuffix: Microsoft identity platform
 description: Ez a cikk a tanúsítvány hitelesítő adatainak regisztrálását és használatát ismerteti az alkalmazás hitelesítéséhez
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fca872d639ab5c2d4053656cdd3e68a59fdc1e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4b0dd42aeaa8a7a5d9f1cc28b409a8d8dbf92304
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473969"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845365"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Tanúsítvány hitelesítő adatai az alkalmazás hitelesítéséhez
 
@@ -49,10 +45,10 @@ Az állítás kiszámításához használhatja a számos [JSON web token](https:
 | --- | --- |
 | `aud` | Célközönség: **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** kell lennie |
 | `exp` | Lejárati dátum: a jogkivonat lejárati dátuma. Az idő a (z) január 1-től 1970 (1970-01-01T0:0: 0Z) UTC szerint, a jogkivonat érvényességének lejárta előtt.|
-| `iss` | Kiállító: legyen a client_id (az ügyfélszolgáltatás alkalmazásspecifikus azonosítója) |
+| `iss` | Kiállító: a client_id (az ügyfélszolgáltatás alkalmazásspecifikus azonosítója) |
 | `jti` | GUID: a JWT azonosítója |
 | `nbf` | Nem előtte: az a dátum, amely előtt a jogkivonat nem használható. Az idő a (z) január 1-től 1970 (1970-01-01T0:0: 0Z) UTC szerint, a jogkivonat kiállításának időpontjáig. |
-| `sub` | Tárgy: a `iss`esetében a client_id kell lennie (az ügyfélszolgáltatás alkalmazásspecifikus azonosítója). |
+| `sub` | Tárgy: a `iss`esetében a client_id kell lennie (az ügyfélszolgáltatás alkalmazás-azonosítója) |
 
 ### <a name="signature"></a>Aláírás
 
@@ -101,7 +97,7 @@ A tanúsítvány hitelesítő adatait az alábbi módszerek bármelyikével tár
 Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 1. Válassza ki a **tanúsítványok & Secrets**elemet. 
 2. Kattintson a **tanúsítvány feltöltése** elemre, és válassza ki a feltölteni kívánt tanúsítványt.
-3. Kattintson az **Add** (Hozzáadás) parancsra.
+3. Kattintson a **Hozzáadás** parancsra.
   A tanúsítvány feltöltése után a rendszer megjeleníti az ujjlenyomatot, a kezdési dátumot és a lejárati értékeket. 
 
 ### <a name="updating-the-application-manifest"></a>Az alkalmazás jegyzékfájljának frissítése

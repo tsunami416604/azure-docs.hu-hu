@@ -12,15 +12,15 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
-ms.date: 09/24/2019
+ms.date: 12/04/2019
 ms.author: phillee
 keywords: VisualStudio
-ms.openlocfilehash: 4b3b36f69387a6ae10a2b76154056f322fd4a41a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 25e5cda3b91dd4b14d0a3d82963404dde7a80aa4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170927"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851400"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-lemezképek az Azure-ban
 A Visual Studio egy előre konfigurált Azure-beli virtuális gépen (VM) gyorsan és egyszerűen elvégezhető, hogy ne legyenek elérhetők a felhasználható fejlesztési környezetek. A különböző Visual Studio-konfigurációkkal rendelkező rendszerképek az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)érhetők el.
@@ -33,9 +33,9 @@ Most ismerkedik az Azure-ral? [Ingyenes Azure-fiók létrehozása](https://azure
 ## <a name="what-configurations-and-versions-are-available"></a>Milyen konfigurációk és verziók érhetők el?
 A legújabb főverziók, a Visual Studio 2019, a Visual Studio 2017 és a Visual Studio 2015 rendszerképei az Azure piactéren találhatók.  Az egyes kiadott főverziók esetében az eredeti "megjelent a web" (RTW) és a legújabb frissített verziók láthatók.  Ezen verziók mindegyike a Visual Studio Enterprise és a Visual Studio Community kiadásait kínálja.  Ezek a lemezképek legalább minden hónapban frissülnek, hogy tartalmazzák a legújabb Visual Studio-és Windows-frissítéseket.  Míg a képek nevei változatlanok maradnak, az egyes képek leírása tartalmazza a telepített termék verzióját és a lemezkép "as of" dátumát.
 
-| Kiadás verziója                                                                                                                                                | Kiadások              | Termék verziója   |
+| Kiadás verziója                                                                                                                                                | Kiadások              | Termékváltozat   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: legújabb (16,3-es verzió)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Vállalat, Közösség | 16.3.9 verziója    |
+| [Visual Studio 2019: legújabb (16,4-es verzió)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Vállalat, Közösség | 16.4.0 verziója    |
 | [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Vállalat, Közösség | 16.0.9 verziója    |
 | [Visual Studio 2017: legújabb (15,9-es verzió)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Vállalat, Közösség | 15.9.17 verziója   |
 | [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Vállalat, Közösség | 15.0.27 verziója  |
@@ -51,7 +51,7 @@ Mindegyik rendszerkép tartalmazza az adott Visual Studio-kiadáshoz ajánlott s
 
 * Az összes rendelkezésre álló számítási feladat, beleértve az egyes munkaterhelések javasolt választható összetevőit is
 * .NET 4.6.2 és .NET 4,7 SDK-k, célzott csomagok és Fejlesztői eszközök
-* VisualF#
+* Visual F#
 * GitHub-bővítmény a Visual studióhoz
 * Eszközök LINQ to SQL
 

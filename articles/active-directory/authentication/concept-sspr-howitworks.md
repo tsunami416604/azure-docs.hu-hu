@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e88669b5453069d9f6bb64e803adc65baf8afc6b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 5b19c80378aa40a7f791a3eb61130b013217ddee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420695"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848578"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Működés: Azure AD önkiszolgáló jelszó-visszaállítás
 
@@ -52,13 +52,13 @@ Olvassa el a következő lépéseket a jelszó-visszaállítási oldal mögötti
      * Ha a visszaírási nincs telepítve, és a felhasználó jelszava felügyelve van a helyszínen, a felhasználónak kapcsolatba kell lépnie a rendszergazdával a jelszavuk alaphelyzetbe állításához.
 4. Ha megállapítható, hogy a felhasználó sikeresen visszaállíthatja a jelszavát, akkor a felhasználó az alaphelyzetbe állítási folyamaton keresztül vezérli.
 
-## <a name="authentication-methods"></a>Hitelesítési módszerek
+## <a name="authentication-methods"></a>Hitelesítési módok
 
 Ha a SSPR engedélyezve van, ki kell választania legalább egyet a következő beállítások közül a hitelesítési módszerekhez. Időnként ezeket a beállításokat "Gates"-ként is hallja. Javasoljuk, hogy **két vagy több hitelesítési módszert válasszon** , hogy a felhasználók nagyobb rugalmasságot biztosítsanak abban az esetben, ha nem tudnak hozzáférni az egyikhez. Az alább felsorolt módszerekkel kapcsolatos további információk a következő cikkben találhatók: [Mi a hitelesítési módszer?](concept-authentication-methods.md).
 
 * Mobilalkalmazás-értesítés
-* Mobile App Code
-* E-mail
+* Mobilalkalmazás kódja
+* E-mail cím
 * Mobiltelefon
 * Irodai telefon
 * Biztonsági kérdések
@@ -88,7 +88,7 @@ Ha mobil alkalmazást használ, például a Microsoft Authenticator alkalmazást
 * Ha a rendszergazdáknak a jelszó alaphelyzetbe állításához egy metódust kell használni, az ellenőrzési kód az egyetlen elérhető lehetőség.
 * Ha a rendszergazdáknak két módszert kell használniuk a jelszó alaphelyzetbe állításához, a felhasználók a többi engedélyezett módszer **mellett értesítési** **vagy** ellenőrzési kódokat is használhatnak.
 
-| Az alaphelyzetbe állításhoz szükséges módszerek száma | Egy | Kettő |
+| Az új jelszó kéréséhez szükséges módszerek száma | Egy | Kettő |
 | :---: | :---: | :---: |
 | Elérhető a Mobile App szolgáltatásai | Kód | Kód vagy értesítés |
 
@@ -203,7 +203,7 @@ A forgatókönyv teszteléséhez lépjen a https://passwordreset.microsoftonline
 > [!NOTE]
 > Az Azure ad-bérlőhöz (például Hotmail.com, Outlook.com vagy más személyes e-mail-címekhez) hozzáféréssel rendelkező Microsoft-fiókok nem tudják használni az Azure AD-SSPR. A jelszó alaphelyzetbe állításához a következő információkat kell használnia, [Ha nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi cikkekben az Azure AD jelszóátállításáról olvashat további információkat:
 

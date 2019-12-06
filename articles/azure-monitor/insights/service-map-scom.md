@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor for VMs integráció a System Center Operations Managertal | Microsoft Docs
+title: Azure Monitor for VMs Térkép integrálása Operations Managerkal | Microsoft Docs
 description: Azure Monitor for VMs automatikusan feltérképezi az alkalmazás-összetevőket Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ebből a cikkből megtudhatja, hogyan hozhat létre automatikusan elosztott alkalmazás-diagramokat a Operations Manager a Térkép funkcióval.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/12/2019
-ms.openlocfilehash: 3523756e89506e90407090db105fdced5853d9d9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f1acf3c1574fd94606d75c6250dedd40a9c7ea4d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553972"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849819"
 ---
-# <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integráció Azure Monitor for VMs Térkép funkcióval
+# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integrálása Azure Monitor for VMs Térkép funkcióval
 
-Azure Monitor for VMs a felderített alkalmazás-összetevőket megtekintheti az Azure-ban vagy a környezetben futó Windows-és Linux-alapú virtuális gépeken (VM-EK). A Térkép funkció és a System Center Operations Manager közötti integráció révén automatikusan létrehozhat elosztott alkalmazási diagramokat a Azure Monitor for VMs dinamikus függőségi térképén alapuló Operations Manager. 
+Azure Monitor for VMs a felderített alkalmazás-összetevőket megtekintheti az Azure-ban vagy a környezetben futó Windows-és Linux-alapú virtuális gépeken (VM-EK). A Térkép funkció és a System Center Operations Manager közötti integráció révén automatikusan létrehozhat elosztott alkalmazási diagramokat a Azure Monitor for VMs dinamikus függőségi térképén alapuló Operations Manager. Ez a cikk azt ismerteti, hogyan konfigurálhatja a System Center Operations Manager felügyeleti csoportot a funkció támogatásához.
 
 >[!NOTE]
 >Ha már telepítette Service Map, megtekintheti a térképeit Azure Monitor for VMsban, amely a virtuális gépek állapotának és teljesítményének figyelésére szolgáló további funkciókat is tartalmaz. A Azure Monitor for VMs Térkép funkciója a különálló Service Map megoldás cseréjére szolgál. További információ: [Azure monitor for VMS Overview (áttekintés](vminsights-overview.md)).
@@ -107,7 +107,7 @@ A Service Map mappa négy csomóponttal rendelkezik:
 
 ## <a name="edit-or-delete-the-workspace"></a>Munkaterület szerkesztése vagy törlése
 
-A konfigurált munkaterületet szerkesztheti vagy törölheti a **Service Map áttekintés** paneljén (**felügyeleti** ablaktábla > **operations Management Suite**  > **Service Map**).
+A konfigurált munkaterületet szerkesztheti vagy törölheti a **Service Map áttekintés** paneljén (**felügyeleti** ablaktábla > **operations Management Suite** > **Service Map**).
 
 >[!NOTE]
 >Az [Operations Management Suite a log Analytics részét képező szolgáltatások gyűjteménye volt](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) , amely már [Azure monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md)része.

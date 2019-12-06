@@ -1,17 +1,17 @@
 ---
 title: Tároló létrehozása az Azure Cosmos DB-ben
-description: Tudnivalók a tárolók Azure Cosmos DB-ben történő létrehozásáról
+description: Megtudhatja, hogyan hozhat létre tárolót Azure Cosmos DB a Azure Portal, a .net, a Java, a Python, a Node. js és más SDK-k használatával.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 911f56cef58e5d9c161a3ba947850bcfff073200
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4eaa2974817bfcd8bef83e5139d75a2d4c2ec107
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242405"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873709"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos-tároló létrehozása
 
@@ -116,7 +116,7 @@ Az összes Azure Cosmos DB API-val kapcsolatos összes Azure CLI-minta listájá
 * [Gremlin gráf létrehozása az Azure CLI-vel](./scripts/cli/gremlin/create.md)
 * [Table API tábla létrehozása az Azure CLI-vel](./scripts/cli/table/create.md)
 
-## Tároló létrehozása a PowerShell<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"> használatával<a id="ps-table"></a>
+## Tároló létrehozása a PowerShell<a id="ps-sql"> </a> -<a id="ps-mongodb"><a id="ps-cassandra"></a> használatával<a id="ps-gremlin"><a id="ps-table"></a>
 
 Az alábbi hivatkozások bemutatják, hogyan hozhat létre Azure Cosmos DB tároló-erőforrásokat a PowerShell használatával.
 
@@ -168,5 +168,5 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 
 * [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)
-* [Adatforgalom kiépítése a tárolók és adatbázisok számára](set-throughput.md)
+* [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md)
 * [Azure Cosmos-fiók használata](account-overview.md)

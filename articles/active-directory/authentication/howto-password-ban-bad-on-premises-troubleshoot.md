@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06169056c9b17abfda2af67ec0784dfbf2ed04d5
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bd609eb1f289c0a104bddaa08a60e7dc6202acee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381653"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847660"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD jelszavas védelem – hibaelhárítás
 
@@ -247,7 +247,7 @@ Ha úgy döntött, hogy eltávolítja az Azure AD jelszavas védelem szoftverét
 
    Ez az elérési út eltérő, ha a SYSVOL-megosztás nem alapértelmezett helyen van konfigurálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gyakori kérdések az Azure AD jelszavas védelméről](howto-password-ban-bad-on-premises-faq.md)
 

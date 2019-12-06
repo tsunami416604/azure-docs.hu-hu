@@ -1,17 +1,17 @@
 ---
 title: SQL JOIN-lekérdezések Azure Cosmos DB
-description: További információ a Azure Cosmos DBhoz való csatlakozás SQL-szintaxisáról.
+description: Ismerje meg, hogyan CSATLAKOZHAT több táblázathoz a Azure Cosmos DBban az adatlekérdezéshez
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: d78904fde53da0e800a69d2148a9c4e3acf57307
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494407"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871142"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Illesztések Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Nézzük meg a következő FROM záradékot: `<from_source1> JOIN <from_source2>
   
 - Legyen `<from_source1>` tároló hatókörű, és az {A, B, C} készletet jelöli.  
   
-- Legyen `<from_source2>` dokumentumra szűkíthető hivatkozó input_alias1, és beállítja a készleteket:  
+- Lehetővé teszi, hogy `<from_source2>` dokumentumokra szűkített viszonyítási input_alias1 és a készleteket:  
   
     {1, 2} `input_alias1 = A,`  
   
@@ -74,11 +74,11 @@ Nézzük meg a következő FROM záradékot: `<from_source1> JOIN <from_source2>
   
 **3. példa** – 3 forrás  
   
-- < From_source1 > legyen tároló-hatókörű, és a set {A, B, C}.  
+- < From_source1 > tároló hatókörű, és az {A, B, C} készletet jelöli.  
   
 - Legyen `<from_source1>` tároló hatókörű, és az {A, B, C} készletet jelöli.  
   
-- Lehetővé teszi, hogy < > from_source2 a dokumentumokra szűkített hivatkozó input_alias1 és a jelölőket:  
+- < From_source2 > dokumentumokra szűkíthető viszonyítási input_alias1, és beállítja a készleteket:  
   
     {1, 2} `input_alias1 = A,`  
   
@@ -126,7 +126,7 @@ A következő példában az illesztés egy két JSON-objektum, az elem gyökeré
     JOIN f.children
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [
@@ -147,7 +147,7 @@ Az alábbi példa egy hagyományosabb illesztést mutat be:
     JOIN c IN f.children
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [
@@ -184,7 +184,7 @@ Az JOIN záradék valódi segédprogramja egy olyan alakzat rekordok, amely egy�
     JOIN p IN c.pets
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [
@@ -240,7 +240,7 @@ A következő példában egy további szűrő van `pet`, amely kizárja az össz
     WHERE p.givenName = "Shadow"
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [
@@ -252,7 +252,7 @@ Az eredmények a következők:
     ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Első lépések](sql-query-getting-started.md)
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)

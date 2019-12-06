@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e156585ba063515bd8be573b5d99b41e7ce35d1
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 9ea5b4f52fc161cb8359ef56e76e0607459d6280
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932491"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848357"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>A Multi-Factor Authentication hálózati házirend-bővítményének speciális konfigurációs beállításai
 
@@ -28,13 +28,13 @@ Mivel a hálózati házirend-kiszolgáló bővítmény a helyszíni és a Felhő
 
 A hálózati házirend-kiszolgáló bővítményben kijelölhet egy Active Directory attribútumot, amelyet az egyszerű felhasználónév helyett használni szeretne az Azure Multi-Factor Authenticationhoz. Ez lehetővé teszi a helyszíni erőforrások kétlépéses ellenőrzéssel való ellátását a helyszíni egyszerű felhasználónevek módosítása nélkül. 
 
-Az alternatív bejelentkezési azonosítók konfigurálásához lépjen `HKLM\SOFTWARE\Microsoft\AzureMfa` a (z) elemre, és szerkessze a következő beállításjegyzékbeli értékeket:
+Az alternatív bejelentkezési azonosítók konfigurálásához lépjen a `HKLM\SOFTWARE\Microsoft\AzureMfa`ra, és szerkessze a következő beállításjegyzék-értékeket:
 
-| Name (Név) | Type | Alapértelmezett érték | Leírás |
+| Név | Type (Típus) | Alapértelmezett érték | Leírás |
 | ---- | ---- | ------------- | ----------- |
-| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | Karakterlánc | Üres | Jelölje ki az egyszerű felhasználónév helyett használni kívánt Active Directory attribútum nevét. Ez az attribútum a AlternateLoginId attribútumként szolgál. Ha a beállításazonosító [érvényes Active Directory attribútumra](https://msdn.microsoft.com/library/ms675090.aspx) van beállítva (például E-mail vagy DisplayName), akkor a rendszer az attribútum értékét használja a felhasználó egyszerű felhasználóneve helyett a hitelesítéshez. Ha a beállításazonosító üres vagy nincs konfigurálva, akkor a AlternateLoginId le van tiltva, és a rendszer a felhasználó UPN-azonosítóját használja a hitelesítéshez. |
-| LDAP_FORCE_GLOBAL_CATALOG | boolean | False (Hamis) | Ezzel a jelzővel kényszerítheti a globális katalógus használatát az LDAP-keresésekhez, amikor megkeresi a AlternateLoginId. Konfiguráljon egy tartományvezérlőt globális katalógusként, adja hozzá a AlternateLoginId attribútumot a globális katalógushoz, majd engedélyezze ezt a jelzőt. <br><br> Ha a LDAP_LOOKUP_FORESTS konfigurálva van (nem üres), **Ez a jelző igaz értékre van kényszerítve**, a beállításjegyzék-beállítás értékétől függetlenül. Ebben az esetben a hálózati házirend-kiszolgáló bővítménye megköveteli, hogy a globális katalógus minden erdő AlternateLoginId attribútumával legyen konfigurálva. |
-| LDAP_LOOKUP_FORESTS | Karakterlánc | Üres | Adja meg a keresendő erdők pontosvesszővel tagolt listáját. Például: *contoso. com; foobar. com*. Ha a beállításazonosító konfigurálva van, a hálózati házirend-kiszolgáló bővítmény a iteratív megkeresi az összes erdőt a felsorolt sorrendben, és visszaadja az első sikeres AlternateLoginId értéket. Ha a beállításazonosító nincs konfigurálva, a AlternateLoginId-keresés az aktuális tartományra korlátozódik.|
+| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | sztring | Üres | Jelölje ki az egyszerű felhasználónév helyett használni kívánt Active Directory attribútum nevét. Ez az attribútum a AlternateLoginId attribútumként szolgál. Ha a beállításazonosító [érvényes Active Directory attribútumra](https://msdn.microsoft.com/library/ms675090.aspx) van beállítva (például E-mail vagy DisplayName), akkor a rendszer az attribútum értékét használja a felhasználó egyszerű felhasználóneve helyett a hitelesítéshez. Ha a beállításazonosító üres vagy nincs konfigurálva, akkor a AlternateLoginId le van tiltva, és a rendszer a felhasználó UPN-azonosítóját használja a hitelesítéshez. |
+| LDAP_FORCE_GLOBAL_CATALOG | logikai | Hamis | Ezzel a jelzővel kényszerítheti a globális katalógus használatát az LDAP-keresésekhez, amikor megkeresi a AlternateLoginId. Konfiguráljon egy tartományvezérlőt globális katalógusként, adja hozzá a AlternateLoginId attribútumot a globális katalógushoz, majd engedélyezze ezt a jelzőt. <br><br> Ha LDAP_LOOKUP_FORESTS konfigurálva van (nem üres), **Ez a jelző igaz értékre van kényszerítve**, a beállításjegyzék-beállítás értékétől függetlenül. Ebben az esetben a hálózati házirend-kiszolgáló bővítménye megköveteli, hogy a globális katalógus minden erdő AlternateLoginId attribútumával legyen konfigurálva. |
+| LDAP_LOOKUP_FORESTS | sztring | Üres | Adja meg a keresendő erdők pontosvesszővel tagolt listáját. Például: *contoso. com; foobar. com*. Ha a beállításazonosító konfigurálva van, a hálózati házirend-kiszolgáló bővítmény a iteratív megkeresi az összes erdőt a felsorolt sorrendben, és visszaadja az első sikeres AlternateLoginId értéket. Ha a beállításazonosító nincs konfigurálva, a AlternateLoginId-keresés az aktuális tartományra korlátozódik.|
 
 A másodlagos bejelentkezési azonosítókkal kapcsolatos problémák elhárításához használja az [alternatív bejelentkezési azonosítók hibáinak](howto-mfa-nps-extension-errors.md#alternate-login-id-errors)ajánlott lépéseit.
 
@@ -42,17 +42,17 @@ A másodlagos bejelentkezési azonosítókkal kapcsolatos problémák elhárít�
 
 Ha figyelnie kell a kiszolgáló rendelkezésre állását, például ha a terheléselosztó ellenőrzi, hogy mely kiszolgálók futnak a munkaterhelések elküldése előtt, akkor nem szeretné, hogy a rendszer ellenőrzési kérések által blokkolja ezeket az ellenőrzéseket. Ehelyett hozzon létre egy listát az Ön által ismert IP-címekről, és tiltsa le az adott lista Multi-Factor Authentication követelményeit.
 
-Az IP-címek engedélyezési listájának konfigurálásához `HKLM\SOFTWARE\Microsoft\AzureMfa` nyissa meg a következő beállításértéket, és konfigurálja a beállításjegyzéket:
+Az engedélyezett IP-címek listájának konfigurálásához lépjen a `HKLM\SOFTWARE\Microsoft\AzureMfa`ra, és konfigurálja a következő beállításazonosító értékét:
 
-| Name (Név) | Type | Alapértelmezett érték | Leírás |
+| Név | Type (Típus) | Alapértelmezett érték | Leírás |
 | ---- | ---- | ------------- | ----------- |
-| IP_WHITELIST | Karakterlánc | Üres | Adja meg az IP-címek pontosvesszővel tagolt listáját. Adja meg azoknak a számítógépeknek a IP-címeit, amelyeken a szolgáltatás kérelmek származnak, például a NAS/VPN-kiszolgálótól. Az IP-címtartományok és az alhálózatok nem támogatottak. <br><br> Például: *10.0.0.1; 10.0.0.2; 10.0.0.3*.
+| IP_WHITELIST | sztring | Üres | Adja meg az IP-címek pontosvesszővel tagolt listáját. Adja meg azoknak a számítógépeknek a IP-címeit, amelyeken a szolgáltatás kérelmek származnak, például a NAS/VPN-kiszolgálótól. Az IP-címtartományok és az alhálózatok nem támogatottak. <br><br> Például: *10.0.0.1; 10.0.0.2; 10.0.0.3*.
 
 > [!NOTE]
 > A telepítő alapértelmezés szerint nem hozza létre ezt a beállításkulcsot, és egy hiba jelenik meg a AuthZOptCh-naplóban a szolgáltatás újraindításakor. Ez a hiba a naplóban figyelmen kívül hagyható, de ha a beállításkulcs létrejött, és nem szükséges, üresen marad, a hibaüzenet nem jelenik meg.
 
-Ha egy kérelem olyan IP-címről érkezik, amely létezik a- `IP_WHITELIST`ben, a kétlépéses ellenőrzés kimarad. Az IP-listát a RADIUS-kérelem *ratNASIPAddress* attribútumában megadott IP-címhez hasonlítjuk. Ha egy RADIUS-kérelem a ratNASIPAddress attribútum nélkül érkezik, a következő figyelmeztetés kerül a naplóba: "P_WHITE_LIST_WARNING:: az IP-engedélyezési lista figyelmen kívül lesz hagyva, mert a forrás IP-cím hiányzik a RADIUS-kérelemben a NasIpAddress attribútumban."
+Ha egy kérelem a `IP_WHITELIST`található IP-címről érkezik, a kétlépéses ellenőrzés kimarad. Az IP-listát a RADIUS-kérelem *ratNASIPAddress* attribútumában megadott IP-címhez hasonlítjuk. Ha egy RADIUS-kérelem a ratNASIPAddress attribútum nélkül érkezik, a rendszer a következő figyelmeztetést naplózza: "P_WHITE_LIST_WARNING:: az IP-engedélyezési lista figyelmen kívül lesz hagyva, mert a forrás IP-cím hiányzik a RADIUS-kérelemben a NasIpAddress attribútumban."
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hibaüzenetek által jelzett problémák megszüntetése az Azure Multi-Factor Authentication NPS-bővítményéből](howto-mfa-nps-extension-errors.md)

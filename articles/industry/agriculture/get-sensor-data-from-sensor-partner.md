@@ -1,61 +1,60 @@
 ---
 title: Érzékelők adatainak beolvasása a partnerektől
-description: Ismerteti, hogyan lehet beolvasni az érzékelők adatait a partnerektől
+description: Ez a cikk azt ismerteti, hogyan lehet beolvasni az érzékelők adatait a partnerektől.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b985dfc1f16372c3fad1b0a5c0894931b4c15dcc
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: ece310a248140b7913ffcc9f7146d382ee44fb5d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406491"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851298"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Érzékelők adatainak beolvasása az érzékelő partnereitől
 
-Az Azure FarmBeats segítségével a IoT-eszközökről és-érzékelőkről az adatközpontba helyezheti át a folyamatos adatátvitelt. Jelenleg a következő szenzor-eszköz partnerek támogatottak:
+Az Azure FarmBeats segítségével a IoT-eszközökről és-érzékelőkről átviheti a streamet a Datahub-be. Jelenleg a következő érzékelő-eszköz partnerek támogatottak.
 
-  ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
+  ![FarmBeats-partnerek](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
 
-Az eszköz adatainak az Azure FarmBeats való integrálásával a farmon üzembe helyezett IoT-érzékelőkből az adatközpontba helyezheti a terepi adatait. A FarmBeats-gyorsító segítségével a rendelkezésre álló adatgyűjtési és AI/ML-modellek FarmBeats használatával is megjeleníthetők.
+Az eszköz adatainak az Azure FarmBeats való integrálásával a farmon üzembe helyezett IoT-érzékelőkből az adatközpontba helyezheti a terepi adatait. A rendelkezésre álló, a FarmBeats-gyorsító használatával megjeleníthető adatelemek. Az adatok a FarmBeats használatával adatfúziós és gépi tanulási/mesterséges intelligencia (ML/AI) modellek létrehozásához használhatók.
 
 Az érzékelő adatfolyamának elindításához a következőket kell biztosítani:
 
--  Telepítette a FarmBeats-t az Azure Marketplace-ről.
--  Ön úgy döntött, hogy a farmján telepíteni kívánt érzékelők és eszközök.
--  Ha a talaj nedvességtartalmának érzékelők használatát tervezi, használhatja a FarmBeats szennyeződés-érzékelő elhelyezési térképét, hogy javaslatot kapjon az érzékelők számáról, és pontosan hol kell elhelyezni az érzékelőket. További információ: Maps- [Létrehozás](generate-maps.md).
+-  Telepítette a FarmBeats az Azure Marketplace-en.
+-  Ön dönti el, hogy milyen érzékelőkkel és eszközökkel kívánja telepíteni a farmon.
+-  Ha a talaj nedvességtartalmának érzékelőit kívánja használni, használja a FarmBeats-szennyeződési érzékelő elhelyezési térképét, hogy javaslatot tegyen az érzékelők számára, és hogy pontosan hol kell elhelyezni azokat. További információ: Maps- [Létrehozás](generate-maps.md).
+- A farmján megvásárolhatja és üzembe helyezheti eszközeit és érzékelőit. Győződjön meg arról, hogy az eszköz partnereinek megoldásán keresztül éri el az érzékelő adatait.
 
-- Eszköz/érzékelők vásárlása és üzembe helyezése a farmján lévő eszköz-partnertől. Győződjön meg arról, hogy az eszköz partnereinek megoldásán keresztül éri el az érzékelő adatait.
+## <a name="enable-device-integration-with-farmbeats"></a>Eszköz-integráció engedélyezése a FarmBeats 
 
-### <a name="enable-device-integration-with-farmbeats"></a>Eszköz-integráció engedélyezése a FarmBeats   
+Az érzékelők adatközvetítésének megkezdése után megkezdheti az adatgyűjtési folyamat beszerzését a FarmBeats-rendszeren. Adja meg a következő információkat az eszköz szolgáltatójának az FarmBeats való integráció engedélyezéséhez:
 
-Miután elindította az érzékelők adatátvitelét, elindíthatja az adatgyűjtési folyamatot a FarmBeats-rendszeren. A következő információkat kell megadnia az eszköz szolgáltatójának az FarmBeats való integráció engedélyezéséhez:  
-
- - API-végpont  
- - Bérlőazonosító  
- - Ügyfél-azonosító  
- - Titkos ügyfélkulcs  
+ - API-végpont
+ - Bérlőazonosító
+ - Ügyfél-azonosító
+ - Titkos ügyfélkulcs
  - EventHub-kapcsolatok karakterlánca
 
-A fenti információkat a rendszerintegrátor adja meg. Az eszközök integrációjának engedélyezése során felmerülő problémákért forduljon a rendszerintegrátorhoz.
+Az előző adatokat a rendszerintegrátor kapja meg. Az eszközök integrációjának engedélyezésekor esetlegesen felmerülő problémákért forduljon a rendszerintegrátorhoz.
 
-A hitelesítő adatokat úgy is létrehozhatja, hogy a parancsfájlt a Azure Cloud Shellból futtatja. Kövesse az alábbi lépéseket:
+A hitelesítő adatokat úgy is létrehozhatja, hogy a parancsfájlt Azure Cloud Shellról futtatja. Kövesse az alábbi lépéseket.
 
-1. Töltse le a [zip-fájlt](https://aka.ms/farmbeatspartnerscript) , és bontsa ki a helyi meghajtóra. A ZIP-fájlban két fájl található.
-2. Jelentkezzen be https://portal.azure.com/ és nyissa meg a Cloud Shell (ez a lehetőség a portál jobb felső sarkában érhető el)  
+1. Töltse le a [zip-fájlt](https://aka.ms/farmbeatspartnerscript), és bontsa ki a helyi meghajtóra. A zip-fájlban két fájl található.
+2. Jelentkezzen be https://portal.azure.com/, és nyissa meg Cloud Shell. Ez a beállítás a Azure Portal jobb felső sarkában található eszköztáron érhető el.
 
-    ![A Project Farm veri](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
+    ![Azure Portal eszköztár](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-3. Győződjön meg arról, hogy a környezet beállítása **PowerShell** – alapértelmezés szerint a bash értékre van állítva.
+3. Győződjön meg arról, hogy a környezet **PowerShell**-re van beállítva. Alapértelmezés szerint a bash értékre van beállítva.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
+    ![PowerShell eszköztár-beállítás](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-4. Töltse fel a két fájlt (a fenti 1. lépésből) a Cloud Shell.
+4. Töltse fel a két fájlt az 1. lépésben az Cloud Shell-példányban.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+    ![Eszköztár feltöltése gomb](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-5. Nyissa meg azt a könyvtárat, ahová a fájlok fel lettek töltve (alapértelmezés szerint a rendszer feltölti a > felhasználónévre).
+5. Nyissa meg azt a könyvtárat, ahová a fájlokat feltöltötte. Alapértelmezés szerint a rendszer feltölti őket a kezdőkönyvtár alá a Felhasználónév alatt.
 6. Futtassa a következő parancsfájlt:
 
     ```azurepowershell-interactive 
@@ -63,23 +62,23 @@ A hitelesítő adatokat úgy is létrehozhatja, hogy a parancsfájlt a Azure Clo
     ./generateCredentials.ps1   
 
     ```
-7. A képernyőn megjelenő utasításokat követve rögzítheti az értékeket. (API-végpont, bérlő azonosítója, ügyfél-azonosító, ügyfél titka és EventHub-kapcsolatok karakterlánca). A EventHub kapcsolati karakterlánc a hencegés API-válaszának részeként lesz elérhető.
+7. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont**, a **bérlői azonosító**, az **ügyfél-azonosító**, az **ügyfél titkos kulcsa**és a **EventHub kapcsolódási karakterláncának**értékét. A EventHub kapcsolati karakterlánc a hencegés API-válaszának részeként érhető el.
 
-**Az eszközök adatainak integrálása a generált hitelesítő adatok használatával**
+### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Az eszközök adatainak integrálása a generált hitelesítő adatok használatával
 
-A FarmBeats az előző szakaszban létrehozott hitelesítő adatokkal való összekapcsolásához látogasson el az eszköz partner portálra.
+A FarmBeats az előző szakaszban létrehozott hitelesítő adatokkal való összekapcsolásához nyissa meg az eszköz partner portálját:
 
- - API-végpont  
- - EventHub-kapcsolatok karakterlánca  
- - Ügyfél-azonosító  
- - Titkos ügyfélkulcs  
- - Bérlőazonosító  
+ - API-végpont
+ - EventHub-kapcsolatok karakterlánca
+ - Ügyfél-azonosító
+ - Titkos ügyfélkulcs
+ - Bérlőazonosító
 
  Az eszköz szolgáltatója megerősíti a sikeres integrációt. A megerősítést követően megtekintheti az összes eszközt és érzékelőt az Azure FarmBeats.
 
 ## <a name="view-devices-and-sensors"></a>Eszközök és érzékelők megtekintése
 
-A következő szakasz a farmban található eszközök és érzékelők megtekintésére használható.
+A következő szakasz segítségével megtekintheti a farm eszközeit és érzékelőit.
 
 ### <a name="view-devices"></a>Eszközök megtekintése
 
@@ -88,71 +87,71 @@ A FarmBeats jelenleg a következő eszközöket támogatja:
 - **Csomópont**: egy eszköz, amelyhez egy vagy több érzékelő csatlakozik.
 - **Átjáró**: egy eszköz, amelyhez egy vagy több csomópont csatlakozik.
 
-Ehhez a következő lépések szükségesek:
+Kövesse az alábbi lépéseket.
 
 1. A kezdőlapon válassza az **eszközök** lehetőséget a menüből.
-  Az eszközök lap megjeleníti az eszköz típusát, a modellt, az állapotot, a behelyezett farmot és a metaadatok utolsó frissítésének dátumát. Alapértelmezés szerint a farm oszlop értéke NULL. Dönthet úgy, hogy hozzárendel egy eszközt egy farmhoz. További információ: [eszközök kiosztása](#assign-devices).
-2. Válassza ki az eszközt, amely az eszközhöz csatlakoztatott eszköz tulajdonságait, telemetria és alárendelt eszközeit szeretné megtekinteni.  
+  Az **eszközök** lap megjeleníti az eszköz típusát, a modellt, az állapotot, a behelyezett farmot és a metaadatok utolsó frissítésének dátumát. Alapértelmezés szerint a farm oszlop értéke *Null*. Dönthet úgy, hogy hozzárendel egy eszközt egy farmhoz. További információ: [eszközök kiosztása](#assign-devices).
+2. Válassza ki az eszközt, amely az eszközhöz csatlakoztatott eszköz tulajdonságait, telemetria és alárendelt eszközeit szeretné megtekinteni.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
+    ![Eszközök lap](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
 
 ### <a name="view-sensors"></a>Érzékelők megtekintése
 
-Ehhez a következő lépések szükségesek:
+Kövesse az alábbi lépéseket.
 
 1. A kezdőlapon válassza a menü **érzékelők** elemét.
-  Az érzékelők lap az érzékelő típusával, a hozzá kapcsolódó farmtal, a fölérendelt eszközzel, a port nevével, a port típusával és a legutóbbi frissített állapottal kapcsolatos részleteket jeleníti meg.
+  Az **érzékelők** lap az érzékelő típusával, a hozzá kapcsolódó farmtal, a szülő eszközzel, a port nevével, a port típusával és az utolsó frissített állapottal kapcsolatos részleteket jeleníti meg.
 2. Válassza ki az érzékelő tulajdonságait, az aktív riasztásokat és a telemetria az érzékelőből.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
+    ![Érzékelők lap](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
 
 ## <a name="assign-devices"></a>Eszközök kiosztása  
 
-Miután megtörtént az érzékelők adatáramlása, hozzárendelheti azt a farmhoz, amelyben üzembe helyezte az érzékelőket.
+Az érzékelők bevezetésének folyamata után hozzárendelheti azt a farmhoz, ahol az érzékelőket üzembe helyezte.
 
-1. A kezdőlapon válassza a **farmok** lehetőséget a menüből, a **farmok** listája lap jelenik meg.  
-2. Válassza ki azt a farmot, amelyhez hozzá szeretné rendelni az eszközt, majd válassza az **eszközök hozzáadása**lehetőséget.  
+1. A kezdőlapon válassza a **farmok** lehetőséget a menüből. Megjelenik a **farmok** listája lap.
+2. Válassza ki azt a farmot, amelyhez hozzá szeretné rendelni az eszközt, majd válassza az **eszközök hozzáadása**lehetőséget.
 3. Megjelenik az **eszközök hozzáadása** ablak. Válassza ki azt az eszközt, amelyet hozzá szeretne rendelni a farmhoz.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Eszközök hozzáadása ablak](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
-4. Válassza az **eszközök hozzáadása**lehetőséget. Másik lehetőségként lépjen az **eszközök** menüre, válassza ki a farmhoz hozzárendelni kívánt eszközöket, majd válassza az **eszközök társítása**lehetőséget.  
-5. Az **eszközök hozzárendelése** ablakban válassza ki a farmot a legördülő listából, és válassza az **összes alkalmazása** lehetőséget a farm összes kiválasztott eszközhöz való hozzárendeléséhez.
+4. Válassza az **eszközök hozzáadása**lehetőséget. Másik lehetőségként lépjen az **eszközök** menüre, válassza ki a farmhoz hozzárendelni kívánt eszközöket, majd válassza az **eszközök társítása**lehetőséget.
+5. Az **eszközök hozzárendelése** ablakban válassza ki a farm elemet a legördülő listából, és válassza az **összes alkalmazása** lehetőséget a farm összes kiválasztott eszközhöz való hozzárendeléséhez.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
+    ![Eszközök hozzárendelése ablak](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
 
-6. Ha az egyes eszközöket egy másik farmhoz szeretné társítani, válassza a **hozzárendelés farmhoz** oszlop legördülő listát, és válassza ki az egyes eszközök sorához tartozó farmokat.  
+6. Ha az egyes eszközöket egy másik farmhoz szeretné társítani, válassza a **hozzárendelés farmhoz** oszlop legördülő nyilát, és válasszon ki egy farmot az egyes eszközök sorához.
 7. Válassza a **hozzárendelés** lehetőséget az eszköz hozzárendelésének befejezéséhez.
 
 ### <a name="visualize-sensor-data"></a>Érzékelők adatmegjelenítése
 
-Ehhez a következő lépések szükségesek:
+Kövesse az alábbi lépéseket.
 
-1. A Kezdőlap lapon válassza a **farmok** lehetőséget a menüből a **farmok** oldal megtekintéséhez.  
-2. Válassza ki azt a **farmot** , amelynek az érzékelőjét meg szeretné jeleníteni.  
-3. A **Farm** irányítópultján megtekintheti a telemetria-adatbázisokat. Dönthet úgy, hogy élő telemetria jelenít meg, vagy **Egyéni tartományt** használ egy adott dátumtartomány megtekintéséhez.
+1. A Kezdőlap lapon válassza a **farmok** lehetőséget a menüből a **farmok** oldal megtekintéséhez.
+2. Válassza ki azt a **farmot** , amelynek az érzékelőjét meg szeretné jeleníteni.
+3. A **Farm** irányítópultján megtekintheti a telemetria-adatbázisokat. Megtekintheti az élő telemetria, vagy az **egyéni tartomány** használatával megtekintheti a kívánt dátumtartományt.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
+    ![Farm irányítópult](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
 
-## <a name="delete-sensor"></a>Érzékelő törlése
+## <a name="delete-a-sensor"></a>Érzékelő törlése
 
-Kövesse az alábbi lépéseket:
+Kövesse az alábbi lépéseket.
 
-1. A kezdőlapon válassza az **érzékelők** lehetőséget a menüből az **érzékelők** lap megtekintéséhez.  
-2. Válassza ki a törölni kívánt eszközt, és válassza a **Törlés** a megerősítési ablakban lehetőséget.
+1. A kezdőlapon válassza az **érzékelők** lehetőséget a menüből az **érzékelők** lap megtekintéséhez.
+2. Válassza ki a törölni kívánt eszközt, és válassza a **Törlés** lehetőséget a megerősítő ablakban.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
+    ![Törlés gomb](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
 
-Egy megerősítő üzenet azt mutatja, hogy az érzékelő sikeresen törölve lett.  
+Egy megerősítő üzenet azt mutatja, hogy az érzékelő sikeresen törölve lett.
 
 ## <a name="delete-devices"></a>Eszközök törlése
 
-Kövesse az alábbi lépéseket:
+Kövesse az alábbi lépéseket.
 
-1. A kezdőlapon válassza az **eszközök** lehetőséget a menüben az eszközök lap megtekintéséhez.  
+1. A kezdőlapon válassza az **eszközök** lehetőséget a menüben az **eszközök** lap megtekintéséhez.
 2. Válassza ki a törölni kívánt eszközt, és válassza a **Törlés** lehetőséget a megerősítő ablakban.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
+    ![Törlés gomb](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

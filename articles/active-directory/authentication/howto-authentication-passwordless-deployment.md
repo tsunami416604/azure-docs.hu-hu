@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b6f07e1dd8e9252d2b6e00b85a47ba2e19f8bd8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0eb8398decd1a447d0676195d6369cdc7e791e40
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603457"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848493"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Jelszóval nem rendelkező hitelesítési telepítés befejezése
 
@@ -51,7 +51,7 @@ A Microsoft jelszavas hitelesítési módszerei különböző forgatókönyveket
 
 ### <a name="passwordless-authentication-scenarios"></a>Jelszóval nem rendelkező hitelesítési forgatókönyvek
 
-| Forgatókönyv | Telefonos hitelesítés | Biztonsági kulcsok | Vállalati Windows Hello |
+| Alkalmazási helyzet | Telefonos hitelesítés | Biztonsági kulcsok | Vállalati Windows Hello |
 | --- | --- | --- | --- |
 | **Számítógép bejelentkezés**: <br> Hozzárendelt Windows 10-es eszközről | **Nem** | **Igen** <br> Biometrikus kóddal | **Igen**<br>biometrikus felismeréssel és PIN-kóddal |
 | **Számítógép bejelentkezés**: <br> Megosztott Windows 10-es eszközről | **Nem** | **Igen** <br> Biometrikus kóddal  | **Nem** |
@@ -61,7 +61,7 @@ A Microsoft jelszavas hitelesítési módszerei különböző forgatókönyveket
 
 ### <a name="technical-considerations-for-the-microsoft-authenticator-app"></a>Technikai megfontolások a Microsoft Authenticator alkalmazáshoz
 
-**AD FS integráció** – ha egy felhasználó engedélyezi a jelszóval nem rendelkező Microsoft Authenticator hitelesítő adatokat, akkor az adott felhasználó számára a hitelesítés jóváhagyás céljából elküld egy értesítést. A hibrid bérlőben lévő felhasználókat a rendszer nem irányítja át az ADFS-be a bejelentkezéshez, kivéve, ha a "jelszó használata helyett" lehetőséget választja. Ez a folyamat megkerüli a helyszíni feltételes hozzáférési szabályzatokat és a továbbított hitelesítési folyamatokat is. Ha azonban meg van adva egy login_hint, a rendszer továbbítja a felhasználót az ADFS-nek, és megkerüli a jelszóval nem rendelkező hitelesítő adatok használatára vonatkozó lehetőséget.
+**AD FS integráció** – ha egy felhasználó engedélyezi a jelszóval nem rendelkező Microsoft Authenticator hitelesítő adatokat, akkor az adott felhasználó számára a hitelesítés jóváhagyás céljából elküld egy értesítést. A hibrid bérlőben lévő felhasználókat a rendszer nem irányítja át az ADFS-be a bejelentkezéshez, kivéve, ha a "jelszó használata helyett" lehetőséget választja. Ez a folyamat megkerüli a helyszíni feltételes hozzáférési szabályzatokat és a továbbított hitelesítési folyamatokat is. Ha azonban login_hint van megadva, a rendszer továbbítja a felhasználót az ADFS-nek, és megkerüli a jelszóval nem rendelkező hitelesítő adatok használatára vonatkozó lehetőséget.
 
 **Azure MFA-kiszolgáló** – az MFA számára a szervezet helyszíni Azure MFA-kiszolgálóján keresztül engedélyezett végfelhasználók továbbra is létrehozhatnak és használhatnak egyszeri jelszó nélküli telefonos bejelentkezési hitelesítő adatokat. Ha a felhasználó a hitelesítő adatokkal rendelkező Microsoft Authenticator több telepítésének (5 +) frissítését kísérli meg, ez a változás hibát okozhat.
 
@@ -125,7 +125,7 @@ A jelszó nélküli hitelesítéshez nem kell további díjat fizetni, bár bizo
 
 Vegye figyelembe az üzleti igényeket és az egyes hitelesítési módszerek használati eseteit. Ezután válassza ki az igényeinek leginkább megfelelő módszert.
 
-### <a name="use-cases"></a>Használati esetek
+### <a name="use-cases"></a>Használati példák
 
 Az alábbi táblázat a projekt során megvalósítandó használati eseteket ismerteti.
 
@@ -133,7 +133,7 @@ Az alábbi táblázat a projekt során megvalósítandó használati eseteket is
 | --- | --- |
 | **Access (Hozzáférés)** | A jelszó nélküli bejelentkezés a vállalati hálózaton belüli vagy kívüli vállalati vagy személyes eszközről érhető el. |
 | **Naplózás** | A használati adatok a rendszergazdák számára a közel valós időben történő naplózáshoz érhetők el. <br> A használati adatokat legalább 29 naponta letölti a vállalati rendszerbe, vagy az SIEM eszközt használja. |
-| **Cégirányítási** | A megfelelő hitelesítési módszerhez és a társított csoportokhoz tartozó felhasználói hozzárendelések életciklusa definiálva és figyelve van. |
+| **Cégirányítás** | A megfelelő hitelesítési módszerhez és a társított csoportokhoz tartozó felhasználói hozzárendelések életciklusa definiálva és figyelve van. |
 | **Biztonság** | A megfelelő hitelesítési módszerhez való hozzáférés a felhasználók és csoportok hozzárendelésein keresztül vezérelhető. <br> Csak a jogosultsággal rendelkező felhasználók használhatják a jelszó nélküli bejelentkezést. |
 | **Teljesítmény** | A hozzáférési hozzárendelések terjesztési ütemterveit dokumentálják és figyelik. <br> A bejelentkezési idő mérése egyszerű használat érdekében történik. |
 | **Felhasználói élmény** | A felhasználók tisztában vannak a mobil kompatibilitással. <br> A felhasználók megadhatják a hitelesítő alkalmazás jelszavas bejelentkezését. |
@@ -154,7 +154,7 @@ A végfelhasználók felé irányuló kommunikációhoz a következőkre lesz sz
 - [Regisztrálás a Microsoft Authenticator alkalmazásban](howto-authentication-passwordless-phone.md)
 - [Bejelentkezés telefonnal](../user-help/user-help-auth-app-sign-in.md)
 
-A Microsoft MFA [kommunikációs sablonokat](https://aka.ms/mfatemplates), önkiszolgáló jelszó-visszaállítási (SSPR) [kommunikációs sablonokat](https://www.microsoft.com/download/details.aspx?id=56768)és [végfelhasználói dokumentációt](../user-help/security-info-setup-signin.md) biztosít a kommunikáció megtervezéséhez. Az adott oldalon található biztonsági információk hivatkozásaira kattintva a felhasználók közvetlenül regisztrálhatnak [https://myprofile.microsoft.comra](https://myprofile.microsoft.com/) .
+A Microsoft MFA [kommunikációs sablonokat](https://aka.ms/mfatemplates), önkiszolgáló jelszó-visszaállítási (SSPR) [kommunikációs sablonokat](https://www.microsoft.com/download/details.aspx?id=56768)és [végfelhasználói dokumentációt](../user-help/security-info-setup-signin.md) biztosít a kommunikáció megtervezéséhez. Az adott oldalon található biztonsági információk hivatkozásaira kattintva a felhasználók közvetlenül regisztrálhatnak [https://myprofile.microsoft.com ra](https://myprofile.microsoft.com/) .
 
 ### <a name="testing-passwordless"></a>Jelszóval való tesztelés
 
@@ -164,7 +164,7 @@ Az üzembe helyezés minden egyes fázisában ellenőrizze, hogy az eredmények 
 
 Az alábbiakban a Microsoft Authenticator alkalmazással való jelszavas hitelesítésre vonatkozó példákat vizsgáljuk.
 
-| Forgatókönyv | Várt eredmények |
+| Alkalmazási helyzet | Várt eredmények |
 | --- | --- |
 | A felhasználó regisztrálhat Microsoft Authenticator alkalmazást | A felhasználó regisztrálhatja az alkalmazást a aka.ms/mysecurityinfo |
 | A felhasználó engedélyezheti a telefonos bejelentkezést | A munkahelyi fiókhoz konfigurált telefonos bejelentkezés |
@@ -178,7 +178,7 @@ A következő példák tesztelési eseteket biztosítanak a biztonsági kulcsokk
 
 **Jelszó nélküli, Azure Active Directory csatlakoztatott Windows 10-es eszközökhöz**
 
-| Forgatókönyv | Várt eredmények |
+| Alkalmazási helyzet | Várt eredmények |
 | --- | --- |
 | A felhasználó regisztrálhat FIDO2 eszközt (1809) | A felhasználó regisztrálhat FIDO2-eszközt a beállítások > fiókok > bejelentkezési beállítások > biztonsági kulcs |
 | A felhasználó alaphelyzetbe állíthatja a FIDO2 eszközt (1809) | A felhasználó alaphelyzetbe állíthatja a FIDO2 eszközt gyártó szoftverrel |
@@ -189,7 +189,7 @@ A következő példák tesztelési eseteket biztosítanak a biztonsági kulcsokk
 
 **Jelszó nélküli, bejelentkezés az Azure AD web appsbe**
 
-| Forgatókönyv | Várt eredmények |
+| Alkalmazási helyzet | Várt eredmények |
 | --- | --- |
 | A felhasználó regisztrálhat FIDO2-eszközt a aka.ms/mysecurityinfo-on a Microsoft Edge használatával | A regisztrációnak sikeresnek kell lennie |
 | A felhasználó regisztrálhat FIDO2-eszközt a aka.ms/mysecurityinfo-on a Firefox használatával | A regisztrációnak sikeresnek kell lennie |
@@ -260,7 +260,7 @@ Kövesse a cikk lépéseit, [engedélyezze a jelszó nélküli biztonsági kulcs
 
 ### <a name="troubleshoot-phone-sign-in"></a>Telefonos bejelentkezés – problémamegoldás
 
-| Forgatókönyv | Megoldás |
+| Alkalmazási helyzet | Megoldás |
 | --- | --- |
 | A felhasználó nem tudja végrehajtani a kombinált regisztrációt | Győződjön meg arról, hogy a [kombinált regisztráció](concept-registration-mfa-sspr-combined.md) engedélyezve van. |
 | A felhasználó nem engedélyezheti a telefonos bejelentkezési hitelesítő alkalmazást | Győződjön meg arról, hogy a felhasználó hatókörben van a telepítéshez |
@@ -268,7 +268,7 @@ Kövesse a cikk lépéseit, [engedélyezze a jelszó nélküli biztonsági kulcs
 
 ### <a name="troubleshoot-security-key-sign-in"></a>Biztonsági kulcs bejelentkezésének hibakeresése
 
-| Forgatókönyv | Megoldás |
+| Alkalmazási helyzet | Megoldás |
 | --- | --- |
 | A felhasználó nem tudja végrehajtani a kombinált regisztrációt | Győződjön meg arról, hogy a [kombinált regisztráció](concept-registration-mfa-sspr-combined.md) engedélyezve van. |
 | A felhasználó nem adhat hozzá biztonsági kulcsot a [biztonsági beállításokban](https://aka.ms/mysecurityinfo) | Győződjön meg arról, hogy a [biztonsági kulcsok](howto-authentication-passwordless-security-key.md) engedélyezve vannak. |
@@ -276,9 +276,9 @@ Kövesse a cikk lépéseit, [engedélyezze a jelszó nélküli biztonsági kulcs
 | **Hibaüzenet**: azt észlelte, hogy ez a böngésző vagy operációs rendszer nem támogatja a FIDO2 biztonsági kulcsait. | A jelszó nélküli FIDO2 biztonsági eszközöket csak a támogatott böngészőkben (a Microsoft Edge, a Firefox 67-es verziójában) lehet regisztrálni a Windows 10 1809-es vagy újabb verziójában. |
 | **Hibaüzenet**: a vállalati házirend megköveteli, hogy más módszert használjon a bejelentkezéshez. | A nem biztos, hogy a biztonsági kulcsok engedélyezve vannak a bérlőben. |
 | A Windows 10 1809-es verziójában a felhasználó nem tudja kezelni a biztonsági kulcsot | Az 1809-es verzió használatához a FIDO2 kulcs gyártója által biztosított biztonsági kulcs-felügyeleti szoftvert kell használnia. Támogatásért forduljon a gyártóhoz. |
-| Azt hiszem, hogy a FIDO2 biztonsági kulcsa hibás lehet – hogyan tesztelhető | Lépjen a [https://webauthntest.azurewebsites.net/re ](https://webauthntest.azurewebsites.net/), adja meg a tesztelési fiók hitelesítő adatait, csatlakoztassa a gyanús biztonsági kulcsot, kattintson a képernyő jobb felső részén található + gombra, kattintson a Létrehozás gombra, és folytassa a létrehozás folyamatát. Ha ez a forgatókönyv meghiúsul, lehetséges, hogy az eszköz hibás. |
+| Azt hiszem, hogy a FIDO2 biztonsági kulcsa hibás lehet – hogyan tesztelhető | Lépjen a [https://webauthntest.azurewebsites.net/ re ](https://webauthntest.azurewebsites.net/), adja meg a tesztelési fiók hitelesítő adatait, csatlakoztassa a gyanús biztonsági kulcsot, kattintson a képernyő jobb felső részén található + gombra, kattintson a Létrehozás gombra, és folytassa a létrehozás folyamatát. Ha ez a forgatókönyv meghiúsul, lehetséges, hogy az eszköz hibás. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Jelszó nélküli biztonsági kulcsok engedélyezése az Azure AD-ba való bejelentkezéshez](howto-authentication-passwordless-security-key.md)
 - [Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással](howto-authentication-passwordless-phone.md)

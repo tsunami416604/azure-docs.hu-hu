@@ -5,17 +5,17 @@ keywords: PowerShell DSC, a kívánt állapot konfigurációja, PowerShell DSC A
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 08/21/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d9d16d9d9967af5bf8f9e13406e13d5637325f52
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e9552adad1f15422eb60c34f2548324aeb03ee74
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243355"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849564"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>DSC-konfigurációk összeállítása Azure Automation állapot-konfigurációban (DSC) összetett erőforrások használatával
 
@@ -28,7 +28,7 @@ Miután importálta az összetett erőforrásokat az Automation-fiókjába, hasz
 
 A Azure Portal összetett erőforrásaiból származó konfiguráció hozzárendeléséhez létre kell hoznia azt. Ez az **állapot-konfiguráció (DSC)** lapon található összeállítási **konfiguráció** használatával végezhető el, a **konfigurációk** vagy a **lefordított konfigurációk** lapjain.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A bal oldalon kattintson az **összes erőforrás** elemre, majd az Automation-fiók nevére.
 1. Az **Automation-fiók** lapon válassza az **állapot konfigurálása (DSC)** lehetőséget a **konfiguráció kezelése**területen.
 1. Az **állapot-konfiguráció (DSC)** lapon kattintson a **konfigurációk** vagy a **lefordított konfigurációk** fülre, majd kattintson a **konfiguráció összeállítása** lehetőségre a lap tetején található menüben.

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6261de14f80f966718507d2d3506e55db9786df9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f9f6fd2a01cdb325d543bc624d0c13bce1d84a02
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74785857"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848238"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Egy felhasználó kétlépéses ellenőrzésének megkövetelése
 
@@ -59,8 +59,8 @@ Az összes felhasználó *le van tiltva*. Amikor felhasználókat regisztrál az
 A következő lépésekkel érheti el az oldalt, amelyen megtekintheti és kezelheti a felhasználói állapotokat:
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
-2. Keresse meg és válassza ki a *Azure Active Directory*. Válassza a **felhasználók** > **minden felhasználó**lehetőséget.
-3. Válassza a **multi-Factor Authentication**lehetőséget.
+2. Keresse meg és válassza ki a *Azure Active Directory*. Válassza a **Felhasználók** > **Minden felhasználó** lehetőséget.
+3. Válassza a **Multi-Factor Authentication** lehetőséget.
    ![válassza ki a Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
 4. Megnyílik egy új oldal, amely megjeleníti a felhasználói állapotokat.
    ![multi-Factor Authentication felhasználói állapot – képernyőfelvétel](./media/howto-mfa-userstates/userstate1.png)

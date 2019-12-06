@@ -1,23 +1,23 @@
 ---
-title: Azure Automation-runbookok a metrikákhoz kapcsolódó riasztások figyelése
-description: Ez a cikk végigvezeti a figyelési metrikákat engedményt-alapú Azure Automation-runbookok
+title: Azure Automation runbookok figyelése metrikus riasztásokkal
+description: Ez a cikk végigvezeti a monitorozási Azure Automation runbookok a metrikák alapján
 services: automation
 ms.service: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 142fb84624c2b0d3d92868aae5794792ed90b577
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: bea99820bee107b8329dd3c36ac3ceb84a042b86
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478007"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850975"
 ---
-# <a name="monitoring-runbooks-with-metric-alerts"></a>Figyelési forgatókönyvek az metrikákhoz kapcsolódó riasztások
+# <a name="monitoring-runbooks-with-metric-alerts"></a>Runbookok figyelése metrikus riasztásokkal
 
-Ebből a cikkből megismerheti, hogyan hozhat létre riasztásokat a runbookok befejezési állapota alapján.
+Ebből a cikkből megtudhatja, hogyan hozhat létre riasztásokat a runbookok befejezési állapota alapján.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -25,63 +25,63 @@ Jelentkezzen be az Azure-ba a https://portal.azure.com címen.
 
 ## <a name="create-alert"></a>Riasztás létrehozása
 
-Riasztások lehetővé teszik olyan feltétellel, hogy figyelje a és a egy adott feltétel teljesülése esetén végrehajtandó műveletet.
+A riasztások lehetővé teszik, hogy megadjon egy feltételt a figyeléshez, valamint egy műveletet, amely a feltétel teljesülése esetén végrehajtandó.
 
-Az Azure Portalon lépjen az Automation-fiók. A **figyelés**válassza **riasztások** kattintson **+ Új riasztási szabály**. A cél a hatókör már definiálva van az Automation-fiókhoz.
+A Azure Portal navigáljon az Automation-fiókjához. A **figyelés**területen válassza a **riasztások** elemet, majd kattintson az **+ új riasztási szabály**elemre. A cél hatóköre már definiálva van az Automation-fiókhoz.
 
 ### <a name="configure-alert-criteria"></a>Riasztási feltételek konfigurálása
 
-1. Kattintson a **+ feltétel hozzáadása**. Válassza ki **metrikák** a a **jel típusa**, és válassza ki **feladatok száma összesen** a táblából.
+1. Kattintson a **+ feltételek hozzáadása**lehetőségre. Válassza a **mérőszámok** lehetőséget a **jel típusához**, és válassza a **teljes feladatok** elemet a táblából.
 
-2. A **jellogika konfigurálása** lap, ahol megadhatja a logikát, amely aktiválja a riasztást. A korábbi grafikon, lehetősége lesz két dimenzió alatt **Runbook neve** és **állapot**. Dimenzió egy metrikát, szűrheti az eredményeket használható különböző tulajdonságai áll. A **Runbook neve**, válassza ki a riasztás, vagy hagyja üresen a riasztás a runbookok összes runbookot. A **állapot**, a figyelni kívánt legördülő listából válassza ki az állapotot. A runbook nevét és állapotát a legördülő listában megjelenő értékei csak a múlt héten futtatott feladatokhoz.
+2. A **jel logikai beállítása** oldalon megadhatja a riasztást kiváltó logikát. A korábbi gráfban két dimenziót, a **Runbook nevét** és **állapotát**mutatjuk be. A méretek az eredmények szűrésére szolgáló metrika különböző tulajdonságai. A **Runbook neve**mezőben válassza ki azt a Runbook, amelyről riasztást szeretne kapni, vagy hagyja üresen a riasztást az összes runbookok. Az **állapot**beállításnál válasszon ki egy állapotot a figyelni kívánt legördülő listából. A legördülő listában megjelenő runbook neve és állapota csak az elmúlt héten futtatott feladatokhoz használható.
 
-   Ha szeretne riasztást az állapot vagy a runbookot, amely nem jelenik meg a legördülő listában, kattintson a **\+** mellett a dimenzió. Ezzel megnyílik egy párbeszédpanel, amely lehetővé teszi, hogy az egyéni érték, amely nem ehhez a dimenzióhoz nemrégiben kibocsátott adja meg. Ha megad egy értéket, amely a riasztás nem aktiválódik, a tulajdonság nem létezik.
+   Ha olyan állapotra vagy runbook szeretne riasztást kapni, amely nem jelenik meg a legördülő listában, kattintson a dimenzió melletti **\+** . Ez a művelet egy olyan párbeszédpanelt nyit meg, amely lehetővé teszi egy egyéni érték megadását, amely az adott dimenzióhoz még nem lett kibocsátva a közelmúltban. Ha olyan értéket ad meg, amely nem létezik olyan tulajdonsághoz, amelyet a riasztás nem indít el.
 
    > [!NOTE]
-   > Ha nem alkalmaz egy nevet a **RunbookName** dimenzió, a runbookokat, amelyek megfelelnek az állapot által rejtett rendszer runbookokat tartalmazó esetén riasztást kap.
+   > Ha nem alkalmaz nevet a **RunbookName** -dimenzióhoz, ha vannak olyan runbookok, amelyek megfelelnek az állapot feltételeinek, ami magában foglalja a rejtett rendszer runbookok, riasztást fog kapni.
 
-3. A **riasztási logika**, meghatározott feltétel és a riasztás küszöbértéke. A megadott feltétel előnézete alatt jelenik meg.
+3. A **riasztási logika**szakaszban adja meg a riasztás feltételét és küszöbértékét. A feltétel megadott előnézete az alábbi ábrán látható.
 
-4. A **alapján Evaluated**, a lekérdezés az időszak kiválasztása, és milyen gyakran szeretné, hogy a lekérdezést futtatta. Például, ha úgy dönt, **az utolsó 5 percben** a **időszak** és **át 1 perces** a **gyakorisága**, a riasztás néz ki, maximális száma a runbookok az elmúlt 5 percben, amely teljesíti a feltételeket. Ez a lekérdezés percenként fut, és a egy 5 perces időszak már nem található a meghatározott riasztási kritériumok, ha a riasztás feloldása magát. Ha végzett, kattintson a **Kész** gombra.
+4. A **kiértékelve**alapján területen válassza ki a lekérdezés TimeSpan, és azt, hogy milyen gyakran szeretné futtatni a lekérdezést. Ha például **az elmúlt 5 percben** az **időtartam** és **1 percenként** lehetőséget **választja, a**riasztás a feltételnek az elmúlt 5 percben teljesített runbookok számát keresi. A lekérdezés percenként fut, és ha a megadott riasztási feltételek már nem találhatók meg egy 5 perces ablakban, a riasztás feloldja magát. Ha végzett, kattintson a **Kész** gombra.
 
-   ![Válasszon ki egy erőforrást a riasztás](./media/automation-alert-activity-log/configure-signal-logic.png)
+   ![Válasszon ki egy erőforrást a riasztáshoz](./media/automation-alert-activity-log/configure-signal-logic.png)
 
 ### <a name="define-alert-details"></a>Riasztás részleteinek megadása
 
-1. A **2. Riasztás részleteinek megadása** szakaszban adja meg a riasztás rövid nevét és leírását. Állítsa be a **súlyossági** megfelelően a riasztási feltételt. Nincsenek öt súlyossági szint esetén csak 0 és 5 közötti. A riasztások kezeli az a súlyossági azonos független, egyeztetéséhez az üzleti logikára megfelelő súlyossági.
+1. A **2. résznél. Adja meg a riasztás részleteit**, adjon meg egy rövid nevet és egy leírást. Állítsa be a **súlyosságot** a riasztási feltételnek megfelelően. A 0 és 5 közötti értékben öt megszakítás áll fenn. A riasztásokat a súlyosságtól függetlenül kezeli a rendszer, így a súlyossága megegyezik az üzleti logikával.
 
-1. A szakasz alján van egy gombot, amely lehetővé teszi, hogy a telepítést a szabály engedélyezése. Alapértelmezés szerint a szabályok engedélyezve van létrehozásakor. Ha nem lehetőséget választja, a riasztást hozhat létre, és akkor jön létre egy **letiltott** állapota. Az a **szabályok** oldal az Azure monitorban kiválasztja, és kattintson a **engedélyezése** engedélyezéséhez a riasztás, ha készen áll.
+1. A szakasz alján egy gomb, amely lehetővé teszi, hogy a szabályt a befejezés után engedélyezze. Alapértelmezés szerint a szabályok engedélyezve vannak a létrehozáskor. Ha a nem lehetőséget választja, létrehozhatja a riasztást, és **letiltott** állapotban is létrehozhatja. A Azure Monitor **szabályok** lapján kiválaszthatja, majd az **Engedélyezés** lehetőségre kattintva engedélyezheti a riasztást, ha elkészült.
 
-### <a name="define-the-action-to-take"></a>Adja meg az elvégzendő műveletet
+### <a name="define-the-action-to-take"></a>A végrehajtandó művelet megadása
 
-1. A **3. Műveleti csoport megadása** szakaszban kattintson az **+ Új műveletcsoport** gombra. Műveletcsoport olyan műveletek, amelyek között több riasztás is használhatja. Ezek tartalmazhatnak, de nem kizárólagosan, e-mail-értesítések, runbookok, webhookok és sok más. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/platform/action-groups.md) szóló cikkben talál.
+1. **3. alatt. Adja meg a műveleti csoportot**, majd kattintson az **+ új műveleti csoport**elemre. A műveleti csoport olyan műveletek csoportja, amelyek több riasztáson is használhatók. Ezek lehetnek például a következők: e-mail-értesítések, runbookok, webhookok és sok más. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/platform/action-groups.md) szóló cikkben talál.
 
 1. A **Műveletcsoport neve** mezőben adjon meg egy felhasználóbarát és egy rövid nevet. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
 
-1. Az a **műveletek** szakaszba **MŰVELETTÍPUS**válassza **e-mailek és SMS és leküldéses/Hangvétel**.
+1. A **műveletek** szakasz **Művelettípus**területén válassza az **E-mail/SMS/leküldés/hang**lehetőséget.
 
 1. Az **E-mail/SMS/Leküldés/Hang** oldalon adjon meg egy nevet. Jelölje be az **E-mail** jelölőnégyzetet, és adja meg a használni kívánt érvényes e-mail-címet.
 
    ![E-mail konfigurálása műveletcsoport](./media/automation-alert-activity-log/add-action-group.png)
 
-1. Kattintson az **OK** gombra az **E-mail/SMS/Leküldés/Hang** oldalon az oldal, majd az **OK** gombra a **Műveletcsoport hozzáadása** oldal bezárásához. Ezen a lapon megadott név a program menti a **MŰVELETNÉV**.
+1. Kattintson az **OK** gombra az **E-mail/SMS/Leküldés/Hang** oldalon az oldal, majd az **OK** gombra a **Műveletcsoport hozzáadása** oldal bezárásához. Az ezen a lapon megadott nevet a **művelet neveként**menti a rendszer.
 
-1. Amikor végzett, kattintson a **Mentés** gombra. Ez a művelet létrehozza a szabály, amely riasztást küld, amikor egy runbook egyes állapottal fejeződött be.
+1. Amikor végzett, kattintson a **Mentés** gombra. Ez a művelet létrehozza azt a szabályt, amely riasztást küld, ha egy runbook bizonyos állapottal fejeződött be.
 
 > [!NOTE]
-> Való hozzáadásakor egy e-mail-cím műveletcsoportot, egy értesítés e-mailt küld arról, hogy a cím műveletcsoport bővült.
+> E-mail-cím műveleti csoportba való felvételekor a rendszer értesítő e-mailt küld, amely megadja, hogy a cím hozzá lett adva egy műveleti csoporthoz.
 
 ## <a name="notification"></a>Értesítés
 
-Amikor a riasztási feltétel teljesül, a műveletcsoport fut definiált műveletet. Ez a cikk a példában egy e-mail lesz elküldve. Az alábbi képen egy példa egy e-mailt kap, miután a riasztás akkor aktiválódik,:
+Ha a riasztási feltételek teljesülnek, a műveleti csoport futtatja a megadott műveletet. Ebben a cikkben egy e-mailt küldünk. Az alábbi képen egy példa látható a riasztás elindítása után kapott e-mailekre:
 
-![Értesítő e-mail](./media/automation-alert-activity-log/alert-email.png)
+![E-mail riasztás](./media/automation-alert-activity-log/alert-email.png)
 
-Miután a metrika már nem kívül a meghatározott küszöbértéket, a riasztás inaktiválása, és a műveletcsoport fut definiált műveletet. Ha egy e-mail-művelet típusa van kijelölve, a feloldási e-mailt küld arról, hogy megoldódott.
+Ha a metrika már nem a meghatározott küszöbértéken kívül esik, a rendszer inaktiválja a riasztást, és a műveleti csoport futtatja a definiált műveletet. Ha egy e-mail-Művelettípus van kiválasztva, a rendszer elküld egy feloldási e-mailt, amely megoldódott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Folytassa a következő cikket, hogy alertings integrálhatja azokat az Automation-fiók egyéb módjaival kapcsolatos.
+Az alábbi cikkből megtudhatja, hogyan integrálhatja a riasztásokat az Automation-fiókjába.
 
 > [!div class="nextstepaction"]
-> [Használjon olyan riasztást, egy Azure Automation-runbook elindítása](automation-create-alert-triggered-runbook.md)
+> [Azure Automation runbook elindítására szolgáló riasztás használata](automation-create-alert-triggered-runbook.md)

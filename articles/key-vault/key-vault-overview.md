@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6b59995dc09c0ecf1e5700d8337bd30074083f76
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cd6cbf21a392f68db707b9c0184320316d45ffe
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73483916"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851026"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
 
@@ -24,7 +24,7 @@ A Azure Key Vault a következő problémák megoldásában nyújt segítséget:
 - **Titkos kódok kezelése** – Az Azure Key Vaulttal biztonságosan tárolhatók a jogkivonatok, jelszavak, tanúsítványok, API-kulcsok és egyéb titkos kulcsok, valamint szigorúan szabályozható az ezekhez való hozzáférés
 - **Kulcskezelés** – Az Azure Key Vault kulcskezelési megoldásként is használható. Az Azure Key Vaulttal egyszerűen létrehozhatja és vezérelheti az adatok titkosításához használt titkosítási kulcsokat. 
 - **Tanúsítványkezelés** – Az Azure Key Vault egyben egy olyan szolgáltatás is, amellyel egyszerűen építhet ki, kezelhet és helyezhet üzembe az Azure-ral és a belső csatlakoztatott erőforrásokkal használható nyilvános és privát SSL- és TLS-tanúsítványokat. 
-- **Hardveres biztonsági modullal támogatott titkos kulcsok tárolása** – A titkos kulcsok és a kulcsok védelmét szoftverek vagy a 2. szintű FIPS 140-2 szerint érvényesített hardveres biztonsági modulok (HSM-ek) is biztosíthatják
+- A **hardveres biztonsági modulok által támogatott titkos kulcsok tárolása** – a titkokat és a kulcsokat a szoftver vagy az FIPS 140-2 2. szintű ellenőrzött HSM védi.
 
 ## <a name="why-use-azure-key-vault"></a>Miért érdemes az Azure Key Vaultot használni?
 
@@ -58,9 +58,9 @@ Engedélyekkel rendelkezik a naplók felett, és meg is védheti őket a hozzáf
 
 ### <a name="simplified-administration-of-application-secrets"></a>A titkos alkalmazáskulcsok egyszerűsített adminisztrációja
 
-Értékes adatok tárolásakor el kell végeznie néhány lépést. A biztonsági információknak védettnek kell lenniük, meg kell tartaniuk egy életciklust, és a szolgáltatásnak nagyon fontosnak kell lennie. Azure Key Vault leegyszerűsíti az alábbi követelmények teljesítésének folyamatát:
+Értékes adatok tárolásakor el kell végeznie néhány lépést. A biztonsági információknak védettnek kell lenniük, meg kell tartaniuk egy életciklust, és a szolgáltatásnak erősen elérhetőnek kell lennie. Azure Key Vault leegyszerűsíti az alábbi követelmények teljesítésének folyamatát:
 
-- Nem lesz többé szükség a hardveres biztonsági modulok (HSM-ek) házon belüli ismeretére
+- A hardveres biztonsági modulok belső ismeretének szükségessége.
 - Rendkívül gyorsan igazodik a vállalata használati igényeiben jelentkező növekedésekhez.
 - A kulcstartója tartalmát egy régión belül és egy másodlagos régióba replikálja. Az adatreplikáció biztosítja a magas rendelkezésre állást, és elveszi a rendszergazda által a feladatátvétel elindításához szükséges bármilyen művelet szükségességét.
 - Standard Azure felügyeleti lehetőségeket biztosít a Portal, az Azure CLI és a PowerShell segítségével.
@@ -77,7 +77,7 @@ Az Azure-beli Biztonságos tár Key Vault a következő forgatókönyvek egyszer
 
 A Key Vault integrálható tárfiókokkal, eseményközpontokkal és a naplóelemzéssel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: Azure Key Vault-kulcstartó létrehozása a parancssori felülettel](quick-create-cli.md)
 - [Azure-webalkalmazások konfigurálása a Key Vault titkos kulcsainak olvasásához](tutorial-web-application-keyvault.md)

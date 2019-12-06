@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: ccd0c88c95ae9a752ef8ea2387bbde4f8559bc68
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 280561126186e4c70399b3a1ddd177ff4eb54400
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531706"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850040"
 ---
 # <a name="standard-quota-per-vm-series-vcpu-limit-increase"></a>Standard kvóta: virtuálisgép-sorozatok vCPU korlátjának növekedése
 
-A Resource Manager két típusú vCPU-kvótát támogat a virtuális gépekhez. Az utólagos elszámolású **virtuális gépek és a fenntartott VM-példányok** standard kvótát használnak. Az **alacsony prioritású virtuális gépek** alacsony prioritású kvótát használnak. Az utólagos elszámolású és a fenntartott VM-példányokra vonatkozó standard vCPU-kvóta az egyes régiókban található minden egyes előfizetés esetében két szinten érvényes
+A Resource Manager két típusú vCPU-kvótát támogat a virtuális gépekhez. Az utólagos elszámolású **virtuális gépek és a fenntartott VM-példányok** standard kvótát használnak. A **helyszíni virtuális gépek** helyszíni kvótát használnak. Az utólagos elszámolású és a fenntartott VM-példányokra vonatkozó standard vCPU-kvóta az egyes régiókban található minden egyes előfizetés esetében két szinten érvényes
 
 Az első szint a **teljes regionális vCPU korlát** (az összes virtuálisgép-sorozatban), a második szint pedig a virtuálisgép- **sorozatok vCPU korlátja** (például a Dv3 sorozat vCPU). Az új virtuális gép üzembe helyezésének időpontjában az adott virtuálisgép-sorozat új és meglévő vCPU-használatának összege nem haladhatja meg az adott virtuálisgép-sorozathoz jóváhagyott vCPU-kvótát. Továbbá az összes virtuálisgép-sorozat összes új és meglévő vCPU száma nem haladhatja meg az előfizetéshez jóváhagyott teljes regionális vCPU-kvótát. Ha túllépi a kvótákat, a virtuális gép üzembe helyezése nem lesz engedélyezett.
 A virtuálisgép-sorozat vCPU-kvótájának növelését Azure Portal-ból kérheti. A virtuálisgép-sorozat kvótájának növekedése automatikusan megnöveli a teljes regionális vCPU-korlátot ugyanazzal az összeggel. 
@@ -25,7 +25,7 @@ További információ a szabványos vCPU-kvótákkal kapcsolatban a [virtuális 
 
 További információ a standard szintű kvóta regionális vCPU korlátjának növeléséről [itt](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests)található. 
 
-További információ az **alacsony prioritású virtuális gépek vCPU-korlátainak növeléséről** [.](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)
+További információ a **helyszíni virtuális gépek vCPU korlátainak növeléséről** [.](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)
 
 A **standard szintű vCPU kvóta-korlátozásokat** a **Súgó + támogatás** panelen vagy a portálon a **használat + kvóta** panelen kérheti le.
 
@@ -37,7 +37,7 @@ A kvóta több régió esetében is igényelhető egyetlen támogatási esettel.
 
 1. https://portal.azure.com válassza a **Súgó + támogatás**lehetőséget.
 
-   ![Súgó és támogatás](./media/resource-manager-core-quotas-request/helpsupport.png)
+   ![Súgó + támogatás](./media/resource-manager-core-quotas-request/helpsupport.png)
  
 2.  Válassza az **Új támogatási kérelem** lehetőséget. 
 
@@ -63,7 +63,7 @@ A kvóta több régió esetében is igényelhető egyetlen támogatási esettel.
 
    ![Kvóta részletei – DM](./media/resource-manager-core-quotas-request/1-7.png)
 
-8. A kiválasztott helyen válassza a **Type** Value as **"standard"** lehetőséget. A **Type (típus** ) mezőben a standard és az alacsony prioritású kvótákat egyetlen támogatási esetben is kérheti a többszörös kijelölés támogatásával. További információ az **alacsony prioritású kvóta korlátainak növeléséről** a **< > oldalon**.
+8. A kiválasztott helyen válassza a **Type** Value as **"standard"** lehetőséget. A **Type (típus** ) mezőben a standard és a direktszín típusú kvótákat egyetlen támogatási esetben is kérheti a többszörös kijelölés támogatásával. További információ a **helyszíni kvóták korlátainak növeléséről** ezen az [oldalon](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)
 
    ![Termékváltozat-család](./media/resource-manager-core-quotas-request/1-8.png)
 
@@ -111,7 +111,7 @@ A **kvóta több régió esetében is igényelhető** egyetlen támogatási eset
 
    ![Kvóta problémájának panelje](./media/resource-manager-core-quotas-request/1-1-6.png)
 
-7. A kiválasztott helyen válassza a **Type** Value as **"standard"** lehetőséget. A **Type (típus** ) mezőben a standard és az alacsony prioritású kvótákat egyetlen támogatási esetben is kérheti a többszörös kijelölés támogatásával. További információ az **alacsony prioritású vCPU-korlátok** ezen a [lapon](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)való növeléséről.
+7. A kiválasztott helyen válassza a **Type** Value as **"standard"** lehetőséget. A **Type (típus** ) mezőben a standard és az alacsony prioritású kvótákat egyetlen támogatási esetben is kérheti a többszörös kijelölés támogatásával. További információ a **helyszíni vCPU korlátainak növeléséről** ezen az [oldalon](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot).
 
    ![SKU-sorozat kiválasztva](./media/resource-manager-core-quotas-request/1-1-7.png)
    

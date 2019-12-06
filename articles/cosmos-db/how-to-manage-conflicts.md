@@ -1,17 +1,17 @@
 ---
 title: Megismerheti, hogyan kezelhetők a régiók közötti ütközések az Azure Cosmos DB-ben.
-description: Megismerheti, hogyan kezelhetők az ütközések az Azure Cosmos DB-ben.
+description: Ismerje meg, hogyan kezelheti az ütközéseket Azure Cosmos DB a Last-Writer-WINS vagy egy egyéni ütközés-feloldási szabályzat létrehozásával
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 12/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4c62fcc81eb3b045d3b4233e1bb3770ecb9865b3
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9aab8f9bd202728f8882377f8249f6ebb99f3362
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388085"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873692"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Az ütközés-feloldási házirendek kezelése Azure Cosmos DB
 
@@ -19,7 +19,7 @@ A többrégiós írások esetében, ha több ügyfél is ír ugyanarra az elemre
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Utolsó-író-WINS ütközés-feloldási szabályzat létrehozása
 
-Ezek a minták bemutatják, hogyan állíthat be egy tárolót egy utolsó író-WINS ütközés-feloldási házirenddel. Az utolsó-író-WINS alapértelmezett elérési útja az időbélyeg mező vagy a `_ts` tulajdonság. Az SQL API esetében ez egy numerikus típusú felhasználó által megadott elérési útra is beállítható. Ütközés esetén a legmagasabb érték nyer. Ha az elérési út nincs beállítva vagy érvénytelen, az alapértelmezett érték `_ts`. A szabályzattal megoldott ütközések nem jelennek meg az ütközési hírcsatornában. Ezt a szabályzatot minden API használhatja.
+Ezek a minták bemutatják, hogyan állíthat be egy tárolót egy utolsó író-WINS ütközés-feloldási házirenddel. Az utolsó-író-WINS alapértelmezett útvonala az időbélyeg mező vagy a `_ts` tulajdonság. Az SQL API esetében ez egy numerikus típusú felhasználó által megadott elérési útra is beállítható. Ütközés esetén a legmagasabb érték nyer. Ha az elérési út nincs beállítva vagy érvénytelen, az alapértelmezett érték `_ts`. A szabályzattal megoldott ütközések nem jelennek meg az ütközési hírcsatornában. Ezt a szabályzatot minden API használhatja.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 

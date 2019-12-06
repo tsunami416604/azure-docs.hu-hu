@@ -4,17 +4,17 @@ description: Ez a cikk bemutatja, hogyan hozhat létre, tesztelheti és használ
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1cdea358daa3bd0f9e738a0454613ea774a0e6dc
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 0dcfcfe5bc6e59eeb4ccb7272ed3f68edc9c4172
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146645"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850397"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
@@ -35,10 +35,10 @@ Az Ön által létrehozott fiókokkal gyorsan megkezdheti a runbookok létrehoz�
 
 Automation-fiók létrehozásához vagy frissítéséhez, valamint a cikkben ismertetett feladatok végrehajtásához a következő jogosultságokkal és engedélyekkel kell rendelkeznie:
 
-* Az Automation-fiók létrehozásához hozzá kell adni az Azure ad-felhasználói fiókot egy olyan szerepkörhöz, amely a **Microsoft tulajdonosi szerepkörével egyenértékű engedélyekkel rendelkezik. Automation** -erőforrások. További információ: [szerepköralapú Access Control Azure Automation](automation-role-based-access-control.md).
-* A Azure Portal **Azure Active Directory** > **felhasználói beállítások** **kezelése** > területen, ha a **Alkalmazásregisztrációk** értéke **Igen**, akkor az Azure ad-bérlő nem rendszergazda felhasználója [regisztrálhat aktív Alkalmazásspecifikus alkalmazások](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Ha **Alkalmazásregisztrációk** a **nem**értékre van állítva, akkor a műveletet végrehajtó felhasználónak globális rendszergazdának kell lennie az Azure ad-ben.
+* Az Automation-fiók létrehozásához hozzá kell adni az Azure AD-felhasználói fiókot egy olyan szerepkörhöz, amely a Microsoft tulajdonosi szerepkörével egyenértékű engedélyekkel rendelkezik **. Automation** -erőforrások. További információ: [szerepköralapú Access Control Azure Automation](automation-role-based-access-control.md).
+* A Azure Portal **Azure Active Directory** >  > **felhasználói beállítások** **kezelése** elemnél, ha a **Alkalmazásregisztrációk** **Igen**értékre van állítva, akkor az Azure ad-bérlő nem rendszergazda felhasználója [regisztrálhat Active Directory alkalmazásokat](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Ha **Alkalmazásregisztrációk** a **nem**értékre van állítva, akkor a műveletet végrehajtó felhasználónak globális rendszergazdának kell lennie az Azure ad-ben.
 
-Ha nem tagja az előfizetés Active Directory példányának, mielőtt hozzáadja az előfizetéshez a globális rendszergazda vagy a társ-rendszergazda szerepkörhöz, a rendszer a Active Directory vendégként adja hozzá. Ebben az esetben a következő üzenet jelenik meg az **Automation-fiók hozzáadása** oldalon: "Nincs engedélye a létrehozásához."
+Ha nem tagja az előfizetés Active Directory példányának, mielőtt hozzáadja az előfizetéshez a globális rendszergazda vagy a társ-rendszergazda szerepkörhöz, a rendszer a Active Directory vendégként adja hozzá. Ebben az esetben a következő üzenet jelenik meg az **Automation-fiók hozzáadása** oldalon: "nincs engedélye a létrehozásához."
 
 Ha először ad hozzá felhasználót a globális rendszergazda vagy a rendszergazdai szerepkörhöz, eltávolíthatja őket az előfizetés Active Directory példányáról, majd elolvashatja őket a Active Directory teljes felhasználói szerepkörével.
 
@@ -88,7 +88,7 @@ Ha Azure Automation fiókot szeretne létrehozni a Azure Portalban, hajtsa végr
 
 Ha befejeződött az Automation-fiók létrehozása, számos erőforrás automatikusan létrejön. A létrehozás után ezeket a runbookok biztonságosan törölheti, ha nem szeretné megtartani őket. A futtató fiókok segítségével hitelesítheti a fiókját egy runbook, és csak akkor hagyhatja el, ha létrehoz egy másikat, vagy ha nem igényel ilyet. Az alábbi táblázat a futtató fiókhoz kapcsolódó erőforrásokat foglalja össze.
 
-| Resource | Leírás |
+| Erőforrás | Leírás |
 | --- | --- |
 | AzureAutomationTutorial forgatókönyv |Példa grafikus runbook, amely bemutatja, hogyan történik a hitelesítés a futtató fiók használatával. A runbook lekéri az összes Resource Manager-erőforrást. |
 | AzureAutomationTutorialScript forgatókönyv |Egy PowerShell-runbook, amely bemutatja, hogyan történik a hitelesítés a futtató fiók használatával. A runbook lekéri az összes Resource Manager-erőforrást. |
@@ -104,7 +104,7 @@ A klasszikus futtató fiókok már nem jönnek létre, alapértelmezés szerint 
 2. Válassza a **klasszikus Azure-beli futtató fiók**lehetőséget.
 3. A klasszikus futtató fiók létrehozásának folytatásához kattintson a **Létrehozás** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a grafikus létrehozásról: [grafikus létrehozás Azure Automationban](automation-graphical-authoring-intro.md).
 * A PowerShell-forgatókönyvek használatának megismeréséhez tekintse meg a következőt: [Az első PowerShell-runbookom](automation-first-runbook-textual-powershell.md).

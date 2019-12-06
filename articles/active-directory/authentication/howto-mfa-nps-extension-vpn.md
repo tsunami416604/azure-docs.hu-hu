@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa0158b99d10b426efb02ca31cef2bc0053a976f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 6c2ccfc2219c063a9cef25f82cef33f446993a02
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404696"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848374"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA-val az Azure-hoz készült hálózati házirend-kiszolgáló bővítménnyel
 
@@ -38,7 +38,7 @@ A hálózati házirend-és elérési szolgáltatások lehetővé teszi a szervez
 
     Ahelyett, hogy a házirendeket az egyes VPN-vagy Távoli asztali átjáró-kiszolgálókon kellene megadni, ezt követően a központi helyen kell lenniük. A RADIUS protokoll központosított hitelesítés, engedélyezés és nyilvántartás (AAA) biztosítására szolgál.
 
-* Hozzon létre, és érvényesíti a hálózatvédelem (NAP) ügyfél állapotházirendeket, amelyek meghatározzák, hogy eszközök, amelyekhez hozzáférést korlátozás nélküli vagy korlátozott a hálózati erőforrásokhoz.
+* A hálózatvédelmi (NAP-) ügyfelek állapot-házirendjeinek létrehozása és kényszerítése, amelyek meghatározzák, hogy az eszközök nem korlátozott vagy korlátozott hozzáférést kapnak-e a hálózati erőforrásokhoz.
 
 * Adja meg a 802.1 x-kompatibilis vezeték nélküli hozzáférési pontokhoz és Ethernet-kapcsolókhoz való hozzáférés hitelesítésének és engedélyezésének módját.
   További információ: [hálózati házirend-kiszolgáló](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top).
@@ -79,10 +79,10 @@ Ez a szakasz részletesen ismerteti azokat az előfeltételeket, amelyeket el ke
 * VPN-infrastruktúra
 * Hálózati házirend-és elérési szolgáltatások szerepkör
 * Azure Multi-Factor Authentication licenc
-* A Windows Servert
+* Windows Server szoftver
 * Kódtárak
 * Azure Active Directory (Azure AD) szinkronizálva a helyszíni Active Directory
-* Azure Active Directory GUID ID
+* Azure Active Directory GUID azonosító
 
 ### <a name="vpn-infrastructure"></a>VPN-infrastruktúra
 
@@ -96,11 +96,11 @@ A hálózati házirend-és elérési szolgáltatások biztosítják a RADIUS-kis
 
 A hálózati házirend-és elérési szolgáltatások szerepkör-szolgáltatás Windows Server 2012-es vagy újabb verziójának telepítésével kapcsolatos információkért lásd: HÁLÓZATVÉDELMI állapotházirend- [kiszolgáló telepítése](https://technet.microsoft.com/library/dd296890.aspx). A NAP elavult a Windows Server 2016 rendszerben. A hálózati házirend-kiszolgálóval kapcsolatos ajánlott eljárások leírását, beleértve a hálózati házirend-kiszolgáló tartományvezérlőre történő telepítésének javaslatát, lásd: [ajánlott eljárások az NPS-hez](https://technet.microsoft.com/library/cc771746).
 
-### <a name="azure-mfa-license"></a>Az Azure MFA-licenc
+### <a name="azure-mfa-license"></a>Azure MFA-licenc
 
-Az Azure Multi-Factor Authenticationhoz licenc szükséges, és egy prémium szintű Azure AD, Enterprise Mobility + Security vagy egy Multi-Factor Authentication önálló licenccel érhető el. Az Azure MFA-hoz készült, például felhasználónként vagy hitelesítési licenccel rendelkező, fogyasztáson alapuló licencek nem kompatibilisek a hálózati házirend-kiszolgáló bővítménnyel. További információt az [Azure-multi-Factor Authentication beszerzését](concept-mfa-licensing.md)ismertető témakörben talál. Tesztelési célokra használhatja egy próba-előfizetést.
+Az Azure Multi-Factor Authenticationhoz licenc szükséges, és egy prémium szintű Azure AD, Enterprise Mobility + Security vagy egy Multi-Factor Authentication önálló licenccel érhető el. Az Azure MFA-hoz készült, például felhasználónként vagy hitelesítési licenccel rendelkező, fogyasztáson alapuló licencek nem kompatibilisek a hálózati házirend-kiszolgáló bővítménnyel. További információt az [Azure-multi-Factor Authentication beszerzését](concept-mfa-licensing.md)ismertető témakörben talál. Tesztelési célból próbaverziós előfizetést is használhat.
 
-### <a name="windows-server-software"></a>A Windows Servert
+### <a name="windows-server-software"></a>Windows Server szoftver
 
 A hálózati házirend-kiszolgáló bővítményének a Windows Server 2008 R2 SP1 vagy újabb verziójára van szükség, amelyen telepítve van a hálózati házirend-és elérési szolgáltatások szerepkör. A jelen útmutatóban szereplő összes lépést a Windows Server 2016-es verzióval hajtották végre.
 
@@ -119,7 +119,7 @@ A hálózati házirend-kiszolgáló bővítmény használatához a helyszíni fe
 
 További információ a Azure AD Connectről: a [helyszíni címtárak integrálása a Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md).
 
-### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID
+### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID azonosító
 
 A hálózati házirend-kiszolgáló bővítmény telepítéséhez ismernie kell a Azure Active Directory GUID azonosítóját. A Azure Active Directory GUID azonosítójának megkeresésére vonatkozó utasításokat a következő szakaszban találja.
 
@@ -133,11 +133,11 @@ Ez a szakasz azt feltételezi, hogy telepítette a hálózati házirend-és elé
 > Ha már van olyan működő VPN-kiszolgálója, amely központosított RADIUS-kiszolgálót használ a hitelesítéshez, kihagyhatja ezt a szakaszt.
 >
 
-### <a name="register-server-in-active-directory"></a>Regisztrálja a kiszolgálót az Active Directoryban
+### <a name="register-server-in-active-directory"></a>Kiszolgáló regisztrálása Active Directory
 
 A megfelelő működéshez az NPS-kiszolgálónak regisztrálnia kell Active Directoryban.
 
-1. Nyissa meg a Kiszolgálókezelő alkalmazást.
+1. Nyissa meg a Kiszolgálókezelőt.
 
 2. A Kiszolgálókezelőben válassza az **eszközök**, majd a **hálózati házirend-kiszolgáló**lehetőséget.
 
@@ -145,7 +145,7 @@ A megfelelő működéshez az NPS-kiszolgálónak regisztrálnia kell Active Dir
 
     ![Kiszolgáló regisztrálása Active Directory menüpontban](./media/howto-mfa-nps-extension-vpn/image2.png)
 
-4. Hagyja nyitva a következő eljárással a konzolon.
+4. Hagyja nyitva a konzolt a következő eljáráshoz.
 
 ### <a name="use-wizard-to-configure-the-radius-server"></a>A RADIUS-kiszolgáló konfigurálása varázsló használatával
 
@@ -204,7 +204,7 @@ Ez a szakasz részletesen ismerteti a varázsló segítségével létrehozott ko
 
     ![A VPN tulajdonságainak és konfigurációjának ellenőrzése](./media/howto-mfa-nps-extension-vpn/image11.png)
 
-3. Válassza a **Mégse**lehetőséget.
+3. Válassza a **Mégse** lehetőséget.
 
 4. A hálózati házirend-kiszolgálón, az NPS (helyi) konzolon bontsa ki a **házirendek**csomópontot, majd válassza a **Kapcsolatkérelem-házirendek**elemet. A VPN-kapcsolatok házirend az alábbi képen látható módon jelenik meg:
 
@@ -300,7 +300,7 @@ Ezen problémák elhárításához ideális kiindulópont a biztonsági esemény
 
 ![NPAS-eseményeket megjelenítő Eseménynapló](./media/howto-mfa-nps-extension-vpn/image22.png)
 
-## <a name="configure-multi-factor-authentication"></a>A multi-factor Authentication szolgáltatás konfigurálása
+## <a name="configure-multi-factor-authentication"></a>Multi-Factor Authentication konfigurálása
 
 Ha segítségre van a felhasználóknak a Multi-Factor Authentication konfigurálásához, tekintse meg a [felhőalapú Azure multi-Factor Authentication üzembe helyezését](howto-mfa-getstarted.md#create-conditional-access-policy) és a [fiókom kétlépéses ellenőrzéshez történő beállítását](../user-help/multi-factor-authentication-end-user-first-time.md) ismertető cikket.
 
@@ -334,7 +334,7 @@ A hálózati házirend-kiszolgáló bővítmény konfigurációjának részekén
 
     ![Azure AD-címtár azonosítója a Azure Portal](./media/howto-mfa-nps-extension-vpn/image35.png)
 
-### <a name="install-the-nps-extension"></a>Az NPS-bővítményének telepítése
+### <a name="install-the-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének telepítése
 
 A hálózati házirend-kiszolgáló bővítményét olyan kiszolgálóra kell telepíteni, amelyen telepítve van a hálózati házirend-és elérési szolgáltatások szerepkör, és amely a tervben RADIUS-kiszolgálóként működik. Ne *telepítse az* NPS-bővítményt a VPN-kiszolgálóra.
 
@@ -354,9 +354,9 @@ A hálózati házirend-kiszolgáló bővítményét olyan kiszolgálóra kell te
 
 ### <a name="configure-certificates-for-use-with-the-nps-extension-by-using-a-powershell-script"></a>Tanúsítványok konfigurálása a hálózati házirend-kiszolgáló bővítménnyel való használatra PowerShell-parancsfájl használatával
 
-A biztonságos kommunikáció és biztonság biztosítása érdekében konfigurálja a hálózati házirend-kiszolgáló bővítmény által használandó tanúsítványokat. A hálózati házirend-kiszolgáló-összetevők közé tartozik egy Windows PowerShell-parancsprogram, amely beállítja a hálózati házirend-kiszolgáló egy önaláírt tanúsítványt.
+A biztonságos kommunikáció és biztonság biztosítása érdekében konfigurálja a hálózati házirend-kiszolgáló bővítmény által használandó tanúsítványokat. A hálózati házirend-kiszolgáló összetevői közé tartozik egy Windows PowerShell-parancsfájl, amely egy önaláírt tanúsítványt konfigurál a hálózati házirend-kiszolgálóval való használatra.
 
-A szkript a következő műveleteket hajtja végre:
+A parancsfájl a következő műveleteket hajtja végre:
 
 * Létrehoz egy önaláírt tanúsítványt.
 * Társítja a tanúsítvány nyilvános kulcsát az Azure AD szolgáltatásban található egyszerű szolgáltatásnév számára.
@@ -386,7 +386,7 @@ A parancsfájl használatához adja meg a bővítményt a Azure Active Directory
 
     ![Adja meg a korábban másolt Azure AD-címtár AZONOSÍTÓját](./media/howto-mfa-nps-extension-vpn/image40.png)
 
-    A szkript létrehoz egy önaláírt tanúsítványt, és más konfigurációs módosításokat hajt végre. A kimenet az alábbi képen láthatóhoz hasonló:
+    A szkript létrehoz egy önaláírt tanúsítványt, és végrehajtja a többi konfigurációs módosítást. A kimenet az alábbi képen láthatóhoz hasonló:
 
     ![Önaláírt tanúsítványt megjelenítő PowerShell-ablak](./media/howto-mfa-nps-extension-vpn/image41.png)
 
@@ -450,7 +450,7 @@ A további hibaelhárításhoz használhat egy protokoll-elemzőt, például a W
 
 További információ: [a meglévő NPS-infrastruktúra integrálása az Azure multi-Factor Authentication](howto-mfa-nps-extension.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure-Multi-Factor Authentication beszerzése](concept-mfa-licensing.md)
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20e9f0b9a993d2a8af9b9d91399fdd49f9a06eaa
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f1cc696e6351281ec9bd84cc6611d81d9148cda1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381834"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848425"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>A felhőerőforrások védelme Azure Multi-Factor Authentication hitelesítéssel és AD FS-sel
 
@@ -77,7 +77,7 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozzo
             => issue(claim = c);
     ![Egyéni jogcím létrehozása a bejelentkezett felhasználók megőrzéséhez](./media/howto-mfa-adfs/trustedip5.png)
 13. Kattintson a **Finish** (Befejezés) gombra.
-14. Kattintson az **Alkalmaz** gombra.
+14. Kattintson az **Apply** (Alkalmaz) gombra.
 15. Kattintson az **OK** gombra.
 16. Zárja be az AD FS felügyeleti konzolt.
 
@@ -85,7 +85,7 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozzo
 
 Most, hogy megvannak a jogcímek, konfigurálhatjuk a megbízható IP-címeket.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Válassza **Azure Active Directory** > a **feltételes hozzáférés** > a **nevesített helyszínek**lehetőséget.
 3. A **feltételes hozzáférés – elnevezett helyek** panelen válassza az **MFA megbízható IP** -címek konfigurálása lehetőséget.
 

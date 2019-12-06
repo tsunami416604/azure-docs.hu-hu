@@ -9,19 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53ef51d52e699612508a446acbc075f766565d63
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 12726a1ad9b04bdfe2cd279d36a696bb011e4122
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803507"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845348"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)
 
@@ -76,7 +74,7 @@ Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használ
 | appidacr |
 | állítás |
 | at_hash |
-| AUD |
+| aud |
 | auth_data |
 | auth_time |
 | authorization_code |
@@ -84,13 +82,13 @@ Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használ
 | azpacr |
 | c_hash |
 | ca_enf |
-| CC |
+| cc |
 | cert_token_use |
 | client_id |
 | cloud_graph_host_name |
 | cloud_instance_name |
 | cnf |
-| Kód |
+| kód |
 | vezérlők |
 | credential_keys |
 | CSR |
@@ -103,7 +101,7 @@ Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használ
 | e-mail |
 | endpoint |
 | enfpolids |
-| Exp |
+| exp |
 | expires_on |
 | grant_type |
 | Graph |
@@ -123,7 +121,7 @@ Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használ
 | identityprovider |
 | identitásszolgáltató |
 | in_corp |
-| például |
+| példány |
 | ipaddr |
 | isbrowserhostedapp |
 | ISS |
@@ -159,13 +157,13 @@ Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használ
 | refresh_token |
 | refreshtoken |
 | request_nonce |
-| Erőforrás |
-| Szerepkör |
+| erőforrás |
+| szerepkör |
 | roles |
 | scope |
 | SCP |
 | SID |
-| Aláírás |
+| aláírás |
 | signin_state |
 | src1 |
 | src2 |
@@ -289,11 +287,11 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 
 | Forrás | ID (Azonosító) | Leírás |
 |-----|-----|-----|
-| Felhasználó | Vezetéknév | Család neve |
-| Felhasználó | givenName | utónév; |
+| Felhasználó | surname | Család neve |
+| Felhasználó | givenname | utónév; |
 | Felhasználó | DisplayName | Megjelenítendő név |
 | Felhasználó | ObjectId | ObjectID |
-| Felhasználó | Levelezési | E-mail-cím |
+| Felhasználó | e-mail | E-mail cím |
 | Felhasználó | userPrincipalName | Felhasználó egyszerű neve |
 | Felhasználó | Részleg|Részleg|
 | Felhasználó | onpremisessamaccountname | Helyszíni SAM-fiók neve |
@@ -321,8 +319,8 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 | Felhasználó | extensionattribute13 | 13. kiterjesztési attribútum |
 | Felhasználó | extensionattribute14 | Kiterjesztési attribútum 14 |
 | Felhasználó | extensionAttribute15 | 15. bővítmény-attribútum |
-| Felhasználó | Othermail | Egyéb E-mail |
-| Felhasználó | Ország | Ország/régió |
+| Felhasználó | othermail | Egyéb E-mail |
+| Felhasználó | ország | Ország/régió |
 | Felhasználó | city | Város |
 | Felhasználó | state | Állami |
 | Felhasználó | beosztás | Beosztás |
@@ -363,8 +361,8 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 |TransformationMethod|Várt bemenet|Várt kimenet|Leírás|
 |-----|-----|-----|-----|
-|Csatlakozás|karakterlánc1, karakterlánc2, elválasztó|OutputClaim|Összekapcsolja a bemeneti karakterláncokat a között elválasztó használatával. Például: karakterlánc1: "foo@bar.com", karakterlánc2: "Sandbox", elválasztó: "." eredmény a következő outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|Levelezési|OutputClaim|Egy e-mail-cím helyi részének kibontása. Például: mail: "foo@bar.com" a outputClaim: "foo" eredményt eredményez. Ha nincs \@ jel, akkor a rendszer az eredeti bemeneti karakterláncot adja vissza.|
+|Csatlakozás|karakterlánc1, karakterlánc2, elválasztó|outputClaim|Összekapcsolja a bemeneti karakterláncokat a között elválasztó használatával. Például: karakterlánc1: "foo@bar.com", karakterlánc2: "Sandbox", elválasztó: "." eredmény a következő outputClaim: "foo@bar.com.sandbox"|
+|ExtractMailPrefix|e-mail|outputClaim|Egy e-mail-cím helyi részének kibontása. Például: mail: "foo@bar.com" a outputClaim: "foo" eredményt eredményez. Ha nincs \@ jel, akkor a rendszer az eredeti bemeneti karakterláncot adja vissza.|
 
 **Szabályzattípushoz:** Egy Szabályzattípushoz elem használatával továbbíthatja az adatok átadását a jogcím-séma bejegyzéseiből egy átalakításba. Két attribútummal rendelkezik: **ClaimTypeReferenceId** és **TransformationClaimType**.
 
@@ -389,7 +387,7 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 |Forrás|ID (Azonosító)|Leírás|
 |-----|-----|-----|
-| Felhasználó | Levelezési|E-mail-cím|
+| Felhasználó | e-mail|E-mail cím|
 | Felhasználó | userPrincipalName|Felhasználó egyszerű neve|
 | Felhasználó | onpremisessamaccountname|Helyszíni Sam-fiók neve|
 | Felhasználó | Alkalmazottkód|Alkalmazott azonosítója|

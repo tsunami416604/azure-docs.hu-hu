@@ -1,19 +1,19 @@
 ---
 title: A Azure Cosmos DB hírcsatorna-feldolgozó függvénytárának módosítása
-description: A Azure Cosmos DB változás a hírcsatorna-feldolgozó kódtár használatával.
+description: Megtudhatja, hogyan használhatja a Azure Cosmos DB Change feed processzor-függvénytárat a változási hírcsatorna, a változási hírcsatorna processzorának összetevői és a megvalósítási életciklus beolvasásához.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4bd7a31abf47664d1a6ffdd39fe46d9370dbbc97
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ea2b72e926923357e9ee7dac87720292fbbf9696
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757041"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872230"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Adatcsatorna-processzor módosítása Azure Cosmos DB 
 
@@ -39,7 +39,7 @@ Ha szeretné jobban megismerni, hogy a változási hírcsatorna processzorának 
 
 ## <a name="implementing-the-change-feed-processor"></a>A változási csatorna processzorának implementálása
 
-A belépési pont mindig a figyelt tároló, `Container` `GetChangeFeedProcessorBuilder` meghívott példányból:
+A belépési pont mindig a figyelt tároló, `Container` `GetChangeFeedProcessorBuilder`meghívott példányból:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
@@ -51,7 +51,7 @@ Egy delegált példa:
 
 Végül megadhatja a processzor-példány nevét a `WithInstanceName` és azt a tárolót, amely a bérlet állapotát `WithLeaseContainer`sal tartja karban.
 
-A `Build` meghívásával elindíthatja a processzor példányát, amely a `StartAsync` meghívásával indítható el.
+A `Build` meghívásával elindíthatja a processzor példányát, amely a `StartAsync`meghívásával indítható el.
 
 ## <a name="processing-life-cycle"></a>Életciklus feldolgozása
 

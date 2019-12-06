@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 14465e918fd4ac4e436e64d468c58e1d2ed83bb3
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3b7a3c295d2edd60c70f47ea155a5d747a3bfb03
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688175"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873760"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database napló formátuma
 
@@ -32,7 +32,8 @@ Például az adatbázis-`Database1` `Server1` a következő egy lehetséges érv
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
-Az írásvédett replikák naplófájljai ugyanabban a tárolóban vannak tárolva. A tárolóban lévő címtár-hierarchia `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`formátumú. A blob fájlnevének formátuma azonos.
+[Írásvédett replikák](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out) A naplófájlok tárolása ugyanabban a tárolóban történik. A tárolóban lévő címtár-hierarchia `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`formátumú. A blob fájlnevének formátuma azonos. A csak olvasható replikák naplófájljai ugyanabban a tárolóban tárolódnak.
+
 
 ### <a name="event-hub"></a>Event Hubs-eseményközpontok
 
@@ -44,7 +45,7 @@ A naplózási események a naplózási konfiguráció során megadott Log Analyt
 
 ## <a id="subheading-1"></a>Naplózási napló mezői
 
-| Név (blob) | Név (Event Hubs/Log Analytics) | Leírás | BLOB típusa | Event Hubs/Log Analytics típusa |
+| Név (blob) | Név (Event Hubs/Log Analytics) | Leírás | Blobtípus | Event Hubs/Log Analytics típusa |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | A művelet azonosítója | varchar (4) | sztring |
 | action_name | action_name_s | A művelet neve | – | sztring |
@@ -63,7 +64,7 @@ A naplózási események a naplózási konfiguráció során megadott Log Analyt
 | duration_milliseconds | duration_milliseconds_d | Lekérdezés végrehajtásának időtartama (ezredmásodpercben) | bigint | int |
 | event_time | event_time_t | A naplózható művelet elindításának dátuma és időpontja | datetime2 | dátum/idő |
 | host_name | – | Ügyfél állomásneve | sztring | – |
-| is_column_permission | is_column_permission_s | Jelző, amely azt jelzi, hogy ez egy oszlop szintű engedély. 1 = igaz, 0 = hamis | bites | sztring |
+| is_column_permission | is_column_permission_s | Jelző, amely azt jelzi, hogy ez egy oszlop szintű engedély. 1 = igaz, 0 = hamis | bit | sztring |
 | – | is_server_level_audit_s | Jelző, amely azt jelzi, hogy a naplózás kiszolgálói szinten van-e | – | sztring |
 | object_ azonosítója | object_id_d | Annak az entitásnak az azonosítója, amelyen a naplózás történt. Ide tartoznak a következők: kiszolgálói objektumok, adatbázisok, adatbázis-objektumok és séma-objektumok. 0, ha az entitás maga a kiszolgáló, vagy ha a naplózás nem egy objektum szintjén történik | int | int |
 | object_name | object_name_s | Annak az entitásnak a neve, amelyen a naplózás történt. Ide tartoznak a következők: kiszolgálói objektumok, adatbázisok, adatbázis-objektumok és séma-objektumok. 0, ha az entitás maga a kiszolgáló, vagy ha a naplózás nem egy objektum szintjén történik | rendszerneve | sztring |
@@ -79,8 +80,8 @@ A naplózási események a naplózási konfiguráció során megadott Log Analyt
 | server_principal_sid | server_principal_sid_s | Aktuális bejelentkezési SID | varbinary | sztring |
 | session_id | session_id_d | Azon munkamenet azonosítója, amelyen az esemény bekövetkezett | smallint | int |
 | session_server_principal_name | session_server_principal_name_s | A munkamenet kiszolgálójának résztvevője | rendszerneve | sztring |
-| nyilatkozat | statement_s | Végrehajtott T-SQL-utasítás (ha van ilyen) | nvarchar (4000) | sztring |
-| Sikerült | succeeded_s | Azt jelzi, hogy az eseményt kiváltó művelet sikeres volt-e. A login és a Batch szolgáltatástól eltérő események esetén ez csak azt jelenti, hogy az engedély-ellenőrzési sikeres vagy sikertelen volt-e, nem a művelet. 1 = sikeres, 0 = sikertelen | bites | sztring |
+| utasítás | statement_s | Végrehajtott T-SQL-utasítás (ha van ilyen) | nvarchar (4000) | sztring |
+| Sikerült | succeeded_s | Azt jelzi, hogy az eseményt kiváltó művelet sikeres volt-e. A login és a Batch szolgáltatástól eltérő események esetén ez csak azt jelenti, hogy az engedély-ellenőrzési sikeres vagy sikertelen volt-e, nem a művelet. 1 = sikeres, 0 = sikertelen | bit | sztring |
 | target_database_principal_id | target_database_principal_id_d | Az adatbázis rendszerbiztonsági tagja a GRANT/MEGTAGADÁS/visszavonás műveletet hajtja végre. 0, ha nem alkalmazható | int | int |
 | target_database_principal_name | target_database_principal_name_s | A művelet célzott felhasználója. NULL, ha nem alkalmazható | sztring | sztring |
 | target_server_principal_id | target_server_principal_id_d | Az a kiszolgáló, amelyen a megadási/megtagadási/visszavonási művelet végre lett hajtva. A 0 értéket adja vissza, ha nem alkalmazható | int | int |

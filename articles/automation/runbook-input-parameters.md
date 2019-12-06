@@ -1,43 +1,43 @@
 ---
-title: Runbook bemeneti paraméterei
-description: Runbook bemeneti paramétereinek növelje a rugalmasságot, a runbookok adatok átadására a runbook indításakor, így. Ez a cikk ismerteti a különböző helyzetekhez, ahol használt bemeneti paraméterek runbookok.
+title: Forgatókönyv bemeneti paraméterei
+description: A Runbook bemeneti paraméterei növelhetik a runbookok rugalmasságát azáltal, hogy lehetővé teszik az adatok átadását egy Runbook az indításakor. Ez a cikk különböző forgatókönyveket ismertet, amelyekben a bemeneti paraméterek a runbookok-ben használatosak.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fb89af0363ddc25f2bccfa1169834aa856e514a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: be7d244f5aa422b2083d35fc56a52318a4379b79
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478235"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850227"
 ---
-# <a name="runbook-input-parameters"></a>Runbook bemeneti paraméterei
+# <a name="runbook-input-parameters"></a>Forgatókönyv bemeneti paraméterei
 
-Runbook bemeneti paramétereinek növelheti a rugalmasságot, a runbookok azáltal, hogy át adatokat, amikor elindul. A paraméterek a runbook-műveletek kapjon az adott forgatókönyveket és a környezetek engedélyezése. Ebben a cikkben vezeti végig a különböző helyzetekhez ahol használt bemeneti paraméterek runbookok.
+A Runbook bemeneti paraméterei növelhetik a runbookok rugalmasságát azáltal, hogy lehetővé teszik az adatok átadását az elindulásakor. A paraméterek lehetővé teszik, hogy a runbook műveletek meghatározott forgatókönyvek és környezetek számára legyenek megcélozva. Ebben a cikkben olyan különböző forgatókönyveket mutat be, amelyekben a bemeneti paraméterek a runbookok-ben használatosak.
 
-## <a name="configure-input-parameters"></a>Bemeneti paramétereinek konfigurálása
+## <a name="configure-input-parameters"></a>Bemeneti paraméterek konfigurálása
 
-Bemeneti paramétereket a PowerShell, a PowerShell-munkafolyamat, a Python és a grafikus runbookok konfigurálható. Egy runbook rendelkezhet több paraméterek különböző adattípusokkal, vagy nincsenek paraméterei egyáltalán. Bemeneti paraméterek lehet kötelező vagy nem kötelező, és nem kötelező paraméter alapértelmezett értékének rendelkezhet. Rendeljen hozzá értékek runbook bemeneti paramétereinek keresztül a rendelkezésre álló módszerek közül az indításakor. Ezek a metódusok lehetnek egy runbook indítása az Azure Portalon, a webszolgáltatás vagy a PowerShell. Egy beágyazott egy másik runbook meghívott gyermekrunbookok szerint is elindíthatja.
+A bemeneti paraméterek konfigurálhatók a PowerShell, a PowerShell-munkafolyamat, a Python és a grafikus runbookok használatával. A runbook több, különböző adattípusú paraméterrel rendelkezhetnek, vagy nincsenek paraméterek. A bemeneti paraméterek kötelezőek vagy nem kötelezőek, és a választható paraméterek alapértelmezett értéke is lehet. Az értékeket a runbook tartozó bemeneti paraméterekhez rendelheti hozzá, amikor elindítják azt az elérhető módszerek egyikével. Ezek a módszerek közé tartozik a runbook elindítása a Azure Portalból, egy webszolgáltatásból vagy a PowerShellből. Azt is megteheti, hogy az egyiket alárendelt runbook, amely egy másik runbook inline néven szerepel.
 
-## <a name="configure-input-parameters-in-powershell-runbooks"></a>Bemeneti paramétereinek konfigurálása a PowerShell-forgatókönyvek
+## <a name="configure-input-parameters-in-powershell-runbooks"></a>Bemeneti paraméterek konfigurálása a PowerShell-runbookok
 
-Az Azure Automation PowerShell és a PowerShell-munkafolyamati runbookok használatával a következő attribútumok meghatározott bemeneti paramétereket támogatja:  
+A PowerShell és a PowerShell munkafolyamat-runbookok Azure Automation támogatja a következő attribútumok által definiált bemeneti paramétereket:  
 
 | **Tulajdonság** | **Leírás** |
 |:--- |:--- |
-| `Type` |Kötelező. A paraméter értéke a várt adattípus. Minden olyan .NET-típus érvénytelen. |
-| `Name` |Kötelező. A paraméter neve. Ez kell lenniük a runbookon belül és csak betűket, számokat, vagy aláhúzás karaktereket. Egy betűvel kell kezdődnie. |
-| `Mandatory` |Választható. Itt adhatja meg, hogy értéket kell adni a paraméter. Ha azonosítással  **\$igaz**, majd egy értéket meg kell adni a forgatókönyv elindulásakor. Ha azonosítással  **\$hamis**, majd egy értéket nem kötelező. |
-| `Default value` |Választható. Itt adható meg egy értéket, amely a paraméter akkor használatos, ha egy érték nem átadott, a forgatókönyv elindulásakor. Egy alapértelmezett értéket állíthat be minden paramétert, és is automatikusan végrehajtja a paraméter nem kötelező, függetlenül a kötelező beállítás. |
+| `Type` |Kötelező. A paraméter értékének várt adattípusa. Bármely .NET-típus érvényes. |
+| `Name` |Kötelező. A paraméter neve. Ennek egyedinek kell lennie a runbook belül, és csak betűket, számokat és aláhúzás karaktereket tartalmazhat. Betűvel kell kezdődnie. |
+| `Mandatory` |Választható. Megadja, hogy meg kell-e adni egy értéket a paraméterhez. Ha a beállítás értéke **\$True (igaz**), akkor meg kell adni egy értéket a runbook indításakor. Ha ezt a beállítást **\$false (hamis**) értékre állítja, akkor egy érték megadása nem kötelező. |
+| `Default value` |Választható. A paraméterhez használt értéket adja meg, ha a runbook elindításakor a rendszer nem ad át értéket. Bármelyik paraméterhez beállítható egy alapértelmezett érték, és a kötelező beállítástól függetlenül automatikusan elvégzi a paramétert is. |
 
-Windows PowerShell támogatja a további attribútumok bemeneti paramétereket, mint azok szerepel itt, például érvényesítési, aliasok, és paraméter állítja be. Azure Automation jelenleg csak az előző bemeneti paramétereket támogatja.
+A Windows PowerShell támogatja az itt felsorolt bemeneti paraméterek több attribútumát, például az érvényesítést, az aliasokat és a paramétereket. A Azure Automation azonban jelenleg csak az előző bemeneti paramétereket támogatja.
 
-A PowerShell-munkafolyamati runbookok egy paraméterdefinícióhoz rendelkezik az alábbi általános űrlapot, ahol több paraméterek vesszővel kell elválasztani.
+A PowerShell-munkafolyamat runbookok a következő általános formátumban van definiálva, ahol több paramétert vesszővel elválasztva.
 
 ```powershell
 Param
@@ -51,102 +51,102 @@ Param
 ```
 
 > [!NOTE]
-> Ha most definiálja, paraméterek, ha nem adja meg a **kötelező** attribútumot, akkor alapértelmezés szerint a paraméter megadása nem kötelező. Is, ha PowerShell-munkafolyamati runbookok be egy paraméter alapértelmezett értékét, akkor számít PowerShell egy nem kötelező paraméter, függetlenül attól, hogy a **kötelező** attribútum értéke.
+> Ha a paramétereket definiál, ha nem adja meg a **kötelező** attribútumot, akkor alapértelmezés szerint a paraméter nem kötelező. Ha egy paraméter alapértelmezett értékét a PowerShell-munkafolyamat runbookok állítja be, akkor azt a PowerShell a **kötelező** attribútum értékétől függetlenül nem kötelező paraméterként kezeli.
 
-Tegyük fel konfiguráljuk a bemeneti paramétereit egy PowerShell-munkafolyamati forgatókönyv, amely virtuális gépeket, vagy az egyetlen virtuális Gépet, vagy az erőforráscsoporton belül minden virtuális gép adatait. Ez a forgatókönyv két paraméterrel rendelkezik, az alábbi képernyőképen látható módon: neve a virtuális gép és az erőforráscsoport nevét.
+Tegyük fel például, hogy egy olyan PowerShell-munkafolyamathoz tartozó bemeneti paramétereket konfigurálunk, amely a virtuális gépek részleteit, vagy egyetlen virtuális gépet vagy egy erőforráscsoport összes virtuális gépét runbook. Ennek a runbook két paramétere van, ahogy az a következő képernyőképen látható: a virtuális gép neve és az erőforráscsoport neve.
 
 ![Automation PowerShell-munkafolyamat](media/automation-runbook-input-parameters/automation-01-powershellworkflow.png)
 
-Ez a paraméter a definíció, a paraméterek a  **\$VMName** és  **\$resourceGroupName** karakterlánc típusú egyszerű paraméterek. Azonban, PowerShell és a PowerShell-munkafolyamati runbookok támogatja az egyszerű típusok és a komplex típusok, például **objektum** vagy **PSCredential** -bemeneti paraméterekhez.
+Ebben a paraméter-definícióban a paraméterek **\$VMName** és **\$resourceGroupName** karakterlánc típusú egyszerű paraméterek. A PowerShell és a PowerShell munkafolyamat-runbookok azonban minden egyszerű típust és összetett típust támogat, például a bemeneti paraméterekhez tartozó **objektumot** vagy **PSCredential** .
 
-Ha a runbook rendelkezik egy objektum típusú bemeneti paraméter, használja a PowerShell kivonattáblaként (név, érték) párok ad meg értéket. Például ha egy runbook a következő paramétert:
+Ha a runbook rendelkezik bemeneti paraméterrel, akkor egy érték beadásához használjon egy PowerShell-szórótábla (név, érték) párokkal. Ha például a következő paraméter szerepel egy runbook:
 
 ```powershell
 [Parameter (Mandatory = $true)]
 [object] $FullName
 ```
 
-Ezután adhat át a paramétert a következő értéket:
+Ezután átadhatja a következő értéket a paraméternek:
 
 ```powershell
 @{"FirstName"="Joe";"MiddleName"="Bob";"LastName"="Smith"}
 ```
 
 > [!NOTE]
-> Amikor átadhatja nincs érték egy nem kötelező `[String]` írja be a paraméter, amely rendelkezik egy _alapértelmezett érték_ , `\$null`, akkor a paraméter értéke lesz egy _üres karakterlánc_, **nem** `\$null`.
+> Ha nem ad meg értéket a nem kötelező `[String]` Type paraméternek, amely `\$null`_alapértelmezett értéke_ , akkor a paraméter értéke _üres karakterlánc_lesz, **nem** `\$null`.
 
-## <a name="configure-input-parameters-in-graphical-runbooks"></a>Grafikus runbook bemeneti paramétereinek konfigurálása
+## <a name="configure-input-parameters-in-graphical-runbooks"></a>Bemeneti paraméterek konfigurálása grafikus runbookok
 
-A [grafikus runbook konfigurálása](automation-first-runbook-graphical.md) bemeneti paraméterek, hozzunk létre, amely virtuális gépek adatait vagy a grafikus runbookok egyetlen virtuális gép vagy a virtuális gépek erőforráscsoporton belül. Egy runbook konfigurálása olyan tevékenységekből állnak, két fő, az alább ismertetett.
+A [grafikus runbook](automation-first-runbook-graphical.md) bemeneti paraméterekkel való konfigurálásához hozzon létre egy grafikus runbook, amely a virtuális gépek részleteit jeleníti meg, vagy egyetlen virtuális gépet vagy egy erőforráscsoport összes virtuális gépét. A runbook konfigurálása két fő tevékenységből áll, az alább leírtak szerint.
 
-[**Runbookok hitelesítése Azure-beli futtató fiók** ](automation-sec-configure-azure-runas-account.md) Azure-hitelesítésre.
+[**Runbookok hitelesítése Azure-beli futtató fiókkal**](automation-sec-configure-azure-runas-account.md) az Azure-beli hitelesítéshez.
 
-[**Get-AzureRmVm** ](/powershell/module/azurerm.compute/get-azurermvm) a virtuális gép tulajdonságainak beolvasása.
+[**Get-AzureRmVm**](/powershell/module/azurerm.compute/get-azurermvm) a virtuális gép tulajdonságainak lekéréséhez.
 
-Használhatja a [ **Write-Output** ](/powershell/module/microsoft.powershell.utility/write-output) tevékenység kimeneti a virtuális gépek nevét. A tevékenység **Get-AzureRmVm** két paramétert fogad a **virtuális gép neve** és a **erőforráscsoport-név**. Ezeket a paramétereket a runbook minden alkalommal, amikor szükségük különböző értékeket, mert a runbook bemeneti paraméterei is hozzáadhat. Bemeneti paraméterek hozzáadása lépései a következők:
+A [**Write-output**](/powershell/module/microsoft.powershell.utility/write-output) tevékenységgel a virtuális gépek nevei is kiadhatók. A **Get-AzureRmVm** tevékenység két paramétert fogad el, a **virtuális gép nevét** és az **erőforráscsoport nevét**. Mivel ezek a paraméterek különböző értékeket igényelhetnek a runbook elindításakor, hozzáadhat bemeneti paramétereket a runbook. A bemeneti paraméterek hozzáadásának lépései a következők:
 
-1. Válassza ki a grafikus runbookok a **Runbookok** panelen, majd kattintson [ **szerkesztése** ](automation-graphical-authoring-intro.md) azt.
-2. A runbook-szerkesztőben kattintson **bemeneti és kimeneti** megnyitásához a **bemeneti és kimeneti** panelen.
+1. Válassza ki a grafikus runbook a **runbookok** panelen, majd kattintson a [**Szerkesztés**](automation-graphical-authoring-intro.md) elemre.
+2. A runbook-szerkesztőben kattintson a **bemenet és kimenet** lehetőségre a **bemenet és kimenet** panel megnyitásához.
 
-   ![Automation grafikus forgatókönyv](media/automation-runbook-input-parameters/automation-02-graphical-runbok-editor.png)
+   ![Automation grafikus runbook](media/automation-runbook-input-parameters/automation-02-graphical-runbok-editor.png)
 
-3. A **bemeneti és kimeneti** panel a runbook definiált bemeneti paraméterek listáját jeleníti meg. Ezen a panelen adjon hozzá egy új bemeneti paramétert, vagy szerkesztheti a meglévő bemeneti paraméter konfigurációját. A runbook paraméter hozzáadásához kattintson **bemenet hozzáadása** megnyitásához a **forgatókönyv bemeneti paramétere** panelen. Itt állíthatja be a következő paraméterekkel:
+3. A **bemenet és kimenet** panel a runbook meghatározott bemeneti paraméterek listáját jeleníti meg. Ezen a panelen hozzáadhat egy új bemeneti paramétert, vagy szerkesztheti a meglévő bemeneti paraméterek konfigurációját. Ha új paramétert szeretne hozzáadni a runbook, kattintson a **bemenet hozzáadása** gombra a **runbook bemeneti paraméter** panel megnyitásához. Itt a következő paramétereket állíthatja be:
 
    | **Tulajdonság** | **Leírás** |
    |:--- |:--- |
-   | `Name` |Kötelező. A paraméter neve. Ez kell lenniük a runbookon belül és csak betűket, számokat, vagy aláhúzás karaktereket. Egy betűvel kell kezdődnie. |
-   | `Description` |Választható. Bemeneti paraméter céljáról szóló leírást. |
-   | `Type` |Választható. Az adattípus, amely a paraméter értéke a várt. Támogatott paramétertípusok a következők **karakterlánc**, **Int32**, **Int64**, **decimális**, **logikai**,  **Dátum és idő**, és **objektum**. Ha olyan adattípust nincs bejelölve, a rendszer alapértelmezés szerint **karakterlánc**. |
-   | `Mandatory` |Választható. Itt adhatja meg, hogy értéket kell adni a paraméter. Ha úgy dönt, **Igen**, majd egy értéket meg kell adni a forgatókönyv elindulásakor. Ha úgy dönt, **nincs**, majd egy érték esetén nem szükséges a runbook elindult, és a egy alapértelmezett érték is beállítható. |
-   | `Default Value` |Választható. Itt adható meg egy értéket, amely a paraméter akkor használatos, ha egy érték nem átadott, a forgatókönyv elindulásakor. Alapértelmezett érték beállítható, amely nem kötelező paraméter. Alapértelmezett érték beállításához válassza **egyéni**. Ezt az értéket használja, ha egy másik érték van megadva, a forgatókönyv elindulásakor. Válasszon **nincs** Ha nem szeretne minden olyan alapértelmezett értéket. |
+   | `Name` |Kötelező. A paraméter neve. Ennek egyedinek kell lennie a runbook belül, és csak betűket, számokat és aláhúzás karaktereket tartalmazhat. Betűvel kell kezdődnie. |
+   | `Description` |Választható. Leírás a bemeneti paraméter céljáról. |
+   | `Type` |Választható. A paraméter értékének várt adattípusa. A támogatott paraméterek a következők: **String**, **Int32**, **Int64**, **decimális**, **Boolean**, **datetime**és **Object**. Ha nincs kiválasztva adattípus, a rendszer az alapértelmezett **karakterláncot**adja meg. |
+   | `Mandatory` |Választható. Megadja, hogy meg kell-e adni egy értéket a paraméterhez. Ha az **Igen**lehetőséget választja, akkor meg kell adni egy értéket a runbook indításakor. Ha a **nem**lehetőséget választja, akkor a runbook indításakor nem szükséges érték, és az alapértelmezett érték is beállítható. |
+   | `Default Value` |Választható. A paraméterhez használt értéket adja meg, ha a runbook elindításakor a rendszer nem ad át értéket. Egy alapértelmezett érték megadható egy nem kötelező paraméterhez. Alapértelmezett érték beállításához válassza az **Egyéni**lehetőséget. Ez az érték csak akkor használható, ha a runbook indításakor egy másik érték van megadva. Válassza a **nincs** lehetőséget, ha nem szeretne alapértelmezett értéket megadni. |
 
     ![Új bemenet hozzáadása](media/automation-runbook-input-parameters/automation-runbook-input-parameter-new.png)
-4. Hozzon létre két paramétert a következő tulajdonságokkal által használt a **Get-AzureRmVm** tevékenység:
+4. Hozzon létre két paramétert a **Get-AzureRmVm** tevékenység által használt alábbi tulajdonságokkal:
 
-   * **Parameter1:**
+   * **Parameter1**
      * Név – VMName
-     * Típus - karakterlánc
+     * Type-string
      * Kötelező – nem
-   * **2:**
-     * Name - resourceGroupName
-     * Típus - karakterlánc
+   * **Parameter2**
+     * Név – resourceGroupName
+     * Type-string
      * Kötelező – nem
      * Alapértelmezett érték – egyéni
-     * Egyéni alapértelmezett érték - \<a virtuális gépeket tartalmazó erőforráscsoport neve\>
+     * Egyéni alapértelmezett érték – \<a virtuális gépeket tartalmazó erőforráscsoport neve\>
 
-5. Miután hozzáadta a paramétereket, kattintson a **OK**. Most már megtekintheti őket a **bemeneti és kimeneti oldal**. Kattintson a **OK** újra, és kattintson a **mentése** és **közzététel** a runbookban.
+5. Miután hozzáadta a paramétereket, kattintson **az OK**gombra. Ekkor megtekintheti őket a **bemeneti és a kimeneti oldalon**. Kattintson ismét **az OK gombra** , majd kattintson a **Save (Mentés** ) gombra, és **tegye közzé** a runbook.
 
-## <a name="configure-input-parameters-in-python-runbooks"></a>Python-runbook bemeneti paramétereinek konfigurálása
+## <a name="configure-input-parameters-in-python-runbooks"></a>Bemeneti paraméterek konfigurálása a Python runbookok
 
-Ellentétben a PowerShell, a PowerShell-munkafolyamat és a grafikus runbookok Python-runbookok nem lépnek elnevezett paraméterek.
-Az összes bemeneti paraméterek argumentumértékként tömbjeként elemzi.
-A tömb importálásával fér hozzá a `sys` modult a Python-szkriptet, és ezután használatával a `sys.argv` tömb.
-Fontos megjegyezni, hogy a tömb első eleme `sys.argv[0]`, a parancsfájl neve van, ezért az első tényleges bemeneti paraméter `sys.argv[1]`.
+A PowerShell-lel, a PowerShell-munkafolyamatokkal és a grafikus runbookok ellentétben a Python runbookok nem fogad el nevesített paramétereket.
+A bemeneti paraméterek az argumentumok tömbje lesznek értelmezve.
+A tömböt úgy érheti el, ha a `sys` modult a Python-parancsfájlba importálja, majd a `sys.argv` tömböt használja.
+Fontos megjegyezni, hogy a tömb első eleme, `sys.argv[0]`, a a parancsfájl neve, így az első tényleges bemeneti paraméter `sys.argv[1]`.
 
-Python-runbook bemeneti paramétereinek használata egy példa: [első Python-runbookom az Azure Automationben](automation-first-runbook-textual-python2.md).
+Egy Python-runbook található bemeneti paraméterek használatával kapcsolatos példát a [Azure Automation első Python-runbook](automation-first-runbook-textual-python2.md)talál.
 
-## <a name="assign-values-to-input-parameters-in-runbooks"></a>Rendelje hozzá a bemeneti paramétereket a runbookok értékek
+## <a name="assign-values-to-input-parameters-in-runbooks"></a>Értékek kiosztása a bemeneti paraméterekhez a runbookok-ben
 
-Átadhatók értékek bemeneti paramétereket a runbookok a következő esetekben:
+Az értékeket a következő esetekben adhatja át a runbookok bemeneti paramétereinek:
 
-### <a name="start-a-runbook-and-assign-parameters"></a>Indítson el egy runbookot, és rendelje hozzá a paraméterek
+### <a name="start-a-runbook-and-assign-parameters"></a>Runbook elindítása és paraméterek kiosztása
 
-Egy runbook indítható sokféleképpen: az Azure Portalon, és a egy webhookot, a PowerShell-parancsmagokkal, a REST API-val vagy az SDK-val. Az alábbiakban bemutatjuk, a runbook elindítása és hozzárendelése a paraméterek különböző módszereket.
+A runbook többféleképpen is elindíthatók: a Azure Portalon, webhooktal, PowerShell-parancsmagokkal, a REST API vagy az SDK-val. Az alábbiakban megbeszéljük a runbook elindításának és a paraméterek hozzárendelésének különböző módszereit.
 
-#### <a name="start-a-published-runbook-by-using-the-azure-portal-and-assign-parameters"></a>Indítsa el a közzétett runbookok az Azure portal használatával, és rendelje hozzá a paraméterek
+#### <a name="start-a-published-runbook-by-using-the-azure-portal-and-assign-parameters"></a>Közzétett runbook elindítása a Azure Portal és a paraméterek hozzárendelésével
 
-Ha Ön [a runbook elindításához](start-runbooks.md#start-a-runbook-with-the-azure-portal), a **Runbook indítása** panel nyílik meg, és a paraméterek létrehozott értékeket adhat meg.
+A [runbook elindításakor](start-runbooks.md#start-a-runbook-with-the-azure-portal)megnyílik a **runbook indítása** panel, amelyen megadhatja a létrehozott paraméterek értékeit.
 
 ![A portál használatának megkezdése](media/automation-runbook-input-parameters/automation-04-startrunbookusingportal.png)
 
-A címke a beviteli mező alatt láthatja az attribútumokat, amelyek a paraméter lettek beállítva. Attribútumok például a kötelező vagy választható, típus és az alapértelmezett érték. A Súgó buborékra a paraméter neve mellett láthatja a legfontosabb információkat döntéseket hoz a paraméter bemeneti értékeket kell. Ezen információk közé tartozik-e a paraméter kötelező vagy nem kötelező. A típus és alapértelmezett értéket (ha van ilyen) és más hasznos megjegyzéseket is tartalmaz.
+A beviteli mező alatti címkében láthatja a paraméterhez beállított attribútumokat. Az attribútumok tartalmazzák a kötelező vagy a választható, a típus és az alapértelmezett értéket. A paraméter neve melletti súgóban megtekintheti az összes szükséges információt, amelyekkel döntéseket hozhat a paraméter bemeneti értékeivel kapcsolatban. Ez az információ azt tartalmazza, hogy egy paraméter kötelező vagy nem kötelező. Emellett tartalmazza a típust és az alapértelmezett értéket (ha van ilyen) és más hasznos megjegyzéseket is.
 
 > [!NOTE]
-> A karakterlánc típusú paramétereket támogatási **üres** karakterlánc-értékek.  Belépő **[EmptyString]** a bemeneti paraméter be az üres karakterlánc továbbítja a paraméter. Ezenkívül nem támogatják a karakterlánc típusú paramétereket **Null** átadott értékeket. Ha bármely érték a karakterlánc-paraméter nem adhatók át, majd PowerShell értelmezi azt null értékű.
+> A karakterlánc típusú paraméterek támogatják az **üres** karakterlánc-értékeket.  A (z) **[EmptyString]** megadása a bemeneti paraméter mezőben üres karakterláncot ad át a paraméternek. Emellett a karakterlánc típusú paraméterek nem támogatják az átadott **Null** értékeket. Ha nem adott meg értéket a karakterlánc-paraméternek, akkor a PowerShell null értékként értelmezi.
 
-#### <a name="start-a-published-runbook-by-using-powershell-cmdlets-and-assign-parameters"></a>Indítsa el a közzétett runbookok PowerShell-parancsmagok segítségével, és rendelje hozzá a paraméterek
+#### <a name="start-a-published-runbook-by-using-powershell-cmdlets-and-assign-parameters"></a>Közzétett runbook elindítása PowerShell-parancsmagok használatával és paraméterek kiosztása
 
-* **Az Azure Resource Manager-parancsmagok:** Automation-runbook használatával egy erőforráscsoportban létrehozott megkezdése [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook).
+* **Azure Resource Manager parancsmagok:** A [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook)használatával elindíthat egy olyan Automation-runbook, amely egy erőforráscsoporthoz lett létrehozva.
   
   **Példa**
 
@@ -156,7 +156,7 @@ A címke a beviteli mező alatt láthatja az attribútumokat, amelyek a paramét
   Start-AzureRmAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
   ```
 
-* **Klasszikus Azure üzemi modell parancsmagok:** Automation-runbook használatával létrehozott egy alapértelmezett erőforráscsoportba tartozó megkezdése [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook).
+* **Klasszikus Azure üzembehelyezési modell-parancsmagok:** A [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook)használatával elindíthat egy alapértelmezett erőforráscsoporthoz létrehozott Automation-runbook.
   
   **Példa**
 
@@ -167,11 +167,11 @@ A címke a beviteli mező alatt láthatja az attribútumokat, amelyek a paramét
   ```
 
 > [!NOTE]
-> Ha a PowerShell-parancsmagok, az alapértelmezett paraméterek, elindít egy runbookot **MicrosoftApplicationManagementStartedBy** jön létre a következő értékkel **PowerShell**. Ezt a paramétert a is megtekintheti a **feladat részletei** lap.  
+> Amikor a PowerShell-parancsmagok használatával indít el egy runbook, a **MicrosoftApplicationManagementStartedBy** a **PowerShell**értékkel jön létre. Ez a paraméter a **feladatok részletei** lapon tekinthető meg.  
 
-#### <a name="start-a-runbook-by-using-an-sdk-and-assign-parameters"></a>Runbook indítása egy SDK-val, és rendelje hozzá a paraméterek
+#### <a name="start-a-runbook-by-using-an-sdk-and-assign-parameters"></a>Runbook elindítása SDK használatával és paraméterek kiosztása
 
-* **Az Azure Resource Manager-metódus:** Az SDK-t egy programozási nyelv használatával is elindít egy runbookot. Alább láthat egy C# kódrészletet a runbook indítása az Automation-fiókban. Megtekintheti, a kód a [GitHub-adattár](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
+* **Azure Resource Manager metódus:** A runbook a programozási nyelv SDK használatával indítható el. Az alábbiakban egy C# kódrészletet talál az Automation-fiókban lévő runbook elindításához. A [GitHub-tárházban](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)található összes kód megtekinthető.  
 
   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -191,7 +191,7 @@ A címke a beviteli mező alatt láthatja az attribútumokat, amelyek a paramét
       }
   ```
 
-* **Klasszikus Azure üzemi modell módszer:** Az SDK-t egy programozási nyelv használatával is elindít egy runbookot. Alább láthat egy C# kódrészletet a runbook indítása az Automation-fiókban. Megtekintheti, a kód a [GitHub-adattár](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
+* **Klasszikus Azure üzembe helyezési modell módszere:** A runbook a programozási nyelv SDK használatával indítható el. Az alábbiakban egy C# kódrészletet talál az Automation-fiókban lévő runbook elindításához. A [GitHub-tárházban](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)található összes kód megtekinthető.
 
   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -211,7 +211,7 @@ A címke a beviteli mező alatt láthatja az attribútumokat, amelyek a paramét
     }
   ```
 
-  Indítsa el ezt a módszert, hozzon létre egy szótárban tárolja a runbook paramétereinek **VMName** és **resourceGroupName**, és azok értékeit. Indítsa el a runbookot. Az alábbi, a C# Fragment kódu Pro a fent meghatározott metódus hívása.
+  A metódus elindításához hozzon létre egy szótárt, amely a runbook paramétereit, a **VMName** és a **resourceGroupName**, valamint azok értékeit tárolja. Ezután indítsa el a runbook. Alább látható C# a fentiekben megadott metódus meghívásához használt kódrészlet.
 
   ```csharp
   IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
@@ -224,24 +224,24 @@ A címke a beviteli mező alatt láthatja az attribútumokat, amelyek a paramét
   StartRunbook("Get-AzureVMGraphical", RunbookParameters);
   ```
 
-#### <a name="start-a-runbook-by-using-the-rest-api-and-assign-parameters"></a>Runbook indítása a REST API-val, és rendelje hozzá a paraméterek
+#### <a name="start-a-runbook-by-using-the-rest-api-and-assign-parameters"></a>Runbook elindítása a REST API és a paraméterek hozzárendelésével
 
-Runbook-feladatok létrehozhatók és az Azure Automation REST API használatának lépései a **PUT** metódust a következő kérés URI azonosítója: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
+Runbook-feladatok hozhatók létre és indíthatók el a Azure Automation REST API használatával a **put** metódussal a következő kérés URI-val: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
 
 
-A kérelem URI-t cserélje le a következő paraméterekkel:
+A kérelem URI azonosítójában cserélje le a következő paramétereket:
 
-* **előfizetés-azonosító:** Az Azure-előfizetés azonosítóját.  
-* **resourceGroupName:** Az Automation-fiókot az erőforráscsoport neve.
-* **automationAccountName:** Az automation-fiók a megadott felhőszolgáltatásban lévő üzemeltetett neve.  
-* **jobName:** A feladathoz tartozó GUID azonosítója. GUID, a PowerShell használatával lehet létrehozni a **[GUID]::NewGuid(). ToString()** parancsot.
+* **subscriptionId:** Az Azure-előfizetés azonosítója.  
+* **resourceGroupName:** Az Automation-fiókhoz tartozó erőforráscsoport neve.
+* **automationAccountName:** A megadott felhőalapú szolgáltatáson belül futtatott Automation-fiók neve.  
+* **jobName:** A feladatokhoz tartozó GUID. A PowerShell GUID azonosítói a **(z) [GUID]:: NewGuid () használatával hozhatók létre. ToString ()** parancs.
 
-Annak érdekében, hogy a runbook-feladat paraméterek adhatók át, használja a kérelem törzsében. Az alábbi két tulajdonságot a megadott JSON-formátumban szükséges:
+Ahhoz, hogy paramétereket lehessen átadni a runbook-feladatoknak, használja a kérelem törzsét. A következő két tulajdonságot JSON formátumban kell megadni:
 
-* **Runbook neve:** Kötelező. A feladat elindítása a runbook neve.  
-* **Runbook paraméterek:** Választható. A paraméter (név, érték) listát tartalmazó ahol neve karakterlánc típusúnak kell lennie, és értéke lehet bármely érvényes JSON-érték formázása.
+* **Runbook neve:** Szükséges. Az elindítani kívánt runbook neve.  
+* **Runbook paraméterek:** Választható. A paraméter azon (név, érték) formátumában található szótár, ahol a névnek karakterlánc típusúnak kell lennie, és az érték bármely érvényes JSON-érték lehet.
 
-Ha el szeretné indítani a **Get-AzureVMTextual** a korábban létrehozott runbook **VMName** és **resourceGroupName** meg paraméterként, használja a következő JSON formátummal a a kérelem törzsében.
+Ha a korábban a **VMName** és a **resourceGroupName** paraméterrel létrehozott **Get-AzureVMTextual** runbook szeretné elindítani, használja a következő JSON-formátumot a kérelem törzséhez.
 
    ```json
     {
@@ -255,41 +255,41 @@ Ha el szeretné indítani a **Get-AzureVMTextual** a korábban létrehozott runb
     }
    ```
 
-Egy HTTP-állapotkód: 201-es ad vissza, ha a feladat sikeresen létrehozva. A válaszfejlécek és a válasz törzse további információkért lásd: a cikk kapcsolatos [runbook-feladat létrehozása a REST API használatával.](/rest/api/automation/job/create)
+A rendszer a 201 HTTP-állapotkódot adja vissza, ha a feladatot sikeresen létrehozták. A válasz-és a válasz törzsével kapcsolatos további információkért tekintse meg a runbook- [feladatoknak a REST API használatával történő létrehozását](/rest/api/automation/job/create) ismertető cikket.
 
-### <a name="test-a-runbook-and-assign-parameters"></a>Egy runbook tesztelése, és rendelje hozzá a paraméterek
+### <a name="test-a-runbook-and-assign-parameters"></a>Runbook tesztelése és paraméterek kiosztása
 
-Amikor Ön [tesztelése a runbook vázlatverzióját](automation-testing-runbook.md) a tesztelési lehetőség használatával a **tesztelése** lap nyílik meg, és beállíthatja, hogy az Ön által létrehozott paramétereihez tartozó értékek.
+Ha a tesztelési lehetőséggel [teszteli a runbook piszkozatát](automation-testing-runbook.md) , megnyílik a **test (teszt** ) lap, és beállíthatja a létrehozott paraméterek értékeit.
 
-![Tesztelje, és rendelje hozzá a paraméterek](media/automation-runbook-input-parameters/automation-06-testandassignparameters.png)
+![Paraméterek tesztelése és kiosztása](media/automation-runbook-input-parameters/automation-06-testandassignparameters.png)
 
-### <a name="link-a-schedule-to-a-runbook-and-assign-parameters"></a>Összekapcsolhat egy ütemezést egy runbookkal, és rendelje hozzá a paraméterek
+### <a name="link-a-schedule-to-a-runbook-and-assign-parameters"></a>Ütemterv összekapcsolása runbook és paraméterek kiosztása
 
-Is [összekapcsolhat egy ütemezést](automation-schedules.md) a runbooknak úgy, hogy a runbook egy adott időpontban. Ha az ütemezés létrehozása, és a runbook ezeket az értékeket használja, amikor elindul az ütemezés szerint hozzárendelhet bemeneti paraméterek. Az ütemezés nem menthető, amíg az összes kötelező paraméter fel van tüntetve.
+Az [ütemtervet összekapcsolhatja](automation-schedules.md) a runbook, hogy a runbook egy adott időpontban induljon el. A bemeneti paramétereket az ütemterv létrehozásakor kell hozzárendelni, és a runbook ezeket az értékeket használja, amikor az ütemterv elindítja. Az ütemezés addig nem menthető, amíg meg nem történik az összes kötelező paraméterérték megadása.
 
-![Ütemezés és a hozzárendelés paraméterek](media/automation-runbook-input-parameters/automation-07-scheduleandassignparameters.png)
+![Paraméterek beosztása és kiosztása](media/automation-runbook-input-parameters/automation-07-scheduleandassignparameters.png)
 
-### <a name="create-a-webhook-for-a-runbook-and-assign-parameters"></a>Hozzon létre egy webhookot a runbookhoz, és rendelje hozzá a paraméterek
+### <a name="create-a-webhook-for-a-runbook-and-assign-parameters"></a>Webhook létrehozása runbook és paraméterek hozzárendeléséhez
 
-Létrehozhat egy [webhook](automation-webhooks.md) a runbookok és runbook bemeneti paramétereinek konfigurálása. A webhook nem lehet menteni, amíg az összes kötelező paraméter fel van tüntetve.
+Létrehozhat egy [webhookot](automation-webhooks.md) a runbook, és konfigurálhatja a runbook bemeneti paramétereit. A webhook nem menthető, amíg meg nem történik az összes kötelező paraméterérték megadása.
 
-![Webhook létrehozása és hozzárendelése a paraméterek](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
+![Webhook létrehozása és paraméterek kiosztása](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
-Amikor egy runbook végrehajtása egy webhookot, az előre meghatározott bemeneti paraméter használatával **[Webhookdata](automation-webhooks.md#details-of-a-webhook)** , együtt küldött meghatározott bemeneti paraméterek. Kattintva bontsa ki a **WebhookData** paraméter további részletekért.
+Amikor webhook használatával hajt végre runbook, az előre definiált bemeneti paraméter **[Webhookdata](automation-webhooks.md#details-of-a-webhook)** , valamint a megadott bemeneti paraméterekkel együtt. További részletekért kattintson a **WebhookData** paraméter kibontásához.
 
 ![WebhookData paraméter](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 
-## <a name="pass-a-json-object-to-a-runbook"></a>JSON-objektum továbbítása egy runbookhoz
+## <a name="pass-a-json-object-to-a-runbook"></a>JSON-objektum továbbítása runbook
 
-Egy runbook egy JSON-fájlt az átadni kívánt adatokat tárolhat hasznos lehet.
-Például előfordulhat, hogy hozzon létre egy JSON-fájlt, amely tartalmazza az összes runbook az átadni kívánt paramétert. Ehhez meg kell konvertálja a JSON-karakterlánc, és majd konvertálja a karakterláncot egy PowerShell-objektumot, mielőtt átadva a runbooknak.
+Hasznos lehet olyan adattárolást tárolni, amelyet egy JSON-fájlban lévő runbook szeretne átadni.
+Létrehozhat például egy JSON-fájlt, amely tartalmazza az összes olyan paramétert, amelyet át szeretne adni egy runbook. Ehhez át kell alakítania a JSON-t egy karakterlánccá, majd át kell alakítania a karakterláncot egy PowerShell-objektumba, mielőtt a rendszer átadja a runbook.
 
-Ebben a példában egy PowerShell-parancsprogram, amely meghívja ezt rendelkezik [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) egy PowerShell-forgatókönyvet, a tartalmát a JSON-fájllal való átadásához a runbook elindításához.
-A PowerShell-runbook elindítja egy Azure virtuális Gépen, a paramétereket JSON-t lett átadva a virtuális gép lekérése.
+Ebben a példában egy PowerShell-parancsfájllal meghívja a [Start-AzureRmAutomationRunbook-](/powershell/module/azurerm.automation/start-azurermautomationrunbook) t, hogy elindítson egy PowerShell-runbook, és átadja a JSON tartalmát a runbook.
+A PowerShell-runbook egy Azure-beli virtuális gépet indít el, és beolvassa a virtuális gép paramétereit az átadott JSON-ből.
 
 ### <a name="create-the-json-file"></a>A JSON-fájl létrehozása
 
-Írja be a következő vizsgálat egy szövegfájlba, és mentse a fájt `test.json` valahol a helyi számítógépen.
+Írja be a következő tesztet egy szövegfájlba, és mentse `test.json` valahova a helyi számítógépen.
 
 ```json
 {
@@ -300,12 +300,12 @@ A PowerShell-runbook elindítja egy Azure virtuális Gépen, a paramétereket JS
 
 ### <a name="create-the-runbook"></a>A runbook létrehozása
 
-Hozzon létre egy új PowerShell-runbook nevű, "Test-Json" az Azure Automationben.
-Megtudhatja, hogyan hozhat létre egy új PowerShell-forgatókönyvet, tekintse meg a [az első PowerShell-forgatókönyvem](automation-first-runbook-textual-powershell.md).
+Hozzon létre egy "test-JSON" nevű új PowerShell-runbook Azure Automationban.
+Az új PowerShell-runbook létrehozásával kapcsolatos információkért lásd [az első PowerShell-runbook](automation-first-runbook-textual-powershell.md).
 
-Fogadja el a JSON-adatokat, a runbook kell tenniük az objektum bemeneti paraméterként.
+A JSON-adatok elfogadásához a runbook bemeneti paraméterként kell felvennie egy objektumot.
 
-A runbook indítására használhatja a JSON-megadott tulajdonságok.
+A runbook ezután a JSON-ban definiált tulajdonságokat használhatják.
 
 ```powershell
 Param(
@@ -325,39 +325,39 @@ $json = $json | ConvertFrom-Json
 Start-AzureRmVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
 ```
 
-Mentse, és tegye közzé a runbook az Automation-fiókban.
+Mentse és tegye közzé ezt a runbook az Automation-fiókjában.
 
-### <a name="call-the-runbook-from-powershell"></a>A runbookot hívja meg a PowerShellben
+### <a name="call-the-runbook-from-powershell"></a>A runbook meghívása a PowerShellből
 
-Most már Ön is a runbookot hívja meg a helyi gépen Azure PowerShell-lel.
-Futtassa a következő PowerShell-parancsokat:
+Most meghívhatja a runbook a helyi gépről Azure PowerShell használatával.
+A következő PowerShell-parancsok futtatása:
 
-1. Jelentkezzen be az Azure-bA:
+1. Jelentkezzen be az Azure-ba:
 
    ```powershell
    Connect-AzureRmAccount
    ```
 
-   Adja meg Azure hitelesítő adatait kéri.
+   A rendszer felszólítja az Azure-beli hitelesítő adatok megadására.
 
    > [!IMPORTANT]
-   > **Add-AzureRmAccount** alias már **Connect-AzureRMAccount**. Ha a Keresés a szalagtár elemmel, ha nem látja, akkor **Connect-AzureRMAccount**, használhat **Add-AzureRmAccount**, vagy frissítheti az a modulokat az Automation-fiókban.
+   > A **Add-AzureRmAccount** mostantól egy alias a **kapcsolat-AzureRmAccount**. Ha nem látja a **AzureRMAccount**, használhatja a **AzureRMAccount**, vagy frissítheti a modulokat az Automation-fiókban.
 
-1. A JSON-fájl tartalmát, és alakíthatja át egy karakterlánc:
+1. A JSON-fájl tartalmának beolvasása és átalakítása karakterlánccá:
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
    ```
 
-   `JsonPath` az elérési utat, ahová mentette a JSON-fájl van.
+   `JsonPath` az az elérési út, ahová a JSON-fájlt mentette.
 
-1. Karakterlánc tartalmát `$json` PowerShell-objektummá:
+1. `$json` karakterlánc tartalmának konvertálása PowerShell-objektumra:
 
    ```powershell
    $JsonParams = @{"json"=$json}
    ```
 
-1. Hozzon létre egy kivonattáblát a paraméterek a `Start-AzureRmAutomationRunbook`:
+1. Hozzon létre egy szórótábla a `Start-AzureRmAutomationRunbook`paramétereinek számára:
 
    ```powershell
    $RBParams = @{
@@ -368,15 +368,15 @@ Futtassa a következő PowerShell-parancsokat:
    }
    ```
 
-   Figyelje meg, hogy értékét beállítjuk `Parameters` a PowerShell-objektum, amely tartalmazza a JSON-fájlban szereplő értékek alapján.
+   Figyelje meg, hogy `Parameters` értékének értékét a JSON-fájlból származó értékeket tartalmazó PowerShell-objektumra állítja be.
 1. A runbook indítása
 
    ```powershell
    $job = Start-AzureRmAutomationRunbook @RBParams
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Módjai, indítson el egy runbookot, lásd: [runbook elindítása](automation-starting-a-runbook.md).
-* Szöveges runbookok szerkesztése, tekintse meg [szöveges runbookok szerkesztése](automation-edit-textual-runbook.md).
-* A grafikus runbookok szerkesztése, tekintse meg [grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md).
+* A runbook elindításának különböző módjaival kapcsolatos részletekért lásd: [Runbook elindítása](automation-starting-a-runbook.md).
+* A szöveges runbook szerkesztéséhez tekintse meg a [szöveges Runbookok szerkesztését](automation-edit-textual-runbook.md)ismertető témakört.
+* Grafikus runbook szerkesztéséhez tekintse meg [Azure Automation grafikus szerzői](automation-graphical-authoring-intro.md)műveleteit.

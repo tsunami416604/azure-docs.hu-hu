@@ -6,15 +6,15 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/04/2019
-ms.openlocfilehash: e4fc00d3889d10dddb9ec147a19f06a7211f53be
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/04/2019
+ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230299"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850074"
 ---
-# <a name="monitor-azure-app-service-performance"></a>Azure App Service teljesítményének figyelése
+# <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
 Az [Azure app Services](https://docs.microsoft.com/azure/app-service/) -on futó ASP.NET és ASP.net Core-alapú webalkalmazások figyelésének engedélyezése mostantól minden eddiginél egyszerűbb. Mivel korábban a hely kiterjesztésének manuális telepítésére volt szükség, alapértelmezés szerint a legújabb bővítmény/ügynök már be van építve az App Service-lemezképbe. Ebből a cikkből megtudhatja, hogyan engedélyezheti Application Insights monitorozását, valamint előzetes útmutatást nyújt a nagyméretű központi telepítések folyamatának automatizálásához.
 
@@ -37,7 +37,9 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 > [!NOTE]
 > Ha az ügynök-alapú figyelés és a manuális SDK-alapú kialakítás is észlelhető, a rendszer csak a manuális rendszerállapot-beállításokat fogja figyelembe venni. Ez megakadályozza az ismétlődő adatok küldését. Ha többet szeretne megtudni erről, tekintse meg az alábbi [hibaelhárítási szakaszt](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) .
 
-## <a name="enable-agent-based-monitoring-for-net-applications"></a>A .NET-alkalmazások ügynök-alapú figyelésének engedélyezése
+## <a name="enable-agent-based-monitoring"></a>Ügynök alapú figyelés engedélyezése
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > A APPINSIGHTS_JAVASCRIPT_ENABLED és a urlCompression kombinációja nem támogatott. További információ: a [Hibaelhárítás szakasz](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)magyarázata.
@@ -73,7 +75,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 
     * A támogatott adaptív mintavételi telemetria processzor-beállításainak listájáért tekintse meg a [kódot](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) és a [kapcsolódó dokumentációt](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
 
-## <a name="enable-agent-based-monitoring-for-net-core-applications"></a>Agent-alapú figyelés engedélyezése a .NET Core-alkalmazásokhoz
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
 A .NET Core következő verziói támogatottak: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2
 
@@ -94,14 +96,30 @@ A .NET Core, az önálló üzemelő példányok és a ASP.NET Core 3,0 közötti
 
     ![Beállítások kiválasztása platformon](./media/azure-web-apps/choose-options-new-net-core.png)
 
-## <a name="enable-client-side-monitoring-for-net-applications"></a>Ügyféloldali figyelés engedélyezése .NET-alkalmazásokhoz
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+A App Service webalkalmazás **Beállítások** területén > válassza a **Application Insights** > **Engedélyezés**lehetőséget. A Node. js-ügynök alapú figyelés jelenleg előzetes verzióban érhető el.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A Java App Service-alapú webalkalmazások jelenleg nem támogatják az automatikus ügynök/bővítmény alapú figyelést. A Java-alkalmazás figyelésének engedélyezéséhez manuálisan kell megadnia [az alkalmazást](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started).
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A Python App Service-alapú webalkalmazások jelenleg nem támogatják az automatikus ügynök/bővítmény alapú figyelést. A Python-alkalmazás figyelésének engedélyezéséhez manuálisan kell megadnia [az alkalmazást](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
+
+---
+
+## <a name="enable-client-side-monitoring"></a>Ügyféloldali figyelés engedélyezése
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 Az ügyféloldali figyelés ASP.NET. Az ügyféloldali figyelés engedélyezése:
 
 * **Beállítások** kiválasztása > * * * * alkalmazás beállításai * * * *
    * Az Alkalmazásbeállítások területen adjon hozzá egy új **alkalmazás-beállítási nevet** és **értéket**:
 
-     név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Érték: `true`
 
@@ -111,7 +129,7 @@ Az ügyféloldali figyelés ASP.NET. Az ügyféloldali figyelés engedélyezése
 
 Az ügyféloldali figyelés letiltásához távolítsa el a társított kulcs értéke párt az Alkalmazásbeállítások közül, vagy állítsa hamis értékre.
 
-## <a name="enable-client-side-monitoring-for-net-core-applications"></a>Ügyféloldali figyelés engedélyezése a .NET Core-alkalmazásokhoz
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
 Az ügyféloldali figyelés **alapértelmezés szerint engedélyezve** van a .net Core-alkalmazások számára az **ajánlott gyűjteménysel**, függetlenül attól, hogy szerepel-e az alkalmazás "APPINSIGHTS_JAVASCRIPT_ENABLED" beállítása.
 
@@ -128,6 +146,20 @@ Ha valamilyen oknál fogva le szeretné tiltani az ügyféloldali figyelést:
 
 ![Az Alkalmazásbeállítások felhasználói felületének képernyőképe](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+Ha engedélyezni szeretné az ügyféloldali figyelést a Node. js-alkalmazáshoz, [manuálisan kell hozzáadnia az ügyféloldali JavaScript SDK-t az alkalmazáshoz](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A Java-alkalmazás ügyféloldali figyelésének engedélyezéséhez [manuálisan kell hozzáadnia az ügyféloldali JavaScript SDK-t az alkalmazáshoz](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A Python-alkalmazás ügyféloldali figyelésének engedélyezéséhez [manuálisan kell hozzáadnia az ügyféloldali JavaScript SDK-t az alkalmazáshoz](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+
+---
+
 ## <a name="automate-monitoring"></a>A figyelés automatizálása
 
 Ahhoz, hogy a telemetria-gyűjtést Application Insights használatával engedélyezze, csak az Alkalmazásbeállítások megadása szükséges:
@@ -136,7 +168,7 @@ Ahhoz, hogy a telemetria-gyűjtést Application Insights használatával engedé
 
 ### <a name="application-settings-definitions"></a>Alkalmazásbeállítások definíciói
 
-|Alkalmazás-beállítás neve |  Meghatározás | Érték |
+|Alkalmazás-beállítás neve |  Meghatározás | Value (Díj) |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | A fő bővítmény, amely a futtatókörnyezet figyelését vezérli. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  Az alapértelmezett módban csak az alapvető funkciók engedélyezettek az optimális teljesítmény biztosításához. | `default` vagy `recommended`. |
@@ -317,12 +349,12 @@ A verzió 2.8.9 kezdődően az előre telepített hely kiterjesztése van haszn�
 
 Ha a frissítés a 2.5.1-nél korábbi verzióról történik, ellenőrizze, hogy a ApplicationInsigths dll-fájljai el lettek-e távolítva az Application bin mappából, [lásd: hibaelhárítási lépések](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Services-on futó .NET-és .NET Core-alapú alkalmazások bővítmény-és ügynök-alapú figyeléséhez.
 
 > [!NOTE]
-> A Java-és Node. js-alkalmazások csak az Azure App Serviceson, manuális SDK-alapú rendszerállapot-használaton keresztül támogatottak, ezért az alábbi lépések nem vonatkoznak ezekre a forgatókönyvekre.
+> A Java-alkalmazások csak az Azure App Serviceson, manuális SDK-alapú rendszerállapoton keresztül támogatottak, ezért az alábbi lépések nem vonatkoznak ezekre a forgatókönyvekre.
 
 1. Ellenőrizze, hogy az alkalmazást `ApplicationInsightsAgent`keresztül figyeli-e a rendszer.
     * Győződjön meg arról, hogy `ApplicationInsightsAgent_EXTENSION_VERSION` alkalmazás beállítása "~ 2" értékre van állítva.

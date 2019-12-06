@@ -3,27 +3,23 @@ title: Vállalati alkalmazásokhoz tartozó szerepkör-jogcím konfigurálása a
 titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan konfigurálhatja a vállalati alkalmazások SAML-jogkivonatában kiadott szerepkör-jogcímet Azure Active Directory
 services: active-directory
-documentationcenter: ''
 author: jeevansd
 manager: CelesteDG
-editor: ''
 ms.assetid: eb2b3741-3cde-45c8-b639-a636f3df3b74
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c671626a431a47e5100cf42ca0c9e29ab580ab3a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4657a69347eb2294877e6bd2d7de8e41c0c2ef26
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803493"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845288"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott szerepkör-jogcím konfigurálása nagyvállalati alkalmazásokhoz
 
@@ -99,7 +95,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
       ![A appRoles tulajdonság részletei](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
       > [!Note]
-      > Ha az egyéni alkalmazást (nem az Azure Marketplace alkalmazást) használja, két alapértelmezett szerepkör jelenik meg: felhasználói és msiam_access. A piactér alkalmazás esetében a msiam_access az egyetlen alapértelmezett szerepkör. Semmilyen módosítást nem kell végeznie az alapértelmezett szerepkörökben.
+      > Ha az egyéni alkalmazást (nem az Azure Marketplace alkalmazást) használja, akkor két alapértelmezett szerepkör jelenik meg: felhasználói és msiam_access. A Marketplace-alkalmazás esetében a msiam_access az egyetlen alapértelmezett szerepkör. Semmilyen módosítást nem kell végeznie az alapértelmezett szerepkörökben.
 
     h. Új szerepkörök előállítása az alkalmazáshoz.
 
@@ -257,7 +253,7 @@ Meglévő szerepkör törléséhez hajtsa végre a következő lépéseket:
 
     c. Állítsa a **IsEnabled** értéket **hamis** értékre a törölni kívánt szerepkörhöz.
 
-    d. Válassza a **lekérdezés futtatása**lehetőséget.
+    d. Válassza a **Lekérdezés futtatása** lehetőséget.
 
     > [!NOTE]
     > Győződjön meg arról, hogy rendelkezik a msiam_access szerepkörrel, és hogy az azonosító megegyezik a generált szerepkörben.

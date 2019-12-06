@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 27aec53fd2e92e19f1c749e833217fb8b5deae57
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 0ab2ba2c49dd0d0f946358c8f52a6daaf7428dd1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672573"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851417"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
 
@@ -27,10 +27,10 @@ A partnerek hozzáférését is engedélyeznie kell az alábbi lépésekben leí
 
 Engedélyeznie kell a partner-integrációt az Azure FarmBeats-példányához. Ez a lépés egy olyan ügyfelet hoz létre, amely hozzáfér az Azure-FarmBeats az eszköz partnereként, és a következő lépésekben szükséges értékeket adja meg.
 
-- API-végpont – ez az adatközpont URL-címe, például https://<datahub>. azurewebsites.net
+- API-végpont – ez az adatközpont URL-címe, például https://\<datahub >. azurewebsites. net
 - Bérlőazonosító
 - Ügyfél-azonosító
-- Ügyfél titka
+- Titkos ügyfélkulcs
 - EventHub-kapcsolatok karakterlánca
 
 Ezek létrehozásához kövesse az alábbi lépéseket:
@@ -75,7 +75,7 @@ Ezek létrehozásához kövesse az alábbi lépéseket:
 - /**szenzor** – az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.  
 
 
-|        Eszköz modellje   |  Javaslatok   |
+|        Eszközmodell   |  Javaslatok   |
 | ------- | -------             |
 |     Típus (csomópont, átjáró)        |          1 csillag      |
 |          Gyártó            |         2 csillag     |
@@ -119,14 +119,14 @@ További információ az objektumokról: [hencegés](https://aka.ms/FarmBeatsDat
 
 **Metaadatok létrehozására szolgáló API-kérelem**
 
-API-kérelem létrehozásához egyesítse a HTTP-(POST-) metódust, az API szolgáltatás URL-címét, a lekérdezéshez használandó erőforrás URI-JÁT, küldje el az adatkérést egy kérelem létrehozására vagy törlésére, majd adjon hozzá egy vagy több HTTP-kérelem fejlécét. Az API-szolgáltatás URL-címe az API-végpont, azaz az adatközpont URL-címe (https://<yourdatahub>. azurewebsites.net)  
+API-kérelem létrehozásához egyesítse a HTTP-(POST-) metódust, az API szolgáltatás URL-címét, a lekérdezéshez használandó erőforrás URI-JÁT, küldje el az adatkérést egy kérelem létrehozására vagy törlésére, majd adjon hozzá egy vagy több HTTP-kérelem fejlécét. Az API-szolgáltatás URL-címe az API-végpont, azaz az adatközpont URL-címe (https://\<yourdatahub >. azurewebsites. net)  
 
 **Hitelesítés**:
 
 A FarmBeats adatközpont tulajdonosi hitelesítést használ, amelyhez a következő szakaszban létrehozott hitelesítő adatok szükségesek.
 
 - Ügyfél-azonosító
-- Ügyfél titka
+- Titkos ügyfélkulcs
 - Bérlőazonosító  
 
 A fenti hitelesítő adatok használatával a hívó kérhet egy hozzáférési jogkivonatot, amelyet a következő API-kérelmekben kell elküldeni a fejléc szakaszban a következő módon:
@@ -134,6 +134,28 @@ A fenti hitelesítő adatok használatával a hívó kérhet egy hozzáférési 
 ```
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
+
+Az alábbi példa egy Python-kódot tartalmaz, amely megadja a hozzáférési jogkivonatot, amely a következő API-hívásokhoz használható a FarmBeats: 
+
+```python
+import azure 
+
+from azure.common.credentials import ServicePrincipalCredentials 
+import adal 
+#FarmBeats API Endpoint 
+ENDPOINT = "https://<yourdatahub>.azurewebsites.net" [Azure website](https://<yourdatahub>.azurewebsites.net)
+CLIENT_ID = "<Your Client ID>"   
+CLIENT_SECRET = "<Your Client Secret>"   
+TENANT_ID = "<Your Tenant ID>" 
+AUTHORITY_HOST = 'https://login.microsoftonline.com' 
+AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID 
+#Authenticating with the credentials 
+context = adal.AuthenticationContext(AUTHORITY) 
+token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLIENT_ID, CLIENT_SECRET) 
+#Should get an access token here 
+access_token = token_response.get('accessToken') 
+```
+
 
 **Http-kérelem fejlécei**:
 
@@ -271,6 +293,26 @@ A telemetria az Azure Event hub-nak kell elküldeni feldolgozásra. Az Azure Eve
 **Telemetria-üzenet küldése ügyfélként**
 
 Ha már létrejött egy EventHub-ügyfél, akkor JSON-ként küldhet üzeneteket a EventHub.  
+
+Itt látható egy olyan Python-kód, amely a telemetria ügyfélként küldi el a megadott Event hub számára:
+
+```python
+import azure
+from azure.eventhub import EventHubClient, Sender, EventData, Receiver, Offset
+EVENTHUBCONNECTIONSTRING = "<EventHub Connection String provided by customer>"
+EVENTHUBNAME = "<EventHub Name provided by customer>"
+
+write_client = EventHubClient.from_connection_string(EVENTHUBCONNECTIONSTRING, eventhub=EVENTHUBNAME, debug=False)
+sender = write_client.add_sender(partition="0")
+write_client.run()
+for i in range(5):
+    telemetry = "<Canonical Telemetry message>"
+    print("Sending telemetry: " + telemetry)
+    sender.send(EventData(telemetry))
+write_client.stop()
+
+```
+
 Alakítsa át a korábbi érzékelő adatformátumát olyan kanonikus formátumra, amelyet az Azure FarmBeats értelmez. A kanonikus üzenet formátuma a következő:  
 
 ```json

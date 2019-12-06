@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c3e22b34dbb770af2b4a719f8b4eaf040b724c47
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 963bc909b69962cded0a50d717e3a653d3d69769
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695431"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851468"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Tudnivalók a Microsoft biztonsági kódok elemzéséről
 
@@ -45,7 +45,7 @@ Az eszközök által jelentett kezdeti problémák kezelése után beállíthatj
 
 Alapértelmezés szerint a Build-feladatok és-eszközök naprakészek maradnak. Ha egy eszköz frissített verziója van telepítve, nem kell letöltenie és telepítenie. A bővítmény gondoskodik a frissítésről.
 
-### <a name="under-the-hood"></a>Technikai részletek
+### <a name="under-the-hood"></a>technikai részletek
 
 A bővítmény felépítési feladatai az alábbiak bonyolultságát rejtik el:
   - A Security static-Analysis Tools futtatása.
@@ -108,10 +108,10 @@ Ezt a feladatot úgy is beállíthatja, hogy az adott eszközök vagy az összes
 >[!NOTE]
 >A tervezés szerint az egyes felépítési feladatok sikeresek lesznek, ha a feladat sikeresen befejeződik. Ez igaz, hogy az eszköz hibákat észlel-e, így az összes eszköz futtatásához a Build a befejezéshez is futtatható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft biztonsági kódok elemzésének bevezetésével és telepítésével kapcsolatos útmutatásért tekintse meg a bevezetési [és telepítési útmutatót](security-code-analysis-onboard.md).
 
-A Build-feladatok konfigurálásával kapcsolatos további információkért tekintse meg a [konfigurációs útmutatót](security-code-analysis-customize.md).
+A Build-feladatok konfigurálásával kapcsolatos további információkért tekintse meg a [konfigurációs útmutatót](security-code-analysis-customize.md) vagy a [YAML konfigurációs útmutatóját](yaml-configuration.md).
 
 Ha további kérdései vannak a bővítményről és a rendelkezésre álló eszközökről, tekintse meg a [Gyakori kérdések oldalát](security-code-analysis-faq.md).

@@ -6,21 +6,21 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d7a23ed0a84ebd671c69744dfec145763ef6897
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 598f3bd8500a59cd41cc4126915e6cccbd4fb2f3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622717"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848561"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Licencelési követelmények az Azure AD önkiszolgáló jelszó-visszaállításhoz
 
-Azure Active Directory (Azure AD) több kiadásban is megtalálható: Ingyenes, prémium P1 és prémium P2. Számos különböző funkció áll rendelkezésre, amelyek az Azure AD különböző kiadásaiban elérhető, az önkiszolgáló jelszó-visszaállítást, például a változást, az alaphelyzetbe állítást, a zárolást és a visszaírási teszik elérhetővé. Ez a cikk a különbségeket ismerteti. Az egyes Azure AD-kiadásokban található szolgáltatások további részletei a [Azure Active Directory díjszabási oldalán](https://azure.microsoft.com/pricing/details/active-directory/)találhatók.
+Azure Active Directory (Azure AD) számos kiadásban érhető el: ingyenes, prémium P1 és prémium P2. Számos különböző funkció áll rendelkezésre, amelyek az Azure AD különböző kiadásaiban elérhető, az önkiszolgáló jelszó-visszaállítást, például a változást, az alaphelyzetbe állítást, a zárolást és a visszaírási teszik elérhetővé. Ez a cikk a különbségeket ismerteti. Az egyes Azure AD-kiadásokban található szolgáltatások további részletei a [Azure Active Directory díjszabási oldalán](https://azure.microsoft.com/pricing/details/active-directory/)találhatók.
 
 ## <a name="compare-editions-and-features"></a>Kiadások és szolgáltatások összehasonlítása
 
@@ -33,7 +33,7 @@ Az Azure AD önkiszolgáló jelszó-visszaállítás felhasználónként licencc
 
 * Önkiszolgáló jelszóátállítás felhőfelhasználók számára
    * **Csak Felhőbeli felhasználó** vagyok, és elfelejtettem a jelszavam.
-      * Szeretném alaphelyzetbe **állítani** a jelszavamat.
+      * Szeretném **alaphelyzetbe állítani** a jelszavamat.
    * Ez a funkció prémium szintű Azure AD P1 vagy P2, Microsoft 365 Vállalati verzió vagy Office 365 része.
 
 * Önkiszolgáló jelszó-visszaállítás/-módosítás/ **-zárolás a helyszíni visszaírási**
@@ -50,16 +50,16 @@ A további licencelési információk, beleértve a költségeket, a következő
 * [Azure Active Directory díjszabási hely](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Szolgáltatások és képességek Azure Active Directory](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
-* [A Microsoft 365 nagyvállalati verzió](https://www.microsoft.com/microsoft-365/enterprise)
+* [Microsoft 365 Nagyvállalati verzió](https://www.microsoft.com/microsoft-365/enterprise)
 * [Microsoft 365 Vállalati verzió szolgáltatás leírása](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
 ## <a name="enable-group-or-user-based-licensing"></a>Csoport-vagy felhasználó-alapú licencelés engedélyezése
 
 Az Azure AD mostantól támogatja a csoport alapú licencelést. A rendszergazdák tömegesen rendelhetnek hozzá licenceket egy adott felhasználói csoporthoz ahelyett, hogy egyszerre rendelnek hozzájuk egyet. További információ: [a licencekkel kapcsolatos problémák kiosztása, ellenőrzése és megoldása](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
-Nem minden Microsoft-szolgáltatás érhető el minden területen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy felhasználóhoz, a rendszergazdának meg kell adnia a **használat helye** tulajdonságot a felhasználónál. A licencek hozzárendelése a Azure Portal **felhasználói** > **profil** > **beállításai** szakaszában végezhető el. *Ha a csoport licenc-hozzárendelését használja, a megadott használati hely nélküli felhasználók öröklik a címtár helyét.*
+Nem minden Microsoft-szolgáltatás érhető el minden területen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy felhasználóhoz, a rendszergazdának meg kell adnia a **használat helye** tulajdonságot a felhasználónál. A licencek hozzárendelése a Azure Portal **felhasználói** > **profil** > **Beállítások** szakaszában végezhető el. *Ha a csoport licenc-hozzárendelését használja, a megadott használati hely nélküli felhasználók öröklik a címtár helyét.*
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
 * [Jelszó visszaállítása vagy módosítása](../user-help/active-directory-passwords-update-your-own-password.md)
@@ -70,5 +70,5 @@ Nem minden Microsoft-szolgáltatás érhető el minden területen. Ahhoz, hogy e
 * [Mi a jelszóvisszaíró, és miért fontos?](howto-sspr-writeback.md)
 * [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](howto-sspr-reporting.md)
 * [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
-* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
+* [Úgy gondolom, hogy valami megszakadt. Hogyan a SSPR hibáinak megoldása?](active-directory-passwords-troubleshoot.md)
 * [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)

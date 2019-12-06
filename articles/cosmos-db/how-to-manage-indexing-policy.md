@@ -1,17 +1,17 @@
 ---
 title: Az indexelési szabályzatok kezelése a Azure Cosmos DBban
-description: Ismerje meg, hogyan kezelheti az indexelési szabályzatokat Azure Cosmos DB
+description: Ismerje meg, hogyan kezelheti az indexelési szabályzatokat, hogyan vehet fel vagy zárhat ki egy tulajdonságot az indexelésből, hogyan definiálhat indexelést különböző Azure Cosmos DB SDK
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 46d0124eb701b0c2d779a96c8efd50ba43e8fc07
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 3b98975df194af4625087e1beb556efb2a347f43
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034451"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872060"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Az indexelési szabályzatok kezelése a Azure Cosmos DBban
 
@@ -42,7 +42,7 @@ Az alábbiakban néhány példát láthat a JSON-formátumában látható indexe
     }
 ```
 
-Ez az indexelési házirend egyenértékű az alábbi értékkel, amely manuálisan beállítja a ```kind```, a ```dataType``` és a ```precision``` értéket az alapértelmezett értékükre. Ezek a tulajdonságok már nem szükségesek explicit módon beállítani, és kihagyhatja őket az indexelési szabályzatból (a fenti példában látható módon).
+Ez az indexelési házirend egyenértékű az alább láthatóval, amely manuálisan beállítja ```kind```, ```dataType```és ```precision``` az alapértelmezett értékekre. Ezek a tulajdonságok már nem szükségesek explicit módon beállítani, és kihagyhatja őket az indexelési szabályzatból (a fenti példában látható módon).
 
 ```json
     {
@@ -96,7 +96,7 @@ Ez az indexelési házirend egyenértékű az alábbi értékkel, amely manuáli
     }
 ```
 
-Ez az indexelési házirend egyenértékű az alábbi értékkel, amely manuálisan beállítja a ```kind```, a ```dataType``` és a ```precision``` értéket az alapértelmezett értékükre. Ezek a tulajdonságok már nem szükségesek explicit módon beállítani, és kihagyhatja őket az indexelési szabályzatból (a fenti példában látható módon).
+Ez az indexelési házirend egyenértékű az alább láthatóval, amely manuálisan beállítja ```kind```, ```dataType```és ```precision``` az alapértelmezett értékekre. Ezek a tulajdonságok már nem szükségesek explicit módon beállítani, és kihagyhatja őket az indexelési szabályzatból (a fenti példában látható módon).
 
 ```json
     {
@@ -172,7 +172,7 @@ Ez az indexelési házirend egyenértékű az alábbi értékkel, amely manuáli
 
 ## <a name="composite-indexing-policy-examples"></a>Összetett indexelési házirend – példák
 
-Az egyéni tulajdonságok elérési útjának belefoglalása vagy kizárása mellett összetett index is megadható. Ha olyan lekérdezést szeretne végrehajtani, amely több tulajdonsághoz `ORDER BY` záradékot tartalmaz, akkor ezen tulajdonságok [összetett indexére](index-policy.md#composite-indexes) van szükség. Emellett az összetett indexek teljesítménybeli előnyben részesülnek a szűrővel rendelkező lekérdezéseknél, és ORDER BY záradékkal rendelkeznek különböző tulajdonságokon.
+Az egyéni tulajdonságok elérési útjának belefoglalása vagy kizárása mellett összetett index is megadható. Ha olyan lekérdezést szeretne végrehajtani, amely több tulajdonsághoz `ORDER BY` záradékot tartalmaz, akkor a tulajdonságok [összetett indexét](index-policy.md#composite-indexes) kötelező megadni. Emellett az összetett indexek teljesítménybeli előnyben részesülnek a szűrővel rendelkező lekérdezéseknél, és ORDER BY záradékkal rendelkeznek különböző tulajdonságokon.
 
 ### <a name="composite-index-defined-for-name-asc-age-desc"></a>Összetett index definiálva (név ASC, Age desc):
 
@@ -320,7 +320,7 @@ Ez a szabályzat olyan helyzetekben használható, ahol az élettartam [(TTL) fu
 
 ### <a name="no-indexing"></a>Nincs indexelés
 
-Ez a szabályzat kikapcsolja az indexelést. Ha a `indexingMode` `none` értékre van beállítva, akkor nem állítható be TTL a tárolón.
+Ez a szabályzat kikapcsolja az indexelést. Ha a `indexingMode` `none`re van beállítva, akkor nem állítható be TTL a tárolón.
 
 ```json
     {
@@ -332,7 +332,7 @@ Ez a szabályzat kikapcsolja az indexelést. Ha a `indexingMode` `none` értékr
 
 Azure Cosmos DB az indexelési házirend az alábbi módszerek bármelyikével frissíthető:
 
-- a Azure Portal
+- A Azure Portal
 - Az Azure CLI használata
 - a PowerShell használata
 - Az SDK-k egyikének használata
@@ -342,11 +342,11 @@ Az [indexelési házirend frissítése](index-policy.md#modifying-the-indexing-p
 > [!NOTE]
 > Az indexelési szabályzat frissítésekor a Azure Cosmos DB írások megszakítás nélkül lesznek megszakítva. Az újbóli indexelés során a lekérdezések részleges eredményeket adhatnak vissza, mivel az index frissítése folyamatban van.
 
-## <a name="use-the-azure-portal"></a>Az Azure Portal használata
+## <a name="use-the-azure-portal"></a>Az Azure-portál használata
 
 Az Azure Cosmos-tárolók az indexelési szabályzatot JSON-dokumentumként tárolják, amelyet a Azure Portal közvetlenül szerkeszthet.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. Hozzon létre egy új Azure Cosmos-fiókot, vagy válasszon ki egy meglévő fiókot.
 
@@ -356,7 +356,7 @@ Az Azure Cosmos-tárolók az indexelési szabályzatot JSON-dokumentumként tár
 
 1. Az indexelési szabályzat JSON-dokumentumának módosítása (lásd az [alábbi](#indexing-policy-examples)példákat)
 
-1. Ha elkészült, kattintson a **Mentés** gombra.
+1. Amikor elkészült, kattintson a **Mentés** elemre.
 
 ![Indexelés kezelése Azure Portal használatával](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
 
@@ -370,7 +370,7 @@ Egyéni indexelési házirenddel rendelkező tároló létrehozásához lásd: [
 
 ## <a name="use-the-net-sdk-v2"></a>A .NET SDK v2 használata
 
-A [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) `DocumentCollection` objektuma egy `IndexingPolicy` tulajdonságot tesz elérhetővé, amely lehetővé teszi a `IndexingMode` módosítását, illetve a `IncludedPaths` és `ExcludedPaths` hozzáadását vagy eltávolítását.
+A [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) `DocumentCollection` objektuma olyan `IndexingPolicy` tulajdonságot tesz elérhetővé, amely lehetővé teszi a `IndexingMode` módosítását, valamint `IncludedPaths` és `ExcludedPaths`hozzáadását vagy eltávolítását.
 
 ```csharp
 // Retrieve the container's details
@@ -389,7 +389,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.ReplaceDocumentCollectionAsync(containerResponse.Resource);
 ```
 
-Az index átalakítási folyamatának nyomon követéséhez adjon át egy `RequestOptions` objektumot, amely a `PopulateQuotaInfo` tulajdonságot `true` értékre állítja be.
+Az index átalakítási folyamatának nyomon követéséhez adjon át egy `RequestOptions` objektumot, amely a `PopulateQuotaInfo` tulajdonságot `true`értékre állítja be.
 
 ```csharp
 // retrieve the container's details
@@ -400,7 +400,7 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 ## <a name="use-the-net-sdk-v3"></a>A .NET SDK v3 használata
 
-A [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) `ContainerProperties` objektuma [(lásd a](create-sql-api-dotnet.md) használatáról szóló rövid útmutatót) egy `IndexingPolicy` tulajdonságot tesz elérhetővé, amely lehetővé teszi a `IndexingMode` módosítását, valamint `IncludedPaths` és `ExcludedPaths` hozzáadását vagy eltávolítását.
+A [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) `ContainerProperties` objektuma [(lásd a](create-sql-api-dotnet.md) használatáról szóló rövid útmutatót) elérhetővé tesz egy `IndexingPolicy` tulajdonságot, amely lehetővé teszi a `IndexingMode` módosítását, valamint `IncludedPaths` és `ExcludedPaths`hozzáadását vagy eltávolítását.
 
 ```csharp
 // Retrieve the container's details
@@ -424,7 +424,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-Az index átalakítási folyamatának nyomon követéséhez adjon át egy `RequestOptions` objektumot, amely a `PopulateQuotaInfo` tulajdonságot `true` értékre állítja be, majd az értéket a `x-ms-documentdb-collection-index-transformation-progress` Válasz fejlécből kéri le.
+Az index átalakítási folyamatának nyomon követéséhez adjon át egy `RequestOptions` objektumot, amely a `PopulateQuotaInfo` tulajdonságot `true`re állítja be, majd kérje le az értéket az `x-ms-documentdb-collection-index-transformation-progress` válasz fejlécből.
 
 ```csharp
 // retrieve the container's details
@@ -457,7 +457,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 ## <a name="use-the-java-sdk"></a>A Java SDK használata
 
-A [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) `DocumentCollection` objektuma [(lásd a](create-sql-api-java.md) használatáról szóló rövid útmutatót) `getIndexingPolicy()` és `setIndexingPolicy()` metódust tesz elérhetővé. Az általuk manipulált `IndexingPolicy` objektum lehetővé teszi az indexelési mód módosítását, valamint a belefoglalt és kizárt elérési utak hozzáadását és eltávolítását.
+A [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) `DocumentCollection` objektuma [(lásd a](create-sql-api-java.md) használatáról szóló rövid útmutatót) `getIndexingPolicy()` és `setIndexingPolicy()` módszereket tesz elérhetővé. Az általuk manipulált `IndexingPolicy` objektum lehetővé teszi az indexelési mód módosítását, valamint a belefoglalt és kizárt elérési utak hozzáadását és eltávolítását.
 
 ```java
 // Retrieve the container's details
@@ -523,7 +523,7 @@ indexingPolicy.setCompositeIndexes(compositeIndexes);
 });
 ```
 
-Ha nyomon szeretné követni az index átalakításának folyamatát egy tárolón, adjon meg egy `RequestOptions` objektumot, amely kéri a kvóta-információ feltöltését, majd a `x-ms-documentdb-collection-index-transformation-progress` Válasz fejlécből olvassa be az értéket.
+Ha nyomon szeretné követni az index átalakításának folyamatát egy tárolón, adjon át egy `RequestOptions` objektumot, amely kéri a kvóta-információ feltöltését, majd a `x-ms-documentdb-collection-index-transformation-progress` válasz fejlécből olvassa be az értéket.
 
 ```java
 // set the RequestOptions object
@@ -539,7 +539,7 @@ containerResponse.subscribe(result -> {
 
 ## <a name="use-the-nodejs-sdk"></a>A Node. js SDK használata
 
-A [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) `ContainerDefinition` felülete [(lásd a](create-sql-api-nodejs.md) használatáról szóló rövid útmutatót) egy `indexingPolicy` tulajdonságot tesz elérhetővé, amely lehetővé teszi a `indexingMode` módosítását, valamint `includedPaths` és `excludedPaths` hozzáadását vagy eltávolítását.
+A [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) `ContainerDefinition` felülete [(lásd a](create-sql-api-nodejs.md) használatáról szóló rövid útmutatót) elérhetővé tesz egy `indexingPolicy` tulajdonságot, amely lehetővé teszi a `indexingMode` módosítását, valamint `includedPaths` és `excludedPaths`hozzáadását vagy eltávolítását.
 
 A tároló részleteinek beolvasása
 
@@ -596,7 +596,7 @@ A tároló frissítése a módosításokkal
 const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
 ```
 
-Ha nyomon szeretné követni az index átalakításának folyamatát egy tárolón, adjon át egy `RequestOptions` objektumot, amely a `populateQuotaInfo` tulajdonságot `true` értékre állítja be, majd kérje le az értéket a `x-ms-documentdb-collection-index-transformation-progress` Válasz fejlécből.
+Ha nyomon szeretné követni az index átalakításának folyamatát egy tárolón, adjon át egy `RequestOptions` objektumot, amely a `populateQuotaInfo` tulajdonságot `true`értékre állítja be, majd kérje le az értéket az `x-ms-documentdb-collection-index-transformation-progress` válasz fejlécből.
 
 ```javascript
 // retrieve the container's details
@@ -671,7 +671,7 @@ A tároló frissítése a módosításokkal
 response = client.ReplaceContainer(containerPath, container)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az indexeléssel kapcsolatban az alábbi cikkekben olvashat bővebben:
 

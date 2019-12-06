@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3221e6424b449066510667f8067e3bc6d8aec12a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2b484acc0dc1a92a857f254ed37392ffb29eddb8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381956"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848629"
 ---
 # <a name="combined-security-information-registration-preview"></a>Kombinált biztonsági információk regisztrálása (előzetes verzió)
 
@@ -47,7 +47,7 @@ A saját profil oldalai honosítva vannak az oldalt elérő számítógép nyelv
 
 A kombinált regisztráció a következő hitelesítési módszereket és műveleteket támogatja:
 
-|   | Regisztráljon | Módosítás | Törlés |
+|   | Regisztráció | Módosítás | Törlés |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Igen (legfeljebb 5) | Nem | Igen |
 | Egyéb hitelesítő alkalmazás | Igen (legfeljebb 5) | Nem | Igen |
@@ -55,7 +55,7 @@ A kombinált regisztráció a következő hitelesítési módszereket és művel
 | Telefonszám | Igen | Igen | Igen |
 | Másik telefon | Igen | Igen | Igen |
 | Irodai telefon | Nem | Nem | Nem |
-| E-mail | Igen | Igen | Igen |
+| E-mail cím | Igen | Igen | Igen |
 | Biztonsági kérdések | Igen | Nem | Igen |
 | Alkalmazásjelszók | Igen | Nem | Igen |
 
@@ -95,7 +95,7 @@ Az alábbiakban néhány olyan forgatókönyv látható, amelyben a felhasznál�
 
 A regisztráció érvénybe léptetése esetén a felhasználók a lehető legkevesebb módszert mutatják be a Multi-Factor Authentication és a SSPR szabályzatoknak való megfeleléshez.
 
-Például:
+Példa:
 
 - A SSPR engedélyezve van egy felhasználó. A SSPR házirendben két módszer szükséges az alaphelyzetbe állításhoz, és engedélyezte a Mobile App Code, az e-mail és a Phone használatát.
    - Ez a felhasználó két módszer regisztrálásához szükséges.

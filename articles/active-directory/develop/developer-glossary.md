@@ -2,28 +2,23 @@
 title: A Microsoft Identity platform fejlesztői szószedete | Azure
 description: A gyakran használt Microsoft Identity platform-fejlesztői fogalmak és szolgáltatások használati feltételeinek listája.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 221a491abad6c11ee12c75b1d69f1263f4abddc4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8ffc9c0ed5787803fff01d929567bda23b698135
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322593"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843206"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft Identity platform fejlesztői szószedete
 
@@ -68,7 +63,7 @@ További részletekért lásd: [alkalmazások integrálása a Azure Active Direc
 
 A feleknek a jogos hitelesítő adatokkal szembeni kihívása, amely az identitás-és hozzáférés-vezérléshez használt rendszerbiztonsági tag létrehozásának alapja. A [OAuth2 engedélyezési megadásakor](#authorization-grant) például a hitelesítésre szolgáló fél az [erőforrás-tulajdonos](#resource-owner) vagy [ügyfélalkalmazás](#client-application)szerepkörét tölti ki a megadott támogatástól függően.
 
-## <a name="authorization"></a>authorization
+## <a name="authorization"></a>engedélyezés
 
 Egy hitelesített rendszerbiztonsági tag engedélyének megadására irányuló művelet. Az Azure AD programozási modellben két alapvető használati eset létezik:
 
@@ -79,7 +74,7 @@ Egy hitelesített rendszerbiztonsági tag engedélyének megadására irányuló
 
 Egy rövid élettartamú "token", amelyet az [engedélyezési végpont](#authorization-endpoint)biztosít egy [ügyfélalkalmazás](#client-application) számára az "engedélyezési kód" folyamatának részeként, amely a négy OAuth2- [engedélyezési támogatás](#authorization-grant)egyike. A rendszer visszaküldi a kódot az ügyfélalkalmazás számára az [erőforrás tulajdonosának](#resource-owner)hitelesítésére válaszul, jelezve, hogy az erőforrás tulajdonosa delegált engedéllyel rendelkezik a kért erőforrások eléréséhez. A folyamat részeként a rendszer később beváltja a kódot egy [hozzáférési jogkivonatra](#access-token).
 
-## <a name="authorization-endpoint"></a>Engedélyezési végpont
+## <a name="authorization-endpoint"></a>engedélyezési végpont
 
 Az [engedélyezési kiszolgáló](#authorization-server)által megvalósított egyik végpont, amely az [erőforrás-tulajdonossal](#resource-owner) való interakcióra szolgál, hogy a OAuth2-engedélyezési folyamat során [engedélyezési](#authorization-grant) engedélyt lehessen biztosítani. A használt engedélyezési folyamattól függően a ténylegesen megadott támogatás változhat, beleértve az [engedélyezési kódot](#authorization-code) vagy a [biztonsági jogkivonatot](#security-token)is.
 
@@ -192,7 +187,7 @@ Az alkalmazások bejelentkezési funkciója általában egyszeri bejelentkezés 
 
 A végfelhasználók hitelesítésének visszaigazolása, a [Bejelentkezés](#sign-in) során az [ügyfélalkalmazás](#client-application) -munkamenethez társított felhasználói állapot leválasztása
 
-## <a name="tenant"></a>tenant
+## <a name="tenant"></a>Bérlő
 
 Az Azure AD-címtár egy példányát Azure AD-bérlőnek nevezzük. Számos funkciót kínál, többek között:
 
@@ -202,7 +197,7 @@ Az Azure AD-címtár egy példányát Azure AD-bérlőnek nevezzük. Számos fun
 
 Az Azure AD-bérlők az Azure-beli és az Office 365-előfizetésekkel hozhatók létre/vannak társítva a regisztráció során, Identitás-és hozzáféréskezelés szolgáltatásokat biztosítanak az előfizetéshez. Az Azure-előfizetés rendszergazdái további Azure AD-bérlőket is létrehozhatnak a Azure Portal használatával. Megtudhatja, [hogyan szerezhet be egy Azure Active Directory bérlőt][AAD-How-To-Tenant] a bérlőhöz való hozzáférés különböző módjaival kapcsolatos részletekért. Az előfizetések és az Azure AD-bérlő közötti kapcsolat részleteiért tekintse meg [, hogy az Azure-előfizetések hogyan vannak társítva Azure Active Directory][AAD-How-Subscriptions-Assoc] .
 
-## <a name="token-endpoint"></a>Jogkivonat-végpont
+## <a name="token-endpoint"></a>jogkivonat-végpont
 
 Az [engedélyezési kiszolgáló](#authorization-server) által megvalósított egyik végpont, amely támogatja a OAuth2- [engedélyezési](#authorization-grant)támogatást. A támogatástól függően felhasználható egy [hozzáférési jogkivonat](#access-token) (és a kapcsolódó "frissítés" token) beszerzése egy [ügyfélhez](#client-application), vagy [azonosító token](#id-token) az [OpenID Connect][OpenIDConnect] protokollal való használatkor.
 
@@ -218,7 +213,7 @@ Hasonlóan ahhoz, ahogyan egy egyszerű szolgáltatásnév-objektumot használ e
 
 Egy olyan [ügyfélalkalmazás](#client-application) , amely a webkiszolgálón lévő összes kódot végrehajtja, és a hitelesítő adatai biztonságos tárolásával a kiszolgálón a "bizalmas" ügyfélként működhet. További információ: [OAuth2-ügyfelek típusai és profiljai][OAuth2-Client-Types].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft Identity [platform fejlesztői útmutatója][AAD-Dev-Guide] az összes Microsoft Identity platform-fejlesztéssel kapcsolatos témakör, beleértve az [alkalmazások integrálásának][AAD-How-To-Integrate] áttekintését és a [Microsoft Identity platform hitelesítésének alapjait, valamint a támogatott hitelesítési forgatókönyveket][AAD-Auth-Scenarios]. A [githubon](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)megtalálhatja a kód mintáit & oktatóanyagokat is.
 

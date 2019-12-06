@@ -2,13 +2,13 @@
 title: A környezet beállítása a tervrajzok kezelője számára
 description: Ismerje meg, hogyan konfigurálhatja Azure-környezetét a Blueprint Operator beépített szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel való használatra.
 ms.date: 08/26/2019
-ms.topic: conceptual
-ms.openlocfilehash: 671ac3aaf42bddb3e775baec6838e4c271c4e855
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.topic: how-to
+ms.openlocfilehash: fba0dd3f2eeb69f768800d1d04640510462d3c86
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406373"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873216"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>A környezet konfigurálása Blueprint Operatorhoz
 

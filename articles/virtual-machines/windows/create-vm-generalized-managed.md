@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 17100769bac2e7af08e0bcba6ca2eb129b621013
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: de59edc2e2c702993efd6187a590264d9aac16a7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037529"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841931"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Virtuális gép létrehozása felügyelt rendszerképből
 
@@ -29,8 +29,7 @@ A Azure Portal vagy a PowerShell használatával több virtuális gépet (VM) is
 
 ## <a name="use-the-portal"></a>A portál használata
 
-1. Nyissa meg az [Azure portált](https://portal.azure.com).
-2. A bal oldali menüben válassza a **minden erőforrás**elemet. Az erőforrásokat **típus** szerint rendezheti, így könnyen megtalálhatja a lemezképeket.
+1. A felügyelt rendszerkép kereséséhez nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki a **képeket**.
 3. Válassza ki a listából a használni kívánt rendszerképet. Megnyílik a rendszerkép **áttekintése** oldal.
 4. Válassza a **virtuális gép létrehozása** lehetőséget a menüből.
 5. Adja meg a virtuális gép adatait. Az itt megadott felhasználónevet és jelszót fogja használni a rendszer a virtuális gépre való bejelentkezéshez. Ha elkészült, kattintson **az OK gombra**. Létrehozhatja az új virtuális gépet egy meglévő erőforráscsoporthoz, vagy az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a virtuális gép tárolásához.

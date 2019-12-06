@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dfd035f73ea529ddb55bac6ce601185fda51a4d
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 039b514fe70da0e300e74bbc98a3a0f4e9ea342c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381944"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848595"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Az Azure AD funkcióinak testreszabása az önkiszolgáló jelszó-visszaállításhoz
 
@@ -88,7 +88,7 @@ A címtár neve attribútumot a **Azure Active Directory** > **Tulajdonságok**t
 * A felhasználóbarát név az e-mailben, például "a Microsoft neve a CONTOSO demo nevében"
 * Az e-mailben szereplő tárgyi sor, például "CONTOSO demo-fiók e-mail-ellenőrző kódja"
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
 * [Jelszó visszaállítása vagy módosítása](../user-help/active-directory-passwords-update-your-own-password.md)

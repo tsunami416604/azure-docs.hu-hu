@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3f2a60367a8b76464611878e850fff0c4ba8803
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381384"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847388"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>A kombinált biztonsági információk regisztrálásának hibaelhárítása (előzetes verzió)
 
@@ -35,7 +35,7 @@ A kombinált regisztrációhoz naplózott események az Azure AD-naplók hiteles
 
 A következő táblázat felsorolja a kombinált regisztráció által generált összes naplózási eseményt:
 
-| Tevékenység | status | Ok | Leírás |
+| Tevékenység | Állapot | Ok | Leírás |
 | --- | --- | --- | --- |
 | A felhasználó az összes szükséges biztonsági adatot regisztrálta | Sikeres | A felhasználó regisztrálta az összes szükséges biztonsági adatot. | Ez az esemény akkor következik be, amikor egy felhasználó sikeresen befejezte a regisztrációt.|
 | A felhasználó az összes szükséges biztonsági adatot regisztrálta | Hiba | A felhasználó megszakította a biztonsági adatok regisztrálását. | Ez az esemény akkor következik be, amikor egy felhasználó megszakítja a regisztrációt a megszakítási módból.|

@@ -1,17 +1,17 @@
 ---
-title: Indexelés Azure Cosmos DB
-description: Ismerje meg, hogy az indexelés hogyan működik Azure Cosmos DBban.
+title: Indexelés az Azure Cosmos DB-ben
+description: Ismerje meg, hogy az indexelés hogyan működik a Azure Cosmos DBban, különböző típusú indexek, például a tartomány, a térbeli és az összetett indexek támogatottak.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: thweiss
-ms.openlocfilehash: d679208914eb7d1f74bfaec77fbcff196909a2f4
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 65186262095560d7ae54d32b218d1c01f1fb921d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299779"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873624"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexelés Azure Cosmos DBban – áttekintés
 

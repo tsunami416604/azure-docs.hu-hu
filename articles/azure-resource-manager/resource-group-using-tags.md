@@ -2,31 +2,50 @@
 title: Erőforrások címkézése a logikai szervezet számára
 description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és felügyelethez való rendszerezéséhez.
 ms.topic: conceptual
-ms.date: 10/30/2019
-ms.openlocfilehash: f3fca2030d33ba5a52d43924ff542801d435e4de
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/04/2019
+ms.openlocfilehash: c0a34204b5eb7080c6444e69def9d82d0193783b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484262"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850601"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
-[!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
+Címkéket alkalmazhat az Azure-erőforrásokra, hogy logikailag szervezze őket a besorolásba. Minden címke egy nevet és egy érték párokat tartalmaz. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
 
-Ahhoz, hogy címkéket lehessen alkalmazni az erőforrásokra, a felhasználónak írási hozzáféréssel kell rendelkeznie az adott erőforrás-típushoz. Ha címkéket szeretne alkalmazni az összes erőforrástípus, használja a [közreműködő](../role-based-access-control/built-in-roles.md#contributor) szerepkört. Ha csak egy erőforrás-típusra kíván címkéket alkalmazni, használja az adott erőforrás közreműködői szerepkörét. Ha például címkéket szeretne alkalmazni a virtuális gépekre, használja a [virtuális gép közreműködőjét](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+A címkék alkalmazása után az előfizetés összes erőforrását lekérheti az adott címke nevével és értékével. A címkékkel olyan kapcsolódó erőforrásokat is lekérhet, amelyek más erőforráscsoportokban találhatók. Ez a megoldás akkor hasznos, ha számlázás vagy felügyelet céljából kell rendszereznie erőforrásait.
+
+A besorolásnak egy önkiszolgáló metaadat-címkézési stratégiát kell figyelembe vennie az automatikus címkézési stratégia mellett, hogy csökkentse a felhasználók terhelését, és növelje a pontosságot.
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="policies"></a>Házirendek
+## <a name="limitations"></a>Korlátozások
+
+Az alábbi korlátozások érvényesek a címkékre:
+
+* Nem minden erőforrástípus támogatja a címkéket. Annak megállapításához, hogy lehet-e címkét alkalmazni az erőforrás típusára, tekintse meg [Az Azure-erőforrások támogatásának címkézését](tag-support.md)ismertető témakört.
+* Minden erőforrás vagy erőforráscsoport legfeljebb 50 címke név/érték párokat tartalmazhat. Ha a maximálisan megengedettnél több címkét kell alkalmaznia, használjon egy JSON-karakterláncot a címke értékhez. A JSON-sztring sok olyan értéket tartalmazhat, amelyek egyetlen címkenévre vannak alkalmazva. Az erőforráscsoportok számos olyan erőforrást tartalmazhatnak, amelyek mindegyike 50 címke név/érték párokat tartalmaz.
+* A címke neve legfeljebb 512 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet. A tárfiókok esetében a címke neve legfeljebb 128 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet.
+* Az általánosított virtuális gépek nem támogatják a címkéket.
+* Az egyes erőforráscsoportokra alkalmazott címkéket nem öröklik az adott erőforráscsoportba tartozó erőforrások.
+* A címkék nem alkalmazhatók a klasszikus erőforrásokra, például a Cloud Servicesra.
+* A címkék neve nem tartalmazhatja a következő karaktereket: `<`, `>`, `%`, `&`, `\`, `?`, `/`
+
+   > [!NOTE]
+   > Jelenleg Azure DNS zónák és Traffic Manger-szolgáltatások nem engedélyezik a szóközök használatát a címkében. 
+
+## <a name="required-access"></a>Szükséges hozzáférés
+
+Ahhoz, hogy címkéket lehessen alkalmazni az erőforrásokra, a felhasználónak írási hozzáféréssel kell rendelkeznie az adott erőforrás-típushoz. Ha címkéket szeretne alkalmazni az összes erőforrástípus, használja a [közreműködő](../role-based-access-control/built-in-roles.md#contributor) szerepkört. Ha csak egy erőforrás-típusra kíván címkéket alkalmazni, használja az adott erőforrás közreműködői szerepkörét. Ha például címkéket szeretne alkalmazni a virtuális gépekre, használja a [virtuális gép közreműködőjét](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+
+## <a name="policies"></a>Irányelvek
 
 A [Azure Policy](../governance/policy/overview.md) a címkézési szabályok és konvenciók betartatására használható. A szabályzat létrehozásával elkerülhető, hogy az előfizetéshez üzembe helyezett erőforrások milyen helyzetben legyenek, és nem felelnek meg a szervezete számára várt címkéknek. A címkék manuális alkalmazása vagy a nem megfelelő erőforrások keresése helyett létrehozhat egy olyan szabályzatot, amely automatikusan alkalmazza a szükséges címkéket az üzembe helyezés során. A címkék mostantól a meglévő erőforrásokra is alkalmazhatók az új [módosítási](../governance/policy/concepts/effects.md#modify) effektussal és [szervizelési feladattal](../governance/policy/how-to/remediate-resources.md). A következő szakasz példákat mutat be a címkékre.
 
 [!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
 ## <a name="powershell"></a>PowerShell
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 *Erőforráscsoportok* meglévő címkéinek megtekintéséhez használja a következőt:
 
@@ -148,7 +167,7 @@ Az összes címke eltávolításához adjon át egy üres kivonattáblát:
 Set-AzResourceGroup -Tag @{} -Name examplegroup
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 *Erőforráscsoportok* meglévő címkéinek megtekintéséhez használja a következőt:
 
@@ -400,7 +419,7 @@ A Azure Portal és a PowerShell egyaránt a [Resource Manager REST API](https://
 
 ## <a name="tags-and-billing"></a>Címkék és számlázás
 
-A címkéket a számlázási adataik csoportosítására használhatja. Ha például több virtuális gépet futtat különböző szervezetekhez, a címkék használatával csoportosítsa a használatot Cost Center alapján. A címkék használatával kategorizálhatja a költségeket futásidejű környezet szerint, például az éles környezetben futó virtuális gépek számlázási használatát.
+Címkék segítségével a számlázási adatok is csoportosíthatók. Ha például több virtuális gépet futtat különböző vállalatok számára, akkor a használatot címkék segítségével tudja költséghely szerint csoportosítani. A címkék a költségek futtatókörnyezet szerinti besorolására, például az éles környezetben futó virtuális gépek használatának kiszámlázására is felhasználhatók.
 
 A címkékre vonatkozó információkat az [Azure erőforrás-használat és a RateCard API](../billing/billing-usage-rate-card-overview.md) -k, illetve a használat vesszővel tagolt (CSV) fájl segítségével kérheti le. A használati fájlt a [Azure Fiókközpont](https://account.azure.com/Subscriptions) vagy Azure Portal töltheti le. További információkért tekintse [meg az Azure számlázási és napi használati adatainak letöltését vagy megtekintését](../billing/billing-download-azure-invoice-daily-usage-date.md)ismertető témakört. A Azure Fiókközpont a használati fájl letöltésekor válassza a **2. verziót**. A számlázási címkéket támogató szolgáltatások esetében a címkék a **címkék** oszlopban jelennek meg.
 

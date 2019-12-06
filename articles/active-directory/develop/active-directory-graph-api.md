@@ -2,27 +2,24 @@
 title: Azure Active Directory Graph API | Microsoft Docs
 description: Az Azure AD Graph API áttekintése és gyors útmutatója, amely lehetővé teszi a programozott hozzáférést az Azure AD-hez REST API végpontokon keresztül.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: 5471ad74-20b3-44df-a2b5-43cde2c0a045
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30c1b5a3600c48dc548561df3cd2f955347a7e64
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c74c02d8a82c27c71ce01cd122082010487b453e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533037"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845042"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory – Graph API
 
@@ -31,7 +28,7 @@ ms.locfileid: "74533037"
 
 Ez a cikk az Azure AD Graph APIre vonatkozik. A Microsoft Graph API-val kapcsolatos hasonló információk: [a Microsoft Graph API használata](https://docs.microsoft.com/graph/use-the-api).
 
-A Azure Active Directory Graph API programozott hozzáférést biztosít az Azure AD-hez REST API végpontokon keresztül. Az alkalmazások az Azure AD Graph API használatával hozhatnak létre, olvashat, frissíthetnek és törölhetnek (szifilisz) műveleteket a címtáradatokat és az objektumokat. Például az Azure AD Graph API a következő általános műveleteket támogatja egy felhasználói objektumhoz:
+Az Azure Active Directory Graph API programozás alapú hozzáférést biztosít az Azure AD-hez REST API-végpontokon keresztül. Az alkalmazások az Azure AD Graph API használatával hozhatnak létre, olvashat, frissíthetnek és törölhetnek (szifilisz) műveleteket a címtáradatokat és az objektumokat. Például az Azure AD Graph API a következő általános műveleteket támogatja egy felhasználói objektumhoz:
 
 * Új felhasználó létrehozása egy címtárban
 * A felhasználó részletes tulajdonságainak (például a csoportok) beolvasása

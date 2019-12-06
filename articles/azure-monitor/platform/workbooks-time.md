@@ -1,5 +1,5 @@
 ---
-title: Interaktív jelentések létrehozása Azure Monitor munkafüzetekkel | Idő paraméterek | Microsoft docs
+title: Azure Monitor munkafüzetek időbeli paraméterei
 description: Összetett jelentéskészítés egyszerűsítése előre elkészített és egyéni paraméterekkel rendelkező munkafüzetekből
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 906ebcc49eca72744abf5854a1b320407d0384dc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1d1ee243fa9df8a77a6ce80ecb9d8e5336e8b19b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165510"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872757"
 ---
 # <a name="workbook-time-parameters"></a>Munkafüzet-idő paraméterei
 
@@ -64,8 +64,8 @@ A munkafüzet a következőképpen fog kinézni, mint az olvasási módban.
 ## <a name="time-parameter-options"></a>Az idő paraméter beállításai
 | Paraméter | Magyarázat | Példa |
 | ------------- |:-------------|:-------------|
-| `{TimeRange}` | Időtartomány felirata | Az elmúlt 24 óra |
-| `{TimeRange:label}` | Időtartomány felirata | Az elmúlt 24 óra |
+| `{TimeRange}` | Időtartomány felirata | Az utolsó 24 óra |
+| `{TimeRange:label}` | Időtartomány felirata | Az utolsó 24 óra |
 | `{TimeRange:value}` | Időtartomány értéke | > ago (1d) |
 | `{TimeRange:query}` | Időtartomány-lekérdezés | > ago (1d) |
 | `{TimeRange:start}` | Időtartomány kezdési időpontja | 3/20/2019 4:18 PM |

@@ -1,21 +1,21 @@
 ---
 title: ENDSWITH Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function ENDSWITH Azure Cosmos DB.
+description: A Azure Cosmos DB ENDSWITH SQL System függvényének megismerése egy olyan logikai érték visszaadásához, amely azt jelzi, hogy az első karakterlánc kifejezése a másodikval végződik-e
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 37c988d63e597c77bc09a1d21ad391909bb55901
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 6b3e692877faab8a8d507a44068d4cdfdc73a916
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351052"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873352"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
- Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második végződik.  
+ Egy olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc kifejezése a másodperctel végződik-e  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -29,27 +29,27 @@ ENDSWITH(<str_expr1>, <str_expr2>)
    Egy karakterlánc-kifejezés.  
   
 *str_expr2*  
-   Egy karakterlánc-kifejezés, amelyet a rendszer a *str_expr1*végéhez hasonlít.  
+   A *str_expr1*végéhez összehasonlítandó karakterlánc-kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy logikai kifejezés adja vissza.  
+  Egy logikai kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa adja vissza, az "abc" a "b" és "bc" végződik.  
+  Az alábbi példa az "ABC" végződést adja vissza "b" és "BC" értékkel.  
   
 ```sql
 SELECT ENDSWITH("abc", "b") AS e1, ENDSWITH("abc", "bc") AS e2 
 ```  
   
- Íme az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{"e1": false, "e2": true}]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

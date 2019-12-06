@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09aa95e55b3d253ef41724298247694b9883e31f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381765"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848289"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication felhasználói adatgyűjtés
 
@@ -56,13 +56,13 @@ Hitelesítési kísérletek (jelentéskészítéshez és hibaelhárításhoz has
 - Biztonsági mentési hívás eredménye
 - Teljes hitelesítés
 - Teljes eredmény
-- Results (Eredmények)
+- Eredmények
 - Hitelesített
 - Eredmény
 - IP-cím kezdeményezése
 - Eszközök
 - Eszköz jogkivonata
-- Eszköz típusa
+- Eszköztípus
 - Mobile App-verzió
 - Operációs rendszer verziója
 - Eredmény
@@ -77,7 +77,7 @@ Aktiválások (a Microsoft Authenticator Mobile alkalmazásban lévő fiók akti
 - Aktiválási hiba
 - Aktiválási állapot eredménye
 - Eszköz neve
-- Eszköz típusa
+- Eszköztípus
 - Alkalmazásverzió
 - ESKÜ-token engedélyezve
 
@@ -86,14 +86,14 @@ Blokkok (a blokkolt állapot és a jelentéskészítés megállapításához has
 - Időbélyeg letiltása
 - Blokkolás Felhasználónév szerint
 - Felhasználónév
-- Országkód:
+- Országkód
 - Telefonszám
 - Telefonszám formázva
 - Mellék
 - Tiszta bővítmény
-- Blokkolt
-- Blokkolás oka
-- Befejezés időbélyeg
+- Letiltva
+- Tiltás oka
+- Befejezés időbélyege
 - Befejezés oka
 - Fiókzárolás
 - Csalási riasztás
@@ -106,13 +106,13 @@ Megkerülések (jelentéskészítéshez használatos):
 - Mellőzési másodpercek
 - Mellőzés Felhasználónév alapján
 - Felhasználónév
-- Országkód:
+- Országkód
 - Telefonszám
 - Telefonszám formázva
 - Mellék
 - Tiszta bővítmény
 - Mellőzés oka
-- Befejezés időbélyeg
+- Befejezés időbélyege
 - Befejezés oka
 - Használat mellőzése
 
@@ -126,7 +126,7 @@ Módosítások (az MFA-kiszolgálóra vagy az Azure AD-ra történő felhasznál
 - Új biztonságimásolat-országkód
 - Új tartalék telefonszám
 - Új biztonsági mentési bővítmény
-- Új PIN-kód
+- Új PIN kód
 - PIN-kód módosítása kötelező
 - Régi eszköz tokenje
 - Új eszköz jogkivonata
@@ -188,6 +188,6 @@ A [Microsoft adatvédelmi portálon](https://portal.azure.com/#blade/Microsoft_A
 
 - Akár 30 napig is eltarthat, amíg a rendszer teljesen el nem távolítja az adatgyűjtést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [MFA-kiszolgáló jelentése](howto-mfa-reporting.md)

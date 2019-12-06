@@ -3,17 +3,17 @@ title: Fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalm
 description: A MXChip IoT fejlesztői készlet-eszköznek az Azure IoT Central-alkalmazáshoz való csatlakoztatásáról a IoT Plug and Play használatával tájékozódhat.
 author: liydu
 ms.author: liydu
-ms.date: 08/17/2019
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 178f518ed7ab24fc0d3678f77ae75933a7163b58
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 32dd3fa1fc137d786174e47d842f762c2a479d64
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930134"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848968"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application-preview-features"></a>MXChip-IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz (előzetes verziójú funkciók)
 
@@ -34,9 +34,21 @@ A cikkben szereplő lépések végrehajtásához a következő erőforrásokra v
 
 ## <a name="get-device-connection-details"></a>Eszköz kapcsolati adatainak beolvasása
 
-Az Azure IoT Central alkalmazásban válassza az **Adminisztráció** fület, és válassza az **eszköz csatlakoztatása**lehetőséget. Jegyezze fel a hatókör- **azonosítót** és az **elsődleges kulcsot** (a **kulcsok megtekintése** hivatkozásnál). Ellenőrizze, hogy engedélyezve van-e az **automatikus jóváhagyás** .
+1. Az Azure IoT Central alkalmazásban válassza az **eszközök sablonok** fület, és válassza az **új**lehetőséget. Az **előre konfigurált eszköz használata**című szakaszban válassza a **MXChip IoT fejlesztői készlet** elemet a listából. Majd válassza a **Tovább: testreszabás** és **Létrehozás**lehetőséget.
 
-![Eszközcsoport kapcsolatának részletei](media/howto-connect-devkit/device-group-connection-details.png)
+    ![Eszköz sablonja a MXChip IoT fejlesztői készlet](media/howto-connect-devkit/device-template.png)
+
+1. Válassza az **eszközök** lap eszközök listájában a **MXChip IoT fejlesztői készlet** lehetőséget, majd az **új** elemre kattintva hozzon létre egy új eszközt az eszköz sablonból.
+
+    ![Új eszköz](media/howto-connect-devkit/new-device.png)
+
+1. Az előugró ablakban adja meg az **eszköz azonosítóját** `SampleDevKit` és **eszköznév** `MXChip IoT DevKit - Sample`ként. Győződjön meg arról, hogy a **szimulált** beállítás ki van kapcsolva. Ezután kattintson a **Létrehozás** elemre.
+
+    ![Eszköz azonosítója és neve](media/howto-connect-devkit/device-id-name.png)
+
+1. Kattintson az imént létrehozott eszközre, és válassza a **kapcsolat**lehetőséget. Jegyezze fel az **azonosító hatókörét**, az **eszköz azonosítóját** és az **elsődleges kulcsot**.
+
+    ![Eszköz csatlakoztatási adatai](media/howto-connect-devkit/device-connection-info.png)
 
 ## <a name="prepare-the-device"></a>Az eszköz előkészítése
 
@@ -61,7 +73,7 @@ Az Azure IoT Central alkalmazásban válassza az **Adminisztráció** fület, é
 
     - A WiFi-hálózat (SSID) neve.
     - A WiFi hálózati jelszava.
-    - A kapcsolat részletei: az **eszköz azonosítója** , amelyet saját maga választhat ki, valamint a **hatókör-azonosítót** és a **csoport sas elsődleges kulcsát** , amelyet korábban jegyzett készített.
+    - A kapcsolat részletei: írja be az **eszköz azonosítóját**, az **azonosító hatókörét** és az **sas elsődleges kulcsát** , amelyet korábban jegyzett készített.
 
     > [!NOTE]
     > Jelenleg a IoT fejlesztői készlet csak a 2,4 GHz-es Wi-Fi-hez tud csatlakozni, az 5 GHz-es hardveres korlátozások miatt nem támogatott.
@@ -86,7 +98,7 @@ A IoT Central alkalmazásban válassza az **eszközök** fület, és válassza k
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-A kód áttekintéséhez vagy módosításához és fordításához nyissa meg a [MXChip IoT fejlesztői készlet-mintakód GitHub-tárházát](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp).
+A kód áttekintéséhez vagy módosításához és fordításához nyissa meg a [kód mintáit](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/).
 
 ## <a name="next-steps"></a>Következő lépések
 

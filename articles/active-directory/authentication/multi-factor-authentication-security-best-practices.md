@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2756d39a93751271c8c7bf2a51108b9fe5b09b1e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e42234e9fcdcfe3ee5ce975babbe03b64a750e36
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208435"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846827"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Biztonsági útmutató az Azure Multi-Factor Authentication Azure AD-fiókokkal való használatához
 
@@ -110,7 +110,7 @@ A következő lista további szempontokat és útmutatást nyújt a helyszínen 
 * [Az Azure Multi-Factor Authentication-kiszolgáló Mobile App Web Service szolgáltatásának telepítése](howto-mfaserver-deploy-mobileapp.md).
 * [Speciális VPN-konfiguráció az Azure multi-Factor Authentication](howto-mfaserver-nps-vpn.md) a Cisco ASA, a Citrix NetScaler és a Juniper/Pulse Secure VPN-készülékek számára LDAP vagy RADIUS használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk az Azure MFA-hoz kapcsolódó ajánlott eljárásokat mutatja be, és egyéb erőforrásokat is használhat az MFA üzembe helyezésének megtervezése során. Az alábbi lista néhány kulcsfontosságú cikket tartalmaz, amelyek segítséget nyújthatnak a folyamat során:
 

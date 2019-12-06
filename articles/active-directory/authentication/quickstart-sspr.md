@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: quickstart
 ms.date: 07/17/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9adf083f8e4c8c269b895dac87b4e4613ec1b023
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 582a6a32aa4c34b2e6fef37f3de5b5414de16cf3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474399"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846657"
 ---
 # <a name="quickstart-self-service-password-reset"></a>Rövid útmutató: Új jelszó önkiszolgáló kérése
 
@@ -67,7 +67,7 @@ Most pedig teszteljük az SSPR konfigurációját egy tesztfelhasználóval. Miv
 
 Az önkiszolgáló jelszóátállítás letiltása egyszerű feladat. Nyissa meg az Azure AD-bérlőt, és lépjen a **tulajdonságok** > **jelszó alaphelyzetbe állítása**elemre, majd válassza a **nincs lehetőséget** az **önkiszolgáló jelszó-visszaállítás engedélyezve**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megismerhette, hogyan konfigurálhat gyorsan önkiszolgáló jelszókérést a felhőbeli felhasználói számára. A bevezetés menetének részletesebb ismertetéséért folytassa a bevezetési útmutatóval.
 

@@ -1,17 +1,17 @@
 ---
 title: ELTOLÁSi korlát záradéka Azure Cosmos DB
-description: Tudnivalók a Azure Cosmos DB ELTOLÁSi korlát záradékáról.
+description: Megtudhatja, hogyan használhatja az ELTOLÁSi korlát záradékot, hogy kiugorjon bizonyos értékeket a lekérdezésekben Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7aae56783f83f13b50321c88d69f07d910e589dd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 68515c51862ada0b1aa794c09b3a6730504a57ee
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326870"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873250"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>ELTOLÁSi korlát záradéka Azure Cosmos DB
 
@@ -50,7 +50,7 @@ Például itt egy olyan lekérdezés, amely kihagyja az első értéket, és a m
     OFFSET 1 LIMIT 1
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [
@@ -69,7 +69,7 @@ Az eredmények a következők:
     OFFSET 1 LIMIT 1
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [

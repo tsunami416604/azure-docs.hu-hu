@@ -4,17 +4,17 @@ description: Ez a cikk a hibrid Runbook-feldolgozói szerepkörrel rendelkező, 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9c7084954fe58351a6f9af40552714faa34685ad
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c8da5736869a39815d9abf33cf4a03353681b193
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887047"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849717"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid Runbook-feldolgozón
 
@@ -39,7 +39,7 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 > [!NOTE]
 > A **RunOn** paraméter hozzá lett adva a **Start-AzureAutomationRunbook** parancsmaghoz a (z) Microsoft Azure PowerShell verziójának 0.9.1. Ha korábban már telepítve van, [töltse le a legújabb verziót](https://azure.microsoft.com/downloads/) . Ezt a verziót csak olyan munkaállomáson kell telepíteni, ahol a runbook a PowerShellből indítja el. Nem kell telepítenie a munkavégző számítógépre, ha nem kívánja elindítani a runbookok a számítógépről. "
 
-## <a name="runbook-permissions"></a>Runbook engedélyek
+## <a name="runbook-permissions"></a>Runbook-engedélyek
 
 A hibrid Runbook-feldolgozón futó runbookok nem használhatja ugyanazt a metódust, amelyet általában az Azure-erőforrásokhoz való runbookok-hitelesítéshez használ, mivel nem az Azure-ban érik el az erőforrásokat. A runbook megadhatja a saját hitelesítését a helyi erőforrásokhoz, vagy konfigurálhatja a hitelesítést [Az Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)használatával. Megadhat egy futtató fiókot is, amely felhasználói környezetet biztosít az összes runbookok.
 
@@ -310,7 +310,7 @@ Az aláírt runbook neve `<runbook name>.asc`lesz.
 
 Az aláírt runbook mostantól a Azure Automationba tölthetők fel, és normál runbook is végrehajthatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a runbook elindításához használható különböző módszerekről, tekintse meg a [runbook Megkezdése Azure Automationban](automation-starting-a-runbook.md)című témakört.
 * A Azure Automation PowerShell-runbookok a szöveges szerkesztővel való használatának különböző módjairól a következő témakörben talál további információt: [Runbook szerkesztése Azure Automation](automation-edit-textual-runbook.md)

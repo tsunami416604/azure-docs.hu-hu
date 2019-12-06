@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: de76467cc741a65a851e5f3a7ec424d0326aebb2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828247"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851519"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 Kérdése van? További információért tekintse meg az alábbi gyakori kérdéseket.
@@ -202,7 +202,7 @@ Előfordulhat, hogy a fő Build és a a a a a a a a a a a a a (a)-elemzők lép�
 
 A teljes hibaüzenet:
 
-"a CSC. exe kilépett az 1. hibakóddal – az Analyzer *AAAA* -példánya nem hozható létre a C:\\*BBBB*. dll fájlból: nem sikerült betölteni a (z)" Microsoft. CodeAnalysis, Version =*x. x. x.* x, Culture = semleges, PublicKeyToken = 31bf3856ad364e35 "vagy annak valamelyik függőségét. A rendszer nem találja a megadott fájlt."
+"a CSC. exe kilépett az 1. hibakóddal – az Analyzer *AAAA* -példánya nem hozható létre a C:\\*BBBB*. dll fájlból: nem sikerült betölteni a (z)" Microsoft. CodeAnalysis, Version =*x. x. x.* x, Culture = semleges, PublicKeyToken = 31bf3856ad364e35 "vagy annak valamelyik függőségét. A megadott fájl nem található. "
 
 Győződjön meg arról, hogy a fordító támogatja a a a a a a "a" A **CSC. exe** verziójának futtatásához a 2,6-es vagy újabb verziójú verziószámot kell jelenteni.
 
@@ -222,9 +222,6 @@ A DevOps-elemzők létrehozási feladatának le kell kérdezni az MSBuild-napló
 
 Ha további segítségre van szüksége, a Microsoft biztonsági kód elemzésének támogatása hétfőtől péntekig 9:00-tól 5:00-ig, a csendes-óceáni téli időpontig érhető el.
 
-  - Előkészítés: forduljon a technikai menedzserekhez a kezdéshez.
+- Előkészítés: Tekintse meg a bevezetési [dokumentációt](security-code-analysis-onboard.md)
   
-  - Támogatás: küldjön e-mailt a csapatnak a [Microsoft biztonsági kódok elemzésének támogatásához](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
-
-  >[!NOTE] 
-  >Előfordulhat, hogy nem rendelkezik fizetős támogatási kapcsolattal a Microsofttal. Vagy rendelkezhet olyan támogatási ajánlattal, amely megakadályozza a szolgáltatások megvásárlását a Phoenix-katalógusból. Ha ezek a feltételek teljesülnek, tekintse meg a [támogatási szolgáltatások kezdőlapját](https://www.microsoft.com/enterprise/services/support) .
+- Támogatás: e-mail-cím a [Microsoft biztonsági kódjának elemzését támogató](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request) csapatnál

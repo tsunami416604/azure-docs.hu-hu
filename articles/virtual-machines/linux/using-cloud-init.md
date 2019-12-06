@@ -15,30 +15,31 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: d372b94ac0df4cef3c43fab10686e9bf20633bfe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6c522af44be51eb89ee9f64bae2dc4e9e7b24123
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034250"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873947"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init támogatás az Azure-beli virtuális gépekhez
 Ez a cikk ismerteti a [Cloud-init](https://cloudinit.readthedocs.io) számára elérhető támogatást a virtuális gép (VM) vagy virtuálisgép-méretezési csoportok konfigurálásához az Azure üzembe helyezési idején. Ezek a felhő-init parancsfájlok az első rendszerindítás során futnak az Azure-beli erőforrások kiépítés után.  
 
 ## <a name="cloud-init-overview"></a>A cloud-init áttekintése
-A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. A cloud-init nevezzük az első rendszerindítás során, mert nincsenek további lépéseket vagy szükséges ügynökök a alkalmazni a konfigurációt.  További információt a megfelelő formázása a `#cloud-config` fájlokat, tekintse meg a [a cloud-init dokumentációs oldalának](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` fájlok Base64 kódolású szöveges fájlok.
+A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a Cloud-init a kezdeti rendszerindítási folyamat során hívásra kerül, nincs szükség további lépésekre vagy ügynökökre a konfiguráció alkalmazásához.  A `#cloud-config` fájlok megfelelő formázásáról a [Cloud-init dokumentációs webhelyén](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)talál további információt.  `#cloud-config` a fájlok Base64 kódolású szövegfájlok.
 
 A cloud-init különböző disztribúciókon is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. A cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 
-Aktívan dolgozunk a támogatott Linux disztribúció partnereink ahhoz, hogy engedélyezve van a cloud-init lemezkép érhető el az Azure Marketplace-en. Ezek a lemezképek a felhő-init üzembe helyezések és konfigurációk zökkenőmentesen működnek a virtuális gépekkel és a virtuálisgép-méretezési csoportokkal. Az alábbi táblázat ismerteti az aktuális engedélyezve van a cloud-init lemezképek rendelkezésre állás az Azure platformon:
+Aktívan dolgozunk a támogatott linuxos disztribúciós partnereinkkel, hogy elérhetők legyenek a Cloud-init-lemezképek az Azure piactéren. Ezek a lemezképek a felhő-init üzembe helyezések és konfigurációk zökkenőmentesen működnek a virtuális gépekkel és a virtuálisgép-méretezési csoportokkal. Az alábbi táblázat az Azure platformon elérhető aktuális Cloud-init-lemezképek elérhetőségét vázolja fel:
 
-| Közzétevő | Ajánlat | SKU | Verzió | a cloud-init kész |
+| Gyártó/kiadó | Ajánlat | SKU (Cikkszám) | Verzió | Cloud-init Ready |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |Legújabb |igen | 
-|Canonical |UbuntuServer |16.04-LTS |Legújabb |igen | 
-|Canonical |UbuntuServer |14.04.5-LTS |Legújabb |igen |
-|CoreOS |CoreOS |Stable |Legújabb |igen |
+|Canonical |UbuntuServer |18.04-LTS |legutóbbi |igen | 
+|Canonical |UbuntuServer |16.04-LTS |legutóbbi |igen | 
+|Canonical |UbuntuServer |14.04.5-LTS |legutóbbi |igen |
+|CoreOS |CoreOS |Stable |legutóbbi |igen |
 |OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |előzetes verzió |
+|Oracle 7,7 |Oracle – Linux |77 – CI |7.7.01|előzetes verzió |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |igen |
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |előzetes verzió |
     
@@ -47,6 +48,7 @@ Jelenleg Azure Stack nem támogatja a RHEL 7. x és CentOS 7. x kiépítési fol
 * A RHEL 7,6, a Cloud-init csomag esetében a támogatott csomag a következő: *18.2-1. el7_6.2* 
 * A RHEL 7,7 (előzetes verzió), a Cloud-init csomag esetében az előzetes csomag a következő: *18,5 -3. el7*
 * A CentOS 7,7 (előzetes verzió), a Cloud-init csomag esetében az előzetes csomag a következő: *18,5 -3. el7. CentOS*
+* Az Oracle 7,7 (előzetes verzió), a Cloud-init csomag esetében az előzetes csomag a következő: *18,5-3.0.1. el7*
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Mi a különbség a Cloud-init és a Linux-ügynök (WALA) között?
 A WALA egy Azure platform-specifikus ügynök, amely virtuális gépek kiépítésére és konfigurálására, valamint az Azure-bővítmények kezelésére szolgál. A virtuális gépeknek a Linux-ügynök helyett a Cloud-init használatára való konfigurálásának feladatát fejlesztjük annak érdekében, hogy a meglévő felhő-init-ügyfelek használhassák a jelenlegi Felhőbeli init-parancsfájlokat.  Ha meglévő beruházásai vannak a Cloud-init parancsfájlokban a linuxos rendszerek konfigurálásához, **nincs szükség további beállításokra** . 

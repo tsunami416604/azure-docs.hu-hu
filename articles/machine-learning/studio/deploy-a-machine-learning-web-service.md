@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 4324d33a9da66c5f49645e1c8014bd5f57d37bd9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a2c1ba1d4cd2dfdbf2a94005c539e70705486ba4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837730"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851094"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás üzembe helyezése
 
@@ -121,7 +121,7 @@ A Machine Learning Studio (klasszikus) webszolgáltatás elérésével kapcsolat
 
 ### <a name="manage-your-new-web-service"></a>Az új webszolgáltatás kezelése
 
-Kezelheti az új webszolgáltatások Machine Learning Studio (klasszikus) webszolgáltatások portálját. A [fő portál lapon](https://services.azureml-test.net/)kattintson a **webszolgáltatások**elemre. A webszolgáltatások lapon törölheti vagy másolhatja a szolgáltatást. Egy adott szolgáltatás figyeléséhez kattintson a szolgáltatásra, majd az **irányítópult**elemre. A webszolgáltatáshoz társított batch-feladatok figyeléséhez kattintson a **Batch-kérelmek naplója**elemre.
+Az új webszolgáltatásokat Machine Learning Studio (klasszikus) webszolgáltatási portál használatával kezelheti. A [fő portál lapon](https://services.azureml.net/)kattintson a **webszolgáltatások**elemre. A webszolgáltatások lapon törölheti vagy másolhatja a szolgáltatást. Egy adott szolgáltatás figyeléséhez kattintson a szolgáltatásra, majd az **irányítópult**elemre. A webszolgáltatáshoz társított batch-feladatok figyeléséhez kattintson a **Batch-kérelmek naplója**elemre.
 
 ### <a id="multi-region"></a>Az új webszolgáltatás üzembe helyezése több régióban
 
@@ -139,7 +139,7 @@ A díjszabás régió-specifikus, ezért meg kell határoznia egy számlázási 
 6. Az **erőforráscsoport** legördülő listából válassza ki a csomaghoz tartozó erőforráscsoportot. További információ az erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](../../azure-resource-manager/resource-group-overview.md)).
 7. A **csomag neve** mezőbe írja be a csomag nevét.
 8. A **terv beállításai**területen kattintson az új csomag számlázási szintjére.
-9. Kattintson a **Létrehozás** elemre.
+9. Kattintson a  **Create** (Létrehozás) gombra.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>Webszolgáltatás üzembe helyezése egy másik régióban
 
@@ -173,7 +173,7 @@ A **tesztelési** előnézet hivatkozásra kattintva tesztelheti a szolgáltatá
 
 A Batch-végrehajtási szolgáltatás teszteléséhez kattintson a **teszt** előnézet hivatkozásra. A Batch test lapon kattintson a Tallózás elemre a bevitel alatt, és válasszon ki egy CSV-fájlt, amely tartalmazza a megfelelő értékeket. Ha nem rendelkezik CSV-fájllal, és a prediktív kísérletet a Machine Learning Studio klasszikus verziójával hozta létre, akkor letöltheti a prediktív kísérlet adatkészletét, és használhatja azt.
 
-![Webszolgáltatás tesztelése](./media/publish-a-machine-learning-web-service/figure-3.png)
+![A webszolgáltatás tesztelése](./media/publish-a-machine-learning-web-service/figure-3.png)
 
 A **konfiguráció** lapon módosíthatja a szolgáltatás megjelenítendő nevét, és megadhatja a leírását. A név és a leírás a webszolgáltatások kezelése [Azure Portalban](https://portal.azure.com/) jelenik meg.
 
@@ -211,7 +211,7 @@ Mivel korábban már üzembe helyezte ezt a kísérletet, a rendszer megkérdezi
 
 A webszolgáltatás frissítésének egyik lehetősége a modell programozott módon történő újratanítása. További információ: [Machine learning Studio (klasszikus) modellek programozott módon történő átképzése](/azure/machine-learning/studio/retrain-machine-learning-model).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az üzembe helyezés módjával kapcsolatos további technikai részletekért lásd: [how a Machine learning Studio (klasszikus) modell egy kísérletből egy működőképes webszolgáltatásba halad](model-progression-experiment-to-web-service.md).
 

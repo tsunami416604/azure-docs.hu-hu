@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: af24a6b6d165ba60a0d88a4ddf74a4f18836e813
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0572a18e530eaff2b5a2d8aa8ced5af26f762aa8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111758"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873930"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AZCopy használatába
 
@@ -70,7 +70,7 @@ Az engedélyezési hitelesítő adatokat Azure Active Directory (AD) vagy közö
 
 A táblázat használata útmutatóként:
 
-| Tárolási típus | Jelenleg támogatott hitelesítési módszer |
+| Tárhely típusa | Jelenleg támogatott hitelesítési módszer |
 |--|--|
 |**Blob Storage** | Azure AD & SAS |
 |**BLOB Storage (hierarchikus névtér)** | Azure AD & SAS |
@@ -99,7 +99,7 @@ Ezeket a szerepköröket a következő hatókörök bármelyikében lehet hozzá
 - Tároló (fájlrendszer)
 - Tárfiók
 - Erőforráscsoport
-- Előfizetést
+- Előfizetés
 
 A szerepkörök ellenőrzésével és hozzárendelésével kapcsolatos további információkért lásd: [hozzáférés biztosítása az Azure blobhoz és a várólista adataihoz a Azure Portal RBAC](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
@@ -325,6 +325,6 @@ Ha a AzCopy (AzCopy v 8.1) előző verzióját kell használnia, tekintse meg az
 
 Lásd: [AzCopy konfigurálása, optimalizálása és hibáinak megoldása](storage-use-azcopy-configure.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha kérdése van, problémája vagy általános visszajelzése van, küldje el őket [a GitHub](https://github.com/Azure/azure-storage-azcopy) oldalon.

@@ -4,17 +4,17 @@ description: Ez a cikk bemutatja, hogyan küldheti el a kívánt állapot-konfig
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5905afdb9832f32e837dc4496e4a951fca41b8b0
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9fa84b5e87581fad4a7ada5fda074429409d2f8f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243553"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850346"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Automation állapot-konfiguráció jelentési adatAzure Monitor naplókba való továbbítása
 
@@ -60,7 +60,7 @@ Ha szeretné megkezdeni az adatok importálását a Azure Automation DSC-ből Az
    Get-AzResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
    ```
 
-1. Futtassa a következő PowerShell-parancsot, és cserélje le a `<AutomationResourceId>` és a `<WorkspaceResourceId>` értéket az előző lépések _ResourceId_ értékeire:
+1. Futtassa a következő PowerShell-parancsot, és cserélje le a `<AutomationResourceId>` és a `<WorkspaceResourceId>`t az előző lépések _ResourceId_ értékeire:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Category 'DscNodeStatus'
@@ -130,13 +130,13 @@ A Azure Automation diagnosztika két kategóriát hoz létre a Azure Monitor nap
 | --- | --- |
 | TimeGenerated |Az a dátum és idő, amikor a megfelelőségi ellenőrzés futott. |
 | OperationName |DscNodeStatusData |
-| resultType |Azt határozza meg, hogy a csomópont megfelelő-e. |
+| ResultType |Azt határozza meg, hogy a csomópont megfelelő-e. |
 | NodeName_s |A felügyelt csomópont neve. |
 | NodeComplianceStatus_s |Azt határozza meg, hogy a csomópont megfelelő-e. |
 | DscReportStatus |Azt jelzi, hogy sikeresen lefutott-e a megfelelőség ellenőrzése. |
 | ConfigurationMode | A konfiguráció alkalmazása a csomópontra. A lehetséges értékek a következők: __"ApplyOnly"__ , __"ApplyandMonitior"__ és __"ApplyandAutoCorrect"__ . <ul><li>__ApplyOnly__: a DSC alkalmazza a konfigurációt, és még nem tesz semmit, kivéve, ha új konfigurációt küld a cél csomópontra, vagy amikor egy új konfigurációt végez egy kiszolgálóról. Új konfiguráció kezdeti alkalmazása után a DSC nem keres eltolódást egy előzőleg konfigurált állapotból. A DSC addig próbálkozik a konfiguráció alkalmazásával, amíg a __ApplyOnly__ érvénybe lép. </li><li> __ApplyAndMonitor__: ez az alapértelmezett érték. Az LCD ChipOnGlas minden új konfigurációt alkalmaz. Egy új konfiguráció kezdeti alkalmazása után, ha a cél csomópont a kívánt állapotba sodródik, a DSC a naplókban lévő eltérést jelenti. A DSC addig próbálkozik a konfiguráció alkalmazásával, amíg a __ApplyAndMonitor__ érvénybe lép.</li><li>__ApplyAndAutoCorrect__: a DSC minden új konfigurációt alkalmaz. Egy új konfiguráció kezdeti alkalmazása után, ha a cél csomópont a kívánt állapotba sodródik, a DSC a naplókban jelzi a következetlenségeket, majd újra alkalmazza az aktuális konfigurációt.</li></ul> |
 | HostName_s | A felügyelt csomópont neve. |
-| IP-cím | A felügyelt csomópont IPv4-címe. |
+| IPAddress | A felügyelt csomópont IPv4-címe. |
 | Kategória | DscNodeStatus |
 | Erőforrás | A Azure Automation fiók neve. |
 | Tenant_g | A hívó bérlőjét azonosító GUID. |
@@ -148,7 +148,7 @@ A Azure Automation diagnosztika két kategóriát hoz létre a Azure Monitor nap
 | NumberOfResources_d |A csomópontra alkalmazott konfigurációban meghívott DSC-erőforrások száma. |
 | SourceSystem | Hogyan gyűjtöttük össze az adatokat Azure Monitor naplókat. Mindig *Azure* az Azure Diagnostics szolgáltatáshoz. |
 | ResourceId |Megadja a Azure Automation fiókot. |
-| resultDescription | A művelet leírása. |
+| ResultDescription | A művelet leírása. |
 | SubscriptionId | Az Automation-fiókhoz tartozó Azure-előfizetés azonosítója (GUID). |
 | ResourceGroup | Az Automation-fiókhoz tartozó erőforráscsoport neve. |
 | ResourceProvider | Microsoft. AUTOMATION |
@@ -161,7 +161,7 @@ A Azure Automation diagnosztika két kategóriát hoz létre a Azure Monitor nap
 | --- | --- |
 | TimeGenerated |Az a dátum és idő, amikor a megfelelőségi ellenőrzés futott. |
 | OperationName |DscResourceStatusData|
-| resultType |Azt határozza meg, hogy az erőforrás megfelelő-e. |
+| ResultType |Azt határozza meg, hogy az erőforrás megfelelő-e. |
 | NodeName_s |A felügyelt csomópont neve. |
 | Kategória | DscNodeStatus |
 | Erőforrás | A Azure Automation fiók neve. |
@@ -179,7 +179,7 @@ A Azure Automation diagnosztika két kategóriát hoz létre a Azure Monitor nap
 | DscResourceDuration_d |Az az idő (másodpercben), ameddig a DSC-erőforrás futott. |
 | SourceSystem | Hogyan gyűjtöttük össze az adatokat Azure Monitor naplókat. Mindig *Azure* az Azure Diagnostics szolgáltatáshoz. |
 | ResourceId |Megadja a Azure Automation fiókot. |
-| resultDescription | A művelet leírása. |
+| ResultDescription | A művelet leírása. |
 | SubscriptionId | Az Automation-fiókhoz tartozó Azure-előfizetés azonosítója (GUID). |
 | ResourceGroup | Az Automation-fiókhoz tartozó erőforráscsoport neve. |
 | ResourceProvider | Microsoft. AUTOMATION |

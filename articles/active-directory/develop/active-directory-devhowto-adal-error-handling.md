@@ -2,25 +2,22 @@
 title: Hiba történt az Azure AD Authentication Library (ADAL) ügyfelekkel kapcsolatos ajánlott eljárások kezelésében
 description: A ADAL-ügyfélalkalmazások hibáinak kezelésére vonatkozó útmutatást és ajánlott eljárásokat biztosít.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7008a5909d8f530920628125fec1b826be3f984
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 04ffeb85dc424396593d13f2cdc2681e26bd2db3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374190"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845195"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Hiba történt a Azure Active Directory Authentication Library-(ADAL-) ügyfelekkel kapcsolatos ajánlott eljárások kezelésében
 
@@ -52,7 +49,7 @@ Az operációs rendszer által generált hibák halmaza, ami az alkalmazásra vo
 
 Alapvetően a AcquireTokenSilent két előfordulása van:
 
-| Esetben | Leírás |
+| Eset | Leírás |
 |------|-------------|
 | **1. eset**: a hiba feloldható egy interaktív bejelentkezéssel | Az érvényes tokenek hiánya miatti hibák esetén interaktív kérelemre van szükség. Pontosabban, a gyorsítótár-keresés és az érvénytelen/lejárt frissítési jogkivonat megköveteli egy AcquireToken-hívás feloldását.<br><br>Ezekben az esetekben a végfelhasználónak meg kell adnia a bejelentkezést. Az alkalmazás azonnal dönthet úgy, hogy a végfelhasználói interakciót követően (például a bejelentkezési gomb elütése) vagy egy későbbi időpontban interaktív kérést végez. A választás az alkalmazás kívánt viselkedését határozza meg.<br><br>Tekintse meg a következő szakaszban található kódot az adott esethez és a diagnosztizált hibákhoz.|
 | **2. eset**: a hiba nem oldható fel interaktív bejelentkezéssel | A hálózati és átmeneti/ideiglenes hibák vagy más hibák esetén az interaktív AcquireToken-kérések nem oldják meg a problémát. A szükségtelen interaktív bejelentkezési kérések is meghiúsítják a végfelhasználókat. A ADAL automatikusan próbálkozik egyetlen Újrapróbálkozással a legtöbb hiba esetén a AcquireTokenSilent meghibásodásakor.<br><br>Az ügyfélalkalmazás egy későbbi időpontban is megkísérelheti az újrapróbálkozást, de az alkalmazás viselkedése és a kívánt végfelhasználói élmény függ. Az alkalmazás például elvégezheti a AcquireTokenSilent néhány perc múlva, vagy bizonyos végfelhasználói műveletekre adott válaszként. Az azonnali újrapróbálkozás azt eredményezi, hogy az alkalmazás szabályozva lesz, és nem kell megkísérelni.<br><br>Ha egy későbbi újrapróbálkozás meghiúsul ugyanazzal a hibával, nem jelenti azt, hogy az ügyfélnek interaktív kérelmet kell tennie a AcquireToken használatával, mivel nem oldja meg a hibát.<br><br>Tekintse meg a következő szakaszban található kódot az adott esethez és a diagnosztizált hibákhoz. |
@@ -61,8 +58,8 @@ Alapvetően a AcquireTokenSilent két előfordulása van:
 
 A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
-- acquireTokenSilentAsync(…)
-- acquireTokenSilentSync(…) 
+- acquireTokenSilentAsync(...)
+- acquireTokenSilentSync(...) 
 - [elavult] acquireTokenSilent (...)
 - [elavult] acquireTokenByRefreshToken (...) 
 
@@ -105,7 +102,7 @@ catch (AdalException e) {
 
 A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
-- acquireTokenSilentSync(…)
+- acquireTokenSilentSync(...)
 - acquireTokenSilentAsync(...)
 - [elavult] acquireTokenSilent (...)
 
@@ -141,7 +138,7 @@ public void onError(Exception e) {
 
 A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
-- acquireTokenSilentWithResource(…)
+- acquireTokenSilentWithResource(...)
 
 A kód a következőképpen valósítható meg:
 
@@ -347,7 +344,7 @@ Ha olyan .NET-webalkalmazást hoz létre, amely egy adott erőforráshoz tartoz�
 
 A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
-- AcquireTokenByAuthorizationCodeAsync(…)
+- AcquireTokenByAuthorizationCodeAsync(...)
 
 A kód a következőképpen valósítható meg:
 
@@ -407,7 +404,7 @@ AuthContext.acquireToken(…, function(error, errorDesc, token) {
 
 Ha AcquireToken-t használó szolgáltatás-szolgáltatás alkalmazást hoz létre, néhány kulcsfontosságú hiba miatt a kódnak kezelnie kell. Az egyetlen hiba, ha a hibát visszaküldi a hívó alkalmazásnak (az egyes esetekben), vagy újrapróbálkozási stratégiát alkalmaz. 
 
-#### <a name="all-scenarios"></a>Minden forgatókönyv
+#### <a name="all-scenarios"></a>Az összes forgatókönyv
 
 Az *összes* szolgáltatás-szolgáltatás alkalmazási forgatókönyvhöz, beleértve a következőket:
 
@@ -577,6 +574,7 @@ window.Logging = {
     }
 };
 ```
+
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
 * [Az Azure AD fejlesztői útmutatója][AAD-Dev-Guide]

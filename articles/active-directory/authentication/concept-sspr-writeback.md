@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 758d7122a991309504c5cac18b9aaf1268808887
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 151e7b2ab091959c8b6c08d366318a49987aefd9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420653"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848527"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszó visszaírási?
 
@@ -58,7 +58,7 @@ A jelszó-visszaírási használatához a bérlőhöz hozzárendelt következő 
 * E3 vagy a3 Microsoft 365
 * Microsoft 365 E5 vagy a5
 * Microsoft 365 F1
-* Microsoft 365 Business
+* Microsoft 365 Vállalati verzió
 
 > [!WARNING]
 > Az önálló Office 365 licencelési csomagok *nem támogatják az "önkiszolgáló jelszó-visszaállítás/módosítás/zárolás a helyszíni visszaírási"* lehetőséget, és a funkció működéséhez a fenti csomagok egyikét kell megkövetelni.
@@ -166,6 +166,6 @@ A jelszavakat a következő helyzetekben *nem* írja vissza a rendszer:
 > [!WARNING]
 > A (z) "a következő bejelentkezéskor a felhasználónak meg kell változtatnia a jelszót" jelölőnégyzet használata a helyszíni Active Directory felügyeleti eszközök, például a Active Directory felhasználók és számítógépek, vagy a Active Directory felügyeleti központ előzetes funkciójaként támogatott Azure AD Connect. További információkért lásd a [jelszó-kivonatok szinkronizálásának megvalósítása Azure ad Connect szinkronizálással](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon)című cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Jelszó engedélyezése visszaírási az oktatóanyag használatával: [jelszó-visszaírási engedélyezése](tutorial-enable-writeback.md)

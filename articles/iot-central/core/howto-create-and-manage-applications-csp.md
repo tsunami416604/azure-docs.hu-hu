@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1588a27453dbc223e6aa1dd993905d274e5e1242
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480342"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851332"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central-alkalmazás létrehozása és kezelése a CSP-portálról
 
@@ -53,7 +53,7 @@ Az alkalmazás URL-címe az alkalmazásra mutató hivatkozás. Menthet egy köny
 
 Az alkalmazás nevének megadásakor az alkalmazás URL-címe automatikusan létrejön. Ha szeretné, választhat egy másik URL-címet is az alkalmazáshoz. Minden egyes Azure-IoT Central URL-címnek egyedinek kell lennie az Azure IoT Centralon belül. Hibaüzenet jelenik meg, ha a választott URL-cím már használatban van.
 
-## <a name="directory"></a>Címtár
+## <a name="directory"></a>Könyvtár
 
 Mivel az Azure IoT Central környezetében a Microsoft partner portálon kiválasztott ügyfél felügyelhető, csak az adott ügyfél Azure Active Directory bérlője jelenik meg a címtár mezőben. 
 
@@ -63,18 +63,18 @@ További információ: [Azure Active Directory](https://docs.microsoft.com/azure
 
 ## <a name="azure-subscription"></a>Azure-előfizetés
 
-Az Azure-előfizetések lehetővé teszik az Azure-szolgáltatások példányainak létrehozását. Az Azure IoT Central automatikusan megkeresi az ügyfél összes olyan Azure-előfizetését, amelyhez hozzáférése van, és megjeleníti őket az **alkalmazás létrehozása** lap legördülő menüjében. Válasszon egy Azure-előfizetést új Azure IoT Central-alkalmazás létrehozásához.
+Az Azure-előfizetéssel Azure-szolgáltatások példányait hozhatja létre. Az Azure IoT Central automatikusan megkeresi az ügyfél összes olyan Azure-előfizetését, amelyhez hozzáférése van, és megjeleníti őket az **alkalmazás létrehozása** lap legördülő menüjében. Válasszon egy Azure-előfizetést új Azure IoT Central-alkalmazás létrehozásához.
 
 Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet a Microsoft partner Centerben. Az Azure-előfizetés létrehozása után lépjen vissza az **alkalmazás-létrehozási** lapra. Az új előfizetése megjelenik az **Azure-előfizetések** legördülő menüjében.
 
 További információt az Azure- [előfizetések](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)című témakörben talál.
 
-## <a name="region"></a>Régió
+## <a name="region"></a>Region (Régió)
 
 Válassza ki azt a régiót vagy [földrajzot](https://azure.microsoft.com/global-infrastructure/geographies/) , ahol létre szeretné hozni az Azure IoT Central alkalmazást. Az optimális teljesítmény érdekében általában az eszközökhöz legközelebb eső régiót kell kiválasztania.
 
 > [!NOTE]
-> Az előzetes verziójú alkalmazás sablonjai jelenleg csak az **Európa** -és az **USA** -beli helyszíneken érhetők el.
+> Az előzetes verziójú alkalmazás sablonjai jelenleg csak az **Európa** és **Egyesült Államok** helyen érhetők el.
 
 További információ: Azure- [régiók](https://azure.microsoft.com/global-infrastructure/regions/) és [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/)területek.
 

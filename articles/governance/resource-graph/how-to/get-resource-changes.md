@@ -2,13 +2,13 @@
 title: Erőforrás-módosítások lekérése
 description: Ismerje meg, hogy miként lehet megkeresni egy erőforrás megváltozását, lekérni a módosított tulajdonságok listáját, és kiértékelni a különbségeket.
 ms.date: 10/09/2019
-ms.topic: conceptual
-ms.openlocfilehash: 2ed2c0ef8638744aeaa9f31eded14d1716d891ae
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.topic: how-to
+ms.openlocfilehash: 9504ac77fc4a3b03434912cc65284e2001df6e03
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74303987"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873029"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
@@ -44,7 +44,7 @@ A **resourceChanges** végpont a következő paramétereket fogadja el a kérele
 - az **intervallum** \[szükséges\]: egy olyan tulajdonság, amely _kezdő_ és _befejező_ dátummal rendelkezik, hogy mikor érdemes megkeresni egy változási eseményt a **Zulu Time Zone (Z)** használatával.
 - **fetchPropertyChanges** (nem kötelező): logikai tulajdonság, amely meghatározza, hogy a válasz objektum tartalmazza-e a tulajdonságok változásait.
 
-A példában a kérés törzse:
+Példa a kérelem törzsére:
 
 ```json
 {
@@ -163,7 +163,7 @@ A **resourceChangeDetails** végpontjának két paramétert kell megadnia a kér
 - **resourceId**: az Azure-erőforrás, amellyel összehasonlíthatja a módosításokat.
 - **changeId**: a **resourceChanges**-ből összegyűjtött **resourceId** egyedi változási eseménye.
 
-A példában a kérés törzse:
+Példa a kérelem törzsére:
 
 ```json
 {

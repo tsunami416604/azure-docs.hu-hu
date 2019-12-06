@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fdde89f9ff88b15c464af805b81708b268e5ddf5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 95b9c76a2ff962cb2fa4bacbb1b1e9a953b7014f
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721735"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873811"
 ---
 # <a name="morelikethis-preview-in-azure-cognitive-search"></a>moreLikeThis (előzetes verzió) az Azure Cognitive Search
 
@@ -25,26 +25,48 @@ ms.locfileid: "73721735"
 
 Alapértelmezés szerint a rendszer a legfelső szintű kereshető mezők tartalmát veszi figyelembe. Ha inkább konkrét mezőket szeretne megadni, használhatja a `searchFields` paramétert. 
 
-[Összetett típusban](search-howto-complex-data-types.md)nem használhatók kereshető almezők a moreLikeThis.
+[Összetett típusban](search-howto-complex-data-types.md)nem használhatók a kereshető almezők `MoreLikeThis`.
 
-## <a name="examples"></a>Példák 
+## <a name="examples"></a>Példák
 
-Az alábbi példa egy moreLikeThis-lekérdezést mutat be. A lekérdezés megkeresi azokat a dokumentumokat, amelyek leírás mezőjének legtöbbje hasonlít a forrásdokumentum mezőjéhez, ahogy azt a `moreLikeThis` paraméter adja meg.
+Az alábbi példák a gyors üzembe helyezési pontról származó szállodákat használják [: hozzon létre keresési indexet a Azure Portal](search-get-started-portal.md).
+
+### <a name="simple-query"></a>Egyszerű lekérdezés
+
+A következő lekérdezés megkeresi azokat a dokumentumokat, amelyek leírás mezőjének legtöbbje hasonlít a forrásdokumentum mezőjéhez, ahogy azt a `moreLikeThis` paraméter adja meg:
 
 ```
-Get /indexes/hotels/docs?moreLikeThis=1002&searchFields=description&api-version=2019-05-06-Preview
+GET /indexes/hotels-sample-index/docs?moreLikeThis=29&searchFields=Description&api-version=2019-05-06-Preview
 ```
 
+Ebben a példában a kérelem a következőhöz hasonló szállodákat keres: `HotelId` 29.
+A HTTP GET használata helyett a HTTP POST használatával is meghívhat `MoreLikeThis`t:
+
 ```
-POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
+POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06-Preview
     {
-      "moreLikeThis": "1002",
-      "searchFields": "description"
+      "moreLikeThis": "29",
+      "searchFields": "Description"
     }
 ```
 
+### <a name="apply-filters"></a>Szűrők alkalmazása
 
-## <a name="next-steps"></a>További lépések
+`MoreLikeThis` kombinálható más gyakori lekérdezési paraméterekkel, például a `$filter`okkal. A lekérdezés például csak olyan szállodákra korlátozható, amelyek kategóriája "költségvetés", és ahol a minősítés magasabb, mint 3,5:
+
+```
+GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&api-version=2019-05-06-Preview
+```
+
+### <a name="select-fields-and-limit-results"></a>Mezők kiválasztása és az eredmények korlátozása
+
+Az `$top` választóval korlátozható, hogy hány eredményt kell visszaadni egy `MoreLikeThis` lekérdezésben. Emellett a mezőket `$select`is kiválaszthatja. Itt az első három Hotel van kiválasztva az AZONOSÍTÓval, a névvel és a minősítéssel együtt: 
+
+```
+GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&$top=3&$select=HotelId,HotelName,Rating&api-version=2019-05-06-Preview
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 A szolgáltatással való kísérletezéshez bármilyen webes tesztelési eszközt használhat.  Javasoljuk, hogy ehhez a gyakorlathoz a Poster-t használja.
 

@@ -1,21 +1,21 @@
 ---
-title: Az Azure Automation első grafikus forgatókönyvem
+title: Az első grafikus runbook a Azure Automation
 description: Ez az oktatóanyag bemutatja egy egyszerű grafikus forgatókönyv létrehozását, tesztelését és közzétételét.
 keywords: runbook, runbook-sablon, runbook automation, azure runbook
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/13/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 043a39fbcb908e4c277e5eba9972a2a17ca23813
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 1cdd015d9f29c3fb672d626f32a485271e2757c2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478685"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850312"
 ---
 # <a name="my-first-graphical-runbook"></a>Az első grafikus forgatókönyvem
 
@@ -45,7 +45,7 @@ Először egy egyszerű runbookot hozunk létre, amelynek a kimenete a *Hello Wo
    Az Automation-fiók oldala gyors áttekintést nyújt a fiókban levő erőforrásokról. Valószínűleg rendelkezik már adategységekkel. Ezek nagy része az új Automation-fiókhoz automatikusan hozzáadott modul. Rendelkeznie kell az [előfeltételek](#prerequisites) között említett hitelesítő adategységgel is.
 
 2. Kattintson a **Runbookok** elemre a **FOLYAMATKEZELÉS** területen a runbookok listájának megnyitásához.
-3. Hozzon létre egy új runbookot kiválasztásával **+ forgatókönyv hozzáadása**, majd kattintson a **hozzon létre egy új runbookot**.
+3. Hozzon létre egy új runbook a **+ Runbook hozzáadása**elem kiválasztásával, majd kattintson **az új runbook létrehozása**lehetőségre.
 4. Adja a forgatókönyvnek a *MyFirstRunbook-Graphical* nevet.
 5. Ebben az esetben egy [grafikus runbookot](automation-graphical-authoring-intro.md) hoz létre, ezért a **Forgatókönyv típusának** válassza a **Grafikus** lehetőséget.<br> ![Új runbook](media/automation-first-runbook-graphical/create-new-runbook.png)<br>
 6. A forgatókönyv létrehozásához és a grafikus szerkesztő megnyitásához kattintson a **Létrehozás** gombra.
@@ -56,7 +56,7 @@ A szerkesztő bal oldalán levő Könyvtárvezérlés segítségével kiválaszt
 
 1. A Könyvtárvezérlésben kattintson a keresési szövegmezőbe, és írja be a **Write-Output** kifejezést. A keresés eredményei az alábbi ábrán láthatók: <br> ![Microsoft.PowerShell.Utility](media/automation-first-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
 1. Görgessen le a lista aljához. Kattintson a **Write-Output** elemre, és válassza a **Hozzáadás a vászonhoz** lehetőséget, vagy kattintson a parancsmag melletti három pontra, és válassza a **Hozzáadás a vászonhoz** lehetőséget.
-1. A vásznon kattintson a **Write-Output** tevékenységre. Ez a művelet megnyitja a konfiguráció vezérlő oldal, amely lehetővé teszi, hogy a tevékenység konfigurálását.
+1. A vásznon kattintson a **Write-Output** tevékenységre. Ez a művelet megnyitja a konfigurációs vezérlő lapot, amely lehetővé teszi a tevékenység konfigurálását.
 1. A **Címke** értéke alapértelmezés szerint a parancsmag neve, de módosíthatja rövidebbre is. Módosítsa a következőre: *Hello World megjelenítése a kimenetben*.
 1. A **Paraméterek** elemre kattintva megadhatja a parancsmag paramétereinek értékét.
 
@@ -74,77 +74,77 @@ A szerkesztő bal oldalán levő Könyvtárvezérlés segítségével kiválaszt
 
 Mielőtt közzéteszi a runbookot, hogy éles üzemben is elérhető legyen, tesztelnie kell, hogy biztosan jól működik-e. Egy forgatókönyv tesztelésekor a **Piszkozat** verziót futtatja, és interaktív módon megtekinti a kimenetét.
 
-1. Válassza ki **teszt panel** a teszt lap megnyitásához.
+1. A teszt lap megnyitásához válassza a **teszt panelt** .
 1. Kattintson az **Indítás** gombra a teszt elindításához. Elvileg ez az egyetlen engedélyezett lehetőség.
 1. Létrejön egy [forgatókönyv-feladat](automation-runbook-execution.md), az állapota pedig megjelenik a panelen.
 
    A feladat állapota kezdetben *Várólistán*. Ez azt jelöli, hogy egy felhőben lévő runbook-feldolgozó elérhetővé válására vár. Ezután *Indítás* állapotúra változik, ha egy feldolgozó elvállalja a feladatot, majd *Fut* állapotúra, amikor a forgatókönyv elkezd futni.
 
 1. Amikor a forgatókönyv feladat befejeződik, megjelenik a kimenete. Ebben az esetben a *Hello World* szöveg jelenik meg.<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
-1. A tesztlap a vászonra való visszatéréshez zárja be.
+1. A vászonra való visszatéréshez zárjuk be a teszt oldalt.
 
-## <a name="publish-and-start-the-runbook"></a>Közzététel és a forgatókönyv indítása
+## <a name="publish-and-start-the-runbook"></a>A runbook közzététele és elindítása
 
 A létrehozott runbook még mindig Piszkozat módban van. Az üzemi környezetben való futtatás előtt közzé kell tennünk. Amikor elérhetővé tesz egy forgatókönyvet, felülírja a Közzétett verziót a Piszkozattal. Ebben az esetben még nincs Közzétett verzió, mivel még csak most hozta létre a runbookot.
 
-1. Válassza ki **közzététel** közzétenni a runbookot, majd **Igen** amikor a rendszer kéri.
-1. Ha balra görgetve megtekinti a forgatókönyvet a a **Runbookok** lapon jelenik meg egy **szerzői állapot** , **közzétett**.
-1. Görgessen vissza a lap a megtekintésére való jogot **MyFirstRunbook-Graphical**.
+1. Válassza a **Közzététel** lehetőséget a runbook közzétételéhez, majd az **Igen** gombra, amikor a rendszer kéri.
+1. Ha balra görgetve megtekinti a runbook a **runbookok** lapon, a **közzétett** **szerzői állapotot** jeleníti meg.
+1. Görgessen vissza jobbra a **MyFirstRunbook-grafikus**oldal megtekintéséhez.
 
    A felül látható lehetőségekkel elindíthatjuk a forgatókönyvet, ütemezhetjük egy későbbi időpontban való indításra, vagy létrehozhatunk egy [webhookot](automation-webhooks.md), amely segítségével elindítható a forgatókönyv egy HTTP-hívással.
 
-1. Válassza ki **Start** , majd **Igen** amikor a rendszer kéri a runbook elindításához.
-1. A feladat oldalát a létrehozott runbook-feladat számára van nyitva. Győződjön meg arról, hogy a **Feladat állapota** értéke **Befejezve**.
-1. Ha a forgatókönyv a *Befejezve* állapotot mutatja, kattintson a **Kimenet** lehetőségre. A **kimeneti** oldal megnyílik, és láthatja a *Hello World* a panelen.
+1. Kattintson a **Start** gombra, majd az **Igen** gombra, amikor a rendszer felszólítja a runbook elindítására.
+1. Megnyílik a létrehozott runbook-feladatokhoz tartozó feladatok lapja. Győződjön meg arról, hogy a **Feladat állapota** értéke **Befejezve**.
+1. Ha a forgatókönyv a *Befejezve* állapotot mutatja, kattintson a **Kimenet** lehetőségre. Megnyílik a **kimenet** lap, és megjelenik a *"Helló világ!" alkalmazás* a panelen.
 1. A kimeneti oldal bezárásához.
-1. Kattintson a **az összes napló** a forgatókönyv-feladathoz tartozó Streamek lap megnyitásához. A kimeneti streamben csak a *Hello World* eredményt látja, de itt megjelenhetnek egyéb streamek is egy runbook-feladatból, mint például a Részletes vagy a Hiba, ha a forgatókönyv ezekbe ír.
-1. Zárja be az összes napló oldal és a feladat oldalát a MyFirstRunbook-Graphical lapra való visszatéréshez.
-1. A feladatok a runbook zárja be az összes megtekintése a **feladat** lapon, és válassza **feladatok** alatt **erőforrások**. Ez felsorolja az összes, a runbook által létrehozott feladatot. Egy feladat csak egyszer szerepel a listán, mert csak egyszer futtatta a feladatot.
+1. A runbook-feladatokhoz tartozó streamek lap megnyitásához kattintson az **összes napló** lehetőségre. A kimeneti streamben csak a *Hello World* eredményt látja, de itt megjelenhetnek egyéb streamek is egy runbook-feladatból, mint például a Részletes vagy a Hiba, ha a forgatókönyv ezekbe ír.
+1. A MyFirstRunbook-grafikus laphoz való visszatéréshez zárjuk be a minden napló és a feladatok lapot.
+1. A runbook összes feladatának megtekintéséhez kattintson a **feladat** lapra, és válassza a **feladatok** lehetőséget az **erőforrások**területen. Ez felsorolja az összes, a runbook által létrehozott feladatot. Egy feladat csak egyszer szerepel a listán, mert csak egyszer futtatta a feladatot.
 1. Erre a feladatra kattintva megnyithatja ugyanazt a Feladat panelt, amelyet már látott a runbook elindításakor. Ez lehetővé teszi, hogy az időben visszamenve megtekintse egy adott forgatókönyvhöz létrehozott összes feladat részleteit.
 
-## <a name="create-variable-assets"></a>Változó adategységek létrehozása
+## <a name="create-variable-assets"></a>Változó eszközök létrehozása
 
 Most már befejeződött a runbook tesztelése és közzététele, de még nem csinál semmi hasznosat. Azt szeretnénk, hogy Azure-erőforrásokat kezeljen. Mielőtt konfigurálná a runbookot a hitelesítésre, létre fog hozni egy változót, amely tárolja az előfizetés-azonosítót, és hivatkozni fog rá, miután beállította a tevékenységet hitelesítésre az alábbi 6. lépésben. Ha hivatkozást szerepeltet az előfizetési környezetben, könnyebben használhat több előfizetést. A továbbhaladás előtt másolja ki az előfizetés-azonosítót a navigációs ablaktábla előfizetés-beállításai közül.
 
-1. Válassza ki az Automation-fiókok lap **változók** alatt **megosztott erőforrások**.
-1. Válassza ki **változó hozzáadása**.
-1. Az új változó lapon az a **neve** mezőbe írja be **AzureSubscriptionId** és a a **érték** mezőben adja meg az előfizetés-azonosító. A **Típus** maradjon **Sztring**, és tartsa meg a *Titkosítás* alapértelmezett értékét.
+1. Az Automation-fiókok lapon válassza a **változók** elemet a **megosztott erőforrások**területen.
+1. Válassza **a változó hozzáadása**lehetőséget.
+1. Az új változó lap név mezőjébe írja be az **AzureSubscriptionId** **nevet** , és az **érték** MEZŐBE írja be az előfizetés-azonosítóját. A **Típus** maradjon **Sztring**, és tartsa meg a *Titkosítás* alapértelmezett értékét.
 1. A változó létrehozásához kattintson a **Létrehozás** gombra.
 
 ## <a name="add-authentication"></a>Hitelesítés hozzáadása
 
-Most, hogy van egy változója az előfizetés-azonosító tárolására, úgy konfigurálhatja a runbookot, hogy megtörténjen a hitelesítés a Futtató hitelesítő adatokkal, amelyek az [előfeltételek](#prerequisites) között szerepelnek. Az Azure-beli futtató kapcsolat hozzáadása ehhez **eszköz** és **Connect-AzureRmAccount** parancsmagot a vászonhoz.
+Most, hogy van egy változója az előfizetés-azonosító tárolására, úgy konfigurálhatja a runbookot, hogy megtörténjen a hitelesítés a Futtató hitelesítő adatokkal, amelyek az [előfeltételek](#prerequisites) között szerepelnek. Ezt úgy teheti meg, hogy hozzáadja az Azure-beli futtató kapcsolati **eszközt** és a **AzureRmAccount** parancsmagot a vászonhoz.
 
-1. Lépjen vissza a runbookhoz, és válassza ki a **szerkesztése** a MyFirstRunbook-Graphical oldalon.
-1. Nem kell a **Hello World megjelenítése a kimenetben** többé, ezért kattintson a három pontra (...), és válassza ki **törlése**.
+1. Váltson vissza a runbook, és válassza a **Szerkesztés** lehetőséget a MyFirstRunbook-grafikus oldalon.
+1. Nincs szükség az **írási "Helló világ!" alkalmazás a kimenetre** , ezért kattintson a három pontra (...), és válassza a **Törlés**lehetőséget.
 1. A Könyvtár vezérlőben bontsa ki az **ADATEGYSÉGEK**, **Kapcsolatok** lehetőséget, és a **Hozzáadás a vászonhoz** lehetőség kiválasztásával adja hozzá a vászonhoz az **AzureRunAsConnection** elemet.
-1. A könyvtár vezérlőben írja be a **Connect-AzureRmAccount** be a keresési szövegmezőbe.
+1. A könyvtár vezérlőben írja be a következőt: **AzureRmAccount** a keresés szövegmezőbe.
 
    > [!IMPORTANT]
-   > **Add-AzureRmAccount** alias már **Connect-AzureRMAccount**. Ha a Keresés a szalagtár elemmel, ha nem látja, akkor **Connect-AzureRMAccount**, használhat **Add-AzureRmAccount**, vagy frissítheti az a modulokat az Automation-fiókban.
+   > A **Add-AzureRmAccount** mostantól egy alias a **kapcsolat-AzureRmAccount**. Ha nem látja a **AzureRMAccount**, használhatja a **AzureRMAccount**, vagy frissítheti a modulokat az Automation-fiókban.
 
-1. Adjon hozzá **Connect-AzureRmAccount** a vászonra.
-1. Vigye a kurzort a **Futtató kapcsolat létesítése** fölé, és várja meg, amíg megjelenik az alakzat alján egy kör. Kattintson a körre, és húzza a nyilat az **Connect-AzureRmAccount**. A létrehozott nyíl egy *hivatkozás*. A runbook kezdődik **futtató kapcsolat beszerzése** , majd futtassa **Connect-AzureRmAccount**.<br> ![Hivatkozás létrehozása a tevékenységek között](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
-1. A vásznon válassza ki **Connect-AzureRmAccount** és a konfiguráció vezérlőpanelen írja be a **bejelentkezés az Azure** a a **címke** szövegmezőbe.
-1. Kattintson a **paraméterek** és a tevékenység paramétereinek konfigurálása lap jelenik meg.
-1. **Connect-AzureRmAccount** több paraméterkészlettel rendelkezik, ezért ki kell választania egyet, mielőtt megadhatná a paraméterértékeket. Kattintson a **Paraméterkészlet** lehetőségre, és válassza a **ServicePrincipalCertificate** paraméterkészletet.
-1. Miután kiválasztotta a paraméterkészletet, a paramétereket a tevékenység paramétereinek konfigurálása lap jelenik meg. Kattintson az **APPLICATIONID** elemre.<br> ![Azure RM-fiók paramétereinek hozzáadása](media/automation-first-runbook-graphical/Add-AzureRmAccount-params.png)
-1. A paraméter értéke oldalon válassza ki a **tevékenység kimenete** a a **adatforrás** , és válassza ki **futtató kapcsolat beszerzése** a listából, az a **mező elérési útja** szövegmezőbe írja be **ApplicationId**, és kattintson a **OK**. A mező elérési útjához tartozó tulajdonság nevét azért adja meg, mert a tevékenység több tulajdonsággal rendelkező objektumot eredményez.
-1. Kattintson a **CERTIFICATETHUMBPRINT**, és a paraméter értéke oldalon válassza ki a **tevékenység kimenete** számára a **adatforrás**. Válassza a **Futtató kapcsolat létesítése** elemet a listáról, és a **Mező elérési útja** szövegmezőbe írja be a **CertificateThumbprint** kifejezést, majd kattintson az **OK** gombra.
-1. Kattintson a **SERVICEPRINCIPAL**, és a paraméter értéke oldalon válassza ki **ConstantValue** számára a **adatforrás**, kattintson a lehetőségre **igaz**, majd **OK**.
-1. Kattintson a **TENANTID**, és a paraméter értéke oldalon válassza ki a **tevékenység kimenete** számára a **adatforrás**. Válassza a **Futtató kapcsolat létesítése** elemet a listáról, és a **Mező elérési útja** szövegmezőbe írja be a **TenantId** kifejezést, majd kattintson kétszer az **OK** elemre.
+1. Adja hozzá a **AzureRmAccount** a vászonhoz.
+1. Vigye a kurzort a **Futtató kapcsolat létesítése** fölé, és várja meg, amíg megjelenik az alakzat alján egy kör. Kattintson a körre, és húzza a nyilat a **Kapcsolódás AzureRmAccount**. A létrehozott nyíl egy *hivatkozás*. A runbook a **Get futtató kapcsolattal** kezdődik, majd a **kapcsolat-AzureRmAccount**parancsot futtatja.<br> ![Hivatkozás létrehozása a tevékenységek között](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
+1. A vászonon válassza a **Kapcsolódás – AzureRmAccount** lehetőséget, majd a konfiguráció vezérlése ablaktáblán írja be a **Bejelentkezés az Azure** -ba **felirat** szövegmezőbe.
+1. Kattintson a **Paraméterek** elemre, és megjelenik a tevékenység paraméterének konfigurációja lap.
+1. A **AzureRmAccount** több paraméterrel rendelkezik, ezért ki kell választania egyet, mielőtt megadhatja a paramétereket. Kattintson a **Paraméterkészlet** lehetőségre, és válassza a **ServicePrincipalCertificate** paraméterkészletet.
+1. Miután kiválasztotta a paramétert, a paraméterek megjelennek a tevékenység paraméterének konfiguráció lapján. Kattintson az **APPLICATIONID** elemre.<br> ![Azure RM-fiók paramétereinek hozzáadása](media/automation-first-runbook-graphical/Add-AzureRmAccount-params.png)
+1. A paraméter értéke lapon válassza ki az **adatforrás** **tevékenység kimenete** elemet, majd válassza a listából a **futtató hálózat beolvasása** lehetőséget, a **mező elérési útja** szövegmezőbe írja be a **ApplicationId**, majd kattintson **az OK**gombra. A mező elérési útjához tartozó tulajdonság nevét azért adja meg, mert a tevékenység több tulajdonsággal rendelkező objektumot eredményez.
+1. Kattintson a **CERTIFICATETHUMBPRINT**elemre, majd a paraméter értéke lapon válassza a **tevékenység kimenete** lehetőséget az **adatforrás**számára. Válassza a **Futtató kapcsolat létesítése** elemet a listáról, és a **Mező elérési útja** szövegmezőbe írja be a **CertificateThumbprint** kifejezést, majd kattintson az **OK** gombra.
+1. Kattintson a **SERVICEPRINCIPAL**elemre, majd a paraméter értéke lapon válassza a **ConstantValue** lehetőséget az **adatforráshoz**, kattintson az **igaz**értékre, majd kattintson az **OK**gombra.
+1. Kattintson a **TENANTID**elemre, majd a paraméter értéke lapon válassza a **tevékenység kimenete** lehetőséget az **adatforrás**számára. Válassza a **Futtató kapcsolat létesítése** elemet a listáról, és a **Mező elérési útja** szövegmezőbe írja be a **TenantId** kifejezést, majd kattintson kétszer az **OK** elemre.
 1. A Könyvtár vezérlőben írja be a keresési szövegmezőbe a következőt: **Set-AzureRmContext**.
 1. Adja hozzá a vászonhoz a **Set-AzureRmContext** elemet.
 1. A vásznon válassza ki a **Set-AzureRmContext** elemet, és a Konfiguráció vezérlőpanelen írja be az **Előfizetés azonosítójának megadása** mondatot a **Címke** szövegmezőbe.
-1. Kattintson a **paraméterek** és a tevékenység paramétereinek konfigurálása lap jelenik meg.
+1. Kattintson a **Paraméterek** elemre, és megjelenik a tevékenység paraméterének konfigurációja lap.
 1. Az **Set-AzureRmContext** több paraméterkészlettel rendelkezik, ezért ki kell választania egyet, mielőtt megadhatná a paraméterértékeket. Kattintson a **Paraméterkészlet** lehetőségre, és válassza a **SubscriptionId** paraméterkészletet.
-1. Miután kiválasztotta a paraméterkészletet, a paramétereket a tevékenység paramétereinek konfigurálása lap jelenik meg. Kattintson a **SubscriptionID** elemre.
-1. A paraméter értéke oldalon válassza ki a **Változóeszköz** a a **adatforrás** , és válassza ki **AzureSubscriptionId** a listában, és kattintson a **OK** kétszer.
+1. Miután kiválasztotta a paramétert, a paraméterek megjelennek a tevékenység paraméterének konfiguráció lapján. Kattintson a **SubscriptionID** elemre.
+1. A paraméter értéke lapon válassza a **változó eszköz** lehetőséget az **adatforrás** számára, és válassza a **AzureSubscriptionId** lehetőséget a listából, majd kattintson kétszer **az OK** gombra.
 1. Vigye a kurzort a **Bejelentkezés az Azure-ba** fölé, és várja meg, amíg megjelenik az alakzat alján egy kör. Kattintson a körre, és húzza a nyilat az **Előfizetés azonosítójának megadása** elemre.
 
 A forgatókönyvnek ezen a ponton az alábbi kódhoz kell hasonlítania: <br>![Forgatókönyv-hitelesítés konfigurálása](media/automation-first-runbook-graphical/runbook-auth-config.png)
 
-## <a name="add-activity-to-start-a-vm"></a>Egy virtuális Gépet elindító tevékenység hozzáadása
+## <a name="add-activity-to-start-a-vm"></a>Tevékenység hozzáadása a virtuális gép indításához
 
 Most hozzáad egy **Start-AzureRmVM** tevékenységet, amellyel egy virtuális gépet indít el. Válassza ki az Azure-előfizetésében lévő bármelyik virtuális gépet, amelynek a nevét ideiglenesen szoftveresen rögzíti a parancsmagba.
 
@@ -163,8 +163,8 @@ A forgatókönyvnek ezen a ponton az alábbi kódhoz kell hasonlítania: <br>![F
 
 A runbook jelenleg a **Start-AzureRmVM** parancsmagban meghatározott erőforráscsoport virtuális gépét indítja el. A runbook hasznosabb lenne, ha megadhatnánk, hogy mikor induljon. Most olyan bemeneti paramétereket fog hozzáadni a runbookhoz, amelyek biztosítják ezt a funkciót.
 
-1. A grafikus szerkesztő megnyitásához **szerkesztése** a a **MyFirstRunbook-Graphical** ablaktáblán.
-1. Válassza ki **bemeneti és kimeneti** , majd **bemenet hozzáadása** a forgatókönyv bemeneti paramétere panel megnyitásához.
+1. A **MyFirstRunbook-grafikus** panel **Szerkesztés** gombjára kattintva nyissa meg a grafikus szerkesztőt.
+1. Válassza a **bemenet és kimenet** lehetőséget, majd **adja hozzá a bemenet** elemet a Runbook bemeneti paraméter panel megnyitásához.
 1. A**Name** paraméterhez adja meg a *VMNAme* értéket. A **Típus** maradjon *sztring*, de a **Kötelező** értékét módosítsa arra, hogy *Igen*. Kattintson az **OK** gombra.
 1. Hozzon létre egy második kötelező bemeneti paramétert *ResourceGroupName* néven, majd kattintson az **OK** gombra a **Bemenet és kimenet** panelen.<br> ![Runbook bemeneti paraméterei](media/automation-first-runbook-graphical/start-azurermvm-params-outputs.png)
 1. Válassza a **Start-AzureRmVM** tevékenységet, majd kattintson a **Paraméterek** elemre.
@@ -177,11 +177,11 @@ A runbook jelenleg a **Start-AzureRmVM** parancsmagban meghatározott erőforrá
 1. Kattintson az **Indítás** gombra a forgatókönyv elindításához. Írja be a **VMName** és a **ResourceGroupName** értéket az elindítani kívánt virtuális géphez.
 1. Ha a forgatókönyv kész, ellenőrizze, hogy a virtuális gép elindult-e.
 
-## <a name="create-a-conditional-link"></a>Egy feltételes hivatkozás létrehozása
+## <a name="create-a-conditional-link"></a>Feltételes hivatkozás létrehozása
 
 Most úgy módosítja a runbookot, hogy csak akkor próbálja meg elindítani a virtuális gépet, ha még nem indult el. Ennek érdekében hozzáadjuk a **Get-AzureRmVM** parancsmagot a runbookhoz. Ez lekéri a virtuális gép példányszintű állapotát. Ezután adjon hozzá egy **Állapot kérése** nevű PowerShell-munkafolyamati kódmodult egy PowerShell-kódrészlettel, amely meghatározza, hogy a virtuális gép fut-e vagy le van állítva. Az **Állapot lekérése** modulból származó feltételes hivatkozás csak akkor futtatja a **Start-AzureRmVM** tevékenységet, ha a jelenlegi, futó állapot helyett a gép le van állítva. Végül a PowerShell Write-Output parancsmag használatával megjelenő üzenet tájékoztatja, hogy a virtuális gép sikeresen elindult-e.
 
-1. Nyissa meg **MyFirstRunbook-Graphical** a grafikus szerkesztőben.
+1. Nyissa meg a **MyFirstRunbook** a grafikus szerkesztőben.
 1. Távolítsa el az **Előfizetés azonosítójának megadása** és a **Start-AzureRmVM** közötti hivatkozást. Ehhez kattintson rá, majd nyomja le a *Delete* billentyűt.
 1. A Könyvtár vezérlőben írja be a keresési szövegmezőbe a következőt: **Get-AzureRm**.
 1. Adja hozzá a vászonhoz a **Get-AzureRmVM** elemet.
@@ -193,7 +193,7 @@ Most úgy módosítja a runbookot, hogy csak akkor próbálja meg elindítani a 
 1. A Könyvtár vezérlőben bontsa ki a **Forgatókönyv vezérlése** lehetőséget, és adja hozzá a vászonhoz az **Code** elemet.  
 1. Hozzon létre egy hivatkozást a **Get-AzureRmVM** és a **Code** között.  
 1. Kattintson a **Code** elemre, majd a Konfiguráció panelen módosítsa a címkét a következőre: **Állapot kérése**.
-1. Válassza ki **kód** paramétert, és a **Kódszerkesztő** lap jelenik meg.  
+1. Válassza ki a **Code** paramétert, és megjelenik a **Kódszerkesztő** oldal.  
 1. A kódszerkesztőben illessze be az alábbi kódrészletet.
 
     ```powershell-interactive
@@ -224,7 +224,7 @@ Most úgy módosítja a runbookot, hogy csak akkor próbálja meg elindítani a 
 1. Mentse a forgatókönyvet, és nyissa meg a Teszt panelt.
 1. Indítsa el a forgatókönyvet úgy, hogy a virtuális gép nem fut, és elvileg el kell indulnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információk a Grafikus létrehozásról: [Grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md).
 * A PowerShell-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-forgatókönyvem](automation-first-runbook-textual-powershell.md).

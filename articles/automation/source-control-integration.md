@@ -4,17 +4,17 @@ description: Ez a cikk ismerteti a verziókövetés integrációját a GitHubon 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: fcb3885446e534a2a6a5153545fd39fb14a02776
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886533"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850159"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
 
@@ -49,7 +49,7 @@ A **verziókövetés összegzése** lapon adja meg az adatokat, és kattintson a
 |---------|---------|
 |Forrás vezérlőelem neve     | A verziókövetés rövid neve. *A név csak betűket és számokat tartalmazhat.*        |
 |Forrás vezérlőelem típusa     | A forrás-ellenőrzési forrás típusa. Az elérhető lehetőségek:</br> GitHub</br>Azure-repók (git)</br> Azure Repos (TFVC)        |
-|Tárház     | A tárház vagy a projekt neve. A rendszer az első 200 adattárat adja vissza. Egy adattár kereséséhez írja be a nevet a mezőbe, majd kattintson a **Keresés a githubon**lehetőségre.|
+|Adattár     | A tárház vagy a projekt neve. A rendszer az első 200 adattárat adja vissza. Egy adattár kereséséhez írja be a nevet a mezőbe, majd kattintson a **Keresés a githubon**lehetőségre.|
 |Ág     | A forrásfájlok lekérésére szolgáló ág. A TFVC nem érhető el a fiókra vonatkozó célzás.          |
 |Mappa elérési útja     | A szinkronizálni kívánt runbookok tartalmazó mappa. Példa:/Runbooks </br>*A rendszer csak a megadott mappában lévő runbookok szinkronizálja. A rekurzió nem támogatott.*        |
 |<sup>1</sup> . automatikus szinkronizálás     | Be-és kikapcsolja az automatikus szinkronizálást, ha véglegesítenek a verziókövetés adattárában         |
@@ -103,7 +103,7 @@ A személyes hozzáférési tokenek GitHubon való létrehozásával kapcsolatos
 |írás: repo_hook     | Adattár-hookok írása         |
 |olvasás: repo_hook|Adattár-hookok olvasása|
 
-#### <a name="azure-repos"></a>Azure Repos
+#### <a name="azure-repos"></a>Azure-beli adattárak
 
 Ha további információt szeretne arról, hogyan hozhat létre személyes hozzáférési tokent az Azure Reposban, látogasson el a [személyes hozzáférési jogkivonatokkal történő hitelesítésre](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
@@ -180,6 +180,6 @@ Jelenleg a portálon nem lehet frissíteni a hozzáférési tokent a forrás vez
 * A [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update)-n keresztül.
 * Az [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) parancsmag használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk a forgatókönyvek típusairól, az előnyeikről és a korlátaikról: [Az Azure Automation forgatókönyveinek típusai](automation-runbook-types.md)

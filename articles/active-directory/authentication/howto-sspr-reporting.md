@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55ef15bd1fe922aa44227d2fea3d882d4320146f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d3b05c45d218c0f85817b4b5023ac22401879f81
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786715"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847218"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Jelentéskészítési beállítások az Azure AD jelszavas kezeléséhez
 
@@ -44,7 +44,7 @@ A következő kérdéseket választhatja ki a [Azure Portalban](https://portal.a
 A Azure Portal-élményben továbbfejlesztettük a jelszavak alaphelyzetbe állítása és a jelszó-visszaállítás regisztrációs tevékenység megtekintésének módját. Az alábbi lépések segítségével megkeresheti a jelszó-visszaállítási és a jelszó-visszaállítási regisztrációs eseményeket:
 
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
-2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán.
+2. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget.
 3. Keresse meg **Azure Active Directory** a szolgáltatások listájában, és válassza ki.
 4. Válassza a **felhasználók** lehetőséget a kezelés szakaszban.
 5. Válassza a **naplók** lehetőséget a **felhasználók** panelen. Ez megjeleníti az összes olyan naplózási eseményt, amely a címtár összes felhasználóján bekövetkezett. A nézet szűrésével megtekintheti az összes jelszóval kapcsolatos eseményt.
@@ -81,7 +81,7 @@ A következő tevékenységtípusok jelennek meg az **önkiszolgáló jelszavas 
 * [Jelszó alaphelyzetbe állítása (a rendszergazda által)](#activity-type-reset-password-by-admin): azt jelzi, hogy a rendszergazda a Azure Portal egy felhasználó nevében jelszó-visszaállítást hajtott végre.
 * [Jelszó alaphelyzetbe állítása (önkiszolgáló)](#activity-type-reset-password-self-service): azt jelzi, hogy a felhasználó sikeresen visszaállította a jelszavát az [Azure ad jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com).
 * Önkiszolgáló [jelszó-visszaállítási folyamat tevékenységének folyamata](#activity-type-self-serve-password-reset-flow-activity-progress): jelzi, hogy a felhasználó milyen lépésekkel halad át, például egy adott jelszó-visszaállítási hitelesítési kapu átadásával a jelszó-visszaállítási folyamat részeként.
-* [Felhasználói fiók zárolásának feloldása (önkiszolgáló)](#activity-type-unlock-a-user-account-self-service): azt jelzi, hogy a felhasználó sikeresen feloldotta a Active Directory fiókját anélkül, hogy az [Azure ad jelszó-visszaállítási portálról új](https://passwordreset.microsoftonline.com) jelszót kellene beállítania a fiók zárolásának feloldása Active Directory funkció használatával. Alaphelyzetbe állítás nélkül.
+* [Felhasználói fiók zárolásának feloldása (önkiszolgáló)](#activity-type-unlock-a-user-account-self-service): azt jelzi, hogy a felhasználó az [Azure ad jelszó-visszaállítási Active Directory portál](https://passwordreset.microsoftonline.com) jelszavának visszaállítása nélkül sikeresen feloldotta a Active Directory fiókját, és nem kell alaphelyzetbe állítani a fiók zárolását.
 * Az [önkiszolgáló jelszó-visszaállításhoz regisztrált felhasználó](#activity-type-user-registered-for-self-service-password-reset): azt jelzi, hogy a felhasználó regisztrálta az összes szükséges információt, hogy a jelszó a jelenleg megadott bérlői jelszó-visszaállítási szabályzatnak megfelelően legyen visszaállítva.
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>Tevékenységtípus: letiltva az önkiszolgáló jelszó-visszaállítástól

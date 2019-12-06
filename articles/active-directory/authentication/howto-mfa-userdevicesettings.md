@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fd03ea807e48f6f0e287bb4497e4d20268995db
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 7a1e6dc3ed1c1f9af6f6b935cdd3a6ceaedbe7a4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404167"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848255"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Felhasználói beállítások kezelése az Azure Multi-Factor Authentication a felhőben
 
@@ -32,8 +32,8 @@ A hitelesítés-rendszergazdai szerepkörhöz rendelt rendszergazda megkövetelh
 
 ![Hitelesítési módszerek kezelése a Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
-1. A bal oldalon válassza **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. A bal oldalon válassza az **Azure Active Directory** > **Felhasználók** > **Minden felhasználó** lehetőséget.
 1. Válassza ki azt a felhasználót, akinek műveletet kíván végrehajtani, és válassza a **hitelesítési módszerek**lehetőséget.
    - A **jelszó alaphelyzetbe** állítása visszaállítja a felhasználó jelszavát, és hozzárendel egy ideiglenes jelszót, amelyet a következő bejelentkezéskor módosítani kell.
    - Az **MFA ismételt regisztrálásának megkövetelése** , hogy amikor a felhasználó a következő alkalommal jelentkezik be, a rendszer kérni fogja az új MFA hitelesítési módszer beállítását.
@@ -45,8 +45,8 @@ Ezzel a beállítással törlődik a felhasználó által létrehozott összes a
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>Meglévő alkalmazások jelszavainak törlése
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
-2. A bal oldalon válassza **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. A bal oldalon válassza az **Azure Active Directory** > **Felhasználók** > **Minden felhasználó** lehetőséget.
 3. A jobb oldalon válassza a **multi-Factor Authentication** lehetőséget az eszköztáron. Megnyílik a multi-Factor Authentication oldal.
 4. Jelölje be a felügyelni kívánt felhasználó vagy felhasználók melletti jelölőnégyzetet. A jobb oldalon megjelenik a gyors lépésre vonatkozó beállítások listája.
 5. Válassza a **felhasználói beállítások kezelése**lehetőséget.
@@ -55,7 +55,7 @@ Ezzel a beállítással törlődik a felhasználó által létrehozott összes a
 7. Kattintson a **mentés** gombra.
 8. Kattintson a **Bezárás**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure multi-Factor Authentication beállításainak konfigurálásáról](howto-mfa-mfasettings.md)
 - Ha a felhasználóknak segítségre van szüksége, a [kétlépéses ellenőrzés felhasználói útmutatója](../user-help/multi-factor-authentication-end-user.md) felé mutatnak

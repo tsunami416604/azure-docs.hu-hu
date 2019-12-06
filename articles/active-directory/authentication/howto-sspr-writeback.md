@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1acda877ecadc8ad0abd09b78d5453743e2470b1
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 67737aed3bd9961a37dc761fddf608d9bcfe3ffe
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381158"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847252"
 ---
 # <a name="how-to-configure-password-writeback"></a>Útmutató: a jelszó visszaírási konfigurálása
 
@@ -53,7 +53,7 @@ A jelszó-visszaírási használatához a bérlőhöz hozzárendelt következő 
 * E3 vagy a3 Microsoft 365
 * Microsoft 365 E5 vagy a5
 * Microsoft 365 F1
-* Microsoft 365 Business
+* Microsoft 365 Vállalati verzió
 
 > [!WARNING]
 > Az önálló Office 365 licencelési csomagok *nem támogatják az "önkiszolgáló jelszó-visszaállítás/módosítás/zárolás a helyszíni visszaírási"* lehetőséget, és a funkció működéséhez a fenti csomagok egyikét kell megkövetelni.
@@ -101,7 +101,7 @@ A jelszó visszaírási vonatkozó megfelelő engedélyek beállításához hajt
 
 Mivel a hatóság forrása a helyszínen található, a jelszó-összetettségi szabályzatok ugyanarra a csatlakoztatott adatforrásra vonatkoznak. Ellenőrizze, hogy módosította-e a meglévő csoportházirendeket a "jelszó minimális kora" értékre. A csoportházirend nem állítható be 1 értékre, ami azt jelenti, hogy a jelszónak legalább egy nappal korábbinak kell lennie ahhoz, hogy frissíteni lehessen. Győződjön meg arról, hogy 0-ra van beállítva. Ezek a beállítások a `gpmc.msc` **Számítógép konfigurációja > házirendek > Windows beállítások > biztonsági beállítások > fiók házirendek**területen találhatók. `gpupdate /force` futtatásával győződjön meg arról, hogy a módosítás érvénybe lép. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Mi a jelszó visszaírási?](concept-sspr-writeback.md)
 

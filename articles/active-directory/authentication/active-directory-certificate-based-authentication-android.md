@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: effa03f042b44890fccd474128e75bd1c0f782a3
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f9f38c160a72b6c414cdde7d29e4056a4068cdc6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381985"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848816"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Tanúsítványalapú hitelesítés Azure Active Directory az Androidon
 
@@ -36,7 +36,7 @@ Ez a funkció előzetes verzióban érhető el az Office 365 US government Defen
 | Alkalmazások | Támogatás |
 | --- | --- |
 | Azure Information Protection alkalmazás |![Pipa jelzi az alkalmazás támogatását][1] |
-| Intune Céges portál |![Pipa jelzi az alkalmazás támogatását][1] |
+| Intune Vállalati portál |![Pipa jelzi az alkalmazás támogatását][1] |
 | Microsoft Teams |![Pipa jelzi az alkalmazás támogatását][1] |
 | OneNote |![Pipa jelzi az alkalmazás támogatását][1] |
 | OneDrive |![Pipa jelzi az alkalmazás támogatását][1] |
@@ -75,7 +75,7 @@ A feladat végrehajtásához a [MSOLDomainFederationSettings](/powershell/module
 
 Bizonyos Exchange ActiveSync-alkalmazások az Android 5,0 (nyalóka) vagy újabb verziókban támogatottak. Annak megállapításához, hogy az e-mail-alkalmazás támogatja-e ezt a funkciót, forduljon az alkalmazás-fejlesztőhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha tanúsítványalapú hitelesítést szeretne konfigurálni a környezetében, olvassa el a következő témakört: a [tanúsítványalapú hitelesítés első lépései Androidon](active-directory-certificate-based-authentication-get-started.md) .
 

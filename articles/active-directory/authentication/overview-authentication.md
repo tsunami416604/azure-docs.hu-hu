@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccbb754f03f77ce0571912a5443dc9b18c66b463
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3077851f5feafdec9d46d9365c45f5729ca2b0b1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381099"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846674"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>Milyen hitelesítési módszerek érhetők el?
 
@@ -47,7 +47,7 @@ Az új jelszó önkiszolgáló kérése a következőkből áll:
 * **Új jelszó kérése:** Nem tudok bejelentkezni, és szeretnék új jelszót kérni egy vagy több jóváhagyott hitelesítési módszer használatával.
 * **Fiók zárolásának feloldása:** Nem tudok bejelentkezni, mivel a fiókom zárolva lett, és szeretném feloldani a zárolást egy vagy több jóváhagyott hitelesítési módszer használatával.
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 
 Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. A rendszergazda által engedélyezett hitelesítési módszerek használatával az Azure MFA segíti az adatok és alkalmazások védelmét az illetéktelen hozzáféréssel szemben, miközben lehetővé teszi az igényeknek megfelelő, egyszerű bejelentkezési folyamat használatát.
 
@@ -55,7 +55,7 @@ Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesít�
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Következő lépésként konfiguráljuk az új jelszó önkiszolgáló kérését és az Azure Multi-Factor Authenticationt.
 

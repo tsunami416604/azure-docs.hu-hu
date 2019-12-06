@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 90710176ec16d1c565e24ff7df56b0b838f2699e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e54aa00df9efa60cce0fd6fa1da32720f2947b12
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229420"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851196"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privát csatlakozás Azure Cosmos-fiókhoz az Azure Private link használatával
 
@@ -33,13 +33,13 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
 
 1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Name (Név) | Adja meg a *MyVirtualNetwork*. |
+    | Név | Adja meg a *MyVirtualNetwork*. |
     | Címtér | Adja meg a *10.1.0.0/16*értéket. |
-    | Előfizetést | Válassza ki előfizetését.|
+    | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | Hely | Válassza a **WestCentralUS**lehetőséget.|
+    | Földrajzi egység | Válassza a **WestCentralUS**lehetőséget.|
     | Alhálózat – név | Adja meg a *mySubnet*. |
     | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
     |||
@@ -52,16 +52,16 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
 
 1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetést | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm*. |
-    | Régió | Válassza a **WestCentralUS**lehetőséget. |
+    | Region (Régió) | Válassza a **WestCentralUS**lehetőséget. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Image (Kép) | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
+    | Lemezkép | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
     | Méret | Hagyja meg az alapértelmezett **standard DS1 v2**értéket. |
     | **RENDSZERGAZDAI FIÓK** |  |
     | Felhasználónév | Adjon meg egy tetszőleges felhasználónevet. |
@@ -79,7 +79,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
 
 1. A **virtuálisgép-hálózat létrehozása**területen válassza ki ezt az információt:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork**.  |
     | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24**értéket.|
@@ -129,9 +129,6 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 ## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>Hozzáférés az Azure Cosmos-fiókhoz a virtuális gépről
 
 Ebben a szakaszban a magánhálózati végpont használatával csatlakozik az Azure Cosmos-fiókhoz. 
-
-> [!IMPORTANT]
-> Az Azure Cosmos-fiók DNS-konfigurációjában manuálisan kell módosítani a gazdagépek fájlját, hogy az tartalmazza az adott fiók teljes tartománynevét. Éles környezetben a DNS-kiszolgálót a magánhálózati IP-címek használatára fogja konfigurálni. A bemutató céljához azonban rendszergazdai jogosultságokat is használhat a virtuális gépen, és módosíthatja a `c:\Windows\System32\Drivers\etc\hosts` fájlt (Windows rendszeren) vagy `/etc/hosts` fájlt (Linuxon), hogy tartalmazza az IP-címet és a DNS-hozzárendelést.
 
 1. Az IP-cím és a DNS-hozzárendelés hozzáadásához jelentkezzen be a virtuális gép *myVM*, nyissa meg a `c:\Windows\System32\Drivers\etc\hosts` fájlt, és adja meg a DNS-adatokat az előző lépésből a következő formátumban:
 

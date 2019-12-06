@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27530b143e46acad4152e8333836cbe9c79fab17
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168092"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848612"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>A szervezet helytelen jelszavainak eltávolítása
 
@@ -59,13 +59,13 @@ Példa: Vegyünk például egy "contoso" nevű ügyfelet, amely Londonban talál
 - "Contoso! 1"
 - „Contoso@London”
 - "ContosoWidget"
-- "!Contoso"
+- "! Contoso
 - "LondonHQ"
 - ... satöbbi
 
 Ehelyett sokkal hatékonyabb és biztonságos, hogy csak a legfontosabb alapfogalmakat blokkolja:
 
-- Contoso
+- "Contoso"
 - London
 - Widget
 
@@ -106,8 +106,8 @@ A normalizálás két részből áll.  Első lépésként az összes nagybetűt 
 
 | Eredeti levél  | Helyettesített betű |
 | --- | --- |
-| '0'  | o |
-| '1'  | l |
+| 0  | o |
+| 1  | l |
 | '$'  | képgalériája |
 | '\@'  | egy |
 

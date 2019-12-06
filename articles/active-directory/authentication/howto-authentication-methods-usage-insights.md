@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d6a87b5797ea5c8f4ac116d6df9e6a48204f1fd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b448e6ce7c8b4522d5e7bdbafb39eccca982fdee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381899"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848510"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Hitelesítési módszerek használati &i adatok (előzetes verzió)
 
@@ -33,7 +33,7 @@ A következő szerepkörök használhatják a használatot és az információka
 
 A használat és az információk eléréséhez nincs szükség további licencelésre. Az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási (SSPR) licencelési információk a [Azure Active Directory díjszabási webhelyen](https://azure.microsoft.com/pricing/details/active-directory/)találhatók.
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>Működési elv
 
 A hitelesítési módszer használatának és az információknak a elérése:
 
@@ -65,7 +65,7 @@ Ha a **regisztrált felhasználók**, a **felhasználók**vagy a **felhasználó
 
 A regisztráció részletei jelentés az alábbi információkat jeleníti meg az egyes felhasználókra vonatkozóan:
 
-- Name (Név)
+- Név
 - Felhasználónév
 - Regisztrációs állapot (összes, regisztrált, nincs regisztrálva)
 - Engedélyezett állapot (mind, engedélyezve, nincs engedélyezve)
@@ -80,7 +80,7 @@ Ha a regisztrációra kattint, vagy alaphelyzetbe állítja a diagramokat, a ren
 
 A részletek visszaállítása jelentés az elmúlt 30 nap regisztrációs és alaphelyzetbe állítási eseményeit jeleníti meg, beleértve a következőket:
 
-- Name (Név)
+- Név
 - Felhasználónév
 - Szolgáltatás (összes, regisztráció, alaphelyzetbe állítás)
 - Hitelesítési módszer (alkalmazás-értesítés, alkalmazás kódja, telefonhívás, Office-hívás, SMS, E-mail, biztonsági kérdések)

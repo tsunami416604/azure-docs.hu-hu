@@ -1,21 +1,21 @@
 ---
 title: COS Azure Cosmos DB lekérdezési nyelv
-description: További információ a Azure Cosmos DBban található SQL System függvényről.
+description: Ismerje meg, hogy a Azure Cosmos DB koszinusz (COS) SQL System függvénye hogyan adja vissza a megadott szög (radián) trigonometriai koszinuszát a megadott kifejezésben.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 7e64127b7af749af87b90331c3f175957cfa7f09
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 05546ef531059e05a1426a288a48446d63d8e5df
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351068"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873403"
 ---
 # <a name="cos-azure-cosmos-db"></a>COS (Azure Cosmos DB)
- A megadott kifejezést az radiánban megadott szög, trigonometriai koszinuszát adja vissza.  
+ Az adott kifejezésben megadott szög (radián) trigonometriai koszinuszát adja vissza.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,27 +26,27 @@ COS(<numeric_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   A numerikus kifejezés.  
+   Egy numerikus kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  A numerikus kifejezést ad vissza.  
+  Egy numerikus kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa kiszámítja a megadott szög `COS` értékét.  
+  A következő példa a megadott szög `COS`ét számítja ki.  
   
 ```sql
 SELECT COS(14.78) AS cos  
 ```  
   
- Íme az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{"cos": -0.59946542619465426}]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

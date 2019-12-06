@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-ms.date: 07/01/2019
-ms.openlocfilehash: 9566ac7169144d984f9200734c99eb10368b3142
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/05/2019
+ms.openlocfilehash: 827fab0661a58bfa7d28452960ea6df64d18bf84
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823740"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873743"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database rugalmas lekérdezés áttekintése (előzetes verzió)
 
@@ -56,10 +56,10 @@ A rugalmas lekérdezés lehetővé teszi, hogy a SQL Server Management Studio va
 A rugalmas lekérdezés felhasználói forgatókönyveit a következő topológiák jellemzik:
 
 * **Vertikális particionálás – adatbázis-** összevont lekérdezések (1. topológia): az adatrétegben lévő adatbázisok között vertikálisan particionálja az adatmennyiséget. A táblák különböző készletei általában különböző adatbázisokban találhatók. Ez azt jelenti, hogy a séma eltér a különböző adatbázisokon. Például a leltárhoz tartozó összes tábla egy adatbázison található, míg az összes nyilvántartással kapcsolatos tábla egy második adatbázisban található. Az ehhez a topológiához tartozó gyakori használati esetekben egy-egy lekérdezésre van szükség a különböző adatbázisok tábláiban, illetve a jelentések fordításához.
-* **Vízszintes particionálás – horizontális** felskálázás (2. topológia): az adatmennyiséget vízszintesen particionálja a rendszer a sorok elosztására egy horizontálisan elosztott adatrétegben. Ezzel a módszerrel a séma megegyezik az összes részt vevő adatbázison. Ezt a megközelítést "horizontális felskálázásnak" is nevezzük. A horizontális skálázás végezhető el és kezelhető (1) a rugalmas adatbázis-eszközök kódtárai vagy (2) saját horizontálisan. Rugalmas lekérdezéssel több szegmens között lehet lekérdezni vagy lefordítani a jelentéseket.
+* **Vízszintes particionálás – horizontális** felskálázás (2. topológia): az adatmennyiséget vízszintesen particionálja a rendszer a sorok elosztására egy horizontálisan elosztott adatrétegben. Ezzel a módszerrel a séma megegyezik az összes részt vevő adatbázison. Ezt a megközelítést "horizontális felskálázásnak" is nevezzük. A horizontális skálázás végezhető el és kezelhető (1) a rugalmas adatbázis-eszközök kódtárai vagy (2) saját horizontálisan. Rugalmas lekérdezéssel több szegmens között lehet lekérdezni vagy lefordítani a jelentéseket. A szegmensek általában egy rugalmas készleten belüli adatbázisok. A rugalmas lekérdezéseket úgy tekintheti meg, hogy a rugalmas készlet összes adatbázisát egyszerre kérdezi le, feltéve, hogy az adatbázisok közös sémával rendelkeznek.
 
 > [!NOTE]
-> A rugalmas lekérdezés olyan jelentéskészítési forgatókönyvekhez használható, amelyekben a feldolgozás (szűrés, Összesítés) a külső forrás oldalán végezhető el. Az ETL-műveletek nem alkalmasak arra, hogy a rendszer nagy mennyiségű adatátvitelt továbbítson a távoli adatbázis (ok) ból. A nehéz jelentéskészítési feladatokhoz vagy az összetettebb lekérdezésekkel rendelkező adatraktározási forgatókönyvekhez érdemes [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/)is használni.
+> A rugalmas lekérdezés olyan jelentéskészítési forgatókönyvekhez használható, amelyekben a feldolgozás (szűrés, Összesítés) a külső forrás oldalán végezhető el. Az ETL-műveletek nem alkalmasak arra, hogy a rendszer nagy mennyiségű adatátvitelt továbbítson a távoli adatbázis (ok) ból. A nagy mennyiségű jelentési feladathoz vagy az összetettebb lekérdezésekkel rendelkező adattárház-forgatókönyvekhez is érdemes az [Azure szinapszis Analytics](https://azure.microsoft.com/services/synapse-analytics)használatát használni.
 >  
 
 ## <a name="vertical-partitioning---cross-database-queries"></a>Vertikális particionálás – adatbázisok közötti lekérdezések
@@ -118,6 +118,9 @@ A horizontális particionálási forgatókönyvhöz szükséges lépésekkel kap
 
 A kódolás megkezdéséhez tekintse meg a [rugalmas lekérdezés a horizontális particionáláshoz](sql-database-elastic-query-getting-started.md)való használatáról szóló témakört.
 
+> [!IMPORTANT]
+> A rugalmas lekérdezések nagy mennyiségű adatbázisban való sikeres végrehajtása nagymértékben támaszkodik az egyes adatbázisok rendelkezésre állására a lekérdezés végrehajtása során. Ha egy adatbázis nem érhető el, a teljes lekérdezés sikertelen lesz. Ha egyszerre több száz vagy több ezer adatbázis lekérdezését tervezi, győződjön meg arról, hogy az ügyfélalkalmazás újrapróbálkozott a logikai beágyazással, vagy vegye fontolóra [Elastic Database feladatok](https://docs.microsoft.com/azure/sql-database/sql-database-job-automation-overview#elastic-database-jobs-preview) (előzetes verzió) kihasználása és az adatbázisok kisebb részhalmazának lekérdezése, az egyes lekérdezések eredményeinek összesítése egyetlen célhelyre.
+
 ## <a name="t-sql-querying"></a>T-SQL-lekérdezés
 
 A külső adatforrások és a külső táblák meghatározása után rendszeres SQL Server kapcsolati karakterláncokat használhat a külső táblákat definiáló adatbázisokhoz való kapcsolódáshoz. Ezután futtathat T-SQL-utasításokat a külső táblákon ezen a kapcsolaton az alább ismertetett korlátozásokkal. További információkat és példákat a T-SQL-lekérdezésekről a [horizontális particionálással](sql-database-elastic-query-horizontal-partitioning.md) és a [vertikális particionálással](sql-database-elastic-query-vertical-partitioning.md)kapcsolatos dokumentációs témakörökben talál.
@@ -129,7 +132,7 @@ Az alkalmazások és a BI-vagy adatintegrációs eszközök összekapcsolásáho
 > [!IMPORTANT]
 > A rugalmas lekérdezésekkel Azure Active Directory használatával történő hitelesítés jelenleg nem támogatott.
 
-## <a name="cost"></a>Költségek
+## <a name="cost"></a>Költség
 
 A rugalmas lekérdezés a Azure SQL Database adatbázisok díjait tartalmazza. Vegye figyelembe, hogy azok a topológiák, amelyekben a távoli adatbázisok egy másik adatközpontban találhatók, mint a rugalmas lekérdezési végpont, de a távoli adatbázisokból kimenő adatokra rendszeresen az [Azure díjszabása](https://azure.microsoft.com/pricing/details/data-transfers/)vonatkozik.
 
@@ -148,7 +151,7 @@ A rugalmas lekérdezés a Azure SQL Database adatbázisok díjait tartalmazza. V
 
 Ossza meg velünk a tapasztalatait rugalmas lekérdezésekkel az alábbi MSDN-fórumokon, illetve a Stack Overflowon. A szolgáltatással kapcsolatos visszajelzések (hibák, durva élek, szolgáltatások hiányosságainak) iránt érdeklődünk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A vertikális particionálással kapcsolatos oktatóanyagért lásd: [Bevezetés az adatbázisok közötti lekérdezéssel (vertikális particionálás)](sql-database-elastic-query-getting-started-vertical.md).
 * A függőlegesen particionált információk szintaxisát és mintáit lásd: [függőlegesen particionált adatlekérdezés](sql-database-elastic-query-vertical-partitioning.md)

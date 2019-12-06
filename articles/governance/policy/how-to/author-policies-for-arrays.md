@@ -2,13 +2,13 @@
 title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
 description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezéseknek a használatát, kiértékelheti a [*] aliast, és hozzáfűzheti az elemeket Azure Policy definíciós szabályokkal.
 ms.date: 11/26/2019
-ms.topic: conceptual
-ms.openlocfilehash: 035f300d01efe80cc44687d3779d7a5fb6be2fc3
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.topic: how-to
+ms.openlocfilehash: 915f50945e0c2520fbda09c4db1b581c9381073b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555169"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873097"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
@@ -185,14 +185,14 @@ A következő eredmények a feltétel és a példaként megadott házirend-szab�
 
 |Állapot |Eredmény |Magyarázat |
 |-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Nincs |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_ , és a hatás nincs aktiválva. |
+|`{<field>,"notEquals":"127.0.0.1"}` |Semmit |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_ , és a hatás nincs aktiválva. |
 |`{<field>,"notEquals":"10.0.4.1"}` |Házirend hatása |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_ , és a hatás aktiválódik. |
 |`"not":{<field>,"Equals":"127.0.0.1"}` |Házirend hatása |Az egyik tömb elem igaz értéket (127.0.0.1 = = 127.0.0.1) és egy hamis (127.0.0.1 = = 192.168.1.1) értéket ad vissza, így az **Equals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
 |`"not":{<field>,"Equals":"10.0.4.1"}` |Házirend hatása |A tömb elemeinek értéke false (10.0.4.1 = = 127.0.0.1 és 10.0.4.1 = = 192.168.1.1), így az **Equals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
 |`"not":{<field>,"notEquals":"127.0.0.1" }` |Házirend hatása |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nincs |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_. A logikai operátor hamis (**nem** _igaz_) értéket ad vissza, ezért a hatás nincs aktiválva. |
-|`{<field>,"Equals":"127.0.0.1"}` |Nincs |Az egyik tömb elem igaz értéket (127.0.0.1 = = 127.0.0.1) és egy hamis (127.0.0.1 = = 192.168.1.1) értéket ad vissza, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
-|`{<field>,"Equals":"10.0.4.1"}` |Nincs |Mindkét tömb elem hamis (10.0.4.1 = = 127.0.0.1 és 10.0.4.1 = = 192.168.1.1) értéket ad eredményként, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Semmit |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_. A logikai operátor hamis (**nem** _igaz_) értéket ad vissza, ezért a hatás nincs aktiválva. |
+|`{<field>,"Equals":"127.0.0.1"}` |Semmit |Az egyik tömb elem igaz értéket (127.0.0.1 = = 127.0.0.1) és egy hamis (127.0.0.1 = = 192.168.1.1) értéket ad vissza, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
+|`{<field>,"Equals":"10.0.4.1"}` |Semmit |Mindkét tömb elem hamis (10.0.4.1 = = 127.0.0.1 és 10.0.4.1 = = 192.168.1.1) értéket ad eredményként, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
 
 ## <a name="the-append-effect-and-arrays"></a>A hozzáfűzési effektus és tömbök
 

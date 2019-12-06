@@ -6,23 +6,23 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/18/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37f375b6d4284b4728b2337dc5ab5186ce22772c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4b15389f25b54a377f75baca7993565b41e65462
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167771"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847116"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Gyakran ismételt kérdések az Azure Multi-Factor Authentication
 
 Ez a gyakori kérdések az Azure Multi-Factor Authentication és az Multi-Factor Authentication szolgáltatás használatával kapcsolatos gyakori kérdésekre adnak választ. A szolgáltatással kapcsolatos kérdésekre általánosságban, számlázási modellekkel, felhasználói élményekkel és hibaelhárítással foglalkozunk.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 **K: hogyan kezeli az Azure Multi-Factor Authentication-kiszolgáló a felhasználói adatmennyiséget?**
 

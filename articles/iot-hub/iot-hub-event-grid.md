@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 2969791204474a7d73493ce6397c52255f7eab4a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a1fd99ee595c4ae91ccd06aa41fa421ca8fcc074
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151313"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851700"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>IoT Hub eseményekre való reagálás Event Grid használatával a műveletek elindításához
 
@@ -23,7 +23,7 @@ A [Azure Event Grid](../event-grid/overview.md) egy teljes körűen felügyelt e
 
 ![Azure Event Grid architektúra](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 
 A Event Grid integráció a Event Grid által támogatott régiókban található IoT hubok számára érhető el. A régiók legújabb listáját a [Azure Event Grid bemutatása](../event-grid/overview.md)című témakörben tekintheti meg.
 
@@ -31,13 +31,13 @@ A Event Grid integráció a Event Grid által támogatott régiókban találhat�
 
 IoT Hub közzéteszi a következő eseménytípus-típusokat:
 
-| Esemény típusa | Leírás |
+| Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft.Devices.DeviceCreated | Közzétett, ha egy eszköz regisztrálva van egy IoT-hubhoz. |
-| Microsoft.Devices.DeviceDeleted | Közzétételre kerül, ha egy eszközt törölnek egy IoT-hubhoz. |
-| Microsoft.Devices.DeviceConnected | Akkor jelenik meg, amikor egy eszköz IoT-hubhoz csatlakozik. |
-| Microsoft.Devices.DeviceDisconnected | Akkor jelenik meg, ha egy eszköz le van választva egy IoT hubhoz. |
-| Microsoft.Devices.DeviceTelemetry | Közzétételre kerül, amikor egy eszköz telemetria üzenetet küld egy IoT-hubhoz |
+| Microsoft. Devices. DeviceCreated | Közzétett, ha egy eszköz regisztrálva van egy IoT-hubhoz. |
+| Microsoft. Devices. DeviceDeleted | Közzétételre kerül, ha egy eszközt törölnek egy IoT-hubhoz. |
+| Microsoft. Devices. DeviceConnected | Akkor jelenik meg, amikor egy eszköz IoT-hubhoz csatlakozik. |
+| Microsoft. Devices. DeviceDisconnected | Akkor jelenik meg, ha egy eszköz le van választva egy IoT hubhoz. |
+| Microsoft. Devices. DeviceTelemetry | Közzétételre kerül, amikor egy eszköz telemetria üzenetet küld egy IoT-hubhoz |
 
 A Azure Portal vagy az Azure CLI használatával konfigurálhatja, hogy mely eseményeket kell közzétenni az egyes IoT-központokból. Például próbálja ki az oktatóanyagot az [Azure IoT hub eseményekkel kapcsolatos e-mail-értesítések küldéséhez Logic Apps használatával](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
@@ -184,13 +184,11 @@ Az üzenetek telemetria az adatküldés előtt frissítheti az [útválasztási 
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Az eszköz csatlakoztatott és leválasztott eseményeinek korlátai
 
-Az eszköz csatlakoztatott és leválasztott eseményeinek fogadásához meg kell nyitnia az eszköz D2C vagy C2D mutató hivatkozását. Ha az eszköz MQTT protokollt használ, IoT Hub megnyitva marad a C2D hivatkozás. A AMQP a C2D hivatkozást a [fogadási ASZINKRON API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)meghívásával nyithatja meg.
+Az eszközhöz tartozó kapcsolódási állapot eseményeinek fogadásához az eszköznek vagy egy "C2D fogadása" telemetria kell lennie, vagy az IOT hub használatával kell megadnia az "üzenetküldési üzenet" műveletet. Vegye figyelembe azonban, hogy ha egy eszköz AMQP protokollt használ az IOT hub-hoz való kapcsolódáshoz, akkor azt javasoljuk, hogy a kapcsolati állapottal kapcsolatos értesítései néhány perc múlva késleltetve legyenek. Ha az eszköz MQTT protokollt használ, IoT Hub megnyitva marad a C2D hivatkozás. A AMQP a C2D-hivatkozást úgy nyithatja meg, hogy meghívja a [fogadási ASZINKRON API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)-t, a IoT hub C# SDK-t vagy az AMQP-hez készült eszköz- [ügyfelet](iot-hub-amqp-support.md#device-client).
 
 A D2C hivatkozás meg van nyitva, ha telemetria küld. 
 
-Ha az eszköz kapcsolata vibrál, ami azt jelenti, hogy az eszköz gyakran csatlakozik, és leválasztja a kapcsolatot, a rendszer nem küldi el minden egyes kapcsolati állapotot, de az *utolsó* kapcsolódási állapotot is közzéteszi, amely végül konzisztens lesz. Ha például az eszköz kezdetben a csatlakoztatott állapotban van, akkor néhány másodpercig a kapcsolati villogások is megtalálhatók, majd csatlakoztatva állapotba kerül. A kezdeti kapcsolati állapot óta nem lesznek új eszköz-kapcsolati állapotú események közzétéve. 
-
-IoT Hub kimaradás esetén a leállás után azonnal közzé fogjuk tenni az eszköz kapcsolati állapotát. Ha az eszköz bontja a kapcsolatot a leállás során, az eszköz leválasztott eseménye 10 percen belül közzétételre kerül.
+Ha az eszköz kapcsolata vibrál, ami azt jelenti, hogy az eszköz gyakran csatlakozik a hálózathoz, és leválasztja a kapcsolatot, a rendszer nem küldi el minden egyes kapcsolati állapotot, de az aktuális kapcsolati állapotot rendszeres pillanatképként fogja közzétenni, amíg a villogás folytatódik. Ha ugyanazt a kapcsolati állapotot vagy eltérő sorszámot vagy eltérő kapcsolati állapotot jelző eseményt fogad, mindkettő azt jelenti, hogy módosult az eszköz kapcsolati állapota.
 
 ## <a name="tips-for-consuming-events"></a>Tippek az események fogyasztásához
 
@@ -202,7 +200,7 @@ Az IoT Hub eseményeket kezelő alkalmazásoknak a következő ajánlott eljár�
 
 * Az üzenetek megérkeznek a sorrendbe, vagy késés után is. A ETAG mező használatával megtudhatja, hogy az objektumokkal kapcsolatos adatok naprakészek-e az eszköz által létrehozott vagy az eszköz által törölt események esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Próbálja ki a IoT Hub Events oktatóanyagot](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 

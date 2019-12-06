@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: bb5b5214c96162147e1bd005e994ec04e0a1ddb7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 284376759e9e2da1f42bd04eea6e564c9690d4a9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74763657"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850125"
 ---
 # <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>A Windows Hybrid Runbook Worker állapotának megismerése Update Management
 
@@ -46,7 +46,7 @@ Az eredmények a lapon jelennek meg, amikor készen állnak. Az ellenőrzések s
 
 ![Frissítési ügynök ellenőrzésének hibáinak megoldása](../media/update-agent-issues/update-agent-checks.png)
 
-## <a name="prerequisite-checks"></a>Előfeltételek ellenőrzése
+## <a name="prerequisite-checks"></a>Előfeltétel-ellenőrzések
 
 ### <a name="operating-system"></a>Operációs rendszer
 
@@ -61,11 +61,11 @@ Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgo
 
 A .NET-keretrendszer ellenőrzése ellenőrzi, hogy a rendszer legalább a [.NET-keretrendszer 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) telepítve van-e.
 
-### <a name="wmf-51"></a>WMF 5,1
+### <a name="wmf-51"></a>WMF 5.1
 
 A WMF-ellenőrzés ellenőrzi, hogy a rendszer rendelkezik-e a Windows Management Framework (WMF) szükséges verziójával ( [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616)).
 
-### <a name="tls-12"></a>TLS 1,2
+### <a name="tls-12"></a>TLS 1.2
 
 Ez az érték határozza meg, hogy a TLS 1,2-et használja-e a kommunikáció titkosításához. A platform már nem támogatja a TLS 1,0-et. Javasoljuk, hogy az ügyfelek a TLS 1,2-et használják a Update Management való kommunikációhoz.
 

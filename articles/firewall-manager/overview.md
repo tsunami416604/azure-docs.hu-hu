@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/21/2019
+ms.date: 12/06/2019
 ms.author: victorh
-ms.openlocfilehash: 897819928ab0bcf48b58428014c03aea6b2145fd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cf8e6ca3a532dea29a413b1afdfc684ac8f08f17
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267954"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869561"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Mi az Azure Firewall Manager előzetes verziója?
 
@@ -70,12 +70,13 @@ A Azure Firewall Manager előzetes verziója a következő ismert problémákkal
 
 |Probléma  |Leírás  |Kezelés  |
 |---------|---------|---------|
-|A manuálisan létrehozott központi virtuális hálózatok nem támogatottak|A Azure Firewall Manager jelenleg a virtuális Hubokkal létrehozott hálózatokat támogatja. A saját manuálisan létrehozott hub-VNet használata még nem támogatott.|Egyelőre használja a Azure Firewall Managert a virtuális Hubokkal létrehozott, központi és küllős hálózatokkal.<br>Jelenleg vizsgálja.
+|A manuálisan létrehozott központi virtuális hálózatok nem támogatottak|A Azure Firewall Manager jelenleg a virtuális Hubokkal létrehozott hálózatokat támogatja. A saját manuálisan létrehozott hub-VNet használata még nem támogatott.|Egyelőre használja a Azure Firewall Managert a virtuális Hubokkal létrehozott, központi és küllős hálózatokkal.<br>Javítás folyamatban.
 |Harmadik féltől származó szűrési korlátozások|A V2I külső szolgáltatókkal való kiszűrése nem támogatott a Azure Firewall B2V és a V2V.|Jelenleg vizsgálja.|
 |A forgalom felosztása jelenleg nem támogatott|Az Office 365 és az Azure nyilvános Pásti forgalom felosztása jelenleg nem támogatott. Így például a V2I vagy a B2I harmadik féltől származó szolgáltatójának kiválasztásával az összes Azure nyilvános és az Office 365-alapú forgalmat a partneri szolgáltatáson keresztül küldi el.|Jelenleg vizsgálja a forgalom felosztását a központban.
 |Régiónként egy hub|Régiónként legfeljebb egy hub lehet|Több virtuális WAN-t hozhat létre egy régióban.|
 |Az alapházirendeknek ugyanabban a régióban kell lenniük, mint a helyi házirendnek.|Hozza létre az összes helyi házirendet az alapházirenddel azonos régióban. Továbbra is alkalmazhat egy olyan házirendet, amely egy másik régióban található biztonságos központ egyik régiójában lett létrehozva.|Jelenleg vizsgálja.|
 |A csomópontok közötti kommunikáció nem működik a biztonságos virtuális hubhoz|A biztonságos virtuális központ védett virtuális hubhoz való kommunikációja még nem támogatott.|Jelenleg vizsgálja.|
+|Az azonos virtuális WAN-t megosztó biztonságos virtuális huboknak ugyanabban az erőforráscsoporthoz kell tartoznia.|Ez a viselkedés a virtuális WAN-Hubokkal van összhangban ma.|Hozzon létre több virtuális WAN-t, amely lehetővé teszi, hogy a biztonságos virtuális hubok különböző erőforráscsoportok jöjjenek létre.|
 
 ## <a name="next-steps"></a>Következő lépések
 

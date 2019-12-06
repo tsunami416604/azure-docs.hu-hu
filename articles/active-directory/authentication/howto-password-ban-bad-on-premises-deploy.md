@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1d53d63b40ad62a4d21cbad22a67e9e9781b1f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f98373fe8eab07519e665ab1eddfd7a9ce6b7e22
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381719"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847866"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
@@ -32,7 +32,7 @@ A naplózási szakaszban számos szervezet találja a következőket:
 * A felhasználók gyakran nem biztonságos jelszavakat használnak.
 * Tájékoztatniuk kell a felhasználókat a biztonsági kényszerítés közelgő változásáról, a lehetséges hatásokról, valamint a biztonságosabb jelszavak kiválasztásáról.
 
-Az is lehetséges, hogy az erősebb jelszó-érvényesítés hatással van a meglévő Active Directory tartományvezérlő üzembe helyezési automatizálására. Javasoljuk, hogy a naplózási időszak kiértékelése során legalább egy DC-előléptetést és egy tartományvezérlő-lefokozást hajtson végre, hogy segítse az ilyen problémák előzetes felfedését.  További információkért lásd:
+Az is lehetséges, hogy az erősebb jelszó-érvényesítés hatással van a meglévő Active Directory tartományvezérlő üzembe helyezési automatizálására. Javasoljuk, hogy a naplózási időszak kiértékelése során legalább egy DC-előléptetést és egy tartományvezérlő-lefokozást hajtson végre, hogy segítse az ilyen problémák előzetes felfedését.  További információ eléréséhez lásd:
 
 * [Az Ntdsutil. exe nem tud beállítani egy gyenge címtárszolgáltatás-javító mód jelszavát](howto-password-ban-bad-on-premises-troubleshoot.md##ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [A tartományvezérlő replikájának előléptetése sikertelen a Címtárszolgáltatások helyreállító módjának jelszava miatt](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
@@ -40,7 +40,7 @@ Az is lehetséges, hogy az erősebb jelszó-érvényesítés hatással van a meg
 
 Ha a szolgáltatás egy ésszerű időszakra vonatkozóan a vizsgálati módban fut, a konfigurációt átválthatja a *naplózásból* , hogy a *kényszerítse* a biztonságosabb jelszavak megkövetelését. A célzott monitorozás ebben az időszakban jó ötlet.
 
-## <a name="deployment-requirements"></a>Üzembe helyezési követelmények
+## <a name="deployment-requirements"></a>Telepítési követelmények
 
 * Az Azure AD jelszavas védelemmel kapcsolatos licencelési követelmények a következő cikkben találhatók: [helytelen jelszavak eltávolítása a szervezetében](concept-password-ban-bad.md#license-requirements).
 * Az Azure AD jelszavas védelem tartományvezérlő-ügynök szoftverét futtató összes gépnek Windows Server 2012 vagy újabb rendszernek kell futnia. Ez a követelmény nem jelenti azt, hogy a Active Directory tartománynak vagy erdőnek Windows Server 2012 tartomány vagy erdő működési szintjén kell lennie. A [tervezési alapelvekben](concept-password-ban-bad-on-premises.md#design-principles)említettek szerint nem szükséges minimális DFL vagy FFL a DC-ügynök vagy a proxy szoftver futtatásához.
@@ -124,7 +124,7 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
 
    * A szolgáltatás futtatásának megadásához használja a következő PowerShell-parancsot:
 
-      `Get-Service AzureADPasswordProtectionProxy | fl`.
+      `Get-Service AzureADPasswordProtectionProxy | fl` kérdésre adott válaszban foglalt lépéseket.
 
      Az eredménynek a "Running" **állapotot** kell mutatnia.
 
@@ -302,7 +302,7 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
 
    A DC Agent szolgáltatást olyan gépen is telepítheti, amely még nem tartományvezérlő. Ebben az esetben a szolgáltatás elindul és futni fog, de mindaddig inaktív marad, amíg a gépet tartományvezérlővé nem előléptetik.
 
-   A Szoftvertelepítés szabványos MSI-eljárások használatával automatizálható. Például:
+   A Szoftvertelepítés szabványos MSI-eljárások használatával automatizálható. Példa:
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 

@@ -1,21 +1,21 @@
 ---
 title: FELSŐ határ Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function plafon Azure Cosmos DBával.
+description: Ismerje meg, hogy a Azure Cosmos DB a PLAFONon lévő SQL System függvény hogyan adja vissza az y/x arkusz tangensének elsődleges értékét radiánban kifejezve.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 7056cfd1773e0d98fa134c9fdec3ad6a43af1bcf
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 18462b152b698e7c6bc4c6c1e59511b4bacaa611
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351117"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873437"
 ---
 # <a name="ceiling-azure-cosmos-db"></a>FELSŐ határ (Azure Cosmos DB)
- A legkisebb egész értéket ad vissza, nagyobb vagy egyenlő a megadott numerikus kifejezés.  
+ A megadott numerikus kifejezésnél nagyobb, vagy azzal egyenlő legkisebb egész értéket adja vissza.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,27 +26,27 @@ CEILING (<numeric_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   A numerikus kifejezés.  
+   Egy numerikus kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  A numerikus kifejezést ad vissza.  
+  Egy numerikus kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa a pozitív numerikus, negatív és nulla értékeket jeleníti meg a `CEILING` függvénnyel.  
+  Az alábbi példa a pozitív numerikus, negatív és nulla értékeket jeleníti meg az `CEILING` függvénnyel.  
   
 ```sql
 SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3  
 ```  
   
- Íme az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{c1: 124, c2: -123, c3: 0}]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

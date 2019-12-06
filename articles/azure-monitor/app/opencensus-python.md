@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ca34a92dc69cb500efb55f575420d47607cd1a46
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2114e60b5ed684063ed100279ea19f561bd335ea
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132212"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849785"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor beállítása a Python-alkalmazáshoz (előzetes verzió)
 
@@ -26,7 +26,7 @@ Azure Monitor támogatja a Python-alkalmazások elosztott nyomkövetését, metr
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Application Insights erőforrás létrehozása Azure Monitor
 
@@ -38,7 +38,7 @@ Először létre kell hoznia egy Application Insights erőforrást a Azure Monit
 
 1. Megjelenik egy konfigurációs ablak. A beviteli mezők kitöltéséhez használja az alábbi táblázatot.
 
-   | Beállítás        | Érték           | Leírás  |
+   | Beállítás        | Value (Díj)           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve Application Insights-adattároláshoz |
@@ -131,7 +131,7 @@ Az SDK három Azure Monitor-exportálót használ különböző típusú telemet
 
 6. A nyomkövetési adatok telemetria kapcsolatos részletekért tekintse meg a OpenCensus [telemetria korrelációt](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)ismertető részt.
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 1. Először hozzon elő néhány helyi metrikai adatokat. Egy egyszerű mérőszámot hozunk létre, amely nyomon követheti, hogy a felhasználó hányszor nyomja meg az ENTER billentyűt.
 
@@ -268,7 +268,7 @@ Az SDK három Azure Monitor-exportálót használ különböző típusú telemet
     90
     ```
 
-3. Bár az értékek beírása a bemutató céljára hasznos, végső soron azt szeretnénk, hogy a metrikus adatokat Azure Monitor. Módosítsa a kódot az előző lépésből a következő kód minta alapján:
+3. Bár az értékek beírása a bemutató céljára hasznos, végső soron azt szeretnénk, hogy a napló adatait Azure Monitor. Módosítsa a kódot az előző lépésből a következő kód minta alapján:
 
     ```python
     import logging
@@ -295,7 +295,53 @@ Az SDK három Azure Monitor-exportálót használ különböző típusú telemet
 
 4. Az exportőr a Azure Monitorba küldi a naplófájlokat. A `traces`alatt található adat.
 
-5. A naplók nyomkövetési környezeti adatokkal való bővítésével kapcsolatos részletekért lásd: OpenCensus Python- [naplók integrációja](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
+5. A naplófájlok formázásához a beépített Python- [naplózási API](https://docs.python.org/3/library/logging.html#formatter-objects)-ban használhatja a `formatters`.
+
+    ```python
+    import logging
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    
+    format_str = '%(asctime)s - %(levelname)-8s - %(message)s'
+    date_format = '%Y-%m-%d %H:%M:%S'
+    formatter = logging.Formatter(format_str, date_format)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    handler = AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    
+    def valuePrompt():
+        line = input("Enter a value: ")
+        logger.warning(line)
+    
+    def main():
+        while True:
+            valuePrompt()
+    
+    if __name__ == "__main__":
+        main()
+    ```
+
+6. A naplókhoz egyéni dimenziókat is hozzáadhat. Ezek kulcs-érték párokként fognak megjelenni a Azure Monitor `customDimensions`ban.
+> [!NOTE]
+> Ahhoz, hogy ez a funkció működjön, át kell adnia egy szótárt a naplók argumentumaként, a többi adatstruktúra figyelmen kívül lesz hagyva. A karakterláncok formázásának fenntartásához tárolja őket egy szótárban, és adja át őket argumentumként.
+
+    ```python
+    import logging
+    
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
+    logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
+    ```
+
+7. A naplók nyomkövetési környezeti adatokkal való bővítésével kapcsolatos részletekért lásd: OpenCensus Python- [naplók integrációja](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
 
 ## <a name="view-your-data-with-queries"></a>Az adataikat a lekérdezésekkel tekintheti meg
 
@@ -320,12 +366,12 @@ További információ a lekérdezések és naplók használatáról: [naplók a 
 * [MySQL-integráció](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-mysql)
 * [PostgreSQL](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-postgresql)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazás-hozzárendelés](./../../azure-monitor/app/app-map.md)
 * [Végpontok közötti teljesítmény figyelése](./../../azure-monitor/learn/tutorial-performance.md)
 
-### <a name="alerts"></a>Riasztások
+### <a name="alerts"></a>Értesítések
 
 * [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md): Hozzon létre teszteket, hogy megbizonyosodjon róla, oldala látható a weben.
 * [Intelligens diagnosztika](../../azure-monitor/app/proactive-diagnostics.md): Ezek a tesztek automatikusan futnak, a beállításukhoz semmit sem kell tennie. Értesítést kap, ha az alkalmazásában szokatlanul magas a meghiúsult kérelmek száma.

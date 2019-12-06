@@ -1,31 +1,31 @@
 ---
-title: Az Azure Cosmos DB több főkiszolgálós előnyei
-description: Az Azure Cosmos DB több főkiszolgálós előnyeinek megismeréséhez.
+title: Több főkiszolgálós előnyök Azure Cosmos DB
+description: Ismerje meg a Azure Cosmos DB több főkiszolgálójának előnyeit, valamint a késés és az SLA-követelmények összehasonlítását egyetlen és több írási helyen.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: c78e5e4f8d396d777738bddfd6baf086c0b2ecf4
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: b21b6ba82ba1ada0103501b8beeca270df86abd9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789292"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872009"
 ---
-# <a name="understand-multi-master-benefits-in-azure-cosmos-db"></a>Több főkiszolgálós előnyeit az Azure Cosmos DB ismertetése
+# <a name="understand-multi-master-benefits-in-azure-cosmos-db"></a>A több főkiszolgálós előnyök megismerése Azure Cosmos DB
 
-A cosmos DB Fiókfelelősök kell választania a megfelelő globális terjesztés beállításait, a késést, rendelkezésre állás és RTO-alkalmazásaik követelményei. Az Azure Cosmos-fiókok több írási helyen konfigurált jelentős előnyöket keresztül egyetlen írási hely többek között a fiókok, 99,999 %-os írási rendelkezésre állási SLA, < 10 ms írási késés SLA-t a 99. percentilis és RTO = 0 a regionális katasztrófa.
+Cosmos DB a Fiókfelelősök a megfelelő globális terjesztési konfiguráció kiválasztásával biztosítják az alkalmazásai késési, rendelkezésre állási és RTO követelményeit. A több írási hellyel konfigurált Azure Cosmos-fiókok jelentős előnyt biztosítanak az olyan fiókokhoz, mint például a 99,999%-os írási rendelkezésre állási SLA, < 10 MS írási késés SLA a esetek 99% percentilis és a RTO = 0 esetében regionális katasztrófa esetén.
 
-## <a name="comparison-of-features"></a>Szolgáltatások összehasonlítása
+## <a name="comparison-of-features"></a>Funkciók összehasonlítása
 
-|Alkalmazás követelményeinek|Több írási hely|Egyetlen írási hely|Megjegyzés|
+|Alkalmazásra vonatkozó követelmény|Több írási hely|Egyszeri írási hely|Megjegyzés|
 |---|---|---|---|
-|Írási késés garantált szolgáltatási SZINTJÉTŐL < 10ms (P99)|**Igen**|Nem|Egyetlen írási hellyel rendelkező fiókok esetében minden egyes írási számítunk fel további régiók közötti hálózati késés.|
-|Olvasási késés garantált szolgáltatási SZINTJÉTŐL < 10ms (P99)|**Igen**|Igen| |
-|Írási 99,999 %-os szolgáltatásiszint-szerződés|**Igen**|Nem|Egyetlen írási hellyel rendelkező fiókok garantálja a 99,99 %-os szolgáltatásiszint-szerződés|
-|RTO = 0|**Igen**|Nem|A nulla regionális katasztrófa írási ideje le. Egyetlen írási hellyel rendelkező fiókok jogosultak az RTO 15 perc.|
+|< 10ms írási késleltetése (SLA) a következő helyen: P99|**Igen**|Nem|Az egyszeri írási hellyel rendelkező fiókok esetében az egyes írásokhoz további régiók közötti hálózati késések merülhetnek fel.|
+|< 10ms olvasási késése (SLA) a következő helyen: P99|**Igen**|Igen| |
+|99,999%-os SLA-írás|**Igen**|Nem|Egyszeri írási hellyel rendelkező fiókok, 99,99%-os SLA-val|
+|RTO = 0|**Igen**|Nem|A regionális katasztrófák esetén az írási idő nulla. Az egyszeri írási hellyel rendelkező fiókok 15 perces RTO rendelkeznek.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha továbbra is szeretné EnableMultipleWriteLocations letiltása az Azure Cosmos-fiókban, [hozzon létre egy támogatási jegyet](https://azure.microsoft.com/support/create-ticket/).
+Ha továbbra is szeretné letiltani az EnableMultipleWriteLocations az Azure Cosmos-fiókjában, [Nyisson meg egy támogatási jegyet](https://azure.microsoft.com/support/create-ticket/).

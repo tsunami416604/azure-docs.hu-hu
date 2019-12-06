@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan adhat hozzá kimeneti kötést C# az osztály k
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: bd899c5cc7aafc5b3349cf4cec9098a849665a2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227426"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849207"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Függvények összekötése az Azure Storage-ba a Visual Studióval
 
@@ -23,7 +23,7 @@ A legtöbb kötéshez olyan tárolt kapcsolati karakterlánc szükséges, amelye
 
 A cikk elindítása előtt a következőket kell tennie: 
 
- - [./Functions-Create-First-Function-vs-code.MD] [a Visual Studio gyors üzembe helyezésének 1. része]. 
+ - Fejezze be [a Visual Studio](./functions-create-first-function-vs-code.md)rövid útmutatójának 1. részét. 
 
 - Jelentkezzen be az Azure-előfizetésbe a Visual studióból.
 
@@ -79,7 +79,7 @@ A rendszer létrehoz egy új, `outqueue` nevű várólistát a Storage-fiókban 
 
 1. Bontsa ki a **várólisták** csomópontot, majd kattintson duplán a " **Dequeue** " nevű várólistára a várólista tartalmának megtekintéséhez a Visual Studióban. 
 
-   Az üzenetsor tartalmazza az üzenetet, amelyet az üzenetsor kimeneti kötése létrehozott a HTTP által aktivált függvény futtatásakor. Ha az alapértelmezett `name`Azure értékkel hívta meg a függvényt, az üzenetsorban található üzenet a következő lesz: *A függvénynek átadott név: Azure*.
+   Az üzenetsor tartalmazza az üzenetet, amelyet az üzenetsor kimeneti kötése létrehozott a HTTP által aktivált függvény futtatásakor. Ha az alapértelmezett *Azure* `name` értékkel hívta meg a függvényt, az üzenetsorban található üzenet a következő lesz: *A függvénynek átadott név: Azure*.
 
     ![Üzenetsor-üzenet látható Azure Storage Explorer](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 

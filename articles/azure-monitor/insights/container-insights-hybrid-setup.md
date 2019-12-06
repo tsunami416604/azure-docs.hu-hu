@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: d25b9b3bb155dced973d415b396ebfaa4403b011
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/04/2019
+ms.openlocfilehash: 0d6615d832059a8b58c0d5d52533b8c8c962640d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514614"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841574"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hibrid Kubernetes-fürtök konfigurálása Azure Monitor tárolók számára
 
@@ -85,7 +85,7 @@ Ez a metódus két JSON-sablont tartalmaz. Az egyik sablon meghatározza a figye
 - **workspaceResourceId** – a log Analytics munkaterület teljes erőforrás-azonosítója.
 - **workspaceRegion** – az a régió, amely a munkaterületet hozza létre, és a munkaterület **tulajdonságai között a** Azure Portal.
 
-A **containerSolutionParams. JSON** fájlban található `workspaceResourceId` paraméter értékének megadásához a log Analytics munkaterület teljes erőforrás-azonosítójának azonosításához hajtsa végre a következő lépéseket, majd futtassa a PowerShell-parancsmagot vagy az Azure CLI-parancsot a megoldás.
+A **containerSolutionParams. JSON** fájlban lévő `workspaceResourceId` paraméter értékének megadásához a log Analytics munkaterület teljes erőforrás-azonosítójának megadásához hajtsa végre a következő lépéseket, majd futtassa a PowerShell-parancsmagot vagy az Azure CLI-parancsot a megoldás hozzáadásához.
 
 1. Sorolja fel az összes olyan előfizetést, amelyhez hozzáféréssel rendelkezik a következő parancs használatával:
 
@@ -283,6 +283,25 @@ A diagram sikeres üzembe helyezését követően áttekintheti a hibrid Kuberne
 >[!NOTE]
 >A betöltési késés körülbelül öt – tíz perc az ügynöktől az Azure Log Analytics-munkaterületen véglegesítve. A fürt állapota megjelenítheti a **nem adat** vagy **ismeretlen** értéket, amíg a Azure monitor összes szükséges figyelési adata nem érhető el. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="troubleshooting"></a>Hibakeresés
+
+Ha a hibrid Kubernetes-fürt figyelésének engedélyezésére tett kísérlet során hiba lép fel, másolja a [TroubleshootError_nonAzureK8s. Ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) PowerShell-parancsfájlt, és mentse a számítógép egyik mappájába. Ez a parancsfájl az észlelt problémák észleléséhez és megoldásához nyújt segítséget. A probléma megoldásához a következő problémák észlelhetők:
+
+* A megadott Log Analytics munkaterület érvényes 
+* A Log Analytics munkaterület a Azure Monitor for containers megoldáshoz van konfigurálva. Ha nem, konfigurálja a munkaterületet.
+* A OmsAgent REPLICASET Pod fut
+* A OmsAgent daemonset elemet Pod fut
+* A OmsAgent állapotfigyelő szolgáltatás fut 
+* A tároló ügynökön konfigurált Log Analytics munkaterület azonosítója és kulcsa megegyezik azzal a munkaterülettel, amelyhez az Insight konfigurálva van.
+* Ellenőrizze, hogy az összes linuxos feldolgozó csomópont rendelkezik-e `kubernetes.io/role=agent` címkével az RS Pod-hoz. Ha nem létezik, adja hozzá.
+* A `cAdvisor port: 10255` ellenőrzése a fürt összes csomópontján megnyitható.
+
+Azure PowerShell végrehajtásához használja a következő parancsokat a parancsfájlt tartalmazó mappában:
+
+```powershell
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 Ha a figyelés engedélyezve van a hibrid Kubernetes-fürt és a rajtuk futó számítási feladatok állapotának és erőforrás-felhasználásának gyűjtéséhez, Ismerje meg, [hogyan használhatja](container-insights-analyze.md) a Azure monitor for containers szolgáltatást.

@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b02d6468ede0d5748409a620a6641109cd523a09
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: b51c6284c0d7ee21f67d37465100f84d4b2f5ae2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404229"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848085"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Címtár-integráció az Azure MFA-kiszolgáló és az Active Directory között
 
@@ -95,9 +95,9 @@ Az attribútumokat manuálisan is megadhatja, és nem kell egyezniük az attrib�
 | OATH token nyelve |Megadhatja azon attribútum nevét, amely a felhasználónak küldött OATH token szöveges üzeneteihez használt nyelv rövid nevét tartalmazza. |
 | Céges telefon |Megadhatja azon attribútum nevét, amely a vállalati telefonszámot egy felhasználórekordban tárolja.  Az alapértelmezett érték a telephoneNumber. |
 | Otthoni telefon |Megadhatja azon attribútum nevét, amely az otthoni telefonszámot egy felhasználórekordban tárolja.  Az alapértelmezett érték a homePhone. |
-| Stránkování |Megadhatja azon attribútum nevét, amely a személyhívószámot egy felhasználórekordban tárolja.  Az alapértelmezett érték a pager. |
+| Személyhívó |Megadhatja azon attribútum nevét, amely a személyhívószámot egy felhasználórekordban tárolja.  Az alapértelmezett érték a pager. |
 | Mobiltelefon |Megadhatja azon attribútum nevét, amely a mobiltelefonszámot egy felhasználórekordban tárolja.  Az alapértelmezett érték a mobile. |
-| Faxkiszolgáló |Megadhatja azon attribútum nevét, amely a faxszámot egy felhasználórekordban tárolja.  Az alapértelmezett érték a facsimileTelephoneNumber. |
+| Fax |Megadhatja azon attribútum nevét, amely a faxszámot egy felhasználórekordban tárolja.  Az alapértelmezett érték a facsimileTelephoneNumber. |
 | IP-telefon |Megadhatja azon attribútum nevét, amely az IP-telefonszámot egy felhasználórekordban tárolja.  Az alapértelmezett érték az ipPhone. |
 | Egyéni |Megadhatja azon attribútum nevét, amely egy egyéni telefonszámot tárol egy felhasználórekordban.  Alapértelmezés szerint ez a mező üres. |
 | Mellék |Megadhatja azon attribútum nevét, amely a telefonszámhoz tartozó melléket egy felhasználórekordban tárolja.  A mellék mező értékét a rendszer csak az elsődleges telefonszám mellékeként használja.  Alapértelmezés szerint ez a mező üres. <br><br>Ha a Mellék attribútum nincs meghatározva, a mellékek megadhatók a telefonattribútum részeként. Ebben az esetben a mellék elé tegyen egy „x” karaktert, hogy a rendszer megfelelően tudja elemezni.  Például az 555-123-4567 x890 érték az 555-123-4567-es telefonszámot jelöli 890-es mellékkel. |

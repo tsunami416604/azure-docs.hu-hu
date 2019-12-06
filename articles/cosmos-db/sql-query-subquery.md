@@ -1,17 +1,17 @@
 ---
 title: SQL-allekérdezések Azure Cosmos DB
-description: Ismerje meg az SQL allekérdezéseket és azok gyakori használati eseteit Azure Cosmos DB
+description: Ismerje meg az SQL allekérdezéseket és azok gyakori használati eseteit és a különböző típusú allekérdezéseket Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: cea9963f5073834a24ede44306eb89414909fc83
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003485"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870564"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Példák az SQL allekérdezésre Azure Cosmos DB
 
@@ -23,16 +23,16 @@ Ez a cikk az SQL allekérdezéseket és azok gyakori használati eseteit ismerte
 
 Az allekérdezéseknek két fő típusa van:
 
-* **Korrelált**: Egy segédlekérdezés, amely a külső lekérdezés értékeit hivatkozik. A segédlekérdezés egyszer lesz kiértékelve minden olyan sorban, amelyet a külső lekérdezés feldolgoz.
-* **Nem korrelált**: A külső lekérdezéstől független allekérdezés. A külső lekérdezésre való támaszkodás nélkül is futtatható.
+* **Korrelált**: olyan segédlekérdezés, amely a külső lekérdezés értékeit hivatkozik. A segédlekérdezés egyszer lesz kiértékelve minden olyan sorban, amelyet a külső lekérdezés feldolgoz.
+* **Nem korrelált**: olyan segédlekérdezés, amely független a külső lekérdezéstől. A külső lekérdezésre való támaszkodás nélkül is futtatható.
 
 > [!NOTE]
 > A Azure Cosmos DB csak a korrelált allekérdezéseket támogatja.
 
 Az allekérdezések tovább csoportosíthatók a visszaadott sorok és oszlopok száma alapján. Háromféle típus létezik:
-* **Tábla**: Több sort és több oszlopot ad vissza.
-* **Többszörös érték**: Több sort és egyetlen oszlopot ad vissza.
-* **Skaláris**: Egyetlen sort és egyetlen oszlopot ad vissza.
+* **Tábla**: több sort és több oszlopot ad vissza.
+* **Többértékű**: több sort és egyetlen oszlopot ad vissza.
+* **Skaláris**: egyetlen sort és egyetlen oszlopot ad vissza.
 
 Azure Cosmos DB SQL-lekérdezések mindig egyetlen oszlopot adnak vissza (egyszerű vagy összetett dokumentum). Ezért a Azure Cosmos DBban csak a többértékű és a skaláris allekérdezések alkalmazhatók. A FROM záradékban csak a többértékű allekérdezés használható viszonyítási kifejezésként. Skaláris allekérdezést használhat skaláris kifejezésként a SELECT vagy WHERE záradékban, vagy egy viszonyítási kifejezésként a FROM záradékban.
 
@@ -47,7 +47,7 @@ A többértékű allekérdezések dokumentumok készletét adják vissza, és a 
 
 A többértékű allekérdezések optimalizálják az összekapcsolási kifejezéseket úgy, hogy az egyes Select-many kifejezéseket nem a WHERE záradékban lévő összes illesztés után küldi el.
 
-Vegye figyelembe a következő lekérdezést:
+Tekintse meg a következő lekérdezést:
 
 ```sql
 SELECT Count(1) AS Count
@@ -79,7 +79,7 @@ Tegyük fel, hogy a címkék tömbben csak egy elem felel meg a szűrőnek, és 
 
 Az allekérdezések olyan költséges kifejezésekkel optimalizálják a lekérdezéseket, mint a felhasználó által definiált függvények (UDF), az összetett karakterláncok vagy a aritmetikai kifejezések. A kifejezést egy JOIN kifejezéssel együtt használva kiértékelheti a kifejezést egyszer, de többször is hivatkozhat rá.
 
-A következő lekérdezés kétszer futtatja `GetMaxNutritionValue` az UDF-t:
+A következő lekérdezés kétszer futtatja az UDF `GetMaxNutritionValue`:
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -109,7 +109,7 @@ JOIN (SELECT udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue) m
 WHERE m.MaxNutritionValue > 100
 ```
 
-A megközelítés nem korlátozódik a UDF. Ez minden potenciálisan költséges kifejezésre vonatkozik. Tegyük fel, hogy ugyanezt a módszert használja a matematikai függvénnyel `avg`:
+A megközelítés nem korlátozódik a UDF. Ez minden potenciálisan költséges kifejezésre vonatkozik. Tegyük fel például, hogy ugyanazt a megközelítést használja a matematikai függvénnyel `avg`:
 
 ```sql
 SELECT TOP 1000 c.id, AvgNutritionValue
@@ -124,24 +124,24 @@ Előfordulhat, hogy gyakran olyan statikus adatmennyiségre kell hivatkoznia, am
 
 Vegyük például a következő hivatkozási adatkészletet:
 
-| **Egység** | **Name**            | **Szorzó** | **Alapegység** |
+| **Egység** | **Name (Név)**            | **Szorzó** | **Alapegység** |
 | -------- | ------------------- | -------------- | ------------- |
-| ng       | Nanogrammos            | 1.00 E-09       | Gram          |
-| µg       | Mikrogramm           | 1.00 E-06       | Gram          |
-| mg       | Milligramm           | 1.00 E-03       | Gram          |
-| k        | Gram                | 1.00 E + 00       | Gram          |
-| kg       | Kilogramm            | 1.00 E + 03       | Gram          |
-| mg       | Megagram            | 1.00 E + 06       | Gram          |
-| Gg       | Gigagram            | 1.00 E + 09       | Gram          |
-| Egyet       | Nanojoule           | 1.00 E-09       | Joule         |
-| μJ       | Aljoule          | 1.00 E-06       | Joule         |
-| mJ       | Millijoule          | 1.00 E-03       | Joule         |
-| C        | Joule               | 1.00 E + 00       | Joule         |
-| kJ       | Kalápocsonkénti ütési           | 1.00 E + 03       | Joule         |
-| MJ       | Megajoule           | 1.00 E + 06       | Joule         |
-| GJ       | Gigajoule           | 1.00 E + 09       | Joule         |
-| Cal      | Kalória             | 1.00 E + 00       | kalória       |
-| kcal     | Kalória             | 1.00 E + 03       | kalória       |
+| ng       | Nanogrammos            | 1.00 e-09       | Gram          |
+| μg       | Mikrogramm           | 1.00 e-06       | Gram          |
+| mg       | Milligramm           | 1.00 e-03       | Gram          |
+| g        | Gram                | 1.00 e + 00       | Gram          |
+| kg       | Kilogramm            | 1.00 e + 03       | Gram          |
+| Mg       | Megagram            | 1.00 e + 06       | Gram          |
+| Gg       | Gigagram            | 1.00 e + 09       | Gram          |
+| Egyet       | Nanojoule           | 1.00 e-09       | Joule         |
+| μJ       | Aljoule          | 1.00 e-06       | Joule         |
+| mJ       | Millijoule          | 1.00 e-03       | Joule         |
+| J        | Joule               | 1.00 e + 00       | Joule         |
+| kJ       | Kalápocsonkénti ütési           | 1.00 e + 03       | Joule         |
+| MJ       | Megajoule           | 1.00 e + 06       | Joule         |
+| GJ       | Gigajoule           | 1.00 e + 09       | Joule         |
+| Cal      | Kalória             | 1.00 e + 00       | kalória       |
+| kcal     | Kalória             | 1.00 e + 03       | kalória       |
 | NE       | Nemzetközi egységek |                |               |
 
 
@@ -366,11 +366,11 @@ Ha az előző allekérdezésben szereplő VALUE kulcsszó ki van hagyva, a leké
 SELECT EXISTS (SELECT undefined) 
 ```
 
-A segédlekérdezés egy objektum kiválasztott listájában lévő értékek listáját fogja csatolni. Ha a kiválasztott lista nem tartalmaz értékeket, a segédlekérdezés az "{}" egyetlen értéket fogja visszaadni. Ez az érték definiálva van, ezért a függvény Igaz értéket ad vissza.
+A segédlekérdezés egy objektum kiválasztott listájában lévő értékek listáját fogja csatolni. Ha a kiválasztott lista nem tartalmaz értékeket, a segédlekérdezés a "{}" egyetlen értéket fogja visszaadni. Ez az érték definiálva van, ezért a függvény Igaz értéket ad vissza.
 
-### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Példa: ARRAY_CONTAINS újraírása és CSATLAKOZTATÁSa
+### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Példa: ARRAY_CONTAINS újraírása és csatlakozás LÉTEZŐként
 
-A ARRAY_CONTAINS gyakori felhasználási esete, ha egy tömbben lévő elem megléte alapján szűri a dokumentumot. Ebben az esetben ellenőrzi, hogy a címkék tömb tartalmazza-e a "narancssárga" nevű elemeket.
+ARRAY_CONTAINS gyakori felhasználási esete, ha egy tömbben lévő elem létezésével szűr egy dokumentumot. Ebben az esetben ellenőrzi, hogy a címkék tömb tartalmazza-e a "narancssárga" nevű elemeket.
 
 ```sql
 SELECT TOP 5 f.id, f.tags
@@ -386,9 +386,9 @@ FROM food f
 WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 ```
 
-Emellett a ARRAY_CONTAINS csak azt tudja megtekinteni, hogy az érték egyenlő-e egy tömbben lévő bármelyik elemmel. Ha összetettebb szűrőkre van szüksége a tömb tulajdonságainál, használja a JOIN (csatlakozás) parancsot.
+Emellett a ARRAY_CONTAINS csak azt vizsgálhatja, hogy egy érték egyenlő-e egy tömbben lévő bármelyik elemmel. Ha összetettebb szűrőkre van szüksége a tömb tulajdonságainál, használja a JOIN (csatlakozás) parancsot.
 
-Vegye figyelembe a következő lekérdezést, amely a tömb egységei `nutritionValue` és tulajdonságai alapján szűr: 
+Vegye figyelembe a következő lekérdezést, amely a tömb egység és `nutritionValue` tulajdonságai alapján szűr: 
 
 ```sql
 SELECT VALUE c.description
@@ -517,7 +517,7 @@ Lekérdezés kimenete:
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Dokumentum-adattípusok](modeling-data.md)

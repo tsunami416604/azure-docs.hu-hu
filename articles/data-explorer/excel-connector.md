@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 18c6499afe450a0387b0d9f0f13ee4378e0a21a9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 42f52581d8f2f80deb5d6250ed54ab64fc1ba4d3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173832"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849054"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>Az Excelhez készült Azure Adatkezelő Connector használatával megjelenítheti az adatmegjelenítést
 
@@ -23,7 +23,7 @@ Az Azure Adatkezelő Excel natív összekötője lehetőséget nyújt a lekérde
 ## <a name="define-kusto-query-as-an-excel-data-source-and-load-the-data-to-excel"></a>Kusto-lekérdezés definiálása Excel-adatforrásként és az Excelbe való betöltés
 
 1. Nyissa meg a **Microsoft Excelt**.
-1. Az **adatok** lapon válassza az **adatok** > lekérése az**Azure** >  **-ból**az Azure adatkezelő lehetőséget.
+1. Az **adatok** lapon válassza az azure- > Azure **-ból** > az **adatok lekérése** **Az Azure-** ból adatkezelő lehetőséget.
 
     ![Adatok beolvasása az Azure Adatkezelőból](media/excel-connector/get-data-from-adx.png)
 
@@ -34,7 +34,7 @@ Az Azure Adatkezelő Excel natív összekötője lehetőséget nyújt a lekérde
     |Mező   |Leírás |
     |---------|---------|
     |**Fürt**   |   Fürt neve (kötelező)      |    
-    |**Adatbázis**     |    Adatbázis neve      |    
+    |**Adatbázis**     |    Az adatbázis neve      |    
     |**Tábla neve vagy Azure Adatkezelő lekérdezés**    |     A tábla vagy az Azure Adatkezelő lekérdezés neve    | 
     
     **Speciális beállítások:**
@@ -44,9 +44,9 @@ Az Azure Adatkezelő Excel natív összekötője lehetőséget nyújt a lekérde
     |**Lekérdezési eredmény rekordjának maximális száma**     |     Az Excelbe betöltött rekordok számának korlátozása  |    
     |**Lekérdezési eredmények adatméretének korlátozása (bájt)**    |    Az adatméret korlátozása      |   
     |**Eredményhalmaz-csonkítás letiltása**    |         |      
-    |**További set utasítások (pontosvesszővel elválasztva)**    |    Adatforrásra alkalmazandó utasítások hozzáadása `set`     |   
+    |**További set utasítások (pontosvesszővel elválasztva)**    |    Adatforrásra vonatkozó `set`-utasítások hozzáadása     |   
 
-1.  A **navigátor** ablaktáblán navigáljon a megfelelő táblához. A táblázat előnézete ablaktáblán válassza az adatátalakítás lehetőséget az adatmódosítás módosításához, vagy válassza a **Load** (betöltés) lehetőséget az Excelbe való betöltéshez.
+1.  A **navigátor** ablaktáblán navigáljon a megfelelő táblához. A táblázat előnézete ablaktáblán válassza az **adatátalakítás** lehetőséget az adatmódosítás módosításához, vagy válassza a **Load (Betöltés** ) lehetőséget az Excelbe való betöltéshez.
 
 ![Táblázat előnézetének ablaka](media/excel-connector/navigate-table-preview-window.png)
 
@@ -75,3 +75,6 @@ Ha az adatok betöltődik az Excel programba, és elérhetők az Excel-munkalapo
 
 1. Hozzon létre teljes irányítópultokat az adatai figyeléséhez.
 
+## <a name="next-steps"></a>Következő lépések
+
+[A Microsoft Excelben importált Azure Adatkezelő Kusto-lekérdezés használatával megjelenítheti az adatmegjelenítést](excel-blank-query.md)

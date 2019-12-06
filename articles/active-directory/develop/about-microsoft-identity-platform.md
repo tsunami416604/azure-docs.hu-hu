@@ -2,27 +2,23 @@
 title: A Microsoft Identity platform fejlődése – Azure
 description: Ismerje meg a Microsoft Identity platformot, amely a Azure Active Directory (Azure AD) Identity Service és a fejlesztői platform evolúcióját mutatja be.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/03/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c5fdc1c937136eb512eccf1d4df02a4fcdc3911
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ca1b6cc6288b75dc7194ead916f2ecb468b053d2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533104"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845909"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>A Microsoft identitásplatformjának fejlődése
 

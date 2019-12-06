@@ -1,17 +1,17 @@
 ---
 title: A Azure Cosmos DB SQL-lekérdezési operátorai
-description: Ismerkedjen meg Azure Cosmos DB SQL-operátorokkal.
+description: Ismerje meg az olyan SQL-operátorokat, mint az egyenlőség, az összehasonlítás és a Azure Cosmos DB által támogatott logikai operátorok.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 899355ad7331a3df8cd5d647a573dc15e3a0bb14
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f3efe4bee749f0d3132206ca68a33a60f0e16b81
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003377"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870938"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>A Azure Cosmos DB operátorai
 
@@ -19,60 +19,60 @@ Ez a cikk a Azure Cosmos DB által támogatott különböző operátorokat rész
 
 ## <a name="equality-and-comparison-operators"></a>Egyenlőségi és összehasonlító operátorok
 
-Az alábbi táblázat egyenlőségi összehasonlítás eredménye minden két JSON-típusok között az SQL API-ban.
+Az alábbi táblázat a két JSON-típus közötti egyenlőség összehasonlításának eredményét mutatja az SQL API-ban.
 
-| **Op** | **Nincs definiálva** | **NULL** | **Logikai érték** | **Szám** | **Karakterlánc** | **Object** | **Pole** |
+| **Op** | **Nem definiált** | **NULL** | **Logikai** | **Száma** | **Sztring** | **Objektum** | **Tömb** |
 |---|---|---|---|---|---|---|---|
-| **Nincs definiálva** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan |
-| **NULL** | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan |
-| **Logikai érték** | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan |
-| **Szám** | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan | Meghatározatlan |
-| **Karakterlánc** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan |
-| **Object** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan |
-| **Pole** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** |
+| **Nem definiált** | Nem definiált | Nem definiált | Nem definiált | Nem definiált | Nem definiált | Nem definiált | Nem definiált |
+| **NULL** | Nem definiált | **oké** | Nem definiált | Nem definiált | Nem definiált | Nem definiált | Nem definiált |
+| **Logikai** | Nem definiált | Nem definiált | **oké** | Nem definiált | Nem definiált | Nem definiált | Nem definiált |
+| **Száma** | Nem definiált | Nem definiált | Nem definiált | **oké** | Nem definiált | Nem definiált | Nem definiált |
+| **Sztring** | Nem definiált | Nem definiált | Nem definiált | Nem definiált | **oké** | Nem definiált | Nem definiált |
+| **Objektum** | Nem definiált | Nem definiált | Nem definiált | Nem definiált | Nem definiált | **oké** | Nem definiált |
+| **Tömb** | Nem definiált | Nem definiált | Nem definiált | Nem definiált | Nem definiált | Nem definiált | **oké** |
 
-Az összehasonlító operátorok, `>`például `>=` `!=` `Undefined`a,,, `<=`, és, összehasonlítás különböző típusok vagy két objektum vagy tömb között. `<`  
+Az összehasonlító operátorok, mint például a `>`, a `>=`, a `!=`, a `<`és a `<=`, a különböző típusú vagy két objektum vagy tömb közötti összehasonlítás `Undefined`hoz létre.  
 
-Ha a skaláris kifejezés `Undefined`eredménye, az elem nem szerepel az eredményben, mert `Undefined` nem egyenlő `true`.
+Ha a skaláris kifejezés eredménye `Undefined`, az elem nem szerepel az eredményben, mert `Undefined` nem egyenlő `true`.
 
-## <a name="logical-and-or-and-not-operators"></a>Logikai (AND, OR és NOT) operátorok
+## <a name="logical-and-or-and-not-operators"></a>Logikai (és, vagy nem) operátorok
 
-Logikai operátorok a logikai értékek művelethez. Az alábbi táblázatok a logikai igazság táblázatait mutatják be a következő operátorok esetében:
+Logikai operátorok logikai értékeken működnek. Az alábbi táblázatok a logikai igazság táblázatait mutatják be a következő operátorok esetében:
 
-**VAGY a kezelő**
+**VAGY operátor**
 
-| VAGY | True (Igaz) | False (Hamis) | Meghatározatlan |
+| VAGY | Igaz | Hamis | Nem definiált |
 | --- | --- | --- | --- |
-| True (Igaz) |True (Igaz) |True (Igaz) |True (Igaz) |
-| False (Hamis) |True (Igaz) |False (Hamis) |Meghatározatlan |
-| Meghatározatlan |True (Igaz) |Meghatározatlan |Meghatározatlan |
+| Igaz |Igaz |Igaz |Igaz |
+| Hamis |Igaz |Hamis |Nem definiált |
+| Nem definiált |Igaz |Nem definiált |Nem definiált |
 
 **ÉS operátor**
 
-| ÉS | True (Igaz) | False (Hamis) | Meghatározatlan |
+| ÉS | Igaz | Hamis | Nem definiált |
 | --- | --- | --- | --- |
-| True (Igaz) |True (Igaz) |False (Hamis) |Meghatározatlan |
-| False (Hamis) |False (Hamis) |False (Hamis) |False (Hamis) |
-| Meghatározatlan |Meghatározatlan |False (Hamis) |Meghatározatlan |
+| Igaz |Igaz |Hamis |Nem definiált |
+| Hamis |Hamis |Hamis |Hamis |
+| Nem definiált |Nem definiált |Hamis |Nem definiált |
 
-**NOT operátor**
+**NEM operátor**
 
-| NEM |  |
+| NOT |  |
 | --- | --- |
-| True (Igaz) |False (Hamis) |
-| False (Hamis) |True (Igaz) |
-| Meghatározatlan |Meghatározatlan |
+| Igaz |Hamis |
+| Hamis |Igaz |
+| Nem definiált |Nem definiált |
 
 
 ## <a name="-operator"></a>* operátor
 
-A speciális operátor * a teljes tételt a következőképpen tervezi. Használatakor a csak tervezett mezőt kell lennie. A hasonló `SELECT * FROM Families f` lekérdezés érvényes, `SELECT *, f.id FROM Families f` de `SELECT VALUE * FROM Families f` nem érvényes.
+A speciális operátor * a teljes tételt a következőképpen tervezi. Használata esetén az csak az egyetlen tervezett mező lehet. Egy lekérdezés, például `SELECT * FROM Families f` érvényes, de a `SELECT VALUE * FROM Families f` és a `SELECT *, f.id FROM Families f` érvénytelen.
 
-## <a name="-and--operators"></a>? és? Operátorok
+## <a name="-and--operators"></a>? és? operátorok
 
 A Ternáris (?) és az egyesítő (??) operátorok feltételes kifejezéseket hozhatnak létre, például a programozási C# nyelvekhez hasonlóan és a javascripthez. 
 
-Használhatja a? operátor az új JSON-tulajdonságok menet közbeni létrehozásához. Például a következő lekérdezés osztályozza a minősítési szinteket `elementary` a `other`vagy a értékre:
+Használhatja a? operátor az új JSON-tulajdonságok menet közbeni létrehozásához. Az alábbi lekérdezés például osztályozza a minőségi szinteket `elementary` vagy `other`ba:
 
 ```sql
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel
@@ -88,15 +88,15 @@ A hívások beágyazására is lehetőség van? operátor, a következő lekérd
 
 Más lekérdezési operátorokhoz hasonlóan a? a kezelő kizárja az elemeket, ha a hivatkozott tulajdonságok hiányoznak, vagy az összehasonlítható típusok eltérnek.
 
-Használja a?? az operátor a részben strukturált vagy kevert típusú adattípusok elleni lekérdezés során hatékonyan keres egy adott elemmel. Például a következő lekérdezés visszatér `lastName` , ha van, vagy `surname` ha `lastName` nincs jelen.
+Használja a?? az operátor a részben strukturált vagy kevert típusú adattípusok elleni lekérdezés során hatékonyan keres egy adott elemmel. Például a következő lekérdezés visszaadja `lastName` ha van, vagy `surname`, ha `lastName` nincs jelen.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
     FROM Families f
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [a kulcsszavak](sql-query-keywords.md)
+- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Kulcsszavak](sql-query-keywords.md)
 - [SELECT záradék](sql-query-select.md)

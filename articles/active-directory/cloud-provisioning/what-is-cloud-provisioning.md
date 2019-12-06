@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e88f6f344c77109ee01cd6b0332138518f70270d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 903551bfcaae3ffa7ccee72b1a5d781413864b32
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793782"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868456"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Mi az Azure AD Connect Cloud kiépítés?
 Azure AD Connect a felhő-kiépítés egy új Microsoft-ügynök, amely a hibrid identitási célok teljesítésére és a felhasználók, csoportok és névjegyek Azure AD-be való szinkronizálására szolgál.  Azure AD Connect szinkronizálás mellett is használható, és a következő előnyöket biztosítja:
@@ -59,8 +59,9 @@ Az alábbi táblázat összehasonlítja a Azure AD Connect és a Azure AD Connec
 | A folyamból az attribútumok eltávolításának engedélyezése az AD-ből az Azure AD-ba |● |● |
 | Az attribútumfolyamok speciális testreszabásának engedélyezése |● | |
 | Visszaírási-támogatás (jelszavak, eszközök, csoportok) |● | |
+| Azure AD Domain Services támogatás|● | |
 
 ## <a name="next-steps"></a>Következő lépések 
 
 - [Mi a kiépítés?](what-is-provisioning.md)
-- [Mi az Azure AD Connect Cloud kiépítés?](what-is-cloud-provisioning.md)
+- [A felhő kiépítés telepítése](how-to-install.md)

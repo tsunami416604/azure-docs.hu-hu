@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: a67d3a9fb74b1a4f07fc4995c268bb40a84834f7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 74de621f88d9af65f8894319729f902bf11e57ce
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035927"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873012"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: bejelentkezés az Azure-beli linuxos virtuális gépre Azure Active Directory hitelesítéssel
 
@@ -48,7 +48,7 @@ Az Azure AD-hitelesítés számos előnnyel jár az Azure-beli linuxos virtuáli
 
 A következő Linux-disztribúciók jelenleg a funkció előzetes verziójában támogatottak:
 
-| Disztribúció | Verzió |
+| Terjesztés | Verzió |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
@@ -68,7 +68,20 @@ A szolgáltatás előzetes verziójában jelenleg a következő Azure-régiók t
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.31 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
+## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
+
+Ha engedélyezni szeretné az Azure AD-hitelesítést az Azure-beli linuxos virtuális gépeken, gondoskodnia kell arról, hogy a virtuális gépek hálózati konfigurációja engedélyezze a kimenő hozzáférést a 443-as TCP-porton keresztül a következő végpontokhoz:
+
+* https://login.microsoftonline.com
+* https://device.login.microsoftonline.com
+* https://pas.windows.net
+* https://management.azure.com
+* https://packages.microsoft.com
+
+> [!NOTE]
+> Jelenleg az Azure hálózati biztonsági csoportjai nem konfigurálhatók az Azure AD-hitelesítéssel engedélyezett virtuális gépekhez.
+
+## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gépek létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-group-create)paranccsal, majd hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm#az-vm-create) használatával egy támogatott disztribúcióval és egy támogatott régióban. A következő példa egy *myVM* nevű virtuális gépet telepít, amely *Ubuntu 16,04 LTS* -et használ egy *myResourceGroup* nevű erőforráscsoporthoz a *southcentralus* régióban. Az alábbi példákban megadhatja a saját erőforráscsoport és a virtuális gépek nevét igény szerint.
 

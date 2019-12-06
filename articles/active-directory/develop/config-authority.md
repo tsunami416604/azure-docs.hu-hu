@@ -3,27 +3,23 @@ title: Az iOS-és macOS-MSAL konfigurálása különböző identitás-szolgálta
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan használhatja a különböző hatóságokat, például a B2C-t, a szuverén felhőket és a vendég felhasználókat az iOS-és macOS-MSAL.
 services: active-directory
-documentationcenter: ''
 author: tylermsft
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4df5067317170e18a52fbac53bc02a2ba7d35aba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: feea11dfa8e199d4c1c01ba7ec09003233574fbe
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473796"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843631"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Útmutató: az iOS-és macOS-MSAL konfigurálása különböző identitás-szolgáltatók használatához
 
@@ -251,6 +247,6 @@ A következő alosztályok `MSALAuthority`, amelyek a szolgáltatótól függőe
 
 `MSALB2CAuthority` a B2C-hatóságot jelöli. Alapértelmezés szerint a B2C-szolgáltatói URL-címnek a következő formátumban kell lennie, ahol a `<port>` nem kötelező: `https://<host>:<port>/tfp/<tenant>/<policy>`. A MSAL azonban más, tetszőleges B2C-szolgáltatói formátumokat is támogat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)

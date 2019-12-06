@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1036d7e8aef29e3185452d5088e660d474726e4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 0982f6fb70cd6866af48feab640d5dc36bcb6b28
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381970"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848680"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Működés: Azure Multi-Factor Authentication
 
@@ -32,15 +32,15 @@ A kétlépéses ellenőrzés biztonsága a rétegzett megközelítésben rejlik.
 
 Az Azure Multi-Factor Authentication (MFA) segíti az adathozzáférést és az alkalmazásokhoz való hozzáférést a felhasználók egyszerűségének fenntartása mellett. További biztonságot nyújt a hitelesítés második formáját igényli, és erős hitelesítést tesz lehetővé számos könnyen használható [hitelesítési módszer](concept-authentication-methods.md)segítségével. A rendszergazda által létrehozott konfigurációs döntések alapján előfordulhat, hogy a felhasználók nem tudják feltámadni az MFA-t.
 
-## <a name="how-to-get-multi-factor-authentication"></a>Hogyan szerezhet be Multi-Factor Authentication?
+## <a name="how-to-get-multi-factor-authentication"></a>A Multi-Factor Authentication beszerzése
 
-Multi-Factor Authentication a következő ajánlatok részeként érkezik:
+A Multi-Factor Authentication a következő ajánlatok részét képezi:
 
 * **Prémium szintű Azure Active Directory** vagy **Microsoft 365 vállalati verzió** – a többtényezős hitelesítés megkövetelése érdekében feltételes hozzáférési szabályzatokkal teljes funkcionalitású Azure-multi-Factor Authentication használ.
 
 * **Ingyenes Azure ad** vagy önálló **Office 365** -licencek – az előre létrehozott feltételes hozzáférési alapszintű [védelmi házirendek](../conditional-access/concept-baseline-protection.md) használatával többtényezős hitelesítést igényelhet a felhasználók és a rendszergazdák számára.
 
-* **Azure Active Directory globális rendszergazdák** – az Azure multi-Factor Authentication képességeinek egy részhalmaza elérhető a globális rendszergazdai fiókok elleni védelemhez.
+* **Azure Active Directory globális rendszergazdák** – Az Azure Multi-Factor Authentication funkcióinak egy része elérhető a globális rendszergazdai fiókok védelméhez.
 
 > [!NOTE]
 > Az új ügyfelek már nem vásárolhatják meg az Azure Multi-Factor Authentication önálló ajánlatként, amely 2018. szeptember 1-től érvényes. A többtényezős hitelesítés továbbra is elérhető lesz prémium szintű Azure AD licencekben.
@@ -54,6 +54,6 @@ Mivel a legtöbb felhasználó megszokta, hogy csak a jelszavakat használja a h
 * A kétlépéses ellenőrzési kérések minimalizálásához érdemes megfontolnia a feltételes hozzáférés elnevezett helyeinek használatát. Ezzel a funkcióval a rendszergazdák megkerülhetik a kétlépéses ellenőrzést olyan felhasználók számára, akik biztonságos megbízható hálózati helyről jelentkeznek be, például az új felhasználók bevezetéséhez használt hálózati szegmensek.
 * [Azure ad Identity Protection](../active-directory-identityprotection.md) üzembe helyezése és a kockázati észlelések alapján történő kétlépéses ellenőrzés elindítása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Lépésenkénti Azure Multi-Factor Authentication üzembe helyezés](howto-mfa-getstarted.md)

@@ -4,17 +4,17 @@ description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni a naplókat a Upd
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 09/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d53e41fc902241d796cf8b10ae35c50c090a803a
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 4797e3a348b057fa21677649e4cb7de78de0d8b9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377537"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850618"
 ---
 # <a name="query-update-records-for-update-management-in-log-analytics"></a>A Log Analytics Update Management frissítési rekordjainak lekérdezése
 
@@ -22,7 +22,7 @@ A Azure Portalban megadott részletek mellett a naplókon is végezhet keresést
 
 Azt is megtudhatja, hogyan szabhatja testre a lekérdezéseket, és hogyan használhatja őket különböző ügyfelekről, és többet is megtalálhat: [log Analytics Search API dokumentációja](https://dev.loganalytics.io/).
 
-## <a name="sample-queries"></a>Példák a lekérdezésekre
+## <a name="sample-queries"></a>Mintalekérdezések
 
 A következő szakaszokban példákat talál a Update Management gyűjtött frissítési rekordokra.
 
@@ -47,7 +47,7 @@ Heartbeat
 Windows rendszerű számítógépen a következő információkat tekintheti meg az ügynök kapcsolatának ellenőrzéséhez Azure Monitor naplók használatával:
 
 1. A vezérlőpulton nyissa meg a **Microsoft monitoring Agent ügynököt**. Az **Azure log Analytics** lapon az ügynök a következő üzenetet jeleníti meg: **a Microsoft monitoring Agent sikeresen csatlakozott a log Analyticshoz**.
-2. Nyissa meg a Windows eseménynaplót. Nyissa meg az **Application and Services Logs\Operations Manager alkalmazást** , és keressen rá a 3000-es azonosítójú eseményre és a 5002-es azonosítójú eseményre **.** Ezek az események azt jelzik, hogy a számítógép regisztrálva van a Log Analytics munkaterületen, és fogadja a konfigurációt.
+2. Nyissa meg a Windows eseménynaplót. Nyissa meg az **Application and Services Logs\Operations Manager alkalmazást** , és keressen rá a 3000-es azonosítójú eseményre és a 5002-es azonosítójú eseményre **.** Ezek az események jelzik, hogy a számítógép regisztrálva van a Log Analytics-munkaterületen, és konfigurációt kap.
 
 Ha az ügynök nem tud kommunikálni Azure Monitor naplókkal, és az ügynök úgy van konfigurálva, hogy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon az internettel, ellenőrizze, hogy a tűzfal vagy a proxykiszolgáló megfelelően van-e konfigurálva. A tűzfal vagy a proxykiszolgáló megfelelő konfigurálásának ellenőrzéséhez tekintse meg a [hálózati konfiguráció Windows-ügynökhöz](../azure-monitor/platform/agent-windows.md) vagy [a Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md)című témakört.
 
@@ -63,7 +63,7 @@ Annak ellenőrzéséhez, hogy egy Operations Manager felügyeleti csoport kommun
 
 ### <a name="single-azure-vm-assessment-queries-windows"></a>Egyetlen Azure-beli VM-értékelő lekérdezés (Windows)
 
-Cserélje le a VMUUID értéket a lekérdezni kívánt virtuális gép virtuális géphez tartozó GUID azonosítóra. A következő lekérdezésnek a Azure Monitor-naplókban való futtatásával megtalálhatja azokat a VMUUID, amelyeket használni szeretne: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+Cserélje le a VMUUID értéket a lekérdezni kívánt virtuális gép virtuális géphez tartozó GUID azonosítóra. A következő lekérdezésnek a Azure Monitor naplókban való futtatásával megkeresheti a VMUUID: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Hiányzó frissítések összegzése
 
@@ -92,7 +92,7 @@ Update
 
 ### <a name="single-azure-vm-assessment-queries-linux"></a>Egyetlen Azure-beli VM-értékelő lekérdezés (Linux)
 
-Egyes Linux-disztribúciók esetében a [endianness](https://en.wikipedia.org/wiki/Endianness) nem egyezik a Azure Resource Manager és a Azure monitor naplókban tárolt VMUUID értékkel. A következő lekérdezés mindkét endianness egyezést keres. Cserélje le a VMUUID értékeket a GUID big-endian és little-endian formátumára, hogy megfelelően visszaadja az eredményeket. A következő lekérdezésnek a Azure Monitor-naplókban való futtatásával megtalálhatja azokat a VMUUID, amelyeket használni szeretne: `Update | where Computer == "<machine name>"
+Egyes Linux-disztribúciók esetében a [endianness](https://en.wikipedia.org/wiki/Endianness) nem egyezik a Azure Resource Manager és a Azure monitor naplókban tárolt VMUUID értékkel. A következő lekérdezés mindkét endianness egyezést keres. Cserélje le a VMUUID értékeket a GUID big-endian és little-endian formátumára, hogy megfelelően visszaadja az eredményeket. A következő lekérdezésnek a Azure Monitor naplókban való futtatásával megkeresheti a VMUUID: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Hiányzó frissítések összegzése

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90151679b71364d93446d1acc46a461d2a9d8f9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4cd8e483d6c189e311fdb1925ad0f2effc2affe1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278163"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849146"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Oktatóanyag: a tartalékidő konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -66,13 +66,13 @@ Ez a szakasz végigvezeti az Azure AD-nek a Slack felhasználói fiók létesít
 
 4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-   ![Tartalékidő kiépítés](./media/slack-provisioning-tutorial/Slack1.PNG)
+   ![Tartalékidő kiépítés](./media/slack-provisioning-tutorial/slack1.png)
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés**elemre. Ekkor megnyílik a tartalékidő-engedélyezési párbeszédpanel egy új böngészőablakban.
 
 6. Az új ablakban jelentkezzen be a Slack használatával a csapat rendszergazdai fiókjával. az eredményül kapott hitelesítés párbeszédpanelen válassza ki azt a Slack-csoportot, amely számára engedélyezni szeretné a kiépítés beállítást, majd válassza az **Engedélyezés**lehetőséget. Ha elkészült, térjen vissza a Azure Portal a létesítési konfiguráció befejezéséhez.
 
-    ![Engedélyezési párbeszédpanel](./media/slack-provisioning-tutorial/Slack3.PNG)
+    ![Engedélyezési párbeszédpanel](./media/slack-provisioning-tutorial/slackauthorize.png)
 
 7. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen csatlakozni a Slack-alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Slack-fiókja rendelkezik rendszergazdai jogosultságokkal, majd próbálja megismételni az "engedélyezés" lépést.
 
@@ -82,7 +82,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Slack felhasználói fiók létesít
 
 10. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a slackhez**lehetőséget.
 
-11. Az **attribútum-hozzárendelések** szakaszban tekintse át azokat a felhasználói attribútumokat, amelyeket szinkronizálni fog az Azure ad-ből a slackbe. Vegye figyelembe, hogy a **megfeleltetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez a Slack felhasználói fiókjainak megfelelően lesznek felhasználva. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+11. Az **attribútum-hozzárendelések** szakaszban tekintse át azokat a felhasználói attribútumokat, amelyeket szinkronizálni fog az Azure ad-ből a slackbe. Vegye figyelembe, hogy a **megfeleltetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez a Slack felhasználói fiókjainak megfelelően lesznek felhasználva. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
 
 12. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a Slack számára, módosítsa a **kiépítési állapotot** a következőre a **Beállítások** **szakaszban:**
 

@@ -1,32 +1,27 @@
 ---
 title: Felügyelt hitelesítés az Androidban | Azure
+titlesuffix: Microsoft identity platform
 description: A felügyelt hitelesítés & a Microsoft Identity platform Android rendszerre való hitelesítésének áttekintése
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
-ms.reviewer: shoatman
+ms.reviewer: shoatman, hahamil, brianmel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a535cbefc3520cbf0c0fc14fbcfd0dd9ebd92ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f5204ad71efa2587341600d2c5c1e5195d15445e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175659"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843716"
 ---
-# <a name="brokered-auth-in-android"></a>Felügyelt hitelesítés az Androidban
-
-## <a name="introduction"></a>Introduction (Bevezetés)
+# <a name="brokered-authentication-in-android"></a>Felügyelt hitelesítés az Androidban
 
 A Microsoft hitelesítési közvetítői közül az egyiket kell használnia az eszközre érvényes egyszeri bejelentkezéshez (SSO) való részvételhez és a szervezeti feltételes hozzáférési szabályzatok teljesítéséhez. A közvetítővel való integráció a következő előnyöket nyújtja:
 
@@ -52,9 +47,9 @@ Az alábbi ábra az alkalmazás, a Microsoft Authentication Library (MSAL) és a
 
 A brókerek által üzemeltetett alkalmazások az alkalmazás-áruházból (jellemzően Google Play Áruház) telepíthetők az eszköz tulajdonosával. Egyes API-k (erőforrások) azonban olyan feltételes hozzáférési szabályzatok által védettek, amelyekhez az eszközök szükségesek:
 
-- regisztrálva (munkahelyhez csatlakoztatva) és/vagy
-- regisztrálva van az Eszközkezelőben vagy
-- regisztrálva van Intune App Protection
+- Regisztrálva (munkahelyhez csatlakoztatva) és/vagy
+- Regisztrálva van az Eszközkezelőben vagy
+- Regisztrálva van Intune App Protection
 
 Ha egy eszközön még nincs telepítve Broker-alkalmazás, a MSAL arra utasítja a felhasználót, hogy telepítsen egyet, amint az alkalmazás egy jogkivonat interaktív lekérdezését kísérli meg. Ezután az alkalmazásnak el kell végeznie a felhasználónak a lépéseket, hogy az eszköz megfeleljen a szükséges házirendnek.
 

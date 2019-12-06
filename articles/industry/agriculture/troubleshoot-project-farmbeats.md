@@ -1,293 +1,302 @@
 ---
-title: Hibakeresés
-description: Az Azure FarmBeats hibáinak megoldása.
+title: Az Azure FarmBeats hibáinak megoldása
+description: Ez a cikk az Azure-FarmBeats hibaelhárítását ismerteti.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 22c304b26eddaee4444f6eb12957e2a6fedf7810
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0a4fb337adfb2f4e6b8edb86ac620103e929c3a8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793282"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842135"
 ---
-# <a name="troubleshooting"></a>Hibakeresés
+# <a name="troubleshoot-azure-farmbeats"></a>Az Azure FarmBeats hibáinak megoldása
 
-A következő szakaszok ismertetik az Azure FarmBeats kapcsolatos gyakori problémákat és azok javításának módját.
+Ez a cikk az Azure FarmBeats kapcsolatos gyakori problémák megoldásait ismerteti.
 
-További segítségért írjon nekünk a következő címen: farmbeatssupport@microsoft.com, a telepítő. log fájl belefoglalása az e-mailben.
+További segítségért lépjen kapcsolatba velünk a következő címen: farmbeatssupport@microsoft.com. Ügyeljen arra, hogy tartalmazza az *üzembe helyező. log* fájlt az e-mailben.
 
- A következő lépésekkel töltheti le az Deploy. log fájlt:
+A *telepítő. log* fájl letöltéséhez tegye a következőket:
 
-1. A Kiemelt ikon, és válassza a **Letöltés** lehetőséget a legördülő menüből.
+1. Válassza ki a Kiemelt ikont, majd a legördülő listából válassza a **Letöltés**lehetőséget.
 
-    ![A Project Farm veri](./media/troubleshooting-farmbeats/download-deployer-log-1.png)
+    ![Projekt FarmBeats](./media/troubleshooting-farmbeats/download-deployer-log-1.png)
 
-2. A következő képernyőn adja meg a telepítő. log fájljának elérési útját. Például: farmbeats-deployer. log.
+1. A következő ablaktáblán adja meg a *telepítő. log* fájljának elérési útját. Adja meg például a **farmbeats-deployer. log naplófájlt**.
 
 ## <a name="sensor-telemetry"></a>Érzékelő telemetria
 
-### <a name="telemetry-not-seen"></a>A telemetria nem látható
+### <a name="cant-view-telemetry-data"></a>Nem lehet megtekinteni a telemetria-fájlokat
 
-**Tünet**: az eszközök/érzékelők üzembe helyezése megtörtént, és a FarmBeats csatolva van az eszköz partneréhez. de nem tudja lekérdezni vagy megtekinteni a telemetria a FarmBeats.
+**Tünet**: az eszközök vagy érzékelők üzembe helyezése megtörténik, és a FarmBeats-t csatlakoztatta az eszköz partneréhez, de nem tudja lekérni vagy megtekinteni a telemetria adatait a FarmBeats.
 
-**Javítási művelet**: látogasson el a Azure Portalra, és kövesse az alábbi lépéseket:
+**Javítási művelet**: 
 
-1. Nyissa meg a FarmBeats adatközpont-erőforráscsoportot.   
-2. Válassza az **Event hub** (DatafeedEventHubNamespace...) lehetőséget, és keresse meg a bejövő üzenetek számát.   
-3. Ha nincsenek **beérkező üzenetek**, forduljon az eszköz partneréhez.  
-4. Ha vannak **Bejövő üzenetek**, lépjen kapcsolatba farmbeatssupport@microsoft.com adatközponttal és gyorssegéd-naplókkal, valamint rögzített telemetria.
+1. Lépjen a FarmBeats Datahub-erőforráscsoporthoz.   
+1. Válassza ki az **Event hub** (DatafeedEventHubNamespace) elemet, majd keresse meg a bejövő üzenetek számát.
+1. A következő lehetőségek közül választhat:   
+   * Ha nincsenek *beérkező üzenetek*, forduljon az eszköz partneréhez.  
+   * Ha vannak *Bejövő üzenetek*, forduljon a farmbeatssupport@microsoft.comhoz. Csatolja a Datahub és a Gyorssegéd-naplókat és a rögzített telemetria.
 
-A naplók letöltésének megismeréséhez tekintse meg a dokumentum [naplók szakaszát](#collect-logs-manually) .  
+A naplók letöltésének megismeréséhez lépjen a ["naplók manuális gyűjtése"](#collect-logs-manually) szakaszra.  
 
-### <a name="dont-have-the-eventhub-connection-string"></a>Nem rendelkezik a Eventhub-kapcsolatok karakterláncával
+### <a name="dont-have-the-azure-event-hubs-connection-string"></a>Nem rendelkezik az Azure Event Hubs-beli kapcsolatok karakterláncával
 
-**Javítási művelet**: látogasson el a Datahub hencegő oldalra, és kövesse az alábbi lépéseket:
-1. Navigáljon a partner API-hoz
-2. Kattintson a GET-> kipróbálás – > végrehajtás lehetőségre
-3. Jegyezze fel annak az érzékelő-partnernek a Partner-azonosítóját, amelyre kíváncsi
-4. Lépjen vissza a partner API-ra, és kattintson a GET/{ID} elemre.
-5. Határozza meg a 3. lépésben szereplő azonosítót, és kattintson a végrehajtás gombra.
-6. Az API-válasznak tartalmaznia kell a EventHub-kapcsolatok sztringjét.
+**Javítási művelet**: 
+
+1. A Datahub hencegés területen lépjen a partner API-ra.
+1. Válassza a **Beolvasás** > **kipróbálás** > **végrehajtás**lehetőséget.
+1. Jegyezze fel annak az érzékelő-partnernek a partner-AZONOSÍTÓját, amelyre kíváncsi.
+1. Lépjen vissza a partner API-hoz, és válassza a **Get/\<ID >** lehetőséget.
+1. Adja meg a partner AZONOSÍTÓját a 3. lépésben, majd válassza a **végrehajtás**lehetőséget.
+   
+   Az API-válasznak tartalmaznia kell a Event Hubs-kapcsolatok karakterláncát.
 
 ### <a name="device-appears-offline"></a>Az eszköz offline állapotban jelenik meg
 
-**Tünetek**: az eszközök telepítve vannak, és az FarmBeats társítva van. Az eszközök online állapotba kerülnek, és telemetria adatokat küldenek, de offline állapotban jelennek meg.
+**Tünetek**: az eszközök telepítve vannak, és a FarmBeats az eszköz partneréhez csatolták. Az eszközök online állapotba kerülnek, és telemetria adatokat küldenek, de offline állapotban jelennek meg.
 
-**Javító művelet**: a jelentési időköz nincs konfigurálva ehhez az eszközhöz. A jelentéskészítési időköz beállításához forduljon az eszköz gyártójához. 
+**Javító művelet**: a jelentési időköz nincs konfigurálva ehhez az eszközhöz. A jelentéskészítési időköz beállításához forduljon az eszköz gyártójához. 
 
-### <a name="error-deleting-a-resource"></a>Hiba történt az erőforrás törlésekor
+### <a name="error-deleting-a-device"></a>Hiba történt az eszköz törlésekor
 
-Az alábbi gyakori hibák fordulnak elő egy eszköz törlésekor:  
+Egy eszköz törlésekor a következő gyakori hibák valamelyike merülhet fel:  
 
-**Üzenet**: az eszköz az érzékelőkre hivatkozik: egy vagy több érzékelő van társítva az eszközhöz. Törölje az érzékelőket, majd törölje az eszközt.  
+**Üzenet**: "az eszköz az érzékelőkre van hivatkozva: egy vagy több érzékelő van társítva az eszközhöz. Törölje az érzékelőket, majd törölje az eszközt. "  
 
-**Jelentés**: az eszköz a farmban üzembe helyezett több érzékelőhöz van társítva.   
+**Jelentés**: az eszköz több, a farmban üzembe helyezett érzékelőhöz van társítva.   
 
 **Javítási művelet**:  
 
-1. Törölje az eszközhöz társított érzékelőket a gyorssegéden keresztül.  
-2. Ha az érzékelőket egy másik eszközhöz szeretné hozzárendelni, kérje meg az eszköz partnerét, hogy tegye ugyanezt.  
-3. Törölje az eszközt a DELETE API-hívással, ha a Force paraméter értéke "true".  
+1. Törölje az eszközhöz a Gyorssegéden keresztül társított érzékelőket.  
+1. Ha a szenzorokat egy másik eszközhöz szeretné hozzárendelni, kérje meg az eszköz partnerét, hogy tegye ugyanezt.  
+1. Törölje az eszközt egy `DELETE API` hívással, és állítsa *igaz*értékre a Force paramétert.  
 
-**Üzenet**: az eszköz az eszközökön ParentDeviceId van hivatkozva: egy vagy több eszköz van társítva az eszközhöz alárendelt eszközként. Törölje, majd törölje az eszközt.  
+**Üzenet**: "az eszköz az eszközökön ParentDeviceId van hivatkozva: egy vagy több eszköz van társítva az eszközhöz alárendelt eszközként. Törölje, majd törölje az eszközt. "  
 
-**Jelentés**: az eszközön más eszközök is vannak társítva  
+**Jelentés**: az eszközhöz más eszközök tartoznak.  
 
 **Javító művelet**
 
-1. Az adott eszközhöz társított eszközök törlése  
-2. Az adott eszköz törlése  
+1. Törölje az adott eszközhöz társított eszközöket.  
+1. Törölje az adott eszközt.  
 
     > [!NOTE]
-    > Az eszköz nem törölhető, ha az érzékelők társítva vannak hozzá. A társított érzékelők törlésével kapcsolatos további információkért lásd: [érzékelők törlése](get-sensor-data-from-sensor-partner.md) az érzékelő adatainak beolvasása című fejezetben.
+    > Az eszköz nem törölhető, ha az érzékelők társítva vannak hozzá. A kapcsolódó érzékelők törlésével kapcsolatos további információkért tekintse meg az érzékelők [adatainak beolvasása az érzékelő partnereinktől](get-sensor-data-from-sensor-partner.md)című témakör "az érzékelő törlése" című szakaszát.
 
 
 ## <a name="issues-with-jobs"></a>Problémák a feladatokkal
 
 ### <a name="farmbeats-internal-error"></a>FarmBeats belső hiba
 
-**Üzenet**: FarmBeats belső hiba, további részletekért tekintse meg a hibaelhárítási útmutatót.
+**Üzenet**: "FarmBeats belső hiba", további részletekért lásd a hibaelhárítási útmutatót. "
 
-**Javító művelet**: Ennek oka az lehet, hogy az adatfolyamatban ideiglenes Hiba történt. Hozza létre újra a feladatot. Ha a hiba továbbra is fennáll, vegye fel a hibát a FarmBeats fórumba, vagy forduljon a FarmBeatsSupport@microsoft.comhoz.
+**Javító művelet**: Ez a probléma az adatfolyamatok ideiglenes meghibásodása miatt lehet. Hozza létre újra a feladatot. Ha a hiba továbbra is fennáll, vegye fel a hibaüzenetet a FarmBeats fórumon, vagy forduljon a FarmBeatsSupport@microsoft.comhoz.
 
 ## <a name="accelerator-troubleshooting"></a>Gyorssegéd hibaelhárítása
 
-### <a name="access-control"></a>Access Control
+### <a name="access-control"></a>Hozzáférés-vezérlés
 
-**Hiba történt a szerepkör-hozzárendelés hozzáadásakor**
+**Probléma**: a szerepkör-hozzárendelés hozzáadásakor hibaüzenetet kap.
 
-**Üzenet**: nem található egyező felhasználó
+**Üzenet**: "nem található egyező felhasználó."
 
-**Javítási művelet**: keresse meg azt az e-mail-azonosítót, amelyhez szerepkör-hozzárendelést szeretne végezni. Az e-mail-AZONOSÍTÓnak pontosan egyeznie kell az adott felhasználó számára a Active Directoryban regisztráltal. Ha a hiba továbbra is fennáll, vegye fel a hibát a FarmBeats fórumban, vagy forduljon FarmBeatsSupport@microsoft.com
+**Javítási művelet**: keresse meg azt az e-mail-azonosítót, amelyhez szerepkör-hozzárendelést próbál hozzáadni. Az e-mail-AZONOSÍTÓnak pontosan egyeznie kell az adott felhasználó számára a Active Directoryban regisztrált AZONOSÍTÓval. Ha a hiba továbbra is fennáll, vegye fel a hibaüzenetet a FarmBeats fórumon, vagy forduljon a FarmBeatsSupport@microsoft.comhoz.
 
 ### <a name="unable-to-log-in-to-accelerator"></a>Nem lehet bejelentkezni a Gyorssegédbe
 
-**Üzenet**: hiba: Ön nem jogosult a szolgáltatás meghívására. Az engedélyezéshez forduljon a rendszergazdához.
+**Üzenet**: "hiba: Ön nem jogosult a szolgáltatás meghívására. Az engedélyezéshez forduljon a rendszergazdához. "
 
-**Javítási művelet**: kérje meg a rendszergazdát, hogy engedélyezze a FarmBeats-telepítés elérését. Ezt a RoleAssignment API-k, illetve a Gyorssegéd beállítások paneljének Access Control segítségével végezheti el.  
+**Javítási művelet**: kérje meg a rendszergazdát, hogy engedélyezze a FarmBeats-telepítés elérését. Ezt a RoleAssignment API-k KÖZZÉTÉTELével vagy a Gyorssegéd **Beállítások** paneljének Access Control keresztül végezheti el.  
 
-Ha már felvette a hibát, és megtekinti ezt a hibát, próbálkozzon újra az oldal frissítésével.  Ha a hiba továbbra is fennáll, vegye fel a hibát a FarmBeats fórumba, vagy forduljon a FarmBeatsSupport@microsoft.comhoz.
+Ha már engedélyezte a hozzáférést, és megtekinti a hibát, próbálkozzon újra az oldal frissítésével. Ha a hiba továbbra is fennáll, vegye fel a hibaüzenetet a FarmBeats fórumon, vagy forduljon a FarmBeatsSupport@microsoft.comhoz.
 
-![A Project Farm veri](./media/troubleshooting-farmbeats/accelerator-troubleshooting-1.png)
+![Projekt FarmBeats](./media/troubleshooting-farmbeats/accelerator-troubleshooting-1.png)
 
-### <a name="accelerator---an-unknown-error-occurred"></a>Gyorssegéd – ismeretlen hiba történt  
+### <a name="accelerator-issues"></a>Gyorsító problémák  
 
-**Üzenet**: hiba: ismeretlen hiba történt.
+**Probléma**: hiba történt a meghatározatlan ok miatt.
 
-**Javító művelet**: Ez akkor fordul elő, ha a lapot túl sokáig hagyja tétlenül. Frissítse az oldalt.  
+**Üzenet**: "hiba: ismeretlen hiba történt."
 
-Ha a hiba továbbra is fennáll, vegye fel a hibát a FarmBeats fórumban, vagy lépjen kapcsolatba FarmBeatsSupport@microsoft.com
+**Javító művelet**: Ez a hiba akkor fordul elő, ha a lapot túl sokáig hagyja tétlenül. Frissítse az oldalt.  
 
-**A FarmBeats-gyorsító nem jeleníti meg a legújabb verziót még a FarmBeatsDeployment frissítése után is**
+Ha a hiba továbbra is fennáll, vegye fel a hibaüzenetet a FarmBeats fórumon, vagy forduljon a FarmBeatsSupport@microsoft.comhoz.
 
-**Javító művelet**: Ez a szolgáltatás munkavégző általi megőrzésének a böngészőben való megőrzése miatt történik.
-Zárjunk be minden olyan böngésző fület, amelynél a Gyorssegéd meg van nyitva, és zárjuk be a böngészőablakot. Indítsa el a böngésző új példányát, és töltse be újra a Gyorssegéd URI-JÁT. Ekkor a rendszer betölti a Gyorssegéd új verzióját.
+**Probléma**: a FarmBeats-gyorsító nem jeleníti meg a legújabb verziót még a FarmBeatsDeployment frissítése után sem.
 
-## <a name="sentinel-imagery-related-issues"></a>Sentinel-képekkel kapcsolatos problémák
+**Javító művelet**: Ez a hiba a szolgáltatás munkavégző általi megőrzésének a böngészőben való megőrzése miatt fordul elő. Tegye a következőket:
+1. Zárjunk be minden olyan böngésző fület, amelyen a Gyorssegéd meg van nyitva, és zárjuk be a böngészőablakot. 
+1. Indítsa el a böngésző új példányát, és töltse be újra a Gyorssegéd URI-JÁT. Ez a művelet betölti a Gyorssegéd új verzióját.
 
-### <a name="sentinel-wrong-username-or-password"></a>Sentinel rossz Felhasználónév vagy jelszó
+## <a name="sentinel-imagery-related-issues"></a>Sentinel: rendszerképekkel kapcsolatos problémák
 
-**Sikertelen feladatok üzenete**; Az erőforrás eléréséhez teljes hitelesítés szükséges.
+### <a name="wrong-username-or-password"></a>Helytelen Felhasználónév vagy jelszó
 
-**Javítási művelet**: futtassa újra a telepítőt az adatközpont megfelelő felhasználónévvel és jelszóval való frissítéséhez.
+**Sikertelen feladatok üzenete**: "a teljes hitelesítés szükséges az erőforrás eléréséhez."
 
-**Javítási művelet**: futtassa újra a sikertelen feladatot, vagy futtasson egy Satellite Indexes feladatot a 5-7 napos dátumtartomány esetében, és ellenőrizze, hogy a feladatok sikeresek-e.
+**Javítási művelet**: 
 
-### <a name="sentinel-hub-wrong-url-or-not-accessible"></a>Sentinel hub helytelen URL-cím vagy nem érhető el 
+Folytassa a következők egyikével:
+* Futtassa újra a telepítőt a Datahub frissítéséhez a megfelelő felhasználónévvel és jelszóval.
+* Futtassa újra a sikertelen feladatot, vagy futtassa a Satellite indexek feladatot egy 5 – 7 napos dátumtartomány esetében, majd ellenőrizze, hogy a művelet sikeres-e.
 
-**Sikertelen feladatok üzenete**: Hoppá, hiba történt. Az elérni próbált lap (átmenetileg) nem érhető el. 
+### <a name="sentinel-hub-wrongurlor-site-not-accessible"></a>Sentinel hub: helytelen URL vagy hely nem érhető el 
 
-**Javítási művelet**:
-1.  Nyissa meg a Sentinel URL-címét (https://scihub.copernicus.eu/dhus/) a böngészőben, és ellenőrizze, hogy a webhely elérhető-e. 
-2.  Ha a webhely nem érhető el, ellenőrizze, hogy a tűzfal vagy a vállalati hálózat stb. blokkolja-e a webhelyet, és hajtsa végre a fenti URL-cím engedélyezéséhez szükséges lépéseket. 
-3.  Futtassa újra a sikertelen feladatot, vagy futtasson egy Satellite Indexes feladatot a 5-7 napos dátumtartomány esetében, és ellenőrizze, hogy a feladatok sikeresek-e.  
-
-### <a name="sentinel-server-down-for-maintenance"></a>Sentinel-kiszolgáló leállása karbantartáshoz
-
-**Sikertelen feladatok üzenete**: a Kopernikusz Open Access hub hamarosan vissza fog térni! Sajnos a kellemetlenségért elnézést végzünk. Hamarosan ismét online fogunk! 
+**Sikertelen feladatok üzenete**: "Hoppá, hiba történt. Az elérni próbált lap (átmenetileg) nem érhető el. " 
 
 **Javítási művelet**:
+1. Nyissa meg a [Sentinel](https://scihub.copernicus.eu/dhus/) alkalmazást a böngészőben, és ellenőrizze, hogy a webhely elérhető-e. 
+1. Ha a webhely nem érhető el, ellenőrizze, hogy a tűzfal, a vállalati hálózat vagy más blokkoló szoftver megakadályozza-e a hozzáférést a webhelyhez, majd hajtsa végre a szükséges lépéseket a Sentinel URL-címének engedélyezéséhez. 
+1. Futtassa újra a sikertelen feladatot, vagy futtassa a Satellite indexek feladatot egy 5 – 7 napos dátumtartomány esetében, majd ellenőrizze, hogy a művelet sikeres-e.  
 
-1.  Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karbantartási tevékenység történik. 
-2.  Ha egy adott feladatnak vagy folyamatnak a fenti ok miatt meghiúsul, egy kis idő elteltével küldje el újra a feladatot. 
-3.  A felhasználó meglátogathatja https://scihub.copernicus.eu/news/ a tervezett/nem tervezett Sentinel karbantartási tevékenységekkel kapcsolatos információk megtekintéséhez.  
-4.  Futtassa újra a sikertelen feladatot, vagy futtasson egy Satellite Indexes feladatot a 5-7 napos dátumtartomány esetében, és ellenőrizze, hogy a feladatok sikeresek-e.
+### <a name="sentinel-server-down-for-maintenance"></a>Sentinel-kiszolgáló: le karbantartásra
 
-### <a name="sentinel-maximum-number-of-connections-reached"></a>A Sentinel elérte a kapcsolatok maximális számát
+**Sikertelen feladatok üzenete**: "a Kopernikusz Open Access hub hamarosan vissza fog térni! Sajnos a kellemetlenségért elnézést végzünk. Hamarosan ismét elérhető lesz! " 
 
-**Sikertelen feladatok üzenete**: a "<username>" felhasználó által elért két egyidejű folyamat maximális száma 
+**Javítási művelet**:
 
-**Javító művelet**
-1.  Ha bármelyik feladatot a fenti ok miatt nem sikerül végrehajtani, ugyanazt a Sentinel-fiókot használja egy másik telepítésben/szoftverben. 
-2.  A felhasználó létrehozhat új Sentinel-fiókot, és újból futtathatja a telepítőt az adatközpont új Sentinel-felhasználónévvel és jelszóval való frissítéséhez.  
-3.  Futtassa újra a sikertelen feladatot, vagy futtasson egy Satellite Indexes feladatot a 5-7 napos dátumtartomány esetében, és ellenőrizze, hogy a feladatok sikeresek-e.
+Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karbantartási tevékenység történik.
 
-### <a name="sentinel-server-refused-connection"></a>A Sentinel-kiszolgáló elutasította a kapcsolatokat 
+1. Ha bármilyen feladatra vagy folyamatra nem kerül sor, mert a karbantartás folyamatban van, egy kis idő elteltével küldje el újra a feladatot. 
 
-**Sikertelen feladatok üzenete**:
+   A tervezett vagy nem tervezett Sentinel karbantartási tevékenységekkel kapcsolatos információkért lépjen a [Kopernikusz Open Access hub Hírek](https://scihub.copernicus.eu/news/) webhelyére.  
+1. Futtassa újra a sikertelen feladatot, vagy futtassa a Satellite indexek feladatot egy 5 – 7 napos dátumtartomány esetében, majd ellenőrizze, hogy a művelet sikeres-e.
 
-A kiszolgáló visszautasította a következő helyen lévő kapcsolatokat: http://172.30.175.69:8983/solr/dhus 
+### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: elérte a kapcsolatok maximális számát
 
-**Javító művelet**: Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karbantartási tevékenység történik. 
-1.  Ha egy adott feladatnak vagy folyamatnak a fenti ok miatt meghiúsul, egy kis idő elteltével küldje el újra a feladatot. 
-2.  A felhasználó meglátogathatja https://scihub.copernicus.eu/news/ a tervezett/nem tervezett Sentinel karbantartási tevékenységekkel kapcsolatos információk megtekintéséhez.  
-3.  Futtassa újra a sikertelen feladatot, vagy futtasson egy Satellite Indexes feladatot a 5-7 napos dátumtartomány esetében, és ellenőrizze, hogy a feladatok sikeresek-e.
+**Sikertelen feladatok üzenete**: "a (z)"\<username > "felhasználó által elért két egyidejű folyamat maximális száma.
 
+**Jelentés**: Ha egy feladatot nem sikerül elérni, mert elérte a kapcsolatok maximális számát, akkor ugyanazt a Sentinel-fiókot használja egy másik szoftver központi telepítésében.
+
+**Javítási művelet**: próbálkozzon a következők valamelyikével:
+* Hozzon létre egy új Sentinel-fiókot, majd futtassa újra a telepítőt a Datahub frissítéséhez egy új Sentinel-Felhasználónév és-jelszó használatával.  
+* Futtassa újra a sikertelen feladatot, vagy futtasson egy 5 és 7 nap közötti dátumtartományt egy Satellite Indexes feladatot, majd ellenőrizze, hogy a művelet sikeres volt-e.
+
+### <a name="sentinel-server-refused-connection"></a>Sentinel-kiszolgáló: visszautasított kapcsolatok 
+
+**Sikertelen feladatok üzenete**: "a kiszolgáló visszautasította a következőt: http://172.30.175.69:8983/solr/dhus." 
+
+**Javító művelet**: Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karbantartási tevékenység történik. 
+1. Ha bármilyen feladatra vagy folyamatra nem kerül sor, mert a karbantartás folyamatban van, egy kis idő elteltével küldje el újra a feladatot. 
+
+   A tervezett vagy nem tervezett Sentinel karbantartási tevékenységekkel kapcsolatos információkért lépjen a [Kopernikusz Open Access hub Hírek](https://scihub.copernicus.eu/news/) webhelyére.  
+1. Futtassa újra a sikertelen feladatot, vagy futtassa a Satellite indexek feladatot egy 5 – 7 napos dátumtartomány esetében, majd ellenőrizze, hogy a művelet sikeres-e.
 
 ## <a name="collect-logs-manually"></a>Naplók manuális gyűjtése
 
-Azure Storage Explorer [telepítéséhez és üzembe helyezéséhez]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) .
+[Azure Storage Explorer telepítése és üzembe helyezése]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
-### <a name="how-to-collect-data-hub-adf-job-logs"></a>Az adatközponti ADF-feladatok naplóinak összegyűjtése
-1. Bejelentkezés https://portal.azure.com
-2. A **Keresés** szövegmezőben keresse meg a FarmBeats adatközpont-erőforráscsoport kifejezést.
-
-    > [!NOTE]
-    > Válassza ki azt az adatközpont-erőforráscsoportot, amely a FarmBeats telepítésének időpontjában volt megadva.
-
-Az erőforráscsoport irányítópultján keresse meg a (datahublogs...) Storage-fiókot. Például: datahublogsmvxmq  
-
-1.  A **Storage-fiók** irányítópultjának megtekintéséhez válassza ki a Storage-fiókot a **Name (név** ) oszlopban.
-2.  A **megnyitás Azure Storage Explorer** alkalmazás megtekintéséhez a (datahubblogs...) lapon válassza a **Megnyitás az Explorerben** lehetőséget.
-3.  A bal oldali panelen (datahubblogs...), **blob-tárolók**lapon válassza a **feladatok – naplók**lehetőséget.
-4.  A **feladatok – naplók** lapon válassza a **Letöltés**lehetőséget.
-5.  Válassza ki a helyet, ahová le szeretné tölteni a naplókat a számítógép egy helyi mappájába.
-6.  Küldje el a letöltött zip-fájlt a farmbeatssupport@microsoft.com
-
-    ![A Project Farm veri](./media/troubleshooting-farmbeats/collecting-logs-manually-1.png)
-
-### <a name="how-to-collect-accelerator-adf-job-logs"></a>A gyorsító ADF-feladatok naplóinak összegyűjtése
-
-1.  Bejelentkezés https://portal.azure.com
-2.  A **Keresés** szövegmezőben keressen rá a FarmBeats-gyorsító erőforráscsoport kifejezésre.
+### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Azure Data Factory Datahub gyűjtése
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. A **keresőmezőbe** keresse meg a FarmBeats Datahub erőforráscsoportot.
 
     > [!NOTE]
-    > Válassza ki a FarmBeats-telepítés időpontjában megadott gyorssegéd-erőforráscsoportot.
+    > Válassza ki a FarmBeats telepítése során megadott Datahub erőforráscsoportot.
 
-3.  Az erőforráscsoport irányítópultján keressen a Storage... elemre. Storage-fiók. Például: storagedop4k
-4.  A Storage-fiók irányítópultjának megtekintéséhez válassza ki a Storage-fiókot a **Name (név** ) oszlopban.
-5.  A Megnyitás Azure Storage Explorer alkalmazás megtekintéséhez a (Storage...) lapon válassza a **Megnyitás az Explorerben** lehetőséget.
-6.  A bal oldali panelen < tároló...), blob- **tárolók**elemre, majd válassza a **feladatok – naplók**lehetőséget.
-7.  A **feladatok – naplók** lapon válassza a **Letöltés**lehetőséget.
-8.  Válassza ki a helyet, ahová le szeretné tölteni a naplókat a számítógép egy helyi mappájába.
-9.  Küldje el a letöltött zip-fájlt a farmbeatssupport@microsoft.com
+1. Az **erőforráscsoport** irányítópultján keressen rá a *datahublogs\** Storage-fiókra. Keressen például a **datahublogsmvxmq**kifejezésre.  
 
+1. A **Name (név** ) oszlopban válassza ki a Storage-fiókot a **Storage-fiók** irányítópultjának megtekintéséhez.
+1. Az **open Azure Storage Explorer** alkalmazás megtekintéséhez a **datahubblogs\*** ablaktáblán válassza a **Megnyitás az Explorerben** lehetőséget.
+1. A bal oldali ablaktáblán válassza a **blob-tárolók**lehetőséget, majd válassza a **feladatok naplók**lehetőséget.
+1. A **feladatok – naplók** panelen válassza a **Letöltés**lehetőséget.
+1. Töltse le a naplókat a számítógép egy helyi mappájába.
+1. Küldje el a letöltött. zip fájlt a farmbeatssupport@microsoft.com.
 
-### <a name="how-to-collect-data-hub-app-service-logs"></a>Az adatközpont app Service-naplók összegyűjtése
+    ![Projekt FarmBeats](./media/troubleshooting-farmbeats/collecting-logs-manually-1.png)
 
-1.  Bejelentkezés https://portal.azure.com
-2.  A **Keresés** szövegmezőben keresse meg a FarmBeats adatközpont-erőforráscsoport kifejezést.
+### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Azure Data Factory-feladatokhoz tartozó naplók gyűjtése a Gyorssegédben 
 
-    > [!NOTE]
-    > Válassza ki azt az adatközpont-erőforráscsoportot, amely a FarmBeats telepítésének időpontjában volt megadva.
-
-3.  Az erőforráscsoporthoz keresse meg a (datahublogs....) Storage-fiókot. Például: datahublogsmvxmq
-4.  A **Storage-fiók** irányítópultjának megtekintéséhez válassza ki a Storage-fiókot a **Name (név** ) oszlopban.
-5.  A **megnyitás Azure Storage Explorer** alkalmazás megtekintéséhez a (datahubblogs...) lapon válassza a **Megnyitás az Explorerben** lehetőséget.
-6.  A bal oldali panelen (datahubblogs...), blob- **tárolók**, majd válassza a appinsights-naplók lehetőséget.
-7.  A appinsights-naplók lapon válassza a **Letöltés**lehetőséget.
-8.  Válassza ki azt az elérési utat, amellyel le szeretné tölteni a naplókat a számítógép egy helyi mappájába.
-9.  Küldje el a letöltött mappát farmbeatssupport@microsoft.com
-
-### <a name="how-to-collect-accelerator-app-service-logs"></a>A gyorsított app Service-naplók összegyűjtése
-
-1.  Bejelentkezés https://portal.azure.com
-2.  A **Keresés**területen keressen rá a FarmBeats-gyorsító erőforráscsoport kifejezésre.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. A **keresőmezőbe** keresse meg a FarmBeats-gyorsító erőforráscsoportot.
 
     > [!NOTE]
-    > Válassza ki azt a Farmbeats-gyorsító erőforráscsoportot, amelyet a FarmBeats üzembe helyezésének időpontjában biztosít.
+    > Válassza ki a FarmBeats üzembe helyezése során megadott gyorssegéd-erőforráscsoportot.
 
-3.  Az erőforráscsoporthoz keresse meg a (Storage...) Storage-fiókot. Például: storagedop4k
-4.  A **Storage-fiók** irányítópultjának megtekintéséhez válassza ki a Storage-fiókot a **Name (név** ) oszlopban.
-5.  A **megnyitás Azure Storage Explorer** alkalmazás megtekintéséhez a (Storage...) lapon válassza a **Megnyitás az Explorerben** lehetőséget.
-6.  A bal oldali panelen (Storage...), blob- **tárolók**területen válassza a appinsights-naplók lehetőséget.
-7.  A appinsights-naplók lapon válassza a **Letöltés**lehetőséget.
-8.  Válassza ki a helyet, ahová le szeretné tölteni a naplókat a számítógép egy helyi mappájába.
-9.  Küldje el a letöltött mappát farmbeatssupport@microsoft.com
+1. Az **erőforráscsoport** irányítópultján keressen rá a *Storage\** Storage-fiókra. Keressen például a **storagedop4k\*** .
+1. A **Storage-fiók** irányítópultjának megtekintéséhez válassza ki a Storage-fiókot a **Name (név** ) oszlopban.
+1. A Azure Storage Explorer alkalmazás megnyitásához a **storage\*** ablaktáblán válassza a **Megnyitás az Explorerben** lehetőséget.
+1. A bal oldali ablaktáblán válassza a **blob-tárolók**lehetőséget, majd válassza a **feladatok naplók**lehetőséget.
+1. A **feladatok – naplók** panelen válassza a **Letöltés**lehetőséget.
+1. Töltse le a naplókat a számítógép egy helyi mappájába.
+1. Küldje el a letöltött. zip fájlt a farmbeatssupport@microsoft.com.
+
+
+### <a name="collect-datahub-app-service-logs"></a>Datahub app Service-naplók gyűjtése
+
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. A **keresőmezőbe** keresse meg a FarmBeats Datahub erőforráscsoportot.
+
+    > [!NOTE]
+    > Válassza ki a FarmBeats telepítése során megadott Datahub erőforráscsoportot.
+
+1. Az erőforráscsoport területen keressen rá a *datahublogs\** Storage-fiókra. Keressen például a **fordatahublogsmvxmq\*** .
+1. A **Storage-fiók** irányítópultjának megtekintéséhez válassza ki a Storage-fiókot a **Name (név** ) oszlopban.
+1. A **datahubblogs\*** ablaktáblán válassza a **Megnyitás az explorerben** lehetőséget a Azure Storage Explorer alkalmazás megnyitásához.
+1. A bal oldali ablaktáblán válassza a **blob-tárolók**, majd a **appinsights-naplók**elemet.
+1. A **appinsights-naplók** panelen válassza a **Letöltés**lehetőséget.
+1. Töltse le a naplókat a számítógép egy helyi mappájába.
+1. Küldje el a letöltött. zip fájlt a farmbeatssupport@microsoft.com.
+
+### <a name="collect-accelerator-app-service-logs"></a>Gyorsító app Service-naplók gyűjtése
+
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. A **keresőmezőbe** keresse meg a FarmBeats-gyorsító erőforráscsoportot.
+
+    > [!NOTE]
+    > Válassza ki azt a FarmBeats-gyorsító erőforráscsoportot, amelyet a FarmBeats telepítése során adott meg.
+
+1. Az erőforráscsoport területen keressen rá a *storage\** Storage-fiókra. Keressen például a **storagedop4k\*** .
+1. A **Storage-fiók** irányítópultjának megtekintéséhez válassza ki a Storage-fiókot a **Name (név** ) oszlopban.
+1. A Azure Storage Explorer alkalmazás megnyitásához a **storage\*** ablaktáblán válassza a **Megnyitás az Explorerben** lehetőséget.
+1. A bal oldali ablaktáblán válassza a **blob-tárolók**, majd a **appinsights-naplók**elemet.
+1. A **appinsights-naplók** panelen válassza a **Letöltés**lehetőséget.
+1. Töltse le a naplókat a számítógép egy helyi mappájába.
+1. Küldje el a letöltött mappát a farmbeatssupport@microsoft.com.
 
 ## <a name="known-issues"></a>Ismert problémák
 
 ## <a name="batch-related-issues"></a>Kötegtel kapcsolatos problémák
 
-**Hiba**: a rendszer elérte a megadott előfizetéshez tartozó Batch-fiókok tartományi fiókra vonatkozó kvótáját.
+**Hibaüzenet**: "a megadott előfizetéshez tartozó Batch-fiókok tartományi fiókokra vonatkozó kvótája el lett érve."
 
-**Javítási művelet**: növelje a kvótát, vagy törölje a nem használt batch-fiókokat, majd futtassa újra a telepítést.
+**Javítási művelet**: növelje a kvótát, vagy törölje a nem használt batch-fiókokat, és futtassa újra a telepítést.
 
-### <a name="azure-active-directory-related-issues"></a>Azure Active Directory kapcsolódó problémák
+### <a name="azure-active-directory-azure-ad-related-issues"></a>Azure Active Directory (Azure AD) – kapcsolódó problémák
 
-**Hiba**: nem sikerült frissíteni a szükséges beállításokat a Azure ad alkalmazás d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0: nincs megfelelő jogosultsága a művelet végrehajtásához. Győződjön meg arról, hogy a fenti beállítások megfelelően vannak konfigurálva a Azure AD alkalmazás.
+**Hibaüzenet**: "nem sikerült frissíteni a szükséges beállításokat Azure ad alkalmazás d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0: nincs megfelelő jogosultsága a művelet végrehajtásához. Győződjön meg arról, hogy a fenti beállítások megfelelően vannak konfigurálva a Azure AD alkalmazás számára. "
 
-**Jelentés**: az Azure ad-alkalmazás regisztrációs konfigurációja nem történt meg megfelelően.  
+**Jelentés**: az Azure ad-alkalmazás regisztrációs konfigurációja nem fejeződött be megfelelően.  
 
-**Javítási művelet**: kérdezze meg a rendszergazdát (a bérlő olvasási hozzáférésével) az Azure ad-alkalmazás regisztrációjának létrehozásához használt [parancsfájl](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) használatával. Ez a szkript automatikusan gondoskodik a konfigurációs lépésekről is.
+**Javítási művelet**: kérdezze meg a rendszergazdát (a bérlő olvasási hozzáféréssel rendelkező személyét [) az Azure](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) ad-alkalmazás regisztrációjának létrehozásához. Ez a szkript automatikusan gondoskodik a konfigurációs lépésekről is.
 
-**Hiba**: nem sikerült létrehozni a (z) "dummyname" nevű új Active Directory alkalmazást ebben a bérlőben: már létezik egy azonos értékkel rendelkező objektum az URI azonosítóhoz.
+**Hibaüzenet**: "nem sikerült új Active Directory alkalmazást létrehozni a (z)\<alkalmazás neve\>" ebben a bérlőben: már létezik egy olyan objektum, amely azonos értékű a tulajdonságértékek URI azonosítói számára. "
 
 **Jelentés**: már létezik ilyen nevű Azure ad-alkalmazás regisztrálása.
 
-**Javítási művelet**: törölje a meglévő Azure ad-alkalmazás regisztrációját, vagy használja újra a telepítéshez. Ha a meglévő Azure AD-t használja, adja át az alkalmazás AZONOSÍTÓját és az ügyfél titkos kulcsát a telepítőnek, és telepítse újra.
+**Javítási művelet**: törölje a meglévő Azure ad-alkalmazás regisztrációját, vagy használja újra a telepítést. Ha újra használja a meglévő Azure AD-regisztrációt, adja át az alkalmazás AZONOSÍTÓját és az ügyfél titkos kulcsát a telepítőnek, és telepítse újra.
 
-## <a name="inputjson-related-issues"></a>A input. JSON kapcsolatos problémái
+## <a name="issues-with-the-inputjson-file"></a>A bemeneti. JSON fájllal kapcsolatos problémák
 
-**Hiba történt** a bemeneti. JSON fájl bemenetének olvasása közben
+**Hiba**: hiba történt a bemeneti *. JSON* fájl bemenetének olvasása közben.
 
-**Javító művelet**: Ez a probléma többnyire a helytelen beviteli JSON-elérési út vagy a telepítőhöz tartozó név megadása miatt fordul elő. Végezze el a megfelelő helyesbítéseket, majd próbálkozzon újra a telepítéssel.
+**Javító művelet**: Ez a probléma általában a megfelelő *input. JSON* fájl elérési útjának vagy nevének a telepítőhöz való megadásával kapcsolatos hiba miatt fordul elő. Végezze el a megfelelő helyesbítéseket, és próbálja megismételni az újratelepítést.
 
-**Hiba történt a JSON-bevitel elemzésekor**
+**Hiba**: hiba történt a *bemeneti. JSON* fájlban lévő értékek elemzésekor.
 
-**Javító művelet**: Ez a probléma többnyire a bemeneti JSON-fájl helytelen értékei miatt fordul elő. Végezze el a megfelelő helyesbítéseket, és próbálkozzon újra a telepítéssel.
+**Javító művelet**: Ez a probléma többnyire az *input. JSON* fájl helytelen értékei miatt fordul elő. Hajtsa végre a megfelelő javítást, majd próbálja megismételni a telepítést.
 
 ## <a name="high-cpu-usage"></a>Magas processzorhasználat
 
-**Hiba**: e-mail-riasztást kap a nagy CPU-használati riasztásra vonatkozólag. 
+**Hiba**: egy e-mail-riasztást kap, amely *nagy CPU-használati riasztásra*hivatkozik. 
 
-**Javítási művelet**: 
-1.  Nyissa meg a FarmBeats adatközpont-erőforráscsoportot.
-2.  Válassza ki az App Service-t.  
-3.  Lépjen a vertikális felskálázás (App Service terv) lehetőségre, és válasszon ki egy megfelelő [árképzési szintet](https://azure.microsoft.com/pricing/details/app-service/windows/)
+**Javítási művelet**: 
+1. Lépjen a FarmBeats Datahub-erőforráscsoporthoz.
+1. Válassza ki az App Service-t.  
+1. Lépjen a vertikális felskálázás [app Service díjszabása lapra](https://azure.microsoft.com/pricing/details/app-service/windows/), és válassza ki a megfelelő árképzési szintet.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha továbbra is problémákba ütközik, lépjen kapcsolatba velünk a [támogatási fórumon](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats).
+Ha továbbra is FarmBeats problémákba ütközik, forduljon a [támogatási fórumhoz](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats).

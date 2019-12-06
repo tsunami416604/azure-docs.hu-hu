@@ -1,17 +1,17 @@
 ---
 title: Alias a Azure Cosmos DBban
-description: További információ az Azure Cosmos DB SQL-lekérdezésekben szereplő értékek aliasáról
+description: Megtudhatja, hogyan használhatja az aliasokat Azure Cosmos DB SQL-lekérdezésekben, hogy megkülönböztesse a két tulajdonságot ugyanazzal a névvel
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3b17cbc7710647b1e1875025a1db1849034ec1dc
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 74849eec4c5808a584894321269c49c41f0b8a5c
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002074"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873471"
 ---
 # <a name="aliasing-in-azure-cosmos-db"></a>Alias a Azure Cosmos DBban
 
@@ -19,7 +19,7 @@ Explicit módon alias értékeket a lekérdezésekben. Ha egy lekérdezésnek k�
 
 ## <a name="examples"></a>Példák
 
-Az aliasként használt AS kulcsszó nem kötelező, ahogy az alábbi példában is látható, amikor a második értéket `NameInfo`a következőként jeleníti meg:
+Az aliasként használt AS kulcsszó nem kötelező, ahogy az az alábbi példában is látható, amikor a második értéket `NameInfo`:
 
 ```sql
     SELECT 
@@ -29,7 +29,7 @@ Az aliasként használt AS kulcsszó nem kötelező, ahogy az alábbi példában
     WHERE f.id = "AndersenFamily"
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [{
@@ -43,8 +43,8 @@ Az eredmények a következők:
     }]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [SELECT záradék](sql-query-select.md)
-- [FROM záradékban](sql-query-from.md)
+- [FROM záradék](sql-query-from.md)

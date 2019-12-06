@@ -4,17 +4,17 @@ description: Ez a cikk a kívánt állapot-konfiguráció (DSC) hibaelhárítás
 services: automation
 ms.service: automation
 ms.subservice: ''
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ab9a39cfba082ea4c4d1cc6c29764619011d8cb8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1a45ed90b2b2c4a3a4f8eb11c4618c11e6d66761
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231552"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849360"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>A kívánt állapot konfigurációjának (DSC) hibáinak megoldása
 
@@ -59,7 +59,7 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 Ez a hiba egy ideiglenes probléma, amelynek megoldódik a megoldása.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 * A konfiguráció törléséhez használja az az parancsmag "Remove-AzAutomationDscConfiguration" parancsot.
 * A parancsmag dokumentációja még nem frissült.  Addig is tekintse meg a AzureRM modul dokumentációját.
@@ -86,7 +86,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 Ezt a hibát általában egy tűzfal okozza, a gép a proxykiszolgáló mögött vagy más hálózati hiba miatt.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 Ellenőrizze, hogy a számítógép rendelkezik-e hozzáféréssel a Azure Automation DSC megfelelő végpontokhoz, és próbálkozzon újra. A szükséges portok és címek listáját itt tekintheti meg: [Network Planning](../automation-dsc-overview.md#network-planning)
 
@@ -104,7 +104,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 Ez a hiba általában akkor fordul elő, ha a csomópontot egy konfiguráció neveként (például ABC) rendeli hozzá a csomópont-konfiguráció neve helyett (például ABC. Webkiszolgáló).
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 * Győződjön meg arról, hogy a csomópontot a "csomópont-konfiguráció neve" értékkel rendeli hozzá, nem pedig a "konfiguráció nevét".
 * Csomópont-konfigurációt Azure Portal vagy PowerShell-parancsmaggal hozzárendelhet egy csomóponthoz.
@@ -126,7 +126,7 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 Ha a DSC-konfigurációban a **Node** kulcsszót követő kifejezés kiértékeli a `$null`, akkor a rendszer nem állít elő csomópont-konfigurációt.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 A következő megoldások bármelyike elháríthatja a problémát:
 
@@ -147,7 +147,7 @@ No instance found with given property values
 
 Frissítette a WMF-verziót, és sérült a WMI.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 A probléma megoldásához kövesse a [DSC ismert problémák és korlátozások](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) című cikk utasításait.
 
@@ -165,7 +165,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 Egy konfigurációban használta a hitelesítő adatokat, de nem adott meg megfelelő **ConfigurationData** , hogy az egyes csomópont-konfigurációk esetében a **PSDscAllowPlainTextPassword** True értékre legyen állítva.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 * Győződjön meg arról, hogy a megfelelő **ConfigurationData** adja meg, hogy a konfigurációban említett minden egyes csomópont-konfiguráció esetében a **PSDscAllowPlainTextPassword** értéke igaz legyen. További információ: [eszközök Azure Automation DSC-ben](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
@@ -183,7 +183,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 Ez a hiba általában akkor fordul elő, ha a csomóponthoz olyan csomópont-konfigurációs nevet rendelnek, amely nem létezik a szolgáltatásban.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 * Győződjön meg arról, hogy a csomópontot olyan csomópont-konfiguráció nevével rendeli hozzá, amely pontosan megegyezik a szolgáltatásban szereplő névvel.
 * Dönthet úgy is, hogy nem tartalmazza a csomópont-konfiguráció nevét, amely a csomópont bevezetését eredményezi, de nem rendel hozzá csomópont-konfigurációt.
@@ -202,7 +202,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 Az ügyfelek azonosítottak, hogy ha a `/tmp` helye `noexec`ra van állítva, a DSC jelenlegi verziója nem fogja tudni alkalmazni a konfigurációkat.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 * Távolítsa el a `noexec` lehetőséget a `/tmp` helyről.
 
@@ -218,11 +218,11 @@ Például, ha egyetlen konfigurációs szkriptet használ a konfigurációk lét
 
 A fordítási szolgáltatással kapcsolatos ismert probléma.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 A legjobb megoldás a helyi vagy CI/CD-folyamat fordítása, és a MOF-fájlok feltöltése közvetlenül a szolgáltatásba.  Ha a szolgáltatás fordítása követelmény, a következő legjobb megoldás a fordítási feladatok felosztása, így nincs átfedés a nevek között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

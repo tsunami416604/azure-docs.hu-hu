@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 61deb5361c9857956318f8b9b4ca836fcfa65d48
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: e11f560c2b101d86d41feb3f6c93cffe7c1a748d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798127"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851451"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Talaj nedvesség-hő előállítása
 
@@ -22,9 +22,9 @@ Ez a cikk azt ismerteti, hogyan hozható létre a talaj nedvességtartalmának h
 - [Érzékelők kiosztása farmokhoz](#get-soil-moisture-sensor-data-from-partner)
 - [Talaj nedvesség-hő előállítása](#generate-soil-moisture-heatmap)
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
-Ügyeljen a következőkre:  
+Ellenőrizze a következőket:  
 
 - Azure-előfizetés.
 - Az Azure FarmBeats futó példánya.
@@ -85,12 +85,12 @@ Ehhez a következő lépések szükségesek:
 
 1. A **feladatok** lapon tekintse meg az utolsó eljárás során létrehozott feladat **állapotát** .
 2. Ha a feladatok állapota *sikeres*, kattintson a menü **térképek** elemére.
-3. Keresse meg a térképet a < moisture_MyFarm_YYYY-hh-nn > formátumban való létrehozásuk napján.
+3. Keresse meg a térképen a következő formátumban: < talaj-moisture_MyFarm_YYYY-hh-nn >.
 4. Válasszon ki egy térképet a **Name (név** ) oszlopban, megjelenik egy előugró ablak, amely a kiválasztott Térkép előnézetét jeleníti meg.
 5. Válassza a **Download** (Letöltés) lehetőséget. A Térkép le van töltve, és a számítógép helyi mappájába lesz tárolva.
 
     ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy sikeresen létrehozta a talaj nedvességtartalmának hő, megtudhatja, hogyan [hozhatja létre az érzékelő elhelyezését](generate-maps.md#sensor-placement-maps) és hogyan végezheti el a [korábbi telemetria-információkat](ingest-historical-telemetry-data.md) 
+Most, hogy sikeresen létrehozta a talaj nedvességtartalmának hő, megtudhatja, hogyan [hozhatja létre az érzékelő elhelyezését](generate-maps.md#sensor-placement-map) és hogyan végezheti el a [korábbi telemetria-információkat](ingest-historical-telemetry-data.md) 

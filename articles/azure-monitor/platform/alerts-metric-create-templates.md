@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 9/27/2018
+ms.date: 12/5/2019
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 0d3cbe8c3d2d7931e3e4cc052eedc844a296ccf0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 496e8673e1cbf31f4c71db00b7eaf1c0618e509f
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775764"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872944"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -794,11 +794,11 @@ A következő sablon használatával statikus metrikai riasztási szabályt hozh
 
 Egyetlen riasztási szabály egyszerre több metrikai idősorozat figyelésére is képes, így kevesebb riasztási szabályt kell kezelni.
 
-Az alábbi példában a riasztási szabály a **ResponseType** és a **ApiName** dimenziók dimenzió értékeit fogja figyelni a **tranzakciós** metrika esetében:
+Az alábbi példában a riasztási szabály a **ResponseType** és a **ApiName** dimenzió értékeit figyeli a **tranzakciók** metrikája esetében:
 1. **ResponsType** – a "\*" helyettesítő karakter azt jelenti, hogy a **ResponseType** dimenzió minden értékéhez, beleértve a jövőbeli értékeket is, egy másik idősorozatot külön kell figyelni.
 2. **ApiName** – a rendszer csak a **GetBlob** és a **PutBlob** dimenzió értékeit figyeli.
 
-Például a riasztási szabály által figyelt néhány lehetséges idősorozat:
+Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
 - Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *GetBlob*
 - Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *PutBlob*
 - Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *GetBlob*
@@ -1014,11 +1014,11 @@ A következő sablonnal létrehozhat egy fejlettebb dinamikus küszöbértékek 
 
 Egyetlen dinamikus küszöbértékek riasztási szabálya képes egyéni küszöbértékeket létrehozni több száz metrikus idősorozathoz (akár különböző típusokhoz is), így kevesebb riasztási szabályt kell kezelni.
 
-Az alábbi példában a riasztási szabály a **ResponseType** és a **ApiName** dimenziók dimenzió értékeit fogja figyelni a **tranzakciós** metrika esetében:
-1. **ResponsType** – a **ResponseType** dimenzió minden értékéhez, beleértve a jövőbeli értékeket is, egy másik idősorozatot külön kell figyelni.
+Az alábbi példában a riasztási szabály a **ResponseType** és a **ApiName** dimenzió értékeit figyeli a **tranzakciók** metrikája esetében:
+1. **ResponsType** – a **ResponseType** dimenzió minden értékéhez, beleértve a jövőbeli értékeket, egy másik idősorozatot külön kell figyelni.
 2. **ApiName** – a rendszer csak a **GetBlob** és a **PutBlob** dimenzió értékeit figyeli.
 
-Például a riasztási szabály által figyelt néhány lehetséges idősorozat:
+Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
 - Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *GetBlob*
 - Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *PutBlob*
 - Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *GetBlob*
@@ -1230,6 +1230,270 @@ az group deployment create \
 >[!NOTE]
 >
 > A dinamikus küszöbértékeket használó metrikus riasztási szabályok esetében jelenleg nem támogatott több feltétel.
+
+
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>Egyéni metrikát figyelő statikus küszöbértékű metrikai riasztás sablonja
+
+Az alábbi sablonnal speciális statikus küszöbértéket tartalmazó metrikai szabályt hozhat létre egyéni metrika esetén.
+
+Ha többet szeretne megtudni az Azure Monitor lévő egyéni metrikákkal kapcsolatban, tekintse meg [a Azure monitor egyéni metrikáit](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
+
+Ha egyéni metrika esetén riasztási szabályt hoz létre, meg kell adnia a metrika nevét és a metrikai névteret is.
+
+Mentse az alábbi JSON-t customstaticmetricalert. JSON néven az útmutató céljára.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Name of the alert"
+            }
+        },
+        "alertDescription": {
+            "type": "string",
+            "defaultValue": "This is a metric alert",
+            "metadata": {
+                "description": "Description of alert"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "defaultValue": 3,
+            "allowedValues": [
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "metadata": {
+                "description": "Severity of alert {0,1,2,3,4}"
+            }
+        },
+        "isEnabled": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "resourceId": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+            }
+        },
+        "metricName": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Name of the metric used in the comparison to activate the alert."
+            }
+        },
+        "metricNamespace": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Namespace of the metric used in the comparison to activate the alert."
+            }
+        },
+        "operator": {
+            "type": "string",
+            "defaultValue": "GreaterThan",
+            "allowedValues": [
+                "Equals",
+                "NotEquals",
+                "GreaterThan",
+                "GreaterThanOrEqual",
+                "LessThan",
+                "LessThanOrEqual"
+            ],
+            "metadata": {
+                "description": "Operator comparing the current value with the threshold value."
+            }
+        },
+        "threshold": {
+            "type": "string",
+            "defaultValue": "0",
+            "metadata": {
+                "description": "The threshold value at which the alert is activated."
+            }
+        },
+        "timeAggregation": {
+            "type": "string",
+            "defaultValue": "Average",
+            "allowedValues": [
+                "Average",
+                "Minimum",
+                "Maximum",
+                "Total",
+                "Count"
+            ],
+            "metadata": {
+                "description": "How the data that is collected should be combined over time."
+            }
+        },
+        "windowSize": {
+            "type": "string",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
+            "metadata": {
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
+            }
+        },
+        "evaluationFrequency": {
+            "type": "string",
+            "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
+            "metadata": {
+                "description": "How often the metric alert is evaluated represented in ISO 8601 duration format"
+            }
+        },
+        "actionGroupId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The ID of the action group that is triggered when the alert is activated or deactivated"
+            }
+        }
+    },
+    "variables": {  },
+    "resources": [
+        {
+            "name": "[parameters('alertName')]",
+            "type": "Microsoft.Insights/metricAlerts",
+            "location": "global",
+            "apiVersion": "2018-03-01",
+            "tags": {},
+            "properties": {
+                "description": "[parameters('alertDescription')]",
+                "severity": "[parameters('alertSeverity')]",
+                "enabled": "[parameters('isEnabled')]",
+                "scopes": ["[parameters('resourceId')]"],
+                "evaluationFrequency":"[parameters('evaluationFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+                    "allOf": [
+                        {
+                            "name" : "1st criterion",
+                            "metricName": "[parameters('metricName')]",
+                            "metricNamespace": "[parameters('metricNamespace')]",
+                            "dimensions":[],
+                            "operator": "[parameters('operator')]",
+                            "threshold" : "[parameters('threshold')]",
+                            "timeAggregation": "[parameters('timeAggregation')]"
+                        }
+                    ]
+                },
+                "actions": [
+                    {
+                        "actionGroupId": "[parameters('actionGroupId')]"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+A fenti sablonnal együtt használhatja az alább megadott paramétert. 
+
+Mentse és módosítsa az alábbi JSON-t customstaticmetricalert. Parameters. JSON néven az útmutató céljára.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "value": "New alert rule on a custom metric"
+        },
+        "alertDescription": {
+            "value": "New alert rule on a custom metric created via template"
+        },
+        "alertSeverity": {
+            "value":3
+        },
+        "isEnabled": {
+            "value": true
+        },
+        "resourceId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourceGroup-name/providers/microsoft.insights/components/replace-with-application-insights-resource-name"
+        },
+        "metricName": {
+            "value": "The custom metric name"
+        },
+        "metricNamespace": {
+            "value": "Azure.ApplicationInsights"
+        },
+        "operator": {
+          "value": "GreaterThan"
+        },
+        "threshold": {
+            "value": "80"
+        },
+        "timeAggregation": {
+            "value": "Average"
+        },
+        "actionGroupId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-action-group"
+        }
+    }
+}
+```
+
+
+A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
+
+Az Azure PowerShell használata
+```powershell
+Connect-AzAccount
+
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
+ 
+New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceGroupOfTargetResource `
+  -TemplateFile customstaticmetricalert.json -TemplateParameterFile customstaticmetricalert.parameters.json
+```
+
+
+
+Az Azure parancssori felület használata
+```azurecli
+az login
+
+az group deployment create \
+    --name AlertDeployment \
+    --resource-group ResourceGroupOfTargetResource \
+    --template-file customstaticmetricalert.json \
+    --parameters @customstaticmetricalert.parameters.json
+```
+
+>[!NOTE]
+>
+> Egy adott egyéni metrika metrikai névterét megkeresheti az [Egyéni metrikák a Azure Portal használatával történő tallózásával](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal) .
+
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Több erőforrást figyelő metrikai riasztás sablonja
 
@@ -3180,7 +3444,7 @@ az group deployment create \
     --parameters @list-of-vms-dynamic.parameters.json
 ```
 
-## <a name="template-for-a-availability-test-along-with-availability-test-alert"></a>Sablon a rendelkezésre állási tesztekhez, valamint a rendelkezésre állási teszttel kapcsolatos riasztás
+## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>A rendelkezésre állási teszthez tartozó sablon, valamint metrikus riasztás
 
 [Application Insights rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) segítségével figyelheti a webhely vagy alkalmazás elérhetőségét a világ különböző helyeiről. A rendelkezésre állási teszt riasztásai értesítik, ha a rendelkezésre állási tesztek bizonyos számú helyről sikertelenek.
 A rendelkezésre állási tesztekkel kapcsolatos riasztások ugyanazzal az erőforrással, mint a metrikai riasztások (Microsoft. bepillantások/metricAlerts). A következő minta Azure Resource Manager sablonnal egy egyszerű rendelkezésre állási teszt és egy kapcsolódó riasztás állítható be.

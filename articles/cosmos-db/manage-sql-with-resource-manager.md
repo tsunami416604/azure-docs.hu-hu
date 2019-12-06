@@ -1,42 +1,56 @@
 ---
-title: Azure Cosmos DB létrehozása és kezelése Azure Resource Manager sablonok használatával
+title: Azure Cosmos DB létrehozása és kezelése Azure Resource Manager-sablonokkal
 description: Azure Resource Manager-sablonok használata az SQL (Core) API-hoz való Azure Cosmos DB létrehozásához és konfigurálásához
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 0cb6e80bafca3bb0bfc339552facae5bd16aced4
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 62c04fed03ad2346d0f548a4a8028f2d7d6b3486
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960551"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850465"
 ---
-# <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB SQL-(Core-) API-erőforrások kezelése Azure Resource Manager-sablonok használatával
+# <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Azure Cosmos DB SQL (Core) API-erőforrások kezelése Azure Resource Manager-sablonokkal
 
-Ez a cikk bemutatja, hogyan hajthat végre különböző műveleteket a Azure Cosmos DB-fiókok,-adatbázisok és-tárolók felügyeletének automatizálásához Azure Resource Manager-sablonok használatával. Ez a cikk csak SQL API-fiókokra vonatkozó példákat tartalmaz, amelyek más API-típusú fiókokra vonatkozó példákat tartalmaznak. lásd: Azure Resource Manager-sablonok használata a Azure Cosmos DB API-jával a [Cassandra](manage-cassandra-with-resource-manager.md), a [Gremlin](manage-gremlin-with-resource-manager.md), a [MongoDB](manage-mongodb-with-resource-manager.md)és a [Table](manage-table-with-resource-manager.md) cikkekhez.
+Ebből a cikkből megtudhatja, hogyan használhatók Azure Resource Manager sablonok a Azure Cosmos DB-fiókok,-adatbázisok és-tárolók kezelésének automatizálásához.
 
-Cosmos DB-fiókok,-adatbázisok és-tárolók létrehozása és kezelése a MongoDB, a Gremlin, a Cassandra és a Table APIhoz.
+Ez a cikk csak az SQL API-fiókok Azure Resource Manager sablonját mutatja be. A [Cassandra](manage-cassandra-with-resource-manager.md), a [Gremlin](manage-gremlin-with-resource-manager.md), a [MongoDB](manage-mongodb-with-resource-manager.md)és a [Table](manage-table-with-resource-manager.md) API-khoz példákat is találhat.
 
-## Azure Cosmos-fiók,-adatbázis és-tároló létrehozása<a id="create-resource"></a>
+<a id="create-resource"></a>
 
-Azure Cosmos DB erőforrások létrehozása Azure Resource Manager sablon használatával. Ez a sablon egy Azure Cosmos-fiókot hoz létre, amely két tárolóval rendelkezik, amelyek az adatbázis szintjén megosztják az 400 RU/s átviteli sebességet, valamint egy dedikált 400 RU/s átviteli sebességgel rendelkező tárolót. Másolja a sablont és az üzembe helyezést az alább látható módon, vagy látogasson el az [Azure Gyorsindítás galériába](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) , és telepítse a Azure Portal. Le is töltheti a sablont a helyi számítógépre, vagy létrehozhat egy új sablont, és megadhatja a helyi elérési utat a `--template-file` paraméterrel.
+## <a name="create-an-azure-cosmos-account-database-and-container"></a>Azure Cosmos-fiók,-adatbázis és-tároló létrehozása
 
-> [!NOTE]
+Az alábbi Azure Resource Manager-sablon egy Azure Cosmos-fiókot hoz létre a következővel:
+
+* Két tároló, amely az adatbázis szintjén a 400-as számú kért egység/másodperc (RU/s) adatátviteli sebességet használja.
+* Egy tároló dedikált 400 RU/s átviteli sebességgel.
+
+A Azure Cosmos DB erőforrások létrehozásához másolja a következő példa sablont, és telepítse azt a leírt módon, a [PowerShell](#deploy-via-powershell) vagy az [Azure CLI](#deploy-via-azure-cli)használatával.
+
+* Igény szerint megtekintheti az [Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) rövid útmutatóját, és üzembe helyezheti a sablont a Azure Portal.
+* Le is töltheti a sablont a helyi számítógépre, vagy létrehozhat egy új sablont, és megadhatja a helyi elérési utat a `--template-file` paraméterrel.
+
+> [!IMPORTANT]
 >
-> - Egy Azure Cosmos-fiókhoz nem adhat hozzá és nem távolíthat el helyet, és módosíthatja a többi tulajdonságot. Ezeket külön műveletként kell elvégezni.
-> - A fióknév csak kisbetűket és 44 karaktert tartalmazhat.
-> - Az RU/s frissítéséhez küldje el újra a sablont a frissített átviteli tulajdonság-értékekkel.
+> * Amikor helyet ad hozzá vagy távolít el egy Azure Cosmos-fiókhoz, a többi tulajdonságot nem módosíthatja egyidejűleg. Ezeket a műveleteket külön kell elvégezni.
+> * A fiókok neve 44 karakterből állhat, és az összes kisbetűs értékre van korlátozva.
+> * Az átviteli sebesség értékeinek módosításához küldje el újra a sablont a frissített RU/s értékkel.
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 
 > [!NOTE]
-> Nagyméretű partíciós kulccsal rendelkező tároló létrehozásához adja meg az előző sablon `partitionKey` objektumának `"version":2` tulajdonságát.
+> Nagyméretű partíciós kulccsal rendelkező tároló létrehozásához módosítsa az előző sablont úgy, hogy tartalmazza a `"version":2` tulajdonságot a `partitionKey` objektumon belül.
 
 ### <a name="deploy-via-powershell"></a>Üzembe helyezés a PowerShell használatával
 
-A Azure Resource Manager-sablon PowerShell használatával történő üzembe helyezéséhez **másolja** a szkriptet, és válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**parancsot:
+A PowerShell használata a Azure Resource Manager sablon üzembe helyezéséhez:
+
+1. **Másolja** a szkriptet.
+2. Válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához.
+3. Kattintson a jobb gombbal a Azure Cloud Shell ablakra, majd válassza a **Beillesztés**lehetőséget.
 
 ```azurepowershell-interactive
 
@@ -70,11 +84,15 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
 ```
 
-Ha úgy dönt, hogy a PowerShell helyileg telepített verzióját használja a Azure Cloud Shell helyett, akkor [telepítenie](/powershell/azure/install-az-ps) kell a Azure PowerShell modult. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`.
+A sablont a Azure Cloud Shell helyett a PowerShell helyileg telepített verziójával is telepítheti. [Telepítenie kell a Azure PowerShell modult](/powershell/azure/install-az-ps). `Get-Module -ListAvailable Az` futtatásával keresse meg a szükséges verziót.
 
 ### <a name="deploy-via-azure-cli"></a>Üzembe helyezés az Azure CLI-n keresztül
 
-A Azure Resource Manager-sablon Azure CLI-vel történő üzembe helyezéséhez válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**parancsot:
+Az Azure CLI használata a Azure Resource Manager sablon üzembe helyezéséhez:
+
+1. **Másolja** a szkriptet.
+2. Válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához.
+3. Kattintson a jobb gombbal a Azure Cloud Shell ablakra, majd válassza a **Beillesztés**lehetőséget.
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -105,17 +123,28 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-Az `az cosmosdb show` parancs az újonnan létrehozott Azure Cosmos-fiókot jeleníti meg az üzembe helyezés után. Ha úgy dönt, hogy az Azure CLI helyileg telepített verzióját használja a Cloudshellben használata helyett, tekintse meg az [Azure parancssori felület (CLI)](/cli/azure/) című cikkét.
+Az `az cosmosdb show` parancs az újonnan létrehozott Azure Cosmos-fiókot jeleníti meg az üzembe helyezés után. Megadhatja, hogy a sablont az Azure CLI helyileg telepített verziójával telepítse, Azure Cloud Shell. További információt az [Azure parancssori felület (CLI)](/cli/azure/) című cikkben talál.
 
-## Kiszolgálóoldali funkcióval rendelkező Azure Cosmos DB tároló létrehozása<a id="create-sproc"></a>
+<a id="create-sproc"></a>
 
-Hozzon létre egy Azure Cosmos DB tárolót egy Azure Resource Manager sablon használatával tárolt eljárással, triggerrel és felhasználó által definiált függvénnyel. Másolja a sablont és az üzembe helyezést az alább látható módon, vagy látogasson el az [Azure Gyorsindítás galériába](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/) , és telepítse a Azure Portal. Le is töltheti a sablont a helyi számítógépre, vagy létrehozhat egy új sablont, és megadhatja a helyi elérési utat a `--template-file` paraméterrel.
+## <a name="create-an-azure-cosmos-db-container-with-server-side-functionality"></a>Kiszolgálóoldali funkcióval rendelkező Azure Cosmos DB tároló létrehozása
+
+Azure Resource Manager sablonnal létrehozhat egy Azure Cosmos DB tárolót egy tárolt eljárással, triggerrel és felhasználó által definiált függvénnyel.
+
+Másolja a következő példa sablont, és telepítse azt a PowerShell vagy az [Azure CLI](#deploy-with-azure-cli) [használatával](#deploy-with-powershell) .
+
+* Megtekintheti az [Azure Gyorsindítás](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/) katalógusát, és üzembe helyezheti a sablont a Azure Portal.
+* Le is töltheti a sablont a helyi számítógépre, vagy létrehozhat egy új sablont, és megadhatja a helyi elérési utat a `--template-file` paraméterrel.
 
 [!code-json[create-cosmosdb-sql-sprocs](~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json)]
 
-### <a name="deploy-stored-procedure-template-via-powershell"></a>Tárolt eljárási sablon üzembe helyezése a PowerShell használatával
+### <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 
-A Resource Manager-sablon PowerShell használatával történő üzembe helyezéséhez **másolja** a szkriptet, és válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**parancsot:
+A PowerShell használata a Azure Resource Manager sablon üzembe helyezéséhez:
+
+1. **Másolja** a szkriptet.
+1. Válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához.
+1. Kattintson a jobb gombbal a Azure Cloud Shell ablakra, majd válassza a **Beillesztés**lehetőséget.
 
 ```azurepowershell-interactive
 
@@ -141,11 +170,15 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
 ```
 
-Ha úgy dönt, hogy a PowerShell helyileg telepített verzióját használja a Azure Cloud Shell helyett, akkor [telepítenie](/powershell/azure/install-az-ps) kell a Azure PowerShell modult. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`.
+A sablont a Azure Cloud Shell helyett a PowerShell helyileg telepített verziójával is telepítheti. [Telepítenie kell a Azure PowerShell modult](/powershell/azure/install-az-ps). `Get-Module -ListAvailable Az` futtatásával keresse meg a szükséges verziót.
 
-### <a name="deploy-stored-procedure-template-via-azure-cli"></a>Tárolt eljárási sablon üzembe helyezése az Azure CLI-n keresztül
+### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
-A Azure Resource Manager-sablon Azure CLI-vel történő üzembe helyezéséhez válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**parancsot:
+Az Azure CLI használata a Azure Resource Manager sablon üzembe helyezéséhez:
+
+1. **Másolja** a szkriptet.
+2. Válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához.
+3. Kattintson a jobb gombbal a Azure Cloud Shell ablakra, majd válassza a **Beillesztés**lehetőséget.
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -165,11 +198,11 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Íme néhány további erőforrás:
+Néhány további információforrás:
 
-- [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/)
-- [Erőforrás-szolgáltatói séma Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
-- [Azure Cosmos DB gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Gyakori Azure Resource Manager telepítési hibák elhárítása](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+* [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/)
+* [Erőforrás-szolgáltatói séma Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
+* [Azure Cosmos DB gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [Gyakori Azure Resource Manager telepítési hibák elhárítása](../azure-resource-manager/resource-manager-common-deployment-errors.md)

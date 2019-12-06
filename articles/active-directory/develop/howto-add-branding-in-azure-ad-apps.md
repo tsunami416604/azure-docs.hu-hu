@@ -3,28 +3,24 @@ title: Védjegyzési útmutató az alkalmazásokhoz
 titleSuffix: Microsoft identity platform
 description: Átfogó útmutató az Azure Active Directory fejlesztőknek készített erőforrásairól
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef784dc5f071889a1f4a0072599b9880b7c07c55
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: d5b247bde8e1d3dbf73dcd1ff1d3f8b3ca3d3f16
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803874"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842985"
 ---
 # <a name="branding-guidelines-for-applications"></a>Védjegyzési útmutató az alkalmazásokhoz
 
@@ -75,7 +71,7 @@ Miután a rendszergazda engedélyezi az alkalmazást, eldöntheti, hogy hozzáad
 
 Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Példa:
 
-> *Ha már használja az Office 365-et vagy más üzleti szolgáltatást a Microsofttól, > hozzáférést biztosíthat < your_app_name a szervezet adataihoz. Ez lehetővé teszi, hogy a felhasználók hozzáférhessenek < your_app_name > a meglévő munkahelyi fiókjaikkal.*
+> *Ha már használja az Office 365-et vagy más üzleti szolgáltatást a Microsofttól, megadhatja < your_app_name > hozzáférést a szervezet adataihoz. Ez lehetővé teszi, hogy a felhasználók hozzáférhessenek < your_app_name > a meglévő munkahelyi fiókjaikkal.*
 
 A hivatalos Microsoft embléma letöltéséhez az alkalmazáshoz kattintson a jobb gombbal a választott emblémára, majd mentse a gépére.
 

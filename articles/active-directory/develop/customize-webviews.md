@@ -3,27 +3,23 @@ title: Böngészők és WebView objektumok testreszabása
 titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan szabhatja testre a MSAL által az iOS-hez és macOS-hez használt böngészőbeli élményt a felhasználók bejelentkezéséhez
 services: active-directory
-documentationcenter: dev-center-name
 author: tylermsft
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb314e46094bb6c283a17508c35b7fc17e010e5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 69b1e217bfa64ad08136e2763716d455332c5ba4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803377"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843325"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Útmutató: böngészők és webnézetek testreszabása iOS/macOS rendszerhez
 
@@ -41,13 +37,13 @@ IOS és macOS esetén:
 
 - [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc).
 
-A macOS-MSAL csak a `WKWebView` használatát támogatja.
+A macOS-MSAL csak a `WKWebView`támogatja.
 
 ## <a name="system-browsers"></a>Rendszerböngészők
 
-IOS, `ASWebAuthenticationSession`, `SFAuthenticationSession` és `SFSafariViewController` esetében rendszerböngészőnek számít. Általánosságban elmondható, hogy a rendszerböngészők a Safari böngésző alkalmazással osztják meg a cookie-kat és más webhely-adataikat.
+Az iOS, a `ASWebAuthenticationSession`, a `SFAuthenticationSession`és a `SFSafariViewController` rendszerböngészőnek tekintendő. Általánosságban elmondható, hogy a rendszerböngészők a Safari böngésző alkalmazással osztják meg a cookie-kat és más webhely-adataikat.
 
-Alapértelmezés szerint a MSAL dinamikusan felismeri az iOS-verziót, és kiválasztja az adott verzióban elérhető ajánlott rendszerböngészőt. IOS 12 + esetén `ASWebAuthenticationSession` lesz. 
+Alapértelmezés szerint a MSAL dinamikusan felismeri az iOS-verziót, és kiválasztja az adott verzióban elérhető ajánlott rendszerböngészőt. IOS 12 + esetén `ASWebAuthenticationSession`. 
 
 | Verzió | Webböngésző |
 |:-------------:|:-------------:|
@@ -57,8 +53,8 @@ Alapértelmezés szerint a MSAL dinamikusan felismeri az iOS-verziót, és kivá
 
 A fejlesztők másik rendszerböngészőt is választhatnak a MSAL-alkalmazásokhoz:
 
-- a `SFAuthenticationSession` a `ASWebAuthenticationSession` iOS 11 verziója.
-- a `SFSafariViewController` az általános célú, és felületet biztosít a webes böngészéshez, és a bejelentkezési célokra is használható. Az iOS 9 és 10 rendszerekben a cookie-kat és más webhelyeket megosztják a Safariban – de nem iOS 11 vagy újabb verziókban.
+- a `SFAuthenticationSession` a `ASWebAuthenticationSession`iOS 11 verziója.
+- `SFSafariViewController` az általános célú, és felületet biztosít a webes böngészéshez, és a bejelentkezési célokra is használható. Az iOS 9 és 10 rendszerekben a cookie-kat és más webhelyeket megosztják a Safariban – de nem iOS 11 vagy újabb verziókban.
 
 ## <a name="in-app-browser"></a>Alkalmazáson belüli böngésző
 
@@ -80,7 +76,7 @@ A használt böngésző a cookie-k megosztása miatt hatással van az egyszeri b
 
 ## <a name="change-the-default-browser-for-the-request"></a>A kérelem alapértelmezett böngészője módosítása
 
-A UX-követelményektől függően használhat egy alkalmazásbeli böngészőt vagy egy adott rendszerböngészőt, ha módosítja a következő tulajdonságot a `MSALWebviewParameters` értékben:
+A következő tulajdonságnak a `MSALWebviewParameters`ban való módosításához használhatja az alkalmazáson belüli böngészőt vagy egy adott rendszerböngészőt az UX-követelményektől függően:
 
 ```objc
 @property (nonatomic) MSALWebviewType webviewType;
@@ -90,7 +86,7 @@ A UX-követelményektől függően használhat egy alkalmazásbeli böngészőt 
 
 Minden kérelem konfigurálható úgy, hogy felülírja az alapértelmezett böngészőt úgy, hogy módosítja a `MSALInteractiveTokenParameters.webviewParameters.webviewType` tulajdonságot, mielőtt átadná azt a `acquireTokenWithParameters:completionBlock:` API-nak.
 
-Emellett a MSAL támogatja az átadást egy egyéni `WKWebView` értékre az `MSALInteractiveTokenParameters.webviewParameters.customWebView` tulajdonság beállításával.
+Emellett a MSAL támogatja az átadást egy egyéni `WKWebView` a `MSALInteractiveTokenParameters.webviewParameters.customWebView` tulajdonság beállításával.
 
 Példa:
 

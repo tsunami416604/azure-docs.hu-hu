@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 31e45906dfeafcd2af1651347dde9dc6d3c6fb7c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9cb4f6ec7331a2d0eb03beb2680c882484b69541
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769217"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868490"
 ---
 # <a name="container-security-in-security-center"></a>Tárolók biztonsága Security Center
 
@@ -59,8 +59,7 @@ Security Center javaslatairól a [virtuális gép védelme](security-center-virt
 
 Security Center valós idejű veszélyforrások észlelését teszi lehetővé a tároló környezetek számára, és riasztásokat hoz létre a gyanús tevékenységekhez. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
 
-A fenyegetéseket a gazdagép és az AK-fürt szintjén észleljük. Részletekért lásd: [Azure Container Service](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
-
+A fenyegetéseket a gazdagép és az AK-fürt szintjén észleljük. A részletekért lásd: [Az Azure-tárolók veszélyforrások észlelése](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
 
 ## <a name="to-view-the-security-posture-of-your-container-related-resources"></a>A tárolóval kapcsolatos erőforrások biztonsági állapotának megtekintése
 1.  Nyissa meg Security Center **számítási & alkalmazások** lapját.

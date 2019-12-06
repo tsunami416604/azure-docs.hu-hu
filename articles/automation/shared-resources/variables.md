@@ -4,21 +4,21 @@ description: A változó eszközök olyan értékek, amelyek a Azure Automation 
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fe008d20ab43636b59861bcc5a7914ba0fca17e
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e56a1c9a158974266b810d31a0e9bb898262761a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910066"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849428"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Változó eszközök Azure Automation
 
-A változó eszközök olyan értékek, amelyek az Automation-fiók összes runbookok és DSC-konfigurációjában elérhetők. Ezek kezelhetők a Azure Portal, a PowerShell, a runbook vagy a DSC-konfiguráció segítségével. Automation-változók hasznosak lehetnek a következő forgatókönyvekhez:
+A változó eszközök olyan értékek, amelyek az Automation-fiók összes runbookok és DSC-konfigurációjában elérhetők. Ezek kezelhetők a Azure Portal, a PowerShell, a runbook vagy a DSC-konfiguráció segítségével. Az Automation-változók a következő helyzetekben lehetnek hasznosak:
 
 - Egy érték megosztása több runbookok vagy DSC-konfiguráció között.
 
@@ -42,8 +42,8 @@ Tömb vagy szórótábla létrehozásával és a változóba való mentésével 
 Az alábbi lista az Automationben elérhető változó típusok listáját tartalmazza:
 
 * Sztring
-* Integer
-* DateTime
+* Egész szám
+* Dátum és idő
 * Logikai
 * Null
 
@@ -51,18 +51,18 @@ Az alábbi lista az Automationben elérhető változó típusok listáját tarta
 
 A AzureRM az alábbi táblázatban található parancsmagokkal automatizálható a hitelesítő adatok eszközei a Windows PowerShell használatával. A [AzureRM. Automation modul](/powershell/azure/overview)részét képezik, amely az Automation runbookok és a DSC-konfigurációkhoz is használható.
 
-| Parancsmagok | Leírás |
+| A  parancsmagjai | Leírás |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|Egy létező változó értékét kérdezi le.|
-|[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|Létrehoz egy új változót, és beállítja annak értékét.|
+|[Új – AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|Létrehoz egy új változót, és beállítja annak értékét.|
 |[Remove-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationVariable)|Eltávolít egy meglévő változót.|
 |[Set-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable)|Beállítja egy létező változó értékét.|
 
-## <a name="activities"></a>Tevékenységek
+## <a name="activities"></a>Activities (Tevékenységek)
 
 Az alábbi táblázatban szereplő tevékenységek a runbook és a DSC-konfigurációk változóinak elérésére szolgálnak. A Get-AzureRmAutomationVariable és a Get-AutomationVariable parancsmagok közötti különbség a dokumentum elején kerül tisztázásra.
 
-| Tevékenységek | Leírás |
+| Activities (Tevékenységek) | Leírás |
 |:---|:---|
 |Get-AutomationVariable|Egy létező változó értékét kérdezi le.|
 |Set-AutomationVariable|Beállítja egy létező változó értékét.|
@@ -74,8 +74,8 @@ Az alábbi táblázatban szereplő függvények a változók Python2-runbook val
 
 |Python2 függvények|Leírás|
 |:---|:---|
-|automationassets.get_automation_variable|Egy létező változó értékét kérdezi le. |
-|automationassets.set_automation_variable|Beállítja egy létező változó értékét. |
+|automationassets. get_automation_variable|Egy létező változó értékét kérdezi le. |
+|automationassets. set_automation_variable|Beállítja egy létező változó értékét. |
 
 > [!NOTE]
 > Az Asset functions eléréséhez importálnia kell a "automationassets" modult a Python-runbook tetején.
@@ -86,9 +86,9 @@ Az alábbi táblázatban szereplő függvények a változók Python2-runbook val
 
 1. Az Automation-fiókban kattintson az **eszközök** csempére, majd az **eszközök** panelen válassza a **változók**lehetőséget.
 2. A **változók** csempén válassza a **változó hozzáadása**elemet.
-3. Fejezze be a beállításokat az **új változó** panelen, és kattintson az új változó mentése lehetőségre.
+3. Fejezze be a beállításokat az **új változó** panelen, és **kattintson az** új változó mentése lehetőségre.
 
-### <a name="to-create-a-new-variable-with-windows-powershell"></a>Új változó létrehozása a Windows PowerShell-lel
+### <a name="to-create-a-new-variable-with-windows-powershell"></a>Új változó létrehozása a Windows PowerShell segítségével
 
 A [New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) parancsmag egy új változót hoz létre, és beállítja a kezdeti értékét. Az értéket a [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)használatával kérheti le. Ha az érték egy egyszerű típus, akkor ugyanazt a típust adja vissza. Összetett típus esetén a rendszer egy **pscustomobject formájában kapja** ad vissza.
 
@@ -173,7 +173,7 @@ Az alábbi képen egy olyan minta tevékenységek láthatók, amelyek egy egysze
 
 ![Egyszerű változó beállítása](../media/variables/runbook-set-simple-variable.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha többet szeretne megtudni a tevékenységek grafikus létrehozással való összekapcsolásáról, tekintse meg a [hivatkozásokat a grafikus szerzői](../automation-graphical-authoring-intro.md#links-and-workflow) műveletekben
 - A grafikus forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első grafikus forgatókönyvem](../automation-first-runbook-graphical.md).

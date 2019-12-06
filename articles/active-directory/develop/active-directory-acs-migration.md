@@ -2,30 +2,26 @@
 title: Migrálás az Azure Access Control Serviceról | Microsoft Docs
 description: Ismerje meg az alkalmazások és szolgáltatások Azure Access Control Service (ACS) szolgáltatásból való áthelyezésének lehetőségeit.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59a2cc971fbc1df967bc2655c672ab8f419eef71
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c04377877619c96f139f4b6c1cf826573524d900
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835521"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845552"
 ---
-# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: Migrálás az Azure Access Control Service-ből
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: áttelepítés az Azure Access Control Service
 
 A Microsoft Azure Access Control Service (ACS), Azure Active Directory (Azure AD) szolgáltatása 2018 november 7-én megszűnik. Az Access Controlt jelenleg használó alkalmazásokat és szolgáltatásokat a rendszernek egy másik hitelesítési mechanizmusba kell áttelepítenie. Ez a cikk az aktuális ügyfelekre vonatkozó javaslatokat ismerteti, ahogy azt tervezi, hogy a Access Control használatát elavultnak tekinti. Ha jelenleg nem használja a Access Controlt, semmilyen műveletet nem kell elvégeznie.
 
@@ -58,9 +54,9 @@ Ezeknek az összetevőknek a használatához létre kell hoznia egy vagy több A
 https://<mynamespace>.accesscontrol.windows.net
 ```
 
-Az összes STS-és felügyeleti művelettel folytatott kommunikáció ezen az URL-címen történik. Különböző elérési utakat használ különböző célokra. Annak megállapításához, hogy az alkalmazások vagy szolgáltatások Access Control használnak-e, figyelje a&lt;https://&gt;névtér. accesscontrol.Windows.net. Az erre az URL-címre irányuló összes forgalmat Access Control kezeli, és a rendszernek megszűnni kell. 
+Az összes STS-és felügyeleti művelettel folytatott kommunikáció ezen az URL-címen történik. Különböző elérési utakat használ különböző célokra. Annak megállapításához, hogy az alkalmazások vagy szolgáltatások Access Control használnak-e, figyelje a https://&lt;névtér&gt;. accesscontrol.windows.net által használt összes forgalmat. Az erre az URL-címre irányuló összes forgalmat Access Control kezeli, és a rendszernek megszűnni kell. 
 
-Ez alól kivételt jelent a szolgáltatásra `https://accounts.accesscontrol.windows.net`irányuló forgalom. Az erre az URL-címre irányuló forgalmat már egy másik szolgáltatás kezeli, és **nem** érinti a Access Control elavulttá. 
+Ez alól kivételt képez a `https://accounts.accesscontrol.windows.net`felé irányuló forgalom. Az erre az URL-címre irányuló forgalmat már egy másik szolgáltatás kezeli, és **nem** érinti a Access Control elavulttá. 
 
 További információ a Access Controlről: [Access Control Service 2,0 (archivált)](https://msdn.microsoft.com/library/hh147631.aspx).
 
@@ -89,22 +85,22 @@ Az ebben a szakaszban ismertetett lépéseket követve megállapíthatja, hogy m
      Get-Help [Command-Name] -Full
     ```
     
-    ahol `[Command-Name]` az ACS-parancs neve.
+    ahol a `[Command-Name]` az ACS-parancs neve.
 
 ### <a name="list-your-acs-namespaces"></a>Az ACS-névterek listázása
 
 1. Kapcsolódjon az ACS-hez a **Kapcsolódás-AcsAccount** parancsmag használatával.
   
-    Előfordulhat, hogy a parancsok `Set-ExecutionPolicy -ExecutionPolicy Bypass` végrehajtása előtt futtatnia kell a parancsokat, és az előfizetések rendszergazdájának kell lennie ahhoz, hogy végre tudja hajtani a parancsokat.
+    Előfordulhat, hogy a parancsok végrehajtása előtt `Set-ExecutionPolicy -ExecutionPolicy Bypass` kell futtatnia a parancsokat, és az előfizetések rendszergazdájának kell lennie a parancsok végrehajtásához.
 
 1. Sorolja fel az elérhető Azure-előfizetéseket a **Get-AcsSubscription** parancsmag használatával.
 1. Sorolja fel az ACS-névtereket a **Get-AcsNamespace** parancsmag használatával.
 
 ### <a name="check-which-applications-will-be-impacted"></a>Annak meghatározása, hogy mely alkalmazásokat érinti a rendszer
 
-1. Használja az előző lépés névterét, és lépjen a következőre:`https://<namespace>.accesscontrol.windows.net`
+1. Használja az előző lépés névterét, és lépjen a `https://<namespace>.accesscontrol.windows.net`
 
-    Ha például az egyik névtér a contoso-test, ugorjon a következőre:`https://contoso-test.accesscontrol.windows.net`
+    Ha például az egyik névtér contoso-test, lépjen a `https://contoso-test.accesscontrol.windows.net`
 
 1. A **megbízhatósági kapcsolatok**területen válassza a **függő entitások alkalmazások** lehetőséget, hogy megtekintse azon alkalmazások LISTÁJÁT, amelyeket az ACS-nyugdíjazás érint.
 1. Ismételje meg a 1-2. lépést minden más ACS-névtérnél.
@@ -115,9 +111,9 @@ November 2017-ig az összes Access Control-összetevő teljes mértékben támog
 
 Itt látható a Access Control-összetevők elavulása:
 
-- **November 2017**:  A klasszikus Azure portálon az Azure AD rendszergazdai felülete megszűnik. [](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/) Ezen a ponton a Access Control névterek kezelése egy új, dedikált URL-címen érhető el `https://manage.windowsazure.com?restoreClassic=true`:. Ezzel az URl-címmel megtekintheti a meglévő névtereket, engedélyezheti és letilthatja a névtereket, és törölheti a névtereket, ha úgy dönt, hogy.
-- **2018. április 2**.: A klasszikus Azure portál teljes mértékben kivonásra kerül, ami azt jelenti, Access Control a névtér kezelése már nem érhető el bármely URL-címen keresztül. Ezen a ponton nem tilthatja le, nem engedélyezheti, törölheti vagy enumerálhatja Access Control névtereit. A Access Control felügyeleti portál azonban teljesen működőképes lesz, és a következő helyen `https://\<namespace\>.accesscontrol.windows.net`található:. A Access Control összes többi összetevője továbbra is megfelelően működik.
-- **2018. november 7**.: Az összes Access Control-összetevő véglegesen le van állítva. Ide tartozik a Access Control felügyeleti portál, a felügyeleti szolgáltatás, az STS és a jogkivonat-átalakítási szabály motorja. Ezen a ponton a Access Control (a \<névtér\>. accesscontrol.Windows.net helyen található) küldött kérések meghiúsulnak. A meglévő alkalmazásokat és szolgáltatásokat más technológiákra is át kell telepítenie.
+- **November 2017**: a klasszikus [Azure portálon az Azure](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/)ad rendszergazdai felülete megszűnik. Ezen a ponton a Access Control névterek kezelése egy új, dedikált URL-címen érhető el: `https://manage.windowsazure.com?restoreClassic=true`. Ezzel az URl-címmel megtekintheti a meglévő névtereket, engedélyezheti és letilthatja a névtereket, és törölheti a névtereket, ha úgy dönt, hogy.
+- **2018. április 2**.: a klasszikus Azure portál teljes mértékben megszűnik, ami azt jelenti, hogy a Access Control névterek kezelése már nem érhető el az URL-címeken keresztül. Ezen a ponton nem tilthatja le, nem engedélyezheti, törölheti vagy enumerálhatja Access Control névtereit. A Access Control felügyeleti portál azonban teljes mértékben működőképes lesz, és a következő helyen található: `https://\<namespace\>.accesscontrol.windows.net`. A Access Control összes többi összetevője továbbra is megfelelően működik.
+- **2018. november 7**.: az összes Access Control-összetevő véglegesen le van állítva. Ide tartozik a Access Control felügyeleti portál, a felügyeleti szolgáltatás, az STS és a jogkivonat-átalakítási szabály motorja. Ezen a ponton a Access Control (\<névtér\>. accesscontrol.windows.net) által küldött összes kérelem meghiúsul. A meglévő alkalmazásokat és szolgáltatásokat más technológiákra is át kell telepítenie.
 
 > [!NOTE]
 > A szabályzat letiltja azokat a névtereket, amelyek nem igényeltek jogkivonatot egy adott ideig. A 2018. szeptember elejétől kezdve ez az időszak jelenleg 14 napos inaktivitású, de ez az elkövetkező hetekben 7 napig inaktivitást eredményez. Ha olyan Access Control névterek vannak, amelyek jelenleg le vannak tiltva, [letöltheti és telepítheti az ACS PowerShellt](#download-and-install-acs-powershell) a névtér (ok) újbóli engedélyezéséhez.
@@ -130,13 +126,13 @@ A következő szakaszok ismertetik a Access Controlról más Microsoft-technoló
 
 Minden olyan Microsoft Cloud Service, amely elfogadja a Access Control által kiállított jogkivonatokat, mostantól legalább egy alternatív hitelesítési formát támogat. A megfelelő hitelesítési mechanizmus az egyes szolgáltatásokra változik. Javasoljuk, hogy tekintse meg az egyes szolgáltatások dokumentációját hivatalos útmutatásként. Az egyszerűség kedvéért a dokumentáció minden készletét itt találja:
 
-| Szolgáltatás | Útmutatás |
+| Szolgáltatás | Segédletek |
 | ------- | -------- |
 | Azure Service Bus | [Migrálás megosztott hozzáférési aláírásokra](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure Service Bus Relay | [Migrálás megosztott hozzáférési aláírásokra](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
-| Azure Managed Cache | [Migrálás az Azure cache-be a Redis-hez](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Azure DataMarket | [Migrálás a Cognitive Services API-kba](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| BizTalk Services | [Migrálás a Azure App Service Logic Apps szolgáltatására](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Azure Managed cache | [Migrálás az Azure cache-be a Redis-hez](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
+| Azure-DataMarket | [Migrálás a Cognitive Services API-kba](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| BizTalk szolgáltatások | [Migrálás a Azure App Service Logic Apps szolgáltatására](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | Azure Media Services | [Áttelepítés Azure AD-hitelesítésre](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
 | Azure Backup | [A Azure Backup-ügynök frissítése](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
 
@@ -151,7 +147,7 @@ Minden olyan Microsoft Cloud Service, amely elfogadja a Access Control által ki
 
 A SharePoint 2013, a 2016 és a SharePoint Online ügyfelei hosszú ideig használják az ACS-t a felhőben, a helyszínen és a hibrid forgatókönyvekben használt hitelesítési célokra. A SharePoint egyes funkcióit és használati eseteit az ACS-nyugdíjazás fogja érinteni, míg mások nem. Az alábbi táblázat az ACS-t használó legnépszerűbb SharePoint-funkciók áttelepítési Útmutatóját foglalja össze:
 
-| Funkció | Útmutatás |
+| Szolgáltatás | Segédletek |
 | ------- | -------- |
 | Felhasználók hitelesítése az Azure AD-ből | Korábban az Azure AD nem támogatta a SharePoint által a hitelesítéshez szükséges SAML 1,1-tokeneket, és az ACS-t olyan közvetítőként használták, amely az Azure AD-tokenek formátumával kompatibilis a SharePoint rendszerrel. Mostantól [közvetlenül kapcsolódhat a sharepointhoz az Azure ad-hez az Azure ad alkalmazás Gallery SharePoint helyszíni alkalmazás használatával](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [Alkalmazás-hitelesítés & kiszolgáló – kiszolgáló hitelesítés a helyszíni SharePointban](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Az ACS-nyugdíjazás nem érinti; nincs szükség módosításra. | 
@@ -165,7 +161,7 @@ A felhasználói hitelesítéshez Access Control használó webalkalmazások ese
 - Mélyreható integráció a Windows Identity Foundation (WIF) szolgáltatással.
 - A Google, a Facebook, a Yahoo, a Azure Active Directory és a AD FS fiókok és a Microsoft-fiókok összevonása.
 - A következő hitelesítési protokollok támogatása: OAuth 2,0 draft 13, WS-Trust és Web Services Federation (WS-Federation).
-- A következő jogkivonat-formátumok támogatása: JSON Web Token (JWT), SAML 1,1, SAML 2,0 és Simple web token (SWT).
+- A következő token-formátumok támogatása: JSON Web Token (JWT), SAML 1,1, SAML 2,0 és Simple web token (SWT).
 - A WIF szolgáltatásba integrált, a felhasználók számára a bejelentkezéshez használt fiók típusának kiválasztását lehetővé tevő otthoni tartomány-felderítési felület. Ezt a folyamatot a webalkalmazás üzemelteti, és teljes mértékben testreszabható.
 - Jogkivonat-átalakítás, amely lehetővé teszi a webalkalmazás által a Access Controltól kapott jogcímek gazdag testreszabását, beleértve a következőket:
     - Az identitás-szolgáltatók jogcímeinek továbbítása.
@@ -190,7 +186,7 @@ A következő táblázat összehasonlítja az Azure AD-ban elérhető szolgálta
 
 *Ha a felhasználók csak a Microsoft munkahelyi vagy iskolai fiókjaival jelentkeznek be, magas szinten Azure Active Directory valószínűleg a legjobb választás az áttelepítés során*.
 
-| Képesség | Access Control támogatás | Azure AD-támogatás |
+| Szolgáltatás | Access Control támogatás | Azure AD-támogatás |
 | ---------- | ----------- | ---------------- |
 | **Fiókok típusai** | | |
 | Microsoft munkahelyi vagy iskolai fiókok | Támogatott | Támogatott |
@@ -205,7 +201,7 @@ A következő táblázat összehasonlítja az Azure AD-ban elérhető szolgálta
 | WS-Trust | Támogatott | Nem támogatott |
 | **Jogkivonat-formátumok** | | |
 | JWT | Bétaverzióban támogatott | Támogatott |
-| SAML 1.1 | Támogatott | Előzetes verzió |
+| SAML 1,1 | Támogatott | Előzetes verzió |
 | SAML 2.0 | Támogatott | Támogatott |
 | SWT | Támogatott | Nem támogatott |
 | **Testreszabások** | | |
@@ -217,7 +213,7 @@ A következő táblázat összehasonlítja az Azure AD-ban elérhető szolgálta
 
 Ha úgy dönt, hogy az Azure AD az alkalmazások és szolgáltatások legjobb áttelepítési útvonala, akkor az alkalmazás Azure AD-vel való integrálásának két módját kell figyelembe vennie.
 
-Ahhoz, hogy a WS-Federation vagy a WIF az Azure AD-vel való integráláshoz is használható legyen, javasoljuk, hogy kövesse az [összevont egyszeri bejelentkezés konfigurálása nem](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)katalógusbeli alkalmazáshoz című témakörben ismertetett megközelítést. A cikk az Azure AD és az SAML-alapú egyszeri bejelentkezés konfigurálására vonatkozik, de a WS-Federation konfigurálására is használható. Ezt a módszert követve prémium szintű Azure AD licencre van szükség. Ennek a megközelítésnek két előnye van:
+Ahhoz, hogy a WS-Federation vagy a WIF az Azure AD-vel való integráláshoz is használható legyen, javasoljuk, hogy kövesse az [összevont egyszeri bejelentkezés konfigurálása nem katalógusbeli alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)című témakörben ismertetett megközelítést. A cikk az Azure AD és az SAML-alapú egyszeri bejelentkezés konfigurálására vonatkozik, de a WS-Federation konfigurálására is használható. Ezt a módszert követve prémium szintű Azure AD licencre van szükség. Ennek a megközelítésnek két előnye van:
 
 - Az Azure AD-jogkivonat testreszabásának teljes rugalmassága. Testreszabhatja az Azure AD által kiállított jogcímeket, hogy azok megfeleljenek az Access Control által kiadott jogcímeknek. Ez különösen magában foglalja a felhasználói azonosító vagy a név-azonosító jogcímet. Ahhoz, hogy a felhasználók a technológiák módosítása után is konzisztens felhasználói azonosítókat kapjanak, győződjön meg arról, hogy az Azure AD által kiállított felhasználói azonosítók megegyeznek a Access Control által kiállított azonosítókkal.
 - Az alkalmazásra jellemző jogkivonat-aláíró tanúsítvány, valamint az Ön által vezérelt élettartam is konfigurálható.
@@ -227,7 +223,7 @@ Ahhoz, hogy a WS-Federation vagy a WIF az Azure AD-vel való integráláshoz is 
 
 Egy másik módszer a [kód](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation)követése, amely némileg eltérő útmutatást ad a WS-Federation beállításához. Ez a mintakód nem használ WIF, hanem a ASP.NET 4,5 OWIN middleware-t. Az alkalmazás regisztrálására vonatkozó utasítások azonban érvényesek a WIF-t használó alkalmazások esetében, és nem igényelnek prémium szintű Azure AD licencet. 
 
-Ha ezt a módszert választja, az [Azure ad-ben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)meg kell ismernie az aláíró kulcsok átváltását. Ez a módszer az Azure AD globális aláíró kulcsát használja a jogkivonatok kibocsátására. Alapértelmezés szerint a WIF nem frissíti automatikusan az aláíró kulcsokat. Ha az Azure AD elforgatja globális aláíró kulcsait, a WIF megvalósítását elő kell készíteni a módosítások elfogadásához. További információ: [fontos információk az Azure ad-ban az aláíró kulcsok](https://msdn.microsoft.com/library/azure/dn641920.aspx)átváltásáról.
+Ha ezt a módszert választja, az Azure AD-ben meg kell ismernie az [aláíró kulcsok átváltását](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Ez a módszer az Azure AD globális aláíró kulcsát használja a jogkivonatok kibocsátására. Alapértelmezés szerint a WIF nem frissíti automatikusan az aláíró kulcsokat. Ha az Azure AD elforgatja globális aláíró kulcsait, a WIF megvalósítását elő kell készíteni a módosítások elfogadásához. További információ: [fontos információk az Azure ad-ban az aláíró kulcsok átváltásáról](https://msdn.microsoft.com/library/azure/dn641920.aspx).
 
 Ha integrálni tudja az Azure AD-t az OpenID Connect vagy a OAuth protokollok használatával, azt javasoljuk. Részletes dokumentációt és útmutatást talál arról, hogyan integrálhatja az Azure AD-t az [Azure ad fejlesztői útmutatójában](https://aka.ms/aaddev)elérhető webalkalmazásba.
 
@@ -241,7 +237,7 @@ A Azure AD B2C azonban nem támogatja az ügyfelek által igényelt Access Contr
 
 A következő táblázat összehasonlítja a webalkalmazásokhoz kapcsolódó Access Control funkcióit, amelyek a Azure AD B2Cban elérhetők. Magas szinten *Azure ad B2C valószínűleg a megfelelő választás az áttelepítéshez, ha az alkalmazás a fogyasztó felé irányul, vagy ha számos különböző típusú fiókot támogat.*
 
-| Képesség | Access Control támogatás | Azure AD B2C támogatás |
+| Szolgáltatás | Access Control támogatás | Azure AD B2C támogatás |
 | ---------- | ----------- | ---------------- |
 | **Fiókok típusai** | | |
 | Microsoft munkahelyi vagy iskolai fiókok | Támogatott | Egyéni szabályzatok használatával támogatott  |
@@ -256,7 +252,7 @@ A következő táblázat összehasonlítja a webalkalmazásokhoz kapcsolódó Ac
 | WS-Trust | Támogatott | Nem támogatott |
 | **Jogkivonat-formátumok** | | |
 | JWT | Bétaverzióban támogatott | Támogatott |
-| SAML 1.1 | Támogatott | Nem támogatott |
+| SAML 1,1 | Támogatott | Nem támogatott |
 | SAML 2.0 | Támogatott | Nem támogatott |
 | SWT | Támogatott | Nem támogatott |
 | **Testreszabások** | | |
@@ -287,7 +283,7 @@ Ezekben az esetekben érdemes lehet áttelepíteni a webalkalmazást egy másik 
 |     |     |
 | --- | --- |
 | ![Ez a képen a Auth0 embléma látható](./media/active-directory-acs-migration/rsz_auth0.png) | A [Auth0](https://auth0.com/acs) egy rugalmas felhőalapú Identitáskezelő szolgáltatás, amely [magas szintű áttelepítési útmutatót hozott létre a Access Control ügyfelei számára](https://auth0.com/acs), és szinte minden olyan funkciót támogat, amelyet az ACS tesz. |
-| ![Ez a rendszerkép a ping Identity emblémát jeleníti meg](./media/active-directory-acs-migration/rsz_ping.png) | A [ping Identity](https://www.pingidentity.com) két, az ACS-hez hasonló megoldást kínál. A PingOne egy felhőalapú identitás-szolgáltatás, amely az ACS számos szolgáltatását támogatja, és a PingFederate egy hasonló a helyszíni Identity termékhez, amely nagyobb rugalmasságot biztosít. A termékek használatával kapcsolatos további információkért tekintse meg a [ping ACS](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) -kivonulási útmutatóját. |
+| ![Ez a rendszerkép a ping Identity emblémát jeleníti meg](./media/active-directory-acs-migration/rsz_ping.png) | A [ping Identity](https://www.pingidentity.com) két, az ACS-hez hasonló megoldást kínál. A PingOne egy felhőalapú identitás-szolgáltatás, amely az ACS számos szolgáltatását támogatja, és a PingFederate egy hasonló a helyszíni Identity termékhez, amely nagyobb rugalmasságot biztosít. A termékek használatával kapcsolatos további információkért tekintse meg a [ping ACS-kivonulási útmutatóját](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) . |
 
 Célunk, hogy a ping Identity és Auth0 használatával biztosítható legyen, hogy minden Access Control ügyfél áttelepítési útvonala legyen az alkalmazásokhoz és szolgáltatásokhoz, amelyek minimálisra csökkentsék a Access Controlból való áttéréshez szükséges munkát.
 
@@ -309,24 +305,24 @@ A Access Control által kiállított jogkivonatokkal védett webszolgáltatások
     - A szolgáltatás identitásához létrehozott egyszerű jelszó
     - Aláírt SWT szimmetrikus kulcs vagy X509-tanúsítvány használatával
     - Egy megbízható identitás-szolgáltató által kiadott SAML-jogkivonat (általában egy AD FS-példány)
-- A következő jogkivonat-formátumok támogatása: JWT, SAML 1,1, SAML 2,0 és SWT.
+- A következő token-formátumok támogatása: JWT, SAML 1,1, SAML 2,0 és SWT.
 - Egyszerű jogkivonat-átalakítási szabályok.
 
 A Access Control szolgáltatásbeli identitásokat jellemzően a kiszolgálók közötti hitelesítés megvalósítására használják. 
 
 #### <a name="migrate-to-azure-active-directory"></a>Migrálás Azure Active Directoryre
 
-Erre a hitelesítési folyamatra vonatkozó Javaslatunk a Azure Active Directoryba való [](https://azure.microsoft.com/develop/identity/signin/)Migrálás. Az Azure AD a Microsoft munkahelyi vagy iskolai fiókjainak felhőalapú identitás-szolgáltatója. Az Azure AD az Office 365, az Azure és még sok más identitás-szolgáltató. 
+Erre a hitelesítési folyamatra vonatkozó Javaslatunk a [Azure Active Directoryba](https://azure.microsoft.com/develop/identity/signin/)való Migrálás. Az Azure AD a Microsoft munkahelyi vagy iskolai fiókjainak felhőalapú identitás-szolgáltatója. Az Azure AD az Office 365, az Azure és még sok más identitás-szolgáltató. 
 
 Az Azure AD-t a kiszolgálók közötti hitelesítéshez is használhatja az OAuth-ügyfél hitelesítő adatainak megadása Azure AD-implementáció használatával. A következő táblázat összehasonlítja a kiszolgáló és a kiszolgáló közötti hitelesítés Access Control képességeit, amelyek az Azure AD-ben elérhetők.
 
-| Képesség | Access Control támogatás | Azure AD-támogatás |
+| Szolgáltatás | Access Control támogatás | Azure AD-támogatás |
 | ---------- | ----------- | ---------------- |
 | Webszolgáltatás regisztrálása | Függő entitás létrehozása a Access Control felügyeleti portálon | Azure AD-Webalkalmazás létrehozása a Azure Portalban |
 | Ügyfél regisztrálása | Szolgáltatás identitásának létrehozása a Access Control felügyeleti portálon | Hozzon létre egy másik Azure AD-webalkalmazást a Azure Portal |
 | Használt protokoll |-OAuth WRAP protokoll<br />-OAuth 2,0-draft 13 ügyfél-hitelesítő adatok megadása | OAuth 2.0-ügyfél hitelesítő adatainak megadása |
-| Ügyfél-hitelesítési módszer |– Egyszerű jelszó<br />-Aláírt SWT<br />-SAML-jogkivonat összevont identitás-szolgáltatótól |– Egyszerű jelszó<br />-Aláírt JWT |
-| Jogkivonat-formátumok |– JWT<br />– SAML 1,1<br />- SAML 2.0<br />– SWT<br /> | Csak JWT |
+| Ügyfél-hitelesítési módszerek |– Egyszerű jelszó<br />-Aláírt SWT<br />-SAML-jogkivonat összevont identitás-szolgáltatótól |– Egyszerű jelszó<br />-Aláírt JWT |
+| Jogkivonat-formátumok |– JWT<br />– SAML 1,1<br />– SAML 2,0<br />– SWT<br /> | Csak JWT |
 | Jogkivonat-átalakítás |– Egyéni jogcímek hozzáadása<br />– Egyszerű, ha-akkor jogcím kiállítási logikája | Egyéni jogcímek hozzáadása | 
 | Konfigurációs és felügyeleti feladatok automatizálása | Access Control felügyeleti szolgáltatáson keresztül támogatott | Microsoft Graph és az Azure AD-n keresztül támogatott Graph API |
 
@@ -349,7 +345,7 @@ Ezekben az esetekben érdemes lehet áttelepíteni a webalkalmazást egy másik 
 |     |     |
 | --- | --- |
 | ![Ez a képen a Auth0 embléma látható](./media/active-directory-acs-migration/rsz_auth0.png) | A [Auth0](https://auth0.com/acs) egy rugalmas felhőalapú Identitáskezelő szolgáltatás, amely [magas szintű áttelepítési útmutatót hozott létre a Access Control ügyfelei számára](https://auth0.com/acs), és szinte minden olyan funkciót támogat, amelyet az ACS tesz. |
-| ![Ez a rendszerkép a ping Identity emblémát jeleníti meg](./media/active-directory-acs-migration/rsz_ping.png) | A [ping Identity](https://www.pingidentity.com) két, az ACS-hez hasonló megoldást kínál. A PingOne egy felhőalapú identitás-szolgáltatás, amely az ACS számos szolgáltatását támogatja, és a PingFederate egy hasonló a helyszíni Identity termékhez, amely nagyobb rugalmasságot biztosít. A termékek használatával kapcsolatos további információkért tekintse meg a [ping ACS](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) -kivonulási útmutatóját. |
+| ![Ez a rendszerkép a ping Identity emblémát jeleníti meg](./media/active-directory-acs-migration/rsz_ping.png) | A [ping Identity](https://www.pingidentity.com) két, az ACS-hez hasonló megoldást kínál. A PingOne egy felhőalapú identitás-szolgáltatás, amely az ACS számos szolgáltatását támogatja, és a PingFederate egy hasonló a helyszíni Identity termékhez, amely nagyobb rugalmasságot biztosít. A termékek használatával kapcsolatos további információkért tekintse meg a [ping ACS-kivonulási útmutatóját](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) . |
 
 Célunk, hogy a ping Identity és Auth0 használatával biztosítható legyen, hogy minden Access Control ügyfél áttelepítési útvonala legyen az alkalmazásokhoz és szolgáltatásokhoz, amelyek minimálisra csökkentsék a Access Controlból való áttéréshez szükséges munkát.
 

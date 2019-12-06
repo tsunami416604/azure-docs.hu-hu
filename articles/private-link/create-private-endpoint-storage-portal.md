@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: cfe0caaf199821358f8a66ac65ae75c38336c725
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd3e33fde3f4249064bfbe1973ee95f680630673
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228094"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851162"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Magánhálózati kapcsolat létrehozása egy Storage-fiókhoz az Azure Private Endpoint használatával
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára a magánjellegű kapcsolati erőforrásokkal való kommunikációt.
@@ -34,13 +34,13 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
 1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **virtuális hálózat**lehetőséget.
 1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Name (Név) | Adja meg a *MyVirtualNetwork*. |
+    | Név | Adja meg a *MyVirtualNetwork*. |
     | Címtér | Adja meg a *10.1.0.0/16*értéket. |
-    | Előfizetést | Válassza ki előfizetését.|
+    | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | Hely | Válassza a **WestCentralUS**lehetőséget.|
+    | Földrajzi egység | Válassza a **WestCentralUS**lehetőséget.|
     | Alhálózat – név | Adja meg a *mySubnet*. |
     | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
     |||
@@ -53,16 +53,16 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
 
 1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetést | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm*. |
-    | Régió | Válassza a **WestCentralUS**lehetőséget. |
+    | Region (Régió) | Válassza a **WestCentralUS**lehetőséget. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Image (Kép) | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
+    | Lemezkép | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
     | Méret | Hagyja meg az alapértelmezett **standard DS1 v2**értéket. |
     | **RENDSZERGAZDAI FIÓK** |  |
     | Felhasználónév | Adja meg a választott felhasználónevet. |
@@ -80,7 +80,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
 
 1. A **virtuálisgép-hálózat létrehozása**területen válassza ki ezt az információt:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork**.  |
     | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24**értéket.|
@@ -101,14 +101,14 @@ Ebben a szakaszban létrehoz egy privát Storage-fiókot egy privát végpont ha
 
 1. A **Storage-fiók létrehozása – alapok**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetést | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Storage account name (Tárfiók neve)  | Adja meg a *mystorageaccount*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
-    | Régió | Válassza a **WestCentralUS**lehetőséget. |
+    | Region (Régió) | Válassza a **WestCentralUS**lehetőséget. |
     | Teljesítmény| Hagyja meg az alapértelmezett **standard**értéket. |
     | Fióktípus | Hagyja meg az alapértelmezett **tárolót (általános célú v2)** . |
     | Replikáció | Válassza a **READ-Access geo-redundáns tárolás (ra-GRS)** lehetőséget. |
@@ -119,13 +119,13 @@ Ebben a szakaszban létrehoz egy privát Storage-fiókot egy privát végpont ha
 5. A **Storage-fiók létrehozása – hálózatkezelés**területen válassza a **magánhálózati végpont hozzáadása**elemet. 
 6. A **privát végpont létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetést | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
-    |Hely|Válassza a **WestCentralUS**lehetőséget.|
-    |Name (Név)|Adja meg a *myPrivateEndpoint*.  |
+    |Földrajzi egység|Válassza a **WestCentralUS**lehetőséget.|
+    |Név|Adja meg a *myPrivateEndpoint*.  |
     |Tároló alerőforrása|Hagyja meg az alapértelmezett **blobot**. |
     | **HÁLÓZATI** |  |
     | Virtuális hálózat  | Válassza ki a *MyVirtualNetwork* az erőforráscsoport *myResourceGroup*. |
@@ -169,9 +169,6 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 ## <a name="access-storage-account-privately-from-the-vm"></a>Hozzáférés a Storage-fiókhoz a virtuális gépről
 
 Ebben a szakaszban a privát végponton keresztül fog csatlakozni a Storage-fiókhoz.
-
-> [!IMPORTANT]
-> A tároló DNS-konfigurációjának manuális módosítására van szükség a gazdagépek fájlján, hogy az tartalmazza az adott fiók teljes tartománynevét. módosítsa a következő fájlt a Windows rendszerre vonatkozó rendszergazdai engedélyekkel: c:\Windows\System32\Drivers\etc\hosts vagy Linux/etc/hosts tartalmazza az előző lépésből származó fiók DNS-információit a következő formátumban [magánhálózati IP-cím] myaccount.blob.core.windows.net
 
 1. A *myVM*távoli asztal nyissa meg a PowerShellt.
 2. Adja meg `nslookup mystorageaccount.blob.core.windows.net` a következőhöz hasonló üzenetet fog kapni:

@@ -2,18 +2,18 @@
 title: Hibák elhárítása Update Management
 description: Ismerje meg, hogyan lehet elhárítani a Update Managementével kapcsolatos problémákat.
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 2aebcf05cbc818997943ed3bab19fb1fd8a83592
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a42b05239ae1ddf8909e288486694bf57595b195
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786060"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849241"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Hibák elhárítása Update Management
 
@@ -21,7 +21,7 @@ Ez a cikk a Update Management használatakor felmerülhető problémák megoldá
 
 A hibrid feldolgozói ügynöknek van egy ügynök-hibakeresője, amely meghatározza a mögöttes problémát. A hibaelhárítással kapcsolatos további tudnivalókért tekintse meg a [frissítési ügynökkel kapcsolatos problémák elhárítása](update-agent-issues.md)című témakört. Az összes többi probléma esetén kövesse az alábbi hibaelhárítási útmutatót.
 
-Ha problémák merülnek fel a megoldás virtuális gépen való beléptetése közben, tekintse meg a helyi gépen a **Operations Manager** log ( **alkalmazás és szolgáltatások naplója** ) lehetőséget a helyi számítógépen a 4502-es azonosítójú eseményekkel és az esemény részleteit tartalmazó eseménnyel. **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. HybridAgent**.
+Ha problémák merülnek fel a megoldás virtuális gépen való beléptetése közben, tekintse meg a helyi gépen a **Operations Manager** log ( **alkalmazás és szolgáltatások naplója** ) lehetőséget az 4502-as azonosítójú eseményekkel és a **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. HybridAgent**azonosítójú esemény részleteivel.
 
 A következő szakasz a konkrét hibaüzeneteket és az egyes lehetséges megoldásait ismerteti. Egyéb bevezetési problémák esetén lásd: a megoldás bevezetésének [hibaelhárítása](onboarding.md).
 
@@ -68,7 +68,7 @@ Lehet, hogy meghatározott egy kvótát a munkaterületen, amely el lett érve, 
   | where OperationCategory == 'Data Collection Status'
   | sort by TimeGenerated desc
   ```
-  Ha `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` eredményt kap, a munkaterületen meghatározott kvóta van meghatározva, és az adatok mentésének leállítása megtörtént. A munkaterületen lépjen a **használat és becsült költségek**  >  az**adatmennyiség-kezelés** lehetőségre, és keresse meg a kvótát, vagy távolítsa el azt.
+  Ha `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` eredményt kap, a munkaterületen meghatározott kvóta van meghatározva, és az adatok mentésének leállítása megtörtént. A munkaterületen lépjen a **használat és becsült költségek** > az **adatmennyiség-kezelés** lehetőségre, és keresse meg a kvótát, vagy távolítsa el azt.
 
 * Ha ezek a lépések nem oldják meg a problémát, kövesse a [Windows Hybrid Runbook-feldolgozó üzembe helyezése](../automation-windows-hrw-install.md) című témakör lépéseit a hibrid feldolgozó Windows rendszerre való újratelepítéséhez. Linux rendszeren [pedig Linux hibrid Runbook-feldolgozót is üzembe helyezhet](../automation-linux-hrw-install.md).
 
@@ -119,7 +119,7 @@ Ez a hiba a következő okok miatt fordulhat elő:
 2. Ha klónozott rendszerképet használ:
    1. A Log Analytics munkaterületen távolítsa el a virtuális gépet a `MicrosoftDefaultScopeConfig-Updates` hatókör-konfiguráció mentett keresésből, ha az látható. A mentett keresések a munkaterület **általános** területén találhatók.
    2. Futtassa az `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force` parancsot.
-   3. Futtassa a `Restart-Service HealthService` parancsot az `HealthService` újraindításához. Ezzel újra létrehozza a kulcsot, és létrehoz egy új UUID-t.
+   3. A `HealthService`újraindításához futtassa `Restart-Service HealthService`. Ezzel újra létrehozza a kulcsot, és létrehoz egy új UUID-t.
    4. Ha ez a megközelítés nem működik, először futtassa a sysprept a rendszerképen, majd telepítse az MMA-t.
 
 ## <a name="multi-tenant"></a>Forgatókönyv: egy másik Azure-bérlőben lévő gépekhez tartozó frissítési központi telepítés létrehozásakor a rendszer csatolt előfizetési hibát kap
@@ -187,7 +187,7 @@ Ez a hiba a következő okok valamelyike miatt jelentkezhet:
 
 ### <a name="resolution"></a>Felbontás
 
-Ha alkalmazható, használjon [dinamikus csoportokat](../automation-update-management-groups.md) a frissítés központi telepítéséhez. Emellett
+Ha alkalmazható, használjon [dinamikus csoportokat](../automation-update-management-groups.md) a frissítés központi telepítéséhez. Ezenkívül:
 
 * Győződjön meg arról, hogy a gép még létezik, és elérhető. Ha nem létezik, szerkessze az üzemelő példányt, és távolítsa el a gépet.
 * Tekintse meg a [hálózati tervezés](../automation-update-management.md#ports) szakaszt a Update Managementhoz szükséges portok és címek listájának megtekintéséhez, majd ellenőrizze, hogy a gép megfelel-e a követelményeknek.
@@ -396,5 +396,5 @@ Ha nem tudja feloldani a javítási problémát, készítsen másolatot a követ
 Ha nem találta meg a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-* Az Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, valamint a válaszok, a támogatás és a szakértők összekapcsolásával csatlakozhat a [@AzureSupporthoz](https://twitter.com/azuresupport), a hivatalos Microsoft Azure a felhasználói élmény fokozásához.
+* Az Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, valamint a válaszok, a támogatás és a szakértők összekapcsolásával csatlakozhat a [@AzureSupporthoz ](https://twitter.com/azuresupport), a hivatalos Microsoft Azure a felhasználói élmény fokozásához.
 * Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

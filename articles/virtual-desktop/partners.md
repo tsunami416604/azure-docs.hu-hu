@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: helohr
-ms.openlocfilehash: 6b4e1a5024fec07ca73c79d2742933b7b115e6c2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384303"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851179"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -28,16 +28,6 @@ A Citrix kiterjeszti a Windows virtuális asztal értékét robusztus nagyválla
 
 - [Lépjen a partner webhelyére](https://more.citrix.com/wvd).
 
-## <a name="cloudhouse"></a>Cloudhouse
-
-![Cloudhouse embléma](./media/partners/cloudhouse.png)
-
-A Cloudhouse egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely az ügyfelek számára egy kulcsrakész alkalmazás-áttelepítési szolgáltatást kínál, amely az összes olyan alkalmazást áthelyezheti, amelyek nem kompatibilisek a modern Windows operációs rendszerekkel, valamint a Windows Virtuális asztali környezet, amely lehetővé teszi, hogy az ügyfelek valóban kihasználják a több munkamenetből álló Windows 10 rendszert. 
-
-A bevált Cloudhouse-tárolókra bontás technológiával a Cloudhouse szolgáltatás minden alkalmazást végrehajt, beleértve a Windows XP, a Windows 7 vagy a Windows 8 rendszerhez készült alkalmazásokat, és telepíti őket egy modern Windows virtuális asztalra anélkül, hogy kódot kellene megváltoztatnia, vagy a felhasználói élmény befolyásolása. A Cloudhouse tovább bővíti a Windows virtuális asztal értékét a mögöttes operációs rendszerből származó alkalmazások elkülönítésével, így lehetővé téve a Windows karbantartási frissítéseinek kivonását anélkül, hogy ez hatással lenne a tároló alkalmazásra. 
-
-- [Lépjen a partner webhelyére](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
-
 ## <a name="vmware"></a>VMware
 
 ![VMware-embléma](./media/partners/vmware.png)
@@ -48,6 +38,17 @@ Jóváhagyott szolgáltatóként a Windows rendszerű virtuális asztalok előny
 
 - [Regisztráljon a Horizon Cloud Microsoft Azure-on elérhető Tech Preview-ra](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Lépjen a partner webhelyére](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+
+
+## <a name="cloudhouse"></a>Cloudhouse
+
+![Cloudhouse embléma](./media/partners/cloudhouse.png)
+
+A Cloudhouse egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely az ügyfelek számára egy kulcsrakész alkalmazás-áttelepítési szolgáltatást kínál, amely az összes olyan alkalmazást áthelyezheti, amelyek nem kompatibilisek a modern Windows operációs rendszerekkel, valamint a Windows Virtuális asztali környezet, amely lehetővé teszi, hogy az ügyfelek valóban kihasználják a több munkamenetből álló Windows 10 rendszert. 
+
+A bevált Cloudhouse-tárolókra bontás technológiával a Cloudhouse szolgáltatás minden alkalmazást végrehajt, beleértve a Windows XP, a Windows 7 vagy a Windows 8 rendszerhez készült alkalmazásokat, és telepíti őket egy modern Windows virtuális asztalra anélkül, hogy kódot kellene megváltoztatnia, vagy a felhasználói élmény befolyásolása. A Cloudhouse tovább bővíti a Windows virtuális asztal értékét a mögöttes operációs rendszerből származó alkalmazások elkülönítésével, így lehetővé téve a Windows karbantartási frissítéseinek kivonását anélkül, hogy ez hatással lenne a tároló alkalmazásra. 
+
+- [Lépjen a partner webhelyére](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
 ## <a name="cloudjumper"></a>CloudJumper
 

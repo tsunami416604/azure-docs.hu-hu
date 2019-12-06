@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 9146430f512b065553d4c5362af8655eb01c1206
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d14b81075d1e1f98449ef655c3e00f172c7f407b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530957"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873777"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Támogatási mátrix az Azure-beli virtuális gépek Azure-régiók közötti vész-helyreállításához
 
@@ -26,7 +26,7 @@ Ez a cikk összefoglalja az Azure-beli virtuális gépeknek az egyik Azure-régi
 **Azure Portalra** | Támogatott.
 **PowerShell** | Támogatott. [További információ](azure-to-azure-powershell.md)
 **REST API** | Támogatott.
-**Parancssori felület** | Jelenleg nem támogatott
+**Parancssori felület** | Egyelőre nem támogatott
 
 
 ## <a name="resource-support"></a>Erőforrás-támogatás
@@ -65,7 +65,7 @@ Országon belüli vész-helyreállításra fenntartott korlátozott régiók |A 
 
 
 
-## <a name="cache-storage"></a>Gyorsítótár-tároló
+## <a name="cache-storage"></a>Gyorsítótár
 
 Ez a táblázat a Site Recovery által a replikálás során használt cache Storage-fiók támogatását foglalja össze.
 
@@ -89,12 +89,11 @@ Windows Server 2019 | A Server Core és a Server asztali felhasználói felület
 Windows Server 2016  | Támogatott Server Core, kiszolgáló asztali felülettel.
 Windows Server 2012 R2 | Támogatott.
 Windows Server 2012 | Támogatott.
-Windows Server 2008 R2 SP1/SP2 | Támogatott.<br/><br/> Az Azure-beli virtuális gépek mobilitási szolgáltatás-bővítményének 2019. x. x verziójának 9.30. x. x verziójától (a várt kiadástól kezdve, a Windows Server 2008 R2 SP1/SP2 verziót futtató számítógépeken telepíteni kell a Windows [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4490628) és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) .  Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
-Windows Server 2008 SP2 | Az Azure-beli virtuális gépek mobilitási szolgáltatás-bővítményének 2019. x. x verziójának 9.30. x. x verziójától (a várt kiadástól számítva) telepítenie kell egy Windows- [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4493730) és [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows Server 2008 SP2-t futtató számítógépeken.  Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
+Windows Server 2008 R2 SP1/SP2 | Támogatott.<br/><br/> Az Azure-beli virtuális gépek mobilitási szolgáltatásának [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve telepítenie kell egy Windows- [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4490628) és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows Server 2008 R2 SP1/SP2 rendszert futtató számítógépeken.  Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
 Windows 10 (x64) | Támogatott.
 Windows 8,1 (x64) | Támogatott.
 Windows 8 (x64) | Támogatott.
-Windows 7 (x64) SP1-től | A 9.30. x. x verziótól (a várt kiadás, amely az Azure virtuális gépek mobilitási szolgáltatásának 2019. novembertől kezdődően kezdődik), telepítenie kell egy Windows- [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4490628) és [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows 7 SP1 rendszert futtató gépeken.  Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
+Windows 7 (x64) SP1-től | Az Azure-beli virtuális gépek mobilitási szolgáltatásának [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve telepítenie kell egy Windows- [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4490628) és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows 7 SP1 rendszert futtató számítógépeken.  Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
 
 
 
@@ -117,7 +116,7 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Támogatott Ubuntu kernel-verziók az Azure Virtual Machines szolgáltatáshoz
 
-**Kiadási** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
+**Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
 14,04 LTS | 9,28 | 3.13.0-24 – általános – 3.13.0 – 170 – általános,<br/>3.16.0-25 – általános – 3.16.0-77 – általános,<br/>3.19.0-18 – általános – 3.19.0 – 80 – általános,<br/>4.2.0-18 – általános – 4.2.0 – 42 – általános,<br/>4.4.0-21 – általános – 4.4.0 – 148 – általános,<br/>4.15.0-1023-Azure-4.15.0-1045-Azure |
 14,04 LTS | 9,27 | 3.13.0-24 – általános – 3.13.0 – 170 – általános,<br/>3.16.0-25 – általános – 3.16.0-77 – általános,<br/>3.19.0-18 – általános – 3.19.0 – 80 – általános,<br/>4.2.0-18 – általános – 4.2.0 – 42 – általános,<br/>4.4.0-21 – általános – 4.4.0 – 148 – általános,<br/>4.15.0-1023-Azure-4.15.0-1045-Azure |
@@ -136,7 +135,7 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Az Azure Virtual Machines által támogatott Debian kernel-verziók
 
-**Kiadási** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
+**Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
 Debian 7 | 9.25, 9.26, 9.27, 9.28 | 3.2.0-4-amd64 – 3.2.0-6-amd64, 3.16.0 -0. BPO. 4 – amd64 |
 |||
@@ -146,7 +145,7 @@ Debian 8 | 9,25, 9,26 | 3.16.0-4-amd64 – 3.16.0-8-amd64, 4.9.0 -0. BPO. 4 – 
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Támogatott SUSE Linux Enterprise Server 12 kernel-verzió az Azure Virtual Machines szolgáltatásban
 
-**Kiadási** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
+**Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,28 | SP1 3.12.49-11 – alapértelmezett érték: 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-default a 3.12.74-60.64.118-default</br></br> SP2 4.4.21-69 – alapértelmezett érték: 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default a 4.4.121-92.117-default</br></br>SP3 4.4.73-5 – alapértelmezett érték: 4.4.180-94.100-default</br></br>SP3 4.4.138-4.7-Azure-4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41 – alapértelmezett érték: 4.12.14-95.29 – alapértelmezett</br>SP4 4.12.14-6.3-Azure-4.12.14-6.23-Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,27 | SP1 3.12.49-11 – alapértelmezett érték: 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-default a 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69 – alapértelmezett érték: 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default a 4.4.121-92.117-default</br></br>SP3 4.4.73-5 – alapértelmezett érték: 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-Azure-4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41 – alapértelmezett érték: 4.12.14-95.24 – alapértelmezett</br>SP4 4.12.14-6.3-Azure-4.12.14-6.18-Azure |
@@ -213,9 +212,9 @@ Azure Disk Encryption (ADE) Windows operációs rendszerhez | Felügyelt lemezek
 Azure Disk Encryption (ADE) Linux operációs rendszerhez | Támogatott |
 Gyors Hozzáadás | Támogatott | A replikált Azure-beli virtuális géphez hozzáadott adatlemez replikálásának engedélyezése támogatott a felügyelt lemezeket használó virtuális gépek esetében.
 Gyors lemez eltávolítása | Nem támogatott | Ha eltávolít egy adatlemezt a virtuális gépen, le kell tiltania a replikációt, és újra engedélyeznie kell a replikációt a virtuális gépen.
-Lemez kizárása | Támogatja. A konfiguráláshoz a [PowerShellt](azure-to-azure-exclude-disks.md) kell használnia. |  Az ideiglenes lemezek alapértelmezés szerint ki vannak zárva.
-Közvetlen tárolóhelyek  | Összeomlás-konzisztens helyreállítási pontok esetén támogatott. Az alkalmazás konzisztens helyreállítási pontjai nem támogatottak. |
-Kibővíthető fájlkiszolgáló  | Összeomlás-konzisztens helyreállítási pontok esetén támogatott. Az alkalmazás konzisztens helyreállítási pontjai nem támogatottak. |
+Lemez kizárása | Támogatás: A konfiguráláshoz a [PowerShellt](azure-to-azure-exclude-disks.md) kell használnia. |  Az ideiglenes lemezek alapértelmezés szerint ki vannak zárva.
+Tárolóhelyek – Közvetlen  | Összeomlás-konzisztens helyreállítási pontok esetén támogatott. Az alkalmazás konzisztens helyreállítási pontjai nem támogatottak. |
+Kibővített fájlkiszolgáló  | Összeomlás-konzisztens helyreállítási pontok esetén támogatott. Az alkalmazás konzisztens helyreállítási pontjai nem támogatottak. |
 LRS | Támogatott |
 GRS | Támogatott |
 RA-GRS | Támogatott |

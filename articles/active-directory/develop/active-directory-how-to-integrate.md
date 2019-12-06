@@ -2,28 +2,24 @@
 title: Integráció a Azure Active Directory használatával | Microsoft Docs
 description: Ismerje meg az alkalmazások Azure Active Directoryokkal való integrálásának előnyeit, és szerezzen be erőforrásokat olyan funkciókhoz, mint például az egyszerűsített bejelentkezés, az Identitáskezelés, a többtényezős hitelesítés és a hozzáférés-vezérlés.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/08/2019
 ms.author: ryanwi
-ms.reviewer: bryanla
+ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48be16827da21643af485d1fb94b9a7b76728325
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 2815fbebd54a1e373aa8b3058f85d092c0bb098f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374033"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844889"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integráció a Azure Active Directory
 
@@ -31,7 +27,7 @@ ms.locfileid: "72374033"
 
 Ebből a cikkből megtudhatja, milyen előnyökkel jár az alkalmazás integrálása Azure Active Directory (Azure AD) és erőforrások beszerzése az integrációhoz. Az Azure AD nagyvállalati szintű Identitáskezelés-kezelést kínál a felhőalapú alkalmazásokhoz. Az Azure AD-integráció lehetővé teszi a felhasználók számára, hogy zökkenőmentes bejelentkezési élményt biztosítson, és segít az alkalmazásnak megfelelni az informatikai szabályzatoknak.
 
-## <a name="how-to-integrate"></a>Integráció
+## <a name="how-to-integrate"></a>Az integrálás menete
 
 Az alkalmazás az Azure AD-vel való integrálásának számos módja van. Használja ki az alkalmazásának megfelelő számos vagy több ilyen forgatókönyvet.
 

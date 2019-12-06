@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7176101a1e6c1da54ddd8b5f22b61b91fbc5115a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267941"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869305"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal
 
@@ -27,7 +27,7 @@ Miután hozzáadta a vendég felhasználót a címtárhoz, elküldheti a vendég
 > [!IMPORTANT]
 > A szervezete adatvédelmi nyilatkozatának URL-címének hozzáadásához kövesse a következő témakörben ismertetett lépéseket [: útmutató: a szervezet adatvédelmi adatainak hozzáadása a Azure Active Directory](https://aka.ms/adprivacystatement) . A meghívó első beváltási folyamatának részeként a meghívott felhasználónak el kell fogadnia az adatvédelmi feltételeit a folytatáshoz. 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Győződjön meg arról, hogy a szervezet külső együttműködési beállításai úgy vannak konfigurálva, hogy Ön is meghívja vendégeit. Alapértelmezés szerint minden felhasználó és rendszergazda meghívhatja a vendégeket. Előfordulhat azonban, hogy a szervezet külső együttműködési házirendjei úgy vannak konfigurálva, hogy megakadályozzák bizonyos típusú felhasználók vagy rendszergazdák számára a vendégek meghívását. Ha szeretné megtudni, hogyan tekintheti meg és állíthatja be ezeket a szabályzatokat, tekintse meg a [B2B külső együttműködés engedélyezése és a felhasználók meghívása](delegate-invitations.md)című témakört.
 
@@ -36,11 +36,11 @@ Győződjön meg arról, hogy a szervezet külső együttműködési beállítá
 Ha VÁLLALATKÖZI együttműködési felhasználókat szeretne hozzáadni a címtárhoz, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) olyan felhasználóként, aki korlátozott rendszergazdai címtárbeli szerepkörrel vagy a vendég meghívó szerepkörrel van társítva.
-2. A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+2. Keresse meg és válassza ki a **Azure Active Directory** bármely oldalon.
 3. A **Kezelés** alatt válassza a **Felhasználókat**.
 4. Válassza az **Új vendégfelhasználót**.
 
-   ![Azt mutatja, hogy az új vendég felhasználó hol van a felhasználói felületen](./media/add-users-administrator/NewGuestUser-Directory.png) 
+   ![Azt mutatja, hogy az új vendég felhasználó hol van a felhasználói felületen](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
    > [!NOTE]
    > Az **új vendég felhasználói** lehetőség a **szervezeti kapcsolatok** oldalon is elérhető. **Azure Active Directory**a **kezelés**területen válassza a **szervezeti kapcsolatok**elemet.
@@ -63,15 +63,15 @@ Miután elküldte a meghívót, a felhasználói fiók automatikusan hozzáadód
 
 ![A vendég felhasználói típussal rendelkező B2B-felhasználó megjelenítése](./media/add-users-administrator/GuestUserType.png)  
 
-## <a name="add-guest-users-to-a-group"></a>Vendég felhasználók hozzáadása egy csoporthoz
+## <a name="add-guest-users-to-a-group"></a>Vendégfelhasználók hozzáadása egy csoporthoz
 Ha a VÁLLALATKÖZI együttműködési felhasználókat manuálisan kell hozzáadnia egy csoporthoz, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com) Azure AD rendszergazdaként.
-2. A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+2. Keresse meg és válassza ki a **Azure Active Directory** bármely oldalon.
 3. A **kezelés**területen válassza a **csoportok**lehetőséget.
 4. Válasszon ki egy csoportot (vagy kattintson az **új csoport** elemre egy új létrehozásához). Érdemes belefoglalni a csoport leírásában, hogy a csoport B2B vendég felhasználókat tartalmaz.
-5. Válasszon **tagokat**. 
-6. Tegye a következők valamelyikét:
+5. Válassza ki a **Members** (Tagok) elemet. 
+6. Folytassa a következők egyikével:
    - Ha a vendég felhasználó már létezik a címtárban, keresse meg a B2B felhasználót. Válassza ki a felhasználót, majd kattintson a **kiválasztás** elemre a felhasználó csoportba való felvételéhez.
    - Ha a vendég felhasználó még nem létezik a címtárban, hívja meg őket a csoportba úgy, hogy beírja az e-mail-címét a keresőmezőbe, írja be az opcionális személyes üzenetet, majd kattintson a **kiválasztás**gombra. A meghívás automatikusan kikerül a meghívott felhasználó felé.
      
@@ -79,21 +79,21 @@ Ha a VÁLLALATKÖZI együttműködési felhasználókat manuálisan kell hozzáa
    
 Dinamikus csoportokat is használhat az Azure AD B2B együttműködés segítségével. További információ: [dinamikus csoportok és Azure Active Directory B2B együttműködés](use-dynamic-groups.md).
 
-## <a name="add-guest-users-to-an-application"></a>Vendég felhasználók hozzáadása egy alkalmazáshoz
+## <a name="add-guest-users-to-an-application"></a>Vendégfelhasználók hozzáadása egy alkalmazáshoz
 
 Ha VÁLLALATKÖZI együttműködéssel rendelkező felhasználókat szeretne felvenni egy alkalmazásba, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com) Azure AD rendszergazdaként.
-2. A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+2. Keresse meg és válassza ki a **Azure Active Directory** bármely oldalon.
 3. A **kezelés**területen válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
 4. Válassza ki azt az alkalmazást, amelyhez vendég felhasználókat szeretne felvenni.
 5. Az alkalmazás irányítópultján válassza az **összes felhasználó** lehetőséget a **felhasználók és csoportok** ablaktábla megnyitásához.
 
     ![Összes felhasználó gomb a nyitott felhasználók és csoportok hozzáadásához](./media/add-users-administrator/AppUsersAndGroups.png)
 
-6. Válassza a **felhasználó hozzáadása**elemet.
+6. Válassza a **Felhasználó hozzáadása** elemet.
 7. A **hozzárendelés hozzáadása**területen válassza a **felhasználók és csoportok**lehetőséget.
-8. Tegye a következők valamelyikét:
+8. Folytassa a következők egyikével:
    - Ha a vendég felhasználó már létezik a címtárban, keresse meg a B2B felhasználót. Válassza ki a felhasználót, kattintson a **kiválasztás**elemre, majd kattintson a **hozzárendelés** gombra a felhasználó az alkalmazáshoz való hozzáadásához.
    - Ha a vendég felhasználó még nem létezik a címtárban, a **tag kiválasztása vagy a külső felhasználó meghívása**területen írja be a felhasználó e-mail-címét. Az üzenet mezőbe írjon be egy opcionális személyes üzenetet. Az üzenet mezőben kattintson a **meghívás**elemre.
            
@@ -107,23 +107,23 @@ Ha VÁLLALATKÖZI együttműködéssel rendelkező felhasználókat szeretne fel
    - Kattintson a **Kiválasztás** gombra.
    - Kattintson a **Hozzárendelés** gombra.
  
-## <a name="resend-invitations-to-guest-users"></a>Meghívók újraküldése a vendég felhasználói számára
+## <a name="resend-invitations-to-guest-users"></a>Meghívók újraküldése a vendégfelhasználóknak
 
 Ha a vendég felhasználó még nem váltotta be a meghívót, akkor újra elküldheti a meghívót tartalmazó e-mailt.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com) Azure AD rendszergazdaként.
-2. A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+2. Keresse meg és válassza ki a **Azure Active Directory** bármely oldalon.
 3. A **Kezelés** alatt válassza a **Felhasználókat**.
 5. Válassza ki a felhasználói fiókot.
 6. A **kezelés**területen válassza a **profil**lehetőséget.
 7. Ha a felhasználó még nem fogadta el a meghívót, akkor a **meghívás újraküldése** lehetőség is elérhető. Válassza ezt a gombot az újraküldéshez.
 
-   ![Meghívási lehetőség újraküldése a felhasználói profilban](./media/add-users-administrator/Resend-Invitation.png)
+   ![Meghívási lehetőség újraküldése a felhasználói profilban](./media/add-users-administrator/b2b-user-resend-invitation.png)
 
 > [!NOTE]
 > Ha olyan meghívót küld újra, amely eredetileg a felhasználót egy adott alkalmazáshoz irányította, akkor az új meghívóban található hivatkozás helyett a legfelső szintű hozzáférési panelre kerül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Annak megismeréséhez, hogy a nem Azure AD-rendszergazdák hogyan vehetik fel a B2B vendég felhasználókat, tekintse meg az [információkkal dolgozó szakemberek a B2B Collaboration-felhasználókat?](add-users-information-worker.md)
 - A meghívó e-mail-címével kapcsolatos információkért tekintse meg a [B2B együttműködés meghívójának e-mail-címét](invitation-email-elements.md).

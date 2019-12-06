@@ -1,17 +1,17 @@
 ---
 title: Megismerheti, hogyan kezelhető a konzisztencia az Azure Cosmos DB-ben.
-description: Megismerheti, hogyan kezelhető a konzisztencia az Azure Cosmos DB-ben.
+description: Megtudhatja, hogyan konfigurálhatja és kezelheti Azure Cosmos DB egységességi szintjeit a Azure Portal, a .net SDK, a Java SDK és számos más SDK használatával
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: bc5554e2d56987e969894ba57052d548e1499938
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 46c4c4afe737fd11c2e711a23a3355f48dbd6231
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093309"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872077"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB konzisztenciaszintjeinek kezelése
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan kezelhető a konzisztencia szintjei Azure Cosmos
 
 Az [alapértelmezett konzisztencia-szint](consistency-levels.md) az ügyfelek által alapértelmezés szerint használt konzisztencia-szint. Az ügyfelek bármikor felülbírálják.
 
-### <a name="cli"></a>parancssori felület
+### <a name="cli"></a>CLI
 
 ```bash
 # create with a default consistency
@@ -231,12 +231,12 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>A valószínűség alapján korlátozott frissesség (PBS) metrika monitorozása
 
-Hogyan lehetséges a végleges konzisztencia? Az átlagos esetben a korábbi verziókra és időpontokra vonatkozó elévülési korlátokat is kínáljuk. A [**Probabilistically határos elavulás (PBS)** ](https://pbs.cs.berkeley.edu/) mérőszáma megpróbálja számszerűsíteni az elavultság valószínűségét, és mérőszámként jeleníti meg azt. A PBS-metrika megtekintéséhez lépjen a Azure Portal Azure Cosmos-fiókjába. Nyissa meg a metrikák ablaktáblát, és válassza a **konzisztencia** lapot. Tekintse meg a számítási **feladatok alapján a nagy mértékben konzisztens olvasások valószínűségét (lásd: PBS)** .
+Hogyan lehetséges a végleges konzisztencia? Az átlagos esetben a korábbi verziókra és időpontokra vonatkozó elévülési korlátokat is kínáljuk. A [**Probabilistically határos elavulás (PBS)** ](https://pbs.cs.berkeley.edu/) mérőszáma megpróbálja számszerűsíteni az elavultság valószínűségét, és mérőszámként jeleníti meg azt. A PBS-metrika megtekintéséhez lépjen a Azure Portal Azure Cosmos-fiókjába. Nyissa meg a **metrikák** ablaktáblát, és válassza a **konzisztencia** fület. tekintse meg a számítási feladaton **alapuló, erősen konzisztens olvasás valószínűségét mutató diagramot (lásd: PBS)** .
 
 ![PBS gráf a Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Adatütközések kezeléséről, illetve a Azure Cosmos DB következő kulcsfontosságú koncepciójának bevezetéséről. Lásd az alábbi cikkeket:
 

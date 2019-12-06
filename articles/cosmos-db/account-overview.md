@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB-fiókok használata
-description: Ez a cikk a Azure Cosmos DB-fiókok létrehozását és használatát ismerteti
+description: Ez a cikk az Azure Cosmos-fiókok létrehozását és használatát ismerteti. Az Azure Cosmos-fiókban található elemek hierarchiáját is megjeleníti
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 57b2cffbf8085e6d393765190a6dfc2dead51625
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d29ed68b2945b2473b33aa88176e6f5d832a0fba
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757091"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872264"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Azure Cosmos-fiók használata
 

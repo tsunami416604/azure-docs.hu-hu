@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: def0ac11edfa5a17a8e506c79d91885dd3c9ab66
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 924c2fd176b5b8e45352d616d226f484e814450d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770387"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849259"
 ---
 # <a name="understand-the-linux-hybrid-runbook-worker-health-in-update-management"></a>A Linux Hybrid Runbook Worker állapotának megismerése Update Management
 
@@ -46,7 +46,7 @@ Ha elkészült, a rendszer az eredményeket az ablakban adja vissza. Az ellenőr
 
 ![Ügynök-ellenőrzési oldal frissítése](../media/update-agent-issues-linux/update-agent-checks.png)
 
-## <a name="prerequisite-checks"></a>Előfeltételek ellenőrzése
+## <a name="prerequisite-checks"></a>Előfeltétel-ellenőrzések
 
 ### <a name="operating-system"></a>Operációs rendszer
 
@@ -179,4 +179,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ## <a name="next-steps"></a>Következő lépések
 
-A hibrid Runbook-feldolgozókkal kapcsolatos további problémák elhárítása: [Hibaelhárítás – hibrid Runbook-feldolgozók](hybrid-runbook-worker.md)
+A hibrid Runbook-feldolgozókkal kapcsolatos további problémák elhárításához lásd: a [hibrid Runbook-feldolgozók hibaelhárítása](hybrid-runbook-worker.md).

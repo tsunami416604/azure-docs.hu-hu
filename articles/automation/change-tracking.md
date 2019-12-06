@@ -4,18 +4,18 @@ description: A Change Tracking megoldás segítséget nyújt a környezetében e
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fc0aeab4e9603995130392e3560325ccaba1ffc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1fd800062c4a8362919b1818550b2fca9fa3eb88
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886809"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850550"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>A környezet változásainak követése a Change Tracking megoldással
 
@@ -196,12 +196,12 @@ A következő táblázat a nyomon követett elemek korlátait mutatja Change Tra
 
 | **Erőforrás** | **Korlát**| **Megjegyzések** |
 |---|---|---|
-|Fájl|500||
+|File|500||
 |Registry|250||
 |Windows-szoftver|250|Nem tartalmazza a szoftver gyorsjavításait|
 |Linux-csomagok|1250||
 |Szolgáltatások|250||
-|démon|250||
+|Démon|250||
 
 A Change Tracking és a leltárt használó gépek átlagos Log Analytics adatfelhasználása körülbelül 40MB havonta. Ez az érték csak közelítés, és a környezettől függően változhat. Javasoljuk, hogy figyelje a környezetét, és tekintse meg a pontos használatot.
 
@@ -221,7 +221,7 @@ Az ügynök csak a változásokat követi nyomon, ez optimalizálja az ügynök 
 A beállításkulcsok változásainak figyelése az a bővíthetőségi pontok kiértékelése, amelyekben a harmadik féltől származó kód és a kártevő is aktiválható. Az alábbi lista az előre konfigurált beállításkulcsok listáját tartalmazza. Ezek a kulcsok konfigurálva vannak, de nincs engedélyezve. A beállításkulcsok nyomon követéséhez engedélyeznie kell mindegyiket.
 
 > [!div class="mx-tdBreakAll"]
-> |Beállításjegyzék kulcsa | Cél |
+> |Beállításjegyzék kulcsa | Rendeltetés |
 > |---------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Figyeli az olyan általános indítási bejegyzéseket, amelyek közvetlenül a Windows Intézőben kapcsolódnak, és általában az Explorer. exe használatával futtatják a folyamatot.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Az indításkor futó parancsfájlokat figyeli.
@@ -245,12 +245,12 @@ A beállításkulcsok változásainak figyelése az a bővíthetőségi pontok k
 
 A következő címek megadása kifejezetten a Change Tracking. Az ezekkel a címekkel folytatott kommunikáció az 443-as porton keresztül történik.
 
-|Nyilvános Azure  |Azure Government  |
+|Azure Public  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.azure-automation.us|
+|*.azure-automation.net|*. azure-automation.us|
 
 ## <a name="use-change-tracking"></a>Change Tracking használata
 
@@ -268,7 +268,7 @@ Ha egy módosításra vagy eseményre kattint, megjelenik a változással kapcso
 
 A portálon megjelenő részletek mellett a keresések a naplókon is elvégezhető. Nyissa meg a **change Tracking** lapot, és kattintson a **log Analytics**lehetőségre, amely megnyitja a **naplók** lapot.
 
-### <a name="sample-queries"></a>Példák a lekérdezésekre
+### <a name="sample-queries"></a>Mintalekérdezések
 
 A következő táblázat a megoldás által gyűjtött változási rekordokra vonatkozó példákat tartalmaz:
 
@@ -312,7 +312,7 @@ A Hosts fájl változásairól való riasztás a riasztások Change Tracking vag
 |Konfigurációváltozás <br>&#124;where RegistryKey = = @ "HKEY_LOCAL_MACHINE\\szoftver\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Hasznos a kritikus víruskeresési kulcsok változásainak követéséhez|
 |Konfigurációváltozás <br>&#124;ahol a RegistryKey a következőt tartalmazza: @ "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\paraméterek\\FirewallPolicy"| A tűzfalbeállítások változásainak követéséhez hasznos|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A megoldás használatával kapcsolatos további információkért tekintse meg az Change Tracking szóló oktatóanyagot:
 

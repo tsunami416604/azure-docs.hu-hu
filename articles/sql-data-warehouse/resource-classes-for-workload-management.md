@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d8c3e3c272ce12200ab7506fd7c9759a8cb3aa64
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685930"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851740"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Számítási feladatok kezelése erőforrás-osztályokkal Azure SQL Data Warehouse
 
@@ -24,7 +24,7 @@ ms.locfileid: "73685930"
 
 ## <a name="what-are-resource-classes"></a>Mik az erőforrás-osztályok?
 
-A lekérdezés kapacitását a felhasználó erőforrás-osztálya határozza meg.  Az erőforrás-osztályok előre meghatározott erőforrás-korlátokat tartalmaznak a Azure SQL Data Warehouse, amelyek a számítási erőforrásokat és a párhuzamosságot szabályozzák a lekérdezések végrehajtásához. Az erőforrás-osztályok segíthetnek a munkaterhelések kezelésében azáltal, hogy korlátozásokat állítanak be a párhuzamosan futó lekérdezések és az egyes lekérdezésekhez rendelt számítási erőforrások számára.  A memória és a Egyidejűség között kompromisszum van.
+A lekérdezés kapacitását a felhasználó erőforrás-osztálya határozza meg.  Az erőforrás-osztályok előre meghatározott erőforrás-korlátokat tartalmaznak a Azure SQL Data Warehouse, amelyek a számítási erőforrásokat és a párhuzamosságot szabályozzák a lekérdezések végrehajtásához. Az erőforrás-osztályok segítséget nyújthatnak a lekérdezések erőforrásainak konfigurálásához azáltal, hogy korlátozásokat állítanak be a párhuzamosan futó lekérdezések és az egyes lekérdezésekhez hozzárendelt számítási erőforrások számára.  A memória és a Egyidejűség között kompromisszum van.
 
 - A kisebb erőforrás-osztályok csökkentik a maximális memóriát a lekérdezésekben, de növelhetik a párhuzamosságot.
 - A nagyobb erőforrás-osztályok a lekérdezésen alapuló maximális memóriát növelhetik, de a párhuzamosságot is csökkenthetik.
@@ -65,14 +65,18 @@ A dinamikus erőforrás-osztályok a következő előre definiált adatbázis-sz
 - largerc
 - xlargerc
 
-Az egyes erőforrás-osztályok memóriájának kiosztása a következő, a **szolgáltatási szinttől függetlenül**.  A minimális egyidejűségi lekérdezések is fel vannak sorolva.  Egyes szolgáltatási szinteknél a minimális egyidejűségnél nagyobb mértékben lehet megvalósítani.
+Az egyes erőforrás-osztályok memóriájának kiosztása a következő. 
 
-| Erőforrásosztály | Százalékos memória | Egyidejű lekérdezések minimálisra |
-|:--------------:|:-----------------:|:----------------------:|
-| smallrc        | 3                | 32                     |
-| mediumrc       | 10%               | 10                     |
-| largerc        | 22               | 4                      |
-| xlargerc       | 70%               | 1                      |
+| Szolgáltatásszint  | smallrc           | mediumrc               | largerc                | xlargerc               |
+|:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
+| DW100c         | 25%               | 25%                    | 25%                    | 70%                    |
+| DW200c         | 12,5%             | 12,5%                  | 22                    | 70%                    |
+| DW300c         | 8%                | 10%                    | 22                    | 70%                    |
+| DW400c         | 6,25%             | 10%                    | 22                    | 70%                    |
+| DW500c lehetőséget         | 20%               | 10%                    | 22                    | 70%                    |
+| DW1000c<br> DW30000c | 3%       | 10%                    | 22                    | 70%                    |
+
+
 
 ### <a name="default-resource-class"></a>Alapértelmezett erőforrás osztály
 
@@ -105,6 +109,8 @@ Ezeket a műveleteket az erőforrás-osztályok szabályozzák:
 
 > [!NOTE]  
 > A dinamikus felügyeleti nézetekre (DMV) vagy más rendszernézetekre vonatkozó utasításokat nem a párhuzamossági korlátok egyike szabályozza. A rendszer figyelése a rendszeren futtatott lekérdezések számától függetlenül.
+>
+>
 
 ### <a name="operations-not-governed-by-resource-classes"></a>Nem erőforrás-osztályokra vonatkozó műveletek
 
@@ -177,13 +183,18 @@ A felhasználók több erőforrás osztály tagjai lehetnek. Ha egy felhasznál�
 - A dinamikus erőforrás-osztályok elsőbbséget élveznek a statikus erőforrások osztályaival szemben. Ha például egy felhasználó mind a mediumrc (dinamikus), mind a staticrc80 (statikus) tagja, a lekérdezések a mediumrc-vel futnak.
 - A nagyobb erőforrás-osztályok elsőbbséget élveznek a kisebb erőforrás-osztályokkal szemben. Ha például egy felhasználó tagja a mediumrc és a largerc, a lekérdezések a largerc-mel futnak. Hasonlóképpen, ha a felhasználó mind a staticrc20 erőforrásosztályhoz, mind a statirc80 tagja, akkor a lekérdezések staticrc80 erőforrás-lefoglalásokkal futnak.
 
-## <a name="recommendations"></a>Javaslatok
+## <a name="recommendations"></a>Ajánlatok
+
+>[!NOTE]
+>Érdemes lehet kihasználni a munkaterhelés-kezelési képességeket (a[munkaterhelés elkülönítését](sql-data-warehouse-workload-isolation.md), a [besorolást](sql-data-warehouse-workload-classification.md) és a [fontosságot](sql-data-warehouse-workload-importance.md)) a számítási feladatok és a kiszámítható teljesítmény szabályozása érdekében.  
+>
+>
 
 Javasoljuk, hogy hozzon létre egy olyan felhasználót, amely egy adott típusú lekérdezési vagy betöltési művelet futtatására van kijelölve. Ezt a felhasználót állandó erőforrás-osztályként adja meg, és ne módosítsa az erőforrás osztályát gyakori módon. A statikus erőforrás-osztályok nagyobb mértékben szabályozzák a munkaterhelést, ezért javasoljuk, hogy statikus erőforrás-osztályokat használjon a dinamikus erőforrás-osztályok megfontolása előtt.
 
 ### <a name="resource-classes-for-load-users"></a>Erőforrás-osztályok a betöltési felhasználók számára
 
-a `CREATE TABLE` fürtözött oszlopcentrikus indexeket használ alapértelmezés szerint. Az adatok oszlopcentrikus-indexbe tömörítése egy memória-igényes művelet, a memória terhelése pedig csökkentheti az index minőségét. A memória-nyomás nagyobb erőforrás-osztályt eredményezhet az adatbetöltése során. Annak érdekében, hogy a terhelések elegendő memóriával rendelkezzenek, létrehozhat egy terhelés futtatására kijelölt felhasználót, és hozzárendelheti a felhasználót egy magasabb szintű erőforrás-osztályhoz.
+a `CREATE TABLE` alapértelmezés szerint fürtözött oszlopcentrikus indexeket használ. Az adatok oszlopcentrikus-indexbe tömörítése egy memória-igényes művelet, a memória terhelése pedig csökkentheti az index minőségét. A memória-nyomás nagyobb erőforrás-osztályt eredményezhet az adatbetöltése során. Annak érdekében, hogy a terhelések elegendő memóriával rendelkezzenek, létrehozhat egy terhelés futtatására kijelölt felhasználót, és hozzárendelheti a felhasználót egy magasabb szintű erőforrás-osztályhoz.
 
 A terhelések feldolgozásához szükséges memória a betöltött tábla természetétől és az adatok méretétől függ. A memóriával kapcsolatos követelményekről a [sorcsoport minőségének maximalizálása](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)című témakörben olvashat bővebben.
 
@@ -231,10 +242,10 @@ A következő tárolt eljárás célja:
 
 ### <a name="usage-example"></a>Használati példa
 
-Szintaxis  
+Szintaxis:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU: vagy adjon meg egy NULL paramétert az aktuális DWU kinyeréséhez a DW DB-ből, vagy adja meg a támogatott DWU a következő formában: "DW100c".
+1. @DWU: vagy adjon meg NULL paramétert az aktuális DWU kinyeréséhez a DW DB-ből, vagy adja meg a támogatott DWU a következő formában: "DW100c".
 2. @SCHEMA_NAME: adja meg a tábla sémájának nevét.
 3. @TABLE_NAME: adja meg a kívánt tábla nevét
 
@@ -581,7 +592,7 @@ SELECT  CASE
 GO
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele SQL Data Warehouseban][Secure a database in SQL Data Warehouse]. További információ arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét: [a oszlopcentrikus tömörítésének memória-optimalizálása](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3312b5ba6f97dc51f5eeff06eeb194e367935e08
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791156"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869527"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
@@ -81,10 +81,10 @@ A virtuális gépek üzembe helyezésének ajánlott módja a **Windows rendszer
 Kövesse ezeket az utasításokat az összetevők telepítésének megerősítéséhez és a hibaüzenetek ellenőrzéséhez.
 
 1. Ellenőrizze, hogy a két összetevő telepítve van-e a **vezérlőpulton** > **programok** > **programok és szolgáltatások elemre**való ellenőrzésével. Ha a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök rendszerindító betöltőprogramja** nem látható, akkor azok nincsenek telepítve a virtuális gépen.
-2. Nyissa meg a **fájlkezelőt** , és navigáljon a **C:\Windows\Temp\scriptlogs.log**. Ha a fájl hiányzik, az azt jelzi, hogy a két összetevőt telepítő PowerShell DSC nem tudott futni a megadott biztonsági környezetben.
-3. Ha a fájl **C:\Windows\Temp\scriptlogs.log** van, nyissa meg, és ellenőrizze a hibaüzeneteket.
+2. Nyissa meg a **fájlkezelőt** , és navigáljon a **C:\Windows\Temp\ScriptLog.log**. Ha a fájl hiányzik, az azt jelzi, hogy a két összetevőt telepítő PowerShell DSC nem tudott futni a megadott biztonsági környezetben.
+3. Ha a fájl **C:\Windows\Temp\ScriptLog.log** van, nyissa meg, és ellenőrizze a hibaüzeneteket.
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Hiba: hiányzik a Windows virtuális asztali ügynök és a Windows rendszerű virtuális asztali ügynök rendszerindítási betöltője. A C:\Windows\Temp\scriptlogs.log is hiányzik
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Hiba: hiányzik a Windows virtuális asztali ügynök és a Windows rendszerű virtuális asztali ügynök rendszerindítási betöltője. A C:\Windows\Temp\ScriptLog.log is hiányzik
 
 **1. ok:** A Azure Resource Manager sablon bemenete során megadott hitelesítő adatok helytelenek voltak, vagy az engedélyek elégtelenek voltak.
 
@@ -98,7 +98,7 @@ Kövesse ezeket az utasításokat az összetevők telepítésének megerősíté
 - Győződjön meg arról, hogy a bérlő neve pontos, és a bérlő létezik a Windows rendszerű virtuális asztalon.
 - Győződjön meg arról, hogy a fiók legalább RDS közreműködői engedéllyel rendelkezik.
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Hiba: a hitelesítés nem sikerült, hiba a C:\Windows\Temp\scriptlogs.log
+### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Hiba: a hitelesítés nem sikerült, hiba a C:\Windows\Temp\ScriptLog.log
 
 **OK:** A PowerShell DSC végrehajtása sikerült, de nem tudott csatlakozni a Windows rendszerű virtuális asztalhoz.
 

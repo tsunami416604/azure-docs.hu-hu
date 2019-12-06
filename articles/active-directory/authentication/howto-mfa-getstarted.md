@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e91a82442b2d436736719d629f70c8dec0e5a6c
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558540"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848391"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Felhőalapú Azure-beli Multi-Factor Authentication üzembe helyezés tervezése
 
@@ -52,7 +52,7 @@ Az Azure multi-Factor Authentication üzembe helyezése a szabályzatok feltéte
 
 * Minden felhasználó, egy adott felhasználó, egy csoport tagja vagy hozzárendelt szerepkör
 * Az adott felhőalapú alkalmazás elérése folyamatban van
-* Eszköz platformja
+* Eszközplatform
 * Eszköz állapota
 * Hálózati hely vagy földrajzi elhelyezkedésű IP-cím
 * Ügyfélalkalmazások
@@ -102,7 +102,7 @@ Javasoljuk, hogy a szervezetek a feltételes hozzáférés használatával defin
 
 A rendszergazdák kiválaszthatják a felhasználók számára elérhetővé tenni kívánt [hitelesítési módszereket](../authentication/concept-authentication-methods.md) . Fontos, hogy egynél több hitelesítési módszert engedélyezzen, hogy a felhasználók számára elérhető legyen egy biztonsági mentési módszer, ha az elsődleges metódus nem érhető el. A rendszergazdák a következő módszerekkel engedélyezhetők:
 
-### <a name="notification-through-mobile-app"></a>Értesítés a Mobile App használatával
+### <a name="notification-through-mobile-app"></a>Értesítés mobilalkalmazásban
 
 A rendszer leküldéses értesítést küld a mobileszköz Microsoft Authenticator alkalmazásának. A felhasználó megtekinti az értesítést, és kiválasztja a **jóváhagyás** lehetőséget az ellenőrzés befejezéséhez. A mobil alkalmazások leküldéses értesítései biztosítják a legkevésbé zavaró lehetőséget a felhasználók számára. Emellett a legmegbízhatóbb és biztonságos megoldás is, mivel a telefonos szolgáltatás helyett adatkapcsolatokat használnak.
 
@@ -117,7 +117,7 @@ Egy mobil alkalmazás, például a Microsoft Authenticator alkalmazás, 30 máso
 
 A rendszer automatikusan hanghívást helyez el a felhasználó felé. A felhasználó válaszol a hívásra, és megnyomja a telefon billentyűzetén a **#** a hitelesítés jóváhagyásához. A telefon hívása nagyszerű biztonsági mentési módszer a mobil alkalmazások értesítési vagy ellenőrzési kódjához.
 
-### <a name="text-message-to-phone"></a>SMS-üzenet a telefonra
+### <a name="text-message-to-phone"></a>Telefonra küldött szöveges üzenet
 
 Egy ellenőrző kódot tartalmazó szöveges üzenetet küld a rendszer a felhasználónak, és megkéri a felhasználót, hogy adja meg az ellenőrző kódot a bejelentkezési felületen.
 
@@ -288,7 +288,7 @@ Ennek a beállításnak a célja annak meghatározása, hogy mi a teendő, ha eg
 | A kulcs nem létezik | Nincs regisztrálva | Az MFA-kérdés nem sikerült |
 | Az érték igaz/nincs beállítva | Nincs regisztrálva | Az MFA-kérdés nem sikerült |
 | A kulcs hamis értékre van állítva | Nincs regisztrálva | Hitelesítés MFA nélkül |
-| A kulcs hamis vagy igaz értékre van beállítva | Beiratkozott | Hitelesítést kell végezni MFA-val |
+| A kulcs hamis vagy igaz értékre van beállítva | Regisztrálva | Hitelesítést kell végezni MFA-val |
 
 ### <a name="integrate-with-active-directory-federation-services"></a>Integrálás Active Directory összevonási szolgáltatások (AD FS)
 

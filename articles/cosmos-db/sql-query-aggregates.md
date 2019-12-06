@@ -1,21 +1,21 @@
 ---
-title: Az Azure Cosmos DB az aggregátumfüggvények
-description: Az Azure Cosmos DB ismerje meg az SQL összesítő függvény szintaxisát.
+title: Összesítő függvények a Azure Cosmos DBban
+description: Ismerje meg az SQL összesítő függvények szintaxisát, a Azure Cosmos DB által támogatott összesítő függvények típusait.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: a6937e9e811ea8e44eda6f2bcb5d2c7d78db4934
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1ce3b18dd31944a1a4d4e6fad8fb49e63996dace
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342759"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871839"
 ---
-# <a name="aggregate-functions-in-azure-cosmos-db"></a>Az Azure Cosmos DB az aggregátumfüggvények
+# <a name="aggregate-functions-in-azure-cosmos-db"></a>Összesítő függvények a Azure Cosmos DBban
 
-Aggregátumfüggvények számítás elvégzése a SELECT záradékban szereplő értékek egy halmazát, és egyetlen értéket ad vissza. Például a következő lekérdezés belül elemek számát adja meg a `Families` tároló:
+Az összesítő függvények számítást végeznek a SELECT záradékban lévő értékek halmazán, és egyetlen értéket adnak vissza. A következő lekérdezés például a `Families` tárolóban lévő elemek számát adja vissza:
 
 ## <a name="examples"></a>Példák
 
@@ -24,7 +24,7 @@ Aggregátumfüggvények számítás elvégzése a SELECT záradékban szereplő 
     FROM Families f
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [{
@@ -32,20 +32,20 @@ Az eredmények a következők:
     }]
 ```
 
-Csak a skaláris érték az összesítést is visszaadható érték kulcsszó használatával. Például a következő lekérdezést egy egyetlen számot ad vissza értékek száma:
+A VALUE kulcsszó használatával csak az Összesítés skaláris értékét adhatja vissza. Például a következő lekérdezés az értékek számát adja vissza egyetlen számként:
 
 ```sql
     SELECT VALUE COUNT(1)
     FROM Families f
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [ 2 ]
 ```
 
-Összesítések szűrőket is kombinálhatók. Például a következő lekérdezést a cím állapotú elemek számát küldi vissza `WA`.
+Az összesítéseket szűrők használatával is egyesítheti. Például a következő lekérdezés visszaadja az elemek számát `WA`címe állapotával.
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -53,31 +53,31 @@ Az eredmények a következők:
     WHERE f.address.state = "WA"
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [ 1 ]
 ```
 
-## <a name="types-of-aggregate-functions"></a>Az aggregátumfüggvények típusai
+## <a name="types-of-aggregate-functions"></a>Az összesítő függvények típusai
 
-Az SQL API támogatja a következő összesítő függvények. ÖSSZEG és az átlagos numerikus értékeken működnek, és száma, minimális és maximális dolgozhat számok, karakterláncok, logikai és null értékeket.
+Az SQL API a következő összesítő függvényeket támogatja. A SUM és az AVG függvény a numerikus értékeken, valamint a COUNT, a MIN és a MAX függvény számokat, karakterláncokat, logikai értékeket és null értékeket használ.
 
 | Függvény | Leírás |
 |-------|-------------|
-| COUNT | A kifejezésben található elemek számát adja vissza. |
-| SUM   | A kifejezésben található értékek összegét adja vissza. |
-| MIN   | A kifejezés minimumértékét adja vissza. |
-| MAX   | A kifejezés maximumértékét adja vissza. |
-| AVG   | A kifejezésben található értékek átlagát adja vissza. |
+| COUNT | A kifejezésben szereplő elemek számát adja vissza. |
+| SUM   | A kifejezésben szereplő értékek összegét adja vissza. |
+| MIN   | A kifejezésben szereplő minimális értéket adja vissza. |
+| MAX   | A kifejezésben szereplő maximális értéket adja vissza. |
+| AVG   | A kifejezésben szereplő értékek átlagát adja vissza. |
 
-Egy tömb iteráció eredményét feletti is lehet összesíteni.
+A tömb iterációjának eredményét is összesítheti.
 
 > [!NOTE]
-> Az Azure portal adatkezelőjében összesítési lekérdezések csak egy lekérdezést lap alatt előfordulhat, hogy összesítés részleges eredményeket. Az SDK összes oldalain egyetlen összesített értéket állít elő. Kód használatával összesítési lekérdezések végrehajtásához, a .NET SDK-val 1.12.0, .NET Core SDK 1.1.0-ás vagy a Java SDK 1.9.5 szüksége vagy újabb.
+> A Azure Portal Adatkezelő az összesítési lekérdezések részleges eredményeket összesítenek csak egy lekérdezési oldalon. Az SDK egyetlen összesített értéket hoz létre az összes oldalon. Az összesítési lekérdezések kóddal való végrehajtásához .NET SDK 1.12.0, .NET Core SDK 1.1.0 vagy Java SDK 1.9.5 vagy újabb verzió szükséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Cosmos DB bemutatása](introduction.md)
-- [Rendszer-funkciók](sql-query-system-functions.md)
-- [Felhasználó által megadott függvények](sql-query-udfs.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Rendszerfunkciók](sql-query-system-functions.md)
+- [Felhasználó által definiált függvények](sql-query-udfs.md)

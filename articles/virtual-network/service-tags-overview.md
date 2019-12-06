@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 33ee7351e547ee5ef57ef07f67ba6f5f4410b57f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 152b9f3974f24644e55bed68f5ed65faa90d7fe7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384145"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851655"
 ---
 # <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi 
 <a name="network-service-tags"></a>
@@ -38,7 +38,7 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 
 
 
-| Címke | Cél | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
+| Címke | Rendeltetés | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Felügyeleti forgalom a APIM dedikált központi telepítések esetén. | Mindkettő | Nem | Igen |
 | **AppService**    | App Service szolgáltatás. Ez a címke javasolt a kimenő biztonsági szabályokhoz az WebApp-előtérben. | Kimenő | Igen | Igen |
@@ -51,6 +51,7 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **AzureContainerRegistry** | Azure Container Registry szolgáltatás. | Kimenő | Igen | Igen |
 | **AzureCosmosDB** | Azure Cosmos Database szolgáltatás. | Kimenő | Igen | Igen |
 | **AzureDataLake** | Azure Data Lake szolgáltatás. | Kimenő | Nem | Igen |
+| **AzureHDInsight** | Azure HDInsight szolgáltatás. | Bejövő | Igen | Nem |
 | **AzureIoTHub** | Azure IoT Hub szolgáltatás. | Kimenő | Nem | Nem |
 | **AzureKeyVault** | Azure kulcstartó szolgáltatás.<br/><br/>*Megjegyzés:* Ez a címke függőséget tartalmaz a **AzureActiveDirectory** címkével. | Kimenő | Igen | Igen |
 | **AzureLoadBalancer** | Azure infrastruktúra-terheléselosztó. A címkét a rendszer lefordítja a [gazdagép azon virtuális IP-címére](security-overview.md#azure-platform-considerations) (168.63.129.16), ahonnan az Azure állapot-mintavételei származnak. Ha nem az Azure Load Balancert használja, ezt a szabályt felül lehet bírálni. | Mindkettő | Nem | Nem |
@@ -71,8 +72,8 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **ServiceFabric** | Service Fabric szolgáltatás. | Kimenő | Nem | Nem |
 | **SQL** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL és Azure SQL Data Warehouse szolgáltatások.<br/><br/>*Megjegyzés:* Ez a címke a szolgáltatást jelöli, de a szolgáltatás adott példányai nem. Például a címke az Azure SQL Database szolgáltatást jelöli, de nem egy adott SQL-adatbázist vagy -kiszolgálót. | Kimenő | Igen | Igen |
 | **SqlManagement** | Felügyeleti forgalom az SQL dedikált üzemelő példányokhoz. | Mindkettő | Nem | Igen |
-| **Tárolás** | Azure Storage szolgáltatás. <br/><br/>*Megjegyzés:* A címke a szolgáltatást jelöli, de a szolgáltatás adott példányai nem. Például a címke az Azure Storage szolgáltatást jelöli, de nem egy adott Azure Storage-fiókot. | Kimenő | Igen | Igen |
-| **VirtualNetwork** | A virtuális hálózati címtartomány (a virtuális hálózathoz meghatározott összes IP-címtartomány), a virtuális hálózati [átjáróhoz](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)csatlakoztatott összes helyszíni címterület, egymással [összekapcsolt virtuális hálózat](virtual-network-peering-overview.md) vagy virtuális hálózat, a virtuális [IP-cím a](security-overview.md#azure-platform-considerations) [felhasználó által megadott útvonalakon](virtual-networks-udr-overview.md)használt gazdagép és címek előtagjainak címe. Vegye figyelembe, hogy ez a címke tartalmazhatja az alapértelmezett útvonalakat is. | Mindkettő | Nem | Nem |
+| **Storage** | Azure Storage szolgáltatás. <br/><br/>*Megjegyzés:* A címke a szolgáltatást jelöli, de a szolgáltatás adott példányai nem. Például a címke az Azure Storage szolgáltatást jelöli, de nem egy adott Azure Storage-fiókot. | Kimenő | Igen | Igen |
+| **VirtualNetwork** | A virtuális hálózati címtartomány (a virtuális hálózathoz meghatározott összes IP-címtartomány), a [virtuális hálózati átjáróhoz](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)csatlakoztatott összes csatlakoztatott helyszíni címterület [, a virtuális hálózat](virtual-network-peering-overview.md) vagy virtuális hálózat, valamint a [felhasználó által definiált útvonalakon](virtual-networks-udr-overview.md)használt gazdagépek és címek előtagjainak [virtuális IP-címe](security-overview.md#azure-platform-considerations) . Vegye figyelembe, hogy ez a címke tartalmazhatja az alapértelmezett útvonalakat is. | Mindkettő | Nem | Nem |
 
 >[!NOTE]
 >A *klasszikus* (előzetes Azure Resource Manager) környezetben végzett munka esetén a fenti címkék közül választhat.  Ezek a következő alternatív helyesírást használják:

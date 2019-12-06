@@ -1,21 +1,21 @@
 ---
 title: ABS Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function ABS Azure Cosmos DB.
+description: Ismerje meg, hogy az Azure Cosmos DB abszolút (ABS) SQL System függvénye hogyan adja vissza a megadott numerikus kifejezés pozitív értékét.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 12/02/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 480c5ffcfaccfac5061e53612a2ee57235cfa626
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 70648dcf28d760c3a81c0cb426cd9b2d3ce96fff
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348759"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871856"
 ---
 # <a name="abs-azure-cosmos-db"></a>ABS (Azure Cosmos DB)
- A megadott numerikus kifejezés (pozitív) abszolút értékét adja vissza.  
+ A megadott numerikus kifejezés abszolút (pozitív) értékét adja vissza.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,28 +26,28 @@ ABS (<numeric_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   A numerikus kifejezés.  
+   Egy numerikus kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  A numerikus kifejezést ad vissza.  
+  Egy numerikus kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa a `ABS` függvény használatának eredményeit jeleníti meg három különböző számon.  
+  Az alábbi példa az `ABS` függvény három különböző számon való használatának eredményét mutatja be.  
   
 ```sql
 SELECT ABS(-1) AS abs1, ABS(0) AS abs2, ABS(1) AS abs3 
 ```  
   
- Íme az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{abs1: 1, abs2: 0, abs3: 1}]  
 ```  
   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

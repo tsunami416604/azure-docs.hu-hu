@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80d356426fe312708d64cc4284dbb1fd925e47c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd8e46ecf7e65d768d16c8680fb7ab6796c74ea6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233331"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849334"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -156,7 +156,7 @@ Ebben a forgatókönyvben egy munkanap Bérlővel rendelkezik, és a felhasznál
 | Nem. helyszíni üzembe helyezési ügynökök | 3 (a magas rendelkezésre álláshoz és a feladatátvételhez) |
 | Nem. a munkanapokon az AD felhasználói kiépítési alkalmazások konfigurálásához Azure Portal | 1 |
 
-  ![1\. forgatókönyv](./media/workday-inbound-tutorial/dep_scenario1.png)
+  ![1\. eset](./media/workday-inbound-tutorial/dep_scenario1.png)
 
 #### <a name="deployment-scenario-2--single-workday-tenant---multiple-child-ad-domains"></a>Üzembe helyezési forgatókönyv #2: egyetlen munkanap bérlő – > több alárendelt AD-tartomány
 
@@ -238,14 +238,14 @@ Az összes munkanap-létesítési összekötő általános követelménye, hogy 
 
 1. Jelentkezzen be a munkanap bérlőbe egy rendszergazdai fiók használatával. A **munkanap alkalmazásban**írja be a felhasználó létrehozása kifejezést a keresőmezőbe, majd kattintson az **integrációs rendszer felhasználójának létrehozása**elemre.
 
-    ![Felhasználó létrehozása](./media/workday-inbound-tutorial/wd_isu_01.png "Felhasználó létrehozása")
+   ![Felhasználó létrehozása](./media/workday-inbound-tutorial/wd_isu_01.png "Felhasználó létrehozása")
 2. Fejezze be az **integrációs rendszer felhasználói feladat létrehozása** nevű felhasználót egy új integrációs rendszer felhasználójának felhasználónevével és jelszavával.  
   
-* Ha nem jelölte be az **új jelszó megkövetelése** jelölőnégyzetet, akkor a következő bejelentkezéskor nem kell bejelentkeznie, mert ez a felhasználó programozott módon lesz bejelentkezve.
-* Hagyja meg a **munkamenet időkorlátját percben** a 0 alapértelmezett értékkel, ami megakadályozza, hogy a felhasználó munkamenete idő előtt ne legyen időtúllépés.
-* Válassza a **felhasználói felületi munkamenetek tiltása** lehetőséget, mivel ez egy hozzáadott biztonsági réteget biztosít, amely megakadályozza, hogy a felhasználó az integrációs rendszer jelszavával ne jelentkezzen be munkanapokba.
+   * Ha nem jelölte be az **új jelszó megkövetelése** jelölőnégyzetet, akkor a következő bejelentkezéskor nem kell bejelentkeznie, mert ez a felhasználó programozott módon lesz bejelentkezve.
+   * Hagyja meg a **munkamenet időkorlátját percben** a 0 alapértelmezett értékkel, ami megakadályozza, hogy a felhasználó munkamenete idő előtt ne legyen időtúllépés.
+   * Válassza a **felhasználói felületi munkamenetek tiltása** lehetőséget, mivel ez egy hozzáadott biztonsági réteget biztosít, amely megakadályozza, hogy a felhasználó az integrációs rendszer jelszavával ne jelentkezzen be munkanapokba.
 
-    ![Integrációs rendszer felhasználójának létrehozása](./media/workday-inbound-tutorial/wd_isu_02.png "Integrációs rendszer felhasználójának létrehozása")
+   ![Integrációs rendszer felhasználójának létrehozása](./media/workday-inbound-tutorial/wd_isu_02.png "Integrációs rendszer felhasználójának létrehozása")
 
 ### <a name="creating-an-integration-security-group"></a>Integrációs biztonsági csoport létrehozása
 
@@ -356,20 +356,44 @@ Ebben a lépésben az "üzleti folyamatok biztonsága" házirend engedélyeit fo
 
 Ez a szakasz a felhasználói fiókok kiépítésének lépéseit ismerteti a munkanapokról az egyes Active Directory tartományokra az integráció hatókörén belül.
 
-* [Helyszíni kiépítési ügynök (ek) telepítése és konfigurálása](#part-1-install-and-configure-on-premises-provisioning-agents)
-* [A kiépítési összekötő alkalmazás hozzáadása és a munkanapokhoz való csatlakozás létrehozása](#part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday)
-* [Attribútumok leképezésének konfigurálása](#part-3-configure-attribute-mappings)
+* [Adja hozzá a kiépítési összekötő alkalmazást, és töltse le a kiépítési ügynököt.](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)
+* [Helyszíni kiépítési ügynök (ek) telepítése és konfigurálása](#part-2-install-and-configure-on-premises-provisioning-agents)
+* [A munkanapokhoz és Active Directoryhoz való kapcsolódás konfigurálása](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory)
+* [Attribútumok leképezésének konfigurálása](#part-4-configure-attribute-mappings)
 * [A felhasználók üzembe helyezésének engedélyezése és elindítása](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-install-and-configure-on-premises-provisioning-agents"></a>1\. rész: a helyszíni kiépítési ügynök (ek) telepítése és konfigurálása
+### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>1\. rész: a kiépítési összekötő alkalmazás hozzáadása és a kiépítési ügynök letöltése
 
-A helyszíni Active Directory való kiépítéshez az ügynököt olyan kiszolgálóra kell telepíteni, amelyen a .NET 4.7.1 + Framework és a kívánt Active Directory tartomány (ok) hálózati hozzáférése van.
+**Munkanapok konfigurálása Active Directory kiépítés megkezdéséhez:**
+
+1. Nyissa meg a következőt: <https://portal.azure.com>
+
+2. A bal oldali navigációs sávon válassza a **Azure Active Directory**
+
+3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás**lehetőséget.
+
+4. Válassza az **alkalmazás hozzáadása**lehetőséget, és válassza az **összes** kategóriát.
+
+5. Keresse meg a **munkanapokon való kiépítés Active Directoryét**, és adja hozzá az alkalmazást a katalógusból.
+
+6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
+
+7. A **kiépítési** **mód** módosítása **automatikusra**
+
+8. A kiépítési ügynök letöltéséhez kattintson a megjelenő információs szalagcímre. 
+
+   ![Ügynök letöltése](./media/workday-inbound-tutorial/pa-download-agent.png "Ügynök letöltése képernyő")
+
+
+### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>2\. rész: a helyszíni kiépítési ügynök (ek) telepítése és konfigurálása
+
+A helyszíni Active Directory létrehozásához a kiépítési ügynököt olyan kiszolgálóra kell telepíteni, amely .NET 4.7.1 + keretrendszert és hálózati hozzáférést biztosít a kívánt Active Directory tartomány (ok) hoz.
 
 > [!TIP]
 > A .NET-keretrendszer verzióját a kiszolgálón tekintheti meg az [itt](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)megadott utasítások alapján.
 > Ha a kiszolgáló nem rendelkezik .NET 4.7.1 vagy újabb verzióval, letöltheti [innen.](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)  
 
-Miután telepítette a .NET 4.7.1 +-t, innen letöltheti a helyszíni **[kiépítési ügynököt](https://go.microsoft.com/fwlink/?linkid=847801)** , és az ügynök konfigurációjának befejezéséhez kövesse az alábbi lépéseket.
+Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és kövesse az alábbi lépéseket az ügynök konfigurációjának befejezéséhez.
 
 1. Jelentkezzen be arra a Windows Serverre, amelyre telepíteni kívánja az új ügynököt.
 
@@ -420,25 +444,12 @@ Miután telepítette a .NET 4.7.1 +-t, innen letöltheti a helyszíni **[kiépí
   
    ![Szolgáltatások](./media/workday-inbound-tutorial/services.png)
 
-### <a name="part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>2\. rész: a kiépítési összekötő alkalmazás hozzáadása és a kapcsolat létrehozása a munkanapokhoz
+### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>3\. rész: a kiépítési alkalmazásban konfigurálja a munkanapokhoz és a Active Directoryhoz való kapcsolódást.
+Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a Azure Portal. 
 
-**Munkanapok konfigurálása Active Directory kiépítés megkezdéséhez:**
+1. A Azure Portal lépjen vissza a munkaterületre az [1. részben](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent) létrehozott felhasználói üzembe helyezési alkalmazás Active Directoryához.
 
-1. Nyissa meg a következőt: <https://portal.azure.com>
-
-2. A bal oldali navigációs sávon válassza a **Azure Active Directory**
-
-3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás**lehetőséget.
-
-4. Válassza az **alkalmazás hozzáadása**lehetőséget, és válassza az **összes** kategóriát.
-
-5. Keresse meg a **munkanapokon való kiépítés Active Directoryét**, és adja hozzá az alkalmazást a katalógusból.
-
-6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
-
-7. A **kiépítési** **mód** módosítása **automatikusra**
-
-8. Fejezze be a **rendszergazdai hitelesítő adatok** szakaszt a következőképpen:
+1. Fejezze be a **rendszergazdai hitelesítő adatok** szakaszt a következőképpen:
 
    * **Rendszergazdai Felhasználónév** – adja meg a munkanap-integrációs rendszer fiókjának felhasználónevét a bérlői tartománynév hozzáfűzésével. A következőhöz hasonlóan kell kinéznie: **username\@tenant_name**
 
@@ -465,7 +476,7 @@ Miután telepítette a .NET 4.7.1 +-t, innen letöltheti a helyszíni **[kiépí
 
    * Miután a hitelesítő adatok mentése sikeresen megtörtént, a **leképezések** szakasz megjeleníti az alapértelmezett hozzárendelések **szinkronizálása munkanapokat a helyszíni munkatársaival Active Directory**
 
-### <a name="part-3-configure-attribute-mappings"></a>3\. rész: attribútumok hozzárendelésének konfigurálása
+### <a name="part-4-configure-attribute-mappings"></a>4\. rész: attribútumok hozzárendelésének konfigurálása
 
 Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan áramlanak a munkanapokról a Active Directoryra.
 
@@ -538,28 +549,28 @@ Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan �
 
 | MUNKANAP ATTRIBÚTUM | ACTIVE DIRECTORY-ATTRIBÚTUM |  EGYEZŐ AZONOSÍTÓ? | LÉTREHOZÁS/FRISSÍTÉS |
 | ---------- | ---------- | ---------- | ---------- |
-| **WorkerID**  |  Alkalmazottkód | **Igen** | Csak létrehozásra írva |
+| **WorkerID**  |  EmployeeID | **Igen** | Csak létrehozásra írva |
 | **PreferredNameData**    |  CN    |   |   Csak létrehozásra írva |
 | **SelectUniqueValue (JOIN ("\@", JOIN (".", \[FirstName\], \[LastName\]), "contoso.com"), csatlakozás ("\@", csatlakozás (".", Mid (\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), csatlakozás ("\@", csatlakozás (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com")**   | userPrincipalName     |     | Csak létrehozásra írva 
 | **Replace (Mid (a Replace (\[UserID\],, "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\]) ",," ",,), 1, 20),," ([\\\\.)\*\$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Csak létrehozásra írva |
 | **Kapcsoló (\[aktív\], "0", "true", "1", "false")** |  accountDisabled      |     | Létrehozás + frissítés |
 | **FirstName**   | givenName       |     |    Létrehozás + frissítés |
-| **LastName**   |   sorozatszám   |     |  Létrehozás + frissítés |
+| **LastName**   |   sn   |     |  Létrehozás + frissítés |
 | **PreferredNameData**  |  displayName |     |   Létrehozás + frissítés |
-| **Vállalati**         | Vállalati   |     |  Létrehozás + frissítés |
-| **SupervisoryOrganization**  | Szervezeti egység  |     |  Létrehozás + frissítés |
-| **ManagerReference**   | kezelő  |     |  Létrehozás + frissítés |
-| **BusinessTitle**   |  Cím     |     |  Létrehozás + frissítés | 
+| **Vállalat**         | company   |     |  Létrehozás + frissítés |
+| **SupervisoryOrganization**  | Részleg  |     |  Létrehozás + frissítés |
+| **ManagerReference**   | manager  |     |  Létrehozás + frissítés |
+| **BusinessTitle**   |  title     |     |  Létrehozás + frissítés | 
 | **AddressLineData**    |  streetAddress  |     |   Létrehozás + frissítés |
 | **Önkormányzat**   |   l   |     | Létrehozás + frissítés |
-| **CountryReferenceTwoLetter**      |   CO |     |   Létrehozás + frissítés |
+| **CountryReferenceTwoLetter**      |   Co |     |   Létrehozás + frissítés |
 | **CountryReferenceTwoLetter**    |  c  |     |         Létrehozás + frissítés |
-| **CountryRegionReference** |  St     |     | Létrehozás + frissítés |
+| **CountryRegionReference** |  st     |     | Létrehozás + frissítés |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Létrehozás + frissítés |
 | **Irányítószám**  |   Irányítószám  |     | Létrehozás + frissítés |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | Létrehozás + frissítés |
-| **Fax**      | facsimileTelephoneNumber     |     |    Létrehozás + frissítés |
-| **Mobileszköz**  |    mobil       |     |       Létrehozás + frissítés |
+| **Fax**      | Érték facsimiletelephonenumber     |     |    Létrehozás + frissítés |
+| **Mobil**  |    mobil       |     |       Létrehozás + frissítés |
 | **LocalReference** |  preferredLanguage  |     |  Létrehozás + frissítés |                                               
 | **Switch (\[önkormányzat\], "OU = standard felhasználók, OU = felhasználók, OU = default, OU = Locations, DC = contoso, DC = com", "Dallas", "OU = standard felhasználók, OU = felhasználók, OU = Dallas, OU = Locations, DC = contoso, DC = com", "Austin", "OU = standard felhasználók, OU = felhasználók, OU = Austin, OU = Locations, DC = contoso, DC = com", "Seattle", "OU = standard felhasználók, OU = felhasználók, OU = Seattle, OU = Locations, DC = contoso, DC = com", "London", "OU = standard felhasználók, OU = felhasználók, OU = London, OU = Locations, DC = contoso, DC = com")**  | parentDistinguishedName     |     |  Létrehozás + frissítés |
 
@@ -870,9 +881,9 @@ Cserélje le a [Proxy-Server] és a [proxy-port] változót a proxykiszolgáló 
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>Hogyan gondoskodjon arról, hogy a kiépítési ügynök képes legyen kommunikálni az Azure AD-Bérlővel, és egyetlen tűzfal sem blokkolja az ügynök által igényelt portokat?
 
-Azt is ellenőrizheti, hogy az összes szükséges portot megnyitotta-e. Ehhez nyissa meg az [összekötő portok tesztelése eszközt](https://aadap-portcheck.connectorporttest.msappproxy.net/) a helyszíni hálózatról. További zöld jelöljük azt jelenti, hogy a nagyobb rugalmasság.
+Azt is ellenőrizheti, hogy az összes szükséges portot megnyitotta-e. Ehhez nyissa meg az [összekötő portok tesztelése eszközt](https://aadap-portcheck.connectorporttest.msappproxy.net/) a helyszíni hálózatról. A további zöld pipa nagyobb rugalmasságot jelent.
 
-Győződjön meg arról, hogy az eszközt a megfelelő eredményeket ad meg, hogy ne felejtse el:
+Győződjön meg arról, hogy az eszköz biztosítja a megfelelő eredményeket:
 
 * Nyissa meg az eszközt egy böngészőben azon a kiszolgálón, amelyen a kiépítési ügynököt telepítette.
 * Győződjön meg arról, hogy a kiépítési ügynökre érvényes proxyk vagy tűzfalak is érvényesek erre az oldalra. Ezt az Internet Explorerben a **Beállítások-> Internetbeállítások-> kapcsolatok-> LAN-beállítások**menüpontban teheti meg. Ezen az oldalon a "proxykiszolgáló használata a helyi hálózathoz" mező látható. Jelölje be ezt a jelölőnégyzetet, és helyezze el a proxy címe mezőt a "címek" mezőbe.
@@ -973,7 +984,7 @@ Itt láthatja, hogyan kezelheti ezeket a követelményeket a *CN* vagy a *Displa
      | ----------------- | -------------------- |
      | PreferredFirstName | WD: Worker/WD: Worker_Data/WD: Personal_Data/WD: Name_Data/WD: Preferred_Name_Data/WD: Name_Detail_Data/WD: First_Name/Text () |
      | PreferredLastName | WD: Worker/WD: Worker_Data/WD: Personal_Data/WD: Name_Data/WD: Preferred_Name_Data/WD: Name_Detail_Data/WD: Last_Name/Text () |
-     | Vállalati | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: azonosító [@wd:type= ' Organization_Type_ID '] = ' vállalat ']/wd:Organization_Reference/@wd:Descriptor |
+     | Cég | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: azonosító [@wd:type= ' Organization_Type_ID '] = ' vállalat ']/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: ID [@wd:type= ' Organization_Type_ID '] = ' felügyelet ']/WD: Organization_Name/Text () |
   
    Erősítse meg a munkanap csapatát, hogy a fenti API-kifejezés érvényes a munkanap bérlői konfigurációjához. Szükség esetén szerkesztheti őket a [munkanap felhasználói attribútumok listájának testreszabása](#customizing-the-list-of-workday-user-attributes)című szakaszban leírtak szerint.
@@ -1183,7 +1194,7 @@ Ez a szakasz gyakran észlelt hibákat tartalmaz a munkanapokat használó felha
 |2.| A Windows-szolgáltatás "Microsoft Azure AD-kapcsolat létesítési ügynöke" *kezdő* állapotban van, és nem a *futó* állapotra vált. | A telepítés részeként az ügynök varázsló létrehoz egy helyi fiókot (**NT Service\\AADConnectProvisioningAgent**) a kiszolgálón, és ez a szolgáltatás indításához használt **bejelentkezési** fiók. Ha a Windows-kiszolgálón egy biztonsági házirend megakadályozza, hogy a helyi fiókok futtassák a szolgáltatásokat, akkor ezt a hibát fogja tapasztalni. | Nyissa meg a *szolgáltatások konzolt*. Kattintson a jobb gombbal a Windows-szolgáltatás "Microsoft Azure AD kapcsolódás kiépítési ügynöke" elemre, és a bejelentkezés lapon adja meg egy tartományi rendszergazda fiókját a szolgáltatás futtatásához. Indítsa újra a szolgáltatást. |
 |3.| Ha a létesítési ügynököt az AD-tartományhoz konfigurálja a *csatlakozás Active Directory*lépésben, a varázsló hosszú időt vesz igénybe az ad-séma betöltésére, és végül időtúllépést okoz. | Ez a hiba általában akkor jelentkezik, ha a varázsló tűzfalproblémák miatt nem tud csatlakozni az AD tartományvezérlői kiszolgálóhoz. | A Active Directory-varázsló *kapcsolódása* képernyőn, miközben megadja az ad-tartományhoz tartozó hitelesítő adatokat, a *tartományvezérlő prioritásának kiválasztása*lehetőségre van szükség. Ezzel a beállítással kiválaszthatja azt a tartományvezérlőt, amely ugyanabban a helyen található, mint az ügynök kiszolgálója, és gondoskodhat arról, hogy ne legyenek tűzfalszabályok blokkolja a kommunikációt. |
 
-#### <a name="connectivity-errors"></a>Kapcsolódási hibák
+#### <a name="connectivity-errors"></a>Csatlakozási hibák
 
 Ha a létesítési szolgáltatás nem tud csatlakozni a munkanapokhoz vagy a Active Directoryhoz, a kiépítés a karanténba helyezett állapotba léphet. A kapcsolódási problémák elhárításához használja az alábbi táblázatot.
 
@@ -1349,7 +1360,7 @@ Az Azure AD-kiépítési szolgáltatás a GDPR-besorolás **adatfeldolgozó** ka
 
 Az adatmegőrzés tekintetében az Azure AD-létesítési szolgáltatás nem hoz létre jelentéseket, elemzéseket végez, vagy 30 napon belül nem nyújt betekintést. Ezért az Azure AD kiépítési szolgáltatás 30 napon belül nem tárolja, dolgozza fel és nem őrzi meg az összes adatát. Ez a kialakítás megfelel a GDPR-szabályozásoknak, a Microsoft adatvédelmi rendelkezéseinek és az Azure AD adatmegőrzési szabályzatának.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a munkanap és a Azure Active Directory között](workday-tutorial.md)

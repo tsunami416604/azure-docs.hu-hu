@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 066c4cb598d9a8c14ab5d6ee893376266e104d15
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 30006d0dcccdd1b160289c72769340d141198d3c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381533"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847592"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Intelligens zárolás Azure Active Directory
 
@@ -67,7 +67,7 @@ A szervezeti követelmények alapján előfordulhat, hogy az intelligens zárol�
 
 A szervezet intelligens zárolási értékeinek vizsgálatához vagy módosításához kövesse az alábbi lépéseket:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Keresse meg és válassza ki a *Azure Active Directory*. Válassza a **hitelesítési módszerek** > a **jelszavas védelem**lehetőséget.
 1. Állítsa be a **zárolási küszöbértéket**attól függően, hogy az első zárolás előtt hány sikertelen bejelentkezés engedélyezett a fiókon. Az alapértelmezett érték 10.
 1. Állítsa a **zárolás időtartamát másodpercben**, az egyes zárolások hosszára másodpercben. Az alapértelmezett érték 60 másodperc (egy perc).
@@ -83,7 +83,7 @@ Az intelligens zárolási küszöbérték kiváltása esetén a következő üze
 
 **A fiók átmenetileg zárolva van, hogy megakadályozza a jogosulatlan használatot. Próbálkozzon újra később, és ha még mindig problémája van, forduljon a rendszergazdához.**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerje meg, hogyan tilthatja be a hibás jelszavakat a szervezetben az Azure AD használatával.](howto-password-ban-bad.md)
 * [Az önkiszolgáló jelszó-visszaállítás konfigurálásával engedélyezheti a felhasználóknak a saját fiókjaik feloldását.](quickstart-sspr.md)

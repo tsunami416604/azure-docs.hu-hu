@@ -4,17 +4,17 @@ description: A Microsoft és a Közösség runbookok és moduljai a Azure Automa
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 86eebf33f870780871e4c873936e491772c73b63
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 94910d0f42ad6b208cac54dd2826cbd2d917504b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231608"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850720"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook és modul-galériák Azure Automation
 
@@ -38,7 +38,7 @@ A Azure Portal használatával csak közvetlenül a PowerShell-galéria importá
 3. **Forrás kiválasztása: PowerShell-Galéria**.
 4. Keresse meg a kívánt katalógus-elemet, és válassza ki azt a részletek megtekintéséhez. A bal oldalon további keresési paramétereket adhat meg a közzétevőhöz és a típushoz.
 
-   ![Tallózás a katalógusban](media/automation-runbook-gallery/browse-gallery.png)
+   ![Tallózási katalógus](media/automation-runbook-gallery/browse-gallery.png)
 
 5. Kattintson a **Source (forrás) projekt megtekintése** lehetőségre az elem a [TechNet script Centerben](https://gallery.technet.microsoft.com/)való megtekintéséhez.
 6. Egy elem importálásához kattintson rá a részletek megtekintéséhez, majd kattintson az **Importálás** gombra.
@@ -69,7 +69,7 @@ A PowerShell-modulok olyan parancsmagokat tartalmaznak, amelyeket használhat a 
 
 4. A **Tallózás** a katalógusban lapon a következő mezőkben kereshet:
 
-   * Modul neve
+   * Modulnév
    * Címkék
    * Szerző
    * Parancsmag/DSC-erőforrás neve

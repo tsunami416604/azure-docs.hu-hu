@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7f773914fcdd205e9cb6b7e3505904eb9550f16
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 9dd2aa7d804b4609e3e2fc1e38b6e29056b5d5ac
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404262"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848051"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS-hitelesítés integrálása az Azure Multi-Factor Authentication-kiszolgálóval
 
@@ -39,7 +39,7 @@ A RADIUS-hitelesítés konfigurálásához telepítse az Azure Multi-Factor Auth
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a bal oldali menüben lévő RADIUS-hitelesítés ikonra.
 2. Jelölje be a **RADIUS-hitelesítés engedélyezése** jelölőnégyzetet.
 3. Az Ügyfelek lapon módosítsa a hitelesítési és a nyilvántartási portokat, ha az Azure MFA RADIUS szolgáltatásnak nem szabványos portokon kell figyelnie a RADIUS-kéréseket.
-4. Kattintson az **Hozzáadás** parancsra.
+4. Kattintson a **Hozzáadás** parancsra.
 5. Adja meg az Azure Multi-Factor Authentication-kiszolgálón hitelesítendő készülék/kiszolgáló IP-címét, egy alkalmazásnevet (nem kötelező) és egy közös titkos kulcsot.
 
    Az alkalmazásnév megjelenik a jelentésekben, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben.
@@ -79,6 +79,6 @@ A RADIUS-ügyfél konfigurálásához kövesse az alábbi útmutatást:
 * Használja a korábban konfigurált közös titkos kulcsot.
 * A RADIUS-időtúllépést állítsa 30–60 másodpercre, hogy elegendő idő álljon rendelkezésre a felhasználó hitelesítő adatainak ellenőrzésére, a kétlépéses hitelesítés végrehajtására, a válasz fogadására és a RADIUS hozzáférési kérés megválaszolására.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a [RADIUS-hitelesítés integrálásával](howto-mfa-nps-extension.md), ha rendelkezik Azure Multi-Factor Authenticationnel a felhőben. 

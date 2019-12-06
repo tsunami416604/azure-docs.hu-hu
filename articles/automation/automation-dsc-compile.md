@@ -4,17 +4,17 @@ description: Ez a cikk azt ismerteti, hogyan lehet lefordítani a Azure Automati
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d3cca9d8954d9ac158d88b393c46672da3faa19
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fdea8ed9a9e59a169a6ffb525ed286eb7d1ada53
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231720"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850907"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>A DSC-konfigurációk fordítása Azure Automation állapot-konfigurációban
 
@@ -189,7 +189,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 ### <a name="working-with-assets-in-azure-automation-during-compilation"></a>Adategységek használata a fordítás során Azure Automation
 
-Az eszközök hivatkozásai megegyeznek a Azure Automation állapot-konfigurációban és a runbookok. További információt a következő témakörben talál:
+Az eszközök hivatkozásai megegyeznek a Azure Automation állapot-konfigurációban és a runbookok. További információkért tekintse át a következőket:
 
 - [Tanúsítványok](automation-certificates.md)
 - [Kapcsolatok](automation-connections.md)

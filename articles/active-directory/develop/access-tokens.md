@@ -2,26 +2,23 @@
 title: Microsoft Identity platform – hozzáférési tokenek referenciája | Azure
 description: Ismerje meg az Azure AD v 1.0 és a Microsoft Identity platform (v 2.0) végpontok által kibocsátott hozzáférési jogkivonatokat.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34548b623317eff17bcbf5a7749cd411a44bd722
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 61bcdac38b9b8765c7c3d575bb632c9291e46b90
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73935856"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845858"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform hozzáférési jogkivonatok
 
@@ -158,7 +155,7 @@ A következő jogcímek a v 1.0 jogkivonatokban lesznek felszámítva, ha vannak
 
 A Microsoft-identitások különböző módokon hitelesíthetők, ami az alkalmazás szempontjából fontos lehet. Az `amr` jogcím egy olyan tömb, amely több elemet is tartalmazhat, például a `["mfa", "rsa", "pwd"]`t olyan hitelesítéshez, amely a jelszót és a hitelesítő alkalmazást egyaránt használta.
 
-| Érték | Leírás |
+| Value (Díj) | Leírás |
 |-----|-------------|
 | `pwd` | Jelszó-hitelesítés, vagy egy felhasználó Microsoft-jelszava vagy egy alkalmazás ügyfél-titka. |
 | `rsa` | A hitelesítés egy RSA-kulcs igazolásán alapul, például a [Microsoft Authenticator alkalmazással](https://aka.ms/AA2kvvu). Ez azt is magában foglalja, hogy a hitelesítés egy önaláírt JWT történt, amely egy szolgáltatás tulajdonában álló X509 tanúsítvánnyal rendelkezik. |

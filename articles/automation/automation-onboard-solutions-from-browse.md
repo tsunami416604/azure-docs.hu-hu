@@ -3,18 +3,18 @@ title: Ismerje meg, hogyan készíthet Update Management, Change Tracking és le
 description: Ismerje meg, hogyan készíthet Azure-beli virtuális gépeket a Azure Automation részét képező Update Management-, Change Tracking-és leltározási megoldásokkal.
 services: automation
 ms.service: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 3e56b44988dc6dbfed99f339795fee6d15c7dd57
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: cc6e3f3aaa77d7691e0443ee74405058bde2dfa0
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372791"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850805"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management-, Change Tracking-és leltározási megoldások engedélyezése több virtuális gépen
 
@@ -109,7 +109,7 @@ Ha a Start/Stop VMs during off-hours megoldást használta, érdemes lehet eltá
 
 Azt is megteheti, hogy kikapcsolja a munkaterületet az Automation-fiókjából a Log Analytics munkaterületről. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások**területen. Az Automation-fiók lapon válassza a **fiók megszüntetése**lehetőséget.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Több gép bevezetéséhez előfordulhat, hogy a **nem engedélyezhető**gépek. Különböző okok miatt előfordulhat, hogy egyes gépek nem engedélyezettek. Az alábbi részekben láthatók a **nem engedélyezhető** állapotra vonatkozó lehetséges okok a beléptetési kísérlet során.
 

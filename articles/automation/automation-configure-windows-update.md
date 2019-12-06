@@ -4,17 +4,17 @@ description: Ez a cikk azokat a Windows Update beállításokat ismerteti, amely
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 813d34f9c07e6c2909c483f040d4f3bf09b3ad24
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 804f42121293e142cf77ad73c4aab36e62e3242d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690840"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850414"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Update Management Windows Update beállításainak konfigurálása
 
@@ -34,7 +34,7 @@ $WUSettings.Save()
 
 ## <a name="disable-automatic-installation"></a>Automatikus telepítés letiltása
 
-Alapértelmezés szerint az Azure Virtual Machines (VM) szolgáltatásban a frissítések automatikus telepítése engedélyezve van. Ennek hatására előfordulhat, hogy a frissítések telepítésének megkezdése előtt Update Management. Ezt a viselkedést letilthatja a `NoAutoUpdate` beállításkulcs `1` értékre való beállításával. A következő PowerShell-kódrészlet ennek módját mutatja be:
+Alapértelmezés szerint az Azure Virtual Machines (VM) szolgáltatásban a frissítések automatikus telepítése engedélyezve van. Ennek hatására előfordulhat, hogy a frissítések telepítésének megkezdése előtt Update Management. Ezt a viselkedést letilthatja a `NoAutoUpdate` beállításkulcs `1`re való beállításával. A következő PowerShell-kódrészlet ennek módját mutatja be:
 
 ```powershell
 $AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
@@ -43,7 +43,7 @@ Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
 
 ## <a name="configure-reboot-settings"></a>Újraindítási beállítások konfigurálása
 
-Az automatikus frissítések konfigurálása az [újraindításhoz használt](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) beállításjegyzék és beállításkulcsok [szerkesztésével című témakörben](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) felsorolt beállításkulcsokat a gépek újraindítását okozhatja, még akkor is, ha a **frissítés központi telepítési** beállításaiban nem ad meg **újraindítást** . . Ezeket a beállításkulcsokat úgy kell konfigurálni, hogy az megfeleljen a környezetének.
+Az automatikus frissítések konfigurálása az [újraindításhoz használt](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) beállításjegyzék és beállításkulcsok [szerkesztésével című témakörben](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) felsorolt beállításkulcsokat a gépek újraindítását okozhatja, még akkor is, ha a **frissítés központi telepítési** beállításai között nem ad meg **újraindítást** . Ezeket a beállításkulcsokat úgy kell konfigurálni, hogy az megfeleljen a környezetének.
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>Egyéb Microsoft-termékek frissítéseinek engedélyezése
 

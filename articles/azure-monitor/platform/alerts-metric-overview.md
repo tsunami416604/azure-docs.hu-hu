@@ -3,16 +3,16 @@ title: Ismerje meg, hogyan működnek a metrikus riasztások Azure Monitorban.
 description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan működnek Azure Monitorban.
 author: rboucher
 ms.author: robb
-ms.date: 11/18/2019
+ms.date: 12/5/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: aa54b9ce23ffab266ed6403e3525ae1290d99cec
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8f84b5641b79514ffed493302f246ecc51a20a87
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775721"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850057"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikai riasztások működésének ismertetése Azure Monitor
 
@@ -125,7 +125,7 @@ A visszapillantási időszakok és a szabálysértések számának növelése is
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Méretezés a metrikus riasztások használatával Azure Monitor
 
-Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy több, egyetlen Azure-erőforráshoz kapcsolódó metrikai idősorozat figyelésére. Sokszor előfordulhat, hogy ugyanaz a riasztási szabály sok erőforrásra vonatkozik. A Azure Monitor egy metrikai riasztási szabállyal több erőforrás figyelését is támogatja. Ez a funkció jelenleg csak virtuális gépeken támogatott. Egyetlen metrikai riasztás is képes figyelni az erőforrásokat egy Azure-régióban.
+Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy több, egyetlen Azure-erőforráshoz kapcsolódó metrikai idősorozat figyelésére. Sokszor előfordulhat, hogy ugyanaz a riasztási szabály sok erőforrásra vonatkozik. A Azure Monitor egy metrikai riasztási szabállyal több erőforrás figyelését is támogatja. Ez a funkció jelenleg csak virtuális gépeken, SQL Server-adatbázisokon, az SQL Server rugalmas készleteken és az adatbox Edge-eszközökön támogatott. Egyetlen metrikai riasztás is képes figyelni az erőforrásokat egy Azure-régióban.
 
 A figyelés hatókörét egyetlen metrikai riasztással adhatja meg a háromféle módon:
 

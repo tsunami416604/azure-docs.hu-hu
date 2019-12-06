@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 6c2d7dc64bca00ce664dc470e7c4405d69b49779
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 132cf6ccfec5af9951f5dc6d6a3c6d3c81363d81
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531522"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850006"
 ---
 # <a name="standard-quota-regional-vcpu-limit-increase"></a>Standard kvóta: regionális vCPU korlátjának növekedése 
 
-A Resource Manager két típusú vCPU-kvótát támogat a virtuális gépekhez. Az utólagos elszámolású **virtuális gépek** és a **fenntartott VM-példányok** standard kvótát használnak. Az **alacsony prioritású virtuális gépek** alacsony prioritású kvótát használnak. 
+A Resource Manager két típusú vCPU-kvótát támogat a virtuális gépekhez. Az utólagos elszámolású **virtuális gépek** és a **fenntartott VM-példányok** standard kvótát használnak. A **helyszíni virtuális gépek** helyszíni kvótát használnak. 
 
 Az utólagos elszámolású és a fenntartott virtuálisgép-példányok esetében a standard szintű vCPU kvóta az egyes régiókban lévő előfizetések esetében két szinten érvényes.
  
@@ -26,7 +26,7 @@ Az első szint a **teljes regionális vCPU korlát** (az összes virtuálisgép-
 
 További információ a szabványos vCPU-kvótákkal kapcsolatban a [virtuális gépek vCPU kvótái lapján](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) és az [Azure-előfizetés és-szolgáltatás korlátai](https://aka.ms/quotalimits) lapon.
 
-További információ az **alacsony prioritású virtuális gépek vCPU-korlátainak növeléséről** [.](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)
+További információ a **helyszíni virtuális gépek vCPU korlátainak növeléséről** [.](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)
 
 A **standard szintű virtuális gép teljes regionális vCPU-korlátját** a **Súgó + támogatás** panelen, vagy a portálon a **használat + kvóta** panelen kérheti le.
 
@@ -36,7 +36,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azur
 
 1. https://portal.azure.com válassza a **Súgó + támogatás**lehetőséget.
 
-![Súgó és támogatás](./media/resource-manager-core-quotas-request/helpsupport.png)
+![Súgó + támogatás](./media/resource-manager-core-quotas-request/helpsupport.png)
  
 2.  Válassza az **Új támogatási kérelem** lehetőséget. 
 

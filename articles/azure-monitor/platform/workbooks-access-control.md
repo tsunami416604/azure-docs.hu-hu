@@ -1,5 +1,5 @@
 ---
-title: Interaktív jelentések létrehozása Azure Monitor-munkafüzetekkel szerepköralapú hozzáférés-vezérléssel | Microsoft docs
+title: Azure Monitor munkafüzetek hozzáférés-vezérlése
 description: A szerepköralapú hozzáférés-vezérléssel rendelkező, előre elkészített és egyéni paraméteres munkafüzetek összetett jelentéskészítésének egyszerűbbé tétele
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: e2f1388d9823744d2382f1818ecb8dcb613895bc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c9b9f9ca2a9c08c05a3ce32230a39ca79625cd72
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73166186"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872927"
 ---
 # <a name="access-control"></a>Hozzáférés-vezérlés
 

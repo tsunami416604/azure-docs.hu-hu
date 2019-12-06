@@ -1,21 +1,21 @@
 ---
-title: ARRAY_SLICE Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function ARRAY_SLICE Azure Cosmos DB.
+title: Azure Cosmos DB lekérdezési nyelv ARRAY_SLICE
+description: Ismerje meg, hogyan adja vissza a tömbbeli szeletek SQL System függvényét Azure Cosmos DB egy Array kifejezés egy részét.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 1df4177bb8b56bc98977af0f5180e8df5affb257
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3c65886eabfa87f729e18fb854aca6662d1d6fac
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348543"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871788"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Azure Cosmos DB)
- Egy tömböt megadó kifejezést részét adja vissza.
+ Egy tömb kifejezésének egy részét adja vissza.
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -29,7 +29,7 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
    Bármely tömb kifejezés.  
   
 *num_expr*  
-   A tömb kezdőpontját nulláról induló numerikus indexszel. Adjon meg a kezdő indexet az utolsó elem a tömbben – azaz a 1 hivatkozások viszonyítva az utolsó elem a tömbben negatív értékeket is használható.  
+   Nulla-alapú numerikus index a tömb megkezdéséhez. A rendszer negatív értékeket is felhasználhat a tömb utolsó eleméhez viszonyított kezdő index megadására, azaz a-1 a tömb utolsó elemére hivatkozik.  
 
 *num_expr* Nem kötelező numerikus kifejezés, amely az eredményül kapott tömbben lévő elemek maximális számát állítja be.    
 
@@ -39,7 +39,7 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa bemutatja, hogyan lehet egy tömb különböző szeleteit beolvasni `ARRAY_SLICE` használatával.  
+  Az alábbi példa bemutatja, hogyan lehet egy tömb különböző szeleteit `ARRAY_SLICE`használatával beolvasni.  
   
 ```sql
 SELECT
@@ -53,7 +53,7 @@ SELECT
   
 ```  
   
- Íme az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{  
@@ -67,7 +67,7 @@ SELECT
 }]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Array függvények Azure Cosmos DB](sql-query-array-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

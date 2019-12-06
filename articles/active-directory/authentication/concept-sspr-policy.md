@@ -6,19 +6,19 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5af0c2ecde539c9737249e4251f7eab276affb9c
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b95ea51db4f0c6bcdbfa905ff8b57a5a330411e6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381915"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848544"
 ---
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirend és korlátozások a Azure Active Directory
+# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
 Ez a cikk a Azure Active Directory (Azure AD) bérlő felhasználói fiókjaihoz társított jelszóházirend-és összetettségi követelményeket ismerteti.
 
@@ -32,12 +32,12 @@ A kétkapus szabályzathoz két hitelesítési adat szükséges, például **e-m
 
 * A rendszer az alábbi Azure-rendszergazdai szerepköröket érinti:
   * Segélyszolgálat rendszergazdája
-  * Szolgáltatás-támogatási rendszergazda
+  * Szolgáltatás-rendszergazda
   * Számlázási rendszergazda
-  * 1\. szintű partnertámogatás
-  * 2\. szintű partnertámogatás
+  * Partneri Tier1-támogatás
+  * Partneri szint-támogatás
   * Exchange-rendszergazda
-  * Skype vállalati verzió-rendszergazda
+  * Skype Vállalati verzió-rendszergazda
   * Felhasználói rendszergazda
   * Címtár-írók
   * Globális rendszergazda vagy vállalati rendszergazda
@@ -49,7 +49,7 @@ A kétkapus szabályzathoz két hitelesítési adat szükséges, például **e-m
   * Intune-rendszergazda
   * Alkalmazásproxy szolgáltatás rendszergazdája
   * Dynamics 365-rendszergazda
-  * Power BI szolgáltatás rendszergazda
+  * Power BI-szolgáltatásadminisztrátor
   * Hitelesítés rendszergazdája
   * Kiemelt jogosultságú hitelesítés rendszergazdája
 
@@ -81,7 +81,7 @@ A következő táblázat az Azure AD-ben létrehozott és kezelt felhasználói 
 
 | Tulajdonság | Követelmények |
 | --- | --- |
-| Engedélyezett karakterek |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ "();</li> <li>üres terület</li></ul> |
+| Engedélyezett karakterek |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $% ^ & *-_! + = [] {} &#124; \: ',. ? / \` ~ "();</li> <li>üres terület</li></ul> |
 | Nem engedélyezett karakterek | Unicode-karakterek. |
 | Jelszó korlátozásai |<ul><li>Legalább 8 karakterből és legfeljebb 256 karakterből állhat.</li><li>A három közül a következők közül hármat igényel:<ul><li>Kisbetűs karakterek.</li><li>Nagybetűs karakterek.</li><li>Számok (0-9).</li><li>Szimbólumok (lásd a jelszó korábbi korlátozásait).</li></ul></li></ul> |
 | Jelszó lejárati időtartama (jelszó maximális kora) |<ul><li>Alapértelmezett érték: **90** nap.</li><li>Az érték konfigurálható a Windows PowerShell Azure Active Directory moduljának `Set-MsolPasswordPolicy` parancsmagjának használatával.</li></ul> |
@@ -89,7 +89,7 @@ A következő táblázat az Azure AD-ben létrehozott és kezelt felhasználói 
 | Jelszó lejárata (a jelszavak lejárata mindig lejár) |<ul><li>Alapértelmezett érték: **hamis** nap (azt jelzi, hogy a jelszó lejárata engedélyezve van).</li><li>Az érték egyéni felhasználói fiókokhoz is konfigurálható az `Set-MsolUser` parancsmag használatával.</li></ul> |
 | Jelszó-módosítási előzmények | Az utolsó jelszó *nem* használható újra, amikor a felhasználó megváltoztatja a jelszót. |
 | Jelszó-visszaállítási előzmények | Az *utolsó jelszó újra használható,* amikor a felhasználó visszaállít egy elfelejtett jelszót. |
-| Fiókzárolási | 10 sikertelen bejelentkezési kísérlet után a rendszer egy percig kizárja a felhasználót. A további helytelen bejelentkezési kísérletek miatt a felhasználó kizárja az időtartam növelését. Az [intelligens zárolási](howto-password-smart-lockout.md) szolgáltatás az utolsó három rossz jelszó-kivonatot követi, így elkerülhető, hogy a zárolási számláló ugyanazon a jelszónál legyen növelve. Ha valaki többször is ugyanazt a jelszót adja meg, akkor ez a viselkedés nem eredményezi a fiók zárolását. |
+| Fiókzárolás | 10 sikertelen bejelentkezési kísérlet után a rendszer egy percig kizárja a felhasználót. A további helytelen bejelentkezési kísérletek miatt a felhasználó kizárja az időtartam növelését. Az [intelligens zárolási](howto-password-smart-lockout.md) szolgáltatás az utolsó három rossz jelszó-kivonatot követi, így elkerülhető, hogy a zárolási számláló ugyanazon a jelszónál legyen növelve. Ha valaki többször is ugyanazt a jelszót adja meg, akkor ez a viselkedés nem eredményezi a fiók zárolását. |
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Jelszó-elévülési szabályzatok beállítása az Azure AD-ben
 
@@ -158,7 +158,7 @@ Első lépésként [le kell töltenie és telepítenie kell az Azure ad PowerShe
    > [!WARNING]
    > A jelszavak a `pwdLastSet` attribútum alapján `-PasswordPolicies DisablePasswordExpiration` még a Age értékre vannak beállítva. Ha a felhasználói jelszavakat úgy állítja be, hogy soha ne járjanak le, majd 90 + nap múlva lépjenek le, a jelszavak lejárnak. Ha a `pwdLastSet` attribútum alapján módosítja a lejáratot a `-PasswordPolicies None`ra, a 90 napnál régebbi `pwdLastSet` összes jelszóhoz a felhasználónak meg kell változtatnia a következő bejelentkezéskor. Ez a változás nagy mennyiségű felhasználót érinthet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek további információkat nyújtanak az Azure AD-n keresztüli jelszó-visszaállításról:
 

@@ -1,17 +1,17 @@
 ---
 title: SQL-lekérdezés végrehajtása Azure Cosmos DB
-description: Tudnivalók az SQL-lekérdezések végrehajtásáról Azure Cosmos DB
+description: Megtudhatja, hogyan hozhat létre SQL-lekérdezést, és hogyan hajthatja végre Azure Cosmos DBban. Ez a cikk azt ismerteti, hogyan hozhat létre és futtathat SQL-lekérdezéseket REST API, .net SDK, JavaScript SDK és más SDK-k használatával.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: c42732df1bcfa8649c89899febc364bb1f5f9b5a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 70eb81b6d13c57a7ebc131244c7aa318cb2b2fd4
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999913"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871261"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>SQL-lekérdezés végrehajtásának Azure Cosmos DB
 
@@ -19,13 +19,13 @@ A HTTP/HTTPS-kérések létrehozására alkalmas bármely nyelv hívhatja a Cosm
 
 Az alábbi példák bemutatják, hogyan hozhat létre egy lekérdezést, és hogyan küldhet el egy Cosmos-adatbázis-fiókkal.
 
-## <a id="REST-API"></a>REST API-VAL
+## <a id="REST-API"></a>REST API
 
-A cosmos DB egy megnyitott RESTful programozási modellt kínál a HTTP-n keresztül. Az erőforrás-modell egy, az Azure-előfizetéshez tartozó adatbázis-fiókhoz tartozó erőforrás-készletből áll. Az adatbázis-fiók *adatbázisokból*áll, amelyek mindegyike több *tárolót*is tartalmazhat, amelyek pedig *elemeket*, UDF és más erőforrásokat tartalmaznak. Minden Cosmos DB erőforrás egy logikai és egy stabil URI-vel van címezve. Az erőforrások készletét *hírcsatorna*-csoportnak nevezzük. 
+A Cosmos DB egy nyitott REST-alapú programozási modellt kínál HTTP-n keresztül. Az erőforrás-modell egy, az Azure-előfizetéshez tartozó adatbázis-fiókhoz tartozó erőforrás-készletből áll. Az adatbázis-fiók *adatbázisokból*áll, amelyek mindegyike több *tárolót*is tartalmazhat, amelyek pedig *elemeket*, UDF és más erőforrásokat tartalmaznak. Minden Cosmos DB erőforrás egy logikai és egy stabil URI-vel van címezve. Az erőforrások készletét *hírcsatorna*-csoportnak nevezzük. 
 
-Az ezekkel az erőforrásokkal rendelkező alapszintű interakciós modell `GET`a `PUT`http `POST`-műveletek `DELETE`, a, a és a standard értelmezések segítségével érhető el. Új `POST` erőforrás létrehozásához, tárolt eljárás végrehajtásához vagy Cosmos db-lekérdezés kikibocsátásához használható. Lekérdezések mindig csak olvasható műveletekhez, nincs mellékhatásokkal.
+Az ezekkel az erőforrásokkal rendelkező alapszintű interakciós modell a szabványos értelmezésekkel `GET`, `PUT`, `POST`és `DELETE`HTTP-műveleteken keresztül érhető el. A `POST` használatával hozzon létre egy új erőforrást, hajtson végre egy tárolt eljárást, vagy adjon ki egy Cosmos DB lekérdezést. A lekérdezések mindig írásvédett műveletek, amelyeknek nincs mellékhatása.
 
-Az alábbi példák egy SQL `POST` API-lekérdezést mutatnak be a minta elemeknél. A lekérdezés egy egyszerű szűrőt tartalmaz a JSON `name` -tulajdonsághoz. A `x-ms-documentdb-isquery` és a Content-Type `application/query+json` : fejlécek azt jelzik, hogy a művelet lekérdezés. Cserélje `mysqlapicosmosdb.documents.azure.com:443` le a elemet a Cosmos db-fiókjához tartozó URI azonosítóra.
+Az alábbi példák egy `POST`t mutatnak be egy SQL API-lekérdezéshez a minta elemein. A lekérdezés egyszerű szűrőt tartalmaz a JSON `name` tulajdonságra. A `x-ms-documentdb-isquery` és a Content-Type: `application/query+json` fejlécek azt jelzik, hogy a művelet lekérdezés. Cserélje le a `mysqlapicosmosdb.documents.azure.com:443` elemet a Cosmos DB-fiókjának URI-azonosítójához.
 
 ```json
     POST https://mysqlapicosmosdb.documents.azure.com:443/docs HTTP/1.1
@@ -41,7 +41,7 @@ Az alábbi példák egy SQL `POST` API-lekérdezést mutatnak be a minta elemekn
     }
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     HTTP/1.1 200 Ok
@@ -112,7 +112,7 @@ A következő, összetettebb lekérdezés több találatot ad vissza egy illeszt
     }
 ```
 
-Az eredmények a következők: 
+Az eredmény a következő: 
 
 ```json
     HTTP/1.1 200 Ok
@@ -143,19 +143,19 @@ Az eredmények a következők:
     }
 ```
 
-Ha egy lekérdezés eredménye nem fér el egyetlen lapon, a REST API a `x-ms-continuation-token` válasz fejlécén keresztül visszaadja a folytatási tokent. Az ügyfelek az eredményeket a későbbi eredményekben szereplő fejléctel is megadhatják. Az eredmények számát az egyes lapokon a `x-ms-max-item-count` szám fejlécen keresztül is szabályozhatja.
+Ha egy lekérdezés eredménye nem fér el egyetlen lapon, a REST API egy folytatási tokent ad vissza a `x-ms-continuation-token` válasz fejlécén keresztül. Az ügyfelek az eredményeket a későbbi eredményekben szereplő fejléctel is megadhatják. Az eredmények számát a `x-ms-max-item-count` szám fejlécen keresztül is szabályozhatja.
 
 Ha egy lekérdezés aggregációs függvénnyel (például DARABSZÁM) rendelkezik, a lekérdezési oldal részlegesen aggregált értéket adhat vissza az eredmények csak egy oldalára. Az ügyfeleknek el kell végezniük az eredmények második szintű összesítését a végső eredmények létrehozásához. Például az egyes lapokon visszaadott számok összege a teljes szám visszaadásához.
 
-A lekérdezések adatkonzisztencia-házirendjének kezeléséhez használja a `x-ms-consistency-level` fejlécet az összes REST API kérelemben. A munkamenet-konzisztencia is megköveteli, hogy `x-ms-session-token` a lekérdezési kérelemben a legújabb cookie-fejlécet is megismétli. A lekérdezett tároló indexelési házirendet is befolyásolhatja a lekérdezési eredmények konzisztenciáját. A tárolók alapértelmezett indexelési házirend-beállításaival az index mindig aktuális az elem tartalmával, és a lekérdezési eredmények megegyeznek az adatkonzisztencia által választott értékkel. További információt a [Azure Cosmos DB konzisztencia-szintek] [konzisztencia-szintek] című témakörben talál.
+A lekérdezések adatkonzisztencia-házirendjének kezeléséhez használja a `x-ms-consistency-level` fejlécet az összes REST API kérelemben. A munkamenet konzisztenciájához a lekérdezési kérelemben a legújabb `x-ms-session-token` cookie-fejlécet is meg kell ismételni. A lekérdezett tároló indexelési házirendje befolyásolhatja a lekérdezési eredmények konzisztenciáját is. A tárolók alapértelmezett indexelési házirend-beállításaival az index mindig aktuális az elem tartalmával, és a lekérdezési eredmények megegyeznek az adatkonzisztencia által választott értékkel. További információt a [Azure Cosmos DB konzisztencia-szintek] [konzisztencia-szintek] című témakörben talál.
 
 Ha a tárolóban beállított indexelési szabályzat nem támogatja a megadott lekérdezést, a Azure Cosmos DB-kiszolgáló a "hibás kérés" 400 értéket adja vissza. Ez a hibaüzenet az indexelésből kizárni kívánt elérési úttal rendelkező lekérdezések esetében ad vissza. Megadhatja a `x-ms-documentdb-query-enable-scan` fejlécet, amely lehetővé teszi, hogy a lekérdezés végezzen vizsgálatot, ha egy index nem érhető el.
 
-A lekérdezés-végrehajtás részletes mérőszámait úgy érheti el, hogy `x-ms-documentdb-populatequerymetrics` `true`beállítja a fejlécet a következőre:. További információkért lásd: [az Azure Cosmos DB SQL-lekérdezés metrikák](sql-api-query-metrics.md).
+A lekérdezés-végrehajtás részletes mérőszámait úgy érheti el, ha a `x-ms-documentdb-populatequerymetrics` fejlécet `true`re állítja. További információ: [Azure Cosmos db SQL-lekérdezési metrikái](sql-api-query-metrics.md).
 
-## <a name="c-net-sdk"></a>C# (.NET SDK)
+## <a name="c-net-sdk"></a>C#(.NET SDK)
 
-A .NET SDK támogatja a LINQ- és SQL lekérdezése. Az alábbi példa bemutatja, hogyan végezheti el az előző szűrési lekérdezést a .NET-tel:
+A .NET SDK a LINQ és az SQL lekérdezéseket is támogatja. Az alábbi példa bemutatja, hogyan végezheti el az előző szűrési lekérdezést a .NET-tel:
 
 ```csharp
     foreach (var family in client.CreateDocumentQuery(containerLink,
@@ -217,7 +217,7 @@ Az alábbi példa összehasonlítja az egyes elemeken belüli egyenlőség két 
     }
 ```
 
-A következő példa azt mutatja be, hogy a `SelectMany`program összekapcsolja a LINQ-t.
+A következő példa az illesztéseket mutatja be LINQ `SelectMany`on keresztül.
 
 ```csharp
     foreach (var pet in client.CreateDocumentQuery(containerLink,
@@ -241,17 +241,17 @@ A következő példa azt mutatja be, hogy a `SelectMany`program összekapcsolja 
     }
 ```
 
-A .net-ügyfél automatikusan megismétli a lekérdezés eredményének összes lapját a `foreach` blokkokban, ahogy az előző példában is látható. A [REST API](#REST-API) szakaszban bemutatott lekérdezési lehetőségek a .net SDK-ban is elérhetők, a `FeedOptions` `CreateDocumentQuery` metódus és `FeedResponse` az osztályok használatával. A lapok számát a `MaxItemCount` beállítás használatával szabályozhatja.
+A .NET-ügyfél automatikusan megismétli a lekérdezési eredmények összes oldalát a `foreach` blokkokban az előző példában látható módon. A [REST API](#REST-API) szakaszban bemutatott lekérdezési beállítások a .net SDK-ban is elérhetők, a `CreateDocumentQuery` metódusban található `FeedOptions` és `FeedResponse` osztályok használatával. A lapok számát a `MaxItemCount` beállítás használatával szabályozhatja.
 
-A lapozást explicit módon is szabályozhatja az `IDocumentQueryable` `IQueryable` objektummal való létrehozással `ResponseContinuationToken` , majd az értékek olvasásával és a `RequestContinuationToken` alkalmazásban `FeedOptions`történő visszaadásával. Beállíthatja `EnableScanInQuery` , hogy engedélyezze a vizsgálatokat, ha a konfigurált indexelési házirend nem támogatja a lekérdezést. Particionált tárolók esetén a paranccsal `PartitionKey` egyetlen partíción futtathatja a lekérdezést, bár a Azure Cosmos db automatikusan kinyerheti ezt a lekérdezési szövegből. A paranccsal `EnableCrossPartitionQuery` több partíción is futtathat lekérdezéseket.
+A lapozást explicit módon is szabályozhatja `IDocumentQueryable` létrehozásával a `IQueryable` objektummal, majd az `ResponseContinuationToken` értékek beolvasásával és `RequestContinuationToken`ként való átadásával `FeedOptions`. Beállíthatja, hogy `EnableScanInQuery` a vizsgálat engedélyezéséhez, ha a konfigurált indexelési házirend nem támogatja a lekérdezést. Particionált tárolók esetén `PartitionKey` használatával futtathatja a lekérdezést egyetlen partíción, bár a Azure Cosmos DB automatikusan kinyerheti ezt a lekérdezési szövegből. A `EnableCrossPartitionQuery` használatával több partíción is futtathat lekérdezéseket.
 
 További .NET-minták lekérdezésekkel kapcsolatban: [Azure Cosmos db .net-minták](https://github.com/Azure/azure-cosmos-dotnet-v3) a githubban.
 
-## <a id="JavaScript-server-side-API"></a>JavaScript server-side API
+## <a id="JavaScript-server-side-API"></a>JavaScript kiszolgálóoldali API
 
 A Azure Cosmos DB egy programozási modellt biztosít a [JavaScript-alapú alkalmazások logikájának futtatásához](stored-procedures-triggers-udfs.md) a tárolókban, tárolt eljárások és eseményindítók használatával. A tároló szintjén regisztrált JavaScript-logika ezután a környezeti sav-tranzakciókban becsomagolt adatbázis-műveleteket adhat ki az adott tároló elemein.
 
-Az alábbi példa bemutatja, hogyan használható `queryDocuments` a JavaScript Server API-ban a tárolt eljárások és eseményindítók használatával történő lekérdezések elvégzéséhez:
+Az alábbi példa bemutatja, hogyan használhatók a `queryDocuments` a JavaScript-kiszolgáló API-ban a tárolt eljárások és eseményindítók használatával történő lekérdezések elvégzéséhez:
 
 ```javascript
     function findName(givenName, familyName) {
@@ -285,8 +285,8 @@ Az alábbi példa bemutatja, hogyan használható `queryDocuments` a JavaScript 
     }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bevezetés a Azure Cosmos DBba](introduction.md)
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Azure Cosmos DB konzisztencia szintjei](consistency-levels.md)

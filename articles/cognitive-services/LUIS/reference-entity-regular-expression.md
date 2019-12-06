@@ -1,7 +1,7 @@
 ---
 title: Reguláris kifejezés típusú entitás – LUIS
 titleSuffix: Azure Cognitive Services
-description: A reguláris kifejezés a legjobb a nyers szövegekhez. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változat.  Reguláris kifejezések egyeztetésének szinten karaktert, nem a token szint helyesírás-ellenőrzésének átalakítás után alkalmazza.
+description: A reguláris kifejezés a legjobb a nyers szövegekhez. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változatot.  A reguláris kifejezések egyeztetése a karakter szintjén, nem pedig a jogkivonat szintjén történik.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,33 +10,33 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: ae46df875d588186cd083134820f349158d7e307
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695218"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841217"
 ---
-# <a name="regular-expression-entity"></a>Reguláriskifejezés-entitás 
+# <a name="regular-expression-entity"></a>Reguláriskifejezés-entitás
 
 A reguláris kifejezés entitás kinyeri az entitást az Ön által megadott reguláris kifejezési minta alapján.
 
-A reguláris kifejezés a legjobb a nyers szövegekhez. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változat.  Reguláris kifejezések egyeztetésének szinten karaktert, nem a token szint helyesírás-ellenőrzésének átalakítás után alkalmazza. Ha a reguláris kifejezés túl összetett, például sok szögletes zárójelet használ, nem tudja felvenni a kifejezést a modellbe. A nem az összes [.net regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) függvénytár részét használja. 
+A reguláris kifejezés a legjobb a nyers szövegekhez. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változatot.  A reguláris kifejezések egyeztetése a karakter szintjén, nem pedig a jogkivonat szintjén történik. Ha a reguláris kifejezés túl összetett, például sok szögletes zárójelet használ, nem tudja felvenni a kifejezést a modellbe. A nem az összes [.net regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) függvénytár részét használja.
 
 **Az entitás jól illeszkedik, ha:**
 
 * Az adat konzisztens módon formázható minden olyan változattal, amely szintén konzisztens.
-* A reguláris kifejezéshez nem szükséges több, mint 2 beágyazási szint. 
+* A reguláris kifejezéshez nem szükséges több, mint 2 beágyazási szint.
 
 ![Reguláriskifejezés-entitás](./media/luis-concept-entities/regex-entity.png)
 
 ## <a name="usage-considerations"></a>Használati megfontolások
 
-A reguláris kifejezések nem egyeznek meg a vártnál. Ilyen például a numerikus szó egyeztetése, például `one` és `two`. Ilyen például a következő regex, amely megfelel a `one` számnak, valamint a többi számnak:
+A reguláris kifejezések nem egyeznek meg a vártnál. Ilyen például a numerikus szó, például a `one` és az `two`. Ilyen például a következő regex, amely megfelel a számnak `one` más számokkal együtt:
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
-``` 
+```
 
 Ez a regex kifejezés olyan szavakat is tartalmaz, amelyek ezekkel a számokkal végződik, például `phone`. A probléma megoldása érdekében győződjön meg arról, hogy a regex-egyezések figyelembe veszik a Word határait. A jelen példában a Word-határok használatára szolgáló regex a következő regexben van használatban:
 
@@ -44,9 +44,9 @@ Ez a regex kifejezés olyan szavakat is tartalmaz, amelyek ezekkel a számokkal 
 \b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
 ```
 
-### <a name="example-json"></a>Példa JSON-ban
+### <a name="example-json"></a>Példa JSON-ra
 
-Ha `kb[0-9]{6}` értéket használ a reguláris kifejezés entitásának meghatározásaként, a következő JSON-válasz egy példa a lekérdezésben szereplő reguláris kifejezéssel rendelkező entitásokra:
+Ha `kb[0-9]{6}`használ, mint a reguláris kifejezés entitásának definíciója, a következő JSON-válasz egy példa a lekérdezésben szereplő reguláris kifejezéssel rendelkező entitásokra:
 
 `When was kb123456 published?`:
 
@@ -102,8 +102,8 @@ Ez a JSON, ha `verbose=true` van beállítva a lekérdezési karakterláncban:
 }
 ```
 
-* * * 
+* * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az [oktatóanyagban](luis-quickstart-intents-regex-entity.md)hozzon létre egy alkalmazást a konzisztens formátumú adatok kinyeréséhez a **reguláris kifejezés** entitás használatával.
+Ebben az [oktatóanyagban](tutorial-regex-entity.md)hozzon létre egy alkalmazást a konzisztens formátumú adatok kinyeréséhez a **reguláris kifejezés** entitás használatával.

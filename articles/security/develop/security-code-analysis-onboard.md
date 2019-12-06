@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 77be6d8518774a1e2656e23024490dd9c1431865
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 108d116500454605f33de201caffc11ae263f74c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707255"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851502"
 ---
 # <a name="onboarding-and-installing"></a>Előkészítés és telepítés
 
@@ -31,23 +31,23 @@ A Microsoft biztonsági kód elemzésének megkezdéséhez szükséges előfelt�
 ## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>A Microsoft biztonsági kód elemzési bővítményének bevezetése
 
 - Ha a következő támogatási ajánlatok valamelyikével rendelkezik, forduljon a technikai menedzserhez a meglévő órák megvásárlásához vagy lecserélésekor a bővítményhez való hozzáféréshez:
-   - Egységes támogatás – speciális szintű
-   - Egyesített támogatás teljesítményi szintje
-   - Premier szintű támogatás fejlesztők számára
-   - Premier szintű támogatás partnerek számára
-   - Nagyvállalati Premier szintű támogatás
+  - Egységes támogatás – speciális szintű
+  - Egyesített támogatás teljesítményi szintje
+  - Premier szintű támogatás fejlesztők számára
+  - Premier szintű támogatás partnerek számára
+  - Nagyvállalati Premier szintű támogatás
 - Ha a következő támogatási szolgáltatások valamelyikével rendelkezik, vagy nem rendelkezik Microsoft támogatási csomaggal, akkor a jogosult támogatási ajánlatra kell frissítenie:
-   - Azure-támogatás partnereknek
-   - Azure Alapszintű támogatás
-   - Azure-Fejlesztői támogatás
-   - Azure-Standard szintű támogatás
-   - Közvetlen Azure Professional
-   - Egységesített támogatás – alapszintű
+  - Azure-támogatás partnereknek
+  - Azure Alapszintű támogatás
+  - Azure-Fejlesztői támogatás
+  - Azure-Standard szintű támogatás
+  - Közvetlen Azure Professional
+  - Egységesített támogatás – alapszintű
 - A jogosult támogatási ajánlat megvásárlásához lépjen a [támogatási szolgáltatások kezdőlapjára](https://www.microsoft.com/enterprise/services/support).
 - A támogatási szerződés beszerzése után lépjen kapcsolatba a technikai fiók kezelőjével, és segítsen a szükséges adatok gyűjtésében.
 
 >[!NOTE]
-> Ha Ön a Microsoft partnerek hálózatában regisztrált partner, akkor jogosult Premier szintű támogatás megvásárlására partnereink számára. Ellenkező esetben a korábban említett jogosult támogatási ajánlatok egyikét kell megvásárolnia.
+>Ha nem rendelkezik támogatási szerződéssel, egy partner-vásárlási programon dolgozunk, ahol a harmadik féltől származó partnerekkel is megvásárolhatja a bővítményt anélkül, hogy az egységes támogatási csomagot kellene megvásárolnia. Küldjön [nekünk e-mailt](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Onboarding%20Request). Ha szeretné megtudni, hogy érdekli Önt ez a lehetőség. Tudomásul vesszük érdeklődését, és azonnal visszakerülünk Önnek, amint ez a lehetőség elérhetővé válik.
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>A Microsoft biztonsági kód elemzése bővítmény telepítése
 
@@ -87,6 +87,6 @@ A bővítmény telepítése után a biztonságos fejlesztési felépítési fela
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Build-feladatok konfigurálásával kapcsolatos további információkért tekintse meg a [konfigurációs útmutatót](security-code-analysis-customize.md).
+A Build-feladatok konfigurálásával kapcsolatos további információkért tekintse meg a [konfigurációs útmutatót](security-code-analysis-customize.md) vagy a [YAML konfigurációs útmutatóját](yaml-configuration.md).
 
 Ha további kérdései vannak a bővítményről és a rendelkezésre álló eszközökről, tekintse meg a [Gyakori kérdések oldalát](security-code-analysis-faq.md).

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8388d5b22cddcf148c68f35758ccdf797abbcd9e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 283bd56b9d9cbe412e9c28127dd9dab7decc2d7c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420645"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848306"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő NPS-infrastruktúra integrálása az Azure Multi-Factor Authentication
 
@@ -142,7 +142,7 @@ A következő lépésekkel kérhet le egy teszt fiókot:
 2. Kövesse az utasításokat az ellenőrzési módszer beállításához.
 3. [Hozzon létre egy feltételes hozzáférési szabályzatot](howto-mfa-getstarted.md#create-conditional-access-policy) a többtényezős hitelesítés megköveteléséhez a teszt fiókhoz.
 
-## <a name="install-the-nps-extension"></a>Az NPS-bővítményének telepítése
+## <a name="install-the-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének telepítése
 
 > [!IMPORTANT]
 > Telepítse a hálózati házirend-kiszolgáló bővítményt egy másik kiszolgálóra, mint a VPN-hozzáférési pont.
@@ -165,7 +165,7 @@ Ha egy meglévő NPS-bővítmény frissítését végzi, a mögöttes kiszolgál
 
 A telepítő létrehoz egy PowerShell-parancsfájlt a következő helyen: `C:\Program Files\Microsoft\AzureMfa\Config` (ahol a C:\ a telepítési meghajtója). Ez a PowerShell-parancsfájl minden futtatáskor végrehajtja a következő műveleteket:
 
-- Hozzon létre egy önaláírt tanúsítványt.
+- Önaláírt tanúsítvány létrehozása.
 - Rendelje hozzá a tanúsítvány nyilvános kulcsát az egyszerű szolgáltatásnév számára az Azure AD-ben.
 - Tárolja a tanúsítványt a helyi számítógép tanúsítvány-tárolójában.
 - Hozzáférés biztosítása a tanúsítvány titkos kulcsához a hálózati felhasználó számára.
@@ -221,7 +221,7 @@ Miután engedélyezte az MFA-t egy RADIUS-ügyfél számára a hálózati házir
 
 Ha az MFA-ban nem regisztrált felhasználók vannak, akkor megadhatja, hogy mi történjen a hitelesítéskor. A szolgáltatás működésének vezérléséhez használja a beállításjegyzék elérési útja *HKLM\Software\Microsoft\AzureMFA* *REQUIRE_USER_MATCH* beállításjegyzékbeli beállítását. Ez a beállítás egyetlen konfigurációs lehetőséggel rendelkezik:
 
-| Kulcs | Érték | Alapértelmezett |
+| Jelmagyarázat | Value (Díj) | Alapértelmezett |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | IGAZ/HAMIS | Nincs beállítva (megegyezik az igaz értékkel) |
 
@@ -229,7 +229,7 @@ Ennek a beállításnak a célja annak meghatározása, hogy mi a teendő, ha eg
 
 Dönthet úgy, hogy létrehozza ezt a kulcsot, és FALSE (hamis) értékre állítja a felhasználók bevezetését, és az Azure MFA még nem minden esetben regisztrálható. Mivel azonban a kulcs beállítása lehetővé teszi, hogy az MFA-ban nem regisztrált felhasználók bejelentkezzenek, el kell távolítania ezt a kulcsot az éles környezetbe való belépés előtt.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 ### <a name="nps-extension-health-check-script"></a>NPS-bővítmény állapot-ellenőrzési parancsfájlja
 
@@ -316,7 +316,7 @@ Javasoljuk, hogy a régebbi és a gyengébb titkosítási csomagokat tiltsa le, 
 
 További hibaelhárítási útmutató és lehetséges megoldások találhatók az [Azure-multi-Factor Authentication hálózati házirend-kiszolgáló bővítményében található hibaüzenetek feloldása](howto-mfa-nps-extension-errors.md)című cikkben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Konfiguráljon alternatív azonosítókat a bejelentkezéshez, vagy állítson be olyan IP-címekre vonatkozó kivételeket, amelyek nem hajtják végre a kétlépéses ellenőrzést a [hálózati házirend-kiszolgáló bővítményének speciális konfigurációs beállításaiban multi-Factor Authentication](howto-mfa-nps-extension-advanced.md)
 

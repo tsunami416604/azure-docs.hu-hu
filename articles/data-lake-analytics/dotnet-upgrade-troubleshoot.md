@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 851a405e5143ea5bb3a26de76f713914aa4bb569
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648518"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873233"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>A Azure Data Lake Analytics a .NET-keretrendszer v 4.7.2 frissít
 
@@ -39,7 +39,7 @@ Ellenőrizze, hogy lehetséges-e a visszamenőleges kompatibilitást okozó hib�
 1. Futtassa a visszamenőleges kompatibilitás-ellenőrzési szolgáltatást a .NET-DLL-eken vagy a
    1. A Visual Studio bővítmény használata a [.net-hordozhatósági elemző Visual Studio-bővítményben](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)
    1. Az önálló eszköz letöltése és használata a [GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport). Az önálló eszköz futtatására vonatkozó utasítások a [GitHub dotnetapiport-megszakítási változások](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md)
-   1. 4\.7.2. a kompatibilitási olvasási isRetargeting = = True érték a feltörési változások.
+   1. 4\.7.2. kompatibilitási `read isRetargeting == True` azonosítja a lehetséges problémákat.
 2. Ha az eszköz azt jelzi, hogy a kód érintheti-e a lehetséges visszamenőleges inkompatibilitást (néhány gyakori példa az inkompatibilitásra), további ellenőrzéshez használhatja a következőt:
    1. A kód elemzése és annak azonosítása, hogy a kód az érintett API-kra mutat-e értékeket
    1. Végezzen futtatókörnyezet-ellenőrzéseket. A futtatókörnyezet központi telepítése nem párhuzamosan történik a ADLA-ben. A frissítés előtt elvégezheti a futtatókörnyezet ellenőrzését, ha a VisualStudio helyi futtatását helyi .NET-keretrendszerrel 4.7.2 egy jellemző adatkészleten keresztül.
@@ -65,7 +65,7 @@ Azok a leggyakoribb visszamenőleges inkompatibilitások, amelyeket az ellenőrz
   - Javasolt művelet: Ellenőrizze, hogy a TaskFactory. FromAsync igaz értéket ad-e vissza.
 
 - A DataObject. GetData mostantól UTF-8-ként kérdezi le az adatfájlokat
-  - A .NET-keretrendszer 4-es verzióját vagy a .NET-keretrendszer 4.5.1-es vagy korábbi verzióit célzó alkalmazások esetében a DataObject. GetData egy ASCII-karakterláncként kéri le a HTML formátumú adatformátumot. Ennek eredményeképpen a nem ASCII karakterek (a karakterek, amelyek ASCII-kódja meghaladja a 0x7F) két véletlenszerű karakterből állnak. #N # #N # olyan alkalmazások esetében, amelyek a .NET-keretrendszer 4,5-es vagy újabb verzióját célozzák meg, és a .NET-keretrendszer 4.5.2-es verziójával futnak, `DataObject.GetData` a HTML formátumú adat lekérése UTF-8-ként, amely a 0x7Fnál nagyobb karaktereket jelöl.
+  - A .NET-keretrendszer 4-es verzióját vagy a .NET-keretrendszer 4.5.1-es vagy korábbi verzióit célzó alkalmazások esetében a DataObject. GetData egy ASCII-karakterláncként kéri le a HTML formátumú adatformátumot. Ennek eredményeképpen a nem ASCII-karakterek (a 0x7F nagyobb méretű ASCII-kódok) két véletlenszerű karakterből állnak. #N # #N # a .NET-keretrendszer 4,5-es vagy újabb verzióit célzó alkalmazásokhoz, valamint a .NET-keretrendszer 4.5.2-es verziójához, `DataObject.GetData` lekéri a HTML formátumú, UTF-8 karaktert, amely a 0x7F nagyobb karaktereket jelöl.
   - Érintett kódtárak: Glo
   - Javasolt művelet: a beolvasott adatformátumot a kívánt formátumban kell megadni
 

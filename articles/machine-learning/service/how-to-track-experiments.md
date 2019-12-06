@@ -1,7 +1,7 @@
 ---
 title: Log ML-kísérletek & metrikák
 titleSuffix: Azure Machine Learning
-description: Figyelje az Azure ML-kísérleteit, és figyelje a futtatási metrikákat a modell létrehozási folyamatának növelése érdekében. Vegyen fel naplózást a betanítási parancsfájlba, és tekintse meg a Futtatás naplózott eredményeit.  Használja a Run. log, a Run. start_logging vagy a ScriptRunConfig parancsot.
+description: Figyelje az Azure ML-kísérleteit, és figyelje a futtatási metrikákat a modell létrehozási folyamatának növelése érdekében. Vegyen fel naplózást a betanítási parancsfájlba, és tekintse meg a Futtatás naplózott eredményeit.  Használja a Run. log, a Run. start_logging vagy a ScriptRunConfig.
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d8a2c456c725a3170bc940bf17dec6b0c4ad2c3e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a60691222c6f5f31a5b5c97df029790c1fd690ed
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584530"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873876"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML-kísérletek futtatásának és metrikáinak monitorozása
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,15 +34,15 @@ A kísérletek és a figyelési futtatási metrikák nyomon követésével növe
 
 A következő metrikák adhatók hozzá egy futtatáshoz a kísérlet betanítása közben. A futtatások nyomon követésére szolgáló részletes lista megtekintéséhez tekintse meg a [futtatási osztály referenciájának dokumentációját](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
-|Típus| Python-függvény | Megjegyzések|
+|Type (Típus)| Python-függvény | Megjegyzések|
 |----|:----|:----|
-|Skaláris értékek |Függvény<br>`run.log(name, value, description='')`<br><br>Példa:<br>Run. log ("pontosság", 0,95) |Egy numerikus vagy sztring értéket adjon meg a futtatáshoz a megadott névvel. Egy metrika futtatási állapotba való naplózása azt eredményezi, hogy a metrika a kísérlet futtatási rekordjában tárolódik.  Ugyanazon metrika többször is naplózható egy futtatáson belül, mert az eredmény az adott metrika vektorának tekintendő.|
-|Felsorolja|Függvény<br>`run.log_list(name, value, description='')`<br><br>Példa:<br>Run. log _list ("pontosság", [0,6, 0,7, 0,87]) | A megadott névvel naplózza az értékek listáját a futtatáshoz.|
-|sor|Függvény<br>`run.log_row(name, description=None, **kwargs)`<br>Példa:<br>Futtassa a. log _row ("Y over X", X = 1, y = 0,4) | A *log_row* használatával a kwargs-ben leírtak szerint több oszloppal rendelkező mérőszámot hoz létre. Minden elnevezett paraméter létrehoz egy oszlopot a megadott értékkel.  a *log_row* egy tetszőleges rekord naplózására, vagy egy hurokban többször is meghívható egy teljes tábla létrehozásához.|
-|Tábla|Függvény<br>`run.log_table(name, value, description='')`<br><br>Példa:<br>Futtassa a. log _table ("Y over X", {"X": [1, 2, 3], "Y": [0.6, 0,7, 0,89]}) | Egy szótár objektum naplózása a futtatáshoz a megadott névvel. |
-|Képek|Függvény<br>`run.log_image(name, path=None, plot=None)`<br><br>Példa:<br>`run.log_image("ROC", plt)` | Rendszerkép naplózása a futtatási rekordba. A log_image használatával naplózhat egy képfájlt vagy egy matplotlib-rajzot a futtatáshoz.  Ezek a képek láthatók és összehasonlíthatók lesznek a futtatási rekordban.|
-|Futtatás címkézése|Függvény<br>`run.tag(key, value=None)`<br><br>Példa:<br>Run. tag ("kiválasztott", "yes") | Címkézse a futtatást egy karakterlánc-kulccsal és egy opcionális karakterlánc-értékkel.|
-|Fájl vagy könyvtár feltöltése|Függvény<br>`run.upload_file(name, path_or_stream)`<br> <br> Példa:<br>Run. upload_file ("best_model. PKL", "./Model.PKL") | Töltsön fel egy fájlt a futtatási rekordba. Futtatja az automatikus rögzítési fájlt a megadott kimeneti könyvtárban, amely alapértelmezés szerint "./outputs" a legtöbb futtatási típushoz.  A upload_file csak akkor használja, ha további fájlokat kell feltölteni, vagy nincs megadva kimeneti könyvtár. Javasoljuk `outputs` hozzáadását a névhez, hogy az a kimenet könyvtárba legyen feltöltve. A futtatási rekordhoz társított összes fájlt megtekintheti a következő néven: `run.get_file_names()`|
+|Skaláris értékek |Függvény:<br>`run.log(name, value, description='')`<br><br>Példa:<br>Run. log ("pontosság", 0,95) |Egy numerikus vagy sztring értéket adjon meg a futtatáshoz a megadott névvel. Egy metrika futtatási állapotba való naplózása azt eredményezi, hogy a metrika a kísérlet futtatási rekordjában tárolódik.  Ugyanazon metrika többször is naplózható egy futtatáson belül, mert az eredmény az adott metrika vektorának tekintendő.|
+|Listák|Függvény:<br>`run.log_list(name, value, description='')`<br><br>Példa:<br>Run. log_list ("pontosság", [0,6, 0,7, 0,87]) | A megadott névvel naplózza az értékek listáját a futtatáshoz.|
+|Sor|Függvény:<br>`run.log_row(name, description=None, **kwargs)`<br>Példa:<br>Run. log_row ("Y felett X", X = 1, y = 0.4) | A *log_row* használatával a kwargs-ben leírtak szerint több oszloppal rendelkező mérőszámot hoz létre. Minden elnevezett paraméter létrehoz egy oszlopot a megadott értékkel.  a *log_row* egy tetszőleges rekord naplózására, vagy egy hurokban többször is meghívható egy teljes tábla létrehozásához.|
+|Table|Függvény:<br>`run.log_table(name, value, description='')`<br><br>Példa:<br>Run. log_table ("Y over X", {"X": [1, 2, 3], "Y": [0.6, 0,7, 0,89]}) | Egy szótár objektum naplózása a futtatáshoz a megadott névvel. |
+|Lemezképek|Függvény:<br>`run.log_image(name, path=None, plot=None)`<br><br>Példa:<br>`run.log_image("ROC", plt)` | Rendszerkép naplózása a futtatási rekordba. A log_image használatával naplózhat egy képfájlt vagy egy matplotlib-képet a futtatáshoz.  Ezek a képek láthatók és összehasonlíthatók lesznek a futtatási rekordban.|
+|Futtatás címkézése|Függvény:<br>`run.tag(key, value=None)`<br><br>Példa:<br>Run. tag ("kiválasztott", "yes") | Címkézse a futtatást egy karakterlánc-kulccsal és egy opcionális karakterlánc-értékkel.|
+|Fájl vagy könyvtár feltöltése|Függvény:<br>`run.upload_file(name, path_or_stream)`<br> <br> Példa:<br>Run. upload_file ("best_model. PKL", "./Model.PKL") | Töltsön fel egy fájlt a futtatási rekordba. Futtatja az automatikus rögzítési fájlt a megadott kimeneti könyvtárban, amely alapértelmezés szerint "./outputs" a legtöbb futtatási típushoz.  A upload_file csak akkor használja, ha további fájlokat kell feltölteni, vagy nincs megadva kimeneti könyvtár. Javasoljuk `outputs` hozzáadását a névhez, hogy az a kimenet könyvtárba legyen feltöltve. A futtatási rekordhoz társított összes fájlt megtekintheti a következő néven: `run.get_file_names()`|
 
 > [!NOTE]
 > A skaláris, a listához, a sorokhoz és a táblákhoz tartozó mérőszámok a következő típusúak lehetnek: float, integer vagy string.
@@ -50,7 +50,7 @@ A következő metrikák adhatók hozzá egy futtatáshoz a kísérlet betanítá
 ## <a name="choose-a-logging-option"></a>Naplózási lehetőség kiválasztása
 
 Ha nyomon szeretné követni vagy figyelni a kísérletet, hozzá kell adnia egy kódot a naplózás elindításához, amikor elküldi a futtatást. A futtatási beküldést az alábbi módokon aktiválhatja:
-* __Run. start_logging__ – naplózási függvények hozzáadása a betanítási parancsfájlhoz, és egy interaktív naplózási munkamenet elindítása a megadott kísérletben. a **start_logging** egy interaktív futtatást hoz létre, amely olyan forgatókönyvekben használható, mint a jegyzetfüzetek. A rendszer a munkamenet során naplózott összes mérőszámot hozzáadja a kísérlet futtatási rekordjához.
+* __Run. start_logging__ – naplózási függvények hozzáadása a képzési parancsfájlhoz, és az interaktív naplózási munkamenet elindítása a megadott kísérletben. a **start_logging** egy interaktív futtatást hoz létre, amely olyan forgatókönyvekben használható, mint például a jegyzetfüzetek. A rendszer a munkamenet során naplózott összes mérőszámot hozzáadja a kísérlet futtatási rekordjához.
 * __ScriptRunConfig__ – adja hozzá a naplózási funkciókat a betanítási parancsfájlhoz, és töltse be a teljes parancsfájl-mappát a futtatással.  A **ScriptRunConfig** a parancsfájlok futtatásához szükséges konfigurációk beállításának osztálya. Ezzel a beállítással adhat hozzá figyelési kódot, hogy értesítést kapjon a befejezésről, vagy egy vizuális widgetet a figyeléshez.
 
 ## <a name="set-up-the-workspace"></a>A munkaterület beállítása
@@ -67,7 +67,7 @@ A naplózás hozzáadása és a kísérlet elküldése előtt be kell állítani
   
 ## <a name="option-1-use-start_logging"></a>1\. lehetőség: a start_logging használata
 
-a **start_logging** egy interaktív futtatást hoz létre, amely olyan forgatókönyvekben használható, mint a jegyzetfüzetek. A rendszer a munkamenet során naplózott összes mérőszámot hozzáadja a kísérlet futtatási rekordjához.
+a **start_logging** egy interaktív futtatást hoz létre, amely olyan forgatókönyvekben használható, mint például a jegyzetfüzetek. A rendszer a munkamenet során naplózott összes mérőszámot hozzáadja a kísérlet futtatási rekordjához.
 
 Az alábbi példában egy egyszerű sklearn Ridge-modellt végezünk helyileg egy helyi Jupyter notebookon. A kísérletek különböző környezetekben történő elküldésével kapcsolatos további tudnivalókért lásd: [számítási célok beállítása a modell betanításához Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
 
@@ -232,6 +232,25 @@ A [képzések indítása, figyelése és megszakítása című](how-to-manage-ru
 
 ## <a name="view-run-details"></a>Futtatási részletek megtekintése
 
+### <a name="view-activequeued-runs-from-the-browser"></a>Aktív/várólistán lévő futtatások megtekintése a böngészőben
+
+A modellek betanításához használt számítási célok egy megosztott erőforrás. Így előfordulhat, hogy egy adott időpontban több futtatási sor van vagy aktív. Ha meg szeretné tekinteni a futtatásokat egy adott számítási célra a böngészőben, kövesse az alábbi lépéseket:
+
+1. A [Azure Machine learning Studióban](https://ml.azure.com/)válassza ki a munkaterületet, majd a lap bal oldalán kattintson a __számítás__ elemre.
+
+1. Válassza a __betanítási fürtök__ lehetőséget a betanításhoz használt számítási célok listájának megjelenítéséhez. Ezután válassza ki a fürtöt.
+
+    ![Válassza ki a betanítási fürtöt](./media/how-to-track-experiments/select-training-compute.png)
+
+1. Válassza a __futtatások__lehetőséget. Megjelenik a fürtöt használó futtatások listája. Egy adott Futtatás részleteinek megtekintéséhez használja a __Run (Futtatás__ ) oszlopban található hivatkozást. A kísérlet részleteinek megtekintéséhez használja a __kísérlet__ oszlopban található hivatkozást.
+
+    ![A betanítási fürt futtatásának kiválasztása](./media/how-to-track-experiments/show-runs-for-compute.png)
+    
+    > [!TIP]
+    > A futtatások tartalmazhatnak alárendelt futtatásokat, így egy betanítási feladatok több bejegyzést is eredményezhetnek.
+
+A Futtatás befejezése után már nem jelenik meg ezen a lapon. A befejezett futtatásokkal kapcsolatos információk megtekintéséhez látogasson el a Studio __kísérletek__ szakaszára, és válassza ki a kísérletet, majd futtassa a parancsot. További információ: a [lekérdezés futtatásának mérőszámai](#queryrunmetrics) szakasz.
+
 ### <a name="monitor-run-with-jupyter-notebook-widget"></a>A monitor futtatása a Jupyter notebook widgettel
 Ha a **ScriptRunConfig** metódust használja a futtatások elküldéséhez, tekintse meg a Futtatás folyamatát egy [Jupyter widgettel](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). A futtatás elküldéséhez hasonlóan a vezérlő aszinkron módon működik, és 10-15 másodpercenként élő állapotfrissítést biztosít a feladat befejeződéséig.
 
@@ -271,6 +290,7 @@ Ha meg szeretné tekinteni a folyamat további részleteit, kattintson arra a fo
 
 A modell betanítása és monitorozása a háttérben történik, így a várakozás közben más feladatokat is futtathat. Azt is megvárhatja, amíg a modell befejezte a betanítást, mielőtt több kódot futtasson. A **ScriptRunConfig**használatakor a ```run.wait_for_completion(show_output = True)``` segítségével megtekintheti, hogy mikor fejeződik be a modell betanítása. A ```show_output``` jelző részletes kimenetet biztosít. 
 
+<a id="queryrunmetrics"></a>
 
 ### <a name="query-run-metrics"></a>Lekérdezés-futtatási metrikák
 
@@ -307,7 +327,7 @@ A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a következő lépéseket a Pythonhoz készült Azure Machine Learning SDK használatának megismeréséhez:
 
