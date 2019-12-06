@@ -64,8 +64,6 @@
           href: howto-conditional-access-policy-compliant-device.md
     - name: Régi hitelesítési folyamat letiltása
       href: block-legacy-authentication.md
-    - name: Feltételes hozzáférés MFA-regisztrációhoz
-      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Jóváhagyott ügyfélalkalmazások megkövetelése
       href: app-based-conditional-access.md
     - name: Alkalmazásvédelmi szabályzat megkövetelése
