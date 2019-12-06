@@ -5,19 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 11/18/2018
+ms.date: 11/05/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ca5830a3d02e4127f65e580ade7727ae92cd5c15
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: cac6c40397e272d6d65931029c500bdcc2b774cc
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166722"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875511"
 ---
 Az Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A strukturálatlan adatok olyan adatok, amelyek nem felelnek meg egy adott adatmodellnek vagy definíciónak, például szöveges vagy bináris adatoknak.
 
-## <a name="about-blob-storage"></a>Tudnivalók a blob Storage-ról
+## <a name="about-blob-storage"></a>Az Azure Blob Storage névjegye
 
 A Blob Storage használati lehetőségei:
 
@@ -28,10 +28,23 @@ A Blob Storage használati lehetőségei:
 * Adattárolás biztonsági mentésekhez és helyreállításhoz, vészhelyreállításhoz és archiváláshoz.
 * Adattárolás helyszíni vagy az Azure-ban üzemeltetett szolgáltatásban való elemzéshez.
 
-A felhasználók vagy ügyfélalkalmazások a blob Storage-ban lévő objektumokat HTTP/HTTPS használatával érhetik el a világ bármely pontján. A blob Storage-ban lévő objektumok az [Azure storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), az [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage), az [Azure CLI](https://docs.microsoft.com/cli/azure/storage)vagy egy Azure Storage ügyféloldali kódtár használatával érhetők el. Az ügyféloldali kódtárak számos nyelven elérhetők, többek között a [.net](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client), a [Java](https://docs.microsoft.com/java/api/overview/azure/storage), a [Node. js](https://azure.github.io/azure-storage-node), a [Python](/azure/python/), a [Go](https://github.com/azure/azure-storage-blob-go/), a [php](https://azure.github.io/azure-storage-php/)és a [Ruby](https://azure.github.io/azure-storage-ruby).
+A felhasználók vagy ügyfélalkalmazások a blob Storage-ban lévő objektumokat HTTP/HTTPS használatával érhetik el a világ bármely pontján. A blob Storage-ban lévő objektumok az [Azure storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), az [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage), az [Azure CLI](https://docs.microsoft.com/cli/azure/storage)vagy egy Azure Storage ügyféloldali kódtár használatával érhetők el. Az ügyféloldali kódtárak különböző nyelvekhez érhetők el, beleértve a következőket:
+
+* [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client)
+* [Java](https://docs.microsoft.com/java/api/overview/azure/storage)
+* [Node.js](https://azure.github.io/azure-storage-node) 
+* [Python](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-python)
+* [Go](https://github.com/azure/azure-storage-blob-go/)
+* [PHP](https://azure.github.io/azure-storage-php/)
+* [Ruby](https://azure.github.io/azure-storage-ruby)
 
 ## <a name="about-azure-data-lake-storage-gen2"></a>Tudnivalók Azure Data Lake Storage Gen2
 
-A Blob Storage támogatja az Azure Data Lake Storage Gen2-t, amely a Microsoft felhőbeli, vállalati adatok big data koncepción alapuló elemzési megoldása. Az Azure Data Lake Storage Gen2 hierarchikus fájlrendszert, valamint a Blob Storage előnyeit biztosítja, így például az alacsony költséget, a rétegzett tárolást, a magas rendelkezésre állást, az erős konzisztenciát és a vészhelyreállítási képességeket.
+A Blob Storage támogatja az Azure Data Lake Storage Gen2-t, amely a Microsoft felhőbeli, vállalati adatok big data koncepción alapuló elemzési megoldása. Azure Data Lake Storage Gen2 hierarchikus fájlrendszert biztosít, valamint a blob Storage előnyeit, beleértve a következőket:
+
+* Alacsony árú, többrétegű tárolás
+* Magas rendelkezésre állás
+* Erős konzisztencia
+* Vész-helyreállítási lehetőségek
 
 További információ a Data Lake Storage Gen2ről: a [Azure Data Lake Storage Gen2 bemutatása](../articles/storage/data-lake-storage/introduction.md).

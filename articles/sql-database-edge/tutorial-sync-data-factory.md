@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 2bfa65117bf31ad9cb9917fd8a643a0358e02be0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e6fd9e6431137708ba93328a8ed1359b93b4ee1f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384208"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851689"
 ---
 # <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Oktatóanyag: adatok szinkronizálása SQL Database Edge-ből az Azure Blob Storage-ba Azure Data Factory használatával
 
 Ebben az oktatóanyagban a Azure Data Factory használatával fokozatosan szinkronizálja az Azure Blob Storage-ba az adatok egy Azure SQL Database Edge-példányban lévő táblából.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ha még nem hozott létre adatbázist vagy táblát a Azure SQL Database Edge-telepítésben, akkor az alábbi módszerek egyikével hozzon létre egyet:
 
@@ -177,7 +177,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
 27. Nyissa meg a SinkDataset **Kapcsolódás** lapját, és hajtsa végre a következő lépéseket:
 
-    1. A **fájl elérési útja**területen adja meg a *asdedatasync/incrementalcopy*nevet, ahol a *adftutorial* a blob-tároló neve, a *incrementalcopy* pedig a mappa neve. Ha nem létezik, hozza létre a tárolót, vagy használjon egy meglévőt. Azure Data Factory automatikusan létrehozza a kimeneti mappa *incrementalcopy* , ha az nem létezik. A **fájl elérési útjánál** a **Tallózás** gombot is használhatja a blobtárolóban található mappák megkereséséhez.
+    1. A **fájl elérési útja**területen adja meg a *asdedatasync/incrementalcopy*nevet, ahol a *asdedatasync* a blob-tároló neve, a *incrementalcopy* pedig a mappa neve. Ha nem létezik, hozza létre a tárolót, vagy használjon egy meglévőt. Azure Data Factory automatikusan létrehozza a kimeneti mappa *incrementalcopy* , ha az nem létezik. A **fájl elérési útjánál** a **Tallózás** gombot is használhatja a blobtárolóban található mappák megkereséséhez.
 
     2. A **fájl elérési útjának** **fájljának** részeként válassza a **dinamikus tartalom hozzáadása [ALT + P]** lehetőséget, majd írja be a **@CONCAT(növekményes, folyamat () értéket. RunId, '. txt ')** a megnyíló ablakban. Válassza a **Finish** (Befejezés) elemet. A fájl nevét a kifejezés dinamikusan hozza létre. A folyamat minden futtatásához tartozik egy egyedi azonosító. A másolási tevékenység a futtatási azonosítót használja a fájlnév létrehozásához.
 
@@ -195,9 +195,9 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     2. A tárolt eljárás paraméterei értékének megadásához válassza a **paraméter importálása** lehetőséget, majd adja meg az alábbi értékeket a paraméterekhez:
 
-    |Name (Név)|Típus|Érték|
+    |Név|Type (Típus)|Value (Díj)|
     |-----|----|-----|
-    |LastModifiedtime|DateTime|@ {Activity ("NewWaterMark"). output. firstRow. NewWatermarkvalue}|
+    |LastModifiedtime|Dátum és idő|@ {Activity ("NewWaterMark"). output. firstRow. NewWatermarkvalue}|
     |TableName|Sztring|@ {Activity ("OldWaterMark"). output. firstRow. Táblanév}|
 
 33. A folyamat beállításainak érvényesítéséhez kattintson az **Érvényesítés** elemre az eszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A folyamat- **ellenőrzési jelentés** ablakának bezárásához válassza a **>>** lehetőséget.
@@ -216,7 +216,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
 5. Válassza az **aktiválás most**lehetőséget.
 
-6. Váltson a bal oldali **Monitor** (Monitorozás) lapra. Láthatja a manuális eseményindítás által elindított folyamatfuttatás állapotát. A lista frissítéséhez kattintson a **Frissítés** gombra.
+6. Váltson a bal oldali **Monitorozás** lapra. Láthatja a manuális eseményindítás által elindított folyamatfuttatás állapotát. A lista frissítéséhez kattintson a **Frissítés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

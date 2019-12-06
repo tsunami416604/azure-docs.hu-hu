@@ -1,19 +1,19 @@
 ---
 title: A Azure Cosmos DB Table API használatának első lépései a .NET Standard SDK-val
-description: A Azure Cosmos DB Table API használatával tárolhatja a felhőben strukturált adataikat.
+description: Megtudhatja, hogyan tárolhatja és kérdezheti le a strukturált információkat Azure Cosmos DB Table API-fiókban
 author: wmengmsft
 ms.author: wmeng
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
-ms.date: 05/20/2019
-ms.openlocfilehash: 11179d6adc676ae99257442b186a15e69dcc4a03
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/03/2019
+ms.openlocfilehash: 0a1ba00d2d24664590f76438a90f651e0826d419
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764473"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870547"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Az Azure Cosmos DB Table API és az Azure Table Storage használatának első lépései a .NET SDK-val
 

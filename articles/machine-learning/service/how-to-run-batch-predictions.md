@@ -11,21 +11,21 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 62a2c3324df70c7ccdbbac273d314ff94cbb7b9a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 207e8def168227cb419d25c8e98aa15c09c72b2c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671564"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851604"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-következtetés futtatása nagy mennyiségű adattal a Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben a útmutatóban megtudhatja, hogyan érheti el a nagy mennyiségű, aszinkron módon és párhuzamosan a Azure Machine Learning használatával. Az itt ismertetett batch-következtetési funkció nyilvános előzetes verzióban érhető el. Nagy teljesítményű és nagy átviteli sebességű módszer az adatok előállítására és feldolgozására. Aszinkron funkciókat biztosít a dobozból.
+Megtudhatja, hogyan érheti el a nagy mennyiségű, aszinkron módon és párhuzamosan a Azure Machine Learning használatával. Az itt ismertetett batch-következtetési funkció nyilvános előzetes verzióban érhető el. Nagy teljesítményű és nagy átviteli sebességű módszer az adatok előállítására és feldolgozására. Aszinkron funkciókat biztosít a dobozból.
 
 A Batch-következtetések révén egyszerűvé válik, hogy az offline adatmennyiséget a nagy mennyiségű, terabájtos üzemi adatokra épülő fürtökön is kibővítse, ami jobb termelékenységet és optimalizált költségeket eredményez.
 
-Ebben az útmutatóban a következő feladatokat ismerheti meg:
+Ez a cikk a következő feladatokat ismerteti:
 
 > * Hozzon létre egy távoli számítási erőforrást.
 > * Egyéni következtetési parancsfájlt írhat.
@@ -189,7 +189,7 @@ model = Model.register(model_path="models/",
 A parancsfájlnak két függvényt *kell tartalmaznia* :
 - `init()`: használja ezt a funkciót bármilyen költséges vagy közös felkészüléshez a későbbi következtetésekhez. Használhatja például a modell betöltését egy globális objektumba.
 -  `run(mini_batch)`: a függvény minden egyes `mini_batch` példánynál futni fog.
-    -  `mini_batch`: a Batch-következtetés meghívja a Run metódust, és egy listát vagy pandák DataFrame ad át a metódus argumentumaként. Min_batch minden bejegyzése lesz-egy filepath, ha a bemenet egy FileDataset, egy Panda DataFrame, ha a bemenet egy TabularDataset.
+    -  `mini_batch`: a Batch-következtetés meghívja a Run metódust, és egy listát vagy pandák DataFrame ad át a metódus argumentumaként. Min_batch minden bejegyzése – egy fájl elérési útja, ha a bemenet egy FileDataset, egy Panda DataFrame, ha a bemenet TabularDataset.
     -  `response`: a Run () metódusnak egy Panda DataFrame vagy egy tömböt kell visszaadnia. Append_row output_action esetében ezek a visszaadott elemek a közös kimeneti fájlba vannak hozzáfűzve. Summary_only esetén a rendszer figyelmen kívül hagyja az elemek tartalmát. Az összes kimeneti művelet esetében minden visszaadott kimeneti elem a bemeneti mini-batch bemeneti elemének egy sikeres következtetését jelzi. A felhasználónak meg kell győződnie arról, hogy elegendő adat szerepel a következtetési eredményben, hogy leképezje a bemenetet. A következtetés kimenete kimeneti fájlban lesz megírva, és nem garantált, hogy sorrendben legyenek, a felhasználónak a kimenetben lévő egyes kulcsokat kell használnia a bemenethez való leképezéshez.
 
 ```python
@@ -237,6 +237,15 @@ def run(mini_batch):
     return resultList
 ```
 
+### <a name="how-to-access-other-files-in-init-or-run-functions"></a>Más fájlok elérése `init()` vagy `run()` függvényekben
+
+Ha egy másik fájl vagy mappa található a következtetési parancsfájllal megegyező könyvtárban, hivatkozhat rá az aktuális munkakönyvtár megkeresésével.
+
+```python
+script_dir = os.path.realpath(os.path.join(__file__, '..',))
+file_path = os.path.join(script_dir, "<file_name>")
+```
+
 ## <a name="build-and-run-the-batch-inference-pipeline"></a>A Batch-következtetési folyamat létrehozása és futtatása
 
 Most már mindent megtalál, amire szüksége lehet a folyamat létrehozásához.
@@ -261,11 +270,11 @@ batch_env.spark.precache_packages = False
 
 ### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Adja meg a Batch-következtetési folyamat lépésének paramétereit
 
-a `ParallelRunConfig` az újonnan bevezetett batch következtetések `ParallelRunStep` példányának fő konfigurációja a Azure Machine Learning folyamaton belül. Ezzel a paranccsal becsomagolhatja a parancsfájlt, és konfigurálhatja a szükséges paramétereket, beleértve a következők mindegyikét:
+a `ParallelRunConfig` az újonnan bevezetett batch következtetések `ParallelRunStep` példányának fő konfigurációja a Azure Machine Learning folyamaton belül. Ezzel a paranccsal becsomagolhatja a parancsfájlt, és konfigurálhatja a szükséges paramétereket, beleértve az alábbi paramétereket:
 - `entry_script`: egy felhasználói parancsfájl helyi fájl elérési útjaként, amely több csomóponton párhuzamosan fog futni. Ha `source_directly` létezik, használjon relatív elérési utat. Ellenkező esetben használja a gépen elérhető bármely elérési utat.
 - `mini_batch_size`: a mini-batch egyetlen `run()` hívásnak átadott mérete. (Nem kötelező; az alapértelmezett érték `1`.)
     - `FileDataset`esetén a `1`minimális értékkel rendelkező fájlok száma. Több fájlt is egyesítheti egyetlen mini-kötegbe.
-    - `TabularDataset`esetében ez az adatmennyiség. Az értékek például a következők: `1024`, `1024KB`, `10MB`és `1GB`. Az ajánlott érték `1MB`. Vegye figyelembe, hogy a `TabularDataset` mini-batch soha nem fogja meghaladni a fájlok határait. Ha például. csv fájlokkal rendelkezik, amelyek különböző méretűek, a legkisebb fájl 100 KB, a legnagyobb pedig 10 MB. Ha `mini_batch_size = 1MB`, akkor az 1 MB-nál kisebb méretű fájlok egyetlen mini batch-ként lesznek kezelve. Az 1 MB-nál nagyobb méretű fájlok több mini-kötegre lesznek felosztva.
+    - `TabularDataset`esetében ez az adatmennyiség. Az értékek például a következők: `1024`, `1024KB`, `10MB`és `1GB`. Az ajánlott érték `1MB`. A `TabularDataset` mini-batch soha nem keresztezi a fájlok határait. Ha például. csv fájlokkal rendelkezik, amelyek különböző méretűek, a legkisebb fájl 100 KB, a legnagyobb pedig 10 MB. Ha `mini_batch_size = 1MB`, akkor az 1 MB-nál kisebb méretű fájlok egyetlen mini batch-ként lesznek kezelve. Az 1 MB-nál nagyobb méretű fájlok több mini-kötegre lesznek felosztva.
 - `error_threshold`: a feldolgozás során figyelmen kívül hagyott `FileDataset` esetén a `TabularDataset` és a fájlok meghibásodása miatti hibák száma. Ha a teljes bemenethez tartozó hibák száma meghaladja ezt az értéket, a rendszer leállítja a feladatot. A hiba küszöbértéke a teljes bemenetre vonatkozik, nem az `run()` metódusnak eljuttatott egyes mini-kötegekhez. A tartomány `[-1, int.max]`. A `-1` rész azt jelzi, hogy a rendszer figyelmen kívül hagyja az összes hibát a feldolgozás során.
 - `output_action`: a következő értékek egyike azt jelzi, hogyan lesz rendszerezve a kimenet:
     - `summary_only`: a felhasználói parancsfájl a kimenetet fogja tárolni. `ParallelRunStep` a kimenetet csak a hiba küszöbértékének kiszámításakor fogja használni.
@@ -276,7 +285,7 @@ a `ParallelRunConfig` az újonnan bevezetett batch következtetések `ParallelRu
 - `process_count_per_node`: a folyamatok száma egy csomóponton.
 - `environment`: a Python-környezet definíciója. Konfigurálhatja egy meglévő Python-környezet használatára, vagy létrehozhat egy ideiglenes környezetet a kísérlethez. A definíció a szükséges alkalmazás-függőségek (opcionális) beállítására is felelős.
 - `logging_level`: részletes naplózás. A részletességgel bővülő értékek a következők: `WARNING`, `INFO`és `DEBUG`. Az alapértelmezett érték `INFO` (nem kötelező).
-- `run_invocation_timeout`: a `run()` metódus meghívásának időtúllépése másodpercben. Az alapértelmezett érték `60`.
+- `run_invocation_timeout`: a `run()` metódus meghívásának időtúllépése másodpercben. Az alapértelmezett érték 0.`60`
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunConfig
@@ -348,6 +357,8 @@ pipeline_run.wait_for_completion(show_output=True)
 ## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné látni, hogy ez a folyamat teljes körűen működjön, próbálja ki a [Batch következtetéseit tartalmazó jegyzetfüzetet](https://aka.ms/batch-inference-notebooks). 
+
+A ParallelRunStep kapcsolatos hibakeresési és hibaelhárítási útmutatásért lásd: [útmutató.](how-to-debug-batch-predictions.md)
 
 [A folyamatok](how-to-debug-pipelines.md)hibakereséséhez és hibaelhárításához tekintse meg a útmutató útmutatását.
 

@@ -1,15 +1,15 @@
 ---
 title: A Blockchain Data Manager használata az Azure Cosmos DB-Azure Blockchain szolgáltatás frissítéséhez
 description: Blockchain-Data Manager használata az Azure Blockchain Service-hez Blockchain-Azure Cosmos DB küldéséhez
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 497652f91d46592212a17a0a22832c02a696df62
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 642e8b4d9d2492c0d7119f0a5469176765565159
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326261"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849961"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Oktatóanyag: az Blockchain-Data Manager használata az adatküldés Azure Cosmos DB
 
@@ -17,7 +17,7 @@ Ebben az oktatóanyagban az Azure Blockchain Service-hez készült Blockchain-Da
 
 [![Blockchain tranzakció részletei](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
-Ebben az oktatóanyagban az alábbiakat végezte el:
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Blockchain-Data Manager példány létrehozása
@@ -41,7 +41,7 @@ Ebben az oktatóanyagban az alábbiakat végezte el:
 
 Egy Blockchain Data Manager-példány csatlakozik egy Azure Blockchain szolgáltatásbeli tranzakciós csomóponthoz, és figyeli azokat. Egy példány az összes nyers blokk és nyers tranzakció adatait rögzíti a tranzakciós csomópontról. A kimenő kapcsolatok a blockchain adatokat küldenek Azure Event Grid. A példány létrehozásakor egyetlen kimenő kapcsolódást kell konfigurálnia.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Nyissa meg az előfeltételként szolgáló rövid útmutatóban létrehozott Azure Blockchain Service-tagot [: hozzon létre egy Blockchain-tagot a Azure Portal használatával](create-member.md). Válassza ki a **Blockchain Data Manager**.
 1. Válassza a **Hozzáadás** lehetőséget.
 
@@ -51,7 +51,7 @@ Egy Blockchain Data Manager-példány csatlakozik egy Azure Blockchain szolgált
 
     Beállítás | Példa | Leírás
     --------|---------|------------
-    Name (Név) | mywatcher | Adjon egyedi nevet a csatlakoztatott Blockchain Data Manager.
+    Név | mywatcher | Adjon egyedi nevet a csatlakoztatott Blockchain Data Manager.
     Tranzakciós csomópont | myblockchainmember | Válassza ki az előfeltételként létrehozott Azure Blockchain Service-tag alapértelmezett tranzakciós csomópontját.
     Kapcsolat neve | cosmosdb | Adja meg a kimenő kapcsolatok egyedi nevét, ahol a blockchain tranzakciós adatküldés történik.
     Event Grid-végpont | myTopic | Válassza ki az előfeltételként létrehozott Event Grid-témakört. Megjegyzés: a Blockchain Data Manager példányának és az Event Grid témakörnek ugyanahhoz az előfizetéshez kell tartoznia.
@@ -108,14 +108,14 @@ A Blockchain Data Manager megköveteli, hogy a szerződési ABI és a bytecode f
 
     | Beállítás | Leírás |
     |---------|-------------|
-    | Name (Név)  | Nevezze el a tárolót. Például: *smartcontract* |
-    | Nyilvános hozzáférési szint | *Privát kiválasztása (névtelen hozzáférés nélkül)* |
+    | Név  | Nevezze el a tárolót. Például: *smartcontract* |
+    | Nyilvános hozzáférés szintje | *Privát kiválasztása (névtelen hozzáférés nélkül)* |
 
 1. A tároló létrehozásához válassza az **OK** gombot.
 1. Válassza ki a tárolót, majd válassza a **feltöltés**lehetőséget.
 1. Válassza ki a [szerződések beszerzése ABI és bytecode](#get-contract-abi-and-bytecode) szakaszban létrehozott JSON-fájlokat.
 
-    ![BLOB feltöltése](./media/data-manager-cosmosdb/upload-blobs.png)
+    ![Blob feltöltése](./media/data-manager-cosmosdb/upload-blobs.png)
 
     Válassza a **Feltöltés** lehetőséget.
 
@@ -144,7 +144,7 @@ Az egyes Blobok esetében egy közös hozzáférési aláírás létrehozása.
 
     Beállítás | Leírás
     --------|------------
-    Name (Név) | Adjon meg egy egyedi nevet a nyomon követett blockchain-alkalmazás számára.
+    Név | Adjon meg egy egyedi nevet a nyomon követett blockchain-alkalmazás számára.
     Egyezményes ABI | A szerződéses ABI-fájl URL-címének elérési útja. További információkért lásd: [egyezményes ABI és bytecode URL-cím létrehozása](#create-contract-abi-and-bytecode-url).
     Szerződés bytecode | A bytecode fájl URL-elérési útja. További információkért lásd: [egyezményes ABI és bytecode URL-cím létrehozása](#create-contract-abi-and-bytecode-url).
 
@@ -172,7 +172,7 @@ Adatbázis és tároló létrehozásához használhatja a Azure Portal Adatkezel
     | Beállítás | Leírás
     |---------|-------------|
     | Adatbázis-azonosító | Adja meg a **blockchain** nevet az új adatbázis neveként. |
-    | Teljesítmény | Az átviteli sebesség **400** adategység/másodperc (ru/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.|
+    | Adatforgalom | Az átviteli sebesség **400** adategység/másodperc (ru/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.|
     | Tároló azonosítója | Adja meg az **üzeneteket** az új tároló neveként. |
     | Partíciókulcs | A **/MessageType** használata partíciós kulcsként. |
 
@@ -202,7 +202,7 @@ Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet 
 
     | Beállítás | Leírás
     |---------|-------------|
-    | Előfizetést | Válassza ki azt az előfizetést, amely tartalmazza a Event Grid témakört. |
+    | Előfizetés | Válassza ki azt az előfizetést, amely tartalmazza a Event Grid témakört. |
     | Erőforrás típusa | Válassza a **Microsoft. EventGrid. témakörök**elemet. |
     | Erőforrás neve | Válassza ki annak a Event Grid témakörnek a nevét, ahol a Blockchain Data Manager tranzakciós adatokat küld. |
 

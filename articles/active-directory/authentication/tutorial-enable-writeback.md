@@ -6,19 +6,19 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1efb67df6c31a3b03fdc45fffc0564fb09e39faf
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: e1ec439696c1ebd9d5929a4c8b2d9925fc1a71cc
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853039"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846471"
 ---
-# <a name="tutorial-enabling-password-writeback"></a>Oktatóanyag: A jelszóvisszaírás engedélyezése
+# <a name="tutorial-enabling-password-writeback"></a>Oktatóanyag: Jelszóvisszaíró engedélyezése
 
 Az oktatóanyagban engedélyezzük a jelszóvisszaírót hibrid környezetben. A jelszóvisszaíró használatával az Azure Active Directoryban (Azure AD) végrehajtott jelszómódosítások visszaszinkronizálhatók a helyszíni Active Directory Domain Services- (AD DS-) környezetbe. A jelszóvisszaíró az Azure AD Connect részeként engedélyezett biztonságos mechanizmus, amely a jelszómódosításokat az Azure AD-ből visszaküldi egy meglévő helyszíni címtárba. A jelszóvisszaíró belső működésével kapcsolatos további részleteket [a jelszóvisszaíró működését ismertető](concept-sspr-writeback.md) cikkben olvashat.
 
@@ -54,9 +54,9 @@ A jelszóvisszaíró engedélyezése az Azure AD Connectben azonban csak a felad
 2. Lépjen az **Azure Active Directoryra**, kattintson a **Jelszó alaphelyzetbe állítása** gombra, majd válassza a **Helyszíni integráció** lehetőséget.
 3. Állítsa a **Jelszavak visszaírása helyszíni címtárba** beállítást **Igen** értékre.
 4. Állítsa a **Felhasználói fiókok feloldásának engedélyezése új jelszó kérése nélkül** beállítást **Igen** értékre.
-5. Kattintson a **Save** (Mentés) gombra
+5. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyeztük a jelszóvisszaírót az új jelszó önkiszolgáló kérési szolgáltatásában. Hagyja megnyitva az Azure Portal ablakát, és lépjen tovább a következő oktatóanyagra, amelyben további beállításokat konfigurálhat az új jelszó önkiszolgáló kéréséhez, mielőtt bevezetné a megoldás próbaverzióját.
 

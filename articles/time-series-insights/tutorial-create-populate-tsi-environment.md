@@ -7,21 +7,21 @@ ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 10/16/2019
+ms.date: 12/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: fad850da6a7fccb6b97b86532a8d246049942a8b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 387f3df7313c26c5cd8f7fee7c9b58ec3b5c4552
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014662"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872409"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Oktatóanyag: Azure Time Series Insights-környezet létrehozása
 
-Ez az oktatóanyag végigvezeti egy olyan Azure Time Series Insights-környezet létrehozásának folyamatán, amely a szimulált eszközökről származó adatokkal van feltöltve. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez az oktatóanyag végigvezeti egy olyan Azure Time Series Insights-környezet létrehozásának folyamatán, amely a szimulált eszközökről származó adatokkal van feltöltve. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Egy Time Series Insights környezetet hozhat létre.
+> * Hozzon létre egy Time Series Insights környezetet.
 > * Hozzon létre egy IoT hubot tartalmazó eszköz-szimulációs megoldást.
 > * Csatlakoztatja a Time Series Insights környezetet az IoT hubhoz.
 > * Futtasson egy eszköz-szimulációt az adatstreamek Time Series Insights-környezetbe való továbbításához.
@@ -55,11 +55,11 @@ Ez az oktatóanyag egy [IoT-megoldási gyorssegédet](https://www.azureiotsoluti
 
 Először hozza létre az eszköz-szimulációs megoldást, amely tesztelési adatokat generál a Time Series Insights-környezet feltöltéséhez.
 
-1. Egy különálló ablakban vagy lapon nyissa meg a [azureiotsolutions.com](https://www.azureiotsolutions.com). Jelentkezzen be ugyanazzal az Azure-előfizetési fiókkal, és válassza ki az **eszköz szimulációs** gyorsító. Válassza a **kipróbálás most**lehetőséget.
+1. Egy különálló ablakban vagy lapon nyissa meg a [azureiotsolutions.com](https://www.azureiotsolutions.com). Jelentkezzen be ugyanazzal az Azure-előfizetési fiókkal, és válassza ki az **eszköz szimulációs** gyorsító.
 
-   [az eszköz szimulációs gyorsító ![futtatása](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
+   [az eszköz szimulációs gyorsító ![futtatása](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-landing-page.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-landing-page.png#lightbox)
 
-1. Adja meg a szükséges paramétereket az **eszköz-szimulációs megoldás létrehozása** lapon.
+1.  Válassza a **kipróbálás most**lehetőséget. Ezután adja meg a szükséges paramétereket az **eszköz-szimulációs megoldás létrehozása** lapon.
 
    Paraméter|Leírás
    ---|---
@@ -70,18 +70,18 @@ Először hozza létre az eszköz-szimulációs megoldást, amely tesztelési ad
 
    Ha elkészült, a **Létrehozás** gombra kattintva kiépítheti a megoldás Azure-erőforrásait. A folyamat elvégzése akár 20 percet is igénybe vehet.
 
-   [az eszköz-szimulációs megoldás kiépítése ![](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
+   [az eszköz-szimulációs megoldás kiépítése ![](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png#lightbox)
 
-1. A kiépítés befejezése után az új megoldás fölötti szöveg az **üzembe** helyezéstől a **használatra kész**értékre változik.
+1. A kiépítés befejezése után két frissítés jelenik meg, amely azt jeleníti meg, hogy az üzembe helyezési állapot a **kiépítés** után **készre**került. 
 
    >[!IMPORTANT]
-   > Ne válassza az **Indítás** még lehetőséget! Tartsa meg ezt a weblapot, mert később vissza fog térni.
+   > Még ne adja meg a megoldás-gyorssegédet! Tartsa meg ezt a weblapot, mert később vissza fog térni.
 
-   [![eszköz-szimulációs megoldás kiépítés kész](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
+   [![eszköz-szimulációs megoldás kiépítés kész](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
 1. Most vizsgálja meg az újonnan létrehozott erőforrásokat a Azure Portal. Figyelje meg, hogy az **erőforráscsoportok** lapon az utolsó lépésben megadott **megoldás neve** alapján létrehozott egy új erőforráscsoportot. Jegyezze fel az eszköz szimulálásához létrehozott erőforrásokat.
 
-   [Eszköz-szimulációs erőforrások ![](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
+   [Eszköz-szimulációs erőforrások ![](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png#lightbox)
 
 ## <a name="create-an-environment"></a>Környezet létrehozása
 
@@ -89,9 +89,9 @@ Másodszor hozzon létre egy Time Series Insights környezetet az Azure-előfize
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) az Azure-előfizetési fiók használatával. 
 1. Válassza az **+ Erőforrás létrehozása** lehetőséget a bal felső sarokban. 
-1. Válassza ki a **IOT-** kategóriát, és válassza ki **Time Series Insights**. 
+1. Válassza ki a **eszközök internetes hálózata** kategóriát, majd válassza a **Time Series Insights**lehetőséget. 
 
-   [![A Time Series Insights-környezet erőforrás kiválasztása](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png#lightbox)
+   [![A Time Series Insights-környezet erőforrás kiválasztása](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png)](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png#lightbox)
 
 1. A **Time Series Insights-környezet** lapon adja meg a szükséges paramétereket.
 
@@ -106,17 +106,17 @@ Másodszor hozzon létre egy Time Series Insights környezetet az Azure-előfize
 
    Ha elkészült, kattintson a Next (tovább) gombra **: eseményforrás** , hogy folytassa a következő lépéssel.
 
-   [![Time Series Insights környezeti erőforrás létrehozása](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
+   [![Time Series Insights környezeti erőforrás létrehozása](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png#lightbox)
 
 1. Most csatlakoztassuk a Time Series Insights környezetet a megoldás-gyorsító által létrehozott IoT hubhoz. Állítsa be **a `Select existing`hub kiválasztása lehetőséget** . Ezután válassza ki a megoldás-gyorsító által létrehozott IoT hubot **IoT hub nevének**beállításakor.
 
-   [![csatlakoztatni a Time Series Insights környezetet a létrehozott IoT hub-hoz](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
+   [![csatlakoztatni a Time Series Insights környezetet a létrehozott IoT hub-hoz](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png#lightbox)
 
    Végül válassza a **felülvizsgálat + létrehozás**elemet.
 
 1. Ellenőrizze az **értesítések** panelt az üzembe helyezés befejezésének figyeléséhez. 
 
-   [a ![Time Series Insights környezet telepítése sikerült](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
+   [a ![Time Series Insights környezet telepítése sikerült](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png#lightbox)
 
 ## <a name="run-device-simulation"></a>Eszköz szimulációjának futtatása
 
@@ -126,19 +126,19 @@ Az IoT hub mellett egy Azure App Service webalkalmazás lett létrehozva, amely 
 
 1. Lépjen vissza a [megoldásgyorsítók irányítópultjára](https://www.azureiotsolutions.com/Accelerators#dashboard). Ha szükséges, jelentkezzen be újra ugyanezen az oktatóanyagban használt Azure-fiók használatával. Válassza ki az "eszköz megoldás" lehetőséget, majd **lépjen a megoldás-gyorsító** elemre, és indítsa el a telepített megoldást.
 
-     [![megoldás-gyorssegédek irányítópultja](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
+   [![megoldás-gyorssegédek irányítópultja](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
-1. Az eszköz-szimulációs webalkalmazás megkezdi a webalkalmazás engedélyezését a "bejelentkezés és a profil beolvasása" engedély megadásával. Ez az engedély lehetővé teszi az alkalmazás számára, hogy lekérje az alkalmazás működésének támogatásához szükséges felhasználói profil adatait.
+1. Az eszköz-szimulációs webalkalmazás megkezdi, hogy megadja a webalkalmazásnak a **bejelentkezést, és beolvassa a profiljának** engedélyét. Ez az engedély lehetővé teszi az alkalmazás számára, hogy lekérje az alkalmazás működésének támogatásához szükséges felhasználói profil adatait.
 
-     [![eszköz szimulációs webalkalmazások beleegyezett](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
+   [![eszköz szimulációs webalkalmazások beleegyezett](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
 
-1. A **szimulációs beállítások** oldal betöltése után adja meg a szükséges paramétereket.
+1. Válassza az **+ új szimuláció**lehetőséget. A **szimulációs beállítások** oldal betöltése után adja meg a szükséges paramétereket.
 
    Paraméter|Leírás
    ---|---
    **Cél IoT Hub** | Válassza **az előre kiépített IoT hub használata**lehetőséget.
    **Eszközmodell** | Válassza a **Chiller**lehetőséget.
-   **Eszközök száma**  | Adja meg az `1000` **értéket**.
+   **Eszközök száma**  | Adja meg az `10` **értéket**.
    **Telemetria gyakorisága** | Adja meg `10` másodpercet.
    **Szimuláció időtartama** | Válassza **a Befejezés elemet:** , és adja meg `5` percet.
 
@@ -189,7 +189,7 @@ A Azure Portal bal oldali menüjében:
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Egy Time Series Insights környezetet hozhat létre.
+> * Hozzon létre egy Time Series Insights környezetet.
 > * Hozzon létre egy IoT hubot tartalmazó eszköz-szimulációs megoldást.
 > * Csatlakoztatja a Time Series Insights környezetet az IoT hubhoz.
 > * Futtasson egy eszköz-szimulációt az adatstreamek Time Series Insights-környezetbe való továbbításához.

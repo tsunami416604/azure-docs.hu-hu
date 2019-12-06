@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ada64d6bbce4fe7401bbfc078ba0903a28f06971
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796089"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875474"
 ---
 ### <a name="regions"></a>Mely régiók érhetők el?
 
@@ -59,3 +59,7 @@ Az Azure Bastion jelenleg a virtuális gépen belüli en-us-QWERTY billentyűzet
 
 Nem. Az UDR nem támogatott Azure-beli megerősített alhálózaton.
 Azokban az esetekben, amelyekben az Azure Bastion és a Azure Firewall/Network Virtual Appliance (NVA) is szerepel ugyanabban a virtuális hálózatban, nem kell kényszeríteni az Azure-beli megerősített alhálózatról érkező forgalmat, hogy Azure Firewall, mert az Azure-és a virtuális gépek közötti kommunikáció privát. További részletekért lásd: [a Azure Firewall mögötti virtuális gépek elérése a Bastion-vel](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
+
+### <a name="filetransfer"></a>Támogatott-e a fájlátvitel az Azure Bastion RDP-munkamenettel?
+
+Keményen dolgozunk új funkciók hozzáadásával. Mostantól a fájlátvitel nem támogatott, de az ütemterv részét képezi. Kérjük, ossza meg velünk az új funkciókkal kapcsolatos visszajelzéseit az [Azure Bastion feedback oldalán](https://feedback.azure.com/forums/217313-networking?category_id=367303).

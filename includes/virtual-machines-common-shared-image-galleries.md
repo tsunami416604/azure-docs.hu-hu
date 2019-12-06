@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 4d64d556c96d29556ee36179623ff8cc24532b48
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 067ac0f7f000f749f61d302db4c5c6b856e698a2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74085246"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875551"
 ---
 A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a felügyelt lemezképekre épülő struktúrát és szervezetet. A megosztott képtárak a következőket biztosítják:
 
@@ -31,10 +31,10 @@ Ha nagy számú felügyelt lemezképet kell fenntartania, és a vállalaton bel�
 
 A megosztott képkatalógus funkció több erőforrástípust tartalmaz:
 
-| Resource | Leírás|
+| Erőforrás | Leírás|
 |----------|------------|
 | **Felügyelt rendszerkép** | Olyan alapszintű rendszerkép, amely önmagában vagy rendszerkép- **verzió** létrehozásához használható képgyűjteményben. A felügyelt lemezképek [általánosított](#generalized-and-specialized-images) virtuális gépekről jönnek létre. A felügyelt rendszerkép olyan speciális VHD-típus, amellyel több virtuális gép hozható létre, és most már használható a megosztott rendszerkép-verziók létrehozásához is. |
-| **Snapshot** | Egy virtuális merevlemez másolata, amely alkalmas a **rendszerkép verziójának**elkészítésére. A pillanatképek olyan [speciális](#generalized-and-specialized-images) virtuális gépekből is készíthetők (amelyek nem lettek általánosítva), majd önállóan vagy adatlemez-pillanatképekkel is használhatók a speciális rendszerkép-verziók létrehozásához.
+| **Pillanatkép** | Egy virtuális merevlemez másolata, amely alkalmas a **rendszerkép verziójának**elkészítésére. A pillanatképek olyan [speciális](#generalized-and-specialized-images) virtuális gépekből is készíthetők (amelyek nem lettek általánosítva), majd önállóan vagy adatlemez-pillanatképekkel is használhatók a speciális rendszerkép-verziók létrehozásához.
 | **Képtár** | Az Azure Marketplace-hez hasonlóan a képkatalógus **is a lemezképek** kezeléséhez és megosztásához használható tárház, de Ön szabályozhatja, hogy ki férhet hozzá. |
 | **Rendszerkép definíciója** | A lemezképek a katalógusban vannak definiálva, és a rendszerképekkel és a szervezeten belüli használattal kapcsolatos követelményekkel kapcsolatos információkat hordoznak. Olyan információkat is tartalmazhat, mint például a rendszerkép általánosított vagy specializált, az operációs rendszer, a minimális és a maximális memória követelményei, valamint a kibocsátási megjegyzések. Ez egy adott típusú rendszerkép definíciója. |
 | **Rendszerkép verziója** | A **rendszerkép verziója** az, amit a virtuális gép létrehozásához használ gyűjtemény létrehozásakor. A környezethez szükség lehet a rendszerkép több verziójára. A felügyelt rendszerképekhez hasonlóan, amikor **rendszerkép-verziót** használ egy virtuális gép létrehozásához, a rendszerkép verziója a virtuális gép új lemezének létrehozására szolgál. A rendszerkép verziója többször is használható. |
@@ -49,11 +49,11 @@ A rendszerkép-definíciók egy adott rendszerkép verzióihoz tartozó logikai 
 
 Az egyes képdefiníciók három paramétert használnak a **Publisherben**, az **ajánlatban** és az **SKU**-ban. Ezek egy adott rendszerkép-definíció megtalálására szolgálnak. Rendelkezhet egy vagy két, de nem mindhárom értékkel rendelkező képverzióval is.  Íme például három képdefiníció és értékeik:
 
-|Rendszerkép-definíció|Közzétevő|Ajánlat|SKU|
+|Rendszerkép-definíció|Gyártó/kiadó|Ajánlat|Termékváltozat|
 |---|---|---|---|
-|myImage1|Contoso|Pénzügy|Backend|
-|myImage2|Contoso|Pénzügy|Frontend|
-|myImage3|Tesztelés|Pénzügy|Frontend|
+|myImage1|Contoso|Pénzügy|Háttérszolgáltatás|
+|myImage2|Contoso|Pénzügy|Előtér|
+|myImage3|Tesztelés|Pénzügy|Előtér|
 
 Mindhárom ilyen egyedi értéket tartalmaz. A formátum hasonló ahhoz, ahogyan jelenleg az [Azure Marketplace-lemezképekhez](../articles/virtual-machines/windows/cli-ps-findimage.md) tartozó közzétevőt, ajánlatot és SKU-t megadhatja Azure PowerShell a Piactéri lemezkép legújabb verziójának beszerzéséhez. Minden rendszerkép-definíciónak egyedi készlettel kell rendelkeznie ezeknek az értékeknek.
 
@@ -94,25 +94,26 @@ A forrás régiói az alábbi táblázatban láthatók. Az összes nyilvános r�
 | Forrásoldali régiók        |                   |                    |                    |
 | --------------------- | ----------------- | ------------------ | ------------------ |
 | Ausztrália középső régiója     | Kelet-Kína        | Dél-India        | Nyugat-Európa        |
-| Ausztrália 2. középső régiója   | Kína 2. keleti régiója      | Délkelet-Ázsia     | Az Egyesült Királyság déli régiója           |
-| Kelet-Ausztrália        | Észak-Kína       | Kelet-Japán         | Az Egyesült Királyság nyugati régiója            |
-| Délkelet-Ausztrália   | Kína 2. északi régiója     | Nyugat-Japán         | US DoD – Középső régió     |
-| Dél-Brazília          | Kelet-Ázsia         | Korea középső régiója      | US DoD – Kelet        |
-| Közép-Kanada        | USA keleti régiója           | Korea déli régiója        | USA-beli államigazgatás – Arizona     |
-| Kelet-Kanada           | USA 2. keleti régiója         | USA északi középső régiója   | USA-beli államigazgatás – Texas       |
-| Közép-India         | USA 2. keleti – EUAP    | Észak-Európa       | USA-beli államigazgatás – Virginia    |
+| Ausztrália 2. középső régiója   | Kína 2. keleti régiója      | Délkelet-Ázsia     | Egyesült Királyság déli régiója           |
+| Ausztrália keleti régiója        | Észak-Kína       | Kelet-Japán         | Egyesült Királyság nyugati régiója            |
+| Délkelet-Ausztrália   | Kína 2. északi régiója     | Nyugat-Japán         | US DoD – középső régió     |
+| Dél-Brazília          | Kelet-Ázsia         | Korea középső régiója      | US DoD – keleti régió        |
+| Közép-Kanada        | USA keleti régiója           | Dél-Korea        | US Gov Arizona     |
+| Kelet-Kanada           | USA 2. keleti régiója         | USA északi középső régiója   | US Gov Texas       |
+| Közép-India         | USA 2. keleti – EUAP    | Észak-Európa       | US Gov Virginia    |
 | USA középső régiója            | Közép-Franciaország    | USA déli középső régiója   | Nyugat-India         |
 | USA középső – EUAP       | Dél-Franciaország      | USA nyugati középső régiója    | USA nyugati régiója            |
-|                       |                   |                    | USA nyugati régiója, 2.          |
+|                       |                   |                    | USA 2. nyugati régiója          |
 
 
 
-## <a name="limits"></a>Korlátok 
+## <a name="limits"></a>Korlátozások 
 
 Az erőforrások megosztott képtárakkal való üzembe helyezéséhez korlátok, előfizetések vonatkoznak:
 - 100 megosztott képtárak, előfizetések száma régiónként
 - 1 000 képdefiníciók, előfizetések régiónként
 - 10 000 képverzió, előfizetések száma régiónként
+- A lemezképhez csatolt minden lemeznek 1 TB-nál kisebbnek vagy azzal egyenlőnek kell lennie
 
 További információ: az [erőforrás-használat korlátainak korlátozása](https://docs.microsoft.com/azure/networking/check-usage-against-limits) példákkal a jelenlegi használat ellenõrzéséhez.
  
@@ -147,9 +148,9 @@ Az a régió, amelyet a megosztott rendszerkép replikál, a rendszer a létreho
 
 Mivel a megosztott képtára, a képdefiníció és a rendszerkép verziója minden erőforrás, a beépített natív Azure RBAC-vezérlőkkel is megoszthatók. A RBAC használatával ezeket az erőforrásokat megoszthatja más felhasználókkal, egyszerű szolgáltatásokkal és csoportokkal is. Akár a bérlőn kívüli személyekhez is megoszthatja a hozzáférést. Miután egy felhasználó hozzáfér a megosztott lemezkép verziójához, üzembe helyezhet egy virtuális gépet vagy egy virtuálisgép-méretezési készletet.  Itt látható a megosztási mátrix, amely segít megérteni, hogy a felhasználó milyen módon férhet hozzá:
 
-| Felhasználóval megosztva     | Megosztott rendszerkép-katalógus | Rendszerkép-definíció | Rendszerképverzió |
+| Felhasználóval megosztva     | Megosztott lemezképkatalógus | Rendszerkép-definíció | Rendszerképverzió |
 |----------------------|----------------------|--------------|----------------------|
-| Megosztott rendszerkép-katalógus | Igen                  | Igen          | Igen                  |
+| Megosztott lemezképkatalógus | Igen                  | Igen          | Igen                  |
 | Rendszerkép-definíció     | Nem                   | Igen          | Igen                  |
 
 A legjobb megoldás érdekében javasoljuk, hogy ossza meg a gyűjteményt a katalógus szintjén. Az egyes rendszerkép-verziók megosztását nem ajánlott. További információ a RBAC: az [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC használatával](../articles/role-based-access-control/role-assignments-portal.md).
@@ -221,7 +222,7 @@ Létrehozhat megosztott képkatalógus-erőforrást sablonok használatával. T�
 
 Az alábbi lépéseket követve listázhatja az összes megosztott képkatalógus-erőforrást az előfizetések között, amelyekhez hozzáféréssel rendelkezik a Azure Portalban:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 1. Nyissa meg az **összes erőforrást**.
 1. Válassza ki az összes olyan előfizetést, amelyben az összes erőforrást listázni szeretné.
 1. Keressen a **privát**katalógus típusú erőforrásokat.

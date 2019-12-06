@@ -8,31 +8,31 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 61990e785741799fcbcd4e6df965953bd9944f4d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c3f485765e0bbbb91de0938261b587c27bf414bf
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179091"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875519"
 ---
-## <a name="use-the-azure-portal-to-move-a-vm-to-a-different-subscription"></a>Virtuális gép áthelyezése egy másik előfizetésben az Azure portal használatával
-Az Azure portal használatával áthelyezheti egy virtuális Gépet, és az összes kapcsolódó erőforrás egy másik előfizetést.
+## <a name="use-the-azure-portal-to-move-a-vm-to-a-different-subscription"></a>A virtuális gép áthelyezése egy másik előfizetésbe a Azure Portal használatával
+A Azure Portal használatával áthelyezheti a virtuális gépet és a hozzá tartozó erőforrásokat egy másik előfizetésbe.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2. Kattintson a **Tallózás** > **erőforráscsoportok** , és válassza ki az áthelyezni kívánt virtuális gép tartalmazó erőforráscsoportot.
-3. Válassza ki az erőforráscsoport az oldal tetején lévő **áthelyezése** , majd **Áttérés másik előfizetésre**. A **erőforrások áthelyezése** lap megnyitásakor.
-4. Válassza ki az erőforrások áthelyezése. A legtöbb esetben helyezze át az összes felsorolt kapcsolódó erőforrások.
-5. Válassza ki a **előfizetés** ahol azt szeretné, hogy a virtuális gép lesz áthelyezve.
-6. Válasszon egy meglévő **erőforráscsoport**, vagy adjon meg egy nevet, hogy létrehozott egy új erőforráscsoportot.
-7. Amikor végzett, válassza ki, hogy megértette, hogy új erőforrás-azonosítók jön létre, és, hogy az új azonosítók kell használni a virtuális gép áthelyezése után, és adja meg áll **OK**.
+1. Az áthelyezni kívánt virtuális gépet tartalmazó erőforráscsoport kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **erőforráscsoportok**elemet.
+2. Válassza ki azt az erőforráscsoportot, amely az áthelyezni kívánt virtuális gépet tartalmazza.
+3. Az erőforráscsoport oldalának tetején válassza az **Áthelyezés** lehetőséget, majd válassza az **Áthelyezés másik előfizetésre**lehetőséget. Megnyílik az **erőforrások áthelyezése** lap.
+4. Válassza ki az áthelyezni kívánt erőforrásokat. A legtöbb esetben át kell helyeznie az összes felsorolt kapcsolódó erőforrást.
+5. Válassza ki azt az **előfizetést** , amelyen át szeretné helyezni a virtuális gépet.
+6. Válasszon ki egy meglévő **erőforráscsoportot**, vagy adjon meg egy nevet, amely létrehoz egy új erőforráscsoportot.
+7. Ha elkészült, válassza ki az új erőforrás-azonosítók létrehozását, valamint azt, hogy az új azonosítókat a virtuális géppel együtt kell használni az áthelyezés után, majd kattintson **az OK gombra**.
 
-## <a name="use-the-azure-portal-to-move-a-vm-to-another-resource-group"></a>Virtuális gép áthelyezése egy másik erőforráscsoportot az Azure portal használatával
-Az Azure portal használatával áthelyezheti egy virtuális Gépet, és az összes kapcsolódó erőforrás egy másik erőforráscsoportot.
+## <a name="use-the-azure-portal-to-move-a-vm-to-another-resource-group"></a>Virtuális gép áthelyezése egy másik erőforráscsoporthoz a Azure Portal használatával
+A virtuális gépet és a hozzá tartozó erőforrásokat áthelyezheti egy másik erőforráscsoporthoz a Azure Portal használatával.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2. Kattintson a **Tallózás** > **virtuális gépek** , és válassza ki a virtuális Gépet szeretne áthelyezni a listából.
-3. Válassza ki a lapon a virtuális gép az erőforráscsoportban a címke melletti **módosítás**. A **erőforrások áthelyezése** lap megnyitásakor.
-4. Válassza ki az erőforrások áthelyezése. A legtöbb esetben helyezze át az összes felsorolt kapcsolódó erőforrások.
-5. Válasszon egy meglévő **erőforráscsoport**, vagy adjon meg egy nevet, hogy létrehozott egy új erőforráscsoportot.
-6. Amikor végzett, válassza ki, hogy megértette, hogy új erőforrás-azonosítók jön létre, és, hogy az új azonosítók kell használni a virtuális gép áthelyezése után, és adja meg áll **OK**.
+1. Az áthelyezni kívánt virtuális gépet tartalmazó erőforráscsoport kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **erőforráscsoportok**elemet.
+2. Válassza ki azt az erőforráscsoportot, amely az áthelyezni kívánt virtuális gépet tartalmazza.
+3. Az erőforráscsoport oldalának tetején válassza az **Áthelyezés** lehetőséget, majd az **Áthelyezés másik erőforráscsoporthoz**lehetőséget. Megnyílik az **erőforrások áthelyezése** lap.
+4. Válassza ki az áthelyezni kívánt erőforrásokat. A legtöbb esetben át kell helyeznie az összes felsorolt kapcsolódó erőforrást.
+5. Válasszon ki egy meglévő **erőforráscsoportot**, vagy adjon meg egy nevet, amely létrehoz egy új erőforráscsoportot.
+6. Ha elkészült, válassza ki az új erőforrás-azonosítók létrehozását, valamint azt, hogy az új azonosítókat a virtuális géppel együtt kell használni az áthelyezés után, majd kattintson **az OK gombra**.
 

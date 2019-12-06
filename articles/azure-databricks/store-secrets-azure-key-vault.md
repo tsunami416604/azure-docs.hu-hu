@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: f1472d7043a092f35e10fdedbf4c52740e87c51c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 27e166a8798f851f6c086c025dd82957b2dcfb84
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706145"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849275"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Oktatóanyag: az Azure Blob Storage elérése Azure Databricks használatával Azure Key Vault
 
@@ -77,7 +77,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
    |Tulajdonság|Leírás|
    |--------|-----------|
    |Név|A Key Vault egyedi neve.|
-   |Előfizetés|Válasszon egy előfizetést.|
+   |Előfizetés|Válasszon előfizetést.|
    |Erőforráscsoport|Válasszon egy erőforráscsoportot, vagy hozzon létre egy újat.|
    |Földrajzi egység|Válassza ki a helyet.|
 
@@ -129,7 +129,8 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 4. Ha a Azure Databricks munkaterület egy külön ablakban van megnyitva, fűzze hozzá **#secrets/createscope** az URL-címhez. Az URL-címnek a következő formátumúnak kell lennie: 
 
-   **https://< \location >. azuredatabricks. net/#secrets/createscope**.
+   **https://< \location >. azuredatabricks. net/? o = < \orgID > #secrets/createscope**.
+   
 
 5. Adja meg a hatókör nevét, és adja meg a korábban mentett Azure Key Vault DNS-nevet és erőforrás-azonosítót. Mentse a hatókör nevét egy szövegszerkesztőben az oktatóanyag későbbi részében való használatra. Ezután kattintson a **Létrehozás** elemre.
 

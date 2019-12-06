@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: 04cb91a62536c493240998270b5bd8d29fd331ba
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cef1d09f3365350240cb2ed879e4d41edec74aef
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230622"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849836"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Oktatóanyag: függvény létrehozása javában Event hub-eseményindítóval és Azure Cosmos DB kimeneti kötéssel
 
@@ -36,8 +36,6 @@ Az oktatóanyag elvégzéséhez a következőket kell telepíteni:
 
 > [!IMPORTANT]
 > Az oktatóanyag befejezéséhez a `JAVA_HOME` környezeti változót a JDK telepítési helyére kell beállítani.
-
-Ha közvetlenül az oktatóanyag kódját szeretné használni, tekintse meg a következőt: [Java-functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) Sample repo.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -73,7 +71,7 @@ LOCATION=<value>
 
 Az oktatóanyag többi része ezeket a változókat használja. Vegye figyelembe, hogy ezek a változók csak az aktuális Azure CLI-vagy Cloud Shell-munkamenet időtartama alatt maradnak meg. Ezeket a parancsokat újra futtatnia kell, ha más helyi terminált használ, vagy ha a Cloud Shell munkamenet időtúllépést tapasztal.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure erőforráscsoportok használatával gyűjti össze a fiókban lévő összes kapcsolódó erőforrást. Így megtekintheti őket egységként, és egyetlen paranccsal törölheti őket, ha elkészült velük.
 
@@ -132,7 +130,7 @@ Az `partition-key-path` érték az egyes elemek `temperatureStatus` értéke ala
 
 ### <a name="create-a-storage-account-and-function-app"></a>Storage-fiók és-Function-alkalmazás létrehozása
 
-Ezután hozzon létre egy Azure Storage-fiókot, amelyet Azure Functions igényel, majd hozza létre a Function alkalmazást. Használja az alábbi parancsokat:
+Ezután hozzon létre egy Azure Storage-fiókot, amelyet Azure Functions igényel, majd hozza létre a Function alkalmazást. Az alábbi parancsokat használja:
 
 ```azurecli-interactive
 az storage account create \

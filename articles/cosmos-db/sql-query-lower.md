@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB lekérdezési nyelv alacsonyabb
-description: Ismerkedjen meg az SQL System függvénnyel Azure Cosmos DB ALACSONYABBan.
+description: Ismerkedjen meg az Azure Cosmos DB alsó SQL System függvényével, amely egy karakterlánc-kifejezést ad vissza a nagybetűs karakterek kisbetűsre konvertálása után.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 3a9c122ef65772458b832d3b1651e7e63e42985e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 8f7cd864d90b8ab17a180a00a7a6d4bb683da9be
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349703"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873301"
 ---
 # <a name="lower-azure-cosmos-db"></a>ALSÓ (Azure Cosmos DB)
- Egy karakterlánc-kifejezés nagybetűt adatok átalakítása kisbetűvé után adja vissza.  
+ Egy karakterlánc-kifejezést ad vissza, miután a nagybetűs karaktereket a kisbetűs értékre konvertálta.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -30,24 +30,24 @@ LOWER(<str_expr>)
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy karakterlánc-kifejezés adja vissza.  
+  Egy karakterlánc-kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti, hogyan használható a `LOWER` a lekérdezésekben.  
+  Az alábbi példa azt szemlélteti, hogyan használható a `LOWER` egy lekérdezésben.  
   
 ```sql
 SELECT LOWER("Abc") AS lower
 ```  
   
- Íme az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{"lower": "abc"}]  
   
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

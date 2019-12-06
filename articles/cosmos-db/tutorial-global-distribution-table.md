@@ -1,19 +1,19 @@
 ---
 title: A Table API Azure Cosmos DB globális terjesztési oktatóanyaga
-description: Útmutató az Azure Cosmos DB globális terjesztésének beállításához a Table API-val.
+description: Ismerje meg, hogyan működik a globális terjesztés a Azure Cosmos DB Table API-fiókokban, és hogyan konfigurálhatja a régiók előnyben részesített listáját
 author: wmengmsft
 ms.author: wmeng
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 12/13/2018
+ms.date: 12/02/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 8562d37d81ce02e150e6ad1cc2a440cf7bb1e5e3
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e6cd574d1041908e91ad5e6629403c0e40d11c03
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693355"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870360"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Az Azure Cosmos DB globális terjesztésének beállítása a Table API-val
 
@@ -42,7 +42,7 @@ Ha a PreferredLocations tulajdonság nincs beállítva, a kérelmek az aktuális
 
 Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 
