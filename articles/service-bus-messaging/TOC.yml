@@ -203,6 +203,10 @@
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: 'Névtér létrehozása témakörrel, előfizetéssel és szabállyal'
               href: service-bus-resource-manager-namespace-topic-with-rule.md
+    - name: Biztonságos
+      items:
+        - name: Ügyfél által kezelt kulcsok konfigurálása inaktív állapotban történő titkosításhoz (előzetes verzió)
+          href: configure-customer-managed-key.md
     - name: Hibaelhárítás
       items:
         - name: Hibaelhárítási útmutató

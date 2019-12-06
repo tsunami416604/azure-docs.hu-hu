@@ -87,7 +87,7 @@
           href: deploy-kcd.md
         - name: Jelszó- és fiókzárolási házirendek konfigurálása
           href: password-policy.md
-        - name: Biztonsági naplózási események engedélyezése (előzetes verzió)
+        - name: Biztonsági naplózási események engedélyezése
           href: security-audit-events.md
     - name: Virtuális gépek csatlakoztatása tartományhoz
       items:

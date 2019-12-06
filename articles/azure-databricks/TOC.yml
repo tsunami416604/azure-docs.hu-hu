@@ -126,9 +126,6 @@
         - name: Fürtcsomópontok inicializálása
           href: /azure/databricks/clusters/init-scripts
           maintainContext: true
-        - name: Egyéni tárolók
-          href: /azure/databricks/clusters/custom-containers
-          maintainContext: true
         - name: GPU-kompatibilis fürtök
           href: /azure/databricks/clusters/gpu
           maintainContext: true
@@ -226,9 +223,6 @@
       maintainContext: true
     - name: Adatok
       items:
-        - name: Databricks fájlrendszer (DBFS)
-          href: /azure/databricks/data/databricks-file-system
-          maintainContext: true
         - name: Adatbázisok és táblák
           href: /azure/databricks/data/tables
           maintainContext: true
@@ -317,6 +311,9 @@
             - name: ZIP-fájlok
               href: /azure/databricks/data/data-sources/zip-files
               maintainContext: true
+        - name: Databricks fájlrendszer (DBFS)
+          href: /azure/databricks/data/databricks-file-system
+          maintainContext: true
         - name: FileStore
           href: /azure/databricks/data/filestore
           maintainContext: true
@@ -829,8 +826,8 @@
             - name: Modellkövetkeztetés a TensorFlow használatával
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
               maintainContext: true
-            - name: Modellkövetkeztetés teljesítményének finomhangolása
-              href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
+            - name: Referenciamegoldás elosztottkép-modell következtetéséhez
+              href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
               maintainContext: true
     - name: MLflow
       items:
@@ -1066,9 +1063,6 @@
             - name: Fürtkonfiguráció áttekintése
               href: /azure/databricks/administration-guide/clusters/index
               maintainContext: true
-            - name: Tárolószolgáltatások engedélyezése
-              href: /azure/databricks/administration-guide/clusters/container-services
-              maintainContext: true
             - name: Genomics szolgáltatáshoz készült Databricks-futtatókörnyezet engedélyezése
               href: /azure/databricks/administration-guide/clusters/genomics-runtime
               maintainContext: true
@@ -1137,9 +1131,6 @@
               maintainContext: true
             - name: A konfigurációs beállítás felülírja az alapértelmezett beállításokat
               href: /azure/databricks/kb/clusters/conf-overwrites-default-settings
-              maintainContext: true
-            - name: JNI-kódtárak futtatása egymagos végrehajtókon
-              href: /azure/databricks/kb/clusters/multiple-executors-single-worker
               maintainContext: true
             - name: Log4j-konfigurációk felülírása
               href: /azure/databricks/kb/clusters/overwrite-log4j-logs
@@ -1544,6 +1535,9 @@
           items:
             - name: A platform kibocsátási megjegyzései
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2019. december
+              href: /azure/databricks/release-notes/product/2019/december
               maintainContext: true
             - name: 2019. november
               href: /azure/databricks/release-notes/product/2019/november

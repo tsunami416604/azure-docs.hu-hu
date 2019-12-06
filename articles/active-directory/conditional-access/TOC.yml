@@ -12,10 +12,6 @@
       href: require-tou.md
     - name: Hozzáférés letiltása munkameneti kockázat észlelésekor
       href: app-sign-in-risk.md
-- name: Oktatóanyagok
-  items:
-    - name: Klasszikus MFA-szabályzatok migrálása
-      href: policy-migration-mfa.md
 - name: Alapelvek
   expanded: false
   items:
@@ -37,6 +33,8 @@
       href: service-dependencies.md
     - name: Lehetőségelemzési eszköz
       href: what-if-tool.md
+    - name: Klasszikus szabályzatok migrálása
+      href: policy-migration.md
     - name: Alapvető védelmi szabályzatok
       href: concept-baseline-protection.md
 - name: Útmutatók
@@ -83,7 +81,7 @@
     - name: Bejelentkezési gyakoriság és a böngésző adatmegőrzési vezérlői
       href: howto-conditional-access-session-lifetime.md
     - name: Klasszikus szabályzatok migrálása
-      href: policy-migration.md
+      href: policy-migration-mfa.md
     - name: Feltételes hozzáférés bevezetése
       href: howto-conditional-access-adoption-kit.md
     - name: Hibaelhárítás

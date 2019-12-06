@@ -113,6 +113,8 @@
           href: batch-user-accounts.md
         - name: Nagy számú feladat elküldése
           href: large-number-tasks.md
+        - name: Hibakeresés feladatokban és tevékenységekben
+          href: batch-job-task-error-checking.md
     - name: Erőforrásfájlok létrehozása
       href: resource-files.md
     - name: Feladatok és tevékenységek kimenetének megőrzése

@@ -178,7 +178,7 @@
               href: dealing-with-duplicates.md
     - name: Üzembe helyezés
       items:
-        - name: A fürt üzembe helyezése a virtuális hálózaton
+        - name: Fürt üzembe helyezése virtuális hálózaton
           href: vnet-deployment.md
     - name: Figyelés
       items:
