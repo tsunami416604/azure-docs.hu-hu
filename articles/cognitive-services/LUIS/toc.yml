@@ -48,13 +48,13 @@
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
         - name: 3. Hangulat lekérése a felhasználó által kimondott szövegekből
           href: tutorial-publish-settings.md
-    - name: Alkalmazás létrehozása
+    - name: Entitások létrehozása és használata
       items:
-        - name: Helyesen formázott adatok lekérése reguláris kifejezésekkel
-          href: luis-quickstart-intents-regex-entity.md
-        - name: Pontos szövegegyezések lekérése listákkal
-          href: luis-quickstart-intent-and-list-entity.md
-        - name: Kapcsolódó adatok lekérése entitásszerepkörökkel
+        - name: Reguláriskifejezés-entitások
+          href: tutorial-regex-entity.md
+        - name: Listaentitások
+          href: tutorial-list-entity.md
+        - name: Entitásszerepkörök
           href: tutorial-entity-roles.md
           displayName: 'roles, geographyV2, context'
         - name: Kapcsolódó adatok csoportosítása és kinyerése összetett entitásokkal
