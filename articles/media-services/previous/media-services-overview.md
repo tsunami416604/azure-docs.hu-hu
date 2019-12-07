@@ -1,6 +1,6 @@
 ---
 title: Az Azure Media Services áttekintése | Microsoft Docs
-description: Ezen témakör áttekintést nyújt az Azure Media Services szolgáltatásairól
+description: A Microsoft Azure Media Services egy bővíthető felhőalapú platform, amellyel a fejlesztők skálázható médiakezelő és -szolgáltató alkalmazásokat készíthetnek. Ez a cikk áttekintést nyújt a Azure Media Servicesról.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7f0a071012685ee192d4f866396a5953d0a4508c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d339fd16b1eef8df367bdcb375a1cb3dc71ddde2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937258"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895882"
 ---
 # <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése 
 
-> [!div class="op_single_selector" title1="Válassza ki a Media Services által használt verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
 > * [3-as verzió](../latest/media-services-overview.md)
 > * [2-es verzió](media-services-overview.md)
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services (AMS) egy bővíthető, felhőalapú platform, amely lehetővé teszi a fejlesztők számára méretezhető médiafelügyeleti és -továbbítási alkalmazások létrehozását. A Media Services alapjai a REST API-k, amelyek lehetővé teszik különböző videó- és audiotartalmak feltöltését, tárolását, kódolását és becsomagolását, majd igény szerinti és élő adatfolyamként történő továbbítását különböző ügyfelek részére (például tévékészülékekre, számítógépekre és mobileszközökre).
 
@@ -50,15 +50,15 @@ A Media Services-megoldások létrehozásához a következőket használhatja:
 
 * [Media Services REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * Az elérhető ügyféloldali SDK-k valamelyike:
-    * Az Azure Media Services SDK for .NET
+    * A .NET-hez készült Azure Media Services SDK
     
         * [NuGet-csomag](https://www.nuget.org/packages/windowsazure.mediaservices/)
-        * [Github-forráskód](https://github.com/Azure/azure-sdk-for-media-services)
+        * [GitHub forráskódja](https://github.com/Azure/azure-sdk-for-media-services)
     * [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java),
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php),
     * [Node.js-hez készült Azure Media Services](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Ez a Node.js SDK nem Microsoft által készített verziója. Ennek a karbantartását egy közösség végzi, és jelenleg nem fedi le 100%-osan az AMS API-k tartalmát.)
 * Meglévő eszközök:
-    * [Azure Portal](https://portal.azure.com/)
+    * [Azure Portalra](https://portal.azure.com/)
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Az Azure Media Services Explorer (AMSE) egy Winforms/C#-alkalmazás Windows rendszerre)
 
 > [!NOTE]
@@ -67,7 +67,7 @@ A Media Services-megoldások létrehozásához a következőket használhatja:
 
 ## <a name="code-samples"></a>Kódminták
 
-A számos kódmintát talál a **Azure-Kódminták** katalógus: [Az Azure Media Services-Kódminták](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
+Az **Azure-kódminták** katalógusban számos kódmintát talál: [Azure Media Services-kódminták](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
 ## <a name="concepts"></a>Alapelvek
 
@@ -77,7 +77,7 @@ Az Azure Media Services alapfogalmaiért lásd: [Fogalmak](media-services-concep
 
 Részletes információkért lásd az [AMS-forgatókönyvek és a funkciók és szolgáltatások az egyes adatközpontokban történő rendelkezésre állását](scenarios-and-availability.md) ismertető cikket.
 
-## <a name="service-level-agreement-sla"></a>Szolgáltatói szerződés (SLA)
+## <a name="service-level-agreement-sla"></a>Szolgáltatási szerződés (SLA)
 
 További információ: [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/)
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 4fe405d4027535eb6b0211f7a3f997194b8819aa
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 14fc91feb16fb45eee1fe2e757a717e04ef07f99
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580749"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894726"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az Azure Machine Learning munkaterület?
 
@@ -71,10 +71,10 @@ A következő munkaterület-felügyeleti feladatokat is végrehajthatja:
 
 | Munkaterület-felügyeleti feladat   | Portál              | Studio | Python SDK/R SDK       | CLI        |
 |---------------------------|---------|---------|------------|------------|
-| Munkaterület létrehozása        | **&check;**     | | **&check;** | **&check;** |
+| Munkaterületek létrehozása        | **&check;**     | | **&check;** | **&check;** |
 | Munkaterület-hozzáférés kezelése    | **&check;**   || |  **&check;**    |
-| Frissítés a Enterprise Edition verzióra    | **&check;** |  | |     |
-| Számítási erőforrások létrehozása és kezelése    |   | **&check;** | **&check;** |  **&check;**   |
+| Frissítés a Enterprise Edition verzióra    | **&check;** | **&check;**  | |     |
+| Számítási erőforrások létrehozása és kezelése    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | Jegyzetfüzet-alapú virtuális gép létrehozása |   | **&check;** | |     |
 
 
@@ -105,7 +105,7 @@ Amikor új munkaterületet hoz létre, az automatikusan létrehoz több Azure-er
 > [!NOTE]
 > Az új verziók létrehozása mellett használhatja a meglévő Azure-szolgáltatásokat is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Machine Learning megkezdéséhez tekintse meg a következőt:
 

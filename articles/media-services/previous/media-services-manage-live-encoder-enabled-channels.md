@@ -1,6 +1,6 @@
 ---
 title: Élő közvetítés a Azure Media Services használatával többszörös átviteli sebességű streamek létrehozásához | Microsoft Docs
-description: 'Ez a témakör azt ismerteti, hogyan állíthat be egy olyan csatornát, amely egyetlen sávszélességű élő streamet fogad egy helyszíni kódolóból, majd élő kódolást végez az adaptív sávszélességű adatfolyamban Media Services használatával. Ezután az adatfolyamot egy vagy több folyamatos átviteli végponton keresztül továbbíthatja az ügyfél-lejátszási alkalmazásokba az alábbi adaptív adatfolyam-protokollok egyikének használatával: HLS, Smooth stream, MPEG DASH.'
+description: Ez a témakör azt ismerteti, hogyan állíthat be egy olyan csatornát, amely egyetlen sávszélességű élő streamet fogad egy helyszíni kódolóból, majd élő kódolást végez az adaptív sávszélességű adatfolyamban Media Services használatával.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 4131e9b0ec057c16516f5a656debcf7053c2c1fe
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 32a4fde12287e06c12fac9ed13ad7a8889b49fc1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598303"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895913"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 
@@ -71,7 +71,7 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 | Csatorna állapota | Jelzése a portál kezelőfelületén | Számlázási? |
 | --- | --- | --- |
 | Indulás alatt |Indulás alatt |Nem (átmeneti állapot) |
-| Fut |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |igen |
+| Fut |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |IGEN |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
 | Leállítva |Leállítva |Nem |
 
@@ -170,7 +170,7 @@ A betöltési URL-címeket a csatorna létrehozása után kérheti le. Az URL-c�
 Lehetősége van a töredezett MP4 (Smooth Streaming) élő streamek betöltésére egy SSL-kapcsolaton keresztül. Az SSL betöltéséhez frissítse a betöltési URL-címet HTTPS-re. Az AMS jelenleg nem támogatja az SSL-t az egyéni tartományokkal.  
 
 ### <a name="allowed-ip-addresses"></a>Engedélyezett IP-címek
-Megadhatja azokat az IP-címeket, amelyek számára engedélyezett a videó közzététele a csatornán. Az engedélyezett IP-címek megadhatók egyetlen IP-címként (például "10.0.0.1"), egy IP-címtartományt és egy CIDR alhálózati maszkot (például "10.0.0.1/22"), vagy egy IP-tartományt IP-cím és egy pontozott decimális alhálózati maszk használatával (például , ' 10.0.0.1 (255.255.252.0) ').
+Megadhatja azokat az IP-címeket, amelyek számára engedélyezett a videó közzététele a csatornán. Az engedélyezett IP-címek megadhatók egyetlen IP-címként (például "10.0.0.1"), egy IP-cím és egy CIDR alhálózati maszk használatával (például "10.0.0.1/22"), vagy egy IP-tartományt IP-cím és egy pontozott decimális alhálózati maszk (például "10.0.0.1 (255.255.252.0)") használatával.
 
 Ha nem ad meg IP-címeket, és nem határoz meg szabálydefiníciót, a rendszer egyetlen IP-címet sem engedélyez. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.
 
@@ -188,7 +188,7 @@ Miután a csatorna megkezdi az adatfeldolgozást, megtekintheti az adatfolyamot.
 > 
 
 ### <a name="allowed-ip-addresses"></a>Engedélyezett IP-címek
-Megadhatja azokat az IP-címeket, amelyek számára engedélyezett az előnézeti végponthoz való kapcsolódás. Ha nincs megadva IP-cím, akkor a rendszer nem engedélyezi az IP-címek megadását. Az engedélyezett IP-címek megadhatók egyetlen IP-címként (például "10.0.0.1"), egy IP-címtartományt és egy CIDR alhálózati maszkot (például "10.0.0.1/22"), vagy egy IP-tartományt IP-cím és egy pontozott decimális alhálózati maszk használatával (például , ' 10.0.0.1 (255.255.252.0) ').
+Megadhatja azokat az IP-címeket, amelyek számára engedélyezett az előnézeti végponthoz való kapcsolódás. Ha nincs megadva IP-cím, akkor a rendszer nem engedélyezi az IP-címek megadását. Az engedélyezett IP-címek megadhatók egyetlen IP-címként (például "10.0.0.1"), egy IP-cím és egy CIDR alhálózati maszk használatával (például "10.0.0.1/22"), vagy egy IP-tartományt IP-cím és egy pontozott decimális alhálózati maszk (például "10.0.0.1 (255.255.252.0)") használatával.
 
 ## <a name="live-encoding-settings"></a>Élő kódolási beállítások
 Ez a szakasz azt ismerteti, hogyan lehet beállítani az élő kódoló beállításait a csatornán belül, ha a csatorna **kódolási típusa** **standard**értékre van állítva.
@@ -217,7 +217,7 @@ A **Default720p** a következő 6 rétegbe kódolja a videót.
 
 #### <a name="output-video-stream"></a>Kimeneti videó stream
 
-| Sávszélességű | Szélessége | Magasság | MaxFPS | Profil | Kimeneti adatfolyam neve |
+| Sávszélességű | Szélesség | Magasság | MaxFPS | Profil | Kimeneti adatfolyam neve |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Magas |Video_1280x720_3500kbps |
 | 2200 |960 |540 |30 |Magas |Video_960x540_2200kbps |
@@ -260,7 +260,7 @@ Az élő kódoló beállítható úgy, hogy egy pala-képre váltson, és bizony
 A teljes pala időtartama másodpercben. A pala indításához nem nulla pozitív értéknek kell lennie. Ha van folyamatban lévő pala, és a nulla időtartam van megadva, akkor a folyamatban lévő pala leáll.
 
 ### <a name="insert-slate-on-ad-marker"></a>Pala beszúrása az ad-jelölőre
-Ha igaz értékre van állítva, akkor ez a beállítás úgy konfigurálja az élő kódolót, hogy az ad-szünet során beszúrjon egy pala-rendszerképet. Az alapértelmezett érték TRUE (igaz). 
+Ha igaz értékre van állítva, akkor ez a beállítás úgy konfigurálja az élő kódolót, hogy az ad-szünet során beszúrjon egy pala-rendszerképet. Az alapértelmezett érték az igaz. 
 
 ### <a id="default_slate"></a>Alapértelmezett Slate-eszköz azonosítója
 

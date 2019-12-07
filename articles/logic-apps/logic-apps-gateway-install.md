@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: 9f933a9ad63af11bcfee7c90f17318f5a237b962
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/05/2019
+ms.openlocfilehash: 4fbfb31feb2183e3175a96023cbb3b08c4d18027
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792092"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893677"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése Azure Logic Apps
 
@@ -49,7 +49,7 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
   **Minimális követelmények**
 
   * .NET-keretrendszer 4.7.2
-  * a Windows 7 vagy a Windows Server 2008 R2 64 bites verziója (vagy újabb)
+  * A Windows 7 vagy a Windows Server 2008 R2 (vagy újabb) 64 bites verziója
 
   **Ajánlott követelmények**
 
@@ -86,14 +86,6 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
 1. [Töltse le és futtassa az átjáró telepítőjét egy helyi számítógépen](https://aka.ms/on-premises-data-gateway-installer).
 
-1. A telepítő megnyitása után kattintson a **Tovább gombra**.
-
-   ![Az átjáró telepítőjének bevezető képernyője](./media/logic-apps-gateway-install/gateway-intro-screen.png)
-
-1. Válassza **a helyszíni adatátjáró (ajánlott)** lehetőséget, amely standard mód, majd válassza a **tovább**lehetőséget.
-
-   ![Az adatátjáró futtatási módjának kiválasztása](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
-
 1. Tekintse át a minimális követelményeket, tartsa meg az alapértelmezett telepítési útvonalat, fogadja el a használati feltételeket, majd válassza a **telepítés**lehetőséget.
 
    ![A követelmények áttekintése és a használati feltételek elfogadása](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
@@ -104,7 +96,7 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
    Az átjáró telepítése csak egy Azure-fiókra hivatkozhat.
 
-1. Válassza **az új átjáró regisztrálása ezen a számítógépen > a** **tovább**lehetőséget. Ez a lépés regisztrálja az átjáró telepítését az [átjáró Cloud Service](#gateway-cloud-service)-ben.
+1. Válassza az **Új átjáró regisztrálása ezen a számítógépen** > **Tovább** lehetőséget. Ez a lépés regisztrálja az átjáró telepítését az [átjáró Cloud Service](#gateway-cloud-service)-ben.
 
    ![Átjáró regisztrálása helyi számítógépen](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -147,10 +139,10 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
 ## <a name="check-or-adjust-communication-settings"></a>A kommunikációs beállítások keresése vagy módosítása
 
-A helyszíni adatátjáró a felhőalapú kapcsolat [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) függ, és létrehozza a megfelelő kimenő kapcsolatokat az átjáróhoz tartozó Azure-régióhoz. Ha a munkahelyi környezet megköveteli, hogy a forgalom egy proxyn vagy tűzfalon keresztül hozzáférjen az internethez, akkor ez a korlátozás megakadályozhatja, hogy a helyszíni adatátjáró csatlakozzon az átjáró Cloud Service-hez, és Azure Service Bus. Az átjáró számos kommunikációs beállítással rendelkezik, amelyeket módosíthat. További információkért tekintse meg a következő témaköröket:
+A helyszíni adatátjáró a felhőalapú kapcsolat [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) függ, és létrehozza a megfelelő kimenő kapcsolatokat az átjáróhoz tartozó Azure-régióhoz. Ha a munkahelyi környezet megköveteli, hogy a forgalom egy proxyn vagy tűzfalon keresztül hozzáférjen az internethez, akkor ez a korlátozás megakadályozhatja, hogy a helyszíni adatátjáró csatlakozzon az átjáró Cloud Service-hez, és Azure Service Bus. Az átjáró számos kommunikációs beállítással rendelkezik, amelyeket módosíthat. További információt az alábbi témakörökben talál:
 
 * [A helyszíni adatátjáró kommunikációs beállításainak módosítása](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [Proxybeállítások konfigurálása a helyszíni adatátjáróhoz](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [Helyszíni adatátjáró proxybeállításainak konfigurálása](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
@@ -234,7 +226,7 @@ Ezek a lépések azt írják le, hogy mi történik, ha egy helyszíni adatforr�
 
 1. Az eredményeket a rendszer visszaküldi az adatforrásból az átjárónak, majd az átjáró Cloud Service-nek. Az átjáró Cloud Service ezután az eredményeket használja.
 
-### <a name="authentication-to-on-premises-data-sources"></a>Hitelesítés helyszíni adatforrásokhoz
+### <a name="authentication-to-on-premises-data-sources"></a>Hitelesítés helyszíni adatforrásoknál
 
 A rendszer egy tárolt hitelesítő adatokat használ az átjáróról a helyszíni adatforrásokhoz való kapcsolódáshoz. A felhasználótól függetlenül az átjáró a tárolt hitelesítő adatokat használja a kapcsolódáshoz. Bizonyos szolgáltatások, például a DirectQuery és a LiveConnect Analysis Services esetében hitelesítési kivételek lehetnek Power BI.
 
@@ -267,10 +259,10 @@ Az alábbi módokon lehet megfelelni a helyszíni Active Directory-fiókoknak az
 
 ## <a name="faq-and-troubleshooting"></a>Gyakori kérdések és hibaelhárítás
 
-További információkért tekintse meg a következő témaköröket:
+További információt az alábbi témakörökben talál:
 
 * [Helyszíni adatátjáró – GYIK](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Helyszíni adatátjáróval kapcsolatos hibák](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [A helyszíni adatátjáró hibaelhárítása](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
 * [Az átjáró teljesítményének figyelése és optimalizálása](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Következő lépések

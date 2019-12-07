@@ -1,23 +1,23 @@
 ---
-title: Adatátalakítás az U-SQL-parancsfájllal – Azure
+title: Az adatátalakítás U-SQL-szkript használatával
 description: Megtudhatja, hogyan dolgozhat fel és alakíthat át az adatok a U-SQL-parancsfájlok futtatásával Azure Data Lake Analytics számítási szolgáltatáson.
 services: data-factory
 documentationcenter: ''
+ms.author: abnarain
 author: nabhishek
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
-ms.author: abnarain
-ms.openlocfilehash: 53fb6773becff9f76c9658171965fbd148e94bc8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cb0ff5d93afc0941faa84028ad6454371cd0442c
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683875"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893892"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Az adatátalakítást U-SQL-parancsfájlok futtatásával Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -34,7 +34,7 @@ Hozzon létre egy **Azure Data Lake Analytics** társított szolgáltatást egy 
 
 A következő táblázat a JSON-definícióban használt általános tulajdonságok leírásait tartalmazza. 
 
-| Tulajdonság                 | Leírás                              | Kötelező                                 |
+| Tulajdonság                 | Leírás                              | Szükséges                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **type**                 | A Type tulajdonságot a következőre kell beállítani: **AzureDataLakeAnalytics**. | Igen                                      |
 | **accountName**          | Azure Data Lake Analytics fiók neve.  | Igen                                      |
@@ -53,11 +53,11 @@ Egyszerű szolgáltatásnév engedélyezése a Azure Data Lake Anatlyics a [felh
 
 Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megadásával használhatja:
 
-| Tulajdonság                | Leírás                              | Kötelező |
+| Tulajdonság                | Leírás                              | Szükséges |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját.     | Igen      |
 | **servicePrincipalKey** | Az alkalmazás kulcsának meghatározása.           | Igen      |
-| **Bérlő**              | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Igen      |
+| **bérlő**              | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Igen      |
 
 **Példa: egyszerű szolgáltatásnév hitelesítése**
 ```json
@@ -117,7 +117,7 @@ A következő JSON-kódrészlet egy Data Lake Analytics U-SQL-tevékenységgel r
 
 A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok nevét és leírását. 
 
-| Tulajdonság            | Leírás                              | Kötelező |
+| Tulajdonság            | Leírás                              | Szükséges |
 | :------------------ | :--------------------------------------- | :------- |
 | név                | A folyamatban szereplő tevékenység neve     | Igen      |
 | leírás         | A tevékenység működését leíró szöveg  | Nem       |
@@ -129,7 +129,7 @@ A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok ne
 | prioritású            | Meghatározza, hogy az összes várólistán lévő feladatra kiválassza az első futtatást. Minél kisebb a szám, annál magasabb a prioritás. | Nem       |
 | paraméterek          | A U-SQL-parancsfájlba továbbítandó paraméterek.    | Nem       |
 | runtimeVersion      | A használni kívánt U-SQL-motor futtatókörnyezet-verziója. | Nem       |
-| compilationMode     | <p>U-SQL fordítási módja. A következő értékek egyikének kell lennie: **szemantika:** csak szemantikai ellenőrzéseket és a szükséges józan ész-ellenőrzéseket hajtja végre **:** a teljes fordítás végrehajtása, beleértve a szintaxis-ellenőrzést, az optimalizálást, a kód generálását stb., a **SingleBox:** teljes körű végrehajtás fordítás a TargetType beállítással a SingleBox. Ha nem ad meg értéket ehhez a tulajdonsághoz, a kiszolgáló meghatározza az optimális fordítási módot. | Nem |
+| compilationMode     | <p>U-SQL fordítási módja. A következő értékek egyikének kell lennie: **szemantika:** csak szemantikai ellenőrzéseket és a szükséges józan ész-ellenőrzéseket hajtja végre **:** teljes körű fordítás, beleértve a szintaxis-ellenőrzést, az optimalizálást, a kód generálását stb., a **SingleBox:** a teljes fordítást a TargetType beállítással SingleBox. Ha nem ad meg értéket ehhez a tulajdonsághoz, a kiszolgáló meghatározza az optimális fordítási módot. | Nem |
 
 Lásd a [SearchLogProcessing. txt fájlt](#sample-u-sql-script) a parancsfájl definíciójában. 
 
@@ -176,7 +176,7 @@ A mintavételi folyamat definíciójában a és a kimenő paraméterek rögzíte
 }
 ```
 
-Ehelyett dinamikus paramétereket lehet használni. Például: 
+Ehelyett dinamikus paramétereket lehet használni. Példa: 
 
 ```json
 "parameters": {
@@ -187,7 +187,7 @@ Ehelyett dinamikus paramétereket lehet használni. Például:
 
 Ebben az esetben a bemeneti fájlok továbbra is a/datalake/input mappából lesznek kiválasztva, és a kimeneti fájlok a/datalake/output mappában jönnek létre. A fájlnevek dinamikusak a folyamat indításakor bekövetkező indítási idő alapján.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást: 
 
 * [Struktúra tevékenysége](transform-data-using-hadoop-hive.md)

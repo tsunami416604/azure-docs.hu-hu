@@ -1,5 +1,5 @@
 ---
-title: Prediktív adatfolyamatok létrehozása Azure Data Factory használatával
+title: Prediktív adatfolyamatok létrehozása
 description: Megtudhatja, hogyan hozhat létre prediktív folyamatot Azure Machine Learning-batch végrehajtási tevékenység használatával Azure Data Factoryban.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 02/20/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 24568940a0f6e550ae0fe7658b81ba1c3b3d3556
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dc2104495f231a316a1354100ecc105e8fda5bb4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683768"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893841"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Prediktív folyamatok létrehozása Azure Machine Learning és Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -66,7 +66,7 @@ Miután elvégezte a betanítást, frissítse a pontozási webszolgáltatást (w
 
 A JSON-definíció tulajdonságaival kapcsolatos leírásért tekintse meg a [számítási társított szolgáltatások](compute-linked-services.md) című cikket.
 
-A Azure Machine Learning a klasszikus webszolgáltatásokat és az új webszolgáltatásokat is támogatja a prediktív kísérlethez. Kiválaszthatja, hogy melyik elemet szeretné használni Data Factoryból. A Azure Machine Learning társított szolgáltatás létrehozásához szükséges információk beszerzéséhez nyissa meg a https://services.azureml.nett, ahol az összes (új) webszolgáltatás és a klasszikus webszolgáltatás megjelenik. **Kattintson az** elérni kívánt webszolgáltatásra, majd kattintson a felhasználás lap elemre. Másolja a **apiKey** tulajdonság **elsődleges kulcsát** és a **mlEndpoint** tulajdonsághoz tartozó **Batch-kérelmeket** .
+A Azure Machine Learning a klasszikus webszolgáltatásokat és az új webszolgáltatásokat is támogatja a prediktív kísérlethez. Kiválaszthatja, hogy melyik elemet szeretné használni Data Factoryból. A Azure Machine Learning társított szolgáltatás létrehozásához szükséges információk beszerzéséhez nyissa meg a https://services.azureml.net t, ahol az összes (új) webszolgáltatás és a klasszikus webszolgáltatás megjelenik. **Kattintson az** elérni kívánt webszolgáltatásra, majd kattintson a felhasználás lap elemre. Másolja a **apiKey** tulajdonság **elsődleges kulcsát** és a **mlEndpoint** tulajdonsághoz tartozó **Batch-kérelmeket** .
 
 ![Webszolgáltatások Azure Machine Learning](./media/transform-data-using-machine-learning/web-services.png)
 
@@ -124,7 +124,7 @@ A következő JSON-kódrészlet definiál egy Azure Machine Learning batch végr
 }
 ```
 
-| Tulajdonság          | Leírás                              | Kötelező |
+| Tulajdonság          | Leírás                              | Szükséges |
 | :---------------- | :--------------------------------------- | :------- |
 | név              | A folyamatban szereplő tevékenység neve     | Igen      |
 | leírás       | A tevékenység működését leíró szöveg  | Nem       |
@@ -217,7 +217,7 @@ Nézzük meg a webszolgáltatási paraméterek használatának forgatókönyvét
 
 Miután elvégezte a betanítást, frissítse a pontozási webszolgáltatást (webszolgáltatásként elérhető prediktív kísérlet) az újonnan betanított modellel az **Azure Machine learning Studio Update Resource tevékenység**használatával. Részletekért lásd: [modellek frissítése a frissítés erőforrás-tevékenységgel](update-machine-learning-models.md) című cikkben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást:
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)

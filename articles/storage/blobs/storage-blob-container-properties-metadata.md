@@ -1,18 +1,19 @@
 ---
-title: BLOB-tároló tulajdonságainak és metaadatainak kezelése a .NET-Azure Storage használatával
+title: BLOB-tároló tulajdonságainak és metaadatainak kezelése a .NET használatával
+titleSuffix: Azure Storage
 description: Megtudhatja, hogyan állíthatja be és kérheti le a rendszertulajdonságokat, és hogyan tárolhat egyéni metaadatokat a blob-tárolókban az Azure Storage-fiókban a .NET ügyféloldali kódtár használatával
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/10/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: d63c78fedb8dbd48655d36fecc3544fd512072e3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 17ed10d424d606091bd2b7d6f3e325955c48a5a2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673372"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894198"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Tároló tulajdonságainak és metaadatainak kezelése a .NET-tel
 
@@ -20,9 +21,9 @@ A blob-tárolók támogatják a rendszertulajdonságokat és a felhasználó ál
 
 ## <a name="about-properties-and-metadata"></a>A tulajdonságok és a metaadatok
 
-- Rendszertulajdonságok: A rendszer tulajdonságai az egyes blob Storage-erőforrásokon léteznek. Némelyikük olvasható vagy beállítható, míg mások csak olvashatók. A borítók alatt egyes Rendszertulajdonságok megfelelnek bizonyos szabványos HTTP-fejléceknek. Az Azure Storage .NET-hez készült ügyféloldali kódtára ezeket a tulajdonságokat tárolja.
+- **Rendszertulajdonságok**: Rendszertulajdonságok találhatók az egyes blob Storage-erőforrásokon. Némelyikük olvasható vagy beállítható, míg mások csak olvashatók. A borítók alatt egyes Rendszertulajdonságok megfelelnek bizonyos szabványos HTTP-fejléceknek. Az Azure Storage .NET-hez készült ügyféloldali kódtára ezeket a tulajdonságokat tárolja.
 
-- **Felhasználó által definiált metaadatok**: A felhasználó által definiált metaadatok egy vagy több, a blob Storage-erőforráshoz megadott név-érték párokból állnak. A metaadatok használatával további értékeket is tárolhat az erőforrással. A metaadatok értéke csak saját célra szolgál, és nem befolyásolja az erőforrás működésének módját.
+- **Felhasználó által definiált metaadatok**: a felhasználó által definiált metaadatok egy vagy több, a blob Storage-erőforráshoz megadott név-érték párokból állnak. A metaadatok használatával további értékeket is tárolhat az erőforrással. A metaadatok értéke csak saját célra szolgál, és nem befolyásolja az erőforrás működésének módját.
 
 A blob Storage-erőforrások tulajdonság-és metaadat-értékeinek beolvasása kétlépéses folyamat. Ezeknek az értékeknek a beolvasása előtt explicit módon be kell olvasnia azokat a **FetchAttributes** vagy a **FetchAttributesAsync** metódus meghívásával. A szabály alól kivételt képez, hogy a **létező** és a **ExistsAsync** metódusok a borító alatt meghívja a megfelelő **FetchAttributes** metódust. Ha meghívja az egyik módszert, nem kell meghívnia a **FetchAttributes**.
 
@@ -71,7 +72,7 @@ A metaadatokat egy vagy több név-érték párokkal is megadhatja blob vagy tá
 
 A metaadatok nevének meg kell felelnie az C# azonosítók elnevezési konvencióinak. A metaadatok nevei megőrzik azt az esetet, amellyel létrehozták őket, de a kis-és nagybetűk nem különböznek a beállítás vagy az olvasás során. Ha két vagy több, azonos nevű metaadat-fejlécet küld egy erőforráshoz, a blob Storage a 400-as HTTP-hibakódot (hibás kérés) adja vissza.
 
-A következő kódrészlet egy tároló metaadatait állítja be. Egy érték van beállítva a gyűjtemény hozzáadási metódusának használatával. A másik érték az implicit kulcs/érték szintaxis használatával van beállítva. Mindkettő érvényes.
+A következő kódrészlet egy tároló metaadatait állítja be. Egy érték van beállítva a gyűjtemény **hozzáadási** metódusának használatával. A másik érték az implicit kulcs/érték szintaxis használatával van beállítva. Mindkettő érvényes.
 
 ```csharp
 public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
@@ -127,7 +128,7 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Tároló tulajdonságainak beolvasása művelet](/rest/api/storageservices/get-container-properties)
 - [Tároló metaadatainak beállítása művelet](/rest/api/storageservices/set-container-metadata)

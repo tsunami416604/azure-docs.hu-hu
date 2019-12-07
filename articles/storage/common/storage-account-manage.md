@@ -1,18 +1,19 @@
 ---
-title: A Storage-fiók beállításainak kezelése a Azure Portal-Azure Storage-ban | Microsoft Docs
+title: A Storage-fiók beállításainak kezelése a Azure Portal
+titleSuffix: Azure Storage
 description: Megtudhatja, hogyan kezelheti a Storage-fiókok beállításait a Azure Portalban, beleértve a hozzáférés-vezérlési beállítások konfigurálását, a fiók-hozzáférési kulcsok újragenerálását, a hozzáférési réteg módosítását vagy a fiók által használt replikáció típusának módosítását. Azt is megtudhatja, hogyan törölhet egy Storage-fiókot a portálon.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 11/06/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93d3bf3d17348a0f5ad62118fcb9c9a0c6f2f656
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748987"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892379"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>A Storage-fiók beállításainak kezelése a Azure Portal
 
@@ -49,7 +50,7 @@ A Storage-fiók létrehozásakor az Azure 2 512 bites Storage-fiókhoz tartozó 
 A Microsoft azt javasolja, hogy rendszeres időközönként újragenerálja a hozzáférési kulcsokat a Storage-fiók biztonságának megőrzése érdekében. Két hozzáférési kulcs van hozzárendelve, hogy el lehessen forgatni a kulcsokat. A kulcsok elforgatásakor gondoskodjon arról, hogy az alkalmazás a folyamat során fenntartsa az Azure Storage-hoz való hozzáférést. 
 
 > [!WARNING]
-> A hozzáférési kulcsok újragenerálása hatással lehet bármely olyan alkalmazásra vagy Azure-szolgáltatásra, amely a Storage-fiók kulcsával függ. Minden olyan ügyfelet, amely a fiók kulcsát használja a Storage-fiók eléréséhez, frissíteni kell az új kulcs használatára, beleértve a Media Servicest, a felhőt, az asztali és a mobil alkalmazásokat, valamint az Azure Storage-hoz készült grafikus felhasználói felületi alkalmazásokat, például a [Azure Storage Explorer ](https://azure.microsoft.com/features/storage-explorer/).
+> A hozzáférési kulcsok újragenerálása hatással lehet bármely olyan alkalmazásra vagy Azure-szolgáltatásra, amely a Storage-fiók kulcsával függ. Minden olyan ügyfelet, amely a fiók kulcsát használja a Storage-fiók eléréséhez, frissíteni kell az új kulcs használatára, beleértve a Media Servicest, a felhőt, az asztali és a mobil alkalmazásokat, valamint az Azure Storage-hoz készült grafikus felhasználói felületi alkalmazásokat, például a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
 Kövesse ezt a folyamatot a Storage-fiók kulcsainak elforgatásához:
 
@@ -74,7 +75,7 @@ A már nem használt tárfiókok eltávolításához lépjen az [Azure Portalra]
 
 Ha egy Azure virtuális géppel társított tárfiókot próbál törölni, egy hibaüzenetet kaphat, amely szerint a tárfiók még használatban van. A hiba elhárításával kapcsolatban lásd: [Troubleshoot errors when you delete storage accounts](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md) (A tárfiókok törlésével kapcsolatos hibák elhárítása).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Storage-fiók áttekintése](storage-account-overview.md)
 - [Tárfiók létrehozása](storage-quickstart-create-account.md)

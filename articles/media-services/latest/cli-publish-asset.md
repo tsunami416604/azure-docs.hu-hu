@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-példaszkript – Objektum közzététele | Microsoft Docs
-description: Az itt bemutatott Azure CLI-szkripttel közzétehet egy objektumot.
+description: Ez a cikk bemutatja, hogyan tehet közzé egy eszközt az Azure CLI-szkript használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: ced55a41ce5be31dfa036894188f385ae60f8962
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 44cf234fd8419164f7dd7f8320952a5c6c0842e0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204154"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896119"
 ---
-# <a name="cli-example-publish-an-asset"></a>CLI-példa: Az objektum közzététele
+# <a name="cli-example-publish-an-asset"></a>CLI-példa: Objektum közzététele
 
 A jelen cikkben lévő Azure CLI-példaszkript bemutatja, hogyan hozhat létre streamelési lokátort, és hogyan kérhet le streamelési URL-címeket. 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-[A Media Services-fiók létrehozása](create-account-cli-how-to.md).
+[Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
@@ -35,6 +35,6 @@ A jelen cikkben lévő Azure CLI-példaszkript bemutatja, hogyan hozhat létre s
 
 [!code-azurecli-interactive[main](../../../cli_scripts/media-services/publish-asset/Publish-Asset.sh "Publish an asset")]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Media Services áttekintése](media-services-overview.md)

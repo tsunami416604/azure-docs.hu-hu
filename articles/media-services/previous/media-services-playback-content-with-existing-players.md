@@ -1,6 +1,6 @@
 ---
 title: Meglévő játékosok használata a tartalom lejátszásához – Azure | Microsoft Docs
-description: Ez a témakör felsorolja azokat a meglévő játékosokat, amelyeket a tartalmak lejátszásához használhat.
+description: Ez a cikk felsorolja azokat a meglévő játékosokat, amelyeket a tartalom lejátszásához használhat.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 0da8ce396ce07b7c9859fcfccb5cb524c0ce21c1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: fdcaa7d8eec0065ad9acd76df9918ed7bccc081b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69015294"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895858"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Tartalom lejátszása meglévő lejátszókkal
 A Azure Media Services számos népszerű streaming formátumot támogat, például a Smooth Streaming, a HTTP Live Streaming és az MPEG-Dash formátumot. Ez a témakör egy meglévő, a streamek tesztelésére használható játékost mutat be.

@@ -1,20 +1,20 @@
 ---
-title: Adatátviteli sebesség optimalizálása az adatok Azure Cosmos DB SQL API-fiókba való tömeges importálásakor
-description: Ismerje meg, hogyan hozhat létre olyan .NET-konzolos alkalmazást, amely optimalizálja az adatok Azure Cosmos DBba való importálásához szükséges kiosztott átviteli sebességet (RU/s).
+title: Az Azure Cosmos DB SQL API-fiókba való tömeges importálás a .net SDK használatával
+description: Megtudhatja, hogyan importálhat és betöltheti az adatok Azure Cosmos DB egy olyan .NET-konzolos alkalmazás létrehozásával, amely optimalizálja az adatok importálásához szükséges kiépített átviteli sebességet (RU/s).
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d80d762338744c0ca783d1768bacb8443dbc5020
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606206"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896280"
 ---
-# <a name="optimize-throughput-when-bulk-importing-data-to-azure-cosmos-db-sql-api-account"></a>Adatátviteli sebesség optimalizálása az adatok Azure Cosmos DB SQL API-fiókba való tömeges importálásakor
+# <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Az Azure Cosmos DB SQL API-fiókba való tömeges importálás a .NET SDK használatával
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre olyan .NET-konzolos alkalmazást, amely optimalizálja az adatok Azure Cosmos DBba való importálásához szükséges kiépített átviteli sebességet (RU/s). Ebben a cikkben az adatok egy mintául szolgáló adatforrásból kerülnek beolvasásra, majd egy Azure Cosmos-tárolóba importáljuk.
 Ez az oktatóanyag a Azure Cosmos DB .NET SDK 3.0-s [verzióját](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) használja, amely a .NET-keretrendszerre vagy a .net Core-ra is megcélozható.
@@ -181,7 +181,7 @@ A minta a tárház könyvtárára való váltással és a `dotnet`használatáva
    dotnet run
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő lépéseket hajtotta végre:
 

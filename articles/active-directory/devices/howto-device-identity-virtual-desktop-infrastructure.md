@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1cba2c4572b2f898f631aefbbf316fae1195ac
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596360"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900371"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Eszköz-identitás és asztali virtualizálási
 
@@ -44,26 +44,27 @@ Mielőtt az eszköz identitásait az Azure AD-ben konfigurálja a VDI-környezet
 | Eszköz identitásának típusa | Identitás-infrastruktúra | Windows-eszközök | VDI platform verziója | Támogatott |
 | --- | --- | --- | --- | --- |
 | Hibrid Azure AD-csatlakozás | Összevont | Windows jelenlegi * * * és Windows Down-Level * * * * | Állandó | Igen |
-|   |   |   | Nem állandó | Igen |
-|   | Felügyelt * * | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
-|   |   | Korábbi verziójú Windows | Nem állandó | Igen |
 |   |   | Windows jelenlegi | Nem állandó | Nem |
+|   |   | Korábbi verziójú Windows | Nem állandó | Igen |
+|   | Felügyelt * * | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
+|   |   | Windows jelenlegi | Nem állandó | Nem |
+|   |   | Korábbi verziójú Windows | Nem állandó | Igen |
 | Azure AD-hez csatlakoztatott | Összevont | Windows jelenlegi | Állandó | Nem |
 |   |   |   | Nem állandó | Nem |
 |   | Managed | Windows jelenlegi | Állandó | Nem |
 |   |   |   | Nem állandó | Nem |
-| Azure AD-regisztráció | Összevont | Windows jelenlegi | Állandó | Nem |
+| Az Azure AD-ban regisztrálva | Összevont | Windows jelenlegi | Állandó | Nem |
 |   |   |   | Nem állandó | Nem |
 |   | Managed | Windows jelenlegi | Állandó | Nem |
 |   |   |   | Nem állandó | Nem |
 
 \* **összevont** identitás-infrastruktúra környezete olyan identitás-szolgáltatói környezetet képvisel, mint például AD FS vagy más, harmadik féltől származó identitásszolgáltató.
 
-\* \* A **felügyelt** identitás-infrastruktúra környezete az Azure ad-vel rendelkező környezetet jelöli, mint a [jelszó-kivonatos szinkronizálással (PHS)](../hybrid/whatis-phs.md) vagy az [átmenő hitelesítéssel (PTA ESP)](../hybrid/how-to-connect-pta.md) telepített identitás-szolgáltató. [ zökkenőmentes egyszeri bejelentkezés](../hybrid/how-to-connect-sso.md).
+\*\* A **felügyelt** identitás-infrastruktúra környezete az Azure ad-vel rendelkező környezetet jelöli, mint a [jelszó-kivonatolási szinkronizálással (PHS)](../hybrid/whatis-phs.md) vagy az [átmenő hitelesítéssel (PTA ESP)](../hybrid/how-to-connect-pta.md) rendelkező, [zökkenőmentes egyszeri bejelentkezéssel](../hybrid/how-to-connect-sso.md)üzembe helyezett identitás-szolgáltató.
 
-\* \* \* Windows **jelenlegi** eszközei a Windows 10, a windows Server 2016 és a windows Server 2019.
+\*\*\* Windows **jelenlegi** eszközei a Windows 10, a windows Server 2016 és a windows Server 2019.
 
-\* \* \* \* **Windows Down szintű** eszközök a Windows 7, a Windows 8,1, a windows Server 2008 R2, a windows Server 2012 és a windows Server 2012 R2 rendszernek felelnek meg. A Windows 7 támogatási információi: a [Windows 7 támogatása véget ér](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support). A Windows Server 2008 R2-vel kapcsolatos támogatási információk: [felkészülés a Windows server 2008](https://www.microsoft.com/cloud-platform/windows-server-2008)-re a támogatás befejezése után.
+\*\*\*\* **Windows Down szintű** eszközök a Windows 7, a Windows 8,1, a windows Server 2008 R2, a windows Server 2012 és a windows Server 2012 R2 rendszernek felelnek meg. A Windows 7 támogatási információi: a [Windows 7 támogatása véget ér](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support). A Windows Server 2008 R2-vel kapcsolatos támogatási információk: [felkészülés a Windows server 2008](https://www.microsoft.com/cloud-platform/windows-server-2008)-re a támogatás befejezése után.
 
 ## <a name="microsofts-guidance"></a>A Microsoft útmutatása
 
@@ -79,8 +80,7 @@ Ha virtuális gép (VM) pillanatképét szeretné létrehozni további virtuáli
 Nem állandó VDI telepítésekor a rendszergazdáknak Kiemelt figyelmet kell fordítaniuk az elavult eszközök Azure AD-ben való felügyeletére. A Microsoft javasolja, hogy a rendszergazdák implementálják az alábbi útmutatást. Ennek elmulasztása miatt a címtárban sok olyan elavult hibrid Azure AD-eszköz található, amely a nem állandó VDI-platformról lett regisztrálva.
 
 - Hozzon létre és használjon egy előtagot annak a számítógépnek a megjelenítendő neveként, amely VDI-alapúként jelöli meg az asztalt.
-- A kijelentkezési parancsfájl részeként hajtsa végre a következő parancsokat. Ezek a parancsok az Azure AD-t az eszköz törlésére szolgáló legjobb erőfeszítést eredményezik.
-   - Windows aktuális eszközökhöz – dsregcmd. exe/Leave
+- A következő parancs végrehajtása a kijelentkezési parancsfájl részeként. Ez a parancs elindítja az Azure AD-nek a legjobb erőfeszítést az eszköz törléséhez.
    - Windows Down-szintű eszközökhöz – autoworkplace. exe/Leave
 - Az [elavult eszközök kezelésére](manage-stale-devices.md)szolgáló folyamat meghatározása és implementálása.
    - Ha már van egy stratégia a nem állandó hibrid Azure AD-hez csatlakoztatott eszközök azonosítására, akkor agresszívebb lehet ezen eszközök tisztítása, hogy a címtár ne legyen felhasználva sok elavult eszközzel.

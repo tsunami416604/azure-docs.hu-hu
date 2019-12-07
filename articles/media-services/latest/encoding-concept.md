@@ -1,7 +1,7 @@
 ---
 title: Videó és hang kódolása Media Services
 titleSuffix: Azure Media Services
-description: Útmutató a videó és a hang kódolásához a Azure Media Services.
+description: Ez a cikk a videó és a hang kódolását ismerteti Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d3de307b1dadf302004fa9fd02c8cf23e36b3046
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e9a0a8c8709e41bb7778878f76024263cdc32481
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574283"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896088"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Videó és hang kódolása Media Services
 
@@ -26,7 +26,7 @@ A Media Services kódolása a digitális videót és/vagy hangot tartalmazó fá
 
 A videók általában [progresszív letöltéssel](https://en.wikipedia.org/wiki/Progressive_download) vagy [adaptív sávszélességű adatfolyam](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)használatával érkeznek meg az eszközökre és alkalmazásokra.
 
-* A progresszív letöltéssel történő továbbításhoz használhatja a Azure Media Servicest a digitális médiafájlok [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) -fájllá való átalakításához, amely tartalmazza a [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) kodekkel kódolt videókat, valamint az [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) -vel kódolt hanganyagot. codec. Ez az MP4-fájl a Storage-fiókban lévő eszközre íródik. A fájl közvetlen letöltéséhez használhatja az Azure Storage API-jait vagy SDK-kat (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md) vagy a [.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)-t). Ha a kimeneti eszközt egy adott tároló nevével hozta létre a tárolóban, használja ezt a helyet. Ellenkező esetben a Media Services használatával [listázhatja az objektum-tároló URL-címeit](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
+* A progresszív letöltéssel történő továbbításhoz a Azure Media Services segítségével konvertálhat egy digitális médiafájlt [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) -fájlba, amely a [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) kodekkel kódolt videókat és az [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) -kodekkel kódolt hanganyagot tartalmaz. Ez az MP4-fájl a Storage-fiókban lévő eszközre íródik. A fájl közvetlen letöltéséhez használhatja az Azure Storage API-jait vagy SDK-kat (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md) vagy a [.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)-t). Ha a kimeneti eszközt egy adott tároló nevével hozta létre a tárolóban, használja ezt a helyet. Ellenkező esetben a Media Services használatával [listázhatja az objektum-tároló URL-címeit](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
 * A tartalom adaptív sávszélességű adatfolyamként történő kézbesítésének előkészítéséhez a köztes fájlt több bitrátán kell kódolni (magasról alacsonyra). A minőség kecses átállásának biztosítása érdekében a videó felbontása alacsonyabb, mint a sávszélesség. Ez egy úgynevezett kódolási létrát eredményez, amely a felbontások és a bitráta (lásd: [automatikusan generált adaptív sávszélességű létrák](autogen-bitrate-ladder.md)) táblázata. Media Services használatával több bitrátán is kódolhatja a köztes fájlokat. Ennek során az MP4-fájlok és a hozzájuk tartozó, a Storage-fiókban lévő eszközre írt társított adatfolyam-konfigurációs fájlok készletét fogja kapni. Ezután a Media Services [dinamikus csomagolási](dynamic-packaging-overview.md) funkciójának használatával továbbíthatja a videót a streaming protokollok, például az [MPEG-Dash](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) és a [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)segítségével. Ehhez létre kell hoznia egy [adatfolyam-keresőt](streaming-locators-concept.md) , és a támogatott protokolloknak megfelelő streaming URL-címeket kell létrehoznia, amelyek az eszközök és alkalmazások számára a képességeik alapján adhatók ki.
 
 Az alábbi ábrán a dinamikus csomagolással rendelkező igény szerinti kódoláshoz tartozó munkafolyamat látható.
@@ -140,7 +140,7 @@ A médiafájlok feldolgozásának méretezéséhez lásd: [Méretezés a CLI-vel
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Feltöltés, kódolás és stream Media Services használatával](stream-files-tutorial-with-api.md).
 * [KÓDOLÁS HTTPS-URL-címről beépített beállításkészletek használatával](job-input-from-http-how-to.md).

@@ -1,6 +1,6 @@
 ---
 title: Hirdetések beszúrása az ügyféloldali oldalon | Microsoft Docs
-description: Ez a témakör bemutatja, hogyan szúrhat be hirdetéseket az ügyféloldali oldalon.
+description: Ez a cikk bemutatja, hogyan szúrhat be hirdetéseket az adathordozóra az ügyféloldali oldalon.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 37ee600a2f7d621d3fefb2f70c26b6c29f738ea9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f56c897fd6f5ce7e5129a4500ecaacbaf0a75f3b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162705"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895973"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Hirdetések beszúrása az ügyféloldali oldalon
 Ez a cikk azt ismerteti, hogyan szúrhat be különféle típusú hirdetéseket az ügyfél oldalán.
@@ -96,7 +96,7 @@ Egy hatalmas fájl határozza meg, hogy mely ad vagy hirdetéseket szeretné meg
 
 A lineáris ad-t a <**lineáris**> elem írja le. Meghatározza az ad időtartamát, a követési eseményeket, a kattintást, a nyomon követést és számos **MediaFile** elemet. A nyomkövetési események a <**TrackingEvents**> elemben vannak megadva, és lehetővé teszik, hogy az ad-kiszolgáló nyomon követhesse az ad megtekintésekor előforduló különböző eseményeket. Ebben az esetben a Start, a középpont, a Complete és a Expand esemény nyomon követhető. A Start esemény a hirdetés megjelenésekor következik be. A középponti esemény akkor következik be, amikor az ad idővonalának legalább 50%-át megtekintették. A teljes esemény akkor következik be, amikor az ad a végére futott. A kibontási esemény akkor következik be, amikor a felhasználó kibontja a videolejátszó teljes képernyős megjelenítését. Az átkattintások egy <**Átkattintási**> elemmel vannak megadva egy <**VideoClicks**> elemen belül, és egy olyan erőforrás URI azonosítóját adja meg, amelyet a felhasználó az ad-ra való kattintáskor megjelenít. A ClickTracking egy <**ClickTracking**> elemben van megadva, a <**VideoClicks**> elemen belül is, és azt a követési erőforrást adja meg, amelyet a lejátszónak a felhasználó az ad-ra való kattintáskor kell kérnie. Az <**MediaFile**> elemek határozzák meg az ad adott kódolásával kapcsolatos információkat. Ha egynél több <**MediaFile**> elemet használ, a videolejátszó kiválaszthatja a platform legjobb kódolását.
 
-A lineáris hirdetések a megadott sorrendben jeleníthetők meg. Ehhez vegyen fel további `<Ad>` elemeket a hatalmas fájlhoz, és adja meg a sorrendet a sorrend attribútum használatával. A következő példa ezt szemlélteti:
+A lineáris hirdetések a megadott sorrendben jeleníthetők meg. Ehhez vegyen fel további `<Ad>` elemeket a hatalmas fájlhoz, és adja meg a sorrendet a sorrend attribútum használatával. A következő példa ezt illusztrálja:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
