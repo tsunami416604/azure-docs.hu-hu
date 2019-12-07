@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: f803b7cccf3520c309e6b33d99b5565cfc4fdd01
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/05/2019
+ms.openlocfilehash: 8ec6f32d7db0161cef00330aa38601ba9bdb309d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764916"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893144"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MySQLban a Azure Portal használatával
 
@@ -57,7 +57,7 @@ Ezek a további kiszolgálói paraméterek nem konfigurálhatók a rendszeren:
 
 |**Paraméter**|**Rögzített érték**|
 | :------------------------ | :-------- |
-|alapszintű innodb_file_per_table|KIKAPCSOLÁSA|
+|alapszintű innodb_file_per_table|KI|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
 |innodb_log_file_size|512 MB|
@@ -76,6 +76,9 @@ A kiszolgálón található időzóna-táblákat úgy töltheti fel, hogy meghí
 ```sql
 CALL mysql.az_load_timezone();
 ```
+
+> [!IMPORTANT]
+> Indítsa újra a kiszolgálót az időzóna-táblák megfelelő kitöltésének biztosításához. A kiszolgáló újraindításához használja a [Azure Portal](howto-restart-server-portal.md) vagy a [parancssori](howto-restart-server-cli.md)felületet.
 
 A rendelkezésre álló időzóna-értékek megtekintéséhez futtassa a következő parancsot:
 
