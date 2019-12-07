@@ -1,6 +1,6 @@
 ---
 title: Élő stream a többszörös átviteli sebességű streameket létrehozó helyszíni kódolókkal – Azure | Microsoft Docs
-description: 'Ez a témakör azt ismerteti, hogyan állíthat be egy olyan csatornát, amely több-sávszélességű élő streamet fogad egy helyszíni kódolóból. Ezután az adatfolyamot egy vagy több folyamatos átviteli végponton keresztül továbbíthatja az ügyfél-lejátszási alkalmazásokba az alábbi adaptív adatfolyam-protokollok egyikének használatával: HLS, Smooth Streaming, kötőjel.'
+description: Ez a témakör azt ismerteti, hogyan állíthat be egy olyan csatornát, amely több-sávszélességű élő streamet fogad egy helyszíni kódolóból.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a299c050be37d53acd01ddc2db580c4881eeae07
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "69015485"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887101"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>A helyszíni kódolók többszörös átviteli sebességű streamjét fogadó csatornák használata
 
@@ -29,18 +29,18 @@ ms.locfileid: "69015485"
 ## <a name="overview"></a>Áttekintés
 Azure Media Services a *csatorna* az élő közvetítéssel végzett tartalom feldolgozásának folyamatát jelöli. A csatorna az élő bemeneti streameket kétféleképpen fogadja el:
 
-* A helyszíni élő kódoló egy többszörös sávszélességű RTMP vagy Smooth Streaming (töredezett MP4) streamet küld a csatornára, amely nincs engedélyezve az élő kódolás végrehajtásához Media Services. A betöltött adatfolyamok további feldolgozás nélkül haladnak át a csatornákon. Ezt a metódustáteresztőnek nevezzük. Egy élő kódoló olyan csatornára is küldhet egysebességű streamet, amely nem engedélyezett az élő kódoláshoz, de ezt nem javasoljuk. Media Services továbbítja a streamet a kérelmező ügyfeleknek.
+* A helyszíni élő kódoló egy többszörös sávszélességű RTMP vagy Smooth Streaming (töredezett MP4) streamet küld a csatornára, amely nincs engedélyezve az élő kódolás végrehajtásához Media Services. A betöltött adatfolyamok további feldolgozás nélkül haladnak át a csatornákon. Ezt a metódust *áteresztőnek*nevezzük. Egy élő kódoló olyan csatornára is küldhet egysebességű streamet, amely nem engedélyezett az élő kódoláshoz, de ezt nem javasoljuk. Media Services továbbítja a streamet a kérelmező ügyfeleknek.
 
   > [!NOTE]
   > Az átmenő módszer használata a leggazdaságosabb módja az élő közvetítésnek.
 
 
-* A helyszíni élő kódoló egy átviteli sebességű streamet küld a csatornának, amely lehetővé teszi, hogy az alábbi formátumok egyikével Media Services élő kódolást végezzen el: RTMP vagy Smooth Streaming (darabolt MP4). A csatorna ezután a bejövő egyszeri átviteli sebességű adatfolyam élő kódolását egy többszörös sávszélességű (adaptív) videó streambe végzi. Media Services továbbítja a streamet a kérelmező ügyfeleknek.
+* A helyszíni élő kódoló egy átviteli sebességű streamet küld a csatornának, amely lehetővé teszi, hogy élő kódolást végezzen Media Services az alábbi formátumok valamelyikével: RTMP vagy Smooth Streaming (töredezett MP4). A csatorna ezután a bejövő egyszeri átviteli sebességű adatfolyam élő kódolását egy többszörös sávszélességű (adaptív) videó streambe végzi. Media Services továbbítja a streamet a kérelmező ügyfeleknek.
 
 A Media Services 2,10 kiadástól kezdve a csatorna létrehozásakor megadhatja, hogy a csatorna hogyan kapja meg a bemeneti adatfolyamot. Azt is megadhatja, hogy a csatorna az adatfolyam élő kódolását kívánja-e végrehajtani. Erre két lehetősége van:
 
-* **Továbbítás**: Akkor adja meg ezt az értéket, ha olyan helyszíni élő kódolót szeretne használni, amelynek kimenete többszörös sávszélességű stream (egy csatlakoztatott adatfolyam). Ebben az esetben a bejövő adatfolyam kódolás nélkül halad át a kimeneten. Ez egy csatorna viselkedése a 2,10-es kiadás előtt. Ez a cikk részletesen ismerteti az ilyen típusú csatornák használatának részleteit.
-* **Live Encoding**: Akkor válassza ezt az értéket, ha a Media Services használatával kódolja az egysebességű élő streamet egy többszörös sávszélességű adatfolyamba. Egy **futó** állapotú élő kódolási csatorna elhagyása a számlázási díjakkal. Javasoljuk, hogy az élő adatfolyam-továbbítási esemény befejezése után azonnal állítsa le a futó csatornákat, hogy elkerülje a felesleges óránkénti díjat. Media Services továbbítja a streamet a kérelmező ügyfeleknek.
+* **Továbbítás**: akkor adja meg ezt az értéket, ha olyan helyszíni élő kódolót szeretne használni, amelynek kimenete több sávszélességű stream (egy csatlakoztatott adatfolyam). Ebben az esetben a bejövő adatfolyam kódolás nélkül halad át a kimeneten. Ez egy csatorna viselkedése a 2,10-es kiadás előtt. Ez a cikk részletesen ismerteti az ilyen típusú csatornák használatának részleteit.
+* **Live Encoding**: akkor válassza ezt az értéket, ha a Media Services használatával kívánja kódolni az egysebességű élő streamet egy többszörös sávszélességű adatfolyamba. Egy **futó** állapotú élő kódolási csatorna elhagyása a számlázási díjakkal. Javasoljuk, hogy az élő adatfolyam-továbbítási esemény befejezése után azonnal állítsa le a futó csatornákat, hogy elkerülje a felesleges óránkénti díjat. Media Services továbbítja a streamet a kérelmező ügyfeleknek.
 
 > [!NOTE]
 > Ez a cikk a csatornák olyan attribútumait ismerteti, amelyek nem engedélyezettek az élő kódolás végrehajtásához. További információ az élő kódolást lehetővé tévő csatornák használatáról: [élő közvetítés Azure Media Services használatával többszörös sávszélességű adatfolyamok létrehozásához](media-services-manage-live-encoder-enabled-channels.md).
@@ -73,13 +73,13 @@ A következő lépések ismertetik a gyakori élő adatfolyam-alkalmazások lét
 6. A programhoz társított eszköz közzététele.   
 
     >[!NOTE]
-    >A Azure Media Services-fiók létrehozásakor a rendszer egy **alapértelmezett** folyamatos átviteli végpontot ad hozzá a fiókhoz a leállított állapotban. A tartalom-továbbításhoz használt streamvégpontnak **Fut** állapotban kell lennie.
+    >A Azure Media Services-fiók létrehozásakor a rendszer egy **alapértelmezett** folyamatos átviteli végpontot ad hozzá a fiókhoz a **leállított** állapotban. A tartalom-továbbításhoz használt streamvégpontnak **Fut** állapotban kell lennie.
 
 7. Indítsa el a programot, amikor készen áll a folyamatos átvitelre és archiválásra.
 
 8. További lehetőségként jelzést adhat a valós idejű kódolónak egy hirdetés elindítására. A hirdetés a kimeneti adatfolyamba lesz beszúrva.
 
-9. Állítsa le a programot, ha szeretné megállítani az adatfolyam-továbbítást, és archiválni kívánja az eseményt.
+9. Amikor le kívánja állítani az esemény streamelését és az archiválását, állítsa le a programot.
 
 10. Törölje a programot (és opcionálisan törölje az eszközt).     
 
@@ -88,8 +88,8 @@ A következő lépések ismertetik a gyakori élő adatfolyam-alkalmazások lét
 #### <a id="ingest_protocols"></a>Streaming Protocol betöltése
 Media Services támogatja az élő hírcsatornák betöltését a többszörös sávszélességű töredezett MP4 és a többszörös sávszélességű RTMP használatával streaming protokollokként. Ha ki van választva az RTMP betöltésének folyamatos átviteli protokollja, a rendszer két betöltési (bemeneti) végpontot hoz létre a csatornához:
 
-* **Elsődleges URL-cím**: Megadja a csatorna elsődleges RTMP betöltési végpontjának teljes URL-címét.
-* **Másodlagos URL-cím** (nem kötelező): Megadja a csatorna másodlagos RTMP betöltési végpontjának teljes URL-címét.
+* **Elsődleges URL-cím**: megadja a csatorna elsődleges RTMP betöltési végpontjának teljes URL-címét.
+* **Másodlagos URL-cím** (nem kötelező): megadja a csatorna másodlagos RTMP betöltési végpontjának teljes URL-címét.
 
 Használja a másodlagos URL-címet, ha javítani szeretné a betöltési adatfolyam tartósságát és hibatűrését (valamint a kódoló feladatátvételét és hibatűrését), különösen a következő esetekben:
 
@@ -167,7 +167,7 @@ Minden program egy olyan objektumhoz van társítva, amely a továbbított tarta
 
 Egy csatorna legfeljebb három párhuzamosan futó programot támogat, így több archívumot is létrehozhat ugyanahhoz a bejövő adatfolyamhoz. Egy esemény különböző részeit szükség szerint teheti közzé és archiválhatja. Tegyük fel például, hogy az üzleti követelmény egy program 6 órányi archiválása, de csak az utolsó 10 percet kell közvetíteni. Ezt két egyidejűleg zajló program létrehozásával érheti el. Az egyik program az esemény hat órájának archiválására van beállítva, de a program nincs közzétéve. A másik program 10 perces archiválásra van beállítva, és ez a program közzé van téve.
 
-A meglévő programokat nem szabad új eseményekhez ismét felhasználni. Ehelyett hozzon létre egy új programot az egyes eseményekhez. Indítsa el a programot, amikor készen áll a folyamatos átvitelre és archiválásra. Állítsa le a programot, ha szeretné megállítani az adatfolyam-továbbítást, és archiválni kívánja az eseményt.
+A meglévő programokat nem szabad új eseményekhez ismét felhasználni. Ehelyett hozzon létre egy új programot az egyes eseményekhez. Indítsa el a programot, amikor készen áll a folyamatos átvitelre és archiválásra. Amikor le kívánja állítani az esemény streamelését és az archiválását, állítsa le a programot.
 
 Az archivált tartalom törléséhez állítsa le és törölje a programot, majd törölje a hozzá tartozó eszközt. Egy eszköz nem törölhető, ha egy program azt használja. Először törölni kell a programot.
 
@@ -176,18 +176,18 @@ Még a program leállítása és törlése után is igény szerint továbbíthat
 ## <a id="states"></a>Csatorna állapotok és számlázás
 A csatorna aktuális állapotának lehetséges értékei a következők:
 
-* **Leállítva**: Létrehozása után ez a csatorna kezdeti állapota. Ebben az állapotban a csatorna tulajdonságai módosíthatók, a streamelés azonban nem engedélyezett.
-* **Kezdés**: A csatorna indítás alatt van. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett. Ha hiba történik, a csatorna visszaállított állapotba tér vissza.
-* **Futtatás**: A csatorna képes az élő streamek feldolgozására.
-* **Leállítás**: A csatorna leállítás alatt van. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett.
-* **Törlés**: A csatorna törlés alatt van. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett.
+* **Leállítva**: Ez a csatorna kezdeti állapota a létrehozás után. Ebben az állapotban a csatorna tulajdonságai módosíthatók, a streamelés azonban nem engedélyezett.
+* **Indítás**: a csatorna indítása folyamatban van. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett. Ha hiba történik, a csatorna **visszaállított** állapotba tér vissza.
+* **Fut**: a csatorna képes az élő streamek feldolgozására.
+* **Leállítás**: a csatorna leállítása folyamatban van. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett.
+* **Törlés**: a csatorna törlése folyamatban van. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett.
 
 Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében miként alakul a számlázási mód.
 
 | Csatorna állapota | Jelzése a portál kezelőfelületén | Számlázandó? |
 | --- | --- | --- |
 | **Indítása** |**Indítása** |Nem (átmeneti állapot) |
-| **Fut** |**Készen áll** (nincs futó program)<p><p>vagy<p>**Folyamatos átvitel** (legalább egy futó program) |Igen |
+| **Fut** |**Kész** (nincs futó program)<p><p>vagy<p>**Streaming** (legalább egy futó program) |Igen |
 | **Leállítása** |**Leállítása** |Nem (átmeneti állapot) |
 | **Megállt** |**Megállt** |Nem |
 
@@ -197,7 +197,7 @@ Az alábbi táblázat a kódolt feliratozás és az ad-Beszúrás támogatott sz
 | Standard | Megjegyzések |
 | --- | --- |
 | CEA-708 és EIA-608 (708/608) |A CEA-708 és a KHV-608 a Egyesült Államok és Kanada esetében bezárt feliratozási szabványok.<p><p>Jelenleg a feliratozás csak akkor támogatott, ha a kódolt bemeneti adatfolyamban történik. Olyan élő adathordozó-kódolót kell használnia, amely 608 vagy 708 feliratot szúr be a Media Servicesba küldött kódolt adatfolyamba. Media Services a tartalmat beszúrt feliratokkal látja el a nézők számára. |
-| TTML belül. ismt (Smooth Streaming szöveges számok) |Media Services dinamikus csomagolás lehetővé teszi, hogy az ügyfelek a következő formátumok bármelyikében továbbítsák a tartalmakat: KÖTŐJEL, HLS vagy Smooth Streaming. Ha azonban a. ismt (Smooth Streaming Text tracks) feliratokkal rendelkező töredezett MP4 (Smooth Streaming) betöltést végez, az adatfolyamot csak Smooth Streaming ügyfeleknek továbbíthatja. |
+| TTML belül. ismt (Smooth Streaming szöveges számok) |Media Services dinamikus csomagolás lehetővé teszi, hogy az ügyfelek a következő formátumok bármelyikében továbbítsák a tartalmakat: DASH, HLS vagy Smooth Streaming. Ha azonban a. ismt (Smooth Streaming Text tracks) feliratokkal rendelkező töredezett MP4 (Smooth Streaming) betöltést végez, az adatfolyamot csak Smooth Streaming ügyfeleknek továbbíthatja. |
 | SCTE-35 |A SCTE-35 egy digitális jelzőrendszer, amely a hirdetés beszúrására szolgál. Az alsóbb rétegbeli fogadók a jelet használva összekapcsolják a hirdetést a streamben a rendelkezésre álló időn belül. A SCTE-35-et ritka számként kell elküldeni a bemeneti adatfolyamban.<p><p>Jelenleg az ad-jeleket tartalmazó támogatott bemeneti adatfolyam formátuma töredékes MP4 (Smooth Streaming). Az egyetlen támogatott kimeneti formátum is Smooth Streaming. |
 
 ## <a id="considerations"></a>Szempontok
@@ -213,13 +213,13 @@ Ha helyszíni élő kódolót használ a többszörös átviteli sebességű str
 
 A csatornákkal és a kapcsolódó összetevőkkel kapcsolatos további szempontok:
 
-* Minden alkalommal, amikor újrakonfigurálja az élő kódolót, hívja meg az alaphelyzetbe állítási módszert a csatornán. A csatorna alaphelyzetbe állítása előtt le kell állítania a programot. A csatorna alaphelyzetbe állítása után indítsa újra a programot.
+* Minden alkalommal, amikor újrakonfigurálja az élő kódolót, hívja meg az **alaphelyzetbe állítási** módszert a csatornán. A csatorna alaphelyzetbe állítása előtt le kell állítania a programot. A csatorna alaphelyzetbe állítása után indítsa újra a programot.
 
   > [!NOTE]
   > A program újraindításakor hozzá kell rendelnie egy új objektumhoz, és létre kell hoznia egy új lokátort. 
   
 * Egy csatornát csak akkor lehet leállítani, ha **fut** állapotban van, és a csatornán lévő összes program le lett állítva.
-* Alapértelmezés szerint csak öt csatornát vehet fel Media Services-fiókjába. További információ: kvóták [és korlátozások](media-services-quotas-and-limitations.md).
+* Alapértelmezés szerint csak öt csatornát vehet fel Media Services-fiókjába. További információ: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
 * A számlázás csak akkor történik meg, ha a csatorna **fut** állapotban van. További információkért lásd a [csatorna állapotának és számlázásának](media-services-live-streaming-with-onprem-encoders.md#states) szakaszát.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek

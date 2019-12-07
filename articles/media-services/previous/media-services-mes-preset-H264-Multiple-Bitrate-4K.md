@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Standard előre H264 Multiple Bitrate 4K – Azure |} A Microsoft Docs
-description: A témakör áttekintést nyújt a **H264 Multiple Bitrate 4K** feladat előbeállítást.
+title: H264 több bitráta 4K Media Encoder Standard előre beállított – Azure | Microsoft Docs
+description: A cikk áttekintést nyújt a Media Encoder Standard **H264 több bitráta 4k** -as feladatról.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e2c5339731267a00e3423e79bc25b9d03d274bfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cec0fa3bd059cd31d9bd94773b0cce42d0f12a75
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61129584"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887017"
 ---
 # <a name="h264-multiple-bitrate-4k"></a>H264 Multiple Bitrate 4K
-`Media Encoder Standard` határozza meg a kódolási készletek is használhatja a kódolási feladat létrehozásakor. Használhatja egy `preset name` mely formátumba, amelyet szeretne kódolása a media-fájl megadásához. Vagy létrehozhat saját JSON vagy XML-alapú készletek (UTF-8 és UTF-16 kódolást használatával. Az egyéni készletet a kódoló majd kellene átadnia. Ez által támogatott összes előre definiált nevek a lista `Media Encoder Standard` kódoló, lásd: [feladat készletek Media Encoder standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` meghatározza a kódolási feladatok létrehozásakor használható kódolási előkészleteket. `preset name` segítségével megadhatja, hogy melyik formátumban szeretné kódolni a médiafájlt. Vagy létrehozhat egy saját JSON-vagy XML-alapú előkészletet (UTF-8 vagy UTF-16 kódolás használatával). Ezután átadja az egyéni beállításkészletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre definiált név listájának megtekintéséhez tekintse meg a [Media Encoder standard feladat-előbeállításait](media-services-mes-presets-overview.md).  
   
- Ez a témakör bemutatja a `H264 Multiple Bitrate 4K` előre definiált XML és JSON formátumban.  
+ Ez a témakör a `H264 Multiple Bitrate 4K` XML-és JSON-formátumban történő beállítását mutatja be.  
   
- Ez a előbeállítás 12 Képcsoporttal igazított MP4-fájlokat, és a 20000 KB/s 1000 KB/s és sztereó AAC hang hoz létre. Profillal kapcsolatos részletes információkért sávszélességű, mintavételi arány, stb. Ez a készletet, vizsgálja meg az XML- vagy JSON lényegét az alábbiakban. Az egyes milyen egyes elemei, és ezen készletek azt jelenti, hogy az érvényes értékek az egyes elemekhez, tekintse meg a [Media Encoder Standard-séma](media-services-mes-schema.md) témakör.  
-  
-> [!NOTE]
->  Szerezheti be a prémium szintű szolgáltatás számára fenntartott egység típussal rendelkező 4K kódolja. További információkért lásd: [How to Scale kódolás](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+ Ez a beállításkészlet 12 GOP-ra igazított MP4-fájlt hoz létre, amely 20000 kbps és 1000 kbps között, valamint sztereó AAC hangon érhető el. A profil, a bitráta, a mintavételezési sebesség és az előre definiált beállítások részletes ismertetését az alábbi XML-vagy JSON-kód alapján ellenőrizheti. Az ezen alapbeállításokban található egyes elemek, valamint az egyes elemek érvényes értékeinek magyarázata a [Media Encoder standard séma](media-services-mes-schema.md) témakörben található.  
   
 > [!NOTE]
->  Ha módosítja a `Width` és `Height` értékek különböző rétegek, győződjön meg arról, hogy az eredeti oldalarányok konzisztens marad. Példa: 1920x1080, 1280x720, 1080x576, 640x360. Vegyes nézik, például ne használja: 1280x720, 720x480, 640x360.  
+>  Szerezze be a prémium szintű fenntartott egységet 4K-kódolással. További információ: [a kódolás skálázása](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+  
+> [!NOTE]
+>  Ha módosítja a `Width` és `Height` értékeket a rétegek között, ügyeljen arra, hogy a méretarány konzisztens maradjon. Például: 1920 × 1080, 1280x720, 1080x576, 640 x 360. Nem használhat méretarányok (például: 1280x720, 720x 480, 640 x 360) keverékét.  
   
  XML  
   

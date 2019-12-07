@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services-hibakódok |} A Microsoft Docs
-description: A témakör áttekintést nyújt az Azure Media Services hibakód.
+title: Azure Media Services hibakódok | Microsoft Docs
+description: HTTP-hibakódokat kaphat a szolgáltatástól attól függően, hogy a hitelesítési tokenek a Media Services által nem támogatott műveletekhez képest lejárnak-e. Ez a cikk áttekintést nyújt Azure Media Services v2 API-hibakódokról.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,112 +14,112 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f3c362730e7908e88b363659b7fa580b6f2cddf1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217233"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887068"
 ---
-# <a name="azure-media-services-error-codes"></a>Az Azure Media Services-hibakódok
-A Microsoft Azure Media Services használata esetén a HTTP-hibakódok a szolgáltatástól függően például a hitelesítési tokenek lejár, a Media Services szolgáltatásban nem támogatott műveleteket is megjelenhet. A következő lista **HTTP-hibakódok** , amely által visszaadott Media Services és a lehetséges okok a számukra.  
+# <a name="azure-media-services-error-codes"></a>Azure Media Services hibakódok
+Microsoft Azure Media Services használatakor HTTP-hibakódok jelenhetnek meg a szolgáltatástól attól függően, hogy a hitelesítési tokenek lejárnak-e a Media Services által nem támogatott műveletekhez. Az alábbi lista a Media Services által visszaadott **http-hibakódokat** és azok lehetséges okait sorolja fel.  
 
-## <a name="400-bad-request"></a>400 Hibás kérés
-A kérés érvénytelen adatokat tartalmaz, és az alábbi okok egyike miatt elutasítva:
+## <a name="400-bad-request"></a>400 hibás kérelem
+A kérelem érvénytelen információkat tartalmaz, és a következő okok egyike miatt el lesz utasítva:
 
-* Nem támogatott API-verzió van megadva. A legfrissebb verzióját, lásd: [beállítása a Media Services REST API-k fejlesztését](media-services-rest-how-to-use.md).
-* A Media Services API-verzió nincs megadva. Az API-verzió megadása a további információkért lásd: [Media Services Operations REST API-referencia](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+* Nem támogatott API-verzió van megadva. A legfrissebb verzióért lásd: [Media Services REST API-fejlesztés beállítása](media-services-rest-how-to-use.md).
+* A Media Services API-verziója nincs megadva. További információ az API-verzió megadásáról: [Media Services operations REST API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
   
   > [!NOTE]
-  > Ha a Media Services-csatlakozáshoz használ a .NET vagy Java SDK-k, az API-verziót meg van adva az Ön számára, amikor próbálja ki, és a Media Services elleni valamilyen művelet végrehajtása.
+  > Ha .NET-vagy Java SDK-kat használ a Media Serviceshoz való kapcsolódáshoz, akkor az API-verzió akkor van megadva, ha a Media Services a művelettel próbálkozik, és valamilyen műveletet hajt végre.
   > 
   > 
-* Egy nem definiált tulajdonság lett megadva. A tulajdonság neve szerepel a hibaüzenetet. Csak azokat a tulajdonságokat, amelyek tagjai egy adott entitás adható meg. Lásd: [Azure Media Services REST API-referencia](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) entitásokhoz és tulajdonságaikhoz listáját.
-* Egy érvénytelen érték lett megadva. A tulajdonság neve szerepel a hibaüzenetet. Tekintse meg a fenti hivatkozáson érvényes tulajdonságtípus és azok értékeit.
-* Egy tulajdonság értéke nincs megadva, nincs szükség.
-* A megadott URL-Címének részét hibás értéket tartalmaz.
-* Kísérlet történt egy WriteOnce tulajdonság frissítése.
-* Kísérlet történt hozzon létre egy feladatot, amely egy elsődleges AssetFile, amely nincs megadva, vagy nem sikerült meghatározni az egy bemeneti objektuma rendelkezik.
-* Kísérlet történt egy SAS-kereső frissíteni. SAS-lokátorok csak létrehozása vagy törlése. A streamelési lokátorok frissíthetők. További információkért lásd: [keresők](https://docs.microsoft.com/rest/api/media/operations/locator).
-* Egy nem támogatott művelet vagy a lekérdezés el lett küldve.
+* Nem definiált tulajdonság lett megadva. A tulajdonság neve a következő hibaüzenetben jelenik meg:. Csak azok a tulajdonságok adhatók meg, amelyek egy adott entitás tagjai. Az entitások és tulajdonságaik listájának [Azure Media Services REST API hivatkozását](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) itt tekintheti meg.
+* Érvénytelen tulajdonságérték lett megadva. A tulajdonság neve a következő hibaüzenetben jelenik meg:. Tekintse meg az előző hivatkozást az érvényes tulajdonságértékek és azok értékeinek megtekintéséhez.
+* A tulajdonság értéke hiányzik, és kötelező megadni.
+* A megadott URL-cím egy része rossz értéket tartalmaz.
+* Kísérlet történt egy WriteOnce tulajdonság frissítésére.
+* Kísérlet történt olyan feladat létrehozására, amely olyan elsődleges AssetFile rendelkező bemeneti eszközzel rendelkezik, amely nincs meghatározva vagy nem határozható meg.
+* Kísérlet történt egy SAS-lokátor frissítésére. SAS-lokátorok csak létrehozhatók vagy törölhetők. A folyamatos átviteli lokátorok frissíthetők. További információ: [lokátorok](https://docs.microsoft.com/rest/api/media/operations/locator).
+* Nem támogatott művelet vagy lekérdezés lett elküldve.
 
-## <a name="401-unauthorized"></a>401-es nem engedélyezett
-A kérelem nem sikerült hitelesíteni (előtt is engedélyezhető) a következő okok egyike miatt:
+## <a name="401-unauthorized"></a>401 jogosulatlan
+A kérést nem lehetett hitelesíteni (a hitelesítés engedélyezése előtt) a következő okok egyike miatt:
 
-* Hitelesítési fejléc hiányzik.
-* Hibás hitelesítés fejléc értéke.
+* Hiányzó hitelesítési fejléc.
+* Helytelen a hitelesítési fejléc értéke.
   * A jogkivonat lejárt. 
-  * A jogkivonat aláírása érvénytelen tartalmaz.
+  * A jogkivonat érvénytelen aláírást tartalmaz.
 
 ## <a name="403-forbidden"></a>403 Tiltott
-A kérelem nem engedélyezett a következő okok egyike miatt:
+A kérelem a következő okok egyike miatt nem engedélyezett:
 
-* A Media Services-fiók nem található, vagy törölve lett.
-* A Media Services-fiók le van tiltva, a kérelemtípus nem HTTP GET. Szolgáltatási műveletek 403-as, valamint választ ad vissza.
-* A hitelesítési jogkivonat nem tartalmazza a felhasználói hitelesítő adatokat: AccountName és/vagy előfizetés-azonosító. A Media Services-fiókba az Azure felügyeleti portálon, ezt az információt is található a Media Services felhasználói felületi bővítmény.
+* A Media Services fiók nem található vagy törölve lett.
+* A Media Services fiók le van tiltva, és a kérelem típusa nem HTTP GET. A szolgáltatási műveletek a 403-es választ is visszaküldik.
+* A hitelesítési jogkivonat nem tartalmazza a felhasználó hitelesítő adatait: AccountName és/vagy SubscriptionId. Ezt az információt az Azure felügyeleti portál Media Services felhasználói felületének bővítményében találja Media Services-fiókjához.
 * Az erőforrás nem érhető el.
   
-  * Kísérlet történt egy MediaProcessor, amely nem érhető el a Media Services-fiók használata.
-  * Kísérlet történt egy Media Services által meghatározott JobTemplate frissíteni.
-  * Kísérlet történt néhány más Media Services-fiók kereső felülírásához.
-  * Kísérlet történt néhány más Media Services-fiók ContentKey felülírásához.
-* Egy szolgáltatás kvóta, amely a program elérte a Media Services-fiók miatt nem lehet létrehozni az erőforrást. A szolgáltatási kvótákkal kapcsolatos további információkért lásd: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
+  * Kísérlet történt olyan MediaProcessor használatára, amely nem érhető el a Media Services-fiókjához.
+  * Kísérlet történt egy Media Services által meghatározott JobTemplate frissítésére.
+  * Kísérlet történt egy másik Media Services-fiók lokátorának felülírására.
+  * Kísérlet történt egy másik Media Services fiók ContentKey felülírására.
+* Az erőforrás nem hozható létre, mert a Media Services fiókhoz elérte a szolgáltatási kvótát. A szolgáltatási kvótákkal kapcsolatos további információkért lásd: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
 
 ## <a name="404-not-found"></a>404 – Nem található
-A kérelem nem engedélyezett egy erőforráson, az alábbi okok egyike miatt:
+A kérelem a következő okok egyike miatt nem engedélyezett az erőforráson:
 
-* Kísérlet történt frissíthető entitás, amely nem létezik.
-* Kísérlet történt egy entitás, amely nem létezik.
-* Kísérlet történt olyan entitás, amely nem létezik mutató entitást létrehozni.
-* Kísérlet történt az első olyan entitás, amely nem létezik.
-* Kísérlet történt, amely nem a Media Services-fiókhoz társított tárfiókot adjon meg.  
+* Olyan entitás frissítésére történt kísérlet, amely nem létezik.
+* Kísérlet történt olyan entitás törlésére, amely nem létezik.
+* Kísérlet történt olyan entitás létrehozására, amely nem létező entitásra hivatkozik.
+* Kísérlet történt olyan entitás beolvasására, amely nem létezik.
+* Kísérlet történt olyan Storage-fiók megadására, amely nincs társítva a Media Services-fiókhoz.  
 
 ## <a name="409-conflict"></a>409 ütközés
-A kérelem nem engedélyezett a következő okok egyike miatt:
+A kérelem a következő okok egyike miatt nem engedélyezett:
 
-* Egynél több AssetFile belül az eszköz a megadott névvel rendelkezik.
-* Kísérlet történt egy második elsődleges AssetFile belül az eszköz létrehozásához.
-* Kísérlet történt egy ContentKey létrehozása a megadott azonosítóval már használatban van.
-* Kísérlet történt már használatban van a megadott azonosítóval rendelkező Lokátorok létrehozásához.
-* Egynél több IngestManifestFile rendelkezik a megadott név a IngestManifest belül.
-* Kísérlet történt egy második tártitkosítás ContentKey összekapcsolása a storage-titkosítású eszköz.
-* Kísérlet történt az eszköz az azonos ContentKey összekapcsolása.
-* Kísérlet történt egy objektumba történik, amelynek a tároló hiányzik, vagy már nem az eszköz társítva lokátorok létrehozásához.
-* Kísérlet történt egy objektumba történik, amely már rendelkezik használatban lévő 5 lokátorok lokátorok létrehozásához. (Az azure Storage kényszerít öt megosztott elérési házirendeket egy storage-tárolót a korlátot.)
-* Egy eszköz a storage-fiók összekapcsolása egy IngestManifestAsset nem ugyanaz, mint a szülő IngestManifest által használt.  
+* Egynél több AssetFile rendelkezik a megadott névvel az eszközön belül.
+* Kísérlet történt egy második elsődleges AssetFile létrehozására az eszközön belül.
+* Kísérlet történt egy olyan ContentKey létrehozására, amely már használatban van a megadott azonosítóval.
+* Kísérlet történt egy olyan lokátor létrehozására, amely már használatban van a megadott azonosítóval.
+* Egynél több IngestManifestFile rendelkezik a megadott névvel a IngestManifest belül.
+* Kísérlet történt egy második tárolási titkosítási ContentKey a Storage-titkosított eszközhöz való csatolására.
+* Kísérlet történt ugyanahhoz a ContentKey az eszközhöz való csatolására.
+* Kísérlet történt olyan lokátor létrehozására, amelynek a tárolója hiányzik vagy már nincs társítva az objektumhoz.
+* Kísérlet történt egy lokátor létrehozására egy olyan eszközre, amely már rendelkezik 5 lokátor használatban. (Az Azure Storage egy tároló tárolón öt megosztott hozzáférési házirend korlátját kényszeríti ki.)
+* Egy eszköz IngestManifestAsset való csatolása nem egyezik meg a szülő IngestManifest által használt Storage-fiókkal.  
 
 ## <a name="500-internal-server-error"></a>500 Belső kiszolgálóhiba
-A kérelem feldolgozása során a Media Services hibába valamilyen hiba, amely megakadályozza a folyamatos feldolgozását. Ez az alábbi okok bármelyike miatt lehet:
+A kérelem feldolgozása során Media Services olyan hibába ütközik, amely megakadályozza a feldolgozás folytatását. Ez az alábbi okok bármelyike miatt lehet:
 
-* Egy eszköz vagy feladat létrehozása meghiúsul, mert a Media Services-fiók szolgáltatás kvótákra vonatkozó információk átmenetileg nem érhető el.
-* Egy eszköz vagy IngestManifest blob storage-tároló létrehozása meghiúsul, mert a tárfiók-információ a fiók ideiglenesen nem érhető el.
-* Más váratlan hiba történt.
+* Nem sikerül létrehozni egy eszközt vagy feladatot, mert az Media Services fiók szolgáltatási kvótájának információi átmenetileg nem érhetők el.
+* Az eszköz-vagy IngestManifest blob Storage-tároló létrehozása sikertelen, mert a fiók Storage-fiókjának adatai átmenetileg nem érhetők el.
+* Egyéb váratlan hiba.
 
 ## <a name="503-service-unavailable"></a>503 A szolgáltatás nem érhető el
-A kiszolgáló jelenleg nem küldött fogadási kérelmekre küld. Ez a hiba oka túl sok a szolgáltatáshoz érkező kérések. A Media Services-szabályozás mechanizmus az alkalmazásokat, amelyek a szolgáltatás túl sok kérést az erőforrás-használati korlátozza.
+A kiszolgáló jelenleg nem tud kéréseket fogadni. Ezt a hibát a szolgáltatás túlzott kérései okozhatják. Media Services szabályozási mechanizmus korlátozza az erőforrás-használatot olyan alkalmazások esetében, amelyek túlzott kérést tesznek elérhetővé a szolgáltatás számára.
 
 > [!NOTE]
-> Ellenőrizze az okkal kapcsolatos részletes információkért az 503-as hibát kapott hibaüzenet és hibakód karakterláncát. Ez a hiba nem mindig jelenti szabályozás.
+> Tekintse meg a hibaüzenetet, és a hibakód karakterláncában részletesebb információkhoz juthat arról, hogy az 503-as hiba miatt megkapta a hibát. Ez a hiba nem mindig jelenti a szabályozást.
 > 
 > 
 
-Leírások lehetséges állapota van:
+A lehetséges állapot leírása:
 
-* "A kiszolgáló elfoglalt. Az ilyen típusú kérés a korábbi közvetítésekből tartott több mint {0} másodperc. "
-* "A kiszolgáló elfoglalt. Több mint {0} másodpercenként küldött kérelmek szabályozva is. "
-* "A kiszolgáló elfoglalt. Több mint {0} belül kérelmek {1} másodperc szabályozható. "
+* "A kiszolgáló foglalt. Az ilyen típusú kérelem korábbi futtatása több mint {0} másodpercet vett igénybe. "
+* "A kiszolgáló foglalt. Másodpercenként több mint {0} kérelem is szabályozható. "
+* "A kiszolgáló foglalt. {1} másodpercen belül több mint {0} kérelem is szabályozható. "
 
-Ez a hiba kezelésére, javasoljuk, exponenciális visszatartási újrapróbálkozási logika használata. Ez azt jelenti, hogy használatával fokozatosan hosszabb ideig vár a válaszok egymást követő hiba újrapróbálkozások között.  További információkért lásd: [átmeneti-kezelési Alkalmazásblokk](https://msdn.microsoft.com/library/hh680905.aspx).
+Ennek a hibának a kezelése érdekében javasoljuk, hogy exponenciális visszaküldési újrapróbálkozási logikát használjon. Ez azt jelenti, hogy a több egymást követő hiba esetén az újrapróbálkozások között fokozatosan várakozik.  További információ: az [átmeneti hibák kezelésére szolgáló alkalmazás blokkja](https://msdn.microsoft.com/library/hh680905.aspx).
 
 > [!NOTE]
-> Ha használ [Azure Media Services SDK for .net](https://github.com/Azure/azure-sdk-for-media-services/tree/master), az újrapróbálkozási logika az 503-as hibát az SDK által implementálva lett.  
+> Ha a .net- [hez készült Azure Media Services SDK](https://github.com/Azure/azure-sdk-for-media-services/tree/master)-t használja, a 503-es hiba újrapróbálkozási logikáját az SDK implementálta.  
 > 
 > 
 
 ## <a name="see-also"></a>Lásd még:
-[A Media Services felügyeleti hibakódok](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
+[Media Services Felügyeleti hibakódok](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

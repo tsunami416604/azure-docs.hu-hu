@@ -1,6 +1,6 @@
 ---
 title: A Azure Media Services streaming Endpoint áttekintése | Microsoft Docs
-description: Ez a témakör áttekintést nyújt Azure Media Services streaming-végpontokról.
+description: Ez a cikk áttekintést nyújt Azure Media Services streaming-végpontokról.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ac9c9a73e52c678c8a6d9b1e1779d9ec75cab2c8
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69016449"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885636"
 ---
 # <a name="streaming-endpoints-overview"></a>Folyamatos átviteli végpontok áttekintése  
 
@@ -39,18 +39,18 @@ Ez a témakör áttekintést nyújt a folyamatos átviteli végpontok által biz
 
 ## <a name="naming-conventions"></a>Elnevezési konvenciók
 
-Az alapértelmezett végpont esetében:`{AccountName}.streaming.mediaservices.windows.net`
+Az alapértelmezett végpont esetében: `{AccountName}.streaming.mediaservices.windows.net`
 
-További végpontok esetén:`{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
+További végpontok esetén: `{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
 
 ## <a name="streaming-types-and-versions"></a>Folyamatos átviteli típusok és verziók
 
 ### <a name="standardpremium-types-version-20"></a>Standard/prémium típusok (2,0-es verzió)
 
-A Media Services január 2017-os kiadásával kezdődően két folyamatos átviteli típus létezik: **Standard szintű** (előzetes verzió) és **prémium**. Ezek a típusok az "2,0" streaming Endpoint verzió részét képezik.
+Media Services január 2017-os kiadásával kezdődően két folyamatos átviteli típus érhető el: **standard** (előzetes verzió) és **prémium**. Ezek a típusok az "2,0" streaming Endpoint verzió részét képezik.
 
 
-|Type|Leírás|
+|Type (Típus)|Leírás|
 |--------|--------|  
 |**Standard**|Az alapértelmezett folyamatos átviteli végpont egy **szabványos** típus, amely a folyamatos átviteli egységek beállításával módosítható a prémium típusra.|
 |**Prémium** |Ez a lehetőség olyan professzionális forgatókönyvekhez alkalmas, amelyek nagyobb méretezést vagy irányítást igényelnek. A **prémium** típusra váltson a folyamatos átviteli egységek beállításával.<br/>A dedikált streaming-végpontok elszigetelt környezetben laknak, és nem versenyeznek az erőforrásokkal.|
@@ -75,19 +75,19 @@ Ha a **"1,0"** adatfolyam-végpont > = 1 Premium streaming Units (su), akkor a p
 
 ### <a name="versions"></a>Verziók
 
-|Type|StreamingEndpointVersion|ScaleUnits|Tartalomkézbesítési hálózat (CDN)|Számlázás|
+|Type (Típus)|StreamingEndpointVersion|ScaleUnits|CDN|Számlázás|
 |--------------|----------|-----------------|-----------------|-----------------|
-|Klasszikus|1.0|0|NA|Free|
-|Standard streaming Endpoint (előzetes verzió)|2.0|0|Igen|Fizetős|
-|Prémium szintű streamelési egységek|1.0|>0|Igen|Fizetős|
-|Prémium szintű streamelési egységek|2.0|>0|Igen|Fizetős|
+|Hagyományos|1.0|0|n/a|Ingyenes|
+|Standard streaming Endpoint (előzetes verzió)|2.0|0|Igen|Díjköteles|
+|Prémium szintű streamelési egységek|1.0|>0|Igen|Díjköteles|
+|Prémium szintű streamelési egységek|2.0|>0|Igen|Díjköteles|
 
-### <a name="features"></a>Szolgáltatások
+### <a name="features"></a>Jellemzők
 
-Funkció|Standard|Prémium
+Szolgáltatás|Standard|Prémium
 ---|---|---
-Teljesítmény |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
-Tartalomkézbesítési hálózat (CDN)|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
+Adatforgalom |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
+CDN|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
 A számlázás arányosan történik| Napi|Napi
 Dinamikus titkosítás|Igen|Igen
 Dinamikus csomagolás|Igen|Igen
@@ -102,20 +102,20 @@ SLA-információ: [díjszabás és SLA](https://azure.microsoft.com/pricing/deta
 
 ## <a name="migration-between-types"></a>Áttelepítés típusok között
 
-Forrás | Cél | Action
+Kezdő ár | – | Műveletek
 ---|---|---
-Klasszikus|Standard|Be kell jelentkeznie
-Klasszikus|Prémium| Skála (további folyamatos átviteli egységek)
-Standard/Premium|Klasszikus|Nem érhető el (ha a streaming Endpoint verziója 1,0. A klasszikusra való váltás a "0" scaleunits beállítással lehetséges.
-Standard (CDN-vel/anélkül)|Prémium ugyanazzal a konfigurációval|Elindítva állapotban engedélyezett. (Azure Portal használatával)
+Hagyományos|Standard|Be kell jelentkeznie
+Hagyományos|Prémium| Skála (további folyamatos átviteli egységek)
+Standard/prémium|Hagyományos|Nem érhető el (ha a streaming Endpoint verziója 1,0. A klasszikusra való váltás a "0" scaleunits beállítással lehetséges.
+Standard (CDN-vel/anélkül)|Prémium ugyanazzal a konfigurációval|**Elindítva** állapotban engedélyezett. (Azure Portal használatával)
 Prémium (CDN-vel/anélkül)|Standard ugyanazzal a konfigurációval|Elindított állapotban engedélyezett (Azure Portalon keresztül)
 Standard (CDN-vel/anélkül)|Prémium különböző konfigurációval|Leállított állapotban engedélyezett (Azure Portalon keresztül). Futó állapotban nem engedélyezett.
 Prémium (CDN-vel/anélkül)|Standard különböző konfigurációval|Leállított állapotban engedélyezett (Azure Portalon keresztül). Futó állapotban nem engedélyezett.
-1,0-es verzió, SU > = 1 és CDN|Standard/prémium szintű CDN nélkül|Leállított állapotban engedélyezett. Az elindított állapotban nem engedélyezett.
-1,0-es verzió, SU > = 1 és CDN|Standard/CDN nélkül|Leállított állapotban engedélyezett. Az elindított állapotban nem engedélyezett. A 1,0-es verziójú CDN törölve lesz, és a rendszer létrehoz és elindít egy újat.
-1,0-es verzió, SU > = 1 és CDN|Prémium/CDN nélkül|Leállított állapotban engedélyezett. Az elindított állapotban nem engedélyezett. A klasszikus CDN törölve lesz, és a rendszer létrehoz és elindít egy újat.
+1,0-es verzió, SU > = 1 és CDN|Standard/prémium szintű CDN nélkül|Leállított állapotban engedélyezett. Az **elindított** állapotban nem engedélyezett.
+1,0-es verzió, SU > = 1 és CDN|Standard/CDN nélkül|Leállított állapotban engedélyezett. Az **elindított** állapotban nem engedélyezett. A 1,0-es verziójú CDN törölve lesz, és a rendszer létrehoz és elindít egy újat.
+1,0-es verzió, SU > = 1 és CDN|Prémium/CDN nélkül|Leállított állapotban engedélyezett. Az **elindított** állapotban nem engedélyezett. A klasszikus CDN törölve lesz, és a rendszer létrehoz és elindít egy újat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

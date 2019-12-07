@@ -1,6 +1,6 @@
 ---
 title: A Azure Media Services által javasolt kódolók ismertetése | Microsoft Docs
-description: A Media Services által ajánlott kódolók ismertetése
+description: Ez a cikk a Azure Media Services által ajánlott helyszíni kódolókat sorolja fel.
 services: media-services
 keywords: kódolás; kódolók; adathordozó
 author: dbgeorge
@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: fc481129e652c6dacd15a5a6d039a9118393e8f1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 4a0af9d040c801c125d04a5af72b2ea53322ccdb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854244"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74886571"
 ---
 # <a name="recommended-on-premises-encoders"></a>Ajánlott helyszíni kódolók
 Azure Media Services használatával folytatott élő közvetítésnél megadhatja, hogy a csatorna hogyan kapja meg a bemeneti adatfolyamot. Ha a helyszíni kódolót élő kódolási csatornával szeretné használni, a kódolónak kimenetként kell leküldenie egy kiváló minőségű, egysebességű adatfolyamot. Ha úgy dönt, hogy egy helyszíni kódolót használ egy átmenő csatornán keresztül, a kódolónak egy többszörös átviteli sebességű streamet kell leküldenie az összes kívánt kimeneti tulajdonsággal. További információ: [élő közvetítés helyszíni kódolókkal](media-services-live-streaming-with-onprem-encoders.md).
@@ -54,7 +54,7 @@ Csatorna ellenőrzésének továbbítása
 4. Közzétett élő esemény létrehozása
 5. Futtassa az élő kódolót körülbelül 10 percen keresztül
 6. Az élő esemény leállítása
-7. Hozzon létre, indítson el egy streaming-végpontot [](https://aka.ms/azuremediaplayer) , használjon például Azure Media Playert az archivált eszköz megtekintéséhez, és győződjön meg arról, hogy a lejátszás nem tartalmaz látható hibát az összes minőségi szinten (vagy az élő munkamenetben tekintse meg és ellenőrizze az előnézeti URL-címen keresztül. a 6. lépés előtt)
+7. Hozzon létre, indítson el egy streaming-végpontot, használjon például [Azure Media Playert](https://aka.ms/azuremediaplayer) az archivált eszköz megtekintéséhez, és győződjön meg arról, hogy a lejátszás nem tartalmaz látható hibát az összes minőségi szinten (vagy a 6. lépés előtt tekintse meg és érvényesítse az előnézeti URL-címet az élő munkamenetben.
 8. Jegyezze fel az eszköz AZONOSÍTÓját, a közzétett streaming URL-címet az élő archívumhoz, valamint az élő kódoló által használt beállításokat és verziót
 9. A csatorna állapotának alaphelyzetbe állítása az egyes minták létrehozása után
 10. Ismételje meg a 3 – 9. lépést a kódoló által támogatott összes konfiguráció esetében (ad-jelzési/feliratokkal vagy eltérő kódolási sebességgel)
@@ -66,7 +66,7 @@ Csatorna ellenőrzésének továbbítása
 4. Közzétett élő esemény létrehozása
 5. Futtassa az élő kódolót körülbelül 10 percen keresztül
 6. Az élő esemény leállítása
-7. Hozzon létre, indítson el egy streaming-végpontot [](https://aka.ms/azuremediaplayer) , használjon például Azure Media Playert az archivált eszköz megtekintéséhez, és győződjön meg arról, hogy a lejátszás nem tartalmaz látható hibát az összes minőségi szinten (vagy az élő munkamenetben tekintse meg és ellenőrizze az előnézeti URL-címen keresztül. a 6. lépés előtt)
+7. Hozzon létre, indítson el egy streaming-végpontot, használjon például [Azure Media Playert](https://aka.ms/azuremediaplayer) az archivált eszköz megtekintéséhez, és győződjön meg arról, hogy a lejátszás nem tartalmaz látható hibát az összes minőségi szinten (vagy a 6. lépés előtt tekintse meg és érvényesítse az előnézeti URL-címet az élő munkamenetben.
 8. Jegyezze fel az eszköz AZONOSÍTÓját, a közzétett streaming URL-címet az élő archívumhoz, valamint az élő kódoló által használt beállításokat és verziót
 9. A csatorna állapotának alaphelyzetbe állítása az egyes minták létrehozása után
 10. Ismételje meg a 3 – 9. lépést a kódoló által támogatott összes konfiguráció esetében (ad-jelzések/feliratok/különböző kódolási sebességek nélkül)

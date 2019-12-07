@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítási útmutató az élő streamelés |} A Microsoft Docs
-description: Ez a témakör áttekintést nyújt a javaslatok élő streamelési problémák elhárítása.
+title: Hibaelhárítási útmutató az élő közvetítéshez | Microsoft Docs
+description: Ez a cikk a Azure Media Services élő közvetítéssel kapcsolatos problémák elhárításához nyújt javaslatokat.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,45 +13,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f502e3228274840d23b9f52512280fc0d9f0553b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b00df5e8176aaad86be5cf3ae4e04c736f36cf5b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544694"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885602"
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>Hibaelhárítási útmutató az élő streameléshez  
 
-Ez a cikk áttekintést nyújt a javaslatok élő streamelési problémák elhárítása.
+Ez a cikk az élő közvetítéssel kapcsolatos problémák elhárításához nyújt javaslatokat.
 
-## <a name="issues-related-to-on-premises-encoders"></a>Helyszíni kódolók használatával kapcsolatos problémák
-Ez a szakasz javaslatokat ad a helyszíni kódolókkal történő továbbítását egyféle sávszélességű adatfolyamot küldeni a valós idejű kódolásra képes csatornák AMS konfigurált kapcsolatos problémák elhárítása.
+## <a name="issues-related-to-on-premises-encoders"></a>Helyszíni kódolókkal kapcsolatos problémák
+Ez a szakasz a helyszíni kódolókkal kapcsolatos olyan problémák megoldását ismerteti, amelyek egyetlen sávszélesség-továbbítási adatfolyam küldésére vannak konfigurálva az élő kódoláshoz engedélyezett AMS-csatornák számára.
 
-### <a name="problem-would-like-to-see-logs"></a>Probléma: Szeretné látni a naplók
-* **Lehetséges probléma**: Nem található a kódoló naplók, melyek segíthetnek a hibaelhárítás során.
+### <a name="problem-would-like-to-see-logs"></a>Probléma: szeretné megtekinteni a naplókat
+* **Lehetséges probléma**: a hibakeresési naplók nem találhatók, amelyek segíthetnek a hibák elhárításában.
   
-  * **Telestream Wirecast**: Általában megtalálható a C:\Users alatt\{felhasználónév} \AppData\Roaming\Wirecast\ 
-  * **Elemental Live**: Naplók mutató hivatkozásokat tartalmaz a felügyeleti portálon találja. Kattintson a **Stats**, majd **naplók**. Az a **naplófájlok** lapon látni fogja a naplók a videókhoz-elemek listáját; válassza ki a megfelelő az aktuális munkamenet. 
-  * **Flash Media Live Encoder**: Annak a **naplókönyvtár...**  lépve a **kódolás Log** fülre.
+  * **Wirecast**: általában a C:\Users\{username} \AppData\Roaming\Wirecast\ alatt találhatók naplók. 
+  * **Elemi élő**: a felügyeleti portálon található naplókra mutató hivatkozásokat tartalmaz. Kattintson a **stats**, majd a **naplók**elemre. A **naplófájlok** lapon megjelenik a naplók listája a liveevent összes eleméhez; Válassza ki az aktuális munkamenetnek megfelelőt. 
+  * **Flash Media Live Encoder**: megtalálhatja a **naplózási könyvtárat...** a **kódolási napló** lapon navigálva.
 
-### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>Probléma: Az ad ki egy progresszív stream nem választható
-* **Lehetséges probléma**: A használt kódoló automatikusan félképek nem összefésülése. 
+### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>Probléma: nincs lehetőség a progresszív streamek kihelyezésére
+* **Lehetséges probléma**: a használt kódoló nem automatikusan deinterlace. 
   
-    **Hibaelhárítási lépések**: Keresse meg a kódoló felületen belül egy megszüntetéséhez kötésre lehetőséget. Váltakozó megszüntetéséhez engedélyezését követően újra fokozatos kimeneti beállításokat ellenőrzi. 
+    **Hibaelhárítási lépések**: keressen egy, a kódoló felületén belüli kikötési lehetőséget. Ha a lekötés engedélyezve van, a progresszív kimenet beállításainál próbálkozzon újra. 
 
-### <a name="problem-tried-several-encoder-output-settings-and-still-unable-to-connect"></a>Probléma: Kódoló kimeneti több beállítást próbált és még mindig nem lehet csatlakozni.
-* **Lehetséges probléma**: Az Azure kódolási csatorna visszaállítása nem megfelelően. 
+### <a name="problem-tried-several-encoder-output-settings-and-still-unable-to-connect"></a>Probléma: a rendszer több kódoló kimeneti beállítást próbált meg, és továbbra sem tud csatlakozni.
+* **Lehetséges probléma**: az Azure Encoding Channel nem volt megfelelően alaphelyzetbe állítva. 
   
-    **Hibaelhárítási lépések**: Ellenőrizze, hogy a kódoló már nem leküldése AMS, állítsa le, és alaphelyzetbe állítja a csatornát. Ha fut újra, próbáljon a kódoló az új beállításokkal. Ha ez még nem oldja meg a problémát, próbálja meg teljesen létrehozni egy új csatorna, néha csatornák megsérül több meghiúsult próbálkozást követően.  
-* **Lehetséges probléma**: A Képcsoporttal méret és a kulcs keret beállítások nem állnak optimális. 
+    **Hibaelhárítási lépések**: gondoskodjon arról, hogy a kódoló többé ne álljon le AMS-re, állítsa le és állítsa alaphelyzetbe a csatornát. Ha ismét fut, próbálja meg csatlakoztatni a kódolót az új beállításokkal. Ha ez továbbra sem orvosolja a problémát, próbáljon meg teljesen új csatornát létrehozni, időnként előfordulhat, hogy a csatornák több sikertelen próbálkozás után is megsérülnek.  
+* **Lehetséges probléma**: a GOP-méret vagy a kulcstároló-beállítások nem optimálisak. 
   
-    **Hibaelhárítási lépések**: Ajánlott Képcsoporttal méretét vagy a kulcsképkocka időköz két másodperc. Néhány kódolók kiszámítása képkockaszámát, ezt a beállítást, míg mások használni. Példa: 30 képkocka exportálásakor Képcsoporttal mérete lenne 60 keretek, amely 03T00 2 másodperc.  
-* **Lehetséges probléma**: Lezárt portok forgalomszűrők blokkolják a streamet. 
+    **Hibaelhárítási lépések**: az ajánlott GOP-méret vagy a kulcsképek-intervallum két másodperc. Néhány kódoló kiszámítja ezt a beállítást a keretek számában, míg mások a másodperceket használják. Például: a 30 fps kihelyezése esetén a GOP mérete 60 képkockákból áll, ami 2 másodpercnek felel meg.  
+* **Lehetséges probléma**: a lezárt portok blokkolja az adatfolyamot. 
   
-    **Hibaelhárítási lépések**: Amikor streamelési RTMP-n keresztül, ellenőrizze a tűzfallal és/vagy a proxykiszolgáló beállításait, győződjön meg arról, hogy 1935 és 1936 kimenő portok nyitva-e. 
+    **Hibaelhárítási lépések**: Ha RTMP-n keresztül végez adatfolyam-továbbítást, ellenőrizze a tűzfal és/vagy a proxybeállítások beállításait, hogy meggyőződjön arról, hogy a 1935-es és a 1936 
 
 > [!NOTE]
-> Ha az még nem sikerült továbbíthat hibaelhárítási lépések után az Azure portal használatával támogatási jegyet is küldhet.
+> Ha a hibaelhárítási lépések követése után még mindig nem tud adatfolyamot továbbítani, küldjön egy támogatási jegyet a Azure Portal használatával.
 > 
 > 
 
