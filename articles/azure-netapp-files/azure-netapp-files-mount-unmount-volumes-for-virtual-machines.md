@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 12/05/2019
 ms.author: b-juche
-ms.openlocfilehash: 84496fbc8a415171172d0a138f647ecb0310b6c7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7f1e9500a9268e0fba054f7065e858cd801aca7b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173583"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894096"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása 
 
@@ -36,11 +36,17 @@ Szükség szerint csatlakoztathat vagy leválaszthat Windows-vagy Linux-alapú v
 
 3. Ha egy Azure-beli virtuális gép indításakor vagy újraindításakor automatikusan csatlakoztatni szeretné az NFS-kötetet, vegyen fel egy bejegyzést a gazdagép `/etc/fstab` fájljába. 
 
-    Példa: `$ANFIP:/$FILEPATH        /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
+    Például: `$ANFIP:/$FILEPATH        /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
     * `$ANFIP` a kötet tulajdonságai panelen található Azure NetApp Files kötet IP-címe.
     * `$FILEPATH` a Azure NetApp Files kötet exportálási útvonala.
     * `$MOUNTPOINT` az NFS-exportálás csatlakoztatásához használt Linux-gazdagépen létrehozott könyvtár.
+
+4. Ha csatlakoztatni szeretné a kötetet a Windowshoz az NFS használatával:
+
+    a. Először csatlakoztassa a kötetet egy UNIX vagy Linux rendszerű virtuális gépre.  
+    b. Futtasson `chmod 777` vagy `chmod 775` parancsot a köteten.  
+    c. Csatlakoztassa a kötetet a Windows rendszer NFS-ügyfelén keresztül.
 
 ## <a name="next-steps"></a>Következő lépések
 

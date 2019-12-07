@@ -1,24 +1,23 @@
 ---
-title: Expression functions a Azure Data Factory leképezés adatáramlási funkciójában
+title: Expression függvények a leképezési adatfolyamban
 description: Tudnivalók a Expression functions szolgáltatásról a leképezési adatforgalomban.
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: dc742fc625604e71909f49c7453a9215dce71e35
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f384c440dab06660c95f635dde02ced5b3e54d94
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596966"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896310"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Adatátalakítási kifejezések a leképezési adatfolyamban 
 
-
-
-## <a name="expression-functions"></a>Expression függvények
+## <a name="expression-functions"></a>Kifejezésfüggvények
 
 A Data Factoryban az adatátalakítások konfigurálásához használja a leképezési adatfolyam funkciójának kifejezés nyelvét.
 
@@ -122,7 +121,7 @@ A feltételek alapján egy oszlop értékeinek átlagát kapja meg.
 ___
 ### <code>byName</code>
 <code><b>byName(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-Oszlop értékének kiválasztása a streamben név szerint. A második argumentumként átadhat egy opcionális stream-nevet. Ha több egyezés van, a rendszer az első egyezést adja vissza. Ha nincs egyezés, NULL értéket ad vissza. A visszaadott értéket a Type konverziós függvények (TO_DATE, TO_STRING...) egyikének kell átalakítania.  A tervezési időszakban ismert oszlopnevek csak a nevük alapján kezelhetők. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.
+Oszlop értékének kiválasztása a streamben név szerint. A második argumentumként átadhat egy opcionális stream-nevet. Ha több egyezés van, a rendszer az első egyezést adja vissza. Ha nincs egyezés, NULL értéket ad vissza. A visszaadott értéket a Type konverziós függvények egyikének kell átalakítania (TO_DATE, TO_STRING...).  A tervezési időszakban ismert oszlopnevek csak a nevük alapján kezelhetők. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.
 
 * ``toString(byName('parent'))``
 
@@ -139,7 +138,7 @@ Oszlop értékének kiválasztása a streamben név szerint. A második argument
 ___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
-Oszlop értékének kiválasztása az adatfolyamban lévő relatív pozíció (1 alapú) alapján. Ha a pozíció kívül esik a határértékeken, NULL értéket ad vissza. A visszaadott értéket a Type konverziós függvények egyikének kell átalakítania (TO_DATE, TO_STRING...). A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.
+Oszlop értékének kiválasztása az adatfolyamban lévő relatív pozíció (1 alapú) alapján. Ha a pozíció kívül esik a határértékeken, NULL értéket ad vissza. A visszaadott értéket a Type konverziós függvények egyikének kell átalakítania (TO_DATE, TO_STRING...) A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.
 
 * ``toString(byPosition(1))``
 
@@ -956,7 +955,7 @@ A számok összeszorzása. Ugyanaz, mint az * operátor
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-A NTile függvény az egyes ablakos partíciók sorait a `n` gyűjtőre osztja, 1-től egészen a legtöbb `n` értékig. A gyűjtő értéke legfeljebb 1 lesz. Ha a partícióban lévő sorok száma nem egyenletesen oszlik meg a gyűjtők számával, akkor a fennmaradó értékeket a rendszer egy gyűjtőre osztja szét, az első gyűjtőtől kezdve. A NTile függvény a tertiles, a quartiles, a deciles és más gyakori összesítő statisztikák kiszámításához hasznos. A függvény két változót számít ki az inicializálás során: a normál gyűjtő méretének egy további sora lesz hozzáadva. Mindkét változó az aktuális partíció méretétől függ. A számítási folyamat során a függvény nyomon követi az aktuális sorszámot, az aktuális gyűjtő számát, valamint azt a sorszámot, amelynél a gyűjtő módosul (bucketThreshold). Ha az aktuális sor száma eléri a gyűjtő küszöbértékét, a rendszer eggyel növeli a gyűjtő értékét, a küszöbértéket pedig a gyűjtő mérete növeli (plusz egy extra, ha az aktuális gyűjtő betömött).
+A NTile függvény az egyes Windows-partíciók sorait felosztja `n` gyűjtők számára, 1-től egészen a legtöbb `n`ig. A gyűjtő értéke legfeljebb 1 lesz. Ha a partícióban lévő sorok száma nem egyenletesen oszlik meg a gyűjtők számával, akkor a fennmaradó értékeket a rendszer egy gyűjtőre osztja szét, az első gyűjtőtől kezdve. A NTile függvény a tertiles, a quartiles, a deciles és más gyakori összesítő statisztikák kiszámításához hasznos. A függvény két változót számít ki az inicializálás során: a normál gyűjtő méretének egy további sora lesz hozzáadva. Mindkét változó az aktuális partíció méretétől függ. A számítási folyamat során a függvény nyomon követi az aktuális sorszámot, az aktuális gyűjtő számát, valamint azt a sorszámot, amelynél a gyűjtő módosul (bucketThreshold). Ha az aktuális sor száma eléri a gyűjtő küszöbértékét, a rendszer eggyel növeli a gyűjtő értékét, a küszöbértéket pedig a gyűjtő mérete növeli (plusz egy extra, ha az aktuális gyűjtő betömött).
 
 * ``nTile()``
 
@@ -1019,7 +1018,7 @@ NULL értéket ad vissza. Ha van "NULL" nevű oszlop, használja a Function szin
 ___
 ### <code>or</code>
 <code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
-Logikai vagy operátor. Ugyanaz, mint | |
+Logikai VAGY operátor. Ugyanaz, mint | |
 
 * ``or(true, false) -> true``
 
@@ -1143,7 +1142,7 @@ Ellenőrzi, hogy a karakterlánc megfelel-e a megadott regex-mintának
 ___
 ### <code>round</code>
 <code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/>
-Egy számot kerekít egy opcionális skálán és egy opcionális kerekítési módra. Ha a skála nincs megadva, a rendszer alapértelmezés szerint 0 értéket ad meg.  Ha a mód nincs megadva, a rendszer alapértelmezés szerint a ROUND_HALF_UP (5) értéket adja meg. A kerekítési értékek közé tartozik az 1-ROUND_UP 2-ROUND_DOWN 3-ROUND_CEILING 4-ROUND_FLOOR 5-ROUND_HALF_UP 6-ROUND_HALF_DOWN 7-ROUND_HALF_EVEN 8-ROUND_UNNECESSARY
+Egy számot kerekít egy opcionális skálán és egy opcionális kerekítési módra. Ha a skála nincs megadva, a rendszer alapértelmezés szerint 0 értéket ad meg.  Ha a mód nincs megadva, az alapértelmezett érték ROUND_HALF_UP (5). A kerekítési értékek közé tartozik az 1-ROUND_UP 2-ROUND_DOWN 3-ROUND_CEILING 4-ROUND_FLOOR 5-ROUND_HALF_UP 6-ROUND_HALF_DOWN 7-ROUND_HALF_EVEN 8 – ROUND_UNNECESSARY
 
 * ``round(100.123) -> 100.0``
 

@@ -1,20 +1,21 @@
 ---
-title: Azure CLI-vagy PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a blob vagy a várólista adatainak eléréséhez | Microsoft Docs
+title: Azure CLI-vagy PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez
+titleSuffix: Azure Storage
 description: Az Azure CLI és a PowerShell támogatja az Azure AD-beli hitelesítő adatokkal való bejelentkezést az Azure Storage blob és a Queues adatainak futtatásához. A munkamenethez hozzáférési token van megadva, és a hívási műveletek engedélyezésére szolgál. Az engedélyek az Azure AD rendszerbiztonsági tag által hozzárendelt RBAC-szerepkörtől függenek.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/03/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e1c7f4531dee8673cc5b6dfe675e4c793144931e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 07abb9d604c14a5c78a088cb07f57088b84552a6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671091"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891864"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Azure CLI-vagy PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez
 

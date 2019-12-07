@@ -1,5 +1,5 @@
 ---
-title: Tömeges másolás adatbázisból egy Azure Data Factory tartalmazó vezérlőelem-táblázat használatával
+title: Tömeges másolás adatbázisból vezérlő tábla használatával
 description: Megtudhatja, hogyan másolhat egy külső vezérlőt egy olyan megoldási sablonnal, amellyel a Azure Data Factory használatával tárolhatja a forrásadatok listáját egy adatbázisból.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2018
-ms.openlocfilehash: b651721e9b833c02e4789c79ff5ad0b49ce31343
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f50a6067eb38e920c32079c140785f397ee6698
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684277"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896252"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Tömeges másolás egy vezérlőelem-táblázattal rendelkező adatbázisból
 
@@ -36,15 +36,15 @@ A sablon három tevékenységet tartalmaz:
 - **Másolja** az egyes partíciókat a forrás-adatbázis tárolójából a célhelyre.
 
 A sablon öt paramétert határoz meg:
-- A *Control_Table_Name* a külső vezérlő tábla, amely a forrásadatbázis partíciós listáját tárolja.
-- A *Control_Table_Schema_PartitionID* a külső vezérlő táblában található oszlopnév neve, amely az egyes PARTÍCIÓk azonosítóit tárolja. Győződjön meg arról, hogy a partíció azonosítója egyedi a forrásadatbázis minden partícióján.
-- A *Control_Table_Schema_SourceTableName* a külső vezérlő tábla, amely az egyes táblák nevét a forrás-adatbázisból tárolja.
-- A *Control_Table_Schema_FilterQuery* a külső vezérlő tábla azon oszlopának neve, amely a szűrő lekérdezését tárolja, hogy lekérje a forrás-adatbázis egyes partícióinak adatait. Ha például az adatok évről évre particionálva lettek, az egyes sorokban tárolt lekérdezés hasonló lehet a "Select" adatforráshoz, ahol a LastModifytime > = "2015-01-01 00:00:00" és a LastModifytime < = "" 2015-12-31 23:59:59.999 "".
-- A *Data_Destination_Folder_Path* az az elérési út, ahová a rendszer a célhelyre másolja az adatfájlokat. Ez a paraméter csak akkor látható, ha a kiválasztott cél a fájl alapú tárterület. Ha a cél tárolóként SQL Data Warehouse választja, akkor ez a paraméter nem szükséges. A táblák neveinek és a SQL Data Warehouse sémájának meg kell egyeznie a forrás-adatbázisban találhatókkal.
+- *Control_Table_Name* a külső vezérlő tábla, amely a forrás-adatbázishoz tartozó partíciók listáját tárolja.
+- *Control_Table_Schema_PartitionID* a külső vezérlő táblában található oszlopnév neve, amely az egyes partíció-azonosítókat tárolja. Győződjön meg arról, hogy a partíció azonosítója egyedi a forrásadatbázis minden partícióján.
+- *Control_Table_Schema_SourceTableName* a külső vezérlő tábla, amely az egyes táblák nevét a forrás-adatbázisból tárolja.
+- *Control_Table_Schema_FilterQuery* a külső vezérlő tábla azon oszlopának neve, amely a szűrő lekérdezést tárolja, hogy a forrásadatbázis egyes partícióinak adatait beolvassa. Ha például az adatok évről évre particionálva lettek, az egyes sorokban tárolt lekérdezés hasonló lehet a "Select" adatforráshoz, ahol a LastModifytime > = "2015-01-01 00:00:00" és a LastModifytime < = "" 2015-12-31 23:59:59.999 "".
+- *Data_Destination_Folder_Path* az az elérési út, ahová a rendszer átmásolja az adattárolási útvonalat a célhelyre. Ez a paraméter csak akkor látható, ha a kiválasztott cél a fájl alapú tárterület. Ha a cél tárolóként SQL Data Warehouse választja, akkor ez a paraméter nem szükséges. A táblák neveinek és a SQL Data Warehouse sémájának meg kell egyeznie a forrás-adatbázisban találhatókkal.
 
 ## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
 
-1. Hozzon létre egy vezérlőelem-táblázatot SQL Server vagy Azure SQL Database a forrás adatbázis-partíciók listájának tömeges másoláshoz való tárolásához. A következő példában öt partíció található a forrás adatbázisban. A *datasource_table*három partíció van, a kettő pedig a *project_table*. A *LastModifytime* oszlop a *datasource_table* található adatok particionálására szolgál. Az első partíció olvasásához használt lekérdezés "select * from datasource_table, ahol LastModifytime > =" 2015-01-01 00:00:00 "" és LastModifytime < = "" 2015-12-31 23:59:59.999 "" ". Hasonló lekérdezést használhat más partíciók adatainak olvasásához.
+1. Hozzon létre egy vezérlőelem-táblázatot SQL Server vagy Azure SQL Database a forrás adatbázis-partíciók listájának tömeges másoláshoz való tárolásához. A következő példában öt partíció található a forrás adatbázisban. A *datasource_table*három partíció van, a kettő pedig a *project_table*. A *LastModifytime* oszlop az adatok a forrásadatbázis *datasource_table* történő particionálására szolgál. Az első partíció olvasásához használt lekérdezés "select * from datasource_table, ahol LastModifytime > =" "2015-01-01 00:00:00" "és LastModifytime < =" "2015-12-31 23:59:59.999" ". Hasonló lekérdezést használhat más partíciók adatainak olvasásához.
 
      ```sql
             Create table ControlTableForTemplate
@@ -76,7 +76,7 @@ A sablon öt paramétert határoz meg:
 
     ![Új kapcsolódás létrehozása a célhelyhez](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 
-5. Válassza **a sablon használata**lehetőséget.
+5. Kattintson a **Sablon használata** lehetőségre.
 
     ![A sablon használata](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
     
@@ -96,6 +96,6 @@ A sablon öt paramétert határoz meg:
     
     ![Alapszintű beállítás](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Data Factory bemutatása](introduction.md)

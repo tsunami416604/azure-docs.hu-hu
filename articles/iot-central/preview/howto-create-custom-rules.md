@@ -3,18 +3,18 @@ title: Az Azure IoT Central kiterjesztése egyéni szabályokkal és értesíté
 description: Megoldás fejlesztőként konfiguráljon egy IoT Central alkalmazást e-mail-értesítések küldéséhez, amikor egy eszköz leállítja a telemetria küldését. Ez a megoldás Azure Stream Analytics, Azure Functions és SendGrid használ.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/01/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 56ff01af6466e90ff4b69cd37c1638265c59b873
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bdaa08e8c3b104c7269c1fb4169779d98b4e0880
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895864"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895730"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid-preview-features"></a>Az Azure IoT Central kiterjesztése egyéni szabályokkal Stream Analytics, Azure Functions és SendGrid használatával (előzetes verziójú szolgáltatások)
 
@@ -40,15 +40,15 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Hozzon létre egy IoT Central alkalmazást az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén a következő beállításokkal:
 
-| Beállítás | Érték |
+| Beállítás | Value (Díj) |
 | ------- | ----- |
 | Fizetési terv | Utólagos, használatalapú fizetés |
 | Alkalmazássablon | Áruházbeli elemzés – állapot figyelése |
 | Alkalmazásnév | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját nevét |
 | URL-cím | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját egyedi URL-előtagját |
-| Címtár | Azure Active Directory bérlő |
+| Könyvtár | Azure Active Directory bérlő |
 | Azure-előfizetés | Az Azure-előfizetése |
-| Régió | A legközelebbi régió |
+| Region (Régió) | A legközelebbi régió |
 
 A cikkben szereplő példák és Képernyőképek a **Egyesült Államok** régiót használják. Válasszon egy helyet az Ön számára, és győződjön meg róla, hogy az összes erőforrást ugyanabban a régióban hozza létre.
 
@@ -62,54 +62,54 @@ A [Azure Portal használatával hozzon létre egy](https://portal.azure.com/#cre
 
 A [Azure Portal használatával hozzon létre egy Event Hubs névteret](https://portal.azure.com/#create/Microsoft.EventHub) a következő beállításokkal:
 
-| Beállítás | Érték |
+| Beállítás | Value (Díj) |
 | ------- | ----- |
 | Név    | Adja meg a névtér nevét |
-| Tarifacsomag | Basic |
+| Díjcsomag | Basic |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
-| Hely | USA keleti régiója |
-| Átviteli egységek | 1 |
+| Földrajzi egység | USA keleti régiója |
+| Adatkapacitás-egységek | 1 |
 
-### <a name="stream-analytics-job"></a>Stream Analytics feladatok
+### <a name="stream-analytics-job"></a>Stream Analytics-feladat
 
 A [Azure Portal használatával hozzon létre egy stream Analytics feladatot](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) a következő beállításokkal:
 
-| Beállítás | Érték |
+| Beállítás | Value (Díj) |
 | ------- | ----- |
 | Név    | Válassza ki a feladatokhoz tartozó nevet |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
-| Hely | USA keleti régiója |
+| Földrajzi egység | USA keleti régiója |
 | Üzemeltetési környezet | Felhőbeli |
-| Streamelési egységek | 3 |
+| Folyamatos átviteli egységek | 3 |
 
 ### <a name="function-app"></a>Függvényalkalmazás
 
 A [Azure Portal használatával hozzon létre egy Function alkalmazást](https://portal.azure.com/#create/Microsoft.FunctionApp) a következő beállításokkal:
 
-| Beállítás | Érték |
+| Beállítás | Value (Díj) |
 | ------- | ----- |
 | App neve    | Válassza ki a Function alkalmazás nevét |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
 | Operációs rendszer | Windows |
-| Üzemeltetési csomag | Használatalapú csomag |
-| Hely | USA keleti régiója |
-| Futásidejű verem | .NET |
-| Storage | Új létrehozása |
+| Szolgáltatási csomag | Használatalapú csomag |
+| Földrajzi egység | USA keleti régiója |
+| Futtatókörnyezet verme | .NET |
+| Adattárolás | Új létrehozása |
 
 ### <a name="sendgrid-account"></a>SendGrid-fiók
 
 A [Azure Portal használatával hozzon létre egy SendGrid-fiókot](https://portal.azure.com/#create/Sendgrid.sendgrid) a következő beállításokkal:
 
-| Beállítás | Érték |
+| Beállítás | Value (Díj) |
 | ------- | ----- |
 | Név    | Válassza ki a SendGrid-fiók nevét |
 | Jelszó | Jelszó létrehozása |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
-| Tarifacsomag | F1 – Ingyenes |
+| Díjcsomag | F1 – Ingyenes |
 | Kapcsolattartási adatok | Írja be a szükséges adatokat |
 
 Ha létrehozta az összes szükséges erőforrást, a **DetectStoppedDevices** -erőforráscsoport a következő képernyőképhez hasonlóan néz ki:
@@ -244,7 +244,7 @@ Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére,
 1. A Azure Portal navigáljon a Stream Analytics feladathoz a **feladatok topológia** területen válassza a **bemenetek**lehetőséget, válassza a **+ stream-bemenet hozzáadása**lehetőséget, majd válassza az **Event hub**elemet.
 1. A következő táblázatban található információk segítségével konfigurálja a bemenetet a korábban létrehozott Event hub használatával, majd válassza a **Mentés**lehetőséget:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | Bemeneti alias | centraltelemetry |
     | Előfizetés | Az Ön előfizetése |
@@ -254,7 +254,7 @@ Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére,
 1. A **feladatok topológia**területen válassza a **kimenetek**, majd a **+ Hozzáadás**, majd az **Azure-függvény**lehetőséget.
 1. A következő táblázatban található információk segítségével konfigurálja a kimenetet, majd válassza a **Mentés**lehetőséget:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | Kimeneti alias | emailnotification |
     | Előfizetés | Az Ön előfizetése |
@@ -314,15 +314,15 @@ Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén
 1. Navigáljon az **adatexportálás** lapra, válassza az **+ új**, majd az **Azure Event Hubs**elemet.
 1. Az Exportálás konfigurálásához használja a következő beállításokat, majd válassza a **Mentés**lehetőséget:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | Megjelenítendő név | Exportálás Event Hubsba |
-    | Engedélyezve | Bekapcsolva |
+    | Engedélyezve | Be |
     | Event Hubs-névtér | Az Event Hubs névtér neve |
     | Eseményközpont | centralexport |
-    | Mérések | Bekapcsolva |
+    | Mérések | Be |
     | Eszközök | Ki |
-    | Eszközök sablonjai | Ki |
+    | Eszközsablonok | Ki |
 
 ![Folyamatos adatexportálási konfiguráció](media/howto-create-custom-rules/cde-configuration.png)
 
@@ -349,7 +349,7 @@ A fenti útmutató és a szükségtelen költségek elkerülése érdekében tö
 
 A IoT Central alkalmazást a **felügyeleti** lapról törölheti az alkalmazáson belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megtanulta, hogyan végezheti el a következőket:
 

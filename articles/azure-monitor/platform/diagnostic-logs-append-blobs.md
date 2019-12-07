@@ -1,6 +1,6 @@
 ---
-title: Felkészülés a formátum módosítására Azure Monitor diagnosztikai naplókra
-description: A cikk azt ismerteti, hogyan lehet frissíteni az eszközöket úgy, hogy kezelni tudja az új Azure diagnosztikai naplókat, amelyeket a hozzáfűzési Blobok a 2018. november 1-jén való használatára módosítottak.
+title: Felkészülés a formátum módosítására Azure Monitor erőforrás-naplókra
+description: A cikk azt ismerteti, hogyan lehet frissíteni az eszközöket úgy, hogy kezelni tudja az új Azure-erőforrás-naplókat, amelyek a hozzáfűzési Blobok használatára módosultak a 2018. november 1-jén.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 5e71f4c590e4eafea5a2c6ad52b8df8c7dcf3814
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: dc7fd8916f356414437d4def21f26f0b651ee76f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307050"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893518"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Felkészülés a formátum módosítására Azure Monitor diagnosztikai naplók archiválása egy Storage-fiókba
+# <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>Felkészülés a formátum módosítására Azure Monitor erőforrás-naplók archiválása egy Storage-fiókba
 
 > [!WARNING]
-> Ha [Azure Resource diagnosztikai naplókat vagy metrikákat küld egy Storage-fiókba az erőforrás-diagnosztikai beállításokkal](./../../azure-monitor/platform/archive-diagnostic-logs.md) vagy a tevékenység naplófájljaival, a [log profilok használatával](./../../azure-monitor/platform/archive-activity-log.md), a Storage-fiókban lévő adatok formátuma a JSON-sorokra változik a 2018-as november 1-jén. Az alábbi utasítások ismertetik a hatását, és azt, hogy miként lehet frissíteni az eszközöket az új formátum kezelésére. 
+> Ha [Azure-erőforrás-naplókat vagy metrikákat küld egy Storage-fiókba az erőforrás-diagnosztikai beállításokkal](./../../azure-monitor/platform/archive-diagnostic-logs.md) vagy a tevékenység naplófájljaival, a [log profilokat használva](./../../azure-monitor/platform/archive-activity-log.md), a Storage-fiókban lévő adatok formátuma a JSON-sorokra változik a 2018-as november 1-jén. Az alábbi utasítások ismertetik a hatását, és azt, hogy miként lehet frissíteni az eszközöket az új formátum kezelésére. 
 >
 > 
 
@@ -31,13 +31,13 @@ Azure Monitor olyan képességgel rendelkezik, amely lehetővé teszi az erőfor
 * Ha a Now és november 1 közötti diagnosztikai beállítást állítja be, az az aktuális formátumban, november 1-től lesz elérhető.
 * Ez a változás az összes nyilvános felhő-régióban egyszerre fog történni. A módosítás nem következik be Microsoft Azure 21Vianet, Azure Germany vagy Azure Government felhők által üzemeltetett.
 * Ez a változás a következő adattípusokra van hatással:
-  * [Azure-erőforrás diagnosztikai naplói](archive-diagnostic-logs.md) ([lásd itt az erőforrások listáját](diagnostic-logs-schema.md))
+  * [Azure erőforrás](archive-diagnostic-logs.md) -erőforrás-naplók ([lásd itt az erőforrások listáját](diagnostic-logs-schema.md))
   * [A diagnosztikai beállítások által exportált Azure-erőforrás-metrikák](diagnostic-settings.md)
   * [A log-profilok által exportált Azure-tevékenység naplófájljai](archive-activity-log.md)
 * Ez a változás nem befolyásolja a következőket:
   * Hálózati folyamatok naplói
-  * Az Azure-szolgáltatási naplók még nem érhetők el Azure Monitoron keresztül (például Azure App Service diagnosztikai naplók, Storage Analytics-naplók)
-  * Az Azure diagnosztikai naplók és a tevékenységek naplófájljainak továbbítása más célhelyekre (Event Hubs, Log Analytics)
+  * Az Azure-szolgáltatási naplók még nem érhetők el Azure Monitoron keresztül (például Azure App Service erőforrás-naplók, Storage Analytics-naplók)
+  * Az Azure erőforrás-naplók és a tevékenységek naplófájljainak továbbítása más célhelyekre (Event Hubs, Log Analytics)
 
 ### <a name="how-to-see-if-you-are-impacted"></a>Hogyan lehet megtekinteni, hogy hatással van-e
 
@@ -135,6 +135,6 @@ Az egyéni eszközöket úgy kell frissíteni, hogy az aktuális és a JSON-vona
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Tudnivalók az [erőforrás-diagnosztikai naplók Storage-fiókba való archiválásáról](./../../azure-monitor/platform/archive-diagnostic-logs.md)
+* Tudnivalók az [erőforrás-erőforrások naplófájljainak Storage-fiókba való archiválásáról](./../../azure-monitor/platform/archive-diagnostic-logs.md)
 * Tudnivalók a [műveletnapló adatainak a Storage-fiókba való archiválásáról](./../../azure-monitor/platform/archive-activity-log.md)
 

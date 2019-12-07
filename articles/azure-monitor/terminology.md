@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 5324c17cdf2593d8e1022e6ddbf52b4e24ee64e8
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 01d4c8b3b803c5fce4fe24a5c96e649212fc4dca
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597813"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894351"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor elnevezési és terminológiai változások
 Jelentős változások történtek a közelmúltban, és az Azure-ügyfelek figyelésének egyszerűsítése érdekében a különböző szolgáltatások összevonása is megtörténik a Azure Monitor. Ez a cikk a Azure Monitor dokumentációjának közelmúltbeli nevét és terminológiájának változásait ismerteti.
 
 ## <a name="october-2019---diagnostic-log-to-resource-log"></a>Október 2019 – diagnosztikai napló az erőforrás-naplóhoz
-A diagnosztikai naplók "erőforrás-naplókra" módosultak, hogy jobban illeszkedjenek a ténylegesen gyűjtött adatokhoz. A "diagnosztikai beállítások" kifejezés változatlan marad.  
+A "diagnosztikai naplók" módosultak az "erőforrás-naplók" értékre, hogy jobban illeszkedjenek a ténylegesen gyűjtött adatokhoz. A "diagnosztikai beállítások" kifejezés változatlan marad.  
 
 ## <a name="february-2019---log-analytics-terminology"></a>Február 2019 – Log Analytics terminológia
 A Azure Monitor alatti különböző szolgáltatások összevonása után a következő lépés a dokumentáció terminológiájának módosítása a Azure Monitor szolgáltatás és annak különböző összetevőinek jobb leírásához. 

@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 4d150a1f6793cc20d58bebc67d5c6b58c03139d4
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304715"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893348"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure-metrikák és naplóadatok archiválása az Azure Storage használatával
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
@@ -70,7 +70,7 @@ Az előfizetés monitorozási adatai most a tárfiókba kerülnek.
 
 ## <a name="route-resource-data-to-the-storage-account"></a>Erőforrásadatok átirányítása a tárfiókba
 
-Most úgy konfiguráljuk az erőforrásszintű adatokat (erőforrásmetrikákat és diagnosztikai naplókat), hogy a tárfiókba legyenek átirányítva. Ehhez beállítjuk az **erőforrás diagnosztikai beállításait**.
+Most konfiguráljuk az erőforrás-szintű adatokat (erőforrás-metrikákat és erőforrás-naplókat) úgy, hogy az **erőforrás-diagnosztikai beállítások**beállításával átirányítsák a Storage-fiókra.
 
 1. Kattintson a bal oldali navigációs listán található **Figyelés** gombra, majd a **Diagnosztikai beállítások** gombra. Itt láthatja az előfizetésben lévő összes olyan erőforrást, amely monitorozási adatokat készít az Azure Monitoron keresztül. Ha nincsenek erőforrások a listában, a továbblépés előtt [létrehozhat egy logikai alkalmazást](../../logic-apps/quickstart-create-first-logic-app-workflow.md), hogy rendelkezzen egy olyan erőforrással, amelyhez diagnosztikai beállítást konfigurálhat.
 
@@ -162,7 +162,7 @@ Ha követte az előző lépéseket, az adatok elkezdtek a tárfiókba érkezni.
 
 5. Az erőforrás-azonosító, dátum és idő tárolóiba kattintva keresse meg a PT1H.json fájlt. Kattintson a PT1H.json fájlra, majd a **Letöltés** gombra. Mindegyik PT1H.json blob tartalmazza a blob URL-jében meghatározott órában (például h=12) bekövetkezett események JSON-blobját. Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc értéke (m=00) mindig 00, mert a naplóesemények óránként vannak külön blobokba osztva.
 
-   Most megtekintheti a tárfiókban tárolt JSON-eseményt. Erőforrás-diagnosztikai naplók esetében a blobok formátuma a következő:
+   Most megtekintheti a tárfiókban tárolt JSON-eseményt. Erőforrás-erőforrás-naplók esetében a Blobok formátuma a következő:
 
    insights-logs-{naplókategória neve}/resourceId=/{erőforrás-azonosító}/y={négy számjegyű numerikus év}/m={két számjegyű numerikus hónap}/d={két számjegyű numerikus nap}/h={két számjegyű óra 24 órás formátumban}/m=00/PT1H.json
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bd3e33fde3f4249064bfbe1973ee95f680630673
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2a2a96a823867ea7700933c8253a0ba500b0e1cf
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851162"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899803"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Magánhálózati kapcsolat létrehozása egy Storage-fiókhoz az Azure Private Endpoint használatával
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára a magánjellegű kapcsolati erőforrásokkal való kommunikációt.
@@ -132,7 +132,7 @@ Ebben a szakaszban létrehoz egy privát Storage-fiókot egy privát végpont ha
     | Alhálózat | Válassza a *mySubnet*lehetőséget. |
     | **MAGÁNHÁLÓZATI DNS-INTEGRÁCIÓ**|  |
     | Integrálás saját DNS-zónával  | Hagyja meg az alapértelmezett **Igen értéket**. |
-    | Privát DNS-zóna  | Hagyja meg az alapértelmezett * * (új) privatelink.blob.core.windows.net * * értéket. |
+    | Privát DNS-zóna  | Hagyja meg az alapértelmezett **(új) privatelink.blob.Core.Windows.net**. |
     |||
 7. Kattintson az **OK** gombra. 
 8. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
@@ -151,7 +151,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 1. Válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll ( *. rdp*) fájlt, és letölti a számítógépre.
 
-1. Nyissa meg a letöltött. rdp fájlt.
+1. Nyissa meg a *letöltött. rdp* fájlt.
 
     1. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
 

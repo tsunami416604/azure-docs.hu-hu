@@ -1,18 +1,19 @@
 ---
-title: Frissítés általános célú v2 Storage-fiókra – Azure Storage | Microsoft Docs
+title: Frissítés általános célú v2 Storage-fiókra
+titleSuffix: Azure Storage
 description: Frissítsen az általános célú v2 Storage-fiókokra.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 03/26/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: e24b7efb9f4af9f730ce79751e2fc5a9d210edbd
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 7c7b0a0bb79f3f00d7a8dff64ec1b7143241a1f8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806983"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892226"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Frissítés általános célú v2 Storage-fiókra
 
@@ -84,7 +85,7 @@ Az összes tárfiók az egyes blobok szintjén alapuló árképzési modellt alk
 
 * **Georeplikációs adatátviteli költségek**: Ez csak a georeplikációval konfigurált fiókok esetében érvényes, beleértve a GRS-t és az RA-GRS-t. A georeplikációs adatátvitel gigabájtonkénti díj ellenében érhető el.
 
-* **Kimenő adatátviteli költségek**: a kimenő adatforgalom (az Azure-régióból átvitt adatok) esetében a sávszélesség-használatért az általános célú Storage-fiókokkal összhangban kell fizetni.
+* **Kimenő adatátviteli költségek**: A kimenő adatátvitel (azaz az adott Azure-régióból kivitt adatok) esetében gigabájtalapú sávszélesség-használati díjak lépnek fel, csakúgy, mint az általános célú tárfiókok esetében.
 
 * **A tárolási hozzáférési szint módosítása**: a fiók tárolási hozzáférési rétegének a lassúról a gyors elérésű értékre való módosítása a Storage-fiókban meglévő összes információ olvasásával egyenlő. Azonban a fiókhoz való hozzáférési szint gyors és lassú elérésű értékre való módosítása az összes adatoknak a ritka rétegbe való írásával egyenlő (csak GPv2-fiókok esetében).
 
@@ -96,11 +97,12 @@ Az összes tárfiók az egyes blobok szintjén alapuló árképzési modellt alk
 Egy adott réteg általános célú v2-es Storage-fiókjában lévő blob-adatok tárolási és elérési költségeinek megbecsléséhez értékelje ki a meglévő használati mintát, vagy közelítse meg a várt használati mintát. Általában a következőket érdemes figyelembe venni:
 
 * A blob Storage-felhasználás (GB), beleértve a következőket:
-    - Mennyi adatot tárol a tárfiókjában?
-    - Havi lebontásban hogyan változik az adatmennyiség? Az új adatok folyamatosan átveszik a korábbi adatok helyét?
+  * Mennyi adatot tárol a tárfiókjában?
+  * Havi lebontásban hogyan változik az adatmennyiség? Az új adatok folyamatosan átveszik a korábbi adatok helyét?
+
 * A blob Storage-adatai elsődleges hozzáférési mintája, beleértve a következőket:
-    - Mennyibe kerül az adatok olvasása és írása a Storage-fiókba?
-    - Hány olvasási művelet és írási művelet történik a Storage-fiókban lévő adatokon?
+  * Mennyibe kerül az adatok olvasása és írása a Storage-fiókba?
+  * Hány olvasási művelet és írási művelet történik a Storage-fiókban lévő adatokon?
 
 Annak érdekében, hogy az igényeinek megfelelő hozzáférési szintet döntse el, hasznos lehet a blob-adatkapacitás meghatározása, valamint az adathasználatuk módja. Ez a fiók figyelési metrikáinak megtekintésével végezhető el legjobban.
 
@@ -119,7 +121,7 @@ Ha ez a mérőszám engedélyezve van, a rendszer naponta rögzíti a tárfiók 
 A Blob Storage adathozzáférési mintáinak figyeléséhez engedélyeznie kell az óránkénti tranzakciók mérőszámát az API szintjén. Ha az óránkénti tranzakciók mérőszáma engedélyezve van, a rendszer óránként összesíti az API-tranzakciókat, és táblabejegyzést hoz létre az adott tárfiók *$MetricsHourPrimaryTransactionsBlob* táblájában. A *$MetricsHourSecondaryTransactionsBlob* tábla a másodlagos végpontra rögzíti a tranzakciókat RA-GRS-tárfiókok használata esetében.
 
 > [!NOTE]
-> Ha olyan általános célú Storage-fiókkal rendelkezik, amelyben lapozófájlokat és virtuálisgép-lemezeket, illetve várólistákat, fájlokat vagy táblákat tárol, a blob-adat blokkolása és hozzáfűzése mellett ez a becslési folyamat nem alkalmazható. A kapacitási adatok nem tesznek különbséget a blokkblobok és más adattípusok között, és nem adnak meg kapacitási adatokat ez utóbbiakhoz. Ilyen adattípusok használatakor a legutóbb számlázott mennyiségi tételek feltárásához alternatív módszert kell alkalmazni.
+> Ha rendelkezik egy általános célú tárfiókkal, amelyben lapblobokat és virtuálisgép-lemezeket, illetve üzenetsorokat, fájlokat vagy táblákat tárol a blokkblobok és a hozzáfűző blobok adatai mellett, akkor ez a becslési folyamat nem alkalmazható. A kapacitási adatok nem tesznek különbséget a blokkblobok és más adattípusok között, és nem adnak meg kapacitási adatokat ez utóbbiakhoz. Ilyen adattípusok használatakor a legutóbb számlázott mennyiségi tételek feltárásához alternatív módszert kell alkalmazni.
 
 Azt javasoljuk, hogy az adatfelhasználás és -hozzáférés megfelelő mintájának előállításához olyan megőrzési időszakot válasszon a mérőszámhoz, amely megfelel az Ön használati szokásainak, és extrapolálja az adatokat. Az egyik lehetőség az, hogy hét napig őrzi meg a mérőszámadatokat, és minden héten összegyűjti az adatokat a hónap végén elvégzendő elemzéshez. A másik lehetőség az, hogy az utolsó 30 nap mérőszámadatait őrzi meg, és a 30 napos időszak végén hajtja végre az adatok összegyűjtését és elemzését.
 
@@ -165,5 +167,5 @@ A Blob Storage-tárfiókok georeplikációs adatátviteli költségei szintén a
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Tárfiók létrehozása](storage-quickstart-create-account.md)
-- [Azure Storage-fiókok kezelése](storage-account-manage.md)
+* [Tárfiók létrehozása](storage-quickstart-create-account.md)
+* [Azure Storage-fiókok kezelése](storage-account-manage.md)

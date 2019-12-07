@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c6951ad129a564193a33a4c21fb97e9000ac8dc2
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 8dd111017076e4a1a6a93ac7d53c253a85a09376
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555432"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890093"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Adatintegrációs partnerek SQL Data Warehouse
 Az adattárház-megoldás létrehozásához válasszon az piacvezető eszközök széles választékával. Ez a cikk a Azure SQL Data Warehouset támogató hivatalos adatintegrációs megoldásokkal rendelkező Microsoft-partneri vállalatokat emeli ki.
@@ -35,7 +35,7 @@ Az adattárház-megoldás létrehozásához válasszon az piacvezető eszközök
 | ![Szegmens][10] |**Szegmens**<br>A szegmens egy adatkezelési és elemzési megoldás, amely segít megérteni a különböző forrásokból érkező ügyféladatokat. Lehetővé teszi az adatai több mint 200 eszközhöz való összekapcsolását jobb döntések, termékek és tapasztalatok létrehozásához. A szegmens a beépített adatösszekötők használatával több adatforrást helyez át a tárházba, és betölti azt.|[Termék lap][segment_website]<br> |
 | ![Skyvia][11] |**Skyvia (Adatintegráció)**<br>A Skyvia adatintegrációja olyan varázslót biztosít, amely automatizálja az adatimportálást. Ez a varázsló lehetővé teszi az adatáttelepítés különböző típusú forrásokból – CRM, alkalmazás-adatbázis és CSV-fájlok között. |[Termék lap][segment_website]<br> |
 | ![SnapLogic][6] |**SnapLogic**<br>A SnapLogic platform lehetővé teszi, hogy az ügyfelek gyorsan át lehessen vinni az adatátvitelt Microsoft Azure SQL Data Warehouseba. Lehetővé teszi több száz alkalmazás, szolgáltatás és IoT integrálását egyetlen megoldásban.|[Termék lap][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
-| ![StreamSets][15] |**StreamSets**<br>A StreamSets adatintegrációs platformot biztosít a DataOps számára. Ez a teljes körű operationalizes az adatAzure SQL Data Warehouseba való integrálásához. A tárházból és a szolgáltatásból nem lehet gyorsan betölteni és beépíteni az adatátviteli, a kötegelt vagy a módosított adatrögzítési módszereket, de a folyamatos működést olyan intelligens adatfolyamatokkal is biztosíthatja, amelyek teljes körű adatáramlást biztosítanak. rugalmasság.|[Termék lap][streamsets_website]|
+| ![StreamSets][16] |**StreamSets**<br>A StreamSets adatintegrációs platformot biztosít a DataOps számára. Ez a teljes körű operationalizes az adatAzure SQL Data Warehouseba való integrálásához. A tárházból és a szolgáltatásból nem lehet gyorsan betölteni és beépíteni az adatátviteli, a kötegelt vagy a módosított adatrögzítési módszereket, de a folyamatos működést olyan intelligens adatfolyamatokkal is biztosíthatja, amelyek teljes körű adatáramlást biztosítanak. rugalmasság.|[Termék lap][streamsets_website]|
 | ![Talend][12] |**Tehetség-felhő**<br>A tehetség Cloud egy nagyvállalati adatintegrációs platform, amely a felhőben vagy a helyszínen lévő összes adatkapcsolathoz, hozzáféréshez és átalakításhoz biztosít hozzáférést. Ez egy szolgáltatásként nyújtott integrációs platform (iPaaS), amely széles körű kapcsolódást, beépített adatminőséget és natív támogatást nyújt a legújabb big data és felhőalapú technológiákhoz. |[Termék lap][talend_website]<br> [Azure Marketplace][talend_marketplace] |
 | ![TimeXtender][13] |**TimeXtender**<br>A TimeXtender felderítő központja lehetővé teszi a vállalatok számára, hogy egy integrált adatkezelési platformot biztosítanak egy modern adatközpont létrehozásához, amely akár 10 alkalommal gyorsítja fel az adatelemzési időt. A mindennapi kinyerési, átalakítási és betöltési (ETL) vagy kinyerési, betöltési és átalakítási (ELT-) funkciókon túl az adathozzáférés, az adatmodellezés és a megfelelőség egyetlen platformon történő biztosításával. A felderítési központ egy egységes adathálót biztosít a felhőalapú méretezési elemzésekhez, így lehetővé teszi a különböző adatsilók, katalógusok, modellek, áthelyezési és dokumentumok adatainak összekapcsolását az elemzéshez és a mesterséges intelligenciához. | [Termék lap][timextender_website] |
 | ![Trifacta][14] |**Trifacta Wrangler**<br> A Trifacta segítségével a magánszemélyek és a szervezetek is megismerhetik és összekapcsolhatók különböző adatelemzési adataikkal. A Trifacta Wrangler úgy van kialakítva, hogy kezelje az olyan huzavona-munkaterheléseket, amelyeknek a nagy mennyiségű felhasználót kell támogatniuk.|[Termék lap][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |

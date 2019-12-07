@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 386d10c8e4bd7d5f46d2081d5a26371fb37ff30f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 3d611806d31719899d249b29ed4b0ea499280252
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007002"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894916"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>A lekérdezési teljesítmény maximalizálása a JSON alakzat használatával 
 
@@ -30,7 +30,7 @@ Ez a cikk útmutatást nyújt a JSON formázásához a Azure Time Series Insight
 
 Gondolja át, hogyan küldi el az eseményeket Time Series Insightsba. Tehát mindig:
 
-1. az adatok elküldése a hálózaton keresztül lehető leghatékonyabb.
+1. Az adatküldés a hálózaton keresztül a lehető leghatékonyabban.
 1. Győződjön meg arról, hogy az adatok tárolása oly módon történik, hogy az adott forgatókönyvnek megfelelő összesítéseket lehessen végrehajtani.
 1. Győződjön meg arról, hogy nem éri el a maximálisan megengedett Time Series Insights:
    - 600 tulajdonságok (oszlopok) S1 környezetekhez.
@@ -42,11 +42,11 @@ Gondolja át, hogyan küldi el az eseményeket Time Series Insightsba. Tehát mi
 A következő útmutató segítséget nyújt a lehető legjobb lekérdezési teljesítmény biztosításához:
 
 1. Ne használjon dinamikus tulajdonságokat, például egy címke AZONOSÍTÓját a tulajdonság neveként. Ez a használat a maximális tulajdonságok korlátjának eléréséhez járul hozzá.
-1. Ne küldjön a szükségtelen tulajdonságait. Ha nincs szükség lekérdezési tulajdonságra, a legjobb, ha nem szeretné elküldeni. Így elkerülhetők a tárolási korlátozások.
+1. Ne küldjön felesleges tulajdonságokat. Ha nincs szükség lekérdezési tulajdonságra, a legjobb, ha nem szeretné elküldeni. Így elkerülhetők a tárolási korlátozások.
 1. A statikus adatok hálózaton keresztüli küldésének elkerüléséhez használjon [hivatkozási adatokat](time-series-insights-add-reference-data-set.md) .
 1. Ossza meg a dimenzió tulajdonságait több esemény között, hogy hatékonyabban küldjön adatküldést a hálózaton.
-1. Ne használja a részletes tömb beágyazást. A Time Series Insights az objektumokat tartalmazó beágyazott tömbök legfeljebb két szintjét támogatja. Time Series Insights az üzenetekben lévő tömböket több, tulajdonság érték párokkal rendelkező eseménybe.
-1. Ha csak néhány mértékek minden vagy a legtöbb esemény létezik, érdemes küldeni ezeket a mértékeket különálló tulajdonságként az objektumon belül. A küldésük külön csökkenti az események számát, és növelheti a lekérdezési teljesítményt, mert kevesebb eseményt kell feldolgozni. Ha több mérték is van, akkor egy adott tulajdonság értékeként való küldéssel minimálisra csökkenthető a maximálisan megengedett tulajdonságértékek elérése.
+1. Ne használjon mély tömbös beágyazást. A Time Series Insights az objektumokat tartalmazó beágyazott tömbök legfeljebb két szintjét támogatja. Time Series Insights az üzenetekben lévő tömböket több, tulajdonság érték párokkal rendelkező eseménybe.
+1. Ha csak néhány mérték létezik az összes vagy a legtöbb eseménynél, érdemes elküldenie ezeket a mértékeket különálló tulajdonságokként ugyanazon az objektumon belül. A küldésük külön csökkenti az események számát, és növelheti a lekérdezési teljesítményt, mert kevesebb eseményt kell feldolgozni. Ha több mérték is van, akkor egy adott tulajdonság értékeként való küldéssel minimálisra csökkenthető a maximálisan megengedett tulajdonságértékek elérése.
 
 ## <a name="example-overview"></a>Példa – áttekintés
 
@@ -97,22 +97,22 @@ Vegye figyelembe a következő JSON-adattartalomot, amelyet a rendszer az Azure-
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
-   | FXXX | LINE\_DATA | EU |
-   | FYYY | LINE\_DATA | USA |
+   | FXXX | SOROK\_ | EU |
+   | FYYY | SOROK\_ | Egyesült Államok |
 
 * Time Series Insights Event Table az összeolvasztás után:
 
-   | deviceId | messageId | deviceLocation | időbélyeg | adatsorozat. A folyamat arány láb3/s | adatsorozat. Olaj nyomás psi motor |
+   | deviceId | messageId | deviceLocation | időbélyeg | sorozat. Áramlási sebesség FT3/s | sorozat. Motor olajnyomás PSI |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
-   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
-   | FYYY | LINE\_DATA | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
+   | FXXX | SOROK\_ | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | SOROK\_ | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | SOROK\_ | Egyesült Államok | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
 
 > [!NOTE]
 > - A **deviceId** oszlop a flotta különböző eszközeinek oszlop fejlécét szolgálja. A **deviceId** értékének kiszámításához a saját tulajdonságnév korlátozza a teljes eszközt 595 (S1 környezet esetén) vagy 795 (S2 környezet esetén) a másik öt oszloppal.
 > - A felesleges tulajdonságok elkerülhetők (például a gyártmány és a modell adatai). Mivel a tulajdonságok nem lesznek lekérdezve a jövőben, így a jobb hálózati és tárolási hatékonyságot is lehetővé teszi.
 > - A hivatkozási adat a hálózaton keresztül továbbított bájtok számának csökkentésére szolgál. A **messageId** és a **deviceLocation** két attribútum a Key tulajdonság **deviceId**használatával csatlakozik. Ezek az adatforgalom a telemetria-és a bejövő adatforgalom időpontjában szerepelnek, és a lekérdezés Time Series Insights tárolja őket.
-> - Két beágyazási réteg van használatban, amely a Time Series Insights által támogatott beágyazások maximális száma. Rendkívül fontos a mélyen beágyazott tömbök elkerülése érdekében.
+> - Két beágyazási réteg van használatban, amely a Time Series Insights által támogatott beágyazások maximális száma. Fontos, hogy elkerülje a mélyen beágyazott tömböket.
 > - A mértékek külön tulajdonságokként lesznek elküldve ugyanazon az objektumon belül, mert kevés a mérték. Itt a **sorozat. A flow aránya PSI** és **sorozat. A motor olajnyomás FT3/s** egyedi oszlopok.
 
 ## <a name="scenario-two-several-measures-exist"></a>Második forgatókönyv: több mérték létezik
@@ -165,23 +165,23 @@ Példa JSON-adattartalomra:
 
 * A Key Properties **deviceId** és a **Series. tagId**kulcsot tartalmazó hivatkozási adattábla:
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | egység |
+   | deviceId | adatsorozat. tagId | messageId | deviceLocation | type | mennyiség |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LINE\_DATA | EU | Áramlási sebesség | FT3/s |
-   | FXXX | oilPressure | LINE\_DATA | EU | Motor olajnyomás | psi |
-   | FYYY | pumpRate | LINE\_DATA | USA | Áramlási sebesség | FT3/s |
-   | FYYY | oilPressure | LINE\_DATA | USA | Motor olajnyomás | psi |
+   | FXXX | pumpRate | SOROK\_ | EU | Áramlási sebesség | FT3/s |
+   | FXXX | oilPressure | SOROK\_ | EU | Motor olajnyomás | psi |
+   | FYYY | pumpRate | SOROK\_ | Egyesült Államok | Áramlási sebesség | FT3/s |
+   | FYYY | oilPressure | SOROK\_ | Egyesült Államok | Motor olajnyomás | psi |
 
 * Time Series Insights Event Table az összeolvasztás után:
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | egység | időbélyeg | adatsorozat. érték |
+   | deviceId | adatsorozat. tagId | messageId | deviceLocation | type | mennyiség | időbélyeg | adatsorozat. érték |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LINE\_DATA | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | LINE\_DATA | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 34.7 |
-   | FXXX | pumpRate | LINE\_DATA | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | LINE\_DATA | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 49.2 |
-   | FYYY | pumpRate | LINE\_DATA | USA | Áramlási sebesség | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | LINE\_DATA | USA | Motor olajnyomás | psi | 2018-01-17T01:18:00Z | 22.2 |
+   | FXXX | pumpRate | SOROK\_ | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | SOROK\_ | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 34,7 |
+   | FXXX | pumpRate | SOROK\_ | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | SOROK\_ | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 49,2 |
+   | FYYY | pumpRate | SOROK\_ | Egyesült Államok | Áramlási sebesség | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | SOROK\_ | Egyesült Államok | Motor olajnyomás | psi | 2018-01-17T01:18:00Z | 22,2 |
 
 > [!NOTE]
 > - A **deviceId** és a **Series. tagId** oszlopok a különböző eszközök és címkék oszlopaiként szolgálnak a flottában. A saját attribútumaik használatával a lekérdezés a 594 (S1 környezetek esetén) vagy a 794 (S2 környezet esetén) értékre van korlátozva a többi hat oszloppal rendelkező összes eszköz esetében.

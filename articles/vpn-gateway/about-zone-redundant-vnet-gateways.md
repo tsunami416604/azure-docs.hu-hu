@@ -6,18 +6,18 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 12/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: d076e2b0057f0ba666fa47ffd0b3d7d1fcc14631
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c13e7b507291d7671ac861fc7a8683c87be947a1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725585"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896650"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Tudnivalók a Azure Availability Zones-beli virtuális hálózati átjárók használatáról
 
-A VPN-és ExpressRoute-átjárók üzembe [](../availability-zones/az-overview.md)helyezhetők a Azure Availability Zonesban. Ez rugalmasságot, méretezhetőséget és magasabb rendelkezésre állást biztosít a virtuális hálózati átjárók számára. Az átjárók üzembe helyezése Azure Availability Zones fizikailag és logikailag elkülöníti az átjárókat a régión belül, miközben a helyszíni hálózati kapcsolatot az Azure-hoz a zóna szintű hibákkal védi.
+A VPN-és ExpressRoute-átjárók üzembe helyezhetők a [Azure Availability Zonesban](../availability-zones/az-overview.md). Ez rugalmasságot, méretezhetőséget és magasabb szintű rendelkezésre állást biztosít a virtuális hálózati átjárók számára. Az átjárók Azure-beli rendelkezésre állási zónákban történő üzembe helyezésével fizikailag és logikailag is elválaszthatók a régióban található átjárók, miközben az Azure-ral létesített helyszíni hálózati kapcsolat megvédhető a zónaszintű hibáktól.
 
 ### <a name="zrgw"></a>Zóna – redundáns átjárók
 
@@ -39,25 +39,13 @@ Az átjárók egy adott zónában való üzembe helyezéséhez a zóna-átjáró
 
 ## <a name="gwskus"></a>Átjáró-termékváltozatok
 
-A Zone-redundáns és a zóna-átjárók új Gateway SKU-ként érhetők el. Új Virtual Network Gateway SKU-ket adott hozzá az Azure-ban az Regions. Ezek a SKU-azonosítók a ExpressRoute és a VPN Gateway vonatkozó meglévő SKU-hoz hasonlóak, azzal a különbséggel, hogy azok a zóna-redundáns és a zónákhoz tartozó átjárók.
+A Zone-redundáns és a zóna-átjárók új Gateway SKU-ként érhetők el. Új Virtual Network Gateway SKU-ket adott hozzá az Azure-ban az Regions. Ezek a SKU-azonosítók a ExpressRoute és a VPN Gateway vonatkozó meglévő SKU-hoz hasonlóak, azzal a különbséggel, hogy azok a zóna-redundáns és a zónákhoz tartozó átjárók. Ezeket a SKU-ket az SKU-név "az" részében azonosíthatja.
 
-Az új átjárók a következők:
-
-### <a name="vpn-gateway"></a>VPN Gateway
-
-* VpnGw1AZ
-* VpnGw2AZ
-* VpnGw3AZ
-
-### <a name="expressroute"></a>ExpressRoute
-
-* ErGw1AZ
-* ErGw2AZ
-* ErGw3AZ
+További információ az átjárók SKU-ról: [VPN Gateway SKU](vpn-gateway-about-vpngateways.md#gwsku) -i és [ExpressRoute Gateway SKU](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku)-i.
 
 ## <a name="pipskus"></a>Nyilvános IP-SKU
 
-A Zone-redundáns átjárók és a zóna-átjárók egyaránt az Azure nyilvános IP-erőforrás *standard* SKU-ra támaszkodnak. Az Azure nyilvános IP-erőforrásának konfigurációja határozza meg, hogy az Ön által telepített átjáró a zóna redundáns vagy a zónákhoz van-e telepítve. Ha alapszintű SKU-val hoz létre egy nyilvános IP-erőforrást, akkor az átjáró nem rendelkezik zónával, és az átjáró erőforrásai regionálisak lesznek.
+A Zone-redundáns átjárók és a zóna-átjárók egyaránt az Azure nyilvános IP-erőforrás *standard* SKU-ra támaszkodnak. Az Azure nyilvános IP-erőforrásának konfigurációja határozza meg, hogy az Ön által telepített átjáró a zóna redundáns vagy a zónákhoz van-e telepítve. Ha *alapszintű* SKU-val hoz létre egy nyilvános IP-erőforrást, akkor az átjáró nem rendelkezik zónával, és az átjáró erőforrásai regionálisak lesznek.
 
 ### <a name="pipzrg"></a>Zóna – redundáns átjárók
 
@@ -72,7 +60,7 @@ Amikor nyilvános IP-címet hoz létre a **standard** nyilvános IP-SKU használ
 
 ### <a name="piprg"></a>Regionális átjárók
 
-Amikor nyilvános IP-címet hoz létre az alapszintű nyilvános IP-SKU használatával, az átjáró regionális átjáróként van üzembe helyezve, és nem rendelkezik az átjáróba épített összes zónával.
+Amikor nyilvános IP-címet hoz létre az **alapszintű** nyilvános IP-SKU használatával, az átjáró regionális átjáróként van üzembe helyezve, és nem rendelkezik az átjáróba épített összes zónával.
 
 ## <a name="faq"></a>GYIK
 
@@ -96,6 +84,6 @@ Jelenleg nem támogatott a meglévő virtuális hálózati átjárók áttelepí
 
 Az azonos virtuális hálózatban található VPN-és Express Route-átjárók együttes létezése is támogatott. Az átjáró-alhálózat esetében azonban foglaljon le egy/27 IP-címtartományt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Zónaredundáns virtuális hálózati átjáró létrehozása](create-zone-redundant-vnet-gateway.md)

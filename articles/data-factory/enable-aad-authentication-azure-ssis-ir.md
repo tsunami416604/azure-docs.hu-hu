@@ -1,5 +1,5 @@
 ---
-title: Azure-SSIS Integration Runtime Azure Active Directory engedélyezése
+title: Azure-SSIS Integration Runtime HRE engedélyezése
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető Azure Active Directory hitelesítés a felügyelt identitással a Azure Data Factory számára Azure-SSIS Integration Runtime létrehozásához.
 services: data-factory
 ms.service: data-factory
@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.date: 5/14/2019
-ms.openlocfilehash: 6973e72b06d51241e883038936270fd0931365d7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9d03d0668b8519ae811b5d275e61b370ceb30e78
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217696"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896185"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime Azure Active Directory hitelesítésének engedélyezése
 
@@ -198,7 +198,7 @@ A Azure-SSIS IR PowerShell-lel való kiépítéséhez tegye a következőket:
 
 1.  Telepítse [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) modult.
 
-2.  A parancsfájlban ne állítson be `CatalogAdminCredential` paramétert. Például:
+2.  A parancsfájlban ne állítson be `CatalogAdminCredential` paramétert. Példa:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

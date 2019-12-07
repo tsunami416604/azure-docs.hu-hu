@@ -1,6 +1,6 @@
 ---
 title: Kapcsolódás a Azure Media Services V3 API-Node. js-hez
-description: Megtudhatja, hogyan csatlakozhat a Media Services V3 API-hoz a Node. js használatával.
+description: Ez a cikk bemutatja, hogyan csatlakozhat a Media Services V3 API-hoz a Node. js használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5361a820da0caa336ccc95ae657407889443268c
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048423"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896104"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Kapcsolódás a Media Services V3 API-Node. js-hez
 
@@ -26,8 +26,8 @@ Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 Node. js SDK-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Telepítse a [Node. js](https://nodejs.org/en/download/)-t.
-- [A Media Services-fiók létrehozása](create-account-cli-how-to.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
+- A [Node.js](https://nodejs.org/en/download/) telepítése.
+- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
 
 > [!IMPORTANT]
 > Tekintse át az [elnevezési konvenciókat](media-services-apis-overview.md#naming-conventions).
@@ -69,7 +69,7 @@ npm install azure-arm-mediaservices
 ## <a name="connect-to-nodejs-client"></a>Kapcsolódás Node. js-ügyfélhez
 
 1. Hozzon létre egy. js-fájlt a kedvenc szerkesztője segítségével.
-1. Nyissa meg a fájlt, és illessze be az alábbi kódot.
+1. Nyissa meg a fájlt, és illessze be a következő kódot.
 1. Állítsa be az "Endpoint config" (végpont konfigurációja) szakaszban található értékeket az [Access API](access-api-cli-how-to.md)-k által kapott értékekre.
 
 ```js
@@ -123,7 +123,7 @@ npm install
 node index.js
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Media Services fogalmak](concepts-overview.md)
 - [NPM-telepítés, azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)

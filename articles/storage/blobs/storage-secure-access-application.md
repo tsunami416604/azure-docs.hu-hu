@@ -1,22 +1,23 @@
 ---
-title: Biztonságos hozzáférés egy alkalmazás adataihoz a felhőben az Azure Storage segítségével | Microsoft Docs
+title: Az alkalmazásadatok biztonságos elérése
+titleSuffix: Azure Storage
 description: Alkalmazásainak adatait SAS-jogkivonatok, titkosítás és HTTPS protokoll segítségével tudhatja biztonságban a felhőben.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 05/30/2018
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: 2cd7a83b597d656ddbb0210aacfe96f6c056248b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1075c03820efba44ceb8dea28aff6302d2667cf2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986695"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892430"
 ---
-# <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Biztonságos hozzáférés egy alkalmazás adataihoz a felhőben
+# <a name="secure-access-to-application-data"></a>Az alkalmazásadatok biztonságos elérése
 
 Ez az oktatóanyag egy sorozat harmadik része. Megtudhatja, hogyan teheti biztonságossá a tárfiókhoz való hozzáférést. 
 
@@ -31,7 +32,7 @@ Az [Azure Blob Storage](../common/storage-introduction.md#blob-storage) stabil s
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez el kell végeznie az előző tárolási oktatóanyagot: [A feltöltött képek átméretezésének automatizálása Event Grid használatával][previous-tutorial]. 
+Az oktatóanyag elvégzéséhez el kell végeznie az előző tárolási oktatóanyagot: a [feltöltött képek átméretezésének automatizálása Event Grid használatával][previous-tutorial].
 
 ## <a name="set-container-public-access"></a>A tároló nyilvános hozzáférésének beállítása
 
@@ -128,7 +129,7 @@ public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _stor
 
 Az előző feladatban használt osztályok, tulajdonságok és metódusok a következők:
 
-|Osztály  |properties| Metódusok  |
+|Osztály  |Tulajdonságok| Metódusok  |
 |---------|---------|---------|
 |[StorageCredentials](/dotnet/api/microsoft.azure.cosmos.table.storagecredentials)    |         |
 |[CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount)     | |[CreateCloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient)        |
@@ -165,7 +166,7 @@ Most, hogy biztonságos átvitel szükséges, az alábbi üzenetet kapja:
 HTTP/1.1 400 The account being accessed does not support http.
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat harmadik részében megtanulta, hogy miként teheti biztonságossá a tárfiókhoz való hozzáférést, többek között:
 

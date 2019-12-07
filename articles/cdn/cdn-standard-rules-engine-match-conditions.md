@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: c4c2b1f334e37691655b18d2c629fbd8edc95382
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 425266e2a7ca42bb17ca598ddfc2f2b86591f32e
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171609"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900181"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>A standard szintű szabályok motorjában szereplő feltételek egyeztetése Azure CDN
 
@@ -60,9 +60,9 @@ Cookie neve | Művelet | Cookie értéke | Eset átalakítása
 ------------|----------|--------------|---------------
 Sztring | [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
-#### <a name="key-information"></a>Legfontosabb információk
+#### <a name="key-information"></a>Fontos információ
 
-- A cookie-nevek megadásakor nem használhat helyettesítő karaktereket (beleértve a csillagokat (\*)). a múzsa pontosan a cookie nevét használja.
+- A cookie-nevek megadásakor nem használhat helyettesítő karaktereket (beleértve a csillagokat (\*)). a cookie-nak pontos nevet kell használnia.
 - Ennek a egyeztetési feltételnek a példánya esetében csak egyetlen cookie-nevet adhat meg.
 - A cookie-nevek összehasonlítása a kis-és nagybetűk megkülönböztetése nélkül történik.
 - Több cookie-érték megadásához használjon egyetlen helyet az egyes cookie-értékek között. 
@@ -79,13 +79,13 @@ Argumentum neve | Művelet | Argumentum értéke | Eset átalakítása
 --------------|----------|----------------|---------------
 Sztring | [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
-### <a name="query-string"></a>Lekérdezési karakterlánc
+### <a name="query-string"></a>Lekérdezési sztring
 
 A megadott lekérdezési karakterlánc paramétert tartalmazó kérelmeket azonosítja. Ez a paraméter olyan értékre van beállítva, amely megfelel egy adott mintának. A kérelem URL-címében szereplő lekérdezési karakterlánc paraméterei (például **paraméter = érték**) határozzák meg, hogy ez a feltétel teljesül-e. Ez a megfeleltetési feltétel a lekérdezési karakterlánc paraméterét azonosítja a nevével, és egy vagy több értéket fogad el a paraméter értékeként.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Lekérdezési karakterlánc | Eset átalakítása
+Művelet | Lekérdezési sztring | Eset átalakítása
 ---------|--------------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
@@ -97,20 +97,20 @@ A kérelmező helye vagy IP-címe alapján azonosítja a kérelmeket.
 
 Művelet | Támogatott értékek
 ---------|-----------------
-Bármelyik | N/A
+Bármelyik | –
 Földrajzi egyezés | Országkód
 IP-egyeztetés | IP-cím (szóközzel tagolt)
-Nem | N/A
+Nem | –
 Nem földrajzi egyezés | Országkód
 Nem IP-egyeztetés | IP-cím (szóközzel tagolt)
 
-#### <a name="key-information"></a>Legfontosabb információk
+#### <a name="key-information"></a>Fontos információ
 
 - CIDR-jelölés használata.
 - Több IP-cím és IP-címterület megadásához használjon egyetlen helyet az értékek között:
   - **IPv4-példa**: a *1.2.3.4 10.20.30.40* a 1.2.3.4 vagy a 10.20.30.40 címről érkező összes kérésnek megfelel.
-  - **IPv6-példa**: a *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:8*0 a 1:2:3:4:5:6:7:8 vagy 10:20:30:40:50:60:70:80 címről érkező kérelmekre illeszkedik.
-- Az IP-címterület szintaxisa az alapszintű IP-cím, amelyet egy perjel és az előtag mérete követ. Például:
+  - **IPv6-példa**: a *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* a 1:2:3:4:5:6:7:8 vagy 10:20:30:40:50:60:70:80 címről érkező kérelmekre illeszkedik.
+- Az IP-címterület szintaxisa az alapszintű IP-cím, amelyet egy perjel és az előtag mérete követ. Példa:
   - **IPv4-példa**: a *5.5.5.64/26* a 5.5.5.64-en keresztül a 5.5.5.127-on keresztül érkező kérésekre illeszkedik.
   - **IPv6-példa**: a *1:2:3:/48* a 1:2:3:0:0:0:0:0 – 1:2: 3: FFFF: FFFF: FFFF: FFFF: FFFF címen megjelenő kérelmekre illeszkedik.
 
@@ -144,7 +144,7 @@ Művelet | Támogatott értékek
 ---------|----------------
 Egyenlő, nem egyenlő | LETÖLTÉS, KÖZZÉTÉTEL, PUT, TÖRLÉS, FEJ, BEÁLLÍTÁSOK, NYOMKÖVETÉS
 
-#### <a name="key-information"></a>Legfontosabb információk
+#### <a name="key-information"></a>Fontos információ
 
 - A Azure CDNban csak a GET Request metódus hozhatja meg a gyorsítótárazott tartalmat. Minden más kérelmezési módszer a hálózaton keresztül történik. 
 
@@ -168,7 +168,7 @@ Művelet | Kérés URL-címe | Eset átalakítása
 ---------|-------------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
-#### <a name="key-information"></a>Legfontosabb információk
+#### <a name="key-information"></a>Fontos információ
 
 - A szabály feltételének használatakor ügyeljen arra, hogy a protokoll információit tartalmazza. Például: *https://www.\<yourdomain\>.com* .
 
@@ -182,7 +182,7 @@ Művelet | Mellék | Eset átalakítása
 ---------|-----------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
-#### <a name="key-information"></a>Legfontosabb információk
+#### <a name="key-information"></a>Fontos információ
 
 - A bővítményhez ne adjon meg egy kezdő időszakot; a *. html*helyett például *HTML* -t használjon.
 
@@ -196,7 +196,7 @@ Művelet | Fájlnév | Eset átalakítása
 ---------|-----------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
-#### <a name="key-information"></a>Legfontosabb információk
+#### <a name="key-information"></a>Fontos információ
 
 - Több fájl nevének megadásához külön szóközzel válassza el az egyes fájlneveket. 
 
@@ -206,11 +206,11 @@ Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott elérési uta
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Érték | Eset átalakítása
+Művelet | Value (Díj) | Eset átalakítása
 ---------|-------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
-#### <a name="key-information"></a>Legfontosabb információk
+#### <a name="key-information"></a>Fontos információ
 
 - A fájlnév érték kihasználhatja a helyettesítő karakteres értékeket. Például az egyes fájlnevek mintázata egy vagy több csillagból (*) állhat, ahol minden csillag egy vagy több karakterből áll.
 
@@ -224,10 +224,10 @@ Azok a szabályok, amelyek a normál operátorok listájából fogadnak értéke
 - Egyenlő 
 - Contains 
 - Kezdete 
-- végződik 
-- Kisebb, mint
+- Végződik 
+- Kisebb mint
 - Kisebb vagy egyenlő
-- Nagyobb, mint
+- Nagyobb mint
 - Nagyobb vagy egyenlő
 - Nem
 - Nem tartalmazza

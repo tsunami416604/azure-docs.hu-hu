@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services streaming feladatátvételi megvalósítása |} A Microsoft Docs
-description: Ez a témakör bemutatja, hogyan valósíthat meg egy feladatátvételi streamelési forgatókönyv.
+title: Feladatátvételi továbbítás implementálása a Azure Media Servicessal | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan valósítható meg a feladatátvételi továbbítási forgatókönyv Azure Media Services használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,57 +13,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ea5238df50ff050140453ce655ea041669f6080c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 195f7f089b84e1665f4dd078a7da141d531c2185
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051657"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887181"
 ---
-# <a name="implement-failover-streaming-with-media-services"></a>A Media Services streaming feladatátvétel végrehajtása 
+# <a name="implement-failover-streaming-with-media-services"></a>Feladatátvételi továbbítás implementálása Media Services 
 
-Ez az útmutató bemutatja, hogyan másolhatják a tartalmat (BLOB) egy eszköz a másik redundanciájának igény szerinti folyamatos átvitel kezelésének érdekében. Ebben a forgatókönyvben akkor hasznos, ha azt szeretné, állítsa be az Azure Content Delivery Network a feladatátvételt egy esetleges leállás egy adatközpontban, két adatközpont között. Ez az útmutató használja az Azure Media Services SDK az Azure Media Services REST API és az Azure Storage SDK használatával a következő feladatokat mutatja be:
+Ez az útmutató bemutatja, hogyan másolhat tartalmat (blobokat) az egyik adategységből egy másikba az igény szerinti folyamatos átvitel érdekében. Ez a forgatókönyv akkor lehet hasznos, ha az Azure Content Delivery Network-t úgy szeretné beállítani, hogy a feladatátvételt egy adatközpontban, ha egy adatközpontban áramkimaradás történik. Ez az útmutató a Azure Media Services SDK, a Azure Media Services REST API és az Azure Storage SDK használatával mutatja be a következő feladatokat:
 
-1. Állítsa be a Media Services-fiók a. "az Adatközpontot."
-2. "Mezzanine" formátumú fájl feltöltése a forrás-objektumba.
-3. Objektum kódolása, több-bites arány MP4-fájlokat. 
-4. Hozzon létre egy csak olvasható megosztott elérési aláírást lokátort. Ez az, hogy rendelkezik olvasási hozzáféréssel a tárolóhoz a tárfiók, amely a forrás-objektumhoz van társítva a forrás eszköz.
-5. A csak olvasható megosztott hozzáférési aláírás-lokátor az előző lépésben létrehozott lekérheti a forrás-objektum a tároló nevét. Erre azért szükség, másolni a BLOB storage-fiókok (részletesen a témakör későbbi részében található.) között
-6. Hozzon létre egy forrás-kereső az adategységhez, a kódolási feladat által létrehozott. 
+1. Media Services fiók beállítása az "A" adatközpontban.
+2. Töltsön fel egy köztes fájlt egy forrásoldali eszközbe.
+3. Az eszköz kódolása többbites sebességű MP4-fájlokba. 
+4. Írásvédett közös hozzáférésű aláírás-lokátor létrehozása. A forrásoldali eszköznek olvasási hozzáférése van a forráshoz társított Storage-fiókhoz tartozó tárolóhoz.
+5. Szerezze be a forrásként szolgáló eszköz tárolójának nevét az előző lépésben létrehozott írásvédett közös hozzáférésű aláírás-keresőből. Ez a Blobok Storage-fiókok közötti másolásához szükséges (a témakör későbbi részében ismertetett)
+6. Hozzon létre egy forrás-lokátort a kódolási feladat által létrehozott objektumhoz. 
 
-Ezután a feladatátvétel kezelésére:
+Ezután a feladatátvétel kezeléséhez:
 
-1. Állítsa be a Media Services-fiók, a "Data Center."
-2. Cél üres eszköz a célzott Media Services-fiók létrehozása.
-3. Hozzon létre egy megosztott írási hozzáférés aláírás-lokátor. Ez az a cél üres eszköz írási hozzáféréssel a tárolóhoz a céloldali tárfiók, amely a cél objektumhoz van társítva.
-4. Másolja a blobok (adategység-fájlok) "Adatközpont A" forrás tárfiókban és a "Data Center b.". a céloldali tárfiók között az Azure Storage SDK használatával A storage-fiókok társítva a lényeges az eszközöket.
-5. Társítsa a blobok (adategység-fájlok), amely a célként megadott eszköz a blob céltárolón át lettek másolva. 
-6. Hozzon létre egy "Data Center B" az eszköz származási lokátort, majd adja meg a "Data Center a.". az eszköz számára létrehozott kereső azonosítója
+1. Hozzon létre egy Media Services fiókot az "adatközpont B." elemnél.
+2. Hozzon létre egy cél üres eszközt a cél Media Services fiókban.
+3. Hozzon létre egy Write Shared Access Signature-lokátort. Ez azt eredményezi, hogy az üres eszköznek írási hozzáférése van ahhoz a tárolóhoz, amely a célként megadott tárolóban van társítva.
+4. Az Azure Storage SDK-val másolhatja a blobokat (adatfájlok) az "adatközpont" és a "B" adatközpontban lévő forrás Storage-fiók között. Ezek a Storage-fiókok a fontos eszközökhöz vannak társítva.
+5. Társítsa a cél blob-tárolóba másolt blobokat (adatfájlokat) a célként megadott eszközzel. 
+6. Hozzon létre egy forrás-lokátort az eszközhöz a "B" adatközpontban, és határozza meg az eszközhöz az "A" adatközpontban generált lokátor AZONOSÍTÓját.
 
-Ez lehetővé teszi a streamelési URL-címeket, a relatív elérési utakat az URL-címek, ugyanazok, (csak az alap URL-címek különböznek). 
+Ez biztosítja azokat a folyamatos átviteli URL-címeket, amelyekben az URL-címek relatív elérési útjai megegyeznek (csak az alap URL-címek különböznek egymástól). 
 
-Ezután e szolgáltatáskimaradás kezeléséhez, létrehozhat egy Content Delivery Network a forrás-keresők felett. 
+Ezt követően a kiesések kezeléséhez létrehozhat egy Content Delivery Network a fenti forrás-lokátorok felett. 
 
 A következő szempontokat kell figyelembe venni:
 
-* A Media Services SDK jelenlegi verziója nem támogatja a programozott módon létrehozni IAssetFile információkat, akkor az eszköz társít adategység-fájlok. Ehelyett a CreateFileInfos Media Services REST API használatával ehhez. 
-* Tárolótitkosítást eszközök (AssetCreationOptions.StorageEncrypted) nem támogatottak a replikáció (mivel a titkosítási kulcs nem egyezik a Media Services-fiókot is). 
-* Ha azt szeretné, hogy kihasználhassa a dinamikus csomagolást, ellenőrizze, hogy a tartalomstreameléshez használt streamvégpont, ahonnan a tartalmak streamelésére szerepel a **futó** állapota.
+* Media Services SDK jelenlegi verziója nem támogatja programozott módon olyan IAssetFile-adatok létrehozását, amelyek adategység-fájlokkal társíthatók. Ehelyett használja a CreateFileInfos Media Services REST API. 
+* A tárolók titkosított eszközei (Assetcreationoptions alapján határozhatja. StorageEncrypted) nem támogatottak a replikáláshoz (mivel a titkosítási kulcs eltérő mindkét Media Services fiókban). 
+* Ha szeretné kihasználni a dinamikus csomagolás előnyeit, győződjön meg arról, hogy a streaming végpont, amelyről a tartalmat továbbítani kívánja, **fut** állapotban van.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Két Media Services-fiók egy új vagy meglévő Azure-előfizetést. Lásd: [hogyan hozhat létre egy Media Services-fiók](media-services-portal-create-account.md).
-* Operációs rendszer: Windows 7, Windows 2008 R2 vagy Windows 8-ban.
-* .NET-keretrendszer 4.5-ös vagy a .NET-keretrendszer 4.
+* Két Media Services fiók egy új vagy meglévő Azure-előfizetésben. Lásd: [Media Services-fiók létrehozása](media-services-portal-create-account.md).
+* Operációs rendszer: Windows 7, Windows 2008 R2 vagy Windows 8.
+* .NET-keretrendszer 4,5 vagy .NET-keretrendszer 4.
 * Visual Studio 2010 SP1 vagy újabb verzió (Professional, Premium, Ultimate vagy Express).
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
-Ebben a szakaszban létre, és állítsa be a C# Konzolalkalmazás-projektet.
+Ebben a szakaszban egy C# Console Application-projektet hoz létre és állít be.
 
-1. Hozzon létre egy új megoldás, amely tartalmazza a C# Konzolalkalmazás-projektet a Visual Studio használatával. Adja meg **HandleRedundancyForOnDemandStreaming** a nevet, majd kattintson a **OK**.
-2. Hozzon létre a **SupportFiles** mappát ugyanazon a szinten, a **HandleRedundancyForOnDemandStreaming.csproj** soubor projektu. Alatt a **SupportFiles** mappában hozzon létre a **OutputFiles** és **MP4Files** mappákat. Másolja be egy .mp4-fájlt a **MP4Files** mappát. (Ebben a példában a **BigBuckBunny.mp4** fájlt használja.) 
-3. Használat **Nuget** hozzáadása a Media Services kapcsolódó DLL-ek mutató hivatkozásokat. A **Visual Studio főmenü**válassza **eszközök** > **kódtár Csomagkezelője** > **Package Manager Console**. A konzol ablakában írja be a **Install-Package windowsazure.mediaservices**, és nyomja le az Enter billentyűt.
-4. Adja hozzá az mutató hivatkozások, amelyek szükségesek a projekthez: System.Configuration, System.Runtime.Serialization, and System.Web.
-5. Cserélje le **használatával** hozzáadott utasítások a **Programs.cs** fájl alábbi olyanokra alapértelmezés szerint:
+1. A Visual Studióval hozzon létre egy új megoldást, C# amely tartalmazza a konzol alkalmazás projektjét. Adja meg a **HandleRedundancyForOnDemandStreaming** nevet, majd kattintson **az OK**gombra.
+2. Hozza létre a **SupportFiles** mappát ugyanazon a szinten, mint a **HandleRedundancyForOnDemandStreaming. csproj** Project fájl. A **SupportFiles** mappában hozza létre a **OutputFiles** és a **MP4Files** mappát. Másolja egy. MP4-fájlt a **MP4Files** mappába. (Ebben a példában a rendszer a **BigBuckBunny. mp4** fájlt használja.) 
+3. A **Nuget** használatával a Media Serviceshoz kapcsolódó dll-ekre mutató hivatkozásokat adhat hozzá. A **Visual Studio főmenüjében**válassza az **eszközök** > **Library** csomagkezelő > **Package Manager konzol**lehetőséget. A konzol ablakban írja be a következőt: **Install-Package windowsazure. Mediaservices**, majd nyomja le az ENTER billentyűt.
+4. Adja meg a projekthez szükséges egyéb hivatkozásokat: System. Configuration, System. Runtime. szerializálás és System. Web.
+5. Cserélje le a **Programs.cs** -fájlhoz hozzáadott utasítások **használatát** a következő esetekben:
    
         using System;
         using System.Configuration;
@@ -82,7 +82,7 @@ Ebben a szakaszban létre, és állítsa be a C# Konzolalkalmazás-projektet.
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
         using Microsoft.WindowsAzure.Storage.Auth;
-6. Adja hozzá a **appSettings** részt a **.config** fájlt, és az értékek alapján a Media Services és a Storage update kulcsra, és adja az értékeket. 
+6. Adja hozzá a **appSettings** szakaszt a **. config** fájlhoz, és frissítse az értékeket a Media Services és a tárolási kulcs és a név értékei alapján. 
    
         <appSettings>
           <add key="MediaServicesAccountNameSource" value="Media-Services-Account-Name-Source"/>
@@ -95,10 +95,10 @@ Ebben a szakaszban létre, és állítsa be a C# Konzolalkalmazás-projektet.
           <add key="MediaServicesStorageAccountKeyTarget" value=" Media-Services-Storage-Account-Key-Target" />
         </appSettings>
 
-## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>Adja hozzá a kódot, amely kezeli az igény szerinti folyamatos átvitel redundancia
-Ebben a szakaszban képes kezelni a redundancia hoz létre.
+## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>Redundanciát kezelő kód hozzáadása igény szerinti folyamatos átvitelhez
+Ebben a szakaszban létrehozza a redundancia kezelésére szolgáló képességet.
 
-1. Adja hozzá a következő osztályszintű mezőket a Program osztályhoz.
+1. Adja hozzá a következő osztály szintű mezőket a program osztályhoz.
        
         // Read values from the App.config file.
         private static readonly string MediaServicesAccountNameSource = ConfigurationManager.AppSettings["MediaServicesAccountNameSource"];
@@ -125,7 +125,7 @@ Ebben a szakaszban képes kezelni a redundancia hoz létre.
         static private MediaServicesCredentials _cachedCredentialsSource = null;
         static private MediaServicesCredentials _cachedCredentialsTarget = null;
 
-2. Az alapértelmezett fő metódus definícióját cserélje az azt követő. Lehet meghívni a fő módszert definíciókat alatt vannak meghatározva.
+2. Cserélje le az alapértelmezett fő metódus definícióját a következőre. A főkiszolgálóról hívott metódus-definíciók alább vannak meghatározva.
         
         static void Main(string[] args)
         {
@@ -203,10 +203,10 @@ Ebben a szakaszban képes kezelni a redundancia hoz létre.
                 writeSasLocator.Delete();
         }
 
-3. A következő metódus definíciókat lehet meghívni a fő.
+3. A következő metódus-definíciókat kell meghívni a Main-ból.
 
     >[!NOTE]
-    >Nincs a korlát 1 000 000 szabályzat különböző Media Services-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében. Szabályzatazonosítónak kell használnia, ha mindig használja ugyanazokat a napokat és a hozzáférési engedélyeket. Például ugyanazzal az Azonosítóval szabályzatokat használó keresők olyan továbbra is helyben hosszú ideje (nem feltöltött szabályzatokat). További információkért lásd: [ebben a témakörben](media-services-dotnet-manage-entities.md#limit-access-policies).
+    >A különböző Media Services házirendek (például a lokátor házirend vagy a ContentKeyAuthorizationPolicy) esetében legfeljebb 1 000 000 szabályzat létezik. Ha mindig ugyanazokat a napokat és hozzáférési engedélyeket használja, ugyanazt a házirend-azonosítót kell használnia. Használja például ugyanazt az azonosítót olyan lokátorokra vonatkozó házirendekhez, amelyek hosszú ideig maradni kívánják (nem feltöltési szabályzatok). További információkat [ebben a témakörben](media-services-dotnet-manage-entities.md#limit-access-policies) talál.
 
         public static IAsset CreateAssetAndUploadSingleFile(CloudMediaContext context,
                                                         AssetCreationOptions assetCreationOptions,
@@ -930,8 +930,8 @@ Ebben a szakaszban képes kezelni a redundancia hoz létre.
             return request;
         }
 
-## <a name="next-steps"></a>További lépések
-Mostantól használhatja a traffic manager irányíthatja a kérelmeket a két adatközpont között, és így átadja a feladatokat e szolgáltatáskimaradás esetén.
+## <a name="next-steps"></a>Következő lépések
+Mostantól a Traffic Manager segítségével átirányíthatja a kérelmeket a két adatközpont között, így bármilyen kimaradás esetén feladatátvételt hajthat végre.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

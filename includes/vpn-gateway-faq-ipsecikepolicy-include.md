@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 345822847ddd60794cd912ccb52c14f6e240cd66
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 80c961c1aa4da199fa87b97bc8e0a37e60c2235f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075403"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74903109"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN-átjáróhoz tartozó termékváltozat támogatja az egyéni IPsec/IKE-házirendet?
 Az Egyéni IPsec/IKE-házirendet az alapszintű SKU kivételével az összes Azure-beli SKU támogatja.
@@ -110,7 +110,7 @@ Az IKEv1-kapcsolatok az alapszintű SKU kivételével minden Útvonalalapú VPN-
 Igen. A IKEv1 és a IKEv2 kapcsolatok közötti átvitel támogatott.
 
 ### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Használhatok IKEv1 helyek közötti kapcsolatokat a Útvonalalapú VPN-típusának alapszintű SKU-ban?
-Nem. Az összes Útvonalalapú VPN-SKU, kivéve az Útválasztás-alapú VPN-típus Alapszintű SKU-IKEv1-kapcsolatait a helyek közötti kapcsolathoz.
+Nem. Az alapszintű SKU nem támogatja ezt.
 
 ### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Módosíthatom a kapcsolati protokoll típusát a kapcsolat létrehozása után (IKEv1 a IKEv2 és fordítva)?
 Nem. A létrehozást követően a IKEv1/IKEv2 protokollok nem módosíthatók. Törölje, majd hozza létre újra a kívánt protokolltípus új kapcsolatát.

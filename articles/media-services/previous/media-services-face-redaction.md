@@ -1,6 +1,6 @@
 ---
 title: Arcok kivonása a Azure Media Analyticskal | Microsoft Docs
-description: Ez a témakör bemutatja, hogyan lehet kitakarni az arcokat az Azure Media Analytics használatával.
+description: A Azure Media Redactor egy Azure Media Analytics adathordozó-feldolgozó, amely méretezhető Arcfelismerés a felhőben. Ez a cikk bemutatja, hogyan lehet kitakarni az arcokat az Azure Media Analytics használatával.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e350b6ed90324e7ed645d85c046fd74c0a089452
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016019"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900301"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Arcok kivonása a Azure Media Analytics 
 ## <a name="overview"></a>Áttekintés
@@ -29,16 +29,16 @@ Ez a cikk részletesen ismerteti a **Azure Media redactor** , és bemutatja, hog
 ## <a name="face-redaction-modes"></a>Szembenéző kivonási módok
 Az arc-kivonás úgy működik, hogy a videó minden képkockájában felderíti az arcokat, és nyomon követi a Face objektumot az időben és visszafelé, így ugyanazokat a személyeket más nézőpontokból is el lehet tekinteni. Az automatikus kivonási folyamat összetett, és nem mindig a kívánt kimenet 100%-át hozza létre, ezért Media Analytics a végső kimenet módosításának néhány módját is lehetővé teszi.
 
-A teljesen automatikus mód mellett van egy kétlépéses munkafolyamat is, amely lehetővé teszi, hogy a talált arcok kiválasztása/kiválasztása az azonosítók listáján keresztül történjen. Azt is megteheti, hogy a frame-beállítások alapján tetszőlegesen beállítható, hogy a felügyeleti csomag JSON formátumú metaadat-fájlt használ. A munkafolyamat **elemzése** és kivonási módokra van bontva. A két mód egyetlen menetben is egyesíthető, amely egy feladatban mindkét feladatot futtatja; ezt a módot összevontnak nevezzük.
+A teljesen automatikus mód mellett van egy kétlépéses munkafolyamat is, amely lehetővé teszi, hogy a talált arcok kiválasztása/kiválasztása az azonosítók listáján keresztül történjen. Azt is megteheti, hogy a frame-beállítások alapján tetszőlegesen beállítható, hogy a felügyeleti csomag JSON formátumú metaadat-fájlt használ. A munkafolyamat **elemzése** és **kivonási** módokra van bontva. A két mód egyetlen menetben is egyesíthető, amely egy feladatban mindkét feladatot futtatja; ezt a módot **Összevontnak**nevezzük.
 
 ### <a name="combined-mode"></a>Kombinált mód
 Ez automatikusan létrehoz egy kivont MP4-t manuális bevitel nélkül.
 
-| Fázis | Fájlnév | Megjegyzések |
+| Szakasz | Fájlnév | Megjegyzések |
 | --- | --- | --- |
 | Bemeneti eszköz |foo. bar |Videó WMV, MOV vagy MP4 formátumban |
 | Bemeneti konfiguráció |Feladatokhoz beállított konfiguráció |{"version": "1.0", "Options": {"Mode": "combined"}} |
-| Kimeneti eszköz |foo_redacted.mp4 |Videó az elmosódás alkalmazásával |
+| Kimeneti eszköz |foo_redacted. MP4 |Videó az elmosódás alkalmazásával |
 
 #### <a name="input-example"></a>Bemeneti példa:
 [videó megtekintése](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
@@ -49,12 +49,12 @@ Ez automatikusan létrehoz egy kivont MP4-t manuális bevitel nélkül.
 ### <a name="analyze-mode"></a>Elemzési mód
 A kétlépéses munkafolyamat **elemzése** átveszi a videó bemenetét, és az összes észlelt arc egy JSON-fájlját, valamint a jpg-képeket hozza létre.
 
-| Fázis | Fájlnév | Megjegyzések |
+| Szakasz | Fájlnév | Megjegyzések |
 | --- | --- | --- |
 | Bemeneti eszköz |foo. bar |Videó WMV, MPV vagy MP4 formátumban |
 | Bemeneti konfiguráció |Feladatokhoz beállított konfiguráció |{"version": "1.0", "Options": {"Mode": "elemzés"}} |
-| Kimeneti eszköz |foo_annotations.json |Az arc helyeinek megjegyzései JSON formátumban. Ezt a felhasználó módosíthatja az elmosódást határoló mezők módosításához. Lásd az alábbi mintát. |
-| Kimeneti eszköz |foo_thumb%06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Az egyes észlelt arcoknál az összes megjelenített jpg, ahol a szám az arc labelId jelöli. |
+| Kimeneti eszköz |foo_annotations. JSON |Az arc helyeinek megjegyzései JSON formátumban. Ezt a felhasználó módosíthatja az elmosódást határoló mezők módosításához. Lásd az alábbi mintát. |
+| Kimeneti eszköz |foo_thumb %0 6 d. jpg [foo_thumb000001. jpg, foo_thumb000002. jpg] |Az egyes észlelt arcoknál az összes megjelenített jpg, ahol a szám az arc labelId jelöli. |
 
 #### <a name="output-example"></a>Példa a kimenetre:
 
@@ -114,20 +114,20 @@ Ide tartozik az életlenítés, az eredeti videó és a jegyzetek JSON-azonosít
 
 Az elemzés menetének kimenete nem tartalmazza az eredeti videót. A videót fel kell tölteni a bemeneti eszközbe a kivonási mód feladathoz, és az elsődleges fájlként kell kiválasztani.
 
-| Fázis | Fájlnév | Megjegyzések |
+| Szakasz | Fájlnév | Megjegyzések |
 | --- | --- | --- |
 | Bemeneti eszköz |foo. bar |Videó WMV-, MPV-vagy MP4-formátumban. Ugyanaz a videó, mint az 1. lépésben. |
-| Bemeneti eszköz |foo_annotations.json |Megjegyzések metaadatainak fájlja az első fázisból, választható módosításokkal. |
+| Bemeneti eszköz |foo_annotations. JSON |Megjegyzések metaadatainak fájlja az első fázisból, választható módosításokkal. |
 | Bemeneti eszköz |foo_IDList. txt (nem kötelező) |A kibontani kívánt arc-azonosítók új, sorba tagolt listája. Ha üresen hagyja, az elmossa az összes arcot. |
 | Bemeneti konfiguráció |Feladatokhoz beállított konfiguráció |{"version": "1.0", "Options": {"Mode": "kivonás"}} |
-| Kimeneti eszköz |foo_redacted.mp4 |Videó az elmosódást alkalmazva a jegyzetek alapján |
+| Kimeneti eszköz |foo_redacted. MP4 |Videó az elmosódást alkalmazva a jegyzetek alapján |
 
 #### <a name="example-output"></a>Példa kimenetre
 Egy kiválasztott AZONOSÍTÓval rendelkező IDList kimenete.
 
 [videó megtekintése](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
-Példa a foo_IDList. txt fájlra
+Példa foo_IDList. txt fájlra
  
      1
      2
@@ -135,7 +135,7 @@ Példa a foo_IDList. txt fájlra
 
 ## <a name="blur-types"></a>Életlenítési típusok
 
-A **kombinált** vagy a kivonási módban 5 különböző életlenítési mód közül választhat a JSON bemeneti konfigurációjának használatával: **Alacsony**, **Med**, **magas**, **doboz**és **fekete**. Alapértelmezés szerint a **Med** használatos.
+A **kombinált** vagy a **kivonási** módban 5 különböző életlenítési mód közül választhat a JSON bemeneti konfigurációjának használatával: **alacsony**, **Med**, **magas**, **doboz**és **fekete**. Alapértelmezés szerint a **Med** használatos.
 
 Az alábbi életlenítési típusok mintáit találhatja meg.
 
@@ -363,7 +363,7 @@ namespace FaceRedaction
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

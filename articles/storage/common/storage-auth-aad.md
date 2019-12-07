@@ -1,22 +1,23 @@
 ---
-title: Azure-blobok és-várólisták hozzáférésének engedélyezése Azure Active Directory használatával | Microsoft Docs
+title: Blobokhoz és várólistákhoz való hozzáférés engedélyezése Active Directory használatával
+titleSuffix: Azure Storage
 description: Az Azure-blobokhoz és-várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: aed61e5cf32ed0148e8b9eee6edf44daa03acd17
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 445d98ab07a91b056d4cf747f7c0f4cf1cdf9d53
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598105"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891813"
 ---
-# <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Azure-blobok és-várólisták hozzáférésének engedélyezése Azure Active Directory használatával
+# <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával
 
 Az Azure Storage támogatja a Azure Active Directory (AD) használatát a blob-és üzenetsor-tárolásra vonatkozó kérések engedélyezéséhez. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) használatával adhat meg engedélyeket egy rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű szolgáltatásnév. A rendszerbiztonsági tag hitelesítése az Azure AD által OAuth 2,0 token visszaküldésével történik. A jogkivonat használatával engedélyezhető az erőforrás elérésére irányuló kérelem a blob vagy a várólista-tárolóban.
 

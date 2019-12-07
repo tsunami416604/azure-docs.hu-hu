@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 10/10/2019
+ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca38ebb015552042591fb4cc6b7edfe99527e79f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007053"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900271"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>A Time Series Insights-környezet problémáinak diagnosztizálása és megoldása
 
@@ -34,11 +34,11 @@ A [Azure Time Series Insights Explorer](https://insights.timeseries.azure.com) s
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>A ok: az eseményforrás-adatforrások nem JSON formátumúak
 
-A Azure Time Series Insights csak a JSON-adatkezelést támogatja. JSON-minták, lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+A Azure Time Series Insights csak a JSON-adatkezelést támogatja. JSON-minták esetében lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>B ok: az eseményforrás kulcsa hiányzik egy szükséges engedély
 
-* Az Azure IoT Hub IoT hub esetében meg kell adnia a **szolgáltatás-csatlakozási** engedélyekkel rendelkező kulcsot. A **iothubowner** vagy a **szolgáltatási** házirendek egyike is működni fog, mivel mindkettőnek van **Service-csatlakozási** engedélye.
+* Az Azure IoT Hub IoT hub esetében meg kell adnia a **szolgáltatás-csatlakozási** engedélyekkel rendelkező kulcsot. Válassza ki a **iothubowner** vagy a **szolgáltatási** házirendeket, mivel mindkettő rendelkezik **Service-csatlakozási** engedéllyel.
 
    [![IoT Hub szolgáltatás csatlakozási engedélyei](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
@@ -50,13 +50,17 @@ A Azure Time Series Insights csak a JSON-adatkezelést támogatja. JSON-minták,
 
 IoT hub vagy Event hub regisztrálása esetén fontos beállítani az adatolvasáshoz használni kívánt fogyasztói csoportot. Ez a fogyasztói csoport *nem*osztható meg. Ha a fogyasztói csoport meg van osztva, a mögöttes IoT hub vagy Event hub automatikusan és véletlenszerűen bontja le az egyik olvasót. Adjon meg egy egyedi fogyasztói csoportot, amelyből a Time Series Insights olvasható.
 
+### <a name="cause-d-the-environment-has-just-been-provisioned"></a>D ok: a környezet üzembe helyezése megtörtént
+
+Az adat a környezet és az adatai első létrehozása után néhány percen belül megjelenik a Time Series Insights Explorerben.
+
 ## <a name="problem-some-data-is-shown-but-data-is-missing"></a>Probléma: bizonyos adatértékek megjelennek, de hiányoznak az adathalmazok.
 
 Ha az adathalmazok csak részben jelennek meg, és az adatvesztésnek tűnik, érdemes több lehetőséget is megfontolni.
 
 ### <a name="cause-a-your-environment-is-being-throttled"></a>A ok: a környezet szabályozása folyamatban van
 
-A szabályozás gyakori probléma, ha a környezetek kiépítését az adatforrást tartalmazó eseményforrás létrehozása után kell kiépíteni. Az Azure IoT Hub és az Azure Events hubok akár hét napig tárolják az adattárolást. Time Series Insights mindig a legrégebbi eseménysel kezdjen az esemény forrásában (első, első vagy *FIFO*).
+A [szabályozás](time-series-insights-environment-mitigate-latency.md) gyakori probléma, ha a környezetek kiépítését az adatforrást tartalmazó eseményforrás létrehozása után kell kiépíteni. Az Azure IoT Hub és az Azure Events hubok akár hét napig tárolják az adattárolást. Time Series Insights mindig a legrégebbi eseménysel kezdjen az esemény forrásában (első, első vagy *FIFO*).
 
 5 000 000 ha például egy S1-hez, egy egység Time Series Insights környezethez csatlakozik, akkor a Time Series Insights naponta körülbelül 1 000 000 eseményt olvas be. Előfordulhat, hogy a Time Series Insights öt nap késést tapasztal. Azonban mi történik, a környezet szabályozása folyamatban van.
 

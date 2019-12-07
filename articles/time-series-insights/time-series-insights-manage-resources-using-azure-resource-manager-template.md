@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: acafb9aab756507bb073b3e883ee190c72b4f9f8
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e5e04716ae67df94428a678f6572738d4ad46232
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006771"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901463"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights erőforrások létrehozása Azure Resource Manager sablonok használatával
 
@@ -57,7 +57,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
 
     <div id="required-parameters"></div>
 
-   * Szükséges paraméterek
+   * Kötelező paraméterek
 
      | Paraméter | Leírás |
      | --- | --- |
@@ -69,7 +69,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
 
     <div id="optional-parameters"></div>
 
-   * Választható paraméterek
+   * Opcionális paraméterek
 
      | Paraméter | Leírás |
      | --- | --- |
@@ -148,7 +148,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
 
 1. Hozzon létre egy új erőforráscsoportot, ha még nem létezik ilyen.
 
-   * Ha nem rendelkezik meglévő erőforráscsoporthoz, hozzon létre egy új erőforráscsoportot a **New-AzResourceGroup** paranccsal. Adja meg az erőforráscsoport nevét és a használni kívánt helyet. Például:
+   * Ha nem rendelkezik meglévő erőforráscsoporthoz, hozzon létre egy új erőforráscsoportot a **New-AzResourceGroup** paranccsal. Adja meg az erőforráscsoport nevét és a használni kívánt helyet. Példa:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"
@@ -188,7 +188,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
       ```
 
-    * A telepítési parancsmag futtatásakor beágyazott paramétereket is használhat. A parancs a következő:
+    * A telepítési parancsmag futtatásakor beágyazott paramétereket is használhat. A parancs formátuma a következő:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
@@ -200,7 +200,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
       ```
 
-1. A telepítés ellenőrzése
+1. Az üzemelő példány ellenőrzése
 
     * Ha az erőforrások központi telepítése sikeresen megtörtént, a központi telepítés összegzése megjelenik a PowerShell-ablakban:
 

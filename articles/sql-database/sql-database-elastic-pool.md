@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: ba309b864056b10fe6540e85ffbc4c013af00455
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186469"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901179"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>A rugalmas készletek segítségével több Azure SQL Database-adatbázist kezelhet és méretezheti
 
-Az SQL Database rugalmas készletei egyszerű, költséghatékony megoldást kínálnak egyszerre több olyan adatbázis kezelésére és méretezésére, amelyek felhasználási igénye nagy mértékben és kiszámíthatatlanul változik. A rugalmas készletben lévő adatbázisok egyetlen Azure SQL Database-kiszolgálón találhatók, és meghatározott áron oszthatják meg az erőforrásokat. Az Azure SQL Database rugalmas készleteivel az SaaS-fejlesztők az előre meghatározott költségvetésen belül maradva optimalizálhatják az adatbáziscsoportok ár-teljesítmény arányát, és rugalmas teljesítményt biztosíthatnak az egyes adatbázisokhoz.
+Az SQL Database rugalmas készletei egyszerű, költséghatékony megoldást kínálnak egyszerre több olyan adatbázis kezelésére és méretezésére, amelyek felhasználási igénye nagy mértékben és kiszámíthatatlanul változik. A rugalmas készlethez tartozó adatbázisok egyetlen Azure SQL Database-kiszolgálón találhatók, és meghatározott számú erőforrással rendelkeznek előre megállapított áron. Az Azure SQL Database rugalmas készleteivel az SaaS-fejlesztők az előre meghatározott költségvetésen belül maradva optimalizálhatják az adatbáziscsoportok ár-teljesítmény arányát, és rugalmas teljesítményt biztosíthatnak az egyes adatbázisokhoz.
 
 ## <a name="what-are-sql-elastic-pools"></a>Mik a rugalmas SQL-készletek
 
-A SaaS-fejlesztők több adatbázisból álló nagyméretű adatrétegekre építenek alkalmazásokat. Gyakori alkalmazásminta az önálló adatbázis biztosítása minden egyes ügyfél számára. A különböző ügyfelek felhasználási mintája nagymértékben és kiszámíthatatlan módon változik, ezért nehéz megjósolni az adatbázis minden egyes felhasználójának erőforrásigényét. Hagyományosan két lehetőség közül választhat:
+A SaaS-fejlesztők több adatbázisból álló nagyméretű adatrétegekre építenek alkalmazásokat. Gyakori alkalmazásminta az önálló adatbázis biztosítása minden egyes ügyfél számára. A különböző ügyfelek azonban gyakran eltérő és kiszámíthatatlan használati mintákkal rendelkeznek, és nehéz megbecsülni az egyes adatbázis-felhasználók erőforrás-követelményeit. Hagyományosan két lehetőség közül választhat:
 
 - Többek között kiépíthető erőforrások a csúcsérték-használat és a fizetések alapján, vagy
 - A kiépítés a költségek megtakarítása érdekében, a teljesítmény és az ügyfelek elégedettségének rovására a csúcsok során.
@@ -48,7 +48,7 @@ A készleten belül az önálló adatbázisok az automatikus méretezés rugalma
 
 A készleteket kifejezetten a nagy számú, speciális felhasználási mintákkal rendelkező adatbázisokhoz tervezték. Az egyes adatbázisok mintáit átlagosan alacsony, és viszonylag rendszertelen időközönkénti hirtelen megugró kihasználtság jellemzi.
 
-Minél több adatbázist tud hozzáadni egy készlethez, annál többet takaríthat meg. Az alkalmazás használati mintáitól függően már akár két S3-adatbázissal is megtakarítást érhet el.
+Minél több adatbázist tud hozzáadni egy készlethez, annál többet takaríthat meg. Az alkalmazás kihasználtsági mintája alapján megtekintheti a megtakarítást akár két S3-adatbázis között.
 
 A következő szakaszokból megtudhatja, hogyan mérje fel, hogy előnyös-e, ha egy adott adatbázis-gyűjtemény egy készlethez tartozik. A példákban Standard készletek szerepelnek, de ugyanezen elvek alkalmazhatók az Alapszintű és a Premium készletekre is.
 
@@ -95,7 +95,7 @@ Az erőforrások megosztásával a készletben lévő összes adatbázis nem tud
 
 Ha csökkenteni szeretnénk három S3-adatbázis költségét egy 200 eDTU-s készletben, akkor a háromból egyszerre legfeljebb kettő működhet kiugró kihasználtsággal. Ha ebből a három S3-adatbázisból több mint kettő működik egyszerre kiugró kihasználtsággal, akkor a készletnek több mint 200 eDTU-t kellene tartalmaznia. Ha a készlet átméretezése több mint 200 Edtu, a készlethez több S3-adatbázist kell hozzáadni, hogy a költségek kevesebbek legyenek, mint az önálló adatbázisok számítási méretei.
 
-Ne feledje, hogy ebben a példában nem vesszük számításba a készlet egyéb adatbázisainak kihasználását. Ha egy adott időpontban minden adatbázis használatban van valamilyen szinten, akkor az adatbázisok kevesebb mint kétharmad része (vagy 67%-a) működhet egyszerre kiugró kihasználtsággal.
+Vegye figyelembe, hogy ez a példa nem veszi figyelembe a készletben lévő más adatbázisok kihasználtságát. Ha egy adott időpontban minden adatbázis használatban van valamilyen szinten, akkor az adatbázisok kevesebb mint kétharmad része (vagy 67%-a) működhet egyszerre kiugró kihasználtsággal.
 
 ### <a name="resource-utilization-per-database"></a>Erőforrás-használat/adatbázis
 
@@ -155,7 +155,7 @@ A rugalmas készletbe helyezett adatbázisok általánosságban ugyanazokat [az 
 
 Kétféle módon hozhat létre rugalmas készletet a Azure Portal.
 
-1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az Azure SQL nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az *Azure SQL* kifejezést a keresőmezőbe.
+1. Rugalmas készlet létrehozásához nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **Azure SQL**elemet.
 2. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A rugalmas készletekre vonatkozó további információkat az **adatbázisok** csempén látható **Részletek megjelenítése** lehetőség kiválasztásával tekintheti meg.
 3. Az **adatbázisok** csempén válassza a **rugalmas készlet** lehetőséget az **Erőforrás típusa** legördülő menüben, majd válassza a **Létrehozás**lehetőséget:
 
@@ -177,7 +177,7 @@ Ha befejezte a készlet konfigurálását, kattintson az Alkalmaz gombra, nevezz
 
 A Azure Portal egy rugalmas készlet és a készleten belüli adatbázisok kihasználtságának figyelésére van lehetőség. A rugalmas készlet módosításait is elvégezheti, és egyszerre is elküldheti az összes módosítást. Ezek a változások közé tartoznak az adatbázisok hozzáadása vagy eltávolítása, a rugalmas készlet beállításainak módosítása vagy az adatbázis beállításainak módosítása.
 
-A rugalmas készlet figyelésének megkezdéséhez keresse meg és nyissa meg a portálon egy rugalmas készletet. Ekkor megjelenik egy képernyő, amely áttekintést nyújt a rugalmas készlet állapotáról. Az érintett műveletek közé tartoznak az alábbiak:
+A rugalmas készlet figyelésének megkezdéséhez keresse meg és nyissa meg a portálon egy rugalmas készletet. Először egy képernyő jelenik meg, amely áttekintést nyújt a rugalmas készlet állapotáról. Az érintett műveletek közé tartoznak az alábbiak:
 
 - A rugalmas készlet erőforrásainak használatát bemutató diagramok figyelése
 - A rugalmas készletre vonatkozó legutóbbi riasztások és javaslatok, ha vannak ilyenek
@@ -206,7 +206,7 @@ További mérőszámokat is kiválaszthat az adatbázis-táblázat egymás melle
 
 További információ: [SQL Database riasztások létrehozása Azure Portalokban](sql-database-insights-alerts-portal.md).
 
-## <a name="customer-case-studies"></a>Ügyféleset-tanulmányok
+## <a name="customer-case-studies"></a>Ügyfél-esettanulmányok
 
 - [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
 

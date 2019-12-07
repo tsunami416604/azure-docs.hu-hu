@@ -1,22 +1,21 @@
 ---
-title: 'PowerShell-parancsfájl: adatok másolása a helyszínről az Azure-ba Data Factory használatával '
+title: Adatok másolása a helyszínről az Azure-ba a PowerShell használatával
 description: Ez a PowerShell-parancsfájl egy helyszíni SQL Server adatbázisból egy másik Azure-Blob Storageba másolja az adatait.
 services: data-factory
-author: linda33wj
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: d7f8d67291c0b6b2a384331c014fdd5cd247ceae
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: linda33wj
+manager: shwang
+ms.date: 10/31/2017
+ms.openlocfilehash: f75c4316383120e198ab57501e31c0c42a8917f2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684344"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890844"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>A PowerShell használata a helyszíni adatok Azure-ba való másolásához szükséges adatfeldolgozó-folyamat létrehozásához
 
@@ -91,7 +90,7 @@ Ez a szkript a következő parancsokat használja:
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c487ed02abda652a384f2f295c3edac4b56fc654
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7e8ce4f2fbdffc46d18a5f94496e9433c01a65fb
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027249"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900928"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Dinamikus csoport létrehozása és az állapot ellenõrzése
 
@@ -47,10 +47,10 @@ A tagsági szabályok szintaxisára, támogatott tulajdonságaira, operátorára
 ## <a name="to-create-a-group-membership-rule"></a>Csoporttagság-szabály létrehozása
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a bérlő globális rendszergazdája, Intune-rendszergazdája vagy felhasználói rendszergazdai szerepköre.
-1. Válassza a **csoportok**lehetőséget.
+1. **Csoportok**keresése és kiválasztása.
 1. Válassza ki **az összes csoportot**, és válassza az **új csoport**lehetőséget.
 
-   ![Válassza ki az új csoport hozzáadására szolgáló parancsot](./media/groups-create-rule/new-group-creation.png)
+   ![Válassza ki az új csoport hozzáadására szolgáló parancsot](./media/groups-create-rule/create-new-group-azure-active-directory.png)
 
 1. A **csoport** lapon adja meg az új csoport nevét és leírását. Válasszon **tagsági típust** a felhasználók vagy eszközök számára, majd válassza a **dinamikus lekérdezés hozzáadása**lehetőséget. A szabály-szerkesztő legfeljebb öt kifejezést támogat. Ötnél több kifejezés hozzáadásához a szövegmezőt kell használnia.
 
@@ -88,7 +88,7 @@ A következő állapotüzenetek jeleníthetők meg a **tagság utolsó frissít�
 - **Folyamatban**: a frissítések jelenleg folyamatban vannak.
 - **Ismeretlen**: az utolsó frissítés időpontja nem olvasható be. Lehet, hogy a csoport új.
 
-Ha hiba lép fel egy adott csoport tagsági szabályának feldolgozása közben, a rendszer riasztást jelenít meg a csoport **Áttekintés oldalának** tetején. Ha a bérlőn belüli összes csoportra vonatkozóan még 24 óráig nem dolgozható fel a függőben lévő dinamikus tagsági frissítések, a rendszer az **összes csoport**tetején riasztást jelenít meg.
+Ha hiba lép fel egy adott csoport tagsági szabályának feldolgozása közben, a rendszer riasztást jelenít meg a csoport **Áttekintés oldalának** tetején. Ha a bérlőn belüli összes csoportra vonatkozóan 24 óránál hosszabb ideig nem dolgozható fel függőben lévő dinamikus tagsági frissítés, a rendszer riasztást jelenít meg az **összes csoport**tetején.
 
 ![hibaüzenetek feldolgozása – riasztások](./media/groups-create-rule/processing-error.png)
 

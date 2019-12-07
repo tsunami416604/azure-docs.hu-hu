@@ -1,5 +1,5 @@
 ---
-title: Az adatátalakítás a Hadoop-struktúra tevékenységgel Azure Data Factory
+title: Adatátalakítás az Hadoop-struktúra tevékenységével
 description: Megtudhatja, hogyan használhatja a kaptár tevékenységeket egy Azure-beli adatgyárban a kaptár-lekérdezések futtatásához egy igény szerinti vagy saját HDInsight-fürtön.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: c423192624ecc76e839f9fee434956f4d57aefdc
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 84c7ff8268934c771a056e41cd2bf484b8674302
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683912"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893824"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Az adatátalakítás a Hadoop-struktúra tevékenységgel Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -56,7 +56,7 @@ Ha még nem ismeri a Azure Data Factoryt, olvassa el a [Azure Data Factory bevez
 }
 ```
 ## <a name="syntax-details"></a>Szintaxis részletei
-| Tulajdonság            | Leírás                                                  | Kötelező |
+| Tulajdonság            | Leírás                                                  | Szükséges |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | név                | A tevékenység neve                                         | Igen      |
 | leírás         | A tevékenység által használt szöveg leírása                | Nem       |
@@ -69,7 +69,7 @@ Ha még nem ismeri a Azure Data Factoryt, olvassa el a [Azure Data Factory bevez
 | meghatározza             | Adja meg a paramétereket kulcs/érték párokként a kaptár-parancsfájlon belüli hivatkozáshoz. | Nem       |
 | queryTimeout        | Lekérdezés időtúllépési értéke (percben). Akkor alkalmazható, ha a HDInsight-fürt Enterprise Security Package engedélyezve van. | Nem       |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást: 
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)

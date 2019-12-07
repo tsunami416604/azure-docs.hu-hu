@@ -3,12 +3,12 @@ title: 'GYIK: Azure Files biztonsági mentése'
 description: Ebből a cikkből megismerheti az Azure-fájlmegosztás Azure Backup szolgáltatással való védelemmel kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bf04458d859601de7ca0e9d07f6a3dbf506a51e6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bc4d7f9ad6512831687b974ae68870314775457d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173105"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892568"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 
@@ -70,6 +70,18 @@ Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban é
 - US Gov Arizona (UGA)
 - US Gov Texas (UGT)
 - US Gov Virginia (UGV)
+- Közép-Ausztrália (ACL)
+- Nyugat-India (INW)
+- Dél-Afrika északi régiója (SAN)
+- Észak-Egyesült Arab (karbamid)
+- Közép-Franciaország (FRC)
+- Észak-Németország (GN)                       
+- Középnyugat-Németország (GWC)
+- Dél-Afrika nyugati régiója (SAW)
+- UAE Central (UAC)
+- NAZT (Kelet-Norvégia)     
+- NWW (Norvégia nyugati régiója)
+- SZN (Észak-Svájc)
 
 Ha a fenti listában nem szereplő régióban kell használnia ezt a megoldást, írjon a következő e-mail-címre: [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
 

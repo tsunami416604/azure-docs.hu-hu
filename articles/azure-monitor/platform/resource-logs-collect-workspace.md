@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 92de47041791c8b6c540844adb62391268b81c34
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200500"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894515"
 ---
 # <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-beli erőforrás-naplók gyűjtése Log Analytics munkaterületen Azure Monitor
 Az Azure-beli [erőforrás-naplók](resource-logs-overview.md) részletes és gyakori információkat biztosítanak az Azure-erőforrások belső működéséről. Ez a cikk ismerteti az erőforrás-naplók összegyűjtését egy Log Analytics munkaterületen, amely lehetővé teszi, hogy a rendszer hatékony naplók használatával elemezze Azure Monitor naplókban gyűjtött más figyelési adatokkal, valamint más Azure Monitor funkciók, például riasztások és vizualizációk. 
@@ -110,7 +110,7 @@ Folytassa az [Azure Updates](https://azure.microsoft.com/updates/) blogban az er
 ### <a name="column-limit-in-azurediagnostics"></a>Oszlop korlátja a AzureDiagnostics
 A Azure Monitor-naplókban található bármely táblához 500 tulajdonság van korlátozva. Ha elérte ezt a korlátot, minden olyan sor, amely az első 500-n kívüli tulajdonsággal rendelkező adatot tartalmaz, a rendszer elveszi a betöltési idő alatt. A *AzureDiagnostics* tábla kifejezetten erre a korlátozásra van kitéve, mivel az összes Azure-szolgáltatáshoz tartozó tulajdonságokat tartalmazza.
 
-Ha több szolgáltatásból gyűjt diagnosztikai naplókat, a _AzureDiagnostics_ túllépheti ezt a korlátot, és az adatok nem lesznek kimaradva. Amíg az összes Azure-szolgáltatás nem támogatja az erőforrás-specifikus üzemmódot, úgy kell beállítania az erőforrásokat, hogy több munkaterületre is írna, hogy csökkentse az 500-es oszlop korlátjának elérési lehetőségét.
+Ha több szolgáltatásból gyűjt erőforrás-naplókat, a _AzureDiagnostics_ túllépheti ezt a korlátot, és az adatok nem lesznek kimaradva. Amíg az összes Azure-szolgáltatás nem támogatja az erőforrás-specifikus üzemmódot, úgy kell beállítania az erőforrásokat, hogy több munkaterületre is írna, hogy csökkentse az 500-es oszlop korlátjának elérési lehetőségét.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 Azure Data Factory a naplók nagyon részletes készlete miatt egy olyan szolgáltatás, amely nagy számú oszlop írására és potenciálisan _AzureDiagnostics_ okozhatja a korlátot. Az erőforrás-specifikus mód engedélyezése előtt konfigurált diagnosztikai beállítások esetében minden egyes egyedi névvel ellátott felhasználói paraméterhez létrejön egy új oszlop, amely minden tevékenységre kiterjed. További oszlopok jönnek létre a tevékenységek bemenetének és kimenetének részletes természete miatt.

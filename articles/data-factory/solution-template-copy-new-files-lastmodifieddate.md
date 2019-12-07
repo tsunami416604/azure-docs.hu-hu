@@ -1,5 +1,5 @@
 ---
-title: Új és módosított fájlok másolása a LastModifiedDate használatával Azure Data Factory
+title: Új és módosított fájlok másolása a LastModifiedDate
 description: Megtudhatja, hogyan másolhat új és módosított fájlokat a LastModifiedDate és a Azure Data Factory használatával a megoldási sablonnal.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
-ms.openlocfilehash: aaa7114113d5f0330d2dc7d656b0d91963931512
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ca752fb75b8e151de925d3b5604a7e7182d82e92
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684226"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896292"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Új és módosított fájlok másolása a LastModifiedDate használatával Azure Data Factory
 
@@ -32,10 +32,10 @@ A sablon egyetlen tevékenységet tartalmaz:
 - **Másolja** az új és módosított fájlok másolását a LastModifiedDate egy adattárból a célhelyre.
 
 A sablon négy paramétert határoz meg:
--  A *FolderPath_Source* az a mappa elérési útja, ahol a forrás-áruházból beolvashatja a fájlokat. Az alapértelmezett értéket a saját mappa elérési útjára kell cserélnie.
--  A *FolderPath_Destination* az a mappa elérési útja, ahová a fájlokat másolni szeretné a célhelyre. Az alapértelmezett értéket a saját mappa elérési útjára kell cserélnie.
--  A *LastModified_From* segítségével kiválaszthatja azokat a fájlokat, amelyek LastModifiedDate attribútuma a DateTime érték után vagy azzal egyenlő.  Ahhoz, hogy csak az új fájlok legyenek kiválasztva, amelyek nem lettek átmásolva a legutóbbi időpontra, ez a DateTime érték lehet a folyamat utolsó indításakor elindított idő. Az alapértelmezett "2019-02-01T00:00:00Z" értéket lecserélheti a várt LastModifiedDate az UTC időzónában. 
--  A *LastModified_To* segítségével kiválaszthatja azokat a fájlokat, amelyek LastModifiedDate attribútuma a DateTime érték előtt van. Ha csak az új fájlokat szeretné kijelölni, amelyek nem lettek átmásolva a legutóbbi időpontra, akkor ez a DateTime érték lehet a jelenlegi időpont.  Az alapértelmezett "2019-02-01T00:00:00Z" értéket lecserélheti a várt LastModifiedDate az UTC időzónában. 
+-  *FolderPath_Source* a mappa elérési útja, ahol a forrás-áruházból beolvashatja a fájlokat. Az alapértelmezett értéket a saját mappa elérési útjára kell cserélnie.
+-  *FolderPath_Destination* a mappa elérési útja, ahová a fájlokat másolni szeretné a célhelyre. Az alapértelmezett értéket a saját mappa elérési útjára kell cserélnie.
+-  *LastModified_From* használatával kiválaszthatja azokat a fájlokat, amelyek LastModifiedDate attribútuma az adott datetime érték után vagy azzal egyenlő.  Ahhoz, hogy csak az új fájlok legyenek kiválasztva, amelyek nem lettek átmásolva a legutóbbi időpontra, ez a DateTime érték lehet a folyamat utolsó indításakor elindított idő. Az alapértelmezett "2019-02-01T00:00:00Z" értéket lecserélheti a várt LastModifiedDate az UTC időzónában. 
+-  *LastModified_To* használatával kiválaszthatja azokat a fájlokat, amelyek LastModifiedDate attribútuma a DateTime érték előtt van. Ha csak az új fájlokat szeretné kijelölni, amelyek nem lettek átmásolva a legutóbbi időpontra, akkor ez a DateTime érték lehet a jelenlegi időpont.  Az alapértelmezett "2019-02-01T00:00:00Z" értéket lecserélheti a várt LastModifiedDate az UTC időzónában. 
 
 ## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
 
@@ -51,7 +51,7 @@ A sablon négy paramétert határoz meg:
 
     ![Új kapcsolódás létrehozása a célhoz](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
 
-4. Válassza **a sablon használata**lehetőséget.
+4. Kattintson a **Sablon használata** lehetőségre.
 
     ![A sablon használata](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
     
@@ -83,7 +83,7 @@ A sablon négy paramétert határoz meg:
 
 10. Az eseményindító típushoz válassza a leválasztási időszak lehetőséget, majd **15 percenként** **állítsa be az** ismétlődést (bármely intervallumra módosítható), majd kattintson a **tovább**gombra.
 
-    ![Trigger létrehozása](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
+    ![Eseményindító létrehozása](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 11. Írja be az **trigger futtatási paramétereinek** értékét az alábbiak szerint, majd válassza a **Befejezés**lehetőséget.
     - **FolderPath_Source** =  **/Source/** .  A mappát lecserélheti a forrás adattárban.
@@ -107,6 +107,6 @@ A sablon négy paramétert határoz meg:
 
     ![Az eredmény áttekintése](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Data Factory bemutatása](introduction.md)

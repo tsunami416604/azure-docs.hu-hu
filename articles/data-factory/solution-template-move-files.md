@@ -1,5 +1,5 @@
 ---
-title: Fájlok áthelyezése a fájl alapú tárhely között Azure Data Factory használatával
+title: Fájlok áthelyezése a fájl alapú tárterület között
 description: Megtudhatja, hogyan helyezhet át fájlokat a fájl-alapú tárolók között Azure Data Factory használatával a megoldás sablon használatával.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: f6f83917e84a880fb86b5f592c4d51b03462753d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e0f9179918016b9eaec04b0d559e25ed7973f18a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684089"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896205"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Fájlok áthelyezése Azure Data Factory
 
@@ -38,12 +38,12 @@ A sablon öt tevékenységet tartalmaz:
 - A **delete** parancs törli a forrás-áruházból származó azonos fájlt.
 
 A sablon két paramétert határoz meg:
-- A *FolderPath_SourceStore* annak a forrásnak a mappájának elérési útja, ahová át szeretné helyezni a fájlokat. 
-- A *FolderPath_DestinationStore* a célhely azon mappájának elérési útja, ahová át szeretné helyezni a fájlokat. 
+- A *FolderPath_SourceStore* az a forrásként megadott mappa elérési útja, ahová át szeretné helyezni a fájlokat. 
+- *FolderPath_DestinationStore* a célhely azon mappájának elérési útja, ahová át szeretné helyezni a fájlokat. 
 
 ## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
 
-1. Lépjen a **fájlok áthelyezése** sablonhoz. Válassza a meglévő kapcsolatok lehetőséget, vagy hozzon létre egy **új** kapcsolódást a forrásfájl-tárolóhoz, ahová át szeretné helyezni a fájlokat. Ügyeljen arra, hogy a **DataSource_Folder** és a **DataSource_File** ugyanarra a kapcsolódásra hivatkozzon a forrásfájl-tárolóban.
+1. Lépjen a **fájlok áthelyezése** sablonhoz. Válassza a meglévő kapcsolatok lehetőséget, vagy hozzon létre egy **új** kapcsolódást a forrásfájl-tárolóhoz, ahová át szeretné helyezni a fájlokat. Vegye figyelembe, hogy **DataSource_Folder** és **DataSource_File** a forrásfájl-tárolóval azonos kapcsolatban hivatkozik.
 
     ![Új kapcsolódás létrehozása a forráshoz](media/solution-template-move-files/move-files1.png)
 
@@ -51,7 +51,7 @@ A sablon két paramétert határoz meg:
 
     ![Új kapcsolódás létrehozása a célhoz](media/solution-template-move-files/move-files2.png)
 
-3. Válassza **a sablon használata**lehetőséget.
+3. Kattintson a **Sablon használata** lehetőségre.
 
     ![A sablon használata](media/solution-template-move-files/move-files3.png)
     
@@ -67,7 +67,7 @@ A sablon két paramétert határoz meg:
 
     ![Az eredmény áttekintése](media/solution-template-move-files/move-files6.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Új és módosított fájlok másolása a LastModifiedDate használatával Azure Data Factory](solution-template-copy-new-files-lastmodifieddate.md)
 

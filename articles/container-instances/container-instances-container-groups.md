@@ -4,12 +4,12 @@ description: További információ a Azure Container Instances lévő tárolók 
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: bba0aa35ef52d498bdb2028c7180f01b6c5f81ec
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c4d5217fe96ca2669397bb7f2a94c6394c002534
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706328"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896578"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Tároló-csoportok a Azure Container Instances
 
@@ -68,7 +68,9 @@ További információ: [ResourceRequirements][resource-requirements] tulajdonsá
 
 ## <a name="networking"></a>Hálózatkezelés
 
-A Container groups egy IP-címet és egy port névteret oszt meg az adott IP-címen. Ahhoz, hogy a külső ügyfelek elérjék a csoporton belüli tárolókat, ki kell jelölnie a portot az IP-címen és a tárolóból. Mivel a csoportba tartozó tárolók a portok névterét használják, a port megfeleltetése nem támogatott. A csoportokba tartozó tárolók a localhost-on keresztül érhetik el egymástól az általuk kitett portokon, még akkor is, ha ezek a portok nem a csoport IP-címén kívül vannak kitéve.
+A Container groups megoszthat egy külső elérésű IP-címet és egy port névterét az adott IP-címen. Ahhoz, hogy a külső ügyfelek elérjék a csoporton belüli tárolókat, ki kell jelölnie a portot az IP-címen és a tárolóból. Mivel a csoportba tartozó tárolók a portok névterét használják, a port megfeleltetése nem támogatott. 
+
+A tárolók csoportjain belül a containers-példányok a localhost-on keresztül bármely porton elérhetők, még akkor is, ha ezek a portok nincsenek kitéve a csoport IP-címén vagy a tárolóból.
 
 A tároló-csoportok üzembe helyezése egy Azure-beli [virtuális hálózatban][virtual-network] (előzetes verzió), amely lehetővé teszi, hogy a tárolók biztonságosan kommunikáljanak a virtuális hálózat más erőforrásaival.
 

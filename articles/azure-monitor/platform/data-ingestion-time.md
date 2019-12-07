@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 8b40d89920208eaf15e01b3519b667a77baf8671
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bd6590ebbd33dc5c9b65fc193679f4bf99760c3a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932567"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894147"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Adatfeldolgozási idő naplózása Azure Monitor
 A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A naplózási adatok begyűjtése után elérhetővé tételével kapcsolatban gyakran merül fel kérdések. Ez a cikk a késést befolyásoló különféle tényezőket ismerteti.
@@ -40,10 +40,10 @@ Az ügynökök és a felügyeleti megoldások különböző stratégiák haszná
 ### <a name="agent-upload-frequency"></a>Ügynök feltöltésének gyakorisága
 Annak biztosítása érdekében, hogy az Log Analytics-ügynök könnyű legyen, az ügynök pufferei naplózzák és rendszeresen feltöltik őket a Azure Monitorba. A feltöltés gyakorisága 30 másodperc és 2 perc között változik az adatok típusától függően. A legtöbb adat 1 percenként van feltöltve. Előfordulhat, hogy a hálózati feltételek negatív hatással vannak az adatmennyiség késésére Azure Monitor a betöltési pont eléréséhez.
 
-### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Azure-tevékenységek naplói, diagnosztikai naplók és metrikák
+### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Azure-tevékenységek naplói, erőforrás-naplók és metrikák
 Az Azure-beli adatmennyiség további időt vehet igénybe, hogy a feldolgozás során Log Analytics betöltési ponton elérhetővé váljon:
 
-- A diagnosztikai naplókból származó adatok az Azure-szolgáltatástól függően 2-15 percet vesznek igénybe. Tekintse meg az [alábbi lekérdezést](#checking-ingestion-time) a késésnek a környezetben való vizsgálatához
+- Az erőforrás-naplókból származó adatok az Azure-szolgáltatástól függően 2-15 percet vesznek igénybe. Tekintse meg az [alábbi lekérdezést](#checking-ingestion-time) a késésnek a környezetben való vizsgálatához
 - Az Azure platform metrikái 3 percet vesznek igénybe Log Analytics betöltési pontra.
 - A tevékenység naplójának adatait a rendszer körülbelül 10-15 percet vesz igénybe Log Analytics betöltési pontra.
 
@@ -78,12 +78,12 @@ A betöltési idő különböző körülmények között eltérő lehet. A napl�
 
 | Lépés: | Tulajdonság vagy függvény | Megjegyzések |
 |:---|:---|:---|
-| Rekord létrehozva az adatforrásban | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Ha az adatforrás nem állítja be ezt az értéket, akkor a _TimeReceived megegyező időpontra lesz beállítva. |
+| Rekord létrehozva az adatforrásban | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Ha az adatforrás nem állítja be ezt az értéket, akkor a _TimeReceived-val megegyező időpontra lesz beállítva. |
 | Azure Monitor betöltési végpont által fogadott rekord | [_TimeReceived](log-standard-properties.md#_timereceived) | |
-| A munkaterületen tárolt és a lekérdezésekhez elérhető rekord | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
+| A munkaterületen tárolt és a lekérdezésekhez elérhető rekord | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>Betöltési késés késése
-Egy adott rekord késését a [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) függvény eredményének a _TimeGenerated_ tulajdonsághoz való összehasonlításával mérhetővé teheti. Ezeket az adatmennyiségeket különböző összesítésekkel lehet használni, hogy megtudja, hogyan viselkedik a betöltési késés. Vizsgálja meg a betöltési idő néhány százalékos arányát, hogy nagy mennyiségű adatot kapjon. 
+Egy adott rekord késését mérhetővé teheti, ha összehasonlítja a [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) függvény eredményét a _TimeGenerated_ tulajdonsággal. Ezeket az adatmennyiségeket különböző összesítésekkel lehet használni, hogy megtudja, hogyan viselkedik a betöltési késés. Vizsgálja meg a betöltési idő néhány százalékos arányát, hogy nagy mennyiségű adatot kapjon. 
 
 Például a következő lekérdezés megmutatja, hogy mely számítógépeken volt a legmagasabb betöltési idő az előző 8 órában: 
 

@@ -1,6 +1,6 @@
 ---
 title: Lejátszás Azure Media Player-Azure-val | Microsoft Docs
-description: Ez a témakör áttekintést nyújt a Azure Media Playerról.
+description: A Azure Media Player egy webvideós lejátszó, amely a Microsoft Azure Media Services különböző böngészők és eszközök által készített médiatartalom lejátszására készült.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: 6157f59d96770298d947a1cf6ca28aa343e1a0d4
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 8f1639a21e3783f587904c2a8085fd2f555ff5b8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311825"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900349"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player áttekintése
 
@@ -51,7 +51,7 @@ A videó streamek diagnosztizálásának figyeléséhez használhatja a [Azure M
 
 A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igénybe, hogy lekérje a médiatartalom alapszintű lejátszását a Media Services-fiókjából. A Azure Media Player beállításával és konfigurálásával kapcsolatos részletekért tekintse meg [Azure Media Player dokumentációját](https://aka.ms/ampdocs) . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Media Player dokumentációja](https://aka.ms/ampdocs)
 - [Azure Media Player minták](https://aka.ms/ampsamples)

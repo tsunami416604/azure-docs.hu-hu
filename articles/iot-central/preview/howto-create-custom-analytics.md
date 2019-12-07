@@ -3,18 +3,18 @@ title: Az Azure IoT Central kiterjesztése egyéni elemzéssel | Microsoft Docs
 description: Megoldás fejlesztőként konfiguráljon egy IoT Central alkalmazást egyéni elemzések és vizualizációk végrehajtásához. Ez a megoldás Azure Databricks használ.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/01/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a29cae2fabe1542a7498bca19dc0a6e147d1d024
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 59fb0dfbc44746853f25437e8e13a1cbc317e151
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895149"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895547"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks-preview-features"></a>Az Azure IoT Central kiterjesztése egyéni elemzésekkel Azure Databricks használatával (előzetes verziójú funkciók)
 
@@ -39,15 +39,15 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Hozzon létre egy IoT Central alkalmazást az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén a következő beállításokkal:
 
-| Beállítás | Érték |
+| Beállítás | Value (Díj) |
 | ------- | ----- |
 | Fizetési terv | Utólagos, használatalapú fizetés |
 | Alkalmazássablon | Áruházbeli elemzés – állapot figyelése |
 | Alkalmazásnév | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját nevét |
 | URL-cím | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját egyedi URL-előtagját |
-| Címtár | Azure Active Directory bérlő |
+| Könyvtár | Azure Active Directory bérlő |
 | Azure-előfizetés | Az Azure-előfizetése |
-| Régió | A legközelebbi régió |
+| Region (Régió) | A legközelebbi régió |
 
 A cikkben szereplő példák és Képernyőképek a **Egyesült Államok** régiót használják. Válasszon egy helyet az Ön számára, és győződjön meg róla, hogy az összes erőforrást ugyanabban a régióban hozza létre.
 
@@ -61,26 +61,26 @@ A [Azure Portal használatával hozzon létre egy](https://portal.azure.com/#cre
 
 A [Azure Portal használatával hozzon létre egy Event Hubs névteret](https://portal.azure.com/#create/Microsoft.EventHub) a következő beállításokkal:
 
-| Beállítás | Érték |
+| Beállítás | Value (Díj) |
 | ------- | ----- |
 | Név    | Adja meg a névtér nevét |
-| Tarifacsomag | Basic |
+| Díjcsomag | Basic |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | IoTCentralAnalysis |
-| Hely | USA keleti régiója |
-| Átviteli egységek | 1 |
+| Földrajzi egység | USA keleti régiója |
+| Adatkapacitás-egységek | 1 |
 
 ### <a name="azure-databricks-workspace"></a>Azure Databricks munkaterület
 
 A [Azure Portal használatával hozzon létre egy Azure Databricks szolgáltatást](https://portal.azure.com/#create/Microsoft.Databricks) a következő beállításokkal:
 
-| Beállítás | Érték |
+| Beállítás | Value (Díj) |
 | ------- | ----- |
 | Munkaterület neve    | Válassza ki a munkaterület nevét |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | IoTCentralAnalysis |
-| Hely | USA keleti régiója |
-| Tarifacsomag | Standard |
+| Földrajzi egység | USA keleti régiója |
+| Díjcsomag | Standard |
 
 A szükséges erőforrások létrehozásakor a **IoTCentralAnalysis** -erőforráscsoport a következő képernyőképhez hasonlóan néz ki:
 
@@ -108,15 +108,15 @@ Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén
 1. Navigáljon az **adatexportálás** lapra, válassza az **+ új**, majd az **Azure Event Hubs**elemet.
 1. Az Exportálás konfigurálásához használja a következő beállításokat, majd válassza a **Mentés**lehetőséget:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | Megjelenítendő név | Exportálás Event Hubsba |
-    | Engedélyezve | Bekapcsolva |
+    | Engedélyezve | Be |
     | Event Hubs-névtér | Az Event Hubs névtér neve |
     | Eseményközpont | centralexport |
-    | Mérések | Bekapcsolva |
+    | Mérések | Be |
     | Eszközök | Ki |
-    | Eszközök sablonjai | Ki |
+    | Eszközsablonok | Ki |
 
 ![Adatexportálási konfiguráció](media/howto-create-custom-analytics/cde-configuration.png)
 
@@ -132,17 +132,17 @@ A **Azure Databricks** oldalon, a gyakori feladatok listájában válassza az **
 
 A fürt létrehozásához használja a következő táblázatban található információkat:
 
-| Beállítás | Érték |
+| Beállítás | Value (Díj) |
 | ------- | ----- |
 | Fürt neve | centralanalysis |
 | Fürt üzemmód | Standard |
-| Databricks Runtime verziója | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
+| A Databricks futtatókörnyezeti verziója | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
 | Python-verzió | 3 |
 | Automatikus skálázás engedélyezése | Nem |
 | Megszakítás ennyi perc inaktivitás után | 30 |
 | Feldolgozó típusa | Standard_DS3_v2 |
 | Feldolgozók | 1 |
-| Illesztőprogram típusa | Ugyanaz, mint a feldolgozó |
+| Illesztőprogram típusa | Megegyezik a feldolgozóval |
 
 A fürt létrehozása több percet is igénybe vehet, amíg a folytatás előtt várnia kell, hogy a fürt létrehozása befejeződjön.
 
@@ -226,7 +226,7 @@ A fenti útmutató és a szükségtelen költségek elkerülése érdekében tö
 
 A IoT Central alkalmazást a **felügyeleti** lapról törölheti az alkalmazáson belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megtanulta, hogyan végezheti el a következőket:
 

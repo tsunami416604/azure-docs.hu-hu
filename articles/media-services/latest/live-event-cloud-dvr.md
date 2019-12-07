@@ -1,7 +1,7 @@
 ---
 title: Igény szerinti videolejátszás létrehozásához használja az időeltolást és az élő kimeneteket
 titleSuffix: Azure Media Services
-description: Megtudhatja, hogyan használhat időeltolásos és élő kimeneteket élő streamek rögzítésére és igény szerinti lejátszás létrehozására.
+description: Ez a cikk azt ismerteti, hogyan használhatók az időeltolásos és az élő kimenetek az élő adatfolyamok rögzítésére és igény szerinti lejátszás létrehozására.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
-ms.openlocfilehash: acba251a57f39c07d690d0c55665b8914feaf06c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4c7618b60e5fd86a9b8b3f22fb3333c00cfdfa61
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186230"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899799"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Igény szerinti videolejátszás létrehozásához használja az időeltolást és az élő kimeneteket
 
@@ -45,7 +45,7 @@ Az esemény leállítása és törlése után a felhasználók az archivált tar
 
 Ha közzétette az élő kimenet adategységét egy streaming-lokátor használatával, az élő esemény (a DVR-ablak hosszára számítva) továbbra is megtekinthető marad, amíg a streaming-kereső lejárata vagy törlése megkezdődik.
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
 - [Élő közvetítés – áttekintés](live-streaming-overview.md)
 - [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)

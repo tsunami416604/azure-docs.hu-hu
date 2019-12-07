@@ -1,29 +1,30 @@
 ---
-title: Nyilvános olvasási hozzáférés engedélyezése tárolók és Blobok számára az Azure Blob Storage-ban | Microsoft Docs
+title: A tárolók és Blobok nyilvános olvasási hozzáférésének kezelése
+titleSuffix: Azure Storage
 description: Megtudhatja, hogyan tehet elérhetővé tárolókat és blobokat névtelen hozzáféréshez, és hogyan érheti el azokat programozott módon.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 09/19/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: d0e3121fe773a9725eb7cfd9e8b14d0ed86f3fbb
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 4d9a54c220861b19d67b07998e609ee72897446a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673300"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892482"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Tárolók és blobok névtelen olvasási hozzáférésének kezelése
 
-Engedélyezheti a névtelen, nyilvános olvasási hozzáférést egy tárolóhoz és a blobokhoz az Azure Blob Storage-ban. Így csak olvasási hozzáférést biztosíthat ezekhez az erőforrásokhoz anélkül, hogy meg kellene osztania a fiók kulcsát, és nem igényel közös hozzáférési aláírást (SAS).
+Az Azure Blob-tárolókban egy tárolóhoz és annak blobjaihoz névtelen, nyilvános olvasási hozzáférés engedélyezhető. Ezzel csak olvasási hozzáférést adhat ezekhez az erőforrásokhoz enélkül, hogy megosztaná a fiók kulcsát, vagy közös hozzáférésű jogosultságkódra volna szükség.
 
 A nyilvános olvasási hozzáférés a legjobb olyan helyzetekben, amikor azt szeretné, hogy bizonyos Blobok mindig elérhetők legyenek a névtelen olvasási hozzáféréshez. A részletesebb szabályozás érdekében létrehozhat egy közös hozzáférési aláírást. A közös hozzáférésű aláírások lehetővé teszik a korlátozott hozzáférés biztosítását különböző engedélyekkel egy adott időszakban. A megosztott hozzáférési aláírások létrehozásával kapcsolatos további információkért lásd: [közös hozzáférésű aláírások (SAS) használata az Azure Storage-ban](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>Névtelen felhasználók engedélyeinek megadása tárolók és Blobok számára
 
-Alapértelmezés szerint a tárolók és a benne lévő Blobok csak olyan felhasználók férhetnek hozzá, akik megfelelő engedélyekkel rendelkeznek. A tároló nyilvános hozzáférési szintjének megadásával engedélyezheti a névtelen felhasználók számára, hogy olvasási hozzáférést biztosítson egy tárolóhoz és a blobokhoz. Ha nyilvános hozzáférést biztosít egy tárolóhoz, a névtelen felhasználók a kérelem engedélyezése nélkül is elolvashatják a blobokat egy nyilvánosan elérhető tárolón belül.
+Alapértelmezés szerint a tárolóhoz és az abban elhelyezkedő blobokhoz csak olyan felhasználó férhet hozzá, akinek megadta a megfelelő engedélyeket. Ha névtelen felhasználóknak szeretne olvasási hozzáférést adni egy tárolóhoz és annak blobjaihoz, beállíthatja a tároló nyilvános hozzáférési szintjét. Ha nyilvános hozzáférést biztosít egy tárolóhoz, a névtelen felhasználók a kérelem engedélyezése nélkül is elolvashatják a blobokat egy nyilvánosan elérhető tárolón belül.
 
 A tárolót a következő engedélyekkel konfigurálhatja:
 
@@ -134,8 +135,8 @@ public static void DownloadBlobAnonymously()
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférés engedélyezése az Azure Storage-hoz](../common/storage-auth.md)
 - [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md)
-- [Blob Service REST API](/rest/api/storageservices/blob-service-rest-api)
+- [A Blob szolgáltatás REST API-ja](/rest/api/storageservices/blob-service-rest-api)

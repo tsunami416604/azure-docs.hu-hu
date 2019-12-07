@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 418324ea0d50cb2f8ff4a30018a31e7807d52eac
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a9a14056e6be62fc1c1b5e542c1a3acceb738eac
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602584"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901209"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Chit-csevegés hozzáadása egy tudásbázishoz
 
@@ -47,13 +47,13 @@ A Chit-Chat adatkészletek a következő nyelveken támogatottak:
 |--|
 |kínai|
 |Angol|
-|francia|
+|Francia|
 |Németország|
 |olasz|
 |japán|
 |koreai|
-|portugál|
-|spanyol|
+|Portugál|
+|Spanyol|
 
 
 ## <a name="add-chit-chat-during-kb-creation"></a>Chit-Chat hozzáadása a KB létrehozásakor
@@ -72,7 +72,7 @@ Ha szerkeszti a KB-ot, egy új forrást fog látni a Chit-Chat számára a kivá
 A metaadatok megtekintéséhez válassza az eszköztár **beállítások megtekintése** elemét, majd válassza a **metaadatok megjelenítése**lehetőséget.
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>További Chit-csevegési kérdések és válaszok hozzáadása
-Hozzáadhat olyan új Chit-Chat-QnA, amely nem szerepel az előre definiált készletben. Győződjön meg arról, hogy nem duplikál olyan QnA párt, amely már szerepel a Chit-Chat készletben. Új Chit-Chat-QnA hozzáadásakor a rendszer bekerül a **szerkesztői** forrásba. Annak biztosítása érdekében, hogy a rangsor megértse, hogy ez a Chit-Chat, adja hozzá a "Vezércikk: Chit-Chat" metaadat-kulcs/érték párokat az alábbi ábrán látható módon:
+Hozzáadhat olyan új Chit-Chat-QnA, amely nem szerepel az előre definiált készletben. Győződjön meg arról, hogy nem duplikál olyan QnA párt, amely már szerepel a Chit-Chat készletben. Új Chit-Chat-QnA hozzáadásakor a rendszer bekerül a **szerkesztői** forrásba. Annak érdekében, hogy a Ranger megértse, hogy ez a Chit-Chat, adja hozzá a "Vezércikk: chitchat" metaadat-kulcs/érték párokat, ahogy az alábbi képen látható:
    
 ![! [A Chit-Chat QnAs hozzáadása] (.. /media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
@@ -81,7 +81,7 @@ Válassza ki a KB-ot, és navigáljon a **Beállítások** lapra. Az adott Chit-
 
 ![A KB-ból származó chit-csevegés törlése](../media/qnamaker-how-to-chit-chat/delete-chit-chat.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis importálása](../Tutorials/migrate-knowledge-base.md)

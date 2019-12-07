@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.openlocfilehash: 31eefbad8e8d7cb626d87d53690388d09b85257e
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/04/2019
+ms.openlocfilehash: e035c1ff4c8e16fbf40883b54e3153eab9729040
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122641"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894283"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Az Azure Kubernetes szolgáltatás használata a HDInsight-mel való Apache Kafka
 
@@ -57,52 +57,56 @@ Ha még nem rendelkezik AK-fürttel, az alábbi dokumentumok egyikével megtudha
 * [Azure Kubernetes Service (ak) fürt üzembe helyezése – portál](../../aks/kubernetes-walkthrough-portal.md)
 * [Azure Kubernetes Service (ak) fürt üzembe helyezése – parancssori felület](../../aks/kubernetes-walkthrough.md)
 
-> [!NOTE]  
-> Az AK létrehoz egy virtuális hálózatot a telepítés során. Ez a hálózat a következő szakaszban a HDInsight számára létrehozotthoz van összefoglalva.
+> [!IMPORTANT]  
+> Az AK egy virtuális hálózatot hoz létre a telepítés során egy **további** erőforráscsoporthoz. A további erőforráscsoport a **MC_resourceGroup_AKSclusterName_location**elnevezési konvencióját követi.  
+> Ez a hálózat a következő szakaszban a HDInsight számára létrehozotthoz van összefoglalva.
 
 ## <a name="configure-virtual-network-peering"></a>Virtuális hálózati társak konfigurálása
 
-1. A [Azure Portal](https://portal.azure.com)válassza az __erőforráscsoportok__elemet, majd keresse meg azt az ERŐFORRÁSCSOPORTOT, amely az AK-fürthöz tartozó virtuális hálózatot tartalmazza. Az erőforráscsoport neve `MC_<resourcegroup>_<akscluster>_<location>`:. A `resourcegroup` és`akscluster` a bejegyzések annak az erőforráscsoportnek a neve, amelyben a fürtöt létrehozta, valamint a fürt nevét. `location` A az a hely, ahová a fürtöt létrehozták.
+### <a name="identify-preliminary-information"></a>Előzetes információk azonosítása
 
-2. Az erőforráscsoport területen válassza ki a __virtuális hálózati__ erőforrást.
+1. A [Azure Portal](https://portal.azure.com)keresse meg azt a további **erőforráscsoportot** , amely az AK-fürt virtuális hálózatát tartalmazza.
 
-3. Válassza a __címterület__lehetőséget. Jegyezze fel a felsorolt címterület méretét.
+2. Az erőforráscsoport területen válassza ki a __virtuális hálózati__ erőforrást. Jegyezze fel a nevet későbbi felhasználásra.
 
-4. Virtuális hálózat HDInsight való létrehozásához válassza az __+ erőforrás létrehozása__, __hálózatkezelés__, majd a __virtuális hálózat__lehetőséget.
+3. A **Beállítások**területen válassza a __címterület__lehetőséget. Jegyezze fel a felsorolt címterület méretét.
 
-    > [!IMPORTANT]  
-    > Az új virtuális hálózat értékeinek megadásakor olyan címtartományt kell használnia, amely nem fedi át az AK-fürt hálózata által használt területet.
+### <a name="create-virtual-network"></a>Virtuális hálózat létrehozása
 
-    Használja ugyanazt a __helyet__ az AK-fürthöz használt virtuális hálózathoz.
+1. Virtuális hálózat HDInsight való létrehozásához navigáljon a __+ erőforrás létrehozása__ > __hálózatkezelés__ > __virtuális hálózat__elemre.
 
-    Várjon, amíg a virtuális hálózat létrejött, mielőtt továbblép a következő lépésre.
+1. Hozza létre a hálózatot a következő irányelvek alapján bizonyos tulajdonságok esetében:
 
-5. A HDInsight hálózat és az AK-fürt közötti társítás konfigurálásához __válassza ki a__virtuális hálózatot, majd válassza a társítások lehetőséget. Válassza a __+ Hozzáadás__ lehetőséget, és használja az alábbi értékeket az űrlap feltöltéséhez:
+    |Tulajdonság | Value (Díj) |
+    |---|---|
+    |Címtér|Olyan címtartományt kell használnia, amely nem fedi át az AK-fürt hálózata által használt területet.|
+    |Földrajzi egység|Használja ugyanazt a __helyet__ az AK-fürthöz használt virtuális hálózathoz.|
 
-   * __Név__: Adjon meg egy egyedi nevet ehhez a társ-konfigurációhoz.
-   * __Virtuális hálózat__: Ezzel a mezővel kiválaszthatja az AK- **fürthöz**tartozó virtuális hálózatot.
+1. Várjon, amíg a virtuális hálózat létrejött, mielőtt továbblép a következő lépésre.
 
-     Hagyja meg az összes többi mezőt az alapértelmezett értéknél, majd kattintson az __OK__ gombra a társítás konfigurálásához.
+### <a name="configure-peering"></a>Társviszony-létesítés konfigurálása
 
-6. Az AK-fürt és a HDInsight hálózat közötti társítás konfigurálásához __válassza ki az__AK- __fürt virtuális hálózatát__, majd válassza a társítások lehetőséget. Válassza a __+ Hozzáadás__ lehetőséget, és használja az alábbi értékeket az űrlap feltöltéséhez:
+1. A HDInsight hálózat és az AK-fürt közötti társítás konfigurálásához __válassza ki a__virtuális hálózatot, majd válassza a társítások lehetőséget.
 
-   * __Név__: Adjon meg egy egyedi nevet ehhez a társ-konfigurációhoz.
-   * __Virtuális hálózat__: Ezzel a mezővel kiválaszthatja a HDInsight- __fürthöz__tartozó virtuális hálózatot.
+1. Válassza a __+ Hozzáadás__ lehetőséget, és használja az alábbi értékeket az űrlap feltöltéséhez:
 
-     Hagyja meg az összes többi mezőt az alapértelmezett értéknél, majd kattintson az __OK__ gombra a társítás konfigurálásához.
+    |Tulajdonság |Value (Díj) |
+    |---|---|
+    |A VN-> a távoli virtuális hálózatra \<a társítás neve|Adjon meg egy egyedi nevet ehhez a társ-konfigurációhoz.|
+    |Virtuális hálózat|Válassza ki a virtuális hálózatot az **AK-fürthöz**.|
+    |A VN-> \<AK VN-ból való társításának neve, hogy \<a VN >|Adjon meg egy egyedi nevet.|
 
-## <a name="install-apache-kafka-on-hdinsight"></a>Apache Kafka telepítése a HDInsight-on
+    Hagyja meg az összes többi mezőt az alapértelmezett értéknél, majd kattintson az __OK__ gombra a társítás konfigurálásához.
+
+## <a name="create-apache-kafka-cluster-on-hdinsight"></a>Apache Kafka-fürt létrehozása a HDInsight-ben
 
 A Kafka HDInsight-fürtön való létrehozásakor csatlakoztatnia kell a korábban létrehozott virtuális hálózatot a HDInsight-hez. A Kafka-fürtök létrehozásával kapcsolatos további információkért tekintse meg az [Apache Kafka-fürt létrehozása](apache-kafka-get-started.md) című dokumentumot.
-
-> [!IMPORTANT]  
-> A fürt létrehozásakor a __speciális beállításokat__ kell használnia ahhoz, hogy csatlakozzon a HDInsight létrehozott virtuális hálózathoz.
 
 ## <a name="configure-apache-kafka-ip-advertising"></a>Apache Kafka IP-hirdetés konfigurálása
 
 A következő lépésekkel konfigurálhatja a Kafka-t, hogy a tartománynevek helyett IP-címeket Hirdessen:
 
-1. Webböngészővel nyissa meg a https://CLUSTERNAME.azurehdinsight.net következőt:. Cserélje le a __CLUSTERNAME__ nevet a Kafka on HDInsight-fürt nevére.
+1. Egy böngészőben nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net`. Cserélje le a CLUSTERNAME nevet a Kafka on HDInsight-fürt nevére.
 
     Ha a rendszer kéri, használja a fürt HTTPS-felhasználónevét és-jelszavát. Megjelenik a fürt Ambari webes felhasználói felülete.
 
@@ -114,7 +118,7 @@ A következő lépésekkel konfigurálhatja a Kafka-t, hogy a tartománynevek he
 
     ![Apache Ambari Services-konfiguráció](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
-4. A __Kafka-env__ konfiguráció megkereséséhez írja `kafka-env` be a jobb felső sarokban található __szűrő__ mezőt.
+4. A __Kafka-env__ konfiguráció megkereséséhez írja be a `kafka-env` értéket a jobb felső sarokban található __szűrő__ mezőbe.
 
     ![Kafka-konfiguráció, Kafka-env](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
 
@@ -128,9 +132,9 @@ A következő lépésekkel konfigurálhatja a Kafka-t, hogy a tartománynevek he
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. A Kafka által figyelt felület konfigurálásához írja be `listeners` a jobb felső sarokban található __szűrő__ mezőt.
+6. A Kafka által figyelt felület konfigurálásához írja be a `listeners` értéket a jobb felső sarokban található __szűrő__ mezőbe.
 
-7. Ha úgy szeretné beállítani a Kafka-t, hogy az összes hálózati adaptert figyelje, módosítsa a `PLAINTEXT://0.0.0.0:9092`figyelők mező értékét a következőre:.
+7. Ha úgy szeretné beállítani a Kafka-t, hogy az összes hálózati adaptert figyelje, módosítsa a __figyelők__ mező értékét `PLAINTEXT://0.0.0.0:9092`értékre.
 
 8. A konfigurációs módosítások mentéséhez használja a Save ( __Mentés__ ) gombot. Adjon meg egy szöveges üzenetet, amely leírja a módosításokat. A módosítások mentése után válassza __az OK gombot__ .
 
@@ -152,16 +156,16 @@ Ezen a ponton a Kafka és az Azure Kubernetes szolgáltatás kommunikál a Kieme
 
 1. Hozzon létre egy Kafka-témakört, amelyet a teszt alkalmazás használ. A Kafka-témakörök létrehozásával kapcsolatos információkért tekintse meg a [Apache Kafka-fürt létrehozása](apache-kafka-get-started.md) című dokumentumot.
 
-2. Töltse le a példa alkalmazást [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test)a alkalmazásból.
+2. Töltse le a példában szereplő alkalmazást [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test).
 
-3. Szerkessze `index.js` a fájlt, és módosítsa a következő sorokat:
+3. Szerkessze a `index.js` fájlt, és módosítsa a következő sorokat:
 
-    * `var topic = 'mytopic'`: A `mytopic` helyére írja be az alkalmazás által használt Kafka-témakör nevét.
-    * `var brokerHost = '176.16.0.13:9092`: Cserélje `176.16.0.13` le a t a fürt egyik Broker-gazdagépének belső IP-címére.
+    * `var topic = 'mytopic'`: cserélje le a `mytopic`t az alkalmazás által használt Kafka-témakör nevére.
+    * `var brokerHost = '176.16.0.13:9092`: cserélje le a `176.16.0.13`t a fürt egyik Broker-gazdagépének belső IP-címére.
 
-        A fürtben található Broker-gazdagépek (workernodes) belső IP-címének megkereséséhez tekintse meg az [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) dokumentumot. Válassza ki az egyik olyan bejegyzés IP-címét, amelyben a tartománynév kezdődik `wn`.
+        A fürtben található Broker-gazdagépek (workernodes) belső IP-címének megkereséséhez tekintse meg az [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) dokumentumot. Válassza ki az egyik olyan bejegyzés IP-címét, amelyben a tartománynév a `wn`vel kezdődik.
 
-4. A `src` címtár egyik parancssorában telepítse a függőségeket, és a Docker használatával hozzon létre egy rendszerképet az üzembe helyezéshez:
+4. A `src` könyvtárban lévő parancssorból telepítse a függőségeket, és a Docker használatával hozzon létre egy rendszerképet az üzembe helyezéshez:
 
     ```bash
     docker build -t kafka-aks-test .
@@ -180,7 +184,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes szolgáltatás kommunikál a Kieme
     > [!NOTE]  
     > Ha nem ismeri a Azure Container Registry nevét, vagy nem tudja, hogy az Azure CLI használatával működjön együtt az Azure Kubernetes szolgáltatással, tekintse meg az [AK-oktatóanyagokat](../../aks/tutorial-kubernetes-prepare-app.md).
 
-6. Címkézze fel a `kafka-aks-test` helyi rendszerképet az ACR lekéréséhez. Adja hozzá `:v1` a végéhez a rendszerkép verziószámát is:
+6. Címkézze fel a helyi `kafka-aks-test` rendszerképet az ACR lekéréséhez. Adja hozzá `:v1` a végéhez, hogy jelezze a rendszerkép verzióját:
 
     ```bash
     docker tag kafka-aks-test <acrLoginServer>/kafka-aks-test:v1
@@ -194,7 +198,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes szolgáltatás kommunikál a Kieme
 
     A művelet végrehajtása több percet is igénybe vehet.
 
-8. Szerkessze a Kubernetes jegyzékfájlját`kafka-aks-test.yaml`(), `microsoft` és cserélje le a 4. lépésben beolvasott ACR-lekéréséhez.
+8. Szerkessze a Kubernetes manifest-fájlt (`kafka-aks-test.yaml`), és cserélje le a `microsoft`t a 4. lépésben lekért ACR lekéréséhez-névre.
 
 9. Az alábbi paranccsal telepítheti az Alkalmazásbeállítások a jegyzékből:
 
@@ -202,7 +206,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes szolgáltatás kommunikál a Kieme
     kubectl create -f kafka-aks-test.yaml
     ```
 
-10. Az alkalmazás figyeléséhez `EXTERNAL-IP` használja a következő parancsot:
+10. Az alkalmazás `EXTERNAL-IP` megtekintéséhez használja az alábbi parancsot:
 
     ```bash
     kubectl get service kafka-aks-test --watch
@@ -219,7 +223,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes szolgáltatás kommunikál a Kieme
     > [!WARNING]  
     > Az üzenetek több példányban is megjelenhetnek. Ez a probléma általában akkor fordul elő, ha a böngészőt a csatlakozás után frissíti, vagy több böngészőbeli kapcsolatot nyit meg az alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A HDInsighton futó Apache Kafka használatának megismeréséhez tekintse meg a következő hivatkozásokat:
 

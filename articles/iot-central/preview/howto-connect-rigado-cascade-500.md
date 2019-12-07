@@ -9,13 +9,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
-ms.date: 10/19/2019
-ms.openlocfilehash: 4559bb87369309882ebdaa0d3b408786feb586b5
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.date: 11/27/2019
+ms.openlocfilehash: 164fc4eef245a2b9ea610179c3cf2e78b7b1b389
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896033"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895697"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Rigado Cascade 500-átjáró eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
@@ -34,7 +34,7 @@ A útmutató lépéseinek elvégzéséhez a következő erőforrásokra van szü
 * Egy Rigado lépcsőzetes 500-eszköz. További információért látogasson el a [Rigado](https://www.rigado.com/)webhelyre.
 * Azure IoT Central-alkalmazás, amely az egyik előzetes verziójú alkalmazás-sablonból lett létrehozva. További információt az [új alkalmazás létrehozása](./quick-deploy-iot-central.md)című témakörben talál.
 
-## <a name="add-a-device-template"></a>Eszköz sablonjának hozzáadása
+## <a name="add-a-device-template"></a>Eszközsablon hozzáadása
 
 A Cascade 500 Gateway-eszköz Azure IoT Central Application-példányba való beléptetéséhez konfigurálnia kell egy megfelelő sablont az alkalmazáson belül.
 

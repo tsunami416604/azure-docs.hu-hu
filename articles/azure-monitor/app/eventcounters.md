@@ -4,15 +4,15 @@ description: A rendszer és az egyéni .NET/.NET Core EventCounters figyelése A
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cithomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 0762819239e8fd71a015f317776a94280806db53
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72677153"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889124"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters bemutatása
 
@@ -59,7 +59,7 @@ A .NET Core 3,0-ben futó alkalmazások esetében az SDK automatikusan összegy�
 
 ## <a name="customizing-counters-to-be-collected"></a>A gyűjteni kívánt számlálók testreszabása
 
-Az alábbi példa bemutatja, hogyan adhat hozzá vagy távolíthat el számlálókat. Ezt a testreszabást az alkalmazás `ConfigureServices` metódusa fogja elvégezni, miután Application Insights telemetria-gyűjtemény engedélyezve lett `AddApplicationInsightsTelemetry()` vagy `AddApplicationInsightsWorkerService()` használatával. A következő példa egy ASP.NET Core alkalmazásból származó kódot mutat be. Más típusú alkalmazások esetében tekintse meg [ezt](worker-service.md#configuring-or-removing-default-telemetrymodules) a dokumentumot.
+Az alábbi példa bemutatja, hogyan adhat hozzá vagy távolíthat el számlálókat. Ezt a testreszabást az alkalmazás `ConfigureServices` metódusa fogja elvégezni, miután Application Insights telemetria-gyűjtemény engedélyezve lett `AddApplicationInsightsTelemetry()` vagy `AddApplicationInsightsWorkerService()`használatával. A következő példa egy ASP.NET Core alkalmazásból származó kódot mutat be. Más típusú alkalmazások esetében tekintse meg [ezt](worker-service.md#configuring-or-removing-default-telemetrymodules) a dokumentumot.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;
@@ -98,7 +98,7 @@ Az alábbi példa bemutatja, hogyan adhat hozzá vagy távolíthat el számlál�
 Az EventCounter mérőszámok megjelenítéséhez a [metrika-kezelőben](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)válassza ki Application Insights erőforrást, majd a log-alapú metrikákat metrikai névtérként. Ezután a EventCounter-metrikák a PerformanceCounter kategóriában jelennek meg.
 
 > [!div class="mx-imgBorder"]
-> ![Event a Application Insightsban jelentett számlálók ](./media/event-counters/metrics-explorer-counter-list.png)
+> ![Application Insights](./media/event-counters/metrics-explorer-counter-list.png)ban jelentett számlálók
 
 ## <a name="event-counters-in-analytics"></a>Az elemzési események számlálói
 
@@ -111,7 +111,7 @@ performanceCounters | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Event a Application Insightsban jelentett számlálók ](./media/event-counters/analytics-event-counters.png)
+> ![Application Insights](./media/event-counters/analytics-event-counters.png)ban jelentett számlálók
 
 Egy adott számláló diagramjának lekéréséhez (például: `ThreadPool Completed Work Item Count`) a legutóbbi időszak alatt futtassa a következő lekérdezést.
 
@@ -123,7 +123,7 @@ performanceCounters
 | render timechart
 ```
 > [!div class="mx-imgBorder"]
-> egyetlen számláló ![Chat Application Insights ](./media/event-counters/analytics-completeditems-counters.png)
+> egyetlen számláló ![Csevegése Application Insights](./media/event-counters/analytics-completeditems-counters.png)
 
 A többi telemetria hasonlóan a **performanceCounters** is tartalmaz egy olyan `cloud_RoleInstance` oszlopot, amely a gazdagép azon példányának identitását jelzi, amelyen az alkalmazás fut. A fenti lekérdezés a számláló értékét jeleníti meg, és felhasználható a különböző kiszolgálói példányok teljesítményének összehasonlítására.
 

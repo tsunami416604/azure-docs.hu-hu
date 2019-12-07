@@ -3,21 +3,20 @@ title: Adatok másolása SAP BW használatával Azure Data Factory
 description: Megtudhatja, hogyan másolhat adatok az SAP Business Warehouse-ból egy Azure Data Factory adatcsatorna másolási tevékenységének használatával támogatott fogadó adattárakba.
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: jingwang
-ms.openlocfilehash: c2dbacc2fd7906aaf22447dfb39c543206f05392
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 26693219f44d16c8bc20ee94ae0590414ba88f73
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680284"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896354"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -66,13 +65,13 @@ A következő szakaszokban részletesen ismertetjük az SAP Business Warehouse-�
 
 Az SAP Business Warehouse (BW) társított szolgáltatása a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **SapBw** | Igen |
 | kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP BW-példány található. | Igen |
 | systemNumber | A SAP BWrendszer rendszerszáma.<br/>Engedélyezett érték: két számjegyből álló decimális szám karakterláncként megadva. | Igen |
-| clientId | A-ügyfél ügyfél-azonosítója az SAP W rendszeren.<br/>Engedélyezett érték: a háromjegyű decimális szám karakterláncként van megadva. | Igen |
-| userName | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve. | Igen |
+| ügyfél-azonosító | A-ügyfél ügyfél-azonosítója az SAP W rendszeren.<br/>Engedélyezett érték: a háromjegyű decimális szám karakterláncként van megadva. | Igen |
+| userName (Felhasználónév) | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve. | Igen |
 | jelszó | A felhasználó jelszava. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
@@ -134,7 +133,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok SAP BWból történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SapBwSource** | Igen |
 | lekérdezés | Megadja az MDX-lekérdezést, amely beolvassa az SAP BW-példány adatait. | Igen |
@@ -179,16 +178,16 @@ Az adatok SAP BWból való másolása során a rendszer a következő leképezé
 
 | SAP BW adattípus | Az adatgyár átmeneti adattípusa |
 |:--- |:--- |
-| ACCP | int |
+| ACCP | Int |
 | CHAR | Sztring |
 | Ügyf | Sztring |
 | CURR | Decimális |
 | CUKY | Sztring |
 | DECEMBER | Decimális |
-| FLTP | duplán |
-| INT1 | Byte |
+| FLTP | Double |
+| INT1 | Bájt |
 | INT2 | Int16 |
-| INT4 | int |
+| INT4 | Int |
 | LANG | Sztring |
 | LCHR | Sztring |
 | LRAW | Bájt [] |
@@ -208,5 +207,5 @@ Az adatok SAP BWból való másolása során a rendszer a következő leképezé
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

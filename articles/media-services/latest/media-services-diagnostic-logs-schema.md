@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: f95258368664aabeb89426afb83854378c0e4429
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 2f5fcf4d9106bf37bcc81388e48afe689f4ef4d6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261088"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896045"
 ---
 # <a name="diagnostic-logs-schemas"></a>Diagnosztikai naplók sémái
 
@@ -34,15 +34,15 @@ A legfelső szintű diagnosztikai naplók sémájának részletes ismertetését
 
 ## <a name="key-delivery-log-schema"></a>Kulcs kézbesítési naplójának sémája
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Tulajdonságok
 
 Ezek a tulajdonságok a Key Delivery log sémára vonatkoznak.
 
-|Name (Név)|Leírás|
+|Név|Leírás|
 |---|---|
 |keyId|A kért kulcs azonosítója.|
 |keyType|A következő értékek egyike lehet: "Clear" (nincs titkosítás), "FairPlay", "PlayReady" vagy "Widevine".|
-|PolicyName|A házirend Azure Resource Manager neve.|
+|policyName|A házirend Azure Resource Manager neve.|
 |tokenType|A jogkivonat típusa.|
 |statusMessage|Az állapotjelző üzenet.|
 
@@ -108,6 +108,6 @@ A kulcs kézbesítési kérések sémájának tulajdonságai.
 } 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Media Services metrikák és diagnosztikai naplók figyelése](media-services-metrics-diagnostic-logs.md)

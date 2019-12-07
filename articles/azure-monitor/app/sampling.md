@@ -4,16 +4,16 @@ description: A telemetria mennyiségének megtartása a vezérlés alatt.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cijothomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.openlocfilehash: c124e6c433f83212c0db815a2fd06cfcfdf86253
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4b0dca1215cfecea5c9943bd27ee8a5c1de45311
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884715"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893365"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -549,7 +549,7 @@ A Azure Functions alkalmazásban futó alkalmazások mintavételezésének konfi
       }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [szűréssel](../../azure-monitor/app/api-filtering-sampling.md) szigorúbban VEZÉRELHETI az SDK által küldött adatokat.
 * Olvassa el a fejlesztői hálózat című cikket a [telemetria optimalizálása Application Insightsával](https://msdn.microsoft.com/magazine/mt808502.aspx).

@@ -1,21 +1,22 @@
 ---
-title: 'Oktatóanyag: kiválóan elérhető alkalmazás létrehozása a blob Storage-ban – Azure Storage'
-description: Írásvédett georedundáns tárolás használata az alkalmazásadatok magas rendelkezésre állásának biztosításához
+title: Oktatóanyag – kiválóan elérhető alkalmazás létrehozása blob Storage-val
+titleSuffix: Azure Storage
+description: Az olvasási hozzáférésű geo-redundáns tárolással elérhetővé teheti az alkalmazás adatait.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 6b0ac017704c599e96543ed36a13ff5d3ddef9fc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 55846c76f2c3ef1c5d884af39af85db3abe38aad
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838574"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892906"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Oktatóanyag: kiválóan elérhető alkalmazás létrehozása blob Storage-val
 
@@ -40,8 +41,7 @@ Az oktatóanyag elvégzéséhez:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-* Telepítse a [Visual Studio 2019](https://www.visualstudio.com/downloads/) -et a következő munkaterhelésekkel:
-  - **Azure-fejlesztés**
+* Telepítse a [Visual Studio 2019](https://www.visualstudio.com/downloads/) -et az **Azure-fejlesztési** számítási feladattal.
 
   ![Azure-fejlesztés (a Web és felhőszolgáltatások alatt)](media/storage-create-geo-redundant-storage/workloads.png)
 
@@ -52,13 +52,13 @@ Az oktatóanyag elvégzéséhez:
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
-* Telepítse a [Node. js](https://nodejs.org)-t.
+* A [Node.js](https://nodejs.org) telepítése.
 
 ---
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
@@ -177,7 +177,7 @@ Megnyílik a konzolablak, és az alkalmazás futni kezd. Az alkalmazás feltölt
 
 ![Futó konzolalkalmazás](media/storage-create-geo-redundant-storage/figure3.png)
 
-A mintakód a `RunCircuitBreakerAsync` fájlban található `Program.cs` művelettel letölt egy képet a tárfiókból a [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) metódus segítségével. A letöltés előtt meg kell határozni egy [OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext) környezetet. A műveleti környezet határozza meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.
+A mintakód a `Program.cs` fájlban található `RunCircuitBreakerAsync` művelettel letölt egy képet a tárfiókból a [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) metódus segítségével. A letöltés előtt meg kell határozni egy [OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext) környezetet. A műveleti környezet határozza meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -185,12 +185,11 @@ Az alkalmazás terminálon vagy parancssorban való futtatásához lépjen a **c
 
 ![Futó konzolalkalmazás](media/storage-create-geo-redundant-storage/figure3.png)
 
-A mintakód a `run_circuit_breaker` fájlban található `circuitbreaker.py` metódussal letölt egy képet a tárfiókból a [get_blob_to_path](https://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html) metódus segítségével.
+A mintakód a `circuitbreaker.py` fájlban található `run_circuit_breaker` metódussal letölt egy képet a tárfiókból a [get_blob_to_path](https://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html) metódus segítségével.
 
 A Storage-objektum újrapróbálkozási függvénye lineáris újrapróbálkozási szabályzatra van beállítva. Az újrapróbálkozási függvény határozza meg, hogy egy kérelmet újra kell-e próbálni, valamint megadja, hogy hány másodpercnyi várakozás után történjen az újrapróbálkozás. A **retry\_to\_secondary** paramétert állítsa true (igaz) értékre, ha a kérelmet a másodlagos végponton kell újra megkísérelni, amennyiben az elsődleges végpontra irányuló első kérelem sikertelen lenne. A mintaalkalmazásban az egyéni újrapróbálkozási szabályzat a Storage-objektum `retry_callback` függvényében van definiálva.
 
 A letöltés előtt a szolgáltatás objektum [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) és [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) függvény van definiálva. Ezek a függvények határozzák meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.
-
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
@@ -223,7 +222,7 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>A mintakód értelmezése
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ### <a name="retry-event-handler"></a>Újrapróbálkozási eseménykezelő
 
@@ -274,7 +273,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="pythontabpython"></a>[Python](#tab/python)
 
 ### <a name="retry-event-handler"></a>Újrapróbálkozási eseménykezelő
 
@@ -317,7 +316,7 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+### <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 A Node. js v10 SDK-val a visszahívási kezelők nem szükségesek. A minta Ehelyett egy újrapróbálkozási lehetőségekkel és egy másodlagos végponttal konfigurált folyamatot hoz létre. Ez lehetővé teszi, hogy az alkalmazás automatikusan átváltson a másodlagos folyamatra, ha nem sikerül elérnie az adatait az elsődleges folyamaton keresztül.
 
@@ -342,11 +341,11 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat első részében megtanulta, hogyan lehet az alkalmazást az RA-GRS Storage-fiókokkal nagykörben elérhetővé teszi.
 
 Folytassa a sorozat második részével, ha szeretné megismerni, hogyan szimulálhat hibákat és kényszerítheti az alkalmazást, hogy a másodlagos RA-GRS-végpontot használja.
 
 > [!div class="nextstepaction"]
-> [Az elsődleges tárolóvégpont kapcsolati hibájának szimulálása](storage-simulate-failure-ragrs-account-app.md)
+> [Az elsődleges régióból beolvasott hiba szimulálása](storage-simulate-failure-ragrs-account-app.md)

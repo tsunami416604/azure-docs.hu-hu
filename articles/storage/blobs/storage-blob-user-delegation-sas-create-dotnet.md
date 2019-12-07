@@ -1,20 +1,21 @@
 ---
-title: Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz .NET-tel (előzetes verzió) – Azure Storage
-description: Megtudhatja, hogyan hozhat létre felhasználói delegálási SAS-t (előzetes verzió) Azure Active Directory hitelesítő adatokkal az Azure Storage-ban a .NET ügyféloldali kódtár használatával.
+title: Felhasználói delegálási SAS létrehozása egy tárolóhoz vagy blobhoz a .NET használatával
+titleSuffix: Azure Storage
+description: Megtudhatja, hogyan hozhat létre felhasználói delegálási SAS-t (előzetes verzió) Azure Active Directory hitelesítő adatokkal az Azure Storage-hoz készült .NET ügyféloldali kódtár használatával.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 12/03/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: dada27f1fa08cdaa6c2495246375869ea5a8ab9e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 915f2895fbc1e543fbbfbb408ba27eb758a40515
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806932"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892532"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz .NET-tel (előzetes verzió)
 

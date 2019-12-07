@@ -1,6 +1,6 @@
 ---
 title: Media Services diagnosztikai naplók figyelése Azure Monitor használatával | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan irányíthatja és tekintheti meg a diagnosztikai naplókat Azure Monitor használatával.
+description: Ez a cikk bemutatja, hogyan irányíthatja át és tekintheti meg a diagnosztikai naplókat Azure Monitor használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 42724ae3619312c2cc172be0e143291cd7fa2a70
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 786aefbd8657046f18042defd71dfcb38528eecf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261104"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887951"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services diagnosztikai naplók figyelése
 
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan irányíthatja az adatútvonalat a Storage
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [A Media Services-fiók létrehozása](create-account-cli-how-to.md).
+- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
 - Tekintse át [a figyelő Media Services mérőszámait és a diagnosztikai naplókat](media-services-metrics-diagnostic-logs.md).
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Az adatirányítás a Storage-fiókba a portál használatával
@@ -174,12 +174,12 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 }
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Azure Monitor metrikák](../../azure-monitor/platform/data-platform.md)
 * [Diagnosztikai naplók Azure Monitor](../../azure-monitor/platform/resource-logs-overview.md)
 * [Az Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../azure-monitor/platform/resource-logs-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Metrikák figyelése](media-services-metrics-howto.md)

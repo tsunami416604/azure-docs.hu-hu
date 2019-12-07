@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 048051a612793cbe82f82fbde482ed470ad3758c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 12/06/2019
 ms.locfileid: "73177825"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Oktatóanyag: AWS-infrastruktúra létrehozása Service Fabric-fürt futtatásához
@@ -82,7 +82,7 @@ A Service Fabric használatához nyitva kell lennie bizonyos számú portnak a f
 
 Csak az ugyanabban a biztonsági csoportban lévő gazdagépek számára nyissa meg ezeket a portokat, hogy ne az egész világnak legyenek megnyitva. Jegyezze fel a biztonsági csoport azonosítóját, a példában ez **sg-c4fb1eba**.  Ezután válassza az **Edit** (Szerkesztés) elemet.
 
-A következő lépésben adja hozzá a négy szabályt a szolgáltatás függőségeinek biztonsági csoportjához, majd három továbbit magához a Service Fabrichez. Az első szabály az ICMP-forgalom engedélyezése az alapvető kapcsolat-ellenőrzésekhez. A többi szabály a távoli beállításjegyzék engedélyezéséhez megnyitja a szükséges portokat.
+A következő lépésben adja hozzá a négy szabályt a szolgáltatás függőségeinek biztonsági csoportjához, majd három továbbit magához a Service Fabrichez. Az első szabály az ICMP-forgalom engedélyezése az alapvető kapcsolat-ellenőrzésekhez. A többi szabály megnyitja az SMB és a távoli beállításjegyzék engedélyezéséhez szükséges portokat.
 
 Az első szabályhoz válassza az **Add Rule** (Szabály hozzáadása) lehetőséget, majd a legördülő menüből válassza az **All ICMP - IPv4** (Minden ICMP – IPv4) elemet. Válassza ki az egyéni mező melletti beviteli mezőt, és írja be a fenti biztonságicsoport-azonosítót.
 
@@ -118,18 +118,30 @@ A kapcsolat alapvető működésének teszteléséhez használja a ping parancso
 ping 172.31.20.163
 ```
 
-Ha a kimenetben a `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` szöveg ismétlődik négyszer, akkor a példányok közötti kapcsolat működik.  
+Ha a kimenetben a `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` szöveg ismétlődik négyszer, akkor a példányok közötti kapcsolat működik.  Most ellenőrizze az SMB-megosztás működését a következő paranccsal:
+
+```
+net use * \\172.31.20.163\c$
+```
+
+A parancs kimenetének a következőnek kell lennie: `Drive Z: is now connected to \\172.31.20.163\c$.`.
 
 ## <a name="prep-instances-for-service-fabric"></a>Példányok előkészítése a Service Fabrichez
 
-Ha ezt az alapoktól hozta létre, akkor el kell végeznie néhány további lépést.  Tehát ellenőriznie kell a távoli beállításjegyzék futását, és meg kell nyitnia a szükséges portokat.
+Ha ezt az alapoktól hozta létre, akkor el kell végeznie néhány további lépést.  Nevezetesen ellenőriznie kell, hogy fut-e a távoli beállításjegyzék, engedélyeznie kell az SMB-t, és meg kell nyitnia az SMB-hez és a távoli beállításjegyzékhez szükséges portokat.
 
 Ennek megkönnyítése érdekében beágyazta az összes munkát, amikor a felhasználói adatokat tartalmazó szkripttel indította a példányokat.
+
+Az SMB engedélyezéséhez ezt a PowerShell-parancsot használta:
+
+```powershell
+netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+```
 
 A tűzfalban lévő portok megnyitására ez a PowerShell-parancs szolgál:
 
 ```powershell
-New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
+New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
 ```
 
 ## <a name="next-steps"></a>Következő lépések

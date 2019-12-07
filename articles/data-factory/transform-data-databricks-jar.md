@@ -1,5 +1,5 @@
 ---
-title: Az adatátalakítás a Databricks jar-Azure-ban
+title: Az adatátalakítás a Databricks jar-val
 description: Megtudhatja, hogyan dolgozhat fel és alakíthat át adatátalakítást egy Databricks jar futtatásával.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.date: 03/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 982f00b5de9fd3e84233e5fe3b68e22fa6f7fe2a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4a01a21259c4957b6f497bf213a3ef53f940bab7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683956"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893960"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Az adatátalakításhoz jar-tevékenység fut Azure Databricks
 
@@ -56,7 +56,7 @@ Itt látható a Databricks jar-tevékenység JSON-definíciója:
 
 A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat ismerteti:
 
-|Tulajdonság|Leírás|Kötelező|
+|Tulajdonság|Leírás|Szükséges|
 |:--|---|:-:|
 |név|A folyamatban szereplő tevékenység neve.|Igen|
 |leírás|A tevékenység működését leíró szöveg|Nem|
@@ -64,10 +64,10 @@ A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat i
 |linkedServiceName|Annak a Databricks társított szolgáltatásnak a neve, amelyen a jar-tevékenység fut. A társított szolgáltatásról a következő témakörben talál további információt: [számítási társított szolgáltatások](compute-linked-services.md) cikk.|Igen|
 |mainClassName|A végrehajtandó fő metódust tartalmazó osztály teljes neve. Ennek az osztálynak szerepelnie kell egy könyvtárként megadott JAR-fájlban.|Igen|
 |paraméterek|A Main metódusnak átadott paraméterek.  Ez a karakterláncok tömbje.|Nem|
-|szalagtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. < Sztring, objektum > tömbje lehet.|Igen (legalább egy mainClassName metódust tartalmaz)|
+|könyvtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. < Sztring, objektum > tömbje lehet.|Igen (legalább egy mainClassName metódust tartalmaz)|
 
 > [!NOTE]
-> **Ismert probléma** – ha ugyanazt az [interaktív fürtöt](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) használja az egyidejű Databricks jar-tevékenységek futtatásához (a fürt újraindítása nélkül), akkor ismert probléma van a Databricks, ahol az első tevékenység paramétereit a következő tevékenységek fogják használni továbbá. Emiatt a rendszer helytelen paramétereket ad át a következő feladatoknak. Ezzel a megoldással csökkentheti a [feladatok fürtjét](compute-linked-services.md#example---using-new-job-cluster-in-databricks) . 
+> **Ismert probléma** – ha ugyanazt az [interaktív fürtöt](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) használja az egyidejű Databricks jar-tevékenységek futtatásához (a fürt újraindítása nélkül), akkor ismert probléma van a Databricks, ahol az első tevékenység paramétereit is a következő tevékenységek használják majd. Emiatt a rendszer helytelen paramétereket ad át a következő feladatoknak. Ezzel a megoldással csökkentheti a [feladatok fürtjét](compute-linked-services.md#example---using-new-job-cluster-in-databricks) . 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Támogatott kódtárak a databricks-tevékenységekhez
 

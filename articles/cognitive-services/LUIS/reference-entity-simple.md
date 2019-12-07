@@ -10,20 +10,20 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 27eb4d827c1488b0d051505e62286fd66d6a286b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671519"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894762"
 ---
-# <a name="simple-entity"></a>Egyszerű entitás 
+# <a name="simple-entity"></a>Egyszerű entitás
 
-Az egyszerű entitások olyan általános entitások, amelyek egyetlen fogalmat ismertetnek, és a gép által megtanult környezetből származnak. Mivel az egyszerű entitások általában nevek, például a cégnevek, a terméknév vagy más kategóriájú nevek, akkor adjon meg egy [kifejezési listát](luis-concept-feature.md) , ha egyszerű entitást használ a használt nevek jelzésének növelésére. 
+Az egyszerű entitások olyan általános entitások, amelyek egyetlen fogalmat ismertetnek, és a gép által megtanult környezetből származnak. Mivel az egyszerű entitások általában nevek, például a cégnevek, a terméknév vagy más kategóriájú nevek, akkor adjon meg egy [kifejezési listát](luis-concept-feature.md) , ha egyszerű entitást használ a használt nevek jelzésének növelésére.
 
 **Az entitás jól illeszkedik, ha:**
 
-* Az adat nem konzisztens formátumú, de ugyanazt a dolgot jelzi. 
+* Az adat nem konzisztens formátumú, de ugyanazt a dolgot jelzi.
 
 ![egyszerű entitás](./media/luis-concept-entities/simple-entity.png)
 
@@ -86,12 +86,13 @@ This is the JSON if `verbose=true` is set in the query string:
 }
 ```
 
-* * * 
+* * *
 
-|Adatobjektum|Entitás neve|Érték|
+|Adatobjektum|Entitás neve|Value (Díj)|
 |--|--|--|
 |Egyszerű entitás|`Customer`|`bob jones`|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az [oktatóanyagban](luis-quickstart-primary-and-secondary-data.md)az **egyszerű entitás**használatával kinyerheti a feldolgozói feladatokból származó, a vállalat által megtanult adatok nevét. A kinyerési pontosság növeléséhez adjon hozzá egy kifejezést az egyszerű entitáshoz tartozó kifejezések [listájához](luis-concept-feature.md) .
+> [!div class="nextstepaction"]
+> [A minta szintaxisának megismerése](reference-pattern-syntax.md)

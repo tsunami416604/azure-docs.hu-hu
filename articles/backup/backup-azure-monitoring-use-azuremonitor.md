@@ -4,12 +4,12 @@ description: Figyelje Azure Backup munkaterheléseket, és hozzon létre egyéni
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: bdb59e5ec461288c89e4c7d036488b5eaeb9472a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 1fb739c8d517654c7258fd3a58c93ab29602f228
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554881"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894062"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>A monitor méretezése Azure Monitor használatával
 
@@ -51,7 +51,8 @@ Miután az adatLog Analytics munkaterületen belül található, [helyezzen üze
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>Azure Backup adatai megtekintése Log Analytics használatával
 
-A sablon üzembe helyezése után a Azure Backup figyelésére és jelentéskészítésére szolgáló megoldás a munkaterület összefoglaló régiójában jelenik meg. Az összegzéshez kövesse az alábbi elérési utak egyikét:
+> [!IMPORTANT]
+> A LA Reporting sablon jelenleg a AzureDiagnostics módban lévő örökölt esemény AzureBackupReport származó adatok használatát támogatja. A sablon használatához [konfigurálnia kell a tároló diagnosztikai beállításait a Azure Diagnostics módban](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event). 
 
 - **Azure monitor**: a **bepillantások** szakaszban válassza a **továbbiak** lehetőséget, majd válassza ki a megfelelő munkaterületet.
 - **Log Analytics munkaterületek**: válassza ki a megfelelő munkaterületet, majd az **általános**területen válassza a **munkaterület összegzése**elemet.
@@ -213,7 +214,7 @@ Itt az erőforrás maga a Recovery Services-tároló. Ismételje meg ugyanezeket
 
 Megtekintheti a tevékenységek naplóiból létrehozott összes riasztást és Log Analytics munkaterületeket Azure Monitor. Csak nyissa meg a **riasztások** panelt a bal oldalon.
 
-Bár a tevékenység-naplókon keresztül kaphat értesítéseket, javasoljuk, hogy használja a Log Analyticst, és ne a tevékenység naplóit, hanem a nagy léptékű monitorozást. Ezért:
+Bár a tevékenység-naplókon keresztül kaphat értesítéseket, javasoljuk, hogy használja a Log Analyticst, és ne a tevékenység naplóit, hanem a nagy léptékű monitorozást. Ezt a következők miatt kérjük:
 
 - **Korlátozott forgatókönyvek**: a tevékenység-naplókon keresztüli értesítések csak az Azure-beli virtuális gépek biztonsági mentésére vonatkoznak. Az értesítéseket minden Recovery Services-tárolóhoz be kell állítani.
 - **Definíciós igazítás**: az ütemezett biztonsági mentési tevékenység nem felel meg a tevékenységek naplófájljainak legújabb definíciójának. Ehelyett az [erőforrás-naplókhoz](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace)igazodik. Ez az igazítás váratlan hatásokat okoz, ha a tevékenység naplójának csatornáján áthaladó adat megváltozik.

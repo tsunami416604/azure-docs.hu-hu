@@ -1,6 +1,6 @@
 ---
 title: Poster konfigurálása Azure Media Services REST API hívásokhoz
-description: Megtudhatja, hogyan konfigurálhatja a Poster-t Media Services REST API-hívásokhoz.
+description: Ez a cikk bemutatja, hogyan konfigurálhatja a Poster-t, hogy felhasználható legyen Azure Media Services (AMS) REST API-k meghívására.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2019
+ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: 7b4e2d14e8719808db138a4f2607b19cece401a6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: eee46bd8642f5ad4a8d036b9f6bf9a464c0d09f3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839586"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888104"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Poster konfigurálása Media Services REST API hívásokhoz
 
@@ -92,7 +92,7 @@ Az AMS v3-erőforrások kezelésének megkezdése előtt be kell szereznie és b
 
     ![AAD-jogkivonat lekérése](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
-## <a name="troubleshooting"></a>Hibaelhárítás 
+## <a name="troubleshooting"></a>Hibakeresés 
 
 * Ha az alkalmazás a "HTTP 504: Gateway timeout" művelettel meghiúsul, győződjön meg arról, hogy a Location változó nincs explicit módon beállítva a Media Services fiók várt helyétől eltérő értékre. 
 * Ha "a fiók nem található" hibaüzenet jelenik meg, ellenőrizze, hogy a szövegtörzs JSON-üzenetében található Location tulajdonság arra a helyre van-e beállítva, amelyben a Media Services fiók található. 
@@ -103,7 +103,7 @@ Az AMS v3-erőforrások kezelésének megkezdése előtt be kell szereznie és b
 - [Szűrők létrehozása Media Services-REST használatával](filters-dynamic-manifest-rest-howto.md)
 - [Azure Resource Manager-alapú REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Adatfolyam-fájlok a REST](stream-files-tutorial-with-rest.md)-tel.  
 - [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videó – REST](stream-files-tutorial-with-rest.md)

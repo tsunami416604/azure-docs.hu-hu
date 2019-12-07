@@ -1,6 +1,6 @@
 ---
 title: Widevine-licencek továbbítása a castLabs használatával a Azure Media Services | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan használható a Azure Media Services (AMS) egy olyan stream továbbítására, amelyet az AMS dinamikusan titkosít az PlayReady és a Widevine DRMs. A PlayReady-licenc a Media Services PlayReady-licenckiszolgálóról származik, és a Widevine-licencet a castLabs-licenckiszolgáló továbbítja.
+description: Ez a cikk azt ismerteti, hogyan használható a Azure Media Services (AMS) egy olyan stream továbbítására, amelyet az AMS dinamikusan titkosít az PlayReady és a Widevine DRMs.
 services: media-services
 documentationcenter: ''
 author: Mingfeiy
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
-ms.openlocfilehash: 9c61fad333037074f392b019ae61c161673e4008
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c038480c9a49c96aaba7c7ff7299c8ebea31b81f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016689"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887781"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe 
 > [!div class="op_single_selector"]
@@ -33,11 +33,11 @@ ms.locfileid: "69016689"
 
 Ez a cikk azt ismerteti, hogyan használható a Azure Media Services (AMS) egy olyan stream továbbítására, amelyet az AMS dinamikusan titkosít az PlayReady és a Widevine DRMs. A PlayReady-licenc a Media Services PlayReady-licenckiszolgálóról származik, és a Widevine-licencet a **castLabs** -licenckiszolgáló továbbítja.
 
-A CENC (PlayReady és/vagy Widevine) által védett streaming tartalom lejátszásához használhatja a [Azure Media Player](https://aka.ms/azuremediaplayer). Részletekért lásd az [amp](https://amp.azure.net/libs/amp/latest/docs/) -dokumentációt.
+A CENC (PlayReady és/vagy Widevine) által védett streaming tartalom lejátszásához használhatja a [Azure Media Player](https://aka.ms/azuremediaplayer). Részletekért lásd az [amp-dokumentációt](https://amp.azure.net/libs/amp/latest/docs/) .
 
 A következő ábra egy magas szintű Azure Media Services és castLabs integrációs architektúrát mutat be.
 
-![integrációs](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
+![Integrációs](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
 
 ## <a name="typical-system-set-up"></a>Tipikus Rendszerbeállítás
 
@@ -58,21 +58,21 @@ Az alábbi táblázat az AMS JWT tokenjét ismerteti.
 
 | Kiállító | Kiállítói sztring a kiválasztott biztonságos jogkivonat-szolgáltatásból (STS) |
 | --- | --- |
-| Célközönség |Célközönség karakterlánca a használt STS-ből |
-| Igénylések |Jogcímek készlete |
+| Közönség |Célközönség karakterlánca a használt STS-ből |
+| Jogcímek |Jogcímek készlete |
 | NotBefore |A jogkivonat érvényességének kezdete |
-| Elévül |A jogkivonat érvényességének vége |
+| Lejár |A jogkivonat érvényességének vége |
 | SigningCredentials |A PlayReady-licenckiszolgáló, a castLabs és az STS között megosztott kulcs lehet szimmetrikus vagy aszimmetrikus kulcs. |
 
 ### <a name="jwt-token-in-castlabs"></a>JWT token a castLabs
 
 A következő táblázat a castLabs JWT tokenjét ismerteti. 
 
-| Name (Név) | Leírás |
+| Név | Leírás |
 | --- | --- |
 | optData |Egy JSON-karakterlánc, amely az Ön adatait tartalmazza. |
 | CRT |Egy olyan JSON-karakterlánc, amely az eszközre, a licencre és a lejátszási jogosultságokra vonatkozó információkat tartalmaz. |
-| iat |Az aktuális dátum és idő. |
+| IAT |Az aktuális dátum és idő. |
 | JTI |A jogkivonatra vonatkozó egyedi azonosító (minden token csak egyszer használható a castLabs rendszeren). |
 
 ## <a name="sample-solution-setup"></a>Példa a megoldás telepítésére

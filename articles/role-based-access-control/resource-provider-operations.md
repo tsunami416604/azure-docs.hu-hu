@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b00e699eb49d88e41dff18d6c86024c9b0537e50
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e8a3397cd8229a84103fdcbb116bf61648a6ba22
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872315"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895563"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Erőforrás-szolgáltatói műveletek Azure Resource Manager
 
@@ -5534,14 +5534,14 @@ Az erőforrás-szolgáltatói műveletek folyamatosan fejlődnek. A legújabb m�
 > | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/recommendedSensitivityLabels/READ | Egy adott adatbázis érzékenységi címkéjének listázása |
 > | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/recommendedSensitivityLabels/írás | A Batch Update ajánlott érzékenységi címkéi |
 > | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/restoreDetails/READ | A felügyelt adatbázis-visszaállítás részleteit adja vissza, amíg a visszaállítás folyamatban van. |
-> | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/sémák/olvasás | Felügyelt adatbázis-séma beszerzése. |
-> | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/sémák/táblák/oszlopok/olvasás | Felügyelt adatbázis oszlopának beolvasása |
+> | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/sémák/olvasás | Felügyelt adatbázis-séma beszerzése. (csak séma) |
+> | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/sémák/táblák/oszlopok/olvasás | Felügyelt adatbázis oszlopának beolvasása (csak séma) |
 > | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels/delete | Egy adott oszlop érzékenységi címkéjének törlése |
 > | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels/letiltás/művelet | Az adott oszlopra vonatkozó érzékenységi javaslatok letiltása |
 > | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels/engedélyezés/művelet | Érzékenységi javaslatok engedélyezése egy adott oszlopban |
 > | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels/olvasás | Egy adott oszlop érzékenységi címkéjének beolvasása |
 > | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels/írás | Egy adott oszlop érzékenységi címkéjének létrehozása vagy frissítése |
-> | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/sémák/táblák/olvasás | Felügyelt adatbázistábla beszerzése |
+> | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/sémák/táblák/olvasás | Felügyelt adatbázis-tábla beszerzése (csak séma) |
 > | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/securityAlertPolicies/READ | Az adott kiszolgálóhoz konfigurált felügyelt adatbázis-veszélyforrások észlelési házirendjeinek listájának beolvasása |
 > | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/securityAlertPolicies/írás | Az adatbázis-veszélyforrások észlelési házirendjének módosítása egy adott felügyelt adatbázis esetében |
 > | Műveletek | Microsoft. SQL/managedInstances/adatbázisok/securityEvents/READ | A felügyelt adatbázis biztonsági eseményeinek beolvasása |
@@ -5680,14 +5680,14 @@ Az erőforrás-szolgáltatói műveletek folyamatosan fejlődnek. A legújabb m�
 > | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/restorePoints/delete | Törli az adatbázis visszaállítási pontját. |
 > | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/restorePoints/olvasás | Az adatbázis visszaállítási pontjait adja vissza. |
 > | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/folytatás/művelet | Az Azure SQL Datawarehouse-adatbázis folytatása |
-> | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/sémák/olvasás | Adatbázis-séma beszerzése. |
-> | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/sémák/táblák/oszlopok/olvasás | Adatbázis oszlopának beolvasása. |
+> | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/sémák/olvasás | Adatbázis-séma beszerzése (csak séma). |
+> | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/sémák/táblák/oszlopok/olvasás | Adatbázis-oszlop beolvasása (csak séma). |
 > | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels/törlés | Egy adott oszlop érzékenységi címkéjének törlése |
 > | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels/letiltás/művelet | Az adott oszlopra vonatkozó érzékenységi javaslatok letiltása |
 > | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels/engedélyezés/művelet | Érzékenységi javaslatok engedélyezése egy adott oszlopban |
 > | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels/olvasás | Egy adott oszlop érzékenységi címkéjének beolvasása |
 > | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels/írás | Egy adott oszlop érzékenységi címkéjének létrehozása vagy frissítése |
-> | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/sémák/táblák/olvasás | Adatbázis táblázatának beolvasása. |
+> | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/sémák/táblák/olvasás | Adatbázis-tábla beszerzése (csak séma). |
 > | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/sémák/táblák/recommendedIndexes/olvasás | Tárgymutató-javaslatok listájának beolvasása egy adatbázison |
 > | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/sémák/táblák/recommendedIndexes/írás | Tárgymutató-javaslat alkalmazása |
 > | Műveletek | Microsoft. SQL/kiszolgálók/adatbázisok/securityAlertPolicies/olvasás | Az adott kiszolgálóhoz konfigurált adatbázis-veszélyforrások észlelési házirendjeinek listájának beolvasása |

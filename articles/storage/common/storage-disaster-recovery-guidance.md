@@ -1,22 +1,23 @@
 ---
-title: Vész-helyreállítási és Storage-fiók feladatátvétele (előzetes verzió) – Azure Storage
+title: Vész-helyreállítási és Storage-fiók feladatátvétele (előzetes verzió)
+titleSuffix: Azure Storage
 description: Az Azure Storage támogatja a fiók feladatátvételét (előzetes verzió) a Geo-redundáns tárolási fiókokhoz. A fiók feladatátvétele esetén kezdeményezheti a tárolási fiók feladatátvételi folyamatát, ha az elsődleges végpont elérhetetlenné válik.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d9daff390aa1678c25f4bf9c29b0293d96c43f48
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775928"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895355"
 ---
-# <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Vész-helyreállítási és Storage-fiók feladatátvétele (előzetes verzió) az Azure Storage-ban
+# <a name="disaster-recovery-and-account-failover-preview"></a>Vész-helyreállítás és fiók feladatátvétele (előzetes verzió)
 
 A Microsoft igyekszik biztosítani, hogy az Azure-szolgáltatások mindig elérhetők legyenek. A nem tervezett szolgáltatások azonban előfordulhatnak. Ha az alkalmazása rugalmasságot igényel, a Microsoft a Geo-redundáns tárolás használatát javasolja, hogy az adatai egy második régióban legyenek replikálva. Emellett az ügyfeleknek vészhelyzeti helyreállítási tervvel kell rendelkezniük a regionális szolgáltatások kimaradásának kezelésére. A vész-helyreállítási terv fontos része arra készül, hogy átadja a feladatátvételt a másodlagos végpontnak abban az esetben, ha az elsődleges végpont elérhetetlenné válik. 
 
@@ -69,7 +70,7 @@ A Microsoft azt is javasolja, hogy tervezze meg az alkalmazást, hogy előkész�
 
 Az ügyfél által felügyelt fiók feladatátvétele (előzetes verzió) lehetővé teszi, hogy a teljes Storage-fiókját a másodlagos régióra irányítsa, ha az elsődleges elérhetetlenné válik bármilyen okból. Ha a feladatátvételt a másodlagos régióra kényszeríti, az ügyfelek megkezdhetik az adatírást a másodlagos végpontnak a feladatátvétel befejeződése után. A feladatátvétel általában körülbelül egy órát vesz igénybe.
 
-### <a name="how-an-account-failover-works"></a>A fiók feladatátvételének működése
+### <a name="how-an-account-failover-works"></a>Hogyan működik a fiók feladatátvétele
 
 Normális körülmények között az ügyfél az elsődleges régióban lévő Azure Storage-fiókba ír egy adatot, és a rendszer aszinkron módon replikálja az adatot a másodlagos régióba. Az alábbi képen látható az az eset, amikor az elsődleges régió elérhető:
 

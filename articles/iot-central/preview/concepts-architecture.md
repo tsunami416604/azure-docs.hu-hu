@@ -3,17 +3,17 @@ title: Építészeti fogalmak az Azure IoT Centralban | Microsoft Docs
 description: Ez a cikk bemutatja az Azure architektúrával kapcsolatos főbb fogalmakat IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/12/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 66792d9d0a8b1cd72ef8f22481016a35f37a1597
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 9004e74d1b42a2b50ef57da58d9a79497e17f1ed
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013837"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895767"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central architektúra (előzetes verziójú funkciók)
 
@@ -34,7 +34,7 @@ Az Azure IoT Central-ban az eszköz által az alkalmazással megadható adatcser
 
 Ha többet szeretne megtudni arról, hogy az eszközök hogyan csatlakoznak az Azure IoT Central-alkalmazáshoz, tekintse meg az [eszköz kapcsolatát](overview-iot-central-get-connected.md).
 
-## <a name="azure-iot-edge-devices"></a>Az Azure IoT Edge-eszközök
+## <a name="azure-iot-edge-devices"></a>Eszközök Azure IoT Edge
 
 Továbbá az [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks)-k használatával létrehozott eszközökhöz [Azure IoT Edge eszközöket](../../iot-edge/about-iot-edge.md) is csatlakozhat egy IoT Central alkalmazáshoz. IoT Edge lehetővé teszi, hogy közvetlenül a IoT Central által felügyelt IoT-eszközökön futtassa a felhőalapú intelligenciát és az egyéni logikát. A IoT Edge Runtime a következőket teszi lehetővé:
 

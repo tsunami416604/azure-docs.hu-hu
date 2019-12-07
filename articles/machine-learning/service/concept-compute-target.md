@@ -1,5 +1,5 @@
 ---
-title: 'Számítási célok: a modellek betanítása és üzembe helyezése'
+title: Mik a számítási célok
 titleSuffix: Azure Machine Learning
 description: Itt adhatja meg, hogy hol szeretné betanítani vagy üzembe helyezni a modellt Azure Machine Learning használatával.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 75e789ac1f9c161bc67ba90062be39f986f5b140
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dd4ac07ddf94bd7fc12a2673ce76fb0b9f4d2ccb
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580585"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901427"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -65,8 +65,8 @@ Azure Machine Learning számítási fürtöket a betanításhoz és a Batch-köv
 
 A nem felügyelt számítási célt *nem* a Azure Machine learning felügyeli. Ezt a számítási célt a Azure Machine Learningon kívül hozza létre, majd csatolja a munkaterülethez. A nem felügyelt számítási erőforrások további lépéseket igényelhetnek a gépi tanulási feladatok teljesítményének fenntartása vagy javítása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az alábbiak végrehajtásának módját ismerheti meg:
+A webinárium témái:
 * [Számítási cél beállítása a modell betanításához](how-to-set-up-training-targets.md)
 * [Modell üzembe helyezése számítási célra](how-to-deploy-and-where.md)

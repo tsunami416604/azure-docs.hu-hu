@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 5739883984d4087d2b2a1bda66c01ff3cfa10eb0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/04/2019
+ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122599"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894259"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Apache Kafka naplók elemzése a HDInsight
 
@@ -56,7 +56,7 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Bejövő üzenetek másodpercenként:
+* Bejövő üzenetek másodpercenként: (cserélje `your_kafka_cluster_name`t a fürt nevére.)
 
     ```kusto
     metrics_kafka_CL 
@@ -64,7 +64,7 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* Bejövő bájtok másodpercenként:
+* Bejövő bájtok másodpercenként: (`wn0-kafka` cseréje a munkavégző csomópont állomásneve.)
 
     ```kusto
     metrics_kafka_CL 
@@ -72,7 +72,7 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* Kimenő bájtok másodpercenként:
+* Kimenő bájtok másodpercenként: (cserélje le a `your_kafka_cluster_name`t a fürt nevére.)
 
     ```kusto
     metrics_kafka_CL 
@@ -80,26 +80,23 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-    > [!IMPORTANT]  
-    > Cserélje le a lekérdezési értékeket a fürtre vonatkozó információkkal. A nevet például `ClusterName_s` a fürt nevére kell beállítani. `HostName_s`a fürt munkavégző csomópontjának tartománynevére kell beállítani.
-
-    Megadhatja `*` az összes naplózott típus keresését is. Jelenleg a következő naplók érhetők el a lekérdezésekhez:
+    Az összes naplózott típus kereséséhez `*` is megadhat. Jelenleg a következő naplók érhetők el a lekérdezésekhez:
 
     | Napló típusa | Leírás |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka Broker Server. log |
     | log\_kafkacontroller\_CL | Kafka Broker Controller. log |
-    | mérőszámok\_KafkaCL\_ | Kafka JMX metrics |
+    | mérőszámok\_Kafka-\_CL | Kafka JMX metrikák |
 
     ![Apache Kafka log Analytics CPU-használat](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Monitorről: [Azure monitor áttekintés](../../log-analytics/log-analytics-get-started.md)és [Azure monitor naplók lekérdezése a HDInsight-fürtök figyeléséhez](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
 
 A Apache Kafka használatáról az alábbi dokumentumokban talál további információt:
 
 * [Tükrözött Apache Kafka HDInsight-fürtök között](apache-kafka-mirroring.md)
-* [Apache Kafka méretezhetőségének növelése a HDInsight](apache-kafka-scalability.md)
+* [Növelje Apache Kafka méretét a HDInsight](apache-kafka-scalability.md)
 * [Apache Spark streaming (DStreams) használata a Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
 * [Apache Spark strukturált adatfolyam használata Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

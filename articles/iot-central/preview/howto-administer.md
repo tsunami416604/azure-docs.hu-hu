@@ -3,17 +3,17 @@ title: Az Azure IoT Central alkalmazás beállításainak módosítása | Micros
 description: Rendszergazdaként az alkalmazás nevének, URL-címének, feltöltésének és az alkalmazás törlésének megváltoztatásával hogyan kezelheti Azure IoT Central alkalmazását.
 author: viv-liu
 ms.author: viviali
-ms.date: 10/10/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 5d14ed31b41deb0db44ba452470c45d69a0ec781
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 016e356e306468441fc9308d2853f5c44a37379e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896059"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895506"
 ---
 # <a name="change-iot-central-application-settings"></a>IoT Central alkalmazás beállításainak módosítása
 
@@ -41,7 +41,7 @@ Az IoT Central alkalmazás végleges törléséhez használja a **delete (Törl�
 > [!Note]
 > Egy alkalmazás törléséhez az alkalmazás létrehozásakor kiválasztott Azure-előfizetésben is rendelkeznie kell az erőforrások törléséhez szükséges engedélyekkel. További információ: [szerepköralapú hozzáférés-vezérlés használata az Azure-előfizetések erőforrásaihoz való hozzáférés kezeléséhez](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
 
-## <a name="manage-programmatically"></a>Programozott kezelés
+## <a name="manage-programmatically"></a>Automatizált kezelés
 
 IoT Central Azure Resource Manager SDK-csomagok a Node, a Python, C#a Ruby, a Java és a go esetében érhetők el. Ezeket a csomagokat IoT Central-alkalmazások létrehozásához, listázásához, frissítéséhez vagy törléséhez használhatja. A csomagok közé tartoznak a hitelesítés és a hibakezelés kezeléséhez szükséges segítők.
 
@@ -49,7 +49,7 @@ Példákat talál arra, hogyan használhatja a Azure Resource Manager SDK-kat a 
 
 További információért lásd a következő GitHub-adattárakat és-csomagokat:
 
-| Nyelv | Tárház | Csomag |
+| Nyelv | Adattár | Csomag |
 | ---------| ---------- | ------- |
 | Csomópont | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
 | Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)
@@ -58,6 +58,6 @@ További információért lásd a következő GitHub-adattárakat és-csomagokat
 | Java | [https://github.com/Azure/azure-sdk-for-java](https://github.com/Azure/azure-sdk-for-java) | [https://search.maven.org/search?q=a:azure-mgmt-iotcentral](https://search.maven.org/search?q=a:azure-mgmt-iotcentral)
 | Indítás | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az Azure IoT Central-alkalmazás felügyeletének módját, a javasolt következő lépés a [felhasználók és szerepkörök kezelése](howto-manage-users-roles.md) az Azure IoT Central-ban című témakörben.

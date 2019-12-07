@@ -7,12 +7,12 @@ ms.date: 11/26/2019
 ms.author: fauhse
 ms.subservice: files
 description: A StorSimple egy életcikluson kívüli termék, és Azure File Sync az a megoldás, amelybe migrálni kell. Ismerje meg az áttelepítési koncepciót, és ismerkedjen meg AzureFiles@microsoft.com a testreszabott áttelepítési súgóval.
-ms.openlocfilehash: edad4d1c6be2c39dbf8150b6ab8979ae3924fb53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 1cc88080522a62085d9a515223512ef25c20a9e4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666662"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895080"
 ---
 # <a name="storsimple-migration-to-azure-file-sync"></a>StorSimple Migrálás Azure File Syncre
 
@@ -26,7 +26,7 @@ Ez a cikk az áttelepítés megkezdésének koncepcióját ismerteti.
 Fontos megjegyezni, hogy a StorSimple-ra és a Azure File Syncre való áttelepítést igénylő ügyfeleknek nem kell saját magukra lépniük.
 
 > [!IMPORTANT]
-> A Microsoft elkötelezte magát, hogy segítse az ügyfeleket az áttelepítés során. Az e-mail-AzureFiles@microsoft.com a testreszabott áttelepítési tervhez, valamint az áttelepítés során nyújtandó segítséghez.
+> A Microsoft elkötelezte magát, hogy segítse az ügyfeleket az áttelepítés során. E-mail-AzureFiles@microsoft. com a testreszabott áttelepítési tervhez, valamint az áttelepítés során nyújtandó támogatáshoz.
 
 ## <a name="migration-approach"></a>Áttelepítési módszer
 A Azure File Syncre való Migrálás megkezdi a felhőben való áttelepítést, és minimális hatással van a helyszíni és a korlátozott állásidőre.
@@ -67,7 +67,7 @@ Emellett egy Azure-fájlmegosztás számos különböző kiszolgálóra is szink
 Ismerkedjen meg Azure Filesával és Azure File Syncával. Fontos, hogy megértse a sikeres áttelepítéshez szükséges Azure File Sync terminológiai és telepítési mintát. Az áttekintő cikkben található minden egyes lépéshez részletesebb információ érhető el. A Migrálás megtervezése és végrehajtása során győződjön meg arról, hogy a Microsofttól a testreszabott súgóhoz jut.
 
 > [!IMPORTANT]
-> A Microsoft elkötelezte magát, hogy segítse az ügyfeleket az áttelepítés során. Az e-mail-AzureFiles@microsoft.com a testreszabott áttelepítési tervhez, valamint az áttelepítés során nyújtandó segítséghez.
+> A Microsoft elkötelezte magát, hogy segítse az ügyfeleket az áttelepítés során. E-mail-AzureFiles@microsoft. com a testreszabott áttelepítési tervhez, valamint az áttelepítés során nyújtandó támogatáshoz.
 
 ## <a name="additional-resources"></a>További források
 Azure File Sync a célként megadott szolgáltatásnak két alapvető dokumentuma van, amelyeket érdemes elolvasnia, ha új a Azure File Sync.

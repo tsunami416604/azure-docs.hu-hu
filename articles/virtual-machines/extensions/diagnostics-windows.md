@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 09aaa998bf011561bd73ad87eda6a2e211ffaa72
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 61b94e95c5292b4013409deed6565a90890b66d1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158943"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892634"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Az Azure Diagnostics használatának engedélyezése a PowerShell-lel virtual windowsos virtuális gépen
 
@@ -40,7 +40,7 @@ Ha engedélyezni szeretné a diagnosztikai bővítményt egy olyan meglévő vir
 
 *$diagnosticsconfig _path* a diagnosztikai konfigurációt tartalmazó fájl elérési útja az XML-ben, az alábbi [példában](#sample-diagnostics-configuration) leírtak szerint.  
 
-Ha a diagnosztikai konfigurációs fájl egy **StorageAccount** elemet ad meg a Storage-fiók nevével, akkor a *set-AzVMDiagnosticsExtension* parancsfájl automatikusan beállítja a diagnosztika bővítményt, hogy diagnosztikai adatait küldjön a tárolóba fiók. Ahhoz, hogy működjön, a Storage-fióknak ugyanabban az előfizetésben kell lennie, mint a virtuális gépnek.
+Ha a diagnosztikai konfigurációs fájl egy **StorageAccount** elemet ad meg a Storage-fiók nevével, akkor a *set-AzVMDiagnosticsExtension* parancsfájl automatikusan beállítja a diagnosztika bővítményt, hogy diagnosztikai adatait küldjön erre a Storage-fiókra. Ahhoz, hogy működjön, a Storage-fióknak ugyanabban az előfizetésben kell lennie, mint a virtuális gépnek.
 
 Ha nincs megadva **StorageAccount** a diagnosztika konfigurációjában, akkor át kell adnia a *StorageAccountName* paramétert a parancsmagnak. Ha a *StorageAccountName* paraméter meg van adva, a parancsmag mindig a paraméterben megadott Storage-fiókot fogja használni, nem pedig a diagnosztikai konfigurációs fájlban megadott értéket.
 
@@ -64,9 +64,9 @@ A [Remove-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>A diagnosztikai bővítmény engedélyezése, ha a klasszikus telepítési modellt használja
 A [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) parancsmaggal engedélyezheti a diagnosztikai bővítményt egy olyan virtuális gépen, amelyet a klasszikus üzemi modell használatával hozott létre. Az alábbi példa bemutatja, hogyan hozhat létre új virtuális gépet a klasszikus üzembe helyezési modellel a diagnosztika bővítmény engedélyezésével.
 
-    $VM = New-AzVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
+    $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
-    $VM = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+    $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
 
 Ha engedélyezni szeretné a diagnosztikai bővítményt egy olyan meglévő virtuális gépen, amely a klasszikus üzemi modellel lett létrehozva, először használja a [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) parancsmagot a virtuális gép konfigurációjának beszerzéséhez. Ezután frissítse a virtuális gép konfigurációját, hogy tartalmazza a diagnosztikai bővítményt a [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) parancsmag használatával. Végül alkalmazza a frissített konfigurációt a virtuális gépre az [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm)használatával.
@@ -82,8 +82,8 @@ A konfigurációt frissíteni kell, hogy tartalmazza a következőket:
 
 * A **metrikák** elem *resourceID* attribútumát frissíteni kell a virtuális gép erőforrás-azonosítójával.
   
-  * Az erőforrás-azonosító a következő mintával állítható össze: "/Subscriptions/{*előfizetés azonosítója az előfizetéshez és a VM*}/resourceGroups/{*a virtuális gép resourcegroup-neve*"/Providers/Microsoft.Compute/virtualMachines/{ *A virtuális gép neve*} ".
-  * Ha például a virtuális gépet futtató előfizetés előfizetés-azonosítója **11111111-1111-1111-1111-111111111111**, akkor az erőforráscsoport neve **MyResourceGroup**, a virtuális gép neve pedig **MyWindowsVM**, majd a a *resourceID* értéke a következő:
+  * Az erőforrás-azonosító a következő mintával állítható össze: "a virtuális gép/Subscriptions/{*előfizetés-azonosítója*a VM-szel}/resourceGroups/{a virtuális gép resourcegroup-*neve*} *"/Providers/Microsoft.Compute/virtualMachines/{.*
+  * Ha például a virtuális gépet futtató előfizetés előfizetés-azonosítója **11111111-1111-1111-1111-111111111111**, az erőforráscsoport neve **MyResourceGroup**, a virtuális gép neve pedig **MyWindowsVM**, a *resourceID* értéke pedig a következő lesz:
     
       ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >

@@ -1,20 +1,21 @@
 ---
-title: Felhasználói delegálási SAS létrehozása egy tárolóhoz vagy blobhoz a PowerShell (előzetes verzió) használatával – Azure Storage
-description: Megtudhatja, hogyan hozhat létre közös hozzáférésű aláírást (SAS) Azure Active Directory hitelesítő adatokkal az Azure Storage-ban a PowerShell használatával.
+title: Felhasználói delegálási SAS létrehozása egy tárolóhoz vagy blobhoz a PowerShell használatával
+titleSuffix: Azure Storage
+description: Megtudhatja, hogyan hozhat létre felhasználói delegálási SAS-t (előzetes verzió) Azure Active Directory hitelesítő adatokkal a PowerShell használatával.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 08/29/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 0164c97adf720a618179908298223c54bf48824e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 5f4947921a77f2bc94d1810c9b1d1951431d3d71
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673337"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892515"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Felhasználói delegálási SAS létrehozása egy tárolóhoz vagy blobhoz a PowerShell (előzetes verzió) használatával
 
@@ -31,7 +32,7 @@ Ha a PowerShell használatával szeretne felhasználói delegálási SAS-t létr
 1. Távolítsa el a Azure PowerShell összes korábbi telepítését:
 
     - Távolítsa el a Azure PowerShell korábbi telepítését a Windows rendszerből a **Beállítások**területen található **alkalmazások & szolgáltatások** beállítással.
-    - Távolítsa el az összes `%Program Files%\WindowsPowerShell\Modules`Azure-modult.
+    - Távolítsa el a `%Program Files%\WindowsPowerShell\Modules`összes **Azure** -modulját.
 
 1. Győződjön meg arról, hogy a PowerShellGet legújabb verziója van telepítve. Nyisson meg egy Windows PowerShell-ablakot, és futtassa a következő parancsot a legújabb verzió telepítéséhez:
 
@@ -168,7 +169,7 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
 > [!IMPORTANT]
 > A felhasználói delegálási kulcs és a RBAC szerepkör-hozzárendeléseket az Azure Storage gyorsítótárazza, így a visszavonás folyamata és a meglévő felhasználói delegálási SAS érvénytelenné válik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználói delegálási SAS létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas)
 - [Felhasználói delegálási kulcs műveletének beolvasása](/rest/api/storageservices/get-user-delegation-key)

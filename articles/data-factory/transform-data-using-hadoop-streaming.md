@@ -1,5 +1,5 @@
 ---
-title: Adatátalakítás Hadoop-adatfolyam-továbbítási tevékenység használatával Azure Data Factory
+title: Adatátalakítás az Hadoop streaming-tevékenységgel
 description: A cikk azt ismerteti, hogyan lehet az Hadoop adatfolyam-továbbítási tevékenységet használni a Azure Data Factoryban az adatátalakításhoz a Hadoop-fürtön futó Hadoop streaming programok futtatásával
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 6977f7a6ad7fd79a51083bf2ef71c539e04837e5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 01237218e30859015b1c8f0a5adeebd8b9bdf7eb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683789"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893790"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Adatátalakítás Hadoop-adatfolyam-továbbítási tevékenység használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -68,7 +68,7 @@ Ha még nem ismeri a Azure Data Factoryt, olvassa el a [Azure Data Factory bevez
 
 ## <a name="syntax-details"></a>Szintaxis részletei
 
-| Tulajdonság          | Leírás                              | Kötelező |
+| Tulajdonság          | Leírás                              | Szükséges |
 | ----------------- | ---------------------------------------- | -------- |
 | név              | A tevékenység neve                     | Igen      |
 | leírás       | A tevékenység által használt szöveg leírása | Nem       |
@@ -78,14 +78,14 @@ Ha még nem ismeri a Azure Data Factoryt, olvassa el a [Azure Data Factory bevez
 | szűkítő           | A csökkentő végrehajtható fájl nevét adja meg | Igen      |
 | egyesítő          | A Combiner végrehajtható fájljának nevét adja meg | Nem       |
 | fileLinkedService | Hivatkozás egy Azure Storage társított szolgáltatásra, amely a leképezett Mapper, Combiner és redukáló programok tárolására szolgál. Ha nem megadja ezt a társított szolgáltatást, a rendszer a HDInsight társított szolgáltatásban definiált Azure Storage társított szolgáltatást használja. | Nem       |
-| FilePath          | Adja meg a fileLinkedService által hivatkozott Azure Storage-ban tárolt Mapper, Combiner és redukáló programok elérési útjának tömbjét. Az elérési út megkülönbözteti a kis- és nagybetűket. | Igen      |
+| filePath          | Adja meg a fileLinkedService által hivatkozott Azure Storage-ban tárolt Mapper, Combiner és redukáló programok elérési útjának tömbjét. Az elérési út megkülönbözteti a kis- és nagybetűket. | Igen      |
 | bemenet             | Meghatározza a Mapper bemeneti fájljának WASB elérési útját. | Igen      |
 | output            | Megadja a szűkítő kimeneti fájljának WASB elérési útját. | Igen      |
 | getDebugInfo      | Megadja, hogy a rendszer mikor másolja a naplófájlokat a Scriptlinkedservice szolgáltatás által meghatározott HDInsight-fürt (vagy) által használt Azure-tárolóba. Megengedett értékek: nincs, mindig vagy sikertelen. Alapértelmezett érték: nincs. | Nem       |
 | argumentumok         | Argumentumok tömbjét adja meg egy Hadoop feladatokhoz. Az argumentumok parancssori argumentumként lesznek átadva az egyes feladatokhoz. | Nem       |
 | meghatározza           | Adja meg a paramétereket kulcs/érték párokként a kaptár-parancsfájlon belüli hivatkozáshoz. | Nem       | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást: 
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)

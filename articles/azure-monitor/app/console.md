@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/02/2019
 ms.reviewer: lmolkova
-ms.openlocfilehash: 9e198d3ea24383a532c5fbc3bfdcb1d1d7e49a92
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c8c71fa3798b7c56550b742a8b19c83336bb6ddf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689036"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889141"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights a .NET-konzol alkalmazásaihoz
 
@@ -27,7 +27,7 @@ ms.locfileid: "74689036"
 ## <a name="getting-started"></a>Bevezetés
 
 * [Hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusa mezőben válassza az **általános**lehetőséget.
-* Végezze el a kialakítási kulcs másolását. Keresse meg a kulcsot a létrehozott új erőforrás **Essentials** legördülő menüjében. 
+* Végezze el a kialakítási kulcs másolását. Keresse meg a kulcsot a létrehozott új erőforrás **Essentials** legördülő menüjében.
 * Telepítse a legújabb [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) csomagot.
 * Adja meg a kialakítási kulcsot a kódban a telemetria követése előtt (vagy állítsa be APPINSIGHTS_INSTRUMENTATIONKEY környezeti változót). Ezután manuálisan nyomon követheti a telemetria, és megtekintheti a Azure Portal
 
@@ -39,6 +39,10 @@ var telemetryClient = new TelemetryClient(configuration);
 telemetryClient.TrackTrace("Hello World!");
 ```
 
+> [!NOTE]
+> A telemetria nincs azonnal elküldve. A telemetria elemek kötegelt és a ApplicationInsights SDK által küldött kötegek. A konzolos alkalmazásokban, amelyek közvetlenül a `Track()` metódusok meghívása után lépnek fel, a telemetria nem lehet elküldeni, kivéve, ha `Flush()` és `Sleep` az alkalmazás bezárása előtt, [amint az a jelen cikk későbbi](#full-example) részében látható.
+
+
 * A [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) Package legújabb verziójának telepítése – automatikusan nyomon követi a http, az SQL vagy más külső függőségi hívásokat.
 
 A kód Application Insights inicializálható és konfigurálható `ApplicationInsights.config` fájl használatával. Győződjön meg arról, hogy az inicializálás a lehető leghamarabb megtörténik. 
@@ -47,6 +51,7 @@ A kód Application Insights inicializálható és konfigurálható `ApplicationI
 > A **ApplicationInsights. config fájlra** hivatkozó utasítások csak a .NET-keretrendszert célzó alkalmazásokra vonatkoznak, és a .net Core-alkalmazásokra nem érvényesek.
 
 ### <a name="using-config-file"></a>Konfigurációs fájl használata
+
 Alapértelmezés szerint a Application Insights SDK `ApplicationInsights.config` fájlt keres a munkakönyvtárban a `TelemetryConfiguration` létrehozásakor
 
 ```csharp

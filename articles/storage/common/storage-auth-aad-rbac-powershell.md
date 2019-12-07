@@ -1,24 +1,25 @@
 ---
-title: Az Azure AD hozzáférési jogosultságok kezelése a blob-és üzenetsor-RBAC az Azure Storage szolgáltatással Azure PowerShell használatával
-description: A Azure PowerShell használatával rendeljen hozzá hozzáférést a tárolóhoz és a várólistákhoz szerepköralapú hozzáférés-vezérléssel (RBAC). Az Azure Storage támogatja a beépített és az egyéni RBAC-szerepköröket az Azure AD-n keresztül történő hitelesítéshez.
+title: RBAC-szerepkör kiosztása az adateléréshez a PowerShell használatával
+titleSuffix: Azure Storage
+description: Ismerje meg, hogyan rendelhet hozzá engedélyeket Azure Active Directory rendszerbiztonsági tag számára a PowerShell használatával szerepköralapú hozzáférés-vezérléssel (RBAC). Az Azure Storage támogatja a beépített és az egyéni RBAC-szerepköröket az Azure AD-n keresztül történő hitelesítéshez.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/25/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 967e1754ec4be504669e176a5643186d08efb9d4
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 57d30803f20d17ee31c3d42d9a26e04c1b0832b6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673178"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892017"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-powershell"></a>Hozzáférés biztosítása az Azure Blob-és üzenetsor-adataihoz a RBAC a PowerShell használatával
+# <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>A PowerShell használata RBAC-szerepkör hozzárendeléséhez a blob-és üzenetsor-adathoz való hozzáféréshez
 
-Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage olyan beépített RBAC-szerepköröket határoz meg, amelyek a tárolók és a várólisták eléréséhez használt engedélyek közös készleteit foglalják magukban. 
+Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage olyan beépített RBAC-szerepköröket határoz meg, amelyek a tárolók és a várólisták eléréséhez használt engedélyek közös készleteit foglalják magukban.
 
 Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy adott tároló vagy várólista szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy [felügyelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -132,7 +133,7 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
 - [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával az Azure CLI-vel](storage-auth-aad-rbac-cli.md)

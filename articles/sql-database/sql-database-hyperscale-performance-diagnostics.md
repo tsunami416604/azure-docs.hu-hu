@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: a7c64284c958fa8b3ec89c2b27515fe167a04011
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2e162b30a0227c5f04c74dae01413177d1623235
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811144"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901247"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL nagy kapacitású Performance hibaelhárítási diagnosztika
 
@@ -44,13 +44,14 @@ A számítási replikák nem gyorsítótárazzák helyileg az adatbázis teljes 
  
 Ha az olvasás egy számítási replikán van kiadva, ha az adatok nem léteznek a puffer-készletben vagy a helyi RBPEX-gyorsítótárban, a rendszer getPage (pageId, LSN) függvény hívását állítja ki, és a lapot beolvassa a megfelelő oldal-kiszolgálóról. Az egyoldalas kiszolgálókról érkező olvasások távoli olvasások, így lassabbak, mint a helyi RBPEX beolvasása. Az IO-vel kapcsolatos teljesítményproblémák hibaelhárításakor tudnia kell, hogy hány IOs-t tettek elérhetővé viszonylag lassabb távoli oldal-kiszolgáló olvasásával.
 
-Számos DMV és bővített eseménynek van olyan oszlopa és mezője, amely meghatározza, hogy a rendszer milyen számú távoli olvasást végez egy adott lapról, amely összehasonlítható az összes olvasási művelettel. 
+Számos DMV és bővített eseménynek van olyan oszlopa és mezője, amely meghatározza, hogy a rendszer milyen számú távoli olvasást végez egy adott lapról, amely összehasonlítható az összes olvasási művelettel. A Query Store a lekérdezés futási idejének statisztikájának részeként rögzíti a távoli olvasásokat is.
 
-- A jelentéskészítő oldal-kiszolgáló olvasásának oszlopai a végrehajtás DMV érhetők el, például:
+- A jelentéskészítő lap kiszolgálójának olvasási oszlopai a végrehajtás DMV és a katalógusok nézeteiben érhetők el, például:
     - [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
     - [sys. dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
     - [sys. dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
     - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys. query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
 - A Page Server olvasások a következő kiterjesztett eseményekhez lesznek hozzáadva:
     - sql_statement_completed
     - sp_statement_completed
@@ -59,7 +60,7 @@ Számos DMV és bővített eseménynek van olyan oszlopa és mezője, amely megh
     - scan_stopped
     - query_store_begin_persist_runtime_stat
     - lekérdezés – store_execution_runtime_info
-- A rendszer a ActualPageServerReads/ActualPageServerReadAheads adja hozzá a lekérdezési terv XML-kódjához a tényleges tervekhez. Például:
+- A rendszer a ActualPageServerReads/ActualPageServerReadAheads adja hozzá a lekérdezési terv XML-kódjához a tényleges tervekhez. Példa:
 
 `<RunTimeCountersPerThread Thread="8" ActualRows="90466461" ActualRowsRead="90466461" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="133645" ActualCPUms="85105" ActualScans="1" ActualLogicalReads="6032256" ActualPhysicalReads="0" ActualPageServerReads="0" ActualReadAheads="6027814" ActualPageServerReadAheads="5687297" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobPageServerReads="0" ActualLobReadAheads="0" ActualLobPageServerReadAheads="0" />`
 

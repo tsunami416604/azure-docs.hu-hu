@@ -3,12 +3,12 @@ title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: e8bb1d3328f95b647a788c53afe3ac1455eefa13
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 9958b241c44d619efea2f9ad516a2bd6d4f33d6e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665338"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892600"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -102,17 +102,19 @@ A HANA-hoz készült több Container Database-ben a standard konfiguráció SYST
 Ha SAP HANA 1,0-es adatbázist véd, és a 2,0-re kíván frissíteni, hajtsa végre az alábbi lépéseket:
 
 - A [védelem leállítása](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a régi SDC-adatbázis megőrzése érdekében.
+- Végezze el a frissítést. A befejezést követően a HANA már MDC a rendszer-ADATBÁZISsal és a bérlői ADATBÁZISokkal
 - Futtassa újra az [előzetes regisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) a (SID és MDC) helyes részleteivel.
-- A bővítmény újbóli regisztrálása (Backup-> nézet részletei – > Válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja).
+- A bővítmény újbóli regisztrálása ugyanarra a gépre az Azure Portalon (Backup-> nézet részletei – > Válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja).
 - Kattintson az azonos virtuális géphez tartozó adatbázisok újbóli felderítése elemre. Ez a művelet a 2. lépésben szereplő új adatbázisok helyes részleteit (SYSTEMDB és bérlői adatbázis, nem SDC) jeleníti meg.
-- Az új adatbázisok védelméhez.
+- Konfigurálja az új adatbázisok biztonsági mentését.
 
 ## <a name="upgrading-without-an-sid-change"></a>Frissítés SID-változás nélkül
 
 A SID-módosítást nem okozó operációs rendszerre vagy SAP HANAra való frissítés az alábbi módon kezelhető:
 
 - A [védelem leállítása](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) az adatbázis megőrzése érdekében
-- Az [előzetes regisztrációs parancsfájl](https://aka.ms/scriptforpermsonhana) újrafuttatása
+- Végezze el a frissítést.
+- Futtassa újra az [előzetes regisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana). A frissítési folyamat általában a szükséges szerepköröket távolítja el. Az előzetes regisztrációs szkript futtatása segít ellenőrizni az összes szükséges szerepkört.
 - Az adatbázis [védelmének](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) újbóli folytatása
 
 ## <a name="next-steps"></a>Következő lépések

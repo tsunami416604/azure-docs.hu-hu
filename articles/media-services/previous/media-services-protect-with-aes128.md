@@ -1,6 +1,6 @@
 ---
 title: Az AES-128 Dynamic encryption és a Key Delivery Service használata | Microsoft Docs
-description: Az AES 128 bites titkosítási kulcsokkal Titkosítsa a tartalmat Microsoft Azure Media Services használatával. A Media Services a kulcsfontosságú kézbesítési szolgáltatást is biztosítja, amely titkosítási kulcsokat biztosít a hitelesítő felhasználók számára. Ez a témakör bemutatja, hogyan lehet dinamikusan titkosítani az AES-128-et, és hogyan használhatja a Key Delivery szolgáltatást.
+description: Ez a témakör bemutatja, hogyan lehet dinamikusan titkosítani az AES-128-et, és hogyan használhatja a Key Delivery szolgáltatást.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 2b96d968cb1ad2ec903dbf9788e1fbae22bd2b7d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69014966"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895834"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Az AES-128 Dynamic encryption és a Key Delivery Service használata
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ A dinamikus titkosítás által nyújtott előnyök kihasználásához többszö
 
 Ez a cikk olyan fejlesztők számára hasznos, akik a védett adathordozókat kézbesítő alkalmazásokon dolgoznak. A cikk bemutatja, hogyan konfigurálhatja a Key Delivery szolgáltatást engedélyezési házirendekkel, hogy csak a jogosult ügyfelek fogadhatnak titkosítási kulcsokat. Azt is bemutatja, hogyan használható a dinamikus titkosítás.
 
-További információ arról, hogyan titkosíthatja a tartalmat az Advanced Encryption Standard (AES) használatával a macOS-hez készült Safarihoz való továbbításhoz. [ebben](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)a blogbejegyzésben olvashat.
+További információ arról, hogyan titkosíthatja a tartalmat az Advanced Encryption Standard (AES) használatával a macOS-hez készült Safarihoz való továbbításhoz. [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)olvashat.
 A médiatartalmak AES-titkosítással való védelemmel kapcsolatos információkért tekintse meg ezt a [videót](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption).
 
 
@@ -57,9 +57,9 @@ A következő általános lépéseket akkor hajtsa végre, ha az eszközöket AE
 
 5. [Egy eszköz kézbesítési házirendjének konfigurálása](media-services-protect-with-aes128.md#configure_asset_delivery_policy). A kézbesítési szabályzat konfigurációja tartalmazza a kulcs-beszerzési URL-címet és az inicializálási vektort (IV). (Az AES-128 a titkosításhoz és a visszafejtéshez ugyanazt a IV-t igényli.) A konfiguráció emellett magában foglalja a kézbesítési protokollt (például MPEG-DASH, HLS, Smooth Streaming vagy mind) és a dinamikus titkosítás típusát (például boríték vagy nincs dinamikus titkosítás).
 
-    Egy adott objektum különböző protokolljaira eltérő szabályzatokat is alkalmazhat. Beállíthatja például, hogy a PlayReady-titkosítás csak a Smooth/DASH-re vonatkozzon, az AES Envelope pedig csak a HLS-re. A továbbítási házirendben nem definiált protokollok nincsenek letiltva az adatfolyamból. (Ilyen például, ha egyetlen szabályzatot ad hozzá, amely csak a HLS adja meg.) Kivételt jelent, ha egyáltalán nem állít be objektumtovábbítási szabályzatot. Ebben az esetben a rendszer az összes protokollt engedélyezi.
+    Egy adott objektum különböző protokolljaira eltérő szabályzatokat is alkalmazhat. Beállíthatja például, hogy a PlayReady-titkosítás csak a Smooth/DASH-re vonatkozzon, az AES Envelope pedig csak a HLS-re. A továbbítási házirendben nem definiált protokollok nincsenek letiltva az adatfolyamból. (Ilyen például, ha egyetlen szabályzatot ad hozzá, amely csak a HLS adja meg.) Ez alól kivételt képez, ha nincs megadva eszközre vonatkozó kézbesítési szabályzat. Ebben az esetben a rendszer az összes protokollt engedélyezi.
 
-6. [Hozzon létre egy OnDemand](media-services-protect-with-aes128.md#create_locator) -lokátort a streaming URL-cím lekéréséhez.
+6. [Hozzon létre egy OnDemand-lokátort](media-services-protect-with-aes128.md#create_locator) a streaming URL-cím lekéréséhez.
 
 A cikk azt is bemutatja [, hogy egy ügyfélalkalmazás hogyan igényelhet kulcsot a Key Delivery szolgáltatástól](media-services-protect-with-aes128.md#client_request).
 
@@ -95,7 +95,7 @@ A Media Services szolgáltatásban a tartalomkulcs tartalmazza az objektum titko
 További információkat a [tartalomkulcs létrehozásával](media-services-dotnet-create-contentkey.md) foglalkozó témakör tartalmaz.
 
 ## <a id="configure_key_auth_policy"></a>A tartalomkulcs hitelesítési szabályzatának konfigurálása
-A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. Konfigurálnia kell a tartalomkulcs hitelesítési szabályzatát. Az ügyfélnek (lejátszó) meg kell felelnie a szabályzat, a kulcs letöltéséhez az ügyfél előtt. A tartalmi kulcs engedélyezési házirendje egy vagy több engedélyezési korlátozással rendelkezhet: nyitott, jogkivonat-korlátozás vagy IP-korlátozás.
+A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. Konfigurálnia kell a tartalomkulcs hitelesítési szabályzatát. Az ügyfélnek (Player) meg kell felelnie a szabályzatnak, mielőtt a kulcsot el lehetne küldeni az ügyfélnek. A tartalmi kulcs engedélyezési házirendje egy vagy több engedélyezési korlátozással rendelkezhet: nyitott, jogkivonat-korlátozás vagy IP-korlátozás.
 
 További információkért lásd a [tartalomkulcs-hitelesítési szabályzat konfigurálásával](media-services-dotnet-configure-content-key-auth-policy.md) foglalkozó témakört.
 
@@ -141,7 +141,7 @@ A stream kipróbálásához használja az [Azure Media Services-lejátszót](htt
 Az előző lépésben létrehozta az URL-címet, amely egy manifest-fájlra mutat. Az ügyfélnek ki kell bontania a szükséges információkat a streaming manifest-fájlokból, hogy kérést küldjön a Key Delivery Service-nek.
 
 ### <a name="manifest-files"></a>Jegyzékfájlok
-Az ügyfélnek ki kell bontania az URL-címet (amely szintén tartalmazza a tartalom-azonosító [Kid]) értékét a jegyzékfájlból. Az ügyfél ezután megpróbálja lekérni a titkosítási kulcsot a Key Delivery szolgáltatásból. Az ügyfélnek a IV értéket is ki kell bontania, és azt a stream visszafejtéséhez kell használnia. A következő kódrészlet a Smooth streaming `<Protection>` jegyzékfájl elemét mutatja be:
+Az ügyfélnek ki kell bontania az URL-címet (amely szintén tartalmazza a tartalom-azonosító [Kid]) értékét a jegyzékfájlból. Az ügyfél ezután megpróbálja lekérni a titkosítási kulcsot a Key Delivery szolgáltatásból. Az ügyfélnek a IV értéket is ki kell bontania, és azt a stream visszafejtéséhez kell használnia. A következő kódrészlet a Smooth Streaming jegyzékfájl `<Protection>` elemét mutatja:
 
 ```xml
     <Protection>
@@ -159,7 +159,7 @@ Az ügyfélnek ki kell bontania az URL-címet (amely szintén tartalmazza a tart
 
 A HLS esetében a gyökérszintű jegyzékfájl a szegmens fájlokba van bontva. 
 
-A legfelső szintű jegyzékfájl például a következő: http\/:/test001.Origin.Mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL). A szegmensek fájlneveit tartalmazó listát tartalmaz.
+A legfelső szintű jegyzékfájl például a következő: http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest (Format = m3u8-AAPL). A szegmensek fájlneveit tartalmazó listát tartalmaz.
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -168,7 +168,7 @@ A legfelső szintű jegyzékfájl például a következő: http\/:/test001.Origi
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-Ha egy szövegszerkesztőben nyitja meg az egyik szegmens fájlját (például http:\//test001.Origin.Mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/QualityLevels (514369)/manifest (videó, Format = m3u8-AAPL), #EXT-X-KEY-t tartalmaz, amely azt jelzi, hogy a fájl titkosítva van.
+Ha egy szövegszerkesztőben (például a http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369)/manifest (videó, Format = m3u8-AAPL) található szegmens fájlok egyikét nyitja meg, akkor #EXT-X-KEY, amely azt jelzi, hogy a fájl titkosítva van.
 
     #EXTM3U
     #EXT-X-VERSION:4

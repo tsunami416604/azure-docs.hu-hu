@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services alapfogalmaiért |} A Microsoft Docs
-description: Ez a témakör áttekintést nyújt az Azure Media Services – alapelvek
+title: Azure Media Services fogalmak | Microsoft Docs
+description: Ez a cikk rövid áttekintést nyújt a Microsoft Azure Media Services fogalmakról, és további részletekre mutató hivatkozásokat tartalmaz.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,196 +13,196 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2b28dde812dcce120c951730c27809f7f024e122
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ff851fec7b5013b297d1796c47cc9d2911d3433
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681560"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901283"
 ---
-# <a name="azure-media-services-concepts"></a>Az Azure Media Services – alapelvek 
+# <a name="azure-media-services-concepts"></a>Azure Media Services fogalmak 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-Ez a témakör áttekintést nyújt a Media Services legfontosabb fogalmakat.
+Ez a témakör áttekintést nyújt a legfontosabb Media Services fogalmakról.
 
-## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>Eszközök és tárolás
+## <a name="a-idassetsassets-and-storage"></a>Eszközök és tároló <a id="assets"/>
 ### <a name="assets"></a>Objektumok
-Egy [eszköz](https://docs.microsoft.com/rest/api/media/operations/asset) mindezen fájlok metaadatait és a digitális fájlok (beleértve a videókhoz, audiofájlokhoz, képeket, miniatűröket, szövegsávok és a feliratfájlok) tartalmaz. Miután a digitális fájlok feltöltése egy adategységbe, azok a Media Services encoding és adatfolyam-munkafolyamatok használható.
+Az [eszközök](https://docs.microsoft.com/rest/api/media/operations/asset) digitális fájlokat (például videó, hang, képek, miniatűr gyűjtemények, szöveges számok és zárt feliratú fájlok) és a fájlokra vonatkozó metaadatokat tartalmaznak. A digitális fájlok egy objektumba való feltöltése után a rendszer a Media Services kódolási és folyamatos átviteli munkafolyamatokban is felhasználhatja őket.
 
-Az eszköz le van képezve egy blob-tárolóba az Azure Storage-fiókban, és a tárolóban blokkblobként tárolja a fájlokat, az eszközben. A lapblobok az Azure Media Services által nem támogatottak.
+Az eszköz az Azure Storage-fiókban található blob-tárolóra van leképezve, és az adategységben található fájlok a tárolóban blokk blobként tárolódnak. Azure Media Services nem támogatja az oldal blobokat.
 
-Amikor eldönti, milyen médiatartalmak feltöltésére és a egy eszköz tárolására, a következő szempontokat kell figyelembe venni:
+Amikor eldönti, hogy milyen médiatartalom feltöltésére és tárolására van egy eszközön, a következő szempontokat kell figyelembe venni:
 
-* Egy eszköz csak egyetlen, egyedi példány médiatartalmak tartalmaznia kell. Ha például egy egyetlen szerkesztése TV epizód, filmet vagy hirdetmény.
-* Egy eszköz nem tartalmazhat több verzió vagy szerkesztheti egy audiovizuális fájlt. Például egy eszköz nem megfelelő használata a volna egynél több TV epizód, hirdetés vagy egy eszköz belül egyetlen gyártási több kamera beállítások tárolására tett kísérlet. Több verzió vagy szerkesztheti egy audiovizuális fájlt tárolja egy eszköz elküldése kódolási feladatot, a streamelési és a szállítási később a munkafolyamatban az eszköz biztonságossá tételéhez nehézségek eredményezhet.  
+* Egy eszköz csak egyetlen, egyedi médiatartalom-példányt tartalmazhat. Például egy TV-epizód, film vagy hirdetmény egyetlen szerkesztése.
+* Egy eszköz nem tartalmazhat egy audiovizuális fájl több kiadatását vagy szerkesztését. Egy adott eszköz nem megfelelő használatának egyik példája, hogy több TV-epizódot, hirdetményt vagy több kamera látószögét szeretné tárolni egy adott eszközön belül. Ha egy eszközön több kiadatást vagy módosítást tárol, akkor nehézségeket okozhat a kódolási feladatok elküldése, a folyamatos átvitel és az eszköznek a munkafolyamatban történő kézbesítésének biztonságossá tétele.  
 
-### <a name="asset-file"></a>Objektumfájl
-Egy [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) egy videó vagy hang-fájl, amely a blobtárolóban tárolt jelöli. Egy eszköz fájl mindig egy eszköz társítva, és az eszköz egy vagy több fájlt tartalmaz. A Media Services Encoder feladat sikertelen lesz, ha egy eszköz fájl objektumhoz nem kapcsolódik egy digitális fájlhoz a blobtárolóban.
+### <a name="asset-file"></a>Eszköz fájlja
+A [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) a blob-tárolóban tárolt tényleges video-vagy hangfájlt jelöli. Az adategységek mindig egy adott objektumhoz vannak társítva, és egy adott eszköz egy vagy több fájlt is tartalmazhat. A Media Services Encoder feladat meghiúsul, ha egy objektum nem egy blob-tárolóban lévő digitális fájllal van társítva.
 
-A **AssetFile** -példány és a tényleges médiafájl két különböző objektumot. A AssetFile-példány a médiafájl kapcsolatos metaadatokat tartalmaz, amíg az adathordozó-fájl tartalmazza a tényleges médiatartalmakat.
+A **AssetFile** példány és a tényleges médiafájl két különálló objektum. A AssetFile-példány metaadatokat tartalmaz a médiafájlról, míg a médiafájl tartalmazza a tényleges médiatartalom tartalmát.
 
-Meg nem próbálja meg módosítani a Media Services Media Service API-k használata nélkül létrehozott blob-tárolók tartalmát.
+Ne próbálja meg módosítani a Media Services által generált blob-tárolók tartalmát a Media Service API-k használata nélkül.
 
-### <a name="asset-encryption-options"></a>Az eszközintelligencia titkosítási beállítások
-Tartalom feltöltése, tárolása és kézbesíteni szeretné típusától függően a Media Services biztosít a különböző titkosítási lehetőségeket, amelyek közül választhat.
+### <a name="asset-encryption-options"></a>Eszköz titkosítási beállításai
+A feltölteni, tárolni és kézbesíteni kívánt tartalom típusától függően Media Services különböző titkosítási lehetőségeket biztosít, amelyek közül választhat.
 
 >[!NOTE]
->Nincs titkosítás. Ez az alapértelmezett érték. Ez a beállítás használatakor a tartalom nem védett átvitel, sem tárolás.
+>Nincs használatban titkosítás. Ez az alapértelmezett érték. Ha ezt a beállítást használja, a tartalmat a rendszer nem védi az átvitelben vagy a tárolás során.
 
-Ha azt tervezi, hogy egy MP4-fájlt progresszív letöltés, használja ezt a beállítást a tartalmak feltöltésére.
+Ha az MP4-t a progresszív letöltés használatával tervezi, akkor a tartalom feltöltéséhez használja ezt a lehetőséget.
 
-**StorageEncrypted** – használja ezt a beállítást a tiszta tartalom helyileg, 256 bites AES-titkosítás titkosításához, és ezután töltse fel az Azure Storage helyén titkosítása. Storage-titkosítással védett adategységek automatikus a titkosítás és a kódolás előtt egy titkosított fájlrendszerbe kerülnek, és igény szerint újra titkosítja; az új kimeneti adategységként való feltöltés előtt. Az elsődleges használati eset, a tárolás titkosítása akkor, ha a kiváló minőségű bemeneti fájlok az erős titkosítás inaktív állapotban a lemezen. 
+**StorageEncrypted** – ezzel a beállítással titkosíthatja a tartalmakat HELYILEG az AES 256 bites titkosítással, majd feltöltheti azt az Azure Storage-ba, ahol a titkosított állapotban van tárolva. A Storage encryption szolgáltatással védett eszközök titkosítása automatikusan titkosítva történik, és a kódolás előtt titkosított fájlrendszerbe kerül, és szükség esetén újra titkosítva lesz, mielőtt új kimeneti eszközként feltölti őket. A tárolás titkosításának elsődleges használati esete, ha a magas színvonalú bemeneti médiafájlokat erős titkosítással szeretné védeni a lemezen. 
 
-Annak érdekében, hogy a storage titkosított eszköz kézbesítéséhez, konfigurálnia kell az adategység továbbítási házirendjét, a Media Services tudja, hogyan szeretné a tartalmat. Az eszközintelligencia továbbítható, mielőtt a streamelési kiszolgáló eltávolítja a tárolás titkosítása, és streameli a tartalom a megadott továbbítási szabályzatát (például AES, a PlayReady vagy titkosítás nélkül). 
+A titkosított adategységek kézbesítéséhez konfigurálnia kell az eszköz kézbesítési házirendjét, hogy Media Services tudja, hogyan szeretné kézbesíteni a tartalmat. Az eszköz adatfolyamként való továbbítása előtt a streaming kiszolgáló eltávolítja a tárolási titkosítást, és a megadott kézbesítési házirenddel (például AES, PlayReady vagy nincs titkosítás) továbbítja a tartalmat. 
 
-**CommonEncryptionProtected** -használja ezt a beállítást, ha szeretné titkosítani (vagy már a titkosított feltöltés) általános titkosítás vagy a PlayReady DRM (például védett Smooth Streaming PlayReady DRM-) tartalom.
+**CommonEncryptionProtected** – ezt a lehetőséget akkor használja, ha Common encryption vagy PlayReady DRM-mel (Smooth streaming például a PlayReady DRM-mel védett védelemmel) szeretné titkosítani (vagy feltölteni a már titkosított) tartalmakat.
 
-**EnvelopeEncryptionProtected** – használja ezt a beállítást, ha azt szeretné, védelme (vagy az már védett feltöltése) HTTP Live Streaming (HLS) titkosítva az Advanced Encryption Standard (AES). Ha AES már titkosított HLS tölt fel, hogy titkosították Transform Manager használatával.
+**EnvelopeEncryptionProtected** – ezt a beállítást akkor használja, ha a (vagy a már védett) http Live Streaming (HLS) Advanced Encryption Standard (AES) titkosítással kívánja védeni. Ha az AES-titkosítással már titkosított HLS tölt fel, akkor azt az átalakító kezelőjének kell titkosítania.
 
 ### <a name="access-policy"></a>Hozzáférési szabályzat
-Egy [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy) engedélyek (például olvasási, írási és listában) és a hozzáférés időtartama meghatározása egy objektumba történik. Általában egy lokátort, majd használni kívánt eléréséhez az eszközintelligencia mappában található fájlokat a AccessPolicy objektum kellene átadnia.
+A [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy) az engedélyeket (például olvasás, írás és Listázás) és az adott eszközhöz való hozzáférés időtartamát határozzák meg. Általában egy AccessPolicy objektumot kell átadnia egy olyan lokátorhoz, amely egy adott objektumban található fájlok elérésére szolgál.
 
 >[!NOTE]
 >A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információ [ebben](media-services-dotnet-manage-entities.md#limit-access-policies) a témakörben érhető el.
 
-### <a name="blob-container"></a>BLOB-tároló
-A blob-tároló egy készlet a blobok csoportosítását biztosítja. BLOB-tárolók használ a Media Services határ pontként hozzáférés-vezérléshez és a közös hozzáférésű Jogosultságkód (SAS) keresők eszközökből. Azure-tárfiók korlátlan számú blob-tárolók is tartalmazhat. Egy tároló korlátlan számú blob tárolására használható.
+### <a name="blob-container"></a>Blobtároló
+A blob-tároló Blobok egy csoportját biztosítja. A blob-tárolók a hozzáférés-vezérléshez és az eszközökön a közös hozzáférésű aláírási (SAS-) lokátorok határának Media Services használatosak. Egy Azure Storage-fiók korlátlan számú BLOB-tárolót tartalmazhat. Egy tároló korlátlan számú blob tárolására használható.
 
 >[!NOTE]
-> Meg nem próbálja meg módosítani a Media Services Media Service API-k használata nélkül létrehozott blob-tárolók tartalmát.
+> Ne próbálja meg módosítani a Media Services által generált blob-tárolók tartalmát a Media Service API-k használata nélkül.
 > 
 > 
 
-### <a name="a-idlocatorslocators"></a><a id="locators"/>Keresők
-[Kereső](https://docs.microsoft.com/rest/api/media/operations/locator)s adjon meg egy belépési pont eléréséhez az eszközintelligencia mappában található fájlokat. Hozzáférési házirendek az engedélyek és időtartama, hogy egy ügyfél hozzáfér egy adott eszköz meghatározására szolgál. Lokátorok rendelkezhet több az egyhez kapcsolat egy hozzáférési szabályzattal együtt, hogy különböző lokátorok is biztosítanak különböző kezdési ideje és kapcsolattípusok különböző ügyfelek számára a ugyanezt az engedélyt és időtartama beállításainak; minden használata során azonban egy megosztott elérési szabályzat korlátozási is megszűnnek az Azure storage-szolgáltatások által beállított, miatt nem lehet több mint öt, egy adott eszköz egyszerre társított egyedi keresők. 
+### <a name="a-idlocatorslocators"></a><a id="locators"/>lokátorok
+A [lokátor](https://docs.microsoft.com/rest/api/media/operations/locator)megadhat egy belépési pontot az adott objektumban található fájlok eléréséhez. Hozzáférési szabályzattal határozható meg az engedélyek és az időtartam, ameddig az ügyfél hozzáfér egy adott eszközhöz. A lokátorok több kapcsolattal rendelkezhetnek egy hozzáférési házirenddel, így a különböző lokátorok különböző indítási időpontokat és kapcsolódási típusokat biztosíthatnak különböző ügyfelekhez, miközben ugyanazt az engedélyt és időtartamot használják. azonban az Azure Storage-szolgáltatások által meghatározott közös hozzáférésű házirend korlátozása miatt egyszerre legfeljebb öt egyedi lokátor társítható egy adott eszközhöz. 
 
-A Media Services két lokátortípust támogat: OnDemandOrigin keresők médiatartalmak (például MPEG DASH, HLS vagy Smooth Streaming) segítségével, vagy fokozatosan letölteni az adathordozót, a SAS URL-címet keresők fel- vagy letölteni media files to\from az Azure storage segítségével. 
+A Media Services kétféle lokátort támogat: a OnDemandOrigin-lokátorokat (például MPEG DASH, HLS vagy Smooth Streaming), vagy fokozatosan letöltheti az adathordozókat és SAS URL-lokátorokat, amelyek az Azure Storage-to\from tölthetők fel vagy tölthetők le. 
 
 >[!NOTE]
->A lista engedéllyel (AccessPermissions.List) nem használható egy OnDemandOrigin kereső létrehozásakor. 
+>OnDemandOrigin-lokátor létrehozásakor a List engedély (AccessPermissions. list) nem használható. 
 
 ### <a name="storage-account"></a>Tárfiók
-Minden, az Azure Storage-hozzáférés tárfiókon keresztül történik. Egy Media Services-fiókját egy vagy több tárfiók is társíthat. Egy fiók korlátlan számú tárolók, tartalmazhat, mindaddig, amíg azok teljes mérete / storage-fiók alatt 500TB.  A Media Services SDK szolgáltatói eszközkészlet lehetővé teszi több tárfiók kezelése, és ezeket a fiókokat történő feltöltés közben az eszközök eloszlása a metrikák vagy véletlenszerű elosztás alapján webhelyen végezhet terheléselosztást biztosít. További információ kapcsolatban a Working with [Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx). 
+Az Azure Storage-hoz való összes hozzáférés egy Storage-fiókon keresztül történik. A Media Service-fiókok egy vagy több Storage-fiókkal is társíthatók. Egy fiók korlátlan számú tárolót tartalmazhat, feltéve, hogy a teljes méretük 500TB alatt van.  A Media Services SDK-szintű eszközöket biztosít, amelyekkel több Storage-fiókot kezelhet, és terheléselosztást végez az adategységek elosztása során, a metrikák és a véletlenszerű eloszlás alapján. További információ: az [Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx)használata. 
 
-## <a name="jobs-and-tasks"></a>Feladatok és tevékenységek
-A [feladat](https://docs.microsoft.com/rest/api/media/operations/job) általában akkor használható, a folyamat (például index vagy kódolása) egy hang/kép bemutató. Több videó feldolgozása esetén, hozzon létre egy feladatot az egyes videók értéket kódolni kell.
+## <a name="jobs-and-tasks"></a>Feladatok és feladatok
+A [feladatok](https://docs.microsoft.com/rest/api/media/operations/job) általában egy hang-vagy videó-bemutató feldolgozására (például indexre vagy kódolásra) használatosak. Ha több videót dolgoz fel, hozzon létre egy feladatot minden egyes videó kódolásához.
 
-Egy feladat tartalmaz metaadatokat, a végrehajtandó feldolgozást. Minden egyes feladat tartalmaz egy vagy több [feladat](https://docs.microsoft.com/rest/api/media/operations/task), amelyek egy atomi feldolgozási feladatot, a bemeneti eszközeinek, adja meg a kimeneti eszközök, egy médiaprocesszorral és a kapcsolódó beállításokat. A feladatokon belül feladatok összefűzhetők, ahol a kimeneti objektum egy feladat van megadva bemeneti objektuma következő feladata felé. Ezzel a módszerrel egy feladat az összes szükséges media feldolgozási tartalmazhat.
+A feladatok a végrehajtandó feldolgozással kapcsolatos metaadatokat tartalmaznak. Minden feladat egy vagy több olyan [feladatot](https://docs.microsoft.com/rest/api/media/operations/task)tartalmaz, amelyek egy atomi feldolgozási feladatot, a hozzá tartozó bemeneti eszközöket, kimeneti eszközöket, egy adathordozó-processzort és a hozzájuk tartozó beállításokat határoznak meg. Egy adott feladaton belüli feladatok összekapcsolhatók, ahol egy adott tevékenység kimeneti eszköze a bemeneti eszköz a következő feladathoz. Ily módon az egyik feladattípus tartalmazhatja a Media-bemutatóhoz szükséges összes feldolgozást.
 
-## <a id="encoding"></a>Kódolás
-Az Azure Media Services media felhőalapú kódolási több lehetőséget biztosít.
+## <a id="encoding"></a>Kódolási
+Azure Media Services több lehetőséget kínál a felhőben lévő adathordozók kódolására.
 
-A Media Services kezdi, amikor fontos kodekeket és a fájl formátumok közötti különbségek megértése.
-A kodekeket, amely megvalósítja a tömörítés és kibontás algoritmusok, mivel fájlformátumok olyan tárolók, amelyek a tömörített videó tartsa a szoftvert.
+A Media Services indításakor fontos megérteni a kodekek és a fájlformátumok közötti különbséget.
+A kodekek a tömörítési/kibontási algoritmust megvalósító szoftverek, míg a fájlformátumok olyan tárolók, amelyek a tömörített videót tárolják.
 
-Media Services dinamikus csomagolást, amely lehetővé teszi az adaptív sávszélességű MP4 vagy Smooth Streaming-kódolású tartalmak streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming), a Media Services által támogatott biztosít anélkül, hogy kellene csomagolni ezekbe adatfolyam-továbbítási formátumokba.
+A Media Services dinamikus csomagolást biztosít, amely lehetővé teszi az adaptív sávszélességű MP4 vagy Smooth Streaming kódolású tartalom továbbítását a Media Services által támogatott folyamatos átviteli formátumokban (MPEG DASH, HLS, Smooth Streaming) anélkül, hogy újra kellene csomagolnia ezeket folyamatos átviteli formátumok.
 
-Kihasználásához [dinamikus csomagolási](media-services-dynamic-packaging-overview.md), kell kódolja a mezzanine (forrás) fájlt egy adaptív sávszélességű MP4-fájlokat vagy Smooth Streaming-fájlsorozattá és van legalább egy standard vagy prémium szintű streamvégpont állapot elindult.
+A [dinamikus csomagolás](media-services-dynamic-packaging-overview.md)kihasználásához kódolni kell a köztes (forrás) fájlt egy adaptív sávszélességű MP4-fájlba vagy adaptív sávszélességű Smooth streaming fájlokra, és legalább egy standard vagy prémium szintű streaming végpontot el kell indítani.
 
-A Media Services ebben a cikkben a következő igény szerinti kódolók ismertetett támogatja:
+A Media Services a következő, igény szerinti kódolókat támogatja, amelyek a jelen cikkben olvashatók:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
 * [Media Encoder Premium-munkafolyamat](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-További információ a támogatott kódolók: [kódolók](media-services-encode-asset.md).
+További információ a támogatott kódolókkal kapcsolatban: [kódolók](media-services-encode-asset.md).
 
-## <a name="live-streaming"></a>Élő streamelés
-Az Azure Media Services esetén a csatorna egy olyan folyamatot jelent élőben közvetített tartalmak feldolgozása. Egy csatorna bemeneti élő Streamek kap a két módszer egyikével:
+## <a name="live-streaming"></a>Élő adások online közvetítése
+Azure Media Services a csatorna az élő adatfolyam tartalmának feldolgozására szolgáló folyamatot jelöli. A csatorna az élő bemeneti streameket kétféleképpen fogadja el:
 
-* A helyszíni élő kódoló és többféle sávszélességű RTMP vagy Smooth Streaming (töredékes MP4) küld a csatornát. Használhatja a következő élő kódolók, és többféle sávszélességű Smooth Streaming-kimenetre: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco és Elemental. A következő élő kódolók RTMP-kimenetre: Az Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision és Tricaster kódolókkal történő továbbítását. A feldolgozott adatfolyamok további átkódolása és kódolás nélkül csatornákon keresztül adja át. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
-* Egy egyféle sávszélességű adatfolyamot (a következő formátumok egyikében: A csatorna, amelyen engedélyezve van a valós idejű kódolás a Media Services RTMP vagy Smooth Streaming (töredékes MP4)) kerül. A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* A helyszíni élő kódoló többszörös sávszélességű RTMP vagy Smooth Streaming (töredezett MP4) üzenetet küld a csatornának. Használhatja a következő élő kódolókat, amelyek a többszörös sávszélességű Smooth Streaming: MediaExcel, Ateme, Imagine Communications, envivio, Cisco és Elemental. A következő élő kódolók kimenete RTMP: Adobe Flash Live Encoder, Stream Wirecast, Teradek, Haivision és Tricaster kódolók. A betöltött adatfolyamok további átkódolás és kódolás nélkül haladnak át a csatornákon. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* Egy átviteli sebességű adatfolyam (a következő formátumok egyikében: RTMP vagy Smooth Streaming (darabolt MP4)) a rendszer elküldi a csatornára, amely lehetővé teszi, hogy élő kódolást végezzen a Media Services. A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
 ### <a name="channel"></a>Csatorna
-A Media Services szolgáltatásban [csatorna](https://docs.microsoft.com/rest/api/media/operations/channel)s felelősek az élő adatfolyam-tartalmak feldolgozása. Egy csatorna bemeneti végpontot biztosít (betöltési URL-címe), majd adja át egy élő átkódolók. A csatorna élő bemeneti streamekhez fogadja a élő átkódolók, és lehetővé teszi egy vagy több Streamvégpontok keresztül. Csatorna előnézeti végpont (előzetes verzió URL-cím), amellyel és ellenőrzéséhez a stream előnézetének a feldolgozás folytatása és a továbbítás előtti is biztosítanak.
+Media Services a [Channel](https://docs.microsoft.com/rest/api/media/operations/channel)s az élő adatfolyam tartalmának feldolgozásához felelős. A csatorna egy bemeneti végpontot (betöltési URL-címet) biztosít, amelyet aztán egy élő transcoder számára biztosít. A csatorna élő bemeneti streameket fogad az élő átkódolóból, és egy vagy több StreamingEndpoints keresztül elérhetővé teszi a folyamatos átvitelt. A csatornák egy előzetes verziójú végpontot (előzetes verziójú URL-címet) is biztosítanak, amelyet a további feldolgozás és a továbbítás előtt a stream előzetes verziójának megtekintéséhez és érvényesítéséhez használhat.
 
-A csatorna létrehozásakor kérheti le a bemeneti URL-címet és az előnézeti URL-címet. Az URL-címek beszerzéséhez a csatorna nem rendelkezik a lépések állapotban kell lennie. Ha készen áll az adatok elküldése egy élő átkódolók származó és a csatorna indítása, a csatornát kell elindítani. Miután az élő átkódolók elindul az adatok bevitele, megtekintheti a stream.
+A csatorna létrehozásakor betöltheti a betöltési URL-címet és az előnézeti URL-címet. Az URL-címek lekéréséhez a csatornának nem kell megkezdett állapotban lennie. Ha készen áll arra, hogy egy élő transcoder-ből elindítsa az adatok csatornába való küldését, el kell indítani a csatornát. Miután az élő transcoder elkezdi az adatfeldolgozást, megtekintheti az adatfolyamot.
 
-Minden egyes Media Services-fiók több csatornán, több programok és Streamvégpontok több is tartalmazhat. A sávszélesség- és biztonsági igényeitől függően egy vagy több csatornán dedikálhatja Streamvégpontok szolgáltatások. Bármely Streamvégpontok is lekéréshez tetszőleges csatornán.
+Minden Media Services fiók több csatornát, több programot és több StreamingEndpoints is tartalmazhat. A sávszélességtől és a biztonsági igényektől függően a Streamvégpontok-szolgáltatások egy vagy több csatornára is kihasználhatók. Bármely Streamvégpontok bármely csatornáról lehívható.
 
 ### <a name="program-event"></a>Program (esemény)
-A [(esemény) Program](https://docs.microsoft.com/rest/api/media/operations/program) lehetővé teszi, hogy a storage, az élő stream szegmenseinek közzétételét és. (Események) programokat a csatornák kezelik. A csatornák és programok viszonya hasonló a hagyományos televíziózáshoz, ahol csatorna tartalmaz egy állandó stream a tartalom és a egy programot az adott csatornán néhány időzített esemény hatókörét.
-Megadhatja, hogy meg szeretné őrizni a program felvett tartalmát beállításával órák számát az **ArchiveWindowLength** tulajdonság. Ez az érték 5 perc és 25 óra közötti lehet.
+A [program (esemény)](https://docs.microsoft.com/rest/api/media/operations/program) lehetővé teszi a szegmensek közzétételét és tárolását egy élő adatfolyamban. Csatornákat kezelő programok (események). A csatorna és a program kapcsolata hasonló a hagyományos adathordozóhoz, ahol a csatornán állandó tartalom található, és a program hatóköre az adott csatornán futó eseményekre vonatkozik.
+Megadhatja, hogy hány óra elteltével szeretné megőrizni a program rögzített tartalmát a **ArchiveWindowLength** tulajdonság beállításával. Ez az érték 5 perc és 25 óra közötti lehet.
 
-ArchiveWindowLength is előírja az ügyfelek maximális számát is kérhet időbeli az aktuális élő pozíciótól. Az események hosszabbak lehetnek a megadott időtartamnál, de a rendszer folyamatosan elveti azokat a tartalmakat, amelyek korábbiak a megadott időtartamnál. Ennek a tulajdonságnak az értéke határozza meg azt is, hogy milyen hosszúra nőhetnek az ügyfél jegyzékfájljai.
+A ArchiveWindowLength azt is diktálja, hogy az ügyfelek legfeljebb hány időt tudnak visszakeresni az aktuális élő pozícióból. Az események hosszabbak lehetnek a megadott időtartamnál, de a rendszer folyamatosan elveti azokat a tartalmakat, amelyek korábbiak a megadott időtartamnál. Ennek a tulajdonságnak az értéke határozza meg azt is, hogy milyen hosszúra nőhetnek az ügyfél jegyzékfájljai.
 
-Minden egyes program (esemény) az eszköz társítva. A program közzétételéhez létre kell hoznia egy lokátort a társított objektumhoz. Ez a lokátor teszi lehetővé az ügyfeleknek megadható streamelő URL-cím összeállítását.
+Minden program (esemény) társítva van egy eszközhöz. A program közzétételéhez létre kell hoznia egy lokátort a társított objektumhoz. Ez a lokátor teszi lehetővé az ügyfeleknek megadható streamelő URL-cím összeállítását.
 
 A csatornák három egyidejűleg zajló programot támogatnak, így egy bejövő streamből több archívumot is létre lehet hozni. Ez lehetővé teszi az események különféle részeinek szükség szerinti közzétételét és archiválását. Az üzleti igény szerint például 6 órát kell archiválni egy programból, de csak az utolsó 10 percet kell közvetíteni. Ezt két egyidejűleg zajló program létrehozásával érheti el. Ebben az esetben állítsa be az egyik programot az esemény 6 órájának archiválására, de ne tegye közzé. A másik programot 10 perc archiválására állítsa be, és tegye is közzé.
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
-* [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)
+* [Olyan csatornák használata, amelyek engedélyezve vannak a Live Encoding végrehajtásához Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
 * [Helyszíni kódolóktól többszörös átviteli sebességű streameket fogadó csatornák használata](media-services-live-streaming-with-onprem-encoders.md)
 * [Kvóták és korlátozások](media-services-quotas-and-limitations.md).
 
 ## <a name="protecting-content"></a>Tartalom védelme
 ### <a name="dynamic-encryption"></a>Dinamikus titkosítás
-Az Azure Media Services lehetővé teszi, hogy elhagyják a számítógép tárolási, feldolgozási és kézbesítési kezdve a médiatartalmak védelmét. A Media Services lehetővé teszi a tartalom Advanced Encryption Standard (AES) (128 bites titkosítási kulcsok használatával) és az általános titkosítás (CENC) a PlayReady és/vagy Widevine DRM segítségével dinamikusan titkosítja. A Media Services emellett modult az AES-kulcsok és a PlayReady-licenc jogosult ügyfeleknek.
+Azure Media Services lehetővé teszi az adathordozó biztonságossá tételét a számítógép tárolás, feldolgozás és kézbesítés útján történő elhagyása után. A Media Services lehetővé teszi a tartalom dinamikus titkosítását Advanced Encryption Standard (AES) (128 bites titkosítási kulcsok használatával) és a Common encryption (CENC) használatával a PlayReady és/vagy a Widevine DRM használatával. A Media Services egy szolgáltatást is biztosít az AES-kulcsok és a PlayReady-licencek engedélyezésére a hitelesítő ügyfelek számára.
 
-Jelenleg hogy titkosítsa a következő formátumban: HLS, MPEG DASH és Smooth Streaming. A progresszív letöltés nem titkosítható.
+Jelenleg a következő folyamatos átviteli formátumok titkosíthatók: HLS, MPEG DASH és Smooth Streaming. A progresszív letöltések nem titkosíthatók.
 
-Ha azt szeretné, a Media Services az objektum titkosítására, meg kell rendel hozzá egy titkosítási kulcsot (CommonEncryption vagy EnvelopeEncryption) az eszköz és engedélyezési házirendek, a kulcs is konfigurálhatja.
+Ha Media Services szeretne titkosítani egy eszközt, hozzá kell rendelnie egy titkosítási kulcsot (CommonEncryption vagy EnvelopeEncryption) az eszközhöz, és konfigurálnia kell a kulcshoz tartozó engedélyezési házirendeket is.
 
-Ha azt szeretné, a storage titkosított eszköz streamelésére, konfigurálnia kell az adategység továbbítási házirendjét annak érdekében, hogy adja meg, hogyan szeretné, hogy az objektumot.
+Ha titkosított adategységet szeretne továbbítani, konfigurálnia kell az eszköz kézbesítési házirendjét annak megadásához, hogy hogyan szeretné kézbesíteni az eszközt.
 
-Adatfolyam-lejátszó kér, amikor a Media Services dinamikus titkosítást a tartalom-boríték-titkosítással (AES) vagy a common Encryption titkosítás használata (a PlayReady vagy Widevine) használja a megadott kulcs. A stream visszafejteni, a Windows Media player a kulcs lesz kérhet a kulcstovábbítást. Annak eldöntéséhez, hogy-e a felhasználó jogosult-e a kulcs lekérése, a szolgáltatás kiértékeli az engedélyezési házirendeket, amelyek a kulcshoz megadott.
+Ha egy lejátszó egy adatfolyamot kér, Media Services a megadott kulccsal dinamikusan titkosítja a tartalmat a boríték-titkosítás (AES) vagy a közös titkosítás (PlayReady vagy Widevine) használatával. Az adatfolyam visszafejtéséhez a lejátszó a kulcs kézbesítési szolgáltatástól kéri a kulcsot. Annak eldöntéséhez, hogy a felhasználó jogosult-e a kulcs lekérésére, a szolgáltatás kiértékeli a kulcshoz megadott engedélyezési házirendeket.
 
-### <a name="token-restriction"></a>Token korlátozás
-A tartalomkulcs-hitelesítési szabályzat rendelkezhet egy vagy több hitelesítési korlátozást: Nyissa meg a, jogkivonat-korlátozási vagy IP-korlátozást. A tokennel korlátozott szabályzatokhoz a Secure Token Service (Biztonsági jegykiadó szolgáltatás, STS) által kiadott tokennek kell tartoznia. A Media Services a Simple Web Tokens (SWT) és a JSON webes jogkivonat (JWT) formátumú jogkivonatokat támogatja. A Media Services nem biztosít jegykiadó szolgáltatások biztonságos. Létrehozhat egy egyéni STS. Az STS-re kell állítani a megadott kulcs és a probléma jogcímek jogkivonat korlátozás konfigurációjában megadott aláírt jogkivonat létrehozásához. A Media Services kulcstovábbítást visszaküldi a kért kulcs (vagy engedély-) az ügyfél, ha a jogkivonat érvényes, és a jogcímek, az token találat azok konfigurálva a kulcs (vagy licenc).
+### <a name="token-restriction"></a>Jogkivonat-korlátozás
+A tartalmi kulcs engedélyezési házirendje rendelkezhet egy vagy több engedélyezési korlátozással: Open, token korlátozás vagy IP-korlátozás. A tokennel korlátozott szabályzatokhoz a Secure Token Service (Biztonsági jegykiadó szolgáltatás, STS) által kiadott tokennek kell tartoznia. Media Services támogatja a tokeneket az egyszerű webes tokenek (SWT) és a JSON Web Token (JWT) formátumában. Media Services nem biztosít biztonságos jogkivonat-szolgáltatásokat. Létrehozhat egyéni STS-t is. Az STS-t úgy kell konfigurálni, hogy a megadott kulccsal aláírt tokent hozzon létre, és kiadja a jogkivonat-korlátozási konfigurációban megadott jogcímeket. A Media Services Key Delivery Service visszaadja a kért kulcsot (vagy licencet) az ügyfélnek, ha a jogkivonat érvényes, és a jogkivonatban lévő jogcímek egyeznek a kulcshoz (vagy licenchez) konfigurált jogcímekkel.
 
-Konfigurálás a jogkivonat alapján korlátozott házirend, ha az elsődleges ellenőrzőkulcs, a kibocsátó és a célközönség paramétereket kell megadnia. Az elsődleges ellenőrzőkulcs tartalmazza a kulcsot, a jogkivonat írták-e, a kiállító a biztonságos jogkivonat-szolgáltatás, amely a jogkivonatot. A célközönség (más néven hatókör) ismerteti a jogkivonat a leképezést, vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcstovábbítást ellenőrzi, hogy ezeket az értékeket a jogkivonat egyezik a sablonban szereplő értékeket.
+A jogkivonat korlátozott házirendjének konfigurálásakor meg kell adnia az elsődleges ellenőrző kulcsot, a kiállítót és a célközönség paramétereit. Az elsődleges ellenőrző kulcs tartalmazza azt a kulcsot, amelyhez a jogkivonat be lett jelentkezve, a kibocsátó pedig a tokent kiállító biztonságos jogkivonat-szolgáltatás. A célközönség (más néven hatókör) leírja a jogkivonat célját vagy azt az erőforrást, amelyet a jogkivonat engedélyez a hozzáféréshez. A Media Services Key Delivery Service ellenőrzi, hogy a jogkivonat értékei egyeznek-e a sablon értékeivel.
 
 További információkért tekintse át a következő cikkeket:
-- [Védelme tartalom áttekintése](media-services-content-protection-overview.md)
-- [AES-128 védelme](media-services-protect-with-aes128.md)
-- [PlayReady/Widevine védelme](media-services-protect-with-playready-widevine.md)
+- [Tartalom – áttekintés](media-services-content-protection-overview.md)
+- [Védelem AES-128](media-services-protect-with-aes128.md)
+- [Védelem a PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
 
-## <a name="delivering"></a>Továbbítása
-### <a name="a-iddynamicpackagingdynamic-packaging"></a><a id="dynamic_packaging"/>A dinamikus csomagolás
-Ha a Media Services dolgozik, javasoljuk, hogy a "mezzanine" formátumú fájlok kódolandó egy adaptív sávszélességű MP4-készletet, és alakítsa át a készlet a kívánt formátumban történő a [dinamikus csomagolási](media-services-dynamic-packaging-overview.md).
+## <a name="delivering"></a>Szállít
+### <a name="a-iddynamic_packagingdynamic-packaging"></a><a id="dynamic_packaging"/>dinamikus csomagolás
+A Media Services használatakor javasolt a köztes fájlok kódolása adaptív sávszélességű MP4-készletbe, majd a [dinamikus csomagolás](media-services-dynamic-packaging-overview.md)használatával alakítsa át a kívánt formátumra.
 
 ### <a name="streaming-endpoint"></a>Streamvégpont
-A Streamvégpontok jelöli egy adatfolyam-szolgáltatást, amely tartalmat továbbít közvetlenül az ügyfél lejátszóalkalmazásába, vagy az egy Content Delivery Network (CDN) további terjesztés céljából (az Azure Media Services mostantól lehetőséget nyújt az Azure CDN-integrációt.) Az a végpont streamelési szolgáltatás kimenő adatfolyam élő stream, vagy igény szerinti Videoobjektum a Media Services-fiók is lehet. A Media Services ügyfelei általában egy **standard** szintű streamvégpontot vagy egy vagy több **prémium** szintű streamvégpontot választanak, saját igényeiknek megfelelően. Standard szintű streamvégpont a legtöbb streamelési feladat ellátására alkalmas. 
+A Streamvégpontok olyan adatfolyam-szolgáltatást jelöl, amely közvetlenül az ügyfél-vagy Content Delivery Network (CDN) számára biztosít tartalmat a további terjesztéshez (Azure Media Services mostantól biztosítja a Azure CDN-integrációt.) A streaming Endpoint szolgáltatás kimenő adatfolyama lehet élő stream vagy igény szerinti video-eszköz a Media Services-fiókban. A Media Services ügyfelei általában egy **standard** szintű streamvégpontot vagy egy vagy több **prémium** szintű streamvégpontot választanak, saját igényeiknek megfelelően. A standard folyamatos átviteli végpont a legtöbb folyamatos átviteli terheléshez megfelelő. 
 
-A szabványos streamvégpont a legtöbb streamelési feladat ellátására alkalmas. Standard szintű Streamelési végpontok ajánlat tartalomkézbesítés gyakorlatilag minden eszközre, HLS, MPEG-DASH, Smooth Streaming, valamint a Microsoft PlayReady, a Google Widevine, az Apple Fairplay, a dinamikus titkosítás, a dinamikus csomagolás révén rugalmasan és AES128.  Is méretezni őket a nagyon kicsi a nagyon nagy közönséget, az Azure CDN-integráció egyidejű megtekintők több ezer. Ha speciális feladatokat vagy a streamelési kapacitásra vonatkozó követelményeknek nem férnek el a standard streaming endpoint teljesítménycéljai vagy meg szeretné határozni a Streamvégpontok szolgáltatás kapacitását, kezeli a növekvő sávszélesség van szüksége, javasoljuk, hogy (más néven prémium streamelési egységek) skálázási egységeket kiosztania.
+A szabványos streamvégpont a legtöbb streamelési feladat ellátására alkalmas. A standard folyamatos átviteli végpontok lehetővé teszi, hogy a tartalom gyakorlatilag minden eszközön elérhető legyen a dinamikus csomagoláson keresztül a HLS, az MPEG-DASH és a Smooth Streaming, valamint a dinamikus titkosítás a Microsoft PlayReady, a Google Widevine, az Apple Fairplay és a AES128.  Az Azure CDN integráción keresztül több ezer egyidejű megjelenítővel is méretezhetők. Ha speciális számítási feladattal rendelkezik, vagy ha a folyamatos átviteli kapacitásra vonatkozó követelmények nem felelnek meg a normál átviteli végpont átviteli sebességének, vagy szeretné szabályozni a Streamvégpontok szolgáltatás kapacitását a növekvő sávszélesség kielégítése érdekében, ajánlott méretezési egységek (más néven prémium szintű streaming-egységek) foglalása.
 
-Javasoljuk, hogy a dinamikus csomagolás és/vagy a dinamikus titkosítás használata.
+A dinamikus csomagolás és/vagy a dinamikus titkosítás használata javasolt.
 
 >[!NOTE]
 >Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
 
 További információ [ebben](media-services-portal-manage-streaming-endpoints.md) a témakörben érhető el.
 
-Alapértelmezés szerint legfeljebb 2 streamvégpontok a Media Services-fiók lehet. Kérjen nagyobb Korlátértékre, lásd: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
+Alapértelmezés szerint legfeljebb 2 folyamatos átviteli végponttal rendelkezhet Media Services-fiókjában. Magasabb korlát igényléséhez lásd: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
 
-Csak számítjuk fel, ha a Streamvégpontok belül futó állapotban van.
+Csak akkor számítunk fel díjat, ha a Streamvégpontok fut állapotban van.
 
-### <a name="asset-delivery-policy"></a>Objektumtovábbítási szabályzat
-A Media Services-továbbítási munkafolyamat lépésben konfigurálja [kézbesítési házirendek eszközök](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)streamként kívánt. Az objektumtovábbítási szabályzat arra utasítja a Media Services az objektum kézbesítendő módját: az adatfolyam-továbbítási protokoll kell az eszközintelligencia dinamikusan csomagolható (például MPEG DASH, HLS, Smooth Streaming, vagy az összes), dinamikusan titkosítani szeretné-e az objektumot, és hogyan (boríték vagy common encryption).
+### <a name="asset-delivery-policy"></a>Eszköz kézbesítési szabályzata
+A Media Services Content Delivery munkafolyamat egyik lépése a [továbbítási szabályzatok](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)konfigurálása az adatfolyamként használni kívánt eszközökhöz. Az eszköz kézbesítési házirendje közli Media Services, hogyan szeretné kézbesíteni az eszközét: az adatstream protokollnak (például MPEG DASH, HLS, Smooth Streaming vagy all) a dinamikusan titkosítania kell-e az eszközön. az eszköz és a (boríték vagy közös titkosítás).
 
-Ha egy tárolási titkosított eszköz, mielőtt az eszköz továbbítható, a streamelési kiszolgáló eltávolítja a tárolás titkosítása és adatfolyamként elküldi a tartalmát a megadott objektumtovábbítási szabályzat használatával. Például, hogy az eszköz Advanced Encryption Standard (AES) titkosítási kulccsal titkosított, állítsa a házirend típusát DynamicEnvelopeEncryption. Távolítsa el a storage-titkosítás, illetve streamelni az eszköz a titkosítatlan, NoDynamicEncryption típusú értékre.
+Ha titkosított eszközzel rendelkezik, az eszköz adatfolyamként való továbbítása előtt a streaming-kiszolgáló eltávolítja a tárolási titkosítást, és a megadott kézbesítési házirend használatával továbbítja a tartalmat. Ha például az eszköz titkosítását Advanced Encryption Standard (AES) titkosítási kulccsal szeretné továbbítani, állítsa a házirend típusát DynamicEnvelopeEncryption értékre. A tároló titkosításának eltávolításához és az objektum kiürítésének törléséhez állítsa a házirend típusát NoDynamicEncryption értékre.
 
 ### <a name="progressive-download"></a>Progresszív letöltés
-Progresszív letöltés media előtt a teljes fájlt letöltötte időkódokat teszi lehetővé. MP4-fájlokat csak fokozatosan lehet letölteni.
+A progresszív letöltés lehetővé teszi, hogy a teljes fájl letöltése előtt megkezdje az adathordozók lejátszását. Egy MP4-fájlt csak progresszív módon tölthet le.
 
 >[!NOTE]
->Ha azt szeretné, a progresszív letöltés elérhetővé szeretné tenni, vissza kell fejtenie titkosított eszközökre.
+>A titkosított eszközöket vissza kell fejteni, ha szeretné, hogy azok elérhetők legyenek a progresszív letöltéshez.
 
-Biztosíthatja a felhasználók számára a progresszív letöltési URL-címeket, akkor először hozzon létre egy OnDemandOrigin lokátort. A lokátor hoz létre, lehetővé teszi az alapútvonal az eszközre. Ezután meg kell hozzáfűznie MP4-fájl neve. Példa:
+A progresszív letöltési URL-címekkel rendelkező felhasználók számára először létre kell hoznia egy OnDemandOrigin-lokátort. A lokátor létrehozásakor megadja az objektum alap elérési útját. Ezután hozzá kell fűzni az MP4-fájl nevét. Példa:
 
 http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-### <a name="streaming-urls"></a>Streamelési URL-címek
-Az ügyfeleknek a tartalom streamelésének. Streamelési URL-címek biztosíthatja a felhasználók számára, hogy először hozzon létre egy OnDemandOrigin lokátort. A lokátor létrehozása, biztosít az alapútvonal adatfolyam kívánt tartalmat tartalmazó objektumot. Azonban képesek lesznek streamelni az ehhez a tartalomhoz szüksége további az elérési út módosítása. A teljes URL-címe a streamelési jegyzékfájlt létrehozására, a lokátor elérési útjának értéke és a jegyzékfájlt (filename.ism) kell összefűzni fájl nevét. A lokátor elérési útja, majd hozzáfűzése /Manifest és a egy megfelelő formátumú (ha szükséges).
+### <a name="streaming-urls"></a>Streaming URL-címek
+Tartalom továbbítása az ügyfeleknek. A streaming URL-címeket használó felhasználók számára először létre kell hoznia egy OnDemandOrigin-lokátort. A lokátor létrehozásakor megadja a továbbítani kívánt tartalmat tartalmazó objektum alap elérési útját. Ahhoz azonban, hogy ezt a tartalmat tudja továbbítani, ezt az elérési utat tovább kell módosítania. A folyamatos átviteli jegyzékfájl fájljának teljes URL-címének létrehozásához össze kell fűzve a lokátor Path értékét és a jegyzékfájl (fájlnév. ISM) fájlnevét. Ezután fűzze hozzá a/manifest és a megfelelő formátumot (ha szükséges) a lokátor elérési útjához.
 
-SSL-kapcsolaton keresztül is streamelheti a tartalmat. Ehhez ellenőrizze, hogy a streamelési URL-címek indítsa el a HTTPS. Jelenleg az AMS nem támogatja az SSL egyéni tartománnyal rendelkező.  
+A tartalmakat egy SSL-kapcsolaton keresztül is továbbíthatja. Ehhez győződjön meg arról, hogy a streaming URL-címek a HTTPS protokollal kezdődnek. Az AMS jelenleg nem támogatja az SSL-t az egyéni tartományokkal.  
 
 >[!NOTE]
->Csak akkor streamelheti SSL-en keresztül, ha a streamvégpontra, amelyről a tartalomkézbesítés 2014. szeptember 10-után jött létre. A streamelési URL-címek után szeptember 10 létrehozott streamvégpontok alapulnak, ha az URL-címet tartalmaz "streaming.mediaservices.windows.net" (a új formátum). Streamelési URL-címek, amelyek tartalmazzák a "origin.mediaservices.windows.net" (a régi formátumot) nem támogatja az SSL. Ha a régi formátumot az URL-címe van, és képesek lesznek streamelni az SSL-en keresztül szeretne, hozzon létre egy új streamvégpont. Az új streamvégpont alapján létrehozott URL-címek segítségével a tartalmak streamelésére SSL-en keresztül.
+>Csak akkor lehet továbbítani az SSL protokollon keresztül, ha az adatfolyam-végpontot, amelyről a tartalmat a 2014 szeptember 10. után hozták létre. Ha a folyamatos átviteli URL-címek a szeptember 10. után létrehozott streaming-végpontokon alapulnak, az URL-cím "streaming.mediaservices.windows.net" (az új formátum) tartalmazza. A "origin.mediaservices.windows.net" (a régi) formátumot tartalmazó streaming URL-címek nem támogatják az SSL-t. Ha az URL-cím régi formátumú, és az SSL-en keresztül szeretne továbbítani, hozzon létre egy új streaming-végpontot. Az új adatfolyam-végpont alapján létrehozott URL-címek használatával továbbíthatja a tartalmakat az SSL protokollon keresztül.
 
-Az alábbi lista ismerteti a különböző formátumban, és a példákat mutat be:
+A következő lista különböző streaming formátumokat tartalmaz, és példákat nyújt:
 
 * Smooth Streaming
 
@@ -212,21 +212,21 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 
 * MPEG DASH
 
-{Stream végpont neve-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+{streaming Endpoint Name-Media Services-fiók neve}. streaming. Mediaservices. Windows. net/{kereső azonosítója} ISM/manifest (Format = mpd-Time-CSF)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (Format = mpd-Time-CSF)
 
-* Apple HTTP Live Streaming (HLS) V4
+* Apple HTTP Live Streaming (HLS) v4
 
-{Stream végpont neve-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+{streaming Endpoint Name-Media Services-fiók neve}. streaming. Mediaservices. Windows. net/{kereső azonosítója} ISM/manifest (Format = m3u8-AAPL)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (Format = m3u8-AAPL)
 
-* Apple HTTP Live Streaming (HLS) V3
+* Apple HTTP Live Streaming (HLS) v3
 
-{Stream végpont neve-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
+{streaming Endpoint Name-Media Services-fiók neve}. streaming. Mediaservices. Windows. net/{kereső azonosítója} ISM/manifest (Format = m3u8-AAPL-v3)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (Format = m3u8-AAPL-v3)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

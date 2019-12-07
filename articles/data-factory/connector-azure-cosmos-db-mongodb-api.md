@@ -1,23 +1,22 @@
 ---
-title: Adatok másolása Azure Cosmos DB API-MongoDB az Data Factory használatával
+title: Adatok másolása Azure Cosmos DB API-MongoDB
 description: Ismerje meg, hogy miként másolhatók adatok a támogatott forrás-adattárakból vagy a Azure Cosmos DB API-MongoDB a támogatott fogadó üzletekbe Data Factory használatával.
 services: data-factory, cosmosdb
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: multiple
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.author: jingwang
-ms.openlocfilehash: 0da3452964a7c4bb7d2a22ce4cd5164ad8c1e3fb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bc69864cd1db62ba685201416965e64430c2d027
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280707"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891082"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Adatok másolása Azure Cosmos DB API-MongoDB az Azure Data Factory használatával
 
@@ -34,9 +33,9 @@ A MongoDB-összekötő Azure Cosmos DB API-ját a következőre használhatja:
 
 - Adatok másolása a és a rendszerből a [Azure Cosmos db API-MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction).
 - Írás a Azure Cosmos DB **Insert** vagy **upsert**.
-- Importálás és exportálás JSON-dokumentumok,-, vagy másolja az adatokat, vagy egy táblázatos adatkészlethez. Ilyenek például egy SQL-adatbázis és a egy CSV-fájlt. A dokumentumok fájlként való másolásához JSON-fájlokba vagy egy másik Azure Cosmos DB gyűjteményből vagy más-gyűjteményből: JSON-dokumentumok importálása vagy exportálása.
+- JSON-dokumentumok importálása és exportálása, illetve adatok másolása táblázatos adatkészletbe vagy másolással. Ilyenek például az SQL Database és a CSV-fájlok. A dokumentumok fájlként való másolásához JSON-fájlokba vagy egy másik Azure Cosmos DB gyűjteményből vagy más-gyűjteményből: JSON-dokumentumok importálása vagy exportálása.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Az első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -46,12 +45,12 @@ A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, 
 
 A MongoDB társított szolgáltatáshoz tartozó Azure Cosmos DB API-k esetében a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **Type** tulajdonságot **CosmosDbMongoDbApi**értékre kell beállítani. | Igen |
 | connectionString |Adja meg a Azure Cosmos DB API-MongoDB tartozó kapcsolatok karakterláncát. A Azure Portal > a Cosmos DB > elsődleges vagy másodlagos kapcsolatok karakterláncát, `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`mintázatával. <br/><br />A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. |Igen |
-| database | Az elérni kívánt adatbázis neve. | Igen |
-| connectVia | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhatja az Azure integrációs modul és a egy saját üzemeltetésű integrációs modul (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| adatbázis | Az elérni kívánt adatbázis neve. | Igen |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhatja a Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 **Példa**
 
@@ -79,7 +78,7 @@ A MongoDB társított szolgáltatáshoz tartozó Azure Cosmos DB API-k esetében
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [adatkészletek és társított szolgáltatások](concepts-datasets-linked-services.md). A MongoDB-adatkészlet Azure Cosmos DB API-jával a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet **Type** tulajdonságát **CosmosDbMongoDbApiCollection**értékre kell állítani. |Igen |
 | collectionName |A Azure Cosmos DB gyűjtemény neve. |Igen |
@@ -113,11 +112,11 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának **Type** tulajdonságát **CosmosDbMongoDbApiSource**értékre kell állítani. |Igen |
-| filter | Meghatározza a kiválasztási szűrőt a lekérdezési operátorok használatával. Ha egy gyűjteményben lévő összes dokumentumot vissza szeretné adni, hagyja ki ezt a paramétert, vagy adjon át üres dokumentumot ({}). | Nem |
-| cursorMethods.project | Meghatározza a dokumentumokban a kivetítéshez visszaadni kívánt mezőket. Ha a megfelelő dokumentumokban lévő összes mezőt vissza szeretné adni, hagyja ki ezt a paramétert. | Nem |
+| szűrő | Meghatározza a kiválasztási szűrőt a lekérdezési operátorok használatával. Ha egy gyűjteményben lévő összes dokumentumot vissza szeretné adni, hagyja ki ezt a paramétert, vagy adjon át üres dokumentumot ({}). | Nem |
+| cursorMethods. Project | Meghatározza a dokumentumokban a kivetítéshez visszaadni kívánt mezőket. Ha a megfelelő dokumentumokban lévő összes mezőt vissza szeretné adni, hagyja ki ezt a paramétert. | Nem |
 | cursorMethods. sort | Meghatározza, hogy a lekérdezés milyen sorrendben adja vissza a megfelelő dokumentumokat. Tekintse meg a [kurzor. sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nem |
 | cursorMethods. limit | A kiszolgáló által visszaadott dokumentumok maximális számát adja meg. Lásd: [kurzor. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nem | 
 | cursorMethods. skip | Meghatározza a kihagyni kívánt dokumentumok számát, valamint a MongoDB az eredmények visszaadásának helyét. Lásd: [kurzor. skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nem |
@@ -168,10 +167,10 @@ A másolási tevékenység **forrása** szakasz a következő tulajdonságokat t
 
 A másolási tevékenység fogadója szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadójának **Type** tulajdonságát **CosmosDbMongoDbApiSink**értékre kell állítani. |Igen |
-| writeBehavior |Ismerteti, hogyan lehet adatokat írni az Azure Cosmos DB-hez. Megengedett értékek: **Insert** és **upsert**.<br/><br/>A **upsert** viselkedése a dokumentum cseréje, ha már létezik azonos `_id`ú dokumentum. Ha nem, szúrja be a dokumentumot.<br /><br />**Megjegyzés**: a Data Factory automatikusan létrehoz egy `_id` a dokumentumhoz, ha az eredeti dokumentumban vagy az oszlop-hozzárendelésben nincs megadva `_id`. Ez azt jelenti, hogy meg kell győződnie arról, hogy a **upsert** a várt módon működnek, a dokumentum azonosítója. |Nem<br />(az alapértelmezett érték a **Beszúrás**) |
+| WriteBehavior |Ismerteti, hogyan lehet az Azure Cosmos DBba írni az adatbevitelt. Megengedett értékek: **Insert** és **upsert**.<br/><br/>A **upsert** viselkedése a dokumentum cseréje, ha már létezik azonos `_id`ú dokumentum. Ha nem, szúrja be a dokumentumot.<br /><br />**Megjegyzés**: a Data Factory automatikusan létrehoz egy `_id` a dokumentumhoz, ha az eredeti dokumentumban vagy az oszlop-hozzárendelésben nincs megadva `_id`. Ez azt jelenti, hogy meg kell győződnie arról, hogy a **upsert** a várt módon működnek, a dokumentum azonosítója. |Nem<br />(az alapértelmezett érték a **Beszúrás**) |
 | writeBatchSize | A **writeBatchSize** tulajdonság az egyes kötegekben írandó dokumentumok méretét határozza meg. A **writeBatchSize** értékének növelésével növelheti a teljesítményt és csökkentheti az értéket, ha a dokumentum mérete nagy. |Nem<br />(az alapértelmezett érték **10 000**) |
 | writeBatchTimeout | Az a várakozási idő, ameddig a kötegelt beszúrási művelet befejezi az időtúllépést. Az engedélyezett érték a TimeSpan. | Nem<br/>(az alapértelmezett érték **00:30:00** – 30 perc) |
 
@@ -210,13 +209,13 @@ A másolási tevékenység fogadója szakasz a következő tulajdonságokat tám
 >[!TIP]
 >Ha JSON-dokumentumokat szeretne importálni, tekintse meg a [JSON-dokumentumok importálása vagy exportálása](#import-or-export-json-documents) szakaszt; a táblázatos adatokból történő másoláshoz tekintse meg a [séma-hozzárendelést](#schema-mapping).
 
-## <a name="import-or-export-json-documents"></a>JSON-dokumentumok importálása és exportálása
+## <a name="import-or-export-json-documents"></a>JSON-dokumentumok importálása vagy exportálása
 
-Az Azure Cosmos DB-összekötő egyszerűen használható:
+Ezt a Azure Cosmos DB összekötőt egyszerűen elvégezheti:
 
-* JSON-dokumentumok importálása különböző forrásokból származó Azure Cosmos DB, beleértve az Azure Blob storage, Azure Data Lake Store és egyéb fájlalapú tárolók, amely az Azure Data Factory támogatja.
-* JSON-dokumentumok exportálhat egy Azure Cosmos DB-gyűjtemények különböző fájlalapú tárolók.
-* Másolja a között két Azure Cosmos DB-gyűjtemények, dokumentumok-van.
+* A különböző forrásokból származó JSON-dokumentumokat importálhatja Azure Cosmos DBba, beleértve az Azure Blob Storage-ból, Azure Data Lake Storeból és más, a Azure Data Factory által támogatott fájl-alapú tárolókat.
+* JSON-dokumentumok exportálása Azure Cosmos DB gyűjteményből különböző file-alapú áruházakba.
+* Dokumentumok másolása két Azure Cosmos DB gyűjtemény között.
 
 Az ilyen sémák és sémák közötti másoláshoz ugorjon a másolási tevékenységben a "Structure" (más néven *séma*) szakaszra.
 
@@ -224,7 +223,7 @@ Az ilyen sémák és sémák közötti másoláshoz ugorjon a másolási tevéke
 
 Ha Azure Cosmos DB API-ból szeretne adatokat másolni táblázatos MongoDB vagy fordított értékre, tekintse meg a [séma-hozzárendelést](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
-Különösen a Cosmos DBba való íráshoz, hogy a forrásadatok közül a jobb oldali AZONOSÍTÓJÚ Cosmos DB töltse fel, például az SQL Database tábla "id" oszlopát, és azt szeretné használni, hogy a MongoDB a INSERT/upsert a megfelelő séma-hozzárendelést a következő módon kell beállítania: MongoDB Strict Mode Definition (`_id.$oid`).
+Kifejezetten a Cosmos DBba való íráshoz, hogy megbizonyosodjon róla, hogy feltölti Cosmos DB a forrásadatok jobb oldali azonosítójával, például az SQL Database tábla "id" oszlopát használja, és azt szeretné használni, hogy az INSERT/upsert MongoDB tartozó dokumentum-AZONOSÍTÓként adja meg a megfelelő`_id.$oid`MongoDB a következő módon:
 
 ![Térkép azonosítója a MongoDB-fogadóban](./media/connector-azure-cosmos-db-mongodb-api/map-id-in-mongodb-sink.png)
 

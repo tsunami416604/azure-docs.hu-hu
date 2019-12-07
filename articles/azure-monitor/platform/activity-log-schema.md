@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: d196cf4024513d891182f3b916bd8412a2f81d14
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 73f6de80348b7d933e45a8145f6bdb8fe22b5954
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305487"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893603"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure Activity log esemény sémája
-Az **Azure-tevékenység naplója** olyan napló, amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. Ez a cikk az egyes adatkategóriákon keresztül mutatja be az esemény sémáját. Az Adatséma különbözik attól függően, hogy a portálon, a PowerShellben, a CLI-ben vagy közvetlenül a REST APIon keresztül olvassa-e be az adatátvitelt, [és hogyan lehet a tárolóba vagy Event Hubs naplózni](activity-log-export.md). Az alábbi példák a portálon, a PowerShellen, a CLI-n és a REST APIon elérhetővé tett sémát mutatják be. Ezeknek a tulajdonságoknak az [Azure diagnosztikai naplók sémához](diagnostic-logs-schema.md) való leképezése a cikk végén található.
+Az **Azure-tevékenység naplója** olyan napló, amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. Ez a cikk az egyes adatkategóriákon keresztül mutatja be az esemény sémáját. Az Adatséma különbözik attól függően, hogy a portálon, a PowerShellben, a CLI-ben vagy közvetlenül a REST APIon keresztül olvassa-e be az adatátvitelt, [és hogyan lehet a tárolóba vagy Event Hubs naplózni](activity-log-export.md). Az alábbi példák a portálon, a PowerShellen, a CLI-n és a REST APIon elérhetővé tett sémát mutatják be. Ezeknek a tulajdonságoknak az [Azure logs sémához](diagnostic-logs-schema.md) való leképezése a cikk végén található.
 
 ## <a name="administrative"></a>Adminisztratív
 Ez a kategória a Resource Manageren keresztül végrehajtott összes létrehozási, frissítési, törlési és műveleti művelet rekordját tartalmazza. Az ebben a kategóriában látható események típusai közé tartozik például a "virtuális gép létrehozása" és a "hálózati biztonsági csoport törlése" művelet, amelyet egy felhasználó vagy alkalmazás a Resource Manager használatával végzett minden művelet egy adott erőforrástípus működésének megfelelően modellez. Ha a művelet típusa írás, törlés vagy művelet, akkor a művelet kezdési és sikerességi rekordjait is rögzíti a rendszer a felügyeleti kategóriában. A felügyeleti kategória az előfizetés szerepköralapú hozzáférés-vezérlésének változásait is tartalmazza.
@@ -112,10 +112,10 @@ Ez a kategória a Resource Manageren keresztül végrehajtott összes létrehoz�
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
 | Elem neve | Leírás |
 | --- | --- |
-| authorization |Az esemény RBAC-tulajdonságainak blobja. Általában a "művelet", a "szerepkör" és a "hatókör" tulajdonságokat tartalmazza. |
+| engedélyezés |Az esemény RBAC-tulajdonságainak blobja. Általában a "művelet", a "szerepkör" és a "hatókör" tulajdonságokat tartalmazza. |
 | hívó |Annak a felhasználónak az e-mail-címe, aki a művelet, UPN-jogcím vagy SPN jogcím alapján végrehajtotta a rendelkezésre állást. |
 | csatornák |A következő értékek egyike: "admin", "művelet" |
-| claims |Az Active Directory által használt JWT-jogkivonat hitelesíti a felhasználót vagy alkalmazást a művelet végrehajtásához a Resource Managerben. |
+| jogcímek |Az Active Directory által használt JWT-jogkivonat hitelesíti a felhasználót vagy alkalmazást a művelet végrehajtásához a Resource Managerben. |
 | correlationId |Általában egy GUID formátumú karakterlánc. A correlationId osztozó események ugyanahhoz az Über-művelethez tartoznak. |
 | leírás |Egy esemény statikus szöveges leírása. |
 | eventDataId |Egy esemény egyedi azonosítója. |
@@ -136,7 +136,7 @@ Ez a kategória a Resource Manageren keresztül végrehajtott összes létrehoz�
 | submissionTimestamp |Időbélyeg, ha az esemény elérhetővé válik a lekérdezéshez. |
 | subscriptionId |Azure-előfizetés azonosítója. |
 
-## <a name="service-health"></a>Szolgáltatás állapota
+## <a name="service-health"></a>Szolgáltatások állapota
 Ez a kategória tartalmazza az Azure-ban történt összes szolgáltatás-egészségügyi incidens rekordját. Ebben a kategóriában a "SQL Azure az USA keleti régiójában az állásidőt tapasztalja." A szolgáltatás állapotával kapcsolatos események öt különböző változatban állnak rendelkezésre: a szükséges beavatkozás, a helyreállítás, az incidens, a karbantartás, az információ vagy a biztonság, és csak akkor jelenik meg, ha az előfizetésben az esemény által érintett erőforrás van.
 
 ### <a name="sample-event"></a>Minta esemény
@@ -196,7 +196,7 @@ Ez a kategória tartalmazza az Azure-ban történt összes szolgáltatás-egész
 ```
 A tulajdonságok között található értékekkel kapcsolatos dokumentációért tekintse meg a [Service Health Notifications](./../../azure-monitor/platform/service-notifications.md) című cikket.
 
-## <a name="resource-health"></a>Erőforrás állapota
+## <a name="resource-health"></a>Resource Health
 Ez a kategória az Azure-erőforrásokra vonatkozó összes erőforrás-állapottal kapcsolatos esemény rekordját tartalmazza. Ebben a kategóriában a "virtuális gép állapota nem érhető el értékre módosult" típusú eseményre mutat példát. Az erőforrás-állapot eseményei a négy állapot egyikét jelezhetik: elérhető, nem elérhető, csökkentett teljesítményű és ismeretlen. Emellett az erőforrás-állapot eseményei a platform által kezdeményezett vagy a felhasználó által kezdeményezett módon kategorizálva is lehetnek.
 
 ### <a name="sample-event"></a>Minta esemény
@@ -279,9 +279,9 @@ Ez a kategória az Azure-erőforrásokra vonatkozó összes erőforrás-állapot
 | properties |Az esemény részleteit leíró `<Key, Value>` pár (azaz egy szótár).|
 | tulajdonságok. cím | Egy felhasználóbarát karakterlánc, amely leírja az erőforrás állapotát. |
 | Properties. details | Egy felhasználóbarát karakterlánc, amely az esemény további részleteit ismerteti. |
-| properties.currentHealthStatus | Az erőforrás jelenlegi állapotának állapota. A következő értékek egyike: "elérhető", "nem elérhető", "csökkentett teljesítményű" és "ismeretlen". |
-| properties.previousHealthStatus | Az erőforrás előző állapotának állapota. A következő értékek egyike: "elérhető", "nem elérhető", "csökkentett teljesítményű" és "ismeretlen". |
-| properties.type | A Resource Health esemény típusának leírása. |
+| Properties. currentHealthStatus | Az erőforrás jelenlegi állapotának állapota. A következő értékek egyike: "elérhető", "nem elérhető", "csökkentett teljesítményű" és "ismeretlen". |
+| Properties. previousHealthStatus | Az erőforrás előző állapotának állapota. A következő értékek egyike: "elérhető", "nem elérhető", "csökkentett teljesítményű" és "ismeretlen". |
+| tulajdonságok. típus | A Resource Health esemény típusának leírása. |
 | tulajdonságok. ok | A Resource Health esemény okának leírása. Vagy "UserInitiated" és "PlatformInitiated". |
 
 
@@ -352,9 +352,9 @@ Ez a kategória az Azure-riasztások összes aktiválásának rekordját tartalm
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
 | Elem neve | Leírás |
 | --- | --- |
-| hívó | Always Microsoft.Insights/alertRules |
+| hívó | Mindig Microsoft. bepillantást/alertRules |
 | csatornák | Mindig a "rendszergazda, művelet" |
-| claims | JSON-blob a riasztási motor SPN-vel (egyszerű szolgáltatásnév) vagy erőforrás-típussal. |
+| jogcímek | JSON-blob a riasztási motor SPN-vel (egyszerű szolgáltatásnév) vagy erőforrás-típussal. |
 | correlationId | A karakterlánc formátumú GUID. |
 | leírás |A riasztási esemény statikus szöveges leírása. |
 | eventDataId |A riasztási esemény egyedi azonosítója. |
@@ -378,26 +378,26 @@ A tulajdonságok mező a riasztási esemény forrásától függően eltérő é
 #### <a name="properties-for-activity-log-alerts"></a>A műveletnapló-riasztások tulajdonságai
 | Elem neve | Leírás |
 | --- | --- |
-| properties.subscriptionId | A tevékenység naplójának eseményéhez tartozó előfizetés-azonosító, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
-| properties.eventDataId | A tevékenység naplójának eseményéhez tartozó esemény-azonosító, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
-| properties.resourceGroup | Az a műveletnapló eseményből származó erőforráscsoport, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
-| properties.resourceId | A tevékenység naplójának eseményéhez tartozó erőforrás-azonosító, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
-| properties.eventTimestamp | A tevékenység naplózási eseményének az esemény időbélyegzője, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
-| properties.operationName | A művelet neve a tevékenység naplójának eseményében, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
-| properties.status | A tevékenység naplózási eseményének állapota, amely miatt a rendszer aktiválja a tevékenység naplójának riasztási szabályát.|
+| Properties. subscriptionId | A tevékenység naplójának eseményéhez tartozó előfizetés-azonosító, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
+| Properties. eventDataId | A tevékenység naplójának eseményéhez tartozó esemény-azonosító, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
+| Properties. resourceGroup | Az a műveletnapló eseményből származó erőforráscsoport, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
+| Properties. resourceId | A tevékenység naplójának eseményéhez tartozó erőforrás-azonosító, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
+| Properties. eventTimestamp | A tevékenység naplózási eseményének az esemény időbélyegzője, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
+| Properties. operationName | A művelet neve a tevékenység naplójának eseményében, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
+| tulajdonságok. status | A tevékenység naplózási eseményének állapota, amely miatt a rendszer aktiválja a tevékenység naplójának riasztási szabályát.|
 
 #### <a name="properties-for-metric-alerts"></a>Metrikus riasztások tulajdonságai
 | Elem neve | Leírás |
 | --- | --- |
-| properties.RuleUri | A metrika riasztási szabályának erőforrás-azonosítója. |
-| properties.RuleName | A metrika riasztási szabályának neve. |
-| properties.RuleDescription | A metrika riasztási szabályának leírása (a riasztási szabályban meghatározottak szerint). |
-| properties.Threshold | A metrika riasztási szabályának kiértékeléséhez használt küszöbérték. |
-| properties.WindowSizeInMinutes | A metrika riasztási szabályának kiértékeléséhez használt ablakméret |
-| properties.Aggregation | A metrika riasztási szabályában definiált összesítési típus. |
+| Tulajdonságok. RuleUri | A metrika riasztási szabályának erőforrás-azonosítója. |
+| Tulajdonságok. RuleName | A metrika riasztási szabályának neve. |
+| Tulajdonságok. RuleDescription | A metrika riasztási szabályának leírása (a riasztási szabályban meghatározottak szerint). |
+| Tulajdonságok. Küszöb | A metrika riasztási szabályának kiértékeléséhez használt küszöbérték. |
+| Tulajdonságok. WindowSizeInMinutes | A metrika riasztási szabályának kiértékeléséhez használt ablakméret |
+| Tulajdonságok. Összesítési | A metrika riasztási szabályában definiált összesítési típus. |
 | Tulajdonságok. Üzemeltető | A metrika riasztási szabályának kiértékelésében használt feltételes operátor. |
-| properties.MetricName | A metrika riasztási szabályának kiértékeléséhez használt metrika metrikai neve. |
-| properties.MetricUnit | A metrika riasztási szabályának kiértékeléséhez használt metrika mérőszáma. |
+| Tulajdonságok. MetricName | A metrika riasztási szabályának kiértékeléséhez használt metrika metrikai neve. |
+| Tulajdonságok. MetricUnit | A metrika riasztási szabályának kiértékeléséhez használt metrika mérőszáma. |
 
 ## <a name="autoscale"></a>Automatikus méretezés
 Ez a kategória tartalmazza az adott előfizetésben definiált, az előfizetéshez megadott összes autoskálázási beállítás alapján az autoskálázási motor működésével kapcsolatos események rekordját. Egy példa arra, hogy milyen típusú eseményre lenne szüksége ebben a kategóriában: "a vertikális Felskálázási művelet nem sikerült." Az automatikus méretezés használatával automatikusan kibővítheti vagy méretezheti a támogatott erőforrástípus példányainak számát a nap-és/vagy betöltési (metrikus) adatokon alapuló automatikus méretezési beállítással. Ha a feltételek teljesülnek a vertikális fel-vagy leskálázáshoz, a rendszer a kezdő és a sikeres vagy sikertelen eseményeket rögzíti ebben a kategóriában.
@@ -462,9 +462,9 @@ Ez a kategória tartalmazza az adott előfizetésben definiált, az előfizetés
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
 | Elem neve | Leírás |
 | --- | --- |
-| hívó | Always Microsoft.Insights/autoscaleSettings |
+| hívó | Mindig Microsoft. bepillantást/autoscaleSettings |
 | csatornák | Mindig a "rendszergazda, művelet" |
-| claims | JSON-blob az autoskálázási motor SPN-vel (egyszerű szolgáltatásnév) vagy erőforrás-típussal. |
+| jogcímek | JSON-blob az autoskálázási motor SPN-vel (egyszerű szolgáltatásnév) vagy erőforrás-típussal. |
 | correlationId | A karakterlánc formátumú GUID. |
 | leírás |Az autoskálázási esemény statikus szöveges leírása. |
 | eventDataId |Az autoskálázási esemény egyedi azonosítója. |
@@ -475,11 +475,11 @@ Ez a kategória tartalmazza az adott előfizetésben definiált, az előfizetés
 | operationId |Az egyetlen műveletnek megfelelő események között megosztva lévő GUID. |
 | operationName |A művelet neve. |
 | properties |Az esemény részleteit leíró `<Key, Value>` pár (azaz egy szótár). |
-| properties.Description | Annak részletes leírása, hogy mit csinált az autoskálázási motor. |
-| properties.ResourceName | Az érintett erőforrás erőforrás-azonosítója (az erőforrás, amelyen a skálázási műveletet végrehajtották) |
-| properties.OldInstancesCount | A példányok száma, mielőtt az autoskálázási művelet érvénybe lépett. |
-| properties.NewInstancesCount | A példányok száma, miután az autoskálázás művelet érvénybe lépett. |
-| properties.LastScaleActionTime | Az az időbélyeg, amikor az autoskálázás művelet bekövetkezett. |
+| Tulajdonságok. Leírás | Annak részletes leírása, hogy mit csinált az autoskálázási motor. |
+| Tulajdonságok. ResourceName | Az érintett erőforrás erőforrás-azonosítója (az erőforrás, amelyen a skálázási műveletet végrehajtották) |
+| Tulajdonságok. OldInstancesCount | A példányok száma, mielőtt az autoskálázási művelet érvénybe lépett. |
+| Tulajdonságok. NewInstancesCount | A példányok száma, miután az autoskálázás művelet érvénybe lépett. |
+| Tulajdonságok. LastScaleActionTime | Az az időbélyeg, amikor az autoskálázás művelet bekövetkezett. |
 | status |A művelet állapotát leíró karakterlánc. Néhány gyakori érték: elindítva, folyamatban, sikeres, sikertelen, aktív, megoldva. |
 | Részállapot | Általában null az autoskálázáshoz. |
 | eventTimestamp |Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
@@ -561,13 +561,13 @@ Ez a kategória tartalmazza a Azure Security Center által generált riasztások
 | id |A biztonsági esemény egyedi erőforrás-azonosítója. |
 | szint |Az esemény szintje. A következő értékek egyike: "kritikus", "hiba", "figyelmeztetés" vagy "tájékoztató" |
 | resourceGroupName |Az erőforrás erőforráscsoport neve. |
-| resourceProviderName |A Azure Security Center erőforrás-szolgáltatójának neve. Always "Microsoft.Security". |
+| resourceProviderName |A Azure Security Center erőforrás-szolgáltatójának neve. Mindig "Microsoft. Security". |
 | resourceType |A biztonsági eseményt létrehozó erőforrás típusa, például "Microsoft. Security/Locations/riasztások" |
 | resourceId |A biztonsági riasztás erőforrás-azonosítója. |
 | operationId |Az egyetlen műveletnek megfelelő események között megosztva lévő GUID. |
 | operationName |A művelet neve. |
 | properties |Az esemény részleteit leíró `<Key, Value>` pár (azaz egy szótár). Ezek a tulajdonságok a biztonsági riasztás típusától függően változnak. [Ezen az oldalon](../../security-center/security-center-alerts-overview.md) megtekintheti az Security Centerból származó riasztási típusok leírását. |
-| properties.Severity |A súlyossági szint. A lehetséges értékek: "magas", "közepes" vagy "alacsony". |
+| Tulajdonságok. Súlyosság |A súlyossági szint. A lehetséges értékek: "magas", "közepes" vagy "alacsony". |
 | status |A művelet állapotát leíró karakterlánc. Néhány gyakori érték: elindítva, folyamatban, sikeres, sikertelen, aktív, megoldva. |
 | Részállapot | Általában null a biztonsági eseményekhez. |
 | eventTimestamp |Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
@@ -743,10 +743,10 @@ Ez a kategória a [Azure Policy](../../governance/policy/overview.md)által vég
 
 | Elem neve | Leírás |
 | --- | --- |
-| authorization | Az esemény RBAC-tulajdonságainak tömbje. Az új erőforrások esetében ez a művelet és a kiértékelést kiváltó kérelem hatóköre. A meglévő erőforrások esetében a művelet a következő: "Microsoft. Resources/checkPolicyCompliance/Read". |
+| engedélyezés | Az esemény RBAC-tulajdonságainak tömbje. Az új erőforrások esetében ez a művelet és a kiértékelést kiváltó kérelem hatóköre. A meglévő erőforrások esetében a művelet a következő: "Microsoft. Resources/checkPolicyCompliance/Read". |
 | hívó | Új erőforrások esetén a központi telepítést kezdeményező identitás. Meglévő erőforrások esetében a Microsoft Azure Policy bepillantást az RP GUID azonosító. |
 | csatornák | A házirend-események csak a "művelet" csatornát használják. |
-| claims | Az Active Directory által használt JWT-jogkivonat hitelesíti a felhasználót vagy alkalmazást a művelet végrehajtásához a Resource Managerben. |
+| jogcímek | Az Active Directory által használt JWT-jogkivonat hitelesíti a felhasználót vagy alkalmazást a művelet végrehajtásához a Resource Managerben. |
 | correlationId | Általában egy GUID formátumú karakterlánc. A correlationId osztozó események ugyanahhoz az Über-művelethez tartoznak. |
 | leírás | Ez a mező a házirend eseményeinél üres. |
 | eventDataId | Egy esemény egyedi azonosítója. |
@@ -765,17 +765,17 @@ Ez a kategória a [Azure Policy](../../governance/policy/overview.md)által vég
 | Részállapot | A mező üres a házirend eseményeinél. |
 | submissionTimestamp | Időbélyeg, ha az esemény elérhetővé válik a lekérdezéshez. |
 | subscriptionId | Azure-előfizetés azonosítója. |
-| properties.isComplianceCheck | A "false" értéket adja vissza új erőforrás telepítésekor vagy egy meglévő erőforrás Resource Manager-tulajdonságainak frissítésekor. Minden más [kiértékelési eseményindító](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) "igaz" értéket eredményez. |
-| properties.resourceLocation | A kiértékelt erőforrás Azure-régiója. |
+| Properties. isComplianceCheck | A "false" értéket adja vissza új erőforrás telepítésekor vagy egy meglévő erőforrás Resource Manager-tulajdonságainak frissítésekor. Minden más [kiértékelési eseményindító](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) "igaz" értéket eredményez. |
+| Properties. resourceLocation | A kiértékelt erőforrás Azure-régiója. |
 | tulajdonságok. ősök | A fölérendelt felügyeleti csoportok vesszővel elválasztott listája, amely a közvetlen szülőről a legtávolabbi nagyszülőre van rendezve. |
 | tulajdonságok. házirendek | A szabályzat-definícióval, a hozzárendeléssel, a hatással és a paraméterekkel kapcsolatos, a házirend kiértékelését eredményező adatokat tartalmazza. |
 | relatedEvents | Ez a mező a házirend eseményeinél üres. |
 
-## <a name="mapping-to-diagnostic-logs-schema"></a>Hozzárendelés diagnosztikai naplók sémához
+## <a name="mapping-to-resource-logs-schema"></a>Hozzárendelés erőforrás-naplók sémához
 
-Az Azure-tevékenység naplójának Storage-fiókba vagy Event Hubs névtérbe való továbbításakor az [Azure diagnosztikai naplók sémája](./diagnostic-logs-schema.md)követi az adatátvitelt. Itt látható a fenti séma tulajdonságainak leképezése a diagnosztikai naplók sémájára:
+Az Azure-tevékenység naplójának Storage-fiókba vagy Event Hubs névtérbe való továbbításakor az [Azure Resource logs sémát](./diagnostic-logs-schema.md)követi. Itt látható a fenti séma tulajdonságainak leképezése az erőforrás-naplók sémájára:
 
-| Diagnosztikai naplók séma tulajdonsága | Műveletnapló REST API Schema tulajdonság | Megjegyzések |
+| Erőforrás-naplók sémájának tulajdonsága | Műveletnapló REST API Schema tulajdonság | Megjegyzések |
 | --- | --- | --- |
 | time | eventTimestamp |  |
 | resourceId | resourceId | a subscriptionId, a resourceType és a resourceGroupName a resourceId. |
@@ -784,17 +784,17 @@ Az Azure-tevékenység naplójának Storage-fiókba vagy Event Hubs névtérbe v
 | resultType | status. Value | |
 | resultSignature | alállapot. érték | |
 | resultDescription | leírás |  |
-| durationMs | N/A | Mindig 0 |
-| callerIpAddress | httpRequest.clientIpAddress |  |
+| durationMs | – | Mindig 0 |
+| callerIpAddress | httpRequest. clientIpAddress |  |
 | correlationId | correlationId |  |
-| identity | jogcímek és engedélyezési tulajdonságok |  |
+| identitáskezelés | jogcímek és engedélyezési tulajdonságok |  |
 | Szint | Szint |  |
-| location | N/A | Az esemény feldolgozásának helye. *Ez nem az erőforrás helye, hanem az eseményt feldolgozták. A rendszer eltávolítja ezt a tulajdonságot egy jövőbeli frissítésben.* |
-| Tulajdonságok | properties.eventProperties |  |
+| location | – | Az esemény feldolgozásának helye. *Ez nem az erőforrás helye, hanem az eseményt feldolgozták. A rendszer eltávolítja ezt a tulajdonságot egy jövőbeli frissítésben.* |
+| Tulajdonságok | Properties. eventProperties |  |
 | Properties. eventCategory | category | Ha a Properties. eventCategory nincs jelen, a kategória a "rendszergazda" |
-| properties.eventName | eventName |  |
+| Properties. eventName | eventName |  |
 | Properties. operationId | operationId |  |
-| properties.eventProperties | properties |  |
+| Properties. eventProperties | properties |  |
 
 
 ## <a name="next-steps"></a>Következő lépések

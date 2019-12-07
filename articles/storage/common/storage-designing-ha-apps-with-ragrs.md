@@ -1,20 +1,21 @@
 ---
-title: A magasan elérhető alkalmazások tervezése olvasási hozzáférésű geo-redundáns tárolással (RA-GZRS vagy RA-GRS) | Microsoft Docs
-description: Az Azure RA-GZRS vagy RA-GRS Storage használata a leállások kezeléséhez elég rugalmasan elérhető alkalmazás létrehozásához.
+title: A földrajzilag redundáns tárolást használó, magasan elérhető alkalmazások tervezése
+titleSuffix: Azure Storage
+description: Ismerje meg, hogyan használhatja az olvasási hozzáférésű geo-redundáns tárolást egy olyan, magasan elérhető alkalmazás létrehozásához, amely elég rugalmas az kimaradások kezeléséhez.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a6d724f834fb8a4c54cd613c61ca90a77a36bdea
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673118"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895336"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>A magasan elérhető alkalmazások tervezése olvasási hozzáférésű geo-redundáns tárolással
 
@@ -27,7 +28,7 @@ A Geo-redundáns replikációhoz konfigurált Storage-fiókok szinkron módon re
 
 Ez a cikk bemutatja, hogyan tervezheti meg az alkalmazást az elsődleges régióban leállások kezeléséhez. Ha az elsődleges régió elérhetetlenné válik, az alkalmazás alkalmazkodik a másodlagos régióra irányuló olvasási műveletek végrehajtásához. Mielőtt elkezdené, győződjön meg róla, hogy a Storage-fiókja RA-GRS vagy RA-GZRS van konfigurálva.
 
-További információ arról, hogy mely elsődleges régiók párosítva vannak a másodlagos régiókkal: [Business folytonosság és vész-helyreállítás (BCDR): Az Azure párosított régiói](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+További információ arról, hogy mely elsődleges régiók állnak párosítva a másodlagos régiókkal [: az üzletmenet folytonossága és a vész-helyreállítási (BCDR): Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 Ebben a cikkben kódrészletek is szerepelnek, valamint egy teljes, a letöltéshez és futtatáshoz használható teljes mintára mutató hivatkozás.
 
@@ -199,17 +200,17 @@ A Geo-redundáns tárolás úgy működik, hogy az elsődlegesről a másodlagos
 
 Az alábbi táblázat egy példát mutat be arra, hogy mi történhet, ha egy alkalmazott adatait frissíti, hogy azok a *rendszergazdák* szerepkör tagjai legyenek. Ennek a példának a kedvéért ehhez frissítenie kell az **alkalmazott** entitást, és frissítenie kell egy **rendszergazdai szerepkör** entitást a rendszergazdák teljes száma számával. Figyelje meg, hogy a frissítések nem sorrendben vannak alkalmazva a másodlagos régióban.
 
-| **Idő** | **Tranzakció**                                            | **Replikáció**                       | **Utolsó szinkronizálás ideje** | **Találat** |
+| **Idő** | **Tranzakció**                                            | **Replikáció**                       | **Utolsó szinkronizálás ideje** | **Eredmény** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | A tranzakció: <br> Alkalmazott beszúrása <br> elsődleges entitás |                                   |                    | Egy beszúrt tranzakció az elsődlegesbe<br> még nincs replikálva. |
 | T1       |                                                            | A tranzakció <br> replikálva a következőre<br> másodlagos | T1 | A tranzakció replikálása másodlagosra történik. <br>A legutóbbi szinkronizálás ideje frissítve.    |
-| T2       | B tranzakció:<br>frissítés<br> Alkalmazotti entitás<br> az elsődleges  |                                | T1                 | A B tranzakció elsődlegesre lett írva,<br> még nincs replikálva.  |
-| T3       | C tranzakció:<br> frissítés <br>rendszergazda<br>szerepkör entitása a<br>elsődleges |                    | T1                 | A C tranzakció elsődlegesre lett írva,<br> még nincs replikálva.  |
+| T2       | B tranzakció:<br>Frissítés<br> Alkalmazotti entitás<br> az elsődleges  |                                | T1                 | A B tranzakció elsődlegesre lett írva,<br> még nincs replikálva.  |
+| T3       | C tranzakció:<br> Frissítés <br>rendszergazda<br>szerepkör entitása a<br>elsődleges |                    | T1                 | A C tranzakció elsődlegesre lett írva,<br> még nincs replikálva.  |
 | *T4*     |                                                       | C tranzakció <br>replikálva a következőre<br> másodlagos | T1         | A C tranzakció replikálása másodlagosra történik.<br>A LastSyncTime nem frissült, mert <br>a B tranzakció még nincs replikálva.|
 | *T5*     | Entitások olvasása <br>másodlagosról                           |                                  | T1                 | Az alkalmazott elavult értékét kapja <br> entitás, mert a B tranzakció nem <br> még replikálva. A következő új értéket kapja:<br> rendszergazdai szerepkör entitása, mert C<br> replikált. A legutóbbi szinkronizálás ideje még nem<br> Frissítve, mert a B tranzakció<br> még nincs replikálva. Megtudhatja, hogy<br>a rendszergazdai szerepkör entitása inkonzisztens <br>mivel az entitás dátuma/időpontja a következő után van <br>a legutóbbi szinkronizálás ideje. |
 | *T6*     |                                                      | B tranzakció<br> replikálva a következőre<br> másodlagos | T6                 | *T6* – a C-n keresztül lebonyolított tranzakciók száma <br>replikálva, utolsó szinkronizálás ideje<br> frissült. |
 
-Ebben a példában feltételezzük, hogy az ügyfél a T5 másodlagos régiójából való olvasásra vált. Sikeresen beolvashatja a **rendszergazdai szerepkör** entitást, de az entitás tartalmazza a rendszergazdák számának értékét, amely nem konzisztens a rendszergazdaként megjelölt **Employee** entitások számával a másodlagos jelenleg régió. Az ügyfél egyszerűen megjelenítheti ezt az értéket azzal a kockázattal, hogy inkonzisztens információ. Azt is megteheti, hogy az ügyfél megpróbálta megállapítani, hogy a **rendszergazdai szerepkör** valószínűleg inkonzisztens állapotban van-e, mert a frissítések sorrendje nem megfelelő, majd tájékoztatja a felhasználót erről a tényről.
+Ebben a példában feltételezzük, hogy az ügyfél a T5 másodlagos régiójából való olvasásra vált. Ekkor sikeresen beolvashatja a **rendszergazdai szerepkör** entitást, de az entitás tartalmazza a rendszergazdák számának értékét, amely nem konzisztens a másodlagos régióban rendszergazdaként megjelölt **alkalmazotti** entitások számával. Az ügyfél egyszerűen megjelenítheti ezt az értéket azzal a kockázattal, hogy inkonzisztens információ. Azt is megteheti, hogy az ügyfél megpróbálta megállapítani, hogy a **rendszergazdai szerepkör** valószínűleg inkonzisztens állapotban van-e, mert a frissítések sorrendje nem megfelelő, majd tájékoztatja a felhasználót erről a tényről.
 
 Annak felismeréséhez, hogy potenciálisan inkonzisztens adatmennyiséggel rendelkezik, az ügyfél használhatja a *legutóbbi szinkronizálás időpontját* , amelyet bármikor lekérhet a tárolási szolgáltatás lekérdezésével. Ez azt jelzi, hogy mikor történt a másodlagos régióban lévő adategység utolsó egységessége, és ha a szolgáltatás az adott időpontot megelőzően az összes tranzakciót alkalmazta. A fenti példában látható példa azt követően, hogy a szolgáltatás beszúrja az **alkalmazott** entitást a másodlagos régióban, a legutóbbi szinkronizálási idő a *T1*értékre van állítva. Addig marad *T1* , amíg a szolgáltatás frissíti a másodlagos régióban lévő **Employee** entitást, ha a *T6*értékre van állítva. Ha az ügyfél lekéri a legutóbbi szinkronizálási időt, amikor beolvassa az entitást a *T5*-ben, akkor összehasonlíthatja azt az entitás időbélyegével. Ha az entitás időbélyege későbbi, mint az utolsó szinkronizálás ideje, akkor az entitás potenciálisan inkonzisztens állapotban van, és az alkalmazásra vonatkozó megfelelő művelet is megtehető. Ennek a mezőnek a használatával tudnia kell, hogy mikor fejeződött be az elsődleges frissítés.
 
@@ -219,7 +220,7 @@ A PowerShell vagy az Azure CLI használatával lekérheti a legutóbbi szinkroni
 
 ### <a name="powershell"></a>PowerShell
 
-Ha a PowerShell használatával szeretné lekérni a Storage-fiók utolsó szinkronizálási idejét, telepítsen egy Azure Storage Preview-modult, amely támogatja a Geo-replikálási statisztikák beszerzését. Példa:
+Ha a PowerShell használatával szeretné lekérni a Storage-fiók utolsó szinkronizálási idejét, telepítsen egy Azure Storage Preview-modult, amely támogatja a Geo-replikálási statisztikák beszerzését. Például:
 
 ```powershell
 Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
@@ -233,9 +234,9 @@ $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
     -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
-Ha az Azure CLI használatával szeretné lekérni a Storage-fiók utolsó szinkronizálási idejét, tekintse meg a Storage-fiók **geoReplicationStats. lastSyncTime** tulajdonságát. A `--expand` paraméterrel adhatók vissza a **geoReplicationStats**alatt beágyazott tulajdonságok értékei. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire:
+Ha az Azure CLI használatával szeretné lekérni a Storage-fiók utolsó szinkronizálási idejét, tekintse meg a Storage-fiók **geoReplicationStats. lastSyncTime** tulajdonságát. A `--expand` paraméterrel a **geoReplicationStats**alatt beágyazott tulajdonságok értékeit lehet visszaadni. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire:
 
 ```azurecli
 $lastSyncTime=$(az storage account show \
@@ -266,7 +267,7 @@ Ezt a példát úgy is kiterjesztheti, hogy a kérések szélesebb körét elhal
 
 Ha elvégezte az alkalmazás csak olvasható módra való váltásának küszöbértékeit, akkor könnyebben tesztelheti a nem éles tranzakciós kötetekkel kapcsolatos viselkedést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a másodlagos régióról való olvasásról, többek között a legutóbbi szinkronizálási idő tulajdonságának beállításáról: az [Azure Storage redundancia beállításai és az olvasási hozzáférés geo-redundáns tárolás](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 

@@ -1,6 +1,6 @@
 ---
-title: Hogyan lehet REST API használatával a feladat előrehaladásának ellenőrzése |} A Microsoft Docs
-description: Ismerje meg, hogy a feladat előrehaladásának nyomon követését.
+title: A feladatok előrehaladásának ellenőrzéséhez REST API használatával | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan ellenőrizhető a feladatok előrehaladása Azure Media Services v2 REST API használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 378a90b712af031f9d89758939afb993cee5aafd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec72b7e7bf4c2b859e8ceecf617c90a4853cb517
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869493"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901497"
 ---
-# <a name="how-to-check-job-progress"></a>Útmutató: a feladat előrehaladásának ellenőrzése
+# <a name="how-to-check-job-progress"></a>Útmutató: a feladatok előrehaladásának ellenőrzéséhez
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-Feladatok futtatásakor gyakran igényelnek olyan módon, a feladat előrehaladásának nyomon követéséhez. A feladat állapota tulajdonság használatával keresheti meg a feladat állapota. Az állapot tulajdonság további információkért lásd: [feladat entitás tulajdonságai](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
+A feladatok futtatásakor gyakran szükség van a feladat előrehaladásának nyomon követésére. A feladatok állapotát a feladatok állapot tulajdonságával derítheti fel. További információ az állapot tulajdonságról: a [feladatok entitásának tulajdonságai](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
 
-## <a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
+## <a name="connect-to-media-services"></a>Kapcsolódás a Media Serviceshez
 
-Az AMS API-t kapcsolódás információkért lásd: [eléréséhez az Azure Media Services API Azure AD-hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
+További információ az AMS API-hoz való kapcsolódásról: [a Azure Media Services API Azure ad-hitelesítéssel való elérése](media-services-use-aad-auth-to-access-ams-api.md). 
 
 ## <a name="check-job-progress"></a>A feladat előrehaladásának ellenőrzése
 
@@ -68,6 +68,6 @@ Válasz:
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-[A Media Services REST API áttekintése](media-services-rest-how-to-use.md)
+[Media Services Operations REST API áttekintése](media-services-rest-how-to-use.md)

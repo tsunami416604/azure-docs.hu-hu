@@ -1,7 +1,7 @@
 ---
 title: Gyakori kérdések a Video Indexer-Azure-ról
 titleSuffix: Azure Media Services
-description: Választ kaphat a Video Indexerával kapcsolatos gyakori kérdésekre.
+description: Ez a cikk választ ad a Azure Media Services Video Indexerekkel kapcsolatos gyakori kérdésekre.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 95f2af1b192564290551f9ed31f0fe158b4536f6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fc5457fd44bd27731cad6269ee95aed838a3d755
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838227"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892787"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -167,6 +167,6 @@ Videó indexelésre való elküldésénél a felhasználó eldöntheti, hogy az 
 
 Igen, Video Indexer ingyenes próbaverziót kínál, amely teljes körű szolgáltatást és API-funkciókat biztosít. Az API-felhasználók számára a 600 perces számú, a webalapú felhasználói felülethez és a 2 400 percben található videó. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Áttekintés](video-indexer-overview.md)

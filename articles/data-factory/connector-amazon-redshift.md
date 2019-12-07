@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az Amazon Vöröseltolódásból a Azure Data Factory használatával
+title: Adatok másolása az Amazon Vöröseltolódásból
 description: További információ az Amazon vöröseltolódásról származó adatok másolásáról a Azure Data Factory használatával történő támogatott fogadó adattárakra.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: jingwang
-ms.openlocfilehash: 57152c7d4aa558c2d6dd7c4ef0ad2c62311fc0c6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8cb604996f6cde5c55098fd3fdc51d0d061dbcd1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681369"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891218"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok másolása az Amazon Vöröseltolódásból a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -56,7 +56,7 @@ A következő szakaszokban részletesen ismertetjük az Amazon vöröseltolódá
 
 Az Amazon vöröseltolódás társított szolgáltatása a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **AmazonRedshift** | Igen |
 | kiszolgáló |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Igen |
@@ -98,11 +98,11 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok Amazon Vöröseltolódásból való másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AmazonRedshiftTable** | Igen |
-| Séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| table | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Új számítási feladatokhoz használjon `schema` és `table`. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -133,7 +133,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok Amazon Vöröseltolódásból való másolásához állítsa a forrás típusát a másolási tevékenység **AmazonRedshiftSource**. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AmazonRedshiftSource** | Igen |
 | lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. Például: select * from Sajáttábla. |Nem (ha meg van adva a "táblanév" az adatkészletben) |
@@ -222,19 +222,19 @@ Az Amazon Vöröseltolódásból történő adatmásoláskor a következő leké
 | BIGINT |Int64 |
 | LOGIKAI |Sztring |
 | CHAR |Sztring |
-| DATE |DateTime |
+| DATE |Dátum és idő |
 | DECIMÁLIS |Decimális |
-| DUPLA PONTOSSÁG |duplán |
-| INTEGER |Int32 |
-| VALÓS |Önálló |
+| DUPLA PONTOSSÁG |Double |
+| EGÉSZ SZÁM |Int32 |
+| VALÓS SZÁM |Önálló |
 | SMALLINT |Int16 |
-| SZÖVEG |Sztring |
-| IDŐBÉLYEG |DateTime |
+| TEXT |Sztring |
+| IDŐBÉLYEG |Dátum és idő |
 | VARCHAR |Sztring |
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

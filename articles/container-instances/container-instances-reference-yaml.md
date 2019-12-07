@@ -3,12 +3,12 @@ title: YAML-hivatkozás a tároló csoportjához
 description: A Azure Container Instances által támogatott YAML-fájlra mutató hivatkozás egy tároló csoport konfigurálásához
 ms.topic: article
 ms.date: 08/12/2019
-ms.openlocfilehash: 5603f2e0f63c4f83a6d3761feb540abb8b8b7d5c
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8497330a327201c4c64e9f7ae57e6fc4225b52de
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533491"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896569"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML-hivatkozás: Azure Container Instances
 
@@ -38,7 +38,7 @@ properties: # Properties of container group
       image: string # Container image used to create the instance
       command:
       - string
-      ports: # Exposed ports on the instance
+      ports: # External-facing ports exposed on the instance, must also be set in group ipAddress property 
       - protocol: string
         port: integer
       environmentVariables:
@@ -246,7 +246,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 |  ---- | ---- | ---- | ---- |
 |  Névkiszolgálók | tömb | Igen | A tároló csoport DNS-kiszolgálói. -string |
 |  searchDomains | sztring | Nem | A DNS-keresési tartományok az állomásnév kereséséhez a tároló csoportban. |
-|  beállítások | sztring | Nem | A tároló csoport DNS-beállításai. |
+|  beállítás | sztring | Nem | A tároló csoport DNS-beállításai. |
 
 
 <a id="ContainerProperties" />
@@ -282,7 +282,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 |  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  shareName | sztring | Igen | A kötetként csatlakoztatni kívánt Azure-fájlmegosztás neve. |
-|  ReadOnly | logikai | Nem | Az a jelző, amely azt jelzi, hogy a kötetként csatlakoztatott Azure-fájl írásvédett-e. |
+|  readOnly | logikai | Nem | Az a jelző, amely azt jelzi, hogy a kötetként csatlakoztatott Azure-fájl írásvédett-e. |
 |  storageAccountName | sztring | Igen | Az Azure-fájlmegosztást tartalmazó Storage-fiók neve. |
 |  storageAccountKey | sztring | Nem | Az Azure-fájlmegosztás eléréséhez használt Storage-fiók elérési kulcsa. |
 
@@ -293,7 +293,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
-|  Directory | sztring | Nem | Célkönyvtár neve. A nem tartalmazhat ".." karaktert.  Ha a "." meg van adva, a kötet könyvtára lesz a git-tárház.  Ellenkező esetben, ha meg van adva, a kötet a megadott nevű alkönyvtárban található git-tárházat fogja tartalmazni. |
+|  címtár | sztring | Nem | Célkönyvtár neve. A nem tartalmazhat ".." karaktert.  Ha a "." meg van adva, a kötet könyvtára lesz a git-tárház.  Ellenkező esetben, ha meg van adva, a kötet a megadott nevű alkönyvtárban található git-tárházat fogja tartalmazni. |
 |  tárház | sztring | Igen | Tárház URL-címe |
 |  változat | sztring | Nem | A megadott változat kivonatának véglegesítve. |
 
@@ -304,7 +304,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
-|  Munkaterület azonosítója | sztring | Igen | A log Analytics-munkaterület azonosítója |
+|  workspaceId | sztring | Igen | A log Analytics-munkaterület azonosítója |
 |  workspaceKey | sztring | Igen | A log Analytics-munkaterület kulcsa |
 |  logType | Enum | Nem | A használandó naplózási típus. -ContainerInsights vagy ContainerInstanceLogs |
 |  metaadatok | objektum | Nem | A log Analytics metaadatai. |
@@ -349,7 +349,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 |  ---- | ---- | ---- | ---- |
 |  név | sztring | Igen | A kötet csatlakoztatásának neve. |
 |  mountPath | sztring | Igen | Az elérési út a tárolón belül, ahol a kötetet csatlakoztatni kell. Nem tartalmazhat kettőspontot (:). |
-|  ReadOnly | logikai | Nem | Az a jelző, amely azt jelzi, hogy a kötet csatlakoztatása írásvédett-e. |
+|  readOnly | logikai | Nem | Az a jelző, amely azt jelzi, hogy a kötet csatlakoztatása írásvédett-e. |
 
 
 <a id="ContainerProbe" />
@@ -404,7 +404,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
-|  elérési útja | sztring | Nem | A mintavétel elérési útja. |
+|  elérési út | sztring | Nem | A mintavétel elérési útja. |
 |  port | egész szám | Igen | A mintavételhez használandó portszám. |
 |  séma | Enum | Nem | A séma. -http vagy https |
 

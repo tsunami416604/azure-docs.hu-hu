@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 12/05/2019
 ms.author: b-juche
-ms.openlocfilehash: 23f0138c3d9e7ad28fc88d38204c8559dd8f683d
-ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
+ms.openlocfilehash: c7437050683d13e39c5580b758c4198ca3690193
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906187"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894045"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Megoldásarchitektúrák az Azure NetApp Filesszal
 Ez a cikk az ajánlott eljárásokra mutató hivatkozásokat tartalmaz, amelyek segítségével megismerheti a Azure NetApp Files használatának megoldási architektúráit.  
@@ -37,6 +37,7 @@ Ez a cikk az ajánlott eljárásokra mutató hivatkozásokat tartalmaz, amelyek 
 
 * [SAP-alkalmazások Microsoft Azure a Azure NetApp Files használatával](https://www.netapp.com/us/media/tr-4746.pdf)
 * [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* [Magas rendelkezésre állás a Windows rendszerű Azure-beli virtuális gépeken futó SAP NetWeaver számára az SAP-alkalmazások Azure NetApp Files (SMB) szolgáltatásával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
 * [Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára a Red Hat Enterprise Linux SAP-alkalmazásokhoz Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 * [SAP HANA az Azure-beli virtuális gépek készenléti csomópontjaival, a Azure NetApp Files a SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
 * [Azure-beli virtuális gépek tárolási konfigurációinak SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)

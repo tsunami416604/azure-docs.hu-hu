@@ -1,20 +1,21 @@
 ---
-title: A Azure Portal használata a blob-vagy üzenetsor-adattárolók eléréséhez – Azure Storage
+title: A blob-vagy üzenetsor-információ elérésének Azure Portal használata
+titleSuffix: Azure Storage
 description: Ha a Azure Portal használatával fér hozzá a blobhoz vagy a várólistához, a portálon az Azure Storage-ba irányuló kérések is elérhetők. Az Azure Storage-ba érkező kérések hitelesítése és engedélyezése az Azure AD-fiók vagy a Storage-fiók elérési kulcsa alapján lehetséges.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3d5d5bd6400fdf09216124665b6b236b4da2583b
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 89816e3640c0afad6290e77faa3904c691df4318
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673289"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892397"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>A blob-vagy üzenetsor-információ elérésének Azure Portal használata
 
@@ -48,11 +49,11 @@ Az **olvasó** szerepkör-hozzárendelés vagy egy másik Azure Resource Manager
 
 A blob vagy üzenetsor adataihoz való hozzáférést támogató beépített szerepkörök a következők:
 
-- [Storage blob-adattulajdonos](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): A Azure Data Lake Storage Gen2 POSIX-hozzáférés-vezérléséhez.
-- [Storage-blob adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Blobok olvasási/írási/törlési engedélyei.
-- [Storage blob-Adatolvasó](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Írásvédett engedélyek a blobokhoz.
-- [Tárolási várólista adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): A várólistákhoz tartozó olvasási/írási/törlési engedélyek.
-- [Tárolási várólista Adatolvasója](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): Írásvédett engedélyek a várólistákhoz.
+- [Storage blob-adattulajdonos](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): a Azure Data Lake Storage Gen2 POSIX hozzáférés-vezérléséhez.
+- [Storage blob adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): olvasási/írási/törlési engedélyek a blobokhoz.
+- [Storage blob Adatolvasó](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): írásvédett engedélyek a blobokhoz.
+- [Tárolási várólista adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): olvasási/írási/törlési engedélyek a várólistákhoz.
+- [Tárolási várólista Adatolvasója](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): írásvédett engedélyek a várólistákhoz.
     
 Az egyéni szerepkörök a beépített szerepkörök által biztosított azonos engedélyek különböző kombinációit támogatják. Az egyéni RBAC-szerepkörök létrehozásával kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure-erőforrásokhoz](../../role-based-access-control/custom-roles.md) és [Az Azure-erőforrások szerepkör-definícióinak megismerése](../../role-based-access-control/role-definitions.md).
 
@@ -95,7 +96,7 @@ Ha a fiók-hozzáférési kulcs használatára szeretne váltani, kattintson a k
 
 Figyelje meg, hogy a listában nem jelennek meg Blobok, ha nem rendelkezik hozzáféréssel a fiók kulcsaihoz. Kattintson a **Váltás az Azure ad felhasználói fiókra** hivatkozásra az Azure ad-fiók ismételt hitelesítésre való használatához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md)
 - [Hozzáférés biztosítása az Azure-tárolók és-várólisták számára a Azure Portal RBAC](storage-auth-aad-rbac-portal.md)

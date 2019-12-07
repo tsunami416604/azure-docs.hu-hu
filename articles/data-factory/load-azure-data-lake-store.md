@@ -1,22 +1,22 @@
 ---
-title: Betöltés az Azure Data Lake Storage Gen1ba Azure Data Factory használatával
+title: Betöltés az Azure Data Lake Storage Gen1ba
 description: Az Adatmásolás Azure Data Factory használatával Azure Data Lake Storage Gen1
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: b8e5841e6869bd6f19b07bf71434de809cdcb74f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: adad770926b23e0529d5a6e08605a338d958ae09
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672718"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892957"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Betöltés az Azure Data Lake Storage Gen1ba Azure Data Factory használatával
 
@@ -63,7 +63,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
    
    ![Data factory kezdőlap](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
 
-   Az adatintegrációs alkalmazás külön lapon történő elindításához válassza a **szerző & figyelése** csempét.
+   Az Adatintegráció alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
 
 ## <a name="load-data-into-data-lake-storage-gen1"></a>Betöltés az Data Lake Storage Gen1ba
 
@@ -92,11 +92,11 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
    
    ![Amazon S3-fiók meghatározása](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
-5. A **bemeneti fájl vagy mappa kiválasztása** lapon keresse meg azt a mappát és fájlt, amelyet át szeretne másolni. Válassza ki a mappát vagy a fájlt, válassza a **kiválasztás**lehetőséget, majd válassza a **Next (tovább**) gombot:
+5. **A bemeneti fájl vagy mappa kiválasztása** lapon tallózzon az átmásolni kívánt mappához és fájlhoz. Válassza ki a mappát vagy a fájlt, válassza a **kiválasztás**lehetőséget, majd válassza a **Next (tovább**) gombot:
 
     ![Bemeneti fájl vagy mappa kiválasztása](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
 
-6. Válassza ki a másolási viselkedést a **fájlok rekurzív** és **bináris másolás** (fájlok másolása) beállításainak kiválasztásával. Válassza a **Next (tovább**) lehetőséget:
+6. Válassza ki a másolási viselkedést a **fájlok rekurzív** és **bináris másolás** (fájlok másolása) beállításainak kiválasztásával. Kattintson a **Tovább** gombra:
 
     ![Kimeneti mappa meghatározása](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
     
@@ -142,7 +142,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
     ![Data Lake Storage Gen1 kimenet ellenőrzése](./media/load-data-into-azure-data-lake-store/adls-copy-result.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megismerheti a Data Lake Storage Gen1 támogatását: 
 

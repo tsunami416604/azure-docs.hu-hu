@@ -1,5 +1,5 @@
 ---
-title: Az adatátalakítás Hadoop Pig-tevékenységgel Azure Data Factory
+title: Adatátalakítás az Hadoop Pig-tevékenységgel
 description: Megtudhatja, hogyan használhatja a Pig-tevékenységet egy Azure-beli adatgyárban a Pig-parancsfájlok igény szerinti vagy saját HDInsight-fürtön való futtatásához.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 85478c128e2a61ed6a3f4da5cacdcb425038c639
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3ee9da39745458fc24190e72bda15acfc23503dc
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683834"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893858"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Az adatátalakítás Hadoop Pig-tevékenységgel Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -56,7 +56,7 @@ Ha még nem ismeri a Azure Data Factoryt, olvassa el a [Azure Data Factory bevez
 ```
 ## <a name="syntax-details"></a>Szintaxis részletei
 
-| Tulajdonság            | Leírás                              | Kötelező |
+| Tulajdonság            | Leírás                              | Szükséges |
 | ------------------- | ---------------------------------------- | -------- |
 | név                | A tevékenység neve                     | Igen      |
 | leírás         | A tevékenység által használt szöveg leírása | Nem       |
@@ -68,7 +68,7 @@ Ha még nem ismeri a Azure Data Factoryt, olvassa el a [Azure Data Factory bevez
 | argumentumok           | Argumentumok tömbjét adja meg egy Hadoop feladatokhoz. Az argumentumok parancssori argumentumként lesznek átadva az egyes feladatokhoz. | Nem       |
 | meghatározza             | Adja meg a paramétereket kulcs/érték párokként a Pig-szkripten belüli hivatkozáshoz. | Nem       |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást: 
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)

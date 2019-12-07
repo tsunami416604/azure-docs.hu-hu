@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: b91e235824085977f1570e664b43d028a905407b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 0023710ff3cfe180b628d1da14b8a3ea9c136026
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869799"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896237"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Hozzáférési Azure Cosmos DB a Virtual Networks (VNet) szolgáltatásból
 
@@ -42,9 +42,9 @@ Ha a Azure Cosmos DB szolgáltatás végpontja engedélyezve van az alhálózato
 
 ### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>További RBAC engedélyek szükségesek az Azure Cosmos-fiókokhoz a VNET szolgáltatás-végpontokkal?
 
-Miután hozzáadta a VNET szolgáltatás-végpontokat egy Azure Cosmos-fiókhoz, a Fiókbeállítások módosításához hozzá kell férnie a `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` művelethez az Azure Cosmos-fiókban konfigurált összes virtuális hálózatok. Erre a műveletre azért van szükség, mert az engedélyezési folyamat érvényesíti az adatbázis és a virtuális hálózati erőforrások megfelelő műveleteit a tulajdonságok kiértékelése előtt.
+Miután hozzáadta a VNet szolgáltatás-végpontokat egy Azure Cosmos-fiókhoz, a Fiókbeállítások módosításához hozzá kell férnie a `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` művelethez az Azure Cosmos-fiókban konfigurált összes virtuális hálózatok. Erre az engedélyre azért van szükség, mert az engedélyezési folyamat érvényesíti az erőforrásokhoz való hozzáférést (például az adatbázist és a virtuális hálózati erőforrásokat) a tulajdonságok kiértékelése előtt.
  
-Az engedélyezés akkor is érvényesíti a műveleteket, ha a felhasználó nem ad meg VNET ACL-eket az Azure CLI használatával. Az Azure Cosmos-fiók vezérlő síkja jelenleg az Azure Cosmos-fiók teljes állapotának beállítását támogatja. A vezérlési sík hívások egyik paramétere `virtualNetworkRules`. Ha a paraméter nincs megadva, az Azure CLI lekéri az adatbázis lekérését, hogy lekérje a `virtualNetworkRules`, és ezt az értéket használja a frissítési hívásban.
+Az engedélyezés ellenőrzi a VNet erőforrás-művelet engedélyét akkor is, ha a felhasználó nem ad meg VNET ACL-eket az Azure CLI használatával. Az Azure Cosmos-fiók vezérlő síkja jelenleg az Azure Cosmos-fiók teljes állapotának beállítását támogatja. A vezérlési sík hívások egyik paramétere `virtualNetworkRules`. Ha ez a paraméter nincs megadva, az Azure CLI lekéri az adatbázis lekérését, hogy lekérje a `virtualNetworkRules`, és ezt az értéket használja a frissítési hívásban.
 
 ### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>Az elérhető virtuális hálózatok hozzáférhetnek az Azure Cosmos-fiókhoz is? 
 Csak a virtuális hálózat és az Azure Cosmos-fiókhoz hozzáadott alhálózatok férnek hozzá. A társ virtuális hálózatok nem férhetnek hozzá a fiókhoz, amíg a virtuális hálózatok alhálózatai hozzá nem kerülnek a fiókhoz.

@@ -1,22 +1,23 @@
 ---
-title: Blobok és várólisták hozzáférésének engedélyezése Azure Active Directory és felügyelt identitásokkal az Azure-erőforrások számára – Azure Storage
-description: Az Azure Blob-és üzenetsor-tárolók támogatása az Azure-erőforrások Azure Active Directory és felügyelt identitásával való hozzáférés engedélyezése az erőforrásokhoz. Az Azure-erőforrások felügyelt identitásait használva engedélyezheti a blobokhoz és várólistákhoz való hozzáférést az Azure-beli virtuális gépeken, a Function apps-ben, a virtuálisgép-méretezési csoportokban és másokon futó alkalmazásokban.
+title: Hozzáférés engedélyezése felügyelt identitással rendelkező adatokhoz
+titleSuffix: Azure Storage
+description: Ismerje meg, hogyan használhatók a felügyelt identitások az Azure-erőforrások számára, hogy engedélyezzék a blob-és üzenetsor-adatok elérését az Azure Virtual Machines, Function apps, virtuálisgép-méretezési csoportok és más alkalmazások esetében.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 11/25/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3bb3b632a184985f9a3a27d0e56e940ec7c30885
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: c0b07cc001f65ff369f87954779634b8b49ba4ec
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806583"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892051"
 ---
-# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Blobok és várólisták hozzáférésének engedélyezése Azure Active Directory és felügyelt identitásokkal az Azure-erőforrásokhoz
+# <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával
 
 Az Azure Blob és a üzenetsor-tároló támogatja a Azure Active Directory (Azure AD) hitelesítést az [Azure-erőforrások felügyelt identitásával](../../active-directory/managed-identities-azure-resources/overview.md). Az Azure-erőforrások felügyelt identitásai engedélyezhetik a blob-és üzenetsor-adatokhoz való hozzáférést az Azure-beli virtuális gépeken (VM-ben) futó alkalmazások Azure AD-beli hitelesítő adataival, a Function apps, a virtuálisgép-méretezési csoportokkal és más szolgáltatásokkal. Ha felügyelt identitásokat használ az Azure-erőforrásokhoz az Azure AD-hitelesítéssel együtt, elkerülheti a hitelesítő adatok tárolását a felhőben futó alkalmazásaival.  
 

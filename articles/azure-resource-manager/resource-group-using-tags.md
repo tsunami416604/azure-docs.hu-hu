@@ -2,13 +2,13 @@
 title: Erőforrások címkézése a logikai szervezet számára
 description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és felügyelethez való rendszerezéséhez.
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: c0a34204b5eb7080c6444e69def9d82d0193783b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 12/05/2019
+ms.openlocfilehash: a0ba5ba89b966de4aa1d1394f7d90c99f8352115
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850601"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893025"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
@@ -62,34 +62,34 @@ Dept                           IT
 Environment                    Test
 ```
 
-*Megadott erőforrás-azonosítóval rendelkező erőforrás* meglévő címkéinek megtekintéséhez használja a következőt:
-
-```azurepowershell-interactive
-(Get-AzResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
-```
-
-Vagy *megadott névvel és erőforráscsoporttal rendelkező erőforrás* meglévő címkéinek megtekintéséhez használja a következőt:
+Ha meg szeretné tekinteni egy *adott névvel és erőforráscsoporthoz rendelkező erőforrás*meglévő címkéit, használja a következőt:
 
 ```azurepowershell-interactive
 (Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
 ```
 
-*Adott címkével rendelkező erőforráscsoportok* lekéréséhez használja a következőt:
+Ha pedig egy erőforrás erőforrás-azonosítója van, átadhatja ezt az erőforrás-azonosítót a címkék beszerzéséhez.
 
 ```azurepowershell-interactive
-(Get-AzResourceGroup -Tag @{ Dept="Finance" }).ResourceGroupName
+(Get-AzResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
 ```
 
-*Adott címkével rendelkező erőforrások* lekéréséhez használja a következőt:
+A *megadott címke névvel és értékkel rendelkező erőforráscsoportok*lekéréséhez használja a következőt:
 
 ```azurepowershell-interactive
-(Get-AzResource -Tag @{ Dept="Finance"}).Name
+(Get-AzResourceGroup -Tag @{ "Dept"="Finance" }).ResourceGroupName
+```
+
+A *megadott címke névvel és értékkel rendelkező erőforrások*lekéréséhez használja a következőt:
+
+```azurepowershell-interactive
+(Get-AzResource -Tag @{ "Dept"="Finance"}).Name
 ```
 
 *Egy adott címke nevével rendelkező erőforrások*lekéréséhez használja a következőt:
 
 ```azurepowershell-interactive
-(Get-AzResource -TagName Dept).Name
+(Get-AzResource -TagName "Dept").Name
 ```
 
 Minden alkalommal, amikor címkével lát el egy erőforrást vagy erőforráscsoportot, felülírja a hozzá tartozó korábbi címkéket. Ezért különböző megközelítéseket kell alkalmaznia annak függvényében, hogy az adott erőforrás vagy erőforráscsoport rendelkezik-e címkével.
@@ -97,7 +97,7 @@ Minden alkalommal, amikor címkével lát el egy erőforrást vagy erőforráscs
 Ha *meglévő címkék nélküli erőforráscsoporthoz* szeretne címkéket adni, használja a következőt:
 
 ```azurepowershell-interactive
-Set-AzResourceGroup -Name examplegroup -Tag @{ Dept="IT"; Environment="Test" }
+Set-AzResourceGroup -Name examplegroup -Tag @{ "Dept"="IT"; "Environment"="Test" }
 ```
 
 Ha *meglévő címkékkel rendelkező erőforráscsoporthoz* szeretne címkéket adni, kérje le a meglévő címkéket, adja hozzá az új címkét, és alkalmazza ismét a címkéket:
@@ -111,32 +111,36 @@ Set-AzResourceGroup -Tag $tags -Name examplegroup
 Ha *meglévő címkék nélküli erőforráshoz* szeretne címkéket adni, használja a következőt:
 
 ```azurepowershell-interactive
-$r = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
-Set-AzResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceId $r.ResourceId -Force
+$resource = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
+Set-AzResource -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $resource.ResourceId -Force
+```
+
+Egy erőforráscsoporthoz több azonos nevű erőforrás is tartozhat. Ebben az esetben beállíthatja az egyes erőforrásokat a következő parancsokkal:
+
+```azurepowershell-interactive
+$resource = Get-AzResource -ResourceName sqlDatabase1 -ResourceGroupName examplegroup
+$resource | ForEach-Object { Set-AzResource -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $_.ResourceId -Force }
 ```
 
 Ha *meglévő címkékkel rendelkező erőforráshoz* szeretne címkéket adni, használja a következőt:
 
 ```azurepowershell-interactive
-$r = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
-$r.Tags.Add("Status", "Approved")
-Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
+$resource = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
+$resource.Tags.Add("Status", "Approved")
+Set-AzResource -Tag $resource.Tags -ResourceId $resource.ResourceId -Force
 ```
 
 Ha az erőforráscsoport összes címkéjét az erőforrásaira szeretné alkalmazni, és *nem szeretné megtartani a meglévő címkéket az erőforrásokon*, használja a következő parancsfájlt:
 
 ```azurepowershell-interactive
-$groups = Get-AzResourceGroup
-foreach ($g in $groups)
-{
-    Get-AzResource -ResourceGroupName $g.ResourceGroupName | ForEach-Object {Set-AzResource -ResourceId $_.ResourceId -Tag $g.Tags -Force }
-}
+$group = Get-AzResourceGroup -Name examplegroup
+Get-AzResource -ResourceGroupName $group.ResourceGroupName | ForEach-Object {Set-AzResource -ResourceId $_.ResourceId -Tag $group.Tags -Force }
 ```
 
 Ha az erőforráscsoport összes címkéjét az erőforrásaira kívánja alkalmazni, és a *meglévő címkéket a nem duplikált erőforrásokon szeretné megtartani*, használja a következő parancsfájlt:
 
 ```azurepowershell-interactive
-$group = Get-AzResourceGroup "examplegroup"
+$group = Get-AzResourceGroup -Name examplegroup
 if ($null -ne $group.Tags) {
     $resources = Get-AzResource -ResourceGroupName $group.ResourceGroupName
     foreach ($r in $resources)

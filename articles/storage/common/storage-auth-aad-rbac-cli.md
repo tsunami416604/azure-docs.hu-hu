@@ -1,22 +1,23 @@
 ---
-title: Azure AD hozzáférési jogosultságok kezelése az Azure CLI-vel a blob-és üzenetsor-kezeléshez a RBAC-Azure Storage használatával
-description: Használja az Azure CLI-t a tárolók és a várólisták hozzáférésének hozzárendeléséhez szerepköralapú hozzáférés-vezérléssel (RBAC). Az Azure Storage támogatja a beépített és az egyéni RBAC-szerepköröket az Azure AD-n keresztül történő hitelesítéshez.
+title: Az Azure CLI használata RBAC-szerepkör hozzárendeléséhez adathozzáféréshez
+titleSuffix: Azure Storage
+description: Megtudhatja, hogyan rendelhet hozzá engedélyeket egy Azure Active Directory rendszerbiztonsági tag számára az Azure CLI használatával szerepköralapú hozzáférés-vezérléssel (RBAC). Az Azure Storage támogatja a beépített és az egyéni RBAC-szerepköröket az Azure AD-n keresztül történő hitelesítéshez.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/25/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 606dd88fbad8cbd5c7e24d47dcf71199a25b49a2
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: abe35f3193e2d7ff9a949ca7cd330cb58da2b78c
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673209"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891968"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>Hozzáférés biztosítása az Azure Blob-és üzenetsor-adataihoz az Azure CLI-vel való RBAC használatával
+# <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Az Azure CLI használata RBAC-szerepkör hozzárendeléséhez a blob-és üzenetsor-adathoz való hozzáféréshez
 
 Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage olyan beépített RBAC-szerepköröket határoz meg, amelyek a blob-vagy üzenetsor-adateléréshez használt engedélyek közös készleteit foglalják magukban.
 
@@ -28,7 +29,7 @@ Ez a cikk bemutatja, hogyan használhatja az Azure CLI-t a beépített RBAC-szer
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Erőforrás hatókörének meghatározása 
+## <a name="determine-resource-scope"></a>Erőforrás hatókörének meghatározása
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
@@ -135,7 +136,7 @@ az role assignment create \
     --scope "/subscriptions/<subscription>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
 - [Hozzáférés biztosítása az Azure Blob-és üzenetsor-adataihoz a RBAC használatával Azure PowerShell](storage-auth-aad-rbac-powershell.md)

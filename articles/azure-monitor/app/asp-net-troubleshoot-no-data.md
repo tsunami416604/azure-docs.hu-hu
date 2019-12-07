@@ -7,14 +7,15 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: 857188ebb5ddc3c24f6a225819c47fc1643417e6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a1e299f195a148ebd1bdbda91e5a56e297f34d31
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887520"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889175"
 ---
-# <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
+# <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>A .NET/.NET Core rendszerhez nem szükséges adatApplication Insightsek hibaelhárítása
+
 ## <a name="some-of-my-telemetry-is-missing"></a>Néhány telemetria hiányzik
 *A Application Insightsban csak az alkalmazás által generált események töredékét látom.*
 
@@ -58,7 +59,7 @@ Valószínű okok:
 * Probléma merült fel az Azure-fiókkal kapcsolatban;
 * Csak [olvasási jogosultsággal rendelkezik ahhoz az előfizetéshez vagy csoporthoz, amelyhez az új erőforrást próbálta létrehozni](../../azure-monitor/app/resources-roles-access-control.md).
 
-Javítsa ki
+Javítás:
 
 * Győződjön meg arról, hogy a megfelelő Azure-fiókhoz megadott bejelentkezési hitelesítő adatokat adott meg.
 * Győződjön meg arról, hogy a böngészőben van hozzáférése a [Azure Portalhoz](https://portal.azure.com). Nyissa meg a beállításokat, és ellenőrizze, hogy van-e korlátozás.
@@ -83,7 +84,7 @@ Valószínű okok:
 * A fejlesztői elemzési eszközök le vannak tiltva a Visual Studióban.
 * A Visual Studio régebbi, mint a 2013-es frissítés.
 
-Javítsa ki
+Javítás:
 
 * Győződjön meg arról, hogy a Visual Studio verziója 2013 3. vagy újabb verziójú.
 * Válassza az **eszközök**, **bővítmények és frissítések** lehetőséget, és győződjön meg arról, hogy a **fejlesztői elemzési eszközök** telepítve és engedélyezve vannak. Ha igen, kattintson a **frissítések** lehetőségre, és ellenőrizze, hogy van-e elérhető frissítés.
@@ -111,7 +112,7 @@ Valószínű okok:
 
 A ApplicationInsights. config fájlban található kialakítási kulcs vezérli, hogy a telemetria mikor legyen elküldve. A Project fájl egyik sora határozza meg, hogy melyik erőforrást kell megnyitni, amikor a parancsot a Visual Studióban használja.
 
-Javítsa ki
+Javítás:
 
 * A Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a Application Insights lehetőséget, majd konfigurálja a Application Insights. A párbeszédpanelen dönthet úgy, hogy telemetria küld egy meglévő erőforrásnak, vagy újat hoz létre. Vagy
 * Nyissa meg közvetlenül az erőforrást. Jelentkezzen be [a Azure Portalba](https://portal.azure.com), kattintson a bal oldali navigációs sávon a Application Insights elemre, majd válassza ki az alkalmazást.
@@ -212,7 +213,7 @@ Az alábbi útmutatást követve rögzítheti a keretrendszer hibaelhárítási 
 
 1. Telepítse a [Microsoft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) csomagot a NuGet webhelyről. A telepített verziónak meg kell egyeznie a `Microsoft.ApplicationInsights` aktuálisan telepített verziójával
 
-A Microsoft. ApplicationInsights. AspNetCore legújabb verziója a 2.7.1-es verzió, amely a Microsoft. ApplicationInsights 2,10-es verziójára hivatkozik. Ezért a Microsoft. AspNet. ApplicationInsights. HostingStartup telepítendő verziójának 2.10.0 kell lennie
+A Microsoft. ApplicationInsights. AspNetCore legújabb verziója a 2.8.2, és a Microsoft. ApplicationInsights 2.11.2 verziójára hivatkozik. Ezért a Microsoft. AspNet. ApplicationInsights. HostingStartup telepítendő verziójának 2.11.2 kell lennie
 
 2. Módosítsa `ConfigureServices` metódust a `Startup.cs` osztályban.:
 
@@ -247,7 +248,7 @@ Ezeket a paramétereket igény szerint módosíthatja:
 - **NoGui**. Állítsa be ezt a paramétert a naplók a grafikus felhasználói felület nélküli összegyűjtéséhez.
 
 
-További információ:
+További információk:
 - [Teljesítmény-nyomkövetés rögzítése a perfview eszköz](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
 - [Application Insights eseményforrás](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 

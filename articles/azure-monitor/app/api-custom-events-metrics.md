@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 5f138314fd536d0264f8d40e1ac78da954c19e74
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: afe2ac60d7b945dd1bb3b8841ae0a7605865f29f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030698"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893382"
 ---
-# <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és mérőszámokhoz
+# <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikákhoz
 
 Szúrjon be néhány sornyi kódot az alkalmazásban, hogy megtudja, mit csinálnak a felhasználók, vagy segíthetnek a problémák diagnosztizálásában. Telemetria az eszköz-és asztali alkalmazásokból, a webes ügyfelekből és a webkiszolgálókról is küldhet. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Core telemetria API használatával egyéni eseményeket és mérőszámokat küldhet, valamint a szabványos telemetria saját verzióit. Ez az API ugyanazt az API-t használja, mint a standard Application Insights adatgyűjtők.
 
@@ -30,20 +30,20 @@ Az alapszintű API minden platformon egységes, néhány változatban (például
 | [`TrackMetric`](#trackmetric) |A teljesítmény mérése, például a várólista hossza nem adott eseményekhez kapcsolódik. |
 | [`TrackException`](#trackexception) |Diagnosztikai kivételek naplózása. Nyomon követheti a más eseményekhez kapcsolódó eseményeket, és megvizsgálhatja a verem nyomkövetéseit. |
 | [`TrackRequest`](#trackrequest) |A kiszolgálói kérelmek gyakoriságának és időtartamának naplózása a teljesítmény elemzéséhez. |
-| [`TrackTrace`](#tracktrace) |Diagnosztikai naplók üzenetei. A harmadik féltől származó naplókat is rögzítheti. |
+| [`TrackTrace`](#tracktrace) |Erőforrás-diagnosztikai naplók üzenetei. A harmadik féltől származó naplókat is rögzítheti. |
 | [`TrackDependency`](#trackdependency) |A külső összetevőkre irányuló hívások időtartamának és gyakoriságának naplózása, amelytől az alkalmazás függ. |
 
 A telemetria-hívások többségéhez [tulajdonságokat és mérőszámokat is csatolhat](#properties) .
 
-## <a name="prep"></a>Kezdés előtt
+## <a name="prep"></a>Előkészületek
 
 Ha még nincs hivatkozása Application Insights SDK-ra:
 
 * Adja hozzá a Application Insights SDK-t a projekthez:
 
-  * [ASP.NET project](../../azure-monitor/app/asp-net.md)
+  * [ASP.NET projekt](../../azure-monitor/app/asp-net.md)
   * [ASP.NET Core projekt](../../azure-monitor/app/asp-net-core.md)
-  * [Java project](../../azure-monitor/app/java-get-started.md)
+  * [Java-projekt](../../azure-monitor/app/java-get-started.md)
   * [Node. js-projekt](../../azure-monitor/app/nodejs.md)
   * [JavaScript az egyes weblapokon](../../azure-monitor/app/javascript.md) 
 * Az eszköz vagy a webkiszolgáló kódjában adja meg a következőt:
@@ -522,7 +522,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-A fontos stack-információk többsége már különálló változókba van kiosztva, de a `details` struktúrát lehívhatja, hogy még több legyen. Mivel ez a struktúra dinamikus, az eredményt a várt típusra kell átadnia. Például:
+A fontos stack-információk többsége már különálló változókba van kiosztva, de a `details` struktúrát lehívhatja, hogy még több legyen. Mivel ez a struktúra dinamikus, az eredményt a várt típusra kell átadnia. Példa:
 
 ```kusto
 exceptions
@@ -585,7 +585,7 @@ Megkeresheti az üzenet tartalmát, de (a tulajdonság értékeitől eltérően)
 A `message` méretkorlát sokkal nagyobb, mint a tulajdonságok korlátja.
 A TrackTrace előnye, hogy viszonylag hosszú adatmennyiséget helyezhet el az üzenetben. Például elvégezheti az adatposták küldését.  
 
-Emellett súlyossági szintet is hozzáadhat az üzenethez. És hasonlóan más telemetria is, hozzáadhat tulajdonságokat is a különböző nyomkövetési csoportok szűréséhez vagy kereséséhez. Például:
+Emellett súlyossági szintet is hozzáadhat az üzenethez. És hasonlóan más telemetria is, hozzáadhat tulajdonságokat is a különböző nyomkövetési csoportok szűréséhez vagy kereséséhez. Példa:
 
 *C#*
 
@@ -1017,7 +1017,7 @@ A [szűrés](../../azure-monitor/app/api-filtering-sampling.md#filtering) módos
 
 A [mintavétel](../../azure-monitor/app/api-filtering-sampling.md) egy csomagolt megoldás, amely csökkenti az alkalmazásból a portálra továbbított adatok mennyiségét. Ez nem befolyásolja a megjelenített metrikákat. Ez azonban nem befolyásolja a problémák diagnosztizálását a kapcsolódó elemek, például a kivételek, a kérelmek és az oldalletöltések közötti navigálás során.
 
-[Részletek](../../azure-monitor/app/api-filtering-sampling.md).
+[További információk](../../azure-monitor/app/api-filtering-sampling.md).
 
 ## <a name="disabling-telemetry"></a>Telemetria letiltása
 
@@ -1148,7 +1148,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-A TelemetryClient rendelkezik egy környezeti tulajdonsággal, amely az összes telemetria-adattal együtt elküldett értékeket tartalmazza. Ezeket általában a standard telemetria modulok határozzák meg, de saját maguk is megadhatók. Például:
+A TelemetryClient rendelkezik egy környezeti tulajdonsággal, amely az összes telemetria-adattal együtt elküldett értékeket tartalmazza. Ezeket általában a standard telemetria modulok határozzák meg, de saját maguk is megadhatók. Példa:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1168,7 +1168,7 @@ Ha saját maga állítja be ezeket az értékeket, érdemes lehet eltávolítani
 * **Munkamenet**: a felhasználó munkamenete. Az azonosító egy generált értékre van állítva, amely akkor változik, ha a felhasználó egy ideig nem aktív.
 * **Felhasználó**: felhasználói adatok.
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Korlátozások
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 

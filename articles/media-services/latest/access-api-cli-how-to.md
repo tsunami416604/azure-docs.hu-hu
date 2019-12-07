@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services API - hozzáférés az Azure CLI |} A Microsoft Docs
-description: Kövesse az ebben az útmutatóban az Azure Media Services API eléréséhez.
+title: A Azure Media Services API elérése – Azure CLI | Microsoft Docs
+description: A Azure Media Services API eléréséhez kövesse ennek a cikknek a lépéseit.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,54 +12,54 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 5dbcf446a609adcd0f1902fcca2ac19ad87f17b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d66b3e1b6ed2c8eef9f5cd21c0657648ad550ebe
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779675"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896159"
 ---
-# <a name="access-azure-media-services-api-with-the-azure-cli"></a>Hozzáférés az Azure Media Services API-t az Azure CLI-vel
+# <a name="access-azure-media-services-api-with-the-azure-cli"></a>Hozzáférés Azure Media Services API-hoz az Azure CLI-vel
  
-Az Azure AD egyszerű szolgáltatásnév hitelesítése csatlakozni az Azure Media Services API használatához az alkalmazása szükséges, az Azure AD-token a következő paraméterekkel rendelkező kérelem:
+Ha az Azure AD szolgáltatás egyszerű hitelesítését szeretné használni a Azure Media Services API-hoz való kapcsolódáshoz, az alkalmazásnak olyan Azure AD-jogkivonatot kell igényelnie, amely a következő paraméterekkel rendelkezik:
 
-* Az Azure AD-bérlő végpont
-* A Media Services-erőforrás-URI
-* Erőforrás URI-t a Media Services – REST
-* Az Azure AD-alkalmazás értékeire: az ügyfél-azonosító és titkos Ügyfélkód
+* Azure AD-bérlői végpont
+* Erőforrás-URI Media Services
+* Erőforrás URI-ja REST Media Services
+* Azure AD-alkalmazás értékei: az ügyfél-azonosító és az ügyfél titka
 
-Részletes ismertetése: [fér hozzá a Media Services v3 API-k](media-services-apis-overview.md#accessing-the-azure-media-services-api).
+Részletes magyarázat: [Media Services V3 API](media-services-apis-overview.md#accessing-the-azure-media-services-api)-k elérése.
 
-Ez a cikk bemutatja, hogyan hozzon létre egy Azure AD-alkalmazás és szolgáltatás egyszerű, és az Azure Media Services-erőforrások eléréséhez szükséges értékek beolvasása az Azure CLI használatával.
+Ez a cikk bemutatja, hogyan használható az Azure CLI egy Azure AD-alkalmazás és-szolgáltatásnév létrehozásához, valamint a Azure Media Services erőforrások eléréséhez szükséges értékek beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-[A Media Services-fiók létrehozása](create-account-cli-how-to.md).
+[Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
 
-Ellenőrizze, hogy ne felejtse el az értékeket, amelyeket meg az erőforráscsoport-nevet és a Media Services-fiók neve.
+Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
  
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-- [Scale a Media szolgáltatás számára fenntartott egység – CLI](media-reserved-units-cli-how-to.md)
-- [Egy Media Services-fiók létrehozása – CLI](create-account-cli-how-to.md) 
-- [Alaphelyzetbe fiókhitelesítő adatai – CLI](cli-reset-account-credentials.md)
-- [Eszközök – parancssori felület létrehozása](cli-create-asset.md)
-- [CLI - fájl feltöltése](cli-upload-file-asset.md)
-- [Átalakítások – parancssori felület létrehozása](cli-create-transform.md)
-- [Az egyéni átalakítási – parancssori felület kódolása](custom-preset-cli-howto.md)
-- [Hozzon létre feladatokat – CLI](cli-create-jobs.md)
-- [EventGrid - létrehozása a parancssori felület](job-state-events-cli-how-to.md)
-- [Teszi közzé az objektumot – CLI](cli-publish-asset.md)
-- [Szűrő – CLI](filters-dynamic-manifest-cli-howto.md)
+- [A Media szolgáltatás számára fenntartott egységek méretezése – parancssori felület](media-reserved-units-cli-how-to.md)
+- [Media Services-fiók létrehozása – parancssori felület](create-account-cli-how-to.md) 
+- [Fiók hitelesítő adatainak alaphelyzetbe állítása – parancssori felület](cli-reset-account-credentials.md)
+- [Eszközök létrehozása – parancssori felület](cli-create-asset.md)
+- [Fájl feltöltése – parancssori felület](cli-upload-file-asset.md)
+- [Átalakítások létrehozása – parancssori felület](cli-create-transform.md)
+- [Kódolás egyéni átalakítással – parancssori felület](custom-preset-cli-howto.md)
+- [Feladatok létrehozása – parancssori felület](cli-create-jobs.md)
+- [EventGrid létrehozása – parancssori felület](job-state-events-cli-how-to.md)
+- [Eszköz közzététele – parancssori felület](cli-publish-asset.md)
+- [Szűrő – parancssori felület](filters-dynamic-manifest-cli-howto.md)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A folyamatos átviteli végponton, ahonnan tartalomstreameléshez rendelkezik a futó állapotot. A következő CLI-parancs elindítja az alapértelmezett Streaming Endpoint:
+A streaming végpontot, amelyről a tartalmat továbbítani kívánja, futó állapotban kell lennie. A következő CLI-parancs elindítja az alapértelmezett folyamatos átviteli végpontot:
 
 `az ams streaming-endpoint start -n default -a <amsaccount> -g <amsResourceGroup>`
 

@@ -3,12 +3,12 @@ title: A MARS-ügynök támogatási mátrixa
 description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt futtató gépek biztonsági mentésének Azure Backup támogatását foglalja össze.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 43f11bb73578187bd851f58cb6311c95b8648d08
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 26f3dde0bb20443753e2b443ffc00ee23c9124c4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195004"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893977"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -44,8 +44,8 @@ Ha a MARS-ügynököt használja az adatok biztonsági mentésére, az ügynök 
 **Gyorsítótár** | **Részletek**
 --- | ---
 Méret |  A gyorsítótár mappában lévő szabad területnek legalább 5 – 10%-ának kell lennie a biztonsági mentési adatai teljes méretének.
-Hely | A gyorsítótár mappájának helyileg kell lennie a biztonsági mentés alatt álló gépen, és online állapotban kell lennie. A gyorsítótár mappája nem lehet hálózati megosztáson, cserélhető adathordozón vagy offline köteten.
-Mappa | A gyorsítótár mappájának titkosítása deduplikált köteten, vagy egy tömörített mappában, amely ritka, vagy újraelemzési ponttal rendelkezik.
+Földrajzi egység | A gyorsítótár mappájának helyileg kell lennie a biztonsági mentés alatt álló gépen, és online állapotban kell lennie. A gyorsítótár mappája nem lehet hálózati megosztáson, cserélhető adathordozón vagy offline köteten.
+Mappa | A gyorsítótár mappája nem titkosítható deduplikált köteten, vagy egy tömörített mappában, amely ritka, vagy újraelemzési ponttal rendelkezik.
 Hely változásai | A gyorsítótár helyét úgy módosíthatja, hogy leállítja a biztonsági mentési motort (`net stop bengine`), és átmásolja a gyorsítótár-mappát egy új meghajtóra. (Győződjön meg arról, hogy az új meghajtó elegendő lemezterülettel rendelkezik.) Ezután frissítsen két beállításjegyzékbeli bejegyzést a **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/ScratchLocation** és **config/CloudBackupProvider/ScratchLocation**) elemre az új helyre, és indítsa újra a motort.
 
 ## <a name="networking-and-access-support"></a>Hálózatkezelés és hozzáférés támogatása
@@ -57,8 +57,8 @@ A MARS-ügynöknek hozzá kell férnie az alábbi URL-címekhez:
 - <http://www.msftncsi.com/ncsi.txt>
 - *.Microsoft.com
 - *.WindowsAzure.com
-- *.MicrosoftOnline.com
-- *.Windows.net
+- *. MicrosoftOnline.com
+- *. Windows.net
 
 És az alábbi IP-címekre:
 
@@ -92,11 +92,11 @@ Windows 10 (Enterprise, Pro, Home) | Igen | Nem |  A szoftver/modul követelmén
 Windows 8,1 (Enterprise, Pro)| Igen |Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
 Windows 8 (Enterprise, Pro) | Igen | Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
 Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Igen | Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
-Windows Server 2016 (Standard, Datacenter, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
-Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
-Windows Server 2012 (Standard, Datacenter, Foundation) | Igen | Igen |-.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe)
-Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Igen | Igen | -.NET 3,5, .net 4,5 <br> – Windows PowerShell <br> -Kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe)
-Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Igen | Nem | -.NET 3,5, .net 4,5 <br> – Windows PowerShell <br> -Kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe) <br> – Virtual Server 2005 Base + KB KB948515
+Windows Server 2016 (standard, Datacenter, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2012 R2 (standard, Datacenter, Foundation, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2012 (standard, Datacenter, Foundation) | Igen | Igen |-.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe)
+Windows Server 2008 R2 (standard, Enterprise, Datacenter, Foundation) | Igen | Igen | -.NET 3,5, .net 4,5 <br> – Windows PowerShell <br> -Kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe)
+Windows Server 2008 SP2 (standard, Datacenter, Foundation) | Igen | Nem | -.NET 3,5, .net 4,5 <br> – Windows PowerShell <br> -Kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe) <br> – Virtual Server 2005 Base + KB KB948515
 Windows Storage Server 2016/2012 R2/2012 (standard, munkacsoport) | Igen | Nem | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2019 (standard, Datacenter, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
 
@@ -112,7 +112,7 @@ Windows Server 2012 vagy újabb |54 400 GB
 Windows Server 2008 R2 SP1 |1 700 GB
 Windows Server 2008 SP2| 1 700 GB
 Windows 8 vagy újabb| 54 400 GB
-Windows 7| 1 700 GB
+Windows 7 rendszeren| 1 700 GB
 
 ## <a name="supported-file-types-for-backup"></a>A biztonsági mentéshez támogatott fájltípusok
 
@@ -125,7 +125,7 @@ Tömörített és ritka |Támogatott.
 Rögzített hivatkozások| Nem támogatott. Kimarad.
 Újraelemzési pont| Nem támogatott. Kimarad.
 Titkosított és ritka |Nem támogatott. Kimarad.
-Tömörített Stream| Nem támogatott. Kimarad.
+Tömörített adatfolyam| Nem támogatott. Kimarad.
 Ritka adatfolyam| Nem támogatott. Kimarad.
 OneDrive (a szinkronizált fájlok ritka adatfolyamok)| Nem támogatott.
 

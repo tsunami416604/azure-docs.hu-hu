@@ -1,6 +1,6 @@
 ---
 title: Bitráta-létrák automatikus létrehozása a Media Encoder Standard használatával – Azure | Microsoft Docs
-description: Ez a témakör bemutatja, hogyan használható a Media Encoder Standard (MES) a bitráta-létrák automatikus létrehozásához a bemeneti felbontás és a bitráta alapján. A bemeneti felbontás és a bitráta soha nem fog meghaladni. Ha például a bemenet 720p a 3Mbps-on, a kimenet 720p marad a legjobb esetben, és a 3Mbps alacsonyabb díjszabással kezdődik.
+description: Ez a témakör bemutatja, hogyan használható a Media Encoder Standard (MES) a bitráta-létrák automatikus létrehozásához a bemeneti felbontás és a bitráta alapján.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 14575e0c95acf1345fc3358b323083d86d8eedee
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543547"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896021"
 ---
 #  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Bitráta-létrák automatikus létrehozása a Media Encoder Standard használatával  
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk bemutatja, hogyan használható a Media Encoder Standard (MES) a bitráta-létrák (bitráta-feloldási párok) automatikus létrehozásához a bemeneti felbontás és a bitráta alapján. Az automatikusan létrehozott beállításkészlet soha nem lépi túl a bemeneti felbontást és a bitrátát. Például ha a bemeneti 3 Mbps sebességnél 720p, kimeneti 720p legjobb marad, és elkezdi alacsonyabb, mint 3 MB/s díjakat.
+Ez a cikk bemutatja, hogyan használható a Media Encoder Standard (MES) a bitráta-létrák (bitráta-feloldási párok) automatikus létrehozásához a bemeneti felbontás és a bitráta alapján. Az automatikusan létrehozott beállításkészlet soha nem lépi túl a bemeneti felbontást és a bitrátát. Ha például a bemenet 720p 3 Mbps-nél, a kimenet 720p marad a legjobb esetben, és 3 Mbps-nál kisebb arányban fog kezdődni.
 
 ### <a name="encoding-for-streaming-only"></a>Csak adatfolyam kódolása
 
@@ -172,7 +172,7 @@ namespace AdaptiveStreamingMESPresest
 Ez a szakasz három példát mutat be a MES által előállított kimeneti rétegekre az **adaptív streaming** -beállításkészlet kódolása miatt. 
 
 ### <a name="example-1"></a>1\. példa
-Forrás magasság "1080" és "29.970" képkockasebesség 6 videó rétegek hoz létre:
+A "1080" magasságú és "29,970" framerátát tartalmazó forrás 6 videó réteget hoz létre:
 
 |Réteg|Magasság|Szélesség|Bitráta (Kbit/s)|
 |---|---|---|---|
@@ -184,7 +184,7 @@ Forrás magasság "1080" és "29.970" képkockasebesség 6 videó rétegek hoz l
 |6|180|320|380|
 
 ### <a name="example-2"></a>2\. példa
-Forrás magasság "720" és "23.970" képkockasebesség 5 videó rétegek hoz létre:
+A "720" magasságú és "23,970" framerátát tartalmazó forrás 5 videó réteget állít elő:
 
 |Réteg|Magasság|Szélesség|Bitráta (Kbit/s)|
 |---|---|---|---|
@@ -195,7 +195,7 @@ Forrás magasság "720" és "23.970" képkockasebesség 5 videó rétegek hoz l�
 |5|180|320|320|
 
 ### <a name="example-3"></a>3\. példa
-Forrás magasság "360" és "29.970" képkockasebesség 3 videó rétegek hoz létre:
+A "360" magasságú és "29,970" framerátát tartalmazó forrás 3 videó réteget hoz létre:
 
 |Réteg|Magasság|Szélesség|Bitráta (Kbit/s)|
 |---|---|---|---|

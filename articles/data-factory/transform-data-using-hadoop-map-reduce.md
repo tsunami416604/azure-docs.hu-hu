@@ -1,5 +1,5 @@
 ---
-title: Az adatátalakítás a Hadoop MapReduce-tevékenységgel Azure Data Factory
+title: Adatátalakítás az Hadoop MapReduce-tevékenységgel
 description: Ismerje meg, hogyan dolgozhat fel az adatok egy Azure HDInsight-fürtön futó Hadoop MapReduce-programok Azure-beli adatgyárból való futtatásával.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 49e00d9a47f92fb30a29e7051cba35f54bde3700
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8f66062f5de514390a8e4a3fdea85dd645ff0da1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683850"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893807"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Az adatátalakítás a Hadoop MapReduce-tevékenységgel Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -60,7 +60,7 @@ A Pig/kaptár-parancsfájlok HDInsight-fürtön való futtatásával kapcsolatos
 
 ## <a name="syntax-details"></a>Szintaxis részletei
 
-| Tulajdonság          | Leírás                              | Kötelező |
+| Tulajdonság          | Leírás                              | Szükséges |
 | ----------------- | ---------------------------------------- | -------- |
 | név              | A tevékenység neve                     | Igen      |
 | leírás       | A tevékenység által használt szöveg leírása | Nem       |
@@ -112,7 +112,7 @@ A HDInsight MapReduce tevékenység használatával bármilyen MapReduce jar-fá
 ```
 A MapReduce program argumentumai a **argumentumok** szakaszban adhatók meg. Futásidőben a MapReduce-keretrendszer néhány további argumentuma (például: MapReduce. job. Tags) jelenik meg. Ha meg szeretné különböztetni az argumentumokat a MapReduce argumentumokkal, érdemes lehet mindkét beállítást és értéket argumentumként használni az alábbi példában látható módon (-s,--bemenet,--output stb.).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást:
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)

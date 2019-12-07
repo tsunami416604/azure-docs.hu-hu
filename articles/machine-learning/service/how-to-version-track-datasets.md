@@ -11,12 +11,12 @@ author: sihhu
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: 426a93473b969c166a847374d1b4c039055e92d5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d22bfb0743bc18102e665a63f7e36ed75dd39cab
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716096"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900315"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Adatkészletek verziója és nyomon követése kísérletekben
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -146,7 +146,24 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 ## <a name="track-datasets-in-experiments"></a>Adathalmazok nyomon követése kísérletekben
 
-Minden Machine Learning kísérletnél könnyedén nyomon követheti a regisztrált modell `Run` objektumában bemenetként használt adatkészleteket.
+Minden Machine Learning kísérletnél könnyedén nyomon követheti a kísérlet `Run` objektumon keresztül bemenetként használt adatkészleteket.
+
+A következő kód a [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) metódus használatával követi nyomon, hogy mely bemeneti adatkészletek lettek használva a kísérlet futtatásával:
+
+```Python
+# get input datasets
+inputs = run.get_details()['inputDatasets']
+input_dataset = inputs[0]['dataset']
+
+# list the files referenced by input_dataset
+input_dataset.to_path()
+```
+
+A kísérletek `input_datasets` a [Azure Machine learning Studio](https://ml.azure.com/)használatával is megtalálhatja. 
+
+Az alábbi képen látható, hogy hol található egy kísérlet bemeneti adatkészlete Azure Machine Learning Studioon. Ebben a példában lépjen a **kísérletek** ablaktáblára, és nyissa meg a kísérlet adott futtatásához tartozó **tulajdonságok** lapot, `keras-mnist`.
+
+![Bemeneti adatkészletek](media/how-to-version-datasets/input-datasets.png)
 
 A következő kód használatával regisztrálhat modelleket adatkészletekkel:
 
@@ -156,26 +173,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-A regisztráció után megtekintheti az adatkészletben regisztrált modellek listáját a Python vagy a [Azure Machine learning Studio](https://ml.azure.com/)használatával.
-
-A következő kód a [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) metódus használatával követi nyomon, hogy mely bemeneti adatkészletek lettek használva a kísérlet futtatásával:
-
-```Python
-# get input datasets
-inputs = run.get_details()['inputDatasets']
-train_dataset = inputs[0]['dataset']
-
-# list the files referenced by train_dataset
-train_dataset.to_path()
-```
-
-A kísérletek `input_datasets` a [Azure Machine learning Studio](https://ml.azure.com/)használatával is megtalálhatja. 
-
-Az alábbi képen látható, hogy hol található egy kísérlet bemeneti adatkészlete Azure Machine Learning Studioon. Ebben a példában lépjen a **kísérletek** ablaktáblára, és nyissa meg a kísérlet adott futtatásához tartozó **tulajdonságok** lapot, `keras-mnist`.
-
-![Bemeneti adatkészletek](media/how-to-version-datasets/input-datasets.png)
-
-Az adatkészletet használó modelleket is megtalálhatja. A következő nézet az **adatkészletek** ablaktábla **eszközök**területén található. Válassza ki az adatkészletet, majd válassza a **modellek** fület az adatkészletet használó modellek listájához. 
+A regisztráció után megtekintheti az adatkészletben regisztrált modellek listáját a Python vagy a [Azure Machine learning Studio](https://ml.azure.com/)használatával. A következő nézet az **adatkészletek** ablaktábla **eszközök**területén található. Válassza ki az adatkészletet, majd válassza a **modellek** fület az adatkészletben regisztrált modellek listájához. 
 
 ![Bemeneti adatkészletek modelljei](media/how-to-version-datasets/dataset-models.png)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: 8e04369e3e070054c5095abde29ecca99d071cb8
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 61b43329fcc840bc68f454400a4b5e917f43110c
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144473"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894588"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -63,7 +63,7 @@ A Circonus egy helyszíni vagy SaaS-alapú üzembe helyezéshez készült, a Ser
 
 A felhőt egyesítheti és automatizálhatja egy olyan platformmal, amely időt és pénzt takarít meg. A CloudHealth láthatóságot, intuitív optimalizálást és sziklaszilárd irányítási eljárásokat biztosít a felhőalapú felügyelethez. A CloudHealth platform lehetővé teszi a vállalatok és a MSP számára, hogy maximalizálják a Felhőbeli beruházások megtérülését. A költségeket, a használatot, a teljesítményt és a biztonságot érintő döntéseket hozhat.
 
-[Részletek][cloudhealth-doc]
+[További információ][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>CloudMonix
 
@@ -136,11 +136,11 @@ A LogRhythm, amely a NextGen SIEM egyik vezetője, a hat kontinensen lévő szer
 
 A Focus **ArcSight** rendelkezik egy intelligens összekötővel Azure monitor Event hubokhoz.
 
-[Részletek](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "A ArcSight dokumentációja.")
+[További információ](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "A ArcSight dokumentációja.")
 
 A fókusz **műveleti híd** automatikusan figyeli az összes hibrid it-erőforrást – bármilyen eszközt, operációs rendszert, adatbázist, alkalmazást vagy szolgáltatást, függetlenül attól, hogy hol fut, és alkalmazza a AIOps minden adattípusra – események, metrikák, naplók és függőségek. A szolgáltatás minőségének egyedi kombinációja, amely a részletes alkalmazás-állapot elemzésével párosul, és átfogó teljesítményt és rendelkezésre állást biztosít a Microsoft Azure-szolgáltatások számára. Az Operations Bridge lehetővé teszi, hogy az ügyfelek egyetlen panelt biztosítanak az összes böngészővel rendelkező eszközön, így mind az üzleti, mind az érintett felek megismerhetik.
 
-Részletek
+További információ
 - [Az OB Suite áttekintése](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Letöltés](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - A [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope az Operations Bridge Suite egyik összetevője.
@@ -251,11 +251,11 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 
 [Részletek][turbonomic-doc]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [További információ a Azure Monitor](../../azure-monitor/overview.md)
 - [Metrikák elérése a REST API használatával](rest-api-walkthrough.md)
 - [A tevékenység naplójának továbbítása nem Microsoft-szolgáltatásba](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [Diagnosztikai naplók továbbítása nem Microsoft-szolgáltatásoknak](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+- [Erőforrás-naplók továbbítása nem Microsoft-szolgáltatásba](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
 
 

@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 93b03622f03c095a61291f4a6d25284e5052c35a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 2126415c3ae7ecb14a47c79dacd67aee656cd745
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555178"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894304"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -23,7 +23,7 @@ A JSON használatával hozhat létre szabályzat-definíciót. A házirend-defin
 - paraméterek
 - megjelenítendő név
 - leírás
-- házirend-szabály
+- Házirend-szabály
   - logikai Értékelés
   - érvénybe
 
@@ -176,7 +176,7 @@ Ha a definíció helye:
 
 A **DisplayName** és a **Leírás** használatával azonosíthatja a házirend-definíciót, és megadhatja a környezetét a használathoz. a **DisplayName** maximális hossza _128_ karakter, és a **Leírás** legfeljebb _512_ karakter hosszúságú lehet.
 
-## <a name="policy-rule"></a>Házirend-szabály
+## <a name="policy-rule"></a>Szabályzat szabálya
 
 A **házirend-szabály** az **IF** és a blokkból áll. Az **IF** blokkban meg kell adnia egy vagy több olyan feltételt, amely megadja, hogy a rendszer mikor kényszerítse ki a házirendet. Ezekhez a feltételekhez logikai operátorokat alkalmazhat, így pontosan meghatározhatja a házirend forgatókönyvét.
 
@@ -597,6 +597,31 @@ Ez a házirend-szabály példa a `resourceGroup` Resource függvényt használja
 Tulajdonság-Aliasok használatával férhet hozzá az erőforrástípus adott tulajdonságaihoz. Az aliasok lehetővé teszik annak korlátozását, hogy az adott erőforrás egy tulajdonsága milyen értékeket vagy feltételeket engedélyezzen. Az egyes aliasok egy adott erőforrástípus különböző API-verzióinak elérési útjaira mutatnak. A házirend kiértékelése során a házirend-kezelő beolvassa az adott API-verzióhoz tartozó tulajdonság elérési útját.
 
 Az aliasok listája mindig növekszik. A Azure Policy által jelenleg támogatott aliasok megkereséséhez használja az alábbi módszerek egyikét:
+
+- Azure Policy-bővítmény a Visual Studio Code-hoz (ajánlott)
+
+  A [Visual Studio Code](../how-to/extension-for-vscode.md) -hoz készült Azure Policy-bővítmény használatával megtekintheti és derítheti fel az erőforrás-tulajdonságok aliasait.
+
+  ![Azure Policy-bővítmény a Visual Studio Code-hoz](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
+
+- Azure Resource Graph
+
+  Az erőforrás **aliasnevének** megjelenítéséhez használja a `project` operátort.
+
+  ```kusto
+  Resources
+  | where type=~'microsoft.storage/storageaccounts'
+  | limit 1
+  | project aliases
+  ```
+  
+  ```azurecli-interactive
+  az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+  ```
+  
+  ```azurepowershell-interactive
+  Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+  ```
 
 - Azure PowerShell
 

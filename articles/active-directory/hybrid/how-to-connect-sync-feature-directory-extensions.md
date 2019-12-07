@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect szinkronizálás: Directory-bővítmények | Microsoft Docs'
+title: 'Azure AD Connect Sync: címtárszolgáltatás-bővítmények | Microsoft Docs'
 description: Ez a témakör a Azure AD Connect Directory Extensions szolgáltatását ismerteti.
 services: active-directory
 documentationcenter: ''
@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/05/2018
+ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88fdfce58bdd8e13637e77d01d4b6c0ab21f696a
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 138ca9bf3352c46b8ac495b58a2fd6d7bafeb658
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607652"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889827"
 ---
-# <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect szinkronizálás: Címtárkiterjesztések
-A (z) Azure Active Directory (Azure AD) sémájának kiterjesztése a helyi Active Directory saját attribútumaival is elvégezhető. Ez a funkció lehetővé teszi LOB-alkalmazások készítését olyan attribútumok fogyasztásával, amelyeket továbbra is a helyszínen kezelhet. Ezek az attribútumok felhasználhatók az [Azure AD Graph API Directory Extensions](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) vagy [Microsoft Graph](https://developer.microsoft.com/graph/)használatával. Az elérhető attribútumok az [Azure ad Graph Explorer](https://graphexplorer.azurewebsites.net/) és a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)használatával tekinthetők meg.
+# <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: címtárszolgáltatás-bővítmények
+A (z) Azure Active Directory (Azure AD) sémájának kiterjesztése a helyi Active Directory saját attribútumaival is elvégezhető. Ez a funkció lehetővé teszi LOB-alkalmazások készítését olyan attribútumok fogyasztásával, amelyeket továbbra is a helyszínen kezelhet. Ezek az attribútumok felhasználhatók az [Azure AD Graph API Directory Extensions](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) vagy [Microsoft Graph](https://developer.microsoft.com/graph/)használatával. Az elérhető attribútumok az [Azure ad Graph Explorer](https://graphexplorer.azurewebsites.net/) és a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)használatával tekinthetők meg. Ezt a funkciót használhatja dinamikus csoportok létrehozására is az Azure AD-ben.
 
 Jelenleg az Office 365-es munkaterhelések nem használják fel ezeket az attribútumokat.
+
+## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>Az Azure AD-vel szinkronizálandó attribútumok testreszabása
 
 Konfigurálja, hogy mely további attribútumokat kívánja szinkronizálni a telepítővarázsló egyéni beállítások elérési útján.
 
@@ -38,22 +40,28 @@ Konfigurálja, hogy mely további attribútumokat kívánja szinkronizálni a te
 A telepítés a következő attribútumokat jeleníti meg, amelyek érvényes jelöltek:
 
 * Felhasználói és csoport típusú objektumok típusai
-* Egyértékű attribútumok: Karakterlánc, logikai, egész szám, bináris
-* Többértékű attribútumok: Karakterlánc, bináris
+* Egyértékű attribútumok: karakterlánc, logikai, egész szám, bináris
+* Többértékű attribútumok: karakterlánc, bináris
 
 
 >[!NOTE]
 > Bár a Azure AD Connect támogatja a többértékű Active Directory attribútumok többértékű címtár-bővítményként történő szinkronizálását, jelenleg nincs mód a többértékű címtár-bővítmény attribútumaiban feltöltött adatlekérdezések lekérésére/felhasználására.
 
-Az attribútumok listáját a rendszer a Azure AD Connect telepítésekor létrehozott séma-gyorsítótárból olvassa be. Ha további attribútumokkal bővítette a Active Directory sémát, frissítenie kell [a sémát](how-to-connect-installation-wizard.md#refresh-directory-schema) , mielőtt láthatóvá válnak az új attribútumok.
+Az attribútumok listáját a rendszer a Azure AD Connect telepítésekor létrehozott séma-gyorsítótárból olvassa be. Ha további attribútumokkal bővítette a Active Directory sémát, [frissítenie kell a sémát](how-to-connect-installation-wizard.md#refresh-directory-schema) , mielőtt láthatóvá válnak az új attribútumok.
 
 Az Azure AD-beli objektumok legfeljebb 100 attribútumot tartalmazhatnak a címtár-kiterjesztésekhez. A maximális hossz 250 karakter. Ha egy attribútum értéke továbbra is fennáll, a szinkronizálási motor csonkolja azt.
 
-Azure AD Connect telepítésekor az alkalmazás regisztrálva lesz, ahol ezek az attribútumok elérhetők. Ezt az alkalmazást a Azure Portal tekintheti meg.
+## <a name="configuration-changes-in-azure-ad-made-by-the-wizard"></a>A varázsló által készített Azure AD-beli konfigurációs változások
+
+Azure AD Connect telepítésekor az alkalmazás regisztrálva lesz, ahol ezek az attribútumok elérhetők. Ezt az alkalmazást a Azure Portal tekintheti meg. A neve mindig a **bérlői séma bővítményének alkalmazás**.
 
 ![Séma-bővítmény alkalmazás](./media/how-to-connect-sync-feature-directory-extensions/extension3new.png)
 
-Az attribútumok {AppClientId} \_\_kiterjesztésű előtaggal vannak ellátva. A AppClientId ugyanazt az értéket adja meg az Azure AD-bérlő összes attribútuma számára.
+Győződjön meg róla, hogy az **összes alkalmazás** lehetőséget választotta az alkalmazás megtekintéséhez.
+
+Az attribútumok előtaggal vannak ellátva a **(\_{ApplicationId}\_kiterjesztéssel** . A ApplicationId ugyanazt az értéket adja meg az Azure AD-bérlő összes attribútuma számára. Erre az értékre szüksége lesz az ebben a témakörben található összes többi forgatókönyv esetében.
+
+## <a name="viewing-attributes-using-graph"></a>Attribútumok megtekintése gráf használatával
 
 Ezek az attribútumok mostantól elérhetők az Azure AD Graph APIon keresztül. A lekérdezéseket az [Azure ad Graph Explorer](https://graphexplorer.azurewebsites.net/)használatával kérdezheti le.
 
@@ -62,11 +70,33 @@ Ezek az attribútumok mostantól elérhetők az Azure AD Graph APIon keresztül.
 Az attribútumokat a Microsoft Graph API-n keresztül is lekérdezheti a [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer#).
 
 >[!NOTE]
-> Meg kell kérnie a visszaadott attribútumok értékét. Explicit módon válassza ki a következő attribútumokat:\:HTTPS//graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $Select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division. 
+> A Microsoft Graphban meg kell kérnie a visszaadott attribútumok értékét. Explicit módon válassza ki a következő attribútumokat: https\://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division.
 >
-> További információkért lásd [: Microsoft Graph: Lekérdezési paraméterek](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)használata
+> További információ [: Microsoft Graph: lekérdezési paraméterek használata](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 
-## <a name="next-steps"></a>További lépések
+## <a name="use-the-attributes-in-dynamic-groups"></a>A dinamikus csoportok attribútumainak használata
+
+A hasznos forgatókönyvek egyike az, hogy ezeket az attribútumokat a dinamikus biztonsági vagy Office 365-csoportokban használja.
+
+1. Hozzon létre egy új csoportot az Azure AD-ben. Adjon neki egy jó nevet, és győződjön meg arról, hogy a **tagság típusa** **dinamikus felhasználó**.
+
+   ![Képernyőfelvétel új csoporttal](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup1.png)
+
+2. **Dinamikus lekérdezés hozzáadásához**válassza a lehetőséget. Ha megtekinti a tulajdonságokat, akkor ezek a kiterjesztett attribútumok nem jelennek meg. Először hozzá kell adnia őket. Kattintson az **Egyéni bővítmény tulajdonságainak beolvasása**elemre, adja meg az alkalmazás azonosítóját, és kattintson a **Tulajdonságok frissítése**elemre.
+
+   ![Képernyőfelvétel a címtár-bővítmények hozzáadásáról](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup2.png) 
+
+3. Nyissa meg a tulajdonság legördülő listát, és figyelje meg, hogy a hozzáadott attribútumok már láthatók.
+
+   ![Képernyőkép a felhasználói felületen megjelenített új attribútumokról](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
+
+   Fejezze be a kifejezést az igényeinek megfelelően. A példánkban a szabály a következőre van beállítva: **(User. extension_9d98ed114c4840d298fad781915f27e4_division-EQ "Sales and marketing")** .
+
+4. A csoport létrehozása után adjon meg némi időt az Azure AD számára a tagok feltöltéséhez, majd tekintse át a tagokat.
+
+   ![Képernyőfelvétel a dinamikus csoport tagjaival](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup4.png)  
+
+## <a name="next-steps"></a>Következő lépések
 További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

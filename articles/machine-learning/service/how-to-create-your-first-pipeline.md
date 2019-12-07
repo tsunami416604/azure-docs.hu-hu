@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 329fa301917fec368b0e76ab970d8ece72aa66c5
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 85c80a5b9f2c0ac7b73fb51fd8138e3aae0b0221
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561405"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894674"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -137,7 +137,7 @@ Azure Machine Learning a __számítások__ (vagy __számítási cél__) kifejez�
 
 Az alábbi példák a számítási célok létrehozásához és csatolásához szükségesek a következőkhöz:
 
-* Azure Machine Learning számítás
+* Azure Machine Learning Compute
 * Azure Databricks 
 * Azure Data Lake Analytics
 
@@ -526,10 +526,9 @@ p.disable()
 
 A folyamatok működésének optimalizálásához és testreszabásához hajtson végre néhány dolgot a gyorsítótárazás és az újbóli használat érdekében. Például a következőket teheti:
 + **Állítsa le a kimenet futtatásának alapértelmezett újrafelhasználását** úgy, hogy `allow_reuse=False` a [Step definition művelet](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)során. Az újrafelhasználás a kulcs, ha a folyamatokat együttműködésen alapuló környezetben használja, mivel a szükségtelen futtatások kiiktatása rugalmasságot biztosít. Azonban letilthatja az ismételt használatot.
-+ **Kiterjesztheti a kivonatot a szkripten túl**, hogy a source_directory abszolút elérési utat vagy relatív elérési utakat is tartalmazzon más fájlokhoz és könyvtárakhoz a `hash_paths=['<file or directory']` használatával 
 + **A kimenet újragenerálásának kényszerítése a `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)` futtatott Futtatás lépéseiben**
 
-Alapértelmezés szerint a `allow_reuse` for Steps engedélyezve van, és csak a fő parancsfájl kivonata. Ha tehát egy adott lépés parancsfájlja ugyanaz marad (`script_name`, bemenetek és a paraméterek), az előző lépés futtatásának kimenete újra felhasználható, a rendszer nem küldi el a feladatot a számításnak, és az előző Futtatás eredményei azonnal elérhetők lesznek a következő lépéshez.  
+Alapértelmezés szerint a lépések `allow_reuse` engedélyezve van, és a lépés definíciójában megadott `source_directory` kivonatolásra kerül. Ha tehát egy adott lépés parancsfájlja ugyanaz marad (`script_name`, bemenetek és a paraméterek), és a` source_directory` semmi más nem módosult, az előző lépés futtatásának kimenete újra felhasználható, a feladatot nem küldi el a rendszer a számításba, és az előző Futtatás eredményei azonnal elérhetők lesznek a következő lépéshez.
 
 ```python
 step = PythonScriptStep(name="Hello World",

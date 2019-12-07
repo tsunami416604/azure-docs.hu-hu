@@ -1,6 +1,6 @@
 ---
 title: Videók körülvágása a Media Encoder Standard használatával – Azure | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan vágja le a videókat Media Encoder Standard használatával.
+description: A vágás a videó keretén belül egy téglalap alakú ablak kiválasztásának, valamint az adott ablakon belüli képpontok kódolásának a folyamata. Ez a cikk bemutatja, hogyan vágja le a videókat Media Encoder Standard használatával.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 03d68cc3a60abba8b7189a9d03fbc21d7606f736
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 059816284e39c65bb772bd02f066d73da624722f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016614"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887764"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Videók körülvágása a Media Encoder Standarddel  
 

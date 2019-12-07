@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 806460e5e4336624c6b0ead59dd5632e730c69e5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 20c1f1f9a8b0b0ef105893e44c9daaeae68604db
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014729"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889753"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Adatok lekérdezése a Azure Time Series Insights előnézet környezetből a következő használatával:C#
 
@@ -27,10 +27,10 @@ A minta számos alapszintű példát is tartalmat a Query API használatára:
 1. Előkészítési lépésként szerezze be a hozzáférési jogkivonatot a Azure Active Directory API-n keresztül. Adja át ezt a tokent minden lekérdezési API-kérelem `Authorization` fejlécében. Nem interaktív alkalmazások beállításával kapcsolatban lásd: [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md). Győződjön meg arról is, hogy a minta elején definiált összes állandó megfelelően van beállítva.
 1. Azon környezetek listája, amelyekhez a felhasználónak hozzáférése van. Az egyik környezet a fontos környezet, a további adatlekérdezések pedig erre a környezetre vannak lekérdezve.
 1. A HTTPS-kérés példájaként a rendszer lekéri az érintett környezet rendelkezésreállási adatait.
-1. A websocket-kérés példájaként a rendszer lekéri az érintett környezet összesített eseményadatait. Az adatokat a rendszer a teljes rendelkezésre állási időtartamra lekéri.
+1. Példa az [Azure autorest](https://github.com/Azure/AutoRest)-ből származó SDK-alapú automatikus létrehozási támogatásra.
 
 > [!NOTE]
-> Ez a mintakód a [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)címen is elérhető.
+> A példában szereplő kód, valamint a fordítás és Futtatás lépései a [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)címen érhetők el.
 
 ## <a name="c-example"></a>C#például
 

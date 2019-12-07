@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: e66a9f8a775a46c906601ea08be52ca9dfbe0171
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c171310fd1c9caf78288fa156b353ecdd517d602
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689294"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894689"
 ---
 # <a name="get-labels-for-data"></a>Az Adatfeliratok beolvasása
 
@@ -24,6 +24,9 @@ Machine Learning nyomon követi a folyamat előrehaladását, és fenntartja a h
 
 Machine Learning a projekt elindítását és leállítását, a személyek és a csoportok hozzáadását és eltávolítását, valamint a figyelés folyamatát. A címkézett adatokat kókusz formátumban vagy Azure Machine Learning adatkészletként is exportálhatja.
 
+> [!Important]
+> Jelenleg csak a képbesorolás és az objektum-azonosító címkézési projektek támogatottak. Emellett az adatlemezképeknek elérhetőnek kell lenniük egy Azure Blob-adattárban. (Ha nem rendelkezik meglévő adattárral, képeket tölthet fel a projekt létrehozása során.) 
+
 Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
@@ -32,6 +35,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 > * A projektben dolgozó csapatok és személyek kezelése
 > * A projekt futtatása és figyelése
 > * Címkék exportálása
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -1,21 +1,22 @@
 ---
-title: Azure rövid útmutató – Blob létrehozása objektumtárban Azure CLI használatával | Microsoft Docs
+title: Rövid útmutató – blob létrehozása az Azure CLI-vel
+titleSuffix: Azure Storage
 description: Ebből a rövid útmutatóból megtudhatja, hogyan tölthet fel blobokat az Azure Storage-ba az Azure CLI használatával, hogyan töltheti le a blobokat, és hogyan listázhatja a tárolóban lévő blobokat.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 11/06/2019
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 1f3143eced90f97c090c0005375ef50fe48c5f5f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c913cb978796abeed5766ffa030aaeb6142320ec
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747916"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892923"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása az Azure CLI-vel
+# <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Gyors útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel
 
 Az Azure CLI az Azure parancssori felülete, amely Azure-erőforrások kezelésére szolgál. Használhatja a böngészőjében az Azure Cloud Shell-lel. Vagy telepítheti macOS, Linux és Windows rendszeren, és futtathatja a parancssorból. Ebből a rövid útmutatóból megtudhatja, hogyan lehet az Azure CLI használatával adatokat fel- és letölteni az Azure Blob Storage-be.
 
@@ -109,7 +110,7 @@ Ha már nincs szüksége az erőforráscsoport egyik erőforrására sem, beleé
 az group delete --name <resource-group-name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan vihetők át fájlok egy helyi fájlrendszer és egy tároló az Azure Blob Storage szolgáltatásban. Ha bővebb információra van szüksége a blobok Azure Storage-beli használatával kapcsolatban, lépjen tovább az Azure Blob Storage használatáról szóló oktatóanyagra.
 

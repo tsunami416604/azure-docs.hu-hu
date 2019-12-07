@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 3ad0bdc2ec5db2f34a3bb6a1b8fda54cf9037483
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 177c110ce9679f3d564918dfac50b3e3f66f84ce
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555680"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893586"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mi a klasszikus riasztás a Microsoft Azureban?
 
 > [!NOTE]
-> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](../../azure-monitor/platform/alerts-overview.md). A klasszikus riasztásokat a rendszer kivonásra [ütemezi](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).  
+> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](../../azure-monitor/platform/alerts-overview.md). A klasszikus riasztások kivonásra kerülnek, de továbbra is korlátozott mértékben használják azokat az [erőforrásokat, amelyek](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)még nem támogatják az új riasztásokat. 
 >
 
 A riasztások lehetővé teszik az adatfeltételek konfigurálását, és értesítést kapnak, ha a feltételek megfelelnek a legújabb figyelési adatnak.
@@ -54,7 +54,7 @@ A klasszikus riasztások két típusa érhető el – metrikus riasztások és m
 
 * **Klasszikus műveletnapló – riasztások** – egy adatfolyam-naplózási riasztás, amely egy, a szűrési feltételeknek megfelelő műveletnapló-eseményre mutat. Ezek a riasztások csak egy állapottal rendelkeznek, "aktiválva". A riasztási motor egyszerűen alkalmazza a szűrési feltételeket minden új eseményre. Nem keres régebbi bejegyzéseket. Ezek a riasztások értesítik, ha új Service Health incidens következik be, vagy amikor egy felhasználó vagy alkalmazás végrehajt egy műveletet az előfizetésben, például "virtuális gép törlése".
 
-A Azure Monitoron keresztül elérhető diagnosztikai naplózási naplók esetében az adattovábbítást Log Analytics (korábban OMS), és egy Log Analytics lekérdezési riasztást használjon. Log Analytics most az [új riasztási módszert](../../azure-monitor/platform/alerts-overview.md) használja 
+Az Azure Monitoron keresztül elérhető erőforrás-naplózási adatforrások esetében a rendszer átirányítja az adatLog Analyticsba, és egy napló lekérdezése riasztást használ Log Analytics most az [új riasztási módszert](../../azure-monitor/platform/alerts-overview.md) használja 
 
 A következő ábra összefoglalja Azure Monitorban lévő adatforrásokat, és fogalmilag azt, hogyan lehet a riasztást kikapcsolni.
 
@@ -82,7 +82,7 @@ Azonban a régebbi metrikai riasztások nem használnak műveleti csoportokat. E
 A webhookok lehetővé teszik az automatizálást és a szervizelést, például a következő használatával:
 - Azure Automation-runbook
 - Azure-függvény
-- Azure logikai alkalmazás
+- Azure Logic App
 - harmadik féltől származó szolgáltatás
 
 ## <a name="next-steps"></a>Következő lépések

@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Standard előre H264 egyféle sávszélességű 4K – Azure |} A Microsoft Docs
-description: A témakör áttekintést nyújt a **H264 egyféle sávszélességű 4K** feladat előbeállítást.
+title: H264 Single bitráta 4K Media Encoder Standard PRESET – Azure | Microsoft Docs
+description: A cikk áttekintést nyújt Media Encoder Standard a "H264 Single bitráta 4K" feladatról.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: f2a7bcfe39f3896c63993e0ad93309dcc510153e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c1ba173f97353a5ffdd4a9b58f99f6f817f963ff
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61129499"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895896"
 ---
 # <a name="h264-single-bitrate-4k"></a>H264 Single Bitrate 4K
-`Media Encoder Standard` határozza meg a kódolási készletek is használhatja a kódolási feladat létrehozásakor. Használhatja egy `preset name` mely formátumba, amelyet szeretne kódolása a media-fájl megadásához. Vagy létrehozhat saját JSON vagy XML-alapú készletek (UTF-8 és UTF-16 kódolást használatával. Az egyéni készletet a kódoló majd kellene átadnia. Ez által támogatott összes előre definiált nevek a lista `Media Encoder Standard` kódoló, lásd: [feladat készletek Media Encoder standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` meghatározza a kódolási feladatok létrehozásakor használható kódolási előkészleteket. `preset name` segítségével megadhatja, hogy melyik formátumban szeretné kódolni a médiafájlt. Vagy létrehozhat egy saját JSON-vagy XML-alapú előkészletet (UTF-8 vagy UTF-16 kódolás használatával). Ezután átadja az egyéni beállításkészletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre definiált név listájának megtekintéséhez tekintse meg a [Media Encoder standard feladat-előbeállításait](media-services-mes-presets-overview.md).  
   
- Ez a témakör bemutatja a `H264 Single Bitrate 4K` előre definiált XML és JSON formátumban.  
+ Ez a témakör a `H264 Single Bitrate 4K` XML-és JSON-formátumban történő beállítását mutatja be.  
   
- Ez egy sávszélességű 18000 KB/s és sztereó AAC hang előre beállított eredményez olyan egyetlen MP4 fájlt. Profillal kapcsolatos részletes információkért sávszélességű, mintavételi arány, stb. Ez a készletet, vizsgálja meg az XML- vagy JSON lényegét az alábbiakban. Az egyes milyen egyes elemei, és ezen készletek azt jelenti, hogy az érvényes értékek az egyes elemekhez, tekintse meg a [Media Encoder Standard-séma](media-services-mes-schema.md) témakör.  
+ Ez az előre definiált, 18000 kbps sebességű és sztereó AAC hangú MP4-fájlt hoz létre. A profil, a bitráta, a mintavételezési sebesség és az előre definiált beállítások részletes ismertetését az alábbi XML-vagy JSON-kód alapján ellenőrizheti. Az ezen alapbeállításokban található egyes elemek, valamint az egyes elemek érvényes értékeinek magyarázata a [Media Encoder standard séma](media-services-mes-schema.md) témakörben található.  
   
 > [!NOTE]
->  Szerezheti be a prémium szintű szolgáltatás számára fenntartott egység típussal rendelkező 4K kódolja. További információkért lásd: [How to Scale kódolás](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+>  Szerezze be a prémium szintű fenntartott egységet 4K-kódolással. További információ: [a kódolás skálázása](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
   
  XML  
   

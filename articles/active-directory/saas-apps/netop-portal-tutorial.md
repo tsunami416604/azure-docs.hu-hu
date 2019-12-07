@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a NetOp-Portálral | Microsoft Docs'
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a NetOp-Portálral | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a NetOp portál között.
 services: active-directory
 documentationCenter: na
@@ -13,103 +13,84 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/20/2019
+ms.date: 10/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 955acdfb31bcdaa85f81eac39487992c75f71788
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 715e9b4f3baace39cfe8bebe011ae284fc4c6b2b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160321"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893263"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-netop-portal"></a>Oktatóanyag: Azure Active Directory integráció az NetOp-Portálral
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netop-portal"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az NetOp-portálon
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a NetOp-portált Azure Active Directory (Azure AD-val).
-A NetOp-portál Azure AD-vel való integrálása a következő előnyöket biztosítja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a NetOp-portált Azure Active Directory (Azure AD-val). Ha integrálja az NetOp-portált az Azure AD-vel, a következőket teheti:
 
-* A NetOp-portálhoz hozzáférő Azure AD-ben is szabályozható.
-* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a NetOp portálra (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A NetOp-portálhoz hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az NetOp-portálra az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció NetOp-portálon való konfigurálásához a következő elemek szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* NetOp-portál egyszeri bejelentkezésre engedélyezett előfizetése
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* NetOp-portál egyszeri bejelentkezésre (SSO) engedélyezett előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * A NetOp-portál támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
+
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
 ## <a name="adding-netop-portal-from-the-gallery"></a>NetOp-portál hozzáadása a katalógusból
 
 A NetOp-portál Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a NetOp-portált a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A NetOp-portál katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **NetOp portál** kifejezést a keresőmezőbe.
+1. Válassza ki a **NetOp-portált** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-netop-portal"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a NetOp-portálon
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Konfigurálja és tesztelje az Azure AD SSO-t a NetOp Portalon egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a NetOp-portálon.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+Az Azure AD SSO és a NetOp-portál konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[NetOp-portál SSO konfigurálása](#configure-netop-portal-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Felhasználó létrehozása a NetOp-portálon](#create-netop-portal-test-user)** – a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon NetOp-portálon található.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-4. A keresőmezőbe írja be a **NetOp portál**kifejezést, válassza az **NetOp-portál** lehetőséget az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-     ![NetOp-portál az eredmények listájában](common/search-new-app.png)
+1. A [Azure Portal](https://portal.azure.com/) **NetOp-portál** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a NetOp-portálon konfigurálhatja és tesztelheti a **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a NetOp-portálon található kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+1. Az **alapszintű SAML-konfigurációs** szakaszban az alkalmazás előre konfigurálva van a **identitásszolgáltató** kezdeményezett módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **mentés** gombra kattintva.
 
-Az Azure AD egyszeri bejelentkezés NetOp-portálon való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
-
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[NetOp-portál egyszeri bejelentkezésének konfigurálása](#configure-netop-portal-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Felhasználó létrehozása a NetOp-portálon](#create-netop-portal-test-user)** – a NetOp-portálon található Britta Simon partnere, amely a felhasználó Azure ad-képviseletéhez van társítva.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés az NetOp-portálon való konfigurálásához hajtsa végre a következő lépéseket:
-
-1. A [Azure Portal](https://portal.azure.com/) **NetOp-portál** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania egy lépést, mivel az alkalmazás már előre integrálva van az Azure-ban.
-
-    ![NetOp-portál tartomány és URL-címek egyszeri bejelentkezési adatai](common/preintegrated.png)
-
-5. A NetOp-portál alkalmazása egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
+1. A NetOp-portál alkalmazás megadott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![image](common/edit-attribute.png)
 
-6. A fentieken kívül a NetOp-portál alkalmazás néhány további attribútumot is vár az SAML-válaszba való visszatéréshez. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
+1. A fentieken kívül a NetOp Portal alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
     | Név |  Forrás attribútum|
     | ---------------| --------- |
@@ -118,101 +99,56 @@ Az Azure AD egyszeri bejelentkezés az NetOp-portálon való konfigurálásához
     | NRC – MEGADOTT NÉV | User. givenName |
     | NRC – VEZETÉKNÉV | felhasználó. vezetéknév |
     | NRC – FELHASZNÁLÓNÉV | User. userPrincipalName |
-    | NameIdentifier | User. userPrincipalName |
+    | nameidentifier | User. userPrincipalName |
     | | |
 
-    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
-
-    c. A **névtér** szövegmezőbe írja be a következőt: https:\//Secure.NetOp.com.
-
-    d. Válassza a forrás **attribútumként**lehetőséget.
-
-    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
-
-    f. Kattintson **az OK** gombra
-
-    g. Kattintson a **Save** (Mentés) gombra.
-
-7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-8. A **NetOp-portál beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+1. A **NetOp-portál beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL-cím
-
-    b. Azure ad-azonosító
-
-    c. Kijelentkezési URL-cím
-
-### <a name="configure-netop-portal-single-sign-on"></a>A NetOp-portál egyszeri bejelentkezésének konfigurálása
-
-Az egyszeri bejelentkezés **NetOp-portálon** való konfigurálásához a letöltött **összevonási metaadatok XML-fájlját** és a Azure Portal bejelentkezési URL-címét kell megadnia. A NetOp-portál Azure AD-hitelesítéshez való konfigurálásához kövesse az [itt](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf) található dokumentáció 3. lépésének utasításait.
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
-
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
-    Például: BrittaSimon@contoso.com
-
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
-
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a NetOp-portálhoz.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a NetOp-portálhoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **NetOp-portál**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **NetOp-portál**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-2. Az alkalmazások listában válassza a **NetOp-portál**lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![Az NetOp-portál hivatkozása az alkalmazások listájában](common/all-applications.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+## <a name="configure-netop-portal-sso"></a>NetOp-portál SSO konfigurálása
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+Az egyszeri bejelentkezés **NetOp-portálon** való konfigurálásához a letöltött **összevonási metaadatok XML-fájlját** és a Azure Portal bejelentkezési URL-címét kell megadnia. A NetOp-portál Azure AD-hitelesítéshez való konfigurálásához kövesse az [itt](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf) található dokumentáció 3. lépésének utasításait.
 
 ### <a name="create-netop-portal-test-user"></a>NetOp-portál tesztelési felhasználó létrehozása
 
 Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a NetOp portálon. A [NetOp-portál támogatási csapatával](mailto:casemanager@netop.com) felveheti a felhasználókat a NetOp portál platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
@@ -222,6 +158,9 @@ Ha a hozzáférési panelen a NetOp-portál csempére kattint, automatikusan be 
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [A NetOp-portál kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+

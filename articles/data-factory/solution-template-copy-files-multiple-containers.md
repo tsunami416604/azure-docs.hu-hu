@@ -1,5 +1,5 @@
 ---
-title: Több tárolóból származó fájlok másolása Azure Data Factory használatával
+title: Fájlok másolása több tárolóból
 description: Megtudhatja, hogyan másolhat több tárolóból származó fájlokat Azure Data Factory használatával a megoldási sablon használatával.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/1/2018
-ms.openlocfilehash: 004a623f0dfe251da9d452b53c2541e53339d965
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fffe356225fc813b027bf1d6e29b3afe19b7fb01
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684264"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890793"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Több tárolóból származó fájlok másolása Azure Data Factory
 
@@ -49,7 +49,7 @@ A sablon két paramétert határoz meg:
 
     ![Új kapcsolódás létrehozása a célhoz](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. Válassza **a sablon használata**lehetőséget.
+3. Kattintson a **Sablon használata** lehetőségre.
 
     ![A sablon használata](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
@@ -65,7 +65,7 @@ A sablon két paramétert határoz meg:
 
     ![Az eredmény áttekintése](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tömeges másolás adatbázisból egy Azure Data Factory tartalmazó vezérlőelem-táblázat használatával](solution-template-bulk-copy-with-control-table.md)
 

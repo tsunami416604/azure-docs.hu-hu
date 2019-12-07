@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 893b617a965b0823b8d630e036d5d5f923647f8f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 461298e4f195d88ced5015af26226a9f7b12f737
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73944230"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891779"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: verziók kiadási előzményei
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -70,7 +70,7 @@ Bizonyos esetekben előfordulhat, hogy a 1.4.18.0 verzióra automatikusan friss�
 
 
 ### <a name="release-status"></a>Kiadás állapota
-9/25/2019: el lett távolítva a manuális letöltésből, amíg az incidens vizsgálata be nem fejeződik.
+9/25/2019: csak automatikus frissítésre lett kiadva.
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
 - Az új hibaelhárítási eszközök segítenek a "felhasználó nem szinkronizált", "csoport nem szinkronizált" vagy "csoporttag nem szinkronizált" forgatókönyvek hibaelhárításában.
@@ -393,9 +393,9 @@ Probléma merült fel a konfiguráció újrapróbálkozási logikájában, ami e
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>Hibák kijavítva:
-* Javítsa ki a időzítési háttérfeladatok laphoz Partíciószűrés a következő lapra történő váltáskor.
+* A következő lapra váltáskor javítsa ki az időzítési időszakot a particionálási feladatok oldalának háttérben végzett feladatainál.
 
-* Kijavítva a hiba, amely engedély nélküli hozzáférési kísérlet során a configdb elemre egyéni művelet okozza.
+* Kijavítva egy olyan hibát, amely a configdb elemre egyéni művelet során hozzáférési szabálysértést okozott.
 
 * Kijavított egy hibát az SQL-kapcsolat időtúllépése miatti helyreállításhoz.
 
@@ -415,7 +415,7 @@ Probléma merült fel a konfiguráció újrapróbálkozási logikájában, ami e
 * alkalmazás-telemetria – a rendszergazda a következő időpontban állíthatja be az adatosztályt:
 
 * Azure AD Health-adatkezelés – a rendszergazdának meg kell keresnie az állapotfigyelő portált az állapotadatok szabályozása érdekében.
-   Után a szolgáltatás házirend módosítva lett, az ügynökök olvassa el, és azt kényszerítése.
+   A szolgáltatási házirend megváltozása után az ügynökök beolvassák és érvényesítik azt.
 
 * Hozzáadott eszköz írási-visszaállítási konfigurációs műveletei és folyamatjelző sáv az oldal inicializálásához
 
@@ -434,13 +434,13 @@ A módosítások a következő lépéseket teszik:
 
 * Új segédprogram hozzáadva egy adott objektum szinkronizálási problémáinak elhárításához. A Azure AD Connect varázsló "objektum-szinkronizálásának hibakeresése" lehetőségével további feladatokat is elháríthat. A segédprogram jelenleg a következőket ellenőrzi:
 
-  * Szinkronizált felhasználói objektum és a felhasználói fiók az Azure AD-bérlő a UserPrincipalName nem egyezik.
-  * Ha az objektum ki lett szűrve a tartomány szűrés miatt
-  * Ha az objektum ki lett szűrve a szervezeti egység (OU) szűrés miatt
+  * UserPrincipalName eltérés a szinkronizált felhasználói objektum és az Azure AD-bérlő felhasználói fiókja között.
+  * Ha a rendszer tartományi szűrés miatt szűri az objektumot a szinkronizálásból
+  * Ha a rendszer a szervezeti egység (OU) szűrése miatt szűri az objektumot a szinkronizálásból
 
 * Egy új segédprogrammal szinkronizálhatja a helyszíni Active Directoryban tárolt aktuális jelszó-kivonatot egy adott felhasználói fiókhoz.
 
-A segédprogram nem szükséges a jelszó módosítása. A (z) Azure AD Connect varázsló jelszó-kivonatolási szinkronizálásának hibakeresése lehetőség alatt a további feladattal kapcsolatos további feladatok című részében található.
+A segédprogram nem igényli a jelszó módosítását. A (z) Azure AD Connect varázsló jelszó-kivonatolási szinkronizálásának hibakeresése lehetőség alatt a további feladattal kapcsolatos további feladatok című részében található.
 
 
 
@@ -469,11 +469,11 @@ Zárja le a AD DS fiók hozzáférését a helyszíni AD-ben a következő enged
 *   Távolítsa el az összes Ace-t az adott objektumon, kivéve az önmagukhoz tartozó Ace-ket. Azt szeretnénk, hogy az alapértelmezett engedélyek érintetlenek maradjanak, ha önmagukban is megmaradnak.
 *   Rendelje hozzá ezeket a konkrét engedélyeket:
 
-Típus     | Name (Név)                          | Hozzáférés               | A következőkre vonatkozik
+Type (Típus)     | Név                          | Hozzáférés               | Hatókör
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
-Engedélyezés    | Tartománygazdák                 | Teljes hozzáférés         | Ez az objektum  |
+Engedélyezés    | Tartományi rendszergazdák                 | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Rendszergazdák                | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Tartalom listázása        | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Az összes tulajdonság olvasása  | Ez az objektum  |
@@ -814,23 +814,23 @@ CBool(
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Válassza ezt:|
     |CertKeyAlgorithmParams|CertHashString|Ahol|
-    |||With|
+    |||A következővel:|
 
 * A következő séma-változások bevezetése lehetővé teszi, hogy az ügyfelek egyéni szinkronizálási szabályokat hozzanak létre a sAMAccountName, a domainNetBios és a domainFQDN, valamint a felhasználói objektumok distinguishedName:
 
   * A következő attribútumok lettek hozzáadva az MV-sémához:
     * Csoport: AccountName
-    * Group: domainNetBios
+    * Csoport: domainNetBios
     * Csoport: domainFQDN
     * Személy: distinguishedName
 
   * A következő attribútumok lettek hozzáadva az Azure AD Connector sémához:
-    * Group: OnPremisesSamAccountName
+    * Csoport: OnPremisesSamAccountName
     * Csoport: NetBiosName
     * Csoport: DnsDomainName
     * Felhasználó: OnPremisesDistinguishedName
 
-* A ADSyncDomainJoinedComputerSync-parancsmag parancsfájlja mostantól egy új, AzureEnvironment nevű paramétert is tartalmaz. A paraméter segítségével meghatározható, hogy a megfelelő Azure Active Directory bérlő melyik régiót futtatja. Érvényes értékek a következők:
+* A ADSyncDomainJoinedComputerSync-parancsmag parancsfájlja mostantól egy új, AzureEnvironment nevű paramétert is tartalmaz. A paraméter segítségével meghatározható, hogy a megfelelő Azure Active Directory bérlő melyik régiót futtatja. Az érvényes értékek a következők:
   * AzureCloud (alapértelmezett)
   * AzureChinaCloud
   * AzureGermanyCloud
@@ -1196,7 +1196,7 @@ Kiadás dátuma: november 2015
 * Nem lehet hosszú egész értékeket használni a szinkronizálási szabályok hatókörében.
 * Ha nem érhető el tartományvezérlő, az "eszköz visszaírási" jelölőnégyzet le lesz tiltva.
 
-## <a name="1086670"></a>1.0.8667.0
+## <a name="1086670"></a>eszközök 1.0.8667.0
 Kiadás dátuma: augusztus 2015
 
 **Új funkciók:**

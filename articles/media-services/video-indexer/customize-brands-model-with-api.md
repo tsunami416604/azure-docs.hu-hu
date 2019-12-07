@@ -1,7 +1,7 @@
 ---
 title: Az Azure Video Indexer használata a Brands modell testreszabásához
 titleSuffix: Azure Media Services
-description: Ez a cikk bemutatja, hogyan szabhatja testre a Brands modellt az Azure Video Indexer használatával.
+description: Ez a cikk bemutatja, hogyan használható az Azure Video Indexer a Brands modell testreszabásához.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 4289c592644d7570ff0dd9ce6aed0cd77f51f25e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 804cc7b2b0b51312ed756723fff5150b02f324cc
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838337"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892804"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Brands-modell testreszabása a Video Indexer API-val
 
@@ -39,7 +39,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
+|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
 |location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
 |accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
@@ -101,7 +101,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
+|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
 |location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
 |accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
@@ -130,7 +130,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
+|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
 |location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
 |accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
@@ -180,7 +180,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
+|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
 |location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
 |accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
@@ -243,7 +243,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
+|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
 |location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
 |accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
@@ -303,7 +303,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
+|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
 |location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
 |accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
@@ -340,7 +340,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
+|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
 |location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
 |accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
@@ -363,6 +363,6 @@ Ezen paraméterek mellett meg kell adnia egy kérelem törzse JSON-objektumot is
 
 A Brands modell beállításának frissítése nem történt meg a visszaadott tartalomban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Brands modell testreszabása webhely használatával](customize-brands-model-with-website.md)

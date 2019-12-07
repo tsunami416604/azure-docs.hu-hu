@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services-Smooth Streaming Protocol (MS-SSTR) a HEVC-re vonatkozó módosítása | Microsoft Docs
-description: 'Ez a specifikáció a töredezett MP4-alapú élő streamek protokollját és formátumát ismerteti Azure Media Services HEVC. Ez a Smooth Streaming protokoll dokumentációjának (MS-SSTR) módosítása, amely támogatja a HEVC betöltését és továbbítását. Ebben a cikkben csak a HEVC továbbításához szükséges módosítások vannak megadva, kivéve a következőt: "(nincs változás)", amely azt jelzi, hogy a szöveg másolása csak pontosítás céljából történik.'
+description: 'Ez a specifikáció a töredezett MP4-alapú élő streamek protokollját és formátumát ismerteti Azure Media Services HEVC. Ebben a cikkben csak a HEVC továbbításához szükséges módosítások vannak megadva, kivéve a következőt: "(nincs változás)", amely azt jelzi, hogy a szöveg másolása csak pontosítás céljából történik.'
 services: media-services
 documentationcenter: ''
 author: johndeu
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: e0637b2a015a610f9c3f92809f63a442980b63b1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6dd7e0dc7e58f33f952aa5531773a84ebd31a163
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624804"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887866"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Smooth Streaming protokoll (MS-SSTR) HEVC vonatkozó módosítása 
 
@@ -42,21 +42,21 @@ A következő kifejezések a dokumentumra vonatkoznak:
 
 >  **összeállítás időpontja:** Az az időpont, amikor egy minta megjelenik az ügyfélen, az [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)definícióban meghatározott módon.
 > 
->   **CENC**: Common Encryption az [ISO/IEC 23001-7] második kiadásban meghatározottak szerint.
+>   **CENC**: Common encryption, az [ISO/IEC 23001-7] második kiadásban meghatározottak szerint.
 > 
 >   **dekódolási idő:** A minta a (z) [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695)által definiált, az ügyfélen való dekódolásához szükséges idő.
 
-**töredék** Egy vagy több **mintát**tartalmazó, független módon letölthető **adathordozó** .
+**töredék:** Egy vagy több **mintát**tartalmazó, független módon letölthető **adathordozó** .
 
 >   **HEVC:** Nagy hatékonyságú videó kódolása az [ISO/IEC 23008-2] meghatározása szerint
 > 
->   **nyilvánvaló** A **bemutató** metaadatainak, amely lehetővé teszi, hogy az ügyfél **adathordozóra**vonatkozó kéréseket készítsen. **Media** Az ügyfél által a **bemutató**lejátszásához használt tömörített hang-, videó-és szöveges adatok. **adathordozó formátuma:** Egy jól definiált formátum, amely a hanganyagot vagy avideót tömörített mintaként jelöli.
+>   **jegyzékfájl:** A **bemutató** metaadatainak, amely lehetővé teszi, hogy az ügyfél **adathordozóra**vonatkozó kéréseket készítsen. **adathordozó:** Az ügyfél által a **bemutató**lejátszásához használt tömörített hang-, videó-és szöveges adatok. **adathordozó formátuma:** Egy jól definiált formátum, amely a hanganyagot vagy a videót tömörített **mintaként**jelöli.
 > 
->   **bemutató** Az összes **stream** és az ahhoz kapcsolódó metaadatok készlete, amely egyetlen film lejátszásához szükséges. **kérelem** A (z [) [RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) válaszban definiált, az ügyféltől a KISZOLGÁLÓNAK küldött HTTP-üzenet **:** A kiszolgálóról az ügyfélnek küldött HTTP-üzenet a következő módon: [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) .
+>   **bemutató:** Az összes **stream** és az ahhoz kapcsolódó metaadatok készlete, amely egyetlen film lejátszásához szükséges. **kérelem:** Az ügyfél és a kiszolgáló között a (z [) [RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **válaszban** meghatározott HTTP-üzenet, amely a kiszolgálóról az ügyfélnek küldött HTTP-üzenet, a következő módon: [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) .
 > 
->   **minta** A legkisebb alapvető egység (például keret), amelyben a rendszer tárolja és feldolgozza az adathordozót.
+>   **minta:** A legkisebb alapvető egység (például keret), amelyben a rendszer tárolja és feldolgozza az **adathordozót** .
 > 
->   **LEHET, HOGY NEM KELL:** Ezek a kifejezések (az összes sapkában) a [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) című témakörben leírtak szerint jelennek meg, a választható viselkedés bármely utasítása pedig lehet, hogy vagy nem.
+>   **lehet** , hogy nem kell: Ezek a kifejezések (az összes sapkában) a [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) című témakörben leírtak szerint jelennek meg, a választható viselkedés bármely utasítása pedig lehet, hogy vagy nem.
 
 ## <a name="12-references"></a>1,2-referenciák
 
@@ -64,31 +64,31 @@ A következő kifejezések a dokumentumra vonatkoznak:
 
 ### <a name="121-normative-references"></a>1.2.1 normatív referenciák 
 
->  [MS-SSTR] Smooth Streaming protokoll *v20140502*[https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
+>  [MS-SSTR] Smooth Streaming protokoll *v20140502* [https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
 > 
->   [ISO/IEC 14496-12] Nemzetközi Szabványügyi Szervezet, "információs technológia – a hang-vizuális objektumok kódolása – 12. rész: ISO-alapú adathordozó-fájlformátum: ", ISO/IEC 14496-12:2014, 4. és 1. helyesbítés, 1 & 2. módosítás.
+>   [ISO/IEC 14496-12] Nemzetközi Szabványügyi Szervezet, "Information Technology--a hang-vizuális objektumok kódolása – 12. rész: ISO-alap médiafájl formátuma", ISO/IEC 14496-12:2014, 4. kiadás, plusz helyesbítés 1, 1 & 2. módosítás.
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
 > 
->   [ISO/IEC 14496-15] Nemzetközi Szabványügyi Szervezet, "információs technológia – a hang-vizuális objektumok kódolása – 15. rész: NAL strukturált videó szállítása az ISO-alapú adathordozó-fájlformátumban (ISO 14496-15:2015, 3. kiadás).
+>   [ISO/IEC 14496-15] Nemzetközi Szabványügyi Szervezet, "információtechnológia – hangvezérelt objektumok kódolása – 15. rész: a külső egység strukturált Videójának szállítása az ISO-alapú adathordozó-fájlformátumban", ISO 14496-15:2015, 3. kiadás.
 >   <https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=65216>
 > 
->   [ISO/IEC 23008-2] Információtechnológia – nagy hatékonyságú kódolás és média-kézbesítés heterogén környezetekben – 2. rész: Nagy hatékonyságú videó kódolása: 2013 vagy legújabb kiadás<https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
+>   [ISO/IEC 23008-2] Információtechnológia – nagy hatékonyságú kódolás és média-kézbesítés heterogén környezetekben – 2. rész: nagy hatékonyságú videó kódolása: 2013 vagy újabb kiadás <https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
 > 
->   [ISO/IEC 23001-7] Információs technológia – MPEG Systems Technologies – 7. rész: Általános titkosítás az ISO-alapú médiafájl formátumú fájlokban, CENC Edition 2:2015<https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
+>   [ISO/IEC 23001-7] Információs technológia – MPEG Systems Technologies – 7. rész: általános titkosítás az ISO-alapú médiafájl formátumú fájlokban, CENC Edition 2:2015 <https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
 > 
->   [RFC-6381] IETF RFC-6381, "a" kód "és a" profilok "paraméter a" vödör "adathordozó-típusokhoz"<https://tools.ietf.org/html/rfc6381>
+>   [RFC-6381] IETF RFC-6381, "a" kód "és a" profilok "paraméter a" vödör "adathordozó-típusokhoz" <https://tools.ietf.org/html/rfc6381>
 > 
->   [MPEG4-RA] Az MP4 regisztrációs szolgáltató, "MP4REG",[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA] Az MP4 regisztrációs szolgáltató, "MP4REG", [http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
 > 
->   [RFC2119] Bradner, S., "az RFC-k által a követelmények szintjének jelzésére használt kulcsszavak", BCP 14, RFC 2119, március 1997,[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119] Bradner, S., "főbb szavak, amelyek az RFC-ben használhatók a követelmények szintjeinek jelzésére", BCP 14, RFC 2119, március 1997, [https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 – tájékoztató referenciák 
 
 >   [MS-GLOS] Microsoft Corporation, "*Windows-protokollok fő szószedete*"
 > 
->   [RFC3548] Josefsson, S., Ed., "a Base16, a Base32 és a Base64 adatkódolások", RFC 3548, július 2003,[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548] Josefsson, S., Ed., "a Base16, a Base32 és a Base64 adatkódolások", RFC 3548, július 2003, [https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
 > 
->   [RFC5234] Crocker, D., Ed., és Overell, P., "bővített BNF a szintaxis-specifikációk számára: ABNF ", STD 68, RFC 5234, január 2008,[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, D., Ed., és Overell, P., "kibővített BNF a szintaxis specifikációi: ABNF", STD 68, RFC 5234, január 2008, [https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>1,3 – áttekintés 
@@ -147,9 +147,9 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 
 >   **FourCC (változó):** Egy négy karakterből álló kód, amely meghatározza, hogy melyik adathordozó-formátumot használja a rendszer az egyes mintákhoz. A következő adattartományok vannak fenntartva a következő szemantikai jelentésekkel:
 > 
-> * "hev1": Az ehhez a számhoz tartozó videós minták a HEVC videót használják az [ISO/IEC-14496-15] által meghatározott "hev1" leírási formátum használatával.
+> * "hev1": videó minták ehhez a nyomon követéshez használja a HEVC videót az [ISO/IEC-14496-15] által meghatározott "hev1" leíró formátum használatával.
 >
-> * "hvc1": Az ehhez a számhoz tartozó videós minták a HEVC videót használják az [ISO/IEC-14496-15] által meghatározott "hvc1" leírási formátum használatával.
+> * "hvc1": videó minták ehhez a nyomon követéshez használja a HEVC videót az [ISO/IEC-14496-15] által meghatározott "hvc1" leíró formátum használatával.
 > 
 >   **CodecPrivateData (változó):** Az adathordozó-formátumra jellemző paramétereket, valamint a nyomon követésben szereplő összes mintában közösen megadott adatok hexadecimális kódolású bájtok sztringként jelennek meg. A byte Sequence formátuma és szemantikai jelentése a következőképpen változik a **FourCC** mező értékével:
 > 
@@ -163,7 +163,7 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 > 
 >   * A PPSField tartalmazza a szelet paraméterének készletét (PPS).
 > 
->   Megjegyzés: A video paraméter készlete (VPS) nem szerepel a CodecPrivateData-ben, de a "hvcC" mezőben tárolt fájlok fejlécében szerepelnie kell bennük. A Smooth Streaming protokollt használó rendszereknek további dekódolási paramétereket kell megadniuk (például HEVC szint) a "kodekek" egyéni attribútum használatával.
+>   Megjegyzés: a video set (VPS) nem szerepel a CodecPrivateData-ben, de a tárolt fájlok fejlécében szerepelnie kell a "hvcC" mezőben. A Smooth Streaming protokollt használó rendszereknek további dekódolási paramétereket kell megadniuk (például HEVC szint) a "kodekek" egyéni attribútum használatával.
 
 ##### <a name="22251-customattributeselement"></a>2.2.2.5.1 CustomAttributesElement 
 
@@ -175,7 +175,7 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 
 ### <a name="223-fragment-request"></a>2.2.3 töredék-kérelem 
 
->   **Megjegyzés**: A 2. **MinorVersion** és a "hev1", illetve a "hvc1" alapértelmezett adathordozó-formátuma a következő: "iso8" márka ISO-fájl formátuma [ISO/IEC 14496-12] ISO Base Media File Format negyedik kiadás, és [ISO/IEC 23001-7] Common encryption Second Edition.
+>   **Megjegyzés**: a 2. és a "hev1", illetve a "Hvc1" **MinorVersion** esetében kért alapértelmezett adathordozó-formátum a "iso8" márka ISO-fájljának formátuma, amely az [ISO/IEC 14496-12] ISO Base Media File Format negyedik kiadásában, valamint [ISO/IEC 23001-7] Common encryption második kiadásban van megadva.
 
 ### <a name="224-fragment-response"></a>2.2.4-töredék válasz 
 
@@ -189,15 +189,15 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 
 >   A **TfxdBox** elavult, és a függvényt a (z) [ISO/IEC 14496-12] szakasz 8.8.12 szakaszában megadott töredék dekódolási időmező ("tfdt") követése váltja fel.
 > 
->   **Megjegyzés**: Egy ügyfél kiszámíthatja a töredékek időtartamát úgy, hogy összefoglalja a nyomon követett időtartamot ("Trun"), vagy megszorozza a mintavételek alapértelmezett időtartamának időpontját. A "tfdt" baseMediaDecodeTime és a töredék időtartama megegyezik a következő töredék URL-cím-időparaméterével.
+>   **Megjegyzés**: Előfordulhat, hogy egy ügyfél kiszámítja a töredékek időtartamát a futtatási sor ("Trun") mezőben felsorolt mintavételi időtartamok összegzésével, vagy az alapértelmezett mintavételezési időtartammal rendelkező minták számának szorzatával. A "tfdt" baseMediaDecodeTime és a töredék időtartama megegyezik a következő töredék URL-cím-időparaméterével.
 > 
->   Szükség szerint be kell szúrni a termelői hivatkozási idő mezőt ("prft") a Movie fragment Box ("moof") előtt, hogy jelezze a film töredéke mező által hivatkozott, az első minta által hivatkozott, az [ISO/IEC 14496 -12] szakasz 8.16.5.
+>   Szükség szerint be kell szúrni a termelői hivatkozási idő mezőt ("prft") a film töredékének ("moof") előtt, hogy jelezze az első minta által hivatkozott, az [ISO/IEC 14496-12] szakaszban megadott, a film töredékének megadásához szükséges időpontra vonatkozó UTC-időt.
 
 #### <a name="2245-tfrfbox"></a>2.2.4.5 TfrfBox 
 
 >   A **TfrfBox** elavult, és a függvényt a (z) [ISO/IEC 14496-12] szakasz 8.8.12 szakaszában megadott töredék dekódolási időmező ("tfdt") követése váltja fel.
 > 
->   **Megjegyzés**: Egy ügyfél kiszámíthatja a töredékek időtartamát úgy, hogy összefoglalja a nyomon követett időtartamot ("Trun"), vagy megszorozza a mintavételek alapértelmezett időtartamának időpontját. A "tfdt" baseMediaDecodeTime és a töredék időtartama megegyezik a következő töredék URL-cím-időparaméterével. Az előre megtekintett címek elavultak, mert késleltetik az élő adatfolyamot.
+>   **Megjegyzés**: Előfordulhat, hogy egy ügyfél kiszámítja a töredékek időtartamát a futtatási sor ("Trun") mezőben felsorolt mintavételi időtartamok összegzésével, vagy az alapértelmezett mintavételezési időtartammal rendelkező minták számának szorzatával. A "tfdt" baseMediaDecodeTime és a töredék időtartama megegyezik a következő töredék URL-cím-időparaméterével. Az előre megtekintett címek elavultak, mert késleltetik az élő adatfolyamot.
 
 #### <a name="2246-tfhdbox"></a>2.2.4.6 TfhdBox 
 
@@ -213,7 +213,7 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 > 
 >   az [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) definícióban meghatározottak szerint.
 > 
->   Megjegyzés: Ez elkerüli a videó-szinkronizálási hibát, amely a videó lemaradó hangjának a legnagyobb dekódolású képpuffer eltávolítási késleltetésével egyenlő, és fenntartja a bemutató időzítését olyan alternatív töredékek között, amelyek eltérő eltávolítási késésekkel rendelkezhetnek.
+>   Megjegyzés: Ez elkerüli a videó-szinkronizálási hibát, amely a videó lemaradó hangjának a legnagyobb dekódolású képpuffer eltávolítási késleltetésével egyenlő, és a bemutató időzítését is fenntartja az alternatív töredékek között, amelyek eltérő eltávolítási késésekkel rendelkezhetnek.
 > 
 >   Az ebben a szakaszban megadott, a ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) részben meghatározott mezők szintaxisa változatlan marad, kivéve a következőt:
 > 
@@ -247,7 +247,7 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
     MinorVersion = STRING_UINT32
     CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
 
-**Megjegyzés**: A Compatibility Brands "CCFF" és a "iso8" érték azt jelzi, hogy a töredékek megfelelnek a "Common Container File Format" és a Common Encryption [ISO/IEC 23001-7] és az ISO alap Media File Format Edition 4 [ISO/IEC 14496-12].
+**Megjegyzés**: a "CCFF" és a "iso8" kompatibilitási márkák azt jelzik, hogy a töredékek megfelelnek a "Common Container File Format" és a Common encryption [ISO/IEC 23001-7] és ISO Base Media File Format Edition 4 [ISO/IEC 14496-12].
 
 #### <a name="2272-streammanifestbox"></a>2.2.7.2 StreamManifestBox 
 
@@ -276,7 +276,7 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 
 >   A bemutató leírása adatelem a bemutató összes metaadatát beágyazza.
 > 
->   Megjelenítési metaadatok: Metaadatok összessége, amely közös a bemutató összes adatfolyama esetében. A megjelenítési metaadatok a következő mezőkből állnak, amelyek a *2.2.2.1*szakaszban vannak megadva:
+>   Megjelenítési metaadatok: a bemutatóban lévő összes adatfolyamra jellemző metaadatok összessége. A megjelenítési metaadatok a következő mezőkből állnak, amelyek a *2.2.2.1*szakaszban vannak megadva:
 > 
 > * **MajorVersion**
 > * **MinorVersion**
@@ -291,13 +291,13 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
     MajorVersion = 2
     MinorVersion = 2
 
->   LookaheadCount = 0 (Megjegyzés: Elavult mezők)
+>   LookaheadCount = 0 (Megjegyzés: mezők elavult)
 > 
 >   A bemutatókat is be kell állítani:
 
     TimeScale = 90000
 
->   Stream-gyűjtemény: Stream Description adatelemek gyűjteménye, a *3.1.1.1.2*szakaszban meghatározottak szerint.
+>   Stream Collection: A *3.1.1.1.2*szakaszban meghatározott stream Description adatelemek gyűjteménye.
 > 
 >   Védelem leírása: A védelmi rendszer metaadatait leíró adatelemek gyűjteménye a *3.1.1.1.1*szakaszban meghatározottak szerint.
 
@@ -305,7 +305,7 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 
 >   A védelmi rendszer metaadatainak Leírás adateleme egyetlen Content Protection rendszerhez tartozó metaadatokat ágyaz be. (Nincs változás)
 > 
->   Védelmi fejléc leírása: Az egyetlen Content Protection rendszerre vonatkozó tartalomvédelem metaadatai. A védelmi fejléc leírása a következő mezőkből áll, amelyek a *2.2.2.2*szakaszban vannak megadva:
+>   Protection header Description: az egyetlen Content Protection rendszerre vonatkozó tartalomvédelem metaadatai. A védelmi fejléc leírása a következő mezőkből áll, amelyek a *2.2.2.2*szakaszban vannak megadva:
 > 
 >   * **SystemID**
 >   * **ProtectionHeaderContent**
@@ -352,9 +352,9 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 
 ## <a name="51-security-considerations-for-implementers"></a>5,1 biztonsági megfontolások a végrehajtók számára
 
->   Ha a protokoll használatával szállított tartalom magas kereskedelmi értékkel rendelkezik, akkor a tartalom jogosulatlan használatának megakadályozása érdekében Content Protection rendszer használatát kell használni. A **ProtectionElement** használhatók a Content Protection rendszer használatával kapcsolatos metaadatok továbbítására. A védett hang-és videotartalom formátumát az MPEG Common Encryption Second Edition által megadott módon titkosítva kell megadni: 2015 [ISO/IEC 23001-7].
+>   Ha a protokoll használatával szállított tartalom magas kereskedelmi értékkel rendelkezik, akkor a tartalom jogosulatlan használatának megakadályozása érdekében Content Protection rendszer használatát kell használni. A **ProtectionElement** használhatók a Content Protection rendszer használatával kapcsolatos metaadatok továbbítására. A védett hang-és videotartalom formátumát az MPEG Common Encryption Second Edition: 2015 [ISO/IEC 23001-7] által meghatározott módon kell titkosítani.
 > 
->   **Megjegyzés**: A HEVC-videók esetében csak a VCL-NALs található szeletek vannak titkosítva. A szeletek fejlécei és más NALs a visszafejtés előtt elérhetők a bemutató alkalmazások számára. a biztonságos videó elérési útja során a titkosított információk nem érhetők el a bemutató alkalmazások számára.
+>   **Megjegyzés**: a HEVC-videók esetében csak a VCL-NALs lévő slice-adatforgalom titkosítva van. A szeletek fejlécei és más NALs a visszafejtés előtt elérhetők a bemutató alkalmazások számára. a biztonságos videó elérési útja során a titkosított információk nem érhetők el a bemutató alkalmazások számára.
 
 ## <a name="52-index-of-security-parameters"></a>5,2 biztonsági paraméterek indexe 
 

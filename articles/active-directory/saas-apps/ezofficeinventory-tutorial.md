@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ebfe5f75d5d8546e0f5e8ad6f8c5d0063e5bda2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: cc73d7ec81ea0105a5868ec698289bd27526a43b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376447"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893501"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a EZOfficeInventory
 
@@ -94,37 +94,37 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A EZOfficeInventory alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
 1. A fentiek mellett a EZOfficeInventory alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Name (Név) | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ---------------| --------------- |
     | First_name | User. givenName |
     | Last_name | felhasználó. vezetéknév |
-    | E-mail | user.mail |
+    | E-mail cím | User. mail |
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
 1. A **EZOfficeInventory beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
 1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a EZOfficeInventory.
 
@@ -132,7 +132,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alkalmazások listában válassza a **EZOfficeInventory**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -144,13 +144,21 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-ezofficeinventory-sso"></a>EZOfficeInventory SSO konfigurálása
 
-1. Nyisson meg egy új böngészőablakot, és jelentkezzen be a EZOfficeInventory vállalati webhelyre rendszergazdaként.
+1. A EZOfficeInventory belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
-2. A lap jobb felső sarkában kattintson a **profil** elemre, majd navigáljon a beállítások > **bővítmények** **menüpontra** .
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **EZOfficeInventory beállítása** elemre, majd a EZOfficeInventory alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat a EZOfficeInventory való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-5-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+1. Ha manuálisan szeretné beállítani a EZOfficeInventory, nyisson meg egy új böngészőablakot, és jelentkezzen be a EZOfficeInventory vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
+
+1. A lap jobb felső sarkában kattintson a **profil** elemre, majd navigáljon a **Beállítások** > **bővítmények hozzáadása**lehetőségre.
 
     ![EZOfficeInventory-konfiguráció](./media/ezofficeinventory-tutorial/configure01.png)
 
-3. Görgessen le az **SAML-integráció** szakaszra, hajtsa végre a következő lépéseket:
+1. Görgessen le az **SAML-integráció** szakaszra, hajtsa végre a következő lépéseket:
 
     ![EZOfficeInventory-konfiguráció](./media/ezofficeinventory-tutorial/configure02.png)
 
@@ -176,9 +184,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a EZOfficeInventory-ben. A EZOfficeInventory támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a EZOfficeInventory-ben, a rendszer egy újat hoz létre a hitelesítés után.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
 Ha a hozzáférési panelen a EZOfficeInventory csempére kattint, automatikusan be kell jelentkeznie arra a EZOfficeInventory, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
@@ -191,4 +199,3 @@ Ha a hozzáférési panelen a EZOfficeInventory csempére kattint, automatikusan
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [A EZOfficeInventory kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-

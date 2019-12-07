@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-példaszkript – Átalakítás létrehozása | Microsoft Docs
-description: Ezzel az Azure CLI-szkripttel létrehozhat egy Átalakítást.
+description: Az átalakítások feladatokból álló egyszerű munkafolyamatot definiálnak a video- vagy hangfájlok feldolgozásához (ezek „recept” néven is ismertek). A jelen cikkben lévő Azure CLI-szkript bemutatja, hogyan hozhat létre átalakítást.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7fea8d997d25d6075e30620e7fd3527003c6a8bb
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: c21a16d043f972042949d6340985774741b3df6a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128789"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888615"
 ---
 # <a name="cli-example-create-a-transform"></a>CLI-példa: Átalakítás létrehozása
 
@@ -27,7 +27,7 @@ A jelen cikkben lévő Azure CLI-szkript bemutatja, hogyan hozhat létre átalak
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-[A Media Services-fiók létrehozása](create-account-cli-how-to.md).
+[Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
@@ -40,6 +40,6 @@ A jelen cikkben lévő Azure CLI-szkript bemutatja, hogyan hozhat létre átalak
 
 [!code-azurecli-interactive[main](../../../cli_scripts/media-services/create-transform/Create-Transform.sh "Create a transform")]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [az AMS Transform (CLI)](https://docs.microsoft.com/cli/azure/ams/transform?view=azure-cli-latest)

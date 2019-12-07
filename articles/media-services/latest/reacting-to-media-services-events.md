@@ -1,6 +1,6 @@
 ---
 title: Reagálás Azure Media Services eseményekre | Microsoft Docs
-description: Media Services eseményekre való előfizetéshez használja a Azure Event Grid.
+description: Ez a cikk azt ismerteti, hogyan használható a Azure Event Grid az Media Services eseményekre való előfizetéshez.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: 07ad39bdcec6e4b00d3b47553930fc05694ca2af
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: e24bacb0ea7ab406442022915872fc77e9cc1a5e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026617"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887884"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid-események kezelése
 
@@ -42,7 +42,7 @@ Az Media Services eseményeket kezelő alkalmazásoknak néhány ajánlott gyako
 > [!NOTE]
 > Az események a Event Grid [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)hatálya alá esnek. Ha API-kat használó esemény-értesítéseket szeretne kapni, tekintse meg a példákat az események használatáról a [.net SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) -val vagy a [Java SDK](https://github.com/Azure-Samples/media-services-v3-java)-val.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Események figyelése – portál](monitor-events-portal-how-to.md)
 * [Események figyelése – parancssori felület](job-state-events-cli-how-to.md)

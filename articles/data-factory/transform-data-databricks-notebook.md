@@ -1,5 +1,5 @@
 ---
-title: Adat átalakítása Databricks Notebooktal – Azure
+title: Adat átalakítása Databricks Notebooktal
 description: Megtudhatja, hogyan dolgozhat fel és alakíthat át egy Databricks notebook futtatásával.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 685a7863af74bf90c819453b41078b48ab6d2045
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0768c16562a3931249dbbbc8f836ae14e7d0958b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683930"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893994"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Adat átalakítása Databricks-jegyzetfüzet futtatásával
 
@@ -57,7 +57,7 @@ Itt látható a Databricks-jegyzetfüzetek tevékenységének JSON-definíciója
 
 A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat ismerteti:
 
-|Tulajdonság|Leírás|Kötelező|
+|Tulajdonság|Leírás|Szükséges|
 |---|---|---|
 |név|A folyamatban szereplő tevékenység neve.|Igen|
 |leírás|A tevékenység működését leíró szöveg|Nem|
@@ -65,7 +65,7 @@ A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat i
 |linkedServiceName|Azon Databricks társított szolgáltatás neve, amelyen a Databricks-jegyzetfüzet fut. A társított szolgáltatásról a következő témakörben talál további információt: [számítási társított szolgáltatások](compute-linked-services.md) cikk.|Igen|
 |notebookPath|A Databricks-munkaterületen futtatandó jegyzetfüzetek abszolút elérési útja. Ezt az elérési utat perjeltel kell kezdeni.|Igen|
 |baseParameters|Kulcs-érték párok tömbje. Az alapparaméterek az egyes tevékenységek futtatásához használhatók. Ha a jegyzetfüzet nem megadott paramétert használ, a rendszer a jegyzetfüzet alapértelmezett értékét fogja használni. További információ a Databricks- [jegyzetfüzetekben](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)található paraméterekről.|Nem|
-|szalagtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. \<sztring, Object > tömbje lehet.|Nem|
+|könyvtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. \<sztring, Object > tömbje lehet.|Nem|
 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Támogatott kódtárak a Databricks-tevékenységekhez

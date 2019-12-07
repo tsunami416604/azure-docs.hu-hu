@@ -1,5 +1,5 @@
 ---
-title: Adatátalakítás a Spark-tevékenységgel Azure Data Factory
+title: Adatátalakítás a Spark-tevékenységgel
 description: Megtudhatja, hogyan alakíthatja át az adatait Spark-programok futtatásával egy Azure-beli adatfeldolgozó-folyamatból a Spark-tevékenység használatával.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 05/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 5f3bb88d3a2e43abe1776a4b46e4ab35490db8ec
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 27dea39a1ebd2be56c86e4327218c62c5378002d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683750"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893756"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Adatátalakítás a Spark-tevékenységgel Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -58,7 +58,7 @@ Itt látható a Spark-tevékenység JSON-definíciója:
 
 A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat ismerteti:
 
-| Tulajdonság              | Leírás                              | Kötelező |
+| Tulajdonság              | Leírás                              | Szükséges |
 | --------------------- | ---------------------------------------- | -------- |
 | név                  | A folyamatban szereplő tevékenység neve.    | Igen      |
 | leírás           | A tevékenység működését leíró szöveg  | Nem       |
@@ -78,10 +78,10 @@ A Spark-feladatok sokkal bővíthetők, mint a Pig/kaptár feladatok. A Spark-fe
 
 Hozza létre a következő mappastruktúrát a HDInsight társított szolgáltatás által hivatkozott Azure Blob Storage-tárolóban. Ezután töltse fel a függő fájlokat a **entryFilePath**által jelzett gyökérmappa megfelelő almappáiba. Töltse fel például a Python-fájlokat a pyFiles almappában és a jar-fájlokba a gyökérmappa tégelyek almappájába. Futásidőben a Data Factory szolgáltatás a következő mappastruktúrát várja az Azure Blob Storage-ban:     
 
-| Útvonal                  | Leírás                              | Kötelező | Típus   |
+| Útvonal                  | Leírás                              | Szükséges | Type (Típus)   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (root)            | A Spark-feladatokhoz tartozó gyökér elérési útja a Storage társított szolgáltatásban | Igen      | Mappa |
-| &lt;felhasználó által definiált &gt; | A Spark-feladathoz tartozó belépési fájlra mutató elérési út | Igen      | Fájl   |
+| &lt;felhasználó által definiált &gt; | A Spark-feladathoz tartozó belépési fájlra mutató elérési út | Igen      | File   |
 | ./jars                | A rendszer feltölti és elhelyezi a mappa összes fájlját a fürt Java-osztályútvonal. | Nem       | Mappa |
 | ./pyFiles             | A mappa összes fájlja fel van töltve és a fürt PYTHONPATH kerül. | Nem       | Mappa |
 | ./files               | A mappa összes fájlja fel van töltve, és a végrehajtó munkakönyvtárba kerül. | Nem       | Mappa |
@@ -108,7 +108,7 @@ SparkJob2
         script2.py
     logs
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást: 
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65714f67dde79847bf07efda358a4e1f9ea938d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 87cdd5ff303cbb001e482137df1d4241487fc6d2
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028458"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900800"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD-ben a hibrid és a Felhőbeli üzemelő példányokhoz való emelt szintű hozzáférés biztonságossá tétele
 
@@ -44,7 +44,7 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 does the article really start here?-->
 A legtöbb szervezet esetében az üzleti eszközök biztonsága az informatikai rendszereket kezelő és kezelő Kiemelt jogosultságú fiókok integritásának függvénye. A Cyber-támadók az infrastruktúra-rendszerek (például Active Directory és Azure Active Directory) privilegizált hozzáférésére összpontosítanak ahhoz, hogy hozzáférjenek a szervezet bizalmas adatokhoz. 
 
-Azok a hagyományos megközelítések, amelyek a hálózat beléptetési és kilépési pontjainak védelmére összpontosítanak, mivel az elsődleges biztonsági peremhálózat kevésbé hatékony, mivel az SaaS-alkalmazások és a személyes eszközök használata az interneten. Egy összetett modern vállalat hálózati biztonsági területének természetes cseréje a szervezet identitási rétegének hitelesítési és engedélyezési vezérlői.
+Azok a hagyományos megközelítések, amelyek a hálózat beléptetési és kilépési pontjainak védelmére összpontosítanak, mivel az elsődleges biztonsági peremhálózat kevésbé hatékony, mivel az SaaS-alkalmazások és a személyes eszközök használata az interneten. Egy komplex, modern vállalaton belül a hálózati biztonsági határ természetes helyettesítői a szervezet identitáskezelő rétegében található hitelesítés- és engedélyezésvezérlők.
 
 A Kiemelt jogosultságú rendszergazdai fiókok hatékonyan felügyelik az új "biztonsági területet". Kritikus fontosságú a Kiemelt hozzáférés biztosítása, függetlenül attól, hogy a környezet helyszíni, Felhőbeli vagy hibrid helyszíni és felhőben üzemeltetett szolgáltatás-e. A rendszergazdai hozzáférés a meghatározott ellenfelekkel szembeni védelme megköveteli, hogy teljes és átgondolt megközelítést nyújtson a szervezet rendszereinek kockázatokból való elkülönítéséhez. 
 
@@ -94,7 +94,7 @@ A Azure AD Privileged Identity Management bekapcsolása után:
 
 2. A Privileged Identity Management használni kívánt bérlő kiválasztásához válassza ki a felhasználónevet a Azure Portal jobb felső sarkában.
 
-3. Válassza a **minden szolgáltatás** lehetőséget, és szűrje a **Azure ad Privileged Identity Management**listáját.
+3. A Azure Portal menüben válassza a **minden szolgáltatás** lehetőséget, és szűrje a **Azure ad Privileged Identity Management**listáját.
 
 4. Nyissa meg Privileged Identity Management a **minden szolgáltatás** listából, és rögzítse az irányítópulton.
 
@@ -241,7 +241,7 @@ A C-Suite vezetők, a magas szintű vezetők, a kritikus informatikai és bizton
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Dedikált munkaállomások használata az Azure AD felügyeletéhez
 
-A támadók megkísérelheti a Kiemelt fiókok megcélzását arra, hogy hozzáférjenek a szervezet adataihoz és rendszereihez, hogy megzavarják az adatok integritását és hitelességét olyan kártékony kód révén, amely megváltoztatja a program logikáját, vagy Snoops a rendszergazdának a hitelesítő adatok megadásával. Az emelt szintű hozzáférésű munkaállomások (mancsok) dedikált operációs rendszert biztosítanak az internetes támadásokkal és a veszélyforrási vektorokkal védett bizalmas feladatokhoz. Az érzékeny feladatok és fiókok a napi használatú munkaállomásokon és eszközökön való elkülönítése rendkívül erős védelmet biztosít az adathalász támadások, az alkalmazások és az operációs rendszer sebezhetőségei, a különböző megszemélyesítési támadások és a hitelesítő adatok ellopása elleni támadások, például a billentyűleütés naplózás, pass-The-hash és Pass-The-Ticket. Az emelt szintű hozzáférésű munkaállomások üzembe helyezésével csökkentheti annak a kockázatát, hogy a rendszergazdák rendszergazdai hitelesítő adatokat adjanak meg, kivéve a megerősített asztali környezetet. További információ: [privilegizált hozzáférésű munkaállomások](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+A támadók megkísérelheti a Kiemelt fiókok megcélzását arra, hogy hozzáférjenek a szervezet adataihoz és rendszereihez, hogy megzavarják az adatok integritását és hitelességét olyan kártékony kód révén, amely megváltoztatja a program logikáját, vagy Snoops a rendszergazdának a hitelesítő adatok megadásával. Az emelt hozzáférési szintű munkaállomások (Privileged Access Workstation, PAW) az internetről érkező támadások és fenyegetések ellen védett dedikált operációs rendszert biztosítanak a bizalmas feladatokhoz. Az érzékeny feladatok és fiókok a napi használatú munkaállomásokon és eszközökön való elkülönítése rendkívül erős védelmet biztosít az adathalász támadások, az alkalmazások és az operációs rendszer sebezhetőségei, a különböző megszemélyesítési támadások és a hitelesítő adatok ellopása elleni támadások, például a billentyűleütés naplózás, pass-The-hash és Pass-The-Ticket. Az emelt szintű hozzáférésű munkaállomások üzembe helyezésével csökkentheti annak a kockázatát, hogy a rendszergazdák rendszergazdai hitelesítő adatokat adjanak meg, kivéve a megerősített asztali környezetet. További információ: [privilegizált hozzáférésű munkaállomások](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>A National Institute of Standards and Technology ajánlásainak áttekintése az incidensek kezeléséhez 
 
@@ -261,7 +261,7 @@ Ha már használja a Azure AD Privileged Identity Management-t, módosítsa a sz
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Jelszó alapú bejelentkezési protokollok (az Exchange Online használata esetén) való kitettség meghatározása
 
-A múltban a protokollok azt feltételezik, hogy a Felhasználónév/jelszó kombinációk be lettek ágyazva az eszközökbe, e-mail-fiókokba, telefonokra stb. A Felhőbeli számítógépes támadások kockázata azonban azt javasoljuk, hogy azonosítsa az összes olyan felhasználót, aki, ha a hitelesítő adatai illetéktelenek voltak, katasztrofális lehet a szervezet számára, és kizárhatja őket az e-mail-címére a Felhasználónév/jelszó segítségével, erős hitelesítési követelmények és feltételes hozzáférés bevezetésével. [A feltételes hozzáférés használatával blokkolhatja az örökölt hitelesítést](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication). Tekintse át az [alapszintű hitelesítés exchnage online-on keresztül történő blokkolásának](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) részleteit. 
+A múltban a protokollok azt feltételezik, hogy a Felhasználónév/jelszó kombinációk be lettek ágyazva az eszközökbe, e-mail-fiókokba, telefonokra stb. A Felhőbeli számítógépes támadások kockázata azonban azt javasoljuk, hogy azonosítsa az összes olyan felhasználót, aki, ha a hitelesítő adatai illetéktelenek voltak, katasztrofális lehet a szervezet számára, és kizárhatja őket az e-mail-címére a Felhasználónév/jelszó segítségével, erős hitelesítési követelmények és feltételes hozzáférés bevezetésével. [A feltételes hozzáférés használatával blokkolhatja az örökölt hitelesítést](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication). Tekintse át az [alapszintű hitelesítés](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) az Exchange Online-on keresztül történő blokkolásának részleteit. 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Töltse ki az Office 365-szerepkörök felülvizsgálatának értékelését (az Office 365 használata esetén)
 
@@ -302,7 +302,7 @@ Az Azure AD segítségével automatizálhatja a felhasználói identitások lét
 
 #### <a name="integrate-information-protection"></a>Adatvédelem integrálása
 
-A MCAS lehetővé teszi a fájlok vizsgálatát és a szabályzatok Azure Information Protection besorolási címkék alapján történő beállítását, amely lehetővé teszi a felhőben tárolt adatai jobb láthatóságát és felügyeletét. Megvizsgálhatja és osztályozhatja a fájlokat a felhőben, és alkalmazhatja az Azure Information Protection feliratait. További információkért lásd: [Azure Information Protection-integráció](https://docs.microsoft.com/cloud-app-security/azip-integration).
+A MCAS lehetővé teszi a fájlok vizsgálatát és a szabályzatok Azure Information Protection besorolási címkék alapján történő beállítását, amely lehetővé teszi a felhőben tárolt adatai jobb láthatóságát és felügyeletét. Megvizsgálhatja és osztályozhatja a fájlokat a felhőben, és alkalmazhatja az Azure Information Protection feliratait. További információ: [Azure Information Protection integráció](https://docs.microsoft.com/cloud-app-security/azip-integration).
 
 #### <a name="configure-conditional-access"></a>Feltételes hozzáférés konfigurálása
 
@@ -318,7 +318,7 @@ Ha biztosítani szeretné, hogy a felhasználók hozzáférése a csatlakoztatot
 * Az adatszivárgás megakadályozása
 * Csökkentse a kockázatkezelést és az automatizált fenyegetések megelőzését és a házirendek betartatását
 
-Az Cloud App Security SIEM-ügynök integrálja a Cloud App Securityt az SIEM-kiszolgálóval, hogy lehetővé tegye az Office 365-riasztások és-tevékenységek központosított figyelését. Ez a kiszolgálón fut, és lekéri a riasztásokat és tevékenységeket a Cloud App Securityről, és továbbítja azokat az SIEM-kiszolgálóra. További információkért lásd: [SIEM-integráció](https://docs.microsoft.com/cloud-app-security/siem).
+Az Cloud App Security SIEM-ügynök integrálja a Cloud App Securityt az SIEM-kiszolgálóval, hogy lehetővé tegye az Office 365-riasztások és-tevékenységek központosított figyelését. Ez a kiszolgálón fut, és lekéri a riasztásokat és tevékenységeket a Cloud App Securityről, és továbbítja azokat az SIEM-kiszolgálóra. További információ: Siem- [integráció](https://docs.microsoft.com/cloud-app-security/siem).
 
 ## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>4\. fázis: a védelem folytatása proaktív biztonsági helyzetbe
 

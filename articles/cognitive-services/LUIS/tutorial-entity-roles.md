@@ -9,30 +9,30 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: 3e85067439fe412822ac34a065753e9a13c7a506
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488741"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894610"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Oktatóanyag: a kontextussal kapcsolatos adatok kinyerése a teljes tartalomból
 
-Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Például egy forrás-és célhely az egyik városból a másikba történő átvitelhez. Mindkét adathoz szükség lehet, és egymáshoz kapcsolódnak.  
+Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Például egy forrás-és célhely az egyik városból a másikba történő átvitelhez. Mindkét adathoz szükség lehet, és egymáshoz kapcsolódnak.
 
-A szerepkörök bármely előre elkészített vagy egyéni entitás típussal használhatók, és a példaként használt hosszúságú kimondott szöveg és mintákban is használhatók. 
+A szerepkörök bármely előre elkészített vagy egyéni entitás típussal használhatók, és a példaként használt hosszúságú kimondott szöveg és mintákban is használhatók.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
 > * Új alkalmazás létrehozása
-> * Szándék hozzáadása 
+> * Szándék hozzáadása
 > * Forrás-és célhely információinak beolvasása szerepkörök használatával
-> * Betanítás
+> * Tanítás
 > * Közzététel
 > * Leképezések és entitások szerepköreinek beolvasása a végpontból
 
@@ -57,9 +57,9 @@ A kinyerni kívánt entitások esetében egy szerepkört kell használni:
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. 
+1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget.
 
-1. Az előugró párbeszédpanelen írja be a `MoveEmployeeToCity` karakterláncot, majd válassza a **Kész** elemet. 
+1. Az előugró párbeszédpanelen írja be a `MoveEmployeeToCity` karakterláncot, majd válassza a **Kész** elemet.
 
     ![Új szándék létrehozása párbeszédpanel képernyőképe](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
@@ -85,24 +85,24 @@ Az előre elkészített entitás, geographyV2, Kinyeri a hely adatait, beleértv
 
 1. Válassza ki az **entitásokat** a bal oldali navigációs sávon.
 
-1. Válassza az **előre elkészített entitás hozzáadása**lehetőséget, majd a keresési sávban a `geo` gombra kattintva szűrheti az előre elkészített entitásokat. 
+1. Válassza az **előre elkészített entitás hozzáadása**lehetőséget, majd a keresési sávban a `geo` gombra kattintva szűrheti az előre elkészített entitásokat.
 
     ![Előre elkészített geographyV2-entitás hozzáadása az alkalmazáshoz](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 1. Jelölje be a jelölőnégyzetet, majd válassza a **kész**lehetőséget.
-1. Az **entitások** listában válassza ki a **geographyV2** az új entitás megnyitásához. 
-1. Vegyen fel két szerepkört, `Origin`és `Destination`. 
+1. Az **entitások** listában válassza ki a **geographyV2** az új entitás megnyitásához.
+1. Vegyen fel két szerepkört, `Origin`és `Destination`.
 
     ![Szerepkörök hozzáadása előre felépített entitáshoz](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. A bal oldali navigációs sávon válassza a **leképezések** lehetőséget, majd válassza ki a **MoveEmployeeToCity** szándékát. Figyelje meg, hogy a város neve az előre elkészített entitás **geographyV2**van megjelölve.
 1. A lista első teljes tartalmában válassza ki a forrás helyét. Megjelenik egy legördülő menü. A listából válassza a **geographyV2** lehetőséget, majd a **forrás**elem kiválasztásához kövesse a teljes menüt.
-1. Az előző lépés metódusának használatával megjelölheti az összes hely összes szerepkörét az összes hosszúságú kimondott szöveg. 
+1. Az előző lépés metódusának használatával megjelölheti az összes hely összes szerepkörét az összes hosszúságú kimondott szöveg.
 
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Példa hosszúságú kimondott szöveg hozzáadása a none szándékhoz 
+## <a name="add-example-utterances-to-the-none-intent"></a>Példa hosszúságú kimondott szöveg hozzáadása a none szándékhoz
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanítása, hogy tesztelni lehessen a szándék változásait 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanítása, hogy tesztelni lehessen a szándék változásait
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -152,9 +152,9 @@ Az előre elkészített entitás, geographyV2, Kinyeri a hely adatait, beleértv
       ]
     }
     ```
-    
+
     A megfelelő szándék előre jelezve van, és az entitások tömbje a megfelelő **entitások** tulajdonságban található forrás-és célhelyi szerepköröket is tartalmaz.
-    
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
@@ -169,9 +169,9 @@ Az előre elkészített entitás, geographyV2, Kinyeri a hely adatait, beleértv
 * [Tesztelés a LUIS portálon](luis-interactive-test.md)
 * [Szerepkörök](luis-concept-roles.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag egy új szándékot hozott létre, és a forrás-és célhelyek kontextusban megismert hosszúságú kimondott szöveg kapcsolatos példát vett fel. Amint megtörtént az alkalmazás betanítása és közzététele, az ügyfélalkalmazások felhasználhatják az adott információt a megfelelő információt tartalmazó mozgatási jegy létrehozásához.
 
-> [!div class="nextstepaction"] 
-> [Ismerkedés az összetett entitások hozzáadásának módjával](luis-tutorial-composite-entity.md) 
+> [!div class="nextstepaction"]
+> [Ismerkedés az összetett entitások hozzáadásának módjával](luis-tutorial-composite-entity.md)

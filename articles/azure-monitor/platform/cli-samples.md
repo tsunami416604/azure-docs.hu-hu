@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/16/2018
-ms.openlocfilehash: 48ce748a95f58abb060cd6f54ac29c877356f5de
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0def528e0c432ecbc706622f0b8c29c2d610c663
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555586"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893535"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Azure Monitor parancssori felület gyors üzembe helyezési mintái
 Ez a cikk a parancssori felület (CLI) parancsait mutatja be Azure Monitor szolgáltatások elérésének megkönnyítéséhez. A Azure Monitor lehetővé teszi a Cloud Services, a Virtual Machines és a Web Apps autoskálázását, illetve riasztási értesítések küldését vagy webes URL-címek meghívását a konfigurált telemetria-adatok értékei alapján.
@@ -83,7 +83,7 @@ az monitor activity-log list --resource-provider Microsoft.Web \
     --end-time 2016-03-16T00:00:00Z
 ```
 
-## <a name="work-with-alerts"></a>Riasztások használata 
+## <a name="work-with-alerts"></a>A riasztások kezelése 
 > [!NOTE]
 > Jelenleg csak a (klasszikus) riasztások támogatottak a CLI-ben. 
 
@@ -160,7 +160,7 @@ Az ebben a szakaszban található információk segítségével a diagnosztikai 
 az monitor diagnostic-settings list --resource <target resource ID>
 ```
 
-### <a name="create-a-diagnostic-log-setting"></a>Diagnosztikai napló beállításainak létrehozása 
+### <a name="create-a-diagnostic-setting"></a>Diagnosztikai beállítás létrehozása 
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

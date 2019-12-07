@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: 15a0e27f3f96eda27182e8437dc95d047f56e260
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 42bcc336bfeb325a08c3d65438d66690c0b35100
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815292"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896409"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Egyéni kulcsszó létrehozása a Speech Service használatával
 
@@ -50,17 +50,29 @@ Egyéni kulcsszó használata előtt létre kell hoznia egy kulcsszót a [Speech
 
 1. Lépjen a [Speech studióba](https://aka.ms/sdsdk-speechportal) , és **Jelentkezzen be** , vagy ha még nem rendelkezik beszédfelismerési előfizetéssel, válassza az [**előfizetés létrehozása**](https://go.microsoft.com/fwlink/?linkid=2086754)lehetőséget.
 
-1. Az [egyéni kulcsszó](https://aka.ms/sdsdk-wakewordportal) lapon írja be a kívánt kulcsszót, majd kattintson a **kulcsszó hozzáadása**lehetőségre. Van néhány [irányelvünk](#choose-an-effective-keyword) , amely segítséget nyújt egy hatékony kulcsszó kiválasztásához. A támogatás jelenleg az en-US nyelvre korlátozódik.
+1. Az [egyéni kulcsszó](https://aka.ms/sdsdk-wakewordportal) lapon hozzon létre egy **új projektet**. 
 
-    ![Adja meg a kulcsszót](media/speech-devices-sdk/custom-kws-portal-enter-keyword.png)
+1. Adjon meg egy **nevet**, egy opcionális **leírást**, és válassza ki a nyelvet. Nyelv és támogatás esetén egy projektre lesz szüksége, és jelenleg csak az en-US nyelvre korlátozódik.
 
-1. A portál mostantól jelölt kiejtéseket hoz létre a kulcsszava számára. Hallgassa meg az egyes jelölteket a lejátszás gombokra kattintva, és távolítsa el az összes helytelen kiejtés melletti ellenőrzéseket. Ha csak a jó kiejtéseket jelölte be, válassza a **Submit (Küldés** ) lehetőséget a kulcsszó létrehozásának megkezdéséhez. Ha módosítani szeretné a kulcsszót, először távolítsa el a meglévőt úgy, hogy a sor jobb oldalán megjelenő Törlés gombra kattint, miközben fölé viszi.
+    ![A kulcsszavas projekt leírása](media/custom-keyword/custom-kws-portal-new-project.png)
 
-    ![A kulcsszó áttekintése](media/speech-devices-sdk/custom-kws-portal-review-keyword.png)
+1. Válassza ki a projektet a listából. 
 
-1. A modell létrehozása akár egy percet is igénybe vehet. Ekkor a rendszer kérni fogja a fájl letöltését.
+    ![Válassza ki a kulcsszavas projektet](media/custom-keyword/custom-kws-portal-project-list.png)
 
-    ![A kulcsszó letöltése](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
+1. Új kulcsszavas modell indításához kattintson a **betanítási modell**elemre.
+
+1. Adja meg a kulcsszó-modell **nevét** , és ha szükséges, a **leírást** és a típust az Ön által választott **kulcsszóra** , majd kattintson a **tovább**gombra. Van néhány [irányelvünk](#choose-an-effective-keyword) , amely segítséget nyújt egy hatékony kulcsszó kiválasztásához.
+
+    ![Adja meg a kulcsszót](media/custom-keyword/custom-kws-portal-new-model.png) 
+
+1. A portál mostantól jelölt kiejtéseket hoz létre a kulcsszava számára. Hallgassa meg az egyes jelölteket a lejátszás gombokra kattintva, és távolítsa el az összes helytelen kiejtés melletti ellenőrzéseket. Ha csak a jó kiejtéseket jelölte be, kattintson a **betanítás** gombra a kulcsszó generálásának megkezdéséhez. 
+
+    ![A kulcsszó áttekintése](media/custom-keyword/custom-kws-portal-choose-prons.png) 
+
+1. A modell létrehozása akár tíz percet is igénybe vehet. A kulcsszó listája a **feldolgozástól** a **sikeres** modell befejeződése után módosul. Ezután letöltheti a fájlt.
+
+    ![A kulcsszó áttekintése](media/custom-keyword/custom-kws-portal-download-model.png) 
 
 1. Mentse a. zip fájlt a számítógépére. Erre a fájlra szüksége lesz az egyéni kulcsszó üzembe helyezéséhez az eszközön.
 

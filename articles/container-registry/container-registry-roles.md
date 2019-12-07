@@ -2,17 +2,17 @@
 title: RBAC szerepkörei és engedélyei
 description: Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) és az identitás-és hozzáférés-kezelés (IAM) használatával részletes engedélyeket biztosíthat az Azure Container Registry erőforrásaihoz.
 ms.topic: article
-ms.date: 03/20/2019
-ms.openlocfilehash: 8ef4f26dfd59c7b3b177ef58fa23e08f7e66d328
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 12/02/2019
+ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456236"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893484"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Szerepkörök és engedélyek Azure Container Registry
 
-A Azure Container Registry szolgáltatás olyan Azure-szerepköröket támogat, amelyek különböző szintű engedélyeket biztosítanak egy Azure Container Registry-nek. Az Azure [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) használatával olyan konkrét engedélyeket rendelhet a felhasználókhoz vagy egyszerű szolgáltatásokhoz, amelyeknek a beállításjegyzékkel kell működniük.
+A Azure Container Registry szolgáltatás olyan [beépített Azure-szerepköröket](../role-based-access-control/built-in-roles.md) támogat, amelyek különböző szintű engedélyekkel rendelkeznek az Azure Container registryben. Az Azure [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) használatával konkrét engedélyeket rendelhet a felhasználókhoz, a szolgáltatásokhoz vagy más identitásokhoz, amelyeknek a beállításjegyzékkel kell működniük. 
 
 | Szerepkör/engedély       | [Hozzáférés a Resource Managerhez](#access-resource-manager) | [Beállításjegyzék létrehozása/törlése](#create-and-delete-registry) | [Leküldéses rendszerkép](#push-image) | [Lekéréses rendszerkép](#pull-image) | [Rendszerkép-adatok törlése](#delete-image-data) | [Szabályzatok módosítása](#change-policies) |   [Képek aláírása](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -68,8 +68,25 @@ Szabályzatok konfigurálása a beállításjegyzékben. A szabályzatok közé 
 
 Képes a képek aláírására, általában egy automatizált folyamathoz rendelve, amely egy egyszerű szolgáltatást használ. Ez az engedély általában [leküldéses képpel](#push-image) kombinálva lehetővé teszi a megbízható rendszerképek beállításjegyzékbe való leküldését. Részletekért lásd: [a tartalom megbízhatósága Azure Container Registryban](container-registry-content-trust.md).
 
+## <a name="custom-roles"></a>Egyéni szerepkörök
+
+A többi Azure-erőforráshoz hasonlóan saját [Egyéni szerepkörök](../role-based-access-control/custom-roles.md) is létrehozhatók részletes engedélyekkel a Azure Container Registryához. Ezután rendelje hozzá az egyéni szerepköröket a felhasználókhoz, a szolgáltatásokhoz, vagy más identitásokhoz, amelyeknek a beállításjegyzékben kell működniük. 
+
+Annak megállapításához, hogy mely engedélyeket kell alkalmazni az egyéni szerepkörre, tekintse meg a Microsoft. ContainerRegistry [műveletek](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry)listáját, tekintse át a [beépített ACR-szerepkörök](../role-based-access-control/built-in-roles.md)engedélyezett műveleteit, vagy futtassa a következő parancsot:
+
+```azurecli
+az provider operation show --namespace Microsoft.ContainerRegistry
+```
+
+Egyéni szerepkör definiálásához tekintse meg az [Egyéni szerepkör létrehozásához szükséges lépéseket](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role).
+
+> [!IMPORTANT]
+> Egy egyéni szerepkörben a Azure Container Registry jelenleg nem támogatja a helyettesítő karaktereket (például `Microsoft.ContainerRegistry/*` vagy `Microsoft.ContainerRegistry/registries/*`), amelyek hozzáférést biztosítanak az összes egyező művelethez. A szerepkörben egyenként határozza meg a szükséges műveleteket.
+
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ a RBAC-szerepkörök Azure-identitáshoz való hozzárendeléséről a [Azure Portal](../role-based-access-control/role-assignments-portal.md), az [Azure CLI](../role-based-access-control/role-assignments-cli.md)vagy más Azure-eszközök használatával.
 
 * További információ a Azure Container Registry [hitelesítési lehetőségeiről](container-registry-authentication.md) .
+
+* Ismerje meg, hogyan engedélyezhető az [adattár – hatókörön belüli engedélyek](container-registry-repository-scoped-permissions.md) (előzetes verzió) egy tároló-beállításjegyzékben.

@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services-feladathoz tartozó bemenet létrehozása helyi fájlból | Microsoft Docs
-description: Ez a témakör azt mutatja be, hogyan lehet feladatot létrehozni egy helyi fájlból.
+description: Ez a cikk bemutatja, hogyan hozhat létre egy Azure Media Services-feladathoz tartozó bemenetet egy helyi fájlból.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: juliako
-ms.openlocfilehash: 94ac332867d46deb426672fbc40cc72cc121fe64
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: a91305f1c5bfb50e0354dc0054d1a149182d921f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998140"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888444"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Feladathoz tartozó bevitel létrehozása helyi fájlból
 
@@ -42,8 +42,8 @@ A következő kódrészlet elküld egy kódolási feladatot:
 
 ## <a name="job-error-codes"></a>Feladathibakódok
 
-Lásd [](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode): hibakódok.
+Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hozzon létre egy feladatot a HTTPS URL-címről](job-input-from-http-how-to.md).

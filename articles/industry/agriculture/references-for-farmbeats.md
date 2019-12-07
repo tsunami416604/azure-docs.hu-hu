@@ -1,89 +1,91 @@
 ---
-title: FarmBeats-referenciák
+title: Az Azure FarmBeats referenciái
 description: ''
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: efd294910531509d736dbda274406bd7c801c124
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8efc98ad2785a9052244556bddc60a5ba34bd3d8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931203"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900395"
 ---
-# <a name="references"></a>Referencia
+# <a name="references"></a>Tudástár
 
-Az alábbiakban az Azure FarmBeats API-kat vázoló megjegyzések és utasítások gyűjteménye látható.
+Ez a cikk az Azure FarmBeats API-kat ismerteti.
 
 ## <a name="rest-api"></a>REST API
 
-Az Azure FarmBeats API-k egy szabványosított REST-felületet biztosító, JSON-alapú válaszokat biztosítanak a mezőgazdaság számára, és ez segít az Azure FarmBeats-képességek kihasználása során:
+Az Azure FarmBeats API-k szabványosított REST-felületet biztosító, JSON-alapú válaszokat biztosítanak a mezőgazdasági vállalkozásoknak az Azure FarmBeats képességeinek kihasználása érdekében, például:
 
-- Az API-k az érzékelő, a kamera, a drone, az időjárás, a szatellit és a kurátori alapok beszerzéséhez szükségesek.
-- A Common adatszolgáltatókon keresztüli adatnormalizálás/contextualization.
+- API-k az érzékelő, a kamera, a drone, az időjárás, a műhold és a megválogatott alapértékek beszerzéséhez.
+- Az adatnormalizálás és contextualization a közös adatszolgáltatókon keresztül.
 - Sematikus hozzáférés és lekérdezési képességek az összes betöltött adattal kapcsolatban.
-- A lekérdezhető metaadatok automatikus generálása agronómiai-funkciók alapján.  
+- A lekérdezhető metaadatok automatikus generálása agronómiai-funkciók alapján. 
 - Automatikusan generált idősorozat-összesítések a gyors modell-létrehozáshoz.
-- Az integrált Azure Data Factory (ADF) motor segítségével egyszerűen hozhat létre egyéni adatfeldolgozási folyamatokat.
+- Integrált Azure Data Factory motor, amellyel egyszerűen hozhat létre egyéni adatfeldolgozási folyamatokat.
 
 ## <a name="application-development"></a>Alkalmazásfejlesztés
 
-Az API-k a hencegés műszaki dokumentációját tartalmazzák. [Tekintse meg az API](https://aka.ms/FarmBeatsDatahubSwagger) -k és a hozzájuk tartozó kérések/válaszok információit.
+A FarmBeats API-k hencegő technikai dokumentációt tartalmaznak. Az API-kkal és a hozzájuk kapcsolódó kérésekkel és válaszokkal kapcsolatos információkért lásd: [hencegés](https://aka.ms/FarmBeatsDatahubSwagger).
 
-Ez a FarmBeats-adatközpontban lévő összes objektum/erőforrás összegzése:
+A következő táblázat összefoglalja a FarmBeats Datahub összes objektumát és erőforrását.
 
-Farm | A farm a FarmBeats rendszeren belüli fizikai helynek felel meg. Minden Farm rendelkezik egy farm nevével és egy egyedi Farm-AZONOSÍTÓval.
+| Objektumok és erőforrások | Leírás
 --- | ---|
-Eszköz  | Az eszköz megfelel a farmban lévő fizikai eszköznek. Minden eszköz egyedi AZONOSÍTÓval rendelkezik. Az eszköz általában Farm-AZONOSÍTÓval rendelkező farmhoz van kiépítve.
-DeviceModel  | A DeviceModel megfelel az eszköz meta-adatának, például a gyártónak, az eszköz típusának vagy átjárónak vagy csomópontnak.
+Farm | A farm a FarmBeats rendszeren belüli fizikai helynek felel meg. Minden Farm rendelkezik egy farm nevével és egy egyedi Farm-AZONOSÍTÓval. |
+Eszköz  | Az eszköz megfelel a farmon található fizikai eszköznek. Minden eszköz egyedi AZONOSÍTÓval rendelkezik. Az eszközök általában Farm-AZONOSÍTÓval rendelkező farmhoz vannak kiépítve.
+DeviceModel  | A DeviceModel az eszköz metaadatainak felelnek meg, például a gyártó és az eszköz típusa, amely átjáró vagy csomópont lehet.
 Érzékelő  | Az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.
-SensorModel  | A SensorModel megfelel az érzékelő meta-adattípusának, például a gyártónak, az érzékelő típusának az analóg vagy a digitális, az érzékelő mértékének (például a környezeti hőmérséklet, a nyomás stb.).
+SensorModel  | A SensorModel megfelel az érzékelő metaadatainak, például a gyártó, az érzékelő típusa, amely az analóg vagy a digitális, valamint az érzékelő mérése, például a környezeti hőmérséklet és a nyomás.
 Telemetria  | A telemetria lehetővé teszi egy adott érzékelő és időtartomány telemetria-üzeneteinek olvasását.
-Feladat  | A feladat megfelel a tevékenységek munkafolyamatainak, amelyeket a rendszer a FarmBeats rendszeren hajt végre a kívánt kimenet beszerzéséhez. Mindegyik feladattípus egy adott AZONOSÍTÓJÚ és feladattípushoz van társítva.
-JobType  | A JobType a rendszer által támogatott különböző feladatoknak felel meg. Ez magában foglalja a rendszer által definiált & felhasználó által definiált feladattípusokat.
-ExtendedType  | A ExtendedType megfelel a rendszer & felhasználó által definiált típusai listájának. Ezzel a beállítással új érzékelőt vagy jelenetet vagy Scenefile-típust hozhat a FarmBeats rendszerbe.
-Partnerek  | A partner megfelel a FarmBeats érzékelő-és képintegrációs partnerének
+Feladat  | A feladat megfelel a FarmBeats rendszer által a kívánt kimenet megszerzéséhez végrehajtott tevékenységek munkafolyamatainak. Mindegyik feladattípus egy adott AZONOSÍTÓJÚ és feladattípushoz van társítva.
+JobType  | A JobType a rendszer által támogatott különböző feladatoknak felel meg. A rendszer által definiált és felhasználó által definiált feladattípusok szerepelnek benne.
+ExtendedType  | A ExtendedType megfelel a rendszer és a felhasználó által definiált típusok listájának. A ExtendedType segítségével új érzékelő, jelenet vagy jelenet típusú fájl állítható be a FarmBeats rendszerbe.
+Partnerek  | A partner megfelel a FarmBeats érzékelő-és képintegrációs partnerének.
 Jelenet  | A jelenet a farm környezetében generált kimenetnek felel meg. Minden jelenet rendelkezik egy jelenet-AZONOSÍTÓval, egy jelenet forrásával, a jelenet típusával és a hozzá társított Farm-AZONOSÍTÓval. Minden egyes jelenet-AZONOSÍTÓhoz több jelenet is tartozhat.
-SceneFile |A SceneFile az összes fájlnak felel meg, amelyek egyetlen jelenethez jönnek létre. Egyetlen jelenet-AZONOSÍTÓhoz több SceneFile-azonosító is tartozhat.
-Szabály  |A szabály megfelel a farmhoz kapcsolódó, riasztást kiváltó adat feltételének. Mindegyik szabály a farm adattartalmának kontextusában fog megjelenni.
-Riasztás  | A riasztás megfelel egy értesítésnek, amely akkor jön létre, amikor egy szabály feltétele teljesül. Minden riasztás egy szabály kontextusában fog megjelenni.
+SceneFile |A SceneFile az egyetlen jelenethez létrehozott összes fájlnak felel meg. Egyetlen jelenet-AZONOSÍTÓhoz több SceneFile-azonosító is tartozhat.
+Szabály  |A szabály megfelel a farmhoz kapcsolódó, riasztást kiváltó adat feltételének. Mindegyik szabály egy farm adattartalmának kontextusában van.
+Riasztás  | A riasztás megfelel egy értesítésnek, amely akkor jön létre, amikor egy szabály feltétele teljesül. Minden riasztás egy szabály kontextusában van.
 Definíciós  | A definíciós az engedélyezett és a nem engedélyezett műveleteket definiálja egy szerepkörhöz.
 RoleAssignment  |A RoleAssignment megfelel a szerepkör felhasználóhoz vagy egyszerű szolgáltatáshoz való hozzárendelésének.
 
-**Adatformátum**
+### <a name="data-format"></a>Adatformátum
 
-A JSON (JavaScript Object Notation) egy közös, nyelvtől független adatformátum, amely tetszőleges adatstruktúrák egyszerű szöveges ábrázolását teszi lehetővé. További információ: json.org.
+A JSON egy közös nyelvtől független adatformátum, amely tetszőleges adatstruktúrák egyszerű szöveges ábrázolását teszi lehetővé. További információ: [JSON-webhely](https://www.json.org/).
 
 ## <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 
 A REST API HTTP-kérelmeket az Azure Active Directory (Azure AD) védi.
-Ahhoz, hogy a REST API-khoz hitelesített kérelmet lehessen készíteni, az ügyfél kódjának az API meghívása előtt érvényes hitelesítő adatokkal kell rendelkeznie a hitelesítéshez. A hitelesítés a különböző szereplők által az Azure AD-ben van koordinálva, és a hitelesítést igazoló hozzáférési jogkivonattal látja el az ügyfelet. Ezután a jogkivonat a REST API kérelmek HTTP-engedélyezési fejlécében lesz elküldve. Az Azure AD-hitelesítéssel kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory](https://portal.azure.com) fejlesztők számára című témakört.
+Ahhoz, hogy a REST API-khoz hitelesített kérelmet lehessen készíteni, az ügyfél kódjának az API meghívása előtt érvényes hitelesítő adatokkal kell rendelkeznie a hitelesítéshez. A hitelesítés a különböző szereplők által az Azure AD-ben koordinálva van. Hozzáférési jogkivonattal látja el az ügyfelet a hitelesítés bizonyítékaként. Ezután a jogkivonat a REST API kérelmek HTTP-engedélyezési fejlécében lesz elküldve. Az Azure AD-hitelesítéssel kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory](https://portal.azure.com) fejlesztők számára című témakört.
 
-A hozzáférési tokent a következő API-kérelmekben kell elküldeni a fejléc szakaszban:
+A hozzáférési jogkivonatot a következő API-kérelmekben kell elküldeni a fejléc szakaszban, ahogy:
 
 ```
 headers = {"Authorization": "Bearer " + **access_token**}
 ```
 
-**HTTP-kérelmek fejlécei**
+### <a name="http-request-headers"></a>HTTP-kérelmek fejlécei
 
-Az Azure FarmBeats-adatközpont API-hívásának megadásához az alábbi leggyakoribb kérelmeket tartalmazó fejléceket kell megadni:
+Az Azure FarmBeats Datahub API-hívásakor a leggyakoribb kérések fejléceit kell megadnia.
 
 
 **Fejléc** | **Leírás és példa**
 --- | ---
-Content-Type  | A kérelem formátuma (Content-Type: Application/<format>) az Azure FarmBeats adatközpont API-formátuma JSON. Content-Type: Application/JSON
-Engedélyezés  | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. **Engedélyezés: tulajdonos < hozzáférés-token >**
-fogadja el | A válasz formátuma. Az Azure FarmBeats adatközponti API-k formátuma a következő **: JSON Accept (alkalmazás/JSON** )
+Tartalomtípus  | A kérelem formátuma (Content-Type: Application/<format>). Az Azure FarmBeats Datahub API-k formátuma a következő: JSON. Content-Type: Application/JSON
+Engedélyezés  | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos < hozzáférés-token >
+Elfogadás | A válasz formátuma. Az Azure FarmBeats Datahub API-k formátuma a következő: JSON. Elfogadás: alkalmazás/JSON
 
-**API-kérelmek**
+### <a name="api-requests"></a>API-kérelmek
 
-REST API kérelem elvégzéséhez kombinálja a HTTP-(GET, POST, PUT vagy DELETE) metódust, az API szolgáltatás URL-címét, az erőforráshoz tartozó URI-t a lekérdezéshez, az adatküldés frissítéséhez vagy törléséhez, valamint egy vagy több HTTP-kérelem fejlécéhez.
+REST API kérelem elvégzéséhez kombinálja a HTTP-(GET, POST, PUT vagy DELETE) metódust, az API szolgáltatás URL-címét, az erőforráshoz tartozó URI-t a lekérdezéshez, az adatküldéshez, a frissítéshez vagy a törléshez, majd adjon hozzá egy vagy több HTTP-kérelem fejlécét.
 
-Az API-szolgáltatás URL-címe az adatközpont URL-címe https://\<yourdatahub-website-Name >. azurewebsites. net opcionálisan lekérheti a lekérdezési paramétereket is a szűréshez, a méretének korlátozásához és a válaszokban szereplő adatok rendezéséhez.
+Az API-szolgáltatás URL-címe a Datahub URL-címe, például https://\<yourdatahub-web-Name >. azurewebsites. net.
+Igény szerint a lekérdezési paramétereket is megadhatja a szűréshez, korlátozhatja az adatok méretét, és rendezheti a válaszokat.
 
-Az alábbi példa az eszközök listájának beszerzésére szolgál:
+Az eszközök listájának beolvasásához a következő minta-kérelem használható:
 
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
@@ -91,34 +93,34 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-T
 
 A legtöbb GET, POST és PUT híváshoz JSON-kérést tartalmazó törzs szükséges.
 
-Az alábbi példa egy eszköz létrehozását mutatja be (ez egy bemeneti JSON-t tartalmaz a kérés törzsével).
+A következő minta-kérelem létrehoz egy eszközt. Ez a kérelem a JSON-t a kérelem törzsében adja meg.
 
 ```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
-**Lekérdezési paraméterek**
+### <a name="query-parameters"></a>Lekérdezési paraméterek
 
-**Rest-** hívások esetén a kérések URI-ja alapján szűrheti, korlátozhatja és rendezheti az adatok méretét, és egy vagy több lekérdezési paramétert is megadhat. A lekérdezési paraméterekért tekintse meg az API dokumentációját, és tekintse meg az egyes GET hívásokat.
-Például az eszközök listájának lekérdezésekor (hívás a/Device) a következő lekérdezési paramétereket lehet megadni:  
+REST-hívások esetén a kérések URI-ja alapján szűrheti, korlátozhatja és rendezheti az adatok méretét, és egy vagy több lekérdezési paramétert is megadhat. A lekérdezési paraméterekért tekintse meg az API dokumentációját és az egyes GET hívásokat.
+Ha például lekérdezi az eszközök listáját (/Device hívása), a következő lekérdezési paramétereket lehet megadni: 
 
-![A Project Farm veri](./media/for-references/query-parameters-device-1.png)
+![Készülékek listája](./media/for-references/query-parameters-device-1.png)
 
-**Hibakezelés**
+### <a name="error-handling"></a>Hibakezelés
 
-Az Azure FarmBeats adatközponti API-k a szabványos HTTP-hibákat adják vissza. A leggyakoribb hibakódok a következők:
+Az Azure FarmBeats Datahub API-jai a szabványos HTTP-hibákat adják vissza. A leggyakoribb hibakódok a következők:
 
  |Hibakód             | Leírás |
  |---                    | --- |
  |200                    | Sikeres |
  |201                    | Sikeres létrehozás (post) |
- |400                    | Hibás kérelem. Hiba történt a kérelemben |
- |401                    | Jogosulatlan. Az API hívója nem jogosult az erőforrás elérésére |
+ |400                    | Hibás kérelem. Hiba történt a kérelemben. |
+ |401                    | Jogosulatlan. Az API hívója nem jogosult az erőforrás elérésére. |
  |404                    | Az erőforrás nem található |
  |5XX                    | Belső kiszolgálóhiba. A 5XX-től kezdődő hibakódok azt jelzik, hogy hiba történt a kiszolgálón. További részletekért tekintse meg a kiszolgáló naplófájljait és a következő szakaszt. |
 
 
-A szabványos HTTP-hibák mellett az Azure FarmBeats adatközpont API-jai a belső hibákat is visszaküldik az alábbi formátumban:
+A szabványos HTTP-hibák mellett az Azure FarmBeats Datahub API-k a következő formátumban is visszaadnak belső hibákat:
 
 ```json
     {
@@ -129,7 +131,7 @@ A szabványos HTTP-hibák mellett az Azure FarmBeats adatközpont API-jai a bels
     }
 ```
 
-Példa: Farm létrehozásakor a "Name" kötelező mezőt nem adták meg a bemeneti adattartalomban. Az eredményül kapott hibaüzenet a következő:
+Ebben a példában a farm létrehozásakor a kötelező "Name" mező nem lett megadva a bemeneti adattartalomban. Az eredményül kapott hibaüzenet a következő:
 
  ```json    
     {
@@ -140,33 +142,33 @@ Példa: Farm létrehozásakor a "Name" kötelező mezőt nem adták meg a bemene
     }
   ```
 
-## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>Felhasználók vagy alkalmazások regisztrációjának hozzáadása a Azure Active Directoryhoz
+## <a name="add-users-or-app-registrations-to-azure-active-directory"></a>Felhasználók vagy alkalmazások regisztrációjának hozzáadása a Azure Active Directory
 
-Az Azure FarmBeats API-kat egy felhasználó vagy egy alkalmazás-regisztráció is elérheti a Azure Active Directoryban. Az alábbi lépések végrehajtásával hozhat létre egy alkalmazást a Azure Active Directoryon:  
+Az Azure FarmBeats API-kat egy felhasználó vagy egy alkalmazás-regisztráció Azure Active Directoryban érheti el. Ha Azure Active Directory szeretné létrehozni az alkalmazás regisztrációját, kövesse az alábbi lépéseket.
 
-1. Lépjen a [Azure Portal](https://portal.azure.com) **Azure Active Directory, Alkalmazásregisztrációk**> **új regisztráció**elemre. Másik lehetőségként használhat egy meglévő fiókot is.
-2. Új fiók esetén a következőket kell elvégeznie:
+1. Lépjen a [Azure Portalra](https://portal.azure.com), és válassza a **Azure Active Directory** > **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget. Másik lehetőségként használhat egy meglévő fiókot is.
+2. Új fiók esetén tegye a következőket:
 
-    - Név megadása
-    - **Csak az ebben a szervezeti könyvtárban lévő fiókok kijelölése (egyetlen bérlő)**
-    - A többi mező alapértelmezett értékei
-    - **Regisztráció** kiválasztása
+    - Adjon meg egy nevet.
+    - **Csak a szervezeti címtárban válassza ki a fiókokat (egyetlen bérlő)** .
+    - Használja a többi mező alapértelmezett értékeit.
+    - Kattintson a **Register** (Regisztrálás) elemre.
 
-3. Az új/meglévő alkalmazás-regisztráció **áttekintése**után végezze el a következőket:
+3. Az új és meglévő alkalmazás-regisztráció **– Áttekintés** panelen tegye a következőket:
 
     - Rögzítse az **ügyfél-azonosítót** és a **bérlő azonosítóját**.
     - Nyissa meg a **tanúsítványokat és a titkokat** egy új ügyfél-titkos kód létrehozásához, és rögzítse az **ügyfél titkos kulcsát**.
-    - Lépjen vissza az áttekintésre, és kattintson az **alkalmazás kezelése a helyi címtárban** elemre.
-    - Válassza a **Tulajdonságok** lehetőséget az **objektumazonosító** rögzítéséhez
+    - Lépjen vissza az **Áttekintés**elemre, és válassza az **alkalmazás kezelése a helyi címtárban**lehetőséget.
+    - Az **objektumazonosító**rögzítéséhez lépjen a **Tulajdonságok menüpontba** .
 
-4. Nyissa meg az [adatközpont feladatát](https://<yourdatahub>.azurewebsites.net/swagger/index.html) , és hajtsa végre a következő lépéseket:
-    - Navigáljon a **ROLEASSIGNMENT API** -hoz
-    - Az imént létrehozott **objektumazonosító** RoleAssignment létrehozásához **tegye** a következőt:. – A bemeneti JSON:
+4. Nyissa meg a [Datahub](https://<yourdatahub>.azurewebsites.net/swagger/index.html) , és tegye a következőket:
+    - Nyissa meg a **ROLEASSIGNMENT API**-t.
+    - A POST művelettel hozzon létre egy **RoleAssignment** objektumot az imént létrehozott **objektumazonosító** számára. 
 
   > [!NOTE]
-  > A felhasználók és az AD-regisztráció hozzáadásával kapcsolatos további információkért lásd: [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) .
+  > A felhasználók hozzáadásával és Active Directory regisztrációval kapcsolatos további információkért lásd: [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-A fenti lépések elvégzése után az alkalmazás regisztrálása (ügyfél) egy hozzáférési jogkivonat használatával hívhatja meg az Azure FarmBeats API-kat a tulajdonosi hitelesítésen keresztül.  
+Az előző lépések befejezése után az alkalmazás regisztrálása (ügyfél) az Azure FarmBeats API-kat a tulajdonosi hitelesítésen keresztül egy hozzáférési jogkivonat használatával hívhatja meg. 
 
 A hozzáférési jogkivonat segítségével küldje el azt a következő API-kérelmekben a fejléc szakaszban, ahogy:
 

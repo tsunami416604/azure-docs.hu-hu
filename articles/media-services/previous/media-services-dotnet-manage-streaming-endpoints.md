@@ -1,6 +1,6 @@
 ---
-title: .NET SDK-val streamelési végpontok kezelése. | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan streamvégpontok skálázása az Azure portal használatával.
+title: Adatfolyam-végpontok kezelése a .NET SDK-val. | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan kezelheti a folyamatos átviteli végpontokat a Azure Portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,46 +15,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 0222450e1b85c255f2028adff750b9257f109be7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6c6fccd473ae57139c0b46bf32dc9468a4ba1a8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464963"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901272"
 ---
-# <a name="manage-streaming-endpoints-with-net-sdk"></a>.NET SDK-val streamelési végpontok kezelése  
+# <a name="manage-streaming-endpoints-with-net-sdk"></a>Streaming-végpontok kezelése a .NET SDK-val  
 
 >[!NOTE]
->Mindenképpen tekintse át a [áttekintése](media-services-streaming-endpoints-overview.md) cikk. Ezenkívül tekintse át a [Streamvégpontok](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+>Ügyeljen rá, hogy tekintse át az [áttekintő](media-services-streaming-endpoints-overview.md) cikket. Továbbá tekintse át a [streamvégpontok](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
 
-Ebben a cikkben a kódot mutatja be az Azure Media Services .NET SDK használatával a következő feladatokat végezheti el:
+A cikkben szereplő kód bemutatja, hogyan végezheti el a következő feladatokat a Azure Media Services .NET SDK használatával:
 
-- Vizsgálja meg az alapértelmezett streamvégpontot.
-- Új streamvégpont létrehozása/felvételéhez.
+- Vizsgálja meg az alapértelmezett folyamatos átviteli végpontot.
+- Új folyamatos átviteli végpont létrehozása/hozzáadása.
 
-    Előfordulhat, hogy szeretné több streamvégpontok rendelkezik, ha azt tervezi, hogy a különböző CDN vagy egy CDN-t és a közvetlen hozzáférést.
+    Előfordulhat, hogy több folyamatos átviteli végponttal szeretne rendelkezni, ha különböző CDNs vagy CDN-t vagy közvetlen hozzáférést tervez.
 
     > [!NOTE]
-    > Ha a futó állapotban van a folyamatos átviteli végponton csak számolunk fel.
+    > Csak akkor számítunk fel díjat, ha a folyamatos átviteli végpont fut állapotban van.
     
-- A streamvégpont frissítéséhez.
+- Frissítse a folyamatos átviteli végpontot.
     
-    Ellenőrizze, hogy Update() függvény.
+    Győződjön meg arról, hogy az Update () függvényt hívja meg.
 
-- Törölje a tartalomstreameléshez használt streamvégpont.
+- Törölje a streaming végpontot.
 
     >[!NOTE]
-    >Nem lehet törölni az alapértelmezett streamvégpontot.
+    >Az alapértelmezett folyamatos átviteli végpont nem törölhető.
 
-A streamvégpont méretezése kapcsolatos információkért lásd: [ez](media-services-portal-scale-streaming-endpoints.md) cikk.
+A folyamatos átviteli végpont skálázásával kapcsolatos információkért tekintse meg [ezt](media-services-portal-scale-streaming-endpoints.md) a cikket.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
 Állítsa be a fejlesztési környezetet, és töltse fel az app.config fájlt a kapcsolatadatokkal a [.NET-keretrendszerrel történő Media Services-fejlesztést](media-services-dotnet-how-to-use.md) ismertető dokumentumban leírtak szerint. 
 
-## <a name="add-code-that-manages-streaming-endpoints"></a>Adja hozzá a kódot, amely kezeli a streamvégpontok
+## <a name="add-code-that-manages-streaming-endpoints"></a>Adatfolyam-végpontokat kezelő kód hozzáadása
     
-Cserélje le a program.cs fájlban lévő kódot az alábbira:
+Cserélje le a kódot a Program.cs a következő kódra:
 
 ```csharp
 using System;
@@ -143,7 +143,7 @@ namespace AMSStreamingEndpoint
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

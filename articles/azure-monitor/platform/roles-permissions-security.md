@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 424d57c59dea11a49faf7a7bb32d85772ef4de8c
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: d223c3483becdc8ba44bc14ec16150cf1b001943
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305161"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894539"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Szerepkörök, engedélyek és biztonság a Azure Monitorban
 
@@ -73,23 +73,23 @@ Ha a fenti beépített szerepkörök nem felelnek meg a csoport pontos igényein
 
 | Művelet | Leírás |
 | --- | --- |
-| Microsoft.Insights/ActionGroups/[Read, Write, Delete] |A műveleti csoportok olvasása/írása/törlése. |
-| Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |Olvasási/írási/törlési műveletnapló riasztásai. |
-| Microsoft.Insights/AlertRules/[Read, Write, Delete] |Riasztási szabályok olvasása/írása/törlése (a klasszikus riasztásokból). |
-| Microsoft.Insights/AlertRules/Incidents/Read |Az incidensek listázása (riasztási szabály előzményei) a riasztási szabályokhoz. Ez csak a portálra vonatkozik. |
-| Microsoft.Insights/AutoscaleSettings/[Read, Write, Delete] |Az autoskálázási beállítások olvasása/írása/törlése. |
-| Microsoft.Insights/DiagnosticSettings/[Read, Write, Delete] |Diagnosztikai beállítások olvasása/írása/törlése. |
-| Microsoft.Insights/EventCategories/Read |A tevékenység naplójában lehetséges összes kategória enumerálása. A Azure Portal használja. |
-| Microsoft.Insights/eventtypes/digestevents/Read |Ez az engedély olyan felhasználók számára szükséges, akiknek a portálon keresztül kell hozzáférnie a tevékenység naplóihoz. |
-| Microsoft.Insights/eventtypes/values/Read |Az előfizetésben szereplő tevékenység-naplózási események (kezelési események) listázása. Ez az engedély mind a programozási, mind a portálhoz való hozzáférésre alkalmazható a tevékenység naplójában. |
-| Microsoft.Insights/ExtendedDiagnosticSettings/[Read, Write, Delete] | Hálózati folyamatok naplóihoz tartozó diagnosztikai beállítások olvasása/írása/törlése. |
-| Microsoft.Insights/LogDefinitions/Read |Ez az engedély olyan felhasználók számára szükséges, akiknek a portálon keresztül kell hozzáférnie a tevékenység naplóihoz. |
-| Microsoft.Insights/LogProfiles/[Read, Write, Delete] |Olvasási/írási/törlési napló profiljai (adatfolyam-tevékenységek naplója az Event hub vagy a Storage-fiók számára). |
-| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |Olvasási/írási/törlési közel valós idejű metrikai riasztások |
-| Microsoft.Insights/MetricDefinitions/Read |A metrikai definíciók (az adott erőforráshoz elérhető metrikai típusok listája) olvasása. |
-| Microsoft.Insights/Metrics/Read |Erőforrás metrikáinak olvasása. |
-| Microsoft.Insights/Register/Action |Regisztrálja a Azure Monitor erőforrás-szolgáltatót. |
-| Microsoft.Insights/ScheduledQueryRules/[Read, Write, Delete] |Olvasási/írási és törlési naplózási riasztások a Azure Monitorban. |
+| Microsoft. ininsights/ActionGroups/[olvasás, írás, törlés] |A műveleti csoportok olvasása/írása/törlése. |
+| Microsoft. ininsights/ActivityLogAlerts/[olvasás, írás, törlés] |Olvasási/írási/törlési műveletnapló riasztásai. |
+| Microsoft. ininsights/AlertRules/[olvasás, írás, törlés] |Riasztási szabályok olvasása/írása/törlése (a klasszikus riasztásokból). |
+| Microsoft. ininsights/AlertRules/incidensek/olvasás |Az incidensek listázása (riasztási szabály előzményei) a riasztási szabályokhoz. Ez csak a portálra vonatkozik. |
+| Microsoft. ininsights/AutoscaleSettings/[olvasás, írás, törlés] |Az autoskálázási beállítások olvasása/írása/törlése. |
+| Microsoft. ininsights/DiagnosticSettings/[olvasás, írás, törlés] |Diagnosztikai beállítások olvasása/írása/törlése. |
+| Microsoft. bepillantások/EventCategories/olvasás |A tevékenység naplójában lehetséges összes kategória enumerálása. A Azure Portal használja. |
+| Microsoft. bepillantások/eventtypes/digestevents/olvasás |Ez az engedély olyan felhasználók számára szükséges, akiknek a portálon keresztül kell hozzáférnie a tevékenység naplóihoz. |
+| Microsoft. bepillantások/eventtypes/értékek/olvasás |Az előfizetésben szereplő tevékenység-naplózási események (kezelési események) listázása. Ez az engedély mind a programozási, mind a portálhoz való hozzáférésre alkalmazható a tevékenység naplójában. |
+| Microsoft. ininsights/ExtendedDiagnosticSettings/[olvasás, írás, törlés] | Hálózati folyamatok naplóihoz tartozó diagnosztikai beállítások olvasása/írása/törlése. |
+| Microsoft. bepillantások/LogDefinitions/olvasás |Ez az engedély olyan felhasználók számára szükséges, akiknek a portálon keresztül kell hozzáférnie a tevékenység naplóihoz. |
+| Microsoft. ininsights/LogProfiles/[olvasás, írás, törlés] |Olvasási/írási/törlési napló profiljai (adatfolyam-tevékenységek naplója az Event hub vagy a Storage-fiók számára). |
+| Microsoft. ininsights/MetricAlerts/[olvasás, írás, törlés] |Olvasási/írási/törlési közel valós idejű metrikai riasztások |
+| Microsoft. bepillantások/MetricDefinitions/olvasás |A metrikai definíciók (az adott erőforráshoz elérhető metrikai típusok listája) olvasása. |
+| Microsoft. bepillantások/mérőszámok/olvasás |Erőforrás metrikáinak olvasása. |
+| Microsoft. elemzések/regisztráció/művelet |Regisztrálja a Azure Monitor erőforrás-szolgáltatót. |
+| Microsoft. ininsights/ScheduledQueryRules/[olvasás, írás, törlés] |Olvasási/írási és törlési naplózási riasztások a Azure Monitorban. |
 
 
 
@@ -116,7 +116,7 @@ New-AzRoleDefinition -Role $role
 A figyelési adatok – különösen a naplófájlok – bizalmas adatokat (például IP-címeket vagy felhasználóneveket) tartalmazhatnak. Az Azure-beli monitorozási adatok három alapvető formában jelennek meg:
 
 1. A tevékenység naplója, amely az Azure-előfizetésen belüli összes vezérlési sík műveletet ismerteti.
-2. Diagnosztikai naplók, amelyek egy erőforrás által kibocsátott naplók.
+2. erőforrás-naplók, amelyek egy erőforrás által kibocsátott naplók.
 3. Az erőforrások által kibocsátott mérőszámok.
 
 Mindhárom adattípust tárolhatja egy Storage-fiókban, vagy továbbíthatja az Event hub-ba, mindkettő általános célú Azure-erőforrás. Mivel ezek az általános célú erőforrások, a létrehozás, a törlés és az azokhoz való hozzáférés egy rendszergazda számára fenntartott privilegizált művelet. Javasoljuk, hogy a visszaélések megelőzése érdekében kövesse az alábbi eljárásokat a figyeléssel kapcsolatos erőforrásokhoz:
@@ -182,7 +182,7 @@ Azure Monitor hozzáférést kell biztosítania az Azure-erőforrásokhoz az Ön
 ### <a name="secured-storage-accounts"></a>Biztonságos Storage-fiókok 
 
 A figyelési adatgyűjtést gyakran egy Storage-fiókba kell írni. Előfordulhat, hogy meg kell győződnie arról, hogy a Storage-fiókba másolt adatfájlok jogosulatlan felhasználók számára nem érhetők el. A további biztonság érdekében zárolhatja a hálózati hozzáférést, hogy csak a jogosult erőforrások és a megbízható Microsoft-szolgáltatások férhessenek hozzá egy Storage-fiókhoz, ha a Storage-fiókot a "kiválasztott hálózatok" használatára korlátozza.
-![Azure Storage-beállítások párbeszédpanel](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor a "megbízható Microsoft-szolgáltatások" közé tartozik, ha engedélyezi a megbízható Microsoft-szolgáltatások számára a biztonságos tároló elérését, akkor az Azure monitor hozzáférhet a biztonságos Storage-fiókhoz; a Azure Monitor diagnosztikai naplók, a műveletnapló és a metrikák írásának engedélyezése a Storage-fiókba a következő védett feltételek szerint. Ez azt is lehetővé teszi, hogy a Log Analytics beolvassák a biztonságos tárolóból származó naplókat.   
+![Azure Storage-beállítások párbeszédpanel](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor a "megbízható Microsoft-szolgáltatások" közé tartozik, ha engedélyezi a megbízható Microsoft-szolgáltatások számára a biztonságos tároló elérését, akkor az Azure monitor hozzáférhet a biztonságos Storage-fiókhoz; Az Azure Monitor erőforrás-naplók, a műveletnapló és a metrikák írásának engedélyezése a Storage-fiókba a következő védett feltételek szerint. Ez azt is lehetővé teszi, hogy a Log Analytics beolvassák a biztonságos tárolóból származó naplókat.   
 
 
 További információ: [hálózati biztonság és Azure Storage](../../storage/common/storage-network-security.md)

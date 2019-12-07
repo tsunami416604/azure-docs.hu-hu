@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Innoverse-szel | Microsoft Docs'
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Innoverse | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Innoverse között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d72e4da0-0123-409b-96c2-e613f3f83fb1
 ms.service: active-directory
@@ -13,205 +13,144 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e20bba9357c01107fafe13d1e8b0ba921588c140
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 207b277d22d6c16d51813ed66782b8a40684b14e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73157916"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889702"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-innoverse"></a>Oktatóanyag: Azure Active Directory integráció a Innoverse
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-innoverse"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Innoverse
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Innoverse a Azure Active Directory (Azure AD) szolgáltatással.
-A Innoverse és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Innoverse a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az Innoverse-t az Azure AD-vel, a következőket teheti:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Innoverse.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Innoverse (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* A Innoverse-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Innoverse az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció Innoverse való konfigurálásához a következő elemek szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Innoverse egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Innoverse egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+
+
 
 * A Innoverse támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
 * A Innoverse **csak időben támogatja a** felhasználók kiépítési folyamatát
+
 
 ## <a name="adding-innoverse-from-the-gallery"></a>Innoverse hozzáadása a gyűjteményből
 
 A Innoverse Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Innoverse a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha Innoverse szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Innoverse** kifejezést a keresőmezőbe.
+1. Válassza ki a **Innoverse** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![A Azure Active Directory gomb](common/select_azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-innoverse"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Innoverse
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Konfigurálja és tesztelje az Azure AD SSO-t a Innoverse a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Innoverse-ben.
 
-    ![A vállalati alkalmazások panel](common/enterprise_applications.png)
+Az Azure AD SSO és a Innoverse konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[INNOVERSE SSO konfigurálása](#configure-innoverse-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre Innoverse-teszt felhasználót](#create-innoverse-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-Innoverse rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-    ![Az új alkalmazás gomb](common/add_new_app.png)
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-4. A keresőmezőbe írja be a **Innoverse**kifejezést, válassza a **Innoverse** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-     ![Innoverse az eredmények listájában](common/search_new_app.png)
+1. A [Azure Portal](https://portal.azure.com/) **Innoverse** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Innoverse-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Innoverse kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
-
-Az Azure AD egyszeri bejelentkezés Innoverse való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
-
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Innoverse egyszeri bejelentkezés konfigurálása](#configure-innoverse-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre Innoverse-teszt felhasználót](#create-innoverse-test-user)** – hogy a Innoverse Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés Innoverse való konfigurálásához hajtsa végre a következő lépéseket:
-
-1. A [Azure Portal](https://portal.azure.com/) **Innoverse** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select_sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select_saml_option.png)
-
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit_urls.png)
-
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
-
-    ![Innoverse tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp_intiated.png)
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<domainname>.innover.se`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<domainname>.innover.se/auth/saml2/login`
 
-5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
-
-    ![Innoverse tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata_upload_additional_signon.png)
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<domainname>.innover.se/auth/saml2/login`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a Innoverse ügyfélszolgálati [csapatához](mailto:support@readify.net) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. A Innoverse alkalmazás megadott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
+1. A Innoverse alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
-    ![image](./media/innovationhub-tutorial/tutorial-innovationhub-attribute.png)
+    ![image](common/edit-attribute.png)
 
-7. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
+1. A fentiek mellett a Innoverse alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Név | Forrás attribútum| Névtér |
+    | Név | Névtér | Forrás attribútum| 
     | ---------------| --------- | ----------------|
-    | DisplayName | `user.userprincipalname` | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | DisplayName | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` | `user.userprincipalname` |
 
-    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
-    ![image](common/new_save_attribute.png)
-
-    ![image](common/new_attribute_details.png)
-
-    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
-
-    c. Adja meg a **névteret**.
-
-    d. Válassza a forrás **attribútumként**lehetőséget.
-
-    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
-
-    f. Kattintson **az OK** gombra
-
-    g. Kattintson a **Save** (Mentés) gombra.
-
-8. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Másolás** ikonra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
-
-    ![A tanúsítvány letöltési hivatkozása](common/copy_metadataurl.png)
-
-### <a name="configure-innoverse-single-sign-on"></a>Innoverse egyszeri bejelentkezés konfigurálása
-
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **Innoverse** oldalon, el kell küldenie a másolt **összevonási metaadatok URL-címét** a [Innoverse támogatási csapatának](mailto:support@readify.net). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+    ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
-
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new_user.png)
-
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
-
-    ![A felhasználó párbeszédpanel](common/user_properties.png)
-
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-
-    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
-    Például: BrittaSimon@contoso.com
-
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
-
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Innoverse hozzáférésének biztosításával.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Innoverse.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Innoverse**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **Innoverse**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise_applications.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-2. Az alkalmazások listában írja be és válassza a **Innoverse**lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![Az Innoverse hivatkozás az alkalmazások listájában](common/all_applications.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users_groups_blade.png)
+## <a name="configure-innoverse-sso"></a>Innoverse SSO konfigurálása
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
-
-    ![A hozzárendelés hozzáadása panel](common/add_assign_user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+Az egyszeri bejelentkezés **Innoverse** -oldalon való konfigurálásához el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [Innoverse támogatási csapatának](mailto:support@readify.net). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-innoverse-test-user"></a>Innoverse-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Innoverse-ben. A Innoverse támogatja az **igény szerinti üzembe**helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Innoverse-ben, akkor létrejön egy új, amikor megpróbál hozzáférni a Innoverse.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Innoverse-ben. A Innoverse támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Innoverse-ben, a rendszer egy újat hoz létre a hitelesítés után.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
@@ -221,6 +160,9 @@ Ha a hozzáférési panelen a Innoverse csempére kattint, automatikusan be kell
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [A Innoverse kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+

@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 04/12/2017
-ms.openlocfilehash: 8f70ecc96269783c29c566fb89bd617f034316b1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2d2d8d43cb5ee91810d639c4ee8925d185987954
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932675"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893552"
 ---
-# <a name="collect-azure-diagnostic-logs-from-azure-storage"></a>Azure-beli diagnosztikai naplók gyűjtése az Azure Storage-ból
+# <a name="collect-azure-resource-logs-from-azure-storage"></a>Azure-beli erőforrás-naplók gyűjtése az Azure Storage-ból
 
 A Azure Monitor a következő, a blob Storage-ba írt és az IIS-naplókat író szolgáltatások naplóit tudja olvasni:
 
@@ -61,7 +61,7 @@ Az alábbi eljárással engedélyezheti az Azure Diagnostics szolgáltatást egy
 2. Engedélyezheti a figyelést, és konfigurálhatja az események naplózását egy meglévő virtuális gépen. A diagnosztika a virtuális gép szintjén engedélyezhető. A diagnosztika engedélyezéséhez, majd az eseménynaplózás konfigurálásához hajtsa végre a következő lépéseket:
 
    1. Válassza ki a virtuális gépet.
-   2. Kattintson a **figyelés**elemre.
+   2. Kattintson a **Figyelés** gombra.
    3. Kattintson a **diagnosztika**elemre.
    4. Az **állapot** beállítása **a**következőre:.
    5. Válassza ki a gyűjteni kívánt diagnosztikai naplókat.
@@ -120,7 +120,7 @@ Miután a rendszer alkalmazza a frissített diagnosztikai konfigurációt a felh
 
 A következő Azure-szolgáltatásokhoz tartozó naplók összegyűjtéséhez használhatja a Azure Portal Log Analytics munkaterület Azure Monitorban való konfigurálásához:
 
-* Fürtök Service Fabric
+* Service Fabric-fürtök
 * Virtual Machines
 * Webes/feldolgozói szerepkörök
 

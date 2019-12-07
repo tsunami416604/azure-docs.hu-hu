@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 36035d844237115361ccb3c1e1bc0dcb91250881
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 3b6a16436b2719d1571f5d5a3c16711a9100b75d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423867"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894423"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Az Azure standard Load Balancer áttekintése
 
@@ -38,11 +38,6 @@ A Load Balancer erőforrás funkciói mindig előtérként, szabályként, álla
 Az egyik kulcsfontosságú szempont az erőforráshoz tartozó virtuális hálózat hatóköre.  Míg az alapszintű Load Balancer a rendelkezésre állási csoport hatókörén belül van, a standard Load Balancer teljes mértékben integrálva van a virtuális hálózat és az összes virtuális hálózati koncepció alkalmazási körébe.
 
 Load Balancer erőforrások olyan objektumok, amelyeken belül kipróbálhatja, hogy az Azure hogyan programba hozza a több-bérlős infrastruktúrát a létrehozni kívánt forgatókönyv eléréséhez.  Nincs közvetlen kapcsolat a Load Balancer erőforrások és a tényleges infrastruktúra között; Load Balancer létrehozása nem hoz létre példányt, a kapacitás mindig rendelkezésre áll, és nincs szükség indítási vagy méretezési késésre. 
-
->[!NOTE]
-> Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. Ha Transport Layer Security (TLS) protokoll leállítását ("SSL-kiszervezés") vagy HTTP/HTTPS-kérést keres, az alkalmazások rétegének feldolgozását lásd: [Mi az az Azure Application Gateway?](../application-gateway/overview.md) Ha globális DNS-terheléselosztást keres, tekintse meg a [Mi az Traffic Manager?](../traffic-manager/traffic-manager-overview.md) A végpontok közötti forgatókönyvek a megoldások kombinálásával is hasznosak lehetnek.
->
-> Az Azure terheléselosztási lehetőségeinek összehasonlítását lásd: [Az Azure terheléselosztási lehetőségeinek áttekintése](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 ## <a name="why-use-standard-load-balancer"></a>Miért érdemes standard Load Balancer?
 
@@ -210,7 +205,7 @@ Az SKU-ket nem változtathatók meg. Kövesse az ebben a szakaszban található 
 
 A standard Load Balancer jelenleg minden nyilvános Felhőbeli régióban elérhető.
 
-## <a name="sla"></a>SLA
+## <a name="sla"></a>Szolgáltatási szerződés
 
 A standard Load Balancer 99,99%-os SLA-val érhető el.  A részletekért tekintse át a [standard Load BALANCER SLA](https://aka.ms/lbsla) -t.
 

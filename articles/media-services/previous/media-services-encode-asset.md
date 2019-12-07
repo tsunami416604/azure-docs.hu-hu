@@ -1,6 +1,6 @@
 ---
 title: Az Azure igény szerinti adathordozó-kódolóinak áttekintése | Microsoft Docs
-description: Ez a témakör áttekintést nyújt az Azure igény szerinti adathordozó-kódolóról.
+description: Azure Media Services több lehetőséget kínál a felhőben lévő adathordozók kódolására. Ez a cikk áttekintést nyújt az Azure igény szerinti adathordozó-kódolóról.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5c55b419b88a66d2e1acf1687478ab35d9f0a059
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019038"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901511"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Az Azure igény szerinti adathordozó-kódolóinak áttekintése 
 
@@ -59,7 +59,7 @@ A kódolók bemeneti metaadatait [itt](media-services-input-metadata-schema.md)m
 
 A kódoló kimeneti metaadatait [itt](media-services-output-metadata-schema.md)mutatjuk be.
 
-### <a name="generate-thumbnails"></a>Miniatűrök előállítása
+### <a name="generate-thumbnails"></a>Miniatűrök létrehozása
 További információ: [miniatűrök készítése a Media Encoder standard használatával](media-services-advanced-encoding-with-mes.md#thumbnails).
 
 ### <a name="trim-videos-clipping"></a>Videók körülvágása (vágás)
@@ -68,7 +68,7 @@ További információ: [videók körülvágása Media Encoder standard használa
 ### <a name="create-overlays"></a>Átfedések létrehozása
 További információ: [átfedések létrehozása Media Encoder standard használatával](media-services-advanced-encoding-with-mes.md#overlay).
 
-### <a name="see-also"></a>Lásd még
+### <a name="see-also"></a>Lásd még:
 [A Media Services blog](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 ## <a name="media-encoder-premium-workflow"></a>Media Encoder Premium-munkafolyamat

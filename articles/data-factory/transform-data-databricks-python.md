@@ -1,5 +1,5 @@
 ---
-title: Az adatátalakítás a Databricks Python-Azure-ban
+title: Az adatátalakítás a Databricks Pythonral
 description: Megtudhatja, hogyan dolgozhat fel és alakíthat át egy Databricks Python használatával.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: craigg
-ms.openlocfilehash: 47654e8183dab120376f94df63d7664ead5dd580
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1acc484b8843fc1fe1acae5759a24f923396e003
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683932"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893943"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Az adatátalakítást egy Python-tevékenység futtatásával Azure Databricks
 
@@ -62,7 +62,7 @@ Itt látható a Databricks Python-tevékenység JSON-definíciója:
 
 A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat ismerteti:
 
-|Tulajdonság|Leírás|Kötelező|
+|Tulajdonság|Leírás|Szükséges|
 |---|---|---|
 |név|A folyamatban szereplő tevékenység neve.|Igen|
 |leírás|A tevékenység működését leíró szöveg|Nem|
@@ -70,7 +70,7 @@ A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat i
 |linkedServiceName|Annak a Databricks társított szolgáltatásnak a neve, amelyen a Python-tevékenység fut. A társított szolgáltatásról a következő témakörben talál további információt: [számítási társított szolgáltatások](compute-linked-services.md) cikk.|Igen|
 |pythonFile|A végrehajtandó Python-fájl URI-ja. Csak DBFS elérési utak támogatottak.|Igen|
 |paraméterek|A Python-fájlnak átadandó parancssori paraméterek. Ez a karakterláncok tömbje.|Nem|
-|szalagtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. < Sztring, objektum > tömbje lehet.|Nem|
+|könyvtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. < Sztring, objektum > tömbje lehet.|Nem|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Támogatott kódtárak a databricks-tevékenységekhez
 

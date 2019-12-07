@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: d9967b6f1177281759dd66122ffd0183bb2b813d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e3a9b733b055469e22d3b107c0f9f49b768756c4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775833"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895246"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer hibaelhárítási útmutató
 
@@ -98,7 +98,7 @@ Az üres bejelentkezési párbeszédpanelek leggyakrabban akkor fordulnak elő, 
 1. A bal oldali függőleges eszköztáron nyissa meg a **Beállítások menüpontot**. A beállítások panelen lépjen az **alkalmazás** > **Bejelentkezés elemre**. Engedélyezze **az eszköz kódjának áramlását a bejelentkezést**.
 2. Nyissa meg a **Csatlakoztatás** párbeszédpanelt (vagy a bal oldali függőleges sávban a dugó ikonra kattintva vagy a fiók **hozzáadása** a fiók paneljén).
 3. Válassza ki azt a környezetet, amelyre be szeretné jelentkezni.
-4. Válassza **a bejelentkezés**lehetőséget.
+4. Válassza a **Bejelentkezés** lehetőséget.
 5. Kövesse a következő panelen megjelenő utasításokat.
 
 Ha nem tud bejelentkezni a használni kívánt fiókba, mert az alapértelmezett böngésző már be van jelentkezve egy másik fiókba, tegye a következők egyikét:
@@ -301,7 +301,7 @@ Az alkalmazást. tar. gz fájlként is letöltheti, de a függőségeket manuál
 
 Ezek a csomagok a leggyakoribb követelmények a Linux Storage Explorer esetén:
 
-* [.NET Core 2,0 futtatókörnyezet](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET Core 2,2 futtatókörnyezet](https://docs.microsoft.com/en-us/dotnet/core/install/dependencies?tabs=netcore22&pivots=os-linux)
 * `libgconf-2-4`
 * `libgnome-keyring0` vagy `libgnome-keyring-dev`
 * `libgnome-keyring-common`

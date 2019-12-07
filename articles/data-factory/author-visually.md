@@ -1,23 +1,21 @@
 ---
-title: Visual authoring in Azure Data Factory
+title: Vizuális szerzői műveletek
 description: Ismerje meg, hogyan használható a Visual authoring a Azure Data Factory
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/09/2019
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
-manager: craigg
-ms.openlocfilehash: 71f0e283c9609e949cc9b09f20a16c6f5c9c3e50
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.date: 01/09/2019
+ms.openlocfilehash: 734a9de3eaa44a149c10d1a268d09024f3ef279d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681619"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891626"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visual authoring in Azure Data Factory
 
@@ -53,6 +51,6 @@ Válassza ki a **visszajelzéseket** a funkciókkal kapcsolatos megjegyzésekhez
 
 ![Visszajelzés](media/author-visually/provide-feedback.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A folyamatok figyelésével és kezelésével kapcsolatos további információkért lásd a [folyamatok programozott figyelését és](monitor-programmatically.md)felügyeletét ismertető témakört.

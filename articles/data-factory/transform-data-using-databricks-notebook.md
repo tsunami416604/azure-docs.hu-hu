@@ -1,5 +1,5 @@
 ---
-title: Databricks-jegyzetfüzet futtatása a Databricks notebook tevékenységgel
+title: Databricks-jegyzetfüzet futtatása a tevékenységgel
 description: Ismerje meg a Databricks-jegyzetfüzetek tevékenységeinek használatát egy Azure adat-előállítóban a Databricks-jegyzetfüzetek Databricks-feladatfürtön való futtatásához.
 services: data-factory
 ms.service: data-factory
@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
-ms.openlocfilehash: 7ad7c8e70d8669612baf00f19d3695dc7fab07f5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6cd80492c6901cc80c2e3f3c22536580c471ea37
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217879"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893926"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Databricks-jegyzetfüzet futtatása a Databricks-jegyzetfüzet tevékenységeivel az Azure Data Factoryban
 
@@ -222,7 +222,7 @@ A **Feladat nevére** kattintva megtekintheti a további részleteket. Ha a fut�
 
 ![A futtatás részleteinek és kimenetének megtekintése](media/transform-data-using-databricks-notebook/databricks-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A mintában szereplő folyamat elindít egy Databricks-jegyzetfüzet tevékenységet, és átad neki egy paramétert. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
