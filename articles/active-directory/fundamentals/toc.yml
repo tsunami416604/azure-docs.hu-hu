@@ -17,6 +17,14 @@
   items:
     - name: Identitásbiztonság pontszám
       href: identity-secure-score.md
+    - name: Biztonság
+      items:
+        - name: MFA engedélyezése
+          href: concept-fundamentals-mfa-get-started.md
+        - name: Alapértelmezett biztonsági szabályok
+          href: concept-fundamentals-security-defaults.md
+        - name: Régi hitelesítési folyamat letiltása
+          href: concept-fundamentals-block-legacy-authentication.md
     - name: Csoport- és hozzáférés-kezelés
       href: active-directory-manage-groups.md
     - name: Csoportalapú licencelés

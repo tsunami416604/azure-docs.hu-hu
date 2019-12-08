@@ -17,8 +17,6 @@
   items:
     - name: Gyakori feltételes hozzáférési szabályzatok
       href: concept-conditional-access-policy-common.md
-    - name: Alapértelmezett biztonsági szabályok
-      href: concept-conditional-access-security-defaults.md
     - name: Feltételes hozzáférési szabályzatok komponensei
       href: concept-conditional-access-policies.md
     - name: Feltételek

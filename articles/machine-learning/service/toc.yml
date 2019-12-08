@@ -152,7 +152,7 @@
     - name: Adatok használata
       items:
         - name: Adatok lekérése adattárból
-          displayName: 'blob, get, fileshare, access storage'
+          displayName: 'blob, get, fileshare, access storage, mount, download'
           href: how-to-access-data.md
         - name: Adathalmazok hozzáadása és regisztrálása
           displayName: 'data, dataset'
