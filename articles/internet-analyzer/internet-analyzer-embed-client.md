@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: quickstart
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: bc3b9eb5753d09ca3442633deb259865b07e8b20
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f9ecb8d731945847160b49c68c554fafdd7285d9
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501952"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896382"
 ---
 # <a name="embed-the-internet-analyzer-client"></a>Az Internet Analyzer-ügyfél beágyazása
 
@@ -34,6 +34,7 @@ A parancsfájl URL-címe az Azure Portalon vagy az Azure CLI-n keresztül érhet
 
 2\. lehetőség: Az Azure CLI használatával keresse meg a `scriptFileUri` tulajdonságot.
 ```azurecli-interactive
+    az extension add --name internet-analyzer    
     az internet-analyzer test list --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile"
 ```
 
@@ -57,6 +58,6 @@ A legegyszerűbb módszer a script címke használata a meta tag blokkon belül.
 </html>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Internet Analyzer gyakori kérdéseinek](internet-analyzer-faq.md) beolvasása

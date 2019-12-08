@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/17/2019
-ms.openlocfilehash: a5ccf2d45d2c699f1f2261884f09f8cefe92b615
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: af8fa0fc231e6e10d02019d93456293fcf3e3da4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598186"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892617"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (Python)
 
@@ -37,7 +37,7 @@ az extension add --name azure-cli-iot-ext
 
 Töltse le a Python-mintaprojektet a https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip címről, és bontsa ki a ZIP-archívumot.
 
-A fejlesztői gépen telepítve van a Python 3.5.3 + verziója. 
+A [Python 3,7-es vagy újabb verziója](https://www.python.org/downloads/) telepítve van a fejlesztői gépen. A Python egyéb verziói esetében lásd: az SDK dokumentációjának [Azure IoT-eszközök funkciói](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features) .
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 

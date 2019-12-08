@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2cb3c1d798e48017604d72d8a438d6a1071199ea
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 22614b28023a0628fb12c170e934aaab4d1ddfe4
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419759"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899870"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Rövid útmutató: privát végpont létrehozása Azure Portal használatával
 
@@ -39,13 +39,13 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
 1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **virtuális hálózat**lehetőséget.
 1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Name (Név) | Adja meg a *MyVirtualNetwork*. |
+    | Név | Adja meg a *MyVirtualNetwork*. |
     | Címtér | Adja meg a *10.1.0.0/16*értéket. |
-    | Előfizetést | Válassza ki előfizetését.|
+    | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | Hely | Válassza a **WestCentralUS**lehetőséget.|
+    | Földrajzi egység | Válassza a **WestCentralUS**lehetőséget.|
     | Alhálózat – név | Adja meg a *mySubnet*. |
     | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
     |||
@@ -58,16 +58,16 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
 
 1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetést | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm*. |
-    | Régió | Válassza a **WestCentralUS**lehetőséget. |
+    | Region (Régió) | Válassza a **WestCentralUS**lehetőséget. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Image (Kép) | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
+    | Lemezkép | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
     | Méret | Hagyja meg az alapértelmezett **standard DS1 v2**értéket. |
     | **RENDSZERGAZDAI FIÓK** |  |
     | Felhasználónév | Adja meg a választott felhasználónevet. |
@@ -85,7 +85,7 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
 
 1. A **virtuálisgép-hálózat létrehozása**területen válassza ki ezt az információt:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork**.  |
     | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24**értéket.|
@@ -107,10 +107,10 @@ Ebben a szakaszban egy SQL Database-kiszolgálót fog létrehozni az Azure-ban.
 
 1. Az **SQL Database létrehozása – alapok**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | **Adatbázis részletei** | |
-    | Előfizetést | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Adatbázis neve  | Adja meg a *mydatabase*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
@@ -118,12 +118,12 @@ Ebben a szakaszban egy SQL Database-kiszolgálót fog létrehozni az Azure-ban.
 5. A **kiszolgáló**területen válassza az **új létrehozása**lehetőséget. 
 6. Az **új kiszolgáló**mezőbe írja be vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     |Kiszolgálónév  | Adja meg a *MyServer*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
     | Kiszolgáló-rendszergazdai bejelentkezés| Adja meg a választott rendszergazda nevét. |
     | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 8 karakter hosszúnak kell lennie, és meg kell felelnie a meghatározott követelményeknek. |
-    | Hely | Válassza ki azt az Azure-régiót, ahol a SQL Server szeretné tárolni. |
+    | Földrajzi egység | Válassza ki azt az Azure-régiót, ahol a SQL Server szeretné tárolni. |
     
 7. Kattintson az **OK** gombra. 
 8. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
@@ -138,22 +138,22 @@ Ebben a szakaszban létre fog hozni egy SQL-kiszolgálót, és hozzá kell adnia
 2. A **Private link Centerben – áttekintés**, a **szolgáltatáshoz való magánhálózati kapcsolat**létrehozásához válassza az **Indítás**lehetőséget.
 1. A **privát végpont létrehozása (előzetes verzió) – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | **Projekt részletei** | |
-    | Előfizetést | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **PÉLDÁNY RÉSZLETEI** |  |
-    | Name (Név) | Adja meg * myPrivateEndpoint*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
-    |Régió|Válassza a **WestCentralUS**lehetőséget.|
+    | Név | Adja meg a *myPrivateEndpoint*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
+    |Region (Régió)|Válassza a **WestCentralUS**lehetőséget.|
     |||
 5. Válassza a **Tovább: erőforrás**elemet.
 6. A **privát végpont létrehozása – erőforrás**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     |Kapcsolati módszer  | Válassza a kapcsolódás egy Azure-erőforráshoz a címtárban lehetőséget.|
-    | Előfizetést| Válassza ki előfizetését. |
+    | Előfizetés| Válassza ki előfizetését. |
     | Erőforrás típusa | Válassza a **Microsoft. SQL/kiszolgálók**lehetőséget. |
     | Erőforrás |*MyServer* kiválasztása|
     |Cél alerőforrása |*SqlServer* kiválasztása|
@@ -161,7 +161,7 @@ Ebben a szakaszban létre fog hozni egy SQL-kiszolgálót, és hozzá kell adnia
 7. Válassza a **Tovább: konfigurálás**lehetőséget.
 8. A **privát végpont létrehozása (előzetes verzió) – konfiguráció**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     |**HÁLÓZATI**| |
     | Virtuális hálózat| Válassza a *MyVirtualNetwork*lehetőséget. |
@@ -177,7 +177,7 @@ Ebben a szakaszban létre fog hozni egy SQL-kiszolgálót, és hozzá kell adnia
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Kapcsolódás virtuális géphez Távoli asztal (RDP) használatával
 
 
-A **myVm*létrehozása után az alábbi módon csatlakozhat az internetről: 
+A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről: 
 
 1. A portál keresési sávján adja meg a *myVm*.
 
@@ -185,7 +185,7 @@ A **myVm*létrehozása után az alábbi módon csatlakozhat az internetről:
 
 1. Válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll ( *. rdp*) fájlt, és letölti a számítógépre.
 
-1. Nyissa meg a letöltött. rdp fájlt.
+1. Nyissa meg a *letöltött. rdp* fájlt.
 
     1. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
 
@@ -219,7 +219,7 @@ A **myVm*létrehozása után az alábbi módon csatlakozhat az internetről:
 
 4. A **Kapcsolódás a kiszolgálóhoz**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | Kiszolgáló típusa| Válassza a **Database Engine** (Adatbázismotor) lehetőséget.|
     | Kiszolgálónév| *MyServer.database.Windows.net* kiválasztása |

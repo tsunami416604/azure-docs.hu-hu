@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e0b87757326b5e2a54a78a38bbcd5bef8e6f5be2
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 42378c4377057902937b718555489636bc5dcbaa
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74119990"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900018"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: az Azure AD-Graph API használata
 
@@ -101,7 +101,7 @@ A mintakód beszerzése után konfigurálja a környezetet, majd hozza létre a 
 
 Ha a Build sikeres, a `B2C.exe` Console alkalmazás megtalálható a `B2CGraphClient\bin\Debug`ban.
 
-## <a name="review-the-sample-code"></a>Tekintse át a mintakódot
+## <a name="review-the-sample-code"></a>A mintakód áttekintése
 
 A B2CGraphClient használatához nyisson meg egy parancssort (`cmd.exe`), és váltson a projekt `Debug` könyvtárába. Ezután futtassa a `B2C Help` parancsot.
 
@@ -290,7 +290,7 @@ B2C Get-User <user-object-id>
 B2C Get-User <filter-query-expression>
 ```
 
-Például:
+Példa:
 
 ```cmd
 B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
@@ -332,7 +332,7 @@ B2C Get-B2C-Application
 B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 ```
 
-A kimenet felfedi az egyes egyéni attribútumok részleteit. Például:
+A kimenet felfedi az egyes egyéni attribútumok részleteit. Példa:
 
 ```json
 {
@@ -356,13 +356,12 @@ A teljes nevet, például a `extension_55dc0861f9a44eb999e0a8a872204adb_Jersey_N
 B2C Update-User <object-id-of-user> <path-to-json-file>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 `B2CGraphClient`használatával olyan szolgáltatásalkalmazás van, amely programozott módon képes kezelni a B2C-bérlői felhasználókat. `B2CGraphClient` a saját alkalmazás identitását használja az Azure AD-Graph API való hitelesítéshez. Emellett a tokeneket is megvásárolja az ügyfél titkos kódjának használatával.
 
 A funkciónak a saját alkalmazásba való beépítésekor jegyezze fel a B2C-alkalmazások néhány kulcsfontosságú pontját:
 
 * Adja meg az alkalmazás számára a szükséges engedélyeket a bérlőn.
-* Jelenleg a ADAL (nem MSAL) kell használnia a hozzáférési tokenek lekéréséhez. (A protokollon keresztüli üzenetküldést közvetlenül is elküldheti függvénytár használata nélkül.)
 * A Graph API meghívásakor használja a `api-version=1.6`.
 * Ha felhasználói felhasználókat hoz létre és frissít, néhány tulajdonságot meg kell adni a fentiekben leírtak szerint.

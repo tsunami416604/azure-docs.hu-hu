@@ -1,7 +1,7 @@
 ---
 title: Dinamikus csomagolás a Media Servicesban
 titleSuffix: Azure Media Services
-description: A Azure Media Services dinamikus csomagolásának áttekintése.
+description: Ez a cikk áttekintést nyújt a Azure Media Services dinamikus csomagolásáról.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 304a6168ee5a4c60369b541d4a8cc7ac961913b6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dbce24ced0ed057eac829d5c4b7223a10fa96b3e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574894"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888478"
 ---
 # <a name="dynamic-packaging-in-media-services"></a>Dinamikus csomagolás a Media Servicesban
 
@@ -31,7 +31,7 @@ Media Services a streaming- [végpont](streaming-endpoint-concept.md) egy dinami
 
 A dinamikus csomagolás kihasználása érdekében a közbenső (forrás) fájlt több bitrátás MP4-(ISO Base Media 14496-12) fájlba kell [kódolnia](encoding-concept.md) . Media Services dinamikus csomagoláshoz szükséges, kódolt MP4-és folyamatos átviteli konfigurációs fájlokkal rendelkező [eszközre](assets-concept.md) van szükség. Az MP4-fájlok ebből a készletből a dinamikus csomagolás használatával továbbíthatja a videókat a következő Streaming Media-protokollokon keresztül:
 
-|Protokoll|Példa|
+|Protocol (Protokoll)|Példa|
 |---|---|
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
@@ -278,7 +278,7 @@ Tekintse meg [Azure Media Services közösségét](media-services-community.md) 
 
 A támogatási jegyet az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)való navigálással nyithatja meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!NOTE]
 > Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](media-services-apis-overview.md#sdks).

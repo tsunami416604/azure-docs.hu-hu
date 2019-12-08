@@ -1,20 +1,19 @@
 ---
 title: 'Gyors útmutató: az Azure HDInsight Apache Hive az Apache Zeppelin-vel'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan futtathat Apache Hive lekérdezéseket az Apache Zeppelin használatával.
-keywords: hdinsight, Hadoop, struktúra, interaktív lekérdezés, LLAP
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: quickstart
-ms.date: 05/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: 36d9e9b34deb4bc6cd5f599cfe2d09a12f680730
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/03/2019
+ms.openlocfilehash: 915aca0e95fce05f74477b526de047c829c7f512
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494284"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890399"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Gyors útmutató: Apache Hive lekérdezések végrehajtása az Azure HDInsight az Apache Zeppelin-vel
 
@@ -71,13 +70,51 @@ An méretű HDInsight interaktív lekérdezési fürt. Lásd: [fürt létrehozá
 
     A hagyományos struktúrához képest a lekérdezés eredményeinek gyorsabban kell visszatérniük.
 
+### <a name="additional-examples"></a>További példák
+
+1. Hozzon létre egy táblát. Hajtsa végre az alábbi kódot a Zeppelin jegyzetfüzetben:
+
+    ```hql
+    %jdbc(hive)
+    CREATE EXTERNAL TABLE log4jLogs (
+        t1 string,
+        t2 string,
+        t3 string,
+        t4 string,
+        t5 string,
+        t6 string,
+        t7 string)
+    ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY ' '
+    STORED AS TEXTFILE;
+    ```
+
+1. Betöltés az új táblába. Hajtsa végre az alábbi kódot a Zeppelin jegyzetfüzetben:
+
+    ```hql
+    %jdbc(hive)
+    LOAD DATA
+    INPATH 'wasbs:///example/data/sample.log'
+    INTO TABLE log4jLogs;
+    ```
+
+1. Egyetlen rekord beszúrása. Hajtsa végre az alábbi kódot a Zeppelin jegyzetfüzetben:
+
+    ```hql
+    %jdbc(hive)
+    INSERT INTO TABLE log4jLogs2
+    VALUES ('A', 'B', 'C', 'D', 'E', 'F', 'G');
+    ```
+
+További szintaxisért tekintse át a [kaptár nyelvi útmutatóját](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) .
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
+A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 
 Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan futtathat Apache Hive lekérdezéseket az Azure HDInsight-ben az Apache Zeppelin használatával. A kaptár-lekérdezésekkel kapcsolatos további tudnivalókért a következő cikk bemutatja, hogyan hajthat végre lekérdezéseket a Visual Studióval.
 

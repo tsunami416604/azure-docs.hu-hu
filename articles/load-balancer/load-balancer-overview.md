@@ -12,44 +12,26 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 12/05/2019
 ms.author: allensu
-ms.openlocfilehash: 335549f4ccae01fa36921e0e4668fa15e8b33835
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: c95744e58ce08943765755145645ed45a2ccdb1f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423904"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894449"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az az Azure Load Balancer?
 
-Az Azure Load Balancerrel méretezheti alkalmazásait, és magas szintre emelheti szolgáltatásai rendelkezésre állását. A Load Balancer támogatja mind a bejövő, mind a kimenő forgatókönyveket, alacsony késleltetést és magas teljesítményt biztosít, és minden TCP- és UDP-alkalmazáshoz több millió folyamatig méretezhető.
+A *terheléselosztás* a háttérbeli erőforrások vagy kiszolgálók csoportján belüli terhelés vagy bejövő hálózati forgalom hatékony elosztására utal. Az Azure [számos terheléselosztási lehetőséget](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) kínál, amelyeket igény szerint választhat. Ez a dokumentum ismerteti a Azure Load Balancer.
 
-A Load Balancer a megadott szabályok és állapot-mintavételek alapján osztja el az új bejövő folyamatokat, amelyek a Load Balancer eleje és a háttérbeli készlet példányai között érkeznek.
+Azure Load Balancer a nyílt rendszerek közötti összekapcsolási (OSI) modell négy rétegében működik. Ez az egyetlen kapcsolódási pont az ügyfelek számára. A Load Balancer a megadott terhelési terheléselosztási szabályok és állapot-mintavételek alapján osztja el az új bejövő folyamatokat, amelyek a Load Balancer előtér-példányaira érkeznek. A háttérbeli készlet példányai lehetnek Azure-Virtual Machines vagy-példányok egy virtuálisgép-méretezési csoportba (VMSS). 
 
-A nyilvános Load Balancer a virtuális hálózatokon belüli virtuális gépek (VM-EK) kimenő kapcsolatait a saját IP-címeik nyilvános IP-címekre való fordításával biztosíthatják.
+A Azure Load Balancer segítségével méretezhető alkalmazások és magas availabile szolgáltatások hozhatók létre. Load Balancer támogatja mind a bejövő, mind a kimenő forgatókönyveket, alacsony késést és nagy átviteli sebességet biztosít, és akár több millió folyamatot is képes az összes TCP-és UDP-alkalmazáshoz.
 
-A Azure Load Balancer két díjszabási szinten vagy *SKU*-ban érhető el: alapszintű és standard. Az egyes típusok méretezése, elérhető szolgáltatásai és díjszabása eltérő. Az alapszintű Load Balancerekkel kapcsolatos esetleges forgatókönyvek is létrehozhatók standard Load Balancerval, bár a megközelítések némileg eltérnek. A Load Balancer megismeréséhez Ismerkedjen meg a alapjaival és az SKU-specifikus különbségekkel.
+A **[nyilvános Load Balancer](#publicloadbalancer)** a virtuális hálózatokon belüli virtuális gépek (VM-EK) kimenő kapcsolatait a saját IP-címeik nyilvános IP-címekre való fordításával biztosíthatják. A nyilvános terheléselosztó a virtuális gépek felé irányuló internetes forgalom terheléselosztására szolgál.
 
-## <a name="why-use-load-balancer"></a>Miért érdemes a Load Balancert használni?
-
-Az Azure Load Balancer funkciói:
-
-* A virtuális gépek felé irányuló bejövő internetes forgalom terheléselosztása. Ez a konfiguráció [nyilvános Load Balancer](#publicloadbalancer)néven ismert.
-* A virtuális hálózaton belüli virtuális gépek közötti adatforgalom elosztása. Egy hibrid forgatókönyv esetén egy helyszíni hálózatról is elérheti a Load Balancer előterét. Mindkét forgatókönyv olyan konfigurációt használ, amely [belső Load Balancer](#internalloadbalancer)néven ismert.
-* Forgalom továbbítása portokon egy adott virtuális gép adott portjára bejövő hálózati címfordítási (NAT-) szabályokkal.
-* Nyilvános Load Balancer használatával biztosíthat [kimenő kapcsolatot](load-balancer-outbound-connections.md) a virtuális hálózat virtuális gépei számára.
-
->[!NOTE]
-> Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. Ha Transport Layer Security (TLS) protokoll leállítását ("SSL-kiszervezés") vagy HTTP/HTTPS-kérést keres, az alkalmazások rétegének feldolgozását lásd: [Mi az az Azure Application Gateway?](../application-gateway/overview.md) Ha globális DNS-terheléselosztást keres, tekintse meg a [Mi az Traffic Manager?](../traffic-manager/traffic-manager-overview.md) A végpontok közötti forgatókönyvek a megoldások kombinálásával is hasznosak lehetnek.
->
-> Az Azure terheléselosztási lehetőségeinek összehasonlítását lásd: [Az Azure terheléselosztási lehetőségeinek áttekintése](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
-
-## <a name="what-are-load-balancer-resources"></a>Mik azok a Load Balancer-erőforrások?
-
-Load Balancer erőforrások olyan objektumok, amelyek meghatározzák, hogy az Azure hogyan kell programozni a több-bérlős infrastruktúrát a létrehozni kívánt forgatókönyv eléréséhez. Nincs közvetlen kapcsolat a Load Balancer erőforrások és a tényleges infrastruktúra között. Egy Load Balancer létrehozásával nem jön létre példány, és a kapacitás mindig rendelkezésre áll.
-
-Egy Load Balancer erőforrás lehet nyilvános Load Balancer vagy belső Load Balancer. Az Load Balancer erőforrás funkcióit egy előtér-, egy szabály-, egy állapot-és egy háttér-készlet definíciója határozza meg. A virtuális gépeket a háttérbeli készletből helyezheti el a virtuális gépről.
+**[Belső (vagy privát) Load Balancer](#internalloadbalancer)** olyan forgatókönyvekhez használható, ahol csak magánhálózati IP-címek szükségesek az előtérben. A belső terheléselosztó a virtuális hálózaton belüli forgalom elosztására szolgál. Egy hibrid forgatókönyv esetén egy helyszíni hálózatról is elérheti a Load Balancer előterét.
 
 ## <a name="fundamental-load-balancer-features"></a>Alapvető Load Balancer-funkciók
 
@@ -169,7 +151,7 @@ Standard Load Balancer díjszabási információkért lásd: [Load Balancer díj
 
 Az Alapszintű Load Balancer használata ingyenes.
 
-## <a name="sla"></a>SLA
+## <a name="sla"></a>Szolgáltatási szerződés
 
 További információ a standard Load Balancer SLA-ról: [Load Balancer SLA](https://aka.ms/lbsla)-ja.
 
@@ -195,4 +177,4 @@ További információ a standard Load Balancer SLA-ról: [Load Balancer SLA](htt
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg az [Alapszintű Load Balancer létrehozásának](quickstart-create-basic-load-balancer-portal.md) első lépéseit a Load Balancer használatával: hozzon létre egyet, hozzon létre virtuális gépeket, és telepítsen egy egyéni IIS-bővítményt, és terheléselosztást a virtuális gépek között.
+Lásd: [nyilvános standard Load Balancer létrehozása](quickstart-load-balancer-standard-public-portal.md) a Load Balancer használatának megkezdéséhez: hozzon létre egyet, hozzon létre virtuális gépeket egy egyéni IIS-bővítménnyel, és a virtuális gépek között a webalkalmazás terheléselosztását.

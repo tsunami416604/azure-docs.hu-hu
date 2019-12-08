@@ -8,13 +8,13 @@ ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.date: 09/23/2019
-ms.openlocfilehash: 182dec35d515966ae883aca405cf3a95b6f1f72c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.date: 12/05/2019
+ms.openlocfilehash: 108d251ec6aadb4881f500edfa3483f137a09a68
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133097"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900436"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Gyors útmutató: Azure Sentinel
 
@@ -24,18 +24,8 @@ Ahhoz, hogy a fedélzeti Azure Sentinel elérhető legyen, először engedélyez
 
 Az adatforrások összekapcsolását követően válasszon egy, az adatok alapján felszínre felkészített munkafüzetekből álló gyűjteményt. Ezek a munkafüzetek könnyen testreszabhatók az igényei szerint.
 
->[!NOTE] 
-> Az [Azure Sentinel díjszabása](https://azure.microsoft.com/pricing/details/azure-sentinel/) a társított Azure monitor log Analytics-munkaterületen tárolt adatmennyiségen alapul. A következő adatösszekötők némelyike nem számít fel díjat a betöltéshez, azonban a Log Analytics munkaterületen tárolt betöltött adatmennyiséggel kapcsolatos bármilyen típusú riasztást felszámítunk, amelyet [Azure monitor log Analytics díjszabása](https://azure.microsoft.com/pricing/details/monitor/)alapján számítunk fel. 
-  > - Azure-tevékenység (Tevékenységnaplók az Azure-műveletekhez)
-  > - Azure Active Directory Identity Protection (HRE P2-licenccel rendelkező bérlők esetén)
-  > - Azure Information Protection
-  > - Azure komplex veszélyforrások elleni védelem (riasztások)
-  > - Azure Security Center (riasztások)
-  > - Microsoft Cloud App Security (csak riasztások esetén)
-  > - Microsoft Defender komplex veszélyforrások elleni védelem (figyelési ügynök riasztásai)
-  > - Office 365 (Exchange-és SharePoint-naplók)
->
-> Az Azure AD-/Office 365-naplózási naplók nem ingyenesek és prémium szintű csomagként érhetők el, ezért az ilyen jellegű adat betöltése GB-onként történik. 
+>[!IMPORTANT] 
+> Az Azure Sentinel használata során felmerülő költségekkel kapcsolatos információkért lásd: az [Azure Sentinel díjszabása](https://azure.microsoft.com/pricing/details/azure-sentinel/).
   
 
 ## <a name="global-prerequisites"></a>Globális előfeltételek
@@ -44,7 +34,7 @@ Az adatforrások összekapcsolását követően válasszon egy, az adatok alapj�
 
 - Log Analytics munkaterület. Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](../log-analytics/log-analytics-quick-create-workspace.md). További információ az Log Analytics munkaterületekről: [a Azure monitor naplók telepítésének megtervezése](../azure-monitor/platform/design-logs-deployment.md).
 
--  Az Azure Sentinel engedélyezéséhez közreműködői engedélyekkel kell rendelkeznie ahhoz az előfizetéshez, amelyben az Azure Sentinel-munkaterület található. 
+- Az Azure Sentinel engedélyezéséhez közreműködői engedélyekkel kell rendelkeznie ahhoz az előfizetéshez, amelyben az Azure Sentinel-munkaterület található. 
 - Az Azure Sentinel használatához közreműködői vagy olvasói engedélyekre van szükség ahhoz az erőforráscsoporthoz, amelyhez a munkaterület tartozik.
 - Bizonyos adatforrások összekapcsolásához további engedélyekre lehet szükség.
 - Az Azure Sentinel fizetős szolgáltatás. A díjszabással kapcsolatos információkért lásd: [Az Azure Sentinel ismertetése](https://go.microsoft.com/fwlink/?linkid=2104058).
@@ -59,7 +49,7 @@ Az adatforrások összekapcsolását követően válasszon egy, az adatok alapj�
 1. Kattintson a **+ Hozzáadás**gombra.
 1. Válassza ki a használni kívánt munkaterületet, vagy hozzon létre egy újat. Az Azure Sentinel több munkaterületen is futtatható, de az adategység egyetlen munkaterületre van elkülönítve.
 
-   ![Keresés](./media/quickstart-onboard/choose-workspace.png)
+   ![keresés](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - A Azure Security Center által létrehozott alapértelmezett munkaterületek nem jelennek meg a listában; Az Azure Sentinel nem telepíthető rajtuk.
@@ -81,7 +71,7 @@ Az adatforrások csatlakoztatása után az adatai streamet kezdenek az Azure Sen
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók az adatforrások az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

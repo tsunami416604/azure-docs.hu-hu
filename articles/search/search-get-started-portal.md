@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: be2425d97573e7990ea7f0dfd4c2d999e85fe922
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 2ae0e5b53d735b95ce1c3d2f9275456e41319242
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406998"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901004"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Azure Portal
 > [!div class="op_single_selector"]
-> * [Portál](search-get-started-portal.md)
+> * [Portal](search-get-started-portal.md)
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [Node.js](search-get-started-nodejs.md)
@@ -136,7 +136,7 @@ Annak érdekében, hogy jól átlássa az indextervezés során szerkeszthető �
 
 Továbblépve most már rendelkezünk egy keresési indexszel, amely készen áll a lekérdezésre a beépített [**Keresési ablak**](search-explorer.md) lekérdezési lappal. Ez egy keresőmezőt biztosít, amellyel tesztelheti a tetszőleges lekérdezési sztringeket.
 
-A **Search Explorer** csak [REST API kérelmek](https://docs.microsoft.com/rest/api/searchservice/search-documents)kezelésére alkalmas, de az [egyszerű lekérdezési szintaxishoz](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) és a [teljes Lucene-lekérdezési elemzőhöz](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)is elfogadja a szintaxist, valamint a [keresési dokumentumban](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) elérhető összes keresési paramétert is REST API Operations.
+A **Search Explorer** csak [REST API kérelmek](https://docs.microsoft.com/rest/api/searchservice/search-documents)kezelésére alkalmas, de az [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) és a [teljes Lucene lekérdezési elemző](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)szintaxisát is elfogadja, valamint a [keresési dokumentumban REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) műveletekben elérhető összes keresési paramétert.
 
 > [!TIP]
 > Az alábbi lépéseket a 6m08s az [Azure Cognitive Search áttekintő videójában](https://channel9.msdn.com/Events/Connect/2016/138)mutatjuk be.
@@ -260,7 +260,7 @@ Azt is megtanulta, hogyan találhat indexeket, indexelő fájlokat és adatforr�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha saját előfizetésében dolgozik, a projekt végén érdemes megállapítani, hogy továbbra is szüksége van-e a létrehozott erőforrásokra. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével akár az összes erőforrás egyszerre eltávolítható.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
@@ -268,7 +268,7 @@ Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három ind
 
 ## <a name="next-steps"></a>Következő lépések
 
-Míg a portál a kezdeti feltárási és kis feladatok esetében hasznos, az API-k korán történő áttekintése segít megérteni a fogalmakat és a munkafolyamatot mélyebb szinten:
+Egy portál varázsló segítségével előkészítheti a böngészőben futó, használatra kész webalkalmazást. Ezt a varázslót kipróbálhatja az imént létrehozott kis indexen, vagy használhatja a beépített mintaadatok egyikét egy gazdagabb keresési élményhez.
 
 > [!div class="nextstepaction"]
-> [Index létrehozása a .NET SDK használatával](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+> [Keresési alkalmazás létrehozása a portálon](search-create-app-portal.md)

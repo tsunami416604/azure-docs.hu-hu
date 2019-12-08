@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 9751435636519100ea13fd850508c99faeb87a92
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c00749191b83423e771535525afcbdd7892da88e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133261"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895437"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Gyors útmutató: Java Spring-alkalmazás elindítása az Azure CLI használatával
 
@@ -157,9 +157,11 @@ Az URL-cím megkereséséhez navigáljon a Azure Portal is.
     ![A PiggyMetrics-t futtató képernyőkép](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
 1. Keresse meg az **átjáró áttekintő** oldalán található URL-címet ![képernyőképet a futó PiggyMetrics](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy Spring Cloud-alkalmazást helyezett üzembe az Azure CLI-vel.  Ha többet szeretne megtudni az Azure Spring Cloud-ról, folytassa az alkalmazás üzembe helyezésének előkészítésével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Az Azure Spring Cloud-alkalmazás előkészítése az üzembe helyezéshez](spring-cloud-tutorial-prepare-app-deployment.md)
+
+További minták érhetők el a GitHubon: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

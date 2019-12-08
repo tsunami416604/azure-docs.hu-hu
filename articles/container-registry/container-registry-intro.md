@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 06/28/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: fceaf312f35356acf18c0873a467ed43d11ddd83
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2ceae0a6d6eb4dc989a53b35dc4a2f64472a5f54
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454929"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892974"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Az Azure-beli privát Docker-tárolójegyzékek bemutatása
 
@@ -21,7 +21,7 @@ Az Azure Container-jegyzékeket meglévő tároló-fejlesztési és üzembe hely
 
 A Docker-és a beállításjegyzék-fogalmakkal kapcsolatos további információkért tekintse meg a [Docker áttekintését](https://docs.docker.com/engine/docker-overview/) , valamint a [jegyzékek, a adattárak és a lemezképek ismertetését](container-registry-concepts.md).
 
-## <a name="use-cases"></a>Használati esetek
+## <a name="use-cases"></a>Használati példák
 
 Rendszerképek lekérése egy Azure-beli tároló-beállításjegyzékből különféle telepítési célokra:
 
@@ -34,7 +34,7 @@ Az ACR-feladatok konfigurálásával automatikusan újraépítheti az alkalmazá
 
 Az Azure olyan eszközöket biztosít, mint az Azure parancssori felület, a Azure Portal és az API-támogatás az Azure Container-nyilvántartások kezeléséhez. Telepítse a [Docker-bővítményt a Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) -hoz, és az [Azure-fiók](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) bővítményét az Azure-beli tároló-beállításjegyzékkel való együttműködéshez. Lemezképek lekérése és leküldése egy Azure Container registrybe, vagy az ACR-feladatok futtatása a Visual Studio Code-ban.
 
-## <a name="key-features"></a>A legfontosabb jellemzők
+## <a name="key-features"></a>Fő funkciók
 
 * **Beállításjegyzékbeli SKU** – hozzon létre egy vagy több tároló-beállításjegyzéket az Azure-előfizetésében. A beállításjegyzékek három SKU-ban érhetők el: [alapszintű, standard és prémium](container-registry-skus.md), amelyek mindegyike támogatja a webhook-integrációt, a beállításjegyzék hitelesítését Azure Active Directory és a törlési funkciót. Hozzon létre egy beállításjegyzéket az üzemelő példányaival megegyező Azure-beli helyen, hogy kiaknázhassa tárolórendszerképei helyi, hálózatközeli tárolásának előnyeit. Haladó szintű replikációs és tárolórendszerkép-elosztási forgatókönyvekhez használja a Prémium szintű beállításjegyzékek [georeplikációs](container-registry-geo-replication.md) funkcióját. 
 
