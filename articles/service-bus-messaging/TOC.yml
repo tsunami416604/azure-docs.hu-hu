@@ -211,6 +211,8 @@
       items:
         - name: Hibaelhárítási útmutató
           href: service-bus-messaging-exceptions.md
+        - name: Resource Manager-kivételek
+          href: service-bus-resource-manager-exceptions.md
 - name: Referencia
   items:
     - name: .NET
