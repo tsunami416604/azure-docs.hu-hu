@@ -2,26 +2,23 @@
 title: Alkalmazás konfigurálása a webes API-k eléréséhez – Microsoft Identity platform
 description: Megtudhatja, hogyan konfigurálhatja a Microsoft Identity Platformon regisztrált alkalmazást úgy, hogy átirányítási URI-t vagy URI-kat, hitelesítő adatokat vagy webes API-k elérésére vonatkozó engedélyeket is tartalmazzon.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/07/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afa757020ff6de3be23403b78fd9a12c2de97016
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0fd9374c0f507dfc075719ef61f71457317dedba
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106611"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915168"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Gyors útmutató: ügyfélalkalmazás konfigurálása a webes API-k eléréséhez
 
@@ -48,14 +45,14 @@ Ebben a rövid útmutatóban bemutatjuk, hogyan konfigurálhatja alkalmazását 
 Először is győződjön meg arról, hogy az alábbi előfeltételek teljesülnek:
 
 * Megismerte a támogatott [engedélyekkel és hozzájárulással](v2-permissions-and-consent.md) kapcsolatos tudnivalókat, mivel fontos szem előtt tartania őket olyan alkalmazások készítésekor, amelyeket más felhasználóknak vagy alkalmazásoknak is használniuk kell.
-* Rendelkezik egy olyan bérlővel, amelyen vannak alkalmazások regisztrálva.
+* Rendelkezik olyan bérlővel, amelyhez regisztrált alkalmazások tartoznak.
   * Ha nincsenek regisztrált alkalmazásai, [ismerje meg, hogyan regisztrálhat alkalmazásokat a Microsoft Identity Platformon](quickstart-register-app.md).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Bejelentkezés az Azure Portalra és az alkalmazás kiválasztása
 
 Mielőtt konfigurálhatná az alkalmazást, végre kell hajtania az alábbi lépéseket:
 
-1. Jelentkezzen be [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiókjával.
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portál munkamenetét a kívánt Azure AD-bérlőre.
 1. Keresse meg és válassza ki a **Azure Active Directory**. 
 1. A bal oldali panelen válassza a **Alkalmazásregisztrációk**lehetőséget.
@@ -128,7 +125,7 @@ Az Alkalmazásbeállítások a platform vagy az eszköz alapján történő konf
 
 1. Adja meg a beállítások információit a kiválasztott platform alapján.
 
-   | Platform                | Választás              | Konfigurációs beállítások            |
+   | Platform                | Choices              | Konfigurációs beállítások            |
    |-------------------------|----------------------|-----------------------------------|
    | **Webalkalmazások**    | **Web**              | Adja meg az alkalmazás **átirányítási URI-ját** . |
    | **Mobil alkalmazások** | **iOS**              | Adja meg az alkalmazás **köteg-azonosítóját**, amely az info. plist fájlban vagy a Build Settings Xcode található. A köteg-azonosító hozzáadása automatikusan létrehoz egy átirányítási URI-t az alkalmazáshoz. |
@@ -206,12 +203,12 @@ A beleegyezés kérése lehetőséget biztosít az **elfogadás** vagy a **Vissz
 > [!NOTE]
 > A rendszergazdai jóváhagyás megadása (az **elfogadás** engedélyezése a jóváhagyáshoz) és a rendszergazdai jóváhagyás állapota a felhasználói felületen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az alkalmazásokra vonatkozó alábbi rövid alkalmazásfelügyeleti útmutatókat is:
 
 * [Alkalmazás regisztrálása a Microsoft Identity Platformon](quickstart-register-app.md)
-* [Alkalmazás konfigurálása a webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
+* [Alkalmazás konfigurálása webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
 * [Alkalmazás által támogatott fiókok módosítása](quickstart-modify-supported-accounts.md)
 * [Microsoft Identity Platformon regisztrált alkalmazás eltávolítása](quickstart-remove-app.md)
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 155993bb3da781e698398ed8ddffa626e8f6cb2d
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 3da1902906c4fb12bf5eef473ee39e721e4efe3a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122584"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927071"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Gyors útmutató: az Azure cache használata a Redis ASP.NET-webalkalmazással 
 
@@ -115,7 +115,7 @@ Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSe
     Install-Package StackExchange.Redis
     ```
 
-3. A NuGet-csomag letölti és hozzáadja az ügyfélalkalmazás el az Azure Cache a Redis-ügyfél StackExchange.Azure gyorsítótár redis számára szükséges szerelvényhivatkozásokat. Ha inkább a `StackExchange.Redis` ügyfélkönyvtár erős elnevezésű verzióját kívánja használni, telepítse a `StackExchange.Redis.StrongName` csomagot.
+3. A NuGet-csomag letölti és hozzáadja az ügyfélalkalmazás számára szükséges szerelvény-hivatkozásokat az Azure cache Redis való eléréséhez a StackExchange. Azure cache Redis-ügyfélhez való hozzáféréséhez. Ha inkább a `StackExchange.Redis` ügyfélkönyvtár erős elnevezésű verzióját kívánja használni, telepítse a `StackExchange.Redis.StrongName` csomagot.
 
 ### <a name="to-update-the-homecontroller-and-layout"></a>A HomeController és az elrendezés frissítése
 
@@ -143,7 +143,7 @@ Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSe
 
             // Connection refers to a property that returns a ConnectionMultiplexer
             // as shown in the previous example.
-            IDatabase cache = lazyConnection.Value.GetDatabase();
+            IDatabase cache = lazyConnection.GetDatabase();
 
             // Perform cache operations using the cache object...
 
@@ -166,7 +166,7 @@ Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSe
             ViewBag.command5 = "CLIENT LIST";
             ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
 
-            lazyConnection.Value.Dispose();
+            lazyConnection.Dispose();
 
             return View();
         }
@@ -317,7 +317,7 @@ A rendszer az erőforráscsoport törlésének megerősítését kéri. A meger�
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak erőforrásait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő oktatóanyagban az Azure cache-t a Redis reálisabb forgatókönyvben használhatja az alkalmazások teljesítményének növelése érdekében. Frissíti az alkalmazást, hogy gyorsítótárazza egy ranglista eredményeit a gyorsítótár-feltöltési minta, az ASP.NET és egy adatbázis együttes használatával.
 

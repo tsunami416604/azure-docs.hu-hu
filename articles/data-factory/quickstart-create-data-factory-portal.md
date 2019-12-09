@@ -4,19 +4,19 @@ description: Létrehozhat egy adat-előállítót egy olyan folyamattal, amely a
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 642039e99df19939def5ac850f1abccca0e67222
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ea218da5316e921c44b7e80fa5f072417d98ca05
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684481"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929936"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Gyors útmutató: a Azure Data Factory felhasználói felületének használatával létrehozhatja az adatelőállítót
 
@@ -60,7 +60,7 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. **Hely:** válassza ki az adat-előállító helyét.
 
-   A listában csak a Data Factory által támogatott helyek és az Azure Data Factory-metaadatok tárolási helye jelenik meg. A Data Factory által használt adattárak (például az Azure Storage és a Azure SQL Database) és a számítási erőforrások (például az Azure HDInsight) más régiókban is futhatnak.
+   Csak a Data Factory által támogatott helyek, valamint az Azure Data Factory-metaadatok tárolási helye jelennek meg a listában. A Data Factory által használt adattárak (például az Azure Storage és a Azure SQL Database) és a számítási erőforrások (például az Azure HDInsight) más régiókban is futhatnak.
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -208,5 +208,5 @@ Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időköz�
 
 1. Győződjön meg arról, hogy a megadott befejezési dátumig és időpontig futtatott minden folyamatfuttatáshoz létrejött egy kimeneti fájl az **output** mappában. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra az Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információért tekintse meg az [oktatóanyagokat](tutorial-copy-data-portal.md). 

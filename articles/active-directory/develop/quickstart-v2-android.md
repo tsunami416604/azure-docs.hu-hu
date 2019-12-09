@@ -2,26 +2,22 @@
 title: Microsoft Identity platform – Android rövid útmutató | Azure
 description: Ismerje meg, hogy az Android-alkalmazások hogyan hívhatnak meg olyan API-t, amely hozzáférési jogkivonatokat igényel a Microsoft Identity platform végpontjának.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/15/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c9a194dcd2ccb353f11aa939200213f0db1c2ea
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 84603dfa865afe1c7661f49d7dac7374fa62a2a0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73942937"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920786"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása Android-alkalmazásokból
 
@@ -159,7 +155,7 @@ Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, ho
 
 A kód töredékekre van rendezve, amelyek bemutatják, hogyan írhat egyetlen és több fiókot MSAL-alkalmazásba. A kód fájljai a következőképpen vannak rendszerezve:
 
-| Fájl  | Bemutatja  |
+| File  | Bemutatók  |
 |---------|---------|
 | MainActivity | A felhasználói felület kezelése |
 | MSGraphRequestWrapper  | A Microsoft Graph API meghívása a MSAL által biztosított jogkivonat használatával |

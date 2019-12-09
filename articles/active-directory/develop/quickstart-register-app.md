@@ -1,28 +1,24 @@
 ---
-title: Alkalmazás regisztrálása a Microsoft Identity platformmal – Microsoft Identity platform
+title: Alkalmazás regisztrálása a Microsoft Identity platformmal | Azure
 description: Ismerje meg, hogyan adhat hozzá és regisztrálhat alkalmazást a Microsoft Identity Platformon.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 329e4b262731ae1b23fb94da7b937c9c1549185f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58a68b89ce38664c0d0ec87b509fe5f872cfd78c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473657"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921415"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal
 
@@ -60,7 +56,7 @@ Az Azure AD egyedi alkalmazásazonosítót (ügyfélazonosítót) rendel az alka
 
 [![példa az újonnan regisztrált alkalmazások áttekintő oldalára](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További tudnivalók az [engedélyekről és a hozzájárulásról](v2-permissions-and-consent.md).
 - Az alkalmazásregisztráció további beállítási lehetőségeinek – például hitelesítő adatoknak és engedélyeknek – és más bérlőkhöz tartozó felhasználók bejelentkezésének engedélyezéséről az alábbi rövid útmutatók nyújtanak felvilágosítást:

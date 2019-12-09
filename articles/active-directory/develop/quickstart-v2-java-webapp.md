@@ -2,25 +2,21 @@
 title: A Microsoft Identity platform Java-webalkalmazásának rövid útmutatója | Azure
 description: Ismerje meg, hogyan implementálhatja a Microsoft bejelentkezést egy Java-webalkalmazásban az OpenID Connect használatával
 services: active-directory
-documentationcenter: dev-center-name
 author: sangonzal
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 6645fa30772d7e1556f7a1aae76c7189577c3c1d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1a5401ee76f60c9b9c2a75561cad8f6571d3b308
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452611"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920701"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -93,7 +89,7 @@ A minta futtatásához a következőkre lesz szüksége:
 
 #### <a name="step-3-configure-the-code-sample"></a>3\. lépés: a mintakód konfigurálása
 
- 1. Bontsa ki a zip-fájlt egy helyi mappába.
+ 1. Csomagolja ki a zip-fájlt egy helyi mappába.
  1. Ha integrált fejlesztési környezetet használ, nyissa meg a mintát a kedvenc IDE (opcionális).
 
  1. Nyissa meg az Application. properties fájlt, amely a src/Main/Resources/mappában található, és cserélje le a *HRE. clientId*, *HRE. Authority* és *HRE. secretKey* mezők értékét az alkalmazás- **azonosító**, a **bérlői azonosító** és az **ügyfél titkos kulcsának** megfelelő értékekre az alábbiak szerint:
@@ -107,7 +103,7 @@ A minta futtatásához a következőkre lesz szüksége:
     ```
 
 > [!div renderon="docs"]
-> Az elemek magyarázata:
+> Helyszín:
 >
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 > - `Enter_the_Client_Secret_Here` – a **tanúsítványok & Secrets** szolgáltatásban a regisztrált alkalmazáshoz létrehozott **titkos ügyfél** .
@@ -160,7 +156,7 @@ Vegyen fel egy hivatkozást a Java-MSAL a következő kód hozzáadásával a f�
 import com.microsoft.aad.msal4j.*;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az engedélyekről és a beleegyezik:
 

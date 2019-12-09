@@ -2,29 +2,25 @@
 title: A Microsoft IDENTIFY platform-alkalmazás fiókjainak módosítása | Azure
 description: A Microsoft Identity Platformon regisztrált alkalmazás konfigurálásával módosíthatja, hogy kik, illetve mely fiókok érhetik el az alkalmazást.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be62dabc01e00465fa5227c5531fa18a16cf10a9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 439d2c06f05aa8824afa4a4aec3990ecba1aa8da
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68380774"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921351"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Gyors útmutató: Egy alkalmazás által támogatott fiókok módosítása
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Gyors útmutató: alkalmazás által támogatott fiókok módosítása
 
 Az alkalmazások Microsoft Identity Platformon való regisztrálásakor esetenként az a cél, hogy az alkalmazást csak a szervezethez tartozó felhasználók érhessék el. Előfordulhat az is, hogy az alkalmazást olyan felhasználók számára is szeretné elérhetővé tenni, akik külső szervezetekhez tartoznak, vagy nem feltétlenül tartoznak valamely szervezethez (a személyes fiókok).
 
@@ -42,7 +38,7 @@ Először is győződjön meg arról, hogy az alábbi előfeltételek teljesüln
 
 Mielőtt konfigurálhatná az alkalmazást, végre kell hajtania az alábbi lépéseket:
 
-1. Jelentkezzen be [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiókjával.
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
 1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
 1. Keresse meg és jelölje ki a konfigurálni kívánt alkalmazást. Miután kijelölte az alkalmazást, az alkalmazás **Áttekintés** lapja vagy regisztrációs főoldala jelenik meg.
@@ -79,13 +75,13 @@ Az OAuth 2.0 implicit engedély alapértelmezés szerint le van tiltva az alkalm
 1. Jelölje ki az **Azonosító-jogkivonatok** vagy a **Hozzáférési jogkivonatok** lehetőséget, vagy mindkettőt.
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az alkalmazásokra vonatkozó alábbi rövid alkalmazásfelügyeleti útmutatókat is:
 
 * [Alkalmazás regisztrálása a Microsoft Identity Platformon](quickstart-register-app.md)
 * [Ügyfélalkalmazás konfigurálása a webes API-k elérésére](quickstart-configure-app-access-web-apis.md)
-* [Alkalmazás konfigurálása a webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
+* [Alkalmazás konfigurálása webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
 * [Microsoft Identity Platformon regisztrált alkalmazás eltávolítása](quickstart-remove-app.md)
 
 Ha szeretne többet megtudni a regisztrált alkalmazásokat jelölő két Azure AD-objektumról és azok kapcsolatáról, tekintse meg az [alkalmazás- és szolgáltatásnév-objektumokat](app-objects-and-service-principals.md) ismertető szakaszt.

@@ -1,28 +1,24 @@
 ---
-title: Bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript SPA-ban | Azure
+title: Bejelentkezési felhasználók JavaScript egyoldalas alkalmazásokban | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogy a JavaScript-alkalmazások hogyan hívhatnak meg olyan API-t, amely hozzáférési jogkivonatokat igényel a Microsoft Identity platform használatával.
+description: Ismerje meg, hogy a JavaScript-alkalmazások hogyan használhatnak olyan API-t, amely a Microsoft Identity platform használatával hozzáférési jogkivonatokat igényel.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ca9a8b87713508a581a833f60fbe863fd93919a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 77763ac30b4ba98e4849a25690302469843b4d06
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795612"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920633"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript SPA-ban
 
@@ -55,7 +51,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be a JavaScript eg
 > 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
 > 1. Nyissa meg a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapját.
 > 1. Válassza az **új regisztráció**lehetőséget.
-> 1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
+> 1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
 > 1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 > 1. Az **átirányítási URI** szakasz legördülő listájában válassza ki a **webplatformot** , majd állítsa `http://localhost:30662/`értékre.
 > 1. Kattintson a **Register** (Regisztrálás) elemre. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
@@ -80,11 +76,12 @@ Válassza ki a fejlesztési környezetének megfelelő lehetőséget:
 
 * Választható A projekt IIS-kiszolgálóval való futtatásához [töltse le a Visual Studio-projektet](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip). Bontsa ki a zip-fájlt egy helyi mappába (például *C:\Azure-Samples*).
 
-> [!div renderon="docs"]
-> #### <a name="step-3-configure-your-javascript-app"></a>3\. lépés: a JavaScript-alkalmazás konfigurálása
-> A *JavaScriptSPA* mappában szerkessze az *index. html*fájlt, és állítsa be a `clientID` és `authority` értékeket a `msalConfig`alatt.
+#### <a name="step-3-configure-your-javascript-app"></a>3\. lépés: a JavaScript-alkalmazás konfigurálása
 
 > [!div renderon="docs"]
+> A *JavaScriptSPA* mappában szerkessze az *index. html*fájlt, és állítsa be a `clientID` és `authority` értékeket a `msalConfig`alatt.
+
+> [!div class="sxs-lookup" renderon="portal"]
 > A *JavaScriptSPA* mappában szerkessze az *index. html*fájlt, és cserélje le a `msalConfig`t a következő kódra:
 
 ```javascript
@@ -101,12 +98,16 @@ var msalConfig = {
 };
 
 ```
+> [!div renderon="portal"]
+> > [!NOTE]
+> > Ez a rövid útmutató támogatja a Enter_the_Supported_Account_Info_Here.
+
 
 > [!div renderon="docs"]
 >
-> Az elemek magyarázata:
+> Helyszín:
 > - *\<Enter_the_Application_Id_here >* a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
-> - *\<Enter_the_Tenant_info_here >* az alábbi lehetőségek egyikére van beállítva:
+> - *\<Enter_the_Tenant_info_here >* a következő lehetőségek egyikére van beállítva:
 >    - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére** (például *contoso.microsoft.com*).
 >    - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket **szervezetekkel**.
 >    - Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat*, cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok*támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**.
@@ -115,12 +116,7 @@ var msalConfig = {
 > > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
 >
 
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3\. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
-> A projektet az alkalmazás tulajdonságainak értékeivel konfiguráltuk. 
-
-> [!div renderon="docs"]
-> #### <a name="step-4-run-the-project"></a>4\. lépés: a projekt futtatása
+#### <a name="step-4-run-the-project"></a>4\. lépés: a projekt futtatása
 
 * Ha a [Node. js](https://nodejs.org/en/download/)-t használja:
 
@@ -242,7 +238,7 @@ myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-Vannak olyan helyzetek, amikor kényszeríteni kell a felhasználókat, hogy együttműködjön a Microsoft Identity platform-végponttal. Például:
+Vannak olyan helyzetek, amikor kényszeríteni kell a felhasználókat, hogy együttműködjön a Microsoft Identity platform-végponttal. Példa:
 * Előfordulhat, hogy a felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszavuk lejárt.
 * Az alkalmazása olyan további erőforrás-hatókörökhöz kér hozzáférést, amelyeknek a felhasználónak hozzá kell járulnia.
 * Kétfaktoros hitelesítés szükséges.
@@ -267,7 +263,7 @@ myMSALObj.acquireTokenPopup(requestObj).then(function (tokenResponse) {
 > [!NOTE]
 > Ez a rövid útmutató a `loginRedirect` és a `acquireTokenRedirect` metódusokat használja a Microsoft Internet Explorerrel, mert az Internet Explorer felugró ablakok kezelésére vonatkozó [ismert probléma](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) miatt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A rövid útmutatóhoz tartozó alkalmazás létrehozásával kapcsolatos részletes útmutatót a következő témakörben talál:
 
