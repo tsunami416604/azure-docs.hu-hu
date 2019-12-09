@@ -1,23 +1,22 @@
 ---
-title: A helyszíni Hadoop-fürtről az Azure Storage-ba történő Migrálás Azure Data Factory használata
+title: Adatok áttelepíthetők egy helyszíni Hadoop-fürtről az Azure Storage-ba
 description: Ismerje meg, hogyan telepítheti át a helyszíni Hadoop-fürtökről az Azure Storage-ba az Azure Data Factory használatával.
 services: data-factory
-documentationcenter: ''
-author: dearandyxu
 ms.author: yexu
+author: dearandyxu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: b952be49bf5bc00b338aa04ed51e9dc451b5c4f9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afccbdbbfd5b8ddeefa621448d6170d937b518f0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675816"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931449"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>A helyszíni Hadoop-fürtről az Azure Storage-ba történő Migrálás Azure Data Factory használata 
 
@@ -82,7 +81,7 @@ Ez a rendszerkép az adatok áttelepítését mutatja be privát kapcsolaton ker
 - Ebben az architektúrában a rendszer az Azure ExpressRoute keresztül áttelepíti az adatátvitelt egy privát kapcsolaton keresztül. Az adat soha nem halad át a nyilvános interneten.
 - A DistCp eszköz nem támogatja az Azure Storage-beli virtuális hálózati végponttal rendelkező ExpressRoute privát társítását. Javasoljuk, hogy az adatáttelepítéshez az integrációs modulon keresztül használja a Data Factory natív képességeit.
 - Ebben az architektúrában telepítenie kell a Data Factory saját üzemeltetésű integrációs modult egy Windows rendszerű virtuális GÉPRE az Azure Virtual Networkben. Manuálisan is méretezheti a virtuális gépet, vagy akár több virtuális gépre is kibővítheti a hálózat és a tárhely IOPS vagy sávszélességének teljes kihasználását.
-- Az egyes Azure-beli virtuális gépekhez (a Data Factory saját üzemeltetésű integrációs modul telepítése esetén) ajánlott konfiguráció Standard_D32s_v3 32 vCPU és 128 GB memóriával rendelkezik. Az adatok áttelepítése során a virtuális gép processzor-és memóriahasználat figyelésével ellenőrizheti, hogy a virtuális gép vertikális felskálázása a jobb teljesítmény érdekében, vagy a virtuális gép skálázása a költség csökkentése érdekében.
+- Az egyes Azure-beli virtuális gépekhez javasolt konfiguráció (a Data Factory saját üzemeltetésű integrációs modul telepítése után) Standard_D32s_v3 32 vCPU és 128 GB memóriával rendelkezik. Az adatok áttelepítése során a virtuális gép processzor-és memóriahasználat figyelésével ellenőrizheti, hogy a virtuális gép vertikális felskálázása a jobb teljesítmény érdekében, vagy a virtuális gép skálázása a költség csökkentése érdekében.
 - Akár négy virtuálisgép-csomópont társításával is kibővítheti a saját üzemeltetésű integrációs modult. A saját üzemeltetésű integrációs modulon futó egyetlen másolási feladatot a rendszer automatikusan particionálja a készletet, és az összes virtuálisgép-csomópontot használja a fájlok párhuzamos másolásához. A magas rendelkezésre állás érdekében javasoljuk, hogy kezdjen el két virtuálisgép-csomóponttal, hogy elkerülje az egypontos meghibásodási forgatókönyvet az adatáttelepítés során.
 - Ha ezt az architektúrát használja, a kezdeti pillanatkép-adatok áttelepítése és a különbözeti adatok áttelepítése elérhetővé válik.
 
@@ -152,6 +151,6 @@ A feltételezéseken alapuló becsült ár:
 - [Új és módosított fájlok másolása a LastModifiedDate alapján](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
 - [Data Factory díjszabási oldala](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Több tárolóból származó fájlok másolása Azure Data Factory használatával](solution-template-copy-files-multiple-containers.md)

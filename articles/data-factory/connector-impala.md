@@ -4,20 +4,19 @@ description: Megtudhatja, hogyan másolhat adatokat a Impala-ből a fogadó adat
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 4fa43246278c33755f6a8a5b62f914689e6e9b40
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f465fe4bb69bc5ae81db6c78df51bf5133de1b60
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680802"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929307"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Adatok másolása az Impala-ből Azure Data Factory használatával
 
@@ -38,7 +37,7 @@ A Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedél
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -48,7 +47,7 @@ A következő szakaszokban részletesen ismertetjük az Impala-összekötőhöz 
 
 Az Impala társított szolgáltatás a következő tulajdonságokat támogatja.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot az **Impala**értékre kell beállítani. | Igen |
 | gazdagép | Az Impala-kiszolgáló IP-címe vagy állomásneve (azaz 192.168.222.160).  | Igen |
@@ -94,11 +93,11 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok Impala-ból való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **ImpalaObject**értékre. A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ImpalaObject** | Igen |
-| Séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| table | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Új számítási feladatokhoz használjon `schema` és `table`. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -126,7 +125,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok Impala-ből való másolásához állítsa a forrás típusát a másolás tevékenység **ImpalaSource**. A másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát **ImpalaSource**értékre kell állítani. | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
@@ -168,5 +167,5 @@ Az adatok Impala-ből való másolásához állítsa a forrás típusát a máso
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

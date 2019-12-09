@@ -1,5 +1,5 @@
 ---
-title: Webalkalmazások teljesítményének monitorozása – Azure Application Insights | Microsoft Docs
+title: Webalkalmazások teljesítményének monitorozása – Azure Application Insights
 description: Hogyan illeszkedik a Application Insights a devOps ciklusba
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/21/2018
-ms.openlocfilehash: bf7c0b4db2b7eb662f55b917dbe318d0ad8023ce
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 1396bc86971941fdf8c6559df71a4c47f58a899c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677290"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928822"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért van szükség a Application Insightsre?

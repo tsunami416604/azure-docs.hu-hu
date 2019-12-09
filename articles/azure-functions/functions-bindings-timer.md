@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 143a05944799ff04f9c21384f85a4b00cc65b750
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: de36f760fb637ad02446265927e7df7aa91b2abf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545731"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928378"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz 
 
@@ -26,7 +26,7 @@ Az időzítő triggert a [Microsoft. Azure. webjobs. Extensions](https://www.nug
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x"></a>Csomagok – 2. x függvények
+## <a name="packages---functions-2x-and-higher"></a>Csomagok – 2. x és újabb függvények
 
 Az időzítő triggert a [Microsoft. Azure. webjobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet csomagban, 3. x verzióban kell megadnia. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) tárházban található.
 
@@ -302,7 +302,7 @@ Vagy hozzon létre egy alkalmazást a `WEBSITE_TIME_ZONE` nevű Function alkalma
 
 `WEBSITE_TIME_ZONE`használatakor az idő az adott időzónában, például a nyári időszámítás időpontjára módosul. 
 
-## <a name="timespan"></a>TimeSpan
+## <a name="timespan"></a>időtartam
 
  `TimeSpan` csak egy App Service-csomagon futó Function alkalmazás esetében használható.
 
@@ -327,7 +327,7 @@ Ha a Storage-fiókokat az App Service-be nem telepített functions-alkalmazások
 
 | Függvények verziója | Beállítás                                              |
 | ----------------- | ---------------------------------------------------- |
-| 2. x               | `AzureFunctionsWebHost__hostid` környezeti változó |
+| 2. x (és újabb)  | `AzureFunctionsWebHost__hostid` környezeti változó |
 | 1. x               | `id` a *Host. JSON* fájlban                                  |
 
 Kihagyhatja az azonosító értéket, vagy manuálisan állíthatja be az egyes functions-alkalmazások azonosítási konfigurációját egy másik értékre.

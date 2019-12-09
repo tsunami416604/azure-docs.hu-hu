@@ -1,5 +1,5 @@
 ---
-title: Webes API-kat meghívó mobil alkalmazás – token beszerzése az alkalmazáshoz
+title: Token beszerzése webes API-k meghívásához a Mobile apps szolgáltatásban | Azure
 titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan hozhat létre olyan mobil alkalmazást, amely meghívja a webes API-kat (az alkalmazás jogkivonatának beszerzése)
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b1d6a0e4bfffaaf4ed0fa836bcf62a7f1104e6a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 1101a1923e094c22e9f6a82853f4dec4deb089a1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803768"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919919"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Webes API-kat meghívó mobil alkalmazás – jogkivonat beolvasása
 
@@ -259,7 +259,7 @@ A protokollt nem ajánlott közvetlenül használni. Ha így tesz, az alkalmazá
 
 Ha a protokollt használja a Mobile apps-jogkivonatok beszerzéséhez, két kérést kell tennie: Kérjen egy engedélyezési kódot, és cserélje ki egy tokenre.
 
-#### <a name="get-authorization-code"></a>Engedélyezési kód lekérése
+#### <a name="get-authorization-code"></a>Hozzáférési kód lekérése
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 26ba3ff600ddca6158579941ab5d32b60ff13101
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 429205d1df91b5a63679d1189903e5340ab837f8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950366"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913881"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai
 
@@ -92,12 +92,12 @@ A kubenet és az Azure CNI egyaránt biztosítanak hálózati kapcsolatot az AK-
     * A felhasználó által megadott útvonalakat (UDR) manuálisan kell kezelni és karbantartani.
     * Fürtben legfeljebb 400 csomópont adható meg.
 * **Azure-CNI**
-    * A hüvelyek teljes virtuális hálózati kapcsolatot kapnak, és közvetlenül a fürtön kívülről is elérhetők.
+    * A hüvelyek teljes virtuális hálózati kapcsolattal rendelkeznek, és közvetlenül a saját magánhálózati IP-címükkel érhetik el a csatlakoztatott hálózatokból.
     * További IP-címtartomány szükséges.
 
 A kubenet és az Azure CNI között a következő viselkedési különbségek léteznek:
 
-| Képesség                                                                                   | Kubenet   | Azure CNI |
+| Szolgáltatás                                                                                   | Kubenet   | Azure-CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
 | Fürt üzembe helyezése meglévő vagy új virtuális hálózaton                                            | Támogatott – UDR manuálisan alkalmazva | Támogatott |
 | Pod-Pod kapcsolat                                                                         | Támogatott | Támogatott |
@@ -134,7 +134,7 @@ A bejövő forgalom egy másik gyakori funkciója az SSL/TLS-lezárás. A HTTPS-
 
 A bejövő adatkezelőt úgy is konfigurálhatja, hogy megőrizze az ügyfél forrásának IP-címét az AK-fürtön lévő tárolók kéréseire. Ha az ügyfél kérelmét az AK-fürt egyik tárolójába irányítja át a bejövő vezérlőn keresztül, a kérelem eredeti forrásának IP-címe nem lesz elérhető a cél tárolóban. Ha engedélyezi az *ügyfél forrás IP-címének megőrzését*, az ügyfél forrás IP-címe a kérelem fejlécében érhető el az *X által továbbított – esetében*. Ha ügyfél-forrás IP-megőrzést használ a bejövő adatkezelőn, akkor nem használhatja az SSL-áteresztőt. Az ügyfél-forrás IP-megőrzés és az SSL-továbbítás más szolgáltatásokkal is használható, például a *terheléselosztó* típussal.
 
-## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+## <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 
 A hálózati biztonsági csoport a virtuális gépek, például az AK-csomópontok forgalmát szűri. A szolgáltatások, például a terheléselosztó létrehozása során az Azure platform automatikusan konfigurálja a hálózati biztonsági csoportok szükséges szabályait. Ne konfigurálja manuálisan a hálózati biztonsági csoport szabályait a hüvelyek forgalmának szűrésére egy AK-fürtben. Adja meg a szükséges portokat és továbbítást a Kubernetes szolgáltatás jegyzékfájljának részeként, és hagyja, hogy az Azure platform létrehozza vagy frissítse a megfelelő szabályokat. Hálózati házirendeket is használhat a következő szakaszban leírtak szerint, hogy automatikusan alkalmazza a forgalmi szűrő szabályait a hüvelyekre.
 
@@ -146,7 +146,7 @@ A hálózati házirend egy AK-ban elérhető Kubernetes funkció, amely lehetőv
 
 További információ: a [hüvelyek közötti biztonságos forgalom a hálózati házirendek használatával az Azure Kubernetes szolgáltatásban (ak)][use-network-policies].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az AK hálózatkezelésének megkezdéséhez hozzon létre és konfiguráljon egy AK-fürtöt a saját IP-címtartományok használatával a [kubenet][aks-configure-kubenet-networking] vagy az [Azure CNI][aks-configure-advanced-networking]segítségével.
 

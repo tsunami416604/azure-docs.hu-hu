@@ -4,21 +4,20 @@ description: Állítson be egy adatátjárót a helyszíni és a felhő között
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 52bce71abd6ecf30b5a3661c2e6033537357db3a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 039a19f38da4e651ee35fe60ba2b95a40cf890b0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682480"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931908"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatáthelyezés a helyszíni források és a felhő között adatkezelés átjáróval
 > [!NOTE]
@@ -53,7 +52,7 @@ A forgatókönyv elkezdése előtt a következő előfeltételek szükségesek:
 ## <a name="create-data-factory"></a>Data factory létrehozása
 Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOnPremDF**nevű Azure Data Factory-példányt.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Kattintson **az erőforrás létrehozása**elemre, majd az **intelligencia és Analitika**elemre, majd a **Data Factory**elemre.
 
    ![New (Új)->DataFactory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
@@ -148,7 +147,7 @@ Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOn
    * A **tesztelési kapcsolatok** szakaszt egy helyszíni adatforráshoz használja az átjáró használatával.
    * Kattintson a **naplók megtekintése** lehetőségre a adatkezelés átjáró naplójának Eseménynapló ablakban való megjelenítéséhez.
    * Kattintson a **naplók küldése** elemre, ha az elmúlt hét nap naplóit tartalmazó zip-fájlt szeretne feltölteni a Microsoftnak a problémák elhárítása érdekében.
-10. A **diagnosztika** lap **tesztelési kapcsolatok** területén válassza a **SQLServer** lehetőséget az adattár típusához, adja meg az adatbázis-kiszolgáló nevét, az adatbázis nevét, a hitelesítés típusát, a Felhasználónév és a jelszó megadását, majd kattintson a **Tesztelje** , hogy az átjáró tud-e csatlakozni az adatbázishoz.
+10. A **diagnosztika** lapon, a **kapcsolat tesztelése** szakaszban válassza a **SQLServer** lehetőséget az adattár típusához, adja meg az adatbázis-kiszolgáló nevét, az adatbázis nevét, a hitelesítés típusát, adja meg a felhasználónevet és a jelszót, majd kattintson a **tesztelés** elemre annak teszteléséhez, hogy az átjáró tud-e csatlakozni az adatbázishoz.
 11. Váltson a böngészőre, és a **Azure Portal**kattintson az **OK** gombra a **Konfigurálás** lapon, majd az **új adatátjáró** lapon.
 12. A bal oldali fanézetben a **adftutorialgateway** alatt található **adatátjárók** területen kell megjelennie.  Ha rákattint, megjelenik a társított JSON.
 
@@ -411,6 +410,6 @@ Ebben a lépésben az Azure Portal használatával figyeli egy Azure data factor
 
    ![Azure Storage Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az adatkezelés-átjáróval kapcsolatos további információkért tekintse meg a [adatkezelés átjáróval](data-factory-data-management-gateway.md) foglalkozó cikket.
 * Lásd: [adatok másolása az Azure blobból az Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) -be, hogy megtudja, hogyan használható a másolási tevékenység az adatok forrás adattárból egy fogadó adattárba való áthelyezéséhez.

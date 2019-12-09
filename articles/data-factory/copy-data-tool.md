@@ -4,19 +4,19 @@ description: Információt nyújt a Adatok másolása eszközről Azure Data Fac
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: b5c93213199cac399487f949a3a8cb04c2d9addb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a6de5c28115d3a451256cc43d26552c269ba245a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678318"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927498"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Adatok másolása eszköz a Azure Data Factory
 A Azure Data Factory Adatok másolása eszköz megkönnyíti és optimalizálja az adatfeldolgozás folyamatát egy adattóba, ami általában egy teljes körű adatintegrációs forgatókönyv első lépése.  Időt takaríthat meg, különösen akkor, ha a Azure Data Factory használatával tölti be az adatforrásból az adatok első alkalommal történő betöltését. Az eszköz használatának néhány előnye:
@@ -69,7 +69,7 @@ A Adatok másolása eszköz figyeli és megtanulja a viselkedését, ha a forrá
 > [!NOTE]
 > Ha az adatok másolása SQL Server vagy Azure SQL Database a Azure SQL Data Warehouse, ha a tábla nem létezik a célhelyen, Adatok másolása eszköz támogatja a tábla automatikus létrehozását a forrásoldali séma használatával. 
 
-## <a name="filter-data"></a>Adatszűrés
+## <a name="filter-data"></a>Adatok szűrése
 A forrásadatok szűrésével kiválaszthatja azokat az adatforrásokat, amelyeket át kell másolni a fogadó adattárba. A szűrés csökkenti a fogadó adattárba másolandó adatok mennyiségét, így fokozza a másolási művelet átviteli sebességét. Az Adatok másolása eszköz rugalmas módot biztosít a kapcsolódó adatbázisok adatszűrésére az SQL-lekérdezési nyelv vagy egy Azure Blob mappában található fájlok használatával. 
 
 ### <a name="filter-data-in-a-database"></a>Adatszűrés egy adatbázisban
@@ -105,7 +105,7 @@ Az egyszeri másolási művelettel csak egyszer engedélyezhető az adatáthelye
 ![Ütemezési beállítások](./media/copy-data-tool/scheduling-options.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Próbálja ki ezeket az oktatóanyagokat, amelyek az Adatok másolása eszközt használják:
 
 - [Gyors útmutató: adatelőállító létrehozása a Adatok másolása eszköz használatával](quickstart-create-data-factory-copy-data-tool.md)

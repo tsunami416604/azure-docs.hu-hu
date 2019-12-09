@@ -1,23 +1,21 @@
 ---
-title: 'SSISDB-naplók karbantartása az Azure Elastic Database-feladatokkal '
+title: SSISDB-naplók karbantartása az Azure Elastic Database-feladatokkal
 description: Ez a cikk azt ismerteti, hogyan lehet megtisztítani a SSISDB-naplókat az Azure rugalmas adatbázis-feladatok használatával az erre a célra használt tárolt eljárás elindításához
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/13/2018
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 0697addb14894855f554c1d82f59f3798e63d03b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 331a2317f11fbb6f0dd1437a0b41f7ad110a63c7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674743"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928025"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>SSISDB-naplók karbantartása az Azure Elastic Database-feladatokkal
 
@@ -262,7 +260,7 @@ SELECT * FROM jobs.job_executions WHERE is_active = 1
 ORDER BY start_time DESC
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure-SSIS Integration Runtime kapcsolatos felügyeleti és figyelési feladatokhoz tekintse meg a következő cikkeket. A Azure-SSIS IR a Azure SQL Database SSISDB tárolt SSIS-csomagok futásidejű motorja.
 

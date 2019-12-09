@@ -1,18 +1,19 @@
 ---
-title: A JSON használata a Azure Data Factory adatforgalmának leképezésében
+title: JSON a leképezési adatfolyamban
 description: Azure Data Factory a leképezési adatfolyam beépített képességekkel rendelkezik a JSON-dokumentumok hierarchiákkal való kezeléséhez
 author: kromerm
 ms.author: makromer
 ms.review: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/30/2019
-ms.openlocfilehash: fe412e9e682fb55f1664c546e6b6c5a347527adb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 153c7a1003c68526c960644bebcc4800e92edc3c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387346"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928329"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Az adatfolyam JSON-kezelésének leképezése
 
@@ -161,7 +162,7 @@ Jelölje ki az **egyszeres idézőjelet** , ha fordított perjeleket használ a 
 
 A magasabb rendű függvény egy függvény, amely egy vagy több függvényt argumentumként vesz igénybe. Az alábbi lista a tömböket engedélyező adatfolyamatok leképezése által támogatott magasabb rendű függvények listáját tartalmazza.
 
-### <a name="filter"></a>Szűrő
+### <a name="filter"></a>szűrő
 Kiszűri a tömb azon elemeit, amelyek nem felelnek meg a megadott predikátumnak. A szűrő a predikátum függvény egy elemére mutató hivatkozást vár #itemként.
 
 #### <a name="examples"></a>Példák
@@ -189,7 +190,7 @@ reduce(['1', '2', '3', '4'], '0', #acc + #item, #result) => '01234'
 reduce([1, 2, 3, 4], 0, #acc + #item, #result + 15) => 25
 ```
 
-### <a name="sort"></a>Rendezés
+### <a name="sort"></a>rendezés
 Rendezi a tömböt a megadott predikátum függvény használatával. A rendezés két egymást követő elemre mutató hivatkozást vár a kifejezés függvényben #item1 és #item2.
 
 #### <a name="examples"></a>Példák
@@ -201,7 +202,7 @@ sort(['a3', 'b2', 'c1'],
         iif(#item1 >= #item2, 1, -1)) => ['a3', 'b2', 'c1']
 ```
 
-### <a name="contains"></a>tartalmaz
+### <a name="contains"></a>tartalmazza
 Igaz értéket ad vissza, ha a megadott tömb bármely eleme igaz értékre értékeli a megadott predikátumban. A tartalmaz egy hivatkozást a predikátum függvény egyik elemére #itemként.
 
 #### <a name="examples"></a>Példák

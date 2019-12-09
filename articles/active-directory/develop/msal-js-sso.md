@@ -1,29 +1,25 @@
 ---
-title: Egyszeri bejelentkezés (Microsoft hitelesítési függvénytár JavaScripthez)
+title: Egyszeri bejelentkezés (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg az egyszeri bejelentkezéses élmények létrehozását a JavaScripthez készült Microsoft Authentication Library (MSAL. js) használatával.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da39b8435acdd11108a945c6bac5147dc8b6ad50
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 921c02e682c722a4e96f98fb0fc54d7fcbb82220
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150572"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916264"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Egyszeri bejelentkezés az MSAL.js-sel
 
@@ -92,7 +88,7 @@ A választható jogcímek konfigurálásának lépései [itt](active-directory-o
 
 **A login hint használata**
 
-Ha nincs konfigurálva a SID-jogcím, vagy meg kell kerülnie a fiók kiválasztására vonatkozó kérést az interaktív hitelesítési hívásokban, ezt úgy teheti meg, hogy a kérés paramétereinek `login_hint`ét, és opcionálisan `extraQueryParameters` `domain_hint` a MSAL. js interaktív metódusokban (@no __t_3_, `loginRedirect`, `acquireTokenPopup` és `acquireTokenRedirect`). Példa:
+Ha nincs konfigurálva a SID-jogcím, vagy meg kell kerülnie a fiók kiválasztására vonatkozó kérést az interaktív hitelesítési hívásokban, ezt úgy teheti meg, hogy megadja a kérés paramétereinek `login_hint`ét, és opcionálisan `extraQueryParameters` `domain_hint` a MSAL. js interaktív módszereiben (`loginPopup`, `loginRedirect`, `acquireTokenPopup` és `acquireTokenRedirect`). Példa:
 
 ```javascript
 var request = {
@@ -104,16 +100,16 @@ var request = {
 userAgentApplication.loginRedirect(request);
 ```
 
-A login_hint és a domain_hint értékeit a felhasználó azonosító jogkivonatában visszaadott jogcímek beolvasásával érheti el.
+Login_hint és domain_hint értékeit a felhasználó azonosító jogkivonatában visszaadott jogcímek beolvasásával érheti el.
 
 * a **loginHint** az azonosító jogkivonatban az `preferred_username` jogcím értékére kell beállítani.
 
-* a **domain_hint** csak akkor szükséges, ha a/gyakori hibák-szolgáltatót használja. A tartomány-emlékeztetőt a bérlői azonosító (TID) határozza meg.  Ha a `tid` jogcímet az azonosító jogkivonatban `9188040d-6c67-4c5b-b112-36a304b66dad` a fogyasztó. Egyéb esetben ez a szervezet.
+* **domain_hint** csak akkor szükséges, ha az/gyakori hibák-szolgáltatót használja. A tartomány-emlékeztetőt a bérlői azonosító (TID) határozza meg.  Ha a `tid` jogcímet az azonosító jogkivonatban `9188040d-6c67-4c5b-b112-36a304b66dad` a fogyasztó. Egyéb esetben ez a szervezet.
 
 Az [itt](v2-oauth2-implicit-grant-flow.md) olvasható további információ a bejelentkezési és a tartományi emlékeztető értékeiről.
 
 > [!Note]
-> A SID-és a login_hint nem adható át egyszerre. Ez hibaüzenetet eredményez.
+> A SID és a login_hint nem adható át egyszerre. Ez hibaüzenetet eredményez.
 
 ## <a name="sso-without-msaljs-login"></a>SSO MSAL. js-bejelentkezés nélkül
 

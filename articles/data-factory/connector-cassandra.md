@@ -4,20 +4,19 @@ description: Megtudhatja, hogyan másolhatja át az adatait a Cassandra-ből a A
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 9068874704233b3bbb5f38345648bc3455433768
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 41547787a3b7add1baa05a41d6785d1cd926165d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681095"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929592"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Adatok másolása a Cassandra használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -59,7 +58,7 @@ A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, 
 
 A Cassandra társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type |A Type tulajdonságot a következőre kell beállítani: **Cassandra** |Igen |
 | gazdagép |A Cassandra-kiszolgálók egy vagy több IP-címe vagy állomásneve.<br/>Megadhatja az IP-címek vagy állomásnevek vesszővel tagolt listáját, hogy az összes kiszolgálóhoz egyszerre kapcsolódjon. |Igen |
@@ -102,7 +101,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok Cassandra-ből való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **CassandraTable**értékre. A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **CassandraTable** | Igen |
 | kulcstartomány |A térköz vagy séma neve a Cassandra adatbázisban. |Nem (ha a "CassandraSource" paraméternél "lekérdezés" van megadva) |
@@ -137,7 +136,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok Cassandra-ből való másolásához állítsa a forrás típusát a másolás tevékenység **CassandraSource**. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **CassandraSource** | Igen |
 | lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. SQL-92 lekérdezés vagy CQL-lekérdezés. Lásd: [CQL-hivatkozás](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL-lekérdezés használatakor adja meg a **térköz nevét. a tábla neve** , amely a lekérdezni kívánt táblát jelöli. |Nem (ha meg van adva a "táblanév" és a "szóköz" az adatkészletben). |
@@ -186,12 +185,12 @@ Az adatok Cassandra-ből való másolása során a rendszer a következő lekép
 | BLOB |Bájt [] |
 | LOGIKAI |Logikai |
 | DECIMÁLIS |Decimális |
-| DUPLÁN |duplán |
+| DUPLÁN |Double |
 | FLOAT |Önálló |
 | INET |Sztring |
 | INT |Int32 |
-| SZÖVEG |Sztring |
-| IDŐBÉLYEG |DateTime |
+| TEXT |Sztring |
+| IDŐBÉLYEG |Dátum és idő |
 | TIMEUUID |GUID |
 | UUID |GUID |
 | VARCHAR |Sztring |
@@ -218,7 +217,7 @@ A virtuális táblák a valós táblázatba tartozó, az illesztőprogramnak a d
 
 Például a következő "ExampleTable" egy Cassandra adatbázis-tábla, amely egy "pk_int" nevű egész számú elsődleges kulcs oszlopot tartalmaz, egy érték nevű szöveges oszlop, egy lista oszlop, egy Térkép oszlop és egy beállított oszlop ("StringSet").
 
-| pk_int | Érték | Lista | Térkép | StringSet |
+| pk_int | Value (Díj) | Listázás | Térkép | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"Sample Value 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"3. minta érték" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
@@ -227,16 +226,16 @@ Az illesztőprogram több virtuális táblát fog előállítani, hogy ezt az eg
 
 Az első virtuális tábla a "ExampleTable" nevű alaptábla a következő táblázatban látható: 
 
-| pk_int | Érték |
+| pk_int | Value (Díj) |
 | --- | --- |
 | 1 |"Sample Value 1" |
 | 3 |"3. minta érték" |
 
 Az alaptábla ugyanazokat az adatokkal rendelkezik, mint az eredeti adatbázistábla, kivéve azokat a gyűjteményeket, amelyek ki vannak hagyva ebből a táblából, és más virtuális táblákban kibontva vannak.
 
-A következő táblázatok azokat a virtuális táblákat mutatják be, amelyek a lista, a Térkép és a StringSet oszlopokból származó adatok újranormalizálása. Az "_index" vagy "gyökérkulcs" végződésű névvel rendelkező oszlopok az eredeti listán vagy térképen belüli pozíciót jelölik. A "_value" végződésű neveket tartalmazó oszlopok a gyűjteményből származó kibontott adatokkal rendelkeznek.
+A következő táblázatok azokat a virtuális táblákat mutatják be, amelyek a lista, a Térkép és a StringSet oszlopokból származó adatok újranormalizálása. A "_index" vagy "_key" végződésű neveket jelölő oszlopok az eredeti listán vagy a térképen belüli pozíciót jelölik. A "_value" végződésű neveket tartalmazó oszlopok a gyűjteményből származó kibontott adatokkal rendelkeznek.
 
-**Tábla "ExampleTable_vt_List":**
+**"ExampleTable_vt_List" tábla:**
 
 | pk_int | List_index | List_value |
 | --- | --- | --- |
@@ -248,7 +247,7 @@ A következő táblázatok azokat a virtuális táblákat mutatják be, amelyek 
 | 3 |2 |102 |
 | 3 |3 |103 |
 
-**Tábla "ExampleTable_vt_Map":**
+**"ExampleTable_vt_Map" tábla:**
 
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
@@ -256,7 +255,7 @@ A következő táblázatok azokat a virtuális táblákat mutatják be, amelyek 
 | 1 |S2 |b |
 | 3 |S1 |t |
 
-**Tábla "ExampleTable_vt_StringSet":**
+**"ExampleTable_vt_StringSet" tábla:**
 
 | pk_int | StringSet_value |
 | --- | --- |
@@ -270,5 +269,5 @@ A következő táblázatok azokat a virtuális táblákat mutatják be, amelyek 
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

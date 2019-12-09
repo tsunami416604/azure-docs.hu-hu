@@ -4,20 +4,19 @@ description: Megtudhatja, hogyan másolhatja át az adatait a DB2-ből a támoga
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: e72e6c112913d646b6dc1479a9b80acc6d4ec7b1
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 304d0615a12871fb4a9610058bc1be0ad6dff806
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280755"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929549"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása a DB2-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -58,7 +57,7 @@ Pontosabban, ez a DB2-összekötő a következő IBM DB2 platformokat és verzi�
 
 A Integration Runtime beépített DB2-illesztőprogramot biztosít, ezért nem kell manuálisan telepítenie az illesztőprogramot az adatok DB2-ből való másolása során.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -68,7 +67,7 @@ A következő szakaszokban részletesen ismertetjük a DB2-összekötőhöz tart
 
 A DB2 társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **DB2** | Igen |
 | kiszolgáló |A DB2-kiszolgáló neve. Megadhatja azt a portszámot, amelyet a kiszolgáló neve a kettősponttal elválasztva, például `server:port`. |Igen |
@@ -78,7 +77,7 @@ A DB2 társított szolgáltatás a következő tulajdonságokat támogatja:
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen |
 | packageCollection | Itt adhatja meg, hogy a rendszer hol hozza létre az ADF által az adatbázis lekérdezése során automatikusan létrehozott szükséges csomagokat | Nem |
 | certificateCommonName | Ha SSL (SSL) vagy Transport Layer Security (TLS) titkosítást használ, meg kell adnia egy értéket a tanúsítvány köznapi neveként. | Nem |
-| connectVia | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 **Példa**
 
@@ -111,12 +110,12 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok DB2-ből való másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **Db2Table** | Igen |
-| schema | A séma neve. |Nem (Ha a tevékenység forrása az "query" van megadva)  |
-| table | A tábla neve. |Nem (Ha a tevékenység forrása az "query" van megadva)  |
-| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Új számítási feladatokhoz használjon `schema` és `table`. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+| séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| table | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Új számítási feladatokhoz használjon `schema` és `table`. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
 
@@ -146,10 +145,10 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok DB2-ből történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **Db2Source** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
 
@@ -189,34 +188,34 @@ Ha `RelationalSource` gépelt forrást használ, a rendszer továbbra is támoga
 
 Az adatok DB2-ből való másolása során a rendszer a következő leképezéseket használja az DB2-adattípusokból Azure Data Factory köztes adattípusokhoz. A másolási tevékenység a forrás sémájának és adattípusának a fogadóba való leképezésével kapcsolatos tudnivalókat lásd: [séma-és adattípus-leképezések](copy-activity-schema-and-type-mapping.md) .
 
-| DB2-adatbázis típusa | Data factory közbenső adattípus |
+| DB2-adatbázis típusa | Az adatgyár átmeneti adattípusa |
 |:--- |:--- |
 | BigInt |Int64 |
-| Bináris |Byte[] |
-| Blob |Byte[] |
-| CHAR |Sztring |
-| Clob |Sztring |
-| Dátum |Dátum és idő |
+| Bináris |Bájt [] |
+| Blob |Bájt [] |
+| Char |Sztring |
+| CLOB |Sztring |
+| Dátum |Dátum/idő |
 | DB2DynArray |Sztring |
 | DbClob |Sztring |
-| tizedes tört |tizedes tört |
-| DecimalFloat |tizedes tört |
-| Dupla |Dupla |
-| Float |Dupla |
-| Graphic |Sztring |
+| Decimális |Decimális |
+| DecimalFloat |Decimális |
+| Double |Double |
+| Lebegőpontos szám |Double |
+| Grafikus |Sztring |
 | Egész szám |Int32 |
-| LongVarBinary |Byte[] |
+| LongVarBinary |Bájt [] |
 | LongVarChar |Sztring |
 | LongVarGraphic |Sztring |
-| Numeric |tizedes tört |
+| Numerikus |Decimális |
 | Real |Önálló |
 | SmallInt |Int16 |
-| Time |Időtartam |
-| Időbélyeg |DateTime |
-| VarBinary |Byte[] |
+| Idő |időtartam |
+| Időbélyeg |Dátum és idő |
+| VarBinary |Bájt [] |
 | VarChar |Sztring |
 | VarGraphic |Sztring |
-| Xml |Byte[] |
+| XML |Bájt [] |
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 

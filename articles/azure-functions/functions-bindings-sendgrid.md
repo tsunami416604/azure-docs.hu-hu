@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 997c9427883e2a099c2c185b618701fb85cb96a6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a96cd537328a1a9edeeb03f81350ed5393806765
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231088"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927581"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-kötések Azure Functions
 
@@ -18,24 +18,24 @@ Ez a cikk azt ismerteti, hogyan küldhet e-mailt [SendGrid](https://sendgrid.com
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
+## <a name="packages---functions-1x"></a>Csomagok – 1. x függvények
 
 A SendGrid-kötések a [Microsoft. Azure. webjobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet csomagban, 2. x verzióban találhatók. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) tárházban található.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
+## <a name="packages---functions-2x-and-higher"></a>Csomagok – 2. x és újabb függvények
 
 A SendGrid-kötések a [Microsoft. Azure. webjobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet csomagban, 3. x verzióban találhatók. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) tárházban található.
 
 > [!NOTE]
-> A 2. x verzió nem hozza létre a `ServiceBusTrigger`-példányban konfigurált témakört vagy előfizetést. A 2. x verzió a [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) alapul, és nem kezeli a várólista-kezelést.
+> A 2. x és újabb verziók nem hozza létre a `ServiceBusTrigger`-példányban konfigurált témakört vagy előfizetést. Ezek a verziók a [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) alapulnak, amely nem kezeli a várólista-kezelést.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="example"></a>Példa
 
-Tekintse meg az adott nyelvű példa:
+Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#c-example)
 * [C#parancsfájl (. CSX)](#c-script-example)
@@ -131,7 +131,7 @@ Itt található a *function. JSON* fájlban található kötési adat:
 
 A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Íme a C#-szkriptkódot:
+A C# szkript kódja:
 
 ```csharp
 #r "SendGrid"
@@ -211,7 +211,7 @@ Itt található a *function. JSON* fájlban található kötési adat:
 
 A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-A következő JavaScript-kódot:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = function (context, input) {    
@@ -251,24 +251,24 @@ Teljes példa: [ C# példa](#c-example).
 
 Az alábbi táblázat a *function. JSON* fájlban és a `SendGrid` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
+|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**type**|| Kötelező – `sendGrid`értékre kell állítani.|
 |**direction**|| Kötelező – `out`értékre kell állítani.|
 |**név**|| Kötelező – a kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték ```$return```, ha csak egy visszatérési érték van. |
 |**apiKey**|**ApiKey**| Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsSendGridApiKey".|
-|**hogy**|**Címzett**| a címzett e-mail-címe. |
-|**a**|**A**| a feladó e-mail-címe. |
-|**tulajdonos**|**Tárgy**| az e-mail tárgya. |
-|**szöveg**|**Szöveg**| az e-mail tartalma. |
+|**to**|**Címzett**| a címzett e-mail-címe. |
+|**from**|**From**| a feladó e-mail-címe. |
+|**tárgy**|**Tárgy**| az e-mail tárgya. |
+|**text**|**Szöveg**| az e-mail tartalma. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>Host.JSON-beállítások
+## <a name="hostjson-settings"></a>gazdagép. JSON-beállítások
 
-Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshez verziójában elérhető 2.x. Az alábbi példa host.json-fájl csak a verzió 2.x beállításait tartalmazza ezt a kötést. A 2. x verziójú globális konfigurációs beállításokkal kapcsolatos további információkért lásd: [Host. JSON-dokumentáció Azure functions 2. x verzióhoz](functions-host-json.md).
+Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti 2. x vagy újabb verziókban. A következő példa a Host. JSON fájlt tartalmazza, csak a 2. x + beállításokat a kötéshez. További információ a 2. x verzióban található globális konfigurációs beállításokról: a [Host. JSON dokumentációja Azure functions](functions-host-json.md).
 
 > [!NOTE]
 > Az 1. x függvények Host. JSON fájljának hivatkozását lásd: [Host. JSON-dokumentáció Azure functions 1. x-hez](functions-host-json-v1.md).
@@ -286,7 +286,7 @@ Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshe
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|from|n/a|A küldő e-mail-címe az összes függvényen belül.| 
+|forrás|–|A küldő e-mail-címe az összes függvényen belül.| 
 
 
 ## <a name="next-steps"></a>Következő lépések

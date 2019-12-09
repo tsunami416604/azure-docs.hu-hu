@@ -1,20 +1,21 @@
 ---
-title: 'PowerShell-parancsfájl – adatátalakítás a felhőben Data Factory használatával '
+title: Az adatátalakítás a felhőben a PowerShell használatával
 description: Ez a PowerShell-parancsfájl egy Azure HDInsight Spark fürtön futó Spark-program futtatásával átalakítja a felhőben tárolt adatfájlokat.
 author: djpmsft
 ms.author: daperlov
-manager: jroth
+manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/12/2017
-ms.openlocfilehash: 53f64103819476e4efe918bd7a7be4ee2a1bcca3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c09d0532b845472d0ccaac1ad57e3772630bb5c9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684319"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932055"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell-parancsfájl – adatátalakítás a felhőben Azure Data Factory használatával
 
@@ -99,7 +100,7 @@ Ez a szkript a következő parancsokat használja:
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

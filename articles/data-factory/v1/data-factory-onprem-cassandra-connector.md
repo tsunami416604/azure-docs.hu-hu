@@ -4,21 +4,20 @@ description: Ismerje meg, hogyan helyezhetők át adatok egy helyszíni Cassandr
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 085cc312-42ca-4f43-aa35-535b35a102d5
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4edd4d663e02601a97474c5d3a54adaa6b7fd27d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 05cee60fb1f4d43d1b4ce371aa9f22650b4782da
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682441"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931824"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Adatok áthelyezése helyszíni Cassandra-adatbázisból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -64,7 +63,7 @@ A következő szakaszokban részletesen ismertetjük a Cassandra-adattárra jell
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a Cassandra társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesCassandra** |Igen |
 | gazdagép |A Cassandra-kiszolgálók egy vagy több IP-címe vagy állomásneve.<br/><br/>Megadhatja az IP-címek vagy állomásnevek vesszővel tagolt listáját, hogy az összes kiszolgálóhoz egyszerre kapcsolódjon. |Igen |
@@ -83,7 +82,7 @@ Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok telje
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **CassandraTable** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | kulcstartomány |A térköz vagy séma neve a Cassandra adatbázisban. |Igen (ha a **CassandraSource** - **lekérdezés** nincs definiálva). |
 | tableName |A tábla neve a Cassandra adatbázisban. |Igen (ha a **CassandraSource** - **lekérdezés** nincs definiálva). |
@@ -95,10 +94,10 @@ Míg a tevékenység typeProperties szakaszában elérhető tulajdonságok az eg
 
 Ha a forrás **CassandraSource**típusú, a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-92 lekérdezés vagy CQL-lekérdezés. Lásd: [CQL-hivatkozás](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL-lekérdezés használatakor adja meg a **térköz nevét. a tábla neve** , amely a lekérdezni kívánt táblát jelöli. |Nem (ha meg van adva a táblanév és a szóköz az adatkészleten). |
-| consistencyLevel |A konzisztencia szintje határozza meg, hogy hány replikának kell válaszolnia egy olvasási kérelemre, mielőtt adatvisszaad az ügyfélalkalmazás számára. Cassandra ellenőrzi a megadott számú replikát az adatolvasási kérelem teljesítéséhez. |EGY, KETTŐ, HÁROM, KVÓRUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. További részletek: az [adatkonzisztencia konfigurálása](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) . |Nem. Az alapértelmezett érték egy. |
+| consistencyLevel |A konzisztencia szintje határozza meg, hogy hány replikának kell válaszolnia egy olvasási kérelemre, mielőtt adatvisszaad az ügyfélalkalmazás számára. Cassandra ellenőrzi a megadott számú replikát az adatolvasási kérelem teljesítéséhez. |EGY, KETTŐ, HÁROM, KVÓRUM, MIND, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. További részletek: az [adatkonzisztencia konfigurálása](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) . |Nem. Az alapértelmezett érték egy. |
 
 ## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>JSON-példa: adatok másolása a Cassandra-ből az Azure-Blobba
 Ez a példa JSON-definíciókat tartalmaz, amelyek segítségével a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre folyamatokat. Bemutatja, hogyan másolhat adatok egy helyszíni Cassandra-adatbázisból egy Azure-Blob Storageba. Az adatmásolási művelet azonban az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) megadott összes mosogatóba átmásolható a Azure Data Factoryban.
@@ -267,12 +266,12 @@ A RelationalSource által támogatott tulajdonságok listáját a [RelationalSou
 | BLOB |Bájt [] |
 | LOGIKAI |Logikai |
 | DECIMÁLIS |Decimális |
-| DUPLÁN |duplán |
+| DUPLÁN |Double |
 | FLOAT |Önálló |
 | INET |Sztring |
 | INT |Int32 |
-| SZÖVEG |Sztring |
-| IDŐBÉLYEG |DateTime |
+| TEXT |Sztring |
+| IDŐBÉLYEG |Dátum és idő |
 | TIMEUUID |GUID |
 | UUID |GUID |
 | VARCHAR |Sztring |
@@ -300,7 +299,7 @@ A [Másolás varázslóval](data-factory-data-movement-activities.md#create-a-pi
 ### <a name="example"></a>Példa
 Például a következő "ExampleTable" egy Cassandra adatbázis-tábla, amely egy "pk_int" nevű egész számú elsődleges kulcs oszlopot tartalmaz, egy érték nevű szöveges oszlop, egy lista oszlop, egy Térkép oszlop és egy beállított oszlop ("StringSet").
 
-| pk_int | Érték | Lista | Térkép | StringSet |
+| pk_int | Value (Díj) | Listázás | Térkép | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"Sample Value 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"3. minta érték" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
@@ -309,14 +308,14 @@ Az illesztőprogram több virtuális táblát fog előállítani, hogy ezt az eg
 
 Az első virtuális tábla a "ExampleTable" nevű alaptábla, amely az alábbi táblázatban látható. Az alaptábla ugyanazokat az adatokkal rendelkezik, mint az eredeti adatbázistábla, kivéve azokat a gyűjteményeket, amelyek ki vannak hagyva ebből a táblából, és más virtuális táblákban kibontva vannak.
 
-| pk_int | Érték |
+| pk_int | Value (Díj) |
 | --- | --- |
 | 1 |"Sample Value 1" |
 | 3 |"3. minta érték" |
 
-A következő táblázatok azokat a virtuális táblákat mutatják be, amelyek a lista, a Térkép és a StringSet oszlopokból származó adatok újranormalizálása. Az "_index" vagy "gyökérkulcs" végződésű névvel rendelkező oszlopok az eredeti listán vagy térképen belüli pozíciót jelölik. A "_value" végződésű neveket tartalmazó oszlopok a gyűjteményből származó kibontott adatokkal rendelkeznek.
+A következő táblázatok azokat a virtuális táblákat mutatják be, amelyek a lista, a Térkép és a StringSet oszlopokból származó adatok újranormalizálása. A "_index" vagy "_key" végződésű neveket jelölő oszlopok az eredeti listán vagy a térképen belüli pozíciót jelölik. A "_value" végződésű neveket tartalmazó oszlopok a gyűjteményből származó kibontott adatokkal rendelkeznek.
 
-#### <a name="table-exampletable_vt_list"></a>Tábla "ExampleTable_vt_List":
+#### <a name="table-exampletable_vt_list"></a>"ExampleTable_vt_List" tábla:
 | pk_int | List_index | List_value |
 | --- | --- | --- |
 | 1 |0 |1 |
@@ -327,14 +326,14 @@ A következő táblázatok azokat a virtuális táblákat mutatják be, amelyek 
 | 3 |2 |102 |
 | 3 |3 |103 |
 
-#### <a name="table-exampletable_vt_map"></a>Tábla "ExampleTable_vt_Map":
+#### <a name="table-exampletable_vt_map"></a>"ExampleTable_vt_Map" tábla:
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
 | 1 |S1 |A |
 | 1 |S2 |b |
 | 3 |S1 |t |
 
-#### <a name="table-exampletable_vt_stringset"></a>Tábla "ExampleTable_vt_StringSet":
+#### <a name="table-exampletable_vt_stringset"></a>"ExampleTable_vt_StringSet" tábla:
 | pk_int | StringSet_value |
 | --- | --- |
 | 1 |A |

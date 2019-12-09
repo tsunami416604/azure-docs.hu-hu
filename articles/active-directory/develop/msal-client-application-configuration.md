@@ -1,29 +1,25 @@
 ---
-title: Ügyfélalkalmazás konfigurációja (Microsoft Authentication Library)
+title: Ügyfélalkalmazás konfigurációja (MSAL) | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg a nyilvános ügyfél és a bizalmas ügyfélalkalmazások konfigurációs beállításait a Microsoft Authentication Library (MSAL) alkalmazásban.
+description: Ismerje meg a nyilvános ügyfél és a bizalmas ügyfélalkalmazások konfigurációs beállításait a Microsoft Authentication Library (MSAL) használatával.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/27/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d9a18f1ab5b86cbdb74a61a9520e89ecf920478
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f3fd70757fe5ce8761fd3444f3f0dd31e2bfcc3b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803189"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917063"
 ---
 # <a name="application-configuration-options"></a>Alkalmazás konfigurációs beállításai
 
@@ -36,7 +32,7 @@ A kódban egy új nyilvános vagy bizalmas ügyfélalkalmazás (vagy a MSAL. js-
     - [Ügyfél titka](#client-secret) (bizalmas ügyfélalkalmazások esetében).
 - [Naplózási beállítások](#logging), beleértve a naplózási szintet, a személyes adatvezérlést és az összetevő nevét a könyvtár használatával.
 
-## <a name="authority"></a>Hitelesítésszolgáltató
+## <a name="authority"></a>Authority
 
 A szolgáltató egy URL-cím, amely egy olyan könyvtárat jelez, amelyből a MSAL jogkivonatokat kérhet. Gyakori hatóságok:
 

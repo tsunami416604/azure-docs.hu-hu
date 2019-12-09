@@ -4,7 +4,7 @@ description: Ez a cikk azt ismerteti, hogyan futtathat egy SQL Server Integratio
 services: data-factory
 documentationcenter: ''
 author: swinarko
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: 3bfef0d787d8289055ab80e2ac30408dd7a13fb4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f45c317e64f63fe6192f4e32507876841f4322de
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673762"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932113"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>SSIS-csomag futtatása a tárolt eljárási tevékenységgel Azure Data Factory
 Ez a cikk azt ismerteti, hogyan futtathat SSIS-csomagokat egy Azure Data Factory-folyamatban egy tárolt eljárási tevékenység használatával. 
@@ -59,7 +59,7 @@ Első lépésként hozzon létre egy adatgyárat a Azure Portal használatával.
 4. A **Verzió** résznél válassza a **V2** értéket.
 5. Válassza ki a Data Factory **helyét**. A legördülő listában csak a Data Factory által támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más helyeken is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Létrehozás** elemre.
+7. Kattintson a  **Create** (Létrehozás) gombra.
 8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
 
      ![adat-előállító üzembe helyezése csempe](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
@@ -69,7 +69,7 @@ Első lépésként hozzon létre egy adatgyárat a Azure Portal használatával.
 10. Az Azure Data Factory felhasználói felület (UI) alkalmazás külön lapon történő elindításához kattintson az **Létrehozás és monitorozás** csempére. 
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Folyamat létrehozása tárolt eljárási tevékenységgel
-Ebben a lépésben a Data Factory felhasználói felületét használja egy folyamat létrehozásához. Egy tárolt eljárási tevékenységet ad hozzá a folyamathoz, és konfigurálja úgy, hogy a SSIS-csomagot a Sp_executesql tárolt eljárással futtassa. 
+Ebben a lépésben a Data Factory felhasználói felületét használja egy folyamat létrehozásához. Egy tárolt eljárási tevékenységet ad hozzá a folyamathoz, és úgy konfigurálja, hogy a SSIS-csomagot a sp_executesql tárolt eljárással futtassa. 
 
 1. Az első lépések lapon kattintson a **folyamat létrehozása**elemre: 
 
@@ -101,7 +101,7 @@ Ebben a lépésben a Data Factory felhasználói felületét használja egy foly
     5. A paraméter **típusához** írja be a **karakterlánc**értéket. 
     6. A paraméter **értékeként** adja meg a következő SQL-lekérdezést:
 
-        Az SQL-lekérdezésben határozza meg a **folder_name**, a **project_name**és a **package_name** paraméterek megfelelő értékeit. 
+        Az SQL-lekérdezésben határozza meg a **folder_name**, **project_name**és **package_name** paraméterek megfelelő értékeit. 
 
         ```sql
         DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END
@@ -224,7 +224,7 @@ Hozzon létre egy társított szolgáltatást, amely összekapcsolja az Azure SQ
     ```
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Folyamat létrehozása tárolt eljárási tevékenységgel 
-Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenységgel. A tevékenység meghívja a Sp_executesql tárolt eljárást a SSIS-csomag futtatásához. 
+Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenységgel. A tevékenység meghívja a sp_executesql tárolt eljárást a SSIS-csomag futtatásához. 
 
 1. Hozzon létre egy **RunSSISPackagePipeline. JSON** nevű JSON-fájlt a **C:\ADF\RunSSISPackage** mappában a következő tartalommal:
 
@@ -360,5 +360,5 @@ Az előző lépésben meghívotta a folyamat igény szerinti meghívását. Lét
     ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A folyamatot a Azure Portal használatával is nyomon követheti. Részletes útmutatásért lásd: [a folyamat figyelése](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).

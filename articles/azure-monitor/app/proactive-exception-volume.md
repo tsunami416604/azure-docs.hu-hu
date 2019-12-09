@@ -1,18 +1,18 @@
 ---
-title: Intelligens észlelés – kivételek rendellenes növekedése az Azure Application Insightsban | Microsoft Docs
-description: Alkalmazás-kivételek figyelése az Azure Application Insights a kivételt okozó kötet szokatlan mintái esetében.
+title: Rendellenes növekedés a kivételek mennyiségében – Azure Application Insights
+description: Alkalmazás-kivételek figyelése az Azure Application Insights az intelligens észleléssel a kivételt okozó kötet szokatlan mintázata esetén.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/08/2017
-ms.openlocfilehash: fa7669b78caabb95b08200e83ed18ea982ce9ac9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 02c4fca42f3d5d7494dc8fd6fe0e33161904ddbe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820599"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928223"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>Rendellenes növekedés a kivétel mennyisége (előzetes verzió)
 
@@ -27,7 +27,7 @@ A rendszer gépi tanulási algoritmusokat használ a kivételek számának növe
 ## <a name="does-my-app-definitely-have-a-problem"></a>Az alkalmazásom biztosan probléma?
 Nem, egy értesítés nem azt jelenti, hogy az alkalmazásnak feltétlenül van problémája. Bár a kivételek túlzott száma általában egy alkalmazás hibáját jelzi, a kivételek jóindulatú lehetnek, és az alkalmazás megfelelően kezeli őket.
 
-## <a name="how-do-i-fix-it"></a>Hogyan kijavítani?
+## <a name="how-do-i-fix-it"></a>Hogyan lehet kijavítani a hibát?
 Az értesítések közé tartoznak a diagnosztikai információk, amelyek támogatják a diagnosztikai folyamatot:
 1. **Osztályozás.** Az értesítés azt mutatja, hogy hány felhasználó vagy hány kérelem van hatással. Ez segíthet a probléma prioritásának hozzárendelésében.
 2. **Hatókör.** A probléma hatással van az összes forgalomra, vagy csak néhány műveletre? Ezeket az információkat az értesítésből lehet beszerezni.

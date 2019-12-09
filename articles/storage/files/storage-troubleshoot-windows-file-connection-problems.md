@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d54075da10671bb9a48c84844cab67841fa0aec0
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 86b4b19ca80b7dfb2bd9a1a56069fe3d347377ec
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560134"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927853"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files problémáinak elhárítása
 
@@ -97,8 +97,7 @@ Sikeres csatlakozás esetén a következő kimenetet kell látnia:
 Azure File Sync átalakíthatja a helyszíni Windows Servert az Azure-fájlmegosztás gyors gyorsítótárba. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Azure File Sync a 443-es porton keresztül működik, ezért a 445-es porttal rendelkező ügyfelektől megkerülő megoldásként használható a Azure Files eléréséhez. [Útmutató a Azure file Sync telepítéséhez](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
 
 #### <a name="solution-2---use-vpn"></a>2\. megoldás – VPN használata
-A VPN az adott Storage-fiókhoz való beállításával a forgalom egy biztonságos alagúton halad át, szemben az interneten keresztül. Az utasításokat követve [beállíthatja a VPN-](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
-) t a Windows rendszerű Azure Files eléréséhez.
+A VPN az adott Storage-fiókhoz való beállításával a forgalom egy biztonságos alagúton halad át, szemben az interneten keresztül. Az utasításokat követve [beállíthatja a VPN-](storage-files-configure-p2s-vpn-windows.md) t a Windows rendszerű Azure Files eléréséhez.
 
 #### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>3\. megoldás – a 445-es port feloldása az INTERNETSZOLGÁLTATÓ/rendszergazda segítségével
 Az IT-részleggel vagy az INTERNETSZOLGÁLTATÓval együttműködve nyissa meg az 445-es portot az [Azure IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653).
@@ -267,7 +266,7 @@ Ha egy fájlt a hálózaton keresztül másol a rendszer, a rendszer visszafejti
 Ez a probléma akkor fordulhat elő, ha titkosított fájlrendszert (EFS) használ. A BitLocker által titkosított fájlok átmásolhatók Azure Filesba. A Azure Files azonban nem támogatja az NTFS EFS használatát.
 
 ### <a name="workaround"></a>Áthidaló megoldás
-Ha egy fájlt hálózaton keresztül szeretne másolni, először vissza kell fejtenie azt. Használja az alábbi módszerek egyikét:
+Ha egy fájlt hálózaton keresztül szeretne másolni, először vissza kell fejtenie azt. Kövesse az alábbi eljárások egyikét:
 
 - Használja a **copy/d** parancsot. Lehetővé teszi a titkosított fájlok mentését visszafejtett fájlként a célhelyen.
 - Állítsa be a következő beállításkulcsot:

@@ -4,21 +4,20 @@ description: Ismerkedjen meg a Data Factory szolgáltatás Teradata-összekötő
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 645dcde949c8f5a6b48a5c02892d4cb2c6c5be0e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666095"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929054"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Adatok áthelyezése a Teradata a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -62,7 +61,7 @@ A következő szakaszokban részletesen ismertetjük a Teradata-adattárra jelle
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a Teradata társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesTeradata** |Igen |
 | kiszolgáló |A Teradata-kiszolgáló neve. |Igen |
@@ -83,7 +82,7 @@ Míg a tevékenység typeProperties szakaszában elérhető tulajdonságok az eg
 
 Ha a forrás **RelationalSource** típusú (amely magában foglalja a Teradata), a **typeProperties** szakaszban a következő tulajdonságok érhetők el:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Igen |
 
@@ -285,36 +284,36 @@ Az adatok Teradata való áthelyezésekor a rendszer a következő leképezések
 
 | Teradata-adatbázis típusa | .NET-keretrendszer típusa |
 | --- | --- |
-| char |Sztring |
+| Char |Sztring |
 | CLOB |Sztring |
 | Grafikus |Sztring |
 | VarChar |Sztring |
 | VarGraphic |Sztring |
 | Blob |Bájt [] |
-| Byte |Bájt [] |
+| Bájt |Bájt [] |
 | VarByte |Bájt [] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
 | Decimális |Decimális |
-| duplán |duplán |
+| Double |Double |
 | Egész szám |Int32 |
-| Szám |duplán |
+| Szám |Double |
 | SmallInt |Int16 |
-| Dátum |DateTime |
-| Time |TimeSpan |
+| Dátum |Dátum és idő |
+| Idő |időtartam |
 | Időzónával ellátott idő |Sztring |
-| Időbélyeg |DateTime |
+| Időbélyeg |Dátum és idő |
 | Időbélyeg időzónával |DateTimeOffset |
-| Intervallum napja |TimeSpan |
-| Nap és óra közötti időszak |TimeSpan |
-| Időköz (nap és perc) |TimeSpan |
-| Időintervallum – másodperc |TimeSpan |
-| Intervallum óra |TimeSpan |
-| Óra és perc közötti intervallum |TimeSpan |
-| Óra és másodperc közötti intervallum |TimeSpan |
-| Időköz (perc) |TimeSpan |
-| Időköz (perc) – másodperc |TimeSpan |
-| Másodperc intervalluma |TimeSpan |
+| Intervallum napja |időtartam |
+| Nap és óra közötti időszak |időtartam |
+| Időköz (nap és perc) |időtartam |
+| Időintervallum – másodperc |időtartam |
+| Intervallum óra |időtartam |
+| Óra és perc közötti intervallum |időtartam |
+| Óra és másodperc közötti intervallum |időtartam |
+| Időköz (perc) |időtartam |
+| Időköz (perc) – másodperc |időtartam |
+| Másodperc intervalluma |időtartam |
 | Intervallum éve |Sztring |
 | Év és hónap közötti időszak |Sztring |
 | Intervallum hónapja |Sztring |

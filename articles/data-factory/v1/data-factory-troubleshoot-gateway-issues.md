@@ -3,21 +3,20 @@ title: Az átjáróval kapcsolatos problémák elhárítása adatkezelés
 description: Tippeket nyújt adatkezelés átjáróval kapcsolatos problémák elhárításához.
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 34930061189c11c9cea9c2cd0feb2ede9aade74d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b8aee32869202a8cc24a27dec85c93ffd294c6b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682321"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931607"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Az adatkezelési átjáró használata közben felmerülő hibák elhárítása
 Ez a cikk a adatkezelés átjáró használatával kapcsolatos hibaelhárítási problémákkal kapcsolatos információkat tartalmaz.
@@ -239,7 +238,7 @@ Ha az adattár-kapcsolat vagy az illesztőprogrammal kapcsolatos hiba jelenik me
 
 ![A kapcsolatok tesztelése a diagnosztika lapon](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
 
-## <a name="gateway-logs"></a>Átjáró naplófájljai
+## <a name="gateway-logs"></a>Átjárónaplók
 ### <a name="send-gateway-logs-to-microsoft"></a>Átjáró-naplók küldése a Microsoftnak
 Ha az átjáróval kapcsolatos problémák elhárításához segítségre van szüksége a Microsoft ügyfélszolgálatahoz, előfordulhat, hogy meg kell adnia az átjáró naplófájljait. Az átjáró kiadásával megoszthatja a szükséges átjárói naplókat két kattintással a adatkezelés átjáró Configuration Manager.    
 

@@ -4,20 +4,19 @@ description: Ismerje meg, hogyan képezhető le a forrás oszlopai a cél oszlop
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 80ba7dc48da7cb5c43aae209c4e76c54948b8f88
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6eb7012e28319ee6cc86de5ee56090743d681068
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666790"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923869"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Forrás adatkészlet oszlopainak leképezése a cél adatkészlet oszlopaira
 > [!NOTE]
@@ -179,7 +178,7 @@ Ebben az esetben a lekérdezés eredményei először a forrás "struktúra" ré
 
 ![Oszlop-hozzárendelési folyamat – 2](./media/data-factory-map-columns/column-mapping-flow-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenység használatával kapcsolatos oktatóanyagért tekintse meg a következő cikket: 
 
 - [Adatok másolása Blob Storageból SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)

@@ -1,30 +1,26 @@
 ---
-title: Bármely Azure AD-felhasználó bejelentkezni képes alkalmazás létrehozása
+title: Azure AD-felhasználókba bejelentkező alkalmazások készítése
 titleSuffix: Microsoft identity platform
 description: Bemutatja, hogyan hozhat létre egy több-bérlős alkalmazást, amely bármilyen Azure Active Directory bérlőtől bejelentkezhet a felhasználóba.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7f31e0254ad4963ce6946a108d84c97027f30b
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 73a5d30761b25f6233e298cac2602fb701a2987f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803934"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917777"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: bejelentkezés bármely Azure Active Directory felhasználó számára a több-bérlős alkalmazás mintájának használatával
 
@@ -46,7 +42,7 @@ Nézzük meg az egyes lépéseket részletesen. A [több-bérlős minták listá
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Regisztráció frissítése több-bérlőre
 
-Alapértelmezés szerint az Azure AD-ben a webalkalmazás/API-regisztráció egyetlen bérlő. A regisztráció több-bérlőt úgy teheti meg, hogy megkeresi a **támogatott fióktípus** kapcsolót az alkalmazás regisztrációjának **hitelesítés** ablaktábláján a [Azure Portalban][AZURE-portal] , és beállítja azt a **szervezeti könyvtár**.
+Alapértelmezés szerint az Azure AD-ben a webalkalmazás/API-regisztráció egyetlen bérlő. A regisztráció több-bérlőt úgy teheti meg, hogy megkeresi a **támogatott fióktípus** kapcsolót az alkalmazás regisztrációjának **hitelesítés** ablaktábláján a [Azure Portal][AZURE-portal] , és beállítja azt a **szervezeti címtárban lévő fiókokhoz**.
 
 A több-bérlős alkalmazások megkezdése előtt az Azure AD-nek az alkalmazás alkalmazásspecifikus URI azonosítójának globálisan egyedinek kell lennie. Az alkalmazásazonosító URI egy módszer, amellyel az alkalmazás a protokollüzenetekben azonosítható. Egybérlős alkalmazás esetében az alkalmazásazonosító URI-nak csak a bérlőn belül kell egyedinek lennie. Több-bérlős alkalmazás esetében azonban globálisan egyedinek kell lennie, hogy az Azure AD megtalálja az alkalmazást a különböző bérlők közt. A globális egyediség azzal kényszeríthető ki, hogy a rendszer megköveteli, hogy az alkalmazásazonosító URI egy olyan egy gazdanévvel rendelkezzen, amely egyezik az Azure AD-bérlő egy ellenőrzött tartományával.
 

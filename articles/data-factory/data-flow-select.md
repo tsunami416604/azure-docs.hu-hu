@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory leképezési adatfolyam kiválasztása – átalakítás
+title: Adatforgalom leképezése válassza az átalakítás lehetőséget
 description: Azure Data Factory leképezési adatfolyam kiválasztása – átalakítás
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/12/2019
-ms.openlocfilehash: 6ef9712dd2fd6b8d53fd4ad2c3e07e1d6c8f1aec
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a255d89aa4850d1249f1af9bdd0cb43b0826914f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387197"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930245"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Adatforgalom leképezése válassza az átalakítás lehetőséget
 
@@ -41,7 +42,7 @@ A Select (kijelölés) lehetőséggel kiválaszthatja az adatfolyamatból az osz
 > [!NOTE]
 > A leképezési szabályok törléséhez nyomja le az **Alaphelyzetbe állítás** gombot.
 
-## <a name="mapping"></a>Leképezés
+## <a name="mapping"></a>Társítás
 Alapértelmezés szerint a Select transzformáció automatikusan leképezi az összes oszlopot, amely továbbítja az összes bejövő oszlopot a kimeneten megegyező névre. A kimeneti adatfolyam neve, amely a Select Settings (beállítások) beállításban be van állítva, a stream új aliasnevét fogja meghatározni. Ha megtartja az automatikus leképezés beállítása beállítást, akkor a teljes adatfolyamot az összes oszlophoz társíthatja.
 
 ![Átalakítási szabályok kiválasztása](media/data-flow/rule2.png "Szabály alapú leképezés")

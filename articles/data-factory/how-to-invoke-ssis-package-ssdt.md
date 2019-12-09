@@ -1,23 +1,23 @@
 ---
-title: SSIS-csomagok végrehajtása Azure Data Factory a SSDT
+title: SSIS-csomagok végrehajtása a SSDT-ből
 description: Ismerje meg, hogyan hajthat végre SSIS-csomagokat az Azure-ban a SSDT-ból.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/31/2019
-author: swinarko
 ms.author: sawinark
+author: swinarko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 4c89bdddce7b7318e184994ddf627d853e29fd7e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 07/31/2019
+ms.openlocfilehash: 5f21623af9b89bbb020063dfb72f7b60e65a6ebe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673604"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927711"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSIS-csomagok végrehajtása az Azure-ban a SSDT-ből
 Ez a cikk a SQL Server Data Tools (SSDT) Azure-kompatibilis SQL Server Integration Services (SSIS) projektjeinek funkcióit ismerteti, amelyek lehetővé teszik csomagok futtatását Azure-SSIS Integration Runtime (IR) Azure Data Factoryban (ADF).  Ezzel a szolgáltatással tesztelheti a meglévő SSIS-csomagokat, mielőtt megemeli & a váltást, vagy áttelepíti azokat az Azure-ba, vagy új SSIS-csomagokat fejleszt ki az Azure-ban való futtatáshoz.
@@ -52,13 +52,13 @@ Az Azure-kompatibilis projektek ADF-SSIS való csatlakoztatásával feltöltheti
 3. Az **SSIS IR kiválasztása az ADF-ben** lapon válassza ki a meglévő ADF-t és Azure-SSIS IR a csomagok futtatásához, vagy hozzon létre újakat, ha nincs.
    - A meglévő Azure-SSIS IR kiválasztásához először válassza ki a megfelelő Azure-előfizetést és az ADF-t.
    - Ha kijelöli a meglévő ADF-t, amelyhez nincs Azure-SSIS IR, kattintson az **SSIS létrehozása** elemre, és hozzon létre egy újat az ADF-portálon/alkalmazáson.
-   - Ha olyan meglévő Azure-előfizetést választ ki, amely nem rendelkezik ADF-vel, kattintson az **SSIS létrehozása** gombra a **Integration Runtime létrehozási varázsló**elindításához, ahol megadhatja a helyet és az előtagot, amellyel automatikusan létrehozhat egy új Azure-t Erőforráscsoport, Data Factory és SSIS IR az Ön nevében, a következő mintában: **YourPrefix-RG/DF/IR-YourCreationTime**.
+   - Ha olyan meglévő Azure-előfizetést választ ki, amely nem rendelkezik ADF-vel, kattintson az **SSIS létrehozása** gombra a **Integration Runtime létrehozási varázsló**elindításához, ahol megadhatja a helyet és az előtagot úgy, hogy automatikusan létrehozzon egy új Azure-ERŐFORRÁSCSOPORTOT, Data Factory és SSIS az Ön nevében, a következő mintában: **YourPrefix-RG/DF/IR-YourCreationTime**.
    
    ![Válassza ki a SSIS IR-t az ADF-ben](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard2.png)
 
 4. Az **Azure Storage kiválasztása** lapon válassza ki a meglévő Azure Storage-fiókot a csomagok Azure Filesba való feltöltéséhez, vagy hozzon létre egy újat, ha nem rendelkezik ilyennel.
    - A meglévő Azure Storage-fiók kiválasztásához először válassza ki a megfelelő Azure-előfizetést.
-   - Ha ugyanazt az Azure-előfizetést választja, mint az Azure Storage-fiókkal nem rendelkező Azure-SSIS IR, kattintson az **Azure Storage létrehozása** gombra, hogy automatikusan hozzon létre egy újat ugyanazon a helyen, mint a Azure-SSIS IR nevű a Azure-SSIS IR neve és a létrehozási dátum előtagjának kombinálása.
+   - Ha ugyanazt az Azure-előfizetést választja, mint a Azure-SSIS IR, amely nem rendelkezik Azure Storage-fiókkal, kattintson az **Azure Storage létrehozása** gombra, hogy automatikusan hozzon létre egy újat az Ön nevében ugyanazon a helyen, mint a Azure-SSIS IR Azure-SSIS IR.
    - Ha olyan Azure-előfizetést választ ki, amely nem rendelkezik Azure Storage-fiókkal, kattintson az **Azure Storage létrehozása** gombra, és hozzon létre egy újat a Azure Portal.
    
    ![Az Azure Storage kiválasztása](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
@@ -77,18 +77,18 @@ Miután csatlakoztatta a projekteket a SSIS-hez az ADF-ben, Azure-SSIS IR csomag
    ![Csomag végrehajtása az Azure-ban](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package2.png)
 
 > [!NOTE]
-> A csomagok Azure-ban való végrehajtásához futó Azure-SSIS IR szükséges, így ha a Azure-SSIS IR leáll, megnyílik egy párbeszédpanel, amely elindítja.  Az egyéni telepítési idő kizárása után a folyamatnak 5 percen belül el kell végeznie, de körülbelül 20-30 percet is igénybe vehet, Azure-SSIS IR a virtuális hálózathoz való csatlakozáshoz.  Miután futtatta a csomagokat az Azure-ban, leállíthatja a Azure-SSIS IR a futó költségeket úgy, hogy a jobb gombbal a csomópontra kattint a SSDT Megoldáskezelő paneljén, majd kiválasztja a kívánt menüt, majd kijelöli a **Start\Stop\Manage** menüelemet, amely az ADF-portál/ Ehhez az alkalmazáshoz.
+> A csomagok Azure-ban való végrehajtásához futó Azure-SSIS IR szükséges, így ha a Azure-SSIS IR leáll, megnyílik egy párbeszédpanel, amely elindítja.  Az egyéni telepítési idő kizárása után a folyamatnak 5 percen belül el kell végeznie, de körülbelül 20-30 percet is igénybe vehet, Azure-SSIS IR a virtuális hálózathoz való csatlakozáshoz.  Miután futtatta a csomagokat az Azure-ban, leállíthatja a Azure-SSIS IR a futó költségeket úgy, hogy a jobb gombbal a csomópontra kattint a SSDT Megoldáskezelő paneljén, majd kijelöli a menüt, majd kiválasztja a **Start\Stop\Manage** menüelemet, amely az ADF-portál vagy-alkalmazás megadására kerül.
 
 ### <a name="checking-package-execution-logs"></a>Csomag-végrehajtási naplók ellenőrzése
 A csomag végrehajtásának megkezdése után formázza és megjeleníti a naplót a SSDT folyamat ablakában.  Hosszú ideig futó csomag esetén a naplót a percek alatt fogjuk frissíteni.  A csomagok végrehajtásának leállításához kattintson a **Leállítás** gombra a SSDT eszköztárán, amely azonnal megszakítja a szolgáltatást.  Az univerzális elnevezési konvenció (UNC) elérési útjában átmenetileg megkeresheti a napló nyers adatait is: `\\<YourConnectedAzureStorage>.file.core.windows.net\ssdtexecution\<YourProjectName-FirstConnectTime>\<YourPackageName-tmp-ExecutionTime>\logs`, de egy nap elteltével megtisztítjuk.
 
 ### <a name="switching-package-protection-level"></a>A csomag védelmi szintjének váltás
-A SSIS-csomagok Azure-ban való végrehajtása nem támogatja a **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** védelmi szintjét.  Ennek következtében, ha a csomagok konfigurálva vannak ezekkel, akkor átmenetileg a **EncryptSensitiveWithPassword**/**EncryptAllWithPassword**, illetve véletlenszerűen generált jelszavakkal, amikor feltöltjük a csomagokat Azure Filesba a Azure-SSIS IR végrehajtásához.
+A SSIS-csomagok Azure-ban való végrehajtása nem támogatja a **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** védelmi szintjét.  Ennek következtében, ha a csomagjait ezekkel a beállításokkal konfigurálta, akkor átmenetileg a rendszer a **EncryptSensitiveWithPassword**/**EncryptAllWithPassword**helyezi át azokat a véletlenszerűen generált jelszavakkal, amikor a csomagokat Azure Filesba tölti fel a Azure-SSIS IRn való végrehajtás céljából.
 
 > [!NOTE]
-> Ha a csomagok végrehajtják a **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** -védelmi szinttel konfigurált egyéb csomagokra vonatkozó csomagokat, akkor manuálisan kell újrakonfigurálnia ezeket a más csomagokat használniA csomagok végrehajtása előtt a EncryptSensitiveWithPassword/**EncryptAllWithPassword**.
+> Ha a csomagok végrehajtják a **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** -védelmi szinttel konfigurált egyéb csomagokra vonatkozó csomagokat, akkor a csomagok végrehajtása előtt manuálisan kell konfigurálnia ezeket a többi csomagot a **EncryptSensitiveWithPassword**/**EncryptAllWithPassword**használatára.
 
-Ha a csomagok már konfigurálva vannak a **EncryptSensitiveWithPassword**/**EncryptAllWithPassword** védelmi szintjeivel, a rendszer változatlan marad, de véletlenszerűen generált jelszavakat fog használni, amikor feltölti a csomagokat Azure Files a Azure-SSIS IR végrehajtásához.
+Ha a csomagok már konfigurálva vannak a **EncryptSensitiveWithPassword**/**EncryptAllWithPassword** védelmi szintjeivel, változatlanul tartjuk őket, de továbbra is véletlenszerűen generált jelszavakat fognak használni, amikor a csomagokat Azure Filesba töltik fel a Azure-SSIS IR.
 
 ### <a name="using-package-configuration-file"></a>Csomag konfigurációs fájljának használata
 Ha a csomag konfigurációs fájljait a csomagok központi telepítési modelljében használja a változók értékeinek futtatáskor történő megváltoztatásához, a rendszer automatikusan feltölti ezeket a fájlokat a csomagjaiba Azure Files a Azure-SSIS IR végrehajtásához.
@@ -104,5 +104,5 @@ Ha a csomagjai a helyi fájlrendszereken tárolt egyéb csomagokra hivatkozó cs
 
 Ha a csomagok olyan csomagokat hajtanak végre, amelyek ugyanabban a projektben más csomagokra hivatkoznak, nincs szükség további beállításra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha elégedett az Azure-beli csomagok az SSDT-ból való futtatásával, telepítheti és futtathatja őket az ADF-folyamatokban végrehajtható SSIS-csomag tevékenységként, lásd: [SSIS-csomagok futtatása az ADF-folyamatokban végrehajtási SSIS](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)

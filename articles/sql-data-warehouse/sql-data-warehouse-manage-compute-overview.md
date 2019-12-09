@@ -2,34 +2,34 @@
 title: Számítási erőforrás kezelése
 description: Ismerje meg a Azure SQL Data Warehouse teljesítményének kibővíthető képességeit. Az adattárház felfüggesztésével felskálázást végez a DWU és az alacsonyabb költségek módosításával.
 services: sql-data-warehouse
-author: kevinvngo
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
 ms.date: 11/12/2019
-ms.author: kevin
+ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 936d92d085420e1386e29a924470b9bac9200d43
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 305b17a9118bddac53b19462cb8c3be887395311
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039085"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923602"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Számítások kezelése Azure SQL Data Warehouseban
 További információ a számítási erőforrások Azure SQL Data Warehouseban történő kezeléséről. Csökkentse az adattárház felfüggesztését, vagy méretezze át az adattárházat a teljesítményre vonatkozó igények kielégítése érdekében. 
 
 ## <a name="what-is-compute-management"></a>Mi a számítási felügyelet?
-A SQL Data Warehouse architektúrája elkülöníti a tárolást és a számítást, így egymástól függetlenül méretezhetők. Ennek eredményeképpen a számítási kapacitást úgy méretezheti, hogy az adattárolástól függetlenül megfeleljen a teljesítményi igényeknek. A számítási erőforrások szüneteltetését és folytatását is elvégezheti. Ennek az architektúrának a természetes következménye, hogy a számítás és a tárolás [számlázása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) külön történik. Ha egy ideig nem kell használnia az adattárházat, a számítási költségeket a számítási költségek felfüggesztésével mentheti. 
+Az SQL Data Warehouse architektúrája elkülöníti a tárolást és számítást, és lehetővé teszi a kettő egymástól független méretezését. Ennek eredményeképp az adattárolástól függetlenül megfelelhet a számítási méretezés teljesítményigényeinek. Emellett szüneteltetheti és folytathatja az erőforrásokat. Ennek az architektúrának a természetes következménye, hogy a számítás és a tárolás [számlázása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) külön történik. Ha egy ideig nincs szüksége az adattárházra, a számítás szüneteltetésével számítási költségeket takaríthat meg. 
 
 ## <a name="scaling-compute"></a>Méretezési számítás
-Az adatraktár [adattárház-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md) beállításának módosításával kibővítheti vagy méretezheti a számítási kapacitást. A betöltés és a lekérdezés teljesítménye lineárisan növekedhet, ha további adattárház-egységeket ad hozzá. 
+Az adatraktár [adattárház-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md) beállításának módosításával kibővítheti vagy méretezheti a számítási kapacitást. A betöltési és lekérdezési teljesítmény lineárisan növekedik több adattárházegység hozzáadásával. 
 
 A kibővített lépésekért tekintse meg a [Azure Portal](quickstart-scale-compute-portal.md), a [PowerShell](quickstart-scale-compute-powershell.md)vagy a [T-SQL](quickstart-scale-compute-tsql.md) rövid útmutatót. Kibővíthető műveleteket is végrehajthat [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)használatával.
 
-A méretezési művelet végrehajtásához SQL Data Warehouse először az összes bejövő lekérdezést, majd Visszagörgeti a tranzakciókat, hogy konzisztens állapotot biztosítson. A skálázás csak a tranzakció-visszaállítás befejeződése után történik meg. A méretezési műveletekhez a rendszer leválasztja a tárolási réteget a számítási csomópontokból, kiszámítja a számítási csomópontokat, majd újra csatolja a tárolási réteget a számítási réteghez. Az egyes adattárházak 60 Eloszlásként vannak tárolva, amelyek egyenletesen oszlanak el a számítási csomópontokon. További számítási csomópontok hozzáadásával további számítási kapacitást adhat hozzá. A számítási csomópontok számának növekedésével a számítási csomópontok száma csökken, és nagyobb számítási teljesítményt biztosít a lekérdezésekhez. Hasonlóképpen, a csökkenő adattárház-egységek csökkentik a számítási csomópontok számát, ami csökkenti a lekérdezések számítási erőforrásait.
+Méretezési művelet végrehajtásához az SQL Data Warehouse elsőként megszakítja az összes bejövő lekérdezést, majd visszaállítja a tranzakciókat, így biztosítva a konzisztens állapotot. A méretezés csak a tranzakciók visszaállítása után történik. Méretezési műveletekhez a rendszernek le kell választania a tárolási réteget a számítási csomópontokról, számítási csomópontokat kell hozzáadnia, majd visszacsatolnia a tárolási réteget a számítási réteghez. Minden adatraktár 60 disztribúcióként tárolódik, amelyek egyenlően vannak elosztva a számítási csomópontok között. További számítási csomópontok hozzáadásával növelheti a számítási teljesítményt. A számítási csomópontok számának növekedésével az egyes számítási csomópontokhoz tartozó disztribúciók száma is nő, ami nagyobb számítási teljesítményt eredményez a lekérdezésekhez. Hasonlóképpen, a csökkenő adattárház-egységek csökkentik a számítási csomópontok számát, ami csökkenti a lekérdezések számítási erőforrásait.
 
 A következő táblázat azt mutatja be, hogy a számítási csomópontok hány eloszlása változik az adatraktár-egységek változásakor.  A DWU6000 60 számítási csomópontot biztosít, és sokkal nagyobb lekérdezési teljesítményt érhet el, mint a DWU100. 
 
@@ -39,7 +39,7 @@ A következő táblázat azt mutatja be, hogy a számítási csomópontok hány 
 | DW200c   | 1                | 60                         |
 | DW300c   | 1                | 60                         |
 | DW400c   | 1                | 60                         |
-| DW500c   | 1                | 60                         |
+| DW500c lehetőséget   | 1                | 60                         |
 | DW1000c  | 2                | 30                         |
 | DW1500c  | 3                | 20                         |
 | DW2000c  | 4                | 15                         |
@@ -59,7 +59,7 @@ Ha szeretné megtekinteni a horizontális felskálázás teljesítményének el�
 
 Javaslatok a legjobb számú adatraktár-egység megtalálásához:
 
-- A fejlesztés alatt álló adattárházak esetében kisebb számú adattárház-egységet válasszon ki.  Jó kiindulási pont a DW400 vagy a DW200.
+- A fejlesztés alatt álló adattárházak esetében kisebb számú adattárház-egységet válasszon ki.  Jó kiindulási pont a DW400c vagy a DW200c.
 - Figyelheti az alkalmazás teljesítményét, és megfigyelheti a kiválasztott adatraktár-egységek számát a megfigyelt teljesítményhez képest.
 - Tegyük fel a lineáris skálázást, és határozza meg, hogy mennyit kell fokoznia vagy csökkentenie az adatraktár-egységeket. 
 - Folytassa a módosításokat, amíg el nem éri az üzleti igényeknek megfelelő optimális teljesítményt.

@@ -1,6 +1,5 @@
 ---
-title: Azure AD v 2.0 JavaScript egyoldalas alkalmazás (SPA) – irányított telepítő
-titleSuffix: Microsoft identity platform
+title: Microsoft Identity platform JavaScript – egyoldalas alkalmazási útmutató | Azure
 description: Hogyan hívhatják meg a JavaScript SPA-alkalmazások olyan API-t, amelyhez hozzáférési jogkivonatok szükségesek Azure Active Directory v 2.0 végponttal
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +16,12 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc03e6f1610fe6cef9ce72c981f6f800da8a9951
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a3576c015fcca7eb9c390f38c6527d76353efe06
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802529"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919392"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
 
@@ -82,7 +81,7 @@ Ez az útmutató a következő könyvtárat használja:
 >
 > ### <a name="option-2-visual-studio"></a>2\. lehetőség: Visual Studio
 > Ha a Visual studiót használja, és új projektet hoz létre, kövesse az alábbi lépéseket:
-> 1. A Visual Studióban válassza a **fájl**  > **új**  > **projekt**lehetőséget.
+> 1. A Visual Studióban válassza a **fájl** > **új** > **projekt**lehetőséget.
 > 1. A **Visual C#\Web** területen válassza az **ASP.NET Web Application (.NET Framework)** (ASP.NET-webalkalmazás (.NET-keretrendszer)) lehetőséget.
 > 1. Adja meg az alkalmazás nevét, majd kattintson **az OK gombra**.
 > 1. Az **új ASP.net-webalkalmazás**területen válassza az **üres**lehetőséget.
@@ -331,7 +330,7 @@ Adja hozzá a következő kódot a `index.html` fájlhoz a `<script></script>` c
 
 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókot a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
 1. Nyissa meg a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapját.
-1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
+1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
 1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 1. Az **átirányítási URI** szakaszban válassza ki a **webplatformot a** legördülő listából, majd állítsa be az értéket a webkiszolgálón alapuló alkalmazás URL-címére.
 
@@ -381,7 +380,7 @@ Adja hozzá a következő kódot a `index.html` fájlhoz a `<script></script>` c
 
     Helyszín:
     - *\<Enter_the_Application_Id_here >* a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
-    - *\<Enter_the_Tenant_info_here >* az alábbi lehetőségek egyikére van beállítva:
+    - *\<Enter_the_Tenant_info_here >* a következő lehetőségek egyikére van beállítva:
        - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére** (például *contoso.microsoft.com*).
        - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket **szervezetekkel**.
        - Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat*, cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok*támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**.

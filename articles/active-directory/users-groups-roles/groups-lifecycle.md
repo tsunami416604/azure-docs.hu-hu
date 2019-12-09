@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ea0f9e07b476459824c8166781f549d788185ba
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 6a9e410be7a52291d19478dbfb8e9ad30f144ccb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024791"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914074"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok elévülési szabályzatának konfigurálása
 
@@ -62,7 +62,7 @@ Az alábbi szerepkörökkel konfigurálható és használható az Office 365-cso
 
 Szerepkör | Engedélyek
 -------- | --------
-Globális rendszergazda vagy felhasználói rendszergazda | Az Office 365-csoportok lejárati szabályzatának beállításainak létrehozása, olvasása, frissítése vagy törlése<br>Bármely Office 365-csoport megújítható
+Globális rendszergazda, csoport rendszergazdája vagy felhasználói rendszergazda | Az Office 365-csoportok lejárati szabályzatának beállításainak létrehozása, olvasása, frissítése vagy törlése<br>Bármely Office 365-csoport megújítható
 Felhasználó | Megújíthat olyan Office 365-csoportot, amely a saját tulajdonában van<br>Visszaállíthat egy olyan Office 365-csoportot, amely a saját tulajdonában van<br>A lejárati szabályzat beállításainak olvasása
 
 A törölt csoportok visszaállítására vonatkozó engedélyekkel kapcsolatos további információkért lásd: [törölt Office 365-csoport visszaállítása Azure Active Directoryban](groups-restore-deleted.md).

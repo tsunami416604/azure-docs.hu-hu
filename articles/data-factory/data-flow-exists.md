@@ -1,18 +1,19 @@
 ---
-title: A Azure Data Factory-leképezési adatfolyamban található átalakítás
+title: Létező átalakítás a leképezési adatfolyamban
 description: Meglévő sorok ellenőrzése a létező átalakítással Azure Data Factory leképezési adatfolyamban
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: a477eba246c4ebcfbd32e92f1fd30c301ea1cc5b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: efcc45dcf3565b70305323701810c49c4a720394
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676733"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930407"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Létező átalakítás a leképezési adatfolyamban
 
@@ -39,7 +40,7 @@ Ha olyan szabad formátumú kifejezést szeretne létrehozni, amely a "és a" é
 
 ![Meglévő egyéni beállítások](media/data-flow/exists1.png "létezik egyéni")
 
-## <a name="data-flow-script"></a>Adatfolyam-parancsfájl
+## <a name="data-flow-script"></a>Adatfolyamszkript
 
 ### <a name="syntax"></a>Szintaxis
 
@@ -71,6 +72,6 @@ NameNorm2, TypeConversions
     ) ~> checkForChanges
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hasonló átalakítások [Keresés](data-flow-lookup.md) és [Csatlakozás](data-flow-join.md).

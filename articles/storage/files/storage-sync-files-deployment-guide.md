@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 593c9ea9c37cc5684e85604340f8aae3d84d9afb
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 4f9a2842f99c7f8b0bb9f820584fb2cd4e41a2b2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546366"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927879"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -57,7 +57,7 @@ Az **Internet Explorer fokozott biztonsági beállításainak**letiltásával mi
 > [!Note]  
 > Ezt a lépést kihagyhatja, ha a Windows Server Core-on telepíti Azure File Sync.
 
-1. Nyissa meg a Kiszolgálókezelő alkalmazást.
+1. Nyissa meg a Kiszolgálókezelőt.
 2. Kattintson a **helyi kiszolgáló**elemre:  
     !["helyi kiszolgáló" a Kiszolgálókezelő felhasználói felületének bal oldalán](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. A **Tulajdonságok** lapon, válassza ki az **Internet Explorer fokozott biztonsági beállításai** hivatkozást.  
@@ -400,6 +400,10 @@ Jelenleg a kivetés előtti megközelítés néhány korlátozással rendelkezik
 - A Felhőbeli végpont létrehozása után Azure File Sync futtat egy folyamatot a felhőben lévő fájlok észleléséhez a kezdeti szinkronizálás megkezdése előtt. A folyamat befejezéséhez szükséges idő a különböző tényezőktől, például a hálózati sebességtől, a rendelkezésre álló sávszélességtől és a fájlok és mappák számától függ. Az előzetes kiadásban felmerülő durva becslés esetében az észlelési folyamat körülbelül 10 fájlt/s-t futtat.  Ezért még akkor is, ha az előkészítési folyamat gyorsan fut, a teljes körűen futó rendszerek teljes ideje jelentősen meghaladhatja a felhőben tárolt adatmennyiséget.
 
 ## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>Önkiszolgáló visszaállítás az előző verziók és a VSS használatával (Kötet árnyékmásolata szolgáltatás)
+
+> [!IMPORTANT]
+> A következő információk csak a Storage-szinkronizáló ügynök 9-es vagy újabb verziójával használhatók. A 9-es verziónál korábbi verziók nem rendelkeznek a StorageSyncSelfService-parancsmagokkal.
+
 A korábbi verziók egy Windows-szolgáltatás, amely lehetővé teszi, hogy egy kötet kiszolgálóoldali VSS-pillanatképeit kihasználva egy fájl helyreállítható verzióit egy SMB-ügyfélnek mutassa.
 Ez egy hatékony forgatókönyv, amelyet általában önkiszolgáló visszaállításnak nevezünk, közvetlenül az informatikai szakemberek számára, a visszaállítástól függően.
 

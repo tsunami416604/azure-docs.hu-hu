@@ -1,29 +1,25 @@
 ---
-title: Azure AD B2C (Microsoft hitelesítési függvénytár a .NET-hez)
+title: Azure AD B2C (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerkedjen meg az Azure AD B2C és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokkal.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0996c5635223800a981497256654b7e418bf4163
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b8940ca6887e5c37659dd5b8d5a24ba7a2f4b889
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175597"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921929"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>A MSAL.NET használata a felhasználók közösségi identitásokkal való bejelentkezéséhez
 
@@ -40,7 +36,7 @@ A használandó szolgáltató `https://{azureADB2CHostname}/tfp/{tenant}/{policy
 
 - `azureADB2CHostname` a Azure AD B2C bérlő és a gazdagép neve (például `{your-tenant-name}.b2clogin.com`),
 - `tenant` a Azure AD B2C bérlő teljes neve (például `{your-tenant-name}.onmicrosoft.com`) vagy a bérlő GUID azonosítója, 
-- `policyName` a használni kívánt házirend vagy felhasználói folyamat nevét (például: "b2c_1_susi" a regisztrációhoz/bejelentkezéshez).
+- `policyName` az alkalmazandó házirend vagy felhasználói folyamat nevét (például: "b2c_1_susi" a regisztrációhoz/bejelentkezéshez).
 
 A Azure AD B2C-hatóságokkal kapcsolatos további információkért tekintse meg ezt a [dokumentációt](/azure/active-directory-b2c/b2clogin).
 
@@ -170,9 +166,9 @@ A MSAL.Net támogatja a [jogkivonat-gyorsítótárat](/dotnet/api/microsoft.iden
 
 Ezek a jogcímek számos Azure AD B2C esetben hiányoznak. 
 
-Az ügyfél hatással van arra, hogy amikor a Felhasználónév mezőt szeretné megjeleníteni, "hiányzik a jogkivonat-válaszból" értékként? Ha igen, ennek az az oka, hogy Azure AD B2C nem ad vissza értéket a preferred_username IdToken a közösségi fiókok és külső identitás-szolgáltatók (IDP) korlátai miatt. Az Azure AD egy értéket ad vissza a preferred_username számára, mert tudja, hogy kik a felhasználók, de a Azure AD B2C esetében, mivel a felhasználó helyi fiókkal, Facebook-, Google-, GitHub-és egyéb szolgáltatásokkal is bejelentkezhet Azure AD B2C. A ADAL-mel való MSAL-kompatibilitás blokkolásának feloldásához úgy döntöttünk, hogy a "hiányzó a jogkivonat-válaszból" kifejezést használjuk a végén a Azure AD B2C-fiókok kezelésekor, amikor a IdToken semmit nem ad vissza a preferred_username. A MSAL-nek egy értéket kell visszaadnia a preferred_username számára a gyorsítótár-kompatibilitás fenntartásához a kódtárak között.
+Az ügyfél hatással van arra, hogy amikor a Felhasználónév mezőt szeretné megjeleníteni, "hiányzik a jogkivonat-válaszból" értékként? Ha igen, ennek az az oka, hogy Azure AD B2C nem ad vissza értéket a preferred_username IdToken a közösségi fiókok és külső identitás-szolgáltatók (IDP-EK) korlátai miatt. Az Azure AD egy értéket ad vissza a preferred_usernamehoz, mert tudja, hogy kik a felhasználók, de a Azure AD B2C esetében, mert a felhasználó helyi fiókkal, Facebook-, Google-, GitHub-és egyéb szolgáltatásokkal is bejelentkezhet preferred_username Azure AD B2C. A ADAL-mel való MSAL-kompatibilitás blokkolásának feloldásához úgy döntöttünk, hogy a "hiányzó a jogkivonat-válaszból" kifejezést használjuk az Azure AD B2C-fiókok kezelésekor, amikor a IdToken semmit nem ad vissza a preferred_username. A MSAL-nek egy értéket kell visszaadnia preferred_username számára a gyorsítótár-kompatibilitás fenntartásához a kódtárak között.
 
-### <a name="workarounds"></a>Megoldásai
+### <a name="workarounds"></a>Kerülő megoldások
 
 #### <a name="mitigation-for-the-missing-tenant-id"></a>A hiányzó bérlői azonosító enyhítése
 

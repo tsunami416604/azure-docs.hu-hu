@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights – Azure Functions támogatott funkciók | Microsoft Docs
+title: Azure Application Insights – Azure Functions támogatott szolgáltatások
 description: A Azure Functions által támogatott szolgáltatások Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 31f962ca96ca5c47d18f9250e567abb8f4024e6f
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5688bd92e63016e195726488bd9ff9ed039c5795
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677555"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928406"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions támogatott funkciók Application Insights
 
@@ -30,14 +30,14 @@ A Azure Functions [beépített integrációt](../../azure-functions/functions-mo
 | Kivételek &bull;                   | Igen             | Igen               | 
 | Teljesítményszámlálók &bull;         | Igen             | Igen               |
 | &bull; függőségek                   |                   |                   |               
-| &nbsp; &nbsp; &nbsp; &mdash; HTTP      |                 | Igen               | 
-| &nbsp; &nbsp; &nbsp; &mdash; ServiceBus|                 | Igen               | 
-| &nbsp; &nbsp; &nbsp; &mdash; EventHub  |                 | Igen               | 
-| &nbsp; &nbsp; &nbsp; &mdash; SQL       |                 | Igen               | 
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Igen               | 
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Igen               | 
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Igen               | 
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Igen               | 
 | | | | 
 | **Támogatott funkciók**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | Igen             | Igen               | 
-| &nbsp; &nbsp; &nbsp; &mdash; biztonságos vezérlési csatornát|                 | Igen               | 
+| &nbsp;&nbsp;&nbsp;&mdash; biztonságos vezérlési csatornát|                 | Igen               | 
 | &bull; mintavételezés                     | Igen             | Igen               | 
 | &bull; szívverések                   |                 | Igen               | 
 | | | | 
@@ -46,7 +46,7 @@ A Azure Functions [beépített integrációt](../../azure-functions/functions-mo
 | &bull; EventHub                       |                   | Igen               | 
 | | | | 
 | **Konfigurálható**                      |                   |                   |           
-| &bull;Fully konfigurálható.<br/>Útmutatásért lásd [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Az összes beállításhoz lásd: [ASP.net Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Igen                   | 
+| &bull;teljes mértékben konfigurálható.<br/>Útmutatásért lásd [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Az összes beállításhoz lásd: [ASP.net Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Igen                   | 
 
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók

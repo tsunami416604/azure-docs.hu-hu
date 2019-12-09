@@ -5,19 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/21/2019
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 9ab308d0e2145a0d0b40e8b37c8c5be07b55dac6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a5540eea91937319a6ac947b50698ccaa8b25847
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673556"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931706"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>SQL Server Integration Services csomagok futtatása az Azure-kompatibilis dtexec segédprogrammal
 Ez a cikk az Azure-kompatibilis dtexec (AzureDTExec) parancssori segédprogramot ismerteti. SQL Server Integration Services (SSIS) csomagok futtatására használatos a Azure-SSIS Integration Runtime (IR) Azure Data Factory.
@@ -91,7 +90,7 @@ A AzureDTExec meghívása hasonló beállításokat kínál a dtexec meghívás�
 > [!NOTE]
 > A AzureDTExec új értékekkel való meghívásával új folyamat jön létre, kivéve a **/de [csfájl]** kapcsolót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután a rendszer létrehozta és futtatja az SSIS-csomag végrehajtásával kapcsolatos egyedi folyamatokat a AzureDTExec meghívása után, megfigyelhetők a Data Factory-portálon. További információ: SSIS- [csomagok futtatása Data Factory tevékenységként](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 

@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory leképezési adatfolyam keresési transzformációja
+title: Adatfolyam-keresés átalakításának leképezése
 description: Azure Data Factory leképezési adatfolyam keresési transzformációja
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/03/2019
-ms.openlocfilehash: 01a1dba18e21a38695146560bbf85cf1a042ba02
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5cc54c95759ba1490f498305f05cc49a4411686d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596574"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930318"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory leképezési adatfolyam keresési transzformációja
 
@@ -27,7 +28,7 @@ A keresési átalakítás a bal oldali külső illesztés megfelelőjét hajtja 
 
 ## <a name="match--no-match"></a>Egyezés/nincs egyezés
 
-A keresési átalakítás után a következő átalakításokkal vizsgálhatja meg az egyes egyeztetési sorok eredményét a `isMatch()` Expression függvény használatával, hogy további döntéseket lehessen tenni a logikában attól függően, hogy a keresés egy sor egyezését eredményezte-e, vagy sem.
+A keresési átalakítás után a következő átalakításokkal vizsgálhatja meg az egyes egyeztetési sorok eredményét, ha a kifejezés függvény `isMatch()` használatával további döntéseket szeretne tenni a logikában attól függően, hogy a keresés sor egyezést eredményezett-e, vagy sem.
 
 ![Keresési minta](media/data-flow/lookup111.png "Keresési minta")
 
@@ -47,7 +48,7 @@ Ebben az esetben egy ```PickFirst``` nevű összesített átalakítás használa
 
 Data Factory az adatfolyamatok kibővített Spark-környezetekben futnak. Ha az adatkészlet elfér a munkavégző csomópont memóriájában, optimalizálhatja a keresési teljesítményt.
 
-![Szórásos csatlakozás](media/data-flow/broadcast.png "Szórásos csatlakozás")
+![Szórásos csatlakozás](media/data-flow/broadcast.png "Szórt csatlakozás")
 
 ### <a name="broadcast-join"></a>Szórásos csatlakozás
 

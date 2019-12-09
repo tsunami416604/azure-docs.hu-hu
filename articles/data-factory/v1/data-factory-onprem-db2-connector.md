@@ -4,21 +4,20 @@ description: Ismerje meg, hogyan helyezhetők át adatok egy helyszíni DB2-adat
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0d066e66e4b9600eb5734ef2f3c6031dbc44f17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666603"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931788"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Adatok áthelyezése a DB2-ből Azure Data Factory másolási tevékenység használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -79,7 +78,7 @@ A következő szakaszokban részletesen ismertetjük a DB2-adattárra jellemző 
 ## <a name="db2-linked-service-properties"></a>DB2 társított szolgáltatás tulajdonságai
 A következő táblázat felsorolja a DB2-hez társított szolgáltatáshoz tartozó JSON-tulajdonságokat.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | **type** |Ezt a tulajdonságot **OnPremisesDb2**értékre kell beállítani. |Igen |
 | **Server** |A DB2-kiszolgáló neve. |Igen |
@@ -95,7 +94,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **RelationalTable**típusú adatkészlet **typeProperties** szakasza, amely tartalmazza a DB2-adatkészletet, a következő tulajdonsággal rendelkezik:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | **Táblanév** |Annak a DB2-adatbázis-példánynak a neve, amelyre a társított szolgáltatás hivatkozik. Ez a tulajdonság megkülönbözteti a kis-és nagybetűket. |Nem (ha a **RelationalSource** típusú másolási tevékenység **lekérdezési** tulajdonsága meg van adva) |
 
@@ -104,7 +103,7 @@ A másolási tevékenységek definiálásához elérhető csoportok és tulajdon
 
 Másolási tevékenység esetén, ha a forrás **RelationalSource** típusú (amely tartalmazza a DB2-t), a **typeProperties** szakaszban a következő tulajdonságok érhetők el:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | **lekérdezés** |Az egyéni lekérdezéssel olvashatja el az adatgyűjtést. |SQL-lekérdezési karakterlánc. Például:`"query": "select * from "MySchema"."MyTable""` |Nem (ha meg van adva egy adatkészlet **Táblanév** tulajdonsága) |
 
@@ -312,16 +311,16 @@ A következő leképezéseket használja a rendszer, amikor a másolási tevéke
 | Egész szám |Int32 |
 | BigInt |Int64 |
 | Real |Önálló |
-| duplán |duplán |
-| float |duplán |
+| Double |Double |
+| Lebegőpontos szám |Double |
 | Decimális |Decimális |
 | DecimalFloat |Decimális |
-| numerikus |Decimális |
-| Dátum |DateTime |
-| Time |TimeSpan |
-| Időbélyeg |DateTime |
+| Numerikus |Decimális |
+| Dátum |Dátum és idő |
+| Idő |időtartam |
+| Időbélyeg |Dátum és idő |
 | XML |Bájt [] |
-| char |Sztring |
+| Char |Sztring |
 | VarChar |Sztring |
 | LongVarChar |Sztring |
 | DB2DynArray |Sztring |
@@ -338,16 +337,16 @@ A következő leképezéseket használja a rendszer, amikor a másolási tevéke
 | Egész szám |Int32 |
 | BigInt |Int64 |
 | Real |Önálló |
-| duplán |duplán |
-| float |duplán |
+| Double |Double |
+| Lebegőpontos szám |Double |
 | Decimális |Decimális |
 | DecimalFloat |Decimális |
-| numerikus |Decimális |
-| Dátum |DateTime |
-| Time |TimeSpan |
-| Időbélyeg |DateTime |
+| Numerikus |Decimális |
+| Dátum |Dátum és idő |
+| Idő |időtartam |
+| Időbélyeg |Dátum és idő |
 | XML |Bájt [] |
-| char |Sztring |
+| Char |Sztring |
 
 ## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
 Ha meg szeretné tudni, hogyan képezhetők le oszlopok a forrás-adatkészletben a fogadó adatkészlet oszlopaiba, tekintse meg a következőt: [adatkészlet oszlopainak megfeleltetése Azure Data Factory](data-factory-map-columns.md).

@@ -4,21 +4,20 @@ description: Ismerje meg, hogyan helyezhet át adatátvitelt az SAP Business War
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 47bc2db8730ebdedd180646d2fb86b642bbc631d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666037"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929220"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok áthelyezése az SAP Business Warehouse-ból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -62,11 +61,11 @@ A következő szakaszokban részletesen ismertetjük a SAP BW adattárra jellemz
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 Az alábbi táblázat az SAP Business Warehouse (BW) társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-Tulajdonság | Leírás | Megengedett értékek | Kötelező
+Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
 kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP BW-példány található. | sztring | Igen
 systemNumber | A SAP BWrendszer rendszerszáma. | String típusú kétszámjegyű decimális szám. | Igen
-clientId | A-ügyfél ügyfél-azonosítója az SAP W rendszeren. | Karakterláncként megjelenített háromjegyű decimális szám. | Igen
+ügyfél-azonosító | A-ügyfél ügyfél-azonosítója az SAP W rendszeren. | Karakterláncként megjelenített háromjegyű decimális szám. | Igen
 felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | sztring | Igen
 jelszó | A felhasználó jelszava. | sztring | Igen
 Átjáró neve | Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni SAP BW-példányhoz való kapcsolódáshoz. | sztring | Igen
@@ -85,7 +84,7 @@ Míg a tevékenység **typeProperties** szakaszában elérhető tulajdonságok a
 
 Ha a másolási tevékenységben szereplő forrás **RelationalSource** típusú (amely magában foglalja a SAP BW), a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | lekérdezés | Megadja az MDX-lekérdezést, amely beolvassa az SAP BW-példány adatait. | MDX-lekérdezés. | Igen |
 
@@ -291,16 +290,16 @@ Az adatok SAP BWból való áthelyezésekor a rendszer a következő leképezés
 
 Adattípus a ABAP szótárban | .NET-adattípus
 -------------------------------- | --------------
-ACCP |  int
+ACCP |  Int
 CHAR | Sztring
 Ügyf | Sztring
 CURR | Decimális
 CUKY | Sztring
 DECEMBER | Decimális
-FLTP | duplán
-INT1 | Byte
+FLTP | Double
+INT1 | Bájt
 INT2 | Int16
-INT4 | int
+INT4 | Int
 LANG | Sztring
 LCHR | Sztring
 LRAW | Bájt []

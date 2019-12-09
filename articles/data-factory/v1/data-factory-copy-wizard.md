@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: f904972f-cd33-48db-9755-2b3196ae4168
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 88e5603405ad5594b06674aaf6cbb2c4d23b754c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8b872cc30ae66e83274f189138dad6d609e3f536
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682786"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927051"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Az Adatmásolás és az adatáthelyezés Egyszerűen Azure Data Factory másolási varázslóval
 > [!NOTE]
@@ -54,7 +53,7 @@ A másolás varázsló automatikusan leképezi a forrás sémában lévő oszlop
 
 ![Séma-hozzárendelés](./media/data-factory-copy-wizard/schema-mapping.png)
 
-## <a name="filtering-data"></a>Adatszűrés
+## <a name="filtering-data"></a>Az adatok szűrése
 A varázsló lehetővé teszi a forrásadatok szűrését, hogy csak azokat az adatforrásokat válassza ki, amelyeket át kell másolni a cél/fogadó adattárba. A szűrés csökkenti a fogadó adattárba másolandó adatok mennyiségét, így fokozza a másolási művelet átviteli sebességét. Rugalmas módszert biztosít a kapcsolódó adatbázisokban lévő adatok szűrésére egy Azure Blob mappában lévő SQL Query Language (vagy) fájlok használatával [Data Factory függvények és változók](data-factory-functions-variables.md)használatával.   
 
 ### <a name="filtering-of-data-in-a-database"></a>Adatbázisbeli Adatszűrés
@@ -92,6 +91,6 @@ Az egyszeri másolási művelettel csak egyszer engedélyezhető az adatáthelye
 
 ![Ütemezési tulajdonságok](./media/data-factory-copy-wizard/scheduling-properties.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenységgel rendelkező folyamat létrehozásához a Data Factory másolási varázslóval című cikkből megtudhatja, hogyan hozhat létre [folyamatokat a másolás varázsló](data-factory-copy-data-wizard-tutorial.md)segítségével.
 

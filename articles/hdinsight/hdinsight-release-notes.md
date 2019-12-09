@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 54e28a9d434500915aa8cc8e07ade3592e5aa96c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5d9ca8d0df3eb0186add5c40765c87a4409a5660
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185602"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926423"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -51,7 +51,7 @@ A HBase és a LLAP számítási feladatának funkciói a nyilvános előzetes ve
 
 ### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>HDInsight gyorsított írások az Apache HBase 
 
-A Gyorsított írási műveletek az Azure prémium szintű felügyelt SSD lemezeit használja az Apache HBase Előre írt napló (WAL) szolgáltatásához. További információ: [Azure HDInsight gyorsított írások az Apache HBase](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes)-hoz.
+A Gyorsított írási műveletek az Azure prémium szintű felügyelt SSD lemezeit használja az Apache HBase Előre írt napló (WAL) szolgáltatásához. További információ: [Azure HDInsight-beli gyorsított írási műveletek Apache HBase-hez](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes)
 
 ### <a name="custom-ambari-db"></a>Egyéni Ambari-adatbázis
 
@@ -69,7 +69,7 @@ Ebből a kiadásból a G sorozatú virtuális gépeket már nem ajánljuk fel a 
 ### <a name="dv1-virtual-machine-deprecation"></a>Dv1 virtuális gép elavult
 Ettől a kiadástól kezdve a Dv1 virtuális gépek HDInsight-mel való használata elavult. A Dv1-hez tartozó összes ügyfél-kérelem automatikusan a Dv2 lesz kézbesítve. A Dv1 és a Dv2 virtuális gépek között nincs árkülönbség.
 
-## <a name="behavior-changes"></a>Viselkedési változások
+## <a name="behavior-changes"></a>Viselkedésbeli változások
 
 ### <a name="cluster-managed-disk-size-change"></a>Fürtözött felügyelt lemez méretének változása
 A HDInsight felügyelt lemezterületet biztosít a fürt számára. Ebből a kiadásból az új létrehozott fürt egyes csomópontjainak felügyelt lemez mérete 128 GB-ra módosul.
@@ -90,4 +90,4 @@ Az A sorozatú virtuális gépek az ESP-fürtökkel kapcsolatos problémákat ok
 A HDInsight továbbra is a fürt megbízhatóságának és teljesítményének növelését teszi elérhetővé. 
 
 ## <a name="component-version-change"></a>Összetevő verziójának módosítása
-Ehhez a kiadáshoz nem módosítható összetevő-verzió. A HDInsight 4,0 ad HDInsight 3,6 aktuális összetevő-verzióit [itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)találja.
+Ehhez a kiadáshoz nem módosítható összetevő-verzió. A HDInsight 4,0 és a HDInsight 3,6 aktuális összetevő-verzióit [itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)találja.

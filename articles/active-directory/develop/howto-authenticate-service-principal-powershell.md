@@ -3,27 +3,24 @@ title: Identitás létrehozása az Azure-alkalmazáshoz a PowerShell-lel
 titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan hozhat létre az Azure PowerShell segítségével Azure Active Directory-alkalmazást és -szolgáltatásnevet, és miként adhat annak hozzáférést az erőforrásokhoz szerepköralapú hozzáférés-vezérléssel. Bemutatja az alkalmazás tanúsítvánnyal való hitelesítését.
 services: active-directory
-documentationcenter: na
 author: rwike77
 manager: CelesteDG
 ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcf52bc5a6d177c18d9ebb792d1a147d09746afd
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2456d52a3863b362943547d8a0c0e478dbc572cf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803824"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917896"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Útmutató: egyszerű szolgáltatásnév létrehozása a Azure PowerShell használatával
 
@@ -223,7 +220,7 @@ A szolgáltatásnév létrehozásakor az alábbi hibákba ütközhet:
 
 * **„Authentication_Unauthorized”** vagy **„No subscription found in the context.”** (Nem található előfizetés a környezetben.) – Ez a hiba akkor jelenik meg, ha a fiókja nem rendelkezik a [szükséges engedélyekkel](#required-permissions) az Azure ad-ben az alkalmazás regisztrálásához. Ez a hiba általában akkor jelenik meg, ha csak a Azure Active Directory rendszergazdai felhasználói regisztrálhatnak alkalmazásokat, és a fiókja nem rendszergazda. Kérje meg a rendszergazdát, hogy rendeljen hozzá egy rendszergazdai szerepkört, vagy engedélyezze a felhasználóknak az alkalmazások regisztrálását.
 
-* A (z) "nincs engedélye a (z **)" Microsoft. Authorization/roleAssignments/Write "művelet végrehajtására a (z)"/Subscriptions/{GUID} "hatókörben."** – ezt a hibát akkor látja, ha a fiók nem rendelkezik megfelelő engedélyekkel ahhoz, hogy szerepkört rendeljen hozzá identitás. Kérje meg az előfizetés-rendszergazdáját, hogy adja hozzá Önt a Felhasználói hozzáférés rendszergazdája szerepkörhöz.
+* A (z) "nincs engedélye a (z **)" Microsoft. Authorization/roleAssignments/Write "művelet végrehajtására a (z)"/Subscriptions/{GUID} "hatókörben."** – ezt a hibaüzenetet akkor látja, ha a fiók nem rendelkezik megfelelő engedélyekkel ahhoz, hogy egy szerepkört társítson az identitáshoz. Kérje meg az előfizetés-rendszergazdáját, hogy adja hozzá Önt a Felhasználói hozzáférés rendszergazdája szerepkörhöz.
 
 ## <a name="next-steps"></a>Következő lépések
 

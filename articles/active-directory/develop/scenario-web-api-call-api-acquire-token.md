@@ -1,6 +1,7 @@
 ---
-title: Webes API-t, hogy más hívások webes API-kat (az alkalmazás szükséges jogkivonat beszerzése) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy webes API-t, hogy a hívások más webes API-k (tokenbeolvasás az alkalmazás).
+title: A webes API-kat meghívó webes API-k jogkivonatának beolvasása | Azure
+titleSuffix: Microsoft identity platform
+description: Ismerje meg, hogyan hozhat létre olyan webes API-t, amely meghívja az alkalmazás jogkivonatának beszerzését igénylő webes API-kat.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,20 +16,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986e2e0f8a481d61dc870af2548290658b44d2d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 276ff1e5e9f709aa5b38d1efa4055dfe3baf3cc5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231108"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919783"
 ---
-# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Webes API-t, amely meghívja a webes API-k – az alkalmazás szükséges jogkivonat beszerzése
+# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Webes API-k meghívása webes API-k – az alkalmazás jogkivonatának beszerzése
 
-Miután létrehozott egy ügyfélalkalmazás objektumot, hogyan használhatja a webes API-hívás jogkivonat-beszerzési.
+Miután létrehozott egy ügyfélalkalmazás-objektumot, használja azt egy olyan token beszerzéséhez, amelyet használhat a webes API-k meghívásához.
 
-## <a name="code-in-the-controller"></a>A vezérlő a Code
+## <a name="code-in-the-controller"></a>Kód a vezérlőben
 
-Íme egy példa a műveletek az API-vezérlők, (nevű todolist) alsóbb rétegbeli API meghívása a meghívni kívánt kódra.
+Az alábbi példa egy olyan kódot mutat be, amely az API-vezérlők műveleteiben lesz meghívva, egy alsóbb rétegbeli API meghívása (ToDoList).
 
 ```CSharp
 private async Task GetTodoList(bool isAppStarting)
@@ -49,9 +50,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()` a cikkben megtudhatta hasonló [webes API, amely meghívja a webes API - alkalmazás konfigurációja](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()` példányosítja `IConfidentialClientApplication` az egy cache-ben, amely csak egy fiók adatait tartalmazza. A fiók által biztosított a `GetAccountIdentifier` metódust.
+a `BuildConfidentialClient()` a [webes API-kat meghívó webes API-t meghívja a web API-k – alkalmazás konfigurálása](scenario-web-api-call-api-app-configuration.md)című cikkben láthatóhoz hasonló. `BuildConfidentialClient()` olyan gyorsítótárat hoz létre `IConfidentialClientApplication`, amely csak egy fiók adatait tartalmazza. A fiókot a `GetAccountIdentifier` metódus biztosít.
 
-A `GetAccountIdentifier` módszer a jogcímeket a felhasználó számára, amely a webes API a JWT kapott az identitáshoz tartozó használja:
+A `GetAccountIdentifier` metódus a felhasználó identitásához társított jogcímeket használja, amelyekhez a webes API a JWT kapta:
 
 ```CSharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
@@ -69,7 +70,7 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [A webes API meghívása](scenario-web-api-call-api-call-api.md)
+> [Webes API meghívása](scenario-web-api-call-api-call-api.md)

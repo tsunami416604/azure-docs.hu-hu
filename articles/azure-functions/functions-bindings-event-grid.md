@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 8820818528835df6379c894eb06c154f4120f507
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b1717b9b336d31c86db1ec38eb97c7e8814b76d7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227305"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926003"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions Event Grid trigger
 
@@ -24,13 +24,13 @@ Ha szeretné, használhat egy HTTP-triggert Event Grid események kezelésére; 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
+## <a name="packages---functions-2x-and-higher"></a>Csomagok – 2. x és újabb függvények
 
 A Event Grid triggert a [Microsoft. Azure. webjobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet csomagban, 2. x verzióban kell megadnia. A csomag forráskódja az [Azure-functions-eventgrid-Extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) GitHub-tárházban található.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
+## <a name="packages---functions-1x"></a>Csomagok – 1. x függvények
 
 A Event Grid triggert a [Microsoft. Azure. webjobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet csomagban, 1. x verzióban kell megadnia. A csomag forráskódja az [Azure-functions-eventgrid-Extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) GitHub-tárházban található.
 
@@ -48,9 +48,9 @@ Tekintse meg a Event Grid trigger nyelvspecifikus példáját:
 
 A HTTP-triggerek példáját lásd: a [http-trigger használata](#use-an-http-trigger-as-an-event-grid-trigger) a cikk későbbi részében.
 
-### <a name="c-2x"></a>C# (2.x)
+### <a name="c-2x-and-higher"></a>C#(2. x és újabb)
 
-Az alábbi példa egy 2. x [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely a `EventGridEvent`hoz kötődik:
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely a `EventGridEvent`hoz kötődik:
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -118,9 +118,9 @@ Itt található a *function. JSON* fájlban található kötési adat:
 }
 ```
 
-#### <a name="c-script-version-2x"></a>C#parancsfájl (2. x verzió)
+#### <a name="c-script-version-2x-and-higher"></a>C#parancsfájl (2. x vagy újabb verzió)
 
-A következő functions 2. C# x parancsfájl-kód, amely a `EventGridEvent`hoz kötődik:
+Íme egy példa, amely a `EventGridEvent`hoz kötődik:
 
 ```csharp
 #r "Microsoft.Azure.EventGrid"
@@ -170,7 +170,7 @@ Itt található a *function. JSON* fájlban található kötési adat:
 }
 ```
 
-A következő JavaScript-kódot:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = function (context, eventGridEvent) {
@@ -218,7 +218,7 @@ def main(event: func.EventGridEvent):
 
 ### <a name="trigger---java-examples"></a>Trigger – Java-példák
 
-Ez a szakasz tartalmazza az alábbi példák:
+Ez a szakasz a következő példákat tartalmazza:
 
 * [Event Grid trigger, karakterlánc-paraméter](#event-grid-trigger-string-parameter-java)
 * [Event Grid trigger, POJO paraméter](#event-grid-trigger-pojo-parameter-java)
@@ -313,7 +313,7 @@ Teljes példa: C# példa.
 
 A következő táblázat a *function. JSON* fájlban beállított kötési konfigurációs tulajdonságokat ismerteti. Nincsenek beállítva konstruktor-paraméterek vagy tulajdonságok a `EventGridTrigger` attribútumban.
 
-|Function.JSON tulajdonság |Leírás|
+|function. JSON-tulajdonság |Leírás|
 |---------|---------|
 | **type** | Kötelező – `eventGridTrigger`értékre kell állítani. |
 | **direction** | Kötelező – `in`értékre kell állítani. |
@@ -326,7 +326,7 @@ A (z) Azure Functions 1. x esetében C# a következő paramétereket használhat
 * `JObject`
 * `string`
 
-A C# ( F# z) Azure functions 2. x verzióban és a függvényekben a következő paraméter-típust is használhatja a Event Grid triggerhez:
+A (z) Azure Functions 2. x és újabb verziók esetében C# a következő paramétert is használhatja a Event Grid triggerhez: F#
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent`– az összes eseménytípus közös mezőinek tulajdonságait határozza meg.
 
@@ -389,13 +389,13 @@ Ha ezt a hivatkozást választja, a portál megnyitja az **esemény-előfizetés
 
 Az előfizetések Azure Portal használatával történő létrehozásával kapcsolatos további információkért tekintse meg az [egyéni esemény-Azure Portal létrehozása](../event-grid/custom-event-quickstart-portal.md) a Event Grid dokumentációjában.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Ha [Az Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)használatával szeretne előfizetést létrehozni, használja az az [eventgrid Event-előfizetés Create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) parancsot.
 
 A parancshoz meg kell adni a végpont URL-címét, amely meghívja a függvényt. A következő példa a verzióra jellemző URL-mintát mutatja:
 
-#### <a name="version-2x-runtime"></a>2-es verzió. x futtatókörnyezet
+#### <a name="version-2x-and-higher-runtime"></a>Version 2. x (és újabb) futtatókörnyezet
 
     https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
 
@@ -407,7 +407,7 @@ A rendszerkulcs egy olyan engedélyezési kulcs, amely egy Event Grid trigger v�
 
 Az alábbi példa egy blob Storage-fiókra való előfizetést mutat be (a rendszerkulcs helyőrzője):
 
-#### <a name="version-2x-runtime"></a>2-es verzió. x futtatókörnyezet
+#### <a name="version-2x-and-higher-runtime"></a>Version 2. x (és újabb) futtatókörnyezet
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -435,7 +435,7 @@ Az előfizetés létrehozásával kapcsolatos további információkért tekints
 
 A rendszerkulcs a következő API-val (HTTP GET) szerezhető be:
 
-#### <a name="version-2x-runtime"></a>2-es verzió. x futtatókörnyezet
+#### <a name="version-2x-and-higher-runtime"></a>Version 2. x (és újabb) futtatókörnyezet
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_extension?code={masterkey}
@@ -522,7 +522,7 @@ HTTP POST-kérelem létrehozásához használjon olyan eszközt, mint például 
 * `aeg-event-type: Notification` fejlécének beállítása
 * Illessze be a RequestBin a kérelem törzsébe.
 * Tegye közzé a Event Grid trigger függvény URL-címét.
-  * A 2. x esetében használja a következő mintát:
+  * A 2. x és újabb verziók esetében használja a következő mintát:
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
@@ -591,7 +591,7 @@ A ngrok URL-cím nem kap speciális kezelést Event Grid alapján, így a függv
 
 Hozzon létre egy Event Grid-előfizetést a tesztelni kívánt típushoz, és adja meg a ngrok-végpontot.
 
-Használja ezt a végponti mintát a 2. x függvényhez:
+Használja ezt a végponti mintát a 2. x és újabb függvényeknél:
 
 ```
 https://{SUBDOMAIN}.ngrok.io/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
@@ -767,7 +767,7 @@ module.exports = function (context, req) {
 };
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

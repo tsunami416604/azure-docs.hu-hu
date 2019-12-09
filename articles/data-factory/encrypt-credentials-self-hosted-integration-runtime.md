@@ -4,20 +4,19 @@ description: Megtudhatja, hogyan titkosíthatja és tárolhatja a helyszíni ada
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 41e353931fb2d9fe26c0a6bd73d5085495ad7b78
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bcca2e6168baafe9f98f663298790841c0f1f450
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675055"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927428"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Hitelesítő adatok titkosítása a helyszíni adattárakhoz Azure Data Factory
 A saját üzemeltetésű integrációs modult futtató gépen titkosíthatja és tárolhatja a helyszíni adattárak hitelesítő adatait (a társított szolgáltatások bizalmas információkkal). 
@@ -64,6 +63,6 @@ Most a **SqlServerLinkedService**beállításához használja az előző parancs
 Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -DefinitionFile ".\encryptedSqlServerLinkedService.json" 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az adatáthelyezéssel kapcsolatos biztonsági megfontolásokról: [adatátviteli biztonsági megfontolások](data-movement-security-considerations.md).
 

@@ -1,18 +1,19 @@
 ---
-title: Az adatfolyamatok leképezése Azure Data Factory
+title: Adatfolyamok leképezése
 description: Az adatfolyamatok Azure Data Factoryban való leképezésének áttekintése
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/7/2019
-ms.openlocfilehash: ed2502ffebbacf5e66e3e4738e2e88ce7fb8a562
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 397ecdb805f0be9f374c53ae7128f806bfb789d3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681563"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928285"
 ---
 # <a name="what-are-mapping-data-flows"></a>Mik azok a leképezési adatfolyamok?
 
@@ -122,11 +123,11 @@ Hozzon létre egy olyan kifejezést, amely rögzített tartományt biztosít a p
 
 Ha jól ismeri az Ön adatait, a kulcsfontosságú particionálás jó stratégia lehet. A kulcsok particionálásakor a rendszer létrehozza a partíciókat az oszlop minden egyedi értékéhez. A partíciók száma nem állítható be, mert a szám az adatok egyedi értékein alapul.
 
-#### <a name="inspect"></a>Vizsgálata
+#### <a name="inspect"></a>Vizsgálat
 
 Az **ellenőrzés** lapon megtekintheti az átalakítás alatt álló adatfolyam metaadatait. Láthatja az oszlopok számát, a megváltoztatott oszlopokat, a hozzáadott oszlopokat, az adattípusokat, az oszlopok sorrendjét és az oszlopok hivatkozásait. A **vizsgálat** a metaadatok csak olvasható nézete. Nem kell engedélyezni a hibakeresési módot a metaadatok megjelenítéséhez a **vizsgálat** ablaktáblán.
 
-![Vizsgálata](media/data-flow/inspect1.png "Vizsgálata")
+![Vizsgálata](media/data-flow/inspect1.png "Vizsgálat")
 
 Amikor átalakításokon keresztül módosítja az adatok alakját, a metaadatok változásai a **vizsgálat** panelen jelennek meg. Ha nincs definiált séma a forrás-átalakításban, akkor a metaadatok nem lesznek láthatók a **vizsgálat** ablaktáblán. A metaadatok hiánya gyakori a séma-drift forgatókönyvekben.
 
@@ -144,7 +145,7 @@ Ha elrejti a gráfot, az **előző** és a **következő** gombokon keresztül b
 
 ![Előző és következő gomb](media/data-flow/showhide.png "előző és következő gomb")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan hozhat létre [forrás-átalakítást](data-flow-source.md).
 * Megtudhatja, hogyan hozhat létre adatfolyamatokat [hibakeresési módban](concepts-data-flow-debug-mode.md).

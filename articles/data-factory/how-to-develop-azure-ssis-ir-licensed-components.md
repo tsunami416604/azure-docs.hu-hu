@@ -1,23 +1,22 @@
 ---
-title: 'Licencelt összetevők telepítése az Azure-SSIS Integration Runtime számára '
+title: Licencelt összetevők telepítése az Azure-SSIS Integration Runtime-hoz
 description: Ismerje meg, hogy az ISV hogyan fejleszthet és telepíthet fizetős vagy licencelt egyéni összetevőket az Azure-SSIS Integration Runtime számára
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 08/01/2019
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: f1f8a017153d95beed4979b6059383a41cd6a972
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 08/01/2019
+ms.openlocfilehash: 599b54f8a5d97ee5ed29ce4df16980f456ffb919
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673579"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914584"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Az Azure-SSIS integrációs modul fizetős vagy licencelt egyéni összetevőinek telepítése
 
@@ -78,7 +77,7 @@ Az alábbi ábrán az új változókat használó, harmadik féltől származó 
 
 Megtalálhatja azon ISV-partnerek listáját, akik kiigazították az összetevők és a bővítmények a Azure-SSIS IR a blogbejegyzés végén, az [egyéni beállítás és a harmadik féltől származó BŐVÍTHETŐSÉG SSIS az ADF-ben](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Enterprise-Edition-Custom-Setup-and-3rd-Party-Extensibility-for/ba-p/388360).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 -   [Az Azure-SSIS Integration Runtime egyéni beállítása](how-to-configure-azure-ssis-ir-custom-setup.md)
 

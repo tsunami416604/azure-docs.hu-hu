@@ -4,21 +4,20 @@ description: Ismerje meg, hogyan helyezhet át OData-forrásokból származó ad
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: de28fa56-3204-4546-a4df-21a21de43ed7
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ea751a18f8a5e5423b3199919ccf440c41595091
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666669"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931871"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Adatok áthelyezése egy OData-forrásból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -61,7 +60,7 @@ A következő szakaszokban részletesen ismertetjük a OData-forrásra jellemző
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a OData társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **OData** |Igen |
 | url |A OData szolgáltatás URL-címe. |Igen |
@@ -146,9 +145,9 @@ Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok telje
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **ODataResource** típusú (OData-adatkészletet tartalmazó) adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| elérési útja |A OData erőforrás elérési útja |Nem |
+| elérési út |A OData erőforrás elérési útja |Nem |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 A tevékenységek definiálásához elérhető & Tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a szabályzatok minden típusú tevékenységhez elérhetők.
@@ -157,7 +156,7 @@ A tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes t
 
 Ha a forrás típusa **RelationalSource** (beleértve a OData is), a typeProperties szakaszban a következő tulajdonságok érhetők el:
 
-| Tulajdonság | Leírás | Példa | Kötelező |
+| Tulajdonság | Leírás | Példa | Szükséges |
 | --- | --- | --- | --- |
 | lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |"? $select = név, leírás & $top = 5" |Nem |
 
@@ -169,14 +168,14 @@ Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-act
 
 Az adatok OData való áthelyezésekor a rendszer a következő leképezéseket használja a OData típusokból a .NET típusra.
 
-| OData adattípusa | .NET-típus |
+| OData-adatok típusa | .NET-típus |
 | --- | --- |
 | EDM. Binary |Bájt [] |
-| Edm.Boolean |bool |
+| Edm.Boolean |Logikai |
 | EDM. byte |Bájt [] |
-| EDM. DateTime |DateTime |
+| EDM. DateTime |Dátum és idő |
 | EDM. decimális |Decimális |
-| Edm.Double |duplán |
+| Edm.Double |Double |
 | EDM. Single |Önálló |
 | EDM. GUID |GUID |
 | EDM. Int16 |Int16 |
@@ -184,7 +183,7 @@ Az adatok OData való áthelyezésekor a rendszer a következő leképezéseket 
 | Edm.Int64 |Int64 |
 | EDM. sbyte érték |Int16 |
 | Edm.String |Sztring |
-| EDM. Time |TimeSpan |
+| EDM. Time |időtartam |
 | Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]

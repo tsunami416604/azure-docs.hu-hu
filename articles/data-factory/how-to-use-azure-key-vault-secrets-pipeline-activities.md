@@ -1,24 +1,23 @@
 ---
-title: Azure Key Vault titkok használata a folyamat tevékenységeiben
+title: Azure Key Vault-beli titkos kulcsok használata a folyamattevékenységekben
 description: Ismerje meg, hogyan hívhat le tárolt hitelesítő adatokat az Azure Key vaultból, és hogyan használhatja őket a adat-előállító folyamatának futtatása közben.
 services: data-factory
 author: ChrisLound
-manager: craigg
+manager: anandsub
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 83d0981a0d277eab1aae8654343ab34661b3e88b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 837d62784a56ad0f17471cca5a660819d4a83e12
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672895"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926764"
 ---
-# <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Azure Key Vault titkok használata a folyamat tevékenységeiben
+# <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Azure Key Vault-beli titkos kulcsok használata a folyamattevékenységekben
 
 A hitelesítő adatokat vagy a titkos értékeket egy Azure Key Vault tárolhatja, és a folyamat végrehajtása során felhasználhatja a tevékenységeket.
 
@@ -48,12 +47,12 @@ Ez a funkció az adatok gyári felügyelt identitására támaszkodik.  Ismerje 
 
 4. A Data Factory folyamatában adjon hozzá egy új webes tevékenységet, és konfigurálja az alábbiak szerint.  
 
-    |Tulajdonság  |Érték  |
+    |Tulajdonság  |Value (Díj)  |
     |---------|---------|
-    |Biztonságos kimenet     |True (Igaz)         |
+    |Biztonságos kimenet     |Igaz         |
     |URL-cím     |[A titkos URI-érték]? API-Version = 7.0         |
     |Módszer     |GET         |
-    |Authentication     |MSI         |
+    |Hitelesítés     |MSI         |
     |Erőforrás        |https://vault.azure.net       |
 
     ![Webes tevékenység](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
@@ -68,6 +67,6 @@ Ez a funkció az adatok gyári felügyelt identitására támaszkodik.  Ismerje 
 
     ![Kód kifejezése](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adattárak és a számítási adatok hitelesítő adatainak tárolásához Azure Key Vault használatáról további információt a [hitelesítő adatok tárolása a Azure Key Vault-ben](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) című témakörben talál.

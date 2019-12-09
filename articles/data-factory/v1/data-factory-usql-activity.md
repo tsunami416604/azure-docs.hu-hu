@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 author: nabhishek
 ms.author: abnarain
-manager: craigg
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: 7608719c4e0c2b9e23f1982efda9789d25f50224
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c6d3510dfdd02bf2eb07d656c706c44d895c582d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665952"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927904"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Az adatátalakítást U-SQL-parancsfájlok futtatásával Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -46,7 +45,7 @@ Hozzon létre egy **Azure Data Lake Analytics** társított szolgáltatást egy 
 
 A következő táblázat a JSON-definícióban használt általános tulajdonságok leírásait tartalmazza. Az egyszerű szolgáltatásnév és a felhasználói hitelesítő adatok hitelesítése lehetőség közül választhat.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | **type** |A Type tulajdonságot a következőre kell beállítani: **AzureDataLakeAnalytics**. |Igen |
 | **accountName** |Azure Data Lake Analytics fiók neve. |Igen |
@@ -62,11 +61,11 @@ Az egyszerű szolgáltatás hitelesítésének használatához regisztráljon eg
 
 Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megadásával használhatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Igen |
 | **servicePrincipalKey** | Az alkalmazás kulcsának meghatározása. | Igen |
-| **Bérlő** | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Igen |
+| **bérlő** | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Igen |
 
 **Példa: egyszerű szolgáltatásnév hitelesítése**
 ```json
@@ -90,7 +89,7 @@ Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megad�
 ### <a name="user-credential-authentication"></a>Felhasználói hitelesítő adatok hitelesítése
 Azt is megteheti, hogy a következő tulajdonságok megadásával felhasználói hitelesítő adatokat használ a Data Lake Analyticshoz:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | **engedély** | Kattintson az **Engedélyezés** gombra a Data Factory szerkesztőben, és adja meg a hitelesítő adatait, amely hozzárendeli az automatikusan létrehozott engedélyezési URL-címet ehhez a tulajdonsághoz. | Igen |
 | **sessionId** | OAuth munkamenet-azonosító a OAuth-engedélyezési munkamenetből. Az egyes munkamenet-AZONOSÍTÓk egyediek, és csak egyszer használhatók fel. Ez a beállítás automatikusan létrejön a Data Factory-szerkesztő használatakor. | Igen |
@@ -206,7 +205,7 @@ A következő JSON-kódrészlet egy Data Lake Analytics U-SQL-tevékenységgel r
 
 A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok nevét és leírását. 
 
-| Tulajdonság            | Leírás                              | Kötelező                                 |
+| Tulajdonság            | Leírás                              | Szükséges                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
 | type                | A Type tulajdonságot **DataLakeAnalyticsU-SQL**értékre kell beállítani. | Igen                                      |
 | linkedServiceName   | Hivatkozás a társított szolgáltatásként regisztrált Azure Data Lake Analytics Data Factory | Igen                                      |
@@ -331,7 +330,7 @@ A mintavételi folyamat definíciójában a és a kimenő paraméterek rögzíte
 }
 ```
 
-Ehelyett dinamikus paramétereket lehet használni. Például: 
+Ehelyett dinamikus paramétereket lehet használni. Példa: 
 
 ```json
 "parameters": {

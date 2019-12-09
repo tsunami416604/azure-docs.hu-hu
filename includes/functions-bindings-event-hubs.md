@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 0f94c89a52de138b261796cbef25c0acb57622c4
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 27333f272ca5000fd3b09b305712875c065f6bc7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73799882"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924439"
 ---
 ## <a name="trigger"></a>Eseményindító
 
@@ -105,7 +105,7 @@ Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function
 
 Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be.
 
-#### <a name="version-2x"></a>2-es verzió. x
+#### <a name="version-2x-and-higher"></a>2\. x vagy újabb verzió
 
 ```json
 {
@@ -186,7 +186,7 @@ Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function
 
 Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be. 
 
-#### <a name="version-2x"></a>2-es verzió. x
+#### <a name="version-2x-and-higher"></a>2\. x vagy újabb verzió
 
 ```json
 {
@@ -223,7 +223,7 @@ Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function
 
 Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be.
 
-#### <a name="version-2x"></a>2-es verzió. x
+#### <a name="version-2x-and-higher"></a>2\. x vagy újabb verzió
 
 ```json
 {
@@ -262,7 +262,7 @@ module.exports = function (context, myEventHubMessage) {
 
 Ha egy kötegben szeretne eseményeket fogadni, állítsa a `cardinality` `many`re a *function. JSON* fájlban, ahogy az alábbi példákban is látható.
 
-#### <a name="version-2x"></a>2-es verzió. x
+#### <a name="version-2x-and-higher"></a>2\. x vagy újabb verzió
 
 ```json
 {
@@ -385,13 +385,13 @@ Az alábbi táblázat a *function. JSON* fájlban és a `EventHubTrigger` attrib
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | n/a | `eventHubTrigger`értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**direction** | n/a | `in`értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**név** | n/a | Annak a változónak a neve, amely a függvény kódjában szereplő Event tételt jelöli. |
+|**type** | – | `eventHubTrigger`értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
+|**direction** | – | `in`értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | – | Annak a változónak a neve, amely a függvény kódjában szereplő Event tételt jelöli. |
 |**elérési útja** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
-|**eventHubName** |**EventHubName** | Csak 2. x funkció. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
+|**eventHubName** |**EventHubName** | A 2. x és újabb függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**consumerGroup** |**ConsumerGroup** | Egy opcionális tulajdonság, amely a központban lévő eseményekre való előfizetéshez használt [fogyasztói csoportot](../articles/event-hubs/event-hubs-features.md#event-consumers) állítja be. Ha nincs megadva, a rendszer a `$Default` fogyasztói csoportot használja. |
-|**számosság** | n/a | A Javascripthez. A kötegelt feldolgozás engedélyezéséhez állítsa `many` értékre.  Ha nincs megadva vagy `one`értékre van állítva, a rendszer a függvénynek átadott üzenetet küld. |
+|**számosság** | – | A Javascripthez. A kötegelt feldolgozás engedélyezéséhez állítsa `many` értékre.  Ha nincs megadva vagy `one`értékre van állítva, a rendszer a függvénynek átadott üzenetet küld. |
 |**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a [névtér](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. A kapcsolódási karakterláncnak legalább olvasási engedéllyel kell rendelkeznie az trigger aktiválásához.|
 |**elérési útja**|**EventHubName**|Az Event hub neve. Az alkalmazás beállításain keresztül lehet hivatkozni `%eventHubName%`|
 
@@ -401,7 +401,7 @@ Az alábbi táblázat a *function. JSON* fájlban és a `EventHubTrigger` attrib
 
 A Event Hubs trigger számos [metaadat-tulajdonságot](../articles/azure-functions/./functions-bindings-expressions-patterns.md)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. Ezek a [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) osztály tulajdonságai.
 
-|Tulajdonság|Típus|Leírás|
+|Tulajdonság|Type (Típus)|Leírás|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|A `PartitionContext` példány.|
 |`EnqueuedTimeUtc`|`DateTime`|A várólistán lévő idő UTC szerint.|
@@ -421,9 +421,9 @@ A [Host. JSON](../articles/azure-functions/functions-host-json.md#eventhub) fáj
 
 ## <a name="output"></a>Kimenet
 
-Az események egy esemény-adatfolyamba való írásához használja a Event Hubs kimeneti kötést. Az Event hub-nak Küldés engedéllyel kell rendelkeznie az események írásához.
+Az események egy esemény-adatfolyamba való írásához használja a Event Hubs kimeneti kötést. Küldési engedéllyel kell rendelkeznie ahhoz, hogy eseményeket írhasson egy eseményközpontba.
 
-Győződjön meg arról, hogy a szükséges csomagok hivatkozásai teljesülnek: 1. x vagy függvények 2. x
+Győződjön meg arról, hogy a szükséges csomagokra vonatkozó hivatkozások a kimenete-kötés megvalósítása előtt vannak érvényben.
 
 ## <a name="output---example"></a>Kimenet – példa
 
@@ -474,7 +474,7 @@ public static async Task Run(
 
 Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](../articles/azure-functions/functions-reference-csharp.md) , amely a kötést használja. A függvény egy üzenetet ír az Event hub-ba.
 
-Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be. Az első példa a 2. x függvényre, a második pedig az 1. x függvényre mutat. 
+Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be. Az első példa a 2. x és újabb függvények esetében, a második pedig az 1. x függvényre mutat. 
 
 ```json
 {
@@ -526,7 +526,7 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ F# függvényt](../articles/azure-functions/functions-reference-fsharp.md) , amely a kötést használja. A függvény egy üzenetet ír az Event hub-ba.
 
-Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be. Az első példa a 2. x függvényre, a második pedig az 1. x függvényre mutat. 
+Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be. Az első példa a 2. x és újabb függvények esetében, a második pedig az 1. x függvényre mutat. 
 
 ```json
 {
@@ -560,7 +560,7 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: ILogger) 
 
 Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](../articles/azure-functions/functions-reference-node.md) , amely a kötést használja. A függvény egy üzenetet ír az Event hub-ba.
 
-Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be. Az első példa a 2. x függvényre, a második pedig az 1. x függvényre mutat. 
+Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be. Az első példa a 2. x és újabb függvények esetében, a második pedig az 1. x függvényre mutat. 
 
 ```json
 {
@@ -676,11 +676,11 @@ Az alábbi táblázat a *function. JSON* fájlban és a `EventHub` attribútumba
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | n/a | "EventHub" értékre kell állítani. |
-|**direction** | n/a | "Out" értékre kell állítani. Ez a paraméter automatikusan be van állítva, amikor létrehozza a kötést a Azure Portalban. |
-|**név** | n/a | Az eseményt jelölő függvény kódjában használt változó neve. |
+|**type** | – | "EventHub" értékre kell állítani. |
+|**direction** | – | "Out" értékre kell állítani. Ez a paraméter automatikusan be van állítva, amikor létrehozza a kötést a Azure Portalban. |
+|**név** | – | Az eseményt jelölő függvény kódjában használt változó neve. |
 |**elérési útja** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
-|**eventHubName** |**EventHubName** | Csak 2. x funkció. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
+|**eventHubName** |**EventHubName** | A 2. x és újabb függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a *névtér* **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. Ez a kapcsolati karakterláncnak küldési engedéllyel kell rendelkeznie az üzenet küldéséhez az esemény-adatfolyamba.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
@@ -693,15 +693,15 @@ A JavaScriptben `context.bindings.<name>`használatával férhet hozzá a kimene
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés | Referencia |
+| Kötés | Leírások |
 |---|---|
-| Eseményközpont | [Üzemeltetési útmutató](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+| Event Hubs-eseményközpontok | [Üzemeltetési útmutató](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
 
 <a name="host-json"></a>  
 
 ## <a name="hostjson-settings"></a>gazdagép. JSON-beállítások
 
-Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti a 2. x verzióban. Az alábbi Host. JSON fájl csak a kötés 2. x verziójának beállításait tartalmazza. A 2. x verziójú globális konfigurációs beállításokkal kapcsolatos további információkért lásd: [Host. JSON-dokumentáció Azure functions 2. x verzióhoz](../articles/azure-functions/functions-host-json.md).
+Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti 2. x vagy újabb verziókban. A következő példa a Host. JSON fájlt tartalmazza, csak a 2. x + beállításokat a kötéshez. További információ a 2. x verzióban található globális konfigurációs beállításokról: a [Host. JSON dokumentációja Azure functions](../articles/azure-functions/functions-host-json.md).
 
 > [!NOTE]
 > Az 1. x függvények Host. JSON fájljának hivatkozását lásd: [Host. JSON-dokumentáció Azure functions 1. x-hez](../articles/azure-functions/functions-host-json-v1.md).
@@ -724,5 +724,5 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |maxBatchSize|64|A fogadott események száma fogadási hurokban.|
-|prefetchCount|n/a|Az alapul szolgáló EventProcessorHost által használt alapértelmezett PrefetchCount.|
+|prefetchCount|–|Az alapul szolgáló EventProcessorHost által használt alapértelmezett PrefetchCount.|
 |batchCheckpointFrequency|1|Az EventHub kurzor ellenőrzőpontjának létrehozása előtt feldolgozandó eseményvezérelt kötegek száma.|

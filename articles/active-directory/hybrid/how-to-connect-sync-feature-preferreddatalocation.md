@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0a1d3de1b3eb5aebd89e6601f95c449851d4a1a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a493179e6e657a1d99d7cdb808629bae7332567
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889577"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918967"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect Sync: az Office 365-erőforrások előnyben részesített adatelérési helyének konfigurálása
 Ennek a témakörnek a célja, hogy megtudja, hogyan konfigurálhatja az attribútumot az előnyben részesített adathelyhez az Azure Active Directory (Azure AD) kapcsolódási szinkronizálásban. Ha valaki multi-geo képességeket használ az Office 365-ben, ezzel az attribútummal jelölheti meg a felhasználó Office 365-beli adatmennyiségének földrajzi helyét. (A feltételek *régiója* és a *földrajzi* terület szinonimaként használható.)
@@ -251,7 +251,7 @@ Engedélyezze újra a beépített szinkronizálási ütemező funkciót:
 1. Indítsa el a PowerShell-munkamenetet.
 2. Engedélyezze újra az ütemezett szinkronizálást a következő parancsmag futtatásával: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
-## <a name="step-8-verify-the-result"></a>8\. lépés: az eredmény ellenőrzése
+## <a name="step-9-verify-the-result"></a>9\. lépés: az eredmény ellenőrzése
 Itt az ideje, hogy ellenőrizze a konfigurációt, és engedélyezze azt a felhasználók számára.
 
 1. Adja hozzá a Geo-t a kiválasztott attribútumhoz a felhasználónál. Az elérhető térségek listája ebben a táblázatban található.  

@@ -1,6 +1,7 @@
 ---
-title: A Microsoft Identity platform használatával bejelentkezhet a felhasználók erőforrás-tulajdonos jelszavas hitelesítő adatok (ROPC) engedélyezésével | Azure
-description: Támogatja a böngésző nélküli hitelesítési folyamatokat az erőforrás-tulajdonos jelszava hitelesítő adataival.
+title: Jelentkezzen be az erőforrás-tulajdonos jelszava hitelesítő adataival | Azure
+titleSuffix: Microsoft identity platform
+description: Támogatja a böngésző nélküli hitelesítési folyamatokat az erőforrás-tulajdonos jelszavas hitelesítő adatai (ROPC) megadása esetén.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4504a1ae60aaac790ca15c120433159c2ff78fa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 24c6bfdc7efc8f15378d4a126b978bc77741b43c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207770"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919324"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credentials"></a>A Microsoft Identity platform és a OAuth 2,0 erőforrás-tulajdonos jelszava hitelesítő adatai
+# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform és OAuth 2,0 erőforrás-tulajdonosi jelszó hitelesítő adatai
 
 A Microsoft Identity platform támogatja a [OAuth 2,0 erőforrás-tulajdonosi jelszó hitelesítő adatait (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), amely lehetővé teszi, hogy az alkalmazás közvetlenül a jelszavának kezelésével jelentkezzen be a felhasználóba.  Ez a cikk azt ismerteti, hogyan lehet programozni közvetlenül az alkalmazás protokollját.  Ha lehetséges, javasoljuk, hogy a támogatott Microsoft hitelesítési kódtárakat (MSAL) használja a [jogkivonatok beszerzése és a biztonságos webes API-k hívása](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)helyett.  Tekintse meg az MSAL-t [használó példákat](sample-v2-code.md)is.
 
@@ -70,11 +71,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Kötelező | Az a címtár-bérlő, amelybe be szeretné jelentkezni a felhasználót. Ez lehet a GUID vagy a felhasználóbarát név formátuma. Ez a paraméter nem állítható be `common` vagy `consumers`értékre, de az `organizations`ra állítható be. |
-| `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldal alkalmazás-(ügyfél-) azonosítója. | 
-| `grant_type` | Kötelező | `password`értékre kell állítani. |
-| `username` | Kötelező | A felhasználó e-mail-címe. |
-| `password` | Kötelező | A felhasználó jelszava. |
+| `tenant` | Szükséges | Az a címtár-bérlő, amelybe be szeretné jelentkezni a felhasználót. Ez lehet a GUID vagy a felhasználóbarát név formátuma. Ez a paraméter nem állítható be `common` vagy `consumers`értékre, de az `organizations`ra állítható be. |
+| `client_id` | Szükséges | Az alkalmazáshoz hozzárendelt [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldal alkalmazás-(ügyfél-) azonosítója. | 
+| `grant_type` | Szükséges | `password`értékre kell állítani. |
+| `username` | Szükséges | A felhasználó e-mail címe. |
+| `password` | Szükséges | A felhasználó jelszava. |
 | `scope` | Ajánlott | Az alkalmazás által igényelt [hatókörök](v2-permissions-and-consent.md)vagy engedélyek szóközzel tagolt listája. Egy interaktív folyamat során a rendszergazdának vagy a felhasználónak meg kell adnia a hatókörét az idő előtt. |
 | `client_secret`| Néha szükséges | Ha az alkalmazás nyilvános ügyfél, akkor a `client_secret` vagy `client_assertion` nem vehető fel.  Ha az alkalmazás bizalmas ügyfél, akkor azt is tartalmaznia kell. | 
 | `client_assertion` | Néha szükséges | A `client_secret`egy másik formája, amely tanúsítvány használatával lett létrehozva.  További részletekért tekintse meg a [tanúsítvány hitelesítő adatait](active-directory-certificate-credentials.md) . | 
@@ -114,7 +115,7 @@ Ha a felhasználó nem adta meg a helyes felhasználónevet vagy jelszót, vagy 
 | `invalid_grant` | A hitelesítés sikertelen | A hitelesítő adatok helytelenek voltak, vagy az ügyfél nem rendelkezik beleegyezik a kért hatókörökkel. Ha a hatókörök nem lettek megadva, a rendszer `consent_required` hibát ad vissza. Ha ez történik, az ügyfélnek egy interaktív üzenetbe kell küldenie a felhasználót egy webnézet vagy egy böngésző használatával. |
 | `invalid_request` | A kérés nem megfelelően lett kiépítve | A támogatás típusa nem támogatott a `/common` vagy `/consumers` hitelesítési környezetekben.  Ehelyett használjon `/organizations` vagy egy bérlői azonosítót. |
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>További információ
 
 * Próbálja ki a ROPC a [minta konzol alkalmazás](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)használatával.
 * Annak megállapításához, hogy a 2.0-s végpontot kell-e használni, olvassa el a [Microsoft Identity platform korlátozásait](active-directory-v2-limitations.md)ismertetőt.

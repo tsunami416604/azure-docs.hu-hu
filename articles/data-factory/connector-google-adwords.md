@@ -1,23 +1,22 @@
 ---
-title: Adatok másolása a Google AdWordsből Azure Data Factory használatával
+title: Adatok másolása a Google AdWordsből
 description: Megtudhatja, hogyan másolhat adatokat a Google AdWordsből egy Azure Data Factory adatcsatorna másolási tevékenységének használatával támogatott fogadó adattárakba.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.author: jingwang
-ms.openlocfilehash: cc620e4dd7a84a85fb8d7bc8466a7a3fd116416e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b01dcad71747da6b7aa770e3993cb82892ae55fe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680947"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929443"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Adatok másolása a Google AdWordsből Azure Data Factory használatával
 
@@ -45,14 +44,14 @@ A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, 
 
 A Google AdWords társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **GoogleAdWords** | Igen |
 | clientCustomerID | Azon AdWords-fiók ügyfél-ügyfél-azonosítója, amelyre vonatkozóan be szeretné olvasni a jelentési adatmennyiséget.  | Igen |
 | developerToken | Az AdWords API-hoz való hozzáférés biztosításához használt Manager-fiókhoz társított fejlesztői jogkivonat.  Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Igen |
 | authenticationType | A hitelesítéshez használt OAuth 2,0 hitelesítési mechanizmus. A ServiceAuthentication csak saját üzemeltetésű IR-ben használható. <br/>Az engedélyezett értékek a következők: **ServiceAuthentication**, **UserAuthentication** | Igen |
 | refreshToken | A Google által a UserAuthentication-hez való hozzáférés engedélyezéséhez beszerzett frissítési jogkivonat. Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Nem |
-| clientId | A frissítési jogkivonat beszerzéséhez használt Google-alkalmazás ügyfél-azonosítója. Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Nem |
+| ügyfél-azonosító | A frissítési jogkivonat beszerzéséhez használt Google-alkalmazás ügyfél-azonosítója. Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Nem |
 | clientSecret | A frissítési jogkivonat beszerzéséhez használt Google-alkalmazás ügyfél-titka. Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Nem |
 | e-mail | A ServiceAuthentication használt szolgáltatásfiók-e-mail-azonosító, amely csak saját üzemeltetésű integrációs modulban használható.  | Nem |
 | keyFilePath | A szolgáltatásfiók e-mail-címének hitelesítéséhez használt. P12 fájl teljes elérési útja, amely csak a saját üzemeltetésű integrációs modulban használható.  | Nem |
@@ -101,7 +100,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Ha adatokat szeretne másolni a Google AdWordsből, állítsa az adatkészlet Type (típus) tulajdonságát **GoogleAdWordsObject**értékre. A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **GoogleAdWordsObject** | Igen |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
@@ -132,7 +131,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok Google AdWordsből való másolásához állítsa a forrás típusát a másolás tevékenység **GoogleAdWordsSource**. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **GoogleAdWordsSource** | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
@@ -174,5 +173,5 @@ Az adatok Google AdWordsből való másolásához állítsa a forrás típusát 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

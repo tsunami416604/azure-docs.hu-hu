@@ -1,24 +1,25 @@
 ---
-title: 'Több tábla növekményes másolása Azure Data Factory használatával '
+title: Több tábla növekményes másolása a PowerShell használatával
 description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz létre, amely egy helyszíni SQL Server több táblájának módosított adatait másolja növekményesen egy Azure SQL-adatbázisba.
 services: data-factory
-documentationcenter: ''
+ms.author: yexu
 author: dearandyxu
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.author: yexu
-ms.openlocfilehash: b841acf45c20320fada895f20dfc4065837d5add
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 46e0815ea341b732e20ebe7ffa9af355e1f35e87
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683404"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926473"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
+
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL-adatbázisba.    
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -360,7 +361,7 @@ Ebben a lépésben a helyszíni SQL Server-adatbázist társítja az adat-előá
     ```
 
 ### <a name="create-the-sql-database-linked-service"></a>Az SQL-adatbázis társított szolgáltatásának létrehozása
-1. Hozzon létre egy **AzureSQLDatabaseLinkedService. JSON** nevű JSON-fájlt a C:\ADFTutorials\IncCopyMultiTableTutorial mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) Cserélje le a &lt;servername&gt;, &lt;adatbázisnév&gt;, &lt;Felhasználónév&gt;, és &lt;jelszó&gt; a SQL Server-adatbázis neve, az adatbázis neve, a Felhasználónév és a jelszót a fájl mentése előtt. 
+1. Hozzon létre egy **AzureSQLDatabaseLinkedService. JSON** nevű JSON-fájlt a C:\ADFTutorials\IncCopyMultiTableTutorial mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) A fájl mentése előtt cserélje le &lt;servername&gt;, &lt;adatbázisnév&gt;, &lt;Felhasználónév&gt;és &lt;jelszó&gt; a SQL Server-adatbázis nevére, az adatbázis nevére, a felhasználónevére és a jelszavára. 
 
     ```json
     {  
@@ -954,7 +955,7 @@ project_table   2017-10-01 00:00:00.000
 
 Megfigyelhető, hogy mindkét tábla küszöbértékei frissültek.
      
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

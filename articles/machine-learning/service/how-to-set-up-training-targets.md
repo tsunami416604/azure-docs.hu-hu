@@ -11,17 +11,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: d628bbe889617464fe97695a17687d5f02cc61bc
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 1755d5bf3338694f53da7021579cb4c0aee623f3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305324"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912466"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-A Azure Machine Learning segítségével különböző erőforrásokra és környezetekre is betaníthatja a modellt, együttesen [__számítási célok__](concept-azure-machine-learning-architecture.md#compute-targets)néven. A számítási cél lehet egy helyi gép vagy egy felhőalapú erőforrás, például egy Azure Machine Learning számítási, Azure-HDInsight vagy egy távoli virtuális gép.  Emellett számítási célokat is létrehozhat a modell telepítéséhez a ["hol és hogyan kell üzembe helyezni a modelleket"](how-to-deploy-and-where.md)című cikkben leírtak szerint.
+A Azure Machine Learning segítségével különböző erőforrásokra és környezetekre is betaníthatja a modellt, együttesen [__számítási célok__](concept-azure-machine-learning-architecture.md#compute-targets)néven. A számítási hely lehet egy helyi gép vagy egy felhőerőforrás, például egy Azure Machine Learning vagy Azure HDInsight-erőforrás, vagy egy távoli virtuális gép.  Emellett számítási célokat is létrehozhat a modell telepítéséhez a ["hol és hogyan kell üzembe helyezni a modelleket"](how-to-deploy-and-where.md)című cikkben leírtak szerint.
 
 A számítási célt a Azure Machine Learning SDK, a Azure Machine Learning Studio, az Azure CLI vagy a Azure Machine Learning VS Code bővítmény használatával hozhatja létre és kezelheti. Ha olyan számítási célokat használ, amelyek egy másik szolgáltatáson (például egy HDInsight-fürtön) lettek létrehozva, akkor ezeket a Azure Machine Learning-munkaterülethez csatolva használhatja.
  
@@ -36,7 +36,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a különböző számítási
 
 ## <a name="compute-targets-for-training"></a>Számítási célok képzéshez
 
-A Azure Machine Learning különböző számítási célok esetében eltérő támogatással rendelkezik. Egy tipikus modell fejlesztési életciklus kisebb mennyiségű adatot a dev/Kísérletezési kezdődik. Ezen a ponton használatát javasoljuk a helyi környezetben. Például a helyi számítógépen vagy egy felhőalapú virtuális Gépen. Vertikális felskálázás a tanítási a nagyobb adatkészletek, vagy hajtsa végre az elosztott betanítás, egy vagy több node fürtöt létrehozni, hogy az automatikus skálázást alkalmat futtató minden elküldésekor a az Azure Machine Learning Compute használatát javasoljuk. Bár a különböző forgatókönyvekben eltérőek lehetnek az alábbiakban ismertetett támogatási is hozzáadhat a saját számítási erőforrás:
+A Azure Machine Learning különböző számítási célok esetében eltérő támogatással rendelkezik. Egy tipikus modell fejlesztési életciklusa kis mennyiségű adaton kezdi meg a fejlesztést és kísérletezést. Ebben a szakaszban a helyi környezet használatát javasoljuk. Például a helyi számítógép vagy egy felhőalapú virtuális gép. A nagyobb adatkészletek betanításának felskálázása vagy az elosztott képzések használatakor javasoljuk, hogy Azure Machine Learning számítás használatával hozzon létre egy önálló vagy több csomópontos fürtöt, amely minden egyes futtatásakor elküldi az egyes műveleteket. Saját számítási erőforrást is csatolhat, bár a különböző forgatókönyvek támogatása az alábbiakban részletezett módon változhat:
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -54,7 +54,7 @@ További információ a [kísérletek elküldéséről](#submit) a cikk végén.
 
 ## <a name="whats-an-estimator"></a>Mi az a kalkulátor?
 
-A népszerű keretrendszerek használatával történő modell-képzés elősegítése érdekében a Azure Machine Learning Python SDK egy alternatív, magasabb szintű absztrakciót, a kalkulátor osztályt biztosít. Ez az osztály lehetővé teszi a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat általános [becslést](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) olyan képzési parancsfájlok beküldéséhez, amelyek bármely kiválasztott tanulási keretrendszert (például scikit-Learn) használnak.
+A népszerű keretrendszerek használatával történő modell-képzés elősegítése érdekében a Azure Machine Learning Python SDK egy alternatív, magasabb szintű absztrakciót, a kalkulátor osztályt biztosít. Javasoljuk, hogy használjon egy kalkulátort a betanításhoz, mivel az osztály olyan metódusokat tartalmaz, amelyek lehetővé teszik a futtatási konfigurációk egyszerű összeállítását és testreszabását. Létrehozhat és használhat általános [becslést](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) olyan képzési parancsfájlok beküldéséhez, amelyek bármely kiválasztott tanulási keretrendszert (például scikit-Learn) használnak. Ha az adatfájlokat elérhetővé kell tenni a számítási cél számára, tekintse meg a [Azure Machine learning adatkészletekkel való betanítást](how-to-train-with-datasets.md)ismertető témakört.
 
 A PyTorch, a TensorFlow és a láncolási feladatok esetében a Azure Machine Learning a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)és [láncolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) becslések is biztosít, hogy egyszerűbbé váljon ezen keretrendszerek használata.
 
@@ -76,9 +76,9 @@ Míg a ML-folyamatok képesek betanítani a modelleket, a betanítás előtt is 
 Az alábbi lépésekkel konfigurálhatja ezeket a számítási célokat:
 
 * [Helyi számítógép](#local)
-* [Azure Machine Learning számítás](#amlcompute)
+* [Azure Machine Learning Compute](#amlcompute)
 * [Távoli virtuális gépek](#vm)
-* [Azure-HDInsight](#hdinsight)
+* [Azure HDInsight](#hdinsight)
 
 
 ### <a id="local"></a>Helyi számítógép
@@ -95,14 +95,14 @@ Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a köve
 
 Azure Machine Learning a számítás egy felügyelt számítási infrastruktúra, amely lehetővé teszi, hogy a felhasználó egyszerűen hozzon létre egy vagy több csomópontos számítási módszert. A számítás a munkaterület-régión belül jön létre olyan erőforrásként, amely a munkaterület más felhasználóival is megoszthatók. A számítási feladatok automatikusan méretezhetők, ha egy feladatot elküldenek, és egy Azure-Virtual Network helyezhetők el. A számítás egy tároló környezetbe kerül, és a modell függőségeit egy [Docker-tárolóban](https://www.docker.com/why-docker)csomagolja.
 
-Használhatja az Azure Machine Learning Compute a betanítási folyamat szét a felhőben Processzor és GPU számítási csomópontból álló fürtben. A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd: [GPU-optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
+A betanítási folyamat a felhőben lévő CPU-vagy GPU-alapú számítási csomópontok fürtön keresztüli elosztásához Azure Machine Learning számítást is használhat. A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd: [GPU-optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
 
 Azure Machine Learning a számítások alapértelmezett korlátai, például a lefoglalt magok száma. További információ: [Az Azure-erőforrások kezelése és kvóták igénylése](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
 
 
 Igény szerint létrehozhat egy Azure Machine Learning számítási környezetet, amikor futtat egy futtatást vagy állandó erőforrásként.
 
-#### <a name="run-based-creation"></a>Futtatás-alapú létrehozása
+#### <a name="run-based-creation"></a>Futtatás alapú létrehozás
 
 Futtatáskor számítási célként Azure Machine Learning számítási célt is létrehozhat. A rendszer automatikusan létrehozza a számítást a futtatásához. A rendszer automatikusan törli a számítást a Futtatás befejeződése után. 
 
@@ -141,9 +141,9 @@ Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a köve
 
 ### <a id="vm"></a>Távoli virtuális gépek
 
-Az Azure Machine Learning a történő visszaállítását a saját számítási erőforrásokat, és a munkaterülethez csatolja azt is támogatja. Az egyik ilyen erőforrástípus egy tetszőleges távoli virtuális gép, feltéve, hogy az Azure Machine Learningről érhető el. Az erőforrás lehet egy Azure-beli virtuális gép, egy távoli kiszolgáló a szervezetben vagy a helyszínen. Pontosabban, mivel az IP-cím és a hitelesítő adatok (Felhasználónév és jelszó, vagy SSH-kulcs) esetében bármilyen elérhető virtuális gép használható távoli futtatáshoz.
+A Azure Machine Learning a saját számítási erőforrásait is támogatja, és csatolja azt a munkaterülethez. Az egyik ilyen erőforrástípus egy tetszőleges távoli virtuális gép, feltéve, hogy az Azure Machine Learningről érhető el. Az erőforrás lehet egy Azure-beli virtuális gép, egy távoli kiszolgáló a szervezetben vagy a helyszínen. Pontosabban, mivel az IP-cím és a hitelesítő adatok (Felhasználónév és jelszó, vagy SSH-kulcs) esetében bármilyen elérhető virtuális gép használható távoli futtatáshoz.
 
-Egy rendszer által fejlesztett conda-környezetben, egy már meglévő Python-környezetet, vagy egy Docker-tárolót is használhatja. A Docker-tárolón való végrehajtáshoz a virtuális gépen futó Docker-motorral kell rendelkeznie. Ez a funkció akkor különösen hasznos, ha egy olyan rugalmasabb, felhőalapú fejlesztési/kísérleti környezetben, mint a helyi gépen.
+Használhat egy rendszer által készített Conda-környezetet, egy már meglévő Python-környezetet vagy egy Docker-tárolót. A Docker-tárolón való végrehajtáshoz a virtuális gépen futó Docker-motorral kell rendelkeznie. Ez a funkció különösen akkor hasznos, ha rugalmasabb, felhőalapú fejlesztési/kísérletezési környezetet szeretne használni, mint a helyi gépen.
 
 Ebben a forgatókönyvben az Azure Data Science Virtual Machine (DSVM) használata választható Azure-beli virtuális gép. Ez a virtuális gép egy előre konfigurált adatelemzési és AI-fejlesztési környezet az Azure-ban. A virtuális gép számos eszközt és keretrendszert kínál a teljes életciklusú gépi tanulás fejlesztéséhez. A DSVM és a Azure Machine Learning használatával kapcsolatos további információkért lásd: [fejlesztési környezet konfigurálása](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm).
 
@@ -196,7 +196,7 @@ Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apa
     
     A fürt létrehozása után kapcsolódjon hozzá az állomásnév \<clustername >-ssh.azurehdinsight.net, ahol \<clustername > a fürthöz megadott név. 
 
-1. **Csatolás**: Ha egy HDInsight-fürtöt számítási célként kíván csatolni, meg kell adnia a HDInsight-fürt nevét, felhasználónevét és jelszavát. Az alábbi példa egy fürt csatlakoztatása a munkaterület az SDK-t használja. A példában cserélje le \<clustername > a fürt nevére. Cserélje le \<username > és \<Password > a fürt SSH-felhasználónevével és jelszavával.
+1. **Csatolás**: Ha egy HDInsight-fürtöt számítási célként kíván csatolni, meg kell adnia a HDInsight-fürt nevét, felhasználónevét és jelszavát. A következő példa az SDK használatával csatlakoztat egy fürtöt a munkaterülethez. A példában cserélje le \<clustername > a fürt nevére. Cserélje le \<username > és \<Password > a fürt SSH-felhasználónevével és jelszavával.
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -364,7 +364,7 @@ További információ: erőforrás- [kezelés](reference-azure-machine-learning-
 
 ## <a name="set-up-with-vs-code"></a>Beállítás a VS Code-ban
 
-A Azure Machine Learninghoz tartozó [vs Code-bővítmény](how-to-vscode-tools.md#create-and-manage-compute-targets) használatával elérheti, létrehozhatja és kezelheti a munkaterülethez társított számítási célokat.
+A munkaterülethez társított számítási célokat a Azure Machine Learninghoz tartozó [vs Code bővítménnyel](how-to-vscode-tools.md#create-and-manage-compute-targets) érheti el, hozhatja létre és kezelheti.
 
 ## <a id="submit"></a>Betanítási Futtatás beküldése a Azure Machine Learning SDK-val
 
@@ -509,7 +509,7 @@ Tekintse meg ezeket a jegyzetfüzeteket a különböző számítási célokból 
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
 * Ismerje meg, hogy miként lehet [hatékonyan hangolni a hiperparaméterek beállítása](how-to-tune-hyperparameters.md) a jobb modellek létrehozásához.

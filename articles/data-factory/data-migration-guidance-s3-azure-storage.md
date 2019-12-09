@@ -1,23 +1,22 @@
 ---
-title: Az Amazon S3-ból az Azure Storage-ba való Migrálás Azure Data Factory használata
+title: Adatok migrálása az Amazon S3-ból az Azure Storage-ba
 description: Az Amazon S3-ból az Azure Storage-ba való Migrálás Azure Data Factory használata.
 services: data-factory
-documentationcenter: ''
-author: dearandyxu
 ms.author: yexu
+author: dearandyxu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 4d4e0453105dacfbf35624a2a9acb9d5994f4dea
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 30990c3d1e3f885e8984227425d3e8e5c44b9286
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675747"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927475"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Az Amazon S3-ból az Azure Storage-ba való Migrálás Azure Data Factory használata 
 
@@ -93,7 +92,7 @@ Ha a másolási feladatok egyike a hálózat vagy az adattár átmeneti hibája 
 
 ### <a name="delta-data-migration"></a>Különbözeti adatáttelepítés 
 
-Az AWS S3-ból származó új vagy módosított fájlok azonosításának legtöbbje az idő-particionált elnevezési konvenció használatával történik. Ha az AWS S3-ban lévő adatok időszelet-információval vannak particionálva a fájlban vagy a mappában (például/yyyy/MM/DD/file.csv), akkor a folyamat könnyen azonosítható, hogy mely fájlok/mappák legyenek növekményes másolásra. 
+Az AWS S3-ból származó új vagy módosított fájlok azonosításának legtöbbje az idő-particionált elnevezési konvenció használatával történik. Ha az AWS S3-ban lévő adatok időszelet-információval vannak particionálva a fájl-vagy mappanév (például/yyyy/MM/DD/file.csv) számára, akkor a folyamat könnyen azonosítható, hogy mely fájlokat és mappákat másolja a növekményes másolásra. 
 
 Azt is megteheti, hogy ha az AWS S3-ban lévő adatai particionálva vannak, az ADF képes azonosítani az új vagy módosított fájlokat a LastModifiedDate.   Úgy működik, hogy az ADF megvizsgálja az AWS S3 összes fájlját, és csak azt az új és frissített fájlt másolja, amelynek utolsó módosításának időbélyeg-értéke nagyobb, mint egy bizonyos érték.  Vegye figyelembe, hogy ha az S3-ban nagy számú fájl található, akkor a kezdeti fájl vizsgálata hosszú időt is igénybe vehet, függetlenül attól, hogy hány fájl felel meg a szűrési feltételnek.  Ebben az esetben azt javasoljuk, hogy először particionálja az adatokhoz ugyanazt az "előtag" beállítást használja a pillanatkép-áttelepítés kezdeti áttelepítéséhez, hogy a fájl vizsgálata párhuzamosan történjen.  
 
@@ -101,7 +100,7 @@ Azt is megteheti, hogy ha az AWS S3-ban lévő adatai particionálva vannak, az 
 
 Akár privát kapcsolaton keresztül végzi az adatáttelepítést, akár adott IP-címtartományt szeretne engedélyezni az Amazon S3 tűzfalon, telepítenie kell a saját üzemeltetésű integrációs modult az Azure Windows rendszerű virtuális gépen. 
 
-- Az egyes Azure-beli virtuális gépekhez való kezdéshez javasolt konfiguráció a 32 vCPU és a 128-GB memóriával Standard_D32s_v3.  Az adatáttelepítés során továbbra is megtarthatja a processzor és a memória kihasználtságának figyelését, és megtekintheti, hogy a virtuális gép nagyobb teljesítményhez vagy a virtuális gép méretezéséhez szükséges-e a költség megtakarítás érdekében. 
+- Az egyes Azure-beli virtuális gépekhez való kezdéshez javasolt konfiguráció a 32 vCPU és a 128 GB memóriával Standard_D32s_v3.  Az adatáttelepítés során továbbra is megtarthatja a processzor és a memória kihasználtságának figyelését, és megtekintheti, hogy a virtuális gép nagyobb teljesítményhez vagy a virtuális gép méretezéséhez szükséges-e a költség megtakarítás érdekében. 
 - Akár 4 virtuálisgép-csomópont társításával is felskálázást hajthat végre, egyetlen saját üzemeltetésű IR-vel.  A saját üzemeltetésű integrációs modulon futó egyetlen másolási feladatot a rendszer automatikusan particionálja, és minden virtuálisgép-csomóponton kihasználja a fájlok párhuzamos másolását.  A magas rendelkezésre állás érdekében ajánlott 2 virtuálisgép-csomóponttal kezdeni, hogy elkerülje az adatáttelepítés során előforduló meghibásodási pontokat. 
 
 ### <a name="rate-limiting"></a>Díjszabás korlátozása 
@@ -153,6 +152,6 @@ A fenti feltételezések alapján a becsült ár a következő:
 
 Itt látható az a [sablon](solution-template-migration-s3-azure.md) , amellyel az Amazon S3-ból Azure Data Lake Storage Gen2 több száz millió fájlból álló petabájt migrálhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Több tárolóból származó fájlok másolása Azure Data Factory](solution-template-copy-files-multiple-containers.md)

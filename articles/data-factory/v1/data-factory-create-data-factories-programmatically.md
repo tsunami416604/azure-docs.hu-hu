@@ -9,15 +9,14 @@ manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: cabeb6314c16aa5bc37f1139954f8829a37af5bb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9cd3cd60f5d62a0c416b0e05ea408c20483bff13
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682759"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931332"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure-beli adatüzemek létrehozása, figyelése és kezelése Azure Data Factory .NET SDK használatával
 > [!NOTE]
@@ -100,7 +99,7 @@ Hozzon létre egy Azure Active Directory-alkalmazást, hozza létre az alkalmaz�
 A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
 
 * Bérlőazonosító
-* Előfizetés azonosítója
+* Subscription ID (Előfizetés azonosítója)
 * Alkalmazásazonosító
 * Jelszó (az első parancsnál adtuk meg)
 
@@ -500,7 +499,7 @@ do
 while (response != null);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő példát egy olyan folyamat létrehozásához, amely egy Azure Blob Storage-ból egy Azure SQL Database-adatbázisba másolt .NET SDK-t használ: 
 
 - [Folyamat létrehozása az adatok Blob Storageról SQL Databaseba másolásához](data-factory-copy-activity-tutorial-using-dotnet-api.md)

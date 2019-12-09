@@ -3,19 +3,19 @@ title: Az automatizált ML-eredmények ismertetése
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan tekintheti meg és értelmezheti a diagramokat és mérőszámokat az egyes automatizált gépi tanulási futtatásokhoz.
 services: machine-learning
-author: cartacioS
-ms.author: sacartac
+author: RachelKellam
+ms.author: rakellam
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 7f8789076b00cd2b5a0694cf1f52e5dfe1569aee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 12/05/2019
+ms.openlocfilehash: 3572d2dffc38f18cbf02aa2e9de98b74ee8ff939
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571292"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930968"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Az automatizált gépi tanulás eredményeinek megismerése
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -90,73 +90,117 @@ f1_score_macro|Az F1 pontszám a pontosság és a visszahívás harmonikus köz�
 f1_score_micro|Az F1 pontszám a pontosság és a visszahívás harmonikus középértéke. A Micro kiszámításának alapja a teljes valódi pozitív, a hamis negatív és a téves pozitív érték számítása.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|átlag = "Micro"|
 f1_score_weighted|Az F1 pontszám a pontosság és a visszahívás harmonikus középértéke. Súlyozott középértékek az egyes osztályokhoz tartozó F1-pontszámok osztályának gyakorisága alapján|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|átlag = "súlyozott"|
 log_loss|Ez a (MULTINOMIAL) logisztikai regresszió és bővítmények (például neurális hálózatok) által használt veszteséges függvény, amely negatív naplózási valószínűséggel van meghatározva az igaz címkék valószínűsége alapján, az osztályozó jóslatai. Egyetlen olyan minta esetében, amelynél az {0,1} és a következő a valószínűsége: a YT = 1, a log P (YT&#124;YP) =-(YT-napló (YP) + (1-YT) napló (1-YP)|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|None|
-norm_macro_recall|A normalizált makrók felidézése a makró-visszahívás normalizált, így a véletlenszerű teljesítmény pontszáma 0, a tökéletes teljesítmény pedig 1. Ez a norm_macro_recall: = (recall_score_macro-R)/(1-R) által érhető el, ahol az R a recall_score_macro várt értéke a véletlenszerű előrejelzések esetében (pl. R = 0,5 a bináris besoroláshoz és R = (1/C) a C osztályú besorolási problémákhoz).|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlag = "makró" |
+norm_macro_recall|A normalizált makrók felidézése a makró-visszahívás normalizált, így a véletlenszerű teljesítmény pontszáma 0, a tökéletes teljesítmény pedig 1. Ezt a norm_macro_recall: = (recall_score_macro-R)/(1-R) értékekkel érheti el, ahol az R az recall_score_macro várt értéke a véletlenszerű előrejelzések esetében (pl. R = 0,5 a bináris besoroláshoz és R = (1/C) a C osztályú besorolási problémákhoz).|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlag = "makró" |
 precision_score_macro|A pontosság a megfelelő címkével ellátott, pozitívan megjósolt elemek százaléka. A makró az egyes osztályok pontosságának számtani középértéke.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|átlag = "makró"|
 precision_score_micro|A pontosság a megfelelő címkével ellátott, pozitívan megjósolt elemek százaléka. A Micro kiszámításának alapja a teljes valódi pozitív és a hamis pozitív eredmény.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|átlag = "Micro"|
 precision_score_weighted|A pontosság a megfelelő címkével ellátott, pozitívan megjósolt elemek százaléka. A súlyozott érték az egyes osztályok pontosságának számtani középértéke, az egyes osztályokban lévő igaz példányok számával súlyozottan.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|átlag = "súlyozott"|
 recall_score_macro|A visszahívás egy adott osztály megfelelően címkézett elemeinek százaléka. A makró az egyes osztályok visszahívásának számtani középértéke.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlag = "makró"|
 recall_score_micro|A visszahívás egy adott osztály megfelelően címkézett elemeinek százaléka. A Micro kiszámításának alapja a teljes valódi pozitív, a hamis negatív és a téves pozitív érték megszámlálása|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlag = "Micro"|
 recall_score_weighted|A visszahívás egy adott osztály megfelelően címkézett elemeinek százaléka. A súlyozott érték az egyes osztályok visszahívásának számtani középértéke, az egyes osztályokban lévő igaz példányok számával súlyozottan.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlag = "súlyozott"|
-weighted_accuracy|A súlyozott pontosság az a pontosság, amelyben az egyes példákban megadott súlyozás egyenlő az adott példában szereplő igaz osztályokba tartozó valódi példányok arányával.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|a sample_weight olyan vektor, amely a cél egyes elemeihez tartozó osztály arányának felel meg|
-
+weighted_accuracy|A súlyozott pontosság az a pontosság, amelyben az egyes példákban megadott súlyozás egyenlő az adott példában szereplő igaz osztályokba tartozó valódi példányok arányával.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|a sample_weight egy vektor, amely az adott osztálynak a cél egyes elemeinek arányával egyenlő.|
+<a name="confusion-matrix"></a>
 ### <a name="confusion-matrix"></a>Zavart mátrix
+#### <a name="what-is-a-confusion-matrix"></a>Mi az a zűrzavaros mátrix?
+A rendszer a besorolási modell teljesítményének leírására használja a zűrzavaros mátrixot. Minden sor megjeleníti az adott adatkészlet igaz vagy tényleges osztályának példányait, és minden oszlop az osztály azon példányaira vonatkozik, amelyeket a modell előre jelzett. 
 
-A rendszer a besorolási modell teljesítményének leírására használja a zűrzavaros mátrixot. Minden sor megjeleníti a True osztály példányait, és minden oszlop az előrejelzett osztály példányait jelöli. A zavart mátrix a megfelelő besorolású címkéket és az adott modell helytelen besorolású címkéit jeleníti meg.
+#### <a name="what-does-automated-ml-do-with-the-confusion-matrix"></a>Mit tesz az automatikus ML a zavartsági mátrixmal?
+Besorolási problémák esetén Azure Machine Learning automatikusan egy összekeverhető mátrixot biztosít minden létrehozott modellhez. Az automatikus ML minden egyes zavart mátrix esetében megjeleníti az összes előre jelzett címke (oszlop) gyakoriságát, összehasonlítva az igaz címkével (sor). Minél sötétebb a szín, annál nagyobb számnak kell lennie a mátrix adott részében. 
 
-Besorolási problémák esetén Azure Machine Learning automatikusan egy összekeverhető mátrixot biztosít minden létrehozott modellhez. Az automatikus ML minden egyes összekeveredési mátrix esetében megjeleníti az egyes előre jelzett címkék gyakoriságát és az egyes igaz címkék metszetét. Minél sötétebb a szín, annál nagyobb számnak kell lennie a mátrix adott részében. Ideális esetben a legsötétebb színek a mátrix átlója. 
+#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+Összehasonlítjuk az adatkészlet tényleges értékét a modell által megadott előre jelzett értékekkel. Emiatt a gépi tanulási modellek nagyobb pontossággal rendelkeznek, ha a modellben a legtöbb érték az átló mentén van, ami azt jelenti, hogy a modell a helyes értéket jelezte. Ha a modellnek van osztály-egyensúlyhiánya, a zavart mátrix segít felderíteni egy elfogult modellt.
 
-1\. példa: gyenge pontosságú besorolási modell ![A gyenge pontosságú besorolási modellel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
+##### <a name="example-1-a-classification-model-with-poor-accuracy"></a>1\. példa: gyenge pontosságú besorolási modell
+![Gyenge pontosságú besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 
-2\. példa: nagy pontossággal (ideális) ![egy nagy pontosságú besorolási modellt](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
+##### <a name="example-2-a-classification-model-with-high-accuracy"></a>2\. példa: nagy pontosságú besorolási modell 
+![Nagy pontosságú besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
 
+##### <a name="example-3-a-classification-model-with-high-accuracy-and-high-bias-in-model-predictions"></a>3\. példa: egy nagy pontosságú és nagy mértékű torzulást biztosító besorolási modell a modell-előrejelzésekben
+![Nagy pontosságú és nagy mértékű torzulást biztosító besorolási modell a modell-előrejelzésekben](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-biased-model.png)
 
+<a name="precision-recall-chart"></a>
 ### <a name="precision-recall-chart"></a>Precíziós visszahívási diagram
+#### <a name="what-is-a-precision-recall-chart"></a>Mi az a precíziós visszahívás diagram?
+A precíziós visszahívás görbe a modellből származó pontosság és visszahívás közötti kapcsolatot mutatja. A pontosság kifejezés azt jelenti, hogy a modell képes az összes példány megfelelő címkézésére. A visszahívás azt jelöli, hogy egy osztályozó képes-e egy adott címke összes példányának megkeresésére.
 
-Ezzel a diagrammal összevetheti az egyes modellek pontossági felidézési görbéit, és meghatározhatja, hogy melyik modell elfogadható kapcsolata legyen a pontosság és az adott üzleti probléma felidézése között. Ebben a diagramban a makrók pontossága – visszahívás, a mikro-átlag pontossága – visszahívás, valamint a modell összes osztályához társított pontossági visszahívás látható.
+#### <a name="what-does-automated-ml-do-with-the-precision-recall-chart"></a>Mit tesz az automatizált ML a precíziós visszahívás diagrammal?
 
-A pontosság kifejezés azt jelenti, hogy az osztályozó képes az összes példány megfelelő címkézésére. A visszahívás azt jelöli, hogy egy osztályozó képes-e egy adott címke összes példányának megkeresésére. A precíziós visszahívás görbe a két fogalom közötti kapcsolatot mutatja. Ideális esetben a modell 100%-os pontossággal és 100%-os pontossággal rendelkezhet.
+Ezzel a diagrammal összevetheti az egyes modellek pontossági felidézési görbéit, és meghatározhatja, hogy melyik modell elfogadható kapcsolata legyen a pontosság és az adott üzleti probléma felidézése között. Ebben a diagramban a makrók pontossága – visszahívás, a mikro-átlag pontossága – visszahívás, valamint a modell összes osztályához társított pontossági visszahívás látható. 
 
-1\. példa: egy kis precizitású és kis visszahívású besorolási modell ![egy kis precizitású és alacsony visszahívás](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
+A Macro-átlag minden osztálytól függetlenül kiszámítja a metrikát, majd az átlagot, és az összes osztályt egyformán kezeli. A mikro-átlag azonban összesíti az összes osztály hozzájárulását az átlag számításához. A mikro-átlag előnyben részesített, ha az adatkészletben van osztálybeli egyensúlyhiány.
 
-2\. példa: egy ~ 100% Precision és ~ 100% Recall (ideális) besorolási modell, ![A besorolási modell nagy pontossággal és visszahívás](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
+#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+Az üzleti probléma céljától függően az ideális precíziós visszahívás görbe eltérő lehet. Néhány példát alább találhat
 
-### <a name="roc"></a>ROC
+##### <a name="example-1-a-classification-model-with-low-precision-and-low-recall"></a>1\. példa: alacsony pontosságú és alacsony visszahívású besorolási modell
+![Alacsony precizitású és alacsony visszahívású besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
 
+##### <a name="example-2-a-classification-model-with-100-precision-and-100-recall"></a>2\. példa: besorolási modell ~ 100% pontossággal és ~ 100% visszahívás 
+![A besorolási modellt nagy pontossággal és visszahívás](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
+<a name="roc"></a>
+### <a name="roc-chart"></a>ROC-diagram
+
+#### <a name="what-is-a-roc-chart"></a>Mi az a ROC-diagram?
 A fogadó működési jellemzője (vagy a ROC) a helyesen besorolt címkék és egy adott modell helytelen besorolású címkéi. A ROC-görbe kevésbé informatív lehet, ha nagy mértékű torzítással rendelkező adatkészleteken tanít modelleket, mivel nem jeleníti meg a hamis pozitív címkéket.
 
-1\. példa: alacsony igaz címkéket és magas hamis címkéket ![besorolási modell alacsony igaz címkékkel és magas hamis címkékkel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
+#### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>Mit tesz az automatizált ML a ROC-diagrammal?
+Az automatizált ML a makrók átlagos pontosságát – visszahívás, a mikro-átlag pontossága – visszahívás, valamint a modell összes osztályához társított pontossági visszahívás. 
 
-2\. példa: A magas igaz címkéket és az alacsony hamis címkéket ![besorolási modell magas igaz címkékkel és alacsony téves címkékkel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
+A Macro-átlag minden osztálytól függetlenül kiszámítja a metrikát, majd az átlagot, és az összes osztályt egyformán kezeli. A mikro-átlag azonban összesíti az összes osztály hozzájárulását az átlag számításához. A mikro-átlag előnyben részesített, ha az adatkészletben van osztálybeli egyensúlyhiány.
 
-### <a name="lift-curve"></a>Emelő görbe
+#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+Ideális esetben a modell a 100%-os valódi pozitív arányt és a 0%-os hamis pozitív arányt közelíti meg. 
 
+##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>1\. példa: alacsony igaz címkékkel és magas hamis címkékkel rendelkező besorolási modell
+![Besorolási modell alacsony igaz címkékkel és magas hamis címkékkel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
+
+##### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>2\. példa: magas igaz címkéket és alacsony hamis címkéket tartalmazó besorolási modell
+magas igaz címkéket és alacsony hamis címkéket tartalmazó besorolási modellt ![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
+<a name="lift-curve"></a>
+### <a name="lift-chart"></a>Diagram emelése
+#### <a name="what-is-a-lift-chart"></a>Mi az a lift-diagram?
+A kiemelési diagramok a besorolási modell teljesítményének kiértékelésére szolgálnak. Ez azt mutatja, hogy mennyit érdemes a generált modellhez képest a modell pontossága nélkül.
+#### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>Mit jelent az automatizált ML a felvonó diagrammal?
 Az adott modell értékének megszerzéséhez összehasonlíthatja a modell azon felvonóját, amelyet a rendszer automatikusan Azure Machine Learning az alaptervhez.
+#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
 
-A kiemelési diagramok a besorolási modell teljesítményének kiértékelésére szolgálnak. Azt mutatja, hogy mennyit lehet a modellhez képest egy modellel elvárni. 
-
-1\. példa: a modell egy véletlenszerű kiválasztási modellnél rosszabbra ![egy olyan besorolási modellt, amely rosszabb, mint egy véletlenszerű kiválasztási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
-
-2\. példa: a modell jobbat végez, mint egy véletlenszerű kiválasztási modell ![egy besorolási modellt, amely jobb](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
-
-### <a name="gains-curve"></a>Nyereségi görbe
+##### <a name="example-1-a-classification-model-that-does-worse-than-a-random-selection-model"></a>1\. példa: egy véletlenszerű kiválasztási modellnél rosszabb besorolási modell
+![Egy véletlenszerű kiválasztási modellnél rosszabb besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
+##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>2\. példa: egy véletlenszerű kiválasztási modellnél jobb teljesítményű besorolási modell
+![A jobb](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
+t végző besorolási modellt<a name="gains-curve"></a>
+### <a name="gains-chart"></a>Adatnyereség diagramja
+#### <a name="what-is-a-gains-chart"></a>Mi az a nyereség diagram?
 
 A nyereségi diagram kiértékeli a besorolási modell teljesítményét az adat egyes részei alapján. Ez az adathalmaz minden egyes százalékos arányát mutatja, ami sokkal jobb lehet, ha a véletlenszerű kiválasztási modellhez képest jobban elvárható.
 
+#### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>Mit tesz az automatizált ML a nyereség diagrammal?
 A halmozott nyereség diagram segítségével kiválaszthatja a besorolást a modell kívánt nyereségének megfelelő százalékos arány használatával. Ez az információ egy másik módszert biztosít a kapcsolódó felvonó diagram eredményeinek megtekintésére.
 
-1\. példa: besorolási modell minimális nyereséggel ![egy minimális nyereségű besorolási modellel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
+#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+##### <a name="example-1-a-classification-model-with-minimal-gain"></a>1\. példa: osztályozási modell minimális nyereséggel
+![besorolási modell minimális nyereséggel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
 
-2\. példa: egy jelentős nyereséggel ![besorolási modell jelentős nyereséggel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
+##### <a name="example-2-a-classification-model-with-significant-gain"></a>2\. példa: jelentős nyereségű besorolási modell
+jelentős nyereségű besorolási modellt ![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
+<a name="calibration-plot"></a>
+### <a name="calibration-chart"></a>Kalibrációs diagram
 
-### <a name="calibration-plot"></a>Kalibrálási ábra
+#### <a name="what-is-a-calibration-chart"></a>Mi az a kalibrációs diagram?
+Egy kalibrációs terület a prediktív modell megbízhatóságának megjelenítésére szolgál. Ez az előre jelzett valószínűség és a tényleges valószínűség közötti kapcsolat bemutatásával történik, ahol a "valószínűség" azt jelzi, hogy egy adott példány egy adott címkéhez tartozik-e.
+#### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>Mit tesz a kalibrációs diagramon az automatikus ML?
+Az összes besorolási probléma esetében áttekintheti a kalibrációs vonalat a mikro-átlag, a makro-átlag és az egyes osztályok számára egy adott prediktív modellben.
 
-Az összes besorolási probléma esetében áttekintheti a kalibrációs vonalat a mikro-átlag, a makro-átlag és az egyes osztályok számára egy adott prediktív modellben. 
+A Macro-átlag minden osztálytól függetlenül kiszámítja a metrikát, majd az átlagot, és az összes osztályt egyformán kezeli. A mikro-átlag azonban összesíti az összes osztály hozzájárulását az átlag számításához. 
+#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+ A jól kalibrált modell az y = x sorral összhangban van, ahol az előrejelzések szerint ésszerűen magabiztos. A túlzottan magabiztos modell az y = 0 sorral van igazítva, ahol az előre jelzett valószínűség látható, de nincs tényleges valószínűség. 
 
-Egy kalibrációs terület a prediktív modell megbízhatóságának megjelenítésére szolgál. Ez az előre jelzett valószínűség és a tényleges valószínűség közötti kapcsolat bemutatásával történik, ahol a "valószínűség" azt jelzi, hogy egy adott példány egy adott címkéhez tartozik-e. A jól kalibrált modell az y = x vonallal van igazítva, ahol az előrejelzésekben ésszerűen magabiztos. A túlzottan magabiztos modell az y = 0 sorral van igazítva, ahol az előre jelzett valószínűség látható, de nincs tényleges valószínűség.
 
-1\. példa: egy jól kalibrált modell ![ jól kalibrált modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve1.png)
+##### <a name="example-1-a-well-calibrated-model"></a>1\. példa: egy jól kalibrált modell
+![ több jól kalibrált modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve1.png)
 
-2\. példa: egy több mint magabiztos modell ![egy magabiztos modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
+##### <a name="example-2-an-over-confident-model"></a>2\. példa: egy magabiztos modell
+![Egy több mint magabiztos modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
 ## <a name="regression"></a>Regressziós eredmények
 
@@ -185,37 +229,41 @@ normalized_root_mean_squared_error|Normalizált legfelső szintű, négyzetes hi
 root_mean_squared_log_error|A legfelső szintű négyzetes naplózási hiba a várt szögletes logaritmikus hiba négyzetének gyökere.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|None|
 normalized_root_mean_squared_log_error|Normalizált legfelső szintű, négyzetes naplózási hiba: legfelső szintű négyzetes naplózási hiba az adattartomány szerint elosztva|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Osztás az adattartomány szerint|
 
-### <a name="pvt"></a>Előre jelzett vagy igaz
-
+### <a name="pvt"></a>Előre jelzett és igaz diagram
+#### <a name="what-is-a-predicted-vs-true-chart"></a>Mi az az előre jelzett vagy igaz diagram?
 Az előre jelzett és az igaz érték azt mutatja, hogy egy regressziós probléma esetén az előre jelzett érték és a korrelációs valódi értéke közötti kapcsolat látható. Ez a gráf felhasználható egy modell teljesítményének mérésére, ahogy az y = x vonal közelebb van az előre jelzett értékekhez, annál jobb a prediktív modell pontossága.
 
+#### <a name="what-does-automated-ml-do-with-the-predicted-vs-true-chart"></a>Mit tesz az automatikus ML az előre jelzett és az igaz diagrammal?
 Az egyes futtatások után megtekintheti az egyes regressziós modellekhez tartozó, előre jelzett és igaz gráfot is. Az adatok védelme érdekében az értékek együtt dobozolni, és az egyes raktárhelyek mérete a diagramterület alsó részén oszlopdiagramként jelenik meg. A prediktív modellt összehasonlíthatja a világosabb árnyalattal, amely a hibák margóit mutatja, így a modellnek ideális értékkel kell rendelkeznie.
 
-1\. példa: az előrejelzések kis pontosságú regressziós modellje ![egy regressziós modellt, amely alacsony pontossággal rendelkezik az előrejelzésekben](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
+#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+##### <a name="example-1-a-classification-model-with-low-accuracy"></a>1\. példa: kis pontosságú besorolási modell
+![Regressziós modell alacsony pontossággal a jóslatokban](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-2\. példa: az előrejelzésekben nagy pontosságú regressziós modell [![egy regressziós modellt, amelynek előrejelzései nagy pontossággal rendelkeznek](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
+##### <a name="example-2-a-regression-model-with-high-accuracy"></a>2\. példa: nagy pontosságú regressziós modell 
+[az előrejelzések szerint nagy pontossággal ![regressziós modellt](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
 
 
 
-### <a name="histo"></a>Maradványok hisztogramja
-
+### <a name="histo"></a>Maradványok diagramjának hisztogramja
+#### <a name="what-is-a-residuals-chart"></a>Mi az a fennmaradó diagram?
 A maradék egy megfigyelt y – az előre jelzett y karaktert jelöli. Ha alacsony torzítású hibát szeretne megjeleníteni, a maradékok hisztogramját harang alakú görbévé kell alakítani, a 0 körüli középpontba. 
+#### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Mit jelent az automatizált ML a fennmaradó diagrammal?
+Az automatikus ML automatikusan megjelenít egy fennmaradó diagramot, amely megjeleníti a hibák eloszlását a jóslatokban.
+#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+A jó modell általában egy harang-görbét vagy egy nulla körüli hibát tartalmaz.
 
-1\. példa: egy regressziós modell, amelynek a hibája ![SA regressziós modellje a hibák torzításával](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
+##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>1\. példa: egy regressziós modell, amely torzulást okoz a hibáknál
+![SA regressziós modell a hibák torzításával](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
 
-2\. példa: egy regressziós modell, amely többek között a hibák egyenletes eloszlásával ![egy regressziós modellt a hibák egyenletes eloszlásával](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
+##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>2\. példa: egy regressziós modell a hibák egyenletes eloszlásával
+![Egy regressziós modell, amely a hibák egyenletes eloszlásával rendelkezik](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
 ## <a name="explain-model"></a>Modell-értelmező és-funkció fontossága
-
-A funkció fontossága révén megtekintheti, hogy az egyes szolgáltatások milyen értékesek a modell kialakításában. Ez a számítás alapértelmezés szerint ki van kapcsolva, mivel jelentősen növelheti a futási időt.   Az összes modellhez engedélyezheti a modell magyarázatát, vagy csak a legjobban illeszkedő modellt magyarázza el.
-
-Tekintse át a funkció fontossági pontszámát a modell általános, valamint a prediktív modell osztályán. Az egyes funkciókhoz viszonyítva az egyes osztályok és a szolgáltatások fontossága is látható.
-
-![Funkciók magyarázatának képessége](./media/how-to-understand-automated-ml/feature-importance.gif)
-
+Az automatikus ML gépi tanulásra vonatkozó értelmező irányítópultot biztosít a futtatásához.
 A tolmácsolási funkciók engedélyezésével kapcsolatos további információkért tekintse [meg az AUTOMATIZÁLT](how-to-machine-learning-interpretability-automl.md) ml-kísérletek értelmezésének engedélyezése című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + További információ a Azure Machine Learning [automatizált ml](concept-automated-ml.md) -ről.
 + Próbálja ki az [automatizált Machine learning Model magyarázat](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation) minta notebookját.

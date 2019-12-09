@@ -4,20 +4,19 @@ description: Megtudhatja, hogyan helyezhet át egy helyszíni vagy Felhőbeli HT
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4133393b7b21394ea397598a5e1651ee370f92f0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682514"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924178"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Adatok áthelyezése HTTP-forrásokból Azure Data Factory használatával
 
@@ -39,7 +38,7 @@ Ezt a HTTP-összekötőt használhatja a *felhőből és egy helyszíni http/S-v
 
 Amikor helyszíni HTTP-végpontból másol Adatmásolást, adatkezelés átjárót kell telepítenie a helyszíni környezetben vagy egy Azure-beli virtuális gépen. Ha többet szeretne megtudni a adatkezelés átjáróról, valamint az átjáró beállításával kapcsolatos részletes utasításokért lásd: az [adatáthelyezés a helyszíni helyszínek és a felhő között](data-factory-move-data-between-onprem-and-cloud.md).
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök vagy API-k használatával helyezi át az adatok HTTP-forrásból való áthelyezését:
 
@@ -51,7 +50,7 @@ Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely kül�
 
 A következő táblázat a HTTP-társított szolgáltatáshoz tartozó JSON-elemeket ismerteti:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type | A **Type** tulajdonságot **http**-értékre kell beállítani. | Igen |
 | url | A webkiszolgáló alap URL-címe. | Igen |
@@ -66,9 +65,9 @@ A helyszíni HTTP-összekötő adatforrásához tartozó hitelesítő adatok be�
 
 **AuthenticationType** beállítása **alapszintű**, **kivonatoló**vagy **Windows rendszerre**. Az előző szakaszokban leírt általános HTTP-összekötő tulajdonságain kívül állítsa be a következő tulajdonságokat:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| userName | A HTTP-végpont eléréséhez használandó Felhasználónév. | Igen |
+| userName (Felhasználónév) | A HTTP-végpont eléréséhez használandó Felhasználónév. | Igen |
 | jelszó | A felhasználó jelszava (**username**). | Igen |
 
 **Példa: alapszintű, kivonatoló vagy Windows-hitelesítés használata**
@@ -94,10 +93,10 @@ A helyszíni HTTP-összekötő adatforrásához tartozó hitelesítő adatok be�
 
 Az alapszintű hitelesítés használatához állítsa a **AuthenticationType** **ClientCertificate**értékre. Az előző szakaszokban leírt általános HTTP-összekötő tulajdonságain kívül állítsa be a következő tulajdonságokat:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | embeddedCertData | A PFX-fájl bináris fájljainak Base64 kódolású tartalma. | **EmbeddedCertData** vagy **certThumbprint** meghatározása |
-| certThumbprint | Az átjárót tároló számítógép tanúsítványtárolójában telepített Tanúsítvány ujjlenyomata. Csak akkor érvényes, ha egy helyszíni HTTP-forrásból másol be egy Adatmásolást. | **EmbeddedCertData** vagy **certThumbprint** meghatározása |
+| CertThumbprint | Az átjárót tároló számítógép tanúsítványtárolójában telepített Tanúsítvány ujjlenyomata. Csak akkor érvényes, ha egy helyszíni HTTP-forrásból másol be egy Adatmásolást. | **EmbeddedCertData** vagy **certThumbprint** meghatározása |
 | jelszó | A tanúsítványhoz társított jelszó. | Nem |
 
 Ha **certThumbprint** használ a hitelesítéshez, és a tanúsítvány a helyi számítógép személyes tárolójába van telepítve, adjon olvasási jogosultságot az átjáró szolgáltatásnak:
@@ -158,14 +157,14 @@ Az adatkészletek definiálásához elérhető csoportok és tulajdonságok telj
 
 A **typeProperties** szakasz eltérő az egyes adatkészletek esetében. A **typeProperties** szakasz információt nyújt az adattárban található adatok helyéről. A **http** -típus adatkészletének **typeProperties** szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet **típusát** **http**-értékre kell beállítani. | Igen |
 | relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. <br><br> Dinamikus URL-cím létrehozásához [Data Factory függvényeket és rendszerváltozókat](data-factory-functions-variables.md)használhat. Példa: **relativeUrl**: **$ $Text. Format ("/My/Report? month = {0: ÉÉÉÉ}-{0: PP} & FMT Package = CSV", SliceStart)** . | Nem |
 | requestMethod | A HTTP-metódus. Az engedélyezett értékek a **Get** és a **post**. | Nem <br />(az alapértelmezett érték a **Get**) |
 | additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
 | requestBody | A HTTP-kérelem törzse. | Nem |
-| formátumban | Ha *egy http-végpont adatait* az elemzés nélkül szeretné lekérni, ugorja át a **formázási** beállítást. <br><br> Ha a HTTP-válasz tartalmát a másolás során szeretné elemezni, a következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**és **ParquetFormat**. További információkért lásd: [Szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és [parketta formátum](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nem |
+| formátum | Ha *egy http-végpont adatait* az elemzés nélkül szeretné lekérni, ugorja át a **formázási** beállítást. <br><br> Ha a HTTP-válasz tartalmát a másolás során szeretné elemezni, a következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**és **ParquetFormat**. További információkért lásd: [Szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és [parketta formátum](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nem |
 | tömörítés | Adja meg az adattömörítés típusát és szintjét. Támogatott típusok: **gzip**, **deflate**, **BZip2**és **ZipDeflate**. Támogatott szintek: **optimális** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 
 **Példa: a GET (alapértelmezett) metódus használata**
@@ -221,7 +220,7 @@ A tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egy
 
 Jelenleg, ha a másolási tevékenység forrása a **HttpSource** típusú, a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). A válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. | Nem<br />(alapértelmezett érték: **00:01:40**) |
 

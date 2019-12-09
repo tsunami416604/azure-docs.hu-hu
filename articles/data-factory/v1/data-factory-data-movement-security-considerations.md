@@ -4,27 +4,26 @@ description: További információ az adatáthelyezés biztonságossá tételér
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7f18505e02c5d65d21e93759eb5da480c20e2eb3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 467ba9f36dbcd44c5b8d87ee2f20d178d62d9732
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682623"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930816"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – az adatáthelyezés biztonsági szempontjai
 
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg a Data Factory adatáthelyezési biztonsági szempontjait](../data-movement-security-considerations.md).
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 Ez a cikk azt az alapszintű biztonsági infrastruktúrát ismerteti, amelyet az adatátviteli szolgáltatások Azure Data Factory használnak az adatok biztonságossá tételéhez. Azure Data Factory felügyeleti erőforrások az Azure biztonsági infrastruktúrára épülnek, és az Azure által kínált összes lehetséges biztonsági intézkedést felhasználhatják.
 
 A Data Factory-megoldásokkal egy vagy több [adatfolyamatot](data-factory-create-pipelines.md) is létrehozhat. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Ezek a folyamatok abban a régióban találhatók, ahol az adat-előállítót létrehozták. 
@@ -67,7 +66,7 @@ A Azure SQL Data Warehouse transzparens adattitkosítás (TDE) segít megvédeni
 #### <a name="azure-sql-database"></a>Azure SQL Database
 A Azure SQL Database támogatja az transzparens adattitkosítást (TDE), amely segít megvédeni a kártékony tevékenységek fenyegetését azáltal, hogy az alkalmazás módosítása nélkül valós idejű titkosítást és visszafejtést végez. Ez a viselkedés átlátható az ügyfél számára. További információ: [transzparens adattitkosítás Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database). 
 
-#### <a name="azure-data-lake-store"></a>Azure Data Lake Store
+#### <a name="azure-data-lake-store"></a>Azure Data Lake adattár
 A Azure Data Lake tároló a fiókban tárolt adathalmazok titkosítását is biztosítja. Ha engedélyezve van, a Data Lake tároló automatikusan titkosítja az adatok titkosítását, mielőtt megőrzi és visszafejti azokat a lekérés előtt, így az adatokhoz hozzáférő ügyfél átlátszóvá válik. További információ: [Security in Azure Data Lake Store](../../data-lake-store/data-lake-store-security-overview.md). 
 
 #### <a name="azure-blob-storage-and-azure-table-storage"></a>Azure Blob Storage és Azure Table Storage
@@ -95,7 +94,7 @@ A helyszíni adattárakhoz tartozó hitelesítő adatokat helyileg (nem a felhő
 - **Egyszerű szöveges** (kevésbé biztonságos) használata a HTTPS-en keresztül az Azure Portal/másolás varázslójával. A hitelesítő adatokat a rendszer egyszerű szövegként adja át a helyszíni átjárónak.
 - **JavaScript titkosítási függvénytár használata a másolási varázslóval**.
 - A **Click-Once-alapú hitelesítő adatok kezelő alkalmazásának**használata. A Click-Once alkalmazás a helyszíni gépen fut, amely hozzáféréssel rendelkezik az átjáróhoz, és beállítja a hitelesítő adatokat az adattárhoz. Ez a lehetőség és a következő a legbiztonságosabb lehetőség. A Hitelesítőadat-kezelő alkalmazás alapértelmezés szerint a 8050-as portot használja a gépen a biztonságos kommunikáció érdekében.  
-- A hitelesítő adatok titkosításához használja a [New-AzDataFactoryEncryptValue PowerShell-](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) parancsmagot. A parancsmag azt a tanúsítványt használja, amelyet az átjáró a hitelesítő adatok titkosítására való használatra konfigurált. Használhatja a parancsmag által visszaadott titkosított hitelesítő adatokat, és hozzáadhatja azt a **ConnectionString** **EncryptedCredential** eleméhez a [New-AZDATAFACTORYLINKEDSERVICE](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) parancsmaggal vagy a JSON-kódrészletben használt JSON-fájlban. Data Factory szerkesztőt a portálon. Ez a lehetőség és a Click-Once alkalmazás a legbiztonságosabb lehetőség. 
+- A hitelesítő adatok titkosításához használja a [New-AzDataFactoryEncryptValue PowerShell-](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) parancsmagot. A parancsmag azt a tanúsítványt használja, amelyet az átjáró a hitelesítő adatok titkosítására való használatra konfigurált. Használhatja a parancsmag által visszaadott titkosított hitelesítő adatokat, és hozzáadhatja a **ConnectionString** **EncryptedCredential** eleméhez a [New-AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) parancsmaggal vagy a portálon a Data Factory-szerkesztőben használt JSON-kódrészletben. Ez a lehetőség és a Click-Once alkalmazás a legbiztonságosabb lehetőség. 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>JavaScript titkosítási függvénytár-alapú titkosítás
 A [Másolás varázslóval](data-factory-copy-wizard.md)titkosíthatja az adattár hitelesítő adatait a [JavaScript titkosítási kódtár](https://www.microsoft.com/download/details.aspx?id=52439) használatával. Ha ezt a beállítást választja, a másolási varázsló lekéri az átjáró nyilvános kulcsát, és a használatával titkosítja az adattár hitelesítő adatait. A hitelesítő adatokat az átjáró számítógépe visszafejti, és a Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx)védi.
@@ -118,7 +117,7 @@ Az adatkezelés-átjáró jelenleg egyetlen **tanúsítványt**használ. Ez a ta
 | > = 2.4. xxxx. x | Helyszíni | Védett DPAPI-n keresztül | 
   
 
-### <a name="encryption-in-transit"></a>Titkosítás átvitel közben
+### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
 Az adatátvitel a biztonságos csatorna **https** protokollon és a **TLS** protokollon keresztül történik az Azure-szolgáltatásokkal folytatott kommunikáció során.
  
 A helyszíni hálózat és az Azure közötti kommunikációs csatorna további biztonságossá tételéhez [IPSec VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) vagy [Express Route](../../expressroute/expressroute-introduction.md) is használható.
@@ -129,9 +128,9 @@ A következő táblázat összefoglalja a hálózati és átjárók konfiguráci
 
 | Forrás | Cél | Hálózati konfiguráció | Átjáró beállítása |
 | ------ | ----------- | --------------------- | ------------- | 
-| Helyszíni követelmények | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | IPSec VPN (pont – hely vagy hely – hely) | Az átjáró a VNet-ben a helyszínen vagy egy Azure-beli virtuális gépen (VM) is telepíthető. | 
-| Helyszíni követelmények | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | ExpressRoute (privát társ) | Az átjáró a VNet-ben a helyszínen vagy egy Azure-beli virtuális gépen is telepíthető. | 
-| Helyszíni követelmények | Nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (nyilvános peering) | Az átjárót a helyszínen kell telepíteni | 
+| Helyszíni | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | IPSec VPN (pont – hely vagy hely – hely) | Az átjáró a VNet-ben a helyszínen vagy egy Azure-beli virtuális gépen (VM) is telepíthető. | 
+| Helyszíni | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | ExpressRoute (privát társ) | Az átjáró a VNet-ben a helyszínen vagy egy Azure-beli virtuális gépen is telepíthető. | 
+| Helyszíni | Nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (nyilvános peering) | Az átjárót a helyszínen kell telepíteni | 
 
 Az alábbi képek a adatkezelés Gateway használatát mutatják be a helyszíni adatbázis és az Azure-szolgáltatások közötti adatáthelyezéshez az expressz útvonal és az IPSec VPN használatával (Virtual Network):
 
@@ -191,7 +190,7 @@ A következő felhőalapú adattárakhoz az átjáró-gép IP-címének engedél
 **Kérdés:** Mik a tanúsítványokra vonatkozó követelmények az átjáróhoz?
 **Válasz:** Az aktuális átjáróhoz szükség van egy tanúsítványra, amelyet a Hitelesítőadat-kezelő alkalmazás az adattár hitelesítő adatainak biztonságos beállításához használ. Ez a tanúsítvány az átjáró telepítője által létrehozott és konfigurált önaláírt tanúsítvány. Ehelyett saját TLS/SSL-tanúsítványt is használhat. További információ: [Click-Once Hitelesítőadat-kezelő alkalmazás](#click-once-credentials-manager-app) szakasz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenység teljesítményével kapcsolatos további információkért lásd: a [másolási tevékenység teljesítményének és finomhangolásának útmutatója](data-factory-copy-activity-performance.md).
 
  

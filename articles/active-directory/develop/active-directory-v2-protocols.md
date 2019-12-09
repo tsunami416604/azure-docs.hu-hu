@@ -1,5 +1,5 @@
 ---
-title: Tudnivalók a Microsoft Identity platform által támogatott engedélyezési protokollokról | Azure
+title: A Microsoft Identity platform által támogatott engedélyezési protokollok | Azure
 description: Útmutató a OAuth 2,0 és az OpenID Connect protokollokhoz, amelyeket a Microsoft Identity platform végpontja támogat.
 services: active-directory
 author: rwike77
@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50f2b4d5da2cdda35de0adc5dc646065f2b64a41
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f04ba26f592c02814412493cf4811e30aefa6ee3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844702"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918288"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Microsoft Identity platform-protokollok
 

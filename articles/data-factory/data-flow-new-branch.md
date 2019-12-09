@@ -1,24 +1,23 @@
 ---
-title: Azure Data Factory leképezési adatfolyam új ág-átalakítás
+title: Adatáramlás leképezése az új ág átalakításával
 description: Azure Data Factory leképezési adatfolyam új ág-átalakítás
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/12/2019
-ms.openlocfilehash: de8cb74d788e3ca7599f226e4204c4b09112e70c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b4617689fe1ab14856bde9a4e8134b12aa6d815b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387216"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930301"
 ---
 # <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Azure Data Factory leképezési adatfolyam új ág-átalakítás
 
-
-
-![Ág beállításai](media/data-flow/menu.png "menüben")
+![Ág beállításai](media/data-flow/menu.png "menü")
 
 Az elágazás a jelenlegi adatfolyamot az adatfolyamba helyezi, és replikálja egy másik streambe. Az új ág használatával több műveletet és átalakítást hajthat végre ugyanahhoz az adatfolyamhoz.
 

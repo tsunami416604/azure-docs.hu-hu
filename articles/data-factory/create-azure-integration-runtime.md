@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 898290f70777ca442bb8885d83064231c5486a7c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 1a9a88f975ca10a63741818dcb88874a8f1bf436
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73677262"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926390"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime létrehozása és konfigurálása
 A Integration Runtime (IR) a Azure Data Factory által használt számítási infrastruktúra, amely különböző hálózati környezetekben biztosít adatintegrációs képességeket. Az IR-vel kapcsolatos további információkért lásd: [Integration Runtime](concepts-integration-runtime.md).
@@ -64,7 +63,7 @@ Azure IR létrehozása után hivatkozhat rá a társított szolgáltatás defin�
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az integrációs modulok egyéb típusainak létrehozásáról a következő cikkekben talál további információt:
 
 - [Saját üzemeltetésű integrációs modul létrehozása](create-self-hosted-integration-runtime.md)

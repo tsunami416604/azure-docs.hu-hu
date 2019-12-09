@@ -5,19 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/15/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: d36900a1ce05eaf022637a6ef6b866fe0d190b17
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 77019d6a99e41bb5fb9233aa95836bd4bc8dd877
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672733"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926887"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
 Ha SQL Server Integration Servicest (SSIS) használ a Azure Data Factoryban, akkor a következő esetekben csatlakoztatnia kell az Azure-SSIS Integration Runtime (IR)-t egy Azure-beli virtuális hálózathoz: 
@@ -47,7 +46,7 @@ A Azure-SSIS IR virtuális hálózathoz való csatlakoztatásakor jegyezze fel e
 - Ha egy Azure Resource Manager virtuális hálózat már csatlakoztatva van a helyszíni hálózathoz a Azure-SSIS IR egy másik helyén, először hozzon létre egy [Azure Resource Manager virtuális hálózatot](../virtual-network/quick-create-portal.md##create-a-virtual-network) a Azure-SSIS IRhoz való csatlakozáshoz. Ezután konfiguráljon egy Azure Resource Manager – Azure Resource Manager virtuális hálózati kapcsolatokat. 
 
 ## <a name="access-to-azure-services"></a>Hozzáférés az Azure-szolgáltatásokhoz
-Ha a SSIS-csomagok hozzáférnek a [virtuális hálózati szolgáltatás végpontjai](../virtual-network/virtual-network-service-endpoints-overview.md) által támogatott Azure-szolgáltatási erőforrásokhoz, és ezeket az erőforrásokat Azure-SSIS IR szeretné védeni, akkor a virtuális hálózattal konfigurált virtuális hálózati alhálózathoz csatlakoztathatja a Azure-SSIS IR szolgáltatási végpontok. Eközben vegyen fel egy virtuális hálózati szabályt az Azure szolgáltatási erőforrásaiba, hogy engedélyezze a hozzáférést ugyanahhoz az alhálózathoz.
+Ha a SSIS-csomagok hozzáférnek a [virtuális hálózati szolgáltatás végpontjai](../virtual-network/virtual-network-service-endpoints-overview.md) által támogatott Azure-szolgáltatási erőforrásokhoz, és ezeket az erőforrásokat Azure-SSIS IR szeretné védeni, akkor a virtuális hálózati szolgáltatás-végpontokkal konfigurált virtuális hálózati alhálózathoz csatlakoztathatja a Azure-SSIS IR. Eközben vegyen fel egy virtuális hálózati szabályt az Azure szolgáltatási erőforrásaiba, hogy engedélyezze a hozzáférést ugyanahhoz az alhálózathoz.
 
 ## <a name="hosting-the-ssis-catalog-in-sql-database"></a>A SSIS-katalógus üzemeltetése SQL Database
 Ha a SSIS-katalógust Azure SQL Database virtuális hálózati szolgáltatásbeli végpontokkal futtatja, akkor győződjön meg arról, hogy a Azure-SSIS IR ugyanahhoz a virtuális hálózathoz és alhálózathoz csatlakozik.
@@ -417,7 +416,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 A parancs futása 20 – 30 percet vesz igénybe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure-SSIS IRról a következő cikkekben talál további információt: 
 - [Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk az IRs-vel kapcsolatos általános információkat tartalmaz, beleértve a Azure-SSIS IRt is. 
 - [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-](tutorial-create-azure-ssis-runtime-portal.md)ban. Ez az oktatóanyag részletes útmutatást nyújt a Azure-SSIS IR létrehozásához. A Azure SQL Database használja az SSIS-katalógus üzemeltetéséhez. 

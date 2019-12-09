@@ -1,27 +1,23 @@
 ---
-title: 'Azure AD Connect Sync: konfigurációs módosítás létrehozása Azure AD Connect Sync szolgáltatásban | Microsoft Docs'
+title: 'Azure AD Connect szinkronizálás: konfigurációs módosítás létrehozása Azure AD Connect syncben'
 description: Végigvezeti az Azure AD Connect Sync konfigurációjának módosításán.
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
-editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7600bffd8d00caa6e9b5fdda03aefe429d4788b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842577"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919069"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálás: az alapértelmezett konfiguráció módosítása
 Ebből a cikkből megtudhatja, hogyan módosíthatja az alapértelmezett konfigurációt Azure Active Directory (Azure AD) csatlakozási szinkronizálásban. Néhány gyakori forgatókönyvhöz nyújt lépéseket. Ezzel az ismerettel a saját üzleti szabályai alapján egyszerű módosításokat végezhet saját konfigurációjában.
@@ -204,7 +200,7 @@ Alapértelmezés szerint a UserType attribútum nincs engedélyezve a szinkroniz
 
 - Az Azure AD csak két értéket fogad el a UserType attribútumhoz: **tag** és **vendég**.
 - Ha a UserType attribútum nincs engedélyezve a Azure AD Connect való szinkronizáláshoz, a címtár-szinkronizálás révén létrehozott Azure AD-felhasználók rendelkezhetnek a **tag**értékre a UserType attribútummal.
-- Az Azure AD nem engedélyezi a meglévő Azure AD-felhasználók UserType attribútumának módosítását Azure AD Connect. Csak az Azure AD-felhasználók létrehozásakor és a PowerShell-lel [módosítva](https://docs.microsoft.com/en-us/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)állítható be.
+- Az Azure AD nem engedélyezi a meglévő Azure AD-felhasználók UserType attribútumának módosítását Azure AD Connect. Csak az Azure AD-felhasználók létrehozásakor és a PowerShell-lel [módosítva](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)állítható be.
 
 A UserType attribútum szinkronizálásának engedélyezése előtt először el kell döntenie, hogyan származtatja az attribútumot a helyszíni Active Directoryból. A leggyakoribb módszerek a következők:
 

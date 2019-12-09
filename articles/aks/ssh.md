@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: d855e7a65b7e1ad24dcfc4fe6a6d5e02f9004bb0
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 5ff79dc597571f4e6ef3d7c2c20bce61c0d061ad
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74089544"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926373"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Kapcsolódás az SSH-val az Azure Kubernetes Service (ak) csomópontjaihoz karbantartáshoz vagy hibaelhárításhoz
 
@@ -20,7 +20,7 @@ Az Azure Kubernetes-szolgáltatás (ak) fürtjének életciklusa során előford
 
 Ez a cikk bemutatja, hogyan hozhat létre SSH-kapcsolatokat egy AK-csomóponttal magánhálózati IP-címeik használatával.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
@@ -41,7 +41,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-A fenti példa a *myResourceGroup* lévő *myAKSCluster* tartozó fürterőforrás-csoport nevét rendeli hozzá a következőhöz: *CLUSTER_RESOURCE_GROUP*. A példa ezután a *CLUSTER_RESOURCE_GROUP* használatával listázza a méretezési csoport nevét, és hozzárendeli a *SCALE_SET_NAMEhoz*.  
+A fenti példa a *myResourceGroup* lévő *myAKSCluster* tartozó fürterőforrás-csoport nevét rendeli hozzá a következőhöz: *CLUSTER_RESOURCE_GROUP*. A példa ezután a *CLUSTER_RESOURCE_GROUP* használatával listázza a méretezési csoport nevét, és hozzárendeli a *SCALE_SET_NAMEhoz*.
 
 > [!IMPORTANT]
 > Jelenleg csak az Azure CLI használatával kell frissítenie az SSH-kulcsokat a virtuálisgép-méretezési csoport-alapú AK-fürtökhöz.
@@ -100,7 +100,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-A fenti példa a *myResourceGroup* lévő *myAKSCluster* tartozó fürterőforrás-csoport nevét rendeli hozzá a következőhöz: *CLUSTER_RESOURCE_GROUP*. A példa ezután a *CLUSTER_RESOURCE_GROUP* használatával listázza a virtuális gép nevét. A példa kimenete a virtuális gép nevét mutatja: 
+A fenti példa a *myResourceGroup* lévő *myAKSCluster* tartozó fürterőforrás-csoport nevét rendeli hozzá a következőhöz: *CLUSTER_RESOURCE_GROUP*. A példa ezután a *CLUSTER_RESOURCE_GROUP* használatával listázza a virtuális gép nevét. A példa kimenete a virtuális gép nevét mutatja:
 
 ```
 Name                      ResourceGroup                                  Location
@@ -144,7 +144,7 @@ Egy AK-csomóponthoz való SSH-kapcsolatok létrehozásához egy segítő Pod-t 
 1. Futtasson `debian` tároló rendszerképet, és csatolja hozzá a terminál-munkamenetet. Ezzel a tárolóval létrehozhat egy SSH-munkamenetet az AK-fürt bármely csomópontjának használatával:
 
     ```console
-    kubectl run -it --rm aks-ssh --image=debian
+    kubectl run --generator=run-pod/v1 -it --rm aks-ssh --image=debian
     ```
 
     > [!TIP]
@@ -158,21 +158,12 @@ Egy AK-csomóponthoz való SSH-kapcsolatok létrehozásához egy segítő Pod-t 
     apt-get update && apt-get install openssh-client -y
     ```
 
-1. Nyisson meg egy új terminált, amely nem csatlakozik a tárolóhoz, sorolja fel az AK-fürtön lévő hüvelyeket a [kubectl Get hüvely][kubectl-get] parancs használatával. Az előző lépésben létrehozott Pod az *AK-SSH*névvel kezdődik, ahogy az alábbi példában is látható:
+1. Nyisson meg egy új terminált, amely nem csatlakozik a tárolóhoz, másolja a titkos SSH-kulcsot a Helper Pod-ba. Ez a titkos kulcs az SSH-nak az AK-csomópontba való létrehozásához használatos. 
 
-    ```
-    $ kubectl get pods
-    
-    NAME                       READY     STATUS    RESTARTS   AGE
-    aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
-    ```
-
-1. Egy korábbi lépésben hozzáadta a nyilvános SSH-kulcsot a hibakereséshez kívánt AK-csomóponthoz. Most másolja a privát SSH-kulcsot a Helper Pod-ba. Ez a titkos kulcs az SSH-nak az AK-csomópontba való létrehozásához használatos.
-
-    Adja meg az előző lépésben beszerzett saját *AK-SSH-Pod-* nevet. Ha szükséges, módosítsa a *~/.ssh/id_rsa* a saját SSH-kulcsának helyére:
+   Ha szükséges, módosítsa a *~/.ssh/id_rsa* a saját SSH-kulcsának helyére:
 
     ```console
-    kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
+    kubectl cp ~/.ssh/id_rsa $(kubectl get pod -l run=aks-ssh -o jsonpath='{.items[0].metadata.name}'):/id_rsa
     ```
 
 1. Térjen vissza a tárolóhoz a terminál-munkamenetbe, frissítse a másolt `id_rsa` privát SSH-kulcs engedélyeit, hogy csak a felhasználó írásvédett legyen:
@@ -185,22 +176,22 @@ Egy AK-csomóponthoz való SSH-kapcsolatok létrehozásához egy segítő Pod-t 
 
     ```console
     $ ssh -i id_rsa azureuser@10.240.0.4
-    
+
     ECDSA key fingerprint is SHA256:A6rnRkfpG21TaZ8XmQCCgdi9G/MYIMc+gFAuY9RUY70.
     Are you sure you want to continue connecting (yes/no)? yes
     Warning: Permanently added '10.240.0.4' (ECDSA) to the list of known hosts.
-    
+
     Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.15.0-1018-azure x86_64)
-    
+
      * Documentation:  https://help.ubuntu.com
      * Management:     https://landscape.canonical.com
      * Support:        https://ubuntu.com/advantage
-    
+
       Get cloud support with Ubuntu Advantage Cloud Guest:
         https://www.ubuntu.com/business/services/cloud
-    
+
     [...]
-    
+
     azureuser@aks-nodepool1-79590246-0:~$
     ```
 

@@ -1,22 +1,22 @@
 ---
-title: Adatok betöltése az SAP Business Warehouse-ból Azure Data Factory használatával
+title: Adatok betöltése az SAP Business Warehouse-ból
 description: Adatok másolása Azure Data Factory használatával az SAP Business Warehouse-ból (BW)
 services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.author: jingwang
-ms.openlocfilehash: 0c96ecff27a57b3277e7c8105766059b739d11af
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7d9c0000964348b7c9c83ccbc2490677614c50cd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672651"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931469"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból Azure Data Factory használatával
 
@@ -46,7 +46,7 @@ Ez a cikk azt mutatja be, hogyan használhatók a Azure Data Factory az adatok a
 
 ## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>Teljes másolat készítése SAP BW Open hub-ból
 
-A Azure Portal nyissa meg az adatait a gyárban. Válassza a **létrehozás & a figyelő** lehetőséget a Data Factory felhasználói felület külön lapon való megnyitásához.
+Az Azure Portalon lépjen az adat-előállítóra. Válassza a **létrehozás & a figyelő** lehetőséget a Data Factory felhasználói felület külön lapon való megnyitásához.
 
 1. Az **első lépések** lapon válassza a **Adatok másolása** lehetőséget a adatok másolása eszköz megnyitásához.
 
@@ -87,7 +87,7 @@ A Azure Portal nyissa meg az adatait a gyárban. Válassza a **létrehozás & a 
    ![ADLS Gen2 társított szolgáltatás oldalának létrehozása](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. Válassza ki a Data Lake Storage Gen2-kompatibilis fiókot a **név** legördülő listából.
-   2. A kapcsolódás létrehozásához válassza a **Befejezés** lehetőséget. Ezután kattintson a **Tovább** gombra.
+   2. Kattintson a **Befejezés** gombra a kapcsolat létrehozásához. Ezután kattintson a **Tovább** gombra.
 
 9. A **kimeneti fájl vagy mappa kiválasztása** lapon adja meg a **copyfromopenhub** a kimeneti mappa neveként. Ezután kattintson a **Tovább** gombra.
 
@@ -199,7 +199,7 @@ Ez a szakasz a SAP BW oldal konfigurációját mutatja be, hogy az SAP BW Open h
 
 Ha a korábbi másolási és növekményes másolási, vagy csak növekményes másolásra van szüksége, állítsa be SAP BW a különbözeti kinyerést.
 
-1. Hozza létre az Open hub célhelyét. A OHD az SAP Transaction RSA1 hozhatja létre, amely automatikusan létrehozza a szükséges átalakítási és adatátviteli folyamatot. Használja az alábbi beállításokat:
+1. Hozza létre az Open hub célhelyét. A OHD az SAP Transaction RSA1 hozhatja létre, amely automatikusan létrehozza a szükséges átalakítási és adatátviteli folyamatot. Használja a következő beállításokat:
 
    - **Objektumtípus**: bármilyen objektumtípust használhat. Itt a **InfoCube** -t használjuk példaként.
    - **Cél típusa**: válassza az **adatbázis tábla**lehetőséget.
@@ -266,7 +266,7 @@ A Delta DTP állapotának **beolvasásához**a következő lehetőség használa
 
     *No Data Transfer; Delta Status in Source: Fetched*
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg SAP BW Open hub-összekötő támogatásával:
 

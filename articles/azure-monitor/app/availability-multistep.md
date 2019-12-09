@@ -1,5 +1,5 @@
 ---
-title: Webalkalmazás monitorozása többlépéses webes tesztekkel és Azure-Application Insightsokkal | Microsoft Docs
+title: Többlépéses webes tesztek figyelése – Azure Application Insights
 description: Többlépéses webes tesztek beállítása a webalkalmazások Azure-beli figyeléséhez Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 80a39151a3d40c9b9d7cb49c6ab41aab602c5991
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8e630f324a7a0ebdfcc74941e760b80fabefa8d3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817385"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928966"
 ---
 # <a name="multi-step-web-tests"></a>Többlépéses webes teszt
 
@@ -27,7 +27,7 @@ A webhelyeken a többlépéses webes tesztek segítségével figyelheti az URL-c
 * Visual Studio 2017 Enterprise vagy újabb.
 * A Visual Studio webes teljesítmény-és terhelés-tesztelési eszközei.
 
-Az előfeltételként szolgáló tesztelési eszközök megkeresése. Indítsa el a **Visual Studio telepítőjét**  > **egyes összetevőket**  > **hibakeresés és tesztelés**  > **webes teljesítmény és terhelés tesztelési eszközei**.
+Az előfeltételként szolgáló tesztelési eszközök megkeresése. Indítsa el a **Visual Studio telepítőjét** > **egyes összetevőket** > **hibakeresés és tesztelés** > **webes teljesítmény és terhelés tesztelési eszközei**.
 
 ![Képernyőfelvétel a Visual Studio telepítő felhasználói felületéről a webes teljesítmény és a terhelés-tesztelési eszközök elem melletti jelölőnégyzettel jelölt egyedi összetevőkkel](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -43,7 +43,7 @@ A Visual Studio webes tesztek létrehozásával kapcsolatos útmutatásért teki
 
 ## <a name="upload-the-web-test"></a>A webes teszt feltöltése
 
-1. A rendelkezésre állási ablaktáblán található Application Insights-portálon válassza a **teszt létrehozása**  > **tesztelési típus**  >  a**többlépéses webes teszt**lehetőséget.
+1. A rendelkezésre állási ablaktáblán található Application Insights-portálon válassza a **teszt létrehozása** > **tesztelési típus** > a **többlépéses webes teszt**lehetőséget.
 
 2. A tesztelési helyszínek, a gyakoriság és a riasztás paramétereinek megadása.
 
@@ -68,7 +68,7 @@ A Visual Studio webes tesztek létrehozásával kapcsolatos útmutatásért teki
 |----|----|----|
 |**Közel valós idejű (előzetes verzió)** | Javasoljuk, hogy a közel valós idejű riasztásokat használja. Az ilyen típusú riasztások konfigurálása a rendelkezésre állási teszt létrehozása után történik.  |
 |**Klasszikus** | Már nem ajánlott klasszikus riasztásokat használni az új rendelkezésre állási tesztekhez.|
-|**Riasztási hely küszöbértéke**|Legalább 3/5 helyet ajánlunk. A riasztási hely küszöbértéke és a tesztelési helyek száma közötti optimális kapcsolat a **riasztási hely küszöbértéke**  =  a**tesztelési helyek száma – 2, legalább öt tesztelési hellyel.**|
+|**Riasztási hely küszöbértéke**|Legalább 3/5 helyet ajánlunk. A riasztási hely küszöbértéke és a tesztelési helyek száma közötti optimális kapcsolat a **riasztási hely küszöbértéke** = a **tesztelési helyek száma – 2, legalább öt tesztelési hellyel.**|
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -113,9 +113,9 @@ Minden esetben ajánlott létrehozni egy fiókot az alkalmazásában tesztelési
 | Célközönség URI-ja | Az SAML-jogkivonat célközönségének URI-ja.  Ez a Access Control Service (ACS) URI-ja – beleértve az ACS-névteret és a gazdagép nevét. |
 | Tanúsítvány jelszava | Az ügyféltanúsítvány jelszava, amely hozzáférést biztosít a beágyazott titkos kulcshoz. |
 | Ügyféltanúsítvány  | Az ügyféltanúsítvány értéke Base64 kódolású formátumú titkos kulccsal. |
-| Név azonosítója | A jogkivonat nevének azonosítója |
-| Nem később | Az a TimeSpan, amelyhez a jogkivonat érvényes lesz.  Az alapértelmezett érték 5 perc. |
-| Nem előtte | Az a TimeSpan, amelyhez a múltban létrehozott jogkivonat érvényes lesz (az időeltérések megcímzéséhez).  Az alapértelmezett érték (negatív) 5 perc. |
+| Névazonosító | A jogkivonat nevének azonosítója |
+| Lejárati idő | Az a TimeSpan, amelyhez a jogkivonat érvényes lesz.  Az alapértelmezett érték 5 perc. |
+| Hatálybalépési idő | Az a TimeSpan, amelyhez a múltban létrehozott jogkivonat érvényes lesz (az időeltérések megcímzéséhez).  Az alapértelmezett érték (negatív) 5 perc. |
 | Cél környezeti paraméter neve | A generált állítást fogadó környezeti paraméter. |
 
 

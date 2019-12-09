@@ -1,5 +1,5 @@
 ---
-title: Fogadó átalakítás beállítása a leképezési adatfolyam szolgáltatásban
+title: Fogadó átalakítás beállítása a leképezési adatfolyamban
 description: Megtudhatja, hogyan állíthat be egy fogadó-átalakítást a leképezési adatfolyamban.
 author: kromerm
 ms.author: makromer
@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/03/2019
-ms.openlocfilehash: 707c0e93b88f34d4663d3dbe20bb2e9e4991a332
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 828487aba651d10e5c906050dab544c097b49762
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217926"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930276"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Adatfolyam-transzformáció
 
@@ -34,7 +34,7 @@ Az **optimalizálás** lapon állíthatja be a particionálási sémát. Ha azt 
 
 ![Beállítások az optimalizálás lapon](media/data-flow/opt001.png "fogadó beállításai")
 
-## <a name="field-mapping"></a>Mező-hozzárendelés
+## <a name="field-mapping"></a>Mezőleképezés
 A fogadó átalakítás **leképezés** lapján a bal oldali bejövő oszlopok a jobb oldalon lévő célhelyekre képezhetők le. Amikor adatfolyamatokat másol a fájlokhoz, Data Factory mindig új fájlokat fog írni egy mappába. Ha adatbázis-adatkészlethez rendel leképezést, akkor az adatbázis-táblázat műveleti lehetőségei közül választhatja a Beszúrás, a frissítés, a upsert vagy a Törlés lehetőséget.
 
 ![A leképezés lap](media/data-flow/sink2.png "Fogadóként")

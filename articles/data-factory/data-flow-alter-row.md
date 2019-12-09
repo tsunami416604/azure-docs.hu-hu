@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory leképezési adatfolyam módosítása sor átalakítása
+title: Az adatfolyam-módosítási sor átalakításának leképezése
 description: Az adatbázis céljának frissítése a Azure Data Factory leképezési adatáramlás módosítása sor-átalakítás használatával
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 03/12/2019
-ms.openlocfilehash: 7a782c62165aa6f2641c2ebe8e4600198ec373c5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1301b89ef1a6fb02356c6dcd4e568401eb5e9cd2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486210"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930479"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory Alter sor átalakítása
 
@@ -26,12 +27,12 @@ Az Alter sort Transformation paranccsal szúrhatja be a sorokba az INSERT, DELET
 
 ## <a name="indicate-a-default-row-policy"></a>Alapértelmezett sor házirendet jelöl
 
-Hozzon létre egy Alter sort átalakítást, és határozzon meg egy `true()` feltételt tartalmazó sort. Minden olyan sor meg lesz jelölve, amely nem felel meg a korábban definiált kifejezéseknek. Alapértelmezés szerint minden olyan sor, amely nem felel meg semmilyen feltételes kifejezésnek, `Insert` lesz megjelölve.
+Hozzon létre egy Alter sort átalakítást, és határozzon meg egy `true()`feltételt tartalmazó sort. Minden olyan sor meg lesz jelölve, amely nem felel meg a korábban definiált kifejezéseknek. Alapértelmezés szerint minden olyan sor meg lesz jelölve, amely nem felel meg a feltételes kifejezéseknek `Insert`.
 
 ![Sor módosítása egy házirendet](media/data-flow/alter-row4.png "Sor módosítása egy házirendet")
 
 > [!NOTE]
-> Az összes sor egyetlen házirenddel való megjelöléséhez létrehozhat egy feltételt az adott szabályzathoz, és megadhatja a feltételt `true()` értékként.
+> Az összes sor egyetlen házirenddel való megjelöléséhez létrehozhat egy feltételt az adott szabályzathoz, és a feltételt `true()`ként adhatja meg.
 
 ## <a name="view-policies"></a>Szabályzatok megtekintése
 
@@ -52,6 +53,6 @@ Az ADF-adatforgalomban az adatbázis-elsüllyedés alapértelmezett viselkedése
 > [!NOTE]
 > Ha a lapkák, a frissítések vagy a upsert módosítja a cél tábla sémáját a fogadóban, az adatfolyam sikertelen lesz. Ha módosítani szeretné a célként megadott sémát az adatbázisban, válassza a fogadóban a "tábla újbóli létrehozása" lehetőséget. Ezzel eldobásra kerül, és újból létrehozza a táblát az új séma-definícióval.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A módosítási sor átalakítását követően érdemes lehet [az adatait egy célhely adattárba menteni](data-flow-sink.md).

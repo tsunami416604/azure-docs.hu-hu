@@ -1,5 +1,5 @@
 ---
-title: Az Azure Application Insights Snapshot Debugger problémáinak elhárítása | Microsoft Docs
+title: Az Azure Application Insights hibáinak megoldása Snapshot Debugger
 description: Ez a cikk hibaelhárítási lépéseket és információkat nyújt a Application Insights Snapshot Debugger engedélyezésével vagy használatával kapcsolatos problémákat okozó fejlesztőknek.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: brahmnes
 ms.author: mbullwin
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ec70f202a496ec368a483278994c7c5ccb24f40b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ded4a1a718d2cb061aba5f0d27565633e6cb603a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899827"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932090"
 ---
 # <a id="troubleshooting"></a>A Application Insights Snapshot Debugger engedélyezésével vagy a pillanatképek megtekintésével kapcsolatos problémák elhárítása
 Ha engedélyezte Application Insights Snapshot Debugger az alkalmazáshoz, de nem tekinti meg a kivételekhez tartozó pillanatképeket, a következő útmutatást használhatja a hibák megoldásához:. Számos különböző oka lehet annak, hogy a pillanatképek miért nem jönnek létre. A pillanatkép állapotának ellenőrzését futtatva azonosíthatja a lehetséges gyakori okok némelyikét.
@@ -27,7 +27,7 @@ A végpontok közötti nyomkövetés nézet kivétel ablaktábláján találhat�
 
 Az interaktív, csevegéshez hasonló kezelőfelület gyakori problémákat keres, és végigvezeti Önt a hibák elhárításában.
 
-![Állapot-ellenőrzési](./media/snapshot-debugger/healthcheck.png)
+![Állapot-ellenőrzés](./media/snapshot-debugger/healthcheck.png)
 
 Ha ez nem oldja meg a problémát, tekintse meg a következő kézi hibaelhárítási lépéseket.
 
@@ -36,12 +36,12 @@ Ha ez nem oldja meg a problémát, tekintse meg a következő kézi hibaelhárí
 Győződjön meg arról, hogy a megfelelő kialakítási kulcsot használja a közzétett alkalmazásban. A rendszerállapot-kulcsot általában a ApplicationInsights. config fájlból olvassa be a rendszer. Ellenőrizze, hogy az érték megegyezik-e a portálon megjelenő Application Insights erőforrás rendszerállapot-kulcsával.
 
 ## <a name="preview-versions-of-net-core"></a>A .NET Core előzetes verziói
-Ha az alkalmazás a .NET Core előzetes verzióját használja, és Snapshot Debugger a portál [Application Insights paneljén](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) keresztül volt engedélyezve, akkor előfordulhat, hogy Snapshot Debugger nem indul el. A [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet ***-*** csomagnak az alkalmazással való használatának [](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) [engedélyezéséhez kövesse az egyéb környezetek engedélyezése Snapshot Debugger. Application Insights ablaktáblán](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
+Ha az alkalmazás a .NET Core előzetes verzióját használja, és Snapshot Debugger a portál [Application Insights paneljén](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) keresztül volt engedélyezve, akkor előfordulhat, hogy Snapshot Debugger nem indul el. Kövesse az [Snapshot Debugger engedélyezése más környezetekhez](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) című témakör utasításait, hogy a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) ***NuGet-csomagot*** az alkalmazással együtt, a [Application Insights panelen](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)is engedélyezze.
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Frissítés a NuGet csomag legújabb verziójára
 
-Ha Snapshot Debugger engedélyezte a [portálon a Application Insights ablaktáblán](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), akkor az alkalmazásnak már a legújabb NuGet-csomagot kell futtatnia. Ha a Snapshot Debugger a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomaggal együtt engedélyezte, a Visual Studio NuGet csomagkezelő segítségével ellenőrizze, hogy a legújabb verzióját használja-e. Microsoft. ApplicationInsights. Snapshotcollector nugetcsomag. A kibocsátási megjegyzések a következő címen találhatók: https://github.com/Microsoft/ApplicationInsights-Home/issues/167
+Ha Snapshot Debugger engedélyezte a [portálon a Application Insights ablaktáblán](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), akkor az alkalmazásnak már a legújabb NuGet-csomagot kell futtatnia. Ha a Snapshot Debugger a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomaggal együtt engedélyezte, a Visual Studio NuGet csomagkezelő segítségével ellenőrizze, hogy a Microsoft. ApplicationInsights. snapshotcollector nugetcsomag legújabb verzióját használja-e. A kibocsátási megjegyzések a következő címen találhatók: https://github.com/Microsoft/ApplicationInsights-Home/issues/167
 
 ## <a name="check-the-uploader-logs"></a>A feltöltő naplók keresése
 
@@ -202,7 +202,7 @@ Vagy ha a appSettings. JSON fájlt .NET Core-alkalmazással használja:
 Pillanatkép létrehozásakor a throwing kivétel egy pillanatkép-AZONOSÍTÓval van megjelölve. Ez a Pillanatkép-azonosító egyéni tulajdonságként szerepel, ha a kivétel telemetria Application Insightsre jelent meg. A **Keresés** a Application Insights használatával megkeresheti az összes telemetria az `ai.snapshot.id` egyéni tulajdonsággal.
 
 1. Tallózással keresse meg Application Insights erőforrását a Azure Portalban.
-2. Kattintson a **Keresés**gombra.
+2. Kattintson a **Keresés** gombra.
 3. Írja be a `ai.snapshot.id` kifejezést a keresés szövegmezőbe, majd nyomja le az ENTER billentyűt.
 
 ![Telemetria keresése pillanatkép-AZONOSÍTÓval a portálon](./media/snapshot-debugger/search-snapshot-portal.png)

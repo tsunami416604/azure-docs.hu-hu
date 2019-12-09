@@ -1,29 +1,25 @@
 ---
-title: Azonnali viselkedés az interaktív kérelmekben (a JavaScripthez készült Microsoft Authentication Library)
+title: Interaktív kérések (MSAL. js) – gyors működés | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogyan szabhatja testre a gyors viselkedést az interaktív hívásokban a JavaScripthez készült Microsoft Authentication Library (MSAL. js) használatával.
+description: Megtudhatja, hogyan szabhatja testre a prompt viselkedését az interaktív hívásokban a JavaScripthez készült Microsoft Authentication Library (MSAL. js) használatával.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d6c4415a3eeb28c999d95b838c6dd7c0f6e606
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6654b523cef4623a55bf9f857fd5a723fae2dc47
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803027"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921957"
 ---
 # <a name="prompt-behavior-in-msaljs-interactive-requests"></a>A MSAL. js interaktív kéréseinek bekérési viselkedése
 

@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: f9e85a2660ffe1088a9897e9936b6fd0360f87d5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 43a31d588ff6616d7200d9773883ce5da570b100
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684596"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927361"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure-beli adatgyár programozott figyelése
 Ez a cikk bemutatja, hogyan figyelheti a folyamatokat egy adatgyárban különböző szoftverfejlesztői készletek (SDK-k) használatával. 
@@ -152,6 +151,6 @@ A folyamat PowerShell használatával történő létrehozásával és figyelés
 
 A PowerShell-parancsmagokkal kapcsolatos teljes dokumentációért lásd: [Data Factory PowerShell-parancsmagok leírása](/powershell/module/az.datafactory).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd: [folyamatok figyelése Azure monitor cikk használatával](monitor-using-azure-monitor.md) , amelyből megtudhatja, hogyan használhatja a Azure Monitor a Data Factory folyamatok figyelésére. 
 

@@ -1,23 +1,22 @@
 ---
-title: Adatok másolása az SAP ECC-ból Azure Data Factory használatával
+title: Adatok másolása az SAP ECC-ból
 description: Megtudhatja, hogyan másolhat adatokat az SAP ECC-ból egy Azure Data Factory-folyamat másolási tevékenységének használatával támogatott fogadó adattárakba.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.author: jingwang
-ms.openlocfilehash: 526f85ca4b8854a36232c75a55847a73a8d372cc
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f875d8f4603a8f51b8b8fed2438e6f3a30c87aeb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680297"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931170"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Adatok másolása az SAP ECC-ból Azure Data Factory használatával
 
@@ -62,7 +61,7 @@ Az SAP ECC általában az SAP Gateway használatával teszi elérhetővé az ent
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -72,7 +71,7 @@ A következő szakaszokban részletesen ismertetjük az SAP ECC-összekötőre j
 
 Az SAP ECC társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | `type` | A `type` tulajdonságot `SapEcc`értékre kell beállítani. | Igen |
 | `url` | Az SAP ECC OData szolgáltatás URL-címe. | Igen |
@@ -111,7 +110,7 @@ Az SAP ECC-ból származó adatok másolásához állítsa `SapEccResource`ért�
 
 A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | `path` | Az SAP ECC OData entitás elérési útja. | Igen |
 
@@ -144,10 +143,10 @@ Az SAP ECC-ból származó adatok másolásához állítsa a másolási tevéken
 
 A másolási tevékenység `source` szakasza a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | `type` | A másolási tevékenység `source` szakaszának `type` tulajdonságát `SapEccSource`értékre kell beállítani. | Igen |
-| `query` | Az OData lekérdezési beállításai az adatszűréshez. Például:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Az SAP ECC-összekötő az összesített URL-címről másolja az adatait:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| `query` | Az OData lekérdezési beállításai az adatszűréshez. Példa:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Az SAP ECC-összekötő az összesített URL-címről másolja az adatait:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 ### <a name="example"></a>Példa
 
@@ -210,6 +209,6 @@ Az SAP ECC-ból történő adatmásoláskor a következő leképezések használ
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Data Factoryban a másolási tevékenység által a forrásként és a nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

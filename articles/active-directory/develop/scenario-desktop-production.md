@@ -1,6 +1,6 @@
 ---
-title: Webes API-kat meghívó asztali alkalmazás (áttérés éles környezetbe) – Microsoft Identity platform
-description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó asztali alkalmazást (az éles környezetbe)
+title: A webes API-k az éles környezetben való hívása a Microsoft Identity platformba | Azure
+description: Ismerje meg, hogyan helyezhet át egy olyan asztali alkalmazást, amely webes API-kat hív meg éles környezetben
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,16 +17,16 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5331f01c5dc6acf01f567dbe4c332853bf7aa47e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81a5e57d0ef37a3a2e758e42f122c8e014c94958
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175547"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919983"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Webes API-kat meghívó asztali alkalmazás – áttérés éles környezetbe
 
-Ez a cikk részletesen ismerteti az alkalmazás további fejlesztését és az éles környezetbe való áthelyezését.
+Ebből a cikkből megtudhatja, hogyan helyezheti át az asztali alkalmazást a webes API-k éles környezetben való meghívásával.
 
 ## <a name="handling-errors-in-desktop-applications"></a>Hibák feldolgozása asztali alkalmazásokban
 

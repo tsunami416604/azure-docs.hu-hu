@@ -3,21 +3,20 @@ title: Az adatkezelési átjáró kibocsátási megjegyzései
 description: adatkezelés Gateway Tory kibocsátási megjegyzései
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bb89ed08b05f9a8f271ceee400bc609881e7048d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d0e31a89494477e048c7a2f9f7b8165e08d1a2f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682586"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924255"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Az adatkezelési átjáró kibocsátási megjegyzései
 > [!NOTE]
@@ -75,7 +74,7 @@ A kibocsátási megjegyzések itt nem állnak fenn. A legújabb [kibocsátási m
 
 
 ## <a name="2561641"></a>2.5.6164.1
-### <a name="enhancements"></a>Fejlesztések
+### <a name="enhancements"></a>Kiemelés
 - Továbbfejlesztett és megbízhatóbb átjáró-regisztrációs élmény – mostantól nyomon követheti a folyamat állapotát az átjáró regisztrálási folyamata során, így a regisztrációs élmény még rugalmasabb lehet.
 - Az átjárók visszaállítási folyamatának továbbfejlesztése – akkor is helyreállíthatja az átjárót, ha nem rendelkezik ezzel a frissítéssel az átjáró biztonságimásolat-fájljával. Ehhez vissza kell állítania a társított szolgáltatás hitelesítő adatait a portálon.
 - Hibajavítás.

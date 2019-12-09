@@ -4,21 +4,20 @@ description: Ismerje meg, hogyan helyezhetők át adatok a MySQL-adatbázisból 
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 452f4fce-9eb5-40a0-92f8-1e98691bea4c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4a7b42b51f49ab0c11aa8af3af6495c60907d230
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666116"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928114"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Adatok áthelyezése a MySQL-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -66,14 +65,14 @@ A következő szakaszokban részletesen ismertetjük a MySQL-adattárra jellemz�
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a MySQL-hez társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMySql** |Igen |
 | kiszolgáló |A MySQL-kiszolgáló neve. |Igen |
 | adatbázis |A MySQL-adatbázis neve. |Igen |
-| Séma |A séma neve az adatbázisban. |Nem |
+| séma |A séma neve az adatbázisban. |Nem |
 | authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: `Basic`. |Igen |
-| userName |Adja meg a MySQL-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
+| userName (Felhasználónév) |Adja meg a MySQL-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
 | jelszó |Adja meg a megadott felhasználói fiók jelszavát. |Igen |
 | Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni MySQL-adatbázishoz való kapcsolódáshoz. |Igen |
 
@@ -82,7 +81,7 @@ Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok telje
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **RelationalTable** típusú (MySQL-adatkészletet tartalmazó) adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | tableName |Annak a MySQL-adatbázis-példánynak a neve, amelyhez a társított szolgáltatás hivatkozik. |Nem (ha meg van adva a **RelationalSource** **lekérdezése** ) |
 
@@ -93,7 +92,7 @@ Míg a tevékenység **typeProperties** szakaszában elérhető tulajdonságok a
 
 Ha a másolási tevékenységben a forrás **RelationalSource** típusú (amely tartalmazza a MySQL-t), a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
 
@@ -303,15 +302,15 @@ Az adatok MySQL-re való áthelyezésekor a következő leképezések használat
 | --- | --- |
 | bigint aláíratlan |Decimális |
 | bigint |Int64 |
-| bites |Decimális |
+| bit |Decimális |
 | blob |Bájt [] |
 | logikai |Logikai |
 | char |Sztring |
-| dátum |datetime |
-| dátum/idő |datetime |
+| dátum |Dátum/idő |
+| dátum/idő |Dátum/idő |
 | tizedes tört |Decimális |
-| dupla pontosság |duplán |
-| double |duplán |
+| dupla pontosság |Double |
+| double |Double |
 | Enum |Sztring |
 | lebegőpontos |Önálló |
 | int előjel nélküli |Int64 |
@@ -327,19 +326,19 @@ Az adatok MySQL-re való áthelyezésekor a következő leképezések használat
 | mediumint |Int32 |
 | mediumtext |Sztring |
 | numerikus |Decimális |
-| valós |duplán |
+| real |Double |
 | halmaz |Sztring |
 | smallint aláíratlan |Int32 |
 | smallint |Int16 |
 | szöveg |Sztring |
-| time |TimeSpan |
-| időbélyeg |datetime |
+| time |időtartam |
+| időbélyeg |Dátum/idő |
 | tinyblob |Bájt [] |
 | tinyint aláíratlan |Int16 |
 | tinyint |Int16 |
 | tinytext |Sztring |
 | varchar |Sztring |
-| év |int |
+| év |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
 A forrás adatkészletben lévő oszlopok a fogadó adatkészlet oszlopaihoz való leképezésével kapcsolatos további tudnivalókért lásd: [adatkészlet oszlopainak leképezése Azure Data Factoryban](data-factory-map-columns.md).

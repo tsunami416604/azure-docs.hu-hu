@@ -4,19 +4,17 @@ description: Megtudhatja, hogyan épülnek fel SQL Database naplózási naplók.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 3b7a3c295d2edd60c70f47ea155a5d747a3bfb03
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5bd3a3ae5ab95076129e2565a578bdc6ac0e1e38
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873760"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928638"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database napló formátuma
 
@@ -32,16 +30,16 @@ Például az adatbázis-`Database1` `Server1` a következő egy lehetséges érv
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
-[Írásvédett replikák](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out) A naplófájlok tárolása ugyanabban a tárolóban történik. A tárolóban lévő címtár-hierarchia `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`formátumú. A blob fájlnevének formátuma azonos. A csak olvasható replikák naplófájljai ugyanabban a tárolóban tárolódnak.
+[Írásvédett replikák](sql-database-read-scale-out.md) A naplófájlok tárolása ugyanabban a tárolóban történik. A tárolóban lévő címtár-hierarchia `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`formátumú. A blob fájlnevének formátuma azonos. A csak olvasható replikák naplófájljai ugyanabban a tárolóban tárolódnak.
 
 
 ### <a name="event-hub"></a>Event Hubs-eseményközpontok
 
-A naplózási eseményeket a rendszer az auditálási konfiguráció során meghatározott névtérre és az Event hub-ra írja, és az [Apache Avro](https://avro.apache.org/) -események törzsében rögzíti őket, és a JSON-formázással, UTF-8 kódolással tárolja őket. A naplók olvasásához használhat [Avro-eszközöket](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) vagy hasonló eszközöket, amelyek ezt a formátumot dolgozzák fel.
+A naplózási eseményeket a rendszer az auditálási konfiguráció során meghatározott névtérre és az Event hub-ra írja, és az [Apache Avro](https://avro.apache.org/) -események törzsében rögzíti őket, és a JSON-formázással, UTF-8 kódolással tárolja őket. A naplók olvasásához használhat [Avro-eszközöket](../event-hubs/event-hubs-capture-overview.md#use-avro-tools) vagy hasonló eszközöket, amelyek ezt a formátumot dolgozzák fel.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-A naplózási események a naplózási konfiguráció során megadott Log Analytics munkaterületre íródnak, a `SQLSecurityAuditEvents`kategóriába tartozó `AzureDiagnostics` táblázatba. További hasznos információk a Log Analytics keresési nyelvről és parancsokról: [log Analytics keresési referenciák](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search).
+A naplózási események a naplózási konfiguráció során megadott Log Analytics munkaterületre íródnak, a `SQLSecurityAuditEvents`kategóriába tartozó `AzureDiagnostics` táblázatba. További hasznos információk a Log Analytics keresési nyelvről és parancsokról: [log Analytics keresési referenciák](../log-analytics/log-analytics-log-search.md).
 
 ## <a id="subheading-1"></a>Naplózási napló mezői
 

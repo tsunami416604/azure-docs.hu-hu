@@ -7,21 +7,25 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 08/08/2019
+ms.date: 12/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 522cb9b75d5c0db270f8ba4a65850e35a2e8c4fd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685694"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923628"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Adatok betöltése a Azure Data Lake Storageból a SQL Data Warehouseba
-Az adatok Azure Data Lake Storageból a Azure SQL Data Warehouseba való betöltéséhez használjon albase külső táblákat. Bár a Data Lake Storage tárolt adatain is futtathatók az ad hoc lekérdezések, javasoljuk, hogy az adatSQL Data Warehouse a legjobb teljesítmény érdekében importálja az adatkészletbe.
+Ez az útmutató azt ismerteti, hogyan használhatók a külső táblák az adatok Azure Data Lake Storageból Azure SQL Data Warehouseba való betöltéséhez. Bár a Data Lake Storage tárolt adatain is futtathatók az ad hoc lekérdezések, javasoljuk, hogy az adatSQL Data Warehouse a legjobb teljesítmény érdekében importálja az adatkészletbe. 
 
+> [!NOTE]  
+> A betöltés alternatívájaként a [másolási utasítás](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) jelenleg nyilvános előzetes verzióban érhető el. Ha visszajelzést szeretne küldeni a COPY utasításról, küldjön egy e-mailt a következő terjesztési listára: sqldwcopypreview@service.microsoft.com.
+>
 > [!div class="checklist"]
+
 > * Hozza létre a Data Lake Storage betöltéséhez szükséges adatbázis-objektumokat.
 > * Kapcsolódjon egy Data Lake Storage könyvtárhoz.
 > * Betöltés az Azure SQL Data Warehouseba.
@@ -33,14 +37,13 @@ Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Mana
 
 Az oktatóanyag futtatásához a következőkre lesz szüksége:
 
-* Azure Active Directory alkalmazást a szolgáltatások közötti hitelesítéshez. A létrehozásához kövesse az [Active Directory-hitelesítést](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
-
 * Egy Azure SQL Data Warehouse. Lásd: [Létrehozás és lekérdezés és Azure SQL Data Warehouse](create-data-warehouse-portal.md).
-
-* Egy Data Lake Storage-fiók. Lásd: [Azure Data Lake Storage első lépései](../data-lake-store/data-lake-store-get-started-portal.md). 
+* Egy Data Lake Storage-fiók. Lásd: [Azure Data Lake Storage első lépései](../data-lake-store/data-lake-store-get-started-portal.md). Ehhez a Storage-fiókhoz konfigurálnia kell vagy meg kell adnia a következő hitelesítő adatok egyikét a betöltéshez: A Storage-fiók kulcsa, az Azure Directory alkalmazás felhasználója vagy egy HRE-felhasználó, amely a megfelelő RBAC szerepkörrel rendelkezik a Storage-fiókhoz. 
 
 ##  <a name="create-a-credential"></a>Hitelesítő adat létrehozása
-A Data Lake Storage-fiók eléréséhez létre kell hoznia egy adatbázis-főkulcsot a következő lépésben használt hitelesítő adatok titkosításához. Ezután létrehoz egy adatbázis-hatókörű hitelesítő adatot. Az egyszerű szolgáltatásokkal végzett hitelesítés során az adatbázis-hatókörrel rendelkező hitelesítő adatok a HRE-ben beállított egyszerű szolgáltatás hitelesítő adatait tárolják. A Storage-fiók kulcsát a Gen2 adatbázis-hatókörű hitelesítő adatainál is használhatja. 
+Kihagyhatja ezt a szakaszt, és folytathatja a "külső adatforrás létrehozása" lehetőséget, ha a hitelesítés során HRE továbbít. Az adatbázis-hatókörrel rendelkező hitelesítő adatok nem szükségesek ahhoz, hogy a rendszer létrehozza vagy megadja a HRE-továbbítást, de győződjön meg arról, hogy a HRE-felhasználó rendelkezik a megfelelő RBAC-szerepkörrel (Storage blob Adatolvasó, közreműködő vagy tulajdonos szerepkör) a Storage-fiókhoz. További részleteket [itt talál](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260). 
+
+A Data Lake Storage-fiók eléréséhez létre kell hoznia egy adatbázis-főkulcsot a hitelesítő adatok titkos kódjának titkosításához. Ezután létrehoz egy adatbázis-hatókörű hitelesítő adatot a titkos kulcs tárolásához. Az egyszerű szolgáltatásnév (Azure Directory alkalmazás-felhasználó) használatával végzett hitelesítés során az adatbázis-hatókörrel rendelkező hitelesítő adatok a HRE-ben beállított egyszerű szolgáltatás hitelesítő adatait tárolják. Az adatbázis-hatókörön belüli hitelesítő adatokat is használhatja a Gen2 tartozó Storage-fiók kulcsának tárolására.
 
 Ha az egyszerű szolgáltatásokkal szeretne csatlakozni Data Lake Storagehoz, **először** létre kell hoznia egy Azure Active Directory alkalmazást, létre kell hoznia egy hozzáférési kulcsot, és biztosítania kell az alkalmazás számára a Data Lake Storage-fiók elérését. Útmutatásért lásd: [hitelesítés a Azure Data Lake Storage Active Directory használatával](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
@@ -75,7 +78,7 @@ WITH
     SECRET = '<azure_storage_account_key>'
 ;
 
--- It should look something like this when authenticating using service principals:
+-- It should look something like this when authenticating using service principal:
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
@@ -84,7 +87,7 @@ WITH
 ```
 
 ## <a name="create-the-external-data-source"></a>Külső adatforrás létrehozása
-Ezzel a [create External adatforrás](/sql/t-sql/statements/create-external-data-source-transact-sql) -paranccsal tárolhatók az adattárolók helye. 
+Ezzel a [create External adatforrás](/sql/t-sql/statements/create-external-data-source-transact-sql) -paranccsal tárolhatók az adattárolók helye. Ha a HRE átmenő hitelesítéssel végzi a hitelesítést, a HITELESÍTő adatok paraméterének megadása nem kötelező. 
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -169,7 +172,7 @@ Egy külső tábla létrehozása egyszerű, de van néhány olyan árnyalat, ame
 A külső táblák erősen begépeltek. Ez azt jelenti, hogy a betöltött adatsorok mindegyikének meg kell felelnie a tábla sémájának definíciójának.
 Ha egy sor nem felel meg a séma definíciójának, a rendszer elutasítja a sort a betöltésből.
 
-A REJECT_TYPE és a REJECT_VALUE beállítások segítségével megadhatja, hogy a végső táblában hány sor vagy milyen százalékban kell szerepelnie az adatmennyiségnek. Ha a betöltés során az elutasítás értéke elérte a értéket, a betöltés sikertelen lesz. Az elutasított sorok leggyakoribb oka a séma definíciójának eltérése. Ha például egy oszlop helytelenül van megadva az int sémája, ha a fájlban lévő adat karakterlánc, akkor minden sor betöltése sikertelen lesz.
+A REJECT_TYPE és REJECT_VALUE lehetőséggel megadhatja, hogy a végső táblában hány sor vagy milyen százalékban kell szerepelnie az adatmennyiségnek. Ha a betöltés során az elutasítás értéke elérte a értéket, a betöltés sikertelen lesz. Az elutasított sorok leggyakoribb oka a séma definíciójának eltérése. Ha például egy oszlop helytelenül van megadva az int sémája, ha a fájlban lévő adat karakterlánc, akkor minden sor betöltése sikertelen lesz.
 
 Data Lake Storage Gen1 a szerepköralapú Access Control (RBAC) használatával vezérli az adathozzáférést. Ez azt jelenti, hogy az egyszerű szolgáltatásnak olvasási engedéllyel kell rendelkeznie a Location paraméterben definiált címtárakhoz és a végső könyvtár és a fájlok gyermekeihez. Ez lehetővé teszi, hogy a Base hitelesítse és betöltse az adatok betöltését. 
 
@@ -178,7 +181,7 @@ Az adatok Data Lake Storage való betöltéséhez használja a [CREATE TABLE as 
 
 A CTAS létrehoz egy új táblát, és feltölti azt egy SELECT utasítás eredményeivel. A CTAS határozza meg, hogy az új tábla ugyanazokat az oszlopokat és adattípusokat tartalmazza, mint a SELECT utasítás eredményei. Ha az összes oszlopot kiválasztja egy külső táblából, az új tábla a külső tábla oszlopainak és adattípusának replikája.
 
-Ebben a példában egy DimProduct nevű kivonatoló elosztott táblát hozunk létre a külső tábla DimProduct_external.
+Ebben a példában egy DimProduct nevű kivonatoló elosztott táblát hozunk létre a külső táblából DimProduct_external.
 
 ```sql
 
@@ -211,13 +214,13 @@ Az alábbi példa jó kiindulási pont a statisztikák létrehozásához. Egyosz
 ## <a name="achievement-unlocked"></a>A megvalósítás feloldva!
 Sikeresen betöltötte az adatAzure SQL Data Warehouseba. Remek munka!
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 Ebben az oktatóanyagban külső táblákat hozott létre a Data Lake Storage Gen1ban tárolt adatok struktúrájának definiálásához, majd a Base CREATE TABLE AS SELECT utasítás használatával tölti be az adatok adattárházba való betöltését. 
 
 A következőket hajtotta végre:
 > [!div class="checklist"]
-> * A Data Lake Storage Gen1ból való betöltéshez szükséges adatbázis-objektumok létrehozása.
-> * Egy Data Lake Storage Gen1 könyvtárhoz csatlakozik.
+> * A Data Lake Storageból való betöltéshez szükséges adatbázis-objektumok létrehozása.
+> * Egy Data Lake Storage könyvtárhoz csatlakozik.
 > * A rendszer betöltötte az adatAzure SQL Data Warehouse.
 >
 

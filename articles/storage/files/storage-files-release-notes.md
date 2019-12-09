@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/8/2019
+ms.date: 12/6/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 633465e9123d679b1aa0e7f7ad048b17c18f2acb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8caa66801dda223681c38e966ba3d08b1b0c5921
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771036"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931069"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>A Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -50,7 +50,7 @@ A következő kibocsátási megjegyzések az Azure File Sync-ügynök verziójá
 ### <a name="improvements-and-issues-that-are-fixed"></a>Javított javítás és problémák
 
 - Önkiszolgáló visszaállítás támogatása
-    - A felhasználók mostantól visszaállíthatják a fájljaikat az előző verzió funkció használatával. A V9-es kiadás előtt a korábbi verzió funkció nem támogatott olyan köteteken, amelyeken engedélyezve van a felhőalapú rétegek használata. Ezt a funkciót külön kell engedélyezni az egyes köteteken, amelyeken engedélyezve van egy, a felhőalapú rétegek használatát engedélyező végpont. További információ:  
+    - A felhasználók mostantól visszaállíthatják a fájljaikat az előző verzió funkció használatával. A V9-es kiadás előtt a korábbi verzió funkció nem támogatott olyan köteteken, amelyeken engedélyezve van a felhőalapú rétegek használata. Ezt a funkciót külön kell engedélyezni az egyes köteteken, amelyeken engedélyezve van egy, a felhőalapú rétegek használatát engedélyező végpont. További tudnivalókért lásd: .  
 Önkiszolgáló [Visszaállítás az előző verziók és a VSS (Kötet árnyékmásolata szolgáltatás) használatával](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service). 
  
 - Nagyobb fájlmegosztás-méretek támogatása 
@@ -77,7 +77,8 @@ A következő kibocsátási megjegyzések az Azure File Sync-ügynök verziójá
     - Csökkentett visszahívási hibák. A visszahívás mérete mostantól automatikusan igazodik a hálózati sávszélesség alapján. 
     - Továbbfejlesztett letöltési teljesítmény új kiszolgáló szinkronizálási csoportba való felvételekor. 
     - A korlátozási ütközések miatt nem szinkronizált fájlok csökkentése. 
-
+    - A fájlok sikertelenek lesznek, vagy bizonyos helyzetekben váratlanul visszahívhatók, ha a kiszolgálói végpont elérési útja egy kötet csatlakoztatási pontja.
+    
 ### <a name="evaluation-tool"></a>Kiértékelési eszköz
 Azure File Sync telepítése előtt ki kell értékelnie, hogy kompatibilis-e a rendszerrel a Azure File Sync próbaverziós eszköz használatával. Ez az eszköz egy Azure PowerShell parancsmag, amely a fájlrendszer és az adatkészlet esetleges problémáit ellenőrzi, például a nem támogatott karaktereket vagy az operációs rendszer nem támogatott verzióját. A telepítési és használati utasításokért tekintse meg a tervezési útmutató [kiértékelési eszköz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) című szakaszát. 
 
@@ -414,7 +415,7 @@ A következő kibocsátási megjegyzések a Azure File Sync ügynök verzióján
 
 - A Azure Government Cloud támogatása
   - Bővítettük a Azure Government-felhő előzetes verziójának támogatását. Ehhez egy fehér listára vonatkozó előfizetésre és egy speciális, a Microsofttól letölthető ügynökre van szükség. Ha hozzáférést szeretne kapni az előzetes verzióhoz, küldjön nekünk e-mailt közvetlenül [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com)címen.
-- Az deduplikálás támogatása
+- Adatdeduplikáció támogatása
     - Az deduplikálás mostantól teljes mértékben támogatott a Windows Server 2016 és a Windows Server 2019 rendszeren engedélyezve van a felhőalapú rétegek használata. Ha engedélyezni szeretné a deduplikálás szolgáltatást egy olyan köteten, amelyen engedélyezve van a felhőalapú réteg, a további tárhelyek kiépítésének hiányában további fájlokat is gyorsítótárazhat a helyszínen.
 - Az offline adatátvitel támogatása (például Data Boxon keresztül)
     - Egyszerűen áttelepíthet nagy mennyiségű adatmennyiséget a Azure File Syncba bármilyen módon. Kiválaszthatja a Azure Data Box, a AzCopy és a harmadik féltől származó áttelepítési szolgáltatásokat is. Nem kell nagy mennyiségű sávszélességet használnia az Azure-ba való adatgyűjtéshez Data Box esetén – egyszerűen küldje el! További információ: [Offline adatátvitel dokumentumok](https://aka.ms/AFS/OfflineDataTransfer).

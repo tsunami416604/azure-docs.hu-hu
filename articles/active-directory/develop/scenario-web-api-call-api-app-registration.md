@@ -1,6 +1,6 @@
 ---
-title: Webes API-t, hogy hívások alsóbb rétegbeli webes API-k (alkalmazásregisztráció) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre a webes API-k a hívások alsóbb rétegbeli webes API-k (alkalmazásregisztráció)
+title: Webes API-kat meghívó webes API regisztrálása – Microsoft Identity platform | Azure
+description: Ismerje meg, hogyan hozhat létre olyan webes API-t, amely az alárendelt webes API-kat hívja meg (alkalmazás-regisztráció)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,26 +15,26 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb03869cdea2150b6e922e2d6d81e577c3be02da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb5f4763e13935b99564bfcb6d8b6e7f463ed59e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65075385"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919800"
 ---
-# <a name="web-api-that-calls-web-apis---app-registration"></a>Webes API-t, hogy a hívások webes API-k – alkalmazás regisztrálása
+# <a name="web-api-that-calls-web-apis---app-registration"></a>Webes API-kat meghívó webes API – alkalmazás regisztrálása
 
-Webes API-t, amely meghívja az alsóbb rétegbeli webes API-k ugyanazt a regisztrációt, mint egy védett webes API-t tartalmaz. Ezért kell kövesse a [védett webes API - alkalmazás regisztrációja](scenario-protected-web-api-app-registration.md).
+Az alárendelt webes API-kat meghívó webes API-k ugyanazzal a regisztrációval rendelkeznek, mint a védett webes API-k. Ezért követnie kell a [védett webes API-alkalmazás regisztrációjának](scenario-protected-web-api-app-registration.md)utasításait.
 
-Azonban óta a webalkalmazás most hívások webes API-kat, lesz egy bizalmas ügyfélalkalmazás. Ezért van szükséges további regisztrációs adatai: az alkalmazás (ügyfél-hitelesítő adatok) titkos kulcsok megoszthatja a Microsoft identity platform kell.
+Mivel azonban a webalkalmazás most meghívja a webes API-kat, a szolgáltatás bizalmas ügyfélalkalmazás lesz. Ezért van szükség további regisztrációs adatokra: az alkalmazásnak meg kell osztania a titkos kulcsokat (az ügyfél hitelesítő adatait) a Microsoft Identity platformmal.
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
 ## <a name="api-permissions"></a>API-engedélyek
 
-Webes alkalmazások API-k hívása a tulajdonosi jogkivonat érkezett, amely a felhasználó nevében. Delegált engedélyek kéréséhez szükséges. További információkért lásd: [webes API-k elérésére vonatkozó engedélyek hozzáadása](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+Webalkalmazások hívjanak API-kat azon felhasználó nevében, akinek a tulajdonosi jogkivonatot fogadták. Delegált engedélyeket kell kérniük. Részletekért lásd: [a webes API-k eléréséhez szükséges engedélyek hozzáadása](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Alkalmazás kód konfigurációját](scenario-web-api-call-api-app-configuration.md)
+> [Az alkalmazás kódjának konfigurálása](scenario-web-api-call-api-app-configuration.md)

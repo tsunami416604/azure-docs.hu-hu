@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3563b56e596f5c79f2107bdbf74219a19c6c0d06
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bff3547456c03ae313e7465238872670965765f1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784612"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927680"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Ismert problémák és hibaelhárítási Azure Machine Learning
 
@@ -89,6 +89,19 @@ A bináris besorolási diagramok (a pontosság-visszahívás, a ROC, a nyereség
 ## <a name="datasets-and-data-preparation"></a>Adatkészletek és adat-előkészítés
 
 Ezek Azure Machine Learning adatkészletek ismert problémái.
+
+### <a name="typeerror-filenotfound-no-such-file-or-directory"></a>TypeError: FileNotFound: nincs ilyen fájl vagy könyvtár
+
+Ez a hiba akkor fordul elő, ha a megadott elérési út nem a fájl helyén található. Meg kell győződnie arról, hogy a fájlra vonatkozó hivatkozás konzisztens, ha az adatkészletet a számítási célra csatlakoztatta. A determinisztikus állapotának biztosítása érdekében javasoljuk, hogy az absztrakt elérési utat használja az adatkészlet számítási célra való csatlakoztatásakor. A következő kódban például csatoljuk az adatkészletet a számítási cél fájlrendszerének gyökerében, `/tmp`. 
+
+```python
+# Note the leading / in '/tmp/dataset'
+script_params = {
+    '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
+} 
+```
+
+Ha nem tartalmazza a Lead Forward perjelet, a "/" előtagot kell előadnia a munkakönyvtárhoz, például `/mnt/batch/.../tmp/dataset` a számítási célhelyen, hogy jelezze, hová kívánja csatlakoztatni az adatkészletet. 
 
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>Nem sikerült beolvasni a Parquet-fájlt a HTTP vagy a ADLS Gen 2 használatával
 
@@ -213,9 +226,9 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 Az Azure Kubernetes Service-fürtben telepített Azure Machine Learning-összetevők frissítéseit manuálisan kell alkalmazni. 
 
 > [!WARNING]
-> Az alábbi műveletek elvégzése előtt keresse meg az Azure Kubernetes Service-fürt verzióját. Ha a fürt verziója a 1,14-as vagy annál nagyobb, akkor nem fogja tudni újra csatlakoztatni a fürtöt a Azure Machine Learning munkaterülethez.
+> Az alábbi műveletek elvégzése előtt keresse meg az Azure Kubernetes Service-fürt verzióját. Ha a fürt verziója a 1,14-as vagy annál nagyobb, nem fogja tudni újból csatlakoztatni a fürtöt a Azure Machine Learning munkaterülethez.
 
-Ezeket a frissítéseket úgy alkalmazhatja, hogy leválasztja a fürtöt a Azure Machine Learning munkaterületről, majd újra csatolja a fürtöt a munkaterülethez. Ha az SSL engedélyezve van a fürtben, meg kell adnia az SSL-tanúsítványt és a titkos kulcsot, amikor újra csatlakoztatja a fürtöt. 
+Ezeket a frissítéseket úgy alkalmazhatja, hogy leválasztja a fürtöt a Azure Machine Learning munkaterületről, majd újra csatolja a fürtöt a munkaterülethez. Ha az SSL engedélyezve van a fürtben, meg kell adnia az SSL-tanúsítványt és a titkos kulcsot, amikor a fürtöt újra csatolja. 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
@@ -263,8 +276,8 @@ A keretrendszer-specifikus függőségek a megfelelő keretrendszer dokumentáci
  ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (név nincs meghatározva), AttributeError (az objektumnak nincs attribútuma)
 Ez a kivétel a betanítási szkriptből származik. A naplófájlokat a Azure Portalból tekintheti meg, ha további információt szeretne kapni a nem definiált névvel vagy az attribútum hibával kapcsolatban. Az SDK-ból a `run.get_details()` használatával tekintheti meg a hibaüzenetet. Ekkor a rendszer a futtatáshoz létrehozott összes naplófájlt is felsorolja. Győződjön meg arról, hogy megtekinti a betanítási szkriptet, javítsa ki a hibát, és próbálkozzon újra. 
 
-### <a name="horovod-is-shutdown"></a>A Horovod leállítása
-A legtöbb esetben ez a kivétel azt jelenti, hogy a horovod leállítását okozó folyamatok egyikében egy mögöttes kivétel történt. Az MPI-feladatok mindegyik rangsora saját dedikált naplófájlba kerül az Azure ML-ben. Ezek a naplók neve `70_driver_logs`. Elosztott képzés esetén a naplók neve a `_rank` utótaggal van ellátva, hogy könnyen megkülönböztesse a naplókat. A horovod leállítását okozó pontos hiba megtalálásához hajtsa végre az összes naplófájlt, és keresse meg `Traceback` a driver_log fájlok végén. Ezen fájlok egyike megadja a tényleges mögöttes kivételt. 
+### <a name="horovod-is-shut-down"></a>A Horovod leállítása
+A legtöbb esetben ez a kivétel azt jelenti, hogy a horovod okozta leállítási folyamatokban egy mögöttes kivétel történt. Az MPI-feladatok mindegyik rangsora saját dedikált naplófájlba kerül az Azure ML-ben. Ezek a naplók neve `70_driver_logs`. Elosztott képzés esetén a naplók neve a `_rank` utótaggal van ellátva, hogy könnyen megkülönböztesse a naplókat. A horovod leállítását okozó pontos hiba megtalálásához hajtsa végre az összes naplófájlt, és keresse meg `Traceback` a driver_log fájlok végén. Ezen fájlok egyike megadja a tényleges mögöttes kivételt. 
 
 ## <a name="labeling-projects-issues"></a>Projektek problémáinak címkézése
 

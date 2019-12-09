@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 63d2aa5c9e4ec751d9b95ba0d884e6dc17e207bb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bb86d551d83668a3558cf63827a64a481cf87e02
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276795"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926972"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,11 +36,11 @@ Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos tov�
 
 - Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
-- A modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő modell-és függőségi fájlokat is használhatja.
+- Egy modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő modell-és függőségi fájlokat is használhatja.
 
 - Az [Azure CLI-bővítmény a Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), a [pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-hoz vagy a [Visual Studio Code](how-to-vscode-tools.md)-hoz készült Azure Machine learning.
 
-## <a name="connect-to-your-workspace"></a>Kapcsolódás a munkaterülethez
+## <a name="connect-to-your-workspace"></a>Csatlakozás a munkaterülethez
 
 A következő kód bemutatja, hogyan csatlakozhat egy Azure Machine Learning munkaterülethez a helyi fejlesztési környezetbe gyorsítótárazott információk használatával:
 
@@ -208,7 +208,7 @@ AZUREML_MODEL_DIR a szolgáltatás telepítése során létrehozott környezeti 
 
 A következő táblázat a telepített modellek számától függően AZUREML_MODEL_DIR értékét ismerteti:
 
-| Környezet | Környezeti változó értéke |
+| Üzembe helyezés | Környezeti változó értéke |
 | ----- | ----- |
 | Egyetlen modell | A modellt tartalmazó mappa elérési útja. |
 | Több modell | Az összes modellt tartalmazó mappa elérési útja. A modellek a mappa neve és verziója szerint találhatók (`$MODEL_NAME/$VERSION`) |
@@ -528,9 +528,9 @@ Előfordulhat, hogy a számítási erőforrást is létre kell hoznia, ha péld�
 
 Az alábbi táblázat az egyes számítási célkitűzések központi telepítési konfigurációjának létrehozásához nyújt példát:
 
-| Számítási célt | Üzembe helyezési konfiguráció – példa |
+| Számítási cél | Üzembe helyezési konfiguráció – példa |
 | ----- | ----- |
-| Helyi: | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Helyi | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
@@ -857,7 +857,7 @@ SDK
 model_path = Model(ws,'mymodel').download()
 ```
 
-CLI:
+CLI
 ```azurecli-interactive
 az ml model download --model-id mymodel:1 --target-dir model_folder
 ```
@@ -867,6 +867,9 @@ az ml model download --model-id mymodel:1 --target-dir model_folder
 A nem kód modellek üzembe helyezése jelenleg előzetes verzióban érhető el, és a következő Machine learning-keretrendszereket támogatja:
 
 ### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel formátuma
+A Tensorflow-modelleket **SavedModel formátumban** kell regisztrálni, hogy a kód nélküli üzembe helyezéssel működjön.
+
+A SavedModel létrehozásával kapcsolatos információkért tekintse meg [ezt a hivatkozást](https://www.tensorflow.org/guide/saved_model) .
 
 ```python
 from azureml.core import Model
@@ -961,9 +964,9 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-A csomag létrehozása után a `package.pull()` segítségével lekérheti a rendszerképet a helyi Docker-környezetbe. A parancs kimenete megjeleníti a rendszerkép nevét. Például: 
+A csomag létrehozása után a `package.pull()` segítségével lekérheti a rendszerképet a helyi Docker-környezetbe. A parancs kimenete megjeleníti a rendszerkép nevét. Példa: 
 
-`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
+`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338` kérdésre adott válaszban foglalt lépéseket. 
 
 A modell letöltése után a `docker images` parancs használatával listázhatja a helyi rendszerképeket:
 
@@ -1074,7 +1077,7 @@ A regisztrált modellek törléséhez használja a `model.delete()`.
 
 További információ: a [webszolgáltatások dokumentációja. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) és [Model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)

@@ -4,21 +4,20 @@ description: 'Ismerje meg az adatáthelyezést Data Factory folyamatokban: adat�
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0f7771c55bfdc837921fb731b29e88c970b5d283
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682650"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931920"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Az adatáthelyezés a másolási tevékenység használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -108,11 +107,11 @@ Ha a forrás-és fogadó adattárak is a felhőben vannak, Data Factory a szolg�
 | Brazília | Dél-Brazília | Dél-Brazília |
 | Európa | Észak-Európa | Észak-Európa |
 | &nbsp; | Nyugat-Európa | Nyugat-Európa |
-| Egyesült Királyság | Az Egyesült Királyság nyugati régiója | Egyesült Királyság déli régiója |
+| Egyesült Királyság | Egyesült Királyság nyugati régiója | Egyesült Királyság déli régiója |
 | &nbsp; | Egyesült Királyság déli régiója | Egyesült Királyság déli régiója |
 | Ázsia és a Csendes-óceáni térség | Délkelet-Ázsia | Délkelet-Ázsia |
 | &nbsp; | Kelet-Ázsia | Délkelet-Ázsia |
-| Ausztrália | Kelet-Ausztrália | Kelet-Ausztrália |
+| Ausztrália | Ausztrália keleti régiója | Ausztrália keleti régiója |
 | &nbsp; | Délkelet-Ausztrália | Délkelet-Ausztrália |
 | India | Közép-India | Közép-India |
 | &nbsp; | Nyugat-India | Közép-India |
@@ -120,7 +119,7 @@ Ha a forrás-és fogadó adattárak is a felhőben vannak, Data Factory a szolg�
 | Japán | Kelet-Japán | Kelet-Japán |
 | &nbsp; | Nyugat-Japán | Kelet-Japán |
 | Dél-Korea | Korea középső régiója | Korea középső régiója |
-| &nbsp; | Korea déli régiója | Korea középső régiója |
+| &nbsp; | Dél-Korea | Korea középső régiója |
 
 Azt is megteheti, hogy explicit módon megadhatja Data Factory szolgáltatás azon régióját, amelyet a másolás végrehajtásához kíván használni a `executionLocation` tulajdonság megadásával a másolási tevékenység `typeProperties`. A tulajdonsághoz tartozó támogatott értékek az **adatáthelyezési** oszlophoz használt fenti régióban vannak felsorolva. Vegye figyelembe, hogy az adatai a másolás során a hálózaton keresztül haladnak át az adott régióban. Például a Koreában található Azure-áruházak közötti másoláshoz megadhatja, hogy `"executionLocation": "Japan East"` a japán régión keresztüli átirányításhoz (lásd: a [JSON minta](#by-using-json-scripts) hivatkozásként).
 
@@ -211,6 +210,6 @@ A különböző adattárak eltérő natív típusú rendszerekkel rendelkeznek. 
 
 A natív típusrendszer és az adattár .NET-típusra való leképezése a megfelelő adattár-cikkben található. (Kattintson az adott hivatkozásra a támogatott adattár táblában). Ezeket a leképezéseket a táblázatok létrehozásakor a megfelelő típusok meghatározására használhatja, így a másolási tevékenység a megfelelő konverziókat hajtja végre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a másolási tevékenységről: [adatok másolása az Azure Blob Storage-ból a Azure SQL Databaseba](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 * Az adatok helyszíni adattárból Felhőbeli adattárba való áthelyezésével kapcsolatos további információkért lásd: [adatok áthelyezése a helyszínről a Felhőbeli adattárakba](data-factory-move-data-between-onprem-and-cloud.md).

@@ -4,20 +4,19 @@ description: Megtudhatja, hogyan másolhat át a támogatott forrásokból szár
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: d8cbc7410f2b2bd525148cee9dc5b8ddbb756dff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b43ec36f6f3a9111656892c65af2592fce6eaed2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680511"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931757"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az Oracle-ből és a rendszerből a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -57,7 +56,7 @@ Pontosabban, ez az Oracle-összekötő a következőket támogatja:
 
 Az Integration Runtime egy beépített Oracle-illesztőprogramot biztosít. Ezért nem kell manuálisan telepítenie az illesztőprogramot, amikor a és az Oracle rendszerbe másol adatokból.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -67,7 +66,7 @@ A következő szakaszokban részletesen ismertetjük az Oracle-összekötőhöz 
 
 Az Oracle társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot az **Oracle**értékre kell beállítani. | Igen |
 | connectionString | Megadja az Oracle Database-példányhoz való kapcsolódáshoz szükséges adatokat. <br/>A mező megjelölése `SecureString`ként, hogy biztonságosan tárolja azt a Data Factoryban. A jelszót Azure Key Vaultba is helyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja Azure Key Vault a hitelesítő adatokat](store-credentials-in-key-vault.md) . <br><br>**Támogatott kapcsolattípus**: az **Oracle SID** vagy az **Oracle szolgáltatás nevét** használhatja az adatbázis azonosításához:<br>– Ha SID-t használ: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Ha a szolgáltatás nevét használja: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Igen |
@@ -178,12 +177,12 @@ Ez a szakasz az Oracle-adatkészlet által támogatott tulajdonságok listáját
 
 Az adatok és az Oracle közötti másoláshoz állítsa az adatkészlet Type (típus) tulajdonságát `OracleTable`értékre. A következő tulajdonságok támogatottak.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát `OracleTable`értékre kell beállítani. | Igen |
-| Séma | A séma neve. |Nem, forrás, igen, fogadó  |
-| tábla | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
-| tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a `schema` és a `table` értéket. | Nem, forrás, igen, fogadó |
+| séma | A séma neve. |Nem, forrás, igen, fogadó  |
+| table | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
+| tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a `schema` és a `table`. | Nem, forrás, igen, fogadó |
 
 **Példa**
 
@@ -217,7 +216,7 @@ Ez a szakasz az Oracle-forrás és a fogadó által támogatott tulajdonságok l
 
 Az Oracle-adatok másolásához állítsa a forrás típusát a másolási tevékenységbe `OracleSource`. A másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát `OracleSource`értékre kell állítani. | Igen |
 | oracleReaderQuery | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`.<br>Ha engedélyezi a particionált terhelést, össze kell kapcsolnia a lekérdezéshez tartozó beépített partíciós paramétereket. Példaként tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát. | Nem |
@@ -264,7 +263,7 @@ Az Oracle-adatok másolásához állítsa a forrás típusát a másolási tevé
 
 Az Oracle-be való másoláshoz állítsa a fogadó típusát a másolási tevékenységbe `OracleSink`. A másolási tevékenység fogadója szakaszban a következő tulajdonságok támogatottak.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadójának Type tulajdonságát `OracleSink`értékre kell beállítani. | Igen |
 | writeBatchSize | Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri `writeBatchSize`.<br/>Az engedélyezett értékek egész szám (sorok száma). |Nem (az alapértelmezett érték 10 000) |
@@ -312,7 +311,7 @@ A particionált másolás engedélyezésekor a Data Factory párhuzamos lekérde
 
 Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálásával, különösen akkor, ha nagy mennyiségű adatmennyiséget tölt be az Oracle-adatbázisból. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása során a rendszer úgy helyezi át, hogy több fájlként írjon egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
 
-| Forgatókönyv                                                     | Javasolt beállítások                                           |
+| Alkalmazási helyzet                                                     | Javaslatokra vonatkozó beállítások                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Teljes terhelés nagyméretű táblából, fizikai partíciókkal.          | **Partíciós beállítás**: a tábla fizikai partíciói. <br><br/>A végrehajtás során a Data Factory automatikusan észleli a fizikai partíciókat, és az Adatmásolást partíciók szerint. |
 | Teljes terhelés a nagyméretű táblából fizikai partíciók nélkül, míg az adatparticionálás egész oszlopa. | **Partíciós beállítások**: dinamikus tartományú partíció.<br>**Partíciós oszlop**: az adatparticionáláshoz használt oszlop megadására szolgál. Ha nincs megadva, a rendszer az elsődleges kulcs oszlopot használja. |
@@ -360,18 +359,18 @@ Amikor a és az Oracle rendszerbe másol adatokból, a következő leképezések
 | BLOB |Bájt []<br/>(csak Oracle 10g és újabb verziók esetén támogatott) |
 | CHAR |Sztring |
 | CLOB |Sztring |
-| DATE |DateTime |
+| DATE |Dátum és idő |
 | FLOAT |Decimális, karakterlánc (ha a pontosság > 28) |
-| INTEGER |Decimális, karakterlánc (ha a pontosság > 28) |
+| EGÉSZ SZÁM |Decimális, karakterlánc (ha a pontosság > 28) |
 | HOSSZÚ |Sztring |
 | HOSSZÚ NYERS |Bájt [] |
 | NCHAR |Sztring |
 | NCLOB |Sztring |
-| SZÁMA |Decimális, karakterlánc (ha a pontosság > 28) |
+| SZÁM |Decimális, karakterlánc (ha a pontosság > 28) |
 | NVARCHAR2 |Sztring |
 | NYERS |Bájt [] |
 | ROWID |Sztring |
-| IDŐBÉLYEG |DateTime |
+| IDŐBÉLYEG |Dátum és idő |
 | IDŐBÉLYEG HELYI IDŐZÓNÁVAL |Sztring |
 | IDŐBÉLYEG IDŐZÓNÁVAL |Sztring |
 | ELŐJEL NÉLKÜLI EGÉSZ SZÁM |Szám |
@@ -385,5 +384,5 @@ Amikor a és az Oracle rendszerbe másol adatokból, a következő leképezések
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

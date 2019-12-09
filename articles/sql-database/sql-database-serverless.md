@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: d1f3bf6cb1467d0bb4906ff2409e72828b22cd20
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e90bff7548be5f469ebbcdc21dd9b93dc887a30e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807017"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931957"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 
@@ -185,18 +185,22 @@ Lásd [: gyors útmutató: önálló adatbázis létrehozása Azure SQL Database
 
 Az alábbi példa egy új adatbázist hoz létre a kiszolgáló nélküli számítási szinten.  Ez a példa explicit módon megadja a minimális virtuális mag, a maximális virtuális mag és az automatikus szüneteltetés késleltetését.
 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```powershell
-New-AzSqlDatabase `
-  -ResourceGroupName $resourceGroupName `
-  -ServerName $serverName `
-  -DatabaseName $databaseName `
-  -ComputeModel Serverless `
-  -Edition GeneralPurpose `
-  -ComputeGeneration Gen5 `
-  -MinVcore 0.5 `
-  -MaxVcore 2 `
-  -AutoPauseDelayInMinutes 720
+New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
+  -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
+  -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```powershell
+az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
+  -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
+```
+
+* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) használata
 
@@ -215,22 +219,26 @@ Részletekért lásd: [adatbázis létrehozása](/sql/t-sql/statements/create-da
 
 Az alábbi példa egy adatbázist helyez át a kiépített számítási szintről a kiszolgáló nélküli számítási szintbe. Ez a példa explicit módon megadja a minimális virtuális mag, a maximális virtuális mag és az automatikus szüneteltetés késleltetését.
 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```powershell
-Set-AzSqlDatabase `
-  -ResourceGroupName $resourceGroupName `
-  -ServerName $serverName `
-  -DatabaseName $databaseName `
-  -Edition GeneralPurpose `
-  -ComputeModel Serverless `
-  -ComputeGeneration Gen5 `
-  -MinVcore 1 `
-  -MaxVcore 4 `
-  -AutoPauseDelayInMinutes 1440
+Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
+  -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 `
+  -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```powershell
+az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
+  --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
+```
+
+* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) használata
 
-Az alábbi példa egy adatbázist helyez át a kiépített számítási szintről a kiszolgáló nélküli számítási szintbe. 
+Az alábbi példa egy adatbázist helyez át a kiépített számítási szintről a kiszolgáló nélküli számítási szintbe.
 
 ```sql
 ALTER DATABASE testdb 
@@ -245,23 +253,15 @@ A kiszolgáló nélküli adatbázisok a kiépített számítási rétegekbe hely
 
 ## <a name="modifying-serverless-configuration"></a>Kiszolgáló nélküli konfiguráció módosítása
 
-### <a name="maximum-vcores"></a>Virtuális magok maximális száma
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-#### <a name="use-powershell"></a>A PowerShell használata
+A maximális vagy a minimális virtuális mag, valamint az automatikus szüneteltetés késleltetésének módosítása a PowerShell [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) parancsával történik a `MaxVcore`, `MinVcore`és `AutoPauseDelayInMinutes` argumentumok használatával.
 
-A maximális virtuális mag módosítását a PowerShell [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) parancsával végezheti el a `MaxVcore` argumentum használatával.
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="minimum-vcores"></a>Virtuális magok minimális száma
+A maximális vagy a minimális virtuális mag módosítását, valamint az automatikus szüneteltetés késleltetését az az [SQL db Update](/cli/azure/sql/db#az-sql-db-update) paranccsal végezheti el az Azure CLI-ben a `capacity`, a `min-capacity`és az `auto-pause-delay` argumentum használatával.
 
-#### <a name="use-powershell"></a>A PowerShell használata
-
-A minimális virtuális mag módosítását a PowerShell [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) parancsával végezheti el a `MinVcore` argumentum használatával.
-
-### <a name="autopause-delay"></a>Automatikus szüneteltetés késleltetése
-
-#### <a name="use-powershell"></a>A PowerShell használata
-
-Az automatikus szüneteltetés késleltetésének módosítása a PowerShell [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) parancsával történik a `AutoPauseDelayInMinutes` argumentum használatával.
+* * *
 
 ## <a name="monitoring"></a>Monitoring
 
@@ -298,13 +298,20 @@ A Azure Portal az adatbázis állapota megjelenik a kiszolgáló áttekintés ab
 
 A következő PowerShell-paranccsal kérdezheti le egy adatbázis szüneteltetési és folytatási állapotát:
 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```powershell
-Get-AzSqlDatabase `
-  -ResourceGroupName $resourcegroupname `
-  -ServerName $servername `
-  -DatabaseName $databasename `
+Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername -DatabaseName $databasename `
   | Select -ExpandProperty "Status"
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```powershell
+az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
+```
+
+* * *
 
 ## <a name="resource-limits"></a>Erőforráskorlátok
 

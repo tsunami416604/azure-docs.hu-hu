@@ -3,27 +3,23 @@ title: Kulcskarika konfigurálása
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan konfigurálhatja a kulcstartót úgy, hogy az alkalmazás gyorsítótárazza a tokeneket a kulcstartóban.
 services: active-directory
-documentationcenter: ''
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69991d105ff3523310f54e65596f2f379b547052
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 8b4599549e15d6ebe4d0bd04f96c89df86b0c0cd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803805"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917505"
 ---
 # <a name="configure-keychain"></a>Kulcskarika konfigurálása
 
@@ -37,21 +33,21 @@ Ez a cikk bemutatja, hogyan konfigurálhatja az alkalmazás jogosultságait úgy
 
 Az iOS-MSAL alapértelmezés szerint a `com.microsoft.adalcache` hozzáférési csoportot használja. Ez a MSAL és az Azure AD Authentication Library (ADAL) SDK-k által használt közös hozzáférésű csoport, amely biztosítja a legjobb egyszeri bejelentkezést (SSO) az ugyanazon közzétevőtől származó több alkalmazás között.
 
-IOS rendszeren adja hozzá a `com.microsoft.adalcache` kulcstartó csoportot az alkalmazás jogosultságához a XCode területen a **Project settings** > **képességek** > **kulcstartó megosztás**
+IOS rendszeren adja hozzá a `com.microsoft.adalcache` kulcstartó csoportot az alkalmazás jogosultságához a XCode területen a **Project settings** > **képességek** > **kulcstartó megosztása** elemnél.
 
 ### <a name="macos"></a>macOS
 
 A macOS-MSAL alapértelmezés szerint `com.microsoft.identity.universalstorage` hozzáférési csoportot használ.
 
-A macOS-es kulcstartó korlátozásai miatt a MSAL `access group` nem fordítja le közvetlenül a kulcstartó-hozzáférési csoport attribútumára (lásd: [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) a MacOS 10,14-es és korábbi verzióiban. Ugyanakkor az egyszeri bejelentkezéshez hasonlóan viselkedik, mert így biztosítható, hogy az azonos Apple Developer által terjesztett több alkalmazás is csendes SSO-val rendelkezzen.
+A macOS-es kulcstartó korlátozásai miatt a MSAL `access group` nem fordítható le közvetlenül a kulcstartó-hozzáférési csoport attribútumára (lásd: [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) a MacOS 10,14-es és korábbi verzióiban. Ugyanakkor az egyszeri bejelentkezéshez hasonlóan viselkedik, mert így biztosítható, hogy az azonos Apple Developer által terjesztett több alkalmazás is csendes SSO-val rendelkezzen.
 
 MacOS 10,15-től (macOS Catalina) a MSAL a kulcstartó-hozzáférési csoport attribútumot használja a csendes SSO eléréséhez, hasonlóan az iOS-hez.
 
 ## <a name="custom-keychain-access-group"></a>Egyéni kulcstartó-hozzáférési csoport
 
-Ha más kulcstartó-hozzáférési csoportot szeretne használni, akkor a `MSALPublicClientApplicationConfig` létrehozása előtt átadhatja az egyéni csoportot `MSALPublicClientApplication` létrehozása előtt, például:
+Ha más kulcstartó-hozzáférési csoportot szeretne használni, akkor a `MSALPublicClientApplicationConfig` létrehozása előtt átadhatja az egyéni csoportot `MSALPublicClientApplication`létrehozása előtt:
 
-Objective-C:
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"your-client-id"
@@ -67,9 +63,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 // and only shared with other applications declaring the same access group
 ```
 
-
-
-Swift
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -85,25 +79,27 @@ do {
 }       
 ```
 
-
+---
 
 ## <a name="disable-keychain-sharing"></a>Kulcstartó megosztásának letiltása
 
 Ha nem szeretné megosztani az egyszeri bejelentkezési állapotot több alkalmazás között, vagy bármilyen kulcstartó-hozzáférési csoportot használ, tiltsa le a kulcstartó-megosztást úgy, hogy átadja az alkalmazáscsomag-azonosítót a keychainGroup:
 
-Objective-C:
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
 ```
 
-Swift
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 if let bundleIdentifier = Bundle.main.bundleIdentifier {
     config.cacheConfig.keychainSharingGroup = bundleIdentifier
 }
 ```
+
+---
 
 ## <a name="handle--34018-error-failed-to-set-item-into-keychain"></a>Handle-34018 hiba (az elemek nem állíthatók be a kulcstartóba)
 

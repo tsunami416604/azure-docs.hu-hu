@@ -5,19 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 09ef8560edc47a6bb12fad782ae3d34987471127
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: fbac52d65433f2137d565ca60fcf754e49199640
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672536"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931397"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Konfigurálja újra az Azure-SSIS integrációs modult
 Ez a cikk azt ismerteti, hogyan lehet újrakonfigurálni egy meglévő Azure-SSIS integrációs modult. Az Azure-SSIS Integration Runtime (IR) Azure Data Factory-ben való létrehozásáról az [Azure-SSIS Integration Runtime létrehozása](create-azure-ssis-integration-runtime.md)című témakörben olvashat.  
@@ -90,7 +89,7 @@ Az Azure-SSIS integrációs modul egy példányának üzembe helyezése és elin
     Remove-AzResourceGroup -Name $ResourceGroupName -Force 
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure-SSIS futtatókörnyezettel kapcsolatos további információkért tekintse meg a következő témaköröket: 
 
 - [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk az integrációs modulokkal kapcsolatos általános információkat tartalmaz, beleértve a Azure-SSIS IR. 

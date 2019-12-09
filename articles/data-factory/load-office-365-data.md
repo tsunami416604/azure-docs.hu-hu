@@ -4,19 +4,19 @@ description: Adatok másolása az Office 365-ből az Azure Data Factory használ
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 0c938caef81063409d3c8d6632cd7e8df99f1ea1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 896265311a67b74ccf9d0226a2969284ee491c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672622"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931422"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Adatok betöltése az Office 365-ből Azure Data Factory használatával
 
@@ -43,7 +43,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési 
    
    ![Data factory kezdőlap](./media/load-office-365-data/data-factory-home-page.png)
 
-5. Az adatintegrációs alkalmazás külön lapon történő elindításához válassza a **szerző & figyelése** csempét.
+5. Az Adatintegráció alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
@@ -128,7 +128,7 @@ A folyamat futtatásához társított tevékenységek megtekintéséhez válassz
 
 ![Tevékenység figyelése](./media/load-office-365-data/activity-status.png) 
 
-Ha ez az első alkalom, amikor adatokat kér ehhez a környezethez (az adattábla kombinációja, amelynek a rendeltetési helye a betöltésre kerül, és amely felhasználói identitása az adatelérési kérelem), megjelenik a másolási tevékenység. az állapot **folyamatban**van, és csak akkor, ha a műveletek területen a "Részletek" hivatkozásra kattint, az állapot **RequesetingConsent**lesz látható.  Az adathozzáférés-jóváhagyó csoport tagjának jóvá kell hagynia a kérést a Privileged Access Management az adatgyűjtés folytatásához.
+Ha ez az első alkalom, amikor adatokat kér ehhez a környezethez (amely az adattábla egy kombinációja, amelybe a rendszer betölti az adatokat, és hogy melyik felhasználói identitás teszi az adatelérési kérelmet), a másolási tevékenység állapota **folyamatban**, és csak akkor jelenik meg, ha a műveletek területen a részletek hivatkozásra kattint, és az állapot **RequesetingConsent**lesz látható.  Az adathozzáférés-jóváhagyó csoport tagjának jóvá kell hagynia a kérést a Privileged Access Management az adatgyűjtés folytatásához.
 
 _Engedély kérése:_ 
 ![tevékenység-végrehajtás részletei – kérelem belefoglalása](./media/load-office-365-data/activity-details-request-consent.png) 

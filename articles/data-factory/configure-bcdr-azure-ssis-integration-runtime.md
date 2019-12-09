@@ -2,23 +2,22 @@
 title: Azure-SSIS Integration Runtime konfigurálása SQL Database feladatátvételhez
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a Azure-SSIS Integration Runtime Azure SQL Database geo-replikációval és feladatátvételsel a SSISDB-adatbázishoz
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: conceptual
-ms.date: 08/14/2018
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 6e709a25c6c33a1fc80a110435035b1473d92681
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 08/14/2018
+ms.openlocfilehash: 92f7d25a9c19409b220b6a71fba87da91e51a415
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681386"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928501"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>A Azure-SSIS Integration Runtime konfigurálása Azure SQL Database geo-replikációval és feladatátvételsel
 
@@ -154,7 +153,7 @@ Kövesse az alábbi lépéseket a Azure-SSIS IR leállításához, az IR átvál
 
 4. Indítsa újra az IR-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Vegye figyelembe a Azure-SSIS IR következő konfigurációs beállításait:
 

@@ -1,26 +1,23 @@
 ---
-title: Adatok áthelyezése a MongoDB a Data Factory használatával
+title: Adatok áthelyezése a MongoDB
 description: Ismerje meg, hogyan helyezhetők át adatok a MongoDB-adatbázisból a Azure Data Factory használatával.
 services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: craigg
-ms.assetid: 10ca7d9a-7715-4446-bf59-2d2876584550
+ms.author: jingwang
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/13/2018
-ms.author: jingwang
-robots: noindex
-ms.openlocfilehash: 6f982928e706b442229cc249c17c3f7aabe1f60a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666657"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928128"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Adatok áthelyezése a MongoDB a Azure Data Factory használatával
+
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-on-premises-mongodb-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-mongodb.md)
@@ -64,7 +61,7 @@ A következő szakaszokban részletesen ismertetjük a MongoDB-forrásra jellemz
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a **OnPremisesMongoDB** társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMongoDb** |Igen |
 | kiszolgáló |A MongoDB-kiszolgáló IP-címe vagy állomásneve. |Igen |
@@ -75,14 +72,14 @@ A következő táblázat a **OnPremisesMongoDB** társított szolgáltatáshoz t
 | authSource |Annak a MongoDB-adatbázisnak a neve, amelyet a hitelesítés hitelesítő adatainak ellenőrzéséhez használni kíván. |Nem kötelező (ha alapszintű hitelesítést használ). alapértelmezett: a databaseName tulajdonsággal megadott rendszergazdai fiókot és adatbázist használja. |
 | databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Igen |
 | Átjáró neve |Azon átjáró neve, amely hozzáfér az adattárhoz. |Igen |
-| encryptedCredential |Az átjáró által titkosított hitelesítő adat. |Optional |
+| encryptedCredential |Az átjáró által titkosított hitelesítő adat. |Választható |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **MongoDbCollection** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Igen |
 
@@ -93,7 +90,7 @@ A tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egy
 
 Ha a forrás típusa **MongoDbSource** , a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-92 lekérdezési karakterlánc. Például: select * from Sajáttábla. |Nem (ha meg van adva az **adatkészlet** **collectionName** ) |
 
@@ -297,8 +294,8 @@ Az adatok MongoDB való áthelyezésekor a rendszer a következő leképezéseke
 | --- | --- |
 | Bináris |Bájt [] |
 | Logikai |Logikai |
-| Dátum |DateTime |
-| NumberDouble |duplán |
+| Dátum |Dátum és idő |
+| NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |Sztring |
@@ -324,7 +321,7 @@ A [Másolás varázslóval](data-factory-data-movement-activities.md#create-a-pi
 ### <a name="example"></a>Példa
 Például az alábbi "ExampleTable" olyan MongoDB-tábla, amely egyetlen oszlopból áll, és az egyes cellákban található objektumok tömbje, valamint egy skaláris típusok tömbjét tartalmazó oszlop.
 
-| _id | Ügyfél neve | Számlák | Szolgáltatásszint | Értékelés |
+| _id | Ügyfél neve | Számlák | Szolgáltatásszint | Minősítések |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", elem: "kenyérpirító", Ár: "456", kedvezmény: "0.2"}, {invoice_id: "124", elem: "sütő", Ár: "1235", kedvezmény: "0,2"}] |Ezüst |[5, 6] |
 | 2222 |XYZ |[{invoice_id: "135", elem: "hűtőszekrény", Ár: "12543", kedvezmény: "0,0"}] |Arany |[1, 2] |
@@ -342,15 +339,15 @@ A következő táblázatok a példában szereplő eredeti tömböket képviselő
 * Az eredeti tömbben lévő adatok pozíciójának jelzése
 * A tömbben lévő egyes elemek kibontott adathalmaza
 
-Tábla "ExampleTable_Invoices":
+"ExampleTable_Invoices" tábla:
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | elem | price | Kedvezmény |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | Kedvezmény |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |kenyérpirító |456 |0,2 |
 | 1111 |1 |124 |sütő |1235 |0,2 |
 | 2222 |0 |135 |hűtőszekrény |12543 |0,0 |
 
-Tábla "ExampleTable_Ratings":
+"ExampleTable_Ratings" tábla:
 
 | _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
 | --- | --- | --- |
@@ -368,5 +365,5 @@ Az adatok a kapcsolódó adattárakból való másolása során érdemes megism�
 ## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
 A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az adatok [áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) című cikk részletes útmutatást nyújt olyan adatfolyamatok létrehozásához, amelyek egy helyszíni adattárból egy Azure-adattárba helyezik át az adatok áthelyezését.

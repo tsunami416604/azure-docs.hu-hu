@@ -4,10 +4,8 @@ description: Ismerje meg, hogyan telepítheti át a Azure Active Directory Authe
 services: active-directory
 author: tylermsft
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
@@ -16,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8129de8b1c12965810bd5d9b5dfd1093e18d1c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0653eef585dd81d2e03585bf45b45ee9df9de292
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667888"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917251"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>ADAL a MSAL áttelepítési útmutató Android rendszerhez
 
@@ -68,7 +66,7 @@ A MSAL használatához nem szükséges módosítania a meglévő alkalmazás reg
 
 Ha az alkalmazás regisztrálva van a portálon, megjelenik az **API-engedélyek** lap. Itt megtalálhatók azon API-k és engedélyek (hatókörök) listája, amelyeket az alkalmazás jelenleg úgy konfigurált, hogy hozzáférést igényeljen. Emellett az egyes API-engedélyekhez társított hatókör-nevek listáját is megjeleníti.
 
-### <a name="user-consent"></a>Felhasználói beleegyezett
+### <a name="user-consent"></a>Felhasználói beleegyezés
 
 A ADAL és a HRE v1 végpont esetében az első használatkor a felhasználó beleegyezik a saját erőforrásaiba. A MSAL és a Microsoft Identity platformmal Növekményesen is kérhető. A növekményes hozzájárulás olyan engedélyek esetében hasznos, amelyeket a felhasználó a magas jogosultsággal rendelkezők számára is megvizsgálhat, vagy ha nem, akkor az engedély szükségességének egyértelmű magyarázata nélkül is megkérdőjelezheti azt. Előfordulhat, hogy ezek az engedélyek ADAL a felhasználótól az alkalmazásba való bejelentkezést.
 
@@ -163,7 +161,7 @@ Ha olyan alkalmazással rendelkezik, amely a fiók által képviselt bérlők fi
 
 A `IAccount` gyökerében lévő jogcímek és a `IMultiTenantAccount` mindig tartalmazzák a hazai bérlő jogcímeit. Ha még nem hozott létre jogkivonatra vonatkozó kérelmet a hazai bérlőn belül, akkor ez a gyűjtemény üres lesz.
 
-## <a name="other-changes"></a>Egyéb változások
+## <a name="other-changes"></a>További változások
 
 ### <a name="use-the-new-authenticationcallback"></a>Az új AuthenticationCallback használata
 

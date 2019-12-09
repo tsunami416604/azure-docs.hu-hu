@@ -4,21 +4,20 @@ description: Útmutató az Azure Cognitive Search indexbe történő adatküldé
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: f8d46e1e-5c37-4408-80fb-c54be532a4ab
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: da867ae62ce4480c5d5854ae3f28ad258421905d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809176"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929982"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Az adatküldés Azure Cognitive Search indexbe Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -56,7 +55,7 @@ A következő szakaszokban részletesen ismertetjük a keresési indexre jellemz
 
 Az alábbi táblázat az Azure Cognitive Search társított szolgáltatáshoz tartozó JSON-elemek leírásait tartalmazza.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | -------- | ----------- | -------- |
 | type | A Type tulajdonságot a következőre kell beállítani: **AzureSearch**. | Igen |
 | url | A keresési szolgáltatás URL-címe. | Igen |
@@ -66,7 +65,7 @@ Az alábbi táblázat az Azure Cognitive Search társított szolgáltatáshoz ta
 
 Az adatkészletek definiálásához elérhető csoportok és tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adatkészletek JSON-típusai, például a struktúra, a rendelkezésre állás és a szabályzat, az összes adatkészlet esetében hasonlóak. A **typeProperties** szakasz eltérő az egyes adatkészletek esetében. A **AzureSearchIndex** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | -------- | ----------- | -------- |
 | type | A Type tulajdonságot **AzureSearchIndex**értékre kell beállítani.| Igen |
 | indexName | A keresési index neve. Data Factory nem hozza létre az indexet. Az indexnek léteznie kell az Azure Cognitive Searchban. | Igen |
@@ -77,9 +76,9 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Másolási tevékenység esetén, ha a fogadó típusa **AzureSearchIndexSink**, a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).| egyesítés (alapértelmezett)<br/>Feltöltés| Nem |
+| writeBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).| egyesítés (alapértelmezett)<br/>Feltöltés| Nem |
 | writeBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) . | 1 – 1 000. Az alapértelmezett érték a 1000. | Nem |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
@@ -103,7 +102,7 @@ A következő táblázat meghatározza, hogy az Azure Cognitive Search adattípu
 | Sztring | I |
 | Int32 | I |
 | Int64 | I |
-| duplán | I |
+| Double | I |
 | Logikai | I |
 | DataTimeOffset | I |
 | Karakterlánc-tömb | N |
@@ -291,7 +290,7 @@ A másolási tevékenység definíciójában a forrás adatkészletből származ
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
 A [másolási tevékenység teljesítményének és hangolásának útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés teljesítményére (másolási tevékenység) és az optimalizálás különféle módjaira.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 * A [másolási](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) tevékenységről szóló oktatóanyag részletesen ismerteti a folyamat másolási tevékenységgel történő létrehozását.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: bee8c1d2a1cd313c7fe59d8e53379dc57554e98c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4cd5fc50c35f4c4adb63c9d91af05dcf8b2dda40
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618565"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924639"
 ---
 # <a name="duplicate-detection"></a>Duplikálás észlelése
 
@@ -32,14 +32,14 @@ Az ismétlődő észlelés engedélyezése segít nyomon követni a várólistá
 
 Az azonosító alkalmazás-vezérlése alapvető fontosságú, mivel csak az lehet, hogy az alkalmazás összekapcsolja a *MessageID* egy üzleti folyamati környezettel, amelyből a hiba bekövetkezésekor kiszámíthatóan újraépíthető.
 
-Egy olyan üzleti folyamat esetében, amelyben több üzenet érkezik az egyes alkalmazási környezetek kezelésére, a *MessageID* az alkalmazás-szintű környezet azonosítójának, például a beszerzési rendelés számának és az üzenet tárgyának összetett része lehet. Példa: **12345.2017/fizetés**.
+Egy olyan üzleti folyamat esetében, amelyben több üzenet érkezik az egyes alkalmazási környezetek kezelésére, a *MessageID* az alkalmazás szintű környezet azonosítójának, például a beszerzési rendelés számának és az üzenet tárgyának (például **12345.2017/fizetés**) összetett része lehet.
 
 A *MessageID* mindig lehet egy GUID-azonosító, de az azonosító az üzleti folyamathoz való rögzítése kiszámítható ismételhetőséget eredményez, amely a duplikált észlelési funkció hatékony kihasználásához szükséges.
 
 > [!NOTE]
 > Ha az ismétlődő észlelés engedélyezve van, és a munkamenet-azonosító vagy a partíciós kulcs nincs beállítva, a rendszer az üzenet AZONOSÍTÓját használja partíciós kulcsként. Ha az üzenet azonosítója szintén nincs beállítva, a .NET és a AMQP könyvtárak automatikusan létrehoznak egy üzenet-azonosítót az üzenethez. További információkért lásd: [partíciós kulcsok használata](service-bus-partitioning.md#use-of-partition-keys).
 
-## <a name="enable-duplicate-detection"></a>Ismétlődések észlelésének engedélyezése
+## <a name="enable-duplicate-detection"></a>Duplikáltelem-észlelés engedélyezése
 
 A portálon a funkció be van kapcsolva az entitások létrehozásakor a **duplikált észlelés engedélyezése** jelölőnégyzettel, amely alapértelmezés szerint ki van kapcsolva. Az új témakörök létrehozásának beállítása egyenértékű.
 
@@ -60,13 +60,15 @@ A duplikált észlelés engedélyezése és az ablak mérete közvetlenül befol
 
 A kis ablak megtartása azt jelenti, hogy kevesebb üzenet-azonosítót kell megőrizni és egyeztetni, és az átviteli sebesség kevesebbre van hatással. Az ismétlődő észlelést igénylő nagy átviteli sebességű entitások esetén a lehető legkisebbre kell tartani az ablakot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
 * [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+
+Olyan esetekben, amikor az ügyfél kódja nem tud újra elküldeni egy üzenetet ugyanazzal a *MessageID* , mint korábban, fontos, hogy olyan üzeneteket tervezzenek, amelyek biztonságosan újra feldolgozhatók. Ez a [blogbejegyzés a idempotence kapcsolatos](https://particular.net/blog/what-does-idempotent-mean) különféle technikákat ismerteti.
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

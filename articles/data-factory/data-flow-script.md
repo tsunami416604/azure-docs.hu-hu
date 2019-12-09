@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory leképezési adatfolyam parancsfájlja
+title: Adatfolyam-parancsfájl leképezése
 description: A Data Factory adatáramlási parancsfájl-kódjának áttekintése – a nyelv mögött
 author: kromerm
 ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/10/2019
-ms.openlocfilehash: 4ff5a05fd40ef086c1f2332443ca03d5e872e9a8
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: d861a4355158dfe18ac3aa40a7f98dc11ebda90b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010163"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930259"
 ---
 # <a name="data-flow-script-dfs"></a>Adatfolyam-parancsfájl (DFS)
 
@@ -21,7 +22,7 @@ Az adatáramlási parancsfájl (DFS) a kódolási nyelvhez hasonló, alapul szol
 
 A forrás-átalakítás `allowSchemaDrift: true,` például azt jelzi, hogy a szolgáltatás a forrás adatkészletből származó összes oszlopot tartalmazza, még akkor is, ha azokat nem tartalmazza a séma kivetítése.
 
-## <a name="use-cases"></a>Használati esetek
+## <a name="use-cases"></a>Használati példák
 Az elosztott fájlrendszert automatikusan a felhasználói felület állítja elő. A parancsfájl gombra kattintva megtekintheti és testreszabhatja a parancsfájlt. Parancsfájlokat az ADF felhasználói felületén kívül is létrehozhat, majd átadhatja a PowerShell-parancsmagnak. Az összetett adatfolyamatok hibakeresése során könnyebben áttekintheti a szkript kódját – a folyamatok felhasználói felületi diagramjának megjelenítése helyett.
 
 Íme néhány példa a használati esetekre:

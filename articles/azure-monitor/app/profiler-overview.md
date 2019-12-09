@@ -1,5 +1,5 @@
 ---
-title: Profil éles alkalmazások az Azure-ban Application Insights Profiler | Microsoft Docs
+title: Profil éles alkalmazások az Azure-ban Application Insights Profiler
 description: Azonosítsa a webkiszolgáló kódjában található gyors elérési utat egy alacsony helyigényű Profilerrel.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: fc152aab6d0e62ac5656b50834ce17278bb6676e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 64e7cc0afa4051836d38c885dff0bc0a0e0b08c6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820522"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922091"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil éles alkalmazások az Azure-ban Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Application Insights Profiler engedélyezése az alkalmazáshoz
@@ -89,7 +89,7 @@ A **SqlCommand. Execute** metódusok például azt jelzik, hogy a kód arra vár
 
 ### <a id="block"></a>Letiltott idő
 
-A **BLOCKED_TIME** azt jelzi, hogy a kód arra vár, hogy egy másik erőforrás elérhetővé válik. Előfordulhat például, hogy egy szinkronizálási objektumra várakozik egy elérhető szál vagy egy befejezési kérelem.
+**BLOCKED_TIME** azt jelzi, hogy a kód arra vár, hogy egy másik erőforrás elérhetővé válik. Előfordulhat például, hogy egy szinkronizálási objektumra várakozik egy elérhető szál vagy egy befejezési kérelem.
 
 ### <a name="unmanaged-async"></a>Nem felügyelt aszinkron
 
@@ -109,7 +109,7 @@ Az alkalmazás hálózati műveleteket végez.
 
 ### <a id="when"></a>Oszlop
 
-A ha oszlopban látható, hogy a csomópontok számára összegyűjtött minták időbeli **változása** milyen módon változhat. A kérelem teljes tartománya 32 Time-gyűjtőre van osztva. Az adott csomóponthoz tartozó befogadó minták a 32 gyűjtőben vannak összesítve. Az egyes gyűjtők sávként jelennek meg. A sáv magassága a méretezett értéket jelöli. A **CPU_TIME** vagy **BLOCKED_TIME**jelölésű csomópontok esetén, vagy ha nyilvánvaló kapcsolat van egy erőforrás (például egy processzor, egy lemez vagy egy szál) felhasználásához, a sáv a gyűjtőben lévő erőforrások egyikét jelöli. Ezekben a mérőszámokban több erőforrás használata esetén lehetséges, hogy 100%-nál nagyobb értéket kapjon. Ha például átlagosan két processzort használ egy intervallumban, akkor 200%-ot kap.
+A ha oszlopban látható, hogy a csomópontok számára összegyűjtött minták időbeli **változása** milyen módon változhat. A kérelem teljes tartománya 32 Time-gyűjtőre van osztva. Az adott csomóponthoz tartozó befogadó minták a 32 gyűjtőben vannak összesítve. Az egyes gyűjtők sávként jelennek meg. A sáv magassága a méretezett értéket jelöli. **CPU_TIME** vagy **BLOCKED_TIME**jelölésű csomópontok esetén, vagy ha nyilvánvaló kapcsolat van egy erőforrás (például egy processzor, egy lemez vagy egy szál) felhasználásához, a sáv a gyűjtőben lévő erőforrások egyikét jelöli. Ezekben a mérőszámokban több erőforrás használata esetén lehetséges, hogy 100%-nál nagyobb értéket kapjon. Ha például átlagosan két processzort használ egy intervallumban, akkor 200%-ot kap.
 
 ## <a name="limitations"></a>Korlátozások
 

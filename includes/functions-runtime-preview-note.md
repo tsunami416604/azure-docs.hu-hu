@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 4/10/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e28104e1c795e093fda6457d9f86265312f540be
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 19503fd0e469258bb8305f151cc53b9ec3136558
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179682"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935927"
 ---
 > [!IMPORTANT]
-> Az Azure Functions Runtime előzetes 2 csak verziót támogatja az Azure Functions futtatókörnyezet 1.x. Ez a funkció előzetes verzióját nem frissítjük a futtatókörnyezeti és a jövőbeli frissítések 2.x bevezetését tervezzük. Ha Azure-on kívül az Azure Functions futtatókörnyezettel futtatására van szüksége, fontolja meg [KEDA a Kubernetes az Azure Functions használatával](../articles/azure-functions/functions-kubernetes-keda.md)
+> A Azure Functions-futtatókörnyezet Preview 2 csak az Azure Functions Runtime 1. x verzióját támogatja. Ez az előzetes verziójú funkció nem frissül a 2. x és újabb verziók támogatásához, és a rendszer nem tervezi jövőbeli frissítéseit. Ha az Azure Functions futtatókörnyezetet az Azure-on kívül kell üzemeltetni, vegye fontolóra [Azure functions használatát a Kubernetes és a KEDA használatával](../articles/azure-functions/functions-kubernetes-keda.md)

@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory leképezési adatforgalom kimutatásának átalakítása
+title: Adatforgalom pivot-átalakításának leképezése
 description: Sorokból oszlopokból származó adatok kimutatása Azure Data Factory leképezési adatforgalom pivot-transzformációjának használatával
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: e59f0623b898fedada63e51fabbaf88d8b17f59d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8f23b5e61e1aee83172a12466fac8d5b5003fea8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387796"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930288"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Az Azure-beli adatgyári kimutatás átalakítása
 
@@ -20,7 +21,7 @@ Az ADF-adatfolyamban az adatforgalom olyan összesítésként használható, ame
 
 ![Kimutatás beállításai](media/data-flow/pivot1.png "1\. kimutatás")
 
-## <a name="group-by"></a>Csoportosítási alapja
+## <a name="group-by"></a>Csoportosítási szempont
 
 ![Kimutatás beállításai](media/data-flow/pivot2.png "2\. pivot")
 
@@ -50,7 +51,7 @@ Ha úgy állítja be az oszlop elrendezését a "NORMAL" értékre, hogy az öss
 
 A kimutatás értékeihez használni kívánt összesítés beállításához kattintson a kitűzött oszlopok ablaktábla alján található mezőre. Itt adhatja meg az ADF adatáramlás-kifejezés-szerkesztőt, ahol összeállíthat egy összesítési kifejezést, és adjon meg egy leíró alias nevet az új összesített értékekhez.
 
-Az ADF-adatfolyam kifejezésének nyelvével írja le a tagolt oszlopok átalakításait a Kifejezésszerkesztő: https://aka.ms/dataflowexpressions.
+Az ADF-adatfolyam kifejezésének nyelvével írja le a kimutatott oszlopok átalakításait a Kifejezésszerkesztő: https://aka.ms/dataflowexpressions.
 
 ## <a name="pivot-metadata"></a>Kimutatás metaadatainak
 

@@ -8,15 +8,15 @@ ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.topic: article
 ms.workload: na
-ms.date: 03/19/2018
+ms.date: 12/05/2019
 ms.author: markscu
 ms.custom: seodec18
-ms.openlocfilehash: 33d448bc95f4cb12f5a06232cbab168a43d522c1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39d332a6d069a4e9fac8545f4d08a986c8984c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095201"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926284"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Alacsony prioritású virtuális gépek használata a Batch szolgáltatással
 
@@ -27,6 +27,14 @@ Az alacsony prioritású virtuális gépek kihasználhatják a felesleges kapaci
 Az alacsony prioritású virtuális gépek használatának kompromisszuma az, hogy ezek a virtuális gépek nem érhetők el, vagy bármikor előzik, a rendelkezésre álló kapacitástól függően. Emiatt az alacsony prioritású virtuális gépek a legmegfelelőbbek bizonyos típusú munkaterhelésekhez. Használjon alacsony prioritású virtuális gépeket a Batch-és aszinkron feldolgozási munkaterhelésekhez, ahol a feladat befejezési ideje rugalmas, és a munka több virtuális gépen van elosztva.
  
 Az alacsony prioritású virtuális gépeket a dedikált virtuális gépekhez képest jelentősen csökkentett áron kínáljuk. A díjszabás részleteiért lásd: [Batch-díjszabás](https://azure.microsoft.com/pricing/details/batch/).
+
+> [!NOTE]
+> Az [egypéldányos virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms) és a virtuálisgép- [méretezési csoportokhoz](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)mostantól elérhetők a [helyszíni virtuális gépek](https://azure.microsoft.com/pricing/spot/) . A helyszíni virtuális gépek az alacsony prioritású virtuális gépek fejlődése, azonban a díjszabásban különböznek, és a helyszíni virtuális gépek kiosztásakor a választható maximális árat is megadhatja.
+>
+> Azure Batch készletek a [Batch API-k és eszközök](https://docs.microsoft.com/azure/batch/batch-apis-tools)új verzióival megkezdik a helyszíni virtuális gépek támogatását 2020 első negyedévében. Az alacsony prioritású virtuális gépek továbbra is támogatottak lesznek, ha az aktuális API-t és az eszközöket legalább 12 hónapig használják, hogy elegendő idő legyen a helyszíni virtuális gépekre való áttelepítésre. 
+>
+> A [Cloud Service-konfigurációs](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) készletek nem támogatják a helyszíni virtuális gépeket. A helyszíni virtuális gépek használatához a Cloud Service-készleteket át kell telepíteni a [virtuálisgép-konfigurációs](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) készletekbe.
+
 
 ## <a name="use-cases-for-low-priority-vms"></a>Alacsony prioritású virtuális gépekre vonatkozó esetek használata
 
@@ -42,11 +50,11 @@ Az alacsony prioritású virtuális gépek jellemzői miatt milyen számítási 
 
 Néhány példa a Batch-feldolgozási használati esetekre, amelyek alacsony prioritású virtuális gépek használatára alkalmasak:
 
--   **Fejlesztés és tesztelés**: Különösen, ha nagy léptékű megoldások vannak kifejlesztve, jelentős megtakarítás valósítható meg. Az összes típusú tesztelés kihasználható, de a nagy léptékű terheléses tesztelés és a regressziós tesztelés nagyszerűen használható.
+-   **Fejlesztés és tesztelés**: különösen nagy léptékű megoldások fejlesztése esetén jelentős megtakarítás valósítható meg. Az összes típusú tesztelés kihasználható, de a nagy léptékű terheléses tesztelés és a regressziós tesztelés nagyszerűen használható.
 
--   **Igény szerinti kapacitás kiegészítése**: Az alacsony prioritású virtuális gépeket a normál dedikált virtuális gépek kiegészítéseként lehet használni – ha elérhetők, a feladatok méretezhetők, ezért az alacsonyabb költségeket is meggyorsítják; Ha nem érhető el, a dedikált virtuális gépek alapterve továbbra is elérhető marad.
+-   **Az igény szerinti kapacitás kiegészítése**: az alacsony prioritású virtuális gépeket a normál dedikált virtuális gépek kiegészítéseként lehet használni – ha elérhetők, a feladatok méretezhetők, ezért az alacsonyabb költségeket is meggyorsítják; Ha nem érhető el, a dedikált virtuális gépek alapterve továbbra is elérhető marad.
 
--   **Rugalmas feladatok végrehajtási ideje**: Ha az időbeli feladatokban rugalmasságra van lehetőség, akkor a kapacitás potenciális cseppei tolerálva lehetnek; Ugyanakkor az alacsony prioritású virtuális gépekkel kapcsolatos feladatok gyakran gyorsabban futnak, és alacsonyabb költségeket jelentenek.
+-   **Rugalmas feladatok végrehajtásának ideje**: Ha az időfeladatok esetében rugalmasságra van lehetőség, akkor a kapacitás potenciális elhagyása tolerálható; Ugyanakkor az alacsony prioritású virtuális gépekkel kapcsolatos feladatok gyakran gyorsabban futnak, és alacsonyabb költségeket jelentenek.
 
 A Batch-készletek konfigurálható úgy, hogy az alacsony prioritású virtuális gépeket néhány módon, a feladat végrehajtási idejének rugalmassága alapján konfigurálja.
 
@@ -123,7 +131,7 @@ A készlet csomópontjai rendelkeznek egy tulajdonsággal, amely jelzi, hogy a c
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-Ha a készlet egy vagy több csomópontja előzik, akkor a készletben lévő lista csomópontjainak művelete továbbra is visszaadja ezeket a csomópontokat. Az alacsony prioritású csomópontok jelenlegi száma változatlan marad, de ezek a csomópontok állapota a **előzik** állapotra van állítva. A Batch megkísérli a helyettesítő virtuális gépek megtalálását, és ha a művelet sikeres, a csomópontok az új csomópontokhoz hasonlóan a feladat-végrehajtáshoz való elérhetővé válás előtt megkezdik az állapotok **létrehozását** és **indítását** .
+Ha a készlet egy vagy több csomópontja előzik, akkor a készletben lévő lista csomópontjainak művelete továbbra is visszaadja ezeket a csomópontokat. Az alacsony prioritású csomópontok jelenlegi száma változatlan marad, de ezek a csomópontok állapota a **előzik** állapotra van állítva. A Batch megkísérli a helyettesítő virtuális gépek megtalálását, és ha a művelet sikeres, a csomópontok az új csomópontokhoz hasonlóan a feladat-végrehajtáshoz való elérhetővé válás előtt **megkezdik** az állapotok **létrehozását** és indítását.
 
 ## <a name="scale-a-pool-containing-low-priority-vms"></a>Alacsony prioritású virtuális gépeket tartalmazó készlet méretezése
 
@@ -151,7 +159,7 @@ A feladatokhoz és a feladatokhoz kevés további konfiguráció szükséges az 
 -   A feladatokhoz tartozó JobManagerTask tulajdonság egy új tulajdonsággal rendelkezik, a **AllowLowPriorityNode**. 
     Ha a tulajdonság értéke igaz, a Feladatkezelő feladat ütemezhető egy dedikált vagy alacsony prioritású csomóponton is. Ha ez a tulajdonság hamis, a Feladatkezelő feladat csak dedikált csomópontra van ütemezve.
 
--   Egy [környezeti változó](batch-compute-node-environment-variables.md) elérhető egy adott alkalmazásban, így megállapítható, hogy alacsony prioritású vagy dedikált csomóponton fut-e. A környezeti változó a AZ_BATCH_NODE_IS_DEDICATED.
+-   Egy [környezeti változó](batch-compute-node-environment-variables.md) elérhető egy adott alkalmazásban, így megállapítható, hogy alacsony prioritású vagy dedikált csomóponton fut-e. A környezeti változó AZ_BATCH_NODE_IS_DEDICATED.
 
 ## <a name="handling-preemption"></a>Megelőlegezése-kezelő
 
@@ -163,7 +171,7 @@ Előfordulhat, hogy a virtuális gépek esetenként előzik; Ha a megelőlegezé
 -   A készlet folyamatosan megkísérli elérni a rendelkezésre álló alacsony prioritású csomópontok számát. Ha a rendszer kicseréli a kapacitást, a csomópontok megőrzik az azonosítókat, de újrainicializálják őket, és az állapotok **létrehozása** és **elindítása** előtt a feladatütemezés számára elérhetővé válnak.
 -   A megelőlegezése a Azure Portal metrikaként érhetők el.
 
-## <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Metrikák
 
 Az alacsony prioritású csomópontok [Azure Portal](https://portal.azure.com) az új metrikák érhetők el. Ezek a metrikák a következők:
 
@@ -179,7 +187,8 @@ A Azure Portal metrikáinak megtekintése:
 
 ![Alacsony prioritású csomópontok metrikái](media/batch-low-pri-vms/low-pri-metrics.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Olvassa el [Az Azure Batch funkcióinak áttekintése](batch-api-basics.md) című témakört, amely hasznos információkkal szolgál a Batch használatára készülőknek. A cikk a Batch szolgáltatás erőforrásainak, például a készleteknek, csomópontoknak, feladatoknak, tevékenységeknek és sok olyan API funkciónak a részletesebb információit tartalmazza, amelyeket a Batch-alkalmazás kiépítésekor használhat.
 * Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
+* Először tervezze meg az alacsony prioritású virtuális gépekről a virtuális gépekre való áttérést. Ha alacsony prioritású virtuális gépeket használ a **Cloud Service-konfigurációs** készletekkel, akkor tervezze meg a **virtuális gépek konfigurációs** készleteit.

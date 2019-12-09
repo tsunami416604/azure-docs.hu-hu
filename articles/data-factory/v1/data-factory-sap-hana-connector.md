@@ -4,21 +4,20 @@ description: Útmutató az adatok SAP HANA Azure Data Factory használatával t�
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ebd1cf22bffc6a136845672cedcefa7936eeece5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682356"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928261"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Adatok áthelyezése SAP HANAról Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -37,7 +36,7 @@ Ez az összekötő a SAP HANA adatbázis bármely verzióját támogatja. Támog
 
 A SAP HANA-példányhoz való kapcsolódás engedélyezéséhez telepítse a következő összetevőket:
 - **Adatkezelés átjáró**: Data Factory a szolgáltatás támogatja a helyszíni adattárakhoz (beleértve a SAP HANA) való csatlakozást adatkezelés átjáró nevű összetevő használatával. Ha többet szeretne megtudni az átjáró beállításáról adatkezelés átjáróról, és részletes útmutatást talál a helyszíni [adattárak közötti adatáthelyezés a felhőalapú adattárba](data-factory-move-data-between-onprem-and-cloud.md) című cikkben olvashat. Az átjáróra akkor is szükség van, ha a SAP HANA egy Azure IaaS virtuális gépen (VM) üzemel. Az átjárót ugyanarra a virtuális gépre telepítheti, mint az adattár vagy egy másik virtuális gép, feltéve, hogy az átjáró csatlakozni tud az adatbázishoz.
-- **SAP HANA ODBC-illesztő** az átjáró számítógépén. Az SAP HANA ODBC-illesztőprogramot az [SAP Software Download Center](https://support.sap.com/swdc)webhelyről töltheti le. Keressen rá a **Windows-ügyfél kulcsszava SAP HANA**. 
+- **SAP HANA ODBC-illesztő** az átjáró számítógépén. Az SAP HANA ODBC-illesztőprogramot az [SAP Software Download Center központból](https://support.sap.com/swdc) töltheti le. Keressen rá a **Windows-ügyfél kulcsszava SAP HANA**. 
 
 ## <a name="getting-started"></a>Bevezetés
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy helyszíni SAP HANA-adattárból származó adatokkal. 
@@ -58,9 +57,9 @@ A következő szakaszokban részletesen ismertetjük a SAP HANA adattárra jelle
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a SAP HANA társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-Tulajdonság | Leírás | Megengedett értékek | Kötelező
+Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP HANA-példány található. Ha a kiszolgáló testreszabott portot használ, adja meg a `server:port` értéket. | sztring | Igen
+kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP HANA-példány található. Ha a kiszolgáló testreszabott portot használ, adja meg a `server:port`. | sztring | Igen
 authenticationType | A hitelesítés típusa. | karakterlánc. "Alapszintű" vagy "Windows" | Igen 
 felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | sztring | Igen
 jelszó | A felhasználó jelszava. | sztring | Igen
@@ -80,7 +79,7 @@ Míg a tevékenység **typeProperties** szakaszában elérhető tulajdonságok a
 
 Ha a másolási tevékenységben szereplő forrás **RelationalSource** típusú (amely magában foglalja a SAP HANA), a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | lekérdezés | Azt az SQL-lekérdezést adja meg, amely az SAP HANA-példányból olvassa be az adatok beolvasását. | SQL-lekérdezés. | Igen |
 
@@ -284,31 +283,31 @@ Az adatok SAP HANAból való áthelyezésekor a rendszer a következő leképez�
 
 SAP HANA típusa | .NET-alapú típus
 ------------- | ---------------
-TINYINT | Byte
+TINYINT | Bájt
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
-VALÓS | Önálló
+VALÓS SZÁM | Önálló
 DUPLÁN | Önálló
 DECIMÁLIS | Decimális
-LOGIKAI | Byte
+LOGIKAI | Bájt
 VARCHAR | Sztring
 NVARCHAR | Sztring
 CLOB | Bájt []
 ALPHANUM | Sztring
 BLOB | Bájt []
-DATE | DateTime
-TIME | TimeSpan
-IDŐBÉLYEG | DateTime
-SECONDDATE | DateTime
+DATE | Dátum és idő
+TIME | időtartam
+IDŐBÉLYEG | Dátum és idő
+SECONDDATE | Dátum és idő
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 Az adatok SAP HANAból való másolása néhány ismert korlátozást mutat be:
 
-- A NVARCHAR karakterláncok maximális hossza 4000 Unicode karakter.
+- Az NVARCHAR sztringeket a rendszer legfeljebb 4000 Unicode karakter hosszúságúra csonkolja
 - A SMALLDECIMAL nem támogatott
 - A VARBINARY nem támogatott
-- Az érvényes dátumok 1899/12/30 és 9999/12/31 között vannak
+- Az érvényes dátumok 1899/12/30 és 9999/12/31 közöttiek
 
 ## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
 A forrás adatkészletben lévő oszlopok a fogadó adatkészlet oszlopaihoz való leképezésével kapcsolatos további tudnivalókért lásd: [adatkészlet oszlopainak leképezése Azure Data Factoryban](data-factory-map-columns.md).

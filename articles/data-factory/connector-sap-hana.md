@@ -1,23 +1,22 @@
 ---
-title: Adatok másolása SAP HANA használatával Azure Data Factory
+title: Adatok másolása SAP HANAról
 description: Megtudhatja, hogyan másolhat adatok SAP HANAból a támogatott fogadó adattárakba egy Azure Data Factory-folyamat másolási tevékenységének használatával.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.author: jingwang
-ms.openlocfilehash: 6b7f41f53ea743f8e3914512b40d3f69f595b7c8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 97c277eadbd1b425c50b10d15172c13e17e20eb3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680255"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926206"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Adatok másolása SAP HANA használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -52,7 +51,7 @@ Pontosabban, ez az SAP HANA-összekötő a következőket támogatja:
 A SAP HANA-összekötő használatához a következőket kell tennie:
 
 - Saját üzemeltetésű Integration Runtime beállítása. További részletekért tekintse meg a saját üzemeltetésű [Integration Runtime](create-self-hosted-integration-runtime.md) szóló cikket.
-- Telepítse a SAP HANA ODBC-illesztőt a Integration Runtime gépen. Az SAP HANA ODBC-illesztőprogramot az [SAP Software Download Center](https://support.sap.com/swdc)webhelyről töltheti le. Keressen rá a **Windows-ügyfél kulcsszava SAP HANA**.
+- Telepítse a SAP HANA ODBC-illesztőt a Integration Runtime gépen. Az SAP HANA ODBC-illesztőprogramot az [SAP Software Download Center központból](https://support.sap.com/swdc) töltheti le. Keressen rá a **Windows-ügyfél kulcsszava SAP HANA**.
 
 ## <a name="getting-started"></a>Bevezetés
 
@@ -64,11 +63,11 @@ A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, 
 
 SAP HANA társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **SapHana** | Igen |
 | connectionString | Adjon meg olyan információt, amely az **alapszintű hitelesítés** vagy a **Windows-hitelesítés**használatával a SAP HANAhoz való kapcsolódáshoz szükséges. Tekintse át a következő mintákat.<br>A kapcsolódási karakterláncban a kiszolgáló/port kötelező (az alapértelmezett port 30015), és a Felhasználónév és a jelszó megadása kötelező, ha alapszintű hitelesítést használ. További speciális beállításokért lásd: [SAP HANA ODBC-kapcsolatok tulajdonságai](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a jelszó konfigurációját a kapcsolatok karakterláncán kívül. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
-| userName | Windows-hitelesítés használata esetén adja meg a felhasználónevet. Például: `user@domain.com` | Nem |
+| userName (Felhasználónév) | Windows-hitelesítés használata esetén adja meg a felhasználónevet. Például: `user@domain.com` | Nem |
 | jelszó | A felhasználói fiók jelszavának megadása. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
@@ -145,11 +144,11 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok SAP HANAból történő másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapHanaTable** | Igen |
-| Séma | A séma neve a SAP HANA adatbázisban. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
-| tábla | A SAP HANA adatbázisban található tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
+| séma | A séma neve a SAP HANA adatbázisban. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
+| table | A SAP HANA adatbázisban található tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
 
@@ -181,7 +180,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok SAP HANAból történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SapHanaSource** | Igen |
 | lekérdezés | Azt az SQL-lekérdezést adja meg, amely az SAP HANA-példányból olvassa be az adatok beolvasását. | Igen |
@@ -229,35 +228,35 @@ Az adatok SAP HANAból való másolása során a rendszer a következő leképez
 | ------------------ | ------------------------------ |
 | ALPHANUM           | Sztring                         |
 | BIGINT             | Int64                          |
-| BINARY             | Bájt []                         |
+| BINÁRIS             | Bájt []                         |
 | BINTEXT            | Sztring                         |
 | BLOB               | Bájt []                         |
-| BOOL               | Byte                           |
+| BOOL               | Bájt                           |
 | CLOB               | Sztring                         |
-| DATE               | DateTime                       |
+| DATE               | Dátum és idő                       |
 | DECIMÁLIS            | Decimális                        |
-| DUPLÁN             | duplán                         |
-| FLOAT              | duplán                         |
-| INTEGER            | Int32                          |
+| DUPLÁN             | Double                         |
+| FLOAT              | Double                         |
+| EGÉSZ SZÁM            | Int32                          |
 | NCLOB              | Sztring                         |
 | NVARCHAR           | Sztring                         |
-| VALÓS               | Önálló                         |
-| SECONDDATE         | DateTime                       |
+| VALÓS SZÁM               | Önálló                         |
+| SECONDDATE         | Dátum és idő                       |
 | SHORTTEXT          | Sztring                         |
 | SMALLDECIMAL       | Decimális                        |
 | SMALLINT           | Int16                          |
 | STGEOMETRYTYPE     | Bájt []                         |
 | STPOINTTYPE        | Bájt []                         |
-| SZÖVEG               | Sztring                         |
-| TIME               | TimeSpan                       |
-| TINYINT            | Byte                           |
+| TEXT               | Sztring                         |
+| TIME               | időtartam                       |
+| TINYINT            | Bájt                           |
 | VARCHAR            | Sztring                         |
-| IDŐBÉLYEG          | DateTime                       |
+| IDŐBÉLYEG          | Dátum és idő                       |
 | VARBINARY          | Bájt []                         |
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

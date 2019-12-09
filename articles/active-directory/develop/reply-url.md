@@ -1,5 +1,5 @@
 ---
-title: Átirányítási URI/válasz URL-korlátozások és korlátozások – Microsoft Identity platform
+title: Átirányítási URI & Válasz URL-korlátozásai – Microsoft Identity platform | Azure
 description: Válasz URL-címek/átirányítási URL-címek korlátozása & korlátozásai
 author: SureshJa
 ms.author: sureshja
@@ -11,12 +11,12 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9cc6ab0342682bce7befdfe412221ec581312be
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: bfc13c1057f74fb1eb5a41210ffaf166e69bb06e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389603"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920327"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Átirányítási URI/válasz URL-cím korlátozásai
 
@@ -28,22 +28,22 @@ A következő táblázat az alkalmazás regisztrálásakor felvehető átirány�
 
 | Bejelentkezett fiókok | Átirányítási URI-k maximális száma | Leírás |
 |--------------------------|---------------------------------|-------------|
-| Microsoft munkahelyi vagy iskolai fiókok bármely szervezet Azure Active Directory (Azure AD) bérlőben | 256 | az alkalmazás jegyzékfájljának `signInAudience` mezője *AzureADMyOrg* vagy *AzureADMultipleOrgs* értékre van beállítva. |
-| Személyes Microsoft-fiókok és munkahelyi és iskolai fiókok | 100 | az alkalmazás jegyzékfájljának `signInAudience` mezője a *AzureADandPersonalMicrosoftAccount* értékre van állítva. |
+| Microsoft munkahelyi vagy iskolai fiókok bármely szervezet Azure Active Directory (Azure AD) bérlőben | 256 | az alkalmazás jegyzékfájljának `signInAudience` mezőjének értéke *AzureADMyOrg* vagy *AzureADMultipleOrgs* |
+| Személyes Microsoft-fiókok és munkahelyi és iskolai fiókok | 100 | az alkalmazás jegyzékfájljának `signInAudience` mezőjének értéke *AzureADandPersonalMicrosoftAccount* |
 
 ## <a name="maximum-uri-length"></a>URI maximális hossza
 
 Az alkalmazások regisztrálásához hozzáadott átirányítási URI-azonosítóhoz legfeljebb 256 karaktert használhat.
 
 ## <a name="supported-schemes"></a>Támogatott sémák
-Az Azure AD-alkalmazás modellje jelenleg a HTTP-és a HTTPS-sémákat is támogatja olyan alkalmazásokhoz, amelyek bármely szervezet Azure Active Directory (Azure AD) bérlőben jelentkeznek be a Microsoft munkahelyi vagy iskolai fiókjaiba. Az alkalmazás jegyzékfájljának `signInAudience` mezője a *AzureADMyOrg* vagy a *AzureADMultipleOrgs*értékre van beállítva. A személyes Microsoft-fiókokat és munkahelyi és iskolai fiókokat (ez `signInAudience` *AzureADandPersonalMicrosoftAccount*) bejelentkező alkalmazások esetében csak a https-séma engedélyezett.
+Az Azure AD-alkalmazás modellje jelenleg a HTTP-és a HTTPS-sémákat is támogatja olyan alkalmazásokhoz, amelyek bármely szervezet Azure Active Directory (Azure AD) bérlőben jelentkeznek be a Microsoft munkahelyi vagy iskolai fiókjaiba. Az alkalmazás jegyzékfájljának `signInAudience` mezőjének értéke *AzureADMyOrg* vagy *AzureADMultipleOrgs*. A személyes Microsoft-fiókokat és munkahelyi és iskolai fiókokat (`signInAudience` *AzureADandPersonalMicrosoftAccount*) használó alkalmazások esetében csak a https-séma engedélyezett.
 
 > [!NOTE]
 > Az új [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felület nem teszi lehetővé a fejlesztők számára, hogy a felhasználói felületen http-sémával adjanak hozzá URI-ket. A munkahelyi vagy iskolai fiókokat bejelentkező alkalmazásokhoz HTTP-URI-k hozzáadására csak az alkalmazás jegyzékfájl-szerkesztője használható. A jövőben az új alkalmazások nem fogják tudni használni a HTTP-sémákat az átirányítási URI-ban. Az átirányítási URI-k által használt HTTP-sémákat tartalmazó régebbi alkalmazások azonban továbbra is működni fognak. A fejlesztőknek HTTPS-sémákat kell használniuk az átirányítási URI-k között.
 
 ## <a name="restrictions-using-a-wildcard-in-uris"></a>A helyettesítő karakterek használata URI-k használatával
 
-A helyettesítő URI-k (például `https://*.contoso.com`) kényelmesek, de el kell kerülni. Az átirányítási URI-ban a helyettesítő karakterek használata biztonsági következményekkel jár. Az OAuth 2,0 specifikációnak megfelelően (az[RFC 6749 3.1.2. szakasza](https://tools.ietf.org/html/rfc6749#section-3.1.2)) az átirányítási VÉGPONT URI azonosítójának abszolút URI-nak kell lennie. 
+A helyettesítő karakteres URI-k (például `https://*.contoso.com`) kényelmesek, de kerülni kell őket. Az átirányítási URI-ban a helyettesítő karakterek használata biztonsági következményekkel jár. Az OAuth 2,0 specifikációnak megfelelően (az[RFC 6749 3.1.2. szakasza](https://tools.ietf.org/html/rfc6749#section-3.1.2)) az átirányítási VÉGPONT URI azonosítójának abszolút URI-nak kell lennie. 
 
 Az Azure AD-alkalmazás modelljében nem támogatottak a személyes Microsoft-fiókokhoz és munkahelyi vagy iskolai fiókokhoz való bejelentkezésre konfigurált alkalmazások helyettesítő URI-azonosítói. A helyettesítő URI-k használata azonban engedélyezett olyan alkalmazások esetében, amelyek a munkahelyi vagy iskolai fiókoknak a szervezet Azure AD-bérlőben való bejelentkezésére vannak konfigurálva. 
  

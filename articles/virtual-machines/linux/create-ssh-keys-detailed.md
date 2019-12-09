@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 61f24776bb9ec9443df421dcbcf35dcc83ec2bc9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: eea078a4fb8287a4f07db478adf059eecce9ed82
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036507"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929715"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Részletes lépések: SSH-kulcsok létrehozása és kezelése az Azure-beli linuxos virtuális gépek hitelesítéséhez 
 A Secure Shell (SSH) kulcspár használatával létrehozhat egy Linux rendszerű virtuális gépet az Azure-ban, amely alapértelmezés szerint SSH-kulcsokat használ a hitelesítéshez, így nincs szükség a bejelentkezéshez szükséges jelszavakra. A Azure Portal, az Azure CLI, a Resource Manager-sablonok vagy más eszközök segítségével létrehozott virtuális gépek tartalmazhatják a nyilvános SSH-kulcsot az üzembe helyezés részeként, amely beállítja az SSH-kulcsos hitelesítést az SSH-kapcsolatokhoz. 
@@ -30,8 +30,8 @@ Az SSH-kulcsok Windows-számítógépen való létrehozásával és használatá
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
-### <a name="private-key-passphrase"></a>Titkos kulcs jelszava
-A titkos SSH-kulcsnak nagyon biztonságos jelszóval kell rendelkeznie a védelme érdekében. Ez a jelszó csak a titkos SSH-kulcsfájl elérésére szolgál, és *nem* a felhasználói fiók jelszava. Ha jelszót ad hozzá az SSH-kulcshoz, az titkosítja a titkos kulcsot a 128 bites AES használatával, hogy a titkos kulcs használhatatlan legyen a jelszó visszafejtése nélkül. Ha egy támadó ellopta a titkos kulcsot, és a kulcs nem rendelkezik hozzáférési kóddal, a titkos kulcs használatával bejelentkezhet bármely olyan kiszolgálóra, amely rendelkezik a megfelelő nyilvános kulccsal. Ha a titkos kulcsot jelszó védi, azt nem használhatja a támadó, így további biztonsági réteget biztosíthat az Azure-beli infrastruktúra számára.
+### <a name="private-key-passphrase"></a>Titkos kulcshoz tartozó jelszó
+A titkos SSH-kulcsnak nagyon biztonságos jelszóval kell rendelkeznie a védelme érdekében. Ez a jelszó csak a titkos SSH-kulcsfájl elérésére szolgál, és *nem* a felhasználói fiók jelszava. Amikor jelszót ad hozzá az SSH-kulcshoz, az a 128 bites AES eljárással titkosítja a titkos kulcsot, így a titkos kulcs használhatatlan az azt visszafejtő jelszó nélkül. Ha egy támadó ellopta a titkos kulcsot, és a kulcs nem rendelkezik hozzáférési kóddal, a titkos kulcs használatával bejelentkezhet bármely olyan kiszolgálóra, amely rendelkezik a megfelelő nyilvános kulccsal. Ha a titkos kulcsot jelszó védi, azt nem használhatja a támadó, így további biztonsági réteget biztosíthat az Azure-beli infrastruktúra számára.
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
@@ -52,7 +52,7 @@ Az SSH-kulcsokat alapértelmezés szerint a `~/.ssh` könyvtár tárolja.  Ha Ö
 A következő `ssh-keygen` parancs alapértelmezés szerint 2048 bites SSH RSA nyilvános és titkos kulcs fájlokat hoz létre a `~/.ssh` könyvtárban. Ha egy SSH-kulcspár létezik az aktuális helyen, a rendszer felülírja ezeket a fájlokat.
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 ### <a name="detailed-example"></a>Részletes példa
@@ -60,6 +60,7 @@ Az alábbi példa további parancssori lehetőségeket mutat be egy SSH RSA kulc
 
 ```bash
 ssh-keygen \
+    -m PEM \
     -t rsa \
     -b 4096 \
     -C "azureuser@myserver" \
@@ -70,6 +71,8 @@ ssh-keygen \
 **A parancs ismertetése**
 
 `ssh-keygen` = a kulcsok létrehozásához használt program,
+
+`-m PEM` = a kulcs formázása PEMként
 
 `-t rsa` = a létrehozandó kulcs típusa, ebben az esetben RSA formátumban
 
@@ -84,7 +87,7 @@ ssh-keygen \
 ### <a name="example-of-ssh-keygen"></a>Ssh-keygen – példa
 
 ```bash
-ssh-keygen -t rsa -b 2048 -C "azureuser@myserver"
+ssh-keygen -t -m PEM rsa -b 4096 -C "azureuser@myserver"
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/azureuser/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
@@ -92,19 +95,19 @@ Enter same passphrase again:
 Your identification has been saved in /home/azureuser/.ssh/id_rsa.
 Your public key has been saved in /home/azureuser/.ssh/id_rsa.pub.
 The key fingerprint is:
-14:a3:cb:3e:78:ad:25:cc:55:e9:0c:08:e5:d1:a9:08 azureuser@myserver
-The keys randomart image is:
-+--[ RSA 2048]----+
-|        o o. .   |
-|      E. = .o    |
-|      ..o...     |
-|     . o....     |
-|      o S =      |
-|     . + O       |
-|      + = =      |
-|       o +       |
-|        .        |
-+-----------------+
+SHA256:vFfHHrpSGQBd/oNdvNiX0sG9Vh+wROlZBktNZw9AUjA azureuser@myserver
+The key's randomart image is:
++---[RSA 4096]----+
+|        .oE=*B*+ |
+|          o+o.*++|
+|           .oo++*|
+|       .    .B+.O|
+|        S   o=BO.|
+|         . .o++o |
+|        . ... .  |
+|         ..  .   |
+|           ..    |
++----[SHA256]-----+
 ```
 
 #### <a name="saved-key-files"></a>Kulcsfájl mentve

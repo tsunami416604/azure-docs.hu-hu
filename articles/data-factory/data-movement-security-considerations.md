@@ -1,23 +1,22 @@
 ---
-title: Biztonsági megfontolások Azure Data Factory
+title: Biztonsági szempontok
 description: Ismerteti az alapszintű biztonsági infrastruktúrát, amelyet az adatátviteli szolgáltatások Azure Data Factory használnak az adatok biztonságossá tételéhez.
 services: data-factory
-documentationcenter: ''
+ms.author: abnarain
 author: nabhishek
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 06/15/2018
-ms.author: abnarain
-ms.openlocfilehash: 15178fd0b5253b34f21030665a5835646c13b75d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e809c88d8a0a0efeb12e9f2a472a497349fdfa1b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675844"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927511"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>A Azure Data Factory adatáthelyezésének biztonsági szempontjai
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -85,7 +84,7 @@ A Azure SQL Data Warehouse transzparens adattitkosítás (TDE) segít megvédeni
 #### <a name="azure-sql-database"></a>Azure SQL Database
 A Azure SQL Database támogatja az transzparens adattitkosítást (TDE), amely segít megvédeni a kártékony tevékenységek fenyegetését azáltal, hogy az adatok valós idejű titkosítását és visszafejtését végzi, anélkül, hogy az alkalmazás módosítására lenne szükség. Ez a viselkedés átlátható az ügyfél számára. További információ: [transzparens adattitkosítás a SQL Database és az adattárházban](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
-#### <a name="azure-data-lake-store"></a>Azure Data Lake Store
+#### <a name="azure-data-lake-store"></a>Azure Data Lake adattár
 A Azure Data Lake Store a fiókban tárolt adatkezeléshez is biztosít titkosítást. Ha engedélyezve van, a Data Lake Store automatikusan titkosítja az adatokkal, mielőtt megőrzi és visszafejti azokat a beolvasás előtt, így transzparensvé válik az adatokhoz hozzáférő ügyfél számára. További információ: [Security in Azure Data Lake Store](../data-lake-store/data-lake-store-security-overview.md). 
 
 #### <a name="azure-blob-storage-and-azure-table-storage"></a>Azure Blob Storage és Azure Table Storage
@@ -127,7 +126,7 @@ Alapértelmezés szerint a PowerShell az 8060-as portot használja a gépen a sa
  
 
 
-### <a name="encryption-in-transit"></a>Titkosítás átvitel közben
+### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
 Az adatátvitel a biztonságos csatorna HTTPS protokollon és a TLS protokollon keresztül történik az Azure-szolgáltatásokkal folytatott kommunikáció során.
 
 Az [IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) -t vagy az [Azure ExpressRoute](../expressroute/expressroute-introduction.md) -t is használhatja a kommunikációs csatorna további biztonságossá tételéhez a helyszíni hálózat és az Azure között.
@@ -138,9 +137,9 @@ A következő táblázat összefoglalja a hálózat és a saját üzemeltetésű
 
 | Forrás      | Cél                              | Hálózati konfiguráció                    | Integrációs modul telepítése                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Helyszíni követelmények | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | IPSec VPN (pont – hely vagy hely – hely) | A saját üzemeltetésű integrációs modult egy Azure-beli virtuális gépre kell telepíteni a virtuális hálózaton.  |
-| Helyszíni követelmények | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | ExpressRoute (privát társ)           | A saját üzemeltetésű integrációs modult egy Azure-beli virtuális gépre kell telepíteni a virtuális hálózaton.  |
-| Helyszíni követelmények | Nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (Microsoft-társ)            | A saját üzemeltetésű integrációs modult a helyszínen vagy egy Azure-beli virtuális gépen lehet telepíteni. |
+| Helyszíni | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | IPSec VPN (pont – hely vagy hely – hely) | A saját üzemeltetésű integrációs modult egy Azure-beli virtuális gépre kell telepíteni a virtuális hálózaton.  |
+| Helyszíni | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | ExpressRoute (privát társ)           | A saját üzemeltetésű integrációs modult egy Azure-beli virtuális gépre kell telepíteni a virtuális hálózaton.  |
+| Helyszíni | Nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (Microsoft-társ)            | A saját üzemeltetésű integrációs modult a helyszínen vagy egy Azure-beli virtuális gépen lehet telepíteni. |
 
 Az alábbi képek a saját üzemeltetésű integrációs modul használatát mutatják be a helyszíni adatbázis és az Azure-szolgáltatások közötti adatáthelyezéshez a ExpressRoute és az IPSec VPN használatával (Azure Virtual Network):
 
@@ -168,7 +167,7 @@ A következő táblázat a Windows tűzfal bejövő portokra vonatkozó követel
 
 | Bejövő portok | Leírás                              |
 | ------------- | ---------------------------------------- |
-| 8060 (TCP)    | A PowerShell-titkosítási parancsmag szükséges a [helyi adattárakhoz tartozó hitelesítő adatok titkosítása Azure Data Factoryban](encrypt-credentials-self-hosted-integration-runtime.md), valamint a Hitelesítőadat-kezelő alkalmazás által a helyi adattárakhoz tartozó hitelesítő adatok biztonságos beállítása a saját üzemeltetésű rendszeren integrációs modul. |
+| 8060 (TCP)    | A PowerShell-titkosítási parancsmag szükséges a [helyi adattárakhoz tartozó hitelesítő adatok titkosítása Azure Data Factoryban](encrypt-credentials-self-hosted-integration-runtime.md), valamint a Hitelesítőadat-kezelő alkalmazás által a helyi adattárakhoz tartozó hitelesítő adatok biztonságos beállítása a saját üzemeltetésű integrációs modulban. |
 
 ![Az átjáró portjának követelményei](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
@@ -194,7 +193,7 @@ Igen. További részleteket [itt](https://azure.microsoft.com/blog/sharing-a-sel
 A saját üzemeltetésű integrációs modul lehetővé teszi, hogy a HTTP-alapú kapcsolatok hozzáférjenek az internethez. A kapcsolódáshoz a saját üzemeltetésű integrációs modul 443 kimenő portjait kell megnyitni. Nyissa meg a 8060-es bejövő portot csak a számítógép szintjén (nem a vállalati tűzfal szintjén) a Hitelesítőadat-kezelő alkalmazáshoz. Ha Azure SQL Database vagy Azure SQL Data Warehouse a forrásként vagy a célhelyként van használatban, akkor a 1433-es portot is meg kell nyitnia. További információ: [tűzfal-konfigurációk és engedélyezési lista beállítása az IP-címekhez](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) szakasz. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenység teljesítményének Azure Data Factory a [másolási tevékenység teljesítményének és hangolásának útmutatója](copy-activity-performance.md)című témakörben talál további információt.
 
  

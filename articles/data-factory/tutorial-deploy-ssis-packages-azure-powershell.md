@@ -8,21 +8,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 ms.date: 06/26/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 594cdd848a3712d2164616e38f7b75a01a21b7f6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: ff40867bc1e2778ec6f21f479360866b50d0c184
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683590"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926511"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>Azure SSIS integrációs modul üzembe helyezése az Azure Data Factoryben PowerShell segítségével
 
-Ez az oktatóanyag a Azure Data Factory (ADF) Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) üzembe helyezésének lépéseit ismerteti. Azure-SSIS IR támogatja a Azure SQL Database kiszolgáló/felügyelt példány (projekt-telepítési modell) által üzemeltetett SSIS-katalógusba (SSISDB) telepített csomagok futtatását, valamint a fájlrendszerek/fájlmegosztás/Azure Files (csomag-telepítési modell) által üzembe helyezett csomagokat. Azure-SSIS IR kiépítése után használhat ismerős eszközöket, például SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) és parancssori segédeszközöket, például `dtinstall`/`dtutil`/`dtexec`, a csomagok üzembe helyezéséhez és futtatásához Azure. Az oktatóanyag során a következő lépéseket hajtja végre:
+Ez az oktatóanyag a Azure Data Factory (ADF) Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) üzembe helyezésének lépéseit ismerteti. Azure-SSIS IR támogatja a Azure SQL Database kiszolgáló/felügyelt példány (projekt-telepítési modell) által üzemeltetett SSIS-katalógusba (SSISDB) telepített csomagok futtatását, valamint a fájlrendszerek/fájlmegosztás/Azure Files (csomag-telepítési modell) által üzembe helyezett csomagokat. A Azure-SSIS IR kiépítése után már ismerős eszközöket használhat, például SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) és parancssori segédeszközöket, például `dtinstall`/`dtutil`/`dtexec`, hogy üzembe helyezi és futtatja a csomagokat az Azure-ban. Az oktatóanyag során a következő lépéseket hajtja végre:
 
 > [!NOTE]
 > Ez a cikk Azure PowerShellt használ egy Azure-SSIS IR kiépítéséhez. Ha Azure Portal/ADF-alkalmazást szeretne kiépíteni egy Azure-SSIS IR, tekintse meg az [oktatóanyag: kiépítési Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md). 
@@ -40,7 +41,7 @@ Ez az oktatóanyag a Azure Data Factory (ADF) Azure-SQL Server Integration Servi
 
 - **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot. Elméleti információk az Azure-SSIS integrációs modulra vonatkozóan: [Azure-SSIS integrációs modul](concepts-integration-runtime.md#azure-ssis-integration-runtime).
 - **Azure SQL Database kiszolgáló (nem kötelező)** . Ha még nem rendelkezik adatbázis-kiszolgálóval, hozzon létre egyet a Azure Portal az első lépések megkezdése előtt. Az ADF ekkor létrehozza a SSISDB az adatbázis-kiszolgálón. Javasoljuk, hogy az adatbáziskiszolgálót az integrációs modullal megegyező Azure-régióban hozza létre. Ez a konfiguráció lehetővé teszi az integrációs modul írási végrehajtásának naplózását az Azure-régiók SSISDB nélkül. 
-    - A kiválasztott adatbázis-kiszolgáló alapján az SSISDB létrehozható az Ön nevében önálló adatbázisként, egy rugalmas készlet részeként vagy egy felügyelt példányban, és elérhető nyilvános hálózatban vagy egy virtuális hálózathoz csatlakozva. Az adatbázis-kiszolgáló SSISDB futtatásához való kiválasztásával kapcsolatos útmutatásért lásd: [Azure SQL Database önálló adatbázis, rugalmas készlet és felügyelt példány összevetése](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). Ha Azure SQL Database-kiszolgálót használ virtuális hálózati szolgáltatásbeli végpontokkal/felügyelt példánnyal egy virtuális hálózaton a SSISDB üzemeltetéséhez vagy a helyszíni információk elérésének megköveteléséhez, akkor a virtuális hálózathoz kell csatlakoztatnia a Azure-SSIS IR, lásd: [Create Azure-SSIS IR in a Virtual hálózat](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+    - A kiválasztott adatbázis-kiszolgáló alapján az SSISDB létrehozható az Ön nevében önálló adatbázisként, egy rugalmas készlet részeként vagy egy felügyelt példányban, és elérhető nyilvános hálózatban vagy egy virtuális hálózathoz csatlakozva. Az adatbázis-kiszolgáló SSISDB futtatásához való kiválasztásával kapcsolatos útmutatásért lásd: [Azure SQL Database önálló adatbázis, rugalmas készlet és felügyelt példány összevetése](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). Ha Azure SQL Database-kiszolgálót használ virtuális hálózati szolgáltatásbeli végpontokkal/felügyelt példánnyal egy virtuális hálózaton a SSISDB üzemeltetéséhez, illetve a helyszíni információk elérésének megköveteléséhez, akkor a virtuális hálózatban kell csatlakoznia a Azure-SSIS IRhoz: [Create Azure-SSIS IR in a Virtual Network](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
     - Győződjön meg arról, hogy az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás engedélyezve van az adatbázis-kiszolgálón. Ez nem alkalmazható, ha Azure SQL Database kiszolgálót használ virtuális hálózati szolgáltatás végpontokkal/felügyelt példánnyal egy virtuális hálózaton a SSISDB üzemeltetéséhez. További információkért lásd: [Az Azure SQL-adatbázis védelme](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Ha ezt a beállítást a PowerShell használatával szeretné engedélyezni, tekintse meg a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)című témakört.
     - Adja hozzá az ügyfélszámítógép IP-címét, vagy az ügyfél IP-címét tartalmazó IP-címtartományt az adatbázis-kiszolgáló tűzfal beállításai között az ügyfél IP-címei listához. További információkért lásd: [Kiszolgáló- és adatbázisszintű Azure SQL Database-tűzfalszabályok](../sql-database/sql-database-firewall-configure.md).
     - Az adatbázis-kiszolgálóhoz SQL-hitelesítéssel, a kiszolgálói rendszergazdai hitelesítő adataival vagy a Azure Active Directory (HRE) hitelesítéssel kapcsolódhat az ADF felügyelt identitásával.  Az utóbbi esetében hozzá kell adnia az ADF felügyelt identitását egy AAD-csoporthoz, amely rendelkezik engedélyekkel az adatbázis-kiszolgálóhoz, lásd: [Azure SSIS integrációs modul létrehozása AAD-hitelesítéssel](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
@@ -147,7 +148,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $ResourceGroupName `
 New-AzSqlServerFirewallRule -ResourceGroupName $ResourceGroupName -ServerName $SSISDBServerName -AllowAllAzureIPs
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancs használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat.
 
@@ -378,7 +379,7 @@ Lásd még a következő cikkeket a SSIS dokumentációjában:
 - [Csomagok végrehajtásának ütemezett végrehajtása az Azure-ban](/sql/integration-services/lift-shift/ssis-azure-schedule-packages)
 - [Csatlakozás helyszíni adatforrásokhoz Windows-hitelesítéssel](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth) 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket: 
 

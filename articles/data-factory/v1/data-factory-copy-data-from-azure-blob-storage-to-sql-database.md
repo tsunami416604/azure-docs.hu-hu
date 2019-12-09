@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: e4035060-93bf-4e8d-bf35-35e2d15c51e0
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5a254979e345ae07bef5c8e79006bd0aaa0bf7df
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0255787ac90e63aff02ea65912ffa37c8ecc09fa
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682796"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929751"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Oktatóanyag: adatok másolása Blob Storageról SQL Databasera a Data Factory használatával
 > [!div class="op_single_selector"]
@@ -54,7 +53,7 @@ Az oktatóanyag megkezdése előtt a következő előfeltételeket kell megadnia
 ## <a name="collect-blob-storage-account-name-and-key"></a>BLOB Storage-fiók nevének és kulcsának gyűjtése
 Az oktatóanyag elvégzéséhez szüksége lesz az Azure Storage-fiókja fiókjának nevére és a fiók kulcsára. Jegyezze fel az Azure Storage-fiókhoz tartozó **fiók nevét** és a **fiók kulcsát** .
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. A bal oldali menüben kattintson a **minden szolgáltatás** elemre, majd válassza a **Storage-fiókok**lehetőséget.
 
     ![Tallózás – Storage-fiókok](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
@@ -63,7 +62,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz az Azure Storage-fiókja fiókj�
 5. Kattintson a **Másolás** (rendszerkép) gombra a **Storage-fiók neve** szövegmező mellett, és mentse/illessze be valahova (például szövegfájlba).
 6. Az előző lépés megismétlésével másolja vagy jegyezze fel a **key1**.
 
-    ![Tároló-hozzáférési kulcs](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
+    ![Tárelérési kulcs](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
 7. Az **X**gombra kattintva zárjuk le az összes pengét.
 
 ## <a name="collect-sql-server-database-user-names"></a>SQL Server, adatbázis, felhasználónevek gyűjtése
@@ -86,7 +85,7 @@ Győződjön **meg** arról, hogy az Azure- **szolgáltatások hozzáféréséne
 ## <a name="prepare-blob-storage-and-sql-database"></a>Blob Storage és SQL Database előkészítése
 Készítse elő az Azure Blob Storage-t és az Azure SQL Database-t az oktatóanyaghoz az alábbi lépések végrehajtásával:  
 
-1. Indítsa el a Jegyzettömböt. Másolja az alábbi szöveget, és mentse **EMP. txt** néven a **C:\ADFGetStarted** mappába a merevlemezen.
+1. Nyissa meg a Jegyzettömböt. Másolja az alábbi szöveget, és mentse **EMP. txt** néven a **C:\ADFGetStarted** mappába a merevlemezen.
 
     ```
     John, Doe

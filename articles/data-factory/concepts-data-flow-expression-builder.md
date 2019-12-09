@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory leképezési adatfolyam-Kifejezésszerkesztő
+title: Adatforgalmi kifejezés-szerkesztő leképezése
 description: A Azure Data Factory leképezési adatforgalmához tartozó Kifejezésszerkesztő
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 0eb2c2692ed2444a85e7253c6fdd8734385ff881
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: seo-lt-2019
+ms.date: 12/06/2019
+ms.openlocfilehash: 7d8f02647224c971c44bff51f09315c53c53e9a3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672270"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928342"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Adatforgalmi kifejezés-szerkesztő leképezése
 
@@ -50,6 +51,16 @@ A frissítés gombra kattintva frissítheti a kifejezés eredményét a forrás 
 Megjegyzések hozzáadása a kifejezésekhez az egysoros és a többsoros Megjegyzés szintaxisának használatával:
 
 ![Megjegyzések](media/data-flow/comments.png "Megjegyzések")
+
+## <a name="string-interpolation"></a>Karakterlánc-interpoláció
+
+A kettős idézőjelek használatával literális karakterlánc-szöveget és kifejezéseket is használhat. Kifejezési függvények, oszlopok és paraméterek is megadhatók. Ez nagyon hasznos, ha el szeretné kerülni a karakterláncok összefűzésének széles körű használatát, ha a lekérdezési karakterláncokban lévő paramétereket is beleértve.
+
+* ```"My favorite movie is {iif(instr(title,', The')>0,"The {split(title,', The')[1]}",title)}"```
+
+* ```"select * from {$tablename} where orderyear > {$year}"```
+
+* ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
 ## <a name="regular-expressions"></a>Reguláris kifejezések
 

@@ -1,18 +1,20 @@
 ---
-title: Azure Data Factory adatfolyamatok hibáinak megoldása
+title: Az adatfolyamatok hibáinak megoldása
 description: Megtudhatja, hogyan lehet elhárítani a Azure Data Factory az adatfolyamokkal kapcsolatos problémákat.
 services: data-factory
+ms.author: makromer
 author: kromerm
+manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/08/2019
-ms.author: makromer
-ms.openlocfilehash: 1b2309ec71cb3d43f4e5a39b80db593ab201c614
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.custom: seo-lt-2019
+ms.date: 12/06/2019
+ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721345"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930170"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Azure Data Factory adatfolyamatok hibáinak megoldása
 
@@ -84,6 +86,14 @@ Ez a cikk a Azure Data Factory adatforgalmának gyakori hibaelhárítási módsz
 
 - **Megoldás**: JSON-adatkészletet használó forrás-átalakításon bontsa ki a "JSON-beállítások" elemet, és kapcsolja be az "egyetlen dokumentum" beállítást.
 
+### <a name="error-message-duplicate-columns-found-in-join"></a>Hibaüzenet: duplikált oszlopok találhatók a csatlakozásban
+
+- **Tünetek**: az összekapcsolási átalakítás a bal és a jobb oldal oszlopait is eredményezte, amelyekben ismétlődő oszlopnevek szerepelnek.
+
+- **OK**: az összekapcsolt adatfolyamok közös oszlopnevek
+
+- **Megoldás**: vegyen fel egy Select Transforamtion a csatlakozás után, és válassza az "ismétlődő oszlopok eltávolítása" lehetőséget a bemenethez és a kimenethez.
+
 
 ## <a name="general-troubleshooting-guidance"></a>Általános hibaelhárítási útmutató
 
@@ -95,7 +105,7 @@ Ez a cikk a Azure Data Factory adatforgalmának gyakori hibaelhárítási módsz
 
 További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
 
-*  [Data Factory-blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory szolgáltatásra vonatkozó kérelmek](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-videók](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)

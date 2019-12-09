@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b2ec8e2cc09b6deb236bd83cb5cca99fead97279
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fef9059700e2bd94029c40bb819870a7174e0812
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683232"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930122"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory másolási varázsló
 > [!NOTE]
@@ -57,7 +56,7 @@ Egy legördülő lista használatával kiválaszthat egy oszlopot a forrásoldal
 
 ![Séma-hozzárendelés](./media/data-factory-copy-wizard/schema-mapping.png)
 
-## <a name="filtering-data"></a>Adatszűrés
+## <a name="filtering-data"></a>Az adatok szűrése
 A forrásadatok szűrésével kiválaszthatja azokat az adatforrásokat, amelyeket át kell másolni a fogadó adattárba. A szűrés csökkenti a fogadó adattárba másolandó adatok mennyiségét, így fokozza a másolási művelet átviteli sebességét. Rugalmas módszert biztosít a kapcsolódó adatbázisokban lévő adatok szűrésére az SQL lekérdezési nyelv vagy az Azure Blob mappában található fájlok használatával [Data Factory függvények és változók](data-factory-functions-variables.md)használatával.   
 
 ### <a name="filtering-of-data-in-a-database"></a>Adatbázisbeli Adatszűrés
@@ -90,5 +89,5 @@ Az egyszeri másolási művelettel csak egyszer engedélyezhető az adatáthelye
 
 ![Ütemezési tulajdonságok](./media/data-factory-copy-wizard/scheduling-properties.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenységgel rendelkező folyamat létrehozásához a Data Factory másolási varázslóval című cikkből megtudhatja, hogyan hozhat létre [folyamatokat a másolás varázsló](data-factory-copy-data-wizard-tutorial.md)segítségével.

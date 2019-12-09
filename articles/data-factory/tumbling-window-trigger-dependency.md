@@ -1,24 +1,22 @@
 ---
-title: Ablakos trigger-függőségek létrehozása a Azure Data Factoryban
+title: Kieséses ablak trigger függőségeinek létrehozása
 description: Megtudhatja, hogyan hozhat létre függőséget egy kieséses ablakos triggerből Azure Data Factoryban.
 services: data-factory
-documentationcenter: ''
+ms.author: daperlov
 author: djpmsft
-manager: craigg
-editor: ''
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.author: daperlov
-ms.openlocfilehash: 3780a50429b95c402459866b7e3c87e8a91207d3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3a4d31cb6986f8fc841a6afe20388e40e9f28c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683708"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926676"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Függőség létrehozása átfedésmentes ablak eseményindítójához
 
@@ -76,7 +74,7 @@ A függőséggel rendelkező kieséses ablakos trigger a következő tulajdonsá
 
 Az alábbi táblázat tartalmazza az ablak függőségének definiálásához szükséges attribútumok listáját.
 
-| **Tulajdonság neve** | **Leírás**  | **Típus** | **Szükséges** |
+| **Tulajdonság neve** | **Leírás**  | **Típus** | **Kötelező** |
 |---|---|---|---|
 | type  | Ebben a legördülő ablakban minden meglévő ablak-eseményindító megjelenik. Válassza ki a függőség bekapcsolásához szükséges triggert.  | TumblingWindowTriggerDependencyReference vagy SelfDependencyTumblingWindowTriggerReference | Igen |
 | eltolás | A függőségi trigger eltolása. Adja meg az időtartomány formátumú értéket, és a negatív és a pozitív eltolás is engedélyezett. Ez a tulajdonság akkor kötelező, ha az trigger saját magától függ, és minden más esetben nem kötelező. Az önfüggőségnek mindig negatív eltolásnak kell lennie. Ha nincs megadva érték, az ablak ugyanaz, mint maga az trigger. | Időtartomány<br/>(óó: PP: SS) | Önálló függőség: igen<br/>Egyéb: nem |
@@ -163,6 +161,6 @@ Az trigger függőségi ütemtervének megjelenítéséhez kattintson a Gantt-n�
 
 ![Függőségek figyelése](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Függőségek figyelése")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A bukdácsoló ablakos trigger létrehozásának](how-to-create-tumbling-window-trigger.md) áttekintése

@@ -1,25 +1,26 @@
 ---
-title: Adatok másolása a MongoDB a Azure Data Factory használatával
+title: Adatok másolása a MongoDB örökölt használatával
 description: Megtudhatja, hogyan másolhat adatmásolási tevékenységet a Mongo DB-ből a Azure Data Factory-folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.author: jingwang
-ms.openlocfilehash: 0c2c2d9ad78bb09a37faaa5825f8dae3e27370ea
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 089064cee68170ab44fc1cc05e630781529b7b60
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680678"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931289"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása a MongoDB a Azure Data Factory használatával
+
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-on-premises-mongodb-connector.md)
 > * [Aktuális verzió](connector-mongodb.md)
@@ -54,7 +55,7 @@ A következő szakaszokban részletesen ismertetjük az MongoDB-összekötőhöz
 
 A MongoDB társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type |A Type tulajdonságot a következőre kell beállítani: **MongoDb** |Igen |
 | kiszolgáló |A MongoDB-kiszolgáló IP-címe vagy állomásneve. |Igen |
@@ -97,7 +98,7 @@ A MongoDB társított szolgáltatás a következő tulajdonságokat támogatja:
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [adatkészletek és társított szolgáltatások](concepts-datasets-linked-services.md). A MongoDB adatkészlet a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **MongoDbCollection** | Igen |
 | collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Igen |
@@ -128,7 +129,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MongoDbSource** | Igen |
 | lekérdezés |Az egyéni SQL-92 lekérdezés használatával olvashatja el az adatolvasást. Például: select * from Sajáttábla. |Nem (ha meg van adva a "collectionName" az adatkészletben) |
@@ -180,8 +181,8 @@ Az adatok MongoDB-ből való másolása során a rendszer a következő leképez
 |:--- |:--- |
 | Bináris |Bájt [] |
 | Logikai |Logikai |
-| Dátum |DateTime |
-| NumberDouble |duplán |
+| Dátum |Dátum és idő |
+| NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |Sztring |
@@ -207,7 +208,7 @@ A virtuális táblák a valós táblázatba tartozó, az illesztőprogramnak a d
 
 Például a ExampleTable itt egy olyan MongoDB-táblázat, amely egyetlen oszloppal rendelkezik, és az egyes cellákban található objektumok tömbje, valamint egy skaláris típusú tömbvel rendelkező oszlop – értékelések.
 
-| _id | Ügyfél neve | Számlák | Szolgáltatásszint | Értékelés |
+| _id | Ügyfél neve | Számlák | Szolgáltatásszint | Minősítések |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", elem: "kenyérpirító", Ár: "456", kedvezmény: "0.2"}, {invoice_id: "124", elem: "sütő", Ár: "1235", kedvezmény: "0,2"}] |Ezüst |[5, 6] |
 | 2222 |XYZ |[{invoice_id: "135", elem: "hűtőszekrény", Ár: "12543", kedvezmény: "0,0"}] |Arany |[1, 2] |
@@ -225,15 +226,15 @@ A következő táblázatok a példában szereplő eredeti tömböket képviselő
 * Az eredeti tömbben lévő adatok pozíciójának jelzése
 * A tömbben lévő egyes elemek kibontott adathalmaza
 
-**Tábla "ExampleTable_Invoices":**
+**"ExampleTable_Invoices" tábla:**
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | elem | price | Kedvezmény |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | Kedvezmény |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |kenyérpirító |456 |0,2 |
 | 1111 |1 |124 |sütő |1235 |0,2 |
 | 2222 |0 |135 |hűtőszekrény |12543 |0,0 |
 
-**Tábla "ExampleTable_Ratings":**
+**"ExampleTable_Ratings" tábla:**
 
 | _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
 | --- | --- | --- |
@@ -242,5 +243,5 @@ A következő táblázatok a példában szereplő eredeti tömböket képviselő
 | 2222 |0 |1 |
 | 2222 |1 |2 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

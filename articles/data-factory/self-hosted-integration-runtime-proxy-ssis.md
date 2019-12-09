@@ -5,7 +5,6 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
@@ -13,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/12/2019
-ms.openlocfilehash: cae15e38f98794a3e97ad0b06329aa2e62c2945e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fa0f61ed0e280f11e693596f80e79f2e2c110678
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217646"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932039"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Saját üzemeltetésű IR konfigurálása az ADF-Azure-SSIS IR proxyként
 
@@ -54,13 +53,13 @@ A **Speciális beállítások** lapon jelölje be a saját üzemeltetésű **Int
 ![Azure-SSIS IR konfigurálása saját üzemeltetésű IR proxyként](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-settings-ssisir.png)
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>SSIS-csomagok engedélyezése proxy alapján való csatlakozásra
-A SSIS projects bővítménnyel a Visual studióhoz készült legújabb SSDT használatával letölthető [innen vagy önálló](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) telepítőként, amely innen tölthető le [: az OLEDB](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)-ben hozzáadott új **ConnectByProxy** tulajdonság. A Flat file-kapcsolatok kezelői.  
+A SSIS projects bővítménnyel a Visual studióhoz készült legújabb SSDT használatával letölthető [innen vagy önálló](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) telepítőként, amely innen tölthető le, és [itt](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)talál egy új **ConnectByProxy** -tulajdonságot, amely az OLEDB/Flat file ügyfélkapcsolat-kezelőben lett hozzáadva.  
 
 Amikor az OLEDB/Flat file sources használatával olyan új csomagokat tervez, amelyekben az adatbázisok/fájlok elérhetők a helyszíni adatbázisokhoz/fájlokhoz, ezt a tulajdonságot a megfelelő Csatlakozáskezelő tulajdonságok paneljének **true (igaz** ) értékre állításával engedélyezheti.
 
 ![ConnectByProxy tulajdonság engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
-Ezt a tulajdonságot akkor is engedélyezheti, ha már meglévő csomagokat futtat, és nem kell manuálisan módosítania őket.  Két lehetőség közül választhat:
+Ezt a tulajdonságot akkor is engedélyezheti, ha már meglévő csomagokat futtat, és nem kell manuálisan módosítania őket.  Két lehetőség érhető el:
 - A csomagokat tartalmazó projekt megnyitása, újraépítése és újbóli üzembe helyezése a legújabb SSDT a Azure-SSIS IRon való futtatáshoz: ezt követően a tulajdonság értéke **true (igaz** ) értékre állítható be, ha a SSMS-ból csomagokat futtat, és a **Csatlakozáskezelő** lapon megjelenő kapcsolódó ügyfélkapcsolat-kezelők.
 
   ![ConnectByProxy property2 engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
@@ -69,7 +68,7 @@ Ezt a tulajdonságot akkor is engedélyezheti, ha már meglévő csomagokat futt
   
   ![ConnectByProxy property3 engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- A csomagokat tartalmazó projekt újbóli üzembe helyezése az SSIS IR-ben: a tulajdonság ezután engedélyezhető a tulajdonság elérési útjának megadásával, a `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`és az **igaz** értékre állításával a csomag előugró ablakának **speciális** lapján. csomagok SSMS-ból való futtatásakor.
+- A csomagokat tartalmazó projekt újbóli üzembe helyezése az SSIS IR-ben: a tulajdonság ezután engedélyezhető a tulajdonság elérési útjának megadásával, a `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`és az **igaz** értékre állításával a csomag előugró ablakának **speciális** LAPJÁN, a csomagok SSMS való futtatásakor.
 
   ![ConnectByProxy property4 engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 

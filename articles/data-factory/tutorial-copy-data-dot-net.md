@@ -4,19 +4,20 @@ description: Ez az oktatóanyag részletes útmutatást biztosít adatok másol�
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 96b1e5a9633ee141fd4aa369468a8866d87f27f2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 93f674cf080ccbc94b9dbdc6ee9a66eb091c3542
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683652"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926593"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Adatok másolása az Azure Blobból az Azure SQL Database-be az Azure Data Factory segítségével
 
@@ -50,7 +51,7 @@ Készítse elő az Azure Blobot és az Azure SQL Database-t az oktatóanyaghoz a
 
 #### <a name="create-a-source-blob"></a>Forrás blob létrehozása
 
-1. Indítsa el a Jegyzettömböt. Másolja be a következő szöveget, és mentse **inputEmp.txt** néven a lemezen.
+1. Nyissa meg a Jegyzettömböt. Másolja be a következő szöveget, és mentse **inputEmp.txt** néven a lemezen.
 
     ```
     John|Doe
@@ -513,7 +514,7 @@ Press any key to exit...
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megismerte, hogyan végezheti el az alábbi műveleteket: 
 

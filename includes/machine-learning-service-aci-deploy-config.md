@@ -1,22 +1,22 @@
 ---
-author: larryfr
+author: Blackmist
 ms.service: machine-learning
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: larryfr
-ms.openlocfilehash: b3c1ad48da0ef28c73e3af5d1e30414534f4e94d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4f861d5e7832512e2c2732f1ce5dbf6ac76b91b1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73799888"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935807"
 ---
 A `deploymentconfig.json` dokumentum bejegyzései a [AciWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py)paramétereit képezik le. A következő táblázat ismerteti a JSON-dokumentum entitásai és a metódus paramétereinek megfeleltetését:
 
 | JSON-entitás | Metódus paramétere | Leírás |
 | ----- | ----- | ----- |
-| `computeType` | NA | A számítási cél. ACI esetén az értéknek `ACI`nak kell lennie. |
-| `containerResourceRequirements` | NA | A processzor-és memória-entitások tárolója. |
+| `computeType` | n/a | A számítási cél. ACI esetén az értéknek `ACI`nak kell lennie. |
+| `containerResourceRequirements` | n/a | A processzor-és memória-entitások tárolója. |
 | &emsp;&emsp;`cpu` | `cpu_cores` | A lefoglalni kívánt CPU-magok száma. Alapértékek, `0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | A webszolgáltatás számára lefoglalható memória mennyisége (GB-ban). Alapértelmezett, `0.5` |
 | `location` | `location` | Az Azure-régió, amelybe telepíteni szeretné a webszolgáltatást. Ha nincs megadva, a rendszer a munkaterület helyét fogja használni. Az elérhető régiókról további részleteket itt találhat: [ACI-régiók](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |

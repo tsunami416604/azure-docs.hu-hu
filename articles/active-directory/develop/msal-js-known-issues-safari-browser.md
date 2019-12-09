@@ -1,29 +1,25 @@
 ---
-title: Ismert problémák a Safari böngészőben (JavaScript MSAL)
+title: Ismert Safari böngészőbeli problémák (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg a Microsoft hitelesítési függvénytár JavaScripthez (MSAL. js) való használatakor felmerülő problémákat a Safari böngészőben.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c48ae9bf7bb5d7f1055ebf0391557a1d117ab39d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a1fda1471d629ab8d84d06a3cc5bcfae0a6d9ec5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934845"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916332"
 ---
 # <a name="known-issues-on-safari-browser-with-msaljs"></a>A Safari böngészőben a MSAL. js-vel kapcsolatos ismert problémák 
 

@@ -1,29 +1,25 @@
 ---
-title: Naplózás a Microsoft Authentication Library (MSAL) alkalmazásokban
+title: Bejelentkezés MSAL-alkalmazásokban | Azure
 titleSuffix: Microsoft identity platform
 description: Tudnivalók a Microsoft Authentication Library-(MSAL-) alkalmazások naplózásáról.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5960389389e4b75794a7334c0bff12ce3ac0f170
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 9a71093ee05e032a5df89bb0560b6daa82e2fbf2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452464"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916145"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL-alkalmazások naplózása
 
@@ -182,7 +178,7 @@ var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Például:
+Példa:
 
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
@@ -197,7 +193,7 @@ Például:
     }];
 ```
 
-### <a name="personal-data"></a>Személyes adattárolás
+### <a name="personal-data"></a>Saját adatok
 
 A MSAL alapértelmezés szerint nem rögzíti vagy nem naplózza a személyes adatokkal kapcsolatos adatgyűjtést. A könyvtár lehetővé teszi, hogy az alkalmazások fejlesztői ezt a MSALLogger osztály egyik tulajdonságán keresztül kapcsolják be. A `pii.Enabled`bekapcsolásával az alkalmazás felelősséget vállal a szigorúan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények követéséhez.
 
@@ -223,7 +219,7 @@ Ha az iOS-es és macOS-es MSAL használatával jelentkezik be, a naplózási szi
 | `MSALLogLevelInfo` |  A könyvtár belépési pontjai, paraméterekkel és különböző kulcstartó műveletekkel |
 |`MSALLogLevelVerbose`     |  API-nyomkövetés |
 
-Például:
+Példa:
 
 ```objc
 MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
@@ -233,7 +229,7 @@ MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
 
 A MSAL üzenetek részének formátuma `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Például:
+Példa:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
@@ -260,7 +256,7 @@ A korrelációs azonosítók és időbélyegek megadása a problémák nyomon k�
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Például:
+Példa:
 
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
@@ -274,7 +270,7 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 }
 ```
 
-### <a name="personal-data"></a>Személyes adattárolás
+### <a name="personal-data"></a>Saját adatok
 
 A MSAL alapértelmezés szerint nem rögzíti vagy nem naplózza a személyes adatokkal kapcsolatos adatgyűjtést. A könyvtár lehetővé teszi, hogy az alkalmazások fejlesztői ezt a MSALLogger osztály egyik tulajdonságán keresztül kapcsolják be. A `pii.Enabled`bekapcsolásával az alkalmazás felelősséget vállal a szigorúan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények követéséhez.
 
@@ -300,7 +296,7 @@ Ha az iOS-es és macOS-es MSAL használatával jelentkezik be, a naplózási szi
 | `MSALLogLevelInfo` |  A könyvtár belépési pontjai, paraméterekkel és különböző kulcstartó műveletekkel |
 |`MSALLogLevelVerbose`     |  API-nyomkövetés |
 
-Például:
+Példa:
 
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
@@ -310,7 +306,7 @@ MSALGlobalConfig.loggerConfig.logLevel = .verbose
 
 A MSAL üzenetek részének formátuma `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Például:
+Példa:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 

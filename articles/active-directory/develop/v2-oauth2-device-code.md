@@ -1,5 +1,6 @@
 ---
-title: Felhasználói bejelentkezés a Microsoft Identity platform használatával böngésző nélküli eszközökön | Azure
+title: Felhasználói bejelentkezés böngésző nélkül | Azure
+titleSuffix: Microsoft identity platform
 description: Beágyazott és böngésző nélküli hitelesítési folyamatokat hozhat létre az eszköz engedélyezési engedélye alapján.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c948c59a90e0db17b4704188221cfc3c3d82310
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e937955f0b122d3a878141655475f34b051622e7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207607"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919239"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity platform és a OAuth 2,0-eszköz engedélyezési folyamata
 
@@ -62,8 +63,8 @@ scope=user.read%20openid%20profile
 
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Kötelező | /Gyakori hibák,/consumers vagy/Organizations. lehet  Azt is megteheti, hogy az a címtár-bérlő, amelyhez engedélyeket szeretne kérni a GUID vagy a felhasználóbarát név formátumában.  |
-| `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
+| `tenant` | Szükséges | /Gyakori hibák,/consumers vagy/Organizations. lehet  Azt is megteheti, hogy az a címtár-bérlő, amelyhez engedélyeket szeretne kérni a GUID vagy a felhasználóbarát név formátumában.  |
+| `client_id` | Szükséges | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
 | `scope` | Ajánlott | Egy szóközzel tagolt lista, melyben a felhasználónak jóvá kell hagynia a [hatókört](v2-permissions-and-consent.md) .  |
 
 ### <a name="device-authorization-response"></a>Eszköz-engedélyezési válasz
@@ -99,12 +100,12 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| Paraméter | Kötelező | Leírás|
+| Paraméter | Szükséges | Leírás|
 | -------- | -------- | ---------- |
-| `tenant`  | Kötelező | A kezdeti kérelemben használt bérlői vagy bérlői alias. | 
-| `grant_type` | Kötelező | `urn:ietf:params:oauth:grant-type:device_code` kell lennie|
-| `client_id`  | Kötelező | Meg kell egyeznie a kezdeti kérelemben használt `client_id`val. |
-| `device_code`| Kötelező | Az eszköz engedélyezési kérelmében visszaadott `device_code`.  |
+| `tenant`  | Szükséges | A kezdeti kérelemben használt bérlői vagy bérlői alias. | 
+| `grant_type` | Szükséges | `urn:ietf:params:oauth:grant-type:device_code` kell lennie|
+| `client_id`  | Szükséges | Meg kell egyeznie a kezdeti kérelemben használt `client_id`val. |
+| `device_code`| Szükséges | Az eszköz engedélyezési kérelmében visszaadott `device_code`.  |
 
 ### <a name="expected-errors"></a>Várt hibák
 

@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: b09e5366584e9974e67d47d34f22a3483be14f7a
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5b473af780bdd68b8fc0dd3dc0430c4f4fd3255b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805756"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927672"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
@@ -196,25 +196,25 @@ Ha olyan régióban szeretné létrehozni a nagy kapacitású-adatbázist, amely
 
 Nagy kapacitású-adatbázisok létrehozásának lehetősége a felsorolt régiókban:
 
-1. Navigáljon az [Azure Súgó és támogatás](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) paneljére
+1. A Azure Portal menüben válassza a **Súgó + támogatás**lehetőséget, vagy keresse meg és válassza a **Súgó + támogatás** lehetőséget bármely oldalon.
 
-2. Kattintson az [ **új támogatási kérelem** elemre.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+2. Az [Azure Súgó és támogatás](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)területén válassza az [**új támogatási kérelem**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)lehetőséget.
 
-    ![Azure Súgó és támogatás panel](media/sql-database-service-tier-hyperscale/request-screen-1.png)
-
-3. A **probléma típusa**beállításnál válassza a **szolgáltatás-és előfizetési korlátok (kvóták) lehetőséget.**
+3. A **probléma típusa**beállításnál válassza a **szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
 
 4. Válassza ki az adatbázis (ok) létrehozásához használni kívánt előfizetést.
 
-5. A **kvóta típusa**beállításnál válassza az **SQL Database** lehetőséget.
+5. A **kvóta típusa**beállításnál válassza az **SQL Database**lehetőséget.
 
-6. Kattintson a **Tovább gombra: megoldások**
+    ![Azure Súgó és támogatás panel](media/sql-database-service-tier-hyperscale/new-support-request-screen.png)
 
-1. Kattintson a **részletek megadása** lehetőségre
+6. Kattintson a **Tovább gombra: megoldások**.
+
+7. Kattintson a **részletek megadása**lehetőségre.
 
     ![Probléma részletei](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
-8. Válassza ki **SQL Database kvóta típusát**: **egyéb kvóta kérése**
+8. Válassza ki **SQL Database kvóta típusát**: **egyéb kvóta-kérelem**.
 
 9. Töltse ki a következő sablont:
 
@@ -227,11 +227,11 @@ Nagy kapacitású-adatbázisok létrehozásának lehetősége a felsorolt régi�
     > A TB becsült száma 
     >
 
-10. Válassza a **C súlyosság** lehetőséget
+10. Válassza a **Súlyosság C**elemet.
 
 11. Válassza ki a megfelelő kapcsolattartási módszert, és adja meg a részleteket.
 
-12. Kattintson a **Mentés** és **Folytatás** gombra.
+12. Kattintson a **Mentés** és **Folytatás**gombra.
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 Ezek a nagy kapacitású szolgáltatási szintjére vonatkozó jelenlegi korlátozások a GA-ban.  Aktívan dolgozunk azon, hogy minél több korlátozást távolítson el.
@@ -240,7 +240,7 @@ Ezek a nagy kapacitású szolgáltatási szintjére vonatkozó jelenlegi korlát
 | :---- | :--------- |
 | A logikai kiszolgáló biztonsági mentések ablaktáblája nem jeleníti meg a nagy kapacitású-adatbázisok szűrését az SQL Server rendszerből  | A nagy kapacitású külön módszert biztosít a biztonsági mentések kezeléséhez, így a hosszú távú megőrzési és időponthoz kötött biztonsági mentési adatmegőrzési beállítások nem érvényesek/érvénytelenítve vannak. Ennek megfelelően a nagy kapacitású-adatbázisok nem jelennek meg a biztonsági mentés kezelése ablaktáblán. |
 | Időponthoz kötött visszaállítás | Miután áttelepítette az adatbázist a nagy kapacitású szolgáltatási szintjére, a Migrálás előtti időpontban történő visszaállítás nem támogatott.|
-| Nem nagy kapacitású adatbázis visszaállítása Hypserscale és fordítva | A nagy kapacitású-adatbázisok nem állíthatók vissza nem nagy kapacitású adatbázisba, és nem állíthatók vissza egy nem nagy kapacitású adatbázis egy nagy kapacitású-adatbázisba.|
+| Nem nagy kapacitású adatbázis visszaállítása nagy kapacitású és fordítva | A nagy kapacitású-adatbázisok nem állíthatók vissza nem nagy kapacitású adatbázisba, és nem állíthatók vissza egy nem nagy kapacitású adatbázis egy nagy kapacitású-adatbázisba.|
 | Ha egy adatbázis 1 TB-nál nagyobb adatfájllal rendelkezik, az áttelepítés meghiúsul | Bizonyos esetekben előfordulhat, hogy a probléma megoldásához a nagyméretű fájlokat 1 TB-nál kisebbre kell csökkenteni. Ha az áttelepítési folyamat során használt adatbázist telepít át, győződjön meg arról, hogy egyetlen fájl sem lesz nagyobb 1 TB-nál. Az adatbázisfájlok méretének meghatározásához használja az alábbi lekérdezést. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Felügyelt példány | Azure SQL Database felügyelt példány jelenleg nem támogatott a nagy kapacitású-adatbázisokban. |
 | Rugalmas készletek |  A rugalmas készletek jelenleg nem támogatottak SQL Database nagy kapacitású.|
@@ -251,7 +251,8 @@ Ezek a nagy kapacitású szolgáltatási szintjére vonatkozó jelenlegi korlát
 | Adatbázis másolása | Az adatbázis másolása még nem használható új adatbázis létrehozására az Azure SQL-nagy kapacitású. |
 | TDE/AKV-integráció | A Azure Key Vault (általában saját kulcsú vagy BYOK) használatával történő transzparens adatbázis-titkosítás még nem támogatott Azure SQL Database nagy kapacitású, azonban a szolgáltatás által felügyelt kulcsokkal való TDE teljes mértékben támogatott. |
 |Intelligens adatbázis-funkciók | A "kényszerített terv" lehetőség kivételével az összes többi Automatikus hangolási beállítás még nem támogatott a nagy kapacitású: a beállítások engedélyezhetők, de nem lesznek javaslatok vagy műveletek. |
-| Adatbázis zsugorítása | Az DBCC SHRINKDATABASE vagy DBCC SHRINKFILE jelenleg nem támogatott az Azure SQL nagy kapacitású adatbázisaiban. |
+| Adatbázis zsugorítása | A DBCC SHRINKDATABASE vagy DBCC SHRINKFILE jelenleg nem támogatott nagy kapacitású-adatbázisok esetén. |
+| Adatbázis integritásának ellenőrzése | A DBCC CHECKDB UTASÍTÁST jelenleg nem támogatott nagy kapacitású-adatbázisok esetén. A Azure SQL Database adatintegritás-kezelésével kapcsolatos részletekért tekintse meg a [Azure SQL Database adatok integritását](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) ismertető témakört. |
 
 ## <a name="next-steps"></a>Következő lépések
 

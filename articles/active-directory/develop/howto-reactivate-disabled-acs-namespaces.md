@@ -1,108 +1,105 @@
 ---
-title: Az Azure Access Control Service (ACS) letiltott névterek újraaktiválása
-description: Megtudhatja, hogyan kereshet és engedélyezése az Azure Access Control Service (ACS) névteret, és láthatóan tartja őket engedélyezve van, amíg 2019. február 4. hosszabbítsa meg.
+title: A letiltott Azure Access Control Service (ACS) névterek újraaktiválása
+description: Megtudhatja, hogyan keresheti meg és engedélyezheti Azure Access Control Service (ACS) névtereit, és hogyan kérheti a bővítményt, hogy a 2019. február 4-én engedélyezze őket.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cb17109d53c6e08c8607959207e367086032f6d
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 590fc99861035ce1a5219a3cfd788159c6c2a19b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482709"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917709"
 ---
-# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Útmutató: Letiltott Access Control Service-névterek újraaktiválása
+# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Útmutató: a letiltott Access Control Service névterek újraaktiválása
 
-2017 November jelentettük be, hogy a Microsoft Azure Access Control Service (ACS), az Azure Active Directory (Azure AD), a szolgáltatás 2018. November 7 határidővel kivezetjük.
+November 2017-én bejelentettük, hogy az Azure Active Directory (Azure AD) Microsoft Azure Access Control Service (ACS) a 2018. november 7-én megszűnik.
 
-Mivel ezt követően az ACS-előfizetések rendszergazdai e-mail az ACS használatból való kivonást egyaránt 12 hónap, 9 hónap, 3 hónap, 1 hónap, 2 héten, 1 hét, és 1 nap 2018. November 7 kivezetési dátuma előtt 6 hónapra vonatkozó e-mailt elküldtük Önnek.
+Azóta e-maileket küldtünk az ACS-előfizetések rendszergazdai e-mail-címére az ACS 12 hónap, 9 hónap, 6 hónap, 3 hónap, 1 hónap, 2 hét, 1 hét, valamint 1 nappal a 2018. november 7. előtt.
 
-2018. október 3. én bejelentettük (e-mailben és [egy blogbejegyzés](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)), akiknek az áttelepítést követően 2018. November 7. nem lehet befejezni a bővítmény ajánlat. A közlemény is volt a bővítmény kérő vonatkozó utasításokat.
+2018. október 3-án bejelentettük (e-mailben és [blogbejegyzésben](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)) egy bővítményt az ügyfeleknek, akik nem tudják befejezni az áttelepítést az 2018. november 7. előtt. A bejelentés a bővítmény igénylésére vonatkozó utasításokat is tartalmaz.
 
-## <a name="why-your-namespace-is-disabled"></a>Miért érdemes a névtér le van tiltva
+## <a name="why-your-namespace-is-disabled"></a>Miért van letiltva a névtér?
 
-Ha a bővítmény rögzítette még nem található, kezdjük 2018. November 7-as Access Control-névtereket letiltása. Kell kért 2019. február 4. a bővítmény már; Ellenkező esetben nem lesz ahhoz, hogy a névterek Powershellen keresztül.
+Ha még nem választotta ki a bővítményt, az ACS-névterek letiltását a 2018. november 7. után fogjuk megkezdeni. A kiterjesztést a 2019. február 4. előtt kérelmezte. Ellenkező esetben nem fogja tudni engedélyezni a névtereket a PowerShell használatával.
 
 > [!NOTE]
-> A PowerShell-parancsok futtatása, és hosszabbítsa szolgáltatás-rendszergazda vagy az előfizetés társadminisztrátorának kell lennie.
+> A PowerShell-parancsok futtatásához és a bővítmény igényléséhez az előfizetés szolgáltatás-rendszergazdájának vagy társtulajdonosa kell lennie.
 
-## <a name="find-and-enable-your-acs-namespaces"></a>Keresse meg és az Access Control-névtereket engedélyezése
+## <a name="find-and-enable-your-acs-namespaces"></a>Az ACS-névterek megkeresése és engedélyezése
 
-Az ACS PowerShell használatával az Access Control-névtereket listában, és aktiválja újra, amelyet le vannak tiltva.
+Az ACS PowerShell használatával listázhatja az összes ACS-névteret, és újraaktiválhatja azokat, amelyek le vannak tiltva.
 
-1. Töltse le és telepítse az ACS PowerShell:
-    1. Nyissa meg a PowerShell-galériából, és töltse le [Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
-    1. A modul telepítése:
+1. Az ACS PowerShell letöltése és telepítése:
+    1. Lépjen a PowerShell-galériara, és töltse le az [ACS. Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2)szolgáltatást.
+    1. Telepítse a modult:
 
         ```powershell
         Install-Module -Name Acs.Namespaces
         ```
 
-    1. Az összes lehetséges parancsok listájának lekérése:
+    1. A lehetséges parancsok listájának beolvasása:
 
         ```powershell
         Get-Command -Module Acs.Namespaces
         ```
 
-        Segítség kérése egy bizonyos paranccsal, futtassa:
+        Ha segítséget szeretne kérni egy adott parancsról, futtassa a következőt:
 
         ```powershell
         Get-Help [Command-Name] -Full
         ```
     
-        ahol `[Command-Name]` az ACS-parancs neve.
-1. Az ACS használatával csatlakozhat a **Connect-AcsAccount** parancsmagot. 
+        ahol a `[Command-Name]` az ACS-parancs neve.
+1. Kapcsolódjon az ACS-hez a **Kapcsolódás-AcsAccount** parancsmag használatával. 
 
-    Szükség lehet a végrehajtási házirend módosításához futtassa **Set-ExecutionPolicy** a parancs futtatása előtt.
-1. Az használatával érhető el az Azure-előfizetések listájának a **Get-AcsSubscription** parancsmagot.
-1. Az ACS névterek használatával listázása a **Get-AcsNamespace** parancsmagot.
-1. Győződjön meg arról, hogy erősítse meg, amelyek le vannak-e tiltva a névterek `State` van `Disabled`.
+    A parancs futtatása előtt előfordulhat, hogy módosítania kell a végrehajtási házirendet a **Set-ExecutionPolicy** futtatásával.
+1. Sorolja fel az elérhető Azure-előfizetéseket a **Get-AcsSubscription** parancsmag használatával.
+1. Sorolja fel az ACS-névtereket a **Get-AcsNamespace** parancsmag használatával.
+1. Győződjön meg arról, hogy a névterek le vannak tiltva, ha megerősíti, hogy a `State` `Disabled`.
 
-    [![Győződjön meg arról, hogy a névterek le vannak tiltva](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
+    [![ellenőrizze, hogy a névterek le vannak-e tiltva](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
 
-    Is `nslookup {your-namespace}.accesscontrol.windows.net` , győződjön meg arról, ha a tartomány még mindig aktív.
+    `nslookup {your-namespace}.accesscontrol.windows.net` használatával is ellenőrizheti, hogy a tartomány aktív-e.
 
-1. Az ACS namespace(s) használatával engedélyezze a **engedélyezése – AcsNamespace** parancsmagot.
+1. Engedélyezze az ACS-névtér (eke) t az **enable-AcsNamespace** parancsmag használatával.
 
-    Miután engedélyezte a namespace(s), kérheti egy bővítmény, úgy, hogy a namespace(s) nem tiltható le, mielőtt újra 2019. február 4. Ezt követően az ACS-összes kérelem sikertelen lesz.
+    Miután engedélyezte a névteret (ka) t, kérhet egy bővítményt, hogy a rendszer ne tiltsa le a névtereket 2019 február 4. előtt. Ezt követően az ACS-ra irányuló összes kérelem sikertelen lesz.
 
-## <a name="request-an-extension"></a>Hosszabbítsa
+## <a name="request-an-extension"></a>Bővítmény kérése
 
-2019. január 21-én kezdődő új bővítmény kérések jegyében.
+Az új bővítményekre vonatkozó kérelmeket a 2019. január 21-én kezdődően vesszük igénybe.
 
-Névterek letiltását az ügyfelek, akik bővítmények 2019. február 4. a kért program kezdődik. Továbbra is engedélyezheti újra névterek Powershellen keresztül, de a névterek le lesz tiltva a 48 óra után.
+A rendszer megkezdi a névterek letiltását azon ügyfelek számára, akik a bővítményeket a 2019. február 4. között kérték. A névtereket továbbra is engedélyezheti a PowerShell használatával, de a névterek 48 óra elteltével újra le lesznek tiltva.
 
-2019. március 4 után ügyfelek már nem képes bármilyen névterek PowerShell-lel engedélyezze újra.
+2019. március 4. után az ügyfelek többé nem tudják újra engedélyezni a névtereket a PowerShellen keresztül.
 
-További bővítmények már nem lesz automatikusan jóváhagyja. Ha áttelepítéséhez további időre van szüksége, forduljon a [az Azure-támogatás](https://portal.azure.com/#create/Microsoft.Support) részletes áttelepítési ütemterv megadását.
+A További bővítmények többé nem lesznek automatikusan jóváhagyva. Ha további időre van szüksége az áttelepítéshez, lépjen kapcsolatba az [Azure támogatási szolgálatával](https://portal.azure.com/#create/Microsoft.Support) , és adjon meg egy részletes áttelepítési ütemtervet.
 
-### <a name="to-request-an-extension"></a>Egy bővítmény kérése
+### <a name="to-request-an-extension"></a>Bővítmény igénylése
 
-1. Jelentkezzen be az Azure Portalon, és hozzon létre egy [új támogatási kérelem](https://portal.azure.com/#create/Microsoft.Support).
-1. Adja meg az új támogatási űrlap, az alábbi példában látható módon.
+1. Jelentkezzen be a Azure Portalba, és hozzon létre egy [új támogatási kérelmet](https://portal.azure.com/#create/Microsoft.Support).
+1. Töltse ki az új támogatási kérés űrlapot az alábbi példában látható módon.
 
-    | Támogatási kérelem mező | Érték |
+    | Support request mező | Value (Díj) |
     |-----------------------|--------------------|
     | **Probléma típusa** | `Technical` |
-    | **Előfizetés** | Az előfizetés beállítása |
+    | **Előfizetés** | Beállítás az előfizetésre |
     | **Szolgáltatás** | `All services` |
     | **Erőforrás** | `General question/Resource not available` |
     | **Probléma típusa** | `ACS to SAS Migration` |
     | **Tárgy** | A probléma leírása |
 
-   ![Új műszaki támogatási kérelem egy példát mutat be](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+   ![Egy új technikai támogatási kérelemre mutat példát.](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 
 <!--
 
@@ -122,9 +119,9 @@ További bővítmények már nem lesz automatikusan jóváhagyja. Ha áttelepít
 
 ## <a name="help-and-support"></a>Súgó és támogatás
 
-- Ha ez az útmutató lépéseinek futtatása a problémákat tapasztal, forduljon a [az Azure-támogatás](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
-- Ha az ACS használatból való kivonást egyaránt kapcsolatos kérdésekért és Visszajelzésért, írjon nekünk az acsfeedback@microsoft.com.
+- Ha a fenti útmutató követése után bármilyen problémába ütközik, forduljon az [Azure ügyfélszolgálatához](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+- Ha kérdése vagy visszajelzése van az ACS kivonásáról, lépjen kapcsolatba velünk a következő címen: acsfeedback@microsoft.com.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tekintse át az ACS használatból való kivonást egyaránt az [hogyan: Az Azure Access Control Service át](active-directory-acs-migration.md).
+- Tekintse át az ACS-kivezetéssel kapcsolatos információkat az [Azure Access Control Serviceról: Migrálás az Azure-ból](active-directory-acs-migration.md).

@@ -1,108 +1,105 @@
 ---
-title: SAML-alapú egyszeri bejelentkezés – Azure Active Directory hibakeresése |} A Microsoft Docs
-description: SAML-alapú egyszeri bejelentkezés az Azure Active Directory-alkalmazások hibakeresését.
+title: SAML-alapú egyszeri bejelentkezés hibakeresése – Azure Active Directory | Microsoft Docs
+description: Az SAML-alapú egyszeri bejelentkezés hibakeresése Azure Active Directory-alkalmazásokban.
 services: active-directory
 author: rwike77
-documentationcenter: na
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: luleon, hirsin, smalser
+ms.reviewer: luleon, hirsin, paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4331acf639af90448b5508e3487f4979e9b82c45
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 26c3502567df7776e106ae9301aa7ba315cc12cc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482728"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917607"
 ---
-# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>SAML-alapú egyszeri bejelentkezés az Azure Active Directory-alkalmazások hibakeresése
+# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>SAML-alapú egyszeri bejelentkezés hibakeresése Azure Active Directory-alkalmazásokban
 
-Ismerje meg, hogyan keresheti meg és javítsa ki [egyszeri bejelentkezési](../manage-apps/what-is-single-sign-on.md) problémák, amelyek támogatják az alkalmazások az Azure Active Directoryban (Azure AD) [Security Assertion Markup Language (SAML) 2.0-s](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language). 
+Ismerje meg, hogyan találhatja meg és javíthatja az [egyszeri bejelentkezéssel](../manage-apps/what-is-single-sign-on.md) kapcsolatos problémákat Azure Active Directory (Azure ad) által támogatott [Security Assertion Markup Language (SAML) 2,0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)-es alkalmazásokhoz. 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
-Javasoljuk, hogy telepíti a [saját alkalmazások biztonságos bejelentkezési bővítménye](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension). A bővítmény megkönnyíti a gyűjtse össze a SAML-kérelmet, és az SAML-válasz információt, amit keresett való egyetlen bejelentkezéssel kapcsolatos problémák elhárítása. Abban az esetben, ha nem telepíti a bővítményt, a Ez a cikk bemutatja, hogyan és a bővítmény telepítése anélkül problémák megoldásához.
+Javasoljuk, hogy telepítse a [saját alkalmazások biztonságos bejelentkezési bővítményét](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension). Ez a böngésző-bővítmény megkönnyíti az SAML-kérelmek és az SAML-válasz adatainak összegyűjtését, amelyekre szüksége van az egyszeri bejelentkezéssel kapcsolatos problémák megoldásához. Ha nem tudja telepíteni a bővítményt, ez a cikk bemutatja, Hogyan oldhatók fel a bővítmények és azok nélkül a hibák.
 
-Töltse le és telepítse a saját alkalmazások biztonságos bejelentkezési bővítménye, használja az alábbi hivatkozások egyikét.
+A saját alkalmazások biztonságos bejelentkezési bővítményének letöltéséhez és telepítéséhez használja az alábbi hivatkozások egyikét.
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- A [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 ## <a name="test-saml-based-single-sign-on"></a>SAML-alapú egyszeri bejelentkezés tesztelése
 
-SAML-alapú egyszeri bejelentkezés az Azure AD között teszteléséhez és a egy célalkalmazás:
+Az SAML-alapú egyszeri bejelentkezés tesztelése az Azure AD és egy célalkalmazás között:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) a globális rendszergazdaként vagy más rendszergazdák, amelynek jogosítványa van az alkalmazások kezeléséhez.
-1. A bal oldali panelen válassza ki a **Azure Active Directory**, majd válassza ki **vállalati alkalmazások**. 
-1. Vállalati alkalmazások listájából válassza ki az alkalmazást, amely egyszeri bejelentkezés tesztelése szeretne, majd válassza a bal oldali lehetőségei közül **egyszeri bejelentkezési**.
-1. Nyissa meg az SAML-alapú egyszeri bejelentkezés tesztelési használatát, lépjen a **egyszeri bejelentkezés tesztelése** (5. lépés). Ha a **teszt** gomb szürkén jelenik meg, töltse ki és mentse el a szükséges attribútumok először kell létrehoznia a **alapszintű SAML-konfigurációja** szakaszban.
-1. Az a **egyszeri bejelentkezés tesztelése** panelen, a vállalati hitelesítő adatok használatával jelentkezzen be a célalkalmazás. Az aktuális felhasználó vagy egy másik felhasználóval jelentkezhetnek be. Jelentkezzen be másik felhasználóként, egy üzenet rákérdez hitelesítéséhez.
+1. Jelentkezzen be a [Azure Portalra](https://portal.azure.com) globális rendszergazdaként vagy más rendszergazdaként, amely jogosultsággal rendelkezik az alkalmazások kezeléséhez.
+1. A bal oldali panelen válassza a **Azure Active Directory**, majd a **vállalati alkalmazások**elemet. 
+1. A vállalati alkalmazások listájából válassza ki azt az alkalmazást, amelynek ki szeretné próbálni az egyszeri bejelentkezést, majd válassza a bal oldali Select **egyszeri bejelentkezés**lehetőséget.
+1. Az SAML-alapú egyszeri bejelentkezés tesztelési élményének megnyitásához nyissa meg az **egyszeri bejelentkezés tesztelését** ismertető témakört (5. lépés). Ha a **teszt** gomb szürkén jelenik meg, először ki kell töltenie és mentenie kell a szükséges attribútumokat az **SAML alapkonfiguráció** szakaszában.
+1. A **teszt egyszeri bejelentkezés** panelen a vállalati hitelesítő adataival jelentkezhet be a célalkalmazás alkalmazásba. Az aktuális felhasználóként vagy más felhasználóként is bejelentkezhet. Ha másik felhasználóként jelentkezik be, a rendszer kérni fogja a hitelesítést.
 
-    ![A teszt SAML SSO lapot ábrázoló képernyőfelvétel](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
+    ![Az SAML SSO-tesztet megjelenítő oldal képernyőképe](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
 
-Sikeresen jelentkezett be, ha a teszt sikerült. Ebben az esetben az Azure AD az alkalmazás számára kibocsátott SAML-válasz jogkivonat. Az alkalmazás az SAML-jogkivonat sikeresen a bejelentkezéshez használ.
+Ha sikeresen bejelentkezett, a teszt sikeres volt. Ebben az esetben az Azure AD SAML-válasz jogkivonatot adott ki az alkalmazásnak. Az alkalmazás az SAML-tokent használta a sikeres bejelentkezéshez.
 
-Ha a bejelentkezési oldal vállalati vagy az alkalmazás oldalán hiba, használja a következő szakaszok egyikét a hiba megoldásához.
+Ha a vállalati bejelentkezési oldalon vagy az alkalmazás oldalán hibát észlel, használja a következő részeket a hiba elhárításához.
 
-## <a name="resolve-a-sign-in-error-on-your-company-sign-in-page"></a>Oldja meg a vállalati bejelentkezési oldalon a bejelentkezési hiba
+## <a name="resolve-a-sign-in-error-on-your-company-sign-in-page"></a>Bejelentkezési hiba elhárítása a céges bejelentkezési oldalon
 
-Amikor megpróbál bejelentkezni, előfordulhat, hogy hibaüzenet jelenik meg a vállalati bejelentkezési oldalon az alábbi példához hasonló.
+Amikor megpróbál bejelentkezni, előfordulhat, hogy az alábbi példához hasonló hibaüzenet jelenik meg a vállalati bejelentkezési oldalon.
 
-![Hiba történt a bejelentkezési oldal vállalati megjelenítő példa](./media/howto-v1-debug-saml-sso-issues/error.png)
+![Példa a céges bejelentkezési oldal hibájának megjelenítésére](./media/howto-v1-debug-saml-sso-issues/error.png)
 
-Ez a hiba hibakeresési, a hibaüzenetet, és az SAML-kérelmet kell. A saját alkalmazások biztonságos bejelentkezési bővítménye automatikusan gyűjti össze az adatokat, és megjeleníti a megoldási útmutató az Azure ad-ben.
+A hiba hibakereséséhez szüksége lesz a hibaüzenetre és az SAML-kérelemre. A saját alkalmazások biztonságos bejelentkezési bővítménye automatikusan összegyűjti ezeket az információkat, és az Azure AD-ben a megoldási útmutatást jeleníti meg.
 
-### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>Oldja meg a bejelentkezési hiba a saját alkalmazások biztonságos bejelentkezési bővítménye telepítve
+### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>A bejelentkezési hiba elhárítása a saját alkalmazások biztonságos bejelentkezési bővítménnyel telepítve
 
-1. Ha hiba történik, a bővítmény átirányítja Önt az Azure AD vissza a **egyszeri bejelentkezés tesztelése** panelen.
-1. Az a **egyszeri bejelentkezés tesztelése** panelen válassza ki **töltse le az SAML-kérelmet**.
-1. Megtekintheti az adott megoldási útmutató a hibát és az SAML-kérelmet szereplő értékek alapján.
-1. Látni fogja a **javítást** a probléma megoldásához az Azure AD-ben a konfiguráció automatikus frissítése gombra. Ha nem látja ezt a gombot, majd a bejelentkezési hiba, nem az Azure AD egy helytelen konfiguráció miatt.
+1. Hiba esetén a bővítmény átirányítja az Azure AD **-teszt egyszeri bejelentkezési** paneljére.
+1. A **teszt egyszeri bejelentkezés** panelen válassza **az SAML-kérelem letöltése**lehetőséget.
+1. A hiba és az SAML-kérelem értékei alapján egyedi megoldási útmutatást kell látnia.
+1. A probléma megoldásához a **javítás** gomb megnyomásával automatikusan frissítheti az Azure ad konfigurációját. Ha nem látja ezt a gombot, a bejelentkezési probléma az Azure AD-beli helytelen konfiguráció miatt nem fog megjelenni.
 
-Ha a megoldást nem áll rendelkezésre a bejelentkezési hiba, javasoljuk, hogy, hogy a visszajelzés szövegmező értesítsen minket, használjon.
+Ha a bejelentkezési hiba nem tartalmaz megoldást, javasoljuk, hogy a visszajelzés szövegmezővel tájékoztasson minket.
 
-### <a name="to-resolve-the-error-without-installing-the-my-apps-secure-sign-in-extension"></a>A hiba elhárításához a saját alkalmazások biztonságos bejelentkezési bővítménye telepítése nélkül
+### <a name="to-resolve-the-error-without-installing-the-my-apps-secure-sign-in-extension"></a>A hiba elhárítása a saját alkalmazások biztonságos bejelentkezési bővítményének telepítése nélkül
 
-1. Másolja az hibaüzenet jelenik meg a lap jobb alsó sarokban. A hibaüzenetben szerepelnek:
-    - Korrelációs azonosító és időbélyeget. Ezeket az értékeket hoz létre egy támogatási esetet a Microsofttal, mivel a mérnökök a probléma azonosításához, és adja meg a probléma megoldását, egy pontos segítségükkel esetén fontos.
-    - Egy utasítást a probléma kiváltó okának azonosításához.
-1. Lépjen vissza az Azure ad-hez, és keresse meg a **egyszeri bejelentkezés tesztelése** panelen.
-1. A fenti szövegmezőben **megoldási útmutató**, illessze be a hibaüzenetet.
-1. Kattintson a **megoldási útmutató** megjelenítendő lépéseket a problémák elhárításához. Az útmutató a SAML-kérelmet, vagy a SAML-válasz információra lehet szükség. Ha nem használ a saját alkalmazások biztonságos bejelentkezési bővítménye, szükség lehet egy eszköz például [Fiddler](https://www.telerik.com/fiddler) a SAML-kérések és válaszok lekéréséhez.
-1. Győződjön meg arról, hogy a SAML-kérelemben a cél megfelel a SAML egyszeri bejelentkezési szolgáltatás URL-cím az Azure ad-ből kapott.
-1. Ellenőrizze-e az SAML-kérelmet a kibocsátó ugyanazzal az azonosítóval már konfigurálta az alkalmazást az Azure ad-ben. Azure ad-ben a kibocsátó a címtárban található az alkalmazás használ.
-1. Ellenőrizze, hogy AssertionConsumerServiceURL, ahol az alkalmazás Azure ad-ben az SAML-jogkivonat fogadjon vár. Ezt az értéket konfigurálhatja az Azure ad-ben, de azt nem kötelező Ha része az SAML-kérelmet.
+1. Másolja a hibaüzenetet a lap jobb alsó sarkában. A hibaüzenet a következőket tartalmazza:
+    - Egy CorrelationID és egy időbélyeg. Ezek az értékek akkor fontosak, ha támogatási esetet hoz létre a Microsofttal, mert segítenek a mérnököknek azonosítani a problémát, és pontos megoldást biztosítanak a problémára.
+    - A probléma kiváltó okát azonosító utasítás.
+1. Lépjen vissza az Azure AD-be, és keresse meg az **egyszeri bejelentkezés tesztelési** paneljét.
+1. Illessze be a hibaüzenetet a fenti szövegmezőbe a **megoldás beolvasása útmutatással**.
+1. A probléma megoldásához szükséges lépések megjelenítéséhez kattintson a **megoldási útmutató beolvasása** elemre. Az útmutatáshoz szükség lehet az SAML-kérelem vagy az SAML-válasz információinak megkövetelésére. Ha nem a saját alkalmazások biztonságos bejelentkezési bővítményét használja, szükség lehet egy eszközre, például a [hegedűsre](https://www.telerik.com/fiddler) az SAML-kérelem és válasz beolvasásához.
+1. Ellenőrizze, hogy az SAML-kérelem célja megfelel-e az Azure AD-től kapott SAML egyszeri bejelentkezési szolgáltatás URL-címének.
+1. Ellenőrizze, hogy az SAML-kérelemben szereplő kiállító megegyezik-e az Azure AD-alkalmazáshoz konfigurált azonosítóval. Az Azure AD a kiállító használatával keres egy alkalmazást a címtárban.
+1. Ellenőrizze, hogy az alkalmazás AssertionConsumerServiceURL-e az SAML-tokent az Azure AD-ból. Ezt az értéket beállíthatja az Azure AD-ben, de nem kötelező, ha az SAML-kérelem része.
 
 
-## <a name="resolve-a-sign-in-error-on-the-application-page"></a>Oldja meg az alkalmazás oldalán található egy bejelentkezési hiba
+## <a name="resolve-a-sign-in-error-on-the-application-page"></a>Bejelentkezési hiba elhárítása az alkalmazás oldalán
 
-Előfordulhat, hogy jelentkezzen be sikeresen, és tekintse meg a hiba az alkalmazás lapján. Ez akkor fordul elő, amikor az Azure AD az alkalmazásnak egy jogkivonatot állít ki, de az alkalmazás nem fogadja el a választ.
+Előfordulhat, hogy sikeresen bejelentkezik, majd az alkalmazás oldalán hibaüzenet jelenik meg. Ez akkor fordul elő, ha az Azure AD tokent ad ki az alkalmazásnak, de az alkalmazás nem fogadja el a választ.
 
 A hiba elhárításához kövesse az alábbi lépéseket:
 
-1. Ha az alkalmazás az Azure AD katalógusából származó, győződjön meg arról, hogy követte az alkalmazás integrálása az Azure AD összes lépését. Az alkalmazás integrációs utasításokat talál a [SaaS-alkalmazások integrációjának oktatóanyagai listája](../saas-apps/tutorial-list.md).
-1. Az SAML-válasz lekérése.
-    - Ha a saját alkalmazások biztonságos bejelentkezési bővítménye telepítve van, az a **egyszeri bejelentkezés tesztelése** panelen kattintson a **letöltési SAML-válasz**.
-    - Ha a bővítmény nincs telepítve, használja a eszközt például [Fiddler](https://www.telerik.com/fiddler) SAML-válasz lekéréséhez.
-1. Figyelje meg ezeknek az elemeknek a SAML-válasz token:
-   - Felhasználó egyedi azonosítója, NameID-érték és formázása
+1. Ha az alkalmazás az Azure AD-katalógusban található, ellenőrizze, hogy végrehajtotta-e az alkalmazás Azure AD-vel való integrálásának lépéseit. Az alkalmazáshoz kapcsolódó integrációs utasításokért tekintse meg az [SaaS Application Integration oktatóanyagok listáját](../saas-apps/tutorial-list.md).
+1. Az SAML-válasz beolvasása.
+    - Ha telepítve van a saját alkalmazások biztonságos bejelentkezési bővítménye, az **egyszeri bejelentkezés tesztelési** paneljén kattintson **az SAML-válasz letöltése**elemre.
+    - Ha a bővítmény nincs telepítve, használjon egy eszközt, például a [hegedűst](https://www.telerik.com/fiddler) az SAML-válasz lekéréséhez.
+1. Figyelje meg ezeket az elemeket az SAML-válasz tokenben:
+   - A NameID értékének és formátumának felhasználói egyedi azonosítója
    - A jogkivonatban kiadott jogcímek
-   - A jogkivonat aláírásához használt tanúsítványt.
+   - A jogkivonat aláírásához használt tanúsítvány.
 
-     SAML-válasszal kapcsolatos további információkért lásd: [egyszeri bejelentkezéses SAML-protokoll](single-sign-on-saml-protocol.md).
+     További információ az SAML-válaszról: [egyszeri bejelentkezéses SAML protokoll](single-sign-on-saml-protocol.md).
 
-1. Most, hogy áttekintette a SAML-válasz, tekintse meg a [hiba történt a bejelentkezés után az alkalmazás lapon](../manage-apps/application-sign-in-problem-application-error.md) hogyan a probléma megoldásához. 
-1. Ha továbbra sem tudja sikeresen bejelentkezni, megkérheti az alkalmazás gyártójától Mi hiányzik a SAML-válasz.
+1. Most, hogy áttekintette az SAML-választ, tekintse meg a [hiba az alkalmazás oldalán, miután bejelentkezett](../manage-apps/application-sign-in-problem-application-error.md) a probléma megoldásához szükséges útmutatásra. 
+1. Ha még nem tud sikeresen bejelentkezni, megkérheti az alkalmazás gyártójától, hogy mi hiányzik az SAML-válaszból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy az egyszeri bejelentkezés az alkalmazás működik, próbálja meg [automatizálása felhasználói üzembe helyezést és megszüntetést SaaS-alkalmazásokhoz](../manage-apps/user-provisioning.md) vagy [feltételes hozzáférés használatának első lépései](../conditional-access/app-based-conditional-access.md).
+Most, hogy az egyszeri bejelentkezés az alkalmazáson dolgozik, [automatizálhatja a felhasználók üzembe](../manage-apps/user-provisioning.md) helyezését és megszüntetését az SaaS-alkalmazásokhoz vagy [a feltételes hozzáférés használatának megkezdéséhez](../conditional-access/app-based-conditional-access.md).

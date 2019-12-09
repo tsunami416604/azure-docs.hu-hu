@@ -1,22 +1,22 @@
 ---
-title: Saját üzemeltetésű integrációs modul létrehozása Azure Data Factory
+title: Saját üzemeltetésű Integration Runtime létrehozása
 description: Ismerje meg, hogyan hozhat létre saját üzemeltetésű integrációs modult Azure Data Factoryban, amely lehetővé teszi, hogy az adatfeldolgozók hozzáférhessenek az adattárakhoz a magánhálózaton.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: f4eb275d8e1303ba68a23ac4ea0135c81c6a452a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+manager: anandsub
+ms.custom: seo-lt-2019
+ms.date: 06/18/2019
+ms.openlocfilehash: 0d04ea7d7003f274b252e057b7afced7759bfaae
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672297"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928509"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul létrehozása és konfigurálása
 
@@ -72,7 +72,7 @@ A következő lépésekkel hozhat létre saját üzemeltetésű integrációs mo
 
     1. Másolja és illessze be a hitelesítési kulcsot. Válassza **az Integration Runtime letöltése és telepítése**lehetőséget.
 
-    1. Töltse le a saját üzemeltetésű integrációs modult egy helyi Windows-gépen. Futtassa a telepítőt.
+    1. Töltse le a saját üzemeltetésű integrációs modult egy helyi Windows-gépen. Indítsa el a telepítőt.
 
     1. A **Integration Runtime (helyi) regisztrálása** lapon illessze be a korábban mentett kulcsot, és válassza a **regisztráció**lehetőséget.
     
@@ -112,7 +112,7 @@ Az alábbiakban az alkalmazás paramétereinek és tulajdonságainak részleteit
 | **Kulcs** "`<AuthenticationKey>`"                                 | Felülírja vagy frissítse az előző hitelesítési kulcsot. Ügyeljen erre a műveletre. A korábbi saját üzemeltetésű IR-csomópont offline állapotba léphet, ha a kulcs egy új integrációs modul. | Nem       |
 | **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Biztonságimásolat-fájl létrehozása az aktuális csomóponthoz. A biztonságimásolat-fájl tartalmazza a csomópont kulcsát és az adattároló hitelesítő adatait. | Nem       |
 | **ImportBackupFile** "`<filePath>`" "`<password>`"              | Állítsa vissza a csomópontot egy biztonságimásolat-fájlból.                          | Nem       |
-| **Indítsa újra**                                                     | Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.   | Nem       |
+| **Újraindítás**                                                     | Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.   | Nem       |
 | **Kezdés**                                                       | Indítsa el a saját üzemeltetésű Integration Runtime Host szolgáltatást.     | Nem       |
 | **állj**                                                        | Állítsa le a saját üzemeltetésű Integration Runtime Host szolgáltatást.        | Nem       |
 | **StartUpgradeService**                                         | Indítsa el a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.       | Nem       |
@@ -170,7 +170,7 @@ Az alábbiakban a saját üzemeltetésű integrációs modulról történő más
     - [Visual C++ 2010 újraterjeszthető](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) csomag Csomag (x64)
     - Java Runtime (JRE) 8-as verzió egy JRE-szolgáltatótól, például a [OpenJDK elfogadása](https://adoptopenjdk.net/). Győződjön meg arról, hogy a `JAVA_HOME` környezeti változó be van állítva.
 
-## <a name="installation-best-practices"></a>Ajánlott eljárások a telepítéshez
+## <a name="installation-best-practices"></a>Gyakorlati tanácsok a telepítéshez
 
 A saját üzemeltetésű integrációs modult egy MSI-telepítőcsomagot a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717)töltheti le. A Részletes utasításokért tekintse meg a helyszíni [és a felhő közötti adatáthelyezést](tutorial-hybrid-copy-powershell.md) ismertető cikket.
 
@@ -355,7 +355,7 @@ Az Integration Runtime Host szolgáltatás automatikusan újraindul a frissítet
 Miután regisztrálta a saját üzemeltetésű integrációs modult, ha szeretné megtekinteni vagy frissíteni a proxybeállításokat, használja a Microsoft Integration Runtime Configuration Manager.
 
 1. Nyissa meg **Microsoft Integration Runtime Configuration Manager**.
-1. Válassza a **Beállítások** lapot.
+1. Válassza a **Settings** (Beállítások) fület.
 1. A **http-proxy**alatt kattintson a **módosítás** hivatkozásra a **http-proxy beállítása** párbeszédpanel megnyitásához.
 1. Kattintson a **Tovább** gombra. Ekkor megjelenik egy figyelmeztetés, amely arra kéri, hogy mentse a proxybeállításokat, és indítsa újra az Integration Runtime Host szolgáltatást.
 

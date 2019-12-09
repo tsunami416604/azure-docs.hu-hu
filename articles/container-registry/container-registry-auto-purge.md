@@ -3,12 +3,12 @@ title: Címkék és jegyzékek kiürítése
 description: A kiürítési parancs használatával több címkét és jegyzékfájlt törölhet egy Azure Container registryből az életkor és a címke szűrője alapján, és opcionálisan ütemezhet törlési műveleteket.
 ms.topic: article
 ms.date: 08/14/2019
-ms.openlocfilehash: 65169927f7a1cffa88a2d909217e636417f695cc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0ec1f5f6f5c3c572b8558c971b58e46cce36e3fd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456482"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923109"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Lemezképek automatikus törlése az Azure Container registryből
 
@@ -33,11 +33,10 @@ A `acr purge` Container parancs a képeket címkével törli egy olyan adattárb
 > [!NOTE]
 > `acr purge` nem töröl egy képcímkét vagy-tárat, amelyben a `write-enabled` attribútum értéke `false`. További információ: [Container-rendszerkép zárolása egy Azure Container registryben](container-registry-image-lock.md).
 
-`acr purge` úgy lett kialakítva, hogy Container parancsként fusson egy [ACR-feladatban](container-registry-tasks-overview.md), hogy automatikusan hitelesítse azt a beállításjegyzéket, amelyben a feladat fut. 
+`acr purge` úgy lett kialakítva, hogy Container parancsként fusson egy [ACR-feladatban](container-registry-tasks-overview.md), hogy automatikusan hitelesítse magát a beállításjegyzékben, ahol a feladat fut, és műveleteket hajt végre. A cikkben szereplő példák a `acr purge` parancs- [aliast](container-registry-tasks-reference-yaml.md#aliases) használják a teljes tárolót ábrázoló rendszerkép parancs helyett.
 
 A `acr purge`futtatásakor legalább a következőket kell megadnia:
 
-* `--registry` – az Azure Container Registry, amelyen futtatja a parancsot. 
 * `--filter` – egy adattárat és egy *reguláris kifejezést* , amellyel szűrheti a címkéket a tárházban. Példák: a `--filter "hello-world:.*"` az `hello-world` adattár összes címkéjét egyezteti, és a `--filter "hello-world:^1.*"` a `1`kezdődő címkékkel egyezik meg. Több adattárház kiürítéséhez több `--filter` paramétert adjon meg.
 * `--ago` – A Go-Style [időtartam karakterlánca](https://golang.org/pkg/time/) , amely azt jelzi, hogy milyen időtartamot kell törölni a képekből. Az időtartam egy vagy több decimális számokból áll, amelyek mindegyike egység utótaggal rendelkezik. Az érvényes időegységek a "d" napok, a "h" órák, az "m" pedig percek közé tartoznak. Például `--ago 2d3h6m` kijelöli az összes szűrt képet, amelynek utolsó módosítása több mint 2 nap, 3 óra és 6 perccel ezelőtt történt, és `--ago 1.5h` a képeket a legutóbb módosított 1,5 órája.
 
@@ -54,12 +53,10 @@ További paraméterek: `acr purge --help`futtatása.
 
 Az alábbi példa az az [ACR Run][az-acr-run] paranccsal futtatja az `acr purge` parancsot igény szerint. Ez a példa törli az összes képcímkét és jegyzékfájlt a *myregistry* `hello-world` adattárában, amely több mint 1 nappal ezelőtt módosult. A Container parancs egy környezeti változó használatával lett átadva. A feladat forrás környezet nélkül fut.
 
-Ebben és a következő példákban az `acr purge` parancs futtatására szolgáló beállításjegyzék a `$Registry` alias használatával van megadva, amely a feladatot futtató beállításjegyzéket jelzi.
-
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --untagged --ago 1d"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --untagged --ago 1d"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -73,8 +70,8 @@ Az alábbi példa az az [ACR Task Create][az-acr-task-create] parancsot használ
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 7d"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --ago 7d"
 
 az acr task create --name purgeTask \
   --cmd "$PURGE_CMD" \
@@ -93,8 +90,8 @@ Az alábbi igény szerinti feladat például 3600 másodperc (1 óra) időtartam
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 1d --untagged"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --ago 1d --untagged"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -115,13 +112,12 @@ A következő példában az egyes Tárházak szűrői az összes címkét kijel�
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged --dry-run"
 
 az acr run \
-  --cmd  "$PURGE_CMD" \
+  --cmd "$PURGE_CMD" \
   --registry myregistry \
   /dev/null
 ```
@@ -156,8 +152,7 @@ A száraz Futtatás ellenőrzése után hozzon létre egy ütemezett feladatot a
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged"
 

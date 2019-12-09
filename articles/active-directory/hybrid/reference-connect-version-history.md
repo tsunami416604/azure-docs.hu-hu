@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 461298e4f195d88ced5015af26226a9f7b12f737
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3414bc21afb88d2683261ea1ce1398a0b1bfeece
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891779"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922294"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: verziók kiadási előzményei
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -38,9 +38,23 @@ Letöltés| [Azure ad Connect letöltése](https://go.microsoft.com/fwlink/?Link
 Amíg ezt a folyamatot elvégezjük, a kiadás verziószáma "X"-ként jelenik meg a másodlagos kiadási szám pozíciójában, ahogy az "1.3. X. 0" értéknél – ez azt jelenti, hogy a jelen dokumentumban szereplő kibocsátási megjegyzések az "1,3." kezdetű összes verzióra érvényesek. Amint elvégezte a kiadási folyamat véglegesítését, a kiadás verziószámát a rendszer frissíti a legújabb verzióra, és a kiadási állapot frissülni fog a "kiadás a letöltéshez és az automatikus frissítéshez".
 Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshez. A kiadási állapot azt jelzi, hogy elérhető-e kiadás az automatikus frissítéshez vagy csak a letöltéshez. Ha az automatikus frissítés engedélyezve lett a Azure AD Connect-kiszolgálón, akkor a kiszolgáló automatikusan az automatikus frissítéshez kiadott Azure AD Connect legújabb verziójára fog frissülni. Vegye figyelembe, hogy nem minden Azure AD Connect konfiguráció jogosult az automatikus frissítésre. Az [automatikus frissítéssel](how-to-connect-install-automatic-upgrade.md) kapcsolatos további információért kövesse ezt a hivatkozást
 
+## <a name="14380"></a>1.4.38.0
+### <a name="release-status"></a>Kiadás állapota
+12/6/2019: kiadás letölthető. Nem érhető el az automatikus frissítéssel.
+### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
+- Frissítettük a jelszó-kivonatok szinkronizálását a Azure AD Domain Services számára a Kerberos-kivonatok kitöltésének megfelelő kiszámításához.  Ez a HRE és a Azure AD Domain Services közötti jelszó-szinkronizálás során javítja a teljesítményt.
+- A megbízható munkamenetek támogatása a hitelesítési ügynök és a Service Bus között.
+- Ez a kiadás a hitelesítési ügynök és a Cloud Services közötti kommunikációra kényszeríti a TLS 1,2-et.
+- A rendszer egy DNS-gyorsítótárat adott hozzá a hitelesítési ügynök és a Cloud Services közötti WebSocket-kapcsolatokhoz.
+- Felvettük a lehetőséget arra, hogy konkrét ügynököt célozjon meg a felhőből az ügynök kapcsolatának teszteléséhez.
+
+### <a name="fixed-issues"></a>Hibák kijavítva:
+- A kiadási 1.4.18.0 hibát észlelt, ha a DSSO PowerShell-parancsmagja a PS futtatásakor megadott rendszergazdai hitelesítő adatok helyett a bejelentkezési Windows hitelesítő adatokat használta. Ennek eredményeképpen a DSSO nem engedélyezhető több erdőben a AADConnect felhasználói felületén keresztül. 
+- Javítás történt a DSSO egyidejű engedélyezéséhez az összes erdőben a AADConnect felhasználói felületén keresztül
+
 ## <a name="14320"></a>1.4.32.0
 ### <a name="release-status"></a>Kiadás állapota
-11/08/2019: kiadva a letöltéshez. Nem érhető el az automatikus frissítéshez
+11/08/2019: kiadva a letöltéshez. Nem érhető el az automatikus frissítéssel.
 
 >[!IMPORTANT]
 >A Azure AD Connect ezen kiadásában a belső séma módosítása miatt, ha az ADFS megbízhatósági kapcsolatának konfigurációs beállításait a MSOnline PowerShell használatával kezeli, akkor frissítenie kell a MSOnline PowerShell-modult a 1.1.183.57 vagy újabb verzióra.
@@ -809,7 +823,7 @@ CBool(
     |CertSubject|CertIssuer|CertKeyAlgorithm|
     |CertSubjectNameDN|CertIssuerOid|CertNameInfo|
     |CertSubjectNameOid|CertIssuerDN|IsCert|
-    |CertFriendlyName|certThumbprint|CertExtensionOids|
+    |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Válassza ezt:|

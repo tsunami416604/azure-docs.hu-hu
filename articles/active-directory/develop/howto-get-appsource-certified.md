@@ -2,28 +2,24 @@
 title: A Azure Active Directory minősítésű AppSource beszerzése | Microsoft Docs
 description: Az alkalmazás AppSource minősítése Azure Active Directory számára.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 21206407-49f8-4c0b-84d1-c25e17cd4183
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/21/2018
 ms.author: ryanwi
-ms.reviewer: andret
+ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 139c7c2e6736eeb3e78ac0aab913378ac84160e1
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 789b7d29673bca8a7703349ee46f4595fd24c2ea
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374096"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917811"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>A Azure Active Directory minősítésének beszerzése a AppSource
 
@@ -40,8 +36,8 @@ Ha szeretné megtudni, hogyan integrálhatja alkalmazásait az Azure AD-vel az O
 A *több-bérlős alkalmazások* olyan alkalmazások, amelyek bármely olyan cég vagy szervezet felhasználóitól fogadnak bejelentkezést, amely külön példány, konfiguráció vagy központi telepítés nélkül rendelkezik az Azure ad-vel. A AppSource javasolja, hogy az alkalmazások több-bérlőt alkalmazzanak *az ingyenes* próbaidőszakos felhasználói élmény érdekében.
 
 Az alkalmazáson belüli több-bérlő engedélyezéséhez kövesse az alábbi lépéseket:
-1. Állítsa be `Multi-Tenanted` tulajdonságot `Yes` értékre az alkalmazás regisztrációs adataiban a [Azure Portalban](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Alapértelmezés szerint a Azure Portalban létrehozott alkalmazások *[egybérlős](#single-tenant-applications)* konfigurációként vannak konfigurálva.
-1. Frissítse a kódot a kérelmeknek a `common` végpontra való küldéséhez. Ehhez frissítse a végpontot `https://login.microsoftonline.com/{yourtenant}` értékről `https://login.microsoftonline.com/common*`-re.
+1. Állítsa be `Multi-Tenanted` tulajdonságot, hogy `Yes` az alkalmazás regisztrációs információit a [Azure Portalban](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Alapértelmezés szerint a Azure Portalban létrehozott alkalmazások *[egybérlős](#single-tenant-applications)* konfigurációként vannak konfigurálva.
+1. Frissítse a kódot a kérelmeknek a `common` végpontra való küldéséhez. Ehhez frissítse a végpontot `https://login.microsoftonline.com/{yourtenant}`ról `https://login.microsoftonline.com/common*`re.
 1. Egyes platformok, például az ASP .NET esetében frissíteni kell a kódot, hogy több kiállító is el legyen fogadva.
 
 A több-bérlős alkalmazással kapcsolatos további információkért lásd: [Hogyan lehet bejelentkezni bármelyik Azure Active Directory (Azure ad) felhasználót a több-bérlős alkalmazás mintájának használatával](howto-convert-app-to-be-multi-tenant.md).

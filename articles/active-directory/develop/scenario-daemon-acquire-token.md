@@ -1,5 +1,5 @@
 ---
-title: Daemon-alkalmazás webes API-k meghívása (tokenek beszerzése az alkalmazáshoz) – Microsoft Identity platform
+title: Jogkivonatok beszerzése a web API-kat meghívó Daemon-alkalmazásokban – Microsoft Identity platform | Azure
 description: Megtudhatja, hogyan hozhat létre olyan Daemon-alkalmazást, amely webes API-kat hív meg (tokenek beszerzése)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,20 +16,20 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a5a3ac1438d5e958317f1899fc6c447f5c149ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0588e20467701512da6542da0d87fca786dcc793
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175515"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920293"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó Daemon-alkalmazás – jogkivonat beszerzése
 
-A bizalmas ügyfélalkalmazás létrehozása után a ``AcquireTokenForClient`` meghívásával, a hatókör átadásával, illetve a token frissítésének kényszerítésével vagy nem a jogkivonat frissítésével beszerezheti az alkalmazás jogkivonatát.
+A bizalmas ügyfélalkalmazás létrehozása után a ``AcquireTokenForClient``meghívásával, a hatókör átadásával, illetve a token frissítésének kényszerítésével vagy nem a jogkivonat frissítésével beszerezheti az alkalmazás jogkivonatát.
 
 ## <a name="scopes-to-request"></a>Kérelmekre vonatkozó hatókörök
 
-Az ügyfél-hitelesítési folyamatra vonatkozó kérelem hatóköre az erőforrás neve, amelyet a `/.default` követ. Ez a jelölés azt jelzi, hogy az Azure AD az alkalmazás regisztrálása során statikusan deklarált **alkalmazási szintű engedélyeket** használ. Emellett, ahogy azt korábban is láttuk, a bérlői rendszergazdának kell megadnia az API-engedélyeket
+Az ügyfél-hitelesítési folyamatra vonatkozó kérelem hatóköre az erőforrás neve, amelyet a `/.default`követ. Ez a jelölés azt jelzi, hogy az Azure AD az alkalmazás regisztrálása során statikusan deklarált **alkalmazási szintű engedélyeket** használ. Emellett, ahogy azt korábban is láttuk, a bérlői rendszergazdának kell megadnia az API-engedélyeket
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 

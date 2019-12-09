@@ -1,29 +1,25 @@
 ---
-title: Böngészők a .NET-hez készült Microsoft Authentication Library-ben
+title: Böngészők használata a MSAL.NET | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg a Xamarin Android és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokat.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2446166aa8078040c06d7cb54ce01666d9931727
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: d5b8c8e78c554994b71f9e246f8bacc39828b17f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802676"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921604"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Böngészők használata a MSAL.NET-ben
 Az interaktív hitelesítéshez böngészők szükségesek. Alapértelmezés szerint a MSAL.NET támogatja a [rendszerböngészőt](#system-web-browser-on-xamarinios-xamarinandroid) a Xamarin. iOS és a Xamarin. Android rendszeren. A [beágyazott webböngészőt](#enable-embedded-webviews-on-ios-and-android) azonban a követelményektől függően (UX, egyszeri bejelentkezésre (SSO), biztonságra) is engedélyezheti a [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) és a [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) alkalmazásokban. Emellett azt is megteheti, hogy [dinamikusan](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) használja azt a böngészőt, amelyet a Chrome vagy az Android rendszerű egyéni Chrome-lapokat támogató böngésző jelenléte alapján használ. A MSAL.NET csak a rendszerböngészőt támogatja a .NET Core Desktop-alkalmazásokban.
@@ -49,7 +45,7 @@ A MSAL.NET egy multi-Framework könyvtár, amely keretrendszer-specifikus kódda
 
 ### <a name="at-a-glance"></a>Áttekintés
 
-| Keretében        | Beágyazott | Rendszer | Alapértelmezett |
+| Keretrendszer        | Beágyazott | Rendszer | Alapértelmezett |
 | ------------- |-------------| -----| ----- |
 | Klasszikus .NET     | Igen | Igen ^ | Beágyazott |
 | .NET Core     | Nem | Igen ^ | Rendszer |
@@ -153,7 +149,7 @@ A MSAL.NET beágyazott webnézete és rendszerböngészője között néhány vi
 
 **Interaktív bejelentkezés a MSAL.NET a beágyazott webnézet használatával:**
 
-![Beágyazott](media/msal-net-web-browsers/embedded-webview.png)
+![beágyazott](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interaktív bejelentkezés a MSAL.NET a rendszerböngésző használatával:**
 
@@ -175,7 +171,7 @@ A MSAL.NET-t használó fejlesztőként több lehetőség közül választhat az
                     .ExecuteAsync();
     ```
 
-    Android
+    Android:
 
     ```csharp
     authResult = app.AcquireTokenInteractively(scopes)
@@ -211,7 +207,7 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 
 #### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>Egyéni lapok jelenlétének észlelése a Xamarin. Android rendszeren
 
-Ha azt szeretné, hogy a rendszer webböngészője engedélyezze az egyszeri bejelentkezést a böngészőben futó alkalmazásokkal, de az Android-eszközök felhasználói felülete nem rendelkezik egyéni Tab-támogatással, akkor dönthet úgy, hogy meghívja a `IsSystemWebViewAvailable()` metódust `IPublicClientApplication`. Ez a metódus `true` ad vissza, ha a PackageManager egyéni lapokat észlel, és `false`, ha azok nem észlelhetők az eszközön.
+Ha azt szeretné, hogy a rendszer webböngészője engedélyezze az egyszeri bejelentkezést a böngészőben futó alkalmazásokkal, de az Android-eszközök felhasználói felülete nem rendelkezik egyéni Tab-támogatással, dönthet úgy, hogy meghívja a `IsSystemWebViewAvailable()` metódust `IPublicClientApplication`. Ez a metódus `true` ad vissza, ha a PackageManager egyéni lapokat észlel, és `false`, ha azok nem észlelhetők az eszközön.
 
 Az ezzel a módszerrel visszaadott érték és a követelmények alapján a következő döntéseket hozhatja:
 

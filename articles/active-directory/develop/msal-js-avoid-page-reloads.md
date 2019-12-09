@@ -1,32 +1,28 @@
 ---
-title: Az oldal újratöltésének elkerülése (Microsoft hitelesítési függvénytár JavaScripthez)
+title: Az oldal újratöltésének elkerülése (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogy miként kerülheti el a lapok újratöltését a tokenek a Microsoft-hitelesítési kódtár használatával való csendes beszerzése és megújítása közben a JavaScripthez (MSAL. js).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/29/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29edafdc27a3835653f82ec36d576a4871e66155
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 04d1ef1f76b1b1a807f48f7c79e41ada68b561fc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803102"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916435"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>A MSAL. js használatával a tokenek beszerzése és megújítása előtt Kerülje a lap újratöltését
-A JavaScripthez készült Microsoft Authentication Library (MSAL. js) rejtett `iframe` elemeket használ a jogkivonatok háttérben való csendes beszerzéséhez és megújításához. Az Azure AD visszaadja a tokent a jogkivonat-kérelemben megadott regisztrált redirect_uri (alapértelmezés szerint ez az alkalmazás legfelső szintű lapja). Mivel a válasz 302, a `iframe`a betöltéshez `redirect_uri` megfelelő HTML-kódot eredményez. Általában az alkalmazás `redirect_uri` a legfelső szintű lap, ezért az újratöltést okoz.
+A JavaScripthez készült Microsoft Authentication Library (MSAL. js) rejtett `iframe` elemeket használ a jogkivonatok háttérben való csendes beszerzéséhez és megújításához. Az Azure AD visszaadja a tokent a jogkivonat-kérelemben megadott regisztrált redirect_urinak (alapértelmezés szerint ez az alkalmazás legfelső szintű lapja). Mivel a válasz 302, a `iframe`a betöltéshez `redirect_uri` megfelelő HTML-kódot eredményez. Általában az alkalmazás `redirect_uri` a legfelső szintű lap, ezért az újratöltést okoz.
 
 Más esetekben, ha az alkalmazás főoldalára való navigáláshoz hitelesítés szükséges, a beágyazott `iframe` elemeket vagy `X-Frame-Options: deny` hibát okozhat.
 

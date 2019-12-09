@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Hozzon létre egy egyoldalas webalkalmazást – a Bing Image Search API'
+title: 'Oktatóanyag: Egyoldalas webalkalmazás létrehozása – Bing Image Search API'
 titleSuffix: Azure cognitive services
 description: A Bing Image Search API segítségével jó minőségű, releváns képeket kereshet a weben. Ezzel az oktatóanyaggal egyoldalas webalkalmazást készíthet, amely keresési lekérdezéseket küld az API-nak, és a weblapon belül jeleníti meg az eredményeket.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c0f06f02a274780085fdb3c4c270ad541a0daa8c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868262"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930700"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Oktatóanyag: Hozzon létre egy egyoldalas alkalmazást, a Bing Image Search API használatával
+# <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Image Search API használatával
 
 A Bing Image Search API segítségével jó minőségű, releváns képeket kereshet a weben. Ezzel az oktatóanyaggal egyoldalas webalkalmazást készíthet, amely keresési lekérdezéseket küld az API-nak, és a weblapon belül jeleníti meg az eredményeket. Ez az oktatóanyag hasonló a Bing Web Searchre vonatkozó [ugyanilyen típusú oktatóanyaghoz](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md).
 
@@ -34,13 +34,13 @@ Az oktatóanyaghoz tartozó teljes forráskód elérhető a [GitHubon](https://g
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [Node.js](https://nodejs.org/) legújabb verziója.
-* A Node.js-hez készült [Express.js](https://expressjs.com/) keretrendszer. A GitHub-minta információs fájl telepítési utasításokat a forráskódja számára érhetők el.
+* A Node.js-hez készült [Express.js](https://expressjs.com/) keretrendszer. A forráskód telepítési utasításai a GitHub-minta readme fájlban érhetők el.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="manage-and-store-user-subscription-keys"></a>Felhasználó előfizetési kulcsainak kezelése és tárolása
 
-Ez az alkalmazás webböngészők állandó tárolójában helyezi el az API-előfizetési kulcsokat. Ha nincs tárolt kulcs, akkor a weboldal a felhasználótól kéri a kulcs megadását, amelyet eltárol a későbbi használathoz. Ha az API később visszautasítja a kulcsot, az alkalmazás eltávolítja azt a tárolóból.
+Ez az alkalmazás webböngészők állandó tárolójában helyezi el az API-előfizetési kulcsokat. Ha nincs tárolt kulcs, akkor a weboldal a felhasználótól kéri a kulcs megadását, amelyet eltárol a későbbi használathoz. Ha az API később visszautasítja a kulcsot, az alkalmazás eltávolítja azt a tárolóból. Ez a példa a globális végpontot használja. Használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot is.
 
 
 Definiálja a `storeValue` és a `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (amennyiben a böngésző ezt támogatja), vagy cookie-kat.
@@ -386,7 +386,7 @@ A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a Jav
 > [!NOTE]
 > Éles webalkalmazásban a kérést ettől függetlenül is kiszolgálói oldalról érdemes végrehajtani. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Ilyen proxyn válasza rendelkezik egy `Access-Control-Expose-Headers` fejlécet, amely lehetővé teszi, hogy a válaszfejlécek, és elérhetővé teszi azokat a JavaScript.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxytól kapott válasz egy `Access-Control-Expose-Headers` fejlécet tartalmaz, amely lehetővé teszi a válasz fejléceit, és elérhetővé teszi őket a JavaScript számára.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 
@@ -402,11 +402,11 @@ Végül indítsa el a CORS-proxyt a következő paranccsal:
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Képadatok kinyerése a Bing Image Search API használatával](tutorial-image-post.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-* [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing Image Search API – referenciaanyag](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

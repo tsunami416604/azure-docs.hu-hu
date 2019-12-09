@@ -3,27 +3,23 @@ title: Alkalmazás közzétevő tartományának konfigurálása
 titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan konfigurálhat egy alkalmazás közzétevő tartományát, hogy a felhasználók tisztában legyenek az adataik elküldésével.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3558e589004e0488e5b96b0e39bd3f5ceea69658
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 032fca669a617c938473b0d0c27a754faa60b528
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013060"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917845"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Útmutató: alkalmazás közzétevő tartományának konfigurálása
 
@@ -39,9 +35,9 @@ A következő táblázat összefoglalja a közzétevő tartomány értékének a
 
 | Bérlő által ellenőrzött tartományok | Közzétevő tartomány alapértelmezett értéke |
 |-------------------------|----------------------------|
-| NULL | NULL |
-| *.onmicrosoft.com | *.onmicrosoft.com |
-| - *.onmicrosoft.com<br/>- domain1.com<br/>-domain2.com (elsődleges) | domain2.com |
+| null | null |
+| *. onmicrosoft.com | *. onmicrosoft.com |
+| -*. onmicrosoft.com<br/>– domain1.com<br/>-domain2.com (elsődleges) | domain2.com |
 
 Ha a több-bérlős alkalmazás közzétevő tartománya nincs beállítva, vagy ha egy olyan tartományra van beállítva, amely a. onmicrosoft.com-ben ér véget, akkor az alkalmazás hozzájárulási kérése nem **ellenőrzöttként** jelenik meg a közzétevő tartománya helyett.
 

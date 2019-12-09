@@ -1,18 +1,19 @@
 ---
-title: Séma-eltolódás a leképezési adatfolyamban | Azure Data Factory
+title: Séma-eltolódás a leképezési adatfolyamban
 description: Rugalmas adatfolyamatok létrehozása a Azure Data Factory a séma drift
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/12/2019
-ms.openlocfilehash: 8c2764535515d0aeb1eb65a1621148fa58317cac
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9daf7973a2e48f866a8d0b93a682851d31dc3af7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553694"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928543"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Séma-eltolódás a leképezési adatfolyamban
 
@@ -52,7 +53,7 @@ Ha engedélyezve van a séma-eltolódás, győződjön meg arról, hogy a lekép
 
 Ha az adatfolyamnak vannak sodródott oszlopai, az átalakításokban a következő módszerekkel érheti el őket:
 
-* A `byPosition` és a `byName` kifejezések használatával explicit módon hivatkozhat egy oszlopra név vagy pozíció száma alapján.
+* A `byPosition` és `byName` kifejezések használatával explicit módon hivatkozhat egy oszlopra név vagy pozíció száma alapján.
 * Oszlop mintázatának hozzáadása egy származtatott oszlophoz vagy összesítő átalakításhoz a név, a stream, a pozíció vagy a típus bármely kombinációjának megfelelően
 * Szabályon alapuló leképezés hozzáadása egy Select vagy mosogató átalakításban, hogy az oszlopok aliasai megegyezzenek a mintázattal
 
@@ -64,7 +65,7 @@ A lebegő oszlopok explicit módon történő hivatkozásához gyorsan létrehoz
 
 ![Térkép felúszik](media/data-flow/mapdrifted1.png "Térkép felúszik")
 
-A generált származtatott oszlop transzformációjában minden egyes lebegő oszlop az észlelt névvel és adattípussal van leképezve. A fenti adatelőnézetben a "movieId" oszlop egész számként van észlelve. Ha a **leképezési** felszínre kattint, a MovieId a származtatott oszlopban `toInteger(byName('movieId'))` értékként van definiálva, és a séma nézeteiben szerepel az alsóbb rétegbeli átalakításokban.
+A generált származtatott oszlop transzformációjában minden egyes lebegő oszlop az észlelt névvel és adattípussal van leképezve. A fenti adatelőnézetben a "movieId" oszlop egész számként van észlelve. Ha a **leképezési** felszínre kattintott, a MovieId a származtatott oszlopban `toInteger(byName('movieId'))`ként van definiálva, és a séma nézeteiben szerepel az alsóbb rétegbeli átalakításokban.
 
 ![Térkép felúszik](media/data-flow/mapdrifted2.png "Térkép felúszik")
 

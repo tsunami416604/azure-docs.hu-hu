@@ -1,24 +1,25 @@
 ---
-title: Összesített átalakítás Azure Data Factory leképezési adatfolyamban
+title: Összesített átalakítás a leképezési adatfolyamban
 description: Megtudhatja, hogyan összesítheti a Azure Data Factory méretezési adatokat a leképezési adatfolyam összesített átalakításával.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: 3f21367c36ae31aa2115c109933a581bef464baf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 74b96bf2cac0de7c57e496c637f2e3ef549eb61f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676918"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930459"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Összesített átalakítás a leképezési adatfolyamban 
 
 Az összesített átalakítás az adatstreamek oszlopainak összesítését határozza meg. A Kifejezésszerkesztő használatával különböző típusú összesítéseket adhat meg, például a SUM, a MIN, a MAX és a COUNT függvényt meglévő vagy számított oszlopok szerint csoportosítva.
 
-## <a name="group-by"></a>Csoportosítási alapja
+## <a name="group-by"></a>Csoportosítási szempont
 
 Válasszon ki egy meglévő oszlopot, vagy hozzon létre egy új számított oszlopot, amelyet Group By záradékként kíván használni az összesítéshez. Meglévő oszlop használatához válassza ki azt a legördülő listából. Új számított oszlop létrehozásához vigye a kurzort a záradék fölé, és kattintson a **számított oszlop**elemre. Ekkor megnyílik az [adatfolyam-kifejezés szerkesztője](concepts-data-flow-expression-builder.md). Miután létrehozta a számított oszlopot, adja meg a kimeneti oszlop nevét a **név** mezőben. Ha további Group By záradékot szeretne hozzáadni, vigye a kurzort egy meglévő záradék fölé, és kattintson a plusz ikonra.
 
@@ -45,7 +46,7 @@ Az összesített átalakítások hasonlóak az SQL aggregált választó lekérd
 * Használjon összesítő függvényt, például `last()` vagy `first()` a további oszlopok belefoglalásához.
 * Csatlakoztassa újra az oszlopokat a kimeneti adatfolyamhoz a [saját illesztési minta](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)használatával.
 
-## <a name="data-flow-script"></a>Adatfolyam-parancsfájl
+## <a name="data-flow-script"></a>Adatfolyamszkript
 
 ### <a name="syntax"></a>Szintaxis
 
@@ -85,6 +86,6 @@ MoviesYear aggregate(
             ) ~> AvgComedyRatingByYear
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ablak alapú összesítés definiálása az ablak- [transzformáció](data-flow-window.md) használatával

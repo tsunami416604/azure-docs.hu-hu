@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: 85f3c8b9bc4167350b8a56f118128b89df142611
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cc17b8158c847bff5f07d6088a99566dc499d1bf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896921"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914766"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Oktatóanyag: SAP-SuccessFactors konfigurálása Active Directory felhasználók üzembe helyezéséhez (előzetes verzió)
-Ennek az oktatóanyagnak a célja, hogy bemutassa azokat a lépéseket, amelyekkel a munkavégző adatok a SuccessFactors Employee Central szolgáltatásból a Active Directoryba és Azure Active Directoryba való importálásához szükségesek, és az e-mail-cím opcionális visszaírása a SuccessFactors.
+Ennek az oktatóanyagnak a célja, hogy megmutassa azokat a lépéseket, amelyeket el kell végeznie ahhoz, hogy a felhasználók SuccessFactors az alkalmazotti központból a Active Directory (AD) és az Azure AD-ba, az e-mail-cím opcionális visszaírásával a SuccessFactors. Ez az integráció nyilvános előzetes verzióban érhető el, és támogatja a több mint [70 felhasználói attribútum](../manage-apps/sap-successfactors-attribute-reference.md) lekérését a SuccessFactors Employee Central-ból.
+
+>[!NOTE]
+>Akkor használja ezt az oktatóanyagot, ha a SuccessFactors kiépíteni kívánt felhasználóknak helyszíni AD-fiókra és opcionálisan Azure AD-fiókra van szükségük. Ha a SuccessFactors felhasználóinak csak az Azure AD-fiókra van szükségük (csak felhőalapú felhasználók), tekintse meg az [SAP SuccessFactors konfigurálása az Azure ad](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) -beli felhasználók számára című oktatóanyagot. 
+
 
 ## <a name="overview"></a>Áttekintés
 
@@ -69,7 +73,7 @@ Ez a szakasz a közös hibrid környezetek teljes körű felhasználói üzembe 
 4. Az Azure AD Connect-kiépítési ügynök egy szolgáltatásfiókot használ az AD-fiókadatok hozzáadásához/frissítéséhez.
 5. A Azure AD Connect szinkronizálási motorja a különbözeti szinkronizálást futtatja a frissítések AD-ben való lekéréséhez.
 6. A Active Directory frissítések szinkronizálva vannak a Azure Active Directoryval.
-7. Ha a SuccessFactors visszaírási-összekötő konfigurálva van, a rendszer az e-mail-attribútumot és a felhasználónevet írja vissza a SuccessFactors-be a használt egyező attribútum alapján.
+7. Ha a [SuccessFactors visszaírási-alkalmazás](sap-successfactors-writeback-tutorial.md) konfigurálva van, az e-mail-attribútumot a SuccessFactors értékre írja, a használt egyező attribútum alapján.
 
 ## <a name="planning-your-deployment"></a>Az üzembe helyezés megtervezése
 
@@ -109,6 +113,10 @@ A SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel egy
 * Görgessen le ugyanabban a mezőben, és válassza az **Employee Central API**elemet. Az alább látható engedélyek hozzáadásával olvassa el a ODATA API-t és a szerkesztést a ODATA API használatával. Válassza a szerkesztés lehetőséget, ha azt tervezi, hogy ugyanazt a fiókot használja a visszaírási SuccessFactors-forgatókönyvhöz. 
   > [!div class="mx-imgBorder"]
   > Olvasási írási engedély ![](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+
+  >[!NOTE]
+  >A kiépítési alkalmazás által beolvasott attribútumok teljes listájáért tekintse meg a [SuccessFactors attribútum-referenciát](../manage-apps/sap-successfactors-attribute-reference.md) .
+
 * Kattintson a **kész**gombra. Kattintson a **Save Changes** (Módosítások mentése) gombra.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Engedélyezési csoport létrehozása az API-felhasználó számára
@@ -294,6 +302,10 @@ Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan 
 
 1. Az **attribútum-hozzárendelések** szakaszban megadhatja, hogy az egyes SuccessFactors attribútumok hogyan képezhetők le Active Directory attribútumokra.
 
+  >[!NOTE]
+  >Az alkalmazás által támogatott SuccessFactors-attribútum teljes listájáért tekintse meg a [SuccessFactors attribútum referenciáját](../manage-apps/sap-successfactors-attribute-reference.md) .
+
+
 1. Kattintson egy meglévő attribútum-hozzárendelésre a frissítéséhez, vagy kattintson az **Új leképezés hozzáadása** lehetőségre a képernyő alján új hozzárendelések hozzáadásához. Az egyes attribútumok megfeleltetése a következő tulajdonságokat támogatja:
 
       * **Leképezés típusa**
@@ -347,20 +359,9 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 
 ## <a name="next-steps"></a>Következő lépések
 
+* [További információ a bejövő kiépítés támogatott SuccessFactors attribútumairól](../manage-apps/sap-successfactors-attribute-reference.md)
+* [Ismerje meg, hogyan konfigurálhatja az e-mailek visszaírási a SuccessFactors](sap-successfactors-writeback-tutorial.md)
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a SuccessFactors és a Azure Active Directory között](successfactors-tutorial.md)
 * [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)
 * [Útmutató a kiépítési konfigurációk exportálásához és importálásához](../manage-apps/export-import-provisioning-configuration.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2114e60b5ed684063ed100279ea19f561bd335ea
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: af16643ed877ca427a22428afec028264de7a5d8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849785"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928977"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor beállítása a Python-alkalmazáshoz (előzetes verzió)
 
@@ -61,7 +61,16 @@ A csomagok és integrációk teljes listájáért lásd: [OpenCensus-csomagok](h
 
 Az SDK három Azure Monitor-exportálót használ különböző típusú telemetria küldéséhez Azure Monitor: nyomkövetés, metrikák és naplók. További információ ezekről a telemetria-típusokról: [az adatplatform áttekintése](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform). Az alábbi útmutatást követve elküldheti ezeket a telemetria-típusokat a három-exportőr használatával.
 
+## <a name="telemetry-type-mappings"></a>Telemetria típusú leképezések
+
+Itt láthatók azok az exportőrök, amelyeket a OpenCensus biztosít a Azure Monitorban megjelenő telemetria-típusokhoz.
+
+![Képernyőkép a telemetria-típusok hozzárendeléséről a OpenCensus-ből Azure Monitor](./media/opencensus-python/0012-telemetry-types.png)
+
 ### <a name="trace"></a>Nyomkövetés
+
+> [!NOTE]
+> a OpenCensus `Trace` az [elosztott nyomkövetésre](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)hivatkozik. A `AzureExporter` `requests` és `dependency` telemetria küld Azure Monitor.
 
 1. Először is hozzon egy nyomkövetési adat helyi előállítását. A Python inaktív vagy a választott szerkesztőben adja meg a következő kódot.
 
@@ -293,7 +302,10 @@ Az SDK három Azure Monitor-exportálót használ különböző típusú telemet
         main()
     ```
 
-4. Az exportőr a Azure Monitorba küldi a naplófájlokat. A `traces`alatt található adat.
+4. Az exportőr a Azure Monitorba küldi a naplófájlokat. A `traces`alatt található adat. 
+
+> [!NOTE]
+> `traces` ebben a kontextusban nem ugyanaz, mint `Tracing`. `traces` a `AzureLogHandler`használatakor megjelenő telemetria típusát jelöli Azure Monitor. `Tracing` a OpenCensus egyik fogalomára hivatkozik, és az [elosztott nyomkövetésre](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)vonatkozik.
 
 5. A naplófájlok formázásához a beépített Python- [naplózási API](https://docs.python.org/3/library/logging.html#formatter-objects)-ban használhatja a `formatters`.
 

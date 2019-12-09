@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a732e80549747f7c683a73bf0f16c40d48decea6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: bb75fd8aafdc886a8753fa2e6be30d9d7f83bb6f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546348"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927866"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -122,14 +122,14 @@ Az eredmények CSV-ben való megjelenítéséhez:
 
 ### <a name="file-system-features"></a>Fájlrendszer-funkciók
 
-| Szolgáltatás | Támogatási állapot | Megjegyzések |
+| Szolgáltatás | Támogatás állapota | Megjegyzések |
 |---------|----------------|-------|
-| Hozzáférés-vezérlési listák (ACL-ek) | Teljes mértékben támogatott | A Windows ACL-eket a Azure File Sync megőrzi, és a Windows Server a kiszolgálói végpontokon kényszeríti ki. A Windows ACL-ek (még) a Azure Files által támogatottak, ha a fájlok közvetlenül a felhőben érhetők el. |
-| Rögzített hivatkozások | Kimarad | |
-| Szimbolikus hivatkozások | Kimarad | |
-| Csatlakoztatási pontok | Részlegesen támogatott | A csatlakoztatási pontok lehetnek a kiszolgálói végpontok gyökeré, de a rendszer kihagyja őket, ha egy kiszolgálói végpont névterében szerepelnek. |
-| Csomópontok | Kimarad | Például elosztott fájlrendszer DfrsrPrivate és DFSRoots mappákat. |
-| Újraelemzési pontok | Kimarad | |
+| Hozzáférés-vezérlési lista (ACL-ek) | Teljes mértékben támogatott | A Windows ACL-eket a Azure File Sync megőrzi, és a Windows Server a kiszolgálói végpontokon kényszeríti ki. A Windows ACL-ek (még) a Azure Files által támogatottak, ha a fájlok közvetlenül a felhőben érhetők el. |
+| Rögzített hivatkozások | Kihagyva | |
+| Szimbolikus hivatkozások | Kihagyva | |
+| Csatlakozási pontok | Részlegesen támogatott | A csatlakoztatási pontok lehetnek a kiszolgálói végpontok gyökeré, de a rendszer kihagyja őket, ha egy kiszolgálói végpont névterében szerepelnek. |
+| Csomópontok | Kihagyva | Például elosztott fájlrendszer DfrsrPrivate és DFSRoots mappákat. |
+| Újraelemzési pontok | Kihagyva | |
 | NTFS-tömörítés | Teljes mértékben támogatott | |
 | Ritka fájlok | Teljes mértékben támogatott | A ritka fájlok szinkronizálása (nincs letiltva), de teljes fájlként szinkronizálja őket a felhőbe. Ha a fájl tartalma megváltozik a felhőben (vagy egy másik kiszolgálón), a fájl már nem ritka, amikor a módosítás le van töltve. |
 | Alternatív adatfolyamok (ADS) | Megőrzött, de nincs szinkronizálva | A fájl besorolási infrastruktúrája által létrehozott besorolási címkék például nem szinkronizálhatók. Az egyes kiszolgálói végpontokon található fájlokra vonatkozó meglévő besorolási címkék érintetlenek maradnak. |
@@ -157,18 +157,18 @@ A Windows Server feladatátvételi fürtszolgáltatást Azure File Sync támogat
 > [!Note]  
 > A Azure File Sync ügynöknek telepítve kell lennie a feladatátvevő fürt minden csomópontján a szinkronizálás megfelelő működéséhez.
 
-### <a name="data-deduplication"></a>Az deduplikálás
+### <a name="data-deduplication"></a>Adatdeduplikáció
 **Windows server 2016 és Windows server 2019**   
-Az deduplikálás olyan köteteken támogatott, amelyeken engedélyezve van a felhőalapú rétegek használata a Windows Server 2016 rendszeren. Ha engedélyezi az deduplikálás szolgáltatást egy olyan köteten, amelyen engedélyezve van a felhőalapú réteg, a további tárhelyek kiépítésének hiányában további fájlokat is gyorsítótárazhat a helyszínen. 
+Az deduplikálás támogatott a Windows Server 2016 és a Windows Server 2019 rendszeren engedélyezett felhőalapú rétegekből származó kötetek esetében. Ha engedélyezi az deduplikálás szolgáltatást egy olyan köteten, amelyen engedélyezve van a felhőalapú réteg, a további tárhelyek kiépítésének hiányában további fájlokat is gyorsítótárazhat a helyszínen. 
 
 Ha az adatok deduplikálása engedélyezve van egy olyan köteten, amelyen engedélyezve van a felhőalapú rétegek használata, a deduplikáció optimalizált fájlokat a rendszer a felhőre vonatkozó házirend-beállítások alapján a normál fájlhoz hasonló módon fogja összeállítani. Ha a deduplikáció optimalizált fájlok lettek kiválasztva, az adatok deduplikálása adatgyűjtési feladatsor automatikusan lefuttatja a lemezterület felszabadítását a köteten lévő más fájlok által már nem hivatkozott felesleges adattömbök eltávolításával.
 
 Vegye figyelembe, hogy a mennyiségi megtakarítás csak a kiszolgálón érvényes. Az Azure-fájlmegosztás adatait nem törli a rendszer.
 
 > [!Note]  
-> Az deduplikálás és a felhőalapú rétegek jelenleg nem támogatottak ugyanazon a köteten a 2019-as kiszolgálón, mert egy jövőbeli frissítésben kijavított hiba történik.
+> Ha engedélyezni szeretné a Windows Server 2019-es verzión engedélyezve lévő, felhőalapú rétegekből származó kötetek adatmásolásának támogatását, telepítenie kell a Windows Update [KB4520062](https://support.microsoft.com/help/4520062) , és Azure file Sync ügynök 9.0.0.0 vagy újabb verziójára van szükség.
 
-**Windows Server 2012 R2**  
+**Windows Server 2012 R2**  
 A Azure file Sync nem támogatja az deduplikálás és a felhőalapú rétegek használatát ugyanarra a kötetre a Windows Server 2012 R2 rendszeren. Ha egy köteten engedélyezve van az deduplikálás, a Felhőbeli rétegek letiltását le kell tiltani. 
 
 **Megjegyzések**
@@ -204,10 +204,10 @@ A Azure File Sync és a DFS-R működéséhez egymás mellé:
 
 További információ: [elosztott fájlrendszer replikációs szolgáltatása Overview (áttekintés](https://technet.microsoft.com/library/jj127250)).
 
-### <a name="sysprep"></a>Sysprep
+### <a name="sysprep"></a>A Sysprep
 Nem támogatott a Sysprep használata olyan kiszolgálón, amelyen a Azure File Sync ügynök telepítve van, és nem várt eredményekhez vezethet. Az ügynök telepítése és a kiszolgáló regisztrálása a kiszolgáló rendszerképének telepítése és a Sysprep mini-Setup befejezése után történik.
 
-### <a name="windows-search"></a>Windows-Keresés
+### <a name="windows-search"></a>Windows Search
 Ha a felhő-rétegek engedélyezve vannak egy kiszolgálói végponton, a rendszer kihagyja a többszintes fájlokat, és nem indexeli a Windows Search. A nem rétegű fájlok indexelése megfelelő.
 
 ### <a name="antivirus-solutions"></a>Vírusvédelmi megoldások
@@ -256,7 +256,7 @@ Azure File Sync csak a következő régiókban érhető el:
 | Kelet-Kanada | Quebec City |
 | Közép-India | Pune |
 | USA középső régiója | Iowa |
-| Kelet-Ázsia | Hongkong (KKT) |
+| Kelet-Ázsia | Hongkong KKT |
 | USA keleti régiója | Virginia |
 | USA 2. keleti régiója | Virginia |
 | Közép-Franciaország | Párizs |

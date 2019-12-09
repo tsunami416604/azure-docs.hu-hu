@@ -1,18 +1,19 @@
 ---
-title: Feltételes felosztás átalakítása Azure Data Factory leképezési adatfolyamatban
+title: Feltételes felosztású átalakítás a leképezési adatfolyamban
 description: Adatfelosztás különböző streamekre a feltételes felosztás átalakításával Azure Data Factory leképezési adatfolyamban
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: 9ace415aa725a82d8feda5702d25d7e5ff9875d9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d7e2af6c98951e685192656b37226716e4340bfe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676814"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930447"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Feltételes felosztású átalakítás a leképezési adatfolyamban
 
@@ -26,7 +27,7 @@ Az adatfolyam-Kifejezésszerkesztő használatával adjon meg egy kifejezést a 
 
 ![feltételes felosztás](media/data-flow/conditionalsplit1.png "feltételes felosztási beállítások")
 
-## <a name="data-flow-script"></a>Adatfolyam-parancsfájl
+## <a name="data-flow-script"></a>Adatfolyamszkript
 
 ### <a name="syntax"></a>Szintaxis
 
@@ -59,6 +60,6 @@ CleanData
     ) ~> SplitByYear@(moviesBefore1960, moviesAfter1980, AllOtherMovies)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feltételes felosztással használt közös adatfolyam-átalakítások az [összekapcsolási transzformáció](data-flow-join.md), a [keresési átalakítás](data-flow-lookup.md)és az [átalakítás kiválasztása](data-flow-select.md)

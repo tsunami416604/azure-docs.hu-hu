@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 11/18/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: df488c2a3033015175943f7d092beaaa41e34046
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b819264895e35c6ef4fe9dc5263444dcac17eaa2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260759"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935823"
 ---
 Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a következők:
 
 - A következő régiókban támogatott, régiónként eltérő számú rendelkezésre állási zónával:
     - USA 2. keleti régiója
     - USA keleti régiója
-    - USA nyugati régiója, 2.
+    - USA 2. nyugati régiója
     - Délkelet-Ázsia
     - Észak-Európa
     - Nyugat-Európa
-    - Az Egyesült Királyság déli régiója 
+    - Egyesült Királyság déli régiója 
 - Csak a rendelkezésre állási zónákkal használható (rendelkezésre állási csoportok és a zónákon kívüli önálló virtuálisgép-telepítések esetén nem lehet Ultra lemez csatlakoztatása)
 - Csak a következő virtuálisgép-sorozatokban támogatott:
     - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
@@ -32,8 +32,8 @@ Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a követ
     - FSv2
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
-- Nem minden virtuálisgép-méret érhető el minden olyan támogatott régióban, amely Ultra-lemezekkel rendelkezik.
-- Csak adatlemezként érhetők el, és csak a 4k fizikai szektor méretének támogatása  
+- Nem minden virtuálisgép-méret érhető el minden olyan támogatott régióban, ahol az ultra Disks
+- Csak adatlemezként érhetők el, és csak a 4k fizikai szektor méretének támogatásához. Az ultra-lemez 4K-os natív szektorának mérete miatt bizonyos alkalmazások nem lesznek kompatibilisek az ultra Disks szolgáltatással. Az ultra-lemezek támogatásához az egyik példa a Oracle Database, amely a 12,2-as vagy újabb kiadást igényli.  
 - Csak üres lemezként hozható létre  
 - Még nem támogatja a lemezes pillanatképeket, a virtuálisgép-lemezképeket, a rendelkezésre állási csoportokat és az Azure Disk encryptiont
 - Még nem támogatja az integrációt Azure Backup vagy Azure Site Recovery

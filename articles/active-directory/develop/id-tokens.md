@@ -1,15 +1,12 @@
 ---
 title: Microsoft Identity platform azonosító jogkivonat-referenciája | Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure AD v 1.0 és a Microsoft Identity platform (v 2.0) végpontok által kibocsátott id_tokens.
+description: Ismerje meg, hogyan használhatók az Azure AD v 1.0 és a Microsoft Identity platform (v 2.0) végpontok által kibocsátott id_tokens.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: ryanwi
@@ -17,12 +14,12 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 271d00539d1e502fe172d086067664fe15000dcf
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1106692128f3272f59c80a8312d6ceea2500b3a7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554806"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917471"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
@@ -30,7 +27,7 @@ az `id_tokens` az [OpenID Connect](v1-protocols-openid-connect-code.md) folyamat
 
 ## <a name="using-the-id_token"></a>A id_token használata
 
-Az azonosító jogkivonatokat annak ellenőrzésére kell használni, hogy a felhasználó ki és milyen további hasznos információkat igényel róluk – a [hozzáférési jogkivonat](access-tokens.md)helyett nem használható. Az általa biztosított jogcímek az alkalmazásban, az adatbázis kulcsaiként és az ügyfélalkalmazás elérésének biztosítására használhatók.  Ha kulcsokat hoz létre egy adatbázishoz, `idp`t nem szabad használni, mert a vendég forgatókönyveket felzavarja.  A beírást csak `sub` kell elvégezni (amely mindig egyedi), az útválasztáshoz használt `tid`, ha szükséges.  Ha a szolgáltatások között meg kell osztania az adatmegosztást, `oid` + `sub` + `tid` fog működni, mivel az összes szolgáltatás ugyanazt a `oid`t kapja meg.
+Az azonosító jogkivonatokat annak ellenőrzésére kell használni, hogy a felhasználó ki és milyen további hasznos információkat igényel róluk – a [hozzáférési jogkivonat](access-tokens.md)helyett nem használható. Az általa biztosított jogcímek az alkalmazásban, az adatbázis kulcsaiként és az ügyfélalkalmazás elérésének biztosítására használhatók.  Ha kulcsokat hoz létre egy adatbázishoz, `idp`t nem szabad használni, mert a vendég forgatókönyveket felzavarja.  A beírást csak `sub` kell elvégezni (amely mindig egyedi), az útválasztáshoz használt `tid`, ha szükséges.  Ha a szolgáltatások között meg kell osztania az adatmegosztást, `oid`+`sub`+`tid` fog működni, mivel az összes szolgáltatás ugyanazt a `oid`t kapja meg.
 
 ## <a name="claims-in-an-id_token"></a>Jogcímek egy id_token
 
@@ -58,19 +55,19 @@ Tekintse meg ezt a v 2.0 minta tokent a [JWT.MS](https://jwt.ms/#id_token=eyJ0eX
 |-----|--------|-------------|
 |`typ` | String – mindig "JWT" | Azt jelzi, hogy a token egy JWT.|
 |`alg` | Sztring | Meghatározza a jogkivonat aláírásához használt algoritmust. Példa: "RS256" |
-|`kid` | Sztring | A jogkivonat aláírásához használt nyilvános kulcs ujjlenyomata. Az 1.0-s és a v 2.0 `id_tokens` is kibocsátva. |
+|`kid` | Sztring | A jogkivonat aláírásához használt nyilvános kulcs ujjlenyomata. Az 1.0-s és a v 2.0 `id_tokens`is kibocsátva. |
 |`x5t` | Sztring | Ugyanaz (használatban és értékben) `kid`ként. Azonban ez egy örökölt jogcím, amely csak a 1.0-s verzióban, `id_tokens` kompatibilitási célból lett kibocsátva. |
 
 ### <a name="payload-claims"></a>Hasznos adatokhoz tartozó jogcímek
 
-Ez a lista azokat a jogcímeket jeleníti meg, amelyek a legtöbb id_tokens alapértelmezésben vannak (kivéve, ha van ilyen).  Az alkalmazás azonban [választható jogcímeket](active-directory-optional-claims.md) is használhat további jogcímek igénylésére a id_token.  Ezek az `groups` jogcímtől a felhasználó nevével kapcsolatos információkra terjedhetnek.
+Ez a lista azokat a jogcímeket jeleníti meg, amelyek a legtöbb id_tokens alapértelmezés szerint (kivéve, ha van ilyen).  Az alkalmazás azonban [választható jogcímeket](active-directory-optional-claims.md) is használhat a id_token további jogcímek igényléséhez.  Ezek az `groups` jogcímtől a felhasználó nevével kapcsolatos információkra terjedhetnek.
 
 |Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
-|`aud` |  Karakterlánc, alkalmazás-azonosító URI | Azonosítja a jogkivonat kívánt címzettjét. @No__t_0 a célközönség az alkalmazáshoz hozzárendelt alkalmazás-azonosító, amelyet a Azure Portal kell rendelnie az alkalmazáshoz. Az alkalmazásnak ellenőriznie kell ezt az értéket, és el kell utasítania a jogkivonatot, ha az érték nem egyezik. |
-|`iss` |  Karakterlánc, STS URI | Azonosítja azt a biztonságijogkivonat-szolgáltatást (STS), amely létrehozza és visszaadja a tokent, valamint azt az Azure AD-bérlőt, amelyben a felhasználó hitelesítése megtörtént. Ha a jogkivonatot a v 2.0-végpont adta ki, akkor az URI `/v2.0` végződik.  Az a GUID, amely azt jelzi, hogy a felhasználó egy Microsoft-fiók felhasználói felhasználója `9188040d-6c67-4c5b-b112-36a304b66dad`. Az alkalmazásnak a jogcím GUID részét kell használnia, hogy korlátozza azon bérlők készletét, amelyek be tudnak jelentkezni az alkalmazásba, ha vannak ilyenek. |
+|`aud` |  Karakterlánc, alkalmazás-azonosító URI | Azonosítja a jogkivonat kívánt címzettjét. `id_tokens`a célközönség az alkalmazáshoz hozzárendelt alkalmazás-azonosító, amelyet a Azure Portal kell rendelnie az alkalmazáshoz. Az alkalmazásnak ellenőriznie kell ezt az értéket, és el kell utasítania a jogkivonatot, ha az érték nem egyezik. |
+|`iss` |  Karakterlánc, STS URI | Azonosítja azt a biztonságijogkivonat-szolgáltatást (STS), amely létrehozza és visszaadja a tokent, valamint azt az Azure AD-bérlőt, amelyben a felhasználó hitelesítése megtörtént. Ha a jogkivonatot a v 2.0-végpont adta ki, akkor az URI `/v2.0`végződik.  Az a GUID, amely azt jelzi, hogy a felhasználó egy Microsoft-fiók fogyasztó felhasználója `9188040d-6c67-4c5b-b112-36a304b66dad`. Az alkalmazásnak a jogcím GUID részét kell használnia, hogy korlátozza azon bérlők készletét, amelyek be tudnak jelentkezni az alkalmazásba, ha vannak ilyenek. |
 |`iat` |  int, egy UNIX timestamp | A "kiállító" érték azt jelzi, hogy a jogkivonat hitelesítése mikor történt.  |
-|`idp`|Karakterlánc, általában egy STS URI | A jogkivonat alanyát hitelesítő identitásszolgáltatót adja meg. Ez az érték megegyezik a kiállítói jogcímek értékével, kivéve, ha a felhasználói fiók nem ugyanabban a bérlőben található, mint a kiállító – vendég. Ha a jogcím nem létezik, az azt jelenti, hogy a `iss` értéke is használható.  A szervezeti környezetben használt személyes fiókok esetében (például egy Azure AD-bérlőnek meghívott személyes fiók) a `idp` jogcím a következő lehet: "live.com" vagy egy STS URI, amely a Microsoft-fiók bérlő `9188040d-6c67-4c5b-b112-36a304b66dad`. |
+|`idp`|Karakterlánc, általában egy STS URI | A jogkivonat alanyát hitelesítő identitásszolgáltatót adja meg. Ez az érték megegyezik a kiállítói jogcímek értékével, kivéve, ha a felhasználói fiók nem ugyanabban a bérlőben található, mint a kiállító – vendég. Ha a jogcím nem létezik, az azt jelenti, hogy a `iss` értéke használható helyette.  A szervezeti környezetben használt személyes fiókok esetében (például egy Azure AD-bérlőhöz meghívott személyes fiók) a `idp` jogcím a következő lehet: "live.com" vagy egy STS URI, amely tartalmazza a Microsoft-fiók bérlő `9188040d-6c67-4c5b-b112-36a304b66dad`. |
 |`nbf` |  int, egy UNIX timestamp | A "NBF" (nem korábban) jogcím azt az időpontot határozza meg, ameddig a JWT nem fogadható el a feldolgozáshoz.|
 |`exp` |  int, egy UNIX timestamp | Az "exp" (lejárati idő) jogcím azt a lejárati időt azonosítja, amely után a JWT nem fogadható el feldolgozásra.  Fontos megjegyezni, hogy egy erőforrás még a token elutasítása előtt is elutasítja a jogkivonatot – Ha például a hitelesítés változására van szükség, vagy a rendszer jogkivonat-visszavonást észlelt. |
 | `c_hash`| Sztring |A kód kivonata csak akkor szerepel az azonosító jogkivonatokban, ha az azonosító jogkivonatot egy OAuth 2,0-es engedélyezési kóddal adják ki. Az engedélyezési kódok hitelességének ellenőrzéséhez használható. Az érvényesítés végrehajtásáról az [OpenID Connect specifikációjában](https://openid.net/specs/openid-connect-core-1_0.html)olvashat bővebben. |
@@ -80,12 +77,12 @@ Ez a lista azokat a jogcímeket jeleníti meg, amelyek a legtöbb id_tokens alap
 |`email` | Sztring | A `email` jogcímek alapértelmezés szerint az e-mail-címmel rendelkező vendég fiókoknál jelennek meg.  Az alkalmazás a `email` [választható jogcím](active-directory-optional-claims.md)használatával kérheti az e-mail-jogcímet a felügyelt felhasználók (az erőforrással azonos bérlőtől).  A v 2.0-s végponton az alkalmazás a `email` OpenID Connect hatókört is kérheti – nem kell megadnia a választható jogcímet és a hatókört a jogcím beszerzéséhez.  Az e-mail-jogcím csak a felhasználó profiljának adataiból származó címezhető leveleket támogatja. |
 |`name` | Sztring | Az `name` jogcím egy ember által olvasható értéket biztosít, amely a jogkivonat tárgyát azonosítja. Az érték nem garantált, hogy egyedi, megváltoztathatatlan, és csak megjelenítési célokra használható. A jogcím fogadásához a `profile` hatókör szükséges. |
 |`nonce`| Sztring | Az egyszeres érték megegyezik az eredeti/Authorize-kérelemben szereplő paraméterrel a IDENTITÁSSZOLGÁLTATÓ. Ha nem egyezik, az alkalmazásnak el kell utasítania a jogkivonatot. |
-|`oid` | Karakterlánc, GUID | Egy objektum megváltoztathatatlan azonosítója a Microsoft Identity Systemben, ebben az esetben egy felhasználói fiók. Ez az azonosító egyedileg azonosítja a felhasználót az alkalmazások között – két különböző alkalmazás, amely ugyanazon a felhasználón jelentkezik be, ugyanazokat az értékeket kapja meg a `oid` jogcímben. A Microsoft Graph az azonosítót egy adott felhasználói fiókhoz tartozó `id` tulajdonságként adja vissza. Mivel a `oid` lehetővé teszi több alkalmazás számára a felhasználók korrelációját, a jogcímek fogadásához a `profile` hatókörre van szükség. Vegye figyelembe, hogy ha egyetlen felhasználó több bérlőn is létezik, akkor a felhasználó minden bérlőn egy másik objektumazonosítót fog tartalmazni – ezeket a rendszer akkor is különböző fiókoknak tekinti, ha a felhasználó ugyanazzal a hitelesítő adatokkal jelentkezik be az egyes fiókokba. Az `oid` jogcím egy GUID azonosító, ezért nem használható fel újra. |
+|`oid` | Karakterlánc, GUID | Egy objektum megváltoztathatatlan azonosítója a Microsoft Identity Systemben, ebben az esetben egy felhasználói fiók. Ez az azonosító egyedileg azonosítja a felhasználót az alkalmazások között – két különböző alkalmazás, amely ugyanazon a felhasználón jelentkezik be, ugyanazokat az értékeket kapja meg az `oid` jogcímben. A Microsoft Graph egy adott felhasználói fiók `id` tulajdonságának adja vissza ezt az azonosítót. Mivel a `oid` lehetővé teszi több alkalmazás számára a felhasználók korrelációját, a jogcímek fogadásához a `profile` hatókörre van szükség. Vegye figyelembe, hogy ha egyetlen felhasználó több bérlőn is létezik, akkor a felhasználó minden bérlőn egy másik objektumazonosítót fog tartalmazni – ezeket a rendszer akkor is különböző fiókoknak tekinti, ha a felhasználó ugyanazzal a hitelesítő adatokkal jelentkezik be az egyes fiókokba. Az `oid` jogcím egy GUID azonosító, ezért nem használható fel újra. |
 |`roles`| Karakterláncok tömbje | A bejelentkezett felhasználóhoz hozzárendelt szerepkörök összessége. |
 |`rh` | Átlátszatlan karakterlánc |Az Azure által a jogkivonatok újraellenőrzéséhez használt belső jogcím. Figyelmen kívül kell hagyni. |
 |`sub` | Karakterlánc, GUID | Az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat érvényesít, például egy alkalmazás felhasználóját. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. A tulajdonos egy páros-azonosító – egyedi egy adott alkalmazás-AZONOSÍTÓhoz. Ha egyetlen felhasználó két különböző alkalmazásba jelentkezik be két különböző ügyfél-azonosítóval, akkor ezek az alkalmazások két különböző értéket kapnak a tulajdonos jogcímek számára. Az architektúra-és adatvédelmi követelményektől függően ez lehet vagy nem kívánatos. |
 |`tid` | Karakterlánc, GUID | Egy GUID, amely azt az Azure AD-bérlőt jelöli, amelyből a felhasználó származik. Munkahelyi és iskolai fiókok esetén a GUID az a szervezet, amelyhez a felhasználó tartozik. A személyes fiókok esetében az érték `9188040d-6c67-4c5b-b112-36a304b66dad`. A jogcím fogadásához a `profile` hatókör szükséges. |
-|`unique_name` | Sztring | A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantáltan egyedi a bérlőn belül, és csak megjelenítési célokra használható. Csak a v 1.0 `id_tokens` kiadásban. |
+|`unique_name` | Sztring | A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantáltan egyedi a bérlőn belül, és csak megjelenítési célokra használható. Csak a v 1.0 `id_tokens`kiadásban. |
 |`uti` | Átlátszatlan karakterlánc | Az Azure által a jogkivonatok újraellenőrzéséhez használt belső jogcím. Figyelmen kívül kell hagyni. |
 |`ver` | Karakterlánc, vagy 1,0 vagy 2,0 | Megadja a id_token verzióját. |
 
@@ -93,13 +90,13 @@ Ez a lista azokat a jogcímeket jeleníti meg, amelyek a legtöbb id_tokens alap
 
 Egy `id_token` érvényesítése hasonló a [hozzáférési token érvényesítésének](access-tokens.md#validating-tokens) első lépéséhez – az ügyfélnek ellenőriznie kell, hogy a megfelelő kiállító visszaküldte-e a jogkivonatot, és hogy nem módosították-e illetéktelenül. Mivel a `id_tokens` mindig egy JWT, sok könyvtár létezik a tokenek érvényesítéséhez – azt javasoljuk, hogy használja ezeket a jogkivonatokat, ne pedig saját magának.
 
-A jogkivonat manuális érvényesítéséhez tekintse meg a [hozzáférési token érvényesítése](access-tokens.md#validating-tokens)című témakör lépéseit. A jogkivonat aláírásának ellenőrzése után a következő jogcímeket érvényesíteni kell a id_token (ezeket a jogkivonat-ellenőrzési függvénytár is végrehajthatja):
+A jogkivonat manuális érvényesítéséhez tekintse meg a [hozzáférési token érvényesítése](access-tokens.md#validating-tokens)című témakör lépéseit. A jogkivonat aláírásának ellenőrzése után a következő jogcímeket érvényesíteni kell a id_tokenban (ezeket a jogkivonat-ellenőrzési függvénytár is végrehajthatja):
 
-* Időbélyegek: a `iat`, `nbf` és `exp` időbélyegek az aktuális időpont előtt vagy után kell esniük. 
+* Időbélyegek: a `iat`, `nbf`és `exp` időbélyegek az aktuális időpont előtt vagy után kell esniük. 
 * Célközönség: a `aud` jogcímnek meg kell egyeznie az alkalmazáshoz tartozó alkalmazás-AZONOSÍTÓval.
 * Alkalom: az adattartalomban lévő `nonce` jogcímnek meg kell egyeznie a/Authorize-végpontnak a kezdeti kérelem során átadott egyszeres paraméterrel.
 
 ## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [hozzáférési tokenekről](access-tokens.md)
-* A id_token lévő jogcímeket a [választható jogcímek](active-directory-optional-claims.md)használatával szabhatja testre.
+* A id_token jogcímeit a [választható jogcímek](active-directory-optional-claims.md)használatával szabhatja testre.

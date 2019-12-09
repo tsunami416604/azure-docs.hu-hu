@@ -1,5 +1,5 @@
 ---
-title: JavaScript egyoldalas alkalmazás forgatókönyvének áttekintése – Microsoft Identity platform
+title: JavaScript egyoldalas alkalmazás forgatókönyve – Microsoft Identity platform | Azure
 description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazást a Microsoft Identity platform használatával (forgatókönyv áttekintése).
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77f59e8c628d7ba37aaf258541664e40e1d4a2dc
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 6ab7b0f1e59504eae64422fd4bbaf6f9e0804ed4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764678"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919817"
 ---
 # <a name="scenario-single-page-application"></a>Forgatókönyv: egyoldalas alkalmazás
 

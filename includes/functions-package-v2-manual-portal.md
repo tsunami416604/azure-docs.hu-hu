@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 10/04/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e99a1b6482c8b1383040e6bd1447c16c236c9f1a
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 04b5b8621cdd74addaa481a24efee22746c96240
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659818"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925626"
 ---
-Az alábbi táblázat bemutatja, hogyan lehet ezt a kötést támogatása hozzáadva minden fejlesztési környezetben.
+Az alábbi táblázat azt ismerteti, hogyan adhat hozzá ehhez a kötéshez minden fejlesztési környezetben támogatást.
 
-| Fejlesztési környezet               | A támogatás hozzáadása <br>Functions 2.x  |
+| Fejlesztési környezet               | Támogatás hozzáadása |
 |----------------------|----------------|
-|Helyi fejlesztés – C# osztálytár       | [A csomag telepítése](../articles/azure-functions/functions-bindings-register.md#vs) |
+|Helyi fejlesztés – C# osztály könyvtára       | [A csomag telepítése](../articles/azure-functions/functions-bindings-register.md#vs) |
 |Helyi fejlesztés – C# parancsfájl, JavaScript,F# |[A bővítmény regisztrálása](../articles/azure-functions/functions-bindings-register.md#extension-bundles)         |
-|A fejlesztői portál| [A bővítmény regisztrálása](../articles/azure-functions/install-update-binding-extensions-manual.md)  |
+|Portál fejlesztése| [A bővítmény regisztrálása](../articles/azure-functions/install-update-binding-extensions-manual.md)  |
 
-Megtudhatja, hogyan lehet frissíteni a létező kötés bővítmények a portálon való ismételt közzétételéhez a függvényalkalmazás projektjét nélkül, tekintse meg a [a bővítmények frissítése](../articles/azure-functions/install-update-binding-extensions-manual.md).
+Ha szeretné megtudni, hogyan frissítheti a meglévő kötési bővítményeket a portálon anélkül, hogy újra közzé kellene tennie a Function app-projektet, tekintse meg [a bővítmények frissítése](../articles/azure-functions/install-update-binding-extensions-manual.md)című részt.

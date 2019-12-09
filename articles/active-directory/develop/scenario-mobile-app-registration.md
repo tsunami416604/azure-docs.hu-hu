@@ -1,5 +1,5 @@
 ---
-title: Webes API-kat meghívó mobil alkalmazás – az alkalmazás kódjának konfigurálása
+title: Webes API-kat meghívó Mobile apps konfigurálása | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó mobil alkalmazást (az alkalmazás kódjának konfigurációja)
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f55e73fa1a73908d7e77bacc6af24ea1a40ba92
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2c5160d88e390f9bfe905dfee0684983a7a49365
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803734"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919885"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Webes API-kat meghívó mobil alkalmazás – alkalmazás regisztrálása
 
@@ -66,7 +66,7 @@ Vegye figyelembe, hogy az alkalmazás regisztrációs portálján elérhető egy
    ![-rendszerkép **regisztrálása**](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
 5. Az átirányítási URI-t az Ön számára számítjuk ki.
-   ![image](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+   ![kép](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 Ha manuálisan szeretné konfigurálni az átirányítási URI-t, ezt az alkalmazás Jegyzékfájlján keresztül teheti meg. Az ajánlott formátum a következő:
 

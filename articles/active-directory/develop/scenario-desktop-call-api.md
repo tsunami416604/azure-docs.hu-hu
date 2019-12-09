@@ -1,6 +1,6 @@
 ---
-title: Webes API-kat meghívó asztali alkalmazás (webes API-k hívása) – Microsoft Identity platform
-description: Ismerje meg, hogyan hozhat létre olyan asztali alkalmazást, amely webes API-kat hív meg (webes API-t hív meg)
+title: Webes API-k meghívása asztali alkalmazásból – Microsoft Identity platform | Azure
+description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó asztali alkalmazást
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8160ec489f891764b102b5ba23a687b53376f738
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ce8cf2d75257bb3d751de1c3b251a9a3326bce0a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175363"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920157"
 ---
 # <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Webes API-kat meghívó asztali alkalmazás – webes API meghívása
 

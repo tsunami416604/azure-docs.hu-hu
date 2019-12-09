@@ -1,28 +1,25 @@
 ---
-title: A Microsoft Authentication Library (MSAL) használata az országos felhőkben – Microsoft Identity platform
+title: MSAL használata a nemzeti Felhőbeli alkalmazásokban | Azure
+titleSuffix: Microsoft identity platform
 description: A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazások fejlesztői számára a jogkivonatok beszerzését a biztonságos webes API-k meghívásához. Ezek a webes API-k lehetnek Microsoft Graph, más Microsoft API-k, partner webes API-k vagy a saját webes API-k. A MSAL több alkalmazás-architektúrát és platformot is támogat.
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f1c73d89b0efc17e8f8836d080595927d500ad6
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: f1d0d4511b95d56ae41bf9fbb1118318d8374bde
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481872"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916038"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>A MSAL használata nemzeti Felhőbeli környezetben
 
@@ -74,13 +71,13 @@ A MSAL. js-alkalmazás szuverén felhőkhöz való engedélyezése:
 
 ### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.us/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.us/).
     
    Más nemzeti felhők Azure Portal végpontjának megkereséséhez lásd: [alkalmazás-regisztrációs végpontok](authentication-national-cloud.md#app-registration-endpoints).
 
 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portál munkamenetét a kívánt Azure AD-bérlőre.
 1. Nyissa meg a Microsoft Identity platform [Alkalmazásregisztrációk](https://aka.ms/ra/ff) lapját a fejlesztők számára.
-1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
+1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
 1. A **támogatott fiókok típusai**területen válassza **a fiókok lehetőséget bármely szervezeti címtárban**.
 1. Az **átirányítási URI** szakaszban válassza ki a **webplatformot** , és állítsa az értéket az alkalmazás URL-címére a webkiszolgáló alapján. A következő részekben megtudhatja, hogyan állíthatja be és kérheti le az átirányítási URL-címet a Visual Studióban és a csomópontban.
 1. Kattintson a **Register** (Regisztrálás) elemre.

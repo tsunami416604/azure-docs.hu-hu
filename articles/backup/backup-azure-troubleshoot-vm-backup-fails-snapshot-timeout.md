@@ -4,12 +4,13 @@ description: Az ügynökkel, bővítménnyel és lemezekkel kapcsolatos Azure Ba
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 23b10bed3b741ec76167eb5a976bf5737d20b173
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.service: backup
+ms.openlocfilehash: 5e435d1169d5f148bfa2910174bf1f2835806c8b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894011"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928245"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -25,8 +26,8 @@ Ez a cikk hibaelhárítási lépéseket tartalmaz, amelyek segítségével megol
 Előfordulhat, hogy az Azure-beli virtuálisgép-ügynök leállt, elavult, inkonzisztens állapotban van, vagy nincs telepítve, és nem akadályozza meg, hogy Azure Backup szolgáltatás elindítsa a pillanatképeket.
 
 - **Nyissa meg az Azure Portal > virtuális gép > beállítások > tulajdonságok panelt** > ellenőrizze, hogy a virtuális gép **állapota** **fut** -e, és az **ügynök állapota** **kész**. Ha a virtuálisgép-ügynök leállt vagy inkonzisztens állapotban van, indítsa újra az ügynököt.<br>
-  - A Windows rendszerű virtuális gépek esetében az alábbi [lépéseket](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) követve indítsa újra a vendég ügynököt.<br>
-  - Linux rendszerű virtuális gépek esetén az alábbi [lépéseket](https://docs.microsoft.com/en-us/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) követve indítsa újra a vendég ügynököt.
+  - A Windows rendszerű virtuális gépek esetében az alábbi [lépéseket](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) követve indítsa újra a vendég ügynököt.<br>
+  - Linux rendszerű virtuális gépek esetén az alábbi [lépéseket](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) követve indítsa újra a vendég ügynököt.
 
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError – nem tudott kommunikálni a virtuálisgép-ügynökkel a pillanatkép állapotához
@@ -223,7 +224,7 @@ A bővítmény eltávolítása:
 2. Kattintson a **Beállítások** elemre.
 3. Kattintson az **Extensions** (Bővítmények) gombra.
 4. Válassza ki a **Vmsnapshot bővítményt**.
-5. Válassza az **Eltávolítás**lehetőséget.
+5. Válassza az **Eltávolítás** lehetőséget.
 
 Linux rendszerű virtuális gépek esetén, ha az VMSnapshot bővítmény nem jelenik meg a Azure Portalban, [frissítse az Azure Linux-ügynököt](../virtual-machines/linux/update-agent.md), majd futtassa a biztonsági mentést.
 

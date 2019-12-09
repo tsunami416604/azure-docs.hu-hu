@@ -5,29 +5,29 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 12/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: 814a73900b05b66d1bacc946b9f994135d3fc9f6
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 05602538f206032d924b39a7dd8f4325c48a5224
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083446"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931378"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Peering létrehozása és módosítása ExpressRoute-áramkörhöz (klasszikus)
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure Portalra](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
-> * [Videó - privát társviszony](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Videó - nyilvános társviszony-létesítés](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
-> * [Videó – Microsoft társviszony-létesítés](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
+> * [Videó – privát peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Videó – nyilvános peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Videó – Microsoft peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-routing-classic.md)
 > 
 
-Ez a cikk végigvezeti egy ExpressRoute-áramkör társítási/útválasztási konfigurációjának a PowerShell és a klasszikus üzemi modell használatával történő létrehozásának és kezelésének lépésein. Az alábbi lépések azt is bemutatják, hogyan ellenőrizheti az ExpressRoute-kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti és szüntetheti meg őket. Egy, kettő vagy az összes mindhárom társviszony-létesítést (Azure privát, Azure nyilvános és Microsoft) ExpressRoute-kapcsolatcsoport konfigurálhatja. A társviszony-létesítéseket tetszőleges sorrendben konfigurálhatja. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. 
+Ez a cikk végigvezeti egy ExpressRoute-áramkör társítási/útválasztási konfigurációjának a PowerShell és a klasszikus üzemi modell használatával történő létrehozásának és kezelésének lépésein. Az alábbi lépések azt is bemutatják, hogyan ellenőrizheti az ExpressRoute-kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti és szüntetheti meg őket. Egy ExpressRoute áramkörhöz beállíthat egy, kettő vagy mindhárom (Azure Private, Azure Public és Microsoft) társítást. A társviszony-létesítéseket tetszőleges sorrendben konfigurálhatja. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. 
 
-Ezek az utasítások csak a 2. rétegbeli kapcsolati szolgáltatásokat kínáló szolgáltatóktól létrehozott áramkörökre vonatkoznak. Ha használja a szolgáltató által kínált felügyelt Layer 3 szolgáltatások (általában egy IPVPN, mint az MPLS), a kapcsolatszolgáltató konfigurálása és kezelése az útválasztást Ön helyett.
+Ezek az utasítások csak a 2. rétegbeli kapcsolati szolgáltatásokat kínáló szolgáltatóktól létrehozott áramkörökre vonatkoznak. Ha olyan szolgáltatót használ, amely felügyelt 3. rétegbeli szolgáltatásokat kínál (jellemzően IPVPN, például MPLS), akkor a kapcsolati szolgáltató konfigurálja és kezeli az útválasztást.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -42,40 +42,7 @@ Ezek az utasítások csak a 2. rétegbeli kapcsolati szolgáltatásokat kínál�
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>A legújabb PowerShell-parancsmagok letöltése
 
-Telepítse az Azure Service Management (SM) PowerShell-modulok és az ExpressRoute-modul legújabb verzióit. Az alábbi példa használata esetén vegye figyelembe, hogy a verziószáma (a példában 5.1.1-es) változik, amint a parancsmagok újabb verziói jelennek meg.
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-További információkért tekintse meg a [Azure PowerShell-parancsmagok használatának első](/powershell/azure/overview) lépései című témakört, amely bemutatja, hogyan konfigurálhatja a számítógépet a Azure PowerShell modulok használatára.
-
-### <a name="sign-in"></a>Bejelentkezés
-
-Az Azure-fiókba való bejelentkezéshez használja az alábbi példákat:
-
-1. Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához.
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. Keresse meg a fiókot az előfizetésekben.
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni szeretné.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. Ezután használja a következő parancsmagot az Azure-előfizetés hozzáadása a PowerShell a klasszikus üzemi modellhez.
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="azure-private-peering"></a>Azure privát társviszony-létesítés
 
@@ -94,7 +61,7 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure privát társvis
    Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    ```
 
-   Visszatérési
+   Eredményük a következő:
 
    ```powershell
    Bandwidth                        : 200
@@ -147,7 +114,7 @@ A konfigurációs adatokat a következő parancsmaggal tekintheti meg:
 Get-AzureBGPPeering -AccessType Private -ServiceKey "*********************************"
 ```
 
-Visszatérési
+Eredményük a következő:
 
 ```
 AdvertisedPublicPrefixes       : 
@@ -201,7 +168,7 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure nyilvános társ
    Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    ```
 
-   Visszatérési
+   Eredményük a következő:
 
    ```powershell
    Bandwidth                        : 200
@@ -254,7 +221,7 @@ A konfigurációs adatok megtekintéséhez használja a következő parancsmagot
 Get-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
 ```
 
-Visszatérési
+Eredményük a következő:
 
 ```powershell
 AdvertisedPublicPrefixes       : 
@@ -273,7 +240,7 @@ VlanId                         : 200
 
 ### <a name="to-update-azure-public-peering-configuration"></a>Azure nyilvános társviszony-létesítés konfigurációjának frissítése
 
-A konfiguráció bármelyik részét frissítheti az alábbi parancsmag használatával. Ebben a példában a kör VLAN-azonosító frissítése folyamatban van 200-ról 600-ra.
+A konfiguráció bármelyik részét frissítheti az alábbi parancsmag használatával. Ebben a példában az áramkör VLAN-azonosítója 200 és 600 között frissül.
 
 ```powershell
 Set-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 600 -SharedKey "A1B2C3D4"
@@ -282,7 +249,7 @@ Set-AzureBGPPeering -AccessType Public -ServiceKey "****************************
 Ellenőrizze, hogy az áramkör kiosztottként és Engedélyezveként jelenik-e meg. 
 ### <a name="to-delete-azure-public-peering"></a>Azure nyilvános társviszony-létesítés törlése
 
-A társviszony-létesítés konfigurációját a következő parancsmag futtatásával távolíthatja el:
+A következő parancsmag futtatásával távolíthatja el a társ-konfigurációt:
 
 ```powershell
 Remove-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
@@ -305,7 +272,7 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony
    Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    ```
 
-   Visszatérési
+   Eredményük a következő:
    
    ```powershell
    Bandwidth                        : 200
@@ -335,7 +302,7 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony
    * Meghirdetett előtagok: Meg kell adnia a BGP-munkamenetben meghirdetni kívánt összes előtag listáját. A rendszer kizárólag a nyilvános IP-cím-előtagokat fogadja el. Ha előtagokat szeretne elküldeni, vesszővel tagolt listát is küldhet. Az előtagoknak egy RIR/IRR jegyzékben regisztrálva kell lenniük az Ön neve alatt.
    * Ügyfél ASN: Ha olyan előtagokat hirdet meg, amelyek nem a társviszony-létesítési AS-számra vannak regisztrálva, megadhatja az AS-számot, amelyre regisztrálva vannak. **Választható**.
    * Útválasztási jegyzék neve: Megadhatja az RIR/IRR jegyzék nevét, amelyben az AS-szám és az előtagok regisztrálva vannak.
-   * Egy MD5-kivonat, ha használni kívánja. **Nem kötelező.**
+   * Egy MD5-kivonat, ha használni kívánja. **Választható.**
      
    A következő parancsmag futtatásával konfigurálja a Microsoft-társítást az áramkörhöz:
  
@@ -350,7 +317,7 @@ A konfigurációs adatokat a következő parancsmaggal tekintheti meg:
 ```powershell
 Get-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 ```
-Visszatérési
+Eredményük a következő:
 
 ```powershell
 AdvertisedPublicPrefixes       : 123.0.0.0/30
@@ -377,7 +344,7 @@ Set-AzureBGPPeering -AccessType Microsoft -ServiceKey "*************************
 
 ### <a name="to-delete-microsoft-peering"></a>Microsoft társviszony-létesítés törlése
 
-A társviszony-létesítés konfigurációját a következő parancsmag futtatásával távolíthatja el:
+A következő parancsmag futtatásával távolíthatja el a társ-konfigurációt:
 
 ```powershell
 Remove-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"

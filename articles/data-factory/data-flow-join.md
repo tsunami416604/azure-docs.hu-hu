@@ -1,18 +1,19 @@
 ---
-title: Az átalakítás összekapcsolása Azure Data Factory leképezési adatfolyamban
+title: Az átalakítás összekapcsolása a leképezési adatfolyamban
 description: Két adatforrásból származó adatok összevonása az Azure Data Factory-leképezési folyamat illesztési átalakításának használatával
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/17/2019
-ms.openlocfilehash: 1e9315195ceae435447739055105a66ee81e2a6a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 09d2c1d063c542583dc11fab0805a9392661426f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122927"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930342"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Az átalakítás összekapcsolása a leképezési adatfolyamban
 
@@ -38,7 +39,7 @@ A jobb oldali külső illesztés a jobb oldali adatfolyamból származó összes
 
 A teljes külső illesztés kimenete a két oldalról származó összes oszlopot és sort a nem egyező oszlopok esetében NULL értékekkel adja vissza.
 
-### <a name="cross-join"></a>Keresztbe illesztés
+### <a name="cross-join"></a>Keresztillesztés
 
 A Cross JOIN egy feltétel alapján a két stream termékeit adja vissza. Ha olyan feltételt használ, amely nem egyenlő, adja meg az egyéni kifejezést a kereszt illesztési feltételként. A kimeneti adatfolyam az illesztési feltételnek megfelelő összes sor lesz. Ha olyan Descartes-szorzatot szeretne létrehozni, amely minden sor kombinációját kiírja, adja meg a `true()` csatlakoztatási feltételként.
 
@@ -122,6 +123,6 @@ TripData, TripFare
     )~> CartesianProduct
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adategyesítést követően hozzon létre egy [származtatott oszlopot](data-flow-derived-column.md) [, és az](data-flow-sink.md) adatait egy célhely adattárba.

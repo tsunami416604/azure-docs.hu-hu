@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/16/2019
+ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1763b8d6402a6093499f1f06253fe4c7502255
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 54c51a10f950fb5381ab29968a866772dcaec78c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842778"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918005"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -42,6 +42,10 @@ Ez a cikk bemutatja, hogyan listázhat alkalmazást az Azure Active Directory (A
 - Az egyszeri jelszavas bejelentkezéshez győződjön meg arról, hogy az alkalmazás támogatja az űrlapos hitelesítést, hogy a jelszó-tárolót úgy lehessen elvégezni, hogy az egyszeri bejelentkezés a várt módon működjön.
 - Állandó fiókra van szükség legalább két regisztrált felhasználó teszteléséhez.
 
+**Hogyan szerezhet be Azure AD-t a fejlesztőknek?**
+
+A prémium szintű Azure AD-funkciókkal ingyenes tesztelési fiókot vehet igénybe – a 90 napos ingyenes és a bővíthető, ha a fejlesztői munkát a következőkkel érheti el: https://docs.microsoft.com/office/developer-program/office-365-developer-program
+
 ## <a name="submit-the-request-in-the-portal"></a>A kérelem elküldése a portálon
 
 Miután tesztelte az alkalmazás-integrációt az Azure AD-vel, küldje el a hozzáférési kérelmét az [Application Network portálon](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Ha rendelkezik Office 365-fiókkal, akkor jelentkezzen be a portálra. Ha nem, használja a Microsoft-fiókt, például az Outlookot vagy a Hotmailt a bejelentkezéshez.
@@ -59,6 +63,26 @@ Ha a bejelentkezés után a következő oldal jelenik meg, adjon meg egy üzleti
 Csapatunk áttekinti a részleteket, és ennek megfelelően hozzáférést biztosít Önnek. A kérelem jóváhagyását követően bejelentkezhet a portálra, és elküldheti a kérést, ha a kezdőlapon a **küldési kérelem (ISV)** csempét választja.
 
 ![A beküldési kérelem (ISV) csempéje a kezdőlapon](./media/howto-app-gallery-listing/homepage.png)
+
+## <a name="issues-on-logging-into-portal"></a>A portálra való bejelentkezéssel kapcsolatos problémák
+
+Ha ezt a hibát látja a bejelentkezés során, akkor itt látható a probléma részletei, és így javítható.
+
+* Ha a bejelentkezés le lett tiltva, ahogy az alábbi ábrán is látható:
+
+  ![az alkalmazás katalógusban való feloldásával kapcsolatos problémák](./media/howto-app-gallery-listing/blocked.png)
+
+**mi történik:**
+
+A vendég felhasználó összevonása egy otthoni Bérlővel, amely egyben Azure AD is. A vendég felhasználó magas kockázatú. A Microsoft nem teszi lehetővé, hogy a magas kockázatú felhasználók hozzáférjenek erőforrásaihoz. Az összes magas kockázatú felhasználó (alkalmazottak vagy vendégek/szállítók) a Microsoft erőforrásaihoz való hozzáférésre vonatkozó kockázatot kell kijavítania/lezárva. A vendég felhasználók számára ez a felhasználói kockázat a Kezdőlap bérlőtől származik, és a szabályzat az erőforrás-bérlőtől származik (ebben az esetben a Microsoft).
+ 
+**Biztonságos megoldások:**
+
+* Az MFA által regisztrált vendég felhasználók a saját felhasználói kockázatot szervizelik. Ezt megteheti a vendég felhasználó a biztonságos jelszó módosításával vagy alaphelyzetbe állításával (https://aka.ms/sspr) a saját bérlőn (ez az MFA és a SSPR szükséges a hazai bérlőnél). A biztonságos jelszó módosítását vagy alaphelyzetbe állítását az Azure AD-ben kell elindítani, nem pedig a helyi gépen.
+
+* A vendég felhasználók rendelkeznek a saját adminisztrátorokkal. Ebben az esetben a rendszergazda jelszó-visszaállítást (ideiglenes jelszó létrehozása) hajt végre. Ehhez nincs szükség az identitások védelmére. A vendég felhasználó rendszergazdája megtekintheti https://aka.ms/RiskyUsers és a "jelszó alaphelyzetbe állítása" gombra kattinthat.
+
+* A vendég felhasználók a rendszergazdájuk bezárják vagy elmulasztják a kockázatokat. Ez megint nem szükséges az identitások védelméhez. A rendszergazda megtekintheti https://aka.ms/RiskyUsers, és kattintson a "felhasználói kockázat elvetése" gombra. Azonban a rendszergazdának el kell végeznie az átvilágítás elvégzését annak érdekében, hogy ez hamis pozitív kockázatértékelés legyen a felhasználói kockázat bezárása előtt. Ellenkező esetben a kockázat kiértékelését vizsgálat nélkül letiltva veszélyeztetik a Microsoft erőforrásait.
 
 > [!NOTE]
 > Ha bármilyen probléma merül fel a hozzáféréssel kapcsolatban, forduljon az [Azure ad SSO Integration csapatához](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
@@ -79,6 +103,7 @@ Egy alkalmazás az Azure AD-katalógusban való listázásához először meg ke
   ![SAML 2,0 vagy WS-fed alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/saml.png)
 
   * Ha az **saml 2,0** vagy a **ws-fed**használatával szeretné felvenni az alkalmazást a katalógusba, válassza az **SAML 2.0/ws-fed** lehetőséget, amint az látható.
+
   * Ha bármilyen probléma merül fel a hozzáféréssel kapcsolatban, forduljon az [Azure ad SSO Integration csapatához](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="implement-sso-by-using-the-password-sso"></a>Egyszeri bejelentkezés implementálása a jelszó-SSO használatával

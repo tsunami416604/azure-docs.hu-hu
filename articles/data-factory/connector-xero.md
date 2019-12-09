@@ -4,20 +4,19 @@ description: Bemutatjuk, hogy miként másolhatók adatok a Xero-ből a támogat
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: d52e536170c649cbc84b6c6dce92afb76ffe3125
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1f6404da163e075b63a99a1d8474cdba4e064b06
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680005"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930884"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Adatok másolása a Xero a Azure Data Factory használatával
 
@@ -49,15 +48,15 @@ A következő szakaszokban részletesen ismertetjük az Xero-összekötőhöz ta
 
 A Xero társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **Xero** | Igen |
 | gazdagép | A Xero-kiszolgáló végpontja (`api.xero.com`).  | Igen |
 | consumerKey | A Xero alkalmazáshoz társított fogyasztói kulcs. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | privateKey | A Xero privát alkalmazásához létrehozott. PEM fájl titkos kulcsa. a [nyilvános/titkos kulcspár létrehozása](https://developer.xero.com/documentation/api-guides/create-publicprivate-key)című témakörben talál további információt. Vegye figyelembe, hogy **a privatekey. PEM előállításához a 512-es numbits-t** használja `openssl genrsa -out privatekey.pem 512`; a 1024 nem támogatott. Adja meg a. PEM fájl összes szövegét, beleértve a UNIX-sorok végződését (\n), lásd az alábbi mintát.<br/><br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték TRUE (igaz).  | Nem |
-| useHostVerification | Megadja, hogy az állomásnév kötelező-e a kiszolgáló tanúsítványában, hogy az megfeleljen a kiszolgáló állomásneve, amikor SSL-kapcsolaton keresztül csatlakozik. Az alapértelmezett érték TRUE (igaz).  | Nem |
-| usePeerVerification | Meghatározza, hogy az SSL protokollon keresztüli kapcsolódáskor ellenőrizni kell-e a kiszolgáló identitását. Az alapértelmezett érték TRUE (igaz).  | Nem |
+| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
+| useHostVerification | Megadja, hogy az állomásnév kötelező-e a kiszolgáló tanúsítványában, hogy az megfeleljen a kiszolgáló állomásneve, amikor SSL-kapcsolaton keresztül csatlakozik. Az alapértelmezett érték az igaz.  | Nem |
+| usePeerVerification | Meghatározza, hogy az SSL protokollon keresztüli kapcsolódáskor ellenőrizni kell-e a kiszolgáló identitását. Az alapértelmezett érték az igaz.  | Nem |
 
 **Példa**
 
@@ -95,7 +94,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok Xero való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **XeroObject**értékre. A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **XeroObject** | Igen |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
@@ -125,7 +124,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok Xero való másolásához állítsa a forrás típusát a másolás tevékenység **XeroSource**értékére. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **XeroSource** | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Contacts"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
@@ -183,43 +182,43 @@ Az alábbi táblázatokban ugyanazok az adatok szerepelnek a minimális és a te
 - Expense_Claim_Validation_Errors
 - Számlák 
 - Invoices_Credit_Notes
-- Invoices_ előfizetések 
+- Előfizetések Invoices_ 
 - Invoices_Overpayments 
 - Manual_Journals 
 - Túlfizetések 
 - Overpayments_Allocations 
 - Előlegek 
 - Prepayments_Allocations 
-- Bevételek 
+- Befizetések 
 - Receipt_Validation_Errors 
 - Tracking_Categories
 
 A következő táblázatok csak a teljes sémával kérhetők le:
 
-- Befejezve. Bank_Transaction_Line_Items 
-- Befejezve. Bank_Transaction_Line_Item_Tracking 
-- Befejezve. Contact_Group_Contacts 
-- Kész. Contacts_Contact_ személyek 
-- Befejezve. Credit_Note_Line_Items 
-- Befejezve. Credit_Notes_Line_Items_Tracking 
-- Teljesített. Expense_Claim_ kifizetések 
-- Befejezve. Expense_Claim_Receipts 
-- Befejezve. Invoice_Line_Items 
-- Befejezve. Invoices_Line_Items_Tracking
-- Befejezve. Manual_Journal_Lines 
-- Befejezve. Manual_Journal_Line_Tracking 
-- Befejezve. Overpayment_Line_Items 
-- Befejezve. Overpayment_Line_Items_Tracking 
-- Befejezve. Prepayment_Line_Items 
-- Befejezve. Prepayment_Line_Item_Tracking 
-- Befejezve. Receipt_Line_Items 
-- Befejezve. Receipt_Line_Item_Tracking 
-- Befejezve. Tracking_Category_Options
+- Befejezés. Bank_Transaction_Line_Items 
+- Befejezés. Bank_Transaction_Line_Item_Tracking 
+- Befejezés. Contact_Group_Contacts 
+- Befejezés. Contacts_Contact_ személy 
+- Befejezés. Credit_Note_Line_Items 
+- Befejezés. Credit_Notes_Line_Items_Tracking 
+- Befejezés. Expense_Claim_ befizetések 
+- Befejezés. Expense_Claim_Receipts 
+- Befejezés. Invoice_Line_Items 
+- Befejezés. Invoices_Line_Items_Tracking
+- Befejezés. Manual_Journal_Lines 
+- Befejezés. Manual_Journal_Line_Tracking 
+- Befejezés. Overpayment_Line_Items 
+- Befejezés. Overpayment_Line_Items_Tracking 
+- Befejezés. Prepayment_Line_Items 
+- Befejezés. Prepayment_Line_Item_Tracking 
+- Befejezés. Receipt_Line_Items 
+- Befejezés. Receipt_Line_Item_Tracking 
+- Befejezés. Tracking_Category_Options
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenység által támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

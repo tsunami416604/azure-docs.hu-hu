@@ -1,5 +1,5 @@
 ---
-title: Webes API-kat meghívó mobil alkalmazás (áttérés éles környezetbe) – Microsoft Identity platform
+title: Mobile apps-hívás webes API-k mozgatása éles környezetbe – Microsoft Identity platform | Azure
 description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó mobil alkalmazást (az éles környezetbe)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67788dd9257a0a4685313dce44c6a3dfb5e514df
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 3e267b2f398480da6949a4c85133342aad5c2ba7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413609"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919902"
 ---
 # <a name="mobile-app-that-calls-web-apis---move-to-production"></a>Webes API-kat meghívó mobil alkalmazás – áttérés éles környezetbe
 
@@ -33,7 +33,7 @@ Ezen a ponton számos hiba fordulhat elő az alkalmazásban. A kezelés fő forg
 
 Minden MSAL-könyvtárhoz tartozik egy mintakód és egy wiki-tartalom, amely leírja, hogyan kell kezelni ezeket a feltételeket:
 
-- [MSAL Android Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-android)
+- [MSAL Android wiki](https://github.com/AzureAD/microsoft-authentication-library-for-android)
 - [MSAL iOS wiki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
 - [MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
 
@@ -44,7 +44,7 @@ Az alkalmazásban felmerülő problémák diagnosztizálásához segíti az adat
 - A felhasználók segítséget kérhetnek, amikor problémákba ütköznek. Az ajánlott eljárás az, hogy rögzítse és ideiglenesen tárolja a naplókat, és adjon meg egy helyet, ahol a felhasználók fel tudják tölteni őket. A MSAL naplózási bővítményeket biztosít a hitelesítés részletes adatainak rögzítéséhez.
 - Ha elérhető, engedélyezze a telemetria a MSAL-n keresztül, hogy adatokat gyűjtsön arról, hogy a felhasználók hogyan jelentkeznek be az alkalmazásba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 

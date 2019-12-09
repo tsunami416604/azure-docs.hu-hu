@@ -4,21 +4,20 @@ description: Megtudhatja, hogyan másolhat adatokba vagy Azure SQL Database a Az
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 484f735b-8464-40ba-a9fc-820e6553159e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8d53d61991f191d2cd0636dba918e9499c4f5d2b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7fc0b2822195d952c2a4f9c02bf3758c0e2b809a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683092"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928089"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Adatok másolása Azure SQL Databaseba és onnan a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -63,7 +62,7 @@ A következő szakaszokban részletesen ismertetjük azokat a JSON-tulajdonságo
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 Az Azure SQL társított szolgáltatás egy Azure SQL Database-adatbázist kapcsol össze az adatai-gyárával. A következő táblázat az Azure SQL társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDatabase** |Igen |
 | connectionString |A connectionString tulajdonsághoz Azure SQL Database-példányhoz való kapcsolódáshoz szükséges adatok megadása. Csak az alapszintű hitelesítés támogatott. |Igen |
@@ -78,7 +77,7 @@ Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok telje
 
 A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **tulajdonsága azuresqltable** típusú adatkészlet **typeProperties** szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | tableName |Azon Azure SQL Database-példányban található tábla vagy nézet neve, amelyre a társított szolgáltatás hivatkozik. |Igen |
 
@@ -95,7 +94,7 @@ Ha egy Azure SQL Database-adatbázisból helyez át adatátvitelt, a másolási 
 ### <a name="sqlsource"></a>SqlSource
 A másolási tevékenységben, ha a forrás **SqlSource**típusú, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Példa: `select * from MyTable`. |Nem |
 | sqlReaderStoredProcedureName |Azon tárolt eljárás neve, amely beolvassa az adatokat a forrás táblából. |A tárolt eljárás neve. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. |Nem |
@@ -145,7 +144,7 @@ GO
 ### <a name="sqlsink"></a>SqlSink
 A **SqlSink** a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt. |TimeSpan<br/><br/> Például: "00:30:00" (30 perc). |Nem |
 | writeBatchSize |Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri a writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
@@ -638,16 +637,16 @@ Az adatok Azure SQL Databaseba való áthelyezésekor a rendszer a következő l
 | SQL Server adatbázismotor típusa | .NET-keretrendszer típusa |
 | --- | --- |
 | bigint |Int64 |
-| Bináris |Bájt [] |
-| bites |Logikai |
+| binary |Bájt [] |
+| bit |Logikai |
 | char |Karakterlánc, char [] |
-| dátum |DateTime |
-| datetime |DateTime |
-| datetime2 |DateTime |
+| dátum |Dátum és idő |
+| Dátum/idő |Dátum és idő |
+| datetime2 |Dátum és idő |
 | DateTimeOffset |DateTimeOffset |
 | Decimális |Decimális |
 | FILESTREAM attribútum (varbinary (max)) |Bájt [] |
-| float |duplán |
+| Lebegőpontos szám |Double |
 | image |Bájt [] |
 | int |Int32 |
 | pénzt |Decimális |
@@ -655,16 +654,16 @@ Az adatok Azure SQL Databaseba való áthelyezésekor a rendszer a következő l
 | ntext |Karakterlánc, char [] |
 | numerikus |Decimális |
 | nvarchar |Karakterlánc, char [] |
-| valós |Önálló |
+| real |Önálló |
 | ROWVERSION |Bájt [] |
-| idő adattípusúra |DateTime |
+| idő adattípusúra |Dátum és idő |
 | smallint |Int16 |
 | túlcsordulási |Decimális |
 | sql_variant |Objektum |
 | szöveg |Karakterlánc, char [] |
-| time |TimeSpan |
+| time |időtartam |
 | időbélyeg |Bájt [] |
-| tinyint |Byte |
+| tinyint |Bájt |
 | uniqueidentifier |GUID |
 | varbinary |Bájt [] |
 | varchar |Karakterlánc, char [] |

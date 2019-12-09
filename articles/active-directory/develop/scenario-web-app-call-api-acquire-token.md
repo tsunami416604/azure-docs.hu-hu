@@ -1,5 +1,5 @@
 ---
-title: Webes API-kat meghívó webalkalmazás (token beszerzése az alkalmazáshoz) – Microsoft Identity platform
+title: Token beszerzése webes API-kat meghívó webalkalmazásokban – Microsoft Identity platform | Azure
 description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó webalkalmazást (token beszerzése az alkalmazáshoz)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,18 +15,18 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a259fbcf3fde84edccafbcd2fd6594ddb623edfd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 398b68221681f0d14dbcc20ac7c0cb603313eaee
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175333"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919463"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Webes API-kat meghívó webalkalmazás – jogkivonat beszerzése az alkalmazáshoz
 
 Most, hogy létrehozta az ügyfélalkalmazás-objektumot, felhasználhatja egy, a webes API-t meghívó token beszerzéséhez. A ASP.NET vagy ASP.NET Coreban a webes API-k meghívása a vezérlőn történik. Az alábbiakról szól:
 
-- Jogkivonat-gyorsítótár beszerzése a webes API-hoz. A jogkivonat beszerzéséhez hívja meg a `AcquireTokenSilent` értéket.
+- Jogkivonat-gyorsítótár beszerzése a webes API-hoz. A jogkivonat beszerzéséhez hívja meg `AcquireTokenSilent`.
 - A védett API meghívása a hozzáférési jogkivonattal.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
@@ -81,8 +81,8 @@ Ezeket a speciális lépéseket az oktatóanyag [3 – WebApp-multi-API](https:/
 
 A ASP.NET hasonló dolgok:
 
-- Az [engedélyezés] attribútum által védett vezérlő művelet kibontja a vezérlő `ClaimsPrincipal` tagjának bérlői AZONOSÍTÓját és felhasználói AZONOSÍTÓját. (A ASP.NET `HttpContext.User` értéket használ.)
-- Innentől kezdve létrehoz egy MSAL.NET `IConfidentialClientApplication`.
+- Az [engedélyezés] attribútum által védett vezérlő művelet kibontja a vezérlő `ClaimsPrincipal` tagjának bérlői AZONOSÍTÓját és felhasználói AZONOSÍTÓját. (A ASP.NET `HttpContext.User`használ.)
+- Ettől kezdve létrehoz egy MSAL.NET `IConfidentialClientApplication`.
 - Végezetül meghívja a bizalmas ügyfélalkalmazás `AcquireTokenSilent` metódusát.
 
 A kód hasonló a ASP.NET Corehoz megjelenített kódhoz.
@@ -91,7 +91,7 @@ A kód hasonló a ASP.NET Corehoz megjelenített kódhoz.
 
 A Java-mintában az API-t meghívó kód a [AuthPageController. Java # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)getUsersFromGraph metódusban található.
 
-Megkísérli a `getAuthResultBySilentFlow` hívását. Ha a felhasználónak több hatókörhöz kell hozzájárulnia, a kód feldolgozza a `MsalInteractionRequiredException` értéket a felhasználó megvitatásához.
+Megkísérli a `getAuthResultBySilentFlow`hívását. Ha a felhasználónak több hatókörhöz kell hozzájárulnia, a kód feldolgozza a `MsalInteractionRequiredException` a felhasználó megvitatásához.
 
 ```java
 @RequestMapping("/msal4jsample/graph/me")

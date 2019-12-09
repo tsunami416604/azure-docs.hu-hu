@@ -1,29 +1,25 @@
 ---
-title: Xamarin Android rendszerbeli böngészővel kapcsolatos megfontolások (Microsoft Authentication Library for .NET)
+title: Xamarin Android rendszerbeli böngészővel kapcsolatos megfontolások (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogy milyen szempontokat kell figyelembe venni, amikor a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával a rendszerböngészőket használja a Xamarin Android rendszeren.
+description: Ismerje meg, hogy milyen szempontokat kell figyelembe vennie, amikor a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával Xamarin a rendszerböngészőket.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f83283cc02c60eb452d0e414c0b21843b48f343b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1d3ea2554fac8654b052e3e38633af23e7c778b3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150359"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915468"
 ---
 #  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>Xamarin Android rendszerbeli böngészővel kapcsolatos megfontolások a MSAL.NET
 
@@ -35,7 +31,7 @@ Javasoljuk, hogy használjon olyan böngészőket, amelyek támogatják az egyé
 
 | Egyéni lapokat támogató böngészők | Csomag neve |
 |------| ------- |
-|Chrome | com. Android. Chrome|
+|Chrome | com.android.chrome|
 |Microsoft Edge | com. microsoft. emmx|
 |Firefox | org. mozilla. Firefox|
 |Ecosia | com. ecosia. Android|

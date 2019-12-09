@@ -1,18 +1,19 @@
 ---
-title: Azure Data Factory leképezési adatfolyam ablakának átalakítása
+title: Az adatfolyam-ablak átalakításának leképezése
 description: Azure Data Factory leképezési adatfolyam ablakának átalakítása
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: 222f97afd4346b9e4980e41303aeb683f431cd68
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: fa34def67d91332a00bf0ee92b365957a47f9616
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387075"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931486"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Azure Data Factory ablak átalakítása
 
@@ -28,7 +29,7 @@ Az ablak transzformációja az oszlopok ablakos összesítéseit fogja meghatár
 ![Ablak beállításai](media/data-flow/windows4.png "Windows 4")
 
 ## <a name="sort"></a>Rendezés
-Az over záradék egy másik része a ```Order By``` értéket állítja be. Ezzel az adatrendezési sorrendet fogja beállítani. Ebben az oszlopban is létrehozhat egy kifejezést a rendezéshez.
+Az over záradék egy másik része a ```Order By```beállítására szolgál. Ezzel az adatrendezési sorrendet fogja beállítani. Ebben az oszlopban is létrehozhat egy kifejezést a rendezéshez.
 
 ![Ablak beállításai](media/data-flow/windows5.png "Windows 5")
 
@@ -44,7 +45,7 @@ Végül a Kifejezésszerkesztő segítségével definiálhatja azokat az összes
 
 ![Ablak beállításai](media/data-flow/windows7.png "Windows 7")
 
-Az ADF adatáramlási kifejezés nyelvén a Kifejezésszerkesztő segítségével elérhető összesítési és elemzési függvények teljes listája itt található: https://aka.ms/dataflowexpressions.
+Az ADF-adatáramlás kifejezésének nyelvén a Kifejezésszerkesztő használatával elérhető összesítési és elemzési függvények teljes listája itt található: https://aka.ms/dataflowexpressions.
 
 ## <a name="next-steps"></a>Következő lépések
 

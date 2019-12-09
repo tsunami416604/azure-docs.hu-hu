@@ -1,5 +1,6 @@
 ---
-title: Asztali alkalmazás, amely meghívja a webes API-kat (token beszerzése az alkalmazáshoz) – Microsoft Identity platform
+title: A webes API-kat meghívó asztali alkalmazások jogkivonatának beolvasása | Azure
+titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan hozhat létre olyan asztali alkalmazást, amely webes API-kat hív meg (token beszerzése az alkalmazáshoz |)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce79a2dcbb0d79d84019c350eb4693160c8f7d50
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e33eed25f79d90bd513e79b23619fd4c575bc874
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175460"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920226"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás – jogkivonat beszerzése
 
@@ -260,7 +261,7 @@ a `WithCustomWebUi` egy olyan bővíthetőségi pont, amely lehetővé teszi saj
 
 A `.WithCustomWebUI`használatához a következőket kell tennie:
 
-  1. A `ICustomWebUi` felület implementálása (lásd [itt](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). Alapvetően egy metódust kell megvalósítani `AcquireAuthorizationCodeAsync` az engedélyezési kód URL-címének (MSAL.NET alapján számított) elfogadását, hogy a felhasználó átugorjon az identitás-szolgáltatóval való interakcióra, majd visszaadja az URL-címet, amellyel az identitás szolgáltatója lenne a megvalósítást vissza kell hívni (beleértve az engedélyezési kódot is). Ha problémák merülnek fel, a megvalósításnak `MsalExtensionException` kivételt kell eldobnia, hogy szépen működjenek együtt a MSAL-mel.
+  1. A `ICustomWebUi` felület implementálása (lásd [itt](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). Alapvetően végre kell hajtania egy metódust `AcquireAuthorizationCodeAsync` az engedélyezési kód URL-címének (MSAL.NET-ben számított) elfogadását, így a felhasználó áthalad az identitás-szolgáltatóval való interakción, majd visszaküldi az URL-címet, amellyel az Identity Provider a megvalósítás visszahívását (beleértve az engedélyezési kódot). Ha problémák merülnek fel, a megvalósításnak `MsalExtensionException` kivételt kell eldobnia, hogy szépen működjenek együtt a MSAL-mel.
   2. A `AcquireTokenInteractive`-hívásban használhatja `.WithCustomUI()` módosítót az egyéni webes felhasználói felület példányának átadásával
 
      ```CSharp
@@ -1108,7 +1109,7 @@ A jogkivonat-gyorsítótár szerializálásakor részt vevő osztályok és fel�
 
 A stratégiák eltérőek attól függően, hogy egy nyilvános ügyfélalkalmazás (asztali) vagy egy bizalmas ügyfélalkalmazás (webalkalmazás/webes API, Daemon-alkalmazás) esetében a jogkivonat-gyorsítótár szerializálását írja-e a rendszer.
 
-A MSAL v2. x óta több lehetőség is rendelkezésre áll, attól függően, hogy a gyorsítótárat csak a MSAL.NET formátumra kívánja-e szerializálni (az egységes formátumú gyorsítótár, amely közös a MSAL, hanem a platformok között is), vagy ha támogatni kívánja az [örökölt](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) jogkivonat-gyorsítótárat is. a ADAL v3 szerializálása.
+Mivel a MSAL v2. x-ben több lehetőség is van, attól függően, hogy a gyorsítótárat csak a MSAL.NET formátumra kívánja-e szerializálni (az egységes formátumú gyorsítótár, amely közös a MSAL, hanem a platformok között is), vagy ha támogatni kívánja az [örökölt](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) jogkivonat-gyorsítótár szerializálását is a ADAL V3 esetében.
 
 A jogkivonat-gyorsítótár szerializálásának testreszabásával megoszthatja a 3. x, a ADAL.NET 5. x és a MSAL.NET közötti SSO-állapotot a következő minta ADAL.NET: [Active-Directory-DotNet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2)
 

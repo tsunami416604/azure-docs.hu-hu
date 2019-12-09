@@ -1,29 +1,25 @@
 ---
-title: Xamarin iOS-megfontolások (Microsoft Authentication Library for .NET)
+title: Xamarin iOS-megfontolások (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogy milyen szempontokat kell figyelembe venni a Xamarin iOS és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használata esetén.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc4eb0084e0606251d3fbd80d08723701c6a260
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f04074dfd9055fa4791f6fdce6bcf296aae8ff61
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175615"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921466"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Xamarin iOS-specifikus megfontolások a MSAL.NET
 A Xamarin iOS-ben számos szempontot figyelembe kell venni a MSAL.NET használatakor
@@ -97,7 +93,7 @@ Ha a `WithIosKeychainSecurityGroup()` API-t használja, a MSAL automatikusan hoz
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>Jogkivonat-gyorsítótár megosztásának engedélyezése iOS-alkalmazások között
 
-A 2. x MSAL megadhat egy kulcstartó-hozzáférési csoportot, amelyet a jogkivonat-gyorsítótár több alkalmazásban való megőrzésére használhat. Ezzel a beállítással megoszthatja a jogkivonat-gyorsítótárat több alkalmazás között ugyanazzal a kulcstartó-hozzáférési csoporttal, beleértve azokat is, amelyek a [ADAL.net](https://aka.ms/adal-net), a MSAL.net Xamarin. iOS-alkalmazásokkal és a fejlesztett [natív iOS-alkalmazásokkal lettek kifejlesztve ADAL. ObjC](https://github.com/AzureAD/azure-activedirectory-library-for-objc) vagy [MSAL. ObjC](https://github.com/AzureAD/microsoft-authentication-library-for-objc)).
+A 2. x MSAL megadhat egy kulcstartó-hozzáférési csoportot, amelyet a jogkivonat-gyorsítótár több alkalmazásban való megőrzésére használhat. Ezzel a beállítással megoszthatja a jogkivonat-gyorsítótárat több alkalmazás között ugyanazzal a kulcstartó-hozzáférési csoporttal, beleértve a [ADAL.net](https://aka.ms/adal-net), MSAL.net Xamarin. iOS-alkalmazásokkal és a [ADAL. ObjC](https://github.com/AzureAD/azure-activedirectory-library-for-objc) vagy [MSAL.](https://github.com/AzureAD/microsoft-authentication-library-for-objc)ObjC használatával fejlesztett natív iOS-alkalmazásokkal.
 
 A jogkivonat-gyorsítótár megosztása lehetővé teszi az egyszeri bejelentkezést az összes olyan alkalmazás között, amelyek ugyanazt a kulcstartó-hozzáférési csoportot használják.
 

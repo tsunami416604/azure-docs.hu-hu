@@ -7,16 +7,15 @@ ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: 38e51e33ef487da8879132eb1ce9cf1e63a814e4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 3a771181f8f2785339cbc47e0a0234b9c4e39adc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672848"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926850"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Ismétlődő fejlesztés és hibakeresés Azure Data Factory
 
@@ -74,5 +73,5 @@ Miután kiválasztotta a *hibakeresést, amíg* a lehetőség be nem fejeződik,
 
 ![Miután beállította a töréspontot a kijelölt elemen](media/iterative-development-debugging/iterative-development-image6.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Folyamatos integráció és üzembe helyezés a Azure Data Factory](continuous-integration-deployment.md)

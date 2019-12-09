@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d11dc70a78fcec62032c2a6af168bd306c9d416
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fdfa01a45c0dd35da65b2ad7ce8b0d291148af1a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227865"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931100"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -124,17 +124,17 @@ Az alábbi táblázat néhány példát mutat be a kiosztott megosztási mérete
 |---------|---------|---------|---------|---------|
 |100         | 100     | Akár 300     | 66   | 44   |
 |500         | 500     | Akár 1 500   | 90   | 60   |
-|1,024       | 1,024   | Akár 3 072   | 122   | 81   |
+|1 024       | 1 024   | Akár 3 072   | 122   | 81   |
 |5 120       | 5 120   | Akár 15 360  | 368   | 245   |
 |10 240      | 10 240  | Akár 30 720  | 675 | 450   |
 |33 792      | 33 792  | Akár 100 000 | 2 088 | 1 392   |
 |51 200      | 51 200  | Akár 100 000 | 3 132 | 2 088   |
-|102 400     | 100 000 | Akár 100 000 | 6 204 | 4 136   |
+|102 400     | 100 000 | Akár 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
 > A fájlmegosztás teljesítményére a számítógép hálózati korlátai, a rendelkezésre álló hálózati sávszélesség, az IO-méretek, a párhuzamosságok számos más tényező vonatkozik. Például a 8 KiB írási/olvasási IO-méretekkel rendelkező belső tesztelésen alapuló, egyetlen Windowsos virtuális gép, *Standard F16s_v2*, a prémium szintű fájlmegosztás SMB-hez való csatlakoztatása 20000 olvasási IOPS és 15 000 FORDULAT írási IOPS. Az 512 MiB-írási/írási IO-méretekkel ugyanez a virtuális gép elérheti a 1,1 GiB/s kimenő forgalmat és a 370 MiB/s adatátviteli sebességet. A maximális teljesítmény elérése érdekében a terhelést több virtuális gép között kell elosztani. A gyakori teljesítménnyel kapcsolatos problémák és a megkerülő megoldások [hibaelhárítási útmutatójában](storage-troubleshooting-files-performance.md) olvashat.
 
-#### <a name="bursting"></a>Tele
+#### <a name="bursting"></a>Lökésszerű
 
 A prémium fájlmegosztás a IOPS akár három tényezővel is feltörte. A bursás automatizált, és kreditrendszer alapján működik. Az adatbontás a legjobb megoldási szinten működik, és a burst korlát nem garantálható, és a fájlmegosztás a korlátra is *feltört.*
 
@@ -199,13 +199,13 @@ Ez a szakasz csak a normál fájlmegosztás esetében érvényes. A prémium szi
 
 - A LRS/ZRS és a GRS/GZRS fiók átalakítása nem lehetséges a nagyméretű fájlmegosztást engedélyező Storage-fiókok esetében.
 
-### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+### <a name="regional-availability"></a>Regionális elérhetőség
 
 A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régiókban 100 TiB-korláttal érhetők el, ezek a régiók a következő táblázatban láthatók:
 
-|Régió |Támogatott redundancia |
+|Region (Régió) |Támogatott redundancia |
 |-------|---------|
-|Kelet-Ausztrália |LRS     |
+|Ausztrália keleti régiója |LRS     |
 |Délkelet-Ausztrália|LRS |
 |Közép-Kanada  |LRS     |
 |Kelet-Kanada     |LRS     |
@@ -216,13 +216,14 @@ A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régi
 |USA 2. keleti régiója *      |LRS     |
 |Közép-Franciaország |LRS, ZRS|
 |Dél-Franciaország   |LRS     |
+|USA északi középső régiója |LRS     |
 |Észak-Európa   |LRS     |
 |Dél-India    |LRS     |
 |Délkelet-Ázsia |LRS, ZRS|
 |USA nyugati középső régiója|LRS     |
 |Nyugat-Európa *    |LRS, ZRS|
 |USA nyugati régiója *        |LRS     |
-|USA nyugati régiója, 2.      |LRS, ZRS|
+|USA 2. nyugati régiója      |LRS, ZRS|
 
 az új fiókok \* támogatottak, nem minden meglévő fiók végezte el a frissítési folyamatot. Megtekintheti, hogy a meglévő Storage-fiókok elvégezték-e a frissítési folyamatot a [nagyméretű fájlmegosztás engedélyezésére](storage-files-how-to-create-large-file-share.md)tett kísérlet során.
 

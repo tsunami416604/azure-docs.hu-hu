@@ -6,20 +6,19 @@ documentationcenter: ''
 ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
-manager: craigg
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: d729fd11f355650b1476e6864a6d70219bf37e12
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 81ae5c3c702108d854e4dfde93001d5c99875666
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135132"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931584"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory-hibák elhárítása
 > [!NOTE]
@@ -30,7 +29,7 @@ Ez a cikk a Azure Data Factory használatakor felmerülő problémákkal kapcsol
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
-### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Hiba: Az előfizetés nincs regisztrálva a (z) Microsoft. DataFactory névtér használatára
+### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Hiba: Az előfizetés nincs regisztrálva a Microsoft.DataFactory névtér használatára
 Amennyiben ezt a hibaüzenetet kapja, az Azure Data Factory erőforrás-szolgáltató nincs regisztrálva a számítógépén. Tegye a következőket:
 
 1. Indítsa el az Azure PowerShellt.
@@ -45,14 +44,14 @@ Amennyiben ezt a hibaüzenetet kapja, az Azure Data Factory erőforrás-szolgál
     Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
-### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Probléma Nem engedélyezett hiba Data Factory parancsmag futtatásakor
+### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Probléma: jogosulatlan hiba Data Factory parancsmag futtatásakor
 Valószínűleg nem a megfelelő Azure-fiókot vagy előfizetést használja az Azure PowerShell futtatásához. Az alábbi parancsmagokkal válassza ki a megfelelő Azure-fiókot és előfizetést az Azure PowerShell használatához.
 
 1. Kapcsolat – AzAccount – a megfelelő felhasználói azonosító és jelszó használata
 2. Get-AzSubscription – megtekintheti a fiókhoz tartozó összes előfizetést.
 3. Select-AzSubscription &lt;előfizetés neve&gt; – válassza ki a megfelelő előfizetést. Használja ugyanazt a szolgáltatást, amellyel létrehoz egy adatgyárat a Azure Portal.
 
-### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Probléma Nem sikerült elindítani adatkezelés Gateway Express telepítőjét Azure Portal
+### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Probléma: nem sikerült elindítani adatkezelés Gateway Express telepítőjét Azure Portal
 Az adatkezelési átjáró expressz telepítéséhez az Internet Explorer vagy egy Microsoft ClickOnce-kompatiblis webböngésző szükséges. Amennyiben az expressz telepítés nem indul el, tegye a következők egyikét:
 
 * Használja az Internet Explorert vagy a Microsoft ClickOnce-kompatibilis webböngészőt.
@@ -62,10 +61,10 @@ Az adatkezelési átjáró expressz telepítéséhez az Internet Explorer vagy e
     Tegye ugyanezt a Firefox esetében is (telepítse a bővítményt). Kattintson az eszköztár Menü megnyitása gombjára (három vízszintes csík a jobb felső sarokban). Kattintson a Kiegészítők menüpontra, keressen a „ClickOnce” kulcsszóra, jelöljön ki egy ClickOnce-bővítmény, és telepítse azt.
 * A portálon ugyanezen a panelen megjelenik a **manuális telepítési** hivatkozás. Ezt a módszert használja a telepítési fájl letöltésére és manuális futtatására. Miután a telepítés sikeres volt, megjelenik az adatkezelés átjáró konfigurációja párbeszédpanel. Másolja ki a **kulcsot** a Portál képernyőről, és a konfigurációkezelőben ezt használva regisztrálja az átjárót a szolgáltatásban.  
 
-### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Probléma Nem lehet csatlakozni a helyszíni SQL Serverhoz
-Indítsa el **adatkezelés átjárót Configuration Manager** az átjárót használó számítógépen, és a **Hibaelhárítás** lapon tesztelje a SQL Serverhoz való kapcsolódást az átjáró gépről. A kapcsolat/átjáróval kapcsolatos problémák elhárításához kapcsolódó tippekért lásd: átjárókkal kapcsolatos [problémák elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .   
+### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Probléma: nem lehet csatlakozni a helyszíni SQL Serverhoz
+Indítsa el **adatkezelés átjárót Configuration Manager** az átjárót használó számítógépen, és a **Hibaelhárítás** lapon tesztelje a SQL Serverhoz való kapcsolódást az átjáró gépről. A kapcsolat/átjáróval kapcsolatos problémák elhárításához kapcsolódó tippekért lásd: [átjárókkal kapcsolatos problémák elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .   
 
-### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Probléma A bemeneti szeletek örökké várakozó állapotban vannak
+### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Probléma: a bemeneti szeletek mindig várnak állapotban vannak
 Különböző okok miatt a szeletek **várakozási** állapotba kerülhetnek. Az egyik gyakori oka, hogy a **külső** tulajdonság értéke nem **true (igaz**). A Azure Data Factory hatókörén kívül létrehozott adatkészleteket **külső** tulajdonsággal kell megjelölni. Ez a tulajdonság azt jelzi, hogy az adatforrások kívül vannak, és az adatelőállítón belüli folyamatok nem rendelkeznek biztonsági mentéssel. Az adatszeletek **Készként** vannak jelölve, amint elérhetőek az adatok a megfelelő tárban.
 
 Tekintse meg a következő példát az **external** tulajdonság használatáról. Megadhatja a **externalData*** beállítást is, ha a külsőt igaz értékre állítja.
@@ -100,10 +99,10 @@ A tulajdonságról az [adatkészleteket](data-factory-create-datasets.md) ismert
 
 A hiba megoldásához adja hozzá az **external** tulajdonságot és a választható **externalData** szakaszt a bemeneti tábla JSON-definíciójához, és hozza létre ismét a táblát.
 
-### <a name="problem-hybrid-copy-operation-fails"></a>Probléma A hibrid másolási művelet sikertelen
-Az [átjáróval](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) kapcsolatos hibák elhárítása a helyszíni adattárakból a adatkezelés átjáró használatával történő másolásával kapcsolatos hibák elhárítása című témakörben található.
+### <a name="problem-hybrid-copy-operation-fails"></a>Probléma: a hibrid másolási művelet meghiúsul
+Az [átjáróval kapcsolatos hibák elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) a helyszíni adattárakból a adatkezelés átjáró használatával történő másolásával kapcsolatos hibák elhárítása című témakörben található.
 
-### <a name="problem-on-demand-hdinsight-provisioning-fails"></a>Probléma Az igény szerinti HDInsight kiépítés meghiúsul
+### <a name="problem-on-demand-hdinsight-provisioning-fails"></a>Probléma: az igény szerinti HDInsight kiépítés meghiúsul
 Ha HDInsightOnDemand típusú társított szolgáltatást használ, meg kell adnia egy linkedServiceName, amely egy Azure-Blob Storage mutat. A Data Factory szolgáltatás ezt a tárolót használja az igény szerinti HDInsight-fürt naplófájljainak és a kapcsolódó fájloknak a tárolásához.  Néha az igény szerinti HDInsight-fürt kiépítése meghiúsul, és a következő hibaüzenet jelenik meg:
 
 ```
@@ -114,15 +113,15 @@ Ez a hiba többnyire azt jelzi, hogy a linkedServiceName szolgáltatásban megad
 
 Az additionalLinkedServiceNames egy másik JSON-tulajdonság, amelyben további tárfiókok adhatók meg az igény szerinti HDInsight szolgáltatáshoz. A további csatolt Storage-fiókoknak ugyanabban a helyen kell lenniük, mint a HDInsight-fürtnek, vagy a hiba miatt meghiúsulnak.
 
-### <a name="problem-custom-net-activity-fails"></a>Probléma Egy egyéni .NET-tevékenység meghiúsul
+### <a name="problem-custom-net-activity-fails"></a>Probléma: az egyéni .NET-tevékenység meghiúsul
 A részletes lépésekért lásd: [folyamat hibakeresése egyéni tevékenységgel](data-factory-use-custom-activities.md#troubleshoot-failures) .
 
 ## <a name="use-azure-portal-to-troubleshoot"></a>A Azure Portal használata a hibák megoldásához
 ### <a name="using-portal-blades"></a>Portál-pengék használata
 Lásd: [folyamat figyelése](data-factory-monitor-manage-pipelines.md) lépések.
 
-### <a name="using-monitor-and-manage-app"></a>A Megfigyelés és kezelés alkalmazás használata
-A részletekért lásd: az [adat-előállító folyamatok figyelése és kezelése az alkalmazás figyelésével](data-factory-monitor-manage-app.md) és kezelésével.
+### <a name="using-monitor-and-manage-app"></a>Monitorozás és kezelés alkalmazás használata
+A részletekért lásd: az [adat-előállító folyamatok figyelése és kezelése az alkalmazás figyelésével és kezelésével](data-factory-monitor-manage-app.md) .
 
 ## <a name="use-azure-powershell-to-troubleshoot"></a>A Azure PowerShell használata a hibák megoldásához
 ### <a name="use-azure-powershell-to-troubleshoot-an-error"></a>Azure PowerShell használata a hibák megoldásához

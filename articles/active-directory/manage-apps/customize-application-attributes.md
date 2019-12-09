@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c1a536bb86f0b3a4fe6a24af00379686ccc292
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 9d76a11fc41fd964ff4e43518aee34aad3ecffd3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641506"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922669"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -78,12 +78,12 @@ A tulajdonsággal együtt az attribútum-hozzárendelések a következő attrib�
   - **Csak a létrehozás során** – alkalmazza ezt a leképezést csak a felhasználói létrehozási műveletekre.
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>A forrás-és a megcélzott rendszerek felhasználóinak egyeztetése
-Az Azure AD-kiépítési szolgáltatás a zöldmezős (a felhasználók nem kilépnek a célszámítógépen) és a rozsdaövezetek rehabilitálása (a felhasználók már léteznek a megcélzott rendszeren) forgatókönyvekben egyaránt üzembe helyezhetők. Mindkét forgatókönyv támogatásához a kiépítési szolgáltatás a megfelelő attribútum (ok) koncepcióját használja. A megfelelő attribútum (ok) segítségével meghatározhatja, hogyan azonosíthatók egyedi módon a felhasználók a forrásban, és hogyan egyeznek meg a célként megadott felhasználóval. Az üzembe helyezés megtervezésének részeként azonosítsa azt az attribútumot, amellyel egyedileg azonosíthatók a felhasználók a forrás-és a célként szolgáló rendszerekben. Tudnivaló:
+Az Azure AD-kiépítési szolgáltatás a "zöldmezős" forgatókönyvekben is üzembe helyezhető (ahol a felhasználók nem tudnak kilépni a célként megadott rendszerből) és a "rozsdaövezetek rehabilitálása" forgatókönyvek (ahol a felhasználók már léteznek a célszámítógépen). Mindkét forgatókönyv támogatásához a kiépítési szolgáltatás a megfelelő attribútumok koncepcióját használja. Az egyeztetési attribútumok lehetővé teszik annak meghatározását, hogy a rendszer egyedi módon azonosítsa a felhasználókat a forrásban, és megegyezzen a célként megadott felhasználóval. Az üzembe helyezés megtervezésének részeként azonosítsa azt az attribútumot, amellyel egyedileg azonosíthatók a felhasználók a forrás-és a célként szolgáló rendszerekben. Tudnivaló:
 
 - **Az egyező attribútumok egyedinek kell lenniük:** Az ügyfelek gyakran használják az attribútumokat, például a userPrincipalName, az e-maileket vagy az objektumazonosítók használatát a megfelelő attribútumként.
 - **Több attribútum is használható egyező attribútumként:** Több attribútumot is megadhat a kiértékeléshez, ha a felhasználók és a kiértékelésük sorrendje (a felhasználói felületen egyező prioritásként van meghatározva). Ha például három attribútumot határoz meg egyező attribútumokként, és a felhasználó egyedi módon illeszkedik az első két attribútum kiértékelése után, akkor a szolgáltatás nem értékeli ki a harmadik attribútumot. A szolgáltatás a megadott sorrendben értékeli ki a megfelelő attribútumokat, és leállítja az értékelést, ha egyezés található.  
 - A **forrás és a cél értékének nem kell pontosan megegyeznie:** A cél értéke lehet a forrás értékének néhány egyszerű funkciója. Tehát a forrásban és a userPrincipalName lévő emailAddress attribútummal rendelkezhet, és az emailAddress attribútum egy függvényével egyezik meg, amely bizonyos karaktereket egy konstans értékkel helyettesít.  
-- Az **attribútumok kombinációja alapján történő megfeleltetés nem támogatott:** A legtöbb alkalmazás nem támogatja a lekérdezések két tulajdonság alapján történő lekérdezését, és a therfore az attribútumok kombinációja alapján nem lehet egyeztetni. Lehetséges, hogy egy másik után kiértékeli az egyes tulajdonságokat.
+- Az **attribútumok kombinációja alapján történő megfeleltetés nem támogatott:** A legtöbb alkalmazás nem támogatja a lekérdezések két tulajdonság alapján történő lekérdezését. Ezért az attribútumok kombinációja alapján nem lehet egyeztetni. Lehetséges, hogy egy másik után kiértékeli az egyes tulajdonságokat.
 - **Minden felhasználónak rendelkeznie kell legalább egy megfelelő attribútum értékével:** Ha egy egyező attribútumot határoz meg, az összes felhasználónak rendelkeznie kell egy értékkel az adott attribútumhoz a forrás rendszerében. Ha például a userPrincipalName-t a megfelelő attribútumként definiálja, az összes felhasználónak rendelkeznie kell userPrincipalName. Ha több egyező attribútumot (például extensionAttribute1 és e-mailt) definiál, nem minden felhasználónak ugyanazzal a megfelelő attribútummal kell rendelkeznie. Egy felhasználó rendelkezhet extensionAttribute1, de nem küldheti el az e-mailt, míg egy másik felhasználónak nem lehet extensionAttribute1. 
 - **A célként megadott alkalmazásnak támogatnia kell a szűrést a megfelelő attribútumon:** Az alkalmazások fejlesztői lehetővé teszik a felhasználók vagy csoportok API-k attribútumainak egy részhalmazának szűrését. A katalógusban található alkalmazások esetében biztosítjuk, hogy az alapértelmezett attribútum-hozzárendelés egy olyan attribútumhoz legyen hozzárendelve, amelyet a célalkalmazás API-je támogat a szűrést. Ha módosítja a célalkalmazás alapértelmezett egyező attribútumát, tekintse meg a harmadik féltől származó API-dokumentációt, és győződjön meg arról, hogy az attribútum szűrhető.  
 
@@ -134,7 +134,61 @@ A támogatott attribútumok listájának szerkesztésekor a következő tulajdon
 - **API-kifejezés** – ne használja, kivéve, ha erre a célra egy adott kiépítési összekötő (például a munkanap) dokumentációja kéri.
 - **Hivatkozott Object attribútum** – ha ez egy hivatkozástípus attribútum, akkor ezzel a menüvel kiválaszthatja a célalkalmazás azon tábláját és attribútumát, amely az attribútumhoz társított értéket tartalmazza. Ha például egy "részleg" nevű attribútummal rendelkezik, amelynek tárolt értéke egy különálló "részleg" táblában található objektumra hivatkozik, akkor válassza a "Departments.Name" elemet. Az adott alkalmazáshoz támogatott hivatkozási táblák és elsődleges azonosító mezők előre vannak konfigurálva, és jelenleg nem szerkeszthetők a Azure Portal használatával, de a [Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)használatával szerkeszthetők.
 
-Új attribútum hozzáadásához görgessen a támogatott attribútumok listájának végére, és töltse ki a fenti mezőket a megadott bemenetek használatával, majd válassza az **attribútum hozzáadása**lehetőséget. Attribútumok hozzáadásának befejeződése után válassza a **Mentés** lehetőséget. Ezután újra kell töltenie a **kiépítés** lapot, hogy az új attribútumok elérhetővé váljanak az attribútum-leképezési szerkesztőben.
+#### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Egyéni kiterjesztési attribútum kiépítés egy SCIM-kompatibilis alkalmazásba
+A SCIM RFC egy alapszintű felhasználót és csoportot határoz meg, és lehetővé teszi, hogy a bővítmények megfeleljenek a sémának az alkalmazás igényeinek megfelelően. Egyéni attribútum hozzáadása SCIM-alkalmazáshoz:
+   1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com), válassza a **vállalati alkalmazások**lehetőséget, válassza ki az alkalmazást, majd válassza a **kiépítés**lehetőséget.
+   2. A **leképezések**területen válassza ki azt az objektumot (felhasználót vagy csoportot), amelyhez egyéni attribútumot szeretne hozzáadni.
+   3. A lap alján válassza a **Speciális beállítások megjelenítése**lehetőséget.
+   4. Válassza*a * AppName szerkesztése*elemet.
+   5. Az attribútum lista alján adja meg az egyéni attribútum adatait a megadott mezőkben. Ezután válassza az **attribútum hozzáadása**elemet.
+
+A SCIM alkalmazások esetében az attribútum nevének az alábbi példában látható mintázatot kell követnie. A "CustomExtensionName" és a "CustomAttribute" testreszabható az alkalmazás követelményei szerint, például: urn: IETF: params: scim: schemas: Extension: 2.0: CustomExtensionName: CustomAttribute
+
+Ezek az utasítások csak a SCIM-kompatibilis alkalmazásokra vonatkoznak. Az olyan alkalmazások, mint a ServiceNow és a Salesforce, nem integráltak az Azure AD-vel a SCIM használatával, ezért nem igénylik ezt az adott névteret egyéni attribútumok hozzáadásakor.
+
+Az egyéni attribútumok nem lehetnek hivatkozási attribútumok vagy többértékű attribútumok. Az egyéni többértékű bővítmény attribútumai jelenleg csak a katalógusban lévő alkalmazásokhoz támogatottak.  
+ 
+**Példa kiterjesztési attribútummal rendelkező felhasználó ábrázolására:**
+
+```json
+   {
+     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "userName":"bjensen",
+     "externalId":"bjensen",
+     "name":{
+       "formatted":"Ms. Barbara J Jensen III",
+       "familyName":"Jensen",
+       "givenName":"Barbara"
+     },
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+     "employeeNumber": "701984",
+     "costCenter": "4130",
+     "organization": "Universal Studios",
+     "division": "Theme Park",
+     "department": "Tour Operations",
+     "manager": {
+       "value": "26118915-6090-4610-87e4-49d8ca9f808d",
+       "$ref": "../Users/26118915-6090-4610-87e4-49d8ca9f808d",
+       "displayName": "John Smith"
+     }
+   },
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "CustomAttribute": "701984",
+   },
+   "meta": {
+     "resourceType": "User",
+     "created": "2010-01-23T04:56:22Z",
+     "lastModified": "2011-05-13T04:42:34Z",
+     "version": "W\/\"3694e05e9dff591\"",
+     "location":
+ "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
+   }
+ }
+```
+
+
 ## <a name="provisioning-a-role-to-a-scim-app"></a>Szerepkör üzembe helyezése egy SCIM-alkalmazásban
 Az alábbi lépésekkel szerepköröket hozhat létre az alkalmazáshoz. Vegye figyelembe, hogy az alábbi leírás az egyéni SCIM-alkalmazásokra vonatkozik. A Gallery-alkalmazások, például a Salesforce és a ServiceNow esetében használja az előre meghatározott szerepkör-leképezéseket. Az alábbi felsorolás leírja, hogyan alakíthatja át az AppRoleAssignments attribútumot az alkalmazás által várt formátumra.
 
@@ -261,7 +315,7 @@ Ha ezt a beállítást választja, a kiépítési szolgáltatás futása közben
 - A IsSoftDeleted attribútum gyakran része az alkalmazás alapértelmezett leképezésének. A IsSoftdeleted a négy forgatókönyv egyikében igaz lehet (a felhasználó hatókörén kívül esik az alkalmazásból való kivonás miatt, a felhasználó hatókörén kívül esik, mert nem felel meg egy hatóköri szűrőnek, a felhasználót nem sikerült törölni az Azure AD-ben, vagy a AccountEnabled tulajdonság hamis értékre van állítva.  a felhasználón). 
 - Az Azure ad-kiépítési szolgáltatás nem támogatja a null értékek kiépítés
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A felhasználók üzembe helyezésének és megszüntetésének automatizálása az SaaS-alkalmazásokban](user-provisioning.md)
 - [Kifejezések írása attribútum-leképezésekhez](functions-for-customizing-application-data.md)

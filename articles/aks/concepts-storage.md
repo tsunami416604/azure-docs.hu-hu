@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 70272413ef4952cfeed558dd313f12096204d569
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 601f89c4510899dbb1f5d8a238961d9a4e5864e0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120494"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913716"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások tárolási lehetőségei
 
@@ -56,12 +56,12 @@ A PersistentVolume lehet *statikusan* létrehozni, vagy a Kubernetes API-kiszolg
 
 ## <a name="storage-classes"></a>Tárolási osztályok
 
-A különböző tárolási rétegek (például a prémium és a standard) definiálásához létrehozhat egy *StorageClass*. A StorageClass a *reclaimPolicy*is meghatározza. Ez reclaimPolicy az alapul szolgáló Azure storage-erőforrások viselkedését vezérlő, amikor a pod törlődik, és a tartós kötet már nem szükséges. Az alapul szolgáló tárolási erőforrás törölték, vagy a jövőbeli podot segítségével őrzi meg.
+A különböző tárolási rétegek (például a prémium és a standard) definiálásához létrehozhat egy *StorageClass*. A StorageClass a *reclaimPolicy*is meghatározza. Ez a reclaimPolicy az alapul szolgáló Azure Storage-erőforrás viselkedését szabályozza a pod törlésekor, és előfordulhat, hogy az állandó kötetre már nincs szükség. A mögöttes tárolási erőforrás törölhető vagy megtartható egy későbbi Pod-nal való használathoz.
 
 Az AK-ban két kezdeti StorageClasses jön létre:
 
-- *alapértelmezett* – felügyelt lemez létrehozásához az Azure standard Storage szolgáltatást használja. A visszaigénylési házirend azt jelzi, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó Pod törölve lett.
-- *Managed-Premium* – az Azure Premium Storage használatával felügyelt lemez hozható létre. A visszaigénylési házirend újból azt jelzi, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó Pod törölve lett.
+- *alapértelmezett* – felügyelt lemez létrehozásához az Azure standard Storage szolgáltatást használja. A visszaigénylési házirend azt jelzi, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó állandó kötet törlődik.
+- *Managed-Premium* – az Azure Premium Storage használatával felügyelt lemez hozható létre. A visszaigénylési házirend újból azt jelzi, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó állandó kötet törlődik.
 
 Ha nem ad meg StorageClass egy állandó kötethez, a rendszer az alapértelmezett StorageClass használja. Ügyeljen arra, hogy az állandó kötetek kérésekor a szükséges tárterületet használják. `kubectl`használatával további igényekhez is létrehozhat StorageClass. Az alábbi példa prémium Managed Disks használ, és megadja, hogy a mögöttes Azure-lemezt meg kell *őrizni* a pod törlésekor:
 
@@ -81,7 +81,7 @@ parameters:
 
 A PersistentVolumeClaim egy adott StorageClass, elérési módra és méretre vonatkozó lemez-vagy file Storage-t kér. A Kubernetes API-kiszolgáló dinamikusan kiépítheti a mögöttes tárolási erőforrást az Azure-ban, ha nincs meglévő erőforrás a jogcím teljesítéséhez a definiált StorageClass alapján. A pod definíciója tartalmazza a kötet csatlakoztatását, ha a kötet csatlakoztatva van a pod-hoz.
 
-![Tartós kötet jogcímek, az Azure Kubernetes szolgáltatás (AKS)-fürt](media/concepts-storage/persistent-volume-claims.png)
+![Állandó mennyiségi jogcímek egy Azure Kubernetes Services (ak) fürtben](media/concepts-storage/persistent-volume-claims.png)
 
 Egy PersistentVolume egy PersistentVolumeClaim van *kötve* , amint egy rendelkezésre álló tárolási erőforrás hozzá lett rendelve az azt kérő Pod-hez. Az állandó kötetek 1:1-es leképezése a jogcímekre történik.
 
@@ -121,7 +121,7 @@ spec:
         claimName: azure-managed-disk
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 

@@ -1,29 +1,25 @@
 ---
-title: Ügyfélalkalmazások inicializálása (Microsoft Authentication Library JavaScripthez)
+title: MSAL. js-ügyfélalkalmazások inicializálása | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerkedjen meg az ügyfélalkalmazások inicializálásával a JavaScripthez készült Microsoft Authentication Library (MSAL. js) használatával.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25f2776b9b5683a345c55af4bc0020fef8109edd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b041d8777f81f1796a2e2f7926f324e3b601bd93
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150666"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916502"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Ügyfélalkalmazások inicializálása a MSAL. js használatával
 Ez a cikk a Microsoft hitelesítési függvénytárának a JavaScripthez (MSAL. js) való inicializálását ismerteti egy felhasználói ügynök alkalmazás egy példányával. A User-Agent alkalmazás a nyilvános ügyfélalkalmazás olyan formája, amelyben az ügyfél kódja egy felhasználói ügynökön, például egy böngészőben fut. Ezek az ügyfelek nem tárolják a titkos kulcsokat, mivel a böngésző környezete nyíltan elérhető. Az ügyfélalkalmazások típusairól és az alkalmazás konfigurációs lehetőségeiről az [Áttekintés](msal-client-applications.md)című témakörben olvashat bővebben.
@@ -115,7 +111,7 @@ Alább látható a konfigurációs objektumban jelenleg támogatott konfigurálh
 - **clientID**: kötelező. Az alkalmazás clientID az alkalmazás regisztrációs portálján kell megszereznie.
 
 - **szolgáltató**: nem kötelező. Egy olyan könyvtárat jelző URL-cím, amelyből a MSAL jogkivonatokat kérhet. Az alapértelmezett érték: `https://login.microsoftonline.com/common`.
-    * Az Azure AD-ben a https://&lt;példány&gt;/&lt;célközönség&gt;, ahol &lt;példány&gt; az identitás-szolgáltató tartománya (például `https://login.microsoftonline.com`) és &lt;célközönség&gt; egy azonosító a bejelentkezési közönséget jelképezi. Ez a következő értékeket veheti fel:
+    * Az Azure AD-ben a https://&lt;példány&gt;/&lt;célközönség&gt;, ahol &lt;példány&gt; az identitás-szolgáltató tartománya (például `https://login.microsoftonline.com`) és &lt;célközönség&gt; a bejelentkezési célközönséget jelképező azonosító. Ez a következő értékeket veheti fel:
         * `https://login.microsoftonline.com/<tenant>`– a bérlő olyan tartományhoz van társítva, mint a contoso.onmicrosoft.com, vagy a címtár `TenantID` tulajdonságát jelölő GUID, amely csak egy adott szervezet felhasználóinak való bejelentkezéshez használatos.
         * `https://login.microsoftonline.com/common`– a felhasználók munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal való bejelentkezéshez használhatók.
         * `https://login.microsoftonline.com/organizations/`– a felhasználók munkahelyi és iskolai fiókkal való bejelentkezéshez használhatók.
@@ -129,7 +125,7 @@ Alább látható a konfigurációs objektumban jelenleg támogatott konfigurálh
 
 - **postLogoutRedirectUri**: nem kötelező.  A kijelentkezés után `postLogoutRedirectUri` átirányítja a felhasználót. Az alapértelmezett érték `redirectUri`.
 
-- **navigateToLoginRequestUrl**: nem kötelező. Kikapcsolhatja az alapértelmezett navigációt a Start lapon a bejelentkezés után. Az alapértelmezett érték a True (igaz). Ez csak az átirányítási folyamatok esetében használatos.
+- **navigateToLoginRequestUrl**: nem kötelező. Kikapcsolhatja az alapértelmezett navigációt a Start lapon a bejelentkezés után. Alapértelmezett érték: true (igaz). Ez csak az átirányítási folyamatok esetében használatos.
 
 - **cacheLocation**: nem kötelező.  A böngésző tárterületét `localStorage` vagy `sessionStorage`re állítja be. A mező alapértelmezett értéke: `sessionStorage`.
 

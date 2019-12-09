@@ -2,23 +2,23 @@
 title: Adatátalakítás az Hadoop MapReduce-tevékenységgel
 description: Ismerje meg, hogyan dolgozhat fel az adatok egy Azure HDInsight-fürtön futó Hadoop MapReduce-programok Azure-beli adatgyárból való futtatásával.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 8f66062f5de514390a8e4a3fdea85dd645ff0da1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+manager: shwang
+ms.custom: seo-lt-2019
+ms.date: 01/16/2018
+ms.openlocfilehash: 5d38e3126442bcf34c96cead2b2ea59507b50b8c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893807"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912865"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Az adatátalakítás a Hadoop MapReduce-tevékenységgel Azure Data Factory
+
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-map-reduce.md)
 > * [Aktuális verzió](transform-data-using-hadoop-map-reduce.md)

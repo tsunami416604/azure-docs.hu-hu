@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803733"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919341"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>A Azure Active Directory Authentication Management üzemeltetési útmutatója
 
@@ -292,16 +292,16 @@ Ha az örökölt hitelesítés széles körben használatos a környezetben, a l
 
 ### <a name="consent-grants"></a>Hozzájárulási támogatás
 
-A támadók a tiltott engedélyezési támadás során létrehoznak egy Azure AD-regisztrált alkalmazást, amely hozzáférést kér az adatokhoz, például a kapcsolattartási adatokhoz, az e-mailekhez vagy a dokumentumokhoz. Előfordulhat, hogy a felhasználók adathalászattal kapcsolatos támadásokkal vagy közvetetten nem körültekintően, a kártékony webhelyeken való kirakodáskor engedélyezik a hozzáférést a kártékony alkalmazásoknak.
+A támadók a tiltott engedélyezési támadás során létrehoznak egy Azure AD-regisztrált alkalmazást, amely hozzáférést kér az adatokhoz, például a kapcsolattartási adatokhoz, az e-mailekhez vagy a dokumentumokhoz. A felhasználók a rosszindulatú webhelyekre való leszálláskor adathalászattal kapcsolatos támadások útján engedélyezhetik a kártékony alkalmazásoknak való hozzájárulást.
 
-Az alábbiakban azokat az engedélyeket érdemes megtekinteni, amelyek a Microsoft Cloud Services szolgáltatáshoz szükségesek:
+Az alábbi lista azokat az alkalmazásokat tartalmazza, amelyekkel megvizsgálhatja a Microsoft Cloud Servicest:
 
-- Alkalmazással vagy delegált \*ekkel rendelkező alkalmazások. ReadWrite engedélyek
+- Alkalmazásokkal vagy delegált \*ekkel rendelkező alkalmazások. ReadWrite engedélyek
 - A delegált engedélyekkel rendelkező alkalmazások elolvashatják, elküldhetik vagy kezelhetik az e-maileket a felhasználó nevében
 - A következő engedélyek használatával kapott alkalmazások:
 
 | Erőforrás | Engedély |
-| -------------------------- | -------------------- |
+| :- | :- |
 | Office 365 Exchange Online | EAS. AccessAsUser. All |
 | | EWS. AccessAsUser. All |
 | | Mail. Read |
@@ -309,11 +309,19 @@ Az alábbiakban azokat az engedélyeket érdemes megtekinteni, amelyek a Microso
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-Ennek elkerüléséhez tekintse meg a [tiltott engedélyezési támogatások észlelését és szervizelését az Office 365-ben](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) , hogy azonosítsa és javítsa azokat az alkalmazásokat, amelyek nem rendelkeznek olyan illegális támogatásokkal vagy alkalmazásokkal, amelyek a szükségesnél több támogatással rendelkeznek. Az alkalmazás engedélyeinek rendszeres felülvizsgálata, és ha nem szükséges, távolítsa el őket. vagy távolítsa el az önkiszolgáló szolgáltatást teljesen, és hozzon létre irányítási eljárásokat.
+- Az alkalmazások a bejelentkezett felhasználó teljes körű felhasználó megszemélyesítését adtak meg. Példa:
+
+|Erőforrás | Engedély |
+| :- | :- |
+| Azure AD Graph | Directory. AccessAsUser. All |
+| Microsoft Graph | Directory. AccessAsUser. All |
+| Azure REST API | user_impersonation |
+
+Ennek elkerüléséhez tekintse meg a [tiltott engedélyezési támogatások észlelését és szervizelését az Office 365-ben](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) , hogy azonosítsa és javítsa azokat az alkalmazásokat, amelyek nem rendelkeznek olyan illegális támogatásokkal vagy alkalmazásokkal, amelyek a szükségesnél több támogatással rendelkeznek. Ezután [távolítsa el](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) az önkiszolgáló szolgáltatást teljesen, és [hozzon létre irányítási eljárásokat](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow). Végezetül ütemezze az alkalmazás engedélyeinek rendszeres felülvizsgálatát, és távolítsa el őket, ha nincs rá szükség.
 
 #### <a name="consent-grants-recommended-reading"></a>Hozzájárulás a javasolt olvasáshoz
 
-- [Azure Active Directory (AD) Graph API engedély hatókörök](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes)
+- [Microsoft Graph-engedélyek](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Felhasználói és csoport beállításai
 

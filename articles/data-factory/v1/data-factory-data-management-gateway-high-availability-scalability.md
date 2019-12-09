@@ -4,21 +4,20 @@ description: Ez a cikk azt ismerteti, hogyan méretezhető ki egy adatkezelési 
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c3428019fe23e3f206e763249a18e7774bab149b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 25dbb01a4b018a51390be664472aceadea0a9524
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682705"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932030"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség (előzetes verzió)
 > [!NOTE]
@@ -134,7 +133,7 @@ Ez a szakasz azt feltételezi, hogy elvégezte a következő két cikket, vagy i
 Egy meglévő átjárót frissítheti a magas rendelkezésre állás és méretezhetőség szolgáltatás használatára. Ez a szolgáltatás csak olyan csomópontokkal működik, amelyeken > = 2.12. xxxx verziójú adatkezelési átjáró van. A számítógépen telepített adatkezelési átjáró verziója a adatkezelés Configuration Manager átjárójának **Súgó** lapján tekinthető meg. 
 
 1. Frissítse az átjárót a helyszíni gépen a legújabb verzióra egy MSI-telepítőcsomag letöltésével és futtatásával a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717). A részletekért lásd a [telepítés](data-factory-data-management-gateway.md#installation) című szakaszt.  
-2. Navigáljon a Azure Portal. Indítsa el az adatelőállító **Data Factory lapját** . Kattintson a társított szolgáltatások csempére a **társított szolgáltatások lap**elindításához. Válassza ki az átjárót az **átjáró oldalának**elindításához. Kattintson és engedélyezze az **előnézet funkciót** az alábbi képen látható módon: 
+2. Lépjen az Azure Portalra. Indítsa el az adatelőállító **Data Factory lapját** . Kattintson a társított szolgáltatások csempére a **társított szolgáltatások lap**elindításához. Válassza ki az átjárót az **átjáró oldalának**elindításához. Kattintson és engedélyezze az **előnézet funkciót** az alábbi képen látható módon: 
 
     ![Adatkezelés átjáró – Előnézet funkció engedélyezése](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png)   
 2. Ha az előzetes verzió funkció engedélyezve van a portálon, akkor zárjunk be minden oldalt. Nyissa meg újra az **átjáró lapot** az új előzetes verziójú felhasználói felület (UI) megtekintéséhez.
@@ -151,7 +150,7 @@ Egy meglévő átjárót frissítheti a magas rendelkezésre állás és mérete
 
     A csomópont beállításához kövesse az előző szakasz utasításait. 
 
-### <a name="installation-best-practices"></a>Ajánlott eljárások a telepítéshez
+### <a name="installation-best-practices"></a>Gyakorlati tanácsok a telepítéshez
 
 - Konfigurálja az energiagazdálkodási tervet a gazdagépen az átjáróhoz, hogy a gép ne legyen hibernálva. Ha a gazdaszámítógép hibernált állapotba kerül, az átjáró nem válaszol az adatkérelmekre.
 - Az átjáróhoz társított tanúsítvány biztonsági mentése.
@@ -182,14 +181,14 @@ A Azure Portal az erőforrások kihasználtságának közel valós idejű pillan
 
 ![Adatkezelés átjáró – több csomópont figyelése](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
 
-A **Speciális beállítások** megadásával az **átjáró** lapon megtekintheti a speciális mérőszámokat, például a **hálózati**(in/out), a **szerepkör & a hitelesítő adatok állapotát**, amely hasznos az átjárókkal kapcsolatos problémák hibakereséséhez, valamint az **egyidejű feladatok** végrehajtásához (Futtatás/korlát ), amely megfelelően módosítható/módosítható a teljesítmény finomhangolása során. Az alábbi táblázat az **átjáró-csomópontok** listájában szereplő oszlopok leírását tartalmazza:  
+A **Speciális beállítások** megadásával az **átjáró** lapon megtekintheti a speciális mérőszámokat, például a **hálózati**(in/out), a **szerepkör & a hitelesítő adatokat**, amelyek hasznosak lehetnek az átjárókkal kapcsolatos problémák megoldásához, valamint az **egyidejű feladatok** (Futtatás/korlát), amely a teljesítmény finomhangolása során módosítható/módosítható. Az alábbi táblázat az **átjáró-csomópontok** listájában szereplő oszlopok leírását tartalmazza:  
 
 Figyelési tulajdonság | Leírás
 :------------------ | :---------- 
-Name (Név) | Az átjáróhoz társított logikai átjáró és csomópontok neve.  
+Név | Az átjáróhoz társított logikai átjáró és csomópontok neve.  
 Állapot | A logikai átjáró és az átjáró csomópontjainak állapota. Példa: online/offline/korlátozott/stb. További információ ezekről az állapotokról: [átjáró állapota](#gateway-status) szakasz. 
 Verzió | Megjeleníti a logikai átjáró és az egyes átjáró-csomópontok verzióját. A logikai átjáró verziószáma a csoport csomópontjainak többsége alapján van meghatározva. Ha a logikai átjáró beállításában különböző verziójú csomópontok vannak, akkor csak a logikai átjáróval megegyező verziószámmal rendelkező csomópontok működnek. Mások korlátozott módban vannak, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés meghiúsul). 
-Rendelkezésre álló memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték a közel valós idejű pillanatkép. 
+Igénybe vehető memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték a közel valós idejű pillanatkép. 
 CPU-kihasználtság | Egy átjáró-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép. 
 Hálózatkezelés (be/ki) | Átjáró-csomópontok hálózati kihasználtsága. Ez az érték a közel valós idejű pillanatkép. 
 Egyidejű feladatok (futó/korlát) | Az egyes csomópontokon futó feladatok vagy feladatok száma. Ez az érték a közel valós idejű pillanatkép. A korlát az egyes csomópontok maximális egyidejű feladatait jelzi. Ez az érték a gép méretétől függően van meghatározva. Az egyidejű feladatok végrehajtásának korlátját növelheti speciális forgatókönyvekben, ahol a CPU/memória/hálózat nincs használatban, a tevékenységek azonban időtúllépést okozhatnak. Ez a funkció egy egycsomópontos átjáróval is elérhető (még akkor is, ha a méretezhetőség és a rendelkezésre állási funkció nincs engedélyezve). További információ: [méretezési megfontolások](#scale-considerations) szakasz. 
@@ -204,8 +203,8 @@ Az alábbi táblázat egy **átjáró-csomópont**lehetséges állapotát tartal
 Állapot  | Megjegyzések/forgatókönyvek
 :------- | :------------------
 Online | Data Factory szolgáltatáshoz csatlakoztatott csomópont.
-Offline | A csomópont offline állapotban van.
-Frissítése | A csomópont automatikus frissítése folyamatban van.
+Kapcsolat nélkül | A csomópont offline állapotban van.
+Frissítés | A csomópont automatikus frissítése folyamatban van.
 Korlátozott | Kapcsolódási probléma miatt. A hiba oka lehet a 8050-es HTTP-port, a Service Bus-csatlakozási probléma vagy a hitelesítő adatok szinkronizálása. 
 Inaktív | A csomópont más többségi csomópontok konfigurációjától eltérő konfigurációban található.<br/><br/> Egy csomópont inaktív lehet, ha nem tud csatlakozni más csomópontokhoz. 
 
@@ -216,7 +215,7 @@ A következő táblázat a **logikai átjáró**lehetséges állapotait tartalma
 :----- | :-------
 Regisztráció szükséges | Ehhez a logikai átjáróhoz még nincs regisztrálva csomópont
 Online | Az átjáró-csomópontok online állapotban vannak
-Offline | Nincs online állapotú csomópont.
+Kapcsolat nélkül | Nincs online állapotú csomópont.
 Korlátozott | Az átjáró nem minden csomópontja kifogástalan állapotban van. Ez az állapot arra figyelmeztet, hogy egyes csomópontok leállnak. <br/><br/>A hitelesítőadat-szinkronizálási probléma oka lehet a diszpécser/feldolgozó csomóponton. 
 
 ### <a name="pipeline-activities-monitoring"></a>Folyamat/tevékenységek figyelése
@@ -256,7 +255,7 @@ Az előzetes verzióról történő visszaállításhoz törölje az összes cso
 A törlés után kattintson az **előnézet szolgáltatások** elemre ugyanabban a Azure Portal oldalon, és tiltsa le az előzetes verzió funkciót. Alaphelyzetbe állítja az átjárót egy Node GA-(általános rendelkezésre állási) átjáróra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a következő cikkeket:
 - [Adatkezelés átjáró](data-factory-data-management-gateway.md) – részletes áttekintést nyújt az átjáróról.
 - Az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között](data-factory-move-data-between-onprem-and-cloud.md) – egy olyan bemutatót tartalmaz, amely részletes útmutatást nyújt egy átjáró egyetlen csomóponttal való használatához. 

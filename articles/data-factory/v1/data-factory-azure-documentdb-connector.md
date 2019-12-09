@@ -4,21 +4,20 @@ description: Megtudhatja, hogyan helyezheti át az adatok Azure Cosmos DB gyűjt
 services: data-factory, cosmosdb
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: c9297b71-1bb4-4b29-ba3c-4cf1f5575fac
 ms.service: multiple
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c0ff1b9164f0e631bf148af88bd9efaaaa61f431
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683156"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930092"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok áthelyezése Azure Cosmos DBba és onnan a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -57,7 +56,7 @@ A következő szakaszokban részletesen ismertetjük azokat a JSON-tulajdonságo
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a Azure Cosmos DB társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| **Tulajdonság** | **Leírás** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Kötelező** |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **DocumentDb** |Igen |
 | connectionString |Azure Cosmos DB adatbázishoz való kapcsolódáshoz szükséges információk megadásához. |Igen |
@@ -81,7 +80,7 @@ Az adatkészletek definiálásához rendelkezésre álló &i tulajdonságok telj
 
 A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **DocumentDbCollection** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik.
 
-| **Tulajdonság** | **Leírás** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Kötelező** |
 | --- | --- | --- |
 | collectionName |A Cosmos DB dokumentum-gyűjtemény neve. |Igen |
 
@@ -122,16 +121,16 @@ A tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes t
 
 Másolási tevékenység esetén, ha a forrás típusa **DocumentDbCollectionSource** , a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Kötelező** |
 | --- | --- | --- | --- |
 | lekérdezés |Itt adhatja meg az adatolvasási lekérdezést. |Azure Cosmos DB által támogatott lekérdezési karakterlánc. <br/><br/>Például: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, a futtatott SQL-utasítás: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |A dokumentum beágyazásának jelzésére szolgáló speciális karakter |Bármilyen karakter. <br/><br/>Azure Cosmos DB a JSON-dokumentumok NoSQL-tárolója, ahol beágyazott struktúrák engedélyezettek. Azure Data Factory lehetővé teszi a felhasználó számára a hierarchia jelölését a nestingSeparator-n keresztül, amely a következő: "." a fenti példákban. Az elválasztó használatával a másolási tevékenység a "név. First", a "név. középső" és a "name. Last" kifejezésnek megfelelően létrehozza a "Name" objektumot az első, középső és utolsó értékkel. |Nem |
 
 A **DocumentDbCollectionSink** a következő tulajdonságokat támogatja:
 
-| **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Kötelező** |
 | --- | --- | --- | --- |
-| nestingSeparator |A forrás oszlop nevének egy speciális karaktere, amely azt jelzi, hogy beágyazott dokumentumra van szükség. <br/><br/>A fenti például: `Name.First` a kimeneti táblában a következő JSON-struktúrát hozza létre a Cosmos DB dokumentumban:<br/><br/>"Name": {<br/>    "Első": "John"<br/>}, |A beágyazási szinteket elválasztó karakter.<br/><br/>Az alapértelmezett érték `.` (pont). |A beágyazási szinteket elválasztó karakter. <br/><br/>Az alapértelmezett érték `.` (pont). |
+| nestingSeparator |A forrás oszlop nevének egy speciális karaktere, amely azt jelzi, hogy beágyazott dokumentumra van szükség. <br/><br/>Például a fenti: `Name.First` a kimeneti táblában a következő JSON-struktúrát hozza létre a Cosmos DB dokumentumban:<br/><br/>"Name": {<br/>    "Első": "John"<br/>}, |A beágyazási szinteket elválasztó karakter.<br/><br/>Az alapértelmezett érték `.` (pont). |A beágyazási szinteket elválasztó karakter. <br/><br/>Az alapértelmezett érték `.` (pont). |
 | writeBatchSize |A Azure Cosmos DB szolgáltatás számára a dokumentumok létrehozásához szükséges párhuzamos kérelmek száma.<br/><br/>Ennek a tulajdonságnak a használatával javíthatja a teljesítményt a Cosmos DBba való adatmásoláskor. Nagyobb teljesítmény várható, ha a writeBatchSize növelése miatt Cosmos DB több párhuzamos kérelem küldése történik. Azonban el kell kerülnie a szabályozást, amely a következő hibaüzenetet eredményezi: "a kérelmek aránya nagy".<br/><br/>A szabályozást számos tényező határozza meg, többek között a dokumentumok mérete, a dokumentumok feltételeinek száma, a célhelyek indexelési szabályzata stb. A másolási műveleteknél jobb gyűjteményt (például S3) is használhat, hogy a lehető legtöbb átviteli sebesség elérhető legyen (2 500 kérelem egység/másodperc). |Egész szám |Nem (alapértelmezett: 5) |
 | writeBatchTimeout |Várakozási idő a művelet befejezéséhez, mielőtt időtúllépés történt. |TimeSpan<br/><br/> Például: "00:30:00" (30 perc). |Nem |
 
@@ -484,16 +483,16 @@ Azure Cosmos DB a JSON-dokumentumok NoSQL-tárolója, ahol beágyazott struktúr
 ## <a name="appendix"></a>Függelék
 1. **Kérdés:** Támogatja a másolási tevékenység a meglévő rekordok frissítését?
 
-    **Válasz:** nem.
+    **Válasz:** Nem szükséges.
 2. **Kérdés:** Hogyan próbálkozik újra egy másolattal, hogy Azure Cosmos DB a már másolt rekordokkal?
 
     **Válasz:** Ha a rekordok "ID" mezővel rendelkeznek, és a másolási művelet egy ugyanazzal az AZONOSÍTÓval rendelkező rekordot próbál beszúrni, a másolási művelet hibát jelez.
 3. **Kérdés:** Data Factory támogatja a [tartomány vagy a kivonatoló alapú adatparticionálást](../../cosmos-db/sql-api-partition-data.md)?
 
-    **Válasz:** nem.
+    **Válasz:** Nem szükséges.
 4. **Kérdés:** Megadhatok egynél több Azure Cosmos DB gyűjteményt egy táblához?
 
-    **Válasz:** nem. Jelenleg csak egy gyűjtemény adható meg.
+    **Válasz:** Nem szükséges. Jelenleg csak egy gyűjtemény adható meg.
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
 A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 0be50ef43774be6082a4ede330f65296094552de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c16fea8f710751a051995ecece8a3d0ce8f933c7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786843"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926460"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -21,7 +21,7 @@ A AzCopy olyan parancssori segédprogram, amellyel blobokat vagy fájlokat máso
 
 > [!NOTE]
 > Ha olyan tartalmat keres, amely segítséget nyújt a AzCopy megkezdéséhez, tekintse meg a következő cikkeket:
-> - [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
+> - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
 > - [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
 > - [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
 > - [Adatok átvitele a AzCopy és az Amazon S3 gyűjtővel](storage-use-azcopy-s3.md)
@@ -99,7 +99,7 @@ A AzCopy minden feladattípus esetében létrehozza a naplófájlokat és megter
 
 A naplók a hiba (`UPLOADFAILED`, `COPYFAILED`és `DOWNLOADFAILED`) állapotát, a teljes elérési utat és a hiba okát is tartalmazzák.
 
-Alapértelmezés szerint a napló-és a megtervezési fájlok a `%USERPROFILE$\.azcopy` könyvtárban találhatók a Windows rendszeren, vagy `$HOME$\.azcopy` a Mac és Linux rendszerű címtárban, de ha kívánja, módosíthatja ezt a helyet.
+Alapértelmezés szerint a napló-és a megtervezési fájlok a `%USERPROFILE%\.azcopy` könyvtárban találhatók a Windows rendszeren, vagy `$HOME$\.azcopy` a Mac és Linux rendszerű címtárban, de ha kívánja, módosíthatja ezt a helyet.
 
 > [!IMPORTANT]
 > Amikor kérelmet küld a Microsoft ügyfélszolgálata (vagy bármely harmadik féltől származó probléma elhárítása), ossza meg a futtatni kívánt parancs kivont verzióját. Ez biztosítja, hogy az SAS véletlenül senkivel se legyen megosztva. A leválasztott verziót a naplófájl elején találja.
@@ -151,7 +151,7 @@ Amikor folytat egy feladatot, a AzCopy megtekinti a feladatütemezés fájlját.
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>A csomag és a naplófájlok helyének módosítása
 
-Alapértelmezés szerint a csomag és a naplófájlok a Windows `%USERPROFILE$\.azcopy` könyvtárában vagy a Mac és Linux rendszerű `$HOME$\.azcopy` könyvtárban találhatók. Ezt a helyet módosíthatja.
+Alapértelmezés szerint a csomag és a naplófájlok a Windows `%USERPROFILE%\.azcopy` könyvtárában vagy a Mac és Linux rendszerű `$HOME$\.azcopy` könyvtárban találhatók. Ezt a helyet módosíthatja.
 
 ### <a name="change-the-location-of-plan-files"></a>A csomag fájljai helyének módosítása
 

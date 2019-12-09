@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: 4aab699ff0141b648066fae0de445c4467be7509
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 394c674da63bbda643246c3d61fb670d6ac8d1f7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048392"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928615"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
@@ -31,26 +31,34 @@ A Azure Hybrid Benefit segítségével csak az alapul szolgáló Azure-infrastru
 
 A licencelési modellt a Azure Portal használatával vagy a következő API-k egyikével választhatja ki vagy módosíthatja:
 
-- A licenc típusának beállítása vagy frissítése a PowerShell használatával:
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
-  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
-  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
-  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
+A licenc típusának beállítása vagy frissítése a PowerShell használatával:
 
-- A licenc típusának beállítása vagy frissítése az Azure CLI használatával:
+- [Új – AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)
+- [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)
+- [Új – AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance)
+- [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [az SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
-  - [az SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-- A licenc típusának beállítása vagy frissítése a REST API használatával:
+A licenc típusának beállítása vagy frissítése az Azure CLI használatával:
 
-  - [Adatbázisok – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [Adatbázisok – frissítés](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [Felügyelt példányok – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
-  - [Felügyelt példányok – frissítés](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
+- [az sql db create](/cli/azure/sql/db#az-sql-db-create)
+- [az sql db update](/cli/azure/sql/db#az-sql-db-update)
+- [az SQL mi Create](/cli/azure/sql/mi#az-sql-mi-create)
+- [az SQL mi Update](/cli/azure/sql/mi#az-sql-mi-update)
+
+# <a name="rest-apitabrest"></a>[REST API](#tab/rest)
+
+A licenc típusának beállítása vagy frissítése a REST API használatával:
+
+- [Adatbázisok – létrehozás vagy frissítés](/rest/api/sql/databases/createorupdate)
+- [Adatbázisok – frissítés](/rest/api/sql/databases/update)
+- [Felügyelt példányok – létrehozás vagy frissítés](/rest/api/sql/managedinstances/createorupdate)
+- [Felügyelt példányok – frissítés](/rest/api/sql/managedinstances/update)
+
+* * *
 
 ## <a name="next-steps"></a>Következő lépések
 

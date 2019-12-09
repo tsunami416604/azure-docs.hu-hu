@@ -4,21 +4,20 @@ description: Megtudhatja, hogyan másolhat adatok egy helyszíni Oracle-adatbáz
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 3c20aa95-a8a1-4aae-9180-a6a16d64a109
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 822713d67790906c972ad77a748ef8d52b871bc4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682428"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928156"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása a helyszíni Oracle-be vagy onnan a Azure Data Factory használatával
 
@@ -77,7 +76,7 @@ Ez az Oracle-összekötő az illesztőprogramok két verzióját támogatja:
 
 Ha a másolás varázslót használja a másolási folyamat létrehozásához, az illesztőprogram típusa a következő: automeghatározva. Alapértelmezés szerint a Microsoft illesztőprogramját használja a rendszer, kivéve, ha az átjáró verziója korábbi, mint a 2,7-es verzió, vagy ha az Oracle-t a fogadóként választja.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 
 Létrehozhat egy másolási tevékenységet tartalmazó folyamatot. A folyamat különböző eszközök vagy API-k használatával helyezi át az adatait egy helyszíni Oracle-adatbázisba vagy onnan.
 
@@ -100,7 +99,7 @@ A következő szakaszokban részletesen ismertetjük a Data Factory entitások d
 
 A következő táblázat az Oracle-hez társított szolgáltatáshoz tartozó JSON-elemeket ismerteti:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A **Type** tulajdonságot **OnPremisesOracle**értékre kell beállítani. |Igen |
 | driverType | Itt adhatja meg, hogy melyik illesztőprogramot használja az adatok egy Oracle-adatbázisba való másolásához. Az engedélyezett értékek a következők: **Microsoft** és **ODP** (alapértelmezett). Lásd: [támogatott verzió és telepítés](#supported-versions-and-installation) az illesztőprogram részleteihez. | Nem |
@@ -151,7 +150,7 @@ Az adatkészlet JSON-fájljának (például a struktúra, a rendelkezésre áll�
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **OracleTable** típusú adatkészlet **typeProperties** szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | tableName |Annak az Oracle-adatbázisnak a neve, amelyre a társított szolgáltatás hivatkozik. |Nem (ha a **oracleReaderQuery** vagy a **OracleSource** meg van adva) |
 
@@ -170,7 +169,7 @@ A tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egy
 
 A másolási tevékenységben, ha a forrás a **OracleSource** típusú, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | oracleReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |Egy SQL-lekérdezési karakterlánc. Például: "Select \* from **sajáttábla**". <br/><br/>Ha nincs megadva, a rendszer a következő SQL-utasítást futtatja: "Select \* from **sajáttábla**" |Nem<br />(ha a táblanév **meg van adva** ) |
 
@@ -178,7 +177,7 @@ A másolási tevékenységben, ha a forrás a **OracleSource** típusú, a köve
 
 A **OracleSink** a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Az a várakozási idő, ameddig a Batch INSERT művelet befejeződik, mielőtt időtúllépés történt. |**TimeSpan**<br/><br/> Példa: 00:30:00 (30 perc) |Nem |
 | writeBatchSize |Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri a **writeBatchSize**értékét. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
@@ -571,7 +570,7 @@ A folyamat egy másolási tevékenységet tartalmaz, amely úgy van konfigurálv
     1. Nyissa meg a .NET 2,0 számítógép-konfigurációs fájlját a következő mappából < rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
     2. Keresse meg a **.net-hez készült Oracle-adatszolgáltatót**. A következő mintában látható bejegyzést a **System. adat** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
 * Másolja ezt a bejegyzést a Machine. config fájlba a következő .NET 4,0 mappában: < rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ezután módosítsa a verziót 4. xxx. x.x.
-* Telepítse < ODP. NET telepített elérési utat\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll a globális szerelvény-gyorsítótárban (GAC) a **Gacutil/i [szolgáltatói útvonal]** futtatásával.
+* Telepítse < ODP. NET telepített elérési utat\>\ 11.2.0 \ client_1 \odp.net\bin\4\Oracle.DataAccess.dll a globális szerelvény-gyorsítótárban (GAC) a **Gacutil/i [szolgáltatói útvonal]** futtatásával.
 
 ### <a name="problem-2-datetime-formatting"></a>2\. probléma: dátum/idő formázása
 
@@ -601,22 +600,22 @@ Ha az Oracle-ből helyez át adatátvitelt, a következő leképezéseket haszn�
 | BLOB |Bájt []<br/>(csak a Microsoft-illesztőprogram használata esetén támogatott az Oracle 10g és újabb verziók esetében) |
 | CHAR |Sztring |
 | CLOB |Sztring |
-| DATE |DateTime |
+| DATE |Dátum és idő |
 | FLOAT |Decimális, karakterlánc (ha a pontosság > 28) |
-| INTEGER |Decimális, karakterlánc (ha a pontosság > 28) |
+| EGÉSZ SZÁM |Decimális, karakterlánc (ha a pontosság > 28) |
 | ÉV ÉS HÓNAP KÖZÖTTI IDŐSZAK |Int32 |
-| IDŐINTERVALLUM – MÁSODPERC |TimeSpan |
+| IDŐINTERVALLUM – MÁSODPERC |időtartam |
 | HOSSZÚ |Sztring |
 | HOSSZÚ NYERS |Bájt [] |
 | NCHAR |Sztring |
 | NCLOB |Sztring |
-| SZÁMA |Decimális, karakterlánc (ha a pontosság > 28) |
+| SZÁM |Decimális, karakterlánc (ha a pontosság > 28) |
 | NVARCHAR2 |Sztring |
 | NYERS |Bájt [] |
 | ROWID |Sztring |
-| IDŐBÉLYEG |DateTime |
-| IDŐBÉLYEG HELYI IDŐZÓNÁVAL |DateTime |
-| IDŐBÉLYEG IDŐZÓNÁVAL |DateTime |
+| IDŐBÉLYEG |Dátum és idő |
+| IDŐBÉLYEG HELYI IDŐZÓNÁVAL |Dátum és idő |
+| IDŐBÉLYEG IDŐZÓNÁVAL |Dátum és idő |
 | ELŐJEL NÉLKÜLI EGÉSZ SZÁM |Szám |
 | VARCHAR2 |Sztring |
 | XML |Sztring |

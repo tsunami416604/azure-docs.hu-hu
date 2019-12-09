@@ -1,23 +1,21 @@
 ---
-title: 'Enterprise Edition kiépítése a Azure-SSIS Integration Runtime számára '
+title: Enterprise Edition kiépítése a Azure-SSIS Integration Runtime számára
 description: Ez a cikk a Azure-SSIS Integration Runtime Enterprise Edition funkcióit és a kiépítésének módját ismerteti
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 8c9db18d416d508dd5a98cbacc14b7db6c075a55
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 8096da955da0266f3727197f21d67c33d099aa4f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673954"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922650"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Enterprise Edition kiépítése a Azure-SSIS Integration Runtime számára
 
@@ -63,7 +61,7 @@ Ezeknek a szolgáltatásoknak a használatához további összetevőket kell tel
                                                  -ResourceGroupName $MyResourceGroupName
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 -   [Az Azure-SSIS Integration Runtime egyéni beállítása](how-to-configure-azure-ssis-ir-custom-setup.md)
 

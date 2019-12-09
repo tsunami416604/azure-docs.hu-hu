@@ -1,23 +1,22 @@
 ---
-title: Az Adatmásolás a keresési indexbe Azure Data Factory használatával
+title: Az Adatmásolás a keresési indexbe
 description: Útmutató az Azure Search-indexek adatainak leküldéséhez vagy másolásához egy Azure Data Factory folyamat másolási tevékenységének használatával.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/13/2019
-ms.author: jingwang
-ms.openlocfilehash: ffdde571bbd2ae967003c520b09349ea9dcff414
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8a5b7bd366c504f0f5f4652728bf265289fb92e8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806088"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929677"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Adatmásolás Azure Cognitive Search-indexbe Azure Data Factory használatával
 
@@ -41,7 +40,7 @@ A következő szakaszokban részletesen ismertetjük az Azure Cognitive Search c
 
 Az Azure Cognitive Search társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **AzureSearch** | Igen |
 | url | A keresési szolgáltatás URL-címe. | Igen |
@@ -79,7 +78,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az Azure Cognitive Searchba való másoláshoz a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AzureSearchIndex** | Igen |
 | indexName | A keresési index neve. Data Factory nem hozza létre az indexet. Az indexnek léteznie kell az Azure Cognitive Searchban. | Igen |
@@ -111,10 +110,10 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az Azure Cognitive Searchba való másoláshoz állítsa a forrás típusát a másolás tevékenység **AzureSearchIndexSink**. A másolási tevékenység fogadója szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureSearchIndexSink** | Igen |
-| WriteBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).<br/><br/>Az engedélyezett értékek: **merge** (default) és **upload**. | Nem |
+| writeBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).<br/><br/>Az engedélyezett értékek: **merge** (default) és **upload**. | Nem |
 | writeBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) .<br/><br/>Az engedélyezett értékek: integer 1 – 1 000; az alapértelmezett érték a 1000. | Nem |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
@@ -173,7 +172,7 @@ A következő táblázat meghatározza, hogy az Azure Cognitive Search adattípu
 | Sztring | I |
 | Int32 | I |
 | Int64 | I |
-| duplán | I |
+| Double | I |
 | Logikai | I |
 | DataTimeOffset | I |
 | Karakterlánc-tömb | N |
@@ -181,5 +180,5 @@ A következő táblázat meghatározza, hogy az Azure Cognitive Search adattípu
 
 Jelenleg más adattípusok, például a ComplexType nem támogatottak. Az Azure Cognitive Search támogatott adattípusok teljes listájáért lásd: [támogatott adattípusok (azure Cognitive Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

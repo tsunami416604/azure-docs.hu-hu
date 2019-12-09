@@ -1,23 +1,22 @@
 ---
-title: Adatok másolása SAP-táblából Azure Data Factory használatával
+title: Adatok másolása SAP-táblából
 description: Megtudhatja, hogyan másolhat adatok egy SAP-táblából egy Azure Data Factory folyamat másolási tevékenységének használatával támogatott fogadó adattárakba.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.author: jingwang
-ms.openlocfilehash: 9c4e22e997b4ad8c36d8aaf84d1bb8aacb5c5529
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fd363f7b685db5e309827a0c5e635264e676b388
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680229"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926178"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Adatok másolása SAP-táblából Azure Data Factory használatával
 
@@ -61,9 +60,9 @@ Az SAP Table Connector használatához a következőket kell tennie:
 - A Data Factory SAP Table connectorban használt SAP-felhasználónak a következő engedélyekkel kell rendelkeznie:
 
   - A Remote Function Call (RFC) célhelyek használatának engedélyezése.
-  - A S_SDSAUTH-engedélyezési objektum végrehajtási tevékenységéhez szükséges engedélyek.
+  - A S_SDSAUTH engedélyezési objektum végrehajtási tevékenységének engedélyei.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -73,7 +72,7 @@ A következő szakaszokban részletesen ismertetjük az SAP Table connectorra je
 
 A SAP BW Open hub társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | `type` | A `type` tulajdonságot `SapTable`értékre kell beállítani. | Igen |
 | `server` | Annak a kiszolgálónak a neve, amelyen az SAP-példány található.<br/>A használatával csatlakozhat egy SAP-alkalmazáskiszolgáló eléréséhez. | Nem |
@@ -181,7 +180,7 @@ Az adatkészletek definiálásához szükséges csoportok és tulajdonságok tel
 
 Az adatoknak a és a SAP BW Open hub társított szolgáltatásba való másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | `type` | A `type` tulajdonságot `SapTableResource`értékre kell beállítani. | Igen |
 | `tableName` | Annak az SAP-táblának a neve, amelyből az adatok másolása megtörténjen. | Igen |
@@ -213,7 +212,7 @@ A tevékenységek definiálási szakaszainak és tulajdonságainak teljes listá
 
 Az adatok SAP-táblából történő másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság                         | Leírás                                                  | Kötelező |
+| Tulajdonság                         | Leírás                                                  | Szükséges |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | A `type` tulajdonságot `SapTableSource`értékre kell beállítani.         | Igen      |
 | `rowCount`                         | A beolvasandó sorok száma.                              | Nem       |
@@ -240,9 +239,9 @@ Az adatok SAP-táblából történő másolásához a következő tulajdonságok
 | `EQ` | Egyenlő |
 | `NE` | Nem egyenlő |
 | `LT` | Kisebb mint |
-| `LE` | Kisebb vagy egyenlő, mint |
-| `GT` | Nagyobb, mint |
-| `GE` | Nagyobb vagy egyenlő |
+| `LE` | Kisebb, vagy egyenlő |
+| `GT` | Nagyobb mint |
+| `GE` | Nagyobb vagy egyenlő, mint |
 | `LIKE` | Ahogy a `LIKE 'Emma%'` |
 
 ### <a name="example"></a>Példa
@@ -304,6 +303,6 @@ Az adatok SAP-táblából való másolása során a rendszer a következő leké
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Data Factoryban a másolási tevékenység által a forrásként és a nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

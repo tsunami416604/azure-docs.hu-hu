@@ -1,22 +1,24 @@
 ---
 title: Az Azure Blob Storage-ban tárolt adatmásolási és-átalakítási funkciók
 description: Megtudhatja, hogyan másolhat adatok a blob Storage-ba és a-ból, és hogyan alakíthatja át a blob Storage-ban lévő adatok Data Factory használatával.
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/13/2019
-ms.author: jingwang
-ms.openlocfilehash: 9116fca28c48803db613eb36fbbbbf4223e6abcb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3c6b6a403919c3545ec000a701ff31044343f73e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891116"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929954"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Az Azure Blob Storage-ban lévő Adatmásolás és-átalakítás Azure Data Factory használatával
+
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-azure-blob-connector.md)
 > * [Aktuális verzió](connector-azure-blob-storage.md)

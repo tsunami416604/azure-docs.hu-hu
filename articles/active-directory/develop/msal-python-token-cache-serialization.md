@@ -3,27 +3,23 @@ title: Egyéni jogkivonat-gyorsítótár szerializálása a MSAL-ben a Pythonhoz
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan szerializálhatja a token-gyorsítótárat a MSAL for Python számára
 services: active-directory
-documentationcenter: dev-center-name
 author: rayluo
-manager: henrikm
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2019
 ms.author: rayluo
-ms.reviewer: navyasri.canumalla
+ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae6628e1fd4929723f11a2195136f94532a4ed76
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: bb77d05070543e35ac0addae933c5ca864e68dbc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152735"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915359"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>Egyéni jogkivonat-gyorsítótár szerializálása a MSAL-ben a Pythonhoz
 
@@ -41,6 +37,6 @@ A nyilvános ügyfélalkalmazások egy felhasználó eszközén futnak, és egye
 
 Web Apps vagy webes API-k esetében használhatja a munkamenetet vagy egy Redis-gyorsítótárat, vagy egy adatbázist a jogkivonat-gyorsítótár tárolásához. Felhasználónként egy jogkivonat-gyorsítótárnak kell lennie (fiókkal), ezért ügyeljen arra, hogy a jogkivonat-gyorsítótárat a fiók alapján szerializálja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py#L64-L72) , amelyből megtudhatja, hogyan használható a jogkivonat-gyorsítótár egy Windows-vagy Linux-alapú webalkalmazáshoz vagy webes API-hoz. A példa egy olyan webalkalmazásra mutat, amely meghívja a Microsoft Graph API-t.

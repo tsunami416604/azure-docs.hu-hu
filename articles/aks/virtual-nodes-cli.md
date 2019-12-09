@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: d3651c63b206c37b1f41ecab7f69e24fc94ddffd
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 43ea197c4dc774a4e011cd9fb2b3adcf94866d90
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263869"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926086"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatára az Azure CLI használatával
 
@@ -158,7 +158,7 @@ Egy AK-fürtöt az előző lépésben létrehozott AK alhálózatba helyez üzem
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-Az az [AK Create][az-aks-create] paranccsal hozzon létre egy AK-fürtöt. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Cserélje le a `<subnetId>` értéket az előző lépésben beszerzett AZONOSÍTÓra, majd `<appId>` és `<password>` a 
+Az az [AK Create][az-aks-create] paranccsal hozzon létre egy AK-fürtöt. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Cserélje le a `<subnetId>`t az előző lépésben beszerzett AZONOSÍTÓra, majd `<appId>` és `<password>` a 
 
 ```azurecli-interactive
 az aks create \
@@ -190,7 +190,7 @@ az aks enable-addons \
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
-A `kubectl` konfigurálásához a Kubernetes-fürthöz való kapcsolódáshoz használja az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot. Ebben a lépésben a rendszer hitelesítő adatokat tölt le, és konfigurálja a Kubernetes parancssori felületét azok használatára.
+Ha `kubectl` szeretne konfigurálni a Kubernetes-fürthöz való kapcsolódáshoz, használja az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot. Ebben a lépésben a rendszer hitelesítő adatokat tölt le, és konfigurálja a Kubernetes parancssori felületét azok használatára.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -253,7 +253,7 @@ Futtassa az alkalmazást az [kubectl Apply][kubectl-apply] paranccsal.
 kubectl apply -f virtual-node.yaml
 ```
 
-A hüvelyek és az ütemezett csomópontok listájának kimenetéhez használja a `-o wide` argumentummal rendelkező [kubectl Get hüvely][kubectl-get] parancsot. Figyelje meg, hogy a `aci-helloworld` Pod a `virtual-node-aci-linux` csomópontra van ütemezve.
+A [kubectl Get hüvely][kubectl-get] paranccsal a `-o wide` argumentummal jelenítheti meg a hüvelyek és az ütemezett csomópontok listáját. Figyelje meg, hogy a `aci-helloworld` Pod a `virtual-node-aci-linux` csomópontra van ütemezve.
 
 ```
 $ kubectl get pods -o wide
@@ -265,23 +265,23 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 A pod a virtuális csomópontokkal való használatra delegált Azure virtuális hálózati alhálózatból származó belső IP-címet kap.
 
 > [!NOTE]
-> Ha Azure Container Registryban tárolt rendszerképeket használ, [konfigurálja és használja a Kubernetes titkos kulcsát][acr-aks-secrets]. A virtuális csomópontok jelenlegi korlátozása az, hogy nem használhatja az integrált Azure AD szolgáltatás egyszerű hitelesítését. Ha nem használ titkos kódot, a virtuális csomópontokon ütemezett hüvelyek nem indulnak el, és a következő hibaüzenetet jelentik: `HTTP response status code 400 error code "InaccessibleImage"`.
+> Ha Azure Container Registryban tárolt rendszerképeket használ, [konfigurálja és használja a Kubernetes titkos kulcsát][acr-aks-secrets]. A virtuális csomópontok jelenlegi korlátozása az, hogy nem használhatja az integrált Azure AD szolgáltatás egyszerű hitelesítését. Ha nem használ titkos kulcsot, a virtuális csomópontokon ütemezett hüvelyek nem indulnak el, és nem jelentik a hibát `HTTP response status code 400 error code "InaccessibleImage"`.
 
 ## <a name="test-the-virtual-node-pod"></a>A virtuális csomópont-Pod tesztelése
 
 A virtuális csomóponton futó Pod teszteléséhez keresse meg a bemutató alkalmazást egy webes ügyféllel. Mivel a pod belső IP-cím van hozzárendelve, gyorsan tesztelheti ezt a kapcsolatot egy másik Pod-on az AK-fürtön. Hozzon létre egy teszt Pod-t, és csatoljon hozzá egy terminál-munkamenetet:
 
 ```console
-kubectl run -it --rm virtual-node-test --image=debian
+kubectl run --generator=run-pod/v1 -it --rm testvk --image=debian
 ```
 
-Telepítse a `curl` értéket a pod `apt-get` használatával:
+Telepítse a `curl`t a pod használatával `apt-get`:
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Most nyissa meg a pod-címe `curl`, például *http://10.241.0.4* használatával. Adja meg saját belső IP-címét az előző `kubectl get pods` paranccsal:
+Most nyissa meg a pod-t a `curl`, például a *http://10.241.0.4* használatával. Adja meg az előző `kubectl get pods` parancsban látható saját belső IP-címét:
 
 ```console
 curl -L http://10.241.0.4
@@ -299,7 +299,7 @@ $ curl -L 10.241.0.4
 [...]
 ```
 
-A `exit` értékkel zárjuk be a terminál-munkamenetet a test Pod-ba. Ha a munkamenet véget ér, a rendszer törli a pod-t.
+A `exit`ával zárjuk be a terminál-munkamenetet a test Pod-ba. Ha a munkamenet véget ér, a rendszer törli a pod-t.
 
 ## <a name="remove-virtual-nodes"></a>Virtuális csomópontok eltávolítása
 

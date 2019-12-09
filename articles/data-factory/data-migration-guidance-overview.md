@@ -2,23 +2,21 @@
 title: Adatok migrálása a adatközpontból és az adatraktárból az Azure-ba
 description: Az adatok áttelepíthetők az Azure-ba a Azure Data Factory használatával.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
-ms.openlocfilehash: 056e98c18dbe2dd1adaa9386145ef18e36f8aac2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: aaf1593cc049e8b23f8ebe36fea022b3029ccd04
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217563"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930801"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Az adatok áttelepíthetők a Azure Data Factory használatával az Azure-ba vagy az adattárházból
 
@@ -47,7 +45,7 @@ A Azure Data Factory egy szabványos Online áttelepítési eszköz, amely hál�
 Az online és az offline áttelepítési módszer közül három fő szempontot kell figyelembe venni:  
 
 - Migrálni kívánt adatméret
-- Hálózati sávszélesség
+- -ügynök házirendjének
 - Áttelepítési ablak
 
 Tegyük fel például, hogy az adatáttelepítés két héten belül történő elvégzéséhez tervezi Azure Data Factory használatát (az *áttelepítési ablak*). Figyelje meg a rózsaszín/kék határvonalat a következő táblázatban. Az adott oszlop legalacsonyabb rózsaszín cellája azt az adatméretet/hálózati sávszélesség-párosítást jeleníti meg, amelynek áttelepítési ablaka a legközelebb van, de kevesebb, mint két hét. (A kék cellában lévő bármilyen méretű vagy sávszélességű párosítás Online áttelepítési időszaka több mint két hétig tart.) 

@@ -1,35 +1,31 @@
 ---
-title: Hitelesítési folyamatok (Microsoft Authentication Library)
+title: MSAL-hitelesítési folyamatok | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerkedjen meg a Microsoft Authentication Library (MSAL) által használt hitelesítési folyamatokkal és támogatásokkal.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55d618a24b957fedb6fc2af3e75b7a7d2bd23d96
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c818b7d7508555e1233d4ef954502728f65abfb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473809"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917199"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
 
 Ez a cikk a Microsoft Authentication Library (MSAL) által biztosított különböző hitelesítési folyamatokat ismerteti.  Ezek a folyamatok különféle alkalmazási forgatókönyvekben használhatók.
 
-| Folyamat | Leírás | Használatban|  
+| Flow | Leírás | Használatban|  
 | ---- | ----------- | ------- | 
 | [Interaktív](#interactive) | Lekérdezi a jogkivonatot egy interaktív folyamaton keresztül, amely egy böngészőben vagy előugró ablakban kéri a felhasználótól a hitelesítő adatokat. | [Asztali alkalmazások](scenario-desktop-overview.md), [Mobile apps](scenario-mobile-overview.md) |
 | [Implicit támogatás](#implicit-grant) | Lehetővé teszi, hogy az alkalmazás jogkivonatokat kapjon a háttér-kiszolgáló hitelesítő adatainak cseréje nélkül. Ez lehetővé teszi az alkalmazás számára, hogy bejelentkezzen a felhasználóba, karbantartsa a munkamenetet, és más webes API-k számára is lekérje a jogkivonatokat az ügyfél JavaScript-kódjában.| [Egyoldalas alkalmazások (SPA)](scenario-spa-overview.md) |
@@ -42,15 +38,15 @@ Ez a cikk a Microsoft Authentication Library (MSAL) által biztosított különb
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Az egyes folyamatok tokeneket és kódokat bocsátanak ki
  
-Az ügyfél felépítésének módjától függően a Microsoft Identity platform által támogatott hitelesítési folyamatok közül egy (vagy több) is használható.  Ezek a folyamatok különféle tokeneket hozhatnak létre (id_tokens, frissítési tokeneket, hozzáférési jogkivonatokat), valamint engedélyezési kódokat, és különböző jogkivonatokat igényelnek a működésük érdekében. Ez a diagram egy áttekintést nyújt:
+Az ügyfél felépítésének módjától függően a Microsoft Identity platform által támogatott hitelesítési folyamatok közül egy (vagy több) is használható.  Ezek a folyamatok különféle tokeneket (id_tokens, frissítési tokeneket, hozzáférési tokeneket) és engedélyezési kódokat hozhatnak létre, és különböző jogkivonatokat igényelnek a működésük érdekében. Ez a diagram áttekintést nyújt:
  
-|Folyamat | Igényel | id_token | hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
+|Flow | Szükséges | id_token | Hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Engedélyezési kód folyamatábrája](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Implicit folyamat](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hibrid OIDC folyamat](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
 |[Jogkivonat-beváltások frissítése](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | jogkivonat frissítése | x | x | x| |
-|[Meghatalmazásos folyamat](v2-oauth2-on-behalf-of-flow.md) | hozzáférési jogkivonat| x| x| x| |
+|[Meghatalmazásos folyamat](v2-oauth2-on-behalf-of-flow.md) | Hozzáférési jogkivonat| x| x| x| |
 |[Eszköz kódjának folyamata](v2-oauth2-device-code.md) | | x| x| x| |
 |[Ügyfél-hitelesítő adatok](v2-oauth2-client-creds-grant-flow.md) | | | x (csak alkalmazás)| | |
  
@@ -69,7 +65,7 @@ További információ a MSAL.NET és a jogkivonatok interaktív beszerzéséről
 
 A MSAL. js-ben található interaktív hívásokkal kapcsolatos további információkért lásd: [MSAL. js interaktív kérések esetén a prompt viselkedése](msal-js-prompt-behavior.md).
 
-## <a name="implicit-grant"></a>Implicit támogatás
+## <a name="implicit-grant"></a>Implicit engedélyezés
 
 A MSAL támogatja a [OAuth 2 implicit engedélyezési folyamatot](v2-oauth2-implicit-grant-flow.md), amely lehetővé teszi, hogy az alkalmazás jogkivonatokat szerezzen be a Microsoft Identity platformról a háttér-kiszolgáló hitelesítő adatainak cseréje nélkül. Ez lehetővé teszi az alkalmazás számára, hogy bejelentkezzen a felhasználóba, karbantartsa a munkamenetet, és más webes API-k számára is lekérje a jogkivonatokat az ügyfél JavaScript-kódjában.
 
@@ -79,7 +75,7 @@ Számos modern webalkalmazást ügyféloldali, egyoldalas alkalmazásként, Java
 
 Ez a hitelesítési folyamat nem tartalmaz olyan alkalmazási helyzeteket, amelyek platformfüggetlen JavaScript-keretrendszereket használnak, például az Electron-et és a reakciós Natívt, mivel további képességeket igényelnek a natív platformokkal való interakcióhoz.
 
-## <a name="authorization-code"></a>engedélyezési kód
+## <a name="authorization-code"></a>Engedélyezési kód
 
 A MSAL támogatja a [OAuth 2 engedélyezési kód engedélyezését](v2-oauth2-auth-code-flow.md). Ez a támogatás olyan alkalmazásokban használható, amelyek a védett erőforrásokhoz, például a webes API-khoz való hozzáféréshez vannak telepítve az eszközön. Ez lehetővé teszi a bejelentkezést és API-hozzáférést a mobil-és asztali alkalmazásokhoz. 
 
@@ -106,7 +102,7 @@ A MSAL támogatja a [2. OAuth a hitelesítési folyamathoz](v2-oauth2-on-behalf-
 
 ![A folyamaton belüli adatforgalom diagramja](media/msal-authentication-flows/on-behalf-of.png)
 
-Az előző ábrán:
+A fenti diagram elemei:
 
 1. Az alkalmazás egy hozzáférési jogkivonatot vásárol a webes API-hoz.
 2. Egy ügyfél (web, Desktop, mobil vagy egylapos alkalmazás) egy védett webes API-t hív meg, amely a hozzáférési tokent tulajdonosi jogkivonatként adja hozzá a HTTP-kérelem hitelesítési fejlécéhez. A webes API hitelesíti a felhasználót.
@@ -154,7 +150,7 @@ Az eszköz kódjának használatával az alkalmazás egy kétlépéses folyamato
 
 ![Az eszköz kódjának folyamatábrája](media/msal-authentication-flows/device-code.png)
 
-Az előző ábrán:
+A fenti diagram elemei:
 
 1. Ha felhasználói hitelesítésre van szükség, az alkalmazás egy kódot biztosít, és arra kéri a felhasználót, hogy használjon egy másik eszközt (például egy internetkapcsolattal rendelkező okostelefont) az URL-címre való ugráshoz (például https://microsoft.com/devicelogin). A rendszer ezután megkéri a felhasználót a kód megadására, és a normál hitelesítési felülettel folytatja, beleértve a hozzájárulási kéréseket és a többtényezős hitelesítést, ha szükséges.
 
@@ -168,7 +164,7 @@ Az előző ábrán:
   - Bármilyen munkahelyi és iskolai fiókhoz (`https://login.microsoftonline.com/organizations/`).
 - Az Azure AD v 2.0-végpontja még nem támogatja a Microsoft személyes fiókjait (nem használhatja a `/common` vagy `/consumers` bérlőt).
 
-## <a name="integrated-windows-authentication"></a>Integrált Windows-hitelesítés
+## <a name="integrated-windows-authentication"></a>Beépített Windows-hitelesítés
 
 A MSAL támogatja az integrált Windows-hitelesítést (IWA) olyan asztali vagy mobil alkalmazások esetében, amelyek tartományhoz csatlakoztatott vagy Azure AD-hez csatlakoztatott Windows-számítógépen futnak. Az IWA használatával ezek az alkalmazások csendesen tudják beszerezni a jogkivonatot (a felhasználó felhasználói FELÜLETének beavatkozása nélkül). 
 

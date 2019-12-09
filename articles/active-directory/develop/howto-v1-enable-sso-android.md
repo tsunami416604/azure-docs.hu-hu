@@ -1,8 +1,7 @@
 ---
-title: Az ADAL használatával Android alkalmazások közötti SSO engedélyezése |} A Microsoft Docs
-description: Hogyan az alkalmazások egyszeri bejelentkezés engedélyezése ADAL SDK funkcióinak használatát.
+title: Alkalmazások közötti egyszeri bejelentkezés engedélyezése Androidon a ADAL használatával | Microsoft Docs
+description: A ADAL SDK funkcióinak használata az alkalmazások egyszeri bejelentkezésének engedélyezéséhez.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
@@ -17,61 +16,61 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb11a4a926c676d37a0bf6be456e3b831a5d8357
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4d247c569cdc0beff499cee191b95711a603e42
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962639"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917556"
 ---
-# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Útmutató: Az ADAL használatával Android alkalmazások közötti SSO engedélyezése
+# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Útmutató: alkalmazások közötti egyszeri bejelentkezés engedélyezése Androidon a ADAL használatával
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
-Egyszeri bejelentkezés (SSO) lehetővé teszi a felhasználóknak csak egyszer adja meg a hitelesítő adataikat, és ezeket a hitelesítő adatokat automatikusan működnek a különböző alkalmazások és több platformon, amely a más alkalmazások (például Microsoft Accounts vagy egy munkahelyi fiókot a Microsoft 365-ből) nélkül a közzétevő számít.
+Az egyszeri bejelentkezés (SSO) lehetővé teszi, hogy a felhasználók csak egyszer adják meg a hitelesítő adataikat, és hogy ezek a hitelesítő adatok automatikusan működjenek az alkalmazásokban és a más alkalmazások által használható platformok között (például Microsoft-fiókok vagy munkahelyi fiók Microsoft 365) a közzétevő számítása.
 
-A Microsoft identity platform, az SDK-k, valamint megkönnyíti az egyszeri bejelentkezés engedélyezése belül a saját suite, az alkalmazásokat, vagy a közvetítő képesség and Authenticator alkalmazásokhoz, a teljes eszköz között.
+A Microsoft Identity platformja az SDK-k használatával egyszerűen engedélyezheti az egyszeri bejelentkezést a saját csomagján belül, illetve a közvetítői képességgel és a hitelesítő alkalmazásokkal a teljes eszközön.
 
-Ebben az útmutatóban megismerheti, hogyan egyszeri Bejelentkezést biztosítani ügyfeleinek az alkalmazáson belül az SDK konfigurálására fogjuk.
+Ebben az útmutatóban megtudhatja, hogyan konfigurálhatja az SDK-t az alkalmazáson belül, hogy SSO-t nyújtson ügyfeleinek.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az útmutatóban azt feltételezi, hogy tudja, hogyan lehet:
+Ez az útmutató feltételezi, hogy tudja, hogyan:
 
-- A régi portál használata az Azure Active Directory (Azure AD) az alkalmazás üzembe helyezése. További információ: [alkalmazás regisztrálása](quickstart-register-app.md)
-- Az alkalmazás integrálja az [Azure AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android).
+- Az alkalmazás üzembe helyezése az örökölt portálon Azure Active Directory (Azure AD) használatával. További információ: [alkalmazás regisztrálása](quickstart-register-app.md)
+- Az alkalmazás integrálása az [Azure ad Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android)-val.
 
-## <a name="single-sign-on-concepts"></a>Egyszeri bejelentkezés fogalmak
+## <a name="single-sign-on-concepts"></a>Egyszeri bejelentkezési fogalmak
 
-### <a name="identity-brokers"></a>Identitásszervezőinek
+### <a name="identity-brokers"></a>Identity Broker
 
-A Microsoft biztosít az alkalmazások minden mobilplatformra, amelyek lehetővé teszik az adatközponthíd-képzés hitelesítő adatokat a különböző alkalmazások különböző szállítóktól származó és amelyek speciális funkcióival megkövetelhető egy adott biztonságos hely, ahonnan a hitelesítő adatok ellenőrzése. Ezek az úgynevezett **közvetítők**.
+A Microsoft minden olyan mobil platformhoz biztosít alkalmazásokat, amely lehetővé teszi a különböző gyártóktól származó alkalmazások hitelesítő adatainak összekapcsolását, valamint olyan továbbfejlesztett funkciókat, amelyekhez egyetlen biztonságos hely szükséges a hitelesítő adatok érvényesítéséhez. Ezeket **közvetítőknek**nevezzük.
 
-IOS és Android rendszeren közvetítők szolgáltatáson keresztül letölthető alkalmazás, hogy ügyfeleink egymástól függetlenül telepítése vagy a felhasználók számára egy olyan cég, az egyes felügyeli, vagy minden, az eszköz az eszközre leküldve. A biztonság, és az egyes alkalmazások vagy informatikai felügyeleti konfiguráció alapján a teljes eszköz kezelése közvetítők támogatása. A Windows Ez a funkció-szervezőként ismert szakszóval Webeshitelesítés-szervező a az operációs rendszer beépített biztosítja.
+Az iOS-és Android-eszközökön a közvetítőket olyan letölthető alkalmazásokkal biztosítjuk, amelyeket az ügyfelek önállóan telepítenek vagy továbbítanak az eszközre egy olyan vállalat, aki az alkalmazottak számára az eszközöket felügyeli. A brókerek csak bizonyos alkalmazások vagy a teljes eszköz biztonságának felügyeletét támogatják a rendszergazda konfigurációja alapján. A Windowsban ezt a funkciót egy, az operációs rendszerbe beépített fiók-Chooser biztosítja, amely technikailag a webes hitelesítési közvetítőként is ismert.
 
-#### <a name="broker-assisted-login"></a>Személyes Broker bejelentkezési
+#### <a name="broker-assisted-login"></a>Közvetítő által támogatott bejelentkezés
 
-Bejelentkezések Broker támogatású olyan bejelentkezési élmény a közvetítő alkalmazás belül, és a storage és a közvetítő biztonsági hitelesítő adatok megosztása az eszközön minden olyan alkalmazás, amely a alkalmazni az identity platform használatával. Folyamatban van az alkalmazások ennek következménye, jelentkezzen be a felhasználók a közvetítő fogja alkalmazni. IOS és Android rendszeren ezeket a közvetítők szolgáltatáson keresztül letölthető alkalmazás, hogy ügyfelek egymástól függetlenül telepítése vagy egy olyan cég, kezeli az eszközt a felhasználó által lehet leküldeni az eszközre. Ez az alkalmazástípus egyik példája a Microsoft Authenticator alkalmazás IOS rendszerű eszközökön. A Windows Ez a funkció-szervezőként ismert szakszóval Webeshitelesítés-szervező a az operációs rendszer beépített biztosítja.
-A felhasználói élményt platformonként és néha a felhasználók számára zavaró lehet ha nem megfelelően kezeli. Ismerkedjen meg valószínűleg legtöbb ezt a mintát, ha a Facebook-alkalmazás telepítve van, és a Facebook Connect használata egy másik alkalmazás. Az identity platform hasonló mintát alkalmaz.
+A közvetítő által támogatott bejelentkezések a közvetítő alkalmazáson belül bekövetkező bejelentkezési élmények, és a közvetítő tárterületének és biztonságának használatával megoszthatják a hitelesítő adatokat az eszközön található összes alkalmazásban, amely az Identity platformot alkalmazza. Az alkalmazások a brókertől függenek a felhasználók aláírására. Az iOS és az Android rendszerekben ezek a közvetítők olyan letölthető alkalmazásokon keresztül érhetők el, amelyeket az ügyfelek függetlenül telepítenek, vagy leküldhetik az eszközre egy olyan vállalat, aki felügyeli az eszközt a felhasználó számára. Ilyen típusú alkalmazás például az iOS rendszeren futó Microsoft Authenticator alkalmazás. A Windowsban ezt a funkciót egy, az operációs rendszerbe beépített fiók-Chooser biztosítja, amely technikailag a webes hitelesítési közvetítőként is ismert.
+Az élmény a platformtól függ, és esetenként zavaró lehet a felhasználók számára, ha nem megfelelően kezeli őket. Valószínűleg ismeri ezt a mintát, ha telepítve van a Facebook-alkalmazás, és használja a Facebook-kapcsolatot egy másik alkalmazásból. Az Identity platform ugyanazt a mintát használja.
 
-Az Android a fiók kiválasztásakor felett, ami kevésbé zavaró a felhasználónak az alkalmazás jelenik meg.
+Androidon a fiók kiválasztása az alkalmazás tetején jelenik meg, ami kevésbé zavaró a felhasználó számára.
 
-#### <a name="how-the-broker-gets-invoked"></a>Hogyan a közvetítő meghívása beolvasása
+#### <a name="how-the-broker-gets-invoked"></a>A közvetítő meghívásának módja
 
-Ha az eszközt, például a Microsoft Authenticator alkalmazás kompatibilis ügynök telepítve van az identitás SDK-k automatikusan elvégzi a munkáját meghívása a közvetítő az Ön számára, amikor egy felhasználó azt jelzi, hogy jelentkezzen be kívánják minden olyan fiók az identity platform használatával.
+Ha a kompatibilis közvetítő telepítve van az eszközön, például a Microsoft Authenticator alkalmazáshoz, az Identity SDK-k automatikusan elvégzik a közvetítő meghívását, ha a felhasználó azt jelzi, hogy az Identity platform bármelyik fiókjának használatával szeretne bejelentkezni.
 
-#### <a name="how-microsoft-ensures-the-application-is-valid"></a>Hogyan biztosítja a Microsoft, az alkalmazás érvénytelen.
+#### <a name="how-microsoft-ensures-the-application-is-valid"></a>Hogyan biztosítja a Microsoft az alkalmazás érvényességét
 
-Szükséges egy alkalmazás hívás identitását a közvetítő elengedhetetlen az eszközkapcsolat broker bejelentkezésekben biztonsági. iOS és Android rendszerhez nem tesszük kötelezővé egyedi azonosítók, amelyek csak egy adott alkalmazás esetében érvényes, így rosszindulatú alkalmazások, előfordulhat, hogy "agresszívebb" egy megbízható alkalmazás azonosítója és a megbízható alkalmazás webszolgáltatásokban a jogkivonatokat fogadni. Annak érdekében, hogy a Microsoft mindig kommunikál a megfelelő alkalmazás a futásideje, meg kell adnia a fejlesztőnek adja meg egy egyéni redirectURI, amikor az alkalmazás regisztrálása a Microsoft. **Az alábbiakban tárgyalt hogyan a fejlesztők formázhatják az átirányítási URI-t kell.** Az egyéni redirectURI a tanúsítvány ujjlenyomatát, az alkalmazás tartalmaz, és a Google Play Store biztosítja, hogy az alkalmazás egyedi legyen. Amikor egy alkalmazás a közvetítő hívja, a közvetítő megkérdezi, hogy biztosítsa a tanúsítvány ujjlenyomatát, amelynek a neve a közvetítő számára az Android operációs rendszer. A közvetítő a tanúsítvány-ujjlenyomat által a Microsoftnak a identitásrendszer hívásában. Ha az alkalmazás tanúsítvány-ujjlenyomata nem egyezik meg a tanúsítvány ujjlenyomatát a regisztráció során fejlesztője által készített velünk a kapcsolatot, a tokeneket a az alkalmazás által kért erőforráshoz való hozzáférés megtagadva. Ez az ellenőrzés biztosítja, hogy csak az alkalmazás fejlesztője által regisztrált jogkivonatokat kap-e.
+Ahhoz, hogy az alkalmazás meghívja a közvetítőt, elengedhetetlen a közvetítő által támogatott bejelentkezések biztonsága szempontjából. az iOS és az Android nem kényszeríti ki az olyan egyedi azonosítókat, amelyek csak egy adott alkalmazás esetében érvényesek, így a rosszindulatú alkalmazások "hamisítják" a legitim alkalmazás azonosítóját, és megkapják a legitim alkalmazás számára jelentett jogkivonatokat. Annak biztosítása érdekében, hogy a Microsoft mindig a megfelelő alkalmazással kommunikáljon futásidőben, a fejlesztőnek meg kell adnia egy egyéni redirectURI, amikor regisztrálja alkalmazását a Microsofttal. **A fejlesztők számára az átirányítási URI-t az alábbi részletesen tárgyaljuk.** Ez az egyéni redirectURI tartalmazza az alkalmazás tanúsítványának ujjlenyomatát, és gondoskodik arról, hogy a Google Play Áruház egyedi legyen az alkalmazás számára. Amikor egy alkalmazás meghívja a közvetítőt, a közvetítő arra kéri az Android operációs rendszert, hogy a közvetítőnek nevezett tanúsítvány-ujjlenyomattal lássa el. A közvetítő ezt a tanúsítvány-ujjlenyomatot biztosít a Microsoftnak az Identity System hívása során. Ha az alkalmazás tanúsítványának ujjlenyomata nem egyezik meg a fejlesztő által a regisztráció során nekünk megadott tanúsítvány-ujjlenyomattal, a hozzáférés megtagadva az alkalmazás által kért erőforrás jogkivonatával. Ez az ellenőrzés biztosítja, hogy csak a fejlesztő által regisztrált alkalmazás fogadja a jogkivonatokat.
 
-Felügyelt SSO bejelentkezések rendelkezik a következő előnyökkel jár:
+A felügyelt egyszeri bejelentkezéshez a következő előnyökkel jár:
 
-* Felhasználói függetlenül attól, gyártó az alkalmazások közötti SSO teljesen.
-* Az alkalmazás használhatja összetettebb üzleti funkciók, például a feltételes hozzáférés és az Intune esetében.
-* Az alkalmazás az üzleti felhasználók is támogatja a Tanúsítványalapú hitelesítés.
-* Biztonságosabb bejelentkezés rendelkezik, mint az alkalmazás és a felhasználó identitásának ellenőrzése a közvetítő alkalmazás további biztonsági algoritmusokkal és a titkosítás.
+* A felhasználó az összes alkalmazásában egyszeri bejelentkezést észlel a gyártótól függetlenül.
+* Az alkalmazás olyan speciális üzleti funkciókat is használhat, mint a feltételes hozzáférés és az Intune-forgatókönyvek támogatása.
+* Az alkalmazás képes a tanúsítványalapú hitelesítés támogatására az üzleti felhasználók számára.
+* Biztonságosabb bejelentkezési élmény az alkalmazás identitása és a felhasználó ellenőrzése a közvetítő alkalmazás által további biztonsági algoritmusokkal és titkosítással történik.
 
-Itt látható az SDK-k működését a közvetítő alkalmazások engedélyezhető az SSO-ábrázolása:
+Az alábbi példa azt szemlélteti, hogy az SDK hogyan működik együtt a közvetítő alkalmazásokkal az egyszeri bejelentkezés engedélyezéséhez:
 
 ```
 +------------+ +------------+   +-------------+
@@ -98,41 +97,41 @@ Itt látható az SDK-k működését a közvetítő alkalmazások engedélyezhet
 
 ```
 
-### <a name="turning-on-sso-for-broker-assisted-sso"></a>Egyszeri bejelentkezés bekapcsolásával Broker támogatott egyszeri bejelentkezés
+### <a name="turning-on-sso-for-broker-assisted-sso"></a>Az SSO bekapcsolása a közvetítő által támogatott egyszeri bejelentkezéshez
 
-Lehetővé teszi az alkalmazás számára az eszközön telepített bármely brokert alapértelmezés szerint ki van kapcsolva. Annak érdekében, hogy az alkalmazás a közvetítő használja, néhány további konfigurációs lehetőségek és kód hozzáadása az alkalmazáshoz.
+Alapértelmezés szerint ki van kapcsolva az alkalmazás azon képessége, hogy bármely, az eszközön telepített közvetítőt használhassanak. Ahhoz, hogy az alkalmazást a közvetítővel használhassa, további konfigurációt kell végrehajtania, és hozzá kell adnia egy kódot az alkalmazáshoz.
 
 A követendő lépések a következők:
 
-1. Az MS SDK az alkalmazás kódjában hívása a közvetítő mód engedélyezése
-2. Hozzon létre új átirányítási URI-t, és adja meg, hogy az alkalmazás és az alkalmazás regisztrációját
-3. Az Android-jegyzékfájlban a megfelelő engedélyek beállítása
+1. A Broker mód engedélyezése az alkalmazás kódjának az MS SDK-nak való hívásakor
+2. Hozzon létre egy új átirányítási URI-t, és adja meg, hogy az alkalmazás és az alkalmazás regisztrálása is megtörténjen
+3. A megfelelő engedélyek beállítása az Android-jegyzékben
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>1\. lépés: Az alkalmazás a közvetítő mód engedélyezése
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>1\. lépés: a közvetítő mód engedélyezése az alkalmazásban
 
-Lehetővé teszi, hogy az alkalmazás a közvetítő használata be van kapcsolva a "beállítások" vagy a kezdeti beállítás a hitelesítési példány létrehozásakor. Ehhez az alkalmazásban:
+Az alkalmazás a közvetítő használatára való képessége a "beállítások" vagy a hitelesítési példány kezdeti beállításának létrehozásakor be van kapcsolva. Ehhez az alkalmazásban:
 
 ```
 AuthenticationSettings.Instance.setUseBroker(true);
 ```
 
-#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>2\. lépés: Új átirányítási URI az az URL-séma létrehozása
+#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>2\. lépés: hozzon létre egy új átirányítási URI-t az URL-sémával
 
-Annak érdekében, hogy győződjön meg arról, hogy a megfelelő alkalmazás fogad a visszaadott a hitelesítő adatok tokeneket és ott van szükség győződjön meg arról, az alkalmazásnak a hívás úgy, hogy az Android operációs rendszer ellenőrizheti. Az Android operációs rendszer a tanúsítvány kivonata használ, a Google Play áruházban. Ez a tanúsítvány kivonata nem lehet megtévesztésre egy engedélyezetlen alkalmazás. Az URI-ját a közvetítő alkalmazás, valamint a Microsoft biztosítja, hogy a megfelelő alkalmazáshoz a jogkivonatok lesznek visszaadva. Egy egyedi átirányítási URI-ja regisztrálni kell az alkalmazás.
+Annak biztosítása érdekében, hogy a megfelelő alkalmazás megkapja a hitelesítő adatokhoz tartozó jogkivonatokat, meg kell győződnie arról, hogy az alkalmazás az Android operációs rendszer által ellenőrizhető módon visszahívja az alkalmazást. Az Android operációs rendszer a tanúsítvány kivonatát használja a Google Play áruházban. A tanúsítvány kivonatát nem lehet meghamisítani egy szélhámos alkalmazás. A közvetítő alkalmazás URI-ja mellett a Microsoft biztosítja, hogy a tokeneket a megfelelő alkalmazáshoz adja vissza. Az alkalmazásban regisztrálni kell egy egyedi átirányítási URI-t.
 
-Az átirányítási URI-t, a megfelelő formátumban kell lennie:
+Az átirányítási URI-nak a megfelelő formában kell lennie:
 
 `msauth://packagename/Base64UrlencodedSignature`
 
-ex: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
+pl.: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
-A regisztráció segítségével regisztrálhatja az átirányítási URI-t a [az Azure portal](https://portal.azure.com/). További információ az Azure AD-alkalmazás regisztrációjának: [integrálása az Azure Active Directoryval](active-directory-how-to-integrate.md).
+Az átirányítási URI-t regisztrálhatja az alkalmazás regisztrációjában a [Azure Portal](https://portal.azure.com/)használatával. Az Azure AD-alkalmazás regisztrálásával kapcsolatos további információkért lásd: [integráció a Azure Active Directoryával](active-directory-how-to-integrate.md).
 
-#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>3\. lépés: Az alkalmazás a megfelelő engedélyek beállítása
+#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>3\. lépés: a megfelelő engedélyek beállítása az alkalmazásban
 
-A közvetítő alkalmazás Android hitelesítő adatok kezelése a különböző alkalmazások az Android operációs rendszer fiókkezelő funkcióját használja. Annak érdekében, hogy a közvetítő használata az Android a alkalmazásjegyzékbe AccountManager fiókokat engedélyekkel kell rendelkeznie. Ezek az engedélyek tárgyalja részletesen ismertetjük a [Google Account Manager itt található dokumentáció](https://developer.android.com/reference/android/accounts/AccountManager.html)
+Az androidos Broker alkalmazás az Android operációs rendszer accounts Manager funkciójával kezeli a hitelesítő adatokat az alkalmazások között. Ahhoz, hogy használni lehessen a közvetítőt az Androidon, az alkalmazás jegyzékfájljának engedélyekkel kell rendelkeznie a AccountManager-fiókok használatához. Ezeket az engedélyeket részletesen megtárgyaljuk a [Google-dokumentációban itt: Account Manager](https://developer.android.com/reference/android/accounts/AccountManager.html)
 
-Ezeket az engedélyeket, a következők:
+Ezek az engedélyek különösen a következők:
 
 ```
 GET_ACCOUNTS
@@ -140,10 +139,10 @@ USE_CREDENTIALS
 MANAGE_ACCOUNTS
 ```
 
-### <a name="youve-configured-sso"></a>Egyszeri bejelentkezés konfigurálása!
+### <a name="youve-configured-sso"></a>Konfigurálta az SSO-t!
 
-Most már az identitás SDK automatikusan is hitelesítő adatok megosztása az alkalmazások és a közvetítő meghívása az eszközön telepítve, ha.
+Most az Identity SDK automatikusan megosztja a hitelesítő adatokat az alkalmazásokban, és meghívja a közvetítőt, ha az eszközön van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg [egyszeri bejelentkezéses SAML-protokoll](single-sign-on-saml-protocol.md)
+* Tudnivalók az [egyszeri bejelentkezéses SAML protokollról](single-sign-on-saml-protocol.md)

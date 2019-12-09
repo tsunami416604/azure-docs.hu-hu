@@ -4,21 +4,20 @@ description: Megtudhatja, hogyan másolhat adatok Azure SQL Data Warehouse a Azu
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: d90fa9bd-4b79-458a-8d40-e896835cfd4a
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d0306d891b327422383120ef322ece407829f7ed
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 18f30af4595a7679d5c3ef56763e992d54fae536
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683062"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928071"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Adatok másolása Azure SQL Data Warehouseba és onnan a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -69,7 +68,7 @@ A következő szakaszokban részletesen ismertetjük azokat a JSON-tulajdonságo
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a Azure SQL Data Warehouse társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDW** |Igen |
 | connectionString |A connectionString tulajdonsághoz Azure SQL Data Warehouse-példányhoz való kapcsolódáshoz szükséges adatok megadása. Csak az alapszintű hitelesítés támogatott. |Igen |
@@ -82,7 +81,7 @@ Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok telje
 
 A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **AzureSqlDWTable** típusú adatkészlet **typeProperties** szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | tableName |Azon tábla vagy nézet neve a Azure SQL Data Warehouse adatbázisban, amelyhez a társított szolgáltatás hivatkozik. |Igen |
 
@@ -97,7 +96,7 @@ Míg a tevékenység typeProperties szakaszában elérhető tulajdonságok az eg
 ### <a name="sqldwsource"></a>SqlDWSource
 Ha a forrás **SqlDWSource**típusú, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Nem |
 | sqlReaderStoredProcedureName |Azon tárolt eljárás neve, amely beolvassa az adatokat a forrás táblából. |A tárolt eljárás neve. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. |Nem |
@@ -143,10 +142,10 @@ GO
 ### <a name="sqldwsink"></a>SqlDWSink
 A **SqlDWSink** a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |A másolási tevékenységre vonatkozó lekérdezés megadása úgy, hogy egy adott szeletből származó adatmennyiséget takarítson meg. Részletekért lásd: [ismételhetőség szakasz](#repeatability-during-copy). |Egy lekérdezési utasítás. |Nem |
-| allowPolyBase |Azt jelzi, hogy a BULKINSERT mechanizmus helyett a következőt kell-e használni (ha van ilyen). <br/><br/> **Az adatok a SQL Data Warehouseba való betöltésének ajánlott módja a Base használata.** A korlátozások és részletek a következő témakörben olvashatók: az adatok Azure SQL Data Warehouse szakaszba való [betöltésének használata](#use-polybase-to-load-data-into-azure-sql-data-warehouse) . |True (Igaz) <br/>False (alapértelmezett) |Nem |
+| allowPolyBase |Azt jelzi, hogy a BULKINSERT mechanizmus helyett a következőt kell-e használni (ha van ilyen). <br/><br/> **Az adatok a SQL Data Warehouseba való betöltésének ajánlott módja a Base használata.** A korlátozások és részletek a következő témakörben olvashatók: az adatok Azure SQL Data Warehouse szakaszba való [betöltésének használata](#use-polybase-to-load-data-into-azure-sql-data-warehouse) . |Igaz <br/>False (alapértelmezett) |Nem |
 | polyBaseSettings |A tulajdonságok olyan csoportja, amely akkor adható meg, ha a **allowPolybase** tulajdonság értéke **true (igaz**). |&nbsp; |Nem |
 | rejectValue |A lekérdezés sikertelensége előtt visszautasítható sorok számát vagy százalékos arányát adja meg. <br/><br/>További információ a [create External Table (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) című témakör **argumentumok** szakaszában található alapszintű elutasítás beállításairól. |0 (alapértelmezett), 1, 2,... |Nem |
 | rejectType |Megadja, hogy a rejectValue beállítás literál értékként vagy százalékként van-e megadva. |Érték (alapértelmezett), százalék |Nem |
@@ -302,30 +301,30 @@ Data Factory létrehozza a tárolóban található táblát a forrás adattárba
 
 | Forrás SQL Database oszlop típusa | Cél SQL DW-oszlop típusa (méret korlátozása) |
 | --- | --- |
-| int | int |
+| Int | Int |
 | BigInt | BigInt |
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
 | bites | bites |
 | Decimális | Decimális |
-| numerikus | Decimális |
-| float | float |
-| pénzt | pénzt |
+| Numerikus | Decimális |
+| Lebegőpontos szám | Lebegőpontos szám |
+| Money | Money |
 | Real | Real |
 | Túlcsordulási | Túlcsordulási |
 | Bináris | Bináris |
 | varbinary | Varbinary (legfeljebb 8000) |
 | Dátum | Dátum |
-| DateTime | DateTime |
+| Dátum és idő | Dátum és idő |
 | DateTime2 | DateTime2 |
-| Time | Time |
+| Idő | Idő |
 | DateTimeOffset | DateTimeOffset |
 | Idő adattípusúra | Idő adattípusúra |
 | Szöveg | Varchar (legfeljebb 8000) |
 | NText | NVarChar (legfeljebb 4000) |
-| Image (Kép) | VarBinary (legfeljebb 8000) |
+| Lemezkép | VarBinary (legfeljebb 8000) |
 | UniqueIdentifier | UniqueIdentifier |
-| char | char |
+| Char | Char |
 | NChar | NChar |
 | VarChar | VarChar (legfeljebb 8000) |
 | NVarChar | NVarChar (legfeljebb 4000) |
@@ -346,16 +345,16 @@ A leképezés megegyezik a [ADO.net Adattípusának SQL Server-leképezésével]
 | SQL Server adatbázismotor típusa | .NET-keretrendszer típusa |
 | --- | --- |
 | bigint |Int64 |
-| Bináris |Bájt [] |
-| bites |Logikai |
+| binary |Bájt [] |
+| bit |Logikai |
 | char |Karakterlánc, char [] |
-| dátum |DateTime |
-| datetime |DateTime |
-| datetime2 |DateTime |
+| dátum |Dátum és idő |
+| Dátum/idő |Dátum és idő |
+| datetime2 |Dátum és idő |
 | DateTimeOffset |DateTimeOffset |
 | Decimális |Decimális |
 | FILESTREAM attribútum (varbinary (max)) |Bájt [] |
-| float |duplán |
+| Lebegőpontos szám |Double |
 | image |Bájt [] |
 | int |Int32 |
 | pénzt |Decimális |
@@ -363,16 +362,16 @@ A leképezés megegyezik a [ADO.net Adattípusának SQL Server-leképezésével]
 | ntext |Karakterlánc, char [] |
 | numerikus |Decimális |
 | nvarchar |Karakterlánc, char [] |
-| valós |Önálló |
+| real |Önálló |
 | ROWVERSION |Bájt [] |
-| idő adattípusúra |DateTime |
+| idő adattípusúra |Dátum és idő |
 | smallint |Int16 |
 | túlcsordulási |Decimális |
 | sql_variant |Objektum |
 | szöveg |Karakterlánc, char [] |
-| time |TimeSpan |
+| time |időtartam |
 | időbélyeg |Bájt [] |
-| tinyint |Byte |
+| tinyint |Bájt |
 | uniqueidentifier |GUID |
 | varbinary |Bájt [] |
 | varchar |Karakterlánc, char [] |

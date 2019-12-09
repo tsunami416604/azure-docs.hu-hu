@@ -1,18 +1,19 @@
 ---
-title: Adatátalakítás egy leképezési adatfolyam használatával Azure Data Factory
+title: Az adatátalakítás leképezési adatfolyam használatával
 description: Ez az oktatóanyag részletes útmutatást nyújt a Azure Data Factory használatával történő adatátalakításhoz a leképezési adatfolyammal
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 886e6e659dee2a898167054c5d76bc3977f27e11
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1211a7f2aa82f7084dc87e2c9a8bdaab9997be45
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683632"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927208"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Adatátalakítás a leképezési adatfolyamok használatával
 
@@ -94,13 +95,13 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
     ![Adatfolyam-vászon](media/tutorial-data-flow/dataflow3.png)
 1. Válassza a **Azure Data Lake Storage Gen2**lehetőséget. Kattintson a Folytatás gombra.
 
-    ![Adatkészlet](media/tutorial-data-flow/dataset1.png)
+    ![Adathalmaz](media/tutorial-data-flow/dataset1.png)
 1. Válassza a **DelimitedText**lehetőséget. Kattintson a Folytatás gombra.
 
-    ![Adatkészlet](media/tutorial-data-flow/dataset2.png)
+    ![Adathalmaz](media/tutorial-data-flow/dataset2.png)
 1. Nevezze el az adatkészlet **MoviesDB**. A társított szolgáltatás legördülő menüben válassza az **új**lehetőséget.
 
-    ![Adatkészlet](media/tutorial-data-flow/dataset3.png)
+    ![Adathalmaz](media/tutorial-data-flow/dataset3.png)
 1. A társított szolgáltatás létrehozása képernyőn nevezze el a ADLS Gen2 társított szolgáltatás **ADLSGen2** , és adja meg a hitelesítési módszert. Ezután adja meg a kapcsolatok hitelesítő adatait. Ebben az oktatóanyagban a fiók kulcsát használjuk a Storage-fiókhoz való kapcsolódáshoz. Kattintson a **Kapcsolódás tesztelése** lehetőségre a hitelesítő adatok helyes beírásának ellenőrzéséhez. Ha elkészült, kattintson a Létrehozás gombra.
 
     ![Társított szolgáltatás](media/tutorial-data-flow/ls1.png)
@@ -115,26 +116,26 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
     ![Adatfolyam-vászon](media/tutorial-data-flow/dataflow5.png)
 1. Nevezze el a szűrő átalakítási **FilterYears**. Kattintson a **szűrés** elem melletti kifejezés mezőre a Kifejezésszerkesztő megnyitásához. Itt adja meg a szűrési feltételt. 
     
-    ![Szűrés](media/tutorial-data-flow/filter1.png)
+    ![Szűrő](media/tutorial-data-flow/filter1.png)
 1. Az adatfolyam-kifejezés-szerkesztővel interaktív módon hozhat létre kifejezéseket különböző átalakításokban való használatra. A kifejezések tartalmazhatnak beépített függvényeket, a bemeneti sémából származó oszlopokat és a felhasználó által definiált paramétereket. A kifejezések létrehozásával kapcsolatos további információkért lásd: [adatáramlási kifejezés-szerkesztő](concepts-data-flow-expression-builder.md).
     
     Ebben az oktatóanyagban a műfaji komédia azon filmjeit szeretné szűrni, amelyek a 1910-es és a 2000-as évek közötti időszakban jöttek létre. Az év jelenleg karakterlánc, a ```toInteger()``` függvénnyel át kell alakítani egész számra. Használja a nagyobb vagy egyenlő értéket (> =), és kisebb vagy egyenlő, mint a (< =) operátorok az 1910 és a 200 – literális Year értékekkel való összehasonlításhoz. Egyesítse ezeket a kifejezéseket a és (& &) operátorral együtt. A kifejezés a következőképpen érkezik:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
 
-    Ha szeretné megkeresni, hogy mely Filmek vígjátékok, a ```rlike()``` függvénnyel megkeresheti a "komédia" mintát az oszlopok műfajában. Union The rlike kifejezés az év összehasonlításával a Get:
+    Ha szeretné megkeresni, hogy mely Filmek vígjátékok, a ```rlike()``` függvénnyel megkeresheti a "vígjáték" mintát a műfajok oszlopban. Union The rlike kifejezés az év összehasonlításával a Get:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
 
     Ha a hibakeresési fürt aktív, a **frissítés** gombra kattintva ellenőrizheti, hogy a kifejezés kimenete a használt bemenetekhez képest látható-e. A logikát az adatáramlás kifejezésének nyelve alapján több, mint egy megfelelő választ kaphat.
     
-    ![Szűrés](media/tutorial-data-flow/filter2.png)
+    ![Szűrő](media/tutorial-data-flow/filter2.png)
 
     Kattintson a **Mentés és Befejezés** gombra, ha elkészült a kifejezéssel.
 
 1. Egy **Adatelőnézet** beolvasása annak ellenőrzéséhez, hogy a szűrő megfelelően működik-e.
     
-    ![Szűrés](media/tutorial-data-flow/filter3.png)
+    ![Szűrő](media/tutorial-data-flow/filter3.png)
 1. A hozzáadni kívánt következő átalakítás a **séma-módosító**alatt létrehozott **összesített** transzformáció.
     
     ![Összesítés](media/tutorial-data-flow/agg1.png)
@@ -162,10 +163,10 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
     ![Sink (Fogadó)](media/tutorial-data-flow/sink2.png)
 1. Válassza a **Azure Data Lake Storage Gen2**lehetőséget. Kattintson a Folytatás gombra.
 
-    ![Adatkészlet](media/tutorial-data-flow/dataset1.png)
+    ![Adathalmaz](media/tutorial-data-flow/dataset1.png)
 1. Válassza a **DelimitedText**lehetőséget. Kattintson a Folytatás gombra.
 
-    ![Adatkészlet](media/tutorial-data-flow/dataset2.png)
+    ![Adathalmaz](media/tutorial-data-flow/dataset2.png)
 1. Nevezze el a fogadó adatkészletet **MoviesSink**. A társított szolgáltatás mezőben válassza ki a 6. lépésben létrehozott ADLS Gen2 társított szolgáltatást. Adja meg azt a kimeneti mappát, ahová az adatokat írni kívánja. Ebben az oktatóanyagban a "kimenet" mappába írunk a "Sample-recontainer" tárolóban. A mappának nem kell előre megadnia, és dinamikusan létre lehet hozni. Állítsa az **első sort fejlécként** True (igaz) értékre, és válassza a **nincs lehetőséget** a **séma importálása**lehetőségnél. Kattintson a Befejezés gombra.
     
     ![Sink (Fogadó)](media/tutorial-data-flow/sink3.png)
@@ -184,14 +185,14 @@ A folyamat a közzététel előtt hibakeresést végezhet. Ebben a lépésben az
     ![Folyamat](media/tutorial-data-flow/pipeline2.png)
 1. A figyelés ablaktáblán láthatja az egyes átalakítási lépésekben eltöltött sorok és idő számát.
     
-    ![Figyelés](media/tutorial-data-flow/pipeline3.png)
+    ![Monitoring](media/tutorial-data-flow/pipeline3.png)
 1. A transzformációra kattintva részletes információkat kaphat az oszlopokról és az adatok particionálásáról.
     
-    ![Figyelés](media/tutorial-data-flow/pipeline4.png)
+    ![Monitoring](media/tutorial-data-flow/pipeline4.png)
 
 Ha ezt az oktatóanyagot helyesen követte, a fogadó mappájába írt 83 és 2 oszlopot kell írnia. A blob Storage ellenőrzésével ellenőrizheti, hogy helyesek-e az adatok.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagban szereplő folyamat egy olyan adatfolyamot futtat, amely összegzi a 1910 és 2000 közötti vígjátékok átlagos minősítését, és az adatokat a ADLS írja. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
