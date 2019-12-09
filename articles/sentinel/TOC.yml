@@ -111,7 +111,7 @@
           href: notebooks.md
         - name: Veszélyforrás-keresés könyvjelzőkkel
           href: bookmarks.md
-        - name: Veszélyforrás-keresés a Livestreammel
+        - name: Veszélyforrás-keresés élő streammel
           href: livestream.md
     - name: Az Azure Sentinel eltávolítása
       href: offboard.md

@@ -26,7 +26,7 @@
           href: expressroute-locations-providers.md
         - name: Helyek szolgáltató alapján
           href: expressroute-locations.md
-    - name: Virtuális hálózati átjáró és FastPath
+    - name: A virtuális hálózati átjárók ismertetése
       href: expressroute-about-virtual-network-gateways.md
     - name: Előfeltételek
       href: expressroute-prerequisites.md
@@ -40,6 +40,8 @@
       href: expressroute-qos.md
     - name: Információk a kapcsolatcsoportok módosításáról klasszikus üzemi modellből Resource Manager-alapú modellbe
       href: expressroute-move.md
+    - name: Az ExpressRoute FastPath ismertetése
+      href: about-fastpath.md
     - name: Az ExpressRoute Direct ismertetése
       href: expressroute-erdirect-about.md
     - name: Az ExpressRoute Global Reach ismertetése

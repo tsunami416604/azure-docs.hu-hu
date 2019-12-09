@@ -91,7 +91,7 @@
           items:
             - name: 1 – Alkalmazás magas rendelkezésre állásának biztosítása
               href: storage-create-geo-redundant-storage.md
-            - name: 2 – Hiba szimulálása RA-GRS tárolóval
+            - name: 2 – Az elsődleges régióból származó adatok olvasási hibájának szimulálása
               href: storage-simulate-failure-ragrs-account-app.md
         - name: Blobok titkosítása és visszafejtése az Azure Key Vaulttal
           href: storage-encrypt-decrypt-blobs-key-vault.md
@@ -151,7 +151,7 @@
               href: ../common/storage-redundancy-gzrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Vészhelyreállítás és feladatátvétel
               href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: HA-alkalmazások tervezése RA-GRS használatával
+            - name: Magas rendelkezésre állású alkalmazások tervezése
               href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Hozzáférési és teljesítményszintek
           items:
@@ -406,6 +406,8 @@
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Blob-tároló csatlakoztatása fájlrendszerként Linux rendszeren
               href: storage-how-to-mount-container-linux.md
+            - name: Adatok átvitele az adatátviteli kódtárral
+              href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Tárolómigrálás – Gyakori kérdések
               href: ../common/storage-migration-faq.md
         - name: Fejlesztés blobok használatával

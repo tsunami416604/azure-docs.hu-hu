@@ -563,7 +563,7 @@
                           href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: Felhőszolgáltatás
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                    - name: A JSON-sorok diagnosztikainapló-formátuma
+                    - name: JSON-sorok erőforrásnapló-formátuma
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Hibaelhárítás
                       href: platform/diagnostics-extension-troubleshooting.md
@@ -1163,7 +1163,7 @@
           href: platform/metrics-supported.md
         - name: Újabb riasztások támogatott metrikái
           href: platform/alerts-metric-near-real-time.md
-    - name: 'Erőforrásnaplókkal kapcsolatos szolgáltatások, kategóriák és sémák'
+    - name: 'Platformnaplókkal kapcsolatos szolgáltatások, kategóriák és sémák'
       href: platform/diagnostic-logs-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest

@@ -14,7 +14,7 @@
               href: per-vm-quota-requests.md
             - name: A teljes regionális vCPU-korlát növelése
               href: regional-quota-requests.md
-            - name: Alacsony prioritású kvótakorlát növelése
+            - name: Spot-kvótakorlát növelése
               href: low-priority-quota.md
         - name: Klasszikus üzemi modell
           href: classic-deployment-model-quota-increase-requests.md

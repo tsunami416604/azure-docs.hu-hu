@@ -22,6 +22,8 @@
   items:
     - name: Internet Analyzer – GYIK
       href: internet-analyzer-faq.md
+    - name: Az Internet Analyzer hibaelhárítása
+      href: troubleshoot.md
     - name: Internet Analyzer – Parancssori felülettel kapcsolatos referencia
       href: 'https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest'
     - name: Azure-ütemterv
