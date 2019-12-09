@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: 6bba764060c243417711205083bf02f84a68fed1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: d7cafa6ec385ed296a5341efdaec1b16f7742683
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684526"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928810"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Azure-beli adat-előállító létrehozása Azure Resource Manager-sablon használatával
 
@@ -41,7 +40,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 
 A Resource Manager-sablonokkal kapcsolatos általános információkért tekintse meg [az Azure Resource Manager-sablonok készítését ismertető cikket](../azure-resource-manager/resource-group-authoring-templates.md).
 
-A következő szakasz a Data Factory-entitások meghatározására szolgáló teljes Resource Manager-sablont ismerteti, így gyorsan végighaladhat az oktatóanyagon, és tesztelheti a sablont. Az egyes Data Factory-entitások meghatározásának megértéséhez tekintse meg a [Data Factory-entitások a sablonban](#data-factory-entities-in-the-template) szakaszt.
+A következő szakasz a Data Factory-entitások meghatározására szolgáló teljes Resource Manager-sablont ismerteti, így gyorsan végighaladhat az oktatóanyagon és tesztelheti a sablont. Az egyes Data Factory-entitások meghatározásának megértéséhez tekintse meg a [Data Factory-entitások a sablonban](#data-factory-entities-in-the-template) szakaszt.
 
 A sablon Data Factory erőforrásainak JSON-szintaxisával és tulajdonságaival kapcsolatos információkért lásd: [Microsoft. DataFactory-erőforrástípusok](/azure/templates/microsoft.datafactory/allversions).
 
@@ -694,8 +693,8 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
 
 Megfigyelheti, hogy az első parancs a fejlesztőkörnyezet, a második a tesztkörnyezet, a harmadik pedig az éles környezet paraméterfájlját használja.
 
-Emellett ismétlődő feladatok elvégzéséhez is újból felhasználhatja a sablont. Például létrehozhat több olyan, egy vagy több folyamattal rendelkező adat-előállítót, amelyek ugyanazt a logikát alkalmazzák, de az egyes adat-előállítók különböző Azure Storage-fiókokat használnak. Ebben a forgatókönyvben ugyanazt a sablont használja ugyanabban a környezetben (fejlesztői, teszt vagy éles) különböző paraméterfájlokkal az adat-előállítók létrehozásához.
+Emellett ismétlődő feladatok elvégzéséhez is újból felhasználhatja a sablont. Például létrehozhat több olyan, egy vagy több folyamattal rendelkező adat-előállítót, amelyek ugyanazt a logikát alkalmazzák, de az egyes adat-előállítók különböző Azure Storage-fiókokat használnak. Ebben a forgatókönyvben ugyanazt a sablont használja ugyanabban a környezetben (fejlesztői, teszt vagy éles) különböző paraméterfájlokkal a data factoryk létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információkért tekintse meg az [oktatóanyagokat](tutorial-copy-data-dot-net.md).

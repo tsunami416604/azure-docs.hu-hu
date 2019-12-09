@@ -1,29 +1,25 @@
 ---
-title: Token beszerzése és Microsoft Graph API meghívása a Console app Identity használatával | Azure
+title: Token beszerzése & hívás Microsoft Graph a Console app Identity szolgáltatással | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogyan szerezhet be egy .NET Core-folyamat hozzáférési jogkivonatot, és hogyan hívhat meg a Microsoft Identity platform Endpoint által védett API-t az alkalmazás saját identitásával
+description: Ismerje meg, hogyan kérhet jogkivonatot, és hogyan hívhat meg védett Microsoft Graph API-t egy .NET Core-alkalmazásból
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2617013b90cc9709a27ff8ab8c5046ebdcc9951
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: edcfe4d7dff5d84ceaf07a8aafd5f9b485308bd5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149435"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920667"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása a konzol alkalmazás identitásával
 
@@ -119,7 +115,7 @@ Ha ezen a ponton próbálja futtatni az alkalmazást, *HTTP 403-Tiltott* hibaüz
 > Ha Ön globális bérlői rendszergazda, nyissa meg az **API-engedélyek** lapot az Azure Portal alkalmazás-regisztrációjában (előzetes verzió), és válassza a **rendszergazdai jóváhagyás megadása a következőhöz: {bérlő neve}** (a (z) {bérlő neve} a címtár neve).
 
 > [!div renderon="portal" class="sxs-lookup"]
-> Ha Ön globális rendszergazda, nyissa meg az **API-engedélyek** lapot, és válassza **a rendszergazdai jóváhagyás engedélyezése a Enter_the_Tenant_Name_Here** lehetőséget.
+> Ha Ön globális rendszergazda, lépjen az API- **engedélyek** oldalra, és válassza **a rendszergazdai jóváhagyás megadása Enter_the_Tenant_Name_Here**
 > > [!div id="apipermissionspage"]
 > > [Ugrás az API-engedélyek oldalra]()
 

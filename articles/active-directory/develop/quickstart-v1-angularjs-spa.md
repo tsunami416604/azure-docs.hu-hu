@@ -2,15 +2,12 @@
 title: AngularJS egyoldalas alkalmazás létrehozása bejelentkezéshez és kijelentkezés az Azure AD-vel | Microsoft Docs
 description: Útmutató a bejelentkezés céljából az Azure AD-vel integrálható, és az Azure AD által védett API-kat OAuth használatával meghívó egyoldalas AngularJS-alkalmazás létrehozásához.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 10/25/2019
@@ -18,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c239b88a67e1be19e3a95130839ab6fd4598fe77
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c8e97c985d0a19842e4a514705e3e34665eeb499
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150045"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921254"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Rövid útmutató: Egyoldalas AngularJS-alkalmazás létrehozása az Azure Active Directoryval történő bejelentkezéshez és kijelentkezéshez
 
@@ -66,12 +63,12 @@ Ha lehetővé szeretné tenni az alkalmazás számára a felhasználók hiteles�
 1. Ha több címtárba jelentkezett be, lehetséges, hogy ellenőriznie kell, hogy a megfelelő címtárat látja-e. Ehhez kattintson a fiókjára a felső sávon. A **Címtár** listában válassza ki azt az Azure AD-bérlőt, amelyben az alkalmazást regisztrálni kívánja.
 1. Kattintson a **Minden szolgáltatás** lehetőségre a bal oldali panelen, majd válassza az **Azure Active Directory** elemet.
 1. Kattintson a **Alkalmazásregisztrációk**elemre, majd válassza az **új regisztráció**lehetőséget.
-1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
+1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
 1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 1. Válassza ki az **átirányítási URI** **szakaszban található webplatformot** , és állítsa be `https://localhost:44326/` értékre (az Azure ad által visszaadott jogkivonatok helyét).
 1. Miután végzett, válassza a **Regisztrálás** lehetőséget. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét.
 1. Az Adal.js az OAuth implicit folyamatát használja az Azure AD-vel folytatott kommunikációhoz. Engedélyeznie kell az alkalmazás implicit folyamatát. A regisztrált alkalmazás bal oldali navigációs paneljén válassza a **hitelesítés**lehetőséget.
-1. A **Speciális beállítások**területen az **implicit támogatás**alatt engedélyezze mindkét **azonosító jogkivonatot** és a **hozzáférési tokenek** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek szükségesek, mivel az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
+1. Az **Implicit engedélyek** alatt a **Speciális beállításoknál** jelölje be mind az **Azonosító-jogkivonatok**, mind a **Hozzáférési jogkivonatok** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek szükségesek, mivel az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
 1. Kattintson a **Mentés** gombra.
 1. Biztosítson engedélyeket a bérlőben az alkalmazás számára. Lépjen az **API-engedélyek**elemre, és válassza a jogosultság **megadása a rendszergazdai jóváhagyáshoz** **lehetőséget.**
 1. Válassza az **Igen** lehetőséget a megerősítéshez.

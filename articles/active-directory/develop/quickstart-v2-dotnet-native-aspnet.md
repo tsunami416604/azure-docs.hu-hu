@@ -2,27 +2,22 @@
 title: Az Azure AD által védett ASP.NET webes API meghívása – Microsoft Identity
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hívhat meg Azure Active Directory által védett ASP.NET webes API-t egy Windows asztali (WPF-) alkalmazásból. A WPF-ügyfél hitelesíti a felhasználót, hozzáférési jogkivonatot kér, és meghívja a webes API-t.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e0fdeb2c1955eab18b440c3ef3bcac725ad92b6
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 6f1d9e402bff9d333957d51982dd917822d2c24d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200260"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920650"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>Gyors útmutató: az Azure AD által védett ASP.NET webes API meghívása
 
@@ -88,7 +83,7 @@ Ha manuálisan szeretné regisztrálni az alkalmazásokat, első lépésként a 
 
 ### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>Adja hozzá az új hatókört a *TodoListClient*app. config fájlhoz.
 
-1. Nyissa meg a **TodoListClient** -projekt gyökérkönyvtárában található **app. config** fájlt, majd ILLESSZE be az **alkalmazás azonosítóját** a *TodoListService* az imént regisztrált alkalmazásból `TodoListServiceScope` paraméter alatt `{Enter the Application ID of your TodoListService from the app registration portal}`.
+1. Nyissa meg a **TodoListClient** -projekt gyökérkönyvtárában található **app. config** fájlt, majd ILLESSZE be az **alkalmazás azonosítóját** a *TodoListService* `TodoListServiceScope` paraméter alatt az imént regisztrált alkalmazásba, és cserélje le a karakterláncot `{Enter the Application ID of your TodoListService from the app registration portal}`.
 
    > Megjegyzés: Ügyeljen arra, hogy a következő formátumot használja:
    >
@@ -115,7 +110,7 @@ Ebben a lépésben a *TodoListClient* -projektet úgy konfigurálja, hogy regisz
    - Kattintson az **engedély hozzáadása** gombra, majd
    - Válassza a **saját API** -k fület.
    - Az API-k listájában válassza ki a `AppModelv2-NativeClient-DotNet-TodoListService API`vagy a webes API-hoz megadott nevet.
-   - Ellenőrizze a **access_as_user** engedélyt, ha még nincs bejelölve. Ha szükséges, használja a keresőmezőt.
+   - Jelölje be a **access_as_user** engedélyt, ha még nincs bejelölve. Ha szükséges, használja a keresőmezőt.
    - Válassza az **engedélyek hozzáadása** gombot
 
 ### <a name="configure-your-todolistclient-project"></a>A *TodoListClient* -projekt konfigurálása
@@ -128,11 +123,11 @@ Ebben a lépésben a *TodoListClient* -projektet úgy konfigurálja, hogy regisz
 1. A projekt futtatásához nyomja meg `<F5>`. A *TodoListClient* nyitva kell lennie.
 1. Válassza a **Bejelentkezés** lehetőséget a jobb felső sarokban, és jelentkezzen be ugyanazzal a felhasználóval, aki regisztrálta az alkalmazást, vagy egy felhasználó ugyanabban a címtárban.
 1. Ha először jelentkezik be, a rendszer kérheti, hogy *TodoListService* a webes API-t.
-1. A bejelentkezés a hozzáférési tokent is kéri a *access_as_user* hatókörére a *TodoListService* webes API eléréséhez és a *Tennivalók* listájának kezeléséhez.
+1. A bejelentkezés a hozzáférési tokent is kéri a *access_as_user* hatókörre a *TodoListService* web API eléréséhez és a *Tennivalók* listájának kezeléséhez.
 
 ## <a name="pre-authorize-your-client-application"></a>Az ügyfélalkalmazás előzetes engedélyezése
 
-A más címtárakban lévő felhasználók számára a webes API-k elérésének egyik módja az, hogy az ügyfélalkalmazások a webes API-hoz való hozzáférését *előzetesen engedélyezik* , ha *az alkalmazások* azonosítóit hozzáadja az ügyfélalkalmazások listájához a a webes API-t. Az előfeltételként szükséges ügyfél hozzáadásával a felhasználónak nem kell beleegyeznie a webes API használatára. A webalkalmazás előzetes engedélyezéséhez kövesse az alábbi lépéseket:
+A webes API-k más címtárakból való elérésének egyik módja a webes API-hoz való hozzáférés *előzetes engedélyezése* az ügyfélalkalmazások számára a webes API-hoz tartozó, *előre engedélyezett* alkalmazások listájában szereplő ügyfélalkalmazások hozzáadásával. Az előfeltételként szükséges ügyfél hozzáadásával a felhasználónak nem kell beleegyeznie a webes API használatára. A webalkalmazás előzetes engedélyezéséhez kövesse az alábbi lépéseket:
 
 1. Lépjen vissza az *alkalmazás regisztrációs portálján* , és nyissa meg a **TodoListService**tulajdonságait.
 1. Az **API közzététele** szakaszban kattintson az **ügyfélalkalmazás hozzáadása** a *jóváhagyott ügyfélalkalmazások* szakaszban elemre.
@@ -155,7 +150,7 @@ Ha szeretné korlátozni, hogy ki jelentkezhet be az alkalmazásba, használja a
 
 Az alkalmazás bejelentkezési hozzáférését csak egyetlen Azure AD-bérlőben lévő felhasználói fiókokra korlátozhatja, beleértve a bérlő *vendég fiókjait* is. Ez a forgatókönyv az üzletági *alkalmazások*esetében gyakori.
 
-1. Nyissa meg a **App_Start\Startup.auth** fájlt, és módosítsa a `OpenIdConnectSecurityTokenProvider` átadott metaadat-végpont értékét `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` (a bérlő nevét is használhatja, például `contoso.onmicrosoft.com`).
+1. Nyissa meg a **App_Start \startup.auth** fájlt, és módosítsa a `OpenIdConnectSecurityTokenProvider` átadott metaadat-végpont értékét `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"`re (a bérlő nevét is használhatja, például `contoso.onmicrosoft.com`).
 2. Ugyanebben a fájlban állítsa a `TokenValidationParameters` `ValidIssuer` tulajdonságát a `"https://sts.windows.net/{Tenant ID}/"`re, a `ValidateIssuer` argumentumot pedig `true`ra.
 
 ### <a name="option-2-use-a-custom-method-to-validate-issuers"></a>2\. lehetőség: egyéni módszer használata a kibocsátók érvényesítéséhez

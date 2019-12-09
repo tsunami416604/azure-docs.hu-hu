@@ -2,27 +2,23 @@
 title: Alkalmazás konfigurálása webes API-k elérhetővé tétele érdekében – Microsoft Identity platform
 description: Megtudhatja, hogyan konfigurálhat alkalmazást új engedély/hatókör és szerepkör közzétételére, hogy elérhetővé tegye az alkalmazást az ügyfélalkalmazások számára.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8ba582516002c3e34ca91ceddbfd826bafe0c282
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "68989275"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921449"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Gyors útmutató: alkalmazás konfigurálása webes API-k megjelenítéséhez
 
@@ -52,7 +48,7 @@ Mielőtt konfigurálhatná az alkalmazást, végre kell hajtania az alábbi lép
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>Új hatókör közzététele a felhasználói felületen
 
-[API-k közzététele a felhasználói felület használatával ![Shows](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[![bemutatja, hogyan tehet elérhetővé egy API-t a felhasználói felületen](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 Ha a felhasználói felületen kíván közzétenni új hatókört:
 

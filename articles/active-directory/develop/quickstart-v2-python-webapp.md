@@ -2,25 +2,21 @@
 title: A Microsoft Identity platform Python-webalkalmazásának rövid útmutatója | Azure
 description: Ismerje meg, hogyan valósítható meg a Microsoft bejelentkezés egy Python-webalkalmazásban a OAuth2 használatával
 services: active-directory
-documentationcenter: dev-center-name
 author: abhidnya13
-editor: ''
-ms.assetid: 9551f0b5-04f2-44d7-87b5-756409180fe9
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: d9349391ad9af1a4ec1c84b586f825f3f7632ff8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0d6b96683a04fa5d2814246b3c22aa52956a8bbb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815757"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920514"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba
 
@@ -114,7 +110,7 @@ AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 ```
 
 > [!div renderon="docs"]
-> Az elemek magyarázata:
+> Helyszín:
 >
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 > - `Enter_the_Client_Secret_Here` – a **tanúsítványok & Secrets** szolgáltatásban a regisztrált alkalmazáshoz létrehozott **titkos ügyfél** .
@@ -153,7 +149,7 @@ A MSAL Pythonra mutató hivatkozást úgy adhatja hozzá, hogy hozzáadja a köv
 import msal
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a felhasználókat bejelentkező webalkalmazásokról, majd a webes API-k meghívásáról:
 

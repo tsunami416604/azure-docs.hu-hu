@@ -2,29 +2,26 @@
 title: Azure Active Directory-bérlő létrehozása | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre Azure AD-bérlőt, amelyet az alkalmazások regisztrálásához és létrehozásához használhat.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c29195e5e597583a5c16c7f1d9494d655f2b317
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: b9d4e51e6242da90a1e7044e0c3a182ea59ad187
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268610"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915105"
 ---
-# <a name="quickstart-set-up-a-tenant"></a>Gyors útmutató: Bérlő beállítása
+# <a name="quickstart-set-up-a-tenant"></a>Gyors útmutató: bérlő beállítása
 
 A Microsoft identitásplatformja lehetővé teszi a fejlesztők számára az egyéni Microsoft 365-környezetek és -identitások széles választékát célzó alkalmazások létrehozását. A Microsoft Identity platform használatának megkezdéséhez hozzá kell férnie egy olyan környezethez (más néven Azure AD-bérlőhöz), amely képes regisztrálni és kezelni az alkalmazásokat, hozzáférni Microsoft 365 adatokhoz, és üzembe helyezi az egyéni feltételes hozzáférési és bérlői korlátozásokat.
 
@@ -74,7 +71,7 @@ Ha még nem rendelkezik Azure AD-bérlővel, vagy ha újat szeretne létrehozni,
 
 A közösségi és helyi fiók bejelentkeztetésére szolgáló alkalmazások létrehozásának megkezdéséhez egy Azure AD B2C-bérlőt kell létrehoznia. A létrehozást az [Azure AD B2C-bérlők létrehozását ismertető](../../active-directory-b2c/tutorial-create-tenant.md) témakör utasításait követve kezdheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a kódolással foglalkozó rövid útmutatót, és kezdje meg a felhasználók hitelesítését. 
 * Részletesebb kódmintákat a dokumentáció **Oktatóanyagok** részében tekinthet meg.

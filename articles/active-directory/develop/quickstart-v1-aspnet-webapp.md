@@ -2,27 +2,24 @@
 title: Microsoft-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz | Microsoft Docs
 description: Ismerje meg, hogyan adhat hozzá Microsoft-bejelentkezést egy hagyományos webböngésző-alapú ASP.NET-megoldáshoz az OpenID Connect standard használatával.
 services: active-directory
-documentationcenter: dev-center-name
-author: andretms
+author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/25/2019
 ms.author: ryanwi
+ms.reviewer: jmprieur
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 240b64bcaa242e39140f39faff31418f96b34193
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dc68db841b900ca96899e6fda8f8f3e07f41256a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149916"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921092"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rövid útmutató: Microsoft-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
 
