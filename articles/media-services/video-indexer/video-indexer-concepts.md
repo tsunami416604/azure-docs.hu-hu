@@ -1,7 +1,7 @@
 ---
 title: Video Indexer fogalmak
 titleSuffix: Azure Media Services
-description: Ez a témakör a Video Indexer szolgáltatás néhány fogalmát ismerteti.
+description: Ez a cikk a Azure Media Services Video Indexer szolgáltatás egyes fogalmait ismerteti.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e3795b699f5518efdbef117fb24d118041ed3e78
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 73dad1db4f44134f871c9f3d6e7edcdd3bd1e2ea
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839576"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900681"
 ---
 # <a name="video-indexer-concepts"></a>Video Indexer fogalmak
  
@@ -29,11 +29,11 @@ Az összesített elemzések az alábbi összesített nézetet tartalmazzák: arc
 
 A TimeRange az eredeti videó időtartománya. A AdjustedTimeRange az aktuális lejátszási listához viszonyított időtartomány. Mivel a különböző videók különböző soraiból is létrehozhat egy lejátszási listát, igénybe vehet egy 1 órás videót, és akár 1 sort is használhat, például 10:00-10:15. Ebben az esetben egy olyan lejátszási listával fog rendelkezni, amelyben az időtartomány 10:00-10:15, a adjustedTimeRange pedig a 00:00-00:15.
  
-## <a name="blocks"></a>Blokkok
+## <a name="blocks"></a>blokkok
 
 A blokkok célja, hogy megkönnyítse az adattovábbítást. A blokkokat például aszerint lehet bontani, hogy mikor váltanak a beszélők, vagy hogy mikor tartanak hosszú szünetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az első lépésekről: [regisztráció és az első videó feltöltése](video-indexer-get-started.md).
 

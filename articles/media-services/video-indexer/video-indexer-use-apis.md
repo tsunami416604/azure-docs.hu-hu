@@ -1,7 +1,7 @@
 ---
 title: A Video Indexer API használata
 titleSuffix: Azure Media Services
-description: Oktatóanyag a Azure Media Services Video Indexer API-hoz való ismerkedéshez.
+description: Ez a cikk bemutatja, hogyan kezdheti meg a Azure Media Services Video Indexer API használatát.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e1fcfcd9e6bcb6108573f032d81f10ccc2be1e57
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 4da437fecf0529194d72b2d403302ff81055ec0f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839620"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892685"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
@@ -99,7 +99,7 @@ A Fiókazonosító paraméterre minden műveleti API-híváshoz szükség van. A
     https://www.videoindexer.ai/accounts/00000000-f324-4385-b142-f77dacb0a368/videos/d45bf160b5/
     ```
 
-## <a name="recommendations"></a>Javaslatok
+## <a name="recommendations"></a>Ajánlatok
 
 Ebben a részben a Video Indexer API használatára vonatkozó javaslatokat talál.
 
@@ -212,6 +212,6 @@ Debug.WriteLine(playerWidgetLink);
 - [A Video Indexer áttekintése](video-indexer-overview.md)
 - [Régiók](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A kimeneti JSON adatainak vizsgálata](video-indexer-output-json-v2.md).

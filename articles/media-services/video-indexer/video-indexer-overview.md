@@ -1,7 +1,7 @@
 ---
 title: Mi az a Video Indexer?
 titleSuffix: Azure Media Services
-description: A Azure Media Services Video Indexer szolgáltatás áttekintése.
+description: Ez a cikk áttekintést nyújt a Azure Media Services Video Indexer szolgáltatásról.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: 9f6a5fa96034e0bf43ddd573a425de8d114d47ce
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a942277b5616f3e8220e7fc0fd00f7d660d76d3e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575114"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892702"
 ---
 # <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
@@ -33,12 +33,12 @@ Video Indexer az adatok számos forgatókönyvre alkalmazhatók, többek közöt
 
 * Részletes *Keresés*: a videóból kinyert adatok segítségével javíthatja a keresési élményt a videó-tárak között. Például a kimondott szavak és arcok indexelése lehetővé teszi a keresési élmény megkeresését egy videóban, ahol egy személy bizonyos szavakat beszélt, vagy ha két személy együtt volt látható. A videók alapján végzett keresés a hírkiszolgáló, az oktatási intézmények, a műsorszolgáltatók, a szórakoztató tartalmak tulajdonosai, a vállalati LOB-alkalmazások és általában minden olyan iparág esetében érvényes, amelyre a felhasználóknak szüksége van.
 * *Tartalom létrehozása*: hozzon létre pótkocsikat, jelöljön ki orsókat, közösségi médiatartalmakat vagy híreket a tartalomból video Indexer kivonatok alapján. A kulcsképek, a jelenetek jelölői és az időbélyegek a személyek és a címkék megjelenéséhez a létrehozási folyamat sokkal simább és egyszerűbb, és lehetővé teszi a videó azon részeinek elérését, amelyekre szüksége van a létrehozott tartalomhoz.
-* *Kisegítő lehetőségek*: azt, hogy szeretné-e elérhetővé tenni a tartalmat a fogyatékkal élők számára, vagy ha azt szeretné, hogy a tartalmak különböző nyelveken keresztül legyenek kiosztva különböző régiókban, használhatja a videó által biztosított átírást és fordítást. indexelő több nyelven.
+* *Kisegítő lehetőségek*: szeretné, hogy a tartalom elérhető legyen a fogyatékkal élők számára, vagy ha azt szeretné, hogy a tartalom különböző régiókban legyen szétosztva különböző nyelveken, a video Indexer által biztosított átírást és fordítást több nyelven is használhatja.
 * *Monetizálása*: video Indexer segíthet a videók értékének növelésében. Például az ad-bevételre támaszkodó iparágak (a média, a közösségi média stb.) a releváns hirdetéseket a kinyert információk használatával továbbítják az ad-kiszolgáló további jeleiként.
 * *Tartalom moderálása*: a szöveges és a vizuális tartalom moderálási modelljeinek használatával a felhasználók biztonságban maradhatnak a nem megfelelő tartalomtól, és ellenőrizhetik, hogy a közzétett tartalom megfelel-e a szervezet értékeinek. Automatikusan blokkolhat bizonyos videókat, vagy riasztást kaphat a felhasználóknak a tartalomról.
 * *Javaslatok*: a videó-bepillantást a felhasználók bevonásával növelheti. Ha az egyes videókat további metaadatokkal címkézi, ajánlhatja a felhasználók számára a legfontosabb videókat, és kiemelheti a videó azon részeit, amelyek megfelelnek az igényeinek.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Jellemzők
 
 A következő lista azokat az elemzéseket mutatja be, amelyekkel lekérheti a videókat Video Indexer videó-és hangmodellek használatával:
 
@@ -103,7 +103,7 @@ A Video Indexer képességei háromféleképpen érhetők el:
 
 Ha a webhelyet használja, az adatok metaadatokként lesznek hozzáadva, és megjelennek a portálon. Ha API-kat használ, az eredmények JSON-fájlként érhetők el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Készen áll a Video Indexer használatának megkezdésére. További információkért tekintse át a következő cikkeket:
 

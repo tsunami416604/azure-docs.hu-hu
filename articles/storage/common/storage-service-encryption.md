@@ -4,17 +4,17 @@ description: Az Azure Storage védi az adatait úgy, hogy automatikusan titkosí
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 11/26/2019
+ms.date: 12/05/2019
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 63fa30b4cf4c5887e8fb44b357eb22e55fe230e7
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: a09d2c0c2a393acd4882842dc023b0f5f682e813
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666137"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895134"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-titkosítás a REST-adatokhoz
 
@@ -38,7 +38,7 @@ További információ az Azure Storage-titkosítás alapjául szolgáló kriptog
 
 A Microsoft által felügyelt kulcsokat használhatja a Storage-fiók titkosításához, vagy a titkosítást a saját kulcsaival is kezelheti. Ha úgy dönt, hogy a titkosítást a saját kulcsaival kezeli, két lehetőség közül választhat:
 
-- Megadhat egy *ügyfél által felügyelt kulcsot* Azure Key Vault használatával a Storage-fiókban lévő összes érték titkosításához és visszafejtéséhez. Az ügyfél által felügyelt kulcs a Storage-fiók összes szolgáltatásában lévő összes érték titkosítására szolgál.
+- Megadhat egy, a blob Storage-ban és a Azure Filesban található adattitkosításhoz és visszafejtéshez Azure Key Vault használó *ügyfél által felügyelt kulcsot* .
 - Megadhat egy *ügyfél által megadott kulcsot* a blob Storage-műveletekhez. A blob Storage-hoz tartozó olvasási vagy írási kérelmet készítő ügyfél tartalmazhat egy titkosítási kulcsot a kérelemben, amely részletesen szabályozza a Blobok titkosításának és visszafejtésének módját.
 
 Az alábbi táblázat összehasonlítja az Azure Storage-titkosítás legfontosabb felügyeleti lehetőségeit.
@@ -62,7 +62,7 @@ Alapértelmezés szerint a Storage-fiók a Microsoft által felügyelt titkosít
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Ügyfél által felügyelt kulcsok Azure Key Vault
 
-A Storage-fiók szintjén a saját kulcsaival kezelheti az Azure Storage-titkosítást. Ha ügyfél által felügyelt kulcsot ad meg a Storage-fiók szintjén, akkor a rendszer a Storage-fiókban lévő összes adattal titkosítja és visszafejti a kulcsot, beleértve a blob, a üzenetsor, a fájl és a tábla adataival. Az ügyfél által felügyelt kulcsok nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Az adatai védelme érdekében használt titkosítási kulcsokat is naplózhatja.
+A Storage-fiók szintjén a saját kulcsaival kezelheti az Azure Storage-titkosítást. Ha ügyfél által felügyelt kulcsot ad meg a Storage-fiók szintjén, akkor a rendszer a Storage-fiókban lévő összes blob és fájl adatai titkosítására és visszafejtésére használja a kulcsot. Az ügyfél által felügyelt kulcsok nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Az adatai védelme érdekében használt titkosítási kulcsokat is naplózhatja.
 
 Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vaultt kell használnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Storage-fióknak és a Key vaultnak ugyanabban a régióban kell lennie, de különböző előfizetésekben is lehetnek. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)
 
@@ -149,7 +149,7 @@ A kérelemben szereplő titkosítási kulcsok megadása nem kötelező. Ha azonb
 
 A blob Storage következő műveletei támogatják az ügyfél által biztosított titkosítási kulcsok küldését egy kérelemre:
 
-- [BLOB elhelyezése](/rest/api/storageservices/put-blob)
+- [Put Blob](/rest/api/storageservices/put-blob)
 - [Tiltási lista](/rest/api/storageservices/put-block-list)
 - [Put blokk](/rest/api/storageservices/put-block)
 - [Blokk elhelyezése URL-címről](/rest/api/storageservices/put-block-from-url)
@@ -159,9 +159,9 @@ A blob Storage következő műveletei támogatják az ügyfél által biztosíto
 - [BLOB tulajdonságainak beállítása](/rest/api/storageservices/set-blob-properties)
 - [BLOB metaadatainak beállítása](/rest/api/storageservices/set-blob-metadata)
 - [BLOB beolvasása](/rest/api/storageservices/get-blob)
-- [BLOB tulajdonságainak beolvasása](/rest/api/storageservices/get-blob-properties)
+- [Get Blob Properties](/rest/api/storageservices/get-blob-properties)
 - [BLOB metaadatainak beolvasása](/rest/api/storageservices/get-blob-metadata)
-- [Pillanatkép-blob](/rest/api/storageservices/snapshot-blob)
+- [Snapshot Blob](/rest/api/storageservices/snapshot-blob)
 
 ### <a name="rotate-customer-provided-keys"></a>Ügyfél által biztosított kulcsok elforgatása
 

@@ -15,6 +15,8 @@
       items:
         - name: Keresési index létrehozása
           href: search-get-started-portal.md
+        - name: Alkalmazás létrehozása (előzetes verzió)
+          href: search-create-app-portal.md
         - name: Kognitív képességcsoport létrehozása
           href: cognitive-search-quickstart-blob.md
         - name: Tudástár létrehozása
@@ -303,6 +305,8 @@
           href: search-manage-powershell.md
         - name: Tevékenység és naplózás monitorozása
           href: search-monitor-usage.md
+        - name: Forgalmi elemzések keresése
+          href: search-traffic-analytics.md
     - name: Hibaelhárítás
       items:
         - name: Indexelőkkel kapcsolatos problémák

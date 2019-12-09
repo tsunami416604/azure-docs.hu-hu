@@ -1,26 +1,27 @@
 ---
-title: Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
+title: Korlátozott hozzáférés biztosítása a közös hozzáférési aláírásokkal (SAS) rendelkező adathoz
+titleSuffix: Azure Storage
 description: További információ a közös hozzáférésű aláírások (SAS) használatáról az Azure Storage-erőforrásokhoz való hozzáférés delegálásához, beleértve a blobokat, a várólistákat, a táblákat és a fájlokat.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 9623152bdea5cc56e6b9bcb7d9911a730fd7a4a4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72382010"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895158"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
 
 A közös hozzáférésű aláírás (SAS) biztonságos delegált hozzáférést biztosít a Storage-fiók erőforrásaihoz anélkül, hogy veszélyeztetné az adatai biztonságát. A SAS segítségével részletesen szabályozhatja, hogy az ügyfél Hogyan férhet hozzá az adataihoz. Megadhatja, hogy az ügyfél milyen erőforrásokhoz férhet hozzá, milyen engedélyekkel rendelkezik ezekhez az erőforrásokhoz, és hogy mennyi ideig érvényes az SAS érvényessége, más paraméterek között.
 
-## <a name="types-of-shared-access-signatures"></a>A közös hozzáférésű aláírások típusai
+## <a name="types-of-shared-access-signatures"></a>A közös hozzáférésű jogosultságkódok típusai
 
 Az Azure Storage három különböző típusú közös hozzáférési aláírást támogat:
 
@@ -61,7 +62,7 @@ Az SAS-t kétféleképpen lehet aláírni:
 
 - A Storage-fiók kulcsaként. A Service SAS és a fiók SAS is a Storage-fiók kulcsával van aláírva. A fiók kulccsal aláírt SAS létrehozásához az alkalmazásnak hozzá kell férnie a fiók kulcsához.
 
-### <a name="sas-token"></a>SAS-token
+### <a name="sas-token"></a>SAS-jogkivonat
 
 Az SAS-jogkivonat egy olyan karakterlánc, amelyet az ügyfél oldalán állít elő, például az egyik Azure Storage ügyféloldali kódtára használatával. A SAS-tokent semmilyen módon nem követik nyomon az Azure Storage. Korlátlan számú SAS-tokent hozhat létre az ügyféloldali oldalon. Miután létrehozott egy SAS-t, terjesztheti azt olyan ügyfélalkalmazások számára, amelyek hozzáférést igényelnek a Storage-fiók erőforrásaihoz.
 
@@ -75,13 +76,13 @@ Ha egy ügyfélalkalmazás egy kérelem részeként egy SAS URI-t biztosít az A
 
 Használjon SAS-t, ha biztonságos hozzáférést szeretne biztosítani a Storage-fiók erőforrásaihoz bármely olyan ügyfél számára, aki egyébként nem rendelkezik engedéllyel az adott erőforrásokhoz.
 
-Gyakori eset, ha egy SAS hasznos szolgáltatás, ahol a felhasználók a saját adataikat olvassák és írhatják a Storage-fiókjába. Olyan helyzetekben, amikor egy Storage-fiók felhasználói adattárolást tárol, két jellemző kialakítási minta létezik:
+Gyakori eset, ha egy SAS hasznos szolgáltatás, ahol a felhasználók a saját adataikat olvassák és írhatják a Storage-fiókjába. Az olyan esetekben, amikor a tárfiók felhasználói adatokat tárol, két tipikus kialakítási minta létezik:
 
-1. Az ügyfelek az előtér-proxy szolgáltatáson keresztül tölthetik le és tölthetik le az adatletöltést, amely hitelesítést végez. Az előtér-proxy szolgáltatásnak megvan az előnye, hogy lehetővé teszi az üzleti szabályok érvényesítését, de nagy mennyiségű vagy nagy mennyiségű adatforgalom esetén az igényeknek megfelelően méretezhető szolgáltatás létrehozása költséges vagy nehézkes lehet.
+1. Az ügyfelek egy hitelesítést végző, előtérbeli proxyszolgáltatással töltik fel- és le az adatokat. Az előtér-proxy szolgáltatásnak megvan az előnye, hogy lehetővé teszi az üzleti szabályok érvényesítését, de nagy mennyiségű vagy nagy mennyiségű adatforgalom esetén az igényeknek megfelelően méretezhető szolgáltatás létrehozása költséges vagy nehézkes lehet.
 
    ![Forgatókönyv diagramja: előtér-proxy szolgáltatás](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
-1. Egy egyszerű szolgáltatás szükség szerint hitelesíti az ügyfelet, majd létrehoz egy SAS-t. Miután az ügyfélalkalmazás megkapja az SAS-t, közvetlenül hozzáférhetnek a Storage-fiók erőforrásaihoz a SAS által meghatározott engedélyekkel és az SAS által engedélyezett időtartammal. Az SAS csökkenti az összes, az előtér-proxy szolgáltatáson keresztüli útválasztási művelet szükségességét.
+1. Egy egyszerű szolgáltatás hitelesíti az ügyfelet, majd létrehoz egy SAS-t. Miután az ügyfélalkalmazás megkapja az SAS-t, közvetlenül hozzáférhetnek a Storage-fiók erőforrásaihoz a SAS által meghatározott engedélyekkel és az SAS által engedélyezett időtartammal. Az SAS-szel nincs szükség az összes adat az előtérbeli proxyszolgáltatáson keresztül történő átirányítására.
 
    ![Forgatókönyv-diagram: SAS-szolgáltatói szolgáltatás](./media/storage-sas-overview/sas-storage-provider-service.png)
 

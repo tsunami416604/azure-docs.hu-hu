@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 12/06/2019
 ms.author: cabailey
-ms.openlocfilehash: e72b9012b41f50b36ba7d92582d0c697e6db0683
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 5b347848c9c6a58a70ab1093a6f9c70b62f3f769
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546865"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900459"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>A fenyegetések észlelése az Azure Sentinelben
 
@@ -70,7 +70,7 @@ Létrehozhat egy livestream-munkamenetet egy meglévő vadászati lekérdezésb�
 
 5. Válassza a **Lejátszás** elemet a parancssorból.
     
-    A parancssáv alatti állapotsor jelzi, hogy a livestream fut-e vagy szüneteltetve van-e. A következő példában a munkamenet fut:
+    A parancssáv alatti állapotsor jelzi, hogy a livestream-munkamenet fut vagy szüneteltetve van. A következő példában a munkamenet fut:
     
     > [!div class="mx-imgBorder"]
     > ![livestream-munkamenet létrehozása az Azure Sentinel-vadászattal](./media/livestream/livestream-session.png)
@@ -110,7 +110,6 @@ Ez a művelet megnyitja a szabály létrehozása varázslót, amely előre fel v
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a Hunting livestream-t az Azure Sentinelben. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
-
 
 - [Proaktív vadászat a fenyegetések ellen](hunting.md)
 - [Automatikus vadászati kampányok futtatása jegyzetfüzetek használatával](notebooks.md)

@@ -1,7 +1,7 @@
 ---
 title: Video Indexer widgetek beágyazása az alkalmazásokba
 titleSuffix: Azure Media Services
-description: Megtudhatja, hogyan ágyazhat be Video Indexer widgeteket az alkalmazásba.
+description: Ez a cikk bemutatja, hogyan ágyazhat be Azure Media Services Video Indexer widgeteket az alkalmazásba.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 99d6647ab5e7fa8f35cef883dd00ae9fea866370
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bb0af855a136c83eac7e28287b28046b50a7c124
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839121"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892736"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Video Indexer widgetek beágyazása az alkalmazásokba
 
@@ -32,7 +32,7 @@ A kognitív betekintő widget a videó-indexelési folyamatból kinyert összes 
 |Név|Meghatározás|Leírás|
 |---|---|---|
 |`widgets`|Vesszővel elválasztott sztringek|Lehetővé teszi a megjeleníteni kívánt adatfelismerések szabályozását. <br/> Példa: a `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` csak a felhasználók és a márkák felhasználói felületi bepillantást jeleníti meg.<br/>Elérhető lehetőségek: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Vegye figyelembe, hogy a `widgets` URL-cím paraméter nem támogatott a 2. verzióban.<br/>|
-|`locale`|Egy rövid nyelvi kód|Az adatfelismerés nyelvét vezérli. Az alapértelmezett érték `en`. <br/> Példa: `locale=de`.|
+|`locale`|Egy rövid nyelvi kód|Az adatfelismerés nyelvét vezérli. Az alapértelmezett érték 0.`en` <br/> Példa: `locale=de`.|
 |`tab`|Az alapértelmezett kijelölt lap|Az alapértelmezés szerint megjelenített adatvizsgálatok lapot vezérli. <br/> Példa: a `tab=timeline` megjeleníti az eredményeket az **Idősor** lapon kiválasztva.|
 
 ### <a name="player-widget"></a>Lejátszó vezérlő
@@ -45,8 +45,8 @@ A Player widget Adaptív átviteli sebesség használatával is továbbíthatja 
 |`captions`|Nyelvi kód|A megadott nyelven beolvassa a feliratot a widget betöltésével, hogy elérhető legyen a **feliratok** menüben.<br/> Példa: `captions=en-US`.|
 |`showCaptions`|Logikai érték|Beállítja, hogy a lejátszó betöltésekor a feliratok megjelenítése már engedélyezve legyen.<br/> Példa: `showCaptions=true`.|
 |`type`||Aktiválja a hanglejátszó bőrét (a videó rész törlődik).<br/> Példa: `type=audio`.|
-|`autoplay`|Logikai érték|Azt jelzi, hogy a játékosnak be kell-e játszania a videót a betöltéskor. Az alapértelmezett érték `true`.<br/> Példa: `autoplay=false`.|
-|`language`|Nyelvi kód|A lejátszó nyelvének szabályozása. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`.|
+|`autoplay`|Logikai érték|Azt jelzi, hogy a játékosnak be kell-e játszania a videót a betöltéskor. Az alapértelmezett érték 0.`true`<br/> Példa: `autoplay=false`.|
+|`language`|Nyelvi kód|A lejátszó nyelvének szabályozása. Az alapértelmezett érték 0.`en-US`<br/>Példa: `language=de-DE`.|
 
 ### <a name="editor-widget"></a>Szerkesztői widget
 
@@ -55,8 +55,8 @@ A szerkesztői widgettel új projekteket hozhat létre, és kezelheti a videókb
 |Név|Meghatározás|Leírás|
 |---|---|---|
 |`accessToken`<sup>*</sup>|Sztring|Hozzáférést biztosít azokhoz a videókhoz, amelyek csak a widget beágyazásához használt fiókban találhatók.<br> A szerkesztő widgethez a `accessToken` paraméter szükséges.|
-|`language`|Nyelvi kód|A lejátszó nyelvének szabályozása. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`.|
-|`locale`|Egy rövid nyelvi kód|Az adatfelismerés nyelvét vezérli. Az alapértelmezett érték `en`.<br/>Példa: `language=de`.|
+|`language`|Nyelvi kód|A lejátszó nyelvének szabályozása. Az alapértelmezett érték 0.`en-US`<br/>Példa: `language=de-DE`.|
+|`locale`|Egy rövid nyelvi kód|Az adatfelismerés nyelvét vezérli. Az alapértelmezett érték 0.`en`<br/>Példa: `language=de`.|
 
 <sup>*</sup> A tulajdonosnak körültekintően kell megadnia `accessToken`.
 
@@ -186,7 +186,7 @@ Ha nem a Azure Media Playert használja, akkor manuálisan kell módosítania a 
         </video>    
 
 2. Ágyazza be a Kognitív elemzési vezérlőt.
-3. Implementálja a lejátszóval való kommunikációt az „üzenet” eseményre való figyeléssel. Például:
+3. Implementálja a lejátszóval való kommunikációt az „üzenet” eseményre való figyeléssel. Példa:
 
         <script>
     
@@ -247,7 +247,7 @@ Fontos tudni, hogy ez a beállítás csak olyan esetekben releváns, ha azt szer
 
 A Video Indexer-lejátszó beágyazásakor megadhatja a lejátszó méretét az iframe méretének meghatározásával.
 
-Például:
+Példa:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
@@ -264,7 +264,7 @@ Ha le szeretné tiltani a feliratokat, `false`ként átadhatja a `captions` para
 #### <a name="autoplay"></a>Robotpilota
 Alapértelmezés szerint a lejátszó elkezdi lejátszani a videót. úgy is dönthet, hogy nem továbbítja `&autoplay=false`t az előző beágyazási URL-címre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Video Indexer információk megtekintésével és szerkesztésével kapcsolatos információkért lásd: [video Indexer-információk megtekintése és szerkesztése](video-indexer-view-edit.md).
 

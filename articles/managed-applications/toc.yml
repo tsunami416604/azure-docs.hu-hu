@@ -51,6 +51,10 @@
       href: concepts-custom-role-definition.md
     - name: Erőforrások előkészítése
       href: concepts-custom-providers-resourceonboarding.md
+    - name: Azure Policy egyéni szolgáltató társításához
+      href: concepts-custom-providers-built-in-policy.md
+    - name: Azure Policy felügyelt alkalmazás társításához
+      href: concepts-managed-applications-built-in-policy.md
 - name: Útmutatók
   items:
     - name: Egyéni szolgáltatók

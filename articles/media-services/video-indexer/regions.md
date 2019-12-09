@@ -1,7 +1,7 @@
 ---
 title: Azok a régiók, amelyekben Video Indexer elérhető – Azure
 titleSuffix: Azure Media Services
-description: Ez a cikk olyan Azure-régiókat tárgyal, amelyekben Video Indexer érhető el.
+description: Ez a cikk a Azure Media Services Video Indexer elérhető Azure-régiókkal kapcsolatos információkat tárgyalja.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: b67c89e02091d57b4f2dc901005c2dae36deafc2
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 6ba6f189f4290bb2751adf9b44135eeda7266ca0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838205"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892753"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Azure-régiók, amelyekben Video Indexer létezik
 
 Video Indexer API-k olyan **Location** paramétert tartalmaznak, amelyet arra az Azure-régióra kell beállítani, amelyre a hívást át kell irányítani. Ennek egy olyan [Azure-régiónak kell lennie, amelyben video Indexer érhető el](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all).
 
-## <a name="locations"></a>Helyek
+## <a name="locations"></a>Földrajzi egységek
 
 A **Location** paraméter értékeként az Azure-régiókód nevét kell megadni. Ha az előnézeti módban Video Indexert használ, a *"próbaverzió"* értéket kell megtennie értékként. Ellenkező esetben a fiókja által használt Azure-régió kódjának beszerzéséhez és a hívás átirányításához a következő sort futtathatja az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)-ben:
 
@@ -44,7 +44,7 @@ Az USA 2. nyugati régiójában (az alábbi ábrán látható) például az "wes
     }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Nyelvi modell testreszabása API-k használatával](customize-language-model-with-api.md)
 - [A Brands modell testreszabása API-k használatával](customize-brands-model-with-api.md)

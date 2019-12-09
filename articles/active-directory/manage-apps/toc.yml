@@ -385,6 +385,10 @@
           href: functions-for-customizing-application-data.md
         - name: Üzembehelyezési módszer kiválasztása
           href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: Felhőalapú HR üzembe helyezése
+      items:
+        - name: SuccessFactors attribútumreferenciája
+          href: sap-successfactors-attribute-reference.md
     - name: Azure AD Connect-kiépítési ügynök
       items:
         - name: Kiépítési ügynök verzióelőzményei

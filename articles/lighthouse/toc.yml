@@ -44,9 +44,6 @@
     - name: Ügyfelek megtekintése és kezelése
       displayName: my customers
       href: ./how-to/view-manage-customers.md
-    - name: Szolgáltatók megtekintése és kezelése
-      displayName: 'customer, update'
-      href: ./how-to/view-manage-service-providers.md
     - name: Azure Policy-integráció
       items:
         - name: Szabályzat nagy léptékű üzembe helyezése
@@ -55,6 +52,14 @@
         - name: Javítható szabályzat telepítése
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Ügyfélműveletek
+      items:
+        - name: Szolgáltatók megtekintése és kezelése
+          displayName: 'customer, update'
+          href: ./how-to/view-manage-service-providers.md
+        - name: Szolgáltatói tevékenység megtekintése
+          displayName: 'monitor, log'
+          href: ./how-to/view-service-provider-activity.md
 - name: Referencia
   items:
     - name: Azure CLI
