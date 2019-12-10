@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 8efc98ad2785a9052244556bddc60a5ba34bd3d8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 501e5bc1b2de91e0dd74ae0f0d9163d74dcb06f2
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900395"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941559"
 ---
 # <a name="references"></a>Tudástár
 
@@ -23,7 +23,7 @@ Az Azure FarmBeats API-k szabványosított REST-felületet biztosító, JSON-ala
 - API-k az érzékelő, a kamera, a drone, az időjárás, a műhold és a megválogatott alapértékek beszerzéséhez.
 - Az adatnormalizálás és contextualization a közös adatszolgáltatókon keresztül.
 - Sematikus hozzáférés és lekérdezési képességek az összes betöltött adattal kapcsolatban.
-- A lekérdezhető metaadatok automatikus generálása agronómiai-funkciók alapján. 
+- A lekérdezhető metaadatok automatikus generálása agronómiai-funkciók alapján.
 - Automatikusan generált idősorozat-összesítések a gyors modell-létrehozáshoz.
 - Integrált Azure Data Factory motor, amellyel egyszerűen hozhat létre egyéni adatfeldolgozási folyamatokat.
 
@@ -102,7 +102,7 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept:
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 
 REST-hívások esetén a kérések URI-ja alapján szűrheti, korlátozhatja és rendezheti az adatok méretét, és egy vagy több lekérdezési paramétert is megadhat. A lekérdezési paraméterekért tekintse meg az API dokumentációját és az egyes GET hívásokat.
-Ha például lekérdezi az eszközök listáját (/Device hívása), a következő lekérdezési paramétereket lehet megadni: 
+Ha például lekérdezi az eszközök listáját (/Device hívása), a következő lekérdezési paramétereket lehet megadni:
 
 ![Készülékek listája](./media/for-references/query-parameters-device-1.png)
 
@@ -163,12 +163,12 @@ Az Azure FarmBeats API-kat egy felhasználó vagy egy alkalmazás-regisztráció
 
 4. Nyissa meg a [Datahub](https://<yourdatahub>.azurewebsites.net/swagger/index.html) , és tegye a következőket:
     - Nyissa meg a **ROLEASSIGNMENT API**-t.
-    - A POST művelettel hozzon létre egy **RoleAssignment** objektumot az imént létrehozott **objektumazonosító** számára. 
+    - A POST művelettel hozzon létre egy **RoleAssignment** objektumot az imént létrehozott **objektumazonosító** számára.
 
   > [!NOTE]
   > A felhasználók hozzáadásával és Active Directory regisztrációval kapcsolatos további információkért lásd: [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-Az előző lépések befejezése után az alkalmazás regisztrálása (ügyfél) az Azure FarmBeats API-kat a tulajdonosi hitelesítésen keresztül egy hozzáférési jogkivonat használatával hívhatja meg. 
+Az előző lépések befejezése után az alkalmazás regisztrálása (ügyfél) az Azure FarmBeats API-kat a tulajdonosi hitelesítésen keresztül egy hozzáférési jogkivonat használatával hívhatja meg.
 
 A hozzáférési jogkivonat segítségével küldje el azt a következő API-kérelmekben a fejléc szakaszban, ahogy:
 

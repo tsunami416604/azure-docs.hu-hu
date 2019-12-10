@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5843e6a5669cd90cdc0572e7a104c4fdf70ac2b3
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 54aea9fac946713ee6c1709e952e3962bb7288e9
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669132"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951768"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -34,7 +34,7 @@ A Azure Migrate segítségével áttelepítheti a vállalatot a helyszínről az
 A Azure Migrate szolgáltatásnak jelenleg két verziója van:
 
 - **Aktuális verzió**: ezzel a verzióval Azure Migrate projekteket hozhat létre, felderítheti a helyszíni gépeket, és összehangolhatja az értékeléseket és áttelepítéseket. [További](whats-new.md) információ az ebben a verzióban található újdonságokról.
-- **Korábbi verzió**: ha a Azure Migrate korábbi verzióját használta (csak a helyszíni VMWare virtuális gépek felmérése támogatott), akkor most az aktuális verziót kell használnia. Az előző verzió használatával már nem hozhat létre Azure Migrate projekteket, és javasoljuk, hogy ne végezzen új felfedezéseket. A meglévő projektek eléréséhez a Azure Portal > **minden szolgáltatás**területen keressen **Azure Migrate**. A Azure Migrate irányítópulton van egy értesítés és egy hivatkozás a régi Azure Migrate projektek eléréséhez.
+- **Korábbi verzió**: ha a Azure Migrate korábbi verzióját használta (csak a helyszíni VMWare virtuális gépek felmérése támogatott), akkor most az aktuális verziót kell használnia. Az előző verzió használatával már nem hozhat létre Azure Migrate projekteket, és javasoljuk, hogy ne végezzen új felfedezéseket. A meglévő projektek eléréséhez keresse meg és válassza a **Azure Migrate**lehetőséget a Azure Portal. A **Azure Migrate** irányítópulton van egy értesítés és egy hivatkozás a régi Azure Migrate projektek eléréséhez.
 
 
 

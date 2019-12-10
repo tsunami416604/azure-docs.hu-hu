@@ -2,18 +2,18 @@
 title: 'Infrastruktúra: helyszíni Apache Hadoop az Azure HDInsight'
 description: Ismerje meg a helyszíni Hadoop-fürtök Azure HDInsight való áttelepítésére vonatkozó ajánlott eljárásokat.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: adc0e5f5eef41dcb1f826ffbf0cfe91a937fac01
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499222"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951513"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-infrastruktúrára – ajánlott eljárások
 
@@ -23,10 +23,17 @@ Ez a cikk ajánlásokat nyújt az Azure HDInsight-fürtök infrastruktúrájána
 
 A HDInsight-fürt kapacitásának megtervezéséhez szükséges legfontosabb lehetőségek a következők:
 
-- **Válassza ki a régiót** – az Azure-régió meghatározza, hogy a fürt fizikailag hogyan legyen kiépítve. Az olvasási és írási késés csökkentése érdekében a fürtnek ugyanabban a régióban kell lennie, mint az adatokat.
-- A **tárolási hely és a méret kiválasztása** – az alapértelmezett tárolónak a fürttel azonos régióban kell lennie. 48 csomópontos fürt esetén ajánlott 4 – 8 Storage-fiók használata. Bár lehetséges, hogy a teljes tárterület már elegendő, az egyes Storage-fiókok további hálózati sávszélességet biztosítanak a számítási csomópontok számára. Ha több Storage-fiók van, akkor minden egyes Storage-fiókhoz használjon véletlenszerű nevet, előtag nélkül. A véletlenszerű elnevezések célja, hogy csökkentse a tárolási torlódások (szabályozás) és az összes fiók általános módú meghibásodásának esélyét. A jobb teljesítmény érdekében csak egy tárolót használjon Storage-fiókkal.
-- **Válassza ki a virtuális gép méretét és típusát (most már támogatja a G-sorozatot)** – minden egyes fürt típusa csomópont típusú, és minden csomópont-típushoz speciális beállítások vonatkoznak a virtuálisgép-mérethez és-típushoz. A virtuális gép méretét és típusát a CPU feldolgozási teljesítmény, a RAM mérete és a hálózati késés határozza meg. A virtuális gépek optimális méretének és típusának meghatározásához szimulált számítási feladatok használhatók.
-- **A munkavégző csomópontok számának kiválasztása** – a feldolgozó csomópontok kezdeti száma a szimulált számítási feladatokkal határozható meg. A fürt később is méretezhető, ha további munkavégző csomópontokat ad hozzá a maximális terhelési igények kielégítéséhez. A fürt később is méretezhető, ha a további munkavégző csomópontok nem szükségesek.
+**Régió**  
+Az Azure-régió meghatározza, hogy a fürt hol van fizikailag kiépítve. Az olvasási és írási késés csökkentése érdekében a fürtnek ugyanabban a régióban kell lennie, mint az adatokat.
+
+**Tárolási hely és méret**  
+Az alapértelmezett tárolónak ugyanabban a régióban kell lennie, mint a fürtnek. 48 csomópontos fürt esetén ajánlott 4 – 8 Storage-fiók használata. Bár lehetséges, hogy a teljes tárterület már elegendő, az egyes Storage-fiókok további hálózati sávszélességet biztosítanak a számítási csomópontok számára. Ha több Storage-fiók van, akkor minden egyes Storage-fiókhoz használjon véletlenszerű nevet, előtag nélkül. A véletlenszerű elnevezések célja, hogy csökkentse a tárolási torlódások (szabályozás) és az összes fiók általános módú meghibásodásának esélyét. A jobb teljesítmény érdekében csak egy tárolót használjon Storage-fiókkal.
+
+**VM-méret és-típus (mostantól támogatja a G sorozatot)**  
+Minden egyes fürt típusa csomópont típusú, és mindegyik csomópont típusa speciális beállításokkal rendelkezik a virtuálisgép-mérethez és-típushoz. A virtuális gép méretét és típusát a CPU feldolgozási teljesítmény, a RAM mérete és a hálózati késés határozza meg. A virtuális gépek optimális méretének és típusának meghatározásához szimulált számítási feladatok használhatók.
+
+**Munkavégző csomópontok száma**  
+A feldolgozó csomópontok kezdeti száma a szimulált munkaterhelések használatával határozható meg. A fürt később is méretezhető, ha további munkavégző csomópontokat ad hozzá a maximális terhelési igények kielégítéséhez. A fürt később is méretezhető, ha a további munkavégző csomópontok nem szükségesek.
 
 További információt a [HDInsight-fürtök kapacitásának megtervezése](../hdinsight-capacity-planning.md)című cikkben talál.
 
@@ -42,7 +49,7 @@ Az Apache Ambari felhasználói felületén vagy a Ambari REST API segítségév
 
 A helyszíni fürtökben elérhető, de nem a HDInsight-fürtök részét képező alkalmazások vagy összetevők hozzáadhatók egy peremhálózati csomóponton vagy egy olyan virtuális gépen, amely ugyanabban a VNet található, mint a HDInsight-fürt. Az Azure HDInsight nem elérhető külső gyártótól származó Hadoop alkalmazás a HDInsight-fürt "alkalmazások" lehetőségével telepíthető. Az egyéni Hadoop alkalmazások a HDInsight-fürtökön a "parancsfájl-műveletek" használatával telepíthetők. A következő táblázat néhány gyakori alkalmazást és azok HDInsight-integrációs lehetőségeit sorolja fel:
 
-|**Alkalmazás**|**Integrációs**
+|**Alkalmazás**|**Integráció**
 |---|---|
 |Légáramlás|IaaS vagy HDInsight Edge-csomópont
 |Alluxio|IaaS  
@@ -145,7 +152,7 @@ További információkért tekintse meg a következő cikket: [üres peremháló
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Fürtök vertikális felskálázásával és leskálázásával kapcsolatos funkciójának használata
 
-A HDInsight rugalmasságot biztosít azáltal, hogy lehetővé teszi a fürtökben lévő munkavégző csomópontok számának vertikális felskálázását és méretezését. Ez a funkció lehetővé teszi, hogy a fürtöket órák vagy hétvégék után, az üzleti igényeknek megfelelően bővítse. További információkért lásd:
+A HDInsight rugalmasságot biztosít azáltal, hogy lehetővé teszi a fürtökben lévő munkavégző csomópontok számának vertikális felskálázását és méretezését. Ez a funkció lehetővé teszi, hogy a fürtöket órák vagy hétvégék után, az üzleti igényeknek megfelelően bővítse. További információ eléréséhez lásd:
 
 * [HDInsight-fürtök méretezése](../hdinsight-scaling-best-practices.md).
 * [Fürtök méretezése](../hdinsight-administer-use-portal-linux.md#scale-clusters).
@@ -189,8 +196,6 @@ A HDInsight Azure-beli virtuális hálózatok és VPN-átjáró használatával 
 
 További információ: a [HDInsight összekapcsolása a helyszíni hálózattal](../connect-on-premises-network.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Olvassa el a következő cikket a sorozatban:
-
-- [Ajánlott eljárások a helyszíni Azure HDInsight Hadoop áttelepítéshez](apache-hadoop-on-premises-migration-best-practices-storage.md)
+Olvassa el a következő cikket ebben a sorozatban: [a helyszíni tárolásra vonatkozó ajánlott eljárásokat a Azure HDInsight Hadoop áttelepítéshez](apache-hadoop-on-premises-migration-best-practices-storage.md).

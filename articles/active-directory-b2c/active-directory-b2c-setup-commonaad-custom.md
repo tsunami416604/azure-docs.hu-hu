@@ -1,6 +1,7 @@
 ---
-title: Bejelentkezés beállítása több-bérlős Azure AD-identitás-szolgáltatóhoz egyéni szabályzatok használatával Azure Active Directory B2C
-description: Több-bérlős Azure AD-identitás-szolgáltató hozzáadása egyéni házirendek használatával – Azure Active Directory B2C.
+title: Bejelentkezés beállítása a több-bérlős Azure AD-hoz egyéni házirendek alapján
+titleSuffix: Azure AD B2C
+description: Több-bérlős Azure AD-identitás-szolgáltató hozzáadása a Azure Active Directory B2Cban található egyéni házirendek használatával.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5e4645d0fbdcd8cd44bb5972cdc28ab7eaa2a681
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: abac9152ff71c8fbf4ed53bfd663d29616382cf9
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73642628"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947782"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Több-bérlős Azure Active Directory bejelentkezésének beállítása egyéni házirendek használatával Azure Active Directory B2C
 
@@ -58,7 +59,7 @@ A Azure AD B2C bérlőben létrehozott alkalmazás-kulcsot kell tárolnia.
 1. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
 1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
 1. A **Beállítások**területen válassza a `Manual`lehetőséget.
-1. Adja meg a szabályzat kulcsának **nevét** . Például: `AADAppSecret`.  Az `B2C_1A_` előtagot a rendszer automatikusan hozzáadja a kulcs neveként a létrehozáskor, ezért a következő szakaszban található XML-ben a *B2C_1A_AADAppSecret*.
+1. Adja meg a szabályzat kulcsának **nevét** . Például: `AADAppSecret`.  A rendszer automatikusan hozzáadja a kulcs nevét a létrehozáskor `B2C_1A_` előtagot, ezért a következő szakaszban található XML-ben szereplő hivatkozás a *B2C_1A_AADAppSecret*.
 1. A **Secret (titkos kulcs**) mezőben adja meg a korábban feljegyzett ügyfél-titkot.
 1. A **kulcshasználat**beállításnál válassza a `Signature`lehetőséget.
 1. Kattintson a **Létrehozás** gombra.
@@ -123,7 +124,7 @@ Az Azure AD-t jogcím-szolgáltatóként is megadhatja, ha hozzáadja az Azure A
 
 1. A **ClaimsProvider** elem alatt frissítse a **tartomány** értékét egy olyan egyedi értékre, amelyet a más identitás-szolgáltatóktól való megkülönböztetéshez használhat.
 1. A **kivonatjogcím** elem alatt frissítse a **DisplayName**értékét, például `Contoso Employee`. Ez az érték jelenik meg a bejelentkezési oldalon a bejelentkezés gombon.
-1. Állítsa be a **client_id** a korábban regisztrált Azure ad több-bérlős alkalmazáshoz tartozó alkalmazás-azonosítóra.
+1. **Client_id** beállítása a korábban regisztrált Azure ad több-bérlős alkalmazás alkalmazás-azonosítójára.
 1. A **CryptographicKeys**alatt frissítse a **StorageReferenceId** értékét a korábban létrehozott házirend-kulcs nevére. Például: `B2C_1A_AADAppSecret`.
 
 ### <a name="restrict-access"></a>Hozzáférés korlátozása
@@ -133,7 +134,7 @@ Az Azure AD-t jogcím-szolgáltatóként is megadhatja, ha hozzáadja az Azure A
 
 Frissítenie kell az érvényes jogkivonat-kiállítók listáját, és korlátozni kell a hozzáférést az Azure AD-bérlő azon felhasználói számára, akik be tudnak jelentkezni.
 
-Az értékek beszerzéséhez tekintse meg az OpenID Connect Discovery metaadatait minden olyan Azure AD-bérlőhöz, amelyhez be szeretné jelentkezni a felhasználóktól. A metaadatok URL-címének formátuma hasonló a `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration`hoz, ahol `your-tenant` az Azure AD-bérlő neve. Például:
+Az értékek beszerzéséhez tekintse meg az OpenID Connect Discovery metaadatait minden olyan Azure AD-bérlőhöz, amelyhez be szeretné jelentkezni a felhasználóktól. A metaadatok URL-címének formátuma hasonló a `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration`hoz, ahol `your-tenant` az Azure AD-bérlő neve. Példa:
 
 `https://login.microsoftonline.com/fabrikam.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 
@@ -210,7 +211,7 @@ Ha a bejelentkezési folyamat sikeres, a böngésző átirányítja `https://jwt
 
 A több-bérlős bejelentkezési képesség teszteléséhez hajtsa végre az utolsó két lépést egy másik Azure AD-bérlőt használó felhasználó hitelesítő adataival.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéni szabályzatok használatakor előfordulhat, hogy további információra van szüksége, amikor a fejlesztés során hibaelhárítást végez a házirendben.
 

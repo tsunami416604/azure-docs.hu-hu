@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c29bba81132df15fcea9ff0df7be6a8cea94c9a0
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 27bf62cb328273db1f7bdd44117853b00feca9ae
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851128"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941576"
 ---
 # <a name="deploy-azure-farmbeats"></a>Az Azure FarmBeats üzembe helyezése
 
@@ -33,7 +33,7 @@ Az Azure-FarmBeats gyors üzembe helyezése kevesebb mint egy órát vehet igén
 
 Az Azure FarmBeats üzembe helyezése a következő erőforrásokat hozza létre az előfizetésén belül:
 
-| S. sz.  | Erőforrás neve  | FarmBeats-összetevő  |
+| Sorozatszám. sz.  | Erőforrás neve  | FarmBeats-összetevő  |
 |---------|---------|---------|
 |1  |       Azure Cosmos DB   |  Datahub       |
 |2  |    Application Insights      |     Datahub/gyorssegéd     |
@@ -49,7 +49,6 @@ Az Azure FarmBeats üzembe helyezése a következő erőforrásokat hozza létre
 |12|      Azure App Service      |  Datahub/gyorssegéd       |
 |13 |    App Service-csomag        |     Datahub/gyorssegéd      |
 |14 |Azure Maps fiók     |Accelerator    |
-|15 |       Azure Time Series Insights      |  Datahub     |
 
 Az Azure FarmBeats letölthető az Azure Marketplace-en, amelyet közvetlenül a Azure Portal érhet el.  
 
@@ -83,7 +82,7 @@ Az üzembe helyezés megkezdése előtt győződjön meg arról, hogy a követke
 
 A Sentinel-fiókkal rendelkező fiókok segítségével letöltheti a Sentinel műholdképeket a hivatalos webhelyről az eszközre. Ingyenes fiók létrehozásához tegye a következőket:
 
-1. Nyissa meg a [Sentinel-fiók regisztrálása lapot](https://scihub.copernicus.eu/dhus/#/self-registration). 
+1. Nyissa meg a [Sentinel-fiók regisztrálása lapot](https://scihub.copernicus.eu/dhus/#/self-registration).
 1. A regisztrációs űrlapon adja meg az utónév, a vezetéknév, a Felhasználónév, a jelszó és az e-mail-cím nevét.
 
 A rendszer visszaigazoló e-mailt küld a regisztrált e-mail-címre. Válassza ki a hivatkozást az e-mail-cím megerősítéséhez. A regisztrációs folyamat befejeződött.
@@ -211,7 +210,7 @@ Ebben a forgatókönyvben, amely az 1. lehetőségnél korábban szerepel, a tel
     > A jogkivonat 60 perc után lejár. Ha lejár, újraindítással újragépelheti a telepítési parancsot.
 
 1. A parancssorba írja be a Sentinel-fiók jelszavát.
-   
+
    A telepítő ellenőrzi és elindítja az üzemelő példányt, ami körülbelül 20 percet vesz igénybe.
 
    Az üzembe helyezés sikeres befejeződése után a következő kimeneti hivatkozásokat fogja kapni:
@@ -282,12 +281,8 @@ Ha bármilyen problémába ütközik, tekintse át a [hibaelhárítást](trouble
 A Datahub telepítésének befejezését követően megkapja az URL-címet, amely az Azure FarmBeats API-k elérését teszi elérhetővé a következő formátumban: https://\<yourdatahub-web Name >. azurewebsites. net/henceg.
 
 1. A hencegés használatával történő bejelentkezéshez másolja ki és illessze be az URL-címet a böngészőben.
-1. Jelentkezzen be Azure Portal hitelesítő adataival.
-1. Választható Próbálja ki ezt az "épelméjű tesztet": 
-
-     - Jelentkezzen be sikeresen a hencegő portálra a Datahub hivatkozás használatával, amelyet sikeres központi telepítésként kapott kimenetként.
-     - Kiterjesztett típusok – API – válassza ki a "kipróbálható/Execute" lehetőséget.
-     - Meg kell kapnia a 200-es kiszolgáló-válasz kódját, és nem kivételt, például "403 jogosulatlan felhasználó".
+2. Jelentkezzen be Azure Portal hitelesítő adataival.
+3. Megtekintheti a hencegés és az összes REST-művelet elvégzését az Azure FarmBeats API-kon. Ez az Azure-FarmBeats sikeres üzembe helyezését jelzi.
 
 ### <a name="accelerator"></a>Accelerator
 

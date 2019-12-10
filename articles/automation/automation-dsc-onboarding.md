@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 80038cf5fba18eca4fbbe1405df2a76cfc84e2db
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 89b51af3beaad645dc27b599c2493be4d4bdf30f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850329"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951411"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez
 
@@ -305,6 +305,15 @@ Az állapot-konfigurációs regisztrációs protokollhoz szükséges adatokat a 
 
 A további biztonság érdekében az Automation-fiókok elsődleges és másodlagos hozzáférési kulcsai bármikor újra létrehozhatók (a **kulcsok kezelése** lapon), így megelőzhető, hogy a későbbi csomópont-regisztrációk a korábbi kulcsok használatával is elérhetők legyenek.
 
+## <a name="certificate-expiration-and-re-registration"></a>Tanúsítvány lejárata és újbóli regisztrálása
+
+Miután Azure Automation állapot konfigurációjában egy gépet DSC-csomópontként regisztrált, számos oka lehet annak, hogy újra regisztrálnia kell a csomópontot a jövőben:
+
+- A Windows Server 2019 előtti verziói esetében minden egyes csomópont automatikusan egyeztet egy egyedi tanúsítványt a hitelesítéshez, amely egy év után lejár. Jelenleg a PowerShell DSC regisztrációs protokoll nem tudja automatikusan megújítani a tanúsítványokat, ha közelednek a lejárathoz, ezért a csomópontokat egy év múlva újra regisztrálnia kell. Az újbóli regisztrálás előtt győződjön meg arról, hogy minden csomóponton fut a Windows Management Framework 5,0 RTM. Ha egy csomópont hitelesítési tanúsítványa lejár, és a csomópontot nem regisztrálja újra, a csomópont nem tud kommunikálni Azure Automation és a "nem válaszol" jelöléssel van megjelölve. az újbóli regisztráció a tanúsítvány lejárati idejének 90 vagy kevesebb nap múlva, vagy a tanúsítvány lejárati idejének lejárta után bármikor új tanúsítványt fog generálni és használni.  A probléma megoldása a Windows Server 2019-es és újabb verzióiban is megtalálható.
+- Ha módosítani szeretné a [POWERSHELL DSC helyi Configuration Manager értékeit](/powershell/scripting/dsc/managing-nodes/metaConfig4) , amelyek a csomópont kezdeti regisztrálása során lettek beállítva, például ConfigurationMode. Jelenleg ezeket a DSC-ügynökök értékeit csak ismételt regisztrációval lehet megváltoztatni. Az egyetlen kivétel a csomóponthoz rendelt csomópont-konfiguráció – ez a Azure Automation DSC-ben közvetlenül is módosítható.
+
+az ismételt regisztráció ugyanúgy végezhető el, ahogyan a csomópontot először regisztrálta, a jelen dokumentumban ismertetett bevezetési módszerek bármelyikével. Az újbóli regisztrálás előtt nem kell a csomópontot Azure Automation állapot-konfigurációból regisztrálnia.
+
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Azure-beli virtuális gépek előkészítésének hibaelhárítása
 
 Azure Automation állapot-konfiguráció lehetővé teszi az Azure Windows rendszerű virtuális gépek egyszerű üzembe helyezését a konfiguráció felügyeletéhez. A motorháztető alatt az Azure VM desired State Configuration bővítmény a virtuális gép Azure Automation állapot-konfigurációval való regisztrálására szolgál. Mivel az Azure-beli virtuális gép kívánt állapotához tartozó konfigurációs bővítmény aszinkron módon fut, fontos lehet az előrehaladás nyomon követése és a végrehajtásuk hibaelhárítása.
@@ -314,14 +323,7 @@ Azure Automation állapot-konfiguráció lehetővé teszi az Azure Windows rends
 
 Az Azure-beli virtuális gép kívánt állapotához tartozó konfigurációs bővítmény állapotának hibakereséséhez vagy megtekintéséhez a Azure Portal navigáljon a bevezetést végző virtuális géphez, majd kattintson a **Beállítások**alatt található **bővítmények** elemre. Ezután kattintson a **DSC** vagy a **DSCForLinux** elemre az operációs rendszertől függően. További részletekért kattintson a **részletes állapot megtekintése**lehetőségre.
 
-## <a name="certificate-expiration-and-reregistration"></a>Tanúsítvány lejárata és újraregisztrálása
-
-Miután Azure Automation állapot konfigurációjában egy gépet DSC-csomópontként regisztrált, számos oka lehet annak, hogy újra regisztrálnia kell a csomópontot a jövőben:
-
-- A Windows Server 2019 előtti verziói esetében minden egyes csomópont automatikusan egyeztet egy egyedi tanúsítványt a hitelesítéshez, amely egy év után lejár. Jelenleg a PowerShell DSC regisztrációs protokollja nem tudja automatikusan megújítani a tanúsítványokat, ha közelednek a lejárathoz, ezért a csomópontokat egy év múlva újra regisztrálni kell. Az újbóli regisztrálás előtt győződjön meg arról, hogy minden csomóponton fut a Windows Management Framework 5,0 RTM. Ha egy csomópont hitelesítési tanúsítványa lejár, és a csomópontot nem regisztrálja újra, a csomópont nem tud kommunikálni Azure Automation és a "nem válaszol" jelöléssel van megjelölve. Az Újraregisztrálás a tanúsítvány lejárati idejétől számítva 90 vagy kevesebb napig, vagy a tanúsítvány lejárati idejének lejárta után bármikor új tanúsítványt fog generálni és használni.  A probléma megoldása a Windows Server 2019-es és újabb verzióiban is megtalálható.
-- Ha módosítani szeretné a [POWERSHELL DSC helyi Configuration Manager értékeit](/powershell/scripting/dsc/managing-nodes/metaConfig4) , amelyek a csomópont kezdeti regisztrálása során lettek beállítva, például ConfigurationMode. Jelenleg ezek a DSC-ügynök értékei csak az Újraregisztrálás útján módosíthatók. Az egyetlen kivétel a csomóponthoz rendelt csomópont-konfiguráció – ez a Azure Automation DSC-ben közvetlenül is módosítható.
-
-Az Újraregisztrálás ugyanúgy végezhető el, ahogy először regisztrálta a csomópontot, a jelen dokumentumban ismertetett bevezetési módszerek bármelyikének használatával. Az Újraregisztrálás előtt nem kell megszüntetnie a csomópont regisztrációját Azure Automation állapot-konfigurációból.
+A hibaelhárítással kapcsolatos további információkért lásd: [Azure Automation kívánt állapot-konfigurációval (DSC) kapcsolatos hibák elhárítása](./troubleshoot/desired-state-configuration.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

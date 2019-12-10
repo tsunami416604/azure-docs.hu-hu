@@ -1,5 +1,6 @@
 ---
-title: A Azure Active Directory B2C erőforrásaira és adatforrásaira vonatkozó fenyegetések kezelése
+title: Az erőforrásokra és az adatvédelemre vonatkozó fenyegetések kezelése
+titleSuffix: Azure AD B2C
 description: Ismerje meg az észlelési és kockázatcsökkentő technikákat a szolgáltatásmegtagadási támadások és a Azure Active Directory B2C a jelszavak elleni támadásokhoz.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eae82fbd56782faf5b15479c13fe530e189a0e3e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b236dba9b682bc4d62ef8cfc8b95e67370b3e0ea
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256904"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947740"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C erőforrásaira és adatforrásaira vonatkozó fenyegetések kezelése
 
@@ -43,12 +44,12 @@ A jelszavas védelem beállításainak kezelése, beleértve a zárolási küsz�
 1. A **Biztonság**területen válassza a **hitelesítési módszerek (előzetes verzió)** lehetőséget, majd válassza a **jelszavas védelem**lehetőséget.
 1. Adja meg a kívánt jelszavas védelmi beállításokat, majd válassza a **Mentés**lehetőséget.
 
-    ![Azure Portal jelszavas védelem lap az Azure AD-beállításokban](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)
+    ![Azure Portal jelszavas védelem lap az Azure AD-beállítások](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)
     <br />*A zárolási küszöbérték beállítása 5 értékre a **jelszavas védelem** beállításaiban*.
 
 ## <a name="view-locked-out-accounts"></a>Kizárt fiókok megtekintése
 
-A kizárt fiókokkal kapcsolatos információk beszerzéséhez tekintse meg a Active Directory [bejelentkezési tevékenység jelentését](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md). Az **állapot**területen válassza a **hiba**lehetőséget. Sikertelen bejelentkezési kísérletek a **bejelentkezési hibakód** alapján `50053` zárolt fiókot jeleznek:
+A kizárt fiókokkal kapcsolatos információk beszerzéséhez tekintse meg a Active Directory [bejelentkezési tevékenység jelentését](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md). Az **állapot**területen válassza a **hiba**lehetőséget. Sikertelen bejelentkezési kísérletek a **bejelentkezési hibakód** `50053` egy zárolt fiókot jelez:
 
 ![Az Azure AD bejelentkezési jelentés szakasza, amely a zárolt fiókot mutatja](media/active-directory-b2c-reference-threat-management/portal-01-locked-account.png)
 

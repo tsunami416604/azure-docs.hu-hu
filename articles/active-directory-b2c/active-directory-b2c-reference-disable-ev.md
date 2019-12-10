@@ -1,5 +1,6 @@
 ---
-title: Az e-mail-ellenőrzés letiltása az ügyfél-regisztráció során Azure Active Directory B2C
+title: E-mail-ellenőrzés letiltása az ügyfél regisztrálása közben
+titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan tilthatja le az e-mailek ellenőrzését a Azure Active Directory B2C az ügyfelek regisztrációja során.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9a7adc04991dd4a472bdaf1aa47aacaf6cdeb190
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c5b3598e33dac131c8881248a5f4b740a6302e20
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256929"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948147"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>Az e-mail-ellenőrzés letiltása az ügyfél-regisztráció során Azure Active Directory B2C
 
@@ -29,7 +30,7 @@ Az e-mail-ellenőrzés letiltásához kövesse az alábbi lépéseket:
 1. A felső menüben a **könyvtár + előfizetés** szűrő használatával válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. Válassza a **felhasználói folyamatok**lehetőséget.
-1. Válassza ki azt a felhasználói folyamatot, amelynek le szeretné tiltani az e-mail-ellenőrzését. Például: *B2C_1_signinsignup*.
+1. Válassza ki azt a felhasználói folyamatot, amelynek le szeretné tiltani az e-mail-ellenőrzését. Például *B2C_1_signinsignup*.
 1. Válassza **ki a lapelrendezések elemet**.
 1. Válassza a **helyi fiók regisztrálása lapot**.
 1. A **felhasználói attribútumok**területen válassza az **e-mail-cím**elemet.

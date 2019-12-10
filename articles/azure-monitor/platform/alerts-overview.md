@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: 9796b41d0df091bc6eb23ba525a79da278e00bbd
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b655181f41aeda71364edd061b7c81db23e59990
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802305"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951139"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztások áttekintése 
 
@@ -60,12 +60,12 @@ A riasztási szabályok legfontosabb attribútumai a következők:
 
 ## <a name="what-you-can-alert-on"></a>A riasztás bekapcsolása
 
-Az [adatforrások figyelése](../../azure-monitor/platform/data-sources-reference.md)című témakörben leírtak szerint riasztást kaphat a mérőszámokról és naplókról. Ilyenek például a következők:
+Az [adatforrások figyelése](../../azure-monitor/platform/data-sources-reference.md)című témakörben leírtak szerint riasztást kaphat a mérőszámokról és naplókról. Ezeket a következőkben ismertetjük a teljesség igénye nélkül:
 - Metrika értékei
 - Naplóbeli keresési lekérdezések
-- Műveletnapló eseményei
-- A mögöttes Azure platform állapota
-- Webhelyek rendelkezésre állására vonatkozó tesztek
+- Tevékenységnapló eseményei
+- A mögöttes Azure-platform állapota
+- Webhely rendelkezésre állására vonatkozó tesztek
 
 Korábban Azure Monitor a metrikák, a Application Insights, a Log Analytics és a Service Health külön riasztási képességekkel rendelkeztek. Az Azure az idő múlásával javította és kombinálja a felhasználói felületet és a riasztások különböző módszereit. Ez az összevonás még folyamatban van. Ennek eredményeképpen még mindig vannak olyan riasztási képességek, amelyek még nincsenek az új riasztások rendszerében.  
 
@@ -82,8 +82,8 @@ A következő riasztási állapotok támogatottak.
 | Állami | Leírás |
 |:---|:---|
 | Új | A probléma nemrég észlelhető, és még nincs áttekintve. |
-| Elismerte | A rendszergazda áttekintette a riasztást, és megkezdte a munkát. |
-| zárt | A probléma megoldódott. A riasztások bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
+| Nyugtázva | A rendszergazda áttekintette a riasztást, és megkezdte a munkát. |
+| Lezárt | A probléma megoldódott. A riasztások bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
 
 A *riasztási állapot* különbözik, és független a *figyelő feltételtől*. A riasztási állapotot a felhasználó állítja be. A figyelő feltételét a rendszer állítja be. Riasztás esetén a riasztás figyelési feltétele az elindított állapotra van *állítva.* Ha az alapul szolgáló feltétel, amely miatt a riasztás tüzet töröl, a figyelő feltétele *megoldottra*van állítva. A riasztási állapot addig nem változik, amíg a felhasználó nem módosítja. Útmutató a [riasztások és az intelligens csoportok állapotának módosításához](https://aka.ms/managing-alert-smart-group-states).
 
@@ -118,7 +118,7 @@ Válassza ki az alábbi értékeket a riasztások lap tetején egy másik oldal 
 |:---|:---|
 | Összes riasztás | A kiválasztott feltételeknek megfelelő riasztások teljes száma. Válassza ezt az értéket, ha a minden riasztás nézetet szűrő nélkül szeretné megnyitni. |
 | Intelligens csoportok | Azon intelligens csoportok teljes száma, amelyek a kiválasztott feltételeknek megfelelő riasztásokból lettek létrehozva. Válassza ezt az értéket az intelligens csoportok listájának az összes riasztás nézetben való megnyitásához.
-| Riasztási szabályok összesen | A kiválasztott előfizetéshez és erőforráscsoporthoz tartozó riasztási szabályok teljes száma. Ezzel az értékkel megnyithatja a kijelölt előfizetésben és erőforráscsoporthoz szűrt szabályok nézetet.
+| Összes riasztási szabály | A kiválasztott előfizetéshez és erőforráscsoporthoz tartozó riasztási szabályok teljes száma. Ezzel az értékkel megnyithatja a kijelölt előfizetésben és erőforráscsoporthoz szűrt szabályok nézetet.
 
 
 ## <a name="manage-alert-rules"></a>Riasztási szabályok kezelése
@@ -156,9 +156,9 @@ A nézet szűréséhez válassza a következő értékeket az oldal tetején tal
 | Erőforrás típusa | Válasszon ki egy vagy több erőforrástípust. Csak a kiválasztott típusú célokat tartalmazó riasztások szerepelnek a nézetben. Ez az oszlop csak az erőforráscsoport megadása után érhető el. |
 | Erőforrás | Válasszon ki egy erőforrást. A nézet csak az adott erőforrással rendelkező riasztásokat tartalmazza célként. Ez az oszlop csak az erőforrástípus megadása után érhető el. |
 | Súlyosság | Válassza ki a riasztás súlyosságát, vagy válassza az **összes** lehetőséget az összes súlyossági szintű riasztás befoglalásához. |
-| Figyelési feltétel | Válasszon ki egy figyelési feltételt, vagy válassza az **összes** lehetőséget az összes feltétel riasztásának befoglalásához. |
-| Riasztás állapota | Válasszon ki egy riasztási állapotot, vagy válassza az **összes** lehetőséget az összes állapotú riasztások belefoglalásához. |
-| Szolgáltatás figyelése | Válasszon ki egy szolgáltatást, vagy válassza az **összes** lehetőséget az összes szolgáltatás belefoglalásához. A rendszer csak a szolgáltatást célként használó szabályok által létrehozott riasztásokat tartalmazza. |
+| A figyelőre érvényes feltétel | Válasszon ki egy figyelési feltételt, vagy válassza az **összes** lehetőséget az összes feltétel riasztásának befoglalásához. |
+| A riasztás állapota | Válasszon ki egy riasztási állapotot, vagy válassza az **összes** lehetőséget az összes állapotú riasztások belefoglalásához. |
+| Monitorozási szolgáltatás | Válasszon ki egy szolgáltatást, vagy válassza az **összes** lehetőséget az összes szolgáltatás belefoglalásához. A rendszer csak a szolgáltatást célként használó szabályok által létrehozott riasztásokat tartalmazza. |
 | Időtartomány | Csak a kijelölt időtartományon belül indított riasztások szerepelnek a nézetben. A támogatott értékek az elmúlt óra, az elmúlt 24 óra, az elmúlt 7 nap és az elmúlt 30 nap. |
 
 Válassza ki az **oszlopok** elemet a lap tetején a megjelenítendő oszlopok kiválasztásához. 
@@ -178,7 +178,7 @@ A riasztás részletei lapon a következő témakörök találhatók:
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) a riasztási példányokhoz
 
-A riasztási példányok felhasználása és kezelése megköveteli, hogy a felhasználó rendelkezzen a [figyelési közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) vagy [figyelő olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)beépített RBAC szerepköreivel. Ezek a szerepkörök bármely Azure Resource Manager hatókörön támogatottak, az előfizetési szinttől kezdve a részletes hozzárendelésekhez az erőforrás szintjén. Ha például egy felhasználó csak a virtuális gép `ContosoVM1` figyeli a közreműködők hozzáférését, a felhasználó csak `ContosoVM1` által generált riasztásokat tud felhasználni és kezelni.
+A riasztási példányok felhasználása és kezelése megköveteli, hogy a felhasználó rendelkezzen a [figyelési közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) vagy [figyelő olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)beépített RBAC szerepköreivel. Ezek a szerepkörök bármely Azure Resource Manager hatókörön támogatottak, az előfizetési szinttől kezdve a részletes hozzárendelésekhez az erőforrás szintjén. Ha például egy felhasználó csak a virtuális gép `ContosoVM1`figyeli a közreműködők hozzáférését, a felhasználó csak `ContosoVM1`által generált riasztásokat tud felhasználni és kezelni.
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Riasztási példányok programozott kezelése
 
@@ -211,6 +211,7 @@ Az [Alert Management REST API](https://aka.ms/alert-management-api) segítségé
 - [A műveleti csoportok ismertetése](../../azure-monitor/platform/action-groups.md)
 - [Riasztási példányok kezelése az Azure-ban](https://aka.ms/managing-alert-instances)
 - [Intelligens csoportok kezelése](https://aka.ms/managing-smart-groups)
+- [További információ az Azure-riasztások díjszabásáról](https://azure.microsoft.com/pricing/details/monitor/)
 
 
 

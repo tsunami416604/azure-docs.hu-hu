@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása | Microsoft Docs
+title: 'SAP az Azure-on: tervezési és megvalósítási útmutató'
 description: Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b791ac58ada84ac0c2087f266d29bff4bd9c6fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 863070eb025d8ac58f6a0946d49732dc6b2842b8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224712"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951751"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -470,7 +470,7 @@ Az Azure Virtual Machine Services segítségével a Microsoft lehetővé teszi, 
 Működési szempontból az Azure Virtual Machine szolgáltatás hasonló élményeket kínál, mint a helyszínen üzembe helyezett virtuális gépek. Azonban ez a jelentős előnye, hogy nem szükséges az infrastruktúra beszerzéséhez, felügyeletéhez és kezeléséhez. A fejlesztők és a rendszergazdák teljes mértékben szabályozzák az operációs rendszer rendszerképét ezeken a virtuális gépeken belül. A rendszergazdák távolról is bejelentkezhetnek a virtuális gépekre a karbantartási és hibaelhárítási feladatok, valamint a szoftvertelepítési feladatok elvégzéséhez. Az üzembe helyezés tekintetében az egyetlen korlátozás az Azure-beli virtuális gépek méretei és képességei. Előfordulhat, hogy ezek a méretek nem annyira részletesek a konfigurációban, ahogy azt a helyszínen lehet elvégezni. A következők kombinációját képviselő virtuálisgép-típusok közül választhat:
 
 * VCPU száma
-* Memory (Memória)
+* Memória
 * A csatlakoztatható virtuális merevlemezek száma
 * Hálózati és tárolási sávszélesség
 
@@ -551,7 +551,7 @@ Az Azure Storage szolgáltatással kapcsolatos további információkért tekint
 * <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>
 * <https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/azure-disk-encryption-for-linux-and-windows-virtual-machines-public-preview.aspx>
 
-#### <a name="azure-standard-storage"></a>Azure standard Storage
+#### <a name="azure-standard-storage"></a>Azure Standard Storage
 Az Azure standard Storage az Azure IaaS kiadásakor elérhető tárolási típus. IOPS kvóták lettek kikényszerítve egy lemezen. A tapasztalt késés nem ugyanabban az osztályban található, mint a helyi környezetben üzemeltetett, nagy teljesítményű SAP-rendszerek esetében jellemzően telepített SAN/NAS-eszközök. Az Azure standard Storage azonban elég sok száz SAP-rendszernek bizonyult az Azure-ban üzembe helyezett időpontokban.
 
 Az Azure standard Storage-fiókokon tárolt lemezek számlázása a tárolt tényleges adatok, a tárolási tranzakciók mennyisége, a kimenő adatforgalom és a redundancia beállítás alapján történik. Több lemez is létrehozható az 1 TB-os maximális méretnél, de ha ezek üresen maradnak, díjmentesek. Ha ezt követően kitölt egy virtuális merevlemezt a 100 GB-mel, akkor a 100 GB tárolásért kell fizetnie, nem pedig a által létrehozott VHD-fájl névleges méretéhez.
@@ -685,7 +685,7 @@ Helyek közötti kapcsolat létrehozásához (helyszíni adatközpontból az Azu
 
 A fenti ábra két Azure-előfizetést mutat be az Azure-beli virtuális hálózatokban való használatra fenntartott IP-címek altartományával. A helyszíni hálózatról az Azure-ra való kapcsolódás VPN-kapcsolaton keresztül történik.
 
-#### <a name="point-to-site-vpn"></a>Pont – hely VPN
+#### <a name="point-to-site-vpn"></a>Pont – hely típusú VPN
 
 A pont – hely típusú VPN-hez minden ügyfélszámítógépnek csatlakoznia kell a saját VPN-hez az Azure-ban. Az SAP-forgatókönyvek esetében a pont – hely kapcsolat nem praktikus. Ezért a pont – hely VPN-kapcsolathoz nem kapnak további referenciákat.
 
@@ -814,7 +814,7 @@ Az Azure CLI nyílt forráskódú, platformfüggetlen parancsokat biztosít az A
 További információ a telepítéséről, konfigurálásáról és a CLI-parancsok Azure-feladatok végrehajtásához való használatáról:
 
 * [A klasszikus Azure CLI telepítése][xplat-cli]
-* [Telepítését és kezelését a virtuális gépek Azure Resource Manager-sablonok és az Azure parancssori felület használatával][../../linux/create-ssh-secured-vm-from-template.md]
+* [Virtuális gépek üzembe helyezése és kezelése Azure Resource Manager sablonok és az Azure CLI használatával] [.. /.. /linux/create-ssh-secured-vm-from-template.md]
 * [A klasszikus Azure CLI használata Mac, Linux és Windows rendszerhez Azure Resource Manager][xplat-cli-azure-resource-manager]
 
 Olvassa [el a][planning-guide] Linux rendszerű [virtuális gépekhez készült Azure CLI][deployment-guide-4.5.2] című fejezetet is, amely bemutatja, hogyan használható az Azure CLI az SAP-hez készült Azure-bővítmény üzembe helyezéséhez.
@@ -1029,7 +1029,7 @@ A letöltés ideje alatt a VHD-k vagy a Managed Disks nem lehetnek aktívak. Mé
 
   A Save-AzVhd parancsmaggal kapcsolatos további részletekért tekintse meg <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd>.
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 * Felügyelt lemez letöltése  
   Először el kell érnie a felügyelt lemez mögöttes blobját. Ezután átmásolhatja az alapul szolgáló blobot egy új Storage-fiókba, és letöltheti a blobot ebből a Storage-fiókból.
   ```
@@ -1070,7 +1070,7 @@ $config = New-AzDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscr
 New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk $config
 ```
 
-##### <a name="azure-cli"></a>Azure CLI
+##### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Az Azure CLI használatával a [cikkben][storage-azure-cli-copy-blobs]látható módon másolhat egy virtuális merevlemezt. Új felügyelt lemez létrehozásához használja az *az Disk Create* lehetőséget az alábbi példában látható módon.
 
@@ -1114,7 +1114,7 @@ $disk = New-AzDisk -DiskName <disk name> -Disk $diskConfig -ResourceGroupName <r
 $vm = Add-AzVMDataDisk -VM $vm -Caching <caching option> -Lun <lun, for example 0> -CreateOption attach -ManagedDiskId $disk.Id
 $vm | Update-AzVM
 ```
-##### <a name="azure-cli"></a>Azure CLI
+##### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 ```
 
@@ -1158,7 +1158,7 @@ Get-AzStorageBlobCopyState -Blob <target blob name> -Container <target container
 
 Példa erre a [cikkre][storage-powershell-guide-full-copy-vhd].
 
-##### <a name="azure-cli"></a>Azure CLI
+##### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 * A másolás elindítása a
 
 ```
@@ -1489,7 +1489,7 @@ $vm = Get-AzVM -ResourceGroupName $rgName -Name SAPERPDemo
 Add-AzVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -Lun 0 | Update-AzVM
 ```
 
-##### <a name="cli"></a>parancssori felület
+##### <a name="cli"></a>CLI
 
 A következő példában a kód Linux rendszeren is használható. Windows esetén a PowerShellt a fent leírtak szerint használja, vagy a példát a ( *z)%* rgName% használatára a $rgName helyett, a környezeti változót pedig a Windows-paranccsal állíthatja be.
 
@@ -1631,7 +1631,7 @@ Az alábbi táblázatban látható az SAP kommunikációs portok listája. Alapv
 
 | Szolgáltatás | Port neve | Példa `<nn`> = 01 | Alapértelmezett tartomány (min. max.) | Megjegyzés |
 | --- | --- | --- | --- | --- |
-| Kézbesítő |sapdp`<nn>` lásd: * |3201 |3200 - 3299 |SAP-diszpécser, amelyet a Windows és a Java SAP grafikus felülete használ |
+| Kézbesítő |sapdp`<nn>` lásd: * |3201 |3200 – 3299 |SAP-diszpécser, amelyet a Windows és a Java SAP grafikus felülete használ |
 | Üzenet-kiszolgáló |sapms`<sid`> lásd: * * |3600 |ingyenes sapms`<anySID`> |SID = SAP-System-ID |
 | Átjáró |sapgw`<nn`> lásd: * |3301 |ingyenes |CPIC és RFC-kommunikációhoz használt SAP Gateway |
 | SAP-útválasztó |sapdp99 |3299 |ingyenes |A/etc/Services-ben csak a CI (központi példány) szolgáltatások nevei állíthatók be tetszőleges értékre a telepítés után. |
@@ -1811,7 +1811,7 @@ Az Azure-ban futó SAP-példányoknak elérhetőnek kell lenniük a SAProuter-t�
 A SAProuter lehetővé teszi a TCP/IP-kommunikációt a résztvevő rendszerek között, ha nincs közvetlen IP-kapcsolat. Ez biztosítja azt az előnyt, hogy a kommunikációs partnerek közötti végpontok közötti kapcsolatra nincs szükség hálózati szinten. A SAProuter alapértelmezés szerint a 3299-es portot figyeli.
 Az SAP-példányok SAProuter való összekapcsolásához meg kell adnia a SAProuter karakterláncot és az állomásnevet a kapcsolódási kísérletekhez.
 
-## <a name="sap-netweaver-as-java"></a>SAP NetWeaver AS Java
+## <a name="sap-netweaver-as-java"></a>SAP NetWeaver mint Java
 
 Eddig a dokumentum középpontjában az SAP NetWeaver általános vagy az SAP NetWeaver ABAP-verem található. Ebben a kis szakaszban az SAP Java Stackre vonatkozó konkrét szempontok szerepelnek. Az egyik legfontosabb SAP NetWeaver Java-alapú alkalmazás az SAP Enterprise Portal. Más SAP NetWeaver-alapú alkalmazások, például az SAP PI és az SAP Solution Manager egyaránt az SAP NetWeaver ABAP és a Java stackeket használják. Ezért mindenképpen meg kell fontolni az SAP NetWeaver Java-veremmel kapcsolatos konkrét szempontokat is.
 
@@ -2074,4 +2074,4 @@ Olvassa el a cikkeket:
 - [Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
 - [Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
 - [SAP HANA infrastruktúra-konfigurációk és-műveletek az Azure-on] (https://docs.microsoft.com/
-- azure/virtual-machines/workloads/sap/hana-vm-operations)
+- Azure/Virtual-Machines/munkaterhelés/SAP/Hana-VM-Operations)

@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: b5299f49663fbf2e828f76d9c240a86fdccb2ff2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872689"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951445"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Gyors útmutató: számítógépek összekötése az Azure-hoz az Azure arc for Servers használatával – PowerShell
 
@@ -72,8 +72,11 @@ A kimenetből másolja a **jelszót** és a **ApplicationId** (az előző lépé
 
 Az ügynök telepítése bevezetési parancsfájlban:
 
-* A **ApplicationId** tulajdonság a telepítési ügynökben használt `--service-principal-id` paraméterhez használatos.
-* A **Password** tulajdonság a telepítési ügynök `--service-principal-secret` paramétereként használatos.
+* Az **ApplicationId** tulajdonság az ügynökhöz való kapcsolódáshoz használt `--service-principal-id` paraméterhez használatos.
+* A **Password** tulajdonság az ügynökhöz való kapcsolódáshoz használt `--service-principal-secret` paraméterhez használatos.
+
+> [!NOTE]
+> Ügyeljen arra, hogy az egyszerű szolgáltatásnév **ApplicationId** tulajdonságát használja, ne az **ID** tulajdonságot. Az **azonosító** nem fog működni.
 
 ## <a name="manually-install-the-agent-and-connect-to-azure"></a>Az ügynök manuális telepítése és az Azure-hoz való kapcsolódás
 
@@ -90,7 +93,6 @@ A **Linux** -kiszolgálók esetében az ügynököt a [Microsoft csomag-tárház
 > [!NOTE]
 > A nyilvános előzetes verzióban csak egy csomag jelenik meg, amely Ubuntu 16,04 vagy 18,04 esetén megfelelő.
 
-<!-- What about this aks? -->
 A legegyszerűbb lehetőség a Package adattár regisztrálása, majd a csomag telepítése a Distribution Package Manager használatával.
 A [https://aka.ms/azcmagent](https://aka.ms/azcmagent) található bash-parancsfájl a következő műveleteket hajtja végre:
 

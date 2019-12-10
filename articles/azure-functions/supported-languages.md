@@ -2,13 +2,13 @@
 title: Támogatott nyelvek a Azure Functions
 description: Megtudhatja, hogy mely nyelvek támogatottak (GA), és melyek kísérleti vagy előzetes verziójúak.
 ms.topic: conceptual
-ms.date: 08/02/2018
-ms.openlocfilehash: 3b61dd83e481d42dd15f089247d016c6b71ff0de
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 11/27/2019
+ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230280"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942256"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Támogatott nyelvek a Azure Functions
 
@@ -24,7 +24,7 @@ Három támogatási szint létezik:
 
 ## <a name="languages-by-runtime-version"></a>Nyelvek futásidejű verzió szerint 
 
-[A Azure functions futtatókörnyezet két verziója](functions-versions.md) érhető el. Az alábbi táblázat azt mutatja, hogy az egyes futásidejű verziók Milyen nyelveket támogatnak.
+[A Azure functions futtatókörnyezet három verziója](functions-versions.md) érhető el. Az alábbi táblázat azt mutatja, hogy az egyes futásidejű verziók Milyen nyelveket támogatnak.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
@@ -34,7 +34,7 @@ Az 1. x verzióban a kísérleti nyelvek nem méretezhetők jól, és nem támog
 
 Ne használjon olyan kísérleti funkciókat, amelyekre támaszkodik, mivel nem rendelkezik hivatalos támogatással a számukra. A kísérleti nyelvekkel kapcsolatos problémák esetén nem szabad megnyitni a támogatási eseteket. 
 
-A 2. x verziójú futtatókörnyezet nem támogatja a kísérleti nyelveket. Az új nyelvek támogatását csak akkor adja hozzá a rendszer, ha a nyelv az éles környezetben is támogatott. 
+A későbbi futásidejű verziók nem támogatják a kísérleti nyelveket. Az új nyelvek támogatását csak akkor adja hozzá a rendszer, ha a nyelv az éles környezetben is támogatott. 
 
 ### <a name="language-extensibility"></a>Nyelvi bővíthetőség
 

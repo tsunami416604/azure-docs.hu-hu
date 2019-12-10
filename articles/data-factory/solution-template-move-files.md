@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: dc842ba0e7ca0f34b7dacb98322c4dc0cd056483
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931988"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941918"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Fájlok áthelyezése Azure Data Factory
 
@@ -36,9 +36,11 @@ A sablon öt tevékenységet tartalmaz:
 - A másolás egy fájlt **másol** a forrásról a célhelyre.
 - A **delete** parancs törli a forrás-áruházból származó azonos fájlt.
 
-A sablon két paramétert határoz meg:
-- A *FolderPath_SourceStore* az a forrásként megadott mappa elérési útja, ahová át szeretné helyezni a fájlokat. 
-- *FolderPath_DestinationStore* a célhely azon mappájának elérési útja, ahová át szeretné helyezni a fájlokat. 
+A sablon négy paramétert határoz meg:
+- A *SourceStore_Location* az a forrásként megadott mappa elérési útja, ahová át szeretné helyezni a fájlokat. 
+- *SourceStore_Directory* annak a forrásnak az almappájának elérési útja, ahová át szeretné helyezni a fájlokat.
+- *DestinationStore_Location* a célhely azon mappájának elérési útja, ahová át szeretné helyezni a fájlokat. 
+- *DestinationStore_Directory* annak a célhelynek az almappájának elérési útja, ahová át szeretné helyezni a fájlokat.
 
 ## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
 
@@ -50,9 +52,7 @@ A sablon két paramétert határoz meg:
 
     ![Új kapcsolódás létrehozása a célhoz](media/solution-template-move-files/move-files2.png)
 
-3. Kattintson a **Sablon használata** lehetőségre.
-
-    ![A sablon használata](media/solution-template-move-files/move-files3.png)
+3. Válassza **a sablon használata** lapot.
     
 4. Ekkor megjelenik a folyamat, ahogy az alábbi példában is látható:
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b2d02ed5a9fb2cb10e4cf18fe7d878da5b032fe0
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ba95723e62cec9708684665a9d141b1e39ccb831
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816400"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951836"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speechi adatfeldolgozás előkészítése
 
@@ -62,6 +62,9 @@ Ezzel a táblázattal ellenőrizheti, hogy a hangfájlok formátuma helyesen van
 | Archív formátum | .zip |
 | Archiválás maximális mérete | 2 GB |
 
+> [!TIP]
+> A képzés és a tesztelési célú adatfeldolgozás során a. zip fájl mérete nem haladhatja meg a 2 GB-ot. Ha további adatokra van szüksége a képzéshez és a teszteléshez, Ossza szét azt több. zip-fájlba, és töltse fel őket külön. Később *több* adatkészletből is elvégezheti a betanítást és tesztelést.
+
 Ha a hang nem elégíti ki ezeket a tulajdonságokat, vagy ha igen, akkor javasoljuk, hogy a [rendszer a hanganyagot a letöltéshez](http://sox.sourceforge.net) . Az alábbiakban néhány példát láthat arra, hogyan végezheti el ezeket a tevékenységeket a parancssorból:
 
 | Tevékenység | Leírás | SOx-parancs |
@@ -71,7 +74,7 @@ Ha a hang nem elégíti ki ezeket a tulajdonságokat, vagy ha igen, akkor javaso
 
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>Hang + emberi-feliratú átirati adatok tesztelési/betanítási célokra
 
-Ha a Microsoft beszéd-szöveg pontosságát szeretné mérni a hangfájlok feldolgozásakor, az összehasonlításhoz meg kell adnia az emberi címkével ellátott átírásokat (Word-by-Word). Míg az emberi címkével ellátott átírás gyakran időigényes, a pontosság kiértékelése és a modell betanítása szükséges a használati esetekhez. Ne feledje, hogy az elismerés fejlesztése csak a megadott adatszolgáltatások esetében lesz megfelelő. Ezért fontos, hogy csak a kiváló minőségű átiratok legyenek feltöltve.  
+Ha a Microsoft beszéd-szöveg pontosságát szeretné mérni a hangfájlok feldolgozásakor, az összehasonlításhoz meg kell adnia az emberi címkével ellátott átírásokat (Word-by-Word). Míg az emberi címkével ellátott átírás gyakran időigényes, a pontosság kiértékelése és a modell betanítása szükséges a használati esetekhez. Ne feledje, hogy az elismerés fejlesztése csak a megadott adatszolgáltatások esetében lesz megfelelő. Ezért fontos, hogy csak a kiváló minőségű átiratok legyenek feltöltve.
 
 | Tulajdonság | Value (Díj) |
 |----------|-------|
@@ -82,6 +85,9 @@ Ha a Microsoft beszéd-szöveg pontosságát szeretné mérni a hangfájlok feld
 | Minta formátuma | PCM, 16 bites |
 | Archív formátum | .zip |
 | Maximális zip-méret | 2 GB |
+
+> [!TIP]
+> A képzés és a tesztelési célú adatfeldolgozás során a. zip fájl mérete nem haladhatja meg a 2 GB-ot. Ha további adatokra van szüksége a képzéshez és a teszteléshez, Ossza szét azt több. zip-fájlba, és töltse fel őket külön. Később *több* adatkészletből is elvégezheti a betanítást és tesztelést.
 
 A Word törlési vagy helyettesítési problémák megoldásához jelentős mennyiségű adattal kell foglalkoznia az elismerés javítása érdekében. Általánosságban elmondható, hogy nagyjából 10 – 1 000 órányi hanganyagot biztosít a Word-by-Word típusú átírásoknak. Az összes WAV fájl átiratát egyetlen, egyszerű szöveges fájlnak kell tartalmaznia. Az átiratfájl minden sorának egy hangfájl nevét és az annak megfelelő átiratot kell tartalmaznia. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani.
 

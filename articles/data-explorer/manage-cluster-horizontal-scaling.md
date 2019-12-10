@@ -3,28 +3,24 @@ title: A fürt horizontális skálázásának kezelése (horizontális felskál�
 description: Ez a cikk az Azure Adatkezelő-fürt skálázásának és méretezésének lépéseit ismerteti a változó igények alapján.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/14/2019
-ms.openlocfilehash: eb204701b42436a5ae95bac97ed6fd97cf272860
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.date: 12/09/2019
+ms.openlocfilehash: 52a9c0a13723361bbc93362cdd9e2c73ef0372f2
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561868"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942239"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>A fürt horizontális skálázásának kezelése (horizontális felskálázás) az Azure Adatkezelő a változó igények kielégítése érdekében
 
-A fürt megfelelő méretezése az Azure-Adatkezelő teljesítményének szempontjából kritikus fontosságú. A statikus fürt mérete a használaton kívüli vagy túlzott kihasználtságot eredményezhet, ami egyik ideális megoldás.
-
-Mivel a fürtök iránti igényt nem lehet abszolút pontossággal előre jelezni, jobb megoldás a fürt *méretezése* , a kapacitás és a CPU-erőforrások hozzáadása és eltávolítása a változó igényekkel. 
+A fürt megfelelő méretezése az Azure-Adatkezelő teljesítményének szempontjából kritikus fontosságú. A statikus fürt mérete a használaton kívüli vagy túlzott kihasználtságot eredményezhet, ami egyik ideális megoldás. Mivel a fürtök iránti igényt nem lehet abszolút pontossággal előre jelezni, jobb megoldás a fürt *méretezése* , a kapacitás és a CPU-erőforrások hozzáadása és eltávolítása a változó igényekkel. 
 
 Az Azure Adatkezelő-fürtök méretezésére két munkafolyamat áll rendelkezésre: 
-
 * Horizontális skálázás, más néven skálázás be-és kifelé.
 * [Vertikális skálázás](manage-cluster-vertical-scaling.md), más néven felfelé és lefelé skálázás.
-
 Ez a cikk a horizontális skálázási munkafolyamatot ismerteti.
 
 ## <a name="configure-horizontal-scaling"></a>Vízszintes skálázás konfigurálása
@@ -35,7 +31,7 @@ A horizontális skálázás használatával az előre meghatározott szabályok 
 
 2. A **kibővítő** ablakban válassza ki a kívánt automatikus méretezési módszert: **manuális méretezés**, **optimalizált automatikus méretezés**vagy egyéni automatikus **Méretezés**.
 
-### <a name="manual-scale"></a>Manuális méretezés
+### <a name="manual-scale"></a>Manuális skálázás
 
 A fürt létrehozása során az alapértelmezett beállítás a manuális skálázás. A fürt statikus kapacitása nem változik automatikusan. A statikus kapacitást a **Példányszám** sáv használatával választhatja ki. A fürt skálázása ebben a beállításban marad, amíg egy másik módosítást nem végez.
 
@@ -47,7 +43,7 @@ Az optimalizált autoskálázás az ajánlott autoskálázási módszer. Ez a m�
 
 1. Válassza az **optimalizált méretezés**lehetőséget. 
 
-1. Válassza ki a példányok minimális száma és a példányok maximális száma értéket. A fürt automatikus skálázási tartománya a két szám között a terhelés alapján.
+1. Válassza ki a példányok minimális száma és a példányok maximális száma értéket. A fürt automatikus méretezési tartománya a két szám között a terhelés alapján.
 
 1. Kattintson a **Mentés** gombra.
 
@@ -55,13 +51,40 @@ Az optimalizált autoskálázás az ajánlott autoskálázási módszer. Ez a m�
 
 Az optimalizált autoscale megkezdi a munkát. A műveletei már láthatók a fürt Azure-tevékenység naplójában.
 
-### <a name="custom-autoscale"></a>Egyéni méretezés
+#### <a name="logic-of-optimized-autoscale"></a>Optimalizált autoskálázás logikája 
+
+**Horizontális felskálázás**
+
+Ha a fürt túlzott kihasználtságú állapotot közelít, az optimális teljesítmény érdekében felskálázást biztosít. A vertikális felskálázás a következő esetekben fog történni:
+* A fürtözött példányok száma nem éri el a felhasználó által definiált példányok maximális számát.
+* A gyorsítótár kihasználtsága több mint egy óra alatt magas.
+
+> [!NOTE]
+> A kibővíthető logika jelenleg nem veszi figyelembe a betöltés kihasználtságát és a CPU-metrikákat. Ha ezek a metrikák a használati eset szempontjából fontosak, használja az [Egyéni autoskálázást](#custom-autoscale).
+
+**Skálázás**
+
+Ha a fürt a használaton kívüli állapotot közelíti meg, az alacsonyabb költségekre, de a teljesítmény fenntartására is kiterjed. A rendszer több mérőszámot használ annak ellenőrzéséhez, hogy biztonságos-e a fürt méretezése. A következő szabályok naponta kiértékelésre kerülnek a méretezés előtt 7 napig:
+* A példányok száma meghaladja a 2 értéket, és meghaladja a definiált példányok minimális számát.
+* Annak biztosítása érdekében, hogy az erőforrások ne legyenek túlterhelve, a következő metrikákat ellenőrizni kell a skálázás végrehajtása előtt: 
+    * A gyorsítótár kihasználtsága nem magas
+    * A CPU átlag alatt van 
+    * A betöltés kihasználtsága átlag alatt van 
+    * A streaming betöltési kihasználtsága (ha a folyamatos átvitel használatban van) nem magas
+    * Az életben lévő események megtartása egy meghatározott minimális, megfelelően feldolgozott és időben történik.
+    * Nincs lekérdezés-szabályozás 
+    * A sikertelen lekérdezések száma nem éri el a megadott minimális értéket.
+
+> [!NOTE]
+> A méretezés a logikában jelenleg 7 napos kiértékelést igényel az optimalizált skálázás megvalósítása előtt. A kiértékelés 24 óránként történik. Ha gyors módosításra van szükség, használja a [manuális skálázást](#manual-scale).
+
+### <a name="custom-autoscale"></a>Egyéni automatikus skálázás
 
 Az egyéni autoscale használatával dinamikusan méretezheti a fürtöt a megadott mérőszámok alapján. Az alábbi ábrán a folyamat és az egyéni autoskálázás konfigurálásának lépései láthatók. További részletekért kövesse a grafikát.
 
 1. Az **autoskálázási beállítás neve** mezőbe írjon be egy nevet, például *: kibővíthető: gyorsítótár kihasználtsága*. 
 
-   ![Skálázási szabály](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
+   ![Szabály skálázása](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
 2. A **méretezési mód**beállításnál válassza a **skála mérőszám alapján**lehetőséget. Ez a mód dinamikus skálázást biztosít. Kiválaszthatja **a méretezés adott példányszámot**is.
 
@@ -108,5 +131,4 @@ Ezzel konfigurálta az Azure Adatkezelő-fürt horizontális skálázását. Adj
 ## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Adatkezelő teljesítményének, állapotának és használatának monitorozása metrikákkal](using-metrics.md)
-
 * Fürt [vertikális skálázásának kezelése](manage-cluster-vertical-scaling.md) a fürt megfelelő méretezéséhez.

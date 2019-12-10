@@ -5,26 +5,29 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0a4fb337adfb2f4e6b8edb86ac620103e929c3a8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 89f364d9246db27276eee6d05e8130e87061feec
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842135"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941601"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Az Azure FarmBeats hibáinak megoldása
 
 Ez a cikk az Azure FarmBeats kapcsolatos gyakori problémák megoldásait ismerteti.
 
-További segítségért lépjen kapcsolatba velünk a következő címen: farmbeatssupport@microsoft.com. Ügyeljen arra, hogy tartalmazza az *üzembe helyező. log* fájlt az e-mailben.
+További segítségért lépjen kapcsolatba velünk a következő címen: farmbeatssupport@microsoft.com. Ügyeljen arra, hogy tartalmazza az **üzembe helyező. log** fájlt az e-mailben.
 
-A *telepítő. log* fájl letöltéséhez tegye a következőket:
+A **telepítő. log** fájl letöltéséhez tegye a következőket:
 
-1. Válassza ki a Kiemelt ikont, majd a legördülő listából válassza a **Letöltés**lehetőséget.
+1. Jelentkezzen be **Azure Portalra** , és válassza ki az előfizetését és az Azure ad-bérlőt.
+2. Indítsa el a Cloud Shellt az Azure Portal felső navigációs szakaszából.
+3. Válassza a **bash** lehetőséget az előnyben részesített Cloud shelli élményhez.
+4. Válassza ki a Kiemelt ikont, majd a legördülő listából válassza a **Letöltés**lehetőséget.
 
     ![Projekt FarmBeats](./media/troubleshooting-farmbeats/download-deployer-log-1.png)
 
-1. A következő ablaktáblán adja meg a *telepítő. log* fájljának elérési útját. Adja meg például a **farmbeats-deployer. log naplófájlt**.
+5. A következő ablaktáblán adja meg a **telepítő. log** fájljának elérési útját. Adja meg például a **farmbeats-deployer. log naplófájlt**.
 
 ## <a name="sensor-telemetry"></a>Érzékelő telemetria
 
@@ -32,7 +35,7 @@ A *telepítő. log* fájl letöltéséhez tegye a következőket:
 
 **Tünet**: az eszközök vagy érzékelők üzembe helyezése megtörténik, és a FarmBeats-t csatlakoztatta az eszköz partneréhez, de nem tudja lekérni vagy megtekinteni a telemetria adatait a FarmBeats.
 
-**Javítási művelet**: 
+**Javítási művelet**:
 
 1. Lépjen a FarmBeats Datahub-erőforráscsoporthoz.   
 1. Válassza ki az **Event hub** (DatafeedEventHubNamespace) elemet, majd keresse meg a bejövő üzenetek számát.
@@ -44,14 +47,14 @@ A naplók letöltésének megismeréséhez lépjen a ["naplók manuális gyűjt�
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>Nem rendelkezik az Azure Event Hubs-beli kapcsolatok karakterláncával
 
-**Javítási művelet**: 
+**Javítási művelet**:
 
 1. A Datahub hencegés területen lépjen a partner API-ra.
 1. Válassza a **Beolvasás** > **kipróbálás** > **végrehajtás**lehetőséget.
 1. Jegyezze fel annak az érzékelő-partnernek a partner-AZONOSÍTÓját, amelyre kíváncsi.
 1. Lépjen vissza a partner API-hoz, és válassza a **Get/\<ID >** lehetőséget.
 1. Adja meg a partner AZONOSÍTÓját a 3. lépésben, majd válassza a **végrehajtás**lehetőséget.
-   
+
    Az API-válasznak tartalmaznia kell a Event Hubs-kapcsolatok karakterláncát.
 
 ### <a name="device-appears-offline"></a>Az eszköz offline állapotban jelenik meg
@@ -128,7 +131,7 @@ Ha a hiba továbbra is fennáll, vegye fel a hibaüzenetet a FarmBeats fórumon,
 **Probléma**: a FarmBeats-gyorsító nem jeleníti meg a legújabb verziót még a FarmBeatsDeployment frissítése után sem.
 
 **Javító művelet**: Ez a hiba a szolgáltatás munkavégző általi megőrzésének a böngészőben való megőrzése miatt fordul elő. Tegye a következőket:
-1. Zárjunk be minden olyan böngésző fület, amelyen a Gyorssegéd meg van nyitva, és zárjuk be a böngészőablakot. 
+1. Zárjunk be minden olyan böngésző fület, amelyen a Gyorssegéd meg van nyitva, és zárjuk be a böngészőablakot.
 1. Indítsa el a böngésző új példányát, és töltse be újra a Gyorssegéd URI-JÁT. Ez a művelet betölti a Gyorssegéd új verzióját.
 
 ## <a name="sentinel-imagery-related-issues"></a>Sentinel: rendszerképekkel kapcsolatos problémák
@@ -137,7 +140,7 @@ Ha a hiba továbbra is fennáll, vegye fel a hibaüzenetet a FarmBeats fórumon,
 
 **Sikertelen feladatok üzenete**: "a teljes hitelesítés szükséges az erőforrás eléréséhez."
 
-**Javítási művelet**: 
+**Javítási művelet**:
 
 Folytassa a következők egyikével:
 * Futtassa újra a telepítőt a Datahub frissítéséhez a megfelelő felhasználónévvel és jelszóval.
@@ -207,7 +210,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 
     ![Projekt FarmBeats](./media/troubleshooting-farmbeats/collecting-logs-manually-1.png)
 
-### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Azure Data Factory-feladatokhoz tartozó naplók gyűjtése a Gyorssegédben 
+### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Azure Data Factory-feladatokhoz tartozó naplók gyűjtése a Gyorssegédben
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A **keresőmezőbe** keresse meg a FarmBeats-gyorsító erőforráscsoportot.

@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 24bee8ffe23d524553143b2097560979a39329d7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784714"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941831"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
 
@@ -29,37 +29,47 @@ A functions a helyi számítógépen való fejlesztése és az Azure-ba való k�
 > * [A függvény helyi futtatása](#start)
 > * [A projekt közzététele az Azure-ban](#publish)
 
-## <a name="core-tools-versions"></a>Alapvető eszközök verziói
+## <a name="core-tools-versions"></a>A Core Tools verziói
 
-A Azure Functions Core Tools két verziója létezik. A használt verzió a helyi fejlesztési környezettől, a [választott nyelvtől](supported-languages.md)és a szükséges támogatási szinttől függ:
+A Azure Functions Core Tools három verziója létezik. A használt verzió a helyi fejlesztési környezettől, a [választott nyelvtől](supported-languages.md)és a szükséges támogatási szinttől függ:
 
-+ 1\. x verzió: a futtatókörnyezet 1. x verzióját támogatja. Az eszközök ezen verziója csak Windows rendszerű számítógépeken támogatott, és egy NPM- [csomagból](https://docs.npmjs.com/getting-started/what-is-npm)van telepítve. Ezzel a verzióval a nem hivatalosan támogatott kísérleti nyelveken hozhat létre függvényeket. További információ: [Azure functions támogatott nyelvei](supported-languages.md)
++ **1. x verzió**: a Azure functions futtatókörnyezet 1. x verzióját támogatja. Az eszközök ezen verziója csak Windows rendszerű számítógépeken támogatott, és egy NPM- [csomagból](https://www.npmjs.com/package/azure-functions-core-tools)van telepítve.
 
-+ [2. x verzió](#v2): [a futtatókörnyezet 2. x verzióját](functions-versions.md)támogatja. Ez a verzió támogatja a Windows, a [MacOS](#brew)és a [Linux](#linux) [rendszert](#windows-npm). Platform-specifikus csomagkezelő vagy NPM használata a telepítéshez.
++ [**2. x/3. x verzió**](#v2): [a Azure functions futtatókörnyezet 2. x vagy 3. x verzióját](functions-versions.md)támogatja. Ezek a verziók támogatják a Windows, a [MacOS](#brew)és a [Linux](#linux) [rendszert](#windows-npm), és platform-specifikus csomagkezelő vagy NPM használatával telepíthetők.
 
-Ha másként nincs jelezve, a cikkben szereplő példák a 2. x verzióra vonatkoznak.
+Ha másként nincs jelezve, a cikkben szereplő példák a 3. x verzióra vonatkoznak.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Az Azure Functions Core Tools telepítése
 
 [Azure functions Core Tools] tartalmaz egy olyan verziót, amely a helyi fejlesztési számítógépen futtatható Azure functions futtatókörnyezetet is felhasználja. Emellett parancsokat is biztosít a függvények létrehozásához, az Azure-hoz való kapcsolódáshoz és a functions-projektek üzembe helyezéséhez.
 
-### <a name="v2"></a>2-es verzió. x
+### <a name="v2"></a>2. x és 3. x verzió
 
-Az eszközök 2. x verziója a .NET Core-ra épülő Azure Functions Runtime 2. x verziót használja. Ez a verzió a .NET Core 2. x összes platformján támogatott, beleértve a Windows, a [MacOS](#brew)és a [Linux](#linux) [rendszert](#windows-npm)is. 
+Az eszközök 2. x/3. x verziója a .NET Core-ra épülő Azure Functions futtatókörnyezetet használja. Ez a verzió a .NET Core összes platformján támogatott, beleértve a Windows, a [MacOS](#brew)és a [Linux](#linux) [rendszert](#windows-npm)is. 
 
 > [!IMPORTANT]
-> A .NET Core 2. x SDK a [bővítmények]használatával történő telepítésének követelményét kihagyhatja.
+> A .NET Core SDK telepítési követelményeit kihagyhatja a [bővítmények]használatával.
 
 #### <a name="windows-npm"></a>Windows
 
 A következő lépések a NPM segítségével telepítik a Windows rendszerhez tartozó alapvető eszközöket. A [csokit](https://chocolatey.org/)is használhatja. További információ: [alapvető eszközök – fontos](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)információk.
 
-1. Telepítse a [Node.js]-t, amely tartalmazza a NPM. Az eszközök 2. x verziója esetében csak a Node. js 8,5-es és újabb verziói támogatottak.
+1. Telepítse a [Node.js]-t, amely tartalmazza a NPM.
+    - Az eszközök 2. x verziója esetében csak a Node. js 8,5-es és újabb verziói támogatottak.
+    - Az eszközök 3. x verziójában csak a 10-es és újabb verziók támogatottak.
 
 1. Telepítse a Core Tools csomagot:
 
+    ##### <a name="v2x"></a>v2. x
+
     ```bash
     npm install -g azure-functions-core-tools
+    ```
+
+    ##### <a name="v3x"></a>v3. x
+
+    ```bash
+    npm install -g azure-functions-core-tools@3
     ```
 
    A NPM letöltése és telepítése eltarthat néhány percig.
@@ -74,13 +84,21 @@ A következő lépések a Homebrew-t használják a fő eszközök macOS rendsze
 
 1. Telepítse a Core Tools csomagot:
 
+    ##### <a name="v2x"></a>v2. x
+
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
 
-1. Ha nem tervezi a [bővítmények]használatát, telepítse [a .net Core 2. x SDK-t a MacOS rendszerhez](https://www.microsoft.com/net/download/macos).
+    ##### <a name="v3x"></a>v3. x
 
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools@3
+    # if upgrading on a machine that has 2.x installed
+    brew link --overwrite azure-functions-core-tools@3
+    ```
 
 #### <a name="linux"></a>Linux (Ubuntu/Debian) APT-vel
 
@@ -212,7 +230,7 @@ Ha nincs beállítva érvényes tárolási kapcsolódási karakterlánc a [`Azur
 Még ha a Storage emulatort is szeretné használni a fejlesztéshez, érdemes lehet egy tényleges tárolási kapcsolatban is tesztelni. Feltételezve, hogy már [létrehozott egy Storage-fiókot](../storage/common/storage-create-storage-account.md), a következő módokon szerezhet be érvényes tárolási kapcsolatok karakterláncot:
 
 - A [Azure Portalra]keresse meg és válassza ki a **Storage-fiókok**lehetőséget. 
-  ![válassza ki a Storage-fiókokat Azure Portal](./media/functions-run-local/select-storage-accounts.png)
+  ![válassza a Storage-fiókok lehetőséget Azure Portal](./media/functions-run-local/select-storage-accounts.png)
   
   Válassza ki a Storage-fiókját, válassza a **hozzáférési kulcsok** lehetőséget a **Beállítások**területen, majd másolja a **kapcsolati karakterlánc** egyik értékét.
   ![a Azure Portal a kapcsolatok karakterláncának másolása](./media/functions-run-local/copy-storage-connection-portal.png)

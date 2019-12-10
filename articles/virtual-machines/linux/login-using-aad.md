@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 74de621f88d9af65f8894319729f902bf11e57ce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: cccdb54b89dff7c6a1fc9dac55c63b19d661ab65
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873012"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951309"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: bejelentkezés az Azure-beli linuxos virtuális gépre Azure Active Directory hitelesítéssel
 
@@ -206,6 +206,10 @@ Ha sikeresen elvégezte a hitelesítési lépést egy webböngészőben, akkor e
 - Győződjön meg arról, hogy az SSH-parancssorban megadott bejelentkezési név helyes. A bejelentkezési név elírása eltérést okozhat az SSH-parancssorban megadott bejelentkezési név és az Azure AD-be a-ban bejelentkezett fiók között. Például Begépelte a *azuresuer\@contoso.onmicrosoft.com* a *Azureus\@contoso.onmicrosoft.com*helyett.
 - Ha több felhasználói fiókkal rendelkezik, ügyeljen arra, hogy a böngészőablakban ne adjon meg másik felhasználói fiókot az Azure AD-ba való bejelentkezéskor.
 - A Linux egy kis-és nagybetűket megkülönböztető operációs rendszer. Különbség van a "Azureuser@contoso.onmicrosoft.com" és a "azureuser@contoso.onmicrosoft.com" között, ami eltérő lehet. Győződjön meg arról, hogy az UPN-t a megfelelő kis-és nagybetűkkel határozza meg az SSH-parancssorban.
+
+### <a name="other-limitations"></a>Egyéb korlátozások
+
+Azok a felhasználók, akik beágyazott csoportokon vagy szerepkör-hozzárendeléseken keresztül örökölnek hozzáférési jogosultságokat, jelenleg nem támogatottak. A felhasználónak vagy csoportnak közvetlenül hozzá kell rendelnie a [szükséges szerepkör-hozzárendeléseket](#configure-role-assignments-for-the-vm). A felügyeleti csoportok vagy a beágyazott csoportok szerepkör-hozzárendelések használata például nem biztosítja a megfelelő engedélyeket a felhasználó bejelentkezésének engedélyezéséhez.
 
 ## <a name="preview-feedback"></a>Előzetes visszajelzés
 

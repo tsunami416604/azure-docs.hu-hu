@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 49f3759d7c5ba178cd0f1d0164a45c09df464571
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348939"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942222"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-összetevők
 
@@ -67,7 +67,7 @@ További információ: [az Application Gateway egyéni hibáinak lapja](https://
 
 Kétféle figyelő létezik:
 
-- Alapszintű. Ez a típusú figyelő egyetlen tartományi helyet figyel, ahol egyetlen DNS-hozzárendelés van az Application Gateway IP-címéhez. Ez a figyelő-konfiguráció akkor szükséges, ha egyetlen helyet üzemeltet az Application Gateway mögött.
+- **Alapszintű**. Ez a típusú figyelő egyetlen tartományi helyet figyel, ahol egyetlen DNS-hozzárendelés van az Application Gateway IP-címéhez. Ez a figyelő-konfiguráció akkor szükséges, ha egyetlen helyet üzemeltet az Application Gateway mögött.
 
 - **Több hely**. Ez a figyelő-konfiguráció akkor szükséges, ha egynél több webalkalmazást konfigurál ugyanazon az Application Gateway-példányon. Lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. Például három altartomány, abc.contoso.com, xyz.contoso.com és pqr.contoso.com, az Application Gateway IP-címére mutat. Hozzon létre három többhelyes figyelőt, és konfigurálja az egyes figyelőket a megfelelő port és protokoll beállításhoz.
 
@@ -75,7 +75,7 @@ Kétféle figyelő létezik:
 
 A figyelő létrehozása után társítsa azt egy kérelem-útválasztási szabállyal. Ez a szabály határozza meg, hogy a figyelőre érkező kérés hogyan legyen átirányítva a háttérbe.
 
-Application Gateway a figyelőket a megjelenő sorrendben dolgozza fel. Ha az alapszintű figyelő megfelel egy bejövő kérelemnek, akkor a rendszer először dolgozza fel. Ha a forgalmat a megfelelő háttérre irányítja, állítson be egy többhelyes figyelőt egy alapszintű figyelő előtt.
+Application Gateway a figyelőket a [megjelenő sorrendben](https://docs.microsoft.com/en-us/azure/application-gateway/configuration-overview#order-of-processing-listeners)dolgozza fel.
 
 ## <a name="request-routing-rules"></a>Kérelmek útválasztási szabályai
 
@@ -85,7 +85,7 @@ Amikor egy figyelő fogad egy kérelmet, a kérések útválasztási szabálya t
 
 A kérések útválasztási szabályainak két típusa létezik:
 
-- Alapszintű. A társított figyelőn (például blog.contoso.com/*) lévő összes kérelem a társított backend-készletbe van továbbítva a kapcsolódó HTTP-beállítás használatával.
+- **Alapszintű**. A társított figyelőn (például blog.contoso.com/*) lévő összes kérelem a társított backend-készletbe van továbbítva a kapcsolódó HTTP-beállítás használatával.
 
 - **Elérésiút-alapú**. Ez az útválasztási szabály lehetővé teszi, hogy a kérelemben szereplő URL-cím alapján a társított figyelőn keresztül átirányítsa a kéréseket egy adott háttér-készletre. Ha egy kérelem URL-címének elérési útja megegyezik egy elérésiút-alapú szabályban szereplő elérésiút-mintával, a szabály a kérést irányítja át. Az elérésiút-mintát csak az URL-címre alkalmazza, nem pedig a lekérdezési paraméterekre. Ha a figyelőre vonatkozó kérelem URL-címének elérési útja nem egyezik az elérésiút-alapú szabályokkal, a kérést az alapértelmezett háttér-készletre és a HTTP-beállításokra irányítja át.
 
@@ -126,10 +126,10 @@ Ez az összetevő a következőket is használja:
 A háttér-készlet átirányítja a kérést a háttér-kiszolgálókra. A háttér-készletek a következőket tartalmazhatják:
 
 - Hálózati adapterek (NIC-k)
-- virtuálisgép-méretezési csoportok
+- Virtual Machine Scale Sets
 - Nyilvános IP-címek
 - Belső IP-címek
-- TELJES TARTOMÁNYNÉV
+- FQDN
 - Több-bérlős háttérrendszer (például App Service)
 
 Application Gateway háttérbeli készlet tagjai nem kapcsolódnak rendelkezésre állási csoportokhoz. Az Application Gateway képes kommunikálni a virtuális hálózatán kívüli példányokkal. Ennek eredményeképpen a háttér-készletek tagjai többek között fürtök, adatközpontok vagy az Azure-on kívül is lehetnek, feltéve, hogy IP-kapcsolat van.
@@ -140,7 +140,7 @@ Az Application Gateway képes kommunikálni a helyszíni kiszolgálókkal is, am
 
 Különböző háttér-készleteket hozhat létre különböző típusú kérelmekhez. Hozzon létre például egy háttér-készletet az általános kérelmekhez, majd egy másik háttér-készletet az alkalmazáshoz tartozó Service-szolgáltatásokhoz intézett kérésekhez.
 
-## <a name="health-probes"></a>Állapotadat-mintavételek
+## <a name="health-probes"></a>Állapotminták
 
 Alapértelmezés szerint az Application Gateway a háttér-készlet összes erőforrásának állapotát figyeli, és automatikusan eltávolítja a nem megfelelő állapotú fájlokat. Ezután figyeli a nem megfelelő állapotú példányokat, és visszaadja azokat az egészséges háttérrendszer-készlethez, amikor elérhetővé válnak, és reagálnak az állapotra.
 
@@ -148,7 +148,7 @@ Amellett, hogy az alapértelmezett állapot mintavételi figyelését is haszná
 
 További információ: [az Application Gateway állapotának figyelése](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Application Gateway létrehozása:
 

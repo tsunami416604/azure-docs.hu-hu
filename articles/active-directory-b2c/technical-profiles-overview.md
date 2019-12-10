@@ -1,6 +1,7 @@
 ---
-title: Tudnivalók a Azure Active Directory B2C egyéni szabályzatok technikai profiljairól | Microsoft Docs
-description: Ismerje meg, hogyan használhatók a technikai profilok a Azure Active Directory B2C egyéni házirendjében.
+title: Az egyéni szabályzatok technikai profiljainak áttekintése
+titleSuffix: Azure AD B2C
+description: Megtudhatja, hogyan használják a technikai profilokat a Azure Active Directory B2C egyéni házirendjében.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f90b69cde4a961457c987f004e2605e6884bf323
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: af08a24ff28d59bf743f92aa69ffa823dcdcc544
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063325"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951037"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a Azure Active Directory B2C egyéni szabályzatok technikai profiljairól
 
@@ -36,7 +37,7 @@ A technikai profil a következő típusú forgatókönyveket teszi lehetővé:
 - [Jogcím-átalakítás](claims-transformation-technical-profile.md) – hívja meg a kimeneti jogcímek átalakítását a jogcímek értékeinek módosításához, a jogcímek érvényesítéséhez, illetve a kimeneti jogcímek alapértelmezett értékének megadásához.
 - [Rest-szolgáltató](restful-technical-profile.md) – olyan REST API szolgáltatásokat hív meg, mint például a felhasználói bevitel ellenőrzése, a felhasználói adatok gazdagítása vagy az üzletági alkalmazásokkal való integráció.
 - [Egy saml2](saml-technical-profile.md) – összevonás bármely SAML protokoll identitás-szolgáltatóval.
-- [](self-asserted-technical-profile.md) Önérvényesített – interakció a felhasználóval. Gyűjtsön például a felhasználó hitelesítő adatait a bejelentkezéshez, a regisztrációs oldal megjelenítéséhez vagy a jelszó alaphelyzetbe állításához.
+- [Önérvényesített](self-asserted-technical-profile.md) – interakció a felhasználóval. Gyűjtsön például a felhasználó hitelesítő adatait a bejelentkezéshez, a regisztrációs oldal megjelenítéséhez vagy a jelszó alaphelyzetbe állításához.
 - [Munkamenet-kezelés](active-directory-b2c-reference-sso-custom.md) – különböző típusú munkamenetek kezelése.
 - **Application bepillantást**
 
@@ -46,21 +47,21 @@ A műszaki profilok minden típusa ugyanazzal a fogalommal rendelkezik. A bemene
 
 ![A műszaki profil folyamatát ábrázoló diagram](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. **InputClaimsTransformation** – a bemeneti jogcímek [átalakításának](claimstransformations.md) bemeneti jogcímeit a rendszer felveszi a jogcím-csomagból, és a végrehajtás után a rendszer visszahelyezi a kimeneti jogcímeket a jogcímek táskába. A bemeneti jogcímek átalakításának kimeneti jogcímei a következő bemeneti jogcímek átalakításának bemeneti jogcímei lehetnek.
-2. **Szabályzattípushoz** – a jogcímeket a rendszer a jogcímek táskájában keresi, és a technikai profilhoz használja. Egy önérvényesített [technikai profil](self-asserted-technical-profile.md) például a bemeneti jogcímek használatával előre feltölti a felhasználó által biztosított kimeneti jogcímeket. A REST API műszaki profilok a bemeneti jogcímek használatával küldenek bemeneti paramétereket a REST API végpontnak. A Azure Active Directory a bemeneti jogcímet egyedi azonosítóként használja egy fiók olvasásához, frissítéséhez vagy törléséhez.
+1. **InputClaimsTransformation** – a bemeneti [jogcímek átalakításának](claimstransformations.md) bemeneti jogcímeit a rendszer felveszi a jogcím-csomagból, és a végrehajtás után a rendszer visszahelyezi a kimeneti jogcímeket a jogcímek táskába. A bemeneti jogcímek átalakításának kimeneti jogcímei a következő bemeneti jogcímek átalakításának bemeneti jogcímei lehetnek.
+2. **Szabályzattípushoz** – a jogcímeket a rendszer a jogcímek táskájában keresi, és a technikai profilhoz használja. Egy [önérvényesített technikai profil](self-asserted-technical-profile.md) például a bemeneti jogcímek használatával előre feltölti a felhasználó által biztosított kimeneti jogcímeket. A REST API műszaki profilok a bemeneti jogcímek használatával küldenek bemeneti paramétereket a REST API végpontnak. A Azure Active Directory a bemeneti jogcímet egyedi azonosítóként használja egy fiók olvasásához, frissítéséhez vagy törléséhez.
 3. **Technikai profil végrehajtása** – a technikai profil a jogcímeket a konfigurált fél számára cseréli. Példa:
     - A bejelentkezés befejezéséhez irányítsa át a felhasználót az identitás-szolgáltatóra. A sikeres bejelentkezés után a felhasználó visszatér, és a technikai profil végrehajtása folytatódik.
     - REST API meghívása a paraméterek Szabályzattípushoz való elküldésekor és az információk OutputClaims való visszaszerzése közben.
     - Hozza létre vagy frissítse a felhasználói fiókot.
     - Az MFA szöveges üzenet küldése és ellenőrzése.
-4. **ValidationTechnicalProfiles** – egy önérvényesített [technikai profilhoz](self-asserted-technical-profile.md)meghívhat egy bemeneti [ellenőrzési technikai profilt](validation-technical-profile.md). Az érvényesítési technikai profil ellenőrzi a felhasználó által beolvasott adatokat, és egy hibaüzenetet vagy ok értéket ad vissza kimeneti jogcímek vagy azok nélkül. Például mielőtt a Azure AD B2C új fiókot hoz létre, ellenőrzi, hogy a felhasználó már létezik-e a címtárszolgáltatások szolgáltatásban. A saját üzleti logikájának hozzáadásához meghívhat egy REST API technikai profilt is.<p>Az érvényesítési technikai profil kimeneti jogcímeinek hatóköre a technikai profilra korlátozódik, amely meghívja az érvényesítési műszaki profilt és más ellenőrzési technikai profilokat ugyanazon a technikai profilban. Ha a következő előkészítési lépésben a kimeneti jogcímeket szeretné használni, hozzá kell adnia a kimeneti jogcímeket a technikai profilhoz, amely meghívja az érvényesítési technikai profilt.
+4. **ValidationTechnicalProfiles** – egy [önérvényesített technikai profilhoz](self-asserted-technical-profile.md)meghívhat egy bemeneti [ellenőrzési technikai profilt](validation-technical-profile.md). Az érvényesítési technikai profil ellenőrzi a felhasználó által beolvasott adatokat, és egy hibaüzenetet vagy ok értéket ad vissza kimeneti jogcímek vagy azok nélkül. Például mielőtt a Azure AD B2C új fiókot hoz létre, ellenőrzi, hogy a felhasználó már létezik-e a címtárszolgáltatások szolgáltatásban. A saját üzleti logikájának hozzáadásához meghívhat egy REST API technikai profilt is.<p>Az érvényesítési technikai profil kimeneti jogcímeinek hatóköre a technikai profilra korlátozódik, amely meghívja az érvényesítési műszaki profilt és más ellenőrzési technikai profilokat ugyanazon a technikai profilban. Ha a következő előkészítési lépésben a kimeneti jogcímeket szeretné használni, hozzá kell adnia a kimeneti jogcímeket a technikai profilhoz, amely meghívja az érvényesítési technikai profilt.
 5. **OutputClaims** – a rendszer visszaküldi a jogcímeket a jogcímek táskába. Ezeket a jogcímeket a következő előkészítési lépésekben vagy a kimeneti jogcímek átalakításában használhatja.
-6. **OutputClaimsTransformations** – a kibocsátási jogcímek [átalakításának](claimstransformations.md) bemeneti jogcímeit a rendszer a jogcím-csomagból használja fel. Az előző lépések technikai profiljának kimeneti jogcímei a kimeneti jogcímek átalakításának bemeneti jogcímei. A végrehajtás után a kimeneti jogcímek vissza lesznek helyezve a jogcím-táskába. A kimeneti jogcímek átalakításának kimeneti jogcímei a következő kimeneti jogcímek átalakításának bemeneti jogcímei is lehetnek.
-7. **Az egyszeri bejelentkezés (SSO) munkamenet-kezelés** - egyszeri bejelentkezéses[munkamenet-kezelési](active-directory-b2c-reference-sso-custom.md) vezérlője a felhasználó által már hitelesített hitelesítéssel való interakciót végez. A rendszergazda például megadhatja, hogy megjelenjenek-e az identitás-szolgáltatók, vagy hogy meg kell-e adni a helyi fiók adatait.
+6. **OutputClaimsTransformations** – a kibocsátási [jogcímek átalakításának](claimstransformations.md) bemeneti jogcímeit a rendszer a jogcím-csomagból használja fel. Az előző lépések technikai profiljának kimeneti jogcímei a kimeneti jogcímek átalakításának bemeneti jogcímei. A végrehajtás után a kimeneti jogcímek vissza lesznek helyezve a jogcím-táskába. A kimeneti jogcímek átalakításának kimeneti jogcímei a következő kimeneti jogcímek átalakításának bemeneti jogcímei is lehetnek.
+7. Egyszeri **bejelentkezéses (SSO) munkamenet-felügyeleti** - [egyszeri](active-directory-b2c-reference-sso-custom.md) bejelentkezéses munkamenet-kezelési vezérlők a felhasználóval való kommunikációt követően a felhasználó által már hitelesített hitelesítéssel. A rendszergazda például megadhatja, hogy megjelenjenek-e az identitás-szolgáltatók, vagy hogy meg kell-e adni a helyi fiók adatait.
 
 A technikai profil örökölheti egy másik technikai profilt a beállítások módosításához vagy új funkciók hozzáadásához.  A **IncludeTechnicalProfile** elem arra az alapszintű műszaki profilra hivatkozik, amelyből a technikai profil származik.
 
-Például a **HRE-UserReadUsingAlternativeSecurityId-Error** technikai profil tartalmazza a **HRE-UserReadUsingAlternativeSecurityId**. Ez a technikai profil állítja be a **RaiseErrorIfClaimsPrincipalDoesNotExist** metaadat `true`-elemét, és hibát jelez, ha nem létezik közösségi fiók a címtárban. **HRE-UserReadUsingAlternativeSecurityId – a hiba** felülbírálja ezt a viselkedést, és letiltja a hibaüzenetet, ha a felhasználó nem létezett.
+Például a **HRE-UserReadUsingAlternativeSecurityId-Error** technikai profil tartalmazza a **HRE-UserReadUsingAlternativeSecurityId**. Ez a technikai profil állítja be a **RaiseErrorIfClaimsPrincipalDoesNotExist** metaadat-elemét `true`re, és hibát jelez, ha nem létezik közösségi fiók a címtárban. **HRE-UserReadUsingAlternativeSecurityId – a hiba** felülbírálja ezt a viselkedést, és letiltja a hibaüzenetet, ha a felhasználó nem létezett.
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
@@ -71,7 +72,7 @@ Például a **HRE-UserReadUsingAlternativeSecurityId-Error** technikai profil ta
 </TechnicalProfile>
 ```
 
-**HRE – a UserReadUsingAlternativeSecurityId** tartalmazza `AAD-Common` a technikai profilt.
+A **HRE-UserReadUsingAlternativeSecurityId** tartalmazza a `AAD-Common` technikai profilt.
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
@@ -105,7 +106,7 @@ Mind a **HRE-UserReadUsingAlternativeSecurityId** , mind a **HRE-UserReadUsingAl
 </TechnicalProfile>
 ```
 
-A technikai profil tartalmazhat vagy örököl egy másik technikai profilt, amely tartalmazhat egy másikat is. A szintek száma nincs korlátozva. Az üzleti követelményektől függően előfordulhat, hogy a felhasználói utazás meghívja a **HRE-UserReadUsingAlternativeSecurityId-** t, amely hibát jelez, ha a felhasználó közösségi fiókja nem létezik, vagy **HRE-UserReadUsingAlternativeSecurityId-hiba** , amely nem Hiba történt.
+A technikai profil tartalmazhat vagy örököl egy másik technikai profilt, amely tartalmazhat egy másikat is. A szintek száma nincs korlátozva. Az üzleti követelményektől függően a felhasználói utazás meghívhatja a **HRE-UserReadUsingAlternativeSecurityId-** t, amely hibát jelez, ha a felhasználó közösségi fiókja nem létezik, vagy **HRE-UserReadUsingAlternativeSecurityId-Error** , amely nem okoz hibát.
 
 
 

@@ -1,6 +1,7 @@
 ---
-title: Az erőforrás-tulajdonos jelszava hitelesítő adatainak konfigurálása a Azure Active Directory B2Cban | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhatja az erőforrás-tulajdonosi jelszó hitelesítő adatait a Azure Active Directory B2Cban.
+title: Az erőforrás-tulajdonos jelszava hitelesítő adatainak beállítása egyéni szabályzatokkal
+titleSuffix: Azure AD B2C
+description: Megtudhatja, hogyan konfigurálhatja az erőforrás-tulajdonosi jelszó hitelesítő adatait (ROPC) a Azure Active Directory B2C egyéni házirendjeinek használatával.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f3eb2c0071eecb20bbf5616a01c80e55645207a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678139"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951064"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure Active Directory B2C egyéni házirend használatával
 
@@ -257,10 +258,10 @@ Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazá
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével.
+- Cserélje le a `your-tenant-name`t a Azure AD B2C bérlő nevére.
 - Cserélje le a `B2C_1A_ROPC_Auth`t az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevére.
 
-| Paraméter | Érték |
+| Jelmagyarázat | Value (Díj) |
 | --- | ----- |
 | felhasználónév | `user-account` |
 | jelszó | `password1` |
@@ -302,15 +303,15 @@ Az offline-hozzáférés sikeres válasza a következő példához hasonlóan n�
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével.
+- Cserélje le a `your-tenant-name`t a Azure AD B2C bérlő nevére.
 - Cserélje le a `B2C_1A_ROPC_Auth`t az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevére.
 
-| Paraméter | Érték |
+| Jelmagyarázat | Value (Díj) |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| resource | `application-id` |
+| erőforrás | `application-id` |
 | refresh_token | `refresh-token` |
 
 - Cserélje le a `application-id`t az alkalmazás-AZONOSÍTÓra a *ROPC_Auth_app* regisztrációban.

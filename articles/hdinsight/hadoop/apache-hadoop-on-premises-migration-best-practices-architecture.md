@@ -2,18 +2,18 @@
 title: 'Architektúra: helyszíni Apache Hadoop az Azure HDInsight'
 description: Ismerje meg az architektúrával kapcsolatos ajánlott eljárásokat a helyszíni Hadoop-fürtök Azure HDInsight történő áttelepítéséhez.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4ef3cded9aba7bd95ecc48e1feadf6c55acd7bdc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 9f532e7bbf9e24e431341344b3172c988f69bfc3
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499253"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951530"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-architektúrára – ajánlott eljárások
 
@@ -23,9 +23,9 @@ Ez a cikk az Azure HDInsight-rendszerek architektúrájának javaslatait ismerte
 
 Számos helyszíni Apache Hadoop üzemelő példány egyetlen nagyméretű fürtből áll, amely sok munkaterhelést támogat. Ez az egyetlen fürt összetett lehet, és az egyes szolgáltatásokhoz való illetéktelen behatolást igényelhet, hogy minden működjenek együtt. A helyszíni Hadoop-fürtök Azure HDInsight-re való áttelepítéséhez meg kell változtatni a megközelítést.
 
-Az Azure HDInsight-fürtök adott típusú számítási használatra vannak kialakítva. Mivel a tárterület több fürtön is megosztható, több számítási feladatot tartalmazó számítási fürt is létrehozható a különböző feladatok igényeinek kielégítése érdekében. Minden egyes fürthöz az adott számítási feladathoz tartozó optimális konfiguráció tartozik. A következő táblázat a HDInsight és a megfelelő munkaterhelések támogatott fürtjének típusait sorolja fel.
+Az Azure HDInsight-fürtök adott típusú számítási használatra vannak kialakítva. Mivel a tárterület több fürtön is megosztható, lehetséges, hogy több munkaterhelés-optimalizált számítási fürtöt hozhat létre a különböző feladatok igényeinek kielégítése érdekében. Minden egyes fürthöz az adott számítási feladathoz tartozó optimális konfiguráció tartozik. A következő táblázat a HDInsight és a megfelelő munkaterhelések támogatott fürtjének típusait sorolja fel.
 
-|**Számítási feladat**|**HDInsight-fürt típusa**|
+|Számítási feladat|HDInsight-fürt típusa|
 |---|---|
 |Kötegelt feldolgozás (ETL/ELT)|Hadoop, Spark|
 |Adatraktározás|Hadoop, Spark, interaktív lekérdezés|
@@ -36,9 +36,9 @@ Az Azure HDInsight-fürtök adott típusú számítási használatra vannak kial
 
 A következő táblázat a HDInsight-fürtök létrehozásához használható különböző metódusokat mutatja be.
 
-|**Eszköz**|**Böngésző-alapú**|**Parancssor**|**REST API**|**SDK**|
+|Eszköz|Böngésző-alapú|Parancssor|REST API|SDK|
 |---|---|---|---|---|
-|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure Portalra](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLI (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
@@ -60,9 +60,9 @@ Az Azure Data Factory használatával ütemezhetik az igény szerinti HDInsight-
 
 ## <a name="decouple-storage-from-compute"></a>Tárterület kiválasztása a számítási feladatokból
 
-A szokásos helyszíni Hadoop üzemelő példányok ugyanazt a gépet használják az adattárolás és az adatfeldolgozás számára. A közös elhelyezésű, a számítási és a tárolási kapacitást együtt kell méretezni.
+A szokásos helyszíni Hadoop üzemelő példányok ugyanazt a gépet használják az adattárolás és az adatfeldolgozás számára. Mivel közösen helyezkednek el, a számítási és a tárolási kapacitást együtt kell méretezni.
 
-A HDInsight-fürtökön a tárolónak nem szükséges a számítással együtt lennie, és az Azure Storage-ban, Azure Data Lake Storage vagy mindkettőben lehet. A tárterületnek a számításból való leválasztása a következő előnyökkel jár:
+A HDInsight-fürtökön a tárterületet nem szükséges a számítási és az Azure Storage-ban, Azure Data Lake Storage vagy mindkettőn elhelyezni. A tárterületnek a számításból való leválasztása a következő előnyökkel jár:
 
 - Fürtök közötti adatmegosztás.
 - Átmeneti fürtök használata, mivel az adatmennyiség nem függ a fürttől.
@@ -74,9 +74,7 @@ A számítási fürtöket az Azure-régióban található Storage-fiók erőforr
 
 ## <a name="use-external-metadata-stores"></a>Külső metaadat-tárolók használata
 
-
 Két fő metaadattárak működik a HDInsight-fürtökkel: [Apache Hive](https://hive.apache.org/) és [Apache Oozie](https://oozie.apache.org/). A Hive-metaadattár a központi séma tárháza, amelyet adatfeldolgozó motorok használhatnak, például a Hadoop, a Spark, a LLAP, a Presto és az Apache Pig. A Oozie metaadattár az ütemezés részleteit és a folyamatban lévő és befejezett Hadoop feladatok állapotát tárolja.
-
 
 A HDInsight Azure SQL Database használ a kaptár és a Oozie metaadattárak. A HDInsight-fürtökben kétféleképpen állíthatók be metaadattár:
 
@@ -105,7 +103,7 @@ Néhány HDInsight Hive-metaadattár ajánlott eljárás a következő:
 - Rendszeresen biztonsági másolatot készíthet az egyéni metaadattár.
 - Tartsa a metaadattár és a HDInsight-fürtöt ugyanabban a régióban.
 - A teljesítmény és a rendelkezésre állás metaadattár figyelése Azure SQL Database monitorozási eszközök, például Azure Portal vagy Azure Monitor naplók használatával.
-- A táblák és oszlopok statisztikáinak létrehozásához szükség szerint hajtsa végre a **táblázat elemzése** parancsot. Például: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- A táblák és oszlopok statisztikáinak létrehozásához szükség szerint hajtsa végre a `ANALYZE TABLE` parancsot. Például: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Ajánlott eljárások a különböző számítási feladatokhoz
 

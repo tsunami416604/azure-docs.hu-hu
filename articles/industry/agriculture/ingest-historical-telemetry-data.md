@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d2ac3b0f531b6384643d91fac1cf50a0ea719969
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: a3e4f543be2f01e0c649d5f9bcc9287dedc275f1
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900337"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941644"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
 
@@ -39,7 +39,7 @@ Kövesse az alábbi lépéseket.
 > A következő lépések végrehajtásához rendszergazdának kell lennie.
 
 1. Töltse le a [szkriptet](https://aka.ms/farmbeatspartnerscript), és bontsa ki a helyi meghajtón. A zip-fájlban két fájl található.
-2. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és nyissa meg az Azure Cloud Shellt. Ez a lehetőség a portál jobb felső sarkában található eszköztáron érhető el. 
+2. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és nyissa meg az Azure Cloud Shellt. Ez a lehetőség a portál jobb felső sarkában található eszköztáron érhető el.
 
     ![Azure Portal eszköztár](./media/for-tutorials/navigation-bar-1.png)
 
@@ -47,7 +47,7 @@ Kövesse az alábbi lépéseket.
 
     ![PowerShell-beállítás](./media/for-tutorials/power-shell-new-1.png)
 
-4. Töltse fel a Cloud Shell-példány 1. lépésében letöltött két fájlt. 
+4. Töltse fel a Cloud Shell-példány 1. lépésében letöltött két fájlt.
 
     ![Feltöltés gomb az eszköztáron](./media/for-tutorials/power-shell-two-1.png)
 
@@ -55,7 +55,7 @@ Kövesse az alábbi lépéseket.
 
    >[!NOTE]
    > Alapértelmezés szerint a rendszer feltölti a fájlokat a kezdőkönyvtár/Kezdőlap/Felhasználónév mappába.
-6. Futtassa a szkriptet a következő parancs használatával: 
+6. Futtassa a szkriptet a következő parancs használatával:
 
     ```azurepowershell-interactive
     ./generateCredentials.ps1
@@ -67,10 +67,10 @@ Kövesse az alábbi lépéseket.
 
  Most, hogy rendelkezik a szükséges hitelesítő adatokkal, megadhatja az eszközt és az érzékelőket. Ehhez hozza létre a metaadatokat a FarmBeats API-k használatával.
 
- A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszik az eszköz vagy az érzékelő metaadatainak létrehozását és felügyeletét. 
+ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszik az eszköz vagy az érzékelő metaadatainak létrehozását és felügyeletét.
 
-- /**DeviceModel**: a DeviceModel az eszköz metaadatait, például a gyártót és az eszköz típusát, amely vagy egy átjáró vagy egy csomópont. 
-- /**eszköz**: az eszköz a farmon lévő fizikai eszköznek felel meg. 
+- /**DeviceModel**: a DeviceModel az eszköz metaadatait, például a gyártót és az eszköz típusát, amely vagy egy átjáró vagy egy csomópont.
+- /**eszköz**: az eszköz a farmon lévő fizikai eszköznek felel meg.
 - /**SensorModel**: a SensorModel az érzékelő metaadatait, például a gyártót, az analóg vagy digitális érzékelő típusát, valamint az érzékelő mértékét, például a környezeti hőmérsékletet és a nyomást is megfelel.
 - /**érzékelő**: az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.  
 
@@ -98,7 +98,7 @@ Kövesse az alábbi lépéseket.
 |          Gyártó            |       Az érzékelő gyártója.     |
 |     ProductCode| Termékkód vagy modell neve vagy száma. Például RS-CO2-N01. |
 |       SensorMeasures > neve       | Az érzékelő mértékének neve. Csak kisbetűk támogatottak. A különböző mélységű mérések esetében határozza meg a mélységet. Például soil_moisture_15cm. Ennek a névnek konzisztensnek kell lennie a telemetria-adattal.  |
-|          sensorMeasures > adattípus       |Az telemetria adattípusa. Jelenleg a Double támogatott.|
+|          SensorMeasures > adattípus       |Az telemetria adattípusa. Jelenleg a Double támogatott.|
 |    SensorMeasures > típusa    |Az érzékelő telemetria-adattípusának mértékegysége A rendszer által meghatározott típusok: AmbientTemperature, CO2, mélység, ElectricalConductivity, LeafWetness, Length, LiquidLevel, nitrát, O2, PH, foszfát, PointInTime, kálium, nyomás, RainGauge, RelativeHumidity, sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, szélsebesség, párolgás, PAR. További részletekért tekintse meg a/ExtendedType API-t.|
 |        SensorMeasures > egység              | Az érzékelő telemetria-adategysége. A rendszer által meghatározott egységek: nem egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, méter, hüvelyk, láb, Mile, kilométer, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, másodperc, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour továbbiak, tekintse meg a/ExtendedType API-t.|
 |    SensorMeasures > AggregationType    |  Az értékek a következők lehetnek: none, Average, Max, minimum vagy StandardDeviation.  |
@@ -107,7 +107,7 @@ Kövesse az alábbi lépéseket.
 |   Tulajdonságok       |  További tulajdonságok a gyártótól.  |
 |    **Érzékelő**      |          |
 | HardwareId          |   A gyártó által beállított érzékelő egyedi azonosítója. |
-|  sensorModelId     |    A társított érzékelő modell azonosítója.   |
+|  SensorModelId     |    A társított érzékelő modell azonosítója.   |
 | Földrajzi egység          |  Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).|
 |   Port > neve        |  Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel. |
 |    DeviceID  |    Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik.     |
@@ -269,7 +269,7 @@ SensorModel
   }
 }
 ```
-A következő minta-kérelem létrehoz egy eszközt. Ez a kérelem a JSON-t adattartalomként adja meg a kérelem törzsében. 
+A következő minta-kérelem létrehoz egy eszközt. Ez a kérelem a JSON-t adattartalomként adja meg a kérelem törzsében.
 
 ```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
@@ -292,7 +292,7 @@ A telemetria az Azure Event Hubsba kell küldenie feldolgozásra. Az Azure Event
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>Telemetria-üzenet küldése ügyfélként
 
-Ha a kapcsolat Event Hubs ügyfélként lett létrehozva, akkor JSON-ként küldhet üzeneteket az Event hub-nak. 
+Ha a kapcsolat Event Hubs ügyfélként lett létrehozva, akkor JSON-ként küldhet üzeneteket az Event hub-nak.
 
 Itt található egy olyan Python-kód, amely a telemetria ügyfélként küldi el a megadott Event hub számára:
 
@@ -313,7 +313,7 @@ write_client.stop()
 
 ```
 
-Alakítsa át a korábbi érzékelő adatformátumát olyan kanonikus formátumra, amelyet az Azure FarmBeats értelmez. A Canonical üzenet formátuma a következő: 
+Alakítsa át a korábbi érzékelő adatformátumát olyan kanonikus formátumra, amelyet az Azure FarmBeats értelmez. A Canonical üzenet formátuma a következő:
 
 ```json
 {

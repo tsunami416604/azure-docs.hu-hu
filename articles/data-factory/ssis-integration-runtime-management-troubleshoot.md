@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: c7db5d7d8963702f6039af3cfd51d6d916755abb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 52b1d93935e6428563c72361655893ffddf8a507
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931938"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941855"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>A SSIS Integration Runtime-kezelés hibáinak megoldása Azure Data Factory
 
@@ -156,3 +156,38 @@ Ha leállítja a SSIS IR-t, a rendszer a virtuális hálózathoz kapcsolódó ö
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
 Ez a hiba akkor fordul elő, ha az integrációs modul fut, és azt jelenti, hogy az integrációs modul állapota nem megfelelő. Ezt a hibát mindig a DNS-kiszolgáló vagy a hálózati biztonsági csoport konfigurációjának változása okozza, amely blokkolja a SSIS IR-t a szükséges szolgáltatáshoz való csatlakozáskor. Mivel a DNS-kiszolgáló és a hálózati biztonsági csoport konfigurációját az ügyfél szabályozza, az ügyfélnek kell kijavítania a blokkolást okozó problémákat a saját oldaláról. További információ: [Az SSIS IR virtuális hálózatának konfigurálása](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az Azure Data Factory támogatási csapatával.
+
+## <a name="static-public-ip-addresses-configuration"></a>Statikus nyilvános IP-címek konfigurálása
+
+Ha a Azure-SSIS IRt az Azure Virtual Networkhoz csatlakoztatja, akkor a saját statikus nyilvános IP-címei is megadhatók az IR-hez, hogy az IR hozzáférhessen az adott IP-címekhez való hozzáférést korlátozó adatforrásokhoz. További információért tekintse meg [az Azure-SSIS IR virtuális hálózathoz történő csatlakoztatásával](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) foglalkozó cikket.
+
+A fenti virtuális hálózati problémák mellett előfordulhat, hogy a statikus nyilvános IP-címekkel kapcsolatos problémát is kielégíti. További segítségért tekintse meg az alábbi hibákat.
+
+### <a name="InvalidPublicIPSpecified"></a>InvalidPublicIPSpecified
+
+Ez a hiba többféle okból is előfordulhat a Azure-SSIS IR indításakor:
+
+| Hibaüzenet | Megoldás|
+|:--- |:--- |
+| A megadott statikus nyilvános IP-cím már használatban van, adja meg két használaton kívüli Azure-SSIS Integration Runtime. | Válassza ki a két nem használt statikus nyilvános IP-címet, vagy távolítsa el az aktuális referenciákat a megadott nyilvános IP-címre, majd indítsa újra a Azure-SSIS IR. |
+| A megadott statikus nyilvános IP-címnek nincs DNS-neve, adjon meg kettőt a Azure-SSIS Integration Runtime DNS-nevével. | A nyilvános IP-cím DNS-nevét Azure Portalban is beállíthatja, ahogy az alábbi képen látható. A konkrét lépések a következők: (1) nyissa meg Azure Portal és goto a nyilvános IP-cím erőforrás lapját. (2) válassza ki a **konfiguráció** szakaszt, és állítsa be a DNS-nevet, majd kattintson a **Save (Mentés** ) gombra; (3) indítsa újra a Azure-SSIS IR. |
+| A Azure-SSIS Integration Runtime megadott VNet és statikus nyilvános IP-címeinek ugyanazon a helyen kell lenniük. | Az Azure-hálózat követelményeinek megfelelően a statikus nyilvános IP-címnek és a virtuális hálózatnak ugyanabban a helyen és előfizetésben kell lennie. Adjon meg két érvényes statikus nyilvános IP-címet, és indítsa újra a Azure-SSIS IR. |
+| A megadott statikus nyilvános IP-cím egy alapszintű, a Azure-SSIS Integration Runtime számára két standardot adjon meg. | További segítségért tekintse meg a [nyilvános IP-cím SKU-](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) t. |
+
+![Azure-SSIS integrációs modul](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
+
+### <a name="publicipresourcegrouplockedduringstart"></a>PublicIPResourceGroupLockedDuringStart
+
+Ha Azure-SSIS IR kiépítés meghiúsul, a rendszer az összes létrehozott erőforrást törli. Ha azonban van erőforrás-törlési zárolás az előfizetésben vagy az erőforráscsoport (amely a statikus nyilvános IP-cím) szintjét tartalmazza, a hálózati erőforrások nem törlődnek a várt módon. A hiba elhárításához távolítsa el a törlési zárolást, és indítsa újra az IR-t.
+
+### <a name="publicipresourcegrouplockedduringstop"></a>PublicIPResourceGroupLockedDuringStop
+
+A Azure-SSIS IR leállításakor a nyilvános IP-címet tartalmazó erőforráscsoporthoz létrehozott összes hálózati erőforrás törlődni fog. A törlés azonban sikertelen lehet, ha az előfizetés vagy az erőforráscsoport (amely a statikus nyilvános IP-címet tartalmazza) erőforrás-törlési zárolást tartalmaz. Távolítsa el a törlési zárolást, és indítsa újra az IR-t.
+
+### <a name="publicipresourcegrouplockedduringupgrade"></a>PublicIPResourceGroupLockedDuringUpgrade
+
+A Azure-SSIS IR rendszeres időközönként automatikusan frissül. Új IR-csomópontok jönnek létre a frissítés során, és a régi csomópontok törlődnek. A létrehozott hálózati erőforrások (például a terheléselosztó és a hálózati biztonsági csoport) is törlődnek a régi csomópontokhoz, és az előfizetése alatt létrejön az új hálózati erőforrások. Ez a hiba azt jelenti, hogy a régi csomópontok hálózati erőforrásainak törlése nem sikerült, mert az előfizetés vagy az erőforráscsoport (amely a statikus nyilvános IP-címet tartalmazza) esetében törlési zárolást eredményezett. Távolítsa el a törlési zárolást, hogy a régi csomópontok kitakarítása és a régi csomópontok statikus nyilvános IP-címének felszabadítása is megtörténjen. Ellenkező esetben a statikus nyilvános IP-cím nem szabadítható fel, és a rendszer nem fogja tudni frissíteni az IR-t.
+
+### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
+
+Ha saját statikus nyilvános IP-címeit szeretné használni, két nyilvános IP-címet kell megadni. Az egyiket az IR-csomópontok azonnali létrehozására fogjuk használni, és egy másikat a rendszer az IR frissítése során használ. Ez a hiba akkor fordulhat elő, ha a másik nyilvános IP-cím nem használható a frissítés során. A lehetséges okokért tekintse meg a [InvalidPublicIPSpecified](#InvalidPublicIPSpecified) .

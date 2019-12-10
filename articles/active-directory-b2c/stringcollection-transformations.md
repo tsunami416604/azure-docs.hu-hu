@@ -1,6 +1,7 @@
 ---
-title: StringCollection stb jogcím-átalakítási példák a Azure Active Directory B2C Identity Experience Framework sémájához | Microsoft Docs
-description: A StringCollection stb jogcím-átalakítási példákat tartalmaz a Azure Active Directory B2C Identity Experience Framework sémájára.
+title: StringCollection stb jogcím-átalakítási példák egyéni házirendekhez
+titleSuffix: Azure AD B2C
+description: A StringCollection stb jogcím-átalakítási példákat tartalmaz a Azure Active Directory B2C Identity Experience Framework (IEF) sémájához.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9add75b8922fe958fc348fb2a6dd48a7b300eade
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: fbbd7b4bdddf2b58e66cb1203414b5a63eec2f27
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063320"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951003"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection stb jogcímek átalakításai
 
@@ -27,9 +28,9 @@ Ez a cikk példákat tartalmaz a karakterlánc-gyűjtési jogcímek átalakítá
 
 Karakterlánc-jogcímet hoz létre egy új StringCollection stb jogcímhez.
 
-| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| Tétel | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | Karakterlánc | A kimeneti jogcímhez hozzáadni kívánt ClaimType. |
+| InputClaim | item | sztring | A kimeneti jogcímhez hozzáadni kívánt ClaimType. |
 | InputClaim | gyűjtemény | StringCollection stb | Választható Ha meg van adva, a jogcím-átalakítás átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
 | outputClaim | gyűjtemény | StringCollection stb | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. |
 
@@ -61,13 +62,13 @@ A következő jogcím-átalakítás hozzáadja az **e-mail-** claimType az **oth
 
 Egy karakterlánc-paramétert szúr be egy új StringCollection stb jogcímbe.
 
-| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| Tétel | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | gyűjtemény | StringCollection stb | Választható Ha meg van adva, a jogcím-átalakítás átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
-| InputParameter | item | Karakterlánc | A kimeneti jogcímhez hozzáadandó érték. |
+| InputParameter | item | sztring | A kimeneti jogcímhez hozzáadandó érték. |
 | outputClaim | gyűjtemény | StringCollection stb | A ClaimsTransformation meghívása után előállított ClaimTypes. |
 
-Ezzel a jogcím-átalakítással adhat hozzá új vagy meglévő StringCollection stb karakterlánc-értéket. A következő példa egy állandó e-mail-admin@contoso.comcímet () hoz létre a **otherMails** jogcímhez.
+Ezzel a jogcím-átalakítással adhat hozzá új vagy meglévő StringCollection stb karakterlánc-értéket. A következő példa egy állandó e-mail-címet (admin@contoso.com) hoz létre a **otherMails** jogcímhez.
 
 ```XML
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
@@ -96,10 +97,10 @@ Ezzel a jogcím-átalakítással adhat hozzá új vagy meglévő StringCollectio
 
 A megadott karakterlánc-gyűjtemény első elemének beolvasása.
 
-| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| Tétel | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | gyűjtemény | StringCollection stb | A jogcím-átalakítás által az elemek beolvasásához használt ClaimTypes. |
-| outputClaim | extractedItem | Karakterlánc | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. A gyűjtemény első eleme. |
+| outputClaim | extractedItem | sztring | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. A gyűjtemény első eleme. |
 
 A következő példa beolvassa a **otherMails** jogcímet, és az első tételt visszaküldi az **e-mail-** jogcímbe.
 

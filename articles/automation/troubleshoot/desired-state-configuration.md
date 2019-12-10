@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1a45ed90b2b2c4a3a4f8eb11c4618c11e6d66761
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3d358ac1fb766804b35d969f4d06bc6c07e62661
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849360"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951462"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>A kívánt állapot konfigurációjának (DSC) hibáinak megoldása
 
@@ -89,6 +89,68 @@ Ezt a hibát általában egy tűzfal okozza, a gép a proxykiszolgáló mögött
 #### <a name="resolution"></a>Felbontás
 
 Ellenőrizze, hogy a számítógép rendelkezik-e hozzáféréssel a Azure Automation DSC megfelelő végpontokhoz, és próbálkozzon újra. A szükséges portok és címek listáját itt tekintheti meg: [Network Planning](../automation-dsc-overview.md#network-planning)
+
+### <a name="a-nameunauthorizedascenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>forgatókönyv: az állapotjelentések a "jogosulatlan" válaszüzenetet adják vissza.
+
+#### <a name="issue"></a>Probléma
+
+Ha állapot-konfigurációval (DSC) regisztrál egy csomópontot, a következő hibaüzenetek egyike jelenik meg:
+
+```error
+The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+```
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / Registration of the Dsc Agent with the server failed.
+```
+
+### <a name="cause"></a>Ok
+
+Ezt a problémát rossz vagy lejárt tanúsítvány okozza.  További információ: [tanúsítvány lejárata és újraregisztrálása](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration).
+
+### <a name="resolution"></a>Felbontás
+
+Az alábbi lépések végrehajtásával regisztrálja újra a sikertelen DSC-csomópontot.
+
+Először törölje a csomópont regisztrációját a következő lépésekkel.
+
+1. A Azure Portal a **Home** -> Automation- **fiókok**– > {az Automation-fiókja} – > **állapot konfigurálása (DSC)**
+2. Kattintson a "csomópontok" elemre, majd kattintson a problémával rendelkező csomópontra.
+3. Kattintson a "regisztráció megszüntetése" gombra a csomópont regisztrációjának megszüntetéséhez.
+
+Másodszor, távolítsa el a DSC-bővítményt a csomópontból.
+
+1. A Azure Portal a **kezdőlap** -> **virtuális gép** – > {meghiúsult csomópont} – > **bővítmények**
+2. Kattintson a "Microsoft. PowerShell. DSC" elemre.
+3. A PowerShell DSC-bővítmény eltávolításához kattintson az Eltávolítás gombra.
+
+Harmadszor, távolítsa el az összes hibás vagy lejárt tanúsítványt a csomópontból.
+
+Futtassa a következőt a hibás csomóponton egy rendszergazda jogú PowerShell-parancssorból:
+
+```powershell
+$certs = @()
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC"}
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC-OaaS Client Authentication"}
+$certs += dir cert:\localmachine\CA | ?{$_.subject -like "CN=AzureDSCExtension*"}
+"";"== DSC Certificates found: " + $certs.Count
+$certs | FL ThumbPrint,FriendlyName,Subject
+If (($certs.Count) -gt 0)
+{ 
+    ForEach ($Cert in $certs) 
+    {
+        RD -LiteralPath ($Cert.Pspath) 
+    }
+}
+```
+
+Végül a következő lépésekkel regisztrálja újra a hibás csomópontot.
+
+1. A Azure Portal a **Home** -> Automation- **fiókok** – > {az Automation-fiókja} – > **állapot konfigurálása (DSC)**
+2. Kattintson a "csomópontok" elemre.
+3. Kattintson a Hozzáadás gombra.
+4. Válassza a hibás csomópontot.
+5. Kattintson a "kapcsolat" elemre, és válassza ki a kívánt beállításokat.
 
 ### <a name="failed-not-found"></a>Forgatókönyv: a csomópont "nem található" hiba miatt sikertelen állapotú.
 
@@ -187,6 +249,49 @@ Ez a hiba általában akkor fordul elő, ha a csomóponthoz olyan csomópont-kon
 
 * Győződjön meg arról, hogy a csomópontot olyan csomópont-konfiguráció nevével rendeli hozzá, amely pontosan megegyezik a szolgáltatásban szereplő névvel.
 * Dönthet úgy is, hogy nem tartalmazza a csomópont-konfiguráció nevét, amely a csomópont bevezetését eredményezi, de nem rendel hozzá csomópont-konfigurációt.
+
+### <a name="cross-subscription"></a>Forgatókönyv: egy csomópont PowerShell-lel való regisztrálása a következő hibaüzenetet adja vissza: "egy vagy több hiba történt"
+
+#### <a name="issue"></a>Probléma
+
+Amikor `Register-AzAutomationDSCNode` vagy `Register-AzureRMAutomationDSCNode`használatával regisztrál egy csomópontot, a következő hibaüzenet jelenik meg.
+
+```error
+One or more errors occurred.
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba akkor fordul elő, ha olyan csomópontot próbál meg regisztrálni, amely az Automation-fióktól eltérő előfizetésben él.
+
+#### <a name="resolution"></a>Felbontás
+
+Az előfizetési csomópontot úgy kezelje, mintha egy különálló felhőben vagy helyszíni módon él.
+
+A csomópont regisztrálásához kövesse az alábbi lépéseket.
+
+* Windows – [fizikai/virtuális Windows rendszerű számítógépek a helyszínen, vagy az Azure-tól/AWS-től eltérő felhőben](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws).
+* Linux- [fizikai/virtuális Linux rendszerű számítógépek a helyszínen, vagy az Azure-on kívül más felhőben is](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure).
+
+### <a name="agent-has-a-problem"></a>Forgatókönyv: hibaüzenet – "kiépítés sikertelen"
+
+#### <a name="issue"></a>Probléma
+
+Csomópont regisztrálása esetén a következő hibaüzenet jelenik meg:
+
+```error
+Provisioning has failed
+```
+
+#### <a name="cause"></a>Ok
+
+Ez az üzenet akkor fordul elő, ha kapcsolati probléma van a csomópont és az Azure között.
+
+#### <a name="resolution"></a>Felbontás
+
+Döntse el, hogy a csomópont egy magánhálózati virtuális hálózaton van-e, vagy más problémái vannak az Azure-hoz való csatlakozással.
+
+További információ: [hibák elhárítása a megoldások](onboarding.md)bevezetése során.
 
 ### <a name="failure-linux-temp-noexec"></a>Forgatókönyv: konfiguráció alkalmazása Linuxon, hiba történt általános hiba esetén
 

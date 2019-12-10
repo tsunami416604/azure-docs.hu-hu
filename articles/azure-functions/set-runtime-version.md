@@ -3,12 +3,12 @@ title: A Azure Functions futtatókörnyezet verzióinak megcélzása
 description: Azure Functions támogatja a futtatókörnyezet több verzióját. Megtudhatja, hogyan határozhatja meg az Azure-ban üzemeltetett Function app futásidejű verzióját.
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 6f93ac7bcbd25c1b120cfeecae9dd4353524855f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0031fe08ee1e77c35a78b2128615f08846c1b612
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230324"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942273"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>A Azure Functions futtatókörnyezet verzióinak megcélzása
 
@@ -29,9 +29,9 @@ Az alábbi táblázat az egyes főverziók `FUNCTIONS_EXTENSION_VERSION` érték
 
 | Főverzió | `FUNCTIONS_EXTENSION_VERSION` érték |
 | ------------- | ----------------------------------- |
-| 3. x (előzetes verzió) | `~3` |
+| 3. x  | `~3` |
 | 2. x  | `~2` |
-| 1. x | `~1` |
+| 1. x  | `~1` |
 
 A futtatókörnyezet verziójának módosítása a Function alkalmazás újraindítását eredményezi.
 
@@ -42,7 +42,7 @@ Módosíthatja a Function alkalmazás által használt futtatókörnyezet verzi�
 > [!IMPORTANT]
 > Bár a futásidejű verziót a `FUNCTIONS_EXTENSION_VERSION` beállítás határozza meg, ezt a módosítást a Azure Portal kell végeznie, nem pedig közvetlenül a beállítás módosításával. Ennek az az oka, hogy a portál érvényesíti a módosításokat, és szükség szerint más kapcsolódó módosításokat hajt végre.
 
-### <a name="from-the-azure-portal"></a>A Azure Portal
+### <a name="from-the-azure-portal"></a>Az Azure Portalról
 
 [!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
@@ -104,7 +104,7 @@ Ezt a parancsot a [Azure Cloud Shell](../cloud-shell/overview.md) futtathatja, h
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az 2,0 futtatókörnyezet megcélzása a helyi fejlesztési környezetben](functions-run-local.md)

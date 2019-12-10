@@ -1,5 +1,6 @@
 ---
-title: Bejelentkezés beállítása Azure Active Directory szervezet számára – Azure Active Directory B2C
+title: Bejelentkezés beállítása Azure AD-szervezetekhez
+titleSuffix: Azure AD B2C
 description: Be kell állítania a bejelentkezést egy adott Azure Active Directory szervezet számára a Azure Active Directory B2Cban.
 services: active-directory-b2c
 author: mmacy
@@ -11,12 +12,12 @@ ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0c2e368b9c12d8ab673e5b8808632501de448b9a
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d864561273f89c510633bbc95a2d037a270401f8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755769"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947675"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása egy adott Azure Active Directory szervezet számára Azure Active Directory B2C
 
@@ -65,7 +66,7 @@ Ha engedélyezni szeretné a bejelentkezést egy adott Azure AD-szervezet felhas
 1. Az **ügyfél-azonosító**mezőben adja meg a korábban rögzített alkalmazás azonosítóját.
 1. Az **ügyfél titkos kulcsa**mezőben adja meg a korábban rögzített ügyfél-titkot.
 1. Hagyja meg a **hatókör**, a **Válasz típusa**és a **válasz mód**alapértelmezett értékeit.
-1. Választható Adja meg a **Domain_hint**értékét. Például: *ContosoAD*. Ez az az érték, amelyet akkor kell használni, ha a kérelemben szereplő *domain_hint* használatával hivatkozik erre az identitás-szolgáltatóra.
+1. Választható Adja meg a **Domain_hint**értékét. Például: *ContosoAD*. Ez az az érték, amelyet akkor kell használni, ha a kérelemben *domain_hint* használatával hivatkozik erre az identitás-szolgáltatóra.
 1. Az **Identity Provider jogcímek leképezése**területen adja meg a következő jogcím-hozzárendelési értékeket:
 
     * **Felhasználói azonosító**: *OID*

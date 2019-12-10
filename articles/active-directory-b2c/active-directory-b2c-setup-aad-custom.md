@@ -1,5 +1,6 @@
 ---
-title: Bejelentkezés beállítása Azure Active Directory fiókkal Azure Active Directory B2C egyéni házirendek használatával
+title: Bejelentkezés beállítása Azure AD-fiókkal egyéni szabályzatok használatával
+titleSuffix: Azure AD B2C
 description: A bejelentkezést egyéni szabályzatok használatával Azure Active Directory B2C Azure Active Directory fiókkal állíthatja be.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a221d55d942e6140c12f2ebfb64428b8ec7be74b
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 2babd21ab477fae8c0d139932e08b8d99b9170ae
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643574"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947779"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása Azure Active Directory fiókkal egyéni házirendek használatával Azure Active Directory B2C
 
@@ -58,7 +59,7 @@ A Azure AD B2C bérlőben létrehozott alkalmazás-kulcsot kell tárolnia.
 1. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
 1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
 1. A **Beállítások**területen válassza a `Manual`lehetőséget.
-1. Adja meg a szabályzat kulcsának **nevét** . Például: `ContosoAppSecret`.  Az `B2C_1A_` előtagot a rendszer automatikusan hozzáadja a kulcs neveként a létrehozáskor, ezért a következő szakaszban található XML-ben a *B2C_1A_ContosoAppSecret*.
+1. Adja meg a szabályzat kulcsának **nevét** . Például: `ContosoAppSecret`.  A rendszer automatikusan hozzáadja a kulcs nevét a létrehozáskor `B2C_1A_` előtagot, ezért a következő szakaszban található XML-ben szereplő hivatkozás a *B2C_1A_ContosoAppSecret*.
 1. A **Secret (titkos kulcs**) mezőben adja meg a korábban feljegyzett ügyfél-titkot.
 1. A **kulcshasználat**beállításnál válassza a `Signature`lehetőséget.
 1. Kattintson a **Létrehozás** gombra.
@@ -130,7 +131,7 @@ Az Azure AD-végponttól kapott jogkivonat lekéréséhez meg kell határoznia a
 1. Az Azure AD az OpenID Connect protokollt használja, ezért győződjön meg arról, hogy a **protokoll** értéke `OpenIdConnect`.
 1. A **metaadatok** értékének beállítása `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration`re, ahol `your-AD-tenant-name` az Azure ad-bérlő neve. Például: `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
 1. Nyissa meg a böngészőt, és keresse meg az imént frissített **metaadat** -URL-címet, keresse meg a **kiállító** objektumot, majd másolja és illessze be az értéket az XML-fájl **ProviderName** értékére.
-1. Állítsa be a **client_id** az alkalmazás-azonosítóra az alkalmazás regisztrációja során.
+1. **Client_id** beállítása az alkalmazás-azonosítóhoz az alkalmazás regisztrációja során.
 1. A **CryptographicKeys**alatt frissítse a **StorageReferenceId** értékét a korábban létrehozott házirend-kulcs nevére. Például: `B2C_1A_ContosoAppSecret`.
 
 ### <a name="upload-the-extension-file-for-verification"></a>A bővítmény fájljának feltöltése ellenőrzéshez
@@ -199,7 +200,7 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
 
 Ha a bejelentkezési folyamat sikeres, a böngésző átirányítja `https://jwt.ms`ra, amely megjeleníti a Azure AD B2C által visszaadott token tartalmát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéni szabályzatok használatakor előfordulhat, hogy további információra van szüksége, amikor a fejlesztés során hibaelhárítást végez a házirendben.
 

@@ -1,6 +1,6 @@
 ---
-title: Adatok tisztítása és előkészítése az Azure Machine Learning - csoportos adatelemzési folyamat
-description: Adatok előkészítése, hogy hatékonyan használható a machine Learning előzetes feldolgozása és.
+title: Előkészítési adat ML Studio (klasszikus) – csoportos adatelemzési folyamat
+description: Előre feldolgozhatja és megtisztíthatja az adatfeldolgozást, hogy előkészítse a gépi tanuláshoz való hatékony használatot.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,93 +11,93 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2b3ec3352d6e1939b195bbba87b8a824404346ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0754f7ac85976b5ef307bf1266d26a9380ab1c6
+ms.sourcegitcommit: 6e42ce0ca0a7ac572398e9d024fcf69906670d74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044600"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74936037"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Az adatok bővített gépi tanulásra való előkészítésének feladatai
-Előzetesen feldolgozni, és adattisztítást is a fontos feladatok, amelyek általában kell elvégezni, mielőtt adatkészlet használható hatékonyan a machine Learning szolgáltatáshoz. Nyers adatokat gyakran zajos és nem megbízható, és esetleg hiányzik a értékeket. Az ilyen adatok használata a modellezési félrevezető eredményeket hozhat létre. Ezek a feladatok tartozik, a csoportos adatelemzési folyamat (TDSP), és általában hajtsa végre egy kezdeti feltárásával egy adatkészlet felderítésére, és tervezze meg a szükséges előzetes feldolgozás segítségével. Részletesebb útmutatásért TDSP folyamattal kapcsolatban, tekintse meg a leírt lépéseket a [csoportos adatelemzési folyamat](overview.md).
+Az adatok előfeldolgozása és tisztítása olyan fontos feladatok, amelyeket általában el kell végezni, mielőtt az adatkészlet hatékonyan használható legyen a gépi tanuláshoz. A nyers adatok gyakran zajosak és megbízhatatlanok, és lehet, hogy hiányoznak az értékek. Ha ilyen adatokat használ a modellezéshez, félrevezető eredményeket hozhat létre. Ezek a feladatok a csoportos adatelemzési folyamat (TDSP) részét képezik, és általában egy olyan adatkészlet kezdeti vizsgálatát végzik, amely a szükséges előzetes feldolgozás felderítésére és megtervezésére szolgál. A TDSP folyamatával kapcsolatos részletesebb útmutatásért tekintse meg a [csoportos adatelemzési folyamat](overview.md)lépéseit.
 
-Előzetes feldolgozása és tisztítási feladatok, például az adatok feltárására feladat elvégezhető a számos különböző környezetekben, például az SQL vagy a Hive vagy az Azure Machine Learning Studióban, és a különböző eszközök és nyelvek, például az R vagy Python, attól függően, ahol az adatok tárolása és hogyan van formázva. TDSP meghatározási jellegűek, mivel ezek a feladatok is igénybe vehet a munkafolyamatban a folyamat számos lépés helyén.
+Az előfeldolgozással és a tisztítással kapcsolatos feladatok, például az adatfeltárási feladat különböző környezetekben, például az SQL-ben, a kaptárban vagy a Azure Machine Learning Studioban, valamint különböző eszközökkel és nyelvekkel (például R vagy Python) végezhetők el, attól függően, hogy az adatok hol vannak tárolva és hogyan történik a formázása. Mivel a TDSP ismétlődő jellegű, ezeket a feladatokat a folyamat munkafolyamatának különböző lépésein végezheti el.
 
-Ez a cikk bemutatja a különböző adatokat feldolgozó fogalmakat és feladatokat, amelyek előtt vagy után tölt be adatot az Azure Machine Learningbe végezhető.
+Ez a cikk bemutatja a különböző adatfeldolgozási fogalmakat és feladatokat, amelyek az adatok Azure ML Studioba (klasszikus) történő betöltése előtt vagy után hajthatók végre.
 
-Adatáttekintés és előfeldolgozásához belül az Azure Machine Learning studio kész példát talál a [előzetesen feldolgozni az adatokat az Azure Machine Learning Studióban](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videó.
+Az Azure ML Studio (klasszikus) szolgáltatáson belül végzett adatfeltárásra és előfeldolgozásra például az [adatfeldolgozást előkészítő](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videóban olvashat.
 
-## <a name="why-pre-process-and-clean-data"></a>Miért előzetes feldolgozása és az adatok?
-Különböző forrásokból származó valós adatok megtörtént, és folyamatokat, és tartalmazhat szabálytalanságok vagy sérült adatokat, hogy az adatkészlet. A tipikus adatfolyamat minőségi problémák merülnek fel a következők:
+## <a name="why-pre-process-and-clean-data"></a>Miért érdemes előre feldolgozni és megtisztítani az adatfeldolgozást?
+A valós világbeli adatok gyűjtése különböző forrásokból és folyamatokból történik, és az adatkészletek minőségét veszélyeztető szabálytalanságokat vagy sérült adatokat is tartalmazhat. A felmerülő jellemző adatminőségi problémák a következők:
 
-* **Hiányos**: Adatok nem áll rendelkezésre az attribútumok vagy a hiányzó értékeket tartalmazó.
-* **Zajos**: Adatok hibás rekordok vagy a kiugró értékeket tartalmazza.
-* **Inkonzisztens**: Adatok tartalmazzák az ütköző rekordok vagy fenntartásában.
+* **Hiányos**: az adatok nem tartalmaznak attribútumokat, vagy hiányoznak a hiányzó értékek.
+* **Zajos**: az adatok hibás rekordokat vagy kiugró adatokat tartalmaznak.
+* **Inkonzisztens**: az adatok ütköző rekordokat vagy eltéréseket tartalmaznak.
 
-Minőségi data quality prediktív modelleket előfeltétele. "Szemétgyűjtési szemétgyűjtési ki a" elkerülése és adatok minőség javítása, és ezért a teljesítmény modellezheti, amihez elengedhetetlen elvégzésére adat problémák korai azonosításához, és döntse el, a megfelelő adatokat feldolgozó és tisztítási lépéseket adatok állapota képernyő.
+A minőség-előrejelző modellek előfeltétele a minőségi adatgyűjtés. A "szemetet a-ban, a kitakarításban" és az adatminőség javítása érdekében, és így a modell teljesítményének növelése érdekében elengedhetetlen, hogy az adatállapot-képernyőt az adatproblémák korai szakaszában, a megfelelő adatfeldolgozási és tisztítási lépések elvégzésével végezze el.
 
-## <a name="what-are-some-typical-data-health-screens-that-are-employed"></a>Mik azok az egyes alkalmazott tipikus adatfolyamat állapotát képernyők?
-A Microsoft ellenőrizheti, hogy az adatok általános minőségének ellenőrzésével:
+## <a name="what-are-some-typical-data-health-screens-that-are-employed"></a>Mik azok a tipikus adatállapot-képernyők?
+Az általános minőséget az alábbiak ellenőrzésével ellenőrizheti:
 
-* Hány **rekordok**.
-* Hány **attribútumok** (vagy **funkciók**).
-* Az attribútum **adattípusok** (névleges, folyamatos vagy sorszámnál).
-* Hány **hiányzó**.
-* **Szabályosságának** az adatok.
-  * Ha az adatok TSV- vagy CSV, ellenőrizze, hogy az oszlop elválasztók és a sor elválasztók mindig megfelelően külön oszlopok és sorok.
-  * Ha az adatok HTML vagy XML formátumú, ellenőrizze-e az adatok jól formázott alapján a megfelelő szabványokon.
-  * Elemzés is szükség lehet annak érdekében, hogy a strukturált adatok kinyerését részben strukturált vagy strukturálatlan adatokon.
-* **Inkonzisztens adatfelderítési rekordok**. Ellenőrizze, hogy értékek engedélyezettek. például ha az adatok tartalmazzák a tanulói GPA, ellenőrizze, hogy a kijelölt tartomány van a GPA tegyük fel, hogy 0 ~ 4.
+* A **rekordok**száma.
+* Az **attribútumok** (vagy **szolgáltatások**) száma.
+* Az attribútum **adattípusai** (névleges, sorszám vagy folytonos).
+* A **hiányzó értékek**száma.
+* Az adatmennyiség **jól formált** .
+  * Ha az adatközpont TSV vagy CSV formátumú, ellenőrizze, hogy az oszlopok és a sorok elválasztói mindig helyesen vannak-e elkülönítve az oszlopokat és a sorokat.
+  * Ha az adatai HTML-vagy XML-formátumban vannak, ellenőrizze, hogy az adatai megfelelően vannak-e kialakítva a megfelelő szabványok alapján.
+  * A strukturált adatok félig strukturált vagy strukturálatlan adatokból való kinyeréséhez is szükség lehet az elemzésre.
+* **Inkonzisztens adatrekordok**. Győződjön meg arról, hogy az értékek tartománya engedélyezett. például, ha az adattanulói GPA tartalmaz, ellenőrizze, hogy a GPA a kijelölt tartományban van-e, azaz 0 ~ 4.
 
-Ha megtalálta az adatokat, problémák **feldolgozási lépések** van szükség, amelyek gyakran magában foglalja a hiányzó értékeket, az adatok normalizálási, diszkretizálási tisztítás, eltávolítása és/vagy cserélje le a szöveg feldolgozási beágyazott karakter, ami hatással lehet az adatok igazítás, vegyes adattípusok közös mezőket, és mások.
+Ha az adatokkal kapcsolatos problémákat tapasztal, a **feldolgozási lépések** szükségesek, ami gyakran magában foglalja a hiányzó értékek tisztítását, az adatnormalizálás, a diszkretizálási, a szöveg feldolgozását a beágyazott karakterek eltávolítására és/vagy cseréjére, ami hatással lehet az adatok igazítására, a közös mezőkben szereplő vegyes adattípusokra és egyebek
 
-**Az Azure Machine Learning helytelen formátumú táblázatos adatokat használ fel**.  Ha az adatok már táblázatos formában, előtti adatfeldolgozási elvégezhető közvetlenül az Azure Machine Learning, a Machine Learning studióban.  Ha adatok nem táblázatos formában, például azt az XML-elemzés lehet szükség annak érdekében, hogy az adatok átalakítása táblázatos formában.  
+A **Azure Machine learning jól formázott táblázatos adatokat**használ.  Ha az adatokat már táblázatos formában végzik, az adatfeldolgozást közvetlenül az Azure ML Studio (klasszikus) használatával is elvégezheti a Machine Learning.  Ha az adatokat nem táblázatos formában, tegyük fel, hogy az XML-ben van, akkor az adatokat táblázatos formában kell konvertálni.  
 
-## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Mik a főbb előtti adatfeldolgozási feladatok?
-* **Adatok tisztítása**:  Adja meg vagy hiányzó észlelését, és távolítsa el a zajos adatok és a kiugró értékeket.
-* **Adatátalakítás**:  Adatok mérete és a zaj csökkentésére normalizálása.
-* **Adatcsökkentés**:  Minta adatfelderítési rekordok vagy attribútumok adatok egyszerűbb kezelése.
-* **Adatok diszkretizálási**:  Folyamatos attribútumok konvertálása kategorikus attribútumok a használat megkönnyítése érdekében bizonyos machine learning-módszerekkel együtt.
-* **Szöveg tisztítás**: távolítsa el a miatt előfordulhat, hogy adatokat illesztését, beágyazott karaktereket, például a beágyazott lapjai tabulátorral tagolt adatfájlt, beágyazott új sorok, amelyek megszakadhat a rekordokat, és így tovább.
+## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Mik az adatok előfeldolgozásával kapcsolatos főbb feladatok?
+* **Adatok tisztítása**: töltse ki vagy adja meg a hiányzó értékeket, azonosítsa és távolítsa el a zajos adatokat és a kiugró adatokat.
+* **Adatátalakítás**: a méretek és a zaj csökkentése érdekében normalizálja az adatmennyiséget.
+* **Adatmennyiség-csökkentés**: adatrekordok vagy attribútumok a könnyebb adatkezelés érdekében.
+* **Adatdiszkretizálási**: folyamatos attribútumok átalakítása kategorikus attribútumokra a könnyű használat érdekében bizonyos gépi tanulási módszerekkel.
+* **Szöveg tisztítása**: távolítsa el a beágyazott karaktereket, ami az adatok helytelen igazítását okozhatja, például a tabulátorral elválasztott adatfájlban lévő beágyazott lapokat, a beágyazott új sorokat, amelyek a rekordokat megszakítják stb.
 
-Az alábbi szakaszokban részletesen adatok feldolgozási lépések közül.
+Az alábbi részekben részletesen ismertetjük ezeket az adatfeldolgozási lépéseket.
 
-## <a name="how-to-deal-with-missing-values"></a>Hogyan foglalkozik a hiányzó értékeket?
-Hiányzó kezelésére, érdemes először a probléma meghatározásához a hiányzó értékek is jobb kezelni az az oka. Tipikus hiányzó érték kezelése módszerek a következők:
+## <a name="how-to-deal-with-missing-values"></a>Hogyan lehet kezelni a hiányzó értékeket?
+A hiányzó értékek kezeléséhez érdemes először azonosítani a hiányzó értékek okát, hogy jobban kezeljék a problémát. A jellemző hiányzó értékek kezelési módszerei a következők:
 
-* **Törlés**: Hiányzó értéket tartalmazó rekordok eltávolítása
-* **Üres behelyettesítési**: Hiányzó értékeket cserélje le a helyőrző értékét: pl. *ismeretlen* kategorikus vagy 0 numerikus értékek.
-* **Jelenti azt, hogy a helyettesítés**: Hiányzó adatok esetén numerikus, cserélje le a hiányzó értékeket az átlag.
-* **Gyakori behelyettesítési**: Ha kategorikus a hiányzó adatokat, a hiányzó értékeket cserélje a leggyakoribb elem
-* **Regresszió behelyettesítési**: Egy regressziós módszert cserélje le a hiányzó értékeket romlott értékeire.  
+* **Törlés**: hiányzó értékekkel rendelkező rekordok eltávolítása
+* **Próbabábu-helyettesítés**: hiányzó értékek kicserélése egy dummy értékkel: például *ismeretlen* a kategorikus vagy a 0 értékre a numerikus értékeknél.
+* **Mean helyettesítés**: Ha a hiányzó adatok numerikusak, cserélje le a hiányzó értékeket az átlag értékre.
+* **Gyakori helyettesítés**: Ha a hiányzó adatok kategorikusak, cserélje le a hiányzó értékeket a leggyakoribb elemre.
+* **Regressziós helyettesítés**: használjon regressziós metódust a hiányzó értékek romlott értékekkel való lecseréléséhez.  
 
-## <a name="how-to-normalize-data"></a>Hogyan lehet adatokat normalizálása?
-Adatok normalizálási újra méretezhető megadott tartományra numerikus értékeket. Népszerű normalizálási módszerek az alábbiak:
+## <a name="how-to-normalize-data"></a>Hogyan lehet az adatnormalizálni?
+Az adatok normalizálása átméretezi a numerikus értékeket egy megadott tartományba. A népszerű adatnormalizálás módszerei többek között az alábbiak:
 
-* **Min-Max normalizálási**: Lineárisan átalakíthatja az adatokat egy közötti tartományba esik, például: 0 és 1, ahol a minimális érték a 0 és maximális értékét 1-re van ellátva.
-* **Z-pontszám normalizálási**: Méretezhető és szórásnál alapján: az adatok és a középérték közötti különbség nullával való osztás a szórást.
-* **Tizedes tört skálázás**: Horizontális adatok áthelyezése a tizedesjeltől attribútumérték.  
+* **Min-max normalizálás**: lineárisan alakítsa át az értékeket egy tartományba, azaz 0 és 1 közötti értéket, ahol a minimális érték 0, a maximális érték pedig 1.
+* **Z – pontszám normalizálása**: az adatméretezés a középérték és a szórás alapján: az adatmennyiség és a szórás közötti különbség felosztása.
+* **Decimális skálázás**: méretezheti az adatmennyiséget az attribútumérték decimális pontjának áthelyezésével.  
 
-## <a name="how-to-discretize-data"></a>Hogyan lehet adatokat diszkretizálásához?
-Adatok is diszkretizálható folyamatos érték átalakítása névleges attribútumok vagy intervallumok szerint. Néhány módszer az ennek a következők:
+## <a name="how-to-discretize-data"></a>Hogyan diszkretizálásához az adatkezelés?
+Az adatok diszkretizált a folytonos értékek névleges attribútumokra vagy intervallumokra való konvertálásával. Ennek néhány módja a következő:
 
-* **A Dobozolás egyenlő szélességű**: Az attribútum az összes lehetséges értékek felosztani N csoportokba az azonos méretű és rendelhet hozzá értéket, amely esetben az doboz bin számát.
-* **A Dobozolás egyenlő magasságú**: Osztása egy attribútum minden lehetséges értékek N csoportok, mindegyik példány azonos számú, hogyan végezheti el az értékeket, amelyeket tartoznak az doboz bin számát.  
+* **Egyenlő szélességű dobozolási**: az attribútumok összes lehetséges értékének tartományát azonos méretű N csoportba sorolja, és hozzárendeli azokat az értékeket, amelyek a raktárhely számával ellátott raktárhelyen jelennek meg.
+* **Egyenlő magasságú dobozolási**: az attribútumok összes lehetséges értékének tartományát N csoportokba osztja, amelyek mindegyike azonos számú példányt tartalmaz, majd hozzárendeli azokat az értékeket, amelyek az adott raktárhely számával ellátott raktárhelyre esnek.  
 
-## <a name="how-to-reduce-data"></a>Hogyan csökkenthető az adatok?
-A könnyebb adatkezelési adatok méretének csökkentése érdekében különböző módszer áll rendelkezésre. Adatok mérete és a tartományhoz a következő módszerek lehet alkalmazni:
+## <a name="how-to-reduce-data"></a>Hogyan csökkentheti az adatmennyiséget?
+A könnyebb adatkezelés érdekében különböző módszerekkel csökkentheti az adatmennyiséget. Az adatmérettől és a tartománytól függően a következő metódusokat lehet alkalmazni:
 
-* **Jegyezze fel a mintavételi**: Mintát vesz az adatfelderítési rekordok, és csak a reprezentatív részhalmazát választhat az adatokat.
-* **Mintavételi attribútum**: Válassza ki a legfontosabb attribútumok csak egy része az adatok közül.  
-* **Összesítés**: Az adatok felosztásához csoportokba, és tárolja a számokat az egyes csoportokhoz. Például az elmúlt 20 évben egy étteremlánc napi bevétel számú összesíthetők havi bevételhez az adatok méretének csökkentése érdekében.  
+* **Mintavétel rögzítése**: kóstolja meg az adatrekordokat, és csak a reprezentatív részhalmazt válassza ki az adatokból.
+* **Attribútumok mintavételezése**: válassza ki a legfontosabb attribútumok egy részhalmazát az adatok közül.  
+* **Összesítés**: az adatok csoportokba osztása és az egyes csoportok számának tárolása. Például az elmúlt 20 évben egy éttermi lánc napi bevételi száma összesíthető a havi bevételsel az adatok méretének csökkentése érdekében.  
 
-## <a name="how-to-clean-text-data"></a>Tiszta szöveges adatok hogyan?
-**A táblázatos adatok szöveges mezők** befolyásoló oszlopok igazítása és/vagy rekord határok karaktereket tartalmazhatnak. Például egy tabulátorral tagolt fájl OK oszlop illesztését lapok ágyazva, és beágyazott új sor karakter szünet rekord sorokat. Nem megfelelő szöveg kódolási kezelése során írási/olvasási szöveges információk elvesztését, szándékolatlan bevezetése nem olvasható karaktereket, például null értékeket, és előfordulhat, hogy is érinthetik szöveg elemzése vezet. Alapos elemzés és -szerkesztő lehet szükség annak érdekében, hogy a tiszta szöveges mezők megfelelő igazítás, illetve strukturált kivonatot adatok és a strukturálatlan és részben strukturált szöveges adatok.
+## <a name="how-to-clean-text-data"></a>Hogyan lehet megtisztítani a szöveges adatbevitelt?
+**A táblázatos adatok szöveges mezői** tartalmazhatják az oszlopok igazítását és/vagy a rekordok határait befolyásoló karaktereket. Például a tabulátorral tagolt fájlok beágyazott lapjai az oszlopok helytelen igazítását okozzák, a beágyazott új sortörési sorok pedig megtörik a rekordokat. A szöveg írása/olvasása során nem megfelelő kódolás a szöveges adatok elvesztését eredményezi, a nem olvasható karakterek véletlen bevezetését, például nullát, és a szöveg elemzését is érintheti. Alapos elemzésre és szerkesztésre lehet szükség ahhoz, hogy a szövegmezőket a megfelelő igazításhoz és/vagy strukturált adatok kinyeréséhez strukturálatlan vagy részben strukturált szöveges adatokból lehessen kinyerni.
 
-**Adatfeltárás** kínál egy korai képet kaphat az adatok. Ebben a lépésben egy adat-problémák száma ne maradjon lefedetlen felelősségi lehet, és a probléma megoldására szolgáló kapcsolódó módszereit lehet alkalmazni.  Fontos például, hogy mi a probléma forrását, és hogyan a probléma előfordulhat, hogy vezettek be kérdéseket tehet fel. Ennek segítségével könnyebben meghatározhatja az adatok feldolgozási lépések, amelyek kell tenni a problémák megoldásához. Milyen típusú insights egy szándékozik célosztályából származik az adatok is használható, az adatfeldolgozás rangsorolását.
+Az **adatfeltárási** szolgáltatás korai áttekintést nyújt az adatvédelemről. Ebben a lépésben számos adatprobléma feloldható, és a kapcsolódó módszerek alkalmazhatók a problémák megoldására.  Fontos, hogy olyan kérdéseket tegyenek fel, mint a probléma forrása, és hogy a probléma milyen módon lett bevezetve. Ez segít a megoldásához szükséges adatfeldolgozási lépések eldöntésében is. Az adatokból származtatott megállapítások egyike az adatfeldolgozási erőfeszítések rangsorolására is használható.
 
-## <a name="references"></a>Referencia
-> *Adatbányászat: Elvekről és technikákról*, harmadik kiadás, Morgan Kaufmann, 2011 Jiawei Han Micheline Kamber és Jian Pei
+## <a name="references"></a>Tudástár
+> *Adatbányászat: fogalmak és technikák*, harmadik kiadás, Morgan Kaufmann, 2011, Jiawei Han, Michelin Kamber és Jian Pei
 > 
 > 
 
