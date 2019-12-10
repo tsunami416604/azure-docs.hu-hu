@@ -78,8 +78,6 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Klasszikus szabályzatok migrálása
       href: policy-migration-mfa.md
-    - name: Feltételes hozzáférés bevezetése
-      href: howto-conditional-access-adoption-kit.md
     - name: Hibaelhárítás
       items:
         - name: Hibaelhárítás a Lehetőségelemzési eszközzel

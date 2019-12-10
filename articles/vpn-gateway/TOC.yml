@@ -124,8 +124,6 @@
               href: point-to-site-how-to-vpn-client-install-azure-cert.md
             - name: A VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése
               href: point-to-site-vpn-client-configuration-azure-cert.md
-            - name: Tudnivalók az ügyféloldali VPN-profil letöltési fájljáról
-              href: about-vpn-profile-download.md
         - name: RADIUS-hitelesítés
           items:
             - name: Pont–hely VPN-kapcsolat konfigurálása
@@ -142,6 +140,8 @@
               href: openvpn-azure-ad-mfa.md
             - name: VPN-ügyfél konfigurálása
               href: openvpn-azure-ad-client.md
+            - name: Tudnivalók az ügyféloldali VPN-profil letöltési fájljáról
+              href: about-vpn-profile-download.md
         - name: OpenVPN
           items:
             - name: Az OpenVPN konfigurálása pont–hely kapcsolatokhoz
