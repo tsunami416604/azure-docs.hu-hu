@@ -1,5 +1,6 @@
 ---
-title: Felhasználói áttelepítési megközelítések Azure Active Directory B2C
+title: Felhasználói Migrálás módszerei
+titleSuffix: Azure AD B2C
 description: Az Azure AD Graph API használatával ismerteti a felhasználók áttelepítésének alapvető és speciális fogalmait, és igény szerint Azure AD B2C egyéni házirendeket is.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9c01e22cfa96321994c16df6b61a52ebd4137549
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c5b7d477b0704db3f23919281fd61328be114dae
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322916"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950221"
 ---
 # <a name="migrate-users-to-azure-active-directory-b2c"></a>Felhasználók migrálása Azure Active Directory B2Cre
 
@@ -27,7 +28,7 @@ A Azure AD B2C segítségével áttelepítheti a felhasználókat az [Azure ad-G
 
 - **Áttelepítés előtti**: Ez a folyamat akkor érvényes, ha a felhasználó hitelesítő adatai (Felhasználónév és jelszó) vagy a hitelesítő adatok titkosítottak, de visszafejti őket. Az áttelepítés előtti folyamat magában foglalja a régi identitás-szolgáltató felhasználóinak olvasását és új fiókok létrehozását a Azure AD B2C könyvtárban.
 
-- **Áttelepítés előtti és jelszó alaphelyzetbe állítása**: Ez a folyamat akkor érvényes, ha a felhasználó jelszava nem érhető el. Például:
+- **Áttelepítés előtti és jelszó alaphelyzetbe állítása**: Ez a folyamat akkor érvényes, ha a felhasználó jelszava nem érhető el. Példa:
   - A jelszót a rendszer KIVONATOLÓ formátumban tárolja.
   - A jelszót egy olyan identitás-szolgáltató tárolja, amely nem érhető el. A régi identitás-szolgáltató a webszolgáltatások meghívásával érvényesíti a felhasználói hitelesítő adatokat.
 
@@ -228,7 +229,7 @@ A jelszó-visszaállítási házirendre mutató hivatkozás beszerzéséhez köv
 > [!NOTE]
 > A felhasználó áttelepítési állapotának megtekintéséhez és módosításához egyéni szabályzatot kell használnia. Be kell fejezni az [Egyéni szabályzatok első lépéseinek][B2C-GetStartedCustom] telepítési utasításait.
 
-Amikor a felhasználók először próbálnak bejelentkezni a jelszó alaphelyzetbe állítása nélkül, a szabályzatnak barátságos hibaüzenetet kell visszaadnia. Például:
+Amikor a felhasználók először próbálnak bejelentkezni a jelszó alaphelyzetbe állítása nélkül, a szabályzatnak barátságos hibaüzenetet kell visszaadnia. Példa:
 
 > *A jelszó lejárt. Az alaphelyzetbe állításhoz válassza a jelszó alaphelyzetbe állítása hivatkozást.*
 

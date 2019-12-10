@@ -1,6 +1,7 @@
 ---
-title: Biztonságos RESTful-szolgáltatásokat egyszerű HTTP-hitelesítés az Azure Active Directory B2C használatával |} A Microsoft Docs
-description: Egyszerű HTTP-hitelesítés használatával gondoskodhat a REST API-val egyéni jogcímek cseréje az Azure AD B2C-ben.
+title: REST-szolgáltatás biztonságossá tétele HTTP alapszintű hitelesítés használatával
+titleSuffix: Azure AD B2C
+description: A HTTP alapszintű hitelesítés használatával biztonságossá teheti az egyéni REST API jogcímek cseréjét a Azure AD B2Cban.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,43 +11,43 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8c1251056ad816af664f95abcd18d50ceca4619d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1a956638e8bd74c974012834ca650195e5bee37e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835267"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949440"
 ---
-# <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Biztonságos RESTful-szolgáltatásokat egyszerű HTTP-hitelesítés használatával
+# <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>A REST-szolgáltatások biztonságossá tétele HTTP alapszintű hitelesítés használatával
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az egy [kapcsolódó Azure AD B2C-cikk](active-directory-b2c-custom-rest-api-netfw.md), létrehozhat egy RESTful szolgáltatás (webes API-t), amely integrálható az Azure Active Directory B2C (az Azure AD B2C) felhasználói utak hitelesítés nélkül.
+Egy [kapcsolódó Azure ad B2C cikkben](active-directory-b2c-custom-rest-api-netfw.md)olyan REST-alapú szolgáltatást (webes API) hoz létre, amely integrálható a Azure Active Directory B2C (Azure ad B2C) felhasználói útvonalak hitelesítés nélkül.
 
-Ebben a cikkben vegyen fel egyszerű HTTP-hitelesítés a RESTful szolgáltatás úgy, hogy csak ellenőrzött felhasználók, beleértve a B2C-vel, hozzáférhet az API-t. Az alapszintű HTTP-hitelesítést állítsa a felhasználói hitelesítő adatokat (Alkalmazásazonosító és titkos Alkalmazáskulcs) az egyéni házirend.
+Ebben a cikkben egy egyszerű HTTP-hitelesítést ad hozzá a REST-szolgáltatáshoz, hogy csak az ellenőrzött felhasználók férhessenek hozzá az API-hoz. Az egyszerű HTTP-hitelesítéssel a felhasználói hitelesítő adatokat (az alkalmazás AZONOSÍTÓját és az alkalmazás titkos kulcsát) az egyéni szabályzatban állíthatja be.
 
-További információkért lásd: [az ASP.NET webes API-k egyszerű hitelesítés](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication).
+További információ: [alapszintű hitelesítés a ASP.net web API-ban](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A lépések elvégzéséhez a [integrálása a REST API-t az Azure AD B2C felhasználói interakciósorozatban szereplő cseréje jogcímek](active-directory-b2c-custom-rest-api-netfw.md) cikk.
+Hajtsa végre az [REST API jogcím-cserék integrálása a Azure ad B2C felhasználói útra](active-directory-b2c-custom-rest-api-netfw.md) című cikkben ismertetett lépéseket.
 
-## <a name="step-1-add-authentication-support"></a>1\. lépés: Hitelesítési támogatás hozzáadása
+## <a name="step-1-add-authentication-support"></a>1\. lépés: a hitelesítési támogatás hozzáadása
 
-### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>1\.1. lépés: Alkalmazásbeállítások hozzáadása a projekthez web.config fájlban
+### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>1,1. lépés: Alkalmazásbeállítások hozzáadása a projekt web. config fájljához
 
-1. Nyissa meg a Visual Studio-projektet, amelyet korábban hozott létre.
+1. Nyissa meg a korábban létrehozott Visual Studio-projektet.
 
-2. Adja hozzá a következő alkalmazás beállításokat a web.config fájl mellett a `appSettings` elem:
+2. Adja hozzá a következő Alkalmazásbeállítások a web. config fájlhoz a `appSettings` elem alatt:
 
     ```XML
     <add key="WebApp:ClientId" value="B2CServiceUserAccount" />
     <add key="WebApp:ClientSecret" value="your secret" />
     ```
 
-3. Hozzon létre egy jelszót, és állítsa a `WebApp:ClientSecret` értéket.
+3. Hozzon létre egy jelszót, majd állítsa be a `WebApp:ClientSecret` értéket.
 
-    Hozzon létre egy összetett jelszót, futtassa a következő PowerShell-kóddal. Használhat bármilyen tetszőleges érték.
+    Összetett jelszó létrehozásához futtassa a következő PowerShell-kódot. Tetszőleges értéket is használhat.
 
     ```powershell
     $bytes = New-Object Byte[] 32
@@ -56,9 +57,9 @@ A lépések elvégzéséhez a [integrálása a REST API-t az Azure AD B2C felhas
     [System.Convert]::ToBase64String($bytes)
     ```
 
-### <a name="step-12-install-owin-libraries"></a>1\.2. lépés: OWIN-kódtárak telepítése
+### <a name="step-12-install-owin-libraries"></a>1,2. lépés: a OWIN-kódtárak telepítése
 
-Első lépésként adja hozzá az OWIN közbenső NuGet-csomagok a projekt a Visual Studio Csomagkezelői konzol használatával:
+A kezdéshez adja hozzá a OWIN köztes NuGet-csomagokat a projekthez a Visual Studio Package Manager konzoljának használatával:
 
 ```powershell
 PM> Install-Package Microsoft.Owin
@@ -66,19 +67,19 @@ PM> Install-Package Owin
 PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
-### <a name="step-13-add-an-authentication-middleware-class"></a>1\.3. lépés: Egy közbenső hitelesítési osztály hozzáadása
+### <a name="step-13-add-an-authentication-middleware-class"></a>1,3. lépés: a hitelesítési middleware-osztály hozzáadása
 
-Adja hozzá a `ClientAuthMiddleware.cs` osztály alatt a *App_Start* mappát. Ehhez tegye a következőket:
+Adja hozzá a `ClientAuthMiddleware.cs` osztályt a *App_Start* mappában. Ehhez tegye a következőket:
 
-1. Kattintson a jobb gombbal a *App_Start* mappáját, válassza ki **Hozzáadás**, majd válassza ki **osztály**.
+1. Kattintson a jobb gombbal a *App_Start* mappára, válassza a **Hozzáadás**, majd az **osztály**elemet.
 
-   ![A App_Start mappában ClientAuthMiddleware.cs osztály hozzáadása](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth1.png)
+   ![ClientAuthMiddleware.cs osztály hozzáadása a App_Start mappában](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth1.png)
 
-2. Az a **neve** mezőbe írja be **ClientAuthMiddleware.cs**.
+2. A **név** mezőbe írja be a következőt: **ClientAuthMiddleware.cs**.
 
-   ![Hozzon létre egy új C# osztály az új elem hozzáadása párbeszédpanelen, a Visual Studióban](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
+   ![Új C# osztály létrehozása az új elem hozzáadása párbeszédpanelen a Visual Studióban](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
 
-3. Nyissa meg a *App_Start\ClientAuthMiddleware.cs* fájlt, és cserélje le a tartalmat a következő kódot a fájl:
+3. Nyissa meg a *App_Start \clientauthmiddleware.cs* fájlt, és cserélje le a fájl tartalmát a következő kódra:
 
     ```csharp
 
@@ -190,14 +191,14 @@ Adja hozzá a `ClientAuthMiddleware.cs` osztály alatt a *App_Start* mappát. Eh
     }
     ```
 
-### <a name="step-14-add-an-owin-startup-class"></a>1\.4 lépést: OWIN indítási osztály hozzáadása
+### <a name="step-14-add-an-owin-startup-class"></a>1,4. lépés: OWIN indítási osztály hozzáadása
 
-Adjon hozzá egy OWIN indítási osztályt `Startup.cs` az API-hoz. Ehhez tegye a következőket:
-1. Kattintson a jobb gombbal a projektre, válassza ki **Hozzáadás** > **új elem**, és keressen **OWIN**.
+Adjon hozzá egy `Startup.cs` nevű OWIN-indítási osztályt az API-hoz. Ehhez tegye a következőket:
+1. Kattintson a jobb gombbal a projektre, válassza a > **új elem** **hozzáadása** lehetőséget, és keresse meg a **OWIN**.
 
-   ![OWIN indítási osztályt létrehozása a Visual studióban új elem hozzáadása párbeszédpanel](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
+   ![OWIN-indítási osztály létrehozása az új elem hozzáadása párbeszédpanelen a Visual Studióban](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
 
-2. Nyissa meg a *Startup.cs* fájlt, és cserélje le a tartalmat a következő kódot a fájl:
+2. Nyissa meg a *Startup.cs* fájlt, és cserélje le a fájl tartalmát a következő kódra:
 
     ```csharp
     using Microsoft.Owin;
@@ -216,78 +217,78 @@ Adjon hozzá egy OWIN indítási osztályt `Startup.cs` az API-hoz. Ehhez tegye 
     }
     ```
 
-### <a name="step-15-protect-the-identity-api-class"></a>1\.5-ös. lépés: Az identitás API osztály védelme
+### <a name="step-15-protect-the-identity-api-class"></a>1,5. lépés: az Identity API osztályának biztosítása
 
-Nyissa meg a Controllers\IdentityController.cs, és adja hozzá a `[Authorize]` címke a vezérlő osztályhoz. Ez a címke a tartományvezérlőt a felhasználók, akik megfelelnek a engedélyezési követelmény korlátozza a hozzáférést.
+Nyissa meg a Controllers\IdentityController.cs, és adja hozzá a `[Authorize]` címkét a vezérlő osztályhoz. Ez a címke korlátozza a vezérlőhöz való hozzáférést azon felhasználók számára, akik teljesítik az engedélyezési követelményt.
 
-![A vezérlő az engedélyezés címke hozzáadása](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-authorize.png)
+![Az engedélyezés címke hozzáadása a vezérlőhöz](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-authorize.png)
 
-## <a name="step-2-publish-to-azure"></a>2\. lépés: Közzététel az Azure platformon
+## <a name="step-2-publish-to-azure"></a>2\. lépés: közzététel az Azure-ban
 
-A projekt közzététele a Megoldáskezelőben, kattintson a jobb gombbal a **Contoso.AADB2C.API** projektre, és válassza ki **közzététel**.
+A projekt közzétételéhez a Megoldáskezelő kattintson a jobb gombbal a **contoso. AADB2C. API** projektre, majd válassza a **Közzététel**lehetőséget.
 
-## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>3\. lépés: Adja hozzá a RESTful-szolgáltatásokat alkalmazás Azonosítóját és az alkalmazás titkos kulcsát az Azure AD B2C-vel
+## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>3\. lépés: a REST-szolgáltatások alkalmazás-AZONOSÍTÓjának és az alkalmazás titkos kulcsának hozzáadása a Azure AD B2C
 
-Miután az ügyfél-azonosító (felhasználónév) és a titkos kulcs védelme a RESTful szolgáltatás, az Azure AD B2C-bérlőben a hitelesítő adatokat kell tárolnia. Az egyéni házirend hitelesítő adatokat biztosít, ha meghívja a REST-alapú szolgáltatások.
+Miután a REST-alapú szolgáltatást az ügyfél-azonosító (username) és a titkos kulcs védi, a hitelesítő adatokat a Azure AD B2C bérlőben kell tárolnia. Az egyéni szabályzat biztosítja a hitelesítő adatokat, amikor meghívja a REST-szolgáltatásokat.
 
-### <a name="step-31-add-a-restful-services-client-id"></a>3\.1. lépés: Adjon hozzá egy RESTful szolgáltatás ügyfél-azonosító
+### <a name="step-31-add-a-restful-services-client-id"></a>3,1. lépés: REST-szolgáltatások ügyfél-AZONOSÍTÓjának hozzáadása
 
-1. Válassza ki az Azure AD B2C-bérlőben **B2C-beállítások** > **identitás-kezelőfelületi keretrendszer**.
+1. A Azure AD B2C-bérlőben válassza a **B2C-beállítások** > **identitási élmény keretrendszere**lehetőséget.
 
 
-2. Válassza ki **Szabályzatbejegyzések** a elérhető a bérlői kulcsok megtekintéséhez.
+2. Válassza ki a **házirend-kulcsok** elemet a bérlőben elérhető kulcsok megtekintéséhez.
 
 3. Válassza a **Hozzáadás** lehetőséget.
 
-4. A **beállítások**válassza **manuális**.
+4. A **Beállítások**lapon válassza a **manuális**lehetőséget.
 
-5. A **neve**, típus **B2cRestClientId**.
-    Az előtag *B2C_1A_* automatikusan hozzáadhatók.
+5. A **név**mezőbe írja be a következőt: **B2cRestClientId**.
+    Lehet, hogy az előtag *B2C_1A_* automatikusan hozzá lesz adva.
 
-6. Az a **titkos** mezőbe írja be a korábban megadott Alkalmazásazonosító.
+6. A **titok** mezőbe írja be a korábban megadott alkalmazás-azonosítót.
 
-7. A **kulcshasználat**válassza **aláírás**.
+7. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
 
 8. Kattintson a **Létrehozás** gombra.
 
 9. Győződjön meg arról, hogy létrehozta a `B2C_1A_B2cRestClientId` kulcsot.
 
-### <a name="step-32-add-a-restful-services-client-secret"></a>3\.2. lépés: REST-alapú szolgáltatások ügyfél titkos kód hozzáadása
+### <a name="step-32-add-a-restful-services-client-secret"></a>3,2. lépés: REST-szolgáltatásbeli ügyfél titkos kulcsának hozzáadása
 
-1. Válassza ki az Azure AD B2C-bérlőben **B2C-beállítások** > **identitás-kezelőfelületi keretrendszer**.
+1. A Azure AD B2C-bérlőben válassza a **B2C-beállítások** > **identitási élmény keretrendszere**lehetőséget.
 
-2. Válassza ki **Szabályzatbejegyzések** elérhető a bérlői kulcsok megtekintéséhez.
+2. Válassza a **házirend-kulcsok** lehetőséget a bérlőben elérhető kulcsok megtekintéséhez.
 
 3. Válassza a **Hozzáadás** lehetőséget.
 
-4. A **beállítások**válassza **manuális**.
+4. A **Beállítások**lapon válassza a **manuális**lehetőséget.
 
-5. A **neve**, típus **B2cRestClientSecret**.
-    Az előtag *B2C_1A_* automatikusan hozzáadhatók.
+5. A **név**mezőbe írja be a következőt: **B2cRestClientSecret**.
+    Lehet, hogy az előtag *B2C_1A_* automatikusan hozzá lesz adva.
 
-6. Az a **titkos** mezőbe írja be a korábban megadott alkalmazás titkos kulcsát.
+6. A **titok** mezőbe írja be a korábban meghatározott alkalmazás titkos kódját.
 
-7. A **kulcshasználat**válassza **aláírás**.
+7. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
 
 8. Kattintson a **Létrehozás** gombra.
 
 9. Győződjön meg arról, hogy létrehozta a `B2C_1A_B2cRestClientSecret` kulcsot.
 
-## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>4\. lépés: Alapszintű hitelesítés támogatásához a bővítmény a házirend a technikai profil módosítása
+## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>4\. lépés: a technikai profil módosítása az alapszintű hitelesítés támogatásához a bővítmény házirendjében
 
-1. A munkakönyvtárban nyissa meg a bővítmény a házirend-fájl (TrustFrameworkExtensions.xml).
+1. A munkakönyvtárában nyissa meg a kiterjesztési házirend fájlját (TrustFrameworkExtensions. xml).
 
-2. Keresse meg a `<TechnicalProfile>` tartalmazó csomópont `Id="REST-API-SignUp"`.
+2. Keresse meg a `Id="REST-API-SignUp"`t tartalmazó `<TechnicalProfile>` csomópontot.
 
 3. Keresse meg a `<Metadata>` elemet.
 
-4. Módosítsa a *AuthenticationType* való *alapszintű*, az alábbiak szerint:
+4. Módosítsa a *AuthenticationType* az *alapszintű*értékre a következőképpen:
 
     ```xml
     <Item Key="AuthenticationType">Basic</Item>
     ```
 
-5. A záró után azonnal `<Metadata>` elemben adja hozzá a következő XML-részletet:
+5. Közvetlenül a záró `<Metadata>` elem után adja hozzá a következő XML-kódrészletet:
 
     ```xml
     <CryptographicKeys>
@@ -296,40 +297,40 @@ Miután az ügyfél-azonosító (felhasználónév) és a titkos kulcs védelme 
     </CryptographicKeys>
     ```
 
-    Miután hozzáadta a kódrészletet, a technikai profil a következő XML-kódhoz hasonlóan kell kinéznie:
+    A kódrészlet hozzáadása után a technikai profilnak a következő XML-kódhoz hasonlóan kell kinéznie:
 
-    ![Alapszintű hitelesítés XML-elemeket ad hozzá TechnicalProfile](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
+    ![Alapszintű hitelesítési XML-elemek hozzáadása a Kivonatjogcím-hez](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
 
-## <a name="step-5-upload-the-policy-to-your-tenant"></a>5\. lépés: A szabályzat feltöltése a bérlőhöz
+## <a name="step-5-upload-the-policy-to-your-tenant"></a>5\. lépés: a szabályzat feltöltése a bérlőbe
 
-1. Az a [az Azure portal](https://portal.azure.com), váltson át a [az Azure AD B2C-bérlője kontextusában](active-directory-b2c-navigate-to-b2c-context.md), majd nyissa meg **Azure AD B2C-vel**.
+1. A [Azure Portal](https://portal.azure.com)váltson a [Azure ad B2C bérlő kontextusára](active-directory-b2c-navigate-to-b2c-context.md), majd nyissa meg **Azure ad B2C**.
 
-2. Válassza ki **identitás-kezelőfelületi keretrendszer**.
+2. Válassza az **identitási élmény keretrendszert**.
 
-3. Nyissa meg **összes szabályzat**.
+3. Nyissa meg **az összes szabályzatot**.
 
-4. Válassza ki **szabályzat feltöltése**.
+4. Válassza a **szabályzat feltöltése**lehetőséget.
 
-5. Válassza ki a **szabályzat felülírása, ha létezik** jelölőnégyzetet.
+5. Jelölje be a **házirend felülírása, ha létezik** jelölőnégyzetet.
 
-6. Töltse fel a *TrustFrameworkExtensions.xml* fájlt, és ezután győződjön meg arról, hogy érvényesítési továbbítja.
+6. Töltse fel a *TrustFrameworkExtensions. XML* fájlt, és ellenőrizze, hogy átadja-e az érvényesítést.
 
-## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>6\. lépés: Az egyéni házirend tesztelése a Futtatás most
+## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>6\. lépés: az egyéni házirend tesztelése a Futtatás most használatával
 
-1. Nyissa meg **Azure AD B2C-beállítások**, majd válassza ki **identitás-kezelőfelületi keretrendszer**.
+1. Nyissa meg **Azure ad B2C a beállításokat**, majd válassza az **identitási élmény keretrendszert**.
 
     >[!NOTE]
-    >Futtatás most kell előzetesen regisztrálva, a bérlő legalább egy alkalmazás szükséges. Megtudhatja, hogyan regisztrálja az alkalmazást, tekintse meg az Azure AD B2C [Ismerkedés](active-directory-b2c-get-started.md) cikk vagy a [alkalmazásregisztráció](active-directory-b2c-app-registration.md) cikk.
+    >A futtatáshoz szükség van legalább egy alkalmazás előregisztrálására a bérlőn. Az alkalmazások regisztrálásának megismeréséhez tekintse meg a Azure AD B2C első [lépések](active-directory-b2c-get-started.md) című cikket, vagy az [alkalmazás regisztrációját](active-directory-b2c-app-registration.md) ismertető cikket.
 
-2. Nyissa meg **B2C_1A_signup_signin**, a függő entitásonkénti (RP) egyéni-szabályzattal, feltöltött, és válassza ki **Futtatás most**.
+2. Nyissa meg **B2C_1A_signup_signin**, a függő entitás (RP) egyéni házirendjét, majd válassza a **Futtatás most**lehetőséget.
 
-3. Írja be a folyamat teszteléséhez **teszt** a a **Utónév** mezőbe.
-    Az Azure AD B2C hibaüzenetet jelenít meg az ablak tetején.
+3. Tesztelje a folyamatot úgy, hogy beírja a **teszt** kifejezést a **megadott név** mezőbe.
+    Azure AD B2C hibaüzenet jelenik meg az ablak tetején.
 
-    ![A megadott nevű bemenet-ellenőrzést az identitás API tesztelése](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
+    ![A megadott név bemeneti ellenőrzésének tesztelése az Identity API-ban](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
-4. Az a **Utónév** mezőbe írjon be egy nevet (nem a "Test").
-    Az Azure AD B2C a felhasználó regisztrál, és ezután elküldi a hűségprogramok használatán keresztül számnak az alkalmazáshoz. Megjegyzés: Ebben a példában a számot:
+4. A **megadott név** mezőbe írjon be egy nevet (a "test" helyett).
+    Azure AD B2C aláírja a felhasználót, majd elküld egy lojalitási számot az alkalmazásnak. Jegyezze fel a példában szereplő számot:
 
     ```
     {
@@ -352,11 +353,11 @@ Miután az ügyfél-azonosító (felhasználónév) és a titkos kulcs védelme 
     }
     ```
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>(Nem kötelező) A teljes házirend fájlok és a kód letöltése
+## <a name="optional-download-the-complete-policy-files-and-code"></a>Választható A teljes szabályzat fájljainak és kódjának letöltése
 
-* Miután elvégezte a [egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md) forgatókönyv, azt javasoljuk, hogy a forgatókönyv a saját egyéni házirend-fájlok használatával hozhat létre. Referenciaként adtunk meg [házirendfájljait minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic).
-* Letöltheti a teljes kódját [mintát a Visual Studio-megoldás referenciaként](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic).
+* Miután elvégezte az [Egyéni szabályzatok használatának első lépései útmutatót](active-directory-b2c-get-started-custom.md) , javasoljuk, hogy a saját egyéni házirend-fájljaival hozza létre a forgatókönyvet. Az Ön referenciája alapján megadta a [minta házirend-fájlokat](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic).
+* A Visual Studio-megoldás teljes kódját a [következő hivatkozásra töltheti le: minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Ügyféltanúsítványokkal szeretné a RESTful API biztonságossá tétele](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+* [Ügyféltanúsítványok használata a REST API biztonságossá tételéhez](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

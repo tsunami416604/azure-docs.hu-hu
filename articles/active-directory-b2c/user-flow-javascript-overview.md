@@ -1,5 +1,6 @@
 ---
-title: JavaScript-és lapelrendezés-verziók – Azure Active Directory B2C | Microsoft Docs
+title: JavaScript-és lapelrendezés-verziók
+titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan engedélyezheti a JavaScriptet, és hogyan használhatja a Azure Active Directory B2C a lapelrendezések verzióját.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0eb5c89387d8bdcf0e0b72c669c42f716ff5fbb3
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 92925dc32d7f26b224811aa852112a275f112b35
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227111"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950833"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>JavaScript-és lapelrendezés-verziók a Azure Active Directory B2C
 
@@ -33,7 +34,7 @@ A felhasználói folyamat **tulajdonságainál**engedélyezheti a JavaScript has
 
 ### <a name="select-a-page-layout-version"></a>Lapelrendezés verziójának kiválasztása
 
-Függetlenül attól, hogy engedélyezi-e a JavaScriptet a felhasználói folyamat tulajdonságaiban, megadhatja a felhasználói folyamat lapjaihoz tartozó lapelrendezés-verziót. Nyissa meg a felhasználói folyamatot, **és válassza a**lapelrendezések lehetőséget. Az **elrendezés neve**területen válassza ki a felhasználói folyamat lapot, és válassza ki a lapelrendezés **verzióját**.
+Függetlenül attól, hogy engedélyezi-e a JavaScriptet a felhasználói folyamat tulajdonságaiban, megadhatja a felhasználói folyamat lapjaihoz tartozó lapelrendezés-verziót. Nyissa meg a felhasználói folyamatot, **és válassza a lapelrendezések lehetőséget**. Az **elrendezés neve**területen válassza ki a felhasználói folyamat lapot, és válassza ki a lapelrendezés **verzióját**.
 
 További információ a különböző lapelrendezés-verziókról: a [verzió módosítása napló](page-layout.md#version-change-log).
 
@@ -45,7 +46,7 @@ Ha egyéni házirendekben szeretné engedélyezni a JavaScriptet, adja hozzá a 
 
 Függetlenül attól, hogy engedélyezi-e a JavaScriptet az egyéni házirendekben, megadhatja a lapokhoz tartozó lapelrendezés-verziót. Az oldalelrendezés megadásával kapcsolatos további információkért tekintse meg [az egyéni házirendek használatával Azure Active Directory B2C az oldal elrendezésének kiválasztása](page-layout.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a különböző oldalelrendezési verziókról: az [Egyéni házirendek használatával a Azure Active Directory B2C az oldal elrendezésének kiválasztása](page-layout.md#version-change-log) **szakasza** .
 

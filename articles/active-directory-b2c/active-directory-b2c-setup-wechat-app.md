@@ -1,5 +1,6 @@
 ---
-title: WeChat-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
+title: Regisztráció és bejelentkezés beállítása WeChat-fiókkal
+titleSuffix: Azure AD B2C
 description: A Azure Active Directory B2C használatával WeChat-fiókkal rendelkező ügyfelek számára biztosítson regisztrációt és bejelentkezést az alkalmazásokban.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad5e5b766c38b2ce3c48c22e62dd1fd2b9a79853
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7cbc41247d7b99eb63730ae4326808e64c663e8f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064967"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950527"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>WeChat-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -23,14 +24,14 @@ ms.locfileid: "71064967"
 
 ## <a name="create-a-wechat-application"></a>WeChat-alkalmazás létrehozása
 
-Ha a WeChat-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgáltatóként szeretné használni, létre kell hoznia egy alkalmazást a bérlőben, amely azt képviseli. Ha még nem rendelkezik WeChat-fiókkal, a következő címen kérhet információt [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html):.
+Ha a WeChat-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgáltatóként szeretné használni, létre kell hoznia egy alkalmazást a bérlőben, amely azt képviseli. Ha még nem rendelkezik WeChat-fiókkal, a [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html)címen kaphat információt.
 
 ### <a name="register-a-wechat-application"></a>WeChat-alkalmazás regisztrálása
 
-1. [https://open.weixin.qq.com/](https://open.weixin.qq.com/) Jelentkezzen be a WeChat hitelesítő adataival.
+1. Jelentkezzen be [https://open.weixin.qq.com/ ra](https://open.weixin.qq.com/) a WeChat hitelesítő adataival.
 1. Válassza a**管理中心**(felügyeleti központ) lehetőséget.
 1. Új alkalmazás regisztrálásához kövesse az alábbi lépéseket.
-1. Adja `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` meg a**授权回调域**(visszahívási URL-cím). Ha például a bérlő neve contoso, állítsa be az URL-címet `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`a következőre:.
+1. Adja meg `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a**授权回调域**(visszahívási URL-cím). Ha például a bérlő neve contoso, a `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`URL-címet állítsa be.
 1. Másolja az **alkalmazás azonosítóját** és az **alkalmazás kulcsát**. Ezekre szüksége lesz az identitás-szolgáltatónak a bérlőhöz való hozzáadásához.
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>A WeChat konfigurálása identitás-szolgáltatóként a bérlőben

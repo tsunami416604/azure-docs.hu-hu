@@ -1,5 +1,6 @@
 ---
-title: Oktatóanyag – alkalmazás regisztrálása – Azure Active Directory B2C
+title: 'Oktatóanyag: alkalmazás regisztrálása'
+titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan regisztrálhat egy webalkalmazást Azure Active Directory B2C a Azure Portal használatával.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3a5d5099c91736276aca56c8b94b846b53a190c1
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 76d38e4b35111cd2c09685653fb4948f98387132
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73642420"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950782"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Oktatóanyag: alkalmazás regisztrálása Azure Active Directory B2Cban
 
@@ -42,7 +43,7 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-1. Adja meg az alkalmazás nevét. Például: *webapp1*.
+1. Adjon nevet az alkalmazásnak. Például: *webapp1*.
 1. A **Web App/web API belefoglalása** és az **implicit folyamat engedélyezése**lehetőségnél válassza az **Igen**lehetőséget.
 1. A **Válasz URL-cím**mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Beállíthatja például, hogy helyileg figyeljen a `https://localhost:44316`. Ha még nem ismeri a portszámot, megadhat egy helyőrző értéket, és később módosíthatja azt.
 
@@ -72,7 +73,7 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
     * A válasz URL-címének az `https`sémával kell kezdődnie.
     * A válasz URL-címe megkülönbözteti a kis-és nagybetűket. Az esetnek egyeznie kell a futó alkalmazás URL-címének elérési útjával. Ha például az alkalmazás az elérési út részeként `.../abc/response-oidc`, ne adja meg `.../ABC/response-oidc` a válasz URL-címében. Mivel a webböngésző a kis-és nagybetűket megkülönböztető módon kezeli az elérési utakat, előfordulhat, hogy a `.../abc/response-oidc` társított cookie-k nem illeszkednek a `.../ABC/response-oidc` URL-címhez.
 
-1. Az **engedélyek**területen jelölje be a *rendszergazdai jóváhagyás megadása az OpenID és a offline_access engedélyek számára* jelölőnégyzetet.
+1. Az **engedélyek**területen jelölje be a *rendszergazdai jóváhagyás megadása az OpenID-hez és a offline_access engedélyekhez* jelölőnégyzetet.
 1. Kattintson a **Register** (Regisztrálás) elemre.
 
 Az alkalmazás regisztrációjának befejezése után engedélyezze az implicit engedélyezési folyamatot:
@@ -105,7 +106,7 @@ Ha az alkalmazás egy jogkivonathoz tartozó kódot cserél, létre kell hoznia 
 
 * * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – a Node. js webes API-khoz való hozzáférés engedélyezése egy asztali alkalmazásból – Azure Active Directory B2C | Microsoft Docs
-description: Arra vonatkozó útmutató, hogyan használhatja az Active Directory B2C-t egy Node.js webes API védelmére és meghívására egy asztali .NET-alkalmazásból.
+title: 'Oktatóanyag: Node. js webes API-hoz való hozzáférés engedélyezése asztali alkalmazásból'
+description: Útmutató a Node. js-alapú webes API-k és a .NET Desktop-alkalmazásokból való meghívásához a Active Directory B2C használatával.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 0cf9a0a13a1c16f5be6d82528849e6e2cc3d466d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: f271dd23501aa0514faff29f638f695c80c844f2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641856"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949772"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Oktatóanyag: Node.js webes API-khoz való hozzáférés engedélyezése egy asztali alkalmazásból az Azure Active Directory B2C használatával
 
@@ -124,7 +124,7 @@ A mintául szolgáló Node.js webes API a Passport.js kódtárat használja arra
     app.get("/",
     ```
 
-## <a name="run-the-samples"></a>A minták futtatása
+## <a name="run-the-samples"></a>A példák futtatása
 
 ### <a name="run-the-nodejs-web-api"></a>A Node. js webes API futtatása
 
@@ -151,7 +151,7 @@ Az asztali alkalmazás egy kérést küld a helyileg futó webes API-nak, és eg
 
 A Azure AD B2C által védett asztali alkalmazás a helyileg futó webes API-t hívja meg, amelyet Azure AD B2C is véd.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

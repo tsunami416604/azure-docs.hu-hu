@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 313332689b0f2df9698f868297c72be7d8bde5bb
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 54c6f920b581a0bbd00910a3b3ddeebecdbb595f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829145"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74954948"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -60,18 +60,23 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 Mivel a REST API JSON formátumban fogadja a kérelmeket, és a JSON eredményeit is visszaküldi, csak karakterláncok használatával kezelhetjük őket, de ez nem ajánlott.
 Annak érdekében, hogy a kérések és válaszok könnyebben kezelhetők legyenek, deklaráljuk néhány osztályt a JSON szerializálásához/deszerializálásához, valamint néhány olyan módszerhez, amely segítséget nyújt a nlohmann/JSON használatához.
 
-`recognizeSpeech`előtt helyezze el a bejelentéseit.
+`recognizeSpeech` előtt helyezze el a bejelentéseit.
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=33-185)]
 
 ## <a name="create-and-configure-an-http-client"></a>Http-ügyfél létrehozása és konfigurálása
 Első lépésként egy olyan http-ügyfélre van szükségünk, amely megfelelő alap URL-címmel és hitelesítési készlettel rendelkezik.
-A kód beillesztése `recognizeSpeech` [!code-cppba [](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=191-197)]
+A kód beillesztése `recognizeSpeech`
+
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=191-197)]
 
 ## <a name="generate-a-transcription-request"></a>Átírási kérelem létrehozása
-Ezután létrehozjuk az átírási kérelmet. A kód hozzáadása a `recognizeSpeech` [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=199-203)]
+Ezután létrehozjuk az átírási kérelmet. Kód hozzáadása `recognizeSpeech`
+
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=199-203)]
 
 ## <a name="send-the-request-and-check-its-status"></a>Küldje el a kérést, és keresse meg az állapotát
 Most közzétesszük a kérést a beszédfelismerési szolgáltatásba, és megvizsgáljuk a kezdeti válasz kódját. A válasz kódja egyszerűen azt jelzi, hogy a szolgáltatás megkapta-e a kérelmet. A szolgáltatás egy URL-címet ad vissza a válasz fejlécekben, amely az a hely, ahol az átírási állapotot tárolni fogja.
+
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=204-216)]
 
 ## <a name="wait-for-the-transcription-to-complete"></a>Várja meg, amíg az átírás befejeződik
@@ -80,16 +85,20 @@ Mivel a szolgáltatás aszinkron módon dolgozza fel az átírást, minden olyan
 Az állapotot úgy is megtekintheti, hogy beolvassa a tartalmat a kérelem elküldésekor kapott URL-címen. Ha visszavesszük a tartalmat, deszerializáljuk az egyik segítő osztályba, hogy könnyebb legyen az együttműködés.
 
 A sikeres befejezést követően az állapotot megjelenítő lekérdezési kód a következő lesz.
+
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=222-245,285-299)]
 
 ## <a name="display-the-transcription-results"></a>Az átírás eredményeinek megjelenítése
 Ha a szolgáltatás sikeresen befejezte az átírást, a rendszer egy másik URL-címen tárolja az eredményeket, amelyet az állapot válasza alapján kaphat.
 
 Letöltjük az URL-cím tartalmát, deszerializáljuk a JSON-t, majd az eredményeken keresztül kinyomtatjuk a megjelenített szöveget.
+
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=246-284)]
 
 ## <a name="check-your-code"></a>A kód megkeresése
-Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzést ehhez a verzióhoz) [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-308)]
+Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzést ehhez a verzióhoz)
+
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-308)]
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 

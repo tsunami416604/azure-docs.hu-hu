@@ -1,6 +1,7 @@
 ---
-title: Token beszerzése Android-alkalmazás használatával Azure Active Directory B2Cban | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan hozhat létre olyan Android-alkalmazást, amely a AppAuth-t használja Azure Active Directory B2C a felhasználói identitások kezeléséhez és a felhasználók hitelesítéséhez.
+title: Token beszerzése Android-alkalmazásokban
+titleSuffix: Azure AD B2C
+description: AppAuth-t használó Android-alkalmazás létrehozása a Azure Active Directory B2C a felhasználói identitások kezeléséhez és a felhasználók hitelesítéséhez.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 28b1c3622ca449b0ce539937369fe43bd1d508ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7da403eff6a8b96e5fbfc6a6acda48fa397e74b1
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468954"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948206"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Bejelentkezés Android-alkalmazással Azure Active Directory B2C
 

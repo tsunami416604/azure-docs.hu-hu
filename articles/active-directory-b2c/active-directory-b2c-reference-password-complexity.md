@@ -1,5 +1,6 @@
 ---
-title: Jelszó-bonyolultság – Azure Active Directory B2C | Microsoft Docs
+title: Jelszó-összetettségi követelmények konfigurálása
+titleSuffix: Azure AD B2C
 description: A Azure Active Directory B2C felhasználók által szolgáltatott jelszavak bonyolultsági követelményeinek konfigurálása.
 services: active-directory-b2c
 author: mmacy
@@ -10,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 642621e2e04d3e96dc6886b1bdb28c161560b28e
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: d37d1ae3871e8b14a44540883b1d03c29b58d27e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065459"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950561"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>A Azure Active Directory B2Cban található jelszavak bonyolultsági követelményeinek konfigurálása
 
-A Azure Active Directory B2C (Azure AD B2C) a fiók létrehozásakor támogatja a végfelhasználók által megadott jelszavak összetettségi követelményeinek módosítását. Alapértelmezés szerint a Azure ad B2C jelszavakat használ `Strong` . A Azure AD B2C az ügyfelek által használható jelszavak bonyolultságának szabályozásához is támogatja a konfigurációs beállításokat.
+A Azure Active Directory B2C (Azure AD B2C) a fiók létrehozásakor támogatja a végfelhasználók által megadott jelszavak összetettségi követelményeinek módosítását. Alapértelmezés szerint a Azure AD B2C `Strong` jelszavakat használ. A Azure AD B2C az ügyfelek által használható jelszavak bonyolultságának szabályozásához is támogatja a konfigurációs beállításokat.
 
 ## <a name="password-rule-enforcement"></a>Jelszavas szabály kényszerítése
 
@@ -36,7 +37,7 @@ Ha egyéni házirendeket használ, akkor (a[jelszó bonyolultságát egyéni sza
 
 ## <a name="configure-password-complexity"></a>Jelszó bonyolultságának konfigurálása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza a **felhasználói folyamatok**lehetőséget.
@@ -71,9 +72,9 @@ Lehetővé teszi a jelszó hosszára vonatkozó követelmények szabályozását
 
 Lehetővé teszi a jelszóban használt különböző karakterkészletek szabályozását.
 
-- **2/4: Kisbetűs karakter, nagybetűs karakter, szám (0-9)** , a szimbólum biztosítja, hogy a jelszó legalább két karaktert tartalmazzon. Például egy szám és egy kisbetűs karakter.
-- **3/4: Kisbetűs karakter, nagybetűs karakter, szám (0-9)** , a szimbólum biztosítja, hogy a jelszó legalább két karaktert tartalmazzon. Például egy szám, egy kisbetűs karakter és egy nagybetűs karakter.
-- **4 – 4: Kisbetűs karakter, nagybetűs karakter, szám (0-9)** , a szimbólum biztosítja, hogy a jelszó tartalmazza az összes karaktert.
+- **2/4: kisbetűs karakter, nagybetűs karakter, szám (0-9), a szimbólum biztosítja,** hogy a jelszó legalább két karaktert tartalmazzon. Például egy szám és egy kisbetűs karakter.
+- **3 – 4: kisbetűs karakter, nagybetűs karakter, szám (0-9), a szimbólum biztosítja,** hogy a jelszó legalább két karaktert tartalmazzon. Például egy szám, egy kisbetűs karakter és egy nagybetűs karakter.
+- **4/4: kisbetűs karakter, nagybetűs karakter, szám (0-9), a szimbólum biztosítja,** hogy a jelszó tartalmazza az összes karaktert.
 
     > [!NOTE]
     > A **4 – 4** . megkövetelése végfelhasználói frusztrációt eredményezhet. Egyes tanulmányok azt mutatták, hogy ez a követelmény nem javítja a jelszó entrópiat. Lásd: a [NIST-jelszóra vonatkozó irányelvek](https://pages.nist.gov/800-63-3/sp800-63b.html#appA)

@@ -1,5 +1,6 @@
 ---
-title: Bejelentkezés beállítása Google-fiókkal Azure Active Directory B2C egyéni szabályzatok használatával | Microsoft Docs
+title: Bejelentkezés beállítása Google-fiókkal egyéni szabályzatok használatával
+titleSuffix: Azure AD B2C
 description: A bejelentkezést egyéni házirendek használatával Azure Active Directory B2C Google-fiókkal állíthatja be.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cc7e7b334791194cd4f8ebbd2038e9c1877eb297
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 695e54f5fa92c177576aa56ef7c9d758f00d0129
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240220"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948487"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása Google-fiókkal egyéni szabályzatok használatával Azure Active Directory B2C
 
@@ -36,10 +37,10 @@ Google-fiók felhasználói számára való bejelentkezés engedélyezéséhez l
 2. Adja meg a **projekt nevét**, kattintson a **Létrehozás**elemre, majd győződjön meg arról, hogy az új projektet használja.
 3. Válassza a bal oldali menüben a **hitelesítő adatok** lehetőséget, majd válassza a **hitelesítő adatok létrehozása > OAUTH ügyfél-azonosító**lehetőséget.
 4. Válassza a **beleegyezés beállítása képernyőt**.
-5. Válasszon ki vagy adjon meg egy érvényes **e-mail-címet**, adja meg a felhasználók számára megjelenített **terméknév nevet** , írja be a `b2clogin.com` értéket a **jóváhagyott tartományokban**, majd kattintson a **Mentés**gombra.
+5. Válasszon ki vagy adjon meg egy érvényes **e-mail-címet**, adja meg a felhasználók számára megjelenő **terméknév nevet** , írja be `b2clogin.com` a **jogosultsági tartományokban**, majd kattintson a **Mentés**gombra.
 6. Az **alkalmazás típusa**területen válassza a **webalkalmazás**lehetőséget.
 7. Adja meg az alkalmazás **nevét** .
-8. A **hitelesítő JavaScript-eredetek**területen írja be a `https://your-tenant-name.b2clogin.com` értéket, és a **jóváhagyott átirányítási URI**-k mezőbe írja be a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` Cserélje le a-bérlő nevét a bérlő nevére. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
+8. A **hitelesítő JavaScript**-forrásokban adja meg az `https://your-tenant-name.b2clogin.com` és a **jóváhagyott átirányítási URI**-k mezőben adja meg a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Cserélje le a-bérlő nevét a bérlő nevére. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
 8. Kattintson a  **Create** (Létrehozás) gombra.
 9. Másolja ki az **ügyfél-azonosító** és az **ügyfél titkos kulcsának**értékeit. Mindkettőre szüksége lesz a Google identitás-szolgáltatóként való konfigurálásához a bérlőben. Az ügyfél titkos kulcsa fontos biztonsági hitelesítő adat.
 
@@ -52,10 +53,10 @@ A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tá
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
 5. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-6. A **Beállítások**területen válassza az `Manual` lehetőséget.
-7. Adja meg a szabályzat kulcsának **nevét** . Például: `GoogleSecret`. A `B2C_1A_` előtagot a rendszer automatikusan hozzáadja a kulcs nevéhez.
+6. A **Beállítások**területen válassza a `Manual`lehetőséget.
+7. Adja meg a szabályzat kulcsának **nevét** . Például: `GoogleSecret`. A rendszer automatikusan hozzáadja a kulcs nevét a `B2C_1A_` előtaghoz.
 8. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
-9. A **kulcshasználat**beállításnál válassza a `Signature` elemet.
+9. A **kulcshasználat**beállításnál válassza a `Signature`lehetőséget.
 10. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
@@ -110,7 +111,7 @@ A Google-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja a
     </ClaimsProvider>
     ```
 
-4. Állítsa be a **client_id** az alkalmazás-azonosítóra az alkalmazás regisztrációja során.
+4. **Client_id** beállítása az alkalmazás-azonosítóhoz az alkalmazás regisztrációja során.
 5. Mentse a fájlt.
 
 ### <a name="upload-the-extension-file-for-verification"></a>A bővítmény fájljának feltöltése ellenőrzéshez
@@ -126,7 +127,7 @@ Most úgy konfigurálta a házirendet, hogy Azure AD B2C tudja, hogyan kommunik�
 Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regisztrációs és bejelentkezési képernyőkön nem érhető el. Az elérhetővé tételéhez hozzon létre egy másolatot egy meglévő sablon felhasználói útvonalról, majd módosítsa úgy, hogy az Azure AD-identitás szolgáltatója is legyen.
 
 1. Nyissa meg a *TrustFrameworkBase. XML* fájlt az alapszintű csomagból.
-2. Keresse meg és másolja a **UserJourney** elem teljes tartalmát, amely tartalmazza a `Id="SignUpOrSignIn"` elemet.
+2. A `Id="SignUpOrSignIn"`tartalmazó **UserJourney** elem teljes tartalmának megkeresése és másolása.
 3. Nyissa meg a *TrustFrameworkExtensions. xml fájlt* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, vegyen fel egyet.
 4. Illessze be a **UserJourney** elem teljes tartalmát, amelyet a **UserJourneys** elem gyermekeiként másolt.
 5. Nevezze át a felhasználói út AZONOSÍTÓját. Például: `SignUpSignInGoogle`.
@@ -135,8 +136,8 @@ Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regis
 
 A **ClaimsProviderSelection** elem a bejelentkezési és bejelentkezési képernyőn lévő Identity Provider gombhoz hasonlít. Ha hozzáad egy **ClaimsProviderSelection** elemet egy Google-fiókhoz, egy új gomb jelenik meg, amikor a felhasználó az oldalon landol.
 
-1. Keresse meg a **OrchestrationStep** elemet, amely tartalmazza a `Order="1"` elemet a létrehozott felhasználói útvonalon.
-2. A **ClaimsProviderSelects**területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `GoogleExchange`:
+1. Keresse meg a **OrchestrationStep** elemet, amely tartalmazza a létrehozott felhasználói út `Order="1"`.
+2. A **ClaimsProviderSelects**területen adja hozzá a következő elemet. A **TargetClaimsExchangeId** értékét állítsa be a megfelelő értékre, például `GoogleExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
@@ -146,7 +147,7 @@ A **ClaimsProviderSelection** elem a bejelentkezési és bejelentkezési képern
 
 Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A művelet, ebben az esetben a Azure AD B2C, hogy egy Google-fiókkal kommunikáljon a jogkivonatok fogadásához.
 
-1. Keresse meg a **OrchestrationStep** , amely tartalmazza a `Order="2"` részt a felhasználói úton.
+1. Keresse meg a felhasználói úton `Order="2"`t tartalmazó **OrchestrationStep** .
 2. Adja hozzá a következő **ClaimsExchange** elemet, és győződjön meg arról, hogy ugyanazt az értéket használja a **TargetClaimsExchangeId**használt azonosítóhoz:
 
     ```XML
@@ -169,7 +170,7 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
 
 1. Készítsen másolatot a *SignUpOrSignIn. XML fájlról* a munkakönyvtárában, és nevezze át. Nevezze át például a *SignUpSignInGoogle. XML fájlba*.
 2. Nyissa meg az új fájlt, és frissítse a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInGoogle`.
-3. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például `http://contoso.com/B2C_1A_signup_signin_google`
+3. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például`http://contoso.com/B2C_1A_signup_signin_google`
 4. Frissítse a **ReferenceId** attribútum értékét a **DefaultUserJourney** -ben, hogy az megfeleljen a létrehozott új felhasználói út azonosítójának (SignUpSignGoogle).
 5. Mentse a módosításokat, töltse fel a fájlt, majd válassza ki az új szabályzatot a listában.
 6. Győződjön meg arról, hogy a létrehozott Azure AD B2C alkalmazás ki van választva az **alkalmazás kiválasztása** mezőben, majd tesztelje a **Futtatás most**lehetőségre kattintva.

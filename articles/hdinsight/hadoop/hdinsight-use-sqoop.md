@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/12/2019
-ms.openlocfilehash: f2a153b1eef974c8c73df49a6eed53ef5dbf2353
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 12/06/2019
+ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076213"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951853"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Az Apache Sqoop és a Hadoop használata a HDInsight-ben
 
@@ -33,7 +33,7 @@ A HDInsight-fürtökön támogatott Sqoop-verziókért lásd: [Újdonságok a HD
 
 A HDInsight-fürthöz egyes mintaadatok is tartozik. A következő két mintát használja:
 
-* Egy Apache Log4j naplófájl, amely a következő helyen található `/example/data/sample.log`:. Az alábbi naplók a fájlból vannak kinyerve:
+* Egy Apache Log4j naplófájl, amely a következő helyen található: `/example/data/sample.log`. Az alábbi naplók a fájlból vannak kinyerve:
 
 ```text
 2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
@@ -42,18 +42,18 @@ A HDInsight-fürthöz egyes mintaadatok is tartozik. A következő két mintát 
 ...
 ```
 
-* Egy nevű `hivesampletable`struktúra-tábla, amely a következő helyen található adatfájlra hivatkozik: `/hive/warehouse/hivesampletable`. A tábla tartalmaz néhány mobileszköz-adategységet.
+* `hivesampletable`nevű struktúra-tábla, amely a `/hive/warehouse/hivesampletable`címen található adatfájlra hivatkozik. A tábla tartalmaz néhány mobileszköz-adategységet.
   
-  | Mező | Adattípus |
+  | Mező | Data type |
   | --- | --- |
-  | ClientID |Karakterlánc |
-  | querytime |Karakterlánc |
-  | Piaci |Karakterlánc |
-  | deviceplatform |Karakterlánc |
-  | devicemake |Karakterlánc |
-  | devicemodel |Karakterlánc |
-  | state |Karakterlánc |
-  | ország |Karakterlánc |
+  | ClientID |sztring |
+  | querytime |sztring |
+  | piac |sztring |
+  | deviceplatform |sztring |
+  | devicemake |sztring |
+  | devicemodel |sztring |
+  | state |sztring |
+  | ország |sztring |
   | querydwelltime |double |
   | sessionid |bigint |
   | sessionpagevieworder |bigint |
@@ -61,7 +61,8 @@ A HDInsight-fürthöz egyes mintaadatok is tartozik. A következő két mintát 
 Ebben a cikkben ezt a két adatkészletet használja a Sqoop importálásának és exportálásának teszteléséhez.
 
 ## <a name="create-cluster-and-sql-database"></a>Tesztkörnyezet beállítása
-A fürt, az SQL Database és az egyéb objektumok a Azure Portalon keresztül jönnek létre Azure Resource Manager sablon használatával. A sablon az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)található. A Resource Manager-sablon egy bacpac-csomagot hív meg, hogy a tábla sémáit egy SQL-adatbázisba telepítse.  A bacpac csomag egy nyilvános blob-tárolóban https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac található. Ha privát tárolót szeretne használni a bacpac-fájlokhoz, használja a következő értékeket a sablonban:
+
+A fürt, az SQL Database és az egyéb objektumok a Azure Portalon keresztül jönnek létre Azure Resource Manager sablon használatával. A sablon az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)található. A Resource Manager-sablon egy bacpac-csomagot hív meg, hogy a tábla sémáit egy SQL-adatbázisba telepítse.  A bacpac csomag egy nyilvános blob-tárolóban található, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Ha privát tárolót szeretne használni a bacpac-fájlokhoz, használja a következő értékeket a sablonban:
 
 ```json
 "storageKeyType": "Primary",
@@ -77,11 +78,11 @@ A fürt, az SQL Database és az egyéb objektumok a Azure Portalon keresztül j�
 
 2. Adja meg a következő tulajdonságokat:
 
-    |Mező |Value |
+    |Mező |Value (Díj) |
     |---|---|
-    |Subscription |Válassza ki az Azure-előfizetését a legördülő listából.|
-    |Resource group |Válassza ki az erőforráscsoportot a legördülő listából, vagy hozzon létre egy újat|
-    |Location |Válasszon ki egy régiót a legördülő listából.|
+    |Előfizetés |Válassza ki az Azure-előfizetését a legördülő listából.|
+    |Erőforráscsoport |Válassza ki az erőforráscsoportot a legördülő listából, vagy hozzon létre egy újat|
+    |Földrajzi egység |Válasszon ki egy régiót a legördülő listából.|
     |Fürt neve |Adja meg a Hadoop-fürt nevét. Csak kisbetűket használjon.|
     |Fürt bejelentkezési felhasználóneve |Tartsa meg az előre megadott értéket `admin`.|
     |Fürt bejelentkezési jelszava |Adjon meg egy jelszót.|
@@ -90,11 +91,11 @@ A fürt, az SQL Database és az egyéb objektumok a Azure Portalon keresztül j�
     |SQL-rendszergazdai bejelentkezés |Tartsa meg az előre megadott értéket `sqluser`.|
     |SQL-rendszergazdai jelszó |Adjon meg egy jelszót.|
     |_artifacts helye | Használja az alapértelmezett értéket, ha egy másik helyen szeretné használni a saját bacpac-fájlját.|
-    |_artifacts helye sas-token |Hagyja üresen.|
+    |_artifacts hely sas-tokenje |Hagyja üresen.|
     |Bacpac-fájl neve |Használja az alapértelmezett értéket, ha nem kívánja használni a saját bacpac-fájlját.|
-    |Location |Használja az alapértelmezett értéket.|
+    |Földrajzi egység |Használja az alapértelmezett értéket.|
 
-    Az Azure SQL Server neve lesz `<ClusterName>dbserver`. Az adatbázis neve `<ClusterName>db`lesz. A Storage-fiók alapértelmezett neve lesz `e6qhezrh2pdqu`.
+    Az Azure SQL Server neve `<ClusterName>dbserver`lesz. Az adatbázis neve `<ClusterName>db`lesz. Az alapértelmezett Storage-fiók neve `e6qhezrh2pdqu`lesz.
 
 3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket**.
 
@@ -104,7 +105,7 @@ A fürt, az SQL Database és az egyéb objektumok a Azure Portalon keresztül j�
 
 A HDInsight számos módszer használatával futtathat Sqoop-feladatokat. A következő táblázat segítségével eldöntheti, hogy melyik módszer a legmegfelelőbb, majd kövesse a bemutató hivatkozását.
 
-| **Ezzel** Ha azt szeretné... | ...an **interaktív** rendszerhéj | ...**kötegelt** feldolgozása | ...from ez **ügyfél operációs rendszer** |
+| **Használja ezt** , ha szeretné... | ... **interaktív** rendszerhéj | ... **kötegelt** feldolgozás | ... Ebből az **ügyféloldali operációs rendszerből** |
 |:--- |:---:|:---:|:--- |:--- |
 | [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux, UNIX, Mac OS X vagy Windows |
 | [.NET SDK a Hadoophoz](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |?  |Windows (egyelőre) |
@@ -112,12 +113,13 @@ A HDInsight számos módszer használatával futtathat Sqoop-feladatokat. A köv
 
 ## <a name="limitations"></a>Korlátozások
 
-* Tömeges exportálás – a Linux-alapú HDInsight a Sqoop-összekötő az adatexportálás Microsoft SQL Server vagy Azure SQL Database jelenleg nem támogatja a tömeges beszúrásokat.
-* Kötegelt feldolgozás – a Linux-alapú HDInsight, amikor a kapcsolót a `-batch` lapkák végrehajtásakor használja, a Sqoop több beszúrást hajt végre a beszúrási műveletek kötegelt feldolgozása helyett.
+* Tömeges exportálás – a Linux-alapú HDInsight a Sqoop-összekötő, amellyel az adatexportálás Microsoft SQL Server vagy Azure SQL Database jelenleg nem támogatja a tömeges beszúrásokat.
+* Kötegelt feldolgozás – a Linux-alapú HDInsight, amikor a `-batch` kapcsolót használja a lapkák végrehajtásakor, a Sqoop több beszúrást hajt végre az INSERT műveletekhez.
 
-## <a name="next-steps"></a>További lépések
-Most megtanulta, hogyan használhatja a Sqoop-t. További tudnivalókért lásd:
+## <a name="next-steps"></a>Következő lépések
+
+Most már megtanulta, hogyan használhatja a Sqoop-t. További tudnivalókért lásd:
 
 * [Apache Hive használata a HDInsight](../hdinsight-use-hive.md)
-* [Az Apache Pig és a HDInsight használata](../hdinsight-use-pig.md)
-* [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md): Az HDInsight/Azure Blob Storage-ba való adatfeltöltés egyéb módszereinek megkeresése.
+* [Adatok feltöltése a HDInsight-be](../hdinsight-upload-data.md): további módszerek az adatok HDInsight/Azure Blob Storage-ba való feltöltéséhez.
+* [Adatok importálása és exportálása az Apache Sqoop használatával a HDInsight-alapú Apache Hadoop és az SQL Database között](./apache-hadoop-use-sqoop-mac-linux.md)

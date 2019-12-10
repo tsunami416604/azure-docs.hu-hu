@@ -1,6 +1,7 @@
 ---
-title: Egyéni házirendek, az alapszintű csomag az Azure Active Directory B2C ismertetése |} A Microsoft Docs
-description: A témakör az Azure Active Directory B2C-vel egyéni szabályzatok.
+title: Az egyéni házirend alapszintű csomagjának összetevői
+titleSuffix: Azure AD B2C
+description: A szabályzatok áttekintése a Azure Active Directory B2C egyéni házirend alapszintű csomagban.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,102 +11,102 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b52f1a4cb6837dd779dcf4edac140bb13e06eacb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d49bd9af80b1bb9bd86466269b14ba0a47181e0
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509565"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948181"
 ---
-# <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Az Azure AD B2C-vel egyéni szabályzat alapszintű csomag az egyéni szabályzatok ismertetése
+# <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>A Azure AD B2C egyéni házirend alapszintű csomagjának egyéni házirendjeinek megismerése
 
-Ez a szakasz felsorolja a B2C_1A_base házirend az összes mag elemét a **Kezdőcsomag** és a saját örökségének szabályzatok létrehozásához-t használja, amely a *B2C_1A_base_extensions házirend* .
+Ez a szakasz felsorolja az **alapszintű csomaghoz** tartozó B2C_1A_base házirend összes alapvető elemét, amelyet a rendszer a saját szabályzatok az *B2C_1A_base_extensions házirend*öröklésével történő létrehozásához használ.
 
-Mint ilyen különösen több cikk foglalkozik a már definiált jogcímtípusok, a jogcímek átalakítása, tartalomdefiníciók, a technikai profil, és a központi felhasználói utak Jogcímszolgáltatók.
-
-> [!IMPORTANT]
-> A Microsoft nem vállal kifejezett vagy törvényi garanciát az alábbiakban megadott információk. Elérhetővé Válás időpontjában, vagy után, akkor a módosítások előtt végleges, bármikor előfordulhat, hogy kell bevezetni.
-
-Megfelelő saját házirendeket és a B2C_1A_base_extensions szabályzatot is felülbírálhatja ezeket a definíciókat, és igény szerint további eszközök biztosításával a szülő házirend kiterjesztését.
-
-Az alapvető elemei a *B2C_1A_base házirend* jogcímtípusok, a jogcímek átalakítása és tartalomdefiníciók. Ezeket az elemeket is ki van téve a megfelelő saját házirendeket is hasonlóan a lehet hivatkozni a *B2C_1A_base_extensions házirend*.
-
-## <a name="claims-schemas"></a>Jogcímek sémák
-
-A jogcím-sémák három részből áll:
-
-1.  Első szakasz, amely felsorolja a minimális jogcímek a felhasználó Journey megfelelő működéséhez szükséges.
-2.  Egy második szakasz, amely felsorolja a jogcímek más jogcímszolgáltatóktól, különösen a hitelesítéshez login.microsoftonline.com átadandó lekérdezési karakterlánc paraméterei és más speciális paraméterek megadása kötelező. **Ne módosítsa ezeket a jogcímeket**.
-3.  És végül a harmadik szakasz további, opcionális jogcímeket a felhasználótól gyűjtött felsoroló könyvtárban, és küldött jogkivonatokat a bejelentkezés során. Új jogcím típusa kér a felhasználótól, és a jogkivonatban elküldött ebben a szakaszban is hozzáadhatók.
+Ez különösen a már definiált jogcím-típusokra, a jogcímek átalakítására, a tartalmi definícióra, a szolgáltatóra és a műszaki profil (ok) ra vonatkozó, valamint az alapvető felhasználói útvonalakra összpontosít.
 
 > [!IMPORTANT]
-> A jogcímek séma például jelszavakat és a felhasználónevek egyes jogcímek korlátozásokat tartalmazza. A megbízható keretrendszer (TF) szabályzat kezeli az Azure AD bármilyen más jogcímszolgáltatótól, és minden korlátozást a rendszer az egyéni házirend modellezni. Sikerült módosítani a házirend hozzáadhat több korlátozást, vagy egy másik jogcím-szolgáltatói használja a hitelesítő adatok tárolása, aki a saját korlátozások.
+> A Microsoft nem vállal semmilyen kifejezett vagy vélelmezett szavatosságot a fenti információk tekintetében. A módosítások a ga-idő, a GA Time vagy a After után bármikor bevezethetők.
 
-A rendelkezésre álló jogcímtípusok, amelyeket alább láthatók.
+A saját szabályzatok és a B2C_1A_base_extensions házirend felülbírálhatja ezeket a definíciókat, és szükség esetén további igényeket is kiterjesztheti.
 
-### <a name="claims-that-are-required-for-the-user-journeys"></a>A felhasználói utak szükséges jogcímek
+A *B2C_1A_base szabályzat* alapvető elemei a jogcím típusai, a jogcím-átalakítások és a tartalmi definíciók. Ezek az elemek a saját szabályzatokban, valamint a *B2C_1A_base_extensions házirendben*is szerepelhetnek.
 
-Felhasználói utak megfelelő működéséhez a következő jogcímek szükségesek:
+## <a name="claims-schemas"></a>Jogcím-sémák
+
+A jogcím-sémák három szakaszra vannak osztva:
+
+1.  Első szakasz, amely felsorolja a felhasználói utazások megfelelő működéséhez szükséges minimális jogcímeket.
+2.  Egy második szakasz, amely felsorolja a lekérdezési karakterlánc paramétereinek és a más jogcím-szolgáltatóknak átadandó egyéb speciális paramétereket, különösen a hitelesítés login.microsoftonline.com. **Kérjük, ne módosítsa ezeket a jogcímeket**.
+3.  Végül pedig egy harmadik szakasz, amely felsorolja azokat a további, választható jogcímeket, amelyeket a rendszer a címtárban tárol, és a bejelentkezés során jogkivonatokban is elküldhet. Ebben a szakaszban az új, a felhasználótól és/vagy a jogkivonatban eljuttatott jogcím-típust lehet felvenni.
+
+> [!IMPORTANT]
+> A jogcím séma bizonyos jogcímek, például jelszavak és felhasználónevek korlátozásait tartalmazza. A megbízhatósági keretrendszer (TF) házirendje az Azure AD-t minden más jogcím-szolgáltatóként kezeli, és az összes korlátozását az egyéni házirend alapján modellezi. Egy házirend módosítható további korlátozások hozzáadására, vagy egy másik jogcím-szolgáltató használatára a hitelesítő adatok tárolásához, amely saját korlátozásokkal rendelkezik.
+
+Az elérhető jogcím-típusok az alábbiakban láthatók.
+
+### <a name="claims-that-are-required-for-the-user-journeys"></a>A felhasználói utazásokhoz szükséges jogcímek
+
+A felhasználói utazások megfelelő működéséhez a következő jogcímek szükségesek:
 
 | Jogcím típusa | Leírás |
 |-------------|-------------|
 | *UserId* | Felhasználónév |
-| *signInName* | Jelentkezzen be a nevet |
-| *tenantId* | Bérlő azonosítója (ID) az Azure AD B2C felhasználói objektum |
-| *objectId* | Objektum azonosítója (ID) az Azure AD B2C felhasználói objektum |
+| *signInName* | Bejelentkezés neve |
+| *tenantId* | A Azure AD B2C felhasználói objektumának bérlői azonosítója (azonosító) |
+| *objectId* | A Azure AD B2C felhasználói objektumának objektumazonosító (azonosítója) |
 | *jelszó* | Jelszó |
-| *newPassword* | |
+| *ÚjJelszó* | |
 | *reenterPassword* | |
-| *passwordPolicies* | A jelszóházirendek meghatározni a jelszó erősségét, lejárati és egyéb Azure AD B2C által használt. |
-| *sub* | |
+| *passwordPolicies* | Az Azure AD B2C által használt jelszóházirend a jelszó erősségének, lejáratának stb. meghatározásához. |
+| *Sub* | |
 | *alternativeSecurityId* | |
 | *identityProvider* | |
 | *displayName* | |
-| *strongAuthenticationPhoneNumber* | A felhasználó telefonszáma |
-| *Verified.strongAuthenticationPhoneNumber* | |
-| *email* | Lépjen kapcsolatba a használható e-mail-cím |
-| *signInNamesInfo.emailAddress* | E-mail-címet, amely a felhasználó használhatja a bejelentkezni |
-| *otherMails* | Kapcsolattartás a felhasználókkal használt e-mail címek |
-| *userPrincipalName* | Az Azure AD B2C-ben tárolt felhasználónév |
-| *upnUserName* | Egyszerű felhasználónév létrehozására szolgáló felhasználónév |
-| *mailNickName* | Az Azure AD B2C-ben tárolt felhasználó mail nick neve |
+| *strongAuthenticationPhoneNumber* | Felhasználó telefonszáma |
+| *Ellenőrizve. strongAuthenticationPhoneNumber* | |
+| *e-mail* | A felhasználóval való kapcsolatfelvételhez használható e-mail-cím |
+| *signInNamesInfo. emailAddress* | A felhasználó által a bejelentkezéshez használt e-mail-cím |
+| *otherMails* | A felhasználóval való kapcsolatfelvételhez használható e-mail-címek |
+| *userPrincipalName* | A Azure AD B2Cban tárolt Felhasználónév |
+| *upnUserName* | Felhasználónév az egyszerű felhasználónév létrehozásához |
+| *mailNickName* | A felhasználó e-mail-becenév neve, ahogy a Azure AD B2C tárolva |
 | *newUser* | |
-| *executed-SelfAsserted-Input* | Jogcímet, amely meghatározza, hogy attribútumok a felhasználótól gyűjtött |
-| *executed-PhoneFactor-Input* | Jogcímet, amely meghatározza, hogy új telefonszámot gyűjtötte a program a felhasználó elől |
-| *authenticationSource* | Itt adhatja meg, hogy a felhasználó hitelesítési közösségi Identitásszolgáltatóval, login.microsoftonline.com vagy helyi fiók |
+| *végrehajtott SelfAsserted – bemenet* | Jogcím, amely megadja, hogy a rendszer az attribútumokat gyűjtötte-e a felhasználótól |
+| *végrehajtott PhoneFactor – bemenet* | Az a jogcím, amely megadja, hogy a rendszer új telefonszámot gyűjtött-e a felhasználótól |
+| *authenticationSource* | Megadja, hogy a felhasználó hitelesítése a közösségi identitás-szolgáltatónál, login.microsoftonline.com vagy helyi fióknál történt-e |
 
-### <a name="claims-required-for-query-string-parameters-and-other-special-parameters"></a>A lekérdezési karakterlánc paraméterei és más speciális paraméter szükséges jogcímek
+### <a name="claims-required-for-query-string-parameters-and-other-special-parameters"></a>A lekérdezési karakterlánc paraméterei és egyéb speciális paraméterek esetén szükséges jogcímek
 
-A következő jogcímek szükségesek a Speciális paraméterek (beleértve az egyes lekérdezési karakterlánc paraméterei) át más jogcímszolgáltatóktól:
-
-| Jogcím típusa | Leírás |
-|-------------|-------------|
-| *nux* | Speciális paramétert az helyi fiók hitelesítési login.microsoftonline.com |
-| *nca* | Speciális paramétert az helyi fiók hitelesítési login.microsoftonline.com |
-| *parancssor* | Speciális paramétert az helyi fiók hitelesítési login.microsoftonline.com |
-| *mkt* | Speciális paramétert az helyi fiók hitelesítési login.microsoftonline.com |
-| *lc* | Speciális paramétert az helyi fiók hitelesítési login.microsoftonline.com |
-| *grant_type* | Speciális paramétert az helyi fiók hitelesítési login.microsoftonline.com |
-| *Hatókör* | Speciális paramétert az helyi fiók hitelesítési login.microsoftonline.com |
-| *client_id* | Speciális paramétert az helyi fiók hitelesítési login.microsoftonline.com |
-| *objectIdFromSession* | Az alapértelmezett munkamenet-felügyeleti szolgáltató jelzi, hogy az objektum egy egyszeri bejelentkezés munkamenet olvassa-e által biztosított paraméter |
-| *isActiveMFASession* | Az MFA munkamenet-kezelés jelzi, hogy a felhasználó rendelkezik-e a többtényezős hitelesítés aktív munkamenet által biztosított paraméter |
-
-### <a name="additional-optional-claims-that-can-be-collected"></a>Gyűjthető további (nem kötelező) jogcím
-
-A következő jogcímek további is gyűjtött a felhasználók, a címtárban tárolt és a jogkivonatban elküldött. Vázolt előtt, további jogcímek is hozzáadhatók a listához.
+A következő jogcímek szükségesek a speciális paraméterek (többek között a lekérdezési karakterlánc paraméterei) átadásához más jogcím-szolgáltatók számára:
 
 | Jogcím típusa | Leírás |
 |-------------|-------------|
-| *givenName* | A felhasználó utóneve (más néven keresztneve) |
-| *Vezetéknév* | A felhasználó vezetékneve (más néven csomagcsalád nevét vagy vezetéknév) |
-| *Extension_picture* | A felhasználó társadalombiztosítási kép |
+| *nux* | A helyi fiók hitelesítéséhez átadott speciális paraméter a login.microsoftonline.com |
+| *NVÜ* | A helyi fiók hitelesítéséhez átadott speciális paraméter a login.microsoftonline.com |
+| *gyors* | A helyi fiók hitelesítéséhez átadott speciális paraméter a login.microsoftonline.com |
+| *MKT* | A helyi fiók hitelesítéséhez átadott speciális paraméter a login.microsoftonline.com |
+| *LC* | A helyi fiók hitelesítéséhez átadott speciális paraméter a login.microsoftonline.com |
+| *grant_type* | A helyi fiók hitelesítéséhez átadott speciális paraméter a login.microsoftonline.com |
+| *hatókör* | A helyi fiók hitelesítéséhez átadott speciális paraméter a login.microsoftonline.com |
+| *client_id* | A helyi fiók hitelesítéséhez átadott speciális paraméter a login.microsoftonline.com |
+| *objectIdFromSession* | Az alapértelmezett munkamenet-kezelő szolgáltató által megadott paraméter, amely azt jelzi, hogy az objektumazonosító beolvasása egyszeri bejelentkezéses munkamenetből történt |
+| *isActiveMFASession* | Az MFA-munkamenet felügyelete által biztosított paraméter azt jelzi, hogy a felhasználó aktív MFA-munkamenettel rendelkezik |
 
-## <a name="claim-transformations"></a>A jogcímek átalakításához
+### <a name="additional-optional-claims-that-can-be-collected"></a>További (nem kötelező) jogcímek gyűjthetők
 
-A rendelkezésre álló jogcímek átalakításához alább láthatók.
+A következő jogcímek olyan további jogcímek, amelyeket a rendszer a címtárban tárolt felhasználóktól gyűjthet, és a jogkivonatban is elküldhet. Az előzőekben leírtak szerint további jogcímek is hozzáadhatók a listához.
 
-| Jogcím-átalakítást | Leírás |
+| Jogcím típusa | Leírás |
+|-------------|-------------|
+| *givenName* | A felhasználó utóneve (más néven Utónév) |
+| *vezetéknév* | Felhasználó vezetékneve (más néven családi név vagy vezetéknév) |
+| *Extension_picture* | A felhasználó képe a közösségi |
+
+## <a name="claim-transformations"></a>Jogcím-átalakítások
+
+Az elérhető jogcím-átalakítások az alábbiakban láthatók.
+
+| Jogcím-átalakítás | Leírás |
 |----------------------|-------------|
 | *CreateOtherMailsFromEmail* | |
 | *CreateRandomUPNUserName* | |
@@ -114,103 +115,103 @@ A rendelkezésre álló jogcímek átalakításához alább láthatók.
 | *CreateSubjectClaimFromAlternativeSecurityId* | |
 | *CreateAlternativeSecurityId* | |
 
-## <a name="content-definitions"></a>Tartalomdefiníciók
+## <a name="content-definitions"></a>Tartalmi definíciók
 
-Ez a szakasz ismerteti a már bejelentett tartalomdefiníciók a *B2C_1A_base* házirend. Ezek tartalomdefiníciók fogékonyak kell hivatkozott, felül, és/vagy kiterjesztett megfelelő saját házirendeket, valamint az igény szerint a *B2C_1A_base_extensions* házirend.
+Ez a szakasz a *B2C_1A_base* szabályzatban már deklarált tartalmi definíciókat ismerteti. Ezek a tartalmi definíciók arra hajlamosak, hogy a saját szabályzatokban, valamint a *B2C_1A_base_extensions* -házirendben szereplő igények szerint hivatkozhatnak, felülbírálják és/vagy kiterjeszthetők legyenek.
 
-| Jogcím-szolgáltatói | Leírás |
+| Jogcím-szolgáltató | Leírás |
 |-----------------|-------------|
 | *Facebook* | |
-| *Bejelentkezés helyi fiókba* | |
+| *Helyi fiók bejelentkezési* | |
 | *PhoneFactor* | |
 | *Azure Active Directory* | |
-| *Maga a kiszolgáló által megerősített* | |
+| *Saját érvényesített* | |
 | *Helyi fiók* | |
 | *Munkamenet-kezelés* | |
-| *Trustframework szabályzat motor* | |
+| *Trustframework házirend motorja* | |
 | *TechnicalProfiles* | |
-| *Jogkivonat kibocsátója* | |
+| *Jogkivonat kiállítója* | |
 
 ## <a name="technical-profiles"></a>Technikai profilok
 
-Ez a szakasz bemutatja a technikai profilok száma a jogcím-szolgáltató már deklarálva a *B2C_1A_base* házirend. Ezek a technikai profilok lehet további hivatkozott, felül, és/vagy kiterjesztett megfelelő saját házirendeket, valamint az igény szerint ki vannak téve a *B2C_1A_base_extensions* házirend.
+Ez a szakasz a *B2C_1A_base* szabályzatban már deklarált technikai profilokat ábrázolja. Ezek a műszaki profilok a saját szabályzatokban, valamint a *B2C_1A_base_extensions* házirendben szükséges további hivatkozásokat, felülbírált és/vagy kibővítést igényelnek.
 
-### <a name="technical-profiles-for-facebook"></a>Technikai profilok, a Facebookra
-
-| Technikai profil | Leírás |
-|-------------------|-------------|
-| *Facebook-OAUTH* | |
-
-### <a name="technical-profiles-for-local-account-signin"></a>Technikai profilok helyi fiókba
+### <a name="technical-profiles-for-facebook"></a>A Facebook technikai profiljai
 
 | Technikai profil | Leírás |
 |-------------------|-------------|
-| *Login-NonInteractive* | |
+| *Facebook – OAUTH* | |
 
-### <a name="technical-profiles-for-phone-factor"></a>A Phone Factor technikai profilok
-
-| Technikai profil | Leírás |
-|-------------------|-------------|
-| *PhoneFactor-Input* | |
-| *PhoneFactor-InputOrVerify* | |
-| *PhoneFactor-Verify* | |
-
-### <a name="technical-profiles-for-azure-active-directory"></a>Az Azure Active Directory technikai profilok
+### <a name="technical-profiles-for-local-account-signin"></a>Helyi fiók bejelentkezési tartozó műszaki profilok
 
 | Technikai profil | Leírás |
 |-------------------|-------------|
-| *AAD-Common* | Technikai profil más AAD-xxx technikai profilok szerint hozzáadva |
-| *AAD-UserWriteUsingAlternativeSecurityId* | Közösségi bejelentkezések technikai profil |
-| *AAD-UserReadUsingAlternativeSecurityId* | Közösségi bejelentkezések technikai profil |
-| *AAD-UserReadUsingAlternativeSecurityId-NoError* | Közösségi bejelentkezések technikai profil |
-| *AAD-UserWritePasswordUsingLogonEmail* | Helyi fiókok technikai profil |
-| *AAD-UserReadUsingEmailAddress* | Helyi fiókok technikai profil |
-| *AAD-UserWriteProfileUsingObjectId* | Technikai profil használatával objectId felhasználói rekord frissítése |
-| *AAD-UserWritePhoneNumberUsingObjectId* | Technikai profil használatával objectId felhasználói rekord frissítése |
-| *AAD-UserWritePasswordUsingObjectId* | Technikai profil használatával objectId felhasználói rekord frissítése |
-| *AAD-UserReadUsingObjectId* | Technikai profil segítségével adatokat olvasni. Miután a felhasználók hitelesítése |
+| *Bejelentkezés – nem interaktív* | |
 
-### <a name="technical-profiles-for-self-asserted"></a>Az önkiszolgáló kiszolgáló által megerősített technikai profilok
+### <a name="technical-profiles-for-phone-factor"></a>Technikai profilok a telefonos faktorhoz
 
 | Technikai profil | Leírás |
 |-------------------|-------------|
-| *SelfAsserted-Social* | |
+| *PhoneFactor – bemenet* | |
+| *PhoneFactor – InputOrVerify* | |
+| *PhoneFactor – ellenőrzés* | |
+
+### <a name="technical-profiles-for-azure-active-directory"></a>A Azure Active Directory technikai profiljai
+
+| Technikai profil | Leírás |
+|-------------------|-------------|
+| *HRE – gyakori* | A más HRE – XXX technikai profilok részét képező technikai profil |
+| *HRE – UserWriteUsingAlternativeSecurityId* | Technikai profil a közösségi bejelentkezésekhez |
+| *HRE – UserReadUsingAlternativeSecurityId* | Technikai profil a közösségi bejelentkezésekhez |
+| *HRE-UserReadUsingAlternativeSecurityId – hiba* | Technikai profil a közösségi bejelentkezésekhez |
+| *HRE – UserWritePasswordUsingLogonEmail* | Helyi fiókok technikai profilja |
+| *HRE – UserReadUsingEmailAddress* | Helyi fiókok technikai profilja |
+| *HRE – UserWriteProfileUsingObjectId* | Technikai profil a felhasználói rekordok frissítéséhez a objectId használatával |
+| *HRE – UserWritePhoneNumberUsingObjectId* | Technikai profil a felhasználói rekordok frissítéséhez a objectId használatával |
+| *HRE – UserWritePasswordUsingObjectId* | Technikai profil a felhasználói rekordok frissítéséhez a objectId használatával |
+| *HRE – UserReadUsingObjectId* | A technikai profil a felhasználó hitelesítése után az adatolvasásra használatos |
+
+### <a name="technical-profiles-for-self-asserted"></a>Saját igényekkel rendelkező műszaki profilok
+
+| Technikai profil | Leírás |
+|-------------------|-------------|
+| *SelfAsserted – közösségi* | |
 | *SelfAsserted-ProfileUpdate* | |
 
-### <a name="technical-profiles-for-local-account"></a>Helyi fiók technikai profilok
+### <a name="technical-profiles-for-local-account"></a>Helyi fiók technikai profiljai
 
 | Technikai profil | Leírás |
 |-------------------|-------------|
 | *LocalAccountSignUpWithLogonEmail* | |
 
-### <a name="technical-profiles-for-session-management"></a>A munkamenet-kezelés technikai profilok
+### <a name="technical-profiles-for-session-management"></a>A munkamenet-kezelés technikai profiljai
 
 | Technikai profil | Leírás |
 |-------------------|-------------|
-| *SM-Noop* | |
-| *SM-AAD* | |
-| *SM-SocialSignup* | Elem egyértelműségének biztosításához AAD munkamenet között jelentkezzen be, és jelentkezzen be a profil-név használatban van |
-| *SM-SocialLogin* | |
-| *SM-MFA* | |
+| *SM – NOOP* | |
+| *SM – HRE* | |
+| *SM – SocialSignup* | A profil neve a regisztráció és a bejelentkezés közötti HRE-munkamenet egyértelműsítse használatos. |
+| *SM – SocialLogin* | |
+| *SM – MFA* | |
 
-### <a name="technical-profiles-for-the-trust-framework-policy-engine"></a>A bizalmi keretrendszer házirend motor technikai profilok
+### <a name="technical-profiles-for-the-trust-framework-policy-engine"></a>A megbízhatósági keretrendszer házirend-motorjának technikai profiljai
 
-Jelenleg nincsenek technikai profilok meghatározott a **Trustframework szabályzat motor TechnicalProfiles** jogcím-szolgáltatói.
+Jelenleg nem határoznak meg technikai profilokat a **Trustframework Policy Engine TechnicalProfiles** -szolgáltatóhoz.
 
-### <a name="technical-profiles-for-token-issuer"></a>Jogkivonat kibocsátója technikai profilok
+### <a name="technical-profiles-for-token-issuer"></a>A jogkivonat-kiállító technikai profiljai
 
 | Technikai profil | Leírás |
 |-------------------|-------------|
 | *JwtIssuer* | |
 
-## <a name="user-journeys"></a>Felhasználói utak
+## <a name="user-journeys"></a>Felhasználói utazások
 
-Ez a szakasz mutatja be a felhasználói utak már deklarálva a *B2C_1A_base* házirend. Ezek az felhasználói utak fogékonyak lehet további hivatkozott, felül, és/vagy kiterjesztett megfelelő saját házirendeket, valamint az igény szerint a *B2C_1A_base_extensions* házirend.
+Ez a szakasz a *B2C_1A_base* szabályzatban már deklarált felhasználói útvonalakat ábrázolja. Ezek a felhasználói utazások a saját szabályzatokban, valamint a *B2C_1A_base_extensions* -házirendben szükséges további hivatkozásokat, felülbírálják és/vagy kiterjeszthetők.
 
-| Felhasználói interakciósorozat | Leírás |
+| Felhasználói út | Leírás |
 |--------------|-------------|
-| *SignUp* | |
-| *SignIn* | |
+| *Regisztráció* | |
+| *Bejelentkezési* | |
 | *SignUpOrSignIn* | |
 | *EditProfile* | |
 | *PasswordReset* | |

@@ -1,6 +1,7 @@
 ---
-title: Oktatóanyag – hitelesítés engedélyezése egyoldalas alkalmazásban – Azure Active Directory B2C
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Active Directory B2Ct egy egyoldalas alkalmazás (JavaScript) felhasználói bejelentkezésének biztosítására.
+title: 'Oktatóanyag: hitelesítés engedélyezése egyoldalas alkalmazásokban'
+titleSuffix: Azure AD B2C
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Active Directory B2Ct egy JavaScript-alapú egyoldalas alkalmazás (SPA) felhasználói bejelentkezésének biztosítására.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8ece6401484d8f32483d4673384fcce6d7afac4a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 2f18a7ddeb5256c660c6458fc8d2d29f83e04429
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420343"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950161"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egyoldalas alkalmazásban Azure Active Directory B2C (Azure AD B2C) használatával
 
@@ -52,7 +53,7 @@ Az alkalmazás frissítéséhez használhatja az aktuális **alkalmazások** vag
 
 #### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Válassza az **összes szolgáltatás** elemet a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **alkalmazások**lehetőséget, majd válassza ki a *webapp1* alkalmazást.
@@ -62,7 +63,7 @@ Az alkalmazás frissítéséhez használhatja az aktuális **alkalmazások** vag
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, válassza a **tulajdonában lévő alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
@@ -108,7 +109,7 @@ Most, hogy beolvasta a mintát, frissítse a kódot a Azure AD B2C bérlői nev�
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-1. Nyisson meg egy konzolablak ablakát, és váltson a mintát tartalmazó könyvtárra. Például:
+1. Nyisson meg egy konzolablak ablakát, és váltson a mintát tartalmazó könyvtárra. Példa:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -163,7 +164,7 @@ Ezt a hibaüzenetet kapja, mert a webalkalmazás megpróbál hozzáférni egy, a
 
 Ennek a hibának a kijavításához folytassa a sorozat következő oktatóanyagával (lásd a [következő lépéseket](#next-steps)) egy védett webes API létrehozásához a címtárban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

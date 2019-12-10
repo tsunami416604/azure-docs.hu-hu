@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 7ce15a0fe55c32ad7e381ba70e4dffee11c76bee
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8d2873dd2fd36ed1193aed457a04baae94a043a2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383395"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951819"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -115,13 +115,14 @@ Az elemekre nem vonatkoznak korlátozások (például a tulajdonságok száma é
 
 ## <a name="per-request-limits"></a>Kérelmekre vonatkozó korlátozások
 
-Cosmos DB támogatja a [szifilisz-és lekérdezési műveleteket](https://docs.microsoft.com/rest/api/cosmos-db/) olyan erőforrásokon, mint például a tárolók, elemek és adatbázisok.  
+Azure Cosmos DB támogatja a [szifilisz-és lekérdezési műveleteket](https://docs.microsoft.com/rest/api/cosmos-db/) olyan erőforrásokon, mint például a tárolók, elemek és adatbázisok. Emellett támogatja a [tranzakciós batch-kérelmeket](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) több olyan elem esetében is, amelyek egy tárolóban ugyanazzal a partíciós kulccsal rendelkeznek.
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Egy művelet maximális végrehajtási ideje (például egy tárolt eljárás végrehajtása vagy egy lekérdezési lap beolvasása)| 5 MP |
-| Kérelmek maximális mérete (tárolt eljárás, szifilisz)| 2 MB |
+| Kérelmek maximális mérete (például tárolt eljárás, szifilisz)| 2 MB |
 | Válasz maximális mérete (például többoldalas lekérdezés) | 4 MB |
+| Műveletek maximális száma tranzakciós kötegben | 100 |
 
 Ha egy művelet, például a lekérdezés eléri a végrehajtás időtúllépését vagy a válasz méretkorlát értéket, a rendszer visszaadja az eredmények egy oldalát, valamint egy folytatási tokent az ügyfélnek a végrehajtás folytatásához. Az időtartamra vonatkozóan nincs gyakorlati korlát az egyes oldalakra vagy folytatásokra vonatkozó egyetlen lekérdezés futtatásához.
 

@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C használható alkalmazások típusai
+title: A Azure AD B2C által támogatott alkalmazások típusai
+titleSuffix: Azure AD B2C
 description: Ismerje meg a Azure Active Directory B2C használható alkalmazások típusait.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5643f1df6cefa9ca6c60453939be533b2c00eaf4
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 753943116edab443509b7d5747e749910e366806
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533085"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948794"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C használható alkalmazások típusai
 
@@ -112,7 +113,7 @@ Ebben a folyamatban az alkalmazás [szabályzatokat](active-directory-b2c-refere
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-### <a name="unsupported-application-types"></a>Nem támogatott alkalmazások típusai
+### <a name="unsupported-application-types"></a>Nem támogatott alkalmazástípusok
 
 #### <a name="daemonsserver-side-applications"></a>Démonok/kiszolgálóoldali alkalmazások
 

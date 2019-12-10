@@ -8,14 +8,14 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
-ms.date: 07/23/2019
+ms.date: 12/08/2019
 ms.author: alehall
-ms.openlocfilehash: 2e6bfa9188034c602660eaff34bf86ea711dc7b3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6af0881049e52cbead5cca9719d4c9b06be29491
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121283"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951547"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Oktatóanyag: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
 
@@ -56,7 +56,7 @@ Ezeket az előfeltételeket az [Azure Event Hubs-névtér és eseményközpont l
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
@@ -101,7 +101,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     Fogadja el az összes alapértelmezett értéket, kivéve a következőket:
 
    * Adjon egy nevet a fürtnek.
-   * Ehhez a cikkhez hozzon létre egy **6,0* futtatókörnyezettel rendelkező fürtöt.
+   * Ehhez a cikkhez hozzon létre egy **6,0** futtatókörnyezettel rendelkező fürtöt.
    * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
    Válassza ki a fürt feldolgozója és az illesztőprogram-csomópontok méretét a technikai feltételekhez és a [költségvetéshez](https://azure.microsoft.com/pricing/details/databricks/).
@@ -138,14 +138,10 @@ Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitt
 
    ![Kódtár hozzáadása párbeszédpanel](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "Függvénytár hozzáadása új telepítése")
 
-2. Az új könyvtár lapon a **forrás** kiválasztásához válassza a **Maven**lehetőséget. A **koordináta**esetében kattintson a hozzáadni kívánt csomaghoz tartozó **csomagok keresése** elemre. Az oktatóanyagban használt kódtárak Maven-koordinátái a következők:
+2. Az új könyvtár lapon a **forrás** kiválasztásához válassza a **Maven**lehetőséget. Egyénileg adja meg a következő koordinátákat a Spark Event Hubs-összekötőhöz és a Twitter API-hoz **koordinátákat**.
 
-   * Spark Event Hubs-összekötő – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+   * Spark Event Hubs-összekötő – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.12`
    * Twitter API – `org.twitter4j:twitter4j-core:4.0.7`
-
-     ![Maven-koordináták megadása](./media/databricks-stream-from-eventhubs/databricks-add-library-search.png "Maven-koordináták megadása")
-
-     ![Maven-koordináták megadása](./media/databricks-stream-from-eventhubs/databricks-add-library-search-dialogue.png "Maven-koordináták keresése")
 
 3. Válassza az **Install** (Telepítés) lehetőséget.
 
@@ -410,9 +406,9 @@ Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez az Azure Data
 
 ![Databricks-fürt leállítása](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ön nem állítja le manuálisan a fürt automatikusan leáll, ha a kiválasztott megadott a **leállítása után \_ \_ ennyi perc inaktivitás** jelölőnégyzetet a fürt létrehozásakor. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, a rendszer automatikusan leállítja, ha a fürt létrehozásakor bejelölte **\_\_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

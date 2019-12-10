@@ -1,5 +1,6 @@
 ---
-title: Egyszeri bejelentkezéses munkamenet-kezelés az egyéni szabályzatok használatával Azure Active Directory B2Cban | Microsoft Docs
+title: Egyszeri bejelentkezés munkamenet-kezelés egyéni szabályzatok használatával
+titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan kezelheti az egyszeri bejelentkezéses munkameneteket a Azure AD B2C egyéni házirendjeivel.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5ae30b316133b7479b66a69a3467497a7151dbc8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ee32b13820cb50fc1649672b78b34e7e293d65b5
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065381"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950493"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés munkamenet-kezelés a Azure Active Directory B2C-ben
 
@@ -25,7 +26,7 @@ Az egyszeri bejelentkezés (SSO) munkamenet-kezelője Azure Active Directory B2C
 
 Az egyszeri bejelentkezéses munkamenetek kezelése két részből áll. Az első a felhasználó interakcióit a Azure AD B2C és a másikkal együtt a külső felekkel, például a Facebooktal folytatott interakciókkal foglalkozik. Azure AD B2C nem bírál felül vagy mellőzi az SSO-munkameneteket, amelyeket külső felek is tárolhatnak. Ahelyett, hogy a külső fél felé irányuló, Azure AD B2C útvonalon áthaladó útvonalat "megjegyezték", a felhasználónak nem kell újrakérnie a felhasználót, hogy válassza ki a közösségi vagy vállalati identitás-szolgáltatót. A végső SSO-döntés a külső fél számára is fennáll.
 
-Az egyszeri bejelentkezéses munkamenet-kezelés ugyanazt a szemantikai kapcsolatot használja, mint bármely más technikai profil az egyéni házirendekben. Egy előkészítési lépés végrehajtásakor a rendszer a lépéshez társított technikai profilt kérdezi `UseTechnicalProfileForSessionManagement` le. Ha van ilyen, a rendszer ellenőrzi a hivatkozott SSO munkamenet-szolgáltatót, hogy a felhasználó munkamenet-résztvevő-e. Ha igen, az SSO-munkamenet-szolgáltató a munkamenet újrafeltöltésére szolgál. Hasonlóképpen, ha egy előkészítési lépés végrehajtása befejeződött, a szolgáltató a munkamenetben lévő információk tárolására szolgál, ha meg van adva egy egyszeri bejelentkezéses munkamenet-szolgáltató.
+Az egyszeri bejelentkezéses munkamenet-kezelés ugyanazt a szemantikai kapcsolatot használja, mint bármely más technikai profil az egyéni házirendekben. Egy előkészítési lépés végrehajtásakor a lépéshez társított technikai profil lekérdezése `UseTechnicalProfileForSessionManagement`. Ha van ilyen, a rendszer ellenőrzi a hivatkozott SSO munkamenet-szolgáltatót, hogy a felhasználó munkamenet-résztvevő-e. Ha igen, az SSO-munkamenet-szolgáltató a munkamenet újrafeltöltésére szolgál. Hasonlóképpen, ha egy előkészítési lépés végrehajtása befejeződött, a szolgáltató a munkamenetben lévő információk tárolására szolgál, ha meg van adva egy egyszeri bejelentkezéses munkamenet-szolgáltató.
 
 Azure AD B2C több SSO munkamenet-szolgáltatót definiált:
 
@@ -34,7 +35,7 @@ Azure AD B2C több SSO munkamenet-szolgáltatót definiált:
 * ExternalLoginSSOSessionProvider
 * SamlSSOSessionProvider
 
-Az `<UseTechnicalProfileForSessionManagement ReferenceId=“{ID}" />` egyszeri bejelentkezéses felügyeleti osztályok egy technikai profil eleme alapján vannak megadva.
+Az egyszeri bejelentkezéses felügyeleti osztályok a technikai profil `<UseTechnicalProfileForSessionManagement ReferenceId=“{ID}" />` eleme alapján vannak megadva.
 
 ## <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
@@ -59,7 +60,7 @@ Ezt a szolgáltatót a jogcímek egy munkamenetben való tárolására lehet has
 </TechnicalProfile>
 ```
 
-Ha jogcímeket szeretne felvenni a munkamenetbe, használja `<PersistedClaims>` a technikai profil elemét. Ha a szolgáltató a munkamenet újrafeltöltésére szolgál, a rendszer hozzáadja a megőrzött jogcímeket a jogcímek táskához. `<OutputClaims>`a jogcímek munkamenetből való beolvasására szolgál.
+Ha jogcímeket szeretne felvenni a munkamenetbe, használja a technikai profil `<PersistedClaims>` elemét. Ha a szolgáltató a munkamenet újrafeltöltésére szolgál, a rendszer hozzáadja a megőrzött jogcímeket a jogcímek táskához. `<OutputClaims>` a jogcímek munkamenetből való beolvasására szolgál.
 
 ## <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
@@ -89,10 +90,10 @@ Ez a szolgáltató az alkalmazások és a külső SAML-szolgáltatók közötti 
 
 A technikai profilban két metaadat-elem található:
 
-| Elem | Alapértelmezett érték | Lehetséges értékek | Leírás
+| Tétel | Alapértelmezett érték | Lehetséges értékek | Leírás
 | --- | --- | --- | --- |
-| IncludeSessionIndex | true | Igaz/hamis | Azt jelzi, hogy a szolgáltatónak tárolnia kell a munkamenet-indexet. |
-| RegisterServiceProviders | true | Igaz/hamis | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. |
+| IncludeSessionIndex | igaz | Igaz/hamis | Azt jelzi, hogy a szolgáltatónak tárolnia kell a munkamenet-indexet. |
+| RegisterServiceProviders | igaz | Igaz/hamis | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. |
 
-Ha a szolgáltatót az SAML-identitás szolgáltatói munkamenetének tárolására használja, a fenti elemeknek is false értékűnek kell lenniük. A B2C SAML-munkamenet tárolására szolgáló szolgáltató használata esetén a fenti elemeknek igaznak kell lenniük, vagy el kell hagyni őket, mert az alapértelmezett értékek igazak. Az SAML-munkamenet kijelentkezéséhez a `SessionIndex` és `NameID` a Befejezés szükséges.
+Ha a szolgáltatót az SAML-identitás szolgáltatói munkamenetének tárolására használja, a fenti elemeknek is false értékűnek kell lenniük. A B2C SAML-munkamenet tárolására szolgáló szolgáltató használata esetén a fenti elemeknek igaznak kell lenniük, vagy el kell hagyni őket, mert az alapértelmezett értékek igazak. Az SAML-munkamenet kijelentkezéséhez szükség van a `SessionIndex`ra, és `NameID` a befejezéshez.
 

@@ -1,5 +1,6 @@
 ---
-title: Regisztráció és bejelentkezés beállítása Microsoft-fiókkal – Azure Active Directory B2C
+title: Regisztráció és bejelentkezés beállítása Microsoft-fiókkal
+titleSuffix: Azure AD B2C
 description: Az alkalmazásokban Microsoft-fiókkal rendelkező ügyfelek számára Azure Active Directory B2C használatával regisztrálhat és regisztrálhat.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a921d6110fd0294012e2e59542ba2c82d63ffcde
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: fc79211f55edb471eb95fc55fe8519d228ca192e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73642080"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949321"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Microsoft-fiók használatával Azure Active Directory B2C
 

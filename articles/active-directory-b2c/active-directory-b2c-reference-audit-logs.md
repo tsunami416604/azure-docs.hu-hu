@@ -1,6 +1,7 @@
 ---
-title: Naplókban szereplő minták és definíciók naplózása Azure Active Directory B2C
-description: Útmutató és példák a Azure AD B2C naplók eléréséhez.
+title: Naplók elérése és áttekintése
+titleSuffix: Azure AD B2C
+description: Hogyan érheti el Azure AD B2C naplózási naplókat programozott módon és a Azure Portalban.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +12,12 @@ ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b1070314767f280ec9d15390dc838fa80b5508e2
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: feefe7cf6d559360defd7c7f830a9e3f2e583cd6
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643608"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948232"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C naplók elérése
 
@@ -34,11 +35,11 @@ A naplókban a **B2C** kategória a következő típusú tevékenységeket tarta
 |Tevékenység típusa |Leírás  |
 |---------|---------|
 |Engedélyezés |A B2C-erőforrásokhoz való hozzáférés engedélyezésével kapcsolatos tevékenységek (például egy rendszergazda, amely a B2C-szabályzatok listáját használja).         |
-|Címtár |Címtár-attribútumokkal kapcsolatos tevékenységek, amikor egy rendszergazda bejelentkezik a Azure Portal használatával. |
-|Alkalmazás | A B2C-alkalmazásokhoz tartozó létrehozási, olvasási, frissítési és törlési (szifilisz-) műveletek. |
+|Könyvtár |Címtár-attribútumokkal kapcsolatos tevékenységek, amikor egy rendszergazda bejelentkezik a Azure Portal használatával. |
+|Jelentkezés | A B2C-alkalmazásokhoz tartozó létrehozási, olvasási, frissítési és törlési (szifilisz-) műveletek. |
 |Jelmagyarázat |A B2C-kulcstárolóban tárolt kulcsokra vonatkozó szifilisz-műveletek. |
 |Erőforrás |A B2C-erőforrásokra vonatkozó szifilisz-műveletek. Például házirendek és identitás-szolgáltatók.
-|Authentication |A felhasználói hitelesítő adatok és a jogkivonatok kiadásának ellenőrzése.|
+|Hitelesítés |A felhasználói hitelesítő adatok és a jogkivonatok kiadásának ellenőrzése.|
 
 A felhasználói objektumhoz tartozó szifilisz-tevékenységek esetében tekintse meg az **alapvető könyvtár** kategóriát.
 
@@ -52,13 +53,13 @@ A tevékenység részletei panel a következő releváns információkat tartalm
 
 |Section|Mező|Leírás|
 |-------|-----|-----------|
-| Tevékenység | Name (Név) | Melyik tevékenység történt. Például *adjon ki egy id_token az alkalmazásnak*, amely a tényleges felhasználói bejelentkezést vonja le. |
-| Kezdeményező (színész) | objectId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. Ez az azonosító nem látható a Azure Portalban, de a Microsoft Graph API-n keresztül érhető el. |
+| Tevékenység | Név | Melyik tevékenység történt. Tegyük fel például, *hogy kiállít egy id_token az alkalmazáshoz*, amely a tényleges felhasználói bejelentkezést vonja le. |
+| Kezdeményező (színész) | ObjectId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. Ez az azonosító nem látható a Azure Portalban, de a Microsoft Graph API-n keresztül érhető el. |
 | Kezdeményező (színész) | SPN | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. |
-| Cél (ok) | objectId | A bejelentkezett felhasználó **objektumazonosító** . |
+| Cél(ok) | ObjectId | A bejelentkezett felhasználó **objektumazonosító** . |
 | További részletek | TenantId | A Azure AD B2C bérlő **bérlői azonosítója** . |
 | További részletek | PolicyId | Annak a felhasználói folyamatnak (házirendnek) a **házirend-azonosítója** , amellyel a rendszer aláírja a felhasználót a alkalmazásban. |
-| További részletek | applicationId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. |
+| További részletek | ApplicationId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Naplófájlok megtekintése a Azure Portal
 
@@ -255,6 +256,6 @@ Itt látható a cikkben korábban bemutatott példa tevékenység esemény JSON-
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Automatizálhat más felügyeleti feladatokat, például [kezelheti a felhasználókat a .net](active-directory-b2c-devquickstarts-graph-dotnet.md)használatával.

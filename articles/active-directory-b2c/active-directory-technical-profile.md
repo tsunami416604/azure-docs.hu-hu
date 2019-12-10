@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory műszaki profil definiálása egyéni házirendben Azure Active Directory B2Cban | Microsoft Docs
+title: Azure AD-beli technikai profil definiálása egyéni házirendben
+titleSuffix: Azure AD B2C
 description: Azure Active Directory technikai profilt definiálhat egy egyéni házirendben Azure Active Directory B2Cban.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4383980953147560b9e51e4ccab3032dd8173dd4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1a839c86a717122778f736f01fea4bdd08da8945
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064627"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949558"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -23,9 +24,9 @@ ms.locfileid: "71064627"
 
 A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt a Azure Active Directory felhasználói felügyelethez. Ez a cikk a szabványos protokollt támogató jogcím-szolgáltatóval való interakcióra szolgáló technikai profil sajátosságait ismerteti.
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>Protocol (Protokoll)
 
-A **protokoll** elem `Proprietary` **Name** attribútumát be kell állítani. A **kezelő** attribútumnak tartalmaznia kell a protokollkezelő szerelvényének `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`teljesen minősített nevét.
+A **protokoll** elem **Name** attribútumát `Proprietary`értékre kell állítani. A **kezelő** attribútumnak tartalmaznia kell a protokollkezelő szerelvény `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`teljes nevét.
 
 Az Azure AD minden technikai profilja tartalmazza a **HRE-közös** technikai profilt. A következő műszaki profilok nem határozzák meg a protokollt, mert a protokoll a **HRE-közös** technikai profilban van konfigurálva:
 
@@ -61,13 +62,13 @@ A következő műszaki profilok a közösségi és helyi fiókok **szabályzatt�
 
 - A közösségi fiók technikai profiljai **HRE-UserReadUsingAlternativeSecurityId** és **HRE-UserWriteUsingAlternativeSecurityId** tartalmazza a **AlternativeSecurityId** jogcímet. Ez a jogcím a közösségi fiók felhasználói azonosítóját tartalmazza.
 - A helyi fiók technikai profiljai **HRE-UserReadUsingEmailAddress** és **HRE-UserWriteUsingLogonEmail** tartalmazza az **e-mail** jogcímet. Ez a jogcím a helyi fiók bejelentkezési nevét tartalmazza.
-- Az egységes (helyi és közösségi) technikai profilok **HRE-UserReadUsingObjectId**, **HRE-UserWritePasswordUsingObjectId**, **HRE-UserWriteProfileUsingObjectId**és **HRE-UserWritePhoneNumberUsingObjectId** tartalmazza a **objectId** jogcím. Egy fiók egyedi azonosítója.
+- Az egyesített (helyi és közösségi) technikai profilok **HRE-UserReadUsingObjectId**, **HRE-UserWritePasswordUsingObjectId**, **HRE-UserWriteProfileUsingObjectId**és **HRE-UserWritePhoneNumberUsingObjectId** tartalmazza a **objectId** jogcímet. Egy fiók egyedi azonosítója.
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak előállítására szolgálnak.
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 
-A **OutputClaims** elem az Azure ad technikai profil által visszaadott jogcímek listáját tartalmazza. Előfordulhat, hogy le kell képeznie a szabályzatban definiált jogcím nevét a Azure Active Directoryban definiált névre. Olyan jogcímeket is tartalmazhat, amelyeket a Azure Active Directory nem ad vissza, ha beállítja az `DefaultValue` attribútumot.
+A **OutputClaims** elem az Azure ad technikai profil által visszaadott jogcímek listáját tartalmazza. Előfordulhat, hogy le kell képeznie a szabályzatban definiált jogcím nevét a Azure Active Directoryban definiált névre. Olyan jogcímeket is tartalmazhat, amelyeket a Azure Active Directory nem ad vissza, ha a `DefaultValue` attribútumot állítja be.
 
 A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
 
@@ -75,7 +76,7 @@ Például a **HRE-UserWriteUsingLogonEmail** technikai profil egy helyi fiókot 
 
 - **objectId**, amely az új fiók azonosítója
 - **newUser**, amely azt jelzi, hogy a felhasználó új-e
-- **authenticationSource**, amely a következőre történő hitelesítést állítja be`localAccountAuthentication`
+- **authenticationSource**, amely a `localAccountAuthentication` hitelesítését állítja be
 - **userPrincipalName**, az új fiók egyszerű felhasználóneve
 - **signInNames. emailAddress**, amely a fiók bejelentkezési neve, hasonlóan az **e-mail** bemeneti jogcímhez
 
@@ -115,7 +116,7 @@ A jogcím neve az Azure AD attribútum neve, kivéve, ha meg van adva a **Partne
 
 - Az összes Azure AD technikai profilhoz pontosan egy **InputClaim** elemnek kell tartoznia a jogcím-táskában.
 - Ha a művelet `Write` vagy `DeleteClaims`, akkor azt is meg kell jelennie egy **PersistedClaims** elemben.
-- A **userPrincipalName** jogcím értékének formátuma `user@tenant.onmicrosoft.com`a ().
+- A **userPrincipalName** jogcím értékének `user@tenant.onmicrosoft.com`formátumúnak kell lennie.
 - A **DisplayName** jogcím megadása kötelező, és nem lehet üres karakterlánc.
 
 ## <a name="azure-ad-technical-provider-operations"></a>Azure AD technikai szolgáltatói műveletek
@@ -252,14 +253,14 @@ A következő technikai profil töröl egy közösségi felhasználói fiókot a
 ```
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Igen | A végrehajtandó művelet. Lehetséges értékek: `Read` `Write` `DeleteClaimsPrincipal`,,, vagy. `DeleteClaims` |
+| Művelet | Igen | A végrehajtandó művelet. Lehetséges értékek: `Read`, `Write`, `DeleteClaims`vagy `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nem | Hiba, ha a felhasználói objektum nem létezik a címtárban. Lehetséges értékek: `true` vagy `false`. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Nem | Ha hiba lép fel (lásd a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírását), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum nem létezik. Az érték honosítható [](localization.md).|
+| UserMessageIfClaimsPrincipalDoesNotExist | Nem | Ha hiba lép fel (lásd a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírását), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum nem létezik. Az érték [honosítható](localization.md).|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Nem | Hiba, ha a felhasználói objektum már létezik. Lehetséges értékek: `true` vagy `false`.|
-| UserMessageIfClaimsPrincipalAlreadyExists | Nem | Ha hiba lép fel (lásd: RaiseErrorIfClaimsPrincipalAlreadyExists-attribútum leírása), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum már létezik. Az érték honosítható [](localization.md).|
-| ApplicationObjectId | Nem | A bővítmény attribútumaihoz tartozó alkalmazásobjektum-azonosító. Érték Egy alkalmazás ObjectId. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
+| UserMessageIfClaimsPrincipalAlreadyExists | Nem | Ha hiba lép fel (lásd: RaiseErrorIfClaimsPrincipalAlreadyExists-attribútum leírása), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum már létezik. Az érték [honosítható](localization.md).|
+| ApplicationObjectId | Nem | A bővítmény attribútumaihoz tartozó alkalmazásobjektum-azonosító. Value: egy alkalmazás ObjectId. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
 | ClientID | Nem | A bérlő harmadik fél számára való elérésének ügyfél-azonosítója. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) |
 
 

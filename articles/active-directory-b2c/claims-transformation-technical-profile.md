@@ -1,6 +1,7 @@
 ---
-title: A jogcímek átalakítása technikai profil meghatározása egy egyéni házirendek az Azure Active Directory B2C |} A Microsoft Docs
-description: Adja meg az Azure Active Directory B2C egyéni házirendet egy jogcím-átalakítási technikai profil.
+title: Jogcím-átalakítási technikai profil definiálása
+titleSuffix: Azure AD B2C
+description: Definiáljon egy jogcím-átalakítási technikai profilt a Azure Active Directory B2C egyéni házirendjében.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,24 +11,24 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fd2f77200741c54d1ed10f0a0eec1da76462b0a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf06fe7d4e529eb04b156a2d61011198a6fe0978
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511617"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949423"
 ---
-# <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>A jogcímek átalakítása technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
+# <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Jogcím-átalakítási technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A jogcímek átalakításáról technikai profil teszi lehetővé kimeneti jogcímek segítségével kezelheti az átalakítások hívja jogcím-értékek, ellenőrizheti a jogcímeit, vagy a kimeneti jogcímek készletének az alapértelmezett értékeket.
+A jogcím-átalakítás technikai profilja lehetővé teszi a kimeneti jogcímek átalakításának meghívását a jogcímek értékeinek, a jogcímek érvényesítésének vagy a kimeneti jogcímek alapértelmezett értékeinek megadására.
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>Protocol (Protokoll)
 
-A **neve** attribútuma a **protokoll** elemet hozzá kell beállítani `Proprietary`. A **kezelő** attribútum kell tartalmaznia a teljes nevet, amely az Azure AD B2C által használt protokoll kezelő sestavení: `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
+A **protokoll** elem **Name** attribútumát `Proprietary`értékre kell állítani. A **kezelő** attribútumnak tartalmaznia kell a Azure AD B2C: `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`által használt protokollkezelő-szerelvény teljesen minősített nevét.
 
-Az alábbi példa bemutatja egy jogcím-átalakítási technikai profil:
+A következő példa egy jogcím-átalakítási technikai profilt mutat be:
 
 ```XML
 <TechnicalProfile Id="Facebook-OAUTH-UnLink">
@@ -38,7 +39,7 @@ Az alábbi példa bemutatja egy jogcím-átalakítási technikai profil:
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 
-A **OutputClaims** elem megadása kötelező. Meg kell adnia legalább egy kimeneti jogcím a technikai profil által visszaadott. Az alábbi példa bemutatja, hogyan állíthatja be az alapértelmezett értékeket a kimeneti jogcímek:
+A **OutputClaims** elem megadása kötelező. Meg kell adnia legalább egy, a technikai profil által visszaadott kimeneti jogcímet. Az alábbi példa bemutatja, hogyan állíthatja be a kimeneti jogcímek alapértelmezett értékeit:
 
 ```xml
 <OutputClaims>
@@ -47,9 +48,9 @@ A **OutputClaims** elem megadása kötelező. Meg kell adnia legalább egy kimen
 </OutputClaims>
 ```
 
-## <a name="output-claims-transformations"></a>Kimeneti jogcím-átalakítás
+## <a name="output-claims-transformations"></a>Kimeneti jogcímek átalakítása
 
-A **OutputClaimsTransformations** elemet tartalmazhat egy gyűjteményét **OutputClaimsTransformation** elemek, amelyek segítségével módosíthatja a jogcímeket, és hozzon létre újakat. A következő technikai profil hívások a **RemoveAlternativeSecurityIdByIdentityProvider** jogcím-átalakítás. A jogcím-átalakítási távolítja el a gyűjteményből, azonosíthatja a közösségi **AlternativeSecurityIds**. A kimeneti jogcímek a technikai profil **identityProvider2**, amelynek beállítása `facebook.com`, és **AlternativeSecurityIds**, ez társított közösségi identitások listáját tartalmazza, amely felhasználói identitás Facebook.com weboldalt eltávolítása után.
+A **OutputClaimsTransformations** elem tartalmazhatja a jogcímek módosításához vagy újak létrehozásához használt **OutputClaimsTransformation** -elemek gyűjteményét. A következő technikai profil hívja meg a **RemoveAlternativeSecurityIdByIdentityProvider** jogcím-átalakítást. Ez a jogcím-átalakítás eltávolítja a közösségi azonosítást a **AlternativeSecurityIds**gyűjteményéből. Ennek a technikai profilnak a kimeneti jogcímei a **identityProvider2**, amely `facebook.com`re van beállítva, és a **AlternativeSecurityIds**, amely a Facebook.com identitás eltávolítása után a felhasználóhoz társított közösségi identitások listáját tartalmazza.
 
 ```XML
 <ClaimsTransformations>
@@ -81,7 +82,7 @@ TransformationClaimType="collection" />
 </TechnicalProfile>
 ```
 
-A jogcím-átalakítási technikai profil lehetővé teszi bármely felhasználói interakciósorozat vezénylési lépés hajtsa végre a jogcímek átalakítását. A következő példában a vezénylési lépés meghívja az egyiket leválasztásának technikai profil, például **leválasztásának-Facebook-OAUTH**. A technikai profil meghívja a jogcímek átalakítása technikai profil **RemoveAlternativeSecurityIdByIdentityProvider**, amely létrehoz egy új **AlternativeSecurityIds2** tartalmazó jogcímet a felhasználó közösségi identitások, a Facebook-identitás eltávolítása gyűjtemények közben listája.
+A jogcím-átalakítás technikai profilja lehetővé teszi, hogy a jogcímek átalakítását bármely felhasználói út előkészítési lépése alapján végrehajtsa. A következő példában a előkészítési lépés meghívja az egyik leválasztási technikai profilt, például a **-Facebook-OAUTH csatolását**. Ez a technikai profil meghívja a jogcím-átalakítási technikai profil **RemoveAlternativeSecurityIdByIdentityProvider**, amely létrehoz egy új **AlternativeSecurityIds2** -jogcímet, amely tartalmazza a felhasználói közösségi identitások listáját, miközben eltávolítja a Facebook-identitást a gyűjteményből.
 
 ```XML
 <UserJourney Id="AccountUnLink">
@@ -99,9 +100,9 @@ A jogcím-átalakítási technikai profil lehetővé teszi bármely felhasznál�
 </UserJourney>
 ```
 
-## <a name="use-a-validation-technical-profile"></a>Egy ellenőrzési technikai profil használata
+## <a name="use-a-validation-technical-profile"></a>Érvényesítési technikai profil használata
 
-A jogcímek átalakítása technikai profil használható az adatok érvényesítéséhez. A következő példában a [technikai profil önellenőrzött](self-asserted-technical-profile.md) nevű **LocalAccountSignUpWithLogonEmail** megkérdezi a felhasználót, adja meg kétszer az e-mailt, majd meghívja a [műszaki érvényesítése profil](validation-technical-profile.md) nevű **ellenőrzése – E-mail** az e-mailek ellenőrzése. A **ellenőrzése – E-mail** technikai profil meghívja a jogcímek átalakításáról **AssertEmailAreEqual** összehasonlítására két jogcímeket **e-mail** és **emailRepeat** , és ha azok nem egyenlő a megadott összehasonlító megfelelően kivételt.
+A jogcím-átalakítás technikai profilja az információk érvényesítésére használható. A következő példában a **LocalAccountSignUpWithLogonEmail** nevű [önjelölt technikai profil](self-asserted-technical-profile.md) megkéri a felhasználót, hogy kétszer adja meg az e-mailt, majd meghívja a **validate-email** nevű [érvényesítési technikai profilt](validation-technical-profile.md) az e-mailek érvényesítéséhez. A **validate-email** technikai profil meghívja a jogcím-átalakítási **AssertEmailAreEqual** , hogy összehasonlítsa a két jogcím **e-mail-címét** és **emailRepeat**, és kivételt jelez, ha a megadott összehasonlításnak megfelelően nem egyeznek.
 
 ```XML
 <ClaimsTransformations>
@@ -117,7 +118,7 @@ A jogcímek átalakítása technikai profil használható az adatok érvényesí
 </ClaimsTransformations>
 ```
 
-A jogcímek átalakítása technikai profil meghívja a **AssertEmailAreEqual** jogcím-átalakítást, amely használjon, esetleg imperatív állításokat, hogy a felhasználó által megadott e-mailek esetében azonos.
+A jogcím-átalakítási technikai profil meghívja a **AssertEmailAreEqual** jogcímek átalakítását, amely azt állítja, hogy a felhasználó által megadott e-mailek megegyeznek.
 
 ```XML
 <TechnicalProfile Id="Validate-Email">
@@ -136,7 +137,7 @@ A jogcímek átalakítása technikai profil meghívja a **AssertEmailAreEqual** 
 </TechnicalProfile>
 ```
 
-Egy önálló kiszolgáló által megerősített, technikai profil hívja az érvényesítési technikai profil, és a megadott hibaüzenet megjelenítése a **UserMessageIfClaimsTransformationStringsAreNotEqual** metaadatait.
+Az önellenőrzött műszaki profilok meghívhatják az érvényesítési technikai profilt, és megjeleníthetik a hibaüzenetet, ahogyan az a **UserMessageIfClaimsTransformationStringsAreNotEqual** -metaadatokban meg van adva.
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">

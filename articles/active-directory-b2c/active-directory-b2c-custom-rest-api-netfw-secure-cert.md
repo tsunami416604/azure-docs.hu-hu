@@ -1,6 +1,7 @@
 ---
-title: Biztonságos a RESTful szolgáltatás ügyfél-tanúsítványok az Azure Active Directory B2C használatával |} A Microsoft Docs
-description: Ügyféltanúsítványok gondoskodhat a REST API-val egyéni jogcímek cseréje az Azure AD B2C-ben
+title: REST-szolgáltatás biztonságossá tétele Ügyféltanúsítványok használatával
+titleSuffix: Azure AD B2C
+description: Az ügyfél-tanúsítványok használatával biztonságossá teheti az egyéni REST API jogcímek cseréjét a Azure AD B2Cban
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,82 +11,82 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1690adfe5336ea85328e16755c5e3bc82b6d240a
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1d396de57a12285fb6cc682510fa6f95585465d0
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835614"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949857"
 ---
-# <a name="secure-your-restful-service-by-using-client-certificates"></a>Biztonságos a RESTful szolgáltatás ügyfél-tanúsítványok használatával
+# <a name="secure-your-restful-service-by-using-client-certificates"></a>A REST-szolgáltatás biztonságossá tétele Ügyféltanúsítványok használatával
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Egy kapcsolódó cikk, [egy RESTful szolgáltatás létrehozásához](active-directory-b2c-custom-rest-api-netfw.md) , amely kommunikál az Azure Active Directory B2C (Azure AD B2C-vel).
+A kapcsolódó cikkekben [olyan Rest-szolgáltatást hozunk létre](active-directory-b2c-custom-rest-api-netfw.md) , amely a Azure Active Directory B2C (Azure ad B2C) szolgáltatással kommunikál.
 
-Ebből a cikkből elsajátíthatja az Azure web app (RESTful API-t) való hozzáférés korlátozása egy ügyféltanúsítvány használatával. Ez a mechanizmus nevezzük TLS kölcsönös hitelesítést, vagy *ügyféltanúsítvány-alapú hitelesítés*. Csak a megfelelő tanúsítvány, például az Azure AD B2C-szolgáltatások érhetik el a szolgáltatást.
+Ebből a cikkből megtudhatja, hogyan korlátozhatja az Azure-webalkalmazásokhoz (REST-alapú API-hoz) való hozzáférést ügyféltanúsítvány használatával. Ezt a mechanizmust TLS kölcsönös hitelesítésnek vagy *ügyféltanúsítvány-alapú hitelesítésnek*nevezzük. Csak olyan szolgáltatások férhetnek hozzá a szolgáltatáshoz, amelyek megfelelő tanúsítvánnyal rendelkeznek (például Azure AD B2C).
 
 >[!NOTE]
->A RESTful szolgáltatás használatával is biztosíthatja [egyszerű HTTP-hitelesítés](active-directory-b2c-custom-rest-api-netfw-secure-basic.md). Azonban egyszerű HTTP-hitelesítés számít kevésbé biztonságos ügyféltanúsítvány keresztül. Azt javasoljuk, hogy a RESTful szolgáltatás védelem az ügyféltanúsítvány-alapú hitelesítés, ebben a cikkben leírtak szerint.
+>A REST-szolgáltatás a [http alapszintű hitelesítés](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)használatával is biztonságossá tehető. Az egyszerű HTTP-hitelesítés azonban kevésbé biztonságos, mint az ügyféltanúsítvány. Javasoljuk, hogy a jelen cikkben leírtak szerint az ügyféltanúsítvány-alapú hitelesítés használatával gondoskodjon a REST-szolgáltatás biztonságossá tételéről.
 
-Ez a cikk ismerteti, hogyan:
-* Állítsa be a webalkalmazás ügyféltanúsítvány-alapú hitelesítés használatára.
-* A tanúsítvány feltöltése az Azure AD B2C szabályzat kulcsához.
-* Az egyéni házirendet az ügyféltanúsítvány használatára konfigurálja.
+Ez a cikk a következőket ismerteti:
+* Állítsa be a webalkalmazást az ügyféltanúsítvány-alapú hitelesítés használatára.
+* Töltse fel a tanúsítványt Azure AD B2C szabályzat kulcsaiba.
+* Konfigurálja az egyéni házirendet az ügyféltanúsítvány használatára.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* A lépések elvégzéséhez a [integrálása a REST API-val jogcím cseréje](active-directory-b2c-custom-rest-api-netfw.md) cikk.
-* Szerezzen be egy érvényes tanúsítványt (egy titkos kulcsot .pfx kiterjesztésű fájl).
+* Hajtsa végre az [REST API jogcím-cserék integrálása](active-directory-b2c-custom-rest-api-netfw.md) című cikkben ismertetett lépéseket.
+* Érvényes tanúsítvány (. pfx-fájl titkos kulccsal) beolvasása.
 
-## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>1\. lépés: Ügyféltanúsítvány-alapú hitelesítés a webalkalmazás konfigurálása
-Beállításához **Azure App Service** ügyféltanúsítványok megköveteléséhez, állítsa be a webalkalmazás `clientCertEnabled` beállítással hely *igaz*. Ezt a módosítást, az Azure Portalon, a webalkalmazás lapjának megnyitásához. A bal oldali navigációs területen **beállítások** kiválasztása **SSL-beállítások**. Az a **ügyféltanúsítványok** területen kapcsolja be a **bejövő ügyféltanúsítvány** lehetőséget.
-
->[!NOTE]
->Győződjön meg arról, hogy az Azure App Service-csomag Standard vagy nagyobb. További információkért lásd: [Azure App Service díjcsomagjainak részletes áttekintése](https://docs.microsoft.com/azure/app-service/overview-hosting-plans).
+## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>1\. lépés: webalkalmazás konfigurálása ügyféltanúsítvány-alapú hitelesítéshez
+Ha **Azure app Servicet** szeretne beállítani az Ügyféltanúsítványok megköveteléséhez, állítsa a webalkalmazás `clientCertEnabled` hely beállítást *igaz*értékre. A módosítás elvégzéséhez a Azure Portal nyissa meg a webalkalmazás lapot. A bal oldali navigációs menü **Beállítások** területén válassza az **SSL-beállítások**elemet. Az **Ügyféltanúsítványok** szakaszban kapcsolja be a **bejövő ügyféltanúsítvány** beállítást.
 
 >[!NOTE]
->További információt a beállítás a **ügyféltanúsítvány engedélyezésével** tulajdonságot használja, lásd: [TLS konfigurálása kölcsönös hitelesítést webalkalmazásokhoz](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
+>Győződjön meg arról, hogy a Azure App Service terve standard vagy nagyobb. További információ: [Azure app Service tervek részletes áttekintése](https://docs.microsoft.com/azure/app-service/overview-hosting-plans).
 
-## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>2\. lépés: A tanúsítvány feltöltése az Azure AD B2C-vel szabályzatbejegyzések
-Miután beállította `clientCertEnabled` való *igaz*, ügyféltanúsítványt igényel a kommunikációt a RESTful API-val. Szerezze be, és töltse fel az ügyféltanúsítvány tárolása az Azure AD B2C-bérlő, tegye a következőket:
-1. Válassza ki az Azure AD B2C-bérlőben **B2C-beállítások** > **identitás-kezelőfelületi keretrendszer**.
+>[!NOTE]
+>A **információ** tulajdonság beállításával kapcsolatos további információkért lásd: a [TLS kölcsönös hitelesítés konfigurálása a Web Apps szolgáltatáshoz](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
 
-2. Elérhető a bérlőben a kulcsok megtekintéséhez jelölje ki **Szabályzatbejegyzések**.
+## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>2\. lépés: a tanúsítvány feltöltése Azure AD B2C szabályzat kulcsaiba
+Miután beállította `clientCertEnabled` az *igaz*értékre, a REST API-val folytatott kommunikációhoz Ügyféltanúsítvány szükséges. Az ügyféltanúsítvány beszerzéséhez, feltöltéséhez és tárolásához a Azure AD B2C bérlőn tegye a következőket:
+1. A Azure AD B2C-bérlőben válassza a **B2C-beállítások** > **identitási élmény keretrendszere**lehetőséget.
+
+2. A bérlőben elérhető kulcsok megtekintéséhez válassza a **házirend kulcsok**elemet.
 
 3. Válassza a **Hozzáadás** lehetőséget.
-    A **hozzon létre egy kulcsot** ablak nyílik meg.
+    Megnyílik a **kulcs létrehozása** ablak.
 
-4. Az a **beállítások** jelölje ki **feltöltése**.
+4. A **Beállítások** mezőben válassza a **feltöltés**lehetőséget.
 
-5. Az a **neve** mezőbe írja be **B2cRestClientCertificate**.
-    Az előtag *B2C_1A_* a rendszer automatikusan hozzáadja.
+5. A **név** mezőbe írja be a következőt: **B2cRestClientCertificate**.
+    A rendszer automatikusan hozzáadja a *B2C_1A_* előtagot.
 
-6. Az a **fájlfeltöltés** jelölje ki a tanúsítvány .pfx fájlját és a egy titkos kulcs.
+6. A **fájlfeltöltés** mezőben válassza ki a tanúsítvány. pfx fájlját, amely titkos kulccsal rendelkezik.
 
-7. Az a **jelszó** mezőbe írja be a tanúsítvány jelszavát.
+7. A **jelszó** mezőbe írja be a tanúsítvány jelszavát.
 
-    ![Töltse fel az Azure portal kulcsok lap létrehozása a házirendjének kulcsa](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
+    ![Töltse fel a szabályzat kulcsot a kulcs létrehozása oldalon Azure Portal](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
 7. Kattintson a **Létrehozás** gombra.
 
-8. Tekintse meg a kulcsokat, a bérlőben, és győződjön meg arról, hogy létrehozott a `B2C_1A_B2cRestClientCertificate` kulcs, jelölje be **Szabályzatbejegyzések**.
+8. Ha meg szeretné tekinteni a bérlőben elérhető kulcsokat, és győződjön meg arról, hogy létrehozta a `B2C_1A_B2cRestClientCertificate` kulcsot, válassza a **házirend-kulcsok**elemet.
 
-## <a name="step-3-change-the-technical-profile"></a>3\. lépés: A technikai profil módosítása
-Ügyféltanúsítvány-alapú hitelesítés támogatása az egyéni házirendek, a technikai profil módosítása az alábbiak szerint:
+## <a name="step-3-change-the-technical-profile"></a>3\. lépés: a technikai profil módosítása
+Az ügyféltanúsítvány-alapú hitelesítés az egyéni házirendben való támogatásához módosítsa a technikai profilt a következő módon:
 
-1. A munkakönyvtárban, nyissa meg a *TrustFrameworkExtensions.xml* bővítmény a házirend-fájl.
+1. A munkakönyvtárában nyissa meg az *TrustFrameworkExtensions. XML* kiterjesztési házirend fájlját.
 
-2. Keresse meg a `<TechnicalProfile>` tartalmazó csomópont `Id="REST-API-SignUp"`.
+2. Keresse meg a `Id="REST-API-SignUp"`t tartalmazó `<TechnicalProfile>` csomópontot.
 
 3. Keresse meg a `<Metadata>` elemet.
 
-4. Módosítsa a *AuthenticationType* való *ClientCertificate*, az alábbiak szerint:
+4. Módosítsa a *AuthenticationType* a *ClientCertificate*értékre a következőképpen:
 
     ```xml
     <Item Key="AuthenticationType">ClientCertificate</Item>
     ```
 
-5. A záró után azonnal `<Metadata>` elemben adja hozzá a következő XML-részletet:
+5. Közvetlenül a záró `<Metadata>` elem után adja hozzá a következő XML-kódrészletet:
 
     ```xml
     <CryptographicKeys>
@@ -93,39 +94,39 @@ Miután beállította `clientCertEnabled` való *igaz*, ügyféltanúsítványt 
     </CryptographicKeys>
     ```
 
-    Miután hozzáadta a kódrészletet, a technikai profil a következő XML-kódhoz hasonlóan kell kinéznie:
+    A kódrészlet hozzáadása után a technikai profilnak a következő XML-kódhoz hasonlóan kell kinéznie:
 
-    ![ClientCertificate hitelesítési XML-elem beállítása](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-tech-profile.png)
+    ![ClientCertificate-hitelesítés XML-elemeinek beállítása](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-tech-profile.png)
 
-## <a name="step-4-upload-the-policy-to-your-tenant"></a>4\. lépés: A szabályzat feltöltése a bérlőhöz
+## <a name="step-4-upload-the-policy-to-your-tenant"></a>4\. lépés: a szabályzat feltöltése a bérlőbe
 
-1. Az a [az Azure portal](https://portal.azure.com), váltson át a [az Azure AD B2C-bérlője kontextusában](active-directory-b2c-navigate-to-b2c-context.md), majd válassza ki **Azure AD B2C-vel**.
+1. A [Azure Portal](https://portal.azure.com)váltson a [Azure ad B2C bérlő kontextusára](active-directory-b2c-navigate-to-b2c-context.md), majd válassza a **Azure ad B2C**lehetőséget.
 
-2. Válassza ki **identitás-kezelőfelületi keretrendszer**.
+2. Válassza az **identitási élmény keretrendszert**.
 
-3. Válassza ki **összes szabályzat**.
+3. Válassza **az összes szabályzat**lehetőséget.
 
-4. Válassza ki **szabályzat feltöltése**.
+4. Válassza a **szabályzat feltöltése**lehetőséget.
 
-5. Válassza ki a **szabályzat felülírása, ha létezik** jelölőnégyzetet.
+5. Jelölje be a **házirend felülírása, ha létezik** jelölőnégyzetet.
 
-6. Töltse fel a *TrustFrameworkExtensions.xml* fájlt, és ezután győződjön meg arról, hogy érvényesítési továbbítja.
+6. Töltse fel a *TrustFrameworkExtensions. XML* fájlt, és ellenőrizze, hogy átadja-e az érvényesítést.
 
-## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>5\. lépés: Az egyéni házirend tesztelése a Futtatás most
-1. Nyissa meg **Azure AD B2C-beállítások**, majd válassza ki **identitás-kezelőfelületi keretrendszer**.
+## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>5\. lépés: az egyéni házirend tesztelése a Futtatás most használatával
+1. Nyissa meg **Azure ad B2C a beállításokat**, majd válassza az **identitási élmény keretrendszert**.
 
     >[!NOTE]
-    >Futtatás most kell előzetesen regisztrálva, a bérlő legalább egy alkalmazás szükséges. Megtudhatja, hogyan regisztrálja az alkalmazást, tekintse meg az Azure AD B2C [Ismerkedés](active-directory-b2c-get-started.md) cikk vagy a [alkalmazásregisztráció](active-directory-b2c-app-registration.md) cikk.
+    >A futtatáshoz szükség van legalább egy alkalmazás előregisztrálására a bérlőn. Az alkalmazások regisztrálásának megismeréséhez tekintse meg a Azure AD B2C első [lépések](active-directory-b2c-get-started.md) című cikket, vagy az [alkalmazás regisztrációját](active-directory-b2c-app-registration.md) ismertető cikket.
 
-2. Nyissa meg **B2C_1A_signup_signin**, a függő entitásonkénti (RP) egyéni-szabályzattal, feltöltött, és válassza ki **Futtatás most**.
+2. Nyissa meg **B2C_1A_signup_signin**, a függő entitás (RP) egyéni házirendjét, majd válassza a **Futtatás most**lehetőséget.
 
-3. Írja be a folyamat teszteléséhez **teszt** a a **Utónév** mezőbe.
-    Az Azure AD B2C hibaüzenetet jelenít meg az ablak tetején.
+3. Tesztelje a folyamatot úgy, hogy beírja a **teszt** kifejezést a **megadott név** mezőbe.
+    Azure AD B2C hibaüzenet jelenik meg az ablak tetején.
 
-    ![Utónév szövegmező kiemelt és a bemeneti érvényesítési hiba jelenik meg](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
+    ![A megadott név szövegmező kiemelve és a bemeneti érvényesítési hiba látható](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
-4. Az a **Utónév** mezőbe írjon be egy nevet (nem a "Test").
-    Az Azure AD B2C a felhasználó regisztrál, és ezután elküldi a hűségprogramok használatán keresztül számnak az alkalmazáshoz. Megjegyzés: Ebben a példában JWT száma:
+4. A **megadott név** mezőbe írjon be egy nevet (a "test" helyett).
+    Azure AD B2C aláírja a felhasználót, majd elküld egy lojalitási számot az alkalmazásnak. Jegyezze fel a JWT példában szereplő számot:
 
    ```
    {
@@ -149,18 +150,18 @@ Miután beállította `clientCertEnabled` való *igaz*, ügyféltanúsítványt 
    ```
 
    >[!NOTE]
-   >Ha a hibaüzenet kap *a név nem érvényes, adjon meg egy érvényes nevet*, az azt jelenti, hogy az Azure AD B2C-vel sikeresen neve a RESTful szolgáltatás, bár ez jelenik meg az ügyféltanúsítványt. A következő lépés, hogy a tanúsítvány érvényesítéséhez.
+   >Ha a hibaüzenet jelenik meg, *a név érvénytelen, adjon meg egy érvényes nevet*, amely azt jelenti, hogy Azure ad B2C sikeresen meghívta a REST-szolgáltatást, miközben bemutatta az ügyféltanúsítványt. A következő lépés a tanúsítvány ellenőrzése.
 
-## <a name="step-6-add-certificate-validation"></a>6\. lépés: Adja hozzá a tanúsítványok ellenőrzését
-Az ügyféltanúsítvány, amely az Azure AD B2C-t küld a RESTful szolgáltatás nem lesznek az Azure App Service platformon kivételével, ellenőrizze, hogy létezik-e a tanúsítvány érvényesítése. A tanúsítvány érvényesítése feladata a webalkalmazás.
+## <a name="step-6-add-certificate-validation"></a>6\. lépés: tanúsítvány-ellenőrzés hozzáadása
+Az Azure AD B2C által a REST-szolgáltatásnak küldött ügyféltanúsítványt nem a Azure App Service platform ellenőrzi, kivéve, hogy a tanúsítvány létezik-e. A tanúsítvány érvényesítése a webalkalmazás feladata.
 
-Ebben a szakaszban adjon hozzá mintául szolgáló ASP.NET-kód, amely ellenőrzi a hitelesítési tanúsítvány tulajdonságai.
+Ebben a szakaszban olyan minta ASP.NET-kódot ad hozzá, amely ellenőrzi a tanúsítvány tulajdonságait a hitelesítési célokra.
 
 > [!NOTE]
->Az ügyféltanúsítvány hitelesítéséhez az Azure App Service konfigurálásával kapcsolatos további információkért lásd: [TLS konfigurálása kölcsönös hitelesítést webalkalmazásokhoz](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
+>Az ügyféltanúsítvány-alapú hitelesítés Azure App Service konfigurálásával kapcsolatos további információkért lásd: [a TLS kölcsönös hitelesítés konfigurálása a Web Apps szolgáltatáshoz](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
 
-### <a name="61-add-application-settings-to-your-projects-webconfig-file"></a>6.1 Alkalmazásbeállítások hozzáadása a projekthez web.config fájlban
-A korábban létrehozott Visual Studio-projektben vegye fel a következő alkalmazás beállításait, hogy a *web.config* után a fájl a `appSettings` elem:
+### <a name="61-add-application-settings-to-your-projects-webconfig-file"></a>6,1 Alkalmazásbeállítások hozzáadása a projekt web. config fájljához
+A korábban létrehozott Visual Studio-projektben adja hozzá az alábbi Alkalmazásbeállítások a *web. config* fájlhoz a `appSettings` elem után:
 
 ```XML
 <add key="ClientCertificate:Subject" value="CN=Subject name" />
@@ -168,10 +169,10 @@ A korábban létrehozott Visual Studio-projektben vegye fel a következő alkalm
 <add key="ClientCertificate:Thumbprint" value="Certificate thumbprint" />
 ```
 
-Cserélje le a tanúsítványt **tulajdonosnévvel**, **kiállító neve**, és **tanúsítvány-ujjlenyomat** értékeket a tanúsítvány értékeire.
+Cserélje le a tanúsítvány **tulajdonosának nevét**, **kiállítójának nevét**és a tanúsítvány **ujjlenyomatának** értékeit a tanúsítvány értékeire.
 
-### <a name="62-add-the-isvalidclientcertificate-function"></a>6.2 a IsValidClientCertificate függvény hozzáadása
-Nyissa meg a *Controllers\IdentityController.cs* fájlt, és hozzáadhatja a `Identity` vezérlő osztályhoz a következő függvényt:
+### <a name="62-add-the-isvalidclientcertificate-function"></a>6,2 a IsValidClientCertificate függvény hozzáadása
+Nyissa meg a *Controllers\IdentityController.cs* fájlt, majd adja hozzá a `Identity` Controller osztályhoz a következő függvényt:
 
 ```csharp
 private bool IsValidClientCertificate()
@@ -263,17 +264,17 @@ private bool IsValidClientCertificate()
 }
 ```
 
-A fenti mintakódban fogadunk a tanúsítvány érvényes, csak akkor, ha az alábbi feltételek mindegyike teljesül:
-* A tanúsítvány nem járt le, és -e aktív az aktuális idő a kiszolgálón.
-* A `Subject` a tanúsítvány neve megegyezik a `ClientCertificate:Subject` alkalmazás beállítás értékét.
-* A `Issuer` a tanúsítvány neve megegyezik a `ClientCertificate:Issuer` alkalmazás beállítás értékét.
-* A `thumbprint` a tanúsítvány megegyezik a `ClientCertificate:Thumbprint` alkalmazás beállítás értékét.
+Az előző mintakód esetében a tanúsítványt csak akkor fogadjuk el érvényesnek, ha a következő feltételek teljesülnek:
+* A tanúsítvány nem járt le, és a kiszolgáló aktuális idejénél aktív.
+* A tanúsítvány `Subject` neve megegyezik a `ClientCertificate:Subject` alkalmazás beállításának értékével.
+* A tanúsítvány `Issuer` neve megegyezik a `ClientCertificate:Issuer` alkalmazás beállításának értékével.
+* A tanúsítvány `thumbprint`a megegyezik a `ClientCertificate:Thumbprint` alkalmazás beállításának értékével.
 
 >[!IMPORTANT]
->A szolgáltatás érzékenysége függően szükség lehet adjon hozzá további ellenőrzéseket. Szüksége lehet például annak megállapítására, hogy a tanúsítvány kapcsolódik, egy megbízható legfelső szintű hitelesítésszolgáltatóval, kiállító szervezet nevének érvényesítése és így tovább.
+>A szolgáltatás érzékenységének függvényében előfordulhat, hogy további érvényesítéseket kell hozzáadnia. Előfordulhat például, hogy tesztelni szeretné, hogy a tanúsítványlánc megbízható legfelső szintű hitelesítésszolgáltatóhoz, kiállító szervezet nevének ellenőrzéséhez és így tovább.
 
-### <a name="63-call-the-isvalidclientcertificate-function"></a>6.3 IsValidClientCertificate függvény hívása
-Nyissa meg a *Controllers\IdentityController.cs* fájlt, és ezután már az elején a `SignUp()` működik, adja hozzá a következő kódrészletet:
+### <a name="63-call-the-isvalidclientcertificate-function"></a>6,3 hívja meg a IsValidClientCertificate függvényt
+Nyissa meg a *Controllers\IdentityController.cs* fájlt, majd a `SignUp()` függvény elején adja hozzá a következő kódrészletet:
 
 ```csharp
 if (IsValidClientCertificate() == false)
@@ -282,21 +283,21 @@ if (IsValidClientCertificate() == false)
 }
 ```
 
-Miután hozzáadta a kódrészletben a `Identity` vezérlő a következő kódhoz hasonlóan kell kinéznie:
+A kódrészlet hozzáadása után a `Identity` vezérlőnek a következő kódhoz hasonlóan kell kinéznie:
 
-![Tanúsítvány érvényesítési kód hozzáadása](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-code.png)
+![Tanúsítvány-ellenőrzési kód hozzáadása](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-code.png)
 
-## <a name="step-7-publish-your-project-to-azure-and-test-it"></a>7\. lépés: A projekt közzététele az Azure-ba, és a tesztelés közben
-1. A **Megoldáskezelőben**, kattintson a jobb gombbal a **Contoso.AADB2C.API** projektre, és válassza ki **közzététel**.
+## <a name="step-7-publish-your-project-to-azure-and-test-it"></a>7\. lépés: a projekt közzététele az Azure-ban és tesztelés
+1. **Megoldáskezelő**kattintson a jobb gombbal a **contoso. AADB2C. API** projektre, majd válassza a **Közzététel**lehetőséget.
 
-2. Ismételje meg a "6. lépés", és újra teszteléséhez az egyéni házirend és a tanúsítványok ellenőrzését. Próbálja meg futtatni a szabályzat, és győződjön meg arról, hogy minden működik az érvényesítés hozzáadása után.
+2. Ismételje meg a "6. lépés" műveletet, és tesztelje újra az egyéni szabályzatot a tanúsítvány érvényesítésével. Próbálja meg futtatni a szabályzatot, és ellenőrizze, hogy minden működik-e az érvényesítés hozzáadása után.
 
-3. Az a *web.config* fájl, módosítsa az értéket a `ClientCertificate:Subject` való **érvénytelen**. Futtassa újból a szabályzatot, és megjelenik egy hibaüzenet.
+3. A *web. config* fájlban módosítsa a `ClientCertificate:Subject` értékét **érvénytelenre**. Futtassa újra a szabályzatot, és hibaüzenet jelenik meg.
 
-4. Módosítsa az értéket a biztonsági **érvényes**, és győződjön meg arról, hogy a házirend segítségével meghívhatja a REST API-t.
+4. Módosítsa az értéket vissza **érvényesre**, és győződjön meg arról, hogy a szabályzat hívhatja a REST API.
 
-Ha ez a lépés hibaelhárítása van szüksége, tekintse meg [naplók gyűjtése az Application Insights segítségével](active-directory-b2c-troubleshoot-custom.md).
+Ha ezt a lépést szeretné elhárítani, tekintse meg a [naplók gyűjtése a Application Insights használatával](active-directory-b2c-troubleshoot-custom.md)című témakört.
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>(Nem kötelező) A teljes házirend fájlok és a kód letöltése
-* Miután elvégezte a [egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md) forgatókönyv, azt javasoljuk, hogy a forgatókönyv a saját egyéni házirend-fájlok használatával hozhat létre. Referenciaként adtunk meg [házirendfájljait minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert).
-* Letöltheti a teljes kódját [mintát a Visual Studio-megoldás referenciaként](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API).
+## <a name="optional-download-the-complete-policy-files-and-code"></a>Választható A teljes szabályzat fájljainak és kódjának letöltése
+* Miután elvégezte az [Egyéni szabályzatok használatának első lépései útmutatót](active-directory-b2c-get-started-custom.md) , javasoljuk, hogy a saját egyéni házirend-fájljaival hozza létre a forgatókönyvet. Az Ön referenciája alapján megadta a [minta házirend-fájlokat](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert).
+* A Visual Studio-megoldás teljes kódját a [következő hivatkozásra töltheti le: minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API).

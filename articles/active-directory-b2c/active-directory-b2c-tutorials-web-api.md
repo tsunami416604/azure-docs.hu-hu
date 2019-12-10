@@ -1,5 +1,6 @@
 ---
-title: Oktatóanyag – hozzáférés biztosítása egy ASP.NET webes API-hoz – Azure Active Directory B2C
+title: 'Oktatóanyag: hozzáférés biztosítása egy ASP.NET webes API-hoz'
+titleSuffix: Azure AD B2C
 description: Útmutató a ASP.NET webes API-k és a ASP.NET-webalkalmazások általi meghívásához a Active Directory B2C használatával.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 0cd2eff7e3fafc1a6f3418a1f86629cfb1584e89
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: f9f773beb679b4f31e2b735fd0d74fc1b5dae2dd
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641753"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950160"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Oktatóanyag: hozzáférés biztosítása egy ASP.NET webes API-hoz a Azure Active Directory B2C használatával
 
@@ -47,11 +48,11 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-5. Adja meg az alkalmazás nevét. Például: *webapi1*.
+5. Adjon nevet az alkalmazásnak. Például: *webapi1*.
 6. A **Web App/web API belefoglalásához**válassza az **Igen**lehetőséget.
 7. A **Válasz URL-cím**mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta helyileg fut, és figyeli a `https://localhost:44332`.
 8. Az **alkalmazás-azonosító URI-ja**mezőben adja meg a webes API-hoz használt azonosítót. A teljes azonosító URI-t, a tartománnyal együtt, a rendszer hozza létre. Például: `https://contosotenant.onmicrosoft.com/api`.
-9. Kattintson a **Létrehozás** elemre.
+9. Kattintson a  **Create** (Létrehozás) gombra.
 10. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját, amelyet a webalkalmazás konfigurálásakor használni fog.
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
@@ -124,7 +125,7 @@ Két projekt szerepel a mintául szolgáló megoldásban:
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-1. Frissítse a felhasználói folyamat beállítását a regisztrációs és bejelentkezési felhasználói folyamat *B2C_1_signupsignin1*.
+1. Frissítse a felhasználói folyamat beállítását a regisztrációs és bejelentkezési felhasználói folyamat nevével, *B2C_1_signupsignin1*.
 
     ```csharp
     <add key="ida:SignUpSignInPolicyId" value="B2C_1_signupsignin1" />
@@ -144,7 +145,7 @@ A **TaskWebApp** és a **TaskService** projektet is futtatnia kell.
 1. A Megoldáskezelőben kattintson a jobb gombbal a megoldásra, és válassza az **Indítási projektek beállítása...** lehetőséget.
 1. **Több indítási projektet**is kijelölhet.
 1. Mindkét projektnél módosítsa a **Művelet** értékét **Indításra**.
-1. A konfiguráció mentéséhez kattintson **az OK** gombra.
+1. A konfiguráció mentéséhez kattintson az **OK** gombra.
 1. Nyomja le az **F5** gombot mindkét alkalmazás futtatásához. Minden alkalmazás saját böngészőablakban nyílik meg.
     * `https://localhost:44316/` a webalkalmazás.
     * `https://localhost:44332/` a webes API.
@@ -154,7 +155,7 @@ A **TaskWebApp** és a **TaskService** projektet is futtatnia kell.
 
 Ha feladatlistát hoz létre, a webalkalmazás egy kérést küld a webes API-nak a Feladatlista elem létrehozásához. A védett webalkalmazás a Azure AD B2C által védett webes API-t hívja meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

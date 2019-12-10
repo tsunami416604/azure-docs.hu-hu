@@ -1,6 +1,7 @@
 ---
-title: Érvényesítési műszaki profil meghatározása egyéni szabályzatban Azure Active Directory B2Cban | Microsoft Docs
-description: Azure Active Directory technikai profilt definiálhat egy egyéni házirendben Azure Active Directory B2Cban.
+title: Érvényesítési technikai profil definiálása egyéni házirendben
+titleSuffix: Azure AD B2C
+description: Érvényesítse a jogcímeket egy érvényesítési műszaki profillal a Azure Active Directory B2C egyéni házirendjében.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad15342e6d35a5c6101beb1ddc09d4ce1f2089d5
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: facef1e1288f2a64872efbf37a9a31fa05244a7e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167564"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950799"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Érvényesítési műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -40,7 +41,7 @@ Az érvényesítési műszaki profilok feltételesen hajthatók végre a **Valid
 Az önellenőrzött műszaki profilok meghatározhatnak egy érvényesítési műszaki profilt, amelyet a rendszer a kimeneti jogcímek némelyikének vagy mindegyikének ellenőrzéséhez használ. A hivatkozott technikai profil összes bemeneti jogcímének szerepelnie kell a hivatkozó ellenőrzési technikai profil kimeneti jogcímeiben.
 
 > [!NOTE]
-> Csak az önjelölt technikai profilok használhatják az érvényesítési technikai profilokat. Ha ellenőrizni szeretné a nem önérvényesített technikai profilokból származó kimeneti jogcímeket, érdemes lehet egy további előkészítési lépést használni a felhasználói úton, hogy az ellenőrzésért felelős műszaki profilt is el lehessen végezni.    
+> Csak az önjelölt technikai profilok használhatják az érvényesítési technikai profilokat. Ha ellenőrizni szeretné a nem önérvényesített technikai profilokból származó kimeneti jogcímeket, érdemes lehet egy további előkészítési lépést használni a felhasználói úton, hogy az ellenőrzésért felelős műszaki profilt is el lehessen végezni.
 
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
@@ -52,7 +53,7 @@ A **ValidationTechnicalProfiles** elem a következő elemeket tartalmazza:
 
 A **ValidationTechnicalProfile** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | A házirend vagy a szülő házirendben már definiált technikai profil azonosítója. |
 |ContinueOnError|Nem| Annak jelzése, hogy a további érvényesítési műszaki profilok érvényesítése folytatódjon-e, ha az érvényesítési technikai profil hibát jelez. Lehetséges értékek: `true` vagy `false` (alapértelmezés szerint a további ellenőrzési profilok feldolgozása leáll, és egy hibaüzenetet ad vissza). |
@@ -66,7 +67,7 @@ A **ValidationTechnicalProfile** elem a következő elemet tartalmazza:
 
 Az **előfeltétel** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | `Type` | Igen | Az előfeltételként végrehajtandó ellenőrzés vagy lekérdezés típusa. Vagy `ClaimsExist` van megadva annak biztosításához, hogy a rendszer végrehajtsa a műveleteket, ha a megadott jogcímek szerepelnek a felhasználó jelenlegi jogcímek készletében, vagy `ClaimEquals` van megadva, hogy a rendszer végrehajtja a műveleteket, ha a megadott jogcím létezik, és annak értéke megegyezik a megadott értékkel. |
 | `ExecuteActionsIf` | Igen | Azt jelzi, hogy az előfeltételben szereplő műveleteket kell-e végrehajtani, ha a teszt igaz vagy hamis. |
@@ -75,7 +76,7 @@ Az **előfeltétel** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Érték | 1: n | Az ellenőrzés által használt adatértékek. Ha az ellenőrzési típus `ClaimsExist`, akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Ha az ellenőrzési típus `ClaimEquals`, akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Míg egy másik érték elem tartalmazza az ellenőrizendő értéket.|
+| Value (Díj) | 1: n | Az ellenőrzés által használt adatértékek. Ha az ellenőrzési típus `ClaimsExist`, akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Ha az ellenőrzési típus `ClaimEquals`, akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Míg egy másik érték elem tartalmazza az ellenőrizendő értéket.|
 | Műveletek | 1:1 | Az a művelet, amelyet akkor kell elvégezni, ha az előkészítési lépésen belüli előfeltétel-ellenőrzési érték igaz. A **művelet** értéke `SkipThisValidationTechnicalProfile`értékre van állítva. Megadja, hogy a társított érvényesítési technikai profilt ne lehessen végrehajtani. |
 
 ### <a name="example"></a>Példa

@@ -1,6 +1,7 @@
 ---
-title: Munkamenet és egyszeri bejelentkezés beállításainak – Azure Active Directory B2C |} A Microsoft Docs
-description: Munkamenet és egyszeri bejelentkezés beállításainak az Azure Active Directory B2C-t.
+title: Munkamenet és egyszeri bejelentkezés konfigurálása
+titleSuffix: Azure AD B2C
+description: Munkamenet és egyszeri bejelentkezés (SSO) konfigurációja Azure Active Directory B2Cban.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,45 +11,45 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 472e494d445ae4a22c988076994649543ec1f7f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 736dd1f0490c2c9c7c4f526df96dd5ace6a1f819
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508115"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950068"
 ---
-# <a name="session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Munkamenet és egyszeri bejelentkezés beállításainak az Azure Active Directory B2C-vel
+# <a name="session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Munkamenet és egyszeri bejelentkezés konfigurálása Azure Active Directory B2C
 
-Ez a funkció lehetővé teszi részletesebb szabályozás érdekében az egy [folyamat felhasználónkénti](active-directory-b2c-reference-policies.md), a:
+Ez a szolgáltatás részletesen szabályozható vezérlést tesz lehetővé a következő [módon](active-directory-b2c-reference-policies.md):
 
-- Azure AD B2C által felügyelt webes alkalmazás munkamenetek élettartamát.
-- Egyszeri bejelentkezés (SSO) viselkedését több alkalmazást és az Azure AD B2C-bérlőben a felhasználói folyamatok.
+- A Azure AD B2C által felügyelt webalkalmazás-munkamenetek élettartama.
+- Az egyszeri bejelentkezés (SSO) viselkedése több alkalmazás és felhasználói folyamat között a Azure AD B2C-bérlőben.
 
-## <a name="session-behavior"></a>Munkamenet-viselkedés
+## <a name="session-behavior"></a>Munkamenet viselkedése
 
-Az Azure AD B2C támogatja a [OpenID Connect hitelesítési protokoll](active-directory-b2c-reference-oidc.md) biztonságos bejelentkezési webes alkalmazásokhoz való engedélyezéséhez szükséges. A következő tulajdonságok használatával webes alkalmazás munkameneteket kezelhessen:
+Azure AD B2C támogatja az [OpenID Connect hitelesítési protokollt](active-directory-b2c-reference-oidc.md) a biztonságos bejelentkezés webalkalmazásokhoz való engedélyezéséhez. A webalkalmazás-munkamenetek kezeléséhez a következő tulajdonságokat használhatja:
 
-- **Webalkalmazás munkamenet élettartama (perc)** – a felhasználó böngészőjében a sikeres hitelesítést követően tárolt Azure AD B2C munkameneti cookie élettartama.
+- **Webalkalmazás-munkamenet élettartama (perc)** – sikeres hitelesítés után a felhasználó böngészőjében tárolt Azure ad B2C's-munkamenet-cookie élettartama.
     - Alapértelmezett = 1440 perc.
-    - Minimális (inkluzív) = 15 perc.
-    - (A szélsőértékek megengedettek) legfeljebb 1440 perc =.
-- **Webalkalmazás munkamenet-időkorlátja** – Ha ez a kapcsoló beállítása **abszolút**, a felhasználónak kötelező a megadott időszak után újra hitelesíteni **webalkalmazás munkamenet élettartama (perc)** telik. Ha ez a kapcsoló beállítása **működés közbeni** (az alapértelmezett beállítás), a felhasználó bejelentkezve marad mindaddig, amíg a felhasználó a webalkalmazásban folyamatosan aktív.
+    - Minimum (inkluzív) = 15 perc.
+    - Maximum (inkluzív) = 1440 perc.
+- **Webalkalmazás-munkamenet időkorlátja** – ha ez a kapcsoló **abszolút**értékre van állítva, a rendszer a **webalkalmazás-munkamenet élettartama (perc)** által megadott időszak elteltével újra hitelesíti a felhasználót. Ha a kapcsoló a **működés közbeni** (alapértelmezett beállítás) értékre van állítva, a felhasználó mindaddig bejelentkezett marad, amíg a felhasználó folyamatosan aktív a webalkalmazásban.
 
-A következő használati esetek engedélyezve vannak ezek a tulajdonságok használatával:
+A következő használati esetek engedélyezettek a következő tulajdonságok használatával:
 
-- Megfelel az iparági biztonsági és megfelelőségi követelményeknek a megfelelő webes alkalmazás munkamenet beállításával élettartama.
-- Egy felhasználó és a magas biztonsági szintű részét a webes alkalmazás közötti interakció során beállított idő elteltével hitelesítés kényszerítése. 
+- Az iparág biztonsági és megfelelőségi követelményeinek kielégítése a webalkalmazás-munkamenetek megfelelő élettartamának beállításával.
+- A hitelesítés kényszerítése egy beállított időszak után a felhasználó interakciójában a webalkalmazás magas biztonsági részével.
 
-Ezek a beállítások a jelszó-átállítási felhasználókövetési adatai nem érhetők el.
+Ezek a beállítások nem érhetők el a felhasználói folyamatok jelszavának alaphelyzetbe állításához.
 
 ## <a name="single-sign-on-sso-configuration"></a>Egyszeri bejelentkezés (SSO) konfigurációja
 
-Ha több alkalmazás és a felhasználói folyamatok a B2C-bérlőben, felhasználói interakció érdekében kezelheti navigációt használ a **egyszeri bejelentkezési konfigurációjának** tulajdonság. A tulajdonsága a következő beállítások egyikére:
+Ha több alkalmazással és felhasználói folyamattal rendelkezik a B2C-bérlőben, akkor az **egyszeri bejelentkezési konfigurációs** tulajdonsággal kezelheti a felhasználók interakcióit. A tulajdonságot a következő beállítások egyikére állíthatja be:
 
-- **Bérlő** – Ez a beállítás az alapértelmezett érték. Ezzel a beállítással lehetővé teszi, hogy több alkalmazás és a felhasználói folyamatok megosztani az ugyanazon felhasználói munkamenetet a B2C-bérlőben. Például ha egy felhasználó bejelentkezik, egy alkalmazásba, a felhasználó is zökkenőmentesen be tud jelentkezni egy másik egy, Contoso Gyógyszertári, elérésekor.
-- **Alkalmazás** – Ez a beállítás lehetővé teszi, hogy kizárólag az alkalmazáshoz, független más alkalmazásokat a felhasználói munkamenetek fenntartását. Például ha szeretné a felhasználót, hogy jelentkezzen be a Contoso Gyógyszertári (ugyanazokat a hitelesítő adatokat), akkor is, ha a felhasználó már bejelentkezett Contoso vásárlás, egy másik alkalmazás ugyanazon B2C bérlői. 
-- **A házirend** – Ez a beállítás lehetővé teszi, hogy kizárólag a felhasználói folyamat, az azt használó alkalmazások független a felhasználói munkamenetek fenntartását. Például ha a felhasználó már bejelentkezett, és egy többszörös többtényezős hitelesítés (MFA) lépés befejeződött, a felhasználónak is hozzáférést kell biztosítani több alkalmazás részei magasabb biztonsági mindaddig, amíg a felhasználói folyamat kapcsolódik a munkamenet le nem jár.
-- **Letiltott** – Ez a beállítás kényszeríti a felhasználót, hogy a szabályzat minden végrehajtás révén a teljes felhasználói folyamatot futtat.
+- **Bérlő** – ez a beállítás az alapértelmezett érték. Ezzel a beállítással a B2C-bérlőben több alkalmazás és felhasználói folyamat is megoszthatja ugyanazt a felhasználói munkamenetet. Ha például egy felhasználó bejelentkezik egy alkalmazásba, a felhasználó zökkenőmentesen bejelentkezhet egy másik, contoso gyógyszertárba, amikor hozzáfér.
+- **Alkalmazás** – ez a beállítás lehetővé teszi, hogy a felhasználói munkamenetet kizárólag egy alkalmazáshoz, más alkalmazásoktól függetlenül kezelje. Ha például azt szeretné, hogy a felhasználó bejelentkezzen a contoso gyógyszertárba (ugyanazzal a hitelesítő adatokkal), akkor is, ha a felhasználó már be van jelentkezve a contoso Shoppingba, egy másik alkalmazás ugyanazon B2C-bérlőn.
+- **Házirend** – ez a beállítás lehetővé teszi a felhasználói munkamenetek kizárólag felhasználói folyamatokhoz való fenntartását, az azt használó alkalmazásoktól függetlenül. Ha például a felhasználó már bejelentkezett, és elvégezte a többtényezős hitelesítés (MFA) lépését, a felhasználó több alkalmazás nagyobb biztonságú részeihez is hozzáférhet, ha a munkamenet a felhasználói folyamathoz kötődik, nem jár le.
+- **Letiltva** – ez a beállítás arra kényszeríti a felhasználót, hogy a teljes felhasználói folyamaton keresztül fusson a szabályzat minden egyes végrehajtásán.
 
-Ezek a beállítások a jelszó-átállítási felhasználókövetési adatai nem érhetők el. 
+Ezek a beállítások nem érhetők el a felhasználói folyamatok jelszavának alaphelyzetbe állításához.
 

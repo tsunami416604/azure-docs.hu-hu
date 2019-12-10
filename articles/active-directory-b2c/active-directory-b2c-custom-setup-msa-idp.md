@@ -1,6 +1,7 @@
 ---
-title: Microsoft-fiók (MSA) hozzáadása identitás-szolgáltatóként egyéni szabályzatok használatával Azure Active Directory B2C
-description: Példa az OpenID Connect (OIDC) protokollt használó Microsoft as Identity Provider használatával.
+title: Microsoft-fiók fiókkal történő bejelentkezés beállítása egyéni szabályzatok használatával
+titleSuffix: Azure AD B2C
+description: Egyéni szabályzatok használata a Microsoft-fiók (MSA) identitás-szolgáltatóként való engedélyezéséhez az OpenID Connect (OIDC) protokoll használatával.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1f068b624b5a8f580f61e9eb2ed0d197f05aa1b0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 393e6f0b87cbd6a548825276da3f59863e2833eb
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643662"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948368"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása Microsoft-fiók egyéni házirendek használatával Azure Active Directory B2C
 
@@ -59,7 +60,7 @@ Most, hogy létrehozta az alkalmazást az Azure AD-bérlőben, az alkalmazás ü
 1. Adja meg a szabályzat kulcsának **nevét** . Például: `MSASecret`. A rendszer automatikusan hozzáadja a kulcs nevét a `B2C_1A_` előtaghoz.
 1. A **Secret (titkos kulcs**) mezőben adja meg az előző szakaszban rögzített ügyfél-titkos kulcsot.
 1. A **kulcshasználat**beállításnál válassza a `Signature`lehetőséget.
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -111,7 +112,7 @@ Az Azure AD-t jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja a **
     </ClaimsProvider>
     ```
 
-1. Cserélje le a **client_id** értékét a korábban rögzített Azure ad *-alkalmazás alkalmazás-azonosítójával (ügyfél)* .
+1. Cserélje le **client_id** értékét a korábban rögzített Azure ad-alkalmazás *alkalmazás-azonosítójával (ügyfél)* .
 1. Mentse a fájlt.
 
 Ezzel konfigurálta a szabályzatot, hogy Azure AD B2C tudja, hogyan kommunikálhat a Microsoft-fiók alkalmazással az Azure AD-ben.
@@ -178,7 +179,7 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
 1. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például`http://contoso.com/B2C_1A_signup_signin_msa`
 1. Frissítse a **ReferenceId** attribútum értékét a **DefaultUserJourney** -ben, hogy megfeleljen a korábban létrehozott felhasználói út azonosítójának (SignUpSignInMSA).
 1. Mentse a módosításokat, töltse fel a fájlt, majd válassza ki az új szabályzatot a listában.
-1. Győződjön meg arról, hogy az előző szakaszban létrehozott Azure AD B2C alkalmazás (vagy az előfeltételek (például *webapp1* vagy *testapp1*) kitöltése van kiválasztva az **alkalmazás kiválasztása** mezőben, majd tesztelje a Futtatás most lehetőségre kattintva.
+1. Győződjön meg arról, hogy az előző szakaszban létrehozott Azure AD B2C alkalmazás (vagy az előfeltételek (például *webapp1* vagy *testapp1*) kitöltése be van jelölve az **alkalmazás kiválasztása** mezőben, majd tesztelje a **Futtatás most**lehetőségre kattintva.
 1. Válassza a **Microsoft-fiók** gombot, és jelentkezzen be.
 
     Ha a bejelentkezési művelet sikeres, a rendszer átirányítja `jwt.ms`, amely a dekódolású jogkivonatot jeleníti meg, a következőhöz hasonlóan:

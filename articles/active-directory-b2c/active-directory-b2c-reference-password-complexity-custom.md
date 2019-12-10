@@ -1,5 +1,6 @@
 ---
-title: A jelszó bonyolultságának konfigurálása egyéni szabályzatok használatával Azure Active Directory B2Cban | Microsoft Docs
+title: Jelszó bonyolultságának konfigurálása egyéni szabályzatok használatával
+titleSuffix: Azure AD B2C
 description: A jelszó-összetettségi követelmények konfigurálása Azure Active Directory B2C egyéni házirendjének használatával.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6454d380b0f34e940951e3de44d1dee0ff6b597f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e8718a04f9d63897b2d2472dd0cdffb196c41435
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065530"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949790"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>A jelszó bonyolultságának konfigurálása egyéni szabályzatok használatával Azure Active Directory B2C
 
@@ -30,8 +31,8 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
 ## <a name="add-the-elements"></a>Elemek hozzáadása
 
 1. Másolja az alapszintű csomaggal letöltött *SignUpOrSignIn. XML* fájlt, és nevezze el a *SingUpOrSignInPasswordComplexity. XML*néven.
-2. Nyissa meg a *SingUpOrSignInPasswordComplexity. XML* fájlt, és módosítsa a **PolicyId** és a **PublicPolicyUri** egy új házirend-névre. Például: *B2C_1A_signup_signin_password_complexity*.
-3. Adja hozzá a következő **claimType** `newPassword` -elemeket a és `reenterPassword`azonosítókkal:
+2. Nyissa meg a *SingUpOrSignInPasswordComplexity. XML* fájlt, és módosítsa a **PolicyId** és a **PublicPolicyUri** egy új házirend-névre. Például *B2C_1A_signup_signin_password_complexity*.
+3. Adja hozzá a következő **claimType** elemeket `newPassword` és `reenterPassword`azonosítókkal:
 
     ```XML
     <ClaimsSchema>
@@ -44,7 +45,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
     </ClaimsSchema>
     ```
 
-4. [](predicates.md) A `IsLengthRange` predikátumok metódus típusú vagy `MatchesRegex`. A `MatchesRegex` típus egy reguláris kifejezésnek felel meg. A `IsLengthRange` típus minimális és maximális hosszúságú karakterláncot vesz igénybe. Adjon hozzá egy **predikátum** elemet a **BuildingBlocks** elemhez, ha az nem létezik a következő **predikátum** -elemekkel:
+4. A [predikátumok](predicates.md) `IsLengthRange` vagy `MatchesRegex`metódusi típussal rendelkeznek. A `MatchesRegex` típus egy reguláris kifejezésnek felel meg. A `IsLengthRange` típus minimális és maximális hosszúságú karakterláncot használ. Adjon hozzá egy **predikátum** elemet a **BuildingBlocks** elemhez, ha az nem létezik a következő **predikátum** -elemekkel:
 
     ```XML
     <Predicates>
@@ -62,7 +63,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
     </Predicates>
     ```
 
-5. Az egyes **InputValidation** elemek a definiált **predikátum** -elemek használatával épülnek fel. Ez az elem lehetővé teszi a `and` és `or`a hasonló logikai összesítések elvégzését. Adjon hozzá egy **InputValidations** elemet a **BuildingBlocks** elemhez, ha az nem létezik a következő **InputValidation** elemmel:
+5. Az egyes **InputValidation** elemek a definiált **predikátum** -elemek használatával épülnek fel. Ez az elem lehetővé teszi a `and`hoz és `or`hoz hasonló logikai összesítések elvégzését. Adjon hozzá egy **InputValidations** elemet a **BuildingBlocks** elemhez, ha az nem létezik a következő **InputValidation** elemmel:
 
     ```XML
     <InputValidations>
@@ -107,11 +108,11 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
 
 ## <a name="test-your-policy"></a>A szabályzat tesztelése
 
-Az alkalmazások Azure ad B2C-ben történő tesztelésekor hasznos lehet, hogy a Azure ad B2C token visszaadja `https://jwt.ms` a jogcímeket, hogy áttekintse a benne lévő jogcímeket.
+Az alkalmazások Azure AD B2C-ben történő tesztelésekor hasznos lehet, ha az Azure AD B2C-jogkivonat visszaadott `https://jwt.ms`, hogy át tudja tekinteni a benne lévő jogcímeket.
 
 ### <a name="upload-the-files"></a>A fájlok feltöltése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza az **identitási élmény keretrendszert**.
@@ -119,14 +120,14 @@ Az alkalmazások Azure ad B2C-ben történő tesztelésekor hasznos lehet, hogy 
 6. Ha létezik, válassza a **házirend felülírása**lehetőséget, majd keresse meg és válassza ki a *SingUpOrSignInPasswordComplexity. XML* fájlt.
 7. Kattintson a **Feltöltés** gombra.
 
-### <a name="run-the-policy"></a>Szabályzat futtatása
+### <a name="run-the-policy"></a>A házirend futtatása
 
-1. Nyissa meg a módosított szabályzatot. Például: *B2C_1A_signup_signin_password_complexity*.
-2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. A token megjelenítéséhez a **Válasz URL-címének** meg kell jelennie `https://jwt.ms`.
+1. Nyissa meg a módosított szabályzatot. Például *B2C_1A_signup_signin_password_complexity*.
+2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. A token megjelenítéséhez a **Válasz URL-címének** `https://jwt.ms`nak kell megjelennie.
 3. Kattintson a **Futtatás most** parancsra.
 4. Válassza a **regisztráció most**lehetőséget, adjon meg egy e-mail-címet, és adjon meg egy új jelszót. Útmutatást a jelszóra vonatkozó korlátozásokban talál. Fejezze be a felhasználói adatok beírását, majd kattintson a **Létrehozás**gombra. Ekkor meg kell jelennie a visszaadott token tartalmának.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [konfigurálhatja a jelszó módosítását egyéni házirendek használatával Azure Active Directory B2Cban](active-directory-b2c-reference-password-change-custom.md).
 

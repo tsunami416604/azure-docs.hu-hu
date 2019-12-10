@@ -1,5 +1,6 @@
 ---
-title: Twitter-fiókkal való regisztráció és bejelentkezés beállítása Azure Active Directory B2C használatával
+title: Regisztráció és bejelentkezés beállítása Twitter-fiókkal
+titleSuffix: Azure AD B2C
 description: Az alkalmazások Twitter-fiókkal való regisztrációját és bejelentkezését Azure Active Directory B2C használatával biztosíthatja az ügyfeleknek.
 services: active-directory-b2c
 author: mmacy
@@ -10,24 +11,24 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5cb5c5813bff8c0df5b119ea1cadf4f2e7c1696a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8b316fdb185c8a9c78e1a0c9be5f7d57b809141c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811391"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950442"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Twitter-fiókkal való regisztráció és bejelentkezés beállítása Azure Active Directory B2C használatával
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
-Ha a Twittert identitás-szolgáltatóként szeretné használni Azure AD B2Cban, létre kell hoznia egy Twitter-alkalmazást. Ha még nem rendelkezik Twitter-fiókkal, regisztrálhat a következő címen: [https://twitter.com/signup](https://twitter.com/signup).
+Ha a Twittert identitás-szolgáltatóként szeretné használni Azure AD B2Cban, létre kell hoznia egy Twitter-alkalmazást. Ha még nem rendelkezik Twitter-fiókkal, regisztrálhat [https://twitter.com/signup](https://twitter.com/signup)címen.
 
 1. Jelentkezzen be a [Twitter-fejlesztők](https://developer.twitter.com/en/apps) webhelyére a Twitter-fiókja hitelesítő adataival.
 1. Válassza **az alkalmazás létrehozása**lehetőséget.
 1. Adja meg az alkalmazás **nevét** és **leírását**.
-1. A **webhely URL**-címe `https://your-tenant.b2clogin.com`mezőbe írja be a értéket. Cserélje `your-tenant` le a helyére a bérlő nevét. Például: https://contosob2c.b2clogin.com.
-1. A **visszahívás URL-címéhez**írja be `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`a következőt:. Cserélje `your-tenant` le a nevet a bérlő `your-user-flow-Id` nevére, a felhasználói folyamat azonosítójával együtt. Például: `b2c_1A_signup_signin_twitter`. Az összes kisbetűs betűt kell használnia, ha a bérlő nevét és a felhasználói folyamat azonosítóját akkor is meg kell adnia, ha nagybetűvel vannak meghatározva a Azure AD B2Cban.
+1. A **webhely URL-címe**mezőbe írja be a `https://your-tenant.b2clogin.com`. Cserélje le a `your-tenant`t a bérlő nevére. Például: https://contosob2c.b2clogin.com.
+1. A **visszahívási URL-cím**mezőbe írja be a `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`. Cserélje le a `your-tenant`t a bérlő nevére, és `your-user-flow-Id` a felhasználói folyamat azonosítójával. Például: `b2c_1A_signup_signin_twitter`. Az összes kisbetűs betűt kell használnia, ha a bérlő nevét és a felhasználói folyamat azonosítóját akkor is meg kell adnia, ha nagybetűvel vannak meghatározva a Azure AD B2Cban.
 1. A lap alján olvassa el és fogadja el a feltételeket, majd válassza a **Létrehozás**lehetőséget.
 1. Az **alkalmazás részletei** lapon válassza a **Szerkesztés > a részletek szerkesztése**lehetőséget, jelölje be a **bejelentkezés engedélyezése a Twitteren**jelölőnégyzetet, majd kattintson a **Mentés**gombra.
 1. Válassza a **kulcsok és jogkivonatok** lehetőséget, és jegyezze fel a **fogyasztói API-kulcsot** és a **fogyasztói API titkos kulcsának** értékeit, amelyeket később szeretne használni.

@@ -1,5 +1,6 @@
 ---
-title: Oktatóanyag – hozzáférést biztosíthat egy ASP.NET Core webes API-hoz egy egyoldalas alkalmazásból – Azure Active Directory B2C
+title: 'Oktatóanyag: hozzáférés biztosítása egy ASP.NET Core webes API-hoz egy egyoldalas alkalmazásból'
+titleSuffix: Azure AD B2C
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Active Directory B2Ct a .NET Core webes API-k védeleméhez, és hogyan hívhatja meg az API-t egy egyoldalas Node. js-alkalmazásból.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7dae8bb552fe12d1cdf1f3d8a5fe124491933a87
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e5ced0c3e4ad05c33866548acb09189e03ed22f4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420326"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949704"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Oktatóanyag: hozzáférés biztosítása egy ASP.NET Core webes API-hoz egy egyoldalas alkalmazásból Azure Active Directory B2C használatával
 
@@ -114,7 +115,7 @@ Ahhoz, hogy egy egyoldalas alkalmazás meghívja a ASP.NET Core webes API-t, eng
     ```
 
 1. (Csak Visual Studio) A Megoldáskezelő **Tulajdonságok** területén nyissa meg a *launchSettings. JSON* fájlt, és keresse meg a `iisExpress` blokkot.
-1. (Csak Visual Studio) Frissítse a `applicationURL` értéket a *webapi1* alkalmazás egy korábbi lépésben való regisztrálásakor megadott portszámmal. Például:
+1. (Csak Visual Studio) Frissítse a `applicationURL` értéket a *webapi1* alkalmazás egy korábbi lépésben való regisztrálásakor megadott portszámmal. Példa:
 
     ```json
     "iisExpress": {
@@ -158,7 +159,7 @@ A Visual Studióban nyomja le az **F5** billentyűt a *B2C-WebAPI. SLN* megoldá
 
 Ha a Visual Studio helyett inkább a `dotnet` parancssori felületet szeretné használni:
 
-1. Nyisson meg egy konzolablak ablakot, és váltson a *\*. csproj* fájlt tartalmazó könyvtárra. Például:
+1. Nyisson meg egy konzolablak ablakot, és váltson a *\*. csproj* fájlt tartalmazó könyvtárra. Példa:
 
     `cd active-directory-b2c-dotnetcore-webapi/B2C-WebApi`
 
@@ -176,7 +177,7 @@ Ha a Visual Studio helyett inkább a `dotnet` parancssori felületet szeretné h
 
 ### <a name="run-the-single-page-app"></a>Az egyoldalas alkalmazás futtatása
 
-1. Nyisson meg egy konzolablak ablakát, és váltson a Node. js-mintát tartalmazó könyvtárra. Például:
+1. Nyisson meg egy konzolablak ablakát, és váltson a Node. js-mintát tartalmazó könyvtárra. Példa:
 
     `cd active-directory-b2c-javascript-msal-singlepageapp`
 
@@ -202,7 +203,7 @@ Ha a Visual Studio helyett inkább a `dotnet` parancssori felületet szeretné h
     "<html>\r\n<head>\r\n  <title>Azure AD B2C API Sample</title>\r\n ...
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

@@ -1,5 +1,6 @@
 ---
-title: Twitter-fiókkal való bejelentkezés beállítása egyéni szabályzatok használatával Azure Active Directory B2Cban | Microsoft Docs
+title: Bejelentkezés beállítása Twitter-fiókkal egyéni szabályzatok használatával
+titleSuffix: Azure AD B2C
 description: Twitter-fiókkal való bejelentkezés beállítása egyéni szabályzatok használatával Azure Active Directory B2Cban.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2ad6ac4c30572f1b475cba2f699f5842ae3c7528
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 460f16775bf8b02bbb345b609e1419311f81bd22
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71826998"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948419"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Twitter-fiókkal való bejelentkezés beállítása egyéni szabályzatok használatával Azure Active Directory B2C
 
@@ -35,8 +36,8 @@ Ha a Twittert identitás-szolgáltatóként szeretné használni Azure AD B2Cban
 1. Jelentkezzen be a [Twitter-fejlesztők](https://developer.twitter.com/en/apps) webhelyére a Twitter-fiókja hitelesítő adataival.
 2. Válassza **az alkalmazás létrehozása**lehetőséget.
 3. Adja meg az alkalmazás **nevét** és **leírását**.
-4. A **webhely URL**-címe `https://your-tenant.b2clogin.com`mezőbe írja be a értéket. Cserélje `your-tenant` le a helyére a bérlő nevét. Például: https://contosob2c.b2clogin.com.
-5. A **visszahívás URL-címéhez**írja be `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`a következőt:. Cserélje `your-tenant` le a nevet a bérlő neve és `your-policy-Id` a szabályzat azonosítójának helyére. Például: `b2c_1A_signup_signin_twitter`. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
+4. A **webhely URL-címe**mezőbe írja be a `https://your-tenant.b2clogin.com`. Cserélje le a `your-tenant`t a bérlő nevére. Például: https://contosob2c.b2clogin.com.
+5. A **visszahívási URL-cím**mezőbe írja be a `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`. Cserélje le a `your-tenant`t a bérlő nevére, és `your-policy-Id` a szabályzat azonosítójával. Például: `b2c_1A_signup_signin_twitter`. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
 6. A lap alján olvassa el és fogadja el a feltételeket, majd válassza a **Létrehozás**lehetőséget.
 7. Az **alkalmazás részletei** lapon válassza a **Szerkesztés > a részletek szerkesztése**lehetőséget, jelölje be a **bejelentkezés engedélyezése a Twitteren**jelölőnégyzetet, majd kattintson a **Mentés**gombra.
 8. Válassza a **kulcsok és jogkivonatok** lehetőséget, és jegyezze fel a **fogyasztói API-kulcsot** és a **fogyasztói API titkos kulcsának** értékeit, amelyeket később szeretne használni.
@@ -45,16 +46,16 @@ Ha a Twittert identitás-szolgáltatóként szeretné használni Azure AD B2Cban
 
 A Azure AD B2C bérlőben korábban rögzített titkos kulcsot kell tárolnia.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
 5. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-6. A **Beállítások**területen válassza `Manual`a lehetőséget.
-7. Adja meg a szabályzat kulcsának **nevét** . Például: `TwitterSecret`. A rendszer `B2C_1A_` automatikusan hozzáadja az előtagot a kulcs nevéhez.
+6. A **Beállítások**területen válassza a `Manual`lehetőséget.
+7. Adja meg a szabályzat kulcsának **nevét** . Például: `TwitterSecret`. A rendszer automatikusan hozzáadja a kulcs nevét a `B2C_1A_` előtaghoz.
 8. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
-9. A **kulcshasználat**beállításnál válassza `Encryption`a elemet.
-10. Kattintson a **Create** (Létrehozás) gombra.
+9. A **kulcshasználat**beállításnál válassza a `Encryption`lehetőséget.
+10. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -121,7 +122,7 @@ Most úgy konfigurálta a szabályzatot, hogy Azure AD B2C tudja, hogyan kommuni
 Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regisztrációs vagy bejelentkezési képernyőkön nem érhető el. A szolgáltatás elérhetővé tételéhez hozzon létre egy meglévő sablon felhasználói útvonalát, majd módosítsa úgy, hogy a Twitter-identitás szolgáltatója is legyen.
 
 1. Nyissa meg a *TrustFrameworkBase. XML* fájlt az alapszintű csomagból.
-2. A **UserJourney** elem `Id="SignUpOrSignIn"`teljes tartalmának megkeresése és másolása.
+2. A `Id="SignUpOrSignIn"`tartalmazó **UserJourney** elem teljes tartalmának megkeresése és másolása.
 3. Nyissa meg a *TrustFrameworkExtensions. xml fájlt* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, vegyen fel egyet.
 4. Illessze be a **UserJourney** elem teljes tartalmát, amelyet a **UserJourneys** elem gyermekeiként másolt.
 5. Nevezze át a felhasználói út AZONOSÍTÓját. Például: `SignUpSignInTwitter`.
@@ -130,8 +131,8 @@ Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regis
 
 A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezési képernyőn lévő Identity Provider gombhoz. Ha hozzáad egy **ClaimsProviderSelection** elemet egy Twitter-fiókhoz, egy új gomb jelenik meg, amikor a felhasználó az oldalon landol.
 
-1. Keresse meg az Ön által létrehozott `Order="1"` felhasználói útra kiterjedő OrchestrationStep elemet.
-2. A **ClaimsProviderSelects**területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `TwitterExchange`:
+1. Keresse meg a **OrchestrationStep** elemet, amely tartalmazza a létrehozott felhasználói út `Order="1"`.
+2. A **ClaimsProviderSelects**területen adja hozzá a következő elemet. A **TargetClaimsExchangeId** értékét állítsa be a megfelelő értékre, például `TwitterExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="TwitterExchange" />
@@ -141,7 +142,7 @@ A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezé
 
 Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A művelet, ebben az esetben a Azure AD B2C, hogy egy Twitter-fiókkal kommunikáljon a jogkivonatok fogadásához.
 
-1. Keresse meg a felhasználói útra `Order="2"` kiterjedő OrchestrationStep.
+1. Keresse meg a felhasználói úton `Order="2"`t tartalmazó **OrchestrationStep** .
 2. Adja hozzá a következő **ClaimsExchange** elemet, és győződjön meg arról, hogy ugyanazt az értéket használja a **TargetClaimsExchangeId**használt azonosítóhoz:
 
     ```XML
@@ -164,7 +165,7 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
 
 1. Készítsen másolatot a *SignUpOrSignIn. XML fájlról* a munkakönyvtárában, és nevezze át. Nevezze át például a *SignUpSignInTwitter. XML fájlba*.
 2. Nyissa meg az új fájlt, és frissítse a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInTwitter`.
-3. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például:`http://contoso.com/B2C_1A_signup_signin_twitter`
+3. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például`http://contoso.com/B2C_1A_signup_signin_twitter`
 4. Frissítse a **ReferenceId** attribútum értékét a **DefaultUserJourney** -ben, hogy az megfeleljen a létrehozott új felhasználói út azonosítójának (SignUpSignTwitter).
 5. Mentse a módosításokat, töltse fel a fájlt, majd válassza ki az új szabályzatot a listában.
 6. Győződjön meg arról, hogy a létrehozott Azure AD B2C alkalmazás ki van választva az **alkalmazás kiválasztása** mezőben, majd tesztelje a **Futtatás most**lehetőségre kattintva.

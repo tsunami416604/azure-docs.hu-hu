@@ -1,5 +1,6 @@
 ---
-title: Amazon-fiókkal történő bejelentkezés beállítása a Azure Active Directory B2C egyéni házirendjeivel | Microsoft Docs
+title: Bejelentkezés beállítása Amazon-fiókkal egyéni szabályzatok használatával
+titleSuffix: Azure AD B2C
 description: Egy Amazon-fiókkal történő bejelentkezés beállítása Azure Active Directory B2C egyéni szabályzatok használatával.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 89f753eb0a4327bc68be9ff85006e86b57bcb548
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 39a0e9442f3e41ceeb67b4d528eb193b159d8777
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827259"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950850"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>A bejelentkezés beállítása Amazon-fiókkal egyéni szabályzatok használatával Azure Active Directory B2C
 
@@ -26,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a bejelentkezést egy Amaz
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Hajtsa végre az [Ismerkedés az egyéni szabályzatokkal](active-directory-b2c-get-started-custom.md)című témakör lépéseit.
-- Ha még nem rendelkezik Amazon-fiókkal, hozzon létre [https://www.amazon.com/](https://www.amazon.com/)egyet a következő helyen:.
+- Ha még nem rendelkezik Amazon-fiókkal, hozzon létre egyet [https://www.amazon.com/](https://www.amazon.com/).
 
 ## <a name="register-the-application"></a>Az alkalmazás regisztrálása
 
@@ -37,23 +38,23 @@ Ha engedélyezni szeretné a bejelentkezést a felhasználók számára egy Amaz
 3. Válassza az **új alkalmazás regisztrálása**lehetőséget.
 4. Adja meg a **név**, a **Leírás**és az **adatvédelmi nyilatkozat URL-címét**, majd kattintson a **Mentés**gombra. Az adatvédelmi nyilatkozat egy olyan oldal, amelyet Ön kezel, és amely adatvédelmi információkat biztosít a felhasználóknak.
 5. A **webes beállítások** szakaszban másolja ki az **ügyfél-azonosító**értékét. Válassza a **titok megjelenítése** lehetőséget az ügyfél titkos kódjának beolvasásához, majd másolja azt. Mindkettőnek szüksége van egy Amazon-fiók konfigurálására a bérlőben. Az **ügyfél titkos kulcsa** fontos biztonsági hitelesítő adat.
-6. A **webes beállítások** szakaszban válassza a **Szerkesztés**lehetőséget, majd adja meg `https://your-tenant-name.b2clogin.com` az **engedélyezett JavaScript-eredetek** és `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` az **engedélyezett visszatérési URL-címek**közötti értéket. Cserélje `your-tenant-name` le a helyére a bérlő nevét. Kisbetűk használhatók, ha akkor is, ha a bérlő Azure AD B2C-ben nagybetűk van definiálva, írja be a bérlő neve.
+6. A **Webbeállítások** szakaszban válassza a **Szerkesztés**lehetőséget, majd írja be `https://your-tenant-name.b2clogin.com` az **engedélyezett JavaScript** -forrásokban és `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` az **engedélyezett visszatérési URL-címek**között. Cserélje le a `your-tenant-name`t a bérlő nevére. A bérlő nevének megadásakor használja az összes kisbetűt, még akkor is, ha a bérlőt nagybetűvel definiálják Azure AD B2Cban.
 7. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="create-a-policy-key"></a>Házirend-kulcs létrehozása
 
 A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tárolnia.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
 5. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-6. A **Beállítások**területen válassza `Manual`a lehetőséget.
-7. Adja meg a szabályzat kulcsának **nevét** . Például: `AmazonSecret`. A rendszer `B2C_1A_` automatikusan hozzáadja az előtagot a kulcs nevéhez.
+6. A **Beállítások**területen válassza a `Manual`lehetőséget.
+7. Adja meg a szabályzat kulcsának **nevét** . Például: `AmazonSecret`. A rendszer automatikusan hozzáadja a kulcs nevét a `B2C_1A_` előtaghoz.
 8. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
-9. A **kulcshasználat**beállításnál válassza `Signature`a elemet.
-10. Kattintson a **Create** (Létrehozás) gombra.
+9. A **kulcshasználat**beállításnál válassza a `Signature`lehetőséget.
+10. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -105,7 +106,7 @@ Megadhat egy Amazon-fiókot jogcím-szolgáltatóként, ha hozzáadja azt a **Cl
     </ClaimsProvider>
     ```
 
-4. Állítsa be a **client_id** az alkalmazás-azonosítóra az alkalmazás regisztrációja során.
+4. **Client_id** beállítása az alkalmazás-azonosítóhoz az alkalmazás regisztrációja során.
 5. Mentse a fájlt.
 
 ### <a name="upload-the-extension-file-for-verification"></a>A bővítmény fájljának feltöltése ellenőrzéshez
@@ -121,7 +122,7 @@ Most úgy konfigurálta a házirendet, hogy Azure AD B2C tudja, hogyan kommunik�
 Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regisztrációs és bejelentkezési képernyőkön nem érhető el. A szolgáltatás elérhetővé tételéhez hozzon létre egy másolatot egy meglévő sablon felhasználói utazásról, majd módosítsa úgy, hogy az az Amazon Identity Provider is legyen.
 
 1. Nyissa meg a *TrustFrameworkBase. XML* fájlt az alapszintű csomagból.
-2. A **UserJourney** elem `Id="SignUpOrSignIn"`teljes tartalmának megkeresése és másolása.
+2. A `Id="SignUpOrSignIn"`tartalmazó **UserJourney** elem teljes tartalmának megkeresése és másolása.
 3. Nyissa meg a *TrustFrameworkExtensions. xml fájlt* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, vegyen fel egyet.
 4. Illessze be a **UserJourney** elem teljes tartalmát, amelyet a **UserJourneys** elem gyermekeiként másolt.
 5. Nevezze át a felhasználói út AZONOSÍTÓját. Például: `SignUpSignInAmazon`.
@@ -130,8 +131,8 @@ Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regis
 
 A **ClaimsProviderSelection** elem a bejelentkezési és bejelentkezési képernyőn lévő Identity Provider gombhoz hasonlít. Ha hozzáad egy **ClaimsProviderSelection** elemet egy Amazon-fiókhoz, egy új gomb jelenik meg, amikor a felhasználó az oldalon landol.
 
-1. Keresse meg az Ön által létrehozott `Order="1"` felhasználói útra kiterjedő OrchestrationStep elemet.
-2. A **ClaimsProviderSelects**területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `AmazonExchange`:
+1. Keresse meg a **OrchestrationStep** elemet, amely tartalmazza a létrehozott felhasználói út `Order="1"`.
+2. A **ClaimsProviderSelects**területen adja hozzá a következő elemet. A **TargetClaimsExchangeId** értékét állítsa be a megfelelő értékre, például `AmazonExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="AmazonExchange" />
@@ -141,7 +142,7 @@ A **ClaimsProviderSelection** elem a bejelentkezési és bejelentkezési képern
 
 Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A művelet, ebben az esetben a Azure AD B2C, hogy egy Amazon-fiókkal kommunikáljon a jogkivonatok fogadásához.
 
-1. Keresse meg a felhasználói útra `Order="2"` kiterjedő OrchestrationStep.
+1. Keresse meg a felhasználói úton `Order="2"`t tartalmazó **OrchestrationStep** .
 2. Adja hozzá a következő **ClaimsExchange** elemet, és győződjön meg arról, hogy ugyanazt az értéket használja a **TargetClaimsExchangeId**használt azonosítóhoz:
 
     ```XML
@@ -164,7 +165,7 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
 
 1. Készítsen másolatot a *SignUpOrSignIn. XML fájlról* a munkakönyvtárában, és nevezze át. Nevezze át például a *SignUpSignInAmazon. XML fájlba*.
 2. Nyissa meg az új fájlt, és frissítse a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInAmazon`.
-3. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például:`http://contoso.com/B2C_1A_signup_signin_amazon`
+3. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például`http://contoso.com/B2C_1A_signup_signin_amazon`
 4. Frissítse a **ReferenceId** attribútum értékét a **DefaultUserJourney** -ben, hogy az megfeleljen a létrehozott új felhasználói út azonosítójának (SignUpSignAmazon).
 5. Mentse a módosításokat, töltse fel a fájlt, majd válassza ki az új szabályzatot a listában.
 6. Győződjön meg arról, hogy a létrehozott Azure AD B2C alkalmazás ki van választva az **alkalmazás kiválasztása** mezőben, majd tesztelje a **Futtatás most**lehetőségre kattintva.

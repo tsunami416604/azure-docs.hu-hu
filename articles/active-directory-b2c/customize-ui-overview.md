@@ -1,5 +1,6 @@
 ---
-title: A Azure Active Directory B2C felhasználói felületének testreszabása
+title: A kezelőfelület testreszabása
+titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan szabhatja testre a Azure Active Directory B2Ct használó alkalmazásai felhasználói felületét.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6ebaeedf88bc02aa16e8be07fcb734e44ffa5bb6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258173"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949406"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói felületének testreszabása
 
@@ -57,7 +58,7 @@ A bal oldali menü **Testreszabás** **területén válassza a lapelrendezések 
 
 Ezután válasszon ki egy sablont a listából. Íme néhány példa az egyes sablonok bejelentkezési lapjaira:
 
-| Óceánkék | Palaszürke | Klasszikus |
+| Ocean Blue | Szürke pala | Hagyományos |
 |:-:|:-:|:-:|
 |![Példa a bejelentkezési oldalon megjelenített Ocean Blue-sablonra](media/customize-ui-overview/template-ocean-blue.png)|![Példa a regisztrálási bejelentkezési oldalon megjelenített szürke sablonra](media/customize-ui-overview/template-slate-gray.png)|![Példa a regisztrálási bejelentkezési oldalon megjelenített klasszikus sablonra](media/customize-ui-overview/template-classic.png)|
 
@@ -90,7 +91,7 @@ A lényeg az, hogy a tartalmat egy nyilvánosan elérhető HTTPS-végponton üze
 
 A saját HTML és CSS használatának első lépései a felhasználói élmény oldalain az alábbi irányelvek alapján.
 
-- Hozzon létre jól formázott HTML-tartalmat egy `<div id="api"></div>` olyan üres elemmel, amely `<body>`valahol a-ben található. Ez az elem a Azure AD B2C tartalmának beszúrt helyét jelöli. Az alábbi példa egy minimális oldalt mutat be:
+- Hozzon létre jól formázott HTML-tartalmat egy üres `<div id="api"></div>` elemmel, amely valahol a `<body>`található. Ez az elem a Azure AD B2C tartalmának beszúrt helyét jelöli. Az alábbi példa egy minimális oldalt mutat be:
 
     ```html
     <!DOCTYPE html>
@@ -136,7 +137,7 @@ A saját HTML és CSS használatának első lépései a felhasználói élmény 
 
 ### <a name="html-fragments-from-azure-ad-b2c"></a>HTML-töredékek Azure AD B2C
 
-A következő táblázat felsorolja azokat a HTML-töredékeket, amelyeket Azure ad B2C egyesít `<div id="api"></div>` a tartalomban található elembe.
+A következő táblázat felsorolja azokat a HTML-töredékeket, amelyeket Azure AD B2C egyesít a tartalomban található `<div id="api"></div>` elembe.
 
 | Beszúrt oldal | HTML leírása |
 | ------------- | ------------------- |
@@ -144,12 +145,12 @@ A következő táblázat felsorolja azokat a HTML-töredékeket, amelyeket Azure
 | Helyi fiók regisztrálása | Egy űrlapot tartalmaz a helyi fiók regisztrálásához egy e-mail-cím vagy egy Felhasználónév alapján. Az űrlap különböző beviteli vezérlőket tartalmazhat, mint például a szövegbeviteli mező, a jelszó-beviteli mező, a választógomb, az egyszeres kijelölés legördülő lista és a többszörös kijelölés jelölőnégyzet. |
 | Közösségi fiók regisztrálása | Akkor jelenhet meg, ha egy közösségi identitás-szolgáltató, például a Facebook vagy a Google egy meglévő fiókjának használatával regisztrál. Akkor használatos, ha az ügyféltől további információkat kell gyűjteni a regisztrációs űrlap használatával. |
 | Egyesített regisztráció vagy bejelentkezés | A olyan ügyfelek regisztrációját és bejelentkezését kezeli, akik használhatják a közösségi identitás-szolgáltatókat, például a Facebookot, a Google-t vagy a helyi fiókokat. |
-| Multi-Factor Authentication | Az ügyfelek a regisztrálás vagy a bejelentkezés során ellenőrizhetik a telefonszámokat (szöveg vagy hang használatával). |
+| Többtényezős hitelesítés | Az ügyfelek a regisztrálás vagy a bejelentkezés során ellenőrizhetik a telefonszámokat (szöveg vagy hang használatával). |
 | Hiba | Információt nyújt az ügyfélnek. |
 
 ## <a name="localize-content"></a>Tartalom honosítása
 
-A HTML-tartalmat honosíthatja a Azure AD B2C bérlő [nyelvi testreszabásainak](active-directory-b2c-reference-language-customization.md) engedélyezésével. A funkció engedélyezése lehetővé teszi, hogy Azure ad B2C az OpenID Connect `ui-locales` paramétert továbbítsa a végpontnak. A Content Server ezt a paramétert használhatja a nyelvspecifikus HTML-lapok megadásához.
+A HTML-tartalmat honosíthatja a Azure AD B2C bérlő [nyelvi testreszabásainak](active-directory-b2c-reference-language-customization.md) engedélyezésével. A funkció engedélyezése lehetővé teszi, hogy Azure AD B2C továbbítsa az OpenID Connect paramétert `ui-locales` a végponthoz. A Content Server ezt a paramétert használhatja a nyelvspecifikus HTML-lapok megadásához.
 
 A tartalmat a használt területi beállítás alapján különböző helyekről lehet kihúzni. A CORS-kompatibilis végponton beállíthatja, hogy a rendszer egy adott nyelvhez tartozó tartalmat működtessen. Ha a helyettesítő karaktert `{Culture:RFC5646}`használja, hívja meg a megfelelőt.
 
@@ -171,7 +172,7 @@ A [B2C-AzureBlobStorage-Client](https://github.com/azureadquickstarts/b2c-azureb
 
 A sablonok HTML-és CSS-fájljai a [/sample_templates](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates) könyvtárban találhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha **felhasználói folyamatokat**használ, megkezdheti a felhasználói felület testreszabását az oktatóanyag segítségével:
 

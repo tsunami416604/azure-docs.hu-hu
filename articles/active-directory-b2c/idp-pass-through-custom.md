@@ -1,6 +1,7 @@
 ---
-title: Hozzáférési token átadása egy egyéni szabályzaton keresztül az alkalmazáshoz Azure Active Directory B2C
-description: Megtudhatja, hogyan adhat hozzáférési jogkivonatot a OAuth 2.0-s identitás-szolgáltatók számára jogcímként egy egyéni szabályzattal az alkalmazásához Azure Active Directory B2C.
+title: Hozzáférési token átadása az alkalmazás egyéni szabályzatán keresztül
+titleSuffix: Azure AD B2C
+description: Megtudhatja, hogyan adhat hozzáférési jogkivonatot a OAuth 2,0-es identitás-szolgáltatók számára jogcímként egy egyéni szabályzattal az alkalmazásához Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,16 +11,16 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b6795af0829a288c36cad5b848fed50a99dc1bfc
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 8f7122035f8d70cb91f4ec4f64e1dd4f7b2842b8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510131"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949840"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Hozzáférési token átadása egy egyéni szabályzaton keresztül az alkalmazáshoz Azure Active Directory B2C
 
-A Azure Active Directory B2C (Azure AD B2C) [Egyéni szabályzata](active-directory-b2c-get-started-custom.md) lehetővé teszi az alkalmazás felhasználói számára, hogy regisztráljon vagy jelentkezzen be egy identitás-szolgáltatóval. Ha ez történik, Azure AD B2C [hozzáférési](active-directory-b2c-reference-tokens.md) jogkivonatot kap az identitás-szolgáltatótól. Azure AD B2C a token használatával kéri le a felhasználó adatait. A jogcímek és a kimeneti jogcímek egyéni szabályzatba való felvételével a jogkivonatot átadja a Azure AD B2Cban regisztrált alkalmazásoknak.
+A Azure Active Directory B2C (Azure AD B2C) [Egyéni szabályzata](active-directory-b2c-get-started-custom.md) lehetővé teszi az alkalmazás felhasználói számára, hogy regisztráljon vagy jelentkezzen be egy identitás-szolgáltatóval. Ha ez történik, Azure AD B2C [hozzáférési jogkivonatot](active-directory-b2c-reference-tokens.md) kap az identitás-szolgáltatótól. Azure AD B2C a token használatával kéri le a felhasználó adatait. A jogcímek és a kimeneti jogcímek egyéni szabályzatba való felvételével a jogkivonatot átadja a Azure AD B2Cban regisztrált alkalmazásoknak.
 
 Azure AD B2C támogatja a [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) és az [OpenID Connect](active-directory-b2c-reference-oidc.md) Identity Providers hozzáférési jogkivonatának átadását. Az összes többi Identity Provider esetében a rendszer üresen adja vissza a jogcímet.
 
@@ -29,7 +30,7 @@ Azure AD B2C támogatja a [OAuth 2,0](active-directory-b2c-reference-oauth-code.
 
 ## <a name="add-the-claim-elements"></a>Jogcím-elemek hozzáadása
 
-1. Nyissa meg a *TrustframeworkExtensions. XML* fájlt, és adja hozzá a következő **claimType** elemet `identityProviderAccessToken` egy azonosítóval a **ClaimsSchema** elemhez:
+1. Nyissa meg a *TrustframeworkExtensions. XML* fájlt, és adja hozzá a következő **claimType** elemet `identityProviderAccessToken` azonosítójának megadásával az **ClaimsSchema** elemhez:
 
     ```XML
     <BuildingBlocks>
@@ -79,29 +80,29 @@ Azure AD B2C támogatja a [OAuth 2,0](active-directory-b2c-reference-oauth-code.
 
 ## <a name="test-your-policy"></a>A szabályzat tesztelése
 
-Az alkalmazások Azure ad B2C-ben történő tesztelésekor hasznos lehet, hogy a Azure ad B2C token visszaadja `https://jwt.ms` a jogcímeket, hogy áttekintse a benne lévő jogcímeket.
+Az alkalmazások Azure AD B2C-ben történő tesztelésekor hasznos lehet, ha az Azure AD B2C-jogkivonat visszaadott `https://jwt.ms`, hogy át tudja tekinteni a benne lévő jogcímeket.
 
 ### <a name="upload-the-files"></a>A fájlok feltöltése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy az Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben kattintson a **könyvtár + előfizetés** szűrőre, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza az **identitási élmény keretrendszert**.
 5. Az egyéni házirendek lapon kattintson a **házirend feltöltése**elemre.
-6. **Ha létezik**, válassza a házirend felülírása lehetőséget, majd keresse meg és válassza ki a *TrustframeworkExtensions. XML* fájlt.
+6. Ha létezik, válassza a **házirend felülírása**lehetőséget, majd keresse meg és válassza ki a *TrustframeworkExtensions. XML* fájlt.
 7. Válassza a **Feltöltés** lehetőséget.
 8. Ismételje meg az 5 – 7. lépést a függő entitás fájljánál (például *SignUpOrSignIn. XML*).
 
-### <a name="run-the-policy"></a>Szabályzat futtatása
+### <a name="run-the-policy"></a>A házirend futtatása
 
-1. Nyissa meg a módosított szabályzatot. Például: *B2C_1A_signup_signin*.
-2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. Az alábbi példában szereplő token megjelenítéséhez a **Válasz URL-címének** meg `https://jwt.ms`kell jelennie.
+1. Nyissa meg a módosított szabályzatot. Például *B2C_1A_signup_signin*.
+2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. Ha meg szeretné tekinteni a tokent az alábbi példában, a **Válasz URL-címének** `https://jwt.ms`nak kell megjelennie.
 3. Válassza a **Futtatás most**lehetőséget.
 
     Az alábbi példához hasonlónak kell megjelennie:
 
-    ![Dekódolású token a jwt.ms-ben a idp_access_token Block kiemelve](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
+    ![Dekódolású token a jwt.ms-ben idp_access_token blokk kiemelve](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a tokenekről: [Azure Active Directory B2C jogkivonat-hivatkozás](active-directory-b2c-reference-tokens.md).

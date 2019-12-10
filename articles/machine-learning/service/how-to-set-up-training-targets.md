@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1755d5bf3338694f53da7021579cb4c0aee623f3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 934899a74362ec9354c772c341d38d6a8f988ab4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912466"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951870"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ További információ a [kísérletek elküldéséről](#submit) a cikk végén.
 
 ## <a name="whats-an-estimator"></a>Mi az a kalkulátor?
 
-A népszerű keretrendszerek használatával történő modell-képzés elősegítése érdekében a Azure Machine Learning Python SDK egy alternatív, magasabb szintű absztrakciót, a kalkulátor osztályt biztosít. Javasoljuk, hogy használjon egy kalkulátort a betanításhoz, mivel az osztály olyan metódusokat tartalmaz, amelyek lehetővé teszik a futtatási konfigurációk egyszerű összeállítását és testreszabását. Létrehozhat és használhat általános [becslést](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) olyan képzési parancsfájlok beküldéséhez, amelyek bármely kiválasztott tanulási keretrendszert (például scikit-Learn) használnak. Ha az adatfájlokat elérhetővé kell tenni a számítási cél számára, tekintse meg a [Azure Machine learning adatkészletekkel való betanítást](how-to-train-with-datasets.md)ismertető témakört.
+A népszerű keretrendszerek használatával történő modell-képzés elősegítése érdekében a Azure Machine Learning Python SDK egy alternatív, magasabb szintű absztrakciót, a kalkulátor osztályt biztosít.  Ez az osztály lehetővé teszi a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat általános [becslést](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) olyan képzési parancsfájlok beküldéséhez, amelyek bármely kiválasztott tanulási keretrendszert (például scikit-Learn) használnak. Javasoljuk, hogy használjon egy kalkulátort a betanításhoz, mivel az automatikusan contructs a beágyazott objektumokat, például egy környezet-vagy RunConfiguration-objektumot. Ha szeretné jobban szabályozni az objektumok létrehozását, és specfify, hogy milyen csomagokat kell telepíteni a experiement futtatásához, kövesse az [alábbi lépéseket](#amlcompute) a betanítási kísérletek elküldéséhez egy Azure Machine learning számításban egy RunConfiguration objektum használatával.
 
 A PyTorch, a TensorFlow és a láncolási feladatok esetében a Azure Machine Learning a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)és [láncolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) becslések is biztosít, hogy egyszerűbbé váljon ezen keretrendszerek használata.
 

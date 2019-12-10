@@ -1,5 +1,6 @@
 ---
-title: Egyéni házirendek – Application Insights – Azure Active Directory B2C
+title: Egyéni házirendek – Application Insights
+titleSuffix: Azure AD B2C
 description: Application Insights beállítása az egyéni házirendek végrehajtásának nyomon követéséhez.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8bf26791ca6489c12e4f9538d56ae0f0f66cc8c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3aeef1614f22563e0fd348c5bc6ae7ff1e7b0b03
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602022"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950085"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C naplók gyűjtése Application Insights
 
@@ -60,7 +61,7 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy Application Insights példá
     * `ClientEnabled="true"` elküldi a ApplicationInsights ügyféloldali parancsfájlját a nyomkövetési oldal nézet és az ügyféloldali hibák követéséhez. Ezeket a **browserTimings** táblában tekintheti meg a Application Insights-portálon. A `ClientEnabled= "true"`beállításával Application Insightsokat adhat hozzá az oldal parancsfájljaihoz, és megtekintheti az oldalak betöltésének és az AJAX-hívások, a számok, a böngészőbeli kivételek és az AJAX-hibák részleteit, valamint a felhasználók és a munkamenetek számát. Ez a mező nem **kötelező**, és alapértelmezés szerint `false`ra van beállítva.
     * `ServerEnabled="true"` elküldi a meglévő UserJourneyRecorder JSON-t egyéni eseményként Application Insights.
 
-    Például:
+    Példa:
 
     ```XML
     <TrustFrameworkPolicy
@@ -101,7 +102,7 @@ Előfordulhat, hogy a bejegyzések hosszúak. Exportálás CSV-be alaposabb kere
 
 A lekérdezéssel kapcsolatos további információkért lásd: [Azure monitorban található lekérdezések áttekintése](../azure-monitor/log-query/log-query-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Közösség kidolgozta a felhasználói útvonalak megjelenítőjét, hogy segítse az identitás-fejlesztőket. Beolvassa a Application Insights példányát, és jól strukturált áttekintést nyújt a felhasználói útvonalak eseményeiről. Szerezze be a forráskódot, és telepítse azt a saját megoldásában.
 

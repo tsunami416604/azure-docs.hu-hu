@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 7a2e9d39629e4fdb349652c9c48d0084d051f9f8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122842"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951428"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Mi az Azure arc a kiszolgálókhoz
 
@@ -109,7 +109,41 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 Az erőforrás-szolgáltatókat a portálon is regisztrálhatja a [Azure Portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)alatti lépéseket követve.
 
-## <a name="supported-scenarios"></a>Támogatott forgatókönyvek
+## <a name="machine-changes-after-installing-the-agent"></a>A gép módosítása az ügynök telepítése után
+
+Ha a környezetben üzembe helyezett Change Tracking megoldással rendelkezik, az alábbi lista segítségével nyomon követheti, azonosíthatja és engedélyezheti az **Azure Connected Machine Agent-(AzCMAgent-)** telepítőcsomag által végzett módosításokat.
+
+Az ügynök telepítése után a következő, a kiszolgálókon végrehajtott módosítások láthatók.
+
+### <a name="windows"></a>Windows
+
+Telepített szolgáltatások:
+
+* `Himds` – az **Azure Connected Machine Agent** szolgáltatás.
+* `Dscservice` vagy `gcd` – a **vendég konfigurációs** szolgáltatás.
+
+A kiszolgálóhoz hozzáadott fájlok:
+
+* `%ProgramFiles%\AzureConnectedMachineAgent\*.*` – az **Azure Connected Machine Agent** -fájlok helye.
+* `%ProgramData%\GuestConfig\*.*` - **vendég konfigurációs** naplókat.
+
+Beállításkulcs helyei:
+
+* `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Connected Machine Agent` – beállításkulcsok az Azure-beli **csatlakoztatott gépi ügynökhöz**.
+
+### <a name="linux"></a>Linux
+
+Telepített szolgáltatások:
+
+* `Himdsd` – az **Azure Connected Machine Agent** szolgáltatás.
+* `dscd` vagy `gcd` – a **vendég konfigurációs** szolgáltatás.
+
+A kiszolgálóhoz hozzáadott fájlok:
+
+* `/var/opt/azcmagent/**` – az **Azure Connected Machine Agent** -fájlok helye.
+* `/var/lib/GuestConfig/**` - **vendég konfigurációs** naplókat.
+
+## <a name="supported-scenarios"></a>Támogatott helyzetek
 
 A csomópontok regisztrálása után elkezdheti a csomópontok kezelését más Azure-szolgáltatásokkal.
 
@@ -138,7 +172,7 @@ További információ: [Bevezetés a log Analytics használatába Azure monitor]
 
 <!-- MMA agent version 10.20.18011 and later -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A számítógépek Azure arc-kiszolgálókkal való összekapcsolásának két módja van.
 
