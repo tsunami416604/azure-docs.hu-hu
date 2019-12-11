@@ -1,23 +1,23 @@
 ---
 title: További adatok átvitele az eszköz és az Azure Device kiépítési szolgáltatás között
-description: Ez a dokumentum azt ismerteti, hogyan vihetők át további adatok az eszköz és a DPS között
+description: Ez a dokumentum azt ismerteti, hogyan lehet további adatátvitelt továbbítani az eszköz és az eszköz kiépítési szolgáltatása (DPS) között.
 author: menchi
 ms.author: menchi
 ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 90402dd6fbe19811b5bb6d5ac0fbdd984b71fd33
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e9482f7069616d61efb98f66590ce33cfe3cf350
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123183"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974853"
 ---
 # <a name="how-to-transfer-additional-data-between-device-and-dps"></a>További adatok átvitele az eszköz és a DPS között
 A DPS-nek esetenként további adatokra van szüksége az eszközről ahhoz, hogy megfelelő módon kiépíthesse azokat a helyes IoT Hubon, az adatokat pedig az eszköznek kell rendelkezésre bocsátania. A DPS azonban visszatérhet az eszközre, hogy az ügyféloldali logikát is megkönnyítse. 
 
-## <a name="when-to-use-it"></a>Mikor érdemes használni
+## <a name="when-to-use-it"></a>Használati esetek
 Ez a funkció az [Egyéni foglalások](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)fejlesztéséhez használható. Például az eszköz modellje alapján szeretné kiosztani az eszközöket az emberi beavatkozás nélkül. Ebben az esetben [Egyéni foglalást](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)fog használni. Beállíthatja, hogy az eszköz bejelentse a modell adatait az [eszköz regisztrálása hívásának](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)részeként. A DPS továbbítja az eszköz adatait az egyéni kiosztási webhookba. A függvény eldöntheti, hogy mely IoT Hub az eszköz fog megjelenni, amikor megkapja az eszköz modelljének adatait. Ehhez hasonlóan ha a webhook adatokat küld vissza az eszköznek, akkor ezeket sztringként adja vissza a webhookválaszban.  
 
 ## <a name="device-sends-data-to-dps"></a>Az eszköz adatokat küld a DPS-nek
@@ -57,5 +57,5 @@ Ha az egyéni kiosztási szabályzat webhooka bizonyos adatmennyiséget szeretne
 ## <a name="sdk-support"></a>SDK-támogatás
 Ez a funkció C, C#, Java és Node. js [ügyféloldali SDK](https://docs.microsoft.com/azure/iot-dps/)-k esetén érhető el.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Fejlesztés az Azure IoT Hub és az Azure-hoz készült [Azure IOT SDK]( https://github.com/Azure/azure-iot-sdks) -val IoT hub Device Provisioning Service

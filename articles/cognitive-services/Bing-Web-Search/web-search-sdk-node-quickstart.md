@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 79f0630c65aa438ac5d831b03842cc74b609cd3b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 059862255ca2cf0ce435496bf22d866a37c8be71
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132739"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977165"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Rövid útmutató: A Node.js-hez készült Bing Web Search SDK használata
 
@@ -23,15 +23,14 @@ A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a Node.js-
 
 Szeretné most rögtön megtekinteni a kódot? A [Node.js-hez készült Bing Web Search SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) megtekinthetők a GitHubon.
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 * A [Node.js 6-os](https://nodejs.org/en/download/) vagy újabb verziója
 * Egy előfizetői azonosító  
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
+
 
 ## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
 
@@ -104,11 +103,11 @@ Az utolsó lépés a program futtatása.
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót a program kódjából.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Cognitive Services Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Azure Node SDK-referencia](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-websearch/)
