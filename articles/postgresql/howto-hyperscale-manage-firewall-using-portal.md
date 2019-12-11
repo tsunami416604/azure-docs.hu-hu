@@ -1,17 +1,17 @@
 ---
-title: Tűzfalszabályok kezelése a Azure Database for PostgreSQL-nagy kapacitású (Citus)
+title: Tűzfalszabályok kezelése – nagy kapacitású (Citus) – Azure Database for PostgreSQL
 description: Tűzfalszabályok létrehozása és kezelése a Azure Database for PostgreSQL-nagy kapacitású (Citus) számára a Azure Portal használatával
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 1b132eb168f3d873c8150bc33b581aa0f0f8d124
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 660c395e6cff81b0abcac07e66385f80a538695f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273705"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977539"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású (Citus) tűzfalszabályok kezelése
 A kiszolgálói szintű tűzfalszabályok segítségével kezelheti a nagy kapacitású (Citus) koordinátor-csomópontokhoz való hozzáférést egy adott IP-cím vagy IP-címtartomány használatával.
@@ -59,5 +59,5 @@ Ismételje meg a lépéseket a tűzfalszabályok kezeléséhez.
 * Meglévő szabály módosításához kattintson a szabály valamelyik mezőjére, és adja meg a módosításokat. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 * Meglévő szabály törléséhez kattintson a három pont [...] elemre, majd a szabály eltávolításához kattintson a **Törlés** gombra. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Tűzfalszabályok fogalmáról](concepts-hyperscale-firewall-rules.md), többek között a kapcsolódási problémák elhárításáról.

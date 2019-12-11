@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: c4fe185f5d203b1b0eba306c80cded14ad82bc98
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: bb8cfae73d84135858733899e6441f564106e9d1
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72438628"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997224"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Security Center szolgáltatások kivonása (július 2019)
 
@@ -53,7 +53,7 @@ Kivontuk a munkaterület kijelölésekor megjelenő események irányítópultot
 
 Javasoljuk, hogy az Azure Log Analytics natív funkcióinak használatával megtekinthesse a jelentős eseményeket a munkaterületeken.
 
-Ha Security Centerban egyéni jelentős eseményeket hozott létre, azok elérhetővé válnak. A Log Analytics területen válassza a **munkaterület kiválasztása** > **mentett keresések**lehetőséget. Az adatai nem vesznek el vagy nem módosulnak. A natív jelentős események a Log Analytics azonos képernyőjén is elérhetők.
+Ha Security Centerban egyéni jelentős eseményeket hozott létre, azok elérhetővé válnak. A Log Analytics területen válassza a **munkaterület kiválasztása** > **mentett keresések**elemet. Az adatai nem vesznek el vagy nem módosulnak. A natív jelentős események a Log Analytics azonos képernyőjén is elérhetők.
 
 ![Munkaterület által mentett keresések][3]
 
@@ -169,7 +169,7 @@ Ha már rendelkezik csatlakoztatott megoldásokkal, javasoljuk, hogy váltson az
 
 Az Azure Security Center a biztonsági konfigurációk monitorozásához egy [több mint 150 ajánlott szabályt](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) tartalmazó készletet alkalmaz az operációs rendszer védelmének fokozására. Ezek a szabályok a tűzfalakra, a naplózásra, a jelszó-házirendekre és egyebekre vonatkoznak. Ha egy gép konfigurációját sebezhetőnek találja, a Security Center egy biztonsági javaslatot állít elő. A [biztonsági beállítások szerkesztése képernyő](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) lehetővé teszi, hogy az ügyfelek testre szabják az operációs rendszer alapértelmezett biztonsági konfigurációját Security Centerban.
 
-Kivontuk ezt az előzetes funkciót. Ha a biztonsági konfigurációkat vissza szeretné állítani az alapértelmezett értékekre a lejárati dátum után, tegye a következőket az API-val vagy a PowerShell-lel az [alábbi utasítások](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization) használatával
+Kivontuk ezt az előzetes funkciót. Ha a biztonsági konfigurációkat vissza szeretné állítani az alapértelmezett értékekre a lejárati dátum után, ezt az [alábbi utasításokat követve](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)végezze el az API-n vagy a powershellen keresztül.
 
 ![Biztonsági konfigurációk szerkesztése][17]
 

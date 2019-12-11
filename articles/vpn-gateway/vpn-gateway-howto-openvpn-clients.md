@@ -1,42 +1,42 @@
 ---
-title: OpenVPN ügyfelek konfigurálása Azure VPN Gateway |} A Microsoft Docs
-description: Az Azure VPN Gateway OpenVPN ügyfelek konfigurálásának lépései
+title: Az Azure VPN Gateway OpenVPN-ügyfeleinek konfigurálása | Microsoft Docs
+description: Az OpenVPN-ügyfelek Azure-VPN Gateway konfigurálásának lépései
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: b8f1626da730178d2cd9c2f31c4f9876102b3d46
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3366f3470e01e455acacf8748830f2b15c826f49
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477847"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997156"
 ---
-# <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Azure VPN Gateway OpenVPN ügyfelek konfigurálása
+# <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Az Azure VPN Gateway OpenVPN-ügyfeleinek konfigurálása
 
-Ez a cikk segít konfigurálása **OpenVPN® protokoll** ügyfelek.
+Ez a cikk segítséget nyújt az **OpenVPN® Protocol** -ügyfelek konfigurálásához.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Győződjön meg arról, hogy végrehajtotta a OpenVPN konfigurálása a VPN-átjárót. További információkért lásd: [OpenVPN konfigurálása Azure VPN Gateway](vpn-gateway-howto-openvpn.md).
+Ellenőrizze, hogy elvégezte-e a VPN-átjáróhoz tartozó OpenVPN konfigurálásához szükséges lépéseket. Részletekért lásd: [az OpenVPN konfigurálása az Azure VPN Gatewayhoz](vpn-gateway-howto-openvpn.md).
 
-## <a name="windows"></a>Windows ügyfelek
+## <a name="windows"></a>Windows-ügyfelek
 
-1. Ügyfél letöltése és telepítése a OpenVPN (2.4-es vagy újabb verzió) a hivatalos [OpenVPN webhely](https://openvpn.net/index.php/open-source/downloads.html).
-2. Töltse le az átjáró VPN-profilját. Ezt megteheti a pont – hely konfiguráció lapon az Azure Portalon vagy a "New-AzVpnClientConfiguration" parancsot a PowerShellben.
-3. Csomagolja ki a profilt. Ezután nyissa meg a *vpnconfig.ovpn* konfigurációs fájlt a Jegyzettömbben OpenVPN mappából.
-4. [Exportálás](vpn-gateway-certificates-point-to-site.md#clientexport) a P2S-ügyféltanúsítvány során létrehozott és feltöltött a P2S konfiguráció az átjárón.
-5. Bontsa ki a titkos kulcs és a base64 ujjlenyomatot a *.pfx*. Ezt többféleképpen megteheti. OpenSSL használatával a gépén az egyik módja. A *profileinfo.txt* fájl tartalmazza a hitelesítésszolgáltató és az ügyféltanúsítványt a titkos kulcs és az ujjlenyomat. Ügyeljen arra, használja az ügyféltanúsítvány ujjlenyomatát.
+1. Töltse le és telepítse az OpenVPN-ügyfelet (2,4-es vagy újabb verzió) a hivatalos [OpenVPN webhelyről](https://openvpn.net/index.php/open-source/downloads.html).
+2. Töltse le az átjáró VPN-profilját. Ezt a Azure Portal pont – hely konfiguráció lapján teheti meg, vagy a PowerShellben a "New-AzVpnClientConfiguration".
+3. Csomagolja ki a profilt. Ezután nyissa meg a *vpnconfig. ovpn* konfigurációs fájlt az OpenVPN mappából a Jegyzettömb használatával.
+4. [Exportálja](vpn-gateway-certificates-point-to-site.md#clientexport) a létrehozott és a P2S-konfigurációba az átjárón feltöltött P2S-ügyféltanúsítványt.
+5. Bontsa ki a titkos kulcsot és a Base64 ujjlenyomatot a *. pfx*fájlból. Ezt többféleképpen megteheti. Az OpenSSL használata a gépen egy módszer. A *profileinfo. txt* fájl tartalmazza a titkos kulcsot, valamint a hitelesítésszolgáltató és az ügyféltanúsítvány ujjlenyomatát. Ügyeljen arra, hogy az ügyféltanúsítvány ujjlenyomatát használja.
 
    ```
    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
    ```
-6. Nyissa meg *profileinfo.txt* a Jegyzettömbben. Az ügyfél (gyermek) tanúsítvány ujjlenyomatának beszerzéséhez válassza ki a szöveget (köztük a és közötti) "----BEGIN CERTIFICATE---" és "----END tanúsítvány---" a gyermek tanúsítvány, és másolja azt. A gyermek tanúsítvány azonosíthatja a subject = megnézzük / sor.
-7. Váltson a *vpnconfig.ovpn* 3. lépésében a Jegyzettömbben megnyitott fájl. Az alább látható szakaszt keresés és csere mindent között "cert" és "/ cert".
+6. Nyissa meg a *profileinfo. txt fájlt* a Jegyzettömbben. Az ügyfél (gyermek) tanúsítványának ujjlenyomatának lekéréséhez jelölje ki a "-----BEGIN CERTIFICATe-----" és a "-----END CERTIFICATe-----" szöveget a gyermek tanúsítványhoz, és másolja azt. A gyermek tanúsítvány azonosításához tekintse meg a subject =/sort.
+7. Váltson arra a *vpnconfig. ovpn* fájlra, amelyet a 3. lépésben megnyitott a Jegyzettömbben. Keresse meg az alább látható szakaszt, és cserélje le a "CERT" és a "/CERT" közötti mindent.
 
    ```
    # P2S client certificate
@@ -45,8 +45,8 @@ Győződjön meg arról, hogy végrehajtotta a OpenVPN konfigurálása a VPN-át
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. Nyissa meg a *profileinfo.txt* a Jegyzettömbben. A titkos kulcs lekéréséhez válassza ki a szöveget (köztük a és közötti) "----BEGIN PRIVATE KEY----" és "----END PRIVATE KEY----", és másolja azt.
-9. Lépjen vissza a vpnconfig.ovpn fájlt a Jegyzettömbben, és ebben a szakaszban található. Illessze be a titkos kulcsot minden között cseréje és a "kulcs" és "/ kulcs".
+8. Nyissa meg a *profileinfo. txt fájlt* a Jegyzettömbben. A titkos kulcs lekéréséhez válassza ki a "-----BEGIN PRIVATE KEY-----" és a "-----END titkos kulcs-----" szöveget, és másolja azt.
+9. Térjen vissza a vpnconfig. ovpn fájlhoz a Jegyzettömbben, és keresse meg ezt a szakaszt. Illessze be a titkos kulcsot, és cserélje le a "Key" és a "/Key" közötti mindent.
 
    ```
    # P2S client root certificate private key
@@ -59,44 +59,44 @@ Győződjön meg arról, hogy végrehajtotta a OpenVPN konfigurálása a VPN-át
 11. Másolja a vpnconfig.ovpn fájlt a C:\Program Files\OpenVPN\config mappába.
 12. Kattintson a jobb gombbal az OpenVPN ikonjára a rendszertálcán, majd kattintson a Csatlakozás parancsra.
 
-## <a name="mac"></a>Mac-ügyfél
+## <a name="mac"></a>Mac-ügyfelek
 
-1. Ügyfél letöltése és telepítése egy OpenVPN, mint például [TunnelBlick](https://tunnelblick.net/downloads.html). 
-2. Töltse le az átjáró VPN-profilját. Ezt megteheti a pont – hely konfiguráció lapon, az Azure Portalon, vagy a "New-AzVpnClientConfiguration" a PowerShell használatával.
-3. Csomagolja ki a profilt. Nyissa meg a vpnconfig.ovpn konfigurációs fájlt a Jegyzettömbben OpenVPN mappából.
-4. Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. PEM formátumú tanúsítvány esetén egyszerűen nyissa meg a .cer-fájlt, és másolja a Base64-kódolású kulcsot a tanúsítványfejlécek között. Lásd: [nyilvános kulcs exportálása](vpn-gateway-certificates-point-to-site.md#cer) a tanúsítványt a kódolt nyilvános kulcs lekérésével kapcsolatos információk.
-5. Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. Lásd: [a titkos kulcs exportálását választom](https://openvpn.net/community-resources/how-to/#pki) hogyan lehet kigyűjteni a titkos kulccsal kapcsolatos információkat.
+1. Töltse le és telepítsen egy OpenVPN-ügyfelet, például [TunnelBlick](https://tunnelblick.net/downloads.html). 
+2. Töltse le az átjáró VPN-profilját. Ez a Azure Portal pont – hely konfiguráció lapján, vagy a PowerShellben a "New-AzVpnClientConfiguration" paranccsal végezhető el.
+3. Csomagolja ki a profilt. Nyissa meg a vpnconfig. ovpn konfigurációs fájlt az OpenVPN mappából a Jegyzettömbben.
+4. Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. PEM formátumú tanúsítvány esetén egyszerűen nyissa meg a .cer-fájlt, és másolja a Base64-kódolású kulcsot a tanúsítványfejlécek között. A kódolt nyilvános kulcs lekéréséhez a tanúsítvány exportálásával kapcsolatos információkért lásd: [a nyilvános kulcs exportálása](vpn-gateway-certificates-point-to-site.md#cer) .
+5. Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. A titkos kulcs kibontásával kapcsolatos információkért lásd: [a titkos kulcs exportálása](https://openvpn.net/community-resources/how-to/#pki) .
 6. Ne módosítson semmilyen egyéb mezőt. Az ügyfélbemenet kitöltött konfigurációjával csatlakozhat a VPN-hez.
-7. Kattintson duplán a profil fájlt Tunnelblick a profil létrehozásához.
-8. Indítsa el az alkalmazások mappából Tunnelblick.
-9. Kattintson a tálcán Tunnelblick ikonra, és válasszon csatlakozzon.
+7. A profil Tunnelblick való létrehozásához kattintson duplán a profil fájlra.
+8. Indítsa el a Tunnelblick az alkalmazások mappából.
+9. Kattintson a Tunnelblick ikonra a tálcán, és válassza a kapcsolat menüpontot.
 
 > [!IMPORTANT]
->Csak iOS 11.0-s vagy újabb verzió és a MacOS 10.13 és újabb OpenVPN protokoll használata támogatott.
+>Az OpenVPN protokoll csak az iOS 11,0 és újabb, valamint a MacOS 10,13 és újabb verziókat támogatja.
 >
 
 ## <a name="linux"></a>Linux-ügyfelek
 
-1. Nyisson meg egy új terminál-munkamenetben. Új munkamenet "Ctrl + Alt + t" lenyomásával megnyithatja egy időben.
-2. Adja meg a szükséges összetevők telepítése a következő parancsot:
+1. Nyisson meg egy új terminál-munkamenetet. Egy új munkamenet megnyitásához nyomja le a "CTRL + ALT + t" billentyűkombinációt egy időben.
+2. A szükséges összetevők telepítéséhez írja be a következő parancsot:
 
    ```
    sudo apt-get install openvpn
    sudo apt-get -y install network-manager-openvpn
    sudo service network-manager restart
    ```
-3. Töltse le az átjáró VPN-profilját. Ez a pont – hely konfiguráció lapon az Azure Portalon teheti meg.
-4. [Exportálás](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site#clientexport) a P2S-ügyféltanúsítvány során létrehozott és feltöltött a P2S konfiguráció az átjárón. 
-5. Bontsa ki a .pfx a titkos kulcs és a base64-ujjlenyomata. Ezt többféleképpen megteheti. OpenSSL használatával a számítógép egyik módja a.
+3. Töltse le az átjáró VPN-profilját. Ezt a Azure Portal pont – hely konfiguráció lapján teheti meg.
+4. [Exportálja](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site#clientexport) a létrehozott és a P2S-konfigurációba az átjárón feltöltött P2S-ügyféltanúsítványt. 
+5. Bontsa ki a titkos kulcsot és a Base64 ujjlenyomatot a. pfx fájlból. Ezt többféleképpen megteheti. Az OpenSSL használata a számítógépen egy módszer.
 
     ```
     openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
-   A *profileinfo.txt* fájl tartalmazza a titkos kulcs és az ujjlenyomatot a hitelesítésszolgáltató és az ügyféltanúsítványt. Ügyeljen arra, használja az ügyféltanúsítvány ujjlenyomatát.
+   A *profileinfo. txt* fájl tartalmazni fogja a titkos kulcsot és a hitelesítésszolgáltató ujjlenyomatát, valamint az ügyféltanúsítványt. Ügyeljen arra, hogy az ügyféltanúsítvány ujjlenyomatát használja.
 
-6. Nyissa meg *profileinfo.txt* egy szövegszerkesztőben. Az ügyfél (gyermek) tanúsítvány ujjlenyomatának beszerzéséhez válassza ki a szöveget, többek között, és a "----BEGIN tanúsítvány---" között "----END tanúsítvány---" a gyermek és tanúsítvány, és másolja azt. A gyermek tanúsítvány azonosíthatja a subject = megnézzük / sor.
+6. Nyissa meg a *profileinfo. txt fájlt* egy szövegszerkesztőben. Az ügyfél (gyermek) tanúsítványának ujjlenyomatának lekéréséhez válassza a "-----BEGIN CERTIFICATe-----" és a "-----END CERTIFICATe-----" szöveget, és másolja azt. A gyermek tanúsítvány azonosításához tekintse meg a subject =/sort.
 
-7. Nyissa meg a *vpnconfig.ovpn* fájlt és keresse meg az alább látható szakaszt. Cserélje le minden között a és a "cert" és "/ cert".
+7. Nyissa meg az *vpnconfig. ovpn* fájlt, és keresse meg az alább látható szakaszt. Cserélje le a és a "CERT" és a "/CERT" közötti mindent.
 
    ```
    # P2S client certificate
@@ -105,9 +105,9 @@ Győződjön meg arról, hogy végrehajtotta a OpenVPN konfigurálása a VPN-át
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. Egy szövegszerkesztőben nyissa meg a profileinfo.txt. A titkos kulcs lekéréséhez válassza ki a szöveget, például és azok között "----BEGIN titkos kulcs---" és "----END PRIVATE KEY----", és másolja azt.
+8. Nyissa meg a profileinfo. txt fájlt egy szövegszerkesztőben. A titkos kulcs beszerzéséhez válassza ki a "-----BEGIN PRIVATE KEY-----" és a "-----END titkos kulcs-----" szöveget, és másolja azt.
 
-9. Nyissa meg a vpnconfig.ovpn fájlt egy szövegszerkesztőben, és ebben a szakaszban található. Illessze be a titkos kulcsot minden között cseréje és a "kulcs" és "/ kulcs".
+9. Nyissa meg a vpnconfig. ovpn fájlt egy szövegszerkesztőben, és keresse meg ezt a szakaszt. Illessze be a titkos kulcsot, és cserélje le a "Key" és a "/Key" közötti mindent.
 
    ```
    # P2S client root certificate private key
@@ -118,22 +118,22 @@ Győződjön meg arról, hogy végrehajtotta a OpenVPN konfigurálása a VPN-át
    ```
 
 10. Ne módosítson semmilyen egyéb mezőt. Az ügyfélbemenet kitöltött konfigurációjával csatlakozhat a VPN-hez.
-11. Csatlakozhat a parancssorból, írja be a következő parancsot:
+11. A parancssor használatával történő kapcsolódáshoz írja be a következő parancsot:
   
     ```
-    sudo openvpn –-config <name and path of your VPN profile file>
+    sudo openvpn –-config <name and path of your VPN profile file>&
     ```
-12. Csatlakozhat a grafikus felhasználói felülettel, nyissa meg a rendszer beállításait.
-13. Kattintson a **+** hozzáadása egy új VPN-kapcsolat.
-14. A **hozzáadása VPN**, válasszon **Importálás fájlból...**
-15. Keresse meg a profilfájlt, és kattintson duplán vagy kivételezést **nyílt**.
-16. Kattintson a **Hozzáadás** a a **hozzáadása VPN** ablak.
+12. A grafikus felhasználói felülettel való kapcsolódáshoz lépjen a rendszerbeállítások elemre.
+13. Új VPN-kapcsolat hozzáadásához kattintson a **+** elemre.
+14. A **VPN hozzáadása**területen válassza **az importálás fájlból lehetőséget..** .
+15. Tallózással keresse meg a profil fájlt, és kattintson rá duplán, vagy válassza a **Megnyitás**lehetőséget.
+16. A **VPN hozzáadása** ablakban kattintson a **Hozzáadás** gombra.
   
-    ![Importálása fájlból](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
-17. A Kapcsolódás a VPN engedélyezésével **ON** a a **hálózati beállítások** lapon vagy a tálcán található hálózat ikonra.
+    ![Importálás fájlból](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
+17. A csatlakozáshoz **kapcsolja be a VPN-** t a **hálózati beállítások** lapon, vagy a rendszertálcán a hálózat ikon alatt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha azt szeretné, hogy a VPN-ügyfél egy másik virtuális hálózatban található erőforrások hozzáférhet, majd kövesse a [VNet – VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) cikk egy vnet – vnet kapcsolat beállításához. Ügyeljen arra, hogy a BGP engedélyezéséhez az átjárók és a kapcsolatokat, ellenkező esetben nem forgalom.
+Ha azt szeretné, hogy a VPN-ügyfelek hozzáférhessenek egy másik VNet található erőforrásokhoz, kövesse a [VNet – VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) cikk utasításait egy VNet-VNet kapcsolat beállításához. Ügyeljen arra, hogy az átjárók és a kapcsolatok esetében engedélyezze a BGP-t, ellenkező esetben a forgalom nem fog folytatódni.
 
-**"OpenVPN" a OpenVPN Inc. védjegye.**
+**Az "OpenVPN" az OpenVPN Inc védjegye.**

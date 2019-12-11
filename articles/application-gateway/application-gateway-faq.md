@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 68ce0dca3bc7c5d408bd6e8f267d238ac812a84d
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130586"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996660"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -20,7 +20,7 @@ ms.locfileid: "74130586"
 
 Az alábbi gyakori kérdések az Azure Application Gateway.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-application-gateway"></a>Mi az Application Gateway?
 
@@ -128,7 +128,7 @@ Nem. A példányok a frissítési tartományok és a tartalék tartományok köz
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Támogatja a Application Gateway a kapcsolatok kiürítését?
 
-Igen. A kapcsolatok kiürítését beállíthatja úgy, hogy megszakítsa a háttérbeli készlet tagjainak megváltoztatását. Ez a beállítás lehetővé teszi, hogy továbbra is a meglévő kapcsolatokat a korábbi célhelyre küldje, amíg a kapcsolat bezáródik vagy egy konfigurálható időtúllépés lejár. A kapcsolat kiürítése csak az aktuális, repülés közbeni kapcsolatok befejezésére vár. Application Gateway nem ismeri az alkalmazás munkamenet-állapotát.
+Igen. A kapcsolatok kiürítését beállíthatja úgy, hogy megszakítsa a háttérbeli készlet tagjainak megváltoztatását. További információ: [a Application Gateway csatlakoztatási kiürítésének szakasza](overview.md#connection-draining).
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Válthatok a példány mérete közepesről nagyra megszakítás nélkül?
 
@@ -381,6 +381,6 @@ Igen. Ha a konfiguráció megfelel a következő forgatókönyvnek, nem jelenik 
 - Rendelkezik egy NSG az Application Gateway alhálózaton
 - Engedélyezte a NSG folyamat naplóit az adott NSG
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

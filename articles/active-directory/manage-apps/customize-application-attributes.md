@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d76a11fc41fd964ff4e43518aee34aad3ecffd3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 804eb63406b33b94e70ef56e0066fa213be04708
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922669"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997054"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -139,7 +139,7 @@ A SCIM RFC egy alapszintű felhasználót és csoportot határoz meg, és lehet�
    1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com), válassza a **vállalati alkalmazások**lehetőséget, válassza ki az alkalmazást, majd válassza a **kiépítés**lehetőséget.
    2. A **leképezések**területen válassza ki azt az objektumot (felhasználót vagy csoportot), amelyhez egyéni attribútumot szeretne hozzáadni.
    3. A lap alján válassza a **Speciális beállítások megjelenítése**lehetőséget.
-   4. Válassza*a * AppName szerkesztése*elemet.
+   4. Válassza **a AppName szerkesztése**elemet.
    5. Az attribútum lista alján adja meg az egyéni attribútum adatait a megadott mezőkben. Ezután válassza az **attribútum hozzáadása**elemet.
 
 A SCIM alkalmazások esetében az attribútum nevének az alábbi példában látható mintázatot kell követnie. A "CustomExtensionName" és a "CustomAttribute" testreszabható az alkalmazás követelményei szerint, például: urn: IETF: params: scim: schemas: Extension: 2.0: CustomExtensionName: CustomAttribute

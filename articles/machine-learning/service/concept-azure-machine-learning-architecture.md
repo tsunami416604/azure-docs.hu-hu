@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36c496b77be5bfda83b3ed424a7fdf2b53101aa4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1e67fc3a2f878e5e04834f67027c98e0b37e9059
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580620"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973594"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -54,28 +54,28 @@ Ezeket az eszközöket Azure Machine Learning használhatja:
 > [!NOTE]
 > Bár ez a cikk az Azure Machine Learning által használt feltételeket és fogalmakat határozza meg, nem határozza meg az Azure platformra vonatkozó feltételeket és fogalmakat. További információ az Azure platform terminológiáról: [Microsoft Azure Szószedet](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
 
-## <a name="glossary"></a>Szószedet
+## <a name="glossary"></a>Fogalmak
 + <a href="#activities">Tevékenység</a>
 + <a href="#compute-instance">Notebook VM</a>
 + <a href="#compute-targets">Számítási célok</a>
 + <a href="#datasets-and-datastores">Adathalmaz & adattárolók</a>
 + <a href="#endpoints">Végpontok</a>
-+ <a href="#environments">Környezetben</a>
++ <a href="#environments">Környezetek</a>
 + [Becslések](#estimators)
 + <a href="#experiments">Kísérletek</a>
 + <a href="#github-tracking-and-integration">Git-követés</a>
 + <a href="#iot-module-endpoints">IoT modulok</a>
-+ <a href="#logging">Naplózás</a>
++ <a href="#logging">Logging</a>
 + <a href="#ml-pipelines">ML-folyamatok</a>
 + <a href="#models">Modellek</a>
-+ <a href="#runs">Futtassa</a>
++ <a href="#runs">Futtatás</a>
 + <a href="#run-configurations">Konfiguráció futtatása</a>
 + <a href="#snapshots">Pillanatkép</a>
 + <a href="#training-scripts">Betanítási szkript</a>
 + <a href="#web-service-endpoint">Webszolgáltatások</a>
 + <a href="#workspaces">Munkaterület</a>
 
-### <a name="activities"></a>Tevékenységek
+### <a name="activities"></a>Activities (Tevékenységek)
 
 A tevékenységek hosszú ideig futó műveletet jelentenek. A következő műveletek példák a tevékenységekre:
 
@@ -106,7 +106,7 @@ További információ: [Azure Machine learning adatkészletek létrehozása és 
 
 Az **adattár** egy Azure Storage-fiókon keresztüli adattárolási absztrakt. Az adattár egy Azure BLOB-tárolót vagy egy Azure-fájlmegosztást használhat háttérbeli tárolóként. Minden munkaterülethez tartozik egy alapértelmezett adattár, amely további adattárolókat is regisztrálhat. A Python SDK API-val vagy a Azure Machine Learning CLI-vel fájlokat tárolhat és kérhet le az adattárból.
 
-### <a name="endpoints"></a>Végpontok
+### <a name="endpoints"></a>Endpoints (Végpontok)
 
 A végpontok a modell példányai egy olyan webszolgáltatásba, amely a felhőben vagy egy IoT modulban üzemeltethető az integrált eszközök üzembe helyezéséhez.
 
@@ -232,7 +232,7 @@ Példaként tekintse meg az [oktatóanyag: képbesorolási modell Betanítása A
 
 [A munkaterület](concept-workspace.md) a Azure Machine learning legfelső szintű erőforrása. Központi helyet biztosít a Azure Machine Learning használatakor létrehozott összes összetevővel való együttműködéshez. A munkaterületeket másokkal is megoszthatja. A munkaterületek részletes ismertetését lásd: [Mi az Azure Machine learning munkaterület?](concept-workspace.md).
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 A Azure Machine Learning megkezdéséhez tekintse meg a következőt:
 

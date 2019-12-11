@@ -1,17 +1,17 @@
 ---
 title: Lassú lekérdezési naplók – Azure Database for MariaDB
 description: Ismerteti a Azure Database for MariaDBban elérhető naplókat, valamint a különböző naplózási szintek engedélyezéséhez elérhető paramétereket.
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 8a451b06c8166b48fd892050e53204e2b65856c3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 9b9babc9db9dd7fa225b9649d4ac96b15debec2b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772104"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976315"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Lassú lekérdezési naplók a Azure Database for MariaDB
 Azure Database for MariaDB a lassú lekérdezési napló elérhető a felhasználók számára. A tranzakciónaplóhoz való hozzáférés nem támogatott. A lassú lekérdezési napló használatával azonosíthatók a hibaelhárítási teljesítménybeli szűk keresztmetszetek.
@@ -25,6 +25,8 @@ A Azure Portal válassza ki a Azure Database for MariaDB kiszolgálót. A **figy
 
 Az Azure CLI-vel kapcsolatos további információkért lásd: [kiszolgálók naplófájljainak konfigurálása és elérése az Azure CLI használatával](howto-configure-server-logs-cli.md).
 
+Hasonlóképpen, a naplók Azure Monitor a diagnosztikai naplók használatával is átadhatók. További információért lásd [alább](concepts-server-logs.md#diagnostic-logs) .
+
 ## <a name="log-retention"></a>Napló megőrzése
 A naplók akár hét napig is elérhetők a létrehozásuk után. Ha a rendelkezésre álló naplók teljes mérete meghaladja a 7 GB-ot, a rendszer törli a legrégebbi fájlokat, amíg a szabad terület elérhetővé válik.
 
@@ -35,10 +37,11 @@ Alapértelmezés szerint a lassú lekérdezési napló le van tiltva. Az engedé
 
 Az egyéb paraméterek a következők:
 
-- **long_query_time**: Ha a lekérdezés a lekérdezés naplózása long_query_time (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték 10 másodperc.
+- **long_query_time**: Ha a lekérdezés a lekérdezés naplózása long_query_time (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték a 10 másodperc.
 - **log_slow_admin_statements**: Ha a on olyan felügyeleti utasítások is szerepelnek, mint például a ALTER_TABLE és a ANALYZE_TABLE a slow_query_logba írt utasításokban.
 - **log_queries_not_using_indexes**: meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e a slow_query_log
 - **log_throttle_queries_not_using_indexes**: Ez a paraméter korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, amikor a log_queries_not_using_indexes be van állítva.
+- **log_output**: Ha a "fájl", lehetővé teszi a lassú lekérdezési napló írását a helyi kiszolgáló tárterületére és a diagnosztikai naplók Azure Monitorére. Ha "nincs", a lassú lekérdezési napló csak a helyi kiszolgáló tárterületére lesz írva. 
 
 A lassú lekérdezési napló paramétereinek teljes leírását a MariaDB [lassú lekérdezési napló dokumentációjában](https://mariadb.com/kb/en/library/slow-query-log-overview/) találja.
 
@@ -75,7 +78,7 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 | `insert_id_s` | AZONOSÍTÓ beszúrása |
 | `sql_text_s` | Teljes lekérdezés |
 | `server_id_s` | Kiszolgáló azonosítója |
-| `thread_id_s` | Szál azonosítója |
+| `thread_id_s` | Szálazonosító |
 | `\_ResourceId` | Erőforrás URI-ja |
 
 ## <a name="next-steps"></a>Következő lépések

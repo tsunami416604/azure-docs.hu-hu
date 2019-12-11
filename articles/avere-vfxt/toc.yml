@@ -38,6 +38,8 @@
       href: avere-vfxt-demo-links.md
     - name: Gyakori kérdések az Azure-hoz készült Avere vFXT-ről
       href: avere-vfxt-faq.md
+    - name: Vészhelyreállítási útmutató
+      href: disaster-recovery.md
     - name: További dokumentáció
       items:
         - name: Kiegészítő dokumentáció

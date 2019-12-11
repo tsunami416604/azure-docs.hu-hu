@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2019
+ms.date: 12/09/2019
 ms.author: takamath
-ms.openlocfilehash: 1bb5d979ff7c9fe6e2afec4c7ebd81649b4488e3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4549ee0f50c06040b70307c96b5ca96cd4162214
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581232"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974289"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>Kapcsolódás a virtuális gépekhez egy böngészőben 
 
@@ -26,10 +26,9 @@ A DevTest Labs integrálható az [Azure Bastion](https://docs.microsoft.com/azur
 
 Ha a *böngésző kapcsolódása* engedélyezve van, a labor-felhasználók egy böngészőben érhetik el a virtuális gépeket.  
 
-
 ## <a name="create-a-lab-virtual-machine"></a>Tesztkörnyezet virtuális gép létrehozása
 
-Először létre kell hoznia a labor virtuális gépet egy olyan VNet belül, amelyen a Bastion konfigurálva van. A virtuális gépek létrehozásakor a **Speciális beállítások** lapon választhatja ki a VNet.
+Először létre kell hoznia a labor virtuális gépet egy olyan virtuális hálózaton belül, amelyen a Bastion konfigurálva van. Válassza ki a létrehozott második **alhálózatot** , ne pedig a AzureBastionSubnet. A virtuális hálózatot a **Speciális beállítások** lapon választhatja ki a virtuális gépek létrehozása során.
 
 ![Virtuális gép létrehozása](./media/connect-virtual-machine-through-browser/create-virtual-machine.png)
 
@@ -39,6 +38,6 @@ A virtuális gép létrehozása után elindíthatja azt egy böngészőben, ha a
 
 ![Indítás böngészőben](./media/connect-virtual-machine-through-browser/browser-connect.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Virtuális gép hozzáadása laborhoz Azure DevTest Labs](devtest-lab-add-vm.md)

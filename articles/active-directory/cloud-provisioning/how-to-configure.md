@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 956962503dcb3a6355d455ff96744143c5965d1e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f08a1359cfd8a2793d92315a6b03567b0b3f847d
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794301"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997122"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-new-configuration"></a>Azure AD Connect a felhő üzembe helyezésének új konfigurációját
 
@@ -32,8 +32,7 @@ A kiépítés konfigurálásához kövesse az alábbi lépéseket:
 
 4.  Kattintson az **Új konfiguráció**elemre.
 5.  A konfigurációs képernyőn a helyszíni tartomány előre fel van töltve
-6. Adja meg az **értesítő e-mailt**. Az e-mail értesítést kap 
-7. Ha a kiépítés nem kifogástalan állapotú.  
+6. Adja meg az **értesítő e-mailt**. Az e-mail értesítést kap, ha a kiépítés nem kifogástalan.  
 8. Helyezze át a választót az **engedélyezéshez** , majd kattintson a **Mentés**gombra.
 ![](media/tutorial-single-forest/configure2.png)
 

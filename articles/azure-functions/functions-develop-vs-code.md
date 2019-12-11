@@ -3,12 +3,12 @@ title: Azure Functions fejlesztése a Visual Studio Code használatával
 description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functions a Visual Studio Code-hoz készült Azure Functions bővítménnyel.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: f9ad40cd50863990b9af629c77321195dce5e97c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cf96a0630440904282f076de2f916fb3dbf3eb1c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227052"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975584"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions fejlesztése a Visual Studio Code használatával
 
@@ -20,7 +20,7 @@ A Azure Functions bővítmény a következő előnyöket biztosítja:
 * Tegye közzé a Azure Functions projektet közvetlenül az Azure-ban.
 * A Visual Studio Code előnyeinek kihasználásával különböző nyelveken írhat függvényeket.
 
-A bővítmény a következő nyelvekkel használható, amelyeket a Azure Functions 2. x verziójú futtatókörnyezet támogat:
+A bővítmény a következő nyelvekkel használható, amelyeket a Azure Functions Runtime a 2. x verziótól kezdődően támogat:
 
 * [C#lefordított](functions-dotnet-class-library.md)
 * <sup></sup> [ C# parancsfájl](functions-reference-csharp.md)*
@@ -138,7 +138,7 @@ A Visual Studio Code lehetővé teszi kötések hozzáadását a function. JSON 
 
 A következő példa arra kéri, hogy adjon meg egy új tárolási kimeneti kötést:
 
-| Kérdés | Érték | Leírás |
+| Kérdés | Value (Díj) | Leírás |
 | -------- | ----- | ----------- |
 | **Kötési irány kiválasztása** | `out` | A kötés kimeneti kötés. |
 | **Kötés kijelölése iránysal** | `Azure Queue Storage` | A kötés egy Azure Storage-várólista kötése. |
@@ -218,7 +218,7 @@ A következő lépésekkel teheti közzé a projektjét a speciális létrehozá
 
 1. Az utasításokat követve adja meg a következő információkat:
 
-    | Kérdés | Érték | Leírás |
+    | Kérdés | Value (Díj) | Leírás |
     | ------ | ----- | ----------- |
     | Function app kiválasztása az Azure-ban | Új függvényalkalmazás létrehozása az Azure-ban | A következő üzenetben írjon be egy globálisan egyedi nevet, amely azonosítja az új Function alkalmazást, majd válassza az ENTER billentyűt. A függvényalkalmazás nevéhez használható érvényes karakterek a következők: `a-z`, `0-9` és `-`. |
     | Operációs rendszer kiválasztása | Windows | A Function alkalmazás Windows rendszeren fut. |
@@ -263,7 +263,7 @@ A Azure Functions bővítmény lehetővé teszi functions-projekt futtatását a
 
 A functions-projekt helyi futtatásához meg kell felelnie a következő további követelményeknek:
 
-* Telepítse a [Azure functions Core Tools](functions-run-local.md#v2)2. x verzióját. A rendszer automatikusan letölti és telepíti a központi eszközkészletet a projekt helyi indításakor. Az alapvető eszközök tartalmazzák a teljes Azure Functions futtatókörnyezetet, így a letöltés és a telepítés is eltarthat egy ideig.
+* Telepítse a [Azure functions Core Tools](functions-run-local.md#v2)2. x vagy újabb verzióját. A rendszer automatikusan letölti és telepíti a központi eszközkészletet a projekt helyi indításakor. Az alapvető eszközök tartalmazzák a teljes Azure Functions futtatókörnyezetet, így a letöltés és a telepítés is eltarthat egy ideig.
 
 * Telepítse az Ön által választott nyelvhez tartozó követelményeket:
 
@@ -404,7 +404,7 @@ A Azure Functions bővítmény egy hasznos grafikus felületet biztosít az Azur
 | **Azure Functions Core Tools telepítése vagy frissítése** | A [Azure functions Core Tools]telepítése vagy frissítése, amely a függvények helyi futtatására szolgál. |
 | **Ismételt üzembe helyezése**  | Lehetővé teszi, hogy egy csatlakoztatott git-tárházból újratelepítse a projektfájlok egy adott üzembe helyezését az Azure-ban. Ha újra közzé szeretné tenni a helyi frissítéseket a Visual Studio Code-ból, [tegye közzé újra a projektet](#republish-project-files). |
 | **Beállítások átnevezése** | Megváltoztatja egy meglévő Function app-beállítás kulcsának nevét az Azure-ban. Ez a parancs nem érinti a helyi. Settings. JSON fájl beállításait. Miután átnevezte az Azure-beli beállításokat, [töltse le ezeket a módosításokat a helyi projektbe](#download-settings-from-azure). |
-| **Indítsa újra** | Újraindítja a Function alkalmazást az Azure-ban. A frissítések telepítése a Function alkalmazást is újraindítja. |
+| **Újraindítás** | Újraindítja a Function alkalmazást az Azure-ban. A frissítések telepítése a Function alkalmazást is újraindítja. |
 | **AzureWebJobsStorage beállítása**| Beállítja a `AzureWebJobsStorage` alkalmazás beállítás értékét. Ezt a beállítást a Azure Functions kötelező megadni. Akkor van beállítva, amikor egy Function-alkalmazás létrejön az Azure-ban. |
 | **Kezdés** | Elindít egy leállított Function alkalmazást az Azure-ban. |
 | **Adatfolyam-naplók indítása** | Elindítja az Azure-beli Function alkalmazás adatfolyam-naplóit. Ha a naplózási információkat közel valós időben kell megtekinteni, használja az Azure-ban a távoli hibaelhárítás során használt adatfolyam-naplókat. További információ: [streaming logs](#streaming-logs). |

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Az Bing Web Search SDK használata a következőhöz:C#'
+title: 'Rövid útmutató: A C#-hez készült Bing Web Search SDK használata'
 titleSuffix: Azure Cognitive Services
 description: A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a C#-alkalmazásába. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 services: cognitive-services
@@ -8,22 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 04/15/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 5e893fda5a0e71703eb867c045de19d391c012ed
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 2c55aaa0843574981a7643b11161700992ea0b09
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018214"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976451"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Gyors útmutató: Az Bing Web Search SDK használata a következőhöz:C#
+# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Rövid útmutató: A C#-hez készült Bing Web Search SDK használata
 
 A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a C#-alkalmazásába. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
@@ -33,6 +29,8 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
   * [C# a Visual Studio Code-hoz](https://visualstudio.microsoft.com/downloads/)
   * [NuGet-csomagkezelő](https://github.com/jmrog/vscode-nuget-package-manager)
 * [.NET Core SDK](https://www.microsoft.com/net/download)
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-install-dependencies"></a>Projekt létrehozása és a függőségek telepítése
 
@@ -422,7 +420,7 @@ Ez a példa az `answer_count`, a `promote` és a `safe_search` paraméter segít
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót az alkalmazás kódjából.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Cognitive Services Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)

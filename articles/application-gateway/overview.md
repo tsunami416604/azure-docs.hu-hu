@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a61b1a44419ac35efa5888de2b5a6e4988dfb512
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 29962fa217c34088ed17fdea68c2c1189a3bfcd2
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422310"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996578"
 ---
 # <a name="what-is-azure-application-gateway"></a>Mi az Azure Application Gateway?
 
@@ -111,7 +111,7 @@ További információ: [WebSocket-támogatás](https://docs.microsoft.com/azure/
 
 ## <a name="connection-draining"></a>Kapcsolatkiürítés
 
-A kapcsolatkiürítéssel zökkenőmentesen végrehajtható a háttérkészlettagok eltávolítása a tervezett szolgáltatásfrissítések során. E beállítás engedélyezése háttérbeli HTTP-beállítással történik, és a szabálylétrehozás keretében az adott háttérkészlet összes tagjára alkalmazható. Ha engedélyezve van, Application Gateway biztosítja, hogy a háttér-készletek összes példánya ne kapjon új kérést, miközben a meglévő kérések a beállított időkorláton belül befejeződik. Ez mind a háttérbeli példányokra vonatkozik, amelyeket a rendszer egy API-hívással kifejezetten eltávolít a háttérbeli készletből, és a háttérbeli példányokat, amelyeket az állapot-mintavételek határoznak meg.
+A kapcsolatkiürítéssel zökkenőmentesen végrehajtható a háttérkészlettagok eltávolítása a tervezett szolgáltatásfrissítések során. E beállítás engedélyezése háttérbeli HTTP-beállítással történik, és a szabálylétrehozás keretében az adott háttérkészlet összes tagjára alkalmazható. Ha engedélyezve van, a Application Gateway biztosítja, hogy a háttér-készletek összes regisztrációja ne kapjon új kérést, miközben lehetővé teszi a meglévő kérelmek befejezését egy beállított időkorláton belül. Ez mindkét háttérbeli példányra vonatkozik, amelyeket a rendszer kifejezetten eltávolít a háttérbeli készletből egy felhasználói konfigurációs módosítással, és a háttérbeli példányokat, amelyeket a rendszer nem kifogástalanként jelentett a Health-Szondák által meghatározott módon. Ez alól egyetlen kivétel a példányok deregisztrációja, amelyek explicit módon lettek törölve, mert az átjáró által felügyelt munkamenet affinitása miatt a rendszer továbbra is a deregistering instances-ben marad.
 
 További információkért tekintse meg a [Application Gateway konfiguráció áttekintése](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining)című szakaszt.
 
@@ -146,12 +146,12 @@ Az alábbi táblázat az egyes Application Gateway v1-példányok átlagos telje
 | Az átlagos háttér-oldal válaszának mérete | Kicsi | Közepes | Nagy |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mbps |13 Mbps |50 Mb/s |
-| 100 KB |35 Mbps |100 Mbps |200 Mbps |
+| 100 KB |35 Mbps |100 Mb/s |200 Mb/s |
 
 > [!NOTE]
 > Ezek az értékek az alkalmazásátjáró hozzávetőleges átviteli sebességét jelzik. A tényleges átvitel számos környezeti tényezőtől függ, például az átlagos lapmérettől, a háttérpéldányok helyétől és a lapkiszolgálás feldolgozási időtartamától. A pontos teljesítményszámokhoz saját teszteket kell futtatnia. Ezek az értékek csupán útmutatóul szolgálnak a kapacitástervezéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az igényeitől és a környezetétől függően az Azure Portallal, az Azure PowerShellel vagy az Azure CLI-vel hozhat létre egy Application Gateway-tesztet:
 

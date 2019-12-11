@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Szöveg nyelvének észlelése – Translator Text API'
+title: 'Gyors útmutató: szöveg nyelvének észlelése – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan derítheti fel a megadott szöveg nyelvét a Translator Text REST API használatával.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 09/05/2019
+ms.date: 12/09/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 3d5184a531e86bdfbb49464a3bc048844e713503
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5164ed71b2a513b8d82bee1108964f2f44f710ac
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827857"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975788"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-detect-text-language"></a>Gyors útmutató: A Translator Text API használata a szöveg nyelvének észleléséhez
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language"></a>Gyors útmutató: a Translator Text API használata a szöveg nyelvének észleléséhez
 
 Ebből a rövid útmutatóból megtudhatja, hogyan derítheti fel a megadott szöveg nyelvét a Translator Text REST API.
 
@@ -54,7 +54,7 @@ Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra
 
 ::: zone-end
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Szöveg lefordítása](quickstart-translate.md)
 * [Szöveg átírása](quickstart-transliterate.md)

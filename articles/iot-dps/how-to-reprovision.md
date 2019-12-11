@@ -1,18 +1,18 @@
 ---
 title: Eszközök újraépítése az Azure IoT Hub Device Provisioning Serviceban
-description: Megtudhatja, hogyan hozhatja létre az eszközöket az eszköz kiépítési szolgáltatásának példányával, és miért lehet erre szükség.
+description: Megtudhatja, hogyan hozhatja létre az eszközöket az eszközök kiépítési szolgáltatásával (DPS), és miért kell ezt megtennie.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: f28dc20a107e9dfdbf252ea614ed4007eafddcd4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229708"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974904"
 ---
 # <a name="how-to-reprovision-devices"></a>Eszközök újraépítése
 
@@ -90,7 +90,7 @@ A beléptetési bejegyzés újraépítési szabályzata határozza meg, hogy az 
 Például a kiépítési kérelmek egy eszközről történő küldésének kódja a rendszerindítási folyamat során: [szimulált eszköz automatikus kiépítés](quick-create-simulated-device.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
 - További részletekért lásd: [az előzőleg automatikusan kiépített eszközök](how-to-unprovision-devices.md) kiépítése. 

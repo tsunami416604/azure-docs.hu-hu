@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: fb092a3c6b473680480c3bba0ad6f437176833de
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3e344afc29ae398394a1aa2aa527f2f32e24eef7
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576404"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997190"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>A virtuális gépekhez való hozzáférés kezelése igény szerint
 
-Az igény szerinti (JIT) virtuálisgép-hozzáférés lehetővé teszi az Azure-beli virtuális gépek bejövő forgalmának zárolását, így csökkentve a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez, ha szükséges.
+A virtuális gépek igény szerinti (JIT) elérésével zárolhatja az Azure-beli virtuális gépek bejövő forgalmát. Ezzel csökkenti a támadásoknak való kitettséget, ugyanakkor könnyű hozzáférést biztosít arra az esetre, amikor csatlakozni kell a virtuális gépekhez.
 
 > [!NOTE]
 > Az igény szerinti funkció a Security Center standard szintű csomagjában érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
@@ -99,7 +99,7 @@ A Security Centerban beállíthat egy JIT-szabályzatot, és egy JIT-házirendde
       - 5986 – WinRM
 6. Emellett egyéni portokat is konfigurálhat:
 
-      1. Kattintson az **Add** (Hozzáadás) parancsra. Megnyílik a **port hozzáadása konfiguráció** ablak.
+      1. Kattintson a **Hozzáadás** parancsra. Megnyílik a **port hozzáadása konfiguráció** ablak.
       2. Minden olyan port esetében, amelyet úgy szeretne konfigurálni, hogy az alapértelmezett és az egyéni beállítást is testreszabja, a következő beállításokat szabhatja testre:
 
     - **Protokoll típusa**– a kérelem jóváhagyásakor a porton engedélyezett protokoll.
@@ -176,10 +176,10 @@ Az Ön kényelme érdekében közvetlenül a JIT használatával tud csatlakozni
 
 Ahhoz, hogy könnyen el lehessen érni a virtuális gépek igény szerinti elérését, beállíthatja, hogy a virtuális gép csak az igény szerinti hozzáférést engedélyezze közvetlenül a virtuális gépről.
 
-1. A Azure Portal válassza a **virtuális gépek**lehetőséget.
-2. Kattintson arra a virtuális gépre, amelyre korlátozni szeretné az igény szerinti hozzáférést.
-3. A menüben kattintson a **konfiguráció**elemre.
-4. Az igény szerinti **hozzáférés** területen kattintson az igény szerinti **házirend engedélyezése**lehetőségre. 
+1. A [Azure Portal](https://ms.portal.azure.com)keresse meg és válassza ki a **virtuális gépek**elemet. 
+2. Válassza ki azt a virtuális gépet, amelyre korlátozni szeretné az igény szerinti hozzáférést.
+3. A menüben válassza a **Konfigurálás**lehetőséget.
+4. Az igény szerinti **hozzáférés**területen válassza az igény szerinti **házirend engedélyezése**lehetőséget. 
 
 Ez a virtuális gép igény szerinti elérését teszi lehetővé a következő beállításokkal:
 
@@ -227,7 +227,7 @@ Az igény szerinti virtuálisgép-hozzáférési szolgáltatás a Azure Security
 
 ## <a name="jit-vm-access-via-powershell"></a>JIT VM-hozzáférés a PowerShell használatával
 
-Az igény szerinti virtuálisgép-hozzáférési megoldás PowerShell használatával történő használatához használja a hivatalos Azure Security Center PowerShell-parancsmagokat, és kifejezetten `Set-AzJitNetworkAccessPolicy`.
+Az igény szerinti virtuálisgép-hozzáférési megoldás PowerShell használatával történő használatához használja a hivatalos Azure Security Center PowerShell-parancsmagokat, és különösen `Set-AzJitNetworkAccessPolicy`.
 
 Az alábbi példa egy igény szerinti virtuálisgép-hozzáférési szabályzatot állít be egy adott virtuális gépen, és beállítja a következőket:
 
@@ -283,7 +283,7 @@ Futtassa a következőt a PowerShellben:
 
 További információt a PowerShell-parancsmag dokumentációjában talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan férhet hozzá az Azure-beli virtuális gépekhez való hozzáféréshez, Security Center az igény szerinti virtuálisgép-hozzáférés szabályozását.
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:

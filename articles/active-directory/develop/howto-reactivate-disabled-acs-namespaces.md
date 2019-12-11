@@ -1,6 +1,6 @@
 ---
-title: A letiltott Azure Access Control Service (ACS) névterek újraaktiválása
-description: Megtudhatja, hogyan keresheti meg és engedélyezheti Azure Access Control Service (ACS) névtereit, és hogyan kérheti a bővítményt, hogy a 2019. február 4-én engedélyezze őket.
+title: Letiltott Azure Access Control Service (ACS) névterek újraaktiválása
+description: Megkeresheti és engedélyezheti az Azure Access Control Service (ACS) névtereit, és megadhat egy bővítményt, hogy az a 2019. február 4-én is engedélyezve legyen.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 590fc99861035ce1a5219a3cfd788159c6c2a19b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9cc038e67e5528a52b0b98ea1698da07e8120242
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917709"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966945"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Útmutató: a letiltott Access Control Service névterek újraaktiválása
 

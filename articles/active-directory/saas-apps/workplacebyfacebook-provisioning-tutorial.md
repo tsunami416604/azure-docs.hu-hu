@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee091d1c8f0f477354f6bb422d041278ec5668e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c10171ae59772f58411997d16dc4ad1472e94e29
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574262"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996935"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: a munkahelyi környezet konfigurálása a Facebook használatával a felhasználók automatikus üzembe helyezéséhez
 
@@ -99,7 +99,7 @@ További információ az automatikus kiépítés konfigurálásáról: [https://
 Most már létrehozhat egy teszt fiókot is. Várjon akár 20 percet, és ellenőrizze, hogy a fiók szinkronizálva lett-e a munkahelyi Facebook-nal.
 
 > [!NOTE]
-> A Facebook csapata szorosan együttműködik a munkahelytel, hogy az Azure AD-alkalmazás jóvá legyen hagyva, és megfeleljen az új irányelveknek. A munkahelyen Facebook-határidők december 16-iak, és várhatóan megfelelünk ennek. Ebben az időben nem várható az ügyfelek munkája. 28 – február-2020 között az ügyfeleknek át kell térniük az új integrációra. Az áttelepítési útvonal elérhetővé tételét azonnal itt tesszük közzé.    
+> Jóváhagyták az Azure AD harmadik féltől származó alkalmazást a munkahelyen a Facebookban. Az ügyfelek nem fognak megszakítani a szolgáltatást december 16-án. Megjelenik egy Megjegyzés a munkahelyen a Facebook felügyeleti konzolon, amely a 28 – február-2020 határidőt jelzi, ha az új alkalmazásra kell áttérnie. Dolgozunk azon, hogy az átállás a lehető legegyszerűbb legyen, és itt a hónap végéig elérhetővé kell tenni a frissítést.
 
 ## <a name="additional-resources"></a>További források
 

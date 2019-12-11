@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: 8f1639a21e3783f587904c2a8085fd2f555ff5b8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: a0b0a4e89242103811f20071b7235c825c9d8bd2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900349"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967524"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player áttekintése
 
@@ -50,6 +50,10 @@ A videó streamek diagnosztizálásának figyeléséhez használhatja a [Azure M
 ## <a name="set-up-azure-media-player-in-your-html"></a>Azure Media Player beállítása a HTML-ben
 
 A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igénybe, hogy lekérje a médiatartalom alapszintű lejátszását a Media Services-fiókjából. A Azure Media Player beállításával és konfigurálásával kapcsolatos részletekért tekintse meg [Azure Media Player dokumentációját](https://aka.ms/ampdocs) . 
+
+## <a name="additional-notes"></a>További megjegyzések
+
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
 ## <a name="next-steps"></a>Következő lépések
 

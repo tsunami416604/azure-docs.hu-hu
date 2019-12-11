@@ -1,97 +1,112 @@
 ---
-title: Tudnivalók Azure pont – hely VPN-kapcsolatok |} A Microsoft Docs
-description: Ez a cikk segít megérteni a pont – hely kapcsolatokhoz, és segít eldönteni, melyik P2S VPN gateway hitelesítési típus használata.
+title: Tudnivalók az Azure pont – hely VPN-kapcsolatokról | Microsoft Docs
+description: Ez a cikk segítséget nyújt a pont – hely kapcsolatok megismeréséhez, és segít eldönteni, hogy a P2S VPN-átjáró milyen hitelesítési típust használjon.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: f1e014bb14b2b5c1ae924f4371e08aa8bf8698f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7305976060cb5df01f683b3310e59644d7e45b35
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056467"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975091"
 ---
-# <a name="about-point-to-site-vpn"></a>Tudnivalók a pont – hely VPN
+# <a name="about-point-to-site-vpn"></a>Tudnivalók a pont – hely VPN-ről
 
-A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat létesítéséhez a kapcsolatot az ügyfélszámítógépről kell elindítani. Ez a megoldás főleg távmunkások számára hasznos, akik egy távoli helyről szeretnének csatlakozni egy Azure virtuális hálózatokhoz, például otthonról vagy konferenciáról. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni. Ez a cikk a Resource Manager-alapú üzemi modell vonatkozik.
+A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A P2S-kapcsolat létesítéséhez a kapcsolatot az ügyfélszámítógépről kell elindítani. Ez a megoldás főleg távmunkások számára hasznos, akik egy távoli helyről szeretnének csatlakozni egy Azure virtuális hálózatokhoz, például otthonról vagy konferenciáról. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni. Ez a cikk a Resource Manager-alapú üzemi modell vonatkozik.
 
-## <a name="protocol"></a>Milyen protokollokat használ P2S?
+## <a name="protocol"></a>Milyen protokollt használ a P2S?
 
-Pont – hely VPN a következő protokollok egyikét használhatja:
+A pont – hely típusú VPN a következő protokollok egyikét használhatja:
 
-* **OpenVPN® protokoll**, az SSL/TLS-alapú VPN-protokoll. Az SSL VPN-megoldás behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva a 443-as port kimenő, amely SSL használja. OpenVPN használható csatlakozás Android, iOS-hez (11.0-s verzió vagy újabb verzió), Windows, Linux és Mac-eszközök (OSX verziói 10.13 és újabb).
+* **OpenVPN® protokoll**, SSL/TLS-alapú VPN protokoll. Az SSL VPN-megoldás képes behatolni a tűzfalakba, mivel a legtöbb tűzfal a 443-es TCP-portot nyitja meg, amelyet az SSL használ. Az OpenVPN az Android, az iOS (11,0-es és újabb verziók), a Windows, a Linux és a Mac rendszerű eszközök (OSX 10,13-es és újabb verziók) használatával való kapcsolódásra használható.
 
-* Secure Socket Tunneling Protocol (SSTP), egy egyéni SSL-alapú VPN-protokollt. Az SSL VPN-megoldás behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva a 443-as port kimenő, amely SSL használja. Az SSTP csak a Windows-eszközökön támogatott. Az Azure Windows SSTP (Windows 7 és újabb) rendelkező összes verziója támogatja.
+* A Secure Socket Tunneling Protocol (SSTP) egy saját SSL-alapú VPN-protokoll. Az SSL VPN-megoldás képes behatolni a tűzfalakba, mivel a legtöbb tűzfal a 443-es TCP-portot nyitja meg, amelyet az SSL használ. Az SSTP csak Windows-eszközökön támogatott. Az Azure a Windows összes olyan verzióját támogatja, amely SSTP-t (Windows 7 és újabb) tartalmaz.
 
 * IKEv2 VPN, egy szabványalapú IPsec VPN-megoldás. Az IKEv2 VPN segítségével Macről is lehetségessé válik a csatlakozás (OSX 10.11-es vagy újabb verziók használata esetén).
 
 
 >[!NOTE]
->Az IKEv2 és a p2s OpenVPN csak a Resource Manager üzemi modell érhető el. Ezek nem érhető el a klasszikus üzemi modellhez.
+>A IKEv2 és az OpenVPN for P2S csak a Resource Manager-alapú üzemi modellhez érhető el. A klasszikus üzemi modell esetében nem érhetők el.
 >
 
-## <a name="authentication"></a>P2S VPN-ügyfelek hitelesítésének módját?
+## <a name="authentication"></a>Hogyan történik a P2S VPN-ügyfelek hitelesítése?
 
-Azure a P2S VPN kapcsolatot fogad el, mielőtt a felhasználó rendelkezik, először hitelesíteni. Nincsenek két Azure által kínált csatlakozó felhasználó hitelesítéséhez mechanizmus.
+Mielőtt az Azure elfogadja a P2S VPN-kapcsolatát, előbb hitelesítenie kell a felhasználót. Az Azure két olyan mechanizmust kínál, amely egy csatlakozó felhasználó hitelesítésére szolgál.
 
-### <a name="authenticate-using-native-azure-certificate-authentication"></a>Hitelesítés az Azure natív tanúsítványalapú hitelesítésének használatával
+### <a name="authenticate-using-native-azure-certificate-authentication"></a>Hitelesítés natív Azure tanúsítványalapú hitelesítés használatával
 
-Amikor az Azure natív tanúsítványalapú hitelesítésének használatával, egy ügyféltanúsítvány, amely az eszköz segítségével hitelesíteni a csatlakozó felhasználó. Ügyféltanúsítvány egy megbízható főtanúsítványból létrehozott ügyféltanúsítvány és majd az egyes ügyfélszámítógépekre telepített. Egy nagyvállalati megoldás használatával létrehozott főtanúsítványt is használhatja, vagy létrehozhat egy önaláírt tanúsítványt.
+A natív Azure-tanúsítvány hitelesítésének használatakor a rendszer az eszközön lévő ügyféltanúsítványt használja a csatlakozó felhasználó hitelesítéséhez. Az ügyféltanúsítványok egy megbízható főtanúsítványból jönnek létre, majd az egyes ügyfélszámítógépekre települnek. Használhat egy vállalati megoldással létrehozott főtanúsítványt, vagy létrehozhat egy önaláírt tanúsítványt.
 
-Az ügyféltanúsítvány érvényesítése a VPN-átjáró végzi, és a P2S VPN-kapcsolat létrehozása során történik. A legfelső szintű tanúsítvány szükséges az érvényesítés, és fel kell tölteni az Azure-bA.
+Az ügyféltanúsítvány érvényesítését a VPN-átjáró hajtja végre, és a P2S VPN-kapcsolat létrehozása során történik. Az ellenőrzéshez a főtanúsítvány szükséges, és az Azure-ba kell feltölteni.
 
-### <a name="authenticate-using-active-directory-ad-domain-server"></a>Hitelesítés az Active Directory (AD) tartományhoz kiszolgáló használatával
+### <a name="authenticate-using-native-azure-active-directory-authentication"></a>Hitelesítés natív Azure Active Directory hitelesítés használatával
 
-AD-tartományhitelesítés lehetővé teszi a felhasználóknak csatlakoztatása az Azure-szervezeti tartományi hitelesítő adataik használatával. Egy RADIUS-kiszolgáló, amely integrálható az AD-kiszolgáló szükséges. Szervezetek is használhatják a meglévő RADIUS üzembe helyezésükben.   
+Az Azure AD-hitelesítés lehetővé teszi a felhasználóknak az Azure-hoz való kapcsolódást a Azure Active Directory hitelesítő adataik használatával. A natív Azure AD-hitelesítés csak az OpenVPN protokoll és a Windows 10 esetében támogatott, és az [Azure VPN-ügyfél (előzetes verzió)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)használatát igényli.
+
+A natív Azure AD-hitelesítéssel kihasználhatja az Azure AD feltételes hozzáférését, valamint a VPN-hez készült Multi-Factor Authentication (MFA) funkciókat is.
+
+Magas szinten az alábbi lépéseket kell elvégeznie az Azure AD-hitelesítés konfigurálásához:
+
+[1. Azure AD-bérlő konfigurálása](openvpn-azure-ad-tenant.md)
+
+[2. az Azure AD-hitelesítés engedélyezése az átjárón](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+
+[3. az Azure VPN-ügyfél letöltése és konfigurálása (előzetes verzió)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+
+
+### <a name="authenticate-using-active-directory-ad-domain-server"></a>Hitelesítés Active Directory (AD) tartományi kiszolgáló használatával
+
+Az AD tartományi hitelesítés lehetővé teszi a felhasználóknak az Azure-hoz való kapcsolódást a szervezeti tartományi hitelesítő adataik használatával. Ehhez egy olyan RADIUS-kiszolgáló szükséges, amely integrálva van az AD-kiszolgálóval. A szervezetek a meglévő RADIUS-telepítést is kihasználhatják.   
   
-A RADIUS-kiszolgáló lehet üzembe helyezhető a helyszínen vagy az Azure virtuális hálózat. A hitelesítés során az Azure VPN Gateway funkcionál továbbítása, és oda-vissza a RADIUS-kiszolgáló és a csatlakozó eszköz között továbbított hitelesítési üzenetekben. Ezért fontos átjáró elérhető legyen a RADIUS-kiszolgáló. Ha a RADIUS-kiszolgáló nem található a helyszínen, a VPN S2S kapcsolat az Azure-ból a helyszíni helyre szükség a lemezekről.  
+A RADIUS-kiszolgáló a helyszínen vagy az Azure-VNET is üzembe helyezhető. A hitelesítés során az Azure VPN Gateway továbbítja a hitelesítési üzeneteket a RADIUS-kiszolgáló és a csatlakozó eszköz között. Ezért fontos, hogy az átjáró elérhető legyen a RADIUS-kiszolgáló számára. Ha a RADIUS-kiszolgáló a helyszínen található, az Azure-ból a helyszíni helyre létesített VPN-S2S szükséges a rendelkezésre álláshoz.  
   
-A RADIUS-kiszolgáló AD tanúsítványszolgáltatások is integrálható. Ez lehetővé teszi a RADIUS-kiszolgáló és a vállalati tanúsítvány üzembe helyezés a P2S-tanúsítvány hitelesítéséhez az Azure-tanúsítvány hitelesítése alternatívájaként. Az előnye, hogy nem kell legfelső szintű tanúsítványok és a visszavont tanúsítványok feltöltése az Azure-bA.
+A RADIUS-kiszolgáló az AD tanúsítványszolgáltatásokkal is integrálható. Ez lehetővé teszi a RADIUS-kiszolgáló és a vállalati tanúsítvány központi telepítésének használatát a P2S-tanúsítvány hitelesítéséhez az Azure-tanúsítvány hitelesítésének alternatívájaként. Ennek az az előnye, hogy a főtanúsítványokat és a visszavont tanúsítványokat nem kell feltölteni az Azure-ba.
 
-Egy RADIUS-kiszolgáló is integrálhatók a más külső identitáskezelő rendszerekkel. Megnyílik bőségesen több hitelesítési lehetőség a P2S VPN-t, beleértve a multi-factor Authentication beállításait is.
+A RADIUS-kiszolgálók integrálása más külső identitási rendszerekkel is elvégezhető. Ez számos hitelesítési lehetőséget nyit meg a P2S VPN-hez, beleértve a többtényezős beállításokat is.
 
 >[!NOTE]
->**OpenVPN® protokoll** RADIUS-hitelesítés használata nem támogatott.
+>Az **OpenVPN® protokoll** nem támogatott a RADIUS-hitelesítéssel.
 >
 
-![point-to-site](./media/point-to-site-about/p2s.png "Point-to-Site")
+![pont – hely kapcsolat](./media/point-to-site-about/p2s.png "Külső végpont és telephely közötti")
 
-## <a name="what-are-the-client-configuration-requirements"></a>Mik azok az ügyfél-konfigurációs követelményei?
+## <a name="what-are-the-client-configuration-requirements"></a>Mik az ügyfél-konfigurációs követelmények?
 
 >[!NOTE]
->A Windows-ügyfelek esetében, rendszergazdai jogosultságokkal kell rendelkeznie az ügyféleszköz VPN-kapcsolatot az ügyféleszközön az Azure-bA kezdeményezése céljából.
+>Windows-ügyfelek esetén rendszergazdai jogosultságokkal kell rendelkeznie az ügyfélszámítógépen ahhoz, hogy kezdeményezzen VPN-kapcsolat az ügyfél-eszközről az Azure-ba.
 >
 
-Felhasználók a natív VPN-ügyfelek Windows és Mac-eszközök p2s használja. Az Azure biztosít a VPN-ügyfél konfigurációs zip fájlt, amely ezen natív ügyfelek által az Azure-bA a csatlakozáshoz szükséges beállításokat tartalmazza.
+A felhasználók a natív VPN-ügyfeleket használják a Windows-és Mac-eszközökön a P2S. Az Azure olyan VPN-ügyfél-konfigurációs zip-fájlt biztosít, amely a natív ügyfelek által az Azure-hoz való csatlakozáshoz szükséges beállításokat tartalmazza.
 
-* Windows-eszközök esetén a VPN-ügyfél konfigurációja áll egy installer-csomag, amely a felhasználók telepítik az eszközeikre.
-* A Mac-eszközök esetében áll a mobileconfig fájlt, amely a felhasználók telepítik az eszközeikre.
+* Windows-eszközök esetén a VPN-ügyfél konfigurációja egy olyan telepítőcsomagot tartalmaz, amelyet a felhasználók az eszközeiket telepítenek.
+* Mac-eszközök esetén a a felhasználók által az eszközökön telepített mobileconfig-fájlból áll.
 
-A zip-fájl néhány fontos beállítás értékét is biztosít, amely segítségével ezek az eszközök a saját profil létrehozása az Azure oldalán. Az értékek közé tartozik a VPN-átjáró címével, konfigurált alagút típusa, útvonalak és a legfelső szintű tanúsítvány az átjáró érvényesítése.
+A zip-fájl az Azure-oldal néhány fontos beállításának értékeit is megadja, amelyek segítségével saját profilt hozhat létre ezekhez az eszközökhöz. Néhány érték például a VPN-átjáró címe, a konfigurált bújtatási típusok, az útvonalak és a főtanúsítvány az átjáró érvényesítéséhez.
 
 >[!NOTE]
 >[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="gwsku"></a>Melyik átjáró-termékváltozatok támogatják a P2S VPN-t?
+## <a name="gwsku"></a>Mely átjárók támogatják a P2S VPN-t?
 
 [!INCLUDE [aggregate throughput sku](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
-* Átjáró-Termékváltozat javaslatok, lásd: [VPN Gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+* Az átjáró SKU-javaslatait itt tekintheti meg: [Tudnivalók a VPN Gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 >[!NOTE]
 >Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést.
 >
 
-## <a name="IKE/IPsec policies"></a>Milyen az IPsec/IKE-szabályzatok p2s VPN-átjárókon vannak konfigurálva?
+## <a name="IKE/IPsec policies"></a>Milyen IKE/IPsec-házirendek vannak konfigurálva a P2S VPN-átjárón?
 
 
 **IKEv2**
 
-|**Cipher** | **Integritás** | **PRF** | **DH-csoport** |
+|**Titkosítási** | **Integritását** | **PRF** | **DH-csoport** |
 |---        | ---           | ---       | ---   |
 |GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_24 |
 |GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_14 |
@@ -113,7 +128,7 @@ A zip-fájl néhány fontos beállítás értékét is biztosít, amely segíts�
 
 **IPsec**
 
-|**Cipher** | **Integritás** | **PFS-csoport** |
+|**Titkosítási** | **Integritását** | **PFS-csoport** |
 |---        | ---           | ---       |
 |GCM_AES256 | GCM_AES256 | GROUP_NONE |
 |GCM_AES256 | GCM_AES256 | GROUP_24 |
@@ -127,7 +142,7 @@ A zip-fájl néhány fontos beállítás értékét is biztosít, amely segíts�
 | AES256    | SHA256 | GROUP_ECP256 |
 | AES256    | SHA1 | GROUP_NONE |
 
-## <a name="TLS policies"></a>A TLS szabályzatokat p2s VPN-átjárókon vannak konfigurálva?
+## <a name="TLS policies"></a>Milyen TLS-házirendek vannak konfigurálva a P2S VPN-átjárón?
 **TLS**
 
 |**Házirendek** |
@@ -148,34 +163,34 @@ A zip-fájl néhány fontos beállítás értékét is biztosít, amely segíts�
 
 
 
-## <a name="configure"></a>Hogyan konfigurálhatom a P2S-kapcsolat?
+## <a name="configure"></a>Hogyan konfigurálni a P2S-kapcsolatokat?
 
-P2S konfiguráció még néhány konkrét lépésre van szükség. A következő cikkek részletesen P2S konfiguráció és a VPN-ügyfél eszközök konfigurálása mutató hivatkozásokat a lépéseket tartalmazza:
+Egy P2S-konfigurációhoz elég néhány konkrét lépés szükséges. A következő cikkek a P2S konfigurációjának lépéseit és a VPN-ügyféleszközök konfigurálására mutató hivatkozásokat tartalmazzák:
 
-* [P2S-kapcsolat – RADIUS-hitelesítés konfigurálása](point-to-site-how-to-radius-ps.md)
+* [P2S-alapú kapcsolatok konfigurálása – RADIUS-hitelesítés](point-to-site-how-to-radius-ps.md)
 
-* [P2S-kapcsolat – az Azure natív tanúsítványalapú hitelesítésének konfigurálása](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [P2S-kapcsolatok konfigurálása – Azure natív tanúsítványalapú hitelesítés](vpn-gateway-howto-point-to-site-rm-ps.md)
 
-* [OpenVPN konfigurálása](vpn-gateway-howto-openvpn.md)
+* [Az OpenVPN konfigurálása](vpn-gateway-howto-openvpn.md)
 
-## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>Hogyan távolíthatom el a P2S-kapcsolatok a konfigurációt?
+## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>Hogyan eltávolítja a P2S-kapcsolatok konfigurációját?
 
-P2S konfiguráció távolíthatja el az cli és a következő parancs használatával: 
+A P2S-konfiguráció az az parancssori felülettel és a következő paranccsal távolítható el: 
 
 `az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"`
  
-## <a name="faqcert"></a>Az Azure natív tanúsítványalapú hitelesítésének – gyakori kérdések
+## <a name="faqcert"></a>A natív Azure tanúsítványalapú hitelesítéssel kapcsolatos gyakori kérdések
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="faqradius"></a>RADIUS-hitelesítés – gyakori kérdések
+## <a name="faqradius"></a>A RADIUS-hitelesítéssel kapcsolatos gyakori kérdések
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [P2S-kapcsolat – RADIUS-hitelesítés konfigurálása](point-to-site-how-to-radius-ps.md)
+* [P2S-alapú kapcsolatok konfigurálása – RADIUS-hitelesítés](point-to-site-how-to-radius-ps.md)
 
-* [P2S-kapcsolat – az Azure natív tanúsítványalapú hitelesítésének konfigurálása](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [P2S-kapcsolatok konfigurálása – Azure natív tanúsítványalapú hitelesítés](vpn-gateway-howto-point-to-site-rm-ps.md)
 
-**"OpenVPN" a OpenVPN Inc. védjegye.**
+**Az "OpenVPN" az OpenVPN Inc védjegye.**

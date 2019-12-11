@@ -1,5 +1,5 @@
 ---
-title: Tanúsítvány hitelesítő adatai az Azure AD-ben
+title: Azure AD-tanúsítvány hitelesítő adatai
 titleSuffix: Microsoft identity platform
 description: Ez a cikk a tanúsítvány hitelesítő adatainak regisztrálását és használatát ismerteti az alkalmazás hitelesítéséhez
 services: active-directory
@@ -15,20 +15,21 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b0dd42aeaa8a7a5d9f1cc28b409a8d8dbf92304
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845365"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963868"
 ---
-# <a name="certificate-credentials-for-application-authentication"></a>Tanúsítvány hitelesítő adatai az alkalmazás hitelesítéséhez
+# <a name="azure-ad-application-authentication-certificate-credentials"></a>Azure AD-alkalmazás hitelesítési tanúsítványának hitelesítő adatai
 
 Azure Active Directory (Azure AD) lehetővé teszi, hogy az alkalmazás a saját hitelesítő adatait használja a hitelesítéshez, például a OAuth 2,0 ügyfél-hitelesítő adatok megadására szolgáló folyamat ([v 1.0](v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) és a folyamaton kívüli ([v 1.0](v1-oauth2-on-behalf-of-flow.md), [v 2.0](v2-oauth2-on-behalf-of-flow.md)).
 
 Az egyik hitelesítő adat, amelyet az alkalmazás használhat a hitelesítéshez, egy JSON Web Token (JWT)-állítás, amely az alkalmazás tulajdonában lévő tanúsítvánnyal van aláírva.
 
 ## <a name="assertion-format"></a>Érvényesítési formátum
+
 Az állítás kiszámításához használhatja a számos [JSON web token](https://jwt.ms/) -függvénytár egyikét a választott nyelven. A jogkivonat által végrehajtott információk a következők:
 
 ### <a name="header"></a>Fejléc

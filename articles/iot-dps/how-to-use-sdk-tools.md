@@ -1,18 +1,18 @@
 ---
 title: Az Azure IoT Hub Device Provisioning Service SDK-eszközök használata
-description: Ez a dokumentum az Azure IoT Hub Device Provisioning Service SDK-k fejlesztéséhez biztosított eszközöket tekinti át
+description: Ez a dokumentum az Azure IoT Hub Device Provisioning Service (DPS) SDK-k fejlesztéséhez biztosított eszközöket tekinti át
 author: robinsh
 ms.author: robinsh
 ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: f5bdf81dedfcf803b8c53a5b0a29cfb823989873
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229673"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974802"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Az SDK-k által biztosított eszközök használata a kiépítés fejlesztésének egyszerűsítése érdekében
 A IoT Hub Device Provisioning Service leegyszerűsíti a kiépítési folyamatot a biztonságos és skálázható módon történő [automatikus kiépítés](concepts-auto-provisioning.md) révén.  A biztonsági igazolás X. 509 tanúsítvány vagy platformmegbízhatósági modul (TPM) formájában szükséges.  A Microsoft [más biztonsági partnerekkel](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) is együttműködik a IoT-telepítés biztonságossá tétele érdekében. A hardveres biztonsági követelmények megismerése nagyon nagy kihívást jelenthet a fejlesztők számára. Az Azure IoT-létesítési szolgáltatás SDK-k készletét biztosítjuk, így a fejlesztők egy kényelmi réteget használhatnak a kiépítési szolgáltatással kommunikáló ügyfelek írásához. Az SDK-k emellett mintákat is biztosítanak a gyakori forgatókönyvekhez, valamint a biztonsági igazolások fejlesztésének egyszerűsítésére szolgáló eszközkészletet.
@@ -65,5 +65,5 @@ Az **ügyfél** tanúsítványa a levél tanúsítványa az eszközön.  Az **ü
 
 A főtanúsítvány vagy a köztes tanúsítvány használatával létrehozhat egy regisztrációs csoportot vagy egyéni beléptetést [programozott](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments-sdks) módon vagy a [portálon](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Fejlesztés az Azure IoT Hub és az Azure-hoz készült [Azure IOT SDK]( https://github.com/Azure/azure-iot-sdks) -val IoT hub Device Provisioning Service

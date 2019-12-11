@@ -4,16 +4,16 @@ description: Adatok exportálása az Azure IoT Central alkalmazásból az Azure-
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 10/15/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 35415fd1a552328faa8d1ad5812f44d8f4b6d5e4
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1aac5af916e414178676a1caf42fead41109de68
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894863"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974461"
 ---
 # <a name="export-your-azure-iot-central-data-preview-features"></a>Azure IoT Central-beli adatszolgáltatások exportálása (előzetes verzió)
 
@@ -37,13 +37,13 @@ A IoT Central-alkalmazásban rendszergazdának kell lennie
 
 A folyamatos adatexportálás konfigurálása előtt az Exportálás céljának léteznie kell.
 
-### <a name="create-event-hubs-namespace"></a>Event Hubs névtér létrehozása
+### <a name="create-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
 Ha nem rendelkezik meglévő Event Hubs-névtérrel az exportáláshoz, kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy [új Event Hubs névteret a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.EventHub). További információt az [Azure Event Hubs dokumentációjában](../../event-hubs/event-hubs-create.md)olvashat.
 
-2. Válasszon egy előfizetést. Az olyan egyéb előfizetésekre is exportálhatja az adatait, amelyek nem ugyanabban az előfizetésben találhatók, mint az utólagos elszámolású IoT Central alkalmazás. Ebben az esetben kapcsolati sztringet használ.
+2. Válasszon előfizetést. Az olyan egyéb előfizetésekre is exportálhatja az adatait, amelyek nem ugyanabban az előfizetésben találhatók, mint az utólagos elszámolású IoT Central alkalmazás. Ebben az esetben kapcsolati sztringet használ.
 
 3. Hozzon létre egy Event hubot a Event Hubs névtérben. Nyissa meg a névteret, és a felül található **+ Event hub** elemet választva hozzon létre egy Event hub-példányt.
 
@@ -52,7 +52,7 @@ Ha nem rendelkezik meglévő Event Hubs-névtérrel az exportáláshoz, kövesse
 Ha nem rendelkezik meglévő Service Bus-névtérrel az exportáláshoz, kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy [új Service Bus névteret a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5). [Azure Service Bus dokumentációban](../../service-bus-messaging/service-bus-create-namespace-portal.md)bővebben is olvashat.
-2. Válasszon egy előfizetést. Az olyan egyéb előfizetésekre is exportálhatja az adatait, amelyek nem ugyanabban az előfizetésben találhatók, mint az utólagos elszámolású IoT Central alkalmazás. Ebben az esetben kapcsolati sztringet használ.
+2. Válasszon előfizetést. Az olyan egyéb előfizetésekre is exportálhatja az adatait, amelyek nem ugyanabban az előfizetésben találhatók, mint az utólagos elszámolású IoT Central alkalmazás. Ebben az esetben kapcsolati sztringet használ.
 
 3. Nyissa meg a Service Bus névteret, és a felül található **+ üzenetsor** vagy **+ témakör** használatával hozzon létre egy üzenetsor vagy témakört az exportáláshoz.
 
@@ -310,7 +310,7 @@ Ez egy példa az eszközöket és a tulajdonságokat tartalmazó pillanatképre 
 }
 ```
 
-## <a name="device-templates"></a>Eszközök sablonjai
+## <a name="device-templates"></a>Eszközsablonok
 
 Minden üzenet-vagy pillanatkép-rekord egy eszköz egy vagy több módosítását jelöli az utolsó exportált üzenet óta. Az egyes üzenetekben vagy rekordokban küldött információk a következők:
 
@@ -608,7 +608,7 @@ Ez egy példa az eszközöket és a tulajdonságokat tartalmazó pillanatképre 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy tudja, hogyan exportálhatja adatait az Azure Event Hubsba, Azure Service Busba és az Azure Blob Storageba, folytassa a következő lépéssel:
 

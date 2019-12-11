@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Hozzon létre egy egyoldalas webalkalmazást – a Bing Web Search API'
+title: 'Oktatóanyag: Egyoldalas webalkalmazás létrehozása – Bing Web Search API'
 titleSuffix: Azure Cognitive Services
 description: Ez az egyoldalas alkalmazás bemutatja, hogyan használható a Bing Web Search API a releváns keresési eredmények lekérésére, feldolgozására és megjelenítésére egy egyoldalas alkalmazásban.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 1203947efadf4fed328655c9cfb839f666a80b0c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: ec6c1ef31b6cf92629be600b3b139bb2e1a0d3ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390047"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977250"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Hozzon létre egy egyoldalas alkalmazást, a Bing Web Search API használatával
+# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Web Search API használatával
 
 Ez az egyoldalas alkalmazás bemutatja, hogyan kérhetők le, dolgozhatók fel és jeleníthetők meg a Bing Web Search API-ból származó keresési eredmények. Az oktatóanyag HTML- és CSS-sablonokra épül, fő témája pedig a JavaScript-kód. A [Githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) az indulásban segítő útmutatókkal együtt érhetők el HTML-, CSS- és JS-fájlok.
 
@@ -287,7 +287,7 @@ function handleBingResponse() {
 
 Az előző két függvény kódjainak nagy része a hibakezelésért felel. A következő fázisoknál léphetnek fel hibák:
 
-| Fázis | Lehetséges hiba vagy hibák | Kezelő |
+| Szakasz | Lehetséges hiba vagy hibák | Kezelő |
 |-------|--------------------|------------|
 | A kérésobjektum elkészítése | Érvénytelen URL-cím | `try` / `catch` blokk |
 | Kérés végrehajtása | Hálózati hibák, megszakított kapcsolatok | `error` és `abort` eseménykezelők |
@@ -464,7 +464,7 @@ cors-proxy-server
 
 Ne zárja be a parancsablakot, amíg használja az mintaalkalmazást; az ablak bezárása leállítja a proxyt. A keresési eredmények alatti, kibontható HTTP-fejlécek szakaszban meg kell jelennie az `X-MSEdge-ClientID` fejlécnek. Fontos, hogy ez minden kéréshez ugyanaz legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Bing Web Search API 7-es verzió – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)

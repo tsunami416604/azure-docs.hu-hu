@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48ddb4c3baa40bf70fe12451f048b2228c8bd441
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1ff874ee74864c84c976096ac5f7fa4b20cfab48
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271501"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997003"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és beleegyezett a Microsoft Identity platform végpontjában
 
@@ -86,11 +86,11 @@ Az OpenID Connect Microsoft Identity platform megvalósítása néhány jól def
 
 Ha egy alkalmazás az [OpenID Connect](active-directory-v2-protocols.md)használatával hajtja végre a bejelentkezést, akkor a `openid` hatókört kell kérnie. A `openid` hatókör a munkahelyi fiókra vonatkozó hozzájárulás oldalon jelenik meg, a "Bejelentkezés" engedéllyel, valamint a személyes Microsoft-fiók beleegyezés lapon a Profil megtekintése és az alkalmazásokhoz és szolgáltatásokhoz való kapcsolódás a Microsoft-fiók használatával című engedéllyel. Ezzel az engedéllyel az alkalmazás a `sub` jogcím formájában egyedi azonosítót kaphat a felhasználó számára. Emellett hozzáférést biztosít az alkalmazásnak az UserInfo-végponthoz is. A `openid` hatókört a Microsoft Identity platform token végpontján használhatja azonosító tokenek megszerzéséhez, amelyet az alkalmazás használhat hitelesítésre.
 
-### <a name="email"></a>email
+### <a name="email"></a>e-mail
 
 A `email` hatókör a `openid` hatókörrel és másokkal is használható. Az alkalmazás az `email` jogcím formájában hozzáférést biztosít a felhasználó elsődleges e-mail-címéhez. A `email` jogcímet csak akkor tartalmazza a token, ha a felhasználói fiókhoz társított e-mail-cím, amely nem mindig az eset. Ha a `email` hatókört használja, az alkalmazásnak fel kell készülnie arra az esetre, amikor az `email` jogcím nem létezik a jogkivonatban.
 
-### <a name="profile"></a>profile
+### <a name="profile"></a>profil
 
 A `profile` hatókör a `openid` hatókörrel és másokkal is használható. Hozzáférést biztosít az alkalmazásnak a felhasználóval kapcsolatos jelentős mennyiségű információhoz. Az általa elérhető információ magában foglalja a következőket:, de nem kizárólagosan, a felhasználó vezetéknevét, vezetéknevét, előnyben részesített felhasználónevét és objektum-AZONOSÍTÓját. Egy adott felhasználó id_tokens paraméterében elérhető profil jogcímek teljes listájáért tekintse meg a`id_tokens`- [referenciát](id-tokens.md).
 
@@ -98,7 +98,10 @@ A `profile` hatókör a `openid` hatókörrel és másokkal is használható. Ho
 
 A [`offline_access` hatóköre](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) lehetővé teszi az alkalmazás számára, hogy a felhasználó nevében egy hosszabb ideig hozzáférjen az erőforrásokhoz. A hozzájárulás lapon ez a hatókör jelenik meg, mivel "a hozzáférés biztosítása az Ön számára biztosított adathozzáféréshez" jogosultságot. Ha a felhasználó jóváhagyja a `offline_access` hatókört, az alkalmazás a Microsoft Identity platform jogkivonat-végpontján fogadhatja a frissítési jogkivonatokat. A frissítési tokenek hosszú életűek. Az alkalmazás új hozzáférési jogkivonatokat kaphat, mint a régebbiek lejárnak.
 
-Ha az alkalmazás nem kéri explicit módon a `offline_access` hatókörét, nem kap frissítési jogkivonatokat. Ez azt jelenti, hogy amikor bevált egy engedélyezési kódot a [OAuth 2,0-es engedélyezési kód folyamatában](active-directory-v2-protocols.md), csak a `/token` végpont hozzáférési jogkivonatát fogja kapni. A hozzáférési jogkivonat rövid ideig érvényes. A hozzáférési jogkivonat általában egy órán belül lejár. Ezen a ponton az alkalmazásnak újra kell irányítani a felhasználót a `/authorize` végpontra egy új engedélyezési kód beszerzéséhez. Az átirányítás során az alkalmazás típusától függően előfordulhat, hogy a felhasználónak újra be kell írnia a hitelesítő adatait, vagy újra meg kell adnia az engedélyeket. Amíg a kiszolgáló automatikusan kéri a `offline_access` hatókörét, az ügyfélnek továbbra is kérnie kell, hogy megkapja a frissítési jogkivonatokat.
+> [!NOTE]
+> Ez az engedély jelenleg az összes beleegyezési képernyőn jelenik meg, még olyan folyamatok esetében is, amelyek nem biztosítanak frissítési jogkivonatot (az [implicit folyamat](v2-oauth2-implicit-grant-flow.md)).  Ennek célja, hogy olyan forgatókönyveket Fedezzen fel, amelyekben az ügyfél az implicit folyamaton belül megkezdődhet, majd a kód azon folyamatára helyezi át, ahol a frissítési token várható.
+
+A Microsoft Identity platformon (a v 2.0-végpontra irányuló kérelmek esetében) az alkalmazásnak explicit módon kell megadnia a `offline_access` hatókörét, hogy megkapja a frissítési jogkivonatokat. Ez azt jelenti, hogy amikor bevált egy engedélyezési kódot a [OAuth 2,0-es engedélyezési kód folyamatában](active-directory-v2-protocols.md), csak a `/token` végpont hozzáférési jogkivonatát fogja kapni. A hozzáférési jogkivonat rövid ideig érvényes. A hozzáférési jogkivonat általában egy órán belül lejár. Ezen a ponton az alkalmazásnak újra kell irányítani a felhasználót a `/authorize` végpontra egy új engedélyezési kód beszerzéséhez. Az átirányítás során az alkalmazás típusától függően előfordulhat, hogy a felhasználónak újra be kell írnia a hitelesítő adatait, vagy újra meg kell adnia az engedélyeket. 
 
 További információ a frissítési tokenek beszerzéséről és használatáról: a [Microsoft Identity platform protokolljának referenciája](active-directory-v2-protocols.md).
 
@@ -123,7 +126,7 @@ A `scope` paraméter az alkalmazás által kért delegált engedélyek szóközz
 Miután a felhasználó beírja a hitelesítő adatait, a Microsoft Identity platform-végpont ellenőrzi a *felhasználói beleegyezési*rekordokat. Ha a felhasználó nem járult hozzá a korábban kért engedélyekhez, és a rendszergazda nem fogadta el ezeket az engedélyeket a teljes szervezet nevében, a Microsoft Identity platform végpontja kéri a felhasználót, hogy adja meg a kért engedélyeket.
 
 > [!NOTE]
-> Ebben az esetben a `offline_access` ("a hozzáférés megtartása az Ön által megadott adathozzáféréshez") és a `user.read` ("bejelentkezés és a profil olvasása") engedélyek automatikusan beletartoznak az alkalmazás kezdeti beleegyezőbe.  Ezek az engedélyek általában szükségesek az alkalmazás megfelelő működéséhez – `offline_access` lehetővé teszi az alkalmazás számára, hogy a natív és a webes alkalmazások számára kritikus frissítési jogkivonatokat biztosítson, míg a `user.read` hozzáférést biztosít a `sub` jogcímek számára, így az ügyfél vagy az alkalmazás helyesen azonosíthatja a felhasználót az idő múlásával és a felhasználói adatokhoz való hozzáféréshez.  
+> Ebben az esetben a `offline_access` ("a hozzáférés megtartása az Ön által megadott adathozzáféréshez") és a `user.read` ("bejelentkezés és a profil olvasása") engedélyek automatikusan beletartoznak az alkalmazás kezdeti beleegyezőbe.  Ezek az engedélyek általában szükségesek az alkalmazás megfelelő működéséhez – `offline_access` lehetővé teszi az alkalmazás számára, hogy a natív és a webalkalmazások számára kritikus frissítési jogkivonatokat biztosítson, míg a `user.read` hozzáférést biztosít a `sub` jogcímek számára, így az ügyfél vagy az alkalmazás helyesen azonosíthatja a felhasználót az idő múlásával, és elérheti az alapvető felhasználói adatokat.  
 
 ![A munkahelyi fiók beleegyezikét bemutató képernyőkép](./media/v2-permissions-and-consent/work_account_consent.png)
 

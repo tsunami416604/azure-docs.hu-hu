@@ -1,28 +1,28 @@
 ---
-title: 'Gyors útmutató: Egyéni modell létrehozása, üzembe helyezése és használata – egyéni fordító'
+title: 'Gyors útmutató: egyéni modell létrehozása, üzembe helyezése és használata – egyéni fordító'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban részletesen áttekintheti a fordítási rendszerek létrehozását az egyéni fordító használatával.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: a450a91f29a9118c9e4c83f6bb964bac2d6ffb3c
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d93c6333b811885eec37e8401bee27afeedf1475
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595556"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975754"
 ---
-# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Gyors útmutató: Egyéni modell létrehozása, üzembe helyezése és használata fordításhoz
+# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Gyors útmutató: egyéni modell összeállítása, üzembe helyezése és használata fordításhoz
 
 Ez a cikk részletes útmutatást nyújt a fordítási rendszer egyéni fordítóval való létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Az [Egyéni Translator](https://portal.customtranslator.azure.ai) portál használatához szüksége lesz egy [Microsoft-fiók](https://signup.live.com) vagy [Azure ad](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) -fiókra (az Azure-ban üzemeltetett szervezeti fiókra) a bejelentkezéshez.
+1. Az [Egyéni Translator](https://portal.customtranslator.azure.ai) portál használatához szüksége lesz egy [Microsoft-fiók](https://signup.live.com) vagy [Azure ad-fiókra](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (az Azure-ban üzemeltetett szervezeti fiókra) a bejelentkezéshez.
 
 2. Előfizetés a Translator Text API a Azure Portal keresztül. Az egyéni fordítóban a munkaterülethez társítandó Translator Text API előfizetési kulcsra lesz szüksége. Tekintse [meg, hogyan regisztrálhat a Translator Text APIra](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
@@ -37,7 +37,7 @@ Az egyéni Translator portál kezdőlapján kattintson az új projekt elemre. A 
 
 ## <a name="upload-documents"></a>Dokumentumok feltöltése
 
-Ezután töltse fel [](training-and-model.md#training-dataset-for-custom-translator)a betanítást, a [hangolást](training-and-model.md#tuning-dataset-for-custom-translator) és a [tesztelési](training-and-model.md#testing-dataset-for-custom-translator) dokumentum-készleteket. Egyszerre több [párhuzamos](what-are-parallel-documents.md) és kombinált dokumentumot is feltölthet. A szótárat is [](what-is-dictionary.md)feltöltheti.
+Ezután töltse fel a [betanítást](training-and-model.md#training-dataset-for-custom-translator), a [hangolást](training-and-model.md#tuning-dataset-for-custom-translator) és a [tesztelési](training-and-model.md#testing-dataset-for-custom-translator) dokumentum-készleteket. Egyszerre több [párhuzamos](what-are-parallel-documents.md) és kombinált dokumentumot is feltölthet. A [szótárat](what-is-dictionary.md)is feltöltheti.
 
 A dokumentumokat a dokumentumok lapról vagy egy adott projekt oldaláról töltheti fel.
 
@@ -49,7 +49,7 @@ Dokumentumok feltöltésekor válassza ki a dokumentum típusát (képzés, hang
 
 Ha az összes szükséges dokumentumot feltöltötte, a következő lépés a modell felépítése.
 
-Válassza ki a létrehozott projektet. Ekkor megjelenik az összes feltöltött dokumentum, amely a jelen projekttel közös nyelvi párral rendelkezik. Válassza ki a modellbe felvenni kívánt dokumentumokat. Kiválaszthatja [](training-and-model.md#training-dataset-for-custom-translator)az adatképzést, a [hangolást](training-and-model.md#tuning-dataset-for-custom-translator)és a [tesztelést](training-and-model.md#testing-dataset-for-custom-translator) , vagy kiválaszthatja a csak betanítási adatait, és lehetővé teheti, hogy a Custom Translator automatikusan kiépítse a modell
+Válassza ki a létrehozott projektet. Ekkor megjelenik az összes feltöltött dokumentum, amely a jelen projekttel közös nyelvi párral rendelkezik. Válassza ki a modellbe felvenni kívánt dokumentumokat. Kiválaszthatja az [adatképzést](training-and-model.md#training-dataset-for-custom-translator), a [hangolást](training-and-model.md#tuning-dataset-for-custom-translator)és a [tesztelést](training-and-model.md#testing-dataset-for-custom-translator) , vagy kiválaszthatja a csak betanítási adatait, és lehetővé teheti, hogy a Custom Translator automatikusan kiépítse a modell
 
 ![Modell létrehozása](media/quickstart/ct-how-to-train.png)
 
@@ -69,8 +69,8 @@ Ha készen áll a betanított modell üzembe helyezésére, kattintson az "üzem
 
 ## <a name="use-a-deployed-model"></a>Üzembe helyezett modell használata
 
-Az üzembe helyezett modellek a Microsoft Translator Text API v3-as verzióján keresztül érhetők [el a Kategóriakód](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)megadásával. A Translator Text APIról további információt az [API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) -referenciát ismertető weblapon találhat.
+Az üzembe helyezett modellek a Microsoft Translator [text API v3-as verzióján keresztül érhetők el a Kategóriakód megadásával](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). A Translator Text APIról további információt az [API-referenciát](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) ismertető weblapon találhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan navigálhat a [Custom Translator munkaterületen, és hogyan kezelheti a projektjeit](workspace-and-project.md).

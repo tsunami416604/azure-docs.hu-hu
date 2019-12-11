@@ -1,6 +1,6 @@
 ---
 title: Szimulált X. 509 eszköz kiépítése az Azure IoT Hub használatávalC#
-description: Rövid útmutató – szimulált X. 509 eszköz létrehozása és kiépítése C# az Azure IOT hub Device PROVISIONING Service eszköz SDK-val. Ez a rövid útmutató egyéni regisztrációkat használ.
+description: Rövid útmutató – szimulált X. 509 eszköz létrehozása és kiépítése C# az Azure IoT hub Device Provisioning Service-hoz készült Device SDK-val (DPS). Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 0513884e7869bc14627259ea98a85f4966147d9b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 639ab07113a0e62cac43af5b79f052da1efd93ab
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276330"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976519"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Gyors útmutató: szimulált X. 509 eszköz létrehozása és kiépítése C# a IOT hub Device PROVISIONING Service eszköz SDK-val
 
@@ -85,7 +85,7 @@ A [kiépítési eszköz Client Sample-X. 509 tanúsítványának](https://github
        - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
    - Ha elkészült, kattintson a **Save (Mentés** ) gombra. 
 
-     [![X.509-igazolás egyéni beléptetésének hozzáadása a portálon](./media/quick-create-simulated-device-x509-csharp/device-enrollment.png)](./media/quick-create-simulated-device-x509-csharp/device-enrollment.png#lightbox)
+     [![Egyéni regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/quick-create-simulated-device-x509-csharp/device-enrollment.png)](./media/quick-create-simulated-device-x509-csharp/device-enrollment.png#lightbox)
     
    Sikeres regisztráció esetén az X.509 regisztrációs bejegyzés **iothubx509device1** azonosítóval jelenik meg a *Regisztrációs azonosító* oszlopban az *Egyéni regisztrációk* lapon. 
 

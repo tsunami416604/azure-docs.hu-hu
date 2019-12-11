@@ -1,6 +1,6 @@
 ---
-title: Webes API-t, amely meghívja a webes API-k (hívás API-k) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre a webes API-k a hívások alsóbb rétegbeli webes API-k (webes API hívása).
+title: Webes API-k meghívása webes API-k – Microsoft Identity platform | Azure
+description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó webes API-t.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,22 +15,22 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cd093cc68a21558dc326221eeaa8c034c24f1c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6063d143e2f217426bdf1db217fde46f8542d314
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074725"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965211"
 ---
-# <a name="web-api-that-calls-web-apis---call-an-api"></a>Webes API-t, amely meghívja a webes API-k – az API meghívása
+# <a name="web-api-that-calls-web-apis---call-an-api"></a>Webes API-kat meghívó webes API – egy API meghívása
 
-Miután megkapta a jogkivonatot, meghívhatja egy védett webes API-t. Ez a vezérlő a ASP.NET/ASP.NET Core webes API végezheti el.
+Ha rendelkezik jogkivonattal, meghívhat egy védett webes API-t. Ezt a ASP.NET/ASP.NET Core webes API vezérlője hajtja végre.
 
-## <a name="controller-code"></a>Vezérlő kód
+## <a name="controller-code"></a>Vezérlő kódja
 
-Íme a látható példa kód az fenntartása [védett webes API-hívások webes API-k – egy token beszerzése a](scenario-web-api-call-api-acquire-token.md)néven (nevű todolist) alsóbb rétegbeli API meghívása a műveletek az API-vezérlők,.
+Itt látható a [védett webes API-hívásokban](scenario-web-api-call-api-acquire-token.md)megjelenő példa kódja a webes API-k használatával – a jogkivonat beszerzése, amelyet az API-vezérlők műveleteiben, egy alsóbb RÉTEGbeli API meghívásakor (ToDoList) hívnak meg.
 
-Miután a token szerezte be, használhatja tulajdonosi jogkivonattal, az alsóbb rétegbeli API-t.
+Miután megszerezte a tokent, használja tulajdonosi jogkivonatként az alsóbb rétegbeli API meghívásához.
 
 ```CSharp
 private async Task GetTodoList(bool isAppStarting)
@@ -58,7 +58,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Helyezze át az éles környezetbe](scenario-web-api-call-api-production.md)
+> [Áthelyezés éles környezetbe](scenario-web-api-call-api-production.md)
