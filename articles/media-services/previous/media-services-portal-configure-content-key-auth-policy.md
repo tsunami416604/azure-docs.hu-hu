@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 64f5afdc8eb24758fac6faa0cc6d1e4e1002b5db
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8580bafd4d68ef6567b09fefcaa01c682ae2cafe
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895850"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968790"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>A tartalmi kulcs engedélyezési házirendjének konfigurálása
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -79,6 +79,10 @@ Ha a tartalmat a PlayReady-mel védik, az engedélyezési házirendben megadott 
         </PlayReadyLicenseResponseTemplate>
 
 Kiválaszthatja a **szabályzat XML importálása** gombot, és megadhat egy másik XML-t, amely megfelel a [Media Services PlayReady-sablon ÁTTEKINTÉSÉBEN](media-services-playready-license-template-overview.md)meghatározott XML-sémának.
+
+## <a name="additional-notes"></a>További megjegyzések
+
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
 ## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

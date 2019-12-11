@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Rendszerképek észlelése az Azure REST API és a Python'
+title: 'Gyors útmutató: rendszerképek észlelése az Azure REST API és a Python'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban az Azure Face REST API és a Python használatával fogja felderíteni az arcokat a képen.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a00ec77148433d64f2980b1bb47d753d70a5ec20
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c4d136eaf0f6c4ac64093f417f144e422e2da52f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859033"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977913"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Gyors útmutató: Arcok észlelése egy képen a Face REST API és a Python használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Rövid útmutató: az arcok észlelése egy képpel a Face REST API és a Python használatával
 
 Ebben a rövid útmutatóban az Azure Face REST API a Python használatával ismeri fel az emberi arcokat egy képben. A szkript az arcok köré rajzolja meg a kereteket, és a képen a nemek és a kor adatait is felhasználja.
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
+- Egy Face API előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Face API szolgáltatásra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait.
 
 ## <a name="run-the-jupyter-notebook"></a>A Jupyter notebook futtatása
 
@@ -43,11 +43,11 @@ Ezt a rövid útmutatót a parancssorból is futtathatja a következő lépések
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
 1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
     1. Cserélje le a `subscription_key` értéket az előfizetői azonosítóra.
-    1. A értékének `face_api_url` szerkesztésével belefoglalhatja a Face API erőforrás végponti URL-címét.
-    1. Ha szeretné, cserélje le az `image_url` értéket egy olyan kép URL-címére, amelyet elemezni szeretne.
-1. Mentse a kódot egy `.py` kiterjesztésű fájlként. Például: `detect-face.py`.
-1. Nyisson meg egy parancsablakot.
-1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python detect-face.py`.
+    1. A `face_api_url` értékének szerkesztésével adja meg a Face API-erőforrás végponti URL-címét.
+    1. Ha szeretné, cserélje le az `image_url` értéket egy másik elemzendő kép URL-címére.
+1. Mentse a kódot fájlként `.py` kiterjesztéssel. Például: `detect-face.py`.
+1. Nyisson meg egy parancssort.
+1. Amikor a rendszer kéri, a `python` paranccsal futtassa a mintát. Például: `python detect-face.py`.
 
 ```python
 import requests
@@ -258,7 +258,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ.
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután tekintse át a Face API dokumentációját, ahol további információt talál a támogatott forgatókönyvekről.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Szöveges parancsfájl konvertálása – Translator Text'
+title: 'Gyors útmutató: szöveges parancsfájl konvertálása – Translator Text'
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan átbetűzés (konvertálhatja) szövegeit egyik parancsfájlból a másikba a Translator Text API használatával. Ebben a példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 09/05/2019
+ms.date: 12/09/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: fb6e3128bdcd0d60cb24b2af2efab43f1a84aae4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 42960acebcc8923c8228c35087d2a5156e2ff32b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827427"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975686"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>Gyors útmutató: A Translator Text API átbetűzés szövegének használata
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>Gyors útmutató: a Translator Text API átbetűzés szövegének használata
 
 Ebből a rövid útmutatóból megtudhatja, hogyan átbetűzés (konvertálhatja) szövegét az egyik parancsfájlból a másikba a Translator Text REST API használatával. A megadott példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 
@@ -54,7 +54,7 @@ Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra
 
 ::: zone-end
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Szöveg lefordítása](quickstart-translate.md)
 * [A beviteli nyelv azonosítása](quickstart-detect.md)

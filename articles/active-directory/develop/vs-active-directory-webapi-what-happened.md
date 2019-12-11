@@ -1,5 +1,5 @@
 ---
-title: WebAPI-projekt módosításai az Azure AD-hez való csatlakozáskor
+title: WebAPI-projektek módosításai az Azure AD-hez való csatlakozáskor
 description: Leírja, hogy mi történik a WebAPI-projekttel, amikor az Azure AD-hez csatlakozik a Visual Studióval
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32fc72d22d3f739018df22c315d7a1a3124c8823
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3a0cf375902281817ecc002f8fb76be32eed149d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851807"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966316"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Mi történt a WebAPI-projekttel (Visual Studio Azure Active Directory csatlakoztatott szolgáltatás)
 
@@ -31,46 +31,46 @@ További információ a csatlakoztatott szolgáltatás használatáról: [első 
 
 ## <a name="added-references"></a>Hozzáadott referenciák
 
-Hatással van a (*. net-referenciák `packages.config` ) projektfájl és a (NuGet-hivatkozások) fájlra.
+Hatással van a projektfájl *. NET referenciái) és a `packages.config`ra (NuGet-referenciák).
 
-| Type | Hivatkozás |
+| Type (Típus) | Leírások |
 | --- | --- |
-| NET NuGet | Microsoft.Owin |
-| NET NuGet | Microsoft.Owin.Host.SystemWeb |
-| NET NuGet | Microsoft.Owin.Security |
-| NET NuGet | Microsoft.Owin.Security.ActiveDirectory |
-| NET NuGet | Microsoft.Owin.Security.Jwt |
-| NET NuGet | Microsoft.Owin.Security.OAuth |
+| NET NuGet | Microsoft. Owin |
+| NET NuGet | Microsoft. Owin. host. SystemWeb |
+| NET NuGet | Microsoft. Owin. Security |
+| NET NuGet | Microsoft. Owin. Security. ActiveDirectory |
+| NET NuGet | Microsoft. Owin. Security. JWT |
+| NET NuGet | Microsoft. Owin. Security. OAuth |
 | NET NuGet | Owin |
-| NET NuGet | System.IdentityModel.Tokens.Jwt |
+| NET NuGet | System. IdentityModel. tokens. JWT |
 
 További hivatkozások ha a címtár- **adatok olvasása** lehetőséget választotta:
 
-| Type | Hivatkozás |
+| Type (Típus) | Leírások |
 | --- | --- |
 | NET NuGet | EntityFramework |
 | .NET        | EntityFramework. SqlServer (csak Visual Studio 2015) |
-| NET NuGet | Microsoft.Azure.ActiveDirectory.GraphClient |
-| NET NuGet | Microsoft.Data.Edm |
-| NET NuGet | Microsoft.Data.OData |
-| NET NuGet | Microsoft.Data.Services.Client |
-| NET NuGet | Microsoft.IdentityModel.Clients.ActiveDirectory |
-| .NET        | Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms<br>(Csak Visual Studio 2015) |
-| NET NuGet | System.Spatial |
+| NET NuGet | Microsoft. Azure. ActiveDirectory. GraphClient |
+| NET NuGet | Microsoft. EDM |
+| NET NuGet | Microsoft. OData |
+| NET NuGet | Microsoft. Services. Services. Client |
+| NET NuGet | Microsoft. IdentityModel. clients. ActiveDirectory |
+| .NET        | Microsoft. IdentityModel. clients. ActiveDirectory. WindowsForms<br>(Csak Visual Studio 2015) |
+| NET NuGet | System. térbeli |
 
 A következő hivatkozások törlődnek (csak ASP.NET 4 projekt, a Visual Studio 2015-as verziójában):
 
-| Type | Hivatkozás |
+| Type (Típus) | Leírások |
 | --- | --- |
-| NET NuGet | Microsoft.AspNet.Identity.Core |
-| NET NuGet | Microsoft.AspNet.Identity.EntityFramework |
-| NET NuGet | Microsoft.AspNet.Identity.Owin |
+| NET NuGet | Microsoft. AspNet. Identity. Core |
+| NET NuGet | Microsoft. AspNet. Identity. EntityFramework |
+| NET NuGet | Microsoft. AspNet. Identity. Owin |
 
 ## <a name="project-file-changes"></a>Projektfájl módosításai
 
 - Állítsa a tulajdonságot `IISExpressSSLPort` egy külön számra.
-- Állítsa a tulajdonságot `WebProject_DirectoryAccessLevelKey` 0 vagy 1 értékre, ha a **Címtáradatok olvasása** lehetőséget választotta.
-- Állítsa be a `IISUrl` tulajdonságot `<port>` , hogy `IISExpressSSLPort` `https://localhost:<port>/` a hol egyezzen az értékkel.
+- Állítsa a tulajdonságot a 0 értékre `WebProject_DirectoryAccessLevelKey`, vagy 1 értéket, ha a **Címtáradatok olvasása** lehetőséget választotta.
+- Állítsa a `IISUrl` tulajdonságot `https://localhost:<port>/`, ahol a `<port>` megfelel a `IISExpressSSLPort` értéknek.
 
 ## <a name="webconfig-or-appconfig-changes"></a>a web. config vagy az app. config módosítása
 
@@ -84,15 +84,15 @@ A következő hivatkozások törlődnek (csak ASP.NET 4 projekt, a Visual Studio
     </appSettings>
     ```
 
-- Csak Visual Studio 2017 esetén: A következő bejegyzést `<appSettings>`is hozzáadta a "
+- Visual Studio 2017 Only: a következő bejegyzést is hozzáadta `<appSettings>`"
 
     ```xml
     <add key="ida:MetadataAddress" value="<domain URL + /federationmetadata/2007-06/federationmetadata.xml>" />
     ```
 
-- Hozzáadott `<dependentAssembly>` elemek a `<runtime><assemblyBinding>` csomópont alatt a `System.IdentityModel.Tokens.Jwt`következőhöz:.
+- A `System.IdentityModel.Tokens.Jwt``<runtime><assemblyBinding>` csomópontjában `<dependentAssembly>` elemek lettek hozzáadva.
 
-- Ha a címtárbeli **adat olvasása** lehetőséget választotta, a következő konfigurációs bejegyzést `<appSettings>`adta hozzá a következőhöz:
+- Ha a **Címtáradatok olvasása** lehetőséget választotta, a következő konfigurációs bejegyzést adta hozzá a `<appSettings>`:
 
     ```xml
     <add key="ida:Password" value="<Your Azure AD app's new password>" />
@@ -100,13 +100,13 @@ A következő hivatkozások törlődnek (csak ASP.NET 4 projekt, a Visual Studio
 
 ## <a name="code-changes-and-additions"></a>Kód módosításai és kiegészítései
 
-- `[Authorize]` Az`Controllers/ValueController.cs` attribútum hozzá lett adva a és más meglévő vezérlőkhöz.
+- A `[Authorize]` attribútum hozzáadva a `Controllers/ValueController.cs`hoz és bármely más meglévő vezérlőhöz.
 
-- Egy hitelesítési indítási osztályt `App_Start/Startup.Auth.cs`adott hozzá, amely az Azure ad-hitelesítés indítási logikáját tartalmazza, vagy ennek megfelelően módosította. Ha a **Címtáradatok olvasása** lehetőséget választotta, ez a fájl a OAuth-kód fogadására és a hozzáférési tokenek cseréjére szolgáló kódot is tartalmaz.
+- Hozzáadott egy hitelesítési indítási osztályt, `App_Start/Startup.Auth.cs`, amely az Azure AD-hitelesítés indítási logikáját tartalmazza, vagy ennek megfelelően módosította azt. Ha a **Címtáradatok olvasása** lehetőséget választotta, ez a fájl a OAuth-kód fogadására és a hozzáférési tokenek cseréjére szolgáló kódot is tartalmaz.
 
-- (Visual Studio 2015 csak ASP.NET 4 alkalmazással) Eltávolítva `App_Start/IdentityConfig.cs` és `Controllers/AccountController.cs` `Providers/ApplicationAuthProvider.cs`hozzáadva:, és. `Models/IdentityModel.cs`
+- (Visual Studio 2015 csak ASP.NET 4 alkalmazással) Eltávolítva `App_Start/IdentityConfig.cs`, `Controllers/AccountController.cs`, `Models/IdentityModel.cs`és `Providers/ApplicationAuthProvider.cs`lett hozzáadva.
 
-- Hozzáadva `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) `Service References/Azure AD/ConnectedService.json` vagy (Visual Studio 2015), amely azokat az információkat tartalmazza, amelyeket a Visual Studio használ a csatlakoztatott szolgáltatás hozzáadásának nyomon követésére.
+- Hozzáadott `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) vagy `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015), amely azokat az információkat tartalmazza, amelyeket a Visual Studio használ a csatlakoztatott szolgáltatás hozzáadásának nyomon követésére.
 
 ### <a name="file-backup-visual-studio-2015"></a>Fájl biztonsági mentése (Visual Studio 2015)
 
@@ -123,11 +123,11 @@ A csatlakoztatott szolgáltatás hozzáadásakor a Visual Studio 2015 biztonság
 ## <a name="changes-on-azure"></a>Változások az Azure-ban
 
 - Létrehozott egy Azure AD-alkalmazást abban a tartományban, amelyet a csatlakoztatott szolgáltatás hozzáadásakor kiválasztott.
-- Frissítette az alkalmazást, hogy tartalmazza a **címtár** -adatolvasási engedélyt, ha ez a beállítás be van jelölve.
+- Frissítette az alkalmazást, hogy tartalmazza a **címtár-adatolvasási** engedélyt, ha ez a beállítás be van jelölve.
 
 [További információ a Azure Active Directoryról](https://azure.microsoft.com/services/active-directory/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hitelesítési forgatókönyvek Azure Active Directory](authentication-scenarios.md)
 - [Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba](quickstart-v1-aspnet-webapp.md)

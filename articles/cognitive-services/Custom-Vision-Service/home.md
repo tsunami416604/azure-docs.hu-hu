@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 9e455a42945ba4d6ce334d557b7390c3c50e7ff9
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 829921ae5600873fdc8f2946ae3ff355bffb06a8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177824"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978594"
 ---
 # <a name="what-is-custom-vision"></a>Mi a Custom Vision?
 
 A Custom Vision egy Cognitive Services-szolgáltatás, amellyel egyéni képosztályozókat hozhat létre, helyezhet üzembe és fejleszthet tovább. A képosztályozó egy olyan AI-szolgáltatás, amely a vizualizáció tulajdonságai alapján a képekre vonatkozó címkéket ( _osztályokat_jelképező) alkalmaz. A [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) szolgáltatástól eltérően Custom Vision lehetővé teszi az alkalmazandó címkék meghatározását.
 
-## <a name="what-it-does"></a>Művelet
+## <a name="what-it-does"></a>Funkció
 
 A Custom Vision szolgáltatás gépi tanulási algoritmust használ a címkék képekre való alkalmazásához. Ön, a fejlesztőnek be kell küldenie a szolgáltatásban szereplő rendszerképek csoportjait, és nem kell megadnia a szóban forgó jellemzőket. A képeket saját maga címkézheti a beküldéskor. Ezt követően az algoritmus ezeket az adatokhoz rendeli, és kiszámítja a saját pontosságát az azonos lemezképeken végzett teszteléssel. Az algoritmus betanítása után tesztelheti, Újrataníthatja és végül felhasználhatja az új rendszerképek besorolását az alkalmazás igényeinek megfelelően. A modellt exportálhatja offline használatra is.
 

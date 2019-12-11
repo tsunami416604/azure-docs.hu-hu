@@ -3,16 +3,16 @@ title: Azure Functions kötési bővítmények manuális telepítése vagy friss
 description: Megtudhatja, hogyan telepíthet vagy frissíthet Azure Functions kötési bővítményeket a telepített functions-alkalmazásokhoz.
 ms.topic: reference
 ms.date: 09/26/2018
-ms.openlocfilehash: 49e8e2ce7eb0267d5a4e6fc0f5566dffaed82661
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 83ae2cdd16bce0b0a5b11b8c24e996306453a7a9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226512"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977488"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Azure Functions kötési bővítmények manuális telepítése vagy frissítése a portálról
 
-A Azure Functions 2. x verziójú futtatókörnyezet kötési kiterjesztéseket használ az eseményindítók és kötések kódjának megvalósításához. A kötési bővítmények a NuGet-csomagokban vannak megadva. A bővítmények regisztrálásához lényegében telepítenie kell egy csomagot. A függvények fejlesztésekor a kötési bővítmények telepítésének módja a fejlesztési környezettől függ. További információ: [kötési bővítmények regisztrálása](./functions-bindings-register.md) az eseményindítók és a kötések cikkben.
+A 2. x verziótól kezdődően a Azure Functions futtatókörnyezet kötési kiterjesztéseket használ az eseményindítók és kötések kódjának megvalósításához. A kötési bővítmények a NuGet-csomagokban vannak megadva. A bővítmények regisztrálásához lényegében telepítenie kell egy csomagot. A függvények fejlesztésekor a kötési bővítmények telepítésének módja a fejlesztési környezettől függ. További információ: [kötési bővítmények regisztrálása](./functions-bindings-register.md) az eseményindítók és a kötések cikkben.
 
 Időnként manuálisan kell telepítenie vagy frissítenie a kötési bővítményeket a Azure Portal. Előfordulhat például, hogy frissítenie kell egy regisztrált kötést egy újabb verzióra. Előfordulhat, hogy regisztrálnia kell egy olyan támogatott kötést is, amely nem telepíthető a portál **integrálás** lapján.
 

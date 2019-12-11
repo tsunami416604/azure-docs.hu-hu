@@ -1,5 +1,5 @@
 ---
-title: Webes API-kat meghívó webalkalmazás (webes API meghívása) – Microsoft Identity platform
+title: Webes API meghívása egy webalkalmazásból – Microsoft Identity platform | Azure
 description: Ismerje meg, hogyan készíthet olyan webalkalmazást, amely webes API-kat hív meg (webes API-t hív meg)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d971ec3c7cd82d6e028d0f96c8f52b897cedc351
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: de972c4efcfa544227649581d7c3441aae0bfb4f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175303"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964939"
 ---
 # <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Webes API-kat meghívó webalkalmazás – webes API meghívása
 

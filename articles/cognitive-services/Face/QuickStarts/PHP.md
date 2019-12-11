@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Rendszerképek észlelése a REST API és a PHP használatával'
+title: 'Rövid útmutató: Arcfelismerés egy képen a REST API és a PHP használatával'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban arcokat fog felismerni egy képről a Face API segítségével és PHP használatával.
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a0704f9e9a77eba2eb0d4f00bc1d880011e767de
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fb9539c8aa0477cbfbf11ce08635e4e9ccebb2ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859213"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977930"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Gyors útmutató: Rendszerképek észlelése a REST API és a PHP használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a PHP használatával
 
 Ebben a rövid útmutatóban az Azure Face REST APIt és a PHP-t fogja használni a képeken található emberi arcok észlelésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
+- Egy Face API előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Face API szolgáltatásra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait.
 - Egy Kódszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/download).
 - A PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) csomag.
 - Egy PHP-kompatibilis webböngésző. Ha nem állította be ezt a beállítást, a [XAMPP](https://www.apachefriends.org/) telepítésével és beállításával telepítheti a számítógépét.
@@ -43,7 +43,7 @@ Hozzon létre egy új HTML-fájlt, a *detectFaces. html*fájlt, és adja hozzá 
 
 ## <a name="write-the-php-script"></a>A PHP-szkript írása
 
-Adja hozzá a következő kódot `body` a dokumentum eleméhez. Ez a kód egy alapszintű felhasználói felületet állít be egy URL-mezővel, egy **elemező arc** gomb, egy válasz ablaktáblával és egy képmegjelenítő ablaktáblával.
+Adja hozzá a következő kódot a dokumentum `body` eleméhez. Ez a kód egy alapszintű felhasználói felületet állít be egy URL-mezővel, egy **elemező arc** gomb, egy válasz ablaktáblával és egy képmegjelenítő ablaktáblával.
 
 ```php
 <?php
@@ -99,7 +99,7 @@ catch (HttpException $ex)
 ?>
 ```
 
-Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot. A `returnFaceAttributes` mező adja meg a beolvasandó arc-attribútumokat; előfordulhat, hogy módosítani kívánja ezt a karakterláncot a kívánt felhasználási módtól függően.
+Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot. A `returnFaceAttributes` mező adja meg a beolvasandó arc-attribútumokat; Előfordulhat, hogy módosítani kívánja ezt a karakterláncot a kívánt felhasználási módtól függően.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -286,7 +286,7 @@ Nyissa meg a fájlt egy PHP-kompatibilis böngészőben. Az alábbihoz hasonló 
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Felfedezheti a Face API-kat, amelyek a képeken emberi arcok felismerésére, az arcok téglalapba foglalására és attribútumok, például életkor és nem visszaadására használhatók.
 

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 0e748e81de39b2bef14b543063adeb51b8b3ecdb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a31076d17ebaf8020fe4b3f82594b98a7c3bde74
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486708"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977454"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Üzletmenet-folytonossági terv létrehozása a QnA Maker szolgáltatáshoz
 
@@ -33,11 +33,11 @@ A fentiekben képviselt magas szintű ötlet a következő:
 
 4. Az elsődleges és másodlagos csomagok beállítása után a [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) segítségével konfigurálja a két végpontot, és állítson be útválasztási módszert.
 
-5. Létre kell hoznia egy SSL-tanúsítványt a Traffic Manager-végponthoz. [Az SSL-tanúsítvány kötése](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) az App Servicesben.
+5. Létre kell hoznia egy SSL (SSL) tanúsítványt a Traffic Manager-végponthoz. [Az SSL-tanúsítvány kötése](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) az App Servicesben.
 
 6. Végül használja a Traffic Manager-végpontot a robotban vagy az alkalmazásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker üzemelő példány kapacitásának kiválasztása](../Tutorials/choosing-capacity-qnamaker-deployment.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Bing Custom Search végpont meghívása a Node. js használatával | Microsoft Docs'
+title: 'Rövid útmutató: a Bing Custom Search végpont meghívása a Node. js használatával | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek kérését a Node. js használatával
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: e95b9aa8f01142065202e029c6298fc4c4cb1294
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 97bf62c61aee63ce97496e54b99ad641d6150876
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565737"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972701"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Gyors útmutató: Bing Custom Search végpont meghívása a Node. js használatával
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Rövid útmutató: a Bing Custom Search végpont meghívása a Node. js használatával
 
 Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek kérelmezését. Az alkalmazás JavaScriptben való megírásakor a Bing Custom Search API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js) érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Bing Custom Search példány. Lásd [: gyors útmutató: További információért hozza létre az](quick-start.md) első Bing Custom Search-példányát.
+- Egy Bing Custom Search példány. További információért tekintse [meg a rövid útmutató: az első Bing Custom Search példány létrehozása](quick-start.md) című témakört.
 
 - [Node.js](https://www.nodejs.org/)
 
@@ -33,7 +33,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új JavaScript-fájlt a kedvenc ide vagy szerkesztőben, `require()` és adjon hozzá egy utasítást a kérelmek könyvtárához. Hozzon létre változókat az előfizetési kulcshoz, az egyéni konfigurációs AZONOSÍTÓhoz és a keresési kifejezéshez. 
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben, és adjon hozzá egy `require()` utasítást a kérelmek könyvtárához. Hozzon létre változókat az előfizetési kulcshoz, az egyéni konfigurációs AZONOSÍTÓhoz és a keresési kifejezéshez. 
 
     ```javascript
     var request = require("request");
@@ -45,7 +45,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
 
 ## <a name="send-and-receive-a-search-request"></a>Keresési kérelem küldése és fogadása 
 
-1. Hozzon létre egy változót a kérelemben elküldött információk tárolásához. Hozza létre a kérelem URL-címét úgy, hogy hozzáfűzi `q=` a keresési kifejezést a lekérdezési paraméterhez, a keresési példány `customconfig=`egyéni konfigurációs azonosítóját pedig a következőre:. a paramétereket `&` a karakterrel válassza el. 
+1. Hozzon létre egy változót a kérelemben elküldött információk tárolásához. Hozza létre a kérelem URL-címét úgy, hogy hozzáfűzi a keresési kifejezést a `q=` lekérdezési paraméterhez, és a keresési példány egyéni konfigurációs AZONOSÍTÓját `customconfig=`. a paramétereket `&` karakterrel válassza el. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```javascript
     var info = {
@@ -74,7 +74,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
             }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni keresési Webalkalmazás létrehozása](./tutorials/custom-search-web-page.md)

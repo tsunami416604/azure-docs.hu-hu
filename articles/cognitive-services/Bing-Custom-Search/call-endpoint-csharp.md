@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Az Bing Custom Search-végpont meghívása a használatával C# | Microsoft Docs'
+title: 'Gyors útmutató: az Bing Custom Search-végpont C# meghívása a használatával | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Ezzel a rövid útmutatóval megkezdheti a keresési eredmények kérését C#a Bing Custom Search-példányában.
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 12/09/2019
 ms.author: maheshb
-ms.openlocfilehash: c1b118ec08e00705ad3eab9141d116fb9e6ef257
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 88a8cc0dbedeb9398637ab9a02323e9b2a6b8627
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405195"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975261"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Gyors útmutató: Bing Custom Search végpont meghívása a használatávalC# 
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Rövid útmutató: az Bing Custom Search-végpont meghívása a használatávalC# 
 
 Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek kérelmezését. Az alkalmazás beírása C#közben a BING Custom Search API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs)található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Bing Custom Search példány. Lásd [: gyors útmutató: További információért hozza létre az](quick-start.md) első Bing Custom Search-példányát.
+- Egy Bing Custom Search példány. További információért tekintse [meg a rövid útmutató: az első Bing Custom Search példány létrehozása](quick-start.md) című témakört.
 - Microsoft [.net Core](https://www.microsoft.com/net/download/core)
 - A [Visual Studio 2019-es vagy újabb](https://www.visualstudio.com/downloads/) verziójának bármely kiadása
 - Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
@@ -78,7 +78,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
     var searchTerm = args.Length > 0 ? args[0]:"microsoft";
     ```
 
-4. Hozza létre a kérelem URL-címét úgy, hogy hozzáfűzi `q=` a keresési kifejezést a lekérdezési paraméterhez, a keresési példány `customconfig=`egyéni konfigurációs azonosítóját pedig a következőre:. a paramétereket `&` a karakterrel válassza el. 
+4. Hozza létre a kérelem URL-címét úgy, hogy hozzáfűzi a keresési kifejezést a `q=` lekérdezési paraméterhez, és a keresési példány egyéni konfigurációs AZONOSÍTÓját `customconfig=`. a paramétereket `&` karakterrel válassza el. `url` lehet az alábbi globális végpont, vagy az erőforráshoz tartozó Azure Portal megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpont.
 
     ```csharp
     var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +
@@ -88,7 +88,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
 
 ## <a name="send-and-receive-a-search-request"></a>Keresési kérelem küldése és fogadása 
 
-1. Hozzon létre egy kérelem-ügyfelet, és adja hozzá `Ocp-Apim-Subscription-Key` az előfizetési kulcsot a fejléchez.
+1. Hozzon létre egy kérelem-ügyfelet, és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
     ```csharp
     var client = new HttpClient();
@@ -121,7 +121,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
     Console.ReadKey();
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni keresési Webalkalmazás létrehozása](./tutorials/custom-search-web-page.md)

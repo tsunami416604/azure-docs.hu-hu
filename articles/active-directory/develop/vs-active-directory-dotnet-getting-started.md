@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés az Azure AD-vel a Visual Studio .NET MVC-projektekben | Azure
+title: Ismerkedés az Azure AD-vel a .NET MVC-projektekben | Azure
 description: A .NET MVC-projektek Azure Active Directory használatának első lépései az Azure AD-vel való csatlakozás vagy a Visual Studio Connected Services használatával való létrehozás után
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0a6265f76cc7c799d162487999c129ec7e6a14
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6a603f37850cba13328889fcd120851f3c97c8c3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803610"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966537"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Első lépések Azure Active Directory (ASP.NET MVC-projektekkel)
 

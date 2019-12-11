@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub Device Provisioning Service – szimmetrikus kulcs igazolása
-description: Ez a cikk áttekintést nyújt a szimmetrikus kulcs igazolásáról a IoT Device kiépítési szolgáltatás használatával.
+description: Ez a cikk áttekintést nyújt a szimmetrikus kulcs igazolásáról a IoT Device kiépítési szolgáltatás (DPS) használatával.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: b1a849732539dbc9e066bee7cc20141f56ffe10c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348352"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975295"
 ---
 # <a name="symmetric-key-attestation"></a>Szimmetrikus kulcsú igazolás
 
@@ -36,9 +36,9 @@ A beállítás letiltásával saját szimmetrikus kulcsokat is megadhat a regisz
 
 ## <a name="detailed-attestation-process"></a>Részletes igazolási folyamat
 
-A szimmetrikus kulcs igazolása az eszköz kiépítési szolgáltatásával az eszközök azonosítására szolgáló IoT-hubok által támogatott [biztonsági](../iot-hub/iot-hub-devguide-security.md#security-token-structure) jogkivonatok használatával történik. Ezek a biztonsági jogkivonatok [közös hozzáférésű aláírási (SAS-) tokenek](../service-bus-messaging/service-bus-sas.md). 
+A szimmetrikus kulcs igazolása az eszköz kiépítési szolgáltatásával az eszközök azonosítására szolgáló IoT-hubok által támogatott [biztonsági jogkivonatok](../iot-hub/iot-hub-devguide-security.md#security-token-structure) használatával történik. Ezek a biztonsági jogkivonatok [közös hozzáférésű aláírási (SAS-) tokenek](../service-bus-messaging/service-bus-sas.md). 
 
-Az SAS-jogkivonatok olyan  kivonatoló aláírással rendelkeznek, amely a szimmetrikus kulccsal lett létrehozva. Az eszköz kiépítési szolgáltatása újra létrehozza az aláírást annak ellenőrzéséhez, hogy az igazolás során bemutatott biztonsági jogkivonat hiteles-e vagy sem.
+Az SAS-jogkivonatok olyan kivonatoló *aláírással* rendelkeznek, amely a szimmetrikus kulccsal lett létrehozva. Az eszköz kiépítési szolgáltatása újra létrehozza az aláírást annak ellenőrzéséhez, hogy az igazolás során bemutatott biztonsági jogkivonat hiteles-e vagy sem.
 
 Az SAS-jogkivonatok formátuma a következő:
 
@@ -46,17 +46,17 @@ Az SAS-jogkivonatok formátuma a következő:
 
 Az egyes tokenek összetevői:
 
-| Érték | Leírás |
+| Value (Díj) | Leírás |
 | --- | --- |
-| aláírás |Egy HMAC-SHA256 aláírási karakterlánc. Az egyéni regisztrációk esetében ez az aláírás a szimmetrikus kulcs (elsődleges vagy másodlagos) segítségével történik a kivonat végrehajtásához. A beléptetési csoportok esetében a rendszer a beléptetési csoport kulcsa alapján származtatott kulcsot használja a kivonat végrehajtásához. A kivonatot az űrlap egy üzenete hajtja végre `URL-encoded-resourceURI + "\n" + expiry`:. **Fontos**: A kulcsot a HMAC-SHA256 számítás végrehajtásához a Base64-ből kell dekódolni. Emellett az aláírás eredményének URL-kódolású kell lennie. |
-| {resourceURI} |A jogkivonattal elérhető regisztrációs végpont URI-ja, amely az eszköz kiépítési szolgáltatási példányának hatókör-azonosítójával kezdődik. Például: `{Scope ID}/registrations/{Registration ID}` |
-| {expiry} |UTF8-karakterláncok a 00:00:00-es, 1970-os UTC-kor óta eltelt idő másodpercben. |
-| {URL-encoded-resourceURI} |Kisbetűs URL-cím – a kisbetűs erőforrás URI-ja kódolása |
+| aláírás |Egy HMAC-SHA256 aláírási karakterlánc. Az egyéni regisztrációk esetében ez az aláírás a szimmetrikus kulcs (elsődleges vagy másodlagos) segítségével történik a kivonat végrehajtásához. A beléptetési csoportok esetében a rendszer a beléptetési csoport kulcsa alapján származtatott kulcsot használja a kivonat végrehajtásához. A kivonatot a következő formában lévő üzenetben kell elvégezni: `URL-encoded-resourceURI + "\n" + expiry`. **Fontos**: a kulcsot a HMAC-sha256 számítás végrehajtásához a Base64-ből kell dekódolni. Emellett az aláírás eredményének URL-kódolású kell lennie. |
+| ResourceURI |A jogkivonattal elérhető regisztrációs végpont URI-ja, amely az eszköz kiépítési szolgáltatási példányának hatókör-azonosítójával kezdődik. Például: `{Scope ID}/registrations/{Registration ID}` |
+| lejárta |UTF8-karakterláncok a 00:00:00-es, 1970-os UTC-kor óta eltelt idő másodpercben. |
+| {URL-kódolt-resourceURI} |Kisbetűs URL-cím – a kisbetűs erőforrás URI-ja kódolása |
 | PolicyName |Annak a megosztott hozzáférési házirendnek a neve, amelyre ez a jogkivonat hivatkozik. A szimmetrikus kulcs igazolásával való kiépítés során használt szabályzat neve **regisztráció**. |
 
 Ha egy eszköz egyéni regisztrációt tanúsít, az eszköz az egyéni beléptetési bejegyzésben definiált szimmetrikus kulcs használatával hozza létre az SAS-jogkivonat kivonatos aláírását.
 
-A SAS-tokent létrehozó kód példákat a [biztonsági](../iot-hub/iot-hub-devguide-security.md#security-token-structure)jogkivonatok című témakörben talál.
+A SAS-tokent létrehozó kód példákat a [biztonsági jogkivonatok](../iot-hub/iot-hub-devguide-security.md#security-token-structure)című témakörben talál.
 
 Az Azure IoT C SDK támogatja a szimmetrikus kulcsú tanúsítványhoz tartozó biztonsági jogkivonatok létrehozását. Ha például az Azure IoT C SDK-val egyéni regisztrációt tanúsít, tekintse meg [a szimulált eszköz kiépítése szimmetrikus kulcsokkal](quick-create-simulated-device-symm-key.md)című témakört.
 
@@ -71,7 +71,7 @@ Először egyedi regisztrációs azonosítót kell megadni minden olyan eszközh
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-Ez a pontos példa a örökölt [eszközök kiépítése a szimmetrikus kulcsok használatával](how-to-legacy-device-symm-key.md) című cikkben található.
+Ez a pontos példa a [örökölt eszközök kiépítése a szimmetrikus kulcsok használatával](how-to-legacy-device-symm-key.md) című cikkben található.
 
 Miután meghatározta a regisztrációs azonosítót az eszközhöz, a beléptetési csoport szimmetrikus kulcsa a regisztrációs azonosító [HMAC sha256](https://wikipedia.org/wiki/HMAC) kivonatának kiszámítására szolgál egy származtatott eszköz kulcsának létrehozásához. A regisztrációs azonosító kivonatolása a következő C# kóddal végezhető el:
 
@@ -110,10 +110,10 @@ Az egyes eszközök identitását a gyári regisztrációs azonosító és a sz�
 
 Ha az eszköz kulcsai nincsenek telepítve a gyárban, a [hardveres biztonsági modul HSM](concepts-security.md#hardware-security-module) -et kell használnia az eszköz identitásának biztonságos tárolásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megértette a szimmetrikus kulcs igazolását, tekintse meg az alábbi cikkeket:
 
-* [Rövid útmutató: Szimulált eszköz kiépítése szimmetrikus kulcsokkal](quick-create-simulated-device-symm-key.md)
+* [Gyors útmutató: szimulált eszköz kiépítése szimmetrikus kulcsokkal](quick-create-simulated-device-symm-key.md)
 * [Ismerje meg az automatikus kiépítés fogalmait](./concepts-auto-provisioning.md)
 * [Az automatikus kiépítés használatának első lépései](./quick-setup-auto-provision.md) 

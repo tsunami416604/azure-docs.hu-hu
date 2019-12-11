@@ -1,6 +1,6 @@
 ---
-title: Felhasználók számára bejelentkező webes alkalmazás (alkalmazás-regisztráció) – Microsoft Identity platform
-description: Megtudhatja, hogyan hozhat létre egy webalkalmazást, amely bejelentkezik a felhasználók számára (alkalmazás regisztrálása)
+title: Felhasználói bejelentkezést biztosító webalkalmazás regisztrálása – Microsoft Identity platform | Azure
+description: Megtudhatja, hogyan regisztrálhat egy olyan webalkalmazást, amely aláírja a felhasználókat
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d840cbaba2cc8325c619248bb7f4421d3b2f83c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b08dd5602196bae0e250953c83320e69ddc6da83
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766072"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964820"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Felhasználók számára bejelentkező webalkalmazás: alkalmazás regisztrálása
 
@@ -58,7 +58,7 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 1. Válassza a **hitelesítés** menüt, majd adja hozzá a következő adatokat:
    1. A **Válasz URL-címéhez**adja hozzá a **web**típusú **https://localhost:44321/signin-oidc** .
    1. A **Speciális beállítások** szakaszban állítsa be **https://localhost:44321/signout-oidc** a **kijelentkezési URL-címet** .
-   1. Az **implicit engedélyezés**területen válassza az **azonosító tokenek**lehetőséget.
+   1. Az **Implicit engedély** területen válassza az **Azonosítói jogkivonatok** elemet.
    1. Kattintson a **Mentés** gombra.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)

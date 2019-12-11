@@ -1,5 +1,5 @@
 ---
-title: Azure Database for PostgreSQL-nagy kapacitású kapcsolódási problémáinak elhárítása (Citus)
+title: Kapcsolatok – nagy kapacitású (Citus) – Azure Database for PostgreSQL
 description: Ismerje meg, hogyan lehet elhárítani a Azure Database for PostgreSQL-nagy kapacitású kapcsolódási problémáit (Citus)
 keywords: PostgreSQL-kapcsolat, kapcsolati karakterlánc, csatlakozási problémák, átmeneti hiba, kapcsolódási hiba
 author: jonels-msft
@@ -7,12 +7,12 @@ ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: b812b730cebba4dbf0735f49f544e53bf7f8787c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c064aca484f85c44dada9888012140784a96863f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952146"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977505"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású kapcsolódási problémáinak elhárítása (Citus)
 
@@ -50,7 +50,7 @@ Ha az alkalmazás tartósan nem tud csatlakozni a nagy kapacitású (Citus), a l
 
 * Koordinátori csomópont tűzfala: Ellenőrizze, hogy a nagy kapacitású-kiszolgáló tűzfala úgy van-e konfigurálva, hogy engedélyezze a kapcsolódást az ügyfélről, beleértve a proxykiszolgálót és az átjárókat is.
 * Ügyféloldali tűzfal konfigurációja: az ügyfélen lévő tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz való kapcsolódást. Egyes tűzfalak esetében nem csak a név, hanem a kiszolgáló IP-címeinek és portjainak engedélyezése szükséges.
-* Felhasználói hiba: dupla – ellenőrizze a kapcsolatok karakterláncát. Előfordulhat, hogy a felhasználónévben, például a kiszolgálónévben vagy egy *\@servername* -utótagban elfelejtette a beírt paramétereket.
+* Felhasználói hiba: dupla – ellenőrizze a kapcsolatok karakterláncát. Lehet, hogy a kiszolgáló neve nem megfelelő típusú paraméterekkel rendelkezik. A Azure Portal különböző nyelvi keretrendszerek és psql esetében a kapcsolatok karakterláncai találhatók. Nyissa meg a nagy kapacitású (Citus) kiszolgálócsoport **kapcsolódási karakterláncok** lapját. Azt is vegye figyelembe, hogy a nagy kapacitású-(Citus-) fürtöknek csak egy adatbázisa van, az előre definiált neve pedig **Citus**.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 

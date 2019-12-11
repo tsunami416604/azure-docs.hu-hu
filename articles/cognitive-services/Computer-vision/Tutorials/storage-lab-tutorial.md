@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ac292f020bb64c7c70ce3ea5c7f66fe9e9ed1bb7
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7c83350dbecaf20e9b35f159b2c01824777bc665
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604659"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973713"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Oktatóanyag: képmetaadatok előállítása a Computer Vision használatával az Azure Storage-ban
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az Azure Computer Vision szolgáltatást egy webalkalmazásba a feltöltött lemezképek metaadatainak létrehozásához. Ez a [digitális eszközkezelés (Dam)](../Home.md#computer-vision-for-digital-asset-management) forgatókönyvek esetében hasznos, például ha egy vállalat gyorsan szeretne leíró feliratokat vagy kereshető kulcsszavakat létrehozni az összes képhez.
 
-Az Azure Storage-ban és a GitHubon [Cognitive Services laborban](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) teljes körű útmutatót talál, és ez az oktatóanyag alapvetően a labor 5. gyakorlatát fedi le. Előfordulhat, hogy minden lépés után létre kívánja hozni a végpontok közötti alkalmazást, de ha szeretné megtekinteni, hogyan integrálható a Computer Vision egy meglévő webalkalmazásba, olvassa el itt.
+Az Azure Storage-ban és a GitHubon [Cognitive Services laborban](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) teljes körű útmutatót talál, és ez az oktatóanyag alapvetően a labor 5. gyakorlatát fedi le. Érdemes lehet a teljes alkalmazást minden lépés után létrehozni, de ha csak szeretné megismerni, hogyan integrálhatja a Computer Visiont egy meglévő webalkalmazásba, olvassa el itt.
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A [Visual Studio 2017 Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) vagy újabb verziója a "ASP.net and Web Development" és az "Azure Development" számítási feladatokkal.
-- Egy Azure Storage-fiók lemezképek számára lefoglalt blob-tárolóval ( [Az Azure Storage Lab 1. gyakorlatának](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) követése, ha segítségre van szüksége ehhez a lépéshez).
+- Egy Azure Storage-fiók a képtároláshoz beállított blob-tárolóval ( [Az Azure Storage Lab 1. gyakorlatának](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) követése, ha segítségre van szüksége ehhez a lépéshez).
 - Az Azure Storage Explorer eszköz ( [Az Azure Storage Lab 2. gyakorlatának](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise2) követése, ha segítségre van szüksége ehhez a lépéshez).
 - Egy ASP.NET webalkalmazás, amely hozzáfér az Azure Storage-hoz ( [Az Azure Storage Lab 3. gyakorlatának](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3) követésével gyorsan létrehoz egy ilyen alkalmazást).
 
@@ -59,9 +59,9 @@ Létre kell hoznia egy Computer Vision erőforrást az Azure-fiókjához; Ez az 
 
 ## <a name="add-computer-vision-credentials"></a>Computer Vision hitelesítő adatok hozzáadása
 
-Ezután hozzá kell adnia a szükséges hitelesítő adatokat az alkalmazáshoz, hogy hozzáférhessen Computer Vision erőforrásaihoz
+Ezután adja hozzá a szükséges hitelesítő adatokat az alkalmazáshoz, hogy hozzáférhessen Computer Vision erőforrásaihoz
 
-Nyissa meg a ASP.NET-webalkalmazást a Visual Studióban, és navigáljon a **web. config** fájlhoz a projekt gyökerében. Adja hozzá a következő utasításokat a fájl `<appSettings>` szakaszához, és cserélje le az `VISION_KEY`t az előző lépésben másolt kulccsal, és `VISION_ENDPOINT` az előző lépésben mentett URL-címmel.
+Nyissa meg a ASP.NET-webalkalmazást a Visual Studióban, és navigáljon a **web. config** fájlhoz a projekt gyökerében. Adja hozzá a következő utasításokat a fájl `<appSettings>` szakaszához, és cserélje le az `VISION_KEY`t az előző lépésben másolt kulcsra, és `VISION_ENDPOINT` az előző lépésben mentett URL-címmel.
 
 ```xml
 <add key="SubscriptionKey" value="VISION_KEY" />
@@ -72,7 +72,7 @@ Ezután a Megoldáskezelő kattintson a jobb gombbal a projektre, és a **NuGet-
 
 ## <a name="add-metadata-generation-code"></a>Metaadatok létrehozási kódjának hozzáadása
 
-Ezután adja hozzá a kódot, amely ténylegesen kihasználja a Computer Vision szolgáltatást a rendszerképekhez tartozó metaadatok létrehozásához. Ezek a lépések érvényesek lesznek a ASP.NET alkalmazásra a laborban, de a saját alkalmazásra is adaptálható. Fontos, hogy ezen a ponton van egy ASP.NET webalkalmazása, amely képeket tölthet fel egy Azure Storage-tárolóba, beolvashatja a képeket, és megjelenítheti őket a nézetben. Ha nem biztos benne, hogy [Az Azure Storage Lab 3. gyakorlatát](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3)követi. 
+Ezután adja hozzá a kódot, amely ténylegesen kihasználja a Computer Vision szolgáltatást a rendszerképekhez tartozó metaadatok létrehozásához. Ezek a lépések érvényesek lesznek a ASP.NET alkalmazásra a laborban, de a saját alkalmazásra is adaptálható. Fontos, hogy ezen a ponton van egy ASP.NET webalkalmazása, amely képeket tölthet fel egy Azure Storage-tárolóba, beolvashatja a képeket, és megjelenítheti őket a nézetben. Ha nem biztos abban, hogy ezt a lépést látja, érdemes követnie [Az Azure Storage Lab 3. gyakorlatát](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3). 
 
 1. Nyissa meg a *HomeController.cs* fájlt a projekt- **vezérlők** mappában, és adja hozzá a következő `using` utasításokat a fájl elejéhez:
 
@@ -105,7 +105,7 @@ Ezután adja hozzá a kódot, amely ténylegesen kihasználja a Computer Vision 
     await photo.SetMetadataAsync();
     ```
 
-1. Ezután nyissa meg az **index** metódust ugyanebben a fájlban; Ez a metódus enumerálja a tárolt képblobokat a célként megadott blob-tárolóban ( **IListBlobItem** -példányként), és átadja azokat az alkalmazás nézetnek. Cserélje le a metódus `foreach` blokkját a következő kódra. Ez a kód a **CloudBlockBlob. FetchAttributes** metódust hívja meg az egyes Blobok csatolt metaadatainak lekéréséhez. Kibontja a számítógép által generált leírást (`caption`) a metaadatokból, és hozzáadja azt a **BlobInfo** objektumhoz, amely átkerül a nézetbe.
+1. Ezután nyissa meg az **index** metódust ugyanebben a fájlban. Ez a metódus enumerálja a tárolt képblobokat a célként megadott blob-tárolóban ( **IListBlobItem** -példányként), és átadja azokat az alkalmazás nézetnek. Cserélje le a metódus `foreach` blokkját a következő kódra. Ez a kód a **CloudBlockBlob. FetchAttributes** metódust hívja meg az egyes Blobok csatolt metaadatainak lekéréséhez. Kibontja a számítógép által generált leírást (`caption`) a metaadatokból, és hozzáadja azt a **BlobInfo** objektumhoz, amely átkerül a nézetbe.
     
     ```csharp
     foreach (IListBlobItem item in container.ListBlobs())
@@ -139,13 +139,13 @@ Az összes csatolt metaadat megtekintéséhez a Azure Storage Explorer segítsé
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha továbbra is szeretne dolgozni a webalkalmazáson, tekintse meg a [következő lépések](#next-steps) szakaszt. Ha nem tervezi az alkalmazás használatának folytatását, törölje az összes alkalmazásspecifikus erőforrást. Ehhez egyszerűen törölheti az Azure Storage-előfizetést és Computer Vision erőforrást tartalmazó erőforráscsoportot. Ezzel eltávolítja a Storage-fiókot, a hozzá feltöltött blobokat, valamint a ASP.NET-webalkalmazáshoz való kapcsolódáshoz szükséges App Service erőforrást. 
+Ha továbbra is szeretne dolgozni a webalkalmazáson, tekintse meg a [következő lépések](#next-steps) szakaszt. Ha nem tervezi az alkalmazás használatának folytatását, törölje az összes alkalmazásspecifikus erőforrást. Az erőforrások törléséhez törölheti az Azure Storage-előfizetést és Computer Vision erőforrást tartalmazó erőforráscsoportot. Ezzel eltávolítja a Storage-fiókot, a hozzá feltöltött blobokat, valamint a ASP.NET-webalkalmazáshoz való kapcsolódáshoz szükséges App Service erőforrást. 
 
-Az erőforráscsoport törléséhez nyissa meg az **erőforráscsoportok** panelt a portálon, navigáljon a projekthez használt erőforráscsoporthoz, és kattintson a nézet tetején található **erőforráscsoport törlése** elemre. A rendszer felszólítja az erőforráscsoport nevének megadására, hogy erősítse meg, hogy törölni kívánja-e, mert a törlés után egy erőforráscsoport nem állítható helyre.
+Az erőforráscsoport törléséhez nyissa meg az **erőforráscsoportok** fület a portálon, navigáljon a projekthez használt erőforráscsoporthoz, és kattintson a nézet tetején található **erőforráscsoport törlése** elemre. A rendszer megkéri, hogy írja be az erőforráscsoport nevét annak megerősítéséhez, hogy törölni kívánja, mert a törlés után egy erőforráscsoport nem állítható helyre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban integrálta az Azure Computer Vision szolgáltatását egy meglévő webalkalmazásba, hogy automatikusan előállítson feliratokat és kulcsszavakat a blob-képekhez, amikor feltöltik őket. Ezután tekintse meg az Azure Storage Lab, 6. gyakorlatát, hogy megtudja, hogyan adhat hozzá keresési funkciókat a webalkalmazáshoz. Ez kihasználja a Computer Vision szolgáltatás által generált keresési kulcsszavakat.
+Ebben az oktatóanyagban beállítja az Azure Computer Vision szolgáltatását egy meglévő webalkalmazásban, hogy automatikusan hozzon létre feliratokat és kulcsszavakat a blob-képekhez a feltöltésük során. Ezután tekintse meg az Azure Storage Lab, 6. gyakorlatát, hogy megtudja, hogyan adhat hozzá keresési funkciókat a webalkalmazáshoz. Ez kihasználja a Computer Vision szolgáltatás által generált keresési kulcsszavakat.
 
 > [!div class="nextstepaction"]
 > [Keresés hozzáadása az alkalmazáshoz](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise6)

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Rendszerképek észlelése a REST API és a JavaScript használatával'
+title: 'Rövid útmutató: Arcfelismerés egy képen a REST API és a JavaScript használatával'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban arcokat fog felismerni egy képről a Face API segítségével és JavaScript használatával a Cognitive Servicesben.
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: bc8d20abcc7bc66d319874978e134c5c86c86e1c
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 3946f6d034baee528f9cd5abd6467b8c393e73de
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859042"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977981"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Gyors útmutató: Rendszerképek észlelése a REST API és a JavaScript használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a JavaScript használatával
 
 Ebben a rövid útmutatóban az Azure Face REST APIt fogja használni a JavaScripttel az emberi arcok észleléséhez a képen.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
+- Egy Face API előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Face API szolgáltatásra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait.
 - Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="initialize-the-html-file"></a>A HTML-fájl inicializálása
@@ -41,7 +41,7 @@ Hozzon létre egy új HTML-fájlt, a *detectFaces. html*fájlt, és adja hozzá 
 </html>
 ```
 
-Ezután adja hozzá a következő kódot `body` a dokumentum eleméhez. Ez a kód egy alapszintű felhasználói felületet állít be egy URL-mezővel, egy **elemező arc** gomb, egy válasz ablaktáblával és egy képmegjelenítő ablaktáblával.
+Ezután adja hozzá a következő kódot a dokumentum `body` eleméhez. Ez a kód egy alapszintű felhasználói felületet állít be egy URL-mezővel, egy **elemező arc** gomb, egy válasz ablaktáblával és egy képmegjelenítő ablaktáblával.
 
 ```html
 <h1>Detect Faces:</h1>
@@ -65,7 +65,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>JavaScript-parancsfájl írása
 
-Adja hozzá a következő kódot közvetlenül a `h1` dokumentum eleme fölé. Ez a kód beállítja a JavaScript-kódot, amely meghívja a Face API.
+Adja hozzá a következő kódot közvetlenül a dokumentum `h1` eleméhez. Ez a kód beállítja a JavaScript-kódot, amely meghívja a Face API.
 
 ```html
 <script type="text/javascript">
@@ -124,7 +124,7 @@ Adja hozzá a következő kódot közvetlenül a `h1` dokumentum eleme fölé. E
 </script>
 ```
 
-Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot. A `returnFaceAttributes` mező adja meg a beolvasandó arc-attribútumokat; előfordulhat, hogy módosítani kívánja ezt a karakterláncot a kívánt felhasználási módtól függően.
+Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot. A `returnFaceAttributes` mező adja meg a beolvasandó arc-attribútumokat; Előfordulhat, hogy módosítani kívánja ezt a karakterláncot a kívánt felhasználási módtól függően.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -228,7 +228,7 @@ A következő szöveg egy sikeres JSON-válasz példáját szemlélteti.
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy JavaScript-parancsfájlt írt, amely meghívja az Azure Face APIt, hogy felderítse az arcokat egy képben, és visszaadja az attribútumokat. További információért olvassa el a Face API dokumentációját.
 
