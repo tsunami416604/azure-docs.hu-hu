@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: f798a1eff8d9c90a58856a12b84061ece7e3720d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d4c8dd4b3a53d484d5240f3514d171231fc93ae0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885671"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968510"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services kibocsátási megjegyzések
 
@@ -554,6 +554,10 @@ Az SDK novemberi kiadásában a következő funkciók voltak Újdonságok:
 * Aszinkron módszer támogatása
   
     * Az aszinkron támogatás minden metódushoz hozzá lett adva.
+
+## <a name="additional-notes"></a>További megjegyzések
+
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

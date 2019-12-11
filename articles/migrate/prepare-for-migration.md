@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 12/10/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196422"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974784"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Helyszíni gépek előkészítése az Azure-ba való áttelepítésre
 
@@ -99,7 +99,7 @@ Ha például a helyszíni telepítés olyan adatlemezt használ, amely az alkalm
 1. A helyszíni gépen (nem a gazdagépen) nyisson meg egy rendszergazda jogú parancssort.
 2. Írja be a **DiskPart**programot.
 3. Írja be a **San**típust. Ha a vendég operációs rendszer meghajtóbetűjele nincs karbantartva, a rendszer **offline állapotba** helyezi az összes vagy **Offline megosztást** .
-4. A **DiskPart** parancssorba írja be a következőt: **SANPOLICY = ONLINEALL**. Ez a beállítás biztosítja, hogy a lemezek online állapotba kerüljenek, és egyaránt olvashatók és írhatók.
+4. A **DiskPart** parancssorába írja be a következőt: **San Policy = OnlineAll**. Ez a beállítás biztosítja, hogy a lemezek online állapotba kerüljenek, és egyaránt olvashatók és írhatók.
 5. A teszt áttelepítése során ellenőrizheti, hogy a meghajtóbetűjelek megmaradnak-e.
 
 

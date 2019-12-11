@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 370ccd2508e9dda35ccc5815dce42a7b7089c07e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7acd4b8014aad7b70f1a67c91368477599a97901
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160010"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Oktatóanyag: Azure Active Directory a hópehely-integrációval
 
@@ -47,6 +47,7 @@ Az Azure AD-integráció a hópehely-nal való konfigurálásához a következő
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
 * A hópehely támogatja **az SP-t és a identitásszolgáltató** KEZDEMÉNYEZett SSO
+* A hópehely támogatja [a felhasználók automatikus üzembe](snowflake-provisioning-tutorial.md) helyezését és megszüntetését (ajánlott)
 
 ## <a name="adding-snowflake-from-the-gallery"></a>A hópehely hozzáadása a katalógusból
 
@@ -127,11 +128,11 @@ Az Azure AD egyszeri bejelentkezés a hópehely-vel való konfigurálásához ha
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL-cím
+    a. Bejelentkezési URL
 
     b. Azure ad-azonosító
 
-    c. Kijelentkezési URL-cím
+    c. Kijelentkezési URL
 
 ### <a name="configure-snowflake-single-sign-on"></a>A hópehely egyszeri bejelentkezés konfigurálása
 

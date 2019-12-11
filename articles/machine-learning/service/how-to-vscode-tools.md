@@ -10,12 +10,12 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd85f3a495b90b3a1dc9d3f021d3600496792759
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 84b7f56ebcbb87a31fbfb85ea6d88c3388870872
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824360"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975992"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Ismerkedés a Visual Studio Code Azure Machine Learning
 
@@ -94,8 +94,8 @@ Ha módosítani szeretné a projektjét, hogy az Azure képes legyen a fontos in
     import azureml
     from azureml.core import Run
 
-    # access the Azure ML run
-    # init run param to check if running within AML
+    # Access the Azure ML run
+    # Init run param to check if running within AML
     def get_AMLRun():
         try:
             run = Run.get_submitted_run()
@@ -128,7 +128,7 @@ Ha módosítani szeretné a projektjét, hogy az Azure képes legyen a fontos in
     ...
             acc_val = acc_op.eval(feed_dict = {X: X_test, y: y_test})
 
-            # log accuracies to AML logger if using AML
+            # Log accuracies to AML logger if using AML
             if run != None:
                 run.log('Validation Accuracy', np.float(acc_val))
                 run.log('Training Accuracy', np.float(acc_train))
@@ -137,14 +137,14 @@ Ha módosítani szeretné a projektjét, hogy az Azure képes legyen a fontos in
     ...
     ```
 ### <a name="run-the-script-in-azure"></a>A szkript futtatása az Azure-ban
-Ennyi az egész! Most már csak a bővítmény használatával futtathatja a szkriptet a felhőben! Vegye figyelembe, hogy a következő bemutató videó az új Azure ML-munkaterület és-számítás létrehozásához szükséges időt, valamint a betanítási parancsfájl futtatásához szükséges időt veszi igénybe.
+Ennyi az egész! Most már csak a bővítmény használatával futtathatja a szkriptet a felhőben! Vegye figyelembe, hogy a következő bemutató videó az új Azure Machine Learning munkaterület és számítások létrehozásához szükséges időt, valamint a betanítási parancsfájl futtatásához szükséges időt veszi igénybe.
 
    [Azure ML-kísérlet indítása ![](./media/vscode-tools-for-ai/start-golden-path.gif)](./media/vscode-tools-for-ai/start-golden-path.gif#lightbox)
 
 A kísérlet futtatása gombra kattintva válaszolja meg az utasításokat a következő módon:
 
-1. Azure-előfizetés kiválasztása
-1. *Új* Azure ml-munkaterület létrehozása
+1. Válassza ki az Azure-előfizetését.
+1. Válassza az *új* Azure Machine learning munkaterület létrehozása lehetőséget.
 1. Válassza ki az előre konfigurált sablonok készletét, hogy inicializálja a Python-környezetet a futtatásokhoz. A sablonok kiindulási pontot biztosítanak, és a következő beállításokat tartalmazzák:
     1. **PyTorch**, **TensorFlow**vagy **Scikit – Learn**
     1. **Egyszeri** vagy **elosztott** számítási képzés
@@ -155,7 +155,7 @@ A kísérlet futtatása gombra kattintva válaszolja meg az utasításokat a kö
 
     [![betanítás a felhőben](./media/vscode-tools-for-ai/run-golden-path.gif)](./media/vscode-tools-for-ai/run-golden-path.gif#lightbox)
 
-Néhány másodpercen belül értesítést kap arról, hogy a kísérlet el lett küldve az Azure-ba, amelyen megtekintheti az előrehaladását a Azure Machine Learning Studióban. ehhez kattintson a **kísérlet futtatásának megtekintése** HIVATKOZÁSRA a vs Code-értesítésben, vagy a vs code-on belül Az Azure lapon található frissítés gomb megnyomásával.
+Néhány másodpercen belül értesítést kap arról, hogy a kísérlet el lett küldve az Azure-ba, amelyen megtekintheti az előrehaladását a Azure Machine Learning Studióban. ehhez kattintson a **kísérlet futtatásának megtekintése** HIVATKOZÁSRA a vs Code-értesítésben, vagy a vs code-on belül a frissítés gombra az Azure lapon.
 
 Jelenleg a futtatási mérőszámok megtekintése csak a Studióban támogatott. A fenti, a **kísérlet futtatására** szolgáló hivatkozás megtekintése hivatkozásra kattintva megtekintheti a naplókat, amelyeken a naplózott mérőszámok jelennek meg.
 [![kísérlet futtatása a portálon](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG)](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG#lightbox)
@@ -166,7 +166,7 @@ A fenti forgatókönyvben a legegyszerűbb útvonalat követve elküldte a kís�
 
 Mielőtt elkezdi a gépi tanulási modellek a Visual Studio Code-ban való üzembe helyezését, létre kell hoznia egy [Azure Machine learning munkaterületet](concept-workspace.md) a felhőben. Ez a munkaterület fogja tartalmazni a modelleket és az erőforrásokat.
 
-### <a name="create-a-workspace"></a>Munkaterület létrehozása
+### <a name="create-a-workspace"></a>Munkaterületek létrehozása
 
 1. A Visual Studio Code tevékenység sávján válassza az Azure ikont. Megjelenik a Azure Machine Learning oldalsáv.
 
@@ -330,7 +330,7 @@ A Command paletta a Visual Studio Code számos Azure Machine Learning funkciój�
 
 [a Visual Studio Code-hoz készült Azure Machine Learning billentyűparancsai ![](./media/vscode-tools-for-ai/commands.gif)](./media/vscode-tools-for-ai/commands.gif#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Visual Studio code-on kívüli Azure Machine Learning betanításával kapcsolatos útmutatóért lásd [: oktatóanyag: modellek Betanítása Azure Machine learning](tutorial-train-models-with-aml.md)használatával.
 * A kódok helyi szerkesztéséről, futtatásáról és hibakereséséről a [Python Hello-World oktatóanyagban](https://code.visualstudio.com/docs/Python/Python-tutorial)talál további információt.

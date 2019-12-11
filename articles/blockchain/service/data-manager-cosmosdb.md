@@ -4,12 +4,12 @@ description: Blockchain-Data Manager használata az Azure Blockchain Service-hez
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 642e8b4d9d2492c0d7119f0a5469176765565159
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 79c39d9883b5ba618e368b0ff6d3e95f1af5bd96
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849961"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977394"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Oktatóanyag: az Blockchain-Data Manager használata az adatküldés Azure Cosmos DB
 
@@ -78,13 +78,15 @@ A szerződési ABI definiálja az intelligens szerződési felületeket. Leírja
 
 1. Mentse az **ABI** TÖMBÖt JSON-fájlként. Például: *ABI. JSON*. Ezt a fájlt egy későbbi lépésben használhatja.
 
-A Blockchain Data Manager igényli az intelligens szerződés üzembe helyezett bytecode. Az üzembe helyezett bytecode eltér az intelligens szerződés bytecode. A telepített bytecode a lefordított szerződés metaadatainak fájljából kérheti le.
+A Blockchain Data Manager igényli az intelligens szerződés üzembe helyezett bytecode. Az üzembe helyezett bytecode eltér az intelligens szerződés bytecode. Az Azure blockchain Development Kit bővítmény használatával másolja a bytecode a vágólapra.
 
-1. Nyissa meg a konszolidációs projekt **Build/szerződések** mappájában található szerződéses metaadat-fájlt. A fájl neve az intelligens szerződés neve, amelyet a **. JSON** kiterjesztés követ.
-1. Keresse meg a **deployedBytecode** elemet a JSON-fájlban.
-1. Másolja a hexadecimális értéket idézőjelek nélkül.
+1. A Visual Studio Code Explorer ablaktáblán bontsa ki a szilárdtest-projekt **Build/szerződések** mappáját.
+1. Kattintson a jobb gombbal a szerződés metaadatainak JSON-fájljára. A fájl neve az intelligens szerződés neve, amelyet a **. JSON** kiterjesztés követ.
+1. Válassza a **tranzakció másolása bytecode**lehetőséget.
 
-    ![A Visual Studio Code panel a metaadatokban található bytecode](./media/data-manager-portal/bytecode-metadata.png)
+    ![Visual Studio Code ablaktábla a másolási tranzakció bytecode kijelölésével](./media/data-manager-cosmosdb/bytecode-devkit.png)
+
+    A rendszer a vágólapra másolja a bytecode.
 
 1. Mentse a **bytecode** -értéket JSON-fájlként. Például: *bytecode. JSON*. Ezt a fájlt egy későbbi lépésben használhatja.
 

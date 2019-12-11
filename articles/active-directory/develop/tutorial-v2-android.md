@@ -1,6 +1,6 @@
 ---
-title: Első lépések az Androidban – Microsoft Identity platform | Azure
-description: Az Android-alkalmazások hozzáférési jogkivonatának beszerzése és a Microsoft Identity platform hozzáférési jogkivonatokat igénylő API-k hívása Microsoft Graph API vagy API-k esetén.
+title: Bejelentkezési felhasználók & hívás Microsoft Graph (Android) – Microsoft Identity platform | Azure
+description: Hozzáférési token beszerzése és a Microsoft Identity platform (Android) hozzáférési jogkivonatait igénylő API-k meghívása Microsoft Graph
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 7feefc368815b1bfe57b67db2cd94702db799d78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242216"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961557"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph meghívása Android-alkalmazásból
 
@@ -125,7 +125,7 @@ Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktat�
 
 ### <a name="create-the-apps-ui"></a>Az alkalmazás felhasználói felületének létrehozása
 
-1. A Android Studio projekt ablakban navigáljon az **app** > **src** > **Main** > **res** > **elrendezés** elemre, és nyissa meg a **activity_main. xml fájlt** , és nyissa meg a **szöveges** nézetet.
+1. A Android Studio projekt ablakban navigáljon az **app** > **src** > **fő** > **res** > **elrendezés** elemre, és nyissa meg a **activity_main. xml fájlt** , és nyissa meg a **szöveges** nézetet.
 2. Módosítsa a tevékenység elrendezését, például: `<androidx.coordinatorlayout.widget.CoordinatorLayout` `<androidx.coordinatorlayout.widget.DrawerLayout`. 
 3. Adja hozzá a `android:orientation="vertical"` tulajdonságot a `LinearLayout` csomóponthoz.
 4. Illessze be a következő kódot a `LinearLayout` csomópontba, és cserélje le az aktuális tartalmat:
@@ -543,7 +543,7 @@ Az alkalmazás létrehozása és üzembe helyezése tesztelési eszközön vagy 
 
 A bejelentkezést követően az alkalmazás megjeleníti a Microsoft Graph `/me` végpont által visszaadott adatok megjelenítését.
 
-### <a name="consent"></a>Hozzájárulása
+### <a name="consent"></a>hozzájárulása
 
 Amikor a felhasználó először jelentkezik be az alkalmazásba, a Microsoft Identity a kért engedélyekkel való beleegyezett.  Habár a legtöbb felhasználó képes hozzájárulni, néhány Azure AD-bérlő letiltotta a felhasználói beleegyezését, amelyhez a rendszergazdáknak minden felhasználó nevében hozzá kell járulniuk. A forgatókönyv támogatásához regisztrálja az alkalmazás hatóköreit a Azure Portalban.
 

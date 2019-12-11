@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 615c10357e099b547008b128ca5f5a773ff1aa14
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ae1e537665739c055121fd82cf14f733a90142e4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158310"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964227"
 ---
 # <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>Oktatóanyag: a Dropbox vállalati integrációja Azure Active Directory
 
@@ -44,7 +44,7 @@ Első lépésként a következő elemeket kell megadnia:
 
 * Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A Dropbox for Business támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-* A Dropbox for Business támogatja a felhasználók üzembe helyezésének **időpontját**
+* A Dropbox for Business támogatja a [felhasználók automatikus üzembe](dropboxforbusiness-tutorial.md) helyezését és megszüntetését
 
 ## <a name="adding-dropbox-for-business-from-the-gallery"></a>A Dropbox for Business hozzáadása a katalógusból
 
@@ -97,11 +97,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL-cím
+    a. Bejelentkezési URL
 
     b. Azure AD-azonosító
 
-    c. Kijelentkezési URL-cím
+    c. Kijelentkezési URL
 
 ### <a name="configure-dropbox-for-business-sso"></a>A Dropbox konfigurálása vállalati egyszeri bejelentkezéshez
 
@@ -157,7 +157,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `BrittaSimon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a  **Create** (Létrehozás) gombra.
 

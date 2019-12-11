@@ -11,19 +11,19 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 10a150a64a058a4bf346f07e2ef298c974641256
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4ef1249a601334cc198662b90da95623247190e7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901302"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978185"
 ---
 # <a name="collect-data-for-models-in-production"></a>Adatok gyűjtése a termelési modellekhez
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
-> A Azure Machine Learning monitoring SDK hamarosan megszűnik. Az SDK továbbra is megfelelő azoknak a fejlesztőknek, akik az adateltolódást figyelik a modellekben. A legtöbb fejlesztőnek azonban a [Application Insights egyszerűsített adatfigyelést](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)kell használnia.
+> A Azure Machine Learning monitoring SDK hamarosan megszűnik. Az SDK továbbra is megfelelő azoknak a fejlesztőknek, akik jelenleg az SDK használatával figyelik az adateltolódást a modellekben. Az új ügyfelek esetében azonban javasoljuk, hogy az egyszerűsített [adatfigyelést Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)használatával használja.
 
 Ez a cikk bemutatja, hogyan gyűjtheti be a bemeneti modell adatait Azure Machine Learningból. Azt is bemutatja, hogyan helyezheti üzembe a bemeneti adatokat egy Azure Kubernetes szolgáltatásbeli (ak-beli) fürtön, és hogyan tárolhatja a kimeneti adatokat az Azure Blob Storage-ban.
 

@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – eszközök kiépítése elosztott terhelésű hubok között az Azure IoT Hub Device Provisioning Service
-description: Ez az oktatóanyag azt mutatja be, hogy az eszköz kiépítési szolgáltatása hogyan teszi lehetővé az eszközök automatikus kiépítés az Azure Portalon elosztott terhelésű IoT-hubok között
+description: Ez az oktatóanyag azt mutatja be, hogy a Device kiépítési szolgáltatás (DPS) hogyan teszi lehetővé az eszközök automatikus kiépítés a terheléselosztásos IoT-hubok között az Azure Portalon
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: cf1246862a455cfa71f3e170478736e5e07ee6f7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701958"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976740"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Oktatóanyag: eszközök kiépítése elosztott terhelésű IoT hubok között
 

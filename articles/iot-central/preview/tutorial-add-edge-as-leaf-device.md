@@ -3,18 +3,18 @@ title: Azure IoT Edge eszköz hozzáadása az Azure IoT Centralhoz | Microsoft D
 description: Operátorként vegyen fel egy Azure IoT Edge eszközt az Azure IoT Central alkalmazásba
 author: rangv
 ms.author: rangv
-ms.date: 10/22/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: f16db7ebff087b164228f2b23d6fa7ec302705bb
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e5d60c77e9bdc0733c12bca891eb6c3e33a1fceb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406334"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979070"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Azure IoT Edge-eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag két részből áll:
 * Először is, mint operátor, megtudhatja, hogyan végezheti el a felhőben való első üzembe helyezést egy IoT Edge eszközön.
 * Ezt követően megtudhatja, hogyan végezheti el az eszközök első kiépítési módját IoT Edge eszközön.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Új IoT Edge-eszköz hozzáadása
@@ -122,7 +122,7 @@ Szerkessze a IoT Edge config. YAML fájlt.
 
 Görgessen lefelé, és jegyezze fel a YAML fájljának a kapcsolatok sztring részét. 
 
-**Előtt**
+**Előtte**
 
 ![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioning.png)
 
@@ -132,11 +132,11 @@ Görgessen lefelé, és jegyezze fel a YAML fájljának a kapcsolatok sztring r�
 
 A YAML fájl szimmetrikus kulcs részének megjegyzése. 
 
-**Előtt**
+**Előtte**
 
 ![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmcomments.png)
 
-**Után**
+**Utána**
 
 ![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmuncomments.png)
 

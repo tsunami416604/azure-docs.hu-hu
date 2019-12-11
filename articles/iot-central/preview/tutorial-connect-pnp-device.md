@@ -3,17 +3,17 @@ title: Oktatóanyag – IoT Plug and Play előnézeti eszköz csatlakoztatása a
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhatja ki az eszköz kódját az eszköz-képesség modell használatával. Ezután futtassa az eszköz kódját, tekintse meg az eszköz csatlakozik a IoT Central alkalmazáshoz, és használja az automatikusan létrehozott nézeteket.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/08/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 59261d6a1cea034df58bd7e8d53439cdf1fbae6b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2cb07a94b2ae85cc0755e1e7069a76e1ef2a5252
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702860"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977335"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Oktatóanyag: eszköz-képességi modell használata IoT-Plug and Play eszköz létrehozásához és a IoT Central-alkalmazáshoz való csatlakoztatásához
 

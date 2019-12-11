@@ -3,17 +3,17 @@ title: Az Azure IoT Central felhasználói felületének testreszabása | Micros
 description: Az Azure IoT Central-alkalmazás témájának és súgójának testreszabása
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/25/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 1c9f400c1712c4826044354ead27ecaf597ee311
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 3aed1b47e2bce2eda60b953e5a4c8d6d7ee5c59f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894941"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976264"
 ---
 # <a name="customize-the-azure-iot-central-ui-preview-features"></a>Az Azure IoT Central felhasználói felület testreszabása (előzetes verziójú funkciók)
 
@@ -73,7 +73,7 @@ A Súgó hivatkozásainak módosításához navigáljon a **Súgó testreszabás
 > [!NOTE]
 > A **Súgó testreszabása** lapon bármikor visszatérhet az alapértelmezett Súgó hivatkozásokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan szabhatja testre a felhasználói felületet a IoT Central alkalmazásban, néhány javasolt lépés:
 

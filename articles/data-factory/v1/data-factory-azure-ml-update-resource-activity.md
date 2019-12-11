@@ -1,6 +1,6 @@
 ---
 title: Machine Learning modellek frissítése a Azure Data Factory használatával
-description: Ismerteti, hogyan hozhat létre prediktív folyamatokat a Azure Data Factory és a Azure Machine Learning használatával
+description: Útmutató prediktív folyamatok létrehozásához Azure Data Factory és Azure Machine Learning használatával
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683124"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978713"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Azure Machine Learning modellek frissítése az erőforrás frissítése tevékenység használatával
 
@@ -41,8 +41,8 @@ Ez a cikk a Azure Data Factory Azure Machine Learning integrációs cikket egés
 ## <a name="overview"></a>Áttekintés
 Idővel az Azure ML-pontozási kísérletek prediktív modelljeit új bemeneti adatkészletek használatával kell áttanítani. Miután végzett az újraképzéssel, frissítenie kell a pontozási webszolgáltatást az áttelepített ML-modellel. Az Azure ML-modellek webszolgáltatásokon keresztül történő átképzésének és frissítésének tipikus lépései a következők:
 
-1. Hozzon létre egy kísérletet az [Azure ml Studioban](https://studio.azureml.net).
-2. Ha elégedett a modellel, az Azure ML Studio használatával közzéteheti a webes szolgáltatásokat a **betanítási kísérlet** és a pontozási/**prediktív kísérlet**során.
+1. Hozzon létre egy kísérletet [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net).
+2. Ha elégedett a modellel, használja a Azure Machine Learning Studio (klasszikus) lehetőséget a webes szolgáltatások közzétételére a **betanítási kísérlet** és a pontozási/**prediktív kísérlet**során.
 
 A következő táblázat ismerteti az ebben a példában használt webszolgáltatásokat.  További részletekért lásd: [Machine learning modellek átképzése programozott](../../machine-learning/machine-learning-retrain-models-programmatically.md) módon.
 
@@ -88,7 +88,7 @@ Ha a webszolgáltatás az új típusú webszolgáltatás, amely egy Azure Resour
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-A webszolgáltatások Azure Machine Learning webszolgáltatások [portálján](https://services.azureml.net/)található webszolgáltatás lekérdezése során az URL-címekre vonatkozó értékeket is lekérheti. Az új típusú frissítési erőforrás-végponthoz HRE (Azure Active Directory) token szükséges. **ServicePrincipalId** és **ServicePrincipalKey**meghatározása a AzureML társított szolgáltatásban. Lásd: [egyszerű szolgáltatásnév létrehozása és engedélyek kiosztása az Azure-erőforrások kezeléséhez](../../active-directory/develop/howto-create-service-principal-portal.md). Itt látható egy példa AzureML társított szolgáltatás definíciója: 
+A webszolgáltatások Azure Machine Learning webszolgáltatások [portálján](https://services.azureml.net/)található webszolgáltatás lekérdezése során az URL-címekre vonatkozó értékeket is lekérheti. Az új típusú frissítési erőforrás-végponthoz HRE (Azure Active Directory) token szükséges. A Azure Machine Learning társított szolgáltatásban meg kell adni a **servicePrincipalId** és a **servicePrincipalKey** . Lásd: [egyszerű szolgáltatásnév létrehozása és engedélyek kiosztása az Azure-erőforrások kezeléséhez](../../active-directory/develop/howto-create-service-principal-portal.md). Itt látható egy példa AzureML társított szolgáltatás definíciója: 
 
 ```json
 {
@@ -138,7 +138,7 @@ Itt látható a társított szolgáltatás JSON-definíciója:
 ```
 
 ### <a name="training-input-dataset"></a>Betanítás bemeneti adatkészlete:
-A következő adatkészlet az Azure ML betanítási webszolgáltatás bemeneti betanítási adatait mutatja be. Az Azure ML batch végrehajtási tevékenysége ezt az adatkészletet bemenetként veszi át.
+A következő adatkészlet a Azure Machine Learning képzési webszolgáltatás bemeneti betanítási információit jelöli. Az Azure Machine Learning batch-végrehajtási tevékenység bemenetként veszi át ezt az adatkészletet.
 
 ```JSON
 {
@@ -192,7 +192,7 @@ A következő adatkészlet az Azure ML betanítási webszolgáltatás kimeneti i
 }
 ```
 
-### <a name="linked-service-for-azure-ml-training-endpoint"></a>Társított szolgáltatás az Azure ML betanítási végpontja számára
+### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Társított szolgáltatás Azure Machine Learning betanítási végponthoz
 A következő JSON-kódrészlet definiál egy Azure Machine Learning társított szolgáltatást, amely a betanítási webszolgáltatás alapértelmezett végpontját mutat.
 
 ```JSON
@@ -208,12 +208,12 @@ A következő JSON-kódrészlet definiál egy Azure Machine Learning társított
 }
 ```
 
-Az **Azure ml Studio**tegye a következőket a **MlEndpoint** és a **apiKey**értékeinek lekéréséhez:
+A **Azure Machine learning Studio (klasszikus)** területen tegye a következőket a **MlEndpoint** és a **apiKey**értékeinek lekéréséhez:
 
 1. A bal oldali menüben kattintson a **Web Services** elemre.
 2. A webszolgáltatások listájában kattintson a **betanítási webszolgáltatás** elemre.
 3. Kattintson az API- **kulcs** szövegmező melletti Másolás lehetőségre. Illessze be a vágólapra a kulcsot a Data Factory JSON-szerkesztőbe.
-4. Az **Azure ml Studióban**kattintson a **Batch-végrehajtási** hivatkozás elemre.
+4. A **Azure Machine learning Studio (klasszikus)** területen kattintson a **Batch-végrehajtási** hivatkozás elemre.
 5. Másolja a kérési **URI** -t a **kérelem** szakaszból, és ILLESSZE be a Data Factory JSON-szerkesztőbe.   
 
 ### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Társított szolgáltatás az Azure ML frissíthető pontozási végpontja számára:

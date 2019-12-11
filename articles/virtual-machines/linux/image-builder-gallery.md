@@ -1,27 +1,27 @@
 ---
-title: Az Azure rendszerkép-készítő használata a Linux rendszerű virtuális gépekhez készült képtárat (előzetes verzió)
-description: Linux-rendszerképek létrehozása az Azure Image Builder és a Shared Image Gallery.
+title: Az Azure rendszerkép-készítő használata Linux rendszerű virtuális gépekhez készült Képtár használatával (előzetes verzió)
+description: Linux rendszerű virtuálisgép-lemezképek létrehozása az Azure Image Builder és a Shared Image Gallery révén.
 author: cynthn
 ms.author: cynthn
 ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9fc624ab24cd98d0025fe2a34bf48c29b47c50e9
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 09dceb84a20ef49b3e9d5264b94bb5e74180cd2b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695409"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976128"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Linux-rendszerkép létrehozása és terjesztése megosztott képgyűjteménybe 
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy rendszerkép-verziót az Azure rendszerkép-készítővel egy [megosztott rendszerkép](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)-gyűjteményben, majd hogyan terjesztheti a rendszerképet globálisan.
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy rendszerkép-verziót az Azure rendszerkép-készítővel egy [megosztott rendszerkép-gyűjteményben](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries), majd hogyan terjesztheti a rendszerképet globálisan.
 
 
 A rendszerkép konfigurálásához egy minta. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [helloImageTemplateforSIG. JSON](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
 
-A rendszerkép megosztott képtárba való terjesztéséhez a sablon a [sharedImage](image-builder-json.md#distribute-sharedimage) használja a sablon `distribute` szakaszának értékeként.
+A rendszerkép megosztott képgyűjteménybe való terjesztéséhez a sablon a [sharedImage](image-builder-json.md#distribute-sharedimage) használja a sablon `distribute` szakaszának értékeként.
 
 > [!IMPORTANT]
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
@@ -77,7 +77,7 @@ imageDefName=myIbImageDef
 runOutputName=aibLinuxSIG
 ```
 
-Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a következővel `az account show | grep id`érheti el:.
+Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a `az account show | grep id`használatával érheti el.
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Adja meg az Azure rendszerkép-szerkesztőnek, hogy erőforrásokat hozzon létre az adott erőforráscsoporthoz. Az `--assignee` érték a rendszerkép-szerkesztő szolgáltatáshoz tartozó alkalmazás-regisztrációs azonosító. 
+Adja meg az Azure rendszerkép-szerkesztőnek, hogy erőforrásokat hozzon létre az adott erőforráscsoporthoz. A `--assignee` érték a rendszerkép-szerkesztő szolgáltatáshoz tartozó alkalmazás-regisztrációs azonosító. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -186,13 +186,13 @@ az vm create \
   --generate-ssh-keys
 ```
 
-SSH-t a virtuális gépre.
+Csatlakozzon a virtuális géphez SSH-n keresztül.
 
 ```azurecli-interactive
 ssh aibuser@<publicIpAddress>
 ```
 
-A rendszerképet úgy kell megtekinteni, hogy az SSH-kapcsolatok létrehozása után *a nap* egy üzenete legyen.
+A rendszerképet úgy kell megtekinteni, hogy az SSH-kapcsolatok létrehozása után *a nap egy üzenete* legyen.
 
 ```console
 *******************************************************
@@ -220,7 +220,7 @@ az resource delete \
     -n helloImageTemplateforSIG01
 ```
 
-Szerezze be a rendszerkép-szerkesztő által létrehozott rendszerkép verzióját, amely `0.`mindig a következővel kezdődik, majd törli a rendszerkép verzióját:
+Szerezze be a rendszerkép-szerkesztő által létrehozott rendszerkép verzióját, amely mindig a `0.`, majd a rendszerkép verziójának törlésével kezdődik.
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \
@@ -259,6 +259,6 @@ Törölje az erőforráscsoportot.
 az group delete -n $sigResourceGroup -y
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az [Azure megosztott](shared-image-galleries.md)képgalériákkal kapcsolatban.
+További információ az [Azure megosztott Képgalériákkal](shared-image-galleries.md)kapcsolatban.

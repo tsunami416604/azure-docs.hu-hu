@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Rendszerképek észlelése a REST API és a go használatával'
+title: 'Rövid útmutató: Arcfelismerés egy képen a REST API és a Go használatával'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban arcokat fog felismerni egy képről a Face API segítségével és a Go használatával.
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 0bcd94c62ec0fe5d9e9ffec18c982e7a102f0ffc
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ed5df90ba4e88e2b6bd20ce2e559c89a552bbe0a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858964"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977828"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Gyors útmutató: Rendszerképek észlelése a REST API és a go használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a Go használatával
 
 Ebben a rövid útmutatóban az Azure Face REST API a go használatával ismeri fel az emberi arcokat a képen.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
+- Egy Face API előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Face API szolgáltatásra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait.
 - Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>A parancsfájl írása
@@ -108,11 +108,11 @@ func main() {
 }
 ```
 
-Frissítenie kell az `subscriptionKey` értéket az előfizetési kulccsal, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot.
+A `subscriptionKey` értéket frissítenie kell az előfizetési kulccsal, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Azt is megteheti, hogy `imageUrl` módosítani szeretné a mezőt úgy, hogy a saját bemeneti képére mutasson. Előfordulhat, hogy módosítani kívánja azt `returnFaceAttributes` a mezőt is, amely megadja a lekérdezni kívánt Arcfelismerés-attribútumokat.
+Előfordulhat, hogy módosítani szeretné a `imageUrl` mezőt úgy, hogy a saját bemeneti képére mutasson. Előfordulhat, hogy módosítani kívánja a lekérdezni kívánt arc-attribútumokat megadó `returnFaceAttributes` mezőt is.
 
 ## <a name="run-the-script"></a>A szkript futtatása
 
@@ -309,7 +309,7 @@ Meg kell jelennie a konzolon kinyomtatott, észlelt arc típusú információk J
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy Ruby-szkriptet írt, amely meghívja az Azure Face APIt, hogy felderítse az arcokat egy képben, és visszaadja az attribútumokat. További információért olvassa el a Face API dokumentációját.
 

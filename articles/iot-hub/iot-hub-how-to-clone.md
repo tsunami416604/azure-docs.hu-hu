@@ -2,18 +2,17 @@
 title: Azure IoT hub klónozása
 description: Azure IoT hub klónozása
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083268"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976145"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT hub klónozása egy másik régióba
 
@@ -73,9 +72,7 @@ Ez az általános módszer, amelyet az IoT hub egyik régióból a másikba val�
    1. Adja hozzá a sablonba nem exportált bármit. 
    
        A fogyasztói csoportok például nem exportálhatók a sablonba. Manuálisan kell hozzáadnia a fogyasztói csoportokat a sablonhoz, vagy a [Azure Portalt](https://portal.azure.com) a hub létrehozása után kell használnia. Egy felhasználói csoport egy sablonhoz való hozzáadására példa van egy [Azure Resource Manager sablon használata IoT hub üzenet-útválasztás konfigurálásához](tutorial-routing-config-message-routing-rm-template.md).
-
-       Az [üzenetek gazdagítása](iot-hub-message-enrichments-overview.md) nem történik meg a sablonba való exportáláskor is. Ezeket az útválasztási üzenetekkel együtt használja a rendszer, és az üzenet-útválasztási konfiguráció frissítésekor manuálisan kell frissíteni az új központban.
-
+       
    1. Másolja az eszközöket az eredeti hubhoz a klónba. Ez az IoT hub-ban [regisztrált eszközök kezelése](#managing-the-devices-registered-to-the-iot-hub)című szakaszban található.
 
 ## <a name="how-to-handle-message-routing"></a>Az üzenetek útválasztásának kezelése
@@ -103,9 +100,6 @@ Ha a hub üzenet-útválasztást használ, két lehetőség közül választhat.
    * A hub továbbra is az eredeti útválasztási erőforrásokra hivatkozik, és az üzeneteket konfiguráltként irányítja.
 
    * Egy kis teljesítményű találat lesz, mivel a hub és az útválasztási végpont erőforrásai nem ugyanazon a helyen találhatók.
-
-> [!NOTE]
-> Ha a hub [üzenet-fejlesztéseket](iot-hub-message-enrichments-overview.md)használ, manuálisan kell beállítania őket az új IoT hub-on, mivel azok nem a Resource Manager-sablonnal lettek exportálva.
 
 ## <a name="prepare-to-migrate-the-hub-to-another-region"></a>Felkészülés a központ áttelepíteni egy másik régióba
 
@@ -355,11 +349,11 @@ Hozza létre az új hubot az új helyen a sablon használatával. Ha útválaszt
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza ki **erőforrás létrehozása**. 
+1. Válassza az **Erőforrás létrehozása** lehetőséget. 
 
 1. A keresőmezőbe írja be a "sablon központi telepítése" kifejezést, és válassza az ENTER billentyűt.
 
-1. Válassza **a sablon központi telepítése (üzembe helyezés egyéni sablonok használatával)** lehetőséget. Ekkor megjelenik a Template deployment képernyője. Kattintson a **Létrehozás** gombra. Ezt a képernyőt látja:
+1. Válassza **a sablon központi telepítése (üzembe helyezés egyéni sablonok használatával)** lehetőséget. Ekkor megjelenik a Template deployment képernyője. Kattintson a **Létrehozás** gombra. Ekkor az alábbi képernyő jelenik meg:
 
    ![A saját sablon létrehozásához szükséges parancsot ábrázoló képernyőkép](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
@@ -491,7 +485,7 @@ Most már rendelkezik a környezeti változókkal a SET parancsokkal rendelkező
 
 ### <a name="running-the-sample-application-and-using-command-line-arguments"></a>A minta alkalmazás futtatása és parancssori argumentumok használata
 
-1. Nyisson meg egy parancsablakot. Válassza a Windows lehetőséget, és írja be `command prompt` a parancssorablak beszerzéséhez.
+1. Nyisson meg egy parancssort. Válassza a Windows lehetőséget, és írja be `command prompt` a parancssorablak beszerzéséhez.
 
 1. Másolja a környezeti változókat beállító parancsokat egy időben, és illessze be őket a parancssorablakba, és válassza az ENTER billentyűt. Ha elkészült, írja be a `SET` parancsot a parancssori ablakban, hogy megtekintse a környezeti változókat és azok értékeit. Miután bemásolta ezeket a parancssori ablakba, nem kell újból átmásolnia, hacsak nem nyit meg egy új parancssori ablakot.
 

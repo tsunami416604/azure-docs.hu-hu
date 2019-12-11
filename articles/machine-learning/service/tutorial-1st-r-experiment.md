@@ -10,19 +10,19 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 52dc0ff27ad2f04b9faeab24c6bdba68d9ec138e
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 62c9ac0020db92c1540d0ecb4fa996d9b8405a58
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307291"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974257"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Oktatóanyag: az első modell betanítása és üzembe helyezése az R-ben Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapszintű kialakítási mintáit.  Egy olyan **kalap** -modellt fog betanítani és üzembe helyezni, amely megjósolja, hogy milyen valószínűséggel lehet végzetesnek lennie egy autóbeli balesetben. Az oktatóanyag elvégzése után az R SDK gyakorlati ismeretekkel fog rendelkezni az összetettebb kísérletek és munkafolyamatok fejlesztéséhez.
 
-Ez az oktatóanyag a következő feladatokat ismerteti:
+Eben az oktatóanyagban az alábbi feladatokkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A munkaterület összekötése
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ing
 
 1. Kövesse a [telepítési utasításokat](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) a következőre:
     + Az anaconda telepítése
-    + `azuremlsdk` telepítése
+    + A `azuremlsdk` telepítése
     + A Pythonhoz készült Azure Machine Learning SDK telepítése
 
 1. Szerezze be a három oktatóanyag-fájlt a [githubról](https://github.com/Azure/azureml-sdk-for-r/tree/master/vignettes/train-and-deploy-with-caret).  Mentse őket egy **oktatóanyagok** könyvtárába.
@@ -47,7 +47,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ing
 2. Hozzon létre egy Azure Machine Learning munkaterületet, és töltse le a konfigurációs fájlját az alábbi lépésekkel.
 
 
-### <a name="create-a-workspace"></a>Munkaterület létrehozása
+### <a name="create-a-workspace"></a>Munkaterületek létrehozása
 
 Az Azure Machine Learning munkaterület a felhőben található alapvető erőforrás, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használható. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi az SDK-ban. Ha már rendelkezik Azure Machine Learning munkaterülettel, [ugorjon a következő szakaszra](#config). Ellenkező esetben hozzon létre egyet most.
 
@@ -108,7 +108,7 @@ experiment_name <- "accident-logreg"
 exp <- experiment(ws, experiment_name)
 ```
 
-### <a name="create-a-compute-target"></a>Hozzon létre egy számítási célnak
+### <a name="create-a-compute-target"></a>Számítási cél létrehozása
 Azure Machine Learning számítás (AmlCompute) használatával a felügyelt szolgáltatás, az adatszakértők pedig gépi tanulási modelleket hozhatnak létre az Azure-beli virtuális gépek fürtjén. Ilyenek például a GPU-támogatással rendelkező virtuális gépek. Ebben az oktatóanyagban egy egycsomópontos AmlCompute-fürtöt hoz létre oktatási környezetként. Az alábbi kód létrehozza a számítási fürtöt, ha még nem létezik a munkaterületen.
 
 Előfordulhat, hogy néhány percet várnia kell, amíg a számítási fürt kiépíthető, ha még nem létezik.
@@ -142,7 +142,7 @@ saveRDS(accidents, file="accidents.Rd")
 ```
 
 ### <a name="upload-data-to-the-datastore"></a>Adatok feltöltése az adattárba
-Töltse fel az adatait a felhőbe, hogy elérhető legyen a távoli képzési környezetében. Minden egyes Azure ML-munkaterület tartalmaz egy alapértelmezett adattárt, amely a kapcsolódási adatokat a munkaterülethez csatolt Storage-fiókban kiépített Azure Blob-tárolóba tárolja. A következő kód feltölti a fent létrehozott baleseti adatok számát az adattárba.
+Töltse fel az adatait a felhőbe, hogy elérhető legyen a távoli képzési környezetében. Minden Azure Machine Learning munkaterület tartalmaz egy alapértelmezett adattárt, amely a kapcsolódási adatokat a munkaterülethez csatolt Storage-fiókban kiépített Azure Blob-tárolóba tárolja. A következő kód feltölti a fent létrehozott baleseti adatok számát az adattárba.
 
 ```R
 ds <- get_default_datastore(ws)
@@ -164,10 +164,10 @@ Ebben az oktatóanyagban egy logisztikai regressziós modellt kell kitölteni a 
 * Feladat küldése
 
 ### <a name="prepare-the-training-script"></a>A betanítási szkript előkészítése
-Egy `accidents.R` nevű betanítási szkriptet adott meg az oktatóanyagban található címtárban. Figyelje meg az Azure ML szolgáltatás betanításra való kihasználása érdekében az **oktatóanyagban** szereplő alábbi részleteket:
+Egy `accidents.R` nevű betanítási szkriptet adott meg az oktatóanyagban található címtárban. Figyelje meg a **betanítási parancsfájlban** szereplő alábbi adatokat, amelyeket a Azure Machine learning képzésének kihasználása érdekében tettünk:
 
 * A betanítási szkript argumentuma `-d`, hogy megkeresse a betanítási adatkészletet tartalmazó könyvtárat. Amikor később definiálja és elküldi a feladatot, erre az argumentumra az adattárra mutat. Az Azure ML a betanítási feladatokhoz csatlakoztatja a tárolási mappát a távoli fürthöz.
-* A betanítási parancsfájl a végső pontosságot az Azure ML-ben lévő futtatási rekordhoz `log_metric_to_run()`használatával naplózza. Az Azure ML SDK számos naplózási API-készletet biztosít a különböző metrikák naplózásához a betanítási futtatások során. A rendszer rögzíti a metrikákat, és megőrzi a kísérlet futtatási rekordját. A metrikák ezután bármikor elérhetők, vagy megtekinthetők a [Azure Machine learning Studio](https://ml.azure.com)Futtatás részletei lapján. Tekintse meg a naplózási módszerek teljes készletére vonatkozó [referenciát](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) `log_*()`.
+* A betanítási parancsfájl a végső pontosságot az Azure ML-ben lévő futtatási rekordhoz `log_metric_to_run()`használatával naplózza. Az Azure ML SDK számos naplózási API-készletet biztosít a különböző metrikák naplózásához a betanítási futtatások során. A rendszer rögzíti a metrikákat, és megőrzi a kísérlet futtatási rekordját. A metrikák ezután bármikor elérhetők, vagy megtekinthetők a [Studio](https://ml.azure.com)Futtatás részletei lapján. Tekintse meg a naplózási módszerek teljes készletére vonatkozó [referenciát](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) `log_*()`.
 * A betanítási szkript egy **kimenet**nevű könyvtárba menti a modellt. A `./outputs` mappa speciális kezelést kap az Azure ML-vel. A betanítás során a rendszer a `./outputs`ba írt fájlokat automatikusan feltölti a futtatási rekordba az Azure ML-ben, és összetevőkként megőrzi őket. Ha a betanított modellt `./outputs`ra menti, akkor a Futtatás után is elérheti és lekérheti a modell fájlját, és már nem férhet hozzá a távoli képzési környezethez.
 
 ### <a name="create-an-estimator"></a>Becslő létrehozása
@@ -271,7 +271,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 A modell segítségével előre megjósolhatja, hogy az ütközésből származó halál veszélye. Használja az Azure ML-t a modell előrejelzési szolgáltatásként való üzembe helyezéséhez. Ebben az oktatóanyagban üzembe helyezi a webszolgáltatást [Azure Container Instancesban](https://docs.microsoft.com/azure/container-instances/) (ACI).
 
-### <a name="register-the-model"></a>Regisztrálja a modellt
+### <a name="register-the-model"></a>A modell regisztrálása
 
 Először regisztrálja a munkaterületre letöltött modellt [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html)használatával. A regisztrált modell lehet fájlok gyűjteménye, de ebben az esetben az R Model objektum elegendő. Az Azure ML a regisztrált modellt fogja használni az üzembe helyezéshez.
 

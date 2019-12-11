@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f1f812bb7d31319476e6b940443e067fac895f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7b00fff9c979fe6bd2c52f67801a94cb50b1c660
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420450"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970346"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag:
 > * Helyszíni alkalmazás hozzáadását az Azure AD-bérlőhöz
 > * Ellenőrzi, hogy egy felhasználó Azure AD-fiókkal tud-e bejelentkezni az alkalmazásba
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Helyszíni alkalmazás Azure AD-hez való hozzáadásához a következők szükségesek:
 
@@ -40,7 +40,7 @@ Helyszíni alkalmazás Azure AD-hez való hozzáadásához a következők szüks
 * Alkalmazás-rendszergazdai fiók
 * A felhasználói identitásokat a helyszíni címtárból kell szinkronizálni, vagy közvetlenül az Azure AD-bérlőn belül kell létrehozni. Identitásszinkronizálás lehetővé teszi az Azure AD számára, hogy előzetesen hitelesítse a felhasználókat, mielőtt hozzáférést adna nekik az App proxy közzétett alkalmazásaihoz, és hogy a szükséges felhasználói azonosító információkkal rendelkezzen az egyszeri bejelentkezés (SSO) végrehajtásához.
 
-### <a name="windows-server"></a>Windows server
+### <a name="windows-server"></a>Windows Server
 
 Az alkalmazásproxy használatához Windows Server 2012 R2 vagy újabb rendszert futtató Windows Serverre van szükség. Telepítse az alkalmazásproxy-összekötőt a kiszolgálóra. Az összekötő-kiszolgálónak csatlakoznia kell az Azure-beli alkalmazásproxy-szolgáltatásokhoz és a közzétenni kívánt helyszíni alkalmazásokhoz.
 
@@ -64,7 +64,7 @@ Az éles környezetben való magas rendelkezésre állás érdekében javasoljuk
 
 Az alkalmazásproxy-összekötő telepítése előtt a Windows Connector-kiszolgálónak engedélyezve kell lennie a TLS 1,2-nek.
 
-A TLS 1.2 engedélyezése:
+A TLS 1,2 engedélyezése:
 
 1. Állítsa be a következő beállításkulcsokat:
     
@@ -84,7 +84,7 @@ A TLS 1.2 engedélyezése:
 
 Először is engedélyezze az Azure-adatközpontok kommunikációját, hogy előkészítse a környezetet az Azure AD Application Proxy számára. Ha van tűzfal az elérési úton, győződjön meg róla, hogy meg van nyitva. A nyílt tűzfal lehetővé teszi, hogy az összekötő HTTPS-(TCP-) kéréseket hozzon az alkalmazásproxy számára.
 
-### <a name="open-ports"></a>Portok megnyitása
+### <a name="open-ports"></a>Nyitott portok
 
 Nyissa meg a következő portokat a **kimenő** forgalom számára.
 
@@ -217,8 +217,9 @@ Tesztelési felhasználó hozzáadása:
 
 Az alkalmazásba való bejelentkezés tesztelése:
 
-1. A böngészőben nyissa meg a közzétételi lépés során konfigurált külső URL-címet. Ekkor megjelenik a kezdőképernyő.
-1. Jelentkezzen be az előző szakaszban létrehozott felhasználóként.
+1. A tesztelni kívánt alkalmazásból válassza a **alkalmazásproxy**lehetőséget.
+2. Az oldal tetején válassza az **alkalmazás tesztelése** lehetőséget, hogy tesztet futtasson az alkalmazáson, és ellenőrizze a konfigurációs problémákat.
+3. Ügyeljen arra, hogy először indítsa el az alkalmazást az alkalmazásba való bejelentkezés teszteléséhez, majd töltse le a diagnosztikai jelentést az észlelt problémákra vonatkozó megoldási útmutató áttekintéséhez.
 
 Hibaelhárítás: az [alkalmazásproxy problémáinak elhárítása és a hibaüzenetek](application-proxy-troubleshoot.md).
 

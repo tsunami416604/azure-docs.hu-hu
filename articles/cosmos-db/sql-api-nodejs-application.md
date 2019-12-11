@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 8390520320566907e8aaef709a085a71e8c8e4d6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a67870cc2494321aa739d6f59f18651013b7403b
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720826"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995949"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Node. js-Webalkalmazás létrehozása a JavaScript SDK használatával az SQL API-fiók kezeléséhez Azure Cosmos DB 
 
@@ -115,7 +115,7 @@ Miután most végrehajtottuk a kezdeti telepítést és konfigurálást, megírj
     const debug = require('debug')('todo:taskDao')
 
     // For simplicity we'll set a constant partition key
-    const partitionKey = '0'
+    const partitionKey = undefined
     class TaskDao {
       /**
        * Manages reading, adding, and updating Tasks in Cosmos DB
@@ -272,7 +272,7 @@ Miután most végrehajtottuk a kezdeti telepítést és konfigurálást, megírj
    module.exports = config;
    ```
 
-3. A **config. js** fájlban frissítse a Host és a AUTH_KEY értékeit a [Azure Portal](https://portal.azure.com)Azure Cosmos db fiókjának kulcsok lapján található értékek alapján. 
+3. A **config. js** fájlban frissítse a gazdagép és a AUTH_KEY értékeit a [Azure Portal](https://portal.azure.com)Azure Cosmos db-fiókjának kulcsok lapján található értékek használatával. 
 
 4. Mentse és zárja be a **config.js** fájlt.
 

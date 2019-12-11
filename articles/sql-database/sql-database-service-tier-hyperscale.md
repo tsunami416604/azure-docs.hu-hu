@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 5b473af780bdd68b8fc0dd3dc0430c4f4fd3255b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b2a8ad40092a2c02f00803e699de9d6dd8feebd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927672"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978628"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
@@ -245,7 +245,7 @@ Ezek a nagy kapacitású szolgáltatási szintjére vonatkozó jelenlegi korlát
 | Felügyelt példány | Azure SQL Database felügyelt példány jelenleg nem támogatott a nagy kapacitású-adatbázisokban. |
 | Rugalmas készletek |  A rugalmas készletek jelenleg nem támogatottak SQL Database nagy kapacitású.|
 | A nagy kapacitású-re történő áttelepítés jelenleg egyirányú művelet | Ha egy adatbázis át lett telepítve a nagy kapacitású-be, az nem telepíthető át közvetlenül egy nem nagy kapacitású szolgáltatási rétegre. Jelenleg az adatbázisnak a nagy kapacitású-ből a nem nagy kapacitású-be való migrálása a BACPAC-fájl vagy más adatáthelyezési technológiák (tömeges másolás, Azure Data Factory, Azure Databricks, SSIS stb.) használatával történik.|
-| Adatbázisok áttelepítése állandó memóriában tárolt objektumokkal | A nagy kapacitású csak a nem állandó memóriabeli objektumokat támogatja (a táblák típusai, a natív SPs és a functions).  Az állandó memóriában lévő táblákat és egyéb objektumokat el kell dobni, és nem memóriában lévő objektumként kell újból létrehozni, mielőtt áttelepíti az adatbázist a nagy kapacitású szolgáltatási szintjére.|
+| Adatbázisok áttelepítése memóriában tárolt OLTP-objektumokkal | A nagy kapacitású csak a memóriában lévő OLTP-objektumtípusok egy részhalmazát támogatja, beleértve a memóriára optimalizált táblák típusát, a natív módon lefordított tárolt eljárásokat és a függvényeket. Ha azonban bármilyen memóriabeli OLTP-objektum szerepel az adatbázisban, a prémium szintű és üzletileg kritikus szolgáltatási szintről a nagy kapacitású való közvetlen áttelepítés nem támogatott. Az ilyen adatbázisok nagy kapacitású való áttelepítéséhez három lépés szükséges: (1) az összes memóriában lévő OLTP-objektum és azok függőségeinek eldobása. Az adatok tartós, memóriában optimalizált táblákban való megőrzéséhez konvertálja őket lemezes táblákba. (2) módosítsa az adatbázis szolgáltatási szintjét a nagy kapacitású értékre. (3) hozza létre újra a korábban eldobott objektumokat. A tartós és nem tartós, memóriára optimalizált táblák jelenleg nem támogatottak a nagy kapacitású-ben, és a lemezen kell maradniuk. A memóriára optimalizált tábla változói támogatottak. |
 | Változáskövetés | Change Tracking jelenleg nyilvános előzetes verzióban érhető el, és az új vagy meglévő nagy kapacitású-adatbázisokon engedélyezhető. |
 | Georeplikáció  | Azure SQL Database nagy kapacitású esetében még nem konfigurálhatja a Geo-replikációt. |
 | Adatbázis másolása | Az adatbázis másolása még nem használható új adatbázis létrehozására az Azure SQL-nagy kapacitású. |

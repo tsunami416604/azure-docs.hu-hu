@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e9daf1be1f931bb13cda446cbb9d6e37acce3bcf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7b86d643540e46f9a4fc86c83fc77d739bfba418
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498095"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978492"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Hozzáférés az adathalmazokhoz Python segítségével, az Azure Machine Learning Python ügyfélkönyvtárat használva
 Microsoft Azure Machine Learning Python ügyféloldali kódtár előzetes verziója lehetővé teszi a Azure Machine Learning adatkészletek biztonságos elérését egy helyi Python-környezetből, és lehetővé teszi a munkaterületen lévő adatkészletek létrehozását és kezelését.
@@ -36,7 +36,7 @@ A Python ügyféloldali kódtár a következő környezetekben lett tesztelve:
 
 A következő csomagoktól függ:
 
-* Kérelmek
+* kérelmek
 * Python – dateutil
 * Pandák
 
@@ -56,13 +56,13 @@ Ha a git telepítve van a gépen, a pip használatával közvetlenül is telepí
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-## <a name="datasetAccess"></a>Az adatkészletek eléréséhez Studio-kódrészletek használata
+## <a name="datasetAccess"></a>Kódrészletek használata az adatkészletek eléréséhez
 A Python ügyféloldali kódtár programozott hozzáférést biztosít a meglévő adatkészletekhez a futtatott kísérletekből.
 
-A Studio webes felületén létrehozhat kódrészleteket, amelyek tartalmazzák az összes szükséges információt az adatkészletek letöltéséhez és deszerializálásához a helyi gépen lévő pandák DataFrame-objektumokként.
+A Azure Machine Learning Studio (klasszikus) webes felületen létrehozhat kódrészleteket, amelyek tartalmazzák az összes szükséges információt, amelyekkel letöltheti és deszerializálhatja az adatkészleteket a helyi gépen lévő pandák DataFrame-objektumokként.
 
 ### <a name="security"></a>Adathozzáférés biztonsága
-A Studio által a Python ügyféloldali kódtár szolgáltatáshoz megadott kódrészletek tartalmazzák a munkaterület-azonosítót és az engedélyezési jogkivonatot. Ezek teljes hozzáférést biztosítanak a munkaterülethez, és védelemmel kell ellátni, például jelszóval.
+A Python ügyféloldali kódtár számára a Azure Machine Learning Studio (klasszikus) által biztosított kódrészletek tartalmazzák a munkaterület-azonosítót és az engedélyezési jogkivonatot. Ezek teljes hozzáférést biztosítanak a munkaterülethez, és védelemmel kell ellátni, például jelszóval.
 
 Biztonsági okokból a kódrészlet funkció csak olyan felhasználók számára érhető el, akiknek a szerepkörük **tulajdonosként** van beállítva a munkaterületen. A szerepkör a **felhasználók** lapon, a **Beállítások**területen jelenik meg Azure Machine learning Studio (klasszikus).
 
@@ -72,9 +72,9 @@ Ha a szerepkör nem **tulajdonosként**van beállítva, kérheti, hogy a rendsze
 
 Az engedélyezési jogkivonat beszerzéséhez a következők egyikét teheti:
 
-* Kérjen meg egy jogkivonatot a tulajdonostól. A tulajdonosok a saját munkaterület beállítások lapján érhetik el az engedélyezési jogkivonatokat a Studióban. A bal oldali ablaktáblában válassza a **Beállítások** lehetőséget, majd kattintson az **engedélyezési tokenek** elemre az elsődleges és másodlagos tokenek megtekintéséhez. Bár az elsődleges vagy a másodlagos engedélyezési token használható a kódrészletben, ajánlott, hogy a tulajdonosok csak a másodlagos engedélyezési jogkivonatokat használják.
+* Kérjen meg egy jogkivonatot a tulajdonostól. A tulajdonosok a Azure Machine Learning Studio (klasszikus) munkaterületének beállítások lapján érhetik el az engedélyezési jogkivonatokat. A bal oldali ablaktáblában válassza a **Beállítások** lehetőséget, majd kattintson az **engedélyezési tokenek** elemre az elsődleges és másodlagos tokenek megtekintéséhez. Bár az elsődleges vagy a másodlagos engedélyezési token használható a kódrészletben, ajánlott, hogy a tulajdonosok csak a másodlagos engedélyezési jogkivonatokat használják.
 
-![Engedélyezési jogkivonatok](./media/python-data-access/ml-python-access-settings-tokens.png)
+   ![Engedélyezési jogkivonatok](./media/python-data-access/ml-python-access-settings-tokens.png)
 
 * Kérje, hogy népszerűsítse a tulajdonos szerepkörét. Ehhez a munkaterület aktuális tulajdonosának először el kell távolítania a munkaterületről, majd újra meg kell hívnia a tulajdonosként.
 
@@ -83,7 +83,7 @@ Ha a fejlesztők megszerezték a munkaterület-azonosítót és az engedélyezé
 Az engedélyezési jogkivonatok kezelése az **engedélyezési JOGkivonatok** lapon, a **Beállítások**területen történik. Újra létrehozhatja őket, de ez az eljárás visszavonja az előző tokenhez való hozzáférést.
 
 ### <a name="accessingDatasets"></a>Adatkészletek elérése helyi Python-alkalmazásból
-1. A Machine Learning Studio kattintson a bal oldali navigációs sávon található **adatkészletek** elemre.
+1. Machine Learning Studio (klasszikus) területen kattintson a bal oldali navigációs sávban található **adatkészletek** elemre.
 2. Válassza ki az elérni kívánt adatkészletet. Bármelyik adatkészletet kiválaszthatja a **saját ADATkészletek** listából vagy a **minták** listából.
 3. Az alsó eszköztáron kattintson az **adatelérési kód előállítása**elemre. Ha az adatformátum nem kompatibilis a Python ügyféloldali függvénytárával, ez a gomb le lesz tiltva.
    
@@ -96,13 +96,13 @@ Az engedélyezési jogkivonatok kezelése az **engedélyezési JOGkivonatok** la
     ![Kód beillesztése a jegyzetfüzetbe][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>A köztes adatkészletek elérése Machine Learning kísérletekből
-Miután a Machine Learning Studio futtatott egy kísérletet, a modulok kimeneti csomópontjairól is elérheti a köztes adatkészleteket. A köztes adatkészletek olyan adatokat hoztak létre, amelyek a modell eszköz futtatásakor köztes lépésekhez használatosak.
+Miután egy kísérletet a Machine Learning Studio klasszikus verziójában futtatott, a modulok kimeneti csomópontjairól is elérheti a köztes adatkészleteket. A köztes adatkészletek olyan adatokat hoztak létre, amelyek a modell eszköz futtatásakor köztes lépésekhez használatosak.
 
 A köztes adatkészletek akkor érhetők el, ha az adatformátum kompatibilis a Python ügyféloldali kódtár használatával.
 
 A következő formátumok támogatottak (az állandók a `azureml.DataTypeIds` osztályban találhatók):
 
-* Egyszerű szöveges
+* PlainText
 * GenericCSV
 * GenericTSV
 * GenericCSVNoHeader
@@ -141,7 +141,7 @@ Az alábbi lépések egy kísérletet létrehozó példát mutatnak be, és a k�
 
 ## <a name="clientApis"></a>Adatkészletek elérése, olvasása, létrehozása és kezelése a Machine Learning Python ügyféloldali kódtár használatával
 ### <a name="workspace"></a>Munkaterület
-A munkaterület a Python ügyféloldali kódtár belépési pontja. Példány létrehozásához adja meg a `Workspace` osztályt a munkaterület-azonosítóval és az engedélyezési jogkivonattal:
+A munkaterület a Python ügyféloldali kódtár belépési pontja. Példány létrehozásához adja meg a `Workspace` osztályt a munkaterület-AZONOSÍTÓval és az engedélyezési jogkivonattal:
 
     ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
                    authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
@@ -238,7 +238,7 @@ Ha az adatai már szerializálva vannak, a következőket használhatja:
 
 A Python ügyféloldali kódtár a következő formátumokba tudja szerializálni a pandák DataFrame (az állandók a `azureml.DataTypeIds` osztályban találhatók):
 
-* Egyszerű szöveges
+* PlainText
 * GenericCSV
 * GenericTSV
 * GenericCSVNoHeader

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/09/2019
 ms.author: b-juche
-ms.openlocfilehash: f7213ddee5d7bdfd41508f5fee66de63cde5b7c4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6fcea0aaecb860e07c2066877494c05b51f43ca4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170020"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976247"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Az Azure NetApp Files erőforráskorlátai
 
@@ -29,9 +29,9 @@ A Azure NetApp Files erőforrás-korlátainak megismerése segíti a kötetek ke
 
 Az alábbi táblázat a Azure NetApp Files erőforrás-korlátozásait ismerteti:
 
-|  Resource  |  Alapértelmezett korlát  |  A támogatási kérelem alapján állítható  |
+|  Erőforrás  |  Alapértelmezett korlát  |  A támogatási kérelem alapján állítható  |
 |----------------|---------------------|--------------------------------------|
-|  Egy Azure-előfizetéshez tartozó NetApp-fiókok száma   |  10    |  Igen   |
+|  A NetApp-fiókok száma Azure-régiónként   |  10    |  Igen   |
 |  Kapacitási készletek száma NetApp-fiókban   |    25     |   Igen   |
 |  Kötetek száma kapacitási készlet szerint     |    500   |    Igen     |
 |  Pillanatképek másodpercenkénti száma       |    255     |    Nem        |
@@ -69,14 +69,14 @@ Azure Portal navigációs síkon:
 1. Kattintson a **Súgó és támogatás**elemre.
 2. Kattintson az **+ új támogatási kérelem**elemre.
 3. Az alapvető beállítások lapon adja meg a következő információkat: 
-    1. Probléma típusa: Válassza **a szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
-    2. Előfizetések Válassza ki az erőforráshoz tartozó előfizetést, amelyre szüksége van a kvóta növeléséhez.
-    3. Kvóta típusa: Tároló **kiválasztása: Azure NetApp Files korlátok**.
-    4. Kattintson **a Tovább gombra: Megoldások**.
+    1. Probléma típusa: válassza **a szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
+    2. Előfizetések: válassza ki az erőforráshoz tartozó előfizetést, amelyre szüksége van a kvóta növeléséhez.
+    3. Kvóta típusa: válassza a **Storage: Azure NetApp Files korlátok**elemet.
+    4. Kattintson a **Tovább gombra: megoldások**.
 4. A Részletek lapon:
     1. A Leírás mezőben adja meg a következő információkat a megfelelő erőforrástípus számára:
 
-        |  Resource  |    Szülő erőforrások      |    Kért új korlátok     |    A kvóta növelésének oka       |
+        |  Erőforrás  |    Szülő erőforrások      |    Kért új korlátok     |    A kvóta növelésének oka       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Fiók |  *Előfizetés azonosítója*   |  *Kért új maximális **fiók** száma*    |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |
         |  Készlet    |  *Előfizetés azonosítója, fiók URI azonosítója*  |  *Kért új **készlet** maximális száma*   |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |
@@ -85,10 +85,10 @@ Azure Portal navigációs síkon:
 
     2. Adja meg a megfelelő támogatási módszert, és adja meg a szerződésre vonatkozó információkat.
 
-    3. Kattintson **a Tovább gombra: A kérelem létrehozásához tekintse át a + létrehozás** lehetőséget. 
+    3. Kattintson a **Tovább gombra: felülvizsgálat + létrehozás** elemre a kérelem létrehozásához. 
 
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [A Azure NetApp Files tárolási hierarchiájának megismerése](azure-netapp-files-understand-storage-hierarchy.md)
 - [Azure NetApp Filesi Cost Model](azure-netapp-files-cost-model.md)

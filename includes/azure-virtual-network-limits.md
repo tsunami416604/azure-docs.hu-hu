@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 06/25/2019
+ms.date: 12/09/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: ac1687d371630089436640af15cf46491a38ab51
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 2596351a0db921276ad74c27e30a8e2af93f2f36
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485467"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981132"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Hálózati korlátok – Azure Resource Manager a következő korlátozások érvényesek csak a **Azure Resource Manager** /régiónként felügyelt hálózati erőforrásokra. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
 
@@ -32,9 +32,9 @@ ms.locfileid: "74485467"
 | Magánhálózati IP-címek száma virtuális gépenként |256 |
 | Nyilvános IP-címek/hálózati adapter |256 |
 | Nyilvános IP-címek virtuális gépenként |256 |
-| Virtuális gép vagy szerepkör-példány hálózati adapterén egyidejű TCP-vagy UDP-forgalom |500,000 |
-| Hálózati adapterek |65 536 |
-| Network Security Groups (Hálózati biztonsági csoportok) |5000 |
+| [Virtuális gép vagy szerepkör-példány hálózati adapterén egyidejű TCP-vagy UDP-forgalom](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500,000 |
+| Hálózati kártyák |65 536 |
+| Hálózati biztonsági csoportok |5000 |
 | NSG-ben szereplő NSG-szabályok |1,000 |
 | A forráshoz vagy célhoz megadott IP-címek és tartományok egy biztonsági csoportban |4,000 |
 | Alkalmazásbiztonsági csoportok |3,000 |
@@ -62,7 +62,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | --- | --- |
 | Terheléselosztók | 1,000 | 
 | Erőforrásokra vonatkozó szabályok, alapszintű | 250 |
-| Szabályok/erőforrás, standard | 1,500 | 
+| Szabályok/erőforrás, standard | 1500 | 
 | Szabályok/IP-konfiguráció | 299 |
 | Szabályok/NIC | 300 |
 | Előtér-IP-konfigurációk, alapszintű | 200 |
@@ -89,6 +89,6 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Felhasználó által definiált útvonalak útválasztási táblázatban |400 |400 |
 | Nyilvános IP-címek (dinamikus) |500 |500 |
 | Fenntartott nyilvános IP-címek |500 |500 |
-| Nyilvános virtuális IP-címek száma üzemelő példányonként |5 |Kapcsolatfelvétel a támogatási szolgáltatással |
+| Nyilvános virtuális IP-címek száma üzemelő példányonként |5 |Kapcsolatfelvétel az ügyfélszolgálattal |
 | Privát VIP (belső terheléselosztás) üzembe helyezése |1 |1 |
 | Végpontok hozzáférés-vezérlési listái (ACL-ek) |50 |50 |

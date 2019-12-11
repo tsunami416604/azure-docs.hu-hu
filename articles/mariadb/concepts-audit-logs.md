@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 64662499b4ee782bbf04e9e706cd659e84c90eec
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 9c5f6aa2900570aa00ddbc50ec8be4dbb0d16a34
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773074"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978049"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Naplók naplózása Azure Database for MariaDB
 
@@ -27,6 +27,9 @@ Alapértelmezés szerint a napló le van tiltva. Az engedélyezéshez állítsa 
 Az egyéb paraméterek a következők:
 
 - `audit_log_events`: a naplózni kívánt eseményeket vezérli. Tekintse meg az alábbi táblázatot az egyes naplózási eseményekhez.
+- `audit_log_include_users`: a naplózáshoz MariaDB felhasználókat. A paraméter alapértelmezett értéke üres, amely tartalmazza a naplózáshoz szükséges összes felhasználót. Ennek magasabb prioritása van `audit_log_exclude_users`. A paraméter maximális hossza 512 karakter.
+> [!Note]
+> `audit_log_include_users` magasabb prioritással rendelkezik `audit_log_exclude_users`. Ha például `audit_log_include_users` = `demouser` és `audit_log_exclude_users` = `demouser`, a felhasználó belekerül a naplóba, mert `audit_log_include_users` magasabb prioritással rendelkezik.
 - `audit_log_exclude_users`: a MariaDB felhasználókat ki kell zárni a naplózásból. Legfeljebb négy felhasználó számára teszi lehetővé. A paraméter maximális hossza 256 karakter.
 
 | **Esemény** | **Leírás** |
@@ -121,7 +124,7 @@ Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a 
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | A kiszolgáló neve |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`vagy `DELETE` |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE` vagy `DELETE` |
 | `connection_id_d` | A MariaDB által generált egyedi kapcsolatazonosító |
 | `db_s` | Az elért adatbázis neve |
 | `table_s` | Az elért tábla neve |

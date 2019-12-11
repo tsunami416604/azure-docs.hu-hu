@@ -1,6 +1,6 @@
 ---
-title: A content protection-szabályzatok konfigurálása az Azure portal használatával |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan a content protection-szabályzatok konfigurálása az Azure portal használatával. A cikk azt is bemutatja, hogyan engedélyezheti a dinamikus titkosítás, az eszközök.
+title: A tartalomvédelem házirendjeinek konfigurálása a Azure Portal használatával | Microsoft Docs
+description: Ez a cikk azt mutatja be, hogyan használható a Azure Portal a tartalomvédelem házirendjeinek konfigurálásához. A cikk azt is bemutatja, hogyan lehet engedélyezni a dinamikus titkosítást az eszközei számára.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,117 +14,121 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 65e5b5502b7d63d89845781487443f539a708816
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866964"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978202"
 ---
-# <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>A content protection-szabályzatok konfigurálása az Azure portal használatával
+# <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>A tartalomvédelem házirendjeinek konfigurálása a Azure Portal használatával
 
 > [!NOTE]
-> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > A Media Services v2 jelennek meg nincs új szolgáltatásokat és funkciókat. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > Nem kerül be új funkciók vagy funkciók a Media Services v2-be. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 >
 
- Az Azure Media Services akkor hagyja, hogy a számítógép tárolási, feldolgozási és kézbesítési kezdve a media gondoskodhat. A Media Services segítségével a 128 bites titkosítás kulcsok használatával dinamikusan és az Advanced Encryption Standard (AES) titkosított tartalmat. Is használhatja az általános titkosítás (CENC) a PlayReady és/vagy Widevine digitális jogkezelési (technológia DRM), és az Apple FairPlay használatával. 
+ A Azure Media Services használatával biztonságossá teheti az adathordozót, amikor a számítógépét tárolás, feldolgozás és kézbesítés útján elhagyja. A Media Services használatával a tartalmakat a Advanced Encryption Standard (AES) használatával dinamikusan titkosíthatja a 128 bites titkosítási kulcsokkal. Ezt a közös titkosítással (CENC) is használhatja a PlayReady és/vagy a Widevine Digital Rights Management (DRM) és az Apple FairPlay használatával. 
 
-A Media Services DRM-licencek továbbításának szolgáltatást nyújt, és a titkosítatlan kulcsokat az arra jogosult ügyfelek. Az Azure portal használatával hozzon létre egy kulcs/engedélyezési házirend minden típusú titkosítás.
+A Media Services egy szolgáltatást biztosít a DRM-licencek és az AES-kulcsok továbbítására a hitelesítő ügyfelek számára. A Azure Portal használatával létrehozhat egy kulcs/licenc engedélyezési házirendet az összes titkosítási típushoz.
 
-Ez a cikk bemutatja, hogyan egy content protection-házirend konfigurálása a portál használatával. A cikk azt is bemutatja, hogyan alkalmazhatja a dinamikus titkosítás az eszközökhöz.
+Ez a cikk bemutatja, hogyan konfigurálhat egy Content Protection-házirendet a portál használatával. A cikk azt is bemutatja, hogyan alkalmazhat dinamikus titkosítást az eszközeire.
 
-## <a name="start-to-configure-content-protection"></a>A tartalomvédelem konfigurálása megkezdődött
-A portál használatával globális a tartalomvédelem konfigurálása a Media Services-fiók használatával, az alábbi lépéseket:
+## <a name="start-to-configure-content-protection"></a>A tartalomvédelem konfigurálásának megkezdése
+Ha a portált a globális tartalomvédelem konfigurálására szeretné használni a Media Services-fiók használatával, hajtsa végre a következő lépéseket:
 
-1. Az a [portál](https://portal.azure.com/), válassza ki a Media Services-fiókját.
+1. A [portálon](https://portal.azure.com/)válassza ki a Media Services fiókját.
 
-1. Válassza ki **beállítások** > **Content protection szolgáltatása**.
+1. Válassza a **beállítások** > a **tartalom védelme**lehetőséget.
 
     ![Tartalomvédelem](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
-## <a name="keylicense-authorization-policy"></a>Kulcs/engedélyezési házirend
-A Media Services támogatja a több különböző módot a felhasználókat, akik vagy licencelési kérelmeket. Konfigurálnia kell a tartalomkulcs hitelesítési szabályzatát. Az ügyfél ezután meg kell felelnie a házirendet ahhoz, hogy a kulcs/licenc kézbesíthető. A tartalomkulcs-hitelesítési szabályzat egy vagy több hitelesítési korlátozást tartalmazhat: ezek lehetnek nyitott vagy jogkivonat-korlátozások is.
+## <a name="keylicense-authorization-policy"></a>Kulcs/licenc engedélyezési házirendje
+Media Services támogatja a kulcs-vagy licencelési kérelmeket használó felhasználók hitelesítésének több módját. Konfigurálnia kell a tartalomkulcs hitelesítési szabályzatát. Az ügyfélnek ezután meg kell felelnie a szabályzatnak, mielőtt a kulcs/licenc elérhetővé válik. A tartalomkulcs-hitelesítési szabályzat egy vagy több hitelesítési korlátozást tartalmazhat: ezek lehetnek nyitott vagy jogkivonat-korlátozások is.
 
-A portál használatával hozzon létre egy kulcs/engedélyezési házirend minden típusú titkosítás.
+A portálon létrehozhat egy kulcs/licenc engedélyezési házirendet az összes titkosítási típushoz.
 
-### <a name="open-authorization"></a>Megnyitás engedélyezése
-Nyissa meg a korlátozás azt jelenti, hogy a rendszer továbbítja a kulcsot bárki, aki kulcs kérést küld. Ez a korlátozás tesztelési célokra hasznos lehet. 
+### <a name="open-authorization"></a>Engedély megnyitása
+A megnyitási korlátozás azt jelenti, hogy a rendszer minden olyan felhasználó számára biztosítja a kulcsot, aki a kulcs kérését végzi. Ez a korlátozás tesztelési célokra hasznos lehet. 
 
-### <a name="token-authorization"></a>Engedélyezési jogkivonat
-A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. A Media Services a simple web Tokens (SWT) és a JSON webes jogkivonat (JWT) formátumú jogkivonatokat támogatja. A Media Services az STS szolgáltatással nem biztosít. Hozzon létre egy egyéni STS, vagy probléma jogkivonatok Azure Access Control Service szolgáltatást használja. Az STS-re kell állítani a megadott kulcs és a probléma jogcímek jogkivonat korlátozás konfigurációjában megadott aláírt jogkivonat létrehozásához. Ha a jogkivonat érvényes, és a jogkivonat jogcímeiben megfelelnek a kulcs (vagy engedély-), a Media Services kulcstovábbítást visszatér a kért kulcs (vagy engedély-) az ügyfél.
+### <a name="token-authorization"></a>Jogkivonat-hitelesítés
+A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. Media Services támogatja a tokeneket az egyszerű webes jogkivonat (SWT) és a JSON Web Token (JWT) formátumokban. Media Services nem biztosít STS-t. Létrehozhat egy egyéni STS-t, vagy használhatja az Azure Access Control Service a jogkivonatok kibocsátására. Az STS-t úgy kell konfigurálni, hogy a megadott kulccsal aláírt tokent hozzon létre, és kiadja a jogkivonat-korlátozási konfigurációban megadott jogcímeket. Ha a jogkivonat érvényes, és a jogkivonatban lévő jogcímek egyeznek a kulcshoz (vagy licenchez) konfigurált jogcímekkel, a Media Services Key Delivery Service visszaadja a kért kulcsot (vagy licencet) az ügyfélnek.
 
-Amikor a jogkivonattal korlátozott szabályzatokat konfigurál, az elsődleges ellenőrzőkulcs, a kibocsátó és a célközönség paramétereket kell megadnia. Az elsődleges ellenőrzőkulcs tartalmazza a kulcsot, a jogkivonat írták-e. A kibocsátó a biztonságos jogkivonat-szolgáltatás, amely a jogkivonatot. A célközönség (más néven hatókör) ismerteti a jogkivonat a leképezést, vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcstovábbítást ellenőrzi, hogy ezeket az értékeket a jogkivonat egyezik a sablonban szereplő értékeket.
+Ha a jogkivonat-korlátozott szabályzatot konfigurálja, meg kell adnia az elsődleges ellenőrző kulcsot, a kiállítót és a célközönség paramétereit. Az elsődleges ellenőrző kulcs tartalmazza azt a kulcsot, amelyet a jogkivonat aláírt. A kiállító az a biztonságos jogkivonat-szolgáltatás, amely kiadja a jogkivonatot. A célközönség (más néven hatókör) leírja a jogkivonat célját vagy azt az erőforrást, amelyet a jogkivonat engedélyez a hozzáféréshez. A Media Services Key Delivery Service ellenőrzi, hogy a jogkivonat értékei egyeznek-e a sablon értékeivel.
 
-![Kulcs/engedélyezési házirend](./media/media-services-portal-content-protection/media-services-content-protection002.png)
+![Kulcs/licenc engedélyezési házirendje](./media/media-services-portal-content-protection/media-services-content-protection002.png)
 
 ## <a name="playready-license-template"></a>PlayReady-licencsablon
-A PlayReady-licencsablon beállítása, amelyen engedélyezve van a funkciót a PlayReady-licenc. A PlayReady-engedélysablonról további részletekért tekintse meg a [a Media Services PlayReady licencsablon áttekintése](media-services-playready-license-template-overview.md).
+A PlayReady-licenc sablonja beállítja azokat a funkciókat, amelyek engedélyezve vannak a PlayReady-licencen. A PlayReady-licenccel kapcsolatos további információkért tekintse meg a [Media Services PlayReady-sablon áttekintése](media-services-playready-license-template-overview.md)című témakört.
 
 ### <a name="nonpersistent"></a>Nonpersistent
-Ha egy licenc nonpersistent, adja meg, azt tárolt memória csak, míg a Windows Media player a licencet használ.  
+Ha nem állandóként konfigurálja a licencet, a rendszer csak akkor tárolja a memóriát, ha a lejátszó használja a licencet.  
 
-![A content protection nonpersistent](./media/media-services-portal-content-protection/media-services-content-protection003.png)
+![Nem állandó tartalomvédelem](./media/media-services-portal-content-protection/media-services-content-protection003.png)
 
 ### <a name="persistent"></a>Állandó
-Ha állandó, adja meg a licenc, elmentette állandó tárolóban az ügyfélen.
+Ha állandóként konfigurálja a licencet, a rendszer az ügyfél állandó tárterületét menti.
 
-![A content protection állandó](./media/media-services-portal-content-protection/media-services-content-protection004.png)
+![Állandó tartalomvédelem](./media/media-services-portal-content-protection/media-services-content-protection004.png)
 
 ## <a name="widevine-license-template"></a>Widevine-licencsablon
-A Widevine-licencsablon, amelyen engedélyezve van a funkciót a Widevine-licencek állítja be.
+A Widevine-licenc sablonja beállítja a Widevine-licenceken engedélyezett funkciókat.
 
-### <a name="basic"></a>Alapszintű
-Ha bejelöli **alapszintű**, a sablon jön létre minden alapértelmezett értékekkel.
+### <a name="basic"></a>Basic
+Ha az **alapszintű**lehetőséget választja, a sablon minden alapértelmezett értékkel jön létre.
 
-### <a name="advanced"></a>Speciális
-A Widevine jogosultsági sablon kapcsolatos további információkért lásd: a [Widevine-licencsablon áttekintése](media-services-widevine-license-template-overview.md).
+### <a name="advanced"></a>Extra szintű
+A Widevine Rights sablonnal kapcsolatos további információkért tekintse meg a [Widevine-sablon áttekintése](media-services-widevine-license-template-overview.md)című témakört.
 
-![A content protection speciális](./media/media-services-portal-content-protection/media-services-content-protection005.png)
+![Speciális tartalomvédelem](./media/media-services-portal-content-protection/media-services-content-protection005.png)
 
 ## <a name="fairplay-configuration"></a>FairPlay-konfiguráció
-FairPlay-titkosítás engedélyezéséhez jelölje be **FairPlay-konfiguráció**. Válassza ki a **alkalmazástanúsítvány** , és adja meg a **alkalmazás titkos kulcsát**. FairPlay-konfiguráció és követelményeivel kapcsolatos további információkért lásd: [HLS-tartalmak az Apple fairplay által vagy a Microsoft PlayReady védelme](media-services-protect-hls-with-FairPlay.md).
+A FairPlay titkosításának engedélyezéséhez válassza a **Fairplay konfiguráció**lehetőséget. Ezután válassza ki az alkalmazás **tanúsítványát** , és adja meg az **alkalmazás titkos kulcsát**. A FairPlay konfigurálásával és követelményeivel kapcsolatos további információkért lásd: [a HLS-tartalmak megvédése az Apple Fairplay vagy a Microsoft PlayReady](media-services-protect-hls-with-FairPlay.md).
 
 ![FairPlay-konfiguráció](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
-## <a name="apply-dynamic-encryption-to-your-asset"></a>A dinamikus titkosítás alkalmazása az eszközre
-A dinamikus titkosítás kihasználásához kódolja a forrásfájlt egy adaptív sávszélességű MP4-fájlokat.
+## <a name="apply-dynamic-encryption-to-your-asset"></a>Dinamikus titkosítás alkalmazása az eszközön
+A dinamikus titkosítás kihasználásához kódolja a forrásfájlt egy adaptív sávszélességű MP4-fájlba.
 
-### <a name="select-an-asset-that-you-want-to-encrypt"></a>Válassza ki az eszközt, hogy titkosítani szeretné
-Az összes eszköz megtekintéséhez válasszon **beállítások** > **eszközök**.
+### <a name="select-an-asset-that-you-want-to-encrypt"></a>Válasszon ki egy titkosítani kívánt eszközt
+Az összes eszköz megjelenítéséhez válassza a **beállítások** > **eszközök**elemet.
 
 ![Eszközök lehetőség](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
-### <a name="encrypt-with-aes-or-drm"></a>Az AES vagy DRM titkosítása
-Ha bejelöli **titkosítása** az adott eszköz számára a két választási lehetőség láthatja: **AES** vagy **DRM**. 
+### <a name="encrypt-with-aes-or-drm"></a>Titkosítás AES vagy DRM használatával
+Ha kijelöli egy eszköz **titkosítását** , a következő két lehetőség közül választhat: **AES** vagy **DRM**. 
 
 #### <a name="aes"></a>AES
-Az AES tiszta kulcs titkosítás engedélyezve van az összes streamelési protokollhoz: Smooth Streaming, HLS és MPEG-DASH.
+Az AES Clear Key encryption minden folyamatos átviteli protokollon engedélyezve van: Smooth Streaming, HLS és MPEG-DASH.
 
 ![Titkosítási konfiguráció](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 
 #### <a name="drm"></a>DRM
-1. Miután kiválasztotta **DRM**, tekintse meg a különböző tartalomvédelmi házirendeket (amely kell állítani a ennél a pontnál) és a streamelési protokollok:
+1. A **DRM**kiválasztása után különböző tartalomvédelem-házirendeket láthat (amelyeket ezen a ponton kell konfigurálni) és a folyamatos átviteli protokollok készletét:
 
-    a. **PlayReady és Widevine MPEG-dash protokollal** az MPEG-DASH adatfolyamok, a PlayReady és Widevine DRMs dinamikusan titkosítja.
+    a. Az **PlayReady és WIDEVINE MPEG-Dash** dinamikusan titkosítja az MPEG-Dash streamet a PlayReady és a Widevine DRMs.
 
-    b. **PlayReady és Widevine MPEG-dash PROTOKOLLAL + FairPlay HLS protokollal** az MPEG-DASH adatfolyamok, a PlayReady és Widevine DRMs dinamikusan titkosítja. Ez a beállítás is titkosítja a FairPlay HLS-adatfolyamok.
+    b. Az **PlayReady és WIDEVINE MPEG-Dash + Fairplay és HLS** dinamikusan titkosítja az MPEG-Dash streamet a PlayReady és a Widevine DRMs. Ez a beállítás a HLS-streameket is titkosítja a FairPlay.
 
-    c. **A PlayReady csak Smooth Streaming, HLS és MPEG-DASH** PlayReady DRM-Smooth Streaming, HLS és MPEG-DASH adatfolyamok dinamikusan titkosítja.
+    c. A **PlayReady csak a Smooth streaming, a HLS és az MPEG-Dash** használatával dinamikusan titkosítja a Smooth streaming, a HLS és az MPEG-Dash streameket a PlayReady DRM használatával.
 
-    d. **Csak Widevine MPEG-dash PROTOKOLLAL** dinamikusan titkosítja az MPEG-DASH, a Widevine DRM-mel.
+    d. A **Widevine csak az MPEG-Dash** dinamikusan titkosítja az MPEG-Dash-t a Widevine DRM-mel.
     
-    e. **Csak FairPlay HLS protokollal** FairPlay a HLS adatfolyamot dinamikusan titkosítja.
+    e. A **Fairplay csak a HLS** dinamikusan titkosítja a HLS-streamet a Fairplay.
 
-1. A FairPlay-titkosítás engedélyezése a **Content Protection globális beállítások** panelen válassza ki **FairPlay-konfiguráció**. Válassza ki a **alkalmazástanúsítvány**, és adja meg a **alkalmazás titkos kulcsát**.
+1. A FairPlay titkosításának engedélyezéséhez a **Content Protection globális beállítások** panelen válassza a **Fairplay konfiguráció**elemet. Ezután válassza ki az alkalmazás **tanúsítványát**, és adja meg az **alkalmazás titkos kulcsát**.
 
-    ![Titkosítási típus](./media/media-services-portal-content-protection/media-services-content-protection009.png)
+    ![Titkosítás típusa](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 
-1. Miután elvégezte a kijelölt titkosítás, válassza ki a **alkalmaz**.
+1. Miután elvégezte a titkosítás kijelölését, kattintson az **alkalmaz**gombra.
 
 >[!NOTE] 
->Ha azt tervezi, az AES-sel titkosított HLS lejátszása a Safariban, tekintse meg a következő blogbejegyzésben: [titkosított HLS a Safariban](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+>Ha AES-titkosítású HLS szeretne lejátszani a Safariban, tekintse meg a következő blogbejegyzést a [Safari titkosított HLS](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="additional-notes"></a>További megjegyzések
+
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
+
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

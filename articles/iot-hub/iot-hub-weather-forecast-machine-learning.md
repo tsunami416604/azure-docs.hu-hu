@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: e7114febe85af4acaf94ef7fe64fe47988fd6321
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d26ccd47ada4f1f1fd87f315e05f822bb2463114
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74079267"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976179"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Időjárás-előrejelzés az IoT hub Sensor-adatainak használatával Azure Machine Learning
 
@@ -45,20 +45,20 @@ Az Azure IoT hub hőmérséklet-és páratartalom-adatainak használatával megt
   - Aktív Azure-előfizetés.
   - Az előfizetéshez tartozó Azure IoT hub.
   - Egy ügyfélalkalmazás, amely üzeneteket küld az Azure IoT hub-nak.
-- Egy [Azure Machine learning Studio](https://studio.azureml.net/) -fiók.
+- Egy [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net/) fiók.
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Az időjárási előrejelzési modell üzembe helyezése webszolgáltatásként
 
 1. Ugrás az [időjárás-előrejelző modell oldalára](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
-1. Kattintson a **Megnyitás a Studióban** elemre Microsoft Azure Machine learning Studio.
+1. Kattintson a **Megnyitás a studióban** Microsoft Azure Machine learning Studio (klasszikus) lehetőségre.
    ![nyissa meg Cortana Intelligence Gallery időjárás-előrejelzési modell lapját](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
 1. Kattintson a **Futtatás** gombra a modell lépéseinek ellenőrzéséhez. Ez a lépés 2 percet is igénybe vehet.
-   ![nyissa meg Azure Machine Learning Studio időjárás-előrejelző modelljét](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
+   ![nyissa meg Azure Machine Learning Studio (klasszikus) időjárási előrejelzési modelljét](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. Kattintson a WEBSZOLGÁLTATÁS > **prediktív webszolgáltatás** **beállítása** elemre.
-   ![az időjárás-előrejelző modell üzembe helyezése Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
+   ![az időjárás-előrejelző modell üzembe helyezését Azure Machine Learning Studio (klasszikus)](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. A diagramon húzza a **webszolgáltatás bemeneti** modulját valahol a **pontszám modell** modul közelében.
 1. Kapcsolódjon a **webszolgáltatáshoz tartozó bemeneti** modulhoz a **pontszám modell** modulhoz.
-   ![két modul összekapcsolását Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+   ![két modul összekapcsolását Azure Machine Learning Studio (klasszikus)](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
 1. Kattintson a **Futtatás** gombra a modell lépéseinek ellenőrzéséhez.
 1. Kattintson a **webszolgáltatás telepítése** lehetőségre a modell webszolgáltatásként való üzembe helyezéséhez.
 1. A modell irányítópultján töltse le a **kérelem/válasz** **Excel 2010 vagy korábbi munkafüzetét** .
@@ -89,7 +89,7 @@ Az Azure IoT hub hőmérséklet-és páratartalom-adatainak használatával megt
 
    ![Stream Analytics-feladatok létrehozása az Azure-ban](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
@@ -105,7 +105,7 @@ Az Azure IoT hub hőmérséklet-és páratartalom-adatainak használatával megt
 
    ![Bemenet hozzáadása a Stream Analytics feladathoz az Azure-ban](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Kimenet hozzáadása a Stream Analytics-feladathoz
 
@@ -124,7 +124,7 @@ Az Azure IoT hub hőmérséklet-és páratartalom-adatainak használatával megt
 
    ![Kimenet hozzáadása a Stream Analytics feladatokhoz az Azure-ban](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Függvény hozzáadása a Stream Analytics feladathoz a telepített webszolgáltatás meghívásához
 
@@ -143,7 +143,7 @@ Az Azure IoT hub hőmérséklet-és páratartalom-adatainak használatával megt
 
    ![Függvény hozzáadása a Stream Analytics feladathoz az Azure-ban](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 

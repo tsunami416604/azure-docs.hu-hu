@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 7b9f1cfeb6ebcbc693135d83ad167092e16f478d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 5e19e4247e58135c6a9bb7c6cc327cb566d294df
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647330"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978458"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Oktatóanyag: lombik-alkalmazás létrehozása az Azure Cognitive Services
 
@@ -59,8 +59,8 @@ Tekintsük át az oktatóanyaghoz szükséges szoftvereket és előfizetési kul
 ## <a name="create-an-account-and-subscribe-to-resources"></a>Hozzon létre egy fiókot, és fizessen elő az erőforrásokra
 
 Ahogy korábban említettük, három előfizetési kulcsra lesz szüksége ehhez az oktatóanyaghoz. Ez azt jelenti, hogy létre kell hoznia egy erőforrást az Azure-fiókjában a következőkhöz:
-* Fordítói szöveg
-* Szövegelemzés
+* Translator Text
+* Text Analytics
 * Beszédszolgáltatások
 
 Erőforrások létrehozásához használja [a Cognitive Services fiók létrehozása a Azure Portalban](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című témakört.
@@ -182,7 +182,7 @@ Ez a kód biztosítja, hogy amikor egy felhasználó navigál, `http://your-web-
 
 Habár ezek a minták bemutatják, hogyan lehet HTML-lapokat megjeleníteni egy felhasználó számára, az útvonalak az API-k meghívására is használhatók gomb lenyomásakor, vagy tetszőleges számú művelet elvégzése anélkül, hogy el kellene érni a kezdőlapot. Ez a művelet akkor jelenik meg, ha útvonalakat hoz létre a fordításhoz, a hangulathoz és a beszédfelismeréshez.
 
-### <a name="get-started"></a>Bevezetés
+### <a name="get-started"></a>Az első lépések
 
 1. Nyissa meg a projektet az IDE-ben, majd hozzon létre egy `app.py` nevű fájlt a munkakönyvtár gyökerében. Ezután másolja a kódot `app.py`ba, és mentse a következőt:
 
@@ -319,7 +319,7 @@ A következő részekben ezt a folyamatot fogja megismételni, ahogy az adatelem
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>`index.html` frissítése
+### <a name="update-indexhtml"></a>A `index.html` frissítése
 
 Most, hogy van egy függvény a szöveg fordításához, és egy útvonal a lombik alkalmazásban való meghívásához, a következő lépés az alkalmazás HTML-címének létrehozása. Az alábbi HTML-fájl néhány dolgot tartalmaz:
 
@@ -556,7 +556,7 @@ Hozzon létre egy útvonalat a lombik alkalmazásban, amely meghívja a `sentime
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>`index.html` frissítése
+### <a name="update-indexhtml"></a>A `index.html` frissítése
 
 Most, hogy már rendelkezik egy, a hangulat-elemzés futtatására szolgáló függvénnyel, és egy útvonal a lombik alkalmazásban a hívásához, a következő lépés az alkalmazás HTML-fájljának megírása. Az alábbi HTML-fájl néhány dolgot tartalmaz:
 
@@ -581,7 +581,7 @@ Most, hogy már rendelkezik egy, a hangulat-elemzés futtatására szolgáló f�
    </div>
    ```
 
-### <a name="update-mainjs"></a>`main.js` frissítése
+### <a name="update-mainjs"></a>A `main.js` frissítése
 
 Az alábbi kódban a HTML-ből származó tartalmat használjuk a lombik útvonalára vonatkozó kérelem létrehozásához. Pontosabban a szövegmező tartalmát és a Nyelvi választót a rendszer a változókhoz rendeli hozzá, majd a kérésben a `sentiment-analysis` útvonalra küldi át.
 
@@ -751,7 +751,7 @@ Hozzon létre egy útvonalat a lombik alkalmazásban, amely meghívja a `synthes
        return audio_response
    ```
 
-### <a name="update-indexhtml"></a>`index.html` frissítése
+### <a name="update-indexhtml"></a>A `index.html` frissítése
 
 Most, hogy már van egy függvénye szöveg-beszéd átalakításra, és egy útvonal a lombik alkalmazásban való meghívásához, a következő lépés az alkalmazás HTML-címének megírása. Az alábbi HTML-fájl néhány dolgot tartalmaz:
 
@@ -834,7 +834,7 @@ Most, hogy már van egy függvénye szöveg-beszéd átalakításra, és egy út
 
 5. Ügyeljen arra, hogy mentse a munkáját.
 
-### <a name="update-mainjs"></a>`main.js` frissítése
+### <a name="update-mainjs"></a>A `main.js` frissítése
 
 Az alábbi kódban a HTML-ből származó tartalmat használjuk a lombik útvonalára vonatkozó kérelem létrehozásához. Pontosabban a fordítást és a hangbetűkészletet rendeli hozzá a rendszer a változóhoz, majd a kérésben a `text-to-speech` útvonalra küldi át.
 
@@ -955,11 +955,11 @@ Navigáljon a megadott kiszolgálócím-címre. Írja be a szövegbeviteli terü
 
 Így van egy működő alkalmazása, amely elvégzi a fordításokat, elemzi a hangulatát és a szintetizált beszédet. Nyomja le a **CTRL + c** billentyűkombinációt az alkalmazás leöléséhez. Mindenképpen tekintse meg a többi [Azure-Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/).
 
-## <a name="get-the-source-code"></a>Forráskód beszerzése
+## <a name="get-the-source-code"></a>A forráskód lekérése
 
 A projekt forráskódja elérhető a [githubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Translator Text API-referencia](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
 * [Text Analytics API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)

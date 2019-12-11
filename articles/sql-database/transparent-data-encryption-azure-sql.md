@@ -8,27 +8,27 @@ titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: b6af171eafbaf1f4d31bad649fcb0c69d8bdc24d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 19414a6f09f4bc61cd9b1b09ae98ea070e577d7f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821711"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995881"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás a SQL Database és az adattárházban
 
-A transzparens adattitkosítás (TDE) segít megvédeni Azure SQL Database, az Azure SQL felügyelt példányát és az Azure-adattárházat a rosszindulatú offline tevékenységek fenyegetésével szemben az inaktív adatok titkosításával. Az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok valós idejű titkosítását és visszafejtését hajtja végre, anélkül, hogy az alkalmazás módosítására lenne szükség. Alapértelmezés szerint a TDE engedélyezve van minden újonnan telepített Azure SQL-adatbázishoz. A TDE nem használható a logikai **Master** adatbázis SQL Database-ben történő titkosítására.  A **főadatbázis olyan** objektumokat tartalmaz, amelyek szükségesek a TDE műveletek végrehajtásához a felhasználói adatbázisokon.
+A transzparens adattitkosítás (TDE) segít megvédeni Azure SQL Database, az Azure SQL felügyelt példányát és az Azure-adattárházat a rosszindulatú offline tevékenységek fenyegetésével szemben az inaktív adatok titkosításával. Valós időben titkosítja és fejti vissza az adatbázist, a hozzá tartozó biztonsági másolatokat és a tranzakciónapló-fájlokat anélkül, hogy ehhez módosítani kellene az alkalmazást. Alapértelmezés szerint a TDE az összes újonnan üzembe helyezett Azure SQL-adatbázis esetében engedélyezve van. A TDE nem használható a logikai **Master** adatbázis SQL Database-ben történő titkosítására.  A **főadatbázis olyan** objektumokat tartalmaz, amelyek szükségesek a TDE műveletek végrehajtásához a felhasználói adatbázisokon.
 
 A TDE manuálisan kell engedélyezni a Azure SQL Database, Azure SQL felügyelt példány vagy Azure SQL Data Warehouse régebbi adatbázisaihoz.
 A visszaállítással létrehozott felügyelt példány-adatbázisok a forrás-adatbázisból öröklik a titkosítási állapotot.
 
 Az transzparens adattitkosítás titkosítja egy teljes adatbázis tárterületét az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával. Ezt az adatbázis-titkosítási kulcsot a transzparens adattitkosítási védő védi. A védő vagy egy szolgáltatás által felügyelt tanúsítvány (szolgáltatás által kezelt transzparens adattitkosítás) vagy Azure Key Vault (Bring Your Own Key) által tárolt aszimmetrikus kulcs. Az átlátszó adattitkosítási védőt a Azure SQL Database és az adatraktár kiszolgálói szintjén, valamint az Azure SQL felügyelt példányának példányi szintjén állíthatja be. A *kiszolgáló* kifejezés a jelen dokumentumon belül a kiszolgáló és a példányra is vonatkozik, kivéve, ha másként van megadva.
 
-Az adatbázis indításakor a rendszer visszafejti a titkosított adatbázis titkosítási kulcsát, majd felhasználja az adatbázisfájlok visszafejtésére és újratitkosítására a SQL Server adatbázismotor folyamatában. Az transzparens adattitkosítás valós idejű I/O-titkosítást és az adatok visszafejtését végzi az oldal szintjén. A rendszer visszafejti az egyes lapokat, amikor beolvassa a memóriába, majd titkosítja a lemezre írás előtt. Az transzparens adattitkosítás általános ismertetését lásd: [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
+Az adatbázis indításakor a rendszer visszafejti a titkosított adatbázis titkosítási kulcsát, majd felhasználja az adatbázisfájlok visszafejtésére és újratitkosítására a SQL Server adatbázismotor folyamatában. Az transzparens adattitkosítás valós idejű I/O-titkosítást és az adatok visszafejtését végzi az oldal szintjén. Az egyes lapok visszafejtése a memóriába történő beolvasáskor történik, a titkosítás pedig a lemezre írás előtt. Az transzparens adattitkosítás általános ismertetését lásd: [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 
 Az Azure-beli virtuális gépeken futó SQL Server a Key Vault aszimmetrikus kulcsát is használhatja. A konfigurációs lépések eltérnek a SQL Database és az SQL felügyelt példányának aszimmetrikus kulcsának használatával. További információ: [bővíthető kulcskezelő Azure Key Vault (SQL Server) használatával](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server).
 
@@ -72,7 +72,7 @@ Az egyetlen kivétel az, amikor egy SQL-adatbázisból exportál, és onnan expo
 
 
 ## <a name="manage-transparent-data-encryption"></a>Transzparens adattitkosítás kezelése
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 A Azure Portal transzparens adattitkosítás kezelése.
 
 A Azure Portal keresztüli transzparens adattitkosítás konfigurálásához Azure-tulajdonosként, közreműködőként vagy SQL Security managerként kell csatlakoznia.
@@ -147,7 +147,7 @@ Használja az alábbi parancsokat a Azure SQL Database és az adatraktárhoz:
 |[transzparens adattitkosítás konfiguráció beolvasása](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|Az adatbázis transzparens adattitkosítási konfigurációjának lekérése|
 |[A transzparens adattitkosítás konfigurációs eredményeinek listázása](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|Egy adatbázis titkosítási eredményének beolvasása|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az transzparens adattitkosítás általános ismertetését lásd: [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Ha többet szeretne megtudni a Azure SQL Database, az Azure SQL felügyelt példányának és az adattárház Bring Your Own Key támogatásával kapcsolatos transzparens adattitkosításról, tekintse meg a következőt: [transzparens adattitkosítás bring your own Key-támogatással](transparent-data-encryption-byok-azure-sql.md).

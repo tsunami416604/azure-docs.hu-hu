@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 5e435d1169d5f148bfa2910174bf1f2835806c8b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928245"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996272"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -29,7 +29,6 @@ Előfordulhat, hogy az Azure-beli virtuálisgép-ügynök leállt, elavult, inko
   - A Windows rendszerű virtuális gépek esetében az alábbi [lépéseket](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) követve indítsa újra a vendég ügynököt.<br>
   - Linux rendszerű virtuális gépek esetén az alábbi [lépéseket](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) követve indítsa újra a vendég ügynököt.
 
-
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError – nem tudott kommunikálni a virtuálisgép-ügynökkel a pillanatkép állapotához
 
 **Hibakód**: GuestAgentSnapshotTaskStatusError<br>
@@ -44,6 +43,8 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 **3. ok: [a pillanatkép állapota nem olvasható be, vagy nem lehet pillanatképet készíteni](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) .**
 
 **4. ok: [a biztonsági mentési bővítmény frissítése vagy betöltése sikertelen](#the-backup-extension-fails-to-update-or-load)**
+
+**5. ok: [nincs beállítva a VM-ügynök konfigurációs beállításai (Linux rendszerű virtuális gépek esetén)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed – a virtuális gép sikertelen kiépítési állapotban van
 
@@ -196,6 +197,11 @@ Ha a waagent részletes naplózásra van szüksége, kövesse az alábbi lépés
 1. A/etc/waagent.conf fájlban keresse meg a következő sort: **részletes naplózás engedélyezése (y | n)**
 2. Módosítsa a **naplókat. részletes** érték: *n* – *y*.
 3. Mentse a változást, majd indítsa újra a waagent a jelen szakasz fentebb ismertetett lépéseinek végrehajtásával.
+
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>Nincs beállítva a virtuálisgép-ügynök konfigurációs beállításai (Linux rendszerű virtuális gépek esetén)
+
+A konfigurációs fájl (/etc/waagent.conf) szabályozza a waagent műveleteit. Konfigurációs fájl beállításai **bővítmények. az engedélyezés** és a **kiépítés. az ügynököt** az **y** értékre kell beállítani a biztonsági mentés működéséhez.
+A virtuálisgép-ügynök konfigurációs fájljának beállításainak teljes listájáért tekintse meg a <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Nem lehet lekérdezni a pillanatkép állapotát, vagy nem lehet pillanatképet készíteni
 

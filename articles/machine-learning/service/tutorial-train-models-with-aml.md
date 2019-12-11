@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d16c07bf42c99b905868cb956d82e8723da61d6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca0f64fe67865e18c47009779cf8bd307a21c961
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581544"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978730"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Oktatóanyag: képosztályozási modellek betanítása MNIST-adatokkal és scikit – további tudnivalók a Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,8 +41,8 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ing
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Fejezze be az [oktatóanyagot: első lépésként hozzon létre egy ml-kísérletet](tutorial-1st-experiment-sdk-setup.md) :
-    * Munkaterület létrehozása
+* Fejezze be az [oktatóanyagot: első lépésként hozza létre első Azure ml-kísérletét](tutorial-1st-experiment-sdk-setup.md) :
+    * Munkaterületek létrehozása
     * Az oktatóanyagok notebookjának klónozása a munkaterületen lévő mappába.
     * Felhőalapú notebook-alapú virtuális gép létrehozása.
 
@@ -302,13 +302,13 @@ Figyelje meg, hogyan kéri le a szkript az adatokat, és menti a modelleket:
 
 ### <a name="create-an-estimator"></a>Becslő létrehozása
 
-A Futtatás elküldéséhez egy [SKLearn kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) objektumot kell használni. Hozza létre a kalkulátort a következő kód futtatásával az elemek definiálásához:
+A Futtatás elküldéséhez egy [SKLearn kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) objektumot kell használni. A becslő létrehozásához határozza meg a következő elemeket az alábbi kód futtatásával:
 
-* A kalkulátor objektum neve, `est`.
+* A becslőobjektum neve (`est`).
 * A szkripteket tartalmazó könyvtár. Az ebben a könyvtárban található összes fájl fel lesz töltve a fürtcsomópontokra végrehajtás céljából.
 * A számítási cél. Ebben az esetben a létrehozott Azure Machine Learning számítási fürtöt használja.
-* A betanítási szkript neve, **Train.py**.
-* A betanítási parancsfájlhoz szükséges paraméterek.
+* A betanítási szkript neve, **train.py**.
+* A betanítási szkript szükséges paraméterei.
 
 Ebben az oktatóanyagban ez a cél a AmlCompute. A parancsfájl mappájában lévő összes fájl a fürt csomópontjaiba lesz feltöltve futtatásra. A **data_folder** az adatkészlet használatára van beállítva. Először hozzon létre egy környezeti objektumot, amely meghatározza a betanításhoz szükséges függőségeket. 
 
@@ -361,7 +361,7 @@ Mi történik a várakozás közben:
 
 - **Skálázás**: Ha a távoli fürtnek több csomópontra van szüksége a jelenleg elérhető futtatáshoz, a további csomópontok automatikusan hozzáadódnak. A skálázás általában **körülbelül öt percet** vesz igénybe.
 
-- **Futtatás**: ebben a szakaszban a szükséges parancsfájlokat és fájlokat a rendszer elküldi a számítási célra. Az adattárolók csatlakoztatása vagy másolása megtörtént. Majd futtassa a **entry_script** . Amíg a feladatok futnak, az **StdOut** és a **./logs** könyvtár a futtatási előzményekre van továbbítva. A Futtatás előrehaladását a naplók használatával figyelheti.
+- **Futtatás**: ebben a szakaszban a szükséges parancsfájlokat és fájlokat a rendszer elküldi a számítási célra. Az adattárolók csatlakoztatása vagy másolása megtörtént. Ezután a **entry_script** fut. Amíg a feladatok futnak, az **StdOut** és a **./logs** könyvtár a futtatási előzményekre van továbbítva. A Futtatás előrehaladását a naplók használatával figyelheti.
 
 - **Feldolgozás után**a rendszer átmásolja a futtatáshoz tartozó **./outputs** könyvtárat a munkaterület futtatási előzményeibe, így elérheti ezeket az eredményeket.
 
@@ -430,11 +430,11 @@ print(model.name, model.id, model.version, sep='\t')
 A Azure Machine Learning számítási fürtöt is törölheti. Az autoskálázás azonban be van kapcsolva, és a fürt minimális értéke nulla. Így az adott erőforrás nem jár további számítási költségekkel, ha nincs használatban:
 
 ```python
-# optionally, delete the Azure Machine Learning Compute cluster
+# Optionally, delete the Azure Machine Learning Compute cluster
 compute_target.delete()
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a Azure Machine Learning oktatóanyagban a Pythont használtuk a következő feladatokhoz:
 

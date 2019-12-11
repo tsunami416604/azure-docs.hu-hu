@@ -1,6 +1,6 @@
 ---
 title: Az Azure IoT Hub Device Provisioning Service automatikus kiépítés használata a MXChip-IoT fejlesztői készlet regisztrálásához IoT Hub használatával | Microsoft Docs
-description: Az Azure IoT Hub Device Provisioning Service automatikus kiépítés használata a MXChip-IoT fejlesztői készlet a IoT Hub használatával történő regisztrálásához.
+description: Az Azure IoT Hub Device Provisioning Service (DPS) automatikus kiépítés használata a MXChip-IoT fejlesztői készlet a IoT Hubsal való regisztrálásához.
 author: liydu
 ms.author: liydu
 ms.date: 06/25/2019
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: 2731bbcd6a6b0c8f7d82334c022c017d5eae35f0
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f05e92f0452b1cfff23e2094354203fd7eaea48b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677020"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975652"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Az Azure IoT Hub Device Provisioning Service automatikus kiépítés használata a MXChip-IoT fejlesztői készlet regisztrálásához IoT Hub
 
-Ez a cikk azt ismerteti, hogyan használható az Azure IoT Hub Device Provisioning Service [automatikus kiépítés](concepts-auto-provisioning.md)a MXChip-IoT fejlesztői készlet az azure-IoT hub való regisztrálásához. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez a cikk azt ismerteti, hogyan használható az Azure IoT Hub Device Provisioning Service [automatikus kiépítés](concepts-auto-provisioning.md)a MXChip-IoT fejlesztői készlet az azure-IoT hub való regisztrálásához. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Konfigurálja az eszköz kiépítési szolgáltatásának globális végpontját egy eszközön.
 * X. 509 tanúsítvány létrehozásához használjon egyedi frissítési.
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan használható az Azure IoT Hub Device Provisioni
 
 A [MXChip IoT fejlesztői készlet](https://aka.ms/iot-devkit) egy all-in-One Arduino-kompatibilis tábla, amely gazdag perifériákkal és érzékelőkkel rendelkezik. A Visual Studio Code-ban az [Azure IoT Device Workbench](https://aka.ms/iot-workbench) vagy az [Azure IoT Tools](https://aka.ms/azure-iot-tools) Extension Pack használatával fejlesztheti azt. A fejlesztői készlet az Azure-szolgáltatások előnyeit kihasználó prototípus-eszközök internetes hálózata (IoT) megoldások útmutatója az egyre növekvő [projektekhez](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) .
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következő feladatokat:
 

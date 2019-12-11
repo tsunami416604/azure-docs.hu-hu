@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: computer-vision
+ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: d146c264ebc2d36f0842f464f4547520546fd363
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888275"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978032"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Oktatóanyag: Custom Vision használata IoT-eszközzel a vizualizációs állapotok jelentéséhez
 
@@ -56,7 +56,7 @@ A IoT vizuális riasztások alkalmazás folytonos hurokban fut, és szükség sz
 
 A következő fájlok kezelik az alkalmazás fő funkcióit.
 
-| Fájl | Leírás |
+| File | Leírás |
 |-------------|-------------|
 | [Főoldal. XAML](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) | Ez a fájl határozza meg a XAML felhasználói felületét. A webkamera vezérlőelemet futtatja, és tartalmazza az állapot frissítéséhez használt címkéket.|
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Ez a kód a XAML felhasználói felületének viselkedését szabályozza. Az állapot gép feldolgozási kódját tartalmazza.|
@@ -116,7 +116,7 @@ A folyamat megismétlése saját forgatókönyv esetén:
 
 Miután az alkalmazás letölti a betanított modellt, a rendszer átvált a **pontozási** állapotba, és a kamerából folytonos hurokban indítja el a képek pontozását.
 
-Az alkalmazás minden rögzített képhez megjeleníti a képernyő felső címkéjét. Ha nem ismeri fel a vizualizáció állapotát, a rendszer nem jeleníti meg a **találatokat**. Az alkalmazás emellett elküldi ezeket az üzeneteket a IoT Hubra, és ha a rendszer a következő osztályt észleli, az üzenet tartalmazza a címkét, a megbízhatósági pontot és a `detectedClassAlert`nevű tulajdonságot, amelyet a gyors üzenetküldési IoT Hub szolgáltatás a PROPER alapján rties.
+Az alkalmazás minden rögzített képhez megjeleníti a képernyő felső címkéjét. Ha nem ismeri fel a vizualizáció állapotát, a rendszer nem jeleníti meg a **találatokat**. Az alkalmazás emellett elküldi ezeket az üzeneteket a IoT Hubnak, és ha a rendszer a következő osztályt észleli, az üzenet tartalmazza a címkét, a megbízhatósági pontot és a `detectedClassAlert`nevű tulajdonságot, amelyet az IoT Hub ügyfelek a tulajdonságok alapján, a gyors üzenetküldéshez használhatnak.
 
 Emellett a minta egy [Sense hat-függvénytárat](https://github.com/emmellsoft/RPi.SenseHat) használ annak észlelésére, hogy mikor fut egy olyan, a málna PI-ban, amely Sense hat egységet használ, így kimenetként jelenítheti meg, ha az összes megjelenítõ lámpát vörösre állítja, amikor az egy osztályt észlel, és üresen hagyja, ha nem észlel semmit.
 
@@ -134,7 +134,7 @@ Törölje a Custom Vision projektet, ha már nem szeretné karbantartani. A [Cus
 
 ![Képernyőfelvétel az új projekttel ellátott panelről a Kuka ikon használatával](./media/csharp-tutorial/delete_project.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy olyan alkalmazást állít be és futtatott, amely észleli a vizualizációs állapotinformációkat egy IoT-eszközön, és elküldi az eredményeket a IoT Hubnak. Ezután vizsgálja meg a forráskódot, vagy hajtsa végre az alábbi, javasolt módosításokat.
 

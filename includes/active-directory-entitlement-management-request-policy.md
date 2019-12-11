@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 4a09389cfd9a5e61c1d73440545c76df7c9eadb2
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566281"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980742"
 ---
 ## <a name="for-users-in-your-directory"></a>A címtárban lévő felhasználók számára
 
@@ -25,7 +25,7 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő
 
     ![Hozzáférési csomag – kérelmek – a címtárban lévő felhasználók számára](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
-1. Válasszon egyet a következő lehetőségek közül:
+1. Válasszon egyet az alábbi lehetőségek közül:
 
     |  |  |
     | --- | --- |
@@ -60,12 +60,13 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárában lév
 
     ![Hozzáférési csomag – kérelmek – a címtárban nem szereplő felhasználók számára](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
 
-1. Válasszon egyet a következő lehetőségek közül:
+1. Válasszon egyet az alábbi lehetőségek közül:
 
     |  |  |
     | --- | --- |
     | **Adott csatlakoztatott szervezetek** | Akkor válassza ezt a lehetőséget, ha ki szeretné választani a rendszergazda által korábban hozzáadott szervezetek listáját. A kiválasztott szervezetek összes felhasználója kérheti ezt a hozzáférési csomagot. |
     | **Minden csatlakoztatott szervezet** | Akkor válassza ezt a lehetőséget, ha az összes csatlakoztatott szervezet összes felhasználója ezt a hozzáférési csomagot kéri. |
+    | **Minden felhasználó (minden csatlakoztatott szervezet + minden új külső felhasználó)** | Akkor válassza ezt a lehetőséget, ha az összes csatlakoztatott szervezet összes felhasználója kérheti ezt a hozzáférési csomagot, és a VÁLLALATKÖZI engedélyezési vagy megtagadási lista beállításai elsőbbséget élveznek az új külső felhasználók számára. |
 
     A csatlakoztatott szervezet egy külső Azure AD-címtár vagy-tartomány, amelyhez kapcsolata van.
 

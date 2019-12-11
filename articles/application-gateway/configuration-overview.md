@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 38d86a9ed82c3a242364e788cce371f83575c1ea
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 79867bd048be882414e247af11c133ed481788a0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108736"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996632"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -121,7 +121,7 @@ Válassza ki azt az előtér-IP-címet, amelyet hozzá szeretne rendelni ehhez a
 
 Válassza ki az előtér-portot. Válasszon ki egy meglévő portot, vagy hozzon létre egy újat. Válassza ki a [portok megengedett tartományának](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports)tetszőleges értékét. Nem csak a jól ismert portok, például a 80 és a 443, de a megfelelő egyéni portok is használhatók. Egy port használható nyilvános figyelők vagy magánjellegű figyelők számára.
 
-### <a name="protocol"></a>Protokoll
+### <a name="protocol"></a>Protocol (Protokoll)
 
 HTTP vagy HTTPS kiválasztása:
 
@@ -220,7 +220,7 @@ Válassza ki a szükséges átirányítás típusát: *Permanent (301)* , *ideig
 
 Válasszon egy másik figyelőt vagy egy külső helyet az átirányítás céljaként.
 
-##### <a name="listener"></a>Hallgató
+##### <a name="listener"></a>Figyelő
 
 Válassza a figyelő lehetőséget, hogy átirányítsa a forgalmat az egyik figyelőről egy másikra az átjárón. Erre a beállításra akkor van szükség, ha engedélyezni szeretné a HTTP – HTTPS átirányítást. Átirányítja a forgalmat a forrás-figyelőtől, amely ellenőrzi a bejövő HTTP-kéréseket a cél figyelőnek, amely ellenőrzi a bejövő HTTPS-kéréseket. Azt is megteheti, hogy a lekérdezési karakterláncot és az elérési utat az eredeti kérelemből is felveszi az átirányítási célra továbbított kérelembe.
 
@@ -241,7 +241,7 @@ További információ az átirányítással kapcsolatban:
 
 #### <a name="rewrite-the-http-header-setting"></a>A HTTP-fejléc beállításának újraírása
 
-Ezzel a beállítással a HTTP-kérések és a válaszok fejlécei is hozzáadhatók, eltávolíthatók vagy frissülnek, míg a kérelmek és válaszok csomagjai az ügyfél és a háttérbeli készletek között mozognak. További információkért lásd:
+Ezzel a beállítással a HTTP-kérések és a válaszok fejlécei is hozzáadhatók, eltávolíthatók vagy frissülnek, míg a kérelmek és válaszok csomagjai az ügyfél és a háttérbeli készletek között mozognak. További információ eléréséhez lásd:
 
  - [HTTP-fejlécek újraírása – áttekintés](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
  - [HTTP-fejléc újraírásának konfigurálása](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
@@ -256,9 +256,9 @@ Ez a funkció akkor hasznos, ha ugyanazon a kiszolgálón szeretné megőrizni a
 
 ### <a name="connection-draining"></a>Kapcsolatkiürítés
 
-A kapcsolatok kiürítése megkönnyíti a háttérbeli készlet tagjainak biztonságos eltávolítását a tervezett szolgáltatási frissítések során. Ezt a beállítást a szabályok létrehozásakor a háttérbeli készlet összes tagjára alkalmazhatja. Biztosítja, hogy a háttérrendszer összes példánya ne kapjon új kéréseket. Eközben a meglévő kérések a beállított időkorláton belül is megadhatók. A kapcsolatok kiürítése olyan háttérbeli példányokra vonatkozik, amelyek kifejezetten eltávolíthatók a háttér-készletből.
+A kapcsolatok kiürítése megkönnyíti a háttérbeli készlet tagjainak biztonságos eltávolítását a tervezett szolgáltatási frissítések során. Ezt a beállítást a szabályok létrehozásakor a háttérbeli készlet összes tagjára alkalmazhatja. Gondoskodik róla, hogy a háttér-készletek összes regisztrációja továbbra is megőrizze a meglévő kapcsolatokat, és a rendelkezésre állási kérelmeket a konfigurálható időtúllépés mellett kézbesítse, és ne kapjon új kéréseket és kapcsolatokat. Ez alól kivételt képeznek a kérelmek, amelyek az átjáró által felügyelt munkamenet-affinitás miatt a példányok deregisztrációját igénylik, és a rendszer továbbra is a denyilvántartó példányok számára végzi a felügyeletet. A kapcsolatok kiürítése olyan háttérbeli példányokra vonatkozik, amelyek kifejezetten eltávolíthatók a háttér-készletből.
 
-### <a name="protocol"></a>Protokoll
+### <a name="protocol"></a>Protocol (Protokoll)
 
 A Application Gateway a HTTP-t és a HTTPS-t is támogatja a háttér-kiszolgálókra irányuló útválasztási kérelmek esetében. Ha a HTTP lehetőséget választja, a háttér-kiszolgálókra irányuló forgalom titkosítatlan. Ha a titkosítatlan kommunikáció nem elfogadható, válassza a HTTPS lehetőséget.
 
@@ -325,7 +325,7 @@ Olyan egyéni tartomány esetében, amelynek meglévő egyéni DNS-neve az App S
 
 Ez a funkció a megadott állomásnévvel helyettesíti az Application Gateway bejövő kérelmében szereplő *állomásfejléc* -fejlécet.
 
-Ha például a *www.contoso.com* meg van adva az **állomásnév** beállításban, akkor az eredeti kérelem * https://appgw.eastus.cloudapp.azure.com/path1 módosul a * https://www.contoso.com/path1ra, amikor a kérést a rendszer továbbítja a háttér-kiszolgálónak.
+Ha például a *www.contoso.com* meg van adva az **állomásnév** beállításban, akkor az eredeti kérelem * https://appgw.eastus.cloudapp.azure.com/path1 módosul a * https://www.contoso.com/path1 ra, amikor a kérést a rendszer továbbítja a háttér-kiszolgálónak.
 
 ## <a name="back-end-pool"></a>Háttérkészlet
 
@@ -340,7 +340,7 @@ Az Application Gateway alapértelmezés szerint figyeli az összes erőforrás �
 > [!NOTE]
 > Az egyéni állapotú mintavétel létrehozása után hozzá kell rendelnie azt egy háttérbeli HTTP-beállításhoz. Az egyéni mintavétel nem figyeli a háttér-készlet állapotát, kivéve, ha a megfelelő HTTP-beállítás explicit módon van társítva egy figyelővel egy szabály használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a Application Gateway összetevőket, a következőket teheti:
 

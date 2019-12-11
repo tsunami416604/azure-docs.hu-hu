@@ -1,6 +1,6 @@
 ---
 title: Az Azure IoT Hub Device Provisioning Service szolgáltatással kapcsolatos fogalmak | Microsoft Docs
-description: Az eszközök kiépítési szolgáltatásával és IoT Hubával kapcsolatos szolgáltatások kiépítési fogalmait ismerteti
+description: Az eszközök kiépítési szolgáltatásával (DPS) és IoT Hubekkel kapcsolatos szolgáltatások kiépítési fogalmait ismerteti.
 author: nberdy
 ms.author: nberdy
 ms.date: 09/18/2019
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 51486da6b34c0ff1e9b6d05558c2132a416913e9
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104362"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975601"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT Hub Device Provisioning Service fogalmak
 
 A IoT Hub Device Provisioning Service egy olyan IoT Hub segítő szolgáltatás, amellyel a nulla érintéses eszköz kiépíthető a megadott IoT hubhoz. A Device kiépítési szolgáltatással akár több millió eszközt is biztonságosan és méretezhető módon lehet [automatikusan kiépíteni](concepts-auto-provisioning.md) .
 
-Az eszközök kiépítési folyamata két részből áll. Az első rész a kezdeti kapcsolatot hozza létre az eszköz és a IoT megoldás között az eszköz regisztrálásával. A második rész a megoldás konkrét követelményei alapján alkalmazza a megfelelő konfigurációt az eszközre. Ha mindkét lépést végrehajtotta, az eszköz teljes mértékben kiépítvelett. A Device Provisioning Service a két lépés automatizálásával biztosítja az eszközök zökkenőmentes kiépítését.
+Az eszközök kiépítési folyamata két részből áll. Az első rész a kezdeti kapcsolatot hozza létre az eszköz és a IoT megoldás között az eszköz *regisztrálásával* . A második rész a megoldás konkrét követelményei alapján alkalmazza a megfelelő *konfigurációt* az eszközre. Ha mindkét lépést végrehajtotta, az eszköz teljes mértékben *kiépítve*lett. A Device Provisioning Service a két lépés automatizálásával biztosítja az eszközök zökkenőmentes kiépítését.
 
 Ez a cikk áttekintést nyújt a *szolgáltatás*kezeléséhez leginkább alkalmazandó kiépítési fogalmakról. Ez a cikk a [felhő telepítési lépésében](about-iot-dps.md#cloud-setup-step) érintett personák szempontjából a legfontosabb, hogy az eszköz készen álljon az üzembe helyezésre.
 
@@ -31,7 +31,7 @@ A szolgáltatási műveletek végpontja a szolgáltatás beállításainak kezel
 
 Az eszköz kiépítési végpontja az egyetlen végpont, amelyet minden eszköz használ az automatikus kiépítés során. Az URL-cím megegyezik az összes kiépítési szolgáltatási példány esetében, így nincs szükség az eszközök új kapcsolódási információkkal való újratöltésére az ellátási lánc forgatókönyvei között. Az azonosító hatóköre biztosítja a bérlő elkülönítését.
 
-## <a name="linked-iot-hubs"></a>Összekapcsolt IoT-központok
+## <a name="linked-iot-hubs"></a>IoT-központtal összekapcsolva
 
 A Device kiépítési szolgáltatás csak olyan IoT-hubok számára tud eszközöket kiépíteni, amelyek hozzá lettek kapcsolva. Az IoT hub és az eszköz kiépítési szolgáltatásának egy példányához való csatolásával a szolgáltatás olvasási/írási jogosultságot biztosít az IoT hub eszközének beállításjegyzékéhez; a hivatkozással egy eszköz kiépítési szolgáltatása regisztrálhat egy eszköz-azonosítót, és beállíthatja a kezdeti konfigurációt az eszköz Twin-ben. A csatolt IoT hubok bármelyik Azure-régióban lehetnek. A kiépítési szolgáltatáshoz más előfizetésekben lévő hubokat is csatolhat.
 
@@ -45,12 +45,12 @@ A szolgáltatás szintjének beállítása, amely meghatározza, hogy az eszköz
 
 * **Statikus konfiguráció a beléptetési listán**: a beléptetési listán a kívánt IoT hub specifikációja elsőbbséget élvez a szolgáltatási szintű kiosztási szabályzattal szemben.
 
-## <a name="enrollment"></a>Igénylés
+## <a name="enrollment"></a>Regisztráció
 
 A regisztráció az automatikus kiépítés útján regisztrálhatók eszközeinek vagy csoportjainak a nyilvántartása. A beléptetési rekord információt tartalmaz az eszközről vagy az eszközök csoportjából, beleértve a következőket:
 - az eszköz által használt [igazolási mechanizmus](concepts-security.md#attestation-mechanism)
 - a választható kezdeti kívánt konfiguráció
-- desired IoT hub
+- kívánt IoT hub
 - a kívánt eszköz azonosítója
 
 A Device kiépítési szolgáltatás két típusú regisztrációt támogat:

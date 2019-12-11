@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Első Bing Custom Search-példány létrehozása | Microsoft Docs'
+title: 'Gyors útmutató: első Bing Custom Search-példány létrehozása | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre olyan egyéni Bing-példányt, amely képes a definiált tartományokra és weblapokra.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 2806ca6f7079ffac3d2222363cd5b3839ef8f97d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 2c98395e2671c245d9349a72ed6a964b2ebd28ca
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405014"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978543"
 ---
-# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Gyors útmutató: Az első Bing Custom Search példány létrehozása
+# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Rövid útmutató: az első Bing Custom Search-példány létrehozása
 
 A Bing Custom Search használatához hozzon létre egy Custom Search-példányt, amelyben meghatározza a nézetet vagy a web egy részletét. Ez a példány tartalmazza a keresni kívánt nyilvános tartományokat, webhelyeket és weblapokat, valamint az esetlegesen kívánt rangsorolási beállításokat. 
 
@@ -46,10 +46,10 @@ Bing Custom Search-példány létrehozása:
 
 5. Kattintson a **Közzététel** elemre a módosítások éles környezetben való közzétételéhez, és frissítse a példány végpontját.
 
-6.  Kattintson a **termelés** lapra a **végpontok**területen, és másolja az **egyéni konfigurációs azonosítót**. Erre az azonosítóra szüksége lesz a Custom Search API meghívásához, hogy hozzáfűzi `customconfig=` a lekérdezési paraméterhez a hívásokban.
+6.  Kattintson a **termelés** lapra a **végpontok**területen, és másolja az **egyéni konfigurációs azonosítót**. Erre az AZONOSÍTÓra szüksége lesz a Custom Search API meghívásához, hogy hozzáfűzi a `customconfig=` lekérdezési paraméterhez a hívásokban.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Bing Custom Search végpont meghívása](./call-endpoint-csharp.md)
+> [Gyors útmutató: az Bing Custom Search-végpont meghívása](./call-endpoint-csharp.md)

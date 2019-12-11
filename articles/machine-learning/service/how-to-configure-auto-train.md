@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: c70226ef58ed60a7be556b88366953796ed6fff1
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ddcf97a8c7ae6000c14638a8292bc8b4f39ed87d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580568"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978339"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,7 +43,7 @@ A kísérlet megkezdése előtt meg kell határoznia, hogy milyen típusú gépi
 
 Az automatizált gépi tanulás a következő algoritmusokat támogatja az automatizálási és hangolási folyamat során. Felhasználóként nem kell megadnia az algoritmust.
 
-Osztályozás | Regressziós | Idősorozat-előrejelzés
+Osztályozás | Regresszió | Idősorozat-előrejelzés
 |-- |-- |--
 [Logisztikai regresszió](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
@@ -171,12 +171,12 @@ Néhány példa:
         n_cross_validations=5)
     ```
 
-A három különböző `task` paraméter értéke (a harmadik feladattípus `forecasting`, és ugyanazt az algoritmus-készletet használja `regression` feladatokhoz) határozza meg az alkalmazandó modellek listáját. A `whitelist` vagy `blacklist` paraméterekkel további módosításokat is módosíthat az elérhető modellekkel a belefoglaláshoz vagy kizáráshoz. A támogatott modellek listája a [SupportedModels osztályban](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)található.
+A három különböző `task` paraméter értéke (a harmadik feladattípus `forecasting`, és egy hasonló algoritmus-készletet használ `regression` feladatokhoz) határozza meg az alkalmazandó modellek listáját. A `whitelist` vagy `blacklist` paraméterekkel további módosításokat is módosíthat az elérhető modellekkel a belefoglaláshoz vagy kizáráshoz. A támogatott modellek listája a [SupportedModels osztályban](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)található.
 
 ### <a name="primary-metric"></a>Elsődleges metrika
 Az elsődleges metrika határozza meg, hogy milyen mérőszámot kell használni az optimalizáláshoz a modell betanításakor. A kiválasztható mérőszámokat a kiválasztott feladattípus határozza meg, az alábbi táblázat pedig az egyes feladattípusok érvényes elsődleges metrikáit tartalmazza.
 
-|Osztályozás | Regressziós | Idősorozat-előrejelzés
+|Osztályozás | Regresszió | Idősorozat-előrejelzés
 |-- |-- |--
 |accuracy| spearman_correlation | spearman_correlation
 |AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
@@ -326,7 +326,7 @@ Az automatikus ML használatával előállított modellek a következő lépése
 + Automatizált funkciók tervezése (ha az előfeldolgozás = true)
 + Skálázás/normalizálás és algoritmus hiperparaméter-értékekkel
 
-Ezt az információt a fitted_model-kimenetről az automatikus ML-ből átláthatóvá tesszük.
+Ennek az információnak a beolvasása az automatizált ML-ből származó fitted_model kimenetből átlátható.
 
 ```python
 automl_config = AutoMLConfig(…)
@@ -396,7 +396,7 @@ A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban meg
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   Az elemek magyarázata:
+   Helyszín:
 
    |Kimenet|Meghatározás|
    |----|--------|
@@ -434,7 +434,7 @@ featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of
 
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Skálázás/normalizálás és algoritmus hiperparaméter-értékekkel:
 
-Egy folyamat skálázási/normalizáló és algoritmus/hiperparaméter értékeinek megismeréséhez használja a fitted_model. Steps. [További információ a méretezéssel/normalizálás](concept-automated-ml.md#preprocess). Itt látható egy mintakimenet:
+A folyamat skálázási/normalizáló és algoritmus/hiperparaméter értékeinek megismeréséhez használja a fitted_model. Steps. [További információ a méretezéssel/normalizálás](concept-automated-ml.md#preprocess). Itt látható egy mintakimenet:
 
 ```
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))
@@ -499,7 +499,7 @@ Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md)
 
 Általános információk arról, hogy a modell magyarázatait és funkcióinak fontosságát az SDK más területein is engedélyezheti az automatikus gépi tanuláson kívül: a [koncepcióról](how-to-machine-learning-interpretability.md) szóló cikk értelmezése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 

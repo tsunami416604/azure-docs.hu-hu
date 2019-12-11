@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-ms.date: 06/04/2019
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 8cdd52963f89041ea97b018fd3756c925308e641
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8f27e8e8693fc5d1d3e432b78f2877d71274f146
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443264"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978475"
 ---
 # <a name="what-is-the-translator-text-api"></a>Mi a Translator Text API?
 
@@ -28,7 +28,7 @@ A Translator Text API a felhőalapú gépi tanulási és mesterséges intelligen
 
 A Microsoft Translator egy felhőalapú gépi fordítási szolgáltatás. A fő szolgáltatás a Translator Text API, amely a Microsoft számos termékét és szolgáltatását szolgálja ki, és amelyeket világszerte vállalkozások ezrei használnak alkalmazásaikban és munkafolyamataikban, hogy tartalmaikat a globális közönség elé tárják.
 
-A Translator Text API által kiszolgált beszédfordítás a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) szolgáltatáson keresztül is elérhető. Egy egységes és teljes mértékben testre szabható szolgáltatásba a Translator Speech API és a Custom Speech Service funkcióit ötvözi. A Speech Service leváltja a Translator Speech API-t, amely 2019. október 15-től kezdve visszavonunk.
+A Translator Text API által kiszolgált beszédfordítás a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) szolgáltatáson keresztül is elérhető. Egyesíti a Translator Speech API és a Custom Speech Service funkcióit egy egységes és teljes mértékben testreszabható szolgáltatásban. A Speech Service lecseréli a Translator Speech API, amelyet a rendszer a 2019. október 15-én leszerel.
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
@@ -52,8 +52,8 @@ A Custom Translator használatával olyan fordítási rendszereket állíthat ö
 
 További információk [a nyelvi testreszabásról](customization.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Regisztráljon](translator-text-how-to-signup.md) egy hozzáférési kulcs beszerzéséhez.
-- [API-referencia](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) biztosít az API-k a technikai dokumentációt.
+- Az [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) az API-k műszaki dokumentációját biztosítják.
 - [Díjszabás részletei](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

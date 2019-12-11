@@ -1,6 +1,6 @@
 ---
-title: A Media Services REST API használatával adategység-kézbesítési házirendek konfigurálása |} A Microsoft Docs
-description: Ez a témakör bemutatja a Media Services REST API használatával különböző adategység-kézbesítési házirendek konfigurálása.
+title: Az eszközök kézbesítési házirendjeinek konfigurálása Media Services REST API használatával | Microsoft Docs
+description: Ez a témakör bemutatja, hogyan konfigurálhat különböző eszköz-kézbesítési házirendeket Media Services REST API használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,67 +14,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5e4e565b0b5272de19458617a9c4bd3509907cce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1c71a1329b930beea38fe39518914b278f9372d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60817397"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968408"
 ---
-# <a name="configuring-asset-delivery-policies"></a>Adategység-kézbesítési házirendek konfigurálása
+# <a name="configuring-asset-delivery-policies"></a>Az eszközök kézbesítési házirendjeinek konfigurálása
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
 
-Ha azt tervezi, hogy dinamikusan titkosított eszközökre, a Media Services-továbbítási munkafolyamat lépésben konfigurálja kézbesítési házirendek az eszközök. Az objektumtovábbítási szabályzat arra utasítja a Media Services az objektum kézbesítendő módját: az adatfolyam-továbbítási protokoll kell az eszközintelligencia dinamikusan csomagolható (például MPEG DASH, HLS, Smooth Streaming, vagy az összes), dinamikusan titkosítani szeretné-e az objektumot, és hogyan (boríték vagy common encryption).
+Ha dinamikusan titkosított eszközök továbbítását tervezi, a Media Services Content Delivery munkafolyamat egyik lépése az eszközök kézbesítési házirendjeinek konfigurálása. Az eszköz kézbesítési házirendje közli Media Services, hogyan szeretné kézbesíteni az eszközét: az adatstream protokollnak (például MPEG DASH, HLS, Smooth Streaming vagy all) a dinamikusan titkosítania kell-e az eszközön. az eszköz és a (boríték vagy közös titkosítás).
 
-Ez a témakör ismerteti, miért és hogyan hozhat létre és konfigurálja az adategység továbbítási házirendjeit.
+Ez a témakör azt ismerteti, hogy miért és hogyan kell létrehozni és konfigurálni az eszközök kézbesítési házirendjeit.
 
 > [!NOTE]
 > Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
 >
-> Is használhatja a dinamikus csomagolás és a dinamikus titkosítás, az eszköz tartalmaznia kell egy adaptív sávszélességű MP4 vagy Smooth Streaming-fájlsorozattá készletét.
+> Továbbá a dinamikus csomagolás és a dinamikus titkosítás használatához az eszköznek adaptív sávszélességű MP4 vagy adaptív sávszélességű Smooth Streaming fájlokat kell tartalmaznia.
 
-Adott objektum sikerült különböző szabályzatok vonatkoznak. PlayReady-titkosítás például MPEG DASH vagy HLS, Smooth Streaming az AES Envelope pedig titkosítás tudta alkalmazni. A továbbítási szabályzatban meg nem határozott protokollok streameléshez való használatát a rendszer nem engedélyezi (ilyen lehet például, ha csupán egyetlen szabályzatot állít be, amely kizárólag a HLS-protokoll használatát tartalmazza). Kivételt jelent, ha egyáltalán nem állít be objektumtovábbítási szabályzatot. Ebben az esetben a rendszer az összes protokollt engedélyezi.
+Különböző házirendeket alkalmazhat ugyanarra az objektumra. Például alkalmazhat PlayReady titkosítást Smooth Streaming és AES-borítékos titkosításra az MPEG DASH és a HLS számára. A továbbítási szabályzatban meg nem határozott protokollok streameléshez való használatát a rendszer nem engedélyezi (ilyen lehet például, ha csupán egyetlen szabályzatot állít be, amely kizárólag a HLS-protokoll használatát tartalmazza). Kivételt jelent, ha egyáltalán nem állít be objektumtovábbítási szabályzatot. Ebben az esetben a rendszer az összes protokollt engedélyezi.
 
-Ha azt szeretné, hogy a tárolási titkosított eszköz, konfigurálnia kell az adategység továbbítási házirendjét. Az eszközintelligencia továbbítható, mielőtt a streamelési kiszolgáló eltávolítja a tárolás titkosítása, és adatfolyamként elküldi a tartalmát a megadott objektumtovábbítási szabályzat használatával. Például, hogy az eszköz Advanced Encryption Standard (AES) boríték titkosítási kulccsal titkosított, állítsa be ezt a házirendtípus **DynamicEnvelopeEncryption**. Távolítsa el a storage-titkosítás, illetve streamelni az eszköz a titkosítatlan, állítsa be a házirend típusát **NoDynamicEncryption**. Az alábbi példák azt mutatják be, ezek a házirend-típusainak konfigurálása.
+Ha titkosított eszközt szeretne kézbesíteni, konfigurálnia kell az eszköz kézbesítési házirendjét. Az eszköz adatfolyamként való továbbítása előtt a streaming kiszolgáló eltávolítja a tárolási titkosítást, és a megadott kézbesítési házirenddel továbbítja a tartalmat. Ha például az eszköz titkosítását Advanced Encryption Standard (AES) boríték titkosítási kulccsal szeretné továbbítani, állítsa a szabályzat típusát **DynamicEnvelopeEncryption**értékre. A tároló titkosításának eltávolításához és az objektum kiürítésének törléséhez állítsa a házirend típusát **NoDynamicEncryption**értékre. Példák, amelyek bemutatják, hogyan konfigurálhatja ezeket a házirend-típusokat.
 
-Attól függően, hogyan konfigurálja az adategység továbbítási házirendjét válik dinamikus csomagolásához, dinamikusan titkosítja, és adatfolyam a következő adatfolyam-továbbítási protokollok: Smooth Streaming, HLS, MPEG-DASH-streameket.
+Attól függően, hogy az eszköz kézbesítési házirendjét hogyan konfigurálja, akkor a dinamikusan, dinamikusan titkosíthatja és továbbíthatja a következő folyamatos átviteli protokollokat: Smooth Streaming, HLS, MPEG DASH streamek.
 
-Az alábbi lista tartalmazza a formátumok használatával stream Smooth, HLS, DASH.
+A következő lista a zökkenőmentes, HLS és KÖTŐJELek továbbításához használt formátumokat mutatja be.
 
 Smooth Streaming:
 
 {stream végpontjának neve-Media Services fiók neve}.streaming.mediaservices.windows.net/{kereső azonosítója}/{fájlnév}.ism/Manifest
 
-HLS:
+HLS
 
-{Stream végpont neve-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+{streaming Endpoint Name-Media Services-fiók neve}. streaming. Mediaservices. Windows. net/{kereső azonosítója} ISM/manifest (Format = m3u8-AAPL)
 
 MPEG DASH
 
-{Stream végpont neve-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+{streaming Endpoint Name-Media Services-fiók neve}. streaming. Mediaservices. Windows. net/{kereső azonosítója} ISM/manifest (Format = mpd-Time-CSF)
 
 
 További információk az objektumok közzétételéről és a streamelési URL-cím létrehozásáról: [Build a streaming URL](media-services-deliver-streaming-content.md) (Streamelési URL-cím létrehozása).
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-* Egy adategység társított, amíg az eszköz létezik (Stream) OnDemand-lokátort AssetDeliveryPolicy nem törölhető. A javaslat, hogy a házirend törlése előtt távolítsa el a szabályzatot az eszköz.
-* A streamelési lokátorok nem hozható létre egy tárolási titkosított eszköz nem állít be objektumtovábbítási szabályzatot beállításánál nem.  Ha az eszköz nincs titkosítva a storage, a rendszer lehetővé teszi, hozzon létre egy keresőt, illetve streamelni az eszköz a titkosítatlan objektumtovábbítási szabályzat nélkül.
-* Társított egyetlen eszköz több adategység továbbítási házirendjeit rendelkezhet, de csak egyik módja egy adott AssetDeliveryProtocol kezelni lehet megadni.  Tehát ha azelőtt próbál két kézbesítési házirendek által megadott hibát eredményez, mivel a rendszer nem tudja, amely egy azt szeretné, hogy a alkalmazni, ha egy ügyfél kérést küld Smooth Streaming AssetDeliveryProtocol.SmoothStreaming protokolltól hivatkozásra.
-* Ha egy eszköz rendelkezik egy meglévő streamelési lokátort, nem egy új szabályzat csatolása az objektumot, egy meglévő szabályzatot, az eszköz leválasztása, vagy frissítése az eszközhöz társított továbbítási szabályzatban.  Először szüksége van, távolítsa el a streamelési lokátort, állíthatja a házirendeket, és hozza létre újra a streamelési lokátort.  Az azonos locatorId a streamelési lokátorok hozza létre újra, de győződjön meg arról, hogy nem okozhat problémát az ügyfelek óta a gyorsítótárazható tartalom, a nulla vagy egy alsóbb rétegbeli CDN által használható.
+* Az objektumhoz társított AssetDeliveryPolicy nem törölhető, miközben az adott eszközhöz OnDemand (streaming) lokátor található. Javasoljuk, hogy a szabályzat törlése előtt távolítsa el a szabályzatot az eszközről.
+* Nem hozható létre adatfolyam-kereső egy titkosított eszközön, ha nincs beállítva eszköz kézbesítési házirendje.  Ha az eszköz nem titkosítja a tárolót, a rendszer lehetővé teszi, hogy egy lokátort hozzon létre, és az objektumot a törlés nélkül továbbítsa az eszköz kézbesítési házirendjébe.
+* Egyetlen objektumhoz több eszközre vonatkozó kézbesítési szabályzat is tartozhat, de csak egyetlen módszert adhat meg egy adott AssetDeliveryProtocol kezeléséhez.  Ez azt jelenti, hogy ha két kézbesítési házirendet próbál meg összekapcsolni, amely megadja a AssetDeliveryProtocol. SmoothStreaming protokollt, amely hibát eredményez, mivel a rendszer nem tudja, melyikre lesz szükség, amikor egy ügyfél Smooth Streaming kérelmet tesz.
+* Ha rendelkezik egy meglévő streaming-keresővel, nem kapcsolhat új szabályzatot az objektumhoz, leválaszthatja a meglévő szabályzatot az eszközről, vagy frissítheti az objektumhoz társított kézbesítési szabályzatot.  Először el kell távolítania az adatfolyam-keresőt, módosítania kell a házirendeket, majd újra létre kell hoznia a folyamatos átviteli lokátort.  Ugyanazt a locatorId használhatja, amikor újra létrehozza a folyamatos átviteli lokátort, de gondoskodnia kell arról, hogy ne okozzon problémát az ügyfelek számára, mivel a tartalmat a forrás vagy egy alárendelt CDN gyorsítótárazhatja.
 
 > [!NOTE]
 > 
-> A Media Services entitások elérésekor a be kell állítani a HTTP-kérelmekre a meghatározott fejlécmezők és értékek. További információkért lásd: [beállítása a Media Services REST API-k fejlesztését](media-services-rest-how-to-use.md).
+> A Media Servicesban lévő entitásokhoz való hozzáféréskor meg kell adnia a HTTP-kérelmekben megadott fejléc-mezőket és-értékeket. További információ: [Media Services REST API-fejlesztés beállítása](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
+## <a name="connect-to-media-services"></a>Kapcsolódás a Media Serviceshez
 
-Az AMS API-t kapcsolódás információkért lásd: [eléréséhez az Azure Media Services API Azure AD-hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
+További információ az AMS API-hoz való kapcsolódásról: [a Azure Media Services API Azure ad-hitelesítéssel való elérése](media-services-use-aad-auth-to-access-ams-api.md). 
 
-## <a name="clear-asset-delivery-policy"></a>Objektumtovábbítási szabályzat törlése
-### <a id="create_asset_delivery_policy"></a>Objektumtovábbítási szabályzat létrehozása
-A következő HTTP-kérést hoz létre, amelyben megadja, hogy nem alkalmazza a dinamikus titkosítás, hogy az adatfolyam az alábbi protokollok objektumtovábbítási szabályzat:  MPEG DASH, HLS és Smooth Streaming protokollokat. 
+## <a name="clear-asset-delivery-policy"></a>Eszköz kézbesítési házirendjének törlése
+### <a id="create_asset_delivery_policy"></a>Eszköz kézbesítési szabályzatának létrehozása
+A következő HTTP-kérelem létrehoz egy eszköz-kézbesítési házirendet, amely megadja, hogy ne alkalmazza a dinamikus titkosítást, és az adatfolyamot a következő protokollok valamelyikében adja meg: MPEG DASH, HLS és Smooth Streaming protokollok. 
 
-Milyen értékeket is megadhat egy AssetDeliveryPolicy létrehozásakor kapcsolatos tudnivalókat lásd: a [AssetDeliveryPolicy meghatározásakor típusok](#types) szakaszban.   
+A AssetDeliveryPolicy létrehozásakor megadható értékekkel kapcsolatos információkért tekintse meg a [AssetDeliveryPolicy meghatározása szakaszban használt típusokat](#types) .   
 
 Kérés:
 
@@ -120,8 +120,8 @@ Válasz:
     "Created":"2015-02-08T06:21:27.6908329Z",
     "LastModified":"2015-02-08T06:21:27.6908329Z"}
 
-### <a id="link_asset_with_asset_delivery_policy"></a>Az adategység továbbítási házirendjét hivatkozás eszköz
-A következő HTTP-kérelem az adategység továbbítási házirendjét, hogy a megadott eszköz hivatkozik.
+### <a id="link_asset_with_asset_delivery_policy"></a>Eszköz csatolása az eszköz kézbesítési házirendjével
+A következő HTTP-kérelem összekapcsolja a megadott eszközt az eszköz kézbesítési házirendjével.
 
 Kérés:
 
@@ -143,14 +143,14 @@ Válasz:
     HTTP/1.1 204 No Content
 
 
-## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>DynamicEnvelopeEncryption állít be objektumtovábbítási szabályzatot
-### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>A EnvelopeEncryption típusú tartalomkulcs létrehozása és csatolása az eszközhöz
-Objektumtovábbítási szabályzat DynamicEnvelopeEncryption megadásakor ügyeljen arra, hogy az eszköz egy tartalomkulcsot EnvelopeEncryption típusú mutató hivatkozás kell. További információkért lásd: [Tartalomkulcs létrehozása](media-services-rest-create-contentkey.md)).
+## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>DynamicEnvelopeEncryption-eszköz kézbesítési szabályzata
+### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>EnvelopeEncryption-típus tartalmi kulcsának létrehozása és csatolása az eszközhöz
+Az DynamicEnvelopeEncryption kézbesítési házirend megadásakor ügyeljen arra, hogy az eszközt a EnvelopeEncryption típusú tartalom-kulcshoz kapcsolja. További információkért lásd: [tartalmi kulcs létrehozása](media-services-rest-create-contentkey.md)).
 
-### <a id="get_delivery_url"></a>Kézbesítési URL-Címének lekéréséhez
-A kézbesítési URL beolvasása a megadott kézbesítési módszert a tartalom kulcs az előző lépésben létrehozott. Ügyfél használ a visszaadott URL-cím kérése az AES-kulccsal, vagy a PlayReady licenc lejátszási ahhoz a védett tartalomhoz.
+### <a id="get_delivery_url"></a>Kézbesítési URL-cím lekérése
+Szerezze be az előző lépésben létrehozott tartalmi kulcs megadott kézbesítési módjának kézbesítési URL-címét. Az ügyfél a visszaadott URL-cím használatával igényel AES-kulcsot vagy PlayReady-licencet a védett tartalom lejátszásához.
 
-Adja meg az URL-CÍMÉT úgy szerezheti be a HTTP-kérelem törzse a típusát. Ha a védett tartalom PlayReady, a Media Services PlayReady licenc licenckérési URL-cím kérése a keyDeliveryType használja a 1: {"keyDeliveryType": 1}. A boríték-titkosítást tartalom védelme, egy fő licenckérési URL-cím kérése 2 keyDeliveryType megadásával: {"keyDeliveryType": 2}.
+Adja meg a HTTP-kérelem törzsében beolvasni kívánt URL-cím típusát. Ha a tartalmat a PlayReady-mel védi, kérjen egy Media Services PlayReady licenc-beszerzési URL-címet a keyDeliveryType: {"keyDeliveryType": 1}. Ha védi a tartalmat a boríték titkosításával, kérjen meg egy kulcs-beszerzési URL-címet a 2 érték megadásával a következő keyDeliveryType: {"keyDeliveryType": 2}.
 
 Kérés:
 
@@ -185,10 +185,10 @@ Válasz:
     {"odata.metadata":"media.windows.net/api/$metadata#Edm.String","value":"https://amsaccount1.keydelivery.mediaservices.windows.net/?KID=dc88f996-2859-4cf7-a279-c52a9d6b2f04"}
 
 
-### <a name="create-asset-delivery-policy"></a>Objektumtovábbítási szabályzat létrehozása
-A következő HTTP-kérést hoz létre a **AssetDeliveryPolicy** megfelelően van konfigurálva a alkalmazni dinamikus boríték-titkosítást (**DynamicEnvelopeEncryption**), a **HLS** protokoll (ebben a példában egyéb protokollok le lesz tiltva a streaming). 
+### <a name="create-asset-delivery-policy"></a>Eszköz kézbesítési szabályzatának létrehozása
+A következő HTTP-kérelem létrehozza azt a **AssetDeliveryPolicy** , amely a dinamikus Burkológörbe titkosítás (**DynamicEnvelopeEncryption**) a **HLS** protokollra való alkalmazására van konfigurálva (ebben a példában más protokollok is le lesznek tiltva a streamingtől). 
 
-Milyen értékeket is megadhat egy AssetDeliveryPolicy létrehozásakor kapcsolatos tudnivalókat lásd: a [AssetDeliveryPolicy meghatározásakor típusok](#types) szakaszban.   
+A AssetDeliveryPolicy létrehozásakor megadható értékekkel kapcsolatos információkért tekintse meg a [AssetDeliveryPolicy meghatározása szakaszban használt típusokat](#types) .   
 
 Kérés:
 
@@ -226,20 +226,20 @@ Válasz:
     {"odata.metadata":"media.windows.net/api/$metadata#AssetDeliveryPolicies/@Element","Id":"nb:adpid:UUID:ec9b994e-672c-4a5b-8490-a464eeb7964b","Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\\/\"}]","Created":"2015-02-09T05:24:38.9167436Z","LastModified":"2015-02-09T05:24:38.9167436Z"}
 
 
-### <a name="link-asset-with-asset-delivery-policy"></a>Az adategység továbbítási házirendjét hivatkozás eszköz
-Lásd: [hivatkozás eszköz az adategység továbbítási házirendjét](#link_asset_with_asset_delivery_policy)
+### <a name="link-asset-with-asset-delivery-policy"></a>Eszköz csatolása az eszköz kézbesítési házirendjével
+Lásd: [az eszköz csatolása az eszköz kézbesítési házirendjével](#link_asset_with_asset_delivery_policy)
 
-## <a name="dynamiccommonencryption-asset-delivery-policy"></a>DynamicCommonEncryption asset delivery policy
-### <a name="create-content-key-of-the-commonencryption-type-and-link-it-to-the-asset"></a>A CommonEncryption típusú tartalomkulcs létrehozása és csatolása az eszközhöz
-Objektumtovábbítási szabályzat DynamicCommonEncryption megadásakor ügyeljen arra, hogy az eszköz egy tartalomkulcsot CommonEncryption típusú mutató hivatkozás kell. További információkért lásd: [Tartalomkulcs létrehozása](media-services-rest-create-contentkey.md)).
+## <a name="dynamiccommonencryption-asset-delivery-policy"></a>DynamicCommonEncryption-eszköz kézbesítési szabályzata
+### <a name="create-content-key-of-the-commonencryption-type-and-link-it-to-the-asset"></a>CommonEncryption-típus tartalmi kulcsának létrehozása és csatolása az eszközhöz
+Az DynamicCommonEncryption kézbesítési házirend megadásakor ügyeljen arra, hogy az eszközt a CommonEncryption típusú tartalom-kulcshoz kapcsolja. További információkért lásd: [tartalmi kulcs létrehozása](media-services-rest-create-contentkey.md)).
 
-### <a name="get-delivery-url"></a>Kézbesítési URL-Címének lekéréséhez
-URL beolvasása a kézbesítési a PlayReady kézbesítési módszert a tartalom kulcs az előző lépésben létrehozott. Egy ügyfél használja a visszaadott URL-cím kérése érdekében, hogy a védett tartalmak lejátszás PlayReady-licenc. További információkért lásd: [kézbesítési URL-cím lekérése](#get_delivery_url).
+### <a name="get-delivery-url"></a>Kézbesítési URL-cím lekérése
+Szerezze be az előző lépésben létrehozott PlayReady kézbesítési módszer kézbesítési URL-címét. Az ügyfél a visszaadott URL-cím használatával PlayReady-licencet kér le a védett tartalom lejátszásához. További információ: [kézbesítési URL-cím beolvasása](#get_delivery_url).
 
-### <a name="create-asset-delivery-policy"></a>Objektumtovábbítási szabályzat létrehozása
-A következő HTTP-kérést hoz létre a **AssetDeliveryPolicy** megfelelően van konfigurálva a alkalmazni a dynamic common encryption (**DynamicCommonEncryption**), a **Smooth Streaming**protokoll (ebben a példában egyéb protokollok le lesz tiltva a streaming). 
+### <a name="create-asset-delivery-policy"></a>Eszköz kézbesítési szabályzatának létrehozása
+A következő HTTP-kérelem létrehozza azt a **AssetDeliveryPolicy** , amely a dinamikus közös titkosítás (**DynamicCommonEncryption**) alkalmazására van konfigurálva a **Smooth streaming** protokollra (ebben a példában a többi protokoll le lesz tiltva a streamingtől). 
 
-Milyen értékeket is megadhat egy AssetDeliveryPolicy létrehozásakor kapcsolatos tudnivalókat lásd: a [AssetDeliveryPolicy meghatározásakor típusok](#types) szakaszban.   
+A AssetDeliveryPolicy létrehozásakor megadható értékekkel kapcsolatos információkért tekintse meg a [AssetDeliveryPolicy meghatározása szakaszban használt típusokat](#types) .   
 
 Kérés:
 
@@ -258,25 +258,25 @@ Kérés:
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-Ha a tartalom a Widevine DRM-mel védeni kívánt, frissítse a AssetDeliveryConfiguration WidevineLicenseAcquisitionUrl (amely 7 érték szerepel-e) használata, és adja meg az URL-címét egy szolgáltatásra vonatkozó. Widevine-licencek biztosításához a következő AMS-partnereket is használja: [Az Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
+Ha a tartalmat a Widevine DRM használatával szeretné védelemmel ellátni, frissítse a AssetDeliveryConfiguration-értékeket a WidevineLicenseAcquisitionUrl használatára (amelynek értéke 7), és adja meg a licenc kézbesítési szolgáltatásának URL-címét. Az alábbi AMS-partnerek segítségével Widevine-licenceket biztosíthat: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
 
 Példa: 
 
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":7,\"Value\":\"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}
 
 > [!NOTE]
-> A Widevine titkosításakor csak tudná DASH segítségével. Győződjön meg arról, ha meg szeretné adni az objektumtovábbítási protokoll DASH (2).
+> A Widevine-mel történő titkosításkor csak a kötőjel használatával lehet kézbesíteni. Ügyeljen arra, hogy az eszköz kézbesítési protokolljában a kötőjel (2) legyen megadva.
 > 
 > 
 
-### <a name="link-asset-with-asset-delivery-policy"></a>Az adategység továbbítási házirendjét hivatkozás eszköz
-Lásd: [hivatkozás eszköz az adategység továbbítási házirendjét](#link_asset_with_asset_delivery_policy)
+### <a name="link-asset-with-asset-delivery-policy"></a>Eszköz csatolása az eszköz kézbesítési házirendjével
+Lásd: [az eszköz csatolása az eszköz kézbesítési házirendjével](#link_asset_with_asset_delivery_policy)
 
-## <a id="types"></a>AssetDeliveryPolicy meghatározásakor típusok
+## <a id="types"></a>A AssetDeliveryPolicy definiálásához használt típusok
 
 ### <a name="assetdeliveryprotocol"></a>AssetDeliveryProtocol
 
-A következő felsorolás ismerteti értékeket adhatja meg az objektumtovábbítási protokoll.
+Az alábbi felsorolás az eszköz kézbesítési protokolljában beállítható értékeket ismerteti.
 
     [Flags]
     public enum AssetDeliveryProtocol
@@ -311,7 +311,7 @@ A következő felsorolás ismerteti értékeket adhatja meg az objektumtovábbí
 
 ### <a name="assetdeliverypolicytype"></a>AssetDeliveryPolicyType
 
-A következő felsorolás ismerteti értékeket is megadhatja a kézbesítési szabályzat típusú eszközök esetén.  
+Az alábbi felsorolás az eszköz kézbesítési házirendjének típusához beállítható értékeket ismerteti.  
 
     public enum AssetDeliveryPolicyType
     {
@@ -344,7 +344,7 @@ A következő felsorolás ismerteti értékeket is megadhatja a kézbesítési s
 
 ### <a name="contentkeydeliverytype"></a>ContentKeyDeliveryType
 
-A következő felsorolás ismerteti segítségével konfigurálja a kézbesítési módszert az ügyfél a tartalom kulcs értékeket.
+A következő felsorolás azokat az értékeket ismerteti, amelyekkel konfigurálhatja a tartalmi kulcs kézbesítési módszerét az ügyfélre.
     
     public enum ContentKeyDeliveryType
     {
@@ -377,7 +377,7 @@ A következő felsorolás ismerteti segítségével konfigurálja a kézbesíté
 
 ### <a name="assetdeliverypolicyconfigurationkey"></a>AssetDeliveryPolicyConfigurationKey
 
-A következő felsorolás ismerteti konfigurálása olvashatók be objektumtovábbítási szabályzat a konkrét konfigurációs kulcsokat és megadható értékeket.
+Az alábbi felsorolás azokat az értékeket írja le, amelyekkel konfigurálhatja az eszközök kézbesítési házirendjének adott konfigurációjának beolvasásához használt kulcsokat.
 
     public enum AssetDeliveryPolicyConfigurationKey
     {
@@ -421,6 +421,10 @@ A következő felsorolás ismerteti konfigurálása olvashatók be objektumtová
         /// </summary>
         WidevineLicenseAcquisitionUrl
     }
+
+## <a name="additional-notes"></a>További megjegyzések
+
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,5 +1,5 @@
 ---
-title: Bevezetés az iOS és a macOS használatába – Microsoft Identity platform | Azure
+title: Ismerkedés az iOS & macOS rendszerrel – Microsoft Identity platform | Azure
 description: IOS-és macOS-(Swift-) alkalmazások hívhatnak olyan API-t, amely hozzáférési jogkivonatokat igényel a Microsoft Identity platform használatával
 services: active-directory
 documentationcenter: dev-center-name
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e3892a03ffe097a51f294e698168f00e1359f92
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 64f161d94d622ae76932e88be52df6f068bfc945
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960663"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964668"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Bejelentkezés a felhasználókba és a Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból
 
@@ -111,7 +111,7 @@ iOS:
 carthage update --platform iOS
 ```
 
-macOS:
+MacOS
 
 ```bash
 carthage update --platform macOS
@@ -296,7 +296,7 @@ Ezután a `ViewController` osztályon belül is cserélje le a `viewDidLoad()` m
 
 ## <a name="use-msal"></a>MSAL használata
 
-### <a name="initialize-msal"></a>Initialize MSAL
+### <a name="initialize-msal"></a>MSAL inicializálása
 
 Adja hozzá a következő `initMSAL` metódust a `ViewController` osztályhoz:
 
@@ -649,7 +649,7 @@ Amikor a felhasználó először jelentkezik be az alkalmazásba, a Microsoft Id
 
 A bejelentkezést követően az alkalmazás megjeleníti a Microsoft Graph `/me` végpont által visszaadott adatok megjelenítését.
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség
 
 Ha problémája van az Oktatóanyaggal vagy a Microsoft Identity platformmal, látogasson el a [Súgó és támogatás](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) webhelyre.
 

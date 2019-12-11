@@ -1,8 +1,8 @@
 ---
-title: Az offline streamelési Widevine védett tartalom – Azure-fiók konfigurálása
-description: Ez a témakör bemutatja, hogyan konfigurálhatja az Azure Media Services-fiók védett Widevine streameléshez offline tartalom.
+title: Fiók konfigurálása a Widevine által védett tartalom offline folyamatos átviteléhez – Azure
+description: Ez a témakör bemutatja, hogyan konfigurálhatja a Azure Media Services-fiókját a Widevine által védett tartalmak offline folyamatos átviteléhez.
 services: media-services
-keywords: DASH, DRM, Widevine ExoPlayer, a kapcsolat nélküli módban Android
+keywords: DASH, DRM, Widevine offline üzemmód, ExoPlayer, Android
 documentationcenter: ''
 author: willzhan
 manager: steveng
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 9e90951f810c5101a46c29570af8ad71b42be637
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1c1142f995376a8a640f33402294e20c925bbfbb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341017"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974155"
 ---
-# <a name="offline-widevine-streaming-for-android"></a>Offline Widevine androidhoz streaming
+# <a name="offline-widevine-streaming-for-android"></a>Offline Widevine streaming Android rendszerhez
 
-Online streamelés tartalmának védelme, mellett a multimédiás tartalom előfizetés és a bérleti szolgáltatások ajánlat letölthető tartalom, amely akkor működik, ha nem csatlakoznak az internethez. Szüksége lehet letölteni a tartalmat a telefon az alakzatot vagy lejátszható repülőgépes módra, amikor hajózó a tábla nem kapcsolódik a hálózathoz. További forgatókönyvek, ahol érdemes letölteni a tartalmat:
+Az online streaming-tartalmak védelme mellett a Media Content előfizetés és a Rental Services olyan letölthető tartalmakat is kínál, amelyek akkor működnek, ha nem csatlakozik az internethez. Előfordulhat, hogy a hálózati kapcsolat megszakadása esetén a tartalmat le kell töltenie a telefonra vagy a Tablet-ra. További forgatókönyvek, amelyekben előfordulhat, hogy le szeretné tölteni a tartalmat:
 
-- Néhány tartalomszolgáltatók előfordulhat, hogy ne engedélyezze a DRM-licenckézbesítés túl egy adott ország/régió szegély. Ha a felhasználó szeretné, tekintse meg a tartalom külföldön utazás közben, offline letöltési van szükség.
-- Egyes országokban/régiókban Internet rendelkezésre állási és/vagy a sávszélesség korlátozva. Előfordulhat, hogy a felhasználók megadhatják tudja, hogy megtekintse a megfelelő engedélymegtekintési elég nagy felbontású tartalmat töltenek le.
+- Egyes tartalomszolgáltatók nem engedélyezhetik az ország/régió szegélyén túli DRM-licencek kézbesítését. Ha a felhasználó a külföldön való utazás közben szeretné megtekinteni a tartalmat, offline letöltésre van szükség.
+- Egyes országokban/régiókban az Internet rendelkezésre állása és/vagy sávszélessége korlátozott. A felhasználók úgy dönthetnek, hogy letöltik a tartalmat, hogy elég nagy felbontásban tudják megtekinteni a megfelelő megjelenítési élményt.
 
-Ez a cikk ismerteti, hogyan valósíthat meg a kapcsolat nélküli módban lejátszás DASH tartalom Widevine védi az Android-eszközökön. A kapcsolat nélküli DRM lehetővé teszi, hogy adja meg az előfizetés, bérbeadás és beszerzési modelleket a tartalom, így az ügyfelek a szolgáltatások egyszerűen igénybe a tartalmat a őket, ha az internethez csatlakozik.
+Ez a cikk azt ismerteti, hogyan lehet az Android-eszközökön a Widevine által védett DASH-tartalmak offline módú lejátszását megvalósítani. Az offline DRM lehetővé teszi, hogy előfizetést, bérletet és vásárlási modelleket biztosítson a tartalomhoz, és lehetővé teszi a szolgáltatások ügyfelei számára, hogy az internetről való leválasztáskor könnyedén fogadják a tartalmakat.
 
-Az Android-lejátszó alkalmazások készítéséhez, hogy szerkezeti három beállítások:
+Az androidos lejátszó alkalmazások létrehozásához három lehetőség áll rendelkezésre:
 
 > [!div class="checklist"]
-> * A lejátszó SDK-val Java API-ExoPlayer összeállítása
-> * A player ExoPlayer SDK Xamarin-kötés használatával hozhat létre
-> * Egy titkosított adathordozó-bővítmény (EME) és a Media forrás bővítmény (MSE) használatával, a Chrome mobilböngészőben v62 vagy újabb verziójú player létrehozása
+> * A ExoPlayer SDK Java API-ját használó játékosok létrehozása
+> * A ExoPlayer SDK Xamarin-kötését használó lejátszó létrehozása
+> * Lejátszó létrehozása titkosított Media Extension (EME) és Media Source Extension (MSE) használatával a Chrome Mobile Browser v62 vagy újabb verziójában
 
-A cikket is offline streamelési Widevine védett tartalom kapcsolatos gyakori kérdésekre ad választ.
+A cikk a Widevine által védett tartalom offline adatfolyamával kapcsolatos gyakori kérdésekre is választ ad.
 
 > [!NOTE]
-> Kapcsolat nélküli DRM csak történik, hogy egyetlen kér licencet a tartalom letöltésekor. A szükségtelen díjak az esetleges hibákat.
+> Az offline DRM-t csak akkor számítjuk fel, ha egy licencre vonatkozó kérést készítenek a tartalom letöltésekor. A hibák számlázása nem történik meg.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Mielőtt Widevine offline DRM végrehajtása Android-eszközökön, akkor először:
+Mielőtt offline DRM-t implementál a Widevine Android-eszközökön, először a következőket kell tennie:
 
-- Alaposabban megismerheti a használata a Widevine DRM-mel online content protection bemutatott fogalmakkal. Ez az a következő dokumentumok minták részletesen ismertetett:
+- Ismerkedjen meg az online tartalomvédelem Widevine DRM használatával bevezetett fogalmakkal. Ezt részletesen a következő dokumentumok/minták tartalmazzák:
     - [Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](design-multi-drm-system-with-access-control.md)
-    - [DRM a dinamikus titkosítás és a licenc kézbesítési szolgáltatás használata](protect-with-drm.md)
-- Klónozás https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git.
+    - [A DRM dinamikus titkosítási és licenctovábbítási szolgáltatás használata](protect-with-drm.md)
+- https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git klónozása.
 
-    Módosítsa a kódot kell [titkosítása a .NET használatával DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) Widevine konfigurációk hozzáadása.  
-- Megismerkedhet a Google ExoPlayer SDK-val Android-egy nyílt forráskódú videólejátszó SDK offline Widevine DRM-mel lejátszási támogathatja. 
+    A Widevine-konfigurációk hozzáadásához módosítania kell a kódot a [DRM-titkosítással a .NET használatával](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) .  
+- Ismerkedjen meg az Androidhoz készült Google ExoPlayer SDK-val, amely az offline Widevine DRM-lejátszást támogató nyílt forráskódú videolejátszó SDK-t támogatja. 
     - [ExoPlayer SDK](https://github.com/google/ExoPlayer)
     - [ExoPlayer fejlesztői útmutató](https://google.github.io/ExoPlayer/guide.html)
-    - [EoPlayer fejlesztői Blog](https://medium.com/google-exoplayer)
+    - [EoPlayer fejlesztői blog](https://medium.com/google-exoplayer)
 
-## <a name="configure-content-protection-in-azure-media-services"></a>A tartalomvédelem konfigurálása az Azure Media Servicesben
+## <a name="configure-content-protection-in-azure-media-services"></a>Tartalomvédelem konfigurálása a Azure Media Servicesban
 
-Az a [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L189) metódus, a következő szükséges lépéseket találhatók:
+A [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L189) metódusban a következő szükséges lépések jelennek meg:
 
-1. Adja meg, hogyan tartalom kulcskézbesítési engedélyezve van a a licenctovábbítási szolgáltatása: 
+1. Annak meghatározása, hogyan legyen engedélyezve a tartalmi kulcs kézbesítése a licenc kézbesítési szolgáltatásában: 
 
     ```csharp
     ContentKeyPolicySymmetricTokenKey primaryKey = new ContentKeyPolicySymmetricTokenKey(tokenSigningKey);
@@ -73,13 +73,13 @@ Az a [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-s
     ContentKeyPolicyTokenRestriction restriction 
         = new ContentKeyPolicyTokenRestriction(Issuer, Audience, primaryKey, ContentKeyPolicyRestrictionTokenType.Jwt, alternateKeys, requiredClaims);
     ```
-2. Widevine-licencsablon konfigurálása:  
+2. Widevine-licenc sablonjának konfigurálása:  
 
     ```csharp
     ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
     ```
 
-3. Create ContentKeyPolicyOptions:
+3. ContentKeyPolicyOptions létrehozása:
 
     ```csharp
     options.Add(
@@ -90,125 +90,129 @@ Az a [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-s
         });
     ```
 
-## <a name="enable-offline-mode"></a>Offline üzemmód engedélyezése
+## <a name="enable-offline-mode"></a>Offline mód engedélyezése
 
-Ahhoz, hogy **offline** mód a Widevine-licencek, konfigurálnia kell [Widevine-licencsablon](widevine-license-template-overview.md). Az a **policy_overrides** objektumazonosító, állítsa be a **can_persist** tulajdonságot **igaz** (az alapértelmezett érték FALSE (hamis)), ahogyan [ConfigureWidevineLicenseTempate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563). 
+A Widevine-licencek **Offline** módjának engedélyezéséhez konfigurálnia kell a [Widevine-licenc sablonját](widevine-license-template-overview.md). A **policy_overrides** objektumban állítsa **igaz** értékre a **can_persist** tulajdonságot (az alapértelmezett érték a False), ahogyan az a [ConfigureWidevineLicenseTempateben](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563)látható. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#ConfigureWidevineLicenseTempate)]
 
-## <a name="configuring-the-android-player-for-offline-playback"></a>A kapcsolat nélküli lejátszás céljából Android player konfigurálása
+## <a name="configuring-the-android-player-for-offline-playback"></a>Az Android-lejátszó konfigurálása offline lejátszáshoz
 
-Android-eszközök esetén a natív lejátszó alkalmazások fejlesztése a legegyszerűbb módja az, hogy használja a [Google ExoPlayer SDK](https://github.com/google/ExoPlayer), egy videó lejátszási nyílt forráskódú SDK-t. ExoPlayer támogatja az Android a natív Media Player API-t, beleértve a Microsoft Smooth Streaming és MPEG-dash PROTOKOLLHOZ a kézbesítési protokollra által jelenleg nem támogatott szolgáltatásokat.
+Az Android-eszközökhöz készült natív alkalmazások fejlesztésének legegyszerűbb módja, ha a [Google EXOPLAYER SDK](https://github.com/google/ExoPlayer)-t, egy nyílt forráskódú videolejátszó SDK-t használja. A ExoPlayer az Android natív Media Player API-ját jelenleg nem támogató funkciókat támogatja, beleértve az MPEG-DASH és a Microsoft Smooth Streaming kézbesítési protokollokat.
 
-ExoPlayer 2.6-os vagy újabb verzió, amelyek támogatják az offline Widevine DRM-mel lejátszási sok osztály tartalmazza. Ilyen például a OfflineLicenseHelper osztály megkönnyítése érdekében a DefaultDrmSessionManager letöltésével, megújítása és felszabadítása offline licencek használatát segédprogram funkciókat biztosít a. Az SDK mappából a megadott osztályokat "könyvtár/core/src/main/java/com/google/android/exoplayer2/offline /" támogatja az offline videó tartalom letöltése.
+A ExoPlayer 2,6-es és újabb verziója számos olyan osztályt tartalmaz, amelyek támogatják az offline Widevine DRM lejátszását. A OfflineLicenseHelper osztály olyan segédprogram-funkciókat biztosít, amelyek megkönnyítik a DefaultDrmSessionManager használatát az offline licencek letöltéséhez, megújításához és felszabadításához. A "Library/Core/src/Main/Java/com/Google/Android/exoplayer2/offline/" SDK mappában megadott osztályok támogatják az offline videotartalom letöltését.
 
-Az alábbi listában szereplő osztályok elősegíti a kapcsolat nélküli módban ExoPlayer Androidhoz készült SDK-ban:
+Az alábbi osztályok az Androidhoz készült ExoPlayer SDK-ban az offline üzemmódot teszik lehetővé:
 
-- library/core/src/main/java/com/google/android/exoplayer2/drm/OfflineLicenseHelper.java  
-- library/core/src/main/java/com/google/android/exoplayer2/drm/DefaultDrmSession.java
-- library/core/src/main/java/com/google/android/exoplayer2/drm/DefaultDrmSessionManager.java
-- library/core/src/main/java/com/google/android/exoplayer2/drm/DrmSession.java
-- library/core/src/main/java/com/google/android/exoplayer2/drm/ErrorStateDrmSession.java
-- library/core/src/main/java/com/google/android/exoplayer2/drm/ExoMediaDrm.java
-- library/core/src/main/java/com/google/android/exoplayer2/offline/SegmentDownloader.java
-- library/core/src/main/java/com/google/android/exoplayer2/offline/DownloaderConstructorHelper.java 
-- library/core/src/main/java/com/google/android/exoplayer2/offline/Downloader.java
-- library/dash/src/main/java/com/google/android/exoplayer2/source/dash/offline/DashDownloader.java 
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/OfflineLicenseHelper. Java  
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/DefaultDrmSession. Java
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/DefaultDrmSessionManager. Java
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/DrmSession. Java
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/ErrorStateDrmSession. Java
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/ExoMediaDrm. Java
+- könyvtár/mag/src/Main/Java/com/Google/Android/exoplayer2/offline/SegmentDownloader. Java
+- könyvtár/mag/src/Main/Java/com/Google/Android/exoplayer2/offline/DownloaderConstructorHelper. Java 
+- könyvtár/mag/src/Main/Java/com/Google/Android/exoplayer2/offline/Downloader. Java
+- könyvtár/kötőjel/src/Main/Java/com/Google/Android/exoplayer2/Source/Dash/offline/DashDownloader. Java 
 
-A fejlesztők kell hivatkoznia a [ExoPlayer fejlesztői útmutató](https://google.github.io/ExoPlayer/guide.html) és a megfelelő [fejlesztői Blog](https://medium.com/google-exoplayer) -alkalmazások fejlesztése során. Google nem jelent meg egy teljes körű dokumentációval rendelkező referencia megvalósítása vagy minta kódot támogató jelenleg Widevine offline, így az adatokat a fejlesztők számára az útmutató és blog ExoPlayer alkalmazás. 
+Az alkalmazások fejlesztése során a fejlesztőknek hivatkoznia kell a [ExoPlayer fejlesztői útmutatóra](https://google.github.io/ExoPlayer/guide.html) és a megfelelő [fejlesztői blogra](https://medium.com/google-exoplayer) . A Google nem bocsátott ki teljes körűen dokumentált referenciát a ExoPlayer alkalmazáshoz, amely jelenleg a Widevine-et támogatja, így az információk a fejlesztői útmutatóra és blogra korlátozódnak. 
 
-### <a name="working-with-older-android-devices"></a>Régebbi Android-eszközök használata
+### <a name="working-with-older-android-devices"></a>A régebbi androidos eszközök használata
 
-Egyes régebbi Android-eszközön újra be kell állítani a következő értékek **policy_overrides** tulajdonságok (meghatározott [Widevine-licencsablon](widevine-license-template-overview.md): **rental_duration_seconds**, **playback_duration_seconds**, és **license_duration_seconds**. Másik lehetőségként beállíthatja őket nulla, ami azt jelenti, hogy a végtelen vagy határozatlan időre szól.  
+Egyes régebbi Android-eszközök esetén a következő **policy_overrides** tulajdonságok értékeit kell megadnia ( [Widevine-licenc sablonban](widevine-license-template-overview.md)definiálva: **rental_duration_seconds**, **playback_duration_seconds**és **license_duration_seconds**. Azt is megteheti, hogy nullára állítja őket, ami végtelen/korlátlan időtartamot jelent.  
 
-Egy egész túlcsordulási hiba elkerülése érdekében állítson be az értékeket. A problémáról további ismertetése: https://github.com/google/ExoPlayer/issues/3150 és https://github.com/google/ExoPlayer/issues/3112. <br/>Ha az értékek nem meg explicit módon, a nagyon nagy értékeket **PlaybackDurationRemaining** és **LicenseDurationRemaining** hozzá lesz rendelve, (például 9223372036854775807, amely a legnagyobb egy 64 bites egész szám pozitív érték). Ennek eredményeképpen a Widevine-licenc lejárt jelenik meg, és ezért nem történik a titkosítást. 
+Az értékeket úgy kell beállítani, hogy elkerülje az egész túlcsordulási hibát. A probléma részletes ismertetését lásd: https://github.com/google/ExoPlayer/issues/3150 és https://github.com/google/ExoPlayer/issues/3112. <br/>Ha nem adja meg explicit módon az értékeket, a **PlaybackDurationRemaining** és a **LicenseDurationRemaining** nagyon nagy érték lesz hozzárendelve (például 9223372036854775807, amely a 64 bites egész szám maximális pozitív értéke). Ennek eredményeképpen a Widevine-licenc lejárt, ezért a visszafejtés nem fog történni. 
 
-Ez a probléma jelentkezik az Android 5.0 Lollipop és újabb, mivel az Android 5.0-s az első Androidos verziója, amely teljes körű támogatásához ARMv8 úgy lett kialakítva ([Advanced RISC Machine](https://en.wikipedia.org/wiki/ARM_architecture)) és 64 bites rendszerek, az Android 4.4-es KitKat közben eredetileg készült ARMv7 és 32 bites platformon az egyéb régebbi verziók támogatása.
+Ez a probléma az Android 5,0-es vagy újabb verziójában nem fordul elő, mivel az Android 5,0 az első Android-verzió, amelyet a ARMv8 ([Advanced RISC Machine](https://en.wikipedia.org/wiki/ARM_architecture)) és a 64 bites platform teljes körű támogatására terveztek, míg az Android 4,4 KitKat eredetileg a ARMv7 és a 32-bites platformok támogatásához lett tervezve, más régebbi Android-verziókhoz hasonlóan.
 
-## <a name="using-xamarin-to-build-an-android-playback-app"></a>A Xamarin segítségével Android lejátszási alkalmazás készítése
+## <a name="using-xamarin-to-build-an-android-playback-app"></a>Androidos lejátszási alkalmazás létrehozása a Xamarin használatával
 
-Xamarin-kötések a ExoPlayer találja meg a következő hivatkozásokkal:
+A ExoPlayer Xamarin-kötéseit az alábbi hivatkozásokkal érheti el:
 
-- [A Google ExoPlayer szalagtár Xamarin-kötések klienskódtár](https://github.com/martijn00/ExoPlayerXamarin)
-- [Xamarin-kötések a ExoPlayer NuGet](https://www.nuget.org/packages/Xam.Plugins.Android.ExoPlayer/)
+- [Xamarin-kötések könyvtára a Google ExoPlayer könyvtárához](https://github.com/martijn00/ExoPlayerXamarin)
+- [Xamarin-kötések a ExoPlayer-NuGet](https://www.nuget.org/packages/Xam.Plugins.Android.ExoPlayer/)
 
-Lásd még a következő szálat: [Xamarin-kötés](https://github.com/martijn00/ExoPlayerXamarin/pull/57). 
+Továbbá tekintse meg a következő szálat: [Xamarin-kötés](https://github.com/martijn00/ExoPlayerXamarin/pull/57). 
 
-## <a name="chrome-player-apps-for-android"></a>Androidhoz készült Chrome-lejátszó alkalmazások
+## <a name="chrome-player-apps-for-android"></a>Chrome Player-alkalmazások Android rendszerhez
 
-A kiadásával kezdődően [Chrome Android v. 62](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates), állandó EME-licencek használata támogatott. [Widevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) most is támogatott a Chrome-ban Android. Ez lehetővé teszi, hogy offline lejátszási alkalmazások létrehozása a Chrome-ban, ha a végfelhasználók számára ez (vagy újabb) verziója a Chrome-ban. 
+A [Chrome for Android v. 62](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates)verziójának megjelenése után a rendszer támogatja az állandó licencet az eme-ben. Az [Widevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) mostantól az Androidhoz készült Chrome-ban is támogatott. Ez lehetővé teszi offline lejátszási alkalmazások létrehozását a Chrome-ban, ha a végfelhasználók a Chrome ezen (vagy újabb) verzióját használja. 
 
-Emellett a Google rendelkezik fokozatos Web App (PWA) minta előállított és nyílt forráskódú: 
+Emellett a Google létrehozta a progresszív Web App-(PWA-) mintát és a nyílt forráskódú IT-t: 
 
 - [Forráskód](https://github.com/GoogleChromeLabs/sample-media-pwa)
-- [Google üzemeltetett verzió](https://biograf-155113.appspot.com/ttt/episode-2/) (csak a Chrome v 62 vagy újabb Android-eszközökön működik)
+- A [Google által üzemeltetett verzió](https://biograf-155113.appspot.com/ttt/episode-2/) (csak a Chrome v 62-es és újabb verzióiban működik Android-eszközökön)
 
-Ha frissít a mobil Chrome böngészőt v62 (vagy magasabb) egy Android telefont és tesztelés az a fenti üzemeltetett mintaalkalmazást, látni fogja, hogy működik is online streamelés és offline lejátszási.
+Ha Android-telefonon frissíti a Mobile Chrome böngészőt a v62 (vagy újabb verzióra), és teszteli a fent üzemeltetett minta alkalmazást, látni fogja, hogy az online streaming és az offline lejátszás is működik-e.
 
-A fenti nyílt forráskódú PWA alkalmazás hozta létre a node.js-ben. Ha szeretné a saját verziója egy Ubuntu Servert futtatni, vegye figyelembe a következő gyakori észlelt problémák, amelyek megakadályozhatják a lejátszás:
+A fenti nyílt forráskódú PWA alkalmazás a Node. js-ben lett létrehozva. Ha Ubuntu-kiszolgálón szeretné üzemeltetni a saját verzióját, vegye figyelembe a következő gyakori problémákat, amelyek megakadályozhatják a lejátszást:
 
-1. CORS-hiba: A videó a mintaalkalmazás minta üzemeltetett https://storage.googleapis.com/biograf-video-files/videos/. Google állított be a CORS minden, a Google Cloud Storage gyűjtőben lévő üzemeltetett teszt minták. Ezek a szolgálja ki a CORS fejlécek, explicit módon a CORS-bejegyzés megadása: https://biograf-155113.appspot.com (a tartomány melyik google-beli üzemelteti a minta) megakadályozza a hozzáférést a többi webhelyhez sem. Ha megpróbál, látni fogja a következő HTTP-hiba: Nem sikerült betölteni a https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: nincs "Access-Control-Allow-Origin" fejléc nem található a kért erőforrás. Forrás "https:\//13.85.80.81:8080" hozzáférés ezért nem engedélyezett. Ha egy nem átlátszó választ szolgálja ki az igényeinek, "no-cors" beolvasni az erőforrás le van tiltva cors-támogatással rendelkező a kérelem módjának beállítása.
-2. A tanúsítvány kiadása: Kezdet: Chrome v 58, a Widevine az EME HTTPS van szüksége. Ezért a mintaalkalmazás futtatásához egy X509 a HTTPS-kapcsolaton keresztül kell tanúsítványt. Az alábbi követelmények miatt nem működik a szokásos tesztelési tanúsítvány: Be kell szereznie egy tanúsítványt a következő minimális rendszerkövetelményeknek megfelelő:
-    - A Chrome és a Firefox SAN-tulajdonos alternatív neve beállítást a tanúsítvány léteznie kell
-    - Kell a tanúsítvány megbízható hitelesítésszolgáltató és a egy önaláírt fejlesztési tanúsítvány nem működik.
-    - A tanúsítvány CN-nevének a DNS-név a webalkalmazás-kiszolgáló vagy átjáró kell rendelkeznie.
+1. CORS probléma: a minta alkalmazásban található minta videó https://storage.googleapis.com/biograf-video-files/videos/ található. A Google CORS állított be a Google Cloud Storage-gyűjtőben üzemeltetett összes tesztelési mintához. Ezek a CORS-fejlécekkel rendelkeznek, explicit módon megadják a CORS bejegyzést: https://biograf-155113.appspot.com (az a tartomány, amelyben a Google a mintát tárolja) megakadályozza a hozzáférést bármely más hely számára. Ha próbálkozik, a következő HTTP-hiba jelenik meg: nem sikerült https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: betölteni a (z) "hozzáférés-vezérlés – engedélyezés – forrás" fejlécet a kért erőforráson. A (z) "https:\//13.85.80.81:8080" forrás ezért nem engedélyezett a hozzáféréshez. Ha egy átlátszatlan válasz az igényét szolgálja, állítsa a kérést "No-CORS" értékre, hogy letiltsa az erőforrást a CORS letiltásával.
+2. Tanúsítványra vonatkozó probléma: a Chrome v 58-től kezdődően a Widevine-hez szükséges, HTTPS-t igényel. Ezért a minta alkalmazást HTTPS-en keresztül kell üzemeltetni egy X509-tanúsítvánnyal. A szokásos tesztelési tanúsítvány a következő követelmények miatt nem működik: be kell szereznie egy tanúsítványt, amely megfelel a következő minimális követelményeknek:
+    - A Chrome és a Firefox megköveteli, hogy a tanúsítványban létezik a SAN-tulajdonos alternatív neve beállítás
+    - A tanúsítványnak megbízható HITELESÍTÉSSZOLGÁLTATÓval kell rendelkeznie, és az önaláírt fejlesztési tanúsítvány nem működik.
+    - A tanúsítványnak rendelkeznie kell egy, a webkiszolgáló vagy az átjáró DNS-nevével egyező KN-névvel.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 ### <a name="question"></a>Kérdés
 
-Hogyan juttathat az állandó licencek (offline-kompatibilis) az egyes ügyfelek és felhasználói számára, és mások számára nem állandó licencek (offline letiltva)? Kell külön tartalomkulcsot, és a tartalom ismétlődő?
+Hogyan biztosíthatok állandó licenceket (kapcsolat nélküli üzemmódban) egyes ügyfelekhez/felhasználókhoz és nem állandó licencekhez (offline – letiltva) mások számára? Duplikálni kell a tartalmat, és külön tartalmi kulcsot kell használnia?
 
 ### <a name="answer"></a>Válasz
-Mivel a Media Services v3 lehetővé teszi, hogy egy eszköz több StreamingLocators rendelkeznie. Rendelkezhet
+Mivel a Media Services v3 lehetővé teszi, hogy az eszközök több StreamingLocators is rendelkezzenek. Lehetősége van
 
-1.  A license_type egy ContentKeyPolicy = "állandó", "állandó" a jogcím-ContentKeyPolicyRestriction, és annak StreamingLocator;
-2.  Egy másik ContentKeyPolicy a license_type = "nonpersistent", "nonpersistent" a jogcím-ContentKeyPolicyRestriction és annak StreamingLocator.
-3.  A két StreamingLocators különböző ContentKey rendelkezik.
+1.  Egy ContentKeyPolicy, amely license_type = "állandó", az "állandó" ContentKeyPolicyRestriction és a StreamingLocator;
+2.  Egy másik ContentKeyPolicy, amely license_type = "nem állandó", a "nem állandó" értékű ContentKeyPolicyRestriction és a StreamingLocator.
+3.  A két StreamingLocators eltérő ContentKey rendelkezik.
 
-Üzleti logikát az egyéni STS, attól függően a különböző jogcímek a JWT jogkivonat kiadása. A jogkivonattal a csak a megfelelő licenc szerezhető be, és csak a megfelelő URL-cím lejátszhatók.
+Az egyéni STS üzleti logikától függően a rendszer különböző jogcímeket ad ki a JWT-jogkivonatban. A jogkivonattal csak a megfelelő licenc szerezhető be, és csak a megfelelő URL-cím játszható le.
 
 ### <a name="question"></a>Kérdés
 
-A Widevine biztonsági szintek, a Google [Widevine DRM-architektúra áttekintése doc](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) dokumentáció, három különböző biztonsági szintet határoz meg. Azonban a [Azure Media Services dokumentációja a Widevine-licencsablon](widevine-license-template-overview.md), vázolt öt különböző biztonsági szintet. Mi a kapcsolat vagy a két különböző eljáráscsoport biztonsági szintek közötti leképezést?
+A Widevine biztonsági szintjeinek a Google [WIDEVINE DRM-architektúra áttekintés](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) dokumentációjában három különböző biztonsági szintet határoz meg. A Widevine- [licenc sablonjának Azure Media Services dokumentációjában](widevine-license-template-overview.md)azonban öt különböző biztonsági szint látható. Mi a kapcsolat vagy a leképezés két különböző biztonsági szint között?
 
 ### <a name="answer"></a>Válasz
 
-A Google [Widevine DRM-architektúra áttekintése](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf), azt határozza meg a következő három biztonsági szintek:
+A Google [WIDEVINE DRM-architektúrájának áttekintése](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)a következő három biztonsági szintet határozza meg:
 
-1.  1\. biztonsági szint: Az összes tartalom feldolgozása, titkosítás és vezérlés belül a megbízható végrehajtási környezetben (TEE) történik. Néhány megvalósítás modellekben biztonsági feldolgozási hajtható végre a különböző lapkák.
-2.  2\. biztonsági szint: Titkosítás (de nem Videofeldolgozás) végez a TEE belül: visszafejtett pufferek alkalmazás tartományhoz adja vissza, és külön videó hardver vagy szoftver keresztül. 2\. szintű azonban titkosítási információk feldolgozása van csak a TEE belül.
-3.  3\. biztonsági szint nem rendelkezik egy TEE az eszközön. Megfelelő intézkedéseket előfordulhat, hogy a titkosítási adatokat és a gazdagép operációs rendszere a visszafejtett tartalom védelme érdekében. A 3. szint megvalósítás is tartalmazhat egy hardveres titkosítási motor, de, amely csak növeli a teljesítményt, nem biztonsági.
+1.  1\. biztonsági szint: a rendszer az összes tartalom feldolgozását, titkosítását és ellenőrzését a megbízható végrehajtási környezetben (TEE) hajtja végre. Egyes implementációs modellekben a biztonsági feldolgozás különböző chipeken végezhető el.
+2.  2\. biztonsági szint: titkosítás (de nem a videó feldolgozása) végrehajtása a PÓLÓn belül: a visszafejtett pufferek visszakerülnek az alkalmazás-tartományba, és külön videó hardveren vagy szoftveren keresztül dolgozzák fel azokat. A 2. szinten azonban a titkosítási adatok feldolgozása még csak a PÓLÓn belül történik.
+3.  A 3. biztonsági szint nem rendelkezik PÓLÓval az eszközön. A titkosítási információk és a visszafejtett tartalmak a gazdagép operációs rendszerén való védetté tételéhez megfelelő intézkedéseket lehet tenni. A 3. szintű implementációk hardveres titkosítási motort is tartalmazhatnak, de ez csak a teljesítményt javítja, nem pedig a biztonságot.
 
-Ugyanakkor, a [Azure Media Services dokumentációja a Widevine-licencsablon](widevine-license-template-overview.md), content_key_specs security_level tulajdonságát az alábbi öt különböző érték (megbízhatóságára vonatkozó ügyfélkövetelmények lejátszás) is rendelkezik:
+Ugyanakkor a [Widevine-licenc sablonjának Azure Media Services dokumentációjában](widevine-license-template-overview.md)a content_key_specs security_level tulajdonsága a következő öt különböző értékkel rendelkezhet (a lejátszáshoz szükséges ügyfél-megbízhatósági követelmények):
 
-1.  A szoftveres whitebox kriptográfiai megadása kötelező.
-2.  Szoftvert a titkosításnak és a egy rejtjelezett dekóder megadása kötelező.
-3.  A megosztottkulcs-anyag és a titkosítási műveletek belül kell végrehajtani egy hardveres biztonsági TEE.
-4.  A titkosítási és a tartalom dekódolási belül kell végrehajtani egy hardveres biztonsági TEE.
-5.  A titkosítási alakíthatják és az összes kezelési az adathordozó (tömörített és tömörítetlen) belül kell kezelni egy hardveres biztonsági TEE.
+1.  A szoftveres alapú Whitebox-titkosítás szükséges.
+2.  A szoftveres kriptográfia és a megzavarodott dekóder szükséges.
+3.  A kulcsfontosságú anyagokat és titkosítási műveleteket egy hardveres biztonsági másolaton belül kell végrehajtani.
+4.  A tartalom titkosítását és dekódolását egy hardveres PÓLÓn belül kell végrehajtani.
+5.  A titkosítást, a dekódolást és az adathordozó összes kezelését (tömörítve és tömörítve) egy hardveres biztonsági másolaton belül kell kezelni.
 
-A Google Widevine mindkét biztonsági szintek határozzák meg. A különbség a használati kellően: architektúra vagy API szintjén. Az öt biztonsági szintek a Widevine API-t kell használni. A content_key_specs objektum, amely tartalmazza a security_level deszerializálását és a Widevine-globális tartalomkézbesítési szolgáltatás az Azure Media Services Widevine-licencszolgáltatást átadott. Az alábbi táblázat a két fajta biztonsági szintek közötti leképezést.
+A Google Widevine mindkét biztonsági szintet meghatározza. A különbség a használati szintjén van: architektúra vagy API-szint. Az öt biztonsági szint a Widevine API-ban használatos. A security_levelt tartalmazó content_key_specs objektum deszerializált, és a Widevine globális kézbesítési szolgáltatásnak továbbítja a Azure Media Services Widevine License Service. Az alábbi táblázat a két biztonsági szint közötti leképezést mutatja be.
 
-| **Biztonsági szintjének Widevine-architektúra** |**A Widevine API használt biztonsági szintek**|
+| **A Widevine architektúrában definiált biztonsági szintek** |**A Widevine API-ban használt biztonsági szintek**|
 |---|---| 
-| **1. biztonsági szint**: Az összes tartalom feldolgozása, titkosítás és vezérlés belül a megbízható végrehajtási környezetben (TEE) történik. Néhány megvalósítás modellekben biztonsági feldolgozási hajtható végre a különböző lapkák.|**security_level=5**: A titkosítási alakíthatják és az összes kezelési az adathordozó (tömörített és tömörítetlen) belül kell kezelni egy hardveres biztonsági TEE.<br/><br/>**security_level=4**: A titkosítási és a tartalom dekódolási belül kell végrehajtani egy hardveres biztonsági TEE.|
-**Biztonsági szint 2**: Titkosítás (de nem Videofeldolgozás) végez a TEE belül: visszafejtett pufferek alkalmazás tartományhoz adja vissza, és külön videó hardver vagy szoftver keresztül. 2\. szintű azonban titkosítási információk feldolgozása van csak a TEE belül.| **security_level=3**: A megosztottkulcs-anyag és a titkosítási műveletek belül kell végrehajtani egy hardveres biztonsági TEE. |
-| **3. biztonsági szint**: Nem rendelkezik egy TEE az eszközön. Megfelelő intézkedéseket előfordulhat, hogy a titkosítási adatokat és a gazdagép operációs rendszere a visszafejtett tartalom védelme érdekében. A 3. szint megvalósítás is tartalmazhat egy hardveres titkosítási motor, de, amely csak növeli a teljesítményt, nem biztonsági. | **security_level=2**: Szoftvert a titkosításnak és a egy rejtjelezett dekóder szükség.<br/><br/>**security_level=1**: A szoftveres whitebox kriptográfiai megadása kötelező.|
+| **1. biztonsági szint**: a rendszer az összes tartalom feldolgozását, titkosítását és ellenőrzését a megbízható végrehajtási környezetben (Tee) hajtja végre. Egyes implementációs modellekben a biztonsági feldolgozás különböző chipeken végezhető el.|**security_level = 5**: a titkosítást, a dekódolást és az adathordozó összes kezelését (tömörítve és tömörítve) egy HARDVERes pólón belül kell kezelni.<br/><br/>**security_level = 4**: a tartalom titkosítását és dekódolását egy HARDVERes pólón belül kell végrehajtani.|
+**2. biztonsági szint**: titkosítás (de nem a videó feldolgozása) végrehajtása a pólón belül: a visszafejtett pufferek visszakerülnek az alkalmazás-tartományba, és külön videó hardveren vagy szoftveren keresztül dolgozzák fel azokat. A 2. szinten azonban a titkosítási adatok feldolgozása még csak a PÓLÓn belül történik.| **security_level = 3**: a kulcsfontosságú anyagokat és titkosítási műveleteket egy hardveres biztonsági másolaton belül kell végrehajtani. |
+| **3. biztonsági szint**: nem tartozik póló az eszközön. A titkosítási információk és a visszafejtett tartalmak a gazdagép operációs rendszerén való védetté tételéhez megfelelő intézkedéseket lehet tenni. A 3. szintű implementációk hardveres titkosítási motort is tartalmazhatnak, de ez csak a teljesítményt javítja, nem pedig a biztonságot. | **security_level = 2**: a szoftveres titkosítás és a megzavarodott dekóder szükséges.<br/><br/>**security_level = 1**: a szoftveres Whitebox-alapú titkosítás szükséges.|
 
 ### <a name="question"></a>Kérdés
 
-Miért nem tartalomletöltés tart sokáig?
+Miért tart ilyen sokáig a tartalom letöltése?
 
 ### <a name="answer"></a>Válasz
 
-Letöltési sebesség javítása érdekében két módja van:
+A letöltési sebesség javítása kétféleképpen lehetséges:
 
-1.  Engedélyezze a CDN-t, hogy a végfelhasználók nagyobb valószínűséggel nyomja le az CDN origin/folyamatos átviteli végponton tartalomletöltés helyett. Ha a felhasználó eléri a tartalomstreameléshez használt streamvégpont, minden egyes szegmens HLS vagy szaggatott fragment dinamikus csomagolása és titkosított. Annak ellenére, hogy a késés ezredmásodperces méretezési csoport esetében minden egyes szegmens/töredék, ha egy óránál hosszú videó, az összesített késés nagy okoz a letöltés hosszabb lehet.
-2.  Egyenkénti letöltéséhez a videó minősége rétegek és helyett minden tartalmat hangsáv lehetőséget nyújt a végfelhasználók számára. A kapcsolat nélküli üzemmódban nem nincs pont letölti a minőségi rétegeit. Ennek érdekében két módja van:
-    1.  Szabályozott ügyfél: player alkalmazás automatikusan kiválasztja, vagy a felhasználó kijelöli a videó minősége réteg és zeneszámok letöltésére;
-    2.  Szolgáltatás szabályozza: az egyik dinamikus Manifest szolgáltatás segítségével az Azure Media Services (globális) szűrő, amely HLS-lista vagy kötőjel MPD korlátozza az egyetlen jó minőségű réteghez, és a kiválasztott hangsáv létrehozása. Ezután a letöltési URL-CÍMÉT, a végfelhasználók számára megjelenik ez a szűrő tartalmazza.
+1.  Engedélyezze a CDN-t, hogy a végfelhasználók a tartalom letöltéséhez a forrás/streaming végpont helyett nagyobb eséllyel megkeressék a CDN-t. Ha a felhasználó eléri a folyamatos átviteli végpontot, a rendszer minden egyes HLS-szegmenst vagy DASH-töredéket dinamikusan csomagol és titkosít. Annak ellenére, hogy ez a késés az egyes szegmensek/töredékek esetében ezredmásodperces skálán van, ha egy órás videóval rendelkezik, a felhalmozott késés nagy valószínűséggel hosszabb időt is igénybe vehet.
+2.  Adja meg a végfelhasználók számára a minőségi rétegek és hangsávok szelektív letöltését az összes tartalom helyett. Offline módban nem lehet letölteni az összes minőségi réteget. A következő két módon valósítható meg:
+    1.  Ügyfél által vezérelt: vagy a Player alkalmazás automatikus kiválasztása vagy a felhasználó kiválasztja a videó minőségi réteget és a hangsávokat a letöltéshez.
+    2.  Szolgáltatás által vezérelt: a (z) Azure Media Services dinamikus jegyzékfájl funkciójának használatával létrehozhat egy (globális) szűrőt, amely korlátozza a HLS lejátszási listákat vagy a DASH MPD-t egyetlen videó minőségi rétegre és kiválasztott hangsávokra. Ezután a végfelhasználók számára megjelenített letöltési URL-cím tartalmazza ezt a szűrőt.
+
+## <a name="additional-notes"></a>További megjegyzések
+
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
 ## <a name="summary"></a>Összefoglalás
 
-Ebben a cikkben tárgyalt megvalósítása a kapcsolat nélküli módban lejátszás DASH tartalom Widevine védi az Android-eszközökön.  Azt a Widevine-által védett tartalom offline streamelési kapcsolatos gyakori kérdésekre is választ adni.
+Ez a cikk azt ismerteti, hogyan lehet az Android-eszközökön a Widevine által védett DASH-tartalmak offline módú lejátszását megvalósítani.  Emellett a Widevine által védett tartalom offline adatfolyamával kapcsolatos gyakori kérdésekre is válaszolt.

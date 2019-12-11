@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 01/04/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 58871035eac89931dce0c1cd289cf3fab97c0c3e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: b1d5f20ccd2f2c637d7db668af10ef331947d018
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688418"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971196"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>App Service Azure Resource Manager sablonjai
 
@@ -33,6 +33,8 @@ A App Services erőforrások JSON-szintaxisával és tulajdonságaival kapcsolat
 | [Alkalmazás egyéni tartománnyal és SSL-lel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Üzembe helyez egy App Service alkalmazást egyéni állomásnévvel, és beolvassa az alkalmazás tanúsítványát az Key Vaultból az SSL-kötéshez. |
 | [Alkalmazás GoLang bővítménnyel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Üzembe helyez egy App Service alkalmazást a Golang hely bővítménnyel. Ezután futtathatja a Golangben fejlesztett webalkalmazásokat az Azure-ban. |
 | [Alkalmazás Java 8 és tomcat 8](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Üzembe helyez egy App Service alkalmazást a Java 8 és a Tomcat 8 használata esetén. Ezután Java-alkalmazásokat futtathat az Azure-ban. |
+|**Alkalmazás védelme**||
+| [Az Azure Application Gateway integrált alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-app-gateway-v2)| Üzembe helyez egy App Service alkalmazást és egy Application Gateway, és elkülöníti a forgalmat a szolgáltatási végpont és a hozzáférési korlátozások használatával. |
 |**Linux-alkalmazás csatlakoztatott erőforrásokkal**||
 | [Alkalmazás Linuxon MySQL-vel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-mysql) | Központilag telepít egy App Service alkalmazást Linux rendszeren, Azure Database for MySQL. |
 | [Alkalmazás Linuxon a PostgreSQL használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-postgresql) | Központilag telepít egy App Service alkalmazást Linux rendszeren, Azure Database for PostgreSQL. |
@@ -42,7 +44,7 @@ A App Services erőforrások JSON-szintaxisával és tulajdonságaival kapcsolat
 | [Alkalmazás SQL-adatbázissal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Üzembe helyez egy App Service alkalmazást és egy SQL-adatbázist az alapszintű szolgáltatási szinten. |
 | [Alkalmazás blob Storage-kapcsolatban](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Üzembe helyez egy App Service alkalmazást egy Azure Blob Storage-beli kapcsolatok karakterláncával. Ezután használhatja a blob Storage-t az alkalmazásból. |
 | [Alkalmazás egy Azure cache for Redis](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Üzembe helyez egy App Service alkalmazást a Redis készült Azure cache-sel. |
-|**App Service-környezet a PowerApps alkalmazáshoz**||
+|**App Service-környezet**||
 | [App Service Environment v2-környezet létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | Létrehoz egy App Service Environment v2-környezetet a virtuális hálózaton. |
 | [App Service Environment v2-környezet létrehozása ILB-címmel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | Létrehoz egy App Service Environment v2-környezetet a virtuális hálózaton egy privát belső terheléselosztó címmel. |
 | [Az alapértelmezett SSL-tanúsítvány konfigurálása egy ILB App Service-környezethez vagy egy ILB App Service Environment v2-környezethez](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | Egy ILB App Service-környezet vagy egy ILB App Service Environment v2-környezet használatához konfigurálja az alapértelmezett SSL-tanúsítványt. |

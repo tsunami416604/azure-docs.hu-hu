@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használható az Azure Application Insights és
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 5f7f6c130226080cba635f89280f655498e5db27
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4a182ddffd4c1ee4d2e71e7d9e6385df23e4260e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226899"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978083"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -72,7 +72,7 @@ Ha [engedélyezve van Application Insights integráció](#enable-application-ins
 
 Láthatja, hogy mindkét oldalon **fut Application Insights** hivatkozás az Application Insights Analytics-lekérdezésre, amely beolvassa az információt.
 
-![Futtatás Application Insights](media/functions-monitoring/run-in-ai.png)
+![Futtatás az Application Insightsban](media/functions-monitoring/run-in-ai.png)
 
 A következő lekérdezés jelenik meg. Láthatja, hogy a Meghívási lista az elmúlt 30 napra korlátozódik. A lista legfeljebb 20 sort mutat be (`where timestamp > ago(30d) | take 20`). A Meghívási részletek listája az elmúlt 30 napra korlátozza a korlátot.
 
@@ -92,7 +92,7 @@ A Application Insights használatáról az [Application Insights dokumentációj
 
 Az Application Insights következő területei hasznosak lehetnek a függvények viselkedésének, teljesítményének és hibáinak kiértékelése során:
 
-| Lapon | Leírás |
+| Lapfül | Leírás |
 | ---- | ----------- |
 | **[Hibák](../azure-monitor/app/asp-net-exceptions.md)** |  Diagramok és riasztások létrehozása a függvények hibái és a kiszolgálói kivételek alapján. A **művelet** neve a függvény neve. A függőségek meghibásodása csak akkor jelenik meg, ha egyéni telemetria valósít meg a függőségekhez. |
 | **[Teljesítmény](../azure-monitor/app/performance-counters.md)** | Teljesítménnyel kapcsolatos problémák elemzése. |
@@ -119,7 +119,7 @@ requests
 
 A rendelkezésre álló táblák a bal oldali **séma** lapon jelennek meg. Az alábbi táblázatokban megtalálhatja a függvények által generált adathívásokat:
 
-| Tábla | Leírás |
+| Table | Leírás |
 | ----- | ----------- |
 | **nyomok** | A futtatókörnyezet és a függvény kódja által létrehozott naplók. |
 | **kérelmek** | Egy kérelem az egyes függvények meghívásához. |
@@ -155,7 +155,7 @@ Ha naplókat ír a függvény kódjába, a kategória `Function` a functions fut
 
 A Azure Functions naplózó *naplózási szintet* is tartalmaz minden naplóval. A [naplózási szint](/dotnet/api/microsoft.extensions.logging.loglevel) egy enumerálás, és az egész szám kód relatív fontosságot jelez:
 
-|LogLevel    |Kód|
+|Naplózási szint    |Kód|
 |------------|---|
 |Nyomkövetés       | 0 |
 |Hibakeresés       | 1 |
@@ -169,11 +169,11 @@ A naplózási szintű `None` a következő szakaszban ismertetjük.
 
 ### <a name="log-configuration-in-hostjson"></a>Konfiguráció naplózása a Host. JSON fájlban
 
-A [Host. JSON] fájl azt konfigurálja, hogy a Function app hogyan küldi el a Application Insights. Minden kategória esetében meg kell határozni a küldéshez minimálisan szükséges naplózási szintet. Két példa létezik: az első példa a [functions 2. x verziójának](functions-versions.md#version-2x) (.net Core) verzióját célozza meg, a második példa pedig az 1. x futtatókörnyezet.
+A [Host. JSON] fájl azt konfigurálja, hogy a Function app hogyan küldi el a Application Insights. Minden kategória esetében meg kell határozni a küldéshez minimálisan szükséges naplózási szintet. Két példa létezik: az első példa a functions Runtime [2. x vagy újabb verzióját](functions-versions.md#version-2x) célozza meg (a .net Core használatával), a második példa pedig az 1. x futtatókörnyezet.
 
-### <a name="version-2x"></a>2-es verzió. x
+### <a name="version-2x-and-higher"></a>2\. x vagy újabb verzió
 
-A v2. x futtatókörnyezet a [.net Core naplózási szűrő hierarchiáját](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)használja. 
+A functions futtatókörnyezet v2. x és újabb verziói a [.net Core naplózási szűrő-hierarchiát](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)használják. 
 
 ```json
 {
@@ -216,7 +216,7 @@ A [Host. JSON] kategória értéke az összes olyan kategória naplózását sza
 
 Ha a [Host. JSON] több olyan kategóriát tartalmaz, amelyek ugyanazzal a karakterlánccal kezdődnek, akkor a többit is megegyeznek. Tegyük fel, hogy a futtatókörnyezetből mindent szeretne, kivéve a `Host.Aggregator` `Error` szinten való bejelentkezéshez, de a `Information` szinten szeretné `Host.Aggregator` a bejelentkezést:
 
-### <a name="version-2x"></a>2-es verzió. x 
+### <a name="version-2x-and-later"></a>2\. x vagy újabb verzió
 
 ```json
 {
@@ -271,7 +271,7 @@ A naplók a Application Insights **customMetrics** táblájában érhetők el. I
 
 Az összes napló `Information` szinten van írva. Ha `Warning` vagy annál újabb szűrést végez, nem fog megjelenni ezek az információk.
 
-### <a name="other-categories"></a>Egyéb kategóriák
+### <a name="other-categories"></a>További kategóriák
 
 A már felsorolt kategóriákhoz tartozó összes napló a Application Insights **nyomkövetési** táblájában érhető el.
 
@@ -298,7 +298,7 @@ Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a fü
 
 Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.md) funkciót, amely képes arra, hogy túl sok telemetria-adatmennyiséget állítson elő a befejezett végrehajtásokon a maximális terhelés idején. Ha a bejövő végrehajtások aránya meghaladja a megadott küszöbértéket, Application Insights véletlenszerűen figyelmen kívül hagyja a bejövő végrehajtások némelyikét. A másodpercenkénti végrehajtások maximális számának alapértelmezett beállítása 20 (öt az 1. x verzióban). A mintavételt a [Host. JSON]fájlban állíthatja be.  Például:
 
-### <a name="version-2x"></a>2-es verzió. x 
+### <a name="version-2x-and-later"></a>2\. x vagy újabb verzió
 
 ```json
 {
@@ -396,7 +396,7 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>Egyéni metrikák naplózása
 
-Ha a functions futtatókörnyezet [1. x verziójában](functions-versions.md#creating-1x-apps) fut, a Node. js függvények a `context.log.metric` metódussal hozhatnak létre egyéni metrikákat a Application Insightsban. Ez a metódus jelenleg nem támogatott a 2. x verzióban. Íme egy példa metódus hívása:
+Ha a functions futtatókörnyezet [1. x verziójában](functions-versions.md#creating-1x-apps) fut, a Node. js függvények a `context.log.metric` metódussal hozhatnak létre egyéni metrikákat a Application Insightsban. Ez a metódus jelenleg nem támogatott a 2. x és újabb verziókban. Íme egy példa metódus hívása:
 
 ```javascript
 context.log.metric("TestMetric", 1234);
@@ -408,9 +408,9 @@ Ez a kód egy alternatív megoldás a Application Insights Node. js SDK-val val�
 
 A [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) NuGet-csomag segítségével egyéni telemetria-fájlokat küldhet a Application Insightsba. Az alábbi C# példa az [Egyéni telemetria API](../azure-monitor/app/api-custom-events-metrics.md)-t használja. A példa egy .NET-osztályhoz tartozó könyvtárra mutat, de a Application Insights kódja megegyezik C# a parancsfájlhoz.
 
-### <a name="version-2x"></a>2-es verzió. x
+### <a name="version-2x-and-later"></a>2\. x vagy újabb verzió
 
-A 2. x verziójú futtatókörnyezet a Application Insights újabb funkcióit használja, hogy automatikusan korrelálja a telemetria az aktuális művelettel. Nem kell manuálisan beállítania a művelet `Id`, `ParentId`vagy `Name` mezőt.
+A futtatókörnyezet 2. x vagy újabb verziói a Application Insights újabb funkcióit használják a telemetria automatikus összekapcsolásához a jelenlegi művelettel. Nem kell manuálisan beállítania a művelet `Id`, `ParentId`vagy `Name` mezőt.
 
 ```cs
 using System;
@@ -634,7 +634,7 @@ A Application Insights területen válassza a **élő metrikastream**lehetőség
 
 ![Élő metrikastream megtekintése a portálon](./media/functions-monitoring/live-metrics-stream.png) 
 
-### <a name="visual-studio-code"></a>Visual Studio Code
+### <a name="visual-studio-code"></a>Visual Studio-kód
 
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
@@ -642,7 +642,7 @@ A Application Insights területen válassza a **élő metrikastream**lehetőség
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Az [Azure CLI](/cli/azure/install-azure-cli)használatával engedélyezheti a folyamatos átviteli naplókat. A következő parancsokkal jelentkezzen be, válassza ki az előfizetését és a stream naplófájljait:
 

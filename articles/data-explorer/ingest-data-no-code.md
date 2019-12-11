@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 11/17/2019
-ms.openlocfilehash: 97faa445a286574aa5fc05d084d21c0740bc8a8b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2574f27b4b86bab276a56f95fda9fa2a1434c095
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173857"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995932"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Oktatóanyag: figyelési adatfeldolgozás és-lekérdezés az Azure Adatkezelő 
 
@@ -315,10 +315,10 @@ A tevékenység naplójának az adattáblához való leképezéséhez használja
         | mv-expand events = Records
         | where isnotempty(events.metricName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             MetricName = tostring(events.metricName),
-            Count = toint(events.count),
+            Count = toint(events['count']),
             Total = todouble(events.total),
             Minimum = todouble(events.minimum),
             Maximum = todouble(events.maximum),
@@ -435,12 +435,12 @@ Válasszon ki egy erőforrást, amelyből exportálni kívánja a metrikákat. S
 
     ![Diagnosztikai beállítások](media/ingest-data-no-code/diagnostic-settings.png)
 
-1. Megnyílik a **diagnosztika beállításai** panel. Hajtsa végre a következő lépéseket:
+1. Megnyílik a **diagnosztika beállításai** panel. Tegye a következőket:
    1. Adja meg a diagnosztikai napló adatait a *ADXExportedData*néven.
    1. A **napló**területen jelölje be a **SucceededIngestion** és a **FailedIngestion** jelölőnégyzetet is.
    1. A **metrika**területen jelölje be a **lekérdezési teljesítmény** jelölőnégyzetet.
    1. Jelölje ki az **adatfolyamot az Event hub számára** jelölőnégyzetet.
-   1. Válassza a **Konfigurálás**lehetőséget.
+   1. Válassza ki a **Konfigurálás** lehetőséget.
 
       ![Diagnosztikai beállítások ablaktábla](media/ingest-data-no-code/diagnostic-settings-window.png)
 
@@ -521,7 +521,7 @@ Most létre kell hoznia az adatkapcsolatokat a diagnosztikai metrikák és napl�
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | **Table** | *DiagnosticRawRecords* | A *TestDatabase* -adatbázisban létrehozott tábla. |
+    | **Tábla** | *DiagnosticRawRecords* | A *TestDatabase* -adatbázisban létrehozott tábla. |
     | **Adatformátum** | *JSON* | A táblázatban használt formátum. |
     | **Oszlopleképezés** | *DiagnosticRawRecordsMapping* | A *TestDatabase* -adatbázisban létrehozott leképezés, amely leképezi a bejövő JSON-adattípusokat a *DiagnosticRawRecords* tábla oszlopnevek és adattípusai között.|
     | | |
@@ -538,7 +538,7 @@ Most létre kell hoznia az adatkapcsolatokat a diagnosztikai metrikák és napl�
     |---|---|---|
     | **Adatkapcsolatok neve** | *ActivityLogsConnection* | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.|
     | **Event hub-névtér** | *AzureMonitoringData* | A korábban a névtér azonosításához választott név. |
-    | **Event hub** | *insights-operational-logs* | A létrehozott eseményközpont. |
+    | **Event hub** | *elemzések – operatív naplók* | A létrehozott eseményközpont. |
     | **Fogyasztói csoport** | *$Default* | Az alapértelmezett fogyasztói csoport. Ha szükséges, létrehozhat egy másik fogyasztói csoportot is. |
     | | |
 
@@ -548,7 +548,7 @@ Most létre kell hoznia az adatkapcsolatokat a diagnosztikai metrikák és napl�
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | **Table** | *ActivityLogsRawRecords* | A *TestDatabase* -adatbázisban létrehozott tábla. |
+    | **Tábla** | *ActivityLogsRawRecords* | A *TestDatabase* -adatbázisban létrehozott tábla. |
     | **Adatformátum** | *JSON* | A táblázatban használt formátum. |
     | **Oszlopleképezés** | *ActivityLogsRawRecordsMapping* | A *TestDatabase* -adatbázisban létrehozott leképezés, amely leképezi a bejövő JSON-adattípusokat a *ActivityLogsRawRecords* tábla oszlopnevek és adattípusai között.|
     | | |
@@ -615,7 +615,7 @@ Lekérdezés eredményei:
 
 |   |   |
 | --- | --- |
-|   |  avg(DurationMs) |
+|   |  átlag (Átl) |
 |   | 768,333 |
 | | |
 

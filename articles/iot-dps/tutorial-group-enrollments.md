@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – szimulált X. 509 eszköz kiépítése az Azure IoT Hub Javával és regisztrációs csoportok használatával
-description: Ebben az oktatóanyagban egy szimulált X. 509 eszköz létrehozása és kiépítése a Java-eszköz és a szolgáltatás-SDK és a regisztrációs csoportok használatával IoT Hub Device Provisioning Service
+description: Ebben az oktatóanyagban egy szimulált X. 509 eszköz létrehozása és kiépítése a Java-eszköz és a szolgáltatás-SDK és a regisztrációs csoportok használatával IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 28cb37ad4fcd41818c3dfc18925ec65b04dddd00
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d6cb3af134ff272d79cfc440047a3d90733ee9e8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702457"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976808"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Oktatóanyag: szimulált X. 509 eszköz létrehozása és kiépítése a Java-eszköz és a Service SDK használatával, valamint csoportos regisztrációkkal IoT Hub Device Provisioning Service
 
