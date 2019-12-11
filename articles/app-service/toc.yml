@@ -82,7 +82,11 @@
         - name: Biztonsági áttekintés
           href: overview-security.md
     - name: Hálózatkezelési funkciók
-      href: networking-features.md
+      items:
+        - name: Áttekintés
+          href: networking-features.md
+        - name: Application Gateway szolgáltatásvégpontokkal
+          href: networking/app-gateway-with-service-endpoints.md
     - name: Bemeneti és kimeneti IP-címek
       href: overview-inbound-outbound-ips.md
     - name: Virtuális hálózat integrációja

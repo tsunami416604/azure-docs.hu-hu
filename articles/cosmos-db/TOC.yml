@@ -972,6 +972,8 @@
           href: access-secrets-from-keyvault.md
         - name: Tanúsítványalapú hitelesítés az Azure AD-val
           href: certificate-based-authentication.md
+        - name: Felhasználói hozzáférés korlátozása az adatműveletekre
+          href: how-to-restrict-user-data.md
     - name: Alkalmasság vállalati használatra
       items:
         - name: Adatok visszaállítása biztonsági mentésből

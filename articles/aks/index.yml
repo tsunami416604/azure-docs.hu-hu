@@ -65,6 +65,7 @@ sections:
           - html: <a href="/azure/aks/tutorial-kubernetes-scale">Alkalmazás és Kubernetes-infrastruktúra skálázása</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-app-update">A Kubernetes-ben futó alkalmazás frissítése</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">AKS-fürt frissítése</a>
+          - html: <a href="/azure/architecture/reference-architectures/microservices/aks">A mikroszolgáltatások referenciaarchitektúrájának megismerése és implementálása</a>
   - title: Fejlessze a készségeit a Microsoft Learnnel
     items:
       - type: list

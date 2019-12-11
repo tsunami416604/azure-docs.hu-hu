@@ -513,3 +513,15 @@
       href: ./partner-center-portal/support.md
     - name: Partnerközpont – elemzések
       href: ./partner-center-portal/analytics.md
+    - name: Fizetés fogadása
+      items:
+        - name: Fizetés fogadása
+          href: ./partner-center-portal/get-paid.md
+        - name: Kifizetési számla és űrlapok beállítása
+          href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+        - name: 'Fizetési küszöbértékek, módszerek és időkeretek'
+          href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+        - name: Kifizetés összegzése
+          href: ./partner-center-portal/payout-summary.md
+        - name: Adó részletei
+          href: ./partner-center-portal/tax-details-paid-transactions.md

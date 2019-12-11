@@ -387,8 +387,10 @@
           href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Felhőalapú HR üzembe helyezése
       items:
-        - name: SuccessFactors attribútumreferenciája
+        - name: SuccessFactors-attribútumok referenciája
           href: sap-successfactors-attribute-reference.md
+        - name: Workday-attribútumok referenciája
+          href: workday-attribute-reference.md
     - name: Azure AD Connect-kiépítési ügynök
       items:
         - name: Kiépítési ügynök verzióelőzményei

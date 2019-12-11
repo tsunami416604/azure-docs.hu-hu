@@ -56,6 +56,8 @@
           href: backup-support-matrix-mars-agent.md
         - name: A SAP HANA biztonsági mentésének támogatási mátrixa
           href: sap-hana-backup-support-matrix.md
+        - name: Az Azure Policy támogatott virtuálisgép-termékváltozatai
+          href: backup-azure-policy-supported-skus.md
     - name: Biztonság
       items:
         - name: Szerepköralapú hozzáférés-vezérlés
@@ -174,6 +176,10 @@
               href: backup-azure-vms-encryption.md
             - name: Titkosított virtuális gépek kulcsainak és titkos kódjának visszaállítása
               href: backup-azure-restore-key-secret.md
+    - name: Beépített Azure Policy az Azure Backuphoz
+      items:
+        - name: Biztonsági mentés automatikus engedélyezése a virtuális gép Azure Policyval végzett létrehozásakor
+          href: backup-azure-auto-enable-backup.md
     - name: Diagnosztikai események Recovery Services-tárolókhoz
       items:
         - name: Diagnosztikai beállítások használata Recovery Services-tárolókhoz
