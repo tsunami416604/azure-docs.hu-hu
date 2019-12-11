@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806708"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976604"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Jelenetek, felvételek és kulcsképkockák
 
@@ -36,7 +36,7 @@ Video Indexer meghatározza, hogy mikor változik a videó a vizualizációs dá
 
 ## <a name="keyframe-detection"></a>Kulcsképek észlelése
 
-Kiválasztja a lövéshez legjobban illő keretet (ka) t. A kulcsképek a teljes videóban az esztétikai tulajdonságok (például a kontraszt és a stabilitás) alapján kiválasztott reprezentatív keretek. Video Indexer lekéri a kulcsképek-azonosítók listáját a shot metaadatainak részeként, amely alapján az ügyfelek kinyerhetik a kulcsképek miniatűrjét. 
+Video Indexer kiválasztja az egyes lövésekhez legjobban illő keret (eke) t. A kulcsképek a teljes videóban az esztétikai tulajdonságok (például a kontraszt és a stabilitás) alapján kiválasztott reprezentatív keretek. Video Indexer lekéri a képkockák azonosítóinak listáját a shot metaadatainak részeként, amely alapján az ügyfelek nagy felbontású képként kinyerhetik a képkockát.  
 
 ### <a name="extracting-keyframes"></a>Kulcsképek kibontása
 

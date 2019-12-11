@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 155edf72a60e079a609853e953e3cf66024cc83c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f033563bbd7888e53d910773cd1e0c501eaad098
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794249"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997105"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>A felhő-kiépítés Azure AD Connectának előfeltételei
 Ez a témakör útmutatást nyújt Azure AD Connect felhőalapú kiépítési megoldás kiválasztásához és használatához.
@@ -48,7 +48,7 @@ A dokumentum további részében részletes útmutatót talál az előfeltétele
      | --- | --- |
      | **80** | Letölti a visszavont tanúsítványok listáját (CRL) az SSL-tanúsítvány ellenőrzése közben. |
      | **443** | Kezeli az összes kimenő kommunikációt a szolgáltatással. |
-     | **8080** (nem kötelező) | Az ügynökök tíz percenként jelentést készítenek az állapotukról az 8080-as porton keresztül, ha a 443-es port nem érhető el. Ez az állapot az Azure AD-portálon jelenik meg. A 8080-es port _nem_ használatos a felhasználói bejelentkezésekhez. |
+     | **8080** (nem kötelező) | Az ügynökök tíz percenként jelentést készítenek az állapotukról az 8080-as porton keresztül, ha a 443-es port nem érhető el. Ez az állapot az Azure AD-portálon jelenik meg. |
      
      Ha a tűzfal a kezdeményező felhasználók alapján kényszeríti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futtató Windows-szolgáltatások forgalmára.
    - Ha a tűzfal vagy a proxy lehetővé teszi a biztonságos utótagok megadását, akkor vegyen fel kapcsolatokat **\*. msappproxy.net** és **\*. servicebus.Windows.net**. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.

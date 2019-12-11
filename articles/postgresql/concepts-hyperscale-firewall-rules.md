@@ -1,17 +1,17 @@
 ---
-title: Tűzfalszabályok a Azure Database for PostgreSQL-nagy kapacitású (Citus)
+title: Tűzfalszabályok – nagy kapacitású (Citus) – Azure Database for PostgreSQL
 description: Ez a cikk a Azure Database for PostgreSQL-nagy kapacitású (Citus) vonatkozó tűzfalszabályok leírását ismerteti.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 567fb27ed942a24ab7d031d791e18fa487956fad
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b843cd1528630a21255053f623356a0379daacf6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273737"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975567"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Tűzfalszabályok a Azure Database for PostgreSQL-nagy kapacitású (Citus)
 Azure Database for PostgreSQL kiszolgáló tűzfala megakadályozza a nagy kapacitású (Citus) koordinátor-csomóponthoz való hozzáférést, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. A tűzfal az egyes kérések származó IP-címe alapján engedélyezi a hozzáférést a kiszolgálóhoz.
@@ -31,7 +31,7 @@ A nagy kapacitású (Citus) kiszolgáló csoportjának tűzfala szabályozza, ho
 
 Ha a tűzfal blokkolja a kapcsolatokat, az alkalmazás hibáihoz vezethet. A PostgreSQL JDBC-illesztőprogram használata például a következőhöz hasonló hibát jelez:
 
-> Java. util. egyidejű. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: Végzetes: nincs PG\_HBA. conf bejegyzés a (z) "123.45.67.890" gazdagéphez, "citus", "citus" adatbázishoz, SSL-hez
+> Java. util. egyidejű. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: végzetes: nincs PG\_HBA. conf bejegyzés a (z) "123.45.67.890" gazdagéphez, "citus", "citus", adatbázis: "", SSL
 
 A szabályok definiálásának megismeréséhez tekintse meg a [Tűzfalszabályok létrehozása és kezelése](howto-hyperscale-manage-firewall-using-portal.md) című témakört.
 
@@ -43,14 +43,14 @@ Ha a PostgreSQL-nagy kapacitású (Citus) szolgáltatáshoz való hozzáférés 
 * **A felhasználó nincs hitelesítve, vagy helytelen jelszót használt:** Ha a felhasználó nem rendelkezik jogosultsággal a kiszolgálón, vagy helytelen a használt jelszó, a rendszer megtagadja a kapcsolódást a kiszolgálóval. A tűzfalbeállítások létrehozása csak olyan ügyfelek számára biztosít lehetőséget, akik megpróbálnak csatlakozni a kiszolgálóhoz; minden ügyfélnek továbbra is meg kell adnia a szükséges biztonsági hitelesítő adatokat.
 
 Ha például egy JDBC-ügyfelet használ, a következő hibaüzenet jelenhet meg.
-> Java. util. egyidejű. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: VÉGZETES: a jelszó-hitelesítés nem sikerült a (z) "Felhasználónév" felhasználónál
+> Java. util. egyidejű. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: végzetes: a jelszó-hitelesítés nem sikerült a (z) "Felhasználónév" felhasználó számára
 
-* **Dinamikus IP-cím:** Ha a dinamikus IP-címzéssel rendelkező internetkapcsolattal rendelkezik, és a tűzfalon keresztül nem sikerül bejutnia, akkor az alábbi megoldások valamelyikét kipróbálhatja:
+* **Dinamikus IP-cím**: Ha az internetkapcsolata dinamikus IP-címkezeléssel rendelkezik, és problémákat okoz a tűzfalon való átjutás, próbálja ki a következő megoldások valamelyikét:
 
 * Kérje meg az internetszolgáltatót (ISP) a nagy kapacitású (Citus) koordinátor csomóponthoz tartozó ügyfélszámítógépekhez rendelt IP-címtartomány számára, majd adja hozzá az IP-címtartományt tűzfalszabályként.
 
 * Szerezze be a statikus IP-címzést az ügyfélszámítógépek helyett, majd adja hozzá a statikus IP-címet tűzfalszabályként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A kiszolgálói szintű és az adatbázis-szintű Tűzfalszabályok létrehozásával kapcsolatos cikkekért lásd:
-* [Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok az Azure portál használatával](howto-hyperscale-manage-firewall-using-portal.md)
+* [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](howto-hyperscale-manage-firewall-using-portal.md)

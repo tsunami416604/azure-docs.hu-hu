@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Egyéni keresési weblap létrehozása – Bing Custom Search'
+title: 'Oktatóanyag: Custom Search-weboldal létrehozása – Bing Custom Search'
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan konfigurálhat egyéni Bing Search-példányt, és hogyan integrálhatja azt egy weblapra.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: aee84a4d9203d80b81f773df30d68c3539e5ec7c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5a4d797fecca8e040a6e22bf59a5776b1ffff80f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564704"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977199"
 ---
-# <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-webhely létrehozása
+# <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-weboldal létrehozása
 
 A Bing Custom Search szolgáltatással személyre szabott keresési funkciókat hozhat létre olyan témakörökhöz kapcsolódóan, amelyek jelentőséggel bírnak az Ön számára. Ha például egy keresési funkciót is biztosító, küzdősportokról szóló webhellyel rendelkezik, megadhatja azokat a tartományokat, alwebhelyeket és weblapokat, amelyeken a Bingnek keresnie kell. A felhasználók az érdeklődési körükhöz igazított keresési eredményeket látnak ahelyett, hogy több oldalnyi általános találatot kellene átnézniük, amelyben irreleváns tartalom is lehet. 
 
@@ -79,7 +79,7 @@ Ha szeretné kizárni egyes webhelyek vagy URL-címek eredményeit, adja hozzá 
 
 ## <a name="add-pinned-entries"></a>Rögzített bejegyzések hozzáadása
 
-Ha egy adott webhelyet rögzíteni kíván a keresési találatok első helyén, adja hozzá a webhelyet és a lekérdezési kifejezést a **Pinned** (Rögzített) laphoz. A **Pinned** (Rögzített) lap a webhelyek és lekérdezési kifejezések olyan párosainak listáját tartalmazza, amely meghatározza, hogy egy adott lekérdezésnél melyik webhely jelenjen meg első eredményként. A webhely csak akkor rögzített, ha a felhasználó lekérdezési sztringje egyezik a rögzített elem egyezési állapotának rögzített lekérdezési sztringjével. Csak az indexelt webhelyek jelennek meg a keresésekben. További információkért lásd az [egyéni nézet meghatározásával](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results) foglalkozó témakört.
+Egy adott weboldal a keresési eredmények tetejére való rögzítéséhez adja hozzá a weblapot és a lekérdezési kifejezést a **rögzített** laphoz. A **rögzített** lap a weblap és a lekérdezési kifejezés párok listáját tartalmazza, amelyek az adott lekérdezés legfontosabb eredményének megfelelő weblapot határozzák meg. A webhely csak akkor rögzített, ha a felhasználó lekérdezési sztringje egyezik a rögzített elem egyezési állapotának rögzített lekérdezési sztringjével. Csak az indexelt webhelyek jelennek meg a keresésekben. További információkért lásd az [egyéni nézet meghatározásával](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results) foglalkozó témakört.
 
 1. A **Configuration** (Konfiguráció) lapon kattintson a **Pinned** (Rögzített) lapra, és adja meg az első helyen megjeleníteni kívánt weblapot és a hozzá tartozó lekérdezési kifejezést.  
   
@@ -127,10 +127,10 @@ A Custom Search üzemeltetett felhasználói felületet biztosít, amelyen megje
 
 Az üzemeltetett felhasználói felület kétféleképpen használható fel.  
 
-- 1\. lehetőség: Integrálja a megadott JavaScript-kódrészletet az alkalmazásba.
-- 2\. lehetőség: Használja a megadott HTML-végpontot.
+- 1\. lehetőség: A megadott JavaScript-kódrészlet integrálása az alkalmazásba.
+- 2\. lehetőség: A megadott HTML-végpont használata.
 
-Az oktatóanyag hátralévő része az 1. **lehetőséget mutatja be: JavaScript-** kódrészlet.  
+Az oktatóanyag fennmaradó része az **1. lehetőséget, vagyis a Javascript-kódrészletet** mutatja be.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>A Visual Studio-megoldás beállítása
 
@@ -209,7 +209,7 @@ A keresés végrehajtásakor a következőkhöz hasonló eredmények jelennek me
 
 ![Képernyőkép az egyéni keresés eredményeiről](./media/custom-search-webapp-results.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Bing Custom Search-végpont hívása (C#)](../call-endpoint-csharp.md)

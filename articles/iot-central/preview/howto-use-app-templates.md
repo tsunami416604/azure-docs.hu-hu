@@ -3,17 +3,17 @@ title: Azure IoT Central-alkalmazás exportálása | Microsoft Docs
 description: Megoldás-kezelőként exportálni szeretném az alkalmazás sablonját, hogy újra lehessen használni.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/17/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0edc1a7e470b7f0f3773b69635bbc26ab4d283b3
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 9870b18be9fb75e25941a7e1d05e4164239aacbb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480373"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977522"
 ---
 # <a name="export-your-application-preview-features"></a>Alkalmazás exportálása (előzetes verziójú funkciók)
 
@@ -30,7 +30,7 @@ Erre két lehetősége van:
 
 Létrehozhat egy másolatot bármely alkalmazásról, levonva az eszköz példányait, az eszköz adatelőzményeit és a felhasználói adatmennyiségeket. A másolás egy utólagos elszámolású alkalmazás, amelyet fizetnie kell. Egy alkalmazás másolásával nem hozhat létre próbaverziós alkalmazást.
 
-Válassza a **Másolás**lehetőséget. A párbeszédpanelen adja meg az új utólagos elszámolású alkalmazás részleteit. Ezután a **Másolás** gombra kattintva erősítse meg, hogy folytatni kívánja. Ha többet szeretne megtudni az űrlap mezőiről, tekintse meg az [alkalmazás létrehozása](quick-deploy-iot-central.md) rövid útmutatót.
+Válassza a **Másolás** lehetőséget. A párbeszédpanelen adja meg az új utólagos elszámolású alkalmazás részleteit. Ezután a **Másolás** gombra kattintva erősítse meg, hogy folytatni kívánja. Ha többet szeretne megtudni az űrlap mezőiről, tekintse meg az [alkalmazás létrehozása](quick-deploy-iot-central.md) rövid útmutatót.
 
 > [!NOTE]
 > Az alkalmazást csak az **Európai** és az **Egyesült államokbeli** helyszínekre **másolhatja** .

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: overview
 ms.workload: identity
-ms.date: 06/03/2019
+ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca1b6cc6288b75dc7194ead916f2ecb468b053d2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7e5faf9db9a6ba97f353b54a4fb8123fde072574
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845909"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996986"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>A Microsoft identitásplatformjának fejlődése
 
@@ -26,13 +26,13 @@ A Microsoft identitásplatformja az Azure Active Directory (Azure AD) fejlesztő
 
 Eddig a legtöbb fejlesztő dolgozott együtt az Azure AD v 1.0 platformmal a munkahelyi és iskolai fiókok (az Azure AD által kiépített) hitelesítéséhez az Azure AD v 1.0 végpontról származó tokenek igénylésével, az Azure ad Authentication Library (ADAL) használatával, Azure Portal az alkalmazások regisztrálása és konfigurációja, valamint az Azure AD Graph API a programozott alkalmazások konfigurálásához.
 
-A Microsoft Identity platform (v 2.0) használatával bővítheti a következő típusú felhasználók elérését:
+Az egységes Microsoft Identity platform (v 2.0) használatával egyszer írhat kódot, és hitelesítheti bármely Microsoft-identitását az alkalmazásban. Számos platform esetében a teljes körűen támogatott nyílt forráskódú Microsoft Authentication Library (MSAL) használata ajánlott az Identity platform-végpontokon. A MSAL használata egyszerű, és lehetővé teszi a felhasználók számára a kiváló egyszeri bejelentkezést (SSO), így nagy megbízhatóságot és teljesítményt érhet el, és a Microsoft biztonságos fejlesztési életciklus (SDL) használatával fejleszthető. Az API-k meghívásakor beállíthatja, hogy az alkalmazás kihasználja a növekményes hozzájárulás előnyeit, ami lehetővé teszi, hogy késleltetse a további invazív hatókörökhöz való hozzájárulás iránti kérést, amíg az alkalmazás használata nem indokolja a futtatást.  A MSAL Emellett támogatja a Azure Active Directory B2Ct, így ügyfelei az előnyben részesített közösségi, vállalati vagy helyi fiók identitásait használják az alkalmazások és API-k egyszeri bejelentkezéses eléréséhez.
+
+A Microsoft Identity platformmal bővítheti a következő típusú felhasználók elérését:
 
 - Munkahelyi és iskolai fiókok (Azure AD-kiépített fiókok)
 - Személyes fiókok (például Outlook.com vagy Hotmail.com)
-- A saját e-mail-címét vagy közösségi identitását (például LinkedIn, Facebook, Google) használó ügyfelei az Azure AD B2C ajánlaton keresztül
-
-Az egységes Microsoft Identity platformmal egyszer is írhat kódot, és hitelesítheti bármely Microsoft-identitását az alkalmazásban. Számos platformon létezik egy teljes körűen támogatott nyílt forráskódú könyvtár a Microsoft Authentication Library (MSAL) néven. A MSAL használata egyszerű, és lehetővé teszi a felhasználók számára a kiváló egyszeri bejelentkezést (SSO), így nagy megbízhatóságot és teljesítményt érhet el, és a Microsoft biztonságos fejlesztési életciklus (SDL) használatával fejleszthető. Az API-k meghívásakor beállíthatja, hogy az alkalmazás kihasználja a növekményes hozzájárulás előnyeit, ami lehetővé teszi, hogy késleltetse a további invazív hatókörökhöz való hozzájárulás iránti kérést, amíg az alkalmazás használata nem indokolja a futtatást.
+- A saját e-mail-címét vagy közösségi identitását (például LinkedIn, Facebook, Google) használó ügyfelei MSAL és Azure AD B2Con keresztül
 
 Az Azure Portal az alkalmazás regisztrálásához és konfigurálásához, valamint a Microsoft Graph API-t használhatja a programozott alkalmazások konfigurálásához.
 

@@ -1,5 +1,5 @@
 ---
-title: Hitelesítés a Microsoft Identity platformon (v 1.0) | Azure
+title: Microsoft Identity platform hitelesítés (v 1.0) | Azure
 description: Ismerje meg a Microsoft Identity platform hitelesítésének alapjait – az alkalmazás modelljét, az API-t, a létesítést és a Microsoft Identity platform által támogatott leggyakoribb hitelesítési forgatókönyveket.
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c7bf80c0471853008573bbcbb918fb33c6c43cd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 445f301e2a526dc8f9e2c261e897fe8b1abe2f1e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149178"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966775"
 ---
 # <a name="what-is-authentication"></a>Mi a hitelesítés?
 
@@ -62,15 +62,15 @@ A fenti példaforgatókönyvben az alkalmazásokat az alábbi két szerepkör sz
 
 ### <a name="how-each-flow-emits-tokens-and-codes"></a>Az egyes folyamatok tokeneket és kódokat bocsátanak ki
 
-Az ügyfél felépítésének módjától függően a Microsoft Identity platform által támogatott hitelesítési folyamatok közül egy (vagy több) is használható.  Ezek a folyamatok különféle tokeneket hozhatnak létre (id_tokens, frissítési tokeneket, hozzáférési jogkivonatokat), valamint engedélyezési kódokat, és különböző jogkivonatokat igényelnek a működésük érdekében. Ez a diagram áttekintést nyújt:
+Az ügyfél felépítésének módjától függően a Microsoft Identity platform által támogatott hitelesítési folyamatok közül egy (vagy több) is használható.  Ezek a folyamatok különféle tokeneket (id_tokens, frissítési tokeneket, hozzáférési tokeneket) és engedélyezési kódokat hozhatnak létre, és különböző jogkivonatokat igényelnek a működésük érdekében. Ez a diagram áttekintést nyújt:
 
-|Flow | Igényel | id_token | hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
+|Flow | Szükséges | id_token | Hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Engedélyezési kód folyamatábrája](v1-protocols-oauth-code.md) | | x | x | x | x|  
 |[Implicit folyamat](v1-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hibrid OIDC folyamat](v1-protocols-openid-connect-code.md#get-access-tokens)| | x  | |          |            x   |
 |[Jogkivonat-beváltások frissítése](v1-protocols-oauth-code.md#refreshing-the-access-tokens) | jogkivonat frissítése | x | x | x| |
-|[Meghatalmazásos folyamat](v1-oauth2-on-behalf-of-flow.md) | hozzáférési jogkivonat| x| x| x| |
+|[Meghatalmazásos folyamat](v1-oauth2-on-behalf-of-flow.md) | Hozzáférési jogkivonat| x| x| x| |
 |[Ügyfél-hitelesítő adatok](v1-oauth2-client-creds-grant-flow.md) | | | x (csak alkalmazás)| | |
 
 Az implicit módban kiállított tokenek hossza korlátozott, mert az URL-címen át kell adni a böngészőnek (ahol a `response_mode` `query` vagy `fragment`).  Egyes böngészőkben korlátozva van a böngészőablakban elhelyezhető URL-cím mérete, és a művelet nem hajtható végre, ha túl hosszú.  Így ezek a jogkivonatok nem rendelkeznek `groups` vagy `wids` jogcímekkel. 

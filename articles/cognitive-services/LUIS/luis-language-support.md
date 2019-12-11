@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 83fd06078500be7b5bd58e9ea92d957f9d77f892
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: f6b95f76af4c83459ac81ff1703d8588f649326c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904211"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970542"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelv és régió támogatása
 
@@ -33,11 +33,12 @@ LUIS a következő nyelveken ismeri fel a hosszúságú kimondott szöveg:
 | Nyelv |Területi beállítás  |  Előre elkészített tartomány | Előre elkészített entitás | Kifejezések listája – javaslatok | **[text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Hangulat és<br>Kulcsszavak|
 |--|--|:--:|:--:|:--:|:--:|
 | Amerikai angol |`en-US` | ✔ | ✔  |✔|✔|
+| Arab (előzetes verzió – modern standard arab) |`ar-AR`|-|-|-|-|
 | *[kínai](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| holland |`nl-NL` |✔|  -   |-|✔|
-| Francia (franciaországi) |`fr-FR` |✔| ✔ |✔ |✔|
+| Holland |`nl-NL` |✔|  -   |-|✔|
+| Francia (Franciaország) |`fr-FR` |✔| ✔ |✔ |✔|
 | Francia (Kanada) |`fr-CA` |-|   -   |-|✔|
-| német |`de-DE` |✔| ✔ |✔ |✔|
+| Német |`de-DE` |✔| ✔ |✔ |✔|
 | hindi | `hi-IN`|-|-|-|-|
 | olasz |`it-IT` |✔| ✔ |✔|✔|
 | [japán](#japanese-support-notes) * |`ja-JP` |✔| ✔ |✔|Csak a kulcs kifejezése|
@@ -66,7 +67,7 @@ Tekintse meg a beszédfelismerés [által támogatott nyelvek](https://docs.micr
 A támogatott nyelvek és állapotok listáját a Bing Spell Check [támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) című részben tekintheti meg.
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Ritka vagy idegen szavak egy alkalmazásban
-A `en-us` kultúrában LUIS megtanulja a legtöbb angol szót megkülönböztetni, beleértve a szlenget is. A `zh-cn` kultúrában LUIS megtanulja a legtöbb kínai karakter megkülönböztetését. Ha `en-us` vagy karaktert használó ritka szót használ `zh-cn`ban, és láthatja, hogy a LUIS úgy tűnik, hogy nem tudja megkülönböztetni ezt a szót vagy karaktert, ezt a szót vagy karaktert felveheti egy [kifejezés-lista szolgáltatásba](luis-how-to-add-features.md). Például az alkalmazás kultúráján kívüli szavak – azaz idegen szavak – egy kifejezés-lista szolgáltatásba kerülnek. 
+A `en-us` kultúrában LUIS megtanulja a legtöbb angol szót megkülönböztetni, beleértve a szlenget is. A `zh-cn` kultúrában LUIS megtanulja a legtöbb kínai karakter megkülönböztetését. Ha `en-us` vagy karaktert használó ritka szót használ `zh-cn`ban, és láthatja, hogy a LUIS úgy tűnik, hogy nem tudja megkülönböztetni ezt a szót vagy karaktert, ezt a szót vagy karaktert felveheti egy [kifejezés-lista szolgáltatásba](luis-how-to-add-features.md). Például az alkalmazás kultúráján kívüli szavak – azaz idegen szavak – egy kifejezés-lista szolgáltatásba kerülnek.
 
 <!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
@@ -78,12 +79,13 @@ A gépi tanulás elvégzéséhez LUIS a kulturális környezet alapján megszak�
 
 |Nyelv|  minden szóköz vagy speciális karakter | karakter szintje|összetett szavak|[visszaadott jogkivonat-entitás](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
+|arab|||||
 |kínai||✔||✔|
-|holland|||✔|✔|
+|Holland|||✔|✔|
 |Angol (en-us)|✔ ||||
 |Francia (FR-FR)|✔||||
 |Francia (FR-CA)|✔||||
-|német|||✔|✔|
+|Német|||✔|✔|
 | hindi |✔|-|-|-|-|
 |olasz|✔||||
 |japán||||✔|
@@ -96,16 +98,16 @@ A gépi tanulás elvégzéséhez LUIS a kulturális környezet alapján megszak�
 
 A következő kultúrákban egyéni tokenizer verziók szerepelnek:
 
-|Kulturális környezet|Verzió|Cél|
+|Kulturális környezet|Verzió|Rendeltetés|
 |--|--|--|
-|német<br>`de-de`|1.0.0|A szavakat Tokenizes egy gépi tanuláson alapuló tokenizer, amely az összetett szavakat egyetlen összetevőjére próbálja bontani.<br>Ha a felhasználó a `Ich fahre einen krankenwagen`t adja meg, a rendszer `Ich fahre einen kranken wagen`ra vált. `kranken` és `wagen` egymástól függetlenül történő megjelölésének engedélyezése a különböző entitások szerint.|
-|német<br>`de-de`|1.0.2|Tokenizes a szavakat a szóközök felosztásával.<br> Ha a felhasználó bekerül `Ich fahre einen krankenwagen`ként, akkor egyetlen token marad. Így `krankenwagen` egyetlen entitásként van megjelölve. |
+|Német<br>`de-de`|1.0.0|A szavakat Tokenizes egy gépi tanuláson alapuló tokenizer, amely az összetett szavakat egyetlen összetevőjére próbálja bontani.<br>Ha a felhasználó a `Ich fahre einen krankenwagen`t adja meg, a rendszer `Ich fahre einen kranken wagen`ra vált. `kranken` és `wagen` egymástól függetlenül történő megjelölésének engedélyezése a különböző entitások szerint.|
+|Német<br>`de-de`|1.0.2|Tokenizes a szavakat a szóközök felosztásával.<br> Ha a felhasználó bekerül `Ich fahre einen krankenwagen`ként, akkor egyetlen token marad. Így `krankenwagen` egyetlen entitásként van megjelölve. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Áttelepítés tokenizer-verziók között
 <!--
-Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID. 
+Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID.
 
-Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`. 
+Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`.
 
 ```JSON
 {
@@ -154,7 +156,7 @@ Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`.
 }
 ```
 
-Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersion`. 
+Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersion`.
 
 ```JSON
 {
@@ -204,6 +206,6 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 ```
 -->
 
-A jogkivonatok létrehozása az alkalmazás szintjén történik. A verzió szintű jogkivonatok létrehozása nem támogatott. 
+A jogkivonatok létrehozása az alkalmazás szintjén történik. A verzió szintű jogkivonatok létrehozása nem támogatott.
 
-[Importálja a fájlt új alkalmazásként](luis-how-to-start-new-app.md)a verzió helyett. Ez a művelet azt jelenti, hogy az új alkalmazáshoz egy másik alkalmazás-azonosító tartozik, de a fájlban megadott tokenizer-verziót használja. 
+[Importálja a fájlt új alkalmazásként](luis-how-to-start-new-app.md)a verzió helyett. Ez a művelet azt jelenti, hogy az új alkalmazáshoz egy másik alkalmazás-azonosító tartozik, de a fájlban megadott tokenizer-verziót használja.

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: fb3d2e70d9485c63d6de156abe9d192afa818814
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3cf4f2314c7de2b2f7d581faeea88fe3c3177e81
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075088"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975057"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Azure Application Gateway önaláírt tanúsítvány létrehozása egyéni legfelső szintű HITELESÍTÉSSZOLGÁLTATÓval
 
@@ -24,7 +24,7 @@ A Application Gateway alapértelmezés szerint megbízhatónak minősíti a webh
 > [!NOTE]
 > Az önaláírt tanúsítványok alapértelmezés szerint nem megbízhatók, és nehéz lehet fenntartani őket. Emellett elavult kivonatoló és titkosító csomagokat is használhatnak, amelyek esetleg nem erősek. A biztonság érdekében érdemes megvásárolnia egy jól ismert hitelesítésszolgáltató által aláírt tanúsítványt.
 
-Ez a cikk azt ismerteti, hogyan lehet:
+Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 - Saját egyéni hitelesítésszolgáltató létrehozása
 - Egyéni HITELESÍTÉSSZOLGÁLTATÓ által aláírt önaláírt tanúsítvány létrehozása
@@ -106,7 +106,7 @@ A CSR egy nyilvános kulcs, amelyet a rendszer a tanúsítvány igénylése sor�
 1. A tanúsítvány létrehozásához használja a következő parancsot:
 
    ```
-   openssl x509 -req -in fabrikam.csr -CA public.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
+   openssl x509 -req -in fabrikam.csr -CA  contoso.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
    ```
 ### <a name="verify-the-newly-created-certificate"></a>Az újonnan létrehozott tanúsítvány ellenőrzése
 
@@ -159,7 +159,7 @@ A következő konfiguráció egy példa a [NGINX-kiszolgáló blokkolására](ht
 
 1. Adja hozzá a főtanúsítványt a számítógép megbízható legfelső szintű tárolójához. Amikor hozzáfér a webhelyhez, győződjön meg arról, hogy a teljes tanúsítványlánc látható a böngészőben.
 
-   ![Megbízható legfelső szintű tanúsítványok](media/self-signed-certificates/trusted-root-cert.png)
+   ![Megbízható főtanúsítványok](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
    > Feltételezzük, hogy a DNS úgy lett konfigurálva, hogy a webkiszolgáló nevét (ebben a példában www.fabrikam.com) a webkiszolgáló IP-címére mutasson. Ha nem, akkor szerkesztheti a [hosts fájlt](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) a név feloldásához.
@@ -269,7 +269,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
     ![HTTPS-mintavétel](media/self-signed-certificates/https-probe.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Application Gateway SSL\TLS kapcsolatban, tekintse meg az [SSL-lezárás áttekintése és a végpontok közötti SSL a Application Gateway](ssl-overview.md)használatával című cikket.
 

@@ -8,14 +8,14 @@ manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: d1c709beb225dff0ae616a23eb67eb57f4643ac9
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 50132593ce3301094ea39546f5661df06a716503
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812762"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976587"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Gyors útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)
 
@@ -37,7 +37,7 @@ Ebben a cikkben a paraméterekkel bővítjük ezt az alkalmazást, hogy kezelni 
    | Beállítás            | Ajánlott érték | Leírás                                                                                               |
    | ------------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
    | Név               | Javítás OnOff           | A paraméter leíró neve                                                                     |
-   | Globális          | nincs bejelölve       | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan a projekt összes parancsára vonatkozik-e |
+   | Globális          | Nincs bejelölve       | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan a projekt összes parancsára vonatkozik-e |
    | Szükséges           | ellenőrizni         | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt          |
    | Válasz sablonja  | Be-vagy kikapcsolva?      | A paraméter értékének megadására vonatkozó kérés, ha nem ismert                                       |
    | Type (Típus)               | Sztring          | A paraméter típusa, például szám, karakterlánc vagy dátum/idő                                               |
@@ -49,7 +49,7 @@ Ebben a cikkben a paraméterekkel bővítjük ezt az alkalmazást, hogy kezelni 
    | Beállítás            | Ajánlott érték   | Leírás                                                                                               |
    | ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------- |
    | Név               | SubjectDevice     | A paraméter leíró neve                                                                     |
-   | Globális          | nincs bejelölve         | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan a projekt összes parancsára vonatkozik-e |
+   | Globális          | Nincs bejelölve         | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan a projekt összes parancsára vonatkozik-e |
    | Szükséges           | ellenőrizni           | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt          |
    | Válasz sablonja  | Melyik eszköz?     | A paraméter értékének megadására vonatkozó kérés, ha nem ismert                                       |
    | Type (Típus)               | Sztring            | A paraméter típusa, például szám, karakterlánc vagy dátum/idő                                               |

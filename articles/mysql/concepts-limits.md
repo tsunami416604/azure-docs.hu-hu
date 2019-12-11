@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/2/2019
-ms.openlocfilehash: 07feb3ebf9720d70da441486fd0b2e6e274b68e4
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/9/2019
+ms.openlocfilehash: 8b3d6ea46c4a88187b70b520457ad34f7e7f36ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770917"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975142"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>A Azure Database for MySQL korlátozásai
 A következő szakaszok ismertetik a kapacitást, a tárolási motor támogatását, a jogosultságok támogatását, az adatmanipulációs nyilatkozatok támogatását és az adatbázis-szolgáltatás működési korlátait. Lásd még a MySQL-adatbázismotor esetében alkalmazandó [általános korlátozásokat](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) is.
@@ -23,17 +23,17 @@ A kapcsolatok maximális száma az árképzési szinten és a virtuális mag a k
 |---|---|---|
 |Basic| 1| 50|
 |Basic| 2| 100|
-|Általános rendeltetés| 2| 300|
-|Általános rendeltetés| 4| 625|
-|Általános rendeltetés| 8| 1250|
-|Általános rendeltetés| 16| 2500|
-|Általános rendeltetés| 32| 5000|
-|Általános rendeltetés| 64| 10000|
-|Memóriára optimalizált| 2| 600|
-|Memóriára optimalizált| 4| 1250|
-|Memóriára optimalizált| 8| 2500|
-|Memóriára optimalizált| 16| 5000|
-|Memóriára optimalizált| 32| 10000|
+|Általános rendeltetés| 2| 600|
+|Általános rendeltetés| 4| 1250|
+|Általános rendeltetés| 8| 2500|
+|Általános rendeltetés| 16| 5000|
+|Általános rendeltetés| 32| 10000|
+|Általános rendeltetés| 64| 20000|
+|Memóriára optimalizált| 2| 1250|
+|Memóriára optimalizált| 4| 2500|
+|Memóriára optimalizált| 8| 5000|
+|Memóriára optimalizált| 16| 10000|
+|Memóriára optimalizált| 32| 20000|
 
 Ha a kapcsolatok túllépik a korlátot, a következő hibaüzenet jelenhet meg:
 > HIBA 1040 (08004): túl sok kapcsolat

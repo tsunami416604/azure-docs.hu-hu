@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 228b00a19bac9c773fce8e502d302314821fbf39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1644c00aea8eefa78550c8d0238dbedab0378492
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871639"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968698"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay streaming iOS-hez 
 
@@ -33,9 +33,9 @@ ms.locfileid: "67871639"
 
 A Azure Media Services jól megtervezett [tartalomvédelem-szolgáltatásokat](https://azure.microsoft.com/services/media-services/content-protection/) biztosít, amelyek a következőket fedik le:
 
-- A Microsoft PlayReady
-- A Google Widevine
-- Az Apple FairPlay
+- Microsoft-PlayReady
+- Google Widevine
+- Apple FairPlay
 - AES-128-titkosítás
 
 A digitális jogkezelési (DRM)/Advanced Encryption Standard (AES) titkosítását a rendszer dinamikusan hajtja végre különböző folyamatos átviteli protokollok esetén. A DRM-licenc/AES-visszafejtési kulcs kézbesítési szolgáltatásait a Media Services is megadja.
@@ -114,7 +114,7 @@ Adja hozzá a AssetDeliveryPolicyConfigurationKey az itt látható módon:
 
 A lépés után a < Dictionary_AssetDeliveryPolicyConfigurationKey > sztring az FPS-eszköz kézbesítési házirendjében a következő három bejegyzést tartalmazza:
 
-* AssetDeliveryPolicyConfigurationKey. FairPlayBaseLicenseAcquisitionUrl vagy AssetDeliveryPolicyConfigurationKey. FairPlayLicenseAcquisitionUrl, az olyan tényezőktől függően, mint a használt FPS KSM/Key Server, valamint hogy ugyanazt az adatátviteli szolgáltatást használja-e újra házirend több eszköz között
+* AssetDeliveryPolicyConfigurationKey. FairPlayBaseLicenseAcquisitionUrl vagy AssetDeliveryPolicyConfigurationKey. FairPlayLicenseAcquisitionUrl, az olyan tényezőktől függően, mint a használt FPS-KSM/kulcs-kiszolgáló, valamint hogy ugyanazt az adatátviteli szabályzatot több eszközön is felhasználja-e
 * AssetDeliveryPolicyConfigurationKey.CommonEncryptionIVForCbcs
 * AssetDeliveryPolicyConfigurationKey.AllowPersistentLicense
 
@@ -123,18 +123,18 @@ Most a Media Services-fiókja az offline FairPlay-licencek továbbítására van
 ## <a name="sample-ios-player"></a>IOS-lejátszó minta
 Az FPS nélküli offline üzemmódú támogatás csak iOS 10 és újabb rendszereken érhető el. Az FPS Server SDK (3,0-es vagy újabb verzió) tartalmazza a dokumentumot és a mintát az FPS offline üzemmódhoz. Pontosabban, az FPS Server SDK (3,0-es vagy újabb verzió) a következő két, offline üzemmódhoz kapcsolódó elemet tartalmazza:
 
-* Dokumentum "Offline lejátszás az FairPlay streaming és a HTTP Live Streaming." Apple, szeptember 14., 2016. Az FPS Server SDK 4,0-es verziójában ez a dokumentum egyesül a fő FPS-dokumentumba.
-* Mintakód: HLSCatalog-minta a \FairPlay Streaming Server SDK 3.1-es verziójában (offline mód) a Development\Client\HLSCatalog_With_FPS\HLSCatalog\. A HLSCatalog-minta alkalmazásban a következő kódrészletek használatosak az offline üzemmódú szolgáltatások megvalósításához:
+* Dokumentum: "offline lejátszás FairPlay streaming és HTTP Live Streaming." Apple, szeptember 14., 2016. Az FPS Server SDK 4,0-es verziójában ez a dokumentum egyesül a fő FPS-dokumentumba.
+* Mintakód: HLSCatalog minta az FPS kapcsolat nélküli módban a \FairPlay Streaming Server SDK 3.1-es verziójában \ Development\Client\ HLSCatalog_With_FPS \HLSCatalog\. A HLSCatalog-minta alkalmazásban a következő kódrészletek használatosak az offline üzemmódú szolgáltatások megvalósításához:
 
-    - AssetPersistenceManager. SWIFT-kód fájlja: A AssetPersistenceManager a minta fő osztálya, amely a következőket mutatja be:
+    - AssetPersistenceManager. Swift-kódrészlet: az AssetPersistenceManager a minta fő osztálya, amely a következőket mutatja be:
 
         - Kezelheti a HLS-adatfolyamok letöltését, például a letöltések elindításához és lemondásához használt API-kat, valamint a meglévő eszközöket az eszközökön.
         - A letöltési folyamat figyelése.
-    - AssetListTableViewController. Swift és AssetListTableViewCell. SWIFT kód fájljai: A AssetListTableViewController a minta fő felülete. Felsorolja azokat az eszközöket, amelyeket a minta használhat a letöltés lejátszásához, letöltéséhez, törléséhez vagy megszakításához. 
+    - AssetListTableViewController. Swift és AssetListTableViewCell. Swift Code Files: a AssetListTableViewController a minta fő felülete. Felsorolja azokat az eszközöket, amelyeket a minta használhat a letöltés lejátszásához, letöltéséhez, törléséhez vagy megszakításához. 
 
 Ezek a lépések bemutatják, hogyan állíthat be egy futó iOS-lejátszót. Tegyük fel, hogy az FPS Server SDK-ban a HLSCatalog mintából indul el a következő kód módosításával:
 
-A HLSCatalog\Shared\Managers\ContentKeyDelegate.Swift alkalmazásban implementálja `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` a metódust a következő kóddal. Hagyja, hogy a "drmUr" változó legyen a HLS URL-címhez rendelve.
+A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift-ben a következő kód használatával hajtsa végre a `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` metódust. Hagyja, hogy a "drmUr" változó legyen a HLS URL-címhez rendelve.
 
 ```swift
     var ckcData: Data? = nil
@@ -167,7 +167,7 @@ A HLSCatalog\Shared\Managers\ContentKeyDelegate.Swift alkalmazásban implementá
     return ckcData
 ```
 
-A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift-ben implementálja `requestApplicationCertificate()`a metódust. Ez a megvalósítás attól függ, hogy a tanúsítványt (csak nyilvános kulcs) ágyazza-e be az eszközzel, vagy a tanúsítványt a weben tárolja. A következő implementáció a tesztelési mintákban használt üzemeltetett alkalmazás tanúsítványát használja. Hagyja, hogy a "certUrl" olyan változó legyen, amely az alkalmazás tanúsítványának URL-címét tartalmazza.
+A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift-ben implementálja `requestApplicationCertificate()`metódust. Ez a megvalósítás attól függ, hogy a tanúsítványt (csak nyilvános kulcs) ágyazza-e be az eszközzel, vagy a tanúsítványt a weben tárolja. A következő implementáció a tesztelési mintákban használt üzemeltetett alkalmazás tanúsítványát használja. Hagyja, hogy a "certUrl" olyan változó legyen, amely az alkalmazás tanúsítványának URL-címét tartalmazza.
 
 ```swift
 func requestApplicationCertificate() throws -> Data {
@@ -201,18 +201,18 @@ A Media Services három tesztelési mintája a következő három forgatókönyv
 Ezek a minták [ebben a bemutató webhelyen](https://aka.ms/poc#22)találhatók, és az Azure-webalkalmazásban üzemeltetett megfelelő alkalmazás-tanúsítvánnyal is rendelkeznek.
 Ha az FPS Server SDK 3-as vagy 4-es verziójú verzióját használja, és ha egy fő lista másodlagos hangot tartalmaz, offline módban csak hanglejátszást használ. Ezért szalagra kell állítania a másodlagos hangot. Más szóval a korábban felsorolt második és harmadik minták online és offline módban is működnek. A felsorolt minta először csak az offline módban, míg az online streaming megfelelően működik.
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 A következő gyakran ismételt kérdések segítséget nyújtanak a hibaelhárításhoz:
 
 - **Miért csak a hang lejátszása, de a videó nem érhető el offline módban?** Ez a viselkedés úgy tűnik, hogy a minta alkalmazás megtervezése. Ha egy másodlagos hangsáv van jelen (amely a HLS esetében) az offline módban, az iOS 10 és az iOS 11 alapértelmezett értéke a másodlagos hangsávoknak. Ha kompenzálni szeretné ezt a viselkedést az FPS kapcsolat nélküli módban, távolítsa el a másodlagos hangsávot az adatfolyamból. Ha ezt Media Services szeretné elvégezni, adja hozzá a "csak hang = hamis" nevű dinamikus jegyzékfájlt. Más szóval a HLS URL-címe a következővel végződik:. ISM/manifest (Format = m3u8-AAPL, csak hang = hamis). 
 - **A csak hang hozzáadása után miért is csak a videó lejátszása offline módban** A Content Delivery Network (CDN) gyorsítótár-kulcsának megtervezése alapján előfordulhat, hogy a tartalom gyorsítótárazva van. A gyorsítótár kiürítése.
 - **Az FPS offline mód is támogatott az iOS 11 rendszeren az iOS 10 mellett?** Igen. Az FPS kapcsolat nélküli üzemmód az iOS 10 és az iOS 11 esetében támogatott.
 - **Miért nem találom a "kapcsolat nélküli lejátszás az FairPlay Streamingtel és a HTTP Live Streaming" dokumentumot az FPS Server SDK-ban?** Az FPS Server SDK 4-es verziója óta ez a dokumentum a "FairPlay streaming programozási útmutatójában" lett egyesítve.
-- **Mit jelent az utolsó paraméter a következő API-ban az FPS kapcsolat nélküli módban?** 
+- **Mit jelent az utolsó paraméter a következő API-ban az fps kapcsolat nélküli módban?** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
     Az API dokumentációja: [FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration metódus](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). A paraméter az offline bérlet időtartamát jelöli, és az órát az egységként.
-- **Mi a letöltött/offline fájl szerkezete iOS-eszközökön?** Az iOS-eszközön a letöltött fájl szerkezete a következő képernyőképre hasonlít. A `_keys` mappa a letöltött fps-licenceket egy áruházbeli fájllal tárolja az egyes licencelési szolgáltatások gazdagépei számára. A `.movpkg` mappa tárolja a hang-és video-tartalmakat. Az első mappa, amelynek a neve szaggatott vonallal végződik, majd egy numerikus tartalmat tartalmaz. A numerikus érték a PeakBandwidth. A második mappa, amelynek neve kötőjel, majd 0, hanganyagot tartalmaz. Az "adat" nevű harmadik mappa az FPS-tartalom fő lejátszási listáját tartalmazza. Végül a boot. XML a `.movpkg` mappa tartalmának teljes leírását tartalmazza. 
+- **Mi a letöltött/offline fájl szerkezete iOS-eszközökön?** Az iOS-eszközön a letöltött fájl szerkezete a következő képernyőképre hasonlít. A `_keys` mappa a letöltött FPS-licenceket tárolja, egyetlen tárolási fájllal az egyes licencelési szolgáltatások gazdagépei számára. A `.movpkg` mappa hang-és videotartalom-tartalmat tárol. Az első mappa, amelynek a neve szaggatott vonallal végződik, majd egy numerikus tartalmat tartalmaz. A numerikus érték a PeakBandwidth. A második mappa, amelynek neve kötőjel, majd 0, hanganyagot tartalmaz. Az "adat" nevű harmadik mappa az FPS-tartalom fő lejátszási listáját tartalmazza. Végül a boot. XML a `.movpkg` mappa tartalmának teljes leírását tartalmazza. 
 
 ![Offline FairPlay iOS minta alkalmazás fájljának szerkezete](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
 
@@ -245,10 +245,18 @@ Egy minta rendszerindító. xml fájl:
 </HLSMoviePackage>
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="additional-notes"></a>További megjegyzések
+
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
+
+## <a name="summary"></a>Összefoglalás
 Ez a dokumentum az alábbi lépésekkel és információkkal rendelkezik, amelyekkel az FPS offline üzemmódot implementálhatja:
 
 * Media Services a tartalomvédelem konfigurálása a Media Services .NET API-val a dinamikus FairPlay-titkosítás és a FairPlay-licenc kézbesítése a Media Servicesban.
 * Az FPS Server SDK-ból származó minta alapján iOS-lejátszók olyan iOS-lejátszót állítanak be, amely képes az FPS-tartalmak lejátszására online streaming módban vagy offline módban.
 * A minta FPS-videók az offline üzemmód és az online streaming tesztelésére szolgálnak.
 * A gyakori kérdések az FPS kapcsolat nélküli üzemmódra vonatkozó kérdésekre adnak választ.
+
+## <a name="next-steps"></a>Következő lépések
+
+[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

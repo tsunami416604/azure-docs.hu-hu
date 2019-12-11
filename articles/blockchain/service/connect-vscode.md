@@ -1,15 +1,15 @@
 ---
 title: A Visual Studio Code használata az Azure Blockchain szolgáltatáshoz való kapcsolódáshoz
 description: Kapcsolódás Azure Blockchain Service Consortium-hálózathoz a Visual Studio Code-ban található Ethereum-bővítményhez készült Azure Blockchain Development Kit használatával
-ms.date: 11/19/2019
+ms.date: 12/05/2019
 ms.topic: quickstart
 ms.reviewer: chrisseg
-ms.openlocfilehash: 4d4625df1cb07818dcadb88e2c98bf9ae1da1b1f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1bcdfdafa9253fc4dc20ccb7cc237cb794b0af53
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455984"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977069"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Gyors útmutató: Azure Blockchain Service Consortium-hálózathoz való kapcsolódás a Visual Studio Code használatával
 
@@ -59,12 +59,12 @@ A konzorcium tagjaihoz az Azure Blockchain Development Kit VS Code bővítmény 
 Ha nincs hozzáférése az Azure Blockchain Service Consortium egyik tagjához, hajtsa végre az előfeltételként szükséges rövid útmutatót [: hozzon létre egy Blockchain-tagot a Azure Portal vagy a](create-member.md) rövid útmutató [: Azure Blockchain Service Blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md).
 
 1. A VS Code Explorer ablaktáblán bontsa ki az **Azure Blockchain** bővítményt.
-1. Válassza **a kapcsolódás konzorciumhoz**lehetőséget.
+1. Válassza **a kapcsolódás hálózathoz**lehetőséget.
 
-   ![Kapcsolódás a konzorciumhoz](./media/connect-vscode/connect-consortium.png)
+   ![Kapcsolódás a hálózathoz](./media/connect-vscode/connect-consortium.png)
 
     Ha az Azure-hitelesítésre kéri, kövesse az utasításokat a böngészőben való hitelesítéshez.
-1. Válassza a **Kapcsolódás az Azure Blockchain Service consortiumhoz** lehetőséget a parancssor legördülő menüben.
+1. Válassza ki az **Azure Blockchain szolgáltatást** a parancs-paletta legördülő menüben.
 1. Válassza ki az Azure Blockchain Service Consortium-taghoz társított előfizetést és erőforráscsoportot.
 1. Válassza ki a konzorciumot a listából.
 

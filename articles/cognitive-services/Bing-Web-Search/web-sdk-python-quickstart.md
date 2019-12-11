@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Bing Web Search SDK Pythonhoz készült használata'
+title: 'Rövid útmutató: A Pythonhoz készült Bing Web Search SDK használata'
 titleSuffix: Azure Cognitive Services
 description: A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a Python-alkalmazásába. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
 services: cognitive-services
@@ -8,24 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: d6758fc5434406e42acf65ff3b712227b5cec0f8
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f6dceac3e46f8e36d2da52c15c0b0696e026a0e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991624"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977216"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Gyors útmutató: A Bing Web Search SDK Pythonhoz készült használata
+# <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Rövid útmutató: A Pythonhoz készült Bing Web Search SDK használata
 
 A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a Python-alkalmazásába. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
 
 Szeretné most rögtön megtekinteni a kódot? A [Pythonhoz készült Bing Web Search SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) megtekinthetők a GitHubon.
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 A Bing Web Search SDK a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös, és 3.6-os verziójával kompatibilis. Jelen rövid útmutatóhoz ajánlott egy virtuális környezet használata.
@@ -33,6 +29,8 @@ A Bing Web Search SDK a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös, és 3.6-os verzi
 * Python 2.7, 3.3, 3.4, 3.5 vagy 3.6
 * [virtualenv](https://docs.python.org/3/tutorial/venv.html) a Python 2.7 esetében
 * [venv](https://pypi.python.org/pypi/virtualenv) a Python 3.x esetében
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-and-configure-your-virtual-environment"></a>A virtuális környezet létrehozása és konfigurálása
 
@@ -82,7 +80,7 @@ Ha a válasz tartalmaz weblapokat, képeket, cikkeket vagy videókat, a rendszer
 
 1. Hozzon létre egy új Python-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 
-1. Másolja ezt a mintakódot a projektbe:  
+1. Másolja a mintát a projektbe. `endpoint` lehet az alábbi globális végpont, vagy az erőforrás Azure Portal megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja:  
 
     ```python
     # Import required modules.
@@ -166,13 +164,13 @@ Ha a válasz tartalmaz weblapokat, képeket, cikkeket vagy videókat, a rendszer
 
 1. Cserélje le a `SUBSCRIPTION_KEY` értékét egy érvényes előfizetői azonosítóra.
 
-1. Cserélje le `YOUR_ENDPOINT` a portálon a végpont URL-címét.
+1. Cserélje le a `YOUR_ENDPOINT`t a végpont URL-címére a portálon.
 
 1. Futtassa a programot. Például: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>Függvények definiálása és az eredmények szűrése
 
-Most, hogy létrehozta az első hívás a Bing Web Search API, tekintsük át néhány funkciók. A következő szakaszok kiemelnek SDK funkciókat lekérdezések pontosítását és szűrés eredményei. A Python program, az előző szakaszban létrehozott minden egyes függvény is hozzáadhatók.
+Most, hogy elvégezte az első hívását a Bing Web Search APIra, nézzük meg néhány funkciót. A következő részekben a lekérdezések finomítására és az eredmények szűrésére szolgáló SDK-funkciók vannak kiemelve. Az egyes függvények hozzáadhatók az előző szakaszban létrehozott Python-programhoz.
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>A Bing által visszaadott eredmények számának korlátozása
 
@@ -312,11 +310,11 @@ Ez a példa a `answer_count`, a `promote` és a `safe_search` paraméter segíts
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót a program kódjából és inaktiválni a virtuális környezetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Cognitive Services Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Azure Python SDK-referencia](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch)

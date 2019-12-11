@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4b1c1a963b065411f1a0ab84141bdf1835930ebb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821283"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973543"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Nyilvános adatkészletek teszteléshez és prototípusokhoz
 
@@ -26,7 +26,7 @@ Tallózással keresse meg a nyilvános adatkészletek azon listáját, amely has
 
 | Adatforrás | Tudnivalók az adatokról | Tudnivalók a fájlokról |
 |---|---|---|
-| [USA kormányzati adatszolgáltatások](https://www.census.gov/data.html) | Több mint 190 000 adathalmaz, amely a mezőgazdaság, az éghajlat, a fogyasztó, az ökoszisztémák, az oktatás, az energia, a pénzügy, az egészségügy, a helyi kormányzat, a gyártás, a tengerészeti, az óceán, a közbiztonság, valamint az Egyesült Államok területén | Különböző formátumú fájlok különböző formátumokban, például HTML, XML, CSV, JSON, Excel és sok más méretben. A rendelkezésre álló adatkészleteket fájlformátum alapján szűrheti. |
+| [USA kormányzati adatszolgáltatások](https://catalog.data.gov/dataset) | Több mint 250 000 adathalmaz, amely a mezőgazdaság, az éghajlat, a fogyasztó, az ökoszisztémák, az oktatás, az energia, a pénzügy, az egészségügy, a helyi kormányzat, a gyártás, a tengerészeti, az óceán, a közbiztonság, valamint az Egyesült Államok területén | Különböző formátumú fájlok különböző formátumokban, például HTML, XML, CSV, JSON, Excel és sok más méretben. A rendelkezésre álló adatkészleteket fájlformátum alapján szűrheti. |
 | [Egyesült államokbeli népszámlálási adatai](https://www.census.gov/data.html) | Az Egyesült Államok lakosságának statisztikai adatainak ismertetése | Az adatkészletek különböző formátumokban vannak. |
 | [A NASA Earth Science-adatai](https://earthdata.nasa.gov/) | Több mint 32 000 adatgyűjtemény a mezőgazdaság, a környezet, a bioszféra, az éghajlat, a cryosphere, az emberi méretek, a hidroszféra, a földterületek, az óceánok, a Sun-Earth interakciók és egyebek terén. | Az adatkészletek különböző formátumokban vannak. |
 | [Repülőjegy-repülési késések és egyéb szállítási adatszolgáltatások](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Az Egyesült Államok Közlekedési Minisztériuma (DOT) Bureau of közlekedési statisztikája (BTS) nyomon követi a nagyméretű légifuvarozók által üzemeltetett belföldi járatok időbeli teljesítményét. Megjelenik az időponthoz, a késleltetett, a megszakított és a lefordított járatok számával kapcsolatos összegző információ... a webhelyen közzétett összefoglaló táblákban. | A fájlok CSV formátumúak. |

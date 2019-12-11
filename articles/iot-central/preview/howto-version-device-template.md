@@ -3,17 +3,17 @@ title: Az Azure IoT Central-alkalmazások eszköz-sablon verziószámozásának 
 description: Új verziók létrehozásával, valamint az élő csatlakoztatott eszközök hatása nélkül megismételheti az eszközök sablonjait
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 07/17/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 666c3030d91fba3c3bdfe23f808c4e830dff6ec1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1f2ecb37ebe156b1eb092bda95f296c39c9e2baf
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895591"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974964"
 ---
 # <a name="create-a-new-device-template-version-preview-features"></a>Hozzon létre egy új sablon-verziót (előzetes verziójú funkciók)
 
@@ -45,7 +45,7 @@ Eszköz sablonjának verziója:
 1. Nyissa meg az **eszközök sablonjai** lapot.
 1. Válassza ki azt az eszközt, amelyre a verziót kívánja.
 1. Kattintson a lap tetején található **Version (verzió** ) gombra, és adjon meg egy új nevet a sablonnak. Egy új nevet javasoltunk, amely szerkeszthető.
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 1. Most az eszköz sablonja vázlat módban van. Látni fogja, hogy a felületek továbbra is zárolva vannak, és a szerkesztéshez egyenként kell verziót használnia. 
 
 ### <a name="versioning-an-interface"></a>Felület verziószámozása
@@ -58,7 +58,7 @@ Egy felület verziójának megrendeléséhez:
 1. Válassza ki a Piszkozat módban lévő sablont.
 1. Válassza ki azt a felületet, amelyet közzé szeretne tenni, és szerkeszteni kívánja a közzétett módban.
 1. Kattintson a **verzió** gombra a csatoló oldal tetején. 
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 1. Most az illesztőfelület vázlat módban van. A meglévő testreszabások és nézetek megszakítása nélkül lehetősége lesz felvenni vagy szerkeszteni a felület képességeit. 
 
 > [!NOTE]
@@ -79,7 +79,7 @@ Az eszköz sablonjának több verzióját is létrehozhatja. Idővel több csatl
 
 ![Eszköz áttelepítésének módja](media/howto-version-device-template/pick-version.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan használhatja az eszköz sablonjának verzióit az Azure IoT Central alkalmazásban, a következő lépés a javasolt lépés:
 

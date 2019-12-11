@@ -1,80 +1,80 @@
 ---
-title: Beállítása az Azure Import/Export eszköz v1 |} A Microsoft Docs
-description: Megtudhatja, hogyan állíthatja be a meghajtó előkészítése, és javítsa ki az eszközt az Azure Import/Export szolgáltatás. Az Import/Export eszköz v1 utal.
-author: muralikk
+title: Az Azure import/export eszköz v1-es verziójának beállítása | Microsoft Docs
+description: Ismerje meg, hogyan állíthatja be az Azure import/export szolgáltatáshoz készült meghajtó-előkészítési és-javítási eszközt. Ez az importálási/exportálási eszköz v1-re vonatkozik.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: aafff208b9de2ae485fb84be428cf77f237e022e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f523d1ebf5c96596142c6897af2be5f760b3d4b9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477569"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978951"
 ---
-# <a name="setting-up-the-azure-importexport-tool"></a>Az Azure Import/Export eszköz beállítása
-A Microsoft Azure Import/Export eszköz, a meghajtó-előkészítési és -javítás eszköz, amely a Microsoft Azure Import/Export szolgáltatás használata. Az eszköz használható a következő funkciókat:  
+# <a name="setting-up-the-azure-importexport-tool"></a>Az Azure import/export eszköz beállítása
+A Microsoft Azure Import/Export eszköz a Microsoft Azure Import/Export szolgáltatással használható meghajtó-előkészítési és-javítási eszköz. A következő függvényekhez használhatja az eszközt:  
   
--   Importálási feladat létrehozása előtt ezzel az eszközzel másolhat adatokat a merevlemez-meghajtók küldje el a Windows Azure-adatközpontban fog használhatja.  
+-   Importálási feladatok létrehozása előtt az eszköz használatával másolhatja az adatok a Windows Azure adatközpontba szállítandó merevlemezekre.  
   
--   Importálási feladat befejezését követően az eszköz használatával javítsa ki azokat a blobokat, hogy sérültek voltak, lett(ek), vagy ütköző más blobok használata.  
+-   Az importálási feladatok befejezését követően az eszköz használatával kijavíthatja az összes sérült, hiányzó vagy más Blobokkal ütköző blobot.  
   
--   A meghajtók, kap egy befejezett exportálási feladatot, miután az eszköz használatával javítsa ki azokat a fájlokat, sérült vagy hiányzik a meghajtókon is.  
+-   Miután megkapta a meghajtókat egy befejezett exportálási feladatokból, ezzel az eszközzel kijavíthatja a meghajtókon sérült vagy hiányzó fájlokat.  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Importálási feladatokhoz előtt meghajtók, ha megfelelnek a következő előfeltételeknek kell:  
+Ha egy importálási feladatokhoz készít meghajtókat, meg kell felelnie a következő előfeltételeknek:  
   
 -   Aktív Azure-előfizetéssel kell rendelkeznie.  
   
--   Az előfizetésnek tartalmaznia kell egy tárfiókot a fájlok tárolására elegendő lemezterület importálni kívánja.  
+-   Az előfizetésnek tartalmaznia kell egy elegendő szabad hellyel rendelkező Storage-fiókot az importálni kívánt fájlok tárolásához.  
   
--   Szükség van legalább egy, a fiók-kulcsokat a tárfiók.  
+-   A Storage-fiókhoz legalább egy fiók kulcsa szükséges.  
   
--   Windows 7, Windows Server 2008 R2 vagy egy újabb Windows operációs rendszerrel rendelkező számítógépek (a "Másolás gép") van szüksége.  
+-   Szüksége van egy számítógépre (a "számítógép másolása") a Windows 7, a Windows Server 2008 R2 vagy egy újabb Windows operációs rendszerre.  
   
--   A .NET-keretrendszer 4 a másolási gépen kell telepíteni.  
+-   A .NET-keretrendszer 4-es verzióját a másolási gépre kell telepíteni.  
   
--   A BitLocker a másolási gépen engedélyezni kell.  
+-   A BitLockert engedélyezni kell a másolási gépen.  
   
--   Szüksége lesz egy vagy több meghajtó, amely tartalmazza az adatokat az importált vagy üres 3,5 hüvelykes SATA merevlemez-meghajtók másolási géphez csatlakoztatva.  
+-   Szüksége lesz egy vagy több olyan meghajtóra, amely az importálandó vagy üres 3,5 hüvelykes SATA merevlemezeket tartalmazza a másolási géphez.  
   
--   A fájlok importálását tervezi a másolási gép elérhetőknek kell lenniük, egy hálózati megosztásra vagy a helyi merevlemezen vannak-e. 
+-   Az importálni kívánt fájloknak elérhetőnek kell lenniük a másolási gépről, függetlenül attól, hogy hálózati megosztáson vagy helyi merevlemezen találhatók-e. 
   
-Ha az importálás részben meghiúsult javításához, lesz szüksége:  
+Ha egy részlegesen sikertelen importálást próbál kijavítani, a következőkre lesz szüksége:  
   
-- A másolási naplófájlokkal  
+- A naplófájlok másolása  
   
-- A tárfiók kulcsa  
+- A Storage-fiók kulcsa  
   
-  Ha az exportálást, amely részben nem sikerült kijavítani, lesz szüksége:  
+  Ha részlegesen sikertelen exportálást próbál meg kijavítani, a következőkre lesz szüksége:  
   
-- A másolási naplófájlokkal  
+- A naplófájlok másolása  
   
-- A jegyzékfájlok (nem kötelező)  
+- Manifest-fájlok (nem kötelező)  
   
-- A tárfiók kulcsa  
+- A Storage-fiók kulcsa  
   
-## <a name="installing-the-azure-importexport-tool"></a>Az Azure Import/Export eszköz telepítése  
- Az Azure Import/Export eszköz áll a következő fájlokat:  
+## <a name="installing-the-azure-importexport-tool"></a>Az Azure import/export eszköz telepítése  
+ Az Azure import/export eszköz az alábbi fájlokat tartalmazza:  
   
-- WAImportExport.exe  
+- WAImportExport. exe  
   
-- WAImportExport.exe.config  
+- WAImportExport. exe. config  
   
-- WAImportExportCore.dll  
+- WAImportExportCore. dll  
   
-- WAImportExportRepair.dll  
+- WAImportExportRepair. dll  
   
-- Microsoft.WindowsAzure.Storage.dll  
+- Microsoft. WindowsAzure. Storage. dll  
   
-- Hddid.dll  
+- Hddid. dll  
   
-  Ezek a fájlok másolása egy működő könyvtárba, például `c:\WAImportExport`. Ezután nyisson meg egy parancssori ablakot rendszergazdai módban, és a fenti könyvtárat állítja be aktuális könyvtár.  
+  Másolja ezeket a fájlokat egy munkakönyvtárba, például `c:\WAImportExport`. Ezután nyisson meg egy parancssori ablakot rendszergazdai módban, és állítsa be a fenti könyvtárat aktuális könyvtárként.  
   
-  A parancs kimenete, futtassa az eszközt, paraméterek nélkül:  
+  A parancs súgójának kimenetéhez futtassa az eszközt paraméterek nélkül:  
   
 ```  
 WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  
@@ -247,10 +247,10 @@ Examples:
         es\drama /dstdir:movies/drama/ /skipwrite
 ```  
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [Meghajtóhasználat előnézete exportálási feladatokhoz](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
+* [Az exportálási feladatokhoz tartozó meghajtók használatának előzetes megtekintése](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
 * [Feladatok állapotának áttekintése a másolási naplófájlok segítségével](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Importálási feladat javítása](../storage-import-export-tool-repairing-an-import-job-v1.md)   
 * [Exportálási feladat javítása](../storage-import-export-tool-repairing-an-export-job-v1.md)   

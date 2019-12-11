@@ -1,52 +1,52 @@
 ---
-title: Oktatóanyag – létrehozása és kezelése az Azure költségvetése |} A Microsoft Docs
-description: Ez az oktatóanyag segít tervet és optimalizáljuk az Azure-szolgáltatások felhasznált fiók.
+title: Oktatóanyag – Azure-költségvetések létrehozása és kezelése | Microsoft Docs
+description: Ez az oktatóanyag segít megtervezni és felszámítani az Azure-szolgáltatások által felhasznált költségeket.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/12/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: edb46bc361c515439a93d9c3d0b9987bebe4b1b1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4b0e5be0e5f71fa61e3a6c6fa39e720c4c298898
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229878"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967940"
 ---
-# <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Létrehozása és kezelése az Azure költségvetése
+# <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Azure-költségvetések létrehozása és kezelése
 
-A Cost Management költségvetései segítenek a tervezésben és elősegítik a vállalaton belüli elszámolhatóságot. A költségvetések segítségével elszámolhat az egy adott időszak alatt használt vagy előfizetett Azure-szolgáltatásokkal. Ezek segítenek mások tájékoztatja a költségkeret-beállítási proaktív módon kezelheti a költségeket, és figyelheti a költségkeret-beállítási hogyan halad idővel. Ha a létrehozott költségvetés küszöbérték túllépése esetén csak az értesítések aktiválódnak. Az erőforrások egyike sem érintett, és a használat nem leállt. Költségvetése segítségével nyomon követheti a Költekezési, a költségek elemzése és összehasonlítása.
+A Cost Management költségvetései segítenek a tervezésben, és elősegítik a vállalaton belüli elszámolhatóságot. A költségvetések segítségével elszámolhat az egy adott időszak alatt használt vagy előfizetett Azure-szolgáltatásokkal. Segítenek tájékoztatni másokat a kiadásairól, hogy proaktív módon kezeljék a költségeket, és megfigyeljük, hogy a kiadások hogyan haladnak előre. A létrehozott költségvetési küszöbértékek túllépése esetén csak az értesítések kerülnek aktiválásra. A rendszer egyik erőforrást sem érinti, és a felhasználás nem áll le. A költségkeretek segítségével összehasonlíthatja és nyomon követheti a kiadásokat a költségek elemzése során.
 
 A költségek és a használati adatok jellemzően 12-16 órán belül elérhetők, és a költségvetések kiértékelése négy óránként történik. Az e-mailes értesítések általában 12-16 órán belül érkeznek.
 
-A költségvetéshez automatikusan átállítani (havonta, negyedévente vagy évente) időszak végén a költségvetés akkora lejárati dátumot a jövőben kiválasztásakor. A költségvetés akkora alaphelyzetbe állítása, mert kell létrehoznia a különálló költségvetéseket, ha a tervezett pénznem összegek különböznek a későbbi elszámolási időszakokra.
+A költségvetések automatikusan alaphelyzetbe állnak az adott időszak végén (havi, negyedéves vagy évenkénti), amikor a későbbiekben kijelöl egy lejárati dátumot. Mivel ugyanezek a költségvetési összeggel térnek vissza, külön költségvetést kell létrehoznia, ha a költségvetési pénznemek összege eltér a jövőbeli időszakokban.
 
-Ebben az oktatóanyagban szereplő példák végigvezetik létrehozása és módosítása az Azure nagyvállalati szerződés (EA) előfizetésre költségvetést.
+Az oktatóanyagban szereplő példák végigvezetik egy Azure Nagyvállalati Szerződés-(EA-) előfizetés költségvetésének létrehozásán és szerkesztésén.
 
-Tekintse meg, [hogyan hozhat létre költségvetést a kiadások figyeléséhez Azure Cost Management](https://www.youtube.com/watch?v=ExIVG_Gr45A) videóval, hogy megtudja, hogyan hozhat létre költségvetést az Azure-ban a kiadások figyeléséhez.
+Tekintse meg a [költségkeretek alkalmazása az előfizetésekre a Azure Portal videó segítségével](https://www.youtube.com/watch?v=UrkHiUx19Po) , amelyből megtudhatja, hogyan hozhat létre költségvetést az Azure-ban a kiadások figyeléséhez.
 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Költségvetés létrehozása az Azure Portalon
-> * Költségvetési szerkesztése
+> * Hozzon létre költségvetést a Azure Portal
+> * Költségvetés szerkesztése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A költségvetés számos különböző Azure-fióktípus esetében támogatott. A támogatott fióktípus teljes listájának megtekintéséhez lásd: Cost Management- [adat megismerése](understand-cost-mgt-data.md). A költségvetések megtekintéséhez legalább olvasási hozzáféréssel kell rendelkeznie az Azure-fiókhoz.
 
- Azure EA-előfizetések esetén olvasási hozzáféréssel kell rendelkeznie a költségvetések megtekintéséhez. Hozhat létre és kezelheti költségvetése közreműködő engedéllyel kell rendelkeznie. Az EA-előfizetések és -erőforráscsoportok egyes költségvetése hozhat létre. Azonban a nagyvállalati szerződéssel rendelkező fiókok számlázási költségvetése nem hozható létre.
+ Azure EA-előfizetések esetén olvasási hozzáféréssel kell rendelkeznie a költségvetések megtekintéséhez. A költségvetések létrehozásához és kezeléséhez közreműködői engedéllyel kell rendelkeznie. Az EA-előfizetésekhez és az erőforráscsoportokhöz egyéni költségvetést is létrehozhat. Azonban nem hozhat létre költségvetést az EA számlázási fiókokhoz.
 
 A következő Azure-engedélyek vagy-hatókörök a költségvetésre vonatkozó előfizetések szerint felhasználónként és csoportonként támogatottak. További információ a hatókörökről: a [hatókörök megismerése és használata](understand-work-scopes.md).
 
 - Tulajdonos – Költségvetéseket hozhat létre, módosíthat vagy törölhet az előfizetésben.
-- Közreműködő, és a Cost Management közreműködője – létrehozása, módosítása vagy törlése a saját költségvetése. Módosíthatja a mások által létrehozott költségvetések költségvetési összegét.
-- Olvasó és a Cost Management olvasó – megtekintheti a kiadásoktól, amelyek engedéllyel rendelkeznek.
+- Közreműködő és Cost Management közreműködő – saját költségvetésüket hozhat létre, módosíthat vagy törölhet. Módosíthatja a mások által létrehozott költségvetések költségvetési összegét.
+- Olvasó és Cost Management olvasó – megtekintheti azokat a költségvetéseket, amelyekre jogosultak.
 
 További információ az engedélyek Cost Management adatokhoz való hozzárendeléséről: [hozzáférés Kiosztása Cost Management adatokhoz](assign-access-acm-data.md).
 
@@ -54,52 +54,52 @@ További információ az engedélyek Cost Management adatokhoz való hozzárende
 
 - Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
-## <a name="create-a-budget-in-the-azure-portal"></a>Költségvetés létrehozása az Azure Portalon
+## <a name="create-a-budget-in-the-azure-portal"></a>Hozzon létre költségvetést a Azure Portal
 
-Létrehozhat egy Azure-előfizetés költségvetés havi, negyedéves és éves időszakra. A Azure Portal navigációs tartalma határozza meg, hogy létrehoz-e költségvetést egy előfizetéshez vagy egy felügyeleti csoporthoz.
+Létrehozhat egy Azure-előfizetési költségkeretet egy havi, negyedéves vagy éves időszakra. Az Azure Portal navigációs tartalma attól függ, hogy előfizetéshez vagy felügyeleti csoporthoz hozza létre a költségvetést.
 
-Ha költségvetést szeretne létrehozni vagy megtekinteni, nyissa meg a kívánt hatókört a Azure Portalban, és válassza a **költségvetés** lehetőséget a menüben. Például navigáljon az **előfizetések**elemre, válasszon ki egy előfizetést a listából, majd válassza a **költségvetés** lehetőséget a menüben. A **hatókör** pirulát használva váltson át egy másik hatókörre, például egy felügyeleti csoportra a költségvetésekben. További információ a hatókörökről: a [hatókörök megismerése és használata](understand-work-scopes.md).
+Költségvetés létrehozásához vagy megtekintéséhez nyissa meg a kívánt hatókört az Azure Portalon, majd válassza ki a **Költségvetések** lehetőséget a menüben. Például navigáljon az **előfizetések**elemre, válasszon ki egy előfizetést a listából, majd válassza a **költségvetés** lehetőséget a menüben. A **hatókör** pirulát használva váltson át egy másik hatókörre, például egy felügyeleti csoportra a költségvetésekben. További információ a hatókörökről: a [hatókörök megismerése és használata](understand-work-scopes.md).
 
-Után a költségvetés hoz létre, azok őket az aktuális költségeket az egyszerű nézet jelenik meg.
+A költségvetések létrehozása után egy egyszerű nézetben tekintheti meg a hozzájuk tartozó jelenlegi kiadásait.
 
-Kattintson az **Hozzáadás** parancsra.
+Válassza a **Hozzáadás** lehetőséget.
 
-![A már létrehozott költségvetések listáját bemutató példa](./media/tutorial-acm-create-budgets/budgets01.png)
+![A példa a már létrehozott költségvetések listáját mutatja](./media/tutorial-acm-create-budgets/budgets01.png)
 
-A **költségvetés létrehozása** ablakban ellenőrizze, hogy helyes-e a hatókör. Válassza ki a hozzáadni kívánt szűrőket. A szűrők lehetővé teszik, hogy bizonyos költségekkel, például az előfizetésben lévő erőforráscsoportok, vagy egy szolgáltatás, például a virtuális gépek számára hozzon létre költségvetést. A Cost Analysis szolgáltatásban használható szűrőket a költségvetésre is lehet alkalmazni.
+Győződjön meg róla, hogy a **Költségvetés létrehozása** ablakban feltüntetett hatókör helyes. Válassza ki a hozzáadni kívánt szűrőket. A szűrők lehetővé teszik, hogy adott költségekre, például az előfizetésben lévő erőforráscsoportokkal, illetve egy szolgáltatással, például a virtuális gépekkel járó költségekre vonatkozóan hozzon létre költségvetést. A költségelemzések során használt szűrőket alkalmazhatja a költségvetésekre is.
 
-Miután azonosította a hatókört és a szűrőket, írja be a költségvetés nevét. Ezután válassza ki a havi, negyedéves vagy éves költségvetési alaphelyzetbe állítási időszakot. Ez az alaphelyzetbe állítási időszak határozza meg a költségvetés által elemzett időintervallumot. A költségvetés által kiértékelt költségek minden új időszak elején nullával kezdődnek. Negyedéves költségvetési létrehozásakor az havi költségvetési azonos módon működik. A különbség az, hogy a költségvetési összeg a negyedév egyenletesen vannak osztva a három hónapos negyedév. Az éves költségvetési összeg a naptári év 12 hónapja között egyenlően oszlik meg.
+Miután azonosította a hatókört és a szűrőket, gépelje be a költségvetés nevét. Ezután válassza ki a havi, negyedéves vagy éves költségvetési alaphelyzetbe állítási időszakot. Ez a visszaállítási időtartam határozza meg azt az időszakot, amelyet a költségvetés vizsgál. A költségvetés által kiértékelt költség minden új periódus elején nulláról kezdődik. A negyedéves költségvetés ugyanúgy működik, mint a havi költségvetés. A különbség az, hogy a negyedévre vonatkozó költségvetési összeg egyenlően oszlik meg a negyedév három hónapja között. Az éves költségvetési összeg a naptári év mind a 12 hónapja között oszlik meg egyenlően.
 
-Ha utólagos elszámolású, MSDN-vagy Visual Studio-előfizetéssel rendelkezik, előfordulhat, hogy a számla számlázási időszaka nem a naptári hónaphoz igazodik. Az előfizetési típusok és erőforráscsoportok esetében létrehozhat egy költségvetést, amely a számlázási időszakhoz vagy a naptári hónapokhoz van igazítva. A számlázási időszakhoz igazított költségvetés létrehozásához válassza ki a **Számlázási hónap**, a **Számlázási negyedév**vagy a **Számlázási év**alaphelyzetbe állításának időtartamát. A naptári hónapra igazított költségvetés létrehozásához válassza ki a **havi**, **negyedéves**vagy **évenkénti**alaphelyzetbe állítási időszakot.
+Ha használatalapú, MSDN- vagy Visual Studio-előfizetéssel rendelkezik, a számlázási időszak nem feltétlenül esik egybe a naptári hónapokkal. Az ilyen típusú előfizetésekhez és erőforráscsoportokhoz olyan költségvetést is létrehozhat, amely a számlázási időszakhoz vagy a naptári hónapokhoz igazodnak. A számlázási időszakhoz igazított költségvetés létrehozásához válassza ki a **Számlázási hónap**, a **Számlázási negyedév**vagy a **Számlázási év**alaphelyzetbe állításának időtartamát. A naptári hónapra igazított költségvetés létrehozásához válassza ki a **havi**, **negyedéves**vagy **évenkénti**alaphelyzetbe állítási időszakot.
 
-Ezután azonosítsa a lejárati dátumot, amikor a költségvetés érvénytelenné válik, és leállítja a költségek kiértékelését.
+Ezután határozza meg a lejárati dátumot, amikortól a költségvetés érvénytelenné válik, és leáll a költségek kiértékelése.
 
-Az eddigi költségvetésben kiválasztott mezők alapján egy gráf jelenik meg, amely segítséget nyújt a költségkerethez használandó küszöbérték kiválasztásában. A javasolt költségvetés a jövőbeli időszakokban felmerülő legmagasabb becsült költségen alapul. Módosíthatja a költségvetés összegét.
+A költségvetésben eddig kiválasztott mezők alapján egy grafikon jelenik meg, amely segítséget nyújt a költségvetéshez használandó küszöbérték kiválasztásában. A javasolt költségvetés a jövőbeli időszakokban potenciálisan felmerülő legmagasabb becsült költségen alapul. Igény esetén módosíthatja a költségvetési összeget.
 
-![Példa a költségvetés létrehozására havi költségadatok szerint ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
+![Példa költségvetés létrehozására havi költségadatokkal ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-A költségvetés összegének konfigurálása után kattintson a **tovább** gombra a költségvetési riasztások konfigurálásához. Költségvetés legalább egy költséget küszöb (% költségvetés) és a egy megfelelő e-mail-címre van szükség. Szükség esetén belefoglalhatja a legfeljebb öt küszöbértékeket és a egy egyetlen költségvetésben öt e-mail címet. Ha egy költségvetési küszöbérték teljesül, az e-mail-értesítések általában kevesebb mint 20 órát kapnak. További információ az értesítésekről: a [díjszabási riasztások használata](cost-mgt-alerts-monitor-usage-spending.md). Az alábbi példában egy e-mail-riasztás jön létre, amikor eléri a költségvetés 90%-át. Ha költségvetést hoz létre a költségkeretek API-val, szerepköröket rendelhet hozzá a felhasználókhoz a riasztások fogadásához. A szerepkörök nem támogatottak a Azure Portalban. Az Azure budgets API-val kapcsolatos további információkért lásd: [költségkeretek API](/rest/api/consumption/budgets).
+A költségvetés összegének konfigurálása után válassza a **Következő** lehetőséget a költségvetési riasztások konfigurálásához. Meg kell adnia legalább egy költségküszöböt (a költségvetés %-ában) és egy hozzá tartozó e-mail-címet. Igény szerint akár öt küszöbértéket és öt e-mail-címet is megadhat egyetlen költségvetéshez. Ha egy költségvetési küszöbérték teljesül, az e-mail-értesítések általában kevesebb mint 20 órát kapnak. További információ az értesítésekről: a [díjszabási riasztások használata](cost-mgt-alerts-monitor-usage-spending.md). Az alábbi példában egy e-mail-riasztás jön létre, amikor eléri a költségvetés 90%-át. Ha költségvetést hoz létre a költségkeretek API-val, szerepköröket rendelhet hozzá a felhasználókhoz a riasztások fogadásához. A szerepkörök nem támogatottak a Azure Portalban. Az Azure budgets API-val kapcsolatos további információkért lásd: [költségkeretek API](/rest/api/consumption/budgets).
 
 ![Riasztási feltételeket mutató példa](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-Miután létrehozta a költségvetést, a költségek elemzése jelenik meg. Ha megtekinti a költségkeretet a kiadások trendjeivel kapcsolatban, az egyik első lépés a [költségek és a kiadások elemzésének](quick-acm-cost-analysis.md)megkezdése.
+Miután létrehozta a költségvetést, a rendszer megjeleníti annak költségelemzését. Ha megtekinti a költségkeretet a kiadások trendjeivel kapcsolatban, az egyik első lépés a [költségek és a kiadások elemzésének](quick-acm-cost-analysis.md)megkezdése.
 
-![Példa költségvetés és a kiadások a cost analysis látható](./media/tutorial-acm-create-budgets/cost-analysis.png)
+![Példa költségelemzésben kimutatott költségvetésre és kiadásokra](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-Az előző példában létrehozott egy költségvetés-előfizetéssel. Azonban egy erőforráscsoporthoz költségvetési is létrehozhat. Ha egy erőforráscsoport számára szeretne költségvetést létrehozni, keresse meg **Cost Management + számlázási** &gt; **előfizetéseket** &gt; válasszon ki egy előfizetést > **erőforráscsoportot** > válasszon ki egy erőforráscsoportot > **költségvetést** > majd **Adja hozzá** a költségvetést.
+Az előző példában létrehozott egy költségvetést egy előfizetéshez. Költségvetést azonban erőforráscsoportokhoz is létrehozhat. Ha egy erőforráscsoport számára szeretne költségvetést létrehozni, keresse meg **Cost Management + számlázási** &gt; **előfizetéseket** , &gt; válasszon ki egy előfizetést > **erőforráscsoportokat** > válasszon ki egy erőforráscsoportot > **költségvetést** >, majd **adjon hozzá** egy költségvetést.
 
 ## <a name="trigger-an-action-group"></a>Műveleti csoport elindítása
 
-Ha egy előfizetéshez vagy erőforráscsoport-hatókörhöz hoz létre vagy szerkeszt költségvetést, beállíthatja egy műveleti csoport meghívására. A műveleti csoport különböző műveleteket hajthat végre, ha a költségvetési küszöbérték teljesül. A műveleti csoportok jelenleg csak az előfizetés és az erőforráscsoport-hatókörök esetében támogatottak. A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése a Azure Portalban](../azure-monitor/platform/action-groups.md). A költségvetési alapú automatizálás műveleti csoportokkal való használatával kapcsolatos további információkért lásd: [költségek kezelése az Azure-költségvetésekkel](../billing/billing-cost-management-budget-scenario.md).
+Amikor költségvetést hoz létre vagy módosít egy előfizetés vagy erőforráscsoport hatókörére vonatkozóan, konfigurálhatja úgy, hogy meghívjanak egy műveletcsoportot. A műveletcsoport különböző műveleteket hajthat végre a költségvetési küszöbérték elérésekor. A műveleti csoportok jelenleg csak az előfizetés és az erőforráscsoport-hatókörök esetében támogatottak. A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése a Azure Portalban](../azure-monitor/platform/action-groups.md). A költségvetési alapú automatizálás műveleti csoportokkal való használatával kapcsolatos további információkért lásd: [költségek kezelése az Azure-költségvetésekkel](../billing/billing-cost-management-budget-scenario.md).
 
 
 
-A műveleti csoportok létrehozásához vagy frissítéséhez kattintson a **műveleti csoportok kezelése** lehetőségre a költségvetés létrehozásakor vagy szerkesztésekor.
+A műveleti csoportok létrehozásához vagy frissítéséhez válassza a **műveleti csoportok kezelése** lehetőséget a költségvetés létrehozásakor vagy szerkesztésekor.
 
 ![Példa egy költségvetés létrehozására a kezelési műveleti csoportok megjelenítéséhez](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
 
-Ezután kattintson a **műveleti csoport hozzáadása** és a műveleti csoport létrehozása elemre.
+Ezután válassza a **műveleti csoport hozzáadása** lehetőséget, és hozza létre a műveleti csoportot.
 
 
 ![A műveleti csoport hozzáadása mező képe](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
@@ -116,15 +116,21 @@ Az alábbi példa a 50%, 75% és 100% értékű költségvetési küszöbérték
 
 A műveleti csoportokkal való költségvetés-integráció csak olyan műveleti csoportok esetében működik, amelyeken le van tiltva a közös riasztási séma. További információ a séma letiltásáról: [hogyan az általános riasztási séma engedélyezése?](../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
-## <a name="next-steps"></a>További lépések
+## <a name="edit-an-existing-budget"></a>Meglévő költségvetés szerkesztése
+Ha módosítani kíván egy meglévő költségvetést, navigáljon a fő költségvetések ablakhoz, és válassza ki a szerkeszteni kívánt költségvetést. A költségvetés részletei ablakban válassza a **költségvetés szerkesztése** lehetőséget, és végezze el a szükséges módosításokat, majd kattintson a **Mentés**gombra.
+
+![Példa a költségvetés szerkesztése](./media/tutorial-acm-create-budgets/edit-budget.png)
+
+
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Költségvetés létrehozása az Azure Portalon
-> * Költségvetési szerkesztése
+> * Hozzon létre költségvetést a Azure Portal
+> * Költségvetés szerkesztése
 
-Folytassa a következő oktatóanyag a költségkezelési adatokhoz olyan ismétlődő exportálásának létrehozásához.
+Folytassa a következő oktatóanyaggal, amellyel ismétlődő exportálást hozhat létre a Cost Management-adataihoz.
 
 > [!div class="nextstepaction"]
 > [Exportált adathalmazok létrehozása és kezelése](tutorial-export-acm-data.md)

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: ce774868acc281f769e7f2991472e7d2a5da9739
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c2d4c9b089a6673a5cff716d2901cc2b9483ede1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930396"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972251"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Származtatott oszlop átalakítása a leképezési adatfolyamban
 
@@ -27,6 +27,16 @@ Meglévő oszlop felülbírálásához válassza ki azt az oszlop legördülő l
 További származtatott oszlopok hozzáadásához vigye a kurzort egy meglévő származtatott oszlop fölé, és kattintson a plusz ikonra. Válassza az **oszlop hozzáadása** vagy az **oszlop hozzáadása mintát**. Az oszlop mintái hasznosak lehetnek, ha az oszlopnevek a forrásokból származó változók. További információ: [Column Patterns](concepts-data-flow-column-pattern.md).
 
 ![Új származtatott oszlop kiválasztása](media/data-flow/columnpattern.png "Új származtatott oszlop kiválasztása")
+
+## <a name="build-schemas-in-output-schema-pane"></a>Sémák összeállítása a kimeneti séma ablaktáblán
+
+A módosítani kívánt oszlopok és a séma hozzáadása a kimeneti séma ablaktáblán látható. Itt interaktív módon hozhat létre egyszerű és összetett adatstruktúrákat. További mezők hozzáadásához válassza az **oszlop hozzáadása**lehetőséget. Hierarchiák létrehozásához válassza az **aloszlop hozzáadása**elemet.
+
+![Aloszlop hozzáadása](media/data-flow/addsubcolumn.png "Aloszlop hozzáadása")
+
+További információ az összetett típusok kezeléséről az adatfolyamban: [JSON-kezelés a leképezési](concepts-data-flow-json.md) adatfolyamban
+
+![Összetett oszlop hozzáadása](media/data-flow/complexcolumn.png "Oszlopok hozzáadása")
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 

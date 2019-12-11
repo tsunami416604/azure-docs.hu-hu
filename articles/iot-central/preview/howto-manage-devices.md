@@ -3,17 +3,17 @@ title: Az Azure IoT Central alkalmazásban lévő eszközök kezelése | Microso
 description: Operátorként megismerheti, hogyan kezelheti az eszközöket az Azure IoT Central alkalmazásban.
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 07/17/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 07afe441b9463cace9076a07d89e762586730e1b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bab5411b63cb71c47656696bd8049855ca797a57
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894772"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974104"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-preview-features"></a>Eszközök kezelése az Azure IoT Central alkalmazásban (előzetes verziójú funkciók)
 
@@ -51,7 +51,7 @@ Eszköz hozzáadása az Azure IoT Central-alkalmazáshoz:
 
 1. A **szimulált** váltógomb be- **vagy** **kikapcsolása**. Egy valós eszköz az Azure IoT Central-alkalmazáshoz csatlakoztatott fizikai eszközhöz. Egy szimulált eszközön az Azure IoT Central által létrehozott mintaadatok láthatók.
 
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 
 1. Ez az eszköz most megjelenik az eszköz listájában ehhez a sablonhoz. Válassza ki az eszközt az eszköz részletei lap megjelenítéséhez, amely az eszköz összes nézetét tartalmazza.
 
@@ -71,7 +71,7 @@ Eszközök tömeges regisztrálása az alkalmazásban:
     > [!NOTE]
     > Ha még nincs telepítve az eszközön, akkor a **minden eszköz** területen importálhatja az eszközöket, és sablon nélkül regisztrálhatja őket. Az eszközök importálása után áttelepítheti azokat egy sablonba.
 
-1. Válassza az **Importálás**lehetőséget.
+1. Kattintson az **Importálás** gombra.
 
     ![Importálási művelet](./media/howto-manage-devices/bulkimport1a.png)
 
@@ -157,7 +157,7 @@ Valós vagy szimulált eszköz törlése az Azure IoT Central alkalmazásból:
 
 1. Az eszközök szűréséhez és kereséséhez használja a szűrő eszközöket. Jelölje be a törölni kívánt eszközök melletti jelölőnégyzetet.
 
-1. Válassza a **Törlés**lehetőséget. A törlés állapotát az eszköz operatív paneljén követheti nyomon.
+1. Válassza a **Törlés** elemet. A törlés állapotát az eszköz operatív paneljén követheti nyomon.
 
 ## <a name="change-a-property"></a>Tulajdonság módosítása
 
@@ -174,7 +174,7 @@ A felhő tulajdonságai az eszközhöz társított eszköz-metaadatok, például
 1. Válassza a **Mentés** elemet. Ha az írható tulajdonságokat mentette, az értékeket a rendszer elküldi az eszközre. Amikor az eszköz megerősíti az írható tulajdonság módosítását, az állapot visszakerül a **szinkronizált**értékre. Ha mentett egy Felhőbeli tulajdonságot, az érték frissül.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan felügyelheti az eszközöket az Azure IoT Central alkalmazásban, itt látható a következő lépés:
 

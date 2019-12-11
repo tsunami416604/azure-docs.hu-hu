@@ -1,7 +1,7 @@
 ---
-title: Identitás létrehozása az Azure-alkalmazáshoz a portálon
+title: Azure AD-alkalmazás & egyszerű szolgáltatás létrehozása a portálon
 titleSuffix: Microsoft identity platform
-description: Ismerteti, hogyan lehet létrehozni egy új Azure Active Directory alkalmazást és egyszerű szolgáltatásnevet, amely a Azure Resource Manager szerepköralapú hozzáférés-vezérlésével használható az erőforrásokhoz való hozzáférés kezeléséhez.
+description: Hozzon létre egy új Azure Active Directory alkalmazás & egyszerű szolgáltatásnév használatával az erőforrásokhoz való hozzáférés kezeléséhez a Azure Resource Manager-ben szerepköralapú hozzáférés-vezérléssel.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c883dc1f9743e4318db5fe21b0e52ea92d60dc5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 249c313f8f6195371985f3dad2e707638e52d0df
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917862"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967116"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: a portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz
 

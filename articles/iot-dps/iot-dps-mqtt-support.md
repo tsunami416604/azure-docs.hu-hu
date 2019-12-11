@@ -1,18 +1,18 @@
 ---
 title: Az Azure IoT Device kiépítési szolgáltatás MQTT-támogatásának ismertetése | Microsoft Docs
-description: Fejlesztői útmutató – az Azure IoT-eszköz kiépítési szolgáltatásához csatlakozó eszközök támogatása a MQTT protokoll használatával.
+description: Fejlesztői útmutató – az Azure IoT Device kiépítési szolgáltatás (DPS) eszköz felé irányuló végponthoz csatlakozó eszközök támogatása a MQTT protokoll használatával.
 author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: ravokkar
-ms.openlocfilehash: fb39979e321c4815aec74c801cd2d04e81b7e533
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ea6ece7e34ddb9c25f9f8349239ab3a1c3405abf
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093903"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973373"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Kommunikáció a DPS használatával a MQTT protokollal
 

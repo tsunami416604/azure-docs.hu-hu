@@ -1,19 +1,19 @@
 ---
 title: Biztonsági jogkivonat előállítása a IoT való hozzáféréshez Plug and Play előzetes verziójú adattár | Microsoft Docs
 description: Létrehoz egy közös hozzáférési aláírási jogkivonatot, amelyet akkor használhat, amikor egy IoT Plug and Play előzetes verziójú modellhez való hozzáférést.
-author: YasinMSFT
-ms.author: yahajiza
+author: Philmea
+ms.author: philmea
 ms.date: 08/06/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e5d6e7087a7e3d5f4a001e16c5cfa19a6df6a68e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f6c4f5b9784eeff9d03b6e93953674736fb78c6c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880539"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976026"
 ---
 # <a name="generate-sas-token"></a>SAS-token előállítása
 
@@ -46,7 +46,7 @@ def calculate_sas_token(hostname, repo_id, key_name, key, expiry_in_second):
 
 ## <a name="c"></a>C\#
 
-Az alábbi kódrészletből megtudhatja, hogyan hozhatja ki a\#sas-jogkivonatot a C használatával:
+Az alábbi kódrészletből megtudhatja, hogyan hozhatja ki SAS-tokent a C\#használatával:
 
 ```csharp
 public static string generateSasToken(string hostName, string repoId, string key, string keyName, int expiryInSeconds = 3600)
@@ -82,6 +82,6 @@ POST https:///models/{modelId}?repositoryId={repositoryId}&api-version=2019-07-0
 
 Ha SAS-tokent ad egy ügyfélnek, az ügyfél nem rendelkezik az erőforrás elsődleges kulcsával, és nem tudja visszafordítani a kivonatot a beszerzéséhez. Az SAS-token segítségével szabályozhatja, hogy az ügyfél mit tud elérni, és mennyi ideig. Ha módosítja a házirend elsődleges kulcsát, a rendszer a belőle létrehozott SAS-jogkivonatokat érvényteleníti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogy milyen biztonsági jogkivonatokat hoz létre a modell IoT Plug and Play előnézeti modellhez való hozzáféréshez, a következő lépés az, hogy további információra van szüksége a [IoT Plug and Play előzetes verziójú modellezés fejlesztői útmutatójában](concepts-developer-guide.md).

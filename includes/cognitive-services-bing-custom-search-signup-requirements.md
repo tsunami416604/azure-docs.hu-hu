@@ -3,12 +3,26 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/13/2018
-ms.openlocfilehash: a36415b10111787ad3e6b3302703bfa97d2294dd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 12/09/2018
+ms.openlocfilehash: 8f729dfbfdb7933a540a6616335ef64f27040485
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179451"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972700"
 ---
-Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search APIs-hozzáféréssel rendelkező. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). A folytatás előtt szüksége lesz az ingyenes próbaverzió aktiválása után biztosított hozzáférési kulcs, vagy egy fizetős kulcsot az Azure irányítópultján.
+## <a name="create-an-azure-resource"></a>Azure-erőforrás létrehozása
+
+A Bing Custom Search API használatának megkezdéséhez hozzon létre egyet az alábbi Azure-erőforrások egyikével.
+
+* [Próbaverziós erőforrás létrehozása](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api):
+    * Nincs szükség Azure-előfizetésre.
+    * Hét napig ingyenesen használható. A regisztrációt követően a próbaverziós kulcs és a végpont elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+
+* [Bing Custom Search erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch):
+    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.
+    * Az ingyenes díjszabási csomaggal próbálja ki a szolgáltatást, és később frissítsen egy fizetős szintre az éles környezetben.
+
+* [Több szolgáltatásból álló erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.  
+    * Használja ugyanazt a kulcsot és végpontot az alkalmazásaihoz, több Cognitive Services között.

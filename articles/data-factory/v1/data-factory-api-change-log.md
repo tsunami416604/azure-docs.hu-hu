@@ -1,6 +1,6 @@
 ---
 title: Data Factory – .NET API-változási napló
-description: Leírja a megszakított változásokat, a funkciók kiegészítéseit, hibajavításokat stb. a Azure Data Factory .NET API adott verziójában.
+description: A cikk a Azure Data Factory a .NET API adott verziójában ismerteti az adatváltozások, a szolgáltatások kiegészítései és a hibajavítások leírását.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: e1902db6bc3a127262f5e37f36e82b07ab15c7c9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683195"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979002"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory – .NET API-változási napló
 > [!NOTE]
@@ -154,7 +154,7 @@ A következő osztályok lettek átnevezve. Az új nevek az osztályok eredeti n
 | Régi név | Új név |
 |:--- |:--- |
 | ITableOperations |[IDatasetOperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
-| Tábla |[Adatkészlet](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
+| Table |[Adatkészlet](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
 | TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
 | TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
 | TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |

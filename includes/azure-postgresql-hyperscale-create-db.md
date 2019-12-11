@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73994580"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973414"
 ---
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású létrehozása (Citus)
 
@@ -46,7 +46,7 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
    ![hozzáadott ügyfél IP-](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
 
    > [!NOTE]
-   > Azure PostgreSQL-kiszolgáló az 5432-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 5432-es portot.
+   > Azure PostgreSQL-kiszolgáló az 5432-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ha igen, nem tud csatlakozni a nagy kapacitású-fürthöz (Citus), kivéve, ha az informatikai részleg megnyitja a 5432-es portot.
    >
 
 9. Kattintson a **felülvizsgálat + létrehozás** , majd a **Létrehozás** elemre a kiszolgáló kiépítéséhez. Az üzembe helyezés eltarthat néhány percig.
@@ -57,10 +57,10 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
 
 A Azure Database for PostgreSQL-kiszolgáló létrehozásakor létrejön egy **citus** nevű alapértelmezett adatbázis. Az adatbázis-kiszolgálóhoz való kapcsolódáshoz kapcsolati sztringre és rendszergazdai jelszóra van szükség.
 
-1. Szerezze be a kapcsolatok karakterláncát. A kiszolgálócsoport lapon kattintson a **kapcsolatok karakterláncok** menüelemre. (A **Beállítások**alatt van.) Keresse meg a megjelölt  **C++ karakterláncot (libpq)** . A formátum a következőket eredményezi:
+1. Szerezze be a kapcsolatok karakterláncát. A kiszolgálócsoport lapon kattintson a **kapcsolatok karakterláncok** menüelemre. (A **Beállítások**alatt van.) Keresse meg a **psql**jelölésű karakterláncot. A formátum a következőket eredményezi:
 
    ```
-   host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require
+   psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"
    ```
 
    Másolja a karakterláncot. A korábban kiválasztott rendszergazdai jelszóval le kell cserélnie a (z) {Your\_Password} kifejezést. A rendszer nem tárolja az egyszerű szöveges jelszót, ezért nem jelenítheti meg a kapcsolatok karakterláncában.
@@ -69,7 +69,7 @@ A Azure Database for PostgreSQL-kiszolgáló létrehozásakor létrejön egy **c
 
 3. A parancssorban kapcsolódjon a Azure Database for PostgreSQL-kiszolgálóhoz a [psql](https://www.postgresql.org/docs/current/app-psql.html) segédprogrammal. Adja át a kapcsolatok karakterláncát idézőjelek között, hogy az tartalmazza a jelszavát:
    ```bash
-   psql "{connection_string}"
+   psql "host=..."
    ```
 
    Például a következő parancs csatlakozik a **mydemoserver**-kiszolgálócsoport koordinátori csomópontjára:

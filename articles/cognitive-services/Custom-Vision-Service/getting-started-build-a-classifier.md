@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/12/2019
+ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: 12be696c74a32909d79be405144582cd8fc05fb6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: e7aa4a557821ee49867a8ea82f92ef04dfbef689
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "73519158"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978679"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Gyors útmutató: osztályozó készítése Custom Vision
 
@@ -47,11 +47,11 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
    > [!NOTE]
    > Ha nincs elérhető erőforráscsoport, győződjön meg róla, hogy a [customvision.ai](https://customvision.ai) -ba jelentkezett be ugyanazzal a fiókkal, mint amikor a [Azure Portalba](https://portal.azure.com/)való bejelentkezéshez használt. Győződjön meg arról is, hogy a Custom Vision-portálon ugyanazt a "könyvtárat" választotta, mint a Azure Portal, ahol a Custom Vision erőforrásai találhatók. Mindkét helyen kiválaszthatja a könyvtárat a képernyő jobb felső sarkában található legördülő menü fiók menüjéből. 
 
-1. Válasszon __besorolást__ a __Project Types__elemnél. Ezután a __besorolási típusok__területen válassza a **többcímkés** vagy a **többosztályos**lehetőséget a használati esettől függően. A többcímkés besorolás tetszőleges számú címkét alkalmaz egy képre (nulla vagy több), míg a többosztályos besorolás a képeket egyetlen kategóriába rendezi (minden elküldött kép a legvalószínűbb címkére lesz rendezve). Ha szeretné, később is módosíthatja a besorolási típust.
+1. Válasszon __besorolást__ a __Project Types__elemnél. Ezután a __besorolási típusok__területen válassza a **többcímkés** vagy a **többosztályos**lehetőséget a használati esettől függően. A többcímkés besorolás tetszőleges számú címkét alkalmaz egy képre (nulla vagy több), míg a többosztályos besorolás a képeket egyetlen kategóriába rendezi (minden elküldött kép a legvalószínűbb címkére lesz rendezve). Ha szeretné, később módosíthatja a besorolási típust.
 
 1. Ezután válassza ki a rendelkezésre álló tartományok egyikét. Az egyes tartományok a következő táblázatban leírtak szerint optimalizálja az adott típusú képek besorolását. Ha szeretné, később is megváltoztathatja a tartományt.
 
-    |Domain|Cél|
+    |Domain|Rendeltetés|
     |---|---|
     |__Általános__| A képbesorolási feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt. |
     |__Élelmiszer__|Az ételek fényképeihez optimalizált, ahogy azt egy étterem menüjében láthatja. Ha egyéni gyümölcsökből vagy zöldségekből származó fényképeket szeretne osztályozni, használja az élelmiszer-tartományt.|
@@ -67,7 +67,7 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
 
 ## <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-Ebben a szakaszban fel kell töltenie és manuálisan kell címkézni a képeket az osztályozó betanításához. 
+Ebben a szakaszban fel kell töltenie és manuálisan címkézheti a képeket az osztályozó betanításához. 
 
 1. Képek hozzáadásához kattintson a __képek hozzáadása__ gombra, majd válassza a __helyi fájlok tallózása__lehetőséget. Válassza a __Megnyitás__ lehetőséget a címkézésre való áttéréshez. A címke kiválasztása a feltöltésre kijelölt rendszerképek teljes csoportjára lesz alkalmazva, így a képeket külön csoportokban is feltöltheti a kívánt címkék szerint. Az egyes képek címkéit a feltöltésük után is módosíthatja.
 
@@ -103,15 +103,15 @@ A betanítás befejezése után a modell teljesítménye becsült és megjelenik
 
 ![A betanítási eredmények a teljes pontosságot és visszavonást, valamint az osztályozó egyes címkék pontosságát és felidézését mutatják be.](./media/getting-started-build-a-classifier/train03.png)
 
-### <a name="probability-threshold"></a>Valószínűségi küszöbérték
+### <a name="probability-threshold"></a>Valószínűségi határérték
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
 ## <a name="manage-training-iterations"></a>Tanítási ismétlések kezelése
 
-Az osztályozó betanításakor minden alkalommal létre kell hoznia egy új _iterációt_ a saját frissített teljesítmény-metrikákkal. Az összes iterációt megtekintheti a **teljesítmény** lap bal oldali ablaktábláján. A bal oldali panelen a **delete (Törlés** ) gomb is látható, amellyel törölhető egy iteráció, ha elavult. Ha töröl egy iterációt, akkor minden olyan rendszerképet töröl, amely egyedileg hozzá van rendelve.
+Az osztályozó betanításakor minden alkalommal létre kell hoznia egy új _iterációt_ a saját frissített teljesítmény-metrikákkal. Az összes iterációt megtekintheti a **teljesítmény** lap bal oldali ablaktábláján. Emellett a **delete (Törlés** ) gomb is látható, amellyel törölhető egy iteráció, ha elavult. Ha töröl egy iterációt, akkor minden olyan rendszerképet töröl, amely egyedileg hozzá van rendelve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre és taníthat képbesorolási modellt a Custom Vision webhelyén. A következő lépés a modell fejlesztésének iterációs folyamatával kapcsolatos további információk.
 

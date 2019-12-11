@@ -1,6 +1,6 @@
 ---
 title: Az Azure IoT Hub Device Provisioning Service áttekintése | Microsoft Docs
-description: A Device Provisioning Service és az IoT Hub használatával az Azure-ban történő eszközregisztrációt írja le.
+description: Az eszközök üzembe helyezését ismerteti az Azure-ban az eszközök kiépítési szolgáltatásával (DPS) és IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: e02f0de685dc1f67633e13fed1f4114c399afdea
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c29e687a787e59a03bb6825493d808ba036a1d68
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280534"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975363"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Eszközregisztráció az Azure IoT Hub Device Provisioning Service használatával
 A Microsoft Azure integrált nyilvános felhőszolgáltatások széles skáláját biztosítja, az IoT-megoldásokkal kapcsolatos igények teljes körű kielégítése céljából. Az IoT Hub Device Provisioning Service az IoT Hub segítő szolgáltatása, amely emberi beavatkozás nélkül teszi lehetővé a megfelelő IoT Hubon való érintésmentes, igény szerinti üzembe helyezést, így az ügyfelek eszközök millióit építhetik ki biztonságos és méretezhető módon.
@@ -85,7 +85,7 @@ A Device Provisioning Service számos funkciójának köszönhetően ideális az
 
 Az eszközkiépítéssel kapcsolatban felmerülő alapelvekről és szolgáltatásokról az [eszközzel kapcsolatos alapelvek](concepts-device.md), [szolgáltatással kapcsolatos alapelvek](concepts-service.md) és [biztonsági alapelvek](concepts-security.md) szakaszokban szerezhet további információkat.
 
-## <a name="cross-platform-support"></a>Platformfüggetlen támogatás
+## <a name="cross-platform-support"></a>Platformközi támogatás
 A Device Provisioning Service, akárcsak az összes Azure IoT-szolgáltatás, számos különböző operációs rendszeren működik. Az Azure számos [nyelven](https://github.com/Azure/azure-iot-sdks) kínál nyílt forráskódú SDK-kat az eszközök csatlakoztatásához és a szolgáltatás felügyeletéhez. A Device Provisioning Service az alábbi protokollokat támogatja az eszközök csatlakoztatásához:
 
 * HTTPS
@@ -96,13 +96,13 @@ A Device Provisioning Service, akárcsak az összes Azure IoT-szolgáltatás, sz
 
 A Device Provisioning Service csak HTTPS-kapcsolatokat támogat szolgáltatási műveletekhez.
 
-## <a name="regions"></a>Régiók
+## <a name="regions"></a>Térségek
 Device Provisioning Service számos régióban elérhető. A meglévő és újonnan bejelentett régiók naprakész listája minden szolgáltatáshoz megtalálható az [Azure-régióknál](https://azure.microsoft.com/regions/). A Device Provisioning Service elérhetőségét az [Azure állapota](https://azure.microsoft.com/status/) lapon tekintheti meg.
 
 > [!NOTE]
 > A Device Provisioning Service globális, és nem helyhez kötött. Meg kell adnia azonban egy régiót, ahol a Device Provisioning Service-profiljához társuló metaadatok lesznek találhatók.
 
-## <a name="availability"></a>Rendelkezésre állás
+## <a name="availability"></a>Elérhetőség
 A Device Provisioning Service-hez 99,9%-os szolgáltatói szerződés érhető el, amely [el is olvasható](https://azure.microsoft.com/support/legal/sla/iot-hub/). Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/)-ban található.
 
 ## <a name="quotas"></a>Kvóták

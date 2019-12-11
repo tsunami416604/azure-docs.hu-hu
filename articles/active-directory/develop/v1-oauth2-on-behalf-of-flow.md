@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure AD szolgáltatás és szolgáltatás közötti hitelesítés OAuth 2.0-s verziójának előtagja: spec | Microsoft Docs'
+title: Szolgáltatások közötti hitelesítés a OAuth 2.0-s verziójával | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használhatók a HTTP-üzenetek a szolgáltatás és a szolgáltatás közötti hitelesítés megvalósításához a OAuth 2.0-s verziójával.
 services: active-directory
 documentationcenter: .net
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: accd14446ab8f4a70336e3bd6787cbd8c93ff21d
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: b22abde182437bfeb4a42e5c9a0d8e41a4643f8f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891519"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964446"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatások közötti hívások, amelyek delegált felhasználói identitást használnak a következő folyamat során:
 
@@ -32,13 +32,13 @@ ms.locfileid: "69891519"
 Az OAuth 2,0-alapú (OBO) folyamat lehetővé teszi egy olyan alkalmazás számára, amely egy szolgáltatást vagy webes API-t hív meg, hogy átadja a felhasználói hitelesítést egy másik szolgáltatásnak vagy webes API-nak. Az OBO-folyamat propagálja a delegált felhasználói identitást és engedélyeket a kérési láncon keresztül. Ahhoz, hogy a középső szintű szolgáltatás hitelesített kéréseket továbbítson az alárendelt szolgáltatásnak, a felhasználónak kell védenie Azure Active Directory (Azure AD) hozzáférési jogkivonatát.
 
 > [!IMPORTANT]
-> A 2018 `id_token` . májustól kezdve nem használható a folyamaton kívüli folyamathoz.  Az egylapos alkalmazások (Gyógyfürdők) hozzáférési jogkivonatot kell átadni egy közepes szintű bizalmas ügyfélnek az OBO-folyamatok végrehajtásához. További információk az elvégezhető hívásokat végrehajtó ügyfelekről: [korlátozások](#client-limitations).
+> A 2018. májustól kezdve nem használható `id_token` a következő folyamathoz:.  Az egylapos alkalmazások (Gyógyfürdők) hozzáférési jogkivonatot kell átadni egy közepes szintű bizalmas ügyfélnek az OBO-folyamatok végrehajtásához. További információk az elvégezhető hívásokat végrehajtó ügyfelekről: [korlátozások](#client-limitations).
 
 ## <a name="on-behalf-of-flow-diagram"></a>Folyamaton kívüli diagram
 
 Az OBO-folyamat akkor indul el, amikor a felhasználó hitelesítése megtörtént egy olyan alkalmazáson, amely a [OAuth 2,0 engedélyezési kódot](v1-protocols-oauth-code.md)használja. Ezen a ponton az alkalmazás egy hozzáférési jogkivonatot (a token A jogkivonatot) küld a felhasználói jogcímeket tartalmazó középső rétegbeli webes API-ra (a API-ra), amely az A API-hoz való hozzáférést tartalmazza. Ezt követően a API A hitelesített kérelmet küld az alárendelt webes API-nak (B API).
 
-Ezek a lépések a következő folyamatokat alkotják: ![A OAuth 2.0-ban, a folyamaton belüli folyamat lépéseinek megjelenítése](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+Ezek a lépések a folyamaton kívüli folyamatot alkotják: a ![a OAuth 2.0-ban, a következő folyamat lépéseit mutatja](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. Az ügyfélalkalmazás egy kérelmet küld az a API-nak az a jogkivonattal.
 1. Az API A hitelesíti az Azure AD jogkivonat-kiállítási végpontot, és jogkivonatot kér a B API eléréséhez.
@@ -55,7 +55,7 @@ Regisztrálja a középső rétegbeli szolgáltatást és az ügyfélalkalmazás
 
 ### <a name="register-the-middle-tier-service"></a>A középső rétegbeli szolgáltatás regisztrálása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A felső sávon válassza ki a fiókját, és a **címtár** listában válassza ki a Active Directory bérlőt az alkalmazáshoz.
 1. A bal oldali ablaktáblán válassza a **További szolgáltatások** lehetőséget, és válassza a **Azure Active Directory**lehetőséget.
 1. Válassza a **Alkalmazásregisztrációk** , majd az **új regisztráció**lehetőséget.
@@ -73,7 +73,7 @@ Regisztrálja a középső rétegbeli szolgáltatást és az ügyfélalkalmazás
 
 ### <a name="register-the-client-application"></a>Az ügyfélalkalmazás regisztrálása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A felső sávon válassza ki a fiókját, és a **címtár** listában válassza ki a Active Directory bérlőt az alkalmazáshoz.
 1. A bal oldali ablaktáblán válassza a **További szolgáltatások** lehetőséget, és válassza a **Azure Active Directory**lehetőséget.
 1. Válassza a **Alkalmazásregisztrációk** , majd az **új regisztráció**lehetőséget.
@@ -83,7 +83,7 @@ Regisztrálja a középső rétegbeli szolgáltatást és az ügyfélalkalmazás
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Konfigurálja az alkalmazás engedélyeit. Az **API-engedélyek**területen válassza az **engedély hozzáadása** , majd **az API**-k elemet.
 1. Írja be a középső rétegbeli szolgáltatás nevét a szövegmezőbe.
-1. Válassza az **engedélyek kiválasztása** , majd **a \<hozzáférési szolgáltatás neve >** elemet.
+1. Válassza az **engedélyek kiválasztása** lehetőséget, majd válassza a **hozzáférés \<szolgáltatás neve >** lehetőséget.
 
 ### <a name="configure-known-client-applications"></a>Ismert ügyfélalkalmazások konfigurálása
 
@@ -92,7 +92,7 @@ Ebben az esetben a középső rétegbeli szolgáltatásnak be kell szereznie a f
 Kövesse az alábbi lépéseket az ügyfélalkalmazás regisztrációjának explicit módon való kötéséhez az Azure AD-ben a középső rétegbeli szolgáltatás regisztrálásával. A művelet egyesíti az ügyfél és a középső réteg által megkövetelt beleegyezett egyetlen párbeszédablakba.
 
 1. Lépjen a középső rétegbeli szolgáltatás regisztrációja elemre, és válassza a **jegyzékfájl** elemet a jegyzékfájl-szerkesztő megnyitásához.
-1. Keresse meg `knownClientApplications` a Array tulajdonságot, és adja hozzá az ügyfélalkalmazás ügyfél-azonosítóját elemként.
+1. Keresse meg a `knownClientApplications` Array tulajdonságot, és adja hozzá az ügyfélalkalmazás ügyfél-AZONOSÍTÓját elemként.
 1. Mentse a jegyzékfájlt a **Mentés gombra**kattintva.
 
 ## <a name="service-to-service-access-token-request"></a>Szolgáltatás-szolgáltatás hozzáférési jogkivonat kérése
@@ -105,23 +105,23 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 Az ügyfélalkalmazás védelmét egy közös titok vagy egy tanúsítvány védi.
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>Első eset: Hozzáférési jogkivonat-kérelem közös titokkal
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Első eset: hozzáférési jogkivonat-kérelem közös titokkal
 
 Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| grant_type |szükséges | A jogkivonat-kérelem típusa. Egy OBO-kérelem egy JSON Web Token (JWT) használ, ezért az értéknek a következőnek kell lennie: **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**. |
-| assertion |szükséges | A kérelemben használt hozzáférési jogkivonat értéke. |
-| client_id |szükséges | Az Azure AD-vel való regisztráció során a hívó szolgáltatáshoz rendelt alkalmazás-azonosító. Ha meg szeretné keresni az alkalmazás AZONOSÍTÓját a Azure Portalban, válassza a **Active Directory**lehetőséget, válassza ki a könyvtárat, majd válassza ki az alkalmazás nevét. |
-| client_secret |szükséges | Az Azure AD-ben a hívó szolgáltatáshoz regisztrált kulcs. Ezt az értéket a regisztráció időpontjában fel kell jegyezni. |
-| resource |szükséges | A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). Az alkalmazás AZONOSÍTÓjának URI azonosítójának megkereséséhez a Azure Portal válassza a **Active Directory** lehetőséget, majd válassza ki a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget. |
-| requested_token_use |szükséges | Megadja a kérelem feldolgozásának módját. A folyamaton belüli folyamatban az értéknek **on_behalf_of**kell lennie. |
-| scope |szükséges | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. Az OpenID Connect esetében meg kell adni az **OpenID** hatókört.|
+| grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem egy JSON Web Token (JWT) használ, ezért az értéknek a következőnek kell lennie: **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**. |
+| állítás |kötelező | A kérelemben használt hozzáférési jogkivonat értéke. |
+| client_id |kötelező | Az Azure AD-vel való regisztráció során a hívó szolgáltatáshoz rendelt alkalmazás-azonosító. Ha meg szeretné keresni az alkalmazás AZONOSÍTÓját a Azure Portalban, válassza a **Active Directory**lehetőséget, válassza ki a könyvtárat, majd válassza ki az alkalmazás nevét. |
+| client_secret |kötelező | Az Azure AD-ben a hívó szolgáltatáshoz regisztrált kulcs. Ezt az értéket a regisztráció időpontjában fel kell jegyezni. |
+| erőforrás |kötelező | A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). Az alkalmazás AZONOSÍTÓjának URI azonosítójának megkereséséhez a Azure Portal válassza a **Active Directory** lehetőséget, majd válassza ki a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget. |
+| requested_token_use |kötelező | Megadja a kérelem feldolgozásának módját. A folyamatban lévő folyamat során az értéknek **on_behalf_ofnak**kell lennie. |
+| scope |kötelező | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. Az OpenID Connect esetében meg kell adni az **OpenID** hatókört.|
 
 #### <a name="example"></a>Példa
 
-A következő http-bejegyzés egy hozzáférési jogkivonatot https://graph.windows.net kér a webes API-hoz. Az `client_id` azonosítja azt a szolgáltatást, amely a hozzáférési jogkivonatot kéri.
+A következő HTTP POST hozzáférési jogkivonatot kér a https://graph.windows.net webes API-hoz. A `client_id` azonosítja azt a szolgáltatást, amely a hozzáférési jogkivonatot kéri.
 
 ```
 // line breaks for legibility only
@@ -139,26 +139,26 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=openid
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>Második eset: Hozzáférési jogkivonat-kérelem tanúsítvánnyal
+### <a name="second-case-access-token-request-with-a-certificate"></a>Második eset: hozzáférési jogkivonat kérése tanúsítvánnyal
 
 Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| grant_type |szükséges | A jogkivonat-kérelem típusa. Egy OBO-kérelem JWT-hozzáférési tokent használ, így az érték csak az **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**lehet. |
-| assertion |szükséges | A kérelemben használt jogkivonat értéke. |
-| client_id |szükséges | Az Azure AD-vel való regisztráció során a hívó szolgáltatáshoz rendelt alkalmazás-azonosító. Ha meg szeretné keresni az alkalmazás AZONOSÍTÓját a Azure Portalban, válassza a **Active Directory**lehetőséget, válassza ki a könyvtárat, majd válassza ki az alkalmazás nevét. |
-| client_assertion_type |szükséges |Az értéknek meg kell felelnie`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |szükséges | Az Ön által létrehozott és az alkalmazáshoz hitelesítő adatként regisztrált tanúsítvánnyal rendelkező JSON Web Token. Tekintse meg a [tanúsítvány hitelesítő adatait](active-directory-certificate-credentials.md) , és Ismerje meg a tanúsítvány regisztrálásának módját.|
-| resource |szükséges | A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). Az alkalmazás AZONOSÍTÓjának URI azonosítójának megkereséséhez a Azure Portal válassza a **Active Directory** lehetőséget, majd válassza ki a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget. |
-| requested_token_use |szükséges | Megadja a kérelem feldolgozásának módját. A folyamaton belüli folyamatban az értéknek **on_behalf_of**kell lennie. |
-| scope |szükséges | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. Az OpenID Connect esetében meg kell adni az **OpenID** hatókört.|
+| grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem JWT-hozzáférési tokent használ, így az érték csak az **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**lehet. |
+| állítás |kötelező | A kérelemben használt jogkivonat értéke. |
+| client_id |kötelező | Az Azure AD-vel való regisztráció során a hívó szolgáltatáshoz rendelt alkalmazás-azonosító. Ha meg szeretné keresni az alkalmazás AZONOSÍTÓját a Azure Portalban, válassza a **Active Directory**lehetőséget, válassza ki a könyvtárat, majd válassza ki az alkalmazás nevét. |
+| client_assertion_type |kötelező |Az értéknek `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`nak kell lennie |
+| client_assertion |kötelező | Az Ön által létrehozott és az alkalmazáshoz hitelesítő adatként regisztrált tanúsítvánnyal rendelkező JSON Web Token. Tekintse meg a [tanúsítvány hitelesítő adatait](active-directory-certificate-credentials.md) , és Ismerje meg a tanúsítvány regisztrálásának módját.|
+| erőforrás |kötelező | A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). Az alkalmazás AZONOSÍTÓjának URI azonosítójának megkereséséhez a Azure Portal válassza a **Active Directory** lehetőséget, majd válassza ki a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget. |
+| requested_token_use |kötelező | Megadja a kérelem feldolgozásának módját. A folyamatban lévő folyamat során az értéknek **on_behalf_ofnak**kell lennie. |
+| scope |kötelező | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. Az OpenID Connect esetében meg kell adni az **OpenID** hatókört.|
 
-Ezek a paraméterek majdnem ugyanazok, mint a közös titok kérelme, kivéve, hogy `client_secret parameter` a két paraméterrel van lecserélve: `client_assertion_type` és `client_assertion`.
+Ezek a paraméterek majdnem ugyanazok, mint a közös titok kérelme, kivéve, hogy a `client_secret parameter` két paraméterrel helyettesíti: `client_assertion_type` és `client_assertion`.
 
 #### <a name="example"></a>Példa
 
-A következő http post hozzáférési jogkivonatot kér a https://graph.windows.net webes API-hoz egy tanúsítvánnyal. Az `client_id` azonosítja azt a szolgáltatást, amely a hozzáférési jogkivonatot kéri.
+A következő HTTP POST hozzáférési jogkivonatot kér a https://graph.windows.net webes API-hoz egy tanúsítvánnyal. A `client_id` azonosítja azt a szolgáltatást, amely a hozzáférési jogkivonatot kéri.
 
 ```
 // line breaks for legibility only
@@ -183,11 +183,11 @@ A sikeres válasz egy JSON-OAuth 2,0-válasz a következő paraméterekkel:
 
 | Paraméter | Leírás |
 | --- | --- |
-| token_type |Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a **tulajdonos**. A tulajdonosi jogkivonatokkal kapcsolatos további információkért tekintse [meg a OAuth 2,0 engedélyezési keretrendszert: Tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a **tulajdonos**. A tulajdonosi jogkivonatokkal kapcsolatos további információkért tekintse meg a [OAuth 2,0 engedélyezési keretrendszert: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |A jogkivonatban megadott hozzáférési hatókör. |
 | expires_in |A hozzáférési jogkivonat érvényességének időtartama (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejáratának időpontja. A dátum az 1970-01-01T0:0: 0Z UTC számú másodperc, a lejárati időpontig. Ez az érték a gyorsítótárazott tokenek élettartamának meghatározására szolgál. |
-| resource |A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). |
+| erőforrás |A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). |
 | access_token |A kért hozzáférési jogkivonat. A hívó szolgáltatás ezt a tokent használhatja a fogadó szolgáltatásban való hitelesítéshez. |
 | id_token |A kért azonosító jogkivonat. A hívó szolgáltatás a token használatával ellenőrizheti a felhasználó identitását, és megkezdheti a munkamenetet a felhasználóval. |
 | refresh_token |A kért hozzáférési jogkivonat frissítési jogkivonata. A hívó szolgáltatás ezzel a jogkivonattal kérhet egy másik hozzáférési tokent az aktuális hozzáférési jogkivonat lejárta után. |
@@ -229,7 +229,7 @@ Az Azure AD jogkivonat-végpont olyan hibaüzenetet ad vissza, amely egy feltét
 
 ## <a name="use-the-access-token-to-access-the-secured-resource"></a>A biztonságos erőforrás eléréséhez használja a hozzáférési jogkivonatot.
 
-A középső rétegbeli szolgáltatás a beszerzett hozzáférési jogkivonattal hitelesített kéréseket végez az alárendelt webes API-hoz, ha a tokent a `Authorization` fejlécben állítja be.
+A középső rétegbeli szolgáltatás a beszerzett hozzáférési jogkivonattal hitelesített kéréseket végez az alárendelt webes API-hoz, ha a tokent a `Authorization` fejlécében állítja be.
 
 ### <a name="example"></a>Példa
 
@@ -255,47 +255,47 @@ Az SAML-állítások szolgáltatás-szolgáltatásra irányuló kérelme a köve
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| grant_type |szükséges | A jogkivonat-kérelem típusa. A JWT használó kérések esetében az értéknek **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**értékűnek kell lennie. |
-| assertion |szükséges | A kérelemben használt hozzáférési jogkivonat értéke.|
-| client_id |szükséges | Az Azure AD-vel való regisztráció során a hívó szolgáltatáshoz rendelt alkalmazás-azonosító. Ha meg szeretné keresni az alkalmazás AZONOSÍTÓját a Azure Portalban, válassza a **Active Directory**lehetőséget, válassza ki a könyvtárat, majd válassza ki az alkalmazás nevét. |
-| client_secret |szükséges | Az Azure AD-ben a hívó szolgáltatáshoz regisztrált kulcs. Ezt az értéket a regisztráció időpontjában fel kell jegyezni. |
-| resource |szükséges | A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). Ez az az erőforrás, amely az SAML-jogkivonat célközönsége lesz. Az alkalmazás AZONOSÍTÓjának URI azonosítójának megkereséséhez a Azure Portal válassza a **Active Directory** lehetőséget, majd válassza ki a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget. |
-| requested_token_use |szükséges | Megadja a kérelem feldolgozásának módját. A folyamaton belüli folyamatban az értéknek **on_behalf_of**kell lennie. |
-| requested_token_type | szükséges | Megadja a kért jogkivonat típusát. Az érték a következő lehet: **urn: IETF: params: OAuth: token-Type: egy saml2** vagy **urn: IETF: param: OAuth: token-Type: saml1** a hozzáfért erőforrás követelményeitől függően. |
+| grant_type |kötelező | A jogkivonat-kérelem típusa. A JWT használó kérések esetében az értéknek **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**értékűnek kell lennie. |
+| állítás |kötelező | A kérelemben használt hozzáférési jogkivonat értéke.|
+| client_id |kötelező | Az Azure AD-vel való regisztráció során a hívó szolgáltatáshoz rendelt alkalmazás-azonosító. Ha meg szeretné keresni az alkalmazás AZONOSÍTÓját a Azure Portalban, válassza a **Active Directory**lehetőséget, válassza ki a könyvtárat, majd válassza ki az alkalmazás nevét. |
+| client_secret |kötelező | Az Azure AD-ben a hívó szolgáltatáshoz regisztrált kulcs. Ezt az értéket a regisztráció időpontjában fel kell jegyezni. |
+| erőforrás |kötelező | A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). Ez az az erőforrás, amely az SAML-jogkivonat célközönsége lesz. Az alkalmazás AZONOSÍTÓjának URI azonosítójának megkereséséhez a Azure Portal válassza a **Active Directory** lehetőséget, majd válassza ki a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget. |
+| requested_token_use |kötelező | Megadja a kérelem feldolgozásának módját. A folyamatban lévő folyamat során az értéknek **on_behalf_ofnak**kell lennie. |
+| requested_token_type | kötelező | Megadja a kért jogkivonat típusát. Az érték a következő lehet: **urn: IETF: params: OAuth: token-Type: egy saml2** vagy **urn: IETF: param: OAuth: token-Type: saml1** a hozzáfért erőforrás követelményeitől függően. |
 
 A válasz az UTF8 és a Base64url kódolású SAML-tokent tartalmaz.
 
-- **SubjectConfirmationData egy OBO-hívásból származó SAML-** kijelentéshez: Ha a célalkalmazás a **SubjectConfirmationData**egy címzett értéket igényel, akkor az értéknek nem helyettesítő karakterből álló URL-címnek kell lennie az erőforrás-alkalmazás konfigurációjában.
-- **A SubjectConfirmationData csomópont**: A csomópont nem tartalmazhat **InResponseTo** attribútumot, mert nem része SAML-válasznak. Az SAML-tokent fogadó alkalmazásnak képesnek kell lennie arra, hogy elfogadja az SAML-jogkivonatot **InResponseTo** attribútum nélkül.
+- **SubjectConfirmationData egy OBO-hívásból származó SAML-kijelentéshez**: Ha a célalkalmazás a **SubjectConfirmationData**-ben a címzett értékét igényli, akkor az értéknek nem helyettesítő karakteres válasz URL-címnek kell lennie az erőforrás-alkalmazás konfigurációjában.
+- **A SubjectConfirmationData csomópont**: a csomópont nem tartalmazhat **InResponseTo** attribútumot, mert nem része SAML-válasznak. Az SAML-tokent fogadó alkalmazásnak képesnek kell lennie arra, hogy elfogadja az SAML-jogkivonatot **InResponseTo** attribútum nélkül.
 
-- **Beleegyezik**: Meg kell adni egy olyan SAML-tokent, amely egy OAuth-folyamaton felhasználói adatmennyiséget tartalmaz. Az engedélyekkel és a rendszergazdai jogosultság beszerzésével kapcsolatos információkért tekintse meg [a Azure Active Directory 1.0-s verziójának engedélyeit és](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent)a hozzájuk tartozó hozzájárulásukat.
+- **Beleegyező engedély**: a OAuth-folyamaton felhasználói adatmennyiséget tartalmazó SAML-token fogadásához meg kell adni a beleegyező jogosultságot. Az engedélyekkel és a rendszergazdai jogosultság beszerzésével kapcsolatos információkért tekintse meg [a Azure Active Directory 1.0-s verziójának engedélyeit és](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent)a hozzájuk tartozó hozzájárulásukat.
 
 ### <a name="response-with-saml-assertion"></a>SAML-kijelentéssel kapcsolatos válasz
 
 | Paraméter | Leírás |
 | --- | --- |
-| token_type |Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a **tulajdonos**. A tulajdonosi jogkivonatokkal kapcsolatos további információkért lásd [: OAuth 2,0 engedélyezési keretrendszer: Tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a **tulajdonos**. A tulajdonosi jogkivonatokkal kapcsolatos további információkért lásd [: OAuth 2,0 engedélyezési keretrendszer: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |A jogkivonatban megadott hozzáférési hatókör. |
 | expires_in |A hozzáférési jogkivonat érvényességének időtartama (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejáratának időpontja. A dátum az 1970-01-01T0:0: 0Z UTC számú másodperc, a lejárati időpontig. Ez az érték a gyorsítótárazott tokenek élettartamának meghatározására szolgál. |
-| resource |A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). |
+| erőforrás |A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). |
 | access_token |Az SAML-kijelentést visszaadó paraméter. |
 | refresh_token |A frissítési jogkivonat. A hívó szolgáltatás a jelenlegi SAML-állítás lejárta után is kérheti a tokent egy másik hozzáférési jogkivonat igénylésére. |
 
-- token_type: Tulajdonosi
+- token_type: tulajdonos
 - expires_in: 3296
 - ext_expires_in: 0
 - expires_on: 1529627844
-- erőforrás`https://api.contoso.com`
+- erőforrás: `https://api.contoso.com`
 - access_token: \<SAML-kijelentés\>
-- issued_token_type: urn: IETF: paraméterek: OAuth: token-Type: egy saml2
-- refresh_token: \<Jogkivonat frissítése\>
+- issued_token_type: urn: IETF: params: OAuth: token-Type: egy saml2
+- refresh_token: \<frissítési token\>
 
 ## <a name="client-limitations"></a>Ügyfél korlátozásai
 
-A helyettesítő karakteres válasz URL-címekkel `id_token` rendelkező nyilvános ügyfelek nem használhatják az OBO-folyamatokat. A bizalmas ügyfél azonban továbbra is beválthatja az implicit engedélyezési folyamat során beszerzett **hozzáférési** jogkivonatokat, még akkor is, ha a nyilvános ügyfélben van regisztrálva egy helyettesítő karakteres átirányítási URI.
+A helyettesítő karakteres válasz URL-címekkel rendelkező nyilvános ügyfelek nem használhatják az OBO-folyamatok `id_token`. A bizalmas ügyfél azonban továbbra is beválthatja az implicit engedélyezési folyamat során beszerzett **hozzáférési** jogkivonatokat, még akkor is, ha a nyilvános ügyfélben van regisztrálva egy helyettesítő karakteres átirányítási URI.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a OAuth 2,0 protokollról és egy másik módszer az ügyfél-hitelesítő adatokat használó szolgáltatás-szolgáltatás hitelesítés végrehajtásához:
 

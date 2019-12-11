@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 00d3b1dce9bacc01c8319c678ab27a3d4cc8da88
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d7e3eeeea6bb25b4cddaea1d04e86f23ab7e4f5f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718424"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969839"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Oktatóanyag: TensorFlow-modell futtatása Python nyelven
 
@@ -28,8 +28,8 @@ Miután [exportálta a TensorFlow-modellt](https://docs.microsoft.com/azure/cogn
 
 Az oktatóanyag használatához a következőkre lesz szüksége:
 
-- Telepítse a Python 2.7 vagy újabb, illetve a Python 3.5 vagy újabb verzióját.
-- Telepítse a pipet.
+- Vagy Python 2.7 + vagy Python 3.5+ telepítése.
+- Pip telepítése.
 
 Ezután telepítenie kell a következő csomagokat:
 
@@ -68,7 +68,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>Kép előkészítése előrejelzéshez
 
-Ahhoz, hogy a kép megfelelő formájú legyen az előrejelzéshez, több lépésből álló előkészítés szükséges. Ezek a lépések a betanítás során végrehajtott képkezeléshez hasonlítanak:
+A rendszerkép előkészítéséhez néhány lépést el kell végeznie. Ezek a lépések a betanítás során végrehajtott képkezeléshez hasonlítanak:
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Nyissa meg a fájlt, és hozzon létre egy képet BGR színtérrel
 
@@ -208,7 +208,7 @@ A képtenzor modellen történő átfuttatásának eredményeit ezután ismét m
         label_index += 1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Következő lépésként megtudhatja, hogyan csomagolhatja be a modellt egy mobil alkalmazásba:
 * [Az exportált TensorFlow-modell használata Android-alkalmazásban](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)

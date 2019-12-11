@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 47c7e35f71fd33cc53d498867ef015364252d5ea
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 39bdcc94b785371044b5d49fd844a06a176a8fba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910320"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970036"
 ---
 # <a name="media-services-concepts"></a>Media Services fogalmak
 
@@ -28,7 +28,7 @@ A fejlesztés megkezdése előtt tekintse át az alábbi témakörökben ismerte
 > [!NOTE]
 > Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](media-services-apis-overview.md#sdks).
 
-## <a name="terminology"></a>Terminológia
+## <a name="terminology"></a>Szakkifejezések
 
 Ez a szakasz azt mutatja be, hogy egyes általános iparági feltételek hogyan képezik le az Media Services V3 API-t.
 
@@ -46,7 +46,7 @@ A Media Streaming Industry szolgáltatásban ezt a szolgáltatást általában *
  
 ## <a name="cloud-upload-and-storage"></a>Felhőbe történő feltöltés és tárolás
 
-Az Azure-beli médiatartalmak kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot, és felkell töltenie a digitális fájlokat az eszközökbe.
+Az Azure-beli médiatartalmak kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot, és fel kell töltenie a digitális fájlokat az **eszközökbe**.
 
 - [Felhőbe történő feltöltés és tárolás](storage-account-concept.md)
 - [Eszközök koncepciója](assets-concept.md)
@@ -62,7 +62,7 @@ Az Media Services v3 kódoláshoz **átalakításokat** és **feladatokat**kell 
 - [Átalakítások és feladatok](transforms-jobs-concept.md)
 - [Kódolás Media Services](encoding-concept.md)
 
-## <a name="media-analytics"></a>Media Analytics
+## <a name="media-analytics"></a>Médiaelemzés
 
 A videó-és hangfájlok elemzéséhez **átalakításokat** és **feladatokat**is létre kell hoznia.
 
@@ -78,21 +78,21 @@ A dinamikus csomagolás a tartalom élő vagy igény szerinti továbbítására 
 
 ![Dinamikus csomagolás](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-A Media Services használatával dinamikusan titkosíthatja az élő és igény szerinti tartalmat Advanced Encryption Standard (AES-128) vagy/és a három jelentős digitális jogkezelési (DRM) rendszerből: Microsoft PlayReady, Google Widevine és Apple FairPlay. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek.
+A Media Services használatával dinamikusan titkosíthatja az élő és igény szerinti tartalmat Advanced Encryption Standard (AES-128) vagy/és a három jelentős digitális jogkezelési (DRM) rendszerből: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services egy szolgáltatást is biztosít az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licencek továbbítására a hitelesítő ügyfelek számára.
 
 Ha az adatfolyamban titkosítási beállításokat ad meg, hozza létre a **tartalmi kulcs házirendjét** , és társítsa azt a **folyamatos átviteli lokátorhoz**. A **tartalmi kulcs házirendje** lehetővé teszi annak konfigurálását, hogy a rendszer hogyan továbbítsa a tartalmi kulcsot a végfelhasználók számára.
 
-Az alábbi ábrán a Media Services content protection munkafolyamat: 
+Az alábbi ábra a Media Services tartalomvédelem munkafolyamatát mutatja be: 
 
 ![Tartalom védelme](./media/content-protection/content-protection.svg)
 
 &#42;a dinamikus titkosítás támogatja az AES-128 "Clear Key", a CBCS és a CENC használatát. 
 
-Media Services **dinamikus jegyzékfájlok** használatával csak a videó egy adott kiadatását vagy alklipeit továbbíthatja. A következő példában egy kódolót használtak egy köztes eszköz kódolásához hét ISO MP4 (180p és 1080p között). A kódolt eszköz a következő folyamatos átviteli protokollok bármelyikében dinamikusan becsomagolható: HLS, MPEG DASH és Smooth.  A diagram tetején megjelenik az objektum HLS-jegyzéke, amely nem tartalmaz szűrőket (ez mind a hét összes leképezését tartalmazza).  A bal alsó sarokban megjelenik a HLS jegyzékfájl, amelybe az "ott" nevű szűrő lett alkalmazva. Az "ott" szűrő azt adja meg, hogy az 1 Mbps alatti összes bitrátát eltávolítja, ami az alsó két minőségi szintet eredményezte a válaszban. A jobb alsó sarokban megjelenik a HLS jegyzékfájl, amelybe a "Mobile" nevű szűrő lett alkalmazva. A "mobil" szűrő meghatározza, hogy el lehessen távolítani azokat a leképezéseket, amelyekben a felbontás nagyobb, mint 720p, ami azt eredményezte, hogy a két 1080p-kiadatás kikerül.
+Media Services **dinamikus jegyzékfájlok** használatával csak a videó egy adott kiadatását vagy alklipeit továbbíthatja. A következő példában egy kódolót használtak egy köztes eszköz kódolásához hét ISO MP4 (180p és 1080p között). A kódolt eszköz dinamikusan becsomagolható a következő streaming protokollok bármelyikére: HLS, MPEG DASH és Smooth.  A diagram tetején megjelenik az objektum HLS-jegyzéke, amely nem tartalmaz szűrőket (ez mind a hét összes leképezését tartalmazza).  A bal alsó sarokban megjelenik a HLS jegyzékfájl, amelybe az "ott" nevű szűrő lett alkalmazva. Az "ott" szűrő azt adja meg, hogy az 1 Mbps alatti összes bitrátát eltávolítja, ami az alsó két minőségi szintet eredményezte a válaszban. A jobb alsó sarokban megjelenik a HLS jegyzékfájl, amelybe a "Mobile" nevű szűrő lett alkalmazva. A "mobil" szűrő meghatározza, hogy el lehessen távolítani azokat a leképezéseket, amelyekben a felbontás nagyobb, mint 720p, ami azt eredményezte, hogy a két 1080p-kiadatás kikerül.
 
 ![Kiadatás szűrése](./media/filters-dynamic-manifest-overview/media-services-rendition-filter.png)
 
-- [dinamikus becsomagolás](dynamic-packaging-overview.md)
+- [Dinamikus csomagolás](dynamic-packaging-overview.md)
 - [Streamvégpontok](streaming-endpoint-concept.md)
 - [Streamelési lokátorok](streaming-locators-concept.md)
 - [Streamelési szabályzatok](streaming-policy-concept.md)
@@ -101,9 +101,12 @@ Media Services **dinamikus jegyzékfájlok** használatával csak a videó egy a
 - [Dinamikus jegyzékek](filters-dynamic-manifest-overview.md)
 - [Szűrők](filters-concept.md)
 
-## <a name="live-streaming"></a>Élő közvetítés
+> [!NOTE]
+> A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-A Azure Media Services lehetővé teszi, hogy élő eseményeket nyújtson az ügyfeleknek az Azure-felhőben. Az **élő események** az élő videóadatok betöltését és feldolgozását végzik. Ha **élő eseményt**hoz létre, a rendszer létrehoz egy bemeneti végpontot, amelynek használatával élő jeleket küldhet egy távoli kódolóból. Ha a stream az **élő eseménybe**áramlik, megkezdheti a folyamatos átviteli eseményt egy **eszköz**, egy **élő kimenet**és a **folyamatos átviteli lokátor**létrehozásával. Az **élő kimenet** archiválja a streamet az objektumba, és elérhetővé teszi a nézők számára a **folyamatos átviteli végponton**keresztül. Az **élő esemény** a következő két típus egyike lehet: **átmenő** és **élő kódolás**.
+## <a name="live-streaming"></a>Live streaming (Élő adatfolyam)
+
+A Azure Media Services lehetővé teszi, hogy élő eseményeket nyújtson az ügyfeleknek az Azure-felhőben. Az **élő események** az élő videóadatok betöltését és feldolgozását végzik. Ha **élő eseményt**hoz létre, a rendszer létrehoz egy bemeneti végpontot, amelynek használatával élő jeleket küldhet egy távoli kódolóból. Ha a stream az **élő eseménybe**áramlik, megkezdheti a folyamatos átviteli eseményt egy **eszköz**, egy **élő kimenet**és a **folyamatos átviteli lokátor**létrehozásával. Az **élő kimenet** archiválja a streamet az objektumba **, és** elérhetővé teszi a nézők számára a **folyamatos átviteli végponton**keresztül. Az **élő esemény** a következő két típus egyike lehet: **átmenő** és **élő kódolás**.
 
 Az alábbi ábrán az áteresztő típusú munkafolyamat látható:
 
@@ -112,11 +115,11 @@ Az alábbi ábrán az áteresztő típusú munkafolyamat látható:
 - [Élő közvetítés – áttekintés](live-streaming-overview.md)
 - [Élő események és élő kimenetek](live-events-outputs-concept.md)
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Monitoring
 
 ### <a name="event-grid"></a>Event Grid
 
-A feladatok előrehaladásának megtekintéséhez Event Gridt kell használnia. A Media Services az élő események típusát is kibocsátja. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. 
+A feladatok előrehaladásának megtekintéséhez **Event Gridt**kell használnia. A Media Services az élő események típusát is kibocsátja. Az Event Grid használatával az alkalmazásai szinte minden Azure-szolgáltatástól és egyéni forrástól származó eseményt figyelni tudnak és reagálhatnak azokra. 
 
 - [Event Grid események feldolgozása](reacting-to-media-services-events.md)
 - [Sémák](media-services-event-schemas.md)
@@ -138,7 +141,7 @@ A Azure Media Player használatával a különböző böngészők és eszközök
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Távoli fájl és stream-videó kódolása – REST](stream-files-tutorial-with-rest.md)
 * [A feltöltött fájl és a Stream video-.NET kódolása](stream-files-tutorial-with-api.md)

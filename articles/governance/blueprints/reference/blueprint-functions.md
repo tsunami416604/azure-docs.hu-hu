@@ -1,14 +1,14 @@
 ---
 title: Az Azure BluePrints funkciói
 description: Ismerteti azokat a funkciókat, amelyek az Azure-tervrajzok és-hozzárendelések tervrajzi összetevőihez használhatók.
-ms.date: 04/15/2019
+ms.date: 12/09/2019
 ms.topic: reference
-ms.openlocfilehash: 92539da02ddbe22f943454aff54dae4ccb5af3ce
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128753"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970890"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Az Azure-tervezetekhez használható függvények
 
@@ -16,26 +16,29 @@ Az Azure-tervrajzok olyan funkciókat biztosítanak, amelyek a tervrajzok meghat
 
 A következő függvények támogatottak:
 
-- [artifacts](#artifacts)
+- [leletek](#artifacts)
 - [concat](#concat)
 - [paraméterek](#parameters)
 - [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
 - [előfizetést](#subscription)
 
-## <a name="artifacts"></a>artifacts
+## <a name="artifacts"></a>leletek
 
 `artifacts(artifactName)`
 
 Egy olyan objektumot ad vissza, amely az adott tervrajz-összetevők kimenetével van feltöltve.
 
+> [!NOTE]
+> A `artifacts()` függvény nem használható Resource Manager-sablonon belülről. A függvény csak a Blueprint definition JSON-ban vagy az összetevő JSON-ban használható, amikor a tervezetet Azure PowerShell vagy REST API a [tervrajzok](https://github.com/Azure/azure-blueprints/blob/master/README.md)részeként.
+
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Szükséges | Type (Típus) | Leírás |
 |:--- |:--- |:--- |:--- |
 | artifactName |Igen |sztring |Egy tervrajz-összetevő neve. |
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérítési érték
 
 A kimeneti tulajdonságok egy objektuma. A **kimenetek** tulajdonságai függnek a hivatkozott tervi összetevő típusától. Az összes típus formátuma a következő:
 
@@ -103,14 +106,14 @@ Egy Resource Manager-sablon, amely a következő minta kimeneti tulajdonságot t
 
 Néhány példa az adatok a _myTemplateArtifact_ mintából való beolvasására:
 
-| Kifejezés | Típus | Érték |
+| Kifejezés | Type (Típus) | Value (Díj) |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Tömb | \["első", "Second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Sztring | első |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | Sztring | "saját karakterlánc értéke" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Objektum | {"myproperty": "saját érték", "anotherProperty": true} |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Sztring | "my value" |
-|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True (Igaz) |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Sztring | "saját érték" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Logikai | Igaz |
 
 ## <a name="concat"></a>concat
 
@@ -120,12 +123,12 @@ Több karakterlánc-értéket egyesít, és visszaadja az összefűzött karakte
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Szükséges | Type (Típus) | Leírás |
 |:--- |:--- |:--- |:--- |
-| string1 |Igen |sztring |Az Összefűzés első értéke. |
+| karakterlánc1 |Igen |sztring |Az Összefűzés első értéke. |
 | További argumentumok |Nem |sztring |További értékek szekvenciális sorrendben az összefűzéshez |
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérítési érték
 
 Összefűzött értékek karakterlánca.
 
@@ -145,11 +148,11 @@ Egy terv paramétereinek értékét adja vissza. A megadott paraméter nevét me
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Szükséges | Type (Típus) | Leírás |
 |:--- |:--- |:--- |:--- |
 | parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérítési érték
 
 A megadott terv vagy tervrajz-összetevő paraméterének értéke.
 
@@ -200,11 +203,11 @@ Ezután használja a _principalIds_ argumentumként `parameters()` egy tervrajz-
 
 `resourceGroup()`
 
-Az aktuális erőforráscsoport képviselő objektumot adja vissza.
+Egy olyan objektumot ad vissza, amely az aktuális erőforráscsoportot jelképezi.
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérítési érték
 
-A visszaadott objektum a következő formátumban kell megadni:
+A visszaadott objektum formátuma a következő:
 
 ```json
 {
@@ -266,13 +269,13 @@ Egy olyan objektumot ad vissza, amely a megadott erőforráscsoport-összetevőt
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Szükséges | Type (Típus) | Leírás |
 |:--- |:--- |:--- |:--- |
 | placeholderName |Igen |sztring |A visszaadni kívánt erőforráscsoport-összetevő helyőrző neve. |
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérítési érték
 
-A visszaadott objektum a következő formátumban kell megadni:
+A visszaadott objektum formátuma a következő:
 
 ```json
 {
@@ -326,9 +329,9 @@ Ezután használja a `resourceGroups()` függvényt bármely tervrajzi összetev
 
 Az aktuális terv-hozzárendelésre vonatkozó előfizetés részleteit adja vissza.
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérítési érték
 
-A visszaadott objektum a következő formátumban kell megadni:
+A visszaadott objektum formátuma a következő:
 
 ```json
 {
@@ -362,7 +365,7 @@ Az előfizetés megjelenítendő neve és a `concat()` függvény használatáva
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.

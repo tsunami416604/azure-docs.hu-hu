@@ -1,5 +1,5 @@
 ---
-title: Hitelesítési és engedélyezési hibakódok Azure Active Directory | Microsoft Docs
+title: Azure AD-hitelesítés és-engedélyezési hibakódok | Azure
 description: Ismerje meg az Azure AD biztonságijogkivonat-szolgáltatás (STS) által visszaadott AADSTS hibakódokat.
 services: active-directory
 documentationcenter: ''
@@ -17,19 +17,19 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193170"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965806"
 ---
-# <a name="authentication-and-authorization-error-codes"></a>Hitelesítés és hitelesítési hibakódok
+# <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és-engedélyezési hibakódok
 
 Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS) által visszaadott AADSTS hibakódok információit keresi? Olvassa el ezt a dokumentumot a AADSTS hibák leírásának, javításának és egyes javasolt megkerülő megoldásoknak a megkereséséhez.
 
 > [!NOTE]
-> Ezek az információk előzetesek, és változhatnak. Kérdése van, vagy nem találja, amit keres? Hozzon létre egy GitHub-problémát, vagy tekintse meg a [fejlesztők támogatási és támogatási lehetőségeit](active-directory-develop-help-support.md) , amelyekkel megismerheti a Súgó és támogatás egyéb lehetőségeit.
+> Ezek az információk előzetesek, és változhat a tartalmuk. Kérdése van, vagy nem találja, amit keres? Hozzon létre egy GitHub-problémát, vagy tekintse meg a [fejlesztők támogatási és támogatási lehetőségeit](active-directory-develop-help-support.md) , amelyekkel megismerheti a Súgó és támogatás egyéb lehetőségeit.
 >
 > Ez a dokumentáció a fejlesztői és a rendszergazdai útmutatóhoz készült, de az ügyfél soha nem használhatja. A hibakódok bármikor megváltozhatnak, hogy részletesebb hibaüzeneteket szolgáltasson, amelyek célja, hogy az alkalmazás kiépítése során segítsenek a fejlesztőnek. A szöveg-vagy hibakódokat használó alkalmazások az idő múlásával lesznek megszakítva.
 
@@ -97,7 +97,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS50079 | UserStrongAuthEnrollmentRequired – a rendszergazda által végrehajtott konfigurációs változás miatt, vagy mert a felhasználó új helyre költözött, a felhasználónak a többtényezős hitelesítést kell használnia. |
 | AADSTS50085 | A frissítési jogkivonathoz közösségi identitásszolgáltatói bejelentkezés szükséges. A felhasználónak újra be kell jelentkeznie a felhasználónévvel és jelszóval |
 | AADSTS50086 | SasNonRetryableError |
-| AADSTS50087 | SasRetryableError – a szolgáltatás átmenetileg nem érhető el. Próbálja meg újra. |
+| AADSTS50087 | SasRetryableError – a szolgáltatás átmenetileg nem érhető el. próbáld újra. |
 | AADSTS50089 | A folyamat jogkivonata lejárt – a hitelesítés nem sikerült. Próbálkozzon újra a felhasználóval a Felhasználónév-jelszó megadásával. |
 | AADSTS50097 | DeviceAuthenticationRequired-eszköz hitelesítésre van szükség. |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized – a JWT aláírása érvénytelen. |
@@ -158,7 +158,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS70007 | UnsupportedResponseMode – az alkalmazás a token kérésekor `response_mode` nem támogatott értéket adott vissza.  |
 | AADSTS70008 | ExpiredOrRevokedGrant – a frissítési token inaktivitás miatt lejárt. A tokent XXX-ben adták ki, és bizonyos ideig inaktív volt. |
 | AADSTS70011 | InvalidScope – az alkalmazás által igényelt hatókör érvénytelen. |
-| AADSTS70012 | MsaServerError – kiszolgálóhiba történt egy MSA (fogyasztói) felhasználó hitelesítése közben. Próbálja meg újra. Ha továbbra is sikertelen, [Nyisson meg egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError – kiszolgálóhiba történt egy MSA (fogyasztói) felhasználó hitelesítése közben. próbáld újra. Ha továbbra is sikertelen, [Nyisson meg egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending – OAuth 2,0 – eszköz folyamatának hibája. Az engedélyezés függőben van. Az eszköz újra megpróbálja lekérdezni a kérést. |
 | AADSTS70018 | BadVerificationCode – érvénytelen ellenőrző kód, mert a felhasználó helytelen felhasználói kódot adott meg az eszköz kódjának adatforgalmához. Az engedélyezés nincs jóváhagyva. |
 | AADSTS70019 | CodeExpired – az ellenőrző kód lejárt. A felhasználó próbálja megismételni a bejelentkezést. |
@@ -200,7 +200,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat – a egyszerű név formátuma érvénytelen, vagy nem felel meg a várt `name[/host][@realm]` formátumnak. Az egyszerű név megadása kötelező, a gazdagép és a tartomány nem kötelező, és lehet null értékű. |
 | AADSTS90023 | InvalidRequest – a hitelesítési szolgáltatás kérése érvénytelen. |
 | AADSTS9002313 | InvalidRequest – a kérelem helytelen formátumú vagy érvénytelen. – A probléma oka az, hogy hiba történt egy adott végpontra vonatkozó kérelemben. A probléma előfeltétele, hogy beszerezze a hiba Hegedűs-nyomkövetését, és megtekinti, hogy a kérelem formátuma megfelelő-e. |
-| AADSTS90024 | RequestBudgetExceededError – átmeneti hiba történt. Próbálja meg újra. |
+| AADSTS90024 | RequestBudgetExceededError – átmeneti hiba történt. próbáld újra. |
 | AADSTS90033 | MsodsServiceUnavailable – a Microsoft Online Directory szolgáltatás (MSODS) nem érhető el. |
 | AADSTS90036 | MsodsServiceUnretryableFailure – váratlan, nem újrapróbálkozást lehetővé tevő hiba történt a MSODS által üzemeltetett WCF szolgáltatásban. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez |
 | AADSTS90038 | NationalCloudTenantRedirection – a megadott "Y" bérlő az "X" nemzeti felhőhöz tartozik. A jelenlegi "Z" felhőalapú példány nem összevonása az X-szel. A rendszer Felhőbeli átirányítási hibát adott vissza. |

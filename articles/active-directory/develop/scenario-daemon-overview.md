@@ -1,5 +1,5 @@
 ---
-title: Webes API-kat hívó Daemon-alkalmazás (áttekintés) – Microsoft Identity platform
+title: Webes API-kat meghívó Daemon-alkalmazás létrehozása – Microsoft Identity platform | Azure
 description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó Daemon-alkalmazást
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,14 +16,14 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae0912203f2427694d2a9b8611966a55e1e6889e
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 70a8c97ee1e10d53cd8da9687a9109eb4ce8ae3d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056383"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965568"
 ---
-# <a name="scenario-daemon-application-that-calls-web-apis"></a>Forgatókönyv: Webes API-kat meghívó Daemon-alkalmazás
+# <a name="scenario-daemon-application-that-calls-web-apis"></a>Forgatókönyv: a webes API-kat meghívó alkalmazás
 
 A webes API-kat meghívó Daemon-alkalmazások létrehozásához szükséges tudnivalók.
 
@@ -47,7 +47,7 @@ Van egy másik gyakori eset, amikor a nem Daemon-alkalmazások az ügyfél hitel
 
 Olyan alkalmazások, amelyek jogkivonatot szerzik be a saját identitásuk számára:
 
-- Bizalmas ügyfélalkalmazások. Ezek az alkalmazások, mivel a felhasználóktól függetlenül férnek hozzá az erőforrásokhoz, bizonyítaniuk kell identitásukat. Emellett meglehetősen érzékeny alkalmazások, amelyeket az Azure Active Directory (Azure AD) bérlői rendszergazdáinak jóvá kell hagyniuk.
+- bizalmas ügyfélalkalmazások. Ezek az alkalmazások, mivel a felhasználóktól függetlenül férnek hozzá az erőforrásokhoz, bizonyítaniuk kell identitásukat. Emellett meglehetősen érzékeny alkalmazások, amelyeket az Azure Active Directory (Azure AD) bérlői rendszergazdáinak jóvá kell hagyniuk.
 - Titkos (alkalmazás jelszava vagy tanúsítvány) van regisztrálva az Azure AD-ben. Ezt a titkot a rendszer átadja az Azure AD-nek a jogkivonat beszerzésére irányuló hívása során.
 
 ## <a name="specifics"></a>Sajátosságai
@@ -64,7 +64,7 @@ A fejlesztők számára a forgatókönyv teljes körű tapasztalata a következ�
 - Az [alkalmazás konfigurációjának](./scenario-daemon-app-configuration.md) az Azure ad-ben megosztott ügyfél-hitelesítő adatokat kell megadnia az alkalmazás regisztrációja során.
 - Az ügyfél hitelesítő adataival rendelkező token beszerzéséhez használt [hatókörnek](scenario-daemon-acquire-token.md#scopes-to-request) statikus hatókörre van szüksége.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Daemon App – alkalmazás regisztrálása](./scenario-daemon-app-registration.md)

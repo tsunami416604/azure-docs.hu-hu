@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 0026aa377a58f6b766a400860692a35440deb962
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2ae0f3033b88b3229d3dbef35c8bc9a32510c00e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748363"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972336"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Hibakeresés Azure Data Factory
 
@@ -43,9 +43,9 @@ Ez a cikk a Azure Data Factory külső ellenőrzési tevékenységeinek gyakori 
 
 - **Javaslat**: a jegyzetfüzet elérési útjának megadása a Databricks tevékenységben.
 
-<br/>    
-              
-- **Üzenet**: `Cluster   ... does not exist.`
+<br/>  
+
+- **Üzenet**: `Cluster... does not exist.`
 
 - **OK**: `Authoring error: Databricks cluster does not exist or has been deleted.`
 
@@ -53,7 +53,7 @@ Ez a cikk a Azure Data Factory külső ellenőrzési tevékenységeinek gyakori 
 
 <br/>  
 
-- **Üzenet**: `Invalid Python file URI.... Please visit Databricks user guide for supported URI schemes.`
+- **Üzenet**: `Invalid Python file URI... Please visit Databricks user guide for supported URI schemes.`
 
 - **OK**: `Bad authoring.`
 
@@ -334,56 +334,56 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code--4121"></a>Hibakód: 4121
 
-- **Üzenet**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **OK**: az Azure ml szolgáltatás elérésére használt hitelesítő adatok lejártak.
+- **OK**: a Azure Machine learning eléréséhez használt hitelesítő adatok lejártak.
 
 - **Javaslat**: Ellenőrizze a hitelesítő adatok érvényességét, és próbálkozzon újra
 
 
 ### <a name="error-code--4122"></a>Hibakód: 4122
 
-- **Üzenet**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **OK**: az Azure ml szolgáltatáshoz társított szolgáltatásban megadott hitelesítő adat érvénytelen vagy nem rendelkezik engedéllyel a művelethez.
+- **OK**: Azure Machine learning társított szolgáltatásban megadott hitelesítő adat érvénytelen vagy nem rendelkezik engedéllyel a művelethez.
 
-- **Javaslat**: Ellenőrizze, hogy érvényes-e a hitelesítő adatok a társított szolgáltatásban, és jogosult-e az Azure ml szolgáltatás elérésére.
+- **Javaslat**: Ellenőrizze, hogy érvényes-e a hitelesítő adatok a társított szolgáltatásban, és jogosult-e a Azure Machine learning elérésére.
 
 
 ### <a name="error-code--4123"></a>Hibakód: 4123
 
-- **Üzenet**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **OK**: `Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
+- **OK**: a tevékenység (például a pipelineParameters) tulajdonságai az Azure ml-folyamat esetében érvénytelenek.
 
 - **Javaslat**: Ellenőrizze a tevékenység tulajdonságainak értékét, hogy megegyezzen a társított szolgáltatásban megadott közzétett Azure ml-folyamat várt hasznos adattartalmával.
 
 
 ### <a name="error-code--4124"></a>Hibakód: 4124
 
-- **Üzenet**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
 - **OK**: a közzétett Azure ml-folyamat végpontja nem létezik.
 
-- **Javaslat**: Ellenőrizze, hogy a társított szolgáltatásban megadott közzétett Azure ml pipeline-végpont létezik-e az Azure ml szolgáltatásban.
+- **Javaslat**: Ellenőrizze, hogy a társított szolgáltatásban megadott közzétett Azure Machine learning folyamat-végpont létezik-e Azure Machine Learningban.
 
 
 ### <a name="error-code--4125"></a>Hibakód: 4125
 
-- **Üzenet**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **OK**: kiszolgálói hiba az Azure ml szolgáltatásban.
+- **OK**: kiszolgálóhiba Azure Machine Learningkor.
 
-- **Javaslat**: próbálkozzon újra később. Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot az Azure ML Service csapatával.
+- **Javaslat**: próbálkozzon újra később. Ha a probléma továbbra is fennáll, lépjen kapcsolatba Azure Machine Learning csapatával.
 
 
 ### <a name="error-code--4126"></a>Hibakód: 4126
 
-- **Üzenet**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure ML Service for more error logs.`
+- **Üzenet**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure Machine Learning for more error logs.`
 
 - **OK**: az Azure ml-folyamat futtatása nem sikerült.
 
-- **Javaslat**: Ellenőrizze, hogy az Azure ml szolgáltatásban további hibák jelentkeznek-e, és javítsa ki a ml-folyamatot
+- **Javaslat**: ellenőrizze a Azure Machine learning a további hibák naplózásához és a ml-folyamat javításához.
 
 
 
@@ -422,7 +422,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **OK**: a tárolóhoz tartozó kapcsolatok karakterlánca érvénytelen vagy helytelen formátumú.
 
-- **Javaslat**: lépjen az Azure Portalra, keresse meg a tárhelyét, másolja a kapcsolati karakterláncot, és illessze be a társított szolgáltatásba, majd próbálkozzon újra.
+- **Javaslat**: lépjen a Azure Portalra, keresse meg a tárhelyét, másolja a kapcsolati karakterláncot, és illessze be a társított szolgáltatásba, majd próbálkozzon újra.
 
 
 ### <a name="error-code--2108"></a>Hibakód: 2108
@@ -522,7 +522,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code--2507"></a>Hibakód: 2507
 
-- **Üzenet**: `The folder path does not exist or is empty: ....`
+- **Üzenet**: `The folder path does not exist or is empty: ...`
 
 - **OK**: a megadott elérési úton egyetlen fájl sem található a Storage-fiókban.
 
@@ -668,12 +668,12 @@ A következő táblázat a Azure Batchra vonatkozik.
 - **OK**: Ha a hibaüzenet olyan üzenetet tartalmaz, amely a "502 – webkiszolgáló számára érvénytelen választ kapott az átjáróként vagy proxykiszolgálóként való működés közben", ezt a hibát a HDInsight szolgáltatás adja vissza.
 
 
-- **Javaslat**: Tekintse át az Azure HDInsight hibaelhárítási dokumentációját, például https://hdinsight.github.io/ambari/ambari-ui-502-error.html, https://hdinsight.github.io/spark/spark-thriftserver-errors.html, https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502.
+- **Javaslat**: Tekintse át az Azure HDInsight hibaelhárítási dokumentációját, például https://hdinsight.github.io/ambari/ambari-ui-502-error.html , https://hdinsight.github.io/spark/spark-thriftserver-errors.html, https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502.
                   
 
 <br>
 
-- **OK**: Ha a hibaüzenetben egy hasonló üzenet jelenik meg, amely a "nem tudja kiszolgálni a küldési feladattípust, mert a Templeton szolgáltatás túl sok küldési feladattípust vagy várólista gyökerét tartalmaz. a joblauncher már rendelkezik a 500-es alkalmazásokkal, nem fogadhat el az alkalmazás ", ez azt jelenti, hogy túl sok feladat van elküldve a HDInsight egyszerre.
+- **OK**: Ha a hibaüzenet olyan üzenetet tartalmaz, amely a "nem tudja kiszolgálni a küldési feladat kérését, mert a Templeton szolgáltatás túl sok beküldési feladathoz vagy" üzenetsor gyökeréhez tartozik. a joblauncher már rendelkezik 500 alkalmazással, nem fogadhatja el az alkalmazás beküldését ", ez azt jelenti, hogy túl sok feladat van elküldve a HDInsight.
 
 - **Javaslat**: érdemes lehet korlátozni a HDInsight küldött egyidejű feladatok számát. Ha ugyanaz a tevékenység küldi el a feladatokat, tekintse meg Data Factory tevékenység egyidejűségét. Módosítsa az eseményindítókat úgy, hogy az egyidejű folyamat-futtatások egyszerre legyenek kiosztva. Tekintse át a HDInsight dokumentációját a Templeton. parallellism. job. Submit utasításhoz a hiba javaslata alapján.
 
@@ -685,7 +685,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 - **OK**: a HDInsight-fürt vagy-szolgáltatás problémái vannak.
 
 
-- **Javaslat**: Ez a hiba akkor fordul elő, ha az ADF nem válaszol a HDInsight-fürttől a futó feladatokhoz tartozó állapot beolvasására tett kísérlet során. Előfordulhat, hogy a fürtön problémák merülhetnek fel, vagy ha a HDInsight szolgáltatás leállás miatt leáll. További segítségért tekintse meg a HDInsight hibaelhárítási dokumentációját https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guidecímen, vagy forduljon a támogatási szolgálathoz.
+- **Javaslat**: Ez a hiba akkor fordul elő, ha az ADF nem válaszol a HDInsight-fürttől a futó feladatokhoz tartozó állapot beolvasására tett kísérlet során. Előfordulhat, hogy a fürtön problémák merülhetnek fel, vagy ha a HDInsight szolgáltatás leállás miatt leáll. További segítségért tekintse meg a HDInsight hibaelhárítási dokumentációját https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide címen, vagy forduljon a támogatási szolgálathoz.
                 
 
 
@@ -816,7 +816,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 - **Javaslat**:  
       1. Ellenőrizze, hogy a hitelesítő adatok helyesek-e. Ehhez nyissa meg a HDInsight-fürt Ambari felhasználói felületét egy böngészőben.
-      2. Ha a fürt VNet és saját üzemeltetésű IR használatban van, a HDI URL-címnek a virtuális hálózatok privát URL-címének kell lennie, ami azt jelenti, hogy a fürt neve után "-int" értékűnek kell lennie. A (z) "https://mycluster.azurehdinsight.net/" például "https://mycluster-int.azurehdinsight.net/" értékre kell változtatni.
+      2. Ha a fürt VNet és saját üzemeltetésű IR használatban van, a HDI URL-címnek a virtuális hálózatok privát URL-címének kell lennie, ami azt jelenti, hogy a fürt neve után "-int" értékűnek kell lennie. A (z) "https://mycluster.azurehdinsight.net/ " például "https://mycluster-int.azurehdinsight.net/" értékre kell változtatni.
       2. Ha a fürt VNet található, a rendszer saját üzemeltetésű IR-t használ, és a magánhálózati URL-címet használta, és a kapcsolat továbbra is meghiúsult, akkor az a virtuális gép, amelyen az IR telepítve volt, problémák léptek fel a HDI-hez való csatlakozás során. Kapcsolódjon ahhoz a virtuális géphez, amelyen az IR telepítve van, és nyissa meg a Ambari felhasználói felületét egy böngészőben. Használja a fürt magánhálózati URL-címét. A hálózatnak a böngészőben kell működnie. Ha nem, további segítségért lépjen kapcsolatba a HDInsight támogatási csapatával.
       3. Ha a saját üzemeltetésű integrációs modult nem használja, akkor a HDI-fürtnek nyilvánosan elérhetőnek kell lennie. Nyissa meg a Ambari felhasználói felületét egy böngészőben, és győződjön meg róla, hogy megnyílik. Ha problémák merülnek fel a fürttel vagy a szolgáltatásokkal kapcsolatban, kérjen segítséget a HDInsight támogatási csapattól.
       Így általában az ADF-hez társított szolgáltatásban használt HDI-fürt URL-címének elérhetőnek kell lennie az ADF-hez (helyi vagy Azure), hogy a kapcsolaton keresztüli teszt és a futtatások működjenek. Ezt egyszerűen ellenőrizheti, ha megnyitja az URL-címet egy böngészőből a virtuális gépen vagy bármely nyilvános gépről.
@@ -977,7 +977,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 - **OK**: a fürt létrehozása nem sikerült, és az ADF nem adott vissza hibát a HDInsight szolgáltatástól.
 
-- **Javaslat**: Nyissa meg az Azure Portalt, és próbálja meg megkeresni a megadott névvel rendelkező HDI-erőforrást, és ellenőrizze a kiépítési állapotot. További segítségért forduljon a HDInsight támogatási csapatához.
+- **Javaslat**: Nyissa meg a Azure Portal, és próbálja meg megkeresni a megadott névvel rendelkező HDI-erőforrást, és ellenőrizze a kiépítési állapotot. További segítségért forduljon a HDInsight támogatási csapatához.
 
 
 ### <a name="error-code--2362"></a>Hibakód: 2362
@@ -1018,7 +1018,7 @@ A Hegedűs használata a figyelt webalkalmazás HTTP-munkamenetének létrehozá
 
 1. Ha a webalkalmazás HTTPS protokollt használ, lépjen az **eszközök** > a **Hegedűs beállításai** > **https**elemre. Válassza a HTTPS-forgalom **összekapcsolása** és a **https-forgalom visszafejtése**lehetőséget.
 
-![Hegedűs beállításai](media/data-factory-troubleshoot-guide/fiddler-options.png)
+   ![Hegedűs beállításai](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
 1. Ha az alkalmazás SSL-tanúsítványokat használ, adja hozzá a Hegedűs tanúsítványát az eszközhöz. Nyissa meg az **eszközök** > a **Hegedűs beállításai** > **https** > **műveleteket** > **a főtanúsítvány exportálása az asztalra**lehetőséget.
 
@@ -1028,25 +1028,25 @@ A Hegedűs használata a figyelt webalkalmazás HTTP-munkamenetének létrehozá
 
 1. Kérelem létrehozása:
 
-a. Válassza a **zeneszerző** fület.
+   1. Válassza a **zeneszerző** fület.
 
-b. Állítsa be a HTTP-metódust és az URL-címet.
+   1. Állítsa be a HTTP-metódust és az URL-címet.
+   
+   1. Ha szükséges, adjon hozzá fejléceket és egy kérés törzsét.
 
-c. Ha szükséges, adjon hozzá fejléceket és egy kérés törzsét.
+   1. Válassza a **Végrehajtás** lehetőséget.
 
-d. Válassza a **Végrehajtás** lehetőséget.
+1. Kapcsolja be újra a forgalom rögzítését, és fejezze be a problémás tranzakciót az oldalon.
 
-9. Kapcsolja be újra a forgalom rögzítését, és fejezze be a problémás tranzakciót az oldalon.
-
-10. Válassza a **fájl** > **Mentés** > **minden munkamenet**lehetőséget.
+1. Válassza a **fájl** > **Mentés** > **minden munkamenet**lehetőséget.
 
 További információ: [Bevezetés a Hegedűs](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)használatába.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
 
-*  [Data Factory-blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory szolgáltatásra vonatkozó kérelmek](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-videók](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)

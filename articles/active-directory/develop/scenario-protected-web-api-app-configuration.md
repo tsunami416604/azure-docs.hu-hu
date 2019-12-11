@@ -1,5 +1,5 @@
 ---
-title: Védett webes API – az alkalmazás kódjának konfigurálása
+title: Védett webes API-alkalmazások konfigurálása | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan hozhat létre védett webes API-t, és hogyan konfigurálhatja az alkalmazás kódját.
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb562caf2dfc83841762748f37d1a7ee325de10b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 7f78fa35096b7e17d3736190bfa49619c2c81520
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882626"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965398"
 ---
 # <a name="protected-web-api-code-configuration"></a>Védett webes API: kód konfigurálása
 
@@ -32,7 +32,7 @@ A védett webes API-hoz tartozó kód konfigurálásához meg kell ismernie, hog
 
 A webalkalmazásokhoz hasonlóan a ASP.NET/ASP.NET Core webes API-k "védettek", mert a vezérlő műveletei a `[Authorize]` attribútummal vannak előjavítva. Így a vezérlő műveletek csak akkor hívhatók meg, ha az API-t egy engedélyekkel rendelkező identitás hívja meg.
 
-Vegye figyelembe a következő kérdéseket:
+A következő kérdéseket kell figyelembe venni:
 
 - Hogyan ismeri a webes API a meghívást az alkalmazás identitásával? (Csak az alkalmazás hívhat meg webes API-t.)
 - Ha az alkalmazás a felhasználó nevében a webes API-t hívja meg, mi a felhasználó identitása?
@@ -163,7 +163,7 @@ A validatorok a `TokenValidationParameters` osztály tulajdonságaihoz vannak t�
 
 Az Azure functions szolgáltatásban is ellenőrizhető a bejövő hozzáférési tokenek ellenőrzése. Az Azure functions-ben a [DotNet](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions), a [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)és a [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)szolgáltatásban találhat példákat a jogkivonatok érvényesítésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hatókörök és alkalmazás-szerepkörök ellenőrzése a kódban](scenario-protected-web-api-verification-scope-app-roles.md)

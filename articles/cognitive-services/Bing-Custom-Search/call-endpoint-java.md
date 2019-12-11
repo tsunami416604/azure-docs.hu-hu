@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Bing Custom Search-végpont meghívása a Java használatával | Microsoft Docs'
+title: 'Gyors útmutató: az Bing Custom Search-végpont meghívása a Java használatával | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek megadását javában.
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: afb804dd3fd0fecd676f04f18db577f87861a163
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6a470979ce4276d510f1a89bc9bc192d609c2083
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564683"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973509"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Gyors útmutató: Bing Custom Search-végpont meghívása a Javával
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Rövid útmutató: az Bing Custom Search-végpont meghívása a Javával
 
 Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek kérelmezését. Habár ez az alkalmazás Java nyelven íródott, a Bing Custom Search API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java) érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Bing Custom Search példány. Lásd [: gyors útmutató: További információért hozza létre az](quick-start.md) első Bing Custom Search-példányát.
+- Egy Bing Custom Search példány. További információért tekintse [meg a rövid útmutató: az első Bing Custom Search példány létrehozása](quick-start.md) című témakört.
 
 - A legújabb [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
 
@@ -50,7 +50,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
     import com.google.gson.JsonParser;
     ```
 
-2. hozzon létre egy `CustomSrchJava`nevű osztályt, és hozzon létre változókat az előfizetési kulcs, az egyéni keresési végpont és a keresési példány egyéni konfigurációs azonosítója alapján. 
+2. Hozzon létre egy `CustomSrchJava`nevű osztályt, és hozzon létre változókat az előfizetési kulcshoz, az egyéni keresési végponthoz és a keresési példány egyéni konfigurációs AZONOSÍTÓjának létrehozásához. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";
@@ -61,7 +61,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
     ...
     ```
 
-3. Hozzon létre egy `SearchResults` másik, nevű osztályt, amely tartalmazza a Bing Custom Search-példány válaszát.
+3. Hozzon létre egy másik, `SearchResults` nevű osztályt, amely a Bing Custom Search-példány válaszát tartalmazza.
 
     ```csharp
     class SearchResults{
@@ -88,7 +88,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
 
 ## <a name="send-and-receive-a-search-request"></a>Keresési kérelem küldése és fogadása 
 
-1. Hozzon létre egy `SearchWeb()` nevű függvényt, amely egy kérelmet `SearchResults` küld, és visszaad egy objektumot. Hozza létre a kérelem URL-címét az egyéni konfigurációs azonosító, a lekérdezés és a végpont adatainak kombinálásával. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez.
+1. Hozzon létre egy `SearchWeb()` nevű függvényt, amely kérelmet küld, és egy `SearchResults` objektumot ad vissza. Hozza létre a kérelem URL-címét az egyéni konfigurációs azonosító, a lekérdezés és a végpont adatainak kombinálásával. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
     ```java
     public class CustomSrchJava {
@@ -101,7 +101,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
     ...
     ```
 
-2. Hozzon létre egy streamet, és tárolja a `SearchResults` JSON-választ egy objektumban.
+2. Hozzon létre egy streamet, és tárolja a JSON-választ egy `SearchResults` objektumban.
 
     ```java
     public class CustomSrchJava {
@@ -120,7 +120,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
         }
     ```
 
-3. Az alkalmazás fő metódusában hívja `SearchWeb()` meg a keresési kifejezést, 
+3. Az alkalmazás fő metódusában hívja meg a `SearchWeb()`t a keresési kifejezéssel, 
 
     ```java
     System.out.println("\nJSON Response:\n");
@@ -129,7 +129,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
 
 4. Futtassa a programot.
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni keresési Webalkalmazás létrehozása](./tutorials/custom-search-web-page.md)

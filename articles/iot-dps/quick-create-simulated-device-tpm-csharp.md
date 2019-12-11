@@ -1,6 +1,6 @@
 ---
 title: Gyors útmutató – szimulált TPM-eszköz kiépítése az Azure-IoT Hub a használatávalC#
-description: Rövid útmutató – szimulált TPM-eszköz létrehozása és kiépítése az Azure IoT Hub Device Provisioning Service eszköz-SDK használatával C# . Ez a rövid útmutató egyéni regisztrációkat használ.
+description: Rövid útmutató – szimulált TPM-eszköz létrehozása és kiépítése az Azure IoT Hub Device Provisioning Service (DPS) eszköz-SDK használatával C# . Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 51249a8ac2f0fd0ed00d63ab60a2ab88b56e4304
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 82bd284ede23e8880f79c614f4a6e2f588a4293c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276446"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976995"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált TPM-eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service C# eszköz SDK-val
 

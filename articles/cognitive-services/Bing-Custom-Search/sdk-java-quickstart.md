@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Javához készült ügyféloldali kódtár Bing Custom Search | Microsoft Docs'
+title: 'Rövid útmutató: Bing Custom Search ügyféloldali kódtár a Javához | Microsoft Docs'
 description: Ismerkedjen meg a Java-Bing Custom Search ügyféloldali kódtáraval, ha a Bing Custom Search-példány keresési eredményeit kéri le.
 services: cognitive-services
 author: aahill
@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: quickstart
-ms.date: 09/17/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 7d1a7b2cdba082c78a1753ea0dcce6ead02ab036
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f0a3008dace4e9382bbb6b6d9465ce1c9b4ddc6c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147978"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976060"
 ---
-# <a name="quickstart-bing-custom-search-client-library-for-java"></a>Gyors útmutató: A Javához készült ügyféloldali kódtár Bing Custom Search
+# <a name="quickstart-bing-custom-search-client-library-for-java"></a>Gyors útmutató: Bing Custom Search a Javához készült ügyféloldali kódtár
 
 Ismerkedjen meg a Javához készült Bing Custom Search-ügyfél függvénytárával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Bing Custom Search API lehetővé teszi, hogy testreszabott, ad-ingyenes keresési élményeket hozzon létre az Ön számára fontos témakörökhöz.
 
@@ -24,14 +24,14 @@ A Javához készült Bing Custom Search ügyféloldali kódtár a következőre 
 
 * Keresési eredmények keresése a weben a Bing Custom Search-példányból. 
 
-[A dokumentációs](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [könyvtár forráskódját](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [(Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | ismertető[minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Dokumentáció](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | összetevő [(Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | [minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * A [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)aktuális verziója.
 * A [Gradle Build eszköz](https://gradle.org/install/)vagy egy másik függőségi kezelő.
-* Egy Bing Custom Search példány. Lásd [: gyors útmutató: További információért hozza létre az](quick-start.md) első Bing Custom Search-példányát.
+* Egy Bing Custom Search példány. További információért tekintse [meg a rövid útmutató: az első Bing Custom Search példány létrehozása](quick-start.md) című témakört.
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -42,7 +42,7 @@ Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. H
 * A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes 7 napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Tekintse meg az erőforrást a [Azure Portalon](https://portal.azure.com/).
 
-Miután beolvasott egy kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a (z) nevű `AZURE_BING_CUSTOM_SEARCH_API_KEY`kulcshoz.
+Miután beolvasott egy kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a (z) `AZURE_BING_CUSTOM_SEARCH_API_KEY`nevű kulcshoz.
 
 ### <a name="create-a-new-gradle-project"></a>Új Gradle-projekt létrehozása
 
@@ -65,7 +65,7 @@ Amikor a rendszer rákérdez a **DSL**kiválasztására, válassza a **Kotlin**l
 
 ## <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése 
 
-Keresse meg a *Build. gradle. KTS* , és nyissa meg a kívánt ide-vagy szövegszerkesztővel. Ezután másolja ezt a Build-konfigurációt. Ügyeljen rá, hogy az ügyféloldali kódtár `dependencies`szerepeljen a következőben:
+Keresse meg a *Build. gradle. KTS* , és nyissa meg a kívánt ide-vagy szövegszerkesztővel. Ezután másolja ezt a Build-konfigurációt. Ügyeljen arra, hogy az ügyfél-függvénytárat `dependencies`:
 
 ```kotlin
 plugins {
@@ -90,19 +90,19 @@ Hozzon létre egy mappát a minta alkalmazáshoz. A munkakönyvtárból futtassa
 mkdir src/main/java
 ```
 
-Navigáljon az új mappára, és hozzon létre egy *BingCustomSearchSample. Java*nevű fájlt. Nyissa meg, és adja `import` hozzá a következő utasításokat:
+Navigáljon az új mappára, és hozzon létre egy *BingCustomSearchSample. Java*nevű fájlt. Nyissa meg, és adja hozzá a következő `import` utasításokat:
 
 
 [!code-java[import statements](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=imports)]
 
-Hozzon létre egy nevű osztályt.`BingCustomSearchSample`
+Hozzon létre egy `BingCustomSearchSample` nevű osztályt
 
 ```java
 public class BingCustomSearchSample {
 }
 ```
 
-A osztályban hozzon létre egy `main` metódust és változókat az erőforrás Azure-végpontjának és-kulcsának. Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez nyissa meg, majd nyissa meg újra a szerkesztőt, az IDE vagy a shellt. A metódusokat később kell megadnia.
+A osztályban hozzon létre egy `main` metódust és egy változót az erőforrás kulcsaként. Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez nyissa meg, majd nyissa meg újra a szerkesztőt, az IDE vagy a shellt. A metódusokat később kell megadnia.
 
 [!code-java[main method](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=main)]
 
@@ -112,7 +112,7 @@ A Bing Custom Search ügyfél egy [BingCustomSearchAPI](https://docs.microsoft.c
 
 Az API-válasz egy [SearchResponse](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.models.searchresponse?view=azure-java-stable) objektum, amely információkat tartalmaz a keresési lekérdezésről és a keresési eredményekről.
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a Javához készült Bing Custom Search ügyféloldali kódtár használatával:
 
@@ -121,7 +121,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-A Main metódusnak tartalmaznia kell egy [BingCustomSearchManager](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) objektumot, amely a kulcsot veszi át, `authenticate()`és meghívja a-t.
+A Main metódusnak tartalmaznia kell egy [BingCustomSearchManager](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) objektumot, amely a kulcsot veszi át, és meghívja a `authenticate()`.
 
 ```java
 BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKey);
@@ -129,7 +129,7 @@ BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKe
 
 ## <a name="get-search-results-from-your-custom-search-instance"></a>Keresési eredmények beolvasása az egyéni keresési példányból
 
-Használja az ügyfél [BingCustomInstances. Search ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) függvényét, hogy keresési lekérdezést küldjön az egyéni példányra. Állítsa be `withCustomConfig` az értéket az egyéni konfigurációs azonosítóra, vagy `1`az alapértelmezett értékre a következőre:. Az API válaszának beolvasása után ellenőrizze, hogy talált-e keresési eredményeket. Ha igen, szerezze be az első keresési eredményt úgy, hogy meghívja a válasz `webPages().value().get()` függvényét, és kinyomtatja az eredmény nevét és URL-címét. 
+Használja az ügyfél [BingCustomInstances. Search ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) függvényét, hogy keresési lekérdezést küldjön az egyéni példányra. Állítsa be a `withCustomConfig`t az egyéni konfigurációs AZONOSÍTÓra, vagy az alapértelmezett értéket `1`. Az API válaszának beolvasása után ellenőrizze, hogy talált-e keresési eredményeket. Ha igen, szerezze be az első keresési eredményt úgy, hogy meghívja a válasz `webPages().value().get()` függvényt, és kinyomtatja az eredmény nevét és URL-címét. 
 
 [!code-java[call the custom search API](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=runSample)]
 
@@ -141,7 +141,7 @@ Hozza létre az alkalmazást az alábbi paranccsal a projekt fő könyvtárábó
 gradle build
 ```
 
-Futtassa az alkalmazást a `run` célnak megfelelően:
+Az alkalmazás futtatása a `run` céllal:
 
 ```console
 gradle run
@@ -151,10 +151,10 @@ gradle run
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni keresési Webalkalmazás létrehozása](./tutorials/custom-search-web-page.md)

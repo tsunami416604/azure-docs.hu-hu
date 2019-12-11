@@ -3,12 +3,12 @@ title: Hozzárendelések kezelése a PowerShell-lel
 description: Megtudhatja, hogyan kezelheti a terv-hozzárendeléseket a hivatalos Azure-tervezetek PowerShell-modullal, az. Blueprint használatával.
 ms.date: 09/30/2019
 ms.topic: how-to
-ms.openlocfilehash: 5e91197cac97475aa20df8fef8649d98d762d920
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 765ed5e1849443d6ac73fe4507327e97e4fdc4c2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873182"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973645"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Hozzárendelések kezelése a PowerShell-lel
 
@@ -246,6 +246,8 @@ A paramétereknek a parancsmaghoz való átadása helyett a példa egy JSON-hozz
 $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -SubscriptionId '{subId}' `
     -AssignmentFile '.\assignment.json'
 ```
+
+A felhasználó által hozzárendelt felügyelt identitáshoz tartozó JSON-hozzárendelési fájlra például a kérelem törzse [példa: hozzárendelés felhasználó által hozzárendelt felügyelt identitással](/rest/api/blueprints/assignments/createorupdate#assignment-with-user-assigned-managed-identity) REST API.
 
 ## <a name="update-blueprint-assignments"></a>Terv-hozzárendelések frissítése
 

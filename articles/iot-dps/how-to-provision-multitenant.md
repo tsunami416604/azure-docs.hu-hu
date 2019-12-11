@@ -1,18 +1,18 @@
 ---
 title: Eszközök kiépítése az Azure-beli bérlős-IoT Hub Device Provisioning Service
-description: Eszközök kiépítése a bérlős az eszköz kiépítési szolgáltatásának példánnyal
+description: Eszközök kiépítése a bérlős az eszköz kiépítési szolgáltatásával (DPS) rendelkező példánnyal
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 6d9755c076763a72d54abb66cfdf01b0ac7ffb9d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5703db90307f679ff4728386dc24647437f9f9ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228787"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974955"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>A bérlős kiépítése 
 
@@ -146,7 +146,7 @@ A könnyebb tisztítás érdekében ezek a virtuális gépek ugyanahhoz az erőf
     --authentication-type password
     ```
 
-    A parancs végrehajtása több percet is igénybe vehet. Ha a parancs befejeződött, jegyezze fel az USA keleti régiójában lévő virtuális gép **publicIpAddress** értékét.
+    A parancs feldolgozása eltarthat néhány percig. Ha a parancs befejeződött, jegyezze fel az USA keleti régiójában lévő virtuális gép **publicIpAddress** értékét.
 
 1. A Azure Cloud Shell futtassa a parancsot az **USA nyugati** régiójában lévő virtuális gép létrehozásához, miután a következő paramétert módosította a parancsban:
 
@@ -167,7 +167,7 @@ A könnyebb tisztítás érdekében ezek a virtuális gépek ugyanahhoz az erőf
     --authentication-type password
     ```
 
-    A parancs végrehajtása több percet is igénybe vehet. Ha a parancs befejeződött, jegyezze fel az USA nyugati régiójának **publicIpAddress** értékét.
+    A parancs feldolgozása eltarthat néhány percig. Ha a parancs befejeződött, jegyezze fel az USA nyugati régiójának **publicIpAddress** értékét.
 
 1. Nyisson meg két parancssori rendszerhéjt. Csatlakozzon az egyes rendszerhéjok egyik regionális virtuális géphez az SSH használatával. 
 
@@ -409,7 +409,7 @@ Az itt leírt lépések azt feltételezik, hogy a cikkben szereplő összes erő
 
 Az erőforráscsoport törlése név szerint:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 
 2. A **szűrés név szerint...** szövegmezőbe írja be az erőforrásokat tartalmazó erőforráscsoport nevét, a **contoso-US-Resource-Group**nevet. 
 
@@ -417,7 +417,7 @@ Az erőforráscsoport törlése név szerint:
 
 4. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be újra az erőforráscsoport nevét, majd kattintson a **Törlés** elemre. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
 - További részletekért lásd: [az előzőleg automatikusan kiépített eszközök](how-to-unprovision-devices.md) kiépítése. 

@@ -1,5 +1,5 @@
 ---
-title: Elosztott adatforgalom Azure Database for PostgreSQLban – nagy kapacitású (Citus)
+title: Elosztott adatforgalom – nagy kapacitású (Citus) – Azure Database for PostgreSQL
 description: Ismerje meg az elosztott táblákat, a táblákat, a helyi táblákat és a szegmenseket Azure Database for PostgreSQLban.
 author: jonels-msft
 ms.author: jonels
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 53d656d8d39c71c813d7dd7a504ec45667bf18b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ade7632dc042741a07bdb59e34e30b3fb464e0e9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482435"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975618"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Elosztott adatforgalom Azure Database for PostgreSQLban – nagy kapacitású (Citus)
 
@@ -90,5 +90,5 @@ WHERE shardid = 102027;
     │  102027 │ localhost │     5433 │
     └─────────┴───────────┴──────────┘
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Megtudhatja, hogyan [választhat terjesztési oszlopot](concepts-hyperscale-choose-distribution-column.md) az elosztott táblákhoz.

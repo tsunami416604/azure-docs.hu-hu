@@ -1,5 +1,5 @@
 ---
-title: Webes API-kat meghívó mobil alkalmazás – áttekintés
+title: Webes API-kat meghívó Mobile-alkalmazás létrehozása | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó mobil alkalmazást (áttekintés)
 services: active-directory
@@ -17,16 +17,16 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98f05470a07bad82a1e51517a787fb98c78f92ce
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: c6ebeed4a7806c013205d01621107ef65655e753
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803748"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965466"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Forgatókönyv: webes API-kat meghívó mobil alkalmazás
 
-Ismerje meg a webes API-kat meghívó Mobile-alkalmazások készítéséhez szükséges tudnivalókat.
+Megtudhatja, hogyan hozhat létre webes API-kat meghívó mobil alkalmazást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,7 @@ Ismerje meg a webes API-kat meghívó Mobile-alkalmazások készítéséhez szü
 
 ## <a name="getting-started"></a>Bevezetés
 
-Hozza létre az első mobil alkalmazást, és próbálja ki a gyors üzembe helyezést!
+Hozza létre az első mobil alkalmazást, és próbálja ki a gyors üzembe helyezést.
 
 > [!div class="nextstepaction"]
 > [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása Android-alkalmazásból](./quickstart-v2-android.md)

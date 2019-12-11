@@ -11,12 +11,12 @@ ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 51990e02eada52263006627be803c4073b9361ac
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 82270c126d8a0894cd3a388dcab62017ed63c2cd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555404"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974648"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL Data Warehouse munkaterhelési csoport elkülönítése (előzetes verzió)
 
@@ -24,13 +24,13 @@ Ez a cikk azt ismerteti, hogyan használhatók a munkaterhelés-csoportok a munk
 
 ## <a name="workload-groups"></a>Munkaterhelés-csoportok
 
-A munkaterhelési csoportok egy adott kérelemhez tartozó tárolók, amelyek alapján a számítási feladatok kezelése, beleértve a munkaterhelés elkülönítését, egy rendszeren van konfigurálva.  A munkaterhelés-csoportok a [munkaterhelés-csoport létrehozása](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxis használatával hozhatók létre.  Az egyszerű munkaterhelés-kezelési konfiguráció képes az adatterhelések és a felhasználói lekérdezések kezelésére.  Egy `wgDataLoads` nevű munkaterhelési csoport például meghatározza a rendszerbe betöltött adatok munkaterhelési szempontjait. Emellett az `wgUserQueries` nevű munkaterhelés-csoport munkaterhelési szempontokat határoz meg azon felhasználók számára, akik lekérdezéseket futtatnak a rendszerből származó adatok olvasásához.
+A munkaterhelési csoportok egy adott kérelemhez tartozó tárolók, amelyek alapján a számítási feladatok kezelése, beleértve a munkaterhelés elkülönítését, egy rendszeren van konfigurálva.  A munkaterhelés-csoportok a [munkaterhelés-csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxis használatával hozhatók létre.  Az egyszerű munkaterhelés-kezelési konfiguráció képes az adatterhelések és a felhasználói lekérdezések kezelésére.  Egy `wgDataLoads` nevű munkaterhelési csoport például meghatározza a rendszerbe betöltött adatok munkaterhelési szempontjait. Emellett az `wgUserQueries` nevű munkaterhelés-csoport munkaterhelési szempontokat határoz meg azon felhasználók számára, akik lekérdezéseket futtatnak a rendszerből származó adatok olvasásához.
 
 A következő szakaszokban bemutatjuk, hogy a munkaterhelési csoportok hogyan határozzák meg az elkülönítést, a tárolást, a kérelem erőforrás-definícióját és a végrehajtási szabályok betartásának lehetőségét.
 
 ## <a name="workload-isolation"></a>Számítási feladatok elkülönítése
 
-A számítási feladatok elkülönítése azt jelenti, hogy az erőforrások kizárólag a munkaterhelés-csoportok számára vannak fenntartva.  A számítási feladatok elkülönítése úgy érhető el, hogy a MIN_PERCENTAGE_RESOURCE paramétert nullánál nagyobb értékre konfigurálja a [munkaterhelés-csoport létrehozása](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxisban.  A szűk SLA-kat betartó folyamatos végrehajtást igénylő számítási feladatokhoz az elkülönítés biztosítja, hogy az erőforrások mindig elérhetők legyenek a munkaterhelés csoport számára. 
+A számítási feladatok elkülönítése azt jelenti, hogy az erőforrások kizárólag a munkaterhelés-csoportok számára vannak fenntartva.  A számítási feladatok elkülönítése úgy érhető el, hogy a MIN_PERCENTAGE_RESOURCE paramétert nullánál nagyobb értékre konfigurálja a [munkaterhelés-csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxisban.  A szűk SLA-kat betartó folyamatos végrehajtást igénylő számítási feladatokhoz az elkülönítés biztosítja, hogy az erőforrások mindig elérhetők legyenek a munkaterhelés csoport számára. 
 
 A számítási feladatok elkülönítésének implicit beállítása implicit módon meghatároz egy garantált párhuzamossági szintet.  Ha egy MIN_PERCENTAGE_RESOURCE 30%-ra van beállítva, és a REQUEST_MIN_RESOURCE_GRANT_PERCENT 2%-ra van beállítva, a munkaterhelés-csoport esetében a 15 párhuzamossági szint garantált.  Vegye figyelembe az alábbi módszert a garantált Egyidejűség meghatározásához:
 
@@ -50,7 +50,7 @@ A felhasználóknak kerülniük kell a 100%-os munkaterhelés-elkülönítést k
 
 ## <a name="workload-containment"></a>Munkaterhelés-tárolás
 
-A munkaterhelés-tárolás a munkaterhelés-csoport által felhasználható erőforrások mennyiségének korlátozására utal.  A munkaterhelés-tárolás úgy érhető el, hogy a CAP_PERCENTAGE_RESOURCE paramétert a MUNKATERHELÉS- [csoport létrehozása](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxisban kevesebb mint 100 értékre konfigurálja.  Vegye figyelembe azt a forgatókönyvet, hogy a felhasználóknak olvasási hozzáféréssel kell rendelkezniük a rendszerhez, hogy a mi-if elemzést alkalmi lekérdezések használatával futtassák.  Az ilyen típusú kérelmek negatív hatással lehetnek a rendszeren futó egyéb munkaterhelésekre.  A tároló konfigurálása biztosítja, hogy az erőforrások mennyisége korlátozott legyen.
+A munkaterhelés-tárolás a munkaterhelés-csoport által felhasználható erőforrások mennyiségének korlátozására utal.  A munkaterhelés-tárolás úgy érhető el, hogy a CAP_PERCENTAGE_RESOURCE paramétert a MUNKATERHELÉS- [csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxisban kevesebb mint 100 értékre konfigurálja.  Vegye figyelembe azt a forgatókönyvet, hogy a felhasználóknak olvasási hozzáféréssel kell rendelkezniük a rendszerhez, hogy a mi-if elemzést alkalmi lekérdezések használatával futtassák.  Az ilyen típusú kérelmek negatív hatással lehetnek a rendszeren futó egyéb munkaterhelésekre.  A tároló konfigurálása biztosítja, hogy az erőforrások mennyisége korlátozott legyen.
 
 A munkaterhelés-tárolás konfigurálása implicit módon meghatározza a maximális párhuzamossági szintet.  Ha egy CAP_PERCENTAGE_RESOURCE 60%-ra van beállítva, és egy REQUEST_MIN_RESOURCE_GRANT_PERCENT 1%-ra van beállítva, a munkaterhelés-csoport számára legfeljebb 60-párhuzamossági szint adható meg.  Vegye figyelembe az alábbi módszert a maximális párhuzamosság meghatározásához:
 
@@ -61,7 +61,7 @@ A munkaterhelés-tárolás konfigurálása implicit módon meghatározza a maxim
 
 ## <a name="resources-per-request-definition"></a>Erőforrások/kérelmek definíciója
 
-A munkaterhelési csoportok olyan mechanizmust biztosítanak, amellyel a REQUEST_MIN_RESOURCE_GRANT_PERCENT és a REQUEST_MAX_RESOURCE_GRANT_PERCENT paraméterek használatával határozható meg az erőforrások minimális és maximális mennyisége a [munkaterhelés-csoport létrehozása](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxisban.  Ebben az esetben a processzor és a memória erőforrásai.  Ezeknek az értékeknek a beállítása azt határozza meg, hogy mennyi erőforrást és milyen szintű párhuzamosságot érhet el a rendszeren.
+A munkaterhelési csoportok olyan mechanizmust biztosítanak, amellyel a REQUEST_MIN_RESOURCE_GRANT_PERCENT és a REQUEST_MAX_RESOURCE_GRANT_PERCENT paraméterek használatával határozható meg az erőforrások minimális és maximális mennyisége a [munkaterhelés-csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxisban.  Ebben az esetben a processzor és a memória erőforrásai.  Ezeknek az értékeknek a beállítása azt határozza meg, hogy mennyi erőforrást és milyen szintű párhuzamosságot érhet el a rendszeren.
 
 > [!NOTE] 
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT egy opcionális paraméter, amely alapértelmezés szerint a REQUEST_MIN_RESOURCE_GRANT_PERCENThoz megadott értéket adja meg.
@@ -75,7 +75,7 @@ Ha a REQUEST_MAX_RESOURCE_GRANT_PERCENTt a REQUEST_MIN_RESOURCE_GRANT_PERCENTná
 
 ## <a name="execution-rules"></a>Végrehajtási szabályok
 
-Az alkalmi jelentéskészítési rendszerekben az ügyfelek véletlenül olyan elszabaduló lekérdezéseket futtathatnak, amelyek jelentősen befolyásolhatják mások termelékenységét.  A rendszeradminisztrátorok arra kényszerülnek, hogy időt szabadítanak fel a rendszererőforrások felszabadítására szolgáló Runaway lekérdezésekkel.  A munkaterhelés-csoportok lehetőséget nyújtanak a lekérdezés-végrehajtási időtúllépési szabály konfigurálására a megadott értéket meghaladó lekérdezések megszakításához.  A szabály úgy van konfigurálva, hogy a `QUERY_EXECUTION_TIMEOUT_SEC` paramétert a [munkaterhelés-csoport létrehozása](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxisban állítja be.
+Az alkalmi jelentéskészítési rendszerekben az ügyfelek véletlenül olyan elszabaduló lekérdezéseket futtathatnak, amelyek jelentősen befolyásolhatják mások termelékenységét.  A rendszeradminisztrátorok arra kényszerülnek, hogy időt szabadítanak fel a rendszererőforrások felszabadítására szolgáló Runaway lekérdezésekkel.  A munkaterhelés-csoportok lehetőséget nyújtanak a lekérdezés-végrehajtási időtúllépési szabály konfigurálására a megadott értéket meghaladó lekérdezések megszakításához.  A szabály úgy van konfigurálva, hogy a `QUERY_EXECUTION_TIMEOUT_SEC` paramétert a [munkaterhelés-csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxisban állítja be.
 
 ## <a name="shared-pool-resources"></a>Megosztott készlet erőforrásai
 
@@ -88,5 +88,5 @@ A megosztott készlet erőforrásaihoz való hozzáférés [fontossági](sql-dat
 ## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: a munkaterhelés elkülönítésének konfigurálása](quickstart-configure-workload-isolation-tsql.md)
-- [MUNKATERHELÉS-CSOPORT LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [MUNKATERHELÉS-CSOPORT LÉTREHOZÁSA](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
 - [Erőforrás-osztályok átalakítása munkaterhelési csoportokra](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md).

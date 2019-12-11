@@ -3,12 +3,12 @@ title: Azure Functions C# fejlesztői dokumentáció
 description: Ismerje meg, hogyan fejlesztheti C#Azure functions a használatával.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 9ecaff438eb30e6a05a7e744e17d2d713eef21cd
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f412e5ea358fe7b97476802f432616c37b05dbd9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665576"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975482"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# fejlesztői dokumentáció
 
@@ -25,7 +25,15 @@ Ez a cikk azt feltételezi, hogy már elolvasta a következő cikkeket:
 
 ## <a name="supported-versions"></a>Támogatott verziók
 
-A Azure Functions 2. x futtatókörnyezet a .NET Core 2,2-as verzióját használja. A függvény kódja a Visual Studio-projekt beállításainak frissítésével a .NET Core 2,2 API-kat is használhatja. A Function templates nem alapértelmezett a .NET Core 2,2-re, hogy elkerülje hátrányosan az olyan ügyfeleket, amelyek nem rendelkeznek a .NET Core 2,2-tel.
+A functions futtatókörnyezet verziói a .NET adott verziójával működnek. Az alábbi táblázat a .NET Core és a .NET-keretrendszer és a .NET Core legmagasabb szintjét mutatja be, amelyek a projektben a függvények adott verziójával használhatók. 
+
+| Functions futtatókörnyezet verziója | .NET-es verzió max. verziója |
+| ---- | ---- |
+| Függvények 3. x | .NET Core 3,1 |
+| Functions 2.x | .NET Core 2.2 |
+| Functions 1.x | .NET-keretrendszer 4.6 |
+
+További információ: [Azure functions Runtime-verziók áttekintése](functions-versions.md)
 
 ## <a name="functions-class-library-project"></a>Functions Class Library-projekt
 
@@ -49,7 +57,7 @@ A projekt létrehozásakor a következő példához hasonló mappastruktúrát j
 Ez a könyvtár az Azure-beli Function alkalmazás üzembe helyezése. A functions futtatókörnyezet [2. x verziójában](functions-versions.md) szükséges kötési bővítmények a [projekthez NuGet csomagokként lesznek hozzáadva](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> A build folyamat minden függvényhez létrehoz egy *function. JSON* fájlt. A *function. JSON* fájlt nem közvetlenül kell szerkeszteni. Nem módosíthatja a kötési konfigurációt, vagy letilthatja a függvényt a fájl szerkesztésével. A függvények letiltásával kapcsolatos további információkért lásd a [függvények letiltását](disable-function.md#functions-2x---c-class-libraries)ismertető témakört.
+> A build folyamat minden függvényhez létrehoz egy *function. JSON* fájlt. A *function. JSON* fájlt nem közvetlenül kell szerkeszteni. Nem módosíthatja a kötési konfigurációt, vagy letilthatja a függvényt a fájl szerkesztésével. A függvények letiltásával kapcsolatos további információkért lásd a [függvények letiltását](disable-function.md)ismertető témakört.
 
 
 ## <a name="methods-recognized-as-functions"></a>Függvényekként felismert metódusok

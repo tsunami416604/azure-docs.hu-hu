@@ -1,5 +1,5 @@
 ---
-title: Rugalmas skálázással kapcsolatos gyakori kérdések
+title: GYIK – nagy kapacitású (Citus) – Azure Database for PostgreSQL
 description: Válaszok a gyakori kérdésekre az ügyfelek a nagy kapacitású szolgáltatási rétegében – általában nagy kapacitású-adatbázis néven – egy Azure SQL Database-adatbázist kérnek.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 89316811f39b4cab918b913b45ae5945686e6b15
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 377de93733d94d8cff5518eebb8ebba38154d10d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818212"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974019"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database nagy kapacitású – gyakori kérdések
 
@@ -39,19 +39,19 @@ A nagy kapacitású szolgáltatási réteg csak az önálló adatbázisok eseté
 
 A virtuális mag-alapú szolgáltatási rétegek a következő táblázatban leírtak szerint differenciálva vannak az adatbázisok rendelkezésre állása és a tárolási típus, a teljesítmény és a maximális méret alapján.
 
-| | Erőforrás típusa | Általános célú |  Rugalmas skálázás | Üzletileg kritikus |
+| | Erőforrás típusa | Általános rendeltetés |  Rugalmas méretezés | Üzletileg kritikus |
 |:---:|:---:|:---:|:---:|:---:|
-| **Legjobb a következőhöz:** |Összes|A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.|A legtöbb üzleti számítási feladat. A tárterület automatikus skálázása 100 TB-ig, gyors vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás.|OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|
+| **Legjobb a következőhöz:** |Mind|A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.|A legtöbb üzleti számítási feladat. A tárterület automatikus skálázása 100 TB-ig, gyors vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás.|OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|
 |  **Erőforrás típusa** ||Önálló adatbázis/rugalmas készlet/felügyelt példány | Önálló adatbázis | Önálló adatbázis/rugalmas készlet/felügyelt példány |
 | **Számítási méret**|Önálló adatbázis/rugalmas készlet * | 1 – 80 virtuális mag | 1 – 80 virtuális mag * | 1 – 80 virtuális mag |
-| |Felügyelt példány | 8, 16, 24, 32, 40, 64, 80 virtuális mag | N/A | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
-| **Tárolás típusa** | Összes |Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
+| |Felügyelt példány | 8, 16, 24, 32, 40, 64, 80 virtuális mag | – | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
+| **Tárolás típusa** | Mind |Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
 | **Tárterület mérete** | Önálló adatbázis/rugalmas készlet *| 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
-| | Felügyelt példány  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
+| | Felügyelt példány  | 32 GB – 8 TB | – | 32 GB – 4 TB |
 | **IOPS** | Önálló adatbázis | 500 IOPS/virtuális mag 7000 maximális IOPS | A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS a munkaterheléstől függ. | 5000 IOPS 200 000 maximális IOPS|
-| | Felügyelt példány | Fájlmérettől függ | N/A | 1375 IOPS/virtuális mag |
-|**Rendelkezésre állás**|Összes|1 replika, nincs olvasási felskálázás, nincs helyi gyorsítótár | Több replika, legfeljebb 4 olvasási felskálázás, részleges helyi gyorsítótár | 3 replika, 1 olvasási felskálázás, zóna – redundáns HA, teljes helyi tárterület |
-|**Mentések**|Összes|RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap)| RA-GRS, 7 napos megőrzés, állandó időpontok közötti helyreállítási idő (PITR) | RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap) |
+| | Felügyelt példány | Fájlmérettől függ | – | 1375 IOPS/virtuális mag |
+|**Rendelkezésre állás**|Mind|1 replika, nincs olvasási felskálázás, nincs helyi gyorsítótár | Több replika, legfeljebb 4 olvasási felskálázás, részleges helyi gyorsítótár | 3 replika, 1 olvasási felskálázás, zóna – redundáns HA, teljes helyi tárterület |
+|**Mentések**|Mind|RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap)| RA-GRS, 7 napos megőrzés, állandó időpontok közötti helyreállítási idő (PITR) | RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap) |
 
 \* rugalmas készletek nem támogatottak a nagy kapacitású szolgáltatási szinten
 
@@ -117,7 +117,7 @@ A nagy kapacitású támogatja az összes SQL Server munkaterhelést, de elsődl
 
 Ha jelenleg interaktív elemzési lekérdezéseket futtat SQL Server adattárházként, a nagy kapacitású nagyszerű megoldás, mivel a kis-és közepes méretű adattárházak (például néhány TB akár 100 TB-ig) alacsonyabb áron üzemeltethető, és áttelepítheti a SQL Server-adatháborút is a eHouse számítási feladatait a nagy kapacitású minimális T-SQL-kóddal módosítják.
 
-Ha az adatelemzést nagy méretekben futtatja összetett lekérdezésekkel és tartós betöltési sebességgel, amely nagyobb, mint 100 MB/s, vagy párhuzamos adattárház (PDW), Teradata vagy más nagymértékben párhuzamos feldolgozási (MPP) adattárházak használata, SQL Data Warehouse lehet a legjobb választás.
+Ha az adatelemzést nagy méretekben futtatja összetett lekérdezésekkel és tartós betöltési aránysal, amely nagyobb, mint 100 MB/s, vagy párhuzamos adattárház (PDW), Teradata vagy más nagymértékben párhuzamos feldolgozási (MPP) adattárházak használata, SQL Data Warehouse lehet a legjobb választás.
   
 ## <a name="hyperscale-compute-questions"></a>Nagy kapacitású számítási kérdések
 
@@ -143,7 +143,7 @@ A nagy kapacitású-adatbázisokban az adatrugalmasságot a tárolási szinten b
 
 Ha azonban csak egy replika van, eltarthat egy ideig, hogy a feladatátvételt követően létrejöjjön a helyi gyorsítótár az új replikában. A gyorsítótár-újraépítési fázisban az adatbázis közvetlenül az oldalról kérdezi le az adatforrásokat, ami nagyobb tárolási késést és csökkentett teljesítményű lekérdezési teljesítményt eredményez.
 
-A magas rendelkezésre állást igénylő, kritikus fontosságú alkalmazások esetében minimális feladatátvételi hatás esetén legalább 2 számítási replikát kell kiépíteni, beleértve az elsődleges számítási replikát is. Ez az alapértelmezett konfiguráció. Így rendelkezésre áll egy olyan gyors készenléti replika, amely feladatátvételi célként szolgál.
+A magas rendelkezésre állást igénylő, kritikus fontosságú alkalmazások esetében minimális feladatátvételi hatás esetén legalább 2 számítási replikát kell kiépíteni, beleértve az elsődleges számítási replikát is. Ez az alapértelmezett beállítás. Így rendelkezésre áll egy olyan gyors készenléti replika, amely feladatátvételi célként szolgál.
 
 ## <a name="data-size-and-storage-questions"></a>Az adatméretre és a tárolásra vonatkozó kérdések
 
@@ -157,7 +157,7 @@ A nagy kapacitású és a tranzakciós napló gyakorlatilag végtelen. Nem kell 
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>Az adatbázis növekedésének `tempdb` méretezése
 
-A `tempdb` adatbázis a helyi SSD-tárolón található, és a kiépített számítási méret alapján van konfigurálva. A `tempdb` úgy van optimalizálva, hogy maximális teljesítménybeli előnyöket biztosítson. `tempdb` a méret nem konfigurálható és felügyelhető.
+A `tempdb`-adatbázis a helyi SSD-tárolón található, és a kiépített számítási méret alapján van konfigurálva. A `tempdb` úgy van optimalizálva, hogy maximális teljesítménybeli előnyöket biztosítson. `tempdb` a méret nem konfigurálható és felügyelhető.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Az adatbázis méretének automatikus növekedése vagy az adatfájlok méretének kezelése szükséges
 

@@ -1,36 +1,36 @@
 ---
-title: Az Azure Import/Export-feladatok állapotának - v1 áttekintése |} A Microsoft Docs
-description: Ismerje meg, hogyan használható a naplófájlok jön létre, amikor az importálás vagy exportálás feladat volt futtatva az importálási/exportálási feladat állapotának megtekintéséhez.
-author: muralikk
+title: Az Azure import/export-feladatok állapotának áttekintése – v1 | Microsoft Docs
+description: Az importálási/exportálási feladatok állapotának megtekintéséhez az importálási vagy exportálási feladatok futtatásakor létrehozott naplófájlok használatát ismerheti meg.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/26/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 306e3ccf19ba8db2de01e4b20a52707215a4a040
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 075af43796d3ca3dfef4b48f8f98f20903af3308
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60320706"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978968"
 ---
-# <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Az Azure Import/Export-feladatok állapotának áttekintése a másolási naplófájlok segítségével
-A Microsoft Azure Import/Export szolgáltatás egy importálás vagy exportálás feladathoz hozzárendelt meghajtókra dolgozza fel, amikor ír másolási naplófájlokat a storage-fiók segítségével, vagy, amelyről importálása vagy exportálása blobok. A naplófájl minden egyes importált vagy exportált fájllal kapcsolatos részletes állapotát tartalmazza. Egyes másolási naplófájlok URL-CÍMÉT adja vissza; egy befejezett feladat állapotának lekérdezése során Lásd: [Get Job](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) további információt.  
+# <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Azure-beli importálási/exportálási feladatok állapotának áttekintése a másolási naplófájlokkal
+Ha az Microsoft Azure Import/Export szolgáltatás egy importálási vagy exportálási feladatokhoz tartozó meghajtókat dolgoz fel, a naplófájlokat a Storage-fiókba másolja, vagy a Blobok importálásához vagy exportálásához. A naplófájl az importált vagy exportált fájlok részletes állapotát tartalmazza. Az egyes másolási naplófájlok URL-címét a Befejezett feladatok állapotának lekérdezése során adja vissza a rendszer. További információért lásd a [feladatok beolvasása](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) című témakört.  
 
-## <a name="example-urls"></a>Példa URL-címek
+## <a name="example-urls"></a>Példa URL-címekre
 
-Az alábbiakban például URL-címeket, a másolási naplófájlokat a két meghajtó az importálási feladatokhoz:  
+Az alábbi URL-címek egy importálási feladatokhoz tartozó naplófájlok másolására szolgálnak két meghajtóval:  
   
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM35C2V_20130921-034307-902_error.xml`  
   
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM45A6Q_20130921-042122-021_error.xml`  
   
- Lásd: [Import/Export szolgáltatás naplófájljainak formátuma](../storage-import-export-file-format-log.md) a naplók másolása és állapotkódok teljes listáját.  
+ Lásd: [importálási/exportálási szolgáltatás naplófájljának formátuma](../storage-import-export-file-format-log.md) a másolási naplók formátuma és az állapotkódok teljes listája.  
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
- * [Az Azure Import/Export eszköz telepítése](storage-import-export-tool-setup-v1.md)   
+ * [Az Azure import/export eszköz beállítása](storage-import-export-tool-setup-v1.md)   
  * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
  * [Importálási feladat javítása](../storage-import-export-tool-repairing-an-import-job-v1.md)   
  * [Exportálási feladat javítása](../storage-import-export-tool-repairing-an-export-job-v1.md)   

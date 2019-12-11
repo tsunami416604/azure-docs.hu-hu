@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a2d978a68f6f654e3bdeea07c931cd7103f5850c
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 386b49698ca6b8ded2972aba14c1968620fcbb08
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015528"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974495"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dinamikus titkosítás: A tartalmi kulcs engedélyezési házirendjének konfigurálása
+# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dinamikus titkosítás: a tartalmi kulcs engedélyezési házirendjének konfigurálása
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Áttekintés
@@ -50,7 +50,7 @@ További információkért tekintse át a következő cikkeket:
 * A Key Delivery szolgáltatás 15 percig gyorsítótárazza a ContentKeyAuthorizationPolicy és kapcsolódó objektumait (házirend-beállítások és korlátozások). Létrehozhat ContentKeyAuthorizationPolicy, és megadhatja a jogkivonat-korlátozást, tesztelheti, majd frissítheti a szabályzatot a nyitott korlátozással. Ez a folyamat nagyjából 15 percet vesz igénybe, mielőtt a házirend a házirend nyílt verziójára vált.
 * Az objektumhoz tartozó továbbítási szabályzat hozzáadásakor vagy módosításakor törölnie kell minden meglévő lokátort, majd létre kell hoznia egy újat.
 * Jelenleg nem titkosíthatja a progresszív letöltéseket.
-* A Media Services streaming-végpontok az elővizsgálati válaszban a CORS "hozzáférés-vezérlés-engedélyezés-eredet" fejlécének értékét állítja\*be a következő helyettesítő karakterként: "". Ez az érték jól működik a legtöbb játékossal, beleértve a Azure Media Player, a Roku és a JWPlayer és egyebeket. Az dashjs-t használó játékosok azonban nem működnek, mivel a hitelesítő adatok mód "include" értékre van állítva, az XMLHttpRequest a dashjs nem engedélyezi a\*"" hozzáférés-vezérlés-engedélyezés-forrás "karaktert. Ha az ügyfelet egyetlen tartományból futtatja, megkerülő megoldásként ezt a korlátozást dashjs, Media Services az elővizsgálati válasz fejlécében megadhatja az adott tartományt. Segítségért nyisson meg egy támogatási jegyet a Azure Portalon keresztül.
+* A Media Services streaming végpontja az elővizsgálati válaszban a CORS "hozzáférés-vezérlés-engedélyezés-eredet" fejlécének értékét állítja be a következő helyettesítő karakterként: "\*". Ez az érték jól működik a legtöbb játékossal, beleértve a Azure Media Player, a Roku és a JWPlayer és egyebeket. Az dashjs-t használó játékosok azonban nem működnek, mivel a hitelesítő adatok mód "include" értékre van állítva, az XMLHttpRequest a dashjs nem engedélyezi a "\*" helyettesítő karaktert a "hozzáférés-vezérlés-engedélyezés-eredet" értékeként. Ha az ügyfelet egyetlen tartományból futtatja, megkerülő megoldásként ezt a korlátozást dashjs, Media Services az elővizsgálati válasz fejlécében megadhatja az adott tartományt. Segítségért nyisson meg egy támogatási jegyet a Azure Portalon keresztül.
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 dinamikus titkosítás
 ### <a name="open-restriction"></a>Nyitott korlátozás
@@ -148,7 +148,7 @@ A jogkivonat-korlátozási beállítás konfigurálásához XML-t kell használn
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 ```
-Ha a jogkivonat-korlátozott szabályzatot konfigurálja, meg kell adnia az elsődleges ellenőrző kulcsot, a kiállítót és a célközönség paramétereit. Az elsődleges ellenőrzőkulcs tartalmazza a kulcsot, a jogkivonat írták-e. A kibocsátó a jogkivonatot kiállító STS. A célközönség (más néven hatókör) leírja a jogkivonat célját vagy azt az erőforrást, amelyet a jogkivonat engedélyez a hozzáféréshez. A Media Services kulcstovábbítást ellenőrzi, hogy ezeket az értékeket a jogkivonat egyezik a sablonban szereplő értékeket.
+Ha a jogkivonat-korlátozott szabályzatot konfigurálja, meg kell adnia az elsődleges ellenőrző kulcsot, a kiállítót és a célközönség paramétereit. Az elsődleges ellenőrző kulcs tartalmazza azt a kulcsot, amelyet a jogkivonat aláírt. A kibocsátó a jogkivonatot kiállító STS. A célközönség (más néven hatókör) leírja a jogkivonat célját vagy azt az erőforrást, amelyet a jogkivonat engedélyez a hozzáféréshez. A Media Services Key Delivery Service ellenőrzi, hogy a jogkivonat értékei egyeznek-e a sablon értékeivel.
 
 Ha a .NET-hez készült Media Services SDK-t használja, akkor a TokenRestrictionTemplate osztály használatával létrehozhatja a korlátozási jogkivonatot.
 Az alábbi példa jogkivonat-korlátozást tartalmazó engedélyezési házirendet hoz létre. Ebben a példában az ügyfélnek olyan tokent kell bemutatnia, amely tartalmaz egy aláíró kulcsot (VerificationKey), egy jogkivonat-kiállítót és a szükséges jogcímeket.
@@ -426,12 +426,16 @@ Ha a kulcs-engedélyezési házirendhez használt jogkivonat-korlátozás alapj�
     }
 ```
 
+## <a name="additional-notes"></a>További megjegyzések
+
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
+
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy beállította a tartalmi kulcs engedélyezési házirendjét, tekintse meg [az eszközök kézbesítési házirendjének konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md)című témakört.
 

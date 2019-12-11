@@ -1,6 +1,6 @@
 ---
 title: Az Azure IoT Hub DPS kapcsolatának diagnosztizálása és hibakeresése
-description: Ismerje meg, hogyan diagnosztizálhatja és elháríthatja a gyakori hibákat az Azure IoT Hub DPS-vel való csatlakoztatásával
+description: Az Azure IoT Hub Device Provisioning Service (DPS) eszköz kapcsolataival kapcsolatos gyakori hibák diagnosztizálásának és hibaelhárításának megismerése
 author: xujing-ms
 manager: nberdy
 ms.service: iot-dps
@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: b596a09e2185b38e6161ea4af2aa109e80faf248
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ffe20ff80e26bc5564b9379ea21ca99e2890b519
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963420"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974819"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Hibaelhárítás az Azure IoT Hub Device Provisioning Service
 
@@ -23,7 +23,7 @@ A IoT-eszközök kapcsolódási problémái nehézkesek lehetnek a hibaelhárít
 
 Az alábbi eljárás azt ismerteti, hogyan lehet megtekinteni és beállítani a riasztást IoT Hub Device Provisioning Service metrikán. 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 2. Keresse meg a IoT Hub Device Provisioning Service.
 
@@ -48,13 +48,13 @@ További információ: [Mi a klasszikus riasztás a Microsoft Azureban?](../azur
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>A log Analytics használata a hibák megtekintéséhez és megoldásához
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 2. Keresse meg az IoT hubot.
 
 3. Válassza a **diagnosztikai beállítások**lehetőséget.
 
-4. Válassza ki **diagnosztika bekapcsolása**.
+4. Kattintson **a diagnosztika bekapcsolása**elemre.
 
 5. A kívánt naplók összegyűjtésének engedélyezése.
 
@@ -69,7 +69,7 @@ További információ: [Mi a klasszikus riasztás a Microsoft Azureban?](../azur
 
 8. Kattintson a **Futtatás** gombra a legutóbbi események megtekintéséhez.
 
-9. Ha `OperationName`vannak eredmények, keresse `ResultType` `ResultSignature`meg a, a, a `ResultDescription` és a (hibaüzenetet), hogy részletesebb információkat kapjon a hibáról.
+9. Ha vannak találatok, keresse meg a `OperationName`, `ResultType`, `ResultSignature`és `ResultDescription` (hibaüzenet), hogy a hiba részletesebb legyen.
 
 
 ## <a name="common-error-codes"></a>Gyakori hibakódok

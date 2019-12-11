@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Közepes méretű videók és átiratok a .NET-Content Moderator'
+title: 'Oktatóanyag: Videók és átiratok moderálása a .NET-ben – Content Moderator'
 titleSuffix: Azure Cognitive Services
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre teljes videó-és átirat-moderálási megoldást a gépi támogatással rendelkező moderálással és az emberi-in-the-loop felülvizsgálat létrehozásával.
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e1c3d3d95261b959a7540aab73faf12f92801d4c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564280"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976978"
 ---
-# <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: Videók és átiratok moderálása
+# <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: Video- és átiratmoderálás
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy teljes videó-és átirat-moderálási megoldást a gépi támogatással rendelkező moderálási és emberi-in-the-loop felülvizsgálat létrehozásával.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre teljes videó-és átirat-moderálási megoldást gépi támogatású moderálással és emberi felülvizsgálati integrációval.
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -42,9 +42,9 @@ Ez az oktatóanyag a következőket mutatja be:
 
 ## <a name="enter-credentials"></a>Hitelesítő adatok megadása
 
-Szerkessze `App.config` a fájlt, és adja hozzá a Active Directory bérlő nevét, a szolgáltatási végpontokat és a `#####`által jelzett előfizetési kulcsokat. A következő adatokra lesz szüksége:
+Szerkessze a `App.config` fájlt, és adja hozzá a Active Directory bérlő nevét, a szolgáltatási végpontokat és a `#####`által jelzett előfizetési kulcsokat. A következő adatokra lesz szüksége:
 
-|Kulcs|Leírás|
+|Jelmagyarázat|Leírás|
 |-|-|
 |`AzureMediaServiceRestApiEndpoint`|Az Azure Media Services (AMS) API végpontja|
 |`ClientSecret`|Az Azure Media Services előfizetési kulcsa|
@@ -82,7 +82,7 @@ A `Main()` a következő parancssori argumentumokat kezeli:
 Ha nincs parancssori argumentum, a `Main()` meghívja a `GetUserInputs()` parancsot. Ez a metódus arra kéri a felhasználót, hogy adja meg egy videofájl elérési útvonalát, valamint szabja meg, hogy készüljön-e szöveges átirat.
 
 > [!NOTE]
-> A konzolalkalmazás az [Azure Media Indexer API-val](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) átiratokat készít a feltöltött videó hangsávjából. Az eredmények WebVTT formátumban készülnek el. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) szóló cikkben találhat.
+> A konzol alkalmazás a [Azure Media INDEXER API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) -t használja átiratok létrehozásához a feltöltött videó hangsávján. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) szóló cikkben találhat.
 
 ### <a name="initialize-and-processvideo-methods"></a>Inicializálás és ProcessVideo-módszerek
 
@@ -223,7 +223,7 @@ A videomoderálási feladat eredménye (lásd: [videomoderálás gyors útmutat�
 A `GenerateVTT` jelölő használatakor hangátirat is készül.
 
 > [!NOTE]
-> A konzolalkalmazás az [Azure Media Indexer API-val](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) átiratokat készít a feltöltött videó hangsávjából. Az eredmények WebVTT formátumban készülnek el. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) szóló cikkben találhat.
+> A konzol alkalmazás a [Azure Media INDEXER API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) -t használja átiratok létrehozásához a feltöltött videó hangsávján. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) szóló cikkben találhat.
 
 ## <a name="create-a-human-review"></a>Emberi felülvizsgálat létrehozása
 
@@ -236,7 +236,7 @@ A `CreateVideoReviewInContentModerator()` számos egyéb metódust meghív a kö
 > [!NOTE]
 > A konzolalkalmazás az [FFmpeg](https://ffmpeg.org/) könyvtárat használja a miniatűrök létrehozásához. Ezek a miniatűrök (képek) megfelelnek a videó moderálási kimenetében lévő keret időbélyegének.
 
-|Tevékenység|Metódusok|Fájl|
+|Tevékenység|Metódusok|File|
 |-|-|-|
 |Kinyeri a kulcskockákat a videóból, és miniatűr képeket hoz létre róluk|`CreateVideoFrames()`<br>`GenerateFrameImages()`|`FrameGeneratorServices.cs`|
 |Átvizsgálja a szöveges átiratot (amennyiben elérhető), és felnőtt vagy kényes hangtartalmat keres|`GenerateTextScreenProfanity()`| `VideoReviewAPI.cs`|
@@ -252,7 +252,7 @@ Az oktatóanyagban használt kódok eddig a vizuális tartalmakhoz tartoztak. A 
 
 Az alkalmazás a következő feladatokat hajtja végre:
 
-|Tevékenység|Metódusok|Fájl|
+|Tevékenység|Metódusok|File|
 |-|-|-|
 |Meghatározza, hogy szükséges-e szöveges átiratok készítése|`Main()`<br>`GetUserInputs()`|`Program.cs`|
 |Ha igen, hozzáad egy átírás feladatot a moderálás részeként|`ConfigureTranscriptTask()`|`VideoModerator.cs`|
@@ -310,7 +310,7 @@ Következő lépésként beolvassuk az elemzett szöveges feliratokat a Content 
 > [!NOTE]
 > A Content Moderator szolgáltatáskulcs egy másodpercenkénti kérelmekre (RPS-re) vonatkozó korláttal rendelkezik. Ha túllépi ezt a korlátot, az SDK 429-es hibakódú kivételt jelez.
 >
-> Az ingyenes szint kulcsának a sebességkorlátja egy RPS.
+> Az ingyenes szint kulcsai egy RPS-korláttal bírnak.
 
 [!code-csharp[TextScreen3](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=568-653)]
 
@@ -357,9 +357,9 @@ Video review successfully completed...
 Total Elapsed Time: 00:05:56.8420355
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban olyan alkalmazást állít be, amely moderálja a videó&mdash;tartalmát, beleértve&mdash;az átirat tartalmát, és a felülvizsgálati eszközben hozza létre az értékeléseket. Következő lépésként tekintse meg a videó moderálásának részleteit.
+Ebben az oktatóanyagban olyan alkalmazást állít be, amely a videó tartalmának moderálását&mdash;, beleértve az átirat tartalmát&mdash;és a felülvizsgálati eszközben hozza létre az értékeléseket. Következő lépésként tekintse meg a videó moderálásának részleteit.
 
 > [!div class="nextstepaction"]
 > [Videomoderálás](./video-moderation-human-review.md)

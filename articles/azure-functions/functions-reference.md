@@ -4,12 +4,12 @@ description: Ismerkedjen meg az Azure-ban a függvények fejlesztéséhez szüks
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 4aa42e8aef2e2205523be0536cb5aceafd1aa829
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3ccfc28dc332d2ff90ec09256a43a9143e37c03b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226661"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974223"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions fejlesztői útmutató
 Azure Functions az egyes függvények a használt nyelvtől vagy kötéstől függetlenül megosztanak néhány alapvető műszaki fogalmat és összetevőt. Mielőtt beolvassa az adott nyelvre vagy kötésre vonatkozó tanulási adatokat, olvassa el ezt az áttekintést, amely az összesre vonatkozik.
@@ -19,7 +19,7 @@ Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions áttekintés�
 ## <a name="function-code"></a>Függvény kódja
 A *függvény* a Azure functions elsődleges fogalma. A függvény két fontos darabot tartalmaz: a kódot, amely különböző nyelveken, valamint néhány konfigurációban, a function. JSON fájlban is megírható. A lefordított nyelvek esetében ez a konfigurációs fájl automatikusan létrejön a kódban szereplő jegyzetekből. A programozási nyelvek esetében saját magának kell megadnia a konfigurációs fájlt.
 
-A function. JSON fájl határozza meg a függvény triggerét, kötéseit és egyéb konfigurációs beállításait. Minden függvénynek van egy és csak egy triggere. A futtatókörnyezet ezt a konfigurációs fájlt használja a figyelni kívánt események meghatározásához, valamint az adatoknak a függvény végrehajtásának és az adatok visszaadásának módját. A következő példa egy function. JSON fájlt mutat be.
+A function. JSON fájl határozza meg a függvény triggerét, kötéseit és egyéb konfigurációs beállításait. Minden függvényhez egy, és csakis egy trigger tartozik. A futtatókörnyezet ezt a konfigurációs fájlt használja a figyelni kívánt események meghatározásához, valamint az adatoknak a függvény végrehajtásának és az adatok visszaadásának módját. A következő példa egy function. JSON fájlt mutat be.
 
 ```json
 {
@@ -73,7 +73,7 @@ Ha több kiváltó esemény is gyorsabb, mint egy egyszálas függvény futtató
 
 ## <a name="functions-runtime-versioning"></a>Függvények futtatókörnyezetének verziószámozása
 
-A functions futtatókörnyezet verzióját a `FUNCTIONS_EXTENSION_VERSION` alkalmazás beállítással konfigurálhatja. A "~ 2" érték például azt jelzi, hogy a függvényalkalmazás a főverzióként 2. x-et fog használni. A Function apps minden új alverzióra frissül, amint azok megjelentek. További információt, többek között a Function app pontos verziójának megtekintését lásd: [Azure functions futtatókörnyezet verzióinak megcélzása](set-runtime-version.md).
+A functions futtatókörnyezet verzióját a `FUNCTIONS_EXTENSION_VERSION` alkalmazás beállítással konfigurálhatja. A "~ 3" érték például azt jelzi, hogy a függvényalkalmazás a 3. x verziót fogja használni főverzióként. A Function apps minden új alverzióra frissül, amint azok megjelentek. További információt, többek között a Function app pontos verziójának megtekintését lásd: [Azure functions futtatókörnyezet verzióinak megcélzása](set-runtime-version.md).
 
 ## <a name="repositories"></a>Adattárak
 A Azure Functions kódja nyílt forráskódú, és a GitHub-adattárakban tárolódik:

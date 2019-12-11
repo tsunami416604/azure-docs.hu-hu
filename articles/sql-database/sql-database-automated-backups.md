@@ -12,14 +12,14 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 77442eda6c8b2aae71c5d647127ead9f851ec485
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1754168478caf3ca029e003ad0187fc29e85fa8a
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421418"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997292"
 ---
-# <a name="automated-backups"></a>Automatikus biztonsági mentések
+# <a name="automated-backups"></a>Automatizált biztonsági mentések
 
 A SQL Database automatikusan létrehozza az adatbázis 7 és 35 nap közötti biztonsági mentését, és az Azure [olvasási hozzáférésű geo-redundáns tárolást (ra-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) használ annak érdekében, hogy a rendszer akkor is megőrizzék azokat, ha az adatközpont nem érhető el. Ezek a biztonsági másolatok automatikusan létrejönnek. Az adatbázis biztonsági mentései az üzletmenet folytonossága és a vész-helyreállítási stratégia alapvető részét képezik, mivel az adatok véletlen sérüléstől vagy törléstől való védelme érdekében szükségesek. Ha a biztonsági szabályok megkövetelik, hogy a biztonsági másolatok hosszabb ideig is elérhetők legyenek (akár 10 évig), konfigurálhat egy [hosszú távú adatmegőrzést](sql-database-long-term-retention.md) az önálló adatbázisokra és a rugalmas készletekre.
 
@@ -29,7 +29,7 @@ A SQL Database automatikusan létrehozza az adatbázis 7 és 35 nap közötti bi
 
 A SQL Database a SQL Server technológiával [teljes biztonsági mentést](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) készít hetente, a [különbözeti biztonsági mentést](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) 12 óránként, a [tranzakciós napló biztonsági](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) mentését pedig 5-10 percenként. A biztonsági mentések az [ra-GRS Storage-blobokban](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) tárolódnak, amelyek egy adatközpont-kimaradás elleni védelem érdekében egy [párosított adatközpontba](../best-practices-availability-paired-regions.md) vannak replikálva. Adatbázis visszaállításakor a szolgáltatás kiszámítja, hogy a teljes, a különbözeti és a tranzakciónapló biztonsági mentéseket vissza kell-e állítani.
 
-Ezeket a biztonsági másolatokat a következő célra használhatja:
+A biztonsági másolatokat a következő célokra használhatja:
 
 - Egy meglévő adatbázis visszaállítása a Azure Portal, Azure PowerShell, Azure CLI vagy REST API használatával a megőrzési időszakon belül a **korábbi időpontra** . Az önálló adatbázisban és a rugalmas készletekben ez a művelet egy új adatbázist fog létrehozni az eredeti adatbázissal megegyező kiszolgálón. Felügyelt példányban ez a művelet létrehozhat egy másolatot az adatbázisról, vagy megegyező vagy eltérő felügyelt példányt ugyanahhoz az előfizetéshez.
   - A biztonsági mentési szabályzat konfigurálásához állítsa be a **[biztonsági mentés megőrzési időtartamát](#how-to-change-the-pitr-backup-retention-period)** 7 – 35 nap között.
@@ -67,7 +67,7 @@ Ha a biztonsági mentéseket a maximális megőrzési időtartamnál hosszabb id
 
 ### <a name="backups-for-point-in-time-restore"></a>Időponthoz tartozó visszaállítás biztonsági mentései
 
-SQL Database támogatja az önkiszolgáló szolgáltatást az időponthoz tartozó visszaállításhoz (PITR) a teljes biztonsági mentés, a különbözeti biztonsági másolatok és a tranzakciónapló biztonsági másolatainak automatikus létrehozásával. A teljes adatbázis biztonsági mentése hetente, a különbözeti adatbázis biztonsági mentései általában 12 óránként jönnek létre, és a tranzakciónapló biztonsági mentései általában 5-10 percenként jönnek létre, a számítási méret és az adatbázis-tevékenység mennyisége alapján. Az első teljes biztonsági mentést az adatbázis létrehozása után azonnal ütemezi a rendszer. Általában 30 percen belül befejeződik, de hosszabb időt is igénybe vehet, ha az adatbázis jelentős méretű. A kezdeti biztonsági mentés például hosszabb időt vehet igénybe egy visszaállított adatbázison vagy adatbázis-másolaton. Az első teljes biztonsági mentés után a rendszer az összes további biztonsági mentést automatikusan ütemezi, és csendesen kezeli a háttérben. Az adatbázis biztonsági másolatainak pontos időzítését a SQL Database szolgáltatás határozza meg, mivel a teljes rendszerterhelést kiegyensúlyozza. A biztonsági mentési feladatok nem módosíthatók vagy letilthatók. 
+SQL Database támogatja az önkiszolgáló szolgáltatást az időponthoz tartozó visszaállításhoz (PITR) a teljes biztonsági mentés, a különbözeti biztonsági másolatok és a tranzakciónapló biztonsági másolatainak automatikus létrehozásával. A teljes adatbázis biztonsági mentése hetente, a különbözeti adatbázis biztonsági mentései általában 12 óránként jönnek létre, és a tranzakciónapló biztonsági mentései általában 5-10 percenként jönnek létre, a számítási méret és az adatbázis-tevékenység mennyisége alapján. Az első teljes biztonsági mentést az adatbázis létrehozása után azonnal ütemezi a rendszer. Általában 30 percen belül befejeződik, de hosszabb időt is igénybe vehet, ha az adatbázis jelentős méretű. A kezdeti biztonsági mentés például hosszabb időt vehet igénybe egy visszaállított adatbázison vagy adatbázis-másolaton. Az első teljes biztonsági mentés után a további mentések felhasználói beavatkozás nélkül, a háttérben lesznek automatikusan ütemezve és felügyelve. Az adatbázis-mentések pontos időzítését az SQL Database szolgáltatás határozza meg a teljes rendszer terhelésének kiegyensúlyozásával. A biztonsági mentési feladatok nem módosíthatók és nem tilthatók le. 
 
 A PITR biztonsági mentések földrajzilag redundánsak, és az [Azure Storage-régiók közötti replikálás](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) védi
 
@@ -115,7 +115,7 @@ Ha az adatbázist egy DTU-alapú szolgáltatási rétegből telepíti át az ala
 
 ## <a name="how-to-change-the-pitr-backup-retention-period"></a>A PITR biztonsági mentés megőrzési idejének módosítása
 
-Az alapértelmezett PITR biztonsági mentési megőrzési időszakot a Azure Portal, a PowerShell vagy a REST API használatával módosíthatja. A támogatott értékek a következők: 7, 14, 21, 28 vagy 35 nap. Az alábbi példák bemutatják, hogyan módosíthatja a PITR megőrzését 28 napra.
+Az alapértelmezett PITR biztonsági mentési megőrzési időszakot a Azure Portal, a PowerShell vagy a REST API használatával módosíthatja. Az alábbi példák bemutatják, hogyan módosíthatja a PITR megőrzését 28 napra.
 
 > [!WARNING]
 > Ha csökkenti az aktuális megőrzési időt, az új megőrzési időtartamnál régebbi összes biztonsági mentés már nem érhető el. Ha növeli az aktuális megőrzési időt, SQL Database a hosszabb megőrzési időtartam eléréséig megtartja a meglévő biztonsági mentéseket.
@@ -153,7 +153,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 
 ### <a name="change-pitr-retention-period-using-rest-api"></a>PITR megőrzési időszakának módosítása REST API használatával
 
-#### <a name="sample-request"></a>Kérésminta
+#### <a name="sample-request"></a>Mintakérelem
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview

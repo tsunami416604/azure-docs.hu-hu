@@ -3,23 +3,23 @@ title: Host. JSON-hivatkozás Azure Functions 2. x rendszerhez
 description: A v2 futtatókörnyezettel rendelkező Azure Functions Host. JSON fájl dokumentációja.
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: bb10f15db1d152ff1d8fd8d38ba22e312a2031b7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08d772fc9b2871262b449a017f8be59a344576b2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323080"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975448"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x"></a>Host. JSON-hivatkozás Azure Functions 2. x rendszerhez  
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Host. JSON-hivatkozás Azure Functions 2. x és újabb verziókhoz 
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Azure Functions futtatókörnyezet verzióját: "]
 > * [1-es verzió](functions-host-json-v1.md)
 > * [2-es verzió](functions-host-json.md)
 
-A *Host. JSON* metaadat-fájl olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function app összes funkcióját érintik. Ez a cikk a v2 futtatókörnyezethez elérhető beállításokat sorolja fel.  
+A *Host. JSON* metaadat-fájl olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function app összes funkcióját érintik. Ez a cikk azokat a beállításokat sorolja fel, amelyek a Azure Functions futtatókörnyezet 2. x verziójával kezdődnek.  
 
 > [!NOTE]
-> Ez a cikk a 2. x Azure Functions.  Az 1. x függvények Host. JSON fájljának hivatkozását lásd: [Host. JSON-dokumentáció Azure functions 1. x-hez](functions-host-json-v1.md).
+> Ez a cikk Azure Functions 2. x és újabb verziókban használható.  Az 1. x függvények Host. JSON fájljának hivatkozását lásd: [Host. JSON-dokumentáció Azure functions 1. x-hez](functions-host-json-v1.md).
 
 Az [alkalmazás beállításaiban](functions-app-settings.md)az egyéb Function app konfigurációs beállításai is kezelhetők.
 
@@ -87,7 +87,7 @@ A következő minta *Host. JSON* fájlokhoz minden lehetséges beállítás van 
 
 A cikk következő fejezetei ismertetik az egyes legfelső szintű tulajdonságokat. Ha másként nincs megadva, az összes megadása nem kötelező.
 
-## <a name="aggregator"></a>aggregator
+## <a name="aggregator"></a>aggregátor
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
@@ -113,11 +113,11 @@ A [Application Insights mintavételi funkcióját](./functions-monitoring.md#con
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|isEnabled|true|Engedélyezheti vagy letilthatja a mintavételezést.| 
+|isEnabled|igaz|Engedélyezheti vagy letilthatja a mintavételezést.| 
 |maxTelemetryItemsPerSecond|20|A mintavételezés megkezdésének küszöbértéke.| 
-|EnableLiveMetrics |true|Élő metrikák gyűjtésének engedélyezése.|
-|EnableDependencyTracking|true|A függőségek követésének engedélyezése.|
-|EnablePerformanceCountersCollection|true|Engedélyezi a kudu teljesítményszámlálók gyűjtését.|
+|EnableLiveMetrics |igaz|Élő metrikák gyűjtésének engedélyezése.|
+|EnableDependencyTracking|igaz|A függőségek követésének engedélyezése.|
+|EnablePerformanceCountersCollection|igaz|Engedélyezi a kudu teljesítményszámlálók gyűjtését.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -183,7 +183,7 @@ A [gazdagép állapotának figyelésére](https://github.com/Azure/azure-webjobs
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|enabled|true|Megadja, hogy engedélyezve van-e a szolgáltatás. | 
+|engedélyezve|igaz|Megadja, hogy engedélyezve van-e a szolgáltatás. | 
 |healthCheckInterval|10 másodperc|Az időszakos háttér állapotának ellenőrzése közötti időtartam. | 
 |healthCheckWindow|2 perc|A `healthCheckThreshold` beállítással együtt használt csúszó Time-ablak.| 
 |healthCheckThreshold|6|Az állapot-ellenőrzések maximális száma a gazdagép újraindítása előtt.| 
@@ -216,9 +216,9 @@ A Function alkalmazás naplózási viselkedését szabályozza, beleértve a App
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Meghatározza, hogy a fájlok naplózása milyen szintű legyen engedélyezve.  A lehetőségek a következők: `never`, `always`, `debugOnly`. |
-|logLevel|n/a|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x verzió a naplózási kategória szűrésének ASP.NET Core elrendezését követi. Ez lehetővé teszi adott függvények naplózásának szűrését. További információ: [naplózási szűrés](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) a ASP.net Core dokumentációjában. |
-|konzol|n/a| A [konzol](#console) naplózási beállítása. |
-|applicationInsights|n/a| A [applicationInsights](#applicationinsights) beállítás. |
+|Naplózási szint|–|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x és újabb verziók esetében kövesse a naplózási kategória szűrésének ASP.NET Core elrendezését. Ez lehetővé teszi adott függvények naplózásának szűrését. További információ: [naplózási szűrés](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) a ASP.net Core dokumentációjában. |
+|konzol|–| A [konzol](#console) naplózási beállítása. |
+|applicationInsights|–| A [applicationInsights](#applicationinsights) beállítás. |
 
 ## <a name="console"></a>konzol
 
@@ -238,7 +238,7 @@ Ez a beállítás a [naplózás](#logging)gyermeke. A konzol naplózását vezé
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|isEnabled|false|Engedélyezheti vagy letilthatja a konzol naplózását.| 
+|isEnabled|hamis|Engedélyezheti vagy letilthatja a konzol naplózását.| 
 
 ## <a name="manageddependency"></a>managedDependency
 
@@ -286,7 +286,7 @@ Az egyszeri zárolási viselkedés konfigurációs beállításai. További info
 |listenerLockPeriod|00:01:00|A figyelő zárolásának időtartama.| 
 |listenerLockRecoveryPollingInterval|00:01:00|A figyelő zárolásának helyreállításához használt időintervallum, ha a figyelő zárolása nem szerezhető be indításkor.| 
 |lockAcquisitionTimeout|00:01:00|Az a maximális időtartam, ameddig a futtatókörnyezet megpróbál zárolást benyerni.| 
-|lockAcquisitionPollingInterval|n/a|A zárolási beszerzési kísérletek közötti időköz.| 
+|lockAcquisitionPollingInterval|–|A zárolási beszerzési kísérletek közötti időköz.| 
 
 ## <a name="version"></a>version
 

@@ -1,17 +1,17 @@
 ---
-title: Felhasználók létrehozása a Azure Database for PostgreSQL-nagy kapacitású (Citus)
+title: Felhasználók létrehozása – nagy kapacitású (Citus) – Azure Database for PostgreSQL
 description: Ez a cikk azt ismerteti, hogyan hozhat létre új felhasználói fiókokat Azure Database for PostgreSQL-nagy kapacitású (Citus) való interakcióhoz.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7187135b29f0a9a790c032330c73bcb1ae27229b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d093d4c23fcc44e7e9f3461f875607926f4b612d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515940"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977573"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Felhasználók létrehozása a Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
@@ -26,15 +26,13 @@ Az újonnan létrehozott nagy kapacitású-(Citus-) kiszolgálócsoport több sz
 * *postgres*
 * *citus*
 
-A kiszolgáló-rendszergazda felhasználó, a *citus*, a *azure_pg_admin* szerepkör tagja.
-Azonban nem része a *postgres* (felügyelői) szerepkörnek.  Mivel a nagy kapacitású egy felügyelt Pásti szolgáltatás, csak a Microsoft tagja a felügyelői szerepkörnek.
-
 A PostgreSQL-motor jogosultságokat használ az adatbázis-objektumokhoz való hozzáférés vezérlésére, ahogy azt a [PostgreSQL termékdokumentációja](https://www.postgresql.org/docs/current/static/sql-createrole.html)tárgyalja.
-Azure Database for PostgreSQL a kiszolgáló-rendszergazda felhasználó megkapja ezeket a jogosultságokat: bejelentkezés, nem rendszergazda, öröklés, CREATEDB, CREATEROLE, nincs REPLIKÁCIÓ
+A kiszolgáló-rendszergazda felhasználó, a *citus*, a *azure_pg_admin* szerepkör tagja.
+Azonban nem része a *postgres* (felügyelői) szerepkörnek.  Mivel a nagy kapacitású egy felügyelt Pásti szolgáltatás, csak a Microsoft tagja a felügyelői szerepkörnek. A *citus* -felhasználó korlátozott engedélyekkel rendelkezik, és nem tud például új adatbázisokat létrehozni.
 
 ## <a name="how-to-create-additional-users"></a>További felhasználók létrehozása
 
-A *citus* -rendszergazdai fióknak nincs engedélye további felhasználók létrehozására. Felhasználó hozzáadásához használja helyette a Azure Portal.
+A *citus* -rendszergazdai fióknak nincs engedélye további felhasználók létrehozására. Felhasználó hozzáadásához használja a Azure Portal felületet.
 
 1. Lépjen a nagy kapacitású-kiszolgálócsoport **szerepkörök** lapjára, majd kattintson a **+ Hozzáadás**gombra:
 
@@ -76,7 +74,7 @@ SELECT run_command_on_workers(
 );
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Nyissa meg a tűzfalat az új felhasználói gépek IP-címei számára, hogy csatlakozhasson a kapcsolódáshoz: [nagy kapacitású-(Citus-) tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](howto-hyperscale-manage-firewall-using-portal.md).
 
@@ -84,4 +82,4 @@ Az adatbázis-felhasználói fiókok kezelésével kapcsolatos további informá
 
 * [Adatbázis-szerepkörök és-jogosultságok](https://www.postgresql.org/docs/current/static/user-manag.html)
 * [Szintaxis megadása](https://www.postgresql.org/docs/current/static/sql-grant.html)
-* [Kiváltságok](https://www.postgresql.org/docs/current/static/ddl-priv.html)
+* [Jogosultságok](https://www.postgresql.org/docs/current/static/ddl-priv.html)

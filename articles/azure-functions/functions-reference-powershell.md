@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a PowerShell hasz
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 26e52e8aa498c37bd4cef95fb2b54b2fe9322f90
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226679"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974240"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -50,7 +50,7 @@ PSFunctionApp
 
 A projekt gyökerében található egy megosztott [`host.json`](functions-host-json.md) fájl, amely a Function alkalmazás konfigurálására használható. Minden függvényhez tartozik egy mappa (. ps1) és egy kötési konfigurációs fájl (`function.json`). A function. JSON fájljának szülő könyvtárának neve mindig a függvény neve.
 
-Bizonyos kötések `extensions.csproj` fájl jelenlétét igénylik. A függvények futtatókörnyezetének [2. x verziójában](functions-versions.md) szükséges kötési kiterjesztések a `extensions.csproj` fájlban vannak definiálva, a `bin` mappában található tényleges függvénytár-fájlokkal. Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
+Bizonyos kötések `extensions.csproj` fájl jelenlétét igénylik. A függvények futtatókörnyezetének [2. x vagy újabb](functions-versions.md) verziójában szükséges kötési kiterjesztések a `extensions.csproj` fájlban vannak definiálva, a `bin` mappában található tényleges függvénytár-fájlokkal. Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
 
 A PowerShell-függvény alkalmazásaiban szükség lehet egy `profile.ps1`ra, amely akkor fut le, amikor egy Function alkalmazás elindul (más néven a *[hidegindító kezdete](#cold-start)* ). További információ: PowerShell- [profil](#powershell-profile).
 
@@ -73,9 +73,9 @@ A `TriggerMetadata` paraméterrel további információkat adhat meg az triggerr
 $TriggerMetadata.sys
 ```
 
-| Tulajdonság   | Leírás                                     | Típus     |
+| Tulajdonság   | Leírás                                     | Type (Típus)     |
 |------------|-------------------------------------------------|----------|
-| utcNow     | Ha UTC-ben a függvény aktiválva lett        | DateTime |
+| UtcNow     | Ha UTC-ben a függvény aktiválva lett        | Dátum és idő |
 | MethodName | Az aktivált függvény neve     | sztring   |
 | RandGuid   | a függvény végrehajtásának egyedi GUID azonosítója | sztring   |
 
@@ -125,11 +125,11 @@ a `Push-OutputBinding` a `-Name`megadott érték alapján eltérően viselkedik:
 
 A következő `Push-OutputBinding`meghívásához használható paraméterek érvényesek:
 
-| Name (Név) | Típus | pozíció | Leírás |
+| Név | Type (Típus) | Pozíció | Leírás |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Sztring | 1 | A beállítani kívánt kimeneti kötés neve. |
 | **`-Value`** | Objektum | 2 | A beállítani kívánt kimeneti kötés értéke, amelyet a rendszer a folyamat ByValue fogad el. |
-| **`-Clobber`** | SwitchParameter | Elemzi | Választható Ha meg van adva, a megadott kimeneti kötéshez beállított értéket kényszeríti ki. | 
+| **`-Clobber`** | Kapcsolóparaméter | Elemzi | Választható Ha meg van adva, a megadott kimeneti kötéshez beállított értéket kényszeríti ki. | 
 
 A következő közös paraméterek is támogatottak: 
 * `Verbose`
@@ -294,7 +294,7 @@ A HTTP-és webhook-eseményindítók és a HTTP-kimeneti kötések a HTTP-üzene
 
 A parancsfájlba átadott kérelem-objektum `HttpRequestContext`típusú, amely a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság  | Leírás                                                    | Típus                      |
+| Tulajdonság  | Leírás                                                    | Type (Típus)                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Egy objektum, amely tartalmazza a kérelem törzsét. a `Body` a legjobb típusra van szerializálva az adathalmaz alapján. Ha például az adatfájl JSON, a rendszer szórótábla adja át. Ha az érték karakterlánc, akkor karakterláncként adja át a rendszer. | objektum |
 | **`Headers`** | A kérések fejléceit tartalmazó szótár.                | Szótár < karakterlánc, karakterlánc ><sup>*</sup> |
@@ -309,7 +309,7 @@ A parancsfájlba átadott kérelem-objektum `HttpRequestContext`típusú, amely 
 
 A visszaküldeni kívánt válasz-objektum típusa `HttpResponseContext`, amely a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság      | Leírás                                                 | Típus                      |
+| Tulajdonság      | Leírás                                                 | Type (Típus)                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Egy objektum, amely tartalmazza a válasz törzsét.           | objektum                    |
 | **`ContentType`** | Egy rövid kéz a válasz tartalomtípusának beállításához. | sztring                    |
@@ -494,7 +494,7 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 Helyileg futtatva az Alkalmazásbeállítások a [Local. Settings. JSON](functions-run-local.md#local-settings-file) Project fájlból lesznek beolvasva.
 
-## <a name="concurrency"></a>Egyidejűség
+## <a name="concurrency"></a>Párhuzamosság
 
 Alapértelmezés szerint a függvények PowerShell-futtatókörnyezete egyszerre csak egy függvény hívását képes feldolgozni. Előfordulhat azonban, hogy ez a párhuzamossági szint nem elegendő a következő helyzetekben:
 

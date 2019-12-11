@@ -3,17 +3,17 @@ title: A számla kezelése és a próbaverzió átalakítása az Azure IoT Centr
 description: Rendszergazdaként megtudhatja, hogyan kezelheti számláját, és hogyan használhatja a próbaverziót az Azure IoT Central-alkalmazásban való fizetésre
 author: v-krghan
 ms.author: v-krghan
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 11bcdaab34cf4d82b688a578ab2d9ee686ffe07e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 0c1c1643fb8c8394ce3ce50e5926f05fd4d366f6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894811"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976417"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>Számla kezelése IoT Central alkalmazásban
 
@@ -50,6 +50,6 @@ Az önkiszolgáló folyamat végrehajtásához kövesse az alábbi lépéseket:
 
 1. Miután kiválasztotta az **átalakítás**lehetőséget, az alkalmazás mostantól utólagos elszámolású alkalmazás, és elkezdődik a számlázás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan kezelheti a számláját az Azure IoT Central alkalmazásban, a javasolt következő lépés az [alkalmazás felhasználói felületének testreszabása](howto-customize-ui.md) az Azure IoT Central-ban című témakörben olvashat.

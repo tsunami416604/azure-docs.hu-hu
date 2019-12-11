@@ -1,40 +1,40 @@
 ---
-title: Hozzon létre egy új lemezkép verziója a meglévő lemezkép verziója Azure Image Builder (előzetes verzió) használatával
-description: Hozzon létre egy új lemezkép verziója egy meglévő lemezkép verziója, az Azure az Image Builder használatával.
+title: Új virtuálisgép-rendszerkép verziójának létrehozása meglévő rendszerkép-verzióból az Azure rendszerkép-készítővel (előzetes verzió)
+description: Hozzon létre egy új virtuálisgép-rendszerkép verzióját egy meglévő rendszerkép-verzióból az Azure rendszerkép-készítő használatával.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9155f6fc1243f0d2e4d63f2718ccfd6846ebbc50
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d226a7b31dc9f8cf219c6d0d0f886fb5b21741a6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671505"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976332"
 ---
-# <a name="preview-create-a-new-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Előzetes verzió: Hozzon létre egy új lemezkép verziója az Azure az Image Builder használatával meglévő lemezkép verziója
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Előzetes verzió: hozzon létre egy új virtuálisgép-rendszerkép verzióját egy meglévő rendszerkép-verzióból az Azure rendszerkép-készítő használatával
 
-Ez a cikk bemutatja, hogyan vesz egy meglévő lemezkép verziója egy [megosztott képgyűjtemény](shared-image-galleries.md), frissítse és tegye közzé a katalógusban az új lemezkép verzióként.
+Ebből a cikkből megtudhatja, hogyan készíthet meglévő rendszerképeket egy [megosztott rendszerkép](shared-image-galleries.md)-katalógusban, hogyan frissítheti, és hogyan teheti közzé új rendszerképként a gyűjteményben.
 
-Fogjuk használni .json mintasablon a kép konfigurálása. Itt van a .json fájlt használjuk: [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json). 
+A rendszerkép konfigurálásához egy minta. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [helloImageTemplateforSIGfromSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json). 
 
 
-## <a name="register-the-features"></a>Regisztráció az funkciók
-Az előzetes verzió ideje alatt az Azure az Image Builder használatához, regisztrálnia kell az új szolgáltatást.
+## <a name="register-the-features"></a>A szolgáltatások regisztrálása
+Ha az előzetes verzióban szeretné használni az Azure képszerkesztőt, regisztrálnia kell az új szolgáltatást.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-A szolgáltatás regisztrációs állapotának ellenőrzése.
+A szolgáltatás regisztrációjának állapotát vizsgálja meg.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-Ellenőrizze a regisztrációt.
+Győződjön meg a regisztrációról.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -42,7 +42,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Ha ezek nem tegyük fel, hogy regisztrált, futtassa a következő parancsot:
+Ha nem mondják a regisztrációt, futtassa a következőt:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -51,11 +51,11 @@ az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="set-variables-and-permissions"></a>Változók beállítása és engedélyek
+## <a name="set-variables-and-permissions"></a>Változók és engedélyek beállítása
 
-Ha használt [hozzon létre egy rendszerképet, és a egy megosztott lemezkép-katalógus terjesztéséhez](image-builder-gallery.md) hozhat létre a megosztott lemezkép-katalógusában, már létrehozott egyes van szükségünk a változókat. Ha nem, állítsa be az egyes ebben a példában használt változókat.
+Ha létrehoz egy rendszerképet, [és eljuttat egy megosztott képtárat](image-builder-gallery.md) a megosztott képkatalógus létrehozásához, már létrehozott néhány változót. Ha nem, állítson be néhány változót, amelyet használni szeretne ehhez a példához.
 
-Az előzetes verzió az image builder csak támogatja ugyanazt az erőforráscsoportot, a felügyelt forráslemezkép az egyéni lemezképek létrehozásának. Az erőforráscsoport neve ebben a példában ugyanazt az erőforráscsoportot, a felügyelt forráslemezkép kell frissíteni.
+Az előzetes verzióban a Image Builder csak a forrásként kezelt lemezképtel azonos erőforráscsoporthoz tartozó egyéni lemezképek létrehozását támogatja. Az ebben a példában szereplő erőforráscsoport-nevet a forrásként kezelt képként megegyező erőforráscsoporthoz kell frissíteni.
 
 
 ```azurecli-interactive
@@ -73,13 +73,13 @@ imageDefName=myIbImageDef
 runOutputName=aibSIGLinuxUpdate
 ```
 
-Hozzon létre egy változót az előfizetés-azonosítóhoz. A használatával lekérheti `az account show | grep id`.
+Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a `az account show | grep id`használatával érheti el.
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
 ```
 
-A rendszerkép verziószámát, amelyet frissíteni szeretne kaphat.
+Szerezze be a frissíteni kívánt rendszerkép verzióját.
 
 ```
 sigDefImgVersionId=$(az sig image-version list \
@@ -90,7 +90,7 @@ sigDefImgVersionId=$(az sig image-version list \
 ```
 
 
-Ha már rendelkezik saját közös lemezkép-katalógusában, és nem követte az előző példával, szüksége lesz az erőforráscsoport elérhesse, ezért hozzá tudjon férni a katalógusban az Image Builder engedélyeket.
+Ha már rendelkezik saját közös rendszerkép-katalógussal, és nem követte az előző példát, akkor a rendszerkép-készítőhöz engedélyeket kell rendelnie az erőforráscsoport eléréséhez, így a katalógushoz is hozzáférhet.
 
 
 ```azurecli-interactive
@@ -101,11 +101,11 @@ az role assignment create \
 ```
 
 
-## <a name="modify-helloimage-example"></a>Példa helloImage módosítása
-Áttekintheti a példa tudjuk, hogyan használhatja a .json fájlt itt: [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) együtt a [Image Builder sablonreferenciája](image-builder-json.md). 
+## <a name="modify-helloimage-example"></a>HelloImage módosítása – példa
+Tekintse át a használni kívánt példát a. JSON fájl megnyitásához: a [helloImageTemplateforSIGfromSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) fájlt a [rendszerkép-készítő sablon hivatkozásával](image-builder-json.md)együtt. 
 
 
-Töltse le a .json példát, és konfigurálja azt a változók a. 
+Töltse le a. JSON-példát, és konfigurálja a változókat. 
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json -o helloImageTemplateforSIGfromSIG.json
@@ -121,7 +121,7 @@ sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIGfromSIG.j
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-Küldje el a rendszerkép-konfiguráció a virtuális gép rendszerkép jelentéskészítő szolgáltatáshoz.
+Küldje be a rendszerkép konfigurációját a virtuálisgép-rendszerkép-szerkesztő szolgáltatásba.
 
 ```azurecli-interactive
 az resource create \
@@ -132,7 +132,7 @@ az resource create \
     -n helloImageTemplateforSIGfromSIG01
 ```
 
-Indítsa el a rendszerkép összeállítását.
+Indítsa el a rendszerkép buildjét.
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -142,7 +142,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-Várjon, amíg a rendszerkép állították össze, és a replikációt, mielőtt a következő lépéssel.
+Várjon, amíg a rendszerkép fel lett építve és replikációra kerül, mielőtt továbblép a következő lépésre.
 
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
@@ -157,13 +157,13 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Hozzon létre egy SSH-kapcsolatot a virtuális géphez a virtuális gép nyilvános IP-cím használatával.
+Hozzon létre egy SSH-kapcsolatokat a virtuális géphez a virtuális gép nyilvános IP-címének használatával.
 
 ```azurecli-interactive
 ssh azureuser@<pubIp>
 ```
 
-Megtekintheti a rendszerkép lett egy "üzenet, a Day" szabhatók testre, amint az SSH-kapcsolat létrejött.
+Az SSH-kapcsolatok létrehozása után a rendszerképet a "nap üzenete" értékre igazította.
 
 ```console
 *******************************************************
@@ -173,15 +173,15 @@ Megtekintheti a rendszerkép lett egy "üzenet, a Day" szabhatók testre, amint 
 *******************************************************
 ```
 
-Típus `exit` gombra kattintva zárja be az SSH-kapcsolat.
+Az SSH-kapcsolatok bezárásához írja be a `exit`.
 
-A kép most már elérhető verziókról a katalógusban szereplő is listázhatja.
+A katalógusban már elérhető rendszerképek is megtekinthetők.
 
 ```azurecli-interactive
 az sig image-version list -g $sigResourceGroup -r $sigName -i $imageDefName -o table
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az ebben a cikkben használt .JSON kiterjesztésű fájl összetevőivel kapcsolatos további tudnivalókért lásd: [Image builder sablonreferenciája](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ha többet szeretne megtudni a cikkben használt. JSON fájl összetevőiről, tekintse meg a [rendszerkép-szerkesztői sablon referenciáját](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

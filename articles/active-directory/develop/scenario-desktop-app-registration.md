@@ -1,5 +1,5 @@
 ---
-title: Webes API-kat meghívó asztali alkalmazás (alkalmazás-regisztráció) – Microsoft Identity platform
+title: Webes API-kat meghívó asztali alkalmazás regisztrálása – Microsoft Identity platform | Azure
 description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó asztali alkalmazást (alkalmazás-regisztráció)
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,16 +17,16 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 648652ed32a5dea30de665b7fa49190171a7f10a
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 94f7f2dfdbf404a092773857a0f7727618cd429a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268416"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965534"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>Webes API-kat meghívó asztali alkalmazás – alkalmazás regisztrálása
 
-Ez a cikk az asztali alkalmazások alkalmazás-regisztrálási sajátosságait tartalmazza.
+Ez a cikk az asztali alkalmazások alkalmazás-regisztrálási sajátosságait ismerteti.
 
 ## <a name="supported-accounts-types"></a>Támogatott fiókok típusai
 
@@ -46,14 +46,14 @@ Ha az asztali alkalmazás interaktív hitelesítést használ, bármilyen [fiók
 
 Az asztali alkalmazásban használandó átirányítási URI-k a használni kívánt folyamattól függenek.
 
-- Ha az **interaktív hitelesítés** vagy az **eszköz kódjának folyamatát**használja, használja `https://login.microsoftonline.com/common/oauth2/nativeclient`a következőt:. Ezt a konfigurációt úgy érheti el, ha a megfelelő URL-címre kattint az alkalmazás **hitelesítés** szakaszában.
+- Ha az **interaktív hitelesítés** vagy az **eszköz kódjának folyamatát**használja, érdemes `https://login.microsoftonline.com/common/oauth2/nativeclient`használni. Ezt a konfigurációt úgy érheti el, ha a megfelelő URL-címre kattint az alkalmazás **hitelesítés** szakaszában.
   
   > [!IMPORTANT]
-  > A mai MSAL.NET egy másik átirányítási URI-t használ alapértelmezés szerint a Windows`urn:ietf:wg:oauth:2.0:oob`() rendszerű asztali alkalmazásokban. A jövőben módosítani szeretnénk ezt az alapértelmezett értéket, ezért azt javasoljuk, hogy használja a`https://login.microsoftonline.com/common/oauth2/nativeclient`
+  > A mai MSAL.NET egy másik átirányítási URI-t használ alapértelmezés szerint a Windows rendszeren futó asztali alkalmazásokban (`urn:ietf:wg:oauth:2.0:oob`). A jövőben módosítani szeretnénk ezt az alapértelmezett értéket, ezért javasoljuk, hogy használja a `https://login.microsoftonline.com/common/oauth2/nativeclient`
 
-- Ha macOS-hez készült natív Objective-C vagy SWIFT-alkalmazást készít, a redirectUri a következő formátumban kell regisztrálnia az alkalmazás köteg-azonosítója alapján: **msauth. < a. app. Bundle. id >://auth** (replace < a. app. Bundle. id > az alkalmazás Bundle-azonosítójával)
+- Ha macOS-hez készült natív Objective-C vagy SWIFT-alkalmazást készít, a redirectUri az alkalmazás köteg-azonosítója alapján kell regisztrálnia a következő formátumban: **msauth. < a. app. Bundle. id >://auth** (cserélje le < a. app. Bundle. id > az alkalmazás Bundle azonosítójával)
 - Ha az alkalmazás csak az integrált Windows-hitelesítést vagy-felhasználónevet/jelszót használja, nem kell regisztrálnia az alkalmazás átirányítási URI-JÁT. Ezek a folyamatok a Microsoft Identity platform 2.0-s verziójának végpontját jelentik, és az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.
-- Az eszköz kódjának, az integrált Windows-hitelesítésnek, valamint a bizalmas ügyfél-alkalmazási folyamatnak a nem átirányítási URI-k (a démon-alkalmazásokban használt ügyfél-hitelesítési folyamat) alapján való megkülönböztetéséhez ki kell fejeznie a az alkalmazás egy nyilvános ügyfélalkalmazás. A konfiguráció eléréséhez nyissa meg az alkalmazás **hitelesítés** szakaszát. Ezt követően a **Speciális beállítások** alszakasz **alapértelmezett ügyfél típusa** csoportjában válassza az **Igen** lehetőséget az **alkalmazás nyilvános ügyfélként való kezelésére**szolgáló kérdésnél.
+- Ha meg szeretné különböztetni az eszköz kódjának folyamatát, az integrált Windows-hitelesítést, valamint egy olyan bizalmas ügyfélalkalmazás-folyamathoz tartozó felhasználónevet és jelszót, amely nem rendelkezik átirányítási URI-k használatával (a démon-alkalmazásokban használt ügyfél-hitelesítési folyamat), meg kell adnia, hogy az alkalmazás egy nyilvános ügyfélalkalmazás. A konfiguráció eléréséhez nyissa meg az alkalmazás **hitelesítés** szakaszát. Ezt követően a **Speciális beállítások** alszakasz **alapértelmezett ügyfél típusa** csoportjában válassza az **Igen** lehetőséget az **alkalmazás nyilvános ügyfélként való kezelésére**szolgáló kérdésnél.
 
   ![Nyilvános ügyfél engedélyezése](media/scenarios/default-client-type.png)
 
@@ -61,7 +61,7 @@ Az asztali alkalmazásban használandó átirányítási URI-k a használni kív
 
 Asztali alkalmazások hívás API-kat a bejelentkezett felhasználó számára. Delegált engedélyeket kell kérniük. Azonban nem igényelhetnek alkalmazás-engedélyeket, amelyek csak [Daemon-alkalmazásokban](scenario-daemon-overview.md)vannak kezelve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Asztali alkalmazás konfigurálása](scenario-desktop-app-configuration.md)

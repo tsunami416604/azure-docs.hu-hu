@@ -6,12 +6,12 @@ author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: b86ea2367a17baa8c57b8d0c0331c0cd3cfbb481
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: aa2e0e8be8805187ec1f5b8ea6498e90e2d5a7c4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227104"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976876"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Függvény létrehozása az Azure diákoknak kezdőknek
 
@@ -19,7 +19,7 @@ Ebben az oktatóanyagban létrehozunk egy Hello World HTTP-függvényt egy Azure
 
 A Microsoft *Azure diákoknak kezdő* csomaggal a felhőben való fejlesztéshez szükséges Azure-termékeket ingyenesen elsajátíthatja. [Ebben az ajánlatban itt találhat további információt.](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
-Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet vagy közzé kellene tennie egy webalkalmazást. [További információ a functions szolgáltatásról.](./functions-overview.md)
+Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást. [További információ a functions szolgáltatásról.](./functions-overview.md)
 
 ## <a name="create-a-function"></a>Függvény létrehozása
 
@@ -74,7 +74,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 ## <a name="create-function"></a>HTTP által aktivált függvény létrehozása
 
-1. Bontsa ki az új függvényalkalmazást, majd kattintson a **Függvények+ elem melletti**  gombra, és válassza a **Portálba épített**, majd a **Folytatás** lehetőséget.
+1. Bontsa ki az új függvényalkalmazást, majd kattintson a **Függvények** elem melletti **+** gombra, és válassza a **Portálba épített**, majd a **Folytatás** lehetőséget.
 
     ![Függvény rövid útmutatója – platform kiválasztása](./media/functions-create-student-starter/function-app-quickstart-choose-portal.png)
 
@@ -121,7 +121,7 @@ Az Azure Student Starter-ben a Azure Functions futtatókörnyezet legtöbb funkc
     * [A magasabb csomagokban támogatott nyelveket itt tekintheti meg](supported-languages.md)
 * A Windows az egyetlen támogatott operációs rendszer.
 * A skála egy ingyenes, legfeljebb 60 percet futtató, napi szinten üzemelő [példányra](https://azure.microsoft.com/pricing/details/app-service/windows/) korlátozódik. A rendszer automatikusan 0 – 1 példányra serverlessly a HTTP-forgalom fogadása után, de még nem.
-* Csak [a 2. x futtatókörnyezet](functions-versions.md) támogatott.
+* Csak a functions futtatókörnyezet [2. x vagy újabb verziója](functions-versions.md) támogatott.
 * Az összes fejlesztői szerszámozás támogatott szerkesztési és közzétételi függvények esetén. Ide tartozik a VS Code, a Visual Studio, az Azure CLI és a Azure Portal. Ha a portálon kívül bármilyen más eszközt szeretne használni, először létre kell hoznia egy alkalmazást a portálon, majd az alkalmazást központi telepítési célként kell kiválasztania az előnyben részesített eszközön.
 
 ## <a name="next-steps"></a>Következő lépések

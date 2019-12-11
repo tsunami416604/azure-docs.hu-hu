@@ -1,6 +1,6 @@
 ---
 title: X. 509 eszköz regisztrálása az Azure Device kiépítési szolgáltatásba a használatávalC#
-description: Ez a rövid útmutató csoportos regisztrációkat használ. Ebben a rövid útmutatóban az X. 509 eszközöket regisztrálja az Azure C#IoT hub Device Provisioning Service a használatával.
+description: Ez a rövid útmutató csoportos regisztrációkat használ. Ebben a rövid útmutatóban az X. 509 eszközöket regisztrálja az Azure IoT Hub Device Provisioning Service (DPS C#) használatával.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 3df9afa35b3ae9f7360a5d4b890d3fce209a4b12
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1986f51b834f177a7c8d70392cc532cbfadb7170
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423348"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974733"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a C# használatával
 
@@ -185,7 +185,7 @@ Ha azt tervezi, hogy vizsgálja C# meg a szolgáltatási mintát, ne törölje a
 
 1. A Azure Portal eszköz kiépítési szolgáltatásában válassza ki a **tanúsítványok**lehetőséget, válassza ki a rövid útmutatóhoz feltöltött tanúsítványt, és a **tanúsítvány részleteinek**tetején kattintson a **Törlés** gombra.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta az X. 509 közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány beléptetési csoportját az Azure IoT Hub Device Provisioning Service használatával. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával.
 

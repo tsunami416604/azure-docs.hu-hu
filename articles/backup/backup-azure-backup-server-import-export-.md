@@ -4,12 +4,12 @@ description: A Azure Backup lehetővé teszi, hogy az Azure import/export szolg�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 4c62fed98a37a821907a889e45d582c452961203
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 259be99efdef29e3f7971632adf76c03175bba01
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173250"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996323"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Offline – a DPM és a Azure Backup Server biztonsági mentési munkafolyamata
 
@@ -90,7 +90,7 @@ Az ebben a szakaszban található információk segítségével elvégezheti az 
 
 2. Fejezze be a munkafolyamatot, és indítsa el az offline biztonsági mentést, kattintson a **biztonsági mentés most** lehetőségre a Azure Backup ügynök felügyeleti konzolján. Ennek a lépésnek a részeként a kezdeti biztonsági mentés az átmeneti területre íródik.
 
-    ![Biztonsági mentés most](./media/backup-azure-backup-import-export/backupnow.png)
+    ![Biztonsági mentés](./media/backup-azure-backup-import-export/backupnow.png)
 
     A megfelelő munkafolyamat a System Center Data Protection Manager vagy Azure Backup-kiszolgálón való végrehajtásához kattintson a jobb gombbal a **védelmi csoportra**, majd válassza a **helyreállítási pont létrehozása** lehetőséget. Ezután válassza az **online védelem** lehetőséget.
 
@@ -218,4 +218,4 @@ A következő ütemezett biztonsági mentés időpontjában a Azure Backup növe
 ## <a name="next-steps"></a>Következő lépések
 
 * Az Azure importálási/exportálási munkafolyamatával kapcsolatos bármilyen kérdés esetén tekintse át az [adatok blob Storage-ba való átvitelére szolgáló Microsoft Azure import/export szolgáltatás használatát](../storage/common/storage-import-export-service.md)ismertető témakört.
-* A munkafolyamattal kapcsolatos kérdésekért tekintse meg a Azure Backup- [GYIK](backup-azure-backup-faq.md) offline biztonsági mentését ismertető szakaszt.
+

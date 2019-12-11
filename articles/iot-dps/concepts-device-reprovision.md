@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub Device Provisioning Service – eszközökhöz kapcsolódó fogalmak
-description: Az Azure IoT Hub Device Provisioning Service eszköz újraépítésével kapcsolatos fogalmak ismertetése
+description: Az Azure IoT Hub Device Provisioning Service (DPS) eszköz újraépítési fogalmait ismerteti
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0d6e5b5c7e8e8bf83646b417aa94658efd25b49e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228836"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975346"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>A IoT Hub eszköz újraépítésével kapcsolatos fogalmak
 
@@ -87,6 +87,6 @@ A következő táblázat az API-verziókat mutatja be, mielőtt elérhetővé te
 > [!NOTE]
 > Ezek az értékek és hivatkozások valószínűleg változnak. Ez csak egy helyőrző, amely meghatározza, hogy a verziók hogyan határozhatók meg egy ügyfél és a várt verziók alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Eszközök újraépítése](how-to-reprovision.md)

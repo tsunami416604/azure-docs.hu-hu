@@ -1,6 +1,6 @@
 ---
 title: Az eszközökre vonatkozó fogalmak az Azure-eszközök kiépítés terén | Microsoft Docs
-description: Az eszközök kiépítési szolgáltatásával és IoT Hubával kapcsolatos eszköz-kiépítési fogalmakat ismerteti.
+description: Az eszközök kiépítési szolgáltatásával (DPS) és IoT Hubával kapcsolatos eszköz-kiépítési fogalmakat ismerteti.
 author: nberdy
 ms.author: nberdy
 ms.date: 11/06/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 0e3557588281cd392a7a8a1c2654f10e8387dd83
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: f5f931622f793a1146c04403e8c5e1a5ef7a7d62
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720532"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975312"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Az eszközök IoT Hub Device Provisioning Service kapcsolatos fogalmak
 
@@ -42,7 +42,7 @@ A hardveres biztonsági modul, vagy a HSM biztonságos, hardveres tárolást biz
 
 Az eszköz titkai a szoftverben (memóriában) is tárolhatók, de ez a tárterület kevésbé biztonságos, mint a HSM.
 
-## <a name="registration-id"></a>Regisztrációs azonosító
+## <a name="registration-id"></a>Regisztráció azonosítója
 
 A regisztrációs azonosító az eszköz kiépítési szolgáltatásban való egyedi azonosítására szolgál. Az eszköz AZONOSÍTÓjának egyedinek kell lennie a létesítési szolgáltatás [azonosítójának hatókörében](#id-scope). Minden eszköznek regisztrációs AZONOSÍTÓval kell rendelkeznie. A regisztrációs azonosító alfanumerikus, kis-és nagybetű nem különbözik, és tartalmazhat speciális karaktereket, beleértve a kettőspontot, az időtartamot, az aláhúzást és a kötőjelet.
 

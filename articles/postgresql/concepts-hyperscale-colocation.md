@@ -1,18 +1,18 @@
 ---
-title: A kiszolgálói fogalmak a Azure Database for PostgreSQL
-description: Ez a cikk a Azure Database for PostgreSQL-kiszolgálók konfigurálásával és kezelésével kapcsolatos szempontokat és irányelveket ismerteti.
+title: Táblázatos elhelyezés – nagy kapacitású (Citus) – Azure Database for PostgreSQL
+description: Kapcsolódó információk tárolása együtt a gyorsabb lekérdezések érdekében
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 4a5ebf810771efe49ee40e272d1fa4683140eda1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482752"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967337"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Táblázatos elhelyezés Azure Database for PostgreSQLban – nagy kapacitású (Citus)
 
@@ -132,12 +132,12 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-A szűrés és a tenant_id-hez való csatlakozás miatt a nagy kapacitású (Citus) tudja, hogy a teljes lekérdezés válaszolhat az adott bérlő adatait tartalmazó, közösen elhelyezett szegmensek készletével. Egyetlen PostgreSQL-csomópont egyetlen lépésben válaszolhat a lekérdezésre.
+A Filter és a Join on tenant_id nagy kapacitású (Citus) segítségével a teljes lekérdezés megválaszolható az adott bérlő adatait tartalmazó, közösen elhelyezett szegmensek készletével. Egyetlen PostgreSQL-csomópont egyetlen lépésben válaszolhat a lekérdezésre.
 
 ![Jobb lekérdezés](media/concepts-hyperscale-colocation/colocation-better-query.png)
 
 Bizonyos esetekben a lekérdezéseket és a táblázatos sémákat úgy kell módosítani, hogy a bérlői azonosítót egyedi korlátozásokkal és csatlakozási feltételekkel tartalmazzák. Ez a módosítás általában egyszerű.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg, hogyan találhatók a bérlői információk a [több-bérlős oktatóanyagban](tutorial-design-database-hyperscale-multi-tenant.md).

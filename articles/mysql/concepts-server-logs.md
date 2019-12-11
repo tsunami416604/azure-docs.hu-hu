@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: cd0d09e4d46747b7f3f8e6fb714dd711beef9484
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 6bd99a200a8f9e6be6d155a334b9b06ac05eacc3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770839"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972183"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Lassú lekérdezési naplók a Azure Database for MySQL
 Azure Database for MySQL a lassú lekérdezési napló elérhető a felhasználók számára. A tranzakciónaplóhoz való hozzáférés nem támogatott. A lassú lekérdezési napló használatával azonosíthatók a hibaelhárítási teljesítménybeli szűk keresztmetszetek.
@@ -25,6 +25,8 @@ A Azure Portal válassza ki a Azure Database for MySQL kiszolgálót. A **figyel
 
 Az Azure CLI-vel kapcsolatos további információkért lásd: [lassú lekérdezési naplók konfigurálása és elérése az Azure CLI használatával](howto-configure-server-logs-in-cli.md).
 
+Hasonlóképpen, a naplók Azure Monitor a diagnosztikai naplók használatával is átadhatók. További információért lásd [alább](concepts-server-logs.md#diagnostic-logs) .
+
 ## <a name="log-retention"></a>Napló megőrzése
 A naplók akár hét napig is elérhetők a létrehozásuk után. Ha a rendelkezésre álló naplók teljes mérete meghaladja a 7 GB-ot, a rendszer törli a legrégebbi fájlokat, amíg a szabad terület elérhetővé válik. 
 
@@ -35,10 +37,11 @@ Alapértelmezés szerint a lassú lekérdezési napló le van tiltva. Az engedé
 
 Az egyéb paraméterek a következők:
 
-- **long_query_time**: Ha a lekérdezés a lekérdezés naplózása long_query_time (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték 10 másodperc.
+- **long_query_time**: Ha a lekérdezés a lekérdezés naplózása long_query_time (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték a 10 másodperc.
 - **log_slow_admin_statements**: Ha a on olyan felügyeleti utasítások is szerepelnek, mint például a ALTER_TABLE és a ANALYZE_TABLE a slow_query_logba írt utasításokban.
 - **log_queries_not_using_indexes**: meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e a slow_query_log
 - **log_throttle_queries_not_using_indexes**: Ez a paraméter korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, amikor a log_queries_not_using_indexes be van állítva.
+- **log_output**: Ha a "fájl", lehetővé teszi a lassú lekérdezési napló írását a helyi kiszolgáló tárterületére és a diagnosztikai naplók Azure Monitorére. Ha "nincs", a lassú lekérdezési napló csak a helyi kiszolgáló tárterületére lesz írva. 
 
 > [!Note]
 > `sql_text`esetén a rendszer csonkolja a naplót, ha az meghaladja a 2048 karaktert.
@@ -78,7 +81,7 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 | `insert_id_s` | AZONOSÍTÓ beszúrása |
 | `sql_text_s` | Teljes lekérdezés |
 | `server_id_s` | A kiszolgáló azonosítója |
-| `thread_id_s` | Szál azonosítója |
+| `thread_id_s` | Szálazonosító |
 | `\_ResourceId` | Erőforrás URI-ja |
 
 ## <a name="next-steps"></a>Következő lépések

@@ -6,19 +6,19 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: cf080b841e5fb3bbf3b36a2629a619f77fe52ddd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226752"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975006"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# fejlesztői dokumentáció
 
 F#a Azure Functions egy olyan megoldás, amellyel könnyedén futtathatja a felhőben a kis-és a "functions" kódokat. Az adatfolyamatok F# függvény argumentumai használatával áramlanak a függvénybe. Az argumentumok neve `function.json`ban van megadva, és előre definiált nevek vannak az olyan dolgokhoz való hozzáféréshez, mint a Function Logger és a lemondási tokenek. 
 
 >[!IMPORTANT]
->F#a parancsfájlt (. fsx) csak az Azure Functions futtatókörnyezet [1. x verziója](functions-versions.md#creating-1x-apps) támogatja. Ha a 2. x F# verziójú futtatókörnyezetet szeretné használni, előre lefordított F# osztály-függvénytári projektet (. FS) kell használnia. A Visual Studióval hozhat létre, kezelhet F# és tehet közzé egy osztály-függvénytár-projektet, ahogy azt egy [ C# Class Library-projekt](functions-dotnet-class-library.md)is tenné. További információ a functions-verziókról: [Azure functions Runtime Versions – áttekintés](functions-versions.md).
+>F#a parancsfájlt (. fsx) csak az Azure Functions futtatókörnyezet [1. x verziója](functions-versions.md#creating-1x-apps) támogatja. Ha a futtatókörnyezet 2. F# x vagy újabb verzióját kívánja használni, akkor előre lefordított F# osztály-függvénytári projektet (. FS) kell használnia. A Visual Studióval hozhat létre, kezelhet F# és tehet közzé egy osztály-függvénytár-projektet, ahogy azt egy [ C# Class Library-projekt](functions-dotnet-class-library.md)is tenné. További információ a functions-verziókról: [Azure functions Runtime Versions – áttekintés](functions-versions.md).
 
 Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői referenciát](functions-reference.md).
 
@@ -48,10 +48,10 @@ FunctionsProject
 
 Létezik egy megosztott [Host. JSON](functions-host-json.md) fájl, amely a Function alkalmazás konfigurálására használható. Mindegyik függvényhez saját kódlap (. fsx) és kötési konfigurációs fájl (function. JSON) tartozik.
 
-A functions futtatókörnyezet [2. x verziójában](functions-versions.md) szükséges kötési kiterjesztések a `extensions.csproj` fájlban vannak definiálva, a `bin` mappában lévő fájlok tényleges fájljaival. Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](./functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
+A functions futtatókörnyezet [2. x vagy újabb](functions-versions.md) verziójában szükséges kötési kiterjesztések a `extensions.csproj` fájlban vannak meghatározva, a `bin` mappában lévő fájlok tényleges fájljaival együtt. Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](./functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
 
 ## <a name="binding-to-arguments"></a>Argumentumok kötése
-Minden kötés támogatja az argumentumok bizonyos készletét, ahogy az a [Azure functions eseményindítók és a kötések fejlesztői referenciájában](functions-triggers-bindings.md)szerepel. Például a blob triggert kötő argumentumok egyike egy POCO, amely F# rekord használatával fejezhető ki. Például:
+Minden kötés támogatja az argumentumok bizonyos készletét, ahogy az a [Azure functions eseményindítók és a kötések fejlesztői referenciájában](functions-triggers-bindings.md)szerepel. Például a blob triggert kötő argumentumok egyike egy POCO, amely F# rekord használatával fejezhető ki. Példa:
 
 ```fsharp
 type Item = { Id: string }
@@ -65,7 +65,7 @@ Az F# Azure-függvény egy vagy több argumentumot fog elkészíteni. Ha Azure F
 
 A fenti példában `blob` egy bemeneti argumentum, és a `output` egy kimeneti argumentum. Figyelje meg, hogy a `output` `byref<>` használták (a `[<Out>]` jegyzetet nem kell hozzáadnia). `byref<>` típus használata lehetővé teszi, hogy a függvény módosítsa az argumentum által hivatkozott rekordot vagy objektumot.
 
-Ha egy F# rekord bemeneti típusként van használatban, a rekord definícióját meg kell jelölni `[<CLIMutable>]`, hogy a Azure functions keretrendszer megfelelően állítsa be a mezőket, mielőtt a rekordot a függvénynek átadná. A motorháztető alatt `[<CLIMutable>]` állít elő a rekord tulajdonságaihoz. Például:
+Ha egy F# rekord bemeneti típusként van használatban, a rekord definícióját meg kell jelölni `[<CLIMutable>]`, hogy a Azure functions keretrendszer megfelelően állítsa be a mezőket, mielőtt a rekordot a függvénynek átadná. A motorháztető alatt `[<CLIMutable>]` állít elő a rekord tulajdonságaihoz. Példa:
 
 ```fsharp
 [<CLIMutable>]
@@ -77,7 +77,7 @@ let Run(req: TestObject, log: ILogger) =
     { req with Greeting = sprintf "Hello, %s" req.SenderName }
 ```
 
-Az F# osztályok a és a kimenő argumentumok esetében is használhatók. Egy osztály esetében a tulajdonságok általában a képolvasók és a beállítók számára szükségesek. Például:
+Az F# osztályok a és a kimenő argumentumok esetében is használhatók. Egy osztály esetében a tulajdonságok általában a képolvasók és a beállítók számára szükségesek. Példa:
 
 ```fsharp
 type Item() =
@@ -90,7 +90,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>Naplózás
-Ha a kimenetét be szeretné jelentkezni a F# [folyamatos átviteli naplókba](../app-service/troubleshoot-diagnostic-logs.md) , a függvénynek [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)típusú argumentumot kell használnia. A konzisztencia érdekében javasoljuk, hogy az argumentum neve `log`legyen. Például:
+Ha a kimenetét be szeretné jelentkezni a F# [folyamatos átviteli naplókba](../app-service/troubleshoot-diagnostic-logs.md) , a függvénynek [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)típusú argumentumot kell használnia. A konzisztencia érdekében javasoljuk, hogy az argumentum neve `log`legyen. Példa:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -141,7 +141,7 @@ A rendszer automatikusan megnyitja a következő névtereket:
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host`.
+* `Microsoft.Azure.WebJobs.Host` kérdésre adott válaszban foglalt lépéseket.
 
 ## <a name="referencing-external-assemblies"></a>Külső szerelvények hivatkozása
 Ehhez hasonlóan a keretrendszer szerelvény-referenciái is felvehetők a `#r "AssemblyName"` direktívával.
@@ -169,7 +169,7 @@ A Azure Functions üzemeltetési környezet automatikusan hozzáadja a következ
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting`.
+* `System.Net.Http.Formatting` kérdésre adott válaszban foglalt lépéseket.
 
 Emellett a következő szerelvények speciális betokozással is rendelkezhetnek, és a simplename hivatkozhatnak (például `#r "AssemblyName"`):
 
@@ -177,12 +177,12 @@ Emellett a következő szerelvények speciális betokozással is rendelkezhetnek
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* `Microsoft.AspNEt.WebHooks.Common`.
+* `Microsoft.AspNEt.WebHooks.Common` kérdésre adott válaszban foglalt lépéseket.
 
 Ha privát szerelvényre kell hivatkoznia, feltöltheti az összeállítási fájlt egy `bin` mappába a függvényhez képest, és hivatkozhat rá a fájlnév használatával (például  `#r "MyAssembly.dll"`). A fájlok a függvény mappájába való feltöltésével kapcsolatos információkért tekintse meg a következő szakaszt a csomagkezelő című részben.
 
 ## <a name="editor-prelude"></a>Szerkesztői bevezetés
-A fordítói szolgáltatásokat F# támogató szerkesztő nem veszi figyelembe azokat a névtereket és szerelvényeket, amelyeket az Azure functions automatikusan tartalmaz. Ezért hasznos lehet olyan bevezetés, amely segít a szerkesztőnek megkeresni a használt szerelvényeket, és explicit módon megnyitni a névtereket. Például:
+A fordítói szolgáltatásokat F# támogató szerkesztő nem veszi figyelembe azokat a névtereket és szerelvényeket, amelyeket az Azure functions automatikusan tartalmaz. Ezért hasznos lehet olyan bevezetés, amely segít a szerkesztőnek megkeresni a használt szerelvényeket, és explicit módon megnyitni a névtereket. Példa:
 
 ```fsharp
 #if !COMPILED
@@ -258,7 +258,7 @@ let Run(timer: TimerInfo, log: ILogger) =
 ```
 
 ## <a name="reusing-fsx-code"></a>A. fsx kód újrafelhasználása
-`#load` direktívával más `.fsx` fájlokból is használhat programkódot. Például:
+`#load` direktívával más `.fsx` fájlokból is használhat programkódot. Példa:
 
 `run.fsx`
 

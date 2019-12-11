@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 5b1b85a0c600871cbedc478f3a56cf71ef8c2ca4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931499"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995915"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Apache HBase-fürt replikálásának beállítása az Azure Virtual Networks szolgáltatásban
 
@@ -275,6 +275,10 @@ Fürt replikálásakor meg kell adnia a replikálni kívánt táblákat. Ebben a
 
 Ha egy **Contacts** táblát szeretne létrehozni, és beszúr néhány információt a táblázatba, kövesse az [Apache HBase oktatóanyag: az Apache HBase használatának első lépései a HDInsight-ben](apache-hbase-tutorial-get-started-linux.md)című témakört.
 
+> [!NOTE]
+> Ha egyéni névtérből kívánja replikálni a táblákat, győződjön meg arról, hogy a megfelelő egyéni névterek definiálva vannak a célkiszolgálón is.
+>
+
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
 A következő lépések azt ismertetik, hogyan hívható meg a parancsfájl műveleti szkriptje a Azure Portalból. A parancsfájl-műveletek Azure PowerShell és a klasszikus Azure CLI használatával történő futtatásával kapcsolatos információkért lásd: [HDInsight-fürtök testreszabása parancsfájl-művelet használatával](../hdinsight-hadoop-customize-cluster-linux.md).
@@ -395,6 +399,10 @@ A [szkript](https://raw.githubusercontent.com/Azure/hbase-utils/master/replicati
 - **Replikáció letiltása a megadott táblákon (Tábla1, table2 és Tábl3)** :
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+
+> [!NOTE]
+> Ha törölni kívánja a fürtöt, győződjön meg róla, hogy eltávolítja a forrás-fürt társ-listájából. Ezt úgy teheti meg, hogy a (z) remove_peer "1" parancsot futtatja a hbase-rendszerhéjban. Ha ez nem sikerül, akkor előfordulhat, hogy a fürterőforrás nem működik megfelelően.
+>
 
 ## <a name="next-steps"></a>Következő lépések
 

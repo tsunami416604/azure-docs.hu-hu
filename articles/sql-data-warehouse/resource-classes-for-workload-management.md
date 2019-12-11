@@ -11,12 +11,12 @@ ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d8c3e3c272ce12200ab7506fd7c9759a8cb3aa64
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 30a3be1365f152a88713604570169091f09f0536
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851740"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975431"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Számítási feladatok kezelése erőforrás-osztályokkal Azure SQL Data Warehouse
 
@@ -36,7 +36,7 @@ Két típusú erőforrás-osztály létezik:
 
 Az erőforrás-osztályok a párhuzamossági tárolóhelyek használatával mérik az erőforrások felhasználását.  A [párhuzamossági résidőket](#concurrency-slots) a cikk későbbi részében ismertetjük.
 
-- Az erőforrás-osztályok erőforrás-felhasználásának megtekintéséhez tekintse meg a következőt: [memória és egyidejűségi korlátok] memória-Egyidejűség-limits.md).
+- Az erőforrás-osztályok erőforrás-felhasználásának megtekintéséhez tekintse meg a [memória és a Egyidejűség korlátai](memory-concurrency-limits.md)című témakört.
 - Az erőforrás osztályának módosításához egy másik felhasználó alatt futtathatja a lekérdezést, vagy [módosíthatja az aktuális felhasználó erőforrás-osztályának](#change-a-users-resource-class) tagságát.
 
 ### <a name="static-resource-classes"></a>Statikus erőforrás-osztályok

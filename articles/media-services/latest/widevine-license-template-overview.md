@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 30e5daba56bb371aafa6d2636a0a9f641977e6fa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dcfe9c1c3e12aa726f57db29db59732cceb87a69
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162560"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967456"
 ---
 # <a name="widevine-license-template-overview"></a>A Widevine-licenc sablonjának áttekintése 
 
@@ -63,11 +63,11 @@ A Widevine-licencszerződés JSON-üzenetként van formázva.
 | Név | Value (Díj) | Leírás |
 | --- | --- | --- |
 | Adattartalom |Base64 kódolású karakterlánc |Az ügyfél által eljuttatott licencelési kérelem. |
-| content_id |Base64 kódolású karakterlánc |Az egyes content_key_specs. track_type tartozó kulcs-azonosító és a tartalmi kulcs származtatása céljából használt azonosító. |
-| Szolgáltató |sztring |A tartalmi kulcsok és szabályzatok keresésére szolgál. Ha a Microsoft Key Delivery szolgáltatás a Widevine-licencek kézbesítéséhez használatos, ezt a paramétert a rendszer figyelmen kívül hagyja. |
+| content_id |Base64 kódolású karakterlánc |Az egyes content_key_specshoz tartozó kulcs-azonosító és a tartalmi kulcs származtatása céljából használt azonosító. track_type. |
+| szolgáltató |sztring |A tartalmi kulcsok és szabályzatok keresésére szolgál. Ha a Microsoft Key Delivery szolgáltatás a Widevine-licencek kézbesítéséhez használatos, ezt a paramétert a rendszer figyelmen kívül hagyja. |
 | policy_name |sztring |Egy korábban regisztrált szabályzat neve. Választható. |
 | allowed_track_types |Enum |SD_ONLY vagy SD_HD. Meghatározza, hogy mely tartalmi kulcsok szerepeljenek a licencekben. |
-| content_key_specs |A JSON-struktúrák tömbje a "tartalmi kulcs specifikációi" című szakaszban található.  |A visszaadni kívánt tartalmi kulcsokat tartalmazó finomabb vezérlőelem. További információt a "tartalmi kulcsra vonatkozó specifikációk" című szakaszban talál. Csak a allowed_track_types és a content_key_specs értékek egyike adható meg. |
+| content_key_specs |A JSON-struktúrák tömbje a "tartalmi kulcs specifikációi" című szakaszban található.  |A visszaadni kívánt tartalmi kulcsokat tartalmazó finomabb vezérlőelem. További információt a "tartalmi kulcsra vonatkozó specifikációk" című szakaszban talál. A allowed_track_types és a content_key_specs értékek közül csak az egyik adható meg. |
 | use_policy_overrides_exclusively |Boolean, True vagy FALSE |Használja a policy_overrides által megadott házirend-attribútumokat, és hagyja ki az összes korábban tárolt házirendet. |
 | policy_overrides |JSON-struktúra, tekintse meg a "szabályzat-felülbírálások" című szakaszt. |A licenchez tartozó házirend-beállítások.  Abban az esetben, ha ez az eszköz előre definiált szabályzattal rendelkezik, a rendszer ezeket a megadott értékeket használja. |
 | session_init |JSON-struktúra: "munkamenet inicializálásának" szakasza. |A licenc nem kötelező. |
@@ -76,15 +76,15 @@ A Widevine-licencszerződés JSON-üzenetként van formázva.
 ## <a name="content-key-specs"></a>Tartalmi kulcs specifikációi
 Ha már létezik meglévő szabályzat, nem kell megadnia a tartalmi kulcs specifikációjában szereplő értékeket. Az ehhez a tartalomhoz társított előre megadott szabályzat a kimeneti védelem meghatározására szolgál, például a nagy sávszélességű digitális Content Protection (HDCP) és a másolási általános felügyeleti rendszer (CGMS) használatával. Ha egy korábban már létező szabályzat nincs regisztrálva a Widevine-kiszolgálón, a tartalomszolgáltató az értékeket a licencszerződésbe szúrhatja be.   
 
-Minden content_key_specs értéket meg kell adni az összes pályán, a use_policy_overrides_exclusively beállítástól függetlenül. 
+Minden content_key_specs értéket meg kell adni az összes pályán, a use_policy_overrides_exclusively lehetőségtől függetlenül. 
 
 | Név | Value (Díj) | Leírás |
 | --- | --- | --- |
-| content_key_specs. track_type |sztring |A követési típus neve. Ha a content_key_specs meg van adva, ügyeljen arra, hogy explicit módon adja meg az összes nyomkövetési típust. Ennek elmulasztása miatt nem sikerült lejátszani az elmúlt 10 másodpercet. |
+| content_key_specs. track_type |sztring |A követési típus neve. Ha content_key_specs van megadva a licencelési kérelemben, ügyeljen arra, hogy explicit módon adja meg az összes nyomkövetési típust. Ennek elmulasztása miatt nem sikerült lejátszani az elmúlt 10 másodpercet. |
 | content_key_specs  <br/> security_level |UInt32 |Meghatározza a lejátszáshoz szükséges ügyfél-megbízhatósági követelményeket. <br/> – A szoftveres alapú, fehér dobozos titkosítás szükséges. <br/> – A szoftveres titkosítás és a megzavarodott dekóder szükséges. <br/> – A kulcsfontosságú anyagokat és titkosítási műveleteket egy hardveres megbízható végrehajtási környezetben kell végrehajtani. <br/> – A tartalom titkosítását és visszafejtését hardveres megbízható végrehajtási környezetben kell végrehajtani.  <br/> – A titkosítást, a dekódolást és az adathordozó összes kezelését (tömörített és tömörítetlen) a hardveres megbízhatóságú végrehajtási környezetben kell kezelni. |
 | content_key_specs <br/> required_output_protection. HDC |karakterlánc, az egyik HDCP_NONE, HDCP_V1, HDCP_V2 |Azt jelzi, hogy a HDCP kötelező-e. |
-| content_key_specs <br/>kulcs |Base64<br/>kódolt sztring |A nyomon követéshez használandó tartalmi kulcs. Ha meg van adva, a track_type vagy a key_id megadása kötelező. A tartalomszolgáltató ezzel a kapcsolóval szúrhatja be a nyomkövetési kulcsot, ahelyett, hogy a Widevine-licenckiszolgáló létrehoz vagy megkeres egy kulcsot. |
-| content_key_specs. Key _id |Base64 kódolású karakterlánc, bináris, 16 bájt |A kulcs egyedi azonosítója. |
+| content_key_specs <br/>kulcs |Base64<br/>kódolt sztring |A nyomon követéshez használandó tartalmi kulcs. Ha meg van adva, a track_type vagy key_id megadása kötelező. A tartalomszolgáltató ezzel a kapcsolóval szúrhatja be a nyomkövetési kulcsot, ahelyett, hogy a Widevine-licenckiszolgáló létrehoz vagy megkeres egy kulcsot. |
+| content_key_specs. key_id |Base64 kódolású karakterlánc, bináris, 16 bájt |A kulcs egyedi azonosítója. |
 
 ## <a name="policy-overrides"></a>Szabályzat felülbírálásai
 | Név | Value (Díj) | Leírás |
@@ -96,7 +96,7 @@ Minden content_key_specs értéket meg kell adni az összes pályán, a use_poli
 | policy_overrides&#46;rental_duration_seconds |Int64 |Azt jelzi, hogy a lejátszás közben engedélyezett-e az időablak. A 0 érték azt jelzi, hogy az időtartam nem korlátozható. Az alapértelmezett érték a 0. |
 | policy_overrides&#46;playback_duration_seconds |Int64 |A megtekintési idő a lejátszás után a licenc időtartamán belül kezdődik. A 0 érték azt jelzi, hogy az időtartam nem korlátozható. Az alapértelmezett érték a 0. |
 | policy_overrides&#46;renewal_server_url |sztring |A licenchez tartozó összes szívverési (megújítási) kérelem a megadott URL-címre van irányítva. Ez a mező csak akkor használható, ha a can_renew értéke igaz. |
-| policy_overrides&#46;renewal_delay_seconds |Int64 |A megújítás első megkísérlése előtt hány másodpercig license_start_time a rendszer. Ez a mező csak akkor használható, ha a can_renew értéke igaz. Az alapértelmezett érték a 0. |
+| policy_overrides&#46;renewal_delay_seconds |Int64 |A megújítás első megkísérlése után hány másodpercig license_start_time. Ez a mező csak akkor használható, ha a can_renew értéke igaz. Az alapértelmezett érték a 0. |
 | policy_overrides&#46;renewal_retry_interval_seconds |Int64 |A későbbi licenc-megújítási kérelmek közötti késleltetést adja meg, meghibásodás esetén. Ez a mező csak akkor használható, ha a can_renew értéke igaz. |
 | policy_overrides&#46;renewal_recovery_duration_seconds |Int64 |Az az időszak, amelyben a lejátszás folytatódni fog, miközben a rendszer megkísérli a megújítást, de a licenckiszolgálóval kapcsolatos háttérbeli problémák miatt nem sikerült. A 0 érték azt jelzi, hogy az időtartam nem korlátozható. Ez a mező csak akkor használható, ha a can_renew értéke igaz. |
 | policy_overrides&#46;renew_with_usage |Boolean, True vagy FALSE |Azt jelzi, hogy a rendszer a használat megkezdése után elküldi a licencet a megújításhoz. Ez a mező csak akkor használható, ha a can_renew értéke igaz. |
@@ -202,6 +202,10 @@ private static ContentKeyPolicyWidevineConfiguration ConfigureWidevineLicenseTem
     return objContentKeyPolicyWidevineConfiguration;
 }
 ```
+
+## <a name="additional-notes"></a>További megjegyzések
+
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
 ## <a name="next-steps"></a>Következő lépések
 

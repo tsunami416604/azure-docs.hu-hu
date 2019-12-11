@@ -4,16 +4,16 @@ description: Futtasson több műveletet egyetlen IoT Central szabályból, és h
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/21/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: e51a2fc7e3af9a56b90a66935ef01ac907ebce3b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: a93e96dd14411302bf5368b4825044e060b54a43
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929906"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974359"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules-preview-features"></a>Több művelet csoportosítása egy vagy több szabályból (előzetes verziójú funkciók)
 
@@ -59,9 +59,9 @@ A következő táblázat összefoglalja a támogatott tevékenységtípusok szá
 
 | Művelettípus | Kimeneti formátum |
 | ----------- | -------------- |
-| E-mail       | Standard IoT Central e-mail sablon |
+| E-mail cím       | Standard IoT Central e-mail sablon |
 | SMS         | Azure IoT Central riasztás: $ {applicationName}-"$ {ruleName}" aktiválva: "$ {deviceName}" a $ {triggerDate} $ {triggerTime} |
-| Hang       | Azure I. O. T központi riasztás: a (z) "$ {ruleName}" szabály aktiválva lett a (z) "$ {deviceName}" eszközön a $ {triggerDate} $ {triggerTime} alkalmazásban a $ {applicationName} alkalmazásban. |
+| Beszédhang       | Azure I. O. T központi riasztás: a (z) "$ {ruleName}" szabály aktiválva lett a (z) "$ {deviceName}" eszközön a $ {triggerDate} $ {triggerTime} alkalmazásban a $ {applicationName} alkalmazásban. |
 | Webhook     | {"schemaId": "AzureIoTCentralRuleWebhook", "adatok": {[normál webhook hasznos](howto-create-webhooks.md#payload)adat}} |
 
 A következő szöveg egy példa SMS-üzenetet küld egy műveleti csoportból:

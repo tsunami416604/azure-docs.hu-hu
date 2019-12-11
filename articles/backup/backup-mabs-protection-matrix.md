@@ -3,12 +3,12 @@ title: Mi lehet Azure Backup Server biztonsági mentést?
 description: Ez a cikk egy támogatási mátrixot tartalmaz, amely felsorolja az összes olyan munkaterhelést, adattípust és telepítést, amelyet Azure Backup Server véd.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: a7794ac82c70239693e91b3ae65c6292a6b4ed7f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841353"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996153"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Az Azure Backup Server védelmi mátrixa
 
@@ -38,7 +38,8 @@ Ez a cikk felsorolja az Azure Backup Server által védhető különböző kiszo
 |Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 SP2|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép<br /> <br /> Azure Stack|Nem támogatott|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
 |Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 SP2|Windows virtuális gép VMWare-ben (a VMWare-ben futó Windows virtuális gépek munkaterheléseinek védelme)<br /> <br /> Azure Stack|V3, V2|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
 |Kiszolgálók (32 bites és 64 bites)|Windows Storage Server 2008|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép<br /> <br /> Azure Stack|V3, V2|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
-|SQL Server|SQL Server 2017|Fizikai kiszolgáló <br /><br /> Helyszíni Hyper-V virtuális gép <br /> <br /> Azure-os virtuális gép <br /><br /> Windows virtuális gép VMWare-ben (a VMWare-ben futó Windows virtuális gépek munkaterheléseinek védelme)<br /> <br /> Azure Stack|K3|Az összes központi telepítési forgatókönyv: adatbázis|
+|SQL Server|SQL Server 2019|Fizikai kiszolgáló <br /><br /> Helyszíni Hyper-V virtuális gép <br /> <br /> Azure virtuális gép (ha a munkaterhelés Azure virtuális gépként fut) <br /><br /> Windows virtuális gép VMWare-ben (a VMWare-ben futó Windows virtuális gépek munkaterheléseinek védelme)<br /> <br /> Azure Stack|K3|Az összes központi telepítési forgatókönyv: adatbázis|
+|SQL Server|SQL Server 2017|Fizikai kiszolgáló <br /><br /> Helyszíni Hyper-V virtuális gép <br /> <br /> Azure virtuális gép (ha a munkaterhelés Azure virtuális gépként fut) <br /><br /> Windows virtuális gép VMWare-ben (a VMWare-ben futó Windows virtuális gépek munkaterheléseinek védelme)<br /> <br /> Azure Stack|K3|Az összes központi telepítési forgatókönyv: adatbázis|
 |SQL Server|SQL Server 2016 SP2|Fizikai kiszolgáló <br /><br /> Helyszíni Hyper-V virtuális gép <br /> <br /> Azure-os virtuális gép <br /><br /> Windows virtuális gép VMWare-ben (a VMWare-ben futó Windows virtuális gépek munkaterheléseinek védelme)<br /> <br /> Azure Stack|V3, V2|Az összes központi telepítési forgatókönyv: adatbázis|
 |SQL Server|SQL Server 2016 SP1|Fizikai kiszolgáló <br /><br /> Helyszíni Hyper-V virtuális gép <br /> <br /> Azure-os virtuális gép <br /><br /> Windows virtuális gép VMWare-ben (a VMWare-ben futó Windows virtuális gépek munkaterheléseinek védelme)<br /> <br /> Azure Stack|V3, V2|Az összes központi telepítési forgatókönyv: adatbázis|
 |SQL Server|SQL Server 2016|Fizikai kiszolgáló <br /><br /> Helyszíni Hyper-V virtuális gép <br /> <br /> Azure-os virtuális gép <br /><br /> Windows virtuális gép VMWare-ben (a VMWare-ben futó Windows virtuális gépek munkaterheléseinek védelme)<br /> <br /> Azure Stack|V3, V2|Az összes központi telepítési forgatókönyv: adatbázis|

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Szavak keresése a kétnyelvű szótárban – Translator Text API'
+title: 'Gyors útmutató: szavak megkeresése a kétnyelvű szótárban – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan lehet alternatív fordításokat lekérni egy kifejezésre, és hogyan használhatja ezeket a alternatív fordításokat a Translator Text API használatával.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 09/05/2019
+ms.date: 12/09/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: fcbf6878be53d7aa6bf9569da194b4e90f2b10db
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 42e883a7563072fca771482998bdcdbebec50ae9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827454"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975771"
 ---
-# <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Gyors útmutató: Szavak keresése kétnyelvű szótárral
+# <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Gyors útmutató: szavak keresése kétnyelvű szótársal
 
 Ebből a rövid útmutatóból megtudhatja, hogyan lehet alternatív fordításokat lekérni egy kifejezésre, és hogyan használhatja ezeket a alternatív fordításokat a Translator Text API használatával.
 
@@ -54,7 +54,7 @@ Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra
 
 ::: zone-end
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Szöveg lefordítása](quickstart-translate.md)
 * [Szöveg átírása](quickstart-transliterate.md)

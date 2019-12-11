@@ -1,26 +1,26 @@
 ---
-title: Az Azure rendszerkép-készítő használata a Windows rendszerű virtuális gépekhez készült rendszerkép-katalógussal (előzetes verzió)
-description: Windows-lemezképek létrehozása az Azure Image Builder és a Shared Image Gallery szolgáltatással.
+title: Az Azure rendszerkép-készítő használata Windows rendszerű virtuális gépekhez készült rendszerkép-katalógussal (előzetes verzió)
+description: Windowsos virtuálisgép-rendszerképek létrehozása az Azure Image Builder és a Shared Image Gallery szolgáltatással.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 33f13c09a06885523298bd7c23744e79f68e5301
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 1d9763ccc5f5967b9fc9932a11fff655e6120fd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698670"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976077"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Windows-rendszerkép létrehozása és terjesztése megosztott képtárban 
+# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Windows-rendszerkép létrehozása és terjesztése megosztott képgyűjteménybe 
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy rendszerkép-verziót az Azure rendszerkép-készítő használatával egy [megosztott rendszerkép](shared-image-galleries.md)-katalógusban, majd hogyan terjesztheti a rendszerképet globálisan.
 
 A rendszerkép konfigurálásához egy. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [helloImageTemplateforWinSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json). 
 
-A rendszerkép megosztott képtárba való terjesztéséhez a sablon a [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) használja a sablon `distribute` szakaszának értékeként.
+A rendszerkép megosztott képgyűjteménybe való terjesztéséhez a sablon a [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) használja a sablon `distribute` szakaszának értékeként.
 
 > [!IMPORTANT]
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
@@ -57,7 +57,7 @@ az provider register -n Microsoft.Compute
 
 ## <a name="set-variables-and-permissions"></a>Változók és engedélyek beállítása 
 
-Többször is fogjuk használni az adatokat, így az adatok tárolására néhány változót fogunk létrehozni. Cserélje le a változókat, `username` például a és `vmpassword`a értékeket a saját adataival.
+Többször is fogjuk használni az adatokat, így az adatok tárolására néhány változót fogunk létrehozni. Cserélje le a változók értékeit, például a `username` és a `vmpassword`t a saját adataival.
 
 ```azurecli-interactive
 # Resource group name - we are using ibsigRG in this example
@@ -77,7 +77,7 @@ username="azureuser"
 vmpassword="passwordfortheVM"
 ```
 
-Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a következővel `az account show | grep id`érheti el:.
+Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a `az account show | grep id`használatával érheti el.
 
 ```azurecli-interactive
 subscriptionID="Subscription ID"
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Adja meg az Azure rendszerkép-szerkesztőnek, hogy erőforrásokat hozzon létre az adott erőforráscsoporthoz. Az `--assignee` érték a rendszerkép-szerkesztő szolgáltatáshoz tartozó alkalmazás-regisztrációs azonosító. 
+Adja meg az Azure rendszerkép-szerkesztőnek, hogy erőforrásokat hozzon létre az adott erőforráscsoporthoz. A `--assignee` érték a rendszerkép-szerkesztő szolgáltatáshoz tartozó alkalmazás-regisztrációs azonosító. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -191,7 +191,7 @@ Hozzon létre egy Távoli asztal-csatlakozást a virtuális géphez a virtuális
 dir c:\
 ```
 
-Ekkor megjelenik egy nevű `buildActions` könyvtár, amely a rendszerkép testreszabása során jött létre.
+A rendszerkép testreszabása során létrehozott `buildActions` nevű könyvtárat kell megjelennie.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -211,7 +211,7 @@ az resource delete \
     -n helloImageTemplateforWinSIG01
 ```
 
-Szerezze be a rendszerkép-szerkesztő által létrehozott rendszerkép verzióját, amely `0.`mindig a következővel kezdődik, majd törli a rendszerkép verzióját:
+Szerezze be a rendszerkép-szerkesztő által létrehozott rendszerkép verzióját, amely mindig a `0.`, majd a rendszerkép verziójának törlésével kezdődik.
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \
@@ -250,6 +250,6 @@ Törölje az erőforráscsoportot.
 az group delete -n $sigResourceGroup -y
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan frissítheti a létrehozott rendszerkép-verziót, tekintse meg az [Azure rendszerkép-készítő használata egy másik rendszerkép-verzió létrehozásához](image-builder-gallery-update-image-version.md)című témakört.

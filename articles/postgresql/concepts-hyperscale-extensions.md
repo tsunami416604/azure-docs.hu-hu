@@ -1,18 +1,18 @@
 ---
-title: PostgreSQL-bővítmények Azure Database for PostgreSQLban – nagy kapacitású (Citus)
-description: Ismerteti az adatbázis funkcióinak bővítését Azure Database for PostgreSQL-bővítmények használatával.
+title: Extensions – nagy kapacitású (Citus) – Azure Database for PostgreSQL
+description: Ismerteti az adatbázis funkcióinak kiterjesztését Azure Database for PostgreSQL-nagy kapacitású (Citus) bővítmények használatával
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 41edcc40bae7915e321a278592dd2f73621aae05
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f7a961b04290bd17657949877c0b81bc281da50
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482411"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975550"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-bővítmények Azure Database for PostgreSQLban – nagy kapacitású (Citus)
 
@@ -34,10 +34,10 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 > | **Kiterjesztés** | **Leírás** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/9.6/static/citext.html) | Kis-és nagybetűket nem megkülönböztető karakterlánc-típust biztosít. |
-> | [cube](https://www.postgresql.org/docs/9.6/static/cube.html) | Adattípust biztosít a többdimenziós kockákhoz. |
+> | [adatkocka](https://www.postgresql.org/docs/9.6/static/cube.html) | Adattípust biztosít a többdimenziós kockákhoz. |
 > | [hstore](https://www.postgresql.org/docs/9.6/static/hstore.html) | Adattípust biztosít a kulcs-érték párok készletének tárolására. |
 > | [helytelen átvitt](https://www.postgresql.org/docs/9.6/static/isn.html) | Adattípusokat biztosít a nemzetközi termékek számozási szabványainak. |
-> | [lo](https://www.postgresql.org/docs/current/lo.html) | Nagyméretű objektumok karbantartása. |
+> | [Lo](https://www.postgresql.org/docs/current/lo.html) | Nagyméretű objektumok karbantartása. |
 > | [ltree](https://www.postgresql.org/docs/9.6/static/ltree.html) | Adattípust biztosít a hierarchikus fastruktúrához hasonló struktúrákhoz. |
 > | [seg](https://www.postgresql.org/docs/current/seg.html) | A vonalszakasz vagy a lebegőpontos intervallumok ábrázolására szolgáló adattípus. |
 > | [legjobb n](https://github.com/citusdata/postgresql-topn/) | Adja meg a Top-n JSONB. |
@@ -49,7 +49,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 > |---|---|
 > | [dict\_int](https://www.postgresql.org/docs/9.6/static/dict-int.html) | Szöveges keresési szótári sablont biztosít az egész számokhoz. |
 > | [dict\_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Szöveges keresési szótár sablon a kiterjesztett szinonimák feldolgozásához. |
-> | [unaccent](https://www.postgresql.org/docs/9.6/static/unaccent.html) | Szöveges keresési szótár, amely eltávolítja az ékezeteket (mellékjelek jeleit) a lexemes. |
+> | [nem ékezetes](https://www.postgresql.org/docs/9.6/static/unaccent.html) | Szöveges keresési szótár, amely eltávolítja az ékezeteket (mellékjelek jeleit) a lexemes. |
 
 ### <a name="functions-extensions"></a>Functions-bővítmények
 
@@ -64,14 +64,14 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 > | [intarray](https://www.postgresql.org/docs/9.6/static/intarray.html) | Függvényeket és operátorokat biztosít az egész számok null nélküli tömbbe való manipulálására. |
 > | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | Függvények a legutóbbi módosítási idő nyomon követéséhez. |
 > | [pgcrypto](https://www.postgresql.org/docs/9.6/static/pgcrypto.html) | Titkosítási funkciókat biztosít. |
-> | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | A particionált táblákat idő vagy azonosító alapján kezeli. |
+> | [PG\_parti](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | A particionált táblákat idő vagy azonosító alapján kezeli. |
 > | [PG\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | A függvényeket és operátorokat biztosít az alfanumerikus szöveg hasonlóságának meghatározásához a trigram megfeleltetése alapján. |
 > | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | A hivatkozási integritás megvalósítására szolgáló függvények (elavult). |
 > | munkamenet-\_elemzés | Függvények a hstore-tömbök lekérdezéséhez. |
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | Olyan függvényeket biztosít, amelyek a teljes táblákat, például a kereszttáblás funkciókat kezelik. |
 > | [TCN](https://www.postgresql.org/docs/current/tcn.html) | Aktivált változási értesítések. |
 > | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | Az időutazás megvalósításához szükséges függvények. |
-> | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Univerzálisan egyedi azonosítókat (UUID-ket) generál. |
+> | [UUID – ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Univerzálisan egyedi azonosítókat (UUID-ket) generál. |
 
 ### <a name="hyperscale-extensions"></a>Nagy kapacitású-bővítmények
 
@@ -86,9 +86,9 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 > [!div class="mx-tableFixed"]
 > | **Kiterjesztés** | **Leírás** |
 > |---|---|
-> | [bloom](https://www.postgresql.org/docs/current/bloom.html) | A Bloom hozzáférési módszere – aláírási fájl alapú index. |
-> | [btree\_gin](https://www.postgresql.org/docs/9.6/static/btree-gin.html) | Olyan minta GIN operátori osztályokat biztosít, amelyek bizonyos adattípusok esetén B-fa viselkedést implementálnak. |
-> | [btree\_gist](https://www.postgresql.org/docs/9.6/static/btree-gist.html) | A "B" fát implementáló lényegi index operátori osztályokat biztosít. |
+> | [Bloom](https://www.postgresql.org/docs/current/bloom.html) | A Bloom hozzáférési módszere – aláírási fájl alapú index. |
+> | [fa\_gin](https://www.postgresql.org/docs/9.6/static/btree-gin.html) | Olyan minta GIN operátori osztályokat biztosít, amelyek bizonyos adattípusok esetén B-fa viselkedést implementálnak. |
+> | [fa\_lényege](https://www.postgresql.org/docs/9.6/static/btree-gist.html) | A "B" fát implementáló lényegi index operátori osztályokat biztosít. |
 
 ### <a name="language-extensions"></a>Nyelvi bővítmények
 
@@ -109,7 +109,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 > | [PG\_buffercache](https://www.postgresql.org/docs/9.6/static/pgbuffercache.html) | A lehetővé teszi a megosztott puffer gyorsítótárában zajló események valós idejű vizsgálatát. |
 > | [PG\_cron](https://github.com/citusdata/pg_cron) | Feladatütemező a PostgreSQL-hez. |
 > | [PG\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | Vizsgálja meg a szabad terület leképezését (MSZÁ). |
-> | [pg\_prewarm](https://www.postgresql.org/docs/9.6/static/pgprewarm.html) | Lehetővé teszi a kapcsolatok betöltését a puffer gyorsítótárába. |
+> | [PG\_előmelegített](https://www.postgresql.org/docs/9.6/static/pgprewarm.html) | Lehetővé teszi a kapcsolatok betöltését a puffer gyorsítótárába. |
 > | [PG\_stat\_utasítások](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) | A kiszolgáló által végrehajtott összes SQL-utasítás végrehajtási statisztikáinak nyomon követését teszi lehetővé. A bővítménysel kapcsolatos információkért tekintse meg a "pg_stat_statements" szakaszt. |
 > | [PG\_láthatóság](https://www.postgresql.org/docs/current/pgvisibility.html) | Vizsgálja meg a láthatósági térképet (VM) és az oldal szintű láthatósági információkat. |
 > | [pgrowlocks](https://www.postgresql.org/docs/9.6/static/pgrowlocks.html) | Lehetővé teszi a sor szintű zárolási információk megjelenítését. |
@@ -131,7 +131,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 > | [PostGIS](https://www.postgis.net/), PostGIS\_topológia, PostGIS\_Tiger\_geocoder, PostGIS\_sfcgal | A PostgreSQL térbeli és földrajzi objektumai. |
 > | a\_a szabványosító, a\_a szabványosító\_az\_US | A címek összetevőire való elemzéséhez használatos. A helymeghatározáshoz-címek normalizálása lépésének támogatásához használatos. |
 > | PostGIS\_sfcgal | PostGIS SFCGAL függvények. |
-> | postgis\_tiger\_geocoder | PostGIS Tiger geocoder és fordított geocoder. |
+> | PostGIS\_Tiger\_geocoder | PostGIS Tiger geocoder és fordított geocoder. |
 > | PostGIS\_topológia | PostGIS-topológia térbeli típusai és funkciói |
 
 

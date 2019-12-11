@@ -1,5 +1,5 @@
 ---
-title: Csomópontok Azure Database for PostgreSQL – nagy kapacitású (Citus)
+title: Csomópontok – nagy kapacitású (Citus) – Azure Database for PostgreSQL
 description: Ismerkedjen meg a csomópontok, a koordinátorok és a feldolgozók két típusával a Azure Database for PostgreSQL egy kiszolgálói csoportjában.
 author: jonels-msft
 ms.author: jonels
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 5348c8bbe432cd024a8da93ca866ae4458f956e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 04ebb4298f8a5398b0aa9921d740e3eaacfd8e11
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468088"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974002"
 ---
 # <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Csomópontok Azure Database for PostgreSQL – nagy kapacitású (Citus)
 
@@ -24,5 +24,5 @@ Minden kiszolgálócsoport rendelkezik egy koordinátori csomóponttal és több
 
 Az egyes lekérdezésekhez a koordinátor vagy egyetlen munkavégző csomópontra irányítja, vagy parallelizes azt attól függően, hogy a szükséges adat egyetlen vagy több csomóponton van-e. A koordinátor eldönti, hogy mi a teendő a metaadatokkal folytatott konzultációk során. Ezek a táblák nyomon követik a munkavégző csomópontok DNS-neveit és állapotát, valamint az adateloszlást a csomópontok között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan tárolják a csomópontok [az elosztott információkat](concepts-hyperscale-distributed-data.md)

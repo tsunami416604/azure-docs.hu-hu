@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: d15bfcfbae3b24e1a9b29dc74f9b41a979e63ae9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: d2f4ddfbff791fbfeb2eb006a628c0fdeb4fdce1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014692"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975193"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>A DRM-alrendszerek hibrid tervezése 
 
@@ -69,19 +69,19 @@ Egy átfogó felhőalapú videó-platform részeként Azure Media Services a DRM
 
 ### <a name="drm-license-delivery"></a>DRM-licenckézbesítés
 
-* AMS A DRM-licencet az AMS licenc kézbesítési szolgáltatása kézbesíti.
-* Harmadik féltől származó: A DRM-licencet egy harmadik féltől származó, AMS-en kívüli DRM-licenckiszolgáló továbbítja.
+* AMS: az AMS licenc kézbesítési szolgáltatása kézbesíti a DRM-licencet.
+* Harmadik féltől származó: a DRM-licencet egy harmadik féltől származó, AMS-en kívüli DRM-licenckiszolgáló továbbítja.
 
 ## <a name="configure-based-on-your-hybrid-scenario"></a>Konfigurálás a hibrid forgatókönyv alapján
 
-### <a name="content-key"></a>Tartalomkulcs
+### <a name="content-key"></a>Tartalmi kulcs
 
 A tartalmi kulcs konfigurálásával a következő attribútumokat szabályozhatja az AMS dinamikus titkosítás és az AMS licenc kézbesítési szolgáltatásának használatával:
 
 * A dinamikus DRM-titkosításhoz használt tartalmi kulcs.
 * A licenc-kézbesítési szolgáltatások által kézbesített DRM-licenc tartalma: jogosultságok, tartalmi kulcs és korlátozások.
 * A **tartalmi kulcs engedélyezési házirendjének korlátozása**: Open, IP vagy token korlátozás.
-* Ha a rendszer a **tartalmi kulcs engedélyezési házirendjének korlátozását használja**, a **tartalom kulcsának engedélyezési házirendjének korlátozását** a licenc kiadása előtt kell teljesíteni.
+* Ha **a** rendszer a **tartalmi kulcs engedélyezési házirendjének korlátozását használja**, a **tartalom kulcsának engedélyezési házirendjének korlátozását** a licenc kiadása előtt kell teljesíteni.
 
 ### <a name="asset-delivery-policy"></a>Eszköz kézbesítési szabályzata
 
@@ -89,11 +89,11 @@ Az eszközök kézbesítési házirendjének konfigurálásával szabályozhatja
 
 * A Streaming Protocol és a DRM titkosítási kombinációja, például a kötőjel a CENC (PlayReady és Widevine) alatt, a Smooth streaming a PlayReady, a HLS alatt, Widevine vagy PlayReady alatt.
 * Az egyes érintett DRMs alapértelmezett/beágyazott licencének kézbesítési URL-címei.
-* Azt határozza meg, hogy a LA_URLs a DASH MPD vagy a HLS lista tartalmazza-e a Widevine és a FairPlay kulcs-azonosító lekérdezési karakterláncát.
+* A Widevine és a FairPlay tartozó HLS-azonosító lekérdezési karakterlánca tartalmazza-e a (LA_URLs) a DASH MPD vagy a lekéréses listában.
 
 ## <a name="scenarios-and-samples"></a>Forgatókönyvek és minták
 
-Az előző szakaszban ismertetett magyarázat alapján a következő öt hibrid forgatókönyv a megfelelő **tartalmi kulcsú**-**eszközök kézbesítési szabályzatának** konfigurációs kombinációit használja (az utolsó oszlopban említett minták követik a táblázatot):
+Az előző szakaszban ismertetett magyarázatok alapján a következő öt hibrid forgatókönyv a megfelelő **tartalmi kulcs**-az **eszköz kézbesítési házirendjének** konfigurációs kombinációit használja (az utolsó oszlopban említett minták követik a táblázatot):
 
 |**& Forrást üzemeltető tartalom**|**DRM-titkosítás**|**DRM-licenckézbesítés**|**Tartalom kulcsának konfigurálása**|**Eszköz kézbesítési házirendjének konfigurálása**|**Minta**|
 |---|---|---|---|---|---|
@@ -107,31 +107,35 @@ A mintákban a PlayReady-védelem mind a DASH, mind a Smooth streaming esetében
 
 ### <a name="sample-1"></a>1\. példa
 
-* Forrás (alap) URL-címe: https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
-* PlayReady-LA_URL (a kötőjel & Smooth): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
-* Widevine-LA_URL (kötőjel): https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4 
-* FairPlay-LA_URL (HLS): https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8 
+* Forrás (alap) URL-cím: https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
+* PlayReady-LA_URL (kötőjel & Smooth): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
+* Widevine LA_URL (kötőjel): https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4 
+* FairPlay LA_URL (HLS): https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8 
 
 ### <a name="sample-2"></a>2\. példa
 
-* Forrás (alap) URL-címe: https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
-* PlayReady-LA_URL (a kötőjel & Smooth): http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
+* Forrás (alap) URL-cím: https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
+* PlayReady-LA_URL (kötőjel & Smooth): http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
 
 ### <a name="sample-3"></a>3\. példa
 
 * Forrás URL-címe: https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
-* PlayReady-LA_URL (a kötőjel & Smooth): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
+* PlayReady-LA_URL (kötőjel & Smooth): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
 
 ### <a name="sample-4"></a>4\. példa
 
 * Forrás URL-címe: https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
-* PlayReady-LA_URL (a kötőjel & Smooth): https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
+* PlayReady-LA_URL (kötőjel & Smooth): https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
 
-## <a name="summary"></a>Összegzés
+## <a name="additional-notes"></a>További megjegyzések
+
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
+
+## <a name="summary"></a>Összefoglalás
 
 Összefoglalva, Azure Media Services DRM-összetevők rugalmasak, a jelen témakörben leírtaknak megfelelően a tartalom és az eszköz kézbesítési szabályzatának megfelelő konfigurálásával hibrid forgatókönyvekben is használhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtekintheti Media Services képzési útvonalakat.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

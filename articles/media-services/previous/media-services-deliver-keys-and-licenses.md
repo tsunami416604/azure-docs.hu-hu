@@ -1,6 +1,6 @@
 ---
-title: DRM-licencek és az AES-kulcsok az Azure Media Services használatával |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan használhatja az Azure Media Services PlayReady és/vagy Widevine licencek kézbesítéséhez, és az AES-kulcsok de végezze el a többi (kódolása, titkosítása, adatfolyam) a helyszíni kiszolgálók használatával.
+title: DRM-licencek vagy AES-kulcsok továbbítása Azure Media Services használatával | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan használhatók a Azure Media Services a PlayReady és/vagy Widevine licencek és AES kulcsok továbbítására, de a REST (kódolás, titkosítás, stream) a helyszíni kiszolgálók használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 73a76162efaf7317c5e2f1668b76325da6f018ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61a5213ea1b801b3ceeb3d9a698a20d479509811
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868130"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974529"
 ---
-# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>DRM-licencek és az AES-kulcsok a Media Services használatával 
+# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>DRM-licencek vagy AES-kulcsok továbbítása Media Services használatával 
 
 > [!NOTE]
-> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > A Media Services v2 jelennek meg nincs új szolgáltatásokat és funkciókat. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > Nem kerül be új funkciók vagy funkciók a Media Services v2-be. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 >
 
-Az Azure Media Services lehetővé teszi, hogy a betöltési, kódolás, adja hozzá a content protection és a tartalmak streamelésére. További információkért lásd: [használja a PlayReady és/vagy Widevine dynamic common Encryption titkosítás](media-services-protect-with-playready-widevine.md). Egyes ügyfeleknek érdemes használni a Media Services csak való kézbesítéséhez, licencek és/vagy a kulcsok és kódolása, titkosítása és adatfolyam-azok a helyszíni kiszolgálók használatával. Ez a cikk bemutatja, hogyan használhatja a Media Services PlayReady és/vagy Widevine-licencek, de a többi tegye a helyszíni kiszolgálókkal. 
+A Azure Media Services lehetővé teszi a tartalmak betöltését, kódolását, hozzáadását és a tartalom továbbítását. További információ: [PlayReady és/vagy Widevine Dynamic Common encryption használata](media-services-protect-with-playready-widevine.md). Egyes ügyfelek a Media Services csak a licencek és/vagy kulcsok továbbítására, valamint a helyszíni kiszolgálók használatával történő kódolásra, titkosításra és továbbításra kívánják használni. Ez a cikk azt ismerteti, hogyan használhatók a Media Services a PlayReady és/vagy Widevine licencek továbbítására, de a többit a helyszíni kiszolgálókkal. 
 
 ## <a name="overview"></a>Áttekintés
-Media Services PlayReady és Widevine digitális jogkezelési (technológia DRM) kiszolgálófelügyeleti licencek és az AES-128-kulcsok modult tartalmaz. Media Services API-kat állíthatja be a jogokat és korlátozásokat, amelyeket a DRM-modul kényszeríteni szeretné, ha egy felhasználó játszik a DRM-védelemmel ellátott tartalmat is tartalmaz. Amikor a felhasználók a védett tartalomhoz, a lejátszóalkalmazás licencet kér a Media Services licencelési szolgáltatástól. Ha a licenc hitelesítve van, a Media Services licencelési szolgáltatás kiadja a licencet. A PlayReady és Widevine-licencek tartalmazzák a visszafejtési kulcs visszafejtéséhez, és a tartalmak streamelésére használható segítségével.
+Media Services biztosít a PlayReady és a Widevine digitális jogkezelési (DRM) licencek és AES-128 kulcsok kézbesítéséhez. A Media Services olyan API-kat is biztosít, amelyekkel konfigurálhatja a DRM-futtatókörnyezet által a DRM-védelemmel ellátott tartalom érvényesítéséhez szükséges jogosultságokat és korlátozásokat. Amikor egy felhasználó a védett tartalmat kéri, a Player alkalmazás a Media Services licencelési szolgáltatástól kér licencet. Ha a licenc engedélyezve van, akkor a Media Services licencelési szolgáltatás kiadja a licencet a lejátszónak. A PlayReady és a Widevine licenc tartalmazza azt a visszafejtési kulcsot, amelyet az ügyfél a tartalom visszafejtésére és továbbítására használhat.
 
-A Media Services támogatja a több különböző módot is engedélyezése a felhasználók, akik licenc vagy kulcs kérelmek. A tartalomkulcs hitelesítési szabályzatának konfigurálása A házirend egy vagy több korlátozás is rendelkezhet. A lehetőségek a következők nyitott vagy jogkivonat korlátozás. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. A Media Services az egyszerű webes jogkivonat (SWT) formátum és a JSON webes jogkivonat (JWT) formátumú jogkivonatokat támogatja.
+Media Services támogatja a licenc-vagy kulcs-kérelmeket használó felhasználók engedélyezésének több módját. A tartalmi kulcs engedélyezési házirendjét konfigurálja. A házirend egy vagy több korlátozást is tartalmazhat. A beállítások nyitott vagy jogkivonat-korlátozás. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. Media Services támogatja a tokeneket az egyszerű webes jogkivonat (SWT) és a JSON Web Token (JWT) formátumban.
 
-Az alábbi ábrán látható a fő lépést kell tennie a PlayReady és/vagy Widevine-licencek, de ehhez a többi helyszíni kiszolgálókkal való használata a Media Services használatával:
+A következő ábra azokat a fő lépéseket mutatja be, amelyekkel a Media Services használatával PlayReady és/vagy Widevine-licenceket biztosíthat, de a többit a helyszíni kiszolgálókkal is elvégezheti:
 
 ![Védelem biztosítása a PlayReadyvel](./media/media-services-deliver-keys-and-licenses/media-services-diagram1.png)
 
 ## <a name="download-sample"></a>Minta letöltése
-Az ebben a cikkben leírt mintát tölthető le: [Azure Media Services használata a .NET-tel PlayReady és/vagy Widevine licencek kézbesítéséhez](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses).
+A cikkben ismertetett minta letöltéséhez tekintse meg a [PlayReady-és/vagy Widevine-licencek .net-mel történő továbbításához használható Azure Media Services használatát](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses)ismertető cikket.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
@@ -52,8 +52,8 @@ Az ebben a cikkben leírt mintát tölthető le: [Azure Media Services használa
     <add key="Audience" value="urn:test"/>
     ```
  
-## <a name="net-code-example"></a>.NET-példakód
-Az alábbi példakód bemutatja, hogyan hozzon létre egy közös tartalomkulcsot, és a PlayReady vagy Widevine license licenckérési URL-címek lekérése. A helyszíni kiszolgáló konfigurálásához kell egy tartalomkulcsot, a kulcs Azonosítóját és a licenc-licenckérési URL-cím. Miután konfigurálta a helyszíni kiszolgáló, streamelheti a saját streamelési kiszolgálóról. A titkosított stream pontok egy Media Services-kiszolgáló licenc, mert a lejátszó licencet kér a Media Services szolgáltatásból. Ha úgy dönt, hogy a jogkivonat-hitelesítés, akkor a Media Services licenckiszolgáló érvényesíti a jogkivonatot, HTTPS-en keresztül küldött. Ha a jogkivonat érvényes, a licenckiszolgáló kézbesíti a licenc vissza a Media player. Az alábbi Kódpélda csak bemutatja, hogyan hozzon létre egy közös tartalomkulcsot, és a PlayReady vagy Widevine license licenckérési URL-címek lekérése. Ha azt szeretné, hogy az AES-128-kulcsok, hozzon létre egy tartalomkulcsot borítékot és a egy kulcs-licenckérési URL-cím szüksége. További információkért lásd: [használata AES-128, a dinamikus titkosítás és kulcstovábbítást](media-services-protect-with-aes128.md).
+## <a name="net-code-example"></a>.NET-kód – példa
+A következő mintakód bemutatja, hogyan hozhat létre közös tartalmi kulcsot, és hogyan szerezhet be PlayReady vagy Widevine licenc-beszerzési URL-címeket. A helyszíni kiszolgáló konfigurálásához szükség van egy tartalmi kulcsra, a kulcs AZONOSÍTÓra és a licenc-beszerzési URL-címre. A helyszíni kiszolgáló konfigurálását követően a saját streaming-kiszolgálóról is továbbíthat adatfolyamot. Mivel a titkosított adatfolyam egy Media Services licenckiszolgálóra mutat, a lejátszó Media Services-licencet kér. Ha a jogkivonat-hitelesítés lehetőséget választja, a Media Services-licenckiszolgáló érvényesíti a HTTPS protokollon keresztül eljuttatott jogkivonatot. Ha a jogkivonat érvényes, a licenckiszolgáló visszaküldi a licencet a lejátszónak. A következő kódrészlet csak azt mutatja be, hogyan hozhat létre közös tartalmi kulcsot, és hogyan szerezhet be PlayReady vagy Widevine licenc-beszerzési URL-címeket. Ha AES-128 kulcsokat kíván biztosítani, létre kell hoznia egy boríték-tartalmi kulcsot, és be kell szereznie egy kulcs-beszerzési URL-címet. További információ: [az AES-128 dinamikus titkosítás és a Key Delivery Service használata](media-services-protect-with-aes128.md).
 
 ```csharp
 using System;
@@ -344,12 +344,16 @@ namespace DeliverDRMLicenses
 }
 ```
 
+## <a name="additional-notes"></a>További megjegyzések
+
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
+
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 * [PlayReady és/vagy Widevine Dynamic Common Encryption használata](media-services-protect-with-playready-widevine.md)
-* [AES-128, a dinamikus titkosítás és a kulcstovábbítást használata](media-services-protect-with-aes128.md)
+* [Az AES-128 dinamikus titkosítás és a kulcskézbesítési szolgáltatás használata](media-services-protect-with-aes128.md)
