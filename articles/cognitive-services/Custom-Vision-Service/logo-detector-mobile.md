@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: b48d82354a8e733db5ddd0c86e34bab1fa9caa8d
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 6ff12122d541a9dbb160a424e0d11cf03fdcb9fe
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177794"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970227"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Oktatóanyag: az Azure szolgáltatás emblémáinak felismerése kamerás képeken
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 - IOS-vagy Android-emulátor a Visual studióhoz
 - Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (opcionális)
 
-## <a name="get-the-source-code"></a>Forráskód beszerzése
+## <a name="get-the-source-code"></a>A forráskód lekérése
 
 Ha a megadott webalkalmazást szeretné használni, akkor a GitHubon a [mesterséges intelligencia vizualizáció](https://github.com/Microsoft/AIVisualProvision) kiosztási tárházában lévő forráskódot klónozással vagy letöltéssel töltheti le. Nyissa meg a *Source/VisualProvision. SLN* fájlt a Visual Studióban. Később a projekt egyes fájljait is szerkesztheti, így futtathatja az alkalmazást.
 
@@ -97,7 +97,7 @@ Fizessen elő a Computer Vision szolgáltatásra a kulcs és végpont URL-címé
 
 ![A Azure Portal Computer Vision szolgáltatása a kiválasztott rövid útmutató menüjével. A kulcsok hivatkozását a rendszer az API-végpont URL-címének megfelelően ismerteti](media/azure-logo-tutorial/comvis-keys.png)
 
-Ezután nyissa meg a *Source\VisualProvision\AppSettings.cs* fájlt, és töltse ki a `ComputerVisionEndpoint` és `ComputerVisionKey` változót a megfelelő értékekkel.
+Ezután nyissa meg a *Source\VisualProvision\AppSettings.cs* fájlt, és töltse ki a `ComputerVisionEndpoint` és `ComputerVisionKey` változókat a megfelelő értékekkel.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
@@ -131,7 +131,7 @@ A sikeres befejezést követően a következő JSON-kimenetnek kell megjelennie,
 }
 ```
 
-Jegyezze fel a `clientId` és a `tenantId` értéket. Adja hozzá őket a megfelelő mezőkhöz a *Source\VisualProvision\AppSettings.cs* fájlban.
+Jegyezze fel a `clientId` és a `tenantId` értékeket. Adja hozzá őket a megfelelő mezőkhöz a *Source\VisualProvision\AppSettings.cs* fájlban.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
@@ -153,7 +153,7 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 1. Az első képernyőn adja meg az egyszerű szolgáltatás ügyfél-AZONOSÍTÓját, a bérlő AZONOSÍTÓját és a jelszót. Válassza a **Bejelentkezés** gombot.
 
     > [!NOTE]
-    > Egyes emulátorokban előfordulhat, hogy a **bejelentkezési** gomb nem aktiválódik ebben a lépésben. Ha ez történik, állítsa le az alkalmazást, nyissa meg a *Source/VisualProvision/Pages/LoginPage. XAML* fájlt, keresse meg az `Button` elem címkével ellátott **bejelentkezési gombját**, távolítsa el a következő sort, majd futtassa újra az alkalmazást.
+    > Egyes emulátorokban előfordulhat, hogy a **bejelentkezési** gomb nem aktiválódik ebben a lépésben. Ha ez bekövetkezik, állítsa le az alkalmazást, nyissa meg a *Source/VisualProvision/Pages/LoginPage. XAML* fájlt, keresse meg a **Bejelentkezés gomb**`Button` elemet, majd távolítsa el a következő sort, majd futtassa újra az alkalmazást.
     >  ```xaml
     >  IsEnabled="{Binding IsValid}"
     >  ```

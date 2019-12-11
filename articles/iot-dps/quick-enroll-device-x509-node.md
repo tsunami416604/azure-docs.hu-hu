@@ -1,6 +1,6 @@
 ---
 title: X. 509 eszközök regisztrálása az Azure Device kiépítési szolgáltatásba Node. js használatával
-description: Ez a rövid útmutató csoportos regisztrációkat használ. Ebben a rövid útmutatóban X.509-eszközöket fog regisztrálni az Azure IoT Hub Device Provisioning Service-be a Node.js szolgáltatásoldali SDK-val
+description: Ez a rövid útmutató csoportos regisztrációkat használ. Ebben a rövid útmutatóban X. 509 eszközöket fog regisztrálni az Azure IoT Hub Device Provisioning Service (DPS) a Node. js szolgáltatási SDK használatával.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 6056859cf1742fc4bda6056ad7c1c78059a8407a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 68f274fb50b883c6f252a78f97f31e49e72b135c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423241"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974707"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a Node.js használatával
 

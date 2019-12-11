@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175779"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963936"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory
 
@@ -35,7 +35,7 @@ Ez a cikk azt feltételezi, hogy már ismeri az alábbi fogalmakat és terminol�
 
 A szabályzat működéséhez konfigurálnia kell a következőket:
 
-| Mi           | Hogyan                                  | miért |
+| Mi           | Hogyan?                                  | miért |
 | :--            | :--                                  | :-- |
 | **Felhőalapú alkalmazások** |Válasszon ki egy vagy több alkalmazást.  | A feltételes hozzáférési szabályzat célja, hogy lehetővé tegye annak szabályozását, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz.|
 | **Felhasználók és csoportok** | Válasszon ki legalább egy olyan felhasználót vagy csoportot, amely jogosult a kiválasztott felhőalapú alkalmazások elérésére. | A rendszer soha nem indít olyan feltételes hozzáférési szabályzatot, amely nem rendelkezik hozzárendelt felhasználókkal és csoportokkal. |
@@ -45,17 +45,18 @@ A szabályzat működéséhez konfigurálnia kell a következőket:
 
 ### <a name="how-are-conditional-access-policies-applied"></a>Hogyan alkalmazza a feltételes hozzáférési szabályzatokat?
 
-Egy felhőalapú alkalmazáshoz való hozzáféréskor több feltételes hozzáférési házirend is alkalmazható. Ebben az esetben minden érvényes szabályzatnak teljesülnie kell. Ha például az egyik házirend az MFA-t igényli, és a másodikhoz megfelelő eszközre van szükség, akkor az MFA-t kell átadnia, és egy megfelelő eszközt kell használnia. 
+Egy felhőalapú alkalmazáshoz való hozzáféréskor több feltételes hozzáférési házirend is alkalmazható. Ebben az esetben minden érvényes szabályzatnak teljesülnie kell. Ha például egy házirendhez többtényezős hitelesítés (MFA) szükséges, és egy másiknak megfelelő eszközre van szüksége, akkor az MFA-t kell elvégeznie, és egy megfelelő eszközt kell használnia. 
 
 Az összes házirend kikényszerítve két fázisban:
 
-- Az **első** fázisban az összes házirend ki lesz értékelve, és a rendszer minden olyan hozzáférés-vezérlőt begyűjt, amely nem teljesül. 
-
-- A **második** szakaszban a rendszer felszólítja a nem teljesített követelmények kielégítésére. Ha a házirendek bármelyike blokkolja a hozzáférést, a rendszer letiltja, és nem kéri más szabályzat-vezérlők kielégítésére. Ha a szabályzatok egyike sincs megtiltva, a rendszer a következő sorrendben kéri az egyéb házirend-vezérlők kielégítését:
-
-   ![Rendelés](./media/best-practices/06.png)
-    
-   A külső MFA-szolgáltatók és használati feltételek továbbra is megtalálhatók.
+- 1\. fázis: 
+   - Részletek gyűjteménye: adatok összegyűjtése a már megelégedett házirendek azonosításához.
+   - Ebben a fázisban a felhasználók akkor láthatják a tanúsítványt, ha az eszköz megfelelősége a feltételes hozzáférési szabályzatok részét képezi. Ez az üzenet akkor fordulhat elő, ha az eszköz operációs rendszere nem Windows 10.
+   - A házirend kiértékelésének 1. fázisa az összes engedélyezett házirendre és házirendre vonatkozóan a [csak jelentési módban](concept-conditional-access-report-only.md)történik.
+- 2\. fázis:
+   - Kényszerítés: az 1. fázisban összegyűjtött részletek beszerzése érdekében kérje a felhasználótól, hogy teljesítse a még nem teljesített további követelményeket.
+   - Eredmények alkalmazása a munkamenetre. 
+   - A házirend kiértékelésének 2. fázisa az összes engedélyezett házirend esetében bekövetkezik.
 
 ### <a name="how-are-assignments-evaluated"></a>Hogyan történik a hozzárendelések kiértékelése?
 
@@ -140,7 +141,7 @@ Ajánlott eljárásként hozzon létre egy felhasználói fiókot:
 - A feltételes hozzáférési szabályzatokat egyetlen központi helyen kezelheti.
 - A klasszikus Azure portál ki lett vonva.   
 
-További információ: [klasszikus szabályzatok áttelepítése a Azure Portal](policy-migration.md).
+További információért lásd: [Klasszikus szabályzatok áttelepítése az Azure Portalon](policy-migration.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

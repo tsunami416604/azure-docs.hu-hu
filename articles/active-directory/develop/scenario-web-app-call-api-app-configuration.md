@@ -1,6 +1,6 @@
 ---
-title: Webes API-kat meghívó webalkalmazás (kód konfigurációja) – Microsoft Identity platform
-description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó webalkalmazást (az alkalmazás kódjának konfigurációja)
+title: Webes API-kat meghívó webalkalmazás konfigurálása – Microsoft Identity platform | Azure
+description: Megtudhatja, hogyan konfigurálhatja a webes API-kat meghívó webalkalmazások kódját
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 231ecdb6afae1fc36d11b2c12aa82c7e860bb708
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 83523fd12700789fb5c34230d529e06c0b284147
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175316"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964985"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó webalkalmazás – kód konfigurálása
 
@@ -86,7 +86,7 @@ A minta jelenleg lehetővé teszi a MSAL. A Python előkészíti az engedélyez�
 
 ### <a name="startupcs"></a>Startup.cs
 
-A ASP.NET Core a `Startup.cs` fájlban. Elő kell fizetnünk a `OnAuthorizationCodeReceived` Open ID csatlakozási eseményre, és ebből az eseményből hívja meg a MSAL. A NET metódusa `AcquireTokenFromAuthorizationCode`, amely a jogkivonat-gyorsítótárban való tárolást, a kért `scopes`hozzáférési jogkivonatát, valamint egy frissítési jogkivonatot tartalmaz, amelyet a hozzáférési jogkivonat frissítéséhez fog használni a lejárati időponthoz képest, vagy ha egy jogkivonatot kap ugyanazon felhasználó nevében , de egy másik erőforráshoz.
+A ASP.NET Core a `Startup.cs` fájlban. Elő kell fizetnünk a `OnAuthorizationCodeReceived` Open ID csatlakozási eseményre, és ebből az eseményből hívja meg a MSAL. A NET metódusa `AcquireTokenFromAuthorizationCode`, amely a jogkivonat-gyorsítótárban való tárolást, a kért `scopes`hozzáférési jogkivonatát, valamint egy frissítési jogkivonatot tartalmaz, amelyet a hozzáférési jogkivonat frissítéséhez fog használni, amikor a lejárati időpontot lezárták, vagy egy másik erőforrás nevében, de egy másik erőforráshoz is.
 
 A gyakorlatban a [ASP.net Core webalkalmazás-oktatóanyag](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) megkísérli a webalkalmazások újrafelhasználható kódjának megadását.
 
@@ -320,7 +320,7 @@ Az összegzéshez `AcquireTokenByAuthorizationCode` valóban beváltja a ASP.NET
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-A ASP.NET által kezelt dolgok ugyanúgy hasonlítanak a ASP.NET Corehoz, azzal a különbséggel, hogy a [App_Start\Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) -fájlban a OpenIdConnect konfigurációja és az `OnAuthorizationCodeReceived` eseményre való előfizetés történik. Hasonló fogalmakat talál, mint a ASP.NET Coreban, a ASP.NET azonban meg kell adnia a RedirectUri a [web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Ez a konfiguráció egy kicsit kevésbé robusztus, mint amit a ASP.NET Core végez, mivel az alkalmazás telepítésekor módosítania kell azt.
+A ASP.NET által kezelt dolgok ugyanúgy hasonlítanak a ASP.NET Corehoz, azzal a különbséggel, hogy az [App_Start \startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) -fájlban a OpenIdConnect konfigurációja és az `OnAuthorizationCodeReceived` eseményre való előfizetés történik. Hasonló fogalmakat talál, mint a ASP.NET Coreban, a ASP.NET azonban meg kell adnia a RedirectUri a [web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Ez a konfiguráció egy kicsit kevésbé robusztus, mint amit a ASP.NET Core végez, mivel az alkalmazás telepítésekor módosítania kell azt.
 
 ```CSharp
 public partial class Startup

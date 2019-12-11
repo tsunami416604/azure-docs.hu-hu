@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platform ASP.NET Core webalkalmazás gyors üzembe helyezése | Azure
+title: Bejelentkezés felvétele a Microsofttal ASP.NET Core Web Apps – Microsoft Identity platform | Azure
 description: Megtudhatja, hogyan implementálhatja a Microsoft bejelentkezést egy ASP.NET Core webalkalmazásban az OpenID Connect használatával
 services: active-directory
 author: jmprieur
@@ -13,12 +13,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 832fb890a91c9e87c26d8facdcba49ef9d810117
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b86c8f79902c0234e35e4d195e4680b6e9b3f3c2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920735"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963545"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
 

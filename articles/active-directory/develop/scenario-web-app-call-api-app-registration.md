@@ -1,6 +1,6 @@
 ---
-title: Webalkalmazás, hogy a hívások webes API-k (alkalmazásregisztráció) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy webalkalmazást, hogy a hívások webes API-k (alkalmazásregisztráció)
+title: Webes API-kat meghívó webalkalmazás regisztrálása – Microsoft Identity platform | Azure
+description: Útmutató webes API-kat meghívó webalkalmazás regisztrálásához
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,26 +15,26 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5becdc287f7cad28aa6c7c07ebc107586e9a2b2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 784de823e94aace6f91222c19c1ff8130c3f995f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65075190"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962933"
 ---
-# <a name="web-app-that-calls-web-apis---app-registration"></a>Webalkalmazás, hogy a hívások webes API-k – alkalmazás regisztrálása
+# <a name="web-app-that-calls-web-apis---app-registration"></a>Webes API-kat meghívó webalkalmazás – alkalmazás regisztrálása
 
-A webes alkalmazás hívó webes API-k ugyanazt a regisztrációt egy webalkalmazás bejelentkezés felhasználói is rendelkezik. Ezért kövesse a kell [Web app, hogy bejelentkezik felhasználók – alkalmazásregisztráció](scenario-web-app-sign-user-app-registration.md)
+A webes API-kat hívó webalkalmazások ugyanazzal a regisztrációval rendelkeznek, mint a webalkalmazás-bejelentkezési felhasználók. Ezért követnie kell a [webalkalmazásban a bejelentkező felhasználók – alkalmazás regisztrációja](scenario-web-app-sign-user-app-registration.md) című témakör utasításait.
 
-Azonban óta a webalkalmazás most hívások webes API-kat, lesz egy bizalmas ügyfélalkalmazás. Ezért van egy kis extra regisztráció szükséges: (ügyfél-hitelesítő adatok) titkos kulcsok megoszthatja a Microsoft identity platform kell.
+Mivel azonban a webalkalmazás most meghívja a webes API-kat, a szolgáltatás bizalmas ügyfélalkalmazás lesz. Ezért van szükség további regisztrációra: meg kell osztania a titkos kulcsokat (az ügyfél hitelesítő adatait) a Microsoft Identity platformmal.
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
 ## <a name="api-permissions"></a>API-engedélyek
 
-Webes alkalmazások API-k hívása a bejelentkezett felhasználó nevében. Delegált engedélyek kéréséhez szükséges. További részletekért lásd: [webes API-k elérésére vonatkozó engedélyek hozzáadása](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)
+A webalkalmazások a bejelentkezett felhasználó nevében hívjanak API-kat. Delegált engedélyeket kell kérniük. További részletek: a [webes API-k eléréséhez szükséges engedélyek hozzáadása](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Alkalmazás kód konfigurációját](scenario-web-app-call-api-app-configuration.md)
+> [Az alkalmazás kódjának konfigurálása](scenario-web-app-call-api-app-configuration.md)

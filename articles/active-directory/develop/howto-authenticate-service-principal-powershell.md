@@ -1,5 +1,5 @@
 ---
-title: Identitás létrehozása az Azure-alkalmazáshoz a PowerShell-lel
+title: Azure-alkalmazás identitásának létrehozása a PowerShell használatával | Azure
 titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan hozhat létre az Azure PowerShell segítségével Azure Active Directory-alkalmazást és -szolgáltatásnevet, és miként adhat annak hozzáférést az erőforrásokhoz szerepköralapú hozzáférés-vezérléssel. Bemutatja az alkalmazás tanúsítvánnyal való hitelesítését.
 services: active-directory
@@ -15,12 +15,12 @@ ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2456d52a3863b362943547d8a0c0e478dbc572cf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b1a6732789ccaf1f5f33ce09592cfa06727908e1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917896"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963732"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Útmutató: egyszerű szolgáltatásnév létrehozása a Azure PowerShell használatával
 

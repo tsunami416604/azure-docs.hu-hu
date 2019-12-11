@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platform és OAuth 2.0-alapú meghatalmazott folyamat | Azure
+title: Microsoft Identity platform & OAuth 2.0-ban – meghatalmazott folyamat | Azure
 description: Ez a cikk azt ismerteti, hogyan használhatók a HTTP-üzenetek a szolgáltatás és a szolgáltatás hitelesítésének megvalósításához a OAuth 2.0-s verziójának használatával.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09d851572731ad9c83093b7076279df112585703
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fa58f63e70c09e17328b849e7728604a65cb7ae1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207511"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964319"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform és OAuth 2,0-alapú folyamat
 
@@ -223,7 +223,7 @@ Bizonyos helyzetekben csak a középső rétegbeli és az előtér-ügyfél egye
 
 Ha az ügyfél az implicit folyamattal id_token kap, és az ügyfél a válasz URL-címében helyettesítő karaktereket is tartalmaz, akkor a id_token nem használható OBO-folyamathoz.  Az implicit engedélyezési folyamaton keresztül beszerzett hozzáférési tokenek azonban továbbra is beválthatók egy bizalmas ügyfél számára, még akkor is, ha a kezdeményező ügyfélhez a helyettesítő karakteres válasz URL-címe van regisztrálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a OAuth 2,0 protokollról, valamint a szolgáltatás és a szolgáltatás hitelesítésének másik módja ügyfél-hitelesítő adatok használatával.
 

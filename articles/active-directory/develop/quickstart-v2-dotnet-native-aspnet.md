@@ -1,5 +1,5 @@
 ---
-title: Az Azure AD által védett ASP.NET webes API meghívása – Microsoft Identity
+title: Az Azure AD által védett ASP.NET webes API meghívása – Microsoft Identity platform
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hívhat meg Azure Active Directory által védett ASP.NET webes API-t egy Windows asztali (WPF-) alkalmazásból. A WPF-ügyfél hitelesíti a felhasználót, hozzáférési jogkivonatot kér, és meghívja a webes API-t.
 services: active-directory
 author: jmprieur
@@ -12,12 +12,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1d9e402bff9d333957d51982dd917822d2c24d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: fe3301c3c91343277997be1ee554ced76884274a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920650"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963307"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>Gyors útmutató: az Azure AD által védett ASP.NET webes API meghívása
 

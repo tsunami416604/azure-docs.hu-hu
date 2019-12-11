@@ -1,5 +1,5 @@
 ---
-title: V 1.0-alkalmazás hatókörök (Microsoft Authentication Library) | Azure
+title: MSAL-hatókörök egy v 1.0-alkalmazáshoz | Azure
 description: Ismerje meg a Microsoft Authentication Library (MSAL) használatával egy v 1.0-alkalmazás hatóköreit.
 services: active-directory
 author: TylerMSFT
@@ -13,12 +13,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395b5105fdb067977f8414fe5675170032262fe0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0606376c455733ca90f1bff3d0295cbd1a075637
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921398"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963256"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>A webes API-k 1.0-s verziójának elfogadására szolgáló hatókörök
 
@@ -26,7 +26,7 @@ A OAuth2 engedélyek olyan jogosultsági hatókörök, amelyek egy Azure Active 
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>A v 1.0 alkalmazás adott OAuth2 engedélyeihez való hozzáférést kérő hatókörök
 
-Ha jogkivonatokat szeretne beszerezni egy v 1.0 alkalmazás adott hatóköréhez (például a https:\//graph.windows.net), akkor létre kell hoznia egy hatókört egy kívánt erőforrás-azonosítónak a kívánt OAuth2 engedéllyel való összefűzésével az adott erőforráshoz.
+Ha jogkivonatokat szeretne beszerezni egy v 1.0 alkalmazás adott hatóköréhez (például az Azure AD Graph, amely https://graph.windows.net), hozzon létre hatóköröket egy kívánt erőforrás-azonosítónak a kívánt OAuth2 engedéllyel való összefűzésével az adott erőforráshoz.
 
 Ha például a felhasználó nevében egy v 1.0 webes API-t szeretne elérni, ahol az alkalmazás-azonosító URI-ja `ResourceId`:
 

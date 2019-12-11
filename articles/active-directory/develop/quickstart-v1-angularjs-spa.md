@@ -1,6 +1,6 @@
 ---
-title: AngularJS egyoldalas alkalmazás létrehozása bejelentkezéshez és kijelentkezés az Azure AD-vel | Microsoft Docs
-description: Útmutató a bejelentkezés céljából az Azure AD-vel integrálható, és az Azure AD által védett API-kat OAuth használatával meghívó egyoldalas AngularJS-alkalmazás létrehozásához.
+title: Azure AD AngularJS egyoldalas alkalmazás létrehozása bejelentkezési & kijelentkezéshez | Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre olyan AngularJS egyoldalas alkalmazást, amely az Azure AD-t integrálja & kijelentkezési & meghívja az Azure AD-védelemmel ellátott API-kat a OAuth használatával.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8e97c985d0a19842e4a514705e3e34665eeb499
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6e66b51199d19ea6af2b88c48aa89a93c1ed731c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921254"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963528"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Rövid útmutató: Egyoldalas AngularJS-alkalmazás létrehozása az Azure Active Directoryval történő bejelentkezéshez és kijelentkezéshez
 

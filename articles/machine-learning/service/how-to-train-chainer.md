@@ -1,7 +1,7 @@
 ---
 title: Mély tanulási Láncer-modellek betanítása
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan futtathatja nagyvállalati szintű PyTorch-betanítási parancsfájljait Azure Machine Learning Chainer kalkulátor-osztályának használatával.  A példaként szolgáló parancsfájl a kézzel írt számjegyek rendszerképeit sorolja fel egy Deep learning neurális hálózat kiépítéséhez a NumPy-on futó, a láncot használó Python-könyvtár használatával.
+description: Megtudhatja, hogyan futtathatja nagyvállalati szintű PyTorch-betanítási szkriptjét a Azure Machine Learning Chainer kalkulátor osztály használatával.  A példaként szolgáló parancsfájl a kézzel írt számjegyek rendszerképeit sorolja fel egy Deep learning neurális hálózat kiépítéséhez a NumPy-on futó, a láncot használó Python-könyvtár használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: f384a6a870d891bbaf6fa20a896b0251e62b8d4f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 40c1b7e1e4089db3e95b0da810a961b7fd202aac
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224980"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969173"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Láncolt modellek betanítása és regisztrálása Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan futtathatja nagyvállalati szinten a [chainer](https://chainer.org/) -betanítási szkripteket Azure Machine learning [chainer kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) -osztályának használatával. Az ebben a cikkben ismertetett betanítási szkript a népszerű [MNIST adatkészletet](http://yann.lecun.com/exdb/mnist/) használja a kézzel írt számjegyek besorolásához a [NumPy](https://www.numpy.org/)-on futó, a chainer Python-kódtár használatával létrehozott Deep neurális hálózat (DNN) használatával.
+Ebből a cikkből megtudhatja, hogyan futtathatja a [chainer](https://chainer.org/) -betanítási szkripteket nagyvállalati szinten a Azure Machine learning [chainer kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) osztály használatával. Az ebben a cikkben ismertetett betanítási szkript a népszerű [MNIST adatkészletet](http://yann.lecun.com/exdb/mnist/) használja a kézzel írt számjegyek besorolásához a [NumPy](https://www.numpy.org/)-on futó, a chainer Python-kódtár használatával létrehozott Deep neurális hálózat (DNN) használatával.
 
 Akár az alapoktól, akár egy meglévő modellt szeretne készíteni a felhőbe, az Azure Machine Learning segítségével rugalmas Felhőbeli számítási erőforrásokkal bővítheti a nyílt forráskódú képzési feladatokat. A Azure Machine Learning használatával előkészítheti, üzembe helyezheti, telepítheti és figyelheti a termelési szintű modelleket. 
 
@@ -97,7 +97,7 @@ shutil.copy('chainer_mnist.py', project_folder)
 
 ### <a name="create-a-deep-learning-experiment"></a>Mélyreható tanulási kísérlet létrehozása
 
-Hozzon létre egy kísérletet. Ebben a példában hozzon létre egy "chainer-mnist" nevű kísérletet.
+Kísérlet létrehozása. Ebben a példában hozzon létre egy "chainer-mnist" nevű kísérletet.
 
 ```
 from azureml.core import Experiment

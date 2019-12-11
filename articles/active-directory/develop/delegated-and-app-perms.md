@@ -1,5 +1,5 @@
 ---
-title: A delegált és az alkalmazás engedélyei közötti különbségek felismerése | Microsoft Docs
+title: A delegált és az alkalmazás engedélyei közötti különbségek | Azure
 description: A delegált és az alkalmazás engedélyeinek megismerése, hogyan használják az ügyfelek az Azure AD-vel fejlesztett alkalmazások erőforrásai által elérhetővé tett alkalmazásokat
 services: active-directory
 author: rwike77
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30371c1a8406b1d348277cf923a9d7fbe00e97c6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b349424b13addbbd5dcc384b9ae04aa7599f191f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843308"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963698"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>A delegált és az alkalmazás engedélyei közötti különbségek felismerése
 

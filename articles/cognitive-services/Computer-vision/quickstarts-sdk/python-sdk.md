@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Pythonhoz készült ügyféloldali kódtár Computer Vision | Microsoft Docs'
+title: 'Rövid útmutató: a Pythonhoz készült ügyféloldali kódtár Computer Vision | Microsoft Docs'
 description: Ismerkedés a Computer Vision a Pythonhoz készült ügyféloldali kódtáraval.
 services: cognitive-services
 author: PatrickFarley
@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ab6a0d5c2a4c4623506d90b76b77462abb8fe4af
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 1e91b204401033c7c6c47484140720ab8076f9f9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719495"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971695"
 ---
-# <a name="quickstart-computer-vision-client-library-for-python"></a>Gyors útmutató: Computer Vision a Pythonhoz készült ügyféloldali kódtár
+# <a name="quickstart-computer-vision-client-library-for-python"></a>Rövid útmutató: Computer Vision a Pythonhoz készült ügyféloldali kódtár
 
 A Computer Vision szolgáltatás a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Computer Vision algoritmusok különböző módokon elemzik a képek tartalmát, attól függően, hogy milyen vizuális funkciók érdeklik.
 
@@ -28,12 +28,12 @@ A Pythonhoz készült Computer Vision ügyféloldali kódtára a következőre h
 > [!NOTE]
 > Az ebben a rövid útmutatóban szereplő forgatókönyvek távoli képurl-címeket használnak. A helyi lemezképeken ugyanazokat a műveleteket támogató mintakód: kód a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py).
 
-[A dokumentációs](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision) | [-csomagjához (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/) | tartozó[minták](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Dokumentáció](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision) | [csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/) | [minták](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* [Python 3.x](https://www.python.org/)
+* [Python 3. x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -44,11 +44,11 @@ Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. H
 * A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes hét napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Az erőforrás megtekintése a [Azure Portal](https://portal.azure.com/)
 
-Miután megszerezte a kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `COMPUTER_VISION_SUBSCRIPTION_KEY` kulcs `COMPUTER_VISION_ENDPOINT`és a végpont URL-címéhez, amelynek neve és.
+A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekérése után [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és végpont URL-címéhez, `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`névvel.
  
 ### <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
-Hozzon létre egy új&mdash;Python-parancsfájl*Quickstart-file.py*, például:. Ezután nyissa meg a kívánt szerkesztőben vagy IDE, és importálja a következő könyvtárakat.
+Hozzon létre egy új Python-szkriptet&mdash;*Quickstart-file.py*, például:. Ezután nyissa meg a kívánt szerkesztőben vagy IDE, és importálja a következő könyvtárakat.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_imports)]
 
@@ -71,13 +71,13 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 
 A következő osztályok és felületek a Computer Vision Python SDK főbb funkcióit kezelik.
 
-|Name (Név)|Leírás|
+|Név|Leírás|
 |---|---|
 |[ComputerVisionClientOperationsMixin](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)| Ez az osztály közvetlenül kezeli az összes képműveletet, például a képek elemzését, a szöveg észlelését és a miniatűr létrehozását.|
 | [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | Ez az osztály minden Computer Vision funkcióhoz szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja. Ez megvalósítja a **ComputerVisionClientOperationsMixin**.|
 |[VisualFeatureTypes](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-python)| Ez az enumerálás a képelemzés különböző típusait határozza meg, amelyeket szabványos elemzési műveletekben lehet elvégezni. Az igényeinek megfelelően adja meg a **VisualFeatureTypes** -értékek készletét. |
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a Pythonhoz készült Computer Vision ügyféloldali kódtár használatával:
 
@@ -88,13 +88,13 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE]
-> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) a ( `COMPUTER_VISION_SUBSCRIPTION_KEY`z) nevű Computer Vision kulcshoz.
+> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) a `COMPUTER_VISION_SUBSCRIPTION_KEY`nevű Computer Vision kulcshoz.
 
 Ügyfelet hoz létre a végponttal és a kulccsal. Hozzon létre egy [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) objektumot a kulccsal, és használja a végpontján egy [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) objektum létrehozásához.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
 
-## <a name="analyze-an-image"></a>Rendszerkép elemzése
+## <a name="analyze-an-image"></a>Kép elemzése
 
 Mentse az elemezni kívánt rendszerkép URL-címére mutató hivatkozást.
 
@@ -162,7 +162,7 @@ A következő kód az észlelt tereptárgyak adatait elemzi a képen.
 
 ### <a name="get-the-image-type"></a>A rendszerkép típusának beolvasása
 
-A következő kód a képtípussal&mdash;kapcsolatos információkat jeleníti meg, legyen szó ClipArt vagy vonalas rajzolásról.
+A következő kód a képtípussal kapcsolatos információkat jeleníti meg&mdash;legyen szó ClipArt vagy vonalas rajzolásról.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_type)]
 
@@ -172,19 +172,19 @@ A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a
 
 ### <a name="call-the-read-api"></a>Az olvasási API meghívása
 
-Először használja a következő kódot a **batch_read_file** metódus meghívásához az adott képhez. Ez egy műveleti azonosítót ad vissza, és elindít egy aszinkron folyamatot a rendszerkép tartalmának olvasásához.
+Először a következő kóddal hívja meg a **batch_read_file** metódust az adott képhez. Ez egy műveleti azonosítót ad vissza, és elindít egy aszinkron folyamatot a rendszerkép tartalmának olvasásához.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_call)]
 
 ### <a name="get-read-results"></a>Olvasási eredmények beolvasása
 
-Ezután kérje le a **batch_read_file** -hívás által visszaadott művelet azonosítóját, és használja a szolgáltatás lekérdezésére a művelet eredményeihez. A következő kód ellenőrzi a műveletet egy másodperces időközönként, amíg az eredmények vissza nem állnak. Ezután kinyomtatja a kinyert szöveges adatát a konzolon.
+Ezután kérje le a **batch_read_file** hívás által visszaadott művelet azonosítóját, és használja a szolgáltatás lekérdezési eredményeinek lekéréséhez. A következő kód ellenőrzi a műveletet egy másodperces időközönként, amíg az eredmények vissza nem állnak. Ezután kinyomtatja a kinyert szöveges adatát a konzolon.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_response)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást `python` a gyors üzembe helyezési fájlban található paranccsal.
+Futtassa az alkalmazást a gyors üzembe helyezési fájlban lévő `python` paranccsal.
 
 ```console
 python quickstart-file.py
@@ -194,11 +194,11 @@ python quickstart-file.py
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portál](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
+* [Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
 * [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythonhoz készült Computer Vision kódtárat a feladatok elvégzésére. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
 
@@ -206,5 +206,5 @@ Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythonhoz kész�
 > [!div class="nextstepaction"]
 >[Computer Vision API-hivatkozás (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
 
-* [Mi a Computer Vision API?](../Home.md)
+* [Mi az Computer Vision?](../Home.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py)található.

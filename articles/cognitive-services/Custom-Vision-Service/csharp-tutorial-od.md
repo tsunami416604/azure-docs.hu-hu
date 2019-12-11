@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 7baa3e2de00997496edb5b445f8426d899ac65a4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: ed86a286051ba9240fe23951ef7cb72de1e96201
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383724"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74960570"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>Rövid útmutató: Objektumészlelési projekt létrehozása a Custom Vision .NET SDK-val
 
-Ez a cikk ahhoz biztosít információt és mintakódot, hogy megismerkedhessen a Custom Vision SDK és a C# együttes használatával egy objektumészlelési modell létrehozása céljából. Miután elkészült, adhat hozzá címkézett régiókat, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Használja sablonként a példát a saját .NET-alkalmazása létrehozásához. 
+Ebből a cikkből megtudhatja, hogyan kezdheti el az Custom Vision C# SDK-t egy objektum-észlelési modell létrehozásához. Miután elkészült, adhat hozzá címkézett régiókat, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Használja sablonként a példát a saját .NET-alkalmazása létrehozásához. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Ez a Visual Studio-projekt létrehoz egy új, __My New Project__ nevű Custom Vi
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-Nyissa meg a _Program.cs_ fájlt, és tekintse át a kódot. [Környezeti változókat hozhat létre](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) az `CUSTOM_VISION_TRAINING_KEY` és `CUSTOM_VISION_PREDICTION_KEY`nevű képzési és előrejelzési kulcsokhoz. A szkript ezeket fogja keresni.
+Nyissa meg a _Program.cs_ fájlt, és tekintse át a kódot. [Környezeti változókat hozhat létre](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) az `CUSTOM_VISION_TRAINING_KEY` és `CUSTOM_VISION_PREDICTION_KEY`nevű képzési és előrejelzési kulcsokhoz. A szkript ezeket a változókat fogja keresni.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_keys)]
 
@@ -70,7 +70,7 @@ Az egyes mintaképek és régiókoordinátáik ezután ezzel a társítási tér
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_upload)]
 
-Megtörtént a mintaképek mindegyikének feltöltése, és mindegyik kép rendelkezik egy címkével (**villa** vagy **olló**), illetve a címkéhez társított képponttéglalappal.
+Ekkor feltöltötte az összes minta lemezképet, és címkézi őket (**elágazás** vagy **olló**) egy társított pixel téglalapmal.
 
 ### <a name="train-the-project"></a>A projekt tanítása
 
@@ -112,9 +112,9 @@ Ezután ellenőrizheti, hogy a tesztkép (az **Images/Test/** mappában találha
 
 [!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Láthatta, hogyan hajthatók végre az objektumészlelési folyamat lépései kódok használatával. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran előfordulhat, hogy a nagyobb pontosság érdekében többször is be kell tanítania és tesztelnie kell a modellt. Az alábbi útmutató a képosztályozással foglalkozik, az alapelvei azonban hasonlóak az objektumészlelés alapelveihez.
+Most, hogy megismerte, hogyan végezheti el az objektum-észlelési folyamat minden lépését a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen. Az alábbi útmutató a képosztályozással foglalkozik, az alapelvei azonban hasonlóak az objektumészlelés alapelveihez.
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](test-your-model.md)

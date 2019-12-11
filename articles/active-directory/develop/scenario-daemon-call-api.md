@@ -1,6 +1,6 @@
 ---
-title: Daemon-alkalmazás, amely webes API-kat hív meg (webes API-k meghívása) – Microsoft Identity platform
-description: Ismerje meg, hogyan hozhat létre olyan Daemon-alkalmazást, amely webes API-kat hív meg (webes API-k hívása)
+title: Webes API meghívása egy Daemon-alkalmazásból – Microsoft Identity platform | Azure
+description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó Daemon-alkalmazást
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8af0bb023136ba07057e4078d5abfcb4a3194a56
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 46f1676ab1bdcf2b23907824bb9bf543b5f28ce6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175379"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962610"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Webes API-kat meghívó Daemon-alkalmazás – webes API meghívása az alkalmazásból
 
@@ -29,7 +29,7 @@ Egy démon-alkalmazás meghívhat egy webes API-t egy .NET Daemon-alkalmazásbó
 
 ## <a name="calling-a-web-api-daemon-application"></a>Webes API-démon alkalmazásának meghívása
 
-Az alábbi témakörből megtudhatja, hogyan hívhat meg egy API-t a token használatával
+Az alábbi témakörből megtudhatja, hogyan hívhat meg egy API-t a token használatával:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 

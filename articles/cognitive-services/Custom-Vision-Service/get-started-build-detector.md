@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/12/2019
+ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: 0ca849e75f01573bbb356105b281f03d267836e6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 0d9c175db1370fe07b3278a46d910c59d81df860
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "73520464"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969921"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Gyors útmutató: objektum-detektor létrehozása Custom Vision használatával
 
@@ -51,7 +51,7 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
 
 1. Ezután válassza ki a rendelkezésre álló tartományok egyikét. Az egyes tartományok a következő táblázatban leírtak szerint optimalizálja az adott típusú képek detektorát. Ha szeretné, később is megváltoztathatja a tartományt.
 
-    |Domain|Cél|
+    |Domain|Rendeltetés|
     |---|---|
     |__Általános__| Az objektum-észlelési feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt. |
     |__Embléma__|A képeken található márka emblémák keresésére optimalizált.|
@@ -100,7 +100,7 @@ A betanítás befejezése után a modell teljesítménye kiszámítva és megjel
 
 ![A betanítási eredmények a teljes pontosságot és a visszahívást, valamint az átlagos pontosságot mutatják.](./media/get-started-build-detector/trained-performance.png)
 
-### <a name="probability-threshold"></a>Valószínűségi küszöbérték
+### <a name="probability-threshold"></a>Valószínűségi határérték
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
@@ -108,7 +108,7 @@ A betanítás befejezése után a modell teljesítménye kiszámítva és megjel
 
 Minden alkalommal, amikor betanítja a detektort, létrehoz egy új _iterációt_ a saját frissített teljesítmény-metrikákkal. Az összes iterációt megtekintheti a **teljesítmény** lap bal oldali ablaktábláján. A bal oldali panelen a **delete (Törlés** ) gomb is látható, amellyel törölhető egy iteráció, ha elavult. Ha töröl egy iterációt, akkor minden olyan rendszerképet töröl, amely egyedileg hozzá van rendelve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre és taníthat egy Object detektor-modellt a Custom Vision webhelyén. A következő lépés a modell fejlesztésének iterációs folyamatával kapcsolatos további információk.
 

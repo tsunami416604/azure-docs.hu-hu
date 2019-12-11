@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: fc89b6233602c81ea622a528c223adf2003f0f68
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 1f5824f349650e340e395221785266096da16d6f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772496"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969547"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>A Azure Database for MariaDB korlátozásai
 A következő szakaszok ismertetik a kapacitást, a tárolási motor támogatását, a jogosultságok támogatását, az adatmanipulációs nyilatkozatok támogatását és az adatbázis-szolgáltatás működési korlátait.
@@ -23,17 +23,17 @@ A kapcsolatok maximális száma az árképzési szinten és a virtuális mag a k
 |---|---|---|
 |Basic| 1| 50|
 |Basic| 2| 100|
-|Általános rendeltetés| 2| 300|
-|Általános rendeltetés| 4| 625|
-|Általános rendeltetés| 8| 1250|
-|Általános rendeltetés| 16| 2500|
-|Általános rendeltetés| 32| 5000|
-|Általános rendeltetés| 64| 10000|
-|Memóriára optimalizált| 2| 600|
-|Memóriára optimalizált| 4| 1250|
-|Memóriára optimalizált| 8| 2500|
-|Memóriára optimalizált| 16| 5000|
-|Memóriára optimalizált| 32| 10000|
+|Általános rendeltetés| 2| 600|
+|Általános rendeltetés| 4| 1250|
+|Általános rendeltetés| 8| 2500|
+|Általános rendeltetés| 16| 5000|
+|Általános rendeltetés| 32| 10000|
+|Általános rendeltetés| 64| 20000|
+|Memóriára optimalizált| 2| 800|
+|Memóriára optimalizált| 4| 2500|
+|Memóriára optimalizált| 8| 5000|
+|Memóriára optimalizált| 16| 10000|
+|Memóriára optimalizált| 32| 20000|
 
 Ha a kapcsolatok túllépik a korlátot, a következő hibaüzenet jelenhet meg:
 > HIBA 1040 (08004): túl sok kapcsolat

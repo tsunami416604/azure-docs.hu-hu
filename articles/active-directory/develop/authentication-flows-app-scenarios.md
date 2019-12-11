@@ -1,5 +1,5 @@
 ---
-title: Hitelesítési forgatókönyvek a Microsoft Identity platformhoz | Azure
+title: Microsoft Identity platform hitelesítési forgatókönyvek | Azure
 description: Ismerje meg a hitelesítési folyamatokat és a Microsoft Identity platform alkalmazási forgatókönyveit. Ismerje meg az identitások hitelesítését, a jogkivonatok beszerzését és a védett API-k meghívását lehetővéó különböző típusú alkalmazásokat.
 services: active-directory
 author: jmprieur
@@ -13,12 +13,12 @@ ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c508bbafd31a2a72dcb7804ef2d274584345bf6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 969c7b6c86e09ec73ccf1ffa5cc4dc9703a3d25c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844294"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963800"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Hitelesítési folyamatok és alkalmazási helyzetek
 

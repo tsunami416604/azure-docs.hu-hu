@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/26/2019
 ms.author: juliako
-ms.openlocfilehash: 6d13ca5b3657f1deac9e6b4218decf8fe57eb1d9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a227c5d0edfb9b49e70452cfcfd08b29ba381857
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113750"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969106"
 ---
 # <a name="streaming-locators"></a>Streamelési lokátor
 
@@ -75,6 +75,9 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 Ha a HLS streamet a CBCS (FairPlay) használatával is titkosítani szeretné, használja a következőt: "Predefined_MultiDrmStreaming".
 
+> [!NOTE]
+> A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
+
 ## <a name="associate-filters-with-streaming-locators"></a>Szűrők hozzárendelése adatfolyam-keresővel
 
 Lásd [: szűrők: társítsa a folyamatos átviteli lokátorokat](filters-concept.md#associating-filters-with-streaming-locator).
@@ -90,7 +93,7 @@ A következő műveletek végrehajtásával lekérheti a streaming-keresőket a 
 |Nyelv|API|
 |---|---|
 |REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
-|parancssori felület|[az AMS Asset List-streaming-Locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|CLI|[az AMS Asset List-streaming-Locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
 |.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/java/api/com.microsoft.azure.management.mediaservices.v2018_07_01.assetstreaminglocator?view=azure-java-stable)|
 |Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
@@ -101,6 +104,6 @@ A következő műveletek végrehajtásával lekérheti a streaming-keresőket a 
 * [Streamelési szabályzatok](streaming-policy-concept.md)
 * [Tartalomkulcs-szabályzatok](content-key-policy-concept.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Oktatóanyag: videók feltöltése, kódolása és továbbítása a .NET-tel](stream-files-tutorial-with-api.md)

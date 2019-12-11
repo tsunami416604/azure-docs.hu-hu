@@ -1,18 +1,18 @@
 ---
 title: Egyéni kiosztási szabályzatok az Azure IoT Hub Device Provisioning Service
-description: Egyéni kiosztási szabályzatok használata az Azure IoT Hub Device Provisioning Service
+description: Egyéni kiosztási szabályzatok használata az Azure IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2a17cc6c9f2211de31d4551bd12e6c832d4eee38
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b6b7d4614d3c63fe93e213fb830b85d0b7f9c474
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228734"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974870"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Egyéni foglalási szabályzatok használata
 
@@ -96,7 +96,7 @@ Ebben a szakaszban a Azure Cloud Shell használatával hozzon létre egy üzembe
 
 Ebben a szakaszban egy Azure-függvényt hoz létre, amely megvalósítja az egyéni foglalási szabályzatot. Ez a függvény határozza meg, hogy melyik IoT hub-eszközt kell regisztrálni ahhoz, hogy a regisztrációs azonosítója tartalmazza a következő karakterláncot: **contoso-tstrsd-007** vagy **-contoso-hpsd-088**. Azt is beállítja, hogy az eszköz egy kenyérpirító vagy egy hőszivattyú legyen.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). A kezdőlapon válassza az **+ erőforrás létrehozása**lehetőséget.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). A kezdőlapon válassza az **+ erőforrás létrehozása**lehetőséget.
 
 2. A *Keresés a piactéren* mezőbe írja be a "függvényalkalmazás" kifejezést. A legördülő listában válassza a **függvényalkalmazás**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
 
@@ -117,7 +117,7 @@ Ebben a szakaszban egy Azure-függvényt hoz létre, amely megvalósítja az egy
 
     ![Azure-függvényalkalmazás létrehozása az egyéni foglalási funkció üzemeltetéséhez](./media/how-to-use-custom-allocation-policies/create-function-app.png)
 
-4. Az **Összefoglalás** lapon válassza a **Létrehozás** lehetőséget a Function alkalmazás létrehozásához. Az üzembe helyezés több percet is igénybe vehet. Ha befejeződik, válassza **az Ugrás erőforráshoz**lehetőséget.
+4. Az **Összefoglalás** lapon válassza a **Létrehozás** lehetőséget a Function alkalmazás létrehozásához. Az üzembe helyezés eltarthat néhány percig. Ha befejeződik, válassza **az Ugrás erőforráshoz**lehetőséget.
 
 5. A Function app **– Áttekintés** lap bal oldali paneljén válassza a **függvények** elem melletti **+** új függvény hozzáadásához.
 
@@ -552,7 +552,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
 
 Az alábbi táblázat a várt forgatókönyveket és az eredményül kapott hibakódokat mutatja. Ez a táblázat segítséget nyújt az egyéni kiosztási házirendekkel kapcsolatos hibák elhárításához a Azure Functions.
 
-| Forgatókönyv | Regisztrációs eredmény a kiépítési szolgáltatástól | Az SDK-eredmények kiépítés |
+| Alkalmazási helyzet | Regisztrációs eredmény a kiépítési szolgáltatástól | Az SDK-eredmények kiépítés |
 | -------- | --------------------------------------------- | ------------------------ |
 | A webhook a 200 OK értéket adja vissza a "iotHubHostName" értékkel egy érvényes IoT hub-állomásnévre. | Eredmény állapota: hozzárendelve  | Az SDK visszaadja a PROV_DEVICE_RESULT_OK a hub információi mellett |
 | A webhook 200 OK értéket ad vissza a válaszban szereplő "iotHubHostName" értékkel, de üres sztringre vagy NULL értékre van állítva. | Eredmény állapota: sikertelen<br><br> Hibakód: CustomAllocationIotHubNotSpecified (400208) | Az SDK visszaadja PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
@@ -581,7 +581,7 @@ Az erőforráscsoport törlése név szerint:
 
 4. A rendszer kérni fogja, hogy erősítse meg az erőforráscsoport törlését. A megerősítéshez írja be ismét az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
 * További részletekért lásd: [az előzőleg](how-to-unprovision-devices.md) kiépített eszközök kiépítése. 

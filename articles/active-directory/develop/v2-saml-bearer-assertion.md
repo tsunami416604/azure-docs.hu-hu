@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platform és SAML-tulajdonos állítási folyamata | Azure
+title: Microsoft Identity platform & SAML-tulajdonos állítási folyamata | Azure
 description: Megtudhatja, hogyan kérhet le adatokat a Microsoft Graphról anélkül, hogy az SAML-tulajdonosra vonatkozó állítási folyamatot használó hitelesítő adatokat kérjen a felhasználótól.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13b316568ba555de764c1aaa4ddf0e72d25cf24f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f7f5b983a00dfc0af2e7a40571ce58fafca5914e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990948"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964553"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity platform és OAuth 2,0 SAML-tulajdonos állítási folyamata
 A OAuth 2,0 SAML-tulajdonos állítási folyamata lehetővé teszi, hogy egy SAML-kijelentéssel igényeljen egy OAuth hozzáférési tokent, ha az ügyfélnek meglévő megbízhatósági kapcsolatot kell használnia. Az SAML-kijelentésre alkalmazott aláírás a hitelesítő alkalmazás hitelesítését biztosítja. Az SAML-jogcímek egy, az identitás-szolgáltató által kiadott és a szolgáltató által használt XML biztonsági jogkivonat. A szolgáltató a tartalomra támaszkodva azonosítja az állítás tárgyát a biztonsággal kapcsolatos célokra.
@@ -57,7 +57,7 @@ Az alkalmazás regisztrálása a [portálon](https://ms.portal.azure.com/#blade/
 1. A bal oldali ablaktáblán válassza a **tanúsítványok & Secrets**elemet. Az **ügyfél titkai** szakaszban kattintson az **új ügyfél titka** elemre. Másolja az új ügyfél titkos kulcsát, és nem fogja tudni lekérni a panel elhagyásakor.
 1. A bal oldali panelen válassza az **API-engedélyek** lehetőséget, majd **adjon hozzá egy engedélyt**. Válassza a **Microsoft Graph**, majd a **delegált engedélyek**elemet, majd válassza a **feladatok lehetőséget. olvassa el** , mivel az Outlook Graph APIt szeretné használni. 
 
-Telepítse [](https://www.getpostman.com/)a Poster eszközt, amely a mintavételi kérelmek teszteléséhez szükséges.  Később átalakíthatja a kéréseket a kódra.
+Telepítse a [Poster](https://www.getpostman.com/)eszközt, amely a mintavételi kérelmek teszteléséhez szükséges.  Később átalakíthatja a kéréseket a kódra.
 
 ### <a name="get-the-saml-assertion-from-adfs"></a>SAML-állítás beszerzése az ADFS-ből
 Hozzon létre egy POST-kérelmet az ADFS-végponthoz SOAP-boríték használatával az SAML-kijelentés beolvasásához:
@@ -72,7 +72,7 @@ ADFS-kérelem törzse:
 
 ![ADFS-kérelem törzse](./media/v2-saml-bearer-assertion/4.png)
 
-A kérelem sikeres közzétételekor az ADFS-től származó SAML-állítást kell kapnia. Csak az **SAML:** kijelentési kódelemek szükségesek, a további kérések használatához alakítsa át Base64 kódolásra.
+A kérelem sikeres közzétételekor az ADFS-től származó SAML-állítást kell kapnia. Csak az **SAML: Kijelentési** kódelemek szükségesek, a további kérések használatához alakítsa át Base64 kódolásra.
 
 ### <a name="get-the-oauth2-token-using-the-saml-assertion"></a>Az OAuth2-jogkivonat beszerzése az SAML-kijelentéssel 
 Ebben a lépésben egy OAuth2 jogkivonatot kell beolvasnia az ADFS-kijelentési válasz használatával.
@@ -80,7 +80,7 @@ Ebben a lépésben egy OAuth2 jogkivonatot kell beolvasnia az ADFS-kijelentési 
 1. Hozzon létre egy POST-kérelmet az alább látható módon a fejléc értékeivel:
 
     ![POST kérelem](./media/v2-saml-bearer-assertion/5.png)
-1. A kérelem törzsében cserélje le az **client_id**, a **client_secret**és a Request (a Base64 kódolású SAML-állítás az előző lépés megszerzését):
+1. A kérelem törzsében cserélje le a **client_id**, **client_secret**és az **állítást** (a Base64 kódolású SAML-állítás az előző lépést szerezte be):
 
     ![A kérés törzse](./media/v2-saml-bearer-assertion/6.png)
 1. Sikeres kérelem esetén hozzáférési jogkivonatot fog kapni az Azure Active Directoryból.
@@ -95,6 +95,6 @@ A hozzáférési jogkivonat kézhezvétele után hívja meg a Graph API-kat (ebb
 
 1. A sikeres kérelem után JSON-választ fog kapni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a különböző [hitelesítési folyamatokról és alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md).

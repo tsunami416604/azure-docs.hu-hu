@@ -1,14 +1,28 @@
 ---
-author: erhopf
-ms.author: erhopf
+author: aahill
+ms.author: aahi
 ms.service: cognitiveservices
 ms.topic: include
-ms.date: 08/16/2018
-ms.openlocfilehash: d0c46c6a315166df0c72642675f01c4726fc0e8c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 12/09/2019
+ms.openlocfilehash: e68a61e570ae878432089bb93235e08c3b71225f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179401"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961479"
 ---
-Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search API-k mellé. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) egy előfizetői azonosító beszerzéséhez.
+## <a name="create-an-azure-resource"></a>Azure-erőforrás létrehozása
+
+A Bing Web Search API használatának megkezdéséhez hozzon létre egyet az alábbi Azure-erőforrások egyikével.
+
+* [Próbaverziós erőforrás létrehozása](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+    * Nincs szükség Azure-előfizetésre.
+    * Hét napig ingyenesen használható. A regisztrációt követően a próbaverziós kulcs és a végpont elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+
+* [Bing Search v7-erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
+    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.
+    * Az ingyenes díjszabási csomaggal próbálja ki a szolgáltatást, és később frissítsen egy fizetős szintre az éles környezetben.
+
+* [Több szolgáltatásból álló erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.  
+    * Használja ugyanazt a kulcsot és végpontot az alkalmazásaihoz, több Cognitive Services között.

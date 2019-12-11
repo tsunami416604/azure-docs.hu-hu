@@ -1,5 +1,5 @@
 ---
-title: HttpClient és proxy (MSAL.NET) megadása
+title: HttpClient & proxy (MSAL.NET) megadása | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan biztosíthatja saját HttpClient és proxyját az Azure AD-hez való csatlakozáshoz a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7b9a8d90c505cb93b6cf237ed67e9c47d9be0bb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 80822c2a745d7c9c5b3f56b7921fcc83c5c807d1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915578"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963233"
 ---
 # <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>Saját HttpClient és proxy biztosítása a MSAL.NET használatával
 [Egy nyilvános ügyfélalkalmazás inicializálásakor](msal-net-initializing-client-applications.md)használhatja a `.WithHttpClientFactory method` a saját HttpClient megadásához.  A saját HttpClient lehetővé teszi a speciális forgatókönyvek, például a HTTP-proxyk részletes felügyeletét, a felhasználói ügynökök fejlécének testreszabását, vagy a MSAL adott HttpClient használatára való kényszerítését (például ASP.NET Core Web Apps/API-k).

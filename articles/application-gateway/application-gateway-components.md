@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 49f3759d7c5ba178cd0f1d0164a45c09df464571
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 54606b4fbbf7ae459298b3842f957de5256ba0df
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942222"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971145"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-összetevők
 
@@ -53,7 +53,7 @@ A Application Gateway négy protokollt támogat: HTTP, HTTPS, HTTP/2 és WebSock
 >A HTTP/2 protokoll támogatása csak az Application Gateway-figyelőkhöz csatlakozó ügyfelek számára érhető el. A háttér-kiszolgálói készletekkel folytatott kommunikáció mindig HTTP/1.1-en keresztül történik. Alapértelmezés szerint a HTTP/2 támogatás le van tiltva. Dönthet úgy is, hogy engedélyezi.
 
 - A figyelő konfigurációjában adjon meg a HTTP és a HTTPS protokoll közötti értéket.
-- A [WebSockets és a http/2 protokollok](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) támogatása natív módon történik, és a [WebSocket-támogatás](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) alapértelmezés szerint engedélyezve van. Kizárólag WebSocket-támogatásra vonatkozó felhasználói beállítás nem létezik. Websocketek használata HTTP-és HTTPS-figyelővel.
+- A [WebSockets és a http/2 protokollok](overview.md#websocket-and-http2-traffic) támogatása natív módon történik, és a [WebSocket-támogatás](application-gateway-websocket.md) alapértelmezés szerint engedélyezve van. Kizárólag WebSocket-támogatásra vonatkozó felhasználói beállítás nem létezik. Websocketek használata HTTP-és HTTPS-figyelővel.
 
 HTTPS-figyelő használata az SSL-lezáráshoz. Egy HTTPS-figyelő kiszervezi a titkosítási és a visszafejtési munkát az Application Gateway felé, így a webkiszolgálók nem terhelik a terhelést.
 
@@ -61,7 +61,7 @@ HTTPS-figyelő használata az SSL-lezáráshoz. Egy HTTPS-figyelő kiszervezi a 
 
 Application Gateway lehetővé teszi, hogy egyéni hibaüzeneteket hozzon létre az alapértelmezett hibaüzenetek megjelenítése helyett. Az egyéni hibaoldalakon feltüntetheti saját védjegyeit, és egyéni elrendezést használhat. Application Gateway egy egyéni hibaüzenetet jelenít meg, ha egy kérelem nem tudja elérni a hátteret.
 
-További információ: [az Application Gateway egyéni hibáinak lapja](https://docs.microsoft.com/azure/application-gateway/custom-error).
+További információ: [az Application Gateway egyéni hibáinak lapja](custom-error.md).
 
 ### <a name="types-of-listeners"></a>Figyelők típusai
 
@@ -71,11 +71,11 @@ Kétféle figyelő létezik:
 
 - **Több hely**. Ez a figyelő-konfiguráció akkor szükséges, ha egynél több webalkalmazást konfigurál ugyanazon az Application Gateway-példányon. Lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. Például három altartomány, abc.contoso.com, xyz.contoso.com és pqr.contoso.com, az Application Gateway IP-címére mutat. Hozzon létre három többhelyes figyelőt, és konfigurálja az egyes figyelőket a megfelelő port és protokoll beállításhoz.
 
-    További információ: [több hely üzemeltetése](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview).
+    További információ: [több hely üzemeltetése](application-gateway-web-app-overview.md).
 
 A figyelő létrehozása után társítsa azt egy kérelem-útválasztási szabállyal. Ez a szabály határozza meg, hogy a figyelőre érkező kérés hogyan legyen átirányítva a háttérbe.
 
-Application Gateway a figyelőket a [megjelenő sorrendben](https://docs.microsoft.com/en-us/azure/application-gateway/configuration-overview#order-of-processing-listeners)dolgozza fel.
+Application Gateway a figyelőket a [megjelenő sorrendben](configuration-overview.md#order-of-processing-listeners)dolgozza fel.
 
 ## <a name="request-routing-rules"></a>Kérelmek útválasztási szabályai
 
@@ -89,7 +89,7 @@ A kérések útválasztási szabályainak két típusa létezik:
 
 - **Elérésiút-alapú**. Ez az útválasztási szabály lehetővé teszi, hogy a kérelemben szereplő URL-cím alapján a társított figyelőn keresztül átirányítsa a kéréseket egy adott háttér-készletre. Ha egy kérelem URL-címének elérési útja megegyezik egy elérésiút-alapú szabályban szereplő elérésiút-mintával, a szabály a kérést irányítja át. Az elérésiút-mintát csak az URL-címre alkalmazza, nem pedig a lekérdezési paraméterekre. Ha a figyelőre vonatkozó kérelem URL-címének elérési útja nem egyezik az elérésiút-alapú szabályokkal, a kérést az alapértelmezett háttér-készletre és a HTTP-beállításokra irányítja át.
 
-További információ: [URL-alapú útválasztás](https://docs.microsoft.com/azure/application-gateway/url-route-overview).
+További információ: [URL-alapú útválasztás](url-route-overview.md).
 
 ### <a name="redirection-support"></a>Átirányítási támogatás
 
@@ -97,7 +97,7 @@ A kérések útválasztási szabálya lehetővé teszi az Application Gateway fo
 
 Kiválaszthatja, hogy az átirányítási cél egy másik figyelő legyen (amely lehetővé teszi az automatikus HTTP-t a HTTPS-átirányításhoz) vagy egy külső helyet. Dönthet úgy is, hogy az átirányítás átmenetileg vagy állandó, vagy az átirányított URL-címhez hozzáfűzi az URI elérési utat és a lekérdezési karakterláncot.
 
-További információ: [forgalom átirányítása az Application Gateway](https://docs.microsoft.com/azure/application-gateway/redirect-overview)-ben.
+További információ: [forgalom átirányítása az Application Gateway](redirect-overview.md)-ben.
 
 ### <a name="rewrite-http-headers"></a>HTTP-fejlécek átírása
 
@@ -105,7 +105,7 @@ A kérelmek útválasztási szabályainak használatával hozzáadhat, eltávol�
 
 A fejlécek statikus értékekre vagy más fejlécekre és kiszolgálói változókra is állíthatók. Ez segíti a fontos használati eseteket, például az ügyfél IP-címeinek kinyerését, a háttér bizalmas adatainak eltávolítását, a nagyobb biztonság hozzáadását stb.
 
-További információt a HTTP- [fejlécek újraírása az Application Gateway](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)-ben című témakörben talál.
+További információt a HTTP- [fejlécek újraírása az Application Gateway](rewrite-http-headers.md)-ben című témakörben talál.
 
 ## <a name="http-settings"></a>HTTP-beállítások
 
@@ -115,9 +115,9 @@ A HTTP-beállításokban használt port és protokoll határozza meg, hogy az Ap
 
 Ez az összetevő a következőket is használja:
 
-- Állapítsa meg, hogy a felhasználói munkamenetet ugyanazon a kiszolgálón kell-e tárolni a [cookie-alapú munkamenet-affinitás](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity)használatával.
+- Állapítsa meg, hogy a felhasználói munkamenetet ugyanazon a kiszolgálón kell-e tárolni a [cookie-alapú munkamenet-affinitás](overview.md#session-affinity)használatával.
 
-- A háttérbeli készlet tagjainak biztonságos eltávolítása a [kapcsolatok kiürítésével](https://docs.microsoft.com/azure/application-gateway/overview#connection-draining).
+- A háttérbeli készlet tagjainak biztonságos eltávolítása a [kapcsolatok kiürítésével](overview.md#connection-draining).
 
 - Rendeljen egyéni mintavételt a háttér állapotának figyeléséhez, állítsa be a kérés időkorlátját, felülbírálja az állomásnév és elérési út értékét a kérelemben, és egy kattintással könnyedén megadhatja a App Service háttér beállításait.
 
@@ -134,7 +134,7 @@ A háttér-készlet átirányítja a kérést a háttér-kiszolgálókra. A hát
 
 Application Gateway háttérbeli készlet tagjai nem kapcsolódnak rendelkezésre állási csoportokhoz. Az Application Gateway képes kommunikálni a virtuális hálózatán kívüli példányokkal. Ennek eredményeképpen a háttér-készletek tagjai többek között fürtök, adatközpontok vagy az Azure-on kívül is lehetnek, feltéve, hogy IP-kapcsolat van.
 
-Ha belső IP-címeket használ a háttérbeli készlet tagjaiként, [virtuális hálózati](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) társítást vagy [VPN-átjárót](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kell használnia. A virtuális hálózat társítása támogatott és előnyös a más virtuális hálózatok terheléselosztási forgalmához.
+Ha belső IP-címeket használ a háttérbeli készlet tagjaiként, [virtuális hálózati](../virtual-network/virtual-network-peering-overview.md) társítást vagy [VPN-átjárót](../vpn-gateway/vpn-gateway-about-vpngateways.md)kell használnia. A virtuális hálózat társítása támogatott és előnyös a más virtuális hálózatok terheléselosztási forgalmához.
 
 Az Application Gateway képes kommunikálni a helyszíni kiszolgálókkal is, amikor az Azure ExpressRoute vagy VPN-alagutak csatlakoznak, ha a forgalom engedélyezett.
 
@@ -146,7 +146,7 @@ Alapértelmezés szerint az Application Gateway a háttér-készlet összes erő
 
 Amellett, hogy az alapértelmezett állapot mintavételi figyelését is használja, testre is szabhatja az állapot-mintavételt az alkalmazás követelményeinek megfelelően. Az egyéni mintavételek részletesebb szabályozást tesznek lehetővé az állapot figyelése során. Az egyéni mintavételek használatakor beállíthatja a mintavételi intervallumot, a teszt URL-címét és elérési útját, valamint azt, hogy hány sikertelen választ fogadjon el a rendszer, mielőtt a háttér-készlet példánya nem megfelelőként van megjelölve. Javasoljuk, hogy az egyes háttérrendszer-készletek állapotának figyeléséhez egyéni mintavételt állítson be.
 
-További információ: [az Application Gateway állapotának figyelése](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
+További információ: [az Application Gateway állapotának figyelése](../application-gateway/application-gateway-probe-overview.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0463ffad87d00421c2fcb5c8357406d5f692144
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075327"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966277"
 ---
 # <a name="what-is-conditional-access"></a>Mi az a feltételes hozzáférés?
 
@@ -26,7 +26,7 @@ A feltételes hozzáférés az Azure Active Directory által használt eszköz, 
 
 ![Koncepcionális feltételes jel plusz döntés a kényszerítés beszerzéséhez](./media/overview/conditional-access-signal-decision-enforcement.png)
 
-A feltételes hozzáférési szabályzatok a legegyszerűbben az IF-then utasítások, ha egy felhasználó szeretne hozzáférni egy erőforráshoz, végre kell hajtania egy műveletet. Példa: A bérlista-kezelő el szeretné érni a bérlista-alkalmazást, és a többtényezős hitelesítés végrehajtásához szükséges a hozzáféréshez.
+A feltételes hozzáférési szabályzatok a legegyszerűbben az IF-then utasítások, ha egy felhasználó szeretne hozzáférni egy erőforráshoz, végre kell hajtania egy műveletet. Példa: egy bérlista-kezelő szeretné elérni a bérlista-alkalmazást, és a többtényezős hitelesítés végrehajtásához szükséges.
 
 A rendszergazdák két elsődleges céllal szembesülnek:
 
@@ -50,7 +50,7 @@ Azok a gyakori jelek, amelyekben a feltételes hozzáférés a szabályzat megho
    - A rendszergazdák az összes ország IP-tartományát megadhatják a forgalom blokkolásához vagy engedélyezéséhez.
 - Eszköz
    - A feltételes hozzáférési szabályzatok kényszerítése esetén a megadott platformmal rendelkező vagy meghatározott állapotú eszközökkel rendelkező felhasználók is használhatók.
-- Alkalmazás
+- Jelentkezés
    - Azok a felhasználók, akik egy adott alkalmazáshoz próbálnak hozzáférni, különböző feltételes hozzáférési házirendeket válthatnak ki. 
 - Valós idejű és számított kockázati észlelés
    - A Azure AD Identity Protection lehetővé teszi az integrációt a feltételes hozzáférési házirendekkel a kockázatos bejelentkezési viselkedés azonosítása érdekében. A házirendek ezt követően kényszerítheti a felhasználókat a jelszó módosítására vagy a többtényezős hitelesítésre a kockázati szint csökkentése vagy a hozzáférés letiltása előtt, amíg a rendszergazda manuális beavatkozást nem végez.
@@ -81,13 +81,20 @@ Számos szervezet rendelkezik olyan általános hozzáféréssel, amelyekkel a f
 - Kockázatos bejelentkezési viselkedések blokkolása
 - Szervezet által felügyelt eszközök megkövetelése adott alkalmazásokhoz
 
+## <a name="customer-case-studies"></a>Ügyfél-esettanulmányok
+
+Ismerje meg, hogy más szervezetek hogyan használják az Azure AD feltételes hozzáférést az automatizált hozzáférés-vezérlési döntések definiálásához és megvalósításához. A következő Kiemelt történetek bemutatják, hogyan teljesítik ezeket az ügyfelek igényeit.
+
+* [A Wipro a Microsoft Cloud Security eszközeivel fejleszti a mobil termelékenységet az ügyfelek bevonásának javítása érdekében.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Az Azure AD feltételes hozzáférési szabályzatai lehetővé tették a vállalat számára, hogy megosszák a megbízható külső entitásokkal rendelkező dokumentumokat, erőforrásokat és alkalmazásokat,---akik saját hitelesítő adataikat használhatják---a saját vállalati adatok feletti felügyelet fenntartása mellett.
+* [A Aramex Delivery Limited – a globális logisztika és a szállítmányozási vállalat felhőalapú, identitás-és hozzáférés-kezelési megoldással rendelkező irodát hoz létre](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). A biztonságos hozzáférés biztosítása különösen nehéz volt a Aramex távoli alkalmazottaival. A vállalat mostantól feltételes hozzáférést alkalmaz arra, hogy ezek a távoli alkalmazottak a hálózaton kívülről férhessenek hozzá SaaS-alkalmazásaihoz. A feltételes hozzáférési szabály eldönti, hogy kikényszeríti-e Multi-Factor Authenticationt, és csak a megfelelő személyeket adja meg a megfelelő hozzáféréssel.
+
 ## <a name="license-requirements"></a>Licenckövetelmények
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
 A [Microsoft 365 vállalati verzió licenccel](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Feltételes hozzáférési szabályzat létrehozása darab alapján](concept-conditional-access-policies.md)
 

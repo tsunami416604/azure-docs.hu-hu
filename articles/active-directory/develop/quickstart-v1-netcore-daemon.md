@@ -1,6 +1,6 @@
 ---
-title: Token beszerzése és Microsoft Graph API meghívása a konzol alkalmazás identitásával (v 1.0) | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre olyan .NET Daemon-alkalmazást, amely integrálható az Azure ad szolgáltatással az Azure AD által védett API-kkal a OAuth 2,0 használatával
+title: Token beolvasása & Microsoft Graph API-k hívása a konzolos alkalmazásokból (v 1.0) | Azure
+description: Az Azure & AD-vel integrált .NET Daemon-alkalmazás létrehozása, amely az Azure AD által védett API-kat hívja meg a OAuth 2,0 használatával
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 384aa90fd4edb8f52224bdf2885208fde5789398
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2858a0b14863195ee0f56c89fe2c55c9e63873de
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920888"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965925"
 ---
 # <a name="quickstart-acquire-token-and-call-microsoft-graph-api-with-console-apps-identity-v10"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása a konzol alkalmazás identitásával (v 1.0) 
 

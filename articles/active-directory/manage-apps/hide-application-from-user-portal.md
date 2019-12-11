@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/26/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e01c79c5cc9391922333af4e9a60ba44a6a6b13
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: be29f51771e24c67a8cd99a81e6a69be830dacb8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274006"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970635"
 ---
 # <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Alkalmazások elrejtése a Azure Active Directoryban lévő végfelhasználók számára
 
@@ -42,6 +42,19 @@ A következő lépésekkel rejtheti el az alkalmazást a MyApps és az Office 36
 7.  A **látható felhasználók számára?** kérdés, kattintson a **nem**gombra.
 8.  Kattintson a **Save** (Mentés) gombra.
 
+## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Alkalmazások elrejtése az Azure AD PowerShell használatával
+
+Ha el szeretné rejteni egy alkalmazást a MyApps panelen, manuálisan is hozzáadhatja az HideApp címkét az alkalmazás egyszerű szolgáltatásához. Futtassa az alábbi [AzureAD PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#service_principals) -parancsokat, hogy az alkalmazás **látható legyen a felhasználók számára?** tulajdonság értéke **nem**. 
+
+```PowerShell
+Connect-AzureAD
+
+$objectId = "<objectId>"
+$servicePrincipal = Get-AzureADServicePrincipal -ObjectId $objectId
+$tags = $servicePrincipal.tags
+$tags.Add("HideApp")
+Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
+```
 
 ## <a name="hide-office-365-applications-from-the-myapps-panel"></a>Office 365-alkalmazások elrejtése a MyApps panelről
 
@@ -49,13 +62,12 @@ A következő lépésekkel elrejtheti az Office 365 összes alkalmazását a MyA
 
 1.  Jelentkezzen be a [Azure Portalra](https://portal.azure.com) globális rendszergazdaként a címtárában.
 2.  Válassza az **Azure Active Directory** elemet.
-3.  Válassza a **felhasználói beállítások**lehetőséget.
+3.  Válassza a **Felhasználói beállítások** elemet.
 4.  A **vállalati alkalmazások**területen kattintson **a kezelés a végfelhasználók általi indítás és az alkalmazások megtekintése** elemre.
 5.  A **felhasználók csak az office 365-alkalmazásokat látják az office 365-portálon**, kattintson az **Igen**gombra.
 6.  Kattintson a **Save** (Mentés) gombra.
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Összes saját csoport megjelenítése](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](assign-user-or-group-access-portal.md)
 * [Felhasználó vagy csoport hozzárendelésének eltávolítása vállalati alkalmazásból](remove-user-or-group-access-portal.md)

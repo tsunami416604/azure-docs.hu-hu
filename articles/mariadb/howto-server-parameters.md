@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 59d18ea11699ed77763c162e4930b159fcd19fe2
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/9/2019
+ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888665"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976298"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MariaDBban a Azure Portal használatával
 
@@ -37,21 +37,21 @@ A támogatott kiszolgálói paraméterek listája folyamatosan bővül. A Azure 
 
 A InnoDB-puffer és a maximális kapcsolatok nem konfigurálhatók, és az [árképzési szintjéhez](concepts-pricing-tiers.md)vannak kötve.
 
-|**Tarifacsomag**| **Virtuális mag (ok)**|**InnoDB puffer készlete (MB)**| **Kapcsolatok maximális száma**|
-|---|---|---|---|
-|Basic| 1| 1024| 50|
-|Basic| 2| 2560| 100|
-|Általános rendeltetés| 2| 3584| 300|
-|Általános rendeltetés| 4| 7680| 625|
-|Általános rendeltetés| 8| 15360| 1250|
-|Általános rendeltetés| 16| 31232| 2500|
-|Általános rendeltetés| 32| 62976| 5000|
-|Általános rendeltetés| 64| 125952| 10000|
-|Memóriára optimalizált| 2| 7168| 600|
-|Memóriára optimalizált| 4| 15360| 1250|
-|Memóriára optimalizált| 8| 30720| 2500|
-|Memóriára optimalizált| 16| 62464| 5000|
-|Memóriára optimalizált| 32| 125952| 10000|
+|**Tarifacsomag**| **Virtuális mag (ok)**|**InnoDB puffer készlete (MB)**|
+|---|---|---|
+|Basic| 1| 1024|
+|Basic| 2| 2560|
+|Általános rendeltetés| 2| 3584|
+|Általános rendeltetés| 4| 7680|
+|Általános rendeltetés| 8| 15360|
+|Általános rendeltetés| 16| 31232|
+|Általános rendeltetés| 32| 62976|
+|Általános rendeltetés| 64| 125952|
+|Memóriára optimalizált| 2| 7168|
+|Memóriára optimalizált| 4| 15360|
+|Memóriára optimalizált| 8| 30720|
+|Memóriára optimalizált| 16| 62464|
+|Memóriára optimalizált| 32| 125952|
 
 Ezek a további kiszolgálói paraméterek nem konfigurálhatók a rendszeren:
 

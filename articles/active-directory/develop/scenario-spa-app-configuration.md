@@ -1,5 +1,5 @@
 ---
-title: Egyoldalas alkalmazás (az alkalmazás kódjának konfigurációja) – Microsoft Identity platform
+title: Egyoldalas alkalmazás konfigurálása – Microsoft Identity platform | Azure
 description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazást (az alkalmazás kódjának konfigurációja)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ec98a62aab0b8d87645f3f58dc28219abe4e4fc
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 111f8d45fced1ed0e9293c874d7a56c64e9fb0e4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766276"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965415"
 ---
 # <a name="single-page-application-code-configuration"></a>Egyoldalas alkalmazás: kód konfigurálása
 

@@ -1,5 +1,5 @@
 ---
-title: Felhasználók számára bejelentkező webes alkalmazás (bejelentkezés) – Microsoft Identity platform
+title: Felhasználói bejelentkezési webalkalmazás írása – Microsoft Identity platform | Azure
 description: Megtudhatja, hogyan hozhat létre egy webalkalmazást, amely bejelentkezik a felhasználókba (bejelentkezés)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81b41e46401d600ebaba1febb86aafbd55c8399a
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c8d7d5737a8332416a225154709ab7d66e447764
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482560"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961981"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Felhasználók számára bejelentkező webes alkalmazás: bejelentkezés és kijelentkezés
 
@@ -431,7 +431,7 @@ A Python rövid útmutatójában a kijelentkezés utáni átirányítási URI cs
 
 ---
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol (Protokoll)
 
 Ha többet szeretne megtudni a kijelentkezésről, olvassa el az [Open ID csatlakozással](./v2-protocols-oidc.md)elérhető protokoll dokumentációját.
 

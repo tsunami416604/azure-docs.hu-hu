@@ -1,6 +1,6 @@
 ---
-title: Webes API-kat meghívó webalkalmazás (bejelentkezés) – Microsoft Identity platform
-description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó webalkalmazást (bejelentkezés)
+title: Fiókok eltávolítása a gyorsítótárból a kijelentkezéskor – Microsoft Identity platform | Azure
+description: Ismerje meg, hogyan távolíthat el egy fiókot a jogkivonat-gyorsítótárból a kijelentkezéskor
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,14 +15,14 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cb0190f76ddce79012a5bf97e2d813f40f9f018
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596364"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961658"
 ---
-# <a name="web-app-that-calls-web-apis---sign-in"></a>Webes API-kat meghívó webalkalmazás – bejelentkezés
+# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Fiókok eltávolítása a gyorsítótárból a globális kijelentkezéskor
 
 Már tudja, hogyan adhat hozzá bejelentkezést a webalkalmazáshoz. Megtudhatja, hogy a [webalkalmazásban, amely bejelentkezik a felhasználóknak – bejelentkezés hozzáadása](scenario-web-app-sign-user-sign-in.md).
 

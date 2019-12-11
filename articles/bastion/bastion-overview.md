@@ -5,18 +5,18 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 12/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4cee16a4b6d4f87c8f09ad742d9a504cfc5fc394
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 785d9da57171e60f5762a1449c24f9c767be3bc9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498329"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972795"
 ---
 # <a name="what-is-azure-bastion"></a>Mi az az Azure Bastion?
 
-Az Azure Bastion szolgáltatás egy új, teljes körűen felügyelt, a virtuális hálózaton belül kiépített, teljesen platform által felügyelt Pásti szolgáltatás. Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít a virtuális gépekhez közvetlenül a Azure Portal SSL-en keresztül. Ha az Azure Bastionon keresztül csatlakozik, a virtuális gépeinek nincs szüksége nyilvános IP-címre.
+Az Azure Bastion szolgáltatás egy új, teljes körűen felügyelt, a virtuális hálózaton belül kiépített, teljesen platform által felügyelt Pásti szolgáltatás. Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít a virtuális gépekhez közvetlenül a Azure Portal SSL-en keresztül. Az Azure Bastion használatával történő csatlakozásokhoz nincs szükség nyilvános IP-címekre.
 
  A Bastion biztonságos RDP-és SSH-kapcsolatot biztosít a virtuális hálózatban lévő összes virtuális géphez. Az Azure Bastion használatával megvédheti a virtuális gépeket, hogy az RDP/SSH-portokat kitegye a külvilágtól, miközben továbbra is biztonságos hozzáférést biztosít az RDP/SSH használatával. Az Azure Bastion használatával közvetlenül a Azure Portal csatlakozhat a virtuális géphez. Nincs szüksége további ügyfélre, ügynökre vagy szoftverre.
 
@@ -36,7 +36,7 @@ Ez az ábra egy Azure-alapú központi telepítés architektúráját mutatja be
 * Egyetlen kattintással megnyílik az RDP/SSH-munkamenet a böngészőben.
 * Nem szükséges nyilvános IP-cím az Azure-beli virtuális gépen.
 
-## <a name="key-features"></a>A legfontosabb jellemzők
+## <a name="key-features"></a>Fő funkciók
 
 A következő szolgáltatások érhetők el:
 
@@ -51,7 +51,7 @@ A következő szolgáltatások érhetők el:
 
 [!INCLUDE [Bastion FAQ](../../includes/bastion-faq-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hozzon létre egy Azure Bastion Host-erőforrást](bastion-create-host-portal.md).
 * Ebben a dokumentumban az Azure egyéb lényeges [hálózat képességeivel](../networking/networking-overview.md) ismerkedhet meg.

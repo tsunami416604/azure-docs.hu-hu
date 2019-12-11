@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 95ea1718682340967d5d39fe5f550f2638273796
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743703"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961539"
 ---
 # <a name="what-is-the-azure-face-api"></a>Mi az Azure Face API?
 
@@ -35,7 +35,7 @@ Az Arcfelismerés szolgáltatással kapcsolatos további információkért tekin
 
 ## <a name="face-verification"></a>Arcellenőrzés
 
-A Verify API hitelesítést végez két észlelt arc között vagy egy észlelt arc és egy személyobjektum között. Lényegében azt értékeli, hogy a két arc ugyanazon személyhez tartozik-e. Ez a funkció biztonsági helyzetekben hasznos lehet. További információ: [Arcfelismerés](concepts/face-recognition.md) fogalmakat ismertető útmutató vagy az API-dokumentáció [ellenőrzése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) .
+Az ellenőrzés az API-val két észlelt arc vagy egy személy objektum közötti hitelesítést végez. Lényegében azt értékeli, hogy a két arc ugyanazon személyhez tartozik-e. Ez a funkció biztonsági helyzetekben hasznos lehet. További információ: [Arcfelismerés](concepts/face-recognition.md) fogalmakat ismertető útmutató vagy az API-dokumentáció [ellenőrzése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) .
 
 ## <a name="find-similar-faces"></a>Hasonló arcok keresése
 
@@ -45,13 +45,13 @@ Az alábbi példa a cél arcot mutatja:
 
 ![Mosolygó nő](./Images/FaceFindSimilar.QueryFace.jpg)
 
-Ezek pedig a jelölt személyek arcai:
+És ezek a képek a jelölt arcok:
 
 ![Öt mosolygó személy. Az a és b képek ugyanazt a személyt jelenítik meg.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Négy hasonló arc megtalálásához a matchPerson mód az a és b értéket adja vissza, amely ugyanazt a személyt jeleníti meg, mint a cél arca. A matchFace mód az a, b, c és d értéket adja vissza, pontosan négy pályázót, még akkor is, ha nem ugyanaz a személy, mint a cél, vagy alacsony hasonlóságot mutat. További információkért tekintse meg az [Arcfelismerés](concepts/face-recognition.md) fogalmakat ismertető útmutatót vagy a [hasonló API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) -referenciát.
+Négy hasonló arc megtalálásához a matchPerson mód az a és b értéket adja vissza, amely ugyanazt a személyt jeleníti meg, mint a cél arca. A matchFace mód az a, b, c és d&mdash;pontosan négy pályázót ad vissza, még akkor is, ha nem ugyanaz a személy, mint a cél, vagy alacsony hasonlóságot mutat. További információkért tekintse meg az [Arcfelismerés](concepts/face-recognition.md) fogalmakat ismertető útmutatót vagy a [hasonló API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) -referenciát.
 
-## <a name="face-grouping"></a>Arccsoportosítás
+## <a name="face-grouping"></a>Arcok csoportosítása
 
 A Group API több csoportra osztja az ismeretlen arcokat a hasonlóság alapján. Mindegyik csoport az eredeti arcok halmazának különálló valódi részhalmaza. Egy csoport összes arca valószínűleg ugyanahhoz a személyhez tartozik. Egyetlen személynek több különböző csoportja is lehet. A csoportokat egy másik tényező különbözteti meg, például a kifejezést. További információ: [Arcfelismerés](concepts/face-recognition.md) fogalmakat ismertető útmutató vagy a [csoport API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) -dokumentációja.
 
@@ -82,7 +82,7 @@ Az alábbi példák a Face API használatára mutatnak néhány módszert:
 
 Akárcsak az összes Cognitive Services erőforrás esetében, a Face szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. További információkért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kövessen egy rövid útmutatót egy Arcfelismerés forgatókönyv megvalósításához a kódban:
 

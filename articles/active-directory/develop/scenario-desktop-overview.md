@@ -1,5 +1,5 @@
 ---
-title: Webes API-kat meghívó asztali alkalmazás (áttekintés) – Microsoft Identity platform
+title: Webes API-kat meghívó asztali alkalmazás létrehozása – Microsoft Identity platform | Azure
 description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó asztali alkalmazást (áttekintés)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,14 +15,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d56a07b46c4cd54577bcb3d81f2c45c03433fc31
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 545012629686e1fe3ece8a48ed852542e09e54fe
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268351"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965517"
 ---
-# <a name="scenario-desktop-app-that-calls-web-apis"></a>Forgatókönyv: Webes API-kat hívó asztali alkalmazás
+# <a name="scenario-desktop-app-that-calls-web-apis"></a>Forgatókönyv: webes API-kat meghívó asztali alkalmazás
 
 A webes API-kat meghívó asztali alkalmazások létrehozásához szükséges tudnivalók
 
@@ -30,19 +30,19 @@ A webes API-kat meghívó asztali alkalmazások létrehozásához szükséges tu
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 Ha még nem tette meg, hozza létre első alkalmazását a .NET Desktop rövid útmutatójának, a UWP rövid útmutatójának vagy a macOS natív alkalmazásának rövid útmutatójának használatával:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Token beszerzése és Microsoft Graph API meghívása egy Windows asztali alkalmazásból](./quickstart-v2-windows-desktop.md)
+> [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Windowsos asztali alkalmazásból](./quickstart-v2-windows-desktop.md)
 
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Token beszerzése és Microsoft Graph API meghívása egy UWP-alkalmazásból](./quickstart-v2-uwp.md)
+> [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy UWP-alkalmazásból](./quickstart-v2-uwp.md)
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Token beszerzése és Microsoft Graph API meghívása macOS natív alkalmazásból](./quickstart-v2-ios.md)
+> [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása macOS natív alkalmazásból](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -68,7 +68,7 @@ Ha még nem tette meg, hozza létre első alkalmazását a .NET Desktop rövid �
 
 Az asztali alkalmazások számos sajátossággal rendelkeznek, amelyek főleg attól függnek, hogy az alkalmazás az interaktív hitelesítést használja-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Asztali alkalmazás regisztrálása](scenario-desktop-app-registration.md)

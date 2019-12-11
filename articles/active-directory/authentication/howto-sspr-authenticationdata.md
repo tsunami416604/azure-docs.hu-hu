@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/09/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1c00d0f4ba365442762df6e041f02ea0a39f099
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a14338e552250ac63c344365099a16f20616ea9a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847303"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964028"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Jelszó-visszaállítás üzembe helyezése végfelhasználói regisztráció nélkül
 
-A Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) üzembe helyezéséhez a hitelesítési adatértékeknek jelen kell lenniük. Néhány szervezet saját maga adja meg a saját hitelesítési adatbevitelét. Számos szervezet azonban inkább a Active Directoryban már meglévő adatokat szeretné szinkronizálni. A szinkronizált adathozzáférés az Azure AD és a SSPR számára elérhetővé válik anélkül, hogy felhasználói beavatkozásra lenne szükség, ha:
+A Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) üzembe helyezéséhez a hitelesítési adatértékeknek jelen kell lenniük. Néhány szervezet saját maga adja meg a saját hitelesítési adatbevitelét. Más szervezetek szívesebben szinkronizálnak olyan adatokat, amelyek már léteznek a Active Directoryban. A szinkronizált adat az Azure AD és a SSPR számára érhető el anélkül, hogy felhasználói beavatkozásra lenne szükség, ha megfelel a következő követelményeknek:
 
 * Megfelelően formázza a helyszíni címtárban tárolt adatait.
 * Konfigurálja [Azure ad Connect az expressz beállítások használatával](../hybrid/how-to-connect-install-express.md).
@@ -41,21 +41,18 @@ Ha a Azure AD Connect alapértelmezett beállításait használja, a következő
 | telephoneNumber | Irodai telefon |
 | mobil | Mobiltelefon |
 
-Ha a felhasználó ellenőrizte a mobiltelefonja számát, az Azure AD-ben a hitelesítési kapcsolattartási adatok területen található telefonos mező is fel lesz töltve az adott számmal.
+Miután egy felhasználó ellenőrizte mobiltelefonszámát, az Azure AD-ben a **hitelesítési kapcsolattartási adatok** területen lévő *telefonos* mező is fel lesz töltve.
 
 ## <a name="authentication-contact-info"></a>Hitelesítési kapcsolattartási adatok
 
-A globális rendszergazda manuálisan állíthatja be a felhasználó hitelesítési kapcsolattartási adatait, ahogy az alábbi képernyőképen is látható.
+A Azure Portal egy Azure AD-felhasználójának **hitelesítési módszerek** lapján a globális rendszergazda manuálisan állíthatja be a hitelesítési kapcsolattartási adatokat, ahogy az alábbi ábrán is látható:
 
 ![Hitelesítési kapcsolattartási adatok az Azure AD-ben egy felhasználónál][Contact]
 
-Ha a telefon mező fel van töltve, és a mobiltelefon engedélyezve van a SSPR-házirendben, a felhasználó ezt a számot fogja látni a jelszó-visszaállítási regisztrációs lapon és a jelszó-visszaállítási munkafolyamat során.
-
-A másodlagos telefon mező nem használatos a jelszó-visszaállításhoz.
-
-Ha az e-mail-mező fel van töltve, és az e-mailek engedélyezve vannak a SSPR szabályzatban, a felhasználó láthatja, hogy a jelszó-visszaállítási regisztrációs lapon és a jelszó-visszaállítási munkafolyamatban megjelenik a levelezés
-
-Ha a másodlagos e-mail mező fel van töltve, és az e-mailek engedélyezve vannak a SSPR szabályzatban, a felhasználó **nem** látja ezt az e-mailt a jelszó-visszaállítási regisztrációs lapon, de a jelszó-visszaállítási munkafolyamat során megjelenik.
+* Ha a **telefon** mező fel van töltve, és a **mobiltelefon** engedélyezve van a SSPR-házirendben, a felhasználó ezt a számot látja a jelszó-visszaállítási regisztrációs lapon és a jelszó-visszaállítási munkafolyamatban.
+* A **másodlagos telefon** mező nincs használatban a jelszó-visszaállításhoz.
+* Ha az **e** -mail-mező fel van töltve, és az **e-mailek** engedélyezve vannak a SSPR szabályzatban, a felhasználó a jelszó-visszaállítási regisztrációs oldalon és a jelszó-visszaállítási munkafolyamatban láthatja a levelezést.
+* Ha a **másodlagos e-mail** mező fel van töltve, és az **e-mailek** engedélyezve vannak a SSPR szabályzatban, a felhasználó **nem** látja ezt az e-mailt a jelszó-visszaállítási regisztrációs lapon, de a jelszó-visszaállítási munkafolyamat során megjelenik.
 
 ## <a name="security-questions-and-answers"></a>Biztonsági kérdések és válaszok
 
@@ -69,7 +66,7 @@ Amikor egy felhasználó regisztrál, a regisztrációs oldal a következő mez�
 * **Hitelesítési E-mail**
 * **Biztonsági kérdések és válaszok**
 
-Ha a **mobiltelefon** vagy a **másodlagos e-mail**esetében értéket adott meg, a felhasználók azonnal felhasználhatják ezeket az értékeket a jelszavuk visszaállítására, még akkor is, ha nincsenek regisztrálva a szolgáltatáshoz. Emellett a felhasználók ezeket az értékeket is láthatják, amikor első alkalommal regisztrálják magukat, és ha szeretné, módosíthatja azokat. A sikeres regisztráció után ezek az értékek a **hitelesítés telefonos** és a **hitelesítő e-mail** -mezőiben is megmaradnak.
+Ha a **mobiltelefon** vagy a **másodlagos e-mail**esetében értéket adott meg, a felhasználók azonnal felhasználhatják ezeket az értékeket a jelszavuk visszaállítására, még akkor is, ha nincsenek regisztrálva a szolgáltatáshoz. Emellett a felhasználók ezeket az értékeket is láthatják, amikor első alkalommal regisztrálják magukat, és ha szeretné, módosíthatja azokat. A sikeres regisztráció után ezek az értékek a **hitelesítés telefonos** és a **hitelesítő e-mail-** mezőiben megmaradnak.
 
 ## <a name="set-and-read-the-authentication-data-through-powershell"></a>A hitelesítési információk beállítása és olvasása a PowerShell-lel
 

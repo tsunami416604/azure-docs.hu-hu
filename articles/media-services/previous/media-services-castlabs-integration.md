@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
-ms.openlocfilehash: c038480c9a49c96aaba7c7ff7299c8ebea31b81f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887781"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969140"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe 
 > [!div class="op_single_selector"]
@@ -114,6 +114,10 @@ A Common encryption (PlayReady és/vagy Widevine) titkosítással titkosított v
    A castLab-kiszolgálónak nincs szüksége a "Bearer =" előtagra a jogkivonat előtt. Ezért távolítsa el a token elküldése előtt.
 7. Frissítse a lejátszót.
 8. A videónak játszania kell.
+
+## <a name="additional-notes"></a>További megjegyzések
+
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

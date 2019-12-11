@@ -1,6 +1,6 @@
 ---
-title: Daemon-alkalmazás webes API-k meghívása (alkalmazás konfigurációja) – Microsoft Identity platform
-description: Megtudhatja, hogyan hozhat létre olyan Daemon-alkalmazást, amely webes API-kat hív meg (alkalmazás konfigurációja)
+title: Webes API-kat meghívó Daemon-alkalmazások konfigurálása – Microsoft Identity platform | Azure
+description: Megtudhatja, hogyan konfigurálhatja a webes API-kat meghívó Daemon-alkalmazás kódját (alkalmazás konfigurációja)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32fbd4af78e02dad2a8a74ee21f9cb8c6ef0a976
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b0fd50f730c604ba1359218cf5268bd20e570d3c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175509"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962644"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó Daemon-alkalmazás – kód konfigurálása
 
@@ -295,7 +295,7 @@ További részletekért lásd: [ügyfél-kijelentések](msal-net-client-assertio
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-A MSAL Pythonban megadhatja az ügyfél jogcímeit azon jogcímek használatával, amelyeket az `ConfidentialClientApplication` titkos kulcsa aláír.
+A MSAL Pythonban megadhatja az ügyfél jogcímeit azon jogcímek használatával, amelyeket az `ConfidentialClientApplication`titkos kulcsa aláír.
 
 ```Python
 config = json.load(open(sys.argv[1]))

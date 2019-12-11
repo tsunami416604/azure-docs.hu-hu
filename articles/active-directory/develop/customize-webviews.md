@@ -1,7 +1,7 @@
 ---
-title: Böngészők és WebView objektumok testreszabása
+title: Böngészők testreszabása & webnézetekben | Azure
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogyan szabhatja testre a MSAL által az iOS-hez és macOS-hez használt böngészőbeli élményt a felhasználók bejelentkezéséhez
+description: Megtudhatja, hogyan szabhatja testre a MSAL iOS/macOS böngésző felhasználói felületét.
 services: active-directory
 author: tylermsft
 manager: CelesteDG
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69b1e217bfa64ad08136e2763716d455332c5ba4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d5dbdadc6afa3a6822a76fdcecdfcaa6f2ad8c98
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843325"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963715"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Útmutató: böngészők és webnézetek testreszabása iOS/macOS rendszerhez
 

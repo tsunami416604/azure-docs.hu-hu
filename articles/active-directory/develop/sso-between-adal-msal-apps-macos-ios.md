@@ -1,5 +1,5 @@
 ---
-title: SSO ADAL és MSAL alkalmazások között iOS és macOS rendszeren – Microsoft Identity platform
+title: Egyszeri bejelentkezés a ADAL és a MSAL iOS/macOS-alkalmazások között – Microsoft Identity platform | Azure
 description: ''
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a554602b9648190926168e4886d4f0773692225
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 13998982b778181febf99d8366eebd25482bc2bc
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264148"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961505"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Útmutató: ADAL és MSAL alkalmazások közötti egyszeri bejelentkezés macOS és iOS rendszeren
 
@@ -53,8 +53,8 @@ A következő táblázat összefoglalja a ADAL és a MSAL közötti fiókazonos�
 | Fiókazonosító                | MSAL                                                         | ADAL 2.7. x      | Régebbi ADAL (az ADAL 2.7. x előtt) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | nem játszható azonosító            | `username`                                                   | `userId`        | `userId`                       |
-| egyedi, nem játszható azonosító | `identifier`                                                 | `homeAccountId` | N/A                            |
-| Nem ismert fiókazonosító               | Az összes fiók lekérdezése `allAccounts:` API-n keresztül `MSALPublicClientApplication` | N/A             | N/A                            |
+| egyedi, nem játszható azonosító | `identifier`                                                 | `homeAccountId` | –                            |
+| Nem ismert fiókazonosító               | Az összes fiók lekérdezése `allAccounts:` API-n keresztül `MSALPublicClientApplication` | –             | –                            |
 
 Ez az azonosítókat biztosító `MSALAccount` felület:
 
@@ -208,7 +208,7 @@ Mivel a `homeAccountId` régebbi ADAL-verziókban nem érhető el, a `username`h
                               error:(NSError * __autoreleasing *)error;
 ```
 
-Például:
+Példa:
 
 Objective-C:
 
