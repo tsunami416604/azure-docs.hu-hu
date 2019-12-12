@@ -222,6 +222,8 @@
       items:
         - name: Helyreállítási tár létrehozása
           href: backup-azure-arm-userestapi-createorupdatevault.md
+        - name: Helyreállítási tár konfigurációinak frissítése
+          href: use-restapi-update-vault-properties.md
         - name: Biztonsági mentési szabályzat létrehozása és frissítése
           href: backup-azure-arm-userestapi-createorupdatepolicy.md
         - name: Azure-beli virtuális gépek biztonsági mentése
