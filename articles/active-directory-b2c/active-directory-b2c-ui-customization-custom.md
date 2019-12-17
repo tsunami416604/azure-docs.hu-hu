@@ -1,5 +1,6 @@
 ---
-title: Az alkalmazás felhasználói felületének testreszabása Egyéni szabályzattal Azure Active Directory B2Cban | Microsoft Docs
+title: Egyéni szabályzattal testreszabhatja az alkalmazás felhasználói felületét
+titleSuffix: Azure AD B2C
 description: Útmutató felhasználói felület egyéni házirenddel történő testreszabásához Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f0e13b4e68ee4b94a254cb8497a44cc0b8b470f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1ac0f59ea709e25f3d71a78ece5ebf40690bd3be
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209450"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949626"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Testre szabhatja az alkalmazás felhasználói felületét egy egyéni házirend használatával Azure Active Directory B2C
 
@@ -56,14 +57,14 @@ Hozzon létre HTML-tartalmat a termék márkájának nevében.
 > [!NOTE]
 > A HTML-űrlap elemei a biztonsági korlátozások miatt törlődnek, ha login.microsoftonline.com használ. Ha HTML-űrlap elemeket szeretne használni az egyéni HTML-tartalomban, használja a b2clogin.com-t. További előnyöket a [B2clogin.com használata](b2clogin.md) című témakörben talál.
 
-## <a name="create-an-azure-blob-storage-account"></a>Azure Blob storage-fiók létrehozása
+## <a name="create-an-azure-blob-storage-account"></a>Azure Blob Storage-fiók létrehozása
 
 >[!NOTE]
 > Ebben a cikkben az Azure Blob Storage-t használjuk a tartalom üzemeltetéséhez. Dönthet úgy, hogy webkiszolgálón üzemelteti a tartalmat, de engedélyeznie kell a [CORS a webkiszolgálón](https://enable-cors.org/server.html).
 
 Ha ezt a HTML-tartalmat a blob Storage-ban szeretné tárolni, hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A **központi** menüben válassza az **új** > **Storage** > **Storage-fiók**lehetőséget.
 1. Válasszon egy **előfizetést** a Storage-fiókjához.
 1. Hozzon létre egy **erőforráscsoportot** , vagy válasszon ki egy meglévőt.
@@ -160,7 +161,7 @@ A felhasználói felület testreszabásának konfigurálásához másolja a **Co
 1. Válassza ki a feltöltött egyéni szabályzatot, majd kattintson a **Futtatás most** gombra.
 1. Regisztrálnia kell egy e-mail-cím használatával.
 
-## <a name="reference"></a>Referencia
+## <a name="reference"></a>Leírások
 
 ### <a name="sample-templates"></a>Példasablonok
 A felhasználói felület testreszabásához itt talál példákat:
