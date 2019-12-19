@@ -1,5 +1,5 @@
 ---
-title: Azure AD v 2.0 ASP.NET webkiszolgáló – első lépések
+title: Bejelentkezés hozzáadása az Azure AD ASP.NET-webalkalmazáshoz
 titleSuffix: Microsoft identity platform
 description: Microsoft-bejelentkezés megvalósítása ASP.NET-megoldásban hagyományos webböngésző-alapú alkalmazás és OpenID Connect standard használatával
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66d2a9a958afd536dcffeca211a3fc56cf09ef8
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 9ff89d3c11ca88db14d2efd772be44aef7165a8a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803719"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964735"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés felvétele a Microsoftba ASP.NET-webalkalmazásba
 
@@ -86,7 +86,7 @@ A következő lépésekkel hozhat létre egy OWIN middleware indítási osztály
 > 1. Kattintson a jobb gombbal a projekt gyökérkönyvtárára, majd válassza a **hozzáadás** > **új elem** > **OWIN indítási osztály**elemet.<br/>
 > 2. Nevezze el **Startup.cs**.
 >
->> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztály, nem C# pedig egy standard osztály. Győződjön meg arról, hogy a következőt látja: [Assembly: OwinStartup (typeof ({névtér}). Indítás)]]] a névtér fölött.
+>> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztály, nem C# pedig egy standard osztály. Győződjön meg arról, hogy a következőt látja: [Assembly: OwinStartup (typeof ({névtér}). Indítás)] a névtér fölött.
 
 1. Adja hozzá a *OWIN* és a *Microsoft. IdentityModel* hivatkozásokat a Startup.cs-hez:
 
@@ -446,7 +446,7 @@ Ha névtelen felhasználóként szeretné tesztelni a hozzáférést a `Authoriz
 
 A rendszer a védett vezérlő nézet használatára kéri a hitelesítést.
 
-## <a name="advanced-options"></a>speciális beállítások
+## <a name="advanced-options"></a>Speciális lehetőségek
 
 <!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>A teljes webhely megóvása
@@ -480,7 +480,7 @@ A bejelentkezési hozzáférést csak azokra a felhasználói fiókokra korláto
 
 A **IssuerValidator** paraméter használatával egyéni módszert alkalmazhat a kiállítók érvényesítésére. További információ a paraméter használatáról: [TokenValidationParameters Class](/previous-versions/visualstudio/dn464192(v=vs.114)).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogy a Web Apps hogyan hívhatja meg a webes API-kat.
 
