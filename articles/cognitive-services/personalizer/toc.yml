@@ -9,7 +9,7 @@
     - name: Újdonságok
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: 'A C# használata'
       href: csharp-quickstart-commandline-feedback-loop.md
@@ -94,6 +94,8 @@
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0'
         - name: Python
           items:
+            - name: Referencia
+              href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python'
             - name: Pypi-csomag
               href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: További források

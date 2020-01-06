@@ -10,12 +10,12 @@ metadata:
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/16/2019
-  ms.openlocfilehash: b2bdb31372cb22852e64e6b619f8b332705fe324
-  ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+  ms.openlocfilehash: dff33c61d67a25bfc5c1119e5408602df01e5e30
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/26/2019
-  ms.locfileid: "74533776"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75359732"
 landingContent:
 - title: Az Azure Stream Analytics ismertetése
   linkLists:
@@ -150,9 +150,9 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: A feladatok megismerése a Visual Studio Code használatával
-      url: vscode-local-run.md
+      url: visual-studio-code-explore-jobs.md
     - text: Lekérdezések tesztelése mintaadatokkal a Visual Studio Code-ban
-      url: vscode-local-run.md
+      url: visual-studio-code-local-run.md
     - text: Eszközök telepítése a Visual Studióhoz
       url: stream-analytics-tools-for-visual-studio-install.md
     - text: Lekérdezések tesztelése mintaadatokkal a Visual Studióban

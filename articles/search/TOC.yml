@@ -7,15 +7,15 @@
       href: search-what-is-azure-search.md
     - name: Újdonságok
       href: whats-new.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Szolgáltatás létrehozása
       href: search-create-service-portal.md
     - name: Portál
       items:
-        - name: Keresési index létrehozása
+        - name: Index létrehozása
           href: search-get-started-portal.md
-        - name: Alkalmazás létrehozása (előzetes verzió)
+        - name: Alkalmazás létrehozása
           href: search-create-app-portal.md
         - name: Kognitív képességcsoport létrehozása
           href: cognitive-search-quickstart-blob.md

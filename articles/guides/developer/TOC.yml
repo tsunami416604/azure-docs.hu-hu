@@ -189,7 +189,7 @@
 - name: További források
   items:
     - name: Az Azure-ra vonatkozó korlátok és kvóták
-      href: ../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
+      href: ../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
     - name: Azure-régiók
       href: 'https://azure.microsoft.com/regions/'
     - name: Azure-ütemterv

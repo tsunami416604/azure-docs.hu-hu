@@ -4,7 +4,7 @@
   items:
     - name: Mi az Azure IoT Hub?
       href: about-iot-hub.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Telemetria küldése
@@ -83,6 +83,8 @@
       href: tutorial-connectivity.md
 - name: Alapelvek
   items:
+    - name: A TLS 1.2 kényszerítése
+      href: tls-1.2-everywhere.md
     - name: Az üzenetbővítések áttekintése
       href: iot-hub-message-enrichments-overview.md
     - name: Az eszközfelügyelet áttekintése

@@ -12,3 +12,6 @@
         - name: Szabályzat
           tocHref: /azure/azure-monitor
           topicHref: /azure/governance/policy
+        - name: Szabályzat
+          tocHref: /azure/key-vault
+          topicHref: /azure/governance/policy

@@ -7,7 +7,7 @@
       href: overview.md
     - name: A különböző szerepkörök ismertetése
       href: rbac-and-directory-admin-roles.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Felhasználó hozzáférésének megtekintése
       href: check-access.md
@@ -99,7 +99,7 @@
     - name: Erőforrás-szolgáltatói műveletek
       href: resource-provider-operations.md
     - name: RBAC-korlátozások
-      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI

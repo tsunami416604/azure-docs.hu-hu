@@ -4,7 +4,7 @@
   items:
     - name: Tudnivalók az Azure-erőforrások felügyelt identitásairól
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Virtuális géphez tartozó felügyelt identitás használata az Azure Resource Manager eléréséhez
       items:
@@ -22,8 +22,6 @@
           href: tutorial-vm-windows-access-storage.md
         - name: Az Azure Storage elérése hozzáférési kulcs használatával
           href: tutorial-windows-vm-access-storage.md
-        - name: Az Azure Storage elérése SAS-sel
-          href: tutorial-windows-vm-access-storage-sas.md
         - name: Az Azure SQL elérése
           href: tutorial-windows-vm-access-sql.md
         - name: Az Azure Key Vault elérése

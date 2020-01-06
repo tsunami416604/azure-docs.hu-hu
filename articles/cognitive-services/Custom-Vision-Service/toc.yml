@@ -4,7 +4,7 @@
   items:
     - name: Mi a Custom Vision?
       href: home.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: A webes portál használata
       items:
@@ -68,8 +68,6 @@
           href: export-model-python.md
     - name: Fiókadatok exportálása vagy törlése
       href: ./export-delete-data.md
-    - name: A korlátozott próbaverziós projekt áthelyezése az Azure-ba
-      href: ./move-your-project-to-azure.md
     - name: Az alkalmazás frissítése a 3.0-s API-ra
       href: ./update-application-to-3.0-sdk.md
 - name: Referencia

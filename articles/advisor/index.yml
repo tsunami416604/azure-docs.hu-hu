@@ -4,18 +4,16 @@ summary: Az Azure Advisor megvizsgálja az Azure-konfigurációt, és módosít�
 metadata:
   title: Az Azure Advisor dokumentációja
   description: Az Azure Advisor egy személyre szabott felhőtanácsadó, amely segít az ajánlott eljárások alkalmazásában az Azure-környezetek optimalizálása érdekében. A program elemzi az erőforrás-konfigurációs és -használati telemetriákat, és a teljesítményt, a biztonságot és az erőforrások magas rendelkezésre állását elősegítő megoldásokat javasol, valamint az Azure-költségek csökkentésére törekszik.
-  services: advisor
-  ms.service: advisor
   ms.topic: landing-page
   author: rboucher
   ms.author: robb
   ms.date: 10/16/2019
-  ms.openlocfilehash: d0a5dc66a752e49dd32cd742e3856d7edac0d879
-  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.openlocfilehash: 43e35c1d6afd96ff78ebd938fa76a503dd4e935d
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/27/2019
-  ms.locfileid: "72963981"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75443017"
 landingContent:
 - title: Tudnivalók az Azure Advisorról
   linkLists:

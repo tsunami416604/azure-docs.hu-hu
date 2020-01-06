@@ -3,7 +3,7 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Bevezetés
+    - name: Introduction (Bevezetés)
       href: ./common/storage-introduction.md
     - name: 'Blobok, fájlok vagy lemezek választása'
       href: ./common/storage-decide-blobs-files-disks.md
@@ -16,7 +16,7 @@
 - name: Üzenetsorok
   href: ./queues/index.yml?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: Táblák
-  href: ./tables/table-storage-overview.md
+  href: ./tables/index.yml?toc=%2fazure%2fstorage%2ftables%2ftoc.json
 - name: Lemezek
   items:
     - name: Windows

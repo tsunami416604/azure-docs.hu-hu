@@ -193,7 +193,7 @@
 - name: Kapcsolódó témakörök
   items:
     - name: Azure Machine Learning
-      href: ../service/
+      href: ../
     - name: Azure AI katalógus
       href: 'https://gallery.azure.ai'
     - name: Cortana Analytics

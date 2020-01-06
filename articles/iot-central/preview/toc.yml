@@ -4,8 +4,6 @@
   items:
     - name: Mi az az Azure IoT Central?
       href: overview-iot-central.md
-    - name: Az IoT-megoldás beállításai
-      href: ../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
     - name: Felhasználói felület bemutatása
       href: overview-iot-central-tour.md
     - name: Csatlakozás
@@ -14,7 +12,7 @@
       href: overview-iot-central-stay-connected.md
     - name: Átalakítás
       href: overview-iot-central-transform.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: 1. Új alkalmazás létrehozása

@@ -4,7 +4,7 @@
   items:
     - name: Mik a virtuálisgép-méretezési csoportok?
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Létrehozás az Azure Portalon
@@ -64,7 +64,7 @@
 - name: Alapelvek
   items:
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: Régiók
       href: ../virtual-machines/windows/regions.md
