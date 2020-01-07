@@ -3,6 +3,12 @@
 - name: Az Azure számlázásának ismertetése
   expanded: true
   items:
+    - name: Számlázási fiókok és hatókörök
+      href: billing-view-all-accounts.md
+    - name: A Microsoft ügyfélszerződés számlázási fiókjai
+      href: billing-mca-overview.md
+    - name: A Microsoft Partnerszerződés számlázási fiókjai
+      href: mpa-overview.md
     - name: A számla értelmezése
       href: billing-understand-your-bill.md
     - name: A számla értelmezése – Microsoft-ügyfélszerződések
@@ -29,10 +35,6 @@
       href: billing-mpa-invoice-terms-explained.md
     - name: A számla befizetése – Microsoft-ügyfélszerződések
       href: billing-how-to-pay-bill.md
-    - name: A Microsoft ügyfélszerződés számlázási fiókjai
-      href: billing-mca-overview.md
-    - name: A Microsoft Partnerszerződés számlázási fiókjai
-      href: mpa-overview.md
 - name: Költségek kezelése
   items:
     - name: Váratlan költségek megelőzése
@@ -147,8 +149,6 @@
       href: billing-understand-mca-roles.md
     - name: Hivatkozás partnerazonosítóra
       href: billing-partner-admin-link-started.md
-    - name: Számlázási fiókok megtekintése
-      href: billing-view-all-accounts.md
     - name: Költségek rendszerezése számlaszakaszokkal
       href: billing-mca-section-invoice.md
     - name: A Microsoft ügyfélszerződés EA-feladatai
@@ -216,7 +216,7 @@
     - name: Azure AD-bérlő kapcsolása
       href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
     - name: Korlátok és kvóták
-      href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: Hibaelhárítás
   items:
     - name: Nem található előfizetés

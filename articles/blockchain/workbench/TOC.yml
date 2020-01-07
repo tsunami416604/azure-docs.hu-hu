@@ -55,14 +55,16 @@
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: További források
   items:
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: Kódminták
       href: 'https://github.com/Azure-Samples/blockchain'
-    - name: Közösség
-      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: Támogatási fórum
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: MSDN támogatási fórum
       href: 'https://aka.ms/workbenchforum'
+    - name: Közösségi támogatás
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Stack Overflow-támogatás
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-workbench'
     - name: Termékkel kapcsolatos visszajelzés
       href: 'https://aka.ms/blockchainuservoice'
 - name: Megoldássablonok

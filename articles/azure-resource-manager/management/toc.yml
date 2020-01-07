@@ -1,0 +1,138 @@
+- name: Az Azure-erőforrások kezelésének dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az a Resource Manager?
+      href: overview.md
+- name: Alapelvek
+  items:
+    - name: Előfizetés- és szolgáltatáskorlátok
+      href: azure-subscription-service-limits.md
+    - name: A Resource Manager-alapú és a klasszikus üzemi modell
+      href: deployment-models.md
+    - name: Gyakori Azure-beli biztonsági attribútumok
+      href: azure-resource-manager-security-controls.md
+    - name: Erőforrás-szolgáltatók szolgáltatás alapján
+      href: azure-services-resource-providers.md
+    - name: Erőforráspéldányra vonatkozó korlátozás
+      href: resources-without-resource-group-limit.md
+- name: Útmutató
+  items:
+    - name: Áthelyezés – erőforráscsoportok/előfizetések
+      items:
+        - name: Erőforrások áthelyezése
+          href: move-resource-group-and-subscription.md
+        - name: Támogatott erőforrások
+          href: move-support-resources.md
+        - name: Áthelyezés hibaelhárítása
+          href: troubleshoot-move.md
+        - name: Szolgáltatások
+          items:
+            - name: App Service
+              href: ./move-limitations/app-service-move-limitations.md
+            - name: Azure DevOps
+              href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json
+            - name: Klasszikus üzembe helyezés
+              href: ./move-limitations/classic-model-move-limitations.md
+            - name: Hálózat
+              href: ./move-limitations/networking-move-limitations.md
+            - name: Recovery Services
+              href: ../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Virtuális gépek
+              href: ./move-limitations/virtual-machines-move-limitations.md
+    - name: Áthelyezés – régiók
+      items:
+        - name: Áthelyezés régiók között
+          href: move-region.md
+        - name: Támogatott szolgáltatások
+          href: region-move-support.md
+        - name: Szolgáltatások
+          items:
+            - name: Azure-beli virtuális gépek
+              href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure Storage
+              href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure SQL
+              href: ../../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Virtuális hálózat
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Hálózati biztonsági csoport (NSG)
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Nyilvános IP-címek
+              href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+    - name: Címkék
+      items:
+        - name: Erőforrások címkézése
+          href: tag-resources.md
+        - name: Címketámogatás
+          href: tag-support.md
+    - name: Kezelés
+      items:
+        - name: Erőforráscsoportok kezelése
+          items:
+            - name: Az Azure Portal használata
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-portal.md
+            - name: Az Azure parancssori felületének használata
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-cli.md
+            - name: Azure PowerShell használatával
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-powershell.md
+        - name: Erőforrások kezelése
+          items:
+            - name: Az Azure Portal használata
+              displayName: 'open,delete,deploy,move,lock,tag,monitor'
+              href: manage-resources-portal.md
+            - name: Az Azure parancssori felületének használata
+              displayName: 'open,delete,deploy,move,lock,tag'
+              href: manage-resources-cli.md
+            - name: Azure PowerShell használatával
+              displayName: 'open,delete,deploy,move,lock,tag'
+              href: manage-resources-powershell.md
+        - name: Erőforráscsoportok és erőforrások törlése
+          href: delete-resource-group.md
+        - name: Erőforrások zárolása
+          href: lock-resources.md
+        - name: EA-előfizetések létrehozása
+          href: programmatically-create-subscription.md
+        - name: Hozzáférés biztosítása EA-előfizetések létrehozásához
+          href: grant-access-to-create-subscription.md
+        - name: Hitelesítés bérlőkön keresztül
+          href: authenticate-multi-tenant.md
+    - name: Tevékenységnaplók megtekintése
+      href: view-activity-logs.md
+    - name: Erőforrás-szolgáltatók és típusaik
+      href: resource-providers-and-types.md
+    - name: Kérelmek szabályozása
+      href: request-limits-and-throttling.md
+    - name: Aszinkron műveletek követése
+      href: async-operations.md
+- name: Referencia
+  items:
+    - name: REST
+      href: /rest/api/resources/
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources
+    - name: Azure CLI
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: /python/api/overview/azure/resources?view=azure-python
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: Személyes adatok kezelése
+      href: resource-manager-personal-data.md
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

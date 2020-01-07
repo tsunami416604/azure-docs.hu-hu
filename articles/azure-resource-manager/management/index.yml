@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Erőforrás-felügyeleti dokumentáció
+summary: Az erőforrás-felügyelet és -használat elsajátítása.
+metadata:
+  title: Az Azure Resource Manager dokumentációja
+  description: Tudnivalók az Azure Resource Manager-sablonok fejlesztéséről és azok használatáról az Azure-erőforrások üzembe helyezéséhez
+  ms.service: azure-resource-manager
+  ms.subservice: management
+  ms.topic: landing-page
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: ba00994808e50f10c7153535f442e03f85fe2202
+  ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 01/04/2020
+  ms.locfileid: "75657931"
+landingContent:
+- title: Tudnivalók az Azure Resource Manager használatáról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a Resource Manager?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: A Resource Manager-alapú és a klasszikus üzemi modell
+      url: deployment-models.md
+- title: Tudnivalók az Azure-szolgáltatásokról
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Előfizetés- és szolgáltatáskorlátok
+      url: azure-subscription-service-limits.md
+    - text: Erőforrás-szolgáltatók és típusaik
+      url: resource-providers-and-types.md
+    - text: Az egyes Azure-szolgáltatások erőforrás-szolgáltatói
+      url: azure-services-resource-providers.md
+- title: Erőforrások kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Áthelyezés erőforráscsoportok és előfizetések között
+      url: move-resource-group-and-subscription.md
+    - text: Áthelyezés régiók között
+      url: move-region.md
+    - text: Erőforrások címkézése
+      url: tag-resources.md
+    - text: Erőforrások zárolása
+      url: lock-resources.md
+    - text: Erőforráscsoportok törlése
+      url: delete-resource-group.md
+  - linkListType: reference
+    links:
+    - text: Támogatás áthelyezése
+      url: move-support-resources.md
+    - text: Címketámogatás
+      url: tag-support.md
+    - text: Erőforrás-példányokra vonatkozó korlátozások
+      url: resources-without-resource-group-limit.md
+- title: SDK-k és eszközök
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python
+- title: Műveletek követése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tevékenységnaplók megtekintése
+      url: view-activity-logs.md
+    - text: Kérelemkorlátozások és -szabályozás
+      url: request-limits-and-throttling.md
+    - text: Aszinkron műveletek
+      url: async-operations.md

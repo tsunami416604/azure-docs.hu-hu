@@ -2,32 +2,26 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Információk az IoT Device Provisioning szolgáltatásról
+    - name: Mi az az IoT Hub Device Provisioning Service?
       href: about-iot-dps.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
-    - name: Automatikus kiépítés beállítása – Azure CLI
-      href: quick-setup-auto-provision-cli.md
-    - name: Automatikus kiépítés beállítása – Portál
-      href: quick-setup-auto-provision.md
-    - name: Automatikus kiépítés beállítása – Sablon
-      href: quick-setup-auto-provision-rm.md
-    - name: Szimulált eszköz automatikus üzembe helyezése
+    - name: DPS beállítása
       items:
-        - name: TPM-igazolás
+        - name: Azure Portal
+          href: quick-setup-auto-provision.md
+        - name: Azure CLI
+          href: quick-setup-auto-provision-cli.md
+        - name: Azure RM-sablon
+          href: quick-setup-auto-provision-rm.md
+    - name: Egyetlen szimulált eszköz üzembe helyezése
+      items:
+        - name: Szimmetrikus kulcsú igazolás
           items:
             - name: 'C#'
-              href: quick-create-simulated-device.md
-            - name: Java
-              href: quick-create-simulated-device-tpm-java.md
-            - name: 'C#'
-              href: quick-create-simulated-device-tpm-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-tpm-node.md
-            - name: Python
-              href: quick-create-simulated-device-tpm-python.md
-        - name: X.509-igazolás
+              href: quick-create-simulated-device-symm-key.md
+        - name: X.509 tanúsítványigazolás
           items:
             - name: 'C#'
               href: quick-create-simulated-device-x509.md
@@ -39,23 +33,21 @@
               href: quick-create-simulated-device-x509-node.md
             - name: Python
               href: quick-create-simulated-device-x509-python.md
-        - name: Szimmetrikus kulcsú igazolás
+        - name: Szimulált TPM-eszközigazolás
           items:
             - name: 'C#'
-              href: quick-create-simulated-device-symm-key.md
-    - name: Eszközök regisztrációja a regisztrációs szolgáltatás API-jai segítségével
-      items:
-        - name: TPM-igazolás
-          items:
+              href: quick-create-simulated-device.md
             - name: Java
-              href: quick-enroll-device-tpm-java.md
+              href: quick-create-simulated-device-tpm-java.md
             - name: 'C#'
-              href: quick-enroll-device-tpm-csharp.md
+              href: quick-create-simulated-device-tpm-csharp.md
             - name: Node.js
-              href: quick-enroll-device-tpm-node.md
+              href: quick-create-simulated-device-tpm-node.md
             - name: Python
-              href: quick-enroll-device-tpm-python.md
-        - name: X.509-igazolás
+              href: quick-create-simulated-device-tpm-python.md
+    - name: Eszközregisztrációk létrehozása DPS API-k használatával
+      items:
+        - name: Csoportos regisztráció X.509 tanúsítványigazolás használatával
           items:
             - name: Java
               href: quick-enroll-device-x509-java.md
@@ -65,6 +57,16 @@
               href: quick-enroll-device-x509-node.md
             - name: Python
               href: quick-enroll-device-x509-python.md
+        - name: Egyedi eszközregisztráció TPM-igazolás használatával
+          items:
+            - name: Java
+              href: quick-enroll-device-tpm-java.md
+            - name: 'C#'
+              href: quick-enroll-device-tpm-csharp.md
+            - name: Node.js
+              href: quick-enroll-device-tpm-node.md
+            - name: Python
+              href: quick-enroll-device-tpm-python.md
 - name: Oktatóanyagok
   items:
     - name: 1 – Felhőerőforrások beállítása
@@ -79,7 +81,7 @@
           href: tutorial-net-provision-device-to-hub.md
     - name: 4 – Eszközök kiépítése több hubon
       href: tutorial-provision-multiple-hubs.md
-    - name: 5 – Csoportos beléptetések létrehozása
+    - name: 5 – Csoportos regisztrációk beállítása
       href: tutorial-group-enrollments.md
 - name: Alapelvek
   items:
