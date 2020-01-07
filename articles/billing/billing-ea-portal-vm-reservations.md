@@ -4,16 +4,16 @@ description: Ez a cikk azt foglalja össze, hogyan takaríthat meg pénzt a vál
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 3c3d95feed4f7cf47448c4fe62d8368fa5498dd7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 11cdf3ec03c125b98938847390c71eb12d1b4800
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841320"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644511"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példányai
 
@@ -48,7 +48,7 @@ A fenntartott példányok a használatalapú fizetéshez képest akár 72 száza
 
 ### <a name="how-to-buy-reserved-virtual-machine-instances"></a>Fenntartott virtuálisgép-példányok megvásárlása
 
-Egy Azure-beli fenntartott virtuálisgép-példány megvásárlásához a vállalati Azure regisztrációs adminisztrátornak engedélyeznie kell a _Fenntartott példány_ vásárlási lehetőséget az [Azure EA Portal](https://ea.azure.com/) _Regisztráció_ lapjának _Regisztráció részletei_ szakaszában.
+Egy Azure-beli fenntartott virtuálisgép-példány megvásárlásához a vállalati Azure regisztrációs adminisztrátornak engedélyeznie kell a _Fenntartott példány_ vásárlási lehetőséget az [Azure EA Portal](https://ea.azure.com/)_Regisztráció_ lapjának _Regisztráció részletei_ szakaszában.
 
 Ha az EA-regisztrációhoz engedélyezett a fenntartott példányok hozzáadása, akkor az EA-regisztrációval társított aktív előfizetéssel rendelkező bármely fióktulajdonos vásárolhat fenntartott virtuálisgép-példányt az [Azure Portalon](https://aka.ms/reservations). További információkért lásd: [Előre fizetés virtuális gépekért és költségmegtakarítás fenntartott virtuálisgép-példányokkal](https://go.microsoft.com/fwlink/?linkid=861721).
 

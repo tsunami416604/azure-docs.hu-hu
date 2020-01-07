@@ -4,16 +4,16 @@ description: Ez a cikk az Azure nagyvállalati regisztrációhoz használható R
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: ea53ad91dcb411c43b367bfb43bc9dcea3d2bba7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 58f38cc3649c1d08187a4bb93be83422c8e7911b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841421"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644528"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API-k
 
@@ -75,7 +75,7 @@ Példa: bearer \&lt;APIKey\&gt; |
 
 ### <a name="swagger"></a>Swagger
 
-Swagger-végpont érhető el az [Enterprise Reporting v3 API-kban](https://consumption.azure.com/swagger/ui/index) a következő API-khoz. A Swagger segít az API vizsgálatában. A Swagger segítségével ügyféloldali SDK-kat hozhat létre az [AutoRest](https://github.com/Azure/AutoRest) vagy a [Swagger CodeGen](http://swagger.io/swagger-codegen/) használatával. A 2014. május 1. után elérhető adatok az API-n keresztül érhetők el.
+Swagger-végpont érhető el az [Enterprise Reporting v3 API-kban](https://consumption.azure.com/swagger/ui/index) a következő API-khoz. A Swagger segít az API vizsgálatában. A Swagger segítségével ügyféloldali SDK-kat hozhat létre az [AutoRest](https://github.com/Azure/AutoRest) vagy a [Swagger CodeGen](https://swagger.io/swagger-codegen/) használatával. A 2014. május 1. után elérhető adatok az API-n keresztül érhetők el.
 
 ### <a name="api-response-codes"></a>API-válaszkódok
 
