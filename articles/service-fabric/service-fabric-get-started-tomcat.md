@@ -1,24 +1,15 @@
 ---
-title: Azure Service Fabric-tároló létrehozása az Apache Tomcat Serverhez Linux rendszeren | Microsoft Docs
+title: Tároló létrehozása az Apache Tomcat számára Linuxon
 description: Hozzon létre Linux-tárolót az Apache Tomcat Serveren futó alkalmazások elérhetővé tétele érdekében az Azure Service Fabricon. Hozzon létre egy Docker-rendszerképet az alkalmazással és az Apache Tomcat-kiszolgálóval, küldje el a lemezképet egy tároló-beállításjegyzékbe, és hozzon létre és helyezzen üzembe egy Service Fabric Container alkalmazást
-services: service-fabric
-documentationcenter: .net
-author: JimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 7e14a027f17c15c83a4ce25a211ef6106f2d2eaa
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170605"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614417"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Apache Tomcat Servert futtató Service Fabric tároló létrehozása Linux rendszeren
 Az Apache Tomcat a Java servlet és a Java Server technológiák népszerű, nyílt forráskódú implementációja. Ez a cikk bemutatja, hogyan hozhat létre egy olyan tárolót az Apache Tomcat használatával és egy egyszerű webalkalmazással, hogyan helyezheti üzembe a tárolót egy Linux rendszerű Service Fabric-fürtön, és hogyan csatlakozhat a webalkalmazáshoz.  

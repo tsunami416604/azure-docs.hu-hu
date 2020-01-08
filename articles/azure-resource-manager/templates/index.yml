@@ -1,0 +1,125 @@
+### YamlMime:Landing
+title: Az Azure Resource Manager-sablon dokumentációja
+summary: A Resource Manager-sablon egy JavaScript Object Notation- (JSON-) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját.
+metadata:
+  title: Az Azure Resource Manager dokumentációja
+  description: Tudnivalók az Azure Resource Manager-sablonok fejlesztéséről és azok használatáról az Azure-erőforrások üzembe helyezéséhez
+  services: azure-resource-manager
+  ms.service: azure-resource-manager
+  ms.subservice: templates
+  ms.topic: landing-page
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 43cd4dadc33ddc498106084ee26ef0819c14b973
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75469930"
+landingContent:
+- title: Tudnivalók az Azure Resource Manager-sablonokról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mik azok a sablonok?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Ajánlott eljárások
+      url: template-best-practices.md
+    - text: Üzembehelyezési módok
+      url: deployment-modes.md
+    - text: Hivatkozott sablonok
+      url: linked-templates.md
+    - text: Előfizetés szintű üzembe helyezés
+      url: deploy-to-subscription.md
+  - linkListType: video
+    links:
+    - text: Újdonságok
+      url: https://youtu.be/3D-JIKShrws
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Sablonok létrehozása – portál
+      url: quickstart-create-templates-use-the-portal.md
+    - text: Sablonok létrehozása – VS Code
+      url: quickstart-create-templates-use-visual-studio-code.md
+    - text: Sablonok létrehozása – Visual Studio
+      url: create-visual-studio-deployment-project.md
+  - linkListType: tutorial
+    links:
+    - text: Kezdő szintű oktatóanyagok
+      url: template-tutorial-create-first-template.md
+    - text: Több példány üzembe helyezése
+      url: template-tutorial-create-multiple-instances.md
+    - text: Üzembehelyezési sorrend beállítása
+      url: template-tutorial-create-templates-with-dependent-resources.md
+    - text: A Key Vault integrálása
+      url: template-tutorial-use-key-vault.md
+- title: Sablonok fejlesztése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A VS Code használata
+      url: use-vs-code-to-create-template.md
+    - text: Függvények használata
+      url: template-functions.md
+    - text: Paraméterek megadása
+      url: template-parameters.md
+    - text: Változók meghatározása
+      url: template-variables.md
+    - text: Erőforrások meghatározása
+      url: template-syntax.md#resources
+    - text: Kimenetek meghatározása
+      url: template-outputs.md
+  - linkListType: reference
+    links:
+    - text: Sablonfájl szintaxisa
+      url: template-syntax.md
+    - text: Azure-gyorssablonok
+      url: https://azure.microsoft.com/resources/templates/
+- title: Sablonok üzembe helyezése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: PowerShell használatával
+      url: deploy-powershell.md
+    - text: CLI használatával
+      url: deploy-cli.md
+    - text: Portál használatával
+      url: deploy-portal.md
+    - text: REST API használatával
+      url: deploy-rest.md
+    - text: What-if típusú üzembe helyezés
+      url: template-deploy-what-if.md
+    - text: Üzembehelyezési előzmények megtekintése
+      url: deployment-history.md
+- title: Sablonok kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Sablonok exportálása
+      url: export-template-portal.md
+    - text: CI/CD
+      url: add-template-to-azure-pipelines.md
+- title: A referencia tartalmának áttekintése
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sablonreferencia
+      url: /azure/templates/
+    - text: REST API
+      url: /rest/api/resources/
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python

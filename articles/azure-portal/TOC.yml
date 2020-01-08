@@ -16,6 +16,10 @@
       href: azure-portal-dashboards-create-programmatically.md
 - name: Útmutatók
   items:
+    - name: Az Azure Portal-beállítások megadása
+      href: set-preferences.md
+    - name: Az összes felhasználó inaktív állapothoz kapcsolódó időtúllépési beállításainak megadása
+      href: admin-timeout.md
     - name: Kontrasztos megjelenítés bekapcsolása és téma módosítása
       href: azure-portal-change-theme-high-contrast.md
     - name: 'Kedvencek hozzáadása, eltávolítása és rendezése'

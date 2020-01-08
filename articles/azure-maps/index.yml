@@ -1,59 +1,172 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az Azure Maps dokumentációja
+summary: A Microsoft Azure Maps a webes és mobilalkalmazások földrajzi kontextusának biztosításához elérhető legfrissebb térképadatokat használó, hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Az Azure Maps egy Azure One API-kompatibilis REST API-készlet a Maps, Search, Routing, Traffic, Mobility, Weather, Time Zones, Geolocation, Geofencing, Map Data és Spatial Operations szolgáltatásokhoz, amely webes vagy Android-alapú SDK-kkal rendelkezik az egyszerű, rugalmas és különböző platformokon elérhető fejlesztés érdekében.
 metadata:
-  document_id: null
   title: Az Azure Maps dokumentációja | Microsoft Docs
-  meta.description: Use Azure Maps to provide geospatial services to your web or mobile application.
-  author: philmea
-  manager: null
+  description: Tudnivalók az Azure Mapsről és annak használatáról térinformatikai szolgáltatások nyújtásához web- vagy mobilalkalmazások esetében.
   ms.service: azure-maps
-  services: azure-maps
   ms.topic: landing-page
-  ms.date: 02/14/2019
+  author: philmea
   ms.author: philmea
-abstract:
-  description: 'Az Azure Maps a webes és mobilalkalmazások földrajzi kontextusának biztosításához elérhető legfrissebb térképadatokat használó, hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Az Azure Maps egy Azure One API-kompatibilis REST API-készlet a Maps, Search, Routing, Traffic, Mobility, Time Zones, Geolocation, Geofencing, Map Data és Spatial Operations szolgáltatásokhoz, amely webes vagy Android-alapú SDK-kkal rendelkezik az egyszerű, rugalmas és különböző platformokon elérhető fejlesztés érdekében.'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan hozhat létre térinformatikai alkalmazást az Azure Maps használatával.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_js.svg'
-            text: Webalkalmazás létrehozása
-            href: /azure/azure-maps/quick-demo-map-app
-  - title: Részletes útmutatók
-    items:
-      - html: <b>Webes SDK – oktatóanyagok</b>
-      - type: paragraph
-        text: Térinformatikai webalkalmazásokat hozhat létre az Azure Maps webes SDK-jának használatával.
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/azure-maps/tutorial-search-location">Hasznos helyek keresése</a>
-          - html: <a href="/azure/azure-maps/tutorial-route-location">Útvonal egy hasznos helyhez</a>
-          - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">Útvonalak utazási mód alapján</a>
-          - html: <a href="/azure/azure-maps/tutorial-create-store-locator">Áruházkereső létrehozása</a>
-      - html: <b>REST API – oktatóanyagok</b>
-      - type: paragraph
-        text: Az Azure Maps REST-szolgáltatásaiba meghívásokat intéző térinformatikai alkalmazásokat hozhat létre.
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/azure-maps/tutorial-geofence">Geokerítés beállítása</a>
-          - html: <a href="/azure/azure-maps/tutorial-iot-hub-maps">Térelemzés</a>
-          - html: <a href=/azure/azure-maps/tutorial-ev-routing">EV-útválasztás az Azure Notebooks használatával (Python)</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsW
-        items:
-          - title: JavaScript
-            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Térképvezérlő</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/">Rajzeszközök modul</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-rest/">Szolgáltatások modul</a></p>'
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">Adatszolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Földrajzi hely szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/mobility">Mobilitási szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Megjelenítő szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Útvonal szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Keresési szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Téradat-szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Időzóna szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Forgalom szolgáltatás</a></p>'
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 66721caadce09816368d673c217c9bf97daf1b6c
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75408652"
+landingContent:
+- title: Tudnivalók az Azure Mapsről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure Maps?
+      url: about-azure-maps.md
+  - linkListType: concept
+    links:
+    - text: Az Azure Maps lefedettsége
+      url: render-coverage.md
+    - text: Honosítási támogatás
+      url: supported-languages.md
+    - text: Támogatott térképstílusok
+      url: supported-map-styles.md
+  - linkListType: video
+    links:
+    - text: Az Azure Maps bemutatása
+      url: https://sec.ch9.ms/ch9/d498/3d435d2c-ac85-421b-b3a7-5e0c7630d498/IoT_AzureMaps_high.mp4
+- title: Első lépések
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Webalkalmazás létrehozása az Azure Maps használatával
+      url: quick-demo-map-app.md
+  - linkListType: concept
+    links:
+    - text: A megfelelő tarifacsomag kiválasztása a Maps-fiók számára
+      url: choose-pricing-tier.md
+    - text: Hitelesítés az Azure Maps használatával
+      url: azure-maps-authentication.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Maps-fiókok kezelése
+      url: how-to-manage-account-keys.md
+    - text: Hitelesítés kezelése az Azure Maps használatával
+      url: how-to-manage-authentication.md
+    - text: Azure Maps-fiók tarifacsomagjának kezelése
+      url: how-to-manage-pricing-tier.md
+    - text: Az Azure Maps API használati metrikáinak megtekintése
+      url: how-to-view-api-usage.md
+- title: Fejlesztés a webes SDK használatával
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A webes térképvezérlő használatának első lépései
+      url: how-to-use-map-control.md
+    - text: Azure Maps webes SDK – kódminták
+      url: https://azuremapscodesamples.azurewebsites.net/
+    - text: A webes SDK által támogatott böngészők
+      url: supported-browsers.md
+  - linkListType: tutorial
+    links:
+    - text: Hasznos hely keresése
+      url: tutorial-search-location.md
+    - text: Útvonal egy hasznos helyhez
+      url: tutorial-route-location.md
+    - text: Tárolólokátor létrehozása
+      url: tutorial-create-store-locator.md
+  - linkListType: reference
+    links:
+    - text: Térképvezérlő
+      url: https://docs.microsoft.com/javascript/api/azure-maps-control/?view=azure-maps-typescript-latest
+    - text: Rajzeszközök modul
+      url: https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/?view=azure-maps-typescript-latest
+    - text: Szolgáltatásmodul
+      url: https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest
+- title: Fejlesztés az Android SDK használatával
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az androidos térképvezérlő használatának első lépései
+      url: how-to-use-android-map-control-library.md
+    - text: Egy funkció metaadat-információinak megjelenítése
+      url: display-feature-information-android.md
+    - text: Csemperéteg hozzáadása térképhez
+      url: how-to-add-tile-layer-android-map.md
+    - text: Alakzatok hozzáadása térképhez
+      url: how-to-add-shapes-to-android-map.md
+- title: Fejlesztés a Location Based Services használatával
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Nagyítási szintek és csemperácsok
+      url: zoom-levels-and-tile-grid.md
+  - linkListType: tutorial
+    links:
+    - text: EV-útválasztás az Azure Notebooks használatával (Python)
+      url: tutorial-ev-routing.md
+  - linkListType: how-to-guide
+    links:
+    - text: Cím keresése (geokódolás)
+      url: how-to-search-for-address.md
+    - text: Ajánlott keresési eljárások
+      url: how-to-use-best-practices-for-search.md
+    - text: Egyéni adatok megjelenítése statikus térképen
+      url: how-to-render-custom-data.md
+  - linkListType: reference
+    links:
+    - text: Search szolgáltatás
+      url: https://docs.microsoft.com/rest/api/maps/search
+    - text: Route szolgáltatás
+      url: https://docs.microsoft.com/rest/api/maps/route
+    - text: Traffic szolgáltatás
+      url: https://docs.microsoft.com/rest/api/maps/traffic
+    - text: Time Zones szolgáltatás
+      url: https://docs.microsoft.com/rest/api/maps/timezone
+- title: Spatial Analytics
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az Azure Maps Event Grid-integrációja
+      url: azure-maps-event-grid-integration.md
+  - linkListType: tutorial
+    links:
+    - text: Geokerítés beállítása az Azure Maps használatával
+      url: tutorial-geofence.md
+    - text: IoT-térelemzés implementálása az Azure Maps használatával
+      url: tutorial-iot-hub-maps.md
+  - linkListType: reference
+    links:
+    - text: Data szolgáltatás
+      url: https://docs.microsoft.com/rest/api/maps/data
+    - text: Spatial szolgáltatás
+      url: https://docs.microsoft.com/rest/api/maps/spatial
+- title: Fejlesztés Mobility szolgáltatásokkal
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Mobility szolgáltatás adatstruktúrái
+      url: mobility-service-data-structure.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nyilvános átviteli útvonalak kérése
+      url: how-to-request-transit-data.md
+    - text: Valós idejű nyilvános átviteli adatok kérése
+      url: how-to-request-real-time-data.md
+  - linkListType: reference
+    links:
+    - text: Mobility szolgáltatás
+      url: https://docs.microsoft.com/rest/api/maps/mobility
+- title: Fejlesztés Weather szolgáltatásokkal
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A Weather szolgáltatással kapcsolatos fogalmak
+      url: weather-services-concepts.md
+  - linkListType: tutorial
+    links:
+    - text: Időjárásadatok elemzése az Azure Notebooks használatával (Python)
+      url: weather-service-tutorial.md
+  - linkListType: reference
+    links:
+    - text: Weather szolgáltatás
+      url: https://docs.microsoft.com/rest/api/maps/weather

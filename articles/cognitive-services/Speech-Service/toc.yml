@@ -1,13 +1,13 @@
-# displayName: additional text for filtering down the ToC in meaningful way.
 - name: A Speech szolgáltatás dokumentációja
   href: index.md
 - name: Áttekintés
-  expanded: false
+  expanded: true
   items:
     - name: Mi az a beszédszolgáltatás?
       href: overview.md
     - name: Nyelvi és régiós támogatás
       href: language-support.md
+      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code'
 - name: Diktálás
   expanded: false
   items:
@@ -15,7 +15,7 @@
       items:
         - name: Mi az a diktálás?
           href: speech-to-text.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Beszéd felismerése hangfájlból
           href: quickstarts/speech-to-text-from-file.md
@@ -51,36 +51,44 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: Kibocsátási megjegyzések
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: REST API-k
           items:
             - name: Diktálás REST API
               href: rest-speech-to-text.md
-            - name: Kötegelt átírás REST API-k
+            - name: Kötegelt átírás REST API
               href: batch-transcription.md
     - name: További források
       items:
         - name: Diktálás – GYIK
           href: faq-stt.md
+          displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
 - name: Szövegfelolvasás
-  exanded: false
+  expanded: false
   items:
     - name: Áttekintés
       items:
         - name: Mi az a szövegfelolvasás?
           href: text-to-speech.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Beszédszintézis egy hangfájlba
           href: quickstarts/text-to-speech-audio-file.md
@@ -104,18 +112,25 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: Kibocsátási megjegyzések
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: REST API-k
           items:
             - name: Szövegfelolvasás REST API
@@ -124,13 +139,15 @@
       items:
         - name: Szövegfelolvasás – GYIK
           href: faq-text-to-speech.md
+          displayName: 'FAQ,TTS FAQ,SS FAQ,frequently asked questions'
 - name: Szándékfelismerés
-  exanded: false
+  expanded: false
   items:
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: 'Beszéd, szándékok és entitások felismerése'
           href: quickstarts/intent-recognition.md
+          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
     - name: Útmutatók
       items:
         - name: 'A beszélő szándékának felismerése a LUIS szolgáltatással, C#'
@@ -141,30 +158,37 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: Kibocsátási megjegyzések
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: LUIS szolgáltatás
           items:
             - name: LUIS fejlesztői erőforrások
               href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: Beszédfordítás
-  exanded: false
+  expanded: false
   items:
     - name: Áttekintés
       items:
         - name: Mi az a beszédfordítás?
           href: speech-translation.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Diktálás fordítása
           href: quickstarts/translate-speech-to-text.md
@@ -182,18 +206,25 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: Kibocsátási megjegyzések
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
     - name: További források
       items:
         - name: Beszédfordítás – GYIK
@@ -217,18 +248,25 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: Kibocsátási megjegyzések
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: REST API-k
           items:
             - name: Beszédátírás REST API-k
@@ -246,7 +284,7 @@
           href: custom-commands.md
         - name: Direct Line Speech
           href: direct-line-speech.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: 'C# (UWP)'
           href: quickstart-voice-assistant-csharp-uwp.md
@@ -258,6 +296,8 @@
           href: quickstart-custom-speech-commands-create-new.md
         - name: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)
           href: quickstart-custom-speech-commands-create-parameters.md
+        - name: Egyéni parancsok használata Custom Voice-szal (előzetes verzió)
+          href: quickstart-custom-speech-commands-select-custom-voice.md
         - name: Egyéni parancsok használata a Speech SDK-val (előzetes verzió)
           href: quickstart-custom-speech-commands-speech-sdk.md
     - name: Útmutatók
@@ -266,6 +306,10 @@
           href: how-to-custom-speech-commands-fulfill-sdk.md
         - name: Paraméter-ellenőrzés hozzáadása az egyéni parancsokhoz
           href: how-to-custom-speech-commands-validations.md
+        - name: Megerősítés hozzáadása egyéni parancshoz
+          href: how-to-custom-speech-commands-confirmations.md
+        - name: Egylépéses javítás hozzáadása egyéni parancshoz
+          href: how-to-custom-speech-commands-one-step-correction.md
     - name: Oktatóanyagok
       items:
         - name: Robot hangvezérlésének engedélyezése a Speech SDK használatával
@@ -275,7 +319,7 @@
         - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
           href: faq-voice-assistants.md
 - name: Testreszabás
-  exanded: false
+  expanded: false
   items:
     - name: Diktálás
       items:
@@ -329,6 +373,8 @@
           items:
             - name: 'Útmutató: Hanganyag létrehozása'
               href: how-to-audio-content-creation.md
+    - name: Egyéni kulcsszóelnevezési irányelvek
+      href: speech-devices-sdk-kws-guidelines.md
     - name: Egyéni kulcsszófelismerés
       href: speech-devices-sdk-create-kws.md
 - name: Beszédszolgáltatás
@@ -346,16 +392,20 @@
         - name: Speech Service-erőforrás létrehozása
           href: 'get-started.md#create-a-speech-resource-in-azure'
         - name: Containers
-          exanded: false
+          expanded: false
           items:
             - name: Tárolók telepítése és futtatása
               href: speech-container-howto.md
+              displayName: 'containers,install container,run container'
             - name: Tárolók konfigurálása
               href: speech-container-configuration.md
+              displayName: 'containers,configure containers,container config,configuration'
             - name: Kubernetes és Helm
               href: speech-container-howto-on-premises.md
+              displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
             - name: Azure Container Instances
               href: deploy-speech-on-container-instances.md
+              displayName: 'ACI,azure container instances,container instances,containers'
     - name: Példák
       items:
         - name: Szövegfelolvasási REST-minták
@@ -385,24 +435,20 @@
           href: speech-sdk.md
         - name: Forgatókönyvek rendelkezésre állása
           href: scenario-availability.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Projekt létrehozása
           href: quickstarts/create-project.md
-        - name: 'Speech SDK beállítása C#-pal'
-          href: quickstarts/setup-platform.md?pivots=programming-language-csharp
-        - name: Speech SDK beállítása C++ -szal
-          href: quickstarts/setup-platform.md?pivots=programming-language-cpp
-        - name: Speech SDK beállítása Javával
-          href: quickstarts/setup-platform.md?pivots=programming-language-java
-        - name: Speech SDK beállítása Pythonnal
-          href: quickstarts/setup-platform.md?pivots=programming-language-python
-        - name: Speech SDK beállítása más platformokkal
-          href: quickstarts/setup-platform.md?pivots=programming-language-more
+        - name: A Speech SDK beállítása
+          href: quickstarts/setup-platform.md
+          displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
     - name: Útmutatók
       items:
-        - name: Naplózás engedélyezése
+        - name: A naplózás engedélyezése
           href: how-to-use-logging.md
+        - name: A memóriahasználat nyomon követése
+          href: how-to-track-speech-sdk-memory-usage.md
+          displayName: 'memory usage, memory consumption, object logging, object tracking, memory'
     - name: Példák
       items:
         - name: Speech SDK-minták (GitHub)
@@ -426,7 +472,7 @@
         - name: A Beszéd SDK kibocsátási megjegyzései
           href: releasenotes.md
 - name: Eszközök
-  exanded: false
+  expanded: false
   items:
     - name: Áttekintés
       items:
@@ -440,7 +486,7 @@
           href: speech-devices-sdk-microphone.md
         - name: Roobo v1 készlet
           href: speech-devices-sdk-roobo-v1.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Windows
           href: speech-devices-sdk-windows-quickstart.md
@@ -452,8 +498,12 @@
       items:
         - name: A Beszédeszközök SDK hibaelhárítása
           href: speech-devices-sdk-troubleshooting.md
+    - name: Referencia
+      items:
+        - name: A Beszédeszközök SDK kibocsátási megjegyzései
+          href: devices-sdk-release-notes.md
 - name: Migrálás
-  exanded: false
+  expanded: false
   items:
     - name: A Bing Speechből
       href: how-to-migrate-from-bing-speech.md
@@ -462,10 +512,11 @@
     - name: A Translator Speech API-ból
       href: how-to-migrate-from-translator-speech-api.md
 - name: További források
-  exanded: false
+  expanded: false
   items:
     - name: Támogatás
       href: support.md
+      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: Régiók
       href: regions.md
     - name: Díjszabás és korlátok

@@ -5,7 +5,7 @@
   items:
     - name: Mik az Azure-üzenetsorok?
       href: storage-queues-introduction.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Üzenetsorok kezelése kód nélkül
       items:
@@ -13,8 +13,16 @@
           href: storage-quickstart-queues-portal.md
     - name: Fejlesztés üzenetsorok használatával
       items:
-        - name: .NET
+        - name: .NET (v12)
           href: storage-quickstart-queues-dotnet.md
+        - name: .NET (v11)
+          href: storage-quickstart-queues-dotnet-legacy.md
+        - name: Java (v12)
+          href: storage-quickstart-queues-java.md
+        - name: Python (v12)
+          href: storage-quickstart-queues-python.md
+        - name: JavaScript (v12)
+          href: storage-quickstart-queues-nodejs.md
 - name: Oktatóanyagok
   items:
     - name: Azure Storage-üzenetsorok használata
@@ -31,11 +39,11 @@
       href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Biztonság
       items:
-        - name: Biztonsági áttekintés
-          href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Biztonsági javaslatok
+          href: security-recommendations.md
         - name: Azure Storage-titkosítás
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Engedélyezés
+        - name: Adatműveletek engedélyezése
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:
             - name: Hitelesítés és engedélyezés az Azure AD-vel
@@ -44,6 +52,8 @@
               href: /rest/api/storageservices/authorize-with-shared-key
             - name: Engedélyezés megosztott SAS-sel
               href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Felügyeleti műveletek engedélyezése
+          href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Speciális fenyegetésvédelem
           href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Beépített biztonsági vezérlők
@@ -65,12 +75,8 @@
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: HA-alkalmazások tervezése RA-GRS használatával
           href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Teljesítmény és skálázás
-      items:
-        - name: Méretezhetőségi és teljesítménycélok
-          href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Teljesítmény és kapacitás – ellenőrzőlista
-          href: storage-performance-checklist.md
+    - name: Teljesítmény és kapacitás – ellenőrzőlista
+      href: storage-performance-checklist.md
     - name: Egyidejűség
       href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Figyelés és hibaelhárítás
@@ -99,9 +105,7 @@
       items:
         - name: Tárfiók létrehozása
           displayName: 'resource manager, resource manager template, template, ARM'
-          href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Tárfiók kezelése
-          href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Tárfiók frissítése
           href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Üzenetsoradatok védelme
@@ -112,8 +116,10 @@
               items:
                 - name: Portál
                   href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: PowerShell vagy Azure CLI
-                  href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: PowerShell
+                  href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Hozzáférési jogosultságok felügyelete RBAC használatával
               items:
                 - name: Portál
@@ -130,6 +136,8 @@
                   href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Engedélyezés megosztott kulccsal
               items:
+                - name: Fiókkulcsok megtekintése és kezelése
+                  href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Kapcsolati sztringek konfigurálása
                   href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Az Azure Storage REST API használata
@@ -202,6 +210,14 @@
           href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: Referencia
   items:
+    - name: Méretezhetőségi és teljesítménycélok
+      items:
+        - name: Queue Storage
+          href: scalability-targets.md
+        - name: Standard szintű tárfiókok
+          href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Tárolásierőforrás-szolgáltató
+          href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Azure PowerShell
       href: /powershell/module/az.storage
     - name: Azure CLI

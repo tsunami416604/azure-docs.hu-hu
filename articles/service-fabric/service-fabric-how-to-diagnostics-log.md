@@ -1,39 +1,30 @@
 ---
-title: Alkalmazásnapló-események létrehozása a .NET Service Fabric-alkalmazáshoz az Azure-ban vagy egy önálló fürt
-description: Ismerje meg a naplózási hozzáadása egy Azure-fürtön vagy egy különálló – fürt által futtatott .NET Service Fabric-alkalmazásokat.
-services: service-fabric
-documentationcenter: .net
+title: Naplózási események létrehozása .NET-alkalmazásokból
+description: Ismerje meg, hogyan adhat hozzá naplózást az Azure-fürtön vagy önálló fürtön üzemeltetett .NET Service Fabric-alkalmazáshoz.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: d1b3dc25dd9bda9d7f9d9152c2a94cea8321f5cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482607"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614366"
 ---
-# <a name="add-logging-to-your-service-fabric-application"></a>Naplózás hozzáadása a Service Fabric-alkalmazás
+# <a name="add-logging-to-your-service-fabric-application"></a>Naplózás hozzáadása a Service Fabric alkalmazáshoz
 
-Az alkalmazás adjon meg elég információt forensically hibakeresése, ha problémák merülnek fel. A naplózás nem adhat hozzá a Service Fabric-alkalmazás a legfontosabb témák egyikét. Ha hiba történik, jó naplózást is egy módot biztosít hibák vizsgálata. Napló mintázatok elemzésével javíthatja a teljesítményt vagy az alkalmazás tervezési módjai tapasztalhatja. Ez a dokumentum bemutatja néhány különböző naplózási lehetőségeket.
+Az alkalmazásnak elegendő információt kell biztosítania a kriminalisztikai hibakereséshez, ha problémák merülnek fel. A naplózás a Service Fabric alkalmazáshoz felvehető legfontosabb dolgok egyike. Hiba esetén a megfelelő naplózás lehetővé teszi a hibák kivizsgálását. A naplók elemzésével az alkalmazás teljesítményének vagy kialakításának javítására is lehetőség van. Ez a dokumentum néhány különböző naplózási lehetőséget mutat be.
 
-## <a name="eventflow"></a>Eventflow segítségével
+## <a name="eventflow"></a>EventFlow segítségével
 
-A [szalagtár eventflow segítségével](https://github.com/Azure/diagnostics-eventflow) suite lehetővé teszi az alkalmazások meghatározása a diagnosztikai adatok gyűjtésére, és ahol, érdemes lehet használt kimeneti adattípus a. Diagnosztikai adatok az alkalmazások nyomkövetéseit kérelemteljesítmény-számlálókat bármi lehet. Azt fut ugyanabban a folyamatban, ahol az alkalmazás, így a kommunikációs terhelést másodpercekre csökken. További információ az eventflow segítségével és a Service Fabric: [Azure Service Fabric esemény összesítése az eventflow segítségével](service-fabric-diagnostics-event-aggregation-eventflow.md).
+A [EventFlow segítségével Library](https://github.com/Azure/diagnostics-eventflow) Suite lehetővé teszi az alkalmazások számára, hogy meghatározzák a gyűjteni kívánt diagnosztikai adatokat, és hogy hol legyenek leválasztva. A diagnosztikai adatok bármilyen típusúak lehetnek a teljesítményszámlálóktól az alkalmazás-nyomkövetésig. Ugyanabban a folyamatban fut, mint az alkalmazás, így a kommunikációs terhelés kisméretű. További információ a EventFlow segítségével és a Service Fabricről: [Azure Service Fabric Event összesítés a EventFlow segítségével](service-fabric-diagnostics-event-aggregation-eventflow.md).
 
-### <a name="using-structured-eventsource-events"></a>Strukturált EventSource események használata
+### <a name="using-structured-eventsource-events"></a>Strukturált EventSource-események használata
 
-Események használati eset meghatározó üzenet lehetővé teszi az esemény, az esemény környezetében csomag adatait. Könnyebben kereshet, és a szűrő nevét vagy a megadott esemény tulajdonságok értékei alapján. Strukturálja a rendszerállapot-kimenet teszi könnyebben olvasható, de szükséges további gondolkodási és időpontot, az egyes használati esetekhez esemény definiálása. 
+Az üzenetküldés a használati eset alapján lehetővé teszi az eseményre vonatkozó adatcsomagolást az esemény kontextusában. A megadott esemény tulajdonságainak neve vagy értékei alapján könnyebben kereshet és szűrheti a keresést. A rendszerállapot-kimenet strukturálása megkönnyíti az olvasást, de több gondolatot és időt igényel az egyes használati esetekhez tartozó események definiálásához. 
 
-Néhány esemény definíciókat meg lehet osztani a teljes alkalmazáson. Például egy metódus indítási vagy leállítási esemény lenne felhasználható sok szolgáltatás az alkalmazáson belül. Előfordulhat, hogy a tartomány-specifikus szolgáltatást, például egy rendelési rendszer egy **CreateOrder** esemény, amely rendelkezik a saját egyedi esemény. Ez a megközelítés előfordulhat, hogy sok események létrehozása, és előfordulhat, hogy a tranzakciókoordináció-azonosítók projektcsapatok között. 
+Egyes események definíciói megoszthatók a teljes alkalmazásban. Egy metódus indítási vagy leállítási eseménye például egy alkalmazás számos szolgáltatásán újra felhasználható. A tartományi specifikus szolgáltatások, például a megrendelési rendszerek rendelkezhetnek egy **CreateOrder** -eseménnyel, amely a saját egyedi eseménnyel rendelkezik. Ez a megközelítés számos eseményt eredményezhet, és lehetséges, hogy az azonosítók koordinálására van szükség a projekt csapatok között. 
 
 ```csharp
 [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -66,9 +57,9 @@ internal sealed class ServiceEventSource : EventSource
 
 ```
 
-### <a name="using-eventsource-generically"></a>EventSource általános használatával
+### <a name="using-eventsource-generically"></a>A EventSource általános használata
 
-Adott események meghatározása nehéz lehet, mivel Sokan néhány események, amelyek általában kimenete egy karakterlánc adataik paraméterek közös csoportját határozza meg. Nagy része a strukturált aspektus elvész, és a bonyolultabb, és az eredmények szűréséhez. Ebben a megközelítésben néhány események, amelyek megfelelnek a naplózási szintek általában vannak meghatározva. Az alábbi kódrészlet egy hibakeresési és a hiba üzenetet határozza meg:
+Mivel a konkrét események meghatározása nehéz lehet, sok ember definiál néhány eseményt egy közös paraméterrel, amely általában az adatokat karakterláncként adja ki. A strukturált aspektus nagy része elvész, és nehezebb megkeresni és szűrni az eredményeket. Ebben a megközelítésben néhány olyan esemény van meghatározva, amely általában megfelel a naplózási szinteknek. A következő kódrészlet egy hibakeresési és hibaüzenetet definiál:
 
 ```csharp
 [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -99,27 +90,27 @@ internal sealed class ServiceEventSource : EventSource
 
 ```
 
-A strukturált és Általános kialakítási hibrid használatával is is megfelelően működjön. Strukturált kialakítási szolgál a jelentéskészítési hibák és a metrikák. A részletes naplózást, a hibaelhárításhoz mérnökök által felhasznált általános események használható.
+A strukturált és általános rendszerállapot hibrid használata is jól használható. A strukturált rendszerállapot-kimutatási hibák és mérőszámok jelentésére szolgál. Általános események a mérnökök által a hibaelhárításhoz felhasznált részletes naplózáshoz használhatók.
 
-## <a name="microsoftextensionslogging"></a>Microsoft.Extensions.Logging
+## <a name="microsoftextensionslogging"></a>Microsoft. Extensions. Logging
 
-Az ASP.NET Core-naplózás ([Microsoft.Extensions.Logging NuGet-csomag](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) egy naplózási keretrendszer, amely a standard szintű naplózási API-t biztosít az alkalmazás. Más naplózási háttérrendszerek támogatása ASP.NET Core-naplózás lehet csatlakoztatni. Így sokkal kód módosítása nélkül az alkalmazás a bejelentkezés támogatását számos feldolgozását.
+A ASP.NET Core naplózás ([Microsoft. Extensions. Logging NuGet csomag](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) egy naplózási keretrendszer, amely szabványos naplózási API-t biztosít az alkalmazás számára. A többi naplózási háttér támogatása csatlakoztatható ASP.NET Core naplózáshoz. Ez számos támogatást biztosít az alkalmazásban való bejelentkezéshez, anélkül, hogy sok kódot kellene módosítania.
 
-1. Adja hozzá a **Microsoft.Extensions.Logging** NuGet csomagot a projekthez, eszközt szeretne. Továbbá adja hozzá a szolgáltató csomagokat. További információkért lásd: [az ASP.NET Core-naplózás](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
-2. Adjon hozzá egy **használatával** direktívát **Microsoft.Extensions.Logging** a szolgáltatás fájlhoz.
-3. Adjon meg egy privát változót a szolgáltatás osztályon belül.
+1. Adja hozzá a **Microsoft. Extensions. Logging** NuGet-csomagot a felvenni kívánt projekthez. Adja hozzá a szolgáltatói csomagokat is. További információ: [bejelentkezés ASP.net Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
+2. Adja hozzá a **Microsoft. Extensions. Logging** fájlhoz tartozó **using** direktívát a szolgáltatás fájljához.
+3. Definiáljon egy privát változót a szolgáltatási osztályon belül.
 
    ```csharp
    private ILogger _logger = null;
    ```
 
-4. Az osztály a konstruktorban lévő adja hozzá ezt a kódot:
+4. A szolgáltatási osztály konstruktorában adja hozzá a következő kódot:
 
    ```csharp
    _logger = new LoggerFactory().CreateLogger<Stateless>();
    ```
 
-5. Indítsa el a szándékkal, a metódusok a kódot. Az alábbiakban néhány minták:
+5. Megkezdheti a kód üzembe helyezését a metódusokban. Íme néhány példa:
 
    ```csharp
    _logger.LogDebug("Debug-level event from Microsoft.Logging");
@@ -130,24 +121,24 @@ Az ASP.NET Core-naplózás ([Microsoft.Extensions.Logging NuGet-csomag](https://
    _logger.LogInformation("{RequestName} {Duration}", "MyRequest", requestDuration);
    ```
 
-### <a name="using-other-logging-providers"></a>Más naplózási szolgáltatók használatával
+### <a name="using-other-logging-providers"></a>Más naplózási szolgáltatók használata
 
-Néhány külső szolgáltatók használatát a megközelítés az előző szakaszban leírt beleértve [Serilog](https://serilog.net/), [NLog](https://nlog-project.org/), és [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Ezen az ASP.NET Core-naplózás is csatlakoztathatja, vagy külön-külön használhatná őket. Serilog van olyan szolgáltatás, amely bővíti a naplózó küldött üzenetek. Ez a funkció akkor lehet hasznos, a kimenetben a szolgáltatás neve, típusa és a partíciónak az adatait. Ez a funkció használata az ASP.NET Core-infrastruktúra, hajtsa végre ezeket a lépéseket:
+Egyes harmadik féltől származó szolgáltatók az előző szakaszban leírt módszert használják, beleértve a [Serilog](https://serilog.net/), a [NLog](https://nlog-project.org/)és a [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Mindegyiket csatlakoztathatja ASP.NET Core naplózáshoz, vagy külön is használhatja őket. A Serilog olyan funkcióval rendelkezik, amely a naplózó összes üzenetet gazdagítja. Ez a szolgáltatás hasznos lehet a szolgáltatásnév, a típus és a partíció adatainak kimenete. Ha ezt a funkciót a ASP.NET Core-infrastruktúrában szeretné használni, hajtsa végre a következő lépéseket:
 
-1. Adja hozzá a **Serilog**, **Serilog.Extensions.Logging**, **Serilog.Sinks.Literate**, és **Serilog.Sinks.Observable** NuGet-csomagok a projekthez. 
-2. Hozzon létre egy `LoggerConfiguration` és a naplózó példány.
+1. Adja hozzá a **Serilog**, a **Serilog. Extensions. Logging**, a **Serilog. mosogatós. írástudó**és a **Serilog. mosogató. megfigyelhető** NuGet-csomagokat a projekthez. 
+2. Hozzon létre egy `LoggerConfiguration` és egy Logger-példányt.
 
    ```csharp
    Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
    ```
 
-3. Adjon hozzá egy `Serilog.ILogger` a szolgáltatás konstruktor, és az újonnan létrehozott naplózó pass argumentum.
+3. Adjon hozzá egy `Serilog.ILogger` argumentumot a szolgáltatás konstruktorához, és adja át az újonnan létrehozott naplózó.
 
    ```csharp
    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
    ```
 
-4. A szolgáltatás konstruktor hoz létre a tulajdonság enrichers **servicetypename tulajdonság is**, **ServiceName**, **PartitionId**, és **InstanceId** .
+4. A szolgáltatás konstruktorában a **ServiceTypeName**, **szolgáltatásnév**, **PartitionID**és **InstanceId**tulajdonság-gazdagítók jönnek létre.
 
    ```csharp
    public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)
@@ -167,15 +158,15 @@ Néhány külső szolgáltatók használatát a megközelítés az előző szaka
    }
    ```
 
-5. Alakítsa ki úgy a kódot ugyanaz, mintha az ASP.NET Core Serilog nélkül használja.
+5. A kód megegyeznek azzal, mintha Serilog nélkül használta ASP.NET Core.
 
    >[!NOTE]
-   >Azt javasoljuk, hogy Ön *nem* használhatja a statikus `Log.Logger` az előző példában. A Service Fabric belül egyetlen folyamat ugyanolyan szolgáltatás több példánya is üzemeltethet. Ha a statikus `Log.Logger`, a legutolsó író, a tulajdonság enrichers jelennek meg értékek az összes futtató példányhoz. Ez az egyik oka _logger változó a szolgáltatás osztály tagjai változót. Is, meg kell adni a `_logger` közös kód, amely előfordulhat, hogy használható-szolgáltatás számára elérhető.
+   >Azt javasoljuk, hogy *ne* használja a statikus `Log.Logger` az előző példával. Service Fabric ugyanazon szolgáltatástípus több példányát is üzemeltetheti egyetlen folyamaton belül. Ha a statikus `Log.Logger`használja, a tulajdonság-gazdagítók utolsó írója a-t futtató összes példány értékeit megjeleníti. Ez az egyik oka annak, hogy a _logger változó a Service osztály egy privát tagja változó. Emellett elérhetővé kell tennie a `_logger` a közös programkód számára is, amely a szolgáltatások között is felhasználható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ [alkalmazás figyelése a Service Fabric](service-fabric-diagnostics-event-generation-app.md).
-- Olvassa el a naplózás [eventflow segítségével](service-fabric-diagnostics-event-aggregation-eventflow.md) és [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).
+- További információ az [alkalmazások figyeléséről Service Fabricban](service-fabric-diagnostics-event-generation-app.md).
+- További információ a [EventFlow segítségével](service-fabric-diagnostics-event-aggregation-eventflow.md) és a [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md)való naplózásról.
 
 
 

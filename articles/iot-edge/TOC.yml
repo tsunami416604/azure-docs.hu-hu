@@ -4,7 +4,7 @@
   items:
     - name: Tudnivalók az Azure IoT Edge-ről
       href: about-iot-edge.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Kód üzembe helyezése Linux-eszközön
@@ -53,7 +53,7 @@
           href: tutorial-store-data-sql-server.md
     - name: 4. Peremhálózati gépi tanulás végpontok közötti példája
       items:
-        - name: Bevezetés
+        - name: Introduction (Bevezetés)
           href: tutorial-machine-learning-edge-01-intro.md
         - name: Fejlesztői gép és az Azure-szolgáltatások beállítása
           href: tutorial-machine-learning-edge-02-prepare-environment.md
@@ -125,6 +125,10 @@
           href: how-to-install-iot-edge-ubuntuvm.md
         - name: Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
+        - name: Éles tanúsítványok telepítése
+          href: how-to-install-production-certificates.md
+        - name: Teszttanúsítványok létrehozása
+          href: how-to-create-test-certificates.md
         - name: Futtatókörnyezet verziójának frissítése
           href: how-to-update-iot-edge.md
     - name: Automatikus regisztráció DPS-sel

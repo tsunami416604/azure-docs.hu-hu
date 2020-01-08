@@ -10,7 +10,7 @@
       href: environment/intro.md
     - name: Az üzemeltetési lehetőségek összehasonlítása
       href: /azure/architecture/guide/technology-choices/compute-decision-tree
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: .NET Core-alkalmazás létrehozása
@@ -163,7 +163,7 @@
               href: configure-authentication-provider-twitter.md
         - name: Speciális hitelesítés
           href: app-service-authentication-how-to.md
-        - name: IP-címek korlátozása
+        - name: Hozzáférés korlátozása
           href: app-service-ip-restrictions.md
         - name: Felügyelt identitás használata
           href: overview-managed-identity.md
@@ -203,6 +203,8 @@
           href: app-service-web-app-cloning.md
         - name: Erőforrások áthelyezése
           href: '../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
+        - name: Törölt App Service visszaállítása
+          href: app-service-undelete.md
     - name: Háttérfeladatok futtatása
       items:
         - name: WebJobs-feladatok létrehozása
@@ -234,7 +236,7 @@
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: Kvótákra vonatkozó információk
-      href: '../azure-subscription-service-limits.md#app-service-limits'
+      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: Migration Assistant-útmutatók

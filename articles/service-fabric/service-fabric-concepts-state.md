@@ -1,44 +1,35 @@
 ---
-title: Az Azure Service Fabric-szolgáltatások állapot kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan definiálása és kezelése a Service Fabric-szolgáltatások.
-services: service-fabric
-documentationcenter: .net
+title: Állapot kezelése az Azure Service Fabric Services szolgáltatásban
+description: Az Azure Service Fabric állapotának megismerése, beleértve a szolgáltatási állapot definiálásának és kezelésének módját Service Fabric-szolgáltatásokban.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f5e618a5-3ea3-4404-94af-122278f91652
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e3ab36def2d210bd763f3ce2dc5df155e37e2dba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9acd3031d1071d1822791b333976aaf76161600f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60870893"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614570"
 ---
 # <a name="service-state"></a>Szolgáltatás állapota
-**Szolgáltatás állapota** a memóriában vagy a lemez adatait, amely a függvény feltétele, hogy egy szolgáltatás hivatkozik. Tartalmaz, például az adattárakon és tagváltozók, amely a szolgáltatás olvassa be és ír működnek. Attól függően, hogy a szolgáltatás lett tervezve is tartalmazhat fájlokat vagy más erőforrásokat, amelyek tárolása a lemezen. Például a fájlok egy adatbázist használja adatok és a tranzakciós naplók tárolására.
+A **szolgáltatás állapota** arra a memóriára vagy lemezen tárolt adatra vonatkozik, amelyet a szolgáltatásnak működnie kell. Ez magában foglalja például a szolgáltatás által beolvasott és írt adatstruktúrákat és a tagok változóit. A szolgáltatás tervezésének módjától függően előfordulhat, hogy a lemezen tárolt fájlokat vagy más erőforrásokat is tartalmazhat. Például az a fájl, amelyet az adatbázis az adattárolók és a tranzakciós naplók tárolására fog használni.
 
-Példa szolgáltatásként vegyünk számológépet. Egy egyszerű számológép szolgáltatás két számot vesz igénybe, és az összegük adja vissza. A számítást magában foglalja a nincs tagváltozók és egyéb adatait.
+Példaként vegyünk egy számológépet. Az alapszintű számológép-szolgáltatás két számot vesz igénybe, és visszaadja az összeget. A számítás végrehajtásához nem tartozik tag változó vagy egyéb információ.
 
-Tegyük fel, az azonos Számológép, de egy további módszerrel tárolására és az utolsó összeg visszaadó számított rendelkezik. Ez a szolgáltatás jelenleg állapot-nyilvántartó. Állapotalapú azt jelenti, hogy bizonyos állapot, amely kiszámítja az új összeg, és beolvassa a, amikor Ön feltesz, hogy az utolsó számított összegének visszaadása ír tartalmaz.
+Most gondolja át ugyanezt a számológépet, de egy további módszer a kiszámított utolsó összeg tárolásához és visszaküldéséhez. Ez a szolgáltatás most állapot-nyilvántartó. Állapot-nyilvántartó azt jelenti, hogy olyan állapotot tartalmaz, amelyet a rendszer ír, amikor új összeget számít ki, és beolvassa azt, amikor azt kéri, hogy adja vissza az utolsó számított összeget.
 
-Az első szolgáltatás az Azure Service Fabric állapotmentes szolgáltatás neve. A második szolgáltatás egy állapotalapú szolgáltatás neve.
+Az Azure Service Fabric az első szolgáltatást állapot nélküli szolgáltatásnak nevezzük. A második szolgáltatást állapot-nyilvántartó szolgáltatásnak nevezzük.
 
-## <a name="storing-service-state"></a>Szolgáltatás állapotának tárolására.
-Állam vagy externalized vagy a kóddal, amely az állapot akkor kezelésére szolgáló közös elhelyezésű. Állapot externalizációja általában egy külső adatbázisok vagy más adattárolóbeli tárolására, a hálózaton keresztül, vagy ugyanazon a gépen folyamaton kívül különböző gépeken futó használatával történik. A kalkulátor példánkban az adattár lehet egy SQL database vagy az Azure Table Store példányát. Minden kérelmet a sum számítási frissítést végez az adatokon, és a szolgáltatás arra kéri, hogy a store-ból beolvasott folyamatban van a jelenlegi érték eredmény érték visszaadása. 
+## <a name="storing-service-state"></a>Szolgáltatás állapotának tárolása
+Az állapot lehet külsőleg, vagy az állapotot manipuláló kóddal együtt. A externalizációja általában egy külső adatbázis vagy más, a hálózaton keresztül különböző gépeken futó, vagy az ugyanazon a gépen található folyamaton kívüli adattár használatával végezhető el. A számológép példájában az adattár lehet az Azure Table Store SQL-adatbázisa vagy-példánya. Az összeg kiszámításához szükséges minden kérelem egy frissítést hajt végre az adatokon, és a szolgáltatásnak küldött kérések visszaadja az értéket az áruházból beolvasott aktuális értékből. 
 
-Állapot elhelyezve a kódot, amely kezeli a állapotot is. A Service Fabric állapotalapú szolgáltatások általában beépített modell használatával. Győződjön meg arról, hogy ebben az állapotban magas rendelkezésre állású, egységes és tartós, és, hogy a szolgáltatások beépített így egyszerűen méretezhető infrastruktúrát biztosít a Service Fabric.
+Az állapot az állapotot kezelő kóddal együtt is elhelyezhető. A Service Fabric állapot-nyilvántartó szolgáltatásai általában a modell használatával készültek. Service Fabric biztosítja az infrastruktúrát annak biztosítására, hogy ez az állapot nagyfokú rendelkezésre állású, konzisztens és tartós legyen, és hogy a szolgáltatások így könnyen méretezhetők legyenek.
 
-## <a name="next-steps"></a>További lépések
-A Service Fabric fogalmakról további információkért tekintse meg a következő cikkeket:
+## <a name="next-steps"></a>Következő lépések
+Service Fabric fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Service Fabric-szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)
-* [Service Fabric-szolgáltatások méretezhetősége](service-fabric-concepts-scalability.md)
-* [Service Fabric-szolgáltatások particionálása](service-fabric-concepts-partitioning.md)
-* [A Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md)
+* [Service Fabric szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)
+* [Service Fabric szolgáltatások skálázhatósága](service-fabric-concepts-scalability.md)
+* [Service Fabric szolgáltatások particionálása](service-fabric-concepts-partitioning.md)
+* [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md)

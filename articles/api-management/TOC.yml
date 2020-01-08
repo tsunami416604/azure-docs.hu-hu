@@ -6,7 +6,9 @@
       href: api-management-key-concepts.md
     - name: Az API Management-funkciók rendelkezésre állása
       href: api-management-features.md
-- name: Gyors útmutatók
+    - name: AKS-ben üzembe helyezett mikroszolgáltatások kezelése
+      href: api-management-kubernetes.md
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Példány létrehozása – Portal

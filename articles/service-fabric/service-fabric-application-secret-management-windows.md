@@ -1,58 +1,49 @@
 ---
-title: Állítsa be a titkosítási tanúsítványt, és titkosítani a titkos kulcsok az Azure Service Fabric Windows-fürtök |} A Microsoft Docs
-description: Ismerje meg, hogyan állítsa be a titkosítási tanúsítványt, és Windows-fürtök a titkos kulcsok titkosítására.
-services: service-fabric
-documentationcenter: .net
+title: Titkosítási tanúsítvány beállítása Windows-fürtökön
+description: Megtudhatja, hogyan állíthat be titkosítási tanúsítványt és titkosíthatja a titkokat a Windows-fürtökön.
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 3d324c54d10433520a73f2bd836c26bd79f1b3bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d9413a37be221adc375836719dc1f467a5571fa0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615255"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610182"
 ---
-# <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Állítsa be a titkosítási tanúsítványt, és a kulcsok a Windows-fürtök titkosítása
-Ez a cikk bemutatja, hogyan állítsa be a titkosítási tanúsítványt, és a kulcsok a Windows-fürtök titkosíthatja. Linux-fürtöket, lásd: [beállítása beállítása egy titkosítási tanúsítványt, és titkosítani a titkos kulcsokat a Linux-fürtökön.][secret-management-linux-specific-link]
+# <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Titkosítási tanúsítvány beállítása és a titkok titkosítása Windows-fürtökön
+Ez a cikk bemutatja, hogyan állíthat be titkosítási tanúsítványt, és hogyan titkosíthatja a titkokat a Windows-fürtökön. Linux-fürtök esetében lásd: [titkosítási tanúsítvány beállítása és a titkok titkosítása Linux-fürtökön.][secret-management-linux-specific-link]
 
-[Az Azure Key Vault] [ key-vault-get-started] itt történik, a tanúsítványok biztonságos tárolási helyként, valamint arra, hogy a Service Fabric-fürtök az Azure-ban telepített tanúsítványok beolvasása. Ha nem telepíti az Azure-ba, nem kell a titkos kulcsokat a Service Fabric-alkalmazások kezelése a Key Vault használatával. Azonban *használatával* egy alkalmazás titkos kulcsainak van cloud platform-agnosztikus üzemeltetett fürt központilag telepített alkalmazások. 
+A [Azure Key Vault][key-vault-get-started] a tanúsítványok biztonságos tárolási helyeként, valamint az Azure-beli Service Fabric-fürtökön telepített tanúsítványok beszerzésének módjaként használatos. Ha nem telepíti az Azure-t, nincs szükség a Key Vault használatára a titkok kezeléséhez Service Fabric alkalmazásokban. Azonban az alkalmazásokban a titkos kódok *használatával* a felhőalapú platform-agnosztikus lehetővé teszi, hogy az alkalmazások a bárhol üzemeltetett fürtön legyenek telepítve. 
 
-## <a name="obtain-a-data-encipherment-certificate"></a>Adatok titkosítási tanúsítvány beszerzése
-Egy data titkosítási tanúsítvánnyal szigorúan szolgál az titkosítását és visszafejtését [paraméterek] [ parameters-link] a szolgáltatások Settings.xml és [környezeti változók] [ environment-variables-link] a ServiceManifest.xml a szolgáltatás. Akkor sem a hitelesítéshez használt vagy titkosított szöveget az aláírást. A tanúsítvány a következő követelményeknek kell megfelelnie:
+## <a name="obtain-a-data-encipherment-certificate"></a>Titkosítási-tanúsítvány beszerzése
+Az titkosítási-tanúsítvány szigorúan a szolgáltatás beállításaiban található [Paraméterek][parameters-link] titkosítására és visszafejtésére szolgál. az XML-és [környezeti változók][environment-variables-link] a szolgáltatás ServiceManifest. XML fájljában jelennek meg. Nem használatos a titkosított szöveg hitelesítéséhez vagy aláírásához. A tanúsítványnak meg kell felelnie a következő követelményeknek:
 
 * A tanúsítványnak tartalmaznia kell egy titkos kulcsot.
-* A kulcscseréhez használt, a személyes információcsere (.pfx) fájl exportálható a tanúsítványt kell létrehozni.
-* A tanúsítvány kulcshasználati adattitkosítás (10) kell tartalmaznia, és nem tartalmazhat kiszolgálói hitelesítés vagy az ügyfél-hitelesítéssel. 
+* A tanúsítványt létre kell hozni a személyes információcsere (. pfx) fájlba exportálható kulcscsere-fájlhoz.
+* A tanúsítvány használatának tartalmaznia kell az adatok titkosítási (10), és nem tartalmazhat kiszolgálói hitelesítést vagy ügyfél-hitelesítést. 
   
-  Például, ha a PowerShell-lel, önaláírt tanúsítvány létrehozása a `KeyUsage` jelzőt kell beállítani `DataEncipherment`:
+  Ha például egy önaláírt tanúsítványt hoz létre a PowerShell használatával, a `KeyUsage` jelzőt a következőre kell állítani: `DataEncipherment`:
   
   ```powershell
   New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject mydataenciphermentcert -Provider 'Microsoft Enhanced Cryptographic Provider v1.0'
   ```
 
-## <a name="install-the-certificate-in-your-cluster"></a>Telepítse a tanúsítványt a fürtben
-Ezt a tanúsítványt a fürt minden csomópontján telepítve kell lennie. Lásd: [hogyan hozhat létre egy fürtöt az Azure Resource Manager] [ service-fabric-cluster-creation-via-arm] telepítési utasítások alapján. 
+## <a name="install-the-certificate-in-your-cluster"></a>A tanúsítvány telepítése a fürtben
+Ezt a tanúsítványt a fürt minden csomópontján telepíteni kell. Lásd: [fürt létrehozása Azure Resource Manager használatával][service-fabric-cluster-creation-via-arm] a telepítési utasításokhoz. 
 
-## <a name="encrypt-application-secrets"></a>Titkos alkalmazáskulcsok titkosítása
-A következő PowerShell-parancsot a titkos kulcs titkosítására szolgál. Ez a parancs csak titkosítja a értéket; ugyanúgy **nem** jelentkezzen a titkosított szöveget. A titkos értékek ciphertext előállításához a fürtben telepített ugyanolyan titkosítási tanúsítvánnyal kell használnia:
+## <a name="encrypt-application-secrets"></a>Alkalmazás-titkok titkosítása
+A titkos kulcs titkosításához a következő PowerShell-parancs használható. Ez a parancs csak az értéket titkosítja; **nem** írja alá a titkosítási szöveget. A titkos értékek rejtjelezett létrehozásához ugyanazt a titkosítási-tanúsítványt kell használnia, amely a fürtön telepítve van:
 
 ```powershell
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-Az eredményül kapott base-64 kódolású karakterláncot tartalmazza a titkos ciphertext és is a titkosításhoz használt tanúsítvány adatait.
+Az eredményül kapott Base-64 kódolású karakterlánc a titkos rejtjelezett is tartalmazza, valamint a titkosításhoz használt tanúsítvánnyal kapcsolatos információkat.
 
-## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan [adja meg a titkosított titkos kulcsok egy alkalmazásban.][secret-management-specify-encrypted-secrets-link]
+## <a name="next-steps"></a>Következő lépések
+Megtudhatja, hogyan [határozhat meg titkosított titkot egy alkalmazásban.][secret-management-specify-encrypted-secrets-link]
 
 <!-- Links -->
 [key-vault-get-started]:../key-vault/key-vault-overview.md

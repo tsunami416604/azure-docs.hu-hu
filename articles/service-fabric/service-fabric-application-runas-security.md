@@ -1,32 +1,21 @@
 ---
-title: Azure Service Fabric szolgáltatás futtatása a rendszer és a helyi biztonsági fiókok területen | Microsoft Docs
+title: Szolgáltatás futtatása a rendszer és a helyi biztonsági fiókok alatt
 description: Megtudhatja, hogyan futtathat Service Fabric alkalmazást a rendszer-és a helyi biztonsági fiókokban.  Hozzon létre rendszerbiztonsági tagokat, és alkalmazza a futtató házirendet a szolgáltatások biztonságos futtatásához.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/29/2018
-ms.author: atsenthi
-ms.openlocfilehash: 8b0ddc619a7e840b0379a790bd21e7beae812109
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600052"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610121"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Szolgáltatás futtatása helyi felhasználói fiókként vagy helyi rendszerfiókként
-Az Azure Service Fabric használatával a fürtben futó alkalmazások különböző felhasználói fiókokban is biztonságossá tehetők. Alapértelmezés szerint Service Fabric alkalmazások a Fabric. exe folyamat alatt futó fiók alatt futnak. A Service Fabric lehetővé teszi az alkalmazások helyi felhasználói vagy rendszerfiókkal történő futtatását is. A helyi rendszerfiókok támogatott típusai a következők: **LocalUser**, **NetworkService**, **LocalService**és **LocalSystem**.  Ha a Service Fabrict egy önálló Windows-fürtön futtatja, akkor a [Active Directory tartományi fiókok](service-fabric-run-service-as-ad-user-or-group.md) vagy csoportosan [felügyelt](service-fabric-run-service-as-gmsa.md)szolgáltatásfiókok területen futtathatja a szolgáltatást.
+Az Azure Service Fabric használatával a fürtben futó alkalmazások különböző felhasználói fiókokban is biztonságossá tehetők. Alapértelmezés szerint Service Fabric alkalmazások a Fabric. exe folyamat alatt futó fiók alatt futnak. A Service Fabric lehetővé teszi az alkalmazások helyi felhasználói vagy rendszerfiókkal történő futtatását is. A helyi rendszerfiókok támogatott típusai a következők: **LocalUser**, **NetworkService**, **LocalService**és **LocalSystem**.  Ha a Service Fabrict egy önálló Windows-fürtön futtatja, akkor a [Active Directory tartományi fiókok](service-fabric-run-service-as-ad-user-or-group.md) vagy [csoportosan felügyelt](service-fabric-run-service-as-gmsa.md)szolgáltatásfiókok területen futtathatja a szolgáltatást.
 
 Az alkalmazás jegyzékfájljában meghatározhatja a szolgáltatások futtatásához szükséges felhasználói fiókokat, illetve az erőforrások biztonságos elérését a **résztvevők** szakaszban. Létrehozhat és létrehozhat felhasználói csoportokat is, hogy egy vagy több felhasználó egyszerre kezelhető legyen. Ez akkor hasznos, ha több felhasználó van a különböző szolgáltatási belépési pontokhoz, és a csoport szintjén elérhető általános jogosultságokra van szükségük.  A felhasználók ezután egy futtató házirendben lesznek hivatkozva, amely egy adott szolgáltatásra vagy az alkalmazás összes szolgáltatására vonatkozik. 
 
-Alapértelmezés szerint a rendszer a fő belépési pontra alkalmazza a RunAs-házirendet.  Egy futtató házirendet is alkalmazhat a telepítési belépési pontra, ha a rendszerfiókban [bizonyos magas szintű jogosultságokkal rendelkező telepítési műveleteket](service-fabric-run-script-at-service-startup.md)kell futtatnia, vagy a fő és a telepítési belépési pontokat is.  
+Alapértelmezés szerint a rendszer a fő belépési pontra alkalmazza a RunAs-házirendet.  Egy futtató házirendet is alkalmazhat a telepítési belépési pontra, ha a [rendszerfiókban bizonyos magas szintű jogosultságokkal rendelkező telepítési műveleteket kell futtatnia](service-fabric-run-script-at-service-startup.md), vagy a fő és a telepítési belépési pontokat is.  
 
 > [!NOTE] 
 > Ha futtató házirendet alkalmaz egy szolgáltatásra, és a szolgáltatás jegyzékfájlja deklarálja a végponti erőforrásokat a HTTP protokollal, meg kell adnia egy **SecurityAccessPolicy**.  További információ: [biztonsági hozzáférési házirend társítása http-és HTTPS-végpontokhoz](service-fabric-assign-policy-to-endpoint.md). 
@@ -183,7 +172,7 @@ A következő szolgáltatási jegyzékfájl szemlélteti a konzol átirányítá
 ```
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az alkalmazás modelljének megismerése](service-fabric-application-model.md)
 * [Erőforrások meghatározása a szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md)
 * [Alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md)

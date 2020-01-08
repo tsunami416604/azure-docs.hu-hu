@@ -4,23 +4,53 @@
   items:
     - name: Mi a Form Recognizer?
       href: overview.md
-- name: Gyors útmutatók
+    - name: Újdonságok
+      href: whats-new.md
+- name: Rövid útmutatók
   expaned: true
   items:
+    - name: Mintacímkézési eszköz használata
+      items:
+        - name: Egyéni modell betanítása címkékkel
+          href: quickstarts/label-tool.md
     - name: A REST API használata
       items:
-        - name: Egyéni modell betanítása és adatok kinyerése
+        - name: Egyéni modell betanítása és használata címkék nélkül
           items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
+            - name: 2.0-s verzió
+              items:
+                - name: cURL
+                  href: quickstarts/curl-train-extract.md
+                - name: Python
+                  href: quickstarts/python-train-extract.md
+            - name: 1.0-s verzió
+              items:
+                - name: cURL
+                  href: quickstarts/curl-train-extract-v1.md
+                - name: Python
+                  href: quickstarts/python-train-extract-v1.md
+        - name: Egyéni modell betanítása és használata címkékkel
+          items:
             - name: Python
-              href: quickstarts/python-train-extract.md
+              href: quickstarts/python-labeled-data.md
         - name: Előre összeállított nyugtamodell használata
           items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
+            - name: 2.0-s verzió
+              items:
+                - name: cURL
+                  href: quickstarts/curl-receipts.md
+                - name: Python
+                  href: quickstarts/python-receipts.md
+            - name: 1.0-s verzió
+              items:
+                - name: cURL
+                  href: quickstarts/curl-receipts-v1.md
+                - name: Python
+                  href: quickstarts/python-receipts-v1.md
+        - name: Szöveg elrendezési adatainak lekérése
+          items:
             - name: Python
-              href: quickstarts/python-receipts.md
+              href: quickstarts/python-layout.md
     - name: A .NET SDK használata
       href: quickstarts/dotnet-sdk.md
 - name: Oktatóanyagok
@@ -43,8 +73,10 @@
           href: deploy-form-recognizer-on-container-instances.md
 - name: Referencia
   items:
-    - name: Form Recognizer API
-      href: 'https://aka.ms/form-recognizer/api'
+    - name: Form Recognizer API 2.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm'
+    - name: Form Recognizer API 1.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel'
     - name: SDK-k
       items:
         - name: .NET

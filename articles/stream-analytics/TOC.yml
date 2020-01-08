@@ -6,7 +6,7 @@
       href: stream-analytics-introduction.md
     - name: Teljes körű megoldásminták
       href: stream-analytics-solution-patterns.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Feladat létrehozása – Azure Portal
@@ -49,7 +49,7 @@
           href: stream-analytics-define-inputs.md
         - name: Referenciaadat típusú bemenetek
           href: stream-analytics-use-reference-data.md
-        - name: Egyéni .NET-deszerializálók írása
+        - name: Bemenetek olvasása bármilyen formátumban egyéni deszerializálók használatával
           href: custom-deserializer-examples.md
     - name: Feladatok kimenettípusai
       items:
@@ -174,9 +174,9 @@
       items:
         - name: Eszközök telepítése
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: Tesztelés mintaadatokkal
+        - name: Helyi tesztelés mintaadatokkal
           href: stream-analytics-vs-tools-local-run.md
-        - name: Tesztelés élő adatokkal
+        - name: Helyi tesztelés élő adatokkal
           href: stream-analytics-live-data-local-testing.md
         - name: Feladatok megtekintése a Visual Studióban
           href: stream-analytics-vs-tools.md
@@ -188,12 +188,14 @@
           href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
-        - name: Tesztelés mintaadatokkal
-          href: vscode-local-run.md
+        - name: Helyi tesztelés mintaadatokkal
+          href: visual-studio-code-local-run.md
+        - name: Helyi tesztelés élő adatokkal
+          href: visual-studio-code-local-run-live-input.md
         - name: CI-/CD-folyamat beállítása
           href: setup-cicd-vs-code.md
         - name: Feladatok böngészése
-          href: vscode-explore-jobs.md
+          href: visual-studio-code-explore-jobs.md
     - name: Hibaelhárítás
       items:
         - name: Input (Bemenet)

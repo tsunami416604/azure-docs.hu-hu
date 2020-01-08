@@ -1,0 +1,89 @@
+### YamlMime:Landing
+title: A Managed Applications dokumentációja
+summary: Az ügyfelek által könnyen üzembe helyezhető és üzemeltethető felhőalapú tesz elérhetővé.
+metadata:
+  title: Az Azure Managed Applications dokumentációja
+  description: Az Azure Managed Applications segítségével az ügyfelek által könnyedén üzembe helyezhető és üzemeltethető felhőalapú megoldások tehetők elérhetővé.
+  ms.service: managed-applications
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 60f7d4b9c9bd9057e0869b3efe1843eeb8d873f8
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75648378"
+landingContent:
+- title: Tudnivalók a Managed Applications szolgáltatásról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Managed Applications?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Meghatározás megtekintése összetevő
+      url: concepts-view-definition.md
+    - text: Azure Policy társításokhoz
+      url: concepts-built-in-policy.md
+    - text: Szerepkör-definíció összetevő
+      url: concepts-custom-role-definition.md
+- title: Felügyelt alkalmazások létrehozása
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Alkalmazásdefiníció közzététele
+      url: publish-managed-app-definition-quickstart.md
+    - text: Szolgáltatáskatalógusban elérhető alkalmazás üzembe helyezése
+      url: deploy-service-catalog-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Definíciós fájlok létrehozása
+      url: publish-service-catalog-app.md
+    - text: Piactéren elérhető alkalmazás közzététele
+      url: publish-marketplace-app.md
+    - text: Felügyelt alkalmazás létrehozása egyéni szolgáltatóval
+      url: tutorial-create-managed-app-with-custom-provider.md
+  - linkListType: how-to-guide
+    links:
+    - text: Key Vaultból származó titkos kulcs használata
+      url: key-vault-access.md
+    - text: Közzététel a portálon keresztül
+      url: publish-portal.md
+- title: Hozzáférés-vezérlés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Igény szerinti hozzáférés igénylése
+      url: request-just-in-time-access.md
+    - text: Igény szerinti hozzáférés igénylése
+      url: approve-just-in-time-access.md
+    - text: Üzembe helyezés felügyelt identitással
+      url: publish-managed-identity.md
+- title: A portál felhasználói felületének létrehozása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Portálfelület létrehozása
+      url: create-uidefinition-overview.md
+    - text: A portálfelület tesztelése
+      url: test-createuidefinition.md
+    - text: Felhasználóifelület-elemek összetevő
+      url: reference-createuidefinition-artifact.md
+    - text: Felület elemei
+      url: create-uidefinition-elements.md
+    - text: Felület funkciói
+      url: create-uidefinition-functions.md
+- title: Erőforrások kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Üzembe helyezett példány monitorozása
+      url: monitor-managed-application-portal.md
+    - text: Üzembe helyezés értesítésekkel
+      url: publish-notifications.md
+    - text: Kezelt erőforrások frissítése
+      url: update-managed-resources.md

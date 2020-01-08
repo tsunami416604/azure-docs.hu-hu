@@ -1,0 +1,100 @@
+### YamlMime:Landing
+title: Az Azure Cache for Redis dokumentációja
+summary: Ismerje meg, hogy az Azure Cache for Redis biztonságos adatgyorsítótár és üzenetközvetítő hogyan használható az alkalmazások nagy sávszélességű és kis késleltetésű adathozzáférésének biztosítására. Oktatóanyagok, API-referenciák és egyéb dokumentáció, amelyekből megtudhatja, hogyan használhatja az Azure Cache for Redist bármely Azure-alkalmazásból.
+metadata:
+  title: Az Azure Cache for Redis dokumentációja
+  description: Ismerje meg, hogy az Azure Cache for Redis biztonságos adatgyorsítótár és üzenetközvetítő hogyan használható az alkalmazások gyors adathozzáférésének biztosítására. Oktatóanyagok, API-referenciák és egyebek.
+  ms.service: cache
+  ms.topic: landing-page
+  author: yegu-ms
+  ms.author: yegu
+  ms.date: 12/16/2019
+  ms.openlocfilehash: fad78db361927a14f393066fb088354552d880a9
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75470032"
+landingContent:
+- title: Az Azure Cache for Redis névjegye
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Cache for Redis?
+      url: cache-overview.md
+    - text: Információk a prémium szintű Azure Cache for Redisről
+      url: cache-premium-tier-intro.md
+  - linkListType: video
+    links:
+    - text: Felügyeleti beállítások
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-administration-options/
+    - text: Biztonsági gyorsítótárazás
+      url: https://azure.microsoft.com/resources/videos/azure-redis-security-cacheing/
+    - text: Ajánlott eljárások
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-best-practices/
+    - text: Teljesítmény javítása
+      url: https://azure.microsoft.com/resources/videos/increase-performance-through-redis-cluster-in-azure-redis-cache/
+  - linkListType: whats-new
+    links:
+    - text: Gyakori kérdések
+      url: cache-faq.md
+    - text: Ajánlott eljárások az Azure Cache for Redis használatához
+      url: cache-best-practices.md
+    - text: Az Azure Cache for Redis ASP.NET munkamenetállapot-szolgáltatója
+      url: cache-aspnet-session-state-provider.md
+- title: 'Gyorsútmutatók: Azure Cache for Redis'
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET-keretrendszerre épülő alkalmazás kódolása
+      url: cache-dotnet-how-to-use-azure-redis-cache.md
+    - text: .NET Core-alkalmazás kódolása
+      url: cache-dotnet-core-quickstart.md
+    - text: ASP.NET-webalkalmazás kódolása
+      url: cache-web-app-howto.md
+    - text: Java-alkalmazás kódolása
+      url: cache-java-get-started.md
+    - text: Node.js-alkalmazás kódolása
+      url: cache-nodejs-get-started.md
+    - text: Python-alkalmazás kódolása
+      url: cache-python-get-started.md
+  - linkListType: tutorial
+    links:
+    - text: Gyorsítótár-feltöltési ranglista létrehozása az ASP.NET-en
+      url: cache-web-app-cache-aside-leaderboard.md
+  - linkListType: get-started
+    links:
+    - text: Példák
+      url: cache-redis-samples.md
+- title: SDK-k és parancssorok
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.redis
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.redis.rediscache
+    - text: REST API
+      url: /rest/api/redis/
+    - text: Redis-ügyfél
+      url: https://redis.io/clients
+    - text: Redis parancsok
+      url: https://redis.io/commands
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.rediscache
+    - text: Azure CLI
+      url: /cli/azure/redis
+- title: Hibaelhárítás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Ügyféloldali problémák elhárítása
+      url: cache-troubleshoot-client.md
+    - text: Kiszolgálóoldali problémák elhárítása
+      url: cache-troubleshoot-server.md
+    - text: Időtúllépések elhárítása
+      url: cache-troubleshoot-timeouts.md
+    - text: Adatvesztési problémák elhárítása
+      url: cache-troubleshoot-data-loss.md

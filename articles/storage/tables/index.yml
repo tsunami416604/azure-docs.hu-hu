@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: Az Azure Table Storage dokumentációja
+summary: Az Azure Table Storage szolgáltatás strukturált NoSQL-adatokat tárol a felhőben, így séma nélküli kulcs-/attribútumtárat biztosítva.
+metadata:
+  title: Az Azure Table Storage dokumentációja
+  description: Az Azure Table Storage szolgáltatás strukturált NoSQL-adatokat tárol a felhőben, így séma nélküli kulcs-/attribútumtárat biztosítva.
+  ms.service: storage
+  ms.subservice: tables
+  ms.topic: landing-page
+  ms.collection: collection
+  author: tamram
+  ms.author: tamram
+  ms.date: 12/23/2019
+  ms.openlocfilehash: 73dc70fb31508667ebcab4803a9263c716ce35c2
+  ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75551896"
+landingContent:
+- title: Tudnivalók a Table Storage szolgáltatásról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Table Storage?
+      url: table-storage-overview.md
+    - text: A Table Storage vagy a Table API kiválasztása
+      url: ../../cosmos-db/table-support.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fstorage%2Ftables%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fbread%2Ftoc.json
+- title: Táblatervezési útmutató
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Tervezés hatékony olvasási és írási műveletekhez
+      url: table-storage-design-guidelines.md
+    - text: Tervezés lekérdezéshez
+      url: table-storage-design-for-query.md
+    - text: Tervezés adatmódosításhoz
+      url: table-storage-design-for-modification.md
+    - text: Táblatervezési minták
+      url: table-storage-design-patterns.md
+- title: Teljesítmény, méretezés és költségoptimalizálás
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Teljesítményhez kapcsolódó ellenőrzőlista a Table Storage-hoz
+      url: storage-performance-checklist.md
+    - text: Tervezés optimális teljesítményhez
+      url: table-storage-design.md
+  - linkListType: reference
+    links:
+    - text: A Table Storage skálázási célértékei
+      url: scalability-targets.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tábla létrehozása az Azure Portalon
+      url: table-storage-quickstart-portal.md

@@ -45,6 +45,8 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: Az Azure AD-szerepkörök kezelése
       items:
+        - name: Funkciófrissítés
+          href: azure-ad-roles-features.md
         - name: Szerepkörök hozzárendelése
           href: pim-how-to-add-role-to-user.md
         - name: Kérések jóváhagyása

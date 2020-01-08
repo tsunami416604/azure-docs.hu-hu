@@ -2,18 +2,18 @@
 title: Az Azure Database Migration Service dokumentációja
 summary: Az Azure Database Migration Service az Azure Data-platformokra irányuló, több adatbázisforrásból való zökkenőmentes migrálást tesz lehetővé minimális állásidővel. A szolgáltatás a Data Migration Assistant használatával felmérési jelentéseket biztosít, amelyek a migrálás előtt szükséges módosításokra vonatkozó ajánlásokat tartalmaznak. Ha készen áll a migrálási folyamat megkezdésére, az Azure Database Migration Service végrehajtja az összes szükséges lépést.
 metadata:
-  description: " Megtudhatja, hogyan engedélyezheti az Azure Data-platformokra irányuló, több adatbázisforrásból való zökkenőmentes migrálást minimális állásidővel, az Azure Database Migration Service használatával."
+  description: Megtudhatja, hogyan engedélyezheti az Azure Data-platformokra irányuló, több adatbázisforrásból való zökkenőmentes migrálást minimális állásidővel, az Azure Database Migration Service használatával.
   author: HJToland3
   ms.author: jtoland
-  ms.date: 10/25/2019
+  ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 1d064144d040a45fbc655879a6869da4ceaa4b79
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: 8ca7f2618c6415dd3dbe22cada35bccb56be50ee
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73584009"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75437886"
 landingContent:
 - title: Tudnivalók az Azure Database Migration Service-ről
   linkLists:
@@ -33,6 +33,10 @@ landingContent:
       url: quickstart-create-data-migration-service-portal.md
     - text: Szolgáltatás létrehozása hibrid módban – Portál
       url: quickstart-create-data-migration-service-hybrid-portal.md
+  - linkListType: reference
+    links:
+    - text: Ismert problémák – Hibrid mód használata
+      url: known-issues-dms-hybrid-mode.md
   - linkListType: video
     links:
     - text: Az Azure Database Migration Service bemutatása
@@ -65,6 +69,8 @@ landingContent:
     links:
     - text: Ismert problémák – Online migrálás önálló SQL Database adatbázisba
       url: known-issues-azure-sql-online.md
+    - text: Ismert problémák – Online migrálás felügyelt SQL Database-példányba
+      url: known-issues-azure-sql-db-managed-instance-online.md
     - text: Hálózati topológiák felügyelt SQL Database-példányok migrálásához
       url: resource-network-topologies.md
     - text: Egyéni szerepkörök SQL Serverről felügyelt SQL Database-példányba történő online migráláshoz

@@ -1,125 +1,122 @@
 ---
-title: Az Azure Service Fabric parancssori felület (sfctl) használatával az Azure Service Fabric-alkalmazások kezelése
-description: Ismerje meg, hogyan telepíthet és távolíthat el alkalmazásokat az Azure Service Fabric-fürt az Azure Service Fabric parancssori felület használatával
-services: service-fabric
+title: Azure Service Fabric-alkalmazások kezelése a sfctl használatával
+description: Ismerje meg, hogyan helyezhet üzembe és távolíthat el alkalmazásokat egy Azure Service Fabric-fürtből az Azure Service Fabric parancssori felület használatával
 author: Christina-Kang
-manager: chackdan
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 9b0f785a6a43f984708645084a8a8036326d3d24
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: db271d479fd84e5338d53cc25ecc0122d856c442
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60621377"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610233"
 ---
-# <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Az Azure Service Fabric-alkalmazás kezelése az Azure Service Fabric parancssori felület (sfctl) használatával
+# <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric-alkalmazás kezelése az Azure Service Fabric parancssori felület (sfctl) használatával
 
-Ismerje meg, hogyan hozhat létre, és törölje az alkalmazást, amely egy Azure Service Fabric-fürtön futnak.
+Megtudhatja, hogyan hozhat létre és törölhet olyan alkalmazásokat, amelyek Azure Service Fabric-fürtön futnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a Service Fabric parancssori felület. Ezután válassza ki a Service Fabric-fürtön. További információkért lásd: [Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md).
+* Telepítse a Service Fabric CLI-t. Ezután válassza ki a Service Fabric-fürtöt. További információ: Ismerkedés [a Service FABRIC CLI-vel](service-fabric-cli.md).
 
-* Rendelkezik egy Service Fabric-alkalmazáscsomag központilag telepíthető. Szerző és a egy alkalmazás csomag kapcsolatos további információkért olvassa el a [Service Fabric-alkalmazásmodell](service-fabric-application-model.md).
+* Service Fabric alkalmazáscsomag készen áll a telepítésre. További információ az alkalmazások létrehozásáról és becsomagolásáról: tudnivalók a [Service Fabric alkalmazás modelljéről](service-fabric-application-model.md).
 
 ## <a name="overview"></a>Áttekintés
 
-Új alkalmazás üzembe helyezéséhez hajtsa végre ezeket a lépéseket:
+Új alkalmazás üzembe helyezéséhez hajtsa végre a következő lépéseket:
 
-1. A Service Fabric lemezképtárolójába töltsön fel egy alkalmazáscsomagot.
-2. Alkalmazástípusok üzembe helyezhető.
-3. Törli a lemezképet tároló tartalmat.
-4. Adja meg, és hozzon létre egy alkalmazást.
-5. Adja meg, és szolgáltatások létrehozása.
+1. Alkalmazáscsomag feltöltése a Service Fabric rendszerkép-tárolóba.
+2. Alkalmazás típusának kiépítése.
+3. Törölje a rendszerkép-tároló tartalmát.
+4. Alkalmazás megadásához és létrehozásához.
+5. Szolgáltatások meghatározása és létrehozása.
 
-A meglévő alkalmazások eltávolításához hajtsa végre ezeket a lépéseket:
+Egy meglévő alkalmazás eltávolításához hajtsa végre a következő lépéseket:
 
 1. Törölje az alkalmazást.
-2. A társított alkalmazástípus telepítésének.
+2. A társított alkalmazás típusának kiépítése.
 
 ## <a name="deploy-a-new-application"></a>Új alkalmazás üzembe helyezése
 
-Új alkalmazás üzembe helyezéséhez hajtsa végre a következő feladatokat:
+Új alkalmazás telepítéséhez hajtsa végre a következő feladatokat:
 
-### <a name="upload-a-new-application-package-to-the-image-store"></a>Az image store alkalmazás új csomag feltöltése
+### <a name="upload-a-new-application-package-to-the-image-store"></a>Új alkalmazáscsomag feltöltése a rendszerkép-tárolóba
 
-Mielőtt alkalmazást hoz létre, a Service Fabric lemezképtároló töltse fel az alkalmazáscsomagot.
+Az alkalmazás létrehozása előtt töltse fel az alkalmazáscsomag a Service Fabric rendszerkép-tárolójába.
 
-Például, ha az alkalmazás-csomagot a `app_package_dir` directory, a következő parancsok használatával töltse fel a könyvtár:
+Ha például az alkalmazáscsomag a `app_package_dir` könyvtárban található, akkor a következő parancsokkal töltheti fel a könyvtárat:
 
 ```azurecli
 sfctl application upload --path ~/app_package_dir
 ```
 
-Nagy alkalmazáscsomagok esetén megadhatja az `--show-progress` lehetőséget a feltöltés állapotának megjelenítéséhez.
+Nagyméretű alkalmazáscsomag esetén megadhatja a feltöltés előrehaladásának megjelenítéséhez `--show-progress` lehetőséget.
 
-### <a name="provision-the-application-type"></a>Az alkalmazástípus kiépítése
+### <a name="provision-the-application-type"></a>Az alkalmazás típusának kiépítése
 
-Amikor a feltöltés befejeződött, az alkalmazás üzembe helyezése. Üzembe helyezi az alkalmazást, használja a következő parancsot:
+A feltöltés befejezésekor kiépítheti az alkalmazást. Az alkalmazás üzembe helyezéséhez használja a következő parancsot:
 
 ```azurecli
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
-Az érték `application-type-build-path` a könyvtárban, ahol az alkalmazáscsomag feltöltött neve.
+A `application-type-build-path` értéke annak a könyvtárnak a neve, amelybe az alkalmazáscsomag fel lett töltve.
 
-### <a name="delete-the-application-package"></a>Az alkalmazáscsomag törlése
+### <a name="delete-the-application-package"></a>Alkalmazáscsomag törlése
 
-Ajánlott az alkalmazáscsomag törlése után az alkalmazás regisztrálása sikeres volt.  Rendszer-erőforrásokat szabadít alkalmazáscsomagok törlése a képet tárból.  A fel nem használt alkalmazáscsomagok lemezes tárolást használ fel, és alkalmazásteljesítménnyel kapcsolatos problémák vezet. 
+Javasoljuk, hogy az alkalmazás sikeres regisztrálása után távolítsa el az alkalmazáscsomag-csomagot.  A rendszerkép-tárolóban lévő alkalmazáscsomag törlése a rendszererőforrásokat felszabadítja.  A nem használt alkalmazáscsomag megőrzése a lemezes tárolást és az alkalmazások teljesítményével kapcsolatos problémákat eredményez. 
 
-Az alkalmazáscsomag a képet tárból törléséhez használja a következő parancsot:
+Az alkalmazáscsomag rendszerkép-tárolóból való törléséhez használja a következő parancsot:
 
 ```azurecli
 sfctl store delete --content-path app_package_dir
 ```
 
-`content-path` a könyvtár, amely az alkalmazás létrehozásakor a feltöltött nevének kell lennie.
+`content-path` az alkalmazás létrehozásakor feltöltött könyvtár nevét kell megadni.
 
-### <a name="create-an-application-from-an-application-type"></a>Hozzon létre egy alkalmazást egy alkalmazás típusból
+### <a name="create-an-application-from-an-application-type"></a>Alkalmazás létrehozása alkalmazás típusától
 
-Miután üzembe az alkalmazást, a következő paranccsal nevet, és az alkalmazás létrehozása:
+Az alkalmazás üzembe helyezése után az alábbi parancs használatával nevezze el és hozza létre az alkalmazást:
 
 ```azurecli
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
-`app-name` az a név, amelyet az alkalmazáspéldány használni szeretne. A korábban üzembe helyezett alkalmazás jegyzékfájlja további paramétereket is kérhet.
+`app-name` az alkalmazás példányához használni kívánt név. További paramétereket az előzőleg kiosztott alkalmazási jegyzékből kaphat.
 
-Az alkalmazás nevét a előtaggal kell kezdődnie `fabric:/`.
+Az alkalmazás nevének a `fabric:/`előtaggal kell kezdődnie.
 
-### <a name="create-services-for-the-new-application"></a>Az új alkalmazás-szolgáltatások létrehozásához
+### <a name="create-services-for-the-new-application"></a>Szolgáltatások létrehozása az új alkalmazáshoz
 
-Miután létrehozott egy alkalmazást, az alkalmazás szolgáltatások létrehozása. A következő példában az alkalmazás hozunk létre egy új állapotmentes szolgáltatás. A szolgáltatásokat, létrehozhat egy alkalmazást a korábban üzembe helyezett alkalmazás csomagban szolgáltatásjegyzékben vannak meghatározva.
+Miután létrehozott egy alkalmazást, hozzon létre szolgáltatásokat az alkalmazásból. Az alábbi példában egy új állapot nélküli szolgáltatást hozunk létre az alkalmazásból. Az alkalmazásból létrehozható szolgáltatások a korábban kiosztott alkalmazáscsomag szolgáltatásbeli jegyzékfájljában vannak meghatározva.
 
 ```azurecli
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
 --stateless --instance-count 1 --singleton-scheme
 ```
 
-## <a name="verify-application-deployment-and-health"></a>Alkalmazások üzembe helyezését és állapotának ellenőrzése
+## <a name="verify-application-deployment-and-health"></a>Alkalmazások központi telepítésének és állapotának ellenőrzése
 
-Annak ellenőrzéséhez, hogy minden kifogástalan állapotban, az alábbi parancsokkal állapota:
+Annak ellenőrzéséhez, hogy minden kifogástalan állapotú-e, használja a következő állapotfigyelő parancsokat:
 
 ```azurecli
 sfctl application list
 sfctl service list --application-id TestApp
 ```
 
-Annak ellenőrzéséhez, hogy a szolgáltatás állapota megfelelő, hasonló parancsok használatával a szolgáltatás és az alkalmazás állapotának lekéréséhez:
+Annak ellenőrzéséhez, hogy a szolgáltatás kifogástalan-e, használja a hasonló parancsokat a szolgáltatás és az alkalmazás állapotának lekéréséhez:
 
 ```azurecli
 sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
 
-Kifogástalan állapotú szolgáltatások és alkalmazások rendelkeznek egy `HealthState` értékét `Ok`.
+A kifogástalan állapotú szolgáltatások és alkalmazások `Ok``HealthState` értékkel rendelkeznek.
 
 ## <a name="remove-an-existing-application"></a>Meglévő alkalmazás eltávolítása
 
-Az alkalmazás eltávolításához hajtsa végre a következő feladatokat:
+Egy alkalmazás eltávolításához hajtsa végre a következő feladatokat:
 
 ### <a name="delete-the-application"></a>Az alkalmazás törlése
 
@@ -129,21 +126,21 @@ Az alkalmazás törléséhez használja a következő parancsot:
 sfctl application delete --application-id TestEdApp
 ```
 
-### <a name="unprovision-the-application-type"></a>Az alkalmazástípus telepítésének visszavonása
+### <a name="unprovision-the-application-type"></a>Az alkalmazás típusának kiépítése
 
-Után törli az alkalmazást, ha már nincs szüksége az alkalmazás típusát is leválasztja. Az alkalmazástípus telepítésének, használja a következő parancsot:
+Az alkalmazás törlése után kiépítheti az alkalmazás típusát, ha már nincs rá szüksége. Az alkalmazás típusának megszüntetéséhez használja a következő parancsot:
 
 ```azurecli
 sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
-A típus neve és az alkalmazástípus-verzió meg kell egyeznie a nevét és verzióját, a korábban kiépített alkalmazásjegyzékben.
+A típus nevének és típusának meg kell egyeznie a korábban kiépített alkalmazás jegyzékfájljának nevével és verziójával.
 
 ## <a name="upgrade-application"></a>Alkalmazás frissítése
 
-Miután létrehozta az alkalmazást, ismételje meg ugyanazokat a lépéseket az alkalmazás második verziójának kiépítése. Ezután egy Service Fabric-alkalmazás frissítése az átválthat a az alkalmazás második verzióját futtatja. További információkért lásd a dokumentációt [Service Fabric alkalmazásfrissítések](service-fabric-application-upgrade.md).
+Az alkalmazás létrehozása után megismételheti ugyanezeket a lépéseket az alkalmazás második verziójának kiépítéséhez. Ezután a Service Fabric alkalmazás frissítése után átválthat az alkalmazás második verziójának futtatására. További információ: [Service Fabric alkalmazás frissítéseinek](service-fabric-application-upgrade.md)dokumentációja.
 
-A frissítés végrehajtásához először is létre a következő verziójára az alkalmazás, mint korábban használja ugyanazokat a parancsokat:
+A frissítés elvégzéséhez először az alábbi parancsokkal kell kiépíteni az alkalmazás következő verzióját:
 
 ```azurecli
 sfctl application upload --path ~/app_package_dir_2
@@ -151,22 +148,22 @@ sfctl application provision --application-type-build-path app_package_dir_2
 sfctl store delete --content-path app_package_dir_2
 ```
 
-Javasolt majd figyelt automatikus frissítésének végrehajtása, indítsa el a frissítés a következő parancs futtatásával:
+Azt javasoljuk, hogy a figyelt automatikus frissítést a következő parancs futtatásával indítsa el:
 
 ```azurecli
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 
-Frissítések bármilyen készlet van megadva a meglévő paraméterek bírálhatja felül. Alkalmazás paramétereket kell adható át argumentumként a verzióváltás parancs szükség esetén. Alkalmazás paraméterek JSON-objektumként kódolásúnak kell lennie.
+A frissítések felülbírálják a meglévő paramétereket, bármilyen készlet van megadva. Ha szükséges, a frissítési parancshoz argumentumként kell átadni az alkalmazás paramétereit. Az alkalmazás paramétereit JSON-objektumként kell kódolni.
 
-A korábban megadott paramétereket lekéréséhez használja a `sfctl application info` parancsot.
+A korábban megadott paraméterek lekéréséhez használhatja a `sfctl application info` parancsot.
 
-Ha egy alkalmazás frissítése folyamatban van, a állapotát lehet lekérni a `sfctl application upgrade-status` parancsot.
+Ha egy alkalmazás frissítése folyamatban van, az állapot a `sfctl application upgrade-status` parancs használatával kérhető le.
 
-Végül, ha egy frissítés van folyamatban, és igényeinek megfelelően kell lennie, használhatja a `sfctl application upgrade-rollback` szeretné visszaállítani a frissítést.
+Végül, ha folyamatban van egy frissítés, és meg kell szakítani, a `sfctl application upgrade-rollback` segítségével visszaállíthatja a frissítést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Service Fabric parancssori felület alapjai](service-fabric-cli.md)
-* [Ismerkedés a Service Fabric Linux rendszeren](service-fabric-get-started-linux.md)
-* [A Service Fabric-alkalmazás frissítése elindítása](service-fabric-application-upgrade.md)
+* [A CLI alapjai Service Fabric](service-fabric-cli.md)
+* [Első lépések a Service Fabric Linuxon](service-fabric-get-started-linux.md)
+* [Service Fabric alkalmazás frissítésének indítása](service-fabric-application-upgrade.md)

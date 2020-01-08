@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2e0ae05ff8c32a70991769171cb29b229c2b0be1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895355"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526362"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Vész-helyreállítás és fiók feladatátvétele (előzetes verzió)
 
@@ -174,10 +174,11 @@ Ne feledje, hogy az ideiglenes lemezen tárolt összes adatmennyiség elvész a 
 ### <a name="unsupported-features-or-services"></a>Nem támogatott funkciók vagy szolgáltatások
 A következő szolgáltatások vagy szolgáltatások nem támogatottak az előzetes verzióhoz tartozó fiók feladatátvétele esetén:
 
-- A Azure File Sync nem támogatja a Storage-fiók feladatátvételét. A Azure File Syncban Felhőbeli végpontként használt Azure-fájlmegosztást tartalmazó Storage-fiókok feladatátvétele nem lehetséges. Ennek hatására a szinkronizálás leáll, és az újonnan rétegű fájlok esetében váratlan adatvesztést okozhat.  
+- A Azure File Sync nem támogatja a Storage-fiók feladatátvételét. A Azure File Syncben felhőbeli végpontként használt Azure-fájlmegosztásokat tartalmazó tárfiókokon nem lehet feladatátvételt végezni. Feladatátvétel esetén a szinkronizálás leáll, és az újonnan rétegzett fájlok esetében váratlan adatvesztést is okozhat.  
 - Az archivált blobokat tartalmazó Storage-fiókok feladatátvétele nem végezhető el. Az archivált blobokat egy különálló Storage-fiókban kezelheti, amelyet nem szeretne átadni.
 - A prémium szintű blokk blobokat tartalmazó Storage-fiókok feladatátvétele nem végezhető el. A prémium szintű blokk blobokat támogató Storage-fiókok jelenleg nem támogatják a Geo-redundanciát.
-- A feladatátvétel befejezése után a következő funkciók nem fognak működni, ha eredetileg engedélyezve vannak: [esemény-előfizetések](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [életciklus-szabályzatok](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Storage Analytics naplózás](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- Nem lehet felvenni egy olyan Storage-fiókot, amely bármely, a [módosíthatatlansági házirendet](../blobs/storage-blob-immutable-storage.md) engedélyező tárolót tartalmaz. Zárolt/zárolt időalapú adatmegőrzési vagy jogszabályi szabályzatok megakadályozzák a feladatátvételt a megfelelőség fenntartása érdekében.
+- A feladatátvétel befejeződése után a következő funkciók nem működnek, ha eredetileg engedélyezve vannak: [esemény-előfizetések](../blobs/storage-blob-event-overview.md), a [hírcsatorna módosítása](../blobs/storage-blob-change-feed.md), [életciklus-szabályzatok](../blobs/storage-lifecycle-management-concepts.md)és [Storage Analytics naplózás](storage-analytics-logging.md).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Adatok másolása a feladatátvétel alternatívájaként
 

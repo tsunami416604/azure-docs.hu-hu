@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Az Azure Sentinel előkészítése
@@ -32,70 +32,78 @@
     - name: Adatforrások csatlakoztatása
       href: connect-data-sources.md
       items:
-        - name: Microsoft-szolgáltatások csatlakoztatása
+        - name: Szolgáltatások közötti kapcsolat létrehozása
           items:
-            - name: Az Azure AD csatlakoztatása
+            - name: AWS
+              href: connect-aws.md
+            - name: Azure AD
               href: connect-azure-active-directory.md
-            - name: Az Office 365 csatlakoztatása
+            - name: Office 365
               href: connect-office-365.md
-            - name: A Cloud App Security csatlakoztatása
+            - name: Cloud App Security
               href: connect-cloud-app-security.md
-            - name: Azure-tevékenységnapló csatlakoztatása
+            - name: Azure-tevékenységnapló
               href: connect-azure-activity.md
-            - name: Az Azure AD Identity Protection csatlakoztatása
+            - name: Azure AD Identity Protection
               href: connect-azure-ad-identity-protection.md
-            - name: Az Azure Information Protection csatlakoztatása
+            - name: Azure Information Protection
               href: connect-azure-information-protection.md
-            - name: A Microsoft Defender ATP csatlakoztatása
+            - name: Windows Defender ATP
               href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Az Azure ATP csatlakoztatása
+            - name: Azure ATP
               href: connect-azure-atp.md
-            - name: Az Azure Security Center csatlakoztatása
+            - name: Azure Security Center
               href: connect-azure-security-center.md
-            - name: Tartományi névkiszolgáló csatlakoztatása
+            - name: Tartományi névkiszolgáló
               href: connect-dns.md
-            - name: A Microsoft webalkalmazási tűzfal csatlakoztatása
+            - name: Microsoft webalkalmazási tűzfal
               href: connect-microsoft-waf.md
-            - name: A Windows tűzfal csatlakoztatása
+            - name: Windows tűzfal
               href: connect-windows-firewall.md
-            - name: A Windows biztonsági eseményeinek csatlakoztatása
+            - name: A Windows biztonsági eseményei
               href: connect-windows-security-events.md
         - name: Külső megoldások csatlakoztatása
           items:
-            - name: Általános CEF csatlakoztatása
-              href: connect-common-event-format.md
-            - name: Az AWS csatlakoztatása
-              href: connect-aws.md
-            - name: A Barracuda csatlakoztatása
+            - name: Barracuda
               href: connect-barracuda.md
-            - name: A Check Point csatlakoztatása
-              href: connect-checkpoint.md
-            - name: A Palo Alto Networks csatlakoztatása
-              href: connect-paloalto.md
-            - name: A Fortinet csatlakoztatása
-              href: connect-fortinet.md
-            - name: Az F5 csatlakoztatása
-              href: connect-f5.md
-            - name: Az F5 BIG-IP csatlakoztatása
+            - name: F5 BIG-IP
               href: connect-f5-big-ip.md
-            - name: A Syslog csatlakoztatása
+            - name: Rendszernapló
               href: connect-syslog.md
-            - name: Symantec ICDX csatlakoztatása
+            - name: Symantec ICDX
               href: connect-symantec.md
-            - name: A Cisco csatlakoztatása
-              href: connect-cisco.md
-            - name: A Barracuda CloudGen tűzfal csatlakoztatása
+            - name: Barracuda CloudGen tűzfal
               href: connect-barracuda-cloudgen-firewall.md
-            - name: Citrix Analytics (Security) csatlakoztatása
+            - name: Citrix Analytics (Security)
               href: connect-citrix-analytics.md
-            - name: ExtraHop Reveal(x) csatlakoztatása
-              href: connect-extrahop.md
-            - name: One Identity Safeguard
-              href: connect-one-identity.md
-            - name: Trend Micro Deep Security
-              href: connect-trend-micro.md
-            - name: Zscaler csatlakoztatása
-              href: connect-zscaler.md
+            - name: CEF-alapú megoldások
+              href: connect-common-event-format.md
+              items:
+                - name: '1. LÉPÉS: Az ügynök üzembe helyezése'
+                  href: connect-cef-agent.md
+                - name: '2. LÉPÉS: A biztonsági megoldás konfigurálása'
+                  href: connect-cef-solution-config.md
+                  items:
+                    - name: Ellenőrzőpont
+                      href: connect-checkpoint.md
+                    - name: Cisco
+                      href: connect-cisco.md
+                    - name: ExtraHop Reveal(x)
+                      href: connect-extrahop.md
+                    - name: F5
+                      href: connect-f5.md
+                    - name: Fortinet
+                      href: connect-fortinet.md
+                    - name: One Identity Safeguard
+                      href: connect-one-identity.md
+                    - name: Palo Alto Networks
+                      href: connect-paloalto.md
+                    - name: Trend Micro Deep Security
+                      href: connect-trend-micro.md
+                    - name: Zscaler
+                      href: connect-zscaler.md
+                - name: '3. LÉPÉS: A kapcsolat ellenőrzése'
+                  href: connect-cef-verify.md
         - name: Fenyegetésfelderítés csatlakoztatása
           href: connect-threat-intelligence.md
         - name: Azure Stack rendszerű virtuális gépek csatlakoztatása

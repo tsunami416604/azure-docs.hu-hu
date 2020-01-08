@@ -1,5 +1,5 @@
 ---
-title: Az Azure Power BI Embedded dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+title: Az Azure Power BI Embedded dokumentációja
 description: Ismerje meg, hogyan ágyazhat be Power BI-adatmegjelenítéseket és interaktív jelentéseket az alkalmazásokba. Oktatóanyagok, API-referenciák, és egyéb dokumentációk.
 services: power-bi-embedded
 author: rkarlin
@@ -9,14 +9,14 @@ layout: LandingPage
 ms.service: power-bi-embedded
 ms.topic: landing-page
 ms.date: 07/31/2018
-ms.openlocfilehash: decbe7c59f46ea77b1f5088bab8daf64722f2a8c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bdc609735380a280b754841009d2706c245af961
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727725"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427101"
 ---
-# <a name="power-bi-embedded-documentation"></a>Power BI Embedded – dokumentáció
+# <a name="power-bi-embedded-documentation"></a>A Power BI Embedded dokumentációja
 
 Ismerje meg, hogyan adhat hozzá adatmegjelenítéseket és interaktív jelentéseket az alkalmazásokhoz a Power BI Embedded használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan ágyazhat be zökkenőmentesen Power BI-jelentéseket és -irányítópultokat az alkalmazásokba.
 
@@ -50,7 +50,7 @@ Ismerje meg, hogyan adhat hozzá adatmegjelenítéseket és interaktív jelenté
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Power BI Embedded – videótár</h3>
+                        <h3>Az Azure Power BI Embedded videótára</h3>
                     </div>
                 </div>
             </div>

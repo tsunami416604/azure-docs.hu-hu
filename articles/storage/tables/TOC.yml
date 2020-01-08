@@ -8,7 +8,7 @@
     - name: A Table Storage vagy a Table API kiválasztása
       href: /azure/cosmos-db/table-support
       maintainContext: true
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Tábla létrehozása az Azure Portalon
       href: table-storage-quickstart-portal.md
@@ -45,11 +45,6 @@
   items:
     - name: Tárfiókok
       href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-      items:
-        - name: Tárfiók kezelése
-          href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-        - name: Tárfiók frissítése
-          href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Adatredundancia
       items:
         - name: Azure Storage-replikáció
@@ -62,10 +57,8 @@
           href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: Zóna- és georedundáns tárolás
           href: ../common/storage-redundancy-gzrs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: Teljesítmény és skálázás
+    - name: 'Teljesítmény, méretezés és költségoptimalizálás'
       items:
-        - name: Méretezhetőségi és teljesítménycélok
-          href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: Teljesítmény és kapacitás – ellenőrzőlista
           href: storage-performance-checklist.md
         - name: Méretezhető és nagy teljesítményű táblák tervezése
@@ -86,10 +79,14 @@
   items:
     - name: Tárfiók létrehozása
       displayName: 'resource manager, resource manager template, template, ARM'
-      href: /azure/storage/common/storage-quickstart-create-account
+      href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
       maintainContext: true
+    - name: Tárfiók frissítése
+      href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: Fiókkulcsok megtekintése és kezelése
+      href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: A Storage Emulator használata
-      href: /azure/storage/common/storage-use-emulator
+      href: /azure/storage/common/storage-use-emulator?toc=%2fazure%2fstorage%2ftables%2ftoc.json
       maintainContext: true
     - name: Adatátvitel
       items:
@@ -105,8 +102,16 @@
       items:
         - name: Késési problémák
           href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-- name: További források
+- name: Referencia
   items:
+    - name: Méretezhetőségi és teljesítménycélok
+      items:
+        - name: Table Storage
+          href: scalability-targets.md
+        - name: Standard szintű tárfiókok
+          href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Tárolásierőforrás-szolgáltató
+          href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Table Storage REST API-k
       href: 'https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api'
       maintainContext: true

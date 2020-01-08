@@ -1,128 +1,119 @@
 ---
-title: Visual Studio Code használatával .NET Core az Azure Service Fabric-alkalmazások fejlesztéséhez |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan hozhat létre, üzembe helyezése és hibakeresése a Visual Studio Code használatával .NET Core Service Fabric-alkalmazásokat.
-services: service-fabric
-documentationcenter: .net
+title: .NET Core-alkalmazások fejlesztése a Visual Studio Code használatával
+description: Ez a cikk bemutatja, hogyan hozhat létre, helyezhet üzembe és kereshet .NET Core Service Fabric-alkalmazásokat a Visual Studio Code használatával.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 60b634b0b927804249148737ee7a99c0e86dd7d6
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537774"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614523"
 ---
-# <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Fejlesztés C# Service Fabric-alkalmazásokat a Visual Studio Code-dal
+# <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Service Fabric C# -alkalmazások fejlesztése a Visual Studio Code-ban
 
-A [Service Fabric Reliable Services bővítmény a VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) megkönnyíti a .NET Core a Service Fabric-alkalmazások Windows, Linux és macOS operációs rendszereken.
+A [vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) -hoz készült Service Fabric Reliable Services-bővítmény megkönnyíti a .net Core Service Fabric-alkalmazások kiépítését Windows, Linux és MacOS operációs rendszereken.
 
-Ez a cikk bemutatja, hogyan hozhat létre, üzembe helyezése és hibakeresése a Visual Studio Code használatával .NET Core Service Fabric-alkalmazás.
+Ebből a cikkből megtudhatja, hogyan hozhat létre, helyezhet üzembe és kereshet .NET Core Service Fabric-alkalmazásokat a Visual Studio Code használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk azt feltételezi, hogy már telepítette a VS Code, VS Code a Service Fabric Reliable Services-bővítmény és a fejlesztési környezet számára szükséges függőségek. További tudnivalókért lásd: [bevezetés](./service-fabric-get-started-vs-code.md#prerequisites).
+Ez a cikk azt feltételezi, hogy már telepítette a vs Code-ot, a Service Fabric Reliable Services bővítményt a VS Code-hoz, valamint a fejlesztési környezethez szükséges függőségeket. További információ: [első lépések](./service-fabric-get-started-vs-code.md#prerequisites).
 
 ## <a name="download-the-sample"></a>A minta letöltése
-Ez a cikk a CounterService alkalmazást használja a [Bevezetés a Service Fabric .NET Core-minták GitHub-adattár](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started). 
+Ez a cikk a CounterService alkalmazást használja a [Service Fabric .net Core-ban – első lépések minták GitHub-tárház](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started). 
 
-Klónozza az adattárat a fejlesztői gépén, futtassa a következő parancsot egy terminálablakból (a Windows parancssori ablakban):
+Ha a tárházat a fejlesztői gépre szeretné klónozott, futtassa a következő parancsot egy terminál-ablakból (Windowsos parancssorablak):
 
 ```
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started.git
 ```
 
-## <a name="open-the-application-in-vs-code"></a>Nyissa meg az alkalmazás a VS Code-ban
+## <a name="open-the-application-in-vs-code"></a>Az alkalmazás megnyitása a VS Code-ban
 
 ### <a name="windows"></a>Windows
-Kattintson a jobb gombbal a VS Code ikonját a Start menüben, és válassza a **Futtatás rendszergazdaként**. Társítsa a hibakeresőt a szolgáltatásokhoz, a VS Code Futtatás rendszergazdaként kell.
+Kattintson a jobb gombbal a VS Code ikonra a Start menüben, majd válassza a **Futtatás rendszergazdaként**lehetőséget. Ha a hibakeresőt a szolgáltatásaihoz szeretné csatolni, a VS Code-t rendszergazdaként kell futtatnia.
 
 ### <a name="linux"></a>Linux
-A terminálon nyissa meg azt az elérési út /service-fabric-dotnet-core-getting-started/Services/CounterService azon címtárból, amellyel az alkalmazás helyileg klónozni.
+A terminál használatával navigáljon ahhoz a könyvtárhoz, amelyről az alkalmazást helyileg klónozott/service-fabric-dotnet-core-getting-started/Services/CounterService.
 
-Futtassa a következő parancsot a VS Code megnyitásához a legfelső szintű felhasználóként, hogy a hibakeresőt csatolhat a szolgáltatásokhoz.
+Futtassa a következő parancsot a VS Code root felhasználóként való megnyitásához, hogy a hibakereső csatolható legyen a szolgáltatásokhoz.
 ```
 sudo code . --user-data-dir='.'
 ```
 
-Az alkalmazás most már meg kell jelennie a VS Code-munkaterület.
+Az alkalmazásnak ekkor meg kell jelennie a VS Code munkaterületen.
 
-![Számláló Service alkalmazás-munkaterületen](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-application-in-workspace.png)
+![Számláló szolgáltatás alkalmazása a munkaterületen](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-application-in-workspace.png)
 
 ## <a name="build-the-application"></a>Az alkalmazás létrehozása
-1. (Ctrl + Shift + p) megnyitásához nyomja le az **Parancskatalógus** a VS Code-ban.
-2. Keresse meg és válassza a **Service Fabric: Alkalmazás létrehozása** parancsot. Az integrált terminálon kimenete kerül.
+1. Nyomja meg a (CTRL + SHIFT + p) billentyűkombinációt a **Command paletta** vs Code-ban való megnyitásához.
+2. Keresse meg és válassza ki a **Service Fabric: build Application (alkalmazás létrehozása** ) parancsot. A rendszer a Build kimenetét az integrált terminálnak küldi el.
 
-   ![A VS Code alkalmazást parancs létrehozása](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
+   ![Alkalmazás létrehozása parancs a VS Code-ban](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
 
-## <a name="deploy-the-application-to-the-local-cluster"></a>Az alkalmazás a helyi fürt üzembe helyezése
-Az alkalmazás létrehozása után telepítheti a helyi fürthöz. 
+## <a name="deploy-the-application-to-the-local-cluster"></a>Az alkalmazás központi telepítése a helyi fürtre
+Az alkalmazás létrehozása után üzembe helyezheti azt a helyi fürtön. 
 
-1. Az a **Parancskatalógus**, jelölje be a **Service Fabric: Alkalmazás (Localhost) üzembe helyezése**. A kimenet a telepítési folyamatot, az integrált terminálon küld.
+1. A **parancs palettáján**válassza ki a **Service Fabric: Deploy Application (localhost) parancsot**. A telepítési folyamat kimenetét az integrált terminálba küldi a rendszer.
 
-   ![Alkalmazás parancsot a VS Code telepítése](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
+   ![Alkalmazás üzembe helyezése parancs a VS Code-ban](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. Az üzembe helyezés befejeződése után elindít egy böngészőt, és nyissa meg a Service Fabric Explorer: http:\//localhost:19080 / Explorer. Megtekintheti, hogy az alkalmazás fut-e. Ez eltarthat némi ideig legyen a kis türelmet. 
+4. Ha a telepítés befejeződött, indítson el egy böngészőt, és nyissa meg Service Fabric Explorer: http:\//localhost: 19080/Explorer. Látnia kell, hogy az alkalmazás fut. Ez eltarthat egy ideig, így türelmesnek kell lennie. 
 
-   ![A számláló Service-alkalmazás a Service Fabric Explorerben](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
+   ![Counter Service-alkalmazás a Service Fabric Explorer](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. Miután ellenőrizte az alkalmazás fut, elindít egy böngészőt, és nyissa meg a ezt oldal: http:\//localhost:31002. Ez az a webes előtér-alkalmazás. Frissítse az oldalt a számláló a jelenlegi érték megtekintéséhez, mert növeli.
+4. Miután ellenőrizte, hogy az alkalmazás fut, indítson el egy böngészőt, és nyissa meg a következő oldalt: http:\//localhost: 31002. Ez az alkalmazás webes kezelőfelülete. Frissítse az oldalt, hogy megtekintse a számláló aktuális értékét, ahogy az növekszik.
 
-   ![A számláló Service-alkalmazás a böngészőben](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
+   ![Counter Service-alkalmazás a böngészőben](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
-## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Alkalmazások közzétételével az Azure Service Fabric-fürt
-Üzembe az alkalmazást a helyi fürthöz, valamint az alkalmazás egy távoli Azure Service Fabric-fürtön is közzéteheti. 
+## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Az alkalmazás közzététele Azure Service Fabric-fürtön
+Az alkalmazás helyi fürtön való üzembe helyezése mellett közzéteheti az alkalmazást egy távoli Azure Service Fabric-fürtön is. 
 
-1. Győződjön meg arról, hogy az alkalmazás a fenti utasítások használatával létrehozott. A létrehozott konfigurációs fájljának frissítése `Cloud.json` a távoli fürtön a közzétenni kívánt részleteit.
+1. Győződjön meg arról, hogy az alkalmazást a fenti utasítások alapján építették. Frissítse a létrehozott konfigurációs fájlt `Cloud.json` a közzétenni kívánt távoli fürt részleteivel.
 
-2. Az a **Parancskatalógus**, jelölje be a **Service Fabric: Alkalmazás közzététele**. A kimenet a telepítési folyamatot, az integrált terminálon küld.
+2. A **parancs palettáján**válassza ki a **Service Fabric: Application publish (alkalmazás közzététele) parancsot**. A telepítési folyamat kimenetét az integrált terminálba küldi a rendszer.
 
-   ![Alkalmazás közzététele a VS Code-ban](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+   ![Alkalmazás közzététele parancs a VS Code-ban](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
-3. Az üzembe helyezés befejeződése után elindít egy böngészőt, és nyissa meg a Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`. Megtekintheti, hogy az alkalmazás fut-e. Ez eltarthat némi ideig legyen a kis türelmet. 
+3. Ha a telepítés befejeződött, indítson el egy böngészőt, és nyissa meg Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`. Látnia kell, hogy az alkalmazás fut. Ez eltarthat egy ideig, így türelmesnek kell lennie. 
 
 ## <a name="debug-the-application"></a>Az alkalmazás hibakeresése
-Hibakeresés a VS Code alkalmazást, ha az alkalmazás egy helyi fürtön kell futnia. Töréspontok majd lehet hozzáadni a kódot.
+Ha a VS Code alkalmazásban hibakeresést végez, az alkalmazásnak helyi fürtön kell futnia. A töréspontok ezután hozzáadhatók a kódhoz.
 
-Állítsa be egy töréspontot, és a hibakeresési, hajtsa végre az alábbi lépéseket:
-1. Az Explorerben nyissa meg a */src/CounterServiceApplication/CounterService/CounterService.cs* fájlt, és állítson be egy töréspontot a sor 62 belül a `RunAsync` metódust.
-3. A hibakeresés ikon a ban kattintson a **tevékenységsávon** a hibakereső nézet megnyitásához a VS Code-ban. Kattintson a fogaskerék ikonra a hibakereső nézet tetején, és válassza ki **.NET Core** a környezet legördülő listából. A launch.json fájl megnyílik. Zárja be ezt a fájlt. Most már megtekintheti a hibakeresési konfigurációja menüben a Futtatás gombra (zöld nyíl) mellett található konfigurációs beállításokkal.
+Töréspont és hibakeresés beállításához hajtsa végre a következő lépéseket:
+1. Az Intézőben nyissa meg a */src/CounterServiceApplication/CounterService/CounterService.cs* fájlt, és állítson be egy töréspontot a 62. sorban a `RunAsync` metódusban.
+3. A VS Code-ban a hibakereső nézet megnyitásához kattintson a **tevékenység sávján** található hibakeresés ikonra. Kattintson a fogaskerék ikonra a hibakereső nézet tetején, és válassza a **.net Core** elemet a legördülő menüből. Megnyílik a Launch. JSON fájl. Ezt a fájlt lezárhatja. Most meg kell jelennie a konfigurációs beállításoknak a Futtatás gomb melletti hibakeresési konfigurációs menüben (zöld nyíl).
 
-   ![Hibakeresés ikon a VS Code-munkaterület](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
+   ![Hibakeresés ikon a VS Code munkaterületen](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
 
-2. Válassza ki **.NET Core csatolása** a hibakeresési konfigurációs menüből.
+2. Válassza a **.net Core csatolás** lehetőséget a hibakeresési konfiguráció menüjében.
 
-   ![Hibakeresés ikon a VS Code-munkaterület](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
+   ![Hibakeresés ikon a VS Code munkaterületen](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. Egy böngészőben nyissa meg a Service Fabric Explorer: http:\//localhost:19080 / Explorer. Kattintson a **alkalmazások** és feltárásához az elsődleges csomópont, amelyen fut a CounterService határozza meg. Az elsődleges csomópont a CounterService az alábbi ábrán a csomópont 0.
+3. Service Fabric Explorer megnyitása böngészőben: http:\//localhost: 19080/Explorer. Kattintson az **alkalmazások** elemre, és válassza ki azt az elsődleges csomópontot, amelyen a CounterService fut. Az alábbi képen a CounterService elsődleges csomópontja a 0. csomópont.
 
-   ![CounterService az elsődleges csomópont](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
+   ![CounterService elsődleges csomópontja](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 
-4. A VS Code-ban kattintson a Futtatás ikonra (zöld nyíl) mellett a **.NET Core csatolása** hibakeresési konfiguráció. Folyamat kiválasztása párbeszédpanelen válassza ki a CounterService folyamat, amelyen fut az elsődleges csomópont, a 4. lépésben azonosított.
+4. A VS Code-ban kattintson a Futtatás ikonra (zöld nyíl) a **.net Core csatolási** hibakeresési konfiguráció mellett. A folyamat kiválasztása párbeszédpanelen válassza ki a 4. lépésben azonosított elsődleges csomóponton futó CounterService folyamatot.
 
    ![Elsődleges folyamat](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
 
-5. A töréspont az a *CounterService.cs* fájl nagyon gyorsan eléri. Áttekintheti a helyi változók értékeit, majd. A VS Code tetején a hibakeresési eszköztár segítségével végrehajtása, lépés keresztül sorok, a lépésben azokat a módszereket, vagy ki az aktuális módszer. 
+5. A *CounterService.cs* -fájlban lévő töréspont nagyon gyorsan fog megjelenni. Ezután megismerheti a helyi változók értékeit. A VS Code tetején található hibakeresés eszköztár használatával folytathatja a végrehajtást, átléphet a vonalakon, megkezdheti a metódusokat, vagy kiléphet az aktuális metódusból. 
 
-   ![Értékek hibakeresése](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
+   ![Hibakeresési értékek](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
 
-6. A hibakeresési munkamenet befejezéséhez, a Debug eszköztáron felső részén a VS Code beépülő ikonra kattintva...
+6. A hibakeresési munkamenet befejezéséhez kattintson a VS Code oldal tetején található hibakeresés eszköztáron a dugó ikonra.
    
-   ![A hibakereső leválasztása](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-bar-disconnect.png)
+   ![Leválasztás a hibakeresőből](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-bar-disconnect.png)
        
-7. Ha befejezte, hibakeresés, használhatja a **Service Fabric: Alkalmazás eltávolítása** parancsot a CounterService alkalmazás eltávolítása a helyi fürtöt. 
+7. A hibakeresés befejezése után a **Service Fabric: Remove Application** paranccsal távolítsa el a CounterService alkalmazást a helyi fürtből. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg, hogyan [fejlesztése és hibakeresése a VS Code használatával a Service Fabric Java-alkalmazások](./service-fabric-develop-java-applications-with-vs-code.md).
+* Ismerje meg, hogyan [fejleszthet és kereshet Java Service Fabric-alkalmazásokat a vs Code](./service-fabric-develop-java-applications-with-vs-code.md)használatával.
 
 
 

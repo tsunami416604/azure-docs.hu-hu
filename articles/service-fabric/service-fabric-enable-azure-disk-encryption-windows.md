@@ -1,24 +1,14 @@
 ---
-title: Lemez titkosításának engedélyezése az Azure Service Fabric Windows-fürtökhöz | Microsoft Docs
+title: Windows-fürtök lemezes titkosításának engedélyezése
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a lemezek titkosítása az Azure Service Fabric-fürtcsomópontok számára a Azure Resource Manager Azure Key Vault használatával.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: navya
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/22/2019
-ms.author: atsenthi
-ms.openlocfilehash: 64abc48d57196fe20466032652c4b9bfb2e6c71f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 24405c3c34bfd7b88932101c42a8d0fc96c90fa1
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599549"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614451"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>Lemez titkosításának engedélyezése az Azure Service Fabric-fürtcsomópontok számára a Windows rendszerben 
 > [!div class="op_single_selector"]
@@ -59,13 +49,13 @@ A virtuálisgép-méretezési csoport lemez-titkosítási előnézete önregiszt
     Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
     ```
 2. Telepítse az [Azure CLI](/cli/azure/install-azure-cli)legújabb verzióját, amely az új titkosítási parancsokkal rendelkezik.
-3. Telepítse az [Azure SDK](https://github.com/Azure/azure-powershell/releases) legújabb verzióját Azure PowerShell kiadásból. Az alábbiakban a virtuálisgép-méretezési csoport Azure Disk Encryption parancsmagokkal engedélyezheti ([beállíthatja](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) a titkosítást, lekérheti a titkosítási állapotot, és eltávolíthatja (letilthatja) a titkosítást a méretezési csoport példányán.[](/powershell/module/az.compute/get-azvmssvmdiskencryption)[](/powershell/module/az.compute/disable-azvmssdiskencryption)
+3. Telepítse az [Azure SDK](https://github.com/Azure/azure-powershell/releases) legújabb verzióját Azure PowerShell kiadásból. Az alábbiakban a virtuálisgép-méretezési csoport Azure Disk Encryption parancsmagokkal engedélyezheti ([beállíthatja](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) a titkosítást,[lekérheti](/powershell/module/az.compute/get-azvmssvmdiskencryption)a titkosítási állapotot, és eltávolíthatja ([letilthatja](/powershell/module/az.compute/disable-azvmssdiskencryption)) a titkosítást a méretezési csoport példányán.
 
-| Parancs | Version |  Source  |
+| Parancs | Verzió |  Forrás  |
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 vagy újabb | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 vagy újabb | Az.Compute |
-| Disable-AzVmssDiskEncryption   | 1.0.0 vagy újabb | Az.Compute |
+| AzVmssDiskEncryption letiltása   | 1.0.0 vagy újabb | Az.Compute |
 | Get-AzVmssDiskEncryption   | 1.0.0 vagy újabb | Az.Compute |
 | Get-AzVmssVMDiskEncryption   | 1.0.0 vagy újabb | Az.Compute |
 | Set-AzVmssDiskEncryptionExtension   | 1.0.0 vagy újabb | Az.Compute |
@@ -217,7 +207,7 @@ az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ezen a ponton egy biztonságos fürtnek kell lennie, és tudnia kell, hogyan lehet engedélyezni és letiltani a lemez titkosítását Service Fabric fürtcsomópontok és virtuálisgép-méretezési csoportok esetében. A Linux rendszerű fürt csomópontjaival kapcsolatos hasonló Service Fabric útmutatásért lásd: [lemez titkosítása Linux rendszeren](service-fabric-enable-azure-disk-encryption-linux.md).
 
 [customize-your-cluster-template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure#creating-a-custom-arm-template

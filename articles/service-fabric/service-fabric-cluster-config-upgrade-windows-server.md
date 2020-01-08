@@ -1,36 +1,27 @@
 ---
-title: Önálló Azure Service Fabric-fürt konfigurációjának frissítése |} A Microsoft Docs
-description: Ismerje meg, hogyan frissítse a konfigurációt, amely egy önálló Service Fabric-fürtön futtatja.
-services: service-fabric
-documentationcenter: .net
+title: Önálló fürt konfigurációjának frissítése
+description: Ismerje meg, hogyan frissítheti az önálló Service Fabric fürtöt futtató konfigurációt.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: f99c1ebb64bf881bcd42f15e13bb81b96ccfa064
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e7e01dac29cb9ba91c83270dac4e46c73b2089e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387128"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610122"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Önálló fürt konfigurációjának frissítése 
 
-Minden olyan modern rendszerbe arra, hogy frissítse a termék hosszú távú sikeréhez kulcsfontosságú, hogy. Azure Service Fabric-fürt saját erőforrás. Ez a cikk ismerteti az önálló Service Fabric-fürt konfigurációs beállításainak frissítése.
+Bármely modern rendszer esetében a frissítés a termék hosszú távú sikerességének kulcsa. Az Azure Service Fabric-fürt egy saját erőforrás. Ez a cikk az önálló Service Fabric-fürt konfigurációs beállításainak frissítését ismerteti.
 
-## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>Testre szabhatja a ClusterConfig.json fájlban fürtbeállítások
-Önálló fürtök úgy vannak konfigurálva, keresztül a *ClusterConfig.json* fájlt. A különböző beállításokkal kapcsolatos további információkért lásd: [egy különálló Windows-fürt konfigurációs beállításainak](service-fabric-cluster-manifest.md).
+## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>A fürtkonfiguráció testreszabása a ClusterConfig. JSON fájlban
+Az önálló fürtök konfigurálása a *ClusterConfig. JSON* fájlon keresztül történik. További információ a különböző beállításokról: [önálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md).
 
-Hozzáadása, frissítése vagy távolítsa el a beállításokat a `fabricSettings` szakaszba a [fürt tulajdonságai](./service-fabric-cluster-manifest.md#cluster-properties) szakasz *ClusterConfig.json*. 
+A *ClusterConfig. JSON* [fürt tulajdonságai](./service-fabric-cluster-manifest.md#cluster-properties) szakaszának `fabricSettings` szakaszában adhat hozzá, frissíthet vagy eltávolíthat beállításokat. 
 
-Például a következő JSON ad hozzá egy új beállítás *MaxDiskQuotaInMB* , a *diagnosztikai* szakaszba `fabricSettings`:
+A következő JSON például egy új *MaxDiskQuotaInMB* -beállítást hoz létre a *diagnosztika* szakaszhoz a `fabricSettings`alatt:
 
 ```json
       {
@@ -44,48 +35,48 @@ Például a következő JSON ad hozzá egy új beállítás *MaxDiskQuotaInMB* ,
       }
 ```
 
-Miután módosította a beállításokat a ClusterConfig.json fájlban [a fürt konfigurációjának tesztelése](#test-the-cluster-configuration) , majd [a fürt konfigurációjának frissítése](#upgrade-the-cluster-configuration) kívánja alkalmazni a fürtön. 
+Miután módosította a beállításokat a ClusterConfig. JSON fájlban, [tesztelje a fürtöt](#test-the-cluster-configuration) , majd [frissítse a fürtöt](#upgrade-the-cluster-configuration) , hogy alkalmazza a beállításokat a fürtön. 
 
 ## <a name="test-the-cluster-configuration"></a>A fürt konfigurációjának tesztelése
-A konfiguráció frissítése kezdeményez, mielőtt a különálló csomag a következő PowerShell-parancsfájl futtatásával tesztelheti az új fürt konfigurációs JSON-fájlt:
+A konfiguráció frissítésének megkezdése előtt tesztelheti az új fürtkonfiguráció JSON-t a következő PowerShell-szkript futtatásával az önálló csomagban:
 
 ```powershell
 TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File>
 ```
 
-Vagy használja ezt a parancsfájlt:
+Vagy használja a következő parancsfájlt:
 
 ```powershell
 TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File> -FabricRuntimePackagePath <Path to the .cab file which you want to test the configuration against>
 ```
 
-Bizonyos konfigurációk nem lehet frissíteni, például a végpontok, fürt nevét, IP-Címét, stb. Az új fürt JSON konfigurációs van tesztelve lett a régit, és a PowerShell-ablakban hibát jelez, ha probléma van.
+Egyes konfigurációk nem frissíthetők, például végpontok, fürt neve, csomópont IP-címe stb. Az új fürtkonfiguráció JSON a régivel van tesztelve, és hibák léptek fel a PowerShell-ablakban, ha probléma merül fel.
 
-## <a name="upgrade-the-cluster-configuration"></a>A fürt konfigurációjának frissítése
-A fürt konfiguráció frissítése a frissítéshez futtassa [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade). A konfiguráció frissítése frissítési tartomány által feldolgozott frissítési tartományban.
+## <a name="upgrade-the-cluster-configuration"></a>A fürtkonfiguráció frissítése
+A fürt konfigurációjának frissítéséhez futtassa a [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)parancsot. A konfiguráció frissítését a frissítési tartomány dolgozza fel.
 
 ```powershell
 Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 ```
 
-## <a name="upgrade-cluster-certificate-configuration"></a>Fürt tanúsítvány konfigurációjának frissítése
-A fürttanúsítvány fürtcsomópontok közötti hitelesítéshez használatos. A tanúsítványváltás extra körültekintően kell hajtható végre, mert a sikertelen blokkolja a fürt csomópontok közötti kommunikációt.
+## <a name="upgrade-cluster-certificate-configuration"></a>Fürtkonfiguráció konfigurációjának frissítése
+A fürtcsomópontok közötti hitelesítéshez a rendszer a fürt tanúsítványát használja. A tanúsítvány-átváltást óvatosan kell elvégezni, mert a hiba blokkolja a fürtcsomópontok közötti kommunikációt.
 
-Négy beállítások támogatottak:  
+Négy lehetőség támogatott:  
 
-* A tanúsítványnak frissítés: A frissítés elérési útja (elsődleges) -> tanúsítvány B (elsődleges) tanúsítvány tanúsítvány-C (elsődleges) -> ->...
+* Egyetlen tanúsítvány frissítése: a frissítési útvonal az A tanúsítvány (elsődleges) – > B tanúsítvány (elsődleges) – > tanúsítvány C (elsődleges) – >....
 
-* Duplavonal-tanúsítvány frissítés: A frissítés elérési útja (elsődleges) -> Tanúsítvány tanúsítvány-(elsődleges), és B (másodlagos) -> tanúsítvány B (elsődleges) -> (elsődleges) tanúsítvány B és C (másodlagos) > tanúsítvány C (elsődleges) ->...
+* Dupla tanúsítvány frissítése: a frissítési útvonal az a tanúsítvány (elsődleges) – > tanúsítvány A (elsődleges) és B (másodlagos) – > B tanúsítvány (elsődleges) – > B (elsődleges) és C (másodlagos) – > C (elsődleges) tanúsítvány, >....
 
-* Tanúsítvány típusa frissítés: Tanúsítvány ujjlenyomat-alapú konfigurációs <> – Köznapinév-alapú tanúsítvány konfigurálását. Ha például a tanúsítvány-ujjlenyomat (elsődleges) és ujjlenyomatát B (másodlagos) -> tanúsítvány CommonName c
+* Tanúsítvány típusának frissítése: ujjlenyomat-alapú tanúsítvány-konfiguráció < – > Köznapinév-alapú tanúsítvány-konfiguráció. Például: A Tanúsítvány ujjlenyomata A (elsődleges) és A B ujjlenyomat (másodlagos) – > a C Köznapinév tanúsítvány.
 
-* Tanúsítvány kiállítója ujjlenyomat frissítés: A frissítési útvonalat a tanúsítvány CN = A, IssuerThumbprint et1 = (elsődleges) tanúsítvány CN -> = A, IssuerThumbprint et1, et2 = (elsődleges) tanúsítvány CN -> = A, IssuerThumbprint et2 = (elsődleges).
+* Tanúsítvány kiállítói ujjlenyomatának frissítése: a frissítési útvonal a következő tanúsítvány: CN = A, IssuerThumbprint = IT1 (elsődleges)-> tanúsítvány CN = A, IssuerThumbprint = IT1, IT2 (elsődleges)-> tanúsítvány CN = A, IssuerThumbprint = IT2 (elsődleges).
 
 
-## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan szabhatja testre az egyes [Service Fabric-fürt beállítások](service-fabric-cluster-fabric-settings.md).
-* Ismerje meg, hogyan [fürt kétirányú méretezése](service-fabric-cluster-scale-up-down.md).
-* Ismerje meg [alkalmazásfrissítések](service-fabric-application-upgrade.md).
+## <a name="next-steps"></a>Következő lépések
+* Megtudhatja, hogyan szabhatja testre a [Service Fabric fürtkonfiguráció beállításait](service-fabric-cluster-fabric-settings.md).
+* Ismerje meg, hogyan [méretezheti a fürtöt a és a](service-fabric-cluster-scale-up-down.md)szolgáltatásban.
+* Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md)megismerése.
 
 <!--Image references-->
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG

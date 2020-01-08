@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: Az Azure Custom Providers dokumentációja
+summary: Az Azure-beli felhasználói élményt kibővítő egyéni API-k meghatározása
+metadata:
+  title: Az Azure Custom Providers dokumentációja
+  description: Az Azure Custom Providers az Azure olyan bővíthetőségi platformja, amely lehetővé teszi egyéni API-k meghatározását
+  ms.service: azure-custom-providers
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 4a778d56aa3d7440715cdd792827b9c4a2837e65
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75648344"
+landingContent:
+- title: Tudnivalók az Azure Custom Providers használatáról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Custom Providers?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Policy egyéni szolgáltató társításához
+      url: concepts-built-in-policy.md
+    - text: Az erőforrás-előkészítés áttekintése
+      url: concepts-resource-onboarding.md
+- title: Egyéni szolgáltatók létrehozása
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Egyéni erőforrás-szolgáltató létrehozása
+      url: create-custom-provider.md
+  - linkListType: tutorial
+    links:
+    - text: Az egyéni szolgáltatók alkalmazásának első lépései
+      url: tutorial-get-started-with-custom-providers.md
+    - text: Az Azure Functions beállítása
+      url: tutorial-custom-providers-function-setup.md
+    - text: RESTful-végpont létrehozása
+      url: tutorial-custom-providers-function-authoring.md
+    - text: Egyéni szolgáltatók létrehozása és alkalmazása
+      url: tutorial-custom-providers-create.md
+    - text: Erőforrások bővítése
+      url: tutorial-resource-onboarding.md
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni műveletek hozzáadása az Azure-hoz
+      url: custom-providers-action-endpoint-how-to.md
+    - text: Egyéni erőforrások hozzáadása az Azure-hoz
+      url: custom-providers-resources-endpoint-how-to.md
+- title: Példák
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Egyéni erőforrásproxy – referencia
+      url: proxy-resource-endpoint-reference.md
+    - text: Egyéni erőforrás-gyorsítótár – referencia
+      url: proxy-cache-resource-endpoint-reference.md
+    - text: Egyéni szolgáltató RESTful-végpontja – referencia
+      url: reference-custom-providers-csharp-endpoint.md

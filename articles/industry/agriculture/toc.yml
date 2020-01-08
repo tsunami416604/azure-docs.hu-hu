@@ -1,42 +1,42 @@
 - name: Áttekintés
   items:
-    - name: Mi az a FarmBeats?
-      href: overview.md
+    - name: Mi az az Azure FarmBeats?
+      href: overview-azure-farmbeats.md
 - name: Oktatóanyagok
   expanded: true
   items:
     - name: Térkép készítése a talaj nedvességtartalmáról
-      href: generate-soil-moisture-map.md
+      href: generate-soil-moisture-map-in-azure-farmbeats.md
     - name: Korábbi telemetriaadatok feldolgozása
-      href: ingest-historical-telemetry-data.md
+      href: ingest-historical-telemetry-data-in-azure-farmbeats.md
 - name: Alapelvek
   items:
     - name: Integrációs minták
-      href: integration-patterns.md
+      href: integration-patterns-in-azure-farmbeats.md
     - name: Érzékelői partner integrációja
-      href: sensor-partner-integration.md
+      href: sensor-partner-integration-in-azure-farmbeats.md
     - name: Képalkotási partner integrációja
-      href: imagery-partner-integration.md
+      href: imagery-partner-integration-in-azure-farmbeats.md
 - name: Útmutatók
   items:
-    - name: A FarmBeats üzembe helyezése
-      href: prepare-for-deployment.md
+    - name: Az Azure FarmBeats telepítése
+      href: install-azure-farmbeats.md
     - name: Felhasználók kezelése
-      href: manage-users.md
+      href: manage-users-in-azure-farmbeats.md
     - name: Farmok kezelése
-      href: manage-farms.md
+      href: manage-farms-in-azure-farmbeats.md
     - name: Érzékelői adatok lekérése
       href: get-sensor-data-from-sensor-partner.md
     - name: Térképek létrehozása
-      href: generate-maps.md
+      href: generate-maps-in-azure-farmbeats.md
     - name: Szabályok konfigurálása és riasztások kezelése
-      href: configure-rules-alerts.md
+      href: configure-rules-alerts-in-azure-farmbeats.md
     - name: Drónképek lekérése
-      href: get-drone-imagery.md
+      href: get-drone-imagery-in-azure-farmbeats.md
 - name: Hibaelhárítás
   items:
-    - name: A FarmBeats hibaelhárítása
-      href: troubleshoot-project-farmbeats.md
+    - name: Az Azure FarmBeats hibaelhárítása
+      href: troubleshoot-azure-farmbeats.md
 - name: Referencia
   items: null
-  href: references-for-farmbeats.md
+  href: references-for-azure-farmbeats.md

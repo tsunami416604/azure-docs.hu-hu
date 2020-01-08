@@ -1,0 +1,30 @@
+- name: Azure-biztonsági teljesítményteszt
+  href: index.yml
+- name: Introduction (Bevezetés)
+  href: introduction.md
+- name: Biztonsági vezérlők
+  items:
+    - name: Áttekintés
+      href: overview.md
+    - name: Hálózati biztonság
+      href: security-control-network-security.md
+    - name: Naplózás és monitorozás
+      href: security-control-logging-monitoring.md
+    - name: Identitás- és hozzáférés-vezérlés
+      href: security-control-identity-access-control.md
+    - name: Adatvédelem
+      href: security-control-data-protection.md
+    - name: Biztonságirés-kezelés
+      href: security-control-vulnerability-management.md
+    - name: Leltár-és eszközfelügyelet
+      href: security-control-inventory-asset-management.md
+    - name: Biztonságos konfiguráció
+      href: security-control-secure-configuration.md
+    - name: Kártevők elleni védelem
+      href: security-control-malware-defense.md
+    - name: Adat-helyreállítás
+      href: security-control-data-recovery.md
+    - name: Incidensmegoldás
+      href: security-control-incident-response.md
+    - name: Behatolási tesztek és Red Team-gyakorlatok
+      href: security-control-penetration-tests-red-team-exercises.md

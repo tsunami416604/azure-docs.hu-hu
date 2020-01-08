@@ -1,25 +1,14 @@
 ---
-title: Alkalmazások és szolgáltatások üzembe helyezése és frissítése Azure Resource Managersal | Microsoft Docs
+title: Üzembe helyezés és frissítés Azure Resource Manager
 description: Megtudhatja, hogyan helyezhet üzembe alkalmazásokat és szolgáltatásokat egy Service Fabric-fürtön egy Azure Resource Manager sablon használatával.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 0bec430cbb98452f8c852c96053f3f699ce5098e
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71153586"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610250"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Alkalmazások és szolgáltatások kezelése Azure Resource Manager erőforrásként
 
@@ -28,8 +17,8 @@ Segítségével az Azure Resource Manageren keresztül helyezhet üzembe alkalma
 Ez az ajánlott módszer a fürtben szükséges telepítési, irányítási vagy fürtözött felügyeleti alkalmazások üzembe helyezésére. Ez magában foglalja a javítás-előkészítési [alkalmazást](service-fabric-patch-orchestration-application.md), a watchdogokat, illetve a fürtön futtatni kívánt alkalmazásokat más alkalmazások vagy szolgáltatások telepítése előtt. 
 
 Ha alkalmazható, az alkalmazásokat Resource Manager-erőforrásként kezelheti a fejlesztéshez:
-* Naplózási nyomvonal: A Resource Manager minden műveletet naplóz, és részletesen *naplózza a tevékenységeket* , amelyek segítségével nyomon követheti az adott alkalmazásokon és a fürtön végrehajtott módosításokat.
-* Szerepköralapú hozzáférés-vezérlés (RBAC): A fürtökhöz és a fürtön üzembe helyezett alkalmazásokhoz való hozzáférés kezelése ugyanazon Resource Manager-sablonnal végezhető el.
+* Naplózási nyomvonal: a Resource Manager naplózza az összes műveletet, és részletesen *naplózza a tevékenységeket* , amelyek segítségével nyomon követheti az ezen alkalmazások és a fürtön történt módosításokat.
+* Szerepköralapú hozzáférés-vezérlés (RBAC): a fürtökhöz való hozzáférés kezelése, valamint a fürtön üzembe helyezett alkalmazások ugyanazon Resource Manager-sablonnal is elvégezhetők.
 * A Azure Resource Manager (a Azure Portal használatával) a fürt és a kritikus fontosságú alkalmazások központi telepítésének egyablakos üzembe helyezése lesz.
 
 A következő kódrészlet a sablonon keresztül felügyelhető erőforrások különböző típusait jeleníti meg:
@@ -255,7 +244,7 @@ A következő kódrészlet a sablonon keresztül felügyelhető erőforrások k�
    ```
 
    > [!NOTE] 
-   > A *apiVersion* a következőre kell `"2019-03-01"`beállítani:. Ez a sablon a fürttől függetlenül is telepíthető, feltéve, hogy a fürt már telepítve van.
+   > A *apiVersion* `"2019-03-01"`értékre kell állítani. Ez a sablon a fürttől függetlenül is telepíthető, feltéve, hogy a fürt már telepítve van.
 
 5. Telepíteni! 
 
@@ -275,9 +264,9 @@ Ha egyszerűen eltávolítja a Microsoft. ServiceFabric/Clusters/Application alk
 Ha a fürt már használatban van, és néhány olyan alkalmazás, amelyet Resource Manager-erőforrásként szeretne felügyelni, az alkalmazások eltávolítása és újbóli üzembe helyezése helyett egy PUT hívást is használhat ugyanazzal az API-kkal, hogy az alkalmazások megkapják a a program Resource Manager-erőforrásként ismeri fel. További információkért lásd: Mi az [a Service Fabric Application Resource Model?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)
 
 > [!NOTE]
-> Annak engedélyezése, hogy a fürt a nem kifogástalan állapotú alkalmazásokat figyelmen kívül hagyja, az ügyfél megadhatja a "maxPercentUnhealthyApplications: 100 "a" upgradeDescription/healthPolicy "szakaszban; az összes beállítás részletes leírása a [Service fabric REST API a fürt frissítési házirendjének dokumentációjában](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)található.
+> Ha engedélyezni szeretné, hogy a fürt a nem megfelelő állapotú alkalmazásokat hagyja figyelmen kívül, az ügyfél az "upgradeDescription/healthPolicy" szakaszban megadhatja a "maxPercentUnhealthyApplications: 100" kifejezést. az összes beállítás részletes leírása a [Service fabric REST API a fürt frissítési házirendjének dokumentációjában](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)található.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Service FABRIC parancssori](service-fabric-cli.md) felület vagy a [PowerShell](service-fabric-deploy-remove-applications.md) használatával telepíthet más alkalmazásokat a fürtön. 
 * [A Service Fabric-fürt frissítése](service-fabric-cluster-upgrade.md)

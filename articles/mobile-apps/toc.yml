@@ -1,4 +1,4 @@
-- name: Valós mobilalkalmazások készítése Microsoft-szolgáltatásokkal
+- name: Valós mobilalkalmazások létrehozása Microsoft-szolgáltatásokkal
   href: index.md
 - name: A mobilalkalmazások készítésének lépései
   items:
@@ -14,7 +14,7 @@
           href: data-storage.md
         - name: Kiszolgáló nélküli számítástechnika
           href: serverless-compute.md
-        - name: Azure Storage tárterület
+        - name: Azure Storage
           href: azure-storage.md
         - name: Valós idejű alkalmazások
           href: real-time.md
@@ -32,7 +32,7 @@
           href: continuous-delivery.md
     - name: Használat és felhasználói viselkedés elemzése
       href: analytics.md
-    - name: Valós idejű összeomlási jelentések
+    - name: Valós idejű hibajelentés
       href: diagnostics.md
     - name: Leküldéses értesítések
       href: push-notifications.md
@@ -42,7 +42,7 @@
       href: cognitive-services.md
     - name: Azure Maps
       href: azure-maps.md
-    - name: Azure CDN
+    - name: Azure Content Delivery Network
       href: azure-cdn.md
     - name: Azure Cognitive Search
       href: azure-search.md

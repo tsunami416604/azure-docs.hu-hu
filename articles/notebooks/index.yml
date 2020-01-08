@@ -1,61 +1,68 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Az Azure Notebooks dokumentációja
+### YamlMime:Landing
+title: Az Azure Notebooks előzetes verziójának dokumentációja
+summary: Az Azure Notebooks előzetes verziója egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához. A Jupyter (korábbi nevén IPython) egy nyílt forráskódú projekt, amellyel egyetlen megosztható vásznon – más néven egy notebookon – egyesítheti a Markdown-szövegeket, a végrehajtható kódot (Python, R és F#), valamint az állandó adatokat, grafikákat és vizualizációkat.
 metadata:
-  title: Az Azure Notebooks dokumentációja
-  description: 'Megtudhatja, hogyan hozhat létre, futtathat és oszthat meg Jupyter notebookokat az üzemeltetett Azure Notebooks-szolgáltatással.'
+  title: Az Azure Notebooks előzetes verziójának dokumentációja
+  description: Megtudhatja, hogyan hozhat létre, futtathat és oszthat meg Jupyter notebookokat az üzemeltetett előzetes verziójú Azure Notebooks-szolgáltatással.
+  ms.service: azure-notebooks
   ms.topic: landing-page
-  ms.date: 12/04/2018
-abstract:
-  description: 'Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához. A Jupyter (korábbi nevén IPython) egy nyílt forráskódú projekt, amellyel egyetlen megosztható vásznon – más néven egy notebookon – egyesítheti a Markdown-szövegeket, a végrehajtható kódot (Python, R és F#), valamint az állandó adatokat, grafikákat és vizualizációkat.'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: A rövid útmutatókból megismerheti az Azure Notebooks használatát.
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: /azure/notebooks/quickstart-create-share-jupyter-notebook
-            html: '<p>Ismerje meg, hogyan hozhat létre és futtathat Jupyter notebookot az Azure Notebooksban, és hogyan oszthatja meg másokkal.</p>'
-            image:
-              src: media/index/Azure_AddNotebook.svg
-            title: Notebook létrehozása és megosztása
-          - href: /azure/notebooks/quickstart-clone-jupyter-notebook
-            html: '<p>Ismerje meg, hogyan klónozhat Jupyter notebookokat a GitHub-adattárból, és hogyan futtathatja őket Azure Notebooks-fiókjában.</p>'
-            image:
-              src: media/index/Azure_ClonePage.svg
-            title: Notebook klónozása
-          - href: /azure/notebooks/quickstart-migrate-local-jupyter-notebook
-            html: '<p>Ismerje meg, hogyan továbbíthat Jupyter notebookokat a helyi számítógépről vagy egy webes URL-címről az Azure Notebooksba, és hogyan oszthatja meg együttműködéshez.</p>'
-            image:
-              src: media/index/Azure_MigrateNotebook.svg
-            title: Helyi Jupyter notebook migrálása
-          - href: /azure/notebooks/quickstart-create-jupyter-notebook-project-environment
-            html: '<p>Ismerje meg, hogyan konfigurálhat egy telepített csomagokat és indítási szkripteket tartalmazó Azure Notebooks-projektet.</p>'
-            image:
-              src: media/index/Azure_CustomEnvironment.svg
-            title: Projekt létrehozása egyéni környezettel
-          - href: /azure/notebooks/quickstart-sign-in-azure-notebooks
-            html: '<p>Ismerje meg, hogyan jelentkezhet be az Azure Notebooksba, és hogyan állíthat be egy felhasználói azonosítót, amellyel hozzáférhet a mentett projektekhez, és notebookokat oszthat meg másokkal.</p>'
-            image:
-              src: media/index/Azure_UserAccount.svg
-            title: Bejelentkezés és felhasználói azonosító beállítása
-  - title: Részletes útmutatók
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/notebooks/tutorial-create-run-jupyter-notebook">Ismerje meg a notebookok létrehozásának teljes folyamatát.</a>
-  - title: Példák
-    items:
-      - type: paragraph
-        text: 'A következő minták segítségével dolgozhat a Notebooks szolgáltatással:'
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/notebooks/azure-notebooks-samples">Minta Jupyter notebookok</a>
+  author: jasonwhowell
+  ms.author: jasonh
+  ms.date: 12/26/2019
+  ms.openlocfilehash: 5044e3d679827982af7259511777f7119188b00b
+  ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 01/04/2020
+  ms.locfileid: "75659117"
+landingContent:
+- title: Tudnivalók az Azure Notebooks használatáról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Notebooks-szolgáltatás?
+      url: azure-notebooks-overview.md
+  - linkListType: deploy
+    links:
+    - text: Azure Notebooks-minták
+      url: azure-notebooks-samples.md
+  - linkListType: get-started
+    links:
+    - text: Az Azure Notebooks elérése
+      url: https://notebooks.azure.com/
+- title: Bevezetés az Azure Notebooks használatába
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Éghajlati adatok elemzése az Azure Notebooks használatával
+      url: /learn/modules/analyze-climate-data-with-azure-notebooks/
+  - linkListType: tutorial
+    links:
+    - text: Jupyter notebook létrehozása és futtatása Pythonnal
+      url: tutorial-create-run-jupyter-notebook.md
+  - linkListType: quickstart
+    links:
+    - text: Bejelentkezés és felhasználói azonosító beállítása
+      url: quickstart-sign-in-azure-notebooks.md
+    - text: Notebook létrehozása és megosztása
+      url: quickstart-create-share-jupyter-notebook.md
+    - text: Notebook klónozása
+      url: quickstart-clone-jupyter-notebook.md
+    - text: Helyi Jupyter notebook migrálása
+      url: quickstart-migrate-local-jupyter-notebook.md
+    - text: Projekt létrehozása egyéni környezettel
+      url: quickstart-create-jupyter-notebook-project-environment.md
+- title: Az Azure Notebooks legfontosabb feladatai
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Projektek kezelése és konfigurálása
+      url: configure-manage-azure-notebooks-projects.md
+    - text: Adatfájlok használata
+      url: work-with-project-data-files.md
+    - text: Projektek létrehozása és klónozása
+      url: create-clone-jupyter-notebooks.md
+    - text: Felhőbeli adatok elérése egy jegyzetfüzetben
+      url: access-data-resources-jupyter-notebooks.md
+    - text: Csomagok telepítése notebookokban
+      url: install-packages-jupyter-notebook.md

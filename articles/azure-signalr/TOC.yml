@@ -4,7 +4,7 @@
   items:
     - name: Az Azure SignalR Service bemutatása
       href: signalr-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: 'ASP.NET Core – C#'
@@ -25,6 +25,10 @@
   items:
     - name: 'Kiszolgáló nélküli, hitelesítéssel rendelkező valós idejű alkalmazás összeállítása'
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: Figyelés
+      items:
+        - name: Diagnosztikai naplók használata a SignalR Service szolgáltatás monitorozásához
+          href: signalr-tutorial-diagnostic-logs.md
 - name: Példák
   items:
     - name: Kódminták
@@ -100,7 +104,7 @@
     - name: Gyakori kérdések
       href: signalr-resource-faq.md
     - name: A SignalR szolgáltatás előfizetési szintjének korlátai
-      href: 'https://docs.microsoft.com/azure/azure-subscription-service-limits#signalr-service-limits'
+      href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#signalr-service-limits'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: Videók

@@ -49,7 +49,7 @@
               href: sql-database-service-tier-hyperscale-faq.md
             - name: Migrálás prémium RS-ről
               href: sql-database-service-tiers-prs.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: SQL Database-adatbázisok
@@ -69,6 +69,8 @@
         - name: Biztonsági áttekintés
           href: sql-database-security-overview.md
           displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
+        - name: Ajánlott biztonsági eljárások
+          href: sql-database-security-best-practice.md
         - name: Hozzáférés-kezelés
           items:
             - name: Hozzáférés-vezérlés
@@ -292,7 +294,7 @@
               href: sql-database-elastic-scale-introduction.md
             - name: Szószedet
               href: sql-database-elastic-scale-glossary.md
-            - name: Rugalmas ügyfélkönyvtár – konszolidálás
+            - name: Rugalmas ügyfélkönyvtár
               href: sql-database-elastic-database-client-library.md
             - name: Szilánkleképezések
               href: sql-database-elastic-scale-shard-map-management.md
@@ -471,7 +473,7 @@
           href: sql-database-elastic-pool.md
         - name: Adatbázis-kiszolgálók
           href: sql-database-servers.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Létrehozás
           items:
@@ -560,7 +562,7 @@
               href: sql-database-machine-learning-services-overview.md
             - name: Fő eltérések
               href: sql-database-machine-learning-services-differences.md
-            - name: Gyors útmutatók
+            - name: Rövid útmutatók
               items:
                 - name: R-szkriptek létrehozása
                   href: sql-database-quickstart-r-create-script.md
@@ -683,16 +685,17 @@
         - name: Kódminták
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Felügyelt SQL-példány
+  href: sql-database-managed-instance-index.yml
   items:
-    - name: A felügyelt példány dokumentációja
-      href: sql-database-managed-instance-index.yml
     - name: Áttekintés
-      href: sql-database-managed-instance.md
-    - name: Példánykészletek
-      href: sql-database-instance-pools.md
-    - name: GYIK
-      href: sql-database-managed-instance-faq.md
-    - name: Gyors útmutatók
+      items:
+        - name: Felügyelt példány
+          href: sql-database-managed-instance.md
+        - name: Példánykészletek
+          href: sql-database-instance-pools.md
+        - name: GYIK
+          href: sql-database-managed-instance-faq.md
+    - name: Rövid útmutatók
       items:
         - name: Létrehozás
           items:
@@ -718,14 +721,18 @@
       items:
         - name: Migrálás DMS használatával
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-        - name: Tranzakciós replikáció konfigurálása
-          href: replication-with-sql-database-managed-instance.md
         - name: Biztonság konfigurálása
           href: sql-database-managed-instance-aad-security-tutorial.md
         - name: Felügyelt példány hozzáadása feladatátvételi csoporthoz
           href: sql-database-managed-instance-failover-group-tutorial.md
         - name: Helyszíni felhasználók és csoportok migrálása
           href: tutorial-managed-instance-azure-active-directory-migration.md
+        - name: Tranzakciós replikáció
+          items:
+            - name: MI pub – MI sub
+              href: replication-with-sql-database-managed-instance.md
+            - name: 'MI pub, MI dist, SQL Sub'
+              href: sql-database-managed-instance-configure-replication-tutorial.md
     - name: Alapelvek
       items:
         - name: Felügyeleti API-referencia

@@ -1,47 +1,38 @@
 ---
-title: A fürthöz kapcsolódó események EventStore API-val az Azure Service Fabric-fürtök lekérdezési |} A Microsoft Docs
-description: Ismerje meg, hogyan használja az Azure Service Fabric EventStore API-k lekérdezéshez tartozó platform események
-services: service-fabric
-documentationcenter: .net
+title: Fürt eseményeinek lekérdezése a EventStore API-k használatával
+description: Ismerje meg, hogyan használhatja az Azure Service Fabric EventStore API-kat a platform eseményeinek lekérdezéséhez
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: facbcd6def7451ca83bdf00fe9b7c7cac2c74945
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48350caef6bdaafda9aff7ac776d67b314aeaf8c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60392874"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614400"
 ---
-# <a name="query-eventstore-apis-for-cluster-events"></a>EventStore API-k lekérdezni a fürthöz kapcsolódó események
+# <a name="query-eventstore-apis-for-cluster-events"></a>EventStore API-k lekérdezése a fürt eseményeihez
 
-Ez a cikk bemutatja, hogyan érhetők el a Service Fabric verziója 6.2 és újabb – Ha az EventStore szolgáltatással kapcsolatos további információért lásd: EventStore API-k a [EventStore szolgáltatás áttekintése](service-fabric-diagnostics-eventstore.md). Jelenleg az EventStore szolgáltatás csak hozzáférhetnek a adatok az elmúlt 7 napban (alapul, a fürt diagnosztika az adatmegőrzési házirend).
+Ez a cikk azt ismerteti, hogyan lehet lekérdezni a EventStore API-kat, amelyek a 6,2-es és újabb verziókban érhetők Service Fabric el – Ha többet szeretne megtudni a EventStore szolgáltatásról, tekintse meg a [EventStore szolgáltatás áttekintését](service-fabric-diagnostics-eventstore.md). A EventStore szolgáltatás jelenleg csak az elmúlt 7 napban fér hozzá az adatokhoz (ez a fürt diagnosztikai adatmegőrzési szabályzata alapján történik).
 
 >[!NOTE]
->Az EventStore API-k 6.4 verzió csak az Azure-on futó Windows fürtök esetén a Service Fabric-től általánosan elérhető.
+>A EventStore API-k az Azure-on futó Windows-fürtökön a GA Service Fabric 6,4-es verziójának megfelelően működnek.
 
-Az EventStore API-k érhetők el közvetlenül a REST-végponton keresztül, vagy programozott módon. A lekérdezéstől függően vannak, amelyek szükségesek a megfelelő adatokat gyűjt több paramétert. Ezek a paraméterek általában a következők:
-* `api-version`: a verzióját az EventStore API-k használata
-* `StartTimeUtc`: határozza meg az Önt érdeklő megnézzük az időszak kezdete
+A EventStore API-k közvetlenül egy REST-végponton keresztül, vagy programozott módon érhetők el. A lekérdezéstől függően számos paramétert kell megadnia a megfelelő adatok összegyűjtéséhez. Ezek a paraméterek jellemzően a következőket tartalmazzák:
+* `api-version`: az Ön által használt EventStore API-k verziója
+* `StartTimeUtc`: a megtekinteni kívánt időszak kezdetét határozza meg
 * `EndTimeUtc`: az időszak vége
 
-Ezeket a paramétereket, valamint opcionális paraméterek érhető el, például:
-* `timeout`: felülbírálják az alapértelmezett 60 második időtúllépési értéket a kért művelet végrehajtásához
-* `eventstypesfilter`: Ez lehetővé teszi az adott eseménytípusok szűrése
-* `ExcludeAnalysisEvents`: ' "eseményeket nem adott vissza. Alapértelmezés szerint az EventStore lekérdezések adja vissza "elemzése" eseményekkel rendelkező ahol csak lehetséges. Elemzés események olyan gazdagabb műveleti csatorna események, amelyek további környezet vagy egy normál Service Fabric-esemény túli információkat tartalmaznak, és adja meg részletesebben olvashat róluk.
-* `SkipCorrelationLookup`: ne keresse a lehetséges kapcsolódó eseményeket, a fürtben. Alapértelmezés szerint az EventStore megkísérli az események összevetését a fürt, és kapcsolja össze az eseményeket, amikor csak lehetséges. 
+Ezen paraméterek mellett választható paraméterek is elérhetők, például:
+* `timeout`: felülbírálja az alapértelmezett 60 második időtúllépést a kérelem műveletének végrehajtásakor.
+* `eventstypesfilter`: az adott eseménytípus szűrésére szolgáló lehetőséget biztosít.
+* `ExcludeAnalysisEvents`: nem ad vissza "Analysis" eseményeket. Alapértelmezés szerint a EventStore-lekérdezések az "elemzés" eseményekkel lesznek visszaadva, ahol lehetséges. Az elemzési események olyan gazdagabb működési csatorna-események, amelyek további kontextust vagy információt tartalmaznak a rendszeres Service Fabric eseményeken túl, és részletesebben biztosítanak.
+* `SkipCorrelationLookup`: ne keressen a lehetséges korrelált eseményeket a fürtben. Alapértelmezés szerint a EventStore megkísérli összekapcsolni az eseményeket egy fürtön keresztül, és ha lehetséges, össze kell kapcsolni az eseményeket. 
 
-Minden entitás egy fürtben lehetnek események lekérdezések. A típus összes entitáshoz eseményeket is lekérdezheti. Például lekérdezheti, ha egy adott csomópont, vagy az összes csomópont események a fürtben. A jelenlegi olyan entitások, amelynek események lekérdezhető, (az a lekérdezés hogyan kellene strukturálni):
+A fürt minden entitása lehet lekérdezés az eseményekhez. Az eseményeket a típus összes entitása esetében is lekérdezheti. Például lekérdezheti egy adott csomópont vagy a fürt összes csomópontja eseményeit. Azon entitások aktuális készlete, amelyekhez eseményeket lehet lekérdezni (a lekérdezés szerkezetének módjával):
 * Fürt: `/EventsStore/Cluster/Events`
-* Csomópont: `/EventsStore/Nodes/Events`
+* Csomópontok: `/EventsStore/Nodes/Events`
 * Csomópont: `/EventsStore/Nodes/<NodeName>/$/Events`
 * Alkalmazások: `/EventsStore/Applications/Events`
 * Alkalmazás: `/EventsStore/Applications/<AppName>/$/Events`
@@ -50,24 +41,24 @@ Minden entitás egy fürtben lehetnek események lekérdezések. A típus össze
 * Partíciók: `/EventsStore/Partitions/Events`
 * Partíció: `/EventsStore/Partitions/<PartitionID>/$/Events`
 * Replikák: `/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
-* A replika: `/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
+* Replika: `/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
 
 >[!NOTE]
->Amikor egy alkalmazás vagy szolgáltatás neve hivatkozik, a lekérdezés nem kell tartalmaznia a "fabric: /" előtaggal. Emellett, ha az alkalmazás vagy szolgáltatás neve a "/" őket, váltson, hogy a "~" a lekérdezés működő tartani. Ha az alkalmazás megjelenik-e például "fabric: / App1/FrontendApp", az alkalmazás adott lekérdezések lenne strukturált, mint `/EventsStore/Applications/App1~FrontendApp/$/Events`.
->Ezenkívül rendszerállapot-jelentések szolgáltatások ma jelennek meg meg az alkalmazást, így Ön szeretné lekérdezni a `DeployedServiceHealthReportCreated` eseményeket a megfelelő alkalmazás entitás. 
+>Egy alkalmazás vagy szolgáltatás nevének hivatkozásakor a lekérdezésnek nem kell tartalmaznia a "Fabric:/"-t előtag. Emellett, ha az alkalmazás vagy a szolgáltatás neve "/" szerepel bennük, váltson a "~" értékre a lekérdezés működésének megtartásához. Ha például az alkalmazás "Fabric:/App1/FrontendApp"-ként jelenik meg, az alkalmazás-specifikus lekérdezések `/EventsStore/Applications/App1~FrontendApp/$/Events`ként lesznek felépítve.
+>Emellett a szolgáltatásokhoz tartozó állapotfigyelő jelentések a megfelelő alkalmazás alatt jelennek meg, így a megfelelő alkalmazás-entitáshoz tartozó `DeployedServiceHealthReportCreated` eseményeket kell lekérdezni. 
 
-## <a name="query-the-eventstore-via-rest-api-endpoints"></a>A REST API-végpontokon keresztül EventStore lekérdezése
+## <a name="query-the-eventstore-via-rest-api-endpoints"></a>A EventStore lekérdezése REST API végpontokon keresztül
 
-Az EventStore közvetlenül egy REST-végpont használatával lekérdezheti azáltal, hogy `GET` kérelmeket: `<your cluster address>/EventsStore/<entity>/Events/`.
+A EventStore közvetlenül egy REST-végponton keresztül kérdezheti le, ha `GET` kérelmeket a következőre kéri: `<your cluster address>/EventsStore/<entity>/Events/`.
 
-Például közé eső összes fürt lekérdezéséhez `2018-04-03T18:00:00Z` és `2018-04-04T18:00:00Z`, a kérelem néz ki:
+Ha például az `2018-04-03T18:00:00Z` és `2018-04-04T18:00:00Z`közötti összes fürtcsomópont lekérdezését szeretné lekérdezni, a kérelem a következőképpen fog kinézni:
 
 ```
 Method: GET 
 URL: http://mycluster:19080/EventsStore/Cluster/Events?api-version=6.4&StartTimeUtc=2018-04-03T18:00:00Z&EndTimeUtc=2018-04-04T18:00:00Z
 ```
 
-Ez vagy vissza nem esemény vagy a visszaadott JSON-események listája:
+Ez nem adhat vissza eseményeket vagy a JSON-ban visszaadott események listáját:
 
 ```json
 Response: 200
@@ -115,15 +106,15 @@ Body:
 ]
 ```
 
-Itt látható, amelyek között `2018-04-03T18:00:00Z` és `2018-04-04T18:00:00Z`, a fürt sikeresen befejeződött a felhasználónak először frissíteniük, akkor volt először parancsból, amikor a `"CurrentClusterVersion": "0.0.0.0:"` való `"TargetClusterVersion": "6.2:1.0"`, a `"OverallUpgradeElapsedTimeInMs": "120196.5212"`.
+Itt láthatjuk, hogy a `2018-04-03T18:00:00Z` és `2018-04-04T18:00:00Z`között ez a fürt sikeresen befejezte első frissítését, amikor az első felállt, a `"CurrentClusterVersion": "0.0.0.0:"` a `"TargetClusterVersion": "6.2:1.0"``"OverallUpgradeElapsedTimeInMs": "120196.5212"`.
 
-## <a name="query-the-eventstore-programmatically"></a>Az EventStore programozott módon lekérdezése
+## <a name="query-the-eventstore-programmatically"></a>EventStore programozott lekérdezése
 
-Is lekérdezheti az EventStore, automatizáltan a [Service Fabric ügyféloldali kódtár](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library).
+A EventStore programozott módon is lekérdezheti az [Service Fabric ügyféloldali kódtár](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)használatával.
 
-A Service Fabric-ügyfél beállítása után események lekérdezheti az ilyen EventStore elérésével: `sfhttpClient.EventStore.<request>`
+Miután beállította a Service Fabric-ügyfelet, az alábbihoz hasonló EventStore érheti el az eseményeket: `sfhttpClient.EventStore.<request>`
 
-Íme egy kérelem (példa), a fürt összes események között `2018-04-03T18:00:00Z` és `2018-04-04T18:00:00Z`, keresztül a `GetClusterEventListAsync` függvény.
+Íme egy példa a `2018-04-03T18:00:00Z` és `2018-04-04T18:00:00Z`közötti összes fürtcsomópont-kérelemre az `GetClusterEventListAsync` függvény használatával.
 
 ```csharp
 var sfhttpClient = ServiceFabricClientFactory.Create(clusterUrl, settings);
@@ -136,7 +127,7 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
     .ToList();
 ```
 
-Íme egy másik példa, amely lekérdezi a 2018 szeptember a fürt állapotának és az összes csomópont esemény, és kiírja őket.
+Íme egy másik példa, amely lekérdezi a fürt állapotát és az összes Node eseményt a 2018 szeptemberében, és kinyomtatja őket.
 
 ```csharp
   const int timeoutSecs = 60;
@@ -174,39 +165,39 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
   }
 ```
 
-## <a name="sample-scenarios-and-queries"></a>Mintaforgatókönyvek és lekérdezések
+## <a name="sample-scenarios-and-queries"></a>Példák és lekérdezések
 
-Íme néhány példa a hogyan hívhatja az esemény Store REST API-kat a fürt állapotának megismeréséhez.
+Íme néhány példa arra, hogyan hívhatja meg az Event Store REST API-kat a fürt állapotának megismerésére.
 
-*Fürt frissítése:*
+*Fürt frissítései:*
 
-Az utolsó időpont, a fürt sikeres volt, vagy frissítve az elmúlt hét próbált megtekintéséhez a az EventStore az "ClusterUpgradeCompleted" események lekérdezésével lekérdezheti az API-k a nemrégiben befejezett frissítések a fürthöz: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
+Ha szeretné megtekinteni, hogy a fürt Mikor volt sikeres, vagy mikor próbálta frissíteni a múlt héten, lekérdezheti az API-kat a fürthöz legutóbb befejezett frissítésekhez, ha lekérdezi a "ClusterUpgradeCompleted" eseményeit a EventStore: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
 
-*Fürt frissítési problémák:*
+*Fürt frissítésével kapcsolatos problémák:*
 
-Hasonlóképpen ha legutóbbi a fürtfrissítések problémái vannak, kérdezheti a fürt entitáshoz tartozó összes esemény. Látni fogja a különféle eseményeket, beleértve a frissítéseket, és minden egyes UD, amelyhez a frissítés állítva keresztül sikeresen. Látni fogja emellett események a pont, amelyen a visszaállítás elindítása és a megfelelő hálózatállapot-események. Ez a lekérdezés ezt használja: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Hasonlóképpen, ha problémák léptek fel a fürt legutóbbi frissítésekor, a fürt entitás összes eseményét lekérdezheti. Számos eseményt láthat, beleértve a frissítések kezdeményezését és az egyes UD-ket, amelyeken a frissítés sikeresen áthaladt. Azt is megtekintheti, hogy az adott pontnál hol találhatók a visszaállítás megkezdésének és a megfelelő állapot eseményeinek eseményei. Itt látható a következő lekérdezés: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-*Csomópont állapota változásai:*
+*Csomópont állapotának változása:*
 
-Tekintse meg a csomópont állapota az elmúlt néhány nap - amikor csomópontok hiba történt a felfelé és lefelé, vagy volt aktív vagy inaktív (a platform, a chaos szolgáltatást, vagy a felhasználói bevitel) – használja a következő lekérdezést: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Ha szeretné megtekinteni a csomópontok állapotának változását az elmúlt néhány napban – amikor a csomópontok fel-vagy leálltak, vagy inaktiváltak vagy inaktiváltak (akár a platform, a Chaos szolgáltatás vagy a felhasználói adatbevitel használatával) – használja a következő lekérdezést: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-*Alkalmazásesemények:*
+*Alkalmazás eseményei:*
 
-A legutóbbi alkalmazástelepítéseket és a frissítések is követheti. A fürt összes alkalmazása események megtekintéséhez használja a következő lekérdezést: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Nyomon követheti a legutóbbi alkalmazások központi telepítését és frissítéseit is. A következő lekérdezéssel tekintheti meg a fürtben lévő összes alkalmazási eseményt: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-*Az alkalmazás korábbi állapotát:*
+*Alkalmazás korábbi állapota:*
 
-Csak az alkalmazás életciklus-események lát, mellett is érdemes korábbi adatok alapján egy adott alkalmazás állapotának megtekintéséhez. Ez az alkalmazás nevét, amelynek meg szeretné az adatok gyűjtéséhez megadásával teheti meg. Ez a lekérdezés használatával az alkalmazás minden állapotesemény: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`. Ha szeretne érvényessége hálózatállapot-események tartalmazzák (megszűnt idejüket átadott élettartam (TTL)), adja hozzá `,ApplicationHealthReportExpired` , két típusú események szűrése a lekérdezés végére.
+Az alkalmazás-életciklus eseményeinek megjelenítésén kívül előfordulhat, hogy egy adott alkalmazás állapotára vonatkozó korábbi adatokra is kíváncsi. Ehhez meg kell adnia annak az alkalmazásnak a nevét, amelyhez össze kívánja gyűjteni az adatokat. Ezzel a lekérdezéssel kérheti le az összes alkalmazás-állapotra vonatkozó eseményt: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`. Ha olyan állapot-eseményeket szeretne szerepeltetni, amelyek érvényessége lejárt (az élettartam (TTL) miatt), vegyen fel `,ApplicationHealthReportExpired`t a lekérdezés végére, és két típusú eseményre szűrje.
 
-*Korábbi állapot "myApp" szolgáltatásokhoz:*
+*A "SajátPr" összes szolgáltatásának korábbi állapota:*
 
-Jelenleg jelentés állapotesemények szolgáltatások megjelenjen `DeployedServicePackageNewHealthReport` eseményeket a megfelelő alkalmazás-entitás alapján. Megtudhatja, hogyan a szolgáltatások "Az App1" rendelkezik lett mivel, használja a következő lekérdezést: `https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
+Jelenleg a szolgáltatások állapotjelentés-eseményei `DeployedServicePackageNewHealthReport` eseményként jelennek meg a megfelelő alkalmazás entitásban. Ha szeretné megtekinteni, hogy a szolgáltatásai hogyan lettek a "App1", használja a következő lekérdezést: `https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
 
-*A partíció újrakonfigurálása:*
+*Partíció újrakonfigurálása:*
 
-Az összes a partíció áthelyezések száma –, és ismételje meg a fürt lekérdezni a `PartitionReconfigured` esemény. Ez segítségére lehet döntse el, milyen számítási feladatokat futtatott melyik csomópont megadott időpontban, amikor a fürt diagnosztizálása problémák. Itt látható, amely, amely mintalekérdezés: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
+Ha szeretné megtekinteni a fürtben történt összes partíciós mozdulatot, akkor a `PartitionReconfigured` eseményt kérdezze le. Ez segít kideríteni, hogy mely munkaterhelések futnak a megadott időpontokban a fürtben felmerülő problémák diagnosztizálásakor. Íme egy példa a következő lekérdezésre: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
 
-*A Chaos szolgáltatás:*
+*Chaos szolgáltatás:*
 
-Nincs létre eseményt, amikor a káosz, a szolgáltatás elindult vagy leállt, hogy elérhető-e a fürt szintjén. A Chaos szolgáltatás közelmúltbeli használatát megtekintéséhez használja a következő lekérdezést: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
+A Chaos szolgáltatás indításakor vagy leállításakor esemény történik, amely a fürt szintjén van kitéve. A Chaos szolgáltatás legutóbbi használatának megtekintéséhez használja az alábbi lekérdezést: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
 

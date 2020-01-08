@@ -4,7 +4,7 @@
   items:
     - name: Mi az Azure Maps?
       href: about-azure-maps.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Webalkalmazás létrehozása
@@ -31,6 +31,16 @@
           href: tutorial-ev-routing.md
         - name: Időjárásadatok elemzése az Azure Notebooks használatával (Python)
           href: weather-service-tutorial.md
+    - name: Migrálás a Google Térkép szolgáltatásból
+      items:
+        - name: Migrálás a Google Térkép szolgáltatásból
+          href: migrate-from-google-maps.md
+        - name: Webalkalmazás migrálása
+          href: migrate-from-google-maps-web-app.md
+        - name: Androidos alkalmazás migrálása
+          href: migrate-from-google-maps-android-app.md
+        - name: Webszolgáltatás migrálása
+          href: migrate-from-google-maps-web-services.md
 - name: Alapelvek
   items:
     - name: Hitelesítés az Azure Maps használatával
@@ -103,8 +113,12 @@
               href: create-data-source-web-sdk.md
             - name: Szimbólumréteg hozzáadása
               href: map-add-pin.md
+            - name: Előugró ablak hozzáadása
+              href: map-add-popup.md
             - name: Buborékréteg hozzáadása
               href: map-add-bubble-layer.md
+            - name: HTML-jelölők hozzáadása
+              href: map-add-custom-html.md
             - name: Vonalréteg hozzáadása
               href: map-add-line-layer.md
             - name: Sokszögréteg hozzáadása
@@ -113,34 +127,34 @@
               href: map-extruded-polygon.md
             - name: Hőtérképréteg hozzáadása
               href: map-add-heat-map-layer.md
-            - name: Előugró ablak hozzáadása
-              href: map-add-popup.md
+            - name: Rendszerképréteg hozzáadása
+              href: map-add-image-layer.md
+            - name: Csemperétegek hozzáadása
+              href: map-add-tile-layer.md
+            - name: Forgalom megjelenítése
+              href: map-show-traffic.md
             - name: Fürt pontadatai
               href: clustering-point-data-web-sdk.md
             - name: Adatvezérelt stíluskifejezések használata
               href: data-driven-style-expressions-web-sdk.md
             - name: Rendszerképsablonok használata
               href: how-to-use-image-templates-web-sdk.md
-            - name: Rendszerképréteg hozzáadása
-              href: map-add-image-layer.md
-            - name: Csemperétegek hozzáadása
-              href: map-add-tile-layer.md
-            - name: HTML-jelölők
-              href: map-add-custom-html.md
-            - name: Forgalom megjelenítése
-              href: map-show-traffic.md
             - name: Reagálás az eseményekre
               href: map-events.md
             - name: Alkalmazás elérhetővé tétele
               href: map-accessibility.md
         - name: Rajzeszközök
           items:
+            - name: A Rajzeszközök modul használata
+              href: set-drawing-options.md
             - name: Rajzolási eszköztár hozzáadása
               href: map-add-drawing-toolbar.md
-            - name: Rajzolási beállítások megadása
-              href: set-drawing-options.md
             - name: Formázott adatok lekérése
               href: map-get-shape-data.md
+            - name: Rajzolási eseményekre való reakció
+              href: drawing-tools-events.md
+            - name: Az interakciók típusai és billentyűparancsok
+              href: drawing-tools-interactions-keyboard-shortcuts.md
         - name: Szolgáltatások modul
           items:
             - name: A szolgáltatásmodul használata
@@ -231,6 +245,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Maps-videók
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Nyílt forráskódú projektek
+      href: open-source-projects.md
     - name: Azure Maps-esettanulmányok
       href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Maps-szószedet

@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric-fürt létrehozása a tanúsítvány köznapi nevével | Microsoft Docs
+title: Fürt létrehozása a tanúsítvány köznapi neve alapján
 description: Megtudhatja, hogyan hozhat létre Service Fabric-fürtöt a tanúsítvány köznapi neve alapján sablonból.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2019
-ms.author: atsenthi
-ms.openlocfilehash: 73e02b4482f69ec0c9d5a602f30cefea77279778
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 4a4448c88fa9493979f075f6b9c669927dd1d39e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764726"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614553"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Tanúsítvány köznapi nevét használó Service Fabric-fürt üzembe helyezése ujjlenyomat helyett
 Két tanúsítvány nem rendelkezhet ugyanazzal az ujjlenyomattal, ami lehetővé teszi a fürt tanúsítványainak átváltását vagy felügyeletét. Több tanúsítvány, azonban ugyanaz a köznapi név vagy a tárgy lehet.  A tanúsítvány köznapi neveit használó fürtök sokkal egyszerűbbé teszik a Tanúsítványkezelőt. Ez a cikk bemutatja, hogyan helyezhet üzembe egy Service Fabric-fürtöt a tanúsítványhoz tartozó köznapi név használatára a Tanúsítvány ujjlenyomata helyett.
@@ -28,7 +17,7 @@ Két tanúsítvány nem rendelkezhet ugyanazzal az ujjlenyomattal, ami lehetőv�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>Tanúsítvány beszerzése
-Először kérje le a tanúsítványt egy [hitelesítésszolgáltatótól (CA)](https://wikipedia.org/wiki/Certificate_authority).  A tanúsítvány köznapi nevének a saját egyéni tartományának kell lennie, és egy tartományregisztráló alapján kell megvásárolnia. Például: "azureservicefabricbestpractices.com"; azok, akik nem Microsoft-alkalmazottak, nem tudnak kiépíteni tanúsítványokat az MS-tartományokhoz, így nem használhatja az LB vagy a Traffic Manager DNS-neveit a tanúsítvány köznapi neveként, és létre kell hoznia egy [Azure DNS zónát](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) , ha az egyéni tartomány resolvabl e az Azure-ban. Ha azt szeretné, hogy a portál tükrözze a fürt egyéni tartományának aliasát, azt is be kell jelentenie, hogy a fürt "z".
+Először kérje le a tanúsítványt egy [hitelesítésszolgáltatótól (CA)](https://wikipedia.org/wiki/Certificate_authority).  A tanúsítvány köznapi nevének a saját egyéni tartományának kell lennie, és egy tartományregisztráló alapján kell megvásárolnia. Például: "azureservicefabricbestpractices.com"; azok, akik nem Microsoft-alkalmazottak, nem tudnak kiépíteni tanúsítványokat az MS-tartományokhoz, így nem használhatja az LB vagy a Traffic Manager DNS-neveit a tanúsítvány általános neveként, és létre kell hoznia egy [Azure DNS zónát](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) , ha az egyéni tartomány feloldható az Azure-ban. Ha azt szeretné, hogy a portál tükrözze a fürt egyéni tartományának aliasát, azt is be kell jelentenie, hogy a fürt "z".
 
 Tesztelési célból a HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítványt egy ingyenes vagy nyitott hitelesítésszolgáltatótól szerezheti be.
 
@@ -131,7 +120,7 @@ Ezután nyissa meg a *azuredeploy. JSON* fájlt egy szövegszerkesztőben, és h
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. A **Microsoft. számítási/virtualMachineScaleSets** erőforrásban frissítse a virtuálisgép-bővítményt, hogy az ujjlenyomat helyett az általános nevet használja a tanúsítvány beállításainál.  A **virtualMachineProfile**->**extensionProfile** **-bővítmények**tulajdonságok beállításainak tanúsítványa területen adja hozzá a->->->-> 
+3. A **Microsoft. számítási/virtualMachineScaleSets** erőforrásban frissítse a virtuálisgép-bővítményt, hogy az ujjlenyomat helyett az általános nevet használja a tanúsítvány beállításainál.  A **virtualMachineProfile**->**extensionProfile**->**Extensions**->**Tulajdonságok**->**Beállítások**->**tanúsítvány**, Hozzáadás 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"
@@ -222,7 +211,7 @@ New-AzResourceGroup -Name $groupname -Location $clusterloc
 New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFile "C:\temp\cluster\AzureDeploy.Parameters.json" -TemplateFile "C:\temp\cluster\AzureDeploy.json" -Verbose
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [fürt biztonságáról](service-fabric-cluster-security.md).
 * Tudnivalók a [fürt tanúsítványainak átváltásáról](service-fabric-cluster-rollover-cert-cn.md)
 * [Fürt tanúsítványainak frissítése és kezelése](service-fabric-cluster-security-update-certs-azure.md)

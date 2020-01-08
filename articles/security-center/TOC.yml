@@ -8,7 +8,7 @@
       href: security-center-os-coverage.md
     - name: Támogatott funkciók
       href: security-center-services.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Azure-előfizetések
@@ -49,6 +49,8 @@
       items:
         - name: Biztonsági riasztások áttekintése
           href: security-center-alerts-overview.md
+        - name: Riasztások hivatkozási listája
+          href: alerts-reference.md
         - name: Biztonsági riasztások kezelése
           href: security-center-managing-and-responding-alerts.md
         - name: Biztonsági incidensek kezelése
@@ -61,7 +63,7 @@
           href: security-center-alerts-data-services.md
         - name: Azure-szolgáltatásrétegek fenyegetésészlelése
           href: security-center-alerts-service-layer.md
-        - name: Integráció az Azure Security-termékekkel
+        - name: Az Azure WAF és Azure DDoS Protection fenyegetésészlelése
           href: security-center-alerts-integration.md
         - name: Felhőbeli intelligens riasztások korrelációi (incidensek)
           href: security-center-alerts-cloud-smart.md
@@ -75,6 +77,14 @@
       href: security-center-secure-score.md
     - name: Frissítés speciális biztonsági megoldásra
       href: security-center-onboarding.md
+    - name: Biztonsági rések meglétének ellenőrzése virtuális gépeken
+      items:
+        - name: A biztonsági rések ellenőrzésének áttekintése
+          href: security-center-vulnerability-assessment-recommendations.md
+        - name: Integrált biztonságirés-ellenőrző virtuális gépekhez
+          href: built-in-vulnerability-assessment.md
+        - name: Külső ellenőrzők használata
+          href: partner-vulnerability-assessment.md
     - name: Kiszolgálóvédelem a Microsoft Defender ATP-vel
       href: security-center-wdatp.md
     - name: Az Advanced Data Security használata Azure-beli virtuális gépeken futó SQL-hez
@@ -125,14 +135,12 @@
           href: security-center-remediate-recommendations.md
         - name: Biztonsági helyzet megerősítése
           href: security-center-monitoring.md
+        - name: Javaslatok hivatkozási listája
+          href: recommendations-reference.md
         - name: Gépek és alkalmazások védelme
           href: security-center-virtual-machine-protection.md
-        - name: Gépekkel és alkalmazásokkal kapcsolatos javaslatok referenciája
-          href: recommendations-compute-and-apps.md
         - name: Hálózati erőforrások védelme
           href: security-center-network-recommendations.md
-        - name: Hálózatokra vonatkozó javaslatok referenciája
-          href: recommendations-network.md
         - name: Adatok és tárolási szolgáltatások védelme
           href: security-center-sql-service-recommendations.md
         - name: Identitás és hozzáférés védelme
@@ -155,8 +163,6 @@
           href: security-center-apply-system-updates.md
         - name: Endpoint Protection telepítése
           href: security-center-install-endpoint-protection.md
-        - name: A sebezhetőségi felmérés nincs telepítve
-          href: security-center-vulnerability-assessment-recommendations.md
         - name: Fenyegetésekkel kapcsolatos jelentések
           href: security-center-threat-report.md
         - name: Riasztás megbízhatósági pontszáma

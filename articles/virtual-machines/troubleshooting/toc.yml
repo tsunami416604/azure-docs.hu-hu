@@ -159,6 +159,8 @@
       href: troubleshoot-deploy-vm-linux.md
     - name: Windows
       href: troubleshoot-deploy-vm-windows.md
+    - name: Szolgáltatások újraindítása vagy leállítása
+      href: boot-error-troubleshoot-windows.md
 - name: Az eszköznevek módosultak
   href: troubleshoot-device-names-problems.md
 - name: Virtuálisgép-helyreállítási hozzáférés
