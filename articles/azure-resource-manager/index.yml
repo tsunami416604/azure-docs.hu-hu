@@ -1,133 +1,109 @@
-### YamlMime:Landing
+### YamlMime:Hub
 title: Az Azure Resource Manager dokumentációja
-summary: A Resource Manager-sablon egy JavaScript Object Notation- (JSON-) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját.
+summary: Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Az infrastruktúrát kódként használhatja az Azure-megoldások megbízható üzembe helyezéséhez és felügyeletéhez.
+brand: azure
 metadata:
   title: Az Azure Resource Manager dokumentációja
-  description: Tudnivalók az Azure Resource Manager-sablonok fejlesztéséről és azok használatáról az Azure-erőforrások üzembe helyezéséhez
-  services: azure-resource-manager
+  description: Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása.
   ms.service: azure-resource-manager
-  ms.subservice: na
-  ms.topic: landing-page
-  ms.collection: na
-  author: mumian
-  ms.author: jgao
-  ms.date: 09/25/2019
-  ms.openlocfilehash: 1d50556eb09a35857ed9db4ccbbba99397606f8b
-  ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+  ms.topic: hub-page
+  ms.collection: collection
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 2910576517be35652d8e1ed1e82687a56a10467e
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/25/2019
-  ms.locfileid: "74483437"
-landingContent:
-- title: Információk a Resource Managerről
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75642472"
+highlightedContent:
+  items:
+  - title: Mik azok a sablonok?
+    itemType: overview
+    url: templates/overview.md
+  - title: Az első saját sablon létrehozása
+    itemType: tutorial
+    url: templates/template-tutorial-create-first-template.md
+  - title: Mi az a Resource Manager?
+    itemType: overview
+    url: management/overview.md
+conceptualContent:
+  items:
+  - title: Resource Manager-sablonok üzembe helyezése
     links:
-    - text: Mi az a Resource Manager?
-      url: resource-group-overview.md
-    - text: Mi az a Resource Manager-sablon?
-      url: template-deployment-overview.md
-  - linkListType: concept
+    - url: templates/overview.md
+      itemType: overview
+      text: Áttekintés
+    - url: templates/template-tutorial-create-first-template.md
+      itemType: tutorial
+      text: Kezdő szintű oktatóanyag-sorozat
+    - url: templates/template-syntax.md
+      itemType: reference
+      text: Sablonfájl szerkezete
+    - url: templates/template-functions.md
+      itemType: reference
+      text: Sablonfüggvények
+    - url: templates/deploy-powershell.md
+      itemType: how-to-guide
+      text: Üzembe helyezés
+    - url: templates/template-best-practices.md
+      itemType: concept
+      text: Ajánlott eljárások
+    footerLink:
+      url: templates/index.yml
+      text: Részletek
+  - title: Erőforrások kezelése
     links:
-    - text: Ajánlott eljárások
-      url: template-best-practices.md
-    - text: Üzembehelyezési módok
-      url: deployment-modes.md
-    - text: Hivatkozott sablonok
-      url: resource-group-linked-templates.md
-    - text: Előfizetés szintű üzembe helyezés
-      url: deploy-to-subscription.md
-    - text: Deployment Manager
-      url: deployment-manager-overview.md
-  - linkListType: video
+    - url: management/overview.md
+      itemType: overview
+      text: Áttekintés
+    - url: management/tag-resources.md
+      itemType: how-to-guide
+      text: Erőforrások címkézése
+    - url: management/move-resource-group-and-subscription.md
+      itemType: concept
+      text: Erőforrások áthelyezése
+    - url: management/lock-resources.md
+      itemType: how-to-guide
+      text: Erőforrások zárolása
+    - url: management/resource-providers-and-types.md
+      itemType: concept
+      text: Erőforrás-szolgáltatók és típusaik
+    footerLink:
+      url: management/index.yml
+      text: Részletek
+  - title: Felügyelt alkalmazások
     links:
-    - text: Újdonságok
-      url: https://youtu.be/3D-JIKShrws
-- title: Bevezetés
-  linkLists:
-  - linkListType: quickstart
+    - url: managed-applications/overview.md
+      itemType: overview
+      text: Áttekintés
+    - url: managed-applications/publish-service-catalog-app.md
+      itemType: tutorial
+      text: Szolgáltatáskatalógusban elérhető alkalmazás közzététele
+    - url: managed-applications/create-uidefinition-overview.md
+      itemType: how-to-guide
+      text: Felhasználóifelület-definíció létrehozása
+    - url: managed-applications/publish-marketplace-app.md
+      itemType: tutorial
+      text: Hozzáadás a Marketplace-hez
+    footerLink:
+      url: managed-applications/index.yml
+      text: Részletek
+  - title: Azure Custom Providers
     links:
-    - text: Sablonok létrehozása – portál
-      url: resource-manager-quickstart-create-templates-use-the-portal.md
-    - text: sablonok létrehozása – VS Code
-      url: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-    - text: sablonok létrehozása – Visual Studio
-      url: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
-  - linkListType: tutorial
-    links:
-    - text: Kezdő szintű oktatóanyagok
-      url: template-tutorial-create-first-template.md
-    - text: Több példány üzembe helyezése
-      url: resource-manager-tutorial-create-multiple-instances.md
-    - text: Üzembehelyezési sorrend beállítása
-      url: resource-manager-tutorial-create-templates-with-dependent-resources.md
-    - text: A Key Vault integrálása
-      url: resource-manager-tutorial-use-key-vault.md
-- title: Sablonok fejlesztése
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: A VS Code használata
-      url: resource-manager-tools-vs-code.md
-    - text: Függvények használata
-      url: resource-group-template-functions.md
-    - text: Paraméterek megadása
-      url: template-parameters.md
-    - text: Változók meghatározása
-      url: template-variables.md
-    - text: Erőforrások meghatározása
-      url: child-resource-name-type.md
-    - text: Kimenetek meghatározása
-      url: template-outputs.md
-  - linkListType: reference
-    links:
-    - text: Azure-gyorssablonok
-      url: template-deployment-overview.md
-- title: Sablonok üzembe helyezése
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: PowerShell használatával
-      url: resource-group-template-deploy.md
-    - text: CLI használatával
-      url: resource-group-template-deploy-cli.md
-    - text: Portál használatával
-      url: resource-group-template-deploy-portal.md
-    - text: REST API használatával
-      url: resource-group-template-deploy-rest.md
-- title: Sablonok kezelése
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Sablonok exportálása
-      url: export-template-portal.md
-    - text: CI/CD
-      url: vs-resource-groups-project-devops-pipelines.md
-- title: Erőforrások kezelése
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Erőforrások áthelyezése
-      url: resource-group-move-resources.md
-    - text: Erőforrások címkézése
-      url: resource-group-using-tags.md
-    - text: Erőforrások zárolása
-      url: resource-group-lock-resources.md
-- title: Figyelés és hibaelhárítás
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Tevékenységnaplók megtekintése
-      url: resource-group-audit.md
-    - text: Üzembe helyezési művelet megtekintése
-      url: resource-manager-deployment-operations.md
-    - text: Üzembehelyezési hibák elhárítása
-      url: resource-manager-common-deployment-errors.md
-- title: A referencia tartalmának áttekintése
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Erőforrás-szolgáltatók és típusaik
-      url: resource-manager-supported-services.md
-    - text: Sablonreferencia
-      url: /azure/templates/
+    - url: custom-providers/overview.md
+      itemType: overview
+      text: Áttekintés
+    - url: custom-providers/create-custom-provider.md
+      itemType: quickstart
+      text: Egyéni szolgáltató létrehozása
+    - url: custom-providers/tutorial-get-started-with-custom-providers.md
+      itemType: tutorial
+      text: Egyéni műveletek és erőforrások létrehozása
+    - url: custom-providers/custom-providers-action-endpoint-how-to.md
+      itemType: how-to-guide
+      text: Egyéni műveletek hozzáadása az Azure REST API-hoz
+    footerLink:
+      url: custom-providers/index.yml
+      text: Részletek

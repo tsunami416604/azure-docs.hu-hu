@@ -51,6 +51,9 @@
           items:
             - name: Ajánlatlistákra vonatkozó ajánlott eljárások
               href: ./gtm-offer-listing-best-practices.md
+              items:
+                - name: Kategóriák
+                  href: ./gtm-offer-listing-best-practices-categories.md
             - name: Hogyan válhat kiemeltté?
               href: ./gtm-how-to-get-featured.md
             - name: Marketplace-tartalmak érvényesítése

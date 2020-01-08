@@ -33,7 +33,7 @@
       href: tutorial-virtual-network.md
     - name: 9 – Virtuális gépek biztonsági mentése
       href: tutorial-backup-vms.md
-    - name: 10 – Virtuális gépek szabályozása
+    - name: 10 – Virtuális gépek kezelése
       href: tutorial-govern-resources.md
     - name: 11 – Virtuális gépek nyomon követése és frissítése
       href: tutorial-config-management.md

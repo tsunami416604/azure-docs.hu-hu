@@ -4,7 +4,7 @@
   items:
     - name: Mi az az Azure Databricks?
       href: what-is-azure-databricks.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Databricks-munkaterület létrehozása – Portal
@@ -122,6 +122,9 @@
           maintainContext: true
         - name: Fürtök konfigurálása
           href: /azure/databricks/clusters/configure
+          maintainContext: true
+        - name: Egyéni tárolók
+          href: /azure/databricks/clusters/custom-containers
           maintainContext: true
         - name: Fürtcsomópontok inicializálása
           href: /azure/databricks/clusters/init-scripts
@@ -772,6 +775,14 @@
             - name: Adatok mentése TFRecord-fájlokba a TensorFlow használatával
               href: /azure/databricks/applications/deep-learning/data-prep/tensorflow-to-tfrecords
               maintainContext: true
+            - name: Jellemzősítés
+              items:
+                - name: A jellemzősítés áttekintése
+                  href: /azure/databricks/applications/deep-learning/featurization/index
+                  maintainContext: true
+                - name: Transzfertanulás
+                  href: /azure/databricks/applications/deep-learning/featurization/transfer-learning-keras
+                  maintainContext: true
         - name: Egyetlen csomópont betanítása
           items:
             - name: Egyetlen csomópont betanítása – áttekintés
@@ -826,9 +837,12 @@
             - name: Modellkövetkeztetés a TensorFlow használatával
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
               maintainContext: true
-            - name: Referenciamegoldás elosztottkép-modell következtetéséhez
-              href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
+            - name: Modellkövetkeztetés teljesítményének finomhangolása
+              href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
               maintainContext: true
+        - name: Referenciamegoldás elosztottkép-modell következtetéséhez
+          href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
+          maintainContext: true
     - name: MLflow
       items:
         - name: Az MLflow áttekintése
@@ -1062,6 +1076,9 @@
           items:
             - name: Fürtkonfiguráció áttekintése
               href: /azure/databricks/administration-guide/clusters/index
+              maintainContext: true
+            - name: Tárolószolgáltatások engedélyezése
+              href: /azure/databricks/administration-guide/clusters/container-services
               maintainContext: true
             - name: Genomics szolgáltatáshoz készült Databricks-futtatókörnyezet engedélyezése
               href: /azure/databricks/administration-guide/clusters/genomics-runtime
@@ -1518,11 +1535,37 @@
       href: /azure/databricks/dev-tools/databricks-utils
       maintainContext: true
     - name: A Databricks parancssori felülete
-      href: /azure/databricks/dev-tools/databricks-cli
-      maintainContext: true
-    - name: A Stack parancssori felülete
-      href: /azure/databricks/dev-tools/stack
-      maintainContext: true
+      items:
+        - name: A Databricks parancssori felületének áttekintése
+          href: /azure/databricks/dev-tools/cli/index
+          maintainContext: true
+        - name: Fürtök
+          href: /azure/databricks/dev-tools/cli/clusters-cli
+          maintainContext: true
+        - name: DBFS
+          href: /azure/databricks/dev-tools/cli/dbfs-cli
+          maintainContext: true
+        - name: Csoportok
+          href: /azure/databricks/dev-tools/cli/groups-cli
+          maintainContext: true
+        - name: Példánykészletek
+          href: /azure/databricks/dev-tools/cli/instance-pools-cli
+          maintainContext: true
+        - name: Feladatok
+          href: /azure/databricks/dev-tools/cli/jobs-cli
+          maintainContext: true
+        - name: Kódtárak
+          href: /azure/databricks/dev-tools/cli/libraries-cli
+          maintainContext: true
+        - name: Titkos kulcsok
+          href: /azure/databricks/dev-tools/cli/secrets-cli
+          maintainContext: true
+        - name: Verem
+          href: /azure/databricks/dev-tools/cli/stack-cli
+          maintainContext: true
+        - name: Munkaterület
+          href: /azure/databricks/dev-tools/cli/workspace-cli
+          maintainContext: true
     - name: Azure Databricks REST API
       href: /rest/api/databricks
     - name: Resource Manager-sablon
@@ -1620,6 +1663,9 @@
                   maintainContext: true
                 - name: Databricks Runtime 6.2 ML
                   href: /azure/databricks/release-notes/runtime/6.2ml
+                  maintainContext: true
+                - name: Databricks Runtime 6.2 Genomics
+                  href: /azure/databricks/release-notes/runtime/6.2genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.1
                   href: /azure/databricks/release-notes/runtime/6.1

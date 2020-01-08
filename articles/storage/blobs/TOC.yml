@@ -11,7 +11,7 @@
       items:
         - name: A Blob Storage bemutatása
           href: storage-blobs-introduction.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Blobok kezelése kód nélkül
           items:
@@ -115,11 +115,11 @@
           href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Biztonság
           items:
-            - name: Biztonsági áttekintés
-              href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Biztonsági javaslatok
+              href: security-recommendations.md
             - name: Azure Storage-titkosítás
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Engedélyezés
+            - name: Adatműveletek engedélyezése
               href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
                 - name: Engedélyezés az Azure AD-vel
@@ -130,6 +130,8 @@
                   href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Névtelen hozzáférés a blobokhoz
                   href: storage-manage-access-to-resources.md
+            - name: Felügyeleti műveletek engedélyezése
+              href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Nem módosítható blobok
               href: storage-blob-immutable-storage.md
             - name: Speciális fenyegetésvédelem
@@ -165,8 +167,6 @@
               href: storage-lifecycle-management-concepts.md
         - name: 'Teljesítmény, méretezés és költségoptimalizálás'
           items:
-            - name: Méretezhetőségi és teljesítménycélok
-              href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Teljesítmény és kapacitás – ellenőrzőlista
               href: storage-performance-checklist.md
             - name: Késés a Blob Storage-ban
@@ -259,11 +259,9 @@
           items:
             - name: Általános célú tárfiók létrehozása
               displayName: 'Resource Manager, Resource Manager template, template, ARM'
-              href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Blokkblob-tárfiók létrehozása
               href: storage-blob-create-account-block-blob.md
-            - name: Tárfiók kezelése
-              href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Tárfiók frissítése
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: A fióktípus és a termékváltozat nevének lekérése (.NET)
@@ -276,8 +274,6 @@
               href: storage-blob-containers-list.md
             - name: Tulajdonságok és metaadatok kezelése (.NET)
               href: storage-blob-container-properties-metadata.md
-            - name: Módosíthatatlansági szabályzatok beállítása és kezelése
-              href: storage-blob-immutability-policies-manage.md
         - name: Blobok létrehozása és kezelése
           items:
             - name: Blobok listázása (.NET)
@@ -296,8 +292,10 @@
                   items:
                     - name: Portál
                       href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell vagy Azure CLI
-                      href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                    - name: PowerShell
+                      href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                    - name: Azure CLI
+                      href: ../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Hozzáférési jogosultságok felügyelete RBAC használatával
                   items:
                     - name: Portál
@@ -314,6 +312,8 @@
                       href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Engedélyezés megosztott kulccsal
                   items:
+                    - name: Fiókkulcsok megtekintése és kezelése
+                      href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Kapcsolati sztringek konfigurálása
                       href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Az Azure Storage REST API használata
@@ -368,6 +368,8 @@
                   href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Transport Layer Security engedélyezése
                   href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Módosíthatatlansági szabályzatok beállítása és kezelése
+              href: storage-blob-immutability-policies-manage.md
         - name: Vészhelyreállítás
           items:
             - name: Fiók feladatátvételének indítása
@@ -442,6 +444,18 @@
               href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Referencia
       items:
+        - name: Méretezhetőségi és teljesítménycélok
+          items:
+            - name: Blob Storage
+              href: scalability-targets.md
+            - name: Standard szintű tárfiókok
+              href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Prémium szintű blokkblobtárfiókok
+              href: scalability-targets-premium-block-blobs.md
+            - name: Prémium szintű lapblobtárfiókok
+              href: scalability-targets-premium-page-blobs.md
+            - name: Tárolásierőforrás-szolgáltató
+              href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure PowerShell
           href: /powershell/module/az.storage
         - name: Azure CLI
@@ -607,7 +621,7 @@
       items:
         - name: Bevezetés a Data Lake Storage használatába
           href: ../blobs/data-lake-storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Adatelemzés a Databricksszel
           href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -675,8 +689,6 @@
           items:
             - name: Tárfiók létrehozása a Data Lake-hez
               href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Tárfiók kezelése
-              href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Adatok kezelése a Storage Explorerrel
               href: ../blobs/data-lake-storage-explorer.md
             - name: Tárfiók frissítése
@@ -732,18 +744,6 @@
             - name: Fájl- és könyvtárszintű tulajdonságok beállítása
               href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
         - name: Teljesítmény optimalizálása
-          items:
-            - name: Áttekintés
-              href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: A HDInsight-alapú Spark optimalizálása
-              href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: A HDInsight-alapú Hive optimalizálása
-              href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: A HDInsight-alapú MapReduce optimalizálása
-              href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: A HDInsight-alapú Storm optimalizálása
-              href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Fájlok kezelése (blobok)
           items:
             - name: Áttekintés
               href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

@@ -8,7 +8,7 @@
       href: introduction.md
     - name: Az aktuális verzió összehasonlítása az 1.-vel
       href: compare-versions.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Adat-előállító létrehozása – felhasználói felület (UI)
@@ -121,7 +121,7 @@
       items:
         - name: Másolás az 1. generációs Data Lake Storage-ből
           href: load-azure-data-lake-storage-gen2-from-gen1.md
-    - name: Az SQL Data Warehouse betöltése
+    - name: A Synapse Analytics (korábbi nevén SQL Data Warehouse) betöltése
       href: load-azure-sql-data-warehouse.md
     - name: 1. generációs Data Lake Storage betöltése
       href: load-azure-data-lake-store.md
@@ -233,7 +233,7 @@
           href: connector-azure-sql-database.md
         - name: Felügyelt Azure SQL Database-példány
           href: connector-azure-sql-database-managed-instance.md
-        - name: Azure SQL Data Warehouse
+        - name: Azure Synapse Analytics (korábban SQL Data Warehouse)
           href: connector-azure-sql-data-warehouse.md
         - name: Azure Table Storage
           href: connector-azure-table-storage.md
@@ -389,14 +389,18 @@
           href: delete-activity.md
         - name: Adatok másolása eszköz
           href: copy-data-tool.md
-        - name: Teljesítmény és finomhangolás
-          href: copy-activity-performance.md
         - name: Formátum- és tömörítéstámogatás
           href: supported-file-formats-and-compression-codecs.md
+        - name: Teljesítmény és finomhangolás
+          href: copy-activity-performance.md
+        - name: Metaadatok és ACL-ek megőrzése
+          href: copy-activity-preserve-metadata.md
         - name: Séma- és típusleképezés
           href: copy-activity-schema-and-type-mapping.md
         - name: Hibatűrés
           href: copy-activity-fault-tolerance.md
+        - name: Formátum- és tömörítéstámogatás (örökölt)
+          href: supported-file-formats-and-compression-codecs-legacy.md
     - name: Adatok átalakítása
       href: transform-data.md
       items:
