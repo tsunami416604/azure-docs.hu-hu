@@ -7,7 +7,7 @@
           href: what-is-b2b.md
         - name: A B2B és a B2C összehasonlítása
           href: compare-with-b2c.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Vendégfelhasználók hozzáadása a portálon
           href: b2b-quickstart-add-guest-users-portal.md
@@ -28,6 +28,8 @@
     - name: Alapelvek
       expanded: false
       items:
+        - name: Ajánlott eljárások a B2B használatához
+          href: b2b-fundamentals.md
         - name: B2B-licencelés
           href: licensing-guidance.md
         - name: Külső B2B- és Office 365-megosztás

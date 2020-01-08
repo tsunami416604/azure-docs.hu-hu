@@ -7,7 +7,7 @@
   items:
     - name: Áttekintés
       href: v2-overview.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Bérlő beállítása
           href: quickstart-create-new-tenant.md
@@ -35,6 +35,7 @@
               href: quickstart-v2-aspnet-core-webapp.md
             - name: NodeJS
               href: quickstart-v2-nodejs-webapp.md
+              displayName: OIDC
             - name: Java
               href: quickstart-v2-java-webapp.md
             - name: Python
@@ -135,7 +136,7 @@
                   href: scenario-web-app-call-api-app-registration.md
                 - name: Kódkonfiguráció
                   href: scenario-web-app-call-api-app-configuration.md
-                - name: Bejelentkezés
+                - name: Globális kijelentkezés
                   href: scenario-web-app-call-api-sign-in.md
                 - name: Alkalmazás-jogkivonat beszerzése
                   href: scenario-web-app-call-api-acquire-token.md
@@ -213,7 +214,8 @@
                       href: msal-net-system-browser-android-considerations.md
                     - name: Xamarin iOS
                       href: msal-net-xamarin-ios-considerations.md
-                    - name: Közvetítők használata Xamarin iOS- és Android-alkalmazásokkal
+                    - name: Közvetítők használata Xamarin iOS és Android esetében
+                      displayName: Microsoft Authenticator Microsoft Intune
                       href: msal-net-use-brokers-with-xamarin-apps.md
                     - name: Univerzális Windows-platform
                       href: msal-net-uwp-considerations.md
@@ -241,13 +243,13 @@
                   href: msal-compare-msal-js-and-adal-js.md
                 - name: Migrálás MSAL.Androidra
                   href: migrate-android-adal-msal.md
-                - name: Migrálás MSAL.iOS-re és macOS rendszerre
+                - name: Migrálás MSAL.iOS vagy MacOS rendszerre
                   href: migrate-objc-adal-msal.md
                 - name: Migrálás MSAL Pythonba
                   href: migrate-python-adal-msal.md
                 - name: Migrálás Javához készült MSAL-be
                   href: migrate-adal-msal-java.md
-                - name: Xamarin-alkalmazások migrálása az ADAL.NET és az MSAL.NET közötti közvetítők használatával
+                - name: Xamarin-alkalmazások migrálása közvetítők használatával MSAL.NET rendszerre
                   href: msal-net-migration-ios-broker.md
             - name: Támogatott hitelesítési folyamatok
               href: msal-authentication-flows.md
@@ -263,7 +265,7 @@
               items:
                 - name: Ügyfélalkalmazások
                   href: msal-client-applications.md
-                - name: Alkalmazáskonfiguráció (.NET)
+                - name: Alkalmazáskonfiguráció
                   href: msal-client-application-configuration.md
                 - name: Alkalmazások inicializálása (.NET)
                   href: msal-net-initializing-client-applications.md
@@ -317,7 +319,7 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: Ismert problémák – Safari
                       href: msal-js-known-issues-safari-browser.md
-                - name: MSAL iOS és macOS rendszerekre – SSL-hibák
+                - name: SSL-hibák elhárítása (MSAL iOS/macOS)
                   href: ssl-issues.md
         - name: Hitelesítési protokoll
           items:
@@ -388,7 +390,7 @@
       items:
         - name: Hitelesítés
           items:
-            - name: Szerepkörjogcímek konfigurálása
+            - name: Szerepkörjogcím konfigurálása
               href: active-directory-enterprise-app-role-management.md
             - name: Jogcímek testreszabása – portál
               href: active-directory-saml-claims-customization.md
@@ -400,9 +402,9 @@
               href: active-directory-configurable-token-lifetimes.md
         - name: Alkalmazáskonfiguráció
           items:
-            - name: Váltás az Appok regisztrálása felületről (régi) az új Alkalmazásregisztrációk felületre az Azure Portalon
+            - name: Új alkalmazásregisztráció az Azure Portalon – képzési útmutató
               href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-            - name: Váltás az alkalmazásregisztrációs portálról az új Alkalmazásregisztrációk felületre az Azure Portalon
+            - name: Új alkalmazásregisztráció az Azure Portalon – felület
               href: app-registration-portal-training-guide.md
             - name: Egybérlős alkalmazás átalakítása több-bérlőssé
               href: howto-convert-app-to-be-multi-tenant.md
@@ -418,7 +420,7 @@
               href: howto-add-app-roles-in-azure-ad-apps.md
             - name: Védjegyzési útmutató
               href: howto-add-branding-in-azure-ad-apps.md
-            - name: Közzétevő tartomány
+            - name: Közzétevő tartomány konfigurálása
               href: howto-configure-publisher-domain.md
             - name: Szolgáltatási feltételek és adatvédelmi nyilatkozat
               href: howto-add-terms-of-service-privacy-statement.md
@@ -432,7 +434,7 @@
                   href: msal-net-token-cache-serialization.md
                 - name: A jogkivonat-gyorsítótár törlése
                   href: msal-net-clear-token-cache.md
-                - name: Nyilvános ügyfélalkalmazás példányosítása beállításokkal
+                - name: Nyilvános ügyfélalkalmazás példányosítása
                   href: msal-net-instantiate-public-client-config-options.md
                 - name: Bizalmas ügyfélalkalmazás példányosítása beállításokkal
                   href: msal-net-instantiate-confidential-client-config-options.md
@@ -462,13 +464,13 @@
                   href: redirect-uris-ios.md
             - name: Pythonhoz készült MSAL
               items:
-                - name: Jogkivonat-gyorsítótár szerializálása
+                - name: Egyéni jogkivonat-gyorsítótár szerializálása
                   href: msal-python-token-cache-serialization.md
             - name: Javához készült MSAL
               items:
-                - name: Jogkivonat-gyorsítótár szerializálása
+                - name: Egyéni jogkivonat-gyorsítótár szerializálása
                   href: msal-java-token-cache-serialization.md
-                - name: Fiókok hozzáadása és eltávolítása a jogkivonat-gyorsítótárból
+                - name: Fiókok lekérése és eltávolítása a jogkivonat-gyorsítótárból
                   href: msal-java-get-remove-accounts-token-cache.md
         - name: A Visual Studio használata
           items:
@@ -482,7 +484,7 @@
               href: vs-active-directory-webapi-getting-started.md
             - name: Mi történt a WebAPI-projektemmel?
               href: vs-active-directory-webapi-what-happened.md
-            - name: Hiba a hitelesítés észlelésekor
+            - name: Hibák diagnosztizálása hitelesítés során
               href: vs-active-directory-error.md
     - name: Referencia
       items:
@@ -504,7 +506,7 @@
   items:
     - name: Áttekintés
       href: v1-overview.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Bérlő beállítása
           href: quickstart-create-new-tenant.md

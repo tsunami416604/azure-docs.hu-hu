@@ -7,7 +7,7 @@
       href: what-is-luis.md
     - name: Újdonságok
       href: whats-new.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Előre összeállított tartományalkalmazás létrehozása
       href: luis-get-started-create-app.md
@@ -66,13 +66,8 @@
           href: luis-tutorial-review-endpoint-utterances.md
         - name: Adatkészletek kötegelt tesztelése
           href: luis-tutorial-batch-testing.md
-        - name: Gyakori kimondottszöveg-formátumok hozzáadása
+        - name: Minták hozzáadása az előrejelzések javításához
           href: luis-tutorial-pattern.md
-        - name: Szövegkörnyezet szerint kapcsolódó minták kinyerése
-          href: luis-tutorial-pattern-roles.md
-          displayName: roles
-        - name: Szabad formátumú adatok kinyerése
-          href: luis-tutorial-pattern-any.md
     - name: Használat robottal
       items:
         - name: 'C# használatával'
@@ -173,6 +168,8 @@
         - name: Leíró hozzáadása
           displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
+        - name: Migrálás V3 tartalomkészítésre
+          href: luis-migration-authoring-entities.md
         - name: REST API-kkal
           items:
             - name: Alkalmazás létrehozása programozott módon a Node.js használatával
@@ -319,7 +316,7 @@
       href: reference-pattern-syntax.md
     - name: Hangulat
       href: luis-reference-prebuilt-sentiment.md
-    - name: Fejlesztői forrásanyagok
+    - name: Fejlesztői erőforrások
       href: developer-reference-resource.md
       displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
     - name: Azure CLI

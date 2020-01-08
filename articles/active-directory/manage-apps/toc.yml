@@ -9,7 +9,7 @@
       href: user-provisioning.md
     - name: Mi a helyszíni alkalmazások alkalmazásproxyja?
       href: what-is-application-proxy.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Felhőalkalmazás hozzáadása a katalógusból
       href: add-application-portal.md
@@ -21,6 +21,10 @@
       href: /azure/active-directory/saas-apps/
     - name: Alkalmazásproxyval rendelkező helyszíni alkalmazás hozzáadása
       href: application-proxy-add-on-premises-application.md
+- name: Példák
+  items:
+    - name: Azure PowerShell-minták alkalmazásproxyhoz
+      href: application-proxy-powershell-samples.md
 - name: Alapelvek
   expanded: true
   items:
@@ -70,12 +74,10 @@
               href: end-user-experiences.md
     - name: Alkalmazások üzembe helyezése (SCIM)
       items:
+        - name: Az üzembe helyezés menete
+          href: how-provisioning-works.md
         - name: Automatikus felhasználóátadást használó üzembe helyezés tervezése
           href: plan-auto-user-provisioning.md
-        - name: Automatikus üzembe helyezés SCIM-kompatibilis alkalmazásokhoz
-          href: use-scim-to-provision-users-and-groups.md
-        - name: Manuális és automatikus átadás
-          href: application-provisioning-config-how-to.md
     - name: Felhőalapú HR üzembe helyezése
       items:
         - name: Felhőalapú HR-felhasználóátadást használó üzembe helyezés tervezése
@@ -139,6 +141,8 @@
           items:
             - name: Felhasználói beleegyezés konfigurálása
               href: configure-user-consent.md
+            - name: Bérlőszintű rendszergazdai hozzájárulás megadása
+              href: grant-admin-consent.md
             - name: Rendszergazdai beleegyezés konfigurálásának munkafolyamata (előzetes verzió)
               href: configure-admin-consent-workflow.md
             - name: Módszerek felhasználók és csoportok alkalmazáshoz való hozzárendelésére
@@ -233,28 +237,32 @@
                   href: access-panel-troubleshoot-self-service-access.md
     - name: Alkalmazások üzembe helyezése (SCIM)
       items:
-        - name: Alkalmazások üzembe helyezésének konfigurálása
+        - name: Üzembe helyezés konfigurálása katalógusbeli alkalmazás esetében
+          href: configure-automatic-user-provisioning-portal.md
+        - name: SCIM-végpont létrehozása és az üzembe helyezés konfigurálása
+          href: use-scim-to-provision-users-and-groups.md
+        - name: Attribútumleképezések szerkesztése
           items:
-            - name: A felhasználók automatikus átadásának konfigurálása
-              href: configure-automatic-user-provisioning-portal.md
-            - name: SCIM használata az automatikus üzembe helyezéshez
-              href: use-scim-to-provision-users-and-groups.md
             - name: Attribútumleképezések testreszabása
               href: Customize-application-attributes.md
             - name: Kifejezések írása attribútumleképezésekhez
               href: functions-for-customizing-application-data.md
+        - name: Felhasználók és csoportok hatókörbe foglalása vagy hatókörből való kizárása
+          items:
             - name: Átadásra váró felhasználók vagy csoportok hatókörkezelése
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Hatókörön kívüli felhasználók törlésének mellőzése
               href: skip-out-of-scope-deletions.md
+        - name: Monitorozás és jelentéskészítés az üzembe helyezés esetében
+          items:
             - name: Átadás állapotának és teljesítményének monitorozása
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Jelentés az alkalmazások üzembe helyezéséről
               href: check-status-user-account-provisioning.md
             - name: Konfiguráció exportálása és importálása
               href: export-import-provisioning-configuration.md
-            - name: Automatikus konfigurálás az MS Graph használatával
-              href: application-provisioning-configure-api.md
+        - name: Automatikus konfigurálás az MS Graph használatával
+          href: application-provisioning-configure-api.md
         - name: A felhasználók átadásának hibaelhárítása
           items:
             - name: Az alkalmazások üzembe helyezésének hibaelhárítása

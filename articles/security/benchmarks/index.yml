@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Az Azure biztonsági teljesítménytesztjeinek dokumentációja
+summary: Az ajánlott eljárásaink és útmutatóink segítségével megtudhatja, hogyan védheti meg a felhőalapú megoldásait az Azure-ban.
+metadata:
+  title: Azure-biztonsági teljesítménytesztek
+  description: Az Azure biztonsági vezérlőinek teljesítménytesztje olyan javaslatokat tartalmaz, amelyek segítségével nagyobb biztonságban tudhatja alkalmazásait és adatait az Azure-ban.
+  services: security
+  ms.service: security
+  ms.subservice: fundamentals
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 12/23/2019
+  ms.openlocfilehash: 97f5463ee4348f8e17b8cf571262c361908d7265
+  ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75563862"
+landingContent:
+- title: Tudnivalók az Azure biztonsági teljesítménytesztjéről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Áttekintés
+      url: overview.md
+    - text: Biztonsági vezérlők – bevezetés
+      url: introduction.md
+    - text: Megosztott feladatkörök a felhőben
+      url: ../fundamentals/shared-responsibility.md
+- title: Biztonsági vezérlők
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Hálózati biztonság
+      url: security-control-network-security.md
+    - text: Naplózás és monitorozás
+      url: security-control-logging-monitoring.md
+    - text: Identitás- és hozzáférés-vezérlés
+      url: security-control-identity-access-control.md
+    - text: Adatvédelem
+      url: security-control-data-protection.md
+    - text: Biztonságirés-kezelés
+      url: security-control-vulnerability-management.md
+    - text: Részletek
+      url: security-control-inventory-asset-management.md
+- title: További Azure-biztonsági információk
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure-biztonság – Alapismeretek
+      url: ../fundamentals/index.yml
+    - text: Azure Security Center
+      url: ../../security-center/index.yml
+    - text: Azure Key Vault
+      url: ../../key-vault/index.yml

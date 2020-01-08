@@ -1,34 +1,34 @@
 ---
 title: Mobilalkalmazások létrehozása a Visual Studio App Center és Azure-szolgáltatások használatával
-description: Útmutató valós mobilalkalmazások készítéséhez használható szolgáltatások, például az App Center és más Azure-szolgáltatások használathoz.
+description: Megtudhatja, hogyan hozhat létre valós mobilalkalmazásokat különböző szolgáltatások, például a Visual Studio App Center és egyéb Azure-szolgáltatások használatával.
 author: elamalani
 ms.assetid: 98899889-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 581aecb113a2c6e0bb03d04de46c7dbeb71db3ce
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6e60aa223b3c4f362ed13411c54212e9d1fa2c87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901391"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454425"
 ---
 # <a name="mobile-application-development-in-microsoft"></a>Mobilalkalmazások fejlesztése a Microsoftnál
-A döntéshozóknak, a fejlesztői csapatoknak és az informatikai részlegnek egy számos területet lefedő, stabil mobilalkalmazás-fejlesztési stratégiát kell kidolgoznia:
-- Olyan típusú alkalmazások fejlesztésének megcélzása, amelyek megfelelnek az üzleti célkitűzéseknek: vállalatok és nagyvállalatok közötti kereskedelem (B2E), vállalatközi kereskedelem (B2B) vagy végfelhasználói kereskedelem (B2C).
-- Annak eldöntése, hogy kizárólag iOS, Android vagy Windows rendszerre, egyplatformos nyelven vagy többplatformos megközelítéssel végzik a fejlesztést.
-- Skálázható háttérszolgáltatások biztosítása.
-- Gördülékeny integráció a háttérrendszer adataival online és offline állapotban is.
-- Biztonságos alkalmazások fejlesztése hitelesítési és eszközkezelési képességekkel.
-- A szolgáltatások folyamatos és gyors nyújtása.
-- Csatlakozás a felhőalapú vagy helyszíni háttérrendszerekhez.
-- Integráció a meglévő eszközökkel és rendszerekkel.
-- Az alkalmazás fejlesztése a vállalat fejlődésével párhuzamosan.
-- A piaci bevezetési idő csökkentése, valamint annak biztosítása a fejlesztők számára, hogy kiváló minőségű alkalmazások készítésére összpontosíthassanak.
+A döntéshozóknak, a fejlesztői csapatoknak és az informatikai részlegeknek egy stabil mobilalkalmazás-fejlesztési stratégiát kell kidolgoznia, amely:
+- Olyan típusú alkalmazások fejlesztését célozza, amelyek megfelelnek az üzleti célkitűzéseknek: vállalatok és nagyvállalatok közötti kereskedelem (B2E), vállalatközi kereskedelem (B2B) vagy végfelhasználói kereskedelem (B2C).
+- Meghatározza, hogy kizárólag iOS, Android vagy Windows rendszerre, egyplatformos nyelven vagy többplatformos megközelítéssel végzik a fejlesztést.
+- Skálázható háttérszolgáltatásokat biztosít.
+- Gördülékenyen integrálható a háttérrendszer adataival online és offline állapotban is.
+- Biztonságos alkalmazásokat hoz létre hitelesítési és eszközkezelési képességekkel.
+- Folyamatosan és gyorsan nyújt szolgáltatásokat.
+- Felhőalapú vagy helyszíni háttérrendszerekhez csatlakozik.
+- Integrálható a meglévő eszközökkel és rendszerekkel.
+- Az alkalmazást a vállalat fejlődésével párhuzamosan fejleszti.
+- Csökkenti a piaci bevezetési időt, valamint biztosítja a fejlesztők számára, hogy kiváló minőségű alkalmazások készítésére összpontosíthassanak.
 
-Ez a dokumentációs sorozat **a Microsoft azon szolgáltatásait mutatja be, amelyekkel biztonságos, megbízható, skálázható, felhőalapú mobilalkalmazások** készíthetőek.
+Ez a dokumentációs sorozat a Microsoft azon szolgáltatásait mutatja be, amelyekkel biztonságos, megbízható, skálázható, felhőalapú mobilalkalmazásokat készíthet.
 
 **Célközönség**
 
-Ez a dokumentációs sorozat olyan kezdő vagy szakértő mobilalkalmazás-fejlesztők számára készült, akik szeretnének jobban megismerkedni a felhőalapú szolgáltatásokkal, hogy sikeresebbek legyenek az alkalmazásfejlesztésben. A sorozat keretében rövid áttekintést kaphatnak az ehhez szükséges Microsoft-szolgáltatásokról, -eszközökről és -technológiákról. A dokumentáció nem tartalmaz kódmintákat és bemutatókat. A cél a teljes alkalmazásfejlesztési folyamat és a kapcsolódó szolgáltatások átfogó áttekintése. Minden témakörben szerepelnek hivatkozások, amelyek részletesebb információkat nyújtó forrásokra mutatnak. A sorozat részei tetszőleges sorrendben, egymástól függetlenül megtekinthetők, így bárki kiválaszthatja az őt érdeklő témaköröket.
+Ez a dokumentációs sorozat olyan kezdő vagy szakértő mobilalkalmazás-fejlesztők számára készült, akik szeretnének jobban megismerkedni a felhőszolgáltatásokkal, hogy sikeresebbek legyenek az alkalmazásfejlesztésben. A sorozat keretében rövid áttekintést kap az ehhez szükséges Microsoft-szolgáltatásokról, -eszközökről és -technológiákról. A dokumentáció nem tartalmaz kódmintákat és bemutatókat. A cél a teljes alkalmazásfejlesztési folyamat és a kapcsolódó szolgáltatások átfogó áttekintése. Minden cikkben szerepelnek hivatkozások, amelyek részletesebb információkat nyújtó forrásokra mutatnak. A sorozat részei tetszőleges sorrendben, egymástól függetlenül megtekinthetők, így kiválaszthatja csak az Önt érdeklő cikkeket.

@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: a8e189e8070de0fccf9428e26337e1091ba7f7b4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 34fcaef5416fe976c051317c0273d245f1ff8358
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449125"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Az Azure Billing API-kkal szoftveres úton juthat az Azure-használatra vonatkozó megállapításokhoz.
 Az Azure Billing API-kkal lekérhetők a használattal és erőforrásokkal kapcsolatos adatok az előnyben részesített adatelemző eszközökbe. Az Azure erőforrás-használati és RateCard API-k segítségével pontosan előrejelezheti és felügyelheti a költségeket. Az API-k erőforrás-szolgáltatóként vannak implementálva, és az Azure Resource Manager által közzétett API-k családjának részei.  
@@ -71,4 +71,4 @@ Néhány forgatókönyv, amelyek a Usage- és RateCard API-k kombinációjával 
 
   * [RateCard API kódmintája](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
-* További információt az Azure Resource Managerről az [Azure Resource Manager áttekintésében](../azure-resource-manager/resource-group-overview.md) talál.
+* További információt az Azure Resource Managerről az [Azure Resource Manager áttekintésében](../azure-resource-manager/management/overview.md) talál.

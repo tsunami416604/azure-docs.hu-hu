@@ -6,7 +6,7 @@
       href: site-recovery-overview.md
     - name: A Site Recovery újdonságai
       href: site-recovery-whats-new.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Azure-beli virtuális gép replikálása másik régióba
@@ -43,7 +43,7 @@
           href: vmware-azure-tutorial.md
         - name: Vészhelyreállítási próba végrehajtása
           href: tutorial-dr-drill-azure.md
-        - name: Feladatátvétel és feladat-visszavétel futtatása
+        - name: Feladatátvétel az Azure-ba
           href: vmware-azure-tutorial-failover-failback.md
     - name: Hyper-V rendszerű virtuális gépek vészhelyreállítása az Azure-ba
       items:
@@ -57,7 +57,7 @@
           href: hyper-v-vmm-azure-tutorial.md
         - name: Vészhelyreállítási próba végrehajtása
           href: tutorial-dr-drill-azure.md
-        - name: Feladatátvétel és feladat-visszavétel futtatása
+        - name: Feladatátvétel az Azure-ba
           href: hyper-v-azure-failover-failback-tutorial.md
     - name: Áttelepítés az Azure-ba
       items:
@@ -73,7 +73,7 @@
   items:
     - name: Gyakori kérdések a Site Recoveryvel kapcsolatban
       href: site-recovery-faq.md
-    - name: Információk az Azure-beli virtuális gépek vészhelyreállításáról
+    - name: Tudnivalók az Azure-beli virtuális gépek vészhelyreállításáról
       items:
         - name: Azure-ról Azure-ra architektúra
           href: azure-to-azure-architecture.md
@@ -87,9 +87,9 @@
           href: azure-vm-disaster-recovery-with-accelerated-networking.md
         - name: ExpressRoute és Azure-beli virtuális gépek vészhelyreállítása
           href: azure-vm-disaster-recovery-with-expressroute.md
-    - name: Tudnivalók az Azure-beli virtuális gépek áthelyezéséről
+    - name: Tudnivalók az Azure-beli virtuális gépek másik régióba történő áthelyezéséről
       href: azure-to-azure-move-overview.md
-    - name: Tudnivalók VMware rendszerű virtuális gépek Azure-ba történő vészhelyreállításáról
+    - name: Tudnivalók a VMware virtuális gépek vészhelyreállításáról
       items:
         - name: A VMware-vészhelyreállítás áttekintése
           href: vmware-azure-about-disaster-recovery.md
@@ -103,11 +103,13 @@
           href: vmware-azure-configuration-server-requirements.md
         - name: VMware-ről Azure-ra architektúra
           href: vmware-azure-architecture.md
+        - name: Tudnivalók a lemezek replikációból való kizárásáról
+          href: exclude-disks-replication.md
         - name: Az Azure-ból VMware-be történő feladat-visszavétel helybeállításai
           href: concepts-types-of-failback.md
         - name: A VMware-vészhelyreállítás több-bérlős támogatása
           href: vmware-azure-multi-tenant-overview.md
-    - name: Tudnivalók Hyper-V rendszerű virtuális gépek Azure-ba történő vészhelyreállításáról
+    - name: Tudnivalók a Hyper-V virtuális gépek vészhelyreállításáról
       items:
         - name: Gyakori kérdések
           href: hyper-v-azure-common-questions.md
@@ -115,13 +117,17 @@
           href: hyper-v-azure-support-matrix.md
         - name: Hyper-V-ről Azure-ra architektúra
           href: hyper-v-azure-architecture.md
-    - name: Tudnivalók fizikai kiszolgálók Azure-ba történő vészhelyreállításáról
+        - name: Tudnivalók a lemezek replikációból való kizárásáról
+          href: exclude-disks-replication.md
+    - name: Tudnivalók a fizikai kiszolgálók vészhelyreállításáról
       items:
         - name: VMware-ről/fizikai eszközről Azure-ra – támogatási mátrix
           href: vmware-physical-azure-support-matrix.md
         - name: Fizikai kiszolgálók Azure architektúrába
           href: physical-azure-architecture.md
-    - name: Hálózatkezelési tudnivalók az Azure-ba történő vészhelyreállításával kapcsolatban
+        - name: Tudnivalók a lemezek replikációból való kizárásáról
+          href: exclude-disks-replication.md
+    - name: Hálózatkezelési tudnivalók a vészhelyreállítással kapcsolatban
       items:
         - name: Azure Traffic Manager Site Recoveryvel
           href: concepts-traffic-manager-with-site-recovery.md
@@ -131,7 +137,9 @@
           href: concepts-network-security-group-with-site-recovery.md
         - name: Nyilvános IP-címek használata Site Recoveryvel
           href: concepts-public-ip-address-with-site-recovery.md
-    - name: Tudnivalók a feladatátvételi és helyreállítási tervekről
+    - name: Tudnivalók a feladatátvétellel és a feladat-visszavétellel kapcsolatban
+      href: failover-failback-overview.md
+    - name: A helyreállítási tervek ismertetése
       href: recovery-plan-overview.md
     - name: Tudnivalók az Azure-ba történő migrálásról
       href: migrate-overview.md
@@ -231,13 +239,13 @@
               items:
                 - name: Mobilitási szolgáltatások áttekintése és telepítése
                   href: vmware-physical-mobility-service-overview.md
-                - name: A mobilitási szolgáltatás leküldéses telepítésének előkészítése
+                - name: Előkészületek a leküldéses telepítéshez
                   href: vmware-azure-install-mobility-service.md
-                - name: A mobilitási szolgáltatás üzembe helyezése a System Center Configuration Managerrel
+                - name: A mobilitási szolgáltatás üzembe helyezésének automatizálása
                   href: vmware-azure-mobility-install-configuration-mgr.md
             - name: Replikáció engedélyezése a VMware virtuális gépek számára
               href: vmware-azure-enable-replication.md
-            - name: Lemezek kizárása
+            - name: Lemezek kizárása a replikációból
               href: vmware-azure-exclude-disk.md
             - name: 'Útmutató: Replikáció beállítása VMware rendszerű virtuális gépekhez több-bérlős rendszerrel és CSP-vel'
               href: vmware-azure-multi-tenant-csp-disaster-recovery.md
@@ -249,17 +257,19 @@
               href: site-recovery-test-failover-to-azure.md
             - name: Feladatátvétel futtatása az Azure-ban
               href: site-recovery-failover.md
-            - name: Ismételt védelem – Azure-ból helyszíni VMware-be
+            - name: Előkészületek az ismételt védelemhez/feladat-visszavételhez
+              href: vmware-azure-prepare-failback.md
+            - name: Ismételt védelem – Azure-ból helyszíni rendszerbe
               href: vmware-azure-reprotect.md
-            - name: Feladat-visszavétel az Azure-ból a VMware-be
+            - name: Feladat-visszavétel az Azure-ból a helyszíni gépre
               href: vmware-azure-failback.md
-            - name: Feladat-visszavételi folyamatkiszolgáló létrehozása és kezelése az Azure-ban
+            - name: Feladat-visszavételi folyamatkiszolgáló létrehozása az Azure-ban
               href: vmware-azure-set-up-process-server-azure.md
             - name: Linux rendszerű fő célkiszolgáló beállítása feladat-visszavételhez
               href: vmware-azure-install-linux-master-target.md
         - name: Kezelés
           items:
-            - name: VMware mobilitási ügynökének kezelése
+            - name: A Mobility-ügynök kezelése
               href: vmware-physical-manage-mobility-service.md
             - name: A VMware konfigurációs kiszolgálójának kezelése
               href: vmware-azure-manage-configuration-server.md
@@ -303,9 +313,9 @@
           href: physical-to-azure-failover-failback.md
         - name: Kezelés
           items:
-            - name: Fizikai kiszolgáló mobilitási ügynökének kezelése
+            - name: A Mobility szolgáltatás kezelése
               href: vmware-physical-manage-mobility-service.md
-            - name: A fizikai kiszolgáló replikációjához használt konfigurációs kiszolgáló kezelése
+            - name: A konfigurációs kiszolgáló kezelése
               href: physical-manage-configuration-server.md
             - name: Folyamatkiszolgálók kezelése
               href: vmware-azure-manage-process-server.md
@@ -345,7 +355,7 @@
           items:
             - name: Hálózatleképezés előkészítése Hyper-V rendszerű virtuális gépek vészhelyreállításához
               href: hyper-v-vmm-network-mapping.md
-            - name: Lemezek kizárása a Hyper-V–Azure replikációból
+            - name: Lemezek kizárása a replikációból
               href: hyper-v-exclude-disk.md
         - name: Feladatátvétel és feladat-visszavétel futtatása
           items:

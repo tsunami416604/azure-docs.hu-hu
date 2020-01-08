@@ -6,9 +6,19 @@
       href: overview.md
     - name: Terminológiai változások
       href: terminology.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
-    - name: Alkalmazások
+    - name: Azure-erőforrás monitorozása
+      href: learn/quick-monitor-azure-resource.md
+    - name: Virtuális gépek figyelése
+      items:
+        - name: Gyűjtés – Azure-beli virtuális gépek
+          href: learn/quick-collect-azurevm.md
+        - name: Gyűjtés – Linux rendszerű számítógép
+          href: learn/quick-collect-linux-computer.md
+        - name: Gyűjtés – Windows rendszerű számítógép
+          href: learn/quick-collect-windows-computer.md
+    - name: Alkalmazások figyelése
       items:
         - name: .NET-alkalmazás
           href: learn/quick-monitor-portal.md
@@ -20,26 +30,20 @@
           href: learn/mobile-center-quickstart.md
         - name: Webalkalmazás
           href: app/website-monitoring.md
-    - name: Virtual machines (Virtuális gépek)
-      items:
-        - name: Gyűjtés – Azure-beli virtuális gépek
-          href: learn/quick-collect-azurevm.md
-        - name: Gyűjtés – Linux rendszerű számítógép
-          href: learn/quick-collect-linux-computer.md
-        - name: Gyűjtés – Windows rendszerű számítógép
-          href: learn/quick-collect-windows-computer.md
 - name: Oktatóanyagok
   items:
-    - name: Naplók
-      items:
-        - name: Log Analytics
-          href: log-query/get-started-portal.md
-        - name: Naplólekérdezések
-          href: log-query/get-started-queries.md
-        - name: Irányítópult naplóadatokkal
-          href: learn/tutorial-logs-dashboards.md
-        - name: Riasztás naplóadatok alapján
-          href: learn/tutorial-response.md
+    - name: Metrikadiagram létrehozása
+      href: learn/tutorial-metrics-explorer.md
+    - name: Naplók gyűjtése Azure-erőforrásból
+      href: learn/tutorial-resource-logs.md
+    - name: Naplólekérdezések írása
+      href: log-query/get-started-queries.md
+    - name: Irányítópult létrehozása naplólekérdezésből
+      href: learn/tutorial-logs-dashboards.md
+    - name: Riasztás létrehozása naplólekérdezésből
+      href: learn/tutorial-response.md
+    - name: Automatikus méretezés teljesítmény és ütemezés alapján
+      href: learn/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
       items:
         - name: Alkalmazások futásidejű kivételeinek keresése
@@ -52,10 +56,6 @@
           href: learn/tutorial-users.md
         - name: Irányítópult alkalmazásadatokkal
           href: learn/tutorial-app-dashboards.md
-    - name: Platformmetrikák és naplóadatok archiválása
-      href: learn/tutorial-archive-data.md
-    - name: Automatikus méretezés teljesítmény és ütemezés alapján
-      href: learn/tutorial-autoscale-performance-schedule.md
 - name: Példák
   items:
     - name: Azure PowerShell
@@ -479,50 +479,46 @@
           href: insights/monitor-azure-resource.md
         - name: Erőforráscsoportok monitorozása
           href: insights/resource-group-insights.md
-        - name: Platformnaplók áttekintése
-          href: platform/platform-logs-overview.md
-        - name: Erőforrásnaplók
+        - name: Platformnaplók
           items:
             - name: Áttekintés
-              displayname: Resource logs
-              href: platform/resource-logs-overview.md
-            - name: Gyűjtés Azure Monitor-naplókban
-              displayname: Resource logs
-              href: platform/resource-logs-collect-workspace.md
-            - name: Archiválás a tárolóba
-              displayname: Resource logs
-              href: platform/resource-logs-collect-storage.md
-            - name: Streamelés az Event Hubsra
-              displayname: Resource logs
-              href: platform/resource-logs-stream-event-hubs.md
-        - name: Tevékenységnapló
-          items:
-            - name: Áttekintés
-              displayname: Activity log
-              href: platform/activity-logs-overview.md
-            - name: Gyűjtés a diagnosztikai beállítással
-              displayname: Activity log
-              href: platform/diagnostic-settings-subscription.md
-            - name: Megtekintés és lekérés
-              displayname: Activity log
+              displayName: 'Platform logs, Resource logs, Activity log'
+              href: platform/platform-logs-overview.md
+            - name: Tevékenységnapló megtekintése
+              displayName: Platform logs
               href: platform/activity-log-view.md
-            - name: Összegyűjtés és elemzés
-              displayname: Activity log
-              href: platform/activity-log-collect.md
-            - name: Gyűjtés több bérlőből
-              displayname: Activity log
-              href: platform/activity-log-collect-tenants.md
-            - name: Exportálás
-              displayname: Activity log
-              href: platform/activity-log-export.md
-            - name: Séma
-              displayname: Activity log
-              href: platform/activity-log-schema.md
+            - name: Küldés célhelyekre
+              items:
+                - name: Log Analytics-munkaterület
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-workspace.md
+                - name: Azure Storage tárterület
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-storage.md
+                - name: Event Hubs
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-stream-event-hubs.md
+            - name: Örökölt tevékenységnaplók gyűjteménye
+              items:
+                - name: Áttekintés
+                  displayName: Resource logs
+                  href: platform/diagnostic-settings-legacy.md
+                - name: Összegyűjtés és elemzés
+                  displayname: Activity log
+                  href: platform/activity-log-collect.md
+                - name: Gyűjtés több bérlőből
+                  displayname: Activity log
+                  href: platform/activity-log-collect-tenants.md
+                - name: Exportálás
+                  displayname: Activity log
+                  href: platform/activity-log-export.md
         - name: Diagnosztikai beállítások
           items:
             - name: Diagnosztikai beállítások létrehozása
+              displayName: 'Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings.md
-            - name: Diagnosztikai beállítások létrehozása Resource Managerrel
+            - name: Létrehozás a Resource Managerrel
+              displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings-template.md
             - name: Exportálás Blob Storage formátumba
               displayname: Diagnostic settings
@@ -579,6 +575,8 @@
                   href: platform/log-analytics-agent.md
                 - name: Windows-ügynökök
                   href: platform/agent-windows.md
+                - name: Linux-ügynökök
+                  href: platform/agent-linux.md
                 - name: Virtuálisgép-bővítmény Windowshoz
                   href: ../virtual-machines/windows/extensions-oms.md
                 - name: Virtuálisgép-bővítmény Linuxhoz
@@ -700,7 +698,7 @@
               items:
                 - name: Élő adatok (előzetes verzió) áttekintése
                   href: insights/container-insights-livedata-overview.md
-                - name: Beállítás
+                - name: Telepítés
                   href: insights/container-insights-livedata-setup.md
                 - name: Fürtmetrikák megtekintése
                   href: insights/container-insights-livedata-metrics.md
@@ -1161,10 +1159,16 @@
       items:
         - name: Támogatott metrikák
           href: platform/metrics-supported.md
+        - name: Diagnosztikai beállításokkal exportálható metrikák
+          href: platform/metrics-supported-export-diagnostic-settings.md
         - name: Újabb riasztások támogatott metrikái
           href: platform/alerts-metric-near-real-time.md
-    - name: 'Platformnaplókkal kapcsolatos szolgáltatások, kategóriák és sémák'
-      href: platform/diagnostic-logs-schema.md
+    - name: Platformnaplók
+      items:
+        - name: 'Erőforrásnaplókkal kapcsolatos szolgáltatások, kategóriák és sémák'
+          href: platform/diagnostic-logs-schema.md
+        - name: Tevékenységnapló sémája
+          href: platform/activity-log-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI – Application Insights (előzetes verzió)

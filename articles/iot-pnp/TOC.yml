@@ -4,21 +4,37 @@
   items:
     - name: Mi az IoT Plug and Play?
       href: overview-iot-plug-and-play.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
-    - name: Eszköz létrehozása – Windows
-      href: quickstart-create-pnp-device.md
-    - name: Eszköz létrehozása – Linux
-      href: quickstart-create-pnp-device-linux.md
-    - name: Eszköz csatlakoztatása az IoT Hubhoz – Windows
-      href: quickstart-connect-pnp-device.md
-    - name: Eszköz csatlakoztatása az IoT Hubhoz – Linux
-      href: quickstart-connect-pnp-device-linux.md
+    - name: Eszköz létrehozása
+      items:
+        - name: C Linux
+          href: quickstart-create-pnp-device-linux.md
+        - name: C Windows
+          href: quickstart-create-pnp-device-windows.md
+    - name: Eszköz csatlakoztatása az IoT Hubhoz
+      items:
+        - name: C Linux
+          href: quickstart-connect-pnp-device-c-linux.md
+        - name: C Windows
+          href: quickstart-connect-pnp-device-c-windows.md
+        - name: 'C#'
+          href: quickstart-connect-pnp-device-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-node.md
     - name: Eszköz csatlakoztatása az IoT Centralhoz
-      href: ../iot-central/preview/quick-create-pnp-device.md
+      href: ../iot-central/preview/tutorial-connect-pnp-device.md
     - name: Csatlakozás a megoldásban található eszközhöz
-      href: quickstart-connect-pnp-device-solution.md
+      items:
+        - name: 'C#'
+          href: quickstart-connect-pnp-device-solution-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-solution-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-solution-node.md
 - name: Oktatóanyagok
   items:
     - name: Eszköz létrehozása a VS Code használatával

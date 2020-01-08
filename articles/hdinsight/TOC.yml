@@ -17,6 +17,8 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: HDInsight-fürtök kezelése – PowerShell
           href: ./hdinsight-administer-use-powershell.md
+        - name: Fürtök létrehozása runbookokkal
+          href: ./manage-clusters-runbooks.md
         - name: ETL-folyamat létrehozása
           href: ./hdinsight-sales-insights-etl.md
     - name: Példák
@@ -73,14 +75,29 @@
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
             - name: Fürtök létrehozása a .NET használatával
               href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        - name: Fürttároló használata
-          items:
-            - name: Az Azure Storage használata
-              href: hdinsight-hadoop-use-blob-storage.md
-            - name: A 2. generációs Azure Data Lake Storage használata
-              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: Az 1. generációs Azure Data Lake Storage használata
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: Fürtlétrehozási hibák
+              href: ./create-cluster-error-dictionary.md
+              title: null
+              summary: null
+              abstract: null
+              achievement: null
+              iconUrl: null
+              levels:
+                - null
+              roles:
+                - null
+              products:
+                - null
+              units:
+                - null
+                - name: Fürttároló használata
+                  items:
+                    - name: Az Azure Storage használata
+                      href: hdinsight-hadoop-use-blob-storage.md
+                    - name: A 2. generációs Azure Data Lake Storage használata
+                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+                    - name: Az 1. generációs Azure Data Lake Storage használata
+                      href: hdinsight-hadoop-use-data-lake-store.md
         - name: Fürtök kiterjesztése
           items:
             - name: HDInsight-alkalmazások telepítése
@@ -257,7 +274,7 @@
       items:
         - name: Mi az Apache Spark a HDInsightban?
           href: ./spark/apache-spark-overview.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Apache Spark-fürt létrehozása – Portal
           href: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
@@ -401,7 +418,7 @@
       items:
         - name: Mi az Apache Hadoop a HDInsightban?
           href: ./hadoop/apache-hadoop-introduction.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Apache Hadoop-fürt létrehozása – Portál
           href: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
@@ -514,7 +531,7 @@
       items:
         - name: Mi az Apache Kafka a HDInsightban?
           href: ./kafka/apache-kafka-introduction.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Apache Kafka-fürt létrehozása – Portal
           href: ./kafka/apache-kafka-get-started.md
@@ -533,6 +550,8 @@
           href: ./hdinsight-apache-kafka-spark-structured-streaming.md
     - name: Alapelvek
       items:
+        - name: Kafka számítási feladatok migrálása a 4.0-s verzióba
+          href: ./kafka/migrate-versions.md
         - name: Tárolás és méretezhetőség
           href: ./kafka/apache-kafka-scalability.md
         - name: Az adatok magas rendelkezésre állása
@@ -545,6 +564,8 @@
       items:
         - name: Fejlesztés
           items:
+            - name: A Kafka REST proxy használata
+              href: ./kafka/rest-proxy.md
             - name: Automatikus témakör-létrehozás engedélyezése
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: Az Apache Kafka használata az IoT Hubbal
@@ -579,7 +600,7 @@
       items:
         - name: Mi az Apache HBase a HDInsightban?
           href: ./hbase/apache-hbase-overview.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Az Apache HBase lekérdezése – Apache Phoenix
           href: ./hbase/apache-hbase-query-with-phoenix.md
@@ -651,7 +672,7 @@
       items:
         - name: Mi az interaktív lekérdezés a HDInsightban?
           href: ./interactive-query/apache-interactive-query-get-started.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Apache Hive-lekérdezések végrehajtása – Apache Zeppelin
           href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
@@ -707,6 +728,8 @@
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: Lassú csökkentő
               href: ./interactive-query/interactive-query-troubleshoot-slow-reducer.md
+            - name: Időtúllépés az Apache Hive-átjárón
+              href: ./interactive-query/troubleshoot-gateway-timeout.md
             - name: Az Apache Hive-nézet túllépi az időkorlátot
               href: ./interactive-query/interactive-query-troubleshoot-view-time-out.md
             - name: Engedéllyel kapcsolatos hiba a tábla létrehozásakor
@@ -729,7 +752,7 @@
       items:
         - name: Mik azok az ML-szolgáltatások a HDInsightban?
           href: ./r-server/r-server-overview.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Mintafeladat – RStudio Server
           href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
@@ -763,7 +786,7 @@
       items:
         - name: Mi az az Apache Storm a HDInsightban?
           href: ./storm/apache-storm-overview.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Apache Storm-topológia létrehozása A HDInsightban
           href: ./storm/apache-storm-quickstart.md
@@ -835,14 +858,14 @@
           href: ./hdinsight-service-tags.md
     - name: Útmutató
       items:
+        - name: Identitásközvetítő használata a hitelesítő adatok kezeléséhez
+          href: ./domain-joined/identity-broker.md
         - name: ESP-fürtök létrehozása és szinkronizálás a helyszíni rendszerrel
           href: ./domain-joined/apache-domain-joined-create-configure-enterprise-security-cluster.md
         - name: HDInsight-alapú virtuális hálózatok létrehozása
           href: ./hdinsight-create-virtual-network.md
         - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
           href: ./connect-on-premises-network.md
-        - name: Vállalati biztonság konfigurálása a HDInsightban
-          href: ./domain-joined/apache-domain-joined-configure.md
         - name: ESP-fürtök konfigurálása az Azure AD DS-sel
           href: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
         - name: Azure AD-felhasználók szinkronizálása HDInsight-fürttel

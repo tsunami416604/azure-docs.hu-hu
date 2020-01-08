@@ -4,7 +4,7 @@
   items:
     - name: Üdvözli az Azure Cosmos DB
       href: introduction.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Cosmos DB-erőforrások létrehozása
@@ -129,6 +129,8 @@
           href: set-throughput.md
         - name: Átviteli sebesség kiosztása – automatikus mód
           href: provision-throughput-autopilot.md
+        - name: Autopilot – GYIK
+          href: autopilot-faq.md
     - name: SQL-lekérdezési referencia
       items:
         - name: Első lépések
@@ -541,11 +543,11 @@
   items:
     - name: Cassandra API
       items:
-        - name: Bevezetés
+        - name: Introduction (Bevezetés)
           href: cassandra-introduction.md
         - name: Vonalprotokoll-támogatás
           href: cassandra-support.md
-        - name: Gyors útmutatók
+        - name: Rövid útmutatók
           items:
             - name: .NET
               href: create-cassandra-dotnet.md
@@ -575,7 +577,7 @@
               maintainContext: true
             - name: Cassandra és Spark
               items:
-                - name: Bevezetés
+                - name: Introduction (Bevezetés)
                   href: cassandra-spark-generic.md
                 - name: Kapcsolódás Databricks használatával
                   href: cassandra-spark-databricks.md
@@ -603,13 +605,13 @@
               href: cli-samples-cassandra.md
     - name: MongoDB API
       items:
-        - name: Bevezetés
+        - name: Introduction (Bevezetés)
           href: mongodb-introduction.md
         - name: Vonalprotokoll-támogatás (3.2)
           href: mongodb-feature-support.md
         - name: Vonalprotokoll-támogatás (3.6)
           href: mongodb-feature-support-36.md
-        - name: Gyors útmutatók
+        - name: Rövid útmutatók
           items:
             - name: .NET
               href: create-mongodb-dotnet.md
@@ -695,11 +697,11 @@
     - name: Gremlin API
       displayName: 'graph, graph database'
       items:
-        - name: Bevezetés
+        - name: Introduction (Bevezetés)
           href: graph-introduction.md
         - name: Vonalprotokoll-támogatás
           href: gremlin-support.md
-        - name: Gyors útmutatók
+        - name: Rövid útmutatók
           items:
             - name: Gremlin-konzol
               href: create-graph-gremlin-console.md
@@ -754,9 +756,9 @@
               href: cli-samples-gremlin.md
     - name: Tábla API
       items:
-        - name: Bevezetés
+        - name: Introduction (Bevezetés)
           href: table-introduction.md
-        - name: Gyors útmutatók
+        - name: Rövid útmutatók
           items:
             - name: .NET
               href: create-table-dotnet.md
@@ -824,7 +826,7 @@
               href: /rest/api/storageservices/table-service-rest-api
     - name: Etcd API
       items:
-        - name: Bevezetés
+        - name: Introduction (Bevezetés)
           href: etcd-api-introduction.md
         - name: Azure Kubernetes az Azure Cosmos DB-vel
           href: bootstrap-kubernetes-cluster.md
@@ -982,6 +984,8 @@
       items:
         - name: A Cosmos DB monitorozása
           href: monitor-cosmos-db.md
+        - name: Monitorozás diagnosztikai naplók használatával
+          href: cosmosdb-monitor-resource-logs.md
         - name: Azure Monitor a Cosmoshoz (előzetes verzió)
           href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
         - name: Mérőszámok megtekintése Azure Cosmos DB-fiókból

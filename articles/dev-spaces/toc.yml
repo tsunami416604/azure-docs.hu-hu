@@ -5,7 +5,7 @@
       items:
         - name: Az Azure Dev Spaces bemutatása
           href: about.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Csoportos fejlesztés
           href: quickstart-team-development.md
@@ -91,6 +91,8 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: Traefik használata egyéni bejövő és HTTPS-kapcsolatokhoz
           href: how-to/ingress-https-traefik.md
+        - name: NGINX használata egyéni bejövő és HTTPS-kapcsolatokhoz
+          href: how-to/ingress-https-nginx.md
         - name: A fejlesztői gép csatlakoztatása egy AKS-fürthöz (előzetes verzió)
           href: how-to/connect.md
     - name: Hibaelhárítás

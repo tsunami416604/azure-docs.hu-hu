@@ -7,7 +7,7 @@
       href: active-directory-b2c-overview.md
     - name: Műszaki jellemzők és funkciók áttekintése
       href: technical-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Bejelentkezés beállítása – ASP.NET
@@ -76,8 +76,11 @@
   items:
     - name: Alkalmazásintegráció
       items:
-        - name: Egy alkalmazás regisztrálása
+        - name: OIDC-alkalmazás regisztrálása
           href: tutorial-register-applications.md
+        - name: SAML-szolgáltató regisztrálása
+          href: connect-with-saml-service-providers.md
+          displayName: 'SP, RP, service provider, connect'
         - name: Webes API-alkalmazás hozzáadása
           href: add-web-application.md
         - name: Natív ügyfélalkalmazás hozzáadása
@@ -160,6 +163,9 @@
               href: active-directory-b2c-reference-kmsi-custom.md
             - name: Jelszó módosítása
               href: active-directory-b2c-reference-password-change-custom.md
+            - name: Telefonos regisztráció és bejelentkezés
+              href: phone-authentication.md
+              displayName: 'otp, passwordless, phone number'
         - name: Felhasználói felület testreszabása
           items:
             - name: Felhasználó által megadott adatok konfigurálása
@@ -168,6 +174,9 @@
               href: active-directory-b2c-ui-customization-custom.md
             - name: A felhasználói felület dinamikus testreszabása
               href: active-directory-b2c-ui-customization-custom-dynamic.md
+            - name: Egyéni e-mail-cím
+              href: custom-email.md
+              displayName: verification
             - name: Oldalelrendezés
               href: page-layout.md
             - name: JavaScript engedélyezése
@@ -196,8 +205,10 @@
               items:
                 - name: ADFS
                   href: active-directory-b2c-custom-setup-adfs2016-idp.md
+                  displayName: SAML
                 - name: Salesforce
                   href: active-directory-b2c-setup-sf-app-custom.md
+                  displayName: SAML
         - name: Jogkivonatok és munkamenet-kezelés
           items:
             - name: Jogkivonatok testreszabása
@@ -254,6 +265,8 @@
                       href: integer-transformations.md
                     - name: JSON
                       href: json-transformations.md
+                    - name: Telefonszám
+                      href: phone-number-claims-transformations.md
                     - name: Külső fiókok
                       href: social-transformations.md
                     - name: StringCollection
@@ -277,6 +290,9 @@
                   items:
                     - name: A technikai profilok ismertetése
                       href: technical-profiles-overview.md
+                    - name: Azure Multi-Factor Authentication
+                      href: multi-factor-auth-technical-profile.md
+                      displayName: mfa
                     - name: Igénylésfeloldók
                       href: claim-resolver-overview.md
                     - name: Azure Active Directory
@@ -289,6 +305,9 @@
                       href: oauth1-technical-profile.md
                     - name: OAuth2
                       href: oauth2-technical-profile.md
+                    - name: Egyszeri jelszó
+                      href: one-time-password-technical-profile.md
+                      displayName: otp
                     - name: OpenID Connect
                       href: openid-connect-technical-profile.md
                     - name: REST
@@ -301,6 +320,11 @@
                       href: active-directory-b2c-reference-sso-custom.md
                     - name: Ellenőrzés
                       href: validation-technical-profile.md
+            - name: DisplayControls
+              href: display-controls.md
+              items:
+                - name: Ellenőrzés
+                  href: display-control-verification.md
             - name: UserJourneys
               href: userjourneys.md
             - name: RelyingParty

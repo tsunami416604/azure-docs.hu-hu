@@ -4,7 +4,7 @@
   items:
     - name: Az AKS ismertetése
       href: intro-kubernetes.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: AKS-fürt létrehozása
@@ -218,6 +218,8 @@
           maintainContext: true
         - name: Tanúsítványok váltása
           href: certificate-rotation.md
+        - name: Privát fürt létrehozása
+          href: private-clusters.md
     - name: Monitorozás és naplózás
       items:
         - name: Azure Monitor tárolókhoz
@@ -308,6 +310,9 @@
           href: gpu-cluster.md
         - name: Az Azure Database for PostgreSQL használata
           href: ../postgresql/concepts-aks.md
+          maintainContext: true
+        - name: Az Azure API Management használata
+          href: ../api-management/api-management-kubernetes.md
           maintainContext: true
     - name: Szolgáltatásháló kiválasztása és üzembe helyezése
       items:

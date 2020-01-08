@@ -10,7 +10,7 @@
       href: geo-ai-dsvm-overview.md
     - name: A DSVM-en elérhető eszközök
       href: tools-included.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Windows rendszerű DSVM létrehozása
@@ -24,19 +24,19 @@
 - name: Alapelvek
   items:
     - name: Mély tanulás és mesterségesintelligencia-keretrendszerek
-      href: dsvm-deep-learning-ai-frameworks.md
+      href: dsvm-tools-deep-learning-frameworks.md
     - name: Programozási nyelvek
-      href: dsvm-languages.md
+      href: dsvm-tools-languages.md
     - name: Fejlesztési eszközök
       href: dsvm-tools-development.md
     - name: Gépi tanulási és adatelemzési eszközök
-      href: dsvm-ml-data-science-tools.md
+      href: dsvm-tools-data-science.md
     - name: Adatplatformok
-      href: dsvm-data-platforms.md
+      href: dsvm-tools-data-platforms.md
     - name: Adatfeldolgozási eszközök
       href: dsvm-tools-ingestion.md
-    - name: Adatáttekintési és vizualizációs eszközök
-      href: dsvm-tools-explore-and-visualize.md
+    - name: Hatékonyságnövelő eszközök
+      href: dsvm-tools-productivity.md
     - name: Vállalati biztonság és útmutatás
       href: dsvm-enterprise-overview.md
 - name: Példák

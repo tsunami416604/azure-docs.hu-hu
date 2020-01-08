@@ -56,6 +56,8 @@
           href: customize-rdp-properties.md
         - name: Készletezett gazdagépkészletek terheléselosztása
           href: configure-host-pool-load-balancing.md
+        - name: Személyes asztali számítógép hozzárendelésének típusa
+          href: configure-host-pool-personal-desktop-assignment-type.md
     - name: Windows Virtual Desktop-licenc használata
       href: apply-windows-license.md
     - name: Munkamenetgazda rendszerképének testreszabása
@@ -68,8 +70,12 @@
       href: set-up-scaling-script.md
     - name: Csatorna testreszabása
       href: customize-feed-for-virtual-desktop-users.md
-    - name: A diagnosztikai eszköz üzembe helyezése
-      href: deploy-diagnostics.md
+    - name: Szolgáltatásdiagnosztika használata
+      items:
+        - name: A diagnosztikai eszköz üzembe helyezése
+          href: deploy-diagnostics.md
+        - name: Diagnosztika használata a Log Analyticsszel
+          href: diagnostics-log-analytics.md
     - name: Beépített alkalmazások közzététele
       href: publish-apps.md
     - name: MSIX-alkalmazás csatolásának beállítása
@@ -78,8 +84,6 @@
   items:
     - name: A Windows Virtual Desktop környezete
       href: environment-setup.md
-    - name: Sávszélességgel kapcsolatos javaslatok távoli munkamenetekhez
-      href: bandwidth-recommendations.md
     - name: Felhasználói kapcsolat késleltetésének meghatározása
       href: connection-latency.md
     - name: Delegált hozzáférés a Windows Virtual Desktopon
@@ -110,8 +114,10 @@
       href: troubleshoot-windows-7-vm.md
     - name: A Windows Virtual Desktop felügyeleti eszköz hibaelhárítása
       href: troubleshoot-management-tool.md
-    - name: Távoli asztali ügyfélkapcsolatok
-      href: troubleshoot-client-connection.md
+    - name: Távoli asztali szolgáltatások kapcsolatai
+      href: troubleshoot-service-connection.md
+    - name: Távoli asztali ügyfelekkel kapcsolatos problémák
+      href: troubleshoot-client.md
     - name: Windows Virtual Desktop – PowerShell
       href: troubleshoot-powershell.md
     - name: Grafikai teljesítményproblémák diagnosztizálása

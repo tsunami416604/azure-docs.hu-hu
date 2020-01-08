@@ -3,21 +3,21 @@ title: Azure Portal-dokumentáció
 summary: Az Azure Portal egy egységesített felületet biztosító webes konzol, amely alternatívát biztosít a parancssori eszközökkel szemben. Azure-előfizetését kezelheti az Azure Portalon. Az egyszerű webalkalmazásoktól az összetett felhőalapú üzemelő példányokig bármit létrehozhat, kezelhet és monitorozhat. Egyéni irányítópultokat hozhat létre az erőforrások rendszerezett nézetének létrehozásához, és a lehető legjobb felhasználói élmény érdekében konfigurálhatja a kisegítő lehetőségeket.
 metadata:
   title: Azure Portal-dokumentáció
-  description: Ismerje meg, hogyan használhatja az Azure Portalt az Azure-előfizetés és az -erőforrások kezelésére.
+  description: Megtudhatja, hogyan használhatja az Azure Portal webes konzolját az Azure-előfizetések és -erőforrások kezelésére. Az Azure Portal alternatívát biztosít a parancssori eszközök használatával szemben.
   services: Azure portal
   ms.service: azure-portal
   ms.subservice: 
   ms.topic: landing-page
   ms.collection: collection
-  author: kfollis
-  ms.author: kfollis
-  ms.date: 09/17/2019
-  ms.openlocfilehash: 7fdd6f95ee2f84abc151f5c6e6e7929df2bc57a1
-  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  author: mblythe
+  ms.author: mblythe
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 4c04ae88f69ab4e17ea70e94683ce0add4823040
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/17/2019
-  ms.locfileid: "71076656"
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75640040"
 landingContent:
 - title: Tudnivalók az Azure Portalról
   linkLists:
@@ -31,6 +31,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: A portál beállításainak megadása
+      url: set-preferences.md
     - text: Egyéni irányítópultok létrehozása és megosztása
       url: azure-portal-dashboards.md
     - text: Kedvencek kezelése

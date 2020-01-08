@@ -136,6 +136,8 @@
           items:
             - name: Bérlő konfigurálása
               href: openvpn-azure-ad-tenant.md
+            - name: Bérlő konfigurálása több ügyfélalkalmazással
+              href: openvpn-azure-ad-tenant-multi-app.md
             - name: 'Többtényezős hitelesítés (Multi-Factor Authentication, MFA) konfigurálása'
               href: openvpn-azure-ad-mfa.md
             - name: VPN-ügyfél konfigurálása
@@ -266,7 +268,7 @@
     - name: Fórum
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
     - name: Előfizetés- és szolgáltatáskorlátok
-      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/vpn-gateway'
     - name: Díjkalkulátor
