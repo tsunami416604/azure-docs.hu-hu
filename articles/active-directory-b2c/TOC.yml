@@ -372,6 +372,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
     - name: Cookie-definíciók
       href: cookie-definitions.md
+    - name: Hibakódok
+      href: error-codes.md
     - name: Régiónkénti elérhetőség és az adatok tárolási helye
       href: active-directory-b2c-reference-tenant-type.md
     - name: Számlázás engedélyezése
